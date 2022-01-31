@@ -93,7 +93,7 @@ public class AssociateSearchWordsFragment$SearchAssociatedWordAdapter
     {
     default: 
       paramView.setTag(localObject);
-      paramView.setBackgroundResource(2130840370);
+      paramView.setBackgroundResource(2130840385);
       paramViewGroup = paramView;
       paramView = (AssociateSearchWordsFragment.ViewHolder)paramViewGroup.getTag();
       switch (getItemViewType(paramInt))
@@ -101,7 +101,7 @@ public class AssociateSearchWordsFragment$SearchAssociatedWordAdapter
       default: 
         label184:
         if (bool) {
-          paramViewGroup.setBackgroundResource(2130838580);
+          paramViewGroup.setBackgroundResource(2130838586);
         }
         break;
       }
@@ -119,7 +119,7 @@ public class AssociateSearchWordsFragment$SearchAssociatedWordAdapter
       ((AssociateSearchWordsFragment.ViewHolder)localObject).c = paramView;
       paramViewGroup.addView(paramView, localLayoutParams);
       paramView = new TextView(localFragmentActivity);
-      paramView.setTextColor(localFragmentActivity.getResources().getColor(2131494264));
+      paramView.setTextColor(localFragmentActivity.getResources().getColor(2131494270));
       paramView.setTextSize(1, 15.0F);
       paramView.setGravity(16);
       paramView.setIncludeFontPadding(false);
@@ -133,12 +133,12 @@ public class AssociateSearchWordsFragment$SearchAssociatedWordAdapter
       paramView = paramViewGroup;
       break;
       paramView = new TextView(localFragmentActivity);
-      paramView.setTextColor(localFragmentActivity.getResources().getColor(2131494214));
+      paramView.setTextColor(localFragmentActivity.getResources().getColor(2131494220));
       paramView.setTextSize(1, 18.0F);
       paramView.setSingleLine();
       paramView.setEllipsize(TextUtils.TruncateAt.END);
       paramView.setIncludeFontPadding(false);
-      paramView.setCompoundDrawablesWithIntrinsicBounds(localFragmentActivity.getResources().getDrawable(2130845993), null, null, null);
+      paramView.setCompoundDrawablesWithIntrinsicBounds(localFragmentActivity.getResources().getDrawable(2130846075), null, null, null);
       paramView.setCompoundDrawablePadding(DisplayUtil.a(localFragmentActivity, 4.0F));
       localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
       localLayoutParams.setMargins(0, DisplayUtil.a(localFragmentActivity, 16.0F), 0, DisplayUtil.a(localFragmentActivity, 16.0F));
@@ -148,13 +148,13 @@ public class AssociateSearchWordsFragment$SearchAssociatedWordAdapter
       paramView = paramViewGroup;
       break;
       paramView = new TextView(localFragmentActivity);
-      paramView.setTextColor(localFragmentActivity.getResources().getColor(2131494214));
+      paramView.setTextColor(localFragmentActivity.getResources().getColor(2131494220));
       paramView.setTextSize(1, 18.0F);
       paramView.setIncludeFontPadding(false);
       paramViewGroup.addView(paramView);
       ((AssociateSearchWordsFragment.ViewHolder)localObject).a = paramView;
       paramView = new TextView(localFragmentActivity);
-      paramView.setTextColor(localFragmentActivity.getResources().getColor(2131494264));
+      paramView.setTextColor(localFragmentActivity.getResources().getColor(2131494270));
       paramView.setTextSize(1, 14.0F);
       paramView.setIncludeFontPadding(false);
       paramViewGroup.addView(paramView);
@@ -214,7 +214,7 @@ public class AssociateSearchWordsFragment$SearchAssociatedWordAdapter
       }
       paramView.c.setBackgroundColor(localFragmentActivity.getResources().getColor(2131492949));
       break label184;
-      paramViewGroup.setBackgroundResource(2130838579);
+      paramViewGroup.setBackgroundResource(2130838585);
     }
   }
   

@@ -1,51 +1,54 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.PublicAccountServlet;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.transfile.BaseTransProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class vhr
-  implements PopupMenuDialog.OnClickActionListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public vhr(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Activity paramActivity, AbsStructMsg paramAbsStructMsg) {}
+  public vhr(PicItemBuilder paramPicItemBuilder, MessageForPic paramMessageForPic, ActionSheet paramActionSheet) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (StructingMsgItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
-      return;
-    }
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("msg_template_id");
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, PublicAccountServlet.class);
-    localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
-    mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
-    localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
-    localSubscribeRequest.index.set(paramMenuItem.a);
-    long l1 = 0L;
-    try
+    switch (paramInt)
     {
-      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
-      l1 = l2;
     }
-    catch (Exception paramMenuItem)
+    label172:
+    for (;;)
     {
-      label108:
-      break label108;
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.d < 500L);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.d = l;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
+      if ((paramView != null) && ((paramView instanceof BaseTransProcessor)))
+      {
+        paramView = (BaseTransProcessor)paramView;
+        if ((paramView.a()) && (paramView.b()))
+        {
+          paramInt = 1;
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq));
+        }
+      }
+      for (;;)
+      {
+        if (paramInt != 0) {
+          break label172;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+        break;
+        paramInt = 0;
+      }
     }
-    localSubscribeRequest.template_id.set(str);
-    localSubscribeRequest.puin.set(l1);
-    localNewIntent.setObserver(new vhs(this, str));
-    localNewIntent.putExtra("data", localSubscribeRequest.toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.startServlet(localNewIntent);
-    StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
   }
 }
 

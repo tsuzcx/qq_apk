@@ -1,99 +1,60 @@
-import android.os.Handler;
+import android.content.Intent;
 import android.os.SystemClock;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
-import com.tencent.biz.qqstory.utils.VideoUtils;
-import com.tencent.biz.qqstory.utils.VideoUtils.VideoKeyFrameFragment;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.AudioDataUtil;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDanceMachine;
+import com.tencent.qphone.base.util.QLog;
 
 public class ohd
-  implements Runnable
+  extends MessageObserver
 {
-  public ohd(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public ohd(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
   
-  public void run()
+  public void a(MessageForDanceMachine paramMessageForDanceMachine)
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    Object localObject1;
-    int i;
-    for (long l1 = 10000L;; l1 = 2147483647L)
-    {
-      localObject1 = null;
-      if (this.a.jdField_a_of_type_Boolean) {
-        localObject1 = VideoUtils.a(HWEditLocalVideoPlayer.a(this.a), l1);
-      }
-      if (localObject1 != null) {
-        break label628;
-      }
-      localObject1 = new ArrayList();
-      i = 0;
-      while (i < this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration / l1)
-      {
-        ((ArrayList)localObject1).add(new VideoUtils.VideoKeyFrameFragment(i * l1, l1));
-        i += 1;
+    super.a(paramMessageForDanceMachine);
+    if (!DanceMachineUploadVideoFragment.a(this.a)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadDanceMachineVideo", 2, "do not need callback");
       }
     }
-    label371:
-    label628:
+    do
+    {
+      return;
+      DanceMachineUploadVideoFragment.a(this.a, false);
+      if (paramMessageForDanceMachine != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("UploadDanceMachineVideo", 2, "mfd is null");
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadDanceMachineVideo", 2, "uuid : " + paramMessageForDanceMachine.uuid + "  md5 : " + paramMessageForDanceMachine.md5 + " thumbFilePath : " + paramMessageForDanceMachine.mThumbFilePath);
+    }
+    if (paramMessageForDanceMachine.errorCode == 0)
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("upload_result", true);
+      localIntent.putExtra("upload_video_uuid", paramMessageForDanceMachine.uuid);
+      localIntent.putExtra("upload_video_md5", paramMessageForDanceMachine.md5);
+      localIntent.putExtra("upload_video_thumb", paramMessageForDanceMachine.mThumbFilePath);
+      localIntent.putExtra("share_method", DanceMachineUploadVideoFragment.a(this.a));
+      localIntent.putExtra("current_nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+      localIntent.putExtra("current_uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+      if (DanceMachineUploadVideoFragment.a(this.a) != -1L) {
+        localIntent.putExtra("upload_time_cost", SystemClock.elapsedRealtime() - DanceMachineUploadVideoFragment.a(this.a));
+      }
+      paramMessageForDanceMachine = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      BaseActivity localBaseActivity = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      paramMessageForDanceMachine.setResult(-1, localIntent);
+    }
     for (;;)
     {
-      if (((ArrayList)localObject1).size() <= 0) {
-        ((ArrayList)localObject1).add(new VideoUtils.VideoKeyFrameFragment(0L, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration));
-      }
-      long l3 = SystemClock.uptimeMillis();
-      i = 0;
-      Object localObject2;
-      int j;
-      if (i < ((ArrayList)localObject1).size())
-      {
-        localObject2 = (VideoUtils.VideoKeyFrameFragment)((ArrayList)localObject1).get(i);
-        long l4 = SystemClock.uptimeMillis();
-        long l2 = Math.min(((VideoUtils.VideoKeyFrameFragment)localObject2).a + ((VideoUtils.VideoKeyFrameFragment)localObject2).b, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration);
-        l1 = l2;
-        if (1000L + l2 > this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration) {
-          l1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration;
-        }
-        if (i == 5) {
-          l1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration;
-        }
-        HWEditLocalVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = new HWEditLocalVideoPlayer.Mp4VideoFragmentInfo(i, MediaUtil.a(HWEditLocalVideoPlayer.a(this.a), (int)((VideoUtils.VideoKeyFrameFragment)localObject2).a));
-        HWEditLocalVideoPlayer.Mp4VideoFragmentInfo.a(localMp4VideoFragmentInfo, ((VideoUtils.VideoKeyFrameFragment)localObject2).a);
-        HWEditLocalVideoPlayer.Mp4VideoFragmentInfo.b(localMp4VideoFragmentInfo, l1);
-        this.a.jdField_a_of_type_JavaUtilList.add(localMp4VideoFragmentInfo);
-        SLog.b("Q.qqstory.record.HWEditLocalVideoPlayer", "create fragment info = %s, cost = %dms", localMp4VideoFragmentInfo, Long.valueOf(SystemClock.uptimeMillis() - l4));
-        if (l1 < this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration) {}
-      }
-      else
-      {
-        SLog.b("Q.qqstory.record.HWEditLocalVideoPlayer", "create fragment info count = %d, cost = %dms", Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Long.valueOf(SystemClock.uptimeMillis() - l3));
-        i = 0;
-        if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-          break label608;
-        }
-        localObject1 = (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)this.a.jdField_a_of_type_JavaUtilList.get(i);
-        localObject2 = HWEditLocalVideoPlayer.a(this.a) + "_" + i + ".IFrames.audio";
-        j = AudioDataUtil.a(HWEditLocalVideoPlayer.b(this.a), (String)localObject2, (float)HWEditLocalVideoPlayer.Mp4VideoFragmentInfo.a((HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject1) * 1.0F / (float)this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration, (float)HWEditLocalVideoPlayer.Mp4VideoFragmentInfo.b((HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject1) * 1.0F / (float)this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration);
-        if (j != 0) {
-          break label544;
-        }
-        SLog.b("Q.qqstory.record.HWEditLocalVideoPlayer", "clipAudioFile finished audioFilePath" + (String)localObject2);
-        ((HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject1).b = ((String)localObject2);
-      }
-      for (;;)
-      {
-        i += 1;
-        break label371;
-        i += 1;
-        break;
-        SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", "clipAudioFile failed. errcode =%s,  audioFilePath=%s, duration=%s, startTime=%s, endTime=%s", new Object[] { Integer.valueOf(j), localObject2, Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration), Long.valueOf(HWEditLocalVideoPlayer.Mp4VideoFragmentInfo.a((HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject1)), Long.valueOf(HWEditLocalVideoPlayer.Mp4VideoFragmentInfo.b((HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject1)) });
-      }
-      HWEditLocalVideoPlayer.a(this.a).post(new ohe(this));
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
       return;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(2);
     }
   }
 }

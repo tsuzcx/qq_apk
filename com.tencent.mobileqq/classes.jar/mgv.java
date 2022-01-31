@@ -1,39 +1,13 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
 public class mgv
-  extends Handler
+  implements Runnable
 {
-  public mgv(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public mgv(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      return;
-      if (!this.a.f) {
-        break;
-      }
-      if (this.a.e)
-      {
-        ReadInJoyBaseAdapter.a(this.a, this.a.a);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("ReadInJoyBaseAdapter", 2, "MSG_FOR_CHECK_PLAYAREA, 平移转场动画未做完，不触发自动播放");
-    return;
-    ReadInJoyBaseAdapter.a(this.a, this.a.a);
+    this.a.d();
   }
 }
 

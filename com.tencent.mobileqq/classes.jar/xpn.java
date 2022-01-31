@@ -1,20 +1,45 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.richmedia.LBSDetetor;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.PhoneUnityBannerData;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class xpn
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public xpn(LBSDetetor paramLBSDetetor) {}
+  public xpn(BannerManager paramBannerManager, PhoneUnityBannerData paramPhoneUnityBannerData) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
+    ReportController.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).app, "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
+    paramView = BaseActivity.sTopActivity;
+    Intent localIntent;
+    if (paramView != null)
+    {
+      if (!URLUtil.isValidUrl(this.jdField_a_of_type_ComTencentMobileqqAppPhoneUnityBannerData.a)) {
+        break label110;
+      }
+      localIntent = new Intent(paramView, QQBrowserActivity.class);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqAppPhoneUnityBannerData.a);
+      localIntent.putExtra("hideRightButton", true);
+      paramView.startActivity(localIntent);
     }
-    LBSDetetor.a(this.a, false, null, paramMessage.what);
-    return false;
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(5, 0);
+      return;
+      label110:
+      localIntent = new Intent(paramView, PhoneUnityBindInfoActivity.class);
+      localIntent.putExtra("kSrouce", 0);
+      paramView.startActivity(localIntent);
+    }
   }
 }
 

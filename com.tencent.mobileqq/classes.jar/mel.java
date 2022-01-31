@@ -1,11 +1,27 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
 public class mel
+  implements View.OnClickListener
 {
-  public long a;
-  public long b;
+  public mel(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  private mel(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  public void onClick(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mShareActionSheet cancle button OnClick");
+    }
+    if (VideoFeedsAdapter.a(this.a).isShowing()) {
+      VideoFeedsAdapter.a(this.a).dismiss();
+    }
+    if (VideoFeedsAdapter.a(this.a) != null) {
+      VideoFeedsAdapter.a(this.a).d();
+    }
+  }
 }
 
 

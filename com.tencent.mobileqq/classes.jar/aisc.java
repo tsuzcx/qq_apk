@@ -1,31 +1,44 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.VideoThumbDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import java.util.List;
+import java.util.TimerTask;
 
 public class aisc
-  implements BitmapDecoder
+  extends TimerTask
 {
-  public aisc(VideoThumbDownloader paramVideoThumbDownloader) {}
+  public aisc(AIOMessageSpreadManager paramAIOMessageSpreadManager) {}
   
-  public Bitmap a(URL paramURL)
+  public void run()
   {
-    String str = paramURL.getPath();
-    try
+    synchronized (this.a)
     {
-      Bitmap localBitmap = VideoThumbDownloader.a(this.a, str);
-      paramURL = localBitmap;
-      if (localBitmap == null) {
-        paramURL = VideoThumbDownloader.b(this.a, str);
+      long l1 = System.currentTimeMillis();
+      long l2 = l1 - this.a.a;
+      if (l2 >= 950L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("AIOMessageSpreadManager", 1, "lastInsertTime[" + this.a.a + "],now[" + l1 + "], dur[" + l2 + "],timeOut start check!");
+        }
+        i = AIOMessageSpreadManager.a(this.a).size() - 1;
+        while (i >= 0)
+        {
+          localMessageRecord = (MessageRecord)AIOMessageSpreadManager.a(this.a).get(i);
+          this.a.a((ChatMessage)localMessageRecord);
+          i -= 1;
+        }
+        this.a.a = 0L;
+        AIOMessageSpreadManager.a(this.a).clear();
       }
-      return paramURL;
+      while (!QLog.isColorLevel())
+      {
+        int i;
+        MessageRecord localMessageRecord;
+        return;
+      }
+      QLog.i("AIOMessageSpreadManager", 1, "lastInsertTime[" + this.a.a + "],now[" + l1 + "], dur[" + l2 + "]");
     }
-    catch (Throwable paramURL)
-    {
-      QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-    }
-    return null;
   }
 }
 

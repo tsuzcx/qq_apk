@@ -1,59 +1,21 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
-public class tyq
-  implements View.OnClickListener
+class tyq
+  implements Runnable
 {
-  public tyq(TroopInfoActivity paramTroopInfoActivity) {}
+  tyq(typ paramtyp) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId != 0L) || (this.a.c != 0L))
-    {
-      this.a.c();
-      return;
-    }
-    switch (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
-    {
-    default: 
-      return;
-    case 0: 
-    case 1: 
-      paramView = TroopInfoActivity.a(this.a);
-      if (TextUtils.isEmpty(paramView))
-      {
-        this.a.i();
-        return;
-      }
-      this.a.a(paramView);
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_a_of_type_Long <= this.a.jdField_b_of_type_Long) && (this.a.jdField_b_of_type_Int == 0))
-    {
-      paramView = DialogUtil.a(this.a, 230);
-      paramView.setTitle(null);
-      paramView.setMessage(this.a.getString(2131430554, new Object[] { this.a.jdField_a_of_type_Long + "" }));
-      paramView.setPositiveButton(this.a.getString(2131430555), new DialogUtil.DialogOnClickAdapter());
-      paramView.setPositiveButtonContentDescription(this.a.getString(2131430555));
-      paramView.show();
-      return;
-    }
-    paramView = TroopInfoActivity.b(this.a);
-    if (!TextUtils.isEmpty(paramView))
-    {
-      this.a.a(paramView);
-      return;
-    }
-    TroopInfoActivity.a(this.a);
+    this.a.jdField_a_of_type_Tyo.a.c();
+    this.a.jdField_a_of_type_Tyo.a.b(this.a.jdField_a_of_type_Tyo.a.getString(2131436376));
+    Intent localIntent = new Intent(this.a.jdField_a_of_type_Tyo.a, SubLoginActivity.class);
+    localIntent.putExtra("subuin", this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
+    localIntent.putExtra("fromWhere", this.a.jdField_a_of_type_Tyo.a.b);
+    this.a.jdField_a_of_type_Tyo.a.startActivity(localIntent);
   }
 }
 

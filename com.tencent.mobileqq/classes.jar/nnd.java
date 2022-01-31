@@ -1,15 +1,13 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
 
-public class nnd
+class nnd
   implements Runnable
 {
-  public nnd(SendVideoToFriendHelper paramSendVideoToFriendHelper, StoryVideoItem paramStoryVideoItem) {}
+  nnd(nnb paramnnb, String paramString1, String paramString2) {}
   
   public void run()
   {
-    PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType, "SendVideoToFriendHelper");
+    this.jdField_a_of_type_Nnb.a.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

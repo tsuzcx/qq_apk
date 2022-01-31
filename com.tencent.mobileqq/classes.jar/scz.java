@@ -1,51 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class scz
-  implements ActionSheet.OnButtonClickListener
+class scz
+  implements DialogInterface.OnCancelListener
 {
-  public scz(ChatSettingForTroop paramChatSettingForTroop, int paramInt, ActionSheet paramActionSheet) {}
+  scz(scy paramscy) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    int i = 3;
-    switch (paramInt)
-    {
-    default: 
-      i = 0;
-      paramInt = -1;
+    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    for (;;)
-    {
-      if (paramInt != this.jdField_a_of_type_Int) {
-        ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, paramInt);
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        TroopReportor.a("Grp_msg", "grpData_admin", "Close_setmsg", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a), String.valueOf(i) });
-        return;
-        i = 3;
-        paramInt = 4;
-        continue;
-        i = 1;
-        paramInt = 2;
-        continue;
-        int j = 2;
-        paramInt = i;
-        i = j;
-      }
-      catch (Exception paramView)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.i("Q.chatopttroop", 2, paramView.toString());
-      }
-    }
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
   }
 }
 

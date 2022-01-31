@@ -1,15 +1,31 @@
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aaon
-  implements Runnable
+public final class aaon
+  implements INetEngine.IBreakDownFix
 {
-  aaon(aaom paramaaom) {}
-  
-  public void run()
+  public void a(NetReq paramNetReq, NetResp paramNetResp)
   {
-    aaoo localaaoo = new aaoo(this);
-    this.a.a.jdField_a_of_type_Aanw.a.a.a(localaaoo, this.a.a.jdField_a_of_type_Long);
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    while (!(paramNetReq instanceof HttpNetReq)) {
+      return;
+    }
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
+    localHttpNetReq.jdField_a_of_type_Long += paramNetResp.c;
+    paramNetResp.c = 0L;
+    paramNetResp = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-";
+    localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
+    paramNetResp = localHttpNetReq.jdField_a_of_type_JavaLangString;
+    if (paramNetResp.contains("range="))
+    {
+      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+      localHttpNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + localHttpNetReq.jdField_a_of_type_Long);
+    }
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).jdField_a_of_type_JavaLangString + ", offset=" + localHttpNetReq.jdField_a_of_type_Long);
   }
 }
 

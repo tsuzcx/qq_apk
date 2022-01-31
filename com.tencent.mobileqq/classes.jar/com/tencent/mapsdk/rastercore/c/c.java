@@ -1,9 +1,8 @@
 package com.tencent.mapsdk.rastercore.c;
 
 import com.tencent.mapsdk.raster.model.CameraPosition;
-import com.tencent.mapsdk.rastercore.d.a;
 import com.tencent.mapsdk.rastercore.d.b;
-import com.tencent.mapsdk.rastercore.d.e;
+import com.tencent.mapsdk.rastercore.d.f;
 
 public final class c
   extends a
@@ -15,19 +14,19 @@ public final class c
     this.d = paramCameraPosition;
   }
   
-  public final void a(e parame)
+  public final void a(f paramf)
   {
-    parame = parame.c();
+    paramf = paramf.c();
     if (this.a) {
-      parame.a(d.a.a(this.d.getTarget()), this.b, this.c);
+      paramf.a(com.tencent.mapsdk.rastercore.c.a(this.d.getTarget()), this.b, this.c);
     }
     for (;;)
     {
       if (this.d.getZoom() > 0.0F) {
-        parame.b(this.d.getZoom(), this.a, this.c);
+        paramf.b(this.d.getZoom(), false, this.c);
       }
       return;
-      parame.b(d.a.a(this.d.getTarget()));
+      paramf.b(com.tencent.mapsdk.rastercore.c.a(this.d.getTarget()));
     }
   }
   

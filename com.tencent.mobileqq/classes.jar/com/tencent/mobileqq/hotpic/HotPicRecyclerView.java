@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adqz;
+import adzi;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -33,7 +33,7 @@ public class HotPicRecyclerView
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ArrayOfInt = new int[3];
     this.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer = new ScrollVelometer(200, this);
-    setOnScrollListener(new adqz(this));
+    setOnScrollListener(new adzi(this));
   }
   
   public static void a(String paramString)

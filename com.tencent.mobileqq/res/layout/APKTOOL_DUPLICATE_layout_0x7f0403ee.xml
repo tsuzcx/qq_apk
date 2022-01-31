@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403e8" />
-    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13cb" android:visibility="visible" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="7.5dip" android:layout_marginRight="-1.0dip" android:layout_marginBottom="7.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216eb" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0sp" android:textColor="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cc7" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13d1" android:layout_width="fill_parent" android:layout_height="34.0dip" android:layout_marginLeft="11.0dip" android:layout_marginTop="7.5dip" android:layout_marginBottom="7.5dip" android:text="飞翔的企鹅飞翔的企鹅飞翔的企鹅" android:lines="1" android:includeFontPadding="false" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a146c" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a13cb" android:layout_centerVertical="true" />
-    <View android:background="#ffe2e3e4" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d050c" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a13d1" />
-</RelativeLayout>
+    <View android:layout_gravity="center_vertical" android:background="#ffeeeeee" android:layout_width="0.0dip" android:layout_height="0.5dip" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d04f8" android:textStyle="bold|italic" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0269" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13d9" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0457" android:letterSpacing="0.3" />
+    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13da" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0208b9" />
+    <View android:layout_gravity="center_vertical" android:background="#ffeeeeee" android:layout_width="0.0dip" android:layout_height="0.5dip" android:layout_weight="1.0" />
+</merge>

@@ -23,17 +23,17 @@ import msf.msgsvc.msg_svc.Trans0x211;
 import tencent.im.msg.im_msg_head.InstCtrl;
 import tencent.im.msg.im_msg_head.InstInfo;
 import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgBody;
-import zjr;
-import zjs;
-import zjt;
-import zju;
+import zqp;
+import zqq;
+import zqr;
+import zqs;
 
 public class PrinterStatusHandler
   extends BusinessHandler
 {
   private int jdField_a_of_type_Int;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new zjt(this);
-  private RegisterProxySvcPackObserver jdField_a_of_type_ComTencentMobileqqAppRegisterProxySvcPackObserver = new zju(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new zqr(this);
+  private RegisterProxySvcPackObserver jdField_a_of_type_ComTencentMobileqqAppRegisterProxySvcPackObserver = new zqs(this);
   private Timer jdField_a_of_type_JavaUtilTimer;
   private boolean jdField_a_of_type_Boolean;
   
@@ -110,7 +110,7 @@ public class PrinterStatusHandler
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new zjs(this, paramToServiceMsg, paramFromServiceMsg, paramObject));
+      new Handler(localLooper).post(new zqq(this, paramToServiceMsg, paramFromServiceMsg, paramObject));
       return;
     }
     b(paramToServiceMsg, paramFromServiceMsg, paramObject);
@@ -138,7 +138,7 @@ public class PrinterStatusHandler
     {
       if (this.jdField_a_of_type_JavaUtilTimer == null)
       {
-        localObject1 = new zjr(this);
+        localObject1 = new zqp(this);
         this.jdField_a_of_type_JavaUtilTimer = new Timer();
         this.jdField_a_of_type_JavaUtilTimer.schedule((TimerTask)localObject1, 30000L);
         Object localObject2 = new C2CType0x211_SubC2CType0x9.MsgBody();

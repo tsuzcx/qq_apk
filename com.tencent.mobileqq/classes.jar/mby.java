@@ -1,21 +1,23 @@
-import android.app.Dialog;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class mby
+class mby
   implements Runnable
 {
+  mby(mbx parammbx) {}
+  
   public void run()
   {
-    try
+    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.app.getManager(12);
+    if ((localWebProcessManager != null) && (localWebProcessManager.d()))
     {
-      if (VideoFeedsHelper.a != null)
-      {
-        VideoFeedsHelper.a.dismiss();
-        VideoFeedsHelper.a = null;
+      localWebProcessManager.a(-1, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("allentest", 2, "sbbbb");
       }
-      return;
     }
-    catch (Exception localException) {}
   }
 }
 

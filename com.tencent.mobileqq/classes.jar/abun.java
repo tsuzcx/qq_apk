@@ -1,26 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
 
-class abun
+public class abun
   implements Runnable
 {
-  abun(abul paramabul, QQAppInterface paramQQAppInterface) {}
+  public abun(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
   public void run()
   {
-    Object localObject = (NearbyCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(105);
-    abul.a(this.jdField_a_of_type_Abul, ((NearbyCardManager)localObject).b());
-    String str = this.jdField_a_of_type_Abul.a(abul.a(this.jdField_a_of_type_Abul), false);
-    localObject = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject = this.jdField_a_of_type_Abul.a(abul.a(this.jdField_a_of_type_Abul), true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null) {
+      BusinessCardEditActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName, this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.company, this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.mobilesNum);
     }
-    this.jdField_a_of_type_Abul.c((String)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageForNearbyMarketGrayTipsQ..troop.faceScore", 2, "ACTION_AUTO_INPUT_FACE_SCORE  faceScoreWording=" + (String)localObject);
+    while (this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo == null) {
+      return;
     }
+    BusinessCardEditActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo.a, null, this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo.b);
   }
 }
 

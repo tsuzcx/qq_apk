@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
 
-public class aazh
-  implements Runnable
+class aazh
+  extends ArkAppCGI.ArkAppCGICallback
 {
-  public aazh(ARMapActivity paramARMapActivity) {}
+  aazh(aazg paramaazg) {}
   
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine.updateLocationNative(this.a.jdField_a_of_type_Double, this.a.b, "", 0.0D, 1, "", 0, "");
-    ARMapEngine localARMapEngine = this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine;
-    ARMapEngine.nativeRequestPOIList();
-    localARMapEngine = this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine;
-    ARMapEngine.nativeRequestLbsPOIListByPid("");
-    ARMapActivity.b(this.a);
+    ThreadManager.post(new aazi(this, paramArrayOfByte, paramBoolean), 5, null, true);
   }
 }
 

@@ -1,18 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import com.tencent.ark.ArkDebugger;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.widget.QQToast;
 
 class vvu
   implements Runnable
 {
-  vvu(vvs paramvvs, MultiForwardChatPie paramMultiForwardChatPie) {}
+  vvu(vvt paramvvt) {}
   
   public void run()
   {
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(2131433421);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.d.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.g);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.y();
+    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.f());
+    QQToast.a(this.a.a.a.a.a, "已经开启监听，可以连接调试...", 0).a();
   }
 }
 

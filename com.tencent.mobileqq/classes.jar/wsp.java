@@ -1,27 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class wsp
-  implements Animator.AnimatorListener
+  extends FriendListObserver
 {
-  public wsp(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public wsp(DeviceFragment paramDeviceFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  protected void onPullIpad()
   {
-    this.a.e = AvatarPendantActivity.c;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.e = AvatarPendantActivity.a;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.e = AvatarPendantActivity.d;
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.d();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

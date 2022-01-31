@@ -1,30 +1,37 @@
-import android.os.SystemClock;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.text.TextUtils;
+import com.tencent.biz.troop.TroopMemberApiPlugin;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class pap
-  implements Runnable
+  implements VideoCombineHelper.Callback
 {
-  public pap(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
+  public pap(TroopMemberApiPlugin paramTroopMemberApiPlugin, String paramString) {}
   
-  public void run()
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    SystemClock.uptimeMillis();
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBoolean) {}
+    for (;;)
     {
-      if (this.a.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
-        this.a.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine == null)
+      try
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a, null, null);
-        WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a);
-        SystemClock.uptimeMillis();
+        localJSONObject.put("retCode", 0);
+        if (!TextUtils.isEmpty(paramString2)) {
+          localJSONObject.put("errMsg", paramString2);
+        }
+        if (!TextUtils.isEmpty(paramString1)) {
+          localJSONObject.put("file", paramString1);
+        }
+        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
       }
-      return;
+      catch (Exception paramString1)
+      {
+        QLog.e(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.TAG, 1, paramString2, paramString1);
+      }
+      localJSONObject.put("retCode", 1);
     }
   }
 }

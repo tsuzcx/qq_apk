@@ -1,20 +1,30 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import cooperation.thirdpay.ThirdPayGate;
+import android.content.Context;
+import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
+import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
+import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
 
-public class anev
-  implements DialogInterface.OnClickListener
+class anev
+  extends OnQZonePluginInstallListner.Stub
 {
-  public anev(ThirdPayGate paramThirdPayGate, Bundle paramBundle, Activity paramActivity) {}
+  anev(aneu paramaneu, IQZonePluginManager.OnPluginReadyListener paramOnPluginReadyListener, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString) {}
+  
+  public void a(String paramString, float paramFloat, long paramLong) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("isactivityfinish")) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
+      return;
     }
+    this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
   }
 }
 

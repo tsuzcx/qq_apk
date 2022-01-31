@@ -1,14 +1,20 @@
-import android.widget.Button;
-import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
+import com.tencent.mobileqq.text.AppleEmojiManager;
+import java.io.File;
 
-public class aisr
+public final class aisr
   implements Runnable
 {
-  public aisr(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
+  public aisr(File paramFile1, File paramFile2, File paramFile3) {}
   
   public void run()
   {
-    this.a.a.setVisibility(0);
+    if (this.a.exists()) {
+      this.a.delete();
+    }
+    if (this.b.exists()) {
+      this.b.delete();
+    }
+    AppleEmojiManager.a(this.c);
   }
 }
 

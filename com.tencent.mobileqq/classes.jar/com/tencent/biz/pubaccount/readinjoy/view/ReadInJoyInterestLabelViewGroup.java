@@ -36,12 +36,12 @@ public class ReadInJoyInterestLabelViewGroup
     {
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-3355444);
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840712);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840730);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842086);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842118);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -103,7 +103,7 @@ public class ReadInJoyInterestLabelViewGroup
       }
       this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(((InterestLabelInfo)localObject1).mInterestLabelID));
       paramView.setTextColor(-15550475);
-      paramView.setBackgroundResource(2130840801);
+      paramView.setBackgroundResource(2130840819);
     }
     for (;;)
     {
@@ -112,7 +112,7 @@ public class ReadInJoyInterestLabelViewGroup
       label339:
       this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(((InterestLabelInfo)localObject1).mInterestLabelID), localObject1);
       paramView.setTextColor(-1);
-      paramView.setBackgroundResource(2130840802);
+      paramView.setBackgroundResource(2130840820);
     }
   }
 }

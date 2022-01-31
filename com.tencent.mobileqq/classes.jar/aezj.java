@@ -1,28 +1,39 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.DeleteCommentCallback;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.CommentsView;
-import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+import com.tencent.util.InputMethodUtil;
 
 public class aezj
-  implements CommentsDataSource.DeleteCommentCallback
+  implements View.OnKeyListener
 {
-  public aezj(CommentsPresenterImpl paramCommentsPresenterImpl) {}
+  public aezj(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void a(Comments.Comment paramComment, int paramInt)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (CommentsPresenterImpl.a(this.a) != null)
-    {
-      if (paramInt == 0)
+    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
+      if (ChooseInterestTagActivity.a(this.a).getText() == null)
       {
-        CommentsPresenterImpl.a(this.a).b(paramComment);
-        CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430835));
+        paramView = "";
+        if (TextUtils.isEmpty(paramView))
+        {
+          ChooseInterestTagActivity.a(this.a).fullScroll(66);
+          ChooseInterestTagActivity.a(this.a, ChooseInterestTagActivity.d(this.a) + 1);
+        }
       }
     }
-    else {
-      return;
+    for (;;)
+    {
+      return false;
+      paramView = ChooseInterestTagActivity.a(this.a).getText().toString();
+      break;
+      if ((paramInt == 66) && (paramKeyEvent.getAction() == 0)) {
+        InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
+      }
     }
-    CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430836));
   }
 }
 

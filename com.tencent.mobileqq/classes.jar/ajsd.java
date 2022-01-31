@@ -1,14 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.ExpandableTextView;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
 
-public class ajsd
+class ajsd
   implements Runnable
 {
-  public ajsd(ExpandableTextView paramExpandableTextView) {}
+  ajsd(ajsc paramajsc) {}
   
   public void run()
   {
-    ExpandableTextView.a(this.a, this.a.getHeight() - this.a.a.getHeight());
+    AudioItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem, this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo);
   }
 }
 

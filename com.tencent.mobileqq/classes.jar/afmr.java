@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.widget.NearbyFacePowerDialog;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
 public class afmr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public afmr(NearbyFacePowerDialog paramNearbyFacePowerDialog) {}
+  public afmr(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.dismiss();
+    int i = this.a.i.getTop();
+    int j = (int)(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a * 20.0F);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollTo(0, i - j);
   }
 }
 

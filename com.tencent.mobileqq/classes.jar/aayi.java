@@ -1,17 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
+import com.tencent.mobileqq.ark.ArkAiAppPanel;
 
-class aayi
-  implements ArkAppCenter.OnGetAppIcon
+public class aayi
+  implements ArkAppContainer.ArkAppModuleCallback
 {
-  aayi(aayh paramaayh) {}
+  public aayi(ArkAiAppPanel paramArkAiAppPanel) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public boolean a(ArkAppContainer paramArkAppContainer)
   {
-    if (paramBitmap != null) {
-      ArkTipsManager.a(this.a.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
+    if (ArkAiAppPanel.a(this.a) != null)
+    {
+      ArkAiAppPanel.a(this.a).ai();
+      return true;
     }
+    return false;
+  }
+  
+  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 

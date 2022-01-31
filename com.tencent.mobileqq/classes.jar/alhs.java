@@ -1,32 +1,28 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import com.tencent.tmassistantsdk.internal.logreport.OuterCallReportModel;
+import android.content.res.Resources;
+import android.widget.Button;
+import com.tencent.open.agent.AuthorityActivity;
 
-public final class alhs
+public class alhs
   implements Runnable
 {
+  public alhs(AuthorityActivity paramAuthorityActivity) {}
+  
   public void run()
   {
-    long l = System.currentTimeMillis();
-    if (MyAppApi.h())
-    {
-      if (TMAssistantCallYYB_V2.getInstance().getIPCInterface() != null) {
-        break label70;
-      }
-      LogUtility.b("TAMST_WAKE", "getIPCInterface() == null");
-      OuterCallReportModel localOuterCallReportModel = MyAppApi.a();
-      MyAppApi.a(localOuterCallReportModel);
-      MyAppApi.b(localOuterCallReportModel);
-      ControlPolicyUtil.b();
+    this.a.j();
+    if (this.a.jdField_a_of_type_Int == 0) {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131435622);
     }
     for (;;)
     {
-      LogUtility.c("TAMST_WAKE", "costTime = " + (System.currentTimeMillis() - l));
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.a.a(this.a.getResources().getString(2131435619), new alht(this));
       return;
-      label70:
-      LogUtility.b("TAMST_WAKE", "don't need tmast wake");
+      if (this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse == null) {
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.d);
+      } else {
+        this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.c);
+      }
     }
   }
 }

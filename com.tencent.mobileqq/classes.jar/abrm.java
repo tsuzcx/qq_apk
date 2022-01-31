@@ -1,64 +1,41 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.avatar.dynamicavatar.VasFaceManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class abrm
-  extends BaseAdapter
+  implements Runnable
 {
-  private int jdField_a_of_type_Int = 25;
-  private int b;
+  public abrm(VasFaceManager paramVasFaceManager, String paramString1, String paramString2) {}
   
-  public abrm(IphonePickerView paramIphonePickerView, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramIphonePickerView.getResources().getDisplayMetrics()));
-  }
-  
-  public int getCount()
-  {
-    return IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).getRowCount(this.b);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    try
     {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
+      if (new File(this.jdField_a_of_type_JavaLangString).exists())
+      {
+        QLog.d("Q.qqhead.VasFaceManager", 1, "getFace from sd card: " + this.b);
+        this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVasFaceManager.a(this.b, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      QLog.d("Q.qqhead.VasFaceManager", 1, "getFace need download: " + this.b);
+      VasQuickUpdateManager localVasQuickUpdateManager = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVasFaceManager.a.getManager(183);
+      if (localVasQuickUpdateManager != null)
+      {
+        localVasQuickUpdateManager.a(23L, this.b, "Q.qqhead.VasFaceManager");
+        return;
+      }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      paramViewGroup = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).getText(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(20.0F);
-      localWheelTextView.setTextColor(IphonePickerView.jdField_a_of_type_Int);
-      localWheelTextView.setGravity(17);
-      localWheelTextView.setText(paramViewGroup);
-      return paramView;
+      QLog.e("Q.qqhead.VasFaceManager", 1, "getFace failed", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrm
  * JD-Core Version:    0.7.0.1
  */

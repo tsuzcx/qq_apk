@@ -1,19 +1,39 @@
-import android.support.annotation.NonNull;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog;
+import java.util.List;
 
-class nrr
-  implements nrn
+public class nrr
+  extends PagerAdapter
 {
-  nrr(nrq paramnrq) {}
+  private List jdField_a_of_type_JavaUtilList;
   
-  public void a(@NonNull nrl paramnrl)
+  public nrr(MyVideoVisibilityDialog paramMyVideoVisibilityDialog, List paramList)
   {
-    paramnrl = paramnrl.a();
-    if (paramnrl != null) {
-      nrq.a(this.a, paramnrl);
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void b(@NonNull nrl paramnrl) {}
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
+  }
 }
 
 

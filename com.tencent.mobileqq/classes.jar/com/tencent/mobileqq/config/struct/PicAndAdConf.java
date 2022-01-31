@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config.struct;
 
-import abtg;
+import acat;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.Config;
@@ -258,12 +258,12 @@ public class PicAndAdConf
     //   156: goto -47 -> 109
     //   159: astore_1
     //   160: aload 4
-    //   162: astore_2
+    //   162: astore_1
     //   163: iconst_0
     //   164: istore_3
-    //   165: aload_2
+    //   165: aload_1
     //   166: ifnull -22 -> 144
-    //   169: aload_2
+    //   169: aload_1
     //   170: invokevirtual 71	java/io/FileOutputStream:close	()V
     //   173: iconst_0
     //   174: ireturn
@@ -293,12 +293,14 @@ public class PicAndAdConf
     //   211: astore_1
     //   212: goto -19 -> 193
     //   215: astore_1
-    //   216: goto -53 -> 163
+    //   216: aload_2
+    //   217: astore_1
+    //   218: goto -55 -> 163
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	219	0	this	PicAndAdConf
-    //   0	219	1	paramArrayOfByte	byte[]
-    //   0	219	2	paramString	String
+    //   0	221	0	this	PicAndAdConf
+    //   0	221	1	paramArrayOfByte	byte[]
+    //   0	221	2	paramString	String
     //   7	158	3	bool	boolean
     //   4	157	4	localObject1	java.lang.Object
     //   1	190	5	localObject2	java.lang.Object
@@ -1243,7 +1245,7 @@ public class PicAndAdConf
           break;
           label92:
           localStringBuilder.append(" | ").append(localPicStruct.jdField_a_of_type_Long);
-          ThreadManager.post(new abtg(this, localPicStruct), 5, null, false);
+          ThreadManager.post(new acat(this, localPicStruct), 5, null, false);
         }
       }
       if (QLog.isColorLevel()) {

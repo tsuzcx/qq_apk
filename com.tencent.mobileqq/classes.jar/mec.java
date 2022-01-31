@@ -1,17 +1,25 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.qphone.base.util.QLog;
 
-class mec
-  implements Runnable
+public class mec
+  implements DialogInterface.OnDismissListener
 {
-  mec(meb parammeb, VideoPlayerWrapper paramVideoPlayerWrapper) {}
+  public mec(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.h();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
     }
-    VideoFeedsPlayManager.c(this.jdField_a_of_type_Meb.a);
+    if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).b()) && (VideoFeedsAdapter.g(this.a)) && (VideoFeedsAdapter.h(this.a))) {
+      VideoFeedsAdapter.a(this.a).d();
+    }
+    VideoFeedsAdapter.a(this.a).setNeedDetectScreenOrientation(true);
+    VideoFeedsAdapter.e(this.a, false);
   }
 }
 

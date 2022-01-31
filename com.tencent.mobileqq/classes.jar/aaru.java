@@ -1,24 +1,36 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAiAppPanel.ArkInputPanelTabAdapter;
-import com.tencent.mobileqq.ark.ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.arcard.ARBlessWordFragment;
 
 public class aaru
-  implements ArkAppCenter.OnGetAppIcon
+  implements View.OnTouchListener
 {
-  public aaru(ArkAiAppPanel.ArkInputPanelTabAdapter paramArkInputPanelTabAdapter, ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder paramViewHolder) {}
+  public aaru(ARBlessWordFragment paramARBlessWordFragment) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBitmap != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$ArkInputPanelTabAdapter$ViewHolder.a.setImageBitmap(paramBitmap);
+    if (!this.a.a) {
+      if (paramMotionEvent.getAction() == 0) {
+        ARBlessWordFragment.a(this.a).setAlpha(0.5F);
+      }
+    }
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        ARBlessWordFragment.a(this.a).setAlpha(1.0F);
+        continue;
+        ARBlessWordFragment.a(this.a).setAlpha(1.0F);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaru
  * JD-Core Version:    0.7.0.1
  */

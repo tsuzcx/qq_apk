@@ -1,29 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class mmf
-  implements ReadInJoyCommentUtils.CreateCommentInterface
+class mmf
+  implements Runnable
 {
-  public mmf(FastWebActivity paramFastWebActivity, String paramString) {}
+  mmf(mme parammme) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void run()
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.getString(2131438878), 0).a();
-  }
-  
-  public void a(String paramString, CommentInfo paramCommentInfo)
-  {
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity.getString(2131438877), 0).a();
-    ReadInJoyCommentUtils.a(FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity), this.jdField_a_of_type_JavaLangString);
-    paramString = FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity);
-    paramString.b += 1L;
-    ThreadManager.getUIHandler().post(new mmg(this));
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("channel_id", this.a.a.a);
+      localJSONObject.put("click_source", "b2t_float_btn");
+      PublicAccountReportUtils.a(null, "", "0X8009329", "0X8009329", 0, 0, "", "", "", localJSONObject.toString(), false);
+      QLog.d("ReadInJoyListViewGroup", 2, "back_to_top: { channelID : " + this.a.a.a + " , click_source : b2t_float_btn }");
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
 }
 

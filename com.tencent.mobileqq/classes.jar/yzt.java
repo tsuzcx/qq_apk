@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class yzt
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public yzt(QQFrameZipDecoder paramQQFrameZipDecoder, DownloadTask paramDownloadTask) {}
+  public yzt(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, null);
+    paramDialogInterface.dismiss();
   }
 }
 

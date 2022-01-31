@@ -1,24 +1,23 @@
-import android.os.Message;
-import com.tencent.mobileqq.search.HistorySearchEntryModel;
-import com.tencent.util.MqqWeakReferenceHandler;
+import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ahra
   implements Runnable
 {
-  public ahra(HistorySearchEntryModel paramHistorySearchEntryModel) {}
+  public ahra(FilterProviderView paramFilterProviderView) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_JavaUtilList = HistorySearchEntryModel.a(this.a);
-    Message localMessage = this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage();
-    localMessage.what = 1;
-    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1);
-    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendMessage(localMessage);
+    FilterProviderView.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("FilterProviderView", 2, "FilterProviderView onCaptureVideoFilterRefresh size=" + this.a.a.size());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahra
  * JD-Core Version:    0.7.0.1
  */

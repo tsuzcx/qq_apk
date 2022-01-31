@@ -1,21 +1,22 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.GetListDataCallback;
 
 public class wah
-  implements DialogInterface.OnClickListener
+  implements TroopAIORobotPanel.GetListDataCallback
 {
-  public wah(TroopChatPie paramTroopChatPie) {}
+  public wah(HotChatPie paramHotChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    paramDialogInterface = new Intent(this.a.jdField_a_of_type_AndroidContentContext, TroopLowCreditLevelNotifyActivity.class);
-    paramDialogInterface.putExtra("troopUin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    if ((paramBoolean) && (this.a.f.equals(paramString)))
+    {
+      this.a.a.setChildVisible(27, 0);
+      this.a.S = true;
+      return;
+    }
+    this.a.a.setChildVisible(27, 8);
+    this.a.S = false;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork;
 
-import aimk;
+import airf;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
@@ -21,7 +21,7 @@ public class TeamWorkFileImportJobForC2C
   public TeamWorkFileImportJobForC2C(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
     super(paramTeamWorkFileImportInfo, paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new aimk(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new airf(this);
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -62,7 +62,7 @@ public class TeamWorkFileImportJobForC2C
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForC2C
  * JD-Core Version:    0.7.0.1
  */

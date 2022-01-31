@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.IActionListener;
 
 public class tqb
-  implements Runnable
+  implements IActionListener
 {
-  public tqb(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public tqb(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    ((PhoneContactManager)this.a.app.getManager(10)).g();
+    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
+      this.a.B();
+    }
   }
 }
 

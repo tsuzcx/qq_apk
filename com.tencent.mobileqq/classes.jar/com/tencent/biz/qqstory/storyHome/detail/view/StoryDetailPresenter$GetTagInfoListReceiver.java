@@ -29,9 +29,9 @@ public final class StoryDetailPresenter$GetTagInfoListReceiver
       do
       {
         return;
-      } while (!paramFeedTagListUpdateEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      } while (!paramFeedTagListUpdateEvent.errorInfo.isSuccess());
       SLog.a("Q.qqstory.detail.StoryDetailPresenter", "receive tag info event. %s.", paramFeedTagListUpdateEvent.toString());
-      paramFeedTagListUpdateEvent = (GetFeedTagInfoListRequest.FeedTagInfoList)paramFeedTagListUpdateEvent.jdField_a_of_type_JavaUtilMap.get(StoryDetailPresenter.a(paramStoryDetailPresenter));
+      paramFeedTagListUpdateEvent = (GetFeedTagInfoListRequest.FeedTagInfoList)paramFeedTagListUpdateEvent.a.get(StoryDetailPresenter.a(paramStoryDetailPresenter));
     } while (paramFeedTagListUpdateEvent == null);
     paramFeedTagListUpdateEvent = ((TagManager)SuperManager.a(27)).a(StoryDetailPresenter.a(paramStoryDetailPresenter).a(), paramFeedTagListUpdateEvent.a);
     StoryDetailPresenter.a(paramStoryDetailPresenter).b(paramFeedTagListUpdateEvent, true);

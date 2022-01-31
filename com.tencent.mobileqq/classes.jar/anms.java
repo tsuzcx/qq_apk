@@ -1,24 +1,21 @@
-import dov.com.qq.im.capture.paster.CaptureComboNormalPaster;
-import dov.com.qq.im.capture.util.DoodleLayoutConnector;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import android.os.Bundle;
+import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
+import java.util.ArrayList;
 
 public class anms
   implements Runnable
 {
-  public anms(CaptureComboNormalPaster paramCaptureComboNormalPaster, int paramInt) {}
+  public anms(SmartDeviceIPCHost paramSmartDeviceIPCHost, Bundle paramBundle) {}
   
   public void run()
   {
-    DoodleLayout localDoodleLayout = DoodleLayoutConnector.a().a(this.jdField_a_of_type_Int);
-    if (localDoodleLayout != null) {
-      CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster.a, CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), ScreenUtil.jdField_a_of_type_Int, ScreenUtil.b, CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), CaptureComboNormalPaster.b(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), CaptureComboNormalPaster.c(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), localDoodleLayout.a());
-    }
+    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a.add(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anms
  * JD-Core Version:    0.7.0.1
  */

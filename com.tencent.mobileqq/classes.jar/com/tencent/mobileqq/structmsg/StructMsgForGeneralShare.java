@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.structmsg;
 
-import aihp;
-import aihq;
-import aihr;
-import aihs;
-import aiht;
-import aihw;
-import aihx;
-import aihz;
-import aiia;
+import aimi;
+import aimj;
+import aimk;
+import aiml;
+import aimm;
+import aimp;
+import aimq;
+import aims;
+import aimt;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -120,7 +120,7 @@ public class StructMsgForGeneralShare
   public static final String LOGO_URL_POSTFIX = ".png";
   public static final String LOGO_URL_PREFIX = "http://combo.b.qq.com/mp/api/logo/";
   private static int jdField_a_of_type_Int;
-  private static View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aiht();
+  private static View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aimm();
   private static String jdField_a_of_type_JavaLangString = "structmsg.StructMsgForGeneralShare";
   public static int clickedItemIndex;
   public static String eventId;
@@ -372,7 +372,7 @@ public class StructMsgForGeneralShare
         i = 1;
         label64:
         if ((i == 0) || (!hasFlag(4))) {
-          paramView.setBackgroundResource(2130837916);
+          paramView.setBackgroundResource(2130837915);
         }
       }
       if (this.mMsgServiceID != 70) {
@@ -382,7 +382,7 @@ public class StructMsgForGeneralShare
         QLog.d(".troop.troop_topic", 2, "StructMsgForGeneralShare getView mMsgServiceID == STRUCT_TYPE_TROOP_TOPIC.");
       }
       ((ViewGroup.LayoutParams)localObject).width = -1;
-      paramView.setBackgroundResource(2130837916);
+      paramView.setBackgroundResource(2130837915);
     }
     for (;;)
     {
@@ -417,7 +417,7 @@ public class StructMsgForGeneralShare
         paramView.setBackgroundDrawable(null);
         if (this.mMsgServiceID == 116)
         {
-          paramResources = paramView.findViewById(2131364477);
+          paramResources = paramView.findViewById(2131364504);
           if (paramResources != null)
           {
             i = paramResources.getHeight();
@@ -433,7 +433,7 @@ public class StructMsgForGeneralShare
         }
         else if (this.mMsgServiceID == 114)
         {
-          paramResources = paramView.findViewById(2131364477);
+          paramResources = paramView.findViewById(2131364504);
           if (paramResources != null)
           {
             paramBundle = paramResources.getLayoutParams();
@@ -454,7 +454,7 @@ public class StructMsgForGeneralShare
       else if (this.mMsgServiceID == 91)
       {
         ((ViewGroup.LayoutParams)localObject).width = -1;
-        paramView.setBackgroundResource(2130837916);
+        paramView.setBackgroundResource(2130837915);
       }
       else if (this.mMsgServiceID == 97)
       {
@@ -1192,19 +1192,19 @@ public class StructMsgForGeneralShare
     paramView.setEllipsize(TextUtils.TruncateAt.END);
     paramView.setTextColor(Color.rgb(187, 187, 187));
     paramView.setTextSize(2, 12.0F);
-    paramView.setBackgroundResource(2130843951);
+    paramView.setBackgroundResource(2130844017);
     if (!TextUtils.isEmpty(this.mSourceIcon)) {}
-    Object localObject2 = ((Resources)localObject1).getDrawable(2130843954);
+    Object localObject2 = ((Resources)localObject1).getDrawable(2130844020);
     ((Drawable)localObject2).setBounds(0, 0, 24, 16);
     paramView.setCompoundDrawables(null, null, (Drawable)localObject2, null);
     paramView.setPadding(0, 0, AIOUtils.a(3.0F, (Resources)localObject1), 0);
-    localObject2 = LayoutInflater.from(paramContext).inflate(2130969188, null);
+    localObject2 = LayoutInflater.from(paramContext).inflate(2130969186, null);
     PopupWindow localPopupWindow = new PopupWindow((View)localObject2, -1, -2, true);
     localPopupWindow.setTouchable(true);
     localPopupWindow.setOutsideTouchable(true);
-    paramView.setOnClickListener(new aihx(this, paramContext, (Resources)localObject1, localPopupWindow));
-    ((View)localObject2).findViewById(2131365547).setOnClickListener(new aihz(this, localPopupWindow, paramContext));
-    ((View)localObject2).findViewById(2131365548).setOnClickListener(new aiia(this, paramContext, localPopupWindow));
+    paramView.setOnClickListener(new aimq(this, paramContext, (Resources)localObject1, localPopupWindow));
+    ((View)localObject2).findViewById(2131365552).setOnClickListener(new aims(this, localPopupWindow, paramContext));
+    ((View)localObject2).findViewById(2131365553).setOnClickListener(new aimt(this, paramContext, localPopupWindow));
     return paramView;
   }
   
@@ -1265,7 +1265,7 @@ public class StructMsgForGeneralShare
       paramView.setTag(2131361855, this);
       if ((!localBundle.getBoolean("isSubscript", false)) && (hasFlag(4)))
       {
-        paramView.setBackgroundResource(2130837916);
+        paramView.setBackgroundResource(2130837915);
         return paramView;
       }
       paramView.setBackgroundDrawable(null);
@@ -1382,8 +1382,8 @@ public class StructMsgForGeneralShare
             paramView.setTag(localObject2);
             paramView.setClickable(true);
             paramView.setOnClickListener((View.OnClickListener)localObject2);
-            paramView.setOnLongClickListener(new aihp(this, paramOnLongClickAndTouchListener));
-            paramView.setOnTouchListener(new aihq(this, paramOnLongClickAndTouchListener));
+            paramView.setOnLongClickListener(new aimi(this, paramOnLongClickAndTouchListener));
+            paramView.setOnTouchListener(new aimj(this, paramOnLongClickAndTouchListener));
             clickedItemIndex = 0;
           }
           if (paramView.getParent() != null)
@@ -1529,7 +1529,7 @@ public class StructMsgForGeneralShare
           if (QLog.isColorLevel()) {
             QLog.d("Q.subscript", 2, "StructMsgForGeneralShare use subscript structmsg bg");
           }
-          paramBundle.setBackgroundResource(2130837922);
+          paramBundle.setBackgroundResource(2130837921);
         }
         a(paramBundle, paramContext.getResources(), localBundle);
         paramContext = paramBundle;
@@ -1614,8 +1614,8 @@ public class StructMsgForGeneralShare
                 paramBundle.setTag(localAbsStructMsgElement);
                 paramBundle.setClickable(true);
                 paramBundle.setOnClickListener(localAbsStructMsgElement);
-                paramBundle.setOnLongClickListener(new aihr(this, paramOnLongClickAndTouchListener));
-                paramBundle.setOnTouchListener(new aihs(this, paramOnLongClickAndTouchListener));
+                paramBundle.setOnLongClickListener(new aimk(this, paramOnLongClickAndTouchListener));
+                paramBundle.setOnTouchListener(new aiml(this, paramOnLongClickAndTouchListener));
                 clickedItemIndex = 0;
               }
             }
@@ -1757,7 +1757,7 @@ public class StructMsgForGeneralShare
             if (QLog.isColorLevel()) {
               QLog.d("Q.subscript", 2, "StructMsgForGeneralShare use subscript structmsg bg");
             }
-            paramView.setBackgroundResource(2130837922);
+            paramView.setBackgroundResource(2130837921);
           }
           a(paramView, paramContext.getResources(), localBundle);
           paramContext = paramView;
@@ -2166,7 +2166,7 @@ public class StructMsgForGeneralShare
         if ((paramContext instanceof FragmentActivity)) {
           ((FragmentActivity)paramContext).getChatFragment().a().jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
         }
-        ThreadManager.post(new aihw(this, localAppRuntime), 5, null, false);
+        ThreadManager.post(new aimp(this, localAppRuntime), 5, null, false);
         return;
       }
     }

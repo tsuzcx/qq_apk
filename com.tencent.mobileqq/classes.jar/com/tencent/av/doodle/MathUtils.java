@@ -21,7 +21,7 @@ public final class MathUtils
   
   public static final float a(float paramFloat)
   {
-    return jhp.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
+    return jjs.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
   }
   
   public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -58,7 +58,7 @@ public final class MathUtils
   
   public static final float b(float paramFloat)
   {
-    return jhp.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
+    return jjs.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
   }
   
   public static final float c(float paramFloat)
@@ -68,7 +68,7 @@ public final class MathUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.doodle.MathUtils
  * JD-Core Version:    0.7.0.1
  */

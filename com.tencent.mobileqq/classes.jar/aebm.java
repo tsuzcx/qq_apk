@@ -1,17 +1,67 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.leba.view.LebaGridIndicator;
+import com.tencent.mobileqq.imaxad.ImaxAdUtil;
+import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class aebm
-  implements View.OnClickListener
+  implements INetInfoHandler
 {
-  public aebm(LebaGridIndicator paramLebaGridIndicator, int paramInt) {}
+  ImaxAdVideoPreloadManager a;
   
-  public void onClick(View paramView)
+  public aebm(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager1, ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager2)
   {
-    if (LebaGridIndicator.a(this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaGridIndicator) != null) {
-      LebaGridIndicator.b(this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaGridIndicator).setCurrentItem(this.jdField_a_of_type_Int);
+    this.a = paramImaxAdVideoPreloadManager2;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onNetMobile2None()
+  {
+    ImaxAdUtil.b("onNetMobile2None");
+    if (this.a != null) {
+      ImaxAdVideoPreloadManager.c(this.a);
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    ImaxAdUtil.b("onNetMobile2Wifi");
+    if (this.a != null) {
+      ImaxAdVideoPreloadManager.c(this.a);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    ImaxAdUtil.b("onNetNone2Mobile");
+    if (this.a != null) {
+      ImaxAdVideoPreloadManager.c(this.a);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    ImaxAdUtil.b("onNetNone2Wifi");
+    if (this.a != null) {
+      ImaxAdVideoPreloadManager.c(this.a);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ImaxAdUtil.b("onNetWifi2Mobile");
+    if (this.a != null) {
+      ImaxAdVideoPreloadManager.c(this.a);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    ImaxAdUtil.b("onNetWifi2None");
+    if (this.a != null) {
+      ImaxAdVideoPreloadManager.c(this.a);
     }
   }
 }

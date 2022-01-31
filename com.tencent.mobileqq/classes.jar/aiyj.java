@@ -1,13 +1,32 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.PrefixSelectedListener;
+import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
+import java.util.List;
 
-class aiyj
-  implements Runnable
+public class aiyj
+  implements View.OnClickListener
 {
-  aiyj(aiyh paramaiyh) {}
+  private aiyk jdField_a_of_type_Aiyk;
+  private TribeTitlePrefixPanelView.PrefixSelectedListener jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener;
   
-  public void run()
+  public aiyj(aiyk paramaiyk)
   {
-    this.a.a.a(1);
+    this.jdField_a_of_type_Aiyk = paramaiyk;
+  }
+  
+  public void a(TribeTitlePrefixPanelView.PrefixSelectedListener paramPrefixSelectedListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener = paramPrefixSelectedListener;
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = ((Integer)paramView.getTag()).intValue();
+    aiyk.a(this.jdField_a_of_type_Aiyk, i);
+    if (this.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$PrefixSelectedListener.a((TribeTitlePrefixPanelView.TitlePrefixItem)aiyk.a(this.jdField_a_of_type_Aiyk).get(i));
+    }
   }
 }
 

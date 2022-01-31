@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 
-public class aawy
+class aawy
+  implements Runnable
 {
-  ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler;
-  ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler;
-  ArkMessageServerLogic.IPassiveSearchIntentByServerHandler jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler;
-  public Object a;
-  public String a;
+  aawy(aawx paramaawx) {}
+  
+  public void run()
+  {
+    ArkAppModuleReg.ModuleQQ.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, this.a.a.jdField_a_of_type_Long, this.a.a.c, true, 2);
+  }
 }
 
 

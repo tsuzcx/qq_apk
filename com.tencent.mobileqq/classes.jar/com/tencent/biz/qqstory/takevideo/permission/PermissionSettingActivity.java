@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Nonnull;
-import olh;
+import opw;
 
 public class PermissionSettingActivity
   extends QQStoryBaseActivity
@@ -104,16 +104,16 @@ public class PermissionSettingActivity
     SLog.e("Q.qqstoryPermissionSettingActivity", "friends group list is null! ");
     localObject4 = new EmptyPart(this, "", UIUtils.a(this, 20.0F));
     ((EmptyPart)localObject4).a(false, true);
-    localObject5 = new SinglePart(this, getString(2131438714), 10004);
+    localObject5 = new SinglePart(this, getString(2131438737), 10004);
     ((SinglePart)localObject5).c(true);
-    localObject6 = new SinglePart(this, getString(2131438715), 10000);
+    localObject6 = new SinglePart(this, getString(2131438738), 10000);
     ((SinglePart)localObject6).c(true);
-    Object localObject7 = new SinglePart(this, getString(2131438716), 10001);
+    Object localObject7 = new SinglePart(this, getString(2131438739), 10001);
     ((SinglePart)localObject7).c(false);
     Object localObject8 = new EmptyPart(this, "", UIUtils.a(this, 20.0F));
     ((EmptyPart)localObject8).a(true, true);
-    localObject3 = new ComplexPart(this, getString(2131438717), 10002, (List)localObject3, this.app);
-    localObject2 = new ComplexPart(this, getString(2131438718), 10003, (List)localObject2, this.app);
+    localObject3 = new ComplexPart(this, getString(2131438740), 10002, (List)localObject3, this.app);
+    localObject2 = new ComplexPart(this, getString(2131438741), 10003, (List)localObject2, this.app);
     switch (paramInt)
     {
     }
@@ -186,13 +186,13 @@ public class PermissionSettingActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130970812);
+    setContentView(2130970829);
     super.setTitle("谁能看见");
     this.rightViewImg.setVisibility(8);
     this.rightViewText.setVisibility(0);
     this.rightViewText.setText("完成");
     this.rightViewText.setContentDescription("完成");
-    this.rightViewText.setOnClickListener(new olh(this));
+    this.rightViewText.setOnClickListener(new opw(this));
     paramBundle = getIntent();
     int i;
     if (paramBundle != null) {
@@ -200,9 +200,9 @@ public class PermissionSettingActivity
     }
     for (paramBundle = paramBundle.getStringArrayListExtra("PERMISSION_UIN_LIST_KEY");; paramBundle = null)
     {
-      this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131364404));
+      this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131364429));
       a(i, paramBundle);
-      ((ViewGroup)this.jdField_a_of_type_AndroidWidgetListView.getParent()).setBackgroundColor(getResources().getColor(2131494255));
+      ((ViewGroup)this.jdField_a_of_type_AndroidWidgetListView.getParent()).setBackgroundColor(getResources().getColor(2131494261));
       StoryReportor.a("pub_control", "exp_page", 0, 0, new String[0]);
       return;
       i = 10000;

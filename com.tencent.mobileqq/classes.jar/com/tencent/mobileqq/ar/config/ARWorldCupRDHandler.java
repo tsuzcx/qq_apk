@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.config;
 
-import aake;
+import aaqx;
 import android.text.TextUtils;
 import com.tencent.mobileqq.armap.ResDownloadHandler.DefaultRDHandler;
 import com.tencent.mobileqq.armap.ResDownloadManager.DownloadParam;
@@ -16,7 +16,7 @@ public class ARWorldCupRDHandler
 {
   public String a(ResDownloadManager.DownloadParam paramDownloadParam)
   {
-    paramDownloadParam = (aake)paramDownloadParam.a;
+    paramDownloadParam = (aaqx)paramDownloadParam.a;
     paramDownloadParam = WorldCupMgr.b(paramDownloadParam.a, paramDownloadParam.b);
     if (AudioHelper.e()) {
       QLog.w("WorldCupMgr", 1, "getUnzipDirPath, path[" + paramDownloadParam + "]");
@@ -26,17 +26,17 @@ public class ARWorldCupRDHandler
   
   public boolean a(ResDownloadManager.DownloadParam paramDownloadParam)
   {
-    aake localaake = (aake)paramDownloadParam.a;
-    localaake.c = 0;
+    aaqx localaaqx = (aaqx)paramDownloadParam.a;
+    localaaqx.c = 0;
     boolean bool1 = super.a(paramDownloadParam);
-    String str1 = "ARWorldCupRDHandler, needDownload[" + bool1 + "], zipItem[" + localaake;
+    String str1 = "ARWorldCupRDHandler, needDownload[" + bool1 + "], zipItem[" + localaaqx;
     String str4;
     File localFile;
     boolean bool2;
     String str3;
     if (bool1)
     {
-      str4 = PrecoverUtils.a("20180426_803_worldcup", localaake.b);
+      str4 = PrecoverUtils.a("20180426_803_worldcup", localaaqx.b);
       localFile = new File(str4);
       bool2 = localFile.exists();
       str3 = str1 + "], prePath[" + str4 + "], exists[" + bool2;
@@ -49,14 +49,14 @@ public class ARWorldCupRDHandler
       {
         str1 = MD5FileUtil.a(localFile);
         str3 = str3 + "], preMd5[" + str1;
-        if (TextUtils.equals(localaake.b, str1))
+        if (TextUtils.equals(localaaqx.b, str1))
         {
           str1 = str3 + "], 匹配";
           bool2 = FileUtils.d(str4, b(paramDownloadParam));
           bool1 = super.a(paramDownloadParam);
           paramDownloadParam = str1 + ", copyFile[" + bool2 + "], reCheck[" + bool1 + "]";
           if (!bool1) {
-            localaake.c = 1;
+            localaaqx.c = 1;
           }
           QLog.w("WorldCupMgr", 1, paramDownloadParam);
           return bool1;
@@ -82,7 +82,7 @@ public class ARWorldCupRDHandler
   
   public String b(ResDownloadManager.DownloadParam paramDownloadParam)
   {
-    paramDownloadParam = (aake)paramDownloadParam.a;
+    paramDownloadParam = (aaqx)paramDownloadParam.a;
     paramDownloadParam = WorldCupMgr.a(paramDownloadParam.a, paramDownloadParam.b);
     if (AudioHelper.e()) {
       QLog.w("WorldCupMgr", 1, "getDownloadPath, path[" + paramDownloadParam + "]");

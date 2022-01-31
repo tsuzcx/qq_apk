@@ -1,32 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.qzonealbumreddot.QzonePhotoGuideNotifyService;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class agvt
-  extends BroadcastReceiver
+class agvt
+  implements Runnable
 {
-  public agvt(QzonePhotoGuideNotifyService paramQzonePhotoGuideNotifyService) {}
+  agvt(agvs paramagvs, Bitmap paramBitmap) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((paramIntent != null) && ("com.qzonex.localalbum.new_photo_notification_feedback_action".equals(paramIntent.getAction())))
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_Agvs.a.a.get("map_key_face");
+    if ((localImageView != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzonePhotoGuideNotifyServlet", 2, "QzonePhotoGuideNotifyServlet onReceive");
-      }
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      }
-      this.a.b();
+      QLog.d("Q.qqhead.freq", 1, "ProfileHeaderView updateAvatar, bitmap: " + this.jdField_a_of_type_AndroidGraphicsBitmap);
+      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agvt
  * JD-Core Version:    0.7.0.1
  */

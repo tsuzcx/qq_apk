@@ -3,12 +3,12 @@ package cooperation.wadl.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import angu;
+import anox;
 
 public class WadlResult
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new angu();
+  public static final Parcelable.Creator CREATOR = new anox();
   public int a;
   public long a;
   public WadlParams a;

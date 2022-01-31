@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.component.network.downloader.impl.ipc.Const.SimpleRequest;
+import com.tencent.common.galleryactivity.GalleryManager;
 
-public final class pjw
-  implements Parcelable.Creator
+public class pjw
+  implements Runnable
 {
-  public Const.SimpleRequest a(Parcel paramParcel)
-  {
-    return new Const.SimpleRequest(paramParcel);
-  }
+  public pjw(GalleryManager paramGalleryManager) {}
   
-  public Const.SimpleRequest[] a(int paramInt)
+  public void run()
   {
-    return new Const.SimpleRequest[paramInt];
+    this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.c = false;
+    GalleryManager.a(this.a, this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene);
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pjw
  * JD-Core Version:    0.7.0.1
  */

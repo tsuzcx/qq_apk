@@ -1,66 +1,103 @@
-import android.content.IntentFilter;
-import com.tencent.av.app.VideoAppInterface;
+import com.rookery.asyncHttpClient.AsyncHttpResponseHandler;
+import com.rookery.translate.microsoft.MicrosoftTranslator;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import com.rookery.translate.type.TranslateWithTimeCallback;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.parsers.DocumentBuilder;
+import org.apache.http.Header;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 public class jem
+  extends AsyncHttpResponseHandler
 {
-  public static String a;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  jen jdField_a_of_type_Jen;
-  boolean jdField_a_of_type_Boolean = false;
+  public jem(MicrosoftTranslator paramMicrosoftTranslator, List paramList, TranslateWithTimeCallback paramTranslateWithTimeCallback, Long paramLong) {}
   
-  static
+  public void a(int paramInt, Header[] paramArrayOfHeader, String paramString)
   {
-    jdField_a_of_type_JavaLangString = "GAudioMsgReceiver";
-  }
-  
-  public jem(VideoAppInterface paramVideoAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Jen = new jen(paramVideoAppInterface);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    paramArrayOfHeader = null;
+    try
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Jen);
-      this.jdField_a_of_type_Boolean = false;
+      localObject = this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator.a.parse(new InputSource(new StringReader(paramString)));
+      paramArrayOfHeader = (Header[])localObject;
     }
+    catch (SAXException localSAXException)
+    {
+      for (;;)
+      {
+        Object localObject;
+        NodeList localNodeList;
+        a(new TranslateError(localSAXException), paramString);
+      }
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        a(new TranslateError(localIOException), paramString);
+        continue;
+        if (this.jdField_a_of_type_JavaUtilList.get(paramInt) != null)
+        {
+          paramString.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+        }
+        else
+        {
+          paramString.add("");
+          continue;
+          localIOException.add(Language.AUTO_DETECT);
+        }
+      }
+      this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(localIOException, paramString, this.jdField_a_of_type_JavaLangLong);
+    }
+    paramString = new ArrayList();
+    localObject = new ArrayList();
+    if (paramArrayOfHeader != null)
+    {
+      localNodeList = paramArrayOfHeader.getElementsByTagName("TranslatedText");
+      paramArrayOfHeader = paramArrayOfHeader.getElementsByTagName("From");
+      paramInt = 0;
+      for (;;)
+      {
+        if (paramInt >= localNodeList.getLength()) {
+          break label270;
+        }
+        Node localNode = localNodeList.item(paramInt);
+        if (localNode.getFirstChild() == null) {
+          break;
+        }
+        paramString.add(localNode.getFirstChild().getNodeValue());
+        localNode = paramArrayOfHeader.item(paramInt);
+        if (localNode.getFirstChild() == null) {
+          break label256;
+        }
+        ((List)localObject).add(Language.fromString(localNode.getFirstChild().getNodeValue()));
+        paramInt += 1;
+      }
+    }
+    label256:
+    label270:
+    return;
   }
   
-  public void b()
+  public void a(Throwable paramThrowable, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQGAudioMsg Receiver");
+      QLog.e("Translator", 2, "[Microsoft] onFailure:" + paramThrowable);
     }
-    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
-    localIntentFilter.addAction("tencent.video.q2v.AddDiscussMember");
-    localIntentFilter.addAction("tencent.video.q2v.SwitchToDiscuss");
-    localIntentFilter.addAction("tencent.video.q2v.GroupSystemMsg");
-    localIntentFilter.addAction("tencent.video.q2v.SelectMember");
-    localIntentFilter.addAction("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoGift");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoLevelUpgrade");
-    localIntentFilter.addAction("tencent.video.q2v.pstnCardInfoChanged");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoMemUntInvite");
-    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box");
-    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box_by_invite_id");
-    localIntentFilter.addAction("tencent.video.q2v.randomMultiOwnerOnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.random1V1OnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.avreportOnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.AudioTransPush");
-    localIntentFilter.addAction("tencent.video.q2v.AudioEngineReady");
-    localIntentFilter.addAction("tencent.video.q2v.GroupInfoChanged");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Jen, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     jem
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.ArrayList;
-import lxn;
+import mba;
 
 public class ArticleInfo
   extends BaseArticleInfo
@@ -24,7 +24,7 @@ public class ArticleInfo
   
   public static Parcelable.Creator makeArticleInfoCreator()
   {
-    return new lxn();
+    return new mba();
   }
   
   public ArticleInfo clone()
@@ -169,13 +169,13 @@ public class ArticleInfo
         localObject = this.mSinglePicture.getFile();
         paramParcel.writeString((String)localObject);
         if (this.mVideoCoverUrl == null) {
-          break label826;
+          break label834;
         }
         localObject = this.mVideoCoverUrl.toString();
         label339:
         paramParcel.writeString((String)localObject);
         if (this.mVideoVid == null) {
-          break label834;
+          break label842;
         }
         localObject = this.mVideoVid;
         label358:
@@ -183,7 +183,7 @@ public class ArticleInfo
         paramParcel.writeInt(this.mVideoDuration);
         paramParcel.writeInt(this.mCommentIconType);
         if (this.mServerContext != null) {
-          break label842;
+          break label850;
         }
         paramInt = -1;
         paramParcel.writeInt(paramInt);
@@ -191,7 +191,7 @@ public class ArticleInfo
           paramParcel.writeByteArray(this.mServerContext);
         }
         if (this.mCommentInfoBytes != null) {
-          break label851;
+          break label859;
         }
         paramInt = -1;
         label415:
@@ -200,7 +200,7 @@ public class ArticleInfo
           paramParcel.writeByteArray(this.mCommentInfoBytes);
         }
         if (this.mPackInfoBytes != null) {
-          break label860;
+          break label868;
         }
         paramInt = -1;
         label441:
@@ -211,13 +211,13 @@ public class ArticleInfo
         paramParcel.writeLong(this.mCircleId);
         paramParcel.writeString(this.mStrCircleId);
         if (!this.mPUinIsActive) {
-          break label869;
+          break label877;
         }
         paramInt = j;
         label484:
         paramParcel.writeByte((byte)paramInt);
         if (this.mSubscribeInfoBytes != null) {
-          break label874;
+          break label882;
         }
         paramInt = -1;
         label499:
@@ -228,7 +228,7 @@ public class ArticleInfo
         paramParcel.writeInt(this.mFeedType);
         paramParcel.writeLong(this.mFeedId);
         if (this.mSocialFeedInfoByte != null) {
-          break label883;
+          break label891;
         }
         paramInt = -1;
         label541:
@@ -239,25 +239,25 @@ public class ArticleInfo
         paramParcel.writeString(this.innerUniqueID);
         paramParcel.writeLong(this.businessId);
         if (this.businessName == null) {
-          break label892;
+          break label900;
         }
         localObject = this.businessName.toString();
         label590:
         paramParcel.writeString((String)localObject);
         if (this.businessUrl == null) {
-          break label900;
+          break label908;
         }
         localObject = this.businessUrl.toString();
         label612:
         paramParcel.writeString((String)localObject);
         if (this.businessNamePrefix == null) {
-          break label908;
+          break label916;
         }
         localObject = this.businessNamePrefix.toString();
         label634:
         paramParcel.writeString((String)localObject);
         if (this.mTopicRecommendFeedsInfoByte != null) {
-          break label916;
+          break label924;
         }
         paramInt = -1;
         paramParcel.writeInt(paramInt);
@@ -265,7 +265,7 @@ public class ArticleInfo
           paramParcel.writeByteArray(this.mTopicRecommendFeedsInfoByte);
         }
         if (this.mArkAppFeedsInfoBytes != null) {
-          break label925;
+          break label933;
         }
         paramInt = i;
         label675:
@@ -279,19 +279,19 @@ public class ArticleInfo
         paramParcel.writeString(this.proteusItemsData);
         paramParcel.writeInt(this.mAccountLess);
         if (this.mVideoArticleSubsText == null) {
-          break label934;
+          break label942;
         }
         localObject = this.mVideoArticleSubsText;
         label745:
         paramParcel.writeString((String)localObject);
         if (this.mVideoArticleSubsColor == null) {
-          break label942;
+          break label950;
         }
         localObject = this.mVideoArticleSubsColor;
         label764:
         paramParcel.writeString((String)localObject);
         if (this.mVideoAdsJumpUrl == null) {
-          break label950;
+          break label958;
         }
       }
     }
@@ -299,45 +299,46 @@ public class ArticleInfo
     label649:
     label908:
     label916:
-    label925:
-    label934:
+    label924:
+    label933:
     label942:
     label950:
+    label958:
     for (localObject = this.mVideoAdsJumpUrl;; localObject = "")
     {
       paramParcel.writeString((String)localObject);
       paramParcel.writeInt(this.mVideoAdsJumpType);
       paramParcel.writeInt(this.mVideoAdsSource);
+      paramParcel.writeString(this.videoReportInfo);
       return;
       localObject = this.mSinglePicture.toString();
       break;
       localObject = "";
       break;
-      label826:
-      localObject = "";
-      break label339;
       label834:
       localObject = "";
-      break label358;
+      break label339;
       label842:
+      localObject = "";
+      break label358;
+      label850:
       paramInt = this.mServerContext.length;
       break label389;
-      label851:
+      label859:
       paramInt = this.mCommentInfoBytes.length;
       break label415;
-      label860:
+      label868:
       paramInt = this.mPackInfoBytes.length;
       break label441;
-      label869:
+      label877:
       paramInt = 0;
       break label484;
-      label874:
+      label882:
       paramInt = this.mSubscribeInfoBytes.length;
       break label499;
-      label883:
+      label891:
       paramInt = this.mSocialFeedInfoByte.length;
       break label541;
-      label892:
       localObject = "";
       break label590;
       localObject = "";

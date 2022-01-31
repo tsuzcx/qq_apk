@@ -1,114 +1,99 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetMessageConfigurationResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet;
+import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CommentLikeObserver;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class lll
+public final class lll
   implements BusinessObserver
 {
-  public lll(KandianMergeManager paramKandianMergeManager) {}
+  public lll(int paramInt, NativeCommentServlet.CommentLikeObserver paramCommentLikeObserver, ArticleInfo paramArticleInfo, String paramString1, String paramString2) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    mobileqq_mp.GetMessageConfigurationResponse localGetMessageConfigurationResponse;
-    if (paramBoolean) {
-      localGetMessageConfigurationResponse = new mobileqq_mp.GetMessageConfigurationResponse();
-    }
-    label263:
-    label295:
-    label310:
-    label324:
-    label325:
-    for (;;)
+    int m = 0;
+    int k = 0;
+    j = -1;
+    String str = "";
+    Object localObject = str;
+    i = j;
+    paramInt = k;
+    if (paramBoolean) {}
+    for (paramInt = j;; paramInt = j)
     {
       try
       {
         paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label310;
-        }
-        localGetMessageConfigurationResponse.mergeFrom(paramBundle);
-        if ((!localGetMessageConfigurationResponse.ret_info.has()) || (!localGetMessageConfigurationResponse.ret_info.ret_code.has())) {
-          break label295;
-        }
-        paramInt = localGetMessageConfigurationResponse.ret_info.ret_code.get();
-        if (paramInt != 0) {
-          break label263;
-        }
-        if (!localGetMessageConfigurationResponse.type.has()) {
-          break label324;
-        }
-        paramInt = localGetMessageConfigurationResponse.type.get();
-        if (paramInt != 1) {
-          break label325;
-        }
-        paramBoolean = true;
-        paramBundle = BaseActivity.sTopActivity;
-        if (ReadInJoyHelper.f(KandianMergeManager.a(this.a))) {
-          break label206;
-        }
-        if ((paramBundle instanceof ReadInJoySettingActivity))
+        localObject = str;
+        i = j;
+        paramInt = k;
+        if (paramBundle != null)
         {
-          paramBundle = (ReadInJoySettingActivity)paramBundle;
-          if (paramBundle.a())
+          paramInt = j;
+          localObject = new WebSsoBody.WebSsoResponseBody();
+          paramInt = j;
+          ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+          paramInt = j;
+          i = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+          paramInt = i;
+          paramBundle = ((WebSsoBody.WebSsoResponseBody)localObject).data.get();
+          paramInt = i;
+          if (QLog.isColorLevel())
           {
-            QLog.d("KandianMergeManager", 1, "setting: has set kandian status");
-            QLog.d("KandianMergeManager", 1, "result:" + paramInt);
-            return;
+            paramInt = i;
+            QLog.d(NativeCommentServlet.jdField_a_of_type_JavaLangString, 2, "commentLike ret=" + paramBundle);
           }
-          this.a.a(paramBoolean);
-          paramBundle.a(paramBoolean);
-          continue;
+          paramInt = i;
+          paramBundle = new JSONObject(paramBundle);
+          if (i == 0) {
+            break label195;
+          }
+          paramInt = i;
+          localObject = paramBundle.optString("msg");
+          paramInt = k;
         }
-        this.a.a(paramBoolean);
       }
       catch (Exception paramBundle)
       {
-        QLog.d("KandianMergeManager", 1, "failed to handle request Kandian status configuration");
-        return;
-      }
-      continue;
-      label206:
-      if ((paramBundle instanceof ReadinjoyMsgManagerActivity))
-      {
-        paramBundle = (ReadinjoyMsgManagerActivity)paramBundle;
-        if (paramBundle.a())
+        try
         {
-          QLog.d("KandianMergeManager", 1, "msg manage: has set kandian status");
-        }
-        else
-        {
-          this.a.a(paramBoolean);
-          paramBundle.a(paramBoolean);
-        }
-      }
-      else
-      {
-        this.a.a(paramBoolean);
-        continue;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("KandianMergeManager", 2, "request Kandian status fail code:" + paramInt);
-          return;
-          if (QLog.isColorLevel())
+          label195:
+          while (this.jdField_a_of_type_Int == 1)
           {
-            QLog.d("KandianMergeManager", 2, "request Kandian status wrong resp");
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("KandianMergeManager", 2, "request Kandian status fail data null");
-            }
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentNativeCommentServlet$CommentLikeObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_JavaLangString, paramBundle);
+            paramInt = 1;
+            localObject = str;
+          }
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentNativeCommentServlet$CommentLikeObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.b, paramBundle);
+          paramInt = 1;
+          localObject = str;
+        }
+        catch (Exception paramBundle)
+        {
+          for (;;)
+          {
+            j = 1;
+            paramInt = i;
           }
         }
-        return;
-        paramBoolean = false;
+        paramBundle = paramBundle;
+        j = m;
       }
+      if (paramInt == 0) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentNativeCommentServlet$CommentLikeObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_JavaLangString, i, (String)localObject);
+      }
+      return;
+      localObject = paramBundle.getLocalizedMessage();
+      paramBundle.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d(NativeCommentServlet.jdField_a_of_type_JavaLangString, 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
+      }
+      i = paramInt;
     }
   }
 }

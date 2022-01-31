@@ -32,15 +32,15 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XEditTextEx;
 import java.util.List;
-import nuv;
-import nuw;
-import nux;
-import nuz;
-import nva;
-import nve;
+import nzk;
+import nzl;
+import nzm;
+import nzo;
+import nzp;
+import nzt;
 
 public class DetailCommentHelper
-  implements View.OnClickListener, DetailGeneralCommentEventProxy.ActionSheetEventCallback, nve
+  implements View.OnClickListener, DetailGeneralCommentEventProxy.ActionSheetEventCallback, nzt
 {
   private int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
@@ -52,7 +52,7 @@ public class DetailCommentHelper
   private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
   public BubbleTextView a;
   public XEditTextEx a;
-  private nva jdField_a_of_type_Nva;
+  private nzp jdField_a_of_type_Nzp;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -86,11 +86,11 @@ public class DetailCommentHelper
     localCommentEntry.content = paramString;
     localCommentEntry.replyTime = (System.currentTimeMillis() / 1000L);
     localCommentEntry.status = 1;
-    if (this.jdField_a_of_type_Nva.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry != null)
+    if (this.jdField_a_of_type_Nzp.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry != null)
     {
-      localCommentEntry.replierUnionId = this.jdField_a_of_type_Nva.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId;
-      localCommentEntry.replierName = this.jdField_a_of_type_Nva.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorName;
-      localCommentEntry.replierRole = this.jdField_a_of_type_Nva.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorRole;
+      localCommentEntry.replierUnionId = this.jdField_a_of_type_Nzp.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId;
+      localCommentEntry.replierName = this.jdField_a_of_type_Nzp.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorName;
+      localCommentEntry.replierRole = this.jdField_a_of_type_Nzp.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorRole;
     }
     if (((Integer)((StoryConfigManager)SuperManager.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue() == 1) {
       localCommentEntry.authorRole = 2;
@@ -120,7 +120,7 @@ public class DetailCommentHelper
   
   private void a(List paramList)
   {
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new nuv(this));
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnEditorActionListener(new nzk(this));
     if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null) && (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId)))
     {
       if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeAtvideoModelAtVideoTextWatcher != null) {
@@ -131,8 +131,8 @@ public class DetailCommentHelper
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnTouchListener(new nuw(this));
-      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnFocusChangeListener(new nux(this));
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnTouchListener(new nzl(this));
+      this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setOnFocusChangeListener(new nzm(this));
       return;
       label112:
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeAtvideoModelAtVideoTextWatcher.b = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId;
@@ -142,9 +142,9 @@ public class DetailCommentHelper
   
   private void b(CommentEntry paramCommentEntry, int paramInt)
   {
-    if (this.jdField_a_of_type_Nva.a(paramCommentEntry))
+    if (this.jdField_a_of_type_Nzp.a(paramCommentEntry))
     {
-      this.jdField_a_of_type_Nva.a(paramCommentEntry, paramInt);
+      this.jdField_a_of_type_Nzp.a(paramCommentEntry, paramInt);
       d(false);
     }
     a(2, new String[] { paramCommentEntry.authorName, paramCommentEntry.authorUnionId, String.valueOf(paramCommentEntry.authorUin) });
@@ -162,13 +162,13 @@ public class DetailCommentHelper
   
   private void f()
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362841);
-    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)this.jdField_a_of_type_AndroidViewView.findViewById(2131371668));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362846);
+    this.jdField_a_of_type_ComTencentWidgetXEditTextEx = ((XEditTextEx)this.jdField_a_of_type_AndroidViewView.findViewById(2131371666));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentKeyboardAndEmojiManager = new KeyboardAndEmojiManager(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, this);
     if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) {}
     for (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentIDetailCommentEventProxy = new DetailShareGroupCommentEventProxy(this.jdField_a_of_type_AndroidAppActivity, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this);; this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentIDetailCommentEventProxy = new DetailGeneralCommentEventProxy(this.jdField_a_of_type_AndroidAppActivity, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, this))
     {
-      this.jdField_a_of_type_Nva = new nva(this);
+      this.jdField_a_of_type_Nzp = new nzp(this);
       if ((!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) || (((ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner()).isPublic()) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isSubscribe())) {
         break;
       }
@@ -264,7 +264,7 @@ public class DetailCommentHelper
   
   public void a(CommentEntry paramCommentEntry, int paramInt)
   {
-    new Handler().postDelayed(new nuz(this, paramCommentEntry, paramInt), 500L);
+    new Handler().postDelayed(new nzo(this, paramCommentEntry, paramInt), 500L);
   }
   
   public void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
@@ -328,9 +328,9 @@ public class DetailCommentHelper
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailCommentHelper$CommentHelperCallback.e();
       return;
     }
-    if (this.jdField_a_of_type_Nva.jdField_a_of_type_Int != -1)
+    if (this.jdField_a_of_type_Nzp.jdField_a_of_type_Int != -1)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailCommentHelper$CommentHelperCallback.b(this.jdField_a_of_type_Nva.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailCommentHelper$CommentHelperCallback.b(this.jdField_a_of_type_Nzp.jdField_a_of_type_Int);
       return;
     }
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailCommentHelper$CommentHelperCallback.e();
@@ -348,7 +348,7 @@ public class DetailCommentHelper
       if (this.jdField_a_of_type_Int != 3) {
         break;
       }
-      QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131432103), 0).a();
+      QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131432114), 0).a();
       return true;
     }
     return false;
@@ -388,7 +388,7 @@ public class DetailCommentHelper
   {
     if (paramBoolean)
     {
-      nva.a(this.jdField_a_of_type_Nva);
+      nzp.a(this.jdField_a_of_type_Nzp);
       a(1, new String[0]);
     }
   }
@@ -407,7 +407,7 @@ public class DetailCommentHelper
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCmmentDetailCommentHelper$CommentHelperCallback.a((CommentEntry)localObject);
       d(true);
       c();
-      nva.a(this.jdField_a_of_type_Nva);
+      nzp.a(this.jdField_a_of_type_Nzp);
       a(1, new String[0]);
     }
   }
@@ -428,7 +428,7 @@ public class DetailCommentHelper
     {
       return;
     } while (this.jdField_a_of_type_Int != 3);
-    QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131432103), 0).a();
+    QQToast.a(BaseApplication.getContext(), 1, StoryApi.a(2131432114), 0).a();
   }
 }
 

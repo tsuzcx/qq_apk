@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import agkv;
+import agpj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class CompressInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new agkv();
+  public static final Parcelable.Creator CREATOR = new agpj();
   public int a;
   public String a;
   public boolean a;
@@ -100,7 +100,7 @@ public class CompressInfo
     this.jdField_b_of_type_Boolean = true;
     BaseApplication localBaseApplication = BaseApplication.getContext();
     if (paramBoolean) {}
-    for (int k = 2131436920;; k = 2131436922)
+    for (int k = 2131436940;; k = 2131436942)
     {
       this.jdField_b_of_type_JavaLangString = localBaseApplication.getString(k);
       return;

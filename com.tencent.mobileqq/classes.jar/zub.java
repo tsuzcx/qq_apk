@@ -1,22 +1,66 @@
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.StartAppCheckHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class zub
-  implements Comparator
 {
-  public zub(SystemMessageProcessor paramSystemMessageProcessor) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  String h;
   
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
+  public zub(StartAppCheckHandler paramStartAppCheckHandler, String paramString)
   {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
-      return 1;
+    this.h = paramString;
+    a();
+  }
+  
+  public void a()
+  {
+    if (this.h == null) {
+      return;
     }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
-      return -1;
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("AppStartedObserver", 0);
+    this.jdField_a_of_type_Long = localSharedPreferences.getLong(this.h + "_timeToWait", 0L);
+    this.jdField_b_of_type_Long = localSharedPreferences.getLong(this.h + "_lastReportTime", 0L);
+    this.jdField_c_of_type_Long = localSharedPreferences.getLong(this.h + "_lastUpdateTime", 0L);
+    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_sigHash", "");
+    this.jdField_b_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_md5", "");
+    this.jdField_a_of_type_Int = localSharedPreferences.getInt(this.h + "_serverResult", 0);
+    this.jdField_c_of_type_JavaLangString = localSharedPreferences.getString(this.h + "_dlgTitle", "");
+    this.d = localSharedPreferences.getString(this.h + "_dlgContent", "");
+    this.e = localSharedPreferences.getString(this.h + "_dlgLButton", "");
+    this.f = localSharedPreferences.getString(this.h + "_dlgRButoon", "");
+    this.g = localSharedPreferences.getString(this.h + "_dlgUrl", "");
+  }
+  
+  public void b()
+  {
+    if (this.h == null) {
+      return;
     }
-    return 0;
+    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("AppStartedObserver", 0).edit();
+    localEditor.putLong(this.h + "_timeToWait", this.jdField_a_of_type_Long);
+    localEditor.putLong(this.h + "_lastReportTime", this.jdField_b_of_type_Long);
+    localEditor.putLong(this.h + "_lastUpdateTime", this.jdField_c_of_type_Long);
+    localEditor.putString(this.h + "_sigHash", this.jdField_a_of_type_JavaLangString);
+    localEditor.putString(this.h + "_md5", this.jdField_b_of_type_JavaLangString);
+    localEditor.putInt(this.h + "_serverResult", this.jdField_a_of_type_Int);
+    localEditor.putString(this.h + "_dlgTitle", this.jdField_c_of_type_JavaLangString);
+    localEditor.putString(this.h + "_dlgContent", this.d);
+    localEditor.putString(this.h + "_dlgLButton", this.e);
+    localEditor.putString(this.h + "_dlgRButoon", this.f);
+    localEditor.putString(this.h + "_dlgUrl", this.g);
+    localEditor.commit();
   }
 }
 

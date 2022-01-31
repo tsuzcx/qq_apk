@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
-class tab
+public class tab
   implements Runnable
 {
-  tab(taa paramtaa) {}
+  public tab(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131436509), 0).b(this.a.a.a.getTitleBarHeight());
+    HongbaoShowerActivity.a(this.a).setVisibility(0);
+    HongbaoShowerActivity.a(this.a).startAnimation(HongbaoShowerActivity.a(this.a));
   }
 }
 

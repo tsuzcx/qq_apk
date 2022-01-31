@@ -1,15 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.GetCollectionListEvent;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter.VideoCollectionPresenterEventListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class obr
-  implements View.OnClickListener
+  extends QQUIEventReceiver
 {
-  public obr(GuideInfoDialog paramGuideInfoDialog) {}
-  
-  public void onClick(View paramView)
+  public obr(@NonNull MemoriesVideoCollectionPresenter paramMemoriesVideoCollectionPresenter)
   {
-    this.a.dismiss();
+    super(paramMemoriesVideoCollectionPresenter);
+  }
+  
+  public void a(@NonNull MemoriesVideoCollectionPresenter paramMemoriesVideoCollectionPresenter, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
+  {
+    if (!TextUtils.equals(String.valueOf(paramMemoriesVideoCollectionPresenter.hashCode()), paramGetCollectionListEvent.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    SLog.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video collection list. %s.", paramGetCollectionListEvent);
+    if (paramGetCollectionListEvent.errorInfo.isSuccess())
+    {
+      paramMemoriesVideoCollectionPresenter.jdField_a_of_type_Int = paramGetCollectionListEvent.jdField_a_of_type_Int;
+      paramMemoriesVideoCollectionPresenter.jdField_a_of_type_Boolean = true;
+      if (paramGetCollectionListEvent.e)
+      {
+        paramMemoriesVideoCollectionPresenter.a(paramGetCollectionListEvent.jdField_a_of_type_JavaUtilList, paramGetCollectionListEvent.c, paramGetCollectionListEvent.jdField_a_of_type_Boolean);
+        paramMemoriesVideoCollectionPresenter.b = paramGetCollectionListEvent.jdField_a_of_type_Boolean;
+      }
+    }
+    MemoriesVideoCollectionPresenter.a(paramMemoriesVideoCollectionPresenter).a(paramGetCollectionListEvent.errorInfo.isSuccess());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DateCollectionListPageLoader.GetCollectionListEvent.class;
   }
 }
 

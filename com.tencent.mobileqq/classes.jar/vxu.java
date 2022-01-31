@@ -1,53 +1,26 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class vxu
-  implements Runnable
+class vxu
+  implements DialogInterface.OnClickListener
 {
-  public vxu(PublicAccountChatPie paramPublicAccountChatPie, String paramString, int paramInt, long paramLong1, long paramLong2) {}
+  vxu(vxt paramvxt, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (localList != null)
-    {
-      bool1 = bool2;
-      if (!localList.isEmpty()) {
-        i = localList.size() - 1;
-      }
+    ((DiscussionManager)this.jdField_a_of_type_Vxt.a.a.getManager(52)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Vxt.a.a.a().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.b(localRecentUser);
     }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i >= 0)
-      {
-        if ((((MessageRecord)localList.get(i)).msgUid == this.jdField_a_of_type_Long) && (((MessageRecord)localList.get(i)).shmsgseq == this.b)) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.getCurrentAccountUin(), "show_msg_result", bool1, 0L, 0L, new HashMap(), "");
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.BaseChatPie", 2, "reportShowMsgResult uin = " + this.jdField_a_of_type_JavaLangString + " , type = " + this.jdField_a_of_type_Int + " , msguid = " + this.jdField_a_of_type_Long + " , result = " + bool1);
-        }
-        if ((!bool1) && (QLog.isColorLevel())) {
-          QLog.d("Q.aio.BaseChatPie", 2, "lost msg uin = " + this.jdField_a_of_type_JavaLangString + " , type = " + this.jdField_a_of_type_Int + " , msguid = " + this.jdField_a_of_type_Long + " , msgseq = " + this.b);
-        }
-        return;
-      }
-      i -= 1;
-    }
+    this.jdField_a_of_type_Vxt.a.A();
   }
 }
 

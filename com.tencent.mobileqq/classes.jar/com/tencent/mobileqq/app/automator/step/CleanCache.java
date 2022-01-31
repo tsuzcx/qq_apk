@@ -29,10 +29,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import zqf;
-import zqk;
-import zql;
-import zqm;
+import zwq;
+import zwv;
+import zww;
+import zwx;
 
 public class CleanCache
   extends AsyncStep
@@ -47,7 +47,7 @@ public class CleanCache
       return;
     }
     ZhituManager.c(true);
-    Object localObject1 = AppConstants.aJ + "zhitu";
+    Object localObject1 = AppConstants.aK + "zhitu";
     localObject1 = new File((String)localObject1 + "/" + "origin/");
     int n;
     int k;
@@ -63,7 +63,7 @@ public class CleanCache
         n = localObject1.length;
         if (n > 200)
         {
-          Arrays.sort((Object[])localObject1, new zqm(this));
+          Arrays.sort((Object[])localObject1, new zwx(this));
           int i1 = localObject1.length;
           k = 0;
           j = 0;
@@ -110,7 +110,7 @@ public class CleanCache
   {
     this.a.b.getApp().getSharedPreferences("HEAD", 0).edit().clear().commit();
     b();
-    ThreadManager.post(new zqf(this), 2, null, false);
+    ThreadManager.post(new zwq(this), 2, null, false);
     return 7;
   }
   
@@ -125,7 +125,7 @@ public class CleanCache
   void b()
   {
     CardHandler.d();
-    File localFile = new File(AppConstants.aJ + ".nomedia");
+    File localFile = new File(AppConstants.aK + ".nomedia");
     if (!localFile.exists()) {}
     try
     {
@@ -150,10 +150,10 @@ public class CleanCache
       Object localObject = new File("/data/data/com.tencent.mobileqq/files/crashinfo/");
       if ((localObject != null) && (((File)localObject).exists()))
       {
-        localObject = ((File)localObject).listFiles(new zqk(this));
+        localObject = ((File)localObject).listFiles(new zwv(this));
         if ((localObject != null) && (localObject.length > 10))
         {
-          Arrays.sort((Object[])localObject, new zql(this));
+          Arrays.sort((Object[])localObject, new zww(this));
           while (i < localObject.length)
           {
             localObject[i].delete();
@@ -184,7 +184,7 @@ public class CleanCache
     {
       localObject3 = new ArrayList();
       k = 3500;
-      Object localObject4 = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.headCfg.name(), "24|3500|1").split("\\|");
+      Object localObject4 = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.headCfg.name(), "24|3500|1|0").split("\\|");
       j = k;
       if (localObject4.length > 1) {}
       try

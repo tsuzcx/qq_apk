@@ -1,17 +1,16 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class ugu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ugu(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public ugu(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-      this.a.a.dismiss();
-    }
-    this.a.a = null;
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

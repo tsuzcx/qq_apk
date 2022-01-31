@@ -11,8 +11,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.io.File;
-import yuy;
-import yuz;
+import zbr;
+import zbs;
 
 public class ApolloAudioPlayer
   implements MediaPlayer.OnPreparedListener, IAudioPlayerInterface
@@ -22,7 +22,7 @@ public class ApolloAudioPlayer
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), null);
   public Object a;
   private String jdField_a_of_type_JavaLangString;
-  private yuz jdField_a_of_type_Yuz;
+  private zbs jdField_a_of_type_Zbs;
   public boolean a;
   
   public ApolloAudioPlayer(IAudioPlayerListener paramIAudioPlayerListener)
@@ -204,7 +204,7 @@ public class ApolloAudioPlayer
         if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
           this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
         }
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new yuy(this, paramInt, paramString));
+        this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new zbr(this, paramInt, paramString));
         try
         {
           boolean bool = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio")).isMusicActive();
@@ -245,8 +245,8 @@ public class ApolloAudioPlayer
     if (QLog.isColorLevel()) {
       QLog.d("ApolloAudioPlayer", 2, "[stopVoice]");
     }
-    if ((this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) && (this.jdField_a_of_type_Yuz != null)) {
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacks(this.jdField_a_of_type_Yuz);
+    if ((this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) && (this.jdField_a_of_type_Zbs != null)) {
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacks(this.jdField_a_of_type_Zbs);
     }
     try
     {
@@ -278,8 +278,8 @@ public class ApolloAudioPlayer
     while (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler == null) {
       return;
     }
-    this.jdField_a_of_type_Yuz = new yuz(paramString, this, paramInt);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this.jdField_a_of_type_Yuz, paramLong);
+    this.jdField_a_of_type_Zbs = new zbs(paramString, this, paramInt);
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this.jdField_a_of_type_Zbs, paramLong);
   }
   
   public void a(String paramString, long paramLong)

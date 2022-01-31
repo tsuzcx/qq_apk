@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.tips.GatherContactsTips;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 
 public class vtg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vtg(FriendChatPie paramFriendChatPie) {}
+  public vtg(AIOImageListScene paramAIOImageListScene) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (FriendChatPie.a(this.a) != null)
-    {
-      FriendChatPie.a(this.a).b(1);
-      FriendChatPie.a(this.a).b(2);
-      FriendChatPie.a(this.a, null);
-    }
+    this.a.a(((TextView)paramView).getText().toString());
+    this.a.t();
   }
 }
 

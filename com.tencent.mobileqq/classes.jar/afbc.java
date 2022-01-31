@@ -1,58 +1,18 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
-import com.tencent.mobileqq.nearby.now.view.widget.TopicViewItem;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
 
-public class afbc
-  extends BaseAdapter
+public final class afbc
+  implements Parcelable.Creator
 {
-  public afbc(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
-  
-  public int getCount()
+  public LocationInfo a(Parcel paramParcel)
   {
-    if ((StartLiveTopicLabelListView.a(this.a) == null) || (StartLiveTopicLabelListView.a(this.a).size() == 0)) {
-      return 0;
-    }
-    return StartLiveTopicLabelListView.a(this.a).size();
+    return new LocationInfo(paramParcel);
   }
   
-  public Object getItem(int paramInt)
+  public LocationInfo[] a(int paramInt)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramViewGroup = new afbe(this.a, null);
-      paramView = new TopicViewItem(StartLiveTopicLabelListView.a(this.a));
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.a = ((String)StartLiveTopicLabelListView.a(this.a).get(paramInt));
-      if (!"+标签".equals(paramViewGroup.a)) {
-        break label130;
-      }
-      paramView.setBackgroundResource(StartLiveTopicLabelListView.a(this.a));
-      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.b(this.a));
-    }
-    for (;;)
-    {
-      paramView.setOnClickListener(new afbd(this));
-      ((TopicViewItem)paramView).setText(paramViewGroup.a);
-      return paramView;
-      paramViewGroup = (afbe)paramView.getTag();
-      break;
-      label130:
-      paramView.setBackgroundResource(StartLiveTopicLabelListView.c(this.a));
-      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.d(this.a));
-    }
+    return new LocationInfo[paramInt];
   }
 }
 

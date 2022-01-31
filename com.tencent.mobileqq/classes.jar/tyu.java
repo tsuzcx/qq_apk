@@ -1,26 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
 
-public class tyu
-  implements DialogInterface.OnClickListener
+class tyu
+  implements Runnable
 {
-  public tyu(TroopInfoActivity paramTroopInfoActivity) {}
+  tyu(tyt paramtyt, Drawable paramDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
-    {
-      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "0", "");
-      paramDialogInterface.dismiss();
-      return;
-    }
+    ((ImageView)SubAccountBindActivity.a(this.jdField_a_of_type_Tyt.jdField_a_of_type_Tys.a).getChildAt(this.jdField_a_of_type_Tyt.jdField_a_of_type_Int).findViewById(2131362724)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

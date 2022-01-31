@@ -16,20 +16,12 @@ public class QQGaussianBlurFilter
   private GLImage jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage;
   private GaussianBlurFilterCompose jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilterCompose;
   private List jdField_a_of_type_JavaUtilList;
-  private int e = 640;
-  private int f = 1280;
-  private int g = 0;
-  private int h = 0;
-  private int i = 0;
-  private int j = 0;
-  private int k = 0;
-  
-  public QQGaussianBlurFilter(int paramInt1, QQFilterRenderManager paramQQFilterRenderManager, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramQQFilterRenderManager);
-    this.e = paramInt2;
-    this.f = paramInt3;
-  }
+  private int e;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
   
   private void a()
   {
@@ -40,23 +32,6 @@ public class QQGaussianBlurFilter
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender = new TextureRender();
   }
   
-  public void a(int paramInt)
-  {
-    this.i = paramInt;
-    this.j = (paramInt * 2);
-  }
-  
-  public void a(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.k = paramList.size();
-  }
-  
-  public void c(int paramInt)
-  {
-    this.g = paramInt;
-  }
-  
   public void d()
   {
     super.d();
@@ -65,22 +40,22 @@ public class QQGaussianBlurFilter
   
   public void h()
   {
-    if (this.g % this.j == 0)
+    if (this.g % this.i == 0)
     {
-      this.h = (this.g / this.j);
-      if (this.h < this.k)
+      this.h = (this.g / this.i);
+      if (this.h < this.j)
       {
-        Log.d("rejectliu", "scale Filter OnDrawFrame frameIndex : " + this.g + "  picRate : " + this.j + " imgSize : " + this.k + "  picIndex : " + this.h);
+        Log.d("rejectliu", "scale Filter OnDrawFrame frameIndex : " + this.g + "  picRate : " + this.i + " imgSize : " + this.j + "  picIndex : " + this.h);
         this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a((String)this.jdField_a_of_type_JavaUtilList.get(this.h));
       }
     }
-    int m = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilterCompose.a(m);
-    m = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilterCompose.a();
+    int k = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a();
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilterCompose.a(k);
+    k = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGaussianBlurFilterCompose.a();
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     GLES20.glClear(16384);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a(3553, m, null, null);
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a(3553, k, null, null);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
     this.b = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();
   }

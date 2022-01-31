@@ -1,17 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.DoodleOpListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class ojn
-  implements DoodleOpController.DoodleOpListener
+  implements DialogInterface.OnDismissListener
 {
-  public ojn(DoodleLayout paramDoodleLayout) {}
+  public ojn(EditVideoGuide paramEditVideoGuide) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.b = 3;
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(14);
   }
 }
 

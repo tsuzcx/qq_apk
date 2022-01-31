@@ -1,87 +1,47 @@
-import android.app.Activity;
-import android.content.Context;
 import android.view.View;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.javahook.BadTokenHooker;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import com.tencent.mobileqq.util.Utils;
-import java.lang.reflect.Field;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.MineFragment;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class advp
-  implements HookMethodCallback
+  implements ActionSheet.OnButtonClickListener
 {
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  public advp(NearbyHybridFragment paramNearbyHybridFragment) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramMethodHookParam.throwable == null) {}
-    View localView;
-    do
+    switch (paramInt)
     {
-      return;
-      localView = (View)paramMethodHookParam.args[0];
-    } while (localView == null);
-    Object localObject1 = localView.getContext();
-    Object localObject2 = localObject1;
-    if ("android.view.ContextThemeWrapper".equals(localObject1.getClass().getName())) {}
-    label295:
+    }
     for (;;)
     {
-      try
-      {
-        localObject2 = Class.forName("android.view.ContextThemeWrapper").getDeclaredField("mBase");
-        ((Field)localObject2).setAccessible(true);
-        localObject2 = ((Field)localObject2).get(localView.getContext());
-        if ((localObject2 == null) || (!(localObject2 instanceof Context))) {
-          break label295;
-        }
-        localObject2 = (Context)localObject2;
-        localObject1 = localObject2;
-        localObject2 = localObject1;
+      if (this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+        this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        Utils.a(localClassNotFoundException);
-        Object localObject3 = localObject1;
-        continue;
+      this.a.o();
+      return;
+      NearbyHybridFragment.a(this.a);
+      continue;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a() == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b();
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
+      if ((NetworkUtil.d(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
       {
-        Utils.a(localNoSuchFieldException);
-        Object localObject4 = localObject1;
-        continue;
+        MineFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
       }
-      catch (IllegalArgumentException localIllegalArgumentException)
+      else
       {
-        Utils.a(localIllegalArgumentException);
-        Object localObject5 = localObject1;
-        continue;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        Utils.a(localIllegalAccessException);
-        Object localObject6 = localObject1;
-        continue;
-        localObject1 = paramMethodHookParam.throwable;
-        continue;
-        paramMethodHookParam.throwable = new RuntimeException(paramMethodHookParam.throwable.getMessage() + " -- context is " + localObject6.getClass().getName(), paramMethodHookParam.throwable);
-        return;
-      }
-      if (paramMethodHookParam.throwable.getCause() != null)
-      {
-        localObject1 = paramMethodHookParam.throwable.getCause();
-        if ((!(localObject2 instanceof Activity)) || (((Activity)localObject2).isFinishing()) || (!(localObject1 instanceof WindowManager.BadTokenException))) {
-          continue;
-        }
-        BadTokenHooker.a(1, localObject2.getClass().getName(), paramMethodHookParam.throwable.getMessage(), 0);
-        BadTokenHooker.a(2, localObject2.getClass().getName(), null, 10000);
-        BadTokenHooker.a(3, localObject2.getClass().getName(), null, 60000);
-        paramMethodHookParam.throwable = null;
-        ((Activity)localObject2).finish();
+        QQToast.a(BaseApplication.getContext(), 1, this.a.getString(2131433227), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
       }
     }
   }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

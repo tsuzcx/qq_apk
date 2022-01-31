@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.data;
 
-import agcu;
+import aghe;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -25,7 +25,7 @@ public class OcrDpc
   static
   {
     jdField_b_of_type_JavaLangString = DeviceProfileManager.DpcNames.ocrCfg.name();
-    jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$DPCObserver = new agcu();
+    jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$DPCObserver = new aghe();
   }
   
   public OcrDpc()

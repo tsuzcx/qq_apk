@@ -8,7 +8,7 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
-import jmu;
+import jox;
 
 public abstract class IQQServiceForAV$Stub
   extends Binder
@@ -28,7 +28,7 @@ public abstract class IQQServiceForAV$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQQServiceForAV))) {
       return (IQQServiceForAV)localIInterface;
     }
-    return new jmu(paramIBinder);
+    return new jox(paramIBinder);
   }
   
   public IBinder asBinder()
@@ -568,7 +568,7 @@ public abstract class IQQServiceForAV$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.service.IQQServiceForAV.Stub
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,12 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acgb;
-import acgc;
-import acgd;
+import acoc;
+import acod;
+import acoe;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -16,37 +14,29 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FunnyPicHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 public class FavoriteEmotionAdapter
   extends BaseEmotionAdapter
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplication.getContext().getResources().getDrawable(2130837583);
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplication.getContext().getResources().getDrawable(2130837582);
   BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
   public EmoticonPanelLinearLayout.OnClickListener a;
   
   public FavoriteEmotionAdapter(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonCallback paramEmoticonCallback, BaseChatPie paramBaseChatPie)
   {
     super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonCallback);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout$OnClickListener = new acgb(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout$OnClickListener = new acoc(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
@@ -61,7 +51,7 @@ public class FavoriteEmotionAdapter
         localURLDrawable.startDownload();
       }
       if (!(paramURLImageView2.getDrawable() instanceof Animatable)) {
-        paramURLImageView2.setImageDrawable((Drawable)BaseApplication.getContext().getResources().getDrawable(2130838596));
+        paramURLImageView2.setImageDrawable((Drawable)BaseApplication.getContext().getResources().getDrawable(2130838602));
       }
       paramURLImageView1 = (Animatable)paramURLImageView2.getDrawable();
       if (!paramURLImageView1.isRunning()) {
@@ -110,7 +100,7 @@ public class FavoriteEmotionAdapter
     localObject = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
     ((RelativeLayout)localObject).setId(2131362075);
     ((RelativeLayout)localObject).setVisibility(8);
-    ((RelativeLayout)localObject).setBackgroundResource(2130846055);
+    ((RelativeLayout)localObject).setBackgroundResource(2130846137);
     localLayoutParams = new RelativeLayout.LayoutParams(ScreenUtil.a(10.0F), ScreenUtil.a(10.0F));
     localLayoutParams.addRule(3, 2131361968);
     localLayoutParams.addRule(7, 2131361968);
@@ -140,101 +130,62 @@ public class FavoriteEmotionAdapter
     paramEmotionPanelData = (EmoticonInfo)paramEmotionPanelData;
     paramView.setTag(paramEmotionPanelData);
     paramView.setVisibility(0);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131362075);
-    if (localRelativeLayout != null) {
-      localRelativeLayout.setVisibility(8);
+    Object localObject1 = (RelativeLayout)paramView.findViewById(2131362075);
+    if (localObject1 != null) {
+      ((RelativeLayout)localObject1).setVisibility(8);
     }
-    URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131361968);
-    Object localObject2 = (URLImageView)paramView.findViewById(2131361969);
-    localURLImageView.setVisibility(0);
-    ((URLImageView)localObject2).setVisibility(8);
-    localURLImageView.setURLDrawableDownListener(null);
-    Object localObject1 = (RelativeLayout.LayoutParams)localURLImageView.getLayoutParams();
-    String str = paramEmotionPanelData.a;
-    int i;
-    if ("favEdit".equals(str))
+    localObject1 = (URLImageView)paramView.findViewById(2131361968);
+    URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131361969);
+    ((URLImageView)localObject1).setVisibility(0);
+    localURLImageView.setVisibility(8);
+    ((URLImageView)localObject1).setURLDrawableDownListener(null);
+    Object localObject2 = (RelativeLayout.LayoutParams)((URLImageView)localObject1).getLayoutParams();
+    localObject2 = paramEmotionPanelData.a;
+    if ("favEdit".equals(localObject2))
     {
-      localURLImageView.setImageResource(2130843963);
-      localURLImageView.setBackgroundDrawable(null);
+      ((URLImageView)localObject1).setImageResource(2130844029);
+      ((URLImageView)localObject1).setBackgroundDrawable(null);
       if (AppSetting.b) {
-        localURLImageView.setContentDescription("收藏表情管理页面入口");
+        ((URLImageView)localObject1).setContentDescription("收藏表情管理页面入口");
       }
+    }
+    for (;;)
+    {
       paramView = (ImageView)paramView.findViewById(2131361970);
       if (!(paramEmotionPanelData instanceof PicEmoticonInfo)) {
-        break label610;
+        break label316;
       }
-      if (((PicEmoticonInfo)paramEmotionPanelData).a())
+      if (!((PicEmoticonInfo)paramEmotionPanelData).a()) {
+        break;
+      }
+      paramView.setVisibility(0);
+      paramView.setImageResource(2130846150);
+      return;
+      if ("funny_pic".equals(localObject2))
       {
-        paramView.setVisibility(0);
-        paramView.setImageResource(2130846068);
-      }
-    }
-    else if ("funny_pic".equals(str))
-    {
-      localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("funny_pic_info", 0);
-      i = ((SharedPreferences)localObject2).getInt("funnypic_type_sp_key", 1);
-      if (!"7.6.3".equals("7.3.5")) {
-        break label617;
-      }
-    }
-    label610:
-    label617:
-    for (boolean bool = ((SharedPreferences)localObject2).getBoolean("group_emo_red_show_sp_key_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);; bool = false)
-    {
-      float f = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics().density;
-      localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mGifRoundCorner = (f * 10.0F);
-      int j = (int)(this.jdField_a_of_type_Float * 57.0F);
-      ((RelativeLayout.LayoutParams)localObject1).height = j;
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = j;
-      j = (int)(this.jdField_a_of_type_Float * 57.0F);
-      ((RelativeLayout.LayoutParams)localObject1).width = j;
-      ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = j;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843962);
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
-      localObject1 = FunnyPicHelper.a(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app);
-      try
-      {
-        localObject2 = URLDrawable.getDrawable(new URL("funny_pic", null, (String)localObject1), (URLDrawable.URLDrawableOptions)localObject2);
-        ((URLDrawable)localObject2).setTag(localObject1);
-        ((URLDrawable)localObject2).addHeader("funnypic_type", String.valueOf(i));
-        if ((((URLDrawable)localObject2).getCurrDrawable() instanceof GifDrawable)) {
-          ((GifDrawable)((URLDrawable)localObject2).getCurrDrawable()).getImage().reset();
-        }
-        localURLImageView.setImageDrawable((Drawable)localObject2);
-        if ((bool) && (localRelativeLayout != null)) {
-          localRelativeLayout.setVisibility(0);
+        ((URLImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844028));
+        ((URLImageView)localObject1).setBackgroundDrawable(null);
+        if (AppSetting.b) {
+          ((URLImageView)localObject1).setContentDescription("群聊表情入口");
         }
       }
-      catch (MalformedURLException localMalformedURLException)
+      else
       {
-        for (;;)
+        localObject2 = paramEmotionPanelData.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Float);
+        ((URLImageView)localObject1).setImageDrawable((Drawable)localObject2);
+        ((URLImageView)localObject1).setBackgroundDrawable(null);
+        localURLImageView.setImageDrawable((Drawable)BaseApplication.getContext().getResources().getDrawable(2130838602));
+        if ((localObject2 instanceof URLDrawable))
         {
-          localMalformedURLException.printStackTrace();
+          ((URLImageView)localObject1).setURLDrawableDownListener(new acod(this, paramEmotionPanelData, (URLImageView)localObject1, localURLImageView));
+          a((URLImageView)localObject1, localURLImageView);
         }
       }
-      if (!AppSetting.b) {
-        break;
-      }
-      localURLImageView.setContentDescription("群聊表情入口");
-      break;
-      Drawable localDrawable = paramEmotionPanelData.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Float);
-      localURLImageView.setImageDrawable(localDrawable);
-      localURLImageView.setBackgroundDrawable(null);
-      ((URLImageView)localObject2).setImageDrawable((Drawable)BaseApplication.getContext().getResources().getDrawable(2130838596));
-      if (!(localDrawable instanceof URLDrawable)) {
-        break;
-      }
-      localURLImageView.setURLDrawableDownListener(new acgc(this, paramEmotionPanelData, localURLImageView, (URLImageView)localObject2));
-      a(localURLImageView, (URLImageView)localObject2);
-      break;
-      paramView.setVisibility(8);
-      return;
-      paramView.setVisibility(8);
-      return;
     }
+    paramView.setVisibility(8);
+    return;
+    label316:
+    paramView.setVisibility(8);
   }
   
   public View a(BaseEmotionAdapter.ViewHolder paramViewHolder, int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -336,7 +287,7 @@ public class FavoriteEmotionAdapter
     if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {}
     for (int i = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().jdField_a_of_type_Int;; i = -1)
     {
-      localEmotionPanelDataBuilder.a(localQQAppInterface, j, null, -1, i, false, new acgd(this));
+      localEmotionPanelDataBuilder.a(localQQAppInterface, j, null, -1, i, false, new acoe(this));
       return;
     }
   }

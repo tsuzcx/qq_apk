@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.FaceScoreCallBack;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.RobotPanelItemData;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public final class akan
-  extends FaceScoreCallBack
+public class akan
+  implements TroopRobotManager.Callback
 {
-  public akan(BaseActivity paramBaseActivity, String paramString1, String paramString2, int paramInt, QQProgressDialog paramQQProgressDialog) {}
+  public akan(TroopAIORobotPanel paramTroopAIORobotPanel, TroopAIORobotPanel.RobotPanelItemData paramRobotPanelItemData) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, String.valueOf(paramLong2), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    if (paramInt == 0) {
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotPanel.getContext(), 1, "操作失败" + "", 0).a();
   }
 }
 

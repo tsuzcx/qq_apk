@@ -1,15 +1,6 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
-
-public class anyc
-  implements Runnable
+public abstract interface anyc
 {
-  public anyc(EditTextDialog paramEditTextDialog) {}
-  
-  public void run()
-  {
-    this.a.a.a();
-  }
+  public abstract void a();
 }
 
 

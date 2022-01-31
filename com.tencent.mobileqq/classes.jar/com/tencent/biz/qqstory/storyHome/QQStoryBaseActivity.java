@@ -51,11 +51,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import ntf;
-import ntg;
-import nth;
-import nti;
-import ntj;
+import nxv;
+import nxw;
+import nxx;
+import nxy;
+import nxz;
 
 public class QQStoryBaseActivity
   extends IphoneTitleBarActivity
@@ -63,7 +63,7 @@ public class QQStoryBaseActivity
 {
   public Dialog a;
   public Bitmap a;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new nti(this);
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new nxy(this);
   private QQStoryActivityManager jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager;
   public QQStoryBaseActivity.ProgressView a;
   public AppInterface a;
@@ -74,14 +74,13 @@ public class QQStoryBaseActivity
   public ImageView c;
   public final String e = "Q.qqstory.QQStoryBaseActivity";
   protected final boolean h = false;
-  protected int i;
-  public boolean i;
-  protected int j;
+  public boolean i = true;
   protected boolean j;
+  protected int n;
+  protected int o;
   
   public QQStoryBaseActivity()
   {
-    this.jdField_i_of_type_Boolean = true;
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
@@ -96,23 +95,23 @@ public class QQStoryBaseActivity
       {
         int k;
         int m;
-        int n;
         int i1;
+        int i2;
         do
         {
           return;
           k = paramIntent.getIntExtra("positionX", 0);
           m = paramIntent.getIntExtra("positionY", 0);
-          n = paramIntent.getIntExtra("viewWidth", -1);
-          i1 = paramIntent.getIntExtra("viewHeight", -1);
-          this.jdField_i_of_type_Boolean = paramIntent.getBooleanExtra("need_image_animation", true);
+          i1 = paramIntent.getIntExtra("viewWidth", -1);
+          i2 = paramIntent.getIntExtra("viewHeight", -1);
+          this.i = paramIntent.getBooleanExtra("need_image_animation", true);
           paramIntent = paramIntent.getStringExtra("viewImageKey");
-        } while ((n < 0) || (i1 < 0));
+        } while ((i1 < 0) || (i2 < 0));
         this.jdField_a_of_type_ArrayOfInt = new int[4];
         this.jdField_a_of_type_ArrayOfInt[0] = k;
         this.jdField_a_of_type_ArrayOfInt[1] = m;
-        this.jdField_a_of_type_ArrayOfInt[2] = n;
-        this.jdField_a_of_type_ArrayOfInt[3] = i1;
+        this.jdField_a_of_type_ArrayOfInt[2] = i1;
+        this.jdField_a_of_type_ArrayOfInt[3] = i2;
       } while (TextUtils.isEmpty(paramIntent));
       localQQStoryManager = (QQStoryManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(180);
       localSoftReference = (SoftReference)localQQStoryManager.a.get(paramIntent);
@@ -156,7 +155,7 @@ public class QQStoryBaseActivity
   public void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener)
   {
     this.b.removeCallbacksAndMessages(null);
-    this.b.postDelayed(new ntg(this, this, paramOnDismissListener, paramBoolean, paramCharSequence), paramLong);
+    this.b.postDelayed(new nxw(this, this, paramOnDismissListener, paramBoolean, paramCharSequence), paramLong);
   }
   
   protected void a(String paramString) {}
@@ -176,7 +175,7 @@ public class QQStoryBaseActivity
   
   public void a(@NonNull Map paramMap)
   {
-    paramMap.put(new Subscriber.SubscriberWrapper(Looper.getMainLooper(), new ntj(this, this)), "root_group");
+    paramMap.put(new Subscriber.SubscriberWrapper(Looper.getMainLooper(), new nxz(this, this)), "root_group");
   }
   
   protected void b(String paramString) {}
@@ -205,12 +204,12 @@ public class QQStoryBaseActivity
     }
     super.doOnCreate(paramBundle);
     b("onCreate");
-    this.jdField_j_of_type_Boolean = true;
+    this.j = true;
     this.jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager = ((QQStoryActivityManager)SuperManager.a(18));
     this.jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager.a(this);
     QQStoryContext.a();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
-    Bosses.get().postLightWeightJob(new ntf(this), 10);
+    Bosses.get().postLightWeightJob(new nxv(this), 10);
     ((TrimmableManager)SuperManager.a(26)).a(0);
     a(getIntent());
     return false;
@@ -220,7 +219,7 @@ public class QQStoryBaseActivity
   {
     super.doOnDestroy();
     b("onDestroy");
-    this.jdField_j_of_type_Boolean = false;
+    this.j = false;
     this.jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager.b(this);
     a("unregister subscriber size : " + this.jdField_a_of_type_JavaUtilMap.size());
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
@@ -264,7 +263,7 @@ public class QQStoryBaseActivity
   public void f()
   {
     this.b.removeCallbacksAndMessages(null);
-    this.b.post(new nth(this));
+    this.b.post(new nxx(this));
   }
   
   public void g()
@@ -275,10 +274,10 @@ public class QQStoryBaseActivity
   public void h()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.pgc", 2, "QQStoryBaseActivity doEnterAnimation mAnimationPlayedTimes=" + this.jdField_j_of_type_Int);
+      QLog.d("Q.qqstory.pgc", 2, "QQStoryBaseActivity doEnterAnimation mAnimationPlayedTimes=" + this.o);
     }
-    int k = this.jdField_i_of_type_Int;
-    this.jdField_i_of_type_Int = (k + 1);
+    int k = this.n;
+    this.n = (k + 1);
     if (k > 0) {}
     do
     {
@@ -289,14 +288,14 @@ public class QQStoryBaseActivity
         do
         {
           return;
-        } while ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length < 4) || (this.jdField_j_of_type_Int > 0));
-        this.jdField_j_of_type_Int += 1;
+        } while ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length < 4) || (this.o > 0));
+        this.o += 1;
         k = this.jdField_a_of_type_ArrayOfInt[0];
         int m = this.jdField_a_of_type_ArrayOfInt[1];
-        int n = this.jdField_a_of_type_ArrayOfInt[2];
-        int i1 = this.jdField_a_of_type_ArrayOfInt[3];
+        int i1 = this.jdField_a_of_type_ArrayOfInt[2];
+        int i2 = this.jdField_a_of_type_ArrayOfInt[3];
         localViewGroup = (ViewGroup)((ViewGroup)findViewById(16908290)).getChildAt(0);
-        if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_i_of_type_Boolean))
+        if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.i))
         {
           this.c = new ImageView(this);
           this.c.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -304,10 +303,10 @@ public class QQStoryBaseActivity
           localViewGroup.addView(this.c, (ViewGroup.LayoutParams)localObject);
           this.c.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
         }
-        int i2 = localViewGroup.getMeasuredWidth();
-        int i3 = localViewGroup.getMeasuredHeight();
-        float f1 = n * 1.0F / i2;
-        float f2 = i1 * 1.0F / i3;
+        int i3 = localViewGroup.getMeasuredWidth();
+        int i4 = localViewGroup.getMeasuredHeight();
+        float f1 = i1 * 1.0F / i3;
+        float f2 = i2 * 1.0F / i4;
         localObject = new AnimationSet(true);
         ((AnimationSet)localObject).setInterpolator(new DecelerateInterpolator());
         ((AnimationSet)localObject).setRepeatMode(1);
@@ -315,7 +314,7 @@ public class QQStoryBaseActivity
         ((AnimationSet)localObject).setDuration(100L);
         ((AnimationSet)localObject).addAnimation(new ScaleAnimation(f1, 1.0F, f2, 1.0F, 0.5F, 0.5F));
         ((AnimationSet)localObject).addAnimation(new TranslateAnimation(k, 0.0F, m, 0.0F));
-        if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.c == null) || (!this.jdField_i_of_type_Boolean)) {
+        if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.c == null) || (!this.i)) {
           break;
         }
         AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
@@ -337,7 +336,7 @@ public class QQStoryBaseActivity
   
   public boolean isValidate()
   {
-    return (this.jdField_j_of_type_Boolean) && (!isFinishing());
+    return (this.j) && (!isFinishing());
   }
   
   public void startActivity(Intent paramIntent)

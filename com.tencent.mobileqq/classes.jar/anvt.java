@@ -1,15 +1,17 @@
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
-import java.util.Map;
+import android.widget.EditText;
+import com.tencent.util.InputMethodUtil;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI;
 
 public class anvt
-  implements VideoFilterPlayView.TrackerCallback
+  implements Runnable
 {
-  public anvt(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
+  public anvt(FacePoiSearchUI paramFacePoiSearchUI) {}
   
-  public void a(Map paramMap)
+  public void run()
   {
-    this.a.a(new anvu(this, paramMap), 0L);
+    this.a.a.setFocusableInTouchMode(true);
+    this.a.a.requestFocus();
+    InputMethodUtil.a(this.a.a);
   }
 }
 

@@ -7,7 +7,7 @@ import android.view.animation.Animation.AnimationListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mgo;
+import mkb;
 import mqq.os.MqqHandler;
 
 public class KandianTipFloatingWindow
@@ -85,7 +85,7 @@ public class KandianTipFloatingWindow
     a(2);
     KandianTipFloatingWindow.TipFloatingWindowInfo localTipFloatingWindowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianTipFloatingWindow$TipFloatingWindowInfo;
     if ((localTipFloatingWindowInfo != null) && (localTipFloatingWindowInfo.jdField_a_of_type_AndroidViewView$OnClickListener != null)) {
-      ThreadManager.getUIHandler().postDelayed(new mgo(this, localTipFloatingWindowInfo, paramView), 250L);
+      ThreadManager.getUIHandler().postDelayed(new mkb(this, localTipFloatingWindowInfo, paramView), 250L);
     }
     a();
   }

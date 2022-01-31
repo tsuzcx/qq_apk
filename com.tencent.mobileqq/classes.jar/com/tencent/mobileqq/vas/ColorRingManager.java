@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import akhe;
+import akor;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,7 +24,7 @@ public class ColorRingManager
   implements Manager
 {
   public QQAppInterface a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new akhe(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new akor(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory;
   public IPCDownloadListener a;
   
@@ -187,7 +187,7 @@ public class ColorRingManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorRingManager
  * JD-Core Version:    0.7.0.1
  */

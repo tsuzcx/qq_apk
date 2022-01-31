@@ -1,34 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloBoxData;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class yuh
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public yuh(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
+  public yuh(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    try
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
-        break label42;
+      HotChatCenterFragment.a(this.a);
+      if (this.a.isAdded()) {
+        this.a.getActivity().runOnUiThread(new yui(this));
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ApolloBoxData.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-    }
-    label42:
-    do
-    {
       return;
-      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ApolloBoxData.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ApolloBoxData.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("HotchatActivity", 1, localThrowable, new Object[] { "[update] failed" });
+    }
   }
 }
 

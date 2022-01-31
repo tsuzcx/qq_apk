@@ -1,21 +1,23 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditDoodleExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
 public class anri
-  extends PtvTemplateManager.DoodleInfoLoadObserver
+  implements Runnable
 {
-  public anri(EditPicActivity paramEditPicActivity) {}
+  public anri(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
   
-  public void a()
+  public void run()
   {
-    SLog.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
-    EditDoodleExport localEditDoodleExport = (EditDoodleExport)EditPicActivity.a(this.a).a(EditDoodleExport.class);
-    if (localEditDoodleExport != null) {
-      localEditDoodleExport.az_();
+    QLog.d("VERSION_CODES", 2, "onVideoCaptured. videoFrameCount = " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoFrameCount + " ; minFrameCount = " + QIMCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit));
+    QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
+    if (this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.b) {
+      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.x();
     }
+    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.e();
+    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.z();
   }
 }
 

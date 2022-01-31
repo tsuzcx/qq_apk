@@ -1,29 +1,58 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoStatusListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class met
-  implements Runnable
+public class met
+  implements INetInfoHandler
 {
-  met(meq parammeq) {}
+  public met(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public void run()
+  public void onNetMobile2None()
   {
-    if (VideoPlayManager.a(this.a.a) != null) {
-      VideoPlayManager.a(this.a.a).a(VideoPlayManager.a(this.a.a));
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetMobile2None()");
     }
-    VideoPlayManager.a(this.a.a, VideoPlayManager.a(this.a.a), VideoPlayManager.a(this.a.a), 7, null);
-    if (VideoPlayManager.a(this.a.a) != null)
-    {
-      VideoPlayManager.a(this.a.a).d = -1;
-      VideoPlayManager.a(this.a.a).b = 0L;
-      VideoPlayManager.a(this.a.a, null);
+    VideoFeedsAdapter.c(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
     }
-    if (VideoPlayManager.a(this.a.a) != null)
-    {
-      VideoPlayManager.a(this.a.a).h();
-      VideoPlayManager.a(this.a.a, null);
+    VideoFeedsAdapter.a(this.a, true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetNone2Mobile() apn=" + paramString);
     }
+    VideoFeedsAdapter.a(this.a, false);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
+    }
+    VideoFeedsAdapter.a(this.a, true);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
+    }
+    VideoFeedsAdapter.a(this.a, false);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetWifi2None()");
+    }
+    VideoFeedsAdapter.c(this.a);
   }
 }
 

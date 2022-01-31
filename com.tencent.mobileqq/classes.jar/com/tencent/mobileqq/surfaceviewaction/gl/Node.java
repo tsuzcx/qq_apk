@@ -35,7 +35,7 @@ public class Node
     return f1;
   }
   
-  public Point a()
+  public void a(Point paramPoint)
   {
     float f2 = this.c;
     float f1 = this.d;
@@ -44,7 +44,8 @@ public class Node
       f2 += localLayer.c;
       f1 += localLayer.d;
     }
-    return new Point(f2, f1);
+    paramPoint.jdField_a_of_type_Float = f2;
+    paramPoint.jdField_b_of_type_Float = f1;
   }
   
   public void a(Action... paramVarArgs)

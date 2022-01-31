@@ -34,8 +34,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import jhm;
-import jhn;
+import jjp;
+import jjq;
 
 public class VcControllerImpl
 {
@@ -130,7 +130,7 @@ public class VcControllerImpl
   public static final int VOIP_REASON_SELF_WAIT_RELAYINFO_TIMEOUT = 8;
   public static final int VOIP_REASON_SELF_WAIT_RELAY_CONNECT_TIMEOUT = 9;
   private static String mCameraParameters;
-  jhm mEventHandler = null;
+  jjp mEventHandler = null;
   public IVideoEventListener mEventListener;
   GlStringParser mGlStringParser = null;
   private String mMcc = PhoneCodeUtils.a();
@@ -211,17 +211,17 @@ public class VcControllerImpl
       this.mEventListener.a(paramArrayOfByte1, paramInt2, paramInt3);
       return;
     }
-    jhn localjhn = new jhn(this);
-    localjhn.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
-    localjhn.jdField_a_of_type_Long = paramLong1;
-    localjhn.jdField_b_of_type_Long = paramLong2;
-    localjhn.c = paramLong3;
-    localjhn.d = paramLong4;
-    localjhn.jdField_a_of_type_JavaLangString = paramString;
-    localjhn.jdField_a_of_type_Int = paramInt2;
-    localjhn.jdField_b_of_type_Int = paramInt3;
-    localjhn.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
-    paramArrayOfByte1 = this.mEventHandler.obtainMessage(paramInt1, 0, 0, localjhn);
+    jjq localjjq = new jjq(this);
+    localjjq.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+    localjjq.jdField_a_of_type_Long = paramLong1;
+    localjjq.jdField_b_of_type_Long = paramLong2;
+    localjjq.c = paramLong3;
+    localjjq.d = paramLong4;
+    localjjq.jdField_a_of_type_JavaLangString = paramString;
+    localjjq.jdField_a_of_type_Int = paramInt2;
+    localjjq.jdField_b_of_type_Int = paramInt3;
+    localjjq.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
+    paramArrayOfByte1 = this.mEventHandler.obtainMessage(paramInt1, 0, 0, localjjq);
     this.mEventHandler.sendMessage(paramArrayOfByte1);
   }
   
@@ -311,12 +311,12 @@ public class VcControllerImpl
     //   99: iload_2
     //   100: putfield 226	com/tencent/av/core/VcControllerImpl:mPreviewH	I
     //   103: aload_0
-    //   104: getfield 222	com/tencent/av/core/VcControllerImpl:mEventHandler	Ljhm;
-    //   107: new 461	jhl
+    //   104: getfield 222	com/tencent/av/core/VcControllerImpl:mEventHandler	Ljjp;
+    //   107: new 461	jjo
     //   110: dup
     //   111: aload_0
-    //   112: invokespecial 462	jhl:<init>	(Lcom/tencent/av/core/VcControllerImpl;)V
-    //   115: invokevirtual 466	jhm:post	(Ljava/lang/Runnable;)Z
+    //   112: invokespecial 462	jjo:<init>	(Lcom/tencent/av/core/VcControllerImpl;)V
+    //   115: invokevirtual 466	jjp:post	(Ljava/lang/Runnable;)Z
     //   118: pop
     //   119: goto -29 -> 90
     //   122: astore 4
@@ -356,17 +356,17 @@ public class VcControllerImpl
     }
   }
   
-  private void onRecvRequest(int paramInt, jhn paramjhn)
+  private void onRecvRequest(int paramInt, jjq paramjjq)
   {
-    byte[] arrayOfByte1 = paramjhn.jdField_a_of_type_ArrayOfByte;
-    int i = (int)paramjhn.c;
-    String str1 = paramjhn.jdField_a_of_type_JavaLangString;
-    int j = paramjhn.jdField_a_of_type_Int;
-    int k = paramjhn.jdField_b_of_type_Int;
+    byte[] arrayOfByte1 = paramjjq.jdField_a_of_type_ArrayOfByte;
+    int i = (int)paramjjq.c;
+    String str1 = paramjjq.jdField_a_of_type_JavaLangString;
+    int j = paramjjq.jdField_a_of_type_Int;
+    int k = paramjjq.jdField_b_of_type_Int;
     if (k == 3124) {
       i = 26;
     }
-    String str2 = CharacterUtil.a(paramjhn.jdField_b_of_type_Long);
+    String str2 = CharacterUtil.a(paramjjq.jdField_b_of_type_Long);
     Object localObject2 = null;
     Object localObject1 = localObject2;
     switch (i)
@@ -403,10 +403,10 @@ public class VcControllerImpl
     case 26: 
       while ((paramInt == 2) || (paramInt == 60))
       {
-        this.mEventListener.a(i, str2, (String)localObject1, paramjhn.jdField_b_of_type_ArrayOfByte, true, str1, j, k);
+        this.mEventListener.a(i, str2, (String)localObject1, paramjjq.jdField_b_of_type_ArrayOfByte, true, str1, j, k);
         label232:
         if (QLog.isColorLevel()) {
-          QLog.d("onRecvRequest", 2, "uinType = " + i + ", extraUin = " + (String)localObject1 + ", longFronUin = " + paramjhn.jdField_b_of_type_Long);
+          QLog.d("onRecvRequest", 2, "uinType = " + i + ", extraUin = " + (String)localObject1 + ", longFronUin = " + paramjjq.jdField_b_of_type_Long);
         }
         return;
         localObject1 = null;
@@ -451,12 +451,12 @@ public class VcControllerImpl
         QLog.d("onRecvRequest", 2, "uinType = " + i + ", extraUin = " + (String)localObject1);
       }
       break;
-      localObject1 = String.valueOf(paramjhn.d);
+      localObject1 = String.valueOf(paramjjq.d);
       break;
       if ((paramInt != 1) && (paramInt != 61)) {
         break label232;
       }
-      this.mEventListener.a(i, str2, (String)localObject1, paramjhn.jdField_b_of_type_ArrayOfByte, false, str1, j, k);
+      this.mEventListener.a(i, str2, (String)localObject1, paramjjq.jdField_b_of_type_ArrayOfByte, false, str1, j, k);
       break label232;
       label556:
       continue;
@@ -1120,7 +1120,7 @@ public class VcControllerImpl
         if (paramContext == null) {
           break label1055;
         }
-        this.mEventHandler = new jhm(this, paramContext);
+        this.mEventHandler = new jjp(this, paramContext);
       }
       return;
       str = str + "HWAVCDEC=0;";
@@ -1142,7 +1142,7 @@ public class VcControllerImpl
     paramContext = Looper.myLooper();
     if (paramContext != null)
     {
-      this.mEventHandler = new jhm(this, paramContext);
+      this.mEventHandler = new jjp(this, paramContext);
       return;
     }
     this.mEventHandler = null;
@@ -1908,7 +1908,7 @@ public class VcControllerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.core.VcControllerImpl
  * JD-Core Version:    0.7.0.1
  */

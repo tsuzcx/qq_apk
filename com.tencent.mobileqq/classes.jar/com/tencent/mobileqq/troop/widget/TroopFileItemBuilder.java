@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajtm;
+import akaz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
 public class TroopFileItemBuilder
 {
   public static final int[] a;
-  public static final int[] b = { 2130838683, 2130838683, 2130838682 };
-  public static final int[] c = { 2131368372, 2131368373, 2131368374 };
+  public static final int[] b = { 2130838691, 2130838691, 2130838690 };
+  public static final int[] c = { 2131368374, 2131368375, 2131368376 };
   protected SwipRightMenuBuilder a;
   
   static
@@ -37,7 +37,7 @@ public class TroopFileItemBuilder
     paramContext = c;
     int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
     int[] arrayOfInt2 = b;
-    return new ajtm(this, 3, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+    return new akaz(this, 3, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
   }
   
   public void a(Context paramContext, View paramView, Object paramObject, SwipRightMenuBuilder.SwipItemBaseHolder paramSwipItemBaseHolder, View.OnClickListener paramOnClickListener)
@@ -49,7 +49,7 @@ public class TroopFileItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopFileItemBuilder
  * JD-Core Version:    0.7.0.1
  */

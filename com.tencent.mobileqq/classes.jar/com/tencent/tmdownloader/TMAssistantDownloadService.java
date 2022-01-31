@@ -14,7 +14,6 @@ import android.util.Log;
 import com.tencent.tmassistantbase.network.NetworkMonitorReceiver;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import com.tencent.tmassistantbase.util.f;
-import com.tencent.tmassistantbase.util.g;
 import com.tencent.tmassistantbase.util.h;
 import com.tencent.tmassistantbase.util.m;
 import com.tencent.tmassistantbase.util.r;
@@ -30,7 +29,7 @@ public class TMAssistantDownloadService
 {
   private static final int MSG_HANDSHAKE_YYB = 1;
   private static final int MSG_INIT_YYBMG = 0;
-  protected static final String TAG = "TMAssistantDownloadSDKService";
+  protected static final String TAG = "TMADownloadSDKService";
   protected final x downloadSDKServiceImpl = new x(this);
   protected final HashMap<com.tencent.tmassistant.aidl.a, String> mCallbackHashMap = new HashMap();
   protected final RemoteCallbackList<com.tencent.tmassistant.aidl.a> mCallbacks = new RemoteCallbackList();
@@ -89,7 +88,7 @@ public class TMAssistantDownloadService
           {
             for (;;)
             {
-              r.c("TMAssistantDownloadSDKService", "exception: ", localRemoteException);
+              r.c("TMADownloadSDKService", "exception: ", localRemoteException);
             }
           }
           i += 1;
@@ -98,8 +97,8 @@ public class TMAssistantDownloadService
       }
       catch (Throwable paramString1)
       {
-        Log.e("TMAssistantDownloadSDKService", "exception: ", paramString1);
-        r.c("TMAssistantDownloadSDKService", "<OnDownloadProgressChanged>exit");
+        Log.e("TMADownloadSDKService", "exception: ", paramString1);
+        r.c("TMADownloadSDKService", "<OnDownloadProgressChanged>exit");
         return;
       }
     }
@@ -131,7 +130,7 @@ public class TMAssistantDownloadService
           {
             for (;;)
             {
-              Log.e("TMAssistantDownloadSDKService", "exception: ", localRemoteException);
+              Log.e("TMADownloadSDKService", "exception: ", localRemoteException);
             }
           }
           i += 1;
@@ -140,8 +139,8 @@ public class TMAssistantDownloadService
       }
       catch (Throwable paramString1)
       {
-        r.c("TMAssistantDownloadSDKService", "exception: ", paramString1);
-        r.c("TMAssistantDownloadSDKService", "<OnDownloadStateChanged>exit");
+        r.c("TMADownloadSDKService", "exception: ", paramString1);
+        r.c("TMADownloadSDKService", "<OnDownloadStateChanged>exit");
         return;
       }
     }
@@ -149,16 +148,16 @@ public class TMAssistantDownloadService
   
   public IBinder onBind(Intent paramIntent)
   {
-    r.c("TMAssistantDownloadSDKService", "<onBind>enter");
-    r.c("TMAssistantDownloadSDKService", "<onBind>intent:" + paramIntent);
-    r.c("TMAssistantDownloadSDKService", "<onBind>returnValue: " + this.downloadSDKServiceImpl);
-    r.c("TMAssistantDownloadSDKService", "<onBind>exit");
+    r.c("TMADownloadSDKService", "<onBind>enter");
+    r.c("TMADownloadSDKService", "<onBind>intent:" + paramIntent);
+    r.c("TMADownloadSDKService", "<onBind>returnValue: " + this.downloadSDKServiceImpl);
+    r.c("TMADownloadSDKService", "<onBind>exit");
     return this.downloadSDKServiceImpl;
   }
   
   public void onCreate()
   {
-    r.c("TMAssistantDownloadSDKService", "<onCreate>enter");
+    r.c("TMADownloadSDKService", "<onCreate>enter");
     super.onCreate();
     GlobalUtil.getInstance().setContext(this);
     NetworkMonitorReceiver.a().b();
@@ -167,7 +166,7 @@ public class TMAssistantDownloadService
     {
       MobileQQCloseServiceReceiver.a().a(this);
       label34:
-      f.a(g.b).post(new u(this));
+      f.a().post(new u(this));
       new Thread(new v(this)).start();
       return;
     }
@@ -179,7 +178,7 @@ public class TMAssistantDownloadService
   
   public void onDestroy()
   {
-    r.c("TMAssistantDownloadSDKService", "<onDestroy>enter");
+    r.c("TMADownloadSDKService", "<onDestroy>enter");
     super.onDestroy();
     ApkDownloadManager.getInstance().uninit();
     if (this.mServiceDownloadTaskManager != null)
@@ -197,13 +196,13 @@ public class TMAssistantDownloadService
     GlobalUtil.getInstance().destroy();
     MobileQQCloseServiceReceiver.a().b(this);
     SystemClock.sleep(300L);
-    r.c("TMAssistantDownloadSDKService", "<onDestroy>exit");
+    r.c("TMADownloadSDKService", "<onDestroy>exit");
     Process.killProcess(Process.myPid());
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    r.c("TMAssistantDownloadSDKService", "onStartCommand......");
+    r.c("TMADownloadSDKService", "onStartCommand......");
     if (paramIntent != null) {}
     for (;;)
     {
@@ -228,7 +227,7 @@ public class TMAssistantDownloadService
           }
           else
           {
-            r.c("TMAssistantDownloadSDKService", "onStartCommand......clientKey : " + paramIntent);
+            r.c("TMADownloadSDKService", "onStartCommand......clientKey : " + paramIntent);
             localObject1 = new Message();
             ((Message)localObject1).what = 0;
             ((Message)localObject1).obj = paramIntent;
@@ -253,11 +252,11 @@ public class TMAssistantDownloadService
   
   public boolean onUnbind(Intent paramIntent)
   {
-    r.c("TMAssistantDownloadSDKService", "<onUnbind>enter");
-    r.c("TMAssistantDownloadSDKService", "<onUnbind>intent:" + paramIntent);
+    r.c("TMADownloadSDKService", "<onUnbind>enter");
+    r.c("TMADownloadSDKService", "<onUnbind>intent:" + paramIntent);
     boolean bool = super.onUnbind(paramIntent);
-    r.c("TMAssistantDownloadSDKService", "<onUnbind>returnValue: " + bool);
-    r.c("TMAssistantDownloadSDKService", "<onUnbind>exit");
+    r.c("TMADownloadSDKService", "<onUnbind>returnValue: " + bool);
+    r.c("TMADownloadSDKService", "<onUnbind>exit");
     return bool;
   }
 }

@@ -1,75 +1,58 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.armap.ArMapHandler.RespWealthGodInfo;
-import com.tencent.mobileqq.armap.ArMapObserver;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.tencent.mobileqq.armap.ARMapActivity;
 import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
 import com.tencent.mobileqq.armap.wealthgod.WealthGodInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
-public class abig
-  extends ArMapObserver
+class abig
+  implements Runnable
 {
-  public abig(ARMapLoadingActivity paramARMapLoadingActivity) {}
+  abig(abif paramabif) {}
   
-  public void onGetWealthGodInfo(boolean paramBoolean, ArMapHandler.RespWealthGodInfo paramRespWealthGodInfo)
+  public void run()
   {
-    ARMapLoadingActivity.a(this.a).f = System.currentTimeMillis();
-    List localList = paramRespWealthGodInfo.jdField_a_of_type_JavaUtilList;
-    boolean bool = paramRespWealthGodInfo.jdField_a_of_type_Boolean;
-    ARMapLoadingActivity.a(this.a).removeMessages(107);
-    if (localList != null)
+    int i = 0;
+    int j = 0;
+    if (ARMapActivity.a(this.a.a) != null)
     {
-      paramRespWealthGodInfo = localList.iterator();
-      while (paramRespWealthGodInfo.hasNext())
+      ARMapActivity.k(this.a.a, true);
+      ARMapActivity.a(this.a.a).setLoadStatus(0);
+      if (ARMapActivity.a(this.a.a) != null) {
+        ARMapActivity.a(this.a.a).b = System.currentTimeMillis();
+      }
+      ARMapActivity.o(this.a.a);
+      if (ARMapActivity.c(this.a.a) == 3)
       {
-        localWealthGodInfo = (WealthGodInfo)paramRespWealthGodInfo.next();
-        QLog.d("ARMapLoadingActivity", 2, "onGetWealthGodInfo info: " + localWealthGodInfo);
+        ARMapActivity.a(this.a.a).b();
+        ARMapActivity.p(this.a.a);
+        if (j == 0) {
+          break label302;
+        }
+        this.a.a.n();
       }
     }
-    WealthGodInfo localWealthGodInfo = null;
-    paramRespWealthGodInfo = localWealthGodInfo;
-    if (paramBoolean)
+    else
     {
-      paramRespWealthGodInfo = localWealthGodInfo;
-      if (localList != null) {
-        paramRespWealthGodInfo = ARMapConfigManager.a(localList);
-      }
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapLoadingActivity", 2, String.format("onGetWealthGodInfo mRequestInfoTimeout=%s isSuc=%s recentInfo=%s", new Object[] { Boolean.valueOf(ARMapLoadingActivity.c(this.a)), Boolean.valueOf(paramBoolean), paramRespWealthGodInfo }));
-    }
-    if (!ARMapLoadingActivity.c(this.a))
-    {
-      ARMapLoadingActivity.a(this.a).removeObserver(ARMapLoadingActivity.a(this.a));
-      ARMapLoadingActivity.a(this.a, paramRespWealthGodInfo);
-      if (ARMapLoadingActivity.a(this.a) == null) {
-        break label384;
-      }
-      ARMapLoadingActivity.a(this.a).jdField_a_of_type_Boolean = bool;
-      ARMapLoadingActivity.b(this.a);
+    if ((ARMapActivity.c(this.a.a) == 1) || (ARMapActivity.c(this.a.a) == 7) || ((ARMapActivity.c(this.a.a) == 4) && (ARMapActivity.a(this.a.a).a == 1))) {
+      i = 1;
     }
     for (;;)
     {
-      ARMapLoadingActivity.a(this.a).setWealthGodInfo(ARMapLoadingActivity.a(this.a), ARMapLoadingActivity.d(this.a));
-      ARMapLoadingActivity.b(this.a, ARMapLoadingActivity.a(this.a).a());
-      if ((ARMapLoadingActivity.a(this.a) != null) && (ARMapLoadingActivity.a(this.a) != null))
-      {
-        ARMapLoadingActivity.a(this.a).a(ARMapLoadingActivity.a(this.a));
-        ARMapLoadingActivity.a(this.a).a(ARMapLoadingActivity.a(this.a), ARMapLoadingActivity.b(this.a));
+      j = i;
+      if (!this.a.a.f) {
+        break;
       }
-      if (ARMapLoadingActivity.b(this.a) == 5) {
-        ARMapLoadingActivity.a(this.a).c();
+      ARMapActivity.p(this.a.a);
+      j = i;
+      break;
+      if ((ARMapActivity.c(this.a.a) == 2) || ((ARMapActivity.c(this.a.a) == 4) && (ARMapActivity.a(this.a.a).a == 0))) {
+        ARMapActivity.a(this.a.a).b();
+      } else {
+        ARMapActivity.a(this.a.a).a();
       }
-      ARMapLoadingActivity.a(this.a).removeMessages(102);
-      ARMapLoadingActivity.a(this.a).sendEmptyMessageDelayed(102, 200L);
-      return;
-      label384:
-      QLog.d("ARMapLoadingActivity", 1, "onGetWealthGodInfo get info fail! no activity?");
     }
+    label302:
+    ARMapActivity.a(this.a.a).d();
   }
 }
 

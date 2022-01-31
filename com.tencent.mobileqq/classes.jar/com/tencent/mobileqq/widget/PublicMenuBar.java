@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akwd;
+import aldu;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -27,9 +27,9 @@ public class PublicMenuBar
     String str = paramMenuItem.a();
     Drawable localDrawable = paramMenuItem.a();
     View localView = ((LayoutInflater)super.getContext().getSystemService("layout_inflater")).inflate(paramInt, null);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131366828);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131364574);
-    TextView localTextView = (TextView)localView.findViewById(2131364575);
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131366826);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131364598);
+    TextView localTextView = (TextView)localView.findViewById(2131364599);
     if ((localImageView1 != null) && (paramMenuItem.a() > 0))
     {
       localImageView1.setVisibility(0);
@@ -48,7 +48,7 @@ public class PublicMenuBar
     }
     for (;;)
     {
-      localView.setOnClickListener(new akwd(this, paramMenuItem.b(), paramMenuItem.a()));
+      localView.setOnClickListener(new aldu(this, paramMenuItem.b(), paramMenuItem.a()));
       localView.setFocusable(true);
       localView.setClickable(true);
       paramMenuItem = new LinearLayout.LayoutParams(-1, -1, 1.0F);
@@ -84,7 +84,7 @@ public class PublicMenuBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PublicMenuBar
  * JD-Core Version:    0.7.0.1
  */

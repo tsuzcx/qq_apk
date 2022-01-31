@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
 
 public class lzu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lzu(ReadInJoyWebDataManager paramReadInJoyWebDataManager, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject) {}
+  public lzu(ComponentJump paramComponentJump, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyWebDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_OrgJsonJSONObject);
+    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_JavaLangString);
+    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.b);
   }
 }
 

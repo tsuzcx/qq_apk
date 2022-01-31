@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
 
-class uvd
+public class uvd
   implements Runnable
 {
-  uvd(uvc paramuvc) {}
+  public uvd(PressToChangeVoicePanel paramPressToChangeVoicePanel) {}
   
   public void run()
   {
-    this.a.a.playAnim();
+    PressToChangeVoicePanel.a(this.a).sendAccessibilityEvent(128);
   }
 }
 

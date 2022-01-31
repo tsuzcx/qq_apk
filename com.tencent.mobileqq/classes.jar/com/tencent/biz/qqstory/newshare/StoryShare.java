@@ -16,16 +16,16 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troopshare.TroopShareUtility;
 import java.util.Map;
-import nfw;
-import nfx;
-import nfy;
+import nkg;
+import nkh;
+import nki;
 
 public class StoryShare
   implements OnShareUIListener
 {
-  private OnPrepareShareListener jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnPrepareShareListener = new nfx(this);
+  private OnPrepareShareListener jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnPrepareShareListener = new nkh(this);
   private OnShareListener jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnShareListener;
-  private final StoryShareCallback jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback = new nfw(this);
+  private final StoryShareCallback jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback = new nkg(this);
   private ShareModeBase jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase;
   private OnShareUIListener jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener;
   private ShareUI jdField_a_of_type_ComTencentBizQqstoryNewshareUiShareUI;
@@ -82,7 +82,7 @@ public class StoryShare
     this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase = paramShareModeBase;
     this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiShareUI.a());
     this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnPrepareShareListener = this.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackOnPrepareShareListener;
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener = new nfy(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUiOnShareUIListener = new nki(this);
     return this;
   }
   

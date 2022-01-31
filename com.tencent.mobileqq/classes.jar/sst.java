@@ -1,28 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class sst
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public sst(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public sst(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.n = this.a.l;
-    FriendProfileMoreInfoActivity.a(this.a, this.a.l);
-    if (this.a.l)
-    {
-      this.a.a("0X80081E7", 4);
-      return;
-    }
-    this.a.a("0X80081E4", 3);
+    paramView = new Bundle();
+    paramView.putString("uin", String.valueOf(AppConstants.z));
+    paramView.putInt("uintype", -1);
+    this.a.a.a(ForwardAbility.ForwardAbilityType.k.intValue(), paramView);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004051", "0X8004051", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     sst
  * JD-Core Version:    0.7.0.1
  */

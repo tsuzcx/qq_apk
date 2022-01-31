@@ -1,17 +1,22 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView.OnHorizontalScrollListener;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
+import android.os.Handler;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
 public class nsr
-  implements StoryPickerHorizontalListView.OnHorizontalScrollListener
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public nsr(StoryPickerFragment paramStoryPickerFragment) {}
+  public nsr(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
   
-  public void a(String paramString)
+  public boolean onPreDraw()
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramString);
-    }
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(0);
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new nss(this), 100L);
+    this.a.h();
+    this.a.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
   }
 }
 

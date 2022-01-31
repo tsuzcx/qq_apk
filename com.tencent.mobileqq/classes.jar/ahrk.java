@@ -1,72 +1,31 @@
-import com.tencent.mobileqq.search.ISearchable;
-import com.tencent.mobileqq.search.SearchTask;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import java.util.concurrent.Callable;
 
-public class ahrk
-  implements Callable
+public final class ahrk
+  extends BroadcastReceiver
 {
-  public ahrk(SearchTask paramSearchTask, int paramInt1, int paramInt2) {}
+  private ahrk(PtvTemplateProviderView paramPtvTemplateProviderView) {}
   
-  public List a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = SearchTask.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask).subList(this.jdField_a_of_type_Int, this.b);
-    ArrayList localArrayList = new ArrayList();
-    ISearchable localISearchable;
-    if (localObject != null)
+    if ("action_brocassreceiver_for_ptv".equals(paramIntent.getAction()))
     {
-      localObject = ((List)localObject).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        localISearchable = (ISearchable)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.isCancelled()) {
-          break label141;
-        }
-      }
-      if (!SearchTask.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask).equals(SearchTask.b(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask))) {
-        localObject = localArrayList.iterator();
-      }
-    }
-    for (;;)
-    {
-      if (((Iterator)localObject).hasNext())
-      {
-        localISearchable = (ISearchable)((Iterator)localObject).next();
-        if (!this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.isCancelled()) {}
-      }
-      else
-      {
-        return localArrayList;
-        label141:
-        localISearchable.a(SearchTask.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask));
-        if (localISearchable.c() == -9223372036854775808L) {
-          break;
-        }
-        int i = localArrayList.indexOf(localISearchable);
-        if (-1 == i)
-        {
-          localArrayList.add(localISearchable);
-          break;
-        }
-        if (((ISearchable)localArrayList.get(i)).c() >= localISearchable.c()) {
-          break;
-        }
-        localArrayList.set(i, localISearchable);
-        break;
-      }
-      long l = localISearchable.c();
-      localISearchable.a(SearchTask.b(this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask));
-      if (localISearchable.c() == -9223372036854775808L) {
-        localISearchable.a(l);
+      CapturePtvTemplateManager.a().b(false);
+      PtvTemplateProviderView.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PtvTemplateProviderView", 2, "PtvTemplateProviderView PtvBroadcastReceiver size=" + this.a.a.size());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahrk
  * JD-Core Version:    0.7.0.1
  */

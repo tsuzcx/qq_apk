@@ -21,7 +21,7 @@ public class OneFeedNodeInfoPullHandler$RequestFeedObserver
       return;
     }
     OneFeedNodeInfoPullHandler.SingleFeedInfoEvent localSingleFeedInfoEvent = new OneFeedNodeInfoPullHandler.SingleFeedInfoEvent();
-    localSingleFeedInfoEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelStoryHomeFeed = ((StoryHomeFeed)paramHomeFeedData.b.get(0));
+    localSingleFeedInfoEvent.a = ((StoryHomeFeed)paramHomeFeedData.b.get(0));
     Dispatchers.get().dispatch(localSingleFeedInfoEvent);
   }
   
@@ -36,7 +36,7 @@ public class OneFeedNodeInfoPullHandler$RequestFeedObserver
     super.onError(paramError);
     paramError = (ErrorMessage)paramError;
     OneFeedNodeInfoPullHandler.SingleFeedInfoEvent localSingleFeedInfoEvent = new OneFeedNodeInfoPullHandler.SingleFeedInfoEvent();
-    localSingleFeedInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramError;
+    localSingleFeedInfoEvent.errorInfo = paramError;
     Dispatchers.get().dispatch(localSingleFeedInfoEvent);
   }
 }

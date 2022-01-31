@@ -1,45 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.LinearLayout;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
 
 public class jus
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public jus(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public jus(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName()))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GAudioMembersCtrlActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
-      }
+    if (this.a.b != null) {
+      this.a.b.setEnabled(true);
     }
-    int i;
-    long l;
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
-      i = paramIntent.getIntExtra("stopReason3rd", -1);
-      l = paramIntent.getLongExtra("groupId", -1L);
-    } while ((i != 1) || (this.a.jdField_a_of_type_Long != l));
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMembersCtrlActivity", 2, "ACTION_STOP_VIDEO_CHAT");
-    }
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jus
  * JD-Core Version:    0.7.0.1
  */

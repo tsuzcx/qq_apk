@@ -1,42 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ReadyResource;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
-import java.util.List;
+import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
+import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
 
 public class aiat
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public aiat(DanceReadyFilter paramDanceReadyFilter) {}
+  public aiat(MessageSearchEngine paramMessageSearchEngine, String paramString) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (DanceReadyFilter.a(this.a) > 0)
-    {
-      DanceReadyFilter.e(this.a).a((String)DanceReadyFilter.a(this.a).a.a.get(DanceReadyFilter.a(this.a) - 1));
-      if (DanceReadyFilter.c(this.a) != null)
-      {
-        DanceReadyFilter.c(this.a).setStartOffset(300L);
-        DanceReadyFilter.e(this.a).e();
-        DanceReadyFilter.e(this.a).a(DanceReadyFilter.c(this.a));
-      }
-      return;
-    }
-    DanceReadyFilter.e(this.a).h_(false);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    DanceReadyFilter.c(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiat
  * JD-Core Version:    0.7.0.1
  */

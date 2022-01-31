@@ -1,33 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.qphone.base.util.QLog;
 
-public class laa
+class laa
   implements Runnable
 {
-  public laa(EcshopCacheTool paramEcshopCacheTool) {}
+  laa(kzz paramkzz) {}
   
   public void run()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(Friends.class, " SELECT * FROM Friends ", new String[0]);
-    this.a.jdField_a_of_type_JavaUtilMap = new HashMap();
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    try
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Friends localFriends = (Friends)((Iterator)localObject).next();
-        this.a.jdField_a_of_type_JavaUtilMap.put(localFriends.uin, localFriends);
+      boolean bool = SubscriptRecommendController.a(this.a.a.a, false, this.a.a.g);
+      if (QLog.isColorLevel()) {
+        QLog.d("WebLog_WebViewFragment", 2, "set subscribe full recommend switch = false , result : " + bool);
       }
+      return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment != null) && (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a != null)) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.getActivity().runOnUiThread(new lab(this));
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }

@@ -1,15 +1,53 @@
-import android.widget.TextView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.support.v4.util.MQLruCache;
+import com.tencent.biz.pubaccount.util.PreloadManager;
+import com.tencent.mobileqq.app.AppConstants;
+import java.io.File;
 
-class mym
-  implements Runnable
+public class mym
+  extends Thread
 {
-  mym(mye parammye, boolean paramBoolean, int paramInt) {}
+  public mym(PreloadManager paramPreloadManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mye.a.a.setText("" + PublicAccountImageCollectionMainActivity.c(this.jdField_a_of_type_Mye.a));
-    PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Mye.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    int j = 0;
+    if (PreloadManager.a(this.a) != null) {
+      PreloadManager.a(this.a).releaseLargeCache();
+    }
+    long l = System.currentTimeMillis();
+    Object localObject1 = new File(AppConstants.co);
+    int k;
+    int i;
+    Object localObject2;
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    {
+      localObject1 = ((File)localObject1).listFiles();
+      k = localObject1.length;
+      i = 0;
+      while (i < k)
+      {
+        localObject2 = localObject1[i];
+        if (l - localObject2.lastModified() > 172800000L) {
+          localObject2.delete();
+        }
+        i += 1;
+      }
+    }
+    localObject1 = new File(AppConstants.cp);
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    {
+      localObject1 = ((File)localObject1).listFiles();
+      k = localObject1.length;
+      i = j;
+      while (i < k)
+      {
+        localObject2 = localObject1[i];
+        if (l - localObject2.lastModified() > 172800000L) {
+          localObject2.delete();
+        }
+        i += 1;
+      }
+    }
   }
 }
 

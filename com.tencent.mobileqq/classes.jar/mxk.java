@@ -1,46 +1,38 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-class mxk
-  extends GestureDetector.SimpleOnGestureListener
+public class mxk
+  implements View.OnClickListener
 {
-  private mxk(mxc parammxc) {}
+  public mxk(SubscriptRecommendController paramSubscriptRecommendController) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
-    mxc.b(this.a);
-    return false;
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    if ((!(mxc.a(this.a).getTag() instanceof mxi)) || (((mxc.a(this.a).getTag() instanceof mxi)) && (!mxc.a(this.a).a(mxc.a(this.a)).booleanValue()))) {
-      mxc.c(this.a);
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
+    ThreadManager.getSubThreadHandler().post(new mxl(this));
+    if (this.a.jdField_a_of_type_Int == 1) {
+      SubscriptRecommendController.a(this.a);
     }
-    return false;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Int != 3);
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
+    } while ((paramView == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (!(this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity)));
+    paramView.sendEmptyMessage(1006);
   }
 }
 

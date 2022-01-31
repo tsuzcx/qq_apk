@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.richmedia.dc.DataAdapter;
-import java.util.HashMap;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 
 public class ahnx
-  extends DataAdapter
+  implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
+  public ahnx(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public HashMap a(String paramString)
+  public void run()
   {
-    if ("RealShortVideo.Record".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_cameraID", String.valueOf(this.jdField_a_of_type_Int));
-      paramString.put("param_hasMultiSegments", String.valueOf(this.jdField_a_of_type_Boolean));
-      return paramString;
+    EffectsCameraCaptureFragment.h(this.a, false);
+    if (EffectsCameraCaptureFragment.a(this.a) == null) {
+      return;
     }
-    return null;
+    EffectsCameraCaptureFragment.a(this.a).removeView(EffectsCameraCaptureFragment.a(this.a));
+    EffectsCameraCaptureFragment.a(this.a).setVisibility(0);
+    EffectsCameraCaptureFragment.a(this.a).setEnabled(true);
+    this.a.a.a(null);
   }
 }
 

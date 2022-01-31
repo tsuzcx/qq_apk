@@ -1,21 +1,25 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class szd
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public szd(LikeRankingListActivity paramLikeRankingListActivity, Card paramCard) {}
+  public szd(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataCard.strNick);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.a.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.d.setVisibility(0);
+    if (paramIntent != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
+      }
+      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
+        this.a.finish();
+      }
+    }
   }
 }
 

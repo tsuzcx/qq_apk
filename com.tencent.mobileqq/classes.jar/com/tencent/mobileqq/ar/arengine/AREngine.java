@@ -1,43 +1,43 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aafp;
-import aafq;
-import aafr;
-import aafs;
-import aaft;
-import aafu;
-import aafv;
-import aafw;
-import aafx;
-import aafy;
-import aafz;
-import aaga;
-import aagb;
-import aagc;
-import aagd;
-import aagf;
-import aagg;
-import aagi;
-import aagj;
-import aagl;
-import aagm;
-import aagn;
-import aago;
-import aagp;
-import aagq;
-import aagr;
-import aags;
-import aagt;
-import aagu;
-import aagv;
-import aagw;
-import aagy;
-import aagz;
-import aaha;
-import aahb;
-import aahc;
-import aahd;
-import aahe;
+import aamg;
+import aamh;
+import aami;
+import aamj;
+import aamk;
+import aaml;
+import aamm;
+import aamn;
+import aamo;
+import aamp;
+import aamq;
+import aamr;
+import aams;
+import aamt;
+import aamu;
+import aamw;
+import aamx;
+import aamz;
+import aana;
+import aanc;
+import aand;
+import aane;
+import aanf;
+import aang;
+import aanh;
+import aani;
+import aanj;
+import aank;
+import aanl;
+import aanm;
+import aann;
+import aanp;
+import aanq;
+import aanr;
+import aans;
+import aant;
+import aanu;
+import aanv;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.PointF;
@@ -185,11 +185,11 @@ public class AREngine
   private int jdField_d_of_type_Int = 5;
   private final long jdField_d_of_type_Long = 5L;
   private ArCloudConfigInfo jdField_d_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-  private Runnable jdField_d_of_type_JavaLangRunnable = new aagu(this);
+  private Runnable jdField_d_of_type_JavaLangRunnable = new aanl(this);
   private boolean jdField_d_of_type_Boolean;
   private int jdField_e_of_type_Int = 5;
   private final long jdField_e_of_type_Long = 2247L;
-  private Runnable jdField_e_of_type_JavaLangRunnable = new aagv(this);
+  private Runnable jdField_e_of_type_JavaLangRunnable = new aanm(this);
   private boolean jdField_e_of_type_Boolean;
   private int jdField_f_of_type_Int = 5;
   private long jdField_f_of_type_Long = 0L;
@@ -259,9 +259,9 @@ public class AREngine
     this.jdField_a_of_type_Long = 0L;
     this.jdField_c_of_type_Boolean = true;
     this.jdField_b_of_type_Int = 15;
-    this.jdField_a_of_type_JavaLangRunnable = new aafz(this);
-    this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr$DownloadListener = new aagw(this);
-    this.jdField_b_of_type_JavaLangRunnable = new aagy(this);
+    this.jdField_a_of_type_JavaLangRunnable = new aamq(this);
+    this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr$DownloadListener = new aann(this);
+    this.jdField_b_of_type_JavaLangRunnable = new aanp(this);
     H = false;
   }
   
@@ -550,7 +550,7 @@ public class AREngine
   {
     QLog.i("AREngine_AREngine", 1, "processCloudMarkerRecogResult start.");
     this.jdField_n_of_type_Boolean = true;
-    this.jdField_c_of_type_JavaLangRunnable = new aafv(this);
+    this.jdField_c_of_type_JavaLangRunnable = new aamm(this);
     if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.a(paramARCloudMarkerRecogResult, this, this.A, this.jdField_a_of_type_JavaLangString))
     {
       QLog.i("AREngine_AREngine", 1, "processCloudMarkerRecogResult end. download preprocess failed.");
@@ -564,7 +564,7 @@ public class AREngine
   private void a(ARCloudObjectClassifyResult paramARCloudObjectClassifyResult)
   {
     QLog.i("AREngine_AREngine", 1, "processYouTuCloudObjectClassifyResult start.");
-    this.jdField_c_of_type_JavaLangRunnable = new aafw(this);
+    this.jdField_c_of_type_JavaLangRunnable = new aamn(this);
     if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.a(paramARCloudObjectClassifyResult, this, this.A, this.jdField_a_of_type_JavaLangString))
     {
       QLog.i("AREngine_AREngine", 1, "processYouTuCloudObjectClassifyResult end. download preprocess failed.");
@@ -587,7 +587,7 @@ public class AREngine
   private void a(ARCloudSceneRecogResult paramARCloudSceneRecogResult)
   {
     QLog.i("AREngine_AREngine", 1, "processCloudSceneRecogResult start.");
-    this.jdField_c_of_type_JavaLangRunnable = new aafy(this);
+    this.jdField_c_of_type_JavaLangRunnable = new aamp(this);
     if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.a(paramARCloudSceneRecogResult, this, this.A, this.jdField_a_of_type_JavaLangString))
     {
       QLog.i("AREngine_AREngine", 1, "processCloudSceneRecogResult end. download preprocess failed.");
@@ -719,7 +719,7 @@ public class AREngine
             e(4);
           }
           this.jdField_a_of_type_Long = System.currentTimeMillis();
-          a(new aagb(this), 1000L);
+          a(new aams(this), 1000L);
         }
       }
       else
@@ -743,7 +743,7 @@ public class AREngine
         if (!l()) {
           break label970;
         }
-        a(new aagc(this), 1500L);
+        a(new aamt(this), 1500L);
         return;
         label874:
         this.jdField_a_of_type_Int = 0;
@@ -918,7 +918,7 @@ public class AREngine
       if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult != null) {
         j(false);
       }
-      this.jdField_c_of_type_JavaLangRunnable = new aafx(this);
+      this.jdField_c_of_type_JavaLangRunnable = new aamo(this);
       if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager.a(paramARMIGObjectClassifyResult, this, this.A, this.jdField_a_of_type_JavaLangString))
       {
         QLog.i("AREngine_AREngine", 1, "processMIGCloudObjectClassifyResult end. download preprocess failed.");
@@ -1059,7 +1059,7 @@ public class AREngine
     for (long l1 = 0L;; l1 = 1000L - l2)
     {
       QLog.i("AREngine_AREngine", 1, String.format("onARObjectClassifyDownloadComplete result=%s timeCost=%s timeDelay=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(l2), Long.valueOf(l1) }));
-      a(new aagg(this, paramBoolean, paramArCloudConfigInfo), l1);
+      a(new aamx(this, paramBoolean, paramArCloudConfigInfo), l1);
       this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
       return;
     }
@@ -1093,7 +1093,7 @@ public class AREngine
     for (long l1 = 0L;; l1 = 1000L - l2)
     {
       QLog.i("AREngine_AREngine", 1, String.format("onARSceneRecogDownloadCompleteInteral result=%s timeCost=%s timeDelay=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(l2), Long.valueOf(l1) }));
-      a(new aagj(this, paramBoolean, paramArCloudConfigInfo), l1);
+      a(new aana(this, paramBoolean, paramArCloudConfigInfo), l1);
       this.jdField_b_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
       return;
     }
@@ -1284,7 +1284,7 @@ public class AREngine
   
   private void w()
   {
-    f(new aafp(this));
+    f(new aamg(this));
   }
   
   private void x()
@@ -1315,10 +1315,10 @@ public class AREngine
       }
       QLog.i("AREngine_AREngine", 2, "openCamera end. mIsCameraPreviewing = " + this.jdField_m_of_type_Boolean);
       if (this.jdField_j_of_type_Int == 1) {
-        a(new aaga(this));
+        a(new aamr(this));
       }
     } while ((!this.C) || (this.E) || (k()));
-    a(new aago(this), 2000L);
+    a(new aanf(this), 2000L);
     return;
     QLog.i("AREngine_AREngine", 2, "start preview failed. mCurCameraState = " + this.jdField_k_of_type_Int);
     this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.a();
@@ -1921,7 +1921,7 @@ public class AREngine
       if ((bool) && (i1 == 0))
       {
         this.jdField_o_of_type_Boolean = true;
-        a(new aafq(this));
+        a(new aamh(this));
       }
       for (;;)
       {
@@ -1956,7 +1956,7 @@ public class AREngine
         if ((!bool) && (this.jdField_o_of_type_Boolean))
         {
           this.jdField_o_of_type_Boolean = false;
-          a(new aafr(this));
+          a(new aami(this));
         }
       }
       label937:
@@ -1965,7 +1965,7 @@ public class AREngine
         localObject = ARCloudRecogResult.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramARCloudRecogResult);
         if ((ARCloudRecogResult.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramARCloudRecogResult)) && (((ARCloudLBSLocationCheckResult)localObject).jdField_a_of_type_Int != 1))
         {
-          a(new aafs(this, (ARCloudLBSLocationCheckResult)localObject, ARCloudRecogResult.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramARCloudRecogResult)));
+          a(new aamj(this, (ARCloudLBSLocationCheckResult)localObject, ARCloudRecogResult.a(this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramARCloudRecogResult)));
           if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl != null) {
             this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl.a(true);
           }
@@ -1976,7 +1976,7 @@ public class AREngine
       z();
       this.jdField_i_of_type_Long = 0L;
       this.jdField_j_of_type_Long = 0L;
-      a(new aaft(this, paramARCloudRecogResult));
+      a(new aamk(this, paramARCloudRecogResult));
       if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudControl == null) {
         break;
       }
@@ -2191,7 +2191,7 @@ public class AREngine
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_AREngine", 2, "onCommonCallbackFromManager, resourceInfo=" + paramArCloudConfigInfo + ", action=" + paramInt1 + ", result=" + paramInt2 + " ,data=" + paramObject);
     }
-    a(new aags(this, paramArCloudConfigInfo, paramInt1, paramInt2, paramObject));
+    a(new aanj(this, paramArCloudConfigInfo, paramInt1, paramInt2, paramObject));
   }
   
   /* Error */
@@ -3094,13 +3094,13 @@ public class AREngine
   public void a(ArVideoResourceInfo paramArVideoResourceInfo, ARRenderMangerInnerCallback paramARRenderMangerInnerCallback)
   {
     QLog.i("AREngine_AREngine", 1, "onRenderManagerCallback. onMultiARAnimationInteraction.");
-    a(new aagr(this, paramArVideoResourceInfo, paramARRenderMangerInnerCallback));
+    a(new aani(this, paramArVideoResourceInfo, paramARRenderMangerInnerCallback));
   }
   
   public void a(String paramString, int paramInt)
   {
     QLog.i("AREngine_AREngine", 1, "onRenderManagerCallback. onARAnimationStart. key = " + paramString + ", remainPlayCount = " + paramInt);
-    a(new aagm(this, paramInt));
+    a(new aand(this, paramInt));
   }
   
   public void a(boolean paramBoolean)
@@ -3210,7 +3210,7 @@ public class AREngine
     if (this.jdField_k_of_type_Int == 1) {}
     this.jdField_k_of_type_Int = 3;
     this.jdField_l_of_type_Int = 10;
-    f(new aagz(this, paramBoolean));
+    f(new aanq(this, paramBoolean));
     return true;
   }
   
@@ -3344,13 +3344,13 @@ public class AREngine
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_AREngine", 2, "onCommonCallbackFromUI, info=" + paramArCloudConfigInfo + ", action=" + paramInt1 + ", result=" + paramInt2 + ", data=" + paramObject);
     }
-    a(new aagt(this, paramArCloudConfigInfo, paramInt1, paramInt2, paramObject));
+    a(new aank(this, paramArCloudConfigInfo, paramInt1, paramInt2, paramObject));
   }
   
   public void b(String paramString, int paramInt)
   {
     QLog.i("AREngine_AREngine", 1, "onRenderManagerCallback. onARAnimationComplete. key = " + paramString + ", remainPlayCount = " + paramInt);
-    a(new aagn(this, paramInt));
+    a(new aane(this, paramInt));
   }
   
   public void b(boolean paramBoolean)
@@ -3381,7 +3381,7 @@ public class AREngine
     for (long l1 = 0L;; l1 = 1000L - l2)
     {
       QLog.i("AREngine_AREngine", 1, String.format("onARMarkerAllDownloadCompleteInternal result=%s timeCost=%s timeDelay=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(l2), Long.valueOf(l1) }));
-      a(new aagd(this, paramBoolean, paramArCloudConfigInfo), l1);
+      a(new aamu(this, paramBoolean, paramArCloudConfigInfo), l1);
       return;
     }
   }
@@ -3431,7 +3431,7 @@ public class AREngine
   public void c(String paramString, int paramInt)
   {
     QLog.i("AREngine_AREngine", 1, "onRenderManagerCallback. onARAnimationPlayInterrupt. key = " + paramString + ", remainPlayCount = " + paramInt);
-    a(new aagp(this, paramInt));
+    a(new aang(this, paramInt));
   }
   
   public void c(boolean paramBoolean)
@@ -3484,13 +3484,13 @@ public class AREngine
   public void d(String paramString, int paramInt)
   {
     QLog.i("AREngine_AREngine", 1, "onRenderManagerCallback. onARAnimationPlayError. key = " + paramString + ", remainPlayCount = " + paramInt);
-    a(new aagq(this, paramInt));
+    a(new aanh(this, paramInt));
   }
   
   public void d(boolean paramBoolean)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult != null)) {
-      a(new aafu(this, paramBoolean));
+      a(new aaml(this, paramBoolean));
     }
   }
   
@@ -3569,7 +3569,7 @@ public class AREngine
   
   public void e(boolean paramBoolean)
   {
-    a(new aagl(this));
+    a(new aanc(this));
   }
   
   public boolean e()
@@ -3619,7 +3619,7 @@ public class AREngine
       this.jdField_q_of_type_Long = 0L;
       this.jdField_r_of_type_Long = 0L;
     } while (!this.jdField_m_of_type_Boolean);
-    a(new aaha(this));
+    a(new aanr(this));
     return true;
   }
   
@@ -3736,7 +3736,7 @@ public class AREngine
     do
     {
       return;
-      a(new aahc(this));
+      a(new aant(this));
     } while (this.jdField_a_of_type_ComTencentMobileqqArArengineQRRecognizerController == null);
     this.jdField_a_of_type_ComTencentMobileqqArArengineQRRecognizerController.b();
     this.jdField_a_of_type_ComTencentMobileqqArArengineQRRecognizerController = null;
@@ -3756,7 +3756,7 @@ public class AREngine
       this.jdField_c_of_type_JavaLangRunnable = null;
     }
     e();
-    a(new aahb(this));
+    a(new aans(this));
     return true;
   }
   
@@ -4003,14 +4003,14 @@ public class AREngine
   {
     QLog.i("AREngine_AREngine", 1, "onARObjectClassifyDownloadStart.");
     this.jdField_s_of_type_Long = System.currentTimeMillis();
-    a(new aagf(this));
+    a(new aamw(this));
   }
   
   public void r()
   {
     QLog.i("AREngine_AREngine", 1, "onARSceneRecogDownloadStart.");
     this.jdField_s_of_type_Long = System.currentTimeMillis();
-    a(new aagi(this));
+    a(new aamz(this));
   }
   
   public void s()
@@ -4058,11 +4058,11 @@ public class AREngine
       if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera != null) && (this.jdField_m_of_type_Boolean)) {
         this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.a(this.jdField_n_of_type_Int, this.jdField_o_of_type_Int);
       }
-      a(new aahe(this));
+      a(new aanv(this));
       return;
       label206:
       QLog.i("AREngine_AREngine", 2, "continue to start preview after SurfaceCreated.");
-      f(new aahd(this));
+      f(new aanu(this));
     }
   }
   

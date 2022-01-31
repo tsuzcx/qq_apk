@@ -1,23 +1,24 @@
-import android.content.Context;
-import android.view.Window;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.widget.ActionSheet;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.QQLogo;
 
 public class kbh
-  extends ActionSheet
+  implements Animation.AnimationListener
 {
-  public kbh(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
+  public kbh(QQLogo paramQQLogo) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext);
-    super.getWindow().addFlags(524288);
-    super.getWindow().addFlags(128);
-    super.getWindow().addFlags(1024);
-    super.getWindow().addFlags(2097152);
+    this.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kbh
  * JD-Core Version:    0.7.0.1
  */

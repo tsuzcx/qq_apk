@@ -1,60 +1,72 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageForQQWalletTips;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class accm
-  extends Handler
+  implements Runnable
 {
-  protected Bundle a;
-  private WeakReference a;
+  public accm(MessageForQQWalletTips paramMessageForQQWalletTips, WeakReference paramWeakReference, List paramList, String paramString) {}
   
-  public accm(MessengerService paramMessengerService)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessengerService);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, mServiceWeakRef null");
+    Object localObject1 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject1 == null) {
+      return;
+    }
+    Object localObject2 = (TroopManager)((QQAppInterface)localObject1).getManager(51);
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject3;
+    while (localIterator.hasNext())
+    {
+      localObject3 = (String)localIterator.next();
+      localObject3 = ((TroopManager)localObject2).b(this.jdField_a_of_type_JavaLangString, (String)localObject3);
+      if (localObject3 != null) {
+        localLinkedList.add(localObject3);
       }
     }
-    MessengerService localMessengerService;
-    int i;
-    do
+    if (localLinkedList.size() >= this.jdField_a_of_type_JavaUtilList.size())
     {
-      do
-      {
-        return;
-        localMessengerService = (MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localMessengerService != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, service null");
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips.updateMsg((QQAppInterface)localObject1);
       return;
-      i = paramMessage.what;
-    } while (i != 4);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("qwallet.type", i);
-    if (paramMessage.arg1 == 1) {}
+    }
+    localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    label135:
+    label229:
+    label232:
     for (;;)
     {
-      localBundle.putBoolean("qwallet.isSuccess", bool);
-      localBundle.putSerializable("qwallet.data", (Serializable)paramMessage.obj);
-      if (this.jdField_a_of_type_AndroidOsBundle == null) {
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        if (localLinkedList == null) {
+          break label229;
+        }
+        localIterator = localLinkedList.iterator();
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject3 = (TroopMemberInfo)localIterator.next();
+        } while ((localObject3 == null) || (!QWalletTools.c(((TroopMemberInfo)localObject3).memberuin, (String)localObject2)));
+      }
+      for (int i = 0;; i = 1)
+      {
+        if (i == 0) {
+          break label232;
+        }
+        ThreadManager.executeOnNetWorkThread(new accn(this, (String)localObject2));
+        break label135;
         break;
       }
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      localMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bool = false;
     }
   }
 }

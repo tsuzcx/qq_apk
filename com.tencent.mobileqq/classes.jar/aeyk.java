@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnInfoListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
 
 public class aeyk
-  implements IVideoView.OnInfoListener
+  extends NearbyCardObserver
 {
-  public aeyk(VideoPlayerView paramVideoPlayerView) {}
+  public aeyk(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public boolean a(IVideoView paramIVideoView, int paramInt, Object paramObject)
+  public void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2, String paramString)
   {
-    if (paramInt == 21) {
-      QualityReporter.f();
+    if (paramBoolean1)
+    {
+      this.a.app.a(this.a.app.getCurrentAccountUin(), 200);
+      long l = ((Long)NearbySPUtil.a(this.a.app.getAccount(), "self_tinnyid", Long.valueOf(0L))).longValue();
+      if (l != 0L) {
+        this.a.app.a(String.valueOf(l), 202);
+      }
     }
-    return false;
+    this.a.runOnUiThread(new aeyl(this, paramBoolean1));
   }
 }
 

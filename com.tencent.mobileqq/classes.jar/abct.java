@@ -1,30 +1,46 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
+import android.text.TextUtils;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetLocalAppPath;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class abct
-  implements Animator.AnimatorListener
+public final class abct
+  implements Runnable
 {
-  public abct(ConversationPullDownActiveBase paramConversationPullDownActiveBase, View paramView) {}
+  public ArkLocalAppMgr.IGetLocalAppPath a;
+  public String a;
+  public WeakReference a;
+  public String b;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public abct(ArkLocalAppMgr paramArkLocalAppMgr, String paramString1, String paramString2, ArkLocalAppMgr.IGetLocalAppPath paramIGetLocalAppPath)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.p();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramArkLocalAppMgr);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetLocalAppPath = paramIGetLocalAppPath;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.p();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.k) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    Object localObject = (ArkLocalAppMgr)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkLocalAppMgr", 2, "ArkLocalAppMgr.GetAppPathTask.object.null");
+      }
     }
+    do
+    {
+      return;
+      localObject = ((ArkLocalAppMgr)localObject).a(this.jdField_a_of_type_JavaLangString, this.b);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ArkApp.ArkLocalAppMgr", 2, "ArkLocalAppMgr.GetAppPathTask.path.null");
+    return;
+    ArkAppCenter.a().postToMainThread(new abcu(this, (String)localObject));
   }
 }
 

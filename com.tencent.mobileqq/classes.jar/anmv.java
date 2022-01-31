@@ -1,22 +1,22 @@
-import dov.com.qq.im.capture.paster.PasterDataManager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
-import java.util.Collections;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import cooperation.thirdpay.NFCPayPluginProxyActivity;
 
 public class anmv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anmv(PasterDataManager paramPasterDataManager) {}
+  public anmv(NFCPayPluginProxyActivity paramNFCPayPluginProxyActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback.a(1, Collections.EMPTY_LIST);
-    }
+    this.a.startActivity(new Intent("android.settings.NFC_SETTINGS"));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmv
  * JD-Core Version:    0.7.0.1
  */

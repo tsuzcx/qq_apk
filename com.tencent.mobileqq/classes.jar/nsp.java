@@ -1,28 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.ChangeVideoSortEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.YearCollectionViewHolder;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
 public class nsp
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public nsp(ShareGroupsListAdapter.YearCollectionViewHolder paramYearCollectionViewHolder) {}
+  public nsp(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onPreDraw()
   {
-    paramView = new ShareGroupsListAdapter.ChangeVideoSortEvent();
-    if (this.a.a.a) {
-      this.a.a.a = false;
-    }
-    for (paramView.a = 0;; paramView.a = 1)
-    {
-      Dispatchers.get().dispatch(paramView);
-      return;
-      this.a.a.a = true;
-    }
+    this.a.a(this.a.a, this.a.j, this.a.i, this.a.k, this.a.l, this.a.m);
+    this.a.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
   }
 }
 

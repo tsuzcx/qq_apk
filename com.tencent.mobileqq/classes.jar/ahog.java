@@ -1,60 +1,39 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.animation.ObjectAnimator;
+import android.text.TextUtils;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-public abstract class ahog
-  implements GLSurfaceView.EGLConfigChooser
+public class ahog
+  implements Runnable
 {
-  protected int[] a;
+  public ahog(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public ahog(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase, int[] paramArrayOfInt)
+  public void run()
   {
-    this.jdField_a_of_type_ArrayOfInt = a(paramArrayOfInt);
-  }
-  
-  private int[] a(int[] paramArrayOfInt)
-  {
-    if ((FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase) != 2) && (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase) != 3)) {
-      return paramArrayOfInt;
-    }
-    int i = paramArrayOfInt.length;
-    int[] arrayOfInt = new int[i + 2];
-    System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i - 1);
-    arrayOfInt[(i - 1)] = 12352;
-    if (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase) == 2) {
-      arrayOfInt[i] = 4;
-    }
-    for (;;)
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = CapturePtvTemplateManager.a().a();
+    if (((this.a.a == null) && (localPtvTemplateInfo == null)) || ((this.a.a != null) && (localPtvTemplateInfo != null) && (this.a.a.md5.equals(localPtvTemplateInfo.md5)))) {}
+    do
     {
-      arrayOfInt[(i + 1)] = 12344;
-      return arrayOfInt;
-      arrayOfInt[i] = 64;
-    }
-  }
-  
-  abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig);
-  
-  public EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-  {
-    int[] arrayOfInt = new int[1];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, null, 0, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig failed");
-    }
-    int i = arrayOfInt[0];
-    if (i <= 0) {
-      throw new IllegalArgumentException("No configs match configSpec");
-    }
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    if (!paramEGL10.eglChooseConfig(paramEGLDisplay, this.jdField_a_of_type_ArrayOfInt, arrayOfEGLConfig, i, arrayOfInt)) {
-      throw new IllegalArgumentException("eglChooseConfig#2 failed");
-    }
-    paramEGL10 = a(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
-    if (paramEGL10 == null) {
-      throw new IllegalArgumentException("No config chosen");
-    }
-    return paramEGL10;
+      do
+      {
+        return;
+        this.a.a = localPtvTemplateInfo;
+      } while (!this.a.b);
+      if ((localPtvTemplateInfo != null) && (localPtvTemplateInfo.isAdvertise) && (!TextUtils.isEmpty(localPtvTemplateInfo.advertiseStr)) && (!TextUtils.isEmpty(localPtvTemplateInfo.advertiseIconUrl)) && (!TextUtils.isEmpty(localPtvTemplateInfo.advertiseWebUrl)))
+      {
+        EffectsCameraCaptureFragment.d(this.a);
+        EffectsCameraCaptureFragment.a(this.a).addListener(new ahoh(this, localPtvTemplateInfo));
+        EffectsCameraCaptureFragment.a(this.a).setDuration(200L).start();
+        EffectsCameraCaptureFragment.i(this.a, true);
+        return;
+      }
+      EffectsCameraCaptureFragment.i(this.a, false);
+    } while (EffectsCameraCaptureFragment.a(this.a).getVisibility() != 0);
+    EffectsCameraCaptureFragment.d(this.a);
+    EffectsCameraCaptureFragment.b(this.a).addListener(new ahoi(this));
+    EffectsCameraCaptureFragment.b(this.a).setDuration(200L).start();
   }
 }
 

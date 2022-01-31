@@ -1,30 +1,28 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.HotChatObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import java.util.ArrayList;
 
-public class sif
-  extends HotChatObserver
+class sif
+  implements Runnable
 {
-  public sif(Conversation paramConversation) {}
+  sif(sie paramsie, ArrayList paramArrayList) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, Long paramLong)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetUserCreateHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", troopOwner=" + paramLong);
+    View localView = this.jdField_a_of_type_Sie.a.a.a[33];
+    if (localView != null)
+    {
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() != 0)) {
+        break label67;
+      }
+      localView.setVisibility(8);
     }
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.a.a(0L);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, String paramString3, List paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onGetHotChatAnnounce  isSuccess= " + paramBoolean + ", result=" + paramInt + ", memo=" + paramString2 + ", jumpurl=" + paramString3);
-    }
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.a.a(0L);
+    for (;;)
+    {
+      this.jdField_a_of_type_Sie.a.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
+      return;
+      label67:
+      localView.setVisibility(0);
     }
   }
 }

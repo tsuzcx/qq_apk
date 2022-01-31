@@ -1,15 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class lgw
+public class lgw
   implements Runnable
 {
-  lgw(lgv paramlgv) {}
+  public lgw(ReadInJoySettingActivity paramReadInJoySettingActivity, int paramInt) {}
   
   public void run()
   {
-    ReadInJoyCameraCaptureActivity.b(this.a.a, 9);
-    ReadInJoyCameraCaptureActivity.a(this.a.a);
-    ReadInJoyCameraCaptureActivity.c(this.a.a);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySettingActivity.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(this.jdField_a_of_type_Int);
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySettingActivity.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      }
+    }
   }
 }
 

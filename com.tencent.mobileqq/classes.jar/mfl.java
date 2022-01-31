@@ -1,26 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.app.Dialog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
 
-public class mfl
-  implements URLDrawable.URLDrawableListener
+public final class mfl
+  implements Runnable
 {
-  public mfl(VideoShareHelper paramVideoShareHelper) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void run()
   {
-    if ((VideoShareHelper.a(this.a) != null) && (VideoShareHelper.a(this.a).getStatus() == 1) && ((VideoShareHelper.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    try
     {
-      paramURLDrawable = (RegionDrawable)VideoShareHelper.a(this.a).getCurrDrawable();
-      VideoShareHelper.a(this.a, paramURLDrawable.getBitmap());
+      if (VideoFeedsHelper.a != null)
+      {
+        VideoFeedsHelper.a.dismiss();
+        VideoFeedsHelper.a = null;
+      }
+      return;
     }
+    catch (Exception localException) {}
   }
 }
 

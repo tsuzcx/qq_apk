@@ -1,13 +1,14 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewPreFlowCamera;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
 
-class xza
+public class xza
   implements Runnable
 {
-  xza(xyz paramxyz, View paramView) {}
+  public xza(NewPreFlowCamera paramNewPreFlowCamera) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.sendAccessibilityEvent(8);
+    GestureMgr.a().b();
   }
 }
 

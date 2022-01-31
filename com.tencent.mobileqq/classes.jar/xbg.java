@@ -1,16 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
+import com.tencent.mobileqq.utils.LogTag;
 
 public class xbg
   implements Runnable
 {
-  public xbg(RedPacketRecordFragment paramRedPacketRecordFragment) {}
+  public xbg(AlbumListAdapter paramAlbumListAdapter) {}
   
   public void run()
   {
-    if (!this.a.e()) {
-      this.a.getActivity().runOnUiThread(new xbh(this));
-    }
+    LogTag.a();
+    this.a.a(100);
+    LogTag.a("PEAK", "queryAlbumList");
   }
 }
 

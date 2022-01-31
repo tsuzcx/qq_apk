@@ -1,67 +1,61 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.webview.webso.SHA1Util;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
-import com.tencent.mobileqq.webview.webso.WebSoUtils;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.mobileqq.vashealth.TracePathData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
 
 public class akrh
-  implements Runnable
+  implements SensorEventListener
 {
-  public akrh(WebSoService paramWebSoService, File paramFile, String paramString, WebSoService.CallBack paramCallBack, Uri paramUri) {}
+  public akrh(PathTraceManager paramPathTraceManager) {}
   
-  public void run()
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    try
+    QLog.d("PathTraceManager", 1, "step Changed:" + paramSensorEvent.values[0]);
+    if (PathTraceManager.a(this.a) == 1)
     {
-      long l = System.currentTimeMillis();
-      String str = FileUtils.b(this.jdField_a_of_type_JavaIoFile);
-      if (QLog.isColorLevel()) {
-        QLog.d("WebSoService", 2, "readFileToString cost=" + (System.currentTimeMillis() - l));
+      PathTraceManager.a(this.a, (int)paramSensorEvent.values[0]);
+      if ((PathTraceManager.a(this.a) == null) || (PathTraceManager.b(this.a) <= PathTraceManager.c(this.a)) || (PathTraceManager.c(this.a) == 0)) {
+        break label331;
       }
-      if (!TextUtils.isEmpty(str))
+      i = PathTraceManager.a(this.a).totalSteps;
+      if (!this.a.e) {
+        break label246;
+      }
+      paramSensorEvent = PathTraceManager.a(this.a);
+      paramSensorEvent.totalSteps += (PathTraceManager.b(this.a) - PathTraceManager.c(this.a)) * (int)(20.0D * Math.random());
+      PathTraceManager.b(this.a, PathTraceManager.b(this.a));
+      PathTraceManager.a(this.a, null);
+      if (PathTraceManager.a(this.a).type == 1)
       {
-        l = System.currentTimeMillis();
-        if (SHA1Util.a(str).equals(this.jdField_a_of_type_JavaLangString))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("WebSoService", 2, "verify html success cost=" + (System.currentTimeMillis() - l));
-          }
-          this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a(str);
-          return;
+        if ((i >= PathTraceManager.a(this.a).stepsGoal) || (PathTraceManager.a(this.a).totalSteps < PathTraceManager.a(this.a).stepsGoal)) {
+          break label281;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("WebSoService", 2, "verify html fail cost=" + (System.currentTimeMillis() - l));
-        }
-        WebSoUtils.a(this.jdField_a_of_type_AndroidNetUri);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a("");
-        return;
+        this.a.a(PathTraceManager.a(this.a), false, true);
       }
     }
-    catch (IOException localIOException)
+    label246:
+    while (PathTraceManager.c(this.a) != 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebSoService", 2, "deal eTag exception=" + localIOException.getMessage());
-      }
-      WebSoUtils.a(this.jdField_a_of_type_AndroidNetUri);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a("");
-      localIOException.printStackTrace();
+      int i;
+      do
+      {
+        for (;;)
+        {
+          return;
+          paramSensorEvent = PathTraceManager.a(this.a);
+          paramSensorEvent.totalSteps += PathTraceManager.b(this.a) - PathTraceManager.c(this.a);
+        }
+      } while (Math.floor(PathTraceManager.a(this.a).totalSteps / 1000) - Math.floor(i / 1000) <= 0.0D);
+      this.a.a(PathTraceManager.a(this.a), false, false);
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebSoService", 2, "verify load data exception=" + localOutOfMemoryError.getMessage());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a("");
-      localOutOfMemoryError.printStackTrace();
-      VipUtils.a(null, "webview_report", "0X8006511", "0X8006511", 1, 1, null);
-    }
+    label281:
+    label331:
+    PathTraceManager.b(this.a, PathTraceManager.b(this.a));
   }
 }
 

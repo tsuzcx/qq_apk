@@ -1,22 +1,30 @@
-import com.tencent.av.ui.QAVPtvTemplateAdapter;
-import com.tencent.av.ui.QAVPtvTemplateAdapter.IEffectCallback;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
+import com.tencent.qphone.base.util.QLog;
 
 public class jyy
-  implements HorizontalListView.OnScrollStateChangedListener
+  implements Runnable
 {
-  public jyy(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter) {}
+  jyy(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.c, 2, "AutoCheckVideoRunnable");
+    }
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null) {
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().an = true;
+    }
+    MultiVideoCtrlLayerUI4NewGroupChat.h(this.a);
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jyy
  * JD-Core Version:    0.7.0.1
  */

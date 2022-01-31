@@ -48,7 +48,7 @@ import java.lang.ref.WeakReference;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
-import ytq;
+import zai;
 
 public class ApolloImageShareLayout
   extends RelativeLayout
@@ -199,7 +199,7 @@ public class ApolloImageShareLayout
       this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().setRenderCallback(this);
       i = (int)(AIOUtils.a(40.0F, getResources()) * 0.96F);
       this.jdField_d_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838020);
+      this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838019);
       paramAppInterface = new RelativeLayout.LayoutParams(i, i);
       paramAppInterface.addRule(14, -1);
       paramAppInterface.addRule(12, -1);
@@ -222,7 +222,7 @@ public class ApolloImageShareLayout
       paramArrayOfInt.addRule(10);
       paramArrayOfInt.addRule(14);
       paramArrayOfInt.topMargin = ((int)(this.f + paramInt1 - AIOUtils.a(55.0F, super.getResources()) * 0.96F));
-      paramAppInterface.setBackgroundResource(2130838031);
+      paramAppInterface.setBackgroundResource(2130838030);
       super.addView(paramAppInterface, paramArrayOfInt);
       paramInt3 = (int)(AIOUtils.a(25.0F, getResources()) * 0.96F);
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
@@ -232,7 +232,7 @@ public class ApolloImageShareLayout
       paramAppInterface.addRule(14);
       super.addView(this.jdField_a_of_type_AndroidWidgetImageView, paramAppInterface);
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838149);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838154);
       this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
       paramAppInterface = new RelativeLayout.LayoutParams(paramInt3, paramInt3);
       paramAppInterface.topMargin = ((int)(this.f + paramInt1 - AIOUtils.a(42.0F, super.getResources()) * 0.96F));
@@ -241,7 +241,7 @@ public class ApolloImageShareLayout
       paramAppInterface.addRule(9);
       super.addView(this.jdField_b_of_type_AndroidWidgetImageView, paramAppInterface);
       this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838150);
+      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130838155);
       this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(getContext());
       paramAppInterface = new RelativeLayout.LayoutParams(paramInt3, paramInt3);
       paramAppInterface.topMargin = ((int)(this.f + paramInt1 - AIOUtils.a(42.0F, super.getResources()) * 0.96F));
@@ -251,7 +251,7 @@ public class ApolloImageShareLayout
       paramAppInterface.addRule(11);
       super.addView(this.jdField_c_of_type_AndroidWidgetImageView, paramAppInterface);
       this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838151);
+      this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838156);
     }
   }
   
@@ -422,7 +422,7 @@ public class ApolloImageShareLayout
         QLog.d("ApolloImageShareLayout", 2, "download Request:" + l);
       }
       if (Build.VERSION.SDK_INT >= 14) {
-        ThreadManager.executeOnSubThread(new ytq(this, a(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getHeight(), 15, l));
+        ThreadManager.executeOnSubThread(new zai(this, a(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getHeight(), 15, l));
       }
       VipUtils.a(null, "cmshow", "Apollo", "SaveClick", 0, 0, new String[0]);
       return;
@@ -462,7 +462,7 @@ public class ApolloImageShareLayout
       if (Build.VERSION.SDK_INT >= 14)
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.invalidate();
-        ThreadManager.executeOnSubThread(new ytq(this, a(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getHeight(), 16, l));
+        ThreadManager.executeOnSubThread(new zai(this, a(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getHeight(), 16, l));
       }
       VipUtils.a(null, "cmshow", "Apollo", "Share2Qzone", 0, 0, new String[0]);
       return;
@@ -470,7 +470,7 @@ public class ApolloImageShareLayout
     if (Build.VERSION.SDK_INT >= 14)
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.invalidate();
-      ThreadManager.executeOnSubThread(new ytq(this, a(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getHeight(), 17, l));
+      ThreadManager.executeOnSubThread(new zai(this, a(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getHeight(), 17, l));
     }
     VipUtils.a(null, "cmshow", "Apollo", "Share2QQ", 0, 0, new String[0]);
   }

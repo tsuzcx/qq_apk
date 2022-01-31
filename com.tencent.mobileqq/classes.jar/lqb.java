@@ -1,23 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
 
 public class lqb
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public lqb(ArticleInfoModule paramArticleInfoModule, int paramInt1, int paramInt2) {}
+  public lqb(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    boolean bool = true;
-    ReadInJoyLogicEngineEventDispatcher localReadInJoyLogicEngineEventDispatcher = ReadInJoyLogicEngineEventDispatcher.a();
-    long l = this.jdField_a_of_type_Int;
-    if (this.b == 1) {}
-    for (;;)
+    ReadInJoyAtlasFragment.a(this.a, false);
+    if (ReadInJoyAtlasFragment.a(this.a) != null)
     {
-      localReadInJoyLogicEngineEventDispatcher.a(l, bool);
-      return;
-      bool = false;
+      ReadInJoyAtlasFragment.b(this.a, true);
+      ReadInJoyAtlasFragment.a(this.a).finish();
     }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ReadInJoyAtlasFragment.a(this.a, true);
   }
 }
 

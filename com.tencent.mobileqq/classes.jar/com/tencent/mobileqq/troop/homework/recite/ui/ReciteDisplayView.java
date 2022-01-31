@@ -50,7 +50,7 @@ public class ReciteDisplayView
   
   public void a(float paramFloat)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.b() == 0)) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment == null) || (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a() == 0)) {}
     do
     {
       do
@@ -95,7 +95,7 @@ public class ReciteDisplayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.ReciteDisplayView
  * JD-Core Version:    0.7.0.1
  */

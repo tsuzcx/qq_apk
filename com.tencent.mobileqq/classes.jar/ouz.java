@@ -1,46 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.qrcode.QRCodeEncodeCallback;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.widget.SwipListView.SwipListListener;
 
-public final class ouz
-  implements BusinessObserver
+public class ouz
+  implements SwipListView.SwipListListener
 {
-  public ouz(QRCodeEncodeCallback paramQRCodeEncodeCallback) {}
+  public ouz(SegmentList paramSegmentList) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(View paramView) {}
+  
+  public void d() {}
+  
+  public void e(boolean paramBoolean)
   {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
-    {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle);
-        if (paramBundle.getInt("r") != 0) {
-          continue;
-        }
-        paramBundle = paramBundle.getString("url");
-        if (paramBundle != null)
-        {
-          this.a.a(true, paramBundle);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramBundle = null;
-        }
-      }
-      this.a.a(false, null);
-      return;
-    }
+    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ouz
  * JD-Core Version:    0.7.0.1
  */

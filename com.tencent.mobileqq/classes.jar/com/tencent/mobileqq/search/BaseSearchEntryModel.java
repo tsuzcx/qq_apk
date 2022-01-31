@@ -33,10 +33,8 @@ public abstract class BaseSearchEntryModel
       return new HotWordSearchEntryModel(paramInt2);
     case 2: 
       return new OperationSearchEntryModel(paramInt2);
-    case 3: 
-      return new BusinessSearchEntryModel(paramInt2);
     }
-    return new ContentRecommendModel(paramInt2);
+    return new BusinessSearchEntryModel(paramInt2);
   }
   
   public abstract View a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, Bundle paramBundle);

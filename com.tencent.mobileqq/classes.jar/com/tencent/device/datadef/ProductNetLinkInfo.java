@@ -3,12 +3,12 @@ package com.tencent.device.datadef;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import pwr;
+import qbj;
 
 public class ProductNetLinkInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pwr();
+  public static final Parcelable.Creator CREATOR = new qbj();
   public String linkResetVoiceDesc;
   public int productId;
   public String stopSoundWaveDesc1;

@@ -1,37 +1,54 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.HongbaoKeywordGrayTips;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.PublicAccountHandler.IWeatherInfoListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wcy
-  implements Runnable
+  implements PublicAccountHandler.IWeatherInfoListener
 {
-  public wcy(HongbaoKeywordGrayTips paramHongbaoKeywordGrayTips) {}
+  public wcy(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    Object localObject = HongbaoKeywordGrayTips.a(this.a).a().a(HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_JavaLangString, HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int);
-    int i = ((List)localObject).size();
-    if (i > 0)
-    {
-      localObject = (ChatMessage)((List)localObject).get(i - 1);
-      if (HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int != 0) {
-        break label130;
-      }
-      HongbaoKeywordGrayTips.a(this.a, ((ChatMessage)localObject).time);
-    }
+    int j = 0;
+    String str = "";
+    Object localObject = str;
+    label106:
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HongbaoKeywordGrayTips", 2, "size : " + i + ", mLastMsgIdOrTime:" + HongbaoKeywordGrayTips.a(this.a));
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        localObject = str;
+        paramString = localJSONObject.getString("area");
+        localObject = paramString;
+        int i = localJSONObject.getInt("area_id");
+        int k;
+        localJSONException1.printStackTrace();
       }
-      return;
-      label130:
-      if ((HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int == 3000) || (HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int == 1)) {
-        HongbaoKeywordGrayTips.a(this.a, ((ChatMessage)localObject).shmsgseq);
+      catch (JSONException localJSONException1)
+      {
+        try
+        {
+          k = localJSONObject.getInt("switch");
+          j = k;
+          localObject = Message.obtain();
+          ((Message)localObject).what = 6;
+          ((Message)localObject).arg1 = i;
+          ((Message)localObject).arg2 = j;
+          ((Message)localObject).obj = paramString;
+          this.a.a.sendMessage((Message)localObject);
+          return;
+        }
+        catch (JSONException localJSONException2)
+        {
+          break label106;
+        }
+        localJSONException1 = localJSONException1;
+        i = 0;
+        paramString = (String)localObject;
       }
     }
   }

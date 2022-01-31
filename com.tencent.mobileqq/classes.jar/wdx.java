@@ -1,15 +1,25 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class wdx
-  implements MessageQueue.IdleHandler
+  implements Runnable
 {
-  public wdx(ZhituManager paramZhituManager) {}
+  public wdx(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    ZhituManager.a(this.a, true);
-    return true;
+    Object localObject = (PublicAccountDataManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
+    if (localObject != null) {}
+    for (localObject = ((PublicAccountDataManager)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
+    {
+      if (localObject != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      }
+      return;
+    }
   }
 }
 

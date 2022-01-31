@@ -1,37 +1,22 @@
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter.WeiyunCallback;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp;
-import cooperation.weiyun.sdk.api.IWeiyunCallback;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView;
+import java.util.LinkedHashMap;
 
-public class adag
-  implements IWeiyunCallback
+class adag
+  implements Runnable
 {
-  public adag(WeiYunLogicCenter paramWeiYunLogicCenter, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback) {}
+  adag(adaf paramadaf, LinkedHashMap paramLinkedHashMap) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Failed errorCode=" + paramInt + "; errorMsg=" + paramString);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback.a(paramInt, paramString);
-    }
-  }
-  
-  public void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Success");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback.a();
-    }
+    this.jdField_a_of_type_Adaf.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    this.jdField_a_of_type_Adaf.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+    this.jdField_a_of_type_Adaf.a.i();
+    this.jdField_a_of_type_Adaf.a.setSelect(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adag
  * JD-Core Version:    0.7.0.1
  */

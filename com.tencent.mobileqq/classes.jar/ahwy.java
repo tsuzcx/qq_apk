@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.secspy.SecSpyFileManager;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
+import com.tencent.mobileqq.search.activity.VADActivity;
+import mqq.os.MqqHandler;
 
-public class ahwy
+public final class ahwy
   implements Runnable
 {
-  public ahwy(SecSpyFileManager paramSecSpyFileManager) {}
+  public ahwy(MqqHandler paramMqqHandler) {}
   
   public void run()
   {
-    UnifiedDebugManager.a(this.a.a.getApplication());
+    
+    if (VADActivity.a())
+    {
+      this.a.sendEmptyMessage(0);
+      return;
+    }
+    this.a.sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahwy
  * JD-Core Version:    0.7.0.1
  */

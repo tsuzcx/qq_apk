@@ -13,8 +13,8 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
-import aonv;
-import aonw;
+import aowl;
+import aowm;
 import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
 import com.tencent.biz.qqstory.utils.VideoUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
@@ -43,10 +43,10 @@ public class HWVideoPlayView
   extends GLSurfaceView
   implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer, HWDecodeListener
 {
-  public int a;
+  protected int a;
   public long a;
   private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new aonv(this);
+  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new aowl(this);
   private GPUOESBaseFilter jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUOESBaseFilter;
   private final DecodeConfig jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig = new DecodeConfig();
   private HWDecodeListener jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderHWDecodeListener;
@@ -55,9 +55,9 @@ public class HWVideoPlayView
   protected AudioDecoder a;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
-  public int b;
-  protected int c;
-  protected int d;
+  protected int b;
+  public int c;
+  public int d;
   protected int e;
   protected int f = 0;
   private int g;
@@ -77,6 +77,11 @@ public class HWVideoPlayView
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioDecodeConfig = new AudioDecoder.AudioDecodeConfig();
     setRenderer(this);
     setRenderMode(0);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecVideodecoderDecodeConfig.jdField_a_of_type_Int;
   }
   
   public int a(LocalMediaInfo paramLocalMediaInfo)
@@ -261,7 +266,7 @@ public class HWVideoPlayView
       if (QLog.isColorLevel()) {
         QLog.d("HWVideoPlayView", 4, "onSurfaceChanged special 8.0 device. Delay play.");
       }
-      postDelayed(new aonw(this), 500L);
+      postDelayed(new aowm(this), 500L);
     }
     for (;;)
     {

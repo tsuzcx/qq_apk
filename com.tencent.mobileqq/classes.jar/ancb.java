@@ -1,30 +1,18 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QUA;
-import cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.LocalImageShootInfo;
 
 public final class ancb
-  implements DialogInterface.OnClickListener
+  implements Parcelable.Creator
 {
-  public ancb(Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public LocalImageShootInfo a(Parcel paramParcel)
   {
-    try
-    {
-      if (QUA.a().indexOf("GM") < 0) {
-        QZoneWebViewJsHandleLogic.a(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.a);
-      }
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
-    }
+    return new LocalImageShootInfo(paramParcel);
+  }
+  
+  public LocalImageShootInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

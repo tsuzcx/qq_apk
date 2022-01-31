@@ -1,24 +1,27 @@
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
 
-class xuu
+public class xuu
   implements Runnable
 {
-  xuu(xut paramxut) {}
+  public xuu(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[runOnUIThread][stopWatching-delete-quit]");
+    if ((this.a.b != null) && (!this.a.b.isEnabled()))
+    {
+      this.a.b.setEnabled(true);
+      this.a.b.setText(2131438182);
+      this.a.b.setTextColor(-15550475);
     }
-    Toast.makeText(VideoEnvironment.a(), "视频缓存被恶意篡改了", 1).show();
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    localRMVideoStateMgr.a("RMFileEventNotify");
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.A();
+    int i = 0;
+    if (this.a.a != null) {
+      i = this.a.a.c();
+    }
+    if ((!this.a.i.isEnabled()) && (i > 0)) {
+      this.a.i.setEnabled(true);
     }
   }
 }

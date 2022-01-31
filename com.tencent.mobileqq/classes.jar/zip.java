@@ -1,64 +1,49 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.ConditionSearchManager.DownloadTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class zip
   implements Runnable
 {
-  public zip(PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean) {}
+  public zip(ConditionSearchManager.DownloadTask paramDownloadTask, String paramString, File paramFile, QQAppInterface paramQQAppInterface, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.c();
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
-      StringBuilder localStringBuilder = new StringBuilder().append("checkUpdateLocalContact, bindState = ").append(i);
-      if (localObject == null)
-      {
-        localObject = ",getSelfBindInfo is null";
-        QLog.d("PhoneContact.Manager", 2, (String)localObject + ", changed = " + this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h + ", firstQuery = " + this.jdField_a_of_type_Boolean);
-      }
+    long l2 = -1L;
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "DownloadTask runnable start, url=" + this.jdField_a_of_type_JavaLangString);
     }
-    else
+    Object localObject = MsfSdkUtils.insertMtype("ConfigCheck", this.jdField_a_of_type_JavaLangString);
+    int i = HttpDownloadUtil.a(ConditionSearchManager.DownloadTask.a(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$DownloadTask), (String)localObject, this.jdField_a_of_type_JavaIoFile);
+    if (i == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      if ((i == 8) || (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e())) {
-        break label137;
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearch.Manager", 2, "onCheckupConfig | download result = " + bool);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.g();
-    }
-    label137:
-    label172:
-    label229:
-    do
-    {
-      do
+      localObject = (ConditionSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(58);
+      if (localObject != null) {
+        ((ConditionSearchManager)localObject).a(i, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+      }
+      localObject = (PreDownloadController)ConditionSearchManager.DownloadTask.b(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$DownloadTask).getManager(192);
+      String str = this.jdField_a_of_type_JavaLangString;
+      long l1 = l2;
+      if (bool)
       {
-        do
-        {
-          return;
-          localObject = ", lastFlag = " + ((RespondQueryQQBindingStat)localObject).lastUsedFlag;
-          break;
-          if (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.c()) {
-            break label172;
-          }
-        } while ((!this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h));
-        PhoneContactManagerImp.f(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp);
-        return;
-        if ((i != 4) && (this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d()))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h();
-          return;
+        l1 = l2;
+        if (this.jdField_a_of_type_JavaIoFile.exists()) {
+          l1 = this.jdField_a_of_type_JavaIoFile.length();
         }
-        if (i != 1) {
-          break label229;
-        }
-      } while ((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a().noBindUploadContacts));
-      PhoneContactManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, true);
+      }
+      ((PreDownloadController)localObject).a(str, l1);
       return;
-    } while ((i != 2) || ((!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b) && (!this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.h)));
-    PhoneContactManagerImp.g(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp);
+    }
   }
 }
 

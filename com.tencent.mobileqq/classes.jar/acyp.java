@@ -1,16 +1,33 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelAppTabView;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
-public class acyp
-  extends acxu
+class acyp
+  implements Runnable
 {
-  public acyp(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  acyp(acyo paramacyo) {}
   
-  protected String a()
+  public void run()
   {
-    return "StateUploadoneWhenChangeToOff";
+    if (QfileLocalFileDelAppTabView.a(this.a.a) != null)
+    {
+      Iterator localIterator = QfileLocalFileDelAppTabView.b(this.a.a).keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (((List)QfileLocalFileDelAppTabView.c(this.a.a).get(str)).size() == 0) {
+          localIterator.remove();
+        }
+      }
+    }
+    QfileLocalFileDelAppTabView.d(this.a.a).clear();
+    QfileLocalFileDelAppTabView.f(this.a.a).putAll(QfileLocalFileDelAppTabView.e(this.a.a));
+    this.a.a.i();
+    this.a.a.setSelect(0);
+    QfileLocalFileDelAppTabView.g(this.a.a).clear();
+    this.a.a.a(true);
   }
 }
 

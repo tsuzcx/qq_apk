@@ -25,8 +25,8 @@ public class NewFriendSubTitleBuilder
     if ((paramView == null) || (!(paramView.getTag() instanceof NewFriendSubTitleBuilder.NewFriendSubTitleHolder)))
     {
       paramView = new NewFriendSubTitleBuilder.NewFriendSubTitleHolder();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970500, null);
-      paramView.a = ((TextView)localView.findViewById(2131363378));
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970512, null);
+      paramView.a = ((TextView)localView.findViewById(2131363397));
       localView.setTag(paramView);
       localObject = paramView;
     }

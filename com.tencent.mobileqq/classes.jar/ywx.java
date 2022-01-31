@@ -1,13 +1,9 @@
-import java.io.File;
-import java.io.FilenameFilter;
-
-public final class ywx
-  implements FilenameFilter
+class ywx
+  implements Runnable
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (paramString.toLowerCase().endsWith(".amr")) || (paramString.toLowerCase().endsWith(".mp3"));
-  }
+  ywx(yww paramyww) {}
+  
+  public void run() {}
 }
 
 

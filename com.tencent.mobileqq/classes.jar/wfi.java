@@ -1,89 +1,41 @@
-import com.tencent.mobileqq.activity.bless.BlessManager;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class wfi
-  extends MessageObserver
+  implements DialogInterface.OnClickListener
 {
-  public wfi(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  public wfi(TroopChatPie paramTroopChatPie) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onBlessDirtyTextCheck " + paramBoolean + " ,code=" + paramInt);
-    }
-    if (paramBoolean) {}
-    while ((i != 0) && (!BlessSelectMemberActivity.b()))
-    {
-      BlessSelectMemberActivity.a(this.a, BlessSelectMemberActivity.a(this.a));
-      return;
-      if (paramInt != 0) {
-        if (paramInt == 1)
-        {
-          BlessSelectMemberActivity.a(this.a, 2131438282, true);
-          i = 0;
-        }
-        else
-        {
-          if (paramInt == 8) {
-            BlessSelectMemberActivity.a(this.a, 2131438283, true);
-          }
-          i = 0;
-        }
+    paramDialogInterface = (TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if ((NetworkUtil.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null)) {
+      if (((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        paramDialogInterface.j(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
       }
     }
-    this.a.e();
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1 + " ,replyCode=" + paramInt + " waitTime=" + paramLong + " ,entrance=" + BlessSelectMemberActivity.a(this.a));
-    }
-    if (!this.a.a) {
-      return;
-    }
-    this.a.a = false;
-    if (paramInt == 67L)
+    for (;;)
     {
-      BlessSelectMemberActivity.a(System.currentTimeMillis());
-      this.a.a(paramLong);
-      this.a.e();
-      BlessSelectMemberActivity.a(this.a, 2131438285, true);
+      new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_quitgrp").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
       return;
-    }
-    this.a.a(paramBoolean1, paramBoolean2);
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessSelectMemberActivity", 2, "onUpdateMsgContent, isSuc:" + paramBoolean + " ,type:" + BlessSelectMemberActivity.b(this.a));
-    }
-    if (BlessSelectMemberActivity.b(this.a) == 3) {
-      if (paramBoolean) {
-        BlessSelectMemberActivity.a(this.a);
+      paramDialogInterface.i(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      continue;
+      if (paramDialogInterface != null) {
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131434629, 0).a();
+      } else {
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131435303, 0).a();
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        this.a.e();
-        BlessSelectMemberActivity.a(this.a, 2131438286, false);
-        return;
-      } while (BlessSelectMemberActivity.b(this.a) != 2);
-      if ((BlessSelectMemberActivity.a(this.a).a() == null) || (!paramBoolean))
-      {
-        this.a.e();
-        BlessSelectMemberActivity.a(this.a, 2131438287, false);
-        return;
-      }
-    } while (BlessSelectMemberActivity.b());
-    BlessSelectMemberActivity.b(this.a);
   }
 }
 

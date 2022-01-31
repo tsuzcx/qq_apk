@@ -184,7 +184,7 @@ public class StoryDetailListView
       {
         return;
       }
-      localSegmentView.f_(paramBoolean);
+      localSegmentView.e_(paramBoolean);
     }
   }
   

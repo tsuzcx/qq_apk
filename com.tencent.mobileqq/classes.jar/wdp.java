@@ -1,17 +1,17 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class wdp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wdp(VideoStatusTipsBar paramVideoStatusTipsBar) {}
+  public wdp(PublicAccountChatPie paramPublicAccountChatPie, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    VideoStatusTipsBar.a(this.a).a().e(true);
-    this.a.a("RefreshMultiStateRunnable", VideoStatusTipsBar.a(this.a).jdField_a_of_type_Int, VideoStatusTipsBar.a(this.a).jdField_a_of_type_JavaLangString, 0, 0L);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
   }
 }
 

@@ -1,52 +1,26 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.util.Utils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class tau
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public tau(LoginVerifyCodeActivity paramLoginVerifyCodeActivity, String paramString1, String paramString2) {}
+  public tau(JumpActivity paramJumpActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int k = 0;
-    String str = Utils.b(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() == 6) && (LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity) != null) && (!str.equals(LoginVerifyCodeActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity))))
+    if (!this.a.isFinishing())
     {
-      LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity, str);
-      int m = 1;
-      int i = 0;
-      for (;;)
-      {
-        int j = m;
-        if (i < 6)
-        {
-          Editable localEditable = LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity)[i].getText();
-          if ((localEditable != null) && (localEditable.toString().length() > 0)) {
-            j = 0;
-          }
-        }
-        else
-        {
-          if (j == 0) {
-            break;
-          }
-          i = k;
-          while (i < 6)
-          {
-            LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity)[i].setText(str.substring(i, i + 1));
-            i += 1;
-          }
-        }
-        i += 1;
-      }
+      this.a.finish();
+      QLog.i("JumpAction", 1, "JumpActivity has finished by broadcastReceiver.");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tau
  * JD-Core Version:    0.7.0.1
  */

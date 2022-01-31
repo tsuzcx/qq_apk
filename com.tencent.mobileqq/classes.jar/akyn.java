@@ -1,28 +1,36 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class akyn
-  implements WXShareHelper.WXShareListener
+public final class akyn
+  implements Runnable
 {
-  akyn(akym paramakym) {}
+  public akyn(long paramLong) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((WorldCupShareFragment.c(this.a.a.a) == null) || (!WorldCupShareFragment.c(this.a.a.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    QLog.d("WorldCupShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND onWXShareResp resp.errCode = " + paramBaseResp.errCode);
-    switch (paramBaseResp.errCode)
+    long l = System.currentTimeMillis();
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_InitEngine.run cost " + (l - this.a) + "ms.");
+    l = System.currentTimeMillis();
+    synchronized (SwiftWebAccelerator.a)
     {
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
+      if (WebViewPluginEngine.a == null)
+      {
+        AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.waitAppRuntime(null);
+        if (localAppRuntime != null)
+        {
+          localAppRuntime = localAppRuntime.getAppRuntime("modular_web");
+          if ((localAppRuntime instanceof AppInterface)) {
+            WebViewPluginEngine.a = WebAccelerateHelper.getInstance().createWebViewPluginEngine((AppInterface)localAppRuntime, null, null, null);
+          }
+        }
+      }
+      QLog.i("WebLog_SwiftWebAccelerator", 1, "doThreadedStep_InitEngine:init plugin engine, cost " + (System.currentTimeMillis() - l) + "ms.");
       return;
-      WorldCupShareFragment.a("0X800931F", 3);
     }
   }
 }

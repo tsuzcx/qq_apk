@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.EditPicCropPart;
 
-public final class oht
-  implements Animation.AnimationListener
+public class oht
+  implements DialogInterface.OnClickListener
 {
-  public oht(View paramView) {}
+  public oht(EditPicCropPart paramEditPicCropPart) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setAnimation(null);
+    paramDialogInterface.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

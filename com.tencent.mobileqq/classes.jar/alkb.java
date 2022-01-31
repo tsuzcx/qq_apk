@@ -1,19 +1,40 @@
-import com.squareup.okhttp.Call;
-import com.tencent.plato.mqq.module.NetworkingModule;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.open.agent.CardContainer;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 
 public class alkb
-  implements Runnable
+  extends Handler
 {
-  public alkb(NetworkingModule paramNetworkingModule, Call paramCall) {}
-  
-  public void run()
+  public alkb(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComSquareupOkhttpCall.cancel();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramMessage = (Bitmap)paramMessage.obj;
+      } while (paramMessage == null);
+      this.a.a.a("", "", paramMessage, true);
+      return;
+      paramMessage = (Bitmap)paramMessage.obj;
+    } while (paramMessage == null);
+    this.a.a.a("", paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alkb
  * JD-Core Version:    0.7.0.1
  */

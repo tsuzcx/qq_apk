@@ -1,23 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
 
-public final class rvq
-  implements DialogInterface.OnClickListener
+public class rvq
+  implements Runnable
 {
-  public rvq(QQAppInterface paramQQAppInterface, int paramInt) {}
+  public rvq(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 6) {}
-    for (paramInt = 1;; paramInt = 4)
+    if (this.a.a.e)
     {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FA", "0X80063FA", paramInt, 0, "", "", "", "");
+      if (this.a.a.g)
+      {
+        this.a.b(131078);
+        return;
+      }
+      this.a.b(131077);
       return;
     }
+    this.a.b(131075);
   }
 }
 

@@ -1,20 +1,15 @@
-import android.graphics.Bitmap;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
 
 class usl
   implements Runnable
 {
-  usl(usk paramusk, int paramInt, Bitmap paramBitmap) {}
+  usl(usk paramusk) {}
   
   public void run()
   {
-    if (usk.a(this.jdField_a_of_type_Usk) != null)
-    {
-      ust localust = (ust)usk.a(this.jdField_a_of_type_Usk).get();
-      if (localust != null) {
-        localust.a(usk.a(this.jdField_a_of_type_Usk), this.jdField_a_of_type_Int, usk.b(this.jdField_a_of_type_Usk), this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-    }
+    this.a.a.d();
+    this.a.a.a.invalidate();
   }
 }
 

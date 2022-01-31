@@ -1,18 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AntiphingToast;
-import java.util.TimerTask;
+import com.tencent.mobileqq.vip.TMSManager.Callback;
+import dualsim.common.OrderCheckResult;
+import dualsim.common.PhoneGetResult;
 
-public class aksr
-  extends TimerTask
+class aksr
+  implements Runnable
 {
-  public aksr(AntiphingToast paramAntiphingToast) {}
+  aksr(aksq paramaksq, OrderCheckResult paramOrderCheckResult, PhoneGetResult paramPhoneGetResult) {}
   
   public void run()
   {
-    Message localMessage = new Message();
-    localMessage.what = 1;
-    this.a.a.sendMessage(localMessage);
+    this.jdField_a_of_type_Aksq.a.a(this.jdField_a_of_type_DualsimCommonOrderCheckResult, this.jdField_a_of_type_DualsimCommonPhoneGetResult);
   }
 }
 

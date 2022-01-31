@@ -1,30 +1,43 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 public class aeup
-  implements Runnable
+  implements BusinessObserver
 {
-  public aeup(SmallVideoSendFragment paramSmallVideoSendFragment, CharSequence paramCharSequence, boolean paramBoolean) {}
+  public aeup(NearbyJsInterface paramNearbyJsInterface, String paramString) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.getActivity() == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.getActivity().isFinishing()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("PublishActivity", 2, "Activity has been destroy.");
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+          localWebSsoResponseBody.mergeFrom(paramBundle);
+          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.callJs(new JSONObject(this.jdField_a_of_type_JavaLangString).getString("callback"), new String[] { paramBundle.toString() });
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.w("followUser js api", 2, " no data!");
+          return;
+        }
       }
-      return;
+      catch (Exception paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("followUser js api", 2, " no data! error");
+        }
+      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a = new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.getActivity());
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a.a(this.jdField_a_of_type_JavaLangCharSequence + "");
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a.setCancelable(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a.show();
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoSendFragment.a.setOnDismissListener(new aeuq(this));
   }
 }
 

@@ -1,21 +1,16 @@
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import dov.com.tencent.biz.qqstory.takevideo.EditDoodleExport;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
 public class aocn
   implements Runnable
 {
-  public aocn(VideoFrameLoader paramVideoFrameLoader, List paramList) {}
+  public aocn(EditVideoGuide paramEditVideoGuide) {}
   
   public void run()
   {
-    VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = null;
-    if (VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader) != null) {
-      localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).get();
-    }
-    if (localVideoFrameLoaderListener != null) {
-      localVideoFrameLoaderListener.a(this.jdField_a_of_type_JavaUtilList);
+    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.a.a(EditDoodleExport.class);
+    if (localEditDoodleExport != null) {
+      localEditDoodleExport.c();
     }
   }
 }

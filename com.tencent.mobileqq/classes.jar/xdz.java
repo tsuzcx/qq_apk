@@ -1,37 +1,28 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class xdz
-  implements PreloadImgManager.OnSingleDownloadCallback
+  implements View.OnClickListener
 {
-  public xdz(ThemeHbFragment paramThemeHbFragment) {}
+  public xdz(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ThemeHbFragment.a(this.a, null);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (ThemeHbFragment.a(this.a) == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
-      }
-    }
-    do
+    if (!this.a.b.isChecked())
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back bitmap = " + paramObject);
+      if (this.a.a() > 0)
+      {
+        QQToast.a(this.a, this.a.getResources().getString(2131435938), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+        return;
       }
-    } while (!(paramObject instanceof Bitmap));
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
+      this.a.b.setChecked(true);
+      return;
     }
-    ThemeHbFragment.a(this.a).post(new xea(this, paramObject));
+    this.a.b.setChecked(false);
   }
 }
 

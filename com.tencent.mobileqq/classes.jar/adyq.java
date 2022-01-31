@@ -1,13 +1,33 @@
-import com.tencent.mobileqq.leba.LebaFeedsManager;
+import android.app.Dialog;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public class adyq
+class adyq
   implements Runnable
 {
-  public adyq(LebaFeedsManager paramLebaFeedsManager) {}
+  adyq(adyn paramadyn) {}
   
   public void run()
   {
-    LebaFeedsManager.a(this.a);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a, 232, null, "腾讯视频插件加载失败", new adyr(this), null);
+    try
+    {
+      localQQCustomDialog.show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManagerHotPicPageView", 2, "show dialog fail");
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a == 1) {
+        this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(0);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
+    }
   }
 }
 

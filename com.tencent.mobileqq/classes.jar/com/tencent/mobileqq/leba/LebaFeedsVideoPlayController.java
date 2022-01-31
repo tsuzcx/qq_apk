@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.leba;
 
-import adyt;
-import adyu;
-import adyv;
-import adyw;
-import adyx;
-import adyy;
-import adyz;
-import adza;
+import aehd;
+import aehe;
+import aehf;
+import aehg;
+import aehh;
+import aehi;
+import aehj;
+import aehk;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -33,6 +33,7 @@ import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.businessCard.helpers.ViewHelper;
 import com.tencent.mobileqq.data.LebaFeedInfo;
 import com.tencent.mobileqq.hotpic.VideoItemEventManager;
@@ -53,12 +54,12 @@ import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LebaFeedsVideoPlayController
-  implements adza, Handler.Callback, View.OnClickListener, LebaFeedsVideoSdkInstaller.OnVideoPluginInstallListener
+  implements aehk, Handler.Callback, View.OnClickListener, LebaFeedsVideoSdkInstaller.OnVideoPluginInstallListener
 {
   private static boolean jdField_g_of_type_Boolean;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = -1L;
-  private adyz jdField_a_of_type_Adyz;
+  private aehj jdField_a_of_type_Aehj;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
   private View jdField_a_of_type_AndroidViewView;
@@ -67,7 +68,7 @@ public class LebaFeedsVideoPlayController
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private VideoItemEventManager.onVideoItemEventListener jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager$onVideoItemEventListener = new adyy(this);
+  private VideoItemEventManager.onVideoItemEventListener jdField_a_of_type_ComTencentMobileqqHotpicVideoItemEventManager$onVideoItemEventListener = new aehi(this);
   private LebaFeedsVideoPlayController.VideoPlayParam jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam;
   private LebaFeedsVideoPlayer jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer;
   private LebaFeedsVideoSdkInstaller jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoSdkInstaller;
@@ -144,11 +145,11 @@ public class LebaFeedsVideoPlayController
           if (!localLebaFeedsVideoView1.jdField_b_of_type_Boolean)
           {
             localObject = localLebaFeedsVideoView1;
-            if (this.jdField_a_of_type_Adyz == null) {
+            if (this.jdField_a_of_type_Aehj == null) {
               break;
             }
             localObject = localLebaFeedsVideoView1;
-            if (!this.jdField_a_of_type_Adyz.a(localLebaFeedsVideoView1.a())) {
+            if (!this.jdField_a_of_type_Aehj.a(localLebaFeedsVideoView1.a())) {
               break;
             }
           }
@@ -169,7 +170,7 @@ public class LebaFeedsVideoPlayController
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840616);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840631);
     if ((paramVideoPlayParam != null) && (!TextUtils.isEmpty(paramVideoPlayParam.jdField_a_of_type_JavaLangString)))
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
@@ -310,10 +311,10 @@ public class LebaFeedsVideoPlayController
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840616);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840631);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840617);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840632);
   }
   
   private void f(boolean paramBoolean)
@@ -323,13 +324,13 @@ public class LebaFeedsVideoPlayController
   
   private void k()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370352));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366707));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366709));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366708));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366703);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131370354));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370353));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370361));
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366705));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366707));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366706));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366701);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131370363));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370362));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(LebaFeedsViewBase.b);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
@@ -371,7 +372,7 @@ public class LebaFeedsVideoPlayController
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840616);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840631);
     this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
   }
@@ -385,7 +386,7 @@ public class LebaFeedsVideoPlayController
     LebaFeedsVideoPlayer localLebaFeedsVideoPlayer = this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer;
     localLebaFeedsVideoPlayer.a(null);
     this.jdField_b_of_type_AndroidViewView = null;
-    ThreadManager.postImmediately(new adyu(this, localLebaFeedsVideoPlayer), null, false);
+    ThreadManager.postImmediately(new aehe(this, localLebaFeedsVideoPlayer), null, false);
   }
   
   private void o()
@@ -483,7 +484,7 @@ public class LebaFeedsVideoPlayController
     //   45: getfield 183	com/tencent/mobileqq/leba/LebaFeedsVideoPlayController:jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer	Lcom/tencent/mobileqq/leba/LebaFeedsVideoPlayer;
     //   48: ifnull +184 -> 232
     //   51: aload_0
-    //   52: getfield 164	com/tencent/mobileqq/leba/LebaFeedsVideoPlayController:jdField_a_of_type_Adyz	Ladyz;
+    //   52: getfield 164	com/tencent/mobileqq/leba/LebaFeedsVideoPlayController:jdField_a_of_type_Aehj	Laehj;
     //   55: ifnull +177 -> 232
     //   58: aload_0
     //   59: invokevirtual 550	com/tencent/mobileqq/leba/LebaFeedsVideoPlayController:a	()J
@@ -506,7 +507,7 @@ public class LebaFeedsVideoPlayController
     //   97: lcmp
     //   98: ifle +134 -> 232
     //   101: aload_0
-    //   102: getfield 164	com/tencent/mobileqq/leba/LebaFeedsVideoPlayController:jdField_a_of_type_Adyz	Ladyz;
+    //   102: getfield 164	com/tencent/mobileqq/leba/LebaFeedsVideoPlayController:jdField_a_of_type_Aehj	Laehj;
     //   105: invokeinterface 555 1 0
     //   110: astore 5
     //   112: aload_0
@@ -535,11 +536,11 @@ public class LebaFeedsVideoPlayController
     //   160: iconst_1
     //   161: if_icmpne +49 -> 210
     //   164: aload_0
-    //   165: getfield 164	com/tencent/mobileqq/leba/LebaFeedsVideoPlayController:jdField_a_of_type_Adyz	Ladyz;
+    //   165: getfield 164	com/tencent/mobileqq/leba/LebaFeedsVideoPlayController:jdField_a_of_type_Aehj	Laehj;
     //   168: invokeinterface 555 1 0
     //   173: ifnull +37 -> 210
     //   176: aload_0
-    //   177: getfield 164	com/tencent/mobileqq/leba/LebaFeedsVideoPlayController:jdField_a_of_type_Adyz	Ladyz;
+    //   177: getfield 164	com/tencent/mobileqq/leba/LebaFeedsVideoPlayController:jdField_a_of_type_Aehj	Laehj;
     //   180: invokeinterface 555 1 0
     //   185: sipush 276
     //   188: invokevirtual 573	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
@@ -622,9 +623,9 @@ public class LebaFeedsVideoPlayController
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
   }
   
-  public void a(adyz paramadyz)
+  public void a(aehj paramaehj)
   {
-    this.jdField_a_of_type_Adyz = paramadyz;
+    this.jdField_a_of_type_Aehj = paramaehj;
   }
   
   public void a(LebaFeedInfo paramLebaFeedInfo)
@@ -665,7 +666,7 @@ public class LebaFeedsVideoPlayController
     try
     {
       if (!this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoSdkInstaller.a()) {
-        break label509;
+        break label511;
       }
       this.jdField_b_of_type_Boolean = true;
       n();
@@ -685,7 +686,7 @@ public class LebaFeedsVideoPlayController
     }
     a(1);
     f(false);
-    if ((this.jdField_a_of_type_Adyz != null) && (this.jdField_a_of_type_Adyz.b()))
+    if ((this.jdField_a_of_type_Aehj != null) && (this.jdField_a_of_type_Aehj.b()))
     {
       this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer.a(true);
       e(true);
@@ -698,7 +699,7 @@ public class LebaFeedsVideoPlayController
       }
       this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam.jdField_a_of_type_Long;
       this.jdField_e_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer.c();
-      ThreadManager.postImmediately(new adyt(this, l), null, false);
+      ThreadManagerV2.excute(new aehd(this, l), 16, null, false);
       if (!QLog.isColorLevel()) {
         break;
       }
@@ -715,7 +716,7 @@ public class LebaFeedsVideoPlayController
         e(true);
       }
     }
-    label509:
+    label511:
     this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam = paramVideoPlayParam;
     a(7);
     this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoSdkInstaller.a();
@@ -762,7 +763,7 @@ public class LebaFeedsVideoPlayController
         if ((!LebaUtils.a(this.jdField_a_of_type_AndroidContentContext)) && (this.jdField_c_of_type_Boolean)) {
           break label295;
         }
-        this.jdField_a_of_type_AndroidOsHandler.post(new adyv(this));
+        this.jdField_a_of_type_AndroidOsHandler.post(new aehf(this));
       }
       return;
       m = 0;
@@ -770,7 +771,7 @@ public class LebaFeedsVideoPlayController
     }
     label295:
     m = this.h;
-    this.jdField_a_of_type_AndroidOsHandler.post(new adyw(this, m));
+    this.jdField_a_of_type_AndroidOsHandler.post(new aehg(this, m));
     paramLebaFeedsVideoPlayer.a();
     a(3);
   }
@@ -876,12 +877,12 @@ public class LebaFeedsVideoPlayController
     QQAppInterface localQQAppInterface;
     LebaFeedInfo localLebaFeedInfo;
     int m;
-    if ((this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam != null) && (this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer != null) && (this.jdField_a_of_type_Adyz != null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam != null) && (this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer != null) && (this.jdField_a_of_type_Aehj != null))
     {
       l = this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer.b();
       if (l > 0L)
       {
-        localQQAppInterface = this.jdField_a_of_type_Adyz.a();
+        localQQAppInterface = this.jdField_a_of_type_Aehj.a();
         localLebaFeedInfo = this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam.jdField_a_of_type_ComTencentMobileqqDataLebaFeedInfo;
         m = this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam.jdField_a_of_type_Int;
         if (this.i != 1) {
@@ -893,15 +894,15 @@ public class LebaFeedsVideoPlayController
     for (Object localObject = "active_play";; localObject = "auto_play")
     {
       LebaUtils.a(localQQAppInterface, localLebaFeedInfo, m, "feeds_play_video", (String)localObject, l);
-      if ((this.i == 1) && (this.jdField_a_of_type_Adyz.a() != null)) {
-        ((LebaFeedsManager)this.jdField_a_of_type_Adyz.a().getManager(276)).a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam.jdField_a_of_type_ComTencentMobileqqDataLebaFeedInfo, (int)(l / 1000L));
+      if ((this.i == 1) && (this.jdField_a_of_type_Aehj.a() != null)) {
+        ((LebaFeedsManager)this.jdField_a_of_type_Aehj.a().getManager(276)).a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam.jdField_a_of_type_ComTencentMobileqqDataLebaFeedInfo, (int)(l / 1000L));
       }
       this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam.jdField_a_of_type_Long), Long.valueOf(0L));
       localObject = this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam;
       if ((paramLebaFeedsVideoPlayer == this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer) && (localObject != null) && (a() == 3))
       {
         a(6);
-        this.jdField_a_of_type_AndroidOsHandler.post(new adyx(this, (LebaFeedsVideoPlayController.VideoPlayParam)localObject));
+        this.jdField_a_of_type_AndroidOsHandler.post(new aehh(this, (LebaFeedsVideoPlayController.VideoPlayParam)localObject));
       }
       return;
     }
@@ -964,7 +965,7 @@ public class LebaFeedsVideoPlayController
     if (QLog.isColorLevel()) {
       QLog.i("LebaFeedsVideoPlayController", 2, "notifyVideoChattingState " + paramBoolean);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam != null) && (this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer != null) && (this.jdField_a_of_type_Adyz != null) && (this.jdField_a_of_type_Adyz.b()))
+    if ((this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam != null) && (this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer != null) && (this.jdField_a_of_type_Aehj != null) && (this.jdField_a_of_type_Aehj.b()))
     {
       this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer.a(true);
       this.jdField_e_of_type_Boolean = true;
@@ -1002,7 +1003,7 @@ public class LebaFeedsVideoPlayController
     if (this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam == null) {
       return;
     }
-    if ((this.jdField_a_of_type_Adyz != null) && (this.jdField_a_of_type_Adyz.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam.jdField_a_of_type_Long)))
+    if ((this.jdField_a_of_type_Aehj != null) && (this.jdField_a_of_type_Aehj.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController$VideoPlayParam.jdField_a_of_type_Long)))
     {
       a();
       return;
@@ -1068,11 +1069,11 @@ public class LebaFeedsVideoPlayController
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
       return;
     case 1: 
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130840614);
+      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130840629);
       this.jdField_c_of_type_AndroidViewView.setVisibility(0);
       return;
     }
-    this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130840613);
+    this.jdField_c_of_type_AndroidViewView.setBackgroundResource(2130840628);
     this.jdField_c_of_type_AndroidViewView.setVisibility(0);
   }
   

@@ -1,17 +1,55 @@
-import com.tencent.biz.troopgift.AIOGiftPanelContainer;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class oyt
-  implements Runnable
+public class oyt
+  implements ActionSheet.OnButtonClickListener
 {
-  oyt(oys paramoys) {}
+  public oyt(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel != null)
+    if (this.a.e) {
+      return;
+    }
+    this.a.e = true;
+    switch (paramInt)
     {
-      this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.setGiftData(this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData, true);
-      this.a.a.a.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.a.a.a.b);
+    }
+    for (;;)
+    {
+      this.a.b.dismiss();
+      return;
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        this.a.e();
+        if ((this.a.g & 0x1) != 0)
+        {
+          ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
+          continue;
+          if (!this.a.jdField_a_of_type_Boolean)
+          {
+            this.a.f();
+            if ((this.a.g & 0x1) != 0)
+            {
+              ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
+              continue;
+              if (!this.a.jdField_a_of_type_Boolean)
+              {
+                this.a.d();
+                if ((this.a.g & 0x1) != 0) {
+                  ReportController.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
+                }
+                if (this.a.jdField_c_of_type_Int == 2) {
+                  ReportController.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

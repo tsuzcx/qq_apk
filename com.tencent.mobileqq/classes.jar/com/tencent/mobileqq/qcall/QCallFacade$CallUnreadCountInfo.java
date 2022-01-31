@@ -20,30 +20,52 @@ public class QCallFacade$CallUnreadCountInfo
     this.jdField_b_of_type_JavaLangString = paramString;
     this.c = paramInt1;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    QCallFacade localQCallFacade = (QCallFacade)paramQQAppInterface.getManager(37);
-    boolean bool;
-    if (localQCallFacade != null)
+    try
     {
+      QCallFacade localQCallFacade = (QCallFacade)paramQQAppInterface.getManager(37);
+      if (localQCallFacade == null) {
+        break label238;
+      }
       this.jdField_a_of_type_Int = localQCallFacade.b(paramString, paramInt1);
-      if (this.jdField_a_of_type_Int > 0) {
-        if ((paramMessage != null) && ((ActionMsgUtil.b(paramMessage.msgtype)) || (ActionMsgUtil.c(paramMessage.msgtype))))
-        {
-          bool = true;
-          if (!bool) {}
+      if (this.jdField_a_of_type_Int <= 0) {
+        break label238;
+      }
+      if (paramMessage == null) {
+        break label232;
+      }
+      if (!ActionMsgUtil.b(paramMessage.msgtype))
+      {
+        bool = ActionMsgUtil.c(paramMessage.msgtype);
+        if (!bool) {
+          break label232;
         }
       }
+      bool = true;
     }
+    catch (Exception paramMessage)
+    {
+      for (;;)
+      {
+        boolean bool = false;
+        continue;
+        bool = false;
+        continue;
+        bool = false;
+      }
+    }
+    if (bool) {}
     for (;;)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("fetchUnReadCount", 4, String.format("CallUnreadCountInfo, isCallTabShow[%s], isConversationTabShow[%s], isInCallList[%s], uin[%s], type[%s], mUnreadMsgNum[%s], mMissCallCount[%s], mMsgExtroInfo[%s], isVideoMsg[%s]", new Object[] { Boolean.valueOf(paramQQAppInterface.n), Boolean.valueOf(paramQQAppInterface.o), Boolean.valueOf(paramQQAppInterface.p), paramString, Integer.valueOf(paramInt1), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool) }));
       }
       return;
-      this.jdField_a_of_type_JavaLangString = "[有未接来电]";
-      continue;
-      bool = false;
-      break;
-      bool = false;
+      try
+      {
+        this.jdField_a_of_type_JavaLangString = "[有未接来电]";
+      }
+      catch (Exception paramMessage) {}
+      QLog.w("fetchUnReadCount", 1, "CallUnreadCountInfo , Exception", paramMessage);
     }
   }
   

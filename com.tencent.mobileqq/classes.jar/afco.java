@@ -1,13 +1,17 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afco
-  implements NearbyCustomDialog.OnClickListener
+  implements View.OnTouchListener
 {
-  public afco(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public afco(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(View paramView) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getAction() == 2;
+  }
 }
 
 

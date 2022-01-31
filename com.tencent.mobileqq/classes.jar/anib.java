@@ -1,23 +1,18 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.statistic.serverip.WebAppIpRecord;
 
-public class anib
-  implements ThreadPool.Job
+public final class anib
+  implements Parcelable.Creator
 {
-  public anib(WyDownloader paramWyDownloader, List paramList) {}
-  
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public WebAppIpRecord a(Parcel paramParcel)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.b(l);
-    }
-    return null;
+    return new WebAppIpRecord(paramParcel);
+  }
+  
+  public WebAppIpRecord[] a(int paramInt)
+  {
+    return new WebAppIpRecord[paramInt];
   }
 }
 

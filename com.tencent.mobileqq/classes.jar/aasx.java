@@ -1,54 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCGI;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderResourceInfo;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenerArumentManager;
+import com.tencent.mobileqq.arcard.ARCardRender;
+import com.tencent.qphone.base.util.QLog;
 
 public class aasx
   implements Runnable
 {
-  public aasx(ArkAppCGI paramArkAppCGI, aati paramaati) {}
+  public aasx(ARCardRender paramARCardRender, ARBaseRender paramARBaseRender, ARRenderResourceInfo paramARRenderResourceInfo) {}
   
   public void run()
   {
-    try
-    {
-      Object localObject = (QQAppInterface)ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI).get();
-      if (localObject == null)
-      {
-        ArkAppCenter.b("ArkApp.ArkAppCGI", "runTask_retry, app is null, return");
-        return;
-      }
-      localObject = ((DownloaderFactory)((QQAppInterface)localObject).getManager(46)).a(1);
-      File localFile = new File(ArkAppCGI.a());
-      this.jdField_a_of_type_Aati.jdField_a_of_type_JavaIoFile = localFile;
-      DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_Aati.jdField_a_of_type_JavaLangString, localFile);
-      localDownloadTask.l = true;
-      localDownloadTask.n = true;
-      if (this.jdField_a_of_type_Aati.b != null) {
-        localDownloadTask.a("Cookie", this.jdField_a_of_type_Aati.b);
-      }
-      if (this.jdField_a_of_type_Aati.c != null) {
-        localDownloadTask.a("Referer", this.jdField_a_of_type_Aati.c);
-      }
-      Bundle localBundle = new Bundle();
-      ((DownloaderInterface)localObject).a(localDownloadTask, new aasy(this, localFile), localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a_(ARCardRender.jdField_a_of_type_Int, ARCardRender.b);
+    ARBaseRender localARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
+    this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
+    if (QLog.isColorLevel()) {
+      QLog.d("HSRender", 2, "onARStateChanged, queueEvent");
+    }
+    if ((localARBaseRender != null) && (localARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
+      localARBaseRender.d();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender == null) {
       return;
     }
-    catch (Exception localException)
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2048L))) {}
+    for (boolean bool = true;; bool = false)
     {
-      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("runTask fail, url=%s, msg=%s", new Object[] { this.jdField_a_of_type_Aati.jdField_a_of_type_JavaLangString, localException.getMessage() }));
-      ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI, this.jdField_a_of_type_Aati, false, null);
+      this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a();
+      this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a(bool, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo);
+      this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a();
+      this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.b();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasx
  * JD-Core Version:    0.7.0.1
  */

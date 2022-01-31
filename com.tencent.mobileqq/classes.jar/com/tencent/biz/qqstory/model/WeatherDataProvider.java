@@ -6,8 +6,8 @@ import com.tencent.biz.qqstory.model.lbs.LbsManager;
 import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
 import com.tencent.biz.qqstory.network.request.GetWeatherRequest;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import ndr;
-import nds;
+import nhm;
+import nhn;
 
 public class WeatherDataProvider
   extends DataProvider
@@ -17,7 +17,7 @@ public class WeatherDataProvider
   
   public WeatherDataProvider()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$LbsUpdateListener = new ndr(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$LbsUpdateListener = new nhm(this);
     e();
   }
   
@@ -62,7 +62,7 @@ public class WeatherDataProvider
   {
     SLog.a("WeatherDataProvider", "requestWeather[longitude=%s,latitude=%s]", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
     GetWeatherRequest localGetWeatherRequest = new GetWeatherRequest(1, paramInt1, paramInt2);
-    CmdTaskManger.a().a(localGetWeatherRequest, new nds(this));
+    CmdTaskManger.a().a(localGetWeatherRequest, new nhn(this));
   }
 }
 

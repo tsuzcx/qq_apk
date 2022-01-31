@@ -1,69 +1,111 @@
-import android.os.Bundle;
-import com.tencent.biz.helper.TroopCardAppInfoHelper;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.addContactTroopView.TroopCardSameCity;
+import com.tencent.biz.addContactTroopView.TroopCardSameCity.ViewHolder;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.statistics.ReportControllerImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import tencent.im.troop_search_searchtab.searchtab.Item2;
 
 public class kmy
-  implements BusinessObserver
+  extends BaseAdapter
 {
-  public kmy(TroopCardAppInfoHelper paramTroopCardAppInfoHelper, boolean paramBoolean) {}
+  public kmy(TroopCardSameCity paramTroopCardSameCity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int getCount()
   {
-    if (this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper.jdField_a_of_type_Boolean) {
-      return;
+    if (this.a.a != null) {
+      return this.a.a.size();
     }
-    if ((!paramBoolean) || (paramBundle == null))
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    searchtab.Item2 localItem2;
+    int i;
+    int j;
+    if (paramView == null)
     {
-      TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper);
-      return;
+      paramView = new TroopCardSameCity.ViewHolder();
+      localObject = LayoutInflater.from(this.a.getContext()).inflate(2130969412, paramViewGroup, false);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131366417));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131366419));
+      paramView.b = ((TextView)((View)localObject).findViewById(2131366420));
+      ((View)localObject).setTag(paramView);
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+      localItem2 = (searchtab.Item2)this.a.a.get(paramInt);
+      i = AIOUtils.a(38.0F, this.a.getResources());
+      j = AIOUtils.a(57.0F, this.a.getResources());
+      localObject = localItem2.str_img_url.get();
+      paramInt = 1;
+      if (HttpUtil.a((String)localObject)) {
+        break label364;
+      }
+      if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).startsWith("//"))) {
+        break label320;
+      }
+      localObject = "http:" + (String)localObject;
+      ReportControllerImpl.b(null, "dc00899", "Q..urldrawable", "", "url_no_head", "", 0, 0, "TroopCardSameCity", "" + (String)localObject, "", "");
+      paramInt = 1;
+      label234:
+      if (paramInt == 0) {
+        break label430;
+      }
     }
-    paramBundle = paramBundle.getByteArray("data");
-    Object localObject = new oidb_sso.OIDBSSOPkg();
-    try
+    for (;;)
     {
-      ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
-      if ((localObject == null) || (!((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) || (((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() != 0) || (!((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() == null))
+      try
       {
-        TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper);
-        return;
+        URLDrawable localURLDrawable = URLDrawable.getDrawable((String)localObject, i, j);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+        if ((localURLDrawable != null) && (1 != localURLDrawable.getStatus())) {
+          localURLDrawable.restartDownload();
+        }
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopCardAppInfoHandler", 2, "handleGetTroopAppBriefList error " + QLog.getStackTraceString(paramBundle));
-      }
-      TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper);
-      return;
-    }
-    localObject = TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper, (oidb_sso.OIDBSSOPkg)localObject);
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-    {
-      if (!this.jdField_a_of_type_Boolean)
+      catch (IllegalArgumentException localIllegalArgumentException)
       {
-        TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper, (List)localObject);
-        return;
+        label320:
+        label364:
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("Q..urldrawable", 2, "URLDrawable.getDrawable() Exception.", localIllegalArgumentException);
+        ReportControllerImpl.b(null, "dc00899", "Q..urldrawable", "", "url_illegal", "", 0, 1, "TroopCardSameCity", "" + (String)localObject, "", "");
+        continue;
       }
-      paramBundle = new ArrayList();
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Long localLong = (Long)((Iterator)localObject).next();
-        new TroopAppInfo().appId = localLong.longValue();
-      }
-      TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper, paramBundle);
-      return;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localItem2.str_name.get());
+      paramViewGroup.b.setText(localItem2.str_desc.get());
+      return paramView;
+      paramViewGroup = (TroopCardSameCity.ViewHolder)paramView.getTag();
+      break;
+      paramInt = 0;
+      ReportControllerImpl.b(null, "dc00899", "Q..urldrawable", "", "url_illegal", "", 0, 0, "TroopCardSameCity", "" + (String)localObject, "", "");
+      break label234;
+      label430:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
     }
-    TroopCardAppInfoHelper.a(this.jdField_a_of_type_ComTencentBizHelperTroopCardAppInfoHelper);
   }
 }
 

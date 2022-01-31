@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajss;
+import akaf;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -38,7 +38,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ajss(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new akaf(this);
     a();
   }
   
@@ -47,7 +47,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ajss(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new akaf(this);
     a();
   }
   
@@ -56,7 +56,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ajss(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new akaf(this);
     a();
   }
   
@@ -357,7 +357,7 @@ public class PinnedHeaderIphoneTreeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.PinnedHeaderIphoneTreeView
  * JD-Core Version:    0.7.0.1
  */

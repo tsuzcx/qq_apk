@@ -1,27 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.qq.im.poi.LbsStrangerPoiDialog;
 
 public class any
-  extends Handler
+  implements View.OnClickListener
 {
-  public any(LbsStrangerPoiDialog paramLbsStrangerPoiDialog, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public any(LbsStrangerPoiDialog paramLbsStrangerPoiDialog) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 100: 
-      this.a.a(this.a.a, this.a.d);
-      return;
-    }
-    this.a.a(this.a.a, this.a.d);
+    this.a.a();
   }
 }
 

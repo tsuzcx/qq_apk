@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
+import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import java.util.ArrayList;
 
 public class aeym
-  implements IVideoView.OnErrorListener
+  extends NearbyCardObserver
 {
-  public aeym(VideoPlayerView paramVideoPlayerView, VideoData paramVideoData) {}
+  public aeym(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public boolean a(IVideoView paramIVideoView, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  protected void a(boolean paramBoolean, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
-    }
-    return true;
+    this.a.runOnUiThread(new aeyn(this, paramBoolean, paramInt1, paramArrayList));
+  }
+  
+  protected void b(boolean paramBoolean, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.runOnUiThread(new aeyo(this, paramBoolean, paramInt1, paramArrayList));
   }
 }
 

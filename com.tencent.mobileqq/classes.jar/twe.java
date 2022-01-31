@@ -1,36 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class twe
-  implements PopupMenuDialog.OnClickActionListener
+  implements DialogInterface.OnClickListener
 {
-  public twe(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public twe(SendMultiPictureHelper paramSendMultiPictureHelper) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = false;
-    switch (paramMenuItem.a)
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-    default: 
-      return;
-    case 0: 
-      paramMenuItem = this.a;
-      if (!this.a.d) {
-        bool = true;
-      }
-      paramMenuItem.d = bool;
-      TroopAssistantManager.a().b(this.a.app, this.a.d);
-      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+      this.a.b = true;
+      SendMultiPictureHelper.a(this.a);
+      this.a.b();
     }
-    paramMenuItem = new Intent(this.a, TroopAssisSettingActivity.class);
-    paramMenuItem.setFlags(67108864);
-    this.a.startActivity(paramMenuItem);
-    ReportController.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
   }
 }
 

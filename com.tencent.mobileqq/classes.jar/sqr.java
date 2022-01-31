@@ -1,71 +1,22 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.PullToZoomHeaderListView;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class sqr
-  implements AbsListView.OnScrollListener
+  implements View.OnClickListener
 {
-  public sqr(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sqr(EditInfoActivity paramEditInfoActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_b_of_type_Int != paramInt) {
-      this.a.jdField_b_of_type_Int = paramInt;
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramAbsListView = this.a.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.getChildAt(0);
-    Object localObject;
-    if ((paramAbsListView != null) && (paramInt1 == 0))
-    {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_Int == 33) || (this.a.d == null)) {
-        return;
-      }
-      paramInt1 = Math.abs(paramAbsListView.getTop());
-      localObject = null;
-      if ((paramInt1 <= this.a.jdField_a_of_type_Int) || (paramInt1 < this.a.c) || (this.a.d.getVisibility() != 8)) {
-        break label180;
-      }
-      paramAbsListView = this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-    }
-    for (;;)
-    {
-      if ((paramAbsListView != null) && (paramAbsListView != this.a.d.getAnimation()))
-      {
-        paramAbsListView.reset();
-        this.a.d.startAnimation(paramAbsListView);
-        this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.startAnimation(paramAbsListView);
-      }
-      this.a.jdField_a_of_type_Int = paramInt1;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView == null) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.b("map_key_extend_friend_info");
-      return;
-      label180:
-      paramAbsListView = localObject;
-      if (paramInt1 < this.a.jdField_a_of_type_Int)
-      {
-        paramAbsListView = localObject;
-        if (paramInt1 <= this.a.c)
-        {
-          paramAbsListView = localObject;
-          if (this.a.d.getVisibility() == 0) {
-            paramAbsListView = this.a.jdField_b_of_type_AndroidViewAnimationAlphaAnimation;
-          }
-        }
-      }
-    }
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844609);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("表情");
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 

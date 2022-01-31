@@ -1,18 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.IMyStoryListView;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
 
 public class nzp
-  implements DialogInterface.OnClickListener
 {
-  public nzp(StoryListPresenter paramStoryListPresenter) {}
+  public int a;
+  public CommentEntry a;
+  private int b = -1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public nzp(DetailCommentHelper paramDetailCommentHelper)
   {
-    this.a.a.a(false, true, 12, null);
-    StoryReportor.a("home_page", "guide_open", 0, 0, new String[0]);
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = null;
+    this.jdField_a_of_type_Int = -1;
+    this.b = -1;
+  }
+  
+  public void a(CommentEntry paramCommentEntry, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+    this.b = paramCommentEntry.commentId;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(CommentEntry paramCommentEntry)
+  {
+    return paramCommentEntry.commentId != this.b;
   }
 }
 

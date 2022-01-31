@@ -13,7 +13,7 @@ import com.tencent.av.ui.QavVideoRecordUICtrl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import kdi;
+import kfm;
 
 public class QavRecordUtils
 {
@@ -65,7 +65,7 @@ public class QavRecordUtils
       return;
     }
     AudioFileDecoder localAudioFileDecoder = new AudioFileDecoder(48000, 16, 1);
-    localAudioFileDecoder.a(new kdi());
+    localAudioFileDecoder.a(new kfm());
     int i = 0;
     if (i < paramString.length)
     {
@@ -201,7 +201,7 @@ public class QavRecordUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavRecordUtils
  * JD-Core Version:    0.7.0.1
  */

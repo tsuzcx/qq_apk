@@ -1,17 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class abnj
-  implements View.OnClickListener
+class abnj
+  implements DialogInterface.OnClickListener
 {
-  public abnj(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  abnj(abnh paramabnh) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = (abnn)paramView.getTag();
-    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

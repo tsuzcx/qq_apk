@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class afhr
-  implements DialogInterface.OnClickListener
+class afhr
+  implements Runnable
 {
-  public afhr(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, QQCustomDialog paramQQCustomDialog) {}
+  afhr(afhq paramafhq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.a.a.a();
+    QQToast.a(this.a.a, 1, "当前网络不可用，请检查网络设置", 0).a();
   }
 }
 

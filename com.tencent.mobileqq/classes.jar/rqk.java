@@ -1,110 +1,64 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emoticon.SogouEmoji;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.XEditTextEx.OnPrivateIMECommandListener;
-import mqq.os.MqqHandler;
+import com.tencent.widget.Switch;
 
 public class rqk
-  implements XEditTextEx.OnPrivateIMECommandListener
+  extends CardObserver
 {
-  public rqk(BaseChatPie paramBaseChatPie) {}
+  public rqk(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public boolean a(String paramString, Bundle paramBundle)
+  protected void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "onPrivateIMECommand(), action:" + paramString);
-    }
-    int i;
-    if ((!TextUtils.isEmpty(paramString)) && (paramBundle != null) && (InputMethodUtil.a(this.a.jdField_a_of_type_AndroidContentContext)))
+    int i = 1;
+    boolean bool = false;
+    if (!paramBoolean)
     {
-      if ((!"com.sogou.inputmethod.expression".equals(paramString)) && (!"com.tencent.qqpinyin.expression".equals(paramString))) {
-        break label182;
+      QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131436084), 3000).b(this.a.getTitleBarHeight());
+      localObject1 = this.a;
+      localObject2 = AssistantSettingActivity.a(this.a).a();
+      paramBoolean = bool;
+      if (!AssistantSettingActivity.a(this.a).a().isChecked()) {
+        paramBoolean = true;
       }
-      if (!"com.sogou.inputmethod.expression".equals(paramString)) {
-        break label168;
-      }
-      paramString = paramBundle.getString("SOGOU_EXP_PATH");
-      i = 1034;
+      AssistantSettingActivity.a((AssistantSettingActivity)localObject1, (CompoundButton)localObject2, paramBoolean);
       if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseChatPie", 2, "onPrivateIMECommand(), path:" + paramString + ", busiType = " + i);
+        QLog.d("IphoneTitleBarActivity", 2, "AssistantSettingActivity onSetMedal failed");
       }
-      if (!TextUtils.isEmpty(paramString)) {
-        ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramString, i);
+      return;
+    }
+    Object localObject1 = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
+    if (!this.a.isFinishing())
+    {
+      localObject2 = this.a;
+      Switch localSwitch = AssistantSettingActivity.a(this.a).a();
+      if (((Card)localObject1).medalSwitchDisable) {
+        break label260;
+      }
+      paramBoolean = true;
+      AssistantSettingActivity.a((AssistantSettingActivity)localObject2, localSwitch, paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "AssistantSettingActivity onSetMedal medalSwitchDisable= " + ((Card)localObject1).medalSwitchDisable);
       }
     }
-    label168:
-    label182:
-    do
+    Object localObject2 = this.a.app;
+    if (((Card)localObject1).medalSwitchDisable) {}
+    for (;;)
     {
-      do
-      {
-        return true;
-        paramString = paramBundle.getString("QQINPUT_EXP_PATH");
-        i = 1038;
-        break;
-        if ("com.sogou.inputmethod.appid".equals(paramString))
-        {
-          localObject1 = paramBundle.getString("SOGOU_APP_ID");
-          Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-          paramString = AuthorityUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), (String)localObject2, (String)localObject1);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.aio.BaseChatPie", 2, "onPrivateIMECommand(), appId:" + (String)localObject1 + "selfUin:" + (String)localObject2 + "openId:" + paramString);
-          }
-          localObject1 = (InputMethodManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("input_method");
-          localObject2 = new Bundle();
-          ((Bundle)localObject2).putString("SOGOU_OPENID", paramString);
-          ((InputMethodManager)localObject1).sendAppPrivateCommand(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, "com.tencent.mobileqq.sogou.openid", (Bundle)localObject2);
-          paramString = paramBundle.getStringArrayList("EXP_ALL_PACKID");
-          if (BaseChatPie.a(this.a) == null) {
-            BaseChatPie.a(this.a, new SogouEmoji(this.a));
-          }
-          BaseChatPie.a(this.a).a(paramString);
-          return true;
-        }
-        if (("com.sogou.inputmethod.qqexp".equals(paramString)) || ("com.tencent.qqpinyin.qqexp".equals(paramString)))
-        {
-          i = paramBundle.getInt("PACKAGE_ID");
-          paramString = paramBundle.getString("EXP_ID");
-          paramBundle = paramBundle.getString("EXP_PATH");
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.aio.BaseChatPie", 2, "onPrivateIMECommand(), packId:" + i + ",exprId:" + paramString + ",ePath:" + paramBundle);
-          }
-          if (BaseChatPie.a(this.a) == null) {
-            BaseChatPie.a(this.a, new SogouEmoji(this.a));
-          }
-          BaseChatPie.a(this.a).a(i, paramString);
-          return true;
-        }
-      } while (!"com.tencent.mobileqq_audioArgs".equals(paramString));
-      paramString = paramBundle.getString("PCMFilePath");
-      i = paramBundle.getInt("SampleRate");
-      int j = paramBundle.getInt("Channels");
-      Object localObject1 = (QQRecorder.RecorderParam)this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.a;
-      paramBundle = paramBundle.getString("InputMethodName");
-      if (QLog.isColorLevel()) {
-        QLog.d("sougouptt", 2, "recv args from sogou, pcmPath = " + paramString + " sampleRate = " + i + " channels = " + j + " inputName = " + paramBundle + " my sampleRate = " + ((QQRecorder.RecorderParam)localObject1).a);
-      }
-      if ((i == ((QQRecorder.RecorderParam)localObject1).a) && (!StringUtil.a(paramString))) {
-        break label667;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("sougouptt", 2, "invalid datas from sougou ");
-    return true;
-    label667:
-    ThreadManager.getSubThreadHandler().post(new rql(this, paramString, i, paramBundle));
-    return true;
+      ReportController.b((QQAppInterface)localObject2, "dc00898", "", "", "0X80073A0", "0X80073A0", i, 0, "", "", "", "");
+      return;
+      label260:
+      paramBoolean = false;
+      break;
+      i = 0;
+    }
   }
 }
 

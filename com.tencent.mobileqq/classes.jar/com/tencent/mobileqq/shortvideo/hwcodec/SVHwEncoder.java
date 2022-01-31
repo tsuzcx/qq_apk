@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.shortvideo.hwcodec;
 
-import aibu;
+import aigo;
 import android.annotation.TargetApi;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecInfo.CodecProfileLevel;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class SVHwEncoder
   private double jdField_a_of_type_Double;
   private volatile float jdField_a_of_type_Float = 30.0F;
   public int a;
-  private aibu jdField_a_of_type_Aibu;
+  private aigo jdField_a_of_type_Aigo;
   private SVHwOutputNotify jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwOutputNotify;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
@@ -448,8 +449,8 @@ public class SVHwEncoder
   public void a(SVHwOutputNotify paramSVHwOutputNotify, SVHwDataSource paramSVHwDataSource, boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwOutputNotify = paramSVHwOutputNotify;
-    this.jdField_a_of_type_Aibu = new aibu(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 99000);
-    new Thread(this.jdField_a_of_type_Aibu, "encode_qq" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement()).start();
+    this.jdField_a_of_type_Aigo = new aigo(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 99000);
+    ThreadManagerV2.executeOnSubThread(this.jdField_a_of_type_Aigo);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -571,8 +572,8 @@ public class SVHwEncoder
   public void b(SVHwOutputNotify paramSVHwOutputNotify, SVHwDataSource paramSVHwDataSource, boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwOutputNotify = paramSVHwOutputNotify;
-    this.jdField_a_of_type_Aibu = new aibu(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 0);
-    this.jdField_a_of_type_Aibu.run();
+    this.jdField_a_of_type_Aigo = new aigo(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 0);
+    this.jdField_a_of_type_Aigo.run();
   }
   
   public void b(ArrayList paramArrayList)
@@ -623,7 +624,7 @@ public class SVHwEncoder
   public void e()
   {
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Aibu.f();
+    this.jdField_a_of_type_Aigo.f();
   }
   
   public void f()

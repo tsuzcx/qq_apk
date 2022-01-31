@@ -1,67 +1,25 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessReporter;
+import com.tencent.biz.webviewplugin.BusinessReportPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
-public class lcc
-  implements EmoticonCallback
+public final class lcc
+  implements Runnable
 {
-  public lcc(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public lcc(String paramString, WebViewPluginEngine paramWebViewPluginEngine) {}
   
-  public void a(EmoticonInfo paramEmoticonInfo)
+  public void run()
   {
-    if ((paramEmoticonInfo instanceof PicEmoticonInfo))
+    
+    if ((BusinessReporter.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null))
     {
-      paramEmoticonInfo = (PicEmoticonInfo)paramEmoticonInfo;
-      if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
-        ((ReadInJoyDeliverUGCActivity)this.a).a(paramEmoticonInfo);
-      }
-      return;
-    }
-    ReadInJoyBaseDeliverActivity.a(paramEmoticonInfo, this.a.a);
-  }
-  
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.a.getSelectionStart() == 0) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(new String[] { "JD_REPORT" });
+      WebViewPlugin localWebViewPlugin = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a("JD_REPORT");
+      if (localWebViewPlugin != null) {
+        ((BusinessReportPlugin)localWebViewPlugin).b(this.jdField_a_of_type_JavaLangString);
       }
     }
   }
-  
-  public void b(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void c() {}
-  
-  public void setting() {}
 }
 
 

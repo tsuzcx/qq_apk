@@ -1,30 +1,82 @@
-import android.text.TextUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
+import java.util.List;
 
 public class aliv
-  implements Runnable
+  extends Handler
 {
-  public aliv(MyAppApi.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
+  public aliv(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    LogUtility.c("MyAppApi", "rooted and start silent install...");
-    long l = System.currentTimeMillis();
-    if (ControlPolicyUtil.a(l))
+    if (paramMessage == null) {}
+    do
     {
-      if ((AppUtil.a()) && (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k))) {
-        AppUtil.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k);
-      }
-    }
-    else {
       return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 3: 
+        paramMessage = (GetAppInfoProto.GetAppinfoResponse)paramMessage.obj;
+      }
+    } while (!paramMessage.iconsURL.has());
+    int i = 0;
+    int j = 0;
+    int m = 0;
+    label58:
+    GetAppInfoProto.MsgIconsurl localMsgIconsurl;
+    if (i < paramMessage.iconsURL.get().size()) {
+      localMsgIconsurl = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
     }
-    LogUtility.c("MyAppApi", "root confused and remember user operation time!");
-    ControlPolicyUtil.a(l);
+    for (;;)
+    {
+      try
+      {
+        k = Integer.parseInt(localMsgIconsurl.size.get());
+        if (k >= 100)
+        {
+          paramMessage = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
+          if (paramMessage == null) {
+            break;
+          }
+          ThreadManager.executeOnNetWorkThread(new aliw(this, paramMessage));
+          return;
+        }
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        int k = 0;
+        continue;
+        int n = m;
+        if (k > m)
+        {
+          j = i;
+          n = k;
+        }
+        i += 1;
+        m = n;
+      }
+      break label58;
+      paramMessage = (Bitmap)paramMessage.obj;
+      Bitmap localBitmap = AuthorityUtil.a(this.a, paramMessage, 50, 50);
+      paramMessage.recycle();
+      if (localBitmap == null) {
+        break;
+      }
+      this.a.b.setImageBitmap(localBitmap);
+      return;
+      i = j;
+    }
   }
 }
 

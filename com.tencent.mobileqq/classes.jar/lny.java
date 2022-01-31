@@ -1,16 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class lny
   implements Runnable
 {
-  public lny(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement, KandianOx210MsgInfo.Biu0x210Msg paramBiu0x210Msg) {}
+  public lny(KandianMergeManager paramKandianMergeManager) {}
   
   public void run()
   {
-    if (ReadInJoySubscribeFragement.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement) != null) {
-      ReadInJoySubscribeFragement.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement).a(String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo$Biu0x210Msg.b), true);
-    }
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.a), 1).edit();
+    localEditor.remove("kandian_push_msg_xml").remove("kandian_push_msg_time");
+    ReadInJoyHelper.a(localEditor, true);
+    ReadInJoyUtils.a("kandian_lock_screen_push_info", true);
   }
 }
 

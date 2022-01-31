@@ -1,31 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.campuscircle.CampusCircleObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class soi
-  extends CampusCircleObserver
+  implements Runnable
 {
-  public soi(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public soi(DialogActivity paramDialogActivity, Dialog paramDialog) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle, Card paramCard)
+  public void run()
   {
-    if ((paramBoolean) && (paramCard != null) && (paramCard.uin != null) && (paramCard.uin.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-      this.a.runOnUiThread(new soj(this));
-    }
-  }
-  
-  public void a(boolean paramBoolean, Card paramCard)
-  {
-    if ((paramBoolean) && (paramCard != null) && (paramCard.uin != null) && (paramCard.uin.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-      this.a.runOnUiThread(new sok(this));
-    }
+    DialogActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDialogActivity, this.jdField_a_of_type_AndroidAppDialog);
   }
 }
 

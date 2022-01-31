@@ -24,16 +24,16 @@ public class ShareGroupsListAdapter$HotSortCollectionViewHolder
   
   public ShareGroupsListAdapter$HotSortCollectionViewHolder(View paramView, ShareGroupsListAdapter paramShareGroupsListAdapter)
   {
-    View localView = paramView.findViewById(2131371989);
-    paramView = paramView.findViewById(2131371990);
+    View localView = paramView.findViewById(2131371997);
+    paramView = paramView.findViewById(2131371998);
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder = new ShareGroupsListAdapter.HotSortCardHolder(localView, paramShareGroupsListAdapter.jdField_a_of_type_AndroidContentContext);
     this.jdField_b_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder = new ShareGroupsListAdapter.HotSortCardHolder(paramView, paramShareGroupsListAdapter.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371812));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371812));
-    this.c = ((TextView)localView.findViewById(2131371813));
-    this.d = ((TextView)paramView.findViewById(2131371813));
-    this.e = ((TextView)localView.findViewById(2131371814));
-    this.f = ((TextView)paramView.findViewById(2131371814));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371811));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371811));
+    this.c = ((TextView)localView.findViewById(2131371812));
+    this.d = ((TextView)paramView.findViewById(2131371812));
+    this.e = ((TextView)localView.findViewById(2131371813));
+    this.f = ((TextView)paramView.findViewById(2131371813));
     QQStoryContext.a();
     if (ThemeUtil.isInNightMode(QQStoryContext.a()))
     {

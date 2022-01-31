@@ -1,30 +1,24 @@
-import com.tencent.av.SessionMgr;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.guild.GuildMultiActivity;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class jja
   implements Runnable
 {
-  public jja(GuildMultiActivity paramGuildMultiActivity) {}
+  public jja(CameraUtils paramCameraUtils) {}
   
   public void run()
   {
-    if (this.a.a != null)
-    {
-      SessionInfo localSessionInfo = SessionMgr.a().a(this.a.e);
-      if (localSessionInfo != null)
-      {
-        localSessionInfo.a.f = true;
-        if (this.a.a.h() == 1) {}
-        GuildMultiActivity.a(this.a, true);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraUtils", 2, "NoPreviewRunnable.run");
     }
+    this.a.a.a().a(new Object[] { Integer.valueOf(38), Integer.valueOf(2) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jja
  * JD-Core Version:    0.7.0.1
  */

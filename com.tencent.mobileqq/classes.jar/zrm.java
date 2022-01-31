@@ -1,24 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.automator.step.RegisterProxy;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioUtil;
 
 public class zrm
-  extends Handler
+  implements Runnable
 {
-  public zrm(RegisterProxy paramRegisterProxy, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public zrm(QQAppInterface paramQQAppInterface) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    RegisterProxy.a(this.a, false);
+    AudioUtil.a(2131230758, false);
   }
 }
 

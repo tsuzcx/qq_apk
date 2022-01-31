@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class xlq
-  implements Runnable
+  implements EIPCResultCallback
 {
-  public xlq(RecentItemChatMsgData paramRecentItemChatMsgData, QQAppInterface paramQQAppInterface, MessageForStructing paramMessageForStructing) {}
+  public xlq(PreloadManagerProxy paramPreloadManagerProxy, ResultReceiver paramResultReceiver) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq, "extLong", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.extLong));
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
+    {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramEIPCResult.data);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, null);
   }
 }
 

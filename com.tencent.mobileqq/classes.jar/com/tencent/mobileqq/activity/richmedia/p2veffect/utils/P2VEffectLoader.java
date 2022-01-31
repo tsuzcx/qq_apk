@@ -10,15 +10,15 @@ import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 import cooperation.qzone.util.QZLog;
 import java.io.File;
-import xuq;
-import xur;
-import xus;
+import yaz;
+import yba;
+import ybb;
 
 public class P2VEffectLoader
 {
   private static P2VEffectLoader jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader;
-  private static String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "p2vEffectUrl", "http://d3g.qq.com/sngapp/app/update/20180319162123_1828/p2v_effect.jar");
-  private static String b = QzoneConfig.getInstance().getConfig("QZoneSetting", "p2vEffectJarMD5", "f46b795a00826a0ae12250591da7b9d9");
+  private static String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "p2vEffectUrl", "https://d3g.qq.com/sngapp/app/update/20180523193621_6462/p2v_effect.jar");
+  private static String b = QzoneConfig.getInstance().getConfig("QZoneSetting", "p2vEffectJarMD5", "a224ca83ac93e70cb401a5062a3c142b");
   private static String c = QzoneConfig.getInstance().getConfig("QZoneSetting", "p2vMaterialUrl", "http://d3g.qq.com/sngapp/app/update/20180124144756_2643/p2v_material.zip");
   private static String d = QzoneConfig.getInstance().getConfig("QZoneSetting", "p2vMaterialMD5", "f61e9058b09761852fda262a13c353fc");
   private boolean jdField_a_of_type_Boolean;
@@ -115,7 +115,7 @@ public class P2VEffectLoader
   
   public void a(P2VEffectLoader.P2VEffectDownloadListener paramP2VEffectDownloadListener)
   {
-    b(new xuq(this, paramP2VEffectDownloadListener));
+    b(new yaz(this, paramP2VEffectDownloadListener));
   }
   
   public void a(ClassLoader paramClassLoader)
@@ -187,7 +187,7 @@ public class P2VEffectLoader
       paramP2VEffectDownloadListener.a(true);
       return;
     }
-    QzoneModuleManager.getInstance().downloadModule("p2v_effect.jar", new xur(this, paramP2VEffectDownloadListener));
+    QzoneModuleManager.getInstance().downloadModule("p2v_effect.jar", new yba(this, paramP2VEffectDownloadListener));
   }
   
   public void c(P2VEffectLoader.P2VEffectDownloadListener paramP2VEffectDownloadListener)
@@ -201,7 +201,7 @@ public class P2VEffectLoader
       paramP2VEffectDownloadListener.a(true);
       return;
     }
-    QzoneModuleManager.getInstance().downloadModule("p2v_material.zip", new xus(this, paramP2VEffectDownloadListener));
+    QzoneModuleManager.getInstance().downloadModule("p2v_material.zip", new ybb(this, paramP2VEffectDownloadListener));
   }
 }
 

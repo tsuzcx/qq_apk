@@ -1,18 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import dov.com.qq.im.capture.data.CaptureComboManager;
 
 public class antv
-  implements DialogInterface.OnDismissListener
+  implements Handler.Callback
 {
-  public antv(EditVideoGuide paramEditVideoGuide) {}
+  public antv(CaptureComboManager paramCaptureComboManager) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.b = 3;
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(14);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.removeMessages(1);
+      if (this.a.a()) {
+        this.a.a.sendEmptyMessageDelayed(1, 50L);
+      }
+    }
   }
 }
 

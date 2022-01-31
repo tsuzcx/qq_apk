@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import aaku;
+import aaro;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArFeatureInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aaku();
+  public static final Parcelable.Creator CREATOR = new aaro();
   public long a;
   public String a;
   public String b;

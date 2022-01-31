@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
-import adwv;
+import aeff;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -27,7 +27,7 @@ import org.json.JSONObject;
 public class QQStoryApiPlugin
   extends WebViewPlugin
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new adwv(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aeff(this);
   private volatile boolean jdField_a_of_type_Boolean;
   
   public QQStoryApiPlugin()

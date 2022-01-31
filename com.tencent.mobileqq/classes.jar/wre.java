@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopObserver;
 
 public class wre
-  implements Comparator
+  implements Runnable
 {
-  public wre(C2CMessageResultAdapter paramC2CMessageResultAdapter) {}
+  public wre(TroopView.MyTroopObserver paramMyTroopObserver) {}
   
-  public int a(MessageItem paramMessageItem1, MessageItem paramMessageItem2)
+  public void run()
   {
-    return (int)(paramMessageItem2.a.time - paramMessageItem1.a.time);
+    this.a.a.j();
   }
 }
 

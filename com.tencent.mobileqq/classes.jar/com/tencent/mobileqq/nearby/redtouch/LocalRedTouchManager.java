@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.redtouch;
 
-import afmc;
+import afqb;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.os.SystemClock;
@@ -47,7 +47,7 @@ public class LocalRedTouchManager
   public static Map a;
   @Deprecated
   public static final int[] a;
-  afmc jdField_a_of_type_Afmc;
+  afqb jdField_a_of_type_Afqb;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private RedPointNode jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode;
   final Object jdField_a_of_type_JavaLangObject = new Object();
@@ -70,7 +70,7 @@ public class LocalRedTouchManager
   public LocalRedTouchManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Afmc = new DefaultRedPointPreHandler(paramQQAppInterface);
+    this.jdField_a_of_type_Afqb = new DefaultRedPointPreHandler(paramQQAppInterface);
     e();
   }
   
@@ -150,7 +150,7 @@ public class LocalRedTouchManager
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramRedTouchItem.taskId)))
     {
       localRedPointConfig1 = (RedPointConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramRedTouchItem.taskId));
-      this.jdField_a_of_type_Afmc.a(paramRedTouchItem, localRedPointConfig1.redPointId);
+      this.jdField_a_of_type_Afqb.a(paramRedTouchItem, localRedPointConfig1.redPointId);
       localRedTouchItem = a(localRedPointConfig1.redPointId);
       if (localRedTouchItem == null) {
         break label244;

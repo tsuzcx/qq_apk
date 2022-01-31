@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akvm;
+import aldd;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
@@ -53,7 +53,7 @@ public class PagingScrollView
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
     this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
-    paramView.setOnTouchListener(new akvm(this));
+    paramView.setOnTouchListener(new aldd(this));
   }
   
   protected boolean a(View paramView, float paramFloat1, float paramFloat2)
@@ -181,7 +181,7 @@ public class PagingScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.PagingScrollView
  * JD-Core Version:    0.7.0.1
  */

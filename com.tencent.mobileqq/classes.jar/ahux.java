@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.TroopAddFrdsSrchResultPresenter;
+import com.tencent.mobileqq.scribble.ScribbleResMgr;
+import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import java.util.Comparator;
 
 public class ahux
-  implements View.OnClickListener
+  implements Comparator
 {
-  public ahux(TroopAddFrdsSrchResultPresenter paramTroopAddFrdsSrchResultPresenter, ISearchResultModel paramISearchResultModel) {}
+  public ahux(ScribbleResMgr paramScribbleResMgr) {}
   
-  public void onClick(View paramView)
+  public int a(ScribbleResMgr.ResInfo paramResInfo1, ScribbleResMgr.ResInfo paramResInfo2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel.a(paramView);
+    if ((paramResInfo1 != null) && (paramResInfo2 != null)) {
+      return paramResInfo1.orderIndex - paramResInfo2.orderIndex;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahux
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.opengl.glrenderer.GLCanvas;
+import com.tencent.av.switchface.SwitchFaceView;
 
-class jri
-  implements DialogInterface.OnClickListener
+public class jri
 {
-  jri(jre paramjre) {}
+  public GLCanvas a;
+  public jrh[] a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public jri(SwitchFaceView paramSwitchFaceView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
+    this.jdField_a_of_type_ArrayOfJrh = new jrh[2];
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfJrh.length)
+    {
+      this.jdField_a_of_type_ArrayOfJrh[i] = new jrh(paramSwitchFaceView);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jri
  * JD-Core Version:    0.7.0.1
  */

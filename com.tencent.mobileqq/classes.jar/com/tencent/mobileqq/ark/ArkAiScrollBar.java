@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark;
 
-import aasu;
-import aasv;
+import aazo;
+import aazp;
 import android.content.Context;
 import android.view.InflateException;
 import android.view.LayoutInflater;
@@ -32,7 +32,7 @@ public class ArkAiScrollBar
   protected PopupWindow a;
   protected RelativeLayout a;
   protected ArkRecommendController a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aasu(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aazo(this);
   protected ArrayList a;
   protected boolean a;
   private int b = 1;
@@ -337,11 +337,11 @@ public class ArkAiScrollBar
     try
     {
       BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController.a();
-      this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)LayoutInflater.from(localBaseChatPie.jdField_a_of_type_AndroidContentContext).inflate(2130968708, null));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.findViewById(2131363325));
-      this.jdField_a_of_type_AndroidViewView = localBaseChatPie.c.findViewById(2131363494);
-      this.jdField_a_of_type_AndroidViewView.addOnLayoutChangeListener(new aasv(this));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localBaseChatPie.c.findViewById(2131363492));
+      this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)LayoutInflater.from(localBaseChatPie.jdField_a_of_type_AndroidContentContext).inflate(2130968711, null));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.findViewById(2131363342));
+      this.jdField_a_of_type_AndroidViewView = localBaseChatPie.c.findViewById(2131363513);
+      this.jdField_a_of_type_AndroidViewView.addOnLayoutChangeListener(new aazp(this));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localBaseChatPie.c.findViewById(2131363511));
       this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(this.jdField_a_of_type_AndroidWidgetHorizontalScrollView, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth(), -2);
       return true;
     }

@@ -1,37 +1,22 @@
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 public class acab
-  implements Runnable
 {
-  public acab(FavroamingManager paramFavroamingManager, String[] paramArrayOfString, TransferRequest paramTransferRequest) {}
+  public byte a;
+  public long a;
+  public String a;
+  public short a;
+  public byte[] a;
+  public short b = 0;
   
-  public void run()
+  public acab()
   {
-    if (!FileUtils.a(this.jdField_a_of_type_ArrayOfJavaLangString[1]))
-    {
-      Object localObject = new File(this.jdField_a_of_type_ArrayOfJavaLangString[1]);
-      localObject = new DownloadTask(this.jdField_a_of_type_ArrayOfJavaLangString[0], (File)localObject);
-      ((DownloadTask)localObject).l = true;
-      if (DownloaderFactory.a((DownloadTask)localObject, this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) {
-        QLog.e("FavroamingManager", 1, "collectEmoji fail to download thumbFile: " + this.jdField_a_of_type_ArrayOfJavaLangString[1]);
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest);
+    this.jdField_a_of_type_Short = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acab
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ public abstract interface d
 {
   public abstract e a(String paramString, byte[] paramArrayOfByte);
   
-  public abstract f.a a(e parame);
+  public abstract f a(e parame);
 }
 
 

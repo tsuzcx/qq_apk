@@ -1,38 +1,46 @@
-import android.content.SharedPreferences;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.UniteSearchObserver;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.mobileqq.search.model.SearchEntryDataModel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class tbk
-  implements Runnable
+  extends UniteSearchObserver
 {
-  public tbk(MainFragment paramMainFragment, int paramInt) {}
+  public tbk(Leba paramLeba) {}
   
-  public void run()
+  public void b(int paramInt1, String paramString, int paramInt2)
   {
-    String str2 = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment);
-    if (("消息".equals(str2)) || ("联系人".equals(str2))) {
-      if (!"消息".equals(str2)) {
-        break label197;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryError error, resultCode = " + paramInt1 + ",  errorMsg = " + paramString + ", fromType = " + paramInt2);
+    }
+  }
+  
+  public void b(List paramList, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryResult() result = " + paramList + ", fromType = " + paramInt);
+    }
+    if (paramInt != 4) {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryResult(), fromType is wrong, return");
       }
     }
-    label197:
-    for (String str1 = "Msg_tab";; str1 = "Contacts_tab")
+    for (;;)
     {
-      ReportController.b(MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment), "CliOper", "", "", str1, str1, 0, 0, "", "", "", "");
-      if ((MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment) != null) && (MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getBoolean("theme_voice_setting_" + MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentAccountUin(), true))) {
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).b(this.jdField_a_of_type_Int + 1);
-      }
-      if ((str2 != null) && (AppSetting.b))
-      {
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "消息", str2);
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "联系人", str2);
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "动态", str2);
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "电话", str2);
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "NOW", str2);
-      }
       return;
+      paramInt = 0;
+      while (paramInt < paramList.size())
+      {
+        SearchEntryDataModel localSearchEntryDataModel = (SearchEntryDataModel)paramList.get(paramInt);
+        if ((localSearchEntryDataModel instanceof HotWordSearchEntryDataModel))
+        {
+          Leba.a(this.a, ((HotWordSearchEntryDataModel)localSearchEntryDataModel).a);
+          return;
+        }
+        paramInt += 1;
+      }
     }
   }
 }

@@ -1,34 +1,33 @@
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.ThumbTask;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.provider.MediaStore.Images.Media;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import cooperation.weiyun.utils.PreferenceUtils;
+import cooperation.weiyun.utils.SoHelper;
+import mqq.app.AppRuntime;
 
 public class acza
   implements Runnable
 {
-  public acza(ThumbDownloadManager paramThumbDownloadManager) {}
+  public acza(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
   
   public void run()
   {
-    if (ThumbDownloadManager.a(this.a).size() >= 8) {}
-    while (ThumbDownloadManager.a(this.a).size() == 0) {
-      return;
-    }
-    ThumbDownloadManager.ThumbTask localThumbTask = (ThumbDownloadManager.ThumbTask)ThumbDownloadManager.a(this.a).get(0);
-    if (localThumbTask == null)
+    if (!SoHelper.a(this.a.getApplicationContext()))
     {
-      ThumbDownloadManager.a(this.a).remove(0);
-      ThumbDownloadManager.a(this.a);
-      return;
+      Cursor localCursor = this.a.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_data" }, null, null, "bucket_display_name");
+      if (localCursor != null)
+      {
+        int i = localCursor.getCount();
+        PreferenceUtils.a(this.a.getApplicationContext(), this.a.getAppRuntime().getAccount(), "sp_un_backup_photo_num", Integer.toString(i));
+        localCursor.close();
+      }
     }
-    ThumbDownloadManager.a(this.a).remove(localThumbTask);
-    ThumbDownloadManager.a(this.a, localThumbTask);
-    ThumbDownloadManager.b(this.a, localThumbTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acza
  * JD-Core Version:    0.7.0.1
  */

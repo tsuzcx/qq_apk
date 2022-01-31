@@ -100,6 +100,12 @@ public class MediaItem
   public void setRotation(int paramInt)
   {
     this.rotation = paramInt;
+    if ((paramInt == 90) || (paramInt == 270))
+    {
+      paramInt = this.width;
+      this.width = this.height;
+      this.height = paramInt;
+    }
   }
   
   public void setStart(long paramLong)

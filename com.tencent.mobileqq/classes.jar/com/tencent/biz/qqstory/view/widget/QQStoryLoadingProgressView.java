@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
-import orb;
+import ovq;
 
 public class QQStoryLoadingProgressView
   extends View
@@ -62,7 +62,7 @@ public class QQStoryLoadingProgressView
   {
     this.f = 0;
     this.jdField_a_of_type_Boolean = false;
-    new orb(this, null).start();
+    new ovq(this, null).start();
   }
   
   protected void b()

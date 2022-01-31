@@ -1,25 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.widgets.QQMapRoutingHelper;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import org.json.JSONObject;
 
-public final class pim
-  implements Animation.AnimationListener
+public class pim
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public pim(Runnable paramRunnable) {}
+  public pim(QQMapRoutingHelper paramQQMapRoutingHelper) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (this.a != null) {
-      this.a.run();
-    }
+    this.a.a.post(new pin(this, paramJSONObject, paramBundle));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pim
  * JD-Core Version:    0.7.0.1
  */

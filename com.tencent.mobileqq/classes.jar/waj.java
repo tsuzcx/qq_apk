@@ -1,24 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
-import mqq.os.MqqHandler;
+import com.tencent.biz.troopgift.TroopGiftPanel.OnShowOrHideListerner;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
 
-class waj
-  implements Runnable
+public class waj
+  implements TroopGiftPanel.OnShowOrHideListerner
 {
-  waj(wai paramwai) {}
+  public waj(HotChatPie paramHotChatPie) {}
   
-  public void run()
+  public void a()
   {
-    if (TroopChatPie.d(this.a.a)) {
-      return;
-    }
-    TroopNotificationHelper.c(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    TroopNotificationHelper.c(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    Message localMessage = TroopChatPie.h(this.a.a).obtainMessage(29);
-    localMessage.arg1 = 2;
-    TroopChatPie.i(this.a.a).sendMessage(localMessage);
+    this.a.a.a();
+  }
+  
+  public void b()
+  {
+    this.a.a.a(false, false, 4);
   }
 }
 

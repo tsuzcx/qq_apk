@@ -1,31 +1,22 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import dov.com.qq.im.capture.data.CaptureComboManager;
+import cooperation.qzone.webviewplugin.QzoneUploadPlugin;
 
 public class anli
-  implements Handler.Callback
 {
-  public anli(CaptureComboManager paramCaptureComboManager) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public boolean handleMessage(Message paramMessage)
+  public anli(QzoneUploadPlugin paramQzoneUploadPlugin, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.removeMessages(1);
-      if (this.a.a()) {
-        this.a.a.sendEmptyMessageDelayed(1, 50L);
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anli
  * JD-Core Version:    0.7.0.1
  */

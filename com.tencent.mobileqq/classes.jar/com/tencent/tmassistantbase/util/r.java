@@ -90,7 +90,7 @@ public class r
       if ((paramInt == 2) && (a()))
       {
         if (paramThrowable != null) {
-          break label271;
+          break label288;
         }
         Log.v(paramString1, paramString2);
       }
@@ -98,7 +98,7 @@ public class r
       if ((paramInt == 3) && (a()))
       {
         if (paramThrowable != null) {
-          break label281;
+          break label298;
         }
         Log.d(paramString1, paramString2);
       }
@@ -106,7 +106,7 @@ public class r
       if (paramInt == 4)
       {
         if (paramThrowable != null) {
-          break label291;
+          break label308;
         }
         Log.i(paramString1, paramString2);
       }
@@ -114,7 +114,7 @@ public class r
       if (paramInt == 5)
       {
         if (paramThrowable != null) {
-          break label301;
+          break label318;
         }
         Log.w(paramString1, paramString2);
       }
@@ -122,7 +122,7 @@ public class r
       if (paramInt == 6)
       {
         if (paramThrowable != null) {
-          break label311;
+          break label328;
         }
         Log.e(paramString1, paramString2);
       }
@@ -139,36 +139,38 @@ public class r
         B = new ArrayList();
       }
       if ((B.size() < 20) && (System.currentTimeMillis() - C <= 3000L)) {
-        break label321;
+        break label338;
       }
       ArrayList localArrayList = new ArrayList();
       localArrayList.addAll(B);
       B.clear();
       C = System.currentTimeMillis();
-      Iterator localIterator = A.iterator();
-      while (localIterator.hasNext())
+      Object localObject = new ArrayList();
+      ((ArrayList)localObject).addAll(A);
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        h localh = (h)((WeakReference)localIterator.next()).get();
+        h localh = (h)((WeakReference)((Iterator)localObject).next()).get();
         if (localh != null) {
           localh.a(localArrayList);
         }
       }
-      label271:
+      label288:
       Log.v(paramString1, paramString2, paramThrowable);
       break label49;
-      label281:
+      label298:
       Log.d(paramString1, paramString2, paramThrowable);
       break label70;
-      label291:
+      label308:
       Log.i(paramString1, paramString2, paramThrowable);
       break label85;
-      label301:
+      label318:
       Log.w(paramString1, paramString2, paramThrowable);
       break label100;
-      label311:
+      label328:
       Log.e(paramString1, paramString2, paramThrowable);
     }
-    label321:
+    label338:
     B.add(b(paramInt, paramString1, paramString2, paramThrowable));
   }
   

@@ -10,12 +10,12 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.model.PhoneContactManager;
-import kfy;
+import kie;
 
 public class InviteBaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new kfy();
+  public static final Parcelable.Creator CREATOR = new kie();
   public int a;
   public String a;
   public int b;
@@ -116,7 +116,7 @@ public class InviteBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.InviteBaseData
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,28 @@
-import android.view.animation.Interpolator;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticon.SogouEmoji;
+import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class aclk
-  implements Interpolator
+  implements QueryCallback
 {
-  public aclk(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
+  public aclk(SogouEmoji paramSogouEmoji, int paramInt, String paramString) {}
   
-  public float getInterpolation(float paramFloat)
+  public void a(Emoticon paramEmoticon)
   {
-    paramFloat -= 1.0F;
-    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
+    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
+      }
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(paramEmoticon);
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
   }
 }
 

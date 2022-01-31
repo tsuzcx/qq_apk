@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.facetoface;
 
-import aclr;
+import acty;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,10 +71,10 @@ public class Face2FaceTroopFriendListAdapter
     String str;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2130968993, null);
-      paramViewGroup = new aclr();
-      paramViewGroup.c = ((ImageView)localView.findViewById(2131364606));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364611));
+      localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2130968995, null);
+      paramViewGroup = new acty();
+      paramViewGroup.c = ((ImageView)localView.findViewById(2131364630));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364635));
       localView.setTag(paramViewGroup);
       long l2 = System.currentTimeMillis();
       localFace2FaceUserProfile = a(paramInt);
@@ -98,7 +98,7 @@ public class Face2FaceTroopFriendListAdapter
         QLog.d("zivonchen", 2, paramInt + ": totalTime = " + (System.currentTimeMillis() - l3) + ", faceBitmap = " + l1);
       }
       return localView;
-      paramViewGroup = (aclr)paramView.getTag();
+      paramViewGroup = (acty)paramView.getTag();
       localView = paramView;
       break;
       label213:

@@ -1,50 +1,53 @@
-import android.opengl.EGL14;
-import com.tencent.biz.qqstory.app.QQStoryConstant;
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWVideoRecorder;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
 
-class olp
+public class olp
   implements Runnable
 {
-  olp(olo paramolo) {}
+  public olp(EditWebVideoPartManager paramEditWebVideoPartManager, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
-    Object localObject = QQStoryConstant.m + System.currentTimeMillis() + ".mp4";
-    if (FileUtils.a((String)localObject)) {
-      FileUtils.d((String)localObject);
-    }
-    QQFilterRenderManager localQQFilterRenderManager = new QQFilterRenderManager();
-    localQQFilterRenderManager.b(this.a.jdField_a_of_type_Int, this.a.b);
-    localQQFilterRenderManager.a(this.a.jdField_a_of_type_Int, this.a.b);
-    localQQFilterRenderManager.b(this.a.jdField_a_of_type_Int, this.a.b, this.a.jdField_a_of_type_Int, this.a.b);
-    localQQFilterRenderManager.c(this.a.jdField_a_of_type_JavaUtilList);
-    localQQFilterRenderManager.d(this.a.c);
-    localObject = new EncodeConfig((String)localObject, this.a.jdField_a_of_type_Int, this.a.b, 3145728, 5, false, 0);
-    ((EncodeConfig)localObject).d = this.a.c;
-    ((EncodeConfig)localObject).a = EGL14.eglGetCurrentContext();
-    HWVideoRecorder localHWVideoRecorder = new HWVideoRecorder();
-    int j = this.a.c;
-    if (j <= 1000)
+    EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, null);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_Int = 0;
+    EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_latitude", 0.0D));
+    EditWebVideoPartManager.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_longitude", 0.0D));
+    boolean bool1;
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
     {
-      i = j;
-      if (j >= 1) {}
+      EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager);
+      bool1 = false;
     }
-    else
+    for (;;)
     {
-      i = 20;
+      EncodeVideoTask localEncodeVideoTask = new EncodeVideoTask(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam.b, bool1, EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager));
+      localEncodeVideoTask.a(EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager));
+      localEncodeVideoTask.execute(new Void[0]);
+      return;
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
+      {
+        boolean bool2 = true;
+        int i = EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam);
+        bool1 = bool2;
+        if (i != 0)
+        {
+          EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager).a(i);
+          bool1 = bool2;
+        }
+      }
+      else
+      {
+        EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager).a(-13);
+        bool1 = false;
+      }
     }
-    int i = 1000 / i;
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowPhotoListManager", 2, "startRecording");
-    }
-    j = this.a.jdField_a_of_type_JavaUtilList.size();
-    localHWVideoRecorder.a((EncodeConfig)localObject, new olq(this, this.a.c * (j * 2), i * 1000000, localQQFilterRenderManager, localHWVideoRecorder, localHWVideoRecorder, l));
   }
 }
 

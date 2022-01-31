@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.BaseChatpieHelper;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
 import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
@@ -41,7 +42,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import ukl;
+import uph;
 
 public class ChatAdapter1
   extends XBaseAdapter
@@ -58,7 +59,7 @@ public class ChatAdapter1
   public Boolean a;
   CharSequence jdField_a_of_type_JavaLangCharSequence = null;
   public List a;
-  ukl jdField_a_of_type_Ukl = new ukl(this, null);
+  uph jdField_a_of_type_Uph = new uph(this, null);
   
   static
   {
@@ -87,9 +88,9 @@ public class ChatAdapter1
   
   public static void a(MessageForStructing paramMessageForStructing, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, boolean paramBoolean)
   {
-    int i = 2130845788;
-    int j = 2130845624;
-    int k = 2130837928;
+    int i = 2130845869;
+    int j = 2130845705;
+    int k = 2130837927;
     if ((paramMessageForStructing == null) || (paramMessageForStructing.structingMsg == null)) {
       return;
     }
@@ -100,7 +101,7 @@ public class ChatAdapter1
         break;
       }
     }
-    for (i = k;; i = 2130837916)
+    for (i = k;; i = 2130837915)
     {
       paramView.setBackgroundResource(i);
       return;
@@ -113,12 +114,12 @@ public class ChatAdapter1
       {
         AIOUtils.a(paramViewHolder.a, i);
         return;
-        i = 2130845789;
+        i = 2130845870;
         continue;
         if (paramBoolean) {
-          i = 2130845624;
+          i = 2130845705;
         } else {
-          i = 2130845625;
+          i = 2130845706;
         }
       }
       if (!paramMessageForStructing.structingMsg.hasFlag(4))
@@ -130,16 +131,16 @@ public class ChatAdapter1
           {
             AIOUtils.a(paramViewHolder.a, i);
             return;
-            i = 2130845789;
+            i = 2130845870;
           }
         }
         if (paramBoolean) {}
-        for (i = j;; i = 2130845625) {
+        for (i = j;; i = 2130845706) {
           break;
         }
       }
       if (paramBoolean) {}
-      for (i = 2130837928;; i = 2130837916)
+      for (i = 2130837927;; i = 2130837915)
       {
         paramView.setBackgroundResource(i);
         return;
@@ -438,6 +439,9 @@ public class ChatAdapter1
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (paramCharSequence != null) && (paramCharSequence.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))) {
       ((DoutuManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(213)).a(paramList, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, paramInt);
     }
+    if (BaseChatpieHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
+      this.jdField_a_of_type_JavaUtilList = BaseChatpieHelper.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h);
+    }
     super.notifyDataSetChanged();
   }
   
@@ -585,8 +589,8 @@ public class ChatAdapter1
   
   public void d()
   {
-    if (this.jdField_a_of_type_Ukl.a != null) {
-      this.jdField_a_of_type_Ukl.a.a();
+    if (this.jdField_a_of_type_Uph.a != null) {
+      this.jdField_a_of_type_Uph.a.a();
     }
   }
   
@@ -651,7 +655,7 @@ public class ChatAdapter1
         localChatMessage1.mNeedTimeStamp = true;
       }
     }
-    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage1, paramView, paramViewGroup, this.jdField_a_of_type_Ukl);
+    paramView = localChatItemBuilder.a(paramInt, this.jdField_a_of_type_JavaUtilList.size(), localChatMessage1, paramView, paramViewGroup, this.jdField_a_of_type_Uph);
     if (paramView != null) {
       paramView.setTag(2131361859, localChatMessage1);
     }
@@ -661,7 +665,7 @@ public class ChatAdapter1
   
   public int getViewTypeCount()
   {
-    return 99;
+    return 100;
   }
   
   public boolean hasStableIds()

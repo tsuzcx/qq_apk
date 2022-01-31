@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby;
 
-import aelj;
-import aelk;
+import aett;
+import aetu;
 import android.content.Context;
 import android.os.SystemClock;
 import com.tencent.image.URLDrawable.DownloadListener;
@@ -27,7 +27,7 @@ public class ImgDownloadListener
   
   public void onFileDownloadFailed(int paramInt)
   {
-    ThreadManager.postImmediately(new aelk(this, paramInt), null, true);
+    ThreadManager.postImmediately(new aetu(this, paramInt), null, true);
   }
   
   public void onFileDownloadStarted()
@@ -37,7 +37,7 @@ public class ImgDownloadListener
   
   public void onFileDownloadSucceed(long paramLong)
   {
-    ThreadManager.postImmediately(new aelj(this, paramLong), null, true);
+    ThreadManager.postImmediately(new aett(this, paramLong), null, true);
   }
 }
 

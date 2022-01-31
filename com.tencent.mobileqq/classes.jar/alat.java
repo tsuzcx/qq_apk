@@ -1,73 +1,39 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityLoginView;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.Login;
-import java.util.ArrayList;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.widget.ConfigClearableEditText;
 
-class alat
-  implements Runnable
+public class alat
+  implements TextWatcher
 {
-  alat(alas paramalas) {}
+  public alat(ConfigClearableEditText paramConfigClearableEditText) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.c(this.a.jdField_a_of_type_JavaLangString);
-    Object localObject = ((TextView)this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_AndroidViewView.findViewById(2131365726)).getText().toString();
-    if ((localObject != null) && (((String)localObject).equals(this.a.jdField_a_of_type_JavaLangString)))
+    paramCharSequence = this.a.getText().toString();
+    if (this.a.isFocused())
     {
-      if (this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_JavaUtilArrayList.size() != 1) {
-        break label294;
+      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
+        this.a.setClearButtonVisible(false);
       }
-      if ((AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) == null) || (!(AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) instanceof AuthorityActivity))) {
-        break label228;
-      }
-      localObject = new Intent(AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView), Login.class);
-      ((Intent)localObject).putExtra("key_req_src", 1);
-      ((Intent)localObject).putExtra("is_first_login", true);
-      ((AuthorityActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).jdField_a_of_type_JavaLangString = null;
-      ((AuthorityActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).startActivityForResult((Intent)localObject, 1);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AuthorityLoginView", 2, "--> after delete account");
-      }
-      this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.b();
-      ((BaseActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).runOnUiThread(new alav(this));
+    else {
       return;
-      label228:
-      if ((AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) != null) && ((AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) instanceof QuickLoginAuthorityActivity)))
-      {
-        ((QuickLoginAuthorityActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).jdField_a_of_type_JavaLangString = null;
-        ((QuickLoginAuthorityActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).a(null);
-      }
     }
-    label294:
-    int i = 0;
-    label296:
-    if (i < this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_JavaUtilArrayList.size())
+    if ((ConfigClearableEditText.a(this.a)) || (ConfigClearableEditText.b(this.a)))
     {
-      localObject = (String)this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (this.a.jdField_a_of_type_JavaLangString.equals(localObject)) {}
+      this.a.setClearButtonVisible(true);
+      return;
     }
-    for (;;)
-    {
-      ((BaseActivity)AuthorityLoginView.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).runOnUiThread(new alau(this, (String)localObject));
-      break;
-      i += 1;
-      break label296;
-      localObject = null;
-    }
+    this.a.setClearButtonVisible(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alat
  * JD-Core Version:    0.7.0.1
  */

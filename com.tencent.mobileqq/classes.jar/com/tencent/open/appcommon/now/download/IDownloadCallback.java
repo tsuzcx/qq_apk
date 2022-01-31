@@ -11,7 +11,7 @@ public abstract interface IDownloadCallback
   
   public abstract void a(DownloadInfo paramDownloadInfo, int paramInt);
   
-  public abstract void b(List paramList);
+  public abstract void a(List paramList);
 }
 
 

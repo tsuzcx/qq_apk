@@ -1,18 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.lang.ref.WeakReference;
 
-public class vkc
-  implements View.OnTouchListener
+class vkc
+  implements BusinessObserver
 {
-  public vkc(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  vkc(vkb paramvkb, WeakReference paramWeakReference) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
-    return false;
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      paramObject = (String)paramObject;
+      ArkAppCenter.a().post(new vkd(this, paramInt, i, paramObject));
+      return;
+    }
   }
 }
 

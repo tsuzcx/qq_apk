@@ -14,7 +14,7 @@ import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import wce;
+import whm;
 
 public class StickerBubbleReceiverAnimationRunnable
   implements StickerBubbleAnimationViewHolder.AnimationViewCallback, Runnable
@@ -25,7 +25,7 @@ public class StickerBubbleReceiverAnimationRunnable
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new wce(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new whm(this);
   private String jdField_a_of_type_JavaLangString;
   private int[] jdField_a_of_type_ArrayOfInt;
   private int jdField_b_of_type_Int;

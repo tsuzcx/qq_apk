@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.data.LebaFeedInfo;
-import com.tencent.mobileqq.leba.LebaFeedsManager;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.qphone.base.util.QLog;
 
 public class adys
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  private adys(LebaFeedsManager paramLebaFeedsManager) {}
+  public adys(HotPicPageView paramHotPicPageView, HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, int paramInt) {}
   
-  public int a(LebaFeedInfo paramLebaFeedInfo1, LebaFeedInfo paramLebaFeedInfo2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramLebaFeedInfo2.serverUpdateTime - paramLebaFeedInfo1.serverUpdateTime;
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder, this.jdField_a_of_type_Int);
+    QLog.d("HotPicManagerHotPicPageView", 2, "User allowed downd");
   }
 }
 

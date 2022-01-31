@@ -1,48 +1,45 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterModule;
-import com.tencent.biz.qqstory.takevideo.artfilter.FilterUploadInfo;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.transfile.ArtFilterUploadProcessor;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemPAVideo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class aiom
-  implements ITransactionCallback
+  extends URLDrawableDownListener.Adapter
 {
-  public aiom(ArtFilterUploadProcessor paramArtFilterUploadProcessor) {}
+  public aiom(StructMsgItemPAVideo paramStructMsgItemPAVideo) {}
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap paramHashMap)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.a.d = SystemClock.uptimeMillis();
+    super.onLoadCancelled(paramView, paramURLDrawable);
     if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms");
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.a = paramArrayOfByte;
-    if (this.a.b != -1) {
-      this.a.a(paramInt, "uploadImgError");
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadCancelled");
     }
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap paramHashMap)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a.d = SystemClock.uptimeMillis();
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
     if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (this.a.d - this.a.c) + "ms ,fileSize:" + this.a.q);
-    }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterModule.b.equals(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterFilterUploadInfo.a))
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterModule.a = this.a.d;
-      if (this.a.b != -1) {
-        this.a.ao_();
-      }
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadFailed ,cause = " + paramThrowable);
     }
   }
   
-  public void onSwitch2BackupChannel() {}
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadInterrupted");
+    }
+  }
   
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView.setBackgroundDrawable(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadSuccessed");
+    }
+  }
 }
 
 

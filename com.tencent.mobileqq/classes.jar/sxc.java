@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class sxc
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public sxc(Leba paramLeba) {}
+  public sxc(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.a.a.getManager(159);
-    RedTouchItem localRedTouchItem1 = localLocalRedTouchManager.a(10017);
-    RedTouchItem localRedTouchItem2 = localLocalRedTouchManager.a(103421);
-    if ((localLocalRedTouchManager.a(localRedTouchItem2)) && (localRedTouchItem2.redtouchType == 1)) {
-      localLocalRedTouchManager.a(103421);
-    }
-    if (localLocalRedTouchManager.a(localRedTouchItem1)) {
-      localLocalRedTouchManager.a(10017);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

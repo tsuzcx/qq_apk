@@ -1,49 +1,28 @@
-import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.arcard.ARcardSound;
+import com.tencent.mobileqq.armap.sensor.ARSensorManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aafu
   implements Runnable
 {
-  public aafu(AREngine paramAREngine, boolean paramBoolean) {}
+  public aafu(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
   public void run()
   {
-    int j = 0;
-    if (AREngine.f(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) {
-      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null) {
-        AREngine.b(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, false);
-      }
-    }
-    int i;
-    do
+    if (ARWorldCupGlobalSceneRenderable.a(this.a) == 6)
     {
-      return;
-      i = j;
-      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null)
-      {
-        i = j;
-        if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a != null)
-        {
-          i = j;
-          if (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine))
-          {
-            i = j;
-            if (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2) {
-              i = 1;
-            }
-          }
-        }
+      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
+        ARWorldCupGlobalSceneRenderable.a(this.a).a(0, 1);
       }
-      if ((this.jdField_a_of_type_Boolean) && (i != 0))
-      {
-        AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a);
-        return;
+      if (ARWorldCupGlobalSceneRenderable.a(this.a) == null) {
+        ARWorldCupGlobalSceneRenderable.a(this.a, new ARcardSound());
       }
-    } while (i == 0);
-    if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null) {
-      AREngine.b(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, true);
+      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
+        QLog.d("ARWorldCupGlobalSceneRenderable", 2, String.format("setNativeState start sensor result=%s", new Object[] { Boolean.valueOf(ARWorldCupGlobalSceneRenderable.a(this.a).a(ARWorldCupGlobalSceneRenderable.a(this.a))) }));
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.m();
   }
 }
 

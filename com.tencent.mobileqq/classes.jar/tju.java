@@ -1,27 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
-public class tju
-  extends BroadcastReceiver
+class tju
+  implements Runnable
 {
-  public tju(QQMapActivity paramQQMapActivity) {}
+  tju(tjt paramtjt, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.p) && (!this.a.q) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.k) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.k) == 21))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
-      }
-      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
-      QQMapActivity.a(this.a, paramContext);
-      this.a.q = true;
-    }
+    PermisionPrivacyActivity.a(this.jdField_a_of_type_Tjt.a).setRightText(this.jdField_a_of_type_JavaLangString);
+    PermisionPrivacyActivity.a(this.jdField_a_of_type_Tjt.a).setContentDescription("不常联系好友 " + this.jdField_a_of_type_JavaLangString);
   }
 }
 

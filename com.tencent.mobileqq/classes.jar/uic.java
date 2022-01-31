@@ -1,21 +1,15 @@
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class uic
-  implements Runnable
+  implements View.OnClickListener
 {
-  public uic(VisitorsActivity paramVisitorsActivity, ScaleAnimation paramScaleAnimation, AlphaAnimation paramAlphaAnimation1, AlphaAnimation paramAlphaAnimation2, AnimationSet paramAnimationSet) {}
+  public uic(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.reset();
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.reset();
-    this.b.reset();
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.reset();
-    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.f.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
+    this.a.f();
   }
 }
 

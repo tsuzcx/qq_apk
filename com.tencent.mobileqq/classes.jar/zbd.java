@@ -1,33 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.profile.upload.VipUploadUtils;
-import com.tencent.mobileqq.profile.upload.config.VipUploadConfigImpl;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
-public class zbd
-  extends VipUploadConfigImpl
+public final class zbd
+  extends DownloadListener
 {
-  public zbd(CardHandler paramCardHandler, long paramLong)
-  {
-    super(paramLong);
-  }
+  public zbd(SharedPreferences paramSharedPreferences, int paramInt, ApolloSSOConfig paramApolloSSOConfig) {}
   
-  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    paramUploadImageSize = VipUploadUtils.a(paramAbstractUploadTask.uploadFilePath);
-    if (paramUploadImageSize != null)
+    super.onDone(paramDownloadTask);
+    QLog.i("apollo_client_ApolloSSOConfig", 1, "checkUpdateApolloWebViewConfig download file task.getStatus()->" + paramDownloadTask.a() + ", httpCode: " + paramDownloadTask.e);
+    if (3 == paramDownloadTask.a())
     {
-      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
-      paramUploadImageSize.recycle();
-      return paramAbstractUploadTask;
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_key_apollo_webView_config_version", this.jdField_a_of_type_Int).commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig download version:" + this.jdField_a_of_type_Int);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloSSOConfig != null) {
+        ApolloSSOConfig.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloSSOConfig);
+      }
     }
-    return new IUploadConfig.UploadImageSize(640, 1136, 100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zbd
  * JD-Core Version:    0.7.0.1
  */

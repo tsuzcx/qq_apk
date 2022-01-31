@@ -1,20 +1,13 @@
-import com.dataline.mpfile.MpfileTaskRecord;
-import com.dataline.util.WaitEvent;
-import com.tencent.mobileqq.app.proxy.MpfileTaskProxy;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.app.TroopManager.callbackInMainThread;
 
-public class zvj
+class zvj
   implements Runnable
 {
-  public zvj(MpfileTaskProxy paramMpfileTaskProxy, Entity paramEntity, ProxyListener paramProxyListener, WaitEvent paramWaitEvent) {}
+  zvj(zvi paramzvi, String paramString) {}
   
   public void run()
   {
-    MpfileTaskRecord localMpfileTaskRecord = ((MpfileTaskRecord)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).clone();
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyMpfileTaskProxy.a.a(String.valueOf(0), 0, MpfileTaskRecord.tableName(), localMpfileTaskRecord, 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
-    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+    this.jdField_a_of_type_Zvi.a.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

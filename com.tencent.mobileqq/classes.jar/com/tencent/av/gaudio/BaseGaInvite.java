@@ -13,9 +13,9 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Timer;
-import jif;
-import jig;
-import jih;
+import jki;
+import jkj;
+import jkk;
 import mqq.app.BaseActivity;
 
 public abstract class BaseGaInvite
@@ -27,11 +27,11 @@ public abstract class BaseGaInvite
   public TextView a;
   public VideoController a;
   public VideoAppInterface a;
-  BaseGaInvite.GetGaFaceRunnable.OnGetSink jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable$OnGetSink = new jif(this);
+  BaseGaInvite.GetGaFaceRunnable.OnGetSink jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable$OnGetSink = new jki(this);
   BaseGaInvite.GetGaFaceRunnable jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = null;
   public String a;
   Timer jdField_a_of_type_JavaUtilTimer = null;
-  public jig a;
+  public jkj a;
   public long[] a;
   public int b;
   public long b;
@@ -43,7 +43,7 @@ public abstract class BaseGaInvite
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_ArrayOfLong = null;
-    this.jdField_a_of_type_Jig = new jig(this);
+    this.jdField_a_of_type_Jkj = new jkj(this);
     this.jdField_b_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.a());
   }
   
@@ -105,10 +105,10 @@ public abstract class BaseGaInvite
       this.jdField_a_of_type_JavaUtilTimer.cancel();
       this.jdField_a_of_type_JavaUtilTimer = null;
     }
-    if (this.jdField_a_of_type_Jig != null)
+    if (this.jdField_a_of_type_Jkj != null)
     {
-      this.jdField_a_of_type_Jig.removeMessages(0);
-      this.jdField_a_of_type_Jig = null;
+      this.jdField_a_of_type_Jkj.removeMessages(0);
+      this.jdField_a_of_type_Jkj = null;
     }
   }
   
@@ -118,8 +118,8 @@ public abstract class BaseGaInvite
       this.jdField_a_of_type_JavaUtilTimer.cancel();
     }
     this.jdField_a_of_type_JavaUtilTimer = new Timer(true);
-    jih localjih = new jih(this);
-    this.jdField_a_of_type_JavaUtilTimer.schedule(localjih, paramInt);
+    jkk localjkk = new jkk(this);
+    this.jdField_a_of_type_JavaUtilTimer.schedule(localjkk, paramInt);
   }
   
   public void a(Intent paramIntent)
@@ -146,7 +146,7 @@ public abstract class BaseGaInvite
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
         break label94;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838543);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838549);
       if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
         break label129;
       }
@@ -230,7 +230,7 @@ public abstract class BaseGaInvite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.gaudio.BaseGaInvite
  * JD-Core Version:    0.7.0.1
  */

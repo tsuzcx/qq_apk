@@ -1,6 +1,6 @@
 package com.tencent.open.wadl;
 
-import aljs;
+import alrk;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -86,7 +86,7 @@ public class WadlJsBridgeCallBack
     {
       WebView localWebView = this.jdField_a_of_type_ComTencentOpenBusinessBaseIJsCallBack.getWebview();
       if (localWebView != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(new aljs(this, localWebView, paramString));
+        this.jdField_a_of_type_AndroidOsHandler.post(new alrk(this, localWebView, paramString));
       }
       return;
     }

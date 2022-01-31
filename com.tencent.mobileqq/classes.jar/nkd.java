@@ -1,14 +1,14 @@
-import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
-import com.tencent.biz.qqstory.playmode.util.NewDiscoverBannerDataProvider;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver;
 
-class nkd
+public class nkd
   implements Runnable
 {
-  nkd(nkc paramnkc) {}
+  public nkd(RecentTabHaloPresenter.ReadStoryVideoEventReceiver paramReadStoryVideoEventReceiver, RecentTabHaloPresenter paramRecentTabHaloPresenter) {}
   
   public void run()
   {
-    this.a.a.a.a(true);
+    RecentTabHaloPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter);
   }
 }
 

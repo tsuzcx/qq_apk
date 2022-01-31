@@ -78,14 +78,14 @@ public class QQBaseFilter
   
   public void f() {}
   
-  public void g() {}
-  
-  public void h() {}
-  
-  public boolean i_()
+  public boolean f_()
   {
     return false;
   }
+  
+  public void g() {}
+  
+  public void h() {}
 }
 
 

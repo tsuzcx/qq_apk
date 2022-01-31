@@ -1,33 +1,53 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.util.Pair;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.BaseEmotionAdapter;
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.widget.ListView;
-import java.util.List;
+import com.tencent.mobileqq.dating.DatingUtil;
+import com.tencent.mobileqq.dating.StrangerHdHeadUrlFetcher;
+import java.util.Set;
 import mqq.os.MqqHandler;
 
 public class acfv
   implements Runnable
 {
-  public acfv(EmotionPanelViewPagerAdapter paramEmotionPanelViewPagerAdapter, int paramInt, EmotionPanelInfo paramEmotionPanelInfo, BaseEmotionAdapter paramBaseEmotionAdapter, ListView paramListView) {}
+  public acfv(StrangerHdHeadUrlFetcher paramStrangerHdHeadUrlFetcher, String paramString1, int paramInt, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
-    Object localObject = EmotionPanelDataBuilder.a();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int j = this.jdField_a_of_type_Int;
-    EmoticonPackage localEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelInfo.a;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {}
-    for (int i = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().jdField_a_of_type_Int;; i = -1)
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(32, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if (localObject1 != null) {}
+    for (boolean bool = ((Boolean)((Pair)localObject1).first).booleanValue();; bool = false)
     {
-      localObject = ((EmotionPanelDataBuilder)localObject).a(localQQAppInterface, j, localEmoticonPackage, i, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.jdField_a_of_type_Boolean);
-      EmotionPanelViewPagerAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelInfo.a, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBaseEmotionAdapter, (List)localObject);
-      ThreadManager.getUIHandler().post(new acfw(this, (List)localObject));
+      if ((bool) && (this.jdField_a_of_type_Boolean))
+      {
+        localObject1 = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
+        if (localObject1 != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher.jdField_a_of_type_Long = System.currentTimeMillis();
+          synchronized (StrangerHdHeadUrlFetcher.a(this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher))
+          {
+            if (!this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher.jdField_a_of_type_Boolean)
+            {
+              this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher.jdField_a_of_type_Boolean = true;
+              this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(StrangerHdHeadUrlFetcher.a(this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher), true);
+            }
+          }
+        }
+      }
+      else
+      {
+        synchronized (this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher.jdField_a_of_type_JavaUtilSet)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher.jdField_a_of_type_JavaUtilSet.add(this.b);
+          ((FriendListHandler)localObject1).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, (byte)1, (byte)2);
+          if (!this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1)) {
+            this.jdField_a_of_type_ComTencentMobileqqDatingStrangerHdHeadUrlFetcher.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 60000L);
+          }
+          return;
+          localObject2 = finally;
+          throw localObject2;
+        }
+      }
+      DatingUtil.a("StrangerHdHeadUrlFetcher", new Object[] { "flh is null" });
       return;
     }
   }

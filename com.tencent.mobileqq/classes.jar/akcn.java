@@ -1,91 +1,63 @@
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.utils.TroopMemberUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.NearbyFlowerManager;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import com.tencent.mobileqq.troop.utils.TroopGiftManager;
+import com.tencent.mobileqq.troop.utils.TroopGiftUtil;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class akcn
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+  implements ImageButton.OnClickListener
 {
-  public akcn(JumpAction paramJumpAction, QQProgressDialog paramQQProgressDialog, String paramString1, ArkAppCenter paramArkAppCenter, String paramString2, String paramString3) {}
+  public akcn(TroopGiftAnimationController paramTroopGiftAnimationController) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a(Sprite paramSprite)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if ((paramAppPathInfo != null) && (paramInt == 0))
+    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (this.a.jdField_a_of_type_Int >= 4)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpAction", 2, new Object[] { "Ark mqqapi://ligthapp/open goToLightAppOpen get path succeed, appPath: ", paramAppPathInfo.jdField_a_of_type_JavaLangString });
-      }
-      paramObject = this.jdField_a_of_type_JavaLangString;
-      if (!TextUtils.isEmpty(paramObject)) {
-        break label310;
-      }
-      paramString = this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter;
-      paramString = ArkAppCenter.c(paramAppPathInfo.jdField_a_of_type_JavaLangString);
-      if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
+      NearbyFlowerManager.a("cartoon", "clk_inter", TroopGiftAnimationController.a(this.a).frienduin, TroopGiftUtil.b(TroopGiftAnimationController.a(this.a)) + "", "", "");
+      paramSprite = TroopGiftAnimationController.a(this.a);
+      if ((paramSprite != null) && (NetworkUtil.a(paramSprite) == 0))
       {
-        paramInt = 0;
-        paramAppPathInfo = paramObject;
+        ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
+        paramSprite = paramSprite.getString(2131429788);
+        ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(paramSprite, TroopGiftAnimationController.a(this.a).n, DisplayUtil.a(TroopGiftAnimationController.a(this.a), 16.0F));
       }
     }
-    for (;;)
+    else
     {
-      String str = this.b;
-      paramObject = str;
-      if (TextUtils.isEmpty(str)) {
-        paramObject = "{}";
-      }
-      if (paramInt != 0)
+      if (TroopGiftAnimationController.a(this.a) != null) {}
+      for (paramSprite = "0";; paramSprite = "1")
       {
-        ArkAppDataReport.j(null, this.c);
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a != null) {
-          ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a, this.c, paramAppPathInfo, "0.0.0.1", paramObject, this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a.getResources().getDisplayMetrics().scaledDensity, null, 1);
-        }
+        ReportController.b(null, "dc00899", "Grp_flower", "", "forall", "Clk_grab", 0, 0, "" + TroopGiftAnimationController.a(this.a).frienduin, "" + TroopGiftUtil.b(TroopGiftAnimationController.a(this.a)), paramSprite, "" + TroopMemberUtil.a(localAppInterface, localAppInterface.getCurrentAccountUin(), TroopGiftAnimationController.a(this.a).frienduin));
+        break;
       }
-      do
-      {
-        do
-        {
-          return;
-          paramAppPathInfo = paramString;
-          paramInt = 1;
-          paramString = null;
-          break;
-          paramAppPathInfo = new Intent();
-          paramAppPathInfo.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserDelegationActivity");
-          paramAppPathInfo.putExtra("param_force_internal_browser", true);
-          paramAppPathInfo.putExtra("url", paramString);
-          paramAppPathInfo.putExtra("injectrecommend", false);
-          paramAppPathInfo.addFlags(603979776);
-        } while (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a == null);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a.startActivity(paramAppPathInfo);
-        return;
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction.a, 2131438836, 0).a();
-      } while (!QLog.isColorLevel());
-      QLog.d("JumpAction", 2, "Ark mqqapi://ligthapp/open goToLightAppOpen appPath is null ");
+    }
+    ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
+    paramSprite = (TroopGiftManager)localAppInterface.getManager(112);
+    TroopGiftAnimationController.a(this.a).a = NetConnInfoCenter.getServerTimeMillis();
+    if (this.a.jdField_a_of_type_Int > 3)
+    {
+      paramSprite.a("OidbSvc.0x7f7", 2039, this.a.jdField_a_of_type_Int, TroopGiftAnimationController.a(this.a).frienduin, TroopGiftAnimationController.a(this.a).bagId, 3000L, TroopGiftAnimationController.a(this.a));
       return;
-      label310:
-      paramString = null;
-      paramInt = 1;
-      paramAppPathInfo = paramObject;
     }
+    paramSprite.a("OidbSvc.0x6b5", 1717, this.a.jdField_a_of_type_Int, TroopGiftAnimationController.a(this.a).frienduin, TroopGiftAnimationController.a(this.a).bagId, 3000L, TroopGiftAnimationController.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akcn
  * JD-Core Version:    0.7.0.1
  */

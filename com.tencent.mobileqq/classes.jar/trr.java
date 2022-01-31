@@ -1,14 +1,45 @@
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.SendingFileInfo;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class trr
   implements Runnable
 {
-  public trr(SendMultiPictureHelper paramSendMultiPictureHelper, SendMultiPictureHelper.SendingFileInfo paramSendingFileInfo, int paramInt, String paramString1, String paramString2) {}
+  public trr(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_Long = SendMultiPictureHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper, this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "checkChatHistoryEventConfig start...");
+    }
+    DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.a.app.getManager(46)).a(1);
+    if ((localDownloaderInterface != null) && (localDownloaderInterface.a("http://imgcache.qq.com/qqshow/admindata/comdata/chatHistoryEvent/xydata.json") == null))
+    {
+      Object localObject = new File(QQSettingMsgHistoryActivity.c);
+      DownloadTask localDownloadTask = new DownloadTask("http://imgcache.qq.com/qqshow/admindata/comdata/chatHistoryEvent/xydata.json", (File)localObject);
+      if (((File)localObject).exists())
+      {
+        localObject = Long.valueOf(((File)localObject).lastModified());
+        localDownloadTask.i = this.a.app.getPreferences().getLong("chatHistoryEventJsonLastModified", 0L);
+        if (((Long)localObject).longValue() != localDownloadTask.i)
+        {
+          localDownloadTask.k = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("IphoneTitleBarActivity", 2, "checkChatHistoryEventConfig file modified local time: " + localObject + ", sp time: " + localDownloadTask.i);
+          }
+        }
+      }
+      localDownloadTask.h = true;
+      localDownloadTask.n = false;
+      localObject = new Bundle();
+      localDownloaderInterface.a(localDownloadTask, this.a.a, (Bundle)localObject);
+    }
   }
 }
 

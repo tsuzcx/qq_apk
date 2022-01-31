@@ -1,13 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.vas.ColorRingPlayer;
+import com.tencent.qphone.base.util.QLog;
 
 public class akot
-  implements DialogInterface.OnDismissListener
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public akot(SwiftBrowserLongClickHandler paramSwiftBrowserLongClickHandler) {}
+  public akot(ColorRingPlayer paramColorRingPlayer) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void onAudioFocusChange(int paramInt)
+  {
+    if (paramInt == -2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "transient focus loss.");
+      }
+      synchronized (this.a.a)
+      {
+        if (this.a.a.a == 4) {
+          this.a.a();
+        }
+        return;
+      }
+    }
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "gained focus");
+      }
+      if (this.a.b)
+      {
+        this.a.c();
+        this.a.b = false;
+      }
+    }
+    else if (paramInt == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "Audio focus Loss");
+      }
+      this.a.b();
+      synchronized (this.a.a)
+      {
+        this.a.a.a = 6;
+        return;
+      }
+    }
+  }
 }
 
 

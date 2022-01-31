@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abuc;
+import acbu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class IPSiteModel$Video
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abuc();
+  public static final Parcelable.Creator CREATOR = new acbu();
   public String buttonDesc;
   public String content;
   public String cover;

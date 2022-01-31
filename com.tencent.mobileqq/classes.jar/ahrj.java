@@ -1,19 +1,18 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
 
-public final class ahrj
-  implements ThreadFactory
+public class ahrj
+  implements Runnable
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  public ahrj(PtvTemplateProviderView paramPtvTemplateProviderView) {}
   
-  public Thread newThread(Runnable paramRunnable)
+  public void run()
   {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
+    PtvTemplateProviderView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahrj
  * JD-Core Version:    0.7.0.1
  */

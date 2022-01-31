@@ -1,21 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashEntryView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashEntryView.ARMapSplashEntryListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abit
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public abit(ARMapSplashEntryView paramARMapSplashEntryView) {}
+  public abit(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (ARMapSplashEntryView.a(this.a) != null)
-    {
-      ARMapSplashEntryView.a(this.a).b();
-      ARMapSplashEntryView.a(this.a, null);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

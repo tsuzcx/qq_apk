@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.olympic.view.ScannerAnimView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agkd
   implements Runnable
 {
-  public agkd(ScannerAnimView paramScannerAnimView) {}
+  public agkd(ScanTorchActivity paramScanTorchActivity) {}
   
   public void run()
   {
-    ScannerAnimView localScannerAnimView = this.a;
-    if (!this.a.a) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localScannerAnimView.a(bool);
-      return;
-    }
+    ScanTorchActivity.c(this.a, true);
+    ScanTorchActivity.l(this.a);
+    ScanTorchActivity.d(this.a, true);
   }
 }
 

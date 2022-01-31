@@ -1,29 +1,67 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public final class kwz
-  implements BusinessObserver
+public class kwz
+  implements INetInfoHandler
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  AdvertisementVideoPreloadManager a;
+  
+  public kwz(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager1, AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager2)
   {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, "doAdReport success!");
-        }
-      }
-      return;
+    this.a = paramAdvertisementVideoPreloadManager2;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onNetMobile2None()
+  {
+    AdvertisementVideoPreloadManager.c("onNetMobile2None");
+    if (this.a != null) {
+      AdvertisementVideoPreloadManager.b(this.a);
     }
-    catch (Exception paramBundle) {}
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    AdvertisementVideoPreloadManager.c("onNetMobile2Wifi");
+    if (this.a != null) {
+      AdvertisementVideoPreloadManager.b(this.a);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    AdvertisementVideoPreloadManager.c("onNetNone2Mobile");
+    if (this.a != null) {
+      AdvertisementVideoPreloadManager.b(this.a);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    AdvertisementVideoPreloadManager.c("onNetNone2Wifi");
+    if (this.a != null) {
+      AdvertisementVideoPreloadManager.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    AdvertisementVideoPreloadManager.c("onNetWifi2Mobile");
+    if (this.a != null) {
+      AdvertisementVideoPreloadManager.b(this.a);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    AdvertisementVideoPreloadManager.c("onNetWifi2None");
+    if (this.a != null) {
+      AdvertisementVideoPreloadManager.b(this.a);
+    }
   }
 }
 

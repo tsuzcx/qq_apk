@@ -1,26 +1,68 @@
-import com.tencent.mobileqq.app.PrinterHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.DatalineMessageManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import tencent.im.cs.cmd0x346.cmd0x346.FileInfo;
+import tencent.im.cs.cmd0x346.cmd0x346.FileQueryRsp;
+import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 
 public class zjo
-  extends TimerTask
+  implements Runnable
 {
-  public zjo(PrinterHandler paramPrinterHandler, long paramLong, Timer paramTimer) {}
+  public zjo(DataLineHandler paramDataLineHandler, FromServiceMsg paramFromServiceMsg, int paramInt, long paramLong) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(this.jdField_a_of_type_Long)))
+    cmd0x346.RspBody localRspBody = new cmd0x346.RspBody();
+    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null) {}
+    for (;;)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004021", "0X8004021", (int)this.jdField_a_of_type_Long, -1, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a(Long.valueOf(this.jdField_a_of_type_Long), false);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("dataline.Printer", 4, "printID=" + this.jdField_a_of_type_Long + ", 超时到了");
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b.a().a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
+      if (localObject != null) {
+        break;
+      }
+      return;
+      localObject = null;
+      if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer() != null)
+      {
+        int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer().length - 4;
+        if (i >= 0)
+        {
+          localObject = new byte[i];
+          PkgTools.a((byte[])localObject, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
+        }
+      }
+      else if (localObject != null)
+      {
+        try
+        {
+          localRspBody.mergeFrom((byte[])localObject);
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+        }
       }
     }
-    this.jdField_a_of_type_JavaUtilTimer.cancel();
+    if (localRspBody.msg_file_query_rsp.int32_ret_code.get() == 0)
+    {
+      localRspBody.msg_file_query_rsp.msg_file_info.str_file_name.get();
+      localRspBody.msg_file_query_rsp.msg_file_info.uint64_file_size.get();
+      localInvalidProtocolBufferMicroException.md5 = localRspBody.msg_file_query_rsp.msg_file_info.bytes_10m_md5.get().toByteArray();
+      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b.a().a(this.jdField_a_of_type_Int).a(localInvalidProtocolBufferMicroException.msgId, localInvalidProtocolBufferMicroException.serverPath, localInvalidProtocolBufferMicroException.md5);
+      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(localInvalidProtocolBufferMicroException);
+      return;
+    }
+    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, localInvalidProtocolBufferMicroException);
   }
 }
 

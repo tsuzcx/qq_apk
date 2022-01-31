@@ -1,52 +1,28 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.arcard.ARCardHeadIconManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class aaso
+public class aaso
   implements Runnable
 {
-  aaso(aasn paramaasn, byte[] paramArrayOfByte, boolean paramBoolean) {}
+  public aaso(ARCardHeadIconManager paramARCardHeadIconManager) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aasn.a.jdField_a_of_type_Aass.jdField_a_of_type_JavaLangRefWeakReference == null)
-    {
-      ArkAppCenter.b("ArkApp.Dict.Update", "downloadDictFile, weakPreDownloadCtrl is null, return");
-      return;
+    Intent localIntent = new Intent("com.tencent.qqhead.getheadreq");
+    localIntent.putStringArrayListExtra("uinList", ARCardHeadIconManager.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("DingdongHeadManager", 2, "mContactHeadReqRunnable: request contact head whose size=" + ARCardHeadIconManager.a(this.a).size());
     }
-    PreDownloadController localPreDownloadController = (PreDownloadController)this.jdField_a_of_type_Aasn.a.jdField_a_of_type_Aass.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localPreDownloadController == null)
-    {
-      ArkAppCenter.b("ArkApp.Dict.Update", "downloadDictFile, preDownloadController is null, return");
-      return;
-    }
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    long l;
-    if (this.jdField_a_of_type_Aasn.a.jdField_a_of_type_Aass.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        String str = this.jdField_a_of_type_Aasn.a.jdField_a_of_type_JavaLangString;
-        if (arrayOfByte == null)
-        {
-          l = 0L;
-          localPreDownloadController.a(str, l);
-        }
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aasn.a.jdField_a_of_type_Aasq.a(arrayOfByte);
-      return;
-      l = arrayOfByte.length;
-      break;
-      localPreDownloadController.a(this.jdField_a_of_type_Aasn.a.jdField_a_of_type_JavaLangString, -1L);
-      arrayOfByte = null;
-    }
+    ARCardHeadIconManager.a(this.a).sendBroadcast(localIntent, "com.tencent.qqhead.permission.getheadresp");
+    ARCardHeadIconManager.a(this.a).clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaso
  * JD-Core Version:    0.7.0.1
  */

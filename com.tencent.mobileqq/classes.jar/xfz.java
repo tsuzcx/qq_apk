@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.vip.DownloadTask;
+import java.util.List;
 
-public class xfz
-  extends xgc
+class xfz
+  implements Runnable
 {
-  public xfz(PreloadResource paramPreloadResource, WeakReference paramWeakReference, PreloadModule paramPreloadModule) {}
+  xfz(xfy paramxfy, DownloadTask paramDownloadTask) {}
   
-  public void a()
+  public void run()
   {
-    PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((PreloadManager.a(localPreloadManager)) && (localPreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource))) {
-      localPreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule, null);
+    int j = this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a.size();
+    Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a();
+    int i = 0;
+    while (i < j)
+    {
+      String str = (String)this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a.get(i);
+      PreloadImgManager.a(this.jdField_a_of_type_Xfy.a, BaseApplication.getContext(), localBundle.getString(str), str);
+      i += 1;
     }
   }
 }

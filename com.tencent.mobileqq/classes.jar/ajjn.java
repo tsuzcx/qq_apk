@@ -1,19 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.VolumeVisualizerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
 
 public class ajjn
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ajjn(ReciteRecordLayout paramReciteRecordLayout, int paramInt) {}
+  public ajjn(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_AndroidWidgetTextView.setText(2131431556);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiVolumeVisualizerView.a(AudioPanel.a(this.jdField_a_of_type_Int) / 1180);
+    TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.b).c(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
+    paramDialogInterface.dismiss();
   }
 }
 

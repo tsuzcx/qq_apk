@@ -1,50 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.HotChatShare;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zfk
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public zfk(HotChatShare paramHotChatShare) {}
+  public zfk(ApolloPanel paramApolloPanel, String paramString1, String paramString2, String paramString3) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = "stranger_" + String.valueOf(200) + "_" + this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin;
-    localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a((String)localObject);
-    if ((localObject != null) && (!TextUtils.isEmpty(((Setting)localObject).url))) {
-      this.a.b = (((Setting)localObject).url + "140");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatShare", 2, "handleShare.fromdb.ownerHeadUrl=" + this.a.b);
-    }
-    if (!TextUtils.isEmpty(this.a.b)) {
-      if (this.a.jdField_a_of_type_Int == 0) {
-        this.a.jdField_a_of_type_Int = 2;
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.m();
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null))
     {
-      if (this.a.jdField_a_of_type_Int == 3) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new zfl(this));
+      paramDialogInterface = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
+      if (!this.jdField_a_of_type_JavaLangString.equals(String.valueOf(2))) {}
+    }
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "icon_alert_clickbuy", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.b });
       }
+      String str = new JSONObject(this.c).getString("packageId");
+      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), Integer.parseInt(this.b), Integer.parseInt(str));
       return;
-      if (this.a.jdField_a_of_type_Int == 1)
-      {
-        this.a.jdField_a_of_type_Int = 3;
-        continue;
-        ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin, 200, (byte)1, (byte)3);
-      }
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      QLog.e("ApolloPanel", 1, "[showAioDialog] Exception:", paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zfk
  * JD-Core Version:    0.7.0.1
  */

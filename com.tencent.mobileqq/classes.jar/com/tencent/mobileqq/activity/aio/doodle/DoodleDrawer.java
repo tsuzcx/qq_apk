@@ -26,12 +26,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import urd;
-import ure;
-import usq;
+import uwd;
+import uwe;
+import uxq;
 
 public class DoodleDrawer
-  implements ScribbleResMgr.ResCallback, usq
+  implements ScribbleResMgr.ResCallback, uxq
 {
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long = -1L;
@@ -46,7 +46,7 @@ public class DoodleDrawer
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ure jdField_a_of_type_Ure = new ure(this);
+  private uwe jdField_a_of_type_Uwe = new uwe(this);
   boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = 0;
   private long jdField_b_of_type_Long = -1L;
@@ -426,8 +426,8 @@ public class DoodleDrawer
   
   private void e()
   {
-    if (this.jdField_a_of_type_Ure != null) {
-      this.jdField_a_of_type_Ure.c();
+    if (this.jdField_a_of_type_Uwe != null) {
+      this.jdField_a_of_type_Uwe.c();
     }
     a(-1L, false);
     try
@@ -570,8 +570,8 @@ public class DoodleDrawer
     //   51: aload_0
     //   52: monitorexit
     //   53: aload_0
-    //   54: getfield 60	com/tencent/mobileqq/activity/aio/doodle/DoodleDrawer:jdField_a_of_type_Ure	Lure;
-    //   57: invokevirtual 414	ure:b	()V
+    //   54: getfield 60	com/tencent/mobileqq/activity/aio/doodle/DoodleDrawer:jdField_a_of_type_Uwe	Luwe;
+    //   57: invokevirtual 414	uwe:b	()V
     //   60: aload_0
     //   61: getfield 47	com/tencent/mobileqq/activity/aio/doodle/DoodleDrawer:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   64: astore_2
@@ -721,8 +721,8 @@ public class DoodleDrawer
     }
     try
     {
-      if (this.jdField_a_of_type_Ure != null) {
-        this.jdField_a_of_type_Ure.a();
+      if (this.jdField_a_of_type_Uwe != null) {
+        this.jdField_a_of_type_Uwe.a();
       }
       if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)))
       {
@@ -818,7 +818,7 @@ public class DoodleDrawer
         if (!paramBoolean)
         {
           ??? = this.jdField_a_of_type_JavaLangString;
-          this.jdField_a_of_type_Ure.a(new urd(this, (String)???, paramLong, localArrayList));
+          this.jdField_a_of_type_Uwe.a(new uwd(this, (String)???, paramLong, localArrayList));
           if (paramLong >= a()) {
             break;
           }

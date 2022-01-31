@@ -1,14 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.List;
 
-class ruu
-  implements Runnable
+public class ruu
+  implements ActionSheet.OnButtonClickListener
 {
-  ruu(rut paramrut) {}
+  public ruu(BaseChatPie paramBaseChatPie, List paramList, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      }
+      return;
+      BaseChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_JavaUtilList);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_JavaUtilList, 0);
+    }
   }
 }
 

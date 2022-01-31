@@ -1,23 +1,71 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class rly
-  implements CompoundButton.OnCheckedChangeListener
+  implements Animation.AnimationListener
 {
-  public rly(AssistantSettingActivity paramAssistantSettingActivity) {}
+  int jdField_a_of_type_Int = -1;
+  View jdField_a_of_type_AndroidViewView;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public rly(AccountManageActivity paramAccountManageActivity, View paramView, int paramInt)
   {
-    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131433572), "qqsetting_auto_receive_pic_key", paramBoolean);
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
+    }
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramAnimation.leftMargin += (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+      this.jdField_a_of_type_AndroidViewView.setTag("right");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      return;
+      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramAnimation.leftMargin -= (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+      this.jdField_a_of_type_AndroidViewView.setTag("left");
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (this.jdField_a_of_type_AndroidViewView.getId() == 2131362761)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c();
+        continue;
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
+    }
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
   }
 }

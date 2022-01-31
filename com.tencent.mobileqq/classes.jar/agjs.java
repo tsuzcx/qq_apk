@@ -1,10 +1,17 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agjs
-  extends agjr
+  implements Runnable
 {
-  void a(AppInterface paramAppInterface, Bundle paramBundle) {}
+  public agjs(ScanTorchActivity paramScanTorchActivity) {}
+  
+  public void run()
+  {
+    ScanTorchActivity.i(this.a);
+    ScanTorchActivity.j(this.a);
+    ScanTorchActivity.k(this.a);
+    ScanTorchActivity.c(this.a, false);
+  }
 }
 
 

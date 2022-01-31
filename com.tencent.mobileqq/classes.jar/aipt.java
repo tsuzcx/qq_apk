@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
-class aipt
+public class aipt
   implements Runnable
 {
-  aipt(aips paramaips) {}
+  public aipt(SceneBuilder paramSceneBuilder, SpriteGLView paramSpriteGLView, SceneBuilder.OnBuiltListener paramOnBuiltListener) {}
   
   public void run()
   {
-    QLog.d("Q.share.ForwardSdkShareProcessor", 1, "ImageUploadStep|changeImgUrl,need rich since invalid url=" + ForwardSdkShareProcessor.a(this.a.a.b));
-    ForwardSdkShareProcessor.c(this.a.a.b, null);
-    ForwardSdkShareProcessor.a(this.a.a.b).g();
-    ForwardSdkShareProcessor.a(this.a.a.b).a();
+    String str = SceneBuilder.a(SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder) + "/scene.json");
+    new Handler(Looper.getMainLooper()).post(new aipu(this, str));
   }
 }
 

@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.BasePicOprerator;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
 
-public final class aehk
-  implements Runnable
+public abstract interface aehk
 {
-  public aehk(MessageForPic paramMessageForPic) {}
+  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer);
   
-  public void run()
-  {
-    BasePicOprerator.a(this.a);
-  }
+  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer, int paramInt1, int paramInt2);
+  
+  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
+  
+  public abstract void b(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer);
 }
 
 

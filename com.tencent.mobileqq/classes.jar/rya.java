@@ -1,27 +1,16 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.model.QueryCallback;
 
-public final class rya
-  implements CUKingCardHelper.CUKingDialogListener
+class rya
+  implements QueryCallback
 {
-  public rya(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
+  rya(rxz paramrxz, int paramInt1, int paramInt2, String paramString) {}
   
-  public void callback(int paramInt)
+  public void a(Emoticon paramEmoticon)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      this.a.onClick(null, 0);
-      return;
-    }
-    this.b.onClick(null, 0);
+    MarketFaceItemBuilder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Rxz.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rxz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rxz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

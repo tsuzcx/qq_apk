@@ -1,17 +1,19 @@
-import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
-import com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentFactory;
 
-class lab
-  implements Runnable
+public class lab
+  implements SwiftBrowserComponentsProvider.SwiftBrowserComponentFactory
 {
-  lab(laa paramlaa) {}
+  public lab(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void run()
+  public Object a(int paramInt)
   {
-    if ((this.a.a.a != null) && (this.a.a.a.a != null)) {
-      this.a.a.a.a.notifyDataSetChanged();
+    switch (paramInt)
+    {
+    default: 
+      return null;
     }
+    return new laf(this.a);
   }
 }
 

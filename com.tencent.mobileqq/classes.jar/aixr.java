@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.FlowComponentInterface;
+import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
 
 public class aixr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aixr(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aixr(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.a(this.a.getActivity());
+  }
 }
 
 

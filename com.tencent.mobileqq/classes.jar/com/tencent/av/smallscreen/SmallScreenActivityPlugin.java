@@ -5,8 +5,8 @@ import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import jny;
-import jnz;
+import jqb;
+import jqc;
 
 public class SmallScreenActivityPlugin
 {
@@ -62,7 +62,7 @@ public class SmallScreenActivityPlugin
     label93:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      ThreadManager.post(new jnz(this, paramBoolean), 5, null, false);
+      ThreadManager.post(new jqc(this, paramBoolean), 5, null, false);
       SmallScreenUtils.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp(), localSessionInfo);
       return;
     }
@@ -84,7 +84,7 @@ public class SmallScreenActivityPlugin
     {
       this.jdField_a_of_type_Boolean = false;
       this.b = true;
-      ThreadManager.post(new jny(this), 5, null, false);
+      ThreadManager.post(new jqb(this), 5, null, false);
     }
     SmallScreenUtils.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 0);
   }
@@ -105,7 +105,7 @@ public class SmallScreenActivityPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenActivityPlugin
  * JD-Core Version:    0.7.0.1
  */

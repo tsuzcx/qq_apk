@@ -23,13 +23,13 @@ import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import oaa;
+import oep;
 
 public class HotRecommendFeedAdapter
   extends FeedItemThumbAdapter
 {
   private UserManager jdField_a_of_type_ComTencentBizQqstoryModelUserManager = (UserManager)SuperManager.a(2);
-  private ChildViewClickListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new oaa(this);
+  private ChildViewClickListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new oep(this);
   private HotRecommendFeedAdapter.OnSubscribeClickListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewAdapterHotRecommendFeedAdapter$OnSubscribeClickListener;
   
   public HotRecommendFeedAdapter(Context paramContext, Activity paramActivity, int paramInt)
@@ -46,16 +46,16 @@ public class HotRecommendFeedAdapter
       SLog.e("HotRecommendFeedAdapter", "bind view failed because of invalidate data.");
       return paramBaseViewHolder.a();
     }
-    paramViewGroup = paramBaseViewHolder.a(2131371821);
+    paramViewGroup = paramBaseViewHolder.a(2131371820);
     paramViewGroup.setVisibility(8);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371824);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371823);
     localTextView1.setVisibility(4);
     localTextView1.setOnClickListener(null);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371823);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371822);
     localTextView2.setVisibility(4);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371697);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131363549);
-    Object localObject = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131371751);
+    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371695);
+    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131363568);
+    Object localObject = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131371750);
     StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (localStoryVideoItem != null)
     {
@@ -110,7 +110,7 @@ public class HotRecommendFeedAdapter
       label448:
       localTextView1.setText("+关注");
       localTextView1.setTextColor(Color.parseColor("#FFFFFF"));
-      localTextView1.setBackgroundResource(2130843816);
+      localTextView1.setBackgroundResource(2130843881);
       localTextView1.setOnClickListener(paramBaseViewHolder);
       continue;
       label481:
@@ -122,7 +122,7 @@ public class HotRecommendFeedAdapter
   
   protected BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970753, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970769, paramViewGroup, false));
   }
   
   public void a(HotRecommendFeedAdapter.OnSubscribeClickListener paramOnSubscribeClickListener)

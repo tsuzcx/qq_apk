@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.now.share;
 
-import aewt;
-import aewu;
-import aewv;
+import afbo;
+import afbp;
+import afbq;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
@@ -79,7 +79,7 @@ public class ShortVideoShareUtil
       return;
     }
     SLog.c("ShortVideoShareUtil", "start load URLDrawable.");
-    a.setURLDrawableListener(new aewu(paramBaseActivity, paramString1, paramString2, paramString3, paramString4));
+    a.setURLDrawableListener(new afbp(paramBaseActivity, paramString1, paramString2, paramString3, paramString4));
     a.downloadImediatly();
   }
   
@@ -98,10 +98,10 @@ public class ShortVideoShareUtil
   public static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, URLDrawable paramURLDrawable, DialogInterface.OnDismissListener paramOnDismissListener)
   {
     paramQQAppInterface = new ShareActionSheetBuilder(paramBaseActivity);
-    paramQQAppInterface.a(paramBaseActivity.getString(2131433100));
+    paramQQAppInterface.a(paramBaseActivity.getString(2131433114));
     paramQQAppInterface.a(a(paramBaseActivity));
     paramQQAppInterface.a(paramOnDismissListener);
-    paramQQAppInterface.a(new aewt(paramQQAppInterface, paramBaseActivity, paramString3, paramString1, paramString4, paramString2, paramString5, paramString6));
+    paramQQAppInterface.a(new afbo(paramQQAppInterface, paramBaseActivity, paramString3, paramString1, paramString4, paramString2, paramString5, paramString6));
     try
     {
       paramQQAppInterface.a();
@@ -118,28 +118,28 @@ public class ShortVideoShareUtil
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430108);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430110);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838341;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.c = 2;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430114);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838337;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430116);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838342;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.c = 3;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430126);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838340;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430128);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838345;
     localActionSheetItem.c = 9;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430127);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838334;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430129);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838339;
     localActionSheetItem.c = 10;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
@@ -164,7 +164,7 @@ public class ShortVideoShareUtil
         paramString1 = a(a);
         paramBaseActivity = paramString1;
         if (paramString1 == null) {
-          paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842645);
+          paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842680);
         }
         WXShareHelper.a().a(str, paramString2, paramBaseActivity, paramString3, paramString4);
         new NowVideoReporter().h("video").i("playpage_fw_suc").a().a(paramString5);
@@ -179,7 +179,7 @@ public class ShortVideoShareUtil
       paramString1 = a(a);
       paramBaseActivity = paramString1;
       if (paramString1 == null) {
-        paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842645);
+        paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842680);
       }
       WXShareHelper.a().a(str, paramString2, paramBaseActivity, paramString3, paramString4);
       a.downloadImediatly();
@@ -187,7 +187,7 @@ public class ShortVideoShareUtil
       return;
     }
     SLog.c("ShortVideoShareUtil", "start load URLDrawable.");
-    a.setURLDrawableListener(new aewv(str, paramString2, paramString3, paramString4, paramString5));
+    a.setURLDrawableListener(new afbq(str, paramString2, paramString3, paramString4, paramString5));
     a.startDownload();
   }
   
@@ -195,7 +195,7 @@ public class ShortVideoShareUtil
   {
     long l = System.currentTimeMillis();
     if (paramBitmap == null) {}
-    for (paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842645);; paramString1 = paramBitmap)
+    for (paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842680);; paramString1 = paramBitmap)
     {
       WXShareHelper.a().b(String.valueOf(l), paramString2, paramString1, paramString3, paramString4);
       new NowVideoReporter().h("video").i("playpage_fw_suc").a().a(paramQQAppInterface);

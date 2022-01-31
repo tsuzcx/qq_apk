@@ -1,16 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.graphics.Point;
+import com.tencent.mobileqq.activity.aio.stickerbubble.ItemStatus.Acceleration;
+import com.tencent.mobileqq.activity.aio.stickerbubble.ItemStatus.Velocity;
 
-class whc
-  extends AnimateUtils.AnimationAdapter
+public class whc
 {
-  whc(wha paramwha) {}
+  private int jdField_a_of_type_Int;
+  private Point jdField_a_of_type_AndroidGraphicsPoint;
+  private ItemStatus.Acceleration jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Acceleration;
+  private ItemStatus.Velocity jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public whc(Point paramPoint, String paramString, boolean paramBoolean, ItemStatus.Velocity paramVelocity, ItemStatus.Acceleration paramAcceleration, int paramInt)
   {
-    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity = paramVelocity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Acceleration = paramAcceleration;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

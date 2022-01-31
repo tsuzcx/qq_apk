@@ -1,59 +1,57 @@
-import android.view.View;
-import com.tencent.av.gaudio.AVPhoneUserInfo;
-import com.tencent.av.gaudio.AVPhoneUserInfo.TelInfo;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import android.support.v4.util.MQLruCache;
+import android.util.Pair;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class agup
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public agup(QCallDetailActivity paramQCallDetailActivity, VideoActionSheet paramVideoActionSheet) {}
+  public agup(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, List paramList, String paramString, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      QCallDetailActivity.c(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-      return;
+    long l = SystemClock.elapsedRealtime();
+    Bitmap localBitmap1 = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidContentContext, (String)this.jdField_a_of_type_JavaUtilList.get(1)), true);
+    Bitmap localBitmap2 = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidContentContext, (String)this.jdField_a_of_type_JavaUtilList.get(0)), true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "ANIMATION_SCROLL time " + (SystemClock.elapsedRealtime() - l));
     }
-    if ((QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 3) || (QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 4))
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (localBitmap1 != null)
     {
-      paramView = PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, QCallDetailActivity.c(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity), 3000);
-      ArrayList localArrayList = new ArrayList();
-      if (paramView != null)
+      localObject1 = localObject2;
+      if (localBitmap2 != null)
       {
-        paramInt = 0;
-        while (paramInt < paramView.size())
-        {
-          localArrayList.add(((AVPhoneUserInfo)paramView.get(paramInt)).telInfo.mobile);
-          paramInt += 1;
-        }
+        localObject1 = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.getResources(), localBitmap1);
+        localObject1 = new TransitionDrawable(new Drawable[] { new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.getResources(), localBitmap2), localObject1 });
       }
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity), QCallDetailActivity.c(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity), true, true, true, null, localArrayList, 1, 2);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8006407", "0X8006407", 1, 0, "", "", "", "");
-      return;
     }
-    if (QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 5)
+    if (localObject1 != null)
     {
-      PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 2, 10);
-      return;
+      localObject1 = new Pair(localObject1, Integer.valueOf(Utils.a(localBitmap1) + Utils.a(localBitmap2)));
+      BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_JavaLangString, localObject1);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      ((Message)localObject1).what = 29;
+      ((Message)localObject1).arg1 = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
     }
-    QCallDetailActivity.c(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agup
  * JD-Core Version:    0.7.0.1
  */

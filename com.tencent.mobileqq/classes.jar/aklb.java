@@ -1,18 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener;
 
-public final class aklb
-  implements View.OnTouchListener
+public class aklb
+  implements Runnable
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aklb(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener) {}
+  
+  public void run()
   {
-    return true;
+    NewUpgradeDialog.d(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aklb
  * JD-Core Version:    0.7.0.1
  */

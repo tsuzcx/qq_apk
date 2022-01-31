@@ -1,15 +1,30 @@
-import com.tencent.biz.qqstory.base.preload.FileCacheUtils;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeVidListRequest.MsgTabNodeVidListResponse;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider.DataProviderListener;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Collections;
 
-class nis
-  implements Runnable
+public class nis
+  extends SimpleObserver
 {
-  nis(nir paramnir, String paramString) {}
+  public nis(MsgTabVideoPreloaderDataProvider paramMsgTabVideoPreloaderDataProvider, MsgTabVideoPreloaderDataProvider.DataProviderListener paramDataProviderListener, MsgTabNodeInfo paramMsgTabNodeInfo) {}
   
-  public void run()
+  public void a(MsgTabNodeVidListRequest.MsgTabNodeVidListResponse paramMsgTabNodeVidListResponse)
   {
-    FileCacheUtils.a(this.jdField_a_of_type_Nir.a, this.jdField_a_of_type_JavaLangString, 0, StoryReportor.a(BaseApplicationImpl.getContext()));
+    super.onNext(paramMsgTabNodeVidListResponse);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, Collections.emptyList());
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramError);
+    }
   }
 }
 

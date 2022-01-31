@@ -1,14 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnGalleryImageClickListener;
 
 public class lxc
-  extends CommonSkinRes
+  implements View.OnClickListener
 {
-  public lxc(ReadInJoySkinManager paramReadInJoySkinManager) {}
+  public lxc(FeedItemCellTypeGalleryBiu paramFeedItemCellTypeGalleryBiu) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return a("tab_select_color");
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter == null) {}
+    int i;
+    ReadInJoyBaseAdapter.OnGalleryImageClickListener localOnGalleryImageClickListener;
+    do
+    {
+      do
+      {
+        return;
+        paramView = ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a();
+      } while (paramView == null);
+      i = ComponentContentGalleryBiu.a(paramView, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter);
+      localOnGalleryImageClickListener = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    } while (localOnGalleryImageClickListener == null);
+    localOnGalleryImageClickListener.a(this.a.jdField_a_of_type_AndroidContentContext, paramView, 0, paramView.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
   }
 }
 

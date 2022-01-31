@@ -12,8 +12,8 @@ import com.immersion.stickersampleapp.HapticManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import vlt;
-import vlv;
+import vqw;
+import vqy;
 
 public class ZanCombolEffectView
   extends View
@@ -62,13 +62,13 @@ public class ZanCombolEffectView
     }
     int i = 0;
     label16:
-    vlv localvlv;
+    vqy localvqy;
     float f1;
     if (i < paramInt)
     {
-      localvlv = new vlv(null);
-      localvlv.jdField_a_of_type_Int = (getWidth() / 2);
-      localvlv.jdField_a_of_type_Float = this.jdField_a_of_type_JavaUtilRandom.nextInt(360);
+      localvqy = new vqy(null);
+      localvqy.jdField_a_of_type_Int = (getWidth() / 2);
+      localvqy.jdField_a_of_type_Float = this.jdField_a_of_type_JavaUtilRandom.nextInt(360);
       f1 = this.jdField_a_of_type_JavaUtilRandom.nextFloat();
       float f2 = this.jdField_b_of_type_Float;
       if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() <= 0.5D) {
@@ -76,10 +76,10 @@ public class ZanCombolEffectView
       }
       j = 1;
       label90:
-      localvlv.jdField_d_of_type_Float = (j * (f2 * f1));
-      localvlv.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)this.jdField_c_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_c_of_type_JavaUtilList.size())));
-      localvlv.e = 1.0F;
-      localvlv.jdField_c_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e + this.jdField_c_of_type_Float);
+      localvqy.jdField_d_of_type_Float = (j * (f2 * f1));
+      localvqy.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)this.jdField_c_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_c_of_type_JavaUtilList.size())));
+      localvqy.e = 1.0F;
+      localvqy.jdField_c_of_type_Float = (this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e + this.jdField_c_of_type_Float);
       f1 = (float)(this.jdField_a_of_type_JavaUtilRandom.nextFloat() * this.e * 0.2D);
       if (this.jdField_a_of_type_JavaUtilRandom.nextFloat() <= 0.5D) {
         break label263;
@@ -89,9 +89,9 @@ public class ZanCombolEffectView
     label263:
     for (int j = 1;; j = -1)
     {
-      localvlv.jdField_b_of_type_Float = (j * f1 + this.jdField_d_of_type_Float * this.jdField_d_of_type_Float);
-      localvlv.jdField_b_of_type_Int = ((int)(-this.jdField_c_of_type_Int * 0.12D));
-      this.jdField_a_of_type_JavaUtilList.add(localvlv);
+      localvqy.jdField_b_of_type_Float = (j * f1 + this.jdField_d_of_type_Float * this.jdField_d_of_type_Float);
+      localvqy.jdField_b_of_type_Int = ((int)(-this.jdField_c_of_type_Int * 0.12D));
+      this.jdField_a_of_type_JavaUtilList.add(localvqy);
       i += 1;
       break label16;
       break;
@@ -119,7 +119,7 @@ public class ZanCombolEffectView
   
   public void a(Integer... paramVarArgs)
   {
-    post(new vlt(this, paramVarArgs));
+    post(new vqw(this, paramVarArgs));
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -128,7 +128,7 @@ public class ZanCombolEffectView
     if ((this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {}
     int k;
     int i;
-    vlv localvlv;
+    vqy localvqy;
     do
     {
       return;
@@ -145,17 +145,17 @@ public class ZanCombolEffectView
       i = 0;
       if (i < k)
       {
-        localvlv = (vlv)this.jdField_a_of_type_JavaUtilList.get(i);
-        localvlv.jdField_b_of_type_Int = ((int)(localvlv.jdField_b_of_type_Int + localvlv.jdField_c_of_type_Float * f));
-        if (localvlv.jdField_b_of_type_Int > this.jdField_c_of_type_Int) {
-          this.jdField_b_of_type_JavaUtilList.add(localvlv);
+        localvqy = (vqy)this.jdField_a_of_type_JavaUtilList.get(i);
+        localvqy.jdField_b_of_type_Int = ((int)(localvqy.jdField_b_of_type_Int + localvqy.jdField_c_of_type_Float * f));
+        if (localvqy.jdField_b_of_type_Int > this.jdField_c_of_type_Int) {
+          this.jdField_b_of_type_JavaUtilList.add(localvqy);
         }
         for (;;)
         {
           i += 1;
           break;
-          localvlv.jdField_a_of_type_Int = ((int)(localvlv.jdField_a_of_type_Int + (2.0F * f * localvlv.jdField_b_of_type_Float + localvlv.jdField_b_of_type_Float * 0.02D)));
-          localvlv.jdField_a_of_type_Float += localvlv.jdField_d_of_type_Float * f;
+          localvqy.jdField_a_of_type_Int = ((int)(localvqy.jdField_a_of_type_Int + (2.0F * f * localvqy.jdField_b_of_type_Float + localvqy.jdField_b_of_type_Float * 0.02D)));
+          localvqy.jdField_a_of_type_Float += localvqy.jdField_d_of_type_Float * f;
         }
       }
       this.jdField_a_of_type_JavaUtilList.removeAll(this.jdField_b_of_type_JavaUtilList);
@@ -172,13 +172,13 @@ public class ZanCombolEffectView
     return;
     while (i < k)
     {
-      localvlv = (vlv)this.jdField_a_of_type_JavaUtilList.get(i);
+      localvqy = (vqy)this.jdField_a_of_type_JavaUtilList.get(i);
       this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localvlv.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, -localvlv.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localvlv.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localvlv.e, localvlv.e);
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localvlv.jdField_a_of_type_Int, localvlv.jdField_b_of_type_Int);
-      paramCanvas.drawBitmap(localvlv.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localvqy.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, -localvqy.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localvqy.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(localvqy.e, localvqy.e);
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localvqy.jdField_a_of_type_Int, localvqy.jdField_b_of_type_Int);
+      paramCanvas.drawBitmap(localvqy.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
       i += 1;
     }
     invalidate();

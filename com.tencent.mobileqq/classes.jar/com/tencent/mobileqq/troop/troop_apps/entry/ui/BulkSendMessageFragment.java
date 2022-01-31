@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.troop_apps.entry.ui;
 
-import ajml;
-import ajmm;
-import ajmn;
-import ajmo;
-import ajmp;
-import ajmq;
-import ajmr;
+import ajtx;
+import ajty;
+import ajtz;
+import ajua;
+import ajub;
+import ajuc;
+import ajud;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -73,7 +73,7 @@ public class BulkSendMessageFragment
   implements TextWatcher, View.OnClickListener, SoftKeyboardObserver.OnSoftKeyboardToggledListener, FaceDecoder.DecodeTaskCompletionListener
 {
   public int a;
-  public ajmr a;
+  public ajud a;
   public Handler a;
   protected View a;
   protected Button a;
@@ -89,16 +89,62 @@ public class BulkSendMessageFragment
   public String a;
   public List a;
   public View b;
-  protected TextView g;
+  protected TextView b;
   
   public BulkSendMessageFragment()
   {
-    this.jdField_a_of_type_Ajmr = new ajmr(this);
+    this.jdField_a_of_type_Ajud = new ajud(this);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = 10;
-    this.jdField_a_of_type_JavaLangRunnable = new ajml(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ajmm(this);
+    this.jdField_a_of_type_JavaLangRunnable = new ajtx(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ajty(this);
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.mContentView.findViewById(2131363457));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonStyle(1);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getLayoutParams();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSingleLine(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(300) });
+    int i = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().length();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSelection(i, i);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setGravity(48);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
+    if (localObject != null)
+    {
+      ((ViewGroup.LayoutParams)localObject).height = ((int)(150.0F * this.mDensity));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setHint("请输入群发消息内容（4-300个字）");
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnTouchListener(new ajtz(this));
+    this.mContentView.setOnTouchListener(new ajua(this));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131368312);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131363183));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView = ((MyGridView)this.mContentView.findViewById(2131368313));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setAdapter(this.jdField_a_of_type_Ajud);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131362980));
+    this.jdField_a_of_type_AndroidWidgetButton.setText("发送");
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131368314);
+    this.mContentView.findViewById(2131368315).setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131368309));
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+      this.mContentView.findViewById(2131368308).setVisibility(8);
+    }
+    for (;;)
+    {
+      setTitle("新建群发消息");
+      c();
+      b();
+      localObject = TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      TroopReportor.a("Grp_edu", "MassMessage", "CreateMessage_Show", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, localObject });
+      return;
+      this.mContentView.findViewById(2131368308).setOnClickListener(new ajub(this));
+    }
   }
   
   public static void a(Activity paramActivity, @Nullable Bundle paramBundle)
@@ -115,71 +161,25 @@ public class BulkSendMessageFragment
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.e.findViewById(2131363438));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonStyle(1);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getLayoutParams();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSingleLine(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(300) });
     int i = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().length();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSelection(i, i);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setGravity(48);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    if (localObject != null)
+    if (i > 300) {}
+    for (ColorStateList localColorStateList = getResources().getColorStateList(2131494308);; localColorStateList = getResources().getColorStateList(2131494275))
     {
-      ((ViewGroup.LayoutParams)localObject).height = ((int)(150.0F * this.jdField_a_of_type_Float));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setHint("请输入群发消息内容（4-300个字）");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnTouchListener(new ajmn(this));
-    this.e.setOnTouchListener(new ajmo(this));
-    this.jdField_a_of_type_AndroidViewView = this.e.findViewById(2131368310);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.e.findViewById(2131363179));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView = ((MyGridView)this.e.findViewById(2131368311));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMyGridView.setAdapter(this.jdField_a_of_type_Ajmr);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.e.findViewById(2131362975));
-    this.jdField_a_of_type_AndroidWidgetButton.setText("发送");
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.b = this.e.findViewById(2131368312);
-    this.e.findViewById(2131368313).setOnClickListener(this);
-    this.g = ((TextView)this.e.findViewById(2131368307));
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      this.e.findViewById(2131368306).setVisibility(8);
-    }
-    for (;;)
-    {
-      a("新建群发消息");
-      d();
-      c();
-      localObject = TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      TroopReportor.a("Grp_edu", "MassMessage", "CreateMessage_Show", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, localObject });
+      String str = i + "/" + 300;
+      if (localColorStateList != null) {
+        this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
+      }
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
       return;
-      this.e.findViewById(2131368306).setOnClickListener(new ajmp(this));
     }
   }
   
   private void c()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().length();
-    if (i > 300) {}
-    for (ColorStateList localColorStateList = getResources().getColorStateList(2131494302);; localColorStateList = getResources().getColorStateList(2131494269))
-    {
-      String str = i + "/" + 300;
-      if (localColorStateList != null) {
-        this.g.setTextColor(localColorStateList);
-      }
-      this.g.setText(str);
-      return;
-    }
-  }
-  
-  private void d()
-  {
     int k = 8;
     boolean bool2 = true;
     int j = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.length();
-    int m = this.jdField_a_of_type_Ajmr.jdField_a_of_type_JavaUtilArrayList.size();
+    int m = this.jdField_a_of_type_Ajud.jdField_a_of_type_JavaUtilArrayList.size();
     int i;
     label52:
     label59:
@@ -212,8 +212,8 @@ public class BulkSendMessageFragment
         j = 0;
       }
       ((View)localObject).setVisibility(j);
-      localObject = this.jdField_a_of_type_Ajmr;
-      if (this.jdField_a_of_type_Ajmr.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) {
+      localObject = this.jdField_a_of_type_Ajud;
+      if (this.jdField_a_of_type_Ajud.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) {
         break label211;
       }
     }
@@ -223,8 +223,8 @@ public class BulkSendMessageFragment
     label211:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ((ajmr)localObject).jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_Ajmr.notifyDataSetChanged();
+      ((ajud)localObject).jdField_a_of_type_Boolean = bool1;
+      this.jdField_a_of_type_Ajud.notifyDataSetChanged();
       return;
       i = 0;
       break;
@@ -237,7 +237,7 @@ public class BulkSendMessageFragment
     }
   }
   
-  private void e()
+  private void d()
   {
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
       return;
@@ -247,36 +247,9 @@ public class BulkSendMessageFragment
     while (localIterator.hasNext()) {
       localActionSheet.c((String)localIterator.next());
     }
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new ajmq(this, localActionSheet));
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new ajuc(this, localActionSheet));
     localActionSheet.show();
-  }
-  
-  protected int a()
-  {
-    return 2130969864;
-  }
-  
-  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_JavaLangString = getActivity().getIntent().getStringExtra("extra.GROUP_UIN");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = QQStoryContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    paramLayoutInflater = ((TroopAppMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(108)).a("BulkChatMessageConfig");
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.troop_app.BulkSendMessageFragment.VASH", 2, new Object[] { "ReadConfig: ", String.valueOf(paramLayoutInflater) });
-    }
-    if (paramLayoutInflater != null)
-    {
-      this.jdField_a_of_type_Int = paramLayoutInflater.optInt("user_limit", this.jdField_a_of_type_Int);
-      if (paramLayoutInflater.optJSONArray("hints") == null) {}
-    }
-    b();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
-    this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = new SoftKeyboardObserver(this.e, this, ImmersiveUtils.a(getActivity()) + 100);
   }
   
   public void a(BulkSendMessageFragment.ViewHolder paramViewHolder, Bitmap paramBitmap, boolean paramBoolean)
@@ -315,7 +288,7 @@ public class BulkSendMessageFragment
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.b.setVisibility(8);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10L);
@@ -323,17 +296,37 @@ public class BulkSendMessageFragment
   
   public void afterTextChanged(Editable paramEditable)
   {
-    d();
     c();
+    b();
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public boolean d()
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    boolean bool = super.d();
-    getActivity().overridePendingTransition(0, 2131034135);
-    return bool;
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    this.jdField_a_of_type_JavaLangString = getActivity().getIntent().getStringExtra("extra.GROUP_UIN");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = QQStoryContext.a();
+    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    paramLayoutInflater = ((TroopAppMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(108)).a("BulkChatMessageConfig");
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.troop_app.BulkSendMessageFragment.VASH", 2, new Object[] { "ReadConfig: ", String.valueOf(paramLayoutInflater) });
+    }
+    if (paramLayoutInflater != null)
+    {
+      this.jdField_a_of_type_Int = paramLayoutInflater.optInt("user_limit", this.jdField_a_of_type_Int);
+      if (paramLayoutInflater.optJSONArray("hints") == null) {}
+    }
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
+    this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = new SoftKeyboardObserver(this.mContentView, this, ImmersiveUtils.a(getActivity()) + 100);
+  }
+  
+  protected int getContentLayoutId()
+  {
+    return 2130969875;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -372,15 +365,15 @@ public class BulkSendMessageFragment
             QLog.d(".troop.troop_app.BulkSendMessageFragment.VASH", 2, new Object[] { "select uin: ", (String)((Iterator)localObject).next() });
           }
         }
-        paramInt2 = this.jdField_a_of_type_Ajmr.jdField_a_of_type_JavaUtilArrayList.size() - paramIntent.size();
+        paramInt2 = this.jdField_a_of_type_Ajud.jdField_a_of_type_JavaUtilArrayList.size() - paramIntent.size();
         if ((paramInt1 == 2) && (paramInt2 != 0))
         {
           localObject = TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
           TroopReportor.a("Grp_edu", "MassMessage", "MemberEdit_Complete", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, localObject, String.valueOf(paramInt2) });
         }
-        this.jdField_a_of_type_Ajmr.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramIntent);
-        this.jdField_a_of_type_Ajmr.notifyDataSetChanged();
-        d();
+        this.jdField_a_of_type_Ajud.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramIntent);
+        this.jdField_a_of_type_Ajud.notifyDataSetChanged();
+        c();
         return;
       }
       if (paramInt2 != 0) {
@@ -392,6 +385,13 @@ public class BulkSendMessageFragment
     QLog.e(".troop.troop_app.BulkSendMessageFragment", 1, "Error! SelectMember return null! requestCode: " + paramInt1, new NullPointerException());
   }
   
+  public boolean onBackEvent()
+  {
+    boolean bool = super.onBackEvent();
+    getActivity().overridePendingTransition(0, 2131034135);
+    return bool;
+  }
+  
   public void onClick(View paramView)
   {
     switch (paramView.getId())
@@ -401,8 +401,8 @@ public class BulkSendMessageFragment
     {
       return;
       paramView = TroopMemberListActivity.a(getActivity(), this.jdField_a_of_type_JavaLangString, 21);
-      paramView.putStringArrayListExtra("param_pick_selected_list", this.jdField_a_of_type_Ajmr.jdField_a_of_type_JavaUtilArrayList);
-      paramView.putStringArrayListExtra("param_delete_filter_member_list", this.jdField_a_of_type_Ajmr.jdField_a_of_type_JavaUtilArrayList);
+      paramView.putStringArrayListExtra("param_pick_selected_list", this.jdField_a_of_type_Ajud.jdField_a_of_type_JavaUtilArrayList);
+      paramView.putStringArrayListExtra("param_delete_filter_member_list", this.jdField_a_of_type_Ajud.jdField_a_of_type_JavaUtilArrayList);
       paramView.putExtra("param_pick_max_num", this.jdField_a_of_type_Int);
       paramView.putExtra("param_pick_title_string", "编辑接收人");
       startActivityForResult(paramView, 2);
@@ -430,7 +430,7 @@ public class BulkSendMessageFragment
         localTroopHandler = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
         localReqSend1V1Msg = new homework.ReqSend1V1Msg();
         i = TimeZone.getDefault().getOffset(System.currentTimeMillis()) / 1000;
-        Iterator localIterator = this.jdField_a_of_type_Ajmr.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.jdField_a_of_type_Ajud.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
@@ -463,7 +463,7 @@ public class BulkSendMessageFragment
         QQToast.a(getActivity(), 1, String.format(Locale.getDefault(), "群发消息内容不足%d个字，请补充完整。", new Object[] { Integer.valueOf(4) }), 1).a();
         return;
       }
-    } while (!this.jdField_a_of_type_Ajmr.jdField_a_of_type_JavaUtilArrayList.isEmpty());
+    } while (!this.jdField_a_of_type_Ajud.jdField_a_of_type_JavaUtilArrayList.isEmpty());
     QQToast.a(getActivity(), 1, String.format(Locale.getDefault(), "请选择接收消息的用户", new Object[0]), 1).a();
   }
   
@@ -508,7 +508,7 @@ public class BulkSendMessageFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment
  * JD-Core Version:    0.7.0.1
  */

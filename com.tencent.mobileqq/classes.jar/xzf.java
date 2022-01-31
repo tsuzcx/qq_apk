@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.PstnObserver;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
 
 public class xzf
-  extends PstnObserver
+  implements PtvTemplateManager.IPtvTemplateDownloadListener
 {
-  public xzf(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
+  public xzf(PtvTemplateAdapter paramPtvTemplateAdapter) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      this.a.app.removeObserver(this.a.a);
-      this.a.a = null;
+    this.a.a.post(new xzh(this, paramPtvTemplateInfo, paramInt));
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    this.a.a.post(new xzg(this, paramPtvTemplateInfo, paramBoolean));
+    if (!paramBoolean) {
+      FlowCameraMqqAction.a("", "0X80075BB", "", "", "", "");
     }
-    this.a.finish();
   }
 }
 

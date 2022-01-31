@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.leba.QZoneEntryController;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparingListener;
 
 public class aeaw
-  implements Runnable
+  implements TVK_IMediaPlayer.OnVideoPreparingListener
 {
-  public aeaw(QZoneEntryController paramQZoneEntryController) {}
+  public aeaw(VideoBaseItem paramVideoBaseItem) {}
   
-  public void run()
+  public void onVideoPreparing(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a.j();
-    QZoneEntryController.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onVideoPreparing mCacheProgress=");
+    }
   }
 }
 

@@ -1,18 +1,18 @@
-import android.app.Activity;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.FileBrowserPresenterBase;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class admj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public admj(ForwardShortVideoOption paramForwardShortVideoOption, URLDrawable paramURLDrawable, QQCustomDialog paramQQCustomDialog, boolean paramBoolean, int paramInt1, int paramInt2) {}
+  public admj(FileBrowserPresenterBase paramFileBrowserPresenterBase) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    URLDrawableHelper.a(this.jdField_a_of_type_ComTencentImageURLDrawable, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption.a.runOnUiThread(new admk(this));
+    FileManagerUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
+    this.a.jdField_a_of_type_Boolean = true;
   }
 }
 

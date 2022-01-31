@@ -1,21 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer.TimeoutObserver;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.qphone.base.util.QLog;
 
 public class acks
-  implements Animation.AnimationListener
+  implements EmojiIPCAlarmer.TimeoutObserver
 {
-  public acks(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public acks(WebIPCOperator paramWebIPCOperator) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    this.a.a.setVisibility(4);
+    acku localacku = this.a.a(paramInt);
+    if (localacku != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "on req timeout seq: " + paramInt);
+      }
+      Bundle localBundle = new Bundle();
+      this.a.a(localBundle, 1001);
+      localacku.a.putBundle("response", localBundle);
+      this.a.a(new ackt(this, localacku));
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,42 +1,31 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.OnListViewScrollStateListener;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
-class vpq
-  implements Runnable
+public class vpq
+  implements TroopChatPie.OnListViewScrollStateListener
 {
-  vpq(vpo paramvpo, List paramList) {}
+  public vpq(TroopSignItemBuilder.TroopSignVideoItemBuilder paramTroopSignVideoItemBuilder, TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder paramSignVideoItemHolder, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    Iterator localIterator1 = this.jdField_a_of_type_Vpo.a.a.iterator();
-    label103:
-    for (;;)
+    if (paramBoolean)
     {
-      if (localIterator1.hasNext())
-      {
-        String str = (String)localIterator1.next();
-        Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator2.hasNext())
-        {
-          LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)localIterator2.next();
-          if (str.equals(localLocalMediaInfo.path)) {
-            localLocalMediaInfo.mChecked = true;
-          }
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label103;
-        }
-        localIterator1.remove();
-        break;
-        return;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.l();
+      TroopSignItemBuilder.TroopSignVideoItemBuilder.a().removeCallbacksAndMessages(null);
+      return;
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getParent() != null)
+    {
+      TroopSignItemBuilder.TroopSignVideoItemBuilder.b().postDelayed(new vpr(this), 200L);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.d.setVisibility(0);
   }
 }
 

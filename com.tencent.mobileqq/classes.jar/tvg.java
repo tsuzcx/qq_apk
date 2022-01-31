@@ -1,73 +1,55 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.av.utils.UITools;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class tvg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public tvg(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public tvg(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity, Bundle paramBundle) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    Object localObject = new Rect();
-    this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.getRootView().getHeight();
-    int j = i - ((Rect)localObject).bottom;
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {}
+    do
     {
-      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.a.e = j;
-    }
-    if (j > i / 3)
-    {
-      if (this.a.c) {
-        this.a.c(false);
-      }
-      for (;;)
+      boolean bool1;
+      boolean bool2;
+      String str1;
+      String str2;
+      do
       {
-        if (this.a.jdField_a_of_type_Int == 2) {
-          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        }
-        i = (int)UITools.b(BaseApplicationImpl.getApplication(), this.a.b + j);
-        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.a).c("setKeyboardHeight(" + i + ")");
-        if (!this.a.d)
-        {
-          TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.d(this.a).c("reLocateForNative()");
-          this.a.d = true;
-        }
         return;
-        this.a.c(true);
+        bool1 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("visibility", false);
+        localObject = this.jdField_a_of_type_AndroidOsBundle.getString("enableVersion");
+        bool2 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("checked", false);
+        str1 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockText");
+        str2 = this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpText");
+        RegisterVerifyCodeActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity, this.jdField_a_of_type_AndroidOsBundle.getString("openDevLockHelpURL"));
+      } while ((!bool1) || (TextUtils.isEmpty(str1)) || (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity, "7.6.8", (String)localObject) < 0));
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterVerifyCodeActivity", 2, "update ui.");
       }
-    }
-    this.a.c(false);
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    }
-    if (this.a.jdField_a_of_type_Int == 2)
-    {
-      i = (int)UITools.b(BaseApplicationImpl.getApplication(), this.a.b);
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.e(this.a).c("setKeyboardHeight(" + i + ")");
-    }
-    for (;;)
-    {
-      this.a.d = false;
-      return;
-      if (this.a.jdField_a_of_type_Int == 1) {
-        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.f(this.a).c("setKeyboardHeight(0)");
+      if ((bool2) && (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) != null)) {
+        RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setChecked(bool2);
       }
-    }
+      Object localObject = SpannableString.valueOf(str1);
+      if (!TextUtils.isEmpty(str2))
+      {
+        tvh localtvh = new tvh(this, str1);
+        int i = str1.indexOf(str2);
+        ((SpannableString)localObject).setSpan(localtvh, i, str2.length() + i, 33);
+      }
+      RegisterVerifyCodeActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setText((CharSequence)localObject);
+      RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setContentDescription((CharSequence)localObject);
+      RegisterVerifyCodeActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setMovementMethod(LinkMovementMethod.getInstance());
+    } while (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) == null);
+    RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity).setVisibility(0);
   }
 }
 

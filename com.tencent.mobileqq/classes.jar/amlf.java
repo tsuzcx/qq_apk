@@ -1,28 +1,28 @@
-import cooperation.dingdong.DingdongPluginDataFactory.ScheduleSummaryData;
-import cooperation.dingdong.data.ScheduleReminderMgr.onScheduleTipsListener;
-import cooperation.dingdong.data.ScheduleTipsDialog;
+import android.os.Handler;
+import com.tencent.widget.TCWNumberPicker;
 
 public class amlf
-  implements ScheduleReminderMgr.onScheduleTipsListener
+  implements Runnable
 {
-  public amlf(ScheduleTipsDialog paramScheduleTipsDialog) {}
+  public amlf(TCWNumberPicker paramTCWNumberPicker) {}
   
-  public void a(DingdongPluginDataFactory.ScheduleSummaryData paramScheduleSummaryData)
+  public void run()
   {
-    ScheduleTipsDialog.a(this.a, paramScheduleSummaryData);
-  }
-  
-  public boolean a()
-  {
-    if (this.a.isFinishing()) {
-      return false;
+    if (TCWNumberPicker.a(this.a))
+    {
+      TCWNumberPicker.a(this.a, TCWNumberPicker.a(this.a) + 1);
+      TCWNumberPicker.a(this.a).postDelayed(this, TCWNumberPicker.a(this.a));
     }
-    return ScheduleTipsDialog.a(this.a);
+    while (!TCWNumberPicker.b(this.a)) {
+      return;
+    }
+    TCWNumberPicker.a(this.a, TCWNumberPicker.a(this.a) - 1);
+    TCWNumberPicker.a(this.a).postDelayed(this, TCWNumberPicker.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlf
  * JD-Core Version:    0.7.0.1
  */

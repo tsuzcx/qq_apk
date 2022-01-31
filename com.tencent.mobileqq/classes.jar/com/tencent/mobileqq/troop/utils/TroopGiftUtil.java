@@ -30,7 +30,7 @@ public class TroopGiftUtil
   public static Intent a(Activity paramActivity, String paramString1, String paramString2)
   {
     paramString1 = TroopMemberListActivity.a(paramActivity, paramString1, 14);
-    paramString1.putExtra("custom_title_name", paramActivity.getString(2131430746));
+    paramString1.putExtra("custom_title_name", paramActivity.getString(2131430749));
     paramString1.putExtra("troop_gift_from", paramString2);
     return paramString1;
   }
@@ -52,7 +52,7 @@ public class TroopGiftUtil
   public static String a(String paramString)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(AppConstants.cc).append(paramString + "_NEW").append(File.separator);
+    localStringBuffer.append(AppConstants.cd).append(paramString + "_NEW").append(File.separator);
     return localStringBuffer.toString();
   }
   
@@ -60,12 +60,12 @@ public class TroopGiftUtil
   {
     StringBuffer localStringBuffer = new StringBuffer();
     if (paramInt == 1) {
-      localStringBuffer.append(AppConstants.cc).append(paramString + "_V").append(File.separator);
+      localStringBuffer.append(AppConstants.cd).append(paramString + "_V").append(File.separator);
     }
     for (;;)
     {
       return localStringBuffer.toString();
-      localStringBuffer.append(AppConstants.cc).append(paramString + "_HD").append(File.separator);
+      localStringBuffer.append(AppConstants.cd).append(paramString + "_HD").append(File.separator);
     }
   }
   
@@ -73,15 +73,15 @@ public class TroopGiftUtil
   {
     StringBuffer localStringBuffer = new StringBuffer();
     if (paramBoolean) {
-      localStringBuffer.append(AppConstants.cc).append(File.separator).append(paramString).append("_NEW.zip");
+      localStringBuffer.append(AppConstants.cd).append(File.separator).append(paramString).append("_NEW.zip");
     }
     for (;;)
     {
       return localStringBuffer.toString();
       if (paramInt == 1) {
-        localStringBuffer.append(AppConstants.cc).append(File.separator).append(paramString).append("_V.zip");
+        localStringBuffer.append(AppConstants.cd).append(File.separator).append(paramString).append("_V.zip");
       } else {
-        localStringBuffer.append(AppConstants.cc).append(File.separator).append(paramString).append("_HD.zip");
+        localStringBuffer.append(AppConstants.cd).append(File.separator).append(paramString).append("_HD.zip");
       }
     }
   }
@@ -108,7 +108,7 @@ public class TroopGiftUtil
   public static JSONObject a(String paramString)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(AppConstants.cc).append(paramString + "_NEW").append(File.separator).append("info.json");
+    localStringBuffer.append(AppConstants.cd).append(paramString + "_NEW").append(File.separator).append("info.json");
     paramString = FileUtils.a(new File(localStringBuffer.toString()));
     if (paramString == null) {
       return null;
@@ -377,7 +377,7 @@ public class TroopGiftUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftUtil
  * JD-Core Version:    0.7.0.1
  */

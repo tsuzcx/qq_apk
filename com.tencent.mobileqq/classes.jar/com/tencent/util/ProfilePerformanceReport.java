@@ -1,6 +1,6 @@
 package com.tencent.util;
 
-import alzl;
+import amgv;
 import android.os.SystemClock;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -83,7 +83,7 @@ public class ProfilePerformanceReport
       this.jdField_a_of_type_JavaLangStringBuilder.append("reportPerformance, [").append(l1).append(",").append(localHashMap.toString()).append("]");
       QLog.i("ProfilePerformanceReport", 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
     }
-    ThreadManager.getSubThreadHandler().post(new alzl(this, paramString, l2, localHashMap));
+    ThreadManager.getSubThreadHandler().post(new amgv(this, paramString, l2, localHashMap));
   }
   
   public boolean a()

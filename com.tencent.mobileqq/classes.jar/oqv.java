@@ -1,19 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
-import com.tencent.biz.qqstory.view.widget.InnerListView.OnItemClickListener;
-
 public class oqv
-  implements View.OnClickListener
 {
-  public oqv(InnerListView paramInnerListView, int paramInt) {}
+  public static void a(String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
-  {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
-    }
-  }
+  public static void b(String paramString1, String paramString2) {}
+  
+  public static void c(String paramString1, String paramString2) {}
+  
+  public static void d(String paramString1, String paramString2) {}
 }
 
 

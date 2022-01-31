@@ -1,26 +1,12 @@
-import com.tencent.mobileqq.magicface.model.MagicfaceDecoder;
-import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.MagicPlayListener;
+import com.tencent.mobileqq.intervideo.od.ODProxy;
 
 public class aedw
-  implements Runnable
 {
-  public aedw(MagicfaceDecoder paramMagicfaceDecoder) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private String b = "";
+  private String c = "";
   
-  public void run()
-  {
-    int i = Thread.currentThread().getPriority();
-    Thread.currentThread().setPriority(10);
-    this.a.jdField_a_of_type_Boolean = true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.a();
-    }
-    this.a.a();
-    this.a.jdField_a_of_type_Boolean = false;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceDecoder$MagicPlayListener.b();
-    }
-    Thread.currentThread().setPriority(i);
-  }
+  public aedw(ODProxy paramODProxy) {}
 }
 
 

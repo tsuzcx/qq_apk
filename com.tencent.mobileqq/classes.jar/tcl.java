@@ -1,24 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
+import com.tencent.mobileqq.util.AccessibilityUtil;
+import java.util.ArrayList;
 
-public class tcl
-  implements DialogInterface.OnClickListener
+class tcl
+  implements Runnable
 {
-  public tcl(NotificationActivity paramNotificationActivity) {}
+  tcl(tck paramtck, ArrayList paramArrayList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    SettingCloneUtil.writeValue(this.a.app.getApp(), null, "security_scan_key", "qqsetting_security_scan_key", true);
-    this.a.app.w();
-    this.a.finish();
+    if ((Leba.a(this.jdField_a_of_type_Tck.a) != null) && (Leba.a(this.jdField_a_of_type_Tck.a) != null)) {
+      Leba.a(this.jdField_a_of_type_Tck.a).a(this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    if (Leba.a(this.jdField_a_of_type_Tck.a) != null) {
+      AccessibilityUtil.a(Leba.a(this.jdField_a_of_type_Tck.a), "好友动态 有更新");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tcl
  * JD-Core Version:    0.7.0.1
  */

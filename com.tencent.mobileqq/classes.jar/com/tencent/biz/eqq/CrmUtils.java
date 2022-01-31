@@ -47,10 +47,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.regex.Pattern;
-import kmb;
-import kmc;
-import kmd;
-import kme;
+import koi;
+import koj;
+import kok;
+import kol;
 import mqq.app.NewIntent;
 import mqq.manager.Manager;
 import mqq.manager.TicketManager;
@@ -87,7 +87,7 @@ public class CrmUtils
       if ((paramQQAppInterface == null) || (paramQQAppInterface.certifiedGrade <= 0)) {
         break label84;
       }
-      i = 2130839751;
+      i = 2130839766;
     }
     for (;;)
     {
@@ -96,7 +96,7 @@ public class CrmUtils
       i = j;
       if (((PublicAccountInfo)localObject).certifiedGrade > 0L)
       {
-        return 2130839751;
+        return 2130839766;
         label84:
         i = 0;
       }
@@ -361,9 +361,9 @@ public class CrmUtils
       if ((VcSystemInfo.c()) && (VcSystemInfo.d()))
       {
         ActionSheet localActionSheet = ActionSheet.a(paramContext);
-        localActionSheet.b(2131433828);
-        localActionSheet.c(2131433015);
-        localActionSheet.a(new kme(localActionSheet, paramQQAppInterface, paramContext, paramSessionInfo));
+        localActionSheet.b(2131433844);
+        localActionSheet.c(2131433029);
+        localActionSheet.a(new kol(localActionSheet, paramQQAppInterface, paramContext, paramSessionInfo));
         localActionSheet.show();
         return;
       }
@@ -422,14 +422,14 @@ public class CrmUtils
         localGetEqqDetailInfoRequest.eqq_id.set((int)Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString));
         label280:
         ((NewIntent)localObject).putExtra("data", localGetEqqDetailInfoRequest.toByteArray());
-        ((NewIntent)localObject).setObserver(new kmc(paramContext, paramQQAppInterface, localQQProgressDialog, paramSessionInfo, paramString));
+        ((NewIntent)localObject).setObserver(new koj(paramContext, paramQQAppInterface, localQQProgressDialog, paramSessionInfo, paramString));
         paramQQAppInterface.startServlet((NewIntent)localObject);
         try
         {
           if ((!(paramContext instanceof Activity)) || (((Activity)paramContext).isFinishing())) {
             continue;
           }
-          a(2131430029, localQQProgressDialog);
+          a(2131430031, localQQProgressDialog);
           return;
         }
         catch (Exception paramQQAppInterface)
@@ -438,12 +438,12 @@ public class CrmUtils
         }
         b(paramQQAppInterface, paramContext, paramSessionInfo, null, (EqqDetail)localObject, paramString);
         return;
-        a(paramContext, 2131430033);
+        a(paramContext, 2131430035);
         ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
         return;
         b(paramQQAppInterface, paramContext, paramSessionInfo, (PublicAccountInfo)localObject, null, paramString);
         return;
-        a(paramContext, 2131430033);
+        a(paramContext, 2131430035);
         ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
         return;
       }
@@ -510,7 +510,7 @@ public class CrmUtils
   
   public static void a(QQAppInterface paramQQAppInterface, EqqDetail paramEqqDetail)
   {
-    ThreadManager.getFileThreadHandler().post(new kmb(paramQQAppInterface, paramEqqDetail));
+    ThreadManager.getFileThreadHandler().post(new koi(paramQQAppInterface, paramEqqDetail));
   }
   
   public static boolean a()
@@ -533,7 +533,18 @@ public class CrmUtils
   
   public static boolean a(int paramInt)
   {
-    return (paramInt & 0x1) != 0;
+    boolean bool = true;
+    if (paramInt < 0)
+    {
+      QLog.i("CrmUtils", 1, "isCrmMaster meet error!!");
+      return false;
+    }
+    if ((paramInt & 0x1) != 0) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
@@ -724,13 +735,13 @@ public class CrmUtils
         localFollowRequest.uin.set((int)Long.parseLong(paramEqqDetail.uin));
         localFollowRequest.account_type.set(2);
         localNewIntent.putExtra("data", localFollowRequest.toByteArray());
-        localNewIntent.setObserver(new kmd(paramContext, paramQQAppInterface, paramPublicAccountInfo, paramEqqDetail, paramSessionInfo, paramString));
+        localNewIntent.setObserver(new kok(paramContext, paramQQAppInterface, paramPublicAccountInfo, paramEqqDetail, paramSessionInfo, paramString));
         paramQQAppInterface.startServlet(localNewIntent);
       }
       try
       {
         if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-          a(2131430029, paramPublicAccountInfo);
+          a(2131430031, paramPublicAccountInfo);
         }
         label257:
         if (QLog.isColorLevel()) {
@@ -770,7 +781,7 @@ public class CrmUtils
     if (localObject == null) {}
     for (localObject = null; (localObject == null) || (((String)localObject).length() == 0); localObject = ((TicketManager)localObject).getStweb(paramQQAppInterface.getCurrentAccountUin()))
     {
-      new QQToastNotifier(paramContext).a(2131435795, paramContext.getResources().getDimensionPixelSize(2131558448), 0, 1);
+      new QQToastNotifier(paramContext).a(2131435811, paramContext.getResources().getDimensionPixelSize(2131558448), 0, 1);
       return;
     }
     paramString1 = String.format("http://ptlogin2.qq.com/qidian_client?pt_clientver=5428&pt_src=1&clientuin=%s&clientkey=%s&keyindex=19&jump=30&kfuin=%s&kfext=%s&buildver=1.0.0.0&inter=1&_wv=1027", new Object[] { paramQQAppInterface.getCurrentAccountUin(), localObject, paramString1, paramString2 });
@@ -831,11 +842,16 @@ public class CrmUtils
   
   public static boolean b(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    if ((paramInt != 0) && (paramInt != 1024)) {
-      return false;
+    boolean bool2;
+    if ((paramInt != 0) && (paramInt != 1024))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CrmUtils", 2, "isQiye not friend and not crm tmp");
+      }
+      bool2 = false;
+      return bool2;
     }
     Object localObject;
-    boolean bool1;
     if (!TextUtils.isEmpty(paramString))
     {
       localObject = paramQQAppInterface.getManager(55);
@@ -845,34 +861,53 @@ public class CrmUtils
         if (localObject != null)
         {
           if (((PublicAccountInfo)localObject).extendType != 2) {
-            break label125;
+            break label237;
           }
-          bool1 = true;
-          bool2 = bool1;
-          if (!bool1)
+          if (QLog.isColorLevel()) {
+            QLog.d("CrmUtils", 2, "isQiye PublicAccountInfo is eqq");
+          }
+          bool2 = true;
+          label95:
+          bool1 = bool2;
+          if (!bool2)
           {
-            bool2 = bool1;
+            bool1 = bool2;
             if (paramInt == 0)
             {
-              bool2 = c(paramQQAppInterface, paramString);
-              if (!QidianManager.b(paramQQAppInterface, paramString)) {}
+              bool1 = c(paramQQAppInterface, paramString);
+              if (QLog.isColorLevel()) {
+                QLog.d("CrmUtils", 2, "isQiye after getSimpleInfo value is " + bool1);
+              }
+              if (QidianManager.b(paramQQAppInterface, paramString)) {
+                if (QLog.isColorLevel()) {
+                  QLog.d("CrmUtils", 2, "isQiye uin is qidianmaster");
+                }
+              }
             }
           }
         }
       }
     }
-    for (boolean bool2 = false;; bool2 = false)
+    for (boolean bool1 = false;; bool1 = false)
     {
-      return bool2;
+      bool2 = bool1;
+      if (!bool1) {
+        break;
+      }
+      QLog.i("CrmUtils", 1, "isQiye is true finally");
+      return bool1;
       localObject = paramQQAppInterface.getManager(68);
       if ((localObject != null) && (((EqqDetailDataManager)localObject).a(paramString) != null))
       {
-        bool1 = true;
-        break;
+        if (QLog.isColorLevel()) {
+          QLog.d("CrmUtils", 2, "isQiye EqqDetail has data");
+        }
+        bool2 = true;
+        break label95;
       }
-      label125:
-      bool1 = false;
-      break;
+      label237:
+      bool2 = false;
+      break label95;
     }
   }
   

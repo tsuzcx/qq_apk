@@ -9,9 +9,9 @@ import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.mobileqq.vip.DownloaderInterface;
-import xfi;
-import xfj;
-import xfk;
+import xlc;
+import xld;
+import xle;
 
 public class PreloadComDownloader
 {
@@ -43,7 +43,7 @@ public class PreloadComDownloader
   
   private void a(String paramString1, String paramString2, Bundle paramBundle, DownloadListener paramDownloadListener)
   {
-    ThreadManager.post(new xfk(this, paramString1, paramString2, paramDownloadListener, paramBundle), 8, null, true);
+    ThreadManager.post(new xle(this, paramString1, paramString2, paramDownloadListener, paramBundle), 8, null, true);
   }
   
   public void a(String paramString1, String paramString2, Bundle paramBundle, DownloadListener paramDownloadListener, boolean paramBoolean)
@@ -58,7 +58,7 @@ public class PreloadComDownloader
       }
       localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     } while (localQQAppInterface == null);
-    paramBundle = new xfj(this, localQQAppInterface, paramString1, paramString1, paramString2, paramBundle, new xfi(this, paramDownloadListener));
+    paramBundle = new xld(this, localQQAppInterface, paramString1, paramString1, paramString2, paramBundle, new xlc(this, paramDownloadListener));
     ((PreDownloadController)localQQAppInterface.getManager(192)).a(10069, "qqpay", paramString1, 0, paramString1, paramString2, 2, 0, true, paramBundle);
     return;
     a(paramString1, paramString2, paramBundle, paramDownloadListener);

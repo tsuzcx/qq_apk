@@ -1,50 +1,75 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.ProtoServlet;
-import com.tencent.ims.signature.SignatureReport;
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.app.NewIntent;
+import android.os.SystemClock;
+import android.util.Printer;
+import com.tencent.mobileqq.app.LooperMonitorHelper;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class znc
-  extends Handler
+  implements Printer
 {
-  public znc(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int = 0;
+  private long jdField_b_of_type_Long;
+  private long c;
+  
+  public znc(int paramInt)
   {
-    super(paramLooper);
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    LooperMonitorHelper.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void println(String paramString)
+  {
+    if (paramString.startsWith(">>"))
     {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      Object localObject;
-      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
-      {
-        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), ProtoServlet.class);
-        ((NewIntent)localObject).putExtra("data", ((znh)paramMessage.obj).a.toByteArray());
-        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
-        ((NewIntent)localObject).setObserver(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_Znh = null;
-        return;
-        localObject = this.a.a("SecCheckSigSvc.UploadReq");
-        ((ToServiceMsg)localObject).putWupBuffer(((znh)paramMessage.obj).a.toByteArray());
-        this.a.b((ToServiceMsg)localObject);
+      this.c = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_JavaLangString = paramString;
+      if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_b_of_type_Int)) {
+        UnifiedMonitor.a().reportStackIfTimeout(this.jdField_b_of_type_Int);
       }
     }
-    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
+    long l;
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.c == 0L) || (!paramString.startsWith("<<")));
+      this.jdField_a_of_type_Long += 1L;
+      l = SystemClock.uptimeMillis() - this.c;
+      this.c = 0L;
+      this.jdField_b_of_type_Long += l;
+      if (l <= LooperMonitorHelper.jdField_a_of_type_Int) {
+        break;
+      }
+      if (!UnifiedMonitor.a().whetherReportThisTime(this.jdField_b_of_type_Int))
+      {
+        this.jdField_a_of_type_Int = 0;
+        return;
+      }
+      paramString = this.jdField_a_of_type_JavaLangString;
+      HashMap localHashMap = UnifiedMonitor.a();
+      UnifiedMonitor.a().addEvent(this.jdField_b_of_type_Int, paramString, (int)l, this.jdField_a_of_type_Int, localHashMap);
+      this.jdField_a_of_type_Int = 0;
+    } while (!QLog.isColorLevel());
+    QLog.d("AutoMonitor", 2, "MainLooper, cost=" + l + ", " + paramString);
+    return;
+    if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_b_of_type_Int)) {
+      UnifiedMonitor.a().notifyNotTimeout(this.jdField_b_of_type_Int);
+    }
+    this.jdField_a_of_type_Int += 1;
+  }
+  
+  public String toString()
+  {
+    return super.toString() + "(msgCount = " + this.jdField_a_of_type_Long + ", totalCost = " + this.jdField_b_of_type_Long + ")";
   }
 }
 

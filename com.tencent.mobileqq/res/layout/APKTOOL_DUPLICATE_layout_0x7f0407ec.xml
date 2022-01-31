@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent"
+<FrameLayout android:paddingTop="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2528" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@null" />
-    <TextView android:textSize="11.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c001e" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2529" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022167" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="99" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <RelativeLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/tips_popup_win_bg" android:layout_width="98.0dip" android:layout_height="98.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a24d0" android:visibility="gone" android:layout_width="13.5dip" android:layout_height="13.5dip" android:src="@drawable/common_bottom_dialog_checked_icon" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0578" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/common_loading2" android:layout_centerHorizontal="true" />
+        <TextView android:textColor="@android:color/white" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0609" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="test" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0578" />
+    </RelativeLayout>
+</FrameLayout>

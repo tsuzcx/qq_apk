@@ -1,42 +1,74 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class abjy
-  implements Runnable
+  extends Handler
 {
-  public abjy(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
-  
-  public void run()
+  public abjy(NonMainAppHeadLoader paramNonMainAppHeadLoader, Looper paramLooper)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-    this.a.jdField_b_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    if (this.a.jdField_e_of_type_Boolean) {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1000) {
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList.size());
+        paramMessage.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        this.a.a(paramMessage);
+      }
     }
-    for (;;)
+    Object localObject;
+    String str;
+    do
     {
-      this.a.d.setVisibility(4);
-      this.a.c.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(4);
-      this.a.jdField_e_of_type_AndroidWidgetTextView.setVisibility(4);
+      this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
+      for (;;)
+      {
+        return;
+        if (paramMessage.what == 1002) {
+          try
+          {
+            localObject = (Bundle)paramMessage.obj;
+            paramMessage = (Bitmap)((Bundle)localObject).getParcelable("bmp");
+            str = ((Bundle)localObject).getString("uin");
+            localObject = ((Bundle)localObject).getString("path");
+            if (paramMessage != null) {
+              this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(str, paramMessage);
+            }
+            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+            while (localIterator.hasNext())
+            {
+              NonMainAppHeadLoader.FaceObserver localFaceObserver = (NonMainAppHeadLoader.FaceObserver)localIterator.next();
+              if (localFaceObserver != null) {
+                localFaceObserver.onFaceUpdate(str, (String)localObject, paramMessage);
+              }
+            }
+            if (!QLog.isColorLevel()) {}
+          }
+          catch (Exception paramMessage) {}
+        }
+      }
+      QLog.e("NonMainAppHeadLoader", 2, "refreshImg, exception:" + paramMessage.toString());
       return;
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("NonMainAppHeadLoader", 2, "refreshImg, uin:" + str + ", path=" + (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abjy
  * JD-Core Version:    0.7.0.1
  */

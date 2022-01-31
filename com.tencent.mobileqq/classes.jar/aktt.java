@@ -1,42 +1,22 @@
-import android.graphics.Rect;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.CustomedTabWidget;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.webview.AbsWebView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
 public class aktt
-  extends Handler
+  extends aktw
 {
-  private WeakReference a;
-  
-  public aktt(CustomedTabWidget paramCustomedTabWidget)
+  public aktt(AbsWebView paramAbsWebView)
   {
-    this.a = new WeakReference(paramCustomedTabWidget);
+    super(paramAbsWebView, null);
   }
   
-  public void handleMessage(Message arg1)
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
   {
-    CustomedTabWidget localCustomedTabWidget = (CustomedTabWidget)this.a.get();
-    if (localCustomedTabWidget == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "old shouldInterceptRequest");
     }
-    if (localCustomedTabWidget.jdField_a_of_type_Float < 0.0F) {
-      localCustomedTabWidget.invalidate((int)(localCustomedTabWidget.b.left + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.top, localCustomedTabWidget.b.right, localCustomedTabWidget.b.bottom);
-    }
-    synchronized (localCustomedTabWidget.jdField_a_of_type_Aktt)
-    {
-      Rect localRect = localCustomedTabWidget.b;
-      localRect.left = ((int)(localRect.left + localCustomedTabWidget.jdField_a_of_type_Float));
-      localRect = localCustomedTabWidget.b;
-      localRect.right = ((int)(localRect.right + localCustomedTabWidget.jdField_a_of_type_Float));
-      if ((localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.left - localCustomedTabWidget.b.left) / localCustomedTabWidget.jdField_a_of_type_Float >= 1.0F)
-      {
-        sendEmptyMessage(0);
-        return;
-        localCustomedTabWidget.invalidate(localCustomedTabWidget.b.left, localCustomedTabWidget.b.top, (int)(localCustomedTabWidget.b.right + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.bottom);
-      }
-    }
-    localObject.b.set(localObject.jdField_a_of_type_AndroidGraphicsRect.left, localObject.jdField_a_of_type_AndroidGraphicsRect.top, localObject.jdField_a_of_type_AndroidGraphicsRect.right, localObject.jdField_a_of_type_AndroidGraphicsRect.bottom);
+    return a(paramWebView, paramString);
   }
 }
 

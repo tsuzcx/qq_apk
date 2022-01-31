@@ -1,19 +1,20 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.TrafficStatActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rqb
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public rqb(BaseChatPie paramBaseChatPie) {}
+  public rqb(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QQToast.a(this.a.a, 0, this.a.a.getResources().getString(2131433766), 0).a();
-    paramDialogInterface.dismiss();
+    paramView = new Intent(this.a, TrafficStatActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_traffic_statistics", 0, 0, "", "", "", "");
   }
 }
 

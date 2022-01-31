@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.olympic.TorchInfo;
+import java.io.ByteArrayOutputStream;
 
 public class agim
   implements Runnable
 {
-  public agim(ScanTorchActivity paramScanTorchActivity) {}
+  public agim(OlympicManager paramOlympicManager, TorchInfo paramTorchInfo) {}
   
   public void run()
   {
-    ScanTorchActivity.b(this.a, false, ScanTorchActivity.d(this.a) + 1);
+    synchronized (OlympicManager.b(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager))
+    {
+      new ByteArrayOutputStream();
+      OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager);
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager.a.getPreferences().getBoolean("olympic_setting_ever_fetch_flag_switch_here", false);
+      if ((this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo.transfer_num != 1L) && (!bool)) {}
+      return;
+    }
   }
 }
 

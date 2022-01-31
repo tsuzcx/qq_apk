@@ -1,18 +1,17 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
 
 public class aofx
-  extends OrientationEventListener
+  extends AnimatorListenerAdapter
 {
-  public aofx(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public aofx(FaceLayer.FaceItem paramFaceItem) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.k = paramInt;
+    this.a.p = 12.0F;
+    this.a.b.k();
   }
 }
 

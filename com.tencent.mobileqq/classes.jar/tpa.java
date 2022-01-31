@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class tpa
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public tpa(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
+  public tpa(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(2131436320, new tpb(this));
-    localQQCustomDialog.show();
+    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
+      this.a.finish();
+    }
+    this.a.m = false;
   }
 }
 

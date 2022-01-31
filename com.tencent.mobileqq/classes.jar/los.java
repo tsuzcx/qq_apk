@@ -1,54 +1,48 @@
-import com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyWebRenderEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyWebRenderStateMachineScheduler.StateMachine;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class los
-  implements Runnable
+  implements ReadInJoyWebRenderStateMachineScheduler.StateMachine
 {
-  public los(AdvertisementInfoModule paramAdvertisementInfoModule, int paramInt) {}
+  public los(ReadInJoyWebRenderEngine paramReadInJoyWebRenderEngine) {}
   
-  public void run()
+  public int a(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdvertisementInfoModule", 2, "loadChannelAdvertisementFromDB channelID=" + this.jdField_a_of_type_Int);
-    }
-    List localList = AdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule, this.jdField_a_of_type_Int);
-    ConcurrentHashMap localConcurrentHashMap;
-    if (localList.size() > 0)
+    int j = this.a.a;
+    int i = -1;
+    long l = System.currentTimeMillis();
+    switch (this.a.a)
     {
-      localConcurrentHashMap = (ConcurrentHashMap)AdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule).get(Integer.valueOf(this.jdField_a_of_type_Int));
-      if (localConcurrentHashMap != null) {
-        break label326;
-      }
-      localConcurrentHashMap = new ConcurrentHashMap();
-      AdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule).put(Integer.valueOf(this.jdField_a_of_type_Int), localConcurrentHashMap);
     }
-    label326:
     for (;;)
     {
-      localConcurrentHashMap.clear();
-      StringBuilder localStringBuilder = new StringBuilder("\n");
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext())
-      {
-        AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)localIterator.next();
-        localConcurrentHashMap.put(Integer.valueOf(localAdvertisementInfo.mAdKdPos), localAdvertisementInfo);
-        if (QLog.isColorLevel()) {
-          localStringBuilder.append("[pos=").append(localAdvertisementInfo.mAdKdPos).append(", traceID=").append(localAdvertisementInfo.mAdTraceId).append(", fetchTime=").append(localAdvertisementInfo.mAdFetchTime).append("]\n");
-        }
-      }
-      long l = ((AdvertisementInfo)localList.get(0)).mAdFetchTime;
-      AdvertisementInfoModule.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule).put(Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l));
       if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementInfoModule", 2, "loadChannelAdvertisementFromDB channelID=" + this.jdField_a_of_type_Int + ", fetchTime=" + l + localStringBuilder.toString());
+        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost[" + (System.currentTimeMillis() - l) + "ms]" + " timestamps[" + System.currentTimeMillis() + "]");
       }
-      AdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule, NetConnInfoCenter.getServerTimeMillis(), localConcurrentHashMap);
-      return;
+      ReadInJoyUtils.a(ReadInJoyUtils.a(), true, j, System.currentTimeMillis() - l);
+      return i;
+      i = this.a.b(paramBundle);
+      continue;
+      i = this.a.c(paramBundle);
+      continue;
+      i = this.a.d(paramBundle);
+      continue;
+      i = this.a.e(paramBundle);
+      continue;
+      i = this.a.f(paramBundle);
+      continue;
+      i = this.a.g(paramBundle);
+      continue;
+      i = this.a.h(paramBundle);
+      continue;
+      i = this.a.i(paramBundle);
+      continue;
+      i = this.a.j(paramBundle);
+      continue;
+      i = this.a.k(paramBundle);
     }
   }
 }

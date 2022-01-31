@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class akvf
   implements Runnable
 {
-  public akvf(NewStyleDropdownView paramNewStyleDropdownView) {}
+  public akvf(WebViewFragment paramWebViewFragment) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewStyleDropdownView", 2, "onDismiss arrow postDelayed 500 run and set isLastDropDown false");
-    }
-    this.a.a = false;
+    ThreadManager.postImmediately(new akvg(this), null, false);
   }
 }
 

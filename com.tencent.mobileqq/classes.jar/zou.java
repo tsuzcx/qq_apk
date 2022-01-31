@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.newfriend.NewFriendMessage;
+import java.util.Comparator;
 
 public class zou
-  implements Runnable
+  implements Comparator
 {
-  public zou(TroopManager paramTroopManager, String paramString1, String paramString2) {}
+  public zou(NewFriendManager paramNewFriendManager) {}
   
-  public void run()
+  public int a(NewFriendMessage paramNewFriendMessage1, NewFriendMessage paramNewFriendMessage2)
   {
-    TroopMemberInfo localTroopMemberInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(this.jdField_a_of_type_JavaLangString, this.b);
-    ThreadManager.getUIHandler().post(new zov(this, localTroopMemberInfo));
+    return (int)(paramNewFriendMessage2.a - paramNewFriendMessage1.a);
   }
 }
 

@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
-import cooperation.qwallet.plugin.QWalletHelper;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.MimeHelper;
 
-public class xbz
-  implements Runnable
+public final class xbz
+  extends MediaFileFilter
 {
-  public xbz(TransactionActivity paramTransactionActivity) {}
-  
-  public void run()
+  public boolean a(String paramString)
   {
-    try
-    {
-      JSONObject localJSONObject = QWalletHelper.loadUnifiedConfig(TransactionActivity.a(this.a));
-      if (localJSONObject != null)
-      {
-        localJSONObject = localJSONObject.optJSONObject("qpayment");
-        if (localJSONObject != null)
-        {
-          TransactionActivity.a(this.a, localJSONObject.optInt("large_transfer_remind_fee"));
-          TransactionActivity.a(this.a, localJSONObject.optString("large_transfer_remind_msg"));
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    paramString = MimeHelper.a(paramString);
+    return (paramString == null) || (!"image".equals(paramString[0])) || (!MimeHelper.a(paramString[1]));
+  }
+  
+  public boolean b()
+  {
+    return false;
   }
 }
 

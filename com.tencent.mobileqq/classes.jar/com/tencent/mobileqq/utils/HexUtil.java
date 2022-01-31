@@ -27,6 +27,13 @@ public class HexUtil
     return 0;
   }
   
+  public static String a(byte paramByte)
+  {
+    int i = jdField_a_of_type_ArrayOfChar[(paramByte & 0xF)];
+    paramByte = (byte)(paramByte >>> 4);
+    return new String(new char[] { jdField_a_of_type_ArrayOfChar[(paramByte & 0xF)], i });
+  }
+  
   public static String a(String paramString)
   {
     return new String(a(paramString));

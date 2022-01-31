@@ -298,7 +298,7 @@ public class PluginLauncher
   public void startMainActivityFailed(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
     XLog.e("TXProxy|PluginLoader", "startMainActivityFailed packageName = " + paramString1);
-    postCallback(5, paramString1, 2, paramString4);
+    postCallback(5, paramString1, paramInt, paramString4);
   }
   
   public void startMainActivitySucc(String paramString1, String paramString2, String paramString3)

@@ -7,10 +7,10 @@ import android.os.SystemClock;
 import android.telephony.PhoneStateListener;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import kgb;
-import kgc;
-import kge;
-import kgg;
+import kih;
+import kii;
+import kik;
+import kim;
 
 public class PhoneStatusMonitor
 {
@@ -19,14 +19,14 @@ public class PhoneStatusMonitor
   public PhoneStateListener a;
   public PhoneStatusMonitor.PhoneStatusListener a;
   public Runnable a;
-  kge a;
+  kik a;
   public boolean a;
   
   public PhoneStatusMonitor(Context paramContext, PhoneStatusMonitor.PhoneStatusListener paramPhoneStatusListener)
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_JavaLangRunnable = new kgc(this);
+    this.jdField_a_of_type_JavaLangRunnable = new kii(this);
     long l = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
       QLog.d("PhoneStatusMonitor", 2, "PhoneStatusMonitor Begin");
@@ -35,8 +35,8 @@ public class PhoneStatusMonitor
     this.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener = paramPhoneStatusListener;
     try
     {
-      this.jdField_a_of_type_AndroidTelephonyPhoneStateListener = new kgg(this);
-      this.jdField_a_of_type_Kge = new kge(this);
+      this.jdField_a_of_type_AndroidTelephonyPhoneStateListener = new kim(this);
+      this.jdField_a_of_type_Kik = new kik(this);
     }
     catch (Exception paramPhoneStatusListener)
     {
@@ -44,7 +44,7 @@ public class PhoneStatusMonitor
       {
         do
         {
-          ThreadManager.post(new kgb(this, paramContext), 5, null, false);
+          ThreadManager.post(new kih(this, paramContext), 5, null, false);
           if (QLog.isColorLevel()) {
             QLog.d("PhoneStatusMonitor", 2, "PhoneStatusMonitor Step1,time=" + (SystemClock.elapsedRealtime() - l));
           }
@@ -54,7 +54,7 @@ public class PhoneStatusMonitor
           paramPhoneStatusListener.addAction("android.intent.action.PHONE_STATE_2");
           paramPhoneStatusListener.addAction("android.intent.action.PHONE_STATE_EXT");
           paramPhoneStatusListener.addAction("android.intent.action.NEW_OUTGOING_CALL");
-          paramContext.registerReceiver(this.jdField_a_of_type_Kge, paramPhoneStatusListener);
+          paramContext.registerReceiver(this.jdField_a_of_type_Kik, paramPhoneStatusListener);
           if (QLog.isColorLevel()) {
             QLog.d("PhoneStatusMonitor", 2, "PhoneStatusMonitor End,time=" + (SystemClock.elapsedRealtime() - l));
           }
@@ -95,9 +95,9 @@ public class PhoneStatusMonitor
     try
     {
       PhoneStatusTools.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidTelephonyPhoneStateListener, 0);
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Kge);
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Kik);
       this.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener = null;
-      this.jdField_a_of_type_Kge = null;
+      this.jdField_a_of_type_Kik = null;
       this.jdField_a_of_type_AndroidTelephonyPhoneStateListener = null;
       this.jdField_a_of_type_AndroidContentContext = null;
       this.jdField_a_of_type_AndroidOsHandler = null;

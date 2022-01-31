@@ -39,9 +39,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONObject;
-import vqj;
-import vqk;
-import vql;
+import vvn;
+import vvo;
+import vvp;
 
 public class QQWalletHbItemUtils
 {
@@ -55,10 +55,10 @@ public class QQWalletHbItemUtils
   public TroopUnAccalimedRedPacketList.HbItemClickListener a;
   public QQAppInterface a;
   protected int b;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new vqk(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new vvo(this);
   final String jdField_b_of_type_JavaLangString = "pay";
   protected int c;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new vql(this);
+  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new vvp(this);
   final String jdField_c_of_type_JavaLangString = "red";
   protected int d;
   protected int e;
@@ -78,7 +78,7 @@ public class QQWalletHbItemUtils
   
   public QQWalletHbItemUtils(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vqj(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vvn(this);
     float f1 = paramContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_Int = ((int)(15.0F * f1 + 0.5F));
     this.jdField_b_of_type_Int = ((int)(10.0F * f1 + 0.5F));
@@ -260,12 +260,12 @@ public class QQWalletHbItemUtils
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, this.f);
     localLayoutParams.topMargin = this.g;
     localLayoutParams.bottomMargin = this.jdField_a_of_type_Int;
-    localLayoutParams.addRule(3, 2131372388);
-    localLayoutParams.addRule(5, 2131372388);
+    localLayoutParams.addRule(3, 2131372398);
+    localLayoutParams.addRule(5, 2131372398);
     paramContext.setLayoutParams(localLayoutParams);
     paramContext.setMaxWidth(this.k);
     paramContext.setTextColor(-8947849);
-    paramContext.setBackgroundResource(2130844037);
+    paramContext.setBackgroundResource(2130844103);
     paramContext.setPadding(this.jdField_b_of_type_Int, 0, this.jdField_b_of_type_Int, 0);
     paramContext.setClickable(false);
     paramContext.setVisibility(8);
@@ -273,7 +273,7 @@ public class QQWalletHbItemUtils
     paramContext.setIncludeFontPadding(false);
     paramContext.setSingleLine();
     paramContext.setTextSize(12.0F);
-    paramContext.setId(2131372385);
+    paramContext.setId(2131372395);
     return paramContext;
   }
   
@@ -340,21 +340,21 @@ public class QQWalletHbItemUtils
     }
     RelativeLayout localRelativeLayout1 = new RelativeLayout(paramContext);
     localRelativeLayout1.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-    localRelativeLayout1.setId(2131372377);
+    localRelativeLayout1.setId(2131372387);
     paramQWalletMsgHolder.jdField_b_of_type_AndroidWidgetRelativeLayout = localRelativeLayout1;
     RelativeLayout localRelativeLayout2 = new RelativeLayout(paramContext);
     Object localObject1 = new RelativeLayout.LayoutParams(this.k, this.l);
-    localRelativeLayout2.setId(2131372388);
+    localRelativeLayout2.setId(2131372398);
     localRelativeLayout2.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     paramQWalletMsgHolder.c = localRelativeLayout2;
     localObject1 = new RelativeLayout(paramContext);
     Object localObject2 = new RelativeLayout.LayoutParams(this.k, this.l);
-    ((RelativeLayout)localObject1).setBackgroundResource(2130844115);
+    ((RelativeLayout)localObject1).setBackgroundResource(2130844181);
     ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     ((RelativeLayout)localObject1).setVisibility(8);
     paramQWalletMsgHolder.d = ((RelativeLayout)localObject1);
     localObject2 = new LinearLayout(paramContext);
-    ((LinearLayout)localObject2).setId(2131372499);
+    ((LinearLayout)localObject2).setId(2131372510);
     ((LinearLayout)localObject2).setOrientation(0);
     ((LinearLayout)localObject2).setGravity(16);
     RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
@@ -365,7 +365,7 @@ public class QQWalletHbItemUtils
     ((LinearLayout)localObject2).setVisibility(8);
     paramQWalletMsgHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject2);
     RelativeLayout localRelativeLayout3 = new RelativeLayout(paramContext);
-    localRelativeLayout3.setId(2131372375);
+    localRelativeLayout3.setId(2131372385);
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams2.addRule(10);
     localLayoutParams2.addRule(14);
@@ -379,14 +379,14 @@ public class QQWalletHbItemUtils
     ((TextView)localObject3).setTextSize(18.0F);
     ((TextView)localObject3).setTextColor(Color.parseColor("#FBD49D"));
     ((TextView)localObject3).setLineSpacing(0.0F, 1.1F);
-    ((TextView)localObject3).setId(2131372380);
+    ((TextView)localObject3).setId(2131372390);
     ((TextView)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
     ((TextView)localObject3).setGravity(17);
     localRelativeLayout3.addView((View)localObject3);
     paramQWalletMsgHolder.e = localRelativeLayout3;
     paramQWalletMsgHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject3);
     localObject4 = new ImageView(paramContext);
-    ((ImageView)localObject4).setId(2131372387);
+    ((ImageView)localObject4).setId(2131372397);
     ((ImageView)localObject4).setVisibility(8);
     ((ImageView)localObject4).setScaleType(ImageView.ScaleType.CENTER_CROP);
     RelativeLayout.LayoutParams localLayoutParams3 = new RelativeLayout.LayoutParams(this.jdField_c_of_type_Int, this.d);
@@ -395,7 +395,7 @@ public class QQWalletHbItemUtils
     paramQWalletMsgHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject4);
     localObject3 = new AnimationView(paramContext);
     ((AnimationView)localObject3).setPlayer(new ScrollPlayer((AnimationView)localObject3));
-    ((AnimationView)localObject3).setId(2131372381);
+    ((AnimationView)localObject3).setId(2131372391);
     ((AnimationView)localObject3).setVisibility(8);
     ((AnimationView)localObject3).setScaleType(ImageView.ScaleType.CENTER_CROP);
     RelativeLayout.LayoutParams localLayoutParams4 = new RelativeLayout.LayoutParams(this.k, this.l);
@@ -410,7 +410,7 @@ public class QQWalletHbItemUtils
     localRelativeLayout1.addView((View)localObject1);
     paramContext = new AnimationView(paramContext);
     paramContext.setPlayer(new ScrollPlayer((AnimationView)localObject3));
-    paramContext.setId(2131372472);
+    paramContext.setId(2131372483);
     paramContext.setVisibility(8);
     paramQWalletMsgHolder.jdField_b_of_type_ComTencentMobileqqWidgetAnimationView = paramContext;
     return localRelativeLayout1;

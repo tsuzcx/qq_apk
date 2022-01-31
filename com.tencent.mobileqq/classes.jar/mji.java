@@ -1,18 +1,30 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
 
-class mji
-  implements Runnable
+public class mji
+  extends Handler
 {
-  mji(mjh parammjh, Layer paramLayer) {}
+  public mji(VideoUIManager paramVideoUIManager) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Mjh.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLayer);
-    PublicAccountReportUtils.a(this.jdField_a_of_type_Mjh.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C80", "0X8008C80", 0, 0, this.jdField_a_of_type_Mjh.a.b, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.jdField_a_of_type_Mjh.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 100: 
+      VideoUIManager.a(this.a);
+      return;
+    case 101: 
+      this.a.f();
+      return;
+    case 102: 
+      VideoUIManager.b(this.a);
+      sendEmptyMessageDelayed(102, 1000L);
+      return;
+    }
+    VideoUIManager.a(this.a, 3);
   }
 }
 

@@ -2,10 +2,10 @@ package cooperation.qzone.plugin;
 
 import NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_RSP;
 import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
-import amyb;
 import android.content.Context;
 import android.os.Handler;
 import android.text.TextUtils;
+import anfp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -48,7 +48,13 @@ public class QZonePluginUpdater
     paramQQAppInterface.e = "qzone_vertical_video_plugin.apk";
     paramQQAppInterface.f = "qzone_vertical_video_plugin.apk";
     this.b.put(paramQQAppInterface.f, paramQQAppInterface);
-    this.jdField_a_of_type_JavaUtilHashMap.put("qzone_vertical_video_plugin.apk", "com.tencent.mobileqq:qzonelive");
+    this.jdField_a_of_type_JavaUtilHashMap.put("qzone_vertical_video_plugin.apk", "com.tencent.mobileqq:qzone");
+    paramQQAppInterface = new PluginRecord();
+    paramQQAppInterface.c = "0";
+    paramQQAppInterface.e = "QZoneWeishiFeedsVideo";
+    paramQQAppInterface.f = "qzone_weishi_feeds_plugin.apk";
+    this.b.put(paramQQAppInterface.f, paramQQAppInterface);
+    this.jdField_a_of_type_JavaUtilHashMap.put("qzone_weishi_feeds_plugin.apk", "com.tencent.mobileqq:qzonelive");
     QZonePluginUtils.a(paramContext, this.jdField_a_of_type_JavaUtilMap);
   }
   
@@ -137,7 +143,7 @@ public class QZonePluginUpdater
     PluginIntent localPluginIntent = new PluginIntent(BaseApplicationImpl.getContext(), QzoneUpdatePatchServlet.class);
     localPluginIntent.a = a();
     localPluginIntent.b = QzoneModuleConfigManager.a().a();
-    localPluginIntent.a(new amyb(this));
+    localPluginIntent.a(new anfp(this));
     localPluginIntent.putExtra("forceDownLoadPlugins", paramArrayOfString);
     paramArrayOfString = null;
     if (paramWeakReference != null) {

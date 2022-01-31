@@ -1,6 +1,6 @@
 package com.tencent.mqpsdk.secsrv;
 
-import akzi;
+import alha;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -394,7 +394,7 @@ public class MQPAPPScanService
       }
     }
     finally {}
-    new akzi(this, paramArrayOfByte).start();
+    new alha(this, paramArrayOfByte).start();
   }
   
   public boolean a(int paramInt)

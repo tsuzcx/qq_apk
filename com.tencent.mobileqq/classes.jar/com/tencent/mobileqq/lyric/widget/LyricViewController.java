@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import aecv;
-import aecw;
-import aecx;
-import aecy;
-import aecz;
-import aeda;
-import aedb;
+import aelf;
+import aelg;
+import aelh;
+import aeli;
+import aelj;
+import aelk;
+import aell;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.Log;
@@ -26,7 +26,7 @@ public class LyricViewController
   public Lyric a;
   protected LyricScrollHelper a;
   public LyricViewInternal a;
-  private LyricViewScroll.LyricViewScrollListener jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener = new aecv(this);
+  private LyricViewScroll.LyricViewScrollListener jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener = new aelf(this);
   private LyricViewScroll jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll;
   protected final String a;
   public volatile boolean a;
@@ -41,7 +41,7 @@ public class LyricViewController
     this.jdField_a_of_type_JavaLangString = ("task_name_lyric_draw_" + System.currentTimeMillis());
     this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager = LyricContext.a();
     this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricScrollHelper = new LyricScrollHelper();
-    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = new aecx(this);
+    this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = new aelh(this);
     this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll = paramLyricView.a();
     this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal = paramLyricView.a();
     this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.setScrollListener(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll$LyricViewScrollListener);
@@ -74,30 +74,30 @@ public class LyricViewController
   public void a()
   {
     Log.d("ModuleController", "start");
-    LyricContext.a().post(new aecz(this));
+    LyricContext.a().post(new aelj(this));
     this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager.a(this.jdField_a_of_type_JavaLangString, 100L, 100L, this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable);
     this.jdField_c_of_type_Boolean = true;
   }
   
   public void a(int paramInt)
   {
-    LyricContext.a().post(new aeda(this, paramInt));
+    LyricContext.a().post(new aelk(this, paramInt));
   }
   
   protected void a(int paramInt1, int paramInt2)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.getWindowToken() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.post(new aedb(this, paramInt1, paramInt2));
+      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.post(new aell(this, paramInt1, paramInt2));
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll != null) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.getWindowToken() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.post(new aecw(this));
+      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewScroll.post(new aelg(this));
     }
   }
   
   public void a(Lyric paramLyric1, Lyric paramLyric2, Lyric paramLyric3)
   {
     Log.v("ModuleController", "setLyric begin");
-    LyricContext.a().post(new aecy(this, paramLyric3, paramLyric1, paramLyric2));
+    LyricContext.a().post(new aeli(this, paramLyric3, paramLyric1, paramLyric2));
   }
   
   public void a(LyricView paramLyricView)

@@ -1,24 +1,23 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.app.PstnSessionInfo;
 
-public class jgx
-  implements Runnable
+public final class jgx
+  implements Parcelable.Creator
 {
-  public jgx(CameraUtils paramCameraUtils) {}
-  
-  public void run()
+  public PstnSessionInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraUtils", 2, "NoPreviewRunnable.run");
-    }
-    this.a.a.a().a(new Object[] { Integer.valueOf(38), Integer.valueOf(2) });
+    return new PstnSessionInfo(paramParcel);
+  }
+  
+  public PstnSessionInfo[] a(int paramInt)
+  {
+    return new PstnSessionInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     jgx
  * JD-Core Version:    0.7.0.1
  */

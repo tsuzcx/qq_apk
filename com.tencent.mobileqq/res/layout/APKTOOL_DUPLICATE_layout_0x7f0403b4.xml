@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13a8" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057d" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13a9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no_chat" android:drawableTop="@drawable/no_chat" android:drawablePadding="20.0dip" android:layout_centerInParent="true" />
+    <com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13b1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.biz.ui.TouchWebView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a13b2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a13b1" />
 </RelativeLayout>

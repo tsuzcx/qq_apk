@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastUrl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-public final class amvh
-  implements Parcelable.Creator
+public class amvh
+  implements DialogInterface.OnClickListener
 {
-  public BroadcastUrl a(Parcel paramParcel)
-  {
-    return new BroadcastUrl(paramParcel);
-  }
+  public amvh(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public BroadcastUrl[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new BroadcastUrl[paramInt];
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvh
  * JD-Core Version:    0.7.0.1
  */

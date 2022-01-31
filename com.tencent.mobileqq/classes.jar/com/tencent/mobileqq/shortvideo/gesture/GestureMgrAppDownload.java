@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.gesture;
 
-import aibn;
+import aigh;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class GestureMgrAppDownload
 {
-  aibn jdField_a_of_type_Aibn = null;
+  aigh jdField_a_of_type_Aigh = null;
   DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
   boolean jdField_a_of_type_Boolean = false;
   
@@ -20,7 +20,7 @@ public class GestureMgrAppDownload
     if (QLog.isDevelopLevel()) {
       QLog.d("QavGesture", 4, "GestureMgrAppDownload in QQAppInterface");
     }
-    this.jdField_a_of_type_Aibn = new aibn();
+    this.jdField_a_of_type_Aigh = new aigh();
   }
   
   public static void a(int paramInt)
@@ -71,7 +71,7 @@ public class GestureMgrAppDownload
   {
     try
     {
-      i = Integer.valueOf("351230").intValue();
+      i = Integer.valueOf("355371").intValue();
       BaseApplicationImpl.sApplication.getSharedPreferences("so_sp", 4).edit().putInt("key_so_version_" + paramString, i);
       return;
     }
@@ -143,7 +143,7 @@ public class GestureMgrAppDownload
       if (!bool1) {
         break;
       }
-      return this.jdField_a_of_type_Aibn.a((DownloadInfo)localObject);
+      return this.jdField_a_of_type_Aigh.a((DownloadInfo)localObject);
     }
   }
 }

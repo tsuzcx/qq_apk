@@ -1,13 +1,16 @@
-import android.media.MediaScannerConnection.OnScanCompletedListener;
-import android.net.Uri;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class xtl
-  implements MediaScannerConnection.OnScanCompletedListener
+  implements DialogInterface.OnClickListener
 {
-  public xtl(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
+  public xtl(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onScanCompleted(String paramString, Uri paramUri) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

@@ -11,7 +11,7 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
-import mie;
+import mls;
 import mqq.os.MqqHandler;
 
 public class ReadInJoyHeadImageView
@@ -65,7 +65,7 @@ public class ReadInJoyHeadImageView
     if ((!TextUtils.equals(paramString, String.valueOf(this.b))) || (paramReadInJoyUserInfo == null)) {
       return;
     }
-    ThreadManager.getUIHandler().post(new mie(this, paramReadInJoyUserInfo));
+    ThreadManager.getUIHandler().post(new mls(this, paramReadInJoyUserInfo));
   }
   
   public void a(String paramString1, String paramString2)

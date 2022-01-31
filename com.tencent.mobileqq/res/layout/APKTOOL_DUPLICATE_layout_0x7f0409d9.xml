@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<merge android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bc9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b73" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <TextView android:textSize="17.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c4f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="相册" />
-        <TextView android:textSize="10.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c50" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="智能整理本地照片，仅自己可见" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c51" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="10.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c52" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="123相册" />
-            <TextView android:textSize="10.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c53" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="144照片" />
-            <TextView android:textSize="10.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c54" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="1223视频" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bca" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409fb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bcb" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409fc" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bcc" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409fd" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bcd" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409f9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bce" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0409fa" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</merge>

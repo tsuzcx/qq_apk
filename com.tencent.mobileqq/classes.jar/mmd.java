@@ -1,14 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.qphone.base.util.QLog;
 
-class mmd
-  implements Runnable
+public class mmd
+  extends FriendListObserver
 {
-  mmd(mmc parammmc) {}
+  public mmd(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void run()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    FastWebActivity.a(this.a.a).notifyDataSetChanged();
+    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
+    {
+      QLog.d("ReadInJoyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
+      this.a.k();
+    }
   }
 }
 

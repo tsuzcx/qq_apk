@@ -1,70 +1,54 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.util.OfflineDownloader;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.util.HashMap;
+import android.app.Dialog;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
 
 public class kls
-  implements ITMAssistantDownloadClientListener
+  implements Animation.AnimationListener
 {
-  public kls(OfflineDownloader paramOfflineDownloader) {}
+  public kls(PoiMapActivity paramPoiMapActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, int paramInt, TranslateAnimation paramTranslateAnimation2) {}
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramTMAssistantDownloadClient == null) {}
-    do
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams1 = (LinearLayout.LayoutParams)PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity).getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams2 = PoiMapActivity.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity).getLayoutParams();
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
     {
-      return;
-      paramTMAssistantDownloadClient = (klr)OfflineDownloader.a().get(paramString);
-    } while ((paramTMAssistantDownloadClient == null) || (paramTMAssistantDownloadClient.a == null));
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    paramTMAssistantDownloadClient.a.a(i);
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (paramTMAssistantDownloadClient == null) {
-      this.a.a(null, paramString1, null, -1, "client is null, " + paramString2);
+      this.jdField_a_of_type_AndroidAppDialog.show();
+      localLayoutParams.height = (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight() + this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(this.jdField_a_of_type_Int / 2, true);
     }
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return;
-          paramString2 = (klr)OfflineDownloader.a().get(paramString1);
-          if ((paramString2 == null) || (paramString2.a == null))
-          {
-            this.a.a(null, paramString1, null, -1, "download info is null or callback is null");
-            return;
-          }
-          switch (paramInt1)
-          {
-          default: 
-            return;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("OfflineDownload", 2, "task downloading + url = " + paramString1);
-        return;
-        this.a.a(paramTMAssistantDownloadClient, paramString2, paramString1);
-        return;
-        this.a.a(paramString2.a, paramString1, paramString2.c, paramInt2, "offline zip download fail");
-        try
-        {
-          this.a.a.cancelDownloadTask(paramString1);
-          return;
-        }
-        catch (Exception paramTMAssistantDownloadClient) {}
-      } while (!QLog.isDevelopLevel());
-      QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
+      localLayoutParams1.height = -1;
+      localLayoutParams2.height = -1;
+      PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setLayoutParams(localLayoutParams2);
+      PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setLayoutParams(localLayoutParams1);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.setLayoutParams(localLayoutParams);
+      PoiMapActivity.c(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setEnabled(true);
+      if ((this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) && (paramAnimation == this.b)) {
+        this.jdField_a_of_type_ComTencentBizPoiMapActivity.i();
+      }
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("OfflineDownload", 2, "task paused + url = " + paramString1);
+      if (paramAnimation == this.b)
+      {
+        localLayoutParams.height = (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHeight() - this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(-this.jdField_a_of_type_Int / 2, true);
+      }
+    }
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,20 +1,20 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQQData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.common.recyclerview.BaseAdapter.OnItemClickListener;
+import com.tencent.biz.qqstory.common.recyclerview.BaseViewHolder;
+import com.tencent.biz.qqstory.common.recyclerview.HeaderAndFooterAdapter;
 
 public class ngi
-  extends AddPollViewJob
+  implements View.OnClickListener
 {
-  public ngi(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareQQData paramShareQQData)
-  {
-    super(paramStoryVideoItem);
-  }
+  public ngi(HeaderAndFooterAdapter paramHeaderAndFooterAdapter, BaseViewHolder paramBaseViewHolder) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQQData.a = ((String)a("result"));
-    return true;
+    int i = this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewHeaderAndFooterAdapter.a.a(this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.itemView, i);
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import ambm;
+import amiw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ExpandableListView$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new ambm();
+  public static final Parcelable.Creator CREATOR = new amiw();
   private Parcelable jdField_a_of_type_AndroidOsParcelable;
   ArrayList jdField_a_of_type_JavaUtilArrayList;
   

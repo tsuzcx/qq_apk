@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class zim
   implements Runnable
 {
-  public zim(PhoneContactManagerImp paramPhoneContactManagerImp, long paramLong) {}
+  public zim(ConditionSearchManager paramConditionSearchManager) {}
   
   public void run()
   {
-    synchronized (PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp))
-    {
-      Iterator localIterator = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).iterator();
-      if (localIterator.hasNext()) {
-        ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.jdField_a_of_type_Long);
-      }
+    int i = -1;
+    int j = this.a.a();
+    if (j != 0) {
+      i = this.a.a(j);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "pendCardParseRequest | check reuslt = " + j + " | update result = " + i);
+    }
+    if (j == 0) {
+      ConditionSearchManager.a(this.a).a(new zin(this));
     }
   }
 }

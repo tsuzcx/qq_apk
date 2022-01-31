@@ -1,14 +1,25 @@
-import android.widget.ImageButton;
-import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
+import com.tencent.biz.qqstory.takevideo.dancemachine.VideoSharer;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class omq
+class omq
   implements Runnable
 {
-  public omq(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  omq(omp paramomp, int paramInt) {}
   
   public void run()
   {
-    StoryLocalPublishPart.a(this.a).setVisibility(8);
+    String str = "";
+    if (this.jdField_a_of_type_Int == -1) {
+      str = "分享失败";
+    }
+    for (;;)
+    {
+      QQToast.a(this.jdField_a_of_type_Omp.a.a, 1, str, 0).a();
+      return;
+      if (this.jdField_a_of_type_Int == -2) {
+        str = "你未安装微博客户端，无法分享。";
+      }
+    }
   }
 }
 

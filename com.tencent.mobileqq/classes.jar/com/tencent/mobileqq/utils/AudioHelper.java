@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import akbl;
-import akbm;
+import akiy;
+import akiz;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -22,6 +22,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.core.VcSystemInfo;
 import com.tencent.av.utils.TintStateDrawable;
 import com.tencent.beacon.event.UserAction;
@@ -33,6 +34,7 @@ import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.util.MediaCodecDPC;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -236,13 +238,23 @@ public class AudioHelper
       QLog.d("AudioHelper", 1, "BaseInfo, AppInterface is empty");
       return "BaseInfo, AppInterface is empty";
     }
-    if (VcSystemInfo.f() <= 2) {}
-    for (boolean bool = true;; bool = false)
+    int j = -1;
+    String str;
+    int i;
+    if ((paramAppInterface instanceof VideoAppInterface))
+    {
+      j = VcSystemInfo.f();
+      str = VcSystemInfo.d();
+      i = VcSystemInfo.e();
+    }
+    for (long l = VcSystemInfo.c();; l = DeviceInfoUtil.a())
     {
       DisplayMetrics localDisplayMetrics = paramAppInterface.getApp().getResources().getDisplayMetrics();
-      paramAppInterface = "BaseInfo, APPID[" + AppSetting.jdField_a_of_type_Int + "], \nUIN[" + paramAppInterface.getAccount() + "], \nisPublicVersion[" + true + "], \nisGrayVersion[" + false + "], \nisDebugVersion[" + false + "], \nquaMainVersion[" + "2013 7.6.3" + "], \nlogLevel[" + QLog.getUIN_REPORTLOG_LEVEL() + "], \nisDevelopLevel[" + QLog.isDevelopLevel() + "], \nisColorLevel[" + QLog.isColorLevel() + "], \nisSupporImmersive[" + ImmersiveUtils.isSupporImmersive() + "], \nStatusBarHeight[" + ImmersiveUtils.a(paramAppInterface.getApp()) + "], \naboutSubVersionLog[" + "7.6.3.3565.2018-06-01.r351230.BeiYong1" + "], \ngetQUA[" + a(AppSetting.b()) + "], \nMANUFACTURER[" + Build.MANUFACTURER + "], \nMODEL[" + Build.MODEL + "], \ndevicesInfo[" + AppSetting.b + "], \ndisplayMetrics[" + localDisplayMetrics + "], \ndensity[" + localDisplayMetrics.density + "], \ndensityDpi[" + localDisplayMetrics.densityDpi + "], \ndevVersion[" + Build.VERSION.INCREMENTAL + "], \nsdkVersion[" + Build.VERSION.SDK_INT + "], \nCpuArchitecture[" + VcSystemInfo.f() + "], \nSystemTotalMemory[" + DeviceInfoUtil.e() + "], \nCupNumCores[" + VcSystemInfo.e() + "], \nMaxCpuFreq[" + VcSystemInfo.c() + "], \nbArm6[" + bool + "], \nCPU_ABI[" + Build.CPU_ABI + "], \nCPU_ABI2[" + Build.CPU_ABI2 + "], \nsProcessId[" + BaseApplicationImpl.sProcessId + "], \nprocessName[" + BaseApplicationImpl.processName + "], \nUIThread[" + ThreadManager.getUIHandler().getLooper().getThread().getId() + "], \nCurThread[" + Thread.currentThread().getId() + "], \ntid[" + Process.myTid() + "]";
+      paramAppInterface = "BaseInfo, APPID[" + AppSetting.jdField_a_of_type_Int + "], \nUIN[" + paramAppInterface.getAccount() + "], \nisPublicVersion[" + true + "], \nisGrayVersion[" + false + "], \nisDebugVersion[" + false + "], \nquaMainVersion[" + "2013 7.6.8" + "], \nlogLevel[" + QLog.getUIN_REPORTLOG_LEVEL() + "], \nisDevelopLevel[" + QLog.isDevelopLevel() + "], \nisColorLevel[" + QLog.isColorLevel() + "], \nisSupporImmersive[" + ImmersiveUtils.isSupporImmersive() + "], \nStatusBarHeight[" + ImmersiveUtils.a(paramAppInterface.getApp()) + "], \naboutSubVersionLog[" + "7.6.8.3615.2018-06-27.r355371.HuaWei" + "], \ngetQUA[" + a(AppSetting.b()) + "], \nBRAND[" + Build.BRAND + "], \nMODEL[" + Build.MODEL + "], \ndevicesInfo[" + AppSetting.b + "], \ndisplayMetrics[" + localDisplayMetrics + "], \ndensity[" + localDisplayMetrics.density + "], \ndensityDpi[" + localDisplayMetrics.densityDpi + "], \ndevVersion[" + Build.VERSION.INCREMENTAL + "], \nsdkVersion[" + Build.VERSION.SDK_INT + "], \nCpuArchitecture[" + str + "], \nSystemTotalMemory[" + DeviceInfoUtil.e() + "], \nCupNumCores[" + i + "], \nMaxCpuFreq[" + l + "], \nCHIP[" + j + "], \nCPU_ABI[" + Build.CPU_ABI + "], \nCPU_ABI2[" + Build.CPU_ABI2 + "], \nsProcessId[" + BaseApplicationImpl.sProcessId + "], \nprocessName[" + BaseApplicationImpl.processName + "], \nUIThread[" + ThreadManager.getUIHandler().getLooper().getThread().getId() + "], \nCurThread[" + Thread.currentThread().getId() + "], \ntid[" + Process.myTid() + "]";
       QLog.d("AudioHelper", 1, paramAppInterface);
       return paramAppInterface;
+      str = DeviceInfoUtil.h();
+      i = DeviceInfoUtil.b();
     }
   }
   
@@ -314,10 +326,10 @@ public class AudioHelper
   {
     if (paramBoolean)
     {
-      a(paramResources, paramTextView, paramInt, 2131494067, 2131494068);
+      a(paramResources, paramTextView, paramInt, 2131494073, 2131494074);
       return;
     }
-    a(paramResources, paramTextView, paramInt, 2131494059, 2131494060);
+    a(paramResources, paramTextView, paramInt, 2131494065, 2131494066);
   }
   
   public static void a(ImageButton paramImageButton, int paramInt1, int paramInt2)
@@ -341,10 +353,10 @@ public class AudioHelper
   {
     if (paramBoolean)
     {
-      a(paramImageButton, paramInt, 2131494067);
+      a(paramImageButton, paramInt, 2131494073);
       return;
     }
-    a(paramImageButton, paramInt, 2131494059);
+    a(paramImageButton, paramInt, 2131494065);
   }
   
   public static final void a(String paramString)
@@ -557,7 +569,7 @@ public class AudioHelper
       }
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("tencent.video.q2v.debug");
-      if (paramBaseApplicationImpl.registerReceiver(new akbl(paramBaseApplicationImpl), localIntentFilter) == null) {
+      if (paramBaseApplicationImpl.registerReceiver(new akiy(paramBaseApplicationImpl), localIntentFilter) == null) {
         break;
       }
       return true;
@@ -681,7 +693,7 @@ public class AudioHelper
   {
     QLog.w("AudioHelper", 1, "showDebugToast, text[" + paramString + "]");
     if (d()) {
-      ThreadManager.getUIHandler().post(new akbm(paramString));
+      ThreadManager.getUIHandler().post(new akiz(paramString));
     }
   }
   
@@ -705,34 +717,14 @@ public class AudioHelper
   
   public static boolean f()
   {
-    String str1 = Build.MANUFACTURER + ";" + Build.MODEL + ";" + Build.VERSION.SDK_INT;
-    String[] arrayOfString = "HUAWEI;DUK-AL20;24|HUAWEI;Nexus 6P;24|HUAWEI;PRA-AL00X;24|HUAWEI;WAS-AL00;24|HUAWEI;STF-AL00;24|HUAWEI;VKY-AL00;24".split("\\|");
-    int i;
-    if ((arrayOfString != null) && (arrayOfString.length > 0))
+    if (!MediaCodecDPC.m())
     {
-      int j = arrayOfString.length;
-      i = 0;
-      if (i < j)
-      {
-        str2 = arrayOfString[i];
-        if ((str2 != null) && (str2.equals(str1))) {
-          if (QLog.isColorLevel()) {
-            QLog.d("AudioHelper", 2, "isHuaweiGreenForSegment in huawei whitelist: " + str1);
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("AudioHelper", 2, "isHuaweiGreenForSegment true");
       }
+      return true;
     }
-    while ((!Build.MANUFACTURER.equals("HUAWEI")) || (Build.VERSION.SDK_INT != 24))
-    {
-      String str2;
-      return false;
-      i += 1;
-      break;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioHelper", 2, "isHuaweiGreenForSegment is huawei rubbish: " + str1);
-    }
-    return true;
+    return false;
   }
   
   private static boolean g()

@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<bitmap android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020636" android:tileMode="repeat"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke android:width="1.0px" android:color="#ffdedfe0" />
+</shape>

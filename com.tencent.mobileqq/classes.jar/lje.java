@@ -1,74 +1,63 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class lje
-  implements EmoticonCallback
+  extends ReadInJoyObserver
 {
-  public lje(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  public lje(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void a(EmoticonInfo paramEmoticonInfo)
+  public void c(int paramInt)
   {
-    if ((paramEmoticonInfo instanceof PicEmoticonInfo))
+    boolean bool = true;
+    ReadInJoyDeliverBiuActivity.b(this.a, true);
+    ReadInJoyDeliverBiuActivity.b(this.a);
+    long l = NetConnInfoCenter.getServerTimeMillis() - ReadInJoyDeliverBiuActivity.a(this.a);
+    if (paramInt == 0)
     {
-      paramEmoticonInfo = (PicEmoticonInfo)paramEmoticonInfo;
-      Context localContext = ReadInJoyCommentComponentFragment.a(this.a).getApplicationContext();
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramEmoticonInfo.a(localContext, localContext.getResources().getDisplayMetrics().density));
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      ReadInJoyCommentComponentFragment.a(this.a);
-      return;
+      QQToast.a(this.a, 2, this.a.getString(2131438892), 0).b(this.a.getTitleBarHeight());
+      ReadInJoyDeliverBiuActivity.e(this.a, -1);
+      ReadInJoyDeliverBiuActivity.c(this.a);
+      this.a.getIntent().putExtra("KEY_VIDEO_BIU_SUCCESS", true);
+      this.a.finish();
+      ReadInJoyLogicEngine.a().b(true);
+      if (paramInt != 0) {
+        break label339;
+      }
     }
-    ReadInJoyBaseDeliverActivity.a(paramEmoticonInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
-  }
-  
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart() == 0) {}
     for (;;)
     {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_FailCode", paramInt + "");
+      localHashMap.put("param_FromType", ReadInJoyDeliverBiuActivity.o(this.a) + "");
+      StatisticCollector.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "actMultiBiuResult", bool, l, 0L, localHashMap, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "doStatisticReport-->success:" + bool + ", costTime:" + l + ", retcode:" + paramInt);
+      }
+      if (bool) {
+        ReadInJoyDeliverBiuActivity.a(this.a, bool);
+      }
       return;
-      try
+      if (paramInt == 33)
       {
-        Editable localEditable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText();
-        int i = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
+        QQToast.a(this.a, 1, this.a.getString(2131438893), 0).b(this.a.getTitleBarHeight());
+        break;
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+      QQToast.a(this.a, 1, this.a.getString(2131438891), 0).b(this.a.getTitleBarHeight());
+      break;
+      label339:
+      bool = false;
     }
   }
-  
-  public void b(EmoticonInfo paramEmoticonInfo) {}
-  
-  public void c() {}
-  
-  public void setting() {}
 }
 
 

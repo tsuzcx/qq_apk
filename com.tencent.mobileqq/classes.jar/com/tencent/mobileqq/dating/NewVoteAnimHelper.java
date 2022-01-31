@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dating;
 
 import SummaryCard.TPraiseInfo;
-import abxs;
+import acfs;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -169,7 +169,7 @@ public class NewVoteAnimHelper
               break label727;
             }
             localLayoutParams.topMargin = 0;
-            m = 2130846052;
+            m = 2130846134;
           }
         }
       }
@@ -196,7 +196,7 @@ public class NewVoteAnimHelper
         int j;
         if (this.jdField_c_of_type_Int == 0)
         {
-          j = 2130846059;
+          j = 2130846141;
           ((ViewGroup.MarginLayoutParams)localObject).topMargin = 0;
           label418:
           ((ViewGroup.MarginLayoutParams)localObject).width = -2;
@@ -221,7 +221,7 @@ public class NewVoteAnimHelper
           break;
           if (this.jdField_c_of_type_Int == 1)
           {
-            j = 2130846055;
+            j = 2130846137;
             ((ViewGroup.MarginLayoutParams)localObject).topMargin = 0;
             ((ViewGroup.MarginLayoutParams)localObject).rightMargin = 0;
             break label418;
@@ -232,15 +232,15 @@ public class NewVoteAnimHelper
               ((RelativeLayout.LayoutParams)localObject).addRule(15);
             }
             ((ViewGroup.MarginLayoutParams)localObject).leftMargin = DisplayUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 4.0F);
-            j = 2130846059;
+            j = 2130846141;
             break label418;
           }
           if (this.jdField_c_of_type_Int == 3)
           {
-            j = 2130846059;
+            j = 2130846141;
             break label418;
           }
-          j = 2130846055;
+          j = 2130846137;
           break label418;
           label638:
           this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.jdField_a_of_type_AndroidWidgetTextView.setText("+" + this.e);
@@ -259,7 +259,7 @@ public class NewVoteAnimHelper
         this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.b.setLayoutParams(localLayoutParams);
         return;
         label727:
-        m = 2130846052;
+        m = 2130846134;
       }
       localLayoutParams = null;
     }
@@ -441,7 +441,7 @@ public class NewVoteAnimHelper
           }
         }
       }
-      if (paramTextView.a(paramView2, new abxs(this, paramInt1))) {
+      if (paramTextView.a(paramView2, new acfs(this, paramInt1))) {
         this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramView1, 1000L);
       }
       for (;;)
@@ -566,7 +566,7 @@ public class NewVoteAnimHelper
         }
         f1 = 1.0F;
         if (this.jdField_c_of_type_Int != 2) {
-          break label1138;
+          break label1188;
         }
         f1 = 0.5F;
       }
@@ -620,50 +620,61 @@ public class NewVoteAnimHelper
       if (j > 0)
       {
         int[] arrayOfInt = new int[2];
+        Object localObject2;
+        Object localObject1;
+        TPraiseInfo localTPraiseInfo;
         long l;
-        label775:
-        Object localObject;
         if (this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
         {
           this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getLocationInWindow(arrayOfInt);
-          paramMessage = this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362393);
+          paramMessage = this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362396);
           if (paramMessage != null) {
             f1 = (paramMessage.getWidth() + this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingLeft()) * 0.5F;
           }
           f2 = arrayOfInt[0];
           if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder == null) {
-            this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder = new FloatViewBuilder(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2130843134);
+            this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder = new FloatViewBuilder(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2130843166);
           }
-          if ((this.jdField_a_of_type_JavaUtilList == null) || (j - 1 >= this.jdField_a_of_type_JavaUtilList.size())) {
-            break label1105;
+          paramMessage = null;
+          localObject2 = null;
+          localObject1 = paramMessage;
+          if (this.jdField_a_of_type_JavaUtilList == null) {
+            break label1155;
           }
-          paramMessage = (TPraiseInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - j);
-          if (paramMessage != null) {
-            break label1043;
+          localObject1 = paramMessage;
+          if (j - 1 >= this.jdField_a_of_type_JavaUtilList.size()) {
+            break label1155;
+          }
+          localTPraiseInfo = (TPraiseInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - j);
+          if (localTPraiseInfo != null) {
+            break label1067;
           }
           l = 0L;
+          label788:
           if (l <= 0L) {
-            break label1061;
+            break label1090;
           }
-          localObject = ((PraiseManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(208)).a((int)l, true, "from_profile_card");
-          if (localObject == null) {
-            break label1105;
+          localObject2 = ((PraiseManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(208)).a((int)l, true, "from_profile_card");
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            break label1155;
           }
-          if ((paramMessage.iIsPayed <= 0) || (((PraiseInfo)localObject).c == null)) {
-            break label1052;
+          if ((localTPraiseInfo.iIsPayed <= 0) || (((PraiseInfo)localObject2).c == null)) {
+            break label1077;
           }
-          paramMessage = ((PraiseInfo)localObject).c;
+          paramMessage = ((PraiseInfo)localObject2).c;
+          localObject1 = localObject2;
         }
         for (;;)
         {
-          localObject = paramMessage;
+          localObject2 = paramMessage;
           if (paramMessage == null) {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder.b();
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder.b();
           }
-          this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.a((Bitmap)localObject, f2 + f1, arrayOfInt[1]);
+          this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.a((PraiseInfo)localObject1, (Bitmap)localObject2, f2 + f1, arrayOfInt[1]);
           int m = j - 1;
           if (m <= 0) {
-            break label1110;
+            break label1160;
           }
           paramMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(3, m, 0);
           if (this.jdField_a_of_type_JavaUtilRandom == null) {
@@ -687,34 +698,42 @@ public class NewVoteAnimHelper
           }
           f1 = ((TextView)this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper$NewVoteHolder.b).getCompoundPaddingLeft() * 0.5F;
           break;
-          label1043:
-          l = paramMessage.uCustomId;
-          break label775;
-          label1052:
-          paramMessage = ((PraiseInfo)localObject).b;
+          label1067:
+          l = localTPraiseInfo.uCustomId;
+          break label788;
+          label1077:
+          paramMessage = ((PraiseInfo)localObject2).b;
+          localObject1 = localObject2;
           continue;
-          label1061:
-          if ((paramMessage != null) && (paramMessage.iIsPayed > 0)) {
-            try
-            {
-              paramMessage = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources(), 2130840631);
+          label1090:
+          localObject1 = paramMessage;
+          if (localTPraiseInfo != null)
+          {
+            localObject1 = paramMessage;
+            if (localTPraiseInfo.iIsPayed > 0) {
+              try
+              {
+                localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources(), 2130840646);
+                paramMessage = (Message)localObject1;
+                localObject1 = localObject2;
+              }
+              catch (OutOfMemoryError localOutOfMemoryError)
+              {
+                QLog.e("NewVoteAnimHelper", 1, localOutOfMemoryError, new Object[0]);
+                Message localMessage = paramMessage;
+              }
             }
-            catch (OutOfMemoryError paramMessage)
-            {
-              QLog.e("NewVoteAnimHelper", 1, paramMessage, new Object[0]);
-            }
-          } else {
-            label1105:
-            paramMessage = null;
           }
+          label1155:
+          paramMessage = null;
         }
-        label1110:
+        label1160:
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(2, 3100L);
         return false;
       }
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(2, 100L);
       return false;
-      label1138:
+      label1188:
       f2 = 1.0F;
     }
   }

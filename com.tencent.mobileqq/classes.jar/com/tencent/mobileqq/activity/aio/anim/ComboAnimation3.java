@@ -15,11 +15,11 @@ import android.view.animation.Animation;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.util.VersionUtils;
 import com.tencent.widget.ListView;
-import unj;
-import unk;
-import unl;
-import unn;
-import uno;
+import usi;
+import usj;
+import usk;
+import usm;
+import usn;
 
 public class ComboAnimation3
   extends AIOAnimationConatiner.AIOAnimator
@@ -85,7 +85,7 @@ public class ComboAnimation3
         break label781;
       }
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = new Drawable[4];
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3] = this.jdField_a_of_type_ComTencentWidgetListView.getResources().getDrawable(2130837561);
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3] = this.jdField_a_of_type_ComTencentWidgetListView.getResources().getDrawable(2130837560);
       i = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[3].getIntrinsicWidth();
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2] = this.jdField_a_of_type_ComTencentWidgetListView.getResources().getDrawable(2130838281);
       j = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[2].getIntrinsicWidth();
@@ -93,8 +93,8 @@ public class ComboAnimation3
       k = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1].getIntrinsicWidth() + (i + 0 + j);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = this.jdField_a_of_type_ComTencentWidgetListView.getResources().getDrawable(2130838282);
       i = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0].getIntrinsicWidth() + k;
-      this.jdField_a_of_type_AndroidViewView = new uno(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
-      this.jdField_b_of_type_AndroidViewView = new uno(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
+      this.jdField_a_of_type_AndroidViewView = new usn(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
+      this.jdField_b_of_type_AndroidViewView = new usn(this, this.jdField_a_of_type_ComTencentWidgetListView.getContext());
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_a_of_type_AndroidViewView, -1, AIOAnimationConatiner.a, false);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_b_of_type_AndroidViewView, -1, AIOAnimationConatiner.a, false);
       this.jdField_a_of_type_AndroidViewView.layout(0, 0, i, jdField_b_of_type_Int);
@@ -127,7 +127,7 @@ public class ComboAnimation3
         localObject1 = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { localObject1 }).setDuration(1000L);
         localObject2 = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { localObject2 }).setDuration(1000L);
         localObject3 = new AnimatorSet();
-        ((AnimatorSet)localObject3).addListener(new unj(this));
+        ((AnimatorSet)localObject3).addListener(new usi(this));
         ((AnimatorSet)localObject3).play(paramVarArgs).with((Animator)localObject1).with((Animator)localObject2);
         ((AnimatorSet)localObject3).start();
         this.jdField_a_of_type_AndroidViewView.setTag(localObject3);
@@ -162,12 +162,12 @@ public class ComboAnimation3
       } while (n > 0);
       break;
       label867:
-      paramVarArgs = new unk(this);
+      paramVarArgs = new usj(this);
       paramVarArgs.setDuration(1000L);
       paramVarArgs.setFillAfter(true);
       this.jdField_a_of_type_AndroidViewView.setAnimation(paramVarArgs);
-      paramVarArgs.setAnimationListener(new unl(this));
-      paramVarArgs = new unn(this);
+      paramVarArgs.setAnimationListener(new usk(this));
+      paramVarArgs = new usm(this);
       paramVarArgs.setDuration(1000L);
       paramVarArgs.setFillAfter(true);
       this.jdField_b_of_type_AndroidViewView.setAnimation(paramVarArgs);

@@ -1,12 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
 
-class wqf
-  implements DialogInterface.OnCancelListener
+public class wqf
+  implements Runnable
 {
-  wqf(wqd paramwqd) {}
+  public wqf(RecommendTroopView paramRecommendTroopView) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public void run()
+  {
+    this.a.n();
+  }
 }
 
 

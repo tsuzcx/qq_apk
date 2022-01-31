@@ -1,7 +1,16 @@
-public final class aoob
-  implements Runnable
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import dov.com.tencent.mobileqq.activity.richmedia.EditVideoQzComment;
+
+public class aoob
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public void run() {}
+  public aoob(EditVideoQzComment paramEditVideoQzComment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    EditVideoQzComment.a(this.a).f = paramBoolean;
+  }
 }
 
 

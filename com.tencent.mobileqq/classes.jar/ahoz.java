@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
-import com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView;
+import com.tencent.mobileqq.richmedia.capture.fragment.QzoneEffectsCameraCaptureFragment;
+import com.tencent.open.base.ToastUtil;
 
 public class ahoz
   implements Runnable
 {
-  public ahoz(VideoFilterPlayView paramVideoFilterPlayView) {}
+  public ahoz(QzoneEffectsCameraCaptureFragment paramQzoneEffectsCameraCaptureFragment, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    VideoFilterPlayView.b(this.a).a();
-    VideoFilterPlayView.b(this.a).a(this.a.b, this.a.c);
+    QzoneEffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentQzoneEffectsCameraCaptureFragment);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QzoneEffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentQzoneEffectsCameraCaptureFragment, this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ToastUtil.a().a("对不起，GIF处理异常...");
   }
 }
 

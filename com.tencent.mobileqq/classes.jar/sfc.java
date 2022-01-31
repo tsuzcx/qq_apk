@@ -1,72 +1,66 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileView;
+import com.tencent.mobileqq.adapter.ChatHistoryFileAdapter;
+import com.tencent.mobileqq.adapter.ChatHistoryFileAdapter.HistoryFileItemHolder;
+import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class sfc
-  implements Runnable
+  implements View.OnClickListener
 {
-  WeakReference a;
+  public sfc(ChatHistoryFileView paramChatHistoryFileView) {}
   
-  public sfc(ChatSettingForTroop paramChatSettingForTroop)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramChatSettingForTroop);
-  }
-  
-  public void run()
-  {
-    ChatSettingForTroop localChatSettingForTroop = (ChatSettingForTroop)this.a.get();
-    if (localChatSettingForTroop == null) {}
-    while (localChatSettingForTroop.c) {
-      return;
+    paramView = (ChatHistoryFileAdapter.HistoryFileItemHolder)paramView.getTag();
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
+    if (5 != localFileManagerEntity.cloudType) {
+      FileManagerUtil.c(localFileManagerEntity);
     }
-    Object localObject1 = localChatSettingForTroop.app;
-    String str = localChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin;
-    Object localObject2 = new StringBuilder();
-    int i = ChatSettingForTroop.a((QQAppInterface)localObject1, str, 1, (StringBuilder)localObject2);
-    List localList = ((QQAppInterface)localObject1).a().b(str, 1);
-    if ((localList != null) && (!localList.isEmpty())) {}
-    for (long l1 = ((MessageRecord)localList.get(localList.size() - 1)).shmsgseq;; l1 = 0L)
+    switch (paramView.jdField_a_of_type_Int)
     {
-      if (i > 0) {}
-      for (;;)
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterChatHistoryFileAdapter.notifyDataSetChanged();
+      return;
+      if (!NetworkUtil.d(BaseApplication.getContext()))
       {
-        try
+        FMToastUtil.a(2131428327);
+        return;
+      }
+      FileModel.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_AndroidContentContext, new sfd(this, localFileManagerEntity));
+      continue;
+      this.a.a(localFileManagerEntity);
+      continue;
+      if (localFileManagerEntity.getCloudType() == 0)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
+      }
+      else if (localFileManagerEntity.getCloudType() == 6)
+      {
+        ((DataLineHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
+      }
+      else
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
+        continue;
+        if (!NetworkUtil.d(BaseApplication.getContext()))
         {
-          long l2 = Long.parseLong(((StringBuilder)localObject2).toString());
-          l1 = Math.max(l2, l1);
-          if (l1 > 0L) {
-            ((QQAppInterface)localObject1).a().a(str, 1, l1);
-          }
-          ((QQAppInterface)localObject1).a().a(str, 1);
-          ((QQAppInterface)localObject1).a().e(str, 1);
-          SpriteCommFunc.a((QQAppInterface)localObject1, "chat_history_confirm_del_msg");
-          localObject1 = ((QQAppInterface)localObject1).getHandler(Conversation.class);
-          localObject2 = ((MqqHandler)localObject1).obtainMessage(1017);
-          ((Message)localObject2).obj = str;
-          ((Message)localObject2).arg1 = 1;
-          ((MqqHandler)localObject1).sendMessage((Message)localObject2);
-          localChatSettingForTroop.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(19);
+          FMToastUtil.a(2131428327);
           return;
         }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.chatopttroop", 2, "msg history already clear!");
-        }
+        boolean bool = localFileManagerEntity.isSend();
+        FileModel.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_AndroidContentContext, new sfe(this, localFileManagerEntity));
       }
     }
   }

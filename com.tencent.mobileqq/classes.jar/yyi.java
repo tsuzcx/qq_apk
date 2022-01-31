@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.process.data.CmGameShareDataHandler;
 
 public class yyi
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public yyi(ApolloPanel paramApolloPanel) {}
+  public yyi(CmGameShareDataHandler paramCmGameShareDataHandler) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.m();
+    CmGameShareDataHandler.a(this.a);
   }
 }
 

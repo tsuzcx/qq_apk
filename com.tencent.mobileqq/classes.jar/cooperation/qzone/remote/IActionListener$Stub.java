@@ -1,11 +1,11 @@
 package cooperation.qzone.remote;
 
-import amyf;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import anfs;
 
 public abstract class IActionListener$Stub
   extends Binder
@@ -28,7 +28,7 @@ public abstract class IActionListener$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IActionListener))) {
       return (IActionListener)localIInterface;
     }
-    return new amyf(paramIBinder);
+    return new anfs(paramIBinder);
   }
   
   public IBinder asBinder()

@@ -1,52 +1,33 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class tmr
-  implements Runnable
 {
-  private WeakReference a;
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public tmr(QQSettingMe paramQQSettingMe)
+  public tmr(PublicAccountInfo paramPublicAccountInfo)
   {
-    this.a = new WeakReference(paramQQSettingMe);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
   }
   
-  public void run()
+  public void a(String paramString)
   {
-    for (;;)
-    {
-      try
-      {
-        if (this.a == null) {
-          return;
-        }
-        QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
-        if ((localQQSettingMe == null) || (localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-          break;
-        }
-        WebProcessManager localWebProcessManager = (WebProcessManager)localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
-        if (localWebProcessManager == null) {
-          break;
-        }
-        if (ApolloUtil.a(localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localQQSettingMe.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView))
-        {
-          i = 100;
-          localWebProcessManager.a(i, new tms(this, localQQSettingMe));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("QQSettingRedesign", 1, "WebPreloadTask preloadWebProcess, exception=" + MsfSdkUtils.getStackTraceString(localException));
-        return;
-      }
-      int i = -1;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
   }
 }
 

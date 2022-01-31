@@ -1,13 +1,19 @@
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.MTAReportController;
+import cooperation.qzone.plugin.QZonePluginManager;
+import java.util.Properties;
 
 public class anfj
   implements Runnable
 {
-  public anfj(TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
+  public anfj(QZonePluginManager paramQZonePluginManager, String paramString, int paramInt) {}
   
   public void run()
   {
-    this.a.a();
+    Properties localProperties = new Properties();
+    localProperties.put("plugin_id", this.jdField_a_of_type_JavaLangString);
+    localProperties.put("refer", String.valueOf(this.jdField_a_of_type_Int));
+    MTAReportController.a(BaseApplicationImpl.getContext()).reportKVEvent("QzonePluginDownloadRefer", localProperties);
   }
 }
 

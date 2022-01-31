@@ -1,112 +1,129 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
-import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar.OnAllInOnEventListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class lpt
-  implements Runnable
+  implements ReadInJoyAllInOneBar.OnAllInOnEventListener
 {
-  public lpt(ArticleInfoModule paramArticleInfoModule, List paramList, ConcurrentHashMap paramConcurrentHashMap, boolean paramBoolean) {}
+  public lpt(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
   
-  public void run()
+  public boolean a(int paramInt, View paramView)
   {
-    EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.a();
-    localEntityTransaction.a();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      oidb_cmd0x8c8.FeedsInfo localFeedsInfo = (oidb_cmd0x8c8.FeedsInfo)localIterator.next();
-      Object localObject2;
-      long l;
-      for (;;)
-      {
-        try
-        {
-          if ((!localFeedsInfo.has()) || (localFeedsInfo.get() == null) || (!localFeedsInfo.msg_social_fees_info.has()) || (localFeedsInfo.msg_social_fees_info.get() == null)) {
-            break;
-          }
-          localObject2 = (oidb_cmd0x8c8.SocializeFeedsInfo)localFeedsInfo.msg_social_fees_info.get();
-          if (!((oidb_cmd0x8c8.SocializeFeedsInfo)localObject2).uint64_feeds_id.has()) {
-            break label153;
-          }
-          l = ((oidb_cmd0x8c8.SocializeFeedsInfo)localObject2).uint64_feeds_id.get();
-          if (l != 0L) {
-            break label158;
-          }
-          QLog.d("ArticleInfoModule", 1, "convertPBToInfo failed feedsInfo feedsId == 0");
-        }
-        catch (Exception localException)
-        {
-          QLog.d("ArticleInfoModule", 1, "handle0x8c8UpdateUpvoteAndComment merge failed ", localException);
-        }
-        break;
-        label153:
-        l = 0L;
-      }
-      label158:
-      if (!localException.feeds_type.has())
-      {
-        QLog.d("ArticleInfoModule", 1, "convertPBToInfo failed feedsInfo feeds_type == null");
-      }
-      else
-      {
-        int i = localException.feeds_type.get();
-        Object localObject1 = l + "" + i;
-        ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject1 + 0);
-        if (localArticleInfo != null) {
-          ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, localArticleInfo, (oidb_cmd0x8c8.SocializeFeedsInfo)localObject2, 0);
-        }
-        localObject1 = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject1 + 70);
-        if (localObject1 != null) {
-          ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, (ArticleInfo)localObject1, (oidb_cmd0x8c8.SocializeFeedsInfo)localObject2, 70);
-        }
-        if ((this.jdField_a_of_type_Boolean) && (localObject1 != null) && (((ArticleInfo)localObject1).mSocialFeedInfo != null) && (((ArticleInfo)localObject1).publishUin != 0L))
-        {
-          localObject2 = "publishUin = " + ((ArticleInfo)localObject1).publishUin;
-          localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a.a(ArticleInfo.class, true, (String)localObject2, null, null, null, "mRecommendSeq desc", null);
-          if (localObject2 == null)
-          {
-            QLog.d("ArticleInfoModule", 1, "no soical feeds to update article.publishUin:" + ((ArticleInfo)localObject1).publishUin);
-            return;
-          }
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localArticleInfo = (ArticleInfo)((Iterator)localObject2).next();
-            if ((localArticleInfo.mFeedId != ((ArticleInfo)localObject1).mFeedId) && (localArticleInfo.mSocialFeedInfo != null))
-            {
-              int j = 0;
-              i = j;
-              if (localArticleInfo.mSocialFeedInfo.h != 2)
-              {
-                i = j;
-                if (((ArticleInfo)localObject1).mSocialFeedInfo.h == 2) {
-                  i = 1;
-                }
-              }
-              localArticleInfo.mSocialFeedInfo.h = ((ArticleInfo)localObject1).mSocialFeedInfo.h;
-              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(localArticleInfo);
-              localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(localArticleInfo, 70);
-              if ((i != 0) && (localArticleInfo != null)) {
-                localArticleInfo.isNeedShowBtnWhenFollowed = true;
-              }
-            }
-          }
-        }
-      }
+    boolean bool1;
+    if (ReadInJoyAtlasFragment.a(this.a) != 1) {
+      bool1 = true;
     }
-    localEntityTransaction.c();
-    localEntityTransaction.b();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.h();
+    do
+    {
+      boolean bool2;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              do
+                              {
+                                do
+                                {
+                                  do
+                                  {
+                                    return bool1;
+                                    bool2 = false;
+                                    switch (paramInt)
+                                    {
+                                    default: 
+                                      return false;
+                                    case 1: 
+                                      bool1 = bool2;
+                                    }
+                                  } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
+                                  bool1 = bool2;
+                                } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
+                                bool1 = bool2;
+                              } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
+                              bool1 = bool2;
+                            } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
+                            if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
+                            for (paramInt = 2;; paramInt = 1)
+                            {
+                              PublicAccountReportUtils.a(null, "", "0X8008E38", "0X8008E38", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a)), false);
+                              GalleryReportedUtils.a(3, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 4, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
+                              return false;
+                            }
+                            bool1 = bool2;
+                          } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
+                          bool1 = bool2;
+                        } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
+                        bool1 = bool2;
+                      } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
+                      bool1 = bool2;
+                    } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
+                    if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
+                    for (paramInt = 2;; paramInt = 1)
+                    {
+                      PublicAccountReportUtils.a(null, "", "0X8008E39", "0X8008E39", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a)), false);
+                      GalleryReportedUtils.a(3, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 4, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
+                      return false;
+                    }
+                    bool1 = bool2;
+                  } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
+                  bool1 = bool2;
+                } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
+                bool1 = bool2;
+              } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
+              bool1 = bool2;
+            } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
+            if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
+            for (paramInt = 2;; paramInt = 1)
+            {
+              PublicAccountReportUtils.a(null, "", "0X8008E3A", "0X8008E3A", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a), this.a.a.b()), false);
+              GalleryReportedUtils.a(8, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 3, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
+              return false;
+            }
+            bool1 = bool2;
+          } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
+          bool1 = bool2;
+        } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
+        bool1 = bool2;
+      } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
+      bool1 = bool2;
+    } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
+    if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
+    for (paramInt = 2;; paramInt = 1)
+    {
+      PublicAccountReportUtils.a(null, "", "0X8008E3B", "0X8008E3B", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a)), false);
+      GalleryReportedUtils.a(25, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 2, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
+      return false;
+    }
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    return false;
   }
 }
 

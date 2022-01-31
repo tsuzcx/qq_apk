@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import adtl;
-import adtm;
-import adto;
+import aebu;
+import aebv;
+import aebx;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -25,12 +25,24 @@ public class GroupVideoLoadingFragment
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new adto(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new aebx(this, Looper.getMainLooper());
   private GVideoLoadingUI jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI;
   private GroupVideoManager jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager;
-  private PluginLoadListener jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPluginLoadListener = new adtm(this);
+  private PluginLoadListener jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPluginLoadListener = new aebv(this);
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
+  
+  private void a()
+  {
+    if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.a("网络连接错误，请检查网络后再试!", "");
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.c();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.a("正在检查环境", "群视频体验群，可尝鲜更酷炫的多人互动");
+    GroupVideoManager.a("group_video", new aebu(this));
+  }
   
   private void a(boolean paramBoolean)
   {
@@ -51,38 +63,26 @@ public class GroupVideoLoadingFragment
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager.a(this.jdField_a_of_type_AndroidContentContext, str2, str3, i, str1, str5, str4, str6, str7, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPluginLoadListener);
   }
   
-  private void b()
-  {
-    if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.a("网络连接错误，请检查网络后再试!", "");
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.c();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.a("正在检查环境", "群视频体验群，可尝鲜更酷炫的多人互动");
-    GroupVideoManager.a("group_video", new adtl(this));
-  }
-  
-  public void a(Activity paramActivity)
+  public void initWindowStyleAndAnimation(Activity paramActivity)
   {
     paramActivity.requestWindowFeature(1);
   }
   
-  public boolean a()
+  public boolean needImmersive()
   {
     return false;
   }
   
-  public boolean b()
+  public boolean needStatusTrans()
   {
     return false;
   }
   
-  public boolean d()
+  public boolean onBackEvent()
   {
     Monitor.b("2856633");
-    StoryReportor.a("group_video", "exitLoadPage", this.jdField_b_of_type_Int, (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), new String[] { "", "", "", "7.6.3" });
-    return super.d();
+    StoryReportor.a("group_video", "exitLoadPage", this.jdField_b_of_type_Int, (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), new String[] { "", "", "", "7.6.8" });
+    return super.onBackEvent();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -94,11 +94,11 @@ public class GroupVideoLoadingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969024, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969026, null);
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI = new GVideoLoadingUI();
     this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.a(getActivity(), paramLayoutInflater);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
-    b();
+    a();
     Monitor.b("2856632");
     return paramLayoutInflater;
   }

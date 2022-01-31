@@ -15,10 +15,10 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.math.BigInteger;
-import lsd;
-import lse;
-import lsf;
-import lsg;
+import lvh;
+import lvi;
+import lvj;
+import lvk;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -167,7 +167,7 @@ public class ReadInJoyWebviewPlugin
       {
         paramString1 = paramVarArgs.getString("callback");
         paramJsBridgeListener = paramString1;
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.h(new lsd(this, paramString1));
+        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.h(new lvh(this, paramString1));
       }
       catch (JSONException paramString1)
       {
@@ -190,7 +190,7 @@ public class ReadInJoyWebviewPlugin
           l1 = paramVarArgs.getLong("seq");
           l2 = paramVarArgs.getLong("startTime");
           l3 = paramVarArgs.getLong("endTime");
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramJsBridgeListener, l1, paramString2, paramString3, l2, l3, new lse(this, paramString1));
+          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramJsBridgeListener, l1, paramString2, paramString3, l2, l3, new lvi(this, paramString1));
           QLog.d("ReadInJoyWebviewPlugin", 4, "send notifyLoadSkin cmd to service");
         }
         catch (JSONException paramJsBridgeListener) {}
@@ -223,7 +223,7 @@ public class ReadInJoyWebviewPlugin
             paramString1 = paramVarArgs.optString("skinUrl");
           }
           paramJsBridgeListener = paramString2;
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.e(paramString3, paramString1, new lsf(this, paramString2));
+          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.e(paramString3, paramString1, new lvj(this, paramString2));
           paramJsBridgeListener = paramString2;
           QLog.d("ReadInJoyWebviewPlugin", 4, "send cancelLoadSkin cmd to service");
         }
@@ -273,7 +273,7 @@ public class ReadInJoyWebviewPlugin
         if (paramVarArgs.has("volumeIsOn")) {
           i = paramVarArgs.optInt("volumeIsOn");
         }
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramString3, l1, paramJsBridgeListener, paramString1, l2, l3, i, new lsg(this, paramString2));
+        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramString3, l1, paramJsBridgeListener, paramString1, l2, l3, i, new lvk(this, paramString2));
         QLog.d("ReadInJoyWebviewPlugin", 4, "send set skin cmd to service");
       }
       catch (Exception paramJsBridgeListener)

@@ -1,21 +1,42 @@
-import com.tencent.mobileqq.statistics.QIMReportController;
-import com.tencent.mobileqq.statistics.reportitem.QIMReadWriteReportItem;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
+import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class aolh
-  extends EditVideoPartManager
+  implements Runnable
 {
-  public aolh(EditWebDanceMachineVideoActivity paramEditWebDanceMachineVideoActivity) {}
+  public aolh(VideoFrameLoader paramVideoFrameLoader) {}
   
-  protected void b()
+  public void run()
   {
-    super.b();
-    if ((EditWebDanceMachineVideoActivity.a(this.a)) || (EditWebDanceMachineVideoActivity.b(this.a)))
+    if (VideoFrameLoader.a(this.a) != VideoFrameLoader.a(this.a).size())
     {
-      QIMReadWriteReportItem localQIMReadWriteReportItem = new QIMReadWriteReportItem();
-      localQIMReadWriteReportItem.d = "0X800903D";
-      QIMReportController.b(null, localQIMReadWriteReportItem);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFrameLoader", 2, "onDecodeError , framecount error!" + VideoFrameLoader.a(this.a) + "-" + VideoFrameLoader.a(this.a).size());
+      }
+      if ((!VideoFrameLoader.a(this.a)) && (VideoFrameLoader.a(this.a).size() == 0))
+      {
+        VideoFrameLoader.a(this.a, true);
+        this.a.b();
+        VideoFrameLoader.a(this.a, new aolb(VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), VideoFrameLoader.c(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.d(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), this.a));
+        ThreadManager.post(VideoFrameLoader.a(this.a), 10, null, true);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoFrameLoader", 2, "onLoadEnd , retry with retriever!");
+        }
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (VideoFrameLoader.a(this.a) != null) {}
+      for (VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.a).get(); localVideoFrameLoaderListener != null; localVideoFrameLoaderListener = null)
+      {
+        localVideoFrameLoaderListener.c();
+        return;
+      }
     }
   }
 }

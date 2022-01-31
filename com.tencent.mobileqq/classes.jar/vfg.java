@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
-class vfg
+public class vfg
   implements Runnable
 {
-  vfg(vff paramvff, ProgressPieDrawable paramProgressPieDrawable) {}
+  public vfg(HeartCombolEffectView paramHeartCombolEffectView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.setVisible(false, true);
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribbleItemBuilder", 2, "[onProgressCompleted] set ProgressPieDrawable invisible,ppd = " + this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable);
-    }
+    HapticManager.a().a();
   }
 }
 

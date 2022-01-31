@@ -1,21 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.widget.XListView;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimTipsInfoHelper;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
 public class wtx
   implements View.OnClickListener
 {
-  public wtx(ContactListView paramContactListView) {}
+  public wtx(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    ContactListView.a(this.a).removeHeaderView(ContactListView.a(this.a));
-    ContactListView.a(this.a, null);
-    QQPimTipsInfoHelper.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
-    QQPimGetTipsInfoIPC.a().c();
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
   }
 }
 

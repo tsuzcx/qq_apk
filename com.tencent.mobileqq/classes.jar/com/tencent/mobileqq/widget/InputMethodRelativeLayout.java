@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akuq;
+import alch;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -12,7 +12,7 @@ public class InputMethodRelativeLayout
   extends RelativeLayout
 {
   private int jdField_a_of_type_Int;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new akuq(this);
+  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new alch(this);
   public InputMethodRelativeLayout.onSizeChangedListenner a;
   private boolean jdField_a_of_type_Boolean;
   
@@ -42,7 +42,7 @@ public class InputMethodRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.InputMethodRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

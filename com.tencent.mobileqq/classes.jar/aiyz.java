@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
 
 public class aiyz
-  implements Runnable
+  implements InputFilter
 {
-  public aiyz(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public aiyz(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void run()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    TroopBarReplyActivity.a(this.a, 5);
+    if (paramCharSequence != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if (TroopBarUtils.a(paramCharSequence, '\n') + TroopBarUtils.a(paramSpanned.toString(), '\n') > 100) {
+        return paramCharSequence.replaceAll("\n", "");
+      }
+    }
+    return null;
   }
 }
 

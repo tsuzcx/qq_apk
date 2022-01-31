@@ -1,19 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo.NotifyInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class mlt
-  implements AppInPushNotification.OnClickListener
+  implements AbsListView.OnScrollListener
 {
-  public mlt(KandianAppInPush paramKandianAppInPush, String paramString, int paramInt, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo) {}
+  public mlt(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void a()
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    ReadInJoyUtils.a(BaseActivity.sTopActivity, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush.a("0X8008459", this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo);
-    KandianAppInPush.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushKandianAppInPush, null);
+    if (ReadInJoyListViewGroup.a(this.a) == null) {
+      return;
+    }
+    if (paramInt1 > 20)
+    {
+      ReadInJoyListViewGroup.a(this.a).setVisibility(0);
+      return;
+    }
+    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
   }
 }
 

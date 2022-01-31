@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.utils.Base64Util;
 
 public class lsq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lsq(ReadInJoyHeaderPresenter paramReadInJoyHeaderPresenter, String paramString, ArticleInfo paramArticleInfo) {}
+  public lsq(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = ReadInJoyConstants.f + Base64Util.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 2);
-    ReadInJoyUtils.a(ReadInJoyHeaderPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter), paramView);
-    ReadInJoyHeaderPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter, ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    }
   }
 }
 

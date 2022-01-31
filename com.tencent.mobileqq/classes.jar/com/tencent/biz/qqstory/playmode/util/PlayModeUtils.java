@@ -101,14 +101,14 @@ import java.io.File;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import nmu;
-import nmv;
-import nmw;
-import nmx;
-import nmy;
-import nmz;
-import nna;
-import nnb;
+import nre;
+import nrf;
+import nrg;
+import nrh;
+import nri;
+import nrj;
+import nrk;
+import nrl;
 
 public class PlayModeUtils
 {
@@ -120,7 +120,7 @@ public class PlayModeUtils
   static
   {
     jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.report_comment");
-    b = StoryApi.a(2131432087);
+    b = StoryApi.a(2131432098);
     jdField_a_of_type_ArrayOfInt = new int[] { 90 };
     jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
@@ -291,9 +291,9 @@ public class PlayModeUtils
     if (paramStoryVideoItem.mVideoSource == 1)
     {
       if (paramStoryVideoItem.mTimeZoneOffsetMillis != 2147483647L) {
-        return StoryListUtils.a(paramStoryVideoItem.mCreateTime, paramStoryVideoItem.mTimeZoneOffsetMillis, true) + " • 历史" + "日迹";
+        return StoryListUtils.a(paramStoryVideoItem.mCreateTime, paramStoryVideoItem.mTimeZoneOffsetMillis, true) + " • 历史" + "小视频";
       }
-      return StoryListUtils.a(paramStoryVideoItem.mCreateTime) + " • 历史" + "日迹";
+      return StoryListUtils.a(paramStoryVideoItem.mCreateTime) + " • 历史" + "小视频";
     }
     if (paramStoryVideoItem.mLocalCreateTime <= 0L)
     {
@@ -613,8 +613,8 @@ public class PlayModeUtils
       paramActivity.a("色情暴力", 5);
       paramActivity.a("广告骚扰", 5);
       paramActivity.a("其他", 5);
-      paramActivity.c(2131433015);
-      paramActivity.a(new nna(paramCommentEntry, paramActivity));
+      paramActivity.c(2131433029);
+      paramActivity.a(new nrk(paramCommentEntry, paramActivity));
     } while (paramActivity.isShowing());
     paramActivity.show();
   }
@@ -632,8 +632,8 @@ public class PlayModeUtils
       paramContext.a("色情暴力", 5);
       paramContext.a("广告骚扰", 5);
       paramContext.a("其他", 5);
-      paramContext.c(2131433015);
-      paramContext.a(new nmz(paramQQUserUIItem, paramContext));
+      paramContext.c(2131433029);
+      paramContext.a(new nrj(paramQQUserUIItem, paramContext));
       paramContext.setOnDismissListener(paramOnDismissListener);
     } while (paramContext.isShowing());
     paramContext.show();
@@ -652,8 +652,8 @@ public class PlayModeUtils
       paramContext.a("色情暴力", 5);
       paramContext.a("广告骚扰", 5);
       paramContext.a("其他", 5);
-      paramContext.c(2131433015);
-      paramContext.a(new nnb(paramStoryVideoItem, paramContext));
+      paramContext.c(2131433029);
+      paramContext.a(new nrl(paramStoryVideoItem, paramContext));
       paramContext.setOnDismissListener(paramOnDismissListener);
     } while (paramContext.isShowing());
     paramContext.show();
@@ -683,14 +683,14 @@ public class PlayModeUtils
     }
     paramStoryVideoItem.mIsPlaying = 0;
     String str = a((QQUserUIItem)localObject);
-    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369188);
+    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369189);
     localTextView.setText(str);
-    a((ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372137), ((QQUserUIItem)localObject).headUrl, true, (int)DisplayUtils.a(paramContext, 35.0F));
+    a((ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372145), ((QQUserUIItem)localObject).headUrl, true, (int)DisplayUtils.a(paramContext, 35.0F));
     localObject = ((QQUserUIItem)localObject).getUserIconUrl();
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       a(paramContext.getResources(), localTextView, (String)localObject, 13.0F, 2.0F);
     }
-    ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369119)).setText(a(paramStoryVideoItem, paramInt));
+    ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369120)).setText(a(paramStoryVideoItem, paramInt));
     a(paramVideoViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramStoryVideoItem.mLocalMaskPath, paramStoryVideoItem.getDownloadMaskUrl(), paramVideoViewHolder.jdField_b_of_type_Boolean);
   }
   
@@ -711,8 +711,8 @@ public class PlayModeUtils
       QLog.w("Q.qqstory.player.PlayModeUtils", 2, "fillFeedFriendsData, userItem:" + localQQUserUIItem.toString());
     }
     paramStoryVideoItem.mIsPlaying = 0;
-    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369188);
-    ImageView localImageView = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372137);
+    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369189);
+    ImageView localImageView = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372145);
     paramContext = paramContext.getResources();
     boolean bool;
     int i;
@@ -720,8 +720,8 @@ public class PlayModeUtils
     {
       bool = true;
       a(paramContext, localQQUserUIItem, localImageView, 35.0F, localTextView, 13.0F, 2.0F, bool, paramString);
-      ((StoryQIMBadgeView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371682)).a(localQQUserUIItem);
-      paramContext = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372142);
+      ((StoryQIMBadgeView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371680)).a(localQQUserUIItem);
+      paramContext = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372150);
       if (!localQQUserUIItem.isVipButNoFriend()) {
         break label432;
       }
@@ -731,9 +731,9 @@ public class PlayModeUtils
       if (localQQUserUIItem.isVipButNoFriend()) {
         StoryReportor.a("weishi_share", "tag_exp", 0, 0, new String[] { "4", localQQUserUIItem.getUnionId(), "weishi", paramStoryVideoItem.mVid });
       }
-      paramContext = (View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371695);
-      paramString = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372140);
-      localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372139);
+      paramContext = (View)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131371693);
+      paramString = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372148);
+      localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372147);
       if (paramStoryVideoItem.mStoryType != 1) {
         break label528;
       }
@@ -748,7 +748,7 @@ public class PlayModeUtils
       if (!localQQUserUIItem.isVip) {
         break label439;
       }
-      paramString.setImageResource(2130843805);
+      paramString.setImageResource(2130843873);
       label388:
       if (!StoryProfileUtils.a(localQQUserUIItem)) {
         break label519;
@@ -757,7 +757,7 @@ public class PlayModeUtils
     }
     for (;;)
     {
-      ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369119)).setText(a(paramStoryVideoItem, paramStoryVideoItem.mStoryType));
+      ((TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131369120)).setText(a(paramStoryVideoItem, paramStoryVideoItem.mStoryType));
       return;
       bool = false;
       break;
@@ -765,20 +765,20 @@ public class PlayModeUtils
       i = 8;
       break label222;
       label439:
-      paramString.setImageResource(2130843799);
+      paramString.setImageResource(2130843869);
       break label388;
       label449:
       if (paramStoryVideoItem.mBanType == 1)
       {
-        paramString.setImageResource(2130843802);
+        paramString.setImageResource(2130843871);
         break label388;
       }
       if ((paramStoryVideoItem.mBanType == 2) || (paramStoryVideoItem.mBanType == 3))
       {
-        paramString.setImageResource(2130843807);
+        paramString.setImageResource(2130843875);
         break label388;
       }
-      paramString.setImageResource(2130843805);
+      paramString.setImageResource(2130843873);
       break label388;
       label503:
       paramString.setVisibility(8);
@@ -801,10 +801,10 @@ public class PlayModeUtils
   
   public static void a(Context paramContext, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
   {
-    Object localObject = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372105);
-    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372106);
-    paramContext = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372124);
-    paramVideoViewHolder = (ElasticImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131364579);
+    Object localObject = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372113);
+    TextView localTextView = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372114);
+    paramContext = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372132);
+    paramVideoViewHolder = (ElasticImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131364603);
     if (paramVideoListFeedItem == null)
     {
       if ((localObject != null) && (localTextView != null))
@@ -812,7 +812,7 @@ public class PlayModeUtils
         if ((!paramBoolean) || ((paramStoryVideoItem.mHasLike != -1) && (paramStoryVideoItem.mHasLike != 0))) {
           break label148;
         }
-        ((ImageView)localObject).setImageResource(2130843513);
+        ((ImageView)localObject).setImageResource(2130843546);
         localTextView.setText("取消");
       }
       for (paramStoryVideoItem.mHasLike = 1;; paramStoryVideoItem.mHasLike = 0)
@@ -827,7 +827,7 @@ public class PlayModeUtils
         }
         return;
         label148:
-        ((ImageView)localObject).setImageResource(2130843782);
+        ((ImageView)localObject).setImageResource(2130843852);
         localTextView.setText("赞");
       }
     }
@@ -840,7 +840,7 @@ public class PlayModeUtils
     {
       if (paramVideoListFeedItem.mHadLike == 1)
       {
-        ((ImageView)localObject).setImageResource(2130843513);
+        ((ImageView)localObject).setImageResource(2130843546);
         localTextView.setText("取消");
       }
     }
@@ -891,7 +891,7 @@ public class PlayModeUtils
     {
       paramContext.setText(((StringBuilder)localObject).toString());
       return;
-      ((ImageView)localObject).setImageResource(2130843782);
+      ((ImageView)localObject).setImageResource(2130843852);
       localTextView.setText("赞");
       break label268;
       label549:
@@ -988,7 +988,7 @@ public class PlayModeUtils
       if (!paramQQUserUIItem.isVipButNoFriend()) {
         break;
       }
-      localObject = paramResources.getDrawable(2130843741);
+      localObject = paramResources.getDrawable(2130843814);
       i = AIOUtils.a(paramFloat2, paramResources);
       int j = AIOUtils.a(paramFloat3, paramResources);
       if (localObject == null) {
@@ -1273,7 +1273,7 @@ public class PlayModeUtils
       }
       paramString1 = null;
     }
-    paramString1.setURLDrawableListener(new nmu(System.currentTimeMillis(), paramImageViewLoadCallback));
+    paramString1.setURLDrawableListener(new nre(System.currentTimeMillis(), paramImageViewLoadCallback));
   }
   
   protected static void a(ImageView paramImageView, String paramString1, int paramInt1, int paramInt2, boolean paramBoolean, DownloadParams.DecodeHandler paramDecodeHandler, Object paramObject, String paramString2)
@@ -1569,7 +1569,7 @@ public class PlayModeUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, String paramString2, int paramInt4)
   {
-    a(paramQQAppInterface, paramString1, new nmy(paramActivity, paramString1, paramInt1, paramBoolean, paramInt2, paramInt3, paramString2, paramInt4));
+    a(paramQQAppInterface, paramString1, new nri(paramActivity, paramString1, paramInt1, paramBoolean, paramInt2, paramInt3, paramString2, paramInt4));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, PlayModeUtils.VideoInfoObserver paramVideoInfoObserver)
@@ -1608,7 +1608,7 @@ public class PlayModeUtils
     for (Object localObject2 = "";; localObject2 = paramString1)
     {
       localObject2 = new QQUserUIItem.UserID((String)localObject1, (String)localObject2);
-      localGetUserInfoHandler = new GetUserInfoHandler(new nmv(paramOnFetchUserInfoCallback, paramString1, paramString2));
+      localGetUserInfoHandler = new GetUserInfoHandler(new nrf(paramOnFetchUserInfoCallback, paramString1, paramString2));
       localUserManager = (UserManager)SuperManager.a(2);
       if (TextUtils.isEmpty(paramString1)) {
         break label297;
@@ -1690,7 +1690,7 @@ public class PlayModeUtils
       }
       for (;;)
       {
-        paramContext.setPositiveButton("我知道了", new nmw(paramStoryVideoItem, str));
+        paramContext.setPositiveButton("我知道了", new nrg(paramStoryVideoItem, str));
         paramContext.setCancelable(false);
         paramContext.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         paramContext.show();
@@ -1703,7 +1703,7 @@ public class PlayModeUtils
   
   public static boolean a(VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, TagItem.TagInfoBase paramTagInfoBase)
   {
-    paramVideoViewHolder = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372141);
+    paramVideoViewHolder = (TextView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372149);
     if (paramVideoViewHolder != null)
     {
       if ((paramTagInfoBase != null) && (!TextUtils.isEmpty(paramTagInfoBase.jdField_a_of_type_JavaLangString)))
@@ -1776,7 +1776,7 @@ public class PlayModeUtils
   {
     PlayModeUtils.DownloadStatusChangeEvent localDownloadStatusChangeEvent = new PlayModeUtils.DownloadStatusChangeEvent(paramString, 0, paramStoryVideoItem);
     Dispatchers.get().dispatch(localDownloadStatusChangeEvent);
-    ThreadManager.post(new nmx(paramStoryVideoItem, paramString, paramInt), 5, null, false);
+    ThreadManager.post(new nrh(paramStoryVideoItem, paramString, paramInt), 5, null, false);
   }
   
   public static boolean b(StoryVideoItem paramStoryVideoItem)

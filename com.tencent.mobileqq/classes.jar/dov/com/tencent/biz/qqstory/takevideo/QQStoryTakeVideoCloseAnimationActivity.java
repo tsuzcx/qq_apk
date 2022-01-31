@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.ImageView;
-import anws;
+import aofk;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -20,7 +20,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aZ + "qqstory/animation_cover.jpg";
+    jdField_a_of_type_JavaLangString = AppConstants.ba + "qqstory/animation_cover.jpg";
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -39,7 +39,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    ThreadManager.getUIHandler().postDelayed(new anws(this), 150L);
+    ThreadManager.getUIHandler().postDelayed(new aofk(this), 150L);
   }
   
   protected void onDestroy()

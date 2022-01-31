@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.campuscircle;
 
-import abpf;
+import abwg;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -55,7 +55,7 @@ public class CampusCircleHandler
   {
     super(paramQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusConfig = new CampusConfig();
-    ThreadManager.post(new abpf(this, paramQQAppInterface), 8, null, false);
+    ThreadManager.post(new abwg(this, paramQQAppInterface), 8, null, false);
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, Bundle paramBundle)

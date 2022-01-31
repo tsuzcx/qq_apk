@@ -19,7 +19,7 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil.NetInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import lkg;
+import lmu;
 import org.json.JSONObject;
 import tencent.im.oidb.gallery.gallery_report.GalleryClickReported;
 import tencent.im.oidb.gallery.gallery_report.GalleryExpReported;
@@ -85,7 +85,7 @@ public class GalleryReportedUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", "7.6.3");
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("os", "1");
       localJSONObject.put("uin", paramLong1 + "");
       localJSONObject.put("source", paramInt1 + "");
@@ -118,7 +118,7 @@ public class GalleryReportedUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", "7.6.3");
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("os", "1");
       localJSONObject.put("uin", paramString1);
       localJSONObject.put("source", paramInt1 + "");
@@ -157,7 +157,7 @@ public class GalleryReportedUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", "7.6.3");
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("os", "1");
       localJSONObject.put("uin", paramString1 + "");
       localJSONObject.put("source", paramInt1 + "");
@@ -193,7 +193,7 @@ public class GalleryReportedUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", "7.6.3");
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("os", "1");
       localJSONObject.put("uin", paramString1);
       localJSONObject.put("source", paramInt + "");
@@ -221,7 +221,7 @@ public class GalleryReportedUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", "7.6.3");
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("os", "1");
       localJSONObject.put("uin", paramString1);
       localJSONObject.put("source", paramInt1 + "");
@@ -250,7 +250,7 @@ public class GalleryReportedUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", "7.6.3");
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("os", "1");
       localJSONObject.put("uin", paramString1);
       localJSONObject.put("source", paramInt1 + "");
@@ -280,7 +280,7 @@ public class GalleryReportedUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", "7.6.3");
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("os", "1");
       localJSONObject.put("uin", paramString1);
       localJSONObject.put("source", paramInt1 + "");
@@ -342,7 +342,7 @@ public class GalleryReportedUtils
     gallery_report.GallerySocialReported localGallerySocialReported = new gallery_report.GallerySocialReported();
     localGallerySocialReported.action.set(paramInt3);
     localGallerySocialReported.phone_type.set(1);
-    localGallerySocialReported.client_ver.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    localGallerySocialReported.client_ver.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     localGallerySocialReported.source.set(paramInt4);
     if (!TextUtils.isEmpty(b())) {
       localGallerySocialReported.city.set(ByteStringMicro.copyFromUtf8(b()));
@@ -370,8 +370,8 @@ public class GalleryReportedUtils
     localReportInfo.mOperation = paramInt1;
     gallery_report.GalleryClickReported localGalleryClickReported = new gallery_report.GalleryClickReported();
     localGalleryClickReported.phone_type.set(1);
-    if (!TextUtils.isEmpty("7.6.3")) {
-      localGalleryClickReported.client_ver.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    if (!TextUtils.isEmpty("7.6.8")) {
+      localGalleryClickReported.client_ver.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     }
     localGalleryClickReported.source.set(paramInt3);
     if (!TextUtils.isEmpty(a())) {
@@ -410,8 +410,8 @@ public class GalleryReportedUtils
     localReportInfo.mOperation = paramInt1;
     gallery_report.GalleryExpReported localGalleryExpReported = new gallery_report.GalleryExpReported();
     localGalleryExpReported.phone_type.set(1);
-    if (!TextUtils.isEmpty("7.6.3")) {
-      localGalleryExpReported.client_ver.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    if (!TextUtils.isEmpty("7.6.8")) {
+      localGalleryExpReported.client_ver.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     }
     localGalleryExpReported.source.set(paramInt3);
     if (!TextUtils.isEmpty(a())) {
@@ -442,7 +442,7 @@ public class GalleryReportedUtils
     if (QLog.isColorLevel()) {
       QLog.e("GalleryReportedUtils", 2, "locationInfo is empty");
     }
-    SosoInterface.a(new lkg(3, true, true, 60000L, false, false, "GalleryReportedUtils"));
+    SosoInterface.a(new lmu(3, true, true, 60000L, false, false, "GalleryReportedUtils"));
     return "";
   }
   
@@ -453,7 +453,7 @@ public class GalleryReportedUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", "7.6.3");
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("os", "1");
       localJSONObject.put("uin", paramString1 + "");
       localJSONObject.put("source", paramInt + "");
@@ -481,7 +481,7 @@ public class GalleryReportedUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network", a(paramContext));
-      localJSONObject.put("version", "7.6.3");
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("os", "1");
       localJSONObject.put("uin", paramString1 + "");
       localJSONObject.put("source", paramInt1 + "");

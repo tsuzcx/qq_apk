@@ -1,28 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.NearbyObserver;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.readinjoy.ReadInJoyObserver;
 import com.tencent.qphone.base.util.QLog;
 
 public class tcd
-  extends NearbyObserver
+  extends ReadInJoyObserver
 {
-  public tcd(NearbyActivity paramNearbyActivity) {}
+  public tcd(Leba paramLeba) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
+      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
     }
-    if ("OidbSvc.0xafc_1".equals(paramString))
-    {
-      if (paramBoolean) {
-        this.a.n = paramLong;
-      }
-      if (!this.a.c)
-      {
-        this.a.b.removeMessages(this.a.d);
-        this.a.b.sendEmptyMessageDelayed(this.a.d, this.a.n);
-      }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
+      this.a.a(new tce(this));
     }
   }
 }

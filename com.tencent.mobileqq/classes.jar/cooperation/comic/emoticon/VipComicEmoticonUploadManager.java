@@ -1,6 +1,6 @@
 package cooperation.comic.emoticon;
 
-import amjr;
+import amrd;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -17,7 +17,7 @@ public class VipComicEmoticonUploadManager
   implements Manager
 {
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private UpCallBack jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new amjr(this);
+  private UpCallBack jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new amrd(this);
   public RemoteCommand.OnInvokeFinishLinstener a;
   private TransFileController jdField_a_of_type_ComTencentMobileqqTransfileTransFileController;
   private String jdField_a_of_type_JavaLangString;

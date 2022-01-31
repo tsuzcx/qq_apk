@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
-public class acyj
-  extends acxu
+class acyj
+  implements View.OnClickListener
 {
-  public acyj(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  acyj(acyi paramacyi) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateSenderCancelSend";
+    QfileCloudFileTabView.a(this.a.a, false);
+    this.a.a.h();
   }
 }
 

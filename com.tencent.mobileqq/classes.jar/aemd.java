@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.magicface.magicfaceaction.Action;
+import java.util.TimerTask;
 
-class aemd
-  implements DialogInterface.OnClickListener
+public class aemd
+  extends TimerTask
 {
-  aemd(aemc paramaemc) {}
+  public aemd(Action paramAction) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.a.c();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemd
  * JD-Core Version:    0.7.0.1
  */

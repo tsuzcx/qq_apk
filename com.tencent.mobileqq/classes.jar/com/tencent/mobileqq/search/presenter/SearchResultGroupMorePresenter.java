@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahul;
+import ahzc;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.mobileqq.search.model.GroupSearchModelMoreItem;
@@ -16,7 +16,7 @@ public class SearchResultGroupMorePresenter
   {
     paramIModel = (ISearchResultGroupModel)paramIModel;
     paramISearchResultGroupView.b().setText(paramIModel.b());
-    paramISearchResultGroupView.a().setOnClickListener(new ahul(this, paramIModel));
+    paramISearchResultGroupView.a().setOnClickListener(new ahzc(this, paramIModel));
     if ((paramIModel instanceof GroupSearchModelMoreItem)) {
       ReportController.b(null, "CliOper", "", "", "0X80061B6", "0X80061B6", 0, 0, "", "", "", "");
     }

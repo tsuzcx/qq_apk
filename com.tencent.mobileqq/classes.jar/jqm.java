@@ -1,35 +1,29 @@
-import android.content.res.Resources;
-import com.tencent.av.ui.BeautySettingUi;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
 
 public class jqm
   implements Runnable
 {
-  public jqm(BeautySettingUi paramBeautySettingUi) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  boolean jdField_a_of_type_Boolean;
+  int b;
+  
+  public jqm(SmallScreenMultiVideoControlUI paramSmallScreenMultiVideoControlUI, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt2;
+  }
   
   public void run()
   {
-    try
-    {
-      if (this.a.jdField_a_of_type_AndroidContentResResources != null)
-      {
-        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840093);
-        this.a.b = this.a.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840095);
-        this.a.c = this.a.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840096);
-        this.a.d = this.a.jdField_a_of_type_AndroidContentResResources.getDrawable(2130840094);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("BeautySettingUi", 2, "initUI e = " + localException);
-    }
+    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenMultiVideoControlUI.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqm
  * JD-Core Version:    0.7.0.1
  */

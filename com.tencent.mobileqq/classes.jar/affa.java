@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.FaceScoreCallBack;
-import com.tencent.mobileqq.nearby.FaceScoreConfig;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
 
 public class affa
-  extends FaceScoreCallBack
+  implements View.OnTouchListener
 {
-  public affa(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public affa(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void a(FaceScoreConfig paramFaceScoreConfig)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ThreadManager.post(new affb(this, paramFaceScoreConfig), 8, null, false);
-    this.a.a = paramFaceScoreConfig;
-    this.a.a(paramFaceScoreConfig);
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131370590).setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131370590).setAlpha(1.0F);
+    }
   }
 }
 

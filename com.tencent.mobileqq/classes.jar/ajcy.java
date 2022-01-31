@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class ajcy
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ajcy(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar) {}
+  public ajcy(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void run()
-  {
-    TroopAioMsgNavigateBar.a(this.a, -1);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

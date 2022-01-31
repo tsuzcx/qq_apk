@@ -1,6 +1,6 @@
 package cooperation.weiyun.channel;
 
-import anhk;
+import anpn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.weiyun.utils.NetworkUtils;
@@ -104,7 +104,7 @@ public class HttpChannel
   
   public static void a(String paramString, JSONObject paramJSONObject)
   {
-    ThreadManager.post(new anhk(paramString, paramJSONObject), 5, null, true);
+    ThreadManager.post(new anpn(paramString, paramJSONObject), 5, null, true);
   }
   
   private static void a(HttpClient paramHttpClient)

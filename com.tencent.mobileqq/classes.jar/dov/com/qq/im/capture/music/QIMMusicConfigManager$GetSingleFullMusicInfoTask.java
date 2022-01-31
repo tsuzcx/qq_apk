@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.music;
 
 import android.text.TextUtils;
-import anmb;
-import com.tencent.mobileqq.app.QQAppInterface;
+import anuo;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.FlowMusic;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class QIMMusicConfigManager$GetSingleFullMusicInfoTask
-  extends anmb
+  extends anuo
 {
   QIMMusicConfigManager.GetSingleMusicInfoCallback jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager$GetSingleMusicInfoCallback;
   String jdField_a_of_type_JavaLangString;
@@ -118,7 +118,7 @@ public final class QIMMusicConfigManager$GetSingleFullMusicInfoTask
     localHttpNetReq.jdField_c_of_type_Long = 60000L;
     localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
     long l = System.currentTimeMillis() / 1000L;
-    String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.b);
+    String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2)).getSkey(this.b);
     HashMap localHashMap = new HashMap();
     localHashMap.put("app_id", "2000000025");
     localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");

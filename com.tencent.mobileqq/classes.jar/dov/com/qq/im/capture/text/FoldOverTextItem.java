@@ -19,7 +19,7 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import anoa;
+import anwn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -166,7 +166,7 @@ public class FoldOverTextItem
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    paramString = a(paramInt, new anoa(this));
+    paramString = a(paramInt, new anwn(this));
     this.jdField_a_of_type_JavaLangString = paramString;
     int i = 0;
     Object localObject = jdField_a_of_type_ArrayOfInt;

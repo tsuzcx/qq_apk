@@ -1,49 +1,22 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RegisterProxySvcPackObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-public class shz
-  extends RegisterProxySvcPackObserver
+class shz
+  implements Runnable
 {
-  public shz(Conversation paramConversation) {}
+  shz(shy paramshy, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4) {}
   
-  protected void a(int paramInt, long paramLong1, long paramLong2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "onSelfPcOnlineStatusBanner int iState = " + paramInt + ", long clientType = " + paramLong1 + ", long appId" + paramLong2);
+    ((TroopManager)this.jdField_a_of_type_Shy.a.app.getManager(51)).a(this.jdField_a_of_type_Shy.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.c, this.d);
+    this.jdField_a_of_type_Shy.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard = this.b;
+    this.jdField_a_of_type_Shy.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+    if (this.jdField_a_of_type_Shy.a.e != null) {
+      this.jdField_a_of_type_Shy.a.a(this.jdField_a_of_type_Shy.a.e);
     }
-    if (paramInt == 1)
-    {
-      if (paramLong1 == 77313L)
-      {
-        if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.c)
-        {
-          SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_pc_banner_shared_pre_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.d = localSharedPreferences.getBoolean("tim_pc_banner_switch", false);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.c = true;
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.d) {
-          break label165;
-        }
-      }
-      label165:
-      while (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Boolean) {
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(9, 2);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Long = paramLong1;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a = paramLong2;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800887F", "0X800887F", 0, 0, "", "", "", "");
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.b();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_b_of_type_Boolean = false;
   }
 }
 

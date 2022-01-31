@@ -1,28 +1,18 @@
-import android.os.Build;
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aahx
   implements Runnable
 {
-  public aahx(ARReport paramARReport, long paramLong1, long paramLong2) {}
+  public aahx(Interactive3DRenderable paramInteractive3DRenderable, int paramInt, float paramFloat1, float paramFloat2, long paramLong) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_a_of_type_Long)) {
-      localHashMap.put("total_render_all_time", String.valueOf(this.jdField_a_of_type_Long));
+    Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).native_onTouchEnd(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b, 6, this.jdField_a_of_type_Long, Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).mCurrentActiveId);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "ACTION_POINTER_UP native_onTouchEnd");
     }
-    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.b)) {
-      localHashMap.put("total_render_success_time", String.valueOf(this.b));
-    }
-    localHashMap.put("buildmodel", Build.MODEL);
-    localHashMap.put("cpuNumber", String.valueOf(ARReport.a()));
-    localHashMap.put("totalram", ARReport.a(BaseApplication.getContext()));
-    localHashMap.put("cpuname", this.jdField_a_of_type_ComTencentMobileqqArArengineARReport.a());
-    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARTotal", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

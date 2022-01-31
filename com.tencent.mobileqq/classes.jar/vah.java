@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.HiBoomItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.aio.item.ClickedWaveView;
 
 public class vah
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vah(HiBoomItemBuilder paramHiBoomItemBuilder) {}
+  public vah(ClickedWaveView paramClickedWaveView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
-    if (localMessageRecord != null) {
-      ((FlashChatManager)this.a.a.getManager(216)).a(paramView.getContext(), localMessageRecord);
+    if ((this.a.a.computeScrollOffset()) || (this.a.d > 0))
+    {
+      this.a.c = this.a.a.getCurrX();
+      if (this.a.d > 0)
+      {
+        ClickedWaveView localClickedWaveView = this.a;
+        localClickedWaveView.d -= 3;
+      }
+      if (this.a.d < 0) {
+        this.a.d = 0;
+      }
+      this.a.postInvalidate();
+      this.a.postDelayed(this, 20L);
     }
   }
 }

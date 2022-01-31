@@ -12,7 +12,7 @@ import com.tribe.async.async.JobSegment;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import nea;
+import nhx;
 
 public class MsgTabNodeInsertLocalVideoInfoSegment
   extends JobSegment
@@ -76,7 +76,7 @@ public class MsgTabNodeInsertLocalVideoInfoSegment
         }
       }
       if (j != 0) {
-        Collections.sort(paramList, new nea(this));
+        Collections.sort(paramList, new nhx(this));
       }
       notifyResult(paramList);
       return;

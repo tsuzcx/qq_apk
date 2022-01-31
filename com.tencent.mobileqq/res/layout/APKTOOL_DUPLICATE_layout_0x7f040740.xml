@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a137b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214a0" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0368" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0369" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214a2" android:scaleType="centerInside" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1580" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0364" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0365" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214a1" android:scaleType="centerInside" />
-</LinearLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21df" android:layout_width="29.0dip" android:layout_height="29.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0215f3" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="NOW直播" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21e0" android:layout_width="29.0dip" android:layout_height="29.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0215eb" android:scaleType="fitXY" android:layout_centerVertical="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b007a" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21e1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207ab" android:paddingLeft="3.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_centerVertical="true">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21e2" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02cf" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02cf">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21e3" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02cf" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02cf" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207ad" android:scaleType="fitXY" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b007a" />
+            <com.tencent.mobileqq.widget.ArcImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21e4" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02cf" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02cf" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d008d" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:ellipsize="end" android:gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21e5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:maxWidth="100.0dip" android:text="songname" android:singleLine="true" android:drawableRight="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207aa" android:drawablePadding="4.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+</merge>

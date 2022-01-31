@@ -17,8 +17,8 @@ import java.io.IOException;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 import org.xmlpull.v1.XmlPullParserException;
-import zjj;
-import zjk;
+import zqh;
+import zqi;
 
 public class PhoneUnityManager
   implements Manager
@@ -38,8 +38,8 @@ public class PhoneUnityManager
   
   public PhoneUnityManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new zjj(this);
-    this.jdField_b_of_type_JavaLangRunnable = new zjk(this);
+    this.jdField_a_of_type_JavaLangRunnable = new zqh(this);
+    this.jdField_b_of_type_JavaLangRunnable = new zqi(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   

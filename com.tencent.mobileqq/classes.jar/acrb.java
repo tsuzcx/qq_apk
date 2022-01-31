@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
-public class acrb
+class acrb
   implements Runnable
 {
-  public acrb(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView, int paramInt) {}
+  acrb(acra paramacra) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.a != null) && (QfileBaseLocalFileTabView.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView))) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView.a.a(this.jdField_a_of_type_Int);
-    }
+    ExtendFriendSquareFragment.a(this.a.a).notifyItemChanged(ExtendFriendSquareFragment.a(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrb
  * JD-Core Version:    0.7.0.1
  */

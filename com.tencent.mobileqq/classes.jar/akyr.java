@@ -1,49 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import java.io.File;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.webview.ui.WebViewTitlerBar;
 
 public class akyr
-  implements Runnable
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public akyr(WorldCupShareFragment paramWorldCupShareFragment) {}
+  public akyr(WebViewTitlerBar paramWebViewTitlerBar, int paramInt) {}
   
-  public void run()
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    boolean bool1 = false;
-    Object localObject2 = null;
-    Object localObject1 = new File(AppConstants.aP);
-    ((File)localObject1).mkdirs();
-    if (((File)localObject1).canWrite())
+    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Boolean) {}
+    do
     {
-      localObject2 = Long.toString(System.currentTimeMillis());
-      localObject1 = AppConstants.aP + "world_cup_share_" + (String)localObject2 + ".mp4";
-      File localFile = new File((String)localObject1);
-      int i = 2;
-      while ((localFile.exists()) && (i < 2147483647))
-      {
-        localObject1 = AppConstants.aP + "world_cup_share_" + (String)localObject2 + "(" + i + ").mp4";
-        localFile = new File((String)localObject1);
-        i += 1;
-      }
-      boolean bool2 = WorldCupShareFragment.a(this.a, WorldCupShareFragment.a(this.a), (String)localObject1);
-      bool1 = bool2;
-      localObject2 = localObject1;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        localObject2 = localObject1;
-        if (localFile.exists())
-        {
-          localFile.delete();
-          localObject2 = localObject1;
-          bool1 = bool2;
-        }
-      }
-    }
-    if (this.a.getActivity() != null) {
-      this.a.getActivity().runOnUiThread(new akys(this, bool1, (String)localObject2));
-    }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
+      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Int = paramInteger.intValue();
+    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTitlerBar.jdField_a_of_type_Boolean = false;
   }
 }
 

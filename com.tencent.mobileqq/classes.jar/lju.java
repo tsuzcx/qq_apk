@@ -1,28 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CommentLikeObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter.SecondCommentOperationCallback;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 
-public final class lju
-  implements ArticleCommentModule.CommentLikeObserver
+class lju
+  implements Runnable
 {
-  public lju(int paramInt, ReadInJoySecondCommentListAdapter.SecondCommentOperationCallback paramSecondCommentOperationCallback) {}
+  lju(ljs paramljs, int paramInt) {}
   
-  public void a(ArticleInfo paramArticleInfo, String paramString, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentUtils", 2, "zan done success,comment type = " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter$SecondCommentOperationCallback != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter$SecondCommentOperationCallback.a(paramString, null, 3, null);
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentUtils", 2, "zan done failed,comment type = " + this.jdField_a_of_type_Int + "comment id = " + paramString1 + "err code =" + paramInt + "err msg =" + paramString2);
-    }
+    ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Ljs.a).setProgress(this.jdField_a_of_type_Int);
+    ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Ljs.a).setText(this.jdField_a_of_type_Int + "%");
   }
 }
 

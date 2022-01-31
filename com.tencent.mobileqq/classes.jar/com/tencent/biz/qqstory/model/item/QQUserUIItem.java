@@ -361,8 +361,10 @@ public class QQUserUIItem
     if (QLog.isColorLevel()) {
       QLog.d("QQUserUIItem", 2, "cache time between :" + String.valueOf(l - this.iconUrlCacheTime));
     }
-    if ((this.iconUrlCacheTime == -1L) || (l - this.iconUrlCacheTime > 3600000L)) {
-      new GetUserIconHandler().a(this.uid);
+    if ((this.iconUrlCacheTime == -1L) || (l - this.iconUrlCacheTime > 3600000L))
+    {
+      new GetUserIconHandler();
+      GetUserIconHandler.a(this.uid);
     }
     return this.iconUrl;
   }

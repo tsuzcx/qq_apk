@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
-import cooperation.dingdong.data.OfficeCenterSharedPref;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import mqq.os.MqqHandler;
 
 public class ahxn
   implements Runnable
 {
-  public ahxn(MessagePBElemDecoder paramMessagePBElemDecoder) {}
+  public ahxn(BaseSearchFragment paramBaseSearchFragment, boolean paramBoolean) {}
   
   public void run()
   {
-    if (!OfficeCenterSharedPref.a().a(MessagePBElemDecoder.a(this.a).getCurrentAccountUin() + "officecenter_receive_schedule_message", false)) {
-      OfficeCenterSharedPref.a().b(MessagePBElemDecoder.a(this.a).getCurrentAccountUin() + "officecenter_receive_schedule_message", true);
+    if (!this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.c)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.a.a();
+      this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.c = true;
     }
+    ThreadManager.getUIHandler().post(new ahxo(this));
   }
 }
 

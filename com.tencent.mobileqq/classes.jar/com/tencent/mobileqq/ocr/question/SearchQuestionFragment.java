@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ocr.question;
 
-import agcw;
-import agcy;
+import aghg;
+import aghi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -65,7 +65,7 @@ public class SearchQuestionFragment
   
   static
   {
-    File localFile = new File(AppConstants.aJ, "ocr");
+    File localFile = new File(AppConstants.aK, "ocr");
     if ((!localFile.exists()) && (!localFile.mkdir())) {
       QLog.d("SearchQuestionFragment", 1, "OcrHandler mkdir ocr fail");
     }
@@ -91,12 +91,6 @@ public class SearchQuestionFragment
   public String a()
   {
     return String.format("%s_%s_%05d", new Object[] { this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(System.currentTimeMillis())), Integer.valueOf(new Random().nextInt(100000)) });
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    super.a(paramActivity);
-    paramActivity.getWindow().setFlags(1024, 1024);
   }
   
   public void a(String paramString)
@@ -160,18 +154,8 @@ public class SearchQuestionFragment
     if (QLog.isColorLevel()) {
       QLog.d("SearchQuestionFragment", 2, "searchQuestion reqInfo:" + localObject);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a((ARCloudReqInfo)localObject, new agcy(this, (ARCloudReqInfo)localObject));
+    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a((ARCloudReqInfo)localObject, new aghi(this, (ARCloudReqInfo)localObject));
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(0, 30000L);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return false;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -182,30 +166,30 @@ public class SearchQuestionFragment
     default: 
       return true;
     case 0: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439060, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439086, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       ReportController.b(null, "dc00898", "", "", "0X80085D2", "0X80085D2", 0, 0, "", "", "", "");
       return true;
     case 2: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439048, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439072, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return true;
     case 1: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439047, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439071, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return true;
     case 4: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439060, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439086, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       ReportController.b(null, "dc00898", "", "", "0X80085D2", "0X80085D2", 0, 0, "", "", "", "");
       return true;
     case 6: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439061, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439087, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       ReportController.b(null, "dc00898", "", "", "0X80085D2", "0X80085D2", 0, 0, "", "", "", "");
       return true;
     case 7: 
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439041, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131439065, 0).a();
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return true;
     }
@@ -230,6 +214,22 @@ public class SearchQuestionFragment
     this.jdField_b_of_type_Boolean = true;
     this.d = ((String)paramMessage.obj);
     return true;
+  }
+  
+  public void initWindowStyleAndAnimation(Activity paramActivity)
+  {
+    super.initWindowStyleAndAnimation(paramActivity);
+    paramActivity.getWindow().setFlags(1024, 1024);
+  }
+  
+  public boolean needImmersive()
+  {
+    return false;
+  }
+  
+  public boolean needStatusTrans()
+  {
+    return false;
   }
   
   public void onAttach(Activity paramActivity)
@@ -271,9 +271,9 @@ public class SearchQuestionFragment
     paramLayoutInflater.addRule(12);
     paramLayoutInflater.bottomMargin = AIOUtils.a(40.0F, getResources());
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842902);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842932);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131433015));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131433029));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView, paramLayoutInflater);
     return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
   }
@@ -329,7 +329,7 @@ public class SearchQuestionFragment
     this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload = new ARCloudFileUpload(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a();
     this.jdField_b_of_type_JavaLangString = paramView.getString("pic_path", "");
-    ThreadManager.postImmediately(new agcw(this), null, false);
+    ThreadManager.postImmediately(new aghg(this), null, false);
   }
 }
 

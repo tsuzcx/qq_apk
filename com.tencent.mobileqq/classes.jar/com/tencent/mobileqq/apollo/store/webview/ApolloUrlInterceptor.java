@@ -24,11 +24,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import yup;
-import yuq;
-import yur;
-import yus;
-import yuu;
+import zbh;
+import zbi;
+import zbj;
+import zbk;
+import zbm;
 
 public class ApolloUrlInterceptor
   implements Handler.Callback, BridgeStream.IBridgeStreamCallback
@@ -43,7 +43,7 @@ public class ApolloUrlInterceptor
   private volatile InputStream jdField_a_of_type_JavaIoInputStream;
   private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private volatile yus jdField_a_of_type_Yus;
+  private volatile zbk jdField_a_of_type_Zbk;
   private volatile boolean jdField_a_of_type_Boolean;
   public final String b;
   private final AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
@@ -142,10 +142,10 @@ public class ApolloUrlInterceptor
       if ((!paramBoolean) && (!c())) {
         break label183;
       }
-      if ((this.jdField_a_of_type_Yus != null) && (!paramBoolean))
+      if ((this.jdField_a_of_type_Zbk != null) && (!paramBoolean))
       {
-        this.jdField_a_of_type_Yus.a();
-        this.jdField_a_of_type_Yus = null;
+        this.jdField_a_of_type_Zbk.a();
+        this.jdField_a_of_type_Zbk = null;
       }
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(3);
     }
@@ -179,7 +179,7 @@ public class ApolloUrlInterceptor
   
   private void c()
   {
-    ThreadManager.postImmediately(new yup(this), null, true);
+    ThreadManager.postImmediately(new zbh(this), null, true);
   }
   
   private boolean c()
@@ -327,9 +327,9 @@ public class ApolloUrlInterceptor
   private void e()
   {
     long l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_Yus = new yus(this.jdField_e_of_type_JavaLangString, false);
+    this.jdField_a_of_type_Zbk = new zbk(this.jdField_e_of_type_JavaLangString, false);
     long l2 = System.currentTimeMillis();
-    int j = this.jdField_a_of_type_Yus.a();
+    int j = this.jdField_a_of_type_Zbk.a();
     int i = j;
     Map localMap;
     Object localObject;
@@ -339,12 +339,12 @@ public class ApolloUrlInterceptor
         QLog.d("apollo_client_ApolloUrlInterceptor", 2, "session(" + this.jdField_a_of_type_Long + ") connection connect cost = " + (System.currentTimeMillis() - l2) + " ms.");
       }
       l2 = System.currentTimeMillis();
-      i = this.jdField_a_of_type_Yus.b();
+      i = this.jdField_a_of_type_Zbk.b();
       if (QLog.isColorLevel()) {
         QLog.d("apollo_client_ApolloUrlInterceptor", 2, "session(" + this.jdField_a_of_type_Long + ") connection response cost = " + (System.currentTimeMillis() - l2) + " ms.");
       }
       l2 = System.currentTimeMillis();
-      localMap = this.jdField_a_of_type_Yus.a();
+      localMap = this.jdField_a_of_type_Zbk.a();
       if (QLog.isColorLevel()) {
         QLog.d("apollo_client_ApolloUrlInterceptor", 2, "session(" + this.jdField_a_of_type_Long + ") connection get header fields cost = " + (System.currentTimeMillis() - l2) + " ms.");
       }
@@ -400,7 +400,7 @@ public class ApolloUrlInterceptor
   private void f()
   {
     int i = 2;
-    Object localObject1 = this.jdField_a_of_type_Yus.a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean, null);
+    Object localObject1 = this.jdField_a_of_type_Zbk.a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean, null);
     if (localObject1 == null)
     {
       if (QLog.isColorLevel()) {
@@ -410,13 +410,13 @@ public class ApolloUrlInterceptor
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
       return;
     }
-    this.jdField_a_of_type_JavaIoInputStream = new BridgeStream(this, ((yuu)localObject1).jdField_a_of_type_JavaIoByteArrayOutputStream, ((yuu)localObject1).jdField_a_of_type_JavaIoBufferedInputStream);
-    if (((yuu)localObject1).jdField_a_of_type_Boolean) {}
+    this.jdField_a_of_type_JavaIoInputStream = new BridgeStream(this, ((zbm)localObject1).jdField_a_of_type_JavaIoByteArrayOutputStream, ((zbm)localObject1).jdField_a_of_type_JavaIoBufferedInputStream);
+    if (((zbm)localObject1).jdField_a_of_type_Boolean) {}
     for (;;)
     {
       try
       {
-        localObject1 = ((yuu)localObject1).jdField_a_of_type_JavaIoByteArrayOutputStream.toString("UTF-8");
+        localObject1 = ((zbm)localObject1).jdField_a_of_type_JavaIoByteArrayOutputStream.toString("UTF-8");
       }
       catch (Throwable localThrowable1)
       {
@@ -868,7 +868,7 @@ public class ApolloUrlInterceptor
     this.jdField_g_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     if (paramBoolean)
     {
-      ThreadManager.postImmediately(new yuq(this), null, true);
+      ThreadManager.postImmediately(new zbi(this), null, true);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -897,7 +897,7 @@ public class ApolloUrlInterceptor
     long l = System.currentTimeMillis();
     if ((paramBoolean) && (paramByteArrayOutputStream != null))
     {
-      ThreadManager.getSubThreadHandler().postDelayed(new yur(this, paramByteArrayOutputStream), 3000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new zbj(this, paramByteArrayOutputStream), 3000L);
       return;
     }
     StringBuilder localStringBuilder;

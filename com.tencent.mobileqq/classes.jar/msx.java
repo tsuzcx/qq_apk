@@ -1,21 +1,30 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class msx
-  implements Runnable
+  extends Handler
 {
-  public msx(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
-  
-  public void run()
+  public msx(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager, Looper paramLooper)
   {
-    QQMessageFacade localQQMessageFacade = this.a.app.a();
-    if (localQQMessageFacade != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      int i = localQQMessageFacade.b();
-      this.a.leftView.post(new msy(this, i));
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + FastWebVideoFeedsPlayManager.b(this.a));
+      }
+    } while (!FastWebVideoFeedsPlayManager.b(this.a));
+    this.a.a(1);
   }
 }
 

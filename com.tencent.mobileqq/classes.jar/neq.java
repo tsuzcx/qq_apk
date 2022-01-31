@@ -1,26 +1,50 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.Queue;
+import android.annotation.TargetApi;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.FileUtils;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
 
+@TargetApi(14)
 public class neq
-  extends SimpleJob
+  extends ExecuteBinResponseCallback
 {
-  public neq(MsgTabStoryVideoPreloader paramMsgTabStoryVideoPreloader, List paramList) {}
+  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  private VideoCompositeHelper.VideoCompositeCallBack jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public neq(String paramString1, String paramString2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
   {
-    paramJobContext = MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader, this.jdField_a_of_type_JavaUtilList);
-    if ((!paramJobContext.isEmpty()) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a()))
-    {
-      MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader);
-      MsgTabStoryVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader, paramJobContext);
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.b();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack = paramVideoCompositeCallBack;
+  }
+  
+  public void a(String paramString)
+  {
+    SLog.a(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(0, "", this.b);
+    FileUtils.g(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b(String paramString)
+  {
+    if (paramString.equals(String.valueOf(941001))) {
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(941001, paramString, "");
     }
-    return null;
+    for (;;)
+    {
+      SLog.d(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "combine audio fail %s", new Object[] { paramString });
+      FileUtils.g(this.jdField_a_of_type_JavaLangString);
+      return;
+      if (paramString.equals(String.valueOf(941002))) {
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(941002, paramString, "");
+      } else {
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(941000, paramString, "");
+      }
+    }
   }
 }
 

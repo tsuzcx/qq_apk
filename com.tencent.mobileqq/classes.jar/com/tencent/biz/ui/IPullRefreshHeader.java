@@ -5,8 +5,6 @@ import android.view.View;
 
 public abstract interface IPullRefreshHeader
 {
-  public abstract void Y_();
-  
   public abstract long a();
   
   public abstract View a();
@@ -14,6 +12,8 @@ public abstract interface IPullRefreshHeader
   public abstract void a(int paramInt, String paramString);
   
   public abstract void a(long paramLong);
+  
+  public abstract void aa_();
   
   public abstract void b(long paramLong);
   

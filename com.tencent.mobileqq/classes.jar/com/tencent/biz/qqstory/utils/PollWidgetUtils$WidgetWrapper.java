@@ -26,9 +26,9 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.util.FaceDrawable;
 import java.util.List;
 import java.util.Locale;
-import oom;
-import oon;
-import ooo;
+import otb;
+import otc;
+import otd;
 
 public class PollWidgetUtils$WidgetWrapper
   implements View.OnAttachStateChangeListener, View.OnClickListener, View.OnLayoutChangeListener, PollWidgetUtils.IPollWidget
@@ -38,7 +38,7 @@ public class PollWidgetUtils$WidgetWrapper
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   public ViewGroup a;
   public PollWidgetUtils.OnPollDetailClickListener a;
-  PollWidgetUtils.OnSelectedChangedListener jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnSelectedChangedListener = new oom(this);
+  PollWidgetUtils.OnSelectedChangedListener jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnSelectedChangedListener = new otb(this);
   PollWidgetUtils.OptionElement jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OptionElement;
   public PollWidgetUtils.QuestionElement a;
   public List a;
@@ -72,14 +72,26 @@ public class PollWidgetUtils$WidgetWrapper
   
   public PollWidgetUtils$WidgetWrapper(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2130970130, null, false));
-    this.jdField_a_of_type_AndroidViewViewGroup.addOnLayoutChangeListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup.addOnAttachStateChangeListener(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$QuestionElement = new PollWidgetUtils.QuestionElement(this, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369139));
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OptionElement = new PollWidgetUtils.SingleOptionElement(this, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369141), 0);
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OptionElement.a(this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnSelectedChangedListener);
-    this.jdField_b_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OptionElement = new PollWidgetUtils.SingleOptionElement(this, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369140), 1);
-    this.jdField_b_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OptionElement.a(this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnSelectedChangedListener);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2130970142, null, false));
+    try
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362750).setBackgroundResource(2130841997);
+      this.jdField_a_of_type_AndroidViewViewGroup.addOnLayoutChangeListener(this);
+      this.jdField_a_of_type_AndroidViewViewGroup.addOnAttachStateChangeListener(this);
+      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$QuestionElement = new PollWidgetUtils.QuestionElement(this, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369140));
+      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OptionElement = new PollWidgetUtils.SingleOptionElement(this, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369142), 0);
+      this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OptionElement.a(this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnSelectedChangedListener);
+      this.jdField_b_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OptionElement = new PollWidgetUtils.SingleOptionElement(this, this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369141), 1);
+      this.jdField_b_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OptionElement.a(this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnSelectedChangedListener);
+      return;
+    }
+    catch (OutOfMemoryError paramContext)
+    {
+      for (;;)
+      {
+        SLog.c("WidgetWrapper", "load drawable qim_qqstory_poll_guide_animation_ex oom", paramContext);
+      }
+    }
   }
   
   private void b()
@@ -258,7 +270,7 @@ public class PollWidgetUtils$WidgetWrapper
         i += 1;
       }
       SLog.a("WidgetWrapper", "pollUsers: %s", ((StringBuilder)localObject1).toString());
-      localObject1 = (ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369135);
+      localObject1 = (ViewGroup)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369136);
     } while (localObject1 == null);
     int j = ((ViewGroup)localObject1).getChildCount() - 1;
     int k = paramList.size();
@@ -283,7 +295,7 @@ public class PollWidgetUtils$WidgetWrapper
         paramInt += 1;
         break;
         label287:
-        Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843427);
+        Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843461);
         localObject2 = FaceDrawable.a(QQStoryContext.a(), 1, String.valueOf(((QQUserUIItem)localObject2).qq), 3, localDrawable, localDrawable);
         ((ImageView)localView).setImageDrawable((Drawable)localObject2);
       }
@@ -300,7 +312,7 @@ public class PollWidgetUtils$WidgetWrapper
     if (k <= j) {}
     for (paramList = String.format(Locale.getDefault(), "%d人参与 >", new Object[] { Integer.valueOf(k) });; paramList = String.format(Locale.getDefault(), "等%d人参与 >", new Object[] { Integer.valueOf(k) }))
     {
-      ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366089)).setText(paramList);
+      ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131366094)).setText(paramList);
       return;
     }
   }
@@ -408,10 +420,10 @@ public class PollWidgetUtils$WidgetWrapper
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       while (i < 2500)
       {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new oon(this), i);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new otc(this), i);
         i += 500;
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ooo(this), i);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new otd(this), i);
       return;
     }
     this.jdField_e_of_type_Boolean = false;
@@ -421,11 +433,11 @@ public class PollWidgetUtils$WidgetWrapper
   
   public void e(boolean paramBoolean)
   {
-    AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362745).getBackground();
+    AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362750).getBackground();
     if (localAnimationDrawable != null)
     {
       if (!paramBoolean) {
-        break label52;
+        break label51;
       }
       localAnimationDrawable.start();
     }
@@ -434,7 +446,7 @@ public class PollWidgetUtils$WidgetWrapper
       ((PollWidgetUtils.SingleOptionElement)this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OptionElement).d(paramBoolean);
       ((PollWidgetUtils.SingleOptionElement)this.jdField_b_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OptionElement).d(paramBoolean);
       return;
-      label52:
+      label51:
       localAnimationDrawable.stop();
     }
   }
@@ -465,10 +477,10 @@ public class PollWidgetUtils$WidgetWrapper
       throw new AssertionError();
     }
     paramView = (ViewGroup)paramView;
-    if (paramView.getId() == 2131372112)
+    if (paramView.getId() == 2131372120)
     {
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidViewViewGroup.getContext()).inflate(2130970129, paramView)).findViewById(2131369134));
-      ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369136)).setText(String.format(Locale.getDefault(), "%d", new Object[] { Integer.valueOf(this.jdField_b_of_type_AndroidViewViewGroup.hashCode()) }));
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidViewViewGroup.getContext()).inflate(2130970141, paramView)).findViewById(2131369135));
+      ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131369137)).setText(String.format(Locale.getDefault(), "%d", new Object[] { Integer.valueOf(this.jdField_b_of_type_AndroidViewViewGroup.hashCode()) }));
       this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(this);
       this.jdField_b_of_type_AndroidViewViewGroup.addOnLayoutChangeListener(this);
       a(this.jdField_a_of_type_JavaUtilList, this.jdField_c_of_type_Int);

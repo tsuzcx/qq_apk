@@ -1,24 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.IMyStoryListView;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class oee
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public oee(EditVideoDoodle paramEditVideoDoodle) {}
+  public oee(StoryListPresenter paramStoryListPresenter) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.g();
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = 1;
-      return;
-      if (this.a.jdField_a_of_type_Int == 3) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.s();
-      }
-    }
+    this.a.a.a(false, true, 12, null);
+    StoryReportor.a("home_page", "guide_open", 0, 0, new String[0]);
   }
 }
 

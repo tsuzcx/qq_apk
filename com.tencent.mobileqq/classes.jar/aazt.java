@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppCGI;
+import java.util.ArrayList;
 
-class aazt
-  implements DialogInterface.OnDismissListener
+public class aazt
+  implements Runnable
 {
-  aazt(aazs paramaazs) {}
+  public aazt(ArkAppCGI paramArkAppCGI, abad paramabad, boolean paramBoolean, byte[] paramArrayOfByte) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    ARMapActivity.a(this.a.a, null);
+    synchronized (ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI))
+    {
+      ArkAppCGI.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI).remove(this.jdField_a_of_type_Abad);
+      this.jdField_a_of_type_Abad.a.a(this.jdField_a_of_type_Abad, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte);
+      return;
+    }
   }
 }
 

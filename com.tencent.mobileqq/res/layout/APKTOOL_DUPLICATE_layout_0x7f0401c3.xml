@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bc3" android:layout_width="fill_parent" android:layout_height="30.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bb1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03a8" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a052c" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="加载中..." />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bc4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020da0" android:layout_centerVertical="true" />
+    <TextView android:textSize="16.0dip" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bc5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="续费超级会员解锁嗨爆字体" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0bc4" android:layout_centerVertical="true" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020da3" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
 </RelativeLayout>

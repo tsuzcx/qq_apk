@@ -14,15 +14,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
-import com.tencent.biz.pubaccount.VideoReporter;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
 import java.util.Set;
-import mep;
-import org.json.JSONObject;
+import mic;
 
 public class VideoFeedsTopicViewGroup
   extends LinearLayout
@@ -34,7 +31,8 @@ public class VideoFeedsTopicViewGroup
   private VideoFeedsAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter;
   private Set jdField_a_of_type_JavaUtilSet;
   private boolean jdField_a_of_type_Boolean;
-  private final int b = 12;
+  private final int jdField_b_of_type_Int = 12;
+  private boolean jdField_b_of_type_Boolean;
   private final int c = 6;
   private final int d = 10;
   private final int e = 15;
@@ -64,24 +62,24 @@ public class VideoFeedsTopicViewGroup
     int i;
     label71:
     VideoInfo.ChannelInfo localChannelInfo;
-    Object localObject1;
+    String str;
     if ((this.jdField_a_of_type_Int != 0) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null))
     {
       removeAllViews();
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaUtilArrayList.size() == 0))
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a == null) || (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.size() == 0))
       {
         setVisibility(8);
         j = this.jdField_a_of_type_Int;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaUtilArrayList == null) {
-          break label563;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a == null) {
+          break label495;
         }
         i = 0;
-        if (i >= this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaUtilArrayList.size()) {
-          break label563;
+        if (i >= this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.size()) {
+          break label495;
         }
-        localChannelInfo = (VideoInfo.ChannelInfo)this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaUtilArrayList.get(i);
-        localObject1 = localChannelInfo.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        localChannelInfo = (VideoInfo.ChannelInfo)this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.get(i);
+        str = localChannelInfo.a;
+        if (!TextUtils.isEmpty(str)) {
           break label131;
         }
       }
@@ -95,66 +93,65 @@ public class VideoFeedsTopicViewGroup
       label131:
       Object localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
       ((TextView)localObject2).setTextSize(2, 12.0F);
-      Object localObject3 = new Rect();
-      ((TextView)localObject2).getPaint().getTextBounds("# " + (String)localObject1, 0, ((String)localObject1).length() + 1, (Rect)localObject3);
-      int m = ((Rect)localObject3).width();
-      int k;
-      if (i == 0)
-      {
-        k = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-        label220:
-        k += m;
-        if (j < k) {
-          break label563;
-        }
-        localObject2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-        localObject3 = new LinearLayout.LayoutParams(-2, -1);
-        if (i != 0) {
-          break label536;
-        }
-        ((LinearLayout.LayoutParams)localObject3).setMargins(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F), 0, 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
-        label283:
-        TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-        localTextView.setText("# ");
-        localTextView.setTextColor(Color.parseColor("#07D0B0"));
-        localTextView.setTextSize(2, 12.0F);
-        localTextView.setId(2131362203);
-        ((LinearLayout)localObject2).addView(localTextView);
-        localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-        localTextView.getPaint().setFakeBoldText(true);
-        localTextView.setText((CharSequence)localObject1);
-        localTextView.setTextColor(Color.parseColor("#FFFFFF"));
-        localTextView.setTextSize(2, 12.0F);
-        localTextView.setId(2131362203);
-        ((LinearLayout)localObject2).addView(localTextView);
-        ((LinearLayout)localObject2).setId(2131362202);
-        ((LinearLayout)localObject2).setTag(localChannelInfo);
-        ((LinearLayout)localObject2).setOnClickListener(new mep(this, localChannelInfo));
-        addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-        if (!this.jdField_a_of_type_JavaUtilSet.contains(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g)) {
-          localObject1 = new JSONObject();
-        }
-      }
+      Object localObject1 = new Rect();
+      localObject2 = ((TextView)localObject2).getPaint();
+      Object localObject3 = "# " + str;
       try
       {
-        ((JSONObject)localObject1).put("topic_id", localChannelInfo.jdField_a_of_type_Int);
-        label474:
-        PublicAccountReportUtils.a(null, "", "0X80092F8", "0X80092F8", 0, 0, "3", "", "", VideoReporter.a("", "", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g, (JSONObject)localObject1), false);
-        j -= k;
-        continue;
-        k = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-        break label220;
-        label536:
-        ((LinearLayout.LayoutParams)localObject3).setMargins(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
-        break label283;
-        label563:
+        ((Paint)localObject2).getTextBounds((String)localObject3, 0, ((String)localObject3).length(), (Rect)localObject1);
+        label205:
+        int m = ((Rect)localObject1).width();
+        int k;
+        if (i == 0)
+        {
+          k = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
+          label226:
+          k += m;
+          if (j < k) {
+            break label495;
+          }
+          j -= k;
+          localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+          localObject2 = new LinearLayout.LayoutParams(-2, -1);
+          if (i != 0) {
+            break label468;
+          }
+          ((LinearLayout.LayoutParams)localObject2).setMargins(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F), 0, 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
+        }
+        for (;;)
+        {
+          localObject3 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+          ((TextView)localObject3).setText("# ");
+          ((TextView)localObject3).getPaint().setFakeBoldText(true);
+          ((TextView)localObject3).setTextColor(Color.parseColor("#07D0B0"));
+          ((TextView)localObject3).setTextSize(2, 12.0F);
+          ((TextView)localObject3).setId(2131362203);
+          ((LinearLayout)localObject1).addView((View)localObject3);
+          localObject3 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+          ((TextView)localObject3).getPaint().setFakeBoldText(true);
+          ((TextView)localObject3).setText(str);
+          ((TextView)localObject3).setTextColor(Color.parseColor("#FFFFFF"));
+          ((TextView)localObject3).setTextSize(2, 12.0F);
+          ((TextView)localObject3).setId(2131362203);
+          ((LinearLayout)localObject1).addView((View)localObject3);
+          ((LinearLayout)localObject1).setId(2131362202);
+          ((LinearLayout)localObject1).setTag(localChannelInfo);
+          ((LinearLayout)localObject1).setOnClickListener(new mic(this, localChannelInfo));
+          addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+          break;
+          k = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+          break label226;
+          label468:
+          ((LinearLayout.LayoutParams)localObject2).setMargins(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 2.0F));
+        }
+        label495:
         this.jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g);
         this.jdField_a_of_type_Boolean = true;
         return;
       }
       catch (Exception localException)
       {
-        break label474;
+        break label205;
       }
     }
   }
@@ -171,13 +168,14 @@ public class VideoFeedsTopicViewGroup
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  public void setArticleInfo(Activity paramActivity, VideoFeedsAdapter paramVideoFeedsAdapter, VideoInfo paramVideoInfo, Set paramSet)
+  public void setArticleInfo(Activity paramActivity, VideoFeedsAdapter paramVideoFeedsAdapter, VideoInfo paramVideoInfo, Set paramSet, boolean paramBoolean)
   {
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter = paramVideoFeedsAdapter;
     this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
     this.jdField_a_of_type_JavaUtilSet = paramSet;
     this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = paramBoolean;
     a();
   }
 }

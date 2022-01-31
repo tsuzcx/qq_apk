@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ec4" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ec5" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ec6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ec7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040274" />
-        </com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView>
-    </FrameLayout>
-    <com.tencent.biz.pubaccount.Advertisement.view.AdControlView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ec8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout>
+    <RelativeLayout android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ed0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03aa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="14.0dip" android:textColor="#ffa6a6a6" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a048c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在为你加载..." android:drawablePadding="15.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b57" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="加载失败，点击重试" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02179d" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ed1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ed2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020899" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ed3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d6c" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

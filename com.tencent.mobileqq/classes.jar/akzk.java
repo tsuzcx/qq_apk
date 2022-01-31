@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
 
 public class akzk
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public akzk(MSFIntChkStrike paramMSFIntChkStrike, int paramInt) {}
+  public akzk(WebViewJumpPlugin paramWebViewJumpPlugin) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike, paramDialogInterface, paramInt, this.jdField_a_of_type_Int);
+    Activity localActivity = this.a.mRuntime.a();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      localActivity.finish();
+    }
   }
 }
 

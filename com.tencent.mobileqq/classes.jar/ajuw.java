@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
 public class ajuw
-  implements Runnable
+  implements FrameSprite.OnFrameEndListener
 {
-  public ajuw(TroopGiftAnimationController paramTroopGiftAnimationController) {}
+  public ajuw(AIOAnimationControlManager paramAIOAnimationControlManager, boolean paramBoolean) {}
   
-  public void run()
+  public void a()
   {
-    if ((this.a.a instanceof TroopGiftToAllSurfaceView)) {
-      ((TroopGiftToAllSurfaceView)this.a.a).a(new ajux(this));
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a.post(new ajux(this));
   }
 }
 

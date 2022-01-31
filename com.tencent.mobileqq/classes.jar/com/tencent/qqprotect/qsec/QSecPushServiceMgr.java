@@ -1,8 +1,8 @@
 package com.tencent.qqprotect.qsec;
 
-import alxz;
-import alya;
-import alyb;
+import amfi;
+import amfj;
+import amfk;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -31,10 +31,10 @@ public class QSecPushServiceMgr
   {
     this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr = paramQSecLibMgr;
     this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr = paramQSecCbMgr;
-    this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.a(new alya(this));
+    this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.a(new amfj(this));
   }
   
-  private alyb a(byte[] paramArrayOfByte)
+  private amfk a(byte[] paramArrayOfByte)
   {
     int j = -1;
     boolean bool = true;
@@ -86,7 +86,7 @@ public class QSecPushServiceMgr
         {
           if ((TextUtils.isEmpty(paramArrayOfByte)) || (paramArrayOfByte.equalsIgnoreCase(QPMiscUtils.c())))
           {
-            paramArrayOfByte = new alyb(null);
+            paramArrayOfByte = new amfk(null);
             if ((localQSecPushSeriveBody.pluginId != null) && (localQSecPushSeriveBody.pluginId.has()))
             {
               paramArrayOfByte.jdField_a_of_type_Int = localQSecPushSeriveBody.pluginId.get();
@@ -140,32 +140,32 @@ public class QSecPushServiceMgr
     }
   }
   
-  private void a(alyb paramalyb)
+  private void a(amfk paramamfk)
   {
-    if (paramalyb.jdField_a_of_type_Int == 0)
+    if (paramamfk.jdField_a_of_type_Int == 0)
     {
-      c(paramalyb);
+      c(paramamfk);
       return;
     }
-    b(paramalyb);
+    b(paramamfk);
   }
   
-  private void b(alyb paramalyb)
+  private void b(amfk paramamfk)
   {
-    int i = this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.a(paramalyb.jdField_a_of_type_Int, paramalyb.b, paramalyb.c, new Object[] { paramalyb.jdField_a_of_type_ArrayOfByte }, null);
-    if (((i == 17) || (i == 7) || (i == 4)) && (paramalyb.jdField_a_of_type_Boolean)) {
+    int i = this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.a(paramamfk.jdField_a_of_type_Int, paramamfk.b, paramamfk.c, new Object[] { paramamfk.jdField_a_of_type_ArrayOfByte }, null);
+    if (((i == 17) || (i == 7) || (i == 4)) && (paramamfk.jdField_a_of_type_Boolean)) {
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         if (this.jdField_a_of_type_Int < 50)
         {
-          List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramalyb.jdField_a_of_type_Int));
+          List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramamfk.jdField_a_of_type_Int));
           Object localObject1 = localList;
           if (localList == null)
           {
             localObject1 = new LinkedList();
-            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramalyb.jdField_a_of_type_Int), localObject1);
+            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramamfk.jdField_a_of_type_Int), localObject1);
           }
-          ((List)localObject1).add(paramalyb);
+          ((List)localObject1).add(paramamfk);
           this.jdField_a_of_type_Int += 1;
         }
         return;
@@ -173,9 +173,9 @@ public class QSecPushServiceMgr
     }
   }
   
-  private void c(alyb paramalyb)
+  private void c(amfk paramamfk)
   {
-    switch (paramalyb.c)
+    switch (paramamfk.c)
     {
     }
     do
@@ -187,20 +187,20 @@ public class QSecPushServiceMgr
         return;
         try
         {
-          paramalyb = (QQAppInterface)BaseApplicationImpl.sMobileQQ.waitAppRuntime(null);
-          if (paramalyb != null)
+          paramamfk = (QQAppInterface)BaseApplicationImpl.sMobileQQ.waitAppRuntime(null);
+          if (paramamfk != null)
           {
-            ((QPUpdateManager)paramalyb.getManager(193)).b(0);
+            ((QPUpdateManager)paramamfk.getManager(193)).b(0);
             return;
           }
         }
-        catch (Exception paramalyb)
+        catch (Exception paramamfk)
         {
           return;
         }
       }
-      paramalyb = paramalyb.jdField_a_of_type_ArrayOfByte;
-    } while (!FilterManager.a().a(paramalyb));
+      paramamfk = paramamfk.jdField_a_of_type_ArrayOfByte;
+    } while (!FilterManager.a().a(paramamfk));
     FilterManager.a().a();
   }
   
@@ -209,7 +209,7 @@ public class QSecPushServiceMgr
     if (paramArrayOfByte == null) {
       return;
     }
-    QSecFramework.a().post(new alxz(this, paramArrayOfByte));
+    QSecFramework.a().post(new amfi(this, paramArrayOfByte));
   }
 }
 

@@ -1,16 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class lcj
   implements Runnable
 {
-  public lcj(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public lcj(EcshopCacheTool paramEcshopCacheTool) {}
   
   public void run()
   {
-    ReadInJoyGlobalReporter.a().a(true);
-    ReadInJoyGlobalReporter.a().a(this.a.app, NetConnInfoCenter.getServerTimeMillis(), -1, -1);
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(Friends.class, " SELECT * FROM Friends ", new String[0]);
+    this.a.jdField_a_of_type_JavaUtilMap = new HashMap();
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Friends localFriends = (Friends)((Iterator)localObject).next();
+        this.a.jdField_a_of_type_JavaUtilMap.put(localFriends.uin, localFriends);
+      }
+    }
+    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment != null) && (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a != null)) {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.getActivity().runOnUiThread(new lck(this));
+    }
   }
 }
 

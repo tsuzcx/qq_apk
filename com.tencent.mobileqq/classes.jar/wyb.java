@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
 
 public class wyb
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wyb(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wyb(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.toggle();
+    RedTouchManager localRedTouchManager = (RedTouchManager)this.a.app.getManager(35);
+    this.a.a = localRedTouchManager.a("100100.100125.100127");
+    this.a.runOnUiThread(new wyc(this));
   }
 }
 

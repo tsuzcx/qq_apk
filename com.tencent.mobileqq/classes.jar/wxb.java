@@ -1,20 +1,15 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
 
 public class wxb
-  implements FMDialogUtil.FMDialogInterface
+  implements View.OnClickListener
 {
-  public wxb(PhotoListActivity paramPhotoListActivity) {}
+  public wxb(MessageSearchDialog paramMessageSearchDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.i();
-  }
-  
-  public void b()
-  {
-    this.a.c.setClickable(true);
+    this.a.dismiss();
   }
 }
 

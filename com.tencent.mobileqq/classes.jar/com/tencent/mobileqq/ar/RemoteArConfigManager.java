@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar;
 
-import aadk;
-import aadl;
-import aadm;
-import aadn;
-import aado;
+import aakb;
+import aakc;
+import aakd;
+import aake;
+import aakf;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -49,16 +49,16 @@ public class RemoteArConfigManager
   public IArConfigManager a;
   public IArFaceCallback a;
   public IArRemoteCallback a;
-  private IArSoCallback jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = new aado(this);
+  private IArSoCallback jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = new aakf(this);
   public boolean a;
   boolean b = false;
   public boolean c = false;
   
   public RemoteArConfigManager()
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = new aadk(this);
-    this.jdField_a_of_type_ComTencentMobileqqArAidlIArRemoteCallback = new aadm(this);
-    this.jdField_a_of_type_ComTencentMobileqqArAidlIArFaceCallback = new aadn(this);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new aakb(this);
+    this.jdField_a_of_type_ComTencentMobileqqArAidlIArRemoteCallback = new aakd(this);
+    this.jdField_a_of_type_ComTencentMobileqqArAidlIArFaceCallback = new aake(this);
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
   }
@@ -375,7 +375,7 @@ public class RemoteArConfigManager
   
   public void c()
   {
-    ThreadManager.post(new aadl(this), 5, null, true);
+    ThreadManager.post(new aakc(this), 5, null, true);
   }
   
   public boolean c()

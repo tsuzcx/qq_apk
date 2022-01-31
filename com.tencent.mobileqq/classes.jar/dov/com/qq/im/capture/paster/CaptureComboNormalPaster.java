@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
-import anms;
-import anmt;
+import anvf;
+import anvg;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
@@ -26,6 +27,7 @@ import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -77,57 +79,74 @@ public class CaptureComboNormalPaster
     if (i != 1) {}
     for (;;)
     {
-      int j;
-      try
+      for (;;)
       {
-        paramString = Drawable.createFromPath(str1);
-        if (paramString == null) {
-          break label361;
-        }
-        paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), paramString.getIntrinsicHeight());
-        j = paramString.getIntrinsicWidth();
-        paramFloat3 = paramInt1 * paramFloat3 / j;
-        if (QLog.isColorLevel()) {
-          QLog.d("QComboNPaster", 2, "applyNormalPaster w=" + j + " scale=" + paramFloat3 + " px=" + paramFloat1 + " py=" + paramFloat2);
-        }
-        paramIFaceSelectedListener.a(new SelectedItem(paramNormalFacePackage.jdField_b_of_type_JavaLangString, str2, paramString, i), paramInt1 * paramFloat1, paramInt2 * paramFloat2, paramFloat3, str1, paramSegmentKeeper);
-        return;
-      }
-      catch (OutOfMemoryError paramString)
-      {
-        SLog.c("QComboNPaster", "createFromPath error", paramString);
-        paramString = null;
-        continue;
-      }
-      paramString = VasApngUtil.a(BaseApplicationImpl.sApplication.getRuntime(), str1, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
-      if (paramString != null)
-      {
-        j = paramString.getStatus();
-        if (j != 1)
+        try
         {
+          paramString = Drawable.createFromPath(str1);
+          if (paramString == null) {
+            break label416;
+          }
+          paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), paramString.getIntrinsicHeight());
+          j = paramString.getIntrinsicWidth();
+          paramFloat3 = paramInt1 * paramFloat3 / j;
           if (QLog.isColorLevel()) {
-            QLog.e("QComboNPaster", 2, "urlDrawable is not  SUCCESSED :" + j);
+            QLog.d("QComboNPaster", 2, "applyNormalPaster w=" + j + " scale=" + paramFloat3 + " px=" + paramFloat1 + " py=" + paramFloat2);
           }
-          if (j == 2) {
-            paramString.restartDownload();
-          }
-          for (;;)
+          paramIFaceSelectedListener.a(new SelectedItem(paramNormalFacePackage.jdField_b_of_type_JavaLangString, str2, paramString, i), paramInt1 * paramFloat1, paramInt2 * paramFloat2, paramFloat3, str1, paramSegmentKeeper);
+          return;
+        }
+        catch (OutOfMemoryError paramString)
+        {
+          SLog.c("QComboNPaster", "createFromPath error", paramString);
+          paramString = null;
+          continue;
+        }
+        paramString = new File(str1);
+        try
+        {
+          if (!ApngDrawable.isApngFile(paramString))
           {
-            paramString.setURLDrawableListener(new anmt(str1, paramInt1, paramFloat3, str2, paramNormalFacePackage, i, paramIFaceSelectedListener, paramFloat1, paramInt2, paramFloat2, paramSegmentKeeper));
-            jdField_a_of_type_JavaUtilHashMap.put(str1, paramString);
-            paramString = null;
-            break;
-            paramString.startDownload();
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("QComboNPaster", 2, "applyNormalPaster isApngFile not valid path=" + str1);
+            return;
           }
         }
-        continue;
-        label361:
-        SLog.e("QComboNPaster", "can not create drawable from name:" + str2);
+        catch (IOException paramString)
+        {
+          paramString.printStackTrace();
+          paramString = VasApngUtil.a(BaseApplicationImpl.sApplication.getRuntime(), str1, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null);
+          if (paramString == null) {
+            break label442;
+          }
+        }
       }
-      else
+      int j = paramString.getStatus();
+      if (j != 1)
       {
-        paramString = null;
+        if (QLog.isColorLevel()) {
+          QLog.e("QComboNPaster", 2, "urlDrawable is not  SUCCESSED :" + j);
+        }
+        if (j == 2) {
+          paramString.restartDownload();
+        }
+        for (;;)
+        {
+          paramString.setURLDrawableListener(new anvg(str1, paramInt1, paramFloat3, str2, paramNormalFacePackage, i, paramIFaceSelectedListener, paramFloat1, paramInt2, paramFloat2, paramSegmentKeeper));
+          jdField_a_of_type_JavaUtilHashMap.put(str1, paramString);
+          paramString = null;
+          break;
+          paramString.startDownload();
+        }
       }
+      continue;
+      label416:
+      SLog.e("QComboNPaster", "can not create drawable from name:" + str2);
+      return;
+      label442:
+      paramString = null;
     }
   }
   
@@ -166,8 +185,8 @@ public class CaptureComboNormalPaster
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 37	dov/com/qq/im/capture/paster/CaptureComboNormalPaster:jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage	Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/face/NormalFacePackage;
-    //   6: getfield 222	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/face/NormalFacePackage:g	Ljava/lang/String;
-    //   9: invokestatic 227	com/tencent/mobileqq/utils/StringUtil:a	(Ljava/lang/String;)Z
+    //   6: getfield 235	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/face/NormalFacePackage:g	Ljava/lang/String;
+    //   9: invokestatic 240	com/tencent/mobileqq/utils/StringUtil:a	(Ljava/lang/String;)Z
     //   12: ifne +17 -> 29
     //   15: aload_0
     //   16: iconst_3
@@ -181,7 +200,7 @@ public class CaptureComboNormalPaster
     //   28: ireturn
     //   29: aload_0
     //   30: getfield 37	dov/com/qq/im/capture/paster/CaptureComboNormalPaster:jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage	Ldov/com/tencent/biz/qqstory/takevideo/doodle/ui/face/NormalFacePackage;
-    //   33: getfield 236	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/face/NormalFacePackage:jdField_b_of_type_Boolean	Z
+    //   33: getfield 249	dov/com/tencent/biz/qqstory/takevideo/doodle/ui/face/NormalFacePackage:jdField_b_of_type_Boolean	Z
     //   36: ifeq -16 -> 20
     //   39: aload_0
     //   40: iconst_1
@@ -209,7 +228,7 @@ public class CaptureComboNormalPaster
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.a == null) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.a.size() == 0)) {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.a());
     }
-    ThreadManager.postImmediately(new anms(this, paramInt), null, true);
+    ThreadManager.postImmediately(new anvf(this, paramInt), null, true);
     if (QLog.isColorLevel()) {
       QLog.d("QComboNPaster", 2, "apply id=" + this.jdField_a_of_type_JavaLangString + " name=" + this.jdField_b_of_type_JavaLangString);
     }

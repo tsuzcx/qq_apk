@@ -1,37 +1,39 @@
 package c.t.m.g;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.net.wifi.ScanResult;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-final class ei
+public final class ei
+  extends eh
 {
-  public double a;
-  public double b;
-  public double c;
-  public float d;
-  public String e;
-  public String f;
+  public static final ei a = new ei(Collections.emptyList(), 0L, 0);
+  public final List<ScanResult> b;
+  private final long c;
+  private final int d;
   
-  ei() {}
-  
-  public ei(JSONObject paramJSONObject)
-    throws JSONException
+  public ei(List<ScanResult> paramList, long paramLong, int paramInt)
   {
-    try
-    {
-      this.a = paramJSONObject.getDouble("latitude");
-      this.b = paramJSONObject.getDouble("longitude");
-      this.c = paramJSONObject.getDouble("altitude");
-      this.d = ((float)paramJSONObject.getDouble("accuracy"));
-      this.e = paramJSONObject.optString("name");
-      this.f = paramJSONObject.optString("addr");
-      return;
+    this.c = paramLong;
+    this.d = paramInt;
+    this.b = new ArrayList(paramList);
+  }
+  
+  public final boolean a(long paramLong1, long paramLong2)
+  {
+    return paramLong1 - this.c < paramLong2;
+  }
+  
+  public final boolean a(ei paramei)
+  {
+    paramei = paramei.b;
+    List localList = this.b;
+    if ((paramei.size() == 0) || (localList.size() == 0)) {}
+    while (ev.a(paramei, localList)) {
+      return false;
     }
-    catch (JSONException paramJSONObject)
-    {
-      f.a.a("TencentJson", "json error", paramJSONObject);
-      throw paramJSONObject;
-    }
+    return true;
   }
 }
 

@@ -1,12 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler;
+import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation;
 
-class yxo
-  implements View.OnClickListener
+public class yxo
+  implements Runnable
 {
-  yxo(yxn paramyxn) {}
+  public yxo(CmGameSubProcessHandler paramCmGameSubProcessHandler) {}
   
-  public void onClick(View paramView) {}
+  public void run()
+  {
+    if (CmGameSubProcessHandler.a(this.a) != null) {
+      CmGameSubProcessHandler.a(this.a).a();
+    }
+  }
 }
 
 

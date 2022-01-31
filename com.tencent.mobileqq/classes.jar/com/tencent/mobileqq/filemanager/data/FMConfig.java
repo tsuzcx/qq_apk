@@ -155,7 +155,7 @@ public class FMConfig
   
   public static boolean a()
   {
-    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433572), "qqsetting_auto_receive_pic_key", true);
+    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131433586), "qqsetting_auto_receive_pic_key", true);
     QLog.i("FMConfig<FileAssistant>", 1, "PreloadThumb switch is[" + bool + "]");
     return bool;
   }

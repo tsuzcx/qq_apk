@@ -1,29 +1,13 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
-public class wvn
-  extends ContactBindObserver
+class wvn
+  implements Runnable
 {
-  public wvn(SettingActivity2 paramSettingActivity2) {}
+  wvn(wvm paramwvm, int paramInt) {}
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    if (this.a.c != null)
-    {
-      this.a.app.unRegistObserver(this.a.c);
-      this.a.c = null;
-    }
-    this.a.b();
-    if (paramBoolean)
-    {
-      if (this.a.c != null)
-      {
-        this.a.app.unRegistObserver(this.a.c);
-        this.a.c = null;
-      }
-      this.a.a();
-    }
+    this.jdField_a_of_type_Wvm.a.a(36, 16, Integer.valueOf(this.jdField_a_of_type_Int));
   }
 }
 

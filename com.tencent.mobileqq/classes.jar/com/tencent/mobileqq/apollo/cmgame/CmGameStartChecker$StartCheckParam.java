@@ -11,6 +11,7 @@ public class CmGameStartChecker$StartCheckParam
   public String apolloGameSt;
   public String apolloGameStkey;
   public int apolloStatus;
+  public int appIdSrc;
   public boolean enableMenu = true;
   public int enter;
   public String extInfoFromSvr;
@@ -19,6 +20,7 @@ public class CmGameStartChecker$StartCheckParam
   public ApolloGameData game;
   public int gameId;
   public int gameMode;
+  public int gameType;
   public int gender;
   public boolean isCreator;
   public boolean isPatch;
@@ -31,6 +33,7 @@ public class CmGameStartChecker$StartCheckParam
   public boolean mUpdated;
   public int msgGameStatus;
   public String openId;
+  public String redUrl;
   public long requestCode;
   public long retCode;
   public long roomId;

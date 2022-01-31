@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.now.view.presenter;
 
-import aezh;
-import aezi;
-import aezj;
+import afee;
+import afef;
+import afeg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource;
 import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSourceImpl;
@@ -38,7 +38,7 @@ public class CommentsPresenterImpl
   
   public void a(Comments.Comment paramComment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource.a(paramComment, new aezi(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource.a(paramComment, new afef(this));
   }
   
   public void b()
@@ -46,12 +46,12 @@ public class CommentsPresenterImpl
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCommentsView != null) {
       this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCommentsView.a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource.a(this.jdField_a_of_type_Int, new aezh(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource.a(this.jdField_a_of_type_Int, new afee(this));
   }
   
   public void b(Comments.Comment paramComment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource.a(paramComment, new aezj(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowDatasourceCommentsDataSource.a(paramComment, new afeg(this));
   }
   
   public void c()

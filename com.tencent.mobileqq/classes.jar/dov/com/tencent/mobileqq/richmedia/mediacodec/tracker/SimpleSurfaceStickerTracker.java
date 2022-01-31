@@ -8,9 +8,11 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.view.Surface;
-import aonq;
-import aonr;
+import aowg;
+import aowh;
 import com.tencent.biz.qqstory.utils.FileUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.util.TrackerSoLoader;
 import com.tencent.qphone.base.util.QLog;
 import com.tracking.sdk.TrackerManager;
 import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
@@ -57,7 +59,7 @@ public class SimpleSurfaceStickerTracker
     {
       this.jdField_a_of_type_AndroidMediaImageReader = ImageReader.newInstance(paramInt1, paramInt2, 35, 10);
       this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_AndroidMediaImageReader.getSurface();
-      this.jdField_a_of_type_AndroidMediaImageReader.setOnImageAvailableListener(new aonq(this), this.jdField_a_of_type_AndroidOsHandler);
+      this.jdField_a_of_type_AndroidMediaImageReader.setOnImageAvailableListener(new aowg(this), this.jdField_a_of_type_AndroidOsHandler);
     }
   }
   
@@ -77,7 +79,7 @@ public class SimpleSurfaceStickerTracker
         QLog.e("SimpleSurfaceStickerTracker", 2, "dealImageData get data null");
         return;
       }
-      this.jdField_b_of_type_JavaUtilList.add(new aonr(paramImage, k, m - j * k, l));
+      this.jdField_b_of_type_JavaUtilList.add(new aowh(paramImage, k, m - j * k, l));
     }
     catch (Exception paramImage)
     {
@@ -222,10 +224,14 @@ public class SimpleSurfaceStickerTracker
   
   public boolean a(byte[] paramArrayOfByte)
   {
+    boolean bool = TrackerSoLoader.a(BaseApplicationImpl.getContext());
     if (QLog.isColorLevel()) {
-      QLog.d("SimpleSurfaceStickerTracker", 2, "initFirstFrame frameX=" + this.jdField_a_of_type_Float + ",frameY=" + this.jdField_b_of_type_Float + ",frameWidth=" + this.jdField_c_of_type_Float + ",frameHeight=" + this.jdField_d_of_type_Float + ", deltX =" + this.e + ", deltY =" + this.f);
+      QLog.d("SimpleSurfaceStickerTracker", 2, "initFirstFrame frameX=" + this.jdField_a_of_type_Float + ",frameY=" + this.jdField_b_of_type_Float + ",frameWidth=" + this.jdField_c_of_type_Float + ",frameHeight=" + this.jdField_d_of_type_Float + ", deltX =" + this.e + ", deltY =" + this.f + ", loadSuccess =" + bool);
     }
-    boolean bool = TrackerManager.newInstance().openTrack(paramArrayOfByte, 2, 0, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Float, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, 1.0F);
+    if (!bool) {
+      return false;
+    }
+    bool = TrackerManager.newInstance().openTrack(paramArrayOfByte, 2, 0, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Float, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, 1.0F);
     this.jdField_a_of_type_Boolean = bool;
     return bool;
   }

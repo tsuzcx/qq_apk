@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.os.MqqHandler;
 
 public class afdu
-  implements DialogInterface.OnClickListener
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public afdu(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public afdu(VideoViewTVKImpl paramVideoViewTVKImpl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a.d(true);
-    ReportController.b(null, "dc00899", "grp_lbs", "", "data_like", "clk_entry", 0, 0, "", "", "", "");
+    ThreadManager.getUIHandler().post(new afdv(this));
   }
 }
 

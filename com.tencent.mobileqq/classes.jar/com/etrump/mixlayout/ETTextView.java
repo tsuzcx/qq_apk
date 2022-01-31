@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Canvas;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.text.Spannable;
+import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -44,8 +47,8 @@ import px;
 public class ETTextView
   extends AnimationTextView
 {
-  public static boolean i;
-  private static boolean l;
+  public static boolean h;
+  private static boolean k;
   public int a;
   public long a;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
@@ -72,19 +75,18 @@ public class ETTextView
   public boolean e;
   private int f;
   public boolean f;
-  private int jdField_g_of_type_Int;
-  boolean jdField_g_of_type_Boolean = false;
+  private int g;
+  public boolean g;
   private int h;
-  public boolean h;
   private int i;
+  private boolean l;
   private boolean m;
   private boolean n;
   private boolean o;
-  private boolean p;
   
   static
   {
-    jdField_i_of_type_Boolean = true;
+    jdField_h_of_type_Boolean = true;
   }
   
   public ETTextView(Context paramContext)
@@ -140,7 +142,7 @@ public class ETTextView
       return;
     }
     if (bool) {}
-    for (paramInt1 = 2130845785;; paramInt1 = 2130845621)
+    for (paramInt1 = 2130845866;; paramInt1 = 2130845702)
     {
       localBubbleInfo.a(this, localResources.getDrawable(paramInt1));
       return;
@@ -155,7 +157,7 @@ public class ETTextView
     {
       return false;
       localETDecoration = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a();
-    } while ((localETDecoration == null) || (localETDecoration.a() <= 0));
+    } while ((localETDecoration == null) || (localETDecoration.getFrameNum() <= 0));
     return true;
   }
   
@@ -178,8 +180,8 @@ public class ETTextView
     {
       return;
       this.jdField_e_of_type_Boolean = false;
-      this.o = jdField_i_of_type_Boolean;
-    } while ((!this.o) || (this.p) || ((!paramBoolean) && ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("font_animation_played")))) && (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a().jdField_a_of_type_Int == -1)));
+      this.n = jdField_h_of_type_Boolean;
+    } while ((!this.n) || (this.o) || ((!paramBoolean) && ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("font_animation_played")))) && (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a().mFrameIndex == -1)));
     if ((!paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null))
     {
       this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
@@ -197,7 +199,7 @@ public class ETTextView
     for (String str1 = "1";; str1 = "0")
     {
       VasWebviewUtil.reportCommercialDrainage(str2, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, str1, "" + this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
-      this.p = true;
+      this.o = true;
       this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_c_of_type_JavaLangRunnable);
       return;
     }
@@ -222,7 +224,7 @@ public class ETTextView
   {
     if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null) || (!f())) {}
     int j;
-    int k;
+    int i1;
     label264:
     label271:
     do
@@ -248,10 +250,10 @@ public class ETTextView
                 }
                 localObject = (FontManager)((QQAppInterface)localObject).getManager(41);
               } while ((localObject != null) && (!((FontManager)localObject).b()));
-              if (!jdField_i_of_type_Boolean) {
+              if (!jdField_h_of_type_Boolean) {
                 break;
               }
-            } while ((!paramBoolean) && ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("font_animation_played")))) && (!this.jdField_h_of_type_Boolean));
+            } while ((!paramBoolean) && ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("font_animation_played")))) && (!this.jdField_g_of_type_Boolean));
             if ((!paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null))
             {
               this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
@@ -276,24 +278,24 @@ public class ETTextView
               if (localObject == null) {
                 break;
               }
-              k = localObject[0];
+              i1 = localObject[0];
               if (j != 0) {
                 break label271;
               }
               a();
-              this.jdField_h_of_type_Boolean = true;
+              this.jdField_g_of_type_Boolean = true;
               return;
             }
-          } while ((j <= 0) || (j >= k));
+          } while ((j <= 0) || (j >= i1));
           c();
-          this.jdField_h_of_type_Boolean = true;
+          this.jdField_g_of_type_Boolean = true;
           return;
         } while (this.jdField_a_of_type_ComVasColorFontFounderColorLayout == null);
         j = this.jdField_a_of_type_ComVasColorFontFounderColorLayout.jdField_a_of_type_Int;
         localObject = this.jdField_a_of_type_ComVasColorFontFounderColorLayout.jdField_a_of_type_ArrayOfInt;
       } while (localObject == null);
-      k = localObject[0];
-    } while ((j <= 0) || (j >= k));
+      i1 = localObject[0];
+    } while ((j <= 0) || (j >= i1));
     b();
   }
   
@@ -316,8 +318,8 @@ public class ETTextView
   
   public void d()
   {
+    this.n = false;
     this.o = false;
-    this.p = false;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
   }
   
@@ -326,22 +328,14 @@ public class ETTextView
     return b();
   }
   
-  public void e()
-  {
-    this.o = false;
-    if (g()) {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a().a();
-    }
-  }
-  
   public boolean e()
   {
-    if (!this.m)
+    if (!this.l)
     {
-      this.n = com.tencent.mobileqq.text.TextUtils.b(getText().toString());
-      this.m = true;
+      this.m = com.tencent.mobileqq.text.TextUtils.b(getText().toString());
+      this.l = true;
     }
-    return (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId != 0) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontType == 4) && (!this.n);
+    return (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId != 0) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontType == 4) && (!this.m);
   }
   
   public boolean f()
@@ -373,32 +367,11 @@ public class ETTextView
         return;
         if (c())
         {
-          if ((this.jdField_a_of_type_ComEtrumpMixlayoutETLayout == null) || (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont == null))
-          {
-            super.onDraw(paramCanvas);
-            return;
+          if (this.jdField_e_of_type_Boolean) {
+            a(false);
           }
-          if (((this.o) && (this.p)) || (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontColor != getCurrentTextColor())) {}
-          try
-          {
-            this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.b(getCurrentTextColor());
-            this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_ComEtrumpMixlayoutETFont.mFontColor = getLinkTextColors().getDefaultColor();
-            this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a();
-            if (this.jdField_e_of_type_Boolean) {
-              a(false);
-            }
-            this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(paramCanvas, getPaddingLeft(), getPaddingTop());
-            return;
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("ETTextView", 2, "onDraw err" + localThrowable.getMessage());
-              }
-            }
-          }
+          this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(paramCanvas, getPaddingLeft(), getPaddingTop());
+          return;
         }
       } while (!e());
       if (!this.jdField_a_of_type_ComVasColorFontFounderColorLayout.a(paramCanvas, this.jdField_a_of_type_Long)) {
@@ -438,10 +411,10 @@ public class ETTextView
       localThrowable.printStackTrace();
       this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId = 0;
       this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Long = -1L;
-      if ((!l) && (localThrowable.getMessage().contains("textlayout")))
+      if ((!k) && (localThrowable.getMessage().contains("textlayout")))
       {
         VasMonitorHandler.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
-        l = true;
+        k = true;
       }
       super.onMeasure(paramInt1, paramInt2);
       return;
@@ -449,86 +422,101 @@ public class ETTextView
     super.onMeasure(paramInt1, paramInt2);
     return;
     label202:
-    int i4 = View.MeasureSpec.getMode(paramInt1);
-    int i3 = View.MeasureSpec.getMode(paramInt2);
-    int k = View.MeasureSpec.getSize(paramInt1);
-    int i1 = View.MeasureSpec.getSize(paramInt2);
     if (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout == null) {
       this.jdField_a_of_type_ComEtrumpMixlayoutETLayout = new ETLayout();
     }
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null)
-    {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setColor(getCurrentTextColor());
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setSize(getTextSize());
-      if (this.jdField_c_of_type_Float <= 0.0F) {
-        break label529;
-      }
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setCrochet(true, this.jdField_i_of_type_Int, (int)this.jdField_c_of_type_Float);
-    }
+    int i3 = View.MeasureSpec.getMode(paramInt1);
+    int i4 = View.MeasureSpec.getMode(paramInt2);
+    int i1 = View.MeasureSpec.getSize(paramInt1);
+    int i2 = View.MeasureSpec.getSize(paramInt2);
     int j;
-    while ((this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Long != this.jdField_a_of_type_Long) || ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) && (!this.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont))) || (this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Boolean != this.jdField_a_of_type_Boolean))
+    boolean bool;
+    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Long != this.jdField_a_of_type_Long) || ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) && (!this.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont))) || (this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Boolean != this.jdField_a_of_type_Boolean))
     {
-      e();
       d();
-      this.jdField_g_of_type_Boolean = false;
-      int i2 = this.jdField_a_of_type_Int - (getPaddingLeft() + getPaddingRight());
-      j = i2;
-      if (i4 == -2147483648) {
-        j = Math.min(k, i2);
-      }
-      i2 = getLinkTextColors().getDefaultColor();
-      this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Boolean = this.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(this.jdField_h_of_type_Int);
-      ETFont localETFont = new ETFont(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath, getTextSize());
-      localETFont.copy(this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
-      if (!this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(j, getText(), localETFont, i2))
+      j = this.jdField_a_of_type_Int - (getPaddingLeft() + getPaddingRight());
+      if (i3 == -2147483648)
       {
-        this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId = 0;
-        this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Long = -1L;
-        super.onMeasure(paramInt1, paramInt2);
-        return;
-        label529:
-        this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setCrochet(false, this.jdField_i_of_type_Int, 0);
-      }
-      else
-      {
-        if ((this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Int >= 2048) || (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Int >= 2048)) {
+        j = Math.min(i1, j);
+        int i5 = getLinkTextColors().getDefaultColor();
+        if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null)
+        {
+          this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setColor(getCurrentTextColor());
+          this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setSize(getTextSize());
+          if ((getPaint().getFlags() & 0x20) <= 0) {
+            break label849;
+          }
+          bool = true;
+          label395:
+          this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setBold(bool);
+          if (this.jdField_c_of_type_Float <= 0.0F) {
+            break label598;
+          }
+          this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setShadow(true, this.jdField_i_of_type_Int, (int)this.jdField_d_of_type_Float, (int)this.jdField_e_of_type_Float, (int)this.jdField_c_of_type_Float);
+        }
+        for (;;)
+        {
+          Object localObject = getPaint().getFontMetrics();
+          float f1 = ((Paint.FontMetrics)localObject).descent;
+          float f2 = ((Paint.FontMetrics)localObject).ascent;
+          float f3 = ((Paint.FontMetrics)localObject).leading;
+          this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Int = ((int)(f3 + (f1 - f2)));
+          this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+          this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Boolean = this.jdField_a_of_type_Boolean;
+          this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(this.jdField_h_of_type_Int);
+          localObject = new ETFont(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath, getTextSize());
+          ((ETFont)localObject).copy(this.jdField_a_of_type_ComEtrumpMixlayoutETFont);
+          if (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(j, getText(), (ETFont)localObject, i5)) {
+            break;
+          }
+          this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId = 0;
+          this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Long = -1L;
+          super.onMeasure(paramInt1, paramInt2);
+          return;
+          label598:
+          this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setShadow(false, 0, 0, 0, 0);
+        }
+        if ((this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Int >= 2048) || (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_c_of_type_Int >= 2048)) {
           throw new Exception("large bitmap width=" + 0 + ", height=" + 0);
         }
         if (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Boolean) {
           throw new Exception("no text use system measure2");
         }
-        this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Int);
-        this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a();
+        this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(null);
         this.jdField_e_of_type_Boolean = true;
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (!android.text.TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("font_animation_played")))) {
+          break label855;
+        }
+        this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_c_of_type_Int);
+        break label855;
       }
     }
     for (;;)
     {
-      setMeasuredDimension(Math.max(k, this.jdField_f_of_type_Int), Math.max(j, this.jdField_g_of_type_Int));
+      label758:
+      setMeasuredDimension(Math.max(i1, this.jdField_f_of_type_Int), Math.max(j, this.jdField_g_of_type_Int));
       return;
-      label689:
-      k = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_a_of_type_Int + getPaddingLeft() + getPaddingRight();
-      label765:
-      while (i3 != 1073741824)
+      label781:
+      i1 = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Int + getPaddingLeft() + getPaddingRight();
+      label849:
+      label855:
+      while (i4 != 1073741824)
       {
-        if (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout != null)
-        {
-          j = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_b_of_type_Int + getPaddingTop() + getPaddingBottom();
-          if (i3 != -2147483648) {
-            break label765;
-          }
-          j = Math.min(j, i1);
-          break;
+        i3 = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.jdField_c_of_type_Int + getPaddingTop() + getPaddingBottom();
+        j = i3;
+        if (i4 != -2147483648) {
+          break label758;
         }
-        throw new Exception("measure height fail Layout is null");
+        j = Math.min(i3, i2);
+        break label758;
         break;
-        if (i4 != 1073741824) {
-          break label689;
+        bool = false;
+        break label395;
+        if (i3 != 1073741824) {
+          break label781;
         }
       }
-      j = i1;
+      j = i2;
     }
   }
   
@@ -538,6 +526,9 @@ public class ETTextView
     {
       getViewTreeObserver().removeOnPreDrawListener(this);
       return super.onPreDraw();
+    }
+    if (c()) {
+      a(false);
     }
     getViewTreeObserver().removeOnPreDrawListener(this);
     return true;
@@ -550,32 +541,32 @@ public class ETTextView
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick != null)
     {
-      int i3;
       int i4;
+      int i5;
       if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (paramMotionEvent.getAction() == 0))
       {
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
         this.jdField_b_of_type_Float = paramMotionEvent.getY();
         j = (int)paramMotionEvent.getX();
-        k = (int)paramMotionEvent.getY();
-        i1 = getPaddingLeft();
-        i2 = getPaddingTop();
-        i3 = getScrollX();
-        i4 = getScrollY();
+        i1 = (int)paramMotionEvent.getY();
+        i2 = getPaddingLeft();
+        i3 = getPaddingTop();
+        i4 = getScrollX();
+        i5 = getScrollY();
         this.jdField_b_of_type_Int = -1;
         this.jdField_c_of_type_Int = -1;
         if (c()) {
-          a(j - i1 + i3, k - i2 + i4);
+          a(j - i2 + i4, i1 - i3 + i5);
         }
         this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
         if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (this.jdField_a_of_type_AndroidViewMotionEvent != null) && (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent)))
         {
-          this.j = false;
+          this.jdField_i_of_type_Boolean = false;
           this.jdField_a_of_type_AndroidViewMotionEvent = null;
           this.jdField_b_of_type_AndroidViewMotionEvent = null;
           if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick != null)
           {
-            this.k = true;
+            this.j = true;
             this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick.a(this);
             return true;
           }
@@ -586,19 +577,19 @@ public class ETTextView
         if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) || (paramMotionEvent.getAction() != 0)) {
           break label332;
         }
-        this.j = true;
+        this.jdField_i_of_type_Boolean = true;
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
         this.jdField_b_of_type_Float = paramMotionEvent.getY();
         j = (int)paramMotionEvent.getX();
-        k = (int)paramMotionEvent.getY();
-        i1 = getPaddingLeft();
-        i2 = getPaddingTop();
-        i3 = getScrollX();
-        i4 = getScrollY();
+        i1 = (int)paramMotionEvent.getY();
+        i2 = getPaddingLeft();
+        i3 = getPaddingTop();
+        i4 = getScrollX();
+        i5 = getScrollY();
         this.jdField_b_of_type_Int = -1;
         this.jdField_c_of_type_Int = -1;
         if (c()) {
-          a(j - i1 + i3, k - i2 + i4);
+          a(j - i2 + i4, i1 - i3 + i5);
         }
         if (QLog.isColorLevel()) {
           QLog.d("ETTextView", 2, "reserve to initial status");
@@ -612,34 +603,39 @@ public class ETTextView
     if (QLog.isColorLevel()) {
       QLog.d("ETTextView", 2, "action up");
     }
-    int i1 = (int)paramMotionEvent.getX();
+    int i2 = (int)paramMotionEvent.getX();
     int j = (int)paramMotionEvent.getY();
-    int i2 = getPaddingLeft();
-    int k = getPaddingTop();
-    i1 = i1 - i2 + getScrollX();
-    j = j - k + getScrollY();
-    this.jdField_d_of_type_Int = i1;
+    int i3 = getPaddingLeft();
+    int i1 = getPaddingTop();
+    i2 = i2 - i3 + getScrollX();
+    j = j - i1 + getScrollY();
+    this.jdField_d_of_type_Int = i2;
     this.jdField_e_of_type_Int = j;
     if (c()) {
-      j = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(i1, j) + 1;
+      j = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(i2, j) + 1;
     }
     for (;;)
     {
-      ClickableSpan[] arrayOfClickableSpan = (ClickableSpan[])((Spannable)getText()).getSpans(j, j, ClickableSpan.class);
-      if (arrayOfClickableSpan.length != 0)
+      Object localObject = (ClickableSpan[])((Spannable)getText()).getSpans(j, j, ClickableSpan.class);
+      if (localObject.length != 0)
       {
-        arrayOfClickableSpan[0].onClick(this);
+        localObject[0].onClick(this);
         return true;
         if (e()) {
-          j = this.jdField_a_of_type_ComVasColorFontFounderColorLayout.a(i1, j);
+          j = this.jdField_a_of_type_ComVasColorFontFounderColorLayout.a(i2, j);
         }
       }
       else
       {
         this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        if (this.k)
+        if ((c()) && (!this.o))
         {
-          this.k = false;
+          localObject = this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a();
+          this.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a(((Rect)localObject).width(), ((Rect)localObject).height());
+        }
+        if (this.j)
+        {
+          this.j = false;
           this.jdField_b_of_type_AndroidViewMotionEvent = null;
         }
         postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
@@ -660,7 +656,7 @@ public class ETTextView
         setTypeface(null);
       }
       if (this.jdField_a_of_type_Long != paramLong) {
-        this.m = false;
+        this.l = false;
       }
       this.jdField_a_of_type_Long = paramLong;
       return;
@@ -688,6 +684,7 @@ public class ETTextView
       if (this.jdField_a_of_type_ComEtrumpMixlayoutETLayout == null) {
         this.jdField_a_of_type_ComEtrumpMixlayoutETLayout = new ETLayout();
       }
+      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setColor(getCurrentTextColor());
       return;
       this.jdField_a_of_type_ComEtrumpMixlayoutETFont.copy(paramETFont);
       this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId = paramLong;
@@ -702,7 +699,7 @@ public class ETTextView
   public void setFont(ETFont paramETFont, ChatMessage paramChatMessage, SessionInfo paramSessionInfo)
   {
     if (this.jdField_a_of_type_Long != paramChatMessage.uniseq) {
-      this.m = false;
+      this.l = false;
     }
     Object localObject;
     if ((paramETFont.mText == null) && ((paramChatMessage instanceof MessageForText)))
@@ -751,14 +748,11 @@ public class ETTextView
   
   public void setShadowLayer(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
+    super.setShadowLayer(paramFloat1, paramFloat2, paramFloat3, paramInt);
     this.jdField_c_of_type_Float = paramFloat1;
     this.jdField_d_of_type_Float = paramFloat2;
     this.jdField_e_of_type_Float = paramFloat3;
     this.jdField_i_of_type_Int = paramInt;
-    super.setShadowLayer(paramFloat1, paramFloat2, paramFloat3, paramInt);
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.setShadow(true, paramInt, (int)paramFloat2, (int)paramFloat3, (int)paramFloat1);
-    }
   }
 }
 

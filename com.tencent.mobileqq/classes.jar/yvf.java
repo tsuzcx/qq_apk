@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
-import com.tencent.qqavopensdk.PBuffer.SSOTunnelEvent.CsCmdCallback;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class yvf
-  implements SSOTunnelEvent.CsCmdCallback
+  implements Runnable
 {
-  public yvf(AVEngineWalper paramAVEngineWalper, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  public yvf(CmGameStartChecker paramCmGameStartChecker, CmGameStartChecker.StartCheckParam paramStartCheckParam, byte[] paramArrayOfByte) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.a.b(1, "ctrl Params download failed!!!!");
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game == null) {
+      return;
     }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    ThreadManager.getUIHandler().post(new yvg(this, paramArrayOfByte));
+    String str = ApolloConstant.n + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId + ".patch";
+    FileUtils.a(this.jdField_a_of_type_ArrayOfByte, str);
+    this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker.c(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
   }
 }
 

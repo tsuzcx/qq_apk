@@ -1,31 +1,27 @@
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.common.offline.AsyncCallBack;
+import com.tencent.biz.webviewplugin.OfflinePlugin;
+import com.tencent.biz.webviewplugin.OfflineWebResManager;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class akwx
-  implements AbsListView.OnScrollListener
+class akwx
+  implements AsyncCallBack
 {
-  public akwx(SlideDetectListView paramSlideDetectListView) {}
+  akwx(akww paramakww, long paramLong) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    this.a.c = paramInt;
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt);
+    this.jdField_a_of_type_Akww.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserOfflineHandler", 2, "now offline bid has checked, bid " + this.jdField_a_of_type_Akww.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaLangString + ", loadMode: " + this.jdField_a_of_type_Akww.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", cost: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    if (SlideDetectListView.b(this.a) != null) {
-      SlideDetectListView.b(this.a).a(paramAbsListView, paramInt);
+    if (paramInt != 0)
+    {
+      OfflinePlugin.c(this.jdField_a_of_type_Akww.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaLangString);
+      OfflineWebResManager.a(this.jdField_a_of_type_Akww.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (SlideDetectListView.a(this.a) != null) {
-      SlideDetectListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
-    if (SlideDetectListView.b(this.a) != null) {
-      SlideDetectListView.b(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    }
+    this.jdField_a_of_type_Akww.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.a();
   }
 }
 

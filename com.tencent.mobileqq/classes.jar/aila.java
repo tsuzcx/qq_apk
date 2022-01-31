@@ -1,24 +1,33 @@
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.IButtonHandle;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.statistics.UEC.UECItem;
 
-public class aila
-  implements ImageButton.OnClickListener
+public final class aila
+  implements Parcelable.Creator
 {
-  public aila(SceneBuilder paramSceneBuilder, Layer paramLayer, String paramString) {}
-  
-  public void a(Sprite paramSprite)
+  public UEC.UECItem a(Parcel paramParcel)
   {
-    if (SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder) != null) {
-      SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLayer, paramSprite, this.jdField_a_of_type_JavaLangString);
-    }
+    UEC.UECItem localUECItem = new UEC.UECItem();
+    localUECItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localUECItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localUECItem.jdField_a_of_type_Long = paramParcel.readLong();
+    localUECItem.jdField_b_of_type_Int = paramParcel.readInt();
+    localUECItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localUECItem.c = paramParcel.readString();
+    localUECItem.d = paramParcel.readString();
+    localUECItem.e = paramParcel.readString();
+    localUECItem.f = paramParcel.readString();
+    return localUECItem;
+  }
+  
+  public UEC.UECItem[] a(int paramInt)
+  {
+    return new UEC.UECItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aila
  * JD-Core Version:    0.7.0.1
  */

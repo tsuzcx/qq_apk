@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import java.util.List;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
 
 public class xeu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xeu(GoldMsgDialog paramGoldMsgDialog, PreloadManager paramPreloadManager, List paramList, AppRuntime paramAppRuntime) {}
+  public xeu(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(this.jdField_a_of_type_JavaUtilList, new xev(this));
+    GoldMsgSettingActivity.a(this.a, paramView);
   }
 }
 

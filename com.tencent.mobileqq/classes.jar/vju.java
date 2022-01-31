@@ -1,38 +1,37 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.customviews.MessageProgressTextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
-import com.tencent.mobileqq.widget.ProgressCircle;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 public class vju
-  extends BaseBubbleBuilder.ViewHolder
 {
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public MessageProgressTextView a;
-  public AsyncImageView a;
-  public EllipsizingTextView a;
-  public ProgressCircle a;
-  public View b;
-  public ImageView b;
-  public ProgressBar b;
-  public TextView b;
-  public AsyncImageView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public View e;
-  public TextView e;
-  public TextView f;
+  private Map a = new HashMap();
   
-  public vju(TroopFileItemBuilder paramTroopFileItemBuilder) {}
+  public View a(int paramInt)
+  {
+    LinkedList localLinkedList = (LinkedList)this.a.get(Integer.valueOf(paramInt));
+    if (localLinkedList == null) {
+      return null;
+    }
+    return (View)localLinkedList.poll();
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    LinkedList localLinkedList2 = (LinkedList)this.a.get(Integer.valueOf(paramInt));
+    LinkedList localLinkedList1 = localLinkedList2;
+    if (localLinkedList2 == null)
+    {
+      localLinkedList1 = new LinkedList();
+      this.a.put(Integer.valueOf(paramInt), localLinkedList1);
+    }
+    localLinkedList1.add(paramView);
+  }
 }
 
 

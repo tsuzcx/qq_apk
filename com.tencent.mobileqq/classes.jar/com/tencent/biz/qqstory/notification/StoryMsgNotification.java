@@ -22,8 +22,8 @@ import com.tencent.mobileqq.msf.sdk.QNotificationManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BadgeUtils;
 import java.util.ArrayList;
-import nhv;
-import nhw;
+import nmf;
+import nmg;
 
 public class StoryMsgNotification
 {
@@ -91,19 +91,19 @@ public class StoryMsgNotification
     {
       do
       {
-        return "日迹消息";
+        return "小视频消息";
         if (j > 100) {
-          return String.format("日迹消息（共%s条未读）", new Object[] { "99+" });
+          return String.format("小视频消息（共%s条未读）", new Object[] { "99+" });
         }
       } while (j <= 1);
-      return String.format("日迹消息（共%s条未读）", new Object[] { String.valueOf(j) });
+      return String.format("小视频消息（共%s条未读）", new Object[] { String.valueOf(j) });
     } while (TextUtils.isEmpty(paramStoryPushMsg.h));
     return paramStoryPushMsg.h;
   }
   
   public void a(Context paramContext)
   {
-    ThreadManager.post(new nhw(this, paramContext), 8, null, true);
+    ThreadManager.post(new nmg(this, paramContext), 8, null, true);
   }
   
   public void a(Context paramContext, int paramInt)
@@ -179,13 +179,13 @@ public class StoryMsgNotification
         QLog.w("zivonchen", 2, "showQQStoryMsgNotification line1 = " + str1 + ", line2 = " + str2);
       }
       localBuilder = new NotificationCompat.Builder(paramQQAppInterface.getApp());
-      localBuilder.setSmallIcon(2130839537).setWhen(System.currentTimeMillis()).setContentTitle(str1).setContentText(str2).setPriority(2).setStyle(new NotificationCompat.BigTextStyle().bigText(str2));
+      localBuilder.setSmallIcon(2130839552).setWhen(System.currentTimeMillis()).setContentTitle(str1).setContentText(str2).setPriority(2).setStyle(new NotificationCompat.BigTextStyle().bigText(str2));
       if (TextUtils.isEmpty(paramStoryPushMsg.g)) {
         break label490;
       }
       localObject = URLDrawable.URLDrawableOptions.obtain();
       localObject = URLDrawable.getDrawable(paramStoryPushMsg.g, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setURLDrawableListener(new nhv(this, localBuilder, paramQQAppInterface, paramStoryPushMsg, i, str1, str2));
+      ((URLDrawable)localObject).setURLDrawableListener(new nmf(this, localBuilder, paramQQAppInterface, paramStoryPushMsg, i, str1, str2));
       if (((URLDrawable)localObject).getStatus() != 1) {
         break;
       }

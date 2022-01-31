@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-public class aire
-  extends MessageObserver
+public final class aire
+  implements Parcelable.Creator
 {
-  public aire(ShortVideoForwardProcessor paramShortVideoForwardProcessor) {}
-  
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public TeamWorkFileImportInfo a(Parcel paramParcel)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    return new TeamWorkFileImportInfo(paramParcel);
+  }
+  
+  public TeamWorkFileImportInfo[] a(int paramInt)
+  {
+    return new TeamWorkFileImportInfo[paramInt];
   }
 }
 

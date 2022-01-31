@@ -2,7 +2,7 @@ package com.tencent.gdtad.views;
 
 import android.view.View;
 import java.lang.ref.WeakReference;
-import qlf;
+import qpw;
 
 public class GdtViewStatus
 {
@@ -75,7 +75,7 @@ public class GdtViewStatus
     if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
       return;
     }
-    ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new qlf(this), 500L);
+    ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new qpw(this), 500L);
   }
   
   public void c()

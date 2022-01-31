@@ -1,64 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ocr.OCRHandler;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
 
 public class agey
-  implements View.OnClickListener
+  implements INetEngine.INetEngineListener
 {
-  public agey(ScanTorchActivity paramScanTorchActivity) {}
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private String jdField_a_of_type_JavaLangString;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public void onClick(View paramView)
+  public agey(OCRHandler paramOCRHandler, Intent paramIntent, byte[] paramArrayOfByte, String paramString)
   {
-    boolean bool2 = false;
-    if ((this.a.a != null) && (this.a.a.a != null))
-    {
-      if (!ScanTorchActivity.g(this.a)) {
-        break label152;
-      }
-      paramView = this.a.a.a;
-      if (ScanTorchActivity.h(this.a)) {
-        break label142;
-      }
-      bool1 = true;
-      if (paramView.b(bool1))
-      {
-        paramView = this.a;
-        if (ScanTorchActivity.h(this.a)) {
-          break label147;
-        }
-        bool1 = true;
-        ScanTorchActivity.k(paramView, bool1);
-        paramView = this.a.a.a;
-        bool1 = bool2;
-        if (!ScanTorchActivity.h(this.a)) {
-          bool1 = true;
-        }
-        paramView.g(bool1);
-        ScanTorchActivity.a(this.a, true);
-        ScanTorchActivity.b(this.a, ScanTorchActivity.h(this.a));
-      }
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  
+  public void a(NetResp paramNetResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp()");
     }
-    label142:
-    label147:
-    label152:
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        return;
-        boolean bool1 = false;
-        continue;
-        bool1 = false;
-      }
-    }
-    QLog.d("ScanTorchActivity", 2, "initView click mFlashLightTips when view invisble.");
+    ThreadManager.post(new agez(this, paramNetResp), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agey
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,24 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.HotWordSearchEntryModel;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.TitleHeaderItem;
+import com.tencent.mobileqq.search.util.SearchUtils;
 
-public final class ahvq
-  implements ThreadFactory
+public class ahvq
+  implements View.OnClickListener
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  public ahvq(HotWordSearchEntryModel paramHotWordSearchEntryModel, HotWordSearchEntryDataModel.TitleHeaderItem paramTitleHeaderItem) {}
   
-  public Thread newThread(Runnable paramRunnable)
+  public void onClick(View paramView)
   {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$TitleHeaderItem.d))
+    {
+      SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$TitleHeaderItem.d);
+      SearchUtils.a("hot_list", "clk_title", new String[] { String.valueOf(1), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_Int) });
+      return;
+    }
+    SearchUtils.a("hot_list", "clk_title", new String[] { String.valueOf(2), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.jdField_a_of_type_Int) });
   }
 }
 

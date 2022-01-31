@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -62,6 +63,7 @@ public class PublicTracker
       }
     }
     label82:
+    label627:
     while (paramString2 == null)
     {
       do
@@ -137,15 +139,24 @@ public class PublicTracker
           if (QLog.isColorLevel()) {
             QLog.i("PubAccAutoMonitor", 2, "isRecommendCostFirst = " + jdField_b_of_type_Boolean);
           }
-          paramString1 = new HashMap();
-          if (jdField_b_of_type_Boolean) {}
-          for (i = 1;; i = 0)
+          paramString2 = new HashMap();
+          if (jdField_b_of_type_Boolean)
           {
-            paramString1.put("first", String.valueOf(i));
-            paramString1.put("which", String.valueOf(1));
-            StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString1, null);
+            i = 1;
+            paramString2.put("first", String.valueOf(i));
+            paramString2.put("which", String.valueOf(1));
+            if (!ReadInJoyHelper.f()) {
+              break label627;
+            }
+          }
+          for (paramString1 = "0";; paramString1 = "1")
+          {
+            paramString2.put("which_kandian", paramString1);
+            StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "actKandianTabOpenCost", true, jdField_c_of_type_Long, 0L, paramString2, null);
             jdField_b_of_type_Boolean = false;
             return;
+            i = 0;
+            break;
           }
         }
         if (TextUtils.equals(paramString1, "video_tab_cost"))

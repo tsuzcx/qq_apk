@@ -1,82 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MultiMsgProxy;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.PicInfoInterface.ErrInfo;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import android.animation.Animator;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoForwardInfo;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoResult;
-import java.util.ArrayList;
-import tencent.im.msg.im_msg_body.RichText;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowPlusPanel;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
 
-class aooe
-  implements UpCallBack
+public class aooe
+  extends aooa
 {
-  final int jdField_a_of_type_Int;
-  ShortVideoResult jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoResult;
+  public aooe(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  aooe(aood paramaood, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoResult = ((ShortVideoResult)paramaood.b.get(this.jdField_a_of_type_Int));
-  }
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
-  {
-    return (MessageForShortVideo)((ShortVideoForwardInfo)this.jdField_a_of_type_Aood.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
-  }
-  
-  public void a(UpCallBack.SendResult paramSendResult)
-  {
-    MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)((ShortVideoForwardInfo)this.jdField_a_of_type_Aood.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
-    localMessageForShortVideo.videoFileStatus = 1003;
-    localMessageForShortVideo.md5 = paramSendResult.d;
-    localMessageForShortVideo.uuid = paramSendResult.jdField_c_of_type_JavaLangString;
-    localMessageForShortVideo.thumbFileSize = ((int)paramSendResult.jdField_c_of_type_Long);
-    localMessageForShortVideo.videoAttr = paramSendResult.jdField_c_of_type_Int;
-    localMessageForShortVideo.serial();
-    paramSendResult = this.jdField_a_of_type_Aood.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator.a.a();
-    if (paramSendResult != null) {
-      paramSendResult.a(localMessageForShortVideo, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationEnd <<===");
+    }
+    if (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel != null) {
+      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel.a();
+    }
+    this.a.k();
+    this.a.e.setVisibility(4);
+    this.a.e.setPadding(0, 0, 0, 0);
+    if ((this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
+      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.y();
     }
   }
   
-  public void b(UpCallBack.SendResult paramSendResult)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    for (;;)
-    {
-      int i;
-      synchronized (this.jdField_a_of_type_Aood.b)
-      {
-        if (paramSendResult.jdField_a_of_type_Int == 0)
-        {
-          a(paramSendResult);
-          this.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoResult.jdField_a_of_type_Int = 0;
-          if (QLog.isColorLevel()) {
-            QLog.d("BaseShortVideoOprerator", 2, "onsend success!");
-          }
-          i = aood.a(this.jdField_a_of_type_Aood);
-          if (i == 0) {
-            this.jdField_a_of_type_Aood.jdField_a_of_type_DovComTencentMobileqqShortvideoBaseShortVideoOprerator.a(3, 0, this.jdField_a_of_type_Aood.b);
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoResult.jdField_a_of_type_Int = -1;
-          this.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = new PicInfoInterface.ErrInfo();
-          this.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b = paramSendResult.jdField_a_of_type_JavaLangString;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("BaseShortVideoOprerator", 2, "onsend fail! err:" + paramSendResult.jdField_a_of_type_JavaLangString);
-        }
-      }
-      if (this.jdField_a_of_type_Aood.jdField_a_of_type_Int == this.jdField_a_of_type_Aood.jdField_a_of_type_JavaUtilArrayList.size() - i) {
-        this.jdField_a_of_type_Aood.a();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationStart ===>>");
     }
   }
 }

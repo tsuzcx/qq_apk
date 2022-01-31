@@ -6,8 +6,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import aoco;
-import aocp;
+import aolj;
+import aolk;
 import com.tencent.av.core.VcSystemInfo;
 import com.tencent.biz.qqstory.base.download.DownloaderImp;
 import com.tencent.biz.qqstory.model.pendant.FileDownloadTask.Input;
@@ -55,7 +55,7 @@ public class BlessVoiceChangeManager
   static
   {
     jdField_a_of_type_JavaLangString = BaseApplicationImpl.sApplication.getFilesDir() + File.separator + "blessVoiceChange.json";
-    jdField_b_of_type_JavaLangString = AppConstants.aJ + "voiceChange/bless/";
+    jdField_b_of_type_JavaLangString = AppConstants.aK + "voiceChange/bless/";
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     a();
   }
@@ -335,7 +335,7 @@ public class BlessVoiceChangeManager
           if (((JSONObject)localObject4).has("QQVersion"))
           {
             j = k;
-            if (IndividuationConfigInfo.a(((JSONObject)localObject4).getString("QQVersion"), "7.6.3"))
+            if (IndividuationConfigInfo.a(((JSONObject)localObject4).getString("QQVersion"), "7.6.8"))
             {
               k = 0;
               j = k;
@@ -516,7 +516,7 @@ public class BlessVoiceChangeManager
       d();
       return;
     }
-    new aoco(this, this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloaderImp, l).executeOnExecutor(Bosses.get().getExecutor(16), new FileDownloadTask.Input[] { new FileDownloadTask.Input(str1, str2, null) });
+    new aolj(this, this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloaderImp, l).executeOnExecutor(Bosses.get().getExecutor(16), new FileDownloadTask.Input[] { new FileDownloadTask.Input(str1, str2, null) });
   }
   
   protected void a(QQStoryMusicInfo paramQQStoryMusicInfo)
@@ -533,7 +533,7 @@ public class BlessVoiceChangeManager
         FileUtils.a(new File(str), localFile);
       }
       localObject = new VoiceChangeBasicParams((String)localObject, i, 64000, 2, paramQQStoryMusicInfo.c);
-      VoiceChangeManager.a(BaseApplicationImpl.getContext(), (VoiceChangeBasicParams)localObject, jdField_c_of_type_JavaLangString, new aocp(paramQQStoryMusicInfo, str), new VoiceChangeModeParams(false, false, false, true, true, null));
+      VoiceChangeManager.a(BaseApplicationImpl.getContext(), (VoiceChangeBasicParams)localObject, jdField_c_of_type_JavaLangString, new aolk(paramQQStoryMusicInfo, str), new VoiceChangeModeParams(false, false, false, true, true, null));
     }
   }
   

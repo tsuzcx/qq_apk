@@ -1,17 +1,27 @@
+import android.graphics.Bitmap;
 import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 public class kpt
-  implements Runnable
+  implements URLDrawable.URLDrawableListener
 {
-  public kpt(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, kpy paramkpy, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2, RelativeLayout.LayoutParams paramLayoutParams3) {}
+  public kpt(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Kpy.b.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_Kpy.c.setLayoutParams(this.b);
-    this.jdField_a_of_type_Kpy.d.setLayoutParams(this.c);
+    paramURLDrawable = ImageUtil.a(paramURLDrawable);
+    Bitmap localBitmap = ImageUtil.c(paramURLDrawable, 110, 110);
+    this.a.c.setImageBitmap(localBitmap);
+    paramURLDrawable.recycle();
   }
 }
 

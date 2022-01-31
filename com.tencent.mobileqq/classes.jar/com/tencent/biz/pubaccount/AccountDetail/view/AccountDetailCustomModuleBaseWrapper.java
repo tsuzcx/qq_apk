@@ -19,8 +19,8 @@ import com.tencent.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kqs;
-import kqt;
+import ksz;
+import kta;
 
 public class AccountDetailCustomModuleBaseWrapper
 {
@@ -35,8 +35,8 @@ public class AccountDetailCustomModuleBaseWrapper
   public AccountDetailCustomModuleBaseWrapper(Context paramContext, ArrayList paramArrayList, AccountDetailBaseItemClickHandler paramAccountDetailBaseItemClickHandler, String paramString1, String paramString2)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new kqs(this);
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new kqt(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ksz(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new kta(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailHandlerAccountDetailBaseItemClickHandler = paramAccountDetailBaseItemClickHandler;

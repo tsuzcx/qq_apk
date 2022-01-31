@@ -1,30 +1,38 @@
-import android.content.Context;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
-import cooperation.weiyun.utils.SoHelper.SoListener;
-import java.io.File;
+import android.os.Looper;
+import android.os.Process;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.thread.BaseHandler;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class anig
-  implements WyDownloader.IDownloadListener
+  implements Runnable
 {
-  public anig(String paramString1, String paramString2, SoHelper.SoListener paramSoListener, Context paramContext, File paramFile1, File paramFile2) {}
-  
-  public void a(String paramString, long paramLong, float paramFloat)
+  public void run()
   {
-    if (this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener != null) {
-      this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener.a(paramLong, paramFloat);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
-  {
-    if (paramBoolean) {
-      WyDownloader.a().a("http://dldir1.qq.com/weiyun/android/qq/librarySize1002.txt", this.jdField_a_of_type_JavaLangString, "SoHelper", new anih(this));
-    }
-    while (this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener == null) {
+    try
+    {
+      int i = ((Integer)BaseHandler.InitalPriority.get()).intValue();
+      int j = Process.getThreadPriority(Process.myTid());
+      long l = Thread.currentThread().getId();
+      BaseHandler.isRegulated.set(Boolean.valueOf(false));
+      BaseHandler.InitalPriority.remove();
+      BaseHandler.access$400(i);
+      if (BaseHandler.access$400(i)) {}
+      for (i = BaseHandler.regulalteCount.decrementAndGet();; i = BaseHandler.regulalteCount.get())
+      {
+        Looper localLooper = Looper.myLooper();
+        if (localLooper != null) {
+          localLooper.setMessageLogging(null);
+        }
+        QLog.i("BaseHandler", 1, "resetPriority ThreadName:" + Thread.currentThread().getName() + "(" + l + ") currentPriority: " + j + ",changed:" + Process.getThreadPriority(Process.myTid()) + " regulated:" + i);
+        return;
+      }
       return;
     }
-    this.jdField_a_of_type_CooperationWeiyunUtilsSoHelper$SoListener.a(paramString3);
+    catch (Exception localException)
+    {
+      QLog.w("BaseHandler", 1, "", localException);
+    }
   }
 }
 

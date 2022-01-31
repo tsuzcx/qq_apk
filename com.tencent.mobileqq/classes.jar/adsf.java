@@ -1,27 +1,27 @@
-import android.view.SurfaceHolder;
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.mobileqq.floatscr.ColorScreenConfig;
+import com.tencent.mobileqq.floatscr.ColorScreenManager;
+import com.tencent.mobileqq.vas.VasManager.CompleteListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 public class adsf
-  implements IVideoViewBase.IVideoViewCallBack
+  implements Runnable
 {
-  public adsf(VideoBaseItem paramVideoBaseItem) {}
+  public adsf(ColorScreenManager paramColorScreenManager, int paramInt, VasManager.CompleteListener paramCompleteListener) {}
   
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
+  public void run()
   {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
-  }
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
-  }
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    this.a.a = true;
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
+    String str = "colorScreen.android." + this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.b(str, this.jdField_a_of_type_ComTencentMobileqqVasVasManager$CompleteListener, null);
+    ColorScreenConfig localColorScreenConfig = this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(this.jdField_a_of_type_Int);
+    if (localColorScreenConfig == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorScreenManager", 1, "getLocalConfig return null, go to download");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(this.jdField_a_of_type_Int);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(str, localColorScreenConfig);
   }
 }
 

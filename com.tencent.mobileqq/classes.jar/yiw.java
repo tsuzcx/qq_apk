@@ -1,22 +1,25 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.adapter.contacts.BuddyListItem.ViewTag;
-import com.tencent.widget.SingleLineTextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopObserver;
+import java.util.List;
 
 public class yiw
-  extends BuddyListItem.ViewTag
+  extends TroopObserver
 {
-  public StringBuilder a;
-  public ImageView b;
-  public SingleLineTextView c;
+  public yiw(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public yiw()
+  protected void a(String paramString, boolean paramBoolean, List paramList, int paramInt, long paramLong)
   {
-    this.a = 11;
+    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
+      return;
+    }
+    ThreadManager.post(new yix(this, paramList), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yiw
  * JD-Core Version:    0.7.0.1
  */

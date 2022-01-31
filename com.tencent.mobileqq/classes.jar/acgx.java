@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
+import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
+import com.tencent.mobileqq.earlydownload.handler.PokeResHandler;
 
 public class acgx
   implements Runnable
 {
-  public acgx(StickerGestureDetector paramStickerGestureDetector) {}
+  public acgx(PokeResHandler paramPokeResHandler) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerFrameLayout);
+    PokeItemHelper.a(this.a.a, null);
   }
 }
 

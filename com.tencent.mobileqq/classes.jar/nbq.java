@@ -1,29 +1,18 @@
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.widget.ActionSheet;
 
 public class nbq
-  extends SimpleJob
+  implements View.OnClickListener
 {
-  public nbq(QQStoryCmdHandler paramQQStoryCmdHandler, Bundle paramBundle, byte[] paramArrayOfByte) {}
+  public nbq(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("storySeq");
-    paramJobContext = (NetworkRequest)QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).remove(Integer.valueOf(i));
-    if (paramJobContext == null)
-    {
-      SLog.d("Q.qqstory.net:QQStoryCmdHandler", "can't find request");
-      return null;
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
     }
-    QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler, paramJobContext, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_AndroidOsBundle);
-    return null;
   }
 }
 

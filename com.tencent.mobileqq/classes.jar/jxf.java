@@ -1,52 +1,100 @@
-import android.os.Handler;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.InviteStartAudioDialog;
+import com.tencent.av.ui.InviteStartAudioDialog.ViewHolder;
+import com.tencent.av.utils.InviteBaseData;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class jxf
-  implements Runnable
+  extends BaseAdapter
 {
-  public jxf(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  private List jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void run()
+  private jxf(InviteStartAudioDialog paramInviteStartAudioDialog) {}
+  
+  public void a(List paramList)
   {
-    this.a.b = "QQ电话";
-    if (this.a.jdField_d_of_type_Int == 2) {
-      if ("CREATE_FROM_CALL".equals(this.a.jdField_a_of_type_ComTencentAvVideoController.a().t))
-      {
-        this.a.b = "多人电话";
-        this.a.b = this.a.a(this.a.b, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.jdField_d_of_type_Int, String.valueOf(this.a.jdField_a_of_type_Long)), this.a.jdField_d_of_type_AndroidWidgetTextView);
-      }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    InviteBaseData localInviteBaseData1 = new InviteBaseData();
+    localInviteBaseData1.jdField_a_of_type_Int = 0;
+    localInviteBaseData1.jdField_a_of_type_JavaLangString = InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog).c();
+    localInviteBaseData1.jdField_b_of_type_JavaLangString = InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog).getCurrentNickname();
+    InviteBaseData localInviteBaseData2 = new InviteBaseData();
+    localInviteBaseData2.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_JavaUtilList.add(localInviteBaseData1);
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
+    this.jdField_a_of_type_JavaUtilList.add(localInviteBaseData2);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog)).inflate(2130969310, null);
+      paramViewGroup = new InviteStartAudioDialog.ViewHolder();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366117));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363481));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131366118));
+      paramView.setTag(paramViewGroup);
+    }
+    InviteBaseData localInviteBaseData;
     for (;;)
     {
-      this.a.jdField_d_of_type_AndroidWidgetTextView.setText(this.a.b);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.b);
-      MultiVideoCtrlLayerUIBase localMultiVideoCtrlLayerUIBase = this.a;
-      localMultiVideoCtrlLayerUIBase.g += 1;
-      if (this.a.f != null)
-      {
-        if (this.a.g >= 3) {
-          break label287;
-        }
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.f, 1000L);
+      localInviteBaseData = (InviteBaseData)getItem(paramInt);
+      if (localInviteBaseData.jdField_b_of_type_Int != 1) {
+        break;
       }
-      return;
-      this.a.b = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.a.c, String.valueOf(this.a.jdField_a_of_type_Long), null);
-      break;
-      if (this.a.jdField_d_of_type_Int == 1) {
-        this.a.b = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.a.c, String.valueOf(this.a.jdField_a_of_type_Long), null);
-      }
+      paramViewGroup.b.setText(2131438389);
+      paramViewGroup.b.setTextColor(InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog).getResources().getColor(2131493322));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840086);
+      return paramView;
+      paramViewGroup = (InviteStartAudioDialog.ViewHolder)paramView.getTag();
+      InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog, paramViewGroup);
     }
-    label287:
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.f);
+    paramViewGroup.b.setText(localInviteBaseData.jdField_b_of_type_JavaLangString);
+    Bitmap localBitmap = InviteStartAudioDialog.a(this.jdField_a_of_type_ComTencentAvUiInviteStartAudioDialog, localInviteBaseData);
+    if (localBitmap != null)
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+      return paramView;
+    }
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(ContactUtils.c(localInviteBaseData.jdField_b_of_type_JavaLangString));
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840204);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jxf
  * JD-Core Version:    0.7.0.1
  */

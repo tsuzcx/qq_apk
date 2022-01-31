@@ -2,7 +2,6 @@ package com.tencent.hotpatch.config;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.hotpatch.utils.PatchCommonUtil;
 import com.tencent.hotpatch.utils.PatchSharedPreUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -14,11 +13,11 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qno;
+import qsf;
 
 public class PatchConfigManager
 {
-  public static BasePatchConfig a(Context paramContext, String paramString)
+  public static PatchConfig a(Context paramContext, String paramString)
   {
     paramContext = PatchSharedPreUtil.a(paramContext, paramString);
     paramString = new ArrayList();
@@ -29,19 +28,15 @@ public class PatchConfigManager
         if (TextUtils.isEmpty(paramContext))
         {
           paramContext = new JSONArray();
-          break label130;
+          break label125;
           if (i < paramContext.length())
           {
-            Object localObject = paramContext.getJSONObject(i);
-            if (localObject == null) {
-              break label135;
+            JSONObject localJSONObject = paramContext.getJSONObject(i);
+            if (localJSONObject == null) {
+              break label130;
             }
-            localObject = a(((JSONObject)localObject).toString());
-            if (localObject == null) {
-              break label135;
-            }
-            paramString.add(localObject);
-            break label135;
+            paramString.add(new PatchConfig(localJSONObject));
+            break label130;
           }
         }
         else
@@ -53,41 +48,70 @@ public class PatchConfigManager
       {
         QLog.d("PatchLogTag", 1, "PatchConfigManager getLatestPatchConfig", paramContext);
         if (paramString.size() > 1) {
-          Collections.sort(paramString, new qno());
+          Collections.sort(paramString, new qsf());
         }
         if (paramString.size() > 0) {
-          return (BasePatchConfig)paramString.get(0);
+          return (PatchConfig)paramString.get(0);
         }
         return null;
       }
-      label130:
+      label125:
       int i = 0;
       continue;
-      label135:
+      label130:
       i += 1;
     }
   }
   
-  public static BasePatchConfig a(String paramString)
+  public static void a(Context paramContext, PatchConfig paramPatchConfig)
   {
-    String str = BasePatchConfig.a(paramString);
-    if ("dex".equals(str))
+    int i = 0;
+    if (paramPatchConfig == null) {
+      return;
+    }
+    for (;;)
     {
-      if (PatchCommonUtil.a()) {
-        return new DexPatchConfigDalvik(paramString);
+      try
+      {
+        String str = paramPatchConfig.a();
+        localObject = PatchSharedPreUtil.a(paramContext, str);
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          i = 1;
+          if (i == 0) {
+            break;
+          }
+          localObject = new JSONArray();
+          ((JSONArray)localObject).put(new JSONObject(paramPatchConfig.e()));
+          PatchSharedPreUtil.a(paramContext, str, ((JSONArray)localObject).toString());
+          return;
+        }
       }
-      if (PatchCommonUtil.b()) {
-        return new DexPatchConfigArtBeforeN(paramString);
+      catch (JSONException paramContext)
+      {
+        QLog.d("PatchLogTag", 1, "PatchConfigManager updatePatchConfigToDisk", paramContext);
+        return;
       }
-      if (PatchCommonUtil.c()) {
-        return new DexPatchConfigArtAfterN(paramString);
+      Object localObject = new JSONArray((String)localObject);
+      if (((JSONArray)localObject).length() == 1)
+      {
+        localObject = new PatchConfig(((JSONArray)localObject).getJSONObject(0));
+        if (localObject != null)
+        {
+          int j = ((PatchConfig)localObject).a();
+          int k = paramPatchConfig.a();
+          if (j >= k) {}
+        }
+        else
+        {
+          i = 1;
+        }
+      }
+      else
+      {
+        i = 1;
       }
     }
-    else if ("Native".equals(str))
-    {
-      return new NativePatchConfig(paramString);
-    }
-    return null;
   }
   
   public static void a(Context paramContext, String paramString)
@@ -102,28 +126,28 @@ public class PatchConfigManager
         if (TextUtils.isEmpty(paramString))
         {
           paramString = new JSONArray();
-          break label287;
+          break label291;
           if (i >= paramString.length()) {
-            break label155;
+            break label159;
           }
           localObject2 = paramString.getJSONObject(i);
           if (localObject2 == null) {
-            break label292;
+            break label296;
           }
-          localObject3 = BasePatchConfig.a(((JSONObject)localObject2).toString());
+          localObject3 = new PatchConfig((JSONObject)localObject2).a();
           if ((!"dex".equals(localObject3)) && (!"Native".equals(localObject3))) {
-            break label292;
+            break label296;
           }
           if (((HashMap)localObject1).containsKey(localObject3))
           {
             ((ArrayList)((HashMap)localObject1).get(localObject3)).add(localObject2);
-            break label292;
+            break label296;
           }
         }
         else
         {
           paramString = new JSONArray(paramString);
-          break label287;
+          break label291;
         }
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(localObject2);
@@ -134,7 +158,7 @@ public class PatchConfigManager
         QLog.d("PatchLogTag", 1, "PatchConfigManager appendPatchConfigToDisk", paramContext);
         return;
       }
-      label155:
+      label159:
       Object localObject1 = ((HashMap)localObject1).entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
@@ -152,54 +176,11 @@ public class PatchConfigManager
         PatchSharedPreUtil.a(paramContext, (String)localObject2, paramString.toString());
       }
       continue;
-      label287:
+      label291:
       int i = 0;
       continue;
-      label292:
+      label296:
       i += 1;
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString, BasePatchConfig paramBasePatchConfig)
-  {
-    int i = 0;
-    try
-    {
-      Object localObject = PatchSharedPreUtil.a(paramContext, paramString);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        i = 1;
-      }
-      while (i != 0)
-      {
-        localObject = new JSONArray();
-        ((JSONArray)localObject).put(new JSONObject(paramBasePatchConfig.a()));
-        PatchSharedPreUtil.a(paramContext, paramString, ((JSONArray)localObject).toString());
-        return;
-        localObject = new JSONArray((String)localObject);
-        if (((JSONArray)localObject).length() == 1)
-        {
-          localObject = a(((JSONArray)localObject).getJSONObject(0).toString());
-          if (localObject != null)
-          {
-            int j = ((BasePatchConfig)localObject).a;
-            int k = paramBasePatchConfig.a;
-            if (j >= k) {}
-          }
-          else
-          {
-            i = 1;
-          }
-        }
-        else
-        {
-          i = 1;
-        }
-      }
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      QLog.d("PatchLogTag", 1, "PatchConfigManager updatePatchConfigToDisk", paramContext);
     }
   }
 }

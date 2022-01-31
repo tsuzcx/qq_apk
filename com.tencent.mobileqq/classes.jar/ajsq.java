@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import android.view.View;
 
-public class ajsq
+class ajsq
   implements Runnable
 {
-  public ajsq(MessageSubtitleView paramMessageSubtitleView) {}
+  ajsq(ajsp paramajsp, View paramView) {}
   
   public void run()
   {
-    MessageSubtitleView.b(this.a);
+    this.jdField_a_of_type_AndroidViewView.requestFocus();
+    this.jdField_a_of_type_AndroidViewView.findFocus();
   }
 }
 

@@ -1,26 +1,43 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
-import com.tencent.mobileqq.activity.chathistory.TroopAIOImageGeter.LoadMediaDataCallBack;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class wgo
-  implements TroopAIOImageGeter.LoadMediaDataCallBack
+  implements Runnable
 {
-  public wgo(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
+  public wgo(TroopChatPie paramTroopChatPie, QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  public void run()
   {
-    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
-    {
-      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
-      if (QLog.isColorLevel()) {
-        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
+    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
+    String str;
+    if (localObject == null) {
+      if (QLog.isColorLevel())
+      {
+        str = this.jdField_a_of_type_JavaLangString;
+        if (localObject == null) {
+          break label117;
+        }
       }
     }
-    while (!QLog.isColorLevel()) {
+    label117:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("Q.aio.TroopChatPie", 2, String.format("checkSelfInTroop %s %s", new Object[] { str, Boolean.valueOf(bool) }));
+      localObject = BaseApplicationImpl.getContext();
+      if (localObject != null) {
+        ThreadManager.getUIHandler().post(new wgp(this, (Context)localObject));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.b(1);
       return;
     }
-    QLog.i("chatHistory.troop.portal", 2, "no media data found");
   }
 }
 

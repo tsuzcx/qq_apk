@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.campuscircle;
 
-import abph;
+import abwi;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -104,7 +104,7 @@ public class CampusCircleManager
       }
       return;
     }
-    ThreadManager.post(new abph(this, paramCampusTopicReq), 8, null, true);
+    ThreadManager.post(new abwi(this, paramCampusTopicReq), 8, null, true);
   }
   
   public void a(List paramList, int paramInt, String paramString)

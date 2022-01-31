@@ -1,29 +1,14 @@
-import android.widget.TextView;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.smallscreen.PstnSmallScreenService;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
 
-public class jnx
-  implements Runnable
+public abstract interface jnx
 {
-  public jnx(PstnSmallScreenService paramPstnSmallScreenService) {}
+  public abstract void a(Bitmap paramBitmap);
   
-  public void run()
-  {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429565);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b = 2;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(true);
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jnx
  * JD-Core Version:    0.7.0.1
  */

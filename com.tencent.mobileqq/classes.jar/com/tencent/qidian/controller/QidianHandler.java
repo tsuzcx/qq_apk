@@ -1,6 +1,6 @@
 package com.tencent.qidian.controller;
 
-import alnl;
+import aluu;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -40,6 +40,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.mobileqq.widget.QQToastNotifier;
 import com.tencent.qidian.QidianManager;
 import com.tencent.qidian.data.QidianCorpInfo;
@@ -62,6 +63,8 @@ import com.tencent.qidian.proto.mobileqq_qidian.GetCustomerTransferInfoReqBody;
 import com.tencent.qidian.proto.mobileqq_qidian.GetCustomerTransferInfoRspBody;
 import com.tencent.qidian.proto.mobileqq_qidian.GetNavigationMenuConfigReqBody;
 import com.tencent.qidian.proto.mobileqq_qidian.GetNavigationMenuConfigRspBody;
+import com.tencent.qidian.proto.mobileqq_qidian.GetQiDianGroupInfoReq;
+import com.tencent.qidian.proto.mobileqq_qidian.GetQiDianGroupInfoRsp;
 import com.tencent.qidian.proto.mobileqq_qidian.GetUserDetailInfoReqBody;
 import com.tencent.qidian.proto.mobileqq_qidian.NotRecvQdGroupMsgReq;
 import com.tencent.qidian.proto.mobileqq_qidian.NotRecvQdGroupMsgRsp;
@@ -132,7 +135,7 @@ public class QidianHandler
       localCRMMsgHead.uint64_ext_uin.setHasFlag(true);
     }
     localCRMMsgHead.uint32_terminal_type.set(2);
-    localCRMMsgHead.uint32_terminal_version.set(QidianUtils.a("7.6.3"));
+    localCRMMsgHead.uint32_terminal_version.set(QidianUtils.a("7.6.8"));
     return localCRMMsgHead;
   }
   
@@ -220,7 +223,7 @@ public class QidianHandler
     }
   }
   
-  private void m(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void n(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int j = 1;
     int i;
@@ -282,7 +285,7 @@ public class QidianHandler
     }
   }
   
-  private void n(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void o(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int j = 0;
     int i = j;
@@ -309,7 +312,7 @@ public class QidianHandler
           paramObject.put("ret_msg", paramFromServiceMsg);
           if (i == 0)
           {
-            ThreadManager.executeOnSubThread(new alnl(this, paramToServiceMsg, paramObject));
+            ThreadManager.executeOnSubThread(new aluu(this, paramToServiceMsg, paramObject));
             return;
           }
           a(1005, false, paramObject);
@@ -325,7 +328,7 @@ public class QidianHandler
     }
   }
   
-  private void o(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void p(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int j = 1;
     int i;
@@ -395,7 +398,7 @@ public class QidianHandler
     a(1010, false, null);
   }
   
-  private void p(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void q(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
     for (int i = 1;; i = 0)
@@ -442,6 +445,63 @@ public class QidianHandler
     }
   }
   
+  private void r(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.isSuccess())
+    {
+      if (paramObject != null)
+      {
+        try
+        {
+          paramFromServiceMsg = new mobileqq_qidian.RspBody();
+          paramFromServiceMsg.mergeFrom((byte[])paramObject);
+          if (!paramFromServiceMsg.msg_get_qidian_group_info_rsp.has()) {
+            return;
+          }
+          paramFromServiceMsg = (mobileqq_qidian.GetQiDianGroupInfoRsp)paramFromServiceMsg.msg_get_qidian_group_info_rsp.get();
+          paramObject = (mobileqq_qidian.RetInfo)paramFromServiceMsg.msg_ret.get();
+          if (paramObject.uint32_ret_code.get() == 0)
+          {
+            paramObject = new HashMap();
+            paramFromServiceMsg = paramFromServiceMsg.bytes_wpalink.get().toStringUtf8();
+            paramObject.put("uin", (String)paramToServiceMsg.extraData.get("uin"));
+            paramObject.put("url", paramFromServiceMsg);
+            a(1018, true, paramObject);
+            return;
+          }
+          paramToServiceMsg = paramObject.str_error_msg.get();
+          if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramToServiceMsg))) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianGroupInfo error is " + paramToServiceMsg);
+          }
+          a(1018, false, null);
+          return;
+        }
+        catch (Exception paramToServiceMsg)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianGroupInfo throw exception is " + paramToServiceMsg.toString());
+          }
+          a(1018, false, null);
+          return;
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianGroupInfo data is null");
+        }
+        a(1018, false, null);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianGroupInfo res is fail");
+      }
+      a(1018, false, null);
+    }
+  }
+  
   protected Class a()
   {
     return QidianBusinessObserver.class;
@@ -471,7 +531,7 @@ public class QidianHandler
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint64_qq_uin.set(paramLong1);
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint64_kfext_uin.set(paramLong2);
     ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_mobile_client.set(1);
-    ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_ver_no.set(CrmUtils.a("7.6.3"));
+    ((mobileqq_qidian.GetCustomerTransferInfoReqBody)localObject).uint32_ver_no.set(CrmUtils.a("7.6.8"));
     localReqBody.msg_get_customer_transfer_info_req.set((MessageMicro)localObject);
     localReqBody.msg_get_customer_transfer_info_req.setHasFlag(true);
     localObject = new HashMap(1);
@@ -533,7 +593,7 @@ public class QidianHandler
       }
       if (str.equalsIgnoreCase("QidianSsoProto.blockBulkMsg"))
       {
-        n(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        o(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
       if (str.equalsIgnoreCase("QidianSsoProto.getCustomerTransferInfo"))
@@ -548,7 +608,7 @@ public class QidianHandler
       }
       if (str.equalsIgnoreCase("QidianSsoProto.corpUinWpaReport"))
       {
-        m(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        n(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
       if (str.equalsIgnoreCase("QidianSsoProto.emanClickReport"))
@@ -568,11 +628,43 @@ public class QidianHandler
       }
       if (str.equalsIgnoreCase("QidianSsoProto.WpaGenSigMsg"))
       {
-        o(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        p(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
-    } while (!str.equalsIgnoreCase("QidianSsoProto.webimAddFriend"));
-    p(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      if (str.equalsIgnoreCase("QidianSsoProto.webimAddFriend"))
+      {
+        q(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if (str.equalsIgnoreCase("QidianSsoProto.getQidianGroupInfo"))
+      {
+        r(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!str.equalsIgnoreCase("OidbSvc.0x782"));
+    m(paramToServiceMsg, paramFromServiceMsg, paramObject);
+  }
+  
+  public void a(String paramString)
+  {
+    new Bundle().putString("k", paramString);
+    StringBuilder localStringBuilder = new StringBuilder("http://qm.qq.com/cgi-bin/qm/qr");
+    localStringBuilder.append("?");
+    localStringBuilder.append("k=");
+    localStringBuilder.append(paramString);
+    short s = (short)localStringBuilder.toString().getBytes().length;
+    paramString = new byte[s + 14];
+    PkgTools.a(paramString, 0, (short)2);
+    PkgTools.a(paramString, 2, (short)1);
+    PkgTools.a(paramString, 4, (short)4);
+    PkgTools.a(paramString, 6, 1);
+    PkgTools.a(paramString, 10, (short)5);
+    PkgTools.a(paramString, 12, s);
+    PkgTools.a(paramString, 14, localStringBuilder.toString().getBytes(), s);
+    b(a("OidbSvc.0x782", 1922, 0, paramString));
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "decodeQidianPrivateTroopUin");
+    }
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -1033,6 +1125,22 @@ public class QidianHandler
     }
   }
   
+  public void b(String paramString1, String paramString2)
+  {
+    mobileqq_qidian.ReqBody localReqBody = a("", 1018, paramString2);
+    mobileqq_qidian.GetQiDianGroupInfoReq localGetQiDianGroupInfoReq = new mobileqq_qidian.GetQiDianGroupInfoReq();
+    localGetQiDianGroupInfoReq.uint32_groupcode.set(Integer.valueOf(paramString1).intValue());
+    localGetQiDianGroupInfoReq.uint64_groupowner.set(Long.valueOf(paramString2).longValue());
+    localReqBody.msg_get_qidian_group_info_req.set(localGetQiDianGroupInfoReq);
+    localReqBody.msg_get_qidian_group_info_req.setHasFlag(true);
+    paramString2 = new HashMap();
+    paramString2.put("uin", paramString1);
+    a(localReqBody, "QidianSsoProto.getQidianGroupInfo", paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "getQidianGroupInfoReq");
+    }
+  }
+  
   public void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     if (!TextUtils.isEmpty(paramString5))
@@ -1044,7 +1152,7 @@ public class QidianHandler
         if ((paramString4 != null) && (paramString4.length() != 0)) {
           break label348;
         }
-        new QQToastNotifier(this.b.getApp()).a(2131435795, this.b.getApp().getResources().getDimensionPixelSize(2131558448), 0, 1);
+        new QQToastNotifier(this.b.getApp()).a(2131435811, this.b.getApp().getResources().getDimensionPixelSize(2131558448), 0, 1);
         paramString4 = "";
       }
     }
@@ -1401,13 +1509,13 @@ public class QidianHandler
     //   1: aload_1
     //   2: aload_2
     //   3: aload_3
-    //   4: ldc_w 487
-    //   7: invokespecial 1018	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;Ljava/lang/String;)Z
+    //   4: ldc_w 516
+    //   7: invokespecial 1083	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;Ljava/lang/String;)Z
     //   10: istore 6
     //   12: aload_1
     //   13: getfield 126	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   16: ldc_w 339
-    //   19: invokevirtual 1320	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   19: invokevirtual 1398	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   22: astore_2
     //   23: iload 6
     //   25: ifeq +659 -> 684
@@ -1426,16 +1534,16 @@ public class QidianHandler
     //   54: invokespecial 364	java/util/HashMap:<init>	()V
     //   57: astore 10
     //   59: aload 7
-    //   61: getfield 1324	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_subcmd_get_user_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody;
-    //   64: invokevirtual 1327	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:has	()Z
+    //   61: getfield 1402	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_subcmd_get_user_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody;
+    //   64: invokevirtual 1405	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:has	()Z
     //   67: ifeq +590 -> 657
     //   70: aload 7
-    //   72: getfield 1324	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_subcmd_get_user_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody;
-    //   75: invokevirtual 1328	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   78: checkcast 1326	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody
+    //   72: getfield 1402	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_subcmd_get_user_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody;
+    //   75: invokevirtual 1406	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   78: checkcast 1404	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody
     //   81: astore 11
     //   83: aload 11
-    //   85: getfield 1329	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_ret	Lcom/tencent/qidian/proto/mobileqq_qidian$RetInfo;
+    //   85: getfield 1407	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_ret	Lcom/tencent/qidian/proto/mobileqq_qidian$RetInfo;
     //   88: getfield 324	com/tencent/qidian/proto/mobileqq_qidian$RetInfo:uint32_ret_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   91: invokevirtual 327	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   94: ifne +655 -> 749
@@ -1445,33 +1553,33 @@ public class QidianHandler
     //   102: ifeq +510 -> 612
     //   105: aload_1
     //   106: getfield 126	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   109: ldc_w 513
-    //   112: invokevirtual 1320	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   109: ldc_w 541
+    //   112: invokevirtual 1398	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   115: astore_1
     //   116: aload_1
-    //   117: invokestatic 1157	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   117: invokestatic 1238	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   120: istore 4
     //   122: aload 11
-    //   124: getfield 1333	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
-    //   127: invokevirtual 1336	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:has	()Z
+    //   124: getfield 1411	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
+    //   127: invokevirtual 1414	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:has	()Z
     //   130: ifeq +610 -> 740
-    //   133: new 1338	com/tencent/qidian/data/QidianExternalInfo
+    //   133: new 1416	com/tencent/qidian/data/QidianExternalInfo
     //   136: dup
-    //   137: invokespecial 1339	com/tencent/qidian/data/QidianExternalInfo:<init>	()V
+    //   137: invokespecial 1417	com/tencent/qidian/data/QidianExternalInfo:<init>	()V
     //   140: astore_1
     //   141: aload_1
     //   142: aload 11
-    //   144: getfield 1333	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
-    //   147: invokevirtual 1340	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   150: checkcast 1335	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo
-    //   153: invokevirtual 1344	com/tencent/qidian/data/QidianExternalInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;)V
+    //   144: getfield 1411	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
+    //   147: invokevirtual 1418	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   150: checkcast 1413	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo
+    //   153: invokevirtual 1422	com/tencent/qidian/data/QidianExternalInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;)V
     //   156: aload 10
-    //   158: ldc_w 1346
+    //   158: ldc_w 1424
     //   161: aload_1
     //   162: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   165: pop
     //   166: aload_1
-    //   167: getfield 1348	com/tencent/qidian/data/QidianExternalInfo:uin	Ljava/lang/String;
+    //   167: getfield 1426	com/tencent/qidian/data/QidianExternalInfo:uin	Ljava/lang/String;
     //   170: astore_2
     //   171: aload_2
     //   172: invokestatic 46	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1481,49 +1589,49 @@ public class QidianHandler
     //   182: sipush 164
     //   185: invokevirtual 109	com/tencent/common/app/AppInterface:getManager	(I)Lmqq/manager/Manager;
     //   188: checkcast 111	com/tencent/qidian/QidianManager
-    //   191: new 1350	com/tencent/qidian/data/BmqqAccountType
+    //   191: new 1428	com/tencent/qidian/data/BmqqAccountType
     //   194: dup
     //   195: aload_2
     //   196: invokestatic 350	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   199: iconst_1
-    //   200: invokespecial 1352	com/tencent/qidian/data/BmqqAccountType:<init>	(Ljava/lang/String;I)V
-    //   203: invokevirtual 1355	com/tencent/qidian/QidianManager:a	(Lcom/tencent/qidian/data/BmqqAccountType;)V
+    //   200: invokespecial 1430	com/tencent/qidian/data/BmqqAccountType:<init>	(Ljava/lang/String;I)V
+    //   203: invokevirtual 1433	com/tencent/qidian/QidianManager:a	(Lcom/tencent/qidian/data/BmqqAccountType;)V
     //   206: goto +539 -> 745
     //   209: aload 11
-    //   211: getfield 1359	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_internal_info	Lcom/tencent/qidian/proto/mobileqq_qidian$InternalInfo;
-    //   214: invokevirtual 1362	com/tencent/qidian/proto/mobileqq_qidian$InternalInfo:has	()Z
+    //   211: getfield 1437	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_internal_info	Lcom/tencent/qidian/proto/mobileqq_qidian$InternalInfo;
+    //   214: invokevirtual 1440	com/tencent/qidian/proto/mobileqq_qidian$InternalInfo:has	()Z
     //   217: ifeq +518 -> 735
-    //   220: new 1364	com/tencent/qidian/data/QidianInternalInfo
+    //   220: new 1442	com/tencent/qidian/data/QidianInternalInfo
     //   223: dup
-    //   224: invokespecial 1365	com/tencent/qidian/data/QidianInternalInfo:<init>	()V
+    //   224: invokespecial 1443	com/tencent/qidian/data/QidianInternalInfo:<init>	()V
     //   227: astore_3
     //   228: aload_3
     //   229: aload 11
-    //   231: getfield 1359	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_internal_info	Lcom/tencent/qidian/proto/mobileqq_qidian$InternalInfo;
-    //   234: invokevirtual 1366	com/tencent/qidian/proto/mobileqq_qidian$InternalInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   237: checkcast 1361	com/tencent/qidian/proto/mobileqq_qidian$InternalInfo
-    //   240: invokevirtual 1369	com/tencent/qidian/data/QidianInternalInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$InternalInfo;)V
+    //   231: getfield 1437	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_internal_info	Lcom/tencent/qidian/proto/mobileqq_qidian$InternalInfo;
+    //   234: invokevirtual 1444	com/tencent/qidian/proto/mobileqq_qidian$InternalInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   237: checkcast 1439	com/tencent/qidian/proto/mobileqq_qidian$InternalInfo
+    //   240: invokevirtual 1447	com/tencent/qidian/data/QidianInternalInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$InternalInfo;)V
     //   243: aload 10
-    //   245: ldc_w 1371
+    //   245: ldc_w 1449
     //   248: aload_3
     //   249: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   252: pop
     //   253: aload 11
-    //   255: getfield 1375	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_corp_info	Lcom/tencent/qidian/proto/mobileqq_qidian$CorpInfo;
-    //   258: invokevirtual 1378	com/tencent/qidian/proto/mobileqq_qidian$CorpInfo:has	()Z
+    //   255: getfield 1453	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_corp_info	Lcom/tencent/qidian/proto/mobileqq_qidian$CorpInfo;
+    //   258: invokevirtual 1456	com/tencent/qidian/proto/mobileqq_qidian$CorpInfo:has	()Z
     //   261: ifeq +468 -> 729
-    //   264: new 1380	com/tencent/qidian/data/QidianCorpInfo
+    //   264: new 1458	com/tencent/qidian/data/QidianCorpInfo
     //   267: dup
-    //   268: invokespecial 1381	com/tencent/qidian/data/QidianCorpInfo:<init>	()V
+    //   268: invokespecial 1459	com/tencent/qidian/data/QidianCorpInfo:<init>	()V
     //   271: astore 7
     //   273: aload 7
     //   275: aload 11
-    //   277: getfield 1375	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_corp_info	Lcom/tencent/qidian/proto/mobileqq_qidian$CorpInfo;
-    //   280: invokevirtual 1382	com/tencent/qidian/proto/mobileqq_qidian$CorpInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   283: checkcast 1377	com/tencent/qidian/proto/mobileqq_qidian$CorpInfo
-    //   286: invokevirtual 1385	com/tencent/qidian/data/QidianCorpInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$CorpInfo;)V
+    //   277: getfield 1453	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:msg_corp_info	Lcom/tencent/qidian/proto/mobileqq_qidian$CorpInfo;
+    //   280: invokevirtual 1460	com/tencent/qidian/proto/mobileqq_qidian$CorpInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   283: checkcast 1455	com/tencent/qidian/proto/mobileqq_qidian$CorpInfo
+    //   286: invokevirtual 1463	com/tencent/qidian/data/QidianCorpInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$CorpInfo;)V
     //   289: aload 10
-    //   291: ldc_w 1387
+    //   291: ldc_w 1465
     //   294: aload 7
     //   296: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   299: pop
@@ -1537,19 +1645,19 @@ public class QidianHandler
     //   314: aload 9
     //   316: astore 8
     //   318: aload 11
-    //   320: getfield 1391	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:rpt_msg_config_group_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   323: invokevirtual 1394	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   320: getfield 1469	com/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody:rpt_msg_config_group_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   323: invokevirtual 1472	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
     //   326: ifeq +31 -> 357
-    //   329: new 1396	com/tencent/qidian/data/QidianProfileUiInfo
+    //   329: new 1474	com/tencent/qidian/data/QidianProfileUiInfo
     //   332: dup
-    //   333: invokespecial 1397	com/tencent/qidian/data/QidianProfileUiInfo:<init>	()V
+    //   333: invokespecial 1475	com/tencent/qidian/data/QidianProfileUiInfo:<init>	()V
     //   336: astore 8
     //   338: aload 8
     //   340: aload_2
     //   341: aload 11
-    //   343: invokevirtual 1400	com/tencent/qidian/data/QidianProfileUiInfo:from	(Ljava/lang/String;Lcom/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody;)V
+    //   343: invokevirtual 1478	com/tencent/qidian/data/QidianProfileUiInfo:from	(Ljava/lang/String;Lcom/tencent/qidian/proto/mobileqq_qidian$GetUserDetailInfoRspBody;)V
     //   346: aload 10
-    //   348: ldc_w 1402
+    //   348: ldc_w 1480
     //   351: aload 8
     //   353: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   356: pop
@@ -1564,39 +1672,39 @@ public class QidianHandler
     //   376: astore 13
     //   378: aload 13
     //   380: aload_2
-    //   381: invokevirtual 1405	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianExternalInfo;
+    //   381: invokevirtual 1483	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianExternalInfo;
     //   384: astore 9
     //   386: aload 9
     //   388: ifnull +9 -> 397
     //   391: aload 9
     //   393: aload_1
-    //   394: invokevirtual 1409	com/tencent/qidian/data/QidianExternalInfo:update	(Lcom/tencent/qidian/data/QidianExternalInfo;)V
+    //   394: invokevirtual 1487	com/tencent/qidian/data/QidianExternalInfo:update	(Lcom/tencent/qidian/data/QidianExternalInfo;)V
     //   397: aload 13
     //   399: aload_2
-    //   400: invokevirtual 1412	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianInternalInfo;
+    //   400: invokevirtual 1490	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianInternalInfo;
     //   403: astore 11
     //   405: aload 11
     //   407: ifnull +9 -> 416
     //   410: aload 11
     //   412: aload_3
-    //   413: invokevirtual 1415	com/tencent/qidian/data/QidianInternalInfo:update	(Lcom/tencent/qidian/data/QidianInternalInfo;)V
+    //   413: invokevirtual 1493	com/tencent/qidian/data/QidianInternalInfo:update	(Lcom/tencent/qidian/data/QidianInternalInfo;)V
     //   416: aload 7
     //   418: aload_1
-    //   419: getfield 1418	com/tencent/qidian/data/QidianExternalInfo:masterUin	Ljava/lang/String;
-    //   422: putfield 1421	com/tencent/qidian/data/QidianCorpInfo:corpUin	Ljava/lang/String;
+    //   419: getfield 1496	com/tencent/qidian/data/QidianExternalInfo:masterUin	Ljava/lang/String;
+    //   422: putfield 1499	com/tencent/qidian/data/QidianCorpInfo:corpUin	Ljava/lang/String;
     //   425: aload 13
     //   427: aload 7
-    //   429: getfield 1421	com/tencent/qidian/data/QidianCorpInfo:corpUin	Ljava/lang/String;
-    //   432: invokevirtual 1424	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianCorpInfo;
+    //   429: getfield 1499	com/tencent/qidian/data/QidianCorpInfo:corpUin	Ljava/lang/String;
+    //   432: invokevirtual 1502	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianCorpInfo;
     //   435: astore 12
     //   437: aload 12
     //   439: ifnull +10 -> 449
     //   442: aload 12
     //   444: aload 7
-    //   446: invokevirtual 1427	com/tencent/qidian/data/QidianCorpInfo:update	(Lcom/tencent/qidian/data/QidianCorpInfo;)V
+    //   446: invokevirtual 1505	com/tencent/qidian/data/QidianCorpInfo:update	(Lcom/tencent/qidian/data/QidianCorpInfo;)V
     //   449: aload 13
     //   451: aload_2
-    //   452: invokevirtual 1430	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianProfileUiInfo;
+    //   452: invokevirtual 1508	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianProfileUiInfo;
     //   455: astore_2
     //   456: aload 9
     //   458: ifnull +290 -> 748
@@ -1607,22 +1715,22 @@ public class QidianHandler
     //   471: aload_2
     //   472: ifnull +276 -> 748
     //   475: aload 10
-    //   477: ldc_w 1346
+    //   477: ldc_w 1424
     //   480: aload 9
     //   482: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   485: pop
     //   486: aload 10
-    //   488: ldc_w 1371
+    //   488: ldc_w 1449
     //   491: aload 11
     //   493: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   496: pop
     //   497: aload 10
-    //   499: ldc_w 1387
+    //   499: ldc_w 1465
     //   502: aload 12
     //   504: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   507: pop
     //   508: aload 10
-    //   510: ldc_w 1402
+    //   510: ldc_w 1480
     //   513: aload_2
     //   514: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   517: pop
@@ -1631,28 +1739,28 @@ public class QidianHandler
     //   520: aload_3
     //   521: aload 7
     //   523: aload 8
-    //   525: invokespecial 1431	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianInternalInfo;Lcom/tencent/qidian/data/QidianCorpInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
+    //   525: invokespecial 1509	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianInternalInfo;Lcom/tencent/qidian/data/QidianCorpInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
     //   528: aload_0
     //   529: sipush 1001
     //   532: iconst_1
     //   533: aload 10
-    //   535: invokespecial 1204	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
+    //   535: invokespecial 1285	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
     //   538: return
     //   539: aload_0
     //   540: aload_1
     //   541: aload_3
     //   542: aload 7
     //   544: aload 8
-    //   546: invokespecial 1431	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianInternalInfo;Lcom/tencent/qidian/data/QidianCorpInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
+    //   546: invokespecial 1509	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianInternalInfo;Lcom/tencent/qidian/data/QidianCorpInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
     //   549: aload_0
     //   550: sipush 1001
     //   553: iconst_1
     //   554: aload 10
-    //   556: invokespecial 1204	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
+    //   556: invokespecial 1285	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
     //   559: return
     //   560: astore_1
     //   561: aload_1
-    //   562: invokevirtual 1185	java/lang/Exception:printStackTrace	()V
+    //   562: invokevirtual 1266	java/lang/Exception:printStackTrace	()V
     //   565: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   568: ifeq +33 -> 601
     //   571: getstatic 16	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -1660,10 +1768,10 @@ public class QidianHandler
     //   575: new 230	java/lang/StringBuilder
     //   578: dup
     //   579: invokespecial 231	java/lang/StringBuilder:<init>	()V
-    //   582: ldc_w 1433
+    //   582: ldc_w 1511
     //   585: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   588: aload_1
-    //   589: invokevirtual 827	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   589: invokevirtual 892	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   592: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   595: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   598: invokestatic 257	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -1671,7 +1779,7 @@ public class QidianHandler
     //   602: sipush 1001
     //   605: iload 6
     //   607: aconst_null
-    //   608: invokespecial 1204	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
+    //   608: invokespecial 1285	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
     //   611: return
     //   612: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   615: ifeq +31 -> 646
@@ -1680,29 +1788,29 @@ public class QidianHandler
     //   622: new 230	java/lang/StringBuilder
     //   625: dup
     //   626: invokespecial 231	java/lang/StringBuilder:<init>	()V
-    //   629: ldc_w 1435
+    //   629: ldc_w 1513
     //   632: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   635: iload 5
-    //   637: invokevirtual 1213	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   637: invokevirtual 1294	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   640: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   643: invokestatic 257	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   646: aload_0
     //   647: sipush 1001
     //   650: iload 6
     //   652: aconst_null
-    //   653: invokespecial 1204	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
+    //   653: invokespecial 1285	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
     //   656: return
     //   657: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   660: ifeq +13 -> 673
     //   663: getstatic 16	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   666: iconst_2
-    //   667: ldc_w 1437
+    //   667: ldc_w 1515
     //   670: invokestatic 257	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   673: aload_0
     //   674: sipush 1001
     //   677: iload 6
     //   679: aconst_null
-    //   680: invokespecial 1204	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
+    //   680: invokespecial 1285	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
     //   683: return
     //   684: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   687: ifeq +31 -> 718
@@ -1711,17 +1819,17 @@ public class QidianHandler
     //   694: new 230	java/lang/StringBuilder
     //   697: dup
     //   698: invokespecial 231	java/lang/StringBuilder:<init>	()V
-    //   701: ldc_w 1439
+    //   701: ldc_w 1517
     //   704: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   707: iload 6
-    //   709: invokevirtual 1213	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   709: invokevirtual 1294	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   712: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   715: invokestatic 257	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   718: aload_0
     //   719: sipush 1001
     //   722: iload 6
     //   724: aconst_null
-    //   725: invokespecial 1204	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
+    //   725: invokespecial 1285	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
     //   728: return
     //   729: aconst_null
     //   730: astore 7
@@ -1909,13 +2017,13 @@ public class QidianHandler
     //   1: aload_1
     //   2: aload_2
     //   3: aload_3
-    //   4: ldc_w 614
-    //   7: invokespecial 1018	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;Ljava/lang/String;)Z
+    //   4: ldc_w 642
+    //   7: invokespecial 1083	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;Ljava/lang/Object;Ljava/lang/String;)Z
     //   10: istore 5
     //   12: aload_1
     //   13: getfield 126	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   16: ldc_w 339
-    //   19: invokevirtual 1320	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   19: invokevirtual 1398	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   22: astore_2
     //   23: iload 5
     //   25: ifeq +413 -> 438
@@ -1934,16 +2042,16 @@ public class QidianHandler
     //   54: invokespecial 364	java/util/HashMap:<init>	()V
     //   57: astore 7
     //   59: aload 6
-    //   61: getfield 1517	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_get_corpuin_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody;
-    //   64: invokevirtual 1520	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:has	()Z
+    //   61: getfield 1595	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_get_corpuin_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody;
+    //   64: invokevirtual 1598	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:has	()Z
     //   67: ifeq +361 -> 428
     //   70: aload 6
-    //   72: getfield 1517	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_get_corpuin_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody;
-    //   75: invokevirtual 1521	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   78: checkcast 1519	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody
+    //   72: getfield 1595	com/tencent/qidian/proto/mobileqq_qidian$RspBody:msg_get_corpuin_detail_info_rsp_body	Lcom/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody;
+    //   75: invokevirtual 1599	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   78: checkcast 1597	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody
     //   81: astore 8
     //   83: aload 8
-    //   85: getfield 1524	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:int32_ret	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   85: getfield 1602	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:int32_ret	Lcom/tencent/mobileqq/pb/PBInt32Field;
     //   88: invokevirtual 435	com/tencent/mobileqq/pb/PBInt32Field:get	()I
     //   91: ifne +414 -> 505
     //   94: iconst_1
@@ -1952,28 +2060,28 @@ public class QidianHandler
     //   99: ifeq +319 -> 418
     //   102: aload_1
     //   103: getfield 126	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
-    //   106: ldc_w 513
-    //   109: invokevirtual 1320	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   106: ldc_w 541
+    //   109: invokevirtual 1398	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   112: astore_1
     //   113: aload_1
-    //   114: invokestatic 1157	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   114: invokestatic 1238	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   117: istore 4
     //   119: aload 8
-    //   121: getfield 1525	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
-    //   124: invokevirtual 1336	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:has	()Z
+    //   121: getfield 1603	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
+    //   124: invokevirtual 1414	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:has	()Z
     //   127: ifeq +361 -> 488
-    //   130: new 1338	com/tencent/qidian/data/QidianExternalInfo
+    //   130: new 1416	com/tencent/qidian/data/QidianExternalInfo
     //   133: dup
-    //   134: invokespecial 1339	com/tencent/qidian/data/QidianExternalInfo:<init>	()V
+    //   134: invokespecial 1417	com/tencent/qidian/data/QidianExternalInfo:<init>	()V
     //   137: astore_3
     //   138: aload 8
-    //   140: getfield 1525	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
-    //   143: invokevirtual 1340	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   146: checkcast 1335	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo
+    //   140: getfield 1603	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:msg_external_info	Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;
+    //   143: invokevirtual 1418	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   146: checkcast 1413	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo
     //   149: astore 6
     //   151: aload_3
     //   152: aload 6
-    //   154: invokevirtual 1344	com/tencent/qidian/data/QidianExternalInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;)V
+    //   154: invokevirtual 1422	com/tencent/qidian/data/QidianExternalInfo:from	(Lcom/tencent/qidian/proto/mobileqq_qidian$ExternalInfo;)V
     //   157: aload_0
     //   158: getfield 103	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
     //   161: sipush 164
@@ -1982,7 +2090,7 @@ public class QidianHandler
     //   170: astore 9
     //   172: aload 9
     //   174: aload_2
-    //   175: invokevirtual 1405	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianExternalInfo;
+    //   175: invokevirtual 1483	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;)Lcom/tencent/qidian/data/QidianExternalInfo;
     //   178: astore_1
     //   179: aload_1
     //   180: ifnull +216 -> 396
@@ -1991,45 +2099,45 @@ public class QidianHandler
     //   186: if_icmpne +127 -> 313
     //   189: aload_1
     //   190: aload_3
-    //   191: getfield 1528	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
-    //   194: putfield 1528	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
+    //   191: getfield 1606	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
+    //   194: putfield 1606	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
     //   197: aload 7
-    //   199: ldc_w 1346
+    //   199: ldc_w 1424
     //   202: aload_1
     //   203: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   206: pop
     //   207: aload_3
-    //   208: getfield 1348	com/tencent/qidian/data/QidianExternalInfo:uin	Ljava/lang/String;
+    //   208: getfield 1426	com/tencent/qidian/data/QidianExternalInfo:uin	Ljava/lang/String;
     //   211: astore 6
     //   213: aload 6
     //   215: invokestatic 46	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   218: ifne +279 -> 497
     //   221: aload 9
-    //   223: new 1350	com/tencent/qidian/data/BmqqAccountType
+    //   223: new 1428	com/tencent/qidian/data/BmqqAccountType
     //   226: dup
     //   227: aload 6
     //   229: invokestatic 350	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   232: bipush 6
-    //   234: invokespecial 1352	com/tencent/qidian/data/BmqqAccountType:<init>	(Ljava/lang/String;I)V
-    //   237: invokevirtual 1355	com/tencent/qidian/QidianManager:a	(Lcom/tencent/qidian/data/BmqqAccountType;)V
+    //   234: invokespecial 1430	com/tencent/qidian/data/BmqqAccountType:<init>	(Ljava/lang/String;I)V
+    //   237: invokevirtual 1433	com/tencent/qidian/QidianManager:a	(Lcom/tencent/qidian/data/BmqqAccountType;)V
     //   240: goto +257 -> 497
     //   243: aload_3
     //   244: invokestatic 46	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   247: ifne +236 -> 483
     //   250: aload 8
-    //   252: getfield 1529	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:rpt_msg_config_group_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   255: invokevirtual 1394	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
+    //   252: getfield 1607	com/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody:rpt_msg_config_group_info	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   255: invokevirtual 1472	com/tencent/mobileqq/pb/PBRepeatMessageField:has	()Z
     //   258: ifeq +225 -> 483
-    //   261: new 1396	com/tencent/qidian/data/QidianProfileUiInfo
+    //   261: new 1474	com/tencent/qidian/data/QidianProfileUiInfo
     //   264: dup
-    //   265: invokespecial 1397	com/tencent/qidian/data/QidianProfileUiInfo:<init>	()V
+    //   265: invokespecial 1475	com/tencent/qidian/data/QidianProfileUiInfo:<init>	()V
     //   268: astore 6
     //   270: aload 6
     //   272: aload_3
     //   273: aload 8
-    //   275: invokevirtual 1532	com/tencent/qidian/data/QidianProfileUiInfo:from	(Ljava/lang/String;Lcom/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody;)V
+    //   275: invokevirtual 1610	com/tencent/qidian/data/QidianProfileUiInfo:from	(Ljava/lang/String;Lcom/tencent/qidian/proto/mobileqq_qidian$GetCorpUinDetailInfoRspBody;)V
     //   278: aload 7
-    //   280: ldc_w 1402
+    //   280: ldc_w 1480
     //   283: aload 6
     //   285: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   288: pop
@@ -2040,30 +2148,30 @@ public class QidianHandler
     //   296: aload_0
     //   297: aload_1
     //   298: aload_3
-    //   299: invokespecial 1533	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
+    //   299: invokespecial 1611	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
     //   302: aload_0
     //   303: sipush 1009
     //   306: iconst_1
     //   307: aload 7
-    //   309: invokespecial 1204	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
+    //   309: invokespecial 1285	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
     //   312: return
     //   313: iload 4
     //   315: ifne -118 -> 197
     //   318: aload 6
-    //   320: getfield 1536	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:uint32_videoshow	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   323: invokevirtual 1447	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
+    //   320: getfield 1614	com/tencent/qidian/proto/mobileqq_qidian$ExternalInfo:uint32_videoshow	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   323: invokevirtual 1525	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   326: ifne +11 -> 337
     //   329: aload_3
     //   330: aload_1
-    //   331: getfield 1528	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
-    //   334: putfield 1528	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
+    //   331: getfield 1606	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
+    //   334: putfield 1606	com/tencent/qidian/data/QidianExternalInfo:isShowVideoCall	I
     //   337: aload_1
     //   338: aload_3
-    //   339: invokevirtual 1409	com/tencent/qidian/data/QidianExternalInfo:update	(Lcom/tencent/qidian/data/QidianExternalInfo;)V
+    //   339: invokevirtual 1487	com/tencent/qidian/data/QidianExternalInfo:update	(Lcom/tencent/qidian/data/QidianExternalInfo;)V
     //   342: goto -145 -> 197
     //   345: astore_1
     //   346: aload_1
-    //   347: invokevirtual 1185	java/lang/Exception:printStackTrace	()V
+    //   347: invokevirtual 1266	java/lang/Exception:printStackTrace	()V
     //   350: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   353: ifeq +33 -> 386
     //   356: getstatic 16	com/tencent/qidian/controller/QidianHandler:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -2071,10 +2179,10 @@ public class QidianHandler
     //   360: new 230	java/lang/StringBuilder
     //   363: dup
     //   364: invokespecial 231	java/lang/StringBuilder:<init>	()V
-    //   367: ldc_w 1538
+    //   367: ldc_w 1616
     //   370: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   373: aload_1
-    //   374: invokevirtual 827	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   374: invokevirtual 892	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   377: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   380: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   383: invokestatic 257	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -2082,10 +2190,10 @@ public class QidianHandler
     //   387: sipush 1009
     //   390: iconst_0
     //   391: aconst_null
-    //   392: invokespecial 1204	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
+    //   392: invokespecial 1285	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
     //   395: return
     //   396: aload 7
-    //   398: ldc_w 1346
+    //   398: ldc_w 1424
     //   401: aload_3
     //   402: invokevirtual 375	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   405: pop
@@ -2093,19 +2201,19 @@ public class QidianHandler
     //   409: aload_0
     //   410: aload_2
     //   411: aload_3
-    //   412: invokespecial 1533	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
+    //   412: invokespecial 1611	com/tencent/qidian/controller/QidianHandler:a	(Lcom/tencent/qidian/data/QidianExternalInfo;Lcom/tencent/qidian/data/QidianProfileUiInfo;)V
     //   415: goto -113 -> 302
     //   418: aload_0
     //   419: sipush 1009
     //   422: iconst_0
     //   423: aconst_null
-    //   424: invokespecial 1204	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
+    //   424: invokespecial 1285	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
     //   427: return
     //   428: aload_0
     //   429: sipush 1009
     //   432: iconst_0
     //   433: aconst_null
-    //   434: invokespecial 1204	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
+    //   434: invokespecial 1285	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
     //   437: return
     //   438: invokestatic 248	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   441: ifeq +31 -> 472
@@ -2114,17 +2222,17 @@ public class QidianHandler
     //   448: new 230	java/lang/StringBuilder
     //   451: dup
     //   452: invokespecial 231	java/lang/StringBuilder:<init>	()V
-    //   455: ldc_w 1540
+    //   455: ldc_w 1618
     //   458: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   461: iload 5
-    //   463: invokevirtual 1213	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   463: invokevirtual 1294	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   466: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   469: invokestatic 257	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   472: aload_0
     //   473: sipush 1009
     //   476: iload 5
     //   478: aconst_null
-    //   479: invokespecial 1204	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
+    //   479: invokespecial 1285	com/tencent/mobileqq/app/BusinessHandler:a	(IZLjava/lang/Object;)V
     //   482: return
     //   483: aconst_null
     //   484: astore_3
@@ -2178,6 +2286,78 @@ public class QidianHandler
     //   418	427	345	java/lang/Exception
     //   428	437	345	java/lang/Exception
     //   113	119	511	java/lang/Exception
+  }
+  
+  public void m(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.isSuccess())
+    {
+      if (paramObject != null)
+      {
+        try
+        {
+          paramToServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
+          if ((paramToServiceMsg != null) && (paramToServiceMsg.uint32_result.get() == 0))
+          {
+            if ((!paramToServiceMsg.bytes_bodybuffer.has()) || (paramToServiceMsg.bytes_bodybuffer.get() == null)) {
+              return;
+            }
+            paramFromServiceMsg = paramToServiceMsg.bytes_bodybuffer.get().toByteArray();
+            int i = paramFromServiceMsg[0];
+            if (i == 0)
+            {
+              PkgTools.a(paramFromServiceMsg, 1);
+              PkgTools.a(paramFromServiceMsg, 3);
+              i = PkgTools.a(paramFromServiceMsg, 5);
+              paramToServiceMsg = new byte[i];
+              PkgTools.b(paramFromServiceMsg, 7, paramToServiceMsg, i);
+              paramToServiceMsg = PkgTools.a(paramToServiceMsg, 0, i);
+              i += 7;
+              PkgTools.a(paramFromServiceMsg, i);
+              i += 2;
+              int j = PkgTools.a(paramFromServiceMsg, i);
+              paramObject = new byte[j];
+              PkgTools.b(paramFromServiceMsg, i + 2, paramObject, j);
+              paramFromServiceMsg = PkgTools.a(paramObject, 0, j);
+              paramObject = new HashMap();
+              paramObject.put("plain_text", paramToServiceMsg);
+              paramObject.put("cipher_text", paramFromServiceMsg);
+              a(1019, true, paramObject);
+              return;
+            }
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin result is " + i);
+            a(1019, false, null);
+            return;
+          }
+        }
+        catch (Exception paramToServiceMsg)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin throw exception is " + paramToServiceMsg.toString());
+          }
+          a(1019, false, null);
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin pkg is null");
+        }
+        a(1019, false, null);
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin data is null");
+        }
+        a(1019, false, null);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "handleQidianPrivateTroopUin res is fail");
+      }
+      a(1019, false, null);
+    }
   }
 }
 

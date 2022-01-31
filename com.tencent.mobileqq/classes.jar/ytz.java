@@ -1,19 +1,34 @@
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
-import com.tencent.mobileqq.apollo.store.ApolloViewController;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ytz
-  implements Runnable
+  extends FriendListObserver
 {
-  public ytz(ApolloStoreActivity paramApolloStoreActivity, int paramInt1, int paramInt2, Intent paramIntent) {}
+  public ytz(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void run()
+  void a(String paramString)
   {
-    if (ApolloStoreActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreActivity).a().getRender() != null) {
-      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    if (!paramString.equals(HotChatCenterFragment.a(this.a).getAccount())) {}
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    while ((HotChatCenterFragment.a(this.a).getCurrentAccountUin() == null) || (!HotChatCenterFragment.a(this.a).getCurrentAccountUin().equals(paramString))) {
+      return;
     }
+    ThreadManager.post(new yua(this, paramString), 8, null, true);
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString) {}
+  
+  protected void onUpdateRecentList()
+  {
+    this.a.b();
   }
 }
 

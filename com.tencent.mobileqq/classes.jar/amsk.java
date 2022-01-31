@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
-import cooperation.qzone.QZoneVideoDownloadActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.dingdong.DingdongPluginRemoteCmdHandler;
 
-public class amsk
+class amsk
   implements Runnable
 {
-  public amsk(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
+  amsk(amsj paramamsj, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
   
   public void run()
   {
-    P2VEffectLoader.a().a(new amsl(this));
+    this.jdField_a_of_type_Amsj.a.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener);
   }
 }
 

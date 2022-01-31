@@ -45,6 +45,9 @@ public class TeamWorkDocEditBrowserActivity
   public static Intent a(Intent paramIntent, String paramString, Context paramContext)
   {
     paramIntent.putExtra("title", " ");
+    paramIntent.putExtra("hide_more_button", true);
+    paramIntent.putExtra("webStyle", "noBottomBar");
+    paramIntent.putExtra("isScreenOrientationPortrait", true);
     paramIntent.putExtra("url", paramString);
     paramIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
     return paramIntent;
@@ -89,7 +92,7 @@ public class TeamWorkDocEditBrowserActivity
       }
       paramContext.startActivity(localIntent);
       return;
-      QQToast.a(BaseApplication.getContext(), paramContext.getResources().getString(2131433009), 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplication.getContext(), paramContext.getResources().getString(2131433023), 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
       return;
     }
   }

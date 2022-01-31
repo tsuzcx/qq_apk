@@ -1,29 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.now.CgiHelper;
-import com.tencent.biz.now.CgiHelper.cigHelperCallback;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.OfflineExpire;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.qphone.base.util.QLog;
 
 public class knx
-  extends Handler
+  extends AbsPreDownloadTask
 {
-  public knx(CgiHelper paramCgiHelper) {}
+  BidDownloader a;
   
-  public void handleMessage(Message paramMessage)
+  public knx(QQAppInterface paramQQAppInterface, String paramString, BidDownloader paramBidDownloader)
   {
-    if ((paramMessage.what == 1001) && (CgiHelper.a(this.a) != null))
-    {
-      paramMessage = CgiHelper.a(this.a);
-      if (TextUtils.isEmpty(CgiHelper.a(this.a))) {
-        break label58;
-      }
-    }
-    label58:
-    for (boolean bool = true;; bool = false)
-    {
-      paramMessage.a(bool, CgiHelper.b(this.a));
-      return;
-    }
+    super(paramQQAppInterface, paramString);
+    this.a = paramBidDownloader;
+  }
+  
+  protected void a()
+  {
+    QLog.i(OfflineExpire.a, 1, "start predown bid=" + this.a.a);
+    this.a.a();
   }
 }
 

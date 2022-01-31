@@ -1,41 +1,33 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.setting.IQIMCameraContainer;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.view.Window;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class anix
+public final class anix
   implements Runnable
 {
-  public anix(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, String paramString) {}
+  public anix(String paramString1, String paramString2) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.a.a();
-    if (localObject == null) {}
-    do
+    Object localObject = new AlertDialog.Builder(BaseApplication.getContext());
+    ((AlertDialog.Builder)localObject).setMessage(this.a).setTitle(this.b);
+    localObject = ((AlertDialog.Builder)localObject).create();
+    ((AlertDialog)localObject).getWindow().setType(2003);
+    try
     {
+      ((AlertDialog)localObject).show();
       return;
-      QLog.e("VERSION_CODES", 2, "onCameraStarted error = " + this.jdField_a_of_type_JavaLangString);
-      String str = ((Activity)localObject).getString(2131428347);
-      localObject = DialogUtil.a((Context)localObject, 230).setMessage(str).setPositiveButton(((Activity)localObject).getString(2131428346), new aniy(this));
-      try
-      {
-        ((QQCustomDialog)localObject).setCancelable(false);
-        ((QQCustomDialog)localObject).show();
-        return;
-      }
-      catch (WindowManager.BadTokenException localBadTokenException) {}
-    } while (!QLog.isColorLevel());
-    QLog.i("VERSION_CODES", 2, "", localBadTokenException);
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anix
  * JD-Core Version:    0.7.0.1
  */

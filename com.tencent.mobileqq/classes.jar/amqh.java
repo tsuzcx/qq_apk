@@ -1,19 +1,57 @@
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class amqh
-  implements Runnable
+  extends AbstractCollection
 {
-  public amqh(QQIndividualityRemoteProxy paramQQIndividualityRemoteProxy, QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper paramQQIndividualityRemoteProxyCallWrapper) {}
+  public amqh(SoftHashMap paramSoftHashMap) {}
   
-  public void run()
+  public void clear()
   {
-    this.jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy.a(this.jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy$QQIndividualityRemoteProxyCallWrapper);
+    this.a.clear();
+  }
+  
+  public boolean contains(Object paramObject)
+  {
+    return this.a.containsValue(paramObject);
+  }
+  
+  public Iterator iterator()
+  {
+    return new amqg(this.a);
+  }
+  
+  public int size()
+  {
+    return this.a.size();
+  }
+  
+  public Object[] toArray()
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray();
+  }
+  
+  public Object[] toArray(Object[] paramArrayOfObject)
+  {
+    ArrayList localArrayList = new ArrayList(size());
+    Iterator localIterator = iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(localIterator.next());
+    }
+    return localArrayList.toArray(paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amqh
  * JD-Core Version:    0.7.0.1
  */

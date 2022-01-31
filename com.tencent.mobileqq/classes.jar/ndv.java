@@ -1,36 +1,67 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.filter.VideoFilterManager;
-import com.tencent.biz.qqstory.model.filter.VideoFilterManager.GetFilterListRequest;
-import com.tencent.biz.qqstory.model.filter.VideoFilterManager.GetFilterListResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader;
+import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.DownloadResult;
+import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerBaseDownloader;
+import com.tencent.biz.qqstory.base.preload.DownloadTask;
+import com.tencent.biz.qqstory.base.preload.IVideoPreloader.OnPreloadListener;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class ndv
-  implements CmdTaskManger.CommandCallback
+  implements INetEngine.INetEngineListener
 {
-  private ndv(VideoFilterManager paramVideoFilterManager) {}
+  public ndv(AsyncFileDownloader.InnerBaseDownloader paramInnerBaseDownloader) {}
   
-  public void a(@NonNull VideoFilterManager.GetFilterListRequest paramGetFilterListRequest, @Nullable VideoFilterManager.GetFilterListResponse paramGetFilterListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void a(NetReq arg1, long paramLong1, long paramLong2)
   {
-    if ((paramGetFilterListResponse != null) && (paramGetFilterListResponse.jdField_a_of_type_Int == 0) && (paramErrorMessage.isSuccess()))
+    ??? = ???.a();
+    if ((??? != null) && ((??? instanceof DownloadTask)))
     {
-      this.a.jdField_a_of_type_JavaUtilList.addAll(paramGetFilterListResponse.jdField_a_of_type_JavaUtilList);
-      SLog.d("VideoFilterManager", "new filter count %d, current total count %d, isEnd=%s, cookie=%s", new Object[] { Integer.valueOf(paramGetFilterListResponse.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), Boolean.valueOf(paramGetFilterListResponse.jdField_a_of_type_Boolean), paramGetFilterListResponse.jdField_a_of_type_JavaLangString });
-      if ((paramGetFilterListResponse.jdField_a_of_type_Boolean) || (paramGetFilterListResponse.jdField_a_of_type_JavaUtilList.isEmpty()))
+      DownloadTask localDownloadTask = (DownloadTask)???;
+      int i = (int)(paramLong1 / paramLong2 * 100.0D);
+      synchronized (PreloadDownloader.a)
       {
-        SLog.d("VideoFilterManager", "get filter full list finish, frequency = %d s", new Object[] { Integer.valueOf(paramGetFilterListResponse.b) });
-        this.a.a(true, paramGetFilterListResponse.b);
-        return;
+        Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator.hasNext())
+        {
+          IVideoPreloader.OnPreloadListener localOnPreloadListener = (IVideoPreloader.OnPreloadListener)((WeakReference)localIterator.next()).get();
+          if (localOnPreloadListener != null) {
+            localOnPreloadListener.a(localDownloadTask.jdField_b_of_type_JavaLangString, localDownloadTask.jdField_a_of_type_Int, i, localDownloadTask);
+          }
+        }
       }
-      this.a.c = paramGetFilterListResponse.jdField_a_of_type_JavaLangString;
-      this.a.c();
+    }
+  }
+  
+  public void a(NetResp paramNetResp)
+  {
+    if (paramNetResp.jdField_a_of_type_Int == 3) {}
+    DownloadTask localDownloadTask;
+    do
+    {
+      do
+      {
+        return;
+        localObject = ((HttpNetReq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq).a();
+      } while ((localObject == null) || (!(localObject instanceof DownloadTask)));
+      localDownloadTask = (DownloadTask)localObject;
+      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((DownloadTask)localObject).jdField_a_of_type_JavaLangString);
+      localDownloadTask.jdField_b_of_type_Long = (System.currentTimeMillis() - localDownloadTask.jdField_a_of_type_Long);
+    } while (localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult == null);
+    Object localObject = localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult;
+    if (paramNetResp.jdField_a_of_type_Int == 0) {}
+    for (paramNetResp = new ErrorMessage(0, "");; paramNetResp = new ErrorMessage(paramNetResp.b, paramNetResp.jdField_a_of_type_JavaLangString))
+    {
+      ((AsyncFileDownloader.DownloadResult)localObject).a(localDownloadTask, paramNetResp);
       return;
     }
-    SLog.c("VideoFilterManager", "get filter failed %s", paramErrorMessage);
-    this.a.a(false, 0);
   }
 }
 

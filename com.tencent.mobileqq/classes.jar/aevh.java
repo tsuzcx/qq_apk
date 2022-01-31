@@ -1,41 +1,19 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.util.AndroidRuntimeException;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart.LocalButtonListenerInterceptor;
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryPublishLauncher;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class aevh
-  implements View.OnClickListener
+  extends NearbyProxyObserver
 {
-  public aevh(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  public aevh(NearbyProxy paramNearbyProxy, int paramInt) {}
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    SLog.d("story.publish.StoryLocalPublishPart", "onClick %s", new Object[] { paramView });
-    switch (paramView.getId())
-    {
+    if (QLog.isColorLevel()) {
+      NearbyUtils.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
     }
-    do
-    {
-      return;
-      new NowVideoReporter().h("video_shoot").i("clk_upload").d(SmallVideoCameraCaptureFragment.a).a(1).b(this.a.a().app);
-    } while ((StoryLocalPublishPart.a(this.a) != null) && (!StoryLocalPublishPart.a(this.a).a()));
-    paramView = StoryPublishLauncher.a();
-    Bundle localBundle = this.a.a();
-    localBundle.putBoolean("enable_multi_fragment", false);
-    localBundle.putInt("local_video_from_type", 1001);
-    if (paramView.a())
-    {
-      paramView.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowSendSmallVideoCameraCaptureFragment, localBundle, this.a.jdField_a_of_type_Int);
-      return;
-    }
-    throw new AndroidRuntimeException("StoryPublishLauncher is not support");
+    NearbyProxy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

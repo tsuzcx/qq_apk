@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.RainView;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
 
 public class mkd
-  implements Runnable
+  implements Action.OnActionEndListener
 {
-  public mkd(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public mkd(RainView paramRainView) {}
   
-  public void run()
+  public void a()
   {
-    ReadinjoyTabFrame.a(this.a);
+    this.a.b(this.a);
   }
 }
 

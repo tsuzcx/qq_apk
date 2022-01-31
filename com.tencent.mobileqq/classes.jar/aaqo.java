@@ -1,23 +1,30 @@
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aaqo
-  implements Runnable
+public class aaqo
+  implements IMediaPlayer.OnInfoListener
 {
-  aaqo(aaqn paramaaqn, int paramInt) {}
+  public aaqo(SplashPopupWin paramSplashPopupWin, PopupWindow paramPopupWindow, TextureVideoView paramTextureVideoView) {}
   
-  public void run()
+  public boolean a_(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    Iterator localIterator = ArkAppMusicModule.a.iterator();
-    while (localIterator.hasNext())
+    QLog.w("WorldCupMgr", 1, "SplashPopupWin.onInfo, what[" + paramInt1 + "], extra[" + paramInt2 + "], popupWindow[" + this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing() + "]");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setBackgroundDrawable(null);
+    if (this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a != null)
     {
-      ArkAppMusicModule localArkAppMusicModule = (ArkAppMusicModule)((WeakReference)localIterator.next()).get();
-      if (localArkAppMusicModule != null) {
-        localArkAppMusicModule.a(this.jdField_a_of_type_Int);
-      }
+      paramIMediaPlayer = (ImageView)SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin).getContentView().findViewById(2131364666);
+      paramIMediaPlayer.setImageDrawable((Drawable)this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a.a.get(Integer.valueOf(1)));
+      paramIMediaPlayer.setVisibility(0);
     }
+    return false;
   }
 }
 

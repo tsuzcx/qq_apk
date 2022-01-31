@@ -1,28 +1,26 @@
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class afet
-  implements View.OnClickListener
+class afet
+  implements DialogInterface.OnClickListener
 {
-  public afet(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  afet(afes paramafes) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.a.a, NearbyVisitorListActivity.class);
-    paramView.putExtra("charmlevel", NearbyProfileDisplayTribePanel.a(this.a).charmLevel);
-    paramView.putExtra("download_tribe_app_url", NearbyProfileDisplayTribePanel.a(this.a).tribeAppDownloadPageUrl);
-    paramView.putExtra("is_show_tribeapp_download_layout", NearbyProfileDisplayTribePanel.a(this.a).isAddPicBtnDownloadAppOpen());
-    this.a.a.startActivity(paramView);
-    NearbyProfileDisplayTribePanel.a(this.a, null);
-    ThreadManager.post(new afeu(this), 5, null, false);
-    ReportController.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
+    if (!NetworkUtil.g(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
+    {
+      QQToast.a(this.a.a.jdField_a_of_type_AndroidViewView.getContext(), 1, "网络异常，无法操作", 0).a();
+      return;
+    }
+    ((NearbyMomentManager)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262)).a(this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.c, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.g, new afeu(this));
   }
 }
 

@@ -1,22 +1,14 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class kui
   implements Runnable
 {
-  public kui(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  public kui(AccountDetailActivity paramAccountDetailActivity) {}
   
   public void run()
   {
-    try
-    {
-      TVK_SDKMgr.installPlugin(AdvertisementVideoPreloadManager.a(this.a), new kuj(this));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      AdvertisementVideoPreloadManager.c("installSDK t==" + localThrowable.toString());
-    }
+    this.a.a.sendEmptyMessage(5);
   }
 }
 

@@ -13,12 +13,12 @@ public class BasePageLoaderEvent
   
   public BasePageLoaderEvent(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.errorInfo = paramErrorMessage;
   }
   
   public String toString()
   {
-    return "{\"_class\":\"BasePageLoaderEvent\", \"errorInfo\":\"" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + "\", \"isEnd\":\"" + this.jdField_a_of_type_Boolean + "\", \"isLocalData\":\"" + this.b + "\", \"isFirstPage\":\"" + this.c + "\"}";
+    return "{\"_class\":\"BasePageLoaderEvent\", \"errorInfo\":\"" + this.errorInfo + "\", \"isEnd\":\"" + this.a + "\", \"isLocalData\":\"" + this.b + "\", \"isFirstPage\":\"" + this.c + "\"}";
   }
 }
 

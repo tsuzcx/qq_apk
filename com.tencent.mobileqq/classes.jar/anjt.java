@@ -1,19 +1,18 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCompleteListener;
+import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
 
 public class anjt
-  implements GuideVideoView.OnCompleteListener
+  implements Runnable
 {
-  public anjt(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anjt(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
   
-  public void a()
+  public void run()
   {
-    QIMEffectCameraCaptureUnit.e(this.a);
+    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjt
  * JD-Core Version:    0.7.0.1
  */

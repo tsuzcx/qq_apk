@@ -1,21 +1,16 @@
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView.OnInterceptTouchListener;
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import org.json.JSONObject;
 
 public class ktl
-  implements VerticalPagerView.OnInterceptTouchListener
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public ktl(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public ktl(AccountDetailGroupListContainer paramAccountDetailGroupListContainer) {}
   
-  public boolean a(int paramInt)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    return (PublicAccountAdvertisementActivity.d(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return (PublicAccountAdvertisementActivity.d(this.a)) && (!PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).a() != null) && (PublicAccountAdvertisementActivity.a(this.a).a().getWebScrollY() == 0);
+    AccountDetailGroupListContainer.a(this.a, paramJSONObject);
   }
 }
 

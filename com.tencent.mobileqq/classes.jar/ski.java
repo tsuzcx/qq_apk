@@ -1,23 +1,30 @@
-import android.app.Activity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
-public final class ski
-  implements Runnable
+public class ski
+  extends ContactBindObserver
 {
-  public ski(String paramString1, Activity paramActivity, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
+  public ski(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    String str = "temp_discuss_link_share_" + this.jdField_a_of_type_JavaLangString + ".png";
-    str = QRUtils.a(this.jdField_a_of_type_AndroidAppActivity, str, TroopShareUtility.a(this.b, this.jdField_a_of_type_AndroidAppActivity.getResources()));
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new skj(this, str));
+    if (paramBoolean1)
+    {
+      int i = ContactSyncJumpActivity.a(this.a).c();
+      if ((i == 1) || (i == 5))
+      {
+        this.a.startActivity(new Intent(this.a, PhoneFrameActivity.class));
+        this.a.finish();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ski
  * JD-Core Version:    0.7.0.1
  */

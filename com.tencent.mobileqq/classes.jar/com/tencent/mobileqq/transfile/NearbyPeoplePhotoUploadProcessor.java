@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aiqk;
+import aivn;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -160,7 +160,7 @@ public class NearbyPeoplePhotoUploadProcessor
           if (QLog.isColorLevel()) {
             QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "onBusiProtoResp()---- sessionKey: " + this.jdField_b_of_type_ArrayOfByte);
           }
-          an_();
+          ap_();
         }
         for (;;)
         {
@@ -283,21 +283,21 @@ public class NearbyPeoplePhotoUploadProcessor
     return super.a(paramInt1, paramInt2);
   }
   
-  public void an_()
+  public void ap_()
   {
     int i = 21;
     if (QLog.isColorLevel()) {
       QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.sendFile()");
     }
     this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
-    aiqk localaiqk = new aiqk(this, SystemClock.uptimeMillis());
+    aivn localaivn = new aivn(this, SystemClock.uptimeMillis());
     if ((this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 8) || (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b == 64)) {
       i = 3;
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_c_of_type_Int = i;
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte, localaiqk, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_ArrayOfByte);
+      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfByte, localaivn, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_ArrayOfByte);
       int j = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
       if (QLog.isColorLevel()) {
         QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + j + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " UniSeq:" + this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long + " MD5:" + this.jdField_c_of_type_JavaLangString + " uuid:" + this.g + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + i);
@@ -355,9 +355,9 @@ public class NearbyPeoplePhotoUploadProcessor
     }
   }
   
-  public void ap_()
+  public void ar_()
   {
-    super.ap_();
+    super.ar_();
     d(1001);
     if (QLog.isColorLevel()) {
       QLog.i("NearbyPeoplePhotoUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.start()");
@@ -465,7 +465,7 @@ public class NearbyPeoplePhotoUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,44 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.av.ui.QavPanel;
+import android.os.Handler;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 import com.tencent.qphone.base.util.QLog;
 
 public class jzl
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public jzl(QavPanel paramQavPanel) {}
+  jzl(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavPanel", 2, "onTouch action: " + paramMotionEvent.getAction());
-    }
-    if (paramView == this.a.m)
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController.i())
     {
-      if (paramMotionEvent.getAction() == 0)
-      {
-        this.a.d.setAlpha(0.5F);
-        this.a.e.setAlpha(0.5F);
-      }
-      for (;;)
-      {
-        return this.a.a.onTouch(paramView, paramMotionEvent);
-        if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-        {
-          this.a.d.setAlpha(1.0F);
-          this.a.e.setAlpha(1.0F);
-        }
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a(0L, false, 0L);
+      if (QLog.isColorLevel()) {
+        QLog.e(this.a.c, 2, "RefreshNoiseStateRunnable refreshUserNoiseState return true");
       }
     }
-    if (paramMotionEvent.getAction() == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
+    Handler localHandler;
+    Runnable localRunnable;
+    if (this.a.e != null)
     {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(1.0F);
+      localHandler = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      localRunnable = this.a.e;
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController.c >= 2000L) {
+        break label105;
       }
+    }
+    label105:
+    for (long l = 2000L;; l = this.a.jdField_a_of_type_ComTencentAvVideoController.c)
+    {
+      localHandler.postDelayed(localRunnable, l);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jzl
  * JD-Core Version:    0.7.0.1
  */

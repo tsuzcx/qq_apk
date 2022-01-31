@@ -15,7 +15,7 @@ public class GpuImageFilterGroup
   private List b;
   private int e = -1;
   
-  private void f()
+  private void g()
   {
     if (this.b != null)
     {
@@ -49,7 +49,7 @@ public class GpuImageFilterGroup
     while (((Iterator)localObject).hasNext()) {
       ((GPUBaseFilter)((Iterator)localObject).next()).a(paramInt1, paramInt2);
     }
-    f();
+    g();
     this.b = new ArrayList();
     int j = this.jdField_a_of_type_JavaUtilList.size();
     int i = j;
@@ -102,13 +102,13 @@ public class GpuImageFilterGroup
     this.jdField_a_of_type_JavaUtilList.add(paramGPUBaseFilter);
   }
   
-  public void c()
+  public void d()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((GPUBaseFilter)localIterator.next()).c();
+      ((GPUBaseFilter)localIterator.next()).d();
     }
-    f();
+    g();
   }
 }
 

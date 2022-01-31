@@ -109,14 +109,14 @@ public class QzoneVipPaymentJsPlugin
     } while (localAppInterface == null);
     Intent localIntent = new Intent(BaseApplication.getContext(), PayBridgeActivity.class);
     String str2 = VipUtils.a(paramString4);
-    String str1 = ((Activity)localObject2).getString(2131432640);
-    String str3 = ((Activity)localObject2).getString(2131432642);
+    String str1 = ((Activity)localObject2).getString(2131432654);
+    String str3 = ((Activity)localObject2).getString(2131432656);
     paramString4 = "";
     Object localObject1 = "";
     if ("1".equals(paramString3))
     {
       paramString4 = "xxjzgw";
-      str1 = ((Activity)localObject2).getString(2131432640);
+      str1 = ((Activity)localObject2).getString(2131432654);
       localObject1 = "1450000153";
     }
     for (;;)
@@ -160,7 +160,7 @@ public class QzoneVipPaymentJsPlugin
       if ("2".equals(paramString3))
       {
         paramString4 = "XXJZGHH";
-        str1 = ((Activity)localObject2).getString(2131432641);
+        str1 = ((Activity)localObject2).getString(2131432655);
         localObject1 = "1450001557";
       }
     }

@@ -45,7 +45,7 @@ public class GetDiscoverBannerVideoHandler
       QLog.d("Q.qqstory.discover.GetDiscoverBannerVideoHandler", 2, "saved banner info to db. bannerId = " + this.a);
     }
     paramGetDiscoverBannerVideoRequest = new GetDiscoverBannerVideoHandler.GetDiscoverBannerVideoEvent(paramGetDiscoverBannerVideoResponse);
-    paramGetDiscoverBannerVideoRequest.a = paramErrorMessage;
+    paramGetDiscoverBannerVideoRequest.errorInfo = paramErrorMessage;
     Dispatchers.get().dispatch(paramGetDiscoverBannerVideoRequest);
   }
 }

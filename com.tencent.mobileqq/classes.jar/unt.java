@@ -1,68 +1,35 @@
 import android.view.View;
-import android.view.animation.AnimationUtils;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AnimationPath;
-import com.tencent.mobileqq.activity.aio.anim.AnimationPath.Values;
-import com.tencent.mobileqq.activity.aio.anim.PathAnimation;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.GridCallBack;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
 
 public class unt
-  implements Runnable
+  implements View.OnClickListener
 {
-  private unt(PathAnimation paramPathAnimation) {}
+  public unt(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l3 = AnimationUtils.currentAnimationTimeMillis();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-    long l2 = -1L;
-    if (localIterator.hasNext())
+    paramView = (ActivateFriendGridItem)paramView;
+    if (paramView.a)
     {
-      AnimationPath.Values localValues = (AnimationPath.Values)localIterator.next();
-      long l1;
-      if (l3 < localValues.jdField_a_of_type_Long)
-      {
-        l1 = localValues.jdField_a_of_type_Long - l3;
-        label63:
-        if (l1 < 0L) {
-          break label195;
-        }
-        if (l2 >= 0L) {
-          break label186;
-        }
-        label75:
-        this.a.a(localValues.jdField_a_of_type_AndroidViewView, localValues);
-      }
-      for (;;)
-      {
-        l2 = l1;
-        break;
-        if (!localValues.b)
-        {
-          l1 = localValues.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAnimationPath.a(localValues, localValues.jdField_a_of_type_AndroidViewView.getWidth(), localValues.jdField_a_of_type_AndroidViewView.getHeight(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getWidth(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getHeight());
-          localValues.b = true;
-          break label63;
-        }
-        l1 = localValues.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAnimationPath.a(l3 - localValues.jdField_a_of_type_Long, localValues);
-        break label63;
-        label186:
-        l1 = Math.min(l2, l1);
+      ActivateFriendGrid.a(this.a);
+      if (paramView.a) {
         break label75;
-        label195:
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeViewInLayout(localValues.jdField_a_of_type_AndroidViewView);
-        localIterator.remove();
-        l1 = l2;
       }
     }
-    if (l2 >= 0L)
+    label75:
+    for (boolean bool = true;; bool = false)
     {
-      this.a.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this, l2);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.invalidate();
+      paramView.setChecked(bool);
+      if (ActivateFriendGrid.a(this.a) != null) {
+        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
+      }
       return;
+      ActivateFriendGrid.b(this.a);
+      break;
     }
-    this.a.d();
   }
 }
 

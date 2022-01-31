@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/dialog_bg" android:layout_width="288.0dip" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0430" android:layout_centerHorizontal="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="20.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c001a" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dd9" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dda" android:background="#ffc2c8cd" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0dd9" />
-    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ddb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0dda">
-        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c000f" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ddc" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1e2b" />
-    </LinearLayout>
-    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ddd" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="26.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0ddb">
-        <Button android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c000f" android:gravity="center" android:id="@id/dialog_button_cancel" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207fb" android:layout_width="122.0dip" android:layout_height="fill_parent" android:layout_marginRight="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b182f" />
-        <Button android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c000f" android:gravity="center" android:id="@id/dialog_button_ok" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207fb" android:layout_width="122.0dip" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b189f" />
-    </LinearLayout>
-</RelativeLayout>
+    <TextView android:textSize="16.0sp" android:textColor="#fffbdba9" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0df1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="释放立即刷新" />
+    <TextView android:textSize="16.0sp" android:textColor="#fffbdba9" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0df2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="继续下拉抽红包" />
+</LinearLayout>

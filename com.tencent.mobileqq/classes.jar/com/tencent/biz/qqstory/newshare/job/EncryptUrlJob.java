@@ -6,7 +6,7 @@ import com.tencent.biz.qqstory.newshare.model.Job;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import ngc;
+import nkm;
 
 public class EncryptUrlJob
   extends Job
@@ -42,7 +42,7 @@ public class EncryptUrlJob
     }
     localStoryShareTranslateTokenRequest.b = arrayOfString[1];
     localStoryShareTranslateTokenRequest.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    CmdTaskManger.a().a(localStoryShareTranslateTokenRequest, new ngc(this, arrayOfString));
+    CmdTaskManger.a().a(localStoryShareTranslateTokenRequest, new nkm(this, arrayOfString));
   }
   
   protected void a(Map paramMap)

@@ -18,7 +18,7 @@ public class b
   private static volatile b d;
   private final int a = 1001;
   private final int b = 1002;
-  private final int c = 120000;
+  private final int c = 30000;
   private final List<a> e = new ArrayList();
   private Handler f;
   
@@ -98,7 +98,7 @@ public class b
     localMessage.obj = paramAbstractUploadTask;
     this.f.sendMessage(localMessage);
     paramAbstractUploadTask = Message.obtain(this.f, 1002);
-    this.f.sendMessageDelayed(paramAbstractUploadTask, 120000L);
+    this.f.sendMessageDelayed(paramAbstractUploadTask, 30000L);
   }
   
   public void b(AbstractUploadTask paramAbstractUploadTask)

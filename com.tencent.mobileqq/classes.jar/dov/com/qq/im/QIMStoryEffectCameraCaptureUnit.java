@@ -8,9 +8,11 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import ankg;
+import anss;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.utils.StoryIntentUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
@@ -18,6 +20,7 @@ import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.CapturePara
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.PhotoCaptureResult;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
 import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import dov.com.qq.im.capture.adapter.CaptureModeAdapter.CaptureMode;
 import dov.com.qq.im.setting.CaptureEntranceParams;
 import dov.com.qq.im.setting.CapturePicParams;
 import dov.com.qq.im.setting.CapturePicParams.CapturePicParamsBuilder;
@@ -52,14 +55,13 @@ public class QIMStoryEffectCameraCaptureUnit
   
   protected int a()
   {
-    return 2130970090;
+    return 2130970102;
   }
   
   public View a()
   {
     View localView = super.a();
-    this.e.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363993));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364018));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     return localView;
   }
@@ -111,7 +113,9 @@ public class QIMStoryEffectCameraCaptureUnit
   {
     this.jdField_a_of_type_DovComQqImSettingCaptureEntranceParams = new CaptureEntranceParams(10002, this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a().getIntent().getIntExtra("entrance_type", 1), 1);
     super.a(paramBundle);
-    SubmitHomeWorkFragment.b(this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a());
+    if (BaseApplicationImpl.sProcessId != 9) {
+      SubmitHomeWorkFragment.a(this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a());
+    }
   }
   
   public void a(CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult)
@@ -134,36 +138,48 @@ public class QIMStoryEffectCameraCaptureUnit
   protected void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
   {
     boolean bool1;
+    boolean bool2;
+    label30:
+    Object localObject;
     if (this.jdField_a_of_type_DovComQqImSettingCaptureEntranceParams.b != 102)
     {
       bool1 = true;
       if (this.jdField_a_of_type_DovComQqImSettingCaptureEntranceParams.b == 102) {
-        break label114;
+        break label156;
+      }
+      bool2 = true;
+      localObject = new CaptureVideoParams.CaptureVideoParamsBuilder().a(false).d(bool1).e(bool2).f(true).h(this.b).a();
+      this.jdField_a_of_type_DovComQqImSettingCaptureEntranceParams.a((CaptureVideoParams)localObject);
+      localObject = this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a().getIntent();
+      if (!this.b) {
+        break label162;
       }
     }
-    label114:
-    for (boolean bool2 = true;; bool2 = false)
+    label156:
+    label162:
+    for (int i = 2;; i = -1)
     {
-      CaptureVideoParams localCaptureVideoParams = new CaptureVideoParams.CaptureVideoParamsBuilder().a(false).d(bool1).e(bool2).f(true).a();
-      this.jdField_a_of_type_DovComQqImSettingCaptureEntranceParams.a(localCaptureVideoParams);
+      ((Intent)localObject).putExtra("extra_transiton_src_from", i);
       JumpUtil.a(this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a(), paramVideoCaptureResult, paramLocalMediaInfo, this.jdField_a_of_type_DovComQqImSettingCaptureEntranceParams, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a().getIntent().getExtras());
       return;
       bool1 = false;
       break;
+      bool2 = false;
+      break label30;
     }
   }
   
   protected void e()
   {
     super.e();
-    if (!this.b) {
+    if (!this.jdField_c_of_type_Boolean) {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
   }
   
-  protected void f()
+  protected void g()
   {
-    super.f();
+    super.g();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
@@ -179,10 +195,30 @@ public class QIMStoryEffectCameraCaptureUnit
     catch (Exception localException) {}
   }
   
-  public void v()
+  protected void o()
+  {
+    super.o();
+    int i = 0;
+    for (;;)
+    {
+      if (i < this.jdField_c_of_type_JavaUtilList.size())
+      {
+        if (1 == ((CaptureModeAdapter.CaptureMode)this.jdField_c_of_type_JavaUtilList.get(i)).a()) {
+          this.jdField_c_of_type_JavaUtilList.add(i + 1, new CaptureModeAdapter.CaptureMode(2));
+        }
+      }
+      else {
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  public void w()
   {
     Object localObject = this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a();
     Intent localIntent = new Intent((Context)localObject, PhotoListActivity.class);
+    StoryIntentUtils.a(localIntent, ((Activity)localObject).getIntent().getExtras());
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 4);
     localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
     localIntent.putExtra("from_qqstory_slideshow", true);
@@ -196,7 +232,7 @@ public class QIMStoryEffectCameraCaptureUnit
     StoryReportor.a("video_shoot_slides", "clk_slides_entry", 0, 0, new String[0]);
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ankg(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new anss(this);
       localObject = new IntentFilter();
       ((IntentFilter)localObject).addAction("dov.com.qq.im.finish_capture_action");
     }

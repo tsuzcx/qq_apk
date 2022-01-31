@@ -1,30 +1,13 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-public class tqg
+class tqg
   implements Runnable
 {
-  public tqg(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  tqg(tqf paramtqf) {}
   
   public void run()
   {
-    try
-    {
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (RegisterQQNumberActivity.a(this.a).isShowing()))
-      {
-        RegisterQQNumberActivity.a(this.a).dismiss();
-        RegisterQQNumberActivity.a(this.a).cancel();
-      }
-      RegisterQQNumberActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    QQSettingMe.c(this.a.a);
   }
 }
 

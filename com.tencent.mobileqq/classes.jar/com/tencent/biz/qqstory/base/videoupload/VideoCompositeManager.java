@@ -17,7 +17,7 @@ import com.tribe.async.async.Bosses;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
-import naw;
+import ner;
 
 @TargetApi(14)
 public class VideoCompositeManager
@@ -66,7 +66,7 @@ public class VideoCompositeManager
     if (TextUtils.isEmpty(localPublishVideoEntry.backgroundMusicPath)) {}
     for (paramString = "0";; paramString = "1")
     {
-      StoryReportor.b("publish_story", "video_composite_wait", a(localPublishVideoEntry), paramCompositeResult.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, new String[] { paramCompositeResult.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg, String.valueOf(l - paramLong), String.valueOf(localPublishVideoEntry.videoDuration), paramString });
+      StoryReportor.b("publish_story", "video_composite_wait", a(localPublishVideoEntry), paramCompositeResult.errorInfo.errorCode, new String[] { paramCompositeResult.errorInfo.errorMsg, String.valueOf(l - paramLong), String.valueOf(localPublishVideoEntry.videoDuration), paramString });
       return;
     }
   }
@@ -100,7 +100,7 @@ public class VideoCompositeManager
     //   13: aload_0
     //   14: getfield 30	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   17: aload_1
-    //   18: invokevirtual 188	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   18: invokevirtual 189	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   21: checkcast 145	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult
     //   24: astore 7
     //   26: aload 6
@@ -108,14 +108,14 @@ public class VideoCompositeManager
     //   29: aload 7
     //   31: ifnull +44 -> 75
     //   34: aload 7
-    //   36: getfield 190	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:b	Ljava/lang/String;
-    //   39: invokestatic 194	com/tencent/biz/qqstory/utils/FileUtils:b	(Ljava/lang/String;)Z
+    //   36: getfield 191	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:b	Ljava/lang/String;
+    //   39: invokestatic 195	com/tencent/biz/qqstory/utils/FileUtils:b	(Ljava/lang/String;)Z
     //   42: ifeq +20 -> 62
     //   45: aload_0
     //   46: aload_1
     //   47: lload_3
     //   48: aload 7
-    //   50: invokespecial 196	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:a	(Ljava/lang/String;JLcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult;)V
+    //   50: invokespecial 197	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:a	(Ljava/lang/String;JLcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult;)V
     //   53: aload 7
     //   55: areturn
     //   56: astore_1
@@ -126,12 +126,12 @@ public class VideoCompositeManager
     //   62: aload_0
     //   63: getfield 30	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   66: aload 7
-    //   68: getfield 198	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   71: invokevirtual 201	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   68: getfield 199	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:a	Ljava/lang/String;
+    //   71: invokevirtual 202	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   74: pop
     //   75: aload_0
     //   76: aload_1
-    //   77: invokevirtual 204	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:a	(Ljava/lang/String;)V
+    //   77: invokevirtual 205	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:a	(Ljava/lang/String;)V
     //   80: iconst_0
     //   81: istore_2
     //   82: aload_0
@@ -140,27 +140,27 @@ public class VideoCompositeManager
     //   88: aload 6
     //   90: monitorenter
     //   91: ldc 77
-    //   93: ldc 206
+    //   93: ldc 207
     //   95: iconst_1
     //   96: anewarray 32	java/lang/Object
     //   99: dup
     //   100: iconst_0
     //   101: aload_1
     //   102: aastore
-    //   103: invokestatic 211	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   103: invokestatic 212	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   106: aload_0
     //   107: getfield 37	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:b	Ljava/lang/Object;
-    //   110: ldc2_w 212
-    //   113: invokevirtual 217	java/lang/Object:wait	(J)V
+    //   110: ldc2_w 213
+    //   113: invokevirtual 218	java/lang/Object:wait	(J)V
     //   116: ldc 77
-    //   118: ldc 219
+    //   118: ldc 220
     //   120: iconst_1
     //   121: anewarray 32	java/lang/Object
     //   124: dup
     //   125: iconst_0
     //   126: aload_1
     //   127: aastore
-    //   128: invokestatic 211	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   128: invokestatic 212	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   131: aload 6
     //   133: monitorexit
     //   134: aload_0
@@ -171,12 +171,12 @@ public class VideoCompositeManager
     //   143: aload_0
     //   144: getfield 25	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   147: aload_1
-    //   148: invokevirtual 223	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
+    //   148: invokevirtual 224	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
     //   151: istore 5
     //   153: aload_0
     //   154: getfield 30	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   157: aload_1
-    //   158: invokevirtual 188	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   158: invokevirtual 189	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   161: checkcast 145	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult
     //   164: astore 7
     //   166: aload 6
@@ -184,26 +184,26 @@ public class VideoCompositeManager
     //   169: aload 7
     //   171: ifnull +56 -> 227
     //   174: ldc 77
-    //   176: ldc 225
+    //   176: ldc 226
     //   178: iconst_1
     //   179: anewarray 32	java/lang/Object
     //   182: dup
     //   183: iconst_0
     //   184: aload 7
     //   186: aastore
-    //   187: invokestatic 211	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   187: invokestatic 212	com/tencent/biz/qqstory/support/logging/SLog:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   190: aload_0
     //   191: aload_1
     //   192: lload_3
     //   193: aload 7
-    //   195: invokespecial 196	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:a	(Ljava/lang/String;JLcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult;)V
+    //   195: invokespecial 197	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:a	(Ljava/lang/String;JLcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult;)V
     //   198: aload 7
     //   200: areturn
     //   201: astore 7
     //   203: ldc 77
-    //   205: ldc 227
+    //   205: ldc 228
     //   207: aload 7
-    //   209: invokestatic 230	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   209: invokestatic 231	com/tencent/biz/qqstory/support/logging/SLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   212: goto -81 -> 131
     //   215: astore_1
     //   216: aload 6
@@ -220,29 +220,29 @@ public class VideoCompositeManager
     //   232: new 145	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult
     //   235: dup
     //   236: aload_0
-    //   237: invokespecial 233	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:<init>	(Lcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager;)V
+    //   237: invokespecial 234	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:<init>	(Lcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager;)V
     //   240: astore 6
     //   242: aload 6
-    //   244: new 150	com/tencent/biz/qqstory/base/ErrorMessage
+    //   244: new 151	com/tencent/biz/qqstory/base/ErrorMessage
     //   247: dup
-    //   248: ldc 234
-    //   250: ldc 236
-    //   252: invokespecial 239	com/tencent/biz/qqstory/base/ErrorMessage:<init>	(ILjava/lang/String;)V
-    //   255: putfield 148	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage	Lcom/tencent/biz/qqstory/base/ErrorMessage;
+    //   248: ldc 235
+    //   250: ldc 237
+    //   252: invokespecial 240	com/tencent/biz/qqstory/base/ErrorMessage:<init>	(ILjava/lang/String;)V
+    //   255: putfield 149	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:errorInfo	Lcom/tencent/biz/qqstory/base/ErrorMessage;
     //   258: ldc 77
-    //   260: ldc 241
+    //   260: ldc 242
     //   262: iconst_1
     //   263: anewarray 32	java/lang/Object
     //   266: dup
     //   267: iconst_0
     //   268: aload_1
     //   269: aastore
-    //   270: invokestatic 243	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   270: invokestatic 244	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   273: aload_0
     //   274: aload_1
     //   275: lload_3
     //   276: aload 6
-    //   278: invokespecial 196	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:a	(Ljava/lang/String;JLcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult;)V
+    //   278: invokespecial 197	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:a	(Ljava/lang/String;JLcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult;)V
     //   281: aload 6
     //   283: areturn
     //   284: iload_2
@@ -251,29 +251,29 @@ public class VideoCompositeManager
     //   290: new 145	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult
     //   293: dup
     //   294: aload_0
-    //   295: invokespecial 233	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:<init>	(Lcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager;)V
+    //   295: invokespecial 234	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:<init>	(Lcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager;)V
     //   298: astore 7
     //   300: aload 7
-    //   302: new 150	com/tencent/biz/qqstory/base/ErrorMessage
+    //   302: new 151	com/tencent/biz/qqstory/base/ErrorMessage
     //   305: dup
-    //   306: ldc 244
-    //   308: ldc 246
-    //   310: invokespecial 239	com/tencent/biz/qqstory/base/ErrorMessage:<init>	(ILjava/lang/String;)V
-    //   313: putfield 148	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage	Lcom/tencent/biz/qqstory/base/ErrorMessage;
+    //   306: ldc 245
+    //   308: ldc 247
+    //   310: invokespecial 240	com/tencent/biz/qqstory/base/ErrorMessage:<init>	(ILjava/lang/String;)V
+    //   313: putfield 149	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult:errorInfo	Lcom/tencent/biz/qqstory/base/ErrorMessage;
     //   316: ldc 77
-    //   318: ldc 248
+    //   318: ldc 249
     //   320: iconst_1
     //   321: anewarray 32	java/lang/Object
     //   324: dup
     //   325: iconst_0
     //   326: aload_1
     //   327: aastore
-    //   328: invokestatic 243	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   328: invokestatic 244	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   331: aload_0
     //   332: aload_1
     //   333: lload_3
     //   334: aload 7
-    //   336: invokespecial 196	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:a	(Ljava/lang/String;JLcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult;)V
+    //   336: invokespecial 197	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:a	(Ljava/lang/String;JLcom/tencent/biz/qqstory/base/videoupload/VideoCompositeManager$CompositeResult;)V
     //   339: aload_0
     //   340: getfield 35	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   343: astore 6
@@ -282,12 +282,12 @@ public class VideoCompositeManager
     //   348: aload_0
     //   349: getfield 25	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   352: aload_1
-    //   353: invokevirtual 250	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   353: invokevirtual 251	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
     //   356: pop
     //   357: aload_0
     //   358: getfield 44	com/tencent/biz/qqstory/base/videoupload/VideoCompositeManager:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   361: iconst_0
-    //   362: invokevirtual 253	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   362: invokevirtual 254	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   365: aload 6
     //   367: monitorexit
     //   368: aload 7
@@ -389,7 +389,7 @@ public class VideoCompositeManager
     }
     long l = SystemClock.elapsedRealtime();
     SLog.d("Q.qqstory.publish.upload.VideoCompositeManager", "will composite vid:%s", new Object[] { str2 });
-    Bosses.get().postJob(new naw(this, str2, l));
+    Bosses.get().postJob(new ner(this, str2, l));
   }
 }
 

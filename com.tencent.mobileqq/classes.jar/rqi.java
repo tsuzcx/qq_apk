@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.now.enter.NowEnterManager;
 
 public class rqi
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rqi(BaseChatPie paramBaseChatPie) {}
+  public rqi(AssistantSettingActivity paramAssistantSettingActivity, NowEnterManager paramNowEnterManager) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.a = false;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a(paramBoolean);
   }
 }
 

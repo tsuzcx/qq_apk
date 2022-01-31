@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.businessCard;
 
-import abmp;
-import abmq;
+import abtq;
+import abtr;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -149,7 +149,7 @@ public class BusinessCardManager
   
   public void a()
   {
-    ThreadManager.post(new abmp(this), 8, null, true);
+    ThreadManager.post(new abtq(this), 8, null, true);
   }
   
   public void a(int paramInt)
@@ -378,7 +378,7 @@ public class BusinessCardManager
     localTransferRequest.b = 24;
     localTransferRequest.jdField_c_of_type_Int = 18;
     localTransferRequest.jdField_a_of_type_JavaLangString = "actBusinessCardPicUpload";
-    ThreadManager.post(new abmq(this, localTransferRequest), 8, null, true);
+    ThreadManager.post(new abtr(this, localTransferRequest), 8, null, true);
   }
   
   public BusinessCard d(String paramString)

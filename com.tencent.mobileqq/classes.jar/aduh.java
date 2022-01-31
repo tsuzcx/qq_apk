@@ -1,39 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
 public class aduh
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public aduh(HuayangPluginLauncher paramHuayangPluginLauncher, boolean paramBoolean) {}
+  public aduh(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher) == null) {
-      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, HuayangPluginLauncher.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher));
-    }
-    if ((HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher) != null) && (HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher)))
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label108;
-      }
-      Message localMessage = Message.obtain(HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher), 2);
-      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher).sendMessage(localMessage);
-      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher));
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher.jdField_a_of_type_Boolean = true;
-    }
-    for (;;)
-    {
-      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, false);
-      return;
-      label108:
-      HuayangPluginLauncher.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher));
+    if ((this.a.a instanceof DirectForwardActivity)) {
+      this.a.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aduh
  * JD-Core Version:    0.7.0.1
  */

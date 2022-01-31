@@ -1,21 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyBaseViewController;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class lci
-  implements View.OnClickListener
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public lci(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public lci(EcShopAssistantManager paramEcShopAssistantManager) {}
   
-  public void onClick(View paramView)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((ReadInJoyChannelActivity.a(this.a)) || (ReadInJoyChannelActivity.b(this.a)))
+    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
     {
-      this.a.a.a(true);
-      return;
+      Intent localIntent = new Intent("action_decode_finish");
+      localIntent.putExtra("bitmap", paramBitmap);
+      localIntent.putExtra("uin", paramString);
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
     }
-    this.a.a.a(false);
   }
 }
 

@@ -1,40 +1,14 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.NativeAd.data.BannerInfo;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
-import java.util.ArrayList;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
 
-public class kwd
-  implements ViewPager.OnPageChangeListener
+class kwd
+  implements Runnable
 {
-  public kwd(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  kwd(kwc paramkwc) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void run()
   {
-    ReadInJoyNativeAdFragment.a(this.a, Math.max(ReadInJoyNativeAdFragment.a(this.a), paramInt + 1));
-    ((AdModuleBase)ReadInJoyNativeAdFragment.a(this.a).get(paramInt)).a();
-    if (paramInt + 1 < ReadInJoyNativeAdFragment.a(this.a).size()) {
-      ((AdModuleBase)ReadInJoyNativeAdFragment.a(this.a).get(paramInt + 1)).b();
-    }
-    if ((ReadInJoyNativeAdFragment.a(this.a) != null) && (ReadInJoyNativeAdFragment.a(this.a).a == 1) && ((ReadInJoyNativeAdFragment.b(this.a) == 1) || (ReadInJoyNativeAdFragment.b(this.a) == 2)))
-    {
-      if (paramInt != ReadInJoyNativeAdFragment.a(this.a).size() - 1) {
-        break label155;
-      }
-      ReadInJoyNativeAdFragment.a(this.a).setVisibility(8);
-    }
-    for (;;)
-    {
-      ReadInJoyNativeAdFragment.a(this.a);
-      return;
-      label155:
-      ReadInJoyNativeAdFragment.a(this.a).setVisibility(0);
-    }
+    VideoCoverFragment.a(this.a.a).setCurrentItem(0, true);
   }
 }
 

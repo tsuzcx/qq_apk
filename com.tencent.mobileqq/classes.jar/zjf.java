@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.DataLineHandler;
 
-class zjf
-  implements Comparator
+public class zjf
+  implements Runnable
 {
-  zjf(zje paramzje) {}
+  public zjf(DataLineHandler paramDataLineHandler, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void run()
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_Long, this.b, this.c);
   }
 }
 

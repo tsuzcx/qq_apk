@@ -17,6 +17,8 @@ import Wallet.JudgeDownloadReq;
 import Wallet.JudgeDownloadRsp;
 import Wallet.RedInfoSyncReq;
 import Wallet.RedInfoSyncRsp;
+import Wallet.ReportHBGameReq;
+import Wallet.ReportHBGameRsp;
 import Wallet.ReqWalletConfig;
 import Wallet.ResInfo;
 import Wallet.RspWalletConfig;
@@ -45,7 +47,7 @@ import mqq.app.MSFServlet;
 import mqq.app.NewIntent;
 import mqq.app.Packet;
 import mqq.observer.BusinessObserver;
-import xap;
+import xgf;
 
 public class QWalletCommonServlet
   extends MSFServlet
@@ -87,7 +89,7 @@ public class QWalletCommonServlet
       {
         a(paramJceStruct, 2, paramBusinessObserver, paramInt2);
         if (!QLog.isColorLevel()) {
-          break label883;
+          break label935;
         }
         localDownloadReportReq = (DownloadReportReq)paramJceStruct;
         paramBusinessObserver = new StringBuilder().append("send DownloadReportReq|").append(localDownloadReportReq.iType).append("|").append(localDownloadReportReq.sSpeed).append("|");
@@ -107,7 +109,7 @@ public class QWalletCommonServlet
       }
       a(paramJceStruct, 1, paramBusinessObserver, paramInt2);
       if (!QLog.isColorLevel()) {
-        break label883;
+        break label935;
       }
       localObject1 = (JudgeDownloadReq)paramJceStruct;
       paramBusinessObserver = new StringBuilder().append("send JudgeDownloadReq|").append(((JudgeDownloadReq)localObject1).iType).append("|");
@@ -125,7 +127,7 @@ public class QWalletCommonServlet
     catch (Throwable paramJceStruct)
     {
       if (!QLog.isColorLevel()) {
-        break label883;
+        break label935;
       }
     }
     QLog.e("QWalletCommonServlet", 2, "sendRequest|" + paramJceStruct.toString());
@@ -179,11 +181,11 @@ public class QWalletCommonServlet
     else if ((paramJceStruct instanceof ReqWalletConfig))
     {
       if (paramInt1 != 1) {
-        break label884;
+        break label936;
       }
     }
-    label883:
-    label884:
+    label935:
+    label936:
     for (paramInt1 = 17;; paramInt1 = 10)
     {
       a(paramJceStruct, paramInt1, paramBusinessObserver, paramInt2);
@@ -242,6 +244,15 @@ public class QWalletCommonServlet
             QLog.d("QWalletCommonServlet", 2, "send RedInfoSyncReq|" + paramJceStruct);
           }
         }
+        else if ((paramJceStruct instanceof ReportHBGameReq))
+        {
+          a(paramJceStruct, 20, paramBusinessObserver, paramInt2);
+          if (QLog.isColorLevel())
+          {
+            paramJceStruct = (ReportHBGameReq)paramJceStruct;
+            QLog.d("QWalletCommonServlet", 2, "send RedInfoSyncReq|" + paramJceStruct);
+          }
+        }
       }
       return;
     }
@@ -261,7 +272,7 @@ public class QWalletCommonServlet
       } while ((i == 1) && (!(paramIntent instanceof NewIntent)));
       paramIntent = ((NewIntent)paramIntent).getObserver();
     } while (paramIntent == null);
-    ThreadManager.post(new xap(this, paramIntent, paramInt, paramBoolean, paramBundle), 5, null, true);
+    ThreadManager.post(new xgf(this, paramIntent, paramInt, paramBoolean, paramBundle), 5, null, true);
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -275,7 +286,7 @@ public class QWalletCommonServlet
     }
     Object localObject1 = paramFromServiceMsg.getServiceCmd();
     Object localObject2;
-    if ("AdvRuleSvrCmd.judgeDownload".equals(localObject1))
+    if ("QQPayFrequencySvc.judgeDownload".equals(localObject1))
     {
       localObject1 = null;
       if (paramFromServiceMsg.isSuccess()) {
@@ -289,7 +300,7 @@ public class QWalletCommonServlet
       notifyObserver(paramIntent, 1, paramFromServiceMsg.isSuccess(), (Bundle)localObject2, null);
       return;
     }
-    if ("AdvRuleSvrCmd.downloadChoose".equals(localObject1))
+    if ("QQPayFrequencySvc.downloadChoose".equals(localObject1))
     {
       localObject1 = null;
       if (paramFromServiceMsg.isSuccess()) {
@@ -328,16 +339,17 @@ public class QWalletCommonServlet
         localBundle = new Bundle();
         localObject1 = BaseApplicationImpl.getApplication().getRuntime();
         if (!(localObject1 instanceof QQAppInterface)) {
-          break label2183;
+          break label2257;
         }
       }
     }
-    label641:
-    label646:
-    label2183:
+    label426:
+    label709:
+    label2245:
+    label2251:
+    label2257:
     for (localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();; localObject1 = null)
     {
-      label426:
       label468:
       int i;
       if ((bool1) && (paramFromServiceMsg != null) && (localObject2 != null))
@@ -345,7 +357,6 @@ public class QWalletCommonServlet
         if (((GoldMsgGetReq)localObject2).type == 3)
         {
           long l;
-          label530:
           int j;
           if (paramFromServiceMsg.goldMsgSwitch == GoldMsgGetRsp.GOLDMSG_SWITCH_ON)
           {
@@ -372,12 +383,10 @@ public class QWalletCommonServlet
               break label646;
             }
             j = 1;
-            label554:
             if (j == i) {
               break label652;
             }
           }
-          label652:
           for (i = 1;; i = 0)
           {
             localBundle.putSerializable("req", (Serializable)localObject2);
@@ -407,7 +416,6 @@ public class QWalletCommonServlet
           }
         }
       }
-      label709:
       for (bool2 = true;; bool2 = false)
       {
         GoldMsgChatHelper.GoldMsgFriendSet.a(String.valueOf(((GoldMsgGetReq)localObject2).friendUin), bool2, paramFromServiceMsg.goldMsgPrice);
@@ -416,7 +424,7 @@ public class QWalletCommonServlet
       }
       if ("QQWalletPayReportSvc.setGoldMsgStatus".equals(localObject1)) {
         if (!paramFromServiceMsg.isSuccess()) {
-          break label2177;
+          break label2251;
         }
       }
       for (localObject1 = (GoldMsgSetRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new GoldMsgSetRsp());; localObject1 = null)
@@ -430,11 +438,10 @@ public class QWalletCommonServlet
           {
             localObject1 = BaseApplicationImpl.getApplication().getRuntime();
             if (!(localObject1 instanceof QQAppInterface)) {
-              break label2171;
+              break label2245;
             }
           }
         }
-        label2171:
         for (localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();; localObject1 = null)
         {
           if (((GoldMsgSetReq)localObject2).goldMsgSwitch == 1) {}
@@ -600,19 +607,28 @@ public class QWalletCommonServlet
             notifyObserver(paramIntent, 18, paramFromServiceMsg.isSuccess(), (Bundle)localObject2, null);
             return;
           }
-          if (!"WalletConfigSvr.syncRedInfo".equals(localObject1)) {
+          if ("WalletConfigSvr.syncRedInfo".equals(localObject1))
+          {
+            localObject1 = null;
+            if (paramFromServiceMsg.isSuccess()) {
+              localObject1 = (RedInfoSyncRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new RedInfoSyncRsp());
+            }
+            localObject2 = new Bundle();
+            if (localObject1 != null) {
+              ((Bundle)localObject2).putSerializable("rsp", (Serializable)localObject1);
+            }
+            ((Bundle)localObject2).putSerializable("req", paramIntent.getSerializableExtra("req"));
+            notifyObserver(paramIntent, 19, paramFromServiceMsg.isSuccess(), (Bundle)localObject2, null);
+            return;
+          }
+          if ((!"GroupRedPackListSvc.reportHBGame".equals(localObject1)) || (!paramFromServiceMsg.isSuccess())) {
             break;
           }
-          localObject1 = null;
-          if (paramFromServiceMsg.isSuccess()) {
-            localObject1 = (RedInfoSyncRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new RedInfoSyncRsp());
+          paramIntent = (ReportHBGameRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new ReportHBGameRsp());
+          if (!QLog.isColorLevel()) {
+            break;
           }
-          localObject2 = new Bundle();
-          if (localObject1 != null) {
-            ((Bundle)localObject2).putSerializable("rsp", (Serializable)localObject1);
-          }
-          ((Bundle)localObject2).putSerializable("req", paramIntent.getSerializableExtra("req"));
-          notifyObserver(paramIntent, 19, paramFromServiceMsg.isSuccess(), (Bundle)localObject2, null);
+          QLog.d("QWalletCommonServlet", 2, "ReportHBGameRsp result = " + paramIntent.result);
           return;
         }
       }
@@ -634,7 +650,7 @@ public class QWalletCommonServlet
       try
       {
         paramPacket.addRequestPacket("req", (JudgeDownloadReq)paramIntent.getSerializableExtra("req"));
-        paramPacket.setSSOCommand("AdvRuleSvrCmd.judgeDownload");
+        paramPacket.setSSOCommand("QQPayFrequencySvc.judgeDownload");
         paramPacket.setFuncName("judgeDownload");
         paramPacket.setServantName("Wallet.FrequencyControlServer.FrequencyControlObj");
         return;
@@ -647,7 +663,7 @@ public class QWalletCommonServlet
       try
       {
         paramPacket.addRequestPacket("req", (DownloadReportReq)paramIntent.getSerializableExtra("req"));
-        paramPacket.setSSOCommand("AdvRuleSvrCmd.downloadReport");
+        paramPacket.setSSOCommand("QQPayFrequencySvc.downloadReport");
         paramPacket.setFuncName("downloadReport");
         paramPacket.setServantName("Wallet.FrequencyControlServer.FrequencyControlObj");
         return;
@@ -660,7 +676,7 @@ public class QWalletCommonServlet
       try
       {
         paramPacket.addRequestPacket("req", (DownloadChooseReq)paramIntent.getSerializableExtra("req"));
-        paramPacket.setSSOCommand("AdvRuleSvrCmd.downloadChoose");
+        paramPacket.setSSOCommand("QQPayFrequencySvc.downloadChoose");
         paramPacket.setFuncName("downloadChoose");
         paramPacket.setServantName("Wallet.FrequencyControlServer.FrequencyControlObj");
         return;
@@ -810,13 +826,26 @@ public class QWalletCommonServlet
       {
         return;
       }
+    case 19: 
+      try
+      {
+        paramPacket.addRequestPacket("req", (RedInfoSyncReq)paramIntent.getSerializableExtra("req"));
+        paramPacket.setSSOCommand("WalletConfigSvr.syncRedInfo");
+        paramPacket.setFuncName("syncRedInfo");
+        paramPacket.setServantName("Wallet.MobileWalletConfigServer.MobileWalletConfigObj");
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        return;
+      }
     }
     try
     {
-      paramPacket.addRequestPacket("req", (RedInfoSyncReq)paramIntent.getSerializableExtra("req"));
-      paramPacket.setSSOCommand("WalletConfigSvr.syncRedInfo");
-      paramPacket.setFuncName("syncRedInfo");
-      paramPacket.setServantName("Wallet.MobileWalletConfigServer.MobileWalletConfigObj");
+      paramPacket.addRequestPacket("req", (ReportHBGameReq)paramIntent.getSerializableExtra("req"));
+      paramPacket.setSSOCommand("GroupRedPackListSvc.reportHBGame");
+      paramPacket.setFuncName("reportHBGame");
+      paramPacket.setServantName("Wallet.WalletHBGameServer.WalletHBGameObj");
       return;
     }
     catch (OutOfMemoryError paramIntent) {}

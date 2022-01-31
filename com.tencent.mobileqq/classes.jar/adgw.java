@@ -1,15 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
-public final class adgw
-  implements Runnable
+public class adgw
+  extends adgb
 {
-  public adgw(String paramString) {}
-  
-  public void run()
+  public adgw(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 0, this.a, 0).b(FMToastUtil.a());
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateUploadoneWhenChangeToOff";
   }
 }
 

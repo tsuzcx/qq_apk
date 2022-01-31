@@ -16,7 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
-import nji;
+import nns;
 
 public class DiscoverPlayMode
   extends MyMemoryPlayMode
@@ -27,7 +27,7 @@ public class DiscoverPlayMode
   public DiscoverPlayMode(int paramInt, StoryVideoPlayer paramStoryVideoPlayer, VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, Bundle paramBundle)
   {
     super(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
-    this.jdField_b_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener = new nji(this);
+    this.jdField_b_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener = new nns(this);
     b(3);
     a(this.jdField_b_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener);
     if (a() == 63) {}
@@ -56,8 +56,8 @@ public class DiscoverPlayMode
   public void a(VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, StoryVideoItem paramStoryVideoItem)
   {
     super.a(paramVideoViewHolder, paramStoryVideoItem);
-    paramStoryVideoItem = (ImageView)paramVideoViewHolder.a.get(2131372140);
-    paramVideoViewHolder = (TextView)paramVideoViewHolder.a.get(2131372139);
+    paramStoryVideoItem = (ImageView)paramVideoViewHolder.a.get(2131372148);
+    paramVideoViewHolder = (TextView)paramVideoViewHolder.a.get(2131372147);
     paramStoryVideoItem.setVisibility(8);
     paramVideoViewHolder.setVisibility(8);
   }

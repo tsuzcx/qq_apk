@@ -1,19 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.MusicPendantView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class akuy
-  implements View.OnClickListener
+  implements Runnable
 {
-  public akuy(MusicPendantView paramMusicPendantView) {}
+  public akuy(WebViewFragment paramWebViewFragment, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (paramView == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "banner scroll to " + this.jdField_a_of_type_Int + " !");
     }
-    ThreadManager.post(new akuz(this), 8, null, true);
+    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.a) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.getView().scrollTo(0, this.jdField_a_of_type_Int);
+    }
   }
 }
 

@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.music.humrecognition.HumUtils;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
 
 public class anux
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anux(EditVideoSave paramEditVideoSave) {}
+  public anux(HummingActivity paramHummingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.j();
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a() != 102) {
-      QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 2, "保存成功", 0).a();
+    if (HumUtils.b()) {
+      return;
     }
+    HummingActivity.a(this.a);
   }
 }
 

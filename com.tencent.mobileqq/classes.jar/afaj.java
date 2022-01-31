@@ -1,32 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
 
 public class afaj
-  extends AnimatorListenerAdapter
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public afaj(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public afaj(SmallVideoFragment paramSmallVideoFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onAudioFocusChange(int paramInt)
   {
-    this.a.c = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b.findViewById(2131370630).setVisibility(8);
-    this.a.c = false;
-  }
-  
-  public void onAnimationPause(Animator paramAnimator)
-  {
-    this.a.c = false;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.b.findViewById(2131370630).setVisibility(0);
+    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (SmallVideoFragment.a(this.a))) {
+      this.a.a();
+    }
   }
 }
 

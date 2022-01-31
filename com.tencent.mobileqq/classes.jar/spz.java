@@ -1,51 +1,72 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.util.WeakReferenceHandler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
+import java.util.List;
 
 public class spz
-  implements Runnable
+  extends FacePreloadBaseAdapter
 {
-  public spz(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  private List jdField_a_of_type_JavaUtilList;
   
-  public void run()
+  public spz(DiscussionMemberActivity paramDiscussionMemberActivity, List paramList)
   {
-    int j = 0;
-    Object localObject = (FriendsManager)this.a.app.getManager(50);
-    if (localObject == null)
-    {
-      localObject = null;
-      if (localObject != null) {
-        break label164;
-      }
-      localObject = new Card();
+    super(paramDiscussionMemberActivity, paramDiscussionMemberActivity.app, paramDiscussionMemberActivity.a, 1, true);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    label164:
-    for (int i = 1;; i = 0)
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    spw localspw;
+    if (paramView == null)
     {
-      ((Card)localObject).feedPreviewTime = System.currentTimeMillis();
-      ((Card)localObject).strQzoneFeedsDesc = "";
-      Message localMessage = Message.obtain();
-      localMessage.obj = localObject;
-      if (i != 0) {}
-      for (localMessage.what = 6;; localMessage.what = 5)
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getLayoutInflater().inflate(2130968946, paramViewGroup, false);
+      paramViewGroup = new sqb(null);
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131364365));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363568));
+      paramView.setTag(paramViewGroup);
+      localspw = (spw)getItem(paramInt);
+      if (localspw != null)
       {
-        if (this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) {
-          this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
+        if ((localspw.b != null) && (!"".equals(localspw.b.trim()))) {
+          break label149;
         }
-        i = j;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null) {
-          i = this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.h;
-        }
-        this.a.e(i);
-        return;
-        localObject = ((FriendsManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-        break;
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localspw.jdField_a_of_type_JavaLangString);
       }
+    }
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_JavaLangString = localspw.jdField_a_of_type_JavaLangString;
+      paramViewGroup.c.setImageBitmap(a(1, localspw.jdField_a_of_type_JavaLangString));
+      return paramView;
+      paramViewGroup = (sqb)paramView.getTag();
+      break;
+      label149:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localspw.b);
     }
   }
 }

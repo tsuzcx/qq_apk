@@ -1,56 +1,49 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
-import com.tencent.widget.BubblePopupWindow;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BabyQHandler;
+import com.tencent.mobileqq.app.BabyQObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aktm
-  implements View.OnLongClickListener, View.OnTouchListener
+  extends BabyQObserver
 {
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  public aktm(WebProcessManager paramWebProcessManager) {}
   
-  private aktm(ContextMenuTextView paramContextMenuTextView) {}
-  
-  protected void a(View paramView)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-1);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.setBackgroundColor(-7829368);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    int j = -1;
+    int i = j;
+    if (paramObject != null)
     {
-      a(paramView);
-      return false;
+      i = j;
+      if ((paramObject instanceof Bundle))
+      {
+        paramObject = (Bundle)paramObject;
+        i = paramObject.getInt("ad_bbq_code", -1);
+        if (i == 0)
+        {
+          paramObject = paramObject.getString("ad_bbq_message");
+          Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+          if ((localObject instanceof QQAppInterface))
+          {
+            localObject = (BabyQHandler)((QQAppInterface)localObject).a(53);
+            if (localObject != null) {
+              ((BabyQHandler)localObject).b(paramObject);
+            }
+          }
+        }
+      }
     }
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131375573, ContextMenuTextView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView).getString(2131435093), 2130838305);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, (int)this.jdField_a_of_type_AndroidGraphicsPointF.y, localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new aktl(this.jdField_a_of_type_ComTencentMobileqqWidgetContextMenuTextView));
+    paramObject = new Intent("com.tencent.mobileqq.babyq.added");
+    paramObject.setPackage(BaseApplicationImpl.getApplication().getPackageName());
+    paramObject.putExtra("result", i);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebProcessManager", 2, "babyq observer return result=" + i);
     }
-    a(paramView);
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
-    }
-    return false;
   }
 }
 

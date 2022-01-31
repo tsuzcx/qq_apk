@@ -26,8 +26,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import jlb;
-import jlc;
+import jne;
+import jnf;
 import tencent.im.oidb.cmd0xa75.oidb_0xa75.ReqBody;
 import tencent.im.oidb.cmd0xa75.oidb_0xa75.RspBody;
 
@@ -35,8 +35,8 @@ public class AVRedPacketHandler
   extends BusinessHandler
 {
   public VideoAppInterface a;
-  AVC2CDataHandler.C2CDataHandler jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler = new jlb(this);
-  AVC2CDataHandler.FrameDataHandler jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$FrameDataHandler = new jlc(this);
+  AVC2CDataHandler.C2CDataHandler jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler = new jne(this);
+  AVC2CDataHandler.FrameDataHandler jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$FrameDataHandler = new jnf(this);
   public boolean a;
   public boolean b;
   
@@ -296,7 +296,7 @@ public class AVRedPacketHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.redpacket.AVRedPacketHandler
  * JD-Core Version:    0.7.0.1
  */

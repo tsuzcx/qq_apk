@@ -43,21 +43,21 @@ import eipc.EIPCResult;
 import java.util.Arrays;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import pbl;
-import pbm;
-import pbn;
-import pbo;
-import pbp;
-import pbq;
-import pbr;
+import pgd;
+import pge;
+import pgf;
+import pgg;
+import pgh;
+import pgi;
+import pgj;
 
 public class NewerGuidePlugin
   extends WebViewPlugin
 {
   private int jdField_a_of_type_Int;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new pbm(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new pge(this);
   private Uri jdField_a_of_type_AndroidNetUri;
-  private Client.onRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new pbl(this);
+  private Client.onRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new pgd(this);
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private boolean jdField_a_of_type_Boolean;
   private int b;
@@ -106,12 +106,12 @@ public class NewerGuidePlugin
       j = 1;
     }
     Object localObject1 = this.mRuntime.a();
-    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject1).getLayoutInflater().inflate(2130970373, null);
-    localIphonePickerView.a(new pbr(this, -1));
+    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject1).getLayoutInflater().inflate(2130970388, null);
+    localIphonePickerView.a(new pgj(this, -1));
     localObject1 = ActionSheet.c((Context)localObject1);
     ((ActionSheet)localObject1).c(true);
     ((ActionSheet)localObject1).a(localIphonePickerView, null);
-    Object localObject2 = (DispatchActionMoveScrollView)((ActionSheet)localObject1).findViewById(2131362805);
+    Object localObject2 = (DispatchActionMoveScrollView)((ActionSheet)localObject1).findViewById(2131362810);
     ((DispatchActionMoveScrollView)localObject2).jdField_a_of_type_Boolean = true;
     ((DispatchActionMoveScrollView)localObject2).setBackgroundResource(17170445);
     if (Build.VERSION.SDK_INT >= 11)
@@ -121,7 +121,7 @@ public class NewerGuidePlugin
         ((Window)localObject2).setFlags(16777216, 16777216);
       }
     }
-    localIphonePickerView.setPickListener(new pbq(this, localIphonePickerView, (ActionSheet)localObject1));
+    localIphonePickerView.setPickListener(new pgi(this, localIphonePickerView, (ActionSheet)localObject1));
     this.b = (k - 1897);
     this.c = (j - 1);
     this.d = (i - 1);
@@ -464,12 +464,12 @@ public class NewerGuidePlugin
       i = 0;
     }
     Object localObject = this.mRuntime.a();
-    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject).getLayoutInflater().inflate(2130970373, null);
-    localIphonePickerView.a(new pbo(this, paramArrayOfString));
+    IphonePickerView localIphonePickerView = (IphonePickerView)((Activity)localObject).getLayoutInflater().inflate(2130970388, null);
+    localIphonePickerView.a(new pgg(this, paramArrayOfString));
     paramArrayOfString = ActionSheet.c((Context)localObject);
     paramArrayOfString.c(true);
     paramArrayOfString.a(localIphonePickerView, null);
-    localObject = (DispatchActionMoveScrollView)paramArrayOfString.findViewById(2131362805);
+    localObject = (DispatchActionMoveScrollView)paramArrayOfString.findViewById(2131362810);
     ((DispatchActionMoveScrollView)localObject).jdField_a_of_type_Boolean = true;
     ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
     if (Build.VERSION.SDK_INT >= 11)
@@ -479,7 +479,7 @@ public class NewerGuidePlugin
         ((Window)localObject).setFlags(16777216, 16777216);
       }
     }
-    localIphonePickerView.setPickListener(new pbp(this, paramArrayOfString));
+    localIphonePickerView.setPickListener(new pgh(this, paramArrayOfString));
     this.jdField_a_of_type_Int = i;
     localIphonePickerView.setSelection(0, i);
     try
@@ -508,7 +508,7 @@ public class NewerGuidePlugin
     localActionSheet.c(arrayOfString[24]);
     localActionSheet.c(arrayOfString[13]);
     localActionSheet.d(arrayOfString[16]);
-    localActionSheet.a(new pbn(this, localActivity, localActionSheet));
+    localActionSheet.a(new pgf(this, localActivity, localActionSheet));
     if (!localActivity.isFinishing()) {}
     try
     {

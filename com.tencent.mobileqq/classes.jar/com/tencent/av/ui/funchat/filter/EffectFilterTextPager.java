@@ -24,10 +24,10 @@ import com.tencent.av.business.manager.filter.EffectFilterTools;
 import com.tencent.av.business.manager.filter.FilterItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import kcz;
-import kda;
-import kdb;
-import kdc;
+import kfd;
+import kfe;
+import kff;
+import kfg;
 
 public class EffectFilterTextPager
   extends EffectCycleViewPager
@@ -40,7 +40,7 @@ public class EffectFilterTextPager
   public VideoAppInterface a;
   private EffectFilterTools jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools;
   public EffectFilterTextPager.FilterTextAdapter a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new kcz(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new kfd(this);
   public boolean a;
   public float b;
   private int b;
@@ -54,7 +54,7 @@ public class EffectFilterTextPager
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter = new EffectFilterTextPager.FilterTextAdapter(paramContext);
     setAdapter(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter);
-    this.jdField_a_of_type_AndroidOsHandler = new kda(this);
+    this.jdField_a_of_type_AndroidOsHandler = new kfe(this);
     setOnTouchListener(this);
     this.jdField_b_of_type_Int = -1;
   }
@@ -106,7 +106,7 @@ public class EffectFilterTextPager
       i = 0;
       while (i < j)
       {
-        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131366291);
+        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131366296);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
         localLayoutParams.setMargins(localLayoutParams.leftMargin, (int)f2, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
         localImageView.setScaleX(f1);
@@ -126,7 +126,7 @@ public class EffectFilterTextPager
     {
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
       localAlphaAnimation.setDuration(450L);
-      localAlphaAnimation.setAnimationListener(new kdc(this, localView));
+      localAlphaAnimation.setAnimationListener(new kfg(this, localView));
       localView.startAnimation(localAlphaAnimation);
     }
   }
@@ -154,7 +154,7 @@ public class EffectFilterTextPager
       if ((localObject instanceof Activity))
       {
         localObject = (Activity)localObject;
-        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131365947);
+        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131365952);
         if (localEditText != null)
         {
           localEditText.clearFocus();
@@ -203,7 +203,7 @@ public class EffectFilterTextPager
   
   public void setOnFilterListenner(EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
   {
-    setOnPageChangeListener(new kdb(this, paramOnEffectFilterChangeListener));
+    setOnPageChangeListener(new kff(this, paramOnEffectFilterChangeListener));
   }
   
   public void setVisibility(int paramInt)
@@ -234,7 +234,7 @@ public class EffectFilterTextPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterTextPager
  * JD-Core Version:    0.7.0.1
  */

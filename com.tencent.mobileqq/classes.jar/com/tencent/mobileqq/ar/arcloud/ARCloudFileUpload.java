@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.ar.arcloud;
 
-import aaev;
-import aaew;
-import aaex;
+import aalm;
+import aaln;
+import aalo;
+import android.text.TextUtils;
 import com.tencent.YTFace.model.FaceStatus;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.ar.ARLBSHandler;
@@ -73,6 +74,7 @@ import com.tencent.mobileqq.highway.api.ITransactionCallback;
 import com.tencent.mobileqq.highway.config.HwServlet;
 import com.tencent.mobileqq.highway.openup.SessionInfo;
 import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.ocr.ARCloudReqOcrInfo;
 import com.tencent.mobileqq.ocr.data.ARCloudOcrResult;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -1508,24 +1510,30 @@ public class ARCloudFileUpload
       localARCloudRecogReq.msg_word_detect_info.set((MessageMicro)localObject1);
     }
     Object localObject2;
-    Object localObject3;
     if ((0x10 & l2) != 0L)
     {
       localObject1 = new ARCloudRecogCustomPb.AROcrInfo();
       localObject2 = new YoutuOcr.YoutuOcrReq();
       ((YoutuOcr.YoutuOcrReq)localObject2).uin32_timeout_ms.set(30000);
-      localObject3 = new JDSearch.JdSearchReq();
+      if ((paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo == null) || (TextUtils.isEmpty(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo.jdField_a_of_type_JavaLangString))) {
+        break label599;
+      }
+      ((YoutuOcr.YoutuOcrReq)localObject2).language.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqOcrARCloudReqOcrInfo.jdField_a_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      Object localObject3 = new JDSearch.JdSearchReq();
       ((JDSearch.JdSearchReq)localObject3).uin32_timeout_ms.set(30000);
       ((ARCloudRecogCustomPb.AROcrInfo)localObject1).uin64_ocr_recog_type.set(17);
       ((ARCloudRecogCustomPb.AROcrInfo)localObject1).youtu_ocr_req.set((MessageMicro)localObject2);
       ((ARCloudRecogCustomPb.AROcrInfo)localObject1).jd_search_req.set((MessageMicro)localObject3);
       localARCloudRecogReq.msg_ocr_info.set((MessageMicro)localObject1);
-    }
-    long l1 = l2;
-    if ((0x4 & l2) != 0L)
-    {
+      l1 = l2;
+      if ((0x4 & l2) == 0L) {
+        break label672;
+      }
       if ((paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo == null) || (paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus == null) || (paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus.length <= 0)) {
-        break label781;
+        break label830;
       }
       localObject1 = new ARCloudRecogCustomPb.ARFaceRecogInfo();
       localObject2 = new ArrayList();
@@ -1543,15 +1551,18 @@ public class ARCloudFileUpload
         ((ArrayList)localObject2).add(localFaceRect);
         i += 1;
       }
-      ((ARCloudRecogCustomPb.ARFaceRecogInfo)localObject1).uin32_timeout_ms.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_Int);
-      ((ARCloudRecogCustomPb.ARFaceRecogInfo)localObject1).face_rect.set((List)localObject2);
-      localARCloudRecogReq.msg_face_recog_info.set((MessageMicro)localObject1);
-      l1 = l2;
-      if (QLog.isColorLevel()) {
-        QLog.d("AREngine_ARCloudFileUpload", 2, "[ScanStarFace] serialize add faceRectInfo");
-      }
+      label599:
+      ((YoutuOcr.YoutuOcrReq)localObject2).language.set("auto");
     }
-    label781:
+    ((ARCloudRecogCustomPb.ARFaceRecogInfo)localObject1).uin32_timeout_ms.set(paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogReqFaceInfo.jdField_a_of_type_Int);
+    ((ARCloudRecogCustomPb.ARFaceRecogInfo)localObject1).face_rect.set((List)localObject2);
+    localARCloudRecogReq.msg_face_recog_info.set((MessageMicro)localObject1);
+    long l1 = l2;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARCloudFileUpload", 2, "[ScanStarFace] serialize add faceRectInfo");
+    }
+    label672:
+    label830:
     for (l1 = l2;; l1 = l2 & 0xFFFFFFFB)
     {
       if ((0x200 & l1) != 0L)
@@ -1583,22 +1594,22 @@ public class ARCloudFileUpload
     //   1: astore 6
     //   3: aconst_null
     //   4: astore 5
-    //   6: new 1179	java/io/File
+    //   6: new 1196	java/io/File
     //   9: dup
     //   10: aload_1
-    //   11: invokespecial 1181	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 1198	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: astore 7
-    //   16: new 1183	java/io/FileInputStream
+    //   16: new 1200	java/io/FileInputStream
     //   19: dup
     //   20: aload 7
-    //   22: invokespecial 1186	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   22: invokespecial 1203	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   25: astore 4
     //   27: aload 4
     //   29: astore_3
     //   30: aload 4
     //   32: aload 7
-    //   34: invokevirtual 1189	java/io/File:length	()J
-    //   37: invokestatic 1195	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   34: invokevirtual 1206	java/io/File:length	()J
+    //   37: invokestatic 1212	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
     //   40: astore 7
     //   42: aload 7
     //   44: astore_1
@@ -1607,7 +1618,7 @@ public class ARCloudFileUpload
     //   47: aload 4
     //   49: ifnull +10 -> 59
     //   52: aload 4
-    //   54: invokevirtual 1198	java/io/FileInputStream:close	()V
+    //   54: invokevirtual 1215	java/io/FileInputStream:close	()V
     //   57: aload_1
     //   58: astore_3
     //   59: aload_3
@@ -1615,15 +1626,15 @@ public class ARCloudFileUpload
     //   61: astore_3
     //   62: aload 4
     //   64: astore_3
-    //   65: new 1179	java/io/File
+    //   65: new 1196	java/io/File
     //   68: dup
     //   69: aload_1
-    //   70: invokespecial 1181	java/io/File:<init>	(Ljava/lang/String;)V
+    //   70: invokespecial 1198	java/io/File:<init>	(Ljava/lang/String;)V
     //   73: astore 7
     //   75: aload 4
     //   77: astore_3
     //   78: aload 7
-    //   80: invokevirtual 1201	java/io/File:exists	()Z
+    //   80: invokevirtual 1218	java/io/File:exists	()Z
     //   83: istore_2
     //   84: aload 5
     //   86: astore_1
@@ -1632,14 +1643,14 @@ public class ARCloudFileUpload
     //   91: aload 4
     //   93: astore_3
     //   94: aload 7
-    //   96: invokestatic 1206	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
+    //   96: invokestatic 1223	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
     //   99: astore_1
     //   100: aload_1
     //   101: ifnull +14 -> 115
     //   104: aload 4
     //   106: astore_3
     //   107: aload_1
-    //   108: invokestatic 1210	com/tencent/mobileqq/utils/HexUtil:a	(Ljava/lang/String;)[B
+    //   108: invokestatic 1227	com/tencent/mobileqq/utils/HexUtil:a	(Ljava/lang/String;)[B
     //   111: astore_1
     //   112: goto -67 -> 45
     //   115: ldc 25
@@ -1647,7 +1658,7 @@ public class ARCloudFileUpload
     //   118: goto -14 -> 104
     //   121: astore_3
     //   122: aload_3
-    //   123: invokevirtual 1213	java/io/IOException:printStackTrace	()V
+    //   123: invokevirtual 1230	java/io/IOException:printStackTrace	()V
     //   126: aload_1
     //   127: areturn
     //   128: astore 5
@@ -1656,18 +1667,18 @@ public class ARCloudFileUpload
     //   132: aload_1
     //   133: astore_3
     //   134: aload 5
-    //   136: invokevirtual 1214	java/lang/Exception:printStackTrace	()V
+    //   136: invokevirtual 1231	java/lang/Exception:printStackTrace	()V
     //   139: aload 6
     //   141: astore_3
     //   142: aload_1
     //   143: ifnull -84 -> 59
     //   146: aload_1
-    //   147: invokevirtual 1198	java/io/FileInputStream:close	()V
+    //   147: invokevirtual 1215	java/io/FileInputStream:close	()V
     //   150: aconst_null
     //   151: areturn
     //   152: astore_1
     //   153: aload_1
-    //   154: invokevirtual 1213	java/io/IOException:printStackTrace	()V
+    //   154: invokevirtual 1230	java/io/IOException:printStackTrace	()V
     //   157: aconst_null
     //   158: areturn
     //   159: astore_1
@@ -1676,12 +1687,12 @@ public class ARCloudFileUpload
     //   162: aload_3
     //   163: ifnull +7 -> 170
     //   166: aload_3
-    //   167: invokevirtual 1198	java/io/FileInputStream:close	()V
+    //   167: invokevirtual 1215	java/io/FileInputStream:close	()V
     //   170: aload_1
     //   171: athrow
     //   172: astore_3
     //   173: aload_3
-    //   174: invokevirtual 1213	java/io/IOException:printStackTrace	()V
+    //   174: invokevirtual 1230	java/io/IOException:printStackTrace	()V
     //   177: goto -7 -> 170
     //   180: astore_1
     //   181: goto -19 -> 162
@@ -1744,8 +1755,8 @@ public class ARCloudFileUpload
         i = 0;
         while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          QLog.i("AREngine_ARCloudFileUpload", 1, "cancelTransactionTask. sessionId = " + ((aaex)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().cancelTransactionTask(((aaex)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
+          QLog.i("AREngine_ARCloudFileUpload", 1, "cancelTransactionTask. sessionId = " + ((aalo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().cancelTransactionTask(((aalo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
           i += 1;
         }
         this.jdField_a_of_type_JavaUtilArrayList.clear();
@@ -1772,7 +1783,7 @@ public class ARCloudFileUpload
     if (!paramBoolean) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARLBSObserver = new aaev(this);
+    this.jdField_a_of_type_ComTencentMobileqqArARLBSObserver = new aalm(this);
     this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqArARLBSObserver);
   }
   
@@ -1789,7 +1800,7 @@ public class ARCloudFileUpload
       if (localObject1 != null) {
         l = ((File)localObject1).length();
       }
-      localObject1 = new aaew(this, paramARCloudReqInfo, l);
+      localObject1 = new aaln(this, paramARCloudReqInfo, l);
       Object localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
       if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length == 0)) {}
       int i;
@@ -1817,11 +1828,11 @@ public class ARCloudFileUpload
       }
       byte[] arrayOfByte2 = a(paramARCloudReqInfo);
       localObject1 = new Transaction((String)localObject2, 42, paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, arrayOfByte1, (ITransactionCallback)localObject1, arrayOfByte2);
-      localObject2 = new aaex();
-      ((aaex)localObject2).jdField_a_of_type_JavaLangString = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString;
-      ((aaex)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo = paramARCloudReqInfo;
-      ((aaex)localObject2).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = ((Transaction)localObject1);
-      ((aaex)localObject2).jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = ???;
+      localObject2 = new aalo();
+      ((aalo)localObject2).jdField_a_of_type_JavaLangString = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString;
+      ((aalo)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo = paramARCloudReqInfo;
+      ((aalo)localObject2).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = ((Transaction)localObject1);
+      ((aalo)localObject2).jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = ???;
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);

@@ -1,26 +1,50 @@
-import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.LabelViewItem;
+import com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView;
+import java.util.List;
 
 public class afge
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public afge(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public afge(TopicLabelListView paramTopicLabelListView) {}
   
-  public void onClick(View paramView)
+  public int getCount()
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity;
-    if (i >= NearbyPeopleProfileActivity.c)
-    {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131437403), 0).a();
-      return;
+    if ((TopicLabelListView.a(this.a) == null) || (TopicLabelListView.a(this.a).size() == 0)) {
+      return 0;
     }
-    NearbyProfileEditPanel.b(this.a);
+    return TopicLabelListView.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramViewGroup = new afgf(this.a, null);
+      paramView = new LabelViewItem(TopicLabelListView.a(this.a));
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      paramViewGroup.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
+      ((LabelViewItem)paramView).setText(paramViewGroup.a);
+      return paramView;
+      paramViewGroup = (afgf)paramView.getTag();
+    }
   }
 }
 

@@ -1,29 +1,14 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.mobileqq.emoticon.EmotionPanelPayBackListener;
+import com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter;
 
 public class acns
-  implements ActionMode.Callback
+  extends EmotionPanelPayBackListener
 {
-  public acns(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  public acns(EmotionNeedDownloadAdapter paramEmotionNeedDownloadAdapter) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void a(int paramInt)
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    this.a.a(paramInt);
   }
 }
 

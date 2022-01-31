@@ -1,41 +1,50 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.av.ui.MultiMembersUI.Holder;
-import com.tencent.av.ui.MultiMembersVideoUI;
-import com.tencent.av.utils.MultiVideoMembersClickListener;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.redbag.AVRedBagMgr.Event;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
 
 public class jvw
-  implements AdapterView.OnItemClickListener
+  implements AVRedBagMgr.Event
 {
-  public jvw(MultiMembersVideoUI paramMultiMembersVideoUI) {}
+  public jvw(EffectSettingUi paramEffectSettingUi) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener == null) {}
-    do
+    if (QLog.isDevelopLevel()) {
+      QLog.d("EffectSettingUi", 4, "onGetConfig, enable[" + paramBoolean + "]");
+    }
+    if (paramBoolean)
     {
-      return;
-      paramAdapterView = (MultiMembersUI.Holder)paramView.getTag();
-      if (paramAdapterView != null) {
-        break;
+      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
+      {
+        localObject = (AVActivity)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((AVActivity)localObject).runOnUiThread(new jvx(this));
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("MultiMembersVideoUI", 2, "onItemClick-->holder is null");
-    return;
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() > 18) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2)))
-    {
-      this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, true);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, false);
+    this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$Event = null;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("EffectSettingUi", 4, "onStatusChanged");
+    }
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new jvy(this, paramBoolean3, paramBoolean1, paramBoolean2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jvw
  * JD-Core Version:    0.7.0.1
  */

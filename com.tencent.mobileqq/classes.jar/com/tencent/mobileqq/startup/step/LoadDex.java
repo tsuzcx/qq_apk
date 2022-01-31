@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import aife;
-import aiff;
+import aijy;
+import aijz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.hotpatch.DexPatchInstaller;
@@ -71,10 +71,10 @@ public class LoadDex
             Step.AmStepFactory.b(14, this.a, null).c();
           }
           if (BaseApplicationImpl.sProcessId != 1) {
-            ThreadManager.getSubThreadHandler().postDelayed(new aife(this), 3000L);
+            ThreadManager.getSubThreadHandler().postDelayed(new aijy(this), 3000L);
           }
           if (BaseApplicationImpl.sProcessId == 4) {
-            ThreadManager.getSubThreadHandler().postDelayed(new aiff(this), 3000L);
+            ThreadManager.getSubThreadHandler().postDelayed(new aijz(this), 3000L);
           }
           if (BaseApplicationImpl.sProcessId == 1)
           {

@@ -1,47 +1,70 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.util.Utils;
 
 public class tqn
-  implements Runnable
+  extends FriendListObserver
 {
-  public tqn(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity, String paramString1, String paramString2) {}
+  public tqn(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  protected void onGetStoreFace(boolean paramBoolean, String paramString)
   {
-    int j = 0;
-    String str = Utils.a(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() == 6) && (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) != null) && (!str.equals(RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity))))
-    {
-      RegisterVerifyCodeActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity, str);
-      i = 0;
-      if (i >= 6) {
-        break label160;
-      }
-      Editable localEditable = RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity)[i].getText();
-      if ((localEditable == null) || (localEditable.toString().length() <= 0)) {}
+    onUpdateCustomHead(paramBoolean, paramString);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+      this.a.a(paramString);
     }
-    label160:
-    for (int i = 0;; i = 1)
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new tqo(this));
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean2) && (paramBoolean1) && (this.a.c)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new tqp(this));
+    }
+  }
+  
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    int k = 0;
+    String str;
+    int i;
+    if ((paramBoolean) && (this.a.c) && (paramArrayOfString != null) && (paramArrayOfString.length > 0))
     {
-      if (i != 0)
+      str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      i = 0;
+    }
+    for (;;)
+    {
+      int j = k;
+      if (str != null)
       {
-        i = j;
-        for (;;)
+        j = k;
+        if (i < paramArrayOfString.length)
         {
-          if (i < 6)
-          {
-            RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity)[i].setText(str.substring(i, i + 1));
-            i += 1;
-            continue;
-            i += 1;
-            break;
+          if (!str.equals(paramArrayOfString[i])) {
+            break label97;
           }
+          j = 1;
         }
-        RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity)[5].setSelection(1);
+      }
+      if (j != 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new tqq(this));
       }
       return;
+      label97:
+      i += 1;
     }
   }
 }

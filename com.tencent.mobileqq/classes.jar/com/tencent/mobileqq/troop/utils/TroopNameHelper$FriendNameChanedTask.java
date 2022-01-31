@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajqe;
+import ajxr;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.data.TroopMemberInfo;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TroopNameHelper$FriendNameChanedTask
-  extends ajqe
+  extends ajxr
 {
   String jdField_a_of_type_JavaLangString;
   
@@ -69,7 +69,7 @@ public class TroopNameHelper$FriendNameChanedTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopNameHelper.FriendNameChanedTask
  * JD-Core Version:    0.7.0.1
  */

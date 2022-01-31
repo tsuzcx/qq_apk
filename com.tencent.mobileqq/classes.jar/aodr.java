@@ -1,15 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.ContainerDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
 
 public class aodr
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public aodr(ContainerDrawable paramContainerDrawable) {}
+  public aodr(EditVideoSave paramEditVideoSave) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.invalidateSelf();
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    EditVideoSave localEditVideoSave = this.a;
+    localEditVideoSave.jdField_a_of_type_Int += this.a.b;
+    if (this.a.jdField_a_of_type_Int > 99)
+    {
+      this.a.jdField_a_of_type_Int = 99;
+      this.a.a(this.a.jdField_a_of_type_Int);
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_Int);
+    this.a.c();
   }
 }
 

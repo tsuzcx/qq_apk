@@ -1,18 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
 
-class adjn
-  implements DialogInterface.OnClickListener
+public final class adjn
+  implements View.OnClickListener
 {
-  adjn(adjk paramadjk) {}
+  public adjn(String paramString, IFileBrowser paramIFileBrowser) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1) {
-      this.a.a.c();
+    try
+    {
+      paramView = new adjo(this);
+      FileModel localFileModel = FileModel.a(this.jdField_a_of_type_JavaLangString);
+      if (localFileModel == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("FileOperaterUtils", 2, "error. get filemodel null, filepath[ " + this.jdField_a_of_type_JavaLangString + "]");
+        }
+      }
+      else
+      {
+        if (localFileModel.a(false))
+        {
+          if (!NetworkUtil.e(BaseApplicationImpl.getContext()))
+          {
+            FMToastUtil.a(2131437332);
+            return;
+          }
+          FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), 2131428241, 2131428238, paramView);
+          return;
+        }
+        paramView.a();
+      }
+      return;
     }
-    paramDialogInterface.dismiss();
+    catch (Exception paramView) {}
   }
 }
 

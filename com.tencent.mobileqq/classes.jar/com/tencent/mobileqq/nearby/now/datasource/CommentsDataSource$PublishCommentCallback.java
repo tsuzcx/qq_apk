@@ -6,7 +6,7 @@ public abstract interface CommentsDataSource$PublishCommentCallback
 {
   public abstract void a(Comments.Comment paramComment);
   
-  public abstract void a(Comments.Comment paramComment, int paramInt);
+  public abstract void a(Comments.Comment paramComment, int paramInt, String paramString);
 }
 
 

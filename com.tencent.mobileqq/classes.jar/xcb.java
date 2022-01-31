@@ -1,21 +1,30 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.MimeHelper;
 
-public class xcb
-  implements Runnable
+public final class xcb
+  extends MediaFileFilter
 {
-  public xcb(TransactionActivity paramTransactionActivity) {}
-  
-  public void run()
+  public boolean a()
   {
-    MotionEvent localMotionEvent1 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 0, 0.0F, 0.0F, 0);
-    TransactionActivity.a(this.a).dispatchTouchEvent(localMotionEvent1);
-    MotionEvent localMotionEvent2 = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 1, 0.0F, 0.0F, 0);
-    TransactionActivity.a(this.a).dispatchTouchEvent(localMotionEvent2);
-    localMotionEvent1.recycle();
-    localMotionEvent2.recycle();
+    return true;
+  }
+  
+  public boolean a(String paramString)
+  {
+    String[] arrayOfString = MimeHelper.a(paramString);
+    if (arrayOfString != null)
+    {
+      if (("image".equals(arrayOfString[0])) && (MimeHelper.a(arrayOfString[1])) && (!arrayOfString[1].equals("gif"))) {}
+      while (MimeHelper.b(paramString)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

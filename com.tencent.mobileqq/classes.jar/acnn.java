@@ -1,31 +1,28 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter.LocalFileItemHolder;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import java.util.ArrayList;
+import android.widget.ProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter;
 
-class acnn
-  implements View.OnClickListener
+public class acnn
+  implements URLDrawableDownListener
 {
-  acnn(acnm paramacnm, View paramView) {}
+  public acnn(EmotionKeywordAdapter paramEmotionKeywordAdapter) {}
   
-  public void onClick(View paramView)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    paramView = (LocalFileAdapter.LocalFileItemHolder)this.jdField_a_of_type_AndroidViewView.getTag();
-    this.jdField_a_of_type_Acnm.a.d = paramView.a;
-    paramView = (FileInfo)this.jdField_a_of_type_Acnm.a.b.get(this.jdField_a_of_type_Acnm.a.d);
-    if ((!FileUtil.a(paramView.c())) || (FileUtil.c(paramView.c())))
-    {
-      FileManagerUtil.d(paramView.c());
-      this.jdField_a_of_type_Acnm.a.b.remove(this.jdField_a_of_type_Acnm.a.d);
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_Acnm.a);
-      return;
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof ProgressBar))) {
+      ((ProgressBar)paramView).setVisibility(4);
     }
-    FMToastUtil.a(2131428144);
   }
 }
 

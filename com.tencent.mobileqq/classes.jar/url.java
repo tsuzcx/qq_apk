@@ -1,27 +1,10 @@
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class url
-  implements Runnable
+public final class url
+  implements DialogInterface.OnClickListener
 {
-  public url(DoodleMsgLayout paramDoodleMsgLayout) {}
-  
-  public void run()
-  {
-    Drawable localDrawable1 = DoodleResHelper.a().a(1, DoodleMsgLayout.a(this.a), true);
-    if (localDrawable1 != null) {
-      ((URLDrawable)localDrawable1).setIndividualPause(true);
-    }
-    Drawable localDrawable2 = DoodleResHelper.a().a(2, DoodleMsgLayout.a(this.a), false);
-    if (localDrawable2 != null) {
-      ((URLDrawable)localDrawable2).startDownload();
-    }
-    new Handler(Looper.getMainLooper()).post(new urm(this, localDrawable1, localDrawable2));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

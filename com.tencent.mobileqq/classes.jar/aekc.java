@@ -1,49 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.PointF;
+import android.util.Log;
+import android.view.View;
 
 public class aekc
-  implements INetInfoHandler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  long a = 0L;
+  private View a;
   
-  private void a(int paramInt)
+  public aekc(View paramView)
   {
-    if (System.currentTimeMillis() - this.a < 500L) {
-      return;
-    }
-    this.a = System.currentTimeMillis();
-    QQPlayerService.d(BaseApplicationImpl.getContext());
+    this.a = paramView;
   }
   
-  public void onNetMobile2None()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    a(4);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    a(3);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    a(1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    a(6);
-  }
-  
-  public void onNetWifi2None()
-  {
-    a(5);
+    paramValueAnimator = (PointF)paramValueAnimator.getAnimatedValue();
+    this.a.setX(paramValueAnimator.x);
+    this.a.setY(paramValueAnimator.y);
+    Log.i("tag", "x:" + paramValueAnimator.x + ",y:" + paramValueAnimator.y);
   }
 }
 

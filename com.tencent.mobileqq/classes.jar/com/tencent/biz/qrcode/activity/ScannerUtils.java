@@ -33,8 +33,8 @@ import java.util.regex.Pattern;
 import mqq.app.AppActivity;
 import mqq.app.NewIntent;
 import mqq.manager.WtloginManager;
-import our;
-import ous;
+import ozi;
+import ozj;
 
 public class ScannerUtils
 {
@@ -115,7 +115,7 @@ public class ScannerUtils
   public static void a(ScannerParams paramScannerParams, String paramString, AppActivity paramAppActivity, QQAppInterface paramQQAppInterface, QrHandleResultCallBack paramQrHandleResultCallBack, View paramView)
   {
     paramView.setVisibility(0);
-    paramScannerParams = new ous(paramAppActivity, paramString, paramQQAppInterface, paramScannerParams, paramView, paramQrHandleResultCallBack);
+    paramScannerParams = new ozj(paramAppActivity, paramString, paramQQAppInterface, paramScannerParams, paramView, paramQrHandleResultCallBack);
     paramAppActivity = new NewIntent(paramAppActivity, QRCodeServlet.class);
     paramAppActivity.putExtra("d", paramString);
     paramAppActivity.putExtra("cmd", "QRCodeSvc.decode");
@@ -144,7 +144,7 @@ public class ScannerUtils
       if (paramScannerParams.a)
       {
         if ((!paramQQAppInterface.k()) && (!paramQQAppInterface.h()) && (!paramQQAppInterface.l())) {
-          AudioUtil.b(2131230756, false);
+          AudioUtil.b(2131230757, false);
         }
         paramAppActivity.setResult(-1, paramAppActivity.getIntent().putExtra("scanResult", paramString2));
         paramAppActivity.finish();
@@ -192,7 +192,7 @@ public class ScannerUtils
       if (paramString2.startsWith("qqf2f://qf/"))
       {
         if ((!paramQQAppInterface.k()) && (!paramQQAppInterface.h()) && (!paramQQAppInterface.l())) {
-          AudioUtil.b(2131230756, false);
+          AudioUtil.b(2131230757, false);
         }
         paramQQAppInterface.a().a(paramAppActivity, paramString1, paramQrHandleResultCallBack);
         return;
@@ -214,7 +214,7 @@ public class ScannerUtils
       if (j != 0)
       {
         if ((!paramQQAppInterface.k()) && (!paramQQAppInterface.h()) && (!paramQQAppInterface.l())) {
-          AudioUtil.b(2131230756, false);
+          AudioUtil.b(2131230757, false);
         }
         if (j == 0) {
           break label923;
@@ -229,15 +229,15 @@ public class ScannerUtils
         if (!HttpUtil.a(paramAppActivity))
         {
           paramString1 = DialogUtil.a(paramAppActivity, 230);
-          paramString1.setMessage(2131429914);
-          paramString2 = new our(paramQrHandleResultCallBack);
-          paramString1.setPositiveButton(2131433016, paramString2);
+          paramString1.setMessage(2131429915);
+          paramString2 = new ozi(paramQrHandleResultCallBack);
+          paramString1.setPositiveButton(2131433030, paramString2);
           paramString1.setOnCancelListener(paramString2);
           paramString1.show();
           return;
         }
         if ((!paramQQAppInterface.k()) && (!paramQQAppInterface.h()) && (!paramQQAppInterface.l())) {
-          AudioUtil.b(2131230756, false);
+          AudioUtil.b(2131230757, false);
         }
         if ((((WtloginManager)paramQQAppInterface.getManager(1)).IsWtLoginUrl(paramString2)) && (!QRUtils.a(paramString2)))
         {

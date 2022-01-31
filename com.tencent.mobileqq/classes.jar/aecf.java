@@ -1,27 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aecf
-  implements IHttpCommunicatorListener
+public class aecf
+  implements INetEventHandler
 {
-  public void a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
-  {
-    ReportLog.a().sendEmptyMessage(10000001);
-  }
+  public aecf(GroupVideoManager paramGroupVideoManager) {}
   
-  public void a(String paramString) {}
-  
-  public boolean a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    return true;
-  }
-  
-  public void b(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
-  {
-    ReportLog.a = false;
-    ReportLog.a().sendEmptyMessage(10000001);
+    if (GroupVideoManager.a(this.a) == null) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + GroupVideoManager.a(this.a).e);
+      }
+    } while (!paramBoolean);
+    this.a.a(false);
   }
 }
 

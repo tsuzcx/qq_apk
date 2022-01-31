@@ -1,13 +1,18 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager.SubtitleDataManagerListener;
+import java.lang.ref.WeakReference;
 
 public class ycr
-  extends TroopMemberListActivity.ViewHolder
+  implements Runnable
 {
-  public CheckBox a;
+  public ycr(SubtitleDataManager paramSubtitleDataManager) {}
   
-  private ycr(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public void run()
+  {
+    if (this.a.a != null) {
+      ((SubtitleDataManager.SubtitleDataManagerListener)this.a.a.get()).a();
+    }
+  }
 }
 
 

@@ -1,43 +1,42 @@
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadLogInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadLogListener;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
 
 public class alhf
-  implements ITMAssistantDownloadLogListener
+  implements Runnable
 {
-  SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss S");
+  public alhf(MSFIntChkStrike paramMSFIntChkStrike, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, String paramString3, String paramString4, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public alhf(DownloadManager paramDownloadManager) {}
-  
-  public void onLog(ArrayList paramArrayList)
+  public void run()
   {
-    if (paramArrayList == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i(DownloadManager.a, 2, "logList is null");
-      }
-    }
-    for (;;)
+    try
     {
-      return;
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, 230, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
+      if (localQQCustomDialog == null) {
+        return;
+      }
+      localQQCustomDialog.setNegativeButton(this.c, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
+      localQQCustomDialog.setPositiveButton(this.d, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      localQQCustomDialog.setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
+      localQQCustomDialog.setCancelable(false);
+      localQQCustomDialog.show();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        TMAssistantDownloadLogInfo localTMAssistantDownloadLogInfo = (TMAssistantDownloadLogInfo)paramArrayList.next();
-        if (QLog.isColorLevel()) {
-          QLog.i(DownloadManager.a, 2, "logTime:" + this.jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(localTMAssistantDownloadLogInfo.logTime)) + ",logTag:" + localTMAssistantDownloadLogInfo.logTag + ",logMsg:" + localTMAssistantDownloadLogInfo.logMsg);
-        }
+        localException.printStackTrace();
       }
     }
+    MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alhf
  * JD-Core Version:    0.7.0.1
  */

@@ -28,7 +28,7 @@ public class PreviewVideoActivity
   private ImageViewVideoPlayer jdField_a_of_type_ComTencentMobileqqShortvideoWidgetImageViewVideoPlayer;
   private String jdField_a_of_type_JavaLangString;
   
-  public void L_()
+  public void M_()
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
@@ -37,7 +37,7 @@ public class PreviewVideoActivity
     }
   }
   
-  public void aa_() {}
+  public void ac_() {}
   
   public void e() {}
   
@@ -47,8 +47,8 @@ public class PreviewVideoActivity
     {
     default: 
       return;
-    case 2131362841: 
-    case 2131374130: 
+    case 2131362846: 
+    case 2131374160: 
       finish();
       overridePendingTransition(2131034134, 2131034135);
       return;
@@ -59,10 +59,10 @@ public class PreviewVideoActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    this.U = true;
-    this.V = false;
+    this.W = true;
+    this.X = false;
     super.onCreate(paramBundle);
-    setContentView(2130971310);
+    setContentView(2130971333);
     try
     {
       if (VideoEnvironment.a("AVCodec", getApplicationContext()) != 0)
@@ -101,14 +101,14 @@ public class PreviewVideoActivity
         paramBundle = new EncodeVideoUtil.VideoInfo();
         paramBundle.jdField_a_of_type_JavaLangString = ((String)localObject1);
         paramBundle.b = ((String)localObject2);
-        findViewById(2131374129).setVisibility(0);
-        findViewById(2131374130).setOnClickListener(this);
-        findViewById(2131362975).setOnClickListener(this);
+        findViewById(2131374159).setVisibility(0);
+        findViewById(2131374160).setOnClickListener(this);
+        findViewById(2131362980).setOnClickListener(this);
       }
       FrameLayout.LayoutParams localLayoutParams;
       for (;;)
       {
-        localObject1 = (FrameLayout)findViewById(2131374128);
+        localObject1 = (FrameLayout)findViewById(2131374158);
         localObject2 = getResources().getDisplayMetrics();
         localLayoutParams = new FrameLayout.LayoutParams(((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels, 17);
         if (paramBundle == null) {
@@ -136,8 +136,8 @@ public class PreviewVideoActivity
           finish();
           return;
         }
-        findViewById(2131363632).setVisibility(0);
-        findViewById(2131362841).setOnClickListener(this);
+        findViewById(2131363651).setVisibility(0);
+        findViewById(2131362846).setOnClickListener(this);
         paramBundle = EncodeVideoUtil.a(this.jdField_a_of_type_JavaLangString);
       }
       this.jdField_a_of_type_Int = getIntent().getBundleExtra("encode_video_params").getInt("sv_total_frame_count");

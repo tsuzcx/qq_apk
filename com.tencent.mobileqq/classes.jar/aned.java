@@ -1,17 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import cooperation.qzone.widget.QzoneGuideBubbleHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.networkedmodule.QzoneModuleManager;
 
 public class aned
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public aned(QzoneGuideBubbleHelper paramQzoneGuideBubbleHelper) {}
+  public aned(QzoneModuleManager paramQzoneModuleManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    this.a.a();
-    return false;
+    int i = StatisticCollector.a();
+    QLog.i("QzoneModuleManager", 1, "current versionNum is:" + i);
+    StatisticCollector.a(i + 6000);
+    QzoneModuleManager.access$102(this.a, true);
   }
 }
 

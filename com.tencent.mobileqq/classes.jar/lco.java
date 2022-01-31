@@ -1,17 +1,17 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
+import com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter;
 
-class lco
-  implements AsyncBack
+public class lco
+  implements View.OnClickListener
 {
-  lco(lcl paramlcl) {}
+  public lco(ShopFolderAdapter paramShopFolderAdapter, String paramString) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
+    if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.b(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

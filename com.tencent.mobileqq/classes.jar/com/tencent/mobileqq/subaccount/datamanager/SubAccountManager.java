@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.subaccount.datamanager;
 
-import aikv;
-import aikw;
-import aikx;
+import aipq;
+import aipr;
+import aips;
 import android.content.ContentValues;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.MessageHandler;
@@ -1078,7 +1078,7 @@ public class SubAccountManager
           if (paramString == null) {
             break;
           }
-          ThreadManager.getFileThreadHandler().post(new aikw(this, paramString));
+          ThreadManager.getFileThreadHandler().post(new aipr(this, paramString));
           return;
         }
       }
@@ -1189,7 +1189,7 @@ public class SubAccountManager
             if (paramString1 == null) {
               break;
             }
-            ThreadManager.getFileThreadHandler().post(new aikv(this, paramString1));
+            ThreadManager.getFileThreadHandler().post(new aipq(this, paramString1));
             return;
           }
           ((SubAccountInfo)localObject1).serverErrorMsg = null;
@@ -2012,7 +2012,7 @@ public class SubAccountManager
             if (paramString == null) {
               break;
             }
-            ThreadManager.getFileThreadHandler().post(new aikx(this, paramString));
+            ThreadManager.getFileThreadHandler().post(new aips(this, paramString));
             return;
           }
         }

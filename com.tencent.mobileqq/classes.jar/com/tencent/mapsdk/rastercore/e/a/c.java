@@ -22,13 +22,13 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.mapsdk.raster.model.BitmapDescriptor;
 import com.tencent.mapsdk.raster.model.BitmapDescriptorFactory;
 import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.mapsdk.raster.model.MarkerOptions;
 import com.tencent.mapsdk.rastercore.d.f;
+import com.tencent.mapsdk.rastercore.d.g;
 import com.tencent.tencentmap.mapsdk.map.MapView;
 import com.tencent.tencentmap.mapsdk.map.MapView.LayoutParams;
 import com.tencent.tencentmap.mapsdk.map.TencentMap.InfoWindowAdapter;
@@ -43,9 +43,9 @@ public final class c
   private Animation A;
   private int B = 25;
   private Object C;
-  private com.tencent.mapsdk.rastercore.d.e c;
+  private f c;
   private Context d;
-  private f e;
+  private g e;
   private MapView f;
   private View g;
   private View h;
@@ -68,18 +68,18 @@ public final class c
   private String y;
   private Animation z;
   
-  public c(com.tencent.mapsdk.rastercore.d.e parame, MarkerOptions paramMarkerOptions)
+  public c(f paramf, MarkerOptions paramMarkerOptions)
   {
-    this.c = parame;
-    this.d = com.tencent.mapsdk.rastercore.d.e.a();
-    this.f = parame.d();
-    this.e = parame.h();
+    this.c = paramf;
+    this.d = f.a();
+    this.f = paramf.d();
+    this.e = paramf.h();
     this.n = paramMarkerOptions.isGps();
     if ((paramMarkerOptions.getPosition() == null) || (this.n)) {}
     try
     {
-      parame = e.a(paramMarkerOptions.getPosition().getLongitude(), paramMarkerOptions.getPosition().getLatitude());
-      new LatLng(parame[1], parame[0]);
+      paramf = e.a(paramMarkerOptions.getPosition().getLongitude(), paramMarkerOptions.getPosition().getLatitude());
+      new LatLng(paramf[1], paramf[0]);
       this.w = paramMarkerOptions.getPosition();
       a(paramMarkerOptions.getIcon());
       this.g = paramMarkerOptions.getMarkerView();
@@ -145,22 +145,22 @@ public final class c
           c.this.n();
           if (c.a(c.this).d() == null)
           {
-            if (c.this.e()) {
-              c.this.g();
-            }
-            for (;;)
+            if (c.this.e())
             {
+              c.this.g();
               return true;
-              c.this.f();
             }
+            c.this.f();
+            return true;
           }
-          return c.a(c.this).d().onMarkerClick(new Marker(c.this));
+          c.a(c.this).d().onMarkerClick(new Marker(c.this));
+          return true;
         }
       });
       q();
       return;
     }
-    catch (Exception parame)
+    catch (Exception paramf)
     {
       for (;;)
       {
@@ -324,10 +324,8 @@ public final class c
   
   private void w()
   {
-    if ((e()) && ((this.h instanceof b)))
-    {
-      ((b)this.h).a.setText(this.x);
-      ((b)this.h).b.setText(this.v);
+    if ((e()) && ((this.h instanceof b))) {
+      ((b)this.h).a(this.x, this.v);
     }
   }
   
@@ -426,14 +424,16 @@ public final class c
   
   public final void a(LatLng paramLatLng)
   {
-    this.w = paramLatLng;
-    ((MapView.LayoutParams)this.g.getLayoutParams()).setPoint(paramLatLng);
-    this.f.layout(this.g);
-    if (this.h != null)
+    if (paramLatLng == null) {}
+    do
     {
-      ((MapView.LayoutParams)this.h.getLayoutParams()).setPoint(paramLatLng);
-      this.f.layout(this.h);
-    }
+      return;
+      this.w = paramLatLng;
+      ((MapView.LayoutParams)this.g.getLayoutParams()).setPoint(paramLatLng);
+      this.f.layout(this.g);
+    } while (this.h == null);
+    ((MapView.LayoutParams)this.h.getLayoutParams()).setPoint(paramLatLng);
+    this.f.layout(this.h);
   }
   
   public final void a(Object paramObject)
@@ -562,7 +562,7 @@ public final class c
   
   public final void f()
   {
-    if (e()) {
+    if ((e()) || (((this.e.g() == null) || (this.e.g().getInfoWindow(new Marker(this)) == null)) && ((this.x == null) || (this.x.isEmpty())) && ((this.v == null) || (this.v.isEmpty())))) {
       return;
     }
     Object localObject;
@@ -580,7 +580,7 @@ public final class c
         int i1 = this.f.indexOfChild(this.g);
         this.f.addView(this.h, i1 + 1, (ViewGroup.LayoutParams)localObject);
         if (this.i == null) {
-          break label231;
+          break label298;
         }
         localObject = this.i;
       }
@@ -602,7 +602,7 @@ public final class c
       break;
       this.h = new b(this.d, this.x, this.v);
       break;
-      label231:
+      label298:
       localObject = new AnimationSet(false);
       ScaleAnimation localScaleAnimation1 = new ScaleAnimation(0.0F, 1.1F, 0.0F, 1.1F, 1, 0.5F, 1, 1.0F);
       localScaleAnimation1.setDuration(150L);

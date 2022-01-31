@@ -1,17 +1,20 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeNoImageSocial;
 
 public class lxk
-  extends CommonSkinRes
+  implements View.OnTouchListener
 {
-  public lxk(ReadInJoySkinManager paramReadInJoySkinManager, AppInterface paramAppInterface) {}
+  public lxk(FeedItemCellTypeNoImageSocial paramFeedItemCellTypeNoImageSocial, RelativeLayout paramRelativeLayout) {}
   
-  public Drawable a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_diandian_selected");
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 

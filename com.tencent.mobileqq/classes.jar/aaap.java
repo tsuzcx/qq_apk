@@ -1,27 +1,28 @@
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
+import com.tencent.mobileqq.app.message.SystemMessageProcessor;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
 
-class aaap
-  implements Runnable
+public class aaap
+  implements BaseMessageProcessor.RequestBuilder
 {
-  aaap(aaao paramaaao) {}
+  public aaap(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
   
-  public void run()
+  public ToServiceMsg a()
   {
-    if (aaao.a(this.a) != 9) {}
-    do
-    {
-      return;
-      if (aaao.a(this.a) != null) {
-        aaao.a(this.a).a(0, 1);
-      }
-    } while (aaao.a(this.a) == null);
-    aaao.a(this.a).a();
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageSystemMessageProcessor.a.a("ProfileService.Pb.ReqSystemMsgRead");
+    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
+    localToServiceMsg.setEnableFastResend(true);
+    return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaap
  * JD-Core Version:    0.7.0.1
  */

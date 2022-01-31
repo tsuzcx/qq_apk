@@ -1,11 +1,14 @@
-class aipm
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+
+public class aipm
   implements Runnable
 {
-  aipm(aipl paramaipl) {}
+  public aipm(SubAccountControll paramSubAccountControll, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    aipl.a(this.a).a();
+    SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
   }
 }
 

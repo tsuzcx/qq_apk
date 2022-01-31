@@ -60,11 +60,11 @@ public class UidListToUrlListSegment
   
   public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent == null) || (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList == null))
+    if ((paramUpdateUserInfoEvent == null) || (paramUpdateUserInfoEvent.errorInfo.isFail()) || (paramUpdateUserInfoEvent.a == null))
     {
       IconLog.b(this.a, "refresh user info fail %s", paramUpdateUserInfoEvent);
       if (paramUpdateUserInfoEvent == null) {}
-      for (paramUpdateUserInfoEvent = new ErrorMessage(-1, "event is null");; paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage)
+      for (paramUpdateUserInfoEvent = new ErrorMessage(-1, "event is null");; paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.errorInfo)
       {
         notifyError(paramUpdateUserInfoEvent);
         return;
@@ -72,7 +72,7 @@ public class UidListToUrlListSegment
     }
     IconLog.a(this.a, "refresh user info success, let's return the new info");
     ArrayList localArrayList = new ArrayList();
-    paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
+    paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.a.iterator();
     while (paramUpdateUserInfoEvent.hasNext()) {
       localArrayList.add(((QQUserUIItem)paramUpdateUserInfoEvent.next()).headUrl);
     }

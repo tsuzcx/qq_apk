@@ -1,61 +1,25 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class kxk
-  implements INetInfoHandler
+  implements Runnable
 {
-  public kxk(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  public kxk(VideoCoverView paramVideoCoverView, Context paramContext) {}
   
-  public void onNetMobile2None()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from mobile to none");
+    try
+    {
+      TVK_SDKMgr.installPlugin(this.jdField_a_of_type_AndroidContentContext, new kxl(this));
+      return;
     }
-    ReadInJoyNativeAdAppVideoView.e(this.a, 5);
-    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
-    QQToast.a(ReadInJoyNativeAdAppVideoView.a(this.a), 1, "视频加载失败，请稍后重试", 0).a();
-    ReadInJoyNativeAdAppVideoView.a(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to mobile");
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("VideoCoverView", 2, "installSDK t==" + localThrowable.toString());
     }
-    ReadInJoyNativeAdAppVideoView.a(this.a).removeCallbacks(this.a.b);
-    ReadInJoyNativeAdAppVideoView.e(this.a, 5);
-    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
-    QQToast.a(ReadInJoyNativeAdAppVideoView.a(this.a), 0, "当前为非WiFi环境，继续播放将消耗流量", 0).a();
-    ReadInJoyNativeAdAppVideoView.a(this.a);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to wifi");
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ReadInJoyNativeAdAppVideoView.e(this.a, 5);
-    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
-    QQToast.a(ReadInJoyNativeAdAppVideoView.a(this.a), 0, "当前为非WiFi环境，继续播放将消耗流量", 0).a();
-    ReadInJoyNativeAdAppVideoView.a(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from wifi to none");
-    }
-    ReadInJoyNativeAdAppVideoView.a(this.a).postDelayed(this.a.b, 1000L);
   }
 }
 

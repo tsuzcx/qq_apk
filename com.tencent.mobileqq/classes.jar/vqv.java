@@ -1,24 +1,13 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.VideoVipItemBuilder;
 
 public class vqv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public vqv(BaseTroopChatPie paramBaseTroopChatPie) {}
+  public TextView b;
   
-  public void onGlobalLayout()
-  {
-    if (this.a.O)
-    {
-      this.a.O = false;
-      BaseTroopChatPie.a(this.a).sendEmptyMessageDelayed(23, 100L);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseTroopChatPie", 2, " doOnCreate_initUI onGlobalLayout");
-      }
-    }
-  }
+  public vqv(VideoVipItemBuilder paramVideoVipItemBuilder) {}
 }
 
 

@@ -1,33 +1,31 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.GetCollectionListEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.ProgressControler;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView;
+import java.lang.ref.WeakReference;
 
 public class nsd
-  extends QQUIEventReceiver
+  implements Runnable
 {
-  public nsd(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  public nsd(ProgressControler paramProgressControler) {}
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
+  public void run()
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramGetCollectionListEvent.jdField_a_of_type_JavaLangString)) {}
-    while ((paramGetCollectionListEvent.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
+    if (this.a.jdField_a_of_type_Boolean) {}
+    IVideoView localIVideoView;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_JavaLangRefWeakReference == null);
+      localIVideoView = (IVideoView)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localIVideoView == null);
+    if (localIVideoView.b() > 0L)
+    {
+      this.a.a(this.a.jdField_a_of_type_Int, localIVideoView.a(), localIVideoView.b(), localIVideoView);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramGetCollectionListEvent.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramGetCollectionListEvent.toString());
-    }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetCollectionListEvent);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return DateCollectionListPageLoader.GetCollectionListEvent.class;
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
   }
 }
 

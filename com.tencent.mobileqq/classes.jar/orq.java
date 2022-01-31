@@ -1,35 +1,20 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
-import com.tencent.biz.qqstory.view.xrecyclerview.XRecyclerView;
+import android.os.Handler;
+import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForTroopStory;
 
-public class orq
-  extends RecyclerView.OnScrollListener
+class orq
+  implements Runnable
 {
-  public orq(XRecyclerView paramXRecyclerView) {}
+  orq(orp paramorp, String paramString) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void run()
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    paramInt = paramRecyclerView.getChildCount();
-    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
-    {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      int i = paramRecyclerView.getItemCount();
-      int[] arrayOfInt = paramRecyclerView.findFirstVisibleItemPositions(null);
-      if (i - paramInt > paramRecyclerView.getSpanCount() * 3 + arrayOfInt[0]) {
-        break label76;
-      }
-    }
-    label76:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0) {
-        XRecyclerView.a(this.a).b(false);
-      }
-      return;
-    }
+    this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.storyId = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.serial();
+    this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq, this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.msgData);
+    this.jdField_a_of_type_Orp.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
   }
 }
 

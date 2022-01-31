@@ -5,10 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import oss;
 
 public class DateUtils
 {
-  private static final DateFormat a = new SimpleDateFormat("MM月/dd");
+  private static final ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new oss();
+  private static final DateFormat jdField_a_of_type_JavaTextDateFormat = new SimpleDateFormat("MM月/dd");
   private static final DateFormat b = new SimpleDateFormat("yyyy");
   private static final DateFormat c = new SimpleDateFormat("HH:mm");
   private static final DateFormat d = new SimpleDateFormat("MM月dd日");
@@ -19,6 +21,12 @@ public class DateUtils
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.set(localCalendar.get(1), 0, 1, 0, 0, 0);
     return localCalendar.getTimeInMillis();
+  }
+  
+  public static String a()
+  {
+    long l = System.currentTimeMillis();
+    return ((DateFormat)jdField_a_of_type_JavaLangThreadLocal.get()).format(Long.valueOf(l));
   }
   
   public static String a(long paramLong)
@@ -69,7 +77,7 @@ public class DateUtils
       arrayOfString[1] = "昨天";
       return arrayOfString;
     }
-    return a.format(Long.valueOf(paramLong)).split("/");
+    return jdField_a_of_type_JavaTextDateFormat.format(Long.valueOf(paramLong)).split("/");
   }
   
   public static final long b()

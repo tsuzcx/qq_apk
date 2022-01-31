@@ -1,28 +1,21 @@
-import android.graphics.SurfaceTexture;
+import android.content.ContentValues;
+import com.tencent.mobileqq.app.proxy.MpfileTaskProxy;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-class aabv
+public class aabv
   implements Runnable
 {
-  aabv(aabt paramaabt) {}
+  public aabv(MpfileTaskProxy paramMpfileTaskProxy, String paramString1, ContentValues paramContentValues, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
   
   public void run()
   {
-    if (aabt.a(this.a)) {}
-    try
-    {
-      aabt.a(this.a).updateTexImage();
-      aabt.a(this.a).getTransformMatrix(aabt.a(this.a));
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyMpfileTaskProxy.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContentValues, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 1, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aabv
  * JD-Core Version:    0.7.0.1
  */

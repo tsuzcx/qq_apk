@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
 
 public class aeaf
-  extends GetRedPointExObserver
+  implements DialogInterface.OnClickListener
 {
-  public aeaf(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeaf(PresenceInterfaceImpl paramPresenceInterfaceImpl, QQAppInterface paramQQAppInterface) {}
   
-  protected void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a.post(new aeag(this));
   }
 }
 

@@ -213,18 +213,20 @@ public class ForwardH5HongBaoOption
     try
     {
       JSONObject localJSONObject2 = new JSONObject((String)localObject);
-      if (localJSONObject2.optInt("resultCode", -1) == 0)
+      if (localJSONObject2.optInt("resultCode", -1) != 0)
       {
-        JSONObject localJSONObject1 = localJSONObject2.optJSONObject("data");
-        localObject = localJSONObject1;
-        if (localJSONObject1 == null) {
-          localObject = new JSONObject();
-        }
-        ((JSONObject)localObject).put("chat_type", this.f);
-        ((JSONObject)localObject).put("uin", this.h);
-        localJSONObject2.put("data", localObject);
-        paramIntent.putExtra("result", localJSONObject2.toString());
+        this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramIntent);
+        return;
       }
+      JSONObject localJSONObject1 = localJSONObject2.optJSONObject("data");
+      localObject = localJSONObject1;
+      if (localJSONObject1 == null) {
+        localObject = new JSONObject();
+      }
+      ((JSONObject)localObject).put("chat_type", this.f);
+      ((JSONObject)localObject).put("uin", this.h);
+      localJSONObject2.put("data", localObject);
+      paramIntent.putExtra("result", localJSONObject2.toString());
       this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramIntent);
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return;
@@ -252,7 +254,7 @@ public class ForwardH5HongBaoOption
   {
     if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131433213, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplicationImpl.sApplication, 2131433227, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
       return true;
     }
     for (;;)

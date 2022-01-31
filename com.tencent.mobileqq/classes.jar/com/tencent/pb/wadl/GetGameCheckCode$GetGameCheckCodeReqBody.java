@@ -8,7 +8,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class GetGameCheckCode$GetGameCheckCodeReqBody
   extends MessageMicro
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "appid", "version" }, new Object[] { "", "" }, GetGameCheckCodeReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "appid", "version", "apk_url" }, new Object[] { "", "", "" }, GetGameCheckCodeReqBody.class);
+  public final PBStringField apk_url = PBField.initString("");
   public final PBStringField appid = PBField.initString("");
   public final PBStringField version = PBField.initString("");
 }

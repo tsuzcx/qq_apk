@@ -1,35 +1,34 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.RecentInviteUser;
+import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class aexy
   implements Runnable
 {
-  private int jdField_a_of_type_Int = 2;
-  
-  public aexy(ShortVideoCommentsView paramShortVideoCommentsView, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public aexy(WerewolvesDataManager paramWerewolvesDataManager, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
-      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
-      return;
-    case 0: 
-      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
-      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(0);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(RecentInviteUser.class);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_JavaLangObject;
+    if (localObject2 != null) {
+      try
+      {
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          RecentInviteUser localRecentInviteUser = (RecentInviteUser)((Iterator)localObject2).next();
+          this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_JavaUtilMap.put(localRecentInviteUser.uniKey, localRecentInviteUser);
+        }
+      }
+      finally {}
     }
-    ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
-    if ((ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView) != null) && (ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Int != 4)) {
-      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(0);
-    }
-    ShortVideoCommentsView.d(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView);
   }
 }
 

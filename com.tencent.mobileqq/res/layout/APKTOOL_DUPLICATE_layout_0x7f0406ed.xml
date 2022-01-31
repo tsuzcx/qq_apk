@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="bottom" android:orientation="vertical" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="42.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20bc" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c019a" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d030f" android:layout_alignParentBottom="true">
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20bd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02163f" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0317" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0316" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="重拍照片" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20be" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021663" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0317" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0316" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="发送照片" />
-    </RelativeLayout>
-</RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginBottom="8.0dip" android:text="以下结果来自群搜索：" android:includeFontPadding="false" />
+    <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="0.33000004dip" />
+</LinearLayout>

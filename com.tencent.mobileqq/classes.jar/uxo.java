@@ -1,24 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleParam;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class uxo
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public uxo(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, ActionSheet paramActionSheet) {}
+  public uxo(LoadDataJob paramLoadDataJob, DoodleParam paramDoodleParam, List paramList) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadDataJob", 2, "run write parcel begin:");
     }
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam, LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a, false));
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a(this.jdField_a_of_type_JavaUtilList, LoadDataJob.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a, false)))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((PathDrawer)localIterator.next()).b();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadDataJob", 2, "run write parcel end:");
     }
   }
 }

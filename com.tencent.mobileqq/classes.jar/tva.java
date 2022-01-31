@@ -1,20 +1,26 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import android.os.Handler;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 
 public class tva
-  implements TextView.OnEditorActionListener
+  implements Runnable
 {
-  public tva(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public tva(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if ((paramInt == 1) || ((paramKeyEvent != null) && (66 == paramKeyEvent.getKeyCode()) && (paramKeyEvent.getAction() == 0))) {
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a).c("onTabKeyDown()");
+    if (RegisterSendUpSms.a(this.a) == 1)
+    {
+      RegisterSendUpSms.a(this.a).setText("重新发送");
+      RegisterSendUpSms.a(this.a).setEnabled(true);
+      RegisterSendUpSms.a(this.a).setClickable(true);
+      RegisterSendUpSms.a(this.a, 0);
+      RegisterSendUpSms.b(this.a, 10);
+      return;
     }
-    return false;
+    RegisterSendUpSms.b(this.a);
+    RegisterSendUpSms.a(this.a).setText("正在验证(" + RegisterSendUpSms.a(this.a) + "s)");
+    this.a.a.postDelayed(this, 1000L);
   }
 }
 

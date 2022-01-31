@@ -1,21 +1,43 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.OldBigDataChannelManager;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DraftTextInfo;
+import com.tencent.mobileqq.managers.DraftTextManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 
 public class aeni
-  extends AccountObserver
+  implements Runnable
 {
-  public aeni(OldBigDataChannelManager paramOldBigDataChannelManager) {}
+  public aeni(DraftTextManager paramDraftTextManager, QQAppInterface paramQQAppInterface, DraftTextInfo paramDraftTextInfo) {}
   
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public void run()
   {
-    ThreadManager.getFileThreadHandler().post(new aenj(this));
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    localEntityTransaction = localEntityManager.a();
+    try
+    {
+      localEntityTransaction.a();
+      localEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo);
+      localEntityTransaction.c();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        localEntityTransaction.b();
+      }
+    }
+    finally
+    {
+      localEntityTransaction.b();
+    }
+    localEntityManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeni
  * JD-Core Version:    0.7.0.1
  */

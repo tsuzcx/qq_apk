@@ -12,7 +12,7 @@ public class RecentTabHaloBatchLoader$RecentTabHaloEvent
   
   public RecentTabHaloBatchLoader$RecentTabHaloEvent(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.errorInfo = paramErrorMessage;
   }
   
   public RecentTabHaloBatchLoader$RecentTabHaloEvent(boolean paramBoolean)

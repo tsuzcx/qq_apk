@@ -1,32 +1,46 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.io.File;
-import java.io.FileFilter;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
 
-public final class aavk
-  implements FileFilter
+public class aavk
+  implements aaup
 {
-  public aavk(String paramString, boolean paramBoolean) {}
+  private aavk(ArkAppDeviceModule paramArkAppDeviceModule) {}
   
-  public boolean accept(File paramFile)
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    String str = paramFile.getName();
-    int i = str.lastIndexOf('.');
-    if (i <= 0) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!str.substring(i).equalsIgnoreCase(".app"));
-      str = str.substring(0, i);
-    } while ((!ArkLocalAppMgr.b(str)) || (ArkLocalAppMgr.a(str, this.jdField_a_of_type_JavaLangString) >= 0));
-    if (this.jdField_a_of_type_Boolean) {
-      paramFile.deleteOnExit();
-    }
+    if ((!"ScanCode".equals(paramString)) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {}
     for (;;)
     {
-      return true;
-      paramFile.delete();
+      return false;
+      long l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
+      paramString = new Intent();
+      paramString.setClassName("com.tencent.mobileqq", "com.tencent.biz.qrcode.activity.ScannerActivity");
+      paramString.putExtra("from", ArkAppDeviceModule.class.getName());
+      paramString.putExtra("finishAfterSucc", true);
+      if (ArkAppDeviceModule.a(this.a) != null) {}
+      try
+      {
+        BaseApplicationImpl.getApplication().unregisterReceiver(ArkAppDeviceModule.a(this.a));
+        label105:
+        ArkAppDeviceModule.a(this.a, null);
+        ArkAppDeviceModule.a(this.a, new aavl(this, l));
+        paramArrayOfVariantWrapper = new IntentFilter("com.tencent.mobileqq.ark.API.scanResultAction");
+        BaseApplicationImpl.getApplication().registerReceiver(ArkAppDeviceModule.a(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
+        paramArrayOfVariantWrapper = BaseActivity.sTopActivity;
+        if (paramArrayOfVariantWrapper == null) {
+          continue;
+        }
+        paramArrayOfVariantWrapper.startActivity(paramString);
+        return false;
+      }
+      catch (Exception paramArrayOfVariantWrapper)
+      {
+        break label105;
+      }
     }
   }
 }

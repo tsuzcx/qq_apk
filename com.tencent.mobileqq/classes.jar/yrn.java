@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
+import android.view.View;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
 
-public class yrn
-  implements Runnable
+public final class yrn
+  extends ApolloHttpCallBack
 {
-  public yrn(CmGameLauncher paramCmGameLauncher) {}
+  public yrn(View paramView, long paramLong) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((CmGameLauncher.a(this.a) != null) && (CmGameLauncher.a(this.a).getRender() != null) && (CmGameLauncher.a(this.a).getRender().mApolloTicker != null))
-    {
-      ApolloRender.tickerPause(CmGameLauncher.a(this.a).getRender().mApolloTicker.ticker);
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameLauncher", 2, "mPauseTickerTask");
-      }
+    if ((this.jdField_a_of_type_AndroidViewView instanceof ApolloSurfaceView)) {
+      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new yro(this, paramArrayOfByte, paramInt));
     }
   }
 }

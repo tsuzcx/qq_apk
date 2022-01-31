@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public class ReadinjoyVideoReportData
@@ -26,8 +25,10 @@ public class ReadinjoyVideoReportData
   public boolean d;
   public int e;
   public long e;
+  public String e;
   public int f;
   public long f;
+  public String f;
   public int g;
   public long g;
   public int h;
@@ -44,27 +45,40 @@ public class ReadinjoyVideoReportData
   public long q;
   public long r;
   public long s;
+  public long t = -1L;
+  public long u = -1L;
   
   public ReadinjoyVideoReportData()
   {
-    this.jdField_b_of_type_JavaLangString = "";
     this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
     this.jdField_c_of_type_Int = 0;
     this.jdField_f_of_type_Int = -1;
     this.jdField_g_of_type_Int = -1;
+  }
+  
+  private String a()
+  {
+    if (((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 6)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
+      return this.jdField_e_of_type_JavaLangString;
+    }
+    if ((this.p == 0L) || (this.s == 0L)) {
+      return "0";
+    }
+    return String.valueOf(this.p * 8L / (this.s * 1024L));
   }
   
   public HashMap a()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("param_articleID", String.valueOf(this.jdField_a_of_type_JavaLangLong));
-    localHashMap.put("param_vid", this.jdField_a_of_type_JavaLangString);
+    localHashMap.put("param_vid", this.jdField_b_of_type_JavaLangString);
     localHashMap.put("param_busiType", String.valueOf(this.jdField_a_of_type_Int));
     localHashMap.put("param_success", String.valueOf(this.jdField_a_of_type_Boolean).toLowerCase());
     localHashMap.put("param_playDuration", String.valueOf(this.jdField_a_of_type_Long));
     localHashMap.put("param_prepareDuration", String.valueOf(this.jdField_c_of_type_Long));
     localHashMap.put("param_bufferTime", String.valueOf(this.jdField_e_of_type_Long));
-    localHashMap.put("param_errCode", this.jdField_b_of_type_JavaLangString);
+    localHashMap.put("param_errCode", this.jdField_c_of_type_JavaLangString);
     localHashMap.put("param_playCompleteRate", String.valueOf(this.jdField_a_of_type_Float));
     localHashMap.put("param_bufferCount", String.valueOf(this.jdField_b_of_type_Int));
     localHashMap.put("param_sceneType", String.valueOf(this.jdField_c_of_type_Int));
@@ -79,28 +93,34 @@ public class ReadinjoyVideoReportData
     localHashMap.put("param_secondBufferCount", String.valueOf(this.jdField_d_of_type_Int));
     localHashMap.put("param_videoFormat", String.valueOf(this.jdField_e_of_type_Int));
     localHashMap.put("param_isHitCache", String.valueOf(this.jdField_c_of_type_Boolean));
-    localHashMap.put("param_errDetailInfo", this.jdField_c_of_type_JavaLangString);
+    localHashMap.put("param_errDetailInfo", this.jdField_d_of_type_JavaLangString);
     localHashMap.put("param_scrollInterval", String.valueOf(this.n));
     localHashMap.put("param_jumpFromScene", String.valueOf(this.jdField_f_of_type_Int));
     localHashMap.put("param_index", String.valueOf(this.jdField_g_of_type_Int));
     localHashMap.put("param_videoBitRate", String.valueOf(this.o));
     localHashMap.put("param_fileSize", String.valueOf(this.p));
-    localHashMap.put("param_averageSpeedKBS", String.valueOf(this.q));
     localHashMap.put("param_downloadedDuration", String.valueOf(this.r));
     localHashMap.put("param_width", String.valueOf(this.jdField_h_of_type_Int));
     localHashMap.put("param_height", String.valueOf(this.jdField_i_of_type_Int));
     localHashMap.put("param_totalDuration", String.valueOf(this.s));
     localHashMap.put("param_videoCodeFormat", String.valueOf(this.jdField_d_of_type_Boolean));
-    if (((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 6)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    localHashMap.put("param_listSpeedKBS", this.jdField_f_of_type_JavaLangString);
+    if (this.q >= 0L) {
+      localHashMap.put("param_averageSpeedKBS", String.valueOf(this.q));
+    }
+    if (this.t >= 0L) {
+      localHashMap.put("param_maxSpeedKBS", String.valueOf(this.t));
+    }
+    if (this.u >= 0L) {
+      localHashMap.put("param_minSpeedKBS", String.valueOf(this.u));
+    }
+    localHashMap.put("param_fileBitRate", a());
+    if (this.jdField_a_of_type_JavaLangString == null) {}
+    for (String str = "";; str = this.jdField_a_of_type_JavaLangString)
     {
-      localHashMap.put("param_fileBitRate", String.valueOf(this.jdField_d_of_type_JavaLangString));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadinjoyVideoReportData", 4, "param_fileBitRate:" + this.jdField_d_of_type_JavaLangString + "   vid:" + this.jdField_a_of_type_JavaLangString);
-      }
+      localHashMap.put("param_rowKey", str);
       return localHashMap;
     }
-    localHashMap.put("param_fileBitRate", String.valueOf(this.o));
-    return localHashMap;
   }
 }
 

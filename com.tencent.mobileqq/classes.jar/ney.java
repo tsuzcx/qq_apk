@@ -1,16 +1,13 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTaskManager;
 
 public class ney
   implements Runnable
 {
-  public ney(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ney(BasePublishTaskManager paramBasePublishTaskManager) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a.a())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", true, this.b);
-    }
+    this.a.e();
   }
 }
 

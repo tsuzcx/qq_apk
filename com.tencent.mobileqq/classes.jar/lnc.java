@@ -1,18 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
-import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView.OnSizeChangedListener;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
+import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
 
-public class lnc
-  implements VariableSizeTextView.OnSizeChangedListener
+public final class lnc
+  implements PopupMenuDialog.OnClickActionListener
 {
-  public lnc(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  public lnc(Activity paramActivity) {}
   
-  public void a()
+  public void a(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    ReadInJoyAtlasFragment.a(this.a).a(4, null);
+    switch (paramMenuItem.a)
+    {
+    default: 
+      return;
+    case 0: 
+      paramMenuItem = new Intent(this.a, ReadInJoyDeliverUGCActivity.class);
+      paramMenuItem.putExtra("is_from_dian_dian", true);
+      this.a.startActivity(paramMenuItem);
+      PublicAccountReportUtils.a(null, "", "0X8008C5D", "0X8008C5D", 0, 0, "", "", "", ReadInJoyUtils.c(1), false);
+      return;
+    }
+    ReadInJoyUtils.b(this.a);
+    PublicAccountReportUtils.a(null, "", "0X8008C5D", "0X8008C5D", 0, 0, "", "", "", ReadInJoyUtils.c(2), false);
   }
-  
-  public void a(int paramInt1, int paramInt2) {}
 }
 
 

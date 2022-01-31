@@ -1,28 +1,34 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class wmc
-  implements View.OnTouchListener
+  implements AdapterView.OnItemClickListener
 {
-  public wmc(ContactsTroopAdapter paramContactsTroopAdapter, TextView paramTextView) {}
+  public wmc(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramMotionEvent.getAction())
+    if (this.a.jdField_a_of_type_Wmi != null)
     {
+      paramAdapterView = this.a.getActivity();
+      if (paramAdapterView != null) {
+        break label23;
+      }
     }
-    for (;;)
+    label23:
+    do
     {
-      return false;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    }
+      return;
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
+      paramView = ((wmh)this.a.jdField_a_of_type_Wmi.getItem(paramInt)).a;
+      ChatHistoryBubbleListForTroopFragment.a(paramAdapterView, this.a.b, paramView, 100, 1);
+    } while (!QLog.isColorLevel());
+    QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + paramView);
   }
 }
 

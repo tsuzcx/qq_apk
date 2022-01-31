@@ -1,46 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter.LocalItemHolder;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
-class acrf
-  implements View.OnClickListener
+public class acrf
+  extends RecyclerView.AdapterDataObserver
 {
-  acrf(acre paramacre, View paramView) {}
+  public acrf(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    paramView = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((paramView instanceof ImageHolder))
+    if (ExtendFriendSquareFragment.a(this.a).a() == 0)
     {
-      paramView = (FileInfo)((ImageHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-      ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_Acre.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity, null);
-      localActionSheet.a(" 删除本地文件后将无法找回，是否继续？");
-      localActionSheet.a("删除", 3);
-      localActionSheet.d("取消");
-      localActionSheet.a(new acrg(this, paramView, localActionSheet));
-      localActionSheet.show();
-    }
-    do
-    {
+      ExtendFriendSquareFragment.a(this.a).removeItemDecoration(ExtendFriendSquareFragment.a(this.a));
       return;
-      if ((paramView instanceof QfileLocalFileBaseExpandableListAdapter.LocalItemHolder))
-      {
-        paramView = (FileInfo)((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "unknow Object");
+    }
+    ExtendFriendSquareFragment.a(this.a).removeItemDecoration(ExtendFriendSquareFragment.a(this.a));
+    ExtendFriendSquareFragment.a(this.a).addItemDecoration(ExtendFriendSquareFragment.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrf
  * JD-Core Version:    0.7.0.1
  */

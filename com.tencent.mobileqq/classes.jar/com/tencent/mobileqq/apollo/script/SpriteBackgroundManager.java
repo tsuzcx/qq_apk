@@ -11,20 +11,20 @@ import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import mqq.os.MqqHandler;
-import yrx;
-import yry;
-import yrz;
+import yyo;
+import yyp;
+import yyq;
 
 public class SpriteBackgroundManager
   implements IRenderCallback
 {
   private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new yrx(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new yyo(this);
   private String jdField_a_of_type_JavaLangString;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private ConcurrentLinkedQueue jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   private volatile boolean jdField_a_of_type_Boolean;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new yry(this);
+  private Runnable jdField_b_of_type_JavaLangRunnable = new yyp(this);
   private volatile boolean jdField_b_of_type_Boolean;
   
   public SpriteBackgroundManager(SpriteContext paramSpriteContext, ApolloTextureView paramApolloTextureView)
@@ -51,7 +51,7 @@ public class SpriteBackgroundManager
   {
     ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if ((localApolloTextureView != null) && (localApolloTextureView.getVisibility() != paramInt)) {
-      ThreadManager.getUIHandler().post(new yrz(this, localApolloTextureView, paramInt));
+      ThreadManager.getUIHandler().post(new yyq(this, localApolloTextureView, paramInt));
     }
   }
   

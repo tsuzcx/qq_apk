@@ -1,12 +1,16 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
 
-public final class oiu
-  implements FilenameFilter
+public class oiu
+  extends PtvTemplateManager.DoodleInfoLoadObserver
 {
-  public boolean accept(File paramFile, String paramString)
+  public oiu(EditVideoDoodle paramEditVideoDoodle) {}
+  
+  public void a()
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
+    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.b();
   }
 }
 

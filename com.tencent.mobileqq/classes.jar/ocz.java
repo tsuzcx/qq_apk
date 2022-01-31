@@ -1,29 +1,43 @@
-import android.widget.TextView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
+import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.CommentListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.GetFeedCommentEvent;
+import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer;
-import com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.async.JobContext;
 import java.util.List;
 
-public class ocz
-  implements Callbacks.Callback
+class ocz
+  implements CommentListPageLoader.CommentListener
 {
-  public ocz(EditLocalVideoPlayer paramEditLocalVideoPlayer) {}
+  ocz(ocy paramocy, JobContext paramJobContext, FeedCommentSync paramFeedCommentSync) {}
   
-  public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult)
+  public void a(CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
   {
-    if (paramBoolean.booleanValue())
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      SLog.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramThumbnailResult.b.size(), paramThumbnailResult.jdField_a_of_type_JavaUtilList.size())));
-      this.a.a.setEnabled(true);
+      SLog.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync });
+      return;
     }
-    for (;;)
+    ocy.a(this.jdField_a_of_type_Ocy);
+    SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(ocy.b(this.jdField_a_of_type_Ocy)), paramGetFeedCommentEvent);
+    if (paramGetFeedCommentEvent.errorInfo.isSuccess())
     {
-      return null;
-      SLog.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramThumbnailResult.jdField_a_of_type_Int);
-      QQToast.a(this.a.a(), 1, "生成缩略图出错, 错误码:" + paramThumbnailResult.jdField_a_of_type_Int, 1);
+      ocy.a(this.jdField_a_of_type_Ocy).addAll(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList);
+      if ((!paramGetFeedCommentEvent.jdField_a_of_type_Boolean) && (ocy.b(this.jdField_a_of_type_Ocy) < 10))
+      {
+        SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(ocy.b(this.jdField_a_of_type_Ocy)));
+        ocy.a(this.jdField_a_of_type_Ocy).c();
+        return;
+      }
+      paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = ocy.a(this.jdField_a_of_type_Ocy);
+      SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(ocy.a(this.jdField_a_of_type_Ocy).size()));
+      ocy.a(this.jdField_a_of_type_Ocy, paramGetFeedCommentEvent);
+      return;
     }
+    paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = ocy.a(this.jdField_a_of_type_Ocy);
+    SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(ocy.a(this.jdField_a_of_type_Ocy).size()));
+    ocy.b(this.jdField_a_of_type_Ocy, paramGetFeedCommentEvent);
   }
 }
 

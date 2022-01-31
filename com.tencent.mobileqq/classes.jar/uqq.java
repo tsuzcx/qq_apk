@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 
 public class uqq
-  implements Runnable
+  implements MediaPlayer.OnCompletionListener
 {
-  public uqq(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public uqq(MediaPlayerManager paramMediaPlayerManager) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a.b();
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
+    }
+    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
+      return;
+    }
+    this.a.d();
   }
 }
 

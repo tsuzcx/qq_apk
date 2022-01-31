@@ -56,20 +56,20 @@ public class NavBarCommon
   
   private void a(Context paramContext)
   {
-    View.inflate(paramContext, 2130968838, this);
-    setBackgroundResource(2130845871);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
-    this.e = ((TextView)findViewById(2131363995));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363994));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363473));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363381));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363380));
-    this.g = ((TextView)findViewById(2131363470));
-    this.h = ((TextView)findViewById(2131363471));
-    this.d = ((TextView)findViewById(2131363428));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363475));
-    this.f = ((TextView)findViewById(2131364024));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363474));
+    View.inflate(paramContext, 2130968842, this);
+    setBackgroundResource(2130845951);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363262));
+    this.e = ((TextView)findViewById(2131364020));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364019));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363492));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363400));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363399));
+    this.g = ((TextView)findViewById(2131363489));
+    this.h = ((TextView)findViewById(2131363490));
+    this.d = ((TextView)findViewById(2131363447));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363494));
+    this.f = ((TextView)findViewById(2131364049));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363493));
     if (AppSetting.b)
     {
       AccessibilityUtil.b(this.jdField_a_of_type_AndroidWidgetTextView, Button.class.getName());
@@ -98,7 +98,7 @@ public class NavBarCommon
     {
       i = 2131492969;
       setBackgroundResource(i);
-      localColorStateList = getResources().getColorStateList(2131494211);
+      localColorStateList = getResources().getColorStateList(2131494217);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
       if (!paramBoolean) {
@@ -106,7 +106,7 @@ public class NavBarCommon
       }
     }
     label96:
-    for (int i = 2130839142;; i = 2130846264)
+    for (int i = 2130839157;; i = 2130846346)
     {
       localTextView.setBackgroundResource(i);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
@@ -115,7 +115,7 @@ public class NavBarCommon
       this.d.setTextColor(localColorStateList);
       this.f.setTextColor(localColorStateList);
       return;
-      i = 2130845871;
+      i = 2130845951;
       break;
     }
   }
@@ -166,7 +166,7 @@ public class NavBarCommon
   public void setLeftButton(int paramInt)
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363473));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363492));
     setLayerType(this.jdField_b_of_type_AndroidWidgetTextView);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(paramInt);
@@ -175,7 +175,7 @@ public class NavBarCommon
   public void setLeftButton(String paramString)
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363473));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363492));
     setLayerType(this.jdField_b_of_type_AndroidWidgetTextView);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
@@ -192,7 +192,7 @@ public class NavBarCommon
       TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
       String str1 = str2;
       if ("".equals(str2)) {
-        str1 = getContext().getString(2131433698);
+        str1 = getContext().getString(2131433712);
       }
       localTextView.setText(str1);
       localTextView.setVisibility(0);
@@ -200,8 +200,8 @@ public class NavBarCommon
       {
         str2 = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
         str1 = str2;
-        if (!str2.contains(getContext().getString(2131433698))) {
-          str1 = getContext().getString(2131433698) + str2;
+        if (!str2.contains(getContext().getString(2131433712))) {
+          str1 = getContext().getString(2131433712) + str2;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(str1);
       }
@@ -231,14 +231,14 @@ public class NavBarCommon
           {
             paramBundle = (Bundle)localObject;
             if (((String)localObject).contains("消息")) {
-              paramBundle = getContext().getString(2131433698);
+              paramBundle = getContext().getString(2131433712);
             }
           }
         }
       }
       localObject = paramBundle;
       if (paramBundle == null) {
-        localObject = getContext().getString(2131433698);
+        localObject = getContext().getString(2131433712);
       }
       localTextView.setText((CharSequence)localObject);
       localTextView.setVisibility(0);
@@ -246,8 +246,8 @@ public class NavBarCommon
       {
         localObject = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
         paramBundle = (Bundle)localObject;
-        if (!((String)localObject).contains(getContext().getString(2131433698))) {
-          paramBundle = getContext().getString(2131433698) + (String)localObject;
+        if (!((String)localObject).contains(getContext().getString(2131433712))) {
+          paramBundle = getContext().getString(2131433712) + (String)localObject;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramBundle);
       }
@@ -393,7 +393,7 @@ public class NavBarCommon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.navbar.NavBarCommon
  * JD-Core Version:    0.7.0.1
  */

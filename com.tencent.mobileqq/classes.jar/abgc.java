@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
-import com.tencent.mobileqq.armap.ipc.IAsyncObserver;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.NetChangedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class abgc
-  implements Runnable
+  implements NetChangedListener
 {
-  public abgc(ArMapIPCProxy paramArMapIPCProxy, IAsyncObserver paramIAsyncObserver, String paramString, EIPCResult paramEIPCResult) {}
+  public abgc(ARMapActivity paramARMapActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapIpcIAsyncObserver.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
+    if (QLog.isColorLevel()) {
+      QLog.i("ARMapActivity", 2, "onMessageConnect");
+    }
+    if (!this.a.a) {
+      ARMapActivity.d(this.a);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ARMapActivity", 2, "onConnClose");
+    }
   }
 }
 

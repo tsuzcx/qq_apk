@@ -1,17 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 
-public class slo
-  implements View.OnClickListener
+class slo
+  implements Runnable
 {
-  public slo(EditActivity paramEditActivity) {}
+  slo(sll paramsll, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
-      EditActivity.a(this.a).dismiss();
+    if (this.jdField_a_of_type_Sll.a.a != null) {
+      this.jdField_a_of_type_Sll.a.a.a(this.jdField_a_of_type_JavaLangString, true);
     }
   }
 }

@@ -1,36 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.arcard.ARBlessWordFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class aala
-  implements View.OnTouchListener
+public final class aala
+  implements Parcelable.Creator
 {
-  public aala(ARBlessWordFragment paramARBlessWordFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ARCommonConfigInfo a(Parcel paramParcel)
   {
-    if (!this.a.a) {
-      if (paramMotionEvent.getAction() == 0) {
-        ARBlessWordFragment.a(this.a).setAlpha(0.5F);
-      }
-    }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        ARBlessWordFragment.a(this.a).setAlpha(1.0F);
-        continue;
-        ARBlessWordFragment.a(this.a).setAlpha(1.0F);
-      }
-    }
+    return new ARCommonConfigInfo(paramParcel);
+  }
+  
+  public ARCommonConfigInfo[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aala
  * JD-Core Version:    0.7.0.1
  */

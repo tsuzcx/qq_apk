@@ -17,7 +17,7 @@ public class FromServiceMsg
   private static final String version = "version";
   private int appId;
   private int appSeq = -1;
-  public HashMap attributes = new HashMap();
+  public HashMap attributes = new HashMap(32);
   private String errorMsg = "";
   public Bundle extraData = new Bundle();
   private int flag;
@@ -101,7 +101,16 @@ public class FromServiceMsg
   
   public Object addAttribute(String paramString, Object paramObject)
   {
-    return this.attributes.put(paramString, paramObject);
+    try
+    {
+      paramString = this.attributes.put(paramString, paramObject);
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
   
   public int describeContents()

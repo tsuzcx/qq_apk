@@ -1,14 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.vas.URLInterceptManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class akhx
+public final class akhx
   implements Runnable
 {
-  public akhx(URLInterceptManager paramURLInterceptManager, Context paramContext) {}
+  public akhx(String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasURLInterceptManager.a(this.jdField_a_of_type_AndroidContentContext);
+    File localFile = new File(this.a);
+    if ((localFile.exists()) && (localFile.isFile()))
+    {
+      boolean bool = localFile.delete();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.VoiceIntro", 2, "delete result=" + bool + " f.path=" + this.a);
+      }
+    }
   }
 }
 

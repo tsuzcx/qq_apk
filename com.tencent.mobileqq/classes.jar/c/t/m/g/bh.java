@@ -1,30 +1,27 @@
 package c.t.m.g;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.text.TextUtils;
 
-public final class bh
+final class bh
+  implements Runnable
 {
-  public String a = "";
-  public int b = 0;
-  public String c = "";
-  public String d = "";
-  public int e;
+  bh(bg parambg) {}
   
-  public bh()
+  public final void run()
   {
+    String str = ck.b("settings_in_client", "");
+    if (!TextUtils.isEmpty(str)) {}
     try
     {
-      this.a = l.a().getPackageName();
-      PackageInfo localPackageInfo = l.a().getPackageManager().getPackageInfo(this.a, 0);
-      this.b = localPackageInfo.versionCode;
-      this.c = localPackageInfo.versionName;
-      this.e = l.c();
-      this.d = "";
+      this.a.a.a(str);
+      this.a.a();
       return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      ck.a("settings_in_client", "");
+    }
   }
 }
 

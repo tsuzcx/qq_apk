@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
+import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
 
 public class ogt
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ogt(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide, QQCustomDialog paramQQCustomDialog) {}
+  public ogt(TagAdapter paramTagAdapter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (TagAdapter.a(this.a) != null) {
+      TagAdapter.a(this.a).h();
+    }
   }
 }
 

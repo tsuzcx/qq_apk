@@ -1,32 +1,14 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.plugin.ReadInJoyWebviewPlugin;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import java.util.List;
 
-public class lsf
-  implements TroopMemberApiClient.Callback
+class lsf
+  implements Runnable
 {
-  public lsf(ReadInJoyWebviewPlugin paramReadInJoyWebviewPlugin, String paramString) {}
+  lsf(lse paramlse, List paramList) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReadInJoyWebviewPlugin", 4, "receive cancelLoadSkin callback resp:" + paramBundle.toString());
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPluginReadInJoyWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
-    }
+    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_Lse.a, this.jdField_a_of_type_JavaUtilList, true);
   }
 }
 

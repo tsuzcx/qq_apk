@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.magicface.drawable;
 
-import aedh;
-import aedj;
-import aedk;
-import aedm;
-import aedp;
+import aelr;
+import aelt;
+import aelu;
+import aelw;
+import aelz;
 import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -62,7 +62,7 @@ public class PngFrameManager
   
   public static Handler a(IMessageHandler paramIMessageHandler)
   {
-    return new aedp(paramIMessageHandler);
+    return new aelz(paramIMessageHandler);
   }
   
   PngFrameDrawable a(String paramString, int paramInt, boolean paramBoolean)
@@ -151,7 +151,7 @@ public class PngFrameManager
       return;
       paramMessage = (PngFrameManager.RandomDrawableParam)paramMessage.obj;
       paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130843960);
+      paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130844026);
       return;
       paramMessage = (PngFrameManager.RandomDrawableParam)paramMessage.obj;
     } while (paramMessage.jdField_a_of_type_Long != paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_Long);
@@ -221,7 +221,7 @@ public class PngFrameManager
       }
       while ((localRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_AndroidOsHandler != null))
       {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aedh(this, localRandomDrawableParam), 1000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aelr(this, localRandomDrawableParam), 1000L);
         return;
         a(localRandomDrawableParam);
         continue;
@@ -258,11 +258,11 @@ public class PngFrameManager
     //   41: ifnull +29 -> 70
     //   44: aload_0
     //   45: getfield 44	com/tencent/mobileqq/magicface/drawable/PngFrameManager:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   48: new 358	aedo
+    //   48: new 358	aely
     //   51: dup
     //   52: aload_0
     //   53: lload_1
-    //   54: invokespecial 361	aedo:<init>	(Lcom/tencent/mobileqq/magicface/drawable/PngFrameManager;J)V
+    //   54: invokespecial 361	aely:<init>	(Lcom/tencent/mobileqq/magicface/drawable/PngFrameManager;J)V
     //   57: ldc2_w 362
     //   60: invokevirtual 344	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   63: pop
@@ -312,8 +312,8 @@ public class PngFrameManager
   void b(PngFrameManager.RandomDrawableParam paramRandomDrawableParam)
   {
     paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130843959);
-    ThreadManager.post(new aedj(this, paramRandomDrawableParam), 5, null, true);
+    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130844025);
+    ThreadManager.post(new aelt(this, paramRandomDrawableParam), 5, null, true);
   }
   
   void c(PngFrameManager.RandomDrawableParam paramRandomDrawableParam)
@@ -333,7 +333,7 @@ public class PngFrameManager
       return;
     }
     paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130843959);
+    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130844025);
     e(paramRandomDrawableParam);
   }
   
@@ -357,13 +357,13 @@ public class PngFrameManager
       finally {}
     }
     paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130843959);
-    ThreadManager.post(new aedk(this, str, paramRandomDrawableParam), 5, null, true);
+    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130844025);
+    ThreadManager.post(new aelu(this, str, paramRandomDrawableParam), 5, null, true);
   }
   
   public void e(PngFrameManager.RandomDrawableParam paramRandomDrawableParam)
   {
-    ThreadManager.post(new aedm(this, paramRandomDrawableParam), 5, null, true);
+    ThreadManager.post(new aelw(this, paramRandomDrawableParam), 5, null, true);
   }
   
   void f(PngFrameManager.RandomDrawableParam paramRandomDrawableParam)

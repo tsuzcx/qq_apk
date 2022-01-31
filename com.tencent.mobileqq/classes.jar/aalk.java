@@ -1,46 +1,129 @@
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils;
-import com.tencent.mobileqq.ar.ARRecord.VideoEncoderUtils;
-import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout.CaptureButtonListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IBinder;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.mobileqq.ar.aidl.IArRemoteCallback;
 
 public class aalk
-  implements ARCardCamereButtonLayout.CaptureButtonListener
+  implements IArRemoteCallback
 {
-  public aalk(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
+  private IBinder a;
+  
+  public aalk(IBinder paramIBinder)
+  {
+    this.a = paramIBinder;
+  }
   
   public void a()
   {
-    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonPhoto");
-  }
-  
-  public void b()
-  {
-    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonVideoStart");
-    if (!VideoEncoderUtils.a()) {
-      ARRecordUtils.a("该机型不支持录制，无法参与活动", true);
-    }
-    do
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
-      if (!ARRecordUtils.a(104857600L))
-      {
-        ARRecordUtils.a("无法录制", "sdcard剩余空间不足");
-        return;
-      }
-    } while (this.a.b());
-    ARRecordUtils.a("录制间隔太短，请稍候重试", true);
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
   
-  public void c()
+  public void a(int paramInt)
   {
-    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonVideoStop");
-    this.a.c();
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      localParcel1.writeLong(paramLong1);
+      localParcel1.writeLong(paramLong2);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
+    {
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+        if (paramArConfigInfo != null)
+        {
+          localParcel1.writeInt(1);
+          paramArConfigInfo.writeToParcel(localParcel1, 0);
+          if (paramArEffectConfig != null)
+          {
+            localParcel1.writeInt(1);
+            paramArEffectConfig.writeToParcel(localParcel1, 0);
+            if (paramARCommonConfigInfo == null) {
+              break label131;
+            }
+            localParcel1.writeInt(1);
+            paramARCommonConfigInfo.writeToParcel(localParcel1, 0);
+            this.a.transact(4, localParcel1, localParcel2, 0);
+            localParcel2.readException();
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        localParcel1.writeInt(0);
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+      continue;
+      label131:
+      localParcel1.writeInt(0);
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aalk
  * JD-Core Version:    0.7.0.1
  */

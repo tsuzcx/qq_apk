@@ -1,27 +1,33 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
+import com.tencent.biz.qqstory.storyHome.model.FeedVideoManager;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
+import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListHomeFeed;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class odk
-  implements ThreadExcutor.IThreadListener
+  implements Runnable
 {
-  public odk(EditPicSave paramEditPicSave) {}
+  public odk(HomeFeedPresenter paramHomeFeedPresenter, ArrayList paramArrayList) {}
   
-  public void a() {}
-  
-  public void b()
+  public void run()
   {
-    int i = 1;
-    this.a.a.a().postDelayed(new odl(this), 500L);
-    if (CameraControl.a().a == 1) {}
-    for (;;)
+    FeedVideoManager localFeedVideoManager = (FeedVideoManager)SuperManager.a(12);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      CaptureReportUtil.h(i);
-      return;
-      i = 2;
+      Object localObject = (StoryHomeFeed)localIterator.next();
+      if ((localObject instanceof VideoListHomeFeed))
+      {
+        localObject = (VideoListHomeFeed)localObject;
+        FeedVideoInfo localFeedVideoInfo = ((VideoListHomeFeed)localObject).a().getVideoInfo();
+        localFeedVideoInfo.mVideoItemList.addAll(((VideoListHomeFeed)localObject).a());
+        localFeedVideoManager.a(0, localFeedVideoInfo.feedId, localFeedVideoInfo.mVideoSeq, localFeedVideoInfo.mVideoItemList, localFeedVideoInfo.mVideoNextCookie, localFeedVideoInfo.mIsVideoEnd, localFeedVideoInfo.mVideoPullType, true);
+      }
     }
   }
 }

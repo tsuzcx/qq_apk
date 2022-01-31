@@ -1,48 +1,47 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import android.os.Handler;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.gdtad.views.GdtUIUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class kzq
-  implements TouchWebView.OnScrollChangedListener
+  implements Runnable
 {
-  public kzq(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  public kzq(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void run()
   {
-    paramInt1 = paramInt2 - paramInt4;
-    if (paramInt1 > 0)
+    if ((ReadInJoyNativeAdAppVideoView.a(this.a) != null) && (ReadInJoyNativeAdAppVideoView.a(this.a).isPlaying()))
     {
-      if (this.a.jdField_b_of_type_Int < 0) {
-        this.a.jdField_b_of_type_Int = 0;
+      long l = ReadInJoyNativeAdAppVideoView.a(this.a).getCurrentPostion();
+      ReadInJoyNativeAdAppVideoView.a(this.a, ReadInJoyNativeAdAppVideoView.a(this.a).getDuration());
+      int i = (int)((float)l * 1.0F * ReadInJoyNativeAdAppVideoView.b(this.a) / (float)ReadInJoyNativeAdAppVideoView.a(this.a) + 0.5D);
+      ReadInJoyNativeAdAppVideoView.a(this.a).setProgress(i);
+      ReadInJoyNativeAdAppVideoView.a(this.a).setText(GdtUIUtils.a(l));
+      ReadInJoyNativeAdAppVideoView.b(this.a).setText(GdtUIUtils.a(ReadInJoyNativeAdAppVideoView.a(this.a)));
+      if (ReadInJoyNativeAdAppVideoView.a(this.a) - l >= 50L) {
+        break label331;
       }
-      paramView = this.a;
-      paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
-      if ((this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int) && (this.a.jdField_c_of_type_Boolean))
+      if (!ReadInJoyNativeAdAppVideoView.a(this.a))
       {
-        this.a.jdField_c_of_type_Boolean = false;
-        if (this.a.jdField_a_of_type_AndroidViewView != null)
-        {
-          this.a.a(this.a.jdField_b_of_type_AndroidViewView, 0);
-          this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-          this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
-        }
+        ReadInJoyNativeAdAppVideoView.a(this.a, (int)(ReadInJoyNativeAdAppVideoView.a(this.a) / 1000L));
+        ReadInJoyNativeAdAppVideoView.b(this.a, 1);
+        NativeAdUtils.a(ReadInJoyNativeAdAppVideoView.a(this.a), this.a.getContext(), NativeAdUtils.f, NativeAdUtils.n, ReadInJoyNativeAdAppVideoView.a(this.a), null, 0L, NativeAdUtils.a(ReadInJoyNativeAdAppVideoView.c(this.a), ReadInJoyNativeAdAppVideoView.d(this.a), ReadInJoyNativeAdAppVideoView.e(this.a), ReadInJoyNativeAdAppVideoView.f(this.a), ReadInJoyNativeAdAppVideoView.g(this.a), ReadInJoyNativeAdAppVideoView.h(this.a), (int)(ReadInJoyNativeAdAppVideoView.a(this.a) / 1000L), NativeAdUtils.u));
+        ReadInJoyNativeAdAppVideoView.c(this.a, 0);
+        ReadInJoyNativeAdAppVideoView.d(this.a, 1);
+        ReadInJoyNativeAdAppVideoView.b(this.a, 0);
+        ReadInJoyNativeAdAppVideoView.a(this.a, true);
       }
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-        if (this.a.jdField_b_of_type_Int > 0) {
-          this.a.jdField_b_of_type_Int = 0;
-        }
-        paramView = this.a;
-        paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
-      } while ((-this.a.jdField_b_of_type_Int <= this.a.jdField_c_of_type_Int) || (this.a.jdField_c_of_type_Boolean));
-      this.a.jdField_c_of_type_Boolean = true;
-    } while (this.a.jdField_a_of_type_AndroidViewView == null);
-    this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAnimation);
+      ReadInJoyNativeAdAppVideoView.a(this.a).postDelayed(this, 50L);
+      return;
+      label331:
+      ReadInJoyNativeAdAppVideoView.a(this.a, false);
+    }
   }
 }
 

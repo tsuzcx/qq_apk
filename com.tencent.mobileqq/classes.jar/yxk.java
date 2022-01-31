@@ -1,22 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.apollo.view.ApolloGameHotChatController;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel.IRequestHandler;
+import java.util.Comparator;
 
 public class yxk
-  implements Animation.AnimationListener
+  implements Comparator
 {
-  public yxk(ApolloGameHotChatController paramApolloGameHotChatController) {}
+  public yxk(CmGameCmdChannel paramCmGameCmdChannel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(CmGameCmdChannel.IRequestHandler paramIRequestHandler1, CmGameCmdChannel.IRequestHandler paramIRequestHandler2)
   {
-    if (ApolloGameHotChatController.a(this.a) != null) {
-      ApolloGameHotChatController.a(this.a).a(true);
-    }
+    return paramIRequestHandler1.a() - paramIRequestHandler2.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

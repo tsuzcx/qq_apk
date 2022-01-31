@@ -84,10 +84,10 @@ public class RecentSayHelloListItem
           if (!DatingUtil.a(paramQQAppInterface, a(), 1001)) {
             break label366;
           }
-          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131437897);
-          this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494288);
+          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131437917);
+          this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494294);
           if (localObject2 != null) {
-            localMsgSummary.b = ((ConversationFacade)localObject2).a(a(), 1001, paramContext.getResources().getString(2131437898), 0);
+            localMsgSummary.b = ((ConversationFacade)localObject2).a(a(), 1001, paramContext.getResources().getString(2131437918), 0);
           }
           label171:
           localObject2 = ContactUtils.q(paramQQAppInterface, a());
@@ -131,8 +131,8 @@ public class RecentSayHelloListItem
         if (DatingUtil.b(paramQQAppInterface, a(), 1001))
         {
           this.jdField_c_of_type_Boolean = true;
-          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131438802);
-          this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494288);
+          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131438826);
+          this.jdField_e_of_type_Int = paramContext.getResources().getColor(2131494294);
           break label171;
         }
         super.a((QQMessageFacade.Message)localObject1, a(), paramQQAppInterface, paramContext, localMsgSummary);

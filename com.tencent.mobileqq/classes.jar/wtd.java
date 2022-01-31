@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class wtd
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public wtd(BaseActivityView paramBaseActivityView) {}
+  public wtd(PhoneContactFragment paramPhoneContactFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a = null;
+    if (PhoneContactFragment.a(this.a) == null) {
+      PhoneContactFragment.a(this.a, (PhoneContactManagerImp)this.a.a.getManager(10));
+    }
+    boolean bool = PhoneContactFragment.a(this.a).f();
+    PhoneContactFragment.a(this.a).post(new wte(this, bool));
   }
 }
 

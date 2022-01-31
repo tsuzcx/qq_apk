@@ -1,22 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.mobileqq.ar.ARMusicController;
+import com.tencent.qphone.base.util.QLog;
 
 public class aaeb
-  implements View.OnTouchListener
+  implements SoundPool.OnLoadCompleteListener
 {
-  public aaeb(ScanningSurfaceView paramScanningSurfaceView) {}
+  public aaeb(ARMusicController paramARMusicController) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramInt2 != 0) {}
+    try
     {
+      QLog.e("ARMusicController", 2, "load fire music failed. " + ARMusicController.a(this.a));
+      return;
     }
-    for (;;)
+    catch (Exception paramSoundPool)
     {
-      return true;
-      ScanningSurfaceView.a(this.a, paramMotionEvent);
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. : " + ARMusicController.a(this.a));
+    }
+    ARMusicController.a(this.a, true);
+    if (ARMusicController.a(this.a))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
     }
   }
 }

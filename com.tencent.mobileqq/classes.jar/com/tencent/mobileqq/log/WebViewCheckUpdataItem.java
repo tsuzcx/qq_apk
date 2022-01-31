@@ -145,8 +145,8 @@ public class WebViewCheckUpdataItem
     Object localObject2 = new PreloadInfoCheckUpdate.ControlReqHead();
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).protocol_ver.set(1);
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_plat_id.set(109);
-    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_ver.set("7.6.3.3565");
-    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).os_ver.set("351230");
+    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_ver.set("7.6.8.3615");
+    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).os_ver.set("355371");
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
     ((PreloadInfoCheckUpdate.WebViewConfigReq)localObject1).head.set((MessageMicro)localObject2);
     localObject1 = ((PreloadInfoCheckUpdate.WebViewConfigReq)localObject1).toByteArray();

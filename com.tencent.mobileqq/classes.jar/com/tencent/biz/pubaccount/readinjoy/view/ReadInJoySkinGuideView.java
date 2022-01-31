@@ -8,7 +8,7 @@ import android.widget.RelativeLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.qphone.base.util.QLog;
-import mjg;
+import mmx;
 
 public class ReadInJoySkinGuideView
   extends RelativeLayout
@@ -22,14 +22,14 @@ public class ReadInJoySkinGuideView
   {
     super(paramContext);
     this.jdField_a_of_type_Int = 2;
-    LayoutInflater.from(getContext()).inflate(2130971483, this);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = ((SpriteGLView)findViewById(2131374899));
+    LayoutInflater.from(getContext()).inflate(2130971508, this);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = ((SpriteGLView)findViewById(2131374953));
     setClickable(true);
     if (260 == paramInt) {
       this.jdField_a_of_type_Int = 1;
     }
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b = true;
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.post(new mjg(this, paramQQAppInterface, paramString2, paramOnClickListener1, paramString1, paramOnClickListener2, paramContext));
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.post(new mmx(this, paramQQAppInterface, paramString2, paramOnClickListener1, paramString1, paramOnClickListener2, paramContext));
   }
   
   public void a()

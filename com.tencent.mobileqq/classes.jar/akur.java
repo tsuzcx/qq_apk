@@ -1,37 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.IphoneTreeView;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 
 public class akur
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public akur(IphoneTreeView paramIphoneTreeView) {}
+  public akur(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI, TextView paramTextView1, TextView paramTextView2, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction())
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()))
     {
-    case 2: 
-    default: 
-      bool = false;
+      this.b.setText(this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    do
-    {
-      return bool;
-      paramView.setPressed(true);
-      this.a.invalidate();
-      return true;
-      paramView.setPressed(false);
-      this.a.invalidate();
-      break;
-    } while (!paramView.isPressed());
-    paramView.setPressed(false);
-    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
-    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_AndroidViewView = null;
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c(this.jdField_a_of_type_JavaLangString);
   }
 }
 

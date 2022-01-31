@@ -1,41 +1,22 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.app.PstnSessionInfo;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class saf
-  implements Runnable
+public final class saf
+  implements DialogInterface.OnClickListener
 {
-  public saf(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList1, List paramList2) {}
+  public saf(QQAppInterface paramQQAppInterface, Context paramContext, PstnSessionInfo paramPstnSessionInfo, int paramInt, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
-    }
-    while ((this.b != null) && (this.b.size() > 0))
-    {
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext())
-      {
-        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-        localFileManagerEntity.bDelInAio = true;
-        if (QLog.isDevelopLevel()) {
-          QLog.d("ChatHistoryFIleActivity", 1, "ChatHistory entity[" + localFileManagerEntity.getId() + "] del File:" + localFileManagerEntity.nSessionId);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.a().b(localFileManagerEntity.nSessionId);
-      }
-      if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.a().a(this.jdField_a_of_type_JavaUtilList, false);
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a.sendEmptyMessage(2);
+    paramDialogInterface.dismiss();
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, false);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80067FB", "0X80067FB", 1, 0, "", "", "", "");
   }
 }
 

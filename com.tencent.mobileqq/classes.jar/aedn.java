@@ -1,59 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.intervideo.now.DownloadEngine.IDownloadListener;
+import com.tencent.mobileqq.intervideo.now.DownloadEngine.NowDownloadManager;
+import com.tencent.mobileqq.intervideo.now.NowPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import com.tencent.txproxy.HostEventListener;
+import mqq.os.MqqHandler;
 
-class aedn
-  extends DownloadListener
+public class aedn
+  implements IDownloadListener
 {
-  aedn(aedm paramaedm, String paramString) {}
+  public aedn(NowPlugin paramNowPlugin, HostEventListener paramHostEventListener, String paramString) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func onDone.【pngZip】");
+    QLog.i("XProxy|NowProxy", 4, "onDownloadComplete------");
+    ThreadManager.getSubThreadHandler().post(new aedo(this));
+    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a(this.jdField_a_of_type_JavaLangString);
+    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a();
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.i("XProxy|NowProxy", 4, "onDownloadFailed------");
+    if (this.jdField_a_of_type_ComTencentTxproxyHostEventListener != null) {
+      this.jdField_a_of_type_ComTencentTxproxyHostEventListener.onDownloadResult(paramInt1, paramInt2, "Helly Download Failed");
     }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_Aedm.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager)
-      {
-        if (this.jdField_a_of_type_Aedm.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a != null)
-        {
-          if (paramDownloadTask.a() != 3) {
-            this.jdField_a_of_type_Aedm.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.obtainMessage(226, this.jdField_a_of_type_Aedm.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-          }
-        }
-        else {
-          return;
-        }
-      }
-      try
-      {
-        FileUtils.a(this.jdField_a_of_type_JavaLangString, EmoticonUtils.z.replace("[epId]", this.jdField_a_of_type_Aedm.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString), false);
-        new File(this.jdField_a_of_type_JavaLangString).delete();
-        this.jdField_a_of_type_Aedm.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.b(this.jdField_a_of_type_Aedm.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId);
-        this.jdField_a_of_type_Aedm.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.obtainMessage(225, this.jdField_a_of_type_Aedm.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-        continue;
-        paramDownloadTask = finally;
-        throw paramDownloadTask;
-      }
-      catch (IOException paramDownloadTask)
-      {
-        for (;;)
-        {
-          paramDownloadTask.printStackTrace();
-        }
-      }
+    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a(this.jdField_a_of_type_JavaLangString);
+    NowPlugin.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin).a();
+  }
+  
+  public void a(long paramLong1, long paramLong2, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentTxproxyHostEventListener != null) {
+      this.jdField_a_of_type_ComTencentTxproxyHostEventListener.onDownloadProgress(paramLong1, paramLong2);
     }
   }
 }

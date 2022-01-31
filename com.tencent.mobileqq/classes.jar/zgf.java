@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.app.MayknowRecommendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 
 public class zgf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public zgf(MayknowRecommendManager paramMayknowRecommendManager) {}
+  public zgf(ApolloPanel paramApolloPanel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (MayknowRecommendManager.a(this.a).a.a() == 1)
-    {
-      MayknowRecommendManager.b(this.a);
-      return;
-    }
-    MayknowRecommendManager.a(this.a).postDelayed(this, 5000L);
+    this.a.b.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zgf
  * JD-Core Version:    0.7.0.1
  */

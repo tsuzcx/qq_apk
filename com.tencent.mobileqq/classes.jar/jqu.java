@@ -1,30 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.ui.CallbackWaitingActivity;
+import com.tencent.av.VideoController;
+import com.tencent.av.smallscreen.SmallScreenService;
 
 public class jqu
-  extends Handler
+  implements Runnable
 {
-  public jqu(CallbackWaitingActivity paramCallbackWaitingActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public jqu(SmallScreenService paramSmallScreenService) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if ((this.a.a != null) && (!this.a.a.n())) {
+      this.a.f();
     }
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqu
  * JD-Core Version:    0.7.0.1
  */

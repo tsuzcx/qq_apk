@@ -1,25 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vashealth.SportManager;
+import com.tencent.mobileqq.vashealth.StepAlarmReceiver;
 
 public class akrx
   implements Runnable
 {
-  public akrx(WereWolvesLoadingView paramWereWolvesLoadingView) {}
+  public akrx(StepAlarmReceiver paramStepAlarmReceiver) {}
   
   public void run()
   {
-    if ((this.a.jdField_b_of_type_Int > 90) || (this.a.jdField_b_of_type_Boolean)) {
+    if (this.a.a == null) {
       return;
     }
-    WereWolvesLoadingView localWereWolvesLoadingView1 = this.a;
-    localWereWolvesLoadingView1.jdField_b_of_type_Int += 1;
-    localWereWolvesLoadingView1 = this.a;
-    WereWolvesLoadingView localWereWolvesLoadingView2 = this.a;
-    int i = localWereWolvesLoadingView2.jdField_b_of_type_Int;
-    localWereWolvesLoadingView2.jdField_b_of_type_Int = (i + 1);
-    localWereWolvesLoadingView1.setProgress(i);
-    i = (int)(2.222222F * this.a.jdField_b_of_type_Int + 100.0F);
-    this.a.a.postDelayed(this, i);
+    ((SportManager)this.a.a.getManager(259)).b();
   }
 }
 

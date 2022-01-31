@@ -1,15 +1,20 @@
-import android.opengl.GLES20;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.statistics.storage.StorageItem;
+import java.util.Comparator;
 
 public class ailw
-  implements Runnable
+  implements Comparator
 {
-  public ailw(VideoSprite paramVideoSprite) {}
-  
-  public void run()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    GLES20.glDeleteTextures(this.a.a.length, this.a.a, 0);
-    GLES20.glFlush();
+    paramObject1 = (StorageItem)paramObject1;
+    paramObject2 = (StorageItem)paramObject2;
+    if (paramObject1.b > paramObject2.b) {
+      return -1;
+    }
+    if (paramObject1.b < paramObject2.b) {
+      return 1;
+    }
+    return 0;
   }
 }
 

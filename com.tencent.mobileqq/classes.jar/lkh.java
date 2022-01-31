@@ -1,64 +1,89 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnArticleWrapperClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnBiuClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnCommentClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnJumpWrapperClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnLikeClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-import com.tencent.mobileqq.util.FaceDecoder;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateAdapter;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateItemView;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateItemView.TemplateItemCallback;
+import com.tencent.mobileqq.activity.richmedia.ShortVideoMtaReport;
+import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.HorizontalListView;
+import java.util.ArrayList;
 
-public final class lkh
-  implements ViewFactory.FoundClickableViewListener
+public class lkh
+  implements ReadInJoyCameraTemplateItemView.TemplateItemCallback
 {
-  public lkh(VafContext paramVafContext, FaceDecoder paramFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IReadInJoyModel paramIReadInJoyModel, Container paramContainer, BaseArticleInfo paramBaseArticleInfo) {}
+  public lkh(ReadInJoyCameraTemplateAdapter paramReadInJoyCameraTemplateAdapter) {}
   
-  public void a(ViewBase paramViewBase)
+  public void a(int paramInt)
   {
-    if (paramViewBase.a() == null) {
-      return;
+    PublicAccountReportUtils.a(null, "", "0X80081D5", "0X80081D5", 0, 0, "2", "", "", VideoReporter.a(ReadInJoyCameraTemplateAdapter.a(this.a)), false);
+    if ((!((PtvTemplateManager.PtvTemplateInfo)ReadInJoyCameraTemplateAdapter.a(this.a).get(paramInt)).usable) && (!NetworkUtil.g(ReadInJoyCameraTemplateAdapter.a(this.a)))) {
+      QQToast.a(ReadInJoyCameraTemplateAdapter.a(this.a), 1, 2131428454, 0).a(0).show();
     }
-    switch (StringCommon.a(paramViewBase.a()))
+    do
     {
-    case 1009: 
-    default: 
-      paramViewBase.a(new lkk(this, paramViewBase));
-      return;
-    case 1001: 
-      paramViewBase.a(new lki(this, paramViewBase));
-      return;
-    case 1002: 
-      paramViewBase.a(new OnLikeClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1003: 
-      paramViewBase.a(new OnCommentClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1004: 
-      paramViewBase.a(new OnBiuClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1005: 
-      paramViewBase.a(new OnTopicRecommendHeaderClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1006: 
-      paramViewBase.a(new OnTopicRecommendHeaderFollowClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1007: 
-      paramViewBase.a().setOnClickListener(new lkj(this));
-      return;
-    case 1008: 
-      paramViewBase.a(new OnArticleWrapperClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter));
-      return;
-    }
-    paramViewBase.a(new OnJumpWrapperClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a(), (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
+      do
+      {
+        return;
+      } while (((PtvTemplateManager.PtvTemplateInfo)ReadInJoyCameraTemplateAdapter.a(this.a).get(paramInt)).id.equals(ReadInJoyCameraTemplateAdapter.a(this.a).id));
+      ReadInJoyCameraTemplateAdapter.a(this.a).isSelected = false;
+      int j = ReadInJoyCameraTemplateAdapter.a(this.a).getFirstVisiblePosition();
+      int k = ReadInJoyCameraTemplateAdapter.a(this.a).getLastVisiblePosition();
+      int i = j;
+      Object localObject1;
+      if (i <= k)
+      {
+        if (i < 0) {}
+        do
+        {
+          i += 1;
+          break;
+          localObject1 = (PtvTemplateManager.PtvTemplateInfo)ReadInJoyCameraTemplateAdapter.a(this.a).get(i);
+        } while ((localObject1 == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject1).id.equals(ReadInJoyCameraTemplateAdapter.a(this.a).id)));
+        localObject1 = ReadInJoyCameraTemplateAdapter.a(this.a).getChildAt(i - j);
+        if ((localObject1 instanceof ReadInJoyCameraTemplateItemView)) {
+          ((ReadInJoyCameraTemplateItemView)localObject1).a(false);
+        }
+      }
+      ReadInJoyCameraTemplateAdapter.a(this.a, (PtvTemplateManager.PtvTemplateInfo)ReadInJoyCameraTemplateAdapter.a(this.a).get(paramInt));
+      ReadInJoyCameraTemplateAdapter.a(this.a).isSelected = true;
+      if (ReadInJoyCameraTemplateAdapter.a(this.a).usable)
+      {
+        localObject1 = PtvTemplateManager.a + ReadInJoyCameraTemplateAdapter.a(this.a).name;
+        i = ReadInJoyCameraTemplateAdapter.a(this.a).getFirstVisiblePosition();
+        j = ReadInJoyCameraTemplateAdapter.a(this.a).getLastVisiblePosition();
+        paramInt = i;
+        if (paramInt <= j)
+        {
+          if (paramInt < 0) {}
+          do
+          {
+            paramInt += 1;
+            break;
+            localObject2 = (PtvTemplateManager.PtvTemplateInfo)ReadInJoyCameraTemplateAdapter.a(this.a).get(paramInt);
+          } while ((localObject2 == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject2).id.equals(ReadInJoyCameraTemplateAdapter.a(this.a).id)));
+          Object localObject2 = ReadInJoyCameraTemplateAdapter.a(this.a).getChildAt(paramInt - i);
+          if ((localObject2 instanceof ReadInJoyCameraTemplateItemView)) {
+            ((ReadInJoyCameraTemplateItemView)localObject2).a(true);
+          }
+        }
+        if (!ReadInJoyCameraTemplateAdapter.a(this.a).id.equals("0"))
+        {
+          ReadInJoyCameraTemplateAdapter.a(this.a).setFaceEffect((String)localObject1);
+          return;
+        }
+        ReadInJoyCameraTemplateAdapter.a(this.a).setFaceEffect(null);
+        return;
+      }
+    } while ((ReadInJoyCameraTemplateAdapter.a(this.a).downloading) || (TextUtils.isEmpty(ReadInJoyCameraTemplateAdapter.a(this.a).id)) || (ReadInJoyCameraTemplateAdapter.a(this.a) == null));
+    ReadInJoyCameraTemplateAdapter.a(this.a).a(ReadInJoyCameraTemplateAdapter.a(this.a), ReadInJoyCameraTemplateAdapter.a(this.a), ReadInJoyCameraTemplateAdapter.a(this.a));
+    ReadInJoyCameraTemplateAdapter.a(this.a).downloading = true;
+    ShortVideoMtaReport.a("shortvideo_download_effects", null);
   }
 }
 

@@ -67,10 +67,10 @@ import mqq.manager.TicketManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import xbk;
-import xbm;
-import xbn;
-import xbo;
+import xhb;
+import xhd;
+import xhe;
+import xhf;
 
 public class SendHbActivity
   extends FragmentActivity
@@ -83,7 +83,7 @@ public class SendHbActivity
   private String E = "";
   public int a;
   public long a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new xbk(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new xhb(this);
   private Context jdField_a_of_type_AndroidContentContext;
   Intent jdField_a_of_type_AndroidContentIntent = new Intent();
   private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
@@ -97,7 +97,7 @@ public class SendHbActivity
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new xbo(this);
+  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new xhf(this);
   private Intent jdField_b_of_type_AndroidContentIntent;
   private View jdField_b_of_type_AndroidViewView;
   public String b;
@@ -237,19 +237,6 @@ public class SendHbActivity
     return localArrayList1;
   }
   
-  private void a(int paramInt)
-  {
-    FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-    if (this.jdField_a_of_type_AndroidSupportV4AppFragment != null)
-    {
-      ((FrameLayout)findViewById(2131368189)).setVisibility(0);
-      localFragmentTransaction.add(2131368189, this.jdField_a_of_type_AndroidSupportV4AppFragment);
-      localFragmentTransaction.commit();
-    }
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131362854);
-    new ImmersionBar(this, paramInt, this.jdField_c_of_type_AndroidViewView);
-  }
-  
   private void a(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView == null)
@@ -274,6 +261,19 @@ public class SendHbActivity
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.qwallet.report");
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+  }
+  
+  private void b(int paramInt)
+  {
+    FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
+    if (this.jdField_a_of_type_AndroidSupportV4AppFragment != null)
+    {
+      ((FrameLayout)findViewById(2131368189)).setVisibility(0);
+      localFragmentTransaction.add(2131368189, this.jdField_a_of_type_AndroidSupportV4AppFragment);
+      localFragmentTransaction.commit();
+    }
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131362859);
+    new ImmersionBar(this, paramInt, this.jdField_c_of_type_AndroidViewView);
   }
   
   private void c()
@@ -324,7 +324,7 @@ public class SendHbActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362840);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362845);
     this.jdField_b_of_type_AndroidViewView = findViewById(2131368190);
     this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368191));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
@@ -348,10 +348,16 @@ public class SendHbActivity
   
   private void f()
   {
-    if (this.r.equals("1"))
+    if (this.r.equals("1")) {
+      if (!this.jdField_a_of_type_OrgJsonJSONObject.has("hb_from_type")) {
+        break label44;
+      }
+    }
+    label44:
+    for (this.D = this.jdField_a_of_type_OrgJsonJSONObject.optString("hb_from_type");; this.D = "1")
     {
-      this.D = "1";
       finish();
+      return;
     }
   }
   
@@ -363,11 +369,14 @@ public class SendHbActivity
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("total_amount");
       this.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("total_num");
-      this.D = "1";
-      new SendHbLogic(this).a(this.jdField_a_of_type_OrgJsonJSONObject);
-      return;
+      if (this.jdField_a_of_type_OrgJsonJSONObject.has("hb_from_type")) {}
+      for (this.D = this.jdField_a_of_type_OrgJsonJSONObject.optString("hb_from_type");; this.D = "1")
+      {
+        new SendHbLogic(this).a(this.jdField_a_of_type_OrgJsonJSONObject);
+        return;
+      }
     }
-    int i1 = getResources().getColor(2131493717);
+    int i1 = getResources().getColor(2131493719);
     if ((this.jdField_b_of_type_Boolean) && ("h5".equals(this.v)) && (this.jdField_a_of_type_Int == 2048))
     {
       new SendHbLogic(this).a("", this.w);
@@ -412,7 +421,7 @@ public class SendHbActivity
     this.jdField_a_of_type_AndroidSupportV4AppFragment.setArguments(paramJSONObject);
     for (;;)
     {
-      a(i1);
+      b(i1);
       return;
       i2 = this.jdField_a_of_type_Int;
       break;
@@ -463,7 +472,7 @@ public class SendHbActivity
           paramJSONObject = new Bundle();
           paramJSONObject.putString("theme_type", this.jdField_c_of_type_JavaLangString);
           if ((!"64".equals(String.valueOf(this.jdField_a_of_type_Int))) && ((this.jdField_a_of_type_Int & 0x40) <= 0)) {
-            break label795;
+            break label823;
           }
           this.jdField_c_of_type_Boolean = true;
           this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_AndroidContentIntent.getStringExtra("group_id");
@@ -472,7 +481,7 @@ public class SendHbActivity
           paramJSONObject.putString("group_count", this.jdField_a_of_type_JavaLangString);
           paramJSONObject.putString("channel", String.valueOf(this.jdField_a_of_type_Int));
           if ((!"2".equals(this.h)) && (!"3".equals(this.h))) {
-            break label859;
+            break label887;
           }
           bool = true;
           paramJSONObject.putBoolean("isGroupThemeHb", bool);
@@ -487,8 +496,8 @@ public class SendHbActivity
         finish();
         return;
       }
-      label795:
-      label859:
+      label823:
+      label887:
       continue;
       paramJSONObject = new Bundle();
       paramJSONObject.putString("channel", String.valueOf(this.jdField_a_of_type_Int));
@@ -640,7 +649,7 @@ public class SendHbActivity
     this.jdField_a_of_type_AndroidContentIntent.putExtra("hb_id", this.y);
     this.jdField_a_of_type_AndroidContentIntent.putExtra("send_uin", this.w);
     this.jdField_a_of_type_AndroidContentIntent.putExtra("hb_type", "1");
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_text", getString(2131431538));
+    this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_text", getString(2131431548));
     if (this.jdField_c_of_type_Boolean) {
       this.jdField_a_of_type_AndroidContentIntent.putExtra("item", 1);
     }
@@ -649,27 +658,29 @@ public class SendHbActivity
     ForwardBaseOption.a(this, this.jdField_a_of_type_AndroidContentIntent);
   }
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    if (paramBundle == null) {
-      new Bundle();
-    }
-    paramBundle = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      paramBundle.put("resultCode", paramInt);
-      label29:
+      localJSONObject.put("resultCode", paramInt);
+      label17:
       Intent localIntent = new Intent();
       localIntent.putExtra("callbackSn", this.m);
       localIntent.putExtra("PayInvokerId", 5);
-      localIntent.putExtra("result", paramBundle.toString());
+      localIntent.putExtra("result", localJSONObject.toString());
       setResult(-1, localIntent);
       return;
     }
     catch (Exception localException)
     {
-      break label29;
+      break label17;
     }
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    a(-1);
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
@@ -756,7 +767,7 @@ public class SendHbActivity
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    DialogUtil.a(this, 230, null, paramString1, paramString2, paramString3, new xbm(this), new xbn(this)).show();
+    DialogUtil.a(this, 230, null, paramString1, paramString2, paramString3, new xhd(this), new xhe(this)).show();
   }
   
   public void a(String paramString, ArrayList paramArrayList)
@@ -767,10 +778,10 @@ public class SendHbActivity
     }
     for (;;)
     {
-      localIntent.putExtra("param_title", getString(2131431531));
+      localIntent.putExtra("param_title", getString(2131431541));
       localIntent.putExtra("param_min", 0);
-      localIntent.putExtra("param_done_button_wording", getString(2131435966));
-      localIntent.putExtra("param_done_button_highlight_wording", getString(2131435967));
+      localIntent.putExtra("param_done_button_wording", getString(2131435984));
+      localIntent.putExtra("param_done_button_highlight_wording", getString(2131435985));
       localIntent.putExtra("param_max", 5);
       localIntent.putExtra("param_entrance", 25);
       if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
@@ -867,11 +878,6 @@ public class SendHbActivity
     localHashMap.put("comeForm", "2");
     localHashMap.put("appInfo", this.n);
     return localHashMap;
-  }
-  
-  public void b(int paramInt, Bundle paramBundle)
-  {
-    a(-1, null);
   }
   
   public void b(CharSequence paramCharSequence)
@@ -1134,7 +1140,7 @@ public class SendHbActivity
       {
         try
         {
-          setContentView(2130969828);
+          setContentView(2130969839);
           d();
           f(this.jdField_a_of_type_OrgJsonJSONObject);
           e();
@@ -1156,16 +1162,24 @@ public class SendHbActivity
   
   protected void doOnDestroy()
   {
-    this.mSystemBarComp = this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact;
-    if (this.jdField_a_of_type_Long != 0L) {
-      VACDReportUtil.endReport(this.jdField_a_of_type_Long, "hongbao.wrap.destroy", null, 0, null);
+    try
+    {
+      this.mSystemBarComp = this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact;
+      if (this.jdField_a_of_type_Long != 0L) {
+        VACDReportUtil.endReport(this.jdField_a_of_type_Long, "hongbao.wrap.destroy", null, 0, null);
+      }
+      if (this.jdField_b_of_type_AndroidContentBroadcastReceiver != null) {
+        unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
+      }
+      this.jdField_b_of_type_AndroidContentBroadcastReceiver = null;
+      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      super.doOnDestroy();
+      return;
     }
-    if (this.jdField_b_of_type_AndroidContentBroadcastReceiver != null) {
-      unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    this.jdField_b_of_type_AndroidContentBroadcastReceiver = null;
-    unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    super.doOnDestroy();
   }
   
   protected void doOnPause()
@@ -1186,17 +1200,17 @@ public class SendHbActivity
   protected void e(JSONObject paramJSONObject)
   {
     // Byte code:
-    //   0: ldc_w 652
+    //   0: ldc_w 654
     //   3: iconst_2
-    //   4: new 602	java/lang/StringBuilder
+    //   4: new 608	java/lang/StringBuilder
     //   7: dup
-    //   8: invokespecial 603	java/lang/StringBuilder:<init>	()V
+    //   8: invokespecial 609	java/lang/StringBuilder:<init>	()V
     //   11: ldc_w 1186
-    //   14: invokevirtual 610	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: invokevirtual 616	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   17: aload_1
     //   18: invokevirtual 988	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 611	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: invokestatic 659	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   21: invokevirtual 617	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   24: invokestatic 661	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   27: aload_1
     //   28: ifnonnull +4 -> 32
     //   31: return
@@ -1204,13 +1218,13 @@ public class SendHbActivity
     //   35: dup
     //   36: aload_1
     //   37: ldc_w 1190
-    //   40: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   40: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   43: invokestatic 1195	android/net/Uri:decode	(Ljava/lang/String;)Ljava/lang/String;
     //   46: invokespecial 1196	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
     //   49: astore_2
     //   50: aload_1
-    //   51: ldc_w 863
-    //   54: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   51: ldc_w 865
+    //   54: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   57: astore_3
     //   58: aload_3
     //   59: invokestatic 144	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1225,7 +1239,7 @@ public class SendHbActivity
     //   78: pop
     //   79: aload_1
     //   80: ldc_w 1203
-    //   83: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   86: astore_3
     //   87: aload_3
     //   88: invokestatic 144	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1240,7 +1254,7 @@ public class SendHbActivity
     //   107: pop
     //   108: aload_1
     //   109: ldc_w 1207
-    //   112: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   112: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   115: astore_3
     //   116: aload_3
     //   117: invokestatic 144	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1255,7 +1269,7 @@ public class SendHbActivity
     //   136: pop
     //   137: aload_1
     //   138: ldc_w 1211
-    //   141: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   141: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   144: astore_1
     //   145: aload_1
     //   146: invokestatic 144	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1283,31 +1297,31 @@ public class SendHbActivity
     //   190: invokevirtual 449	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   193: pop
     //   194: aload_1
-    //   195: ldc_w 811
+    //   195: ldc_w 810
     //   198: iconst_0
     //   199: invokevirtual 456	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   202: pop
     //   203: aload_1
-    //   204: ldc_w 737
+    //   204: ldc_w 739
     //   207: ldc_w 1216
     //   210: invokevirtual 449	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   213: pop
     //   214: aload_1
-    //   215: ldc_w 726
+    //   215: ldc_w 728
     //   218: aload_3
     //   219: invokevirtual 449	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   222: pop
-    //   223: ldc_w 652
+    //   223: ldc_w 654
     //   226: iconst_2
-    //   227: new 602	java/lang/StringBuilder
+    //   227: new 608	java/lang/StringBuilder
     //   230: dup
-    //   231: invokespecial 603	java/lang/StringBuilder:<init>	()V
+    //   231: invokespecial 609	java/lang/StringBuilder:<init>	()V
     //   234: ldc_w 1218
-    //   237: invokevirtual 610	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: invokevirtual 616	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   240: aload_1
     //   241: invokevirtual 988	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   244: invokevirtual 611	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   247: invokestatic 659	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   244: invokevirtual 617	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   247: invokestatic 661	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   250: new 128	android/content/Intent
     //   253: dup
     //   254: invokespecial 129	android/content/Intent:<init>	()V
@@ -1315,26 +1329,26 @@ public class SendHbActivity
     //   258: aload_2
     //   259: ldc_w 471
     //   262: aload_0
-    //   263: getfield 813	com/tencent/mobileqq/activity/qwallet/SendHbActivity:m	Ljava/lang/String;
-    //   266: invokevirtual 730	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   263: getfield 812	com/tencent/mobileqq/activity/qwallet/SendHbActivity:m	Ljava/lang/String;
+    //   266: invokevirtual 732	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   269: pop
     //   270: aload_2
     //   271: ldc_w 418
     //   274: iconst_5
-    //   275: invokevirtual 735	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   275: invokevirtual 737	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   278: pop
     //   279: aload_2
-    //   280: ldc_w 732
+    //   280: ldc_w 734
     //   283: aload_1
     //   284: invokevirtual 469	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   287: invokevirtual 730	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   287: invokevirtual 732	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   290: pop
     //   291: aload_0
     //   292: iconst_m1
     //   293: aload_2
-    //   294: invokevirtual 817	com/tencent/mobileqq/activity/qwallet/SendHbActivity:setResult	(ILandroid/content/Intent;)V
+    //   294: invokevirtual 816	com/tencent/mobileqq/activity/qwallet/SendHbActivity:setResult	(ILandroid/content/Intent;)V
     //   297: aload_0
-    //   298: invokevirtual 512	com/tencent/mobileqq/activity/qwallet/SendHbActivity:finish	()V
+    //   298: invokevirtual 523	com/tencent/mobileqq/activity/qwallet/SendHbActivity:finish	()V
     //   301: return
     //   302: astore_1
     //   303: aload_1
@@ -1364,32 +1378,32 @@ public class SendHbActivity
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     // Byte code:
-    //   0: ldc_w 652
+    //   0: ldc_w 654
     //   3: iconst_2
-    //   4: new 602	java/lang/StringBuilder
+    //   4: new 608	java/lang/StringBuilder
     //   7: dup
-    //   8: invokespecial 603	java/lang/StringBuilder:<init>	()V
+    //   8: invokespecial 609	java/lang/StringBuilder:<init>	()V
     //   11: ldc_w 1222
-    //   14: invokevirtual 610	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: invokevirtual 616	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   17: iload_1
-    //   18: invokevirtual 607	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   18: invokevirtual 613	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   21: ldc_w 1224
-    //   24: invokevirtual 610	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: invokevirtual 616	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: iload_2
-    //   28: invokevirtual 607	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   31: invokevirtual 611	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   34: invokestatic 659	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   37: ldc_w 652
+    //   28: invokevirtual 613	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   31: invokevirtual 617	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   34: invokestatic 661	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   37: ldc_w 654
     //   40: iconst_2
-    //   41: new 602	java/lang/StringBuilder
+    //   41: new 608	java/lang/StringBuilder
     //   44: dup
-    //   45: invokespecial 603	java/lang/StringBuilder:<init>	()V
+    //   45: invokespecial 609	java/lang/StringBuilder:<init>	()V
     //   48: ldc_w 1226
-    //   51: invokevirtual 610	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 616	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: aload_3
     //   55: invokevirtual 988	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 611	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokestatic 659	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   58: invokevirtual 617	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   61: invokestatic 661	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   64: iload_1
     //   65: sipush 1024
     //   68: if_icmpne +48 -> 116
@@ -1403,28 +1417,28 @@ public class SendHbActivity
     //   82: invokespecial 1228	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	(Landroid/content/Intent;)Ljava/util/ArrayList;
     //   85: astore 5
     //   87: aload_0
-    //   88: getfield 294	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_AndroidSupportV4AppFragment	Landroid/support/v4/app/Fragment;
+    //   88: getfield 375	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_AndroidSupportV4AppFragment	Landroid/support/v4/app/Fragment;
     //   91: ifnull +25 -> 116
     //   94: aload_0
-    //   95: getfield 294	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_AndroidSupportV4AppFragment	Landroid/support/v4/app/Fragment;
-    //   98: instanceof 589
+    //   95: getfield 375	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_AndroidSupportV4AppFragment	Landroid/support/v4/app/Fragment;
+    //   98: instanceof 595
     //   101: ifeq +15 -> 116
     //   104: aload_0
-    //   105: getfield 294	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_AndroidSupportV4AppFragment	Landroid/support/v4/app/Fragment;
-    //   108: checkcast 589	com/tencent/mobileqq/activity/qwallet/fragment/CommonHbFragment
+    //   105: getfield 375	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_AndroidSupportV4AppFragment	Landroid/support/v4/app/Fragment;
+    //   108: checkcast 595	com/tencent/mobileqq/activity/qwallet/fragment/CommonHbFragment
     //   111: aload 5
     //   113: invokevirtual 1231	com/tencent/mobileqq/activity/qwallet/fragment/CommonHbFragment:a	(Ljava/util/ArrayList;)V
     //   116: aload_0
     //   117: iconst_0
-    //   118: putfield 826	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_Boolean	Z
+    //   118: putfield 828	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_Boolean	Z
     //   121: aload_3
-    //   122: ifnull +1119 -> 1241
+    //   122: ifnull +1152 -> 1274
     //   125: iload_2
     //   126: iconst_m1
-    //   127: if_icmpne +1114 -> 1241
+    //   127: if_icmpne +1147 -> 1274
     //   130: aload_3
-    //   131: ldc_w 732
-    //   134: invokevirtual 634	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   131: ldc_w 734
+    //   134: invokevirtual 640	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   137: astore 8
     //   139: aconst_null
     //   140: astore_3
@@ -1436,33 +1450,33 @@ public class SendHbActivity
     //   154: new 442	org/json/JSONObject
     //   157: dup
     //   158: aload 8
-    //   160: invokespecial 637	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   160: invokespecial 643	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   163: astore 5
-    //   165: ldc_w 652
+    //   165: ldc_w 654
     //   168: iconst_2
-    //   169: new 602	java/lang/StringBuilder
+    //   169: new 608	java/lang/StringBuilder
     //   172: dup
-    //   173: invokespecial 603	java/lang/StringBuilder:<init>	()V
+    //   173: invokespecial 609	java/lang/StringBuilder:<init>	()V
     //   176: ldc_w 1236
-    //   179: invokevirtual 610	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: invokevirtual 616	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: aload 5
     //   184: invokevirtual 988	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   187: invokevirtual 611	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   190: invokestatic 659	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   187: invokevirtual 617	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   190: invokestatic 661	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   193: aload 5
     //   195: ifnull +150 -> 345
     //   198: aload 5
-    //   200: ldc_w 737
-    //   203: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   200: ldc_w 739
+    //   203: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   206: astore 6
     //   208: aload 5
-    //   210: ldc_w 811
+    //   210: ldc_w 810
     //   213: iconst_m1
     //   214: invokevirtual 1000	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   217: istore 4
     //   219: aload 5
-    //   221: ldc_w 726
-    //   224: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   221: ldc_w 728
+    //   224: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   227: astore 7
     //   229: aload 6
     //   231: astore_3
@@ -1480,15 +1494,15 @@ public class SendHbActivity
     //   254: new 442	org/json/JSONObject
     //   257: dup
     //   258: aload 7
-    //   260: invokespecial 637	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   260: invokespecial 643	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   263: astore_3
     //   264: iload 4
     //   266: istore_2
     //   267: aload_0
-    //   268: getfield 858	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog	Lcooperation/qwallet/plugin/QWalletPayProgressDialog;
+    //   268: getfield 860	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_CooperationQwalletPluginQWalletPayProgressDialog	Lcooperation/qwallet/plugin/QWalletPayProgressDialog;
     //   271: invokevirtual 1239	cooperation/qwallet/plugin/QWalletPayProgressDialog:dismiss	()V
     //   274: aload_0
-    //   275: getfield 547	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_Int	I
+    //   275: getfield 553	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_Int	I
     //   278: invokestatic 102	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   281: astore 7
     //   283: iload_2
@@ -1518,11 +1532,11 @@ public class SendHbActivity
     //   353: astore_3
     //   354: goto -87 -> 267
     //   357: aload_0
-    //   358: getfield 853	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_e_of_type_Boolean	Z
+    //   358: getfield 855	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_e_of_type_Boolean	Z
     //   361: ifeq +262 -> 623
     //   364: aload_0
     //   365: iconst_0
-    //   366: putfield 853	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_e_of_type_Boolean	Z
+    //   366: putfield 855	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_e_of_type_Boolean	Z
     //   369: aload_0
     //   370: iconst_m1
     //   371: putfield 80	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_c_of_type_Int	I
@@ -1543,32 +1557,32 @@ public class SendHbActivity
     //   402: aload_0
     //   403: getfield 491	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
     //   406: iconst_0
-    //   407: invokevirtual 516	android/view/View:setVisibility	(I)V
+    //   407: invokevirtual 527	android/view/View:setVisibility	(I)V
     //   410: aload_0
     //   411: getfield 494	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
     //   414: iconst_0
-    //   415: invokevirtual 516	android/view/View:setVisibility	(I)V
+    //   415: invokevirtual 527	android/view/View:setVisibility	(I)V
     //   418: aload_0
-    //   419: getfield 316	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_c_of_type_AndroidViewView	Landroid/view/View;
+    //   419: getfield 393	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_c_of_type_AndroidViewView	Landroid/view/View;
     //   422: ifnull +13 -> 435
     //   425: aload_0
-    //   426: getfield 316	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_c_of_type_AndroidViewView	Landroid/view/View;
-    //   429: ldc_w 625
-    //   432: invokevirtual 553	android/view/View:setBackgroundColor	(I)V
+    //   426: getfield 393	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_c_of_type_AndroidViewView	Landroid/view/View;
+    //   429: ldc_w 631
+    //   432: invokevirtual 559	android/view/View:setBackgroundColor	(I)V
     //   435: aload_0
     //   436: aload_3
-    //   437: ldc_w 748
-    //   440: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   437: ldc_w 750
+    //   440: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   443: putfield 135	com/tencent/mobileqq/activity/qwallet/SendHbActivity:y	Ljava/lang/String;
     //   446: aload_0
     //   447: aload_0
-    //   448: getfield 386	com/tencent/mobileqq/activity/qwallet/SendHbActivity:w	Ljava/lang/String;
+    //   448: getfield 351	com/tencent/mobileqq/activity/qwallet/SendHbActivity:w	Ljava/lang/String;
     //   451: aload_0
-    //   452: invokevirtual 823	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	()I
+    //   452: invokevirtual 825	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	()I
     //   455: ldc_w 1245
     //   458: ldc 70
     //   460: ldc 70
-    //   462: invokevirtual 821	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   462: invokevirtual 823	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   465: return
     //   466: ldc 106
     //   468: aload 7
@@ -1588,12 +1602,12 @@ public class SendHbActivity
     //   503: ifne +39 -> 542
     //   506: aload_0
     //   507: getfield 1247	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_b_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   510: ifnull +741 -> 1251
+    //   510: ifnull +774 -> 1284
     //   513: aload_0
     //   514: getfield 1247	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_b_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
     //   517: astore_3
     //   518: aload 7
-    //   520: ldc_w 698
+    //   520: ldc_w 700
     //   523: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   526: ifeq +10 -> 536
     //   529: aload_0
@@ -1621,7 +1635,7 @@ public class SendHbActivity
     //   572: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   575: ifne +14 -> 589
     //   578: aload 7
-    //   580: ldc_w 696
+    //   580: ldc_w 698
     //   583: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   586: ifeq +9 -> 595
     //   589: aload_0
@@ -1642,12 +1656,12 @@ public class SendHbActivity
     //   616: invokevirtual 795	com/tencent/mobileqq/activity/qwallet/SendHbActivity:getString	(I)Ljava/lang/String;
     //   619: invokevirtual 961	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	(Ljava/lang/CharSequence;)V
     //   622: return
-    //   623: ldc_w 671
+    //   623: ldc_w 673
     //   626: aload 7
     //   628: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   631: ifne +13 -> 644
     //   634: aload_0
-    //   635: getfield 547	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_Int	I
+    //   635: getfield 553	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_a_of_type_Int	I
     //   638: bipush 64
     //   640: iand
     //   641: ifle +71 -> 712
@@ -1659,14 +1673,14 @@ public class SendHbActivity
     //   655: ldc_w 1259
     //   658: aload_3
     //   659: ldc_w 1259
-    //   662: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   665: invokevirtual 939	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   662: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   665: invokevirtual 941	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   668: pop
     //   669: aload 5
-    //   671: ldc_w 520
+    //   671: ldc_w 529
     //   674: aload_0
     //   675: getfield 74	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   678: invokevirtual 939	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   678: invokevirtual 941	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   681: pop
     //   682: aload_0
     //   683: iconst_m1
@@ -1676,9 +1690,9 @@ public class SendHbActivity
     //   688: aload 5
     //   690: invokevirtual 469	org/json/JSONObject:toString	()Ljava/lang/String;
     //   693: invokevirtual 1261	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	(ILjava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   696: invokevirtual 817	com/tencent/mobileqq/activity/qwallet/SendHbActivity:setResult	(ILandroid/content/Intent;)V
+    //   696: invokevirtual 816	com/tencent/mobileqq/activity/qwallet/SendHbActivity:setResult	(ILandroid/content/Intent;)V
     //   699: aload_0
-    //   700: invokevirtual 512	com/tencent/mobileqq/activity/qwallet/SendHbActivity:finish	()V
+    //   700: invokevirtual 523	com/tencent/mobileqq/activity/qwallet/SendHbActivity:finish	()V
     //   703: return
     //   704: astore_3
     //   705: aload_3
@@ -1692,12 +1706,12 @@ public class SendHbActivity
     //   723: aload_0
     //   724: aload_3
     //   725: ldc_w 1259
-    //   728: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   728: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   731: invokespecial 1265	com/tencent/mobileqq/activity/qwallet/SendHbActivity:c	(Ljava/lang/String;)V
     //   734: return
     //   735: aload_3
     //   736: ldc_w 1190
-    //   739: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   739: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   742: astore 5
     //   744: new 1188	java/lang/StringBuffer
     //   747: dup
@@ -1721,17 +1735,17 @@ public class SendHbActivity
     //   784: getfield 231	com/tencent/mobileqq/activity/qwallet/SendHbActivity:h	Ljava/lang/String;
     //   787: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   790: ifne +42 -> 832
-    //   793: ldc_w 694
+    //   793: ldc_w 696
     //   796: aload_0
     //   797: getfield 231	com/tencent/mobileqq/activity/qwallet/SendHbActivity:h	Ljava/lang/String;
     //   800: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   803: ifne +29 -> 832
-    //   806: ldc_w 704
+    //   806: ldc_w 706
     //   809: aload_0
     //   810: getfield 231	com/tencent/mobileqq/activity/qwallet/SendHbActivity:h	Ljava/lang/String;
     //   813: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   816: ifne +16 -> 832
-    //   819: ldc_w 690
+    //   819: ldc_w 692
     //   822: aload_0
     //   823: getfield 231	com/tencent/mobileqq/activity/qwallet/SendHbActivity:h	Ljava/lang/String;
     //   826: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
@@ -1760,14 +1774,14 @@ public class SendHbActivity
     //   878: pop
     //   879: aload_0
     //   880: aload_0
-    //   881: getfield 386	com/tencent/mobileqq/activity/qwallet/SendHbActivity:w	Ljava/lang/String;
+    //   881: getfield 351	com/tencent/mobileqq/activity/qwallet/SendHbActivity:w	Ljava/lang/String;
     //   884: aload_0
-    //   885: invokevirtual 823	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	()I
+    //   885: invokevirtual 825	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	()I
     //   888: ldc_w 1279
     //   891: aload 6
     //   893: invokevirtual 1214	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   896: aconst_null
-    //   897: invokevirtual 821	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   897: invokevirtual 823	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   900: aload 5
     //   902: ifnull -582 -> 320
     //   905: aload_0
@@ -1784,8 +1798,8 @@ public class SendHbActivity
     //   929: invokeinterface 1282 2 0
     //   934: ifeq +85 -> 1019
     //   937: aload_3
-    //   938: ldc_w 863
-    //   941: invokevirtual 523	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   938: ldc_w 865
+    //   941: invokevirtual 520	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   944: astore 5
     //   946: ldc 110
     //   948: aload 7
@@ -1820,7 +1834,7 @@ public class SendHbActivity
     //   1013: invokevirtual 1285	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   1016: goto -51 -> 965
     //   1019: aload 7
-    //   1021: ldc_w 698
+    //   1021: ldc_w 700
     //   1024: invokevirtual 234	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1027: ifeq +9 -> 1036
     //   1030: aload_0
@@ -1834,7 +1848,7 @@ public class SendHbActivity
     //   1042: iload_2
     //   1043: ifle +158 -> 1201
     //   1046: aload_0
-    //   1047: getfield 853	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_e_of_type_Boolean	Z
+    //   1047: getfield 855	com/tencent/mobileqq/activity/qwallet/SendHbActivity:jdField_e_of_type_Boolean	Z
     //   1050: ifeq +51 -> 1101
     //   1053: ldc 106
     //   1055: aload 7
@@ -1849,16 +1863,16 @@ public class SendHbActivity
     //   1077: invokespecial 129	android/content/Intent:<init>	()V
     //   1080: astore_3
     //   1081: aload_3
-    //   1082: ldc_w 737
+    //   1082: ldc_w 739
     //   1085: aload 8
-    //   1087: invokevirtual 730	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   1087: invokevirtual 732	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   1090: pop
     //   1091: aload_0
     //   1092: iconst_m1
     //   1093: aload_3
-    //   1094: invokevirtual 817	com/tencent/mobileqq/activity/qwallet/SendHbActivity:setResult	(ILandroid/content/Intent;)V
+    //   1094: invokevirtual 816	com/tencent/mobileqq/activity/qwallet/SendHbActivity:setResult	(ILandroid/content/Intent;)V
     //   1097: aload_0
-    //   1098: invokevirtual 512	com/tencent/mobileqq/activity/qwallet/SendHbActivity:finish	()V
+    //   1098: invokevirtual 523	com/tencent/mobileqq/activity/qwallet/SendHbActivity:finish	()V
     //   1101: aload_0
     //   1102: ldc_w 1292
     //   1105: invokevirtual 795	com/tencent/mobileqq/activity/qwallet/SendHbActivity:getString	(I)Ljava/lang/String;
@@ -1874,15 +1888,15 @@ public class SendHbActivity
     //   1124: aload_0
     //   1125: ldc_w 1294
     //   1128: invokevirtual 795	com/tencent/mobileqq/activity/qwallet/SendHbActivity:getString	(I)Ljava/lang/String;
-    //   1131: new 1296	xbl
+    //   1131: new 1296	xhc
     //   1134: dup
     //   1135: aload_0
-    //   1136: invokespecial 1297	xbl:<init>	(Lcom/tencent/mobileqq/activity/qwallet/SendHbActivity;)V
+    //   1136: invokespecial 1297	xhc:<init>	(Lcom/tencent/mobileqq/activity/qwallet/SendHbActivity;)V
     //   1139: aconst_null
-    //   1140: invokestatic 887	com/tencent/mobileqq/utils/DialogUtil:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   1143: invokevirtual 890	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
+    //   1140: invokestatic 889	com/tencent/mobileqq/utils/DialogUtil:a	(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
+    //   1143: invokevirtual 892	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
     //   1146: aload_0
-    //   1147: invokespecial 323	com/tencent/mobileqq/activity/qwallet/SendHbActivity:f	()V
+    //   1147: invokespecial 283	com/tencent/mobileqq/activity/qwallet/SendHbActivity:f	()V
     //   1150: return
     //   1151: aload_0
     //   1152: getfield 249	com/tencent/mobileqq/activity/qwallet/SendHbActivity:k	Ljava/lang/String;
@@ -1910,47 +1924,65 @@ public class SendHbActivity
     //   1202: bipush 246
     //   1204: if_icmpge +32 -> 1236
     //   1207: aload_0
-    //   1208: new 602	java/lang/StringBuilder
+    //   1208: new 608	java/lang/StringBuilder
     //   1211: dup
-    //   1212: invokespecial 603	java/lang/StringBuilder:<init>	()V
+    //   1212: invokespecial 609	java/lang/StringBuilder:<init>	()V
     //   1215: ldc_w 1299
-    //   1218: invokevirtual 610	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1218: invokevirtual 616	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1221: iload_2
-    //   1222: invokevirtual 607	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1225: invokevirtual 611	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1222: invokevirtual 613	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1225: invokevirtual 617	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1228: invokevirtual 961	com/tencent/mobileqq/activity/qwallet/SendHbActivity:a	(Ljava/lang/CharSequence;)V
     //   1231: aload_0
-    //   1232: invokespecial 323	com/tencent/mobileqq/activity/qwallet/SendHbActivity:f	()V
+    //   1232: invokespecial 283	com/tencent/mobileqq/activity/qwallet/SendHbActivity:f	()V
     //   1235: return
-    //   1236: aload_0
-    //   1237: invokespecial 323	com/tencent/mobileqq/activity/qwallet/SendHbActivity:f	()V
-    //   1240: return
-    //   1241: aload_0
-    //   1242: invokespecial 323	com/tencent/mobileqq/activity/qwallet/SendHbActivity:f	()V
-    //   1245: return
-    //   1246: astore 7
-    //   1248: goto -974 -> 274
-    //   1251: goto -733 -> 518
+    //   1236: new 128	android/content/Intent
+    //   1239: dup
+    //   1240: invokespecial 129	android/content/Intent:<init>	()V
+    //   1243: astore_3
+    //   1244: aload_3
+    //   1245: ldc_w 418
+    //   1248: iconst_5
+    //   1249: invokevirtual 737	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   1252: pop
+    //   1253: aload_3
+    //   1254: ldc_w 734
+    //   1257: aload 8
+    //   1259: invokevirtual 732	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   1262: pop
+    //   1263: aload_0
+    //   1264: iconst_m1
+    //   1265: aload_3
+    //   1266: invokevirtual 816	com/tencent/mobileqq/activity/qwallet/SendHbActivity:setResult	(ILandroid/content/Intent;)V
+    //   1269: aload_0
+    //   1270: invokespecial 283	com/tencent/mobileqq/activity/qwallet/SendHbActivity:f	()V
+    //   1273: return
+    //   1274: aload_0
+    //   1275: invokespecial 283	com/tencent/mobileqq/activity/qwallet/SendHbActivity:f	()V
+    //   1278: return
+    //   1279: astore 7
+    //   1281: goto -1007 -> 274
+    //   1284: goto -766 -> 518
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1254	0	this	SendHbActivity
-    //   0	1254	1	paramInt1	int
-    //   0	1254	2	paramInt2	int
-    //   0	1254	3	paramIntent	Intent
+    //   0	1287	0	this	SendHbActivity
+    //   0	1287	1	paramInt1	int
+    //   0	1287	2	paramInt2	int
+    //   0	1287	3	paramIntent	Intent
     //   217	123	4	i1	int
     //   85	135	5	localObject1	Object
     //   321	3	5	localException1	Exception
     //   329	683	5	localObject2	Object
     //   206	980	6	localObject3	Object
     //   227	839	7	str1	String
-    //   1246	1	7	localException2	Exception
-    //   137	949	8	str2	String
+    //   1279	1	7	localException2	Exception
+    //   137	1121	8	str2	String
     // Exception table:
     //   from	to	target	type
     //   154	165	321	java/lang/Exception
     //   254	264	334	java/lang/Exception
     //   653	682	704	org/json/JSONException
-    //   267	274	1246	java/lang/Exception
+    //   267	274	1279	java/lang/Exception
   }
   
   public void onClick(View paramView)
@@ -1964,14 +1996,14 @@ public class SendHbActivity
     while (i1 != 2131368191) {
       return;
     }
-    String str = getString(2131431536) + getString(2131431537);
-    paramView = getString(2131431535);
+    String str = getString(2131431546) + getString(2131431547);
+    paramView = getString(2131431545);
     if (this.jdField_c_of_type_Boolean)
     {
-      str = getString(2131431536);
-      paramView = getString(2131431534);
+      str = getString(2131431546);
+      paramView = getString(2131431544);
     }
-    a(str, paramView, getString(2131431533));
+    a(str, paramView, getString(2131431543));
     if (this.jdField_d_of_type_Boolean)
     {
       a(this.w, a(), "hongbao.wrapped.keyback", "", "");
@@ -1990,21 +2022,24 @@ public class SendHbActivity
         if ((this.jdField_a_of_type_AndroidSupportV4AppFragment instanceof CommonHbFragment))
         {
           if (this.jdField_b_of_type_AndroidViewView.getVisibility() != 8) {
-            break label128;
+            break label135;
           }
           ((CommonHbFragment)this.jdField_a_of_type_AndroidSupportV4AppFragment).b();
         }
       }
       for (;;)
       {
-        if ((this.jdField_a_of_type_AndroidSupportV4AppFragment instanceof ThemeHbFragment)) {
-          ((ThemeHbFragment)this.jdField_a_of_type_AndroidSupportV4AppFragment).a();
+        if ((this.jdField_a_of_type_AndroidSupportV4AppFragment instanceof ThemeHbFragment))
+        {
+          a("theme.pack.keyback", 2);
+          a(-1);
+          finish();
         }
         if ((this.jdField_a_of_type_AndroidSupportV4AppFragment instanceof QzoneHbFragment)) {
           ((QzoneHbFragment)this.jdField_a_of_type_AndroidSupportV4AppFragment).a();
         }
         return true;
-        label128:
+        label135:
         this.jdField_a_of_type_AndroidWidgetImageButton.performClick();
       }
     }

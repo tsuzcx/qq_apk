@@ -1,22 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
 
 public class aexu
-  implements View.OnTouchListener
+  extends DataSetObserver
 {
-  public aexu(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aexu(PlayerInvitePanel paramPlayerInvitePanel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onChanged()
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (!ShortVideoCommentsView.a(this.a)) {}
-      this.a.l();
-      ShortVideoCommentsView.b(this.a);
-    }
-    return false;
+    super.onChanged();
+    this.a.a();
   }
 }
 

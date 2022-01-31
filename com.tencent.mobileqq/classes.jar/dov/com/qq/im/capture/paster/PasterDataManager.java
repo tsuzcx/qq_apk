@@ -6,18 +6,22 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anmv;
-import anmw;
-import anmx;
+import anvi;
+import anvj;
+import anvk;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
 import com.tencent.biz.qqstory.model.lbs.LbsManager;
 import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestCallback;
 import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestSession;
 import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.troop.data.TroopBarPOI;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
@@ -68,8 +72,13 @@ public class PasterDataManager
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession = null;
-    this.jdField_a_of_type_JavaLangRunnable = new anmv(this);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback = new anmw(this);
+    this.jdField_a_of_type_JavaLangRunnable = new anvi(this);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback = new anvj(this);
+  }
+  
+  private Context a()
+  {
+    return this.jdField_a_of_type_AndroidContentContext;
   }
   
   private void a(String paramString, boolean paramBoolean)
@@ -105,7 +114,7 @@ public class PasterDataManager
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoDoodle$DoodleFacePanelAdapter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceInfomationFacePackage);
   }
   
-  private void f()
+  private void e()
   {
     Object localObject = (DoodleEmojiManager)SuperManager.a(36);
     ((DoodleEmojiManager)localObject).a(BaseApplicationImpl.getApplication());
@@ -129,7 +138,7 @@ public class PasterDataManager
       }
       return;
       label112:
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843550);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843583);
     }
   }
   
@@ -141,6 +150,14 @@ public class PasterDataManager
   public FacePackage a(String paramString)
   {
     return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoDoodle$DoodleFacePanelAdapter.a(paramString);
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage != null) {
+      return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.f;
+    }
+    return null;
   }
   
   public Collection a()
@@ -181,7 +198,7 @@ public class PasterDataManager
           ((NormalFacePackage)localObject4).jdField_a_of_type_Int = ((DoodleEmojiItem)localObject3).hide;
           ((NormalFacePackage)localObject4).jdField_b_of_type_Int = ((DoodleEmojiItem)localObject3).mask;
           if (("1".equals(((NormalFacePackage)localObject4).jdField_a_of_type_JavaLangString)) && (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))) {
-            ((NormalFacePackage)localObject4).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843426);
+            ((NormalFacePackage)localObject4).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843460);
           }
           this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject4);
           continue;
@@ -209,7 +226,7 @@ public class PasterDataManager
           localItem.g = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_b_of_type_JavaLangString;
           localItem.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.f;
         }
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843550);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843583);
       }
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_Boolean = "1".equals(((DoodleEmojiItem)localObject3).random_position);
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceLocationFacePackage.jdField_a_of_type_Int = ((DoodleEmojiItem)localObject3).hide;
@@ -257,7 +274,7 @@ public class PasterDataManager
   {
     this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoDoodle$DoodleFacePanelAdapter = new EditVideoDoodle.DoodleFacePanelAdapter();
-    f();
+    e();
     Dispatcher localDispatcher = Dispatchers.get();
     PasterDataManager.DoodleEmojiDownloadEventReceiver localDoodleEmojiDownloadEventReceiver = new PasterDataManager.DoodleEmojiDownloadEventReceiver(this);
     this.jdField_a_of_type_DovComQqImCapturePasterPasterDataManager$DoodleEmojiDownloadEventReceiver = localDoodleEmojiDownloadEventReceiver;
@@ -281,14 +298,48 @@ public class PasterDataManager
         if (QLog.isColorLevel()) {
           QLog.d("PasterDataManager", 2, "onPOIListRequestResult " + paramPOIListRequestSession);
         }
-        a(paramPOIListRequestSession, true);
+        QQStoryContext.a();
+        Object localObject = QQStoryContext.a();
+        localObject = SharedPreUtils.v(a(), ((AppInterface)localObject).getCurrentAccountUin());
+        paramList = paramList.iterator();
+        while (paramList.hasNext()) {
+          if (((TroopBarPOI)paramList.next()).a().equals(localObject)) {
+            paramPOIListRequestSession = (LbsManager.POIListRequestSession)localObject;
+          }
+        }
       }
     }
+    for (;;)
+    {
+      a(paramPOIListRequestSession, true);
+      return;
+    }
+  }
+  
+  public void a(BasicLocation paramBasicLocation, boolean paramBoolean)
+  {
+    SLog.b("PasterDataManager", "requestPoiList");
+    LbsManager localLbsManager = (LbsManager)SuperManager.a(9);
+    BasicLocation localBasicLocation = paramBasicLocation;
+    if (paramBasicLocation == null) {
+      localBasicLocation = LbsManager.a();
+    }
+    if (paramBoolean)
+    {
+      localLbsManager.a(localBasicLocation, null, this);
+      return;
+    }
+    localLbsManager.a(localBasicLocation, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession, this);
   }
   
   public void a(String paramString)
   {
     a(paramString, false);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    SosoInterface.a(new anvk(this, "NewStoryTakeVideoActivity", paramBoolean));
   }
   
   public boolean a()
@@ -310,6 +361,11 @@ public class PasterDataManager
     }
   }
   
+  public void b(boolean paramBoolean)
+  {
+    a(null, paramBoolean);
+  }
+  
   public void c()
   {
     a(true);
@@ -317,13 +373,7 @@ public class PasterDataManager
   
   public void d()
   {
-    SosoInterface.a(new anmx(this, "NewStoryTakeVideoActivity"));
-  }
-  
-  public void e()
-  {
-    SLog.b("PasterDataManager", "requestPoiList");
-    ((LbsManager)SuperManager.a(9)).a(LbsManager.a(), this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession, this);
+    a(false);
   }
   
   public boolean isValidate()

@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
+import com.tencent.mobileqq.widget.LeftPopupMenuDialog;
 
-public class aiph
+class aiph
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b = false;
-  public boolean c = false;
-  public boolean d = false;
+  aiph(aipg paramaipg) {}
   
-  public aiph(FileAssistantDownloader paramFileAssistantDownloader)
+  public void run()
   {
-    this.jdField_a_of_type_Boolean = false;
+    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.isShowing()))
+    {
+      AssociatedAccountOptPopBar.a(this.a.a);
+      this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.a(this.a.a.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 

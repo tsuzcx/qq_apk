@@ -15,6 +15,7 @@ import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsIn
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class ComponentContentUgcVideo
@@ -37,7 +38,37 @@ public class ComponentContentUgcVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969574, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969570, this, true);
+  }
+  
+  public URL a(IReadInJoyModel paramIReadInJoyModel)
+  {
+    Object localObject = paramIReadInJoyModel.a();
+    if ((((ArticleInfo)localObject).mSocialFeedInfo != null) && (((ArticleInfo)localObject).mSocialFeedInfo.a != null) && (((ArticleInfo)localObject).mSocialFeedInfo.a.b.size() > 0))
+    {
+      SocializeFeedsInfo.UGCVideoInfo localUGCVideoInfo = (SocializeFeedsInfo.UGCVideoInfo)((ArticleInfo)localObject).mSocialFeedInfo.a.b.get(0);
+      int i;
+      if (localUGCVideoInfo.c * 4 > localUGCVideoInfo.d * 3)
+      {
+        i = 1;
+        if (i != 0) {
+          break label110;
+        }
+      }
+      label110:
+      for (boolean bool = true;; bool = false)
+      {
+        localObject = ((ArticleInfo)localObject).getVideoCoverUrlWithSmartCut(bool);
+        if (localObject == null) {
+          break label115;
+        }
+        return localObject;
+        i = 0;
+        break;
+      }
+    }
+    label115:
+    return super.a(paramIReadInJoyModel);
   }
   
   public void b()

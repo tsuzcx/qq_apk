@@ -34,7 +34,7 @@ public class f
   
   public void a(int paramInt, String paramString)
   {
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.a).post(new g(this, paramInt, paramString));
+    com.tencent.tmassistantbase.util.f.a().post(new g(this, paramInt, paramString));
   }
   
   public void a(String paramString, int paramInt)
@@ -53,7 +53,7 @@ public class f
       }
     }
     r.c("RemoteOpProxy", "<setInt> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new n(this, paramString, paramInt));
+    com.tencent.tmassistantbase.util.f.a().post(new n(this, paramString, paramInt));
   }
   
   public void a(String paramString, long paramLong)
@@ -72,7 +72,7 @@ public class f
       }
     }
     r.c("RemoteOpProxy", "<setLong> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new m(this, paramString, paramLong));
+    com.tencent.tmassistantbase.util.f.a().post(new m(this, paramString, paramLong));
   }
   
   public void a(String paramString1, String paramString2)
@@ -91,7 +91,7 @@ public class f
       }
     }
     r.c("RemoteOpProxy", "<setString> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new l(this, paramString1, paramString2));
+    com.tencent.tmassistantbase.util.f.a().post(new l(this, paramString1, paramString2));
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -110,7 +110,7 @@ public class f
       }
     }
     r.c("RemoteOpProxy", "<setBoolean> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new o(this, paramString, paramBoolean));
+    com.tencent.tmassistantbase.util.f.a().post(new o(this, paramString, paramBoolean));
   }
   
   public void a(String paramString, byte[] paramArrayOfByte)
@@ -129,7 +129,7 @@ public class f
       }
     }
     r.c("RemoteOpProxy", "<setBlob> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new k(this, paramString, paramArrayOfByte));
+    com.tencent.tmassistantbase.util.f.a().post(new k(this, paramString, paramArrayOfByte));
   }
   
   public byte[] a(String paramString)
@@ -147,7 +147,7 @@ public class f
       }
     }
     r.c("RemoteOpProxy", "<getBlob> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new p(this));
+    com.tencent.tmassistantbase.util.f.a().post(new p(this));
     return new byte[0];
   }
   
@@ -185,7 +185,7 @@ public class f
       }
     }
     r.c("RemoteOpProxy", "<requestAllConfig> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new i(this));
+    com.tencent.tmassistantbase.util.f.a().post(new i(this));
   }
   
   public long c(String paramString)
@@ -222,7 +222,7 @@ public class f
       }
     }
     r.c("RemoteOpProxy", "<requestShareUrl> process:" + com.tencent.tmassistantbase.util.m.e() + ", mServiceInterface is null, post the operation");
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new j(this));
+    com.tencent.tmassistantbase.util.f.a().post(new j(this));
   }
   
   public int d(String paramString)
@@ -245,7 +245,7 @@ public class f
   
   public void d()
   {
-    com.tencent.tmassistantbase.util.f.a(com.tencent.tmassistantbase.util.g.b).post(new h(this));
+    com.tencent.tmassistantbase.util.f.a().post(new h(this));
   }
   
   public boolean e(String paramString)

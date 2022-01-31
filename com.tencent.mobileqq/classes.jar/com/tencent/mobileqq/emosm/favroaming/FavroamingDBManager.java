@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import abzp;
-import abzr;
-import abzs;
+import achp;
+import achr;
+import achs;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
@@ -83,6 +83,7 @@ public class FavroamingDBManager
       localCustomEmotionData.url = FavEmoConstant.a(paramString1, paramString2, str1);
       localCustomEmotionData.emoId = paramInt;
       localCustomEmotionData.isAPNG = paramBoolean;
+      localCustomEmotionData.checkMarketFace("createCustomEmotionDataByResId");
     }
     while (!str2.equals("0"))
     {
@@ -97,7 +98,7 @@ public class FavroamingDBManager
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       if (!((String)localObject).contains("qto@")) {
-        break label378;
+        break label386;
       }
       localObject = ((String)localObject).replace("qto@", "qto_");
       localCustomEmotionData.eId = ((String)localObject);
@@ -116,7 +117,7 @@ public class FavroamingDBManager
       localCustomEmotionData.RomaingType = paramString3;
       localCustomEmotionData.emoId = paramInt;
       break;
-      label378:
+      label386:
       if (((String)localObject).contains("diydoutu@"))
       {
         localCustomEmotionData.eId = localResidParser.e;
@@ -146,7 +147,7 @@ public class FavroamingDBManager
     if ((paramList == null) || (paramList.size() < 1)) {
       return;
     }
-    a(new abzr(this, paramList, paramInt), 8);
+    a(new achr(this, paramList, paramInt), 8);
   }
   
   private void b(CustomEmotionData paramCustomEmotionData, int paramInt)
@@ -277,11 +278,11 @@ public class FavroamingDBManager
       if (!TextUtils.isEmpty(paramCustomEmotionData.emoPath)) {
         return paramCustomEmotionData.emoPath;
       }
-      localObject1 = AppConstants.aU;
+      localObject1 = AppConstants.aV;
       localObject2 = (VipComicMqqManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(140);
       if ((localObject2 != null) && (((VipComicMqqManager)localObject2).a(paramCustomEmotionData)))
       {
-        if ((!TextUtils.isEmpty(paramCustomEmotionData.emoPath)) && (paramCustomEmotionData.emoPath.startsWith(AppConstants.aU))) {
+        if ((!TextUtils.isEmpty(paramCustomEmotionData.emoPath)) && (paramCustomEmotionData.emoPath.startsWith(AppConstants.aV))) {
           return paramCustomEmotionData.emoPath;
         }
         if (!TextUtils.isEmpty(paramCustomEmotionData.md5)) {
@@ -659,7 +660,7 @@ public class FavroamingDBManager
     if (paramCustomEmotionData == null) {
       return;
     }
-    a(new abzs(this, paramInt, paramCustomEmotionData), 8);
+    a(new achs(this, paramInt, paramCustomEmotionData), 8);
   }
   
   public void a(FavroamingDBManager.FavEmotionDataInPanelCallback paramFavEmotionDataInPanelCallback)
@@ -667,7 +668,7 @@ public class FavroamingDBManager
     if (paramFavEmotionDataInPanelCallback == null) {
       return;
     }
-    ThreadManager.post(new abzp(this, paramFavEmotionDataInPanelCallback), 5, null, true);
+    ThreadManager.post(new achp(this, paramFavEmotionDataInPanelCallback), 5, null, true);
   }
   
   public void a(String paramString)
@@ -720,21 +721,22 @@ public class FavroamingDBManager
     }
     List localList = a();
     ArrayList localArrayList = new ArrayList();
-    if (localList != null)
+    if (localList != null) {}
+    for (;;)
     {
-      int i = localList.size() - 1;
-      if (i >= 0)
+      int i;
+      CustomEmotionData localCustomEmotionData;
+      try
       {
-        CustomEmotionData localCustomEmotionData = (CustomEmotionData)localList.get(i);
-        if ("needDel".equals(localCustomEmotionData.RomaingType)) {
-          QLog.d("FavroamingDBManager", 1, "data need delete, do not need display -> resId:" + localCustomEmotionData.resid);
-        }
-        for (;;)
+        i = localList.size() - 1;
+        if (i >= 0)
         {
-          i -= 1;
-          break;
-          Object localObject;
-          if (localCustomEmotionData.isMarkFace)
+          localCustomEmotionData = (CustomEmotionData)localList.get(i);
+          if ("needDel".equals(localCustomEmotionData.RomaingType))
+          {
+            QLog.d("FavroamingDBManager", 1, "data need delete, do not need display -> resId:" + localCustomEmotionData.resid);
+          }
+          else if (localCustomEmotionData.isMarkFace)
           {
             localObject = new PicEmoticonInfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
             ((PicEmoticonInfo)localObject).jdField_c_of_type_Int = 6;
@@ -745,33 +747,36 @@ public class FavroamingDBManager
             ((PicEmoticonInfo)localObject).jdField_d_of_type_Int = 2;
             if (((PicEmoticonInfo)localObject).a != null) {
               localArrayList.add(localObject);
-            } else {
-              QLog.e("FavroamingDBManager", 1, "PicEmoticonInfo.emoticon is null, " + localCustomEmotionData.toString());
-            }
-          }
-          else
-          {
-            localObject = new FavoriteEmoticonInfo();
-            ((FavoriteEmoticonInfo)localObject).jdField_c_of_type_Int = 4;
-            ((FavoriteEmoticonInfo)localObject).jdField_d_of_type_JavaLangString = a(localCustomEmotionData);
-            ((FavoriteEmoticonInfo)localObject).jdField_d_of_type_Int = 2;
-            ((FavoriteEmoticonInfo)localObject).jdField_c_of_type_JavaLangString = localCustomEmotionData.eId;
-            ((FavoriteEmoticonInfo)localObject).e = localCustomEmotionData.url;
-            ((FavoriteEmoticonInfo)localObject).f = FavoriteEmoticonInfo.a(localMap, localCustomEmotionData.md5);
-            if ((TextUtils.isEmpty(((FavoriteEmoticonInfo)localObject).jdField_d_of_type_JavaLangString)) && (TextUtils.isEmpty(((FavoriteEmoticonInfo)localObject).e))) {
-              QLog.e("FavroamingDBManager", 1, "path and url is null! " + ((FavoriteEmoticonInfo)localObject).toString());
-            } else {
-              localArrayList.add(localObject);
             }
           }
         }
       }
-      StartupTracker.a(null, "AIO_EmoticonPanel_Refresh");
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        QLog.e("FavroamingDBManager", 1, "syncGetFavEmotionInfoShowedInPanel oom");
+        StartupTracker.a(null, "AIO_EmoticonPanel_Refresh");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FavroamingDBManager", 2, "getFavEmotionInfoShowedInPanel, display size:" + localArrayList.size());
+      }
+      return localArrayList;
+      QLog.e("FavroamingDBManager", 1, "PicEmoticonInfo.emoticon is null, " + localCustomEmotionData.toString());
+      break label456;
+      Object localObject = new FavoriteEmoticonInfo();
+      ((FavoriteEmoticonInfo)localObject).jdField_c_of_type_Int = 4;
+      ((FavoriteEmoticonInfo)localObject).jdField_d_of_type_JavaLangString = a(localCustomEmotionData);
+      ((FavoriteEmoticonInfo)localObject).jdField_d_of_type_Int = 2;
+      ((FavoriteEmoticonInfo)localObject).jdField_c_of_type_JavaLangString = localCustomEmotionData.eId;
+      ((FavoriteEmoticonInfo)localObject).e = localCustomEmotionData.url;
+      ((FavoriteEmoticonInfo)localObject).f = FavoriteEmoticonInfo.a(localOutOfMemoryError, localCustomEmotionData.md5);
+      if ((TextUtils.isEmpty(((FavoriteEmoticonInfo)localObject).jdField_d_of_type_JavaLangString)) && (TextUtils.isEmpty(((FavoriteEmoticonInfo)localObject).e))) {
+        QLog.e("FavroamingDBManager", 1, "path and url is null! " + ((FavoriteEmoticonInfo)localObject).toString());
+      } else {
+        localArrayList.add(localObject);
+      }
+      label456:
+      i -= 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FavroamingDBManager", 2, "getFavEmotionInfoShowedInPanel, display size:" + localArrayList.size());
-    }
-    return localArrayList;
   }
   
   public List b(String paramString)

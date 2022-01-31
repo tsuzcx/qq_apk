@@ -1,30 +1,40 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
-import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
+import com.tencent.mobileqq.app.message.C2CMessageProcessor;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
-class zzj
+public class zzj
   implements Runnable
 {
-  zzj(zzi paramzzi) {}
+  public zzj(C2CMessageProcessor paramC2CMessageProcessor, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, String paramString4) {}
   
   public void run()
   {
-    if ((this.a.a.a != null) && (ARWorldCupGlobalSceneRenderable.a(this.a.a) != null) && (ARWorldCupGlobalSceneRenderable.a(this.a.a).a()))
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("fromUin", this.jdField_a_of_type_JavaLangString);
+    localHashMap.put("toUin", this.jdField_b_of_type_JavaLangString);
+    localHashMap.put("msgId", this.c);
+    localHashMap.put("createTime", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("recvTime", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("sendFlag", this.d);
+    localHashMap.put("nodeNo", String.valueOf(3000));
+    long l2 = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
+    long l1;
+    if (l2 > 0L)
     {
-      long l = ARWorldCupGlobalSceneRenderable.a(this.a.a).a();
-      this.a.a.a.postDelayed(ARWorldCupGlobalSceneRenderable.a(this.a.a), 4900L - l);
-      QLog.d("ARWorldCupGlobalSceneRenderable", 2, "start Post  mRepeatCheckRunnable " + l);
+      l1 = l2;
+      if (l2 <= 86400L) {}
     }
-    ARWorldCupGameLogicManager.a().a(true);
-    ReportController.b(null, "dc00898", "", "", "0X8009313", "0X8009313", 0, 0, "0", "", "", "");
+    else
+    {
+      l1 = 0L;
+    }
+    StatisticCollector.a(BaseApplication.getContext()).a(null, "actPubAccMsgReceipt", true, l1, 0L, localHashMap, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zzj
  * JD-Core Version:    0.7.0.1
  */

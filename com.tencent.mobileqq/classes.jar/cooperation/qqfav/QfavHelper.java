@@ -1,9 +1,9 @@
 package cooperation.qqfav;
 
-import amoy;
-import amoz;
-import ampa;
-import ampc;
+import amwj;
+import amwk;
+import amwl;
+import amwn;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -125,7 +125,7 @@ public final class QfavHelper
     }
     try
     {
-      new ampc((Context)localObject, paramOnPluginInstallListener).start();
+      new amwn((Context)localObject, paramOnPluginInstallListener).start();
       return;
     }
     catch (Throwable paramContext)
@@ -149,6 +149,9 @@ public final class QfavHelper
   @TargetApi(9)
   public static void a(Context paramContext, String paramString1, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
   {
+    if (paramContext == null) {
+      return;
+    }
     QQToast localQQToast = new QQToast(paramContext);
     localQQToast.d(2000);
     String str = paramString1;
@@ -159,23 +162,23 @@ public final class QfavHelper
     {
       localQQToast.b(2);
       localQQToast.a(QQToast.a(2));
-      localQQToast.c(2131431572);
+      localQQToast.c(2131431583);
       if (a(paramContext).getBoolean("pref_first_collection_" + str, true)) {}
       try
       {
-        paramString2 = paramContext.getString(2131431595);
+        paramString2 = paramContext.getString(2131431606);
         if (!paramBoolean2) {
-          break label333;
+          break label338;
         }
-        paramString1 = paramContext.getString(2131431597);
-        paramString1 = DialogUtil.b(paramContext, 230, paramString2, paramString1, 2131433015, 2131431598, new amoy(), null);
+        paramString1 = paramContext.getString(2131431608);
+        paramString1 = DialogUtil.b(paramContext, 230, paramString2, paramString1, 2131433029, 2131431609, new amwj(), null);
         if (paramContext == BaseApplicationImpl.getContext())
         {
           if (Build.VERSION.SDK_INT < 19) {
-            break label427;
+            break label432;
           }
           if (Build.VERSION.SDK_INT <= 24) {
-            break label344;
+            break label349;
           }
           paramString1.getWindow().setType(2002);
         }
@@ -184,7 +187,7 @@ public final class QfavHelper
       {
         for (;;)
         {
-          label172:
+          label177:
           QLog.e("qqfav", 1, "First collection guide error. Uin=" + str + ", flag=" + a(paramContext).getBoolean(new StringBuilder().append("pref_first_collection_").append(str).toString(), true));
           continue;
           paramString1.getWindow().setType(2002);
@@ -205,17 +208,17 @@ public final class QfavHelper
     {
       localQQToast.b(paramContext.getResources().getDimensionPixelSize(2131558448) - (int)(5.0F * paramContext.getResources().getDisplayMetrics().density));
       return;
-      label333:
-      paramString1 = paramContext.getString(2131431596);
+      label338:
+      paramString1 = paramContext.getString(2131431607);
       break;
-      label344:
+      label349:
       paramString1.getWindow().setType(2005);
-      break label172;
-      label427:
+      break label177;
+      label432:
       localQQToast.b(1);
       localQQToast.a(QQToast.a(1));
       if (paramString2 == null) {
-        localQQToast.c(2131431580);
+        localQQToast.c(2131431591);
       } else {
         localQQToast.a(paramString2);
       }
@@ -305,11 +308,11 @@ public final class QfavHelper
     if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return true;
     }
-    Object localObject2 = new amoz();
+    Object localObject2 = new amwk();
     if (paramBoolean) {}
     synchronized (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
     {
-      PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getApplication(), new ampa((Runnable)localObject2));
+      PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getApplication(), new amwl((Runnable)localObject2));
       localObject2 = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
       if (??? == localObject2) {}
       try

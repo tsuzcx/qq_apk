@@ -1,34 +1,24 @@
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
+import com.tencent.qphone.base.util.QLog;
 
-public final class adhe
+public class adhe
   implements Runnable
 {
-  public adhe(FileManagerEntity paramFileManagerEntity) {}
+  public adhe(QfavFilePreviewController paramQfavFilePreviewController) {}
   
   public void run()
   {
-    if (FileUtil.a(this.a.getFilePath())) {}
-    PackageInfo localPackageInfo;
-    do
+    FilePreviewActivity.ControlerCallback localControlerCallback = this.a.a;
+    if (0L == QfavFilePreviewController.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      Iterator localIterator;
-      do
-      {
-        return;
-        while ((this.a.strApkPackageName == null) || (this.a.strApkPackageName.length() == 0)) {}
-        localIterator = FileCategoryUtil.a(BaseApplicationImpl.getContext()).iterator();
-      } while (!localIterator.hasNext());
-      localPackageInfo = (PackageInfo)localIterator.next();
-    } while (!this.a.strApkPackageName.equalsIgnoreCase(localPackageInfo.packageName));
-    this.a.setFilePath(localPackageInfo.applicationInfo.publicSourceDir);
-    this.a.fileName = FileCategoryUtil.a(this.a.getFilePath());
+      localControlerCallback.a(bool, QfavFilePreviewController.a(this.a), String.valueOf(QfavFilePreviewController.a(this.a)), QfavFilePreviewController.a(this.a), null, QfavFilePreviewController.b(this.a), null, QfavFilePreviewController.c(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.i("QfavFilePreviewController", 2, "sendCS: mHost=" + QfavFilePreviewController.a(this.a) + ", port=" + QfavFilePreviewController.a(this.a) + ", key=" + QfavFilePreviewController.b(this.a) + ", retCode =" + QfavFilePreviewController.a(this.a));
+      }
+      return;
+    }
   }
 }
 

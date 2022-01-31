@@ -1,7 +1,7 @@
 package com.tencent.qqprotect.qsec;
 
-import alxj;
-import alxk;
+import ames;
+import amet;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
@@ -33,7 +33,7 @@ public class QSecCbMgr
   
   public QSecCbMgr()
   {
-    SecSvcHandlerHelper.a("MobileQQprotect.QSecCb", new alxj(this));
+    SecSvcHandlerHelper.a("MobileQQprotect.QSecCb", new ames(this));
     a();
   }
   
@@ -66,8 +66,8 @@ public class QSecCbMgr
   
   private void a(long paramLong)
   {
-    alxk localalxk = new alxk(this);
-    QSecFramework.a().postDelayed(localalxk, paramLong);
+    amet localamet = new amet(this);
+    QSecFramework.a().postDelayed(localamet, paramLong);
   }
   
   private void a(String paramString)
@@ -81,31 +81,34 @@ public class QSecCbMgr
         if (paramString.getInt("ver") != 1) {
           return;
         }
-        paramString = paramString.getJSONObject("cbs");
-        if (paramString == null) {
+        JSONObject localJSONObject = paramString.getJSONObject("cbs");
+        if (localJSONObject == null) {
           continue;
         }
-        Iterator localIterator = paramString.keys();
+        Iterator localIterator = localJSONObject.keys();
         if (localIterator == null) {
           continue;
         }
         if (!localIterator.hasNext()) {
           continue;
         }
-        localPair = a((String)localIterator.next(), paramString);
-        if (localPair == null) {
+        localObject = a((String)localIterator.next(), localJSONObject);
+        if (localObject == null) {
           continue;
         }
-        localByte = (Byte)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localPair.first);
-        if (localByte != null) {
+        paramString = (String)localObject;
+        if (((Integer)((Pair)localObject).first).intValue() == 3) {
+          paramString = new Pair(Integer.valueOf(3), Byte.valueOf((byte)0));
+        }
+        localObject = (Byte)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString.first);
+        if (localObject != null) {
           continue;
         }
-        localLinkedList.add(localPair);
+        localLinkedList.add(paramString);
       }
       catch (Exception paramString)
       {
-        Pair localPair;
-        Byte localByte;
+        Object localObject;
         paramString.printStackTrace();
         b();
         if (localLinkedList.isEmpty()) {
@@ -117,13 +120,13 @@ public class QSecCbMgr
         }
         ((QSecCbMgr.IControlBitChangeListener)paramString.next()).a(localLinkedList);
         continue;
-        if (localByte.byteValue() == ((Byte)localPair.second).byteValue()) {
+        if (((Byte)localObject).byteValue() == ((Byte)paramString.second).byteValue()) {
           continue;
         }
-        localLinkedList.add(localPair);
+        localLinkedList.add(paramString);
         continue;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localPair.first, localPair.second);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString.first, paramString.second);
     }
   }
   
@@ -131,23 +134,23 @@ public class QSecCbMgr
   private void a(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 193	java/io/DataInputStream
+    //   0: new 197	java/io/DataInputStream
     //   3: dup
-    //   4: new 195	java/io/ByteArrayInputStream
+    //   4: new 199	java/io/ByteArrayInputStream
     //   7: dup
     //   8: aload_1
-    //   9: invokespecial 197	java/io/ByteArrayInputStream:<init>	([B)V
-    //   12: invokespecial 200	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   9: invokespecial 201	java/io/ByteArrayInputStream:<init>	([B)V
+    //   12: invokespecial 204	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   15: astore 4
     //   17: aload 4
     //   19: astore_1
     //   20: aload 4
-    //   22: invokevirtual 204	java/io/DataInputStream:readInt	()I
+    //   22: invokevirtual 207	java/io/DataInputStream:readInt	()I
     //   25: istore_3
     //   26: aload 4
     //   28: astore_1
     //   29: aload 4
-    //   31: invokevirtual 207	java/io/DataInputStream:readByte	()B
+    //   31: invokevirtual 210	java/io/DataInputStream:readByte	()B
     //   34: istore_2
     //   35: aload 4
     //   37: astore_1
@@ -157,22 +160,22 @@ public class QSecCbMgr
     //   43: invokestatic 51	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   46: iload_2
     //   47: invokestatic 61	java/lang/Byte:valueOf	(B)Ljava/lang/Byte;
-    //   50: invokevirtual 171	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   50: invokevirtual 175	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   53: pop
     //   54: goto -37 -> 17
     //   57: astore 5
     //   59: aload 4
     //   61: astore_1
     //   62: aload 5
-    //   64: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   64: invokevirtual 211	java/io/IOException:printStackTrace	()V
     //   67: aload 4
     //   69: ifnull +8 -> 77
     //   72: aload 4
-    //   74: invokevirtual 211	java/io/DataInputStream:close	()V
+    //   74: invokevirtual 214	java/io/DataInputStream:close	()V
     //   77: return
     //   78: astore_1
     //   79: aload_1
-    //   80: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   80: invokevirtual 211	java/io/IOException:printStackTrace	()V
     //   83: return
     //   84: astore 4
     //   86: aconst_null
@@ -180,12 +183,12 @@ public class QSecCbMgr
     //   88: aload_1
     //   89: ifnull +7 -> 96
     //   92: aload_1
-    //   93: invokevirtual 211	java/io/DataInputStream:close	()V
+    //   93: invokevirtual 214	java/io/DataInputStream:close	()V
     //   96: aload 4
     //   98: athrow
     //   99: astore_1
     //   100: aload_1
-    //   101: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   101: invokevirtual 211	java/io/IOException:printStackTrace	()V
     //   104: goto -8 -> 96
     //   107: astore 4
     //   109: goto -21 -> 88
@@ -224,38 +227,38 @@ public class QSecCbMgr
   private byte[] a()
   {
     // Byte code:
-    //   0: new 214	java/io/ByteArrayOutputStream
+    //   0: new 217	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 215	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 218	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore_2
-    //   8: new 217	java/io/DataOutputStream
+    //   8: new 220	java/io/DataOutputStream
     //   11: dup
     //   12: aload_2
-    //   13: invokespecial 220	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   13: invokespecial 223	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   16: astore 4
     //   18: aload_0
     //   19: getfield 16	com/tencent/qqprotect/qsec/QSecCbMgr:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   22: invokevirtual 224	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
-    //   25: invokeinterface 227 1 0
+    //   22: invokevirtual 227	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
+    //   25: invokeinterface 230 1 0
     //   30: astore_1
     //   31: aload_1
     //   32: invokeinterface 142 1 0
     //   37: ifeq +80 -> 117
     //   40: aload_1
     //   41: invokeinterface 146 1 0
-    //   46: checkcast 229	java/util/Map$Entry
+    //   46: checkcast 232	java/util/Map$Entry
     //   49: astore_3
     //   50: aload 4
     //   52: aload_3
-    //   53: invokeinterface 232 1 0
+    //   53: invokeinterface 235 1 0
     //   58: checkcast 43	java/lang/Integer
-    //   61: invokevirtual 235	java/lang/Integer:intValue	()I
+    //   61: invokevirtual 158	java/lang/Integer:intValue	()I
     //   64: invokevirtual 239	java/io/DataOutputStream:writeInt	(I)V
     //   67: aload 4
     //   69: aload_3
     //   70: invokeinterface 242 1 0
     //   75: checkcast 58	java/lang/Byte
-    //   78: invokevirtual 189	java/lang/Byte:byteValue	()B
+    //   78: invokevirtual 193	java/lang/Byte:byteValue	()B
     //   81: invokevirtual 245	java/io/DataOutputStream:writeByte	(I)V
     //   84: goto -53 -> 31
     //   87: astore_3
@@ -264,7 +267,7 @@ public class QSecCbMgr
     //   90: aload 4
     //   92: astore_2
     //   93: aload_3
-    //   94: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   94: invokevirtual 211	java/io/IOException:printStackTrace	()V
     //   97: aload_1
     //   98: ifnull +7 -> 105
     //   101: aload_1
@@ -294,20 +297,20 @@ public class QSecCbMgr
     //   143: areturn
     //   144: astore_2
     //   145: aload_2
-    //   146: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   146: invokevirtual 211	java/io/IOException:printStackTrace	()V
     //   149: aload_1
     //   150: areturn
     //   151: astore_2
     //   152: aload_2
-    //   153: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   153: invokevirtual 211	java/io/IOException:printStackTrace	()V
     //   156: goto -26 -> 130
     //   159: astore_1
     //   160: aload_1
-    //   161: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   161: invokevirtual 211	java/io/IOException:printStackTrace	()V
     //   164: goto -59 -> 105
     //   167: astore_1
     //   168: aload_1
-    //   169: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   169: invokevirtual 211	java/io/IOException:printStackTrace	()V
     //   172: goto -59 -> 113
     //   175: astore_1
     //   176: aconst_null
@@ -326,11 +329,11 @@ public class QSecCbMgr
     //   197: athrow
     //   198: astore_3
     //   199: aload_3
-    //   200: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   200: invokevirtual 211	java/io/IOException:printStackTrace	()V
     //   203: goto -15 -> 188
     //   206: astore_2
     //   207: aload_2
-    //   208: invokevirtual 208	java/io/IOException:printStackTrace	()V
+    //   208: invokevirtual 211	java/io/IOException:printStackTrace	()V
     //   211: goto -15 -> 196
     //   214: astore_1
     //   215: aconst_null
@@ -420,6 +423,9 @@ public class QSecCbMgr
   
   public byte a(int paramInt)
   {
+    if (paramInt == 3) {
+      return 0;
+    }
     Byte localByte = (Byte)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
     if (localByte != null) {
       return localByte.byteValue();

@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
-class adgn
-  implements Runnable
+public class adgn
+  extends adgb
 {
-  adgn(adgl paramadgl) {}
-  
-  public void run()
+  public adgn(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    FMSettings.a(4, "-------onMoveFail-------");
-    FMSettings.a(4, FileManagerUtil.a());
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettingInterface$MoveFileCallback.a();
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b();
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPC";
   }
 }
 

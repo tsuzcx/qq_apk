@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
-import com.tencent.mobileqq.data.ApolloGameRoamData;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Process;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.HardwareInfo;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class yvr
   implements Runnable
 {
-  public yvr(ApolloDaoManager paramApolloDaoManager, ApolloGameRoamData paramApolloGameRoamData) {}
+  public yvr(ApolloGameStateMachine paramApolloGameStateMachine) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloDaoManager.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloDaoManager", 2, new Object[] { "[saveUserPlayedGameRoamData] game ", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRoamData.gameId), " not in local, try update json" });
-      }
-      ApolloContentUpdateHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloDaoManager.a, 2);
+    ApolloGameStateMachine.HardwareInfo localHardwareInfo2 = ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo;
+    ApolloGameStateMachine.HardwareInfo localHardwareInfo1 = localHardwareInfo2;
+    if (localHardwareInfo2 == null) {
+      localHardwareInfo1 = new ApolloGameStateMachine.HardwareInfo();
     }
+    localHardwareInfo1.b = DeviceInfoUtil.a(Process.myPid());
+    localHardwareInfo1.c = DeviceInfoUtil.g();
+    ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo = localHardwareInfo1;
+    ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
 }
 

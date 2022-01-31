@@ -1,35 +1,35 @@
-import android.content.res.Resources;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.util.WeakReferenceHandler;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.Window;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.lang.ref.WeakReference;
 
 public class uha
   implements Runnable
 {
-  public uha(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  private WeakReference a;
+  
+  public uha(TroopMemberListActivity paramTroopMemberListActivity)
+  {
+    this.a = new WeakReference(paramTroopMemberListActivity);
+  }
   
   public void run()
   {
-    File localFile1 = new File(EmojiStickerManager.a(), "qvip_profile_diy_card_guide.png");
-    File localFile2 = new File(EmojiStickerManager.a(), "qvip_profile_diy_card_guide_demo.png");
-    if ((localFile1.exists()) && (localFile2.exists()))
+    TroopMemberListActivity localTroopMemberListActivity = (TroopMemberListActivity)this.a.get();
+    if (localTroopMemberListActivity != null)
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inDensity = 320;
-      localOptions.inTargetDensity = this.a.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi;
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = BitmapManager.a(localFile1.getAbsolutePath(), localOptions);
-      this.a.b = BitmapManager.a(localFile2.getAbsolutePath(), localOptions);
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(9);
-      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      return;
+      localTroopMemberListActivity.h = false;
+      int i = localTroopMemberListActivity.a.getHeight();
+      localTroopMemberListActivity.b.offsetTopAndBottom(-i);
+      localTroopMemberListActivity.a.setVisibility(0);
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
+      localTranslateAnimation.setDuration(300L);
+      localTroopMemberListActivity.b.startAnimation(localTranslateAnimation);
+      ((InputMethodManager)localTroopMemberListActivity.getSystemService("input_method")).hideSoftInputFromWindow(localTroopMemberListActivity.getWindow().peekDecorView().getWindowToken(), 0);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager.a(1004L, "emojiStickerGuideZip_v2", "VipProfileCardDiy");
   }
 }
 

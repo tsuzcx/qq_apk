@@ -1,82 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.ark.ArkAppPanelList.AppDetail;
-import com.tencent.ark.ArkAppPanelList.RespBody;
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppManagerPanel.ArkAppPanelData;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IRequestArkAppListHandler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class aawx
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  aawx(aaww paramaaww) {}
+  aawx(aawv paramaawv, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (paramObject != null))
+    ArkAppCenter.a().post(new aawy(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
-      localObject1 = new ArkAppPanelList.RespBody();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aawv.a, "ark_authority_api_user_info", this.jdField_a_of_type_Aawv.c, 2);
+      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438843), 2131435285, 2131435285, new DialogUtil.DialogOnClickAdapter(), null);
       try
       {
-        ((ArkAppPanelList.RespBody)localObject1).mergeFrom((byte[])paramObject);
-        localArrayList = new ArrayList();
-        if (((ArkAppPanelList.RespBody)localObject1).apps.has())
-        {
-          paramObject = ((ArkAppPanelList.RespBody)localObject1).apps.get();
-          if ((paramObject == null) || (paramObject.size() <= 0)) {
-            break label234;
-          }
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
-          {
-            localObject2 = (ArkAppPanelList.AppDetail)paramObject.next();
-            if (localObject2 != null)
-            {
-              localObject1 = ((ArkAppPanelList.AppDetail)localObject2).appName.get();
-              str = ((ArkAppPanelList.AppDetail)localObject2).cnName.get();
-              localObject2 = ((ArkAppPanelList.AppDetail)localObject2).iconUrl.get();
-              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
-              {
-                localArrayList.add(new ArkAppManagerPanel.ArkAppPanelData((String)localObject1, str, (String)localObject2));
-                continue;
-                return;
-              }
-            }
-          }
-        }
+        paramDialogInterface.show();
+        return;
       }
-      catch (InvalidProtocolBufferMicroException paramObject)
-      {
-        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList mergeFrom exception=" + paramObject);
-        if (this.a.a != null) {
-          this.a.a.b(null);
-        }
-      }
+      catch (Exception paramDialogInterface) {}
     }
-    label234:
-    while (this.a.a == null)
+    catch (Exception paramDialogInterface)
     {
-      ArrayList localArrayList;
-      do
-      {
-        for (;;)
-        {
-          Object localObject1;
-          Object localObject2;
-          String str;
-          paramObject = null;
-        }
-      } while (this.a.a == null);
-      this.a.a.b(localArrayList);
-      return;
+      break label38;
     }
-    this.a.a.b(null);
   }
 }
 

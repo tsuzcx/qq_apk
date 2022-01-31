@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.utils.TranslucentTitleBarHelper;
 
 public class ote
-  implements DialogInterface.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ote(QRDisplayActivity paramQRDisplayActivity) {}
+  public ote(TranslucentTitleBarHelper paramTranslucentTitleBarHelper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.finish();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    TranslucentTitleBarHelper.a(this.a, f);
   }
 }
 

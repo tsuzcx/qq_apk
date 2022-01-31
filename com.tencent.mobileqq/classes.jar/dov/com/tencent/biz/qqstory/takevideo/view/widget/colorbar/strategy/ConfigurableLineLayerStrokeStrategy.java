@@ -2,18 +2,12 @@ package dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.strategy;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.PersonalityStroke;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.PureStroke;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.Stroke;
 import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
 import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
 import java.util.ArrayList;
@@ -35,81 +29,13 @@ public class ConfigurableLineLayerStrokeStrategy
   
   public void a(@NonNull ArrayList paramArrayList, @NonNull Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createStroke");
-    }
-    int i = 0;
-    while (i < PureStroke.a.length)
-    {
-      paramArrayList.add(new PureStroke(paramContext, i));
-      i += 1;
-    }
-    int k = UIUtils.b(paramContext);
-    int j = 0;
-    i = j;
-    Object localObject;
-    if (this.b)
-    {
-      boolean bool = PtvFilterSoLoad.c();
-      i = j;
-      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
-      {
-        i = j;
-        if (bool)
-        {
-          localObject = PtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a();
-          if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
-            break label417;
-          }
-          localObject = ((ArrayList)localObject).iterator();
-          i = 0;
-          while (((Iterator)localObject).hasNext())
-          {
-            PtvTemplateManager.DoodleInfo localDoodleInfo = (PtvTemplateManager.DoodleInfo)((Iterator)localObject).next();
-            if (((!"doodle_highlighter".equals(localDoodleInfo.doodleName)) || (Build.VERSION.SDK_INT >= 18)) && ((k > 800) || ((!"doodle_fireworks".equals(localDoodleInfo.doodleName)) && (!"doodle_image_mouth".equals(localDoodleInfo.doodleName)))))
-            {
-              ArrayList localArrayList = PtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(localDoodleInfo);
-              if (localArrayList != null)
-              {
-                paramArrayList.add(new PersonalityStroke(paramContext, UIUtils.a(paramContext, 14.0F), UIUtils.a(paramContext, 24.0F), new BitmapDrawable(paramContext.getResources(), (Bitmap)localArrayList.get(2)), new BitmapDrawable(paramContext.getResources(), (Bitmap)localArrayList.get(1)), new BitmapDrawable(paramContext.getResources(), (Bitmap)localArrayList.get(0)), 2, Integer.valueOf(localDoodleInfo.doodleId).intValue()));
-                i = 1;
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        ((PureStroke)paramArrayList.get(PureStroke.a.length - 1)).a();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localObject = new PersonalityStroke(paramContext, UIUtils.a(paramContext, 17.0F), UIUtils.a(paramContext, 17.0F), paramContext.getResources().getDrawable(2130843670), paramContext.getResources().getDrawable(2130843407), paramContext.getResources().getDrawable(2130843398), 1, 0);
-        ((Stroke)localObject).a(UIUtils.a(paramContext, 12.0F), 0);
-        paramArrayList.add(localObject);
-      }
-      return;
-      label417:
-      i = j;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createStroke doodleInfo is NUll !");
-        i = j;
-      }
-    }
-  }
-  
-  public void b(@NonNull ArrayList paramArrayList, @NonNull Context paramContext)
-  {
     Object localObject7 = null;
     HorizontalStroke localHorizontalStroke1 = null;
     if (QLog.isColorLevel()) {
       QLog.e("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke");
     }
     if (this.jdField_a_of_type_Boolean) {
-      paramArrayList.add(new HorizontalStroke(paramContext.getResources().getDrawable(2130843699), 1, 0));
+      paramArrayList.add(new HorizontalStroke(paramContext.getResources().getDrawable(2130843769), 1, 0));
     }
     Object localObject1;
     Object localObject2;
@@ -148,7 +74,7 @@ public class ConfigurableLineLayerStrokeStrategy
           i = Integer.valueOf(((PtvTemplateManager.DoodleInfo)localObject4).doodleId).intValue();
           if ("doodle_image_family".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
           {
-            localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842452), 2, i);
+            localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842487), 2, i);
             localObject2 = localObject3;
             localObject3 = localObject1;
             localObject1 = localObject4;
@@ -165,7 +91,7 @@ public class ConfigurableLineLayerStrokeStrategy
       break;
       if ("doodle_image_mouth".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
       {
-        localHorizontalStroke1 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842453), 2, i);
+        localHorizontalStroke1 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842488), 2, i);
         localObject4 = localObject1;
         localObject1 = localObject2;
         localObject2 = localObject3;
@@ -173,21 +99,21 @@ public class ConfigurableLineLayerStrokeStrategy
       }
       else if ("doodle_image_xin".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
       {
-        localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842454), 2, i);
+        localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842489), 2, i);
         localObject3 = localObject1;
         localObject1 = localObject2;
         localObject2 = localObject4;
       }
       else if ("doodle_highlighter".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
       {
-        localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842451), 2, i);
+        localObject4 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842486), 2, i);
         localObject1 = localObject2;
         localObject2 = localObject3;
         localObject3 = localObject4;
       }
       else if ("doodle_fireworks".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
       {
-        localHorizontalStroke2 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842449), 2, i);
+        localHorizontalStroke2 = new HorizontalStroke(paramContext.getResources().getDrawable(2130842484), 2, i);
         localObject4 = localObject1;
         localObject1 = localObject2;
         localObject2 = localObject3;

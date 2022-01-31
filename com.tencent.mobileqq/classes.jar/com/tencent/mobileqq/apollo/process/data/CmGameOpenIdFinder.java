@@ -16,7 +16,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import yrs;
+import yyg;
 
 public class CmGameOpenIdFinder
 {
@@ -101,7 +101,7 @@ public class CmGameOpenIdFinder
     Bundle localBundle = new Bundle();
     localBundle.putInt("type", paramInt);
     localBundle.putString("uin", paramString1);
-    paramString1 = new yrs(paramString2, paramLong);
+    paramString1 = new yyg(paramString2, paramLong);
     QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", localBundle, paramString1);
   }
   
@@ -155,7 +155,7 @@ public class CmGameOpenIdFinder
         localJSONObject.put("gameId", this.jdField_a_of_type_Int);
         localJSONObject.put("opType", paramInt1);
         if (2 != paramInt1) {
-          break label309;
+          break label311;
         }
         if ((paramArrayList1 != null) && (paramArrayList1.size() != 0))
         {
@@ -164,7 +164,7 @@ public class CmGameOpenIdFinder
           while (paramArrayList1.hasNext()) {
             paramArrayList2.put((String)paramArrayList1.next());
           }
-          localCmGameSSoHandler.a("apollo_aio_game.get_user_uin_or_openid", localJSONObject.toString(), -1L, paramInt2);
+          localCmGameSSoHandler.a("apollo_aio_game.get_user_uin_or_openid", localJSONObject.toString(), -1L, paramInt2, false, null);
         }
       }
       catch (Exception paramArrayList1)
@@ -188,7 +188,7 @@ public class CmGameOpenIdFinder
       }
       localJSONObject.put("bidCmd", paramString2);
       break label217;
-      label309:
+      label311:
       if (1 == paramInt1)
       {
         if ((paramArrayList2 == null) || (paramArrayList2.size() == 0)) {

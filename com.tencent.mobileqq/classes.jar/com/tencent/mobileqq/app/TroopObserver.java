@@ -18,7 +18,7 @@ import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
 import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
 import tencent.im.troop.homework.ReqSend1V1Msg;
 import tencent.im.troop.homework.RspSend1V1Msg;
-import zpa;
+import zvl;
 
 public class TroopObserver
   implements BusinessObserver, mqq.observer.BusinessObserver
@@ -475,7 +475,7 @@ public class TroopObserver
                           return;
                           b(paramBoolean, (ArrayList)paramObject);
                           return;
-                          paramObject = (zpa)paramObject;
+                          paramObject = (zvl)paramObject;
                           a(paramObject.jdField_a_of_type_Long, paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean, paramObject.jdField_a_of_type_JavaLangString, paramObject.b, paramObject.c);
                           return;
                           paramObject = (Object[])paramObject;

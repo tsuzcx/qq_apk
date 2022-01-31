@@ -1,47 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter.onMonitorUserOperationListener;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.app.message.BaseMessageManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
 
 public class zyn
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public zyn(ARVideoRecordViewProxy paramARVideoRecordViewProxy) {}
+  public zyn(BaseMessageManager paramBaseMessageManager, String paramString1, int paramInt1, int paramInt2, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, String paramString2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
-      do
-      {
-        return true;
-        ARVideoRecordViewProxy.a(this.a).setAlpha(0.5F);
-        return true;
-        ARVideoRecordViewProxy.a(this.a).setAlpha(1.0F);
-        if (!ARVideoRecordViewProxy.a(this.a))
-        {
-          ARRecordUtils.a(true);
-          ARVideoRecordViewProxy.a(this.a, true);
-          ARVideoRecordViewProxy.a(this.a).setVisibility(8);
-          ARVideoRecordViewProxy.a(this.a).clearAnimation();
-        }
-      } while (ARVideoRecordViewProxy.a(this.a) == null);
-      ARVideoRecordViewProxy.a(this.a).h();
-    } while (!QLog.isColorLevel());
-    QLog.i("ARVideoRecordViewProxy", 2, "onMonitorUserOperation");
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.a("refreshMessageListHead uin = " + this.jdField_a_of_type_JavaLangString + ", type = " + this.jdField_a_of_type_Int + ", count = " + this.jdField_b_of_type_Int + ", context = " + this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext, ", timestamp = " + System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a.a.post(new zyo(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zyn
  * JD-Core Version:    0.7.0.1
  */

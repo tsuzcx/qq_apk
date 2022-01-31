@@ -69,7 +69,7 @@ public class QQWalletRedPacketMsg
       this.elem.aioImageRight = paramObjectInput.readUTF();
       this.elem.cftImage = paramObjectInput.readUTF();
     }
-    catch (IOException localException2)
+    catch (IOException localException3)
     {
       try
       {
@@ -77,85 +77,95 @@ public class QQWalletRedPacketMsg
         this.envelopeName = paramObjectInput.readUTF();
         this.conftype = paramObjectInput.readInt();
       }
-      catch (IOException localException2)
+      catch (IOException localException3)
       {
         try
         {
           this.msgFrom = paramObjectInput.readInt();
         }
-        catch (IOException localException2)
+        catch (IOException localException3)
         {
           try
           {
             this.redPacketIndex = paramObjectInput.readUTF();
           }
-          catch (IOException localException2)
+          catch (IOException localException3)
           {
             try
             {
               this.redChannel = paramObjectInput.readInt();
               this.specifyUinList = ((List)paramObjectInput.readObject());
             }
-            catch (Exception localException2)
+            catch (Exception localException3)
             {
               try
               {
                 this.elem.soundRecordDuration = paramObjectInput.readInt();
               }
-              catch (Exception localException2)
+              catch (Exception localException3)
               {
                 try
                 {
-                  for (;;)
-                  {
-                    this.elem.resourceType = paramObjectInput.readInt();
-                    this.elem.skinId = paramObjectInput.readInt();
-                    this.elem.effectsId = paramObjectInput.readInt();
-                    this.elem.special_pop_id = paramObjectInput.readInt();
-                    try
-                    {
-                      this.elem.themeId = paramObjectInput.readInt();
-                      return;
-                    }
-                    catch (Exception paramObjectInput)
-                    {
-                      this.elem.themeId = 0;
-                    }
-                    localIOException1 = localIOException1;
-                    this.elem.iconUrl = "";
-                    this.elem.contentColor = 13487565;
-                    this.elem.contentBgColor = -1;
-                    this.elem.aioImageLeft = "";
-                    this.elem.aioImageRight = "";
-                    this.elem.cftImage = "";
-                    continue;
-                    localIOException2 = localIOException2;
-                    this.envelopeid = -1;
-                    this.envelopeName = "";
-                    this.conftype = -1;
-                    continue;
-                    localIOException3 = localIOException3;
-                    this.msgFrom = -1;
-                    continue;
-                    localIOException4 = localIOException4;
-                    this.redPacketIndex = "";
-                    continue;
-                    localException1 = localException1;
-                    this.redChannel = 0;
-                    this.specifyUinList = new ArrayList();
-                    continue;
-                    localException2 = localException2;
-                    this.elem.soundRecordDuration = 12000;
-                  }
+                  this.elem.resourceType = paramObjectInput.readInt();
+                  this.elem.skinId = paramObjectInput.readInt();
+                  this.elem.effectsId = paramObjectInput.readInt();
+                  this.elem.special_pop_id = paramObjectInput.readInt();
                 }
                 catch (Exception localException3)
                 {
-                  for (;;)
+                  try
                   {
-                    this.elem.resourceType = 0;
-                    this.elem.skinId = 0;
-                    this.elem.effectsId = 0;
-                    this.elem.special_pop_id = 0;
+                    for (;;)
+                    {
+                      this.elem.themeId = paramObjectInput.readInt();
+                      try
+                      {
+                        this.elem.hbFrom = paramObjectInput.readInt();
+                        return;
+                      }
+                      catch (Exception paramObjectInput)
+                      {
+                        this.elem.hbFrom = 0;
+                      }
+                      localIOException1 = localIOException1;
+                      this.elem.iconUrl = "";
+                      this.elem.contentColor = 13487565;
+                      this.elem.contentBgColor = -1;
+                      this.elem.aioImageLeft = "";
+                      this.elem.aioImageRight = "";
+                      this.elem.cftImage = "";
+                      continue;
+                      localIOException2 = localIOException2;
+                      this.envelopeid = -1;
+                      this.envelopeName = "";
+                      this.conftype = -1;
+                      continue;
+                      localIOException3 = localIOException3;
+                      this.msgFrom = -1;
+                      continue;
+                      localIOException4 = localIOException4;
+                      this.redPacketIndex = "";
+                      continue;
+                      localException1 = localException1;
+                      this.redChannel = 0;
+                      this.specifyUinList = new ArrayList();
+                      continue;
+                      localException2 = localException2;
+                      this.elem.soundRecordDuration = 12000;
+                      continue;
+                      localException3 = localException3;
+                      this.elem.resourceType = 0;
+                      this.elem.skinId = 0;
+                      this.elem.effectsId = 0;
+                      this.elem.special_pop_id = 0;
+                    }
+                  }
+                  catch (Exception localException4)
+                  {
+                    for (;;)
+                    {
+                      this.elem.themeId = 0;
+                    }
                   }
                 }
               }
@@ -236,6 +246,7 @@ public class QQWalletRedPacketMsg
     paramObjectOutput.writeInt(this.elem.effectsId);
     paramObjectOutput.writeInt(this.elem.special_pop_id);
     paramObjectOutput.writeInt(this.elem.themeId);
+    paramObjectOutput.writeInt(this.elem.hbFrom);
   }
 }
 

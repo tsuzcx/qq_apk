@@ -57,6 +57,7 @@ public class l
     localIntent.putExtra("uin", paramString2);
     localIntent.putExtra("istatus", paramInt);
     localIntent.putExtra("gatewayip", af.n());
+    localIntent.setPackage(paramContext.getPackageName());
     try
     {
       if (paramString3.toLowerCase().indexOf("activity", 0) != -1)

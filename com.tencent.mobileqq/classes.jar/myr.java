@@ -1,17 +1,18 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
-public class myr
-  implements Runnable
+public final class myr
+  implements Parcelable.Creator
 {
-  public myr(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
-  
-  public void run()
+  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
   {
-    if (PublicAccountImageCollectionMainActivity.a(this.a) != null)
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a).a(PublicAccountImageCollectionMainActivity.a(this.a));
-      PublicAccountImageCollectionMainActivity.a(this.a).notifyDataSetChanged();
-    }
+    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
+  }
+  
+  public ProfileParams.CurLoginUsr[] a(int paramInt)
+  {
+    return new ProfileParams.CurLoginUsr[paramInt];
   }
 }
 

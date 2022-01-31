@@ -1,42 +1,23 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.av.opengl.ui.GLView;
+import com.tencent.av.opengl.ui.GLViewGroup;
+import java.util.Comparator;
 
-class jmd
-  implements Runnable
+public class jmd
+  implements Comparator
 {
-  jmd(jmc paramjmc, String paramString) {}
+  public jmd(GLViewGroup paramGLViewGroup) {}
   
-  public void run()
+  public int a(GLView paramGLView1, GLView paramGLView2)
   {
-    if ((this.jdField_a_of_type_Jmc.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment.getActivity() == null) || (this.jdField_a_of_type_Jmc.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment.getActivity().isFinishing())) {
-      return;
+    if (paramGLView1.i() >= paramGLView2.i()) {
+      return 1;
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      RedPacketShareFragment.a(this.jdField_a_of_type_Jmc.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment);
-      QRUtils.a(1, 2131430004);
-      return;
-    }
-    this.jdField_a_of_type_Jmc.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment.a(false);
-    if (this.jdField_a_of_type_Jmc.jdField_a_of_type_Int == 2)
-    {
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Jmc.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment.a, 0);
-      return;
-    }
-    if (this.jdField_a_of_type_Jmc.jdField_a_of_type_Int == 3)
-    {
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Jmc.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment.a, 1);
-      return;
-    }
-    RedPacketShareFragment.a(this.jdField_a_of_type_Jmc.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketShareFragment);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jmd
  * JD-Core Version:    0.7.0.1
  */

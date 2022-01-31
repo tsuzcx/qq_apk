@@ -13,10 +13,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.RoundedTransformation;
 import com.tencent.biz.qqstory.utils.UIUtils;
-import obq;
-import obr;
-import obs;
-import obt;
+import ogf;
+import ogg;
+import ogh;
+import ogi;
 
 public class GuideInfoDialog
   extends Dialog
@@ -78,13 +78,13 @@ public class GuideInfoDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130970742);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371789));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369738));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371661));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131371663));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369739));
-    ((RelativeLayout)findViewById(2131371660)).setOnClickListener(new obq(this));
+    setContentView(2130970758);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371788));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369748));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371662));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131371664));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369749));
+    ((RelativeLayout)findViewById(2131371661)).setOnClickListener(new ogf(this));
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -105,7 +105,7 @@ public class GuideInfoDialog
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new obt(this));
+      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new ogi(this));
       return;
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
@@ -133,7 +133,7 @@ public class GuideInfoDialog
         this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
         break label202;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new obr(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ogg(this));
       break label202;
       label396:
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
@@ -141,7 +141,7 @@ public class GuideInfoDialog
       if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
         this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       } else {
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new obs(this));
+        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new ogh(this));
       }
     }
   }

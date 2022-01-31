@@ -1,131 +1,50 @@
-import android.media.AudioRecord;
-import android.os.Process;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import com.tencent.mobileqq.shortvideo.mediadevice.Lock;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
+import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
 import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aibz
-  extends Thread
+  extends WtloginListener
 {
-  public aibz(AudioCapture paramAudioCapture) {}
+  public aibz(AppLaucherHelper paramAppLaucherHelper, String paramString, WtloginHelper paramWtloginHelper, int paramInt, Context paramContext) {}
   
-  public void run()
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    this.a.b();
-    int i = 0;
-    int j;
-    label86:
-    int m;
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      for (;;)
-      {
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          try
-          {
-            this.a.jdField_a_of_type_JavaLangObject.wait();
-            if (!this.a.jdField_a_of_type_Boolean) {
-              break;
-            }
-            this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-            this.a.jdField_b_of_type_Long = System.currentTimeMillis();
-            Process.setThreadPriority(-19);
-            k = 1;
-            j = i;
-            i = k;
-            if (!Lock.jdField_a_of_type_Boolean) {
-              break label542;
-            }
-            if ((this.a.jdField_a_of_type_AndroidMediaAudioRecord == null) || (this.a.jdField_a_of_type_ArrayOfByte == null) || (this.a.jdField_b_of_type_ArrayOfByte == null)) {
-              continue;
-            }
-            this.a.jdField_b_of_type_Long = System.currentTimeMillis();
-            if (this.a.e < this.a.f) {
-              break label273;
-            }
-            m = 0;
-            k = m;
-            if (this.a.jdField_a_of_type_AndroidMediaAudioRecord != null)
-            {
-              k = m;
-              if (this.a.jdField_a_of_type_ArrayOfByte != null) {
-                k = this.a.jdField_a_of_type_AndroidMediaAudioRecord.read(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.f);
-              }
-            }
-            this.a.b(k);
-            if (i != 0)
-            {
-              i = 0;
-              continue;
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
-        this.a.c(this.a.jdField_a_of_type_ArrayOfByte, k, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, true, 4);
-      }
-      label273:
-      if ((this.a.jdField_a_of_type_AndroidMediaAudioRecord == null) || (this.a.jdField_a_of_type_ArrayOfByte == null)) {
-        break label662;
-      }
+    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d(getClass().getSimpleName(), 2, "geta1 OnException " + paramErrMsg);
     }
-    label662:
-    for (int k = this.a.jdField_a_of_type_AndroidMediaAudioRecord.read(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.e);; k = 0)
+    AppLaucherHelper.a = false;
+    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b.removeMessages(0);
+  }
+  
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b.removeMessages(0);
+    AppLaucherHelper.a = false;
+    if (paramInt2 != 0)
     {
-      this.a.b(k);
-      if (k <= 0) {
-        break label86;
-      }
-      if (i != 0)
-      {
-        i = 0;
-        break label86;
-      }
-      if (j + k > this.a.f)
-      {
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.jdField_b_of_type_ArrayOfByte, j, this.a.f - j);
-        m = AudioCapture.a(this.a, this.a.jdField_b_of_type_ArrayOfByte, this.a.f);
-        int n = this.a.f - m;
-        this.a.c(this.a.jdField_b_of_type_ArrayOfByte, n, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, true, 4);
-        if (m > 0) {
-          System.arraycopy(this.a.jdField_b_of_type_ArrayOfByte, n, this.a.jdField_b_of_type_ArrayOfByte, 0, m);
-        }
-        j = this.a.f - j;
-        k -= j;
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, j, this.a.jdField_b_of_type_ArrayOfByte, m, k);
-        j = m + k;
-      }
-      for (;;)
-      {
-        break;
-        System.arraycopy(this.a.jdField_a_of_type_ArrayOfByte, 0, this.a.jdField_b_of_type_ArrayOfByte, j, k);
-        j += k;
-      }
-      label542:
-      i = AudioCapture.a(this.a, this.a.jdField_b_of_type_ArrayOfByte, j);
-      j -= i;
-      this.a.c(this.a.jdField_b_of_type_ArrayOfByte, j, System.currentTimeMillis() - this.a.jdField_a_of_type_Long, false, 9);
-      if (i > 0)
-      {
-        System.arraycopy(this.a.jdField_b_of_type_ArrayOfByte, j, this.a.jdField_b_of_type_ArrayOfByte, 0, i);
-        break;
-      }
       if (QLog.isColorLevel()) {
-        QLog.d("AudioCapture", 2, "AudioNoiseSuppression[QQ]: leftLen=" + i);
+        QLog.d(getClass().getSimpleName(), 2, "geta1 failed " + paramInt2);
       }
-      i = 0;
-      break;
-      this.a.b();
       return;
     }
+    paramArrayOfByte1 = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
+    paramArrayOfByte1.setFlags(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aibz
  * JD-Core Version:    0.7.0.1
  */

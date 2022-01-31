@@ -1,21 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
 
-public final class akaj
-  implements Runnable
+public class akaj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public akaj(String paramString) {}
+  public akaj(RedDotAnimateView paramRedDotAnimateView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    File localFile = new File(this.a);
-    if ((localFile.exists()) && (localFile.isFile()))
-    {
-      boolean bool = localFile.delete();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.VoiceIntro", 2, "delete result=" + bool + " f.path=" + this.a);
-      }
-    }
+    this.a.b = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.a / 2.0F);
+    this.a.invalidate();
   }
 }
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.MutableContextWrapper;
 import android.os.Build.VERSION;
+import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -15,6 +16,7 @@ import android.view.accessibility.AccessibilityManager;
 import com.tencent.biz.AuthorizeConfig;
 import com.tencent.biz.common.util.Util;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -40,11 +42,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import kvw;
-import kvx;
-import kvy;
-import kvz;
-import kwa;
+import kyd;
+import kye;
+import kyf;
+import kyg;
+import kyh;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -131,7 +133,7 @@ public class CustomWebView
     return this.e;
   }
   
-  private boolean a(kwa paramkwa)
+  private boolean a(kyh paramkyh)
   {
     if (!this.e) {}
     Object localObject;
@@ -140,10 +142,10 @@ public class CustomWebView
       do
       {
         return false;
-        localObject = SwiftWebViewUtils.a(paramkwa.jdField_a_of_type_JavaLangString);
+        localObject = SwiftWebViewUtils.a(paramkyh.jdField_a_of_type_JavaLangString);
       } while ((!"http".equals(localObject)) && (!"https".equals(localObject)));
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback = new kvw(this, paramkwa);
-      localObject = SwiftBrowserCookieMonster.a(paramkwa.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback = new kyd(this, paramkyh);
+      localObject = SwiftBrowserCookieMonster.a(paramkyh.jdField_a_of_type_JavaLangString);
     } while (localObject == null);
     this.e = false;
     Intent localIntent = a();
@@ -152,8 +154,8 @@ public class CustomWebView
       ((SwiftBrowserCookieMonster)localObject).f();
       return false;
     }
-    this.jdField_a_of_type_JavaLangString = paramkwa.jdField_a_of_type_JavaLangString;
-    ((SwiftBrowserCookieMonster)localObject).a(paramkwa.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback, null, localIntent);
+    this.jdField_a_of_type_JavaLangString = paramkyh.jdField_a_of_type_JavaLangString;
+    ((SwiftBrowserCookieMonster)localObject).a(paramkyh.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback, null, localIntent);
     return true;
   }
   
@@ -322,10 +324,10 @@ public class CustomWebView
         if (!a()) {
           break;
         }
-        localObject = new kwa(this);
-        ((kwa)localObject).jdField_a_of_type_Int = 2;
-        ((kwa)localObject).jdField_a_of_type_JavaLangString = paramString;
-      } while (a((kwa)localObject));
+        localObject = new kyh(this);
+        ((kyh)localObject).jdField_a_of_type_Int = 2;
+        ((kyh)localObject).jdField_a_of_type_JavaLangString = paramString;
+      } while (a((kyh)localObject));
       if (!this.d) {
         break;
       }
@@ -604,7 +606,7 @@ public class CustomWebView
         return;
       }
     }
-    post(new kvz(this, paramString));
+    ThreadManagerV2.getUIHandlerV2().post(new kyg(this, paramString));
   }
   
   public void destroy()
@@ -620,7 +622,7 @@ public class CustomWebView
       this.jdField_a_of_type_JavaLangString = "";
     }
     if (!this.jdField_c_of_type_Boolean) {
-      postDelayed(new kvx(this), 1000L);
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new kye(this), 1000L);
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo != null)
     {
@@ -641,12 +643,12 @@ public class CustomWebView
         if (!a()) {
           break;
         }
-        localObject = new kwa(this);
-        ((kwa)localObject).jdField_a_of_type_Int = 3;
-        ((kwa)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((kwa)localObject).jdField_c_of_type_JavaLangString = paramString2;
-        ((kwa)localObject).d = paramString3;
-      } while (a((kwa)localObject));
+        localObject = new kyh(this);
+        ((kyh)localObject).jdField_a_of_type_Int = 3;
+        ((kyh)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((kyh)localObject).jdField_c_of_type_JavaLangString = paramString2;
+        ((kyh)localObject).d = paramString3;
+      } while (a((kyh)localObject));
       if (!this.d) {
         break;
       }
@@ -675,14 +677,14 @@ public class CustomWebView
         if (!a()) {
           break;
         }
-        localObject = new kwa(this);
-        ((kwa)localObject).jdField_a_of_type_Int = 4;
-        ((kwa)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((kwa)localObject).jdField_b_of_type_JavaLangString = paramString2;
-        ((kwa)localObject).jdField_c_of_type_JavaLangString = paramString3;
-        ((kwa)localObject).d = paramString4;
-        ((kwa)localObject).e = paramString5;
-      } while (a((kwa)localObject));
+        localObject = new kyh(this);
+        ((kyh)localObject).jdField_a_of_type_Int = 4;
+        ((kyh)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((kyh)localObject).jdField_b_of_type_JavaLangString = paramString2;
+        ((kyh)localObject).jdField_c_of_type_JavaLangString = paramString3;
+        ((kyh)localObject).d = paramString4;
+        ((kyh)localObject).e = paramString5;
+      } while (a((kyh)localObject));
       if (!this.d) {
         break;
       }
@@ -718,7 +720,7 @@ public class CustomWebView
     HashMap localHashMap;
     do
     {
-      kwa localkwa;
+      kyh localkyh;
       do
       {
         return;
@@ -727,10 +729,10 @@ public class CustomWebView
         if (!a()) {
           break;
         }
-        localkwa = new kwa(this);
-        localkwa.jdField_a_of_type_Int = 1;
-        localkwa.jdField_a_of_type_JavaLangString = paramString;
-      } while (a(localkwa));
+        localkyh = new kyh(this);
+        localkyh.jdField_a_of_type_Int = 1;
+        localkyh.jdField_a_of_type_JavaLangString = paramString;
+      } while (a(localkyh));
       if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.a().isMatchCurrentUrl(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.a().onClientReady()))
       {
         this.d = true;
@@ -783,7 +785,7 @@ public class CustomWebView
     super.onDetachedFromWindow();
     this.jdField_c_of_type_Boolean = false;
     if (this.jdField_b_of_type_Boolean) {
-      postDelayed(new kvy(this), 1000L);
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new kyf(this), 1000L);
     }
   }
   
@@ -818,7 +820,7 @@ public class CustomWebView
     if ((localObject instanceof Activity))
     {
       localObject = (Activity)localObject;
-      localView = ((Activity)localObject).findViewById(2131362371);
+      localView = ((Activity)localObject).findViewById(2131362374);
     }
     for (;;)
     {
@@ -832,7 +834,7 @@ public class CustomWebView
           {
             localView = new View(getContext());
             localView.setBackgroundColor(1996488704);
-            localView.setId(2131362371);
+            localView.setId(2131362374);
             ((Activity)localObject).addContentView(localView, new ViewGroup.LayoutParams(-1, -1));
             return;
           }

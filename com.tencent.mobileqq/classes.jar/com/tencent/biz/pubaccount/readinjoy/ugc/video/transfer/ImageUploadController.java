@@ -15,13 +15,13 @@ import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
-import lzk;
+import mcx;
 
 public class ImageUploadController
   extends FileUploadController
 {
   private long jdField_a_of_type_Long;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new lzk(this);
+  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new mcx(this);
   private Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
   private String jdField_a_of_type_JavaLangString;
   private long jdField_b_of_type_Long;

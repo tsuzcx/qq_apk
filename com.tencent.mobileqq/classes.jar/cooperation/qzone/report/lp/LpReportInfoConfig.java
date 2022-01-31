@@ -12,6 +12,8 @@ public class LpReportInfoConfig
   public static final int ACTION_RELATION_TO_ME = 303;
   public static final int ACTION_SELECT_PHOTO = 600;
   public static final int ACTION_SELECT_PHOTO_NONE = 601;
+  public static final int ACTION_SPECIAL_FOLLOW_TOAST = 661;
+  public static final int ACTION_TYPE_AIO_SYNC_QZONE = 723;
   public static final int ACTION_TYPE_ALBUM_DLNA = 681;
   public static final int ACTION_TYPE_ALBUM_GALLERY = 301;
   public static final int ACTION_TYPE_DAWANG = 686;
@@ -28,12 +30,19 @@ public class LpReportInfoConfig
   public static final int ACTION_TYPE_SHUOSHUO_TIME_SETTING = 630;
   public static final int ACTION_TYPE_UPLOAD_PHOTO_PAGE = 602;
   public static final int ACTION_TYPE_VIDEO_FLOAT = 584;
+  public static final int ACTION_TYPE_VIP_GIFT = 701;
   public static final int ACTION_TYPE_WEIYUN_ALBUM = 567;
   public static final int ACTION_VIDEO_EDITOR = 664;
   public static final int ADD_EVENT_TAG_CLICK_SUBACTION_TYPE = 25;
   public static final int RECOMMEND_POI_LOCATION_CLICK_SUBACTION_TYPE = 2;
   public static final int RECOMMEND_POI_SEARCH_CLICK_SUBACTION_TYPE = 3;
   public static final int RECOMMEND_POI_VISIBLE_CLICK_SUBACTION_TYPE = 1;
+  public static final int RESERVED_AIO_SYNC_QZONE_CANCEL = 3;
+  public static final int RESERVED_AIO_SYNC_QZONE_CHECK = 2;
+  public static final int RESERVED_AIO_SYNC_QZONE_EXPOSE = 1;
+  public static final int RESERVED_AIO_SYNC_QZONE_PREVIEW_UPLOAD = 1;
+  public static final int RESERVED_AIO_SYNC_QZONE_SELECT_ALBUM = 4;
+  public static final int RESERVED_AIO_SYNC_QZONE_UPLOAD = 5;
   public static final int RESERVED_TYPE_P2V_EDIT_DLNA = 5;
   public static final int RESERVED_TYPE_P2V_EDIT_DOWNLOAD = 6;
   public static final int RESERVED_TYPE_P2V_EDIT_FONT = 3;
@@ -175,6 +184,7 @@ public class LpReportInfoConfig
   public static final int RESERVE_TEXT_CLICK_FINISH = 4;
   public static final int RESERVE_UPLOAD_PHOTO_PAGE_ACTION_CANCEL_CANCEL = 2;
   public static final int RESERVE_UPLOAD_PHOTO_PAGE_ACTION_CANCEL_GIVEUP = 1;
+  public static final int RESERVE_UPLOAD_PHOTO_PAGE_ACTION_TYPE_LEFT_SLIDE_EDIT = 5;
   public static final int RESERVE_UPLOAD_PHOTO_PAGE_ACTION_TYPE_PHOTO_DELETE = 1;
   public static final int RESERVE_UPLOAD_PHOTO_PAGE_ACTION_TYPE_PHOTO_DELETE_CANCEL = 5;
   public static final int RESERVE_UPLOAD_PHOTO_PAGE_ACTION_TYPE_PHOTO_DELETE_OK = 4;
@@ -196,6 +206,7 @@ public class LpReportInfoConfig
   public static final int RESERVE_VIDEO_MUSIC_FINISH = 3;
   public static final int RESERVE_VIDEO_SYNC_TO_QQSTORY_CHECKED = 1;
   public static final int RESERVE_VIDEO_SYNC_TO_QQSTORY_UNCHECK = 2;
+  public static final int REVERSE_FRIEND_FEED = 2;
   public static final int SCENE_APP_BACKGROUND = 2;
   public static final int SCENE_CONDITION_MEET = 3;
   public static final int SCENE_USER_ACTION = 1;
@@ -205,6 +216,9 @@ public class LpReportInfoConfig
   public static final int SUBATION_TYPE_P2V_PIC_EDIT = 4;
   public static final int SUBATION_TYPE_P2V_PRIV = 5;
   public static final int SUB_ACTION_ADD_FRIEND_BTN_CLICK = 3;
+  public static final int SUB_ACTION_AIO_SYNC_QZONE_PHOTO_LIST_ACTIVITY = 2;
+  public static final int SUB_ACTION_AIO_SYNC_QZONE_PHOTO_LIST_PANEL = 1;
+  public static final int SUB_ACTION_AIO_SYNC_QZONE_PHOTO_PREVIEW = 3;
   public static final int SUB_ACTION_APPLY_ACESS_BTN_CLICK = 2;
   public static final int SUB_ACTION_BIAOQING = 6;
   public static final int SUB_ACTION_BLOG_TAB = 3;
@@ -239,6 +253,8 @@ public class LpReportInfoConfig
   public static final int SUB_ACTION_SCHEDUAL_DELETE_FORBID = 5;
   public static final int SUB_ACTION_SCHEDUAL_PUBLISH = 2;
   public static final int SUB_ACTION_SCHEDUAL_PUBLISH_DELETE_OPEN = 4;
+  public static final int SUB_ACTION_SPECIAL_FOLLOW_TOAST_CLICK = 2;
+  public static final int SUB_ACTION_SPECIAL_FOLLOW_TOAST_EXPOSE = 1;
   public static final int SUB_ACTION_SPECIAL_TOAST = 83;
   public static final int SUB_ACTION_STICKER = 4;
   public static final int SUB_ACTION_SYNC_TO_QQSTORY = 12;
@@ -289,6 +305,8 @@ public class LpReportInfoConfig
   public static final int SUB_ACTION_TYPE_RECOM_ALBUM_PAGE_CLICKED = 22;
   public static final int SUB_ACTION_TYPE_RECOM_ALBUM_PAGE_RETURN = 24;
   public static final int SUB_ACTION_TYPE_SHUOSHUO_TIME_SETTING_EXPOSE = 1;
+  public static final int SUB_ACTION_TYPE_VIP_GIFT_CLICK = 2;
+  public static final int SUB_ACTION_TYPE_VIP_GIFT_EXPLOSE = 1;
   public static final int SUB_ACTION_TYPE_WEIYUN_BACKUP = 2;
   public static final int SUB_ACTION_TYPE_WEIYUN_MEMU = 5;
   public static final int SUB_ACTION_TYPE_WEIYUN_OPEM_APP = 3;
@@ -334,6 +352,9 @@ public class LpReportInfoConfig
   public static final int WRITE_MOOD_AUDIO_EXPOSE_SUBACTION_TYPE = 1;
   public static final int WRITE_MOOD_AUDIO_SUBACTION_TYPE = 32;
   public static final int WRITE_MOOD_EMOJI_CLICK_SUBACTION_TYPE = 29;
+  public static final int WRITE_MOOD_MAKE_VIDEO_CLICK_RESERVE_TYPE = 2;
+  public static final int WRITE_MOOD_MAKE_VIDEO_CLICK_SUBACTION_TYPE = 45;
+  public static final int WRITE_MOOD_MAKE_VIDEO_EXPOSE_RESERVE_TYPE = 1;
   public static final int WRITE_MOOD_RECOMMEND_POI_CLICK_SUBACTION_TYPE = 26;
   public static final int WRITE_MOOD_RECOMMENT_PHOTO_CLICK_SUBACTION_TYPE = 2;
   public static final int WRITE_MOOD_RECOMMENT_PHOTO_EXPOSE_SUBACTION_TYPE = 1;

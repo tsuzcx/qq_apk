@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.medalwall.ShareHelper;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import java.io.File;
 
-public class aefy
-  implements DialogInterface.OnDismissListener
+class aefy
+  implements Runnable
 {
-  public aefy(ShareHelper paramShareHelper, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  aefy(aefx paramaefx, File paramFile) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
-    }
+    this.jdField_a_of_type_Aefx.a.b.dismiss();
+    this.jdField_a_of_type_Aefx.a.a(this.jdField_a_of_type_JavaIoFile);
   }
 }
 

@@ -1,27 +1,35 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
 
 public class abjt
-  implements ActionSheet.OnButtonClickListener
+  implements Animator.AnimatorListener
 {
-  public abjt(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  public abjt(ConversationPullDownActiveBase paramConversationPullDownActiveBase, View paramView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.p();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.p();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.k) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    this.a.a.a("DynamicAvatarRecordActivity");
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abjt
  * JD-Core Version:    0.7.0.1
  */

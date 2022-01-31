@@ -79,14 +79,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-import ofl;
-import ofm;
-import ofn;
-import ofo;
-import ofp;
-import ofq;
-import ofr;
-import ofs;
+import oka;
+import okb;
+import okc;
+import okd;
+import oke;
+import okf;
+import okg;
+import okh;
 
 public class EditVideoPartManager
   implements IEventReceiver
@@ -256,7 +256,7 @@ public class EditVideoPartManager
       b("pub_changeface", paramInt, 0, new String[] { "1", str2, str1 });
       return;
       a("pub_video", 0, 0, new String[] { "", String.valueOf(a(paramInt)) });
-      Bosses.get().postJob(new ofq(this));
+      Bosses.get().postJob(new okf(this));
       break;
       paramInt = 0;
       break label52;
@@ -438,23 +438,18 @@ public class EditVideoPartManager
         localObject2 = ((Stream)localObject1).map(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoDoodle.a(i3));
       }
       if ((!(paramEditSource instanceof EditTakeVideoSource)) && (!(paramEditSource instanceof EditLocalVideoSource))) {
-        break label1417;
+        break label1377;
       }
     }
-    label1417:
+    label1325:
+    label1377:
     for (Object localObject1 = ((Stream)localObject2).map(new HWEncodeMergeThumbSegment());; localObject1 = ((Stream)localObject2).map(new MergeThumbSegment()).map(new DoodleRotateSegment()))
     {
       ((Stream)localObject1).map(new PublishVideoSegment(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams)).map(new UIThreadOffFunction(this)).subscribe(a(localGenerateContext));
       i2 += 1;
       break label756;
       break;
-      label1325:
       if (i1 != 0)
-      {
-        localObject1 = ((Stream)localObject1).map(new GenerateThumbSegment(null, (EditVideoPlayerExport)a(EditVideoPlayerExport.class), i3));
-        break label1225;
-      }
-      if (localGenerateContext.jdField_a_of_type_Int == 9)
       {
         localObject1 = ((Stream)localObject1).map(new GenerateThumbSegment(null, (EditVideoPlayerExport)a(EditVideoPlayerExport.class), i3));
         break label1225;
@@ -674,7 +669,7 @@ public class EditVideoPartManager
   
   protected SimpleObserver a(GenerateContext paramGenerateContext)
   {
-    return new ofr(this, paramGenerateContext, SystemClock.uptimeMillis());
+    return new okg(this, paramGenerateContext, SystemClock.uptimeMillis());
   }
   
   public String a(String paramString)
@@ -1143,7 +1138,7 @@ public class EditVideoPartManager
   public void a(String paramString, int paramInt1, int paramInt2, String... paramVarArgs)
   {
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 1) {
-      Bosses.get().postJob(new ofo(this, paramString, paramInt1, paramInt2, paramVarArgs));
+      Bosses.get().postJob(new okd(this, paramString, paramInt1, paramInt2, paramVarArgs));
     }
   }
   
@@ -1272,7 +1267,7 @@ public class EditVideoPartManager
   
   public void b(String paramString, int paramInt1, int paramInt2, String... paramVarArgs)
   {
-    Bosses.get().postJob(new ofp(this, paramString, paramInt1, paramInt2, paramVarArgs));
+    Bosses.get().postJob(new oke(this, paramString, paramInt1, paramInt2, paramVarArgs));
   }
   
   public boolean b()
@@ -1432,7 +1427,7 @@ public class EditVideoPartManager
       {
         if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 3) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a()) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_AndroidOsBundle != null) && (!"发表".equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_AndroidOsBundle.get("extra_publish_text"))))
         {
-          DialogUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 230, "放弃本次图片编辑？", null, "放弃", "取消", new ofl(this), new ofm(this)).show();
+          DialogUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 230, "放弃本次图片编辑？", null, "放弃", "取消", new oka(this), new okb(this)).show();
           return;
           localObject = "1";
           break;
@@ -1457,7 +1452,7 @@ public class EditVideoPartManager
         localActionSheet.a((CharSequence)localObject);
         localActionSheet.a("放弃", 3);
         localActionSheet.d("取消");
-        localActionSheet.a(new ofn(this, localActionSheet));
+        localActionSheet.a(new okc(this, localActionSheet));
         localActionSheet.show();
         return;
         localObject = "1";
@@ -1586,7 +1581,7 @@ public class EditVideoPartManager
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((EditVideoPart)localIterator.next()).M_();
+      ((EditVideoPart)localIterator.next()).N_();
     }
   }
   
@@ -1623,7 +1618,7 @@ public class EditVideoPartManager
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((EditVideoPart)localIterator.next()).N_();
+      ((EditVideoPart)localIterator.next()).O_();
     }
   }
   
@@ -1733,7 +1728,7 @@ public class EditVideoPartManager
   public void v()
   {
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-      ThreadManager.post(new ofs(this), 5, null, true);
+      ThreadManager.post(new okh(this), 5, null, true);
     }
   }
 }

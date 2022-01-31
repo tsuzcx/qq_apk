@@ -1,25 +1,60 @@
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.util.WeakReferenceHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
+import com.tencent.mobileqq.systemmsg.SystemMsgUtils;
+import com.tencent.mobileqq.widget.QQToast;
 
-class uhh
-  implements Runnable
+public class uhh
+  extends MessageObserver
 {
-  uhh(uhg paramuhg, Card paramCard) {}
+  public uhh(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  protected void a(String paramString)
   {
-    if (this.jdField_a_of_type_Uhg.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet)) {
-      this.jdField_a_of_type_Uhg.a.a.sendEmptyMessage(0);
-    }
-    for (;;)
+    this.a.i();
+    paramString = this.a.getString(2131433190);
+    QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    this.a.a(2130838759, this.a.getString(2131434524));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    long l2 = GroupSystemMsgController.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, HttpUtil.a(), "0", String.valueOf(this.jdField_a_of_type_Uhg.a.j));
+      l1 = Long.parseLong(paramString1);
+      if (!paramBoolean)
+      {
+        this.a.i();
+        if (SystemMsgUtils.a(GroupSystemMsgController.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
+          this.a.finish();
+        }
+        return;
+      }
+      this.a.i();
+      this.a.finish();
+      SystemMsgUtils.a(GroupSystemMsgController.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
       return;
-      this.jdField_a_of_type_Uhg.a.a.sendEmptyMessage(1);
     }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        l1 = l2;
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    this.a.a(2130838759, this.a.getString(2131434525));
   }
 }
 

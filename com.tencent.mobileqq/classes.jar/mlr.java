@@ -1,16 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
+import com.tencent.widget.AdapterView.AdapterDataSetObserver;
 
-class mlr
-  implements Runnable
+public class mlr
+  extends AdapterView.AdapterDataSetObserver
 {
-  mlr(mlq parammlq) {}
-  
-  public void run()
+  public mlr(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
   {
-    Kandian210Msg0xeeInfo localKandian210Msg0xeeInfo = KandianAppInPush.a(this.a.a);
-    KandianAppInPush.b(this.a.a, null);
-    this.a.a.a(localKandian210Msg0xeeInfo);
+    super(paramReadInJoyFlowLayout);
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    ReadInJoyFlowLayout.a(this.a);
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    ReadInJoyFlowLayout.a(this.a);
   }
 }
 

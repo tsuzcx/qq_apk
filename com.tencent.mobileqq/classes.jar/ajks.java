@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
 
-public class ajks
+class ajks
   implements Runnable
 {
-  public ajks(AudioItem paramAudioItem, TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
+  ajks(ajkr paramajkr) {}
   
   public void run()
   {
-    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
+    this.a.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView);
+    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetScrollView);
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = null;
+    this.a.a.a.a();
   }
 }
 

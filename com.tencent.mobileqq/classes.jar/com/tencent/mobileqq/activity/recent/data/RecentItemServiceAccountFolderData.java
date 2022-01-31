@@ -58,7 +58,7 @@ public class RecentItemServiceAccountFolderData
         break label452;
       }
       this.jdField_d_of_type_JavaLangCharSequence = localServiceAccountFolderManager.a();
-      this.e = paramContext.getResources().getColor(2131494288);
+      this.e = paramContext.getResources().getColor(2131494294);
     }
     for (;;)
     {

@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
 class agff
-  implements ARTipsManager.ButtonClickListener
+  implements Runnable
 {
-  agff(agfb paramagfb) {}
+  agff(agfe paramagfe, OcrRecogResult paramOcrRecogResult) {}
   
-  public void a()
+  public void run()
   {
-    if (ScanTorchActivity.j(this.a.a))
-    {
-      this.a.a.e(9);
-      return;
-    }
-    ScanTorchActivity.h(this.a.a);
+    OCRRecognitionResultActivity.a(this.jdField_a_of_type_Agfe.a, this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agff
  * JD-Core Version:    0.7.0.1
  */

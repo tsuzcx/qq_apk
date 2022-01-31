@@ -1,32 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.io.File;
+import org.json.JSONObject;
 
-public final class kxa
-  implements BusinessObserver
+public class kxa
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private kxa(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (paramBoolean) {}
-    try
+    synchronized (AdvertisementVideoPreloadManager.a(this.a))
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, "nativeEngineAdReport success!" + localWebSsoResponseBody.data.get());
-        }
-      }
+      AdvertisementVideoPreloadManager.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
+      AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
       return;
     }
-    catch (Exception paramBundle)
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    synchronized (AdvertisementVideoPreloadManager.a(this.a))
     {
-      paramBundle.printStackTrace();
+      AdvertisementVideoPreloadManager.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
+      try
+      {
+        paramString2 = new JSONObject(paramString2);
+        long l1 = paramString2.optLong("fileSize");
+        long l2 = paramString2.optLong("offset");
+        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
+        {
+          paramString2 = new File(AdvertisementVideoPreloadManager.b(paramString1));
+          if (paramString2.exists()) {
+            paramString2.renameTo(new File(AdvertisementVideoPreloadManager.a(paramString1)));
+          }
+          AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
+        }
+      }
+      catch (Exception paramString1)
+      {
+        label136:
+        break label136;
+      }
+      return;
     }
   }
 }

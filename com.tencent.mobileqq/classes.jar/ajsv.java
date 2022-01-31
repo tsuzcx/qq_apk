@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.TextInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
 
 public class ajsv
   implements Runnable
 {
-  public ajsv(PublishItemContainer paramPublishItemContainer) {}
+  public ajsv(TextItem paramTextItem, TextItem.TextViewHolder paramTextViewHolder, TextInfo paramTextInfo) {}
   
   public void run()
   {
-    this.a.fullScroll(66);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.requestFocus();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.findFocus();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setSelection(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.a);
   }
 }
 

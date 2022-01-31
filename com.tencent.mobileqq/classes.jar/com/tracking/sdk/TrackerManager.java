@@ -20,10 +20,7 @@ public class TrackerManager
     return ObjTrackHolder.instance;
   }
   
-  public void init()
-  {
-    System.loadLibrary("ObjectTracker");
-  }
+  public void init() {}
   
   public native boolean openTrack(byte[] paramArrayOfByte, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt3, int paramInt4, float paramFloat5);
   

@@ -24,11 +24,11 @@ import java.util.List;
 import mqq.manager.Manager;
 import protocol.KQQConfig.GetResourceReqInfo;
 import protocol.KQQConfig.GetResourceRespInfo;
-import zbi;
-import zbj;
-import zbl;
-import zbm;
-import zbo;
+import zii;
+import zij;
+import zil;
+import zim;
+import zio;
 
 public class ConditionSearchManager
   implements Manager
@@ -44,7 +44,7 @@ public class ConditionSearchManager
   public long a;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private ConditionSearchManager.IFirstLocationReqCancelListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IFirstLocationReqCancelListener;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zbo(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zio(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private AddressData jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData;
   public volatile Card a;
@@ -86,7 +86,7 @@ public class ConditionSearchManager
     jdField_c_of_type_ArrayOfJavaLangString = new String[] { "不限", "水瓶座", "双鱼座", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座" };
     jdField_d_of_type_ArrayOfJavaLangString = new String[] { "不限", "计算机/互联网/通信", "生产/工艺/制造", "医疗/护理/制药", "金融/银行/投资/保险", "商业/服务业/个体经营", "文化/广告/传媒", "娱乐/艺术/表演", "律师/法务", "教育/培训", "公务员/行政/事业单位", "模特", "空姐", "学生", "其他职业" };
     jdField_e_of_type_ArrayOfJavaLangString = new String[] { "", "IT", "制造", "医疗", "金融", "商业", "文化", "艺术", "法律", "教育", "行政", "模特", "空姐", "学生", "" };
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130843136, 2130842312, 2130842312, 2130842312, 2130842936, 2130842936, 2130843152, 2130843152, 2130842754, 2130842754, 2130842754, 2130843136, 2130843136, 2130842990, 2130843136 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130843168, 2130842347, 2130842347, 2130842347, 2130842968, 2130842968, 2130843184, 2130843184, 2130842789, 2130842789, 2130842789, 2130843168, 2130843168, 2130843022, 2130843168 };
     jdField_b_of_type_ArrayOfInt = new int[] { -16777216, -11362561, -11362561, -11362561, -274353, -274353, -893603, -893603, -7745469, -7745469, -7745469, -8291118, -8291118, -16723548, -16777216 };
   }
   
@@ -199,7 +199,7 @@ public class ConditionSearchManager
       return 3;
     }
     this.jdField_h_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zbj(this, localFile));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zij(this, localFile));
     return 0;
   }
   
@@ -368,7 +368,7 @@ public class ConditionSearchManager
     {
       localArrayList = new ArrayList(this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.size());
       localArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqConditionsearchDataAddressData.a.values());
-      Collections.sort(localArrayList, new zbi(this));
+      Collections.sort(localArrayList, new zii(this));
     }
     return localArrayList;
   }
@@ -445,7 +445,7 @@ public class ConditionSearchManager
     this.jdField_d_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
     a(this.jdField_a_of_type_JavaLangObject);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zbm(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zim(this));
   }
   
   public void a(Object paramObject)
@@ -530,7 +530,7 @@ public class ConditionSearchManager
   
   void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zbl(this, paramBoolean));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new zil(this, paramBoolean));
   }
   
   public void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3, String[] paramArrayOfString1, String[] paramArrayOfString2, int paramInt4, int paramInt5, int paramInt6)

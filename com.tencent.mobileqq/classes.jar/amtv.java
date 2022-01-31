@@ -1,23 +1,15 @@
-import cooperation.qzone.cache.CacheManager;
-import cooperation.qzone.cache.FileStorageHandler.Collector;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.plugin.PluginIphoneTitleBarActivity;
 
-public final class amtv
-  implements FileStorageHandler.Collector
+public class amtv
+  implements View.OnClickListener
 {
-  public Collection a()
+  public amtv(PluginIphoneTitleBarActivity paramPluginIphoneTitleBarActivity) {}
+  
+  public void onClick(View paramView)
   {
-    synchronized ()
-    {
-      if (CacheManager.a().size() <= 0)
-      {
-        localObject1 = null;
-        return localObject1;
-      }
-      Object localObject1 = new ArrayList(CacheManager.a().values());
-    }
+    this.a.a();
   }
 }
 

@@ -13,8 +13,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import mqq.manager.Manager;
-import xgp;
-import xgq;
+import xmj;
+import xmk;
 
 public class QWalletRedManager
   implements QWalletConfigManager.ConfigUpdateListener, Manager
@@ -34,7 +34,7 @@ public class QWalletRedManager
   
   private void a()
   {
-    ThreadManager.executeOnSubThread(new xgp(this));
+    ThreadManager.executeOnSubThread(new xmj(this));
   }
   
   public QWalletRedManager.ShowInfo a(String paramString)
@@ -69,7 +69,7 @@ public class QWalletRedManager
     if (paramString.size() > 0)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.saveConfig();
-      QWalletCommonServlet.a(RedInfoSyncReq.createReq(paramString), new xgq(this));
+      QWalletCommonServlet.a(RedInfoSyncReq.createReq(paramString), new xmk(this));
     }
     if (localList.size() > 0) {
       VACDReportUtil.a(null, "QWalletStat", "QWalletRedShow", "QWalletRedShow", QWRedConfig.RedInfo.transToReportStr(localList), 0, null);

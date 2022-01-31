@@ -1,79 +1,35 @@
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.AnimationEndListener;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.Holder;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
-public final class vde
-  implements INetEngine.INetEngineListener
+public class vde
+  implements CustomFrameAnimationDrawable.AnimationEndListener
 {
-  public vde(String paramString1, String paramString2) {}
+  public vde(GivingHeartItemBuilder paramGivingHeartItemBuilder, GivingHeartItemBuilder.Holder paramHolder, MessageForPoke paramMessageForPoke) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void a()
   {
-    if (paramNetResp.jdField_a_of_type_Int == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "pe res download repeating ");
-      }
-      return;
-    }
-    boolean bool;
-    if (paramNetResp.jdField_a_of_type_Int == 0)
-    {
-      paramNetResp = paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c;
-      String str1 = FileUtils.b(paramNetResp);
-      String str2 = this.a;
-      if ((str1 != null) && (str1.equalsIgnoreCase(this.b)))
-      {
-        try
-        {
-          FileUtils.a(paramNetResp, str2, false);
-          bool = true;
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            label78:
-            if (QLog.isColorLevel()) {
-              QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but unzip is failed");
-            }
-            bool = false;
-          }
-        }
-        FileUtils.d(paramNetResp);
-        if (!bool) {
-          break label184;
-        }
-        SharedPreUtils.a(true);
-        PokeItemHelper.b = true;
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.b == GivingHeartItemBuilder.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.a instanceof ChatHistoryForC2C))) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.c.setVisibility(0);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp download result = " + bool);
-      }
-      PokeItemHelper.c = false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      AIOUtils.a -= 1;
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but md5 is mismatched");
-      }
-      bool = false;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp failed ");
-      }
-      bool = false;
-      break label78;
-      label184:
-      PokeItemHelper.n += 1;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.c.setVisibility(8);
     }
   }
 }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vipgift;
 
-import aklk;
-import akll;
-import aklm;
+import aktb;
+import aktc;
+import aktd;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -155,7 +155,7 @@ public class VipGiftManager
           a("http://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
           a("280", paramLong);
         }
-        HtmlOffline.b("280", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new aklk(this));
+        HtmlOffline.b("280", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new aktb(this));
         return;
       }
       a("280", null, paramLong);
@@ -166,7 +166,7 @@ public class VipGiftManager
       if (a(2L, paramLong)) {
         a(localException, paramLong);
       }
-      HtmlOffline.b(localException, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new akll(this));
+      HtmlOffline.b(localException, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new aktc(this));
       return;
     }
     a(localException, "280", paramLong);
@@ -256,7 +256,7 @@ public class VipGiftManager
   public void a(String paramString1, String paramString2, long paramLong)
   {
     long l = System.currentTimeMillis();
-    HtmlOffline.b(paramString1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new aklm(this, l, paramString1, paramLong, paramString2));
+    HtmlOffline.b(paramString1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new aktd(this, l, paramString1, paramLong, paramString2));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -506,7 +506,7 @@ public class VipGiftManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vipgift.VipGiftManager
  * JD-Core Version:    0.7.0.1
  */

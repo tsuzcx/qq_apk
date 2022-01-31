@@ -1,27 +1,23 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVEffectReport;
+import com.tencent.av.ui.EffectSettingUi;
 
 public class jwa
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  public jwa(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
+  public jwa(EffectSettingUi paramEffectSettingUi) {}
   
   public void onClick(View paramView)
   {
-    this.a.y();
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    EffectSettingUi.a(this.a.a);
+    this.a.a(true);
+    AVEffectReport.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jwa
  * JD-Core Version:    0.7.0.1
  */

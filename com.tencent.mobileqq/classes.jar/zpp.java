@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public class zpp
+class zpp
   implements Runnable
 {
-  public zpp(ActivateFriendsManager paramActivateFriendsManager) {}
+  zpp(zpo paramzpo) {}
   
   public void run()
   {
-    ActivateFriendsManager.a(this.a).notifyObservers(ActivateFriendsObserver.class, 115, true, null);
+    if (this.a.a.b)
+    {
+      this.a.a.b = false;
+      this.a.a();
+    }
   }
 }
 

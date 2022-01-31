@@ -1,6 +1,6 @@
 package cooperation.plugin;
 
-import ammg;
+import amts;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -204,7 +204,7 @@ public class PluginInfoUtil
   
   public static boolean a(File paramFile)
   {
-    return !IOUtil.contentEquals(new File(paramFile, "PluginVersion.ini"), "351230");
+    return !IOUtil.contentEquals(new File(paramFile, "PluginVersion.ini"), "355371");
   }
   
   /* Error */
@@ -296,7 +296,7 @@ public class PluginInfoUtil
   
   public static File[] a(File paramFile)
   {
-    return paramFile.listFiles(new ammg());
+    return paramFile.listFiles(new amts());
   }
 }
 

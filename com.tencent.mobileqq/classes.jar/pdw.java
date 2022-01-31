@@ -1,71 +1,32 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
+import android.content.res.Resources;
 import android.widget.Toast;
-import com.tencent.biz.widgets.ScannerView;
-import com.tencent.biz.widgets.ScannerView.FileDecodeListener;
-import com.tencent.biz.widgets.ScannerView.FlashLightListener;
-import com.tencent.biz.widgets.ScannerView.ScannerListener;
+import com.tencent.av.utils.TroopMemberUtil;
+import com.tencent.biz.troopgift.TroopGiftAioItemData;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class pdw
-  extends Handler
+  extends TroopGiftCallback
 {
-  public pdw(ScannerView paramScannerView) {}
+  public pdw(TroopGiftPanel paramTroopGiftPanel, int paramInt, TroopGiftAioItemData paramTroopGiftAioItemData) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    if (paramMessage.what == 9)
-    {
-      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131429920), 1);
-      paramMessage.setGravity(17, 0, 0);
-      paramMessage.show();
+    ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_suc", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b, "" + TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
-    Object localObject;
-    do
-    {
-      return;
-      localObject = ScannerView.a(this.a);
-      if (localObject != null) {}
-      switch (paramMessage.what)
-      {
-      case 3: 
-      case 4: 
-      case 5: 
-      case 6: 
-      default: 
-        localObject = ScannerView.a(this.a);
-        if (localObject != null) {}
-        switch (paramMessage.what)
-        {
-        default: 
-          localObject = ScannerView.a(this.a);
-        }
-        break;
-      }
-    } while (localObject == null);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((ScannerView.FlashLightListener)localObject).a(bool);
-      return;
-      ((ScannerView.ScannerListener)localObject).b(String.valueOf(paramMessage.obj));
-      return;
-      ((ScannerView.ScannerListener)localObject).d();
-      return;
-      ((ScannerView.ScannerListener)localObject).c();
-      return;
-      ((ScannerView.ScannerListener)localObject).b();
-      return;
-      ((ScannerView.FileDecodeListener)localObject).a(String.valueOf(paramMessage.obj));
-      return;
-      ((ScannerView.FileDecodeListener)localObject).a();
-      return;
-    }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, "赠送失败", 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131558448)).show();
+    ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b, "" + TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
   }
 }
 

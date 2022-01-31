@@ -1,118 +1,43 @@
-import android.graphics.Rect;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.SystemClock;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
+import com.tencent.mobileqq.activity.aio.qwallet.elem.VoiceResElem;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class uqc
-  implements Runnable
+  implements CustomizeStrategyFactory.HBCustomizeStrategy
 {
-  public uqc(PressToChangeVoicePanel paramPressToChangeVoicePanel) {}
+  QWalletConfigManager jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = null;
+  PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void run()
+  public uqc(QQAppInterface paramQQAppInterface)
   {
-    PressToChangeVoicePanel.a(this.a, true);
-    boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.j();
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "isRecording is:" + bool);
-    }
-    if (bool)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.i())
-      {
-        this.a.setClickable(false);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f(2);
-      }
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = ((QWalletConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(244));
     }
-    PressToChangeVoicePanel.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, "0X8006386");
-    if (PressToChangeVoicePanel.jdField_a_of_type_JavaLangString == null)
+  }
+  
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    ThreadManager.post(new uqd(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
+  {
+    if ((paramRedPacketInfo != null) && ((paramBaseRedPkgElem instanceof VoiceResElem)))
     {
-      QQToast.a(BaseApplication.getContext(), 2131438012, 0).a();
-      return;
-    }
-    com.tencent.mobileqq.transfile.PttInfoCollector.a = SystemClock.uptimeMillis();
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().getTitleBarHeight();
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    if (!FileUtils.a())
-    {
-      QQToast.a(BaseApplication.getContext(), 2131433437, 0).b(i);
-      label173:
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d) {
-        break label625;
-      }
-    }
-    label625:
-    for (i = 1;; i = 2)
-    {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005472", "0X8005472", i, 0, "", "", "", "7.6.3");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel == null) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel.a(this.a);
-      return;
-      if (!QQRecorder.d())
-      {
-        QQToast.a(BaseApplication.getContext(), 2131433438, 0).b(i);
-        break label173;
-      }
-      if (!QQRecorder.a(((QQRecorder.RecorderParam)localObject).c))
-      {
-        QQToast.a(BaseApplication.getContext(), 2131433441, 0).b(i);
-        break label173;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())
-      {
-        QQToast.a(BaseApplication.getContext(), 2131433788, 0).a();
-        break label173;
-      }
-      if (AudioHelper.b(1))
-      {
-        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-        break label173;
-      }
-      this.a.f();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.a, false, (QQRecorder.RecorderParam)localObject);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.g(2);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel.setStatus(3);
-      this.a.h();
-      localObject = new Rect();
-      Rect localRect = new Rect();
-      this.a.b.getGlobalVisibleRect(localRect);
-      this.a.getWindowVisibleDisplayFrame((Rect)localObject);
-      localRect = new Rect();
-      this.a.c.getGlobalVisibleRect(localRect);
-      int j = localRect.bottom;
-      if (((!Build.MODEL.startsWith("Coolpad")) || (Build.VERSION.SDK_INT != 19)) && ((!Build.MODEL.startsWith("Coolpad A8")) || (Build.VERSION.SDK_INT != 22)) && ((!Build.MODEL.startsWith("Coolpad B770")) || (Build.VERSION.SDK_INT != 22)))
-      {
-        i = j;
-        if (Build.MODEL.startsWith("ivvi"))
-        {
-          i = j;
-          if (Build.VERSION.SDK_INT != 22) {}
-        }
-      }
-      else
-      {
-        i = j - ((Rect)localObject).top;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetPopupWindow = AudioPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), ((Rect)localObject).width(), i, this.a, 0, 0, 0);
-      this.a.jdField_a_of_type_AndroidViewView = AudioPanel.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.a.b, this.a.c);
-      break label173;
+      paramBaseRedPkgElem = (VoiceResElem)paramBaseRedPkgElem;
+      paramRedPacketInfo.icon = paramBaseRedPkgElem.a;
+      paramRedPacketInfo.resPath = paramBaseRedPkgElem.b;
     }
   }
 }

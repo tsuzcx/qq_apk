@@ -1,90 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.armap.config.ShopScanCheckHandler;
-import com.tencent.mobileqq.armap.config.ShopScanCheckHandler.Info;
-import com.tencent.mobileqq.armap.utils.ARResUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
+import android.widget.TextView;
 
 class abfq
   implements Runnable
 {
-  abfq(abfp paramabfp, ShopScanCheckHandler.Info paramInfo) {}
+  abfq(abfp paramabfp, int paramInt, TextView paramTextView) {}
   
   public void run()
   {
-    Object localObject = new File(ARResUtil.b(this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.b));
-    if (localObject == null)
+    String str;
+    switch (this.jdField_a_of_type_Int)
     {
-      ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a, this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info, 1, 0);
+    default: 
+      str = "js调试库状态: " + "未知";
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       return;
+      str = "js调试库状态: " + "不存在";
+      continue;
+      str = "js调试库状态: " + "下载中";
+      continue;
+      str = "js调试库状态: " + "存在(so)";
+      continue;
+      str = "js调试库状态: " + "存在(zip)";
+      continue;
+      str = "js调试库状态: " + "存在(network)";
+      continue;
+      str = "js调试库状态: " + "失败(zip)";
+      continue;
+      str = "js调试库状态: " + "失败(network)";
+      continue;
+      str = "js调试库状态: " + "失败(manage)";
+      continue;
+      str = "js调试库状态: " + "失败(jsc)";
+      continue;
+      str = "js调试库状态: " + "失败(other)";
     }
-    if (!ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a, (File)localObject, this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.b))
-    {
-      i = HttpDownloadUtil.a(ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a), this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.a, (File)localObject);
-      if (i != 0)
-      {
-        ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a, this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info, 2, i);
-        return;
-      }
-      if (!ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a, (File)localObject, this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.b))
-      {
-        ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a, this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info, 3, 0);
-        return;
-      }
-    }
-    localObject = FileUtils.a((File)localObject);
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a, this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info, 4, 0);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.l = ((String)localObject);
-    int i = this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.c.lastIndexOf("/");
-    int j = this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.c.indexOf("?md5=");
-    if (j != -1) {}
-    for (localObject = ARResUtil.b(this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.d) + "_" + this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.c.substring(i + 1, j);; localObject = ARResUtil.b(this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.d) + "_" + this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.c.substring(i + 1))
-    {
-      localObject = new File((String)localObject);
-      if (localObject != null) {
-        break;
-      }
-      ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a, this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info, 1, 0);
-      return;
-    }
-    if (!((File)localObject).exists())
-    {
-      i = HttpDownloadUtil.a(ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a), this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.c, (File)localObject);
-      if (i != 0)
-      {
-        ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a, this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info, 2, i);
-        return;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.e = ((File)localObject).getAbsolutePath();
-    i = this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.f.lastIndexOf("/");
-    j = this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.f.indexOf("?md5=");
-    if (j != -1) {}
-    for (localObject = ARResUtil.b(this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.g) + "_" + this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.f.substring(i + 1, j);; localObject = ARResUtil.b(this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.g) + "_" + this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.f.substring(i + 1))
-    {
-      localObject = new File((String)localObject);
-      if (localObject != null) {
-        break;
-      }
-      ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a, this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info, 1, 0);
-      return;
-    }
-    if (!((File)localObject).exists())
-    {
-      i = HttpDownloadUtil.a(ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a), this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.f, (File)localObject);
-      if (i != 0)
-      {
-        ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a, this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info, 2, i);
-        return;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info.h = ((File)localObject).getAbsolutePath();
-    ShopScanCheckHandler.a(this.jdField_a_of_type_Abfp.a, this.jdField_a_of_type_ComTencentMobileqqArmapConfigShopScanCheckHandler$Info, 0, 0);
   }
 }
 

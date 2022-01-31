@@ -16,8 +16,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.NewIntent;
-import muq;
-import mur;
+import myk;
+import myl;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,7 +48,7 @@ public class PAReportUtil
     paramString1.add(paramString3);
     localReportPublicAccountRequest.r5.set(paramString1);
     localNewIntent.putExtra("data", localReportPublicAccountRequest.toByteArray());
-    localNewIntent.setObserver(new mur());
+    localNewIntent.setObserver(new myl());
     paramAppInterface.startServlet(localNewIntent);
   }
   
@@ -94,7 +94,7 @@ public class PAReportUtil
     localReportPublicAccountRequest.r4.set(paramString8);
     localReportPublicAccountRequest.r5.set(paramList);
     ((NewIntent)localObject).putExtra("data", localReportPublicAccountRequest.toByteArray());
-    ((NewIntent)localObject).setObserver(new muq(paramAppInterface, paramList, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8));
+    ((NewIntent)localObject).setObserver(new myk(paramAppInterface, paramList, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8));
     paramAppInterface.startServlet((NewIntent)localObject);
   }
   

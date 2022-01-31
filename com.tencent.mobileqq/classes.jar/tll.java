@@ -1,65 +1,159 @@
-import MQQ.PrivExtV2Rsp;
-import MQQ.VipUserInfo;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VipInfoHandler;
-import com.tencent.mobileqq.app.VipInfoObserver;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.util.List;
 
 public class tll
-  extends VipInfoObserver
+  extends FriendListObserver
 {
-  public tll(QQSettingMe paramQQSettingMe) {}
+  public tll(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  protected void onSetAsNormalContacts(boolean paramBoolean, List paramList)
   {
-    if ((paramBoolean) && (paramInt >= 0) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if (!paramBoolean)
     {
-      Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-      if (localObject != null) {
-        ((SharedPreferences)localObject).edit().putInt("key_selfvip_growthvalue", paramInt).commit();
-      }
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoObserver");
-      }
-      this.a.b((String)localObject);
+      this.a.a(2131437782, 1);
+      this.a.b.setOnCheckedChangeListener(null);
+      this.a.b.setChecked(true);
+      this.a.b.setOnCheckedChangeListener(this.a);
     }
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List paramList)
   {
-    if ((paramInt == VipInfoHandler.a) && (paramBoolean))
+    if (!paramBoolean)
     {
-      paramObject = ((PrivExtV2Rsp)paramObject).vipInfo;
-      if (paramObject != null)
+      this.a.a(2131437782, 1);
+      this.a.b.setOnCheckedChangeListener(null);
+      this.a.b.setChecked(false);
+      this.a.b.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString1)) || (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.d = paramString2;
+      this.a.b(paramString2);
+      if ((this.a.jdField_a_of_type_Int & 0x1) == 1)
       {
-        paramObject = paramObject.sUri;
-        if (paramObject != null)
-        {
-          QQSettingMe.b(this.a, paramObject);
-          if (QLog.isColorLevel()) {
-            QLog.d("QQSettingRedesign", 2, "vip url = " + paramObject);
-          }
-          paramObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4).edit().putString("VIPCenter_url_key", paramObject);
-          if (Build.VERSION.SDK_INT >= 9) {
-            break label145;
-          }
-          paramObject.commit();
+        paramString1 = this.a;
+        if (!paramBoolean) {
+          break label189;
+        }
+        paramByte = 2131435795;
+        label77:
+        if (!paramBoolean) {
+          break label196;
         }
       }
     }
+    label187:
+    label189:
+    label196:
+    for (int i = 2;; i = 1)
+    {
+      paramString1.a(paramByte, i);
+      this.a.jdField_a_of_type_Int &= 0xFFFFFFFE;
+      return;
+      paramString1 = (FriendsManager)this.a.app.getManager(50);
+      if (paramString1 == null) {}
+      for (paramString1 = null;; paramString1 = paramString1.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
+      {
+        if (paramString1 == null) {
+          break label187;
+        }
+        if (paramString1.remark != null) {
+          this.a.d = paramString1.remark;
+        }
+        this.a.b(this.a.d);
+        break;
+      }
+      break;
+      paramByte = 2131435797;
+      break label77;
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(String.valueOf(paramObject))))
+    {
+      this.a.a(2131433275, 2);
+      if (this.a.jdField_a_of_type_AndroidContentIntent == null) {
+        this.a.jdField_a_of_type_AndroidContentIntent = new Intent();
+      }
+      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
+      this.a.setResult(-1, this.a.jdField_a_of_type_AndroidContentIntent);
+      this.a.finish();
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Object localObject2;
+    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != null) && (ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
+    {
+      localObject2 = (FriendsManager)this.a.app.getManager(50);
+      if (localObject2 != null) {
+        break label171;
+      }
+      localObject1 = null;
+      if (localObject1 != null)
+      {
+        if (((Friends)localObject1).remark != null) {
+          this.a.d = ((Friends)localObject1).remark;
+        }
+        this.a.b(this.a.d);
+        localObject1 = ((FriendsManager)localObject2).a(String.valueOf(((Friends)localObject1).groupid));
+        if ((localObject1 != null) && (!Utils.a(this.a.jdField_c_of_type_JavaLangString, ((Groups)localObject1).group_name)))
+        {
+          this.a.jdField_c_of_type_JavaLangString = ((Groups)localObject1).group_name;
+          localObject2 = this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+          if (!TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)) {
+            break label190;
+          }
+        }
+      }
+    }
+    label171:
+    label190:
+    for (Object localObject1 = "";; localObject1 = this.a.jdField_c_of_type_JavaLangString)
+    {
+      ((FormSimpleItem)localObject2).setRightText((CharSequence)localObject1);
+      return;
+      localObject1 = ((FriendsManager)localObject2).c(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+      break;
+    }
+  }
+  
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (!Utils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, paramString))) {}
     for (;;)
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new tlm(this));
       return;
-      label145:
-      paramObject.apply();
+      paramString = (FriendsManager)this.a.app.getManager(50);
+      if (paramString == null) {}
+      for (paramString = null; (paramString != null) && (!Utils.a(this.a.jdField_c_of_type_JavaLangString, paramString.group_name)); paramString = paramString.a(String.valueOf(paramByte1)))
+      {
+        this.a.jdField_c_of_type_JavaLangString = paramString.group_name;
+        this.a.runOnUiThread(new tlm(this));
+        return;
+      }
     }
   }
 }

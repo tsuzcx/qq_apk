@@ -1,28 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
 
-public class akck
-  implements Runnable
+class akck
+  implements Action.OnActionEndListener
 {
-  public akck(JumpAction paramJumpAction) {}
+  akck(akcj paramakcj) {}
   
-  public void run()
+  public void a()
   {
-    if (JumpAction.a(this.a) == null) {}
-    String str;
-    do
-    {
-      return;
-      str = JumpAction.a(this.a).getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.c(str, System.currentTimeMillis());
+    this.a.a.a.post(new akcl(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akck
  * JD-Core Version:    0.7.0.1
  */

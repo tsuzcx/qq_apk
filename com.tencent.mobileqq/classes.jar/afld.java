@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.MomentDataChangeObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 public class afld
-  implements Runnable
+  implements View.OnClickListener
 {
-  public afld(NearbyMomentManager paramNearbyMomentManager, String paramString) {}
+  public afld(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Iterator localIterator = NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager).iterator();
-    while (localIterator.hasNext()) {
-      ((NearbyMomentManager.MomentDataChangeObserver)localIterator.next()).e(this.jdField_a_of_type_JavaLangString);
+    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    paramView = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity;
+    if (i >= NearbyPeopleProfileActivity.c)
+    {
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131437423), 0).a();
+      return;
     }
+    NearbyProfileEditPanel.b(this.a);
   }
 }
 

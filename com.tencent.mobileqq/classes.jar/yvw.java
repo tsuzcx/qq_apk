@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.game.ApolloFragmentManager;
+import com.tencent.mobileqq.apollo.game.ApolloGameView;
 
 public class yvw
-  implements Comparator
+  implements View.OnClickListener
 {
-  public yvw(ApolloDaoManager paramApolloDaoManager) {}
+  public yvw(ApolloGameView paramApolloGameView, ImageView paramImageView) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void onClick(View paramView)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
+    ApolloFragmentManager.a().a(null);
+    if (ApolloFragmentManager.a().a() <= 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
   }
 }
 

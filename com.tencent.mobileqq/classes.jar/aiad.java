@@ -1,71 +1,26 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.WatermarkVideoRunnable;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import cooperation.qqfav.globalsearch.GroupSearchModelFavorite;
+import java.util.List;
 
 public class aiad
-  implements FFmpegExecuteResponseCallback
+  extends GroupSearchEngine.SearchEngineEntity
 {
-  public aiad(ShortVideoUtils.WatermarkVideoRunnable paramWatermarkVideoRunnable, String paramString) {}
-  
-  public void a() {}
-  
-  public void a(String paramString)
+  public aiad(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoUtils", 2, new Object[] { "update system gallery: ", this.jdField_a_of_type_JavaLangString });
-    }
-    com.tencent.biz.qqstory.utils.FileUtils.a(BaseApplication.getContext(), new File(this.jdField_a_of_type_JavaLangString));
+    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
   }
   
-  public void a(boolean paramBoolean)
+  public ISearchResultGroupModel a(List paramList, String paramString)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("ShortVideoUtils", 2, new Object[] { "watermark video finish: ", Boolean.valueOf(paramBoolean) });
-      double d = (SystemClock.uptimeMillis() - this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable.jdField_a_of_type_Long) / 1000.0D;
-      QLog.d("ShortVideoUtils", 2, "generate files|third step cost:" + d);
-    }
-    for (;;)
-    {
-      synchronized (ShortVideoUtils.WatermarkVideoRunnable.a())
-      {
-        ShortVideoUtils.WatermarkVideoRunnable.a().notify();
-        if (!ShortVideoUtils.WatermarkVideoRunnable.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable))
-        {
-          ??? = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable;
-          if (paramBoolean)
-          {
-            i = 10000;
-            ShortVideoUtils.WatermarkVideoRunnable.a((ShortVideoUtils.WatermarkVideoRunnable)???, i);
-          }
-        }
-        else
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable.jdField_a_of_type_JavaLangString != null) {
-            com.tencent.mobileqq.utils.FileUtils.d(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable.jdField_a_of_type_JavaLangString);
-          }
-          return;
-        }
-      }
-      int i = 10001;
-    }
+    return new GroupSearchModelFavorite(paramList, paramString);
   }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("ShortVideoUtils", 2, "watermark video failed: " + paramString);
-    }
-  }
-  
-  public void c(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiad
  * JD-Core Version:    0.7.0.1
  */

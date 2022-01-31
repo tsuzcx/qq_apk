@@ -1,19 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+import dov.com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Friend;
+import dov.com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Group;
 
-public final class aolr
-  implements Parcelable.Creator
+public class aolr
 {
-  public FilterCategory a(Parcel paramParcel)
-  {
-    return new FilterCategory(paramParcel);
-  }
-  
-  public FilterCategory[] a(int paramInt)
-  {
-    return new FilterCategory[paramInt];
-  }
+  public int a;
+  public ComplexPart.Friend a;
+  public ComplexPart.Group a;
 }
 
 

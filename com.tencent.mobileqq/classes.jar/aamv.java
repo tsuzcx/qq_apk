@@ -1,50 +1,19 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
-import com.tencent.widget.ActionSheet;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aamv
+class aamv
   implements Runnable
 {
-  public aamv(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  aamv(aamu paramaamu) {}
   
   public void run()
   {
-    if (ARGreetingCardListManager.a(this.a) != null)
-    {
-      ARGreetingCardListManager.a(this.a).removeAllViews();
-      ARGreetingCardListManager.a(this.a).setVisibility(8);
-      ARGreetingCardListManager.a(this.a).setOnTouchListener(null);
-    }
-    if (ARGreetingCardListManager.b(this.a) != null)
-    {
-      ARGreetingCardListManager.b(this.a).setVisibility(0);
-      ARGreetingCardListManager.a(this.a, null);
-    }
-    if (ARGreetingCardListManager.a(this.a) != null)
-    {
-      ARGreetingCardListManager.a(this.a).dismiss();
-      ARGreetingCardListManager.a(this.a, null);
-    }
-    if (ARGreetingCardListManager.a(this.a) != null)
-    {
-      ARGreetingCardListManager.a(this.a).a();
-      ARGreetingCardListManager.a(this.a, null);
-    }
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.b(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.b(this.a, null);
-    ARGreetingCardListManager.c(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "下载资源失败,请重试！", 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aamv
  * JD-Core Version:    0.7.0.1
  */

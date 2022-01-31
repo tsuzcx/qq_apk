@@ -1,32 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
 import com.tencent.qphone.base.util.QLog;
 
-public class ybh
-  extends BroadcastReceiver
+class ybh
+  implements Runnable
 {
-  public ybh(SelectMemberActivity paramSelectMemberActivity) {}
+  ybh(ybf paramybf) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.app.getApp().getPackageName()))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
-      }
-    }
-    while ((!paramContext.equals("tencent.av.v2q.StopVideoChat")) || ((paramIntent.getIntExtra("stopReason", 0) != 0) && (paramIntent.getIntExtra("stopReason3rd", -1) != 1)) || (!this.a.a.getBooleanExtra("sendToVideo", false))) {
+    boolean bool = CameraCompatibleList.a(CameraCompatibleList.y);
+    if (bool)
+    {
+      RMVideoStateMgr.a().a(1102, "已经获取权限，需要重新进入打开摄像头", true);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "ACTION_STOP_VIDEO_CHAT");
+    try
+    {
+      if ((!this.a.d) && (this.a.f)) {
+        RMVideoStateMgr.a().a(1102, "初始化失败,code=1102", true);
+      }
+      RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+      if (QLog.isColorLevel()) {
+        QLog.e("RMVideoInitState", 2, "[ERR_CODE_INIT_TIMEOUT]初始化失败,code=1102 mIsReadAVCodec=" + this.a.a + " mIsReadCamera=" + this.a.b + " black=" + bool + " rmStateMgr.mIsAudioReady=" + localRMVideoStateMgr.d + " rmStateMgr.mVideoFileDir=" + localRMVideoStateMgr.a);
+      }
+      RMVideoStateMgr.b(null);
+      return;
     }
-    this.a.finish();
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

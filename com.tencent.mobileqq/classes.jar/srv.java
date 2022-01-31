@@ -1,21 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class srv
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public srv(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public srv(FontSettingActivity paramFontSettingActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.f = false;
-    this.a.finish();
+    FontSettingActivity.a(this.a).dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

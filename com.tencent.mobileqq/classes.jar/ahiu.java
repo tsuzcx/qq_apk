@@ -1,33 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 
-public class ahiu
-  implements Animation.AnimationListener
+class ahiu
+  implements Runnable
 {
-  public ahiu(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  ahiu(ahit paramahit, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (EffectsCameraCaptureFragment.d(this.a) != null)
-    {
-      EffectsCameraCaptureFragment.d(this.a).clearAnimation();
-      EffectsCameraCaptureFragment.d(this.a).setVisibility(8);
-    }
-    this.a.h = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.h = true;
+    ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahiu
  * JD-Core Version:    0.7.0.1
  */

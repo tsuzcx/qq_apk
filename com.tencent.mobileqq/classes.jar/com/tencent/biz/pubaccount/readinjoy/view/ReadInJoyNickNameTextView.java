@@ -11,7 +11,7 @@ import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Refres
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mjb;
+import mms;
 import mqq.os.MqqHandler;
 
 public class ReadInJoyNickNameTextView
@@ -54,7 +54,7 @@ public class ReadInJoyNickNameTextView
     if ((!TextUtils.equals(paramString, String.valueOf(this.jdField_a_of_type_Long))) || (paramReadInJoyUserInfo == null)) {
       return;
     }
-    ThreadManager.getUIHandler().post(new mjb(this, paramReadInJoyUserInfo));
+    ThreadManager.getUIHandler().post(new mms(this, paramReadInJoyUserInfo));
   }
   
   public void a(String paramString1, String paramString2)

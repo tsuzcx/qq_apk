@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.AVRedPacketConfig.ExpressionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class jml
-  implements Parcelable.Creator
+class jml
+  implements DialogInterface.OnClickListener
 {
-  public AVRedPacketConfig.ExpressionInfo a(Parcel paramParcel)
-  {
-    return new AVRedPacketConfig.ExpressionInfo(paramParcel);
-  }
+  jml(jmk paramjmk) {}
   
-  public AVRedPacketConfig.ExpressionInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new AVRedPacketConfig.ExpressionInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("RandomController", 2, " [random room owner] kick member fail because of network bad");
+    }
+    this.a.a.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jml
  * JD-Core Version:    0.7.0.1
  */

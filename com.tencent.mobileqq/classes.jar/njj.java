@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.RedPointUtils;
 
 public class njj
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public njj(FeedsPlayModeBase paramFeedsPlayModeBase) {}
+  public njj(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.s();
+    int i = RedPointUtils.a(49);
+    String str = this.a.a.a.getText().toString();
+    SLog.a(MsgTabStoryNodeListManager.a(), "redpoint update, update count = %s->%d", str, Integer.valueOf(i));
+    this.a.a.a(i);
   }
 }
 

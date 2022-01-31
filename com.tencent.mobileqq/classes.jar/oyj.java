@@ -1,15 +1,42 @@
-import android.widget.EditText;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.util.InputMethodUtil;
+import android.graphics.Rect;
+import android.os.CountDownTimer;
+import android.view.MotionEvent;
+import android.view.TouchDelegate;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.util.AccessibilityUtil;
 
-public class oyj
-  implements Runnable
+class oyj
+  extends TouchDelegate
 {
-  public oyj(MoveFileActivity paramMoveFileActivity, EditText paramEditText) {}
-  
-  public void run()
+  oyj(oyi paramoyi, Rect paramRect, View paramView)
   {
-    InputMethodUtil.a(this.jdField_a_of_type_AndroidWidgetEditText);
+    super(paramRect, paramView);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (QRDisplayActivity.a(this.a.a) != null)
+      {
+        QRDisplayActivity.a(this.a.a, false);
+        QRDisplayActivity.a(this.a.a).start();
+        continue;
+        if (QRDisplayActivity.a(this.a.a) != null) {
+          QRDisplayActivity.a(this.a.a).cancel();
+        }
+        if (!QRDisplayActivity.a(this.a.a))
+        {
+          AccessibilityUtil.c(this.a.a.d);
+          this.a.a.onClick(this.a.a.d);
+        }
+      }
+    }
   }
 }
 

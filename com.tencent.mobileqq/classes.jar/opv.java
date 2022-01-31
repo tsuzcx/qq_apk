@@ -1,23 +1,14 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.PagerAdapter;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import com.tencent.biz.qqstory.takevideo.permission.PermissionPart;
 
 public class opv
-  extends DataSetObserver
 {
-  public opv(EmptySupportViewPager paramEmptySupportViewPager) {}
+  public final int a;
+  public final PermissionPart a;
   
-  public void onChanged()
+  public opv(PermissionPart paramPermissionPart, int paramInt)
   {
-    PagerAdapter localPagerAdapter = this.a.getAdapter();
-    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
-    {
-      this.a.a(8);
-      EmptySupportViewPager.a(this.a, 0);
-      return;
-    }
-    this.a.a(0);
-    EmptySupportViewPager.b(this.a, 8);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionPermissionPart = paramPermissionPart;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

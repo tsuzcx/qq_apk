@@ -47,15 +47,15 @@ public class ShareGroupFeedProfileSegment
       SLog.e("Q.qqstory.detail.ShareGroupFeedProfileSegment", "bind share group view failed because it's invalidate date.");
       return paramBaseViewHolder.a();
     }
-    RelativeLayout localRelativeLayout1 = (RelativeLayout)paramBaseViewHolder.a(2131371680);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131371694);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131362743);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371687);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131371698);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371697);
-    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131371695);
-    RelativeLayout localRelativeLayout2 = (RelativeLayout)paramBaseViewHolder.a(2131371646);
-    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramBaseViewHolder.a(2131371701);
+    RelativeLayout localRelativeLayout1 = (RelativeLayout)paramBaseViewHolder.a(2131371678);
+    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131371692);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131362748);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371685);
+    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131371696);
+    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371695);
+    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131371693);
+    RelativeLayout localRelativeLayout2 = (RelativeLayout)paramBaseViewHolder.a(2131371647);
+    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramBaseViewHolder.a(2131371699);
     localRelativeLayout1.setOnClickListener(this);
     localImageView.setImageDrawable(StoryDepends.StoryShareGroup.a(localShareGroupItem.headerUnionIdList));
     if (!TextUtils.isEmpty(localShareGroupItem.getName()))
@@ -67,7 +67,7 @@ public class ShareGroupFeedProfileSegment
       if (!localShareGroupItem.isPublic()) {
         break label255;
       }
-      localStoryUserBadgeView.setImageResource(2130843718);
+      localStoryUserBadgeView.setImageResource(2130843790);
     }
     for (;;)
     {
@@ -77,10 +77,10 @@ public class ShareGroupFeedProfileSegment
       a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(), paramBaseViewHolder);
       a(paramInt, paramBaseViewHolder, localRelativeLayout2, localStoryHomeHorizontalListView);
       return paramBaseViewHolder.a();
-      localTextView1.setText("未知共享日迹");
+      localTextView1.setText("未知共享小视频");
       break;
       label255:
-      localStoryUserBadgeView.setImageResource(2130843717);
+      localStoryUserBadgeView.setImageResource(2130843789);
     }
   }
   
@@ -111,15 +111,15 @@ public class ShareGroupFeedProfileSegment
       SLog.e("Q.qqstory.detail.ShareGroupFeedProfileSegment", "bind share group view failed because it's invalidate date.");
       return paramBaseViewHolder.a();
     }
-    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131371680);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131371694);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131362743);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371687);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131371698);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371697);
-    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131371695);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371646);
-    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramBaseViewHolder.a(2131371701);
+    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131371678);
+    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131371692);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131362748);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371685);
+    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131371696);
+    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131371695);
+    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131371693);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131371647);
+    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramBaseViewHolder.a(2131371699);
     ((RelativeLayout)localObject).setOnClickListener(this);
     localObject = ImageUtil.a();
     localImageView.setImageDrawable(FaceDrawable.a(QQStoryContext.a(), 4, String.valueOf(localShareGroupFeedItem.getOwner().groupUin), 3, (Drawable)localObject, (Drawable)localObject));
@@ -129,14 +129,14 @@ public class ShareGroupFeedProfileSegment
     for (;;)
     {
       a(localTextView2, localTextView3);
-      localStoryUserBadgeView.setImageResource(2130843716);
+      localStoryUserBadgeView.setImageResource(2130843788);
       localStoryUserBadgeView.setOnClickListener(this);
       localStoryUserBadgeView.setVisibility(0);
       a(localTextView4, 2, "添加视频");
       a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(), paramBaseViewHolder);
       a(paramInt, paramBaseViewHolder, localRelativeLayout, localStoryHomeHorizontalListView);
       return paramBaseViewHolder.a();
-      localTextView1.setText("未知群主日迹");
+      localTextView1.setText("未知群主小视频");
     }
   }
   
@@ -193,9 +193,9 @@ public class ShareGroupFeedProfileSegment
     super.onClick(paramView);
     switch (paramView.getId())
     {
-    case 2131371696: 
+    case 2131371694: 
     default: 
-    case 2131371695: 
+    case 2131371693: 
       do
       {
         do

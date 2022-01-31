@@ -1,36 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData;
-import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
-import cooperation.qzone.model.CoverCacheData.PackageInfo;
+import android.os.RemoteException;
+import cooperation.qappcenter.remote.IServiceHandler;
+import cooperation.qappcenter.remote.RecvMsg;
+import cooperation.qappcenter.remote.RemoteServiceProxy;
+import cooperation.qappcenter.remote.SendMsg;
 
-public final class amuj
-  implements Parcelable.Creator
+public class amuj
+  implements Runnable
 {
-  public CoverCacheData a(Parcel paramParcel)
-  {
-    CoverCacheData localCoverCacheData = new CoverCacheData();
-    if (paramParcel != null)
-    {
-      localCoverCacheData.jdField_a_of_type_Long = paramParcel.readLong();
-      localCoverCacheData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo = ((CoverCacheData.PackageInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo = ((CoverCacheData.GameCoverInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      localCoverCacheData.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
-      localCoverCacheData.jdField_a_of_type_Int = paramParcel.readInt();
-      localCoverCacheData.jdField_b_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_c_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_b_of_type_Int = paramParcel.readInt();
-    }
-    return localCoverCacheData;
-  }
+  public amuj(RemoteServiceProxy paramRemoteServiceProxy, SendMsg paramSendMsg) {}
   
-  public CoverCacheData[] a(int paramInt)
+  public void run()
   {
-    return null;
+    try
+    {
+      if (this.jdField_a_of_type_CooperationQappcenterRemoteRemoteServiceProxy.a != null)
+      {
+        this.jdField_a_of_type_CooperationQappcenterRemoteRemoteServiceProxy.a.a(this.jdField_a_of_type_CooperationQappcenterRemoteSendMsg);
+        return;
+      }
+      try
+      {
+        RecvMsg localRecvMsg = this.jdField_a_of_type_CooperationQappcenterRemoteRemoteServiceProxy.a(this.jdField_a_of_type_CooperationQappcenterRemoteSendMsg, "main thread sendMsgToServiceFailed. serviceHandler is null.");
+        this.jdField_a_of_type_CooperationQappcenterRemoteRemoteServiceProxy.a(this.jdField_a_of_type_CooperationQappcenterRemoteSendMsg, localRecvMsg);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        return;
+      }
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      localRemoteException.printStackTrace();
+    }
   }
 }
 

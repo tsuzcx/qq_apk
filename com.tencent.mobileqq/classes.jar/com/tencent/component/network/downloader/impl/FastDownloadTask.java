@@ -318,7 +318,7 @@ public class FastDownloadTask
     //   12: iconst_1
     //   13: aload_2
     //   14: aastore
-    //   15: invokestatic 312	pjp:a	([Ljava/lang/Object;)I
+    //   15: invokestatic 312	poh:a	([Ljava/lang/Object;)I
     //   18: istore 7
     //   20: lconst_0
     //   21: lstore 8

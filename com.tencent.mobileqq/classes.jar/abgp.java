@@ -1,16 +1,15 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.mobileqq.armap.ItemInfo;
+import com.tencent.mobileqq.armap.POIInfo;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-public class abgp
+class abgp
   implements Runnable
 {
-  public abgp(ARGridMapViewDialog paramARGridMapViewDialog) {}
+  abgp(abgo paramabgo, ItemInfo paramItemInfo) {}
   
   public void run()
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    }
+    ARMapEngine.removePOITask(this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo.a.a);
   }
 }
 

@@ -1,22 +1,31 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.multimsg.LongTextMsgManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class rzi
-  implements Animation.AnimationListener
+public final class rzi
+  implements Runnable
 {
-  public rzi(ChatHistory paramChatHistory, View paramView, int paramInt) {}
+  public rzi(boolean paramBoolean, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    try
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        ((LongTextMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(165)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ChatActivityFacade", 1, "life circle2:", localException);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

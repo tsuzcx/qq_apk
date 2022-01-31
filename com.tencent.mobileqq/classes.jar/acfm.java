@@ -1,28 +1,26 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
 
 public class acfm
-  implements URLDrawableDownListener
+  implements Handler.Callback
 {
-  public acfm(EmotionKeywordAdapter paramEmotionKeywordAdapter) {}
+  private String a;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public acfm(String paramString)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof ProgressBar))) {
-      ((ProgressBar)paramView).setVisibility(4);
+    this.a = paramString;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
     }
+    NearbyProcessMonitor.a(this.a, 1);
+    return true;
   }
 }
 

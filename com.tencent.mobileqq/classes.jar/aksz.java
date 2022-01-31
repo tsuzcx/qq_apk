@@ -1,39 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.vipav.VipFunCallManager;
+import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
 
 public class aksz
-  implements TextWatcher
+  implements Runnable
 {
-  public aksz(ClearableEditText paramClearableEditText) {}
+  public aksz(VipFunCallPreviewActivity paramVipFunCallPreviewActivity, int paramInt) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    paramCharSequence = this.a.getText().toString();
-    if (this.a.isFocused())
-    {
-      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
-        this.a.setClearButtonVisible(false);
-      }
+    BitmapDrawable localBitmapDrawable = null;
+    Bitmap localBitmap = BitmapManager.a(VipFunCallManager.a(this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.app, this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.jdField_a_of_type_Int, 9, null));
+    if (localBitmap != null) {
+      localBitmapDrawable = new BitmapDrawable(localBitmap);
     }
-    else {
-      return;
+    if (localBitmapDrawable != null) {
+      this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.jdField_a_of_type_AndroidOsHandler, 51, this.jdField_a_of_type_Int, 0, localBitmapDrawable));
     }
-    if ((ClearableEditText.a(this.a)) || (ClearableEditText.b(this.a)))
-    {
-      this.a.setClearButtonVisible(true);
-      return;
-    }
-    this.a.setClearButtonVisible(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksz
  * JD-Core Version:    0.7.0.1
  */

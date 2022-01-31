@@ -1,18 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Condition;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public final class ofk
-  implements Parcelable.Creator
+public class ofk
+  implements LocalVideoPusher.Condition
 {
-  public EditVideoParams a(Parcel paramParcel)
-  {
-    return new EditVideoParams(paramParcel);
-  }
+  public ofk(LocalVideoPushSegment paramLocalVideoPushSegment) {}
   
-  public EditVideoParams[] a(int paramInt)
+  public boolean a()
   {
-    return new EditVideoParams[paramInt];
+    long l = ((Long)this.a.a.b("last_cancel_time", Long.valueOf(0L))).longValue();
+    try
+    {
+      String str = (String)this.a.a.b("localVideoScanInterval", "1440");
+      SLog.a("Q.qqstory.home.LocalVideoPushSegment", "localVideoScanInterval config=%s", str);
+      i = Integer.valueOf(str).intValue();
+      if (NetConnInfoCenter.getServerTimeMillis() - l < i * 60 * 1000) {
+        return false;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = 1440;
+      }
+    }
+    return true;
   }
 }
 

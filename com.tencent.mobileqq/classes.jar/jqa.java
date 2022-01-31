@@ -1,23 +1,29 @@
-import com.tencent.av.gaudio.VideoViewInfo;
-import java.util.Comparator;
+import android.widget.TextView;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.smallscreen.PstnSmallScreenService;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class jqa
-  implements Comparator
+public class jqa
+  implements Runnable
 {
-  jqa(jpz paramjpz) {}
+  public jqa(PstnSmallScreenService paramPstnSmallScreenService) {}
   
-  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
+  public void run()
   {
-    if (paramVideoViewInfo1.a) {}
-    while (paramVideoViewInfo2.a) {
-      return 1;
+    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429565);
     }
-    return 0;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b = 2;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,28 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
-import com.tencent.mobileqq.ar.config.SplashPopupWin;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
 
 public class aajw
-  implements IMediaPlayer.OnInfoListener
+  implements Runnable
 {
-  public aajw(SplashPopupWin paramSplashPopupWin, PopupWindow paramPopupWindow, TextureVideoView paramTextureVideoView) {}
+  public aajw(ObjectSurfaceView paramObjectSurfaceView) {}
   
-  public boolean a_(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    QLog.w("WorldCupMgr", 1, "SplashPopupWin.onInfo, what[" + paramInt1 + "], extra[" + paramInt2 + "], popupWindow[" + this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing() + "]");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setBackgroundDrawable(null);
-    if (this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a != null)
+    while (ObjectSurfaceView.a(this.a))
     {
-      paramIMediaPlayer = (ImageView)SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin).getContentView().findViewById(2131364642);
-      paramIMediaPlayer.setImageDrawable((Drawable)this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a.a.get(Integer.valueOf(1)));
-      paramIMediaPlayer.setVisibility(0);
+      long l = System.currentTimeMillis();
+      ObjectSurfaceView.a(this.a);
+      try
+      {
+        Thread.sleep(Math.max(0L, ObjectSurfaceView.a(this.a) - (System.currentTimeMillis() - l)));
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+      }
     }
-    return false;
+    if (ObjectSurfaceView.b(this.a)) {
+      ObjectSurfaceView.a(this.a);
+    }
   }
 }
 

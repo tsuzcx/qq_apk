@@ -1,14 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class ajjo
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ajjo(ReciteRecordLayout paramReciteRecordLayout) {}
+  public ajjo(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setText(2131431555);
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    }
   }
 }
 

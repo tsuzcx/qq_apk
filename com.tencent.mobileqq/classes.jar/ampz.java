@@ -1,51 +1,92 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.SoftReference;
+import java.util.Map.Entry;
 
 public class ampz
-  extends OnPluginInstallListener.Stub
+  extends SoftReference
+  implements Map.Entry
 {
-  public ampz(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
+  private final int jdField_a_of_type_Int;
+  private ampz jdField_a_of_type_Ampz;
+  private Object jdField_a_of_type_JavaLangObject;
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public ampz(Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue, int paramInt, ampz paramampz)
   {
-    String str = String.valueOf(paramInt);
-    paramString = "个性化插件";
-    if (this.a.b == QQIndividualityBridgeActivity.c) {
-      paramString = "斗图";
+    super(paramObject1, paramReferenceQueue);
+    this.jdField_a_of_type_JavaLangObject = paramObject2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Ampz = paramampz;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof Map.Entry)) {}
+    Object localObject1;
+    do
+    {
+      Object localObject2;
+      do
+      {
+        return false;
+        paramObject = (Map.Entry)paramObject;
+        localObject1 = getKey();
+        localObject2 = paramObject.getKey();
+      } while ((localObject1 != localObject2) && ((localObject1 == null) || (!localObject1.equals(localObject2))));
+      localObject1 = getValue();
+      paramObject = paramObject.getValue();
+    } while ((localObject1 != paramObject) && ((localObject1 == null) || (!localObject1.equals(paramObject))));
+    return true;
+  }
+  
+  public Object getKey()
+  {
+    return SoftHashMap.a(get());
+  }
+  
+  public Object getValue()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public int hashCode()
+  {
+    int j = 0;
+    Object localObject1 = getKey();
+    Object localObject2 = getValue();
+    int i;
+    if (localObject1 == null)
+    {
+      i = 0;
+      if (localObject2 != null) {
+        break label36;
+      }
     }
     for (;;)
     {
-      IPluginManager.a(str, paramString);
-      int i = NetworkUtil.a(this.a);
-      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.c(this.a);
-      ReportController.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
-      return;
-      if (this.a.b == QQIndividualityBridgeActivity.d) {
-        paramString = "个签";
-      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
-        paramString = "历史签名";
-      }
+      return j ^ i;
+      i = localObject1.hashCode();
+      break;
+      label36:
+      j = localObject2.hashCode();
     }
   }
   
-  public void onInstallFinish(String paramString)
+  public Object setValue(Object paramObject)
   {
-    this.a.b();
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    return localObject;
+  }
+  
+  public String toString()
+  {
+    return getKey() + "=" + getValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ampz
  * JD-Core Version:    0.7.0.1
  */

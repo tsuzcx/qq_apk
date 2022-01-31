@@ -14,16 +14,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import pbi;
-import pbj;
+import pga;
+import pgb;
 
 public class HotchatPlugin
   extends WebViewPlugin
 {
   protected static final int[] a;
-  protected static final int[] b = { 2130841312, 2130841308 };
+  protected static final int[] b = { 2130841339, 2130841335 };
   TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
-  private Client.onRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new pbi(this);
+  private Client.onRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new pga(this);
   protected PopupMenuDialog a;
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
@@ -54,14 +54,14 @@ public class HotchatPlugin
       i += 1;
     }
     if (this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog == null) {
-      this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog = PopupMenuDialog.a(localActivity, localArrayList, new pbj(this, paramString));
+      this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog = PopupMenuDialog.a(localActivity, localArrayList, new pgb(this, paramString));
     }
     if (this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.isShowing())
     {
       this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.dismiss();
       return;
     }
-    paramString = localActivity.findViewById(2131363244);
+    paramString = localActivity.findViewById(2131363261);
     this.jdField_a_of_type_ComTencentWidgetPopupMenuDialog.showAsDropDown(paramString, paramString.getWidth() - localActivity.getResources().getDimensionPixelSize(2131558949) - localActivity.getResources().getDimensionPixelSize(2131558953), localActivity.getResources().getDimensionPixelSize(2131558954));
   }
   
@@ -151,12 +151,12 @@ public class HotchatPlugin
     //   176: goto +2259 -> 2435
     //   179: aload_3
     //   180: checkcast 206	com/tencent/mobileqq/fragment/HotChatFragment
-    //   183: new 217	pbd
+    //   183: new 217	pfv
     //   186: dup
     //   187: aload_0
     //   188: aload_1
     //   189: aload_2
-    //   190: invokespecial 220	pbd:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;Landroid/app/Activity;)V
+    //   190: invokespecial 220	pfv:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;Landroid/app/Activity;)V
     //   193: invokevirtual 215	com/tencent/mobileqq/fragment/HotChatFragment:a	(Landroid/view/View$OnClickListener;)V
     //   196: goto +2239 -> 2435
     //   199: astore_1
@@ -232,11 +232,11 @@ public class HotchatPlugin
     //   346: invokevirtual 178	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   349: ifeq +23 -> 372
     //   352: invokestatic 259	com/tencent/mobileqq/app/ThreadManager:getFileThreadHandler	()Lmqq/os/MqqHandler;
-    //   355: new 261	pbe
+    //   355: new 261	pfw
     //   358: dup
     //   359: aload_0
     //   360: aload 5
-    //   362: invokespecial 264	pbe:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;[Ljava/lang/String;)V
+    //   362: invokespecial 264	pfw:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;[Ljava/lang/String;)V
     //   365: invokevirtual 270	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   368: pop
     //   369: goto -84 -> 285
@@ -846,12 +846,12 @@ public class HotchatPlugin
     //   1542: goto +895 -> 2437
     //   1545: aload_3
     //   1546: checkcast 206	com/tencent/mobileqq/fragment/HotChatFragment
-    //   1549: new 450	pbf
+    //   1549: new 450	pfx
     //   1552: dup
     //   1553: aload_0
     //   1554: aload_1
     //   1555: aload_2
-    //   1556: invokespecial 451	pbf:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;Landroid/app/Activity;)V
+    //   1556: invokespecial 451	pfx:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;Landroid/app/Activity;)V
     //   1559: invokevirtual 215	com/tencent/mobileqq/fragment/HotChatFragment:a	(Landroid/view/View$OnClickListener;)V
     //   1562: goto +875 -> 2437
     //   1565: astore_1
@@ -977,11 +977,11 @@ public class HotchatPlugin
     //   1820: getfield 33	com/tencent/biz/webviewplugin/HotchatPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   1823: aload_2
     //   1824: aload_3
-    //   1825: new 490	pbg
+    //   1825: new 490	pfy
     //   1828: dup
     //   1829: aload_0
     //   1830: aload_1
-    //   1831: invokespecial 491	pbg:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;)V
+    //   1831: invokespecial 491	pfy:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;Ljava/lang/String;)V
     //   1834: invokevirtual 494	com/tencent/biz/troop/TroopMemberApiClient:d	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
     //   1837: goto -1552 -> 285
     //   1840: astore_1
@@ -1045,10 +1045,10 @@ public class HotchatPlugin
     //   1957: aload_0
     //   1958: getfield 33	com/tencent/biz/webviewplugin/HotchatPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   1961: aload_1
-    //   1962: new 502	pbh
+    //   1962: new 502	pfz
     //   1965: dup
     //   1966: aload_0
-    //   1967: invokespecial 503	pbh:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;)V
+    //   1967: invokespecial 503	pfz:<init>	(Lcom/tencent/biz/webviewplugin/HotchatPlugin;)V
     //   1970: invokevirtual 506	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/util/ArrayList;Lcom/tencent/biz/troop/TroopMemberApiClient$Callback;)V
     //   1973: goto -1688 -> 285
     //   1976: astore_1
@@ -1116,9 +1116,9 @@ public class HotchatPlugin
     //   2114: aload_0
     //   2115: getfield 33	com/tencent/biz/webviewplugin/HotchatPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   2118: aload_2
-    //   2119: invokevirtual 516	com/tencent/biz/troop/TroopMemberApiClient:e	(Ljava/lang/String;)V
+    //   2119: invokevirtual 515	com/tencent/biz/troop/TroopMemberApiClient:d	(Ljava/lang/String;)V
     //   2122: aload_1
-    //   2123: invokevirtual 519	android/app/Activity:finish	()V
+    //   2123: invokevirtual 518	android/app/Activity:finish	()V
     //   2126: goto -1841 -> 285
     //   2129: astore_1
     //   2130: invokestatic 151	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1129,7 +1129,7 @@ public class HotchatPlugin
     //   2140: invokevirtual 223	org/json/JSONException:getMessage	()Ljava/lang/String;
     //   2143: invokestatic 189	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   2146: goto -1861 -> 285
-    //   2149: ldc_w 521
+    //   2149: ldc_w 520
     //   2152: aload 4
     //   2154: invokevirtual 178	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   2157: ifeq +235 -> 2392
@@ -1150,7 +1150,7 @@ public class HotchatPlugin
     //   2187: invokevirtual 65	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
     //   2190: astore_3
     //   2191: aload_1
-    //   2192: ldc_w 523
+    //   2192: ldc_w 522
     //   2195: invokevirtual 298	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   2198: astore 4
     //   2200: aload_1
@@ -1188,11 +1188,11 @@ public class HotchatPlugin
     //   2267: aload_1
     //   2268: invokestatic 212	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   2271: ifeq +19 -> 2290
-    //   2274: invokestatic 529	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   2277: ldc_w 531
+    //   2274: invokestatic 528	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   2277: ldc_w 530
     //   2280: iconst_0
-    //   2281: invokestatic 536	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
-    //   2284: invokevirtual 539	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   2281: invokestatic 535	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   2284: invokevirtual 538	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
     //   2287: pop
     //   2288: iconst_0
     //   2289: ireturn
@@ -1204,9 +1204,9 @@ public class HotchatPlugin
     //   2302: getfield 33	com/tencent/biz/webviewplugin/HotchatPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   2305: aload 15
     //   2307: aload_1
-    //   2308: invokevirtual 541	com/tencent/biz/troop/TroopMemberApiClient:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2308: invokevirtual 541	com/tencent/biz/troop/TroopMemberApiClient:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   2311: aload_3
-    //   2312: invokevirtual 519	android/app/Activity:finish	()V
+    //   2312: invokevirtual 518	android/app/Activity:finish	()V
     //   2315: goto -2030 -> 285
     //   2318: astore_1
     //   2319: invokestatic 151	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1228,7 +1228,7 @@ public class HotchatPlugin
     //   2356: aload 5
     //   2358: invokevirtual 543	com/tencent/biz/troop/TroopMemberApiClient:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   2361: aload_3
-    //   2362: invokevirtual 519	android/app/Activity:finish	()V
+    //   2362: invokevirtual 518	android/app/Activity:finish	()V
     //   2365: goto -2080 -> 285
     //   2368: aload 4
     //   2370: ldc_w 545
@@ -1238,7 +1238,7 @@ public class HotchatPlugin
     //   2380: getfield 33	com/tencent/biz/webviewplugin/HotchatPlugin:jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient	Lcom/tencent/biz/troop/TroopMemberApiClient;
     //   2383: aload 15
     //   2385: aload_1
-    //   2386: invokevirtual 548	com/tencent/biz/troop/TroopMemberApiClient:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2386: invokevirtual 548	com/tencent/biz/troop/TroopMemberApiClient:g	(Ljava/lang/String;Ljava/lang/String;)V
     //   2389: goto -2104 -> 285
     //   2392: ldc 153
     //   2394: iconst_1

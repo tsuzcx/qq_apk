@@ -1,36 +1,53 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter.ItemHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
+import com.tencent.pb.emosm.EmosmPb.SubCmd0x13Rsp;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class acmc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acmc(FMLocalFileActivity paramFMLocalFileActivity) {}
+  public acmc(CommonUsedSystemEmojiManager paramCommonUsedSystemEmojiManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.a.a()) {
-      if (QLog.isColorLevel()) {
-        QLog.i(FMLocalFileActivity.e, 2, "click too fast , wait a minute.");
+    for (;;)
+    {
+      synchronized (this.a.a)
+      {
+        File localFile = new File(BaseApplicationImpl.sApplication.getFilesDir(), "commonusedSystemEmojiInfoFile_v3_" + BaseApplicationImpl.sApplication.getRuntime().getAccount());
+        EmosmPb.SubCmd0x13Rsp localSubCmd0x13Rsp = new EmosmPb.SubCmd0x13Rsp();
+        Object localObject1 = CommonUsedSystemEmojiManager.a(this.a);
+        if (localObject1 == null)
+        {
+          localObject1 = new ArrayList();
+          localSubCmd0x13Rsp.itemlist.set((List)localObject1);
+          if ((QLog.isColorLevel()) && (((List)localObject1).size() > 0))
+          {
+            StringBuilder localStringBuilder = new StringBuilder("saveSystemEmojiInfoToFile : itemsInfo = ");
+            int i = 0;
+            if (i < ((List)localObject1).size())
+            {
+              EmosmPb.SmallYellowItem localSmallYellowItem = (EmosmPb.SmallYellowItem)((List)localObject1).get(i);
+              localStringBuilder.append(";type = " + localSmallYellowItem.type.get()).append(";id = " + localSmallYellowItem.id.get()).append(";ts = " + localSmallYellowItem.ts.get());
+              i += 1;
+              continue;
+            }
+            QLog.d("CommonUsedSystemEmojiManager", 2, localStringBuilder.toString());
+          }
+          FileUtils.a(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
+          return;
+        }
       }
     }
-    do
-    {
-      return;
-      this.a.e();
-      paramView = (FileCategoryAdapter.ItemHolder)paramView.getTag();
-    } while (paramView.a == 0);
-    int i = paramView.a;
-    paramView = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-    paramView.putBoolean("last_select_All", true);
-    paramView.commit();
-    FMLocalFileActivity.a(this.a, i);
   }
 }
 

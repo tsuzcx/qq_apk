@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.gesturelock;
 
-import ados;
-import adot;
+import adxa;
+import adxb;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningServiceInfo;
@@ -323,7 +323,7 @@ public class GesturePWDUtils
     if (Foreground.sCountActivity > 0) {
       return true;
     }
-    Object localObject1 = (ActivityManager)paramContext.getApplicationContext().getSystemService("activity");
+    ActivityManager localActivityManager = (ActivityManager)paramContext.getApplicationContext().getSystemService("activity");
     paramContext = paramContext.getApplicationContext().getPackageName();
     for (;;)
     {
@@ -331,31 +331,32 @@ public class GesturePWDUtils
       int j;
       try
       {
-        Object localObject2 = ((ActivityManager)localObject1).getRunningTasks(1);
-        if ((Build.VERSION.SDK_INT < 21) && (localObject2 != null) && (((List)localObject2).size() > 0))
+        Object localObject = localActivityManager.getRunningTasks(1);
+        if ((localObject != null) && (((List)localObject).size() > 0))
         {
-          localObject1 = (ActivityManager.RunningTaskInfo)((List)localObject2).get(0);
-          if ((localObject1 == null) || (((ActivityManager.RunningTaskInfo)localObject1).baseActivity == null) || (!paramContext.equals(((ActivityManager.RunningTaskInfo)localObject1).baseActivity.getPackageName()))) {
-            break label432;
+          localObject = (ActivityManager.RunningTaskInfo)((List)localObject).get(0);
+          if ((localObject != null) && (((ActivityManager.RunningTaskInfo)localObject).baseActivity != null) && (!paramContext.equals(((ActivityManager.RunningTaskInfo)localObject).baseActivity.getPackageName())))
+          {
+            QLog.d("Q.gesturelock.util", 2, "qq runningTaskI is not top");
+            return false;
           }
-          return true;
         }
-        localObject2 = ((ActivityManager)localObject1).getRunningAppProcesses();
-        if (localObject2 == null) {
+        localObject = localActivityManager.getRunningAppProcesses();
+        if (localObject == null) {
           return false;
         }
         int k = Process.myPid();
-        localObject2 = ((List)localObject2).iterator();
-        if (!((Iterator)localObject2).hasNext()) {
-          break label432;
+        localObject = ((List)localObject).iterator();
+        if (!((Iterator)localObject).hasNext()) {
+          break label433;
         }
-        localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject2).next();
+        localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
         if ((localRunningAppProcessInfo == null) || (k == localRunningAppProcessInfo.pid) || (!localRunningAppProcessInfo.processName.startsWith(paramContext)) || (localRunningAppProcessInfo.processName.endsWith("MSF")) || (localRunningAppProcessInfo.processName.endsWith("TMAssistantDownloadSDKService"))) {
           continue;
         }
         i = localRunningAppProcessInfo.importance;
         if (i != 100) {
-          break label439;
+          break label440;
         }
         try
         {
@@ -369,7 +370,7 @@ public class GesturePWDUtils
             if (QLog.isColorLevel())
             {
               QLog.d("Q.gesturelock.util", 2, "isAppOnForegroundByTasks is true, realforeProcessName=" + localRunningAppProcessInfo.processName);
-              printServiceInfos((ActivityManager)localObject1, paramContext);
+              printServiceInfos(localActivityManager, paramContext);
             }
             return true;
           }
@@ -381,7 +382,7 @@ public class GesturePWDUtils
         catch (Exception localException)
         {
           if (!QLog.isColorLevel()) {
-            break label434;
+            break label435;
           }
         }
         QLog.e("Q.gesturelock.util", 2, "isAppOnForegroundByTasks", localException);
@@ -390,7 +391,7 @@ public class GesturePWDUtils
       {
         ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
         if (!QLog.isColorLevel()) {
-          break label432;
+          break label433;
         }
         QLog.e("Q.gesturelock.util", 2, "isAppOnForegroundByTasks.uin", paramContext);
       }
@@ -398,12 +399,12 @@ public class GesturePWDUtils
       {
         QLog.d("Q.gesturelock.util", 2, "isAppOnForegroundByTasks, procName=" + localRunningAppProcessInfo.processName + ",importance=" + localRunningAppProcessInfo.importance + ",reasonCode=" + localRunningAppProcessInfo.importanceReasonCode + ",procState=" + j + ",pid=" + localRunningAppProcessInfo.pid);
         continue;
-        label432:
+        label433:
         return false;
-        label434:
+        label435:
         i = 0;
         continue;
-        label439:
+        label440:
         j = 0;
       }
     }
@@ -465,13 +466,13 @@ public class GesturePWDUtils
         }
       }
       if (paramContext != null) {
-        ThreadManager.post(new ados(paramContext), 8, null, false);
+        ThreadManager.post(new adxa(paramContext), 8, null, false);
       }
     }
     while (paramContext == null) {
       return;
     }
-    ThreadManager.post(new adot(paramContext), 8, null, false);
+    ThreadManager.post(new adxb(paramContext), 8, null, false);
   }
   
   public static void setGestureLocking(Context paramContext, boolean paramBoolean)

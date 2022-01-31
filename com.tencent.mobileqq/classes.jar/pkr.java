@@ -1,17 +1,28 @@
-import java.util.Comparator;
+import com.tencent.component.media.gif.NewGifDrawable;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
-public final class pkr
-  implements Comparator
+public class pkr
+  implements Runnable
 {
-  public int a(pkt parampkt1, pkt parampkt2)
+  long jdField_a_of_type_Long;
+  
+  public pkr(NewGifDrawable paramNewGifDrawable, long paramLong)
   {
-    if (parampkt1.b > parampkt2.b) {
-      return -1;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void run()
+  {
+    long l = 0L;
+    NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
+    NewGifDrawable localNewGifDrawable = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable;
+    ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
+    pkt localpkt = NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
+    if (this.jdField_a_of_type_Long > 0L) {
+      l = this.jdField_a_of_type_Long;
     }
-    if (parampkt1.b < parampkt2.b) {
-      return 1;
-    }
-    return 0;
+    localNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = localScheduledThreadPoolExecutor.schedule(localpkt, l, TimeUnit.MILLISECONDS);
   }
 }
 

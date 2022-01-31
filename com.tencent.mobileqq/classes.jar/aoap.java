@@ -1,43 +1,32 @@
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.IInformationPasterResDownloaderCallback;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.open.base.ToastUtil;
+import com.tencent.util.WeakReferenceHandler;
+import dov.com.qq.im.capture.music.MusicDownloadListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
 
 public class aoap
-  implements QIMInformationPasterManager.IInformationPasterResDownloaderCallback
+  extends MusicDownloadListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
+  public aoap(EditRecognitionPart paramEditRecognitionPart) {}
   
-  public aoap(InformationFaceAdapter paramInformationFaceAdapter, QIMCommonLoadingView paramQIMCommonLoadingView, ImageView paramImageView)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = paramQIMCommonLoadingView;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_JavaLangBoolean = ((Boolean)paramImageView.getTag(2131362361));
+    ToastUtil.a().a("正在下载: " + EditRecognitionPart.a(this.a));
   }
   
-  public void a()
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_JavaLangBoolean = null;
-  }
-  
-  public void a(float paramFloat, String paramString, int paramInt)
-  {
-    paramInt = (int)paramFloat;
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new aoaq(this, paramInt));
-  }
-  
-  public void a(boolean paramBoolean, String paramString, InfomationFacePackage.Item paramItem)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("InformationFaceAdapter", 2, "isSucess:" + paramBoolean);
+    if ((paramBoolean) && (EditRecognitionPart.a(this.a).a().equals(paramString)))
+    {
+      EditRecognitionPart.a(this.a).sendEmptyMessage(2);
+      EditRecognitionPart.a(this.a, EditRecognitionPart.a(this.a));
     }
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.post(new aoar(this, paramBoolean, paramItem));
   }
 }
 

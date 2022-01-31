@@ -1,27 +1,29 @@
+import android.os.Handler;
+import com.tencent.mobileqq.armap.ARGLSurfaceView;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.test.joystick.JoystickListener;
+
 public class abhn
+  implements JoystickListener
 {
-  public static final float[] a;
+  public abhn(ARMapActivity paramARMapActivity) {}
   
-  static
+  public void a()
   {
-    int k = 0;
-    a = new float[8192];
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= 8192) {
-        break;
-      }
-      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
-      i += 1;
-    }
-    while (j < 360)
-    {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
-      j += 90;
-    }
+    ARMapActivity.h(this.a, true);
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new abho(this));
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    ARMapActivity.b(this.a, paramFloat1);
+    ARMapActivity.c(this.a, paramFloat2);
+  }
+  
+  public void b()
+  {
+    ARMapActivity.h(this.a, false);
+    this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new abhp(this));
   }
 }
 

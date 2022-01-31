@@ -1,16 +1,21 @@
-import android.view.MotionEvent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.view.SearchResultGroupTitleView;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class ahww
-  implements View.OnTouchListener
+  extends ClickableSpan
 {
-  public ahww(SearchResultGroupTitleView paramSearchResultGroupTitleView) {}
+  public ahww(UniteSearchActivity paramUniteSearchActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    this.a.openContextMenu(this.a.a);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

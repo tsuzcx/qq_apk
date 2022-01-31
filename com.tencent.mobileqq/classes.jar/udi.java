@@ -1,15 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class udi
   implements View.OnClickListener
 {
-  public udi(TroopRequestActivity paramTroopRequestActivity) {}
+  public udi(TroopInfoActivity paramTroopInfoActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.f();
+    this.a.d();
   }
 }
 

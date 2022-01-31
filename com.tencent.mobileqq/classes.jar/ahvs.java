@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelPublicAcnt;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.search.HotWordSearchEntryModel;
 
-public class ahvs
-  extends GroupSearchEngine.SearchEngineEntity
+class ahvs
+  implements Runnable
 {
-  public ahvs(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  ahvs(ahvr paramahvr) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void run()
   {
-    return new GroupSearchModelPublicAcnt(paramList, paramString, GroupSearchEngine.a(this.a));
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchHotWordSearchEntryModel.b(this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel);
   }
 }
 

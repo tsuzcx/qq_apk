@@ -1,16 +1,18 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
+import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem;
+import java.util.Comparator;
 
-public final class ycv
-  implements DialogInterface.OnClickListener
+public class ycv
+  implements Comparator
 {
-  public ycv(Context paramContext) {}
+  public ycv(SubtitleDataManager paramSubtitleDataManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(SubtitleItem paramSubtitleItem1, SubtitleItem paramSubtitleItem2)
   {
-    ((Activity)this.a).finish();
+    if ((paramSubtitleItem1 != null) && (paramSubtitleItem2 != null)) {
+      return paramSubtitleItem1.b - paramSubtitleItem2.b;
+    }
+    return -1;
   }
 }
 

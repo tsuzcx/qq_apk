@@ -1,14 +1,48 @@
-import android.view.animation.Interpolator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.intervideo.groupvideo.GVideoWebPlugin;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader;
+import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class aebt
-  implements Interpolator
+  extends BroadcastReceiver
 {
-  public float getInterpolation(float paramFloat)
+  public aebt(GVideoWebPlugin paramGVideoWebPlugin) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramFloat < 0.5D) {
-      return 0.0F;
+    paramContext = paramIntent.getAction();
+    int j = paramIntent.getIntExtra("key_state", -1);
+    int k;
+    int i;
+    if (paramContext.equals(HuayangJsPlugin.a("com.tencent.od")))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "state:" + j);
+      }
+      paramContext = IVPluginLoader.a;
+      k = paramContext.length;
+      i = 0;
     }
-    return (paramFloat - 0.5F) * 2.0F;
+    for (;;)
+    {
+      if ((i >= k) || ((j == paramContext[i]) && (GVideoWebPlugin.a(this.a).isShowing()))) {}
+      try
+      {
+        GVideoWebPlugin.a(this.a).dismiss();
+        label105:
+        i += 1;
+        continue;
+        return;
+      }
+      catch (Throwable paramIntent)
+      {
+        break label105;
+      }
+    }
   }
 }
 

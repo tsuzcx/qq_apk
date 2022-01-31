@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.model.QueryTask.Query;
+import java.util.List;
 
-class aeqd
-  implements Runnable
+public class aeqd
+  implements QueryTask.Query
 {
-  aeqd(aeqb paramaeqb, boolean paramBoolean, int paramInt, ArrayList paramArrayList) {}
+  public aeqd(EmoticonManager paramEmoticonManager) {}
   
-  public void run()
+  public List a(Integer paramInteger)
   {
-    this.jdField_a_of_type_Aeqb.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    return this.a.a(paramInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqd
  * JD-Core Version:    0.7.0.1
  */

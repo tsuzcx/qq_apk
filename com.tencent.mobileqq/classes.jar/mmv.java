@@ -1,31 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import java.net.URLEncoder;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyScreenShotReporter;
+import com.tencent.biz.pubaccount.util.ScreenshotContentObserver.Listener;
+import com.tencent.qphone.base.util.QLog;
 
-public class mmv
-  implements Runnable
+public final class mmv
+  implements ScreenshotContentObserver.Listener
 {
-  public mmv(FastWebActivity paramFastWebActivity) {}
-  
-  public void run()
+  public void a(Uri paramUri, String paramString, int paramInt)
   {
-    String str3 = "https://post.mp.qq.com/jubao/index?";
-    String str1 = str3;
-    if (FastWebActivity.a(this.a) != null) {}
-    try
+    if (QLog.isColorLevel())
     {
-      str1 = "https://post.mp.qq.com/jubao/index?" + "articleId=" + FastWebActivity.a(this.a).mArticleID + "&puin=" + FastWebActivity.a(this.a).mSubscribeID + "&url=" + URLEncoder.encode(FastWebActivity.a(this.a).mArticleContentUrl, "utf-8") + "&key=" + FastWebActivity.a(this.a).innerUniqueID + "&type=7&_wv=3";
-      ReadInJoyUtils.a(this.a, str1);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        String str2 = str3;
+      paramString = new StringBuilder().append("onDetectScreenshot() path=").append(paramString).append(", channelID=");
+      if (ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a()) != null) {
+        break label129;
       }
+      paramUri = "null";
+      paramString = paramString.append(paramUri).append(", channelType=");
+      if (ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a()) != null) {
+        break label139;
+      }
+    }
+    label129:
+    label139:
+    for (paramUri = "null";; paramUri = ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a()))
+    {
+      QLog.d("ReadInJoyScreenShotReporter", 2, paramUri);
+      if (ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a()) != null) {
+        PublicAccountReportUtils.b(null, "", "0X8008100", "0X8008100", 0, 0, String.valueOf(System.currentTimeMillis() / 1000L), String.valueOf(ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a())), String.valueOf(ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a())), null, false);
+      }
+      return;
+      paramUri = ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a());
+      break;
     }
   }
 }

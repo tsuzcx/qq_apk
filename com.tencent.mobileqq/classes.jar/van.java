@@ -1,15 +1,18 @@
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
 
 public class van
-  extends BaseBubbleBuilder.ViewHolder
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public ImageView a;
-  public TextView a;
-  
-  public van(LocationItemBuilder paramLocationItemBuilder) {}
+  public long a;
+  public ConfessNewsBgView a;
+  public String a;
+  public View b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
 }
 
 

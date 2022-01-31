@@ -1,33 +1,18 @@
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public class aaxg
   implements Runnable
 {
-  public aaxg(ArkRecommendController paramArkRecommendController) {}
+  public aaxg(ArkAppMusicModule paramArkAppMusicModule) {}
   
   public void run()
   {
-    int j = 1;
-    int i = j;
-    if (ArkRecommendController.a(this.a) == null)
-    {
-      ArkRecommendController.a(this.a, new ArkAiScrollBar(this.a));
-      i = j;
-      if (!ArkRecommendController.a(this.a).a())
-      {
-        ArkRecommendController.a(this.a, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkRecommendController", 2, "showBabyQBubbleView.mScrollBar.init.false");
-        }
-        i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      ArkRecommendController.a(this.a).a(ArkRecommendController.a(this.a));
-      ArkRecommendController.a(this.a).b();
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if ((localBaseActivity instanceof FragmentActivity)) {
+      QQPlayerService.b(localBaseActivity);
     }
   }
 }

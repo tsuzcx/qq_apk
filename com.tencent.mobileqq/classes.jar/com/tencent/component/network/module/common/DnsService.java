@@ -19,7 +19,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import pki;
+import ppa;
 
 public class DnsService
 {
@@ -362,7 +362,7 @@ public class DnsService
       {
         Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
         if (localIterator.hasNext()) {
-          ((pki)localIterator.next()).a(true);
+          ((ppa)localIterator.next()).a(true);
         }
       }
     }
@@ -390,7 +390,7 @@ public class DnsService
     }
     try
     {
-      localThreadPool.submit(new pki(this, paramString, str1));
+      localThreadPool.submit(new ppa(this, paramString, str1));
       return;
     }
     catch (Throwable paramString)

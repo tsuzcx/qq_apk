@@ -36,24 +36,24 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import jvj;
-import jvk;
-import jvl;
-import jvm;
-import jvn;
-import jvo;
-import jvp;
-import jvq;
+import jxn;
+import jxo;
+import jxp;
+import jxq;
+import jxr;
+import jxs;
+import jxt;
+import jxu;
 
 public class MultiIncomingCallsActivity
   extends BaseGaInvite
 {
   public static boolean e;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jvj(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jxn(this);
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jvp(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jxt(this);
   SessionInfo jdField_a_of_type_ComTencentAvAppSessionInfo = null;
-  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new jvq(this);
+  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new jxu(this);
   AvCustomDialog jdField_a_of_type_ComTencentAvUtilsAvCustomDialog = null;
   QAVNotification jdField_a_of_type_ComTencentAvUtilsQAVNotification;
   public boolean a;
@@ -346,7 +346,7 @@ public class MultiIncomingCallsActivity
         continue;
       }
       VideoController localVideoController = this.jdField_a_of_type_ComTencentAvVideoController;
-      localVideoController.a(paramString, 1, false, new jvo(this, localVideoController, paramString, paramBoolean3));
+      localVideoController.a(paramString, 1, false, new jxs(this, localVideoController, paramString, paramBoolean3));
     }
   }
   
@@ -388,16 +388,16 @@ public class MultiIncomingCallsActivity
   {
     e();
     this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog = new AvCustomDialog(this);
-    Object localObject = LayoutInflater.from(this).inflate(2130969278, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131365927));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365928));
+    Object localObject = LayoutInflater.from(this).inflate(2130969276, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131365932));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365933));
     this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365929));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365930));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365934));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365935));
     if (VideoUtils.a())
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setText(2131429609);
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131493574));
+      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131493576));
     }
     c();
     Button localButton;
@@ -405,13 +405,13 @@ public class MultiIncomingCallsActivity
     {
       a("showDialog");
       this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.a((View)localObject, false);
-      localButton = (Button)((View)localObject).findViewById(2131365932);
-      localButton.setOnClickListener(new jvk(this));
-      this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.setOnCancelListener(new jvl(this));
-      this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.setOnDismissListener(new jvm(this));
+      localButton = (Button)((View)localObject).findViewById(2131365937);
+      localButton.setOnClickListener(new jxo(this));
+      this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.setOnCancelListener(new jxp(this));
+      this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.setOnDismissListener(new jxq(this));
       SessionInfo localSessionInfo = SessionMgr.a().a();
-      localObject = (Button)((View)localObject).findViewById(2131365933);
-      ((Button)localObject).setOnClickListener(new jvn(this, paramIntent, localSessionInfo));
+      localObject = (Button)((View)localObject).findViewById(2131365938);
+      ((Button)localObject).setOnClickListener(new jxr(this, paramIntent, localSessionInfo));
       if (!b()) {
         break label469;
       }
@@ -421,13 +421,13 @@ public class MultiIncomingCallsActivity
     for (;;)
     {
       if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
-        ((Button)localObject).setCompoundDrawablesWithIntrinsicBounds(super.getResources().getDrawable(2130840277), null, null, null);
+        ((Button)localObject).setCompoundDrawablesWithIntrinsicBounds(super.getResources().getDrawable(2130840292), null, null, null);
       }
       this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.show();
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_b_of_type_JavaLangString, 2, String.format("begin show dialog, mPeerUin[%s], mExtraUin[%s], mIsDoubleVideoMeeting[%s], mUinType[%s], mRelationType[%s], mMemberType[%s], mHasGVideoJoined[%s], mIsAudioMode[%s], mBindType[%s]", new Object[] { this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, Boolean.valueOf(this.jdField_a_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int), Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(this.jdField_c_of_type_Int) }));
       }
-      TraeHelper.a().a("MultiIncomingCallsActivity.showDialog", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230735, null, 0, null);
+      TraeHelper.a().a("MultiIncomingCallsActivity.showDialog", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 2131230736, null, 0, null);
       return;
       if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
@@ -947,7 +947,7 @@ public class MultiIncomingCallsActivity
   {
     QLog.d(this.jdField_b_of_type_JavaLangString, 1, "onCreate");
     super.onCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2130846443);
+    super.getWindow().setBackgroundDrawableResource(2130846525);
     super.getWindow().addFlags(128);
     VideoNodeManager.a(this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_c_of_type_JavaLangString), 29);
     TraeHelper.a().a("MultiIncomingCallsActivity.onCreate");
@@ -1063,7 +1063,7 @@ public class MultiIncomingCallsActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallsActivity
  * JD-Core Version:    0.7.0.1
  */

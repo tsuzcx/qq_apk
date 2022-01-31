@@ -2,7 +2,7 @@ package dov.com.tencent.mobileqq.richmedia.capture.view;
 
 public abstract interface CaptureVideoFilterViewPager$OnViewPagerItemVisiableChangeListener
 {
-  public abstract void j(boolean paramBoolean);
+  public abstract void k(boolean paramBoolean);
 }
 
 

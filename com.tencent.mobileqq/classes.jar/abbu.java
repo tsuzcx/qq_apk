@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapActivity.LocationMonitor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkActionAppMgr.IGetAppNameByActionCallback;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import java.util.Set;
 
 public class abbu
-  implements Runnable
+  implements ArkActionAppMgr.IGetAppNameByActionCallback
 {
-  public abbu(ARMapActivity.LocationMonitor paramLocationMonitor) {}
+  public abbu(ArkLocalAppMgr paramArkLocalAppMgr, abcr paramabcr) {}
   
-  public void run()
+  public void a(Object paramObject, Set paramSet)
   {
-    this.a.a.a(-100);
+    ThreadManager.post(new abbv(this, paramSet), 5, null, true);
   }
 }
 

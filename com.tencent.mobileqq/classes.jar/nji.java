@@ -1,29 +1,35 @@
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.child.DiscoverPlayMode;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class nji
-  extends IPlayVideoStatusChangeListener
+  extends QQStoryObserver
 {
-  public nji(DiscoverPlayMode paramDiscoverPlayMode) {}
+  public nji(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
-  public void c(int paramInt)
+  public void a()
   {
-    if (paramInt < this.a.a.a.size() - 1) {
-      StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
+    SLog.b(MsgTabStoryNodeListManager.a(), "msg: MSG_ON_STORY_MSGTAB_DATA_LOADED");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      SLog.e(MsgTabStoryNodeListManager.a(), "[ERROR] onMsgTabStoryDataLoaded() app is null!");
     }
-  }
-  
-  public void d(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
-  }
-  
-  public void e(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
+    MsgTabStoryManager localMsgTabStoryManager = (MsgTabStoryManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(250);
+    if (localMsgTabStoryManager.a())
+    {
+      this.a.i();
+      return;
+    }
+    if (localMsgTabStoryManager.b())
+    {
+      this.a.h();
+      localMsgTabStoryManager.a();
+      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_hide", true, false);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_hide", true, false);
   }
 }
 

@@ -1,106 +1,69 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
-import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager.PageItemScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class lpu
-  implements Runnable
+  implements ReadInJoyAtlasViewPager.PageItemScrollListener
 {
-  public lpu(ArticleInfoModule paramArticleInfoModule, List paramList, ConcurrentHashMap paramConcurrentHashMap) {}
+  public lpu(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
   
-  public void run()
+  public void a()
   {
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject;
-    long l;
-    int i;
-    label161:
-    ConcurrentHashMap localConcurrentHashMap;
-    Iterator localIterator2;
-    for (;;)
+    ReadInJoyAtlasFragment.a(this.a).a(1, null);
+    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager != null) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getCurrentItem() == 0))
     {
-      if (localIterator1.hasNext())
-      {
-        localObject = (oidb_cmd0x8c8.FeedsInfo)localIterator1.next();
-        if ((((oidb_cmd0x8c8.FeedsInfo)localObject).feeds_type.has()) && (((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.has()) && (((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.uint64_feeds_id.has()))
-        {
-          l = ((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.uint64_feeds_id.get();
-          i = ((oidb_cmd0x8c8.FeedsInfo)localObject).feeds_type.get();
-          localObject = l + "" + i;
-          localObject = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-          if (localObject != null)
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a((Entity)localObject);
-            localConcurrentHashMap = (ConcurrentHashMap)ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule).get(Integer.valueOf(0));
-            if (localConcurrentHashMap != null)
-            {
-              localIterator2 = localConcurrentHashMap.values().iterator();
-              do
-              {
-                if (!localIterator2.hasNext()) {
-                  break;
-                }
-                localObject = (ArticleInfo)localIterator2.next();
-              } while ((((ArticleInfo)localObject).mFeedId != l) || (((ArticleInfo)localObject).mFeedType != i));
-            }
-          }
-        }
-      }
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("exitType", 1);
+      localBundle.putSerializable("lastShowImageModel", this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.b());
+      ReadInJoyAtlasFragment.a(this.a).a(-2, localBundle);
+    }
+    ReadInJoyAtlasFragment.b(this.a, true);
+    ReadInJoyAtlasFragment.a(this.a).finish();
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, View paramView)
+  {
+    paramFloat1 = 1.0F;
+    float f = 1.0F - Math.abs(paramFloat2) * 10.0F / ScreenUtil.b;
+    if (f < 0.0F) {
+      paramFloat1 = 0.0F;
     }
     for (;;)
     {
-      if (localObject != null)
+      this.a.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat1);
+      this.a.b.setAlpha(paramFloat1);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setAlpha(paramFloat1);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAllInOneBar.setAlpha(paramFloat1);
+      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getBackground() != null)
       {
-        localConcurrentHashMap.remove(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
-        ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, Integer.valueOf(0), (ArticleInfo)localObject);
-        localArrayList2.add(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
+        int i = (int)((int)(Math.max(0.0F, ScreenUtil.b - 2.0F * Math.abs(paramFloat2)) * 255.0F / ScreenUtil.b) * 0.8F + 51.0F);
+        paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getBackground().mutate();
+        paramView.setAlpha(i);
+        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.setBackgroundDrawable(paramView);
       }
-      localConcurrentHashMap = (ConcurrentHashMap)ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule).get(Integer.valueOf(70));
-      if (localConcurrentHashMap == null) {
-        break;
+      return;
+      if (f <= 1.0F) {
+        paramFloat1 = f;
       }
-      localIterator2 = localConcurrentHashMap.values().iterator();
-      do
-      {
-        if (!localIterator2.hasNext()) {
-          break;
-        }
-        localObject = (ArticleInfo)localIterator2.next();
-      } while ((((ArticleInfo)localObject).mFeedId != l) || (((ArticleInfo)localObject).mFeedType != i));
-      for (;;)
-      {
-        if (localObject == null) {
-          break label499;
-        }
-        localConcurrentHashMap.remove(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
-        ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, Integer.valueOf(70), (ArticleInfo)localObject);
-        localArrayList1.add(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
-        break;
-        QLog.d("ArticleInfoModule", 1, "remove artileinfo cache is null while feedid = " + l + "feedtype" + i);
-        break label161;
-        localObject = new ArrayList(localArrayList2);
-        localArrayList1 = new ArrayList(localArrayList1);
-        ThreadManager.getUIHandler().post(new lpv(this, (List)localObject, localArrayList1));
-        return;
-        localObject = null;
-      }
-      label499:
-      break;
-      localObject = null;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getBackground() != null)
+    {
+      Drawable localDrawable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.getBackground().mutate();
+      localDrawable.setAlpha(255);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyAtlasViewPager.setBackgroundDrawable(localDrawable);
     }
   }
 }

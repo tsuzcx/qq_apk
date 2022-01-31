@@ -1,11 +1,19 @@
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.Mp4ReEncoder.EncodeFilterRender;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
 
-class ohn
-  implements Mp4ReEncoder.EncodeFilterRender
+public final class ohn
+  implements Parcelable.Creator
 {
-  ohn(ohj paramohj) {}
+  public EditLocalPhotoSource a(Parcel paramParcel)
+  {
+    return new EditLocalPhotoSource(paramParcel);
+  }
   
-  public void a() {}
+  public EditLocalPhotoSource[] a(int paramInt)
+  {
+    return new EditLocalPhotoSource[paramInt];
+  }
 }
 
 

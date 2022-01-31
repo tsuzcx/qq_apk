@@ -21,7 +21,7 @@ public class ProtocolUtils
       paramArrayOfInt[0] = -1000000;
     }
     Object localObject = new WNSStream();
-    label339:
+    label354:
     for (;;)
     {
       try
@@ -62,7 +62,7 @@ public class ProtocolUtils
           paramArrayOfInt[0] = 1000002;
           break;
           if (!(paramArrayOfByte instanceof Integer)) {
-            break label339;
+            break label354;
           }
           int i = ((Integer)paramArrayOfByte).intValue();
           continue;
@@ -70,13 +70,13 @@ public class ProtocolUtils
         if ((paramArrayOfByte != null) && (paramArrayOfByte.WnsCode != 0))
         {
           if (QLog.isColorLevel()) {
-            QLog.e("ProtocolUtils", 2, new Object[] { "decode error:", Short.valueOf(paramArrayOfByte.WnsCode) });
+            QLog.e("ProtocolUtils", 2, "decode " + paramString + " error:" + WnsError.getErrorMessage(paramArrayOfByte.WnsCode));
           }
           if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
-            break label344;
+            break label359;
           }
           paramArrayOfInt[0] = paramArrayOfByte.WnsCode;
-          break label344;
+          break label359;
         }
         if (paramArrayOfByte == null)
         {
@@ -96,7 +96,7 @@ public class ProtocolUtils
       return null;
     }
     return null;
-    label344:
+    label359:
     return null;
   }
 }

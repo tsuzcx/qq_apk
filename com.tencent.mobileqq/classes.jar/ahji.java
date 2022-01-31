@@ -1,42 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMsgManager;
+import java.util.ArrayList;
 
 public class ahji
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public ahji(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public ahji(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramView.getId())
-    {
+    MessageRecord localMessageRecord = ReceiptMessageReadMemberListContainerFragment.a(this.a).a().b(ReceiptMessageReadMemberListContainerFragment.a(this.a).jdField_a_of_type_JavaLangString, ReceiptMessageReadMemberListContainerFragment.a(this.a).jdField_a_of_type_Int, ReceiptMessageReadMemberListContainerFragment.c(this.a));
+    if (ReceiptMessageReadMemberListContainerFragment.a(this.a).size() == 0) {
+      ReceiptMsgManager.a(ReceiptMessageReadMemberListContainerFragment.a(this.a), localMessageRecord, "3");
     }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 0)
-      {
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(0.5F);
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(0.5F);
-        EffectsCameraCaptureFragment.f(this.a).setAlpha(0.5F);
-      }
-      else if (paramMotionEvent.getAction() == 1)
-      {
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
-        EffectsCameraCaptureFragment.f(this.a).setAlpha(1.0F);
-      }
+    while (ReceiptMessageReadMemberListContainerFragment.b(this.a).size() <= 0) {
+      return;
     }
+    ReceiptMsgManager.a(ReceiptMessageReadMemberListContainerFragment.a(this.a), localMessageRecord, "4");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahji
  * JD-Core Version:    0.7.0.1
  */

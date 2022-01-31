@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.view;
 
-import agro;
+import agwb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.view.PagerAdapter;
@@ -22,7 +22,7 @@ public class ProfileLabelPanelAdapter
 {
   public float a;
   protected int a;
-  protected agro a;
+  protected agwb a;
   public Context a;
   protected SparseArray a;
   protected PanelRecycleBin a;
@@ -54,15 +54,15 @@ public class ProfileLabelPanelAdapter
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    this.jdField_a_of_type_Agro = ((agro)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    if (this.jdField_a_of_type_Agro == null)
+    this.jdField_a_of_type_Agwb = ((agwb)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (this.jdField_a_of_type_Agwb == null)
     {
-      this.jdField_a_of_type_Agro = new agro(this, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Agro);
+      this.jdField_a_of_type_Agwb = new agwb(this, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Agwb);
     }
     paramView = (GridView)paramView;
-    this.jdField_a_of_type_Agro.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
-    paramView.setAdapter(this.jdField_a_of_type_Agro);
+    this.jdField_a_of_type_Agwb.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
+    paramView.setAdapter(this.jdField_a_of_type_Agwb);
   }
   
   public void a(ProfileLabelCallBack paramProfileLabelCallBack)

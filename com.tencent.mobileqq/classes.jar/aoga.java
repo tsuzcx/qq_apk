@@ -1,29 +1,17 @@
-import android.content.Intent;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.richmedia.CompoundProcessor;
-import dov.com.tencent.mobileqq.richmedia.RichmediaClient;
-import dov.com.tencent.mobileqq.richmedia.VideoCompoundController;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
 
 public class aoga
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aoga(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public aoga(TextLayer.TextItem paramTextItem) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Object localObject = RichmediaClient.a().a().a(this.a.a);
-    if (localObject != null) {
-      ((CompoundProcessor)localObject).a(103);
-    }
-    for (;;)
-    {
-      localObject = this.a.getIntent();
-      ((Intent)localObject).putExtra("flow_back", 0);
-      this.a.setResult(1001, (Intent)localObject);
-      this.a.finish();
-      return;
-      this.a.a();
-    }
+    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a.k();
   }
 }
 

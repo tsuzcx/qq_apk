@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vashealth.SportManager;
-import com.tencent.mobileqq.vashealth.StepAlarmReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.utils.JumpAction;
 
 public class akki
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public akki(StepAlarmReceiver paramStepAlarmReceiver) {}
+  public akki(JumpAction paramJumpAction) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a == null) {
-      return;
+    if ((this.a.a instanceof LoginActivity)) {
+      ((LoginActivity)this.a.a).finish();
     }
-    ((SportManager)this.a.a.getManager(259)).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akki
  * JD-Core Version:    0.7.0.1
  */

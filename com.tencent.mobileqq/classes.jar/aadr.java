@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ARDeviceController;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 import java.util.HashMap;
 
 public class aadr
   implements Runnable
 {
-  public aadr(ScanEntranceReport paramScanEntranceReport, long paramLong1, int paramInt, String paramString, long paramLong2) {}
+  public aadr(ARDeviceController paramARDeviceController, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("last_total_time", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("session_ids", this.jdField_a_of_type_JavaLangString);
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_first_ocr_tips", true, this.b, 0L, localHashMap, "");
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplication.getContext()).a(null, "AREnable", this.jdField_a_of_type_Boolean, 0L, 0L, (HashMap)localObject, null);
+    localObject = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
+    ((SharedPreferences.Editor)localObject).putInt("ar_incompatible_reason", this.jdField_a_of_type_Int);
+    SharedPreUtils.a((SharedPreferences.Editor)localObject);
   }
 }
 

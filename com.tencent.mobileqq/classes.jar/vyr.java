@@ -1,25 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import mqq.os.MqqHandler;
 
 public class vyr
   implements Runnable
 {
-  public vyr(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vyr(FriendChatPie paramFriendChatPie) {}
   
   public void run()
   {
-    Object localObject = (PublicAccountDataManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
-    if (localObject != null) {}
-    for (localObject = ((PublicAccountDataManager)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
-    {
-      if (localObject != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      }
-      return;
-    }
+    Message localMessage = FriendChatPie.c(this.a).obtainMessage(42);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("showRedDot", false);
+    localMessage.setData(localBundle);
+    FriendChatPie.d(this.a).sendMessage(localMessage);
   }
 }
 

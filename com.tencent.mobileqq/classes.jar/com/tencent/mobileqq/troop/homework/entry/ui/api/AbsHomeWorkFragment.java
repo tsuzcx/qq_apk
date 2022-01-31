@@ -37,7 +37,7 @@ public abstract class AbsHomeWorkFragment
     a(paramActivity, paramClass, paramIntent, 258, paramInt, paramString);
   }
   
-  private void c()
+  private void b()
   {
     Object localObject = getArguments();
     if (localObject != null)
@@ -60,7 +60,7 @@ public abstract class AbsHomeWorkFragment
   
   public final View a(int paramInt)
   {
-    return this.e.findViewById(paramInt);
+    return this.mContentView.findViewById(paramInt);
   }
   
   public final QQAppInterface a()
@@ -72,12 +72,15 @@ public abstract class AbsHomeWorkFragment
     return null;
   }
   
-  protected final void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  public final void a()
   {
-    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    b(paramLayoutInflater, paramViewGroup, paramBundle);
-    c();
+    FragmentActivity localFragmentActivity = getActivity();
+    if (localFragmentActivity != null) {
+      localFragmentActivity.finish();
+    }
   }
+  
+  public abstract void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle);
   
   public abstract void a(@Nullable String paramString);
   
@@ -91,19 +94,16 @@ public abstract class AbsHomeWorkFragment
     getActivity().setResult(257, localIntent);
   }
   
-  public final void b()
+  protected final void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity != null) {
-      localFragmentActivity.finish();
-    }
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    a(paramLayoutInflater, paramViewGroup, paramBundle);
+    b();
   }
-  
-  public abstract void b(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.api.AbsHomeWorkFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.widget;
 
-import ameh;
-import amei;
-import amej;
-import amek;
+import amlr;
+import amls;
+import amlt;
+import amlu;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -107,7 +107,7 @@ public class XPanelContainer
       }
       this.l = ImmersiveUtils.a(getContext());
       if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT < 24) && (!DeviceInfoUtil2.a())) {
-        setOnSystemUiVisibilityChangeListener(new ameh(this));
+        setOnSystemUiVisibilityChangeListener(new amlr(this));
       }
       return;
     }
@@ -526,7 +526,7 @@ public class XPanelContainer
                   int i1 = jdField_a_of_type_Int;
                   localObject1 = ValueAnimator.ofInt(new int[] { paramInt, paramInt - jdField_a_of_type_Int });
                   ((ValueAnimator)localObject1).setDuration(150L);
-                  ((ValueAnimator)localObject1).addUpdateListener(new amej(this, paramInt));
+                  ((ValueAnimator)localObject1).addUpdateListener(new amlt(this, paramInt));
                   ((ValueAnimator)localObject1).start();
                   return;
                   if (paramInt != 21) {
@@ -593,7 +593,7 @@ public class XPanelContainer
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
     if (paramView.getOnFocusChangeListener() == null) {
-      paramView.setOnFocusChangeListener(new amei(this));
+      paramView.setOnFocusChangeListener(new amls(this));
     }
     if ((paramBoolean) && (paramView.getParent() != null) && ((paramView.getParent() instanceof ViewGroup)))
     {
@@ -667,7 +667,7 @@ public class XPanelContainer
       i1 = getHeight();
       localObject = ValueAnimator.ofInt(new int[] { i1 - jdField_a_of_type_Int, i1 });
       ((ValueAnimator)localObject).setDuration(150L);
-      ((ValueAnimator)localObject).addUpdateListener(new amek(this, i1));
+      ((ValueAnimator)localObject).addUpdateListener(new amlu(this, i1));
       ((ValueAnimator)localObject).start();
       return bool;
     }

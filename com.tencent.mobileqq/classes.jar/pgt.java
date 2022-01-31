@@ -1,18 +1,35 @@
-import com.tencent.component.media.image.ImageManager;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
+import com.tencent.biz.webviewplugin.OfflinePlugin;
+import java.util.HashMap;
 
-public final class pgt
-  implements ThreadFactory
+public class pgt
+  implements Runnable
 {
-  public Thread newThread(Runnable paramRunnable)
+  public pgt(OfflinePlugin paramOfflinePlugin) {}
+  
+  public void run()
   {
-    return new Thread(paramRunnable, "Qzone_ImageManager_decode_ThreadPool_" + ImageManager.a().getAndIncrement());
+    if (OfflinePlugin.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      OfflineUpdateStatus localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.a));
+      if ((localOfflineUpdateStatus != null) && (localOfflineUpdateStatus.b() == 1))
+      {
+        if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+        }
+        if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+          this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        }
+        localOfflineUpdateStatus.a(2);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pgt
  * JD-Core Version:    0.7.0.1
  */

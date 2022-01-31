@@ -1,17 +1,15 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.OnLoadListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afbu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public afbu(PicBrowserImage paramPicBrowserImage, URLDrawable paramURLDrawable, PicBrowserImage.OnLoadListener paramOnLoadListener, int paramInt) {}
+  public afbu(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 2)) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserImage$OnLoadListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLDrawable.getProgress());
-    }
+    ShortVideoCommentsView.a(this.a);
   }
 }
 

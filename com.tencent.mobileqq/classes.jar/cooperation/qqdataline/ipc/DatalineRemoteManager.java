@@ -1,16 +1,16 @@
 package cooperation.qqdataline.ipc;
 
-import amok;
-import amol;
-import amom;
-import amon;
-import amoo;
-import amop;
-import amoq;
-import amor;
-import amos;
-import amot;
-import amou;
+import amvv;
+import amvw;
+import amvx;
+import amvy;
+import amvz;
+import amwa;
+import amwb;
+import amwc;
+import amwd;
+import amwe;
+import amwf;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -79,7 +79,7 @@ public class DatalineRemoteManager
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentServiceConnection = new amor(this);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new amwc(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this);
     h();
@@ -179,7 +179,7 @@ public class DatalineRemoteManager
       localObject = Looper.getMainLooper();
       if (Thread.currentThread() != ((Looper)localObject).getThread())
       {
-        new Handler((Looper)localObject).post(new amot(this, paramBundle));
+        new Handler((Looper)localObject).post(new amwe(this, paramBundle));
         return;
       }
       a(paramBundle);
@@ -365,7 +365,7 @@ public class DatalineRemoteManager
         localFileManagerEntity.isReaded = true;
         localFileManagerEntity.peerUin = ((String)localObject2);
         if (l1 == 0L) {}
-        for (localFileManagerEntity.peerNick = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131436151);; localFileManagerEntity.peerNick = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131436154))
+        for (localFileManagerEntity.peerNick = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131436169);; localFileManagerEntity.peerNick = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131436172))
         {
           localFileManagerEntity.setFilePath((String)localObject1);
           localFileManagerEntity.srvTime = (MessageCache.a() * 1000L);
@@ -421,7 +421,7 @@ public class DatalineRemoteManager
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new amok(this));
+      new Handler(localLooper).post(new amvv(this));
       return;
     }
     e();
@@ -432,7 +432,7 @@ public class DatalineRemoteManager
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread())
     {
-      new Handler(localLooper).post(new amon(this));
+      new Handler(localLooper).post(new amvy(this));
       return;
     }
     f();
@@ -455,9 +455,9 @@ public class DatalineRemoteManager
     }
     a(0);
     this.b = false;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(BaseActivity.sTopActivity, 230, "授权申请", "是否允许电脑导出手机相册？", 2131433012, 2131433011, new amoo(this), new amop(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new amoq(this));
-    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131362776);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(BaseActivity.sTopActivity, 230, "授权申请", "是否允许电脑导出手机相册？", 2131433026, 2131433025, new amvz(this), new amwa(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new amwb(this));
+    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131362781);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 17;
     localTextView.setLayoutParams(localLayoutParams);
@@ -484,7 +484,7 @@ public class DatalineRemoteManager
       Object localObject1 = Looper.getMainLooper();
       if (Thread.currentThread() != ((Looper)localObject1).getThread())
       {
-        new Handler((Looper)localObject1).post(new amou(this));
+        new Handler((Looper)localObject1).post(new amwf(this));
         return;
       }
       while (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
@@ -529,7 +529,7 @@ public class DatalineRemoteManager
     while (localPluginCommunicationHandler.containsCmd("dataline.remotecall")) {
       return;
     }
-    localPluginCommunicationHandler.register(new amol(this, "dataline.remotecall"));
+    localPluginCommunicationHandler.register(new amvw(this, "dataline.remotecall"));
   }
   
   private void i()
@@ -550,7 +550,7 @@ public class DatalineRemoteManager
   {
     Object localObject = Looper.getMainLooper();
     if (Thread.currentThread() != ((Looper)localObject).getThread()) {
-      new Handler((Looper)localObject).post(new amom(this));
+      new Handler((Looper)localObject).post(new amvx(this));
     }
     while (BaseActivity.sTopActivity == null) {
       return;
@@ -698,7 +698,7 @@ public class DatalineRemoteManager
       if (Thread.currentThread() == paramMpfileTaskInfo.getThread()) {
         break;
       }
-      new Handler(paramMpfileTaskInfo).post(new amos(this, localFileManagerEntity, localForwardFileInfo));
+      new Handler(paramMpfileTaskInfo).post(new amwd(this, localFileManagerEntity, localForwardFileInfo));
       return;
       localForwardFileInfo.b(10009);
     }

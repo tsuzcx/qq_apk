@@ -1,17 +1,15 @@
-import android.util.Pair;
-import java.net.URL;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-public class kpz
+public final class kpz
+  implements Runnable
 {
-  public Pair a;
-  public URL a;
+  public kpz(TroopMemberApiClient paramTroopMemberApiClient, Bundle paramBundle, BusinessObserver paramBusinessObserver) {}
   
-  public static kpz a(URL paramURL, Pair paramPair)
+  public void run()
   {
-    kpz localkpz = new kpz();
-    localkpz.jdField_a_of_type_JavaNetURL = paramURL;
-    localkpz.jdField_a_of_type_AndroidUtilPair = paramPair;
-    return localkpz;
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(17, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
   }
 }
 

@@ -7,6 +7,7 @@ public final class enum_get_video_float_layer_req_type
 {
   public static final int _enum_normal = 1;
   public static final int _enum_qzone_weisi_recommend = 2;
+  public static final int _enum_weishi_recom_preload = 3;
 }
 
 

@@ -1,34 +1,14 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceManager;
+import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
+import com.tencent.widget.Gallery;
 
 public class ajzz
-  extends FriendListObserver
+  implements Runnable
 {
-  private ajzz(FaceManager paramFaceManager) {}
+  public ajzz(MediaPreviewAdapter paramMediaPreviewAdapter) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void run()
   {
-    this.a.a(4, paramBoolean, new Object[] { paramString });
-  }
-  
-  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(39, paramBoolean, new Object[] { paramString });
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(30, paramBoolean, new Object[] { paramString });
+    this.a.a(false, this.a.a.getSelectedItemPosition());
   }
 }
 

@@ -1,26 +1,29 @@
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanelAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class yyg
-  implements Runnable
+public final class yyg
+  implements EIPCResultCallback
 {
-  public yyg(ApolloPanel paramApolloPanel) {}
+  public yyg(String paramString, long paramLong) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter != null) && (this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup != null))
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("type");
+    if (i == 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPanel", 2, "func showGameViewOnly begins. Thread id = " + Thread.currentThread().getId());
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.notifyDataSetChanged();
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_JavaUtilList.add(this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameViewBinder);
-      ApolloPanel.b(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.a(this.a.jdField_a_of_type_JavaUtilList);
+      paramEIPCResult = paramEIPCResult.getString("nickName");
+      CmGameUtil.a().callbackGetNick(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
     }
+    while (i != 2) {
+      return;
+    }
+    paramEIPCResult = (Bitmap)paramEIPCResult.getParcelable("head");
+    CmGameUtil.a().callbackGetHead(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
   }
 }
 

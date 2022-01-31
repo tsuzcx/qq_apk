@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-public class urn
+public final class urn
+  extends TroopObserver
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public boolean b = false;
-  public boolean c;
+  public urn(SessionInfo paramSessionInfo) {}
   
-  public urn(DoodleMsgLayout paramDoodleMsgLayout)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_Boolean = false;
+    if (paramBoolean)
+    {
+      QWalletHelper.saveLastUpdateToopMemberNumTime(this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PlusPanelUtils", 2, "onOIDB0X88D_0_Ret 群uin：" + this.a.a + " 群成员个数：" + paramTroopInfo.wMemberNum);
+      }
+    }
   }
 }
 

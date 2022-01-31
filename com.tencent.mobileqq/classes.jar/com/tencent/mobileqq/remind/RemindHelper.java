@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.remind;
 
-import ahga;
-import ahgb;
+import ahkr;
+import ahks;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.view.LayoutInflater;
@@ -32,7 +32,7 @@ public class RemindHelper
     jdField_a_of_type_JavaLangString = "1";
     b = "0";
     jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$FormatDataListener = new ahga();
+    jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$FormatDataListener = new ahkr();
   }
   
   public static int a(Context paramContext, String paramString1, long paramLong1, long paramLong2, String paramString2, String paramString3, int[] paramArrayOfInt)
@@ -90,8 +90,8 @@ public class RemindHelper
     {
       jdField_a_of_type_Boolean = false;
       localActionSheet = ActionSheet.c(paramContext);
-      ((DispatchActionMoveScrollView)localActionSheet.findViewById(2131362805)).jdField_a_of_type_Boolean = true;
-      localObject = (IosTimepicker)((LayoutInflater)localObject).inflate(2130971728, null);
+      ((DispatchActionMoveScrollView)localActionSheet.findViewById(2131362810)).jdField_a_of_type_Boolean = true;
+      localObject = (IosTimepicker)((LayoutInflater)localObject).inflate(2130971758, null);
       ((IosTimepicker)localObject).setMaxDays(25568);
       DayAdapter localDayAdapter = new DayAdapter(paramContext, 25);
       NumberAdapter localNumberAdapter1 = new NumberAdapter(paramContext, TimeHelper.a, 25);
@@ -105,7 +105,7 @@ public class RemindHelper
         localActionSheet.getWindow().setFlags(16777216, 16777216);
       }
       localActionSheet.a((View)localObject, null);
-      localActionSheet.setOnDismissListener(new ahgb((IosTimepicker)localObject, paramJsBridgeListener));
+      localActionSheet.setOnDismissListener(new ahks((IosTimepicker)localObject, paramJsBridgeListener));
     }
     try
     {

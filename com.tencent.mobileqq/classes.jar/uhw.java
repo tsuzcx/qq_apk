@@ -1,15 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils.TroopPrivilegeCallback;
 
-public class uhw
-  extends GameCenterObserver
+class uhw
+  implements Runnable
 {
-  public uhw(VisitorsActivity paramVisitorsActivity) {}
+  uhw(uhu paramuhu, int paramInt1, int paramInt2, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    this.a.e();
+    this.jdField_a_of_type_Uhu.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotificationUtils$TroopPrivilegeCallback.a(this.jdField_a_of_type_Uhu.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Uhu.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

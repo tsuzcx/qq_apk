@@ -99,37 +99,37 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
-import yyc;
-import yyf;
-import yyg;
-import yyh;
-import yyi;
-import yyj;
-import yyk;
-import yyl;
-import yym;
-import yyn;
-import yyo;
-import yyp;
-import yyq;
-import yyr;
-import yys;
-import yyt;
-import yyu;
-import yyv;
-import yyw;
-import yyx;
-import yyy;
-import yyz;
-import yza;
-import yzb;
-import yzc;
-import yzd;
-import yze;
-import yzf;
-import yzg;
-import yzh;
-import yzi;
+import zfc;
+import zff;
+import zfg;
+import zfh;
+import zfi;
+import zfj;
+import zfk;
+import zfl;
+import zfm;
+import zfn;
+import zfo;
+import zfp;
+import zfq;
+import zfr;
+import zfs;
+import zft;
+import zfu;
+import zfv;
+import zfw;
+import zfx;
+import zfy;
+import zfz;
+import zga;
+import zgb;
+import zgc;
+import zgd;
+import zge;
+import zgf;
+import zgg;
+import zgh;
+import zgi;
 
 public class ApolloPanel
   extends RelativeLayout
@@ -150,7 +150,7 @@ public class ApolloPanel
   public SessionInfo a;
   public ApolloPanelManager.PanelClickCallback a;
   private ApolloPanelManager jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager;
-  IResDownloadListener jdField_a_of_type_ComTencentMobileqqApolloUtilsIResDownloadListener = new yyc(this);
+  IResDownloadListener jdField_a_of_type_ComTencentMobileqqApolloUtilsIResDownloadListener = new zfc(this);
   public ApolloGameViewBinder a;
   public ApolloMainViewBinder a;
   public ApolloPanelAdapter a;
@@ -162,7 +162,7 @@ public class ApolloPanel
   private BusinessInfoCheckUpdate.AppInfo jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo;
   public HorizontalListView a;
   CalloutPopupWindow jdField_a_of_type_ComTencentWidgetCalloutpopupwindowCalloutPopupWindow;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new yys(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new zfs(this);
   public List a;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private final MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
@@ -195,8 +195,8 @@ public class ApolloPanel
     this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_c_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new yym(this);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager$PanelClickCallback = new yyr(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new zfm(this);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager$PanelClickCallback = new zfr(this);
   }
   
   public ApolloPanel(Context paramContext, AttributeSet paramAttributeSet)
@@ -205,8 +205,8 @@ public class ApolloPanel
     this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_c_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new yym(this);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager$PanelClickCallback = new yyr(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new zfm(this);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager$PanelClickCallback = new zfr(this);
   }
   
   private int a(List paramList, int paramInt)
@@ -250,7 +250,7 @@ public class ApolloPanel
         localResources = super.getResources();
         try
         {
-          localObject1 = localResources.getDrawable(2130837572);
+          localObject1 = localResources.getDrawable(2130837571);
         }
         catch (Exception localException1)
         {
@@ -276,7 +276,7 @@ public class ApolloPanel
         {
           try
           {
-            localDrawable = localResources.getDrawable(2130841350);
+            localDrawable = localResources.getDrawable(2130841377);
             localObject4 = localObject1;
             if (paramApolloActionData.status == 0) {
               break;
@@ -321,7 +321,7 @@ public class ApolloPanel
   
   private void a(View paramView, int paramInt1, String paramString, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (paramView == null)) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (paramView == null) || (paramString == null)) {}
     do
     {
       do
@@ -344,27 +344,27 @@ public class ApolloPanel
       QLog.d("ApolloPanel", 2, new Object[] { "[realshowNewActionFloatView] actionInfo=", paramApolloActionData, ", btnType=", Integer.valueOf(paramInt1), ", extraWordingType=", Integer.valueOf(paramInt2), ", extra=", paramBundle });
     }
     this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(super.getContext()).inflate(2130968680, null));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setId(2131362448);
-    ((ImageView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363172)).setOnClickListener(this);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setId(2131362451);
+    ((ImageView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363176)).setOnClickListener(this);
     Object localObject2 = super.getResources();
-    Object localObject1 = (ImageView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363174);
+    Object localObject1 = (ImageView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363178);
     ApolloMainInfo localApolloMainInfo = new ApolloMainInfo(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
     localApolloMainInfo.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = paramApolloActionData;
     ((ImageView)localObject1).setImageDrawable(a(paramApolloActionData));
-    ((TextView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363175)).setText(paramApolloActionData.actionName);
-    ((TextView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363176)).setText(paramApolloActionData.description);
-    ((Button)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363170)).setOnClickListener(new yyu(this, paramApolloActionData));
-    localObject1 = (Button)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363171);
+    ((TextView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363179)).setText(paramApolloActionData.actionName);
+    ((TextView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363180)).setText(paramApolloActionData.description);
+    ((Button)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363174)).setOnClickListener(new zfu(this, paramApolloActionData));
+    localObject1 = (Button)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363175);
     int i = super.getHeight() - this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getHeight();
     if (i < AIOUtils.a(213.0F, (Resources)localObject2))
     {
-      localObject3 = (LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363169);
+      localObject3 = (LinearLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363173);
       i = i - (int)((Resources)localObject2).getDimension(2131558721) - (int)((Resources)localObject2).getDimension(2131558722);
       ((RelativeLayout.LayoutParams)((LinearLayout)localObject3).getLayoutParams()).bottomMargin = ((int)(i * 0.1D));
-      ((RelativeLayout.LayoutParams)((RelativeLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363173)).getLayoutParams()).bottomMargin = ((int)(i * 0.2D));
+      ((RelativeLayout.LayoutParams)((RelativeLayout)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363177)).getLayoutParams()).bottomMargin = ((int)(i * 0.2D));
     }
-    localObject2 = (ImageView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363177);
-    Object localObject3 = (TextView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363179);
+    localObject2 = (ImageView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363181);
+    Object localObject3 = (TextView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363183);
     switch (paramInt2)
     {
     default: 
@@ -373,7 +373,7 @@ public class ApolloPanel
       default: 
         label468:
         paramBundle = new RelativeLayout.LayoutParams(-1, -1);
-        paramBundle.addRule(2, 2131362950);
+        paramBundle.addRule(2, 2131362955);
         if (!this.jdField_g_of_type_Boolean) {}
         break;
       }
@@ -401,15 +401,15 @@ public class ApolloPanel
       ((TextView)localObject3).setText("已获得");
       break;
       ((ImageView)localObject2).setVisibility(0);
-      ((ImageView)localObject2).setImageResource(2130838105);
+      ((ImageView)localObject2).setImageResource(2130838107);
       ((TextView)localObject3).setTextColor(Color.parseColor("#FFFF8444"));
       ((TextView)localObject3).setText(paramApolloActionData.extraWording);
       break;
       ((ImageView)localObject2).setVisibility(0);
-      ((ImageView)localObject2).setImageResource(2130838106);
+      ((ImageView)localObject2).setImageResource(2130838108);
       ((TextView)localObject3).setTextColor(Color.parseColor("#FF777777"));
       ((TextView)localObject3).setText("购买");
-      localObject2 = (TextView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363178);
+      localObject2 = (TextView)this.jdField_c_of_type_AndroidWidgetRelativeLayout.findViewById(2131363182);
       ((TextView)localObject2).setVisibility(0);
       ((TextView)localObject2).setText(String.valueOf(paramApolloActionData.currencyNum));
       break;
@@ -417,7 +417,7 @@ public class ApolloPanel
       switch (paramApolloActionData.vipLevel)
       {
       default: 
-        ((ImageView)localObject2).setImageResource(2130838113);
+        ((ImageView)localObject2).setImageResource(2130838115);
       }
       for (;;)
       {
@@ -428,10 +428,6 @@ public class ApolloPanel
         ((TextView)localObject3).setTextColor(Color.parseColor("#FF777777"));
         ((TextView)localObject3).setText("开通小钻可使用");
         break;
-        ((ImageView)localObject2).setImageResource(2130838107);
-        continue;
-        ((ImageView)localObject2).setImageResource(2130838108);
-        continue;
         ((ImageView)localObject2).setImageResource(2130838109);
         continue;
         ((ImageView)localObject2).setImageResource(2130838110);
@@ -441,28 +437,32 @@ public class ApolloPanel
         ((ImageView)localObject2).setImageResource(2130838112);
         continue;
         ((ImageView)localObject2).setImageResource(2130838113);
+        continue;
+        ((ImageView)localObject2).setImageResource(2130838114);
+        continue;
+        ((ImageView)localObject2).setImageResource(2130838115);
       }
       label959:
       ((TextView)localObject3).setVisibility(8);
       break;
       ((Button)localObject1).setText("立即发送");
-      ((Button)localObject1).setOnClickListener(new yyv(this, localApolloMainInfo, paramApolloActionData));
+      ((Button)localObject1).setOnClickListener(new zfv(this, localApolloMainInfo, paramApolloActionData));
       break label468;
       ((Button)localObject1).setText("立即参加");
-      ((Button)localObject1).setOnClickListener(new yyw(this, paramBundle, paramApolloActionData));
+      ((Button)localObject1).setOnClickListener(new zfw(this, paramBundle, paramApolloActionData));
       break label468;
       ((Button)localObject1).setText("立即购买");
-      ((Button)localObject1).setOnClickListener(new yyx(this, paramApolloActionData, paramBundle));
+      ((Button)localObject1).setOnClickListener(new zfx(this, paramApolloActionData, paramBundle));
       break label468;
       ((Button)localObject1).setText("开通小钻");
-      ((Button)localObject1).setOnClickListener(new yyy(this, paramApolloActionData));
+      ((Button)localObject1).setOnClickListener(new zfy(this, paramApolloActionData));
       break label468;
     }
   }
   
   private void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo, String paramString)
   {
-    ThreadManager.getUIHandler().post(new yzb(this, paramAppInfo, paramString));
+    ThreadManager.getUIHandler().post(new zgb(this, paramAppInfo, paramString));
   }
   
   private void a(List paramList1, List paramList2, boolean paramBoolean)
@@ -483,7 +483,7 @@ public class ApolloPanel
       paramBoolean = false;
       i = 0;
       this.jdField_g_of_type_Int = -1;
-      if (((ApolloManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152)).jdField_f_of_type_Boolean)
+      if (((ApolloManager)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152)).n)
       {
         j = ((SharedPreferences)localObject).getInt("key_panel_bubble_tab", -1);
         i = 0;
@@ -753,7 +753,7 @@ public class ApolloPanel
         }
         if (localApolloActionData.feeType == 6)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(new yyt(this, localApolloActionData));
+          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(new zft(this, localApolloActionData));
           ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(localApolloActionData.actionId, null, null, 0, 0.0F, 0, "newActionFloatView");
           return;
         }
@@ -848,7 +848,7 @@ public class ApolloPanel
         ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = ((int)(this.jdField_b_of_type_ComTencentImageURLImageView.getWidth() + 0.5F));
         localObject1 = ApolloImageDownloader.a(true, ApolloConstant.g + "apollo_preview_action_guide.png", (URLDrawable.URLDrawableOptions)localObject1, "http://cmshow.gtimg.cn/client/img/apollo_preview_action_guide.png");
         this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
-        this.jdField_b_of_type_ComTencentImageURLImageView.setOnClickListener(new yzf(this));
+        this.jdField_b_of_type_ComTencentImageURLImageView.setOnClickListener(new zgf(this));
         return;
       }
     }
@@ -873,7 +873,7 @@ public class ApolloPanel
       super.removeView(this.jdField_c_of_type_AndroidWidgetRelativeLayout);
       this.jdField_c_of_type_AndroidWidgetRelativeLayout = null;
     }
-    View localView = super.findViewById(2131362448);
+    View localView = super.findViewById(2131362451);
     if (localView != null)
     {
       if (QLog.isColorLevel()) {
@@ -891,7 +891,7 @@ public class ApolloPanel
   
   private void u()
   {
-    ThreadManager.getUIHandler().post(new yzc(this));
+    ThreadManager.getUIHandler().post(new zgc(this));
   }
   
   public int a()
@@ -1136,7 +1136,7 @@ public class ApolloPanel
           if (QLog.isColorLevel()) {
             QLog.d("ApolloPanel", 2, new Object[] { "[checkRedTab] pkg=", Integer.valueOf(((ApolloActionPackage)localObject).packageId), ", new action id=", Integer.valueOf(paramInt) });
           }
-          ThreadManager.post(new yyp(this, (ApolloActionPackage)localObject), 5, null, true);
+          ThreadManager.post(new zfp(this, (ApolloActionPackage)localObject), 5, null, true);
           if (QLog.isColorLevel()) {
             QLog.d("ApolloPanel", 2, new Object[] { "[checkRedTab] mShouldShowActionFloatView=", Boolean.valueOf(this.jdField_h_of_type_Boolean), ", mIsTriggeredByClick=", Boolean.valueOf(this.jdField_d_of_type_Boolean) });
           }
@@ -1158,7 +1158,7 @@ public class ApolloPanel
     if (QLog.isColorLevel()) {
       QLog.d("ApolloPanel", 2, "auth_finish");
     }
-    post(new yyh(this, paramString, paramInt));
+    post(new zfh(this, paramString, paramInt));
   }
   
   public void a(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo, int paramInt1, int paramInt2, int paramInt3)
@@ -1178,39 +1178,39 @@ public class ApolloPanel
       this.jdField_d_of_type_Int = paramInt2;
     }
     this.jdField_f_of_type_Int = paramInt3;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)super.findViewById(2131362948));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)super.findViewById(2131362949));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)super.findViewById(2131362953));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)super.findViewById(2131362954));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131362956));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362955));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131362961));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362960));
     this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable = new StateListDrawable();
     paramSessionInfo = this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable;
-    Drawable localDrawable = super.getContext().getResources().getDrawable(2130838144);
+    Drawable localDrawable = super.getContext().getResources().getDrawable(2130838146);
     paramSessionInfo.addState(new int[] { 16842919 }, localDrawable);
     paramSessionInfo = this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable;
-    localDrawable = super.getContext().getResources().getDrawable(2130838143);
+    localDrawable = super.getContext().getResources().getDrawable(2130838145);
     paramSessionInfo.addState(new int[] { -16842919 }, localDrawable);
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131362950));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131362955));
     this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter = new ApolloPanelAdapter(BaseApplicationImpl.getContext());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
     this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)super.findViewById(2131362957));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)super.findViewById(2131362962));
     this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloTabAdapter = new ApolloTabAdapter(super.getContext());
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloTabAdapter);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
-    super.findViewById(2131362952).setBackgroundColor(super.getContext().getResources().getColor(2131494035));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362951));
+    super.findViewById(2131362957).setBackgroundColor(super.getContext().getResources().getColor(2131494041));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362956));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362944));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362945));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362949));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362950));
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362947));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362946));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131362958));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362952));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362951));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131362963));
     this.jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager = paramBaseChatPie.a();
     if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager != null) {
       this.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPanelManager.a.get()));
@@ -1254,7 +1254,7 @@ public class ApolloPanel
     {
       this.jdField_c_of_type_Boolean = bool;
       ((RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.getLayoutParams()).bottomMargin = ((int)(10.0F * super.getResources().getDisplayMetrics().density));
-      setBackgroundColor(super.getResources().getColor(2131494037));
+      setBackgroundColor(super.getResources().getColor(2131494043));
       p();
       if (QLog.isColorLevel()) {
         QLog.d("ApolloPanel", 2, "init panel done");
@@ -1292,7 +1292,7 @@ public class ApolloPanel
           localObject2 = new ApolloInfo();
           ((ApolloInfo)localObject2).jdField_b_of_type_Int = 2;
           ApolloActionData localApolloActionData = new ApolloActionData();
-          localApolloActionData.actionName = super.getResources().getString(2131438195);
+          localApolloActionData.actionName = super.getResources().getString(2131438215);
           ((ApolloInfo)localObject2).jdField_a_of_type_ComTencentMobileqqDataApolloActionData = localApolloActionData;
           ((ApolloViewBinder)localObject1).jdField_a_of_type_JavaUtilList.add(0, localObject2);
         }
@@ -1377,7 +1377,7 @@ public class ApolloPanel
               if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
                 break;
               }
-              this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class).post(new yyn(this, localViewHolder));
+              this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class).post(new zfn(this, localViewHolder));
             }
           }
           k += 1;
@@ -1402,7 +1402,7 @@ public class ApolloPanel
   
   public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo, String paramString, boolean paramBoolean)
   {
-    ThreadManager.post(new yza(this, paramAppInfo, paramBoolean, paramString), 5, null, true);
+    ThreadManager.post(new zga(this, paramAppInfo, paramBoolean, paramString), 5, null, true);
   }
   
   public void a(String paramString)
@@ -1428,9 +1428,9 @@ public class ApolloPanel
     if ("onlyRightType".equals(paramString5))
     {
       i = 1;
-      paramString1 = new yyi(this);
+      paramString1 = new zfi(this);
       label137:
-      paramString6 = super.getResources().getString(2131436731);
+      paramString6 = super.getResources().getString(2131436751);
       if (i == 0) {
         break label293;
       }
@@ -1446,17 +1446,17 @@ public class ApolloPanel
       return;
       if ("moreInfo".equals(paramString5))
       {
-        paramString1 = new yyj(this, paramString7);
+        paramString1 = new zfj(this, paramString7);
         i = 0;
         break label137;
       }
       if ("requestSSO".equals(paramString5))
       {
-        paramString1 = new yyk(this, paramString1, paramString7, paramString8);
+        paramString1 = new zfk(this, paramString1, paramString7, paramString8);
         i = 0;
         break label137;
       }
-      paramString1 = new yyl(this, paramString5, paramString6, paramString7, paramString1);
+      paramString1 = new zfl(this, paramString5, paramString6, paramString7, paramString1);
       i = 0;
       break label137;
     }
@@ -1502,12 +1502,12 @@ public class ApolloPanel
     {
       localApolloActionPackage = (ApolloActionPackage)localList.get(n);
       if (localApolloActionPackage == null) {
-        break label2390;
+        break label2386;
       }
       if (localApolloActionPackage.packageId != 4) {}
     }
     label465:
-    label2390:
+    label2386:
     for (;;)
     {
       n += 1;
@@ -1544,7 +1544,7 @@ public class ApolloPanel
               localObject1 = new ApolloInfo();
               ((ApolloInfo)localObject1).jdField_b_of_type_Int = 2;
               localObject4 = new ApolloActionData();
-              ((ApolloActionData)localObject4).actionName = super.getResources().getString(2131438195);
+              ((ApolloActionData)localObject4).actionName = super.getResources().getString(2131438215);
               ((ApolloInfo)localObject1).jdField_a_of_type_ComTencentMobileqqDataApolloActionData = ((ApolloActionData)localObject4);
               localArrayList3.add(localObject1);
               localObject1 = null;
@@ -1552,7 +1552,7 @@ public class ApolloPanel
               l1 = System.currentTimeMillis();
               localObject4 = new StringBuilder();
               if (localObject3 == null) {
-                break label2383;
+                break label2379;
               }
               i = j;
               j = 0;
@@ -1661,7 +1661,7 @@ public class ApolloPanel
             {
               localArrayList3.add(localApolloInfo);
               if ((i != -1) || (this.jdField_d_of_type_Int != localApolloActionData.actionId)) {
-                break label2380;
+                break label2376;
               }
               if (this.jdField_e_of_type_Int == -1)
               {
@@ -1671,7 +1671,7 @@ public class ApolloPanel
                 }
               }
               if (this.jdField_e_of_type_Int != localApolloActionPackage.packageId) {
-                break label2380;
+                break label2376;
               }
               i = localArrayList3.size() - 1;
               break;
@@ -1732,7 +1732,7 @@ public class ApolloPanel
                 QLog.d("ApolloPanel", 2, "[initPanelData] no jump action found, try to update json");
               }
               if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-                this.jdField_a_of_type_AndroidWidgetImageView.post(new yyz(this));
+                this.jdField_a_of_type_AndroidWidgetImageView.post(new zfz(this));
               }
               this.jdField_b_of_type_Boolean = true;
               if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
@@ -1741,29 +1741,29 @@ public class ApolloPanel
             }
             while ((localArrayList2 != null) && (localArrayList2.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
             {
-              localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
+              localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
               l2 = NetConnInfoCenter.getServerTimeMillis();
               l1 = ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-              paramString = new ArrayList();
-              localObject1 = localArrayList1.iterator();
-              while (((Iterator)localObject1).hasNext())
+              localObject1 = new ArrayList();
+              localObject2 = localArrayList1.iterator();
+              while (((Iterator)localObject2).hasNext())
               {
-                localObject3 = (ApolloActionPackage)((Iterator)localObject1).next();
-                if ((((ApolloActionPackage)localObject3).isUpdate) && (((ApolloActionPackage)localObject3).packageId != 100))
+                paramString = (ApolloActionPackage)((Iterator)localObject2).next();
+                if ((paramString.isUpdate) && (paramString.packageId != 100))
                 {
                   if (QLog.isColorLevel()) {
-                    QLog.d("ApolloPanel", 2, "[initPanelData] delete red dot after 24h:" + paramString.size());
+                    QLog.d("ApolloPanel", 2, "[initPanelData] delete red dot after 24h:" + ((List)localObject1).size());
                   }
-                  if (NetConnInfoCenter.getServerTimeMillis() - ((SharedPreferences)localObject2).getLong("action_red_tab_update_" + ((ApolloActionPackage)localObject3).packageId, 0L) > ((ApolloActionPackage)localObject3).redInterval)
+                  if (NetConnInfoCenter.getServerTimeMillis() - ((SharedPreferences)localObject3).getLong("action_red_tab_update_" + paramString.packageId, 0L) > paramString.redInterval)
                   {
-                    ((ApolloActionPackage)localObject3).isUpdate = false;
-                    paramString.add(localObject3);
+                    paramString.isUpdate = false;
+                    ((List)localObject1).add(paramString);
                   }
                 }
-                if ((((ApolloActionPackage)localObject3).isUpdate) && (((ApolloActionPackage)localObject3).packageId == 100) && (l2 - l1 > 604800000L))
+                if ((paramString.isUpdate) && (paramString.packageId == 100) && (l2 - l1 > 604800000L))
                 {
-                  ((ApolloActionPackage)localObject3).isUpdate = false;
-                  paramString.add(localObject3);
+                  paramString.isUpdate = false;
+                  ((List)localObject1).add(paramString);
                 }
               }
               if (!this.jdField_a_of_type_Boolean)
@@ -1773,12 +1773,12 @@ public class ApolloPanel
               }
             }
             break;
-            if (!paramString.isEmpty())
+            if (!((List)localObject1).isEmpty())
             {
               if (QLog.isColorLevel()) {
-                QLog.d("ApolloPanel", 2, "[initPanelData] delete red dot after 24h:" + paramString.size());
+                QLog.d("ApolloPanel", 2, "[initPanelData] delete red dot after 24h:" + ((List)localObject1).size());
               }
-              ThreadManager.post(new yzd(this, paramString), 5, null, true);
+              ThreadManager.post(new zgd(this, (List)localObject1), 5, null, true);
             }
             j = c();
             if ((j > 0) && (!localArrayList2.isEmpty())) {
@@ -1822,7 +1822,7 @@ public class ApolloPanel
             if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null)) {
               break;
             }
-            this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new yze(this));
+            this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new zge(this));
             return;
             break label528;
             m = k;
@@ -1842,13 +1842,13 @@ public class ApolloPanel
       l();
       return;
     }
-    ThreadManager.post(new yyo(this, paramBoolean1, paramString, paramBoolean2), 5, null, true);
+    ThreadManager.post(new zfo(this, paramBoolean1, paramString, paramBoolean2), 5, null, true);
   }
   
   public void a(List paramList)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new yzh(this, paramList));
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new zgh(this, paramList));
     }
   }
   
@@ -2283,7 +2283,7 @@ public class ApolloPanel
   public void b(List paramList)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new yzi(this, paramList));
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new zgi(this, paramList));
     }
   }
   
@@ -2505,7 +2505,7 @@ public class ApolloPanel
   
   public void f()
   {
-    ThreadManager.post(new yzg(this), 5, null, false);
+    ThreadManager.post(new zgg(this), 5, null, false);
   }
   
   public void g()
@@ -2566,7 +2566,7 @@ public class ApolloPanel
             localObject3 = new ApolloInfo();
             ((ApolloInfo)localObject3).jdField_b_of_type_Int = 2;
             ApolloActionData localApolloActionData = new ApolloActionData();
-            localApolloActionData.actionName = super.getResources().getString(2131438195);
+            localApolloActionData.actionName = super.getResources().getString(2131438215);
             ((ApolloInfo)localObject3).jdField_a_of_type_ComTencentMobileqqDataApolloActionData = localApolloActionData;
             localList.add(localObject3);
           }
@@ -2715,7 +2715,7 @@ public class ApolloPanel
     {
       return;
     }
-    localMqqHandler.post(new yyf(this));
+    localMqqHandler.post(new zff(this));
   }
   
   public void k()
@@ -2751,7 +2751,7 @@ public class ApolloPanel
     }
     for (;;)
     {
-      ThreadManager.getUIHandler().post(new yyg(this));
+      ThreadManager.getUIHandler().post(new zfg(this));
       return;
       label116:
       this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameViewBinder.c(8);
@@ -2802,7 +2802,7 @@ public class ApolloPanel
     {
       return;
     }
-    localMqqHandler.post(new yyq(this));
+    localMqqHandler.post(new zfq(this));
   }
   
   public void onClick(View paramView)
@@ -2810,8 +2810,8 @@ public class ApolloPanel
     switch (paramView.getId())
     {
     default: 
-    case 2131362956: 
-    case 2131362945: 
+    case 2131362961: 
+    case 2131362950: 
       do
       {
         do

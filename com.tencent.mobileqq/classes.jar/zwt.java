@@ -1,39 +1,17 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.FileFilter;
-import org.json.JSONObject;
+import java.util.Comparator;
 
-public class zwt
-  implements FileFilter
+class zwt
+  implements Comparator
 {
-  public zwt(ApolloContentUpdateHandler paramApolloContentUpdateHandler, SparseArray paramSparseArray) {}
+  zwt(zwq paramzwq) {}
   
-  public boolean accept(File paramFile)
+  public int a(File paramFile1, File paramFile2)
   {
-    Object localObject = new File(paramFile, "config.json");
-    if ((((File)localObject).exists()) && (((File)localObject).isFile())) {
-      localObject = FileUtils.a((File)localObject);
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
     }
-    try
-    {
-      int i = Integer.parseInt(paramFile.getName());
-      long l = new JSONObject((String)localObject).optLong("version");
-      this.jdField_a_of_type_AndroidUtilSparseArray.append(i, Long.valueOf(l));
-      QLog.i("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo roleId: " + i + ", ver: " + l / 1000L);
-      return false;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo failed role: " + paramFile.getAbsolutePath());
-        }
-      }
-    }
+    return 0;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import advf;
+import aedp;
 import android.text.TextUtils;
 import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.biz.troop.TroopMemberApiClient.Callback;
@@ -14,7 +14,7 @@ public class NowWebViewPlugin
   extends WebViewPlugin
 {
   private int jdField_a_of_type_Int;
-  final TroopMemberApiClient.Callback jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient$Callback = new advf(this);
+  final TroopMemberApiClient.Callback jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient$Callback = new aedp(this);
   private TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
   private int b;
   

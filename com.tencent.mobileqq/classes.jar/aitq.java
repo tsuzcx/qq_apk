@@ -1,149 +1,137 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
-import com.tencent.mobileqq.troop.activity.ExtendGridView;
-import com.tencent.mobileqq.troop.activity.TroopBarImagePreviewAdapter;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.data.TroopBarMyBar;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import com.tencent.mobileqq.troop.widget.TribeHotPicPanel;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.util.InputMethodUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterModule;
+import com.tencent.biz.qqstory.takevideo.artfilter.FilterUploadInfo;
+import com.tencent.mobileqq.highway.api.IRequestCallback;
+import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.ImageFilterResponse;
+import com.tencent.mobileqq.highway.segment.HwResponse;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.transfile.ArtFilterUploadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aitq
-  extends Handler
+  implements IRequestCallback
 {
-  public aitq(AbsPublishActivity paramAbsPublishActivity) {}
+  public aitq(ArtFilterUploadProcessor paramArtFilterUploadProcessor) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFailed(int paramInt)
   {
-    boolean bool = false;
-    if (this.a.isFinishing()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                    switch (paramMessage.what)
-                    {
-                    default: 
-                      return;
-                    }
-                  } while (this.a.a(1));
-                  if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != 9) {
-                    break;
-                  }
-                  QQToast.a(this.a, "最多只能选择9张图片", 0).b(this.a.getTitleBarHeight());
-                  return;
-                  this.a.c(false);
-                  this.a.rightViewText.setEnabled(true);
-                  this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
-                  this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
-                  QQToast.a(this.a, 2131430348, 1).b(this.a.getTitleBarHeight());
-                } while (!(paramMessage.obj instanceof String));
-                paramMessage = (String)paramMessage.obj;
-                this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramMessage);
-                return;
-                this.a.c(false);
-                this.a.k();
-                return;
-                if ((paramMessage.arg1 == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null)) {
-                  this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.url = ((String)paramMessage.obj);
-                }
-              } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
-              this.a.k();
-              return;
-              this.a.c(false);
-              if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-                this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-              }
-              this.a.rightViewText.setEnabled(true);
-              this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setItemEnable(true);
-              this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.setEnabled(true);
-              QQToast.a(this.a, 2131430348, 1).b(this.a.getTitleBarHeight());
-              return;
-            } while (this.a.a(2));
-            paramMessage = new Intent();
-            paramMessage.putExtra("audio_max_length", this.a.h);
-            if (this.a.r != null)
-            {
-              paramMessage.putExtra("from", "publish");
-              paramMessage.putExtra("bid", this.a.r);
-              paramMessage.putExtra("fromflag", this.a.c);
-              TroopBarUtils.a(this.a.p, this.a.q, "Clk_record", this.a.r, this.a.c, "", "");
-            }
-            PublicFragmentActivity.Launcher.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramMessage, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
-            return;
-          } while (!this.a.a(4));
-          return;
-          this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getClass().getName());
-          return;
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTribeHotPicPanel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetTribeHotPicPanel.isShown()))
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.a(5, 0);
-            this.a.h();
-            this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new aitr(this), 200L);
-            return;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.a(5, 1);
-          this.a.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130841212);
-          this.a.jdField_a_of_type_AndroidWidgetImageButton.setContentDescription(this.a.getString(2131430341));
-          this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
-          InputMethodUtil.b(this.a.b);
-          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new aits(this), 200L);
-        } while (!(this.a.getActivity() instanceof TroopBarPublishActivity));
-        localObject = (TroopBarPublishActivity)this.a.getActivity();
-        paramMessage = new StringBuilder();
-      } while (((TroopBarPublishActivity)localObject).a == null);
-      Object localObject = ((TroopBarPublishActivity)localObject).a.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        paramMessage.append(((TroopBarMyBar)((Iterator)localObject).next()).c).append("|");
-      }
-    } while (!this.a.a(8));
-    return;
-    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarImagePreviewAdapter.a(this.a.jdField_a_of_type_JavaUtilArrayList);
-      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarImagePreviewAdapter;
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() < 9) {
-        bool = true;
-      }
-      paramMessage.a(bool, true);
-      this.a.a(1);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setCurType(1);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-      return;
+    this.a.f = SystemClock.uptimeMillis();
+    this.a.a(paramInt, "getFilterTimeoutError");
+  }
+  
+  public void onResponse(HwResponse paramHwResponse)
+  {
+    long l1 = 0L;
+    this.a.f = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ArtFilterUploadProcessor", 2, "<BDH_LOG>getFilterResponse  retCode : " + paramHwResponse.retCode + " htCost:" + paramHwResponse.htCost + " front:" + paramHwResponse.cacheCost + " onResponse" + paramHwResponse);
     }
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarImagePreviewAdapter.a(false, true);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-    this.a.a(0);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setCurType(0);
+    Object localObject;
+    if (paramHwResponse.retCode == 0)
+    {
+      if (!this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterModule.b.equals(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterFilterUploadInfo.jdField_a_of_type_JavaLangString)) {
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterModule.jdField_a_of_type_Long = this.a.f;
+      localObject = paramHwResponse.mBuExtendinfo;
+      if ((localObject == null) || (localObject.length <= 0)) {
+        break label493;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localImageFilterResponse = new CSDataHighwayHead.ImageFilterResponse();
+        localImageFilterResponse.mergeFrom((byte[])localObject);
+        localObject = localImageFilterResponse.image_data.get();
+        i = localImageFilterResponse.cost_time.get();
+        l4 = i;
+        l3 = l1;
+        l2 = l3;
+      }
+      catch (InvalidProtocolBufferMicroException paramHwResponse)
+      {
+        try
+        {
+          l2 = paramHwResponse.cacheCost;
+          l3 = l1;
+          l2 = paramHwResponse.htCost + l2;
+          l3 = l2;
+          this.a.b(((ByteStringMicro)localObject).toStringUtf8());
+          l1 = l4;
+          this.a.jdField_a_of_type_JavaUtilHashMap.put("teg_Costtime", String.valueOf(l1));
+          this.a.jdField_a_of_type_JavaUtilHashMap.put("detailPic_Costtime", String.valueOf(l2));
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException paramHwResponse)
+        {
+          CSDataHighwayHead.ImageFilterResponse localImageFilterResponse;
+          int i;
+          long l4;
+          long l3;
+          long l2;
+          break label270;
+        }
+        paramHwResponse = paramHwResponse;
+        l4 = 0L;
+        l3 = l1;
+      }
+      label270:
+      l1 = l4;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("ArtFilterUploadProcessor", 2, "sendAckToBDHServer onResponse ", paramHwResponse);
+        l2 = l3;
+        l1 = l4;
+        continue;
+        this.a.a(paramHwResponse.buzRetCode, "getFilterError");
+        if (paramHwResponse.retCode == 222)
+        {
+          if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterModule.b.equals(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterFilterUploadInfo.jdField_a_of_type_JavaLangString))
+          {
+            this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterModule.jdField_a_of_type_Long = 0L;
+            this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterModule.jdField_a_of_type_JavaLangString = null;
+            l3 = 0L;
+            l2 = l1;
+            l1 = l3;
+          }
+        }
+        else if (paramHwResponse.retCode == 221)
+        {
+          paramHwResponse = paramHwResponse.mBuExtendinfo;
+          if ((paramHwResponse != null) && (paramHwResponse.length > 0)) {
+            try
+            {
+              localImageFilterResponse = new CSDataHighwayHead.ImageFilterResponse();
+              localImageFilterResponse.mergeFrom(paramHwResponse);
+              i = localImageFilterResponse.ret_code.get();
+              if (QLog.isColorLevel()) {
+                QLog.e("ArtFilterUploadProcessor", 2, "teg pocess error" + i);
+              }
+              l3 = 0L;
+              l2 = l1;
+              l1 = l3;
+            }
+            catch (InvalidProtocolBufferMicroException paramHwResponse)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.e("ArtFilterUploadProcessor", 2, "sendAckToBDHServer onResponse ", paramHwResponse);
+              }
+            }
+          }
+        }
+        label493:
+        l3 = 0L;
+        l2 = l1;
+        l1 = l3;
+      }
+    }
   }
 }
 

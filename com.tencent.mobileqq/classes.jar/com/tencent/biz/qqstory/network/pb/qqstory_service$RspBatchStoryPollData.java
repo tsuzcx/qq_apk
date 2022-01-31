@@ -8,8 +8,9 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 public final class qqstory_service$RspBatchStoryPollData
   extends MessageMicro
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "result", "poll_info_list", "rate_info_list" }, new Object[] { null, null, null }, RspBatchStoryPollData.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "result", "poll_info_list", "rate_info_list", "qa_info_list" }, new Object[] { null, null, null, null }, RspBatchStoryPollData.class);
   public final PBRepeatMessageField poll_info_list = PBField.initRepeatMessage(qqstory_struct.VidPollInfo.class);
+  public final PBRepeatMessageField qa_info_list = PBField.initRepeatMessage(qqstory_struct.VidQAInfo.class);
   public final PBRepeatMessageField rate_info_list = PBField.initRepeatMessage(qqstory_struct.VidRateInfo.class);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
 }

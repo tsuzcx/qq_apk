@@ -1,17 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.qq.im.capture.QIMCaptureController;
 
 public class antb
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public antb(EditVideoDoodle paramEditVideoDoodle) {}
+  public antb(QIMCaptureController paramQIMCaptureController, boolean paramBoolean) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return this.a.a.a(paramMotionEvent);
+    QIMCaptureController.a(this.jdField_a_of_type_DovComQqImCaptureQIMCaptureController, this.jdField_a_of_type_Boolean);
   }
 }
 

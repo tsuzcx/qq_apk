@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar;
 
-import aadd;
-import aade;
+import aaju;
+import aajv;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -25,7 +25,7 @@ public class NeonControl
     this.jdField_a_of_type_JavaLangObject = new Object();
     Object localObject1 = BaseApplication.getContext().getSharedPreferences("sp_cpu_neon_support", 4);
     if (!((SharedPreferences)localObject1).contains("sp_cpu_neon_support")) {
-      ThreadManager.post(new aadd(this, (SharedPreferences)localObject1, false), 5, null, true);
+      ThreadManager.post(new aaju(this, (SharedPreferences)localObject1, false), 5, null, true);
     }
     boolean bool2 = ((SharedPreferences)localObject1).getBoolean("sp_cpu_neon_support", false);
     boolean bool3 = ScanEntranceDPC.a().e;
@@ -97,7 +97,7 @@ public class NeonControl
       } while ((localAvgConsumeReport.jdField_a_of_type_Long <= 0L) || (localAvgConsumeReport.jdField_a_of_type_Int <= 0) || (localAvgConsumeReport.b == -2147483648));
       i = (int)(localAvgConsumeReport.jdField_a_of_type_Long / localAvgConsumeReport.jdField_a_of_type_Int);
     } while ((i < 0) || (i >= 600000));
-    ThreadManager.post(new aade(this, localAvgConsumeReport, i), 5, null, false);
+    ThreadManager.post(new aajv(this, localAvgConsumeReport, i), 5, null, false);
   }
   
   public void a(long paramLong, int paramInt)

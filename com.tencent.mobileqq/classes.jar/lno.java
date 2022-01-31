@@ -1,30 +1,32 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.readinjoy.common.ThirdDataSourceAdapter;
+import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
+import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
 
 public class lno
-  implements CompoundButton.OnCheckedChangeListener
+  implements ThirdVideoManager.UUIDToUrlCallback
 {
-  public lno(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public lno(ThirdDataSourceAdapter paramThirdDataSourceAdapter) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
   {
-    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131428461), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
-      return;
+    ThirdDataSourceAdapter.a(this.a, 2);
+    paramString3 = this.a;
+    paramString2 = paramString1;
+    if (paramString1 == null) {
+      paramString2 = "";
     }
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
+    ThirdDataSourceAdapter.a(paramString3, paramString2);
+    if (paramInt == 1) {
+      ThirdDataSourceAdapter.b(this.a, 1);
+    }
+    for (;;)
+    {
+      if (ThirdDataSourceAdapter.a(this.a) != null) {
+        ThirdDataSourceAdapter.a(this.a).onPrepared();
+      }
+      return;
+      ThirdDataSourceAdapter.b(this.a, 0);
+    }
   }
 }
 

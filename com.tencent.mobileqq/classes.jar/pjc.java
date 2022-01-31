@@ -1,18 +1,24 @@
-import com.tencent.component.media.ILog;
-import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.youtu.android.rapidnet.ILogCallbackInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.ShareAioResultDialog;
 
-public final class pjc
-  implements ILogCallbackInterface
+public class pjc
+  implements View.OnClickListener
 {
-  public void printLog(int paramInt, String paramString1, String paramString2)
+  public pjc(ShareAioResultDialog paramShareAioResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
   {
-    ImageManagerEnv.getLogger().w("SuperResolution.RapidNetUtils", new Object[] { "prio: " + paramInt + ", tag: " + paramString1 + ", info: " + paramString2 });
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog, 1);
+    }
+    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pjc
  * JD-Core Version:    0.7.0.1
  */

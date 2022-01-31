@@ -1,31 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.struct.PushBanner;
-import com.tencent.mobileqq.widget.WorkSpaceView;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
 
 public class akxj
-  extends Handler
+  implements Runnable
 {
-  public akxj(WorkSpaceView paramWorkSpaceView) {}
+  public akxj(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      int i = ((PushBanner)this.a.getChildAt(this.a.a).getTag()).a;
-      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
-        this.a.a(this.a.a() + 1);
-      }
-      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
-      continue;
-      WorkSpaceView.a(this.a).removeMessages(0);
-    }
+    this.a.b = this.a.a(this.a.f);
   }
 }
 

@@ -1,21 +1,27 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BragActivity;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.widget.ListView;
 
 public class albn
-  implements ImageLoader.ImageLoadListener
+  extends Handler
 {
-  public albn(BragActivity paramBragActivity) {}
-  
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public albn(DraggableGridView paramDraggableGridView, Looper paramLooper)
   {
-    this.a.a.setImageBitmap(paramBitmap);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    DraggableGridView.c(this.a, paramMessage.arg1);
+    DraggableGridView.a(this.a).smoothScrollBy(DraggableGridView.d(this.a), 0);
+    DraggableGridView.a(this.a, (int)DraggableGridView.a(this.a), (int)DraggableGridView.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     albn
  * JD-Core Version:    0.7.0.1
  */

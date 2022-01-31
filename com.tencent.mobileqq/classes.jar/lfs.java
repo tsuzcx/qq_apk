@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.qphone.base.util.QLog;
 
 class lfs
-  implements View.OnClickListener
+  implements AsyncBack
 {
-  lfs(lfq paramlfq, lft paramlft) {}
+  lfs(lfq paramlfq) {}
   
-  public void onClick(View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Lfq.a, lft.c(this.jdField_a_of_type_Lft));
-    PublicAccountReportUtils.a(null, "CliOper", "", lft.c(this.jdField_a_of_type_Lft), "0X80078A8", "0X80078A8", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

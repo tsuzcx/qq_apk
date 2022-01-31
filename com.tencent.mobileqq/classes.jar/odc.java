@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.util.ArrayList;
 
-public final class odc
-  implements Parcelable.Creator
+public class odc
+  implements Runnable
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
-  {
-    return new EditLocalVideoSource(paramParcel);
-  }
+  public odc(FeedManager paramFeedManager) {}
   
-  public EditLocalVideoSource[] a(int paramInt)
+  public void run()
   {
-    return new EditLocalVideoSource[paramInt];
+    if (FeedManager.a(this.a) == 0L)
+    {
+      SLog.d("Q.qqstory.home.position", "cache in use");
+      return;
+    }
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache.a();
+    }
+    SLog.d("Q.qqstory.home.position", "release cache");
   }
 }
 

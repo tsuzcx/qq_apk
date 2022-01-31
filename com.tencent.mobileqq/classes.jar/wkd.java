@@ -1,51 +1,29 @@
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendBaseBuilder;
-import com.tencent.mobileqq.activity.contact.newfriend.PushRecommendBuilder;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQVideoView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class wkd
-  implements AbsListView.OnScrollListener
+  implements MediaPlayer.OnPreparedListener
 {
-  public wkd(SystemMsgListView paramSystemMsgListView) {}
+  public wkd(BlessActivity paramBlessActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    if (SystemMsgListView.a(this.a) != null)
-    {
-      if ((paramInt != 0) && (paramInt != 1)) {
-        SystemMsgListView.a(this.a).f();
-      }
-    }
-    else {
-      return;
-    }
-    SystemMsgListView.a(this.a).g();
-    SystemMsgListView.a(this.a).e();
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.newfriendSystemMsgListView", 2, "onScroll firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
     }
-    SystemMsgListView.a(this.a, paramInt1);
-    if (paramInt1 >= 1)
-    {
-      paramAbsListView = (NewFriendBaseBuilder)SystemMsgListView.a(this.a).getItem(paramInt1 - 1);
-      if ((paramAbsListView instanceof PushRecommendBuilder)) {
-        ((PushRecommendBuilder)paramAbsListView).c();
-      }
+    if (BlessActivity.a(this.a) != null) {
+      BlessActivity.a(this.a).start();
     }
-    if (paramInt1 + paramInt2 < paramInt3)
-    {
-      paramAbsListView = (NewFriendBaseBuilder)SystemMsgListView.a(this.a).getItem(paramInt1 + paramInt2);
-      if ((paramAbsListView instanceof PushRecommendBuilder)) {
-        ((PushRecommendBuilder)paramAbsListView).c();
-      }
+    BlessActivity.a(this.a).postDelayed(new wke(this), 800L);
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
     }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
   }
 }
 

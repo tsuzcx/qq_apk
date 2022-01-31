@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aidg
   implements Runnable
 {
-  public aidg(RedBagVideoManager paramRedBagVideoManager, AIORichMediaData paramAIORichMediaData) {}
+  public aidg(PtvTemplateManager paramPtvTemplateManager, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
+    FileUtils.a(PtvTemplateManager.b.getPath() + File.separator, "doodle_template_new.cfg", this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.i("Doodle_Strokes_PtvTemplateManager", 2, "save Config to file finish.");
+    }
   }
 }
 

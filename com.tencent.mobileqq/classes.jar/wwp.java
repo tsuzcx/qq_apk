@@ -1,42 +1,16 @@
-import android.media.MediaMetadataRetriever;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaDatabaseHelper;
-import com.tencent.mobileqq.activity.photo.MediaScanner;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaScannerListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
+import com.tencent.mobileqq.activity.messagesearch.MessageItem;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class wwp
-  implements Runnable
+  implements Comparator
 {
-  public wwp(MediaScanner paramMediaScanner, WeakReference paramWeakReference1, WeakReference paramWeakReference2, int paramInt) {}
+  public wwp(C2CMessageResultAdapter paramC2CMessageResultAdapter) {}
   
-  public void run()
+  public int a(MessageItem paramMessageItem1, MessageItem paramMessageItem2)
   {
-    try
-    {
-      LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      MediaScanner.OnMediaScannerListener localOnMediaScannerListener = (MediaScanner.OnMediaScannerListener)this.b.get();
-      if (localLocalMediaInfo != null)
-      {
-        if (localOnMediaScannerListener == null) {
-          return;
-        }
-        MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-        localMediaMetadataRetriever.setDataSource(localLocalMediaInfo.path);
-        localLocalMediaInfo.mDuration = Long.parseLong(localMediaMetadataRetriever.extractMetadata(9));
-        localOnMediaScannerListener.a(this.jdField_a_of_type_Int, localLocalMediaInfo);
-        MediaScanner.a(MediaScanner.a(BaseApplicationImpl.getContext())).a(localLocalMediaInfo.path, localLocalMediaInfo.mDuration);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MediaScanner", 2, "queryMediaInfoDuration() error=" + localException.getMessage());
-      }
-    }
+    return (int)(paramMessageItem2.a.time - paramMessageItem1.a.time);
   }
 }
 

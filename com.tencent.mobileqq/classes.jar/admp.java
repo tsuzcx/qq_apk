@@ -1,28 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
+import java.util.TimerTask;
 
 public class admp
-  implements View.OnClickListener
+  extends TimerTask
 {
-  public admp(CommonTabFragment paramCommonTabFragment) {}
+  public admp(MusicFilePresenter paramMusicFilePresenter) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.a == null) || (this.a.a.a == null)) {}
-    do
-    {
-      return;
-      paramView = this.a.a.a.a();
-    } while (paramView == null);
-    paramView.a(this.a.a.a.getUrl(), 8589934606L, null);
+    this.a.a.runOnUiThread(new admq(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     admp
  * JD-Core Version:    0.7.0.1
  */

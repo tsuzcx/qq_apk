@@ -1,16 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agka
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public agka(ScanIconAnimateView paramScanIconAnimateView) {}
+  public agka(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    this.a.a.setVisibility(0);
   }
 }
 

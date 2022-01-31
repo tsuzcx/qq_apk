@@ -1,21 +1,30 @@
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class les
-  implements View.OnClickListener
+class les
+  implements Runnable
 {
-  public les(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  les(ler paramler) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80078A6", "0X80078A6", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
-    paramView = new Intent(this.a, ReadinjoyMsgManagerActivity.class);
-    this.a.startActivity(paramView);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("channel_id", this.a.a.getIntent().getIntExtra("channel_id", -1));
+      localJSONObject.put("click_source", "b2t_title_text");
+      PublicAccountReportUtils.a(null, "", "0X8009329", "0X8009329", 0, 0, "", "", "", localJSONObject.toString(), false);
+      QLog.d("IphoneTitleBarActivity", 2, "back_to_top: { channelID : " + this.a.a.getIntent().getIntExtra("channel_id", -1) + " , click_source : b2t_title_text }");
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
 }
 

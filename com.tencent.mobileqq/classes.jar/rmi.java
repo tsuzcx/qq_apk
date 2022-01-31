@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class rmi
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  rmi(rmh paramrmh) {}
+  rmi(rmf paramrmf) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.springBackOverScrollHeaderView();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

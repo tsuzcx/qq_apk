@@ -13,13 +13,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import jer;
+import jgt;
 import mqq.app.Foreground;
 import mqq.app.MobileQQ;
 
 public class GKillProcessMonitor
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jer(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jgt(this);
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private boolean jdField_a_of_type_Boolean;
   
@@ -134,7 +134,7 @@ public class GKillProcessMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.GKillProcessMonitor
  * JD-Core Version:    0.7.0.1
  */

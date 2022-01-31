@@ -14,7 +14,7 @@ public abstract class UIBaseEventReceiver
   
   public final void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull BaseEvent paramBaseEvent)
   {
-    if ((paramBaseEvent.a != null) && (paramBaseEvent.a.isFail()))
+    if ((paramBaseEvent.errorInfo != null) && (paramBaseEvent.errorInfo.isFail()))
     {
       c(paramIEventReceiver, paramBaseEvent);
       return;

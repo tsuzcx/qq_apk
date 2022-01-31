@@ -1,34 +1,85 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUOESMovieFilter;
+import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodePlayer;
+import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
+import com.tencent.mobileqq.shortvideo.filter.QQMovieFilter;
+import com.tencent.mobileqq.shortvideo.util.FileUtil;
+import com.tencent.mobileqq.shortvideo.util.VideoUtil;
+import com.tencent.sveffects.SLog;
 
 public class aigb
-  implements Runnable
+  extends Handler
 {
-  public aigb(StatisticCollector paramStatisticCollector, String paramString) {}
-  
-  public void run()
+  public aigb(QQMovieFilter paramQQMovieFilter, Looper paramLooper)
   {
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    SLog.c("QQMovieFilter", "handle movie filter msg, what = " + paramMessage.what);
+    switch (paramMessage.what)
     {
-      SharedPreferences localSharedPreferences = StatisticCollector.a().getSharedPreferences("crashcontrol", 0);
-      if ((localSharedPreferences != null) && (localSharedPreferences.getBoolean("shouldStopMsf", false)))
+    }
+    do
+    {
+      do
       {
-        this.jdField_a_of_type_ComTencentMobileqqStatisticsStatisticCollector.a(this.jdField_a_of_type_JavaLangString, "actKillMsf", true, 0L, 0L, null, "");
-        localSharedPreferences.edit().putBoolean("shouldStopMsf", false).commit();
-      }
+        do
+        {
+          do
+          {
+            return;
+            if ((QQMovieFilter.a(this.a) != null) && (QQMovieFilter.a(this.a).a() == 1))
+            {
+              SLog.c("QQMovieFilter", "DecodePlayer is preparing");
+              return;
+            }
+            Object localObject = (Object[])paramMessage.obj;
+            QQMovieFilter.a(this.a, (String)localObject[0]);
+            paramMessage = (String)localObject[1];
+            boolean bool = ((Boolean)localObject[2]).booleanValue();
+            QQMovieFilter.a(this.a, ((Float)localObject[3]).floatValue());
+            QQMovieFilter.b(this.a, ((Float)localObject[4]).floatValue());
+            localObject = (HWDecodeListener)localObject[5];
+            if (QQMovieFilter.a(this.a) == null) {
+              QQMovieFilter.a(this.a, new DecodePlayer());
+            }
+            if (QQMovieFilter.a(this.a) != null) {
+              QQMovieFilter.a(this.a).a();
+            }
+            if (!FileUtil.b(QQMovieFilter.a(this.a))) {
+              break;
+            }
+            QQMovieFilter.a(this.a).a(QQMovieFilter.a(this.a), paramMessage);
+            QQMovieFilter.a(this.a).a(bool);
+            QQMovieFilter.a(this.a).a((HWDecodeListener)localObject);
+            QQMovieFilter.a(this.a, new aigc(this.a));
+            QQMovieFilter.a(this.a).a(QQMovieFilter.a(this.a), QQMovieFilter.a(this.a));
+            QQMovieFilter.a(this.a, null);
+            QQMovieFilter.a(this.a).a(0);
+          } while (QQMovieFilter.a(this.a) == null);
+          QQMovieFilter.a(this.a).a(VideoUtil.a(QQMovieFilter.a(this.a)), QQMovieFilter.a(this.a), QQMovieFilter.b(this.a));
+          return;
+          QQMovieFilter.a(this.a);
+          QQMovieFilter.a(this.a).a("", "");
+          return;
+        } while (QQMovieFilter.a(this.a) == null);
+        QQMovieFilter.a(this.a).c();
+        return;
+        QQMovieFilter.a(this.a);
+      } while (QQMovieFilter.a(this.a) == null);
+      QQMovieFilter.a(this.a).a("", "");
       return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    } while (QQMovieFilter.a(this.a) == null);
+    QQMovieFilter.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aigb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,24 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
 
 public class mdz
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public mdz(VideoFeedsPlayManager paramVideoFeedsPlayManager, TextView paramTextView) {}
+  public mdz(VideoFeedsAdapter paramVideoFeedsAdapter, VideoFeedsAdapter.VideoItemHolder paramVideoItemHolder, ImageView paramImageView) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    VideoFeedsHelper.a(this.jdField_a_of_type_AndroidWidgetTextView, 8);
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter$VideoItemHolder.a.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 

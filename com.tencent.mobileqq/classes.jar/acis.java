@@ -1,29 +1,30 @@
-import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.pb.extendfriend.ExtendFriendSquareInfo.RspBody;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer;
+import com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer.TimeoutObserver;
 
 public class acis
-  extends ExtendFriendObserver
+  implements Runnable
 {
-  public acis(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  private int jdField_a_of_type_Int;
   
-  protected void a(boolean paramBoolean, ExtendFriendSquareInfo.RspBody paramRspBody)
+  public acis(EmojiIPCAlarmer paramEmojiIPCAlarmer, int paramInt)
   {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a != null) {}
     try
     {
-      ExtendFriendSquareFragment.a(this.a, paramBoolean, paramRspBody);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a.a(this.jdField_a_of_type_Int);
       return;
     }
-    catch (Exception paramRspBody)
-    {
-      QLog.e("ExtendFriendSquareFragment", 1, "onGetSquareStrangerList exception", paramRspBody);
-    }
+    catch (Throwable localThrowable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acis
  * JD-Core Version:    0.7.0.1
  */

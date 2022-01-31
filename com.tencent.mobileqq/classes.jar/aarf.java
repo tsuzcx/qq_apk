@@ -1,11 +1,29 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import android.content.res.Resources;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import java.util.HashMap;
 
 public class aarf
+  extends aark
 {
-  public long a;
-  public long b;
+  public final int a;
+  public final String a;
+  public final HashMap a;
+  public String b;
   
-  private aarf(ArkActionAppMgr paramArkActionAppMgr) {}
+  public aarf(String paramString1, String paramString2, int paramInt)
+  {
+    super(paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(this.jdField_a_of_type_Int);
+  }
+  
+  void a() {}
+  
+  boolean a(Resources paramResources)
+  {
+    return WorldCupMgr.a(this.c, paramResources, this, this.b);
+  }
 }
 
 

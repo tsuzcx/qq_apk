@@ -1,12 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.util.HeadRequest;
 
 public final class akhs
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public void run()
+  public HeadRequest a(Parcel paramParcel)
   {
-    IndividuationUrlHelper.a(BaseApplicationImpl.sApplication.getRuntime());
+    HeadRequest localHeadRequest = new HeadRequest();
+    localHeadRequest.a(paramParcel);
+    return localHeadRequest;
+  }
+  
+  public HeadRequest[] a(int paramInt)
+  {
+    return new HeadRequest[paramInt];
   }
 }
 

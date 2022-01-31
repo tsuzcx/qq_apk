@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import afly;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -17,27 +16,15 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.UploadListener;
 import com.tencent.mobileqq.nearby.profilecard.moment.data.PicMomentFeedInfo;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.PublishableMomentInfo;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class PicMomentItemBuilder
   extends PublishableMomentItemBuilder
 {
-  private static ImageFeedsUploader.UploadListener a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$UploadListener = new afly();
-  }
-  
   public PicMomentItemBuilder(Context paramContext, QQAppInterface paramQQAppInterface)
   {
     super(paramContext, paramQQAppInterface);
@@ -51,9 +38,9 @@ public class PicMomentItemBuilder
   public View a(ViewGroup paramViewGroup, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (PicMomentItemBuilder.PicViewHolder)paramMomentViewHolder;
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970477, paramViewGroup, false);
-    paramMomentViewHolder.j = ((TextView)paramViewGroup.findViewById(2131367129));
-    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131370836));
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2130970490, paramViewGroup, false);
+    paramMomentViewHolder.i = ((TextView)paramViewGroup.findViewById(2131367129));
+    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131370825));
     return paramViewGroup;
   }
   
@@ -62,7 +49,7 @@ public class PicMomentItemBuilder
     return new PicMomentItemBuilder.PicViewHolder(this);
   }
   
-  public boolean c(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  public boolean a(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     return false;
   }
@@ -72,25 +59,13 @@ public class PicMomentItemBuilder
     PicMomentFeedInfo localPicMomentFeedInfo = (PicMomentFeedInfo)paramMomentViewHolder.a;
     if ((localPicMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry != null) && (localPicMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.publishState != 0))
     {
-      NearbyMomentUtils.a(this.jdField_a_of_type_AndroidContentContext, localPicMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 4);
+      NearbyMomentUtils.a(this.a, localPicMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 4);
       return;
     }
     super.d(paramMomentViewHolder);
   }
   
   public void e(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
-  {
-    super.e(paramMomentViewHolder);
-    if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, "当前网络不可用，请检查你的网络设置", 0).a();
-      return;
-    }
-    paramMomentViewHolder.i.setVisibility(8);
-    ImageFeedsUploader.a(((PublishableMomentInfo)paramMomentViewHolder.a).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$UploadListener);
-  }
-  
-  public void f(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     PicMomentItemBuilder.PicViewHolder localPicViewHolder = (PicMomentItemBuilder.PicViewHolder)paramMomentViewHolder;
     PicMomentFeedInfo localPicMomentFeedInfo = (PicMomentFeedInfo)localPicViewHolder.a;
@@ -101,11 +76,11 @@ public class PicMomentItemBuilder
     boolean bool;
     if (TextUtils.isEmpty(paramMomentViewHolder))
     {
-      localPicViewHolder.j.setVisibility(8);
+      localPicViewHolder.i.setVisibility(8);
       j = UIUtils.a(BaseApplicationImpl.getContext(), 200.0F);
-      str = (String)localPicViewHolder.f.getTag(2131362360);
+      str = (String)localPicViewHolder.f.getTag(2131362363);
       if (localPicMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry == null) {
-        break label508;
+        break label507;
       }
       localFile = new File(localPicMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath + "");
       bool = localFile.exists();
@@ -119,11 +94,11 @@ public class PicMomentItemBuilder
         localObject = localPicMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath;
         paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
         if (localPicMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth <= 0) {
-          break label503;
+          break label502;
         }
         paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
         if (localPicMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight <= 0) {
-          break label503;
+          break label502;
         }
         i = localPicMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight * j / localPicMomentFeedInfo.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
         paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
@@ -139,7 +114,7 @@ public class PicMomentItemBuilder
             i = j * 4 / 3;
             if (!TextUtils.equals(str, paramMomentViewHolder))
             {
-              localPicViewHolder.f.setTag(2131362360, paramMomentViewHolder);
+              localPicViewHolder.f.setTag(2131362363, paramMomentViewHolder);
               localObject = (LinearLayout.LayoutParams)localPicViewHolder.f.getLayoutParams();
               if (localObject != null) {
                 break label414;
@@ -151,8 +126,8 @@ public class PicMomentItemBuilder
             {
               label253:
               localObject = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
-              ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
+              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.a.getResources().getDrawable(2130842848);
+              ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.a.getResources().getDrawable(2130842848);
               if (bool) {}
               for (paramMomentViewHolder = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject);; paramMomentViewHolder = URLDrawable.getDrawable(paramMomentViewHolder, (URLDrawable.URLDrawableOptions)localObject))
               {
@@ -160,17 +135,17 @@ public class PicMomentItemBuilder
                 paramMomentViewHolder.setDecodeHandler(URLDrawableDecodeHandler.d);
                 localPicViewHolder.f.setImageDrawable(paramMomentViewHolder);
                 return;
-                localPicViewHolder.j.setVisibility(0);
-                localPicViewHolder.j.setText(paramMomentViewHolder);
+                localPicViewHolder.i.setVisibility(0);
+                localPicViewHolder.i.setText(paramMomentViewHolder);
                 break;
                 localObject = localPicMomentFeedInfo.jdField_a_of_type_JavaLangString;
                 paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
                 if (localPicMomentFeedInfo.jdField_a_of_type_Int <= 0) {
-                  break label503;
+                  break label502;
                 }
                 paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
                 if (localPicMomentFeedInfo.b <= 0) {
-                  break label503;
+                  break label502;
                 }
                 i = localPicMomentFeedInfo.b * j / localPicMomentFeedInfo.jdField_a_of_type_Int;
                 paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject;
@@ -186,16 +161,16 @@ public class PicMomentItemBuilder
             }
             catch (Exception paramMomentViewHolder)
             {
-              localPicViewHolder.f.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814));
+              localPicViewHolder.f.setImageDrawable(this.a.getResources().getDrawable(2130842848));
               QLog.i("PicMomentItemBuilder", 1, paramMomentViewHolder.toString());
               return;
             }
           }
         }
-        label503:
+        label502:
         i = j;
       }
-      label508:
+      label507:
       bool = false;
       localFile = null;
     }

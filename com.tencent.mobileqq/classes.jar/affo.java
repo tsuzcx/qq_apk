@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
 
 public class affo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public affo(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public affo(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.isResume()) {
-      this.a.a.d();
-    }
+    this.a.c(paramView);
+    new NowVideoReporter().h("video").i("playpage_like_click").b().a(this.a.a);
   }
 }
 

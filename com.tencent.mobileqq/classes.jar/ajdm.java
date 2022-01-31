@@ -1,4 +1,4 @@
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
 
 class ajdm
   implements Runnable
@@ -7,7 +7,7 @@ class ajdm
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.b);
+    this.a.a.a(1);
   }
 }
 

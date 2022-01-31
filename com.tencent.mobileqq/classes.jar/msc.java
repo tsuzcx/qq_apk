@@ -1,30 +1,59 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
 public class msc
-  implements Runnable
+  extends OrientationEventListener
 {
-  public msc(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public msc(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, Context paramContext, int paramInt)
   {
-    Object localObject = BaseApplication.getContext().getSharedPreferences("sp_public_account_with_cuin_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    if (localObject != null)
+    super(paramContext, paramInt);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (FastWebVideoFeedsListView.a(this.a)) {}
+    label10:
+    do
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_display_time", ServiceAccountFolderManager.c(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager));
-      ((SharedPreferences.Editor)localObject).putString("service_account_folder_time", ServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager));
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_operation_time", ServiceAccountFolderManager.d(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager));
-      ((SharedPreferences.Editor)localObject).putString("service_account_folder_brief", ServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager).toString());
-      ((SharedPreferences.Editor)localObject).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("ServiceAccountFolderManager", 2, "saveFolderLocalData->mFolderDisplayTime:" + ServiceAccountFolderManager.c(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager) + ", mFolderShowTime:" + ServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager) + ", mFolderOperationTime:" + ServiceAccountFolderManager.d(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager) + ", mFolderMsgBrief:" + ServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager));
-      }
-    }
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                break label10;
+                break label10;
+                break label10;
+                break label10;
+                do
+                {
+                  return;
+                } while ((!FastWebVideoFeedsListView.b(this.a)) || (FastWebVideoFeedsListView.a(this.a) == 1) || (!FastWebVideoFeedsListView.a(this.a, paramInt)) || (!FastWebVideoFeedsListView.c(this.a)));
+                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
+                  break;
+                }
+              } while ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 0));
+              FastWebVideoFeedsListView.a(this.a, -1);
+            } while (FastWebVideoFeedsListView.c(this.a) == 0);
+            this.a.e();
+            return;
+            if ((paramInt < 70) || (paramInt > 110)) {
+              break;
+            }
+          } while ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 2));
+          FastWebVideoFeedsListView.a(this.a, -1);
+        } while (FastWebVideoFeedsListView.c(this.a) == 2);
+        FastWebVideoFeedsListView.a(this.a, 2);
+        return;
+      } while ((paramInt < 250) || (paramInt > 290) || ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 1)));
+      FastWebVideoFeedsListView.a(this.a, -1);
+    } while (FastWebVideoFeedsListView.c(this.a) == 1);
+    FastWebVideoFeedsListView.a(this.a, 1);
   }
 }
 

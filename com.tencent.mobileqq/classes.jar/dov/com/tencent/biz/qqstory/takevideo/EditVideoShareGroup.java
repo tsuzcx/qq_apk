@@ -2,7 +2,7 @@ package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.support.annotation.NonNull;
 import android.widget.TextView;
-import anvd;
+import aodt;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
 import com.tencent.biz.qqstory.support.logging.SLog;
@@ -32,10 +32,10 @@ public class EditVideoShareGroup
     this.b = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a("shareGroupName");
     this.jdField_a_of_type_Boolean = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a("ignorePersonalPublish", false);
     SLog.a("EditVideoShareGroup", "shareGroupId=%s, shareGroupName=%s, ignorePersonalPublish=%s", this.jdField_a_of_type_JavaLangString, this.b, Boolean.valueOf(this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364448));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364473));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.b);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new anvd(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aodt(this));
     if (this.jdField_a_of_type_JavaLangString == null)
     {
       SLog.e("EditVideoShareGroup", "shareGroupId should not be null");

@@ -1,21 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.DiscussionHandler.ReqDiscussInfo;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class sph
-  implements View.OnClickListener
+  implements Runnable
 {
-  public sph(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sph(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.N();
-    this.a.finish();
-    if ((this.a.a.a != null) && (this.a.a.a.a) && (this.a.app != null) && (!"0".equals(this.a.app.getCurrentAccountUin()))) {
-      this.a.app.a(this.a);
+    ArrayList localArrayList = DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity));
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(localArrayList);
+    if (this.jdField_a_of_type_Boolean) {}
+    try
+    {
+      DiscussionHandler.ReqDiscussInfo localReqDiscussInfo = new DiscussionHandler.ReqDiscussInfo();
+      localReqDiscussInfo.a = String.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity));
+      localReqDiscussInfo.b = localArrayList.size();
+      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).a(localReqDiscussInfo);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("DiscussionInfoCardActivity", 2, "initDiscussionView getDiscussInfo error disUin=" + DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), localException);
     }
   }
 }

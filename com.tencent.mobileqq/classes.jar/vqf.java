@@ -1,23 +1,25 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import mqq.os.MqqHandler;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.AnimationEndListener;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-public final class vqf
-  implements Runnable
+public class vqf
+  implements CustomFrameAnimationDrawable.AnimationEndListener
 {
-  public vqf(TextView paramTextView) {}
+  public vqf(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void run()
+  public void a()
   {
-    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845881);
-    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845883);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable1);
-    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable2);
-    ThreadManager.getUIHandler().post(new vqg(this, localStateListDrawable));
+    UnlimitedBladeWorks.a(this.a).b = true;
+    UnlimitedBladeWorks.a(this.a).a = false;
+    if (UnlimitedBladeWorks.a(this.a) != null)
+    {
+      UnlimitedBladeWorks.a(this.a).a();
+      if (UnlimitedBladeWorks.b(this.a))
+      {
+        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
+        UnlimitedBladeWorks.a(this.a, 0);
+      }
+    }
   }
 }
 

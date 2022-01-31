@@ -1,218 +1,417 @@
-import android.text.TextUtils;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.util.SparseBooleanArray;
 import android.view.View;
-import android.widget.AdapterView;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.jsp.QQComicJsPlugin;
-import cooperation.comic.ui.QQComicFragment;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.widget.FastScroller;
+import com.tencent.widget.ListView;
 
 public class amjz
-  extends SwiftBrowserShareMenuHandler
+  extends amha
+  implements amlp
 {
-  amjz(QQComicFragment paramQQComicFragment) {}
-  
-  public List[] a()
+  public amjz(ListView paramListView)
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((this.jdField_a_of_type_Long & 0x8) == 0L)
-    {
-      localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_CooperationComicUiQQComicFragment.getString(2131430108);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130838336;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).c = 2;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject1);
+    super(paramListView);
+  }
+  
+  private int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    if ((paramInt1 > paramInt5) || (paramInt1 < paramInt4)) {
+      paramInt4 = -1;
     }
-    if ((this.jdField_a_of_type_Long & 0x10) == 0L)
+    do
     {
-      localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_CooperationComicUiQQComicFragment.getString(2131430114);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130838337;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).c = 3;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject1);
+      return paramInt4;
+      paramInt4 = paramInt1;
+    } while (paramInt1 < paramInt2);
+    if (paramInt1 <= paramInt3) {
+      return -1;
     }
-    if ((this.jdField_a_of_type_Long & 0x4000) == 0L)
+    return paramInt1 - (paramInt3 - paramInt2 + 1);
+  }
+  
+  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
+  {
+    int i = 0;
+    int j = 0;
+    View localView;
+    Object localObject;
+    if (paramBoolean)
     {
-      localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_CooperationComicUiQQComicFragment.getString(2131430126);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130838340;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).c = 9;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject1);
-    }
-    if ((this.jdField_a_of_type_Long & 0x8000) == 0L)
-    {
-      localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_CooperationComicUiQQComicFragment.getString(2131430127);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130838334;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).c = 10;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject1);
-    }
-    Object localObject1 = new ArrayList();
-    if ((this.jdField_a_of_type_Long & 0x2000) == 0L)
-    {
-      localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_CooperationComicUiQQComicFragment.getString(2131435262);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130846340;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).c = 14;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
-      ((ArrayList)localObject1).add(localObject2);
-    }
-    Object localObject2 = this.jdField_a_of_type_CooperationComicUiQQComicFragment.a();
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem;
-    if ((localObject2 instanceof QQComicJsPlugin))
-    {
-      localObject2 = (QQComicJsPlugin)localObject2;
-      if (((QQComicJsPlugin)localObject2).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 0)
+      paramInt2 = j;
+      while (paramInt2 < paramInt1)
       {
-        if (((QQComicJsPlugin)localObject2).jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 1) {
-          break label450;
-        }
-        i = 1;
-        localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-        localActionSheetItem.jdField_a_of_type_JavaLangString = ((QQComicJsPlugin)localObject2).jdField_a_of_type_JavaLangString;
-        localActionSheetItem.jdField_a_of_type_Boolean = true;
-        if (i == 0) {
-          break label455;
-        }
+        localView = this.a.getChildAt(paramInt2);
+        localObject = new AlphaAnimation(0.0F, 1.0F);
+        ((AlphaAnimation)localObject).setDuration(this.a.getDelAnimationDuration());
+        localView.setAnimation((Animation)localObject);
+        paramInt2 += 1;
       }
     }
-    label450:
-    label455:
-    for (int i = 2130846348;; i = 2130846349)
+    while (i <= paramInt2)
     {
-      localActionSheetItem.jdField_b_of_type_Int = i;
-      localActionSheetItem.c = 33;
-      localActionSheetItem.jdField_b_of_type_JavaLangString = "";
-      ((ArrayList)localObject1).add(localActionSheetItem);
-      return (List[])new ArrayList[] { localArrayList, localObject1 };
-      i = 0;
-      break;
+      localView = this.a.getChildAt(i);
+      localObject = new TranslateAnimation(0.0F, 0.0F, paramInt3, 0.0F);
+      ((TranslateAnimation)localObject).setDuration(this.a.getDelAnimationDuration());
+      localView.setAnimation((Animation)localObject);
+      i += 1;
+    }
+    paramInt2 += 1;
+    while (paramInt2 < paramInt1)
+    {
+      localView = this.a.getChildAt(paramInt2);
+      localObject = new TranslateAnimation(0.0F, 0.0F, paramInt4, 0.0F);
+      ((TranslateAnimation)localObject).setDuration(this.a.getDelAnimationDuration());
+      localView.setAnimation((Animation)localObject);
+      paramInt2 += 1;
     }
   }
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramAdapterView = paramView.getTag();
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      paramView = new StringBuilder().append("onItemClick, tag = ");
-      if (paramAdapterView != null)
-      {
-        bool = true;
-        QLog.d("WebLog_WebViewFragment", 2, bool);
-      }
+    System.nanoTime();
+    if (paramInt2 < paramInt1) {
+      throw new IllegalArgumentException("lastRow must more than firstRow!");
     }
-    else
-    {
-      if (paramAdapterView != null) {
-        break label57;
-      }
+    if ((paramInt1 < 0) || (paramInt2 >= this.a.mItemCount - this.a.getHeaderViewsCount() - this.a.getFooterViewsCount())) {
+      throw new IllegalArgumentException("row index out of bound");
     }
-    label57:
+    if ((this.a.mNeedSync) || (this.a.mDataChanged)) {
+      onChanged();
+    }
+    int n;
+    int i2;
+    int i1;
+    int i3;
+    boolean bool1;
+    int m;
+    int k;
+    int j;
     int i;
-    label474:
+    label469:
+    label483:
+    label636:
+    label638:
+    Object localObject;
+    label548:
+    label701:
+    label710:
+    label747:
     do
     {
+      int i4;
       do
       {
         return;
-        bool = false;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.b();
-        i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.c;
-        paramAdapterView = a();
-        paramView = this.jdField_a_of_type_CooperationComicUiQQComicFragment.a(paramAdapterView);
-        if (i == 2)
+        n = paramInt1 + this.a.getHeaderViewsCount();
+        i2 = paramInt2 + this.a.getHeaderViewsCount();
+        paramInt1 = i2 - n + 1;
+        i4 = this.a.getChildCount();
+        i1 = this.a.mFirstPosition;
+        i3 = this.a.mFirstPosition + i4 - 1;
+        if (this.a.mFastScroller != null) {
+          this.a.mFastScroller.a(this.a.mItemCount, this.a.mItemCount - paramInt1);
+        }
+        this.a.mItemCount -= paramInt1;
+        if (this.a.mSelectedPosition >= 0)
         {
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)) {
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramAdapterView, 1, false);
+          paramInt1 = a(this.a.mSelectedPosition, n, i2, i1, i3);
+          this.a.setSelectedPositionInt(paramInt1);
+          this.a.setNextSelectedPositionInt(paramInt1);
+          if (this.a.mMotionPosition >= 0) {
+            this.a.mMotionPosition = a(this.a.mMotionPosition, n, i2, i1, i3);
           }
-          for (;;)
-          {
-            VipUtils.a(null, "VIPCOMIC", "0X800555E", "0X800555E", 0, 1, new String[] { paramView[0], paramView[1] });
-            return;
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramAdapterView, 1, false);
+          if (this.a.mCheckStates != null) {
+            break label469;
           }
         }
-        if (i == 3)
+        for (paramInt2 = 0;; paramInt2 = this.a.mCheckStates.size())
         {
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)) {
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramAdapterView, 2, false);
+          if (paramInt2 <= 0) {
+            break label483;
           }
-          for (;;)
+          paramInt1 = 0;
+          while (paramInt1 < paramInt2)
           {
-            VipUtils.a(null, "VIPCOMIC", "0X800555E", "0X800555E", 0, 2, new String[] { paramView[0], paramView[1] });
-            return;
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramAdapterView, 2, false);
-          }
-        }
-        if ((i == 9) || (i == 10))
-        {
-          paramInt = -1;
-          if (!WXShareHelper.a().a()) {
-            paramInt = 2131435319;
-          }
-          while (paramInt != -1)
-          {
-            QRUtils.a(0, paramInt);
-            return;
-            if (!WXShareHelper.a().b()) {
-              paramInt = 2131435320;
+            int i5 = this.a.mCheckStates.keyAt(paramInt1);
+            bool1 = this.a.mCheckStates.valueAt(paramInt1);
+            m = paramInt1;
+            k = paramInt2;
+            if (i5 >= n)
+            {
+              this.a.mCheckStates.delete(i5);
+              j = paramInt1;
+              i = paramInt2;
+              if (i5 <= i2)
+              {
+                j = paramInt1 - 1;
+                i = paramInt2 - 1;
+              }
+              m = j;
+              k = i;
+              if (i5 > i2)
+              {
+                this.a.mCheckStates.put(i5 - (i2 - n + 1), bool1);
+                k = i;
+                m = j;
+              }
             }
+            paramInt1 = m + 1;
+            paramInt2 = k;
           }
-          if (i == 9)
+          if (this.a.mSelectorPosition < 0) {
+            break;
+          }
+          this.a.mSelectedPosition = a(this.a.mSelectorPosition, n, i2, i1, i3);
+          break;
+        }
+        if (ListView.access$300(this.a) != null)
+        {
+          paramInt1 = 0;
+          if (paramInt1 < ListView.access$300(this.a).length)
           {
-            if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)) {
-              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramAdapterView, 3, true);
+            paramInt2 = ListView.access$300(this.a)[paramInt1];
+            if (paramInt2 >= n)
+            {
+              if (paramInt2 > i2) {
+                break label548;
+              }
+              paramInt2 = -1;
             }
             for (;;)
             {
-              VipUtils.a(null, "VIPCOMIC", "0X800555E", "0X800555E", 0, 3, new String[] { paramView[0], paramView[1] });
-              return;
-              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramAdapterView, 3, true);
+              ListView.access$300(this.a)[paramInt1] = paramInt2;
+              paramInt1 += 1;
+              break;
+              paramInt2 -= i2 - n + 1;
             }
           }
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)) {
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramAdapterView, 4, true);
-          }
-          for (;;)
-          {
-            VipUtils.a(null, "VIPCOMIC", "0X800555E", "0X800555E", 0, 4, new String[] { paramView[0], paramView[1] });
-            return;
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramAdapterView, 4, true);
-          }
         }
-        if (i != 14) {
-          break label474;
+      } while ((i2 < i1) || (n > i3));
+      m = this.a.mListPadding.top;
+      k = ListView.access$1100(this.a) - ListView.access$1200(this.a) - this.a.mListPadding.bottom;
+      if (n < i1)
+      {
+        paramInt1 = 0;
+        if (i2 <= i3) {
+          break label701;
         }
-      } while (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l));
-      this.jdField_a_of_type_CooperationComicUiQQComicFragment.a().a(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l, new String[] { "6" });
+        paramInt2 = i4 - 1;
+        i = 0;
+        if (i >= i4) {
+          break label747;
+        }
+        localObject = this.a.getChildAt(i);
+        if ((i < paramInt1) || (i > paramInt2)) {
+          break label710;
+        }
+        this.a.mRecycler.a((View)localObject, i);
+        ((View)localObject).setTag(2131230829, null);
+      }
+      for (;;)
+      {
+        i += 1;
+        break label638;
+        paramInt1 = n - i1;
+        break;
+        paramInt2 = i2 - i1;
+        break label636;
+        if (ListView.access$1300(this.a)) {
+          ((View)localObject).setTag(2131230829, new Point(((View)localObject).getTop(), ((View)localObject).getBottom()));
+        }
+      }
+      ListView.access$1400(this.a, paramInt1, paramInt2 - paramInt1 + 1);
+    } while (this.a.mItemCount == 0);
+    paramInt2 = this.a.getChildCount();
+    boolean bool2 = this.a.shouldShowSelector();
+    if (this.a.mSelectedPosition >= 0)
+    {
+      j = this.a.mSelectedPosition;
+      if (QLog.isColorLevel()) {
+        QLog.d("XListView", 2, "first is:" + n + ",last is:" + i2 + ",firstPosition is:" + i1 + ",lastPosition is:" + i3 + ",newSelectionPosition is:" + j + ",mStackFromBottom is:" + this.a.mStackFromBottom);
+      }
+      if ((n > i1) || (i2 < i3)) {
+        break label1154;
+      }
+      if (this.a.mStackFromBottom) {
+        break label1119;
+      }
+      paramInt1 = n;
+      if (n > this.a.mItemCount - 1) {
+        paramInt1 = this.a.mItemCount - 1;
+      }
+      ListView.access$1500(this.a, paramInt1, m);
+      bool1 = true;
+      paramInt1 = -1;
+      i = 0;
+      paramInt2 = 0;
+    }
+    for (;;)
+    {
+      k = this.a.getChildCount();
+      if ((j >= 0) && (j < k) && (bool2)) {
+        this.a.positionSelector(j, this.a.getChildAt(j - this.a.mFirstPosition));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("XListView", 2, "upItemsMaxIndex is:" + paramInt1 + ",upItemsMoveDistance is:" + paramInt2 + ",downItemsMoveDistance is:" + i);
+      }
+      if (ListView.access$1300(this.a)) {
+        a(k, paramInt1, paramInt2, i, bool1);
+      }
+      this.a.invalidate();
       return;
-    } while (i != 33);
-    this.jdField_a_of_type_CooperationComicUiQQComicFragment.g();
+      if (bool2)
+      {
+        j = this.a.mSelectorPosition;
+        break;
+      }
+      j = -1;
+      break;
+      label1119:
+      localObject = this.a;
+      if (n - 1 < 0) {}
+      for (paramInt1 = 0;; paramInt1 = n - 1)
+      {
+        ListView.access$1600((ListView)localObject, paramInt1, k);
+        break;
+      }
+      label1154:
+      if (n <= i1)
+      {
+        if ((this.a.mStackFromBottom) || (j >= 0))
+        {
+          this.a.mFirstPosition = n;
+          localObject = this.a.getChildAt(paramInt1);
+          paramInt2 = ((View)localObject).getTop();
+          this.a.fillGap(false);
+          ListView.access$1000(this.a);
+          paramInt1 = ((View)localObject).getTop();
+          i = paramInt2 - paramInt1;
+          if (paramInt1 - this.a.mDividerHeight > 0) {}
+          for (paramInt1 = -paramInt1 + this.a.mDividerHeight;; paramInt1 = 0)
+          {
+            k = this.a.indexOfChild((View)localObject) - 1;
+            paramInt2 = paramInt1;
+            bool1 = false;
+            paramInt1 = k;
+            break;
+          }
+        }
+        localObject = this.a.getChildAt(0);
+        paramInt2 = ((View)localObject).getTop();
+        this.a.offsetChildrenTopAndBottom(m - ((View)localObject).getTop());
+        this.a.mFirstPosition = n;
+        this.a.fillGap(true);
+        ListView.access$1000(this.a);
+        if (((View)localObject).getTop() - this.a.mDividerHeight > 0) {}
+        for (paramInt1 = -((View)localObject).getTop() + this.a.mDividerHeight;; paramInt1 = 0)
+        {
+          i = paramInt2 - ((View)localObject).getTop();
+          k = this.a.indexOfChild((View)localObject);
+          paramInt2 = paramInt1;
+          bool1 = false;
+          paramInt1 = k;
+          break;
+        }
+      }
+      if (i2 >= i3)
+      {
+        if ((!this.a.mStackFromBottom) || (j >= 0))
+        {
+          localObject = this.a.getChildAt(paramInt2 - 1);
+          paramInt2 = ((View)localObject).getBottom();
+          this.a.fillGap(true);
+          ListView.access$1000(this.a);
+          paramInt1 = ((View)localObject).getBottom();
+          paramInt2 -= paramInt1;
+          if (k - paramInt1 - this.a.mDividerHeight > 0) {}
+          for (paramInt1 = k - paramInt1 - this.a.mDividerHeight;; paramInt1 = 0)
+          {
+            k = this.a.indexOfChild((View)localObject);
+            i = paramInt1;
+            bool1 = false;
+            paramInt1 = k;
+            break;
+          }
+        }
+        localObject = this.a.getChildAt(paramInt2 - 1);
+        paramInt2 = ((View)localObject).getTop();
+        this.a.offsetChildrenTopAndBottom(k - ((View)localObject).getBottom());
+        this.a.fillGap(false);
+        ListView.access$1000(this.a);
+        if (k - ((View)localObject).getBottom() - this.a.mDividerHeight > 0) {}
+        for (paramInt1 = k - ((View)localObject).getBottom() - this.a.mDividerHeight;; paramInt1 = 0)
+        {
+          paramInt2 -= ((View)localObject).getTop();
+          k = this.a.indexOfChild((View)localObject);
+          i = paramInt1;
+          bool1 = false;
+          paramInt1 = k;
+          break;
+        }
+      }
+      View localView;
+      if (((j >= 0) && (j < n)) || ((j < 0) && (!this.a.mStackFromBottom)))
+      {
+        localObject = this.a.getChildAt(paramInt1 - 1);
+        k = ((View)localObject).getTop();
+        localView = this.a.getChildAt(paramInt1);
+        i = localView.getTop();
+        m = localView.getTop();
+        i2 = ((View)localObject).getBottom();
+        paramInt1 = n - i1;
+        while (paramInt1 < paramInt2)
+        {
+          this.a.getChildAt(paramInt1).offsetTopAndBottom(-(m - i2) + this.a.mDividerHeight);
+          paramInt1 += 1;
+        }
+        this.a.fillGap(true);
+        ListView.access$1000(this.a);
+        m = localView.getTop();
+        paramInt2 = k - ((View)localObject).getTop();
+        paramInt1 = this.a.indexOfChild((View)localObject);
+        i -= m;
+        bool1 = false;
+      }
+      else if ((j >= n) || ((j < 0) && (this.a.mStackFromBottom)))
+      {
+        localObject = this.a.getChildAt(paramInt1 - 1);
+        paramInt2 = ((View)localObject).getTop();
+        localView = this.a.getChildAt(paramInt1);
+        i = localView.getTop();
+        k = localView.getTop();
+        m = this.a.getChildAt(paramInt1 - 1).getBottom();
+        paramInt1 = 0;
+        while (paramInt1 < n - i1)
+        {
+          this.a.getChildAt(paramInt1).offsetTopAndBottom(k - m - this.a.mDividerHeight);
+          paramInt1 += 1;
+        }
+        this.a.fillGap(false);
+        ListView.access$1000(this.a);
+        k = localView.getTop();
+        paramInt2 -= ((View)localObject).getTop();
+        paramInt1 = this.a.indexOfChild((View)localObject);
+        i -= k;
+        bool1 = false;
+      }
+      else
+      {
+        paramInt1 = -1;
+        i = 0;
+        paramInt2 = 0;
+        bool1 = false;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjz
  * JD-Core Version:    0.7.0.1
  */

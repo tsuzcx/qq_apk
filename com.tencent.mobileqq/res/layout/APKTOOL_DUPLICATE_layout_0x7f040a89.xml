@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f9b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginRight="3.0dip"
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="10.0sp" android:textColor="#ff000000" android:ellipsize="end" android:gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f9c" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08cb" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08ca" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08ca" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b13cc" android:singleLine="false" />
-    <com.qzone.widget.AsyncImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f9d" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08cb" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08cb" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08ca" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08ca" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204bf" android:scaleType="centerCrop" />
-</LinearLayout>
+    <com.tencent.mobileqq.pluginsdk.PluginTabHost android:id="@android:id/tabhost" android:background="#fff1f1f1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TabWidget android:id="@android:id/tabs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <FrameLayout android:id="@android:id/tabcontent" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </com.tencent.mobileqq.pluginsdk.PluginTabHost>
+</RelativeLayout>

@@ -1,22 +1,48 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.OnHolderItemClickListener;
 
 public class adzh
-  implements View.OnFocusChangeListener
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public adzh(LebaTitleBar paramLebaTitleBar) {}
+  public OnHolderItemClickListener a;
+  public ImageView d;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public adzh(HotPicPageView paramHotPicPageView, View paramView, OnHolderItemClickListener paramOnHolderItemClickListener)
   {
-    if (paramBoolean)
+    super(paramView);
+    if (paramOnHolderItemClickListener != null)
     {
-      paramView.clearFocus();
-      UniteSearchActivity.a(LebaTitleBar.a(this.a), null, 21, 0L, (HotWordSearchEntryDataModel.HotSearchItem)LebaTitleBar.a(this.a).getTag(), 3);
+      this.a = paramOnHolderItemClickListener;
+      this.d = ((ImageView)paramView.findViewById(2131362999));
+      this.d.setTag("HotPicControlTag");
+      this.itemView.setOnClickListener(this);
+      this.itemView.setOnLongClickListener(this);
+      this.itemView.setOnTouchListener(paramOnHolderItemClickListener);
     }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.a != null) {
+      this.a.a(paramView, getPosition());
+    }
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    boolean bool = false;
+    if (this.a != null)
+    {
+      this.a.b(paramView, getPosition());
+      bool = true;
+    }
+    return bool;
   }
 }
 

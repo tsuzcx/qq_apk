@@ -1,23 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileUploadingManager;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
-class ajwz
-  implements DialogInterface.OnClickListener
+public class ajwz
+  extends BizTroopObserver
 {
-  ajwz(ajwy paramajwy) {}
+  public ajwz(TroopFileUploadingManager paramTroopFileUploadingManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(Object paramObject)
   {
-    paramDialogInterface = String.format("http://qun.qq.com/qunpay/gifts/buy.html?_bid=2204&_wvSb=1&from=7&troopUin=%s", new Object[] { this.a.a.b });
-    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
-    localIntent.putExtra("selfSet_leftViewText", "返回");
-    localIntent.putExtra("hide_more_button", true);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("url", this.a.a.a(paramDialogInterface));
-    this.a.a.startActivity(localIntent);
+    if (this.a.a == null) {}
+    for (;;)
+    {
+      return;
+      paramObject = (TroopFileStatusInfo)paramObject;
+      if (((!paramObject.jdField_a_of_type_Boolean) || (paramObject.b != 1)) && (paramObject.b == 12))
+      {
+        long l = paramObject.jdField_a_of_type_Long;
+        Iterator localIterator = this.a.a.a().a(String.valueOf(l), 1).iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (ChatMessage)localIterator.next();
+          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
+          {
+            localObject = (MessageForTroopFile)localObject;
+            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString()))) {
+              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.e)) && (((MessageForTroopFile)localObject).url.equals(paramObject.e))) {
+              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            }
+          }
+        }
+      }
+    }
   }
 }
 

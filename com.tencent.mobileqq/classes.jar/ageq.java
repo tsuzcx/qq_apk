@@ -1,24 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import com.tencent.mobileqq.now.enter.NowHongbaoPushManager;
 
 public class ageq
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public ageq(ARTipsManager paramARTipsManager, View paramView) {}
+  public ageq(NowHongbaoPushManager paramNowHongbaoPushManager) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
-    this.jdField_a_of_type_AndroidViewView.setTranslationY(f * AIOUtils.a(25.0F, ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager)));
+    NowHongbaoPushManager.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ageq
  * JD-Core Version:    0.7.0.1
  */

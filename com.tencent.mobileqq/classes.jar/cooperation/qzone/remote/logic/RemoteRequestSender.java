@@ -1,9 +1,9 @@
 package cooperation.qzone.remote.logic;
 
 import NS_QMALL_COVER.AlbumThemeSkin;
-import amyn;
 import android.content.Intent;
 import android.os.Bundle;
+import anga;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.service.message.MessageUtils;
 import cooperation.qzone.QZoneHelper.UserInfo;
@@ -22,7 +22,7 @@ public class RemoteRequestSender
   
   public int a()
   {
-    return this.a.a("cmd.qzoneFontChanged", null, false);
+    return this.a.a("cmd.qzoneFeedSkinSwitchChanged", null, false);
   }
   
   public int a(long paramLong)
@@ -88,6 +88,13 @@ public class RemoteRequestSender
       continue;
       i = 3;
     }
+  }
+  
+  public int a(boolean paramBoolean)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("value", paramBoolean);
+    return this.a.a("cmd.qzoneFontChanged", localBundle, false);
   }
   
   public void a()
@@ -241,12 +248,14 @@ public class RemoteRequestSender
     localBundle.putInt("param.actionExpectation", paramInt2);
     localBundle.putLong("costTime", paramLong1);
     localBundle.putLong("error_code", paramLong2);
-    ThreadManager.post(new amyn(this, localBundle), 2, null, false);
+    ThreadManager.post(new anga(this, localBundle), 2, null, false);
   }
   
-  public int b()
+  public int b(boolean paramBoolean)
   {
-    return this.a.a("cmd.qzoneFeedSkinSwitchChanged", null, false);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("value", paramBoolean);
+    return this.a.a("cmd.qzoneBarrageEffectChanged", localBundle, false);
   }
   
   public void b()
@@ -291,11 +300,11 @@ public class RemoteRequestSender
   public void b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("DeviceStrDiyMemo", paramString1);
-    localBundle.putString("DeviceStrDeviceTail", paramString2);
-    localBundle.putString("DeviceStrDeviceIcon", paramString3);
-    localBundle.putString("DeviceStrIdentifySqua", paramString4);
-    this.a.a("cmd.setUserTail", localBundle, true);
+    localBundle.putString("music_id", paramString1);
+    localBundle.putString("lrc_id", paramString2);
+    localBundle.putString("climax_start", paramString3);
+    localBundle.putString("climax_endure", paramString4);
+    this.a.a("cmd.UpdateDynamicAlbumInfo", localBundle, true);
   }
   
   public void b(ArrayList paramArrayList1, ArrayList paramArrayList2)
@@ -304,6 +313,13 @@ public class RemoteRequestSender
     localBundle.putStringArrayList("param.videoRemoteUrls", paramArrayList1);
     localBundle.putStringArrayList("param.videoStates", paramArrayList2);
     this.a.a("cmd.videoSetState", localBundle, false);
+  }
+  
+  public int c(boolean paramBoolean)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("value", paramBoolean);
+    return this.a.a("cmd.qzoneSuperFontChanged", localBundle, false);
   }
   
   public void c()
@@ -321,6 +337,16 @@ public class RemoteRequestSender
     Bundle localBundle = new Bundle();
     localBundle.putString("param.CloudDynamicCmd", paramString);
     this.a.a("cmd.getDynamicCloudPhoto", localBundle, true);
+  }
+  
+  public void c(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("DeviceStrDiyMemo", paramString1);
+    localBundle.putString("DeviceStrDeviceTail", paramString2);
+    localBundle.putString("DeviceStrDeviceIcon", paramString3);
+    localBundle.putString("DeviceStrIdentifySqua", paramString4);
+    this.a.a("cmd.setUserTail", localBundle, true);
   }
   
   public void d()
@@ -453,6 +479,11 @@ public class RemoteRequestSender
   public void t()
   {
     this.a.a("cmd.deleteTimerShuoShuo", null, false);
+  }
+  
+  public void u()
+  {
+    this.a.a("cmd.refreshPassiveFeeds", null, false);
   }
 }
 

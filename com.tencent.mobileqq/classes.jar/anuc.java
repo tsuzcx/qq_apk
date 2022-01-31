@@ -1,13 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoMultiSegment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.FilterCategory;
 
-public class anuc
-  implements Runnable
+public final class anuc
+  implements Parcelable.Creator
 {
-  public anuc(EditVideoMultiSegment paramEditVideoMultiSegment, long paramLong, boolean paramBoolean) {}
-  
-  public void run()
+  public FilterCategory a(Parcel paramParcel)
   {
-    EditVideoMultiSegment.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoMultiSegment, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    return new FilterCategory(paramParcel);
+  }
+  
+  public FilterCategory[] a(int paramInt)
+  {
+    return new FilterCategory[paramInt];
   }
 }
 

@@ -1,31 +1,26 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestRefuseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class udm
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public udm(TroopRequestRefuseActivity paramTroopRequestRefuseActivity, Editable paramEditable) {}
+  public udm(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidTextEditable.length() > 25)
+    QQAppInterface localQQAppInterface = this.a.app;
+    String str2 = this.a.a.troopUin;
+    if (this.a.a.bOwner) {}
+    for (String str1 = "0";; str1 = "1")
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(-65536);
-      TroopRequestRefuseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, false);
-    }
-    for (;;)
-    {
-      String str2 = "" + (25 - this.jdField_a_of_type_AndroidTextEditable.length());
-      String str1 = str2;
-      if (str2.length() > 4) {
-        str1 = str2.substring(0, 2) + "…";
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setText(str1);
+      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "1", "");
+      paramDialogInterface.dismiss();
+      this.a.i();
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(Color.rgb(119, 119, 119));
-      TroopRequestRefuseActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, true);
     }
   }
 }

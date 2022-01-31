@@ -1,15 +1,33 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView;
+import android.view.View;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
+import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem;
 
 public class aony
   implements Runnable
 {
-  public aony(VideoFilterPlayView paramVideoFilterPlayView) {}
+  public aony(VoteDashItem paramVoteDashItem, VoteLayer.VoteItem paramVoteItem, boolean paramBoolean, View paramView, Runnable paramRunnable) {}
   
   public void run()
   {
-    VideoFilterPlayView.a(this.a).a();
-    VideoFilterPlayView.a(this.a).a(this.a.a, this.a.b);
+    VoteLayer.VoteItem localVoteItem;
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem.jdField_a_of_type_Boolean != this.jdField_a_of_type_Boolean)
+    {
+      localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem;
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem.jdField_a_of_type_Boolean) {
+        break label69;
+      }
+    }
+    label69:
+    for (boolean bool = true;; bool = false)
+    {
+      localVoteItem.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_AndroidViewView.invalidate();
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_JavaLangRunnable.run();
+      }
+      VoteDashItem.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDashItem, false);
+      return;
+    }
   }
 }
 

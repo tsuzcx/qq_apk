@@ -1,22 +1,23 @@
-import android.os.AsyncTask;
-import com.dataline.core.DirectForwarder;
-import com.dataline.core.DirectForwarder.CallBack;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
 
 public class adki
-  extends DirectForwarder.CallBack
+  extends BroadcastReceiver
 {
-  public adki(ForwardBaseOption paramForwardBaseOption) {}
+  public adki(FileViewMusicService paramFileViewMusicService) {}
   
-  protected void a(AsyncTask paramAsyncTask, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramAsyncTask, paramInt);
-    DirectForwarder.a(this.a.a, paramAsyncTask, paramInt, new adkj(this));
+    if (paramIntent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adki
  * JD-Core Version:    0.7.0.1
  */

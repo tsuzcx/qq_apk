@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.config;
 
-import abex;
+import ablx;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class ARMapConfig$WealthGodActTime
   implements Parcelable, Serializable, Comparable
 {
-  public static final Parcelable.Creator CREATOR = new abex();
+  public static final Parcelable.Creator CREATOR = new ablx();
   public static final int STATUS_END = 0;
   public static final int STATUS_ING = 2;
   public static final int STATUS_NO_BEGIN = 1;

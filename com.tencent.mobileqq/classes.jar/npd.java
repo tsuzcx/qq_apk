@@ -1,18 +1,25 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
-public class npd
-  implements IMediaPlayer.OnInfoListener
+class npd
+  extends OnPlayModeShareListener
 {
-  public npd(TextureVideoView paramTextureVideoView) {}
-  
-  public boolean a_(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  npd(npc paramnpc, VideoPlayModeBase paramVideoPlayModeBase)
   {
-    if (this.a.a != null) {
-      this.a.a.a_(paramIMediaPlayer, paramInt1, paramInt2);
+    super(paramVideoPlayModeBase);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    if (this.a.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      StoryReportor.a("play_video", "guest_share_suc", i, paramInt, new String[] { "", String.valueOf(StoryReportor.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
     }
-    return true;
   }
 }
 

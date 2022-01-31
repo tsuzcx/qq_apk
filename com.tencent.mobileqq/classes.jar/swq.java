@@ -1,48 +1,21 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.mobileqq.search.model.SearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class swq
-  extends UniteSearchObserver
+  implements Animation.AnimationListener
 {
-  public swq(Leba paramLeba) {}
+  public swq(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void b(int paramInt1, String paramString, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryError error, resultCode = " + paramInt1 + ",  errorMsg = " + paramString + ", fromType = " + paramInt2);
-    }
+    this.a.f = false;
+    this.a.finish();
   }
   
-  public void b(List paramList, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryResult() result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 4) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryResult(), fromType is wrong, return");
-      }
-    }
-    for (;;)
-    {
-      return;
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        SearchEntryDataModel localSearchEntryDataModel = (SearchEntryDataModel)paramList.get(paramInt);
-        if ((localSearchEntryDataModel instanceof HotWordSearchEntryDataModel))
-        {
-          Leba.a(this.a, ((HotWordSearchEntryDataModel)localSearchEntryDataModel).a);
-          return;
-        }
-        paramInt += 1;
-      }
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

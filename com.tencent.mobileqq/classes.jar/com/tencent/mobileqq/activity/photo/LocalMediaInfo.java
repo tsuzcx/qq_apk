@@ -8,12 +8,13 @@ import cooperation.qzone.util.PanoramaUtil;
 import cooperation.qzone.util.XMPCoreUtil;
 import java.io.Serializable;
 import java.net.URL;
-import wwj;
+import java.util.ArrayList;
+import xbx;
 
 public class LocalMediaInfo
   implements Parcelable, Serializable, Comparable
 {
-  public static final Parcelable.Creator CREATOR = new wwj();
+  public static final Parcelable.Creator CREATOR = new xbx();
   public static final int PHOTO_LAST_SELECTED = 3;
   public static final int PHOTO_SELECTED = 1;
   public static final int PHOTO_UNSELECTED = 2;
@@ -31,6 +32,7 @@ public class LocalMediaInfo
   public String fakeVid;
   public long fileSize;
   public int index;
+  public boolean isMakeVideo;
   public boolean isRecord;
   public boolean isRegionThumbUseNewDecoder;
   public boolean isSystemMeidaStore = true;
@@ -46,6 +48,7 @@ public class LocalMediaInfo
   public String mMimeType;
   public long mStartTime;
   public long mTotalDuration;
+  public ArrayList mTransferPosList;
   public int mVideoType;
   public int mediaHeight;
   public int mediaWidth;
@@ -194,17 +197,17 @@ public class LocalMediaInfo
       paramParcel.writeInt(this.mediaWidth);
       paramParcel.writeInt(this.mediaHeight);
       if (!this.isSystemMeidaStore) {
-        break label232;
+        break label240;
       }
       paramInt = 1;
       label157:
       paramParcel.writeByte((byte)paramInt);
       if (!this.isRegionThumbUseNewDecoder) {
-        break label237;
+        break label245;
       }
     }
-    label232:
-    label237:
+    label240:
+    label245:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -214,6 +217,7 @@ public class LocalMediaInfo
       paramParcel.writeLong(this.mCloudPhotoOwnerUin);
       paramParcel.writeString(this.mCloudPhotoOwnerAlbumId);
       paramParcel.writeString(this.mCloudPhotoId);
+      paramParcel.writeList(this.mTransferPosList);
       return;
       paramInt = 0;
       break;

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acdr;
-import acds;
-import acdt;
-import acdu;
-import acdv;
-import acdw;
-import acdx;
-import acdy;
+import acls;
+import aclt;
+import aclu;
+import aclv;
+import aclw;
+import aclx;
+import acly;
+import aclz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -60,11 +60,11 @@ public class BigEmotionDownloadedAdapter
   public BigEmotionDownloadedAdapter(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, EmoticonCallback paramEmoticonCallback, BaseChatPie paramBaseChatPie, int paramInt4)
   {
     super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonCallback);
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new acdy(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new aclz(this);
     this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     this.f = paramInt4;
-    ThreadManager.post(new acdr(this, paramContext), 8, null, true);
+    ThreadManager.post(new acls(this, paramContext), 8, null, true);
   }
   
   private View a(VipIPSiteInfo paramVipIPSiteInfo)
@@ -133,22 +133,22 @@ public class BigEmotionDownloadedAdapter
           VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_comicshow", "", 0, 0, 0, str2, str3, "", "", "", "", "", 0, 0, 0, 0);
           paramVipIPSiteInfo = (VipIPSiteInfo)localObject4;
         }
-        localObject5 = new acdt(this, paramVipIPSiteInfo, str1, str3);
+        localObject5 = new aclu(this, paramVipIPSiteInfo, str1, str3);
         localObject1 = paramVipIPSiteInfo.strType;
         if ("comic".equals(localObject1))
         {
-          localObject4 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968972, null, false);
-          localObject1 = (TextView)((View)localObject4).findViewById(2131364523);
-          localObject3 = (TextView)((View)localObject4).findViewById(2131364525);
-          ((RelativeLayout)((View)localObject4).findViewById(2131364547)).setOnClickListener((View.OnClickListener)localObject5);
-          localObject5 = (RelativeLayout)((View)localObject4).findViewById(2131364548);
-          localObject6 = (ImageView)((View)localObject4).findViewById(2131364550);
-          localObject7 = (TextView)((View)localObject4).findViewById(2131364553);
-          localObject8 = (TextView)((View)localObject4).findViewById(2131364555);
-          localObject9 = (Button)((View)localObject4).findViewById(2131364556);
-          localObject10 = (TextView)((View)localObject4).findViewById(2131364554);
-          localRelativeLayout = (RelativeLayout)((View)localObject4).findViewById(2131364549);
-          localImageView = (ImageView)((View)localObject4).findViewById(2131364551);
+          localObject4 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968974, null, false);
+          localObject1 = (TextView)((View)localObject4).findViewById(2131364547);
+          localObject3 = (TextView)((View)localObject4).findViewById(2131364549);
+          ((RelativeLayout)((View)localObject4).findViewById(2131364571)).setOnClickListener((View.OnClickListener)localObject5);
+          localObject5 = (RelativeLayout)((View)localObject4).findViewById(2131364572);
+          localObject6 = (ImageView)((View)localObject4).findViewById(2131364574);
+          localObject7 = (TextView)((View)localObject4).findViewById(2131364577);
+          localObject8 = (TextView)((View)localObject4).findViewById(2131364579);
+          localObject9 = (Button)((View)localObject4).findViewById(2131364580);
+          localObject10 = (TextView)((View)localObject4).findViewById(2131364578);
+          localRelativeLayout = (RelativeLayout)((View)localObject4).findViewById(2131364573);
+          localImageView = (ImageView)((View)localObject4).findViewById(2131364575);
           ((TextView)localObject1).setText(paramVipIPSiteInfo.ipName + "作品站");
           ((TextView)localObject3).setText(VasUtils.a(paramVipIPSiteInfo.ipContent));
           if (paramVipIPSiteInfo.ipList != null)
@@ -158,11 +158,11 @@ public class BigEmotionDownloadedAdapter
             {
               localObject1 = paramVipIPSiteInfo.ipList.get(i);
               IPSiteModel.Comic localComic;
-              acdu localacdu;
+              aclv localaclv;
               if ((localObject1 instanceof IPSiteModel.Comic))
               {
                 localComic = (IPSiteModel.Comic)localObject1;
-                localacdu = new acdu(this, localComic, str1, str3);
+                localaclv = new aclv(this, localComic, str1, str3);
                 localObject1 = (RelativeLayout.LayoutParams)localRelativeLayout.getLayoutParams();
               }
               switch (localComic.comicType)
@@ -171,8 +171,8 @@ public class BigEmotionDownloadedAdapter
                 ((ImageView)localObject6).setImageDrawable(VasUtils.a(localComic.cover, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable));
                 ((TextView)localObject7).setText(localComic.name);
                 ((TextView)localObject8).setText(localComic.desc);
-                ((Button)localObject9).setOnClickListener(localacdu);
-                ((RelativeLayout)localObject5).setOnClickListener(localacdu);
+                ((Button)localObject9).setOnClickListener(localaclv);
+                ((RelativeLayout)localObject5).setOnClickListener(localaclv);
                 i += 1;
               }
             }
@@ -203,15 +203,15 @@ public class BigEmotionDownloadedAdapter
         Object localObject2;
         if ("game".equals(localException2))
         {
-          localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968970, null, false);
-          localObject8 = (TextView)((View)localObject2).findViewById(2131364523);
-          localObject9 = (TextView)((View)localObject2).findViewById(2131364525);
-          ((RelativeLayout)((View)localObject2).findViewById(2131364529)).setOnClickListener((View.OnClickListener)localObject5);
-          localObject3 = (RelativeLayout)((View)localObject2).findViewById(2131364530);
-          localObject4 = (ImageView)((View)localObject2).findViewById(2131364531);
-          localObject5 = (TextView)((View)localObject2).findViewById(2131364534);
-          localObject6 = (TextView)((View)localObject2).findViewById(2131364536);
-          localObject7 = (Button)((View)localObject2).findViewById(2131364537);
+          localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968972, null, false);
+          localObject8 = (TextView)((View)localObject2).findViewById(2131364547);
+          localObject9 = (TextView)((View)localObject2).findViewById(2131364549);
+          ((RelativeLayout)((View)localObject2).findViewById(2131364553)).setOnClickListener((View.OnClickListener)localObject5);
+          localObject3 = (RelativeLayout)((View)localObject2).findViewById(2131364554);
+          localObject4 = (ImageView)((View)localObject2).findViewById(2131364555);
+          localObject5 = (TextView)((View)localObject2).findViewById(2131364558);
+          localObject6 = (TextView)((View)localObject2).findViewById(2131364560);
+          localObject7 = (Button)((View)localObject2).findViewById(2131364561);
           ((TextView)localObject8).setText(paramVipIPSiteInfo.ipName + "作品站");
           ((TextView)localObject9).setText(VasUtils.a(paramVipIPSiteInfo.ipContent));
           if (paramVipIPSiteInfo.ipList != null)
@@ -223,7 +223,7 @@ public class BigEmotionDownloadedAdapter
               if ((localObject8 instanceof IPSiteModel.Game))
               {
                 localObject8 = (IPSiteModel.Game)localObject8;
-                localObject9 = new acdv(this, (IPSiteModel.Game)localObject8, str2, str3);
+                localObject9 = new aclw(this, (IPSiteModel.Game)localObject8, str2, str3);
                 ((ImageView)localObject4).setImageDrawable(VasUtils.a(((IPSiteModel.Game)localObject8).cover, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable));
                 ((TextView)localObject5).setText(((IPSiteModel.Game)localObject8).name);
                 ((TextView)localObject6).setText(((IPSiteModel.Game)localObject8).recommDesc);
@@ -238,13 +238,13 @@ public class BigEmotionDownloadedAdapter
         }
         else if ("goods".equals(localObject2))
         {
-          localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968969, null, false);
-          localObject3 = (TextView)((View)localObject2).findViewById(2131364523);
-          localObject4 = (TextView)((View)localObject2).findViewById(2131364525);
-          ((RelativeLayout)((View)localObject2).findViewById(2131364527)).setOnClickListener((View.OnClickListener)localObject5);
+          localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968971, null, false);
+          localObject3 = (TextView)((View)localObject2).findViewById(2131364547);
+          localObject4 = (TextView)((View)localObject2).findViewById(2131364549);
+          ((RelativeLayout)((View)localObject2).findViewById(2131364551)).setOnClickListener((View.OnClickListener)localObject5);
           ((TextView)localObject3).setText(paramVipIPSiteInfo.ipName + "作品站");
           ((TextView)localObject4).setText(VasUtils.a(paramVipIPSiteInfo.ipContent));
-          localObject3 = (HorizontalListView)((View)localObject2).findViewById(2131364528);
+          localObject3 = (HorizontalListView)((View)localObject2).findViewById(2131364552);
           if (paramVipIPSiteInfo.ipList != null)
           {
             paramVipIPSiteInfo = new IPSiteListGoodsAdapter(this.jdField_a_of_type_AndroidContentContext, paramVipIPSiteInfo.ipList, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), str3, str2);
@@ -256,15 +256,15 @@ public class BigEmotionDownloadedAdapter
         }
         else if ("video".equals(localObject2))
         {
-          localObject3 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968971, null, false);
-          localObject2 = (TextView)((View)localObject3).findViewById(2131364523);
-          localObject9 = (TextView)((View)localObject3).findViewById(2131364525);
-          ((RelativeLayout)((View)localObject3).findViewById(2131364538)).setOnClickListener((View.OnClickListener)localObject5);
-          localObject4 = (RelativeLayout)((View)localObject3).findViewById(2131364539);
-          localObject5 = (ImageView)((View)localObject3).findViewById(2131364541);
-          localObject6 = (TextView)((View)localObject3).findViewById(2131364543);
-          localObject7 = (TextView)((View)localObject3).findViewById(2131364545);
-          localObject8 = (Button)((View)localObject3).findViewById(2131364546);
+          localObject3 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968973, null, false);
+          localObject2 = (TextView)((View)localObject3).findViewById(2131364547);
+          localObject9 = (TextView)((View)localObject3).findViewById(2131364549);
+          ((RelativeLayout)((View)localObject3).findViewById(2131364562)).setOnClickListener((View.OnClickListener)localObject5);
+          localObject4 = (RelativeLayout)((View)localObject3).findViewById(2131364563);
+          localObject5 = (ImageView)((View)localObject3).findViewById(2131364565);
+          localObject6 = (TextView)((View)localObject3).findViewById(2131364567);
+          localObject7 = (TextView)((View)localObject3).findViewById(2131364569);
+          localObject8 = (Button)((View)localObject3).findViewById(2131364570);
           ((TextView)localObject2).setText(paramVipIPSiteInfo.ipName + "作品站");
           ((TextView)localObject9).setText(VasUtils.a(paramVipIPSiteInfo.ipContent));
           if (paramVipIPSiteInfo.ipList != null)
@@ -276,7 +276,7 @@ public class BigEmotionDownloadedAdapter
               if ((localObject2 instanceof IPSiteModel.Video))
               {
                 localObject9 = (IPSiteModel.Video)localObject2;
-                localObject10 = new acdw(this, (IPSiteModel.Video)localObject9, str2, str3);
+                localObject10 = new aclx(this, (IPSiteModel.Video)localObject9, str2, str3);
                 if (!TextUtils.isEmpty(((IPSiteModel.Video)localObject9).buttonDesc)) {
                   break label1845;
                 }
@@ -293,7 +293,7 @@ public class BigEmotionDownloadedAdapter
                 if (!((String)localObject2).equals("去购票")) {
                   break label1887;
                 }
-                j = 2130838894;
+                j = 2130838903;
                 label1787:
                 ((Button)localObject8).setBackgroundResource(j);
                 if (!((String)localObject2).equals("去购票")) {
@@ -315,7 +315,7 @@ public class BigEmotionDownloadedAdapter
                 break label1713;
                 ((TextView)localObject7).setText(((IPSiteModel.Video)localObject9).showDate + "上映");
                 break label1765;
-                j = 2130838893;
+                j = 2130838902;
                 break label1787;
               }
             }
@@ -325,15 +325,15 @@ public class BigEmotionDownloadedAdapter
         }
         else if ("book".equals(localObject2))
         {
-          localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968973, null, false);
-          localObject8 = (TextView)((View)localObject2).findViewById(2131364523);
-          localObject9 = (TextView)((View)localObject2).findViewById(2131364525);
-          ((RelativeLayout)((View)localObject2).findViewById(2131364557)).setOnClickListener((View.OnClickListener)localObject5);
-          localObject3 = (RelativeLayout)((View)localObject2).findViewById(2131364558);
-          localObject4 = (ImageView)((View)localObject2).findViewById(2131364559);
-          localObject5 = (TextView)((View)localObject2).findViewById(2131364561);
-          localObject6 = (TextView)((View)localObject2).findViewById(2131364563);
-          localObject7 = (Button)((View)localObject2).findViewById(2131364564);
+          localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968975, null, false);
+          localObject8 = (TextView)((View)localObject2).findViewById(2131364547);
+          localObject9 = (TextView)((View)localObject2).findViewById(2131364549);
+          ((RelativeLayout)((View)localObject2).findViewById(2131364581)).setOnClickListener((View.OnClickListener)localObject5);
+          localObject3 = (RelativeLayout)((View)localObject2).findViewById(2131364582);
+          localObject4 = (ImageView)((View)localObject2).findViewById(2131364583);
+          localObject5 = (TextView)((View)localObject2).findViewById(2131364585);
+          localObject6 = (TextView)((View)localObject2).findViewById(2131364587);
+          localObject7 = (Button)((View)localObject2).findViewById(2131364588);
           ((TextView)localObject8).setText(paramVipIPSiteInfo.ipName + "作品站");
           ((TextView)localObject9).setText(VasUtils.a(paramVipIPSiteInfo.ipContent));
           if (paramVipIPSiteInfo.ipList != null)
@@ -345,7 +345,7 @@ public class BigEmotionDownloadedAdapter
               if ((localObject8 instanceof IPSiteModel.Book))
               {
                 localObject8 = (IPSiteModel.Book)localObject8;
-                localObject9 = new acdx(this, (IPSiteModel.Book)localObject8, str2, str3);
+                localObject9 = new acly(this, (IPSiteModel.Book)localObject8, str2, str3);
                 ((ImageView)localObject4).setImageDrawable(VasUtils.a(((IPSiteModel.Book)localObject8).cover, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable));
                 ((TextView)localObject5).setText(((IPSiteModel.Book)localObject8).name);
                 ((TextView)localObject6).setText(((IPSiteModel.Book)localObject8).recommDesc);
@@ -504,11 +504,11 @@ public class BigEmotionDownloadedAdapter
             paramViewHolder.leftMargin = ((int)(5.0F * this.jdField_a_of_type_Float));
             paramViewHolder.gravity = 16;
             localObject3 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-            ((ImageView)localObject3).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843961));
+            ((ImageView)localObject3).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844027));
             ((LinearLayout)localObject2).addView((View)localObject3, paramViewHolder);
             paramView.addView((View)localObject2);
             ((BigEmotionDownloadedAdapter.BigEmotionHolder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject2);
-            ((BigEmotionDownloadedAdapter.BigEmotionHolder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new acds(this, paramViewGroup));
+            ((BigEmotionDownloadedAdapter.BigEmotionHolder)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new aclt(this, paramViewGroup));
             paramView.setTag(localObject1);
             ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "exp_bq_detail", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, "", "");
             localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();

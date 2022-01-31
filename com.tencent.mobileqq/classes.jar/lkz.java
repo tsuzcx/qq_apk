@@ -1,31 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdDataSourceAdapter;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lkz
-  implements ThirdVideoManager.UUIDToUrlCallback
+  implements Runnable
 {
-  public lkz(ThirdDataSourceAdapter paramThirdDataSourceAdapter) {}
+  public lkz(ChannelCoverView paramChannelCoverView, ChannelCoverInfo paramChannelCoverInfo) {}
   
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
+  public void run()
   {
-    ThirdDataSourceAdapter.a(this.a, 2);
-    paramString3 = this.a;
-    paramString2 = paramString1;
-    if (paramString1 == null) {
-      paramString2 = "";
-    }
-    ThirdDataSourceAdapter.a(paramString3, paramString2);
-    if (paramInt == 1) {
-      ThirdDataSourceAdapter.b(this.a, 1);
-    }
     for (;;)
     {
-      if (ThirdDataSourceAdapter.a(this.a) != null) {
-        ThirdDataSourceAdapter.a(this.a).onPrepared();
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("is_followed", "1");
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mIsTopic)
+        {
+          String str1 = "0X80088BB";
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mIsTopic)
+          {
+            str3 = "0X80088BB";
+            PublicAccountReportUtils.a(null, "", str1, str3, 0, 0, "1", "", "", VideoReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, localJSONObject), false);
+            return;
+          }
+          String str3 = "0X8007BE6";
+          continue;
+        }
+        String str2 = "0X8007BE6";
       }
-      return;
-      ThirdDataSourceAdapter.b(this.a, 0);
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        return;
+      }
     }
   }
 }

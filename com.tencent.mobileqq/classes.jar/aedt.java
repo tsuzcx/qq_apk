@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.magicface.magicfaceaction.Action;
-import java.util.TimerTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.intervideo.od.LoadingUI;
+import com.tencent.mobileqq.intervideo.od.LoadingUI.Event;
 
 public class aedt
-  extends TimerTask
+  implements View.OnClickListener
 {
-  public aedt(Action paramAction) {}
+  public aedt(LoadingUI paramLoadingUI) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.c();
-    this.a.d();
+    if (LoadingUI.a(this.a) != null) {
+      LoadingUI.a(this.a).a();
+    }
   }
 }
 

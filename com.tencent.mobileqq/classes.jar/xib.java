@@ -1,6 +1,19 @@
-public abstract interface xib
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class xib
+  implements PopupWindow.OnDismissListener
 {
-  public abstract void a(String paramString);
+  public xib(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  
+  public void onDismiss()
+  {
+    if (!TroopUnAccalimedRedPacketList.a(this.a)) {
+      QWalletTools.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
+    }
+  }
 }
 
 

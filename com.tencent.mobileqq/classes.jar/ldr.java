@@ -1,25 +1,27 @@
-import android.app.Activity;
-import android.view.Window;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import android.os.Bundle;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 
 public class ldr
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
-  public ldr(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, GuideData paramGuideData, String paramString, int paramInt) {}
+  public ldr(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getActivity().getWindow().getDecorView();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a = new ReadInJoySkinGuideView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.app, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.id, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new lds(this, localFrameLayout), new ldt(this, localFrameLayout));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a() == 0)
+    if (!WebIPCOperator.a().a())
     {
-      localFrameLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a, -1, -1);
-      return;
+      WebIPCOperator.a().a().doBindService(BaseApplicationImpl.getApplication());
+      WebIPCOperator.a().a(new lds(this));
+      return false;
     }
-    ReadInJoyNewFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
+    Bundle localBundle = DataFactory.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
+    WebIPCOperator.a().a(localBundle);
+    return false;
   }
 }
 

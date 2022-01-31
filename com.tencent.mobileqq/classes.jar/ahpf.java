@@ -1,22 +1,8 @@
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.richmedia.capture.gesture.GLGestureProxy;
 
 public class ahpf
-  extends WebChromeClient
 {
-  private ahpf(ActionUrlActivity paramActionUrlActivity) {}
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt)
-  {
-    super.onProgressChanged(paramWebView, paramInt);
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    this.a.setTitle(paramString);
-    this.a.a();
-  }
+  private static final GLGestureProxy a = new GLGestureProxy(null);
 }
 
 

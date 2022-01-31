@@ -1,107 +1,26 @@
-import android.os.Handler;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.now.NowVideoController;
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.biz.now.NowVideoView.ThirdDataSourceAdapter;
-import com.tencent.image.QQLiveDrawable.ErrorInfo;
-import com.tencent.image.QQLiveDrawable.OnStateListener;
-import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.common.util.FileChooserHelper;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class koe
-  implements QQLiveDrawable.OnStateListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public koe(NowVideoView paramNowVideoView) {}
+  public koe(FileChooserHelper paramFileChooserHelper, Activity paramActivity, String paramString, ActionSheet paramActionSheet) {}
   
-  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.c = this.a.d;
-    this.a.d = paramInt;
-    paramString = this.a.jdField_a_of_type_AndroidWidgetImageView;
-    boolean bool = NowVideoController.a().b;
-    if (paramInt == 3)
+    switch (paramInt)
     {
-      if (this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation == null)
-      {
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setDuration(500L);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setRepeatCount(-1);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setRepeatMode(1);
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setStartTime(-1L);
-        paramQQLiveDrawableParams = new LinearInterpolator();
-        this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setInterpolator(paramQQLiveDrawableParams);
-      }
-      if (paramString != null)
-      {
-        paramString.setVisibility(0);
-        paramString.setImageResource(2130840918);
-        paramString.clearAnimation();
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new kof(this, paramString));
-      }
     }
     for (;;)
     {
-      this.a.a(this.a.c, this.a.d);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      if (paramInt == 0)
-      {
-        if (paramString != null)
-        {
-          paramString.clearAnimation();
-          paramString.setImageResource(2130840920);
-          paramString.setVisibility(0);
-        }
-      }
-      else if (paramInt == 4)
-      {
-        if ((paramString != null) && (!bool))
-        {
-          paramString.clearAnimation();
-          paramString.setImageResource(2130840920);
-          paramString.setVisibility(0);
-        }
-      }
-      else if (paramInt == 2)
-      {
-        if (paramString != null)
-        {
-          paramString.clearAnimation();
-          paramString.setVisibility(8);
-        }
-        this.a.e = 0;
-        this.a.f = 0;
-        this.a.a(1);
-      }
-      else if (paramInt == 5)
-      {
-        if (paramString != null)
-        {
-          paramString.clearAnimation();
-          paramString.setVisibility(0);
-          paramString.setImageResource(2130840916);
-        }
-        if (!NetworkUtil.g(this.a.getContext()))
-        {
-          QQToast.a(this.a.getContext(), 1, 2131434843, 0).b(NowVideoView.g);
-          return;
-        }
-        if (this.a.jdField_a_of_type_JavaUtilList.size() > 0)
-        {
-          this.a.jdField_a_of_type_JavaUtilList.remove(this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_JavaUtilList.size() - 1));
-          this.a.jdField_a_of_type_ComTencentBizNowNowVideoView$ThirdDataSourceAdapter.a();
-        }
-        if ((this.a.jdField_a_of_type_JavaUtilList.size() == 0) && ((paramObject instanceof QQLiveDrawable.ErrorInfo)))
-        {
-          paramString = (QQLiveDrawable.ErrorInfo)paramObject;
-          QLog.d("NowVideoView", 2, "ErrorInf = " + paramString.toString());
-        }
-      }
-      else if (paramInt != 1) {}
+      FileChooserHelper.b(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      FileChooserHelper.a(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

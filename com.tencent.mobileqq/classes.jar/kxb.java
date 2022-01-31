@@ -1,56 +1,39 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.PublicAccountServlet;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementStatistics;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
-public final class kxb
-  implements Runnable
+public class kxb
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  public kxb(String paramString, int paramInt1, int paramInt2, Context paramContext, AdvertisementInfo paramAdvertisementInfo, VideoAdInfo paramVideoAdInfo, long paramLong, JSONObject paramJSONObject, AppInterface paramAppInterface) {}
+  private kxb(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
   
-  public void run()
+  public void onComplete(String paramString1, String paramString2)
   {
-    Object localObject1 = new JSONObject();
-    try
+    for (;;)
     {
-      ((JSONObject)localObject1).put("uin", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject1).put("type", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject1).put("ts", System.currentTimeMillis());
-      ((JSONObject)localObject1).put("origin", this.b);
-      ((JSONObject)localObject1).put("oudid", "1");
-      ((JSONObject)localObject1).put("device_info", NativeAdUtils.a(this.jdField_a_of_type_AndroidContentContext));
-      ((JSONObject)localObject1).put("ad_info", NativeAdUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, this.jdField_a_of_type_Long));
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
-        ((JSONObject)localObject1).put("video_info", this.jdField_a_of_type_OrgJsonJSONObject);
+      synchronized (AdvertisementVideoPreloadManager.a(this.a))
+      {
+        AdvertisementVideoPreloadManager.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
+        paramString2 = new File(AdvertisementVideoPreloadManager.b(paramString1));
+        if (paramString2.exists()) {
+          paramString2.renameTo(new File(AdvertisementVideoPreloadManager.a(paramString1)));
+        }
+        ReportController.b(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", AdvertisementVideoPreloadManager.a(this.a).mVideoVid, String.valueOf(AdvertisementVideoPreloadManager.a(this.a).mSource));
+        paramString2 = (QQAppInterface)AdvertisementVideoPreloadManager.a(this.a).get();
+        if (paramString2 != null)
+        {
+          paramString2 = paramString2.getCurrentAccountUin();
+          AdvertisementStatistics.b(paramString2, paramString1);
+          AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
+          return;
+        }
       }
-      Object localObject2 = ((JSONObject)localObject1).toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdUtils", 2, "report json = " + (String)localObject2);
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        return;
-      }
-      localObject1 = new WebSsoBody.WebSsoRequestBody();
-      ((WebSsoBody.WebSsoRequestBody)localObject1).data.set((String)localObject2);
-      localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), PublicAccountServlet.class);
-      ((NewIntent)localObject2).putExtra("cmd", "MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_report_new");
-      ((NewIntent)localObject2).putExtra("data", ((WebSsoBody.WebSsoRequestBody)localObject1).toByteArray());
-      ((NewIntent)localObject2).setObserver(new kxc(this));
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet((NewIntent)localObject2);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
+      paramString2 = "";
     }
   }
 }

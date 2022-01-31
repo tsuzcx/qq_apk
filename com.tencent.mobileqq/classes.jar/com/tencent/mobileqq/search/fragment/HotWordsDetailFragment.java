@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahtf;
+import ahxw;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -29,7 +29,7 @@ public class HotWordsDetailFragment
   
   public HotWordsDetailFragment()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ahtf(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ahxw(this);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)

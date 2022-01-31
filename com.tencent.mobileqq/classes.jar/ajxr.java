@@ -1,11 +1,22 @@
-class ajxr
+import com.tencent.mobileqq.troop.utils.TroopNameHelper;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+public abstract class ajxr
   implements Runnable
 {
-  ajxr(ajxq paramajxq, boolean paramBoolean, String paramString) {}
+  public volatile boolean a;
   
-  public void run()
+  public ajxr(TroopNameHelper paramTroopNameHelper) {}
+  
+  public abstract void a();
+  
+  public final void run()
   {
-    this.jdField_a_of_type_Ajxq.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    this.a = true;
+    a();
+    this.a = false;
+    this.b.a.remove(this);
+    TroopNameHelper.a(this.b);
   }
 }
 

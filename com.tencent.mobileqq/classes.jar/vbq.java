@@ -1,32 +1,25 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.text.TextPaint;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-class vbq
+public class vbq
   implements Runnable
 {
-  vbq(vbp paramvbp) {}
+  public vbq(FileItemBuilder paramFileItemBuilder, vbs paramvbs, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
-    Object localObject = (EmoticonManager)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getManager(13);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a != null) {
-      ((EmoticonManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a != null) {
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a.getAccount(), 12, String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId), false, false);
-    }
-    QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a == null) {}
-    for (localObject = "";; localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId)
+    TextView localTextView = this.jdField_a_of_type_Vbs.a;
+    String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strSrcName;
+    boolean bool = FileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder);
+    int j = this.jdField_a_of_type_Vbs.a.getMeasuredWidth();
+    TextPaint localTextPaint = this.jdField_a_of_type_Vbs.a.getPaint();
+    if (FileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder)) {}
+    for (int i = 2;; i = 3)
     {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007188", 0, 0, (String)localObject, "", "", "");
+      localTextView.setText(FileManagerUtil.a(str, bool, j, localTextPaint, i));
       return;
     }
   }

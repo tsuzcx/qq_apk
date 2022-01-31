@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1699" android:background="#ff333333" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a169a" android:layout_centerVertical="true" style="?android:attr/progressBarStyleSmall" />
-        <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a169a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0a55" android:layout_centerInParent="true" />
-    </RelativeLayout>
-</merge>
+    <ImageView android:id="@id/toast_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0518" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c026f" android:gravity="center" android:id="@id/toast_msg" android:layout_width="wrap_content" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0519" />
+</LinearLayout>

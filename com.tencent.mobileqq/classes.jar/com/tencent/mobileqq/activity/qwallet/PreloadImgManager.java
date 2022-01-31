@@ -26,17 +26,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import mqq.app.MobileQQ;
-import xai;
-import xak;
-import xal;
-import xam;
+import xfy;
+import xga;
+import xgb;
+import xgc;
 
 public class PreloadImgManager
 {
   private static PreloadImgManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private MQLruCache jdField_a_of_type_AndroidSupportV4UtilMQLruCache = BaseApplicationImpl.sImageCache;
-  private DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new xai(this);
+  private DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new xfy(this);
   DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory;
   public DownloaderInterface a;
   private Map jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap(6));
@@ -581,7 +581,7 @@ public class PreloadImgManager
     QLog.d("PreloadImgManager", 2, "mDownloaderInterface is null");
     return;
     paramString1 = new DownloadTask(paramString2, new File(a(paramAppInterface), MD5.toMD5(paramString2)));
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a(paramString1, new xak(this, paramAppInterface), null);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a(paramString1, new xga(this, paramAppInterface), null);
   }
   
   public void a(AppInterface paramAppInterface, Set paramSet)
@@ -643,7 +643,7 @@ public class PreloadImgManager
     for (String str1 = str3;; str1 = str2)
     {
       Bundle localBundle = new Bundle();
-      ThreadManager.post(new xal(this, paramSet, str2, str3, paramAppInterface, localArrayList, str1, localHashMap, localBundle), 8, new xam(this, localArrayList, localHashMap, localBundle), true);
+      ThreadManager.post(new xgb(this, paramSet, str2, str3, paramAppInterface, localArrayList, str1, localHashMap, localBundle), 8, new xgc(this, localArrayList, localHashMap, localBundle), true);
       return;
     }
   }

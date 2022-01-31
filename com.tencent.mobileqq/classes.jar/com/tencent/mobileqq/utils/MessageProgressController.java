@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import akcz;
+import akkn;
 import android.text.TextUtils;
 import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ public class MessageProgressController
   
   public static final MessageProgressController a()
   {
-    return akcz.a();
+    return akkn.a();
   }
   
   public MessageProgressView.RefreshProgressRunnable a(String paramString)

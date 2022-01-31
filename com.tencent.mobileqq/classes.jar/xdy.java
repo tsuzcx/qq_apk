@@ -1,17 +1,26 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import android.view.SurfaceView;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.video.IMediaPlayer.OnPlayStateListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class xdy
-  implements Runnable
+  implements IMediaPlayer.OnPlayStateListener
 {
-  public xdy(ThemeHbFragment paramThemeHbFragment) {}
+  public xdy(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    ThemeHbFragment.a(this.a).startAnimation(ThemeHbFragment.a(this.a));
-    ThemeHbFragment.a(this.a).setVisibility(0);
-    this.a.a.a("theme.pack.show", 2);
+    if (paramInt == 1) {
+      this.a.a.setVisibility(0);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
+      }
+      return;
+      this.a.a.setVisibility(8);
+    }
   }
 }
 

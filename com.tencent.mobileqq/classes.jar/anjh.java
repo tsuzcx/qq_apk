@@ -1,28 +1,20 @@
-import android.view.View;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import cooperation.qzone.video.QzoneVerticalVideoGpuProxyActivity;
+import cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity;
+import cooperation.qzone.video.QzoneVerticalVideoTransparentActivity;
 
 public class anjh
-  implements Runnable
 {
-  public anjh(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, boolean paramBoolean) {}
-  
-  public void run()
+  public static Class a(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(8);
-      QIMEffectCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(8);
-      QIMEffectCameraCaptureUnit.e(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, false);
-      return;
+    if (QzoneVerticalVideoPluginProxyActivity.a(QzoneVerticalVideoPluginProxyActivity.a(), paramString)) {
+      return QzoneVerticalVideoTransparentActivity.class;
     }
-    QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit), QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit), QIMEffectCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit), QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit));
-    QIMEffectCameraCaptureUnit.e(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, true);
+    return QzoneVerticalVideoGpuProxyActivity.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,13 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.widget.LeftPopupMenuDialog;
+import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
 
 public class akut
-  extends View.AccessibilityDelegate
+  implements Runnable
 {
-  public akut(LeftPopupMenuDialog paramLeftPopupMenuDialog) {}
+  public akut(SwiftReuseTouchWebView paramSwiftReuseTouchWebView) {}
   
-  @TargetApi(14)
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt != 32) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
+    this.a.b(false);
   }
 }
 

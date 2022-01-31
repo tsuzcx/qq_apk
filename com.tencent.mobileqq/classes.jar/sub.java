@@ -1,43 +1,38 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDManualGuideActivity;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 
 public class sub
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public sub(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  public sub(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramView.getId())
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a.equals(this.a.app.getCurrentAccountUin())) && (this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null))
     {
-    case 2131364713: 
-    case 2131364714: 
-    case 2131364717: 
-    case 2131364718: 
-    default: 
-      return;
-    case 2131364712: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 20);
-      this.a.a();
-      return;
-    case 2131364716: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 21);
-      this.a.a();
-      return;
-    case 2131364715: 
-      paramView = new Intent(this.a, GesturePWDManualGuideActivity.class);
-      this.a.startActivity(paramView);
-      return;
+      if ((paramIntent == null) || (!paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label"))) {
+        break label107;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("FriendProfileCardActivity", 2, "receive broadcast modify pl info");
+      }
+      paramContext = paramIntent.getBundleExtra("key_bundle_data");
+      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged"))) {
+        this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(16, 0, 0).sendToTarget();
+      }
     }
-    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
-    this.a.startActivityForResult(paramView, 11);
-    this.a.overridePendingTransition(2131034134, 2131034131);
+    return;
+    label107:
+    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
   }
 }
 

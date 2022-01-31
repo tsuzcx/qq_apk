@@ -1,49 +1,44 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class adue
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public adue(HuayangJsPlugin paramHuayangJsPlugin, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adue(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramMessage.arg1;
-    if (i > 90) {
-      return;
-    }
-    HuayangJsPlugin.a(this.a, "STATE_Loading:" + i);
-    paramMessage = new JSONObject();
-    try
+    if (paramInt == 1)
     {
-      paramMessage.putOpt("state", Integer.valueOf(4));
-      paramMessage.putOpt("totalSize", Integer.valueOf(100));
-      paramMessage.putOpt("pro", Integer.valueOf(i));
-      this.a.callJs(this.a.a, new String[] { paramMessage.toString() });
-      paramMessage = Message.obtain();
-      paramMessage.arg1 = (i + 5);
-      sendMessageDelayed(paramMessage, 500L);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      if (ForwardSdkShareOption.a(this.a))
       {
-        localJSONException.printStackTrace();
+        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.e.intValue());
+        this.a.j();
       }
+      StatisticCollector.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
     }
+    while (paramInt != 0) {
+      return;
+    }
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.a.jdField_a_of_type_AndroidAppActivity;
+    paramDialogInterface.setResult(0);
+    StatisticCollector.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
+    this.a.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adue
  * JD-Core Version:    0.7.0.1
  */

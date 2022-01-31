@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
+import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView.OnInnerListRefreshListener;
+import com.tencent.biz.qqstory.storyHome.memory.view.adapter.MemoriesInnerListAdapter;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 public class oce
-  implements View.OnClickListener
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public oce(TagAdapter paramTagAdapter) {}
+  public oce(MemoriesInnerListView paramMemoriesInnerListView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (TagAdapter.a(this.a) != null) {
-      TagAdapter.a(this.a).h();
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(MemoriesInnerListView.a(this.a).a);
     }
   }
 }

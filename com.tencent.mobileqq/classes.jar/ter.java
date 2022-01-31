@@ -1,30 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import QQService.SvcDevLoginInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ter
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ter(PayBridgeActivity paramPayBridgeActivity, String paramString) {}
+  public ter(LoginInfoActivity paramLoginInfoActivity, Button paramButton, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
+    if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity))
     {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (BaseActivity.sTopActivity != null))
-      {
-        Intent localIntent = new Intent(BaseActivity.sTopActivity, QQBrowserActivity.class);
-        localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-        localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-        this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.startActivity(localIntent);
-      }
-      paramDialogInterface.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.finish();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131433023), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
+      return;
     }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, "CliOper", "", "", "My_eq", "Kick_off_PC", 0, 0, "", "", "", "");
+    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetButton.getTag();
+    if (paramView != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), new tes(this, paramView));
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131436529), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
   }
 }
 

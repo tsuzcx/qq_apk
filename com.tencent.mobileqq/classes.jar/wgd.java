@@ -1,33 +1,23 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class wgd
+class wgd
   implements Runnable
 {
-  public wgd(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
+  wgd(wgc paramwgc, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.a.jdField_a_of_type_JavaLangString, 1, this.a.c);
-    if (localMessageRecord != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.sendFailCode == 41)
     {
-      List localList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_a_of_type_JavaLangString, 1, localMessageRecord.shmsgseq, 20);
-      localList.add(0, localMessageRecord);
-      ThreadManager.getUIHandler().post(new wge(this, localList));
+      QQToast.a(this.jdField_a_of_type_Wgc.a.a.getApp(), 2131436104, 0).a();
       return;
     }
-    TroopTechReportUtils.a("chat_history", "target_404", String.valueOf(this.a.c), String.valueOf(this.a.b), "", "");
-    if (QLog.isColorLevel()) {
-      QLog.e("chatHistory.troop.msgList", 2, "msg not found, fallback to loadData");
-    }
-    this.a.c();
+    QQToast.a(this.jdField_a_of_type_Wgc.a.a.getApp(), 2131438870, 0).a();
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Wgc.a.a.c(), "Stick", "Send", "2", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

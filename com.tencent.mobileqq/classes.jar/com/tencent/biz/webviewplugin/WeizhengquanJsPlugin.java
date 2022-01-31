@@ -13,7 +13,7 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.QwJsInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pdr;
+import pij;
 
 public class WeizhengquanJsPlugin
   extends JsWebViewPlugin
@@ -70,7 +70,7 @@ public class WeizhengquanJsPlugin
     do
     {
       return;
-      ThreadManager.post(new pdr(this, paramIntent), 2, null, true);
+      ThreadManager.post(new pij(this, paramIntent), 2, null, true);
       return;
       paramIntent = paramIntent.getStringExtra("result");
     } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));

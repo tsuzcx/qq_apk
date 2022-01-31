@@ -1,28 +1,47 @@
+import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import java.util.ArrayList;
 
 public class akmv
-  implements TouchWebView.OnScrollChangedListener
+  implements View.OnClickListener
 {
-  public akmv(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
+  public akmv(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void onClick(View paramView)
   {
-    this.a.b = paramInt2;
-    this.a.a(this.a.b, this.a.f);
-    paramView = this.a.a.a();
-    if ((paramView != null) && (!TextUtils.isEmpty(this.a.d))) {
-      paramView.a(this.a.d, new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2), String.valueOf(paramInt3), String.valueOf(paramInt4) });
+    paramView = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.getInputValue();
+    if (TextUtils.isEmpty(paramView)) {}
+    for (;;)
+    {
+      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+      {
+        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose, 1);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a();
+      }
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.isShowing()) {
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.dismiss();
+        }
+        return;
+      }
+      catch (Exception paramView) {}
+      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size() > 0))
+      {
+        int i = 0;
+        while ((i < this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size()) && (!paramView.equals(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.get(i)))) {
+          i += 1;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akmv
  * JD-Core Version:    0.7.0.1
  */

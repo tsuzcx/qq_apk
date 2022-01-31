@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cc" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.TabBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0529" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="40.0dip" />
-    <com.tencent.mobileqq.widget.QQViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a052a" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.widget.TabBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a052d" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="40.0dip" />
+    <com.tencent.mobileqq.widget.QQViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a052e" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

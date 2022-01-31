@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.armap.ArMapHandler;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-class abhh
+public class abhh
   implements Runnable
 {
-  abhh(abhg paramabhg) {}
+  public abhh(ARMapActivity paramARMapActivity, long paramLong) {}
   
   public void run()
   {
-    ((ArMapHandler)this.a.a.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.a(2)).a(this.a.a.jdField_a_of_type_Long, this.a.a.b, 0, 0, this.a.a.c);
+    ARMapEngine.removePOITask(this.jdField_a_of_type_Long);
   }
 }
 

@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager.OnTalkingChangeListener;
 
 public class ajxw
   implements Runnable
 {
-  public ajxw(SnapshotService paramSnapshotService, ajxy paramajxy, ajya paramajya) {}
+  public ajxw(TroopRobotManager paramTroopRobotManager) {}
   
   public void run()
   {
-    SnapshotService.a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService, this.jdField_a_of_type_Ajxy, this.jdField_a_of_type_Ajya);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager$OnTalkingChangeListener != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager$OnTalkingChangeListener.a(this.a.jdField_a_of_type_Boolean);
+    }
   }
 }
 

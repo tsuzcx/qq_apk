@@ -1,22 +1,23 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoInviteFloatBarUICtr;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.QavPanel;
 
-class kbn
-  implements Runnable
+public class kbn
+  extends BroadcastReceiver
 {
-  kbn(kbm paramkbm, long paramLong) {}
+  public kbn(QavPanel paramQavPanel) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Kbm.a.jdField_a_of_type_ComTencentAvAppSessionInfo.an = true;
-    if (this.jdField_a_of_type_Kbm.a.b == 1) {
-      this.jdField_a_of_type_Kbm.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
+    if (paramIntent.getAction().equals("com.tencent.redpoint.broadcast.push.av")) {
+      this.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kbn
  * JD-Core Version:    0.7.0.1
  */

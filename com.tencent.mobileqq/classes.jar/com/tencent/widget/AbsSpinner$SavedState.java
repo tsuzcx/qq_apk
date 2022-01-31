@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amaf;
+import amhp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import android.view.View.BaseSavedState;
 public class AbsSpinner$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new amaf();
+  public static final Parcelable.Creator CREATOR = new amhp();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   

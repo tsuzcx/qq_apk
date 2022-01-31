@@ -8,11 +8,11 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -53,10 +53,8 @@ public class QQLiveImage
   public static boolean mIsDebugEnable;
   private static boolean mSDKInited;
   private static boolean sAllPaused;
-  private static volatile boolean sEnableUSRLog;
+  private static volatile boolean sEnableUSRLog = false;
   private static volatile ArrayList<QQLiveImage> sImageList;
-  public static Handler sReleaseHandler;
-  static HandlerThread sWorkThread = new HandlerThread("QQLiveImage-Release-Task");
   protected int ID = 0;
   protected Canvas mCanvas;
   private URLDrawable mCover;
@@ -91,8 +89,6 @@ public class QQLiveImage
   
   static
   {
-    sWorkThread.start();
-    sEnableUSRLog = false;
     mSDKInited = false;
     mIsDebugEnable = true;
   }
@@ -152,10 +148,7 @@ public class QQLiveImage
         if (this.mVideoPlayer != null)
         {
           this.mVideoPlayer.removeAllListener();
-          if (sReleaseHandler == null) {
-            sReleaseHandler = new Handler(sWorkThread.getLooper());
-          }
-          sReleaseHandler.post(new ReleaseTask(this.mVideoPlayer, paramBoolean));
+          ThreadManagerV2.executeOnFileThread(new ReleaseTask(this.mVideoPlayer, paramBoolean));
           this.mVideoPlayer = null;
         }
         return;
@@ -418,206 +411,206 @@ public class QQLiveImage
     // Byte code:
     //   0: aload_1
     //   1: aload_0
-    //   2: getfield 184	com/tencent/image/QQLiveImage:mVideoPlayer	Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;
+    //   2: getfield 169	com/tencent/image/QQLiveImage:mVideoPlayer	Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;
     //   5: if_acmpeq +57 -> 62
-    //   8: invokestatic 290	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   8: invokestatic 277	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   11: ifeq +50 -> 61
-    //   14: new 119	java/lang/StringBuilder
+    //   14: new 116	java/lang/StringBuilder
     //   17: dup
-    //   18: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   21: getstatic 139	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
-    //   24: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: invokespecial 119	java/lang/StringBuilder:<init>	()V
+    //   21: getstatic 136	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
+    //   24: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: aload_0
-    //   28: getfield 171	com/tencent/image/QQLiveImage:ID	I
-    //   31: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   34: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   28: getfield 156	com/tencent/image/QQLiveImage:ID	I
+    //   31: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   37: iconst_2
-    //   38: new 119	java/lang/StringBuilder
+    //   38: new 116	java/lang/StringBuilder
     //   41: dup
-    //   42: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   45: ldc_w 530
-    //   48: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokespecial 119	java/lang/StringBuilder:<init>	()V
+    //   45: ldc_w 515
+    //   48: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   51: aload_1
-    //   52: invokevirtual 394	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   55: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   58: invokestatic 532	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   52: invokevirtual 373	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   55: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   58: invokestatic 517	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   61: return
     //   62: aload_0
-    //   63: getfield 204	com/tencent/image/QQLiveImage:mPaused	Z
+    //   63: getfield 189	com/tencent/image/QQLiveImage:mPaused	Z
     //   66: ifne +10 -> 76
     //   69: aload_0
-    //   70: getfield 212	com/tencent/image/QQLiveImage:mPlayCompleted	Z
+    //   70: getfield 197	com/tencent/image/QQLiveImage:mPlayCompleted	Z
     //   73: ifeq +67 -> 140
-    //   76: new 119	java/lang/StringBuilder
+    //   76: new 116	java/lang/StringBuilder
     //   79: dup
-    //   80: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   83: getstatic 139	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
-    //   86: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: invokespecial 119	java/lang/StringBuilder:<init>	()V
+    //   83: getstatic 136	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
+    //   86: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: aload_0
-    //   90: getfield 171	com/tencent/image/QQLiveImage:ID	I
-    //   93: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   96: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   90: getfield 156	com/tencent/image/QQLiveImage:ID	I
+    //   93: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   96: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   99: iconst_1
-    //   100: new 119	java/lang/StringBuilder
+    //   100: new 116	java/lang/StringBuilder
     //   103: dup
-    //   104: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   107: ldc_w 534
-    //   110: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: invokespecial 119	java/lang/StringBuilder:<init>	()V
+    //   107: ldc_w 519
+    //   110: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   113: aload_0
-    //   114: getfield 204	com/tencent/image/QQLiveImage:mPaused	Z
-    //   117: invokevirtual 350	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   120: ldc_w 536
-    //   123: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: getfield 189	com/tencent/image/QQLiveImage:mPaused	Z
+    //   117: invokevirtual 337	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   120: ldc_w 521
+    //   123: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: aload_0
-    //   127: getfield 212	com/tencent/image/QQLiveImage:mPlayCompleted	Z
-    //   130: invokevirtual 350	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   133: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   136: invokestatic 532	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   127: getfield 197	com/tencent/image/QQLiveImage:mPlayCompleted	Z
+    //   130: invokevirtual 337	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   133: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   136: invokestatic 517	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   139: return
     //   140: aload_0
-    //   141: getfield 244	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
+    //   141: getfield 231	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
     //   144: ifnull +75 -> 219
     //   147: aload_0
-    //   148: getfield 244	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
-    //   151: getfield 539	com/tencent/image/QQLiveDrawable$QQLiveDrawableParams:mMaxPlayTimeMs	I
+    //   148: getfield 231	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
+    //   151: getfield 524	com/tencent/image/QQLiveDrawable$QQLiveDrawableParams:mMaxPlayTimeMs	I
     //   154: ifle +65 -> 219
     //   157: aload_0
-    //   158: getfield 184	com/tencent/image/QQLiveImage:mVideoPlayer	Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;
+    //   158: getfield 169	com/tencent/image/QQLiveImage:mVideoPlayer	Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;
     //   161: ifnull +58 -> 219
     //   164: aload_0
-    //   165: getfield 184	com/tencent/image/QQLiveImage:mVideoPlayer	Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;
-    //   168: invokeinterface 543 1 0
+    //   165: getfield 169	com/tencent/image/QQLiveImage:mVideoPlayer	Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;
+    //   168: invokeinterface 528 1 0
     //   173: aload_0
-    //   174: getfield 244	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
-    //   177: getfield 539	com/tencent/image/QQLiveDrawable$QQLiveDrawableParams:mMaxPlayTimeMs	I
+    //   174: getfield 231	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
+    //   177: getfield 524	com/tencent/image/QQLiveDrawable$QQLiveDrawableParams:mMaxPlayTimeMs	I
     //   180: aload_0
-    //   181: getfield 244	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
-    //   184: getfield 546	com/tencent/image/QQLiveDrawable$QQLiveDrawableParams:mStartPosi	I
+    //   181: getfield 231	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
+    //   184: getfield 531	com/tencent/image/QQLiveDrawable$QQLiveDrawableParams:mStartPosi	I
     //   187: iadd
     //   188: i2l
     //   189: lcmp
     //   190: iflt +29 -> 219
     //   193: aload_0
-    //   194: getfield 244	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
-    //   197: getfield 549	com/tencent/image/QQLiveDrawable$QQLiveDrawableParams:mLoopback	Z
+    //   194: getfield 231	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
+    //   197: getfield 534	com/tencent/image/QQLiveDrawable$QQLiveDrawableParams:mLoopback	Z
     //   200: ifeq +507 -> 707
     //   203: aload_0
-    //   204: getfield 184	com/tencent/image/QQLiveImage:mVideoPlayer	Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;
+    //   204: getfield 169	com/tencent/image/QQLiveImage:mVideoPlayer	Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;
     //   207: aload_0
-    //   208: getfield 244	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
-    //   211: getfield 546	com/tencent/image/QQLiveDrawable$QQLiveDrawableParams:mStartPosi	I
-    //   214: invokeinterface 552 2 0
+    //   208: getfield 231	com/tencent/image/QQLiveImage:mParams	Lcom/tencent/image/QQLiveDrawable$QQLiveDrawableParams;
+    //   211: getfield 531	com/tencent/image/QQLiveDrawable$QQLiveDrawableParams:mStartPosi	I
+    //   214: invokeinterface 537 2 0
     //   219: aload_2
     //   220: ifnull +598 -> 818
-    //   223: invokestatic 557	java/lang/System:currentTimeMillis	()J
+    //   223: invokestatic 542	java/lang/System:currentTimeMillis	()J
     //   226: lstore 9
     //   228: aload_2
-    //   229: invokestatic 563	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
+    //   229: invokestatic 548	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
     //   232: astore_2
     //   233: aload_0
-    //   234: getfield 216	com/tencent/image/QQLiveImage:mLock	Ljava/lang/Object;
+    //   234: getfield 201	com/tencent/image/QQLiveImage:mLock	Ljava/lang/Object;
     //   237: astore_1
     //   238: aload_1
     //   239: monitorenter
     //   240: aload_0
-    //   241: getfield 565	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
+    //   241: getfield 550	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
     //   244: ifnonnull +108 -> 352
     //   247: aload_0
     //   248: iload_3
     //   249: iload 4
-    //   251: getstatic 571	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   254: invokestatic 577	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   257: putfield 565	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
+    //   251: getstatic 556	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   254: invokestatic 562	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   257: putfield 550	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
     //   260: aload_0
     //   261: iload 5
-    //   263: putfield 579	com/tencent/image/QQLiveImage:mRotation	I
-    //   266: invokestatic 290	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   263: putfield 564	com/tencent/image/QQLiveImage:mRotation	I
+    //   266: invokestatic 277	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   269: ifeq +83 -> 352
-    //   272: new 119	java/lang/StringBuilder
+    //   272: new 116	java/lang/StringBuilder
     //   275: dup
-    //   276: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   279: getstatic 139	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
-    //   282: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   276: invokespecial 119	java/lang/StringBuilder:<init>	()V
+    //   279: getstatic 136	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
+    //   282: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   285: aload_0
-    //   286: getfield 171	com/tencent/image/QQLiveImage:ID	I
-    //   289: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   292: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   286: getfield 156	com/tencent/image/QQLiveImage:ID	I
+    //   289: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   292: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   295: iconst_2
-    //   296: new 119	java/lang/StringBuilder
+    //   296: new 116	java/lang/StringBuilder
     //   299: dup
-    //   300: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   303: ldc_w 581
-    //   306: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   300: invokespecial 119	java/lang/StringBuilder:<init>	()V
+    //   303: ldc_w 566
+    //   306: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   309: iload_3
-    //   310: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   313: ldc_w 583
-    //   316: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   310: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   313: ldc_w 568
+    //   316: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   319: iload 4
-    //   321: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   324: ldc_w 585
-    //   327: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   321: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   324: ldc_w 570
+    //   327: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   330: iload 5
-    //   332: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   335: ldc_w 587
-    //   338: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   335: ldc_w 572
+    //   338: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   341: iload 6
-    //   343: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   346: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   349: invokestatic 355	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   343: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   346: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   349: invokestatic 342	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   352: aload_0
-    //   353: getfield 565	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
+    //   353: getfield 550	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
     //   356: aload_2
-    //   357: invokevirtual 591	android/graphics/Bitmap:copyPixelsFromBuffer	(Ljava/nio/Buffer;)V
+    //   357: invokevirtual 576	android/graphics/Bitmap:copyPixelsFromBuffer	(Ljava/nio/Buffer;)V
     //   360: aload_0
-    //   361: getfield 579	com/tencent/image/QQLiveImage:mRotation	I
+    //   361: getfield 564	com/tencent/image/QQLiveImage:mRotation	I
     //   364: ifeq +180 -> 544
     //   367: aload_0
-    //   368: getfield 593	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
+    //   368: getfield 578	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
     //   371: ifnonnull +35 -> 406
     //   374: aload_0
-    //   375: getfield 579	com/tencent/image/QQLiveImage:mRotation	I
+    //   375: getfield 564	com/tencent/image/QQLiveImage:mRotation	I
     //   378: bipush 90
     //   380: if_icmpeq +13 -> 393
     //   383: aload_0
-    //   384: getfield 579	com/tencent/image/QQLiveImage:mRotation	I
+    //   384: getfield 564	com/tencent/image/QQLiveImage:mRotation	I
     //   387: sipush 270
     //   390: if_icmpne +326 -> 716
     //   393: aload_0
     //   394: iload 4
     //   396: iload_3
-    //   397: getstatic 571	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   400: invokestatic 577	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   403: putfield 593	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
+    //   397: getstatic 556	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   400: invokestatic 562	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   403: putfield 578	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
     //   406: aload_0
-    //   407: getfield 595	com/tencent/image/QQLiveImage:mCanvas	Landroid/graphics/Canvas;
+    //   407: getfield 580	com/tencent/image/QQLiveImage:mCanvas	Landroid/graphics/Canvas;
     //   410: ifnonnull +18 -> 428
     //   413: aload_0
-    //   414: new 597	android/graphics/Canvas
+    //   414: new 582	android/graphics/Canvas
     //   417: dup
     //   418: aload_0
-    //   419: getfield 593	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
-    //   422: invokespecial 600	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   425: putfield 595	com/tencent/image/QQLiveImage:mCanvas	Landroid/graphics/Canvas;
+    //   419: getfield 578	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
+    //   422: invokespecial 585	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   425: putfield 580	com/tencent/image/QQLiveImage:mCanvas	Landroid/graphics/Canvas;
     //   428: aload_0
-    //   429: getfield 602	com/tencent/image/QQLiveImage:mMatrix	Landroid/graphics/Matrix;
+    //   429: getfield 587	com/tencent/image/QQLiveImage:mMatrix	Landroid/graphics/Matrix;
     //   432: ifnonnull +89 -> 521
     //   435: aload_0
-    //   436: new 604	android/graphics/Matrix
+    //   436: new 589	android/graphics/Matrix
     //   439: dup
-    //   440: invokespecial 605	android/graphics/Matrix:<init>	()V
-    //   443: putfield 602	com/tencent/image/QQLiveImage:mMatrix	Landroid/graphics/Matrix;
+    //   440: invokespecial 590	android/graphics/Matrix:<init>	()V
+    //   443: putfield 587	com/tencent/image/QQLiveImage:mMatrix	Landroid/graphics/Matrix;
     //   446: aload_0
-    //   447: getfield 565	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
-    //   450: invokevirtual 608	android/graphics/Bitmap:getWidth	()I
+    //   447: getfield 550	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
+    //   450: invokevirtual 593	android/graphics/Bitmap:getWidth	()I
     //   453: istore 7
     //   455: aload_0
-    //   456: getfield 565	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
-    //   459: invokevirtual 611	android/graphics/Bitmap:getHeight	()I
+    //   456: getfield 550	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
+    //   459: invokevirtual 596	android/graphics/Bitmap:getHeight	()I
     //   462: istore 8
     //   464: aload_0
-    //   465: getfield 602	com/tencent/image/QQLiveImage:mMatrix	Landroid/graphics/Matrix;
+    //   465: getfield 587	com/tencent/image/QQLiveImage:mMatrix	Landroid/graphics/Matrix;
     //   468: aload_0
-    //   469: getfield 579	com/tencent/image/QQLiveImage:mRotation	I
+    //   469: getfield 564	com/tencent/image/QQLiveImage:mRotation	I
     //   472: i2f
     //   473: iload 7
     //   475: iconst_2
@@ -627,122 +620,122 @@ public class QQLiveImage
     //   480: iconst_2
     //   481: idiv
     //   482: i2f
-    //   483: invokevirtual 615	android/graphics/Matrix:postRotate	(FFF)Z
+    //   483: invokevirtual 600	android/graphics/Matrix:postRotate	(FFF)Z
     //   486: pop
     //   487: aload_0
-    //   488: getfield 602	com/tencent/image/QQLiveImage:mMatrix	Landroid/graphics/Matrix;
+    //   488: getfield 587	com/tencent/image/QQLiveImage:mMatrix	Landroid/graphics/Matrix;
     //   491: aload_0
-    //   492: getfield 593	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
-    //   495: invokevirtual 608	android/graphics/Bitmap:getWidth	()I
+    //   492: getfield 578	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
+    //   495: invokevirtual 593	android/graphics/Bitmap:getWidth	()I
     //   498: iload 7
     //   500: isub
     //   501: i2f
     //   502: fconst_2
     //   503: fdiv
     //   504: aload_0
-    //   505: getfield 593	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
-    //   508: invokevirtual 611	android/graphics/Bitmap:getHeight	()I
+    //   505: getfield 578	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
+    //   508: invokevirtual 596	android/graphics/Bitmap:getHeight	()I
     //   511: iload 8
     //   513: isub
     //   514: i2f
     //   515: fconst_2
     //   516: fdiv
-    //   517: invokevirtual 619	android/graphics/Matrix:postTranslate	(FF)Z
+    //   517: invokevirtual 604	android/graphics/Matrix:postTranslate	(FF)Z
     //   520: pop
     //   521: aload_0
-    //   522: getfield 565	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
+    //   522: getfield 550	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
     //   525: ifnull +19 -> 544
     //   528: aload_0
-    //   529: getfield 595	com/tencent/image/QQLiveImage:mCanvas	Landroid/graphics/Canvas;
+    //   529: getfield 580	com/tencent/image/QQLiveImage:mCanvas	Landroid/graphics/Canvas;
     //   532: aload_0
-    //   533: getfield 565	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
+    //   533: getfield 550	com/tencent/image/QQLiveImage:mCurFrameBitmap	Landroid/graphics/Bitmap;
     //   536: aload_0
-    //   537: getfield 602	com/tencent/image/QQLiveImage:mMatrix	Landroid/graphics/Matrix;
+    //   537: getfield 587	com/tencent/image/QQLiveImage:mMatrix	Landroid/graphics/Matrix;
     //   540: aconst_null
-    //   541: invokevirtual 623	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;Landroid/graphics/Paint;)V
+    //   541: invokevirtual 608	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;Landroid/graphics/Paint;)V
     //   544: aload_1
     //   545: monitorexit
     //   546: aload_0
     //   547: aload_0
-    //   548: getfield 214	com/tencent/image/QQLiveImage:mFrameIndex	I
+    //   548: getfield 199	com/tencent/image/QQLiveImage:mFrameIndex	I
     //   551: iconst_1
     //   552: iadd
-    //   553: putfield 214	com/tencent/image/QQLiveImage:mFrameIndex	I
-    //   556: invokestatic 557	java/lang/System:currentTimeMillis	()J
+    //   553: putfield 199	com/tencent/image/QQLiveImage:mFrameIndex	I
+    //   556: invokestatic 542	java/lang/System:currentTimeMillis	()J
     //   559: lload 9
     //   561: lsub
     //   562: lstore 9
-    //   564: invokestatic 290	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   564: invokestatic 277	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   567: ifeq +116 -> 683
     //   570: lload 9
-    //   572: ldc2_w 624
+    //   572: ldc2_w 609
     //   575: lcmp
     //   576: ifle +107 -> 683
-    //   579: new 119	java/lang/StringBuilder
+    //   579: new 116	java/lang/StringBuilder
     //   582: dup
-    //   583: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   586: getstatic 139	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
-    //   589: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   583: invokespecial 119	java/lang/StringBuilder:<init>	()V
+    //   586: getstatic 136	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
+    //   589: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   592: aload_0
-    //   593: getfield 171	com/tencent/image/QQLiveImage:ID	I
-    //   596: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   599: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   593: getfield 156	com/tencent/image/QQLiveImage:ID	I
+    //   596: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   599: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   602: iconst_2
-    //   603: new 119	java/lang/StringBuilder
+    //   603: new 116	java/lang/StringBuilder
     //   606: dup
-    //   607: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   610: ldc_w 627
-    //   613: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   607: invokespecial 119	java/lang/StringBuilder:<init>	()V
+    //   610: ldc_w 612
+    //   613: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   616: iload_3
-    //   617: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   620: ldc_w 583
-    //   623: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   617: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   620: ldc_w 568
+    //   623: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   626: iload 4
-    //   628: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   631: ldc_w 629
-    //   634: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   628: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   631: ldc_w 614
+    //   634: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   637: lload 9
-    //   639: invokevirtual 632	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   642: ldc_w 634
-    //   645: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   639: invokevirtual 617	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   642: ldc_w 619
+    //   645: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   648: aload_0
-    //   649: getfield 214	com/tencent/image/QQLiveImage:mFrameIndex	I
-    //   652: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   655: ldc_w 636
-    //   658: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   649: getfield 199	com/tencent/image/QQLiveImage:mFrameIndex	I
+    //   652: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   655: ldc_w 621
+    //   658: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   661: iload 5
-    //   663: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   666: ldc_w 638
-    //   669: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   663: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   666: ldc_w 623
+    //   669: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   672: iload 6
-    //   674: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   677: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   680: invokestatic 281	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   674: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   677: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   680: invokestatic 268	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   683: aload_0
-    //   684: getfield 182	com/tencent/image/QQLiveImage:mHandler	Landroid/os/Handler;
+    //   684: getfield 167	com/tencent/image/QQLiveImage:mHandler	Landroid/os/Handler;
     //   687: iconst_1
-    //   688: invokevirtual 641	android/os/Handler:removeMessages	(I)V
+    //   688: invokevirtual 626	android/os/Handler:removeMessages	(I)V
     //   691: aload_0
-    //   692: getfield 182	com/tencent/image/QQLiveImage:mHandler	Landroid/os/Handler;
+    //   692: getfield 167	com/tencent/image/QQLiveImage:mHandler	Landroid/os/Handler;
     //   695: iconst_1
-    //   696: invokevirtual 645	android/os/Handler:sendEmptyMessage	(I)Z
+    //   696: invokevirtual 630	android/os/Handler:sendEmptyMessage	(I)Z
     //   699: pop
     //   700: aload_0
     //   701: iconst_2
     //   702: aconst_null
-    //   703: invokespecial 302	com/tencent/image/QQLiveImage:changeStateAndNotify	(ILjava/lang/Object;)V
+    //   703: invokespecial 289	com/tencent/image/QQLiveImage:changeStateAndNotify	(ILjava/lang/Object;)V
     //   706: return
     //   707: aload_0
     //   708: aload_0
-    //   709: getfield 184	com/tencent/image/QQLiveImage:mVideoPlayer	Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;
-    //   712: invokevirtual 649	com/tencent/image/QQLiveImage:onCompletion	(Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;)V
+    //   709: getfield 169	com/tencent/image/QQLiveImage:mVideoPlayer	Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;
+    //   712: invokevirtual 634	com/tencent/image/QQLiveImage:onCompletion	(Lcom/tencent/qqlive/mediaplayer/api/TVK_IMediaPlayer;)V
     //   715: return
     //   716: aload_0
     //   717: iload_3
     //   718: iload 4
-    //   720: getstatic 571	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   723: invokestatic 577	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   726: putfield 593	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
+    //   720: getstatic 556	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   723: invokestatic 562	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   726: putfield 578	com/tencent/image/QQLiveImage:mRotatedBitmap	Landroid/graphics/Bitmap;
     //   729: goto -323 -> 406
     //   732: astore_2
     //   733: aload_1
@@ -750,52 +743,52 @@ public class QQLiveImage
     //   735: aload_2
     //   736: athrow
     //   737: astore_1
-    //   738: invokestatic 290	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   738: invokestatic 277	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   741: ifeq -185 -> 556
-    //   744: new 119	java/lang/StringBuilder
+    //   744: new 116	java/lang/StringBuilder
     //   747: dup
-    //   748: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   751: getstatic 139	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
-    //   754: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   748: invokespecial 119	java/lang/StringBuilder:<init>	()V
+    //   751: getstatic 136	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
+    //   754: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   757: aload_0
-    //   758: getfield 171	com/tencent/image/QQLiveImage:ID	I
-    //   761: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   764: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   758: getfield 156	com/tencent/image/QQLiveImage:ID	I
+    //   761: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   764: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   767: iconst_2
-    //   768: ldc_w 651
+    //   768: ldc_w 636
     //   771: aload_1
-    //   772: invokestatic 470	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   772: invokestatic 455	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   775: goto -219 -> 556
     //   778: astore_1
-    //   779: invokestatic 290	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   779: invokestatic 277	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   782: ifeq -226 -> 556
-    //   785: new 119	java/lang/StringBuilder
+    //   785: new 116	java/lang/StringBuilder
     //   788: dup
-    //   789: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   792: getstatic 139	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
-    //   795: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   789: invokespecial 119	java/lang/StringBuilder:<init>	()V
+    //   792: getstatic 136	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
+    //   795: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   798: aload_0
-    //   799: getfield 171	com/tencent/image/QQLiveImage:ID	I
-    //   802: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   805: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   799: getfield 156	com/tencent/image/QQLiveImage:ID	I
+    //   802: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   805: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   808: iconst_2
-    //   809: ldc_w 653
-    //   812: invokestatic 532	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   809: ldc_w 638
+    //   812: invokestatic 517	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   815: goto -259 -> 556
-    //   818: invokestatic 290	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   818: invokestatic 277	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   821: ifeq -760 -> 61
-    //   824: new 119	java/lang/StringBuilder
+    //   824: new 116	java/lang/StringBuilder
     //   827: dup
-    //   828: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   831: getstatic 139	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
-    //   834: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   828: invokespecial 119	java/lang/StringBuilder:<init>	()V
+    //   831: getstatic 136	com/tencent/image/QQLiveImage:TAG	Ljava/lang/String;
+    //   834: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   837: aload_0
-    //   838: getfield 171	com/tencent/image/QQLiveImage:ID	I
-    //   841: invokevirtual 270	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   844: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   838: getfield 156	com/tencent/image/QQLiveImage:ID	I
+    //   841: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   844: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   847: iconst_2
-    //   848: ldc_w 655
-    //   851: invokestatic 532	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   848: ldc_w 640
+    //   851: invokestatic 517	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   854: return
     // Local variable table:
     //   start	length	slot	name	signature

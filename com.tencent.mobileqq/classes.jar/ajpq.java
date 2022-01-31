@@ -1,20 +1,52 @@
+import android.app.Activity;
 import android.content.Context;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Rect;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.view.WindowManager;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard.InputMethodChangeListener;
 
 public class ajpq
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ajpq(TroopGagMgr paramTroopGagMgr, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
+  private ajpq(InputMethodGuard paramInputMethodGuard) {}
   
-  public void run()
+  private int a()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
-      return;
+    if (ScreenUtil.b > 0) {
+      return ScreenUtil.b;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130838752, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    return ((WindowManager)this.a.getContext().getSystemService("window")).getDefaultDisplay().getHeight();
+  }
+  
+  public void onGlobalLayout()
+  {
+    boolean bool = InputMethodGuard.a(this.a);
+    Rect localRect = new Rect();
+    ((Activity)this.a.getContext()).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    int i = a();
+    int j = i - localRect.bottom;
+    if (Math.abs(j) > i / 5)
+    {
+      InputMethodGuard.a(this.a, true);
+      InputMethodGuard.a(this.a, j);
+    }
+    for (;;)
+    {
+      if ((InputMethodGuard.a(this.a) != null) && ((bool != InputMethodGuard.a(this.a)) || (InputMethodGuard.b(this.a)))) {
+        InputMethodGuard.a(this.a).a(InputMethodGuard.a(this.a), InputMethodGuard.a(this.a));
+      }
+      if (InputMethodGuard.b(this.a)) {
+        InputMethodGuard.b(this.a, false);
+      }
+      return;
+      InputMethodGuard.a(this.a, false);
+      InputMethodGuard.a(this.a, 0);
+    }
   }
 }
 

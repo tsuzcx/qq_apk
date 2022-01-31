@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment.MyTroopObserver;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class wok
-  implements Runnable
+  extends SosoInterface.OnLocationListener
 {
-  public wok(TroopFragment.MyTroopObserver paramMyTroopObserver) {}
-  
-  public void run()
+  public wok(SearchContactsFragment paramSearchContactsFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.a.a.h();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
+    {
+      SearchContactsFragment.a(this.a, paramSosoLbsInfo.a.a);
+      SearchContactsFragment.b(this.a, paramSosoLbsInfo.a.b);
+    }
   }
 }
 

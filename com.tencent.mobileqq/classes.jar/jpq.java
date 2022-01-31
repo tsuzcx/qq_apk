@@ -1,52 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.av.ui.redbag.RedBagUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class jpq
-  implements View.OnClickListener
+class jpq
+  implements Runnable
 {
-  public jpq(AVActivity paramAVActivity) {}
+  jpq(jpn paramjpn, Bundle paramBundle) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().u) {}
-    for (;;)
-    {
-      return;
-      int i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().d;
-      if ((i == 1) || (i == 2))
-      {
-        if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().g()) {
-          this.a.a(this.a.c, this.a.d, this.a.j);
-        }
-      }
-      else {
-        while (AVActivity.a(this.a) != null)
-        {
-          AVActivity.a(this.a).a();
-          return;
-          if ((i == 3) || (i == 4))
-          {
-            paramView = this.a.jdField_a_of_type_ComTencentAvVideoController.a().q;
-            String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.a.d, paramView, null);
-            if (QLog.isColorLevel()) {
-              QLog.d(this.a.b, 2, "enterChatWin-->uin: " + paramView + ", uintype: " + this.a.d + ", name: " + str);
-            }
-            this.a.a(paramView, this.a.d, str);
-          }
-        }
-      }
-    }
+    RedBagUtil.a((QQAppInterface)this.jdField_a_of_type_Jpn.a.a(), this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpq
  * JD-Core Version:    0.7.0.1
  */

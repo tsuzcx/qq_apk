@@ -1,60 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class mdn
-  extends FriendListObserver
+class mdn
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public mdn(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  mdn(mdm parammdm) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    label142:
-    label143:
-    label149:
-    for (;;)
-    {
-      return;
-      if (paramBoolean)
+    QLog.w("ReadInJoyWebDataManager", 2, Long.toString(Thread.currentThread().getId()));
+    if (paramJSONObject != null) {}
+    while (!QLog.isColorLevel()) {
+      try
       {
-        Object localObject = VideoFeedsPlayActivity.a(this.a);
-        if (localObject != null) {}
-        for (localObject = ContactUtils.b((QQAppInterface)localObject, paramString, false);; localObject = null)
-        {
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break label149;
-          }
-          Iterator localIterator = VideoFeedsPlayActivity.a(this.a).iterator();
-          if (localIterator.hasNext())
-          {
-            VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
-            if ((!paramString.equals(localVideoInfo.j)) || (((String)localObject).equals(localVideoInfo.k))) {
-              break label142;
-            }
-            localVideoInfo.k = ((String)localObject);
-            i = 1;
-          }
-          for (;;)
-          {
-            break;
-            if ((i == 0) || (VideoFeedsPlayActivity.a(this.a) == null)) {
-              break label143;
-            }
-            VideoFeedsPlayActivity.a(this.a).a(paramString);
-            return;
-          }
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.w("ReadInJoyWebDataManager", 2, "sendLog result:" + paramJSONObject.toString());
         }
+        return;
+      }
+      catch (Exception paramJSONObject)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.w("ReadInJoyWebDataManager", 2, "sendLog result Exception :" + paramJSONObject);
+        return;
       }
     }
+    QLog.w("ReadInJoyWebDataManager", 2, "sendLog result null");
   }
 }
 

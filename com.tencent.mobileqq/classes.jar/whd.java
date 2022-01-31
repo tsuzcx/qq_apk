@@ -1,30 +1,26 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView.StickerBubbleAnimationCallback;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class whd
-  implements TabBarView.OnTabChangeListener
+  implements StickerBubbleAnimationView.StickerBubbleAnimationCallback
 {
-  public whd(AddContactsActivity paramAddContactsActivity) {}
+  public whd(StickerBubbleAnimationViewHolder paramStickerBubbleAnimationViewHolder) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void a()
   {
-    switch (paramInt2)
-    {
-    default: 
-      return;
-    case 0: 
-      AddContactsActivity.a(this.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004BE9", "0X8004BE9", 0, 0, "", "", "", "");
-      return;
-    case 1: 
-      AddContactsActivity.b(this.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004BEA", "0X8004BEA", 0, 0, "", "", "", "");
-      ReportController.b(this.a.app, "P_CliOper", "Grp_find", "", "grptab", "exp", 0, 0, "", "", "", "");
-      return;
+    StickerBubbleAnimationViewHolder.a(this.a, StickerBubbleAnimationViewHolder.a(this.a));
+    ThreadManager.getUIHandler().post(new whe(this));
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleAnimationViewHolder", 2, "onSurfaceDestroyed");
     }
-    AddContactsActivity.c(this.a);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004BEB", "0X8004BEB", 0, 0, "", "", "", "");
+    StickerBubbleAnimationViewHolder.b(this.a, StickerBubbleAnimationViewHolder.a(this.a));
   }
 }
 

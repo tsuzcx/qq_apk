@@ -1,101 +1,50 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.view.View;
+import android.view.ViewParent;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerDoubleClickListener;
+import com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder;
+import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class adxf
-  implements PopupMenuDialog.OnClickActionListener
+  implements EmojiStickerManager.StickerDoubleClickListener
 {
-  public adxf(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject, Activity paramActivity) {}
+  public adxf(UniteGrayTipItemBuilder paramUniteGrayTipItemBuilder) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void a(View paramView)
   {
-    int i = paramMenuItem.a - 1;
-    Object localObject1 = null;
-    paramMenuItem = null;
+    String str = IndividuationUrlHelper.a("aioEmojiStickerDetail");
+    ViewParent localViewParent = paramView.getParent();
+    if (localViewParent != null)
+    {
+      localViewParent = localViewParent.getParent();
+      if ((localViewParent instanceof ChatXListView)) {
+        EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
+      }
+    }
+    paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
+    paramView.setFlags(268435456);
+    paramView.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    int i;
+    if (EmojiStickerManager.a().a == 0) {
+      i = 1;
+    }
     for (;;)
     {
-      JSONArray localJSONArray;
-      int j;
-      try
-      {
-        String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
-        localJSONArray = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("list");
-        if (localJSONArray == null) {
-          break;
-        }
-        if (i >= localJSONArray.length()) {
-          return;
-        }
-        if (TextUtils.isEmpty(str)) {
-          break label169;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(str, new String[] { String.valueOf(i + 1) });
-        return;
-      }
-      catch (Exception localException1)
-      {
-        i = 0;
-        localObject1 = paramMenuItem;
-        j = i;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("UiApiPlugin", 2, "showPopupMenu Exception: " + localException1.getMessage());
-          j = i;
-          localObject1 = paramMenuItem;
-        }
-        switch (j)
-        {
-        default: 
-          return;
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().loadUrl((String)localObject1);
+      VasWebviewUtil.reportCommercialDrainage(this.a.a.c(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
       return;
-      label169:
-      Object localObject2 = localJSONArray.optJSONObject(i);
-      i = ((JSONObject)localObject2).optInt("target");
-      paramMenuItem = (PopupMenuDialog.MenuItem)localObject1;
-      try
-      {
-        localObject1 = ((JSONObject)localObject2).optString("jumpUrl");
-        paramMenuItem = (PopupMenuDialog.MenuItem)localObject1;
-        boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
-        j = i;
-        if (!bool) {
-          continue;
-        }
-        return;
+      if (EmojiStickerManager.a().a == 1) {
+        i = 2;
+      } else if (EmojiStickerManager.a().a == 3000) {
+        i = 3;
+      } else {
+        i = -1;
       }
-      catch (Exception localException2) {}
-      paramMenuItem = new Bundle();
-      if ((this.jdField_a_of_type_AndroidAppActivity instanceof BasePluginActivity))
-      {
-        localObject2 = new Intent(((BasePluginActivity)this.jdField_a_of_type_AndroidAppActivity).getOutActivity(), QQBrowserActivity.class);
-        ((Intent)localObject2).putExtras(paramMenuItem);
-        ((Intent)localObject2).putExtra("url", (String)localObject1);
-        ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
-        ((Intent)localObject2).setFlags(0);
-        this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject2);
-        return;
-      }
-      localObject2 = new Intent(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getClass());
-      ((Intent)localObject2).putExtras(paramMenuItem);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
-      ((Intent)localObject2).setFlags(0);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject2);
-      return;
     }
   }
 }

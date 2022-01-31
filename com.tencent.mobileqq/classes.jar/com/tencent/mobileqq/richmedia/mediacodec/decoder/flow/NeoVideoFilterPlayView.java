@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import ahod;
-import ahol;
-import ahom;
-import ahon;
+import ahsv;
+import ahtd;
+import ahte;
+import ahtf;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
@@ -29,8 +29,8 @@ import javax.microedition.khronos.opengles.GL10;
 public class NeoVideoFilterPlayView
   extends VideoFilterPlayView
 {
-  private ahod jdField_a_of_type_Ahod;
-  private ahon jdField_a_of_type_Ahon;
+  private ahsv jdField_a_of_type_Ahsv;
+  private ahtf jdField_a_of_type_Ahtf;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private EditorEGLContextFactory jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowEditorEGLContextFactory;
   private NeoVideoFilterPlayView.PlayProgressListener jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView$PlayProgressListener = new NeoVideoFilterPlayView.JustLogPlayProgressListener();
@@ -38,8 +38,8 @@ public class NeoVideoFilterPlayView
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public boolean a;
   private boolean d;
-  private int h = -1;
-  private int i;
+  private int j = -1;
+  private int k;
   
   public NeoVideoFilterPlayView(Context paramContext)
   {
@@ -51,8 +51,8 @@ public class NeoVideoFilterPlayView
     super(paramContext, paramAttributeSet);
     paramContext = new HandlerThread("NeoVideoFilterPlayView");
     paramContext.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramContext.getLooper(), new ahol(this));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeWrapper$FlowListener = new ahom(this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramContext.getLooper(), new ahtd(this));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeWrapper$FlowListener = new ahte(this);
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowEditorEGLContextFactory = new EditorEGLContextFactory();
@@ -67,55 +67,55 @@ public class NeoVideoFilterPlayView
   {
     Object localObject = (VideoFlowDecodeWrapper)this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderIVideoDecoder;
     paramGL10 = ((VideoFlowDecodeWrapper)localObject).b();
-    ahod localahod = ((VideoFlowDecodeWrapper)localObject).c();
-    int m;
-    int j;
+    ahsv localahsv = ((VideoFlowDecodeWrapper)localObject).c();
     int n;
-    int k;
+    int i;
+    int i1;
+    int m;
     if (paramGL10 != null)
     {
       if ((Math.abs(paramGL10.a()) > this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.b * 1000L) || (Math.abs(paramGL10.a()) < this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Long)) {
         SLog.d("FlowEdit_NeoVideoFilterPlayView", "find invalid frame : %s us, current config start - end : [%d - %d] ms", new Object[] { paramGL10, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Long), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.b) });
       }
-      m = 0;
-      if ((this.jdField_a_of_type_Ahon == null) || (paramGL10.b() != ahon.a(this.jdField_a_of_type_Ahon)))
-      {
-        m = 1;
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView$PlayProgressListener.a();
-      }
-      j = a();
       n = 0;
-      if ((this.h == -1) || (this.h != j))
+      if ((this.jdField_a_of_type_Ahtf == null) || (paramGL10.b() != ahtf.a(this.jdField_a_of_type_Ahtf)))
       {
         n = 1;
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView$PlayProgressListener.a(this.h, j);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView$PlayProgressListener.a();
       }
-      this.h = j;
+      i = a();
+      i1 = 0;
+      if ((this.j == -1) || (this.j != i))
+      {
+        i1 = 1;
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView$PlayProgressListener.a(this.j, i);
+      }
+      this.j = i;
       if (a() == 1)
       {
-        j = 2;
-        k = 1;
+        i = 2;
+        m = 1;
       }
     }
     for (;;)
     {
       label201:
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) || (this.jdField_a_of_type_Ahon == null) || (m != 0) || (n != 0))
+      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) || (this.jdField_a_of_type_Ahtf == null) || (n != 0) || (i1 != 0))
       {
-        this.jdField_a_of_type_Ahon = new ahon(SystemClock.uptimeMillis(), paramGL10.a(), paramGL10.b(), null);
-        SLog.c("FlowEdit_NeoVideoFilterPlayView", "start render : " + this.jdField_a_of_type_Ahon);
+        this.jdField_a_of_type_Ahtf = new ahtf(SystemClock.uptimeMillis(), paramGL10.a(), paramGL10.b(), null);
+        SLog.c("FlowEdit_NeoVideoFilterPlayView", "start render : " + this.jdField_a_of_type_Ahtf);
       }
       long l2 = SystemClock.uptimeMillis();
-      long l3 = ahon.a(this.jdField_a_of_type_Ahon) + (paramGL10.a() - ahon.b(this.jdField_a_of_type_Ahon)) * k / (j * 1000);
+      long l3 = ahtf.a(this.jdField_a_of_type_Ahtf) + (paramGL10.a() - ahtf.b(this.jdField_a_of_type_Ahtf)) * m / (i * 1000);
       long l1;
-      if ((localahod != null) && (localahod.b() == paramGL10.b()))
+      if ((localahsv != null) && (localahsv.b() == paramGL10.b()))
       {
-        l1 = ahon.a(this.jdField_a_of_type_Ahon) + (localahod.a() - ahon.b(this.jdField_a_of_type_Ahon)) * k / (j * 1000);
+        l1 = ahtf.a(this.jdField_a_of_type_Ahtf) + (localahsv.a() - ahtf.b(this.jdField_a_of_type_Ahtf)) * m / (i * 1000);
         label367:
         if (l2 >= l3 - 5L) {
           break label548;
         }
-        paramGL10 = this.jdField_a_of_type_Ahod;
+        paramGL10 = this.jdField_a_of_type_Ahsv;
         l1 = l3 - l2;
         label391:
         if (paramGL10 != null)
@@ -123,10 +123,10 @@ public class NeoVideoFilterPlayView
           Trace.beginSection("AVEditor:DrawFrameOnScreen");
           localObject = FilterUtil.a(this.b, this.c, this.b, this.c);
           a(paramGL10.a(), paramGL10.a, (float[])localObject);
-          if ((this.jdField_a_of_type_Ahod != null) && (this.jdField_a_of_type_Ahod != paramGL10)) {
-            this.jdField_a_of_type_Ahod.b();
+          if ((this.jdField_a_of_type_Ahsv != null) && (this.jdField_a_of_type_Ahsv != paramGL10)) {
+            this.jdField_a_of_type_Ahsv.b();
           }
-          this.jdField_a_of_type_Ahod = paramGL10;
+          this.jdField_a_of_type_Ahsv = paramGL10;
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView$PlayProgressListener.a(paramGL10.a());
           Trace.endSection();
         }
@@ -146,8 +146,8 @@ public class NeoVideoFilterPlayView
         if (a() != 2) {
           break label687;
         }
-        j = 1;
-        k = 2;
+        i = 1;
+        m = 2;
         break label201;
         l1 = 30L + l3;
         break label367;
@@ -157,24 +157,24 @@ public class NeoVideoFilterPlayView
           l2 = l1 - l2;
           l1 = l2;
           paramGL10 = (GL10)localObject;
-          if (this.i <= 0) {
+          if (this.k <= 0) {
             break label391;
           }
-          SLog.a("FlowEdit_NeoVideoFilterPlayView", "drawFrameFlow : drop %d frames, decoder is slow", Integer.valueOf(this.i));
-          this.i = 0;
+          SLog.a("FlowEdit_NeoVideoFilterPlayView", "drawFrameFlow : drop %d frames, decoder is slow", Integer.valueOf(this.k));
+          this.k = 0;
           l1 = l2;
           paramGL10 = (GL10)localObject;
           break label391;
         }
         paramGL10 = ((VideoFlowDecodeWrapper)localObject).a();
-        if (localahod != null)
+        if (localahsv != null)
         {
           if (paramGL10 != null) {
             paramGL10.b();
           }
           for (;;)
           {
-            this.i += 1;
+            this.k += 1;
             break;
             SLog.d("FlowEdit_NeoVideoFilterPlayView", "drawFrameFlow : peekNextDecodedFrame != null, but pollNextDecodedFrame == null");
           }
@@ -187,8 +187,8 @@ public class NeoVideoFilterPlayView
         break label391;
       }
       label687:
-      j = 1;
-      k = 1;
+      i = 1;
+      m = 1;
     }
   }
   
@@ -226,7 +226,7 @@ public class NeoVideoFilterPlayView
         localFlowDecodeConfig.b = true;
         localFlowDecodeConfig.a = localEGLContext;
         localFlowDecodeConfig.c = 1;
-        this.jdField_a_of_type_Ahon = null;
+        this.jdField_a_of_type_Ahtf = null;
         ((VideoFlowDecodeWrapper)this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderIVideoDecoder).a(localFlowDecodeConfig, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeWrapper$FlowListener);
         if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioDecodeConfig.jdField_a_of_type_JavaLangString)) {
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioDecodeConfig);
@@ -286,26 +286,26 @@ public class NeoVideoFilterPlayView
   
   public void setSpeedType(int paramInt)
   {
-    int k = 0;
-    int m = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Int;
+    int m = 0;
+    int n = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Int;
     super.setSpeedType(paramInt);
-    if ((m == 3) && (paramInt != 3)) {}
-    for (int j = 1;; j = 0)
+    if ((n == 3) && (paramInt != 3)) {}
+    for (int i = 1;; i = 0)
     {
-      if (j == 0)
+      if (i == 0)
       {
-        j = k;
-        if (m != 3)
+        i = m;
+        if (n != 3)
         {
-          j = k;
+          i = m;
           if (paramInt != 3) {}
         }
       }
       else
       {
-        j = 1;
+        i = 1;
       }
-      if (j != 0) {
+      if (i != 0) {
         f();
       }
       return;

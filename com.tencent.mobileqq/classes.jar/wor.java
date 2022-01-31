@@ -1,64 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.OnRefreshListener;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.SwipeRefreshTrigger;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.SwipeTrigger;
+import android.app.Activity;
+import com.tencent.biz.addContactTroopView.AddContactTroopHandler.IGetPopClassAndSearchCB;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 
 public class wor
-  extends wos
+  implements AddContactTroopHandler.IGetPopClassAndSearchCB
 {
-  public wor(CommonRefreshLayout paramCommonRefreshLayout)
-  {
-    super(paramCommonRefreshLayout);
-  }
+  public wor(TroopView paramTroopView) {}
   
   public void a()
   {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && (wot.a(CommonRefreshLayout.a(this.a))))
-    {
-      CommonRefreshLayout.a(this.a).setVisibility(0);
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).a();
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
     }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && (wot.c(CommonRefreshLayout.a(this.a))))
-    {
-      if (CommonRefreshLayout.a(this.a).getVisibility() != 0) {
-        CommonRefreshLayout.a(this.a).setVisibility(0);
-      }
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).a(paramInt, paramBoolean1, paramBoolean2);
-    }
+    TroopView.b(this.a, true);
+    TroopView.c(this.a, true);
+    TroopView.a(this.a).sendEmptyMessage(4);
   }
   
   public void b()
   {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && (wot.e(CommonRefreshLayout.a(this.a)))) {
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).b();
+    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+      return;
     }
-  }
-  
-  public void c()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && (wot.b(CommonRefreshLayout.a(this.a))))
-    {
-      if ((CommonRefreshLayout.a(this.a) instanceof SwipeRefreshTrigger)) {
-        ((SwipeRefreshTrigger)CommonRefreshLayout.a(this.a)).c();
-      }
-      if (CommonRefreshLayout.a(this.a) != null) {
-        CommonRefreshLayout.a(this.a).g();
-      }
-    }
-  }
-  
-  public void d()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof SwipeTrigger)) && (wot.a(CommonRefreshLayout.a(this.a))))
-    {
-      ((SwipeTrigger)CommonRefreshLayout.a(this.a)).d();
-      CommonRefreshLayout.a(this.a).setVisibility(8);
-    }
+    TroopView.b(this.a, true);
+    TroopView.c(this.a, false);
+    TroopView.a(this.a).sendEmptyMessage(5);
   }
 }
 

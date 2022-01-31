@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
-class xvc
-  implements Runnable
+public class xvc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  xvc(xuw paramxuw) {}
+  public xvc(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    RMVideoStateMgr.a().b(0, "麦克风参数初始化失败", false);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
   }
 }
 

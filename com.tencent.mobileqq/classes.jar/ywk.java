@@ -1,51 +1,36 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import org.json.JSONObject;
 
-class ywk
-  implements WXShareHelper.WXShareListener
+public class ywk
+  implements Runnable
 {
-  ywk(ywj paramywj) {}
+  public ywk(CmGameServerQIPCModule paramCmGameServerQIPCModule, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if (paramBaseResp == null) {}
-    do
+    try
     {
-      do
+      JSONObject localJSONObject = ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      if (localJSONObject != null)
       {
-        return;
-      } while ((ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare) == null) || (!ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare).equals(paramBaseResp.transaction)));
-      QLog.i("ApolloGameShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
-    } while (paramBaseResp.errCode != 0);
-    paramBaseResp = this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare.a();
-    int j;
-    int i;
-    if (paramBaseResp == null)
-    {
-      j = -1;
-      if (1 != this.a.jdField_a_of_type_Int) {
-        break label159;
+        Object localObject = new Bundle();
+        ((Bundle)localObject).putString("resData", localJSONObject.toString());
+        localObject = EIPCResult.createSuccessResult((Bundle)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqApolloProcessCmGameServerQIPCModule.callbackResult(this.jdField_a_of_type_Int, (EIPCResult)localObject);
       }
-      i = 3;
-    }
-    for (;;)
-    {
-      VipUtils.a(ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare), "cmshow", "Apollo", "share_url_succeed", j, i, new String[] { Integer.toString(ApolloGameShare.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare)) });
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameServerQIPCModule", 2, new Object[] { "apollo_cmGame_", " ACTION_GET_ACTION_DATA callbackResult retJson:" + localJSONObject });
+      }
       return;
-      j = ApolloUtil.b(paramBaseResp.a.jdField_a_of_type_Int);
-      break;
-      label159:
-      if (2 == this.a.jdField_a_of_type_Int) {
-        i = 4;
-      } else {
-        i = -1;
-      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("cmgame_process.CmGameServerQIPCModule", 1, localException, new Object[0]);
     }
   }
 }

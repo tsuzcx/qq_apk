@@ -1,47 +1,55 @@
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.widget.ArrayAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class mcv
-  extends ContentObserver
+  extends ArrayAdapter
 {
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  final Set a = new LinkedHashSet();
   
-  public mcv(VideoFeedsListView paramVideoFeedsListView, Handler paramHandler)
+  public mcv(@NonNull Context paramContext, int paramInt)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = VideoFeedsListView.a(paramVideoFeedsListView).getContentResolver();
+    super(paramContext, paramInt);
   }
   
-  public void a()
+  public void a(@Nullable TagInfo paramTagInfo)
   {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    int i = Settings.System.getInt(VideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView).getContentResolver(), "accelerometer_rotation", -1);
-    if (i == 1) {
-      VideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView, true);
-    }
-    for (;;)
+    if (!this.a.contains(paramTagInfo))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.VideoFeedsListView", 2, "RotationObserver.onChange() : rotateState=" + i);
-      }
-      return;
-      VideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView, false);
+      this.a.add(paramTagInfo);
+      super.add(paramTagInfo);
     }
+  }
+  
+  public void a(TagInfo... paramVarArgs)
+  {
+    addAll(Arrays.asList(paramVarArgs));
+  }
+  
+  public void addAll(@NonNull Collection paramCollection)
+  {
+    paramCollection = new LinkedHashSet(paramCollection);
+    paramCollection.removeAll(this.a);
+    this.a.addAll(paramCollection);
+    super.addAll(paramCollection);
+  }
+  
+  public void b(@Nullable TagInfo paramTagInfo)
+  {
+    this.a.remove(paramTagInfo);
+    super.remove(paramTagInfo);
+  }
+  
+  public void clear()
+  {
+    super.clear();
+    this.a.clear();
   }
 }
 

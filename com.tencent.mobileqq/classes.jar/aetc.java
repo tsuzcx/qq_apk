@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-
-public class aetc
-  implements View.OnClickListener
+class aetc
+  implements Runnable
 {
-  public aetc(SelectLocationFragment paramSelectLocationFragment) {}
+  aetc(aetb paramaetb) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    SelectLocationFragment.a(this.a);
+    aetb.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetc
  * JD-Core Version:    0.7.0.1
  */

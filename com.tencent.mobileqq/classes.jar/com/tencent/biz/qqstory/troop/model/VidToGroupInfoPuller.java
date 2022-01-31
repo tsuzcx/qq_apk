@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import oob;
-import ooc;
+import osn;
+import oso;
 
 public class VidToGroupInfoPuller
   implements IEventReceiver
@@ -83,7 +83,7 @@ public class VidToGroupInfoPuller
       return;
     }
     this.jdField_a_of_type_Int = 1;
-    Bosses.get().postJob(new oob(this));
+    Bosses.get().postJob(new osn(this));
   }
   
   public boolean a()
@@ -117,7 +117,7 @@ public class VidToGroupInfoPuller
         localArrayList.clear();
       }
       paramList = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-      paramList.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      paramList.errorInfo = paramErrorMessage;
       boolean bool2;
       if (!paramBoolean1)
       {
@@ -169,7 +169,7 @@ public class VidToGroupInfoPuller
   {
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller = a(this.jdField_a_of_type_JavaUtilList);
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a("Q.qqstory.net:VidToGroupInfoPuller");
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a(new ooc(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a(new oso(this));
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.b();
   }
   

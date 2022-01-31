@@ -46,6 +46,7 @@ public class TroopInfo
 {
   public static final int ALLOW_UPLOAD_TROOP_ALBUM = 1;
   public static final int ALLOW_UPLOAD_TROOP_FILE = 2;
+  public static final int CONFESS_TALK_OPEN_FLAG = 8192;
   public static final int DEL_PIC_REQ = 2;
   public static final int GROUP_CLASS_EXT_TYPE_CLASSMATES = 10011;
   public static final int GROUP_CLASS_EXT_TYPE_GAME = 25;
@@ -62,6 +63,7 @@ public class TroopInfo
   public static final int PAY_PRIVILEGE_GIFT_SETTLEMENT_ABILITY = 256;
   public static final int PAY_PRIVILEGE_GROUP_FEE = 64;
   public static final int PAY_PRIVILEGE_PAY_TO_JOIN_TROOP = 128;
+  public static final int QIDIAN_PRIVATE_TROOP_FLAG = 32;
   public static final String QIDIAN_TROOP_MEMBER_DEF_NICK = "群成员";
   public static final int SET_DEFAULT_PIC = 1;
   public static final String TABLE_NAME = "TroopInfoV2";
@@ -683,7 +685,7 @@ public class TroopInfo
   public String getAdminShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.adminNameShow)) {
-      return paramContext.getString(2131433157);
+      return paramContext.getString(2131433171);
     }
     return this.adminNameShow;
   }
@@ -692,12 +694,12 @@ public class TroopInfo
   {
     String str = "";
     if ((this.troopPrivilegeFlag & 0x6100000) == 0L) {
-      str = paramResources.getString(2131430169);
+      str = paramResources.getString(2131430172);
     }
     while (((this.troopPrivilegeFlag & 0x2000000) != 33554432L) && ((this.troopPrivilegeFlag & 0x4000000) != 67108864L) && ((this.troopPrivilegeFlag & 0x100000) != 1048576L)) {
       return str;
     }
-    return paramResources.getString(2131430168);
+    return paramResources.getString(2131430171);
   }
   
   public String getInviteModeWording(Resources paramResources)
@@ -710,7 +712,7 @@ public class TroopInfo
       if (((i != 1) && (i != 6)) || (isOnlyTroopMemberInviteOption())) {
         break label69;
       }
-      str = paramResources.getString(2131430163);
+      str = paramResources.getString(2131430166);
     }
     label69:
     do
@@ -719,13 +721,13 @@ public class TroopInfo
       i = this.cGroupOption;
       break;
       if ((this.troopPrivilegeFlag & 0x6100000) == 0L) {
-        return paramResources.getString(2131430164);
+        return paramResources.getString(2131430167);
       }
       if ((this.troopPrivilegeFlag & 0x100000) == 1048576L) {
-        return paramResources.getString(2131430163);
+        return paramResources.getString(2131430166);
       }
     } while (((this.troopPrivilegeFlag & 0x4000000) != 67108864L) && ((this.troopPrivilegeFlag & 0x2000000) != 33554432L));
-    return paramResources.getString(2131430166);
+    return paramResources.getString(2131430169);
   }
   
   public int getMemNumForAutoInviteIntoGroup(QQAppInterface paramQQAppInterface)
@@ -782,7 +784,7 @@ public class TroopInfo
   public String getOwnerShow(Context paramContext)
   {
     if (TextUtils.isEmpty(this.ownerNameShow)) {
-      return paramContext.getString(2131433156);
+      return paramContext.getString(2131433170);
     }
     return this.ownerNameShow;
   }

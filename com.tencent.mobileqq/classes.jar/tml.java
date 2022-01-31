@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-class tml
-  implements Runnable
+public class tml
+  implements View.OnTouchListener
 {
-  tml(tmk paramtmk, int paramInt, String paramString) {}
+  public tml(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Tmk.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_Int == 1)
+    if (paramMotionEvent.getAction() == 1)
     {
-      this.jdField_a_of_type_Tmk.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(QQSettingMe.a(this.jdField_a_of_type_Tmk.a), this.jdField_a_of_type_Tmk.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Tmk.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
+      this.a.a();
+      PublicAccountReportUtils.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
     }
-    QQSettingMe.a(this.jdField_a_of_type_Tmk.a, this.jdField_a_of_type_JavaLangString);
+    return true;
   }
 }
 

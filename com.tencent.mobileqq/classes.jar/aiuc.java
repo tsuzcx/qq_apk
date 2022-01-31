@@ -1,16 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 
 public class aiuc
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public aiuc(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public aiuc(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    this.a.onBackPressed();
+    this.a.t();
   }
 }
 

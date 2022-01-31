@@ -12,7 +12,7 @@ import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
-import anob;
+import anwo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
@@ -100,7 +100,7 @@ public class FoodAloneTextItem
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    paramString = a(paramInt, new anob(this));
+    paramString = a(paramInt, new anwo(this));
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     int n = paramString.length();
     int m;

@@ -1,34 +1,25 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
 
-public class admq
-  extends SosoInterface.OnLocationListener
+class admq
+  implements Runnable
 {
-  public admq(CommonTabFragment paramCommonTabFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  admq(admp paramadmp) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommonTabFragment", 2, "startLocation finish" + System.currentTimeMillis());
-    }
-    if (paramInt != 0)
+    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.b(MusicFilePresenter.a(this.a.a))))
     {
-      QQToast.a(this.a.a, 1, "获取地理位置失败。", 1).a();
-      this.a.d();
-      return;
+      int i = this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.a();
+      this.a.a.b(i);
+      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(i);
     }
-    this.a.a(paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     admq
  * JD-Core Version:    0.7.0.1
  */

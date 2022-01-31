@@ -1,15 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
 
-public class ajvb
-  implements FrameSprite.OnFrameEndListener
+public final class ajvb
+  implements Runnable
 {
-  public ajvb(TroopGiftAnimationController paramTroopGiftAnimationController) {}
+  public ajvb(HWTroopUtils.OnHomeworkTroopIdentityCheckListener paramOnHomeworkTroopIdentityCheckListener, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a.post(new ajvc(this));
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHWTroopUtils$OnHomeworkTroopIdentityCheckListener.a(this.jdField_a_of_type_Int);
   }
 }
 

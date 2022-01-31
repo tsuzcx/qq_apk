@@ -1,53 +1,25 @@
-import com.tencent.mobileqq.leba.QZoneEntryController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class aeas
-  implements Runnable
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public aeas(QZoneEntryController paramQZoneEntryController) {}
+  public aeas(VideoBaseItem paramVideoBaseItem) {}
   
-  public void run()
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if (QZoneEntryController.a(this.a))
-    {
-      QZoneEntryController.a(this.a, 1);
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneEntryController", 2, "显示被动");
-      }
-    }
+    this.a.jdField_a_of_type_Boolean = false;
+    VideoBaseItem.a(this.a, true);
+    if (this.a.c == 3) {}
     do
     {
-      do
-      {
-        do
-        {
-          return;
-          if (!QZoneEntryController.b(this.a)) {
-            break;
-          }
-          QZoneEntryController.a(this.a, 2);
-        } while (!QLog.isColorLevel());
-        QLog.i("UndealCount.QZoneEntryController", 2, "显示主动");
-        return;
-        if (!QZoneEntryController.c(this.a)) {
-          break;
-        }
-        QZoneEntryController.a(this.a, 3);
-      } while (!QLog.isColorLevel());
-      QLog.i("UndealCount.QZoneEntryController", 2, "显示访客");
       return;
-      if (!QZoneEntryController.d(this.a)) {
-        break;
-      }
-      QZoneEntryController.a(this.a, 4);
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneEntryController", 2, "显示运营内容");
-    return;
-    QZoneEntryController.a(this.a, 0);
-    if (QLog.isColorLevel()) {
-      QLog.i("UndealCount.QZoneEntryController", 2, "显示默认布局");
-    }
-    QZoneEntryController.b(this.a);
+      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      this.a.c = 2;
+    } while (VideoBaseItem.a(this.a) == null);
+    VideoBaseItem.a(this.a).j();
   }
 }
 

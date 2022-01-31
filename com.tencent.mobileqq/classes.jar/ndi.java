@@ -1,24 +1,18 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.TroopVidToVideoInfoPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class ndi
-  implements BatchHandlerListPuller.IPullResultCallback
+  extends SimpleJob
 {
-  public ndi(TroopVidToVideoInfoPuller paramTroopVidToVideoInfoPuller, List paramList) {}
+  public ndi(QQStoryManager paramQQStoryManager, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Vid list to video info list finish !");
-    if (paramBoolean) {}
-    for (String str = "Every task success";; str = "Some task error")
-    {
-      SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", str);
-      this.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller.a(this.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b(this.jdField_a_of_type_Boolean);
+    return null;
   }
 }
 

@@ -47,7 +47,7 @@ public class ARNativeBridge
       return true;
     }
     long l = System.currentTimeMillis();
-    boolean bool3 = ArNativeSoLoader.a("ArMapEngine7651", needCheckMd5);
+    boolean bool3 = ArNativeSoLoader.a("ArMapEngine7652", needCheckMd5);
     if (!bool3) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -70,7 +70,7 @@ public class ARNativeBridge
     {
       try
       {
-        int i = ArNativeSoLoader.a("ArMapEngine7651");
+        int i = ArNativeSoLoader.a("ArMapEngine7652");
         if (i != 0) {
           continue;
         }

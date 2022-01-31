@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.loginwelcome;
 
 import SecurityAccountServer.RecommendedContactInfo;
-import aeci;
-import aecj;
-import aeck;
-import aecl;
+import aeks;
+import aekt;
+import aeku;
+import aekv;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -55,10 +55,10 @@ public class LoginWelcomeManager
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new aecl(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new aekv(this);
   PhoneContactManagerImp jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp = null;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new aecj(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new aekt(this);
   private LoginWelcomeHandler jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeHandler;
   public NearbyCardObserver a;
   public String a;
@@ -70,7 +70,7 @@ public class LoginWelcomeManager
   
   public LoginWelcomeManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new aeci(this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new aeks(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeHandler = ((LoginWelcomeHandler)paramQQAppInterface.a(84));
   }
@@ -88,7 +88,7 @@ public class LoginWelcomeManager
     //   1: astore 6
     //   3: new 98	java/io/File
     //   6: dup
-    //   7: getstatic 103	com/tencent/mobileqq/app/AppConstants:cu	Ljava/lang/String;
+    //   7: getstatic 103	com/tencent/mobileqq/app/AppConstants:cv	Ljava/lang/String;
     //   10: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
     //   13: astore_2
     //   14: aload_2
@@ -547,7 +547,7 @@ public class LoginWelcomeManager
   public void c(Bundle paramBundle)
   {
     String str = paramBundle.getString("uin");
-    PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), str, new aeck(this, paramBundle), true, 15);
+    PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), str, new aeku(this, paramBundle), true, 15);
   }
   
   public void d()

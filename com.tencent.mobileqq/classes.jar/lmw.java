@@ -1,38 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeProteus;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class lmw
-  extends BroadcastReceiver
+class lmw
+  implements ViewBase.OnClickListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  lmw(lmv paramlmv, ViewBase paramViewBase) {}
+  
+  public void a(ViewBase paramViewBase)
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-    {
-      QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
-      ReadinjoySPEventReport.b(false);
-    }
-    do
-    {
-      return;
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
-      {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
-        ReadinjoySPEventReport.b(true);
-        return;
-      }
-    } while (!paramIntent.getAction().equals("com.tencent.plugin.state.change"));
-    int i = paramIntent.getIntExtra("key_plugin_state", -1);
-    QLog.d("ReadinjoySPEventReport", 2, "ACTION_PLUGIN_STATE_CHANGE " + i);
-    switch (i)
-    {
-    case 0: 
-    default: 
-      return;
-    }
-    ReadinjoySPEventReport.a(System.currentTimeMillis());
+    paramViewBase = new FeedItemCellTypeProteus(this.jdField_a_of_type_Lmv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a(), this.jdField_a_of_type_Lmv.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, this.jdField_a_of_type_Lmv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter);
+    paramViewBase.a(this.jdField_a_of_type_Lmv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel);
+    paramViewBase.a(this.jdField_a_of_type_Lmv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    paramViewBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.a());
   }
 }
 

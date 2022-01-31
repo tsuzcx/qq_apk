@@ -1,16 +1,22 @@
-import android.os.Bundle;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.qphone.base.util.QLog;
 
-public class amyn
-  implements Runnable
+class amyn
+  implements AsyncBack
 {
-  public amyn(RemoteRequestSender paramRemoteRequestSender, Bundle paramBundle) {}
+  amyn(amym paramamym) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    RemoteRequestSender.a(this.jdField_a_of_type_CooperationQzoneRemoteLogicRemoteRequestSender).a("cmd.gdtreport.webview", this.jdField_a_of_type_AndroidOsBundle, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("VipPreloadReaderProcess", 2, "Load offline package finish, code = " + paramInt);
+    }
+    if ((paramInt != 0) && (QLog.isColorLevel())) {
+      QLog.e("VipProxyRreLoadReaderProcess", 2, "offline update failed.");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

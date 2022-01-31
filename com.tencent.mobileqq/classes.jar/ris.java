@@ -1,93 +1,27 @@
-import android.text.TextUtils;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.ContactCard;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qidian.QidianManager;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.Doraemon.APIParam;
+import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
+import java.util.Iterator;
+import java.util.List;
 
 public class ris
-  extends CardObserver
+  implements Runnable
 {
-  public ris(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public ris(DoraemonAPIManager paramDoraemonAPIManager, List paramList) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    Object localObject;
-    if ((paramBoolean) && (paramObject != null))
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      if (!(paramObject instanceof Card)) {
-        break label163;
-      }
-      localObject = (Card)paramObject;
-      if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyActivity.a(this.a))))
-      {
-        paramObject = ProfileCardUtil.a(this.a, ((Card)localObject).shGender, ((Card)localObject).age, ((Card)localObject).strCountry, ((Card)localObject).strProvince, ((Card)localObject).strCity);
-        if (this.a.a != null) {
-          paramObject = ProfileCardUtil.a(this.a, ((Card)localObject).shGender, 0, "", "", "");
-        }
-        if (!TextUtils.isEmpty(paramObject))
-        {
-          this.a.c.setVisibility(0);
-          this.a.c.setText(paramObject);
-        }
-      }
+      Object[] arrayOfObject = (Object[])localIterator.next();
+      DoraemonAPIManager.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, (String)arrayOfObject[0], (APIParam)arrayOfObject[1], (APICallback)arrayOfObject[2]);
     }
-    for (;;)
-    {
-      if (QidianManager.b(this.a.app, AddFriendVerifyActivity.a(this.a))) {
-        this.a.c.setVisibility(8);
-      }
-      return;
-      label163:
-      if ((paramObject instanceof ContactCard))
-      {
-        localObject = (ContactCard)paramObject;
-        if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyActivity.a(this.a))))
-        {
-          paramObject = ProfileCardUtil.a(this.a, ((ContactCard)localObject).bSex, ((ContactCard)localObject).bAge, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity);
-          if (this.a.a != null) {
-            paramObject = ProfileCardUtil.a(this.a, ((ContactCard)localObject).bSex, 0, "", "", "");
-          }
-          if (!TextUtils.isEmpty(paramObject))
-          {
-            this.a.c.setVisibility(0);
-            this.a.c.setText(paramObject);
-          }
-        }
-      }
-    }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if ((ProfileActivity.e(AddFriendVerifyActivity.b(this.a))) && (paramBoolean) && ((paramObject instanceof Card)))
-    {
-      paramObject = (Card)paramObject;
-      if ((!Utils.a(AddFriendVerifyActivity.a(this.a), paramObject.uin)) || (TextUtils.isEmpty(paramObject.strCampusName))) {
-        break label119;
-      }
-      AddFriendVerifyActivity.a(this.a, paramObject.strCampusName);
-      this.a.b.setText(AddFriendVerifyActivity.b(this.a));
-      if (!TextUtils.isEmpty(AddFriendVerifyActivity.b(this.a))) {
-        this.a.b.setSelection(AddFriendVerifyActivity.b(this.a).length());
-      }
-    }
-    label119:
-    while (!Utils.a(this.a.app.getCurrentAccountUin(), paramObject.uin)) {
-      return;
-    }
-    this.a.d(paramObject.strCampusName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ris
  * JD-Core Version:    0.7.0.1
  */

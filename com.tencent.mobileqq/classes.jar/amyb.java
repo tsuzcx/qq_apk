@@ -1,34 +1,26 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.networkedmodule.QzoneModuleConfigManager;
-import cooperation.qzone.patch.QZonePatchRequest;
-import cooperation.qzone.plugin.PluginIntent.OnResultListner;
-import cooperation.qzone.plugin.QZonePluginUpdater;
-import cooperation.qzone.plugin.QZonePluginUpdater.OnUpdateListner;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import cooperation.qqpim.QQPimDefineList;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
 
 public class amyb
-  implements PluginIntent.OnResultListner
+  implements Runnable
 {
-  public amyb(QZonePluginUpdater paramQZonePluginUpdater) {}
+  private amyb(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
   
-  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void run()
   {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    try
     {
-      paramIntent = QZonePatchRequest.a(paramFromServiceMsg.getWupBuffer());
-      QZonePluginUpdater.a(this.a, paramIntent);
-      QZonePluginUpdater.a(this.a, paramIntent, null);
-      QzoneModuleConfigManager.a().a(paramIntent);
-      if (this.a.a != null) {
-        this.a.a.a(true);
-      }
-    }
-    do
-    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt(QQPimDefineList.r, 3);
+      QIPCServerHelper.getInstance().callClient(QQPimDefineList.b, QQPimDefineList.c, QQPimDefineList.e, localBundle, new amyc(this));
       return;
-      QZonePluginUpdater.a(this.a, null, null);
-    } while (this.a.a == null);
-    this.a.a.a(false);
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 

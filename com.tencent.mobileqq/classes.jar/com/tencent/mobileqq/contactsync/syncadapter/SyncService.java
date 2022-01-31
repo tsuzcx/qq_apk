@@ -45,23 +45,20 @@ public class SyncService
   
   public void onCreate()
   {
-    int i = 1;
     super.onCreate();
     ??? = MobileQQ.sMobileQQ;
-    Intent localIntent = new Intent();
-    if ((a(this, false)) && (b(this, false))) {}
-    for (;;)
+    if ((a(this, false)) && (b(this, false)))
     {
-      localIntent.putExtra("k_start_mode", i);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("k_start_mode", 1);
       ((MobileQQ)???).onActivityCreate(this, localIntent);
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (jdField_a_of_type_ComTencentMobileqqContactsyncSyncadapterSyncAdapter == null) {
-          jdField_a_of_type_ComTencentMobileqqContactsyncSyncadapterSyncAdapter = new SyncAdapter(getApplicationContext(), true);
-        }
-        return;
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_ComTencentMobileqqContactsyncSyncadapterSyncAdapter == null) {
+        jdField_a_of_type_ComTencentMobileqqContactsyncSyncadapterSyncAdapter = new SyncAdapter(getApplicationContext(), true);
       }
-      i = 2;
+      return;
     }
   }
 }

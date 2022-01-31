@@ -1,22 +1,14 @@
-import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import android.view.View;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
-public class adbf
-  extends BroadcastReceiver
+class adbf
+  implements BubblePopupWindow.OnDismissListener
 {
-  public adbf(FileBrowserActivity paramFileBrowserActivity) {}
+  adbf(adbc paramadbc, View paramView) {}
   
-  @TargetApi(5)
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

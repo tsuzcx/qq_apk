@@ -1,24 +1,30 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.VideoLayerUIBase;
 
 public class kek
-  implements MenuItem.OnMenuItemClickListener
+  implements Runnable
 {
-  public kek(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
+  public kek(VideoLayerUIBase paramVideoLayerUIBase) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public void run()
   {
-    AudioHelper.a("让入口可用");
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.a.a = 1;
-    return true;
+    String str;
+    if (this.a.a != null)
+    {
+      str = this.a.a.a().c;
+      if ((this.a.a.a().i != 1011) || (this.a.a.a().G == 3)) {}
+    }
+    else
+    {
+      return;
+    }
+    this.a.a.c(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kek
  * JD-Core Version:    0.7.0.1
  */

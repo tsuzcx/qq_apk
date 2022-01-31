@@ -1,45 +1,24 @@
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageRoamConstants;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.statistics.battery.BackgroundCpuMonitor;
 
 public class zhn
   implements Runnable
 {
-  public zhn(MessageRoamManager paramMessageRoamManager) {}
+  public zhn(BaseActivity2 paramBaseActivity2) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg start...");
-    }
-    DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46)).a(1);
-    if ((localDownloaderInterface != null) && (localDownloaderInterface.a(MessageRoamConstants.a) == null))
+    zhp localzhp = new zhp(null);
+    SensorManager localSensorManager = (SensorManager)this.a.getSystemService("sensor");
+    Sensor localSensor = localSensorManager.getDefaultSensor(1);
+    if (BackgroundCpuMonitor.a().a()) {}
+    for (int i = 2;; i = 0)
     {
-      Object localObject = new File(MessageRoamConstants.b);
-      DownloadTask localDownloadTask = new DownloadTask(MessageRoamConstants.a, (File)localObject);
-      if (((File)localObject).exists())
-      {
-        localObject = Long.valueOf(((File)localObject).lastModified());
-        localDownloadTask.i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("cloudSearchCfgLastModify", 0L);
-        if (((Long)localObject).longValue() != localDownloadTask.i)
-        {
-          localDownloadTask.k = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg file modified local time: " + localObject + ", sp time: " + localDownloadTask.i);
-          }
-        }
-      }
-      localDownloadTask.h = true;
-      localDownloadTask.n = false;
-      localObject = new Bundle();
-      localDownloaderInterface.a(localDownloadTask, this.a.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, (Bundle)localObject);
+      localSensorManager.registerListener(localzhp, localSensor, i);
+      BaseActivity2.a(localzhp);
+      return;
     }
   }
 }

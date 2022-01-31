@@ -1,36 +1,55 @@
-import android.text.TextUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.arcard.ARCardHeadIconManager;
+import java.util.ArrayList;
+import java.util.Hashtable;
 
-class aasp
+public class aasp
+  extends BroadcastReceiver
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  public aasp(ARCardHeadIconManager paramARCardHeadIconManager) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.e = null;
-    this.f = null;
-    this.g = null;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int >= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d));
-  }
-  
-  public boolean b()
-  {
-    return (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g));
+    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
+    {
+      ArrayList localArrayList = paramIntent.getExtras().getStringArrayList("uinList");
+      paramIntent = paramIntent.getExtras().getStringArrayList("headPathList");
+      if ((localArrayList != null) && (paramIntent != null))
+      {
+        int i = 0;
+        if (i < localArrayList.size())
+        {
+          String str1 = (String)paramIntent.get(i);
+          if (str1 != null)
+          {
+            String str2 = (String)localArrayList.get(i);
+            paramContext = (aasq)ARCardHeadIconManager.a(this.a).get(str2);
+            if (paramContext != null) {
+              break label147;
+            }
+            paramContext = new aasq(this.a);
+            paramContext.jdField_a_of_type_JavaLangString = str1;
+            ARCardHeadIconManager.a(this.a).put(str2, paramContext);
+          }
+          for (;;)
+          {
+            paramContext.jdField_a_of_type_Boolean = false;
+            i += 1;
+            break;
+            label147:
+            paramContext.jdField_a_of_type_JavaLangString = str1;
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasp
  * JD-Core Version:    0.7.0.1
  */

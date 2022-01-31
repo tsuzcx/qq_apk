@@ -1,22 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.statistics.MTAReportController;
-import cooperation.qzone.util.PanoramaUtil;
-import java.util.Properties;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
 public class anas
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anas(PanoramaUtil paramPanoramaUtil, String paramString1, String paramString2, int paramInt) {}
+  public anas(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      Properties localProperties = new Properties();
-      localProperties.put(this.b, this.jdField_a_of_type_JavaLangString);
-      MTAReportController.a(BaseApplication.getContext()).reportTimeKVEvent("qzone_panorama", localProperties, this.jdField_a_of_type_Int);
-    }
+    QzoneVerticalVideoDownloadActivity.a(this.a, true);
+    QzoneVerticalVideoDownloadActivity.b(this.a);
+    this.a.finish();
   }
 }
 

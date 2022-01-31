@@ -1,69 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class ykm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ykm(ApolloManager paramApolloManager) {}
+  public ykm(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = null;
-    try
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-        break label152;
-      }
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloManager", 2, localOutOfMemoryError.getMessage());
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloManager", 2, localException.getMessage());
-          }
-        }
-      } while (localException != null);
-    }
-    localObject = new File(ApolloConstant.a);
-    ((File)localObject).mkdirs();
-    localObject = new File((File)localObject, "apollo_res_version_info.json");
-    if (((File)localObject).exists())
-    {
-      localObject = FileUtils.b((File)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        this.a.jdField_a_of_type_OrgJsonJSONObject = new JSONObject((String)localObject);
-      }
-    }
-    if (this.a.jdField_a_of_type_OrgJsonJSONObject == null)
-    {
-      this.a.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-      return;
-    }
-    label152:
+    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
+    this.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ykm
  * JD-Core Version:    0.7.0.1
  */

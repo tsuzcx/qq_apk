@@ -55,7 +55,7 @@ public class GPUAlphaBlendFilter
     GLES20.glUniformMatrix4fv(m, 1, false, arrayOfFloat, 0);
     GLES20.glActiveTexture(33984);
     GLES20.glBindTexture(this.c, paramInt);
-    e();
+    f();
     GLES20.glEnable(3042);
     GLES20.glBlendFunc(1, 771);
     GLES20.glDrawArrays(5, 0, 4);

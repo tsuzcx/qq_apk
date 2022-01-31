@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.text.TextUtils;
+import com.tencent.ark.ArkDispatchTask;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.common.config.AppSetting;
@@ -13,24 +14,28 @@ import com.tencent.mobileqq.apollo.process.CmGameUtil;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.mobileqq.earlydownload.handler.ApolloJscHandler;
 import com.tencent.mobileqq.earlydownload.handler.ApolloLibHandler;
 import com.tencent.mobileqq.startup.step.UpdateArkSo;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.SOPreLoader;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ywt;
+import zdm;
+import zdn;
 
 public class ApolloSoLoader
 {
   public static long a;
-  private static Runnable jdField_a_of_type_JavaLangRunnable = new ywt();
+  private static Runnable jdField_a_of_type_JavaLangRunnable = new zdm();
   public static StringBuilder a;
   public static CopyOnWriteArrayList a;
   private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
@@ -44,7 +49,7 @@ public class ApolloSoLoader
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libgnustl_shared.so", "libicu_common.so", "libjsc.so", "libTcHevcDec.so" };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libjsc.so", "libTcHevcDec.so" };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "libv8.so" };
     c = new String[] { "libtinyskia.so", "libsava.so" };
     d = new String[] { "brick.js", "ticker.js", "scene.js", "game.js" };
@@ -169,10 +174,10 @@ public class ApolloSoLoader
           jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
           continue;
         }
-        ThreadManager.remove(jdField_a_of_type_JavaLangRunnable);
+        ThreadManager.removeJobFromThreadPool(jdField_a_of_type_JavaLangRunnable, 192);
       }
       finally {}
-      ThreadManager.post(jdField_a_of_type_JavaLangRunnable, 5, null, true);
+      ThreadManager.excute(jdField_a_of_type_JavaLangRunnable, 192, null, true);
     }
   }
   
@@ -189,18 +194,19 @@ public class ApolloSoLoader
         {
           String str3 = paramArrayOfString[i];
           if (b(str3)) {
-            break label100;
+            break label126;
           }
           String str2 = SOPreLoader.a();
           String str1 = str2;
           if (a(str3)) {
             str1 = str2 + "/test";
           }
+          QLog.i("ApolloSoLoader", 1, "load lib:" + str3);
           System.load(new File(str1, str3).getAbsolutePath());
         }
       }
       return;
-      label100:
+      label126:
       i += 1;
     }
   }
@@ -245,49 +251,49 @@ public class ApolloSoLoader
     //   2: monitorenter
     //   3: aload_0
     //   4: ifnull +14 -> 18
-    //   7: getstatic 63	com/tencent/mobileqq/apollo/utils/ApolloSoLoader:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   10: invokevirtual 228	java/util/concurrent/CopyOnWriteArrayList:size	()I
+    //   7: getstatic 59	com/tencent/mobileqq/apollo/utils/ApolloSoLoader:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   10: invokevirtual 226	java/util/concurrent/CopyOnWriteArrayList:size	()I
     //   13: istore_1
     //   14: iload_1
     //   15: ifne +7 -> 22
     //   18: ldc 2
     //   20: monitorexit
     //   21: return
-    //   22: getstatic 63	com/tencent/mobileqq/apollo/utils/ApolloSoLoader:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
-    //   25: invokevirtual 122	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
+    //   22: getstatic 59	com/tencent/mobileqq/apollo/utils/ApolloSoLoader:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   25: invokevirtual 118	java/util/concurrent/CopyOnWriteArrayList:iterator	()Ljava/util/Iterator;
     //   28: astore_2
     //   29: aload_2
-    //   30: invokeinterface 128 1 0
+    //   30: invokeinterface 124 1 0
     //   35: ifeq -17 -> 18
     //   38: aload_2
-    //   39: invokeinterface 132 1 0
-    //   44: checkcast 134	java/lang/ref/WeakReference
+    //   39: invokeinterface 128 1 0
+    //   44: checkcast 130	java/lang/ref/WeakReference
     //   47: astore_3
     //   48: aload_3
     //   49: ifnull -20 -> 29
     //   52: aload_0
     //   53: aload_3
-    //   54: invokevirtual 137	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   54: invokevirtual 133	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
     //   57: if_acmpne -28 -> 29
-    //   60: getstatic 63	com/tencent/mobileqq/apollo/utils/ApolloSoLoader:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
+    //   60: getstatic 59	com/tencent/mobileqq/apollo/utils/ApolloSoLoader:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   63: aload_3
-    //   64: invokevirtual 230	java/util/concurrent/CopyOnWriteArrayList:remove	(Ljava/lang/Object;)Z
+    //   64: invokevirtual 229	java/util/concurrent/CopyOnWriteArrayList:remove	(Ljava/lang/Object;)Z
     //   67: pop
-    //   68: invokestatic 233	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   68: invokestatic 232	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   71: ifeq -53 -> 18
-    //   74: ldc 88
+    //   74: ldc 84
     //   76: iconst_2
     //   77: iconst_2
     //   78: anewarray 4	java/lang/Object
     //   81: dup
     //   82: iconst_0
-    //   83: ldc 235
+    //   83: ldc 234
     //   85: aastore
     //   86: dup
     //   87: iconst_1
     //   88: aload_0
     //   89: aastore
-    //   90: invokestatic 238	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   90: invokestatic 237	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   93: goto -75 -> 18
     //   96: astore_0
     //   97: ldc 2
@@ -397,7 +403,7 @@ public class ApolloSoLoader
   {
     try
     {
-      File localFile = new File(AppConstants.aJ + "pddata/prd/early", "android.qq.apollo.js.760g3");
+      File localFile = new File(AppConstants.aK + "pddata/prd/early", "android.qq.apollo.js.765g2");
       if (!localFile.exists())
       {
         e(1);
@@ -450,17 +456,17 @@ public class ApolloSoLoader
     try
     {
       SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
-      if (localSharedPreferences.getBoolean("is_handle_reinstall_7.6.3", false)) {
+      if (localSharedPreferences.getBoolean("is_handle_reinstall_android.qq.apollo.js.765g2", false)) {
         return false;
       }
       String str = localSharedPreferences.getString("res_name", "nothing");
-      if (!str.equals("android.qq.apollo.js.760g3"))
+      if (!str.equals("android.qq.apollo.js.765g2"))
       {
-        QLog.i("ApolloSoLoader", 1, "oldRes:" + str + ",newRes:" + "android.qq.apollo.js.760g3");
+        QLog.i("ApolloSoLoader", 1, "oldRes:" + str + ",newRes:" + "android.qq.apollo.js.765g2");
         if (i()) {}
         for (;;)
         {
-          localSharedPreferences.edit().putBoolean("is_handle_reinstall_7.6.3", true).commit();
+          localSharedPreferences.edit().putBoolean("is_handle_reinstall_android.qq.apollo.js.765g2", true).commit();
           return true;
           a();
         }
@@ -476,7 +482,7 @@ public class ApolloSoLoader
   
   private static boolean i()
   {
-    String str1 = SOPreLoader.a() + "libsava.so" + "." + "android.qq.apollo.js.760g3";
+    String str1 = SOPreLoader.a() + "libsava.so" + "." + "android.qq.apollo.js.765g2";
     if (new File(str1).exists())
     {
       QLog.i("ApolloSoLoader", 1, "Bingo, the latest sava has been predownloaded.");
@@ -497,24 +503,27 @@ public class ApolloSoLoader
   {
     try
     {
-      if (Build.CPU_ABI.contains("x86")) {
-        return false;
-      }
-      if (UpdateArkSo.a(BaseApplicationImpl.getContext(), "png-armeabi-v7a"))
+      if (!Build.CPU_ABI.toLowerCase(Locale.US).contains("x86"))
       {
-        if (a(jdField_b_of_type_ArrayOfJavaLangString)) {
-          a(jdField_b_of_type_ArrayOfJavaLangString);
+        if (SoLoadUtil.a()) {
+          return false;
         }
-        for (;;)
+        if (UpdateArkSo.a(BaseApplicationImpl.getContext(), "png-armeabi-v7a"))
         {
-          a(c);
-          SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
-          if (localSharedPreferences == null) {
-            break;
+          if (a(jdField_b_of_type_ArrayOfJavaLangString)) {
+            a(jdField_b_of_type_ArrayOfJavaLangString);
           }
-          localSharedPreferences.edit().putString("res_name", "android.qq.apollo.js.760g3").commit();
-          break;
-          a(jdField_a_of_type_ArrayOfJavaLangString);
+          for (;;)
+          {
+            a(c);
+            SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
+            if (localSharedPreferences != null) {
+              localSharedPreferences.edit().putString("res_name", "android.qq.apollo.js.765g2").commit();
+            }
+            ArkAppCenter.a().postToMainThread(new zdn());
+            return true;
+            a(jdField_a_of_type_ArrayOfJavaLangString);
+          }
         }
       }
       return false;
@@ -524,7 +533,6 @@ public class ApolloSoLoader
       QLog.e("ApolloSoLoader", 1, "[loadAllSo], Something unexpected happened." + localThrowable);
       f();
     }
-    return true;
   }
   
   private static boolean k()
@@ -598,17 +606,17 @@ public class ApolloSoLoader
     long l1 = System.currentTimeMillis();
     try
     {
+      if (TextUtils.isEmpty(ApolloManager.d)) {
+        ApolloManager.d = FileUtils.b(new File(a("brick.js"), "brick.js"));
+      }
+      if (TextUtils.isEmpty(ApolloManager.e)) {
+        ApolloManager.e = FileUtils.b(new File(a("ticker.js"), "ticker.js"));
+      }
+      if (TextUtils.isEmpty(ApolloManager.f)) {
+        ApolloManager.f = FileUtils.b(new File(a("scene.js"), "scene.js"));
+      }
       if (TextUtils.isEmpty(ApolloManager.g)) {
-        ApolloManager.g = FileUtils.b(new File(a("brick.js"), "brick.js"));
-      }
-      if (TextUtils.isEmpty(ApolloManager.h)) {
-        ApolloManager.h = FileUtils.b(new File(a("ticker.js"), "ticker.js"));
-      }
-      if (TextUtils.isEmpty(ApolloManager.i)) {
-        ApolloManager.i = FileUtils.b(new File(a("scene.js"), "scene.js"));
-      }
-      if (TextUtils.isEmpty(ApolloManager.j)) {
-        ApolloManager.j = FileUtils.b(new File(a("game.js"), "game.js"));
+        ApolloManager.g = FileUtils.b(new File(a("game.js"), "game.js"));
       }
       return true;
     }

@@ -1,21 +1,9 @@
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.EditMusicExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.support.annotation.NonNull;
 
-public class anwk
-  implements Runnable
+public abstract interface anwk
 {
-  public anwk(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
-  
-  public void run()
-  {
-    EditMusicExport localEditMusicExport = (EditMusicExport)this.a.a(EditMusicExport.class);
-    if (localEditMusicExport != null) {
-      localEditMusicExport.as_();
-    }
-    this.a.a.a(Message.obtain(null, 14));
-  }
+  @NonNull
+  public abstract String a(int paramInt, @NonNull String paramString);
 }
 
 

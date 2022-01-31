@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
-import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import com.tencent.qphone.base.util.QLog;
 
 public class xwm
-  implements Comparator
+  implements Runnable
 {
-  public xwm(SubtitleDataManager paramSubtitleDataManager) {}
+  public xwm(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public int a(SubtitleItem paramSubtitleItem1, SubtitleItem paramSubtitleItem2)
+  public void run()
   {
-    if ((paramSubtitleItem1 != null) && (paramSubtitleItem2 != null)) {
-      return paramSubtitleItem1.b - paramSubtitleItem2.b;
+    if (VideoFilterTools.a(this.a.getApplicationContext()))
+    {
+      VideoFilterTools localVideoFilterTools = VideoFilterTools.a();
+      localVideoFilterTools.a(this.a.getApplicationContext(), new xwn(this, localVideoFilterTools));
+      return;
     }
-    return -1;
+    QLog.w("PTV.NewFlowCameraActivity", 2, "your device don't support video filter!");
   }
 }
 

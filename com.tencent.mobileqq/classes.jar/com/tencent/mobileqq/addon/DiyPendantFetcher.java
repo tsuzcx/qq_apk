@@ -34,12 +34,12 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import yix;
-import yiy;
-import yiz;
-import yja;
-import yjb;
-import yjc;
+import ypc;
+import ypd;
+import ype;
+import ypf;
+import ypg;
+import yph;
 
 public class DiyPendantFetcher
 {
@@ -66,7 +66,7 @@ public class DiyPendantFetcher
     this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
     this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaLangRunnable = new yix(this);
+    this.jdField_a_of_type_JavaLangRunnable = new ypc(this);
     this.jdField_a_of_type_ComEtrumpMixlayoutETEngine = ETEngine.getInstanceForDiyPendant();
   }
   
@@ -179,7 +179,7 @@ public class DiyPendantFetcher
         if (QLog.isColorLevel()) {
           QLog.i("DiyPendantFetcher", 2, "found font res but can not load the font, font id = " + paramInt1);
         }
-        ThreadManager.executeOnFileThread(new yiz(this, (String)localObject, paramInt1));
+        ThreadManager.executeOnFileThread(new ype(this, (String)localObject, paramInt1));
       }
       for (;;)
       {
@@ -354,7 +354,7 @@ public class DiyPendantFetcher
       localFontInfo.b = paramInt2;
       this.jdField_b_of_type_ComTencentUtilLRULinkedHashMap.put(Integer.valueOf(paramInt1), localFontInfo);
     }
-    ThreadManager.executeOnFileThread(new yja(this, paramInt1, str));
+    ThreadManager.executeOnFileThread(new ypf(this, paramInt1, str));
   }
   
   public void a(DiyPendantEntity paramDiyPendantEntity)
@@ -377,7 +377,7 @@ public class DiyPendantFetcher
       return;
       b(paramQQAppInterface);
     } while ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()));
-    ThreadManager.post(new yiy(this, paramQQAppInterface), 5, null, false);
+    ThreadManager.post(new ypd(this, paramQQAppInterface), 5, null, false);
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt)
@@ -505,7 +505,7 @@ public class DiyPendantFetcher
     if (!jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_Boolean = true;
-      ThreadManager.post(new yjb(this, paramQQAppInterface), 5, null, false);
+      ThreadManager.post(new ypg(this, paramQQAppInterface), 5, null, false);
     }
   }
   
@@ -588,7 +588,7 @@ public class DiyPendantFetcher
   @TargetApi(11)
   public void d()
   {
-    ThreadManager.getUIHandler().post(new yjc(this));
+    ThreadManager.getUIHandler().post(new yph(this));
   }
   
   public void e()

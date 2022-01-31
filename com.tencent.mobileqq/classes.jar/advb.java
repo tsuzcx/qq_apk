@@ -1,43 +1,64 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.now.NowPlugin;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.txproxy.HostInterface;
-import mqq.app.AppRuntime;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class advb
-  implements HostInterface
+  extends BroadcastReceiver
 {
-  public advb(NowPlugin paramNowPlugin) {}
+  public advb(HotChatFragment paramHotChatFragment) {}
   
-  public boolean isMobileNet()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return AppNetConnInfo.isMobileConn();
-  }
-  
-  public void reportBadIp(String paramString1, String paramString2)
-  {
-    InnerDns.a().a(paramString1, paramString2, 1017);
-  }
-  
-  public String reqDns(String paramString)
-  {
-    return InnerDns.a().a(paramString, 1017);
-  }
-  
-  public boolean useIpDirectConnect()
-  {
-    QQAppInterface localQQAppInterface = NowPlugin.a(this.a);
-    Object localObject = localQQAppInterface;
-    if (localQQAppInterface == null) {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramIntent != null) && ("com.tencent.mobileqq.get_banner_rect".equals(paramIntent.getAction())))
+    {
+      paramContext = paramIntent.getStringExtra("content");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label31;
+      }
     }
-    if (localObject != null) {
-      return ((Integer)NearbySPUtil.a(((AppRuntime)localObject).getAccount(), "now_ip_conn_switch", Integer.valueOf(0))).intValue() == 1;
-    }
-    return false;
+    label31:
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramContext = new JSONObject(paramContext).getJSONObject("params").getJSONArray("bannerHeight");
+          if (paramContext != null)
+          {
+            float f = this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density;
+            int j = paramContext.length();
+            this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+            int i = 0;
+            while (i < j)
+            {
+              paramIntent = paramContext.getJSONObject(i);
+              Rect localRect = new Rect();
+              localRect.top = ((int)(paramIntent.getInt("top") * f));
+              localRect.bottom = ((int)(paramIntent.getInt("bottom") * f));
+              this.a.jdField_a_of_type_JavaUtilArrayList.add(localRect);
+              i += 1;
+            }
+            this.a.d = true;
+            return;
+          }
+        }
+        catch (JSONException paramContext) {}
+      }
+    } while (!QLog.isDevelopLevel());
+    paramContext.printStackTrace();
   }
 }
 

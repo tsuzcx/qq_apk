@@ -14,7 +14,7 @@ import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
-import jjx;
+import jma;
 
 public abstract class YUVTexture
   extends BasicTexture
@@ -27,7 +27,7 @@ public abstract class YUVTexture
   private GlStringParser jdField_a_of_type_ComTencentAvOpenglGlStringParser;
   private YUVTexture.GLRenderListener jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture$GLRenderListener;
   private final String jdField_a_of_type_JavaLangString;
-  private jjx jdField_a_of_type_Jjx;
+  private jma jdField_a_of_type_Jma;
   boolean jdField_a_of_type_Boolean = false;
   public float b;
   private long jdField_b_of_type_Long;
@@ -61,7 +61,7 @@ public abstract class YUVTexture
       jdField_b_of_type_Boolean = true;
       Looper localLooper1 = Looper.myLooper();
       if (localLooper1 != null) {
-        this.jdField_a_of_type_Jjx = new jjx(this, localLooper1);
+        this.jdField_a_of_type_Jma = new jma(this, localLooper1);
       }
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -95,9 +95,9 @@ public abstract class YUVTexture
         continue;
         localLooper2 = Looper.getMainLooper();
         if (localLooper2 != null) {
-          this.jdField_a_of_type_Jjx = new jjx(this, localLooper2);
+          this.jdField_a_of_type_Jma = new jma(this, localLooper2);
         } else {
-          this.jdField_a_of_type_Jjx = null;
+          this.jdField_a_of_type_Jma = null;
         }
       }
     }
@@ -267,17 +267,17 @@ public abstract class YUVTexture
   
   public void a(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (this.jdField_a_of_type_Jjx != null)
+    if (this.jdField_a_of_type_Jma != null)
     {
-      paramObject = this.jdField_a_of_type_Jjx.obtainMessage(paramInt1, 0, 0, paramObject);
+      paramObject = this.jdField_a_of_type_Jma.obtainMessage(paramInt1, 0, 0, paramObject);
       if (paramInt2 == 0) {
-        this.jdField_a_of_type_Jjx.sendMessage(paramObject);
+        this.jdField_a_of_type_Jma.sendMessage(paramObject);
       }
     }
     while (!QLog.isColorLevel())
     {
       return;
-      this.jdField_a_of_type_Jjx.sendMessageDelayed(paramObject, paramInt2);
+      this.jdField_a_of_type_Jma.sendMessageDelayed(paramObject, paramInt2);
       return;
     }
     QLog.e(this.jdField_a_of_type_JavaLangString, 2, "notifyUpdateUI|mEventHandler == null");
@@ -324,7 +324,7 @@ public abstract class YUVTexture
     if ((this.jdField_a_of_type_Boolean) && (this.m == -1))
     {
       this.m = paramGLCanvas.a().a();
-      this.m = a(2130839128, this.m);
+      this.m = a(2130839143, this.m);
     }
     return true;
   }
@@ -462,7 +462,7 @@ public abstract class YUVTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.opengl.texture.YUVTexture
  * JD-Core Version:    0.7.0.1
  */

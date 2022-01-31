@@ -1,20 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.widget.Gallery;
 
 public class vrs
-  implements View.OnClickListener
+  implements FMDialogUtil.FMDialogInterface
 {
-  public vrs(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public vrs(AIOGalleryScene paramAIOGalleryScene, AIORichMediaInfo paramAIORichMediaInfo) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-    PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b.setVisibility(0);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.b.setText(AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene, (float)((AIOFilePicData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData).jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo.jdField_a_of_type_Int));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_Vss.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.jdField_a_of_type_Vss.jdField_a_of_type_Int, 20);
+      AIOGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).b(true);
+      AIOGalleryScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene).a(true);
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.c(true);
   }
 }
 

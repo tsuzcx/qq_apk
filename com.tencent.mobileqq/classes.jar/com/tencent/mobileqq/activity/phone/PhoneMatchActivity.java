@@ -12,8 +12,8 @@ import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import wve;
-import wvf;
+import xas;
+import xat;
 
 public class PhoneMatchActivity
   extends DialogBaseActivity
@@ -21,20 +21,20 @@ public class PhoneMatchActivity
 {
   int jdField_a_of_type_Int;
   private Button jdField_a_of_type_AndroidWidgetButton;
-  ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wvf(this);
+  ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new xat(this);
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentViewB(2130969168);
+    super.setContentViewB(2130969166);
     this.centerView.setText("通讯录");
     if (getIntent().getBooleanExtra("key_from_contact_first", false)) {
-      ((TextView)super.findViewById(2131365484)).setText(2131436859);
+      ((TextView)super.findViewById(2131365489)).setText(2131436879);
     }
     this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365485));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365490));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    setLeftButton(2131434937, this);
+    setLeftButton(2131434953, this);
     ReportController.b(this.app, "dc00898", "", "", "0X800689B", "0X800689B", 0, 0, "", "", "", "");
     this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     return true;
@@ -62,10 +62,10 @@ public class PhoneMatchActivity
     {
       if (!NetworkUtil.d(this))
       {
-        b(2131434613);
+        b(2131434629);
         return;
       }
-      this.app.a(new wve(this));
+      this.app.a(new xas(this));
       if (this.jdField_a_of_type_Int == 16) {
         QQToast.a(BaseApplicationImpl.sApplication, "寻找通讯录联系人中。", 0).a();
       }
@@ -78,7 +78,7 @@ public class PhoneMatchActivity
           ReportController.b(this.app, "dc00898", "", "", "0X800650C", "0X800650C", 2, 0, this.app.c(), "", "", "");
         }
         ReportController.b(this.app, "dc00898", "", "", "0X800689C", "0X800689C", 0, 0, "", "", "", "");
-        a(2131434453, 1000L, true);
+        a(2131434469, 1000L, true);
         return;
         QQToast.a(BaseApplicationImpl.sApplication, "特征码匹配中。", 0).a();
       }

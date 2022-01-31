@@ -1,60 +1,47 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
 public class aiui
-  extends AsyncTask
+  implements BitmapDecoder
 {
-  public aiui(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  public aiui(DeviceMsgThumbDownloader paramDeviceMsgThumbDownloader) {}
   
-  protected Bundle a(Void... paramVarArgs)
+  public Bitmap a(URL paramURL)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("forward_type", 1);
-    paramVarArgs = new File(AppConstants.bz);
-    if (!paramVarArgs.exists()) {
-      paramVarArgs.mkdirs();
+    paramURL = this.a.a(paramURL);
+    if (paramURL == null) {
+      paramURL = null;
     }
-    String str = AppConstants.bz + Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-    paramVarArgs = str;
-    if (!new File(str).exists()) {}
-    try
+    for (;;)
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
-      localBundle.putBoolean("forward_urldrawable", true);
-      localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_JavaLangString);
-      localBundle.putString("forward_filepath", paramVarArgs);
-      localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
-      localBundle.putString("forward_extra", paramVarArgs);
-      return localBundle;
-    }
-    catch (IOException paramVarArgs)
-    {
-      QLog.e("foward", 2, "IOException", paramVarArgs);
+      return paramURL;
+      String str = paramURL.path;
+      if (TextUtils.isEmpty(str)) {
+        return null;
+      }
+      try
+      {
+        Bitmap localBitmap = this.a.a(str);
+        paramURL = localBitmap;
+        if (localBitmap == null)
+        {
+          paramURL = this.a.b(str);
+          return paramURL;
+        }
+      }
+      catch (Throwable paramURL)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
+        }
+      }
     }
     return null;
-  }
-  
-  protected void a(Bundle paramBundle)
-  {
-    if (paramBundle == null)
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, "保存图片失败", 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getTitleBarHeight());
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramBundle);
-    ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity, localIntent, 21);
   }
 }
 

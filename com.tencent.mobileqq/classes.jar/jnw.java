@@ -1,35 +1,42 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.smallscreen.PstnSmallScreenService;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.PstnObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
 
 public class jnw
-  extends PstnObserver
+  implements Runnable
 {
-  public jnw(PstnSmallScreenService paramPstnSmallScreenService) {}
+  public jnw(RedPacketRollTextView paramRedPacketRollTextView) {}
   
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    super.a(paramString, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("PstnSmallScreenService", 2, " callId = " + paramString + "time = " + paramInt);
+    while ((RedPacketRollTextView.b(this.a) != RedPacketRollTextView.c(this.a)) && (this.a.a)) {
+      try
+      {
+        if (RedPacketRollTextView.b(this.a) != RedPacketRollTextView.c(this.a)) {
+          RedPacketRollTextView.a(this.a, (RedPacketRollTextView.b(this.a) + 1) % 10);
+        }
+        int i = RedPacketRollTextView.b(this.a);
+        Message localMessage = RedPacketRollTextView.a(this.a).obtainMessage();
+        localMessage.what = 1;
+        Bundle localBundle = new Bundle();
+        localBundle.putString("content", Integer.toString(i % 10));
+        localMessage.setData(localBundle);
+        RedPacketRollTextView.a(this.a).sendMessage(localMessage);
+        Thread.sleep(RedPacketRollTextView.d(this.a));
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+      }
     }
-    this.a.a().removeCallbacks(this.a.c);
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429565);
+    if (RedPacketRollTextView.a(this.a) != null) {
+      RedPacketRollTextView.a(this.a).b();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b = 2;
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().g = true;
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jnw
  * JD-Core Version:    0.7.0.1
  */

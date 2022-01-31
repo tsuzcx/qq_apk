@@ -1,12 +1,8 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr.IGetAppNameByActionCallback;
+import java.util.ArrayList;
 
-public class aarg
+public abstract interface aarg
 {
-  public ArkActionAppMgr.IGetAppNameByActionCallback a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public String b;
+  public abstract void a(boolean paramBoolean, ArrayList paramArrayList);
 }
 
 

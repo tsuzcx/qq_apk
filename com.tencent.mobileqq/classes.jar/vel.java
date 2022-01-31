@@ -1,50 +1,39 @@
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
-class vel
-  implements Runnable
+public class vel
+  extends ClickableSpan
 {
-  vel(vek paramvek, MessageRecord paramMessageRecord) {}
+  public vel(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+    if (NetworkUtil.d(this.a.jdField_a_of_type_AndroidContentContext))
     {
-      Object localObject;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Vek.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_Vek.jdField_a_of_type_Ver, this.jdField_a_of_type_Vek.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, (MessageRecord)localObject);
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForMixedMsg))
-        {
-          localMessageRecord = (MessageRecord)((MessageForMixedMsg)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgElemList.get(this.jdField_a_of_type_Vek.jdField_a_of_type_Int);
-          localObject = localMessageRecord;
-          if ((localMessageRecord instanceof MessageForPic)) {}
-        }
-        else
-        {
-          while (!(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForTroopFile))
-          {
-            MessageRecord localMessageRecord;
-            localObject = null;
-            break;
-          }
-          localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        }
-      }
+      paramView = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      paramView.a((short)1, localArrayList, false);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.w("ChatItemBuilder", 2, "renderingPicCommentUI:source msg has been deleted.");
-    }
-    this.jdField_a_of_type_Vek.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_Vek.jdField_a_of_type_Ver, this.jdField_a_of_type_Vek.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, null);
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433023), 1).b(((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
   }
 }
 

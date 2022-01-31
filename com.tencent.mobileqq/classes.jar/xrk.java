@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-class xrk
-  implements DialogInterface.OnClickListener
+public final class xrk
+  implements Animation.AnimationListener
 {
-  xrk(xrj paramxrj) {}
+  public xrk(View paramView, Animation paramAnimation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface = this.a.a.getIntent();
-    paramDialogInterface.putExtra("flow_back", 0);
-    this.a.a.setResult(1001, paramDialogInterface);
-    this.a.a.finish();
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

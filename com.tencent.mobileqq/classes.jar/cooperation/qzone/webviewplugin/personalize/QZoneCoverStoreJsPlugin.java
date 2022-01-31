@@ -9,9 +9,9 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.TextView;
-import andt;
-import andu;
-import andv;
+import anlt;
+import anlu;
+import anlv;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
@@ -43,7 +43,7 @@ public class QZoneCoverStoreJsPlugin
   extends WebViewPlugin
 {
   public int a;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new andv(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new anlv(this);
   public String a;
   private volatile boolean jdField_a_of_type_Boolean;
   public int b;
@@ -178,7 +178,7 @@ public class QZoneCoverStoreJsPlugin
     if (!QZoneHelper.d()) {}
     for (int i = 1; i != 0; i = 0)
     {
-      QQToast.a(this.mRuntime.a(), 2131432802, 0).b(j);
+      QQToast.a(this.mRuntime.a(), 2131432816, 0).b(j);
       return;
     }
     a();
@@ -195,12 +195,12 @@ public class QZoneCoverStoreJsPlugin
       localBaseBusinessAlbumInfo.jdField_a_of_type_Long = this.mRuntime.a().getLongAccountUin();
       localBaseBusinessAlbumInfo.c = 10;
       localBaseBusinessAlbumInfo.d = 10;
-      localBaseBusinessAlbumInfo.jdField_b_of_type_JavaLangString = this.mRuntime.a().getString(2131432740);
+      localBaseBusinessAlbumInfo.jdField_b_of_type_JavaLangString = this.mRuntime.a().getString(2131432754);
       QZoneHelper.b(this.mRuntime.a(), localUserInfo, localBaseBusinessAlbumInfo, -1, "cover_mall_record_video");
       return;
     }
     QLog.i("CoverStore", 1, "VIDEO_COVER click select record video.");
-    QZoneVideoCommonUtils.a(this.mRuntime.a().getLongAccountUin(), this.mRuntime.a(), "cover_mall_record_video", new andu(this, j));
+    QZoneVideoCommonUtils.a(this.mRuntime.a().getLongAccountUin(), this.mRuntime.a(), "cover_mall_record_video", new anlu(this, j));
   }
   
   private void a(Intent paramIntent)
@@ -511,13 +511,13 @@ public class QZoneCoverStoreJsPlugin
       if (this.mRuntime.a() == null) {
         return false;
       }
-      paramJsBridgeListener = (TextView)this.mRuntime.a().findViewById(2131363428);
+      paramJsBridgeListener = (TextView)this.mRuntime.a().findViewById(2131363447);
       if (paramJsBridgeListener != null)
       {
         paramJsBridgeListener.setVisibility(0);
         paramJsBridgeListener.setTextColor(-1);
         paramJsBridgeListener.setText("背景商城");
-        paramJsBridgeListener.setOnClickListener(new andt(this));
+        paramJsBridgeListener.setOnClickListener(new anlt(this));
       }
     }
     do
@@ -574,7 +574,7 @@ public class QZoneCoverStoreJsPlugin
           }
           paramJsBridgeListener = this.mRuntime.a().getAccount();
           paramString1 = new Intent();
-          paramString2 = this.mRuntime.a().getResources().getString(2131432631);
+          paramString2 = this.mRuntime.a().getResources().getString(2131432645);
           QzonePluginProxyActivity.a(paramString1, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
           if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
             this.jdField_a_of_type_JavaLangString = a();
@@ -642,7 +642,7 @@ public class QZoneCoverStoreJsPlugin
         if (this.mRuntime.a() == null) {
           return false;
         }
-        ((TextView)this.mRuntime.a().findViewById(2131363245)).performClick();
+        ((TextView)this.mRuntime.a().findViewById(2131363262)).performClick();
         return true;
       }
     } while (!"Init".equals(paramString3));

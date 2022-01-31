@@ -1,21 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
 public class max
-  implements DialogInterface.OnShowListener
+  extends CommonSkinRes
 {
-  public max(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public max(ReadInJoySkinManager paramReadInJoySkinManager, AppInterface paramAppInterface) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public Drawable a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mShareActionSheet onShow()");
-    }
-    VideoFeedsAdapter.a(this.a).getWindow().clearFlags(8);
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_diandian_selected");
   }
 }
 

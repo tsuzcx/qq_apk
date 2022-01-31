@@ -1,37 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import com.tencent.util.WeakReferenceHandler;
-import cooperation.troop_homework.TroopHomeworkHelper;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr;
+import java.util.HashSet;
 
 public class ajlr
   implements Runnable
 {
-  private final WeakReference a;
-  private final WeakReference b;
-  
-  public ajlr(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo)
-  {
-    this.a = new WeakReference(paramHWReciteItem);
-    this.b = new WeakReference(paramHWReciteInfo);
-  }
+  public ajlr(TroopFileDownloadMgr paramTroopFileDownloadMgr) {}
   
   public void run()
   {
-    HWReciteInfo localHWReciteInfo = (HWReciteInfo)this.b.get();
-    if (localHWReciteInfo != null)
-    {
-      localHWReciteInfo.d = TroopHomeworkHelper.a(localHWReciteInfo.e);
-      Object localObject = (HWReciteItem)this.a.get();
-      if ((localObject != null) && (HWReciteItem.a((HWReciteItem)localObject) != null))
-      {
-        localObject = HWReciteItem.a((HWReciteItem)localObject).obtainMessage();
-        ((Message)localObject).what = 233;
-        ((Message)localObject).obj = localHWReciteInfo;
-        ((Message)localObject).sendToTarget();
-      }
-    }
+    HashSet localHashSet = new HashSet();
+    this.a.a(1, localHashSet);
+    TroopFileDownloadMgr.a(this.a, 1, new Object[] { localHashSet });
   }
 }
 

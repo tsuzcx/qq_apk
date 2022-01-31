@@ -1,18 +1,31 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class otk
-  implements Runnable
+class otk
 {
-  public otk(QRDisplayActivity paramQRDisplayActivity) {}
+  final String jdField_a_of_type_JavaLangString;
+  final boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public void run()
+  otk(boolean paramBoolean, String paramString)
   {
-    String str = "temp_qrcode_share_" + this.a.c + ".png";
-    str = QRUtils.a(this.a, str, this.a.b);
-    ThreadManager.getUIHandler().post(new otl(this, str));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  static otk a()
+  {
+    return new otk(false, "");
+  }
+  
+  static otk a(Process paramProcess)
+  {
+    if (a(Integer.valueOf(paramProcess.exitValue()))) {}
+    for (String str = otx.a(paramProcess.getInputStream());; str = otx.a(paramProcess.getErrorStream())) {
+      return new otk(a(Integer.valueOf(paramProcess.exitValue())), str);
+    }
+  }
+  
+  static boolean a(Integer paramInteger)
+  {
+    return (paramInteger != null) && (paramInteger.intValue() == 0);
   }
 }
 

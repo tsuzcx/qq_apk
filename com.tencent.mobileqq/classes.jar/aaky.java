@@ -1,18 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
+import com.tencent.mobileqq.ar.FaceUIController;
+import com.tencent.mobileqq.ar.ScanningData;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aaky
-  implements Parcelable.Creator
+public class aaky
+  implements Runnable
 {
-  public ArWebInfo a(Parcel paramParcel)
-  {
-    return new ArWebInfo(paramParcel);
-  }
+  public aaky(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData1, ScanningData paramScanningData2) {}
   
-  public ArWebInfo[] a(int paramInt)
+  public void run()
   {
-    return new ArWebInfo[paramInt];
+    if ((this.jdField_a_of_type_ComTencentMobileqqArScanningData != null) && (this.jdField_a_of_type_ComTencentMobileqqArScanningData.a) && (this.jdField_a_of_type_ComTencentMobileqqArScanningData.f))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArScanningData.c();
+      this.jdField_a_of_type_ComTencentMobileqqArScanningData.w();
+      this.jdField_a_of_type_ComTencentMobileqqArScanningData.a = false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ScanningSurfaceView", 2, "4=" + this.jdField_a_of_type_ComTencentMobileqqArScanningData.a);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqArScanningData.c = false;
+      ScanningSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArScanningData);
+    }
+    if (this.b != null)
+    {
+      this.b.c();
+      this.b.w();
+      this.b.a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ScanningSurfaceView", 2, "5=" + this.b.a);
+      }
+      this.b.c = true;
+      this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a.a.a(3, this.b.g, this.b.h, new aakz(this));
+      ScanningSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.b);
+    }
   }
 }
 

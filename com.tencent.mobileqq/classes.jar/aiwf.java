@@ -1,22 +1,14 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
 
-public class aiwf
-  implements Animation.AnimationListener
+class aiwf
+  implements Runnable
 {
-  public aiwf(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  aiwf(aiwd paramaiwd, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.l = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
+    this.jdField_a_of_type_Aiwd.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

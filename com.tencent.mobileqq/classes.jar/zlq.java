@@ -1,16 +1,36 @@
-import com.tencent.av.service.QavWrapper;
-import com.tencent.av.service.QavWrapper.OnReadyListener;
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import com.tencent.qphone.base.util.QLog;
 
-class zlq
-  implements QavWrapper.OnReadyListener
+public class zlq
+  extends BroadcastReceiver
 {
-  zlq(zlo paramzlo) {}
+  public zlq(GuardManager paramGuardManager) {}
   
-  public void a(QavWrapper paramQavWrapper)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramQavWrapper.a(this.a.a.a);
-    paramQavWrapper.a();
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, paramContext);
+    }
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      if (this.a.jdField_a_of_type_Long > 0L) {
+        this.a.a(false);
+      }
+      ArkMediaPlayer.b();
+    }
+    while (!"android.intent.action.SCREEN_ON".equals(paramContext)) {
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.jdField_a_of_type_JavaLangString != null)) {
+      this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    ArkMediaPlayer.a();
   }
 }
 

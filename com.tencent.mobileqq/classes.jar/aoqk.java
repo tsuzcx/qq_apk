@@ -1,21 +1,28 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class aoqk
+  implements Runnable
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
-  public int b;
+  public aoqk(RMVideoStateMgr paramRMVideoStateMgr) {}
   
-  private aoqk()
+  public void run()
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    synchronized (RMVideoStateMgr.a(this.a))
+    {
+      AudioCapture localAudioCapture = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture;
+      if ((localAudioCapture != null) && (localAudioCapture.b != null) && (this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilAudioDataCache != null) && (localAudioCapture.c()) && (localAudioCapture != null))
+      {
+        localAudioCapture.c();
+        localAudioCapture.b.getAndSet(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilAudioDataCache);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RMVideoStateMgr", 2, "[@][openAudioRecord]");
+      }
+      return;
+    }
   }
 }
 

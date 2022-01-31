@@ -1,51 +1,16 @@
-import com.tencent.mobileqq.javahook.BitmapOOMHooker;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class advq
-  implements HookMethodCallback
+  implements ActionSheet.OnDismissListener
 {
-  private int a;
+  public advq(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public advq(int paramInt)
+  public void onDismiss()
   {
-    this.a = paramInt;
+    this.a.a = null;
+    this.a.o();
   }
-  
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
-  {
-    if (paramMethodHookParam.throwable == null) {
-      return;
-    }
-    Throwable localThrowable;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localThrowable = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localThrowable instanceof OutOfMemoryError))
-    {
-      BitmapOOMHooker.b();
-      try
-      {
-        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
-        paramMethodHookParam.throwable = null;
-        BitmapOOMHooker.a(true, this.a);
-        return;
-      }
-      catch (Exception paramMethodHookParam)
-      {
-        BitmapOOMHooker.a(false, this.a);
-        return;
-        localThrowable = paramMethodHookParam.throwable;
-      }
-      catch (Error paramMethodHookParam)
-      {
-        BitmapOOMHooker.a(false, this.a);
-      }
-    }
-  }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

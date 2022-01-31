@@ -16,8 +16,8 @@ import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nek;
-import nel;
+import nih;
+import nii;
 
 public class MsgTabNodePullVideoBasicInfoSegment
   extends JobSegment
@@ -26,7 +26,7 @@ public class MsgTabNodePullVideoBasicInfoSegment
   
   public MsgTabNodePullVideoBasicInfoSegment()
   {
-    this(new nek());
+    this(new nih());
   }
   
   public MsgTabNodePullVideoBasicInfoSegment(BatchGetVideoInfo.VideoLocalCacheFilter paramVideoLocalCacheFilter)
@@ -80,7 +80,7 @@ public class MsgTabNodePullVideoBasicInfoSegment
     if (this.a != null) {
       paramJobContext.a = this.a;
     }
-    paramJobContext.a(new nel(this, localArrayList, paramMsgTabNodeVidListResponse));
+    paramJobContext.a(new nii(this, localArrayList, paramMsgTabNodeVidListResponse));
     paramJobContext.b();
   }
 }

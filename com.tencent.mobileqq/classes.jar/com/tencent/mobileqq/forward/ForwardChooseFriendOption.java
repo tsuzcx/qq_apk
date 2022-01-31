@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
-import adkm;
-import adkn;
+import adss;
+import adst;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -156,7 +156,7 @@ public class ForwardChooseFriendOption
     if ((this.jdField_b_of_type_Int == 1) && (this.jdField_c_of_type_Int == 1))
     {
       if (this.jdField_a_of_type_AndroidAppActivity != null) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131432280);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131432291);
       }
       return this.jdField_a_of_type_JavaLangString;
     }
@@ -284,7 +284,7 @@ public class ForwardChooseFriendOption
       }
       for (;;)
       {
-        DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, str3, str1, "取消", "确定", new adkm(this, paramInt, paramBundle), new adkn(this)).show();
+        DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, str3, str1, "取消", "确定", new adss(this, paramInt, paramBundle), new adst(this)).show();
         return;
         bool = false;
         break;

@@ -1,18 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.utils.ConvertRunnable;
+import com.tencent.biz.qqstory.utils.Image2Video.Image2VideoListener;
+import java.lang.ref.WeakReference;
 
-class osy
-  implements View.OnClickListener
+public class osy
 {
-  osy(osw paramosw) {}
+  public static int a;
+  public long a;
+  public ConvertRunnable a;
+  public String a;
+  public WeakReference a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
   
-  public void onClick(View paramView)
+  static
   {
-    paramView = (TextView)this.a.a.findViewById(2131363057);
-    if ((paramView.getText() instanceof String)) {
-      this.a.a((String)paramView.getText());
-    }
+    jdField_a_of_type_Int = 3;
+  }
+  
+  public osy(long paramLong1, String paramString, int paramInt1, int paramInt2, long paramLong2, ConvertRunnable paramConvertRunnable, Image2Video.Image2VideoListener paramImage2VideoListener)
+  {
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsConvertRunnable = paramConvertRunnable;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImage2VideoListener);
   }
 }
 

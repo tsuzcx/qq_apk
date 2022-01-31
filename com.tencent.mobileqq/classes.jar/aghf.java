@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.OcrClickListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
-public class aghf
-  implements ARTipsManager.OcrClickListener
+public final class aghf
+  implements Parcelable.Creator
 {
-  public aghf(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void a()
+  public OcrRecogResult a(Parcel paramParcel)
   {
-    ReportController.b(null, "dc00898", "", "", "0X80085B2", "0X80085B2", 0, 0, "", "", "", "");
-    ScanTorchActivity.p(this.a);
+    return new OcrRecogResult(paramParcel);
   }
   
-  public void b()
+  public OcrRecogResult[] a(int paramInt)
   {
-    ReportController.b(null, "dc00898", "", "", "0X80087BE", "0X80087BE", 0, 0, "", "", "", "");
-    ScanTorchActivity.q(this.a);
+    return new OcrRecogResult[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghf
  * JD-Core Version:    0.7.0.1
  */

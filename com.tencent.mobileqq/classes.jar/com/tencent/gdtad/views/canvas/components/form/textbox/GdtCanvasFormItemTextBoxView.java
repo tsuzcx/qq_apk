@@ -15,9 +15,9 @@ import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormItemData;
 import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormItemView;
 import com.tencent.gdtad.views.canvas.framework.GdtCanvasTextData;
 import java.lang.ref.WeakReference;
-import qlx;
-import qly;
-import qlz;
+import qqo;
+import qqp;
+import qqq;
 
 public class GdtCanvasFormItemTextBoxView
   extends GdtCanvasFormItemView
@@ -31,17 +31,17 @@ public class GdtCanvasFormItemTextBoxView
   
   private TextWatcher a()
   {
-    return new qlx(this);
+    return new qqo(this);
   }
   
   private View.OnFocusChangeListener a()
   {
-    return new qly(this);
+    return new qqp(this);
   }
   
   private TextView.OnEditorActionListener a()
   {
-    return new qlz(this);
+    return new qqq(this);
   }
   
   private static void b(TextView paramTextView)

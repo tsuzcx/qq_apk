@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameEvent;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
+import com.tencent.qphone.base.util.QLog;
 
-public class aict
+public final class aict
+  implements Runnable
 {
-  public float a;
-  public int a;
-  public long a;
-  public boolean a;
-  public float b = 0.0F;
-  
-  private aict(GameEvent paramGameEvent)
+  public void run()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
+    try
+    {
+      SosoInterface.a(QZoneNotifyServlet.a());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "locate exception " + localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aict
  * JD-Core Version:    0.7.0.1
  */

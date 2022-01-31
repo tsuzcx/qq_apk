@@ -1,29 +1,21 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class sec
-  implements Runnable
+public class sec
+  implements View.OnClickListener
 {
-  sec(seb paramseb, ArrayList paramArrayList) {}
+  public sec(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    View localView;
-    do
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
     {
-      return;
-      localView = this.jdField_a_of_type_Seb.a.a[33];
-    } while (localView == null);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      localView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Seb.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
-      return;
-      localView.setVisibility(0);
+      this.a.b = l;
+      this.a.b();
+      ReportController.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
     }
   }
 }

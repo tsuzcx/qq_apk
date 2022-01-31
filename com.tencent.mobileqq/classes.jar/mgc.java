@@ -1,22 +1,60 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUploadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import tencent.im.msg.im_msg_body.RichText;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
 
 public class mgc
-  implements UpCallBack
+  extends OrientationEventListener
 {
-  public mgc(VideoUploadManager paramVideoUploadManager) {}
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public mgc(VideoFeedsListView paramVideoFeedsListView, Context paramContext, int paramInt)
   {
-    return null;
+    super(paramContext, paramInt);
   }
   
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult) {}
+  public void onOrientationChanged(int paramInt)
+  {
+    if (VideoFeedsListView.a(this.a)) {}
+    label10:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                break label10;
+                break label10;
+                break label10;
+                break label10;
+                do
+                {
+                  return;
+                } while ((!VideoFeedsListView.b(this.a)) || (!VideoFeedsListView.c(this.a)) || (VideoFeedsListView.a(this.a) == 1) || (!VideoFeedsListView.a(this.a, paramInt)) || (!VideoFeedsListView.d(this.a)));
+                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
+                  break;
+                }
+              } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 0));
+              VideoFeedsListView.a(this.a, -1);
+            } while (VideoFeedsListView.c(this.a) == 0);
+            this.a.c(true);
+            return;
+            if ((paramInt < 70) || (paramInt > 110)) {
+              break;
+            }
+          } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 2));
+          VideoFeedsListView.a(this.a, -1);
+        } while (VideoFeedsListView.c(this.a) == 2);
+        VideoFeedsListView.a(this.a, 2, true);
+        return;
+      } while ((paramInt < 250) || (paramInt > 290) || ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 1)));
+      VideoFeedsListView.a(this.a, -1);
+    } while (VideoFeedsListView.c(this.a) == 1);
+    VideoFeedsListView.a(this.a, 1, true);
+  }
 }
 
 

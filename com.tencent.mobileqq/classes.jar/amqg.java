@@ -1,39 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.richstatus.StatusObserver;
-import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
-import java.util.ArrayList;
+import common.qzone.component.cache.common.SoftHashMap;
 
 public class amqg
-  extends StatusObserver
+  extends amqc
 {
-  private amqg(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
-  
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList paramArrayList, boolean paramBoolean3)
+  amqg(SoftHashMap paramSoftHashMap)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSuccess", paramBoolean1);
-    localBundle.putInt("start", paramInt1);
-    localBundle.putInt("end", paramInt2);
-    localBundle.putBoolean("over", paramBoolean2);
-    localBundle.putSerializable("data", paramArrayList);
-    localBundle.putBoolean("isAddFromCard", paramBoolean3);
-    localBundle.putInt("which_method", 0);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
+    super(paramSoftHashMap);
   }
   
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
+  public Object next()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("key", paramArrayOfByte);
-    localBundle.putInt("which_method", 1);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
+    return ampz.a(a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amqg
  * JD-Core Version:    0.7.0.1
  */

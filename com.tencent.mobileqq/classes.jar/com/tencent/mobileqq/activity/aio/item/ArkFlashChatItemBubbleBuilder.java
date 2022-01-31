@@ -39,10 +39,10 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qqfav.QfavBuilder;
-import uvc;
-import uve;
-import uvf;
-import uvg;
+import vac;
+import vae;
+import vaf;
+import vag;
 
 public class ArkFlashChatItemBubbleBuilder
   extends QIMTailItemBubbleBuilder
@@ -60,7 +60,7 @@ public class ArkFlashChatItemBubbleBuilder
   public ArkFlashChatItemBubbleBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new uve(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vae(this);
   }
   
   public static String a(String paramString, boolean paramBoolean)
@@ -137,9 +137,9 @@ public class ArkFlashChatItemBubbleBuilder
     Object localObject;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968742, null);
-      paramView = paramViewHolder.findViewById(2131363311);
-      localObject = (ArkAppLoadLayout)paramViewHolder.findViewById(2131363313);
+      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968745, null);
+      paramView = paramViewHolder.findViewById(2131363328);
+      localObject = (ArkAppLoadLayout)paramViewHolder.findViewById(2131363330);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((ArkAppLoadLayout)localObject).getLayoutParams();
       localLayoutParams.width = ((int)FlashChatPanel.a());
       localLayoutParams.height = ((int)FlashChatPanel.b());
@@ -149,7 +149,7 @@ public class ArkFlashChatItemBubbleBuilder
       localLayoutParams.height = ((int)FlashChatPanel.b());
       paramView.setLayoutParams(localLayoutParams);
       localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)localObject);
-      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramViewHolder.findViewById(2131363312));
+      localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)paramViewHolder.findViewById(2131363329));
     }
     paramView = localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
     paramView.setClipRadius(14.0F);
@@ -200,7 +200,7 @@ public class ArkFlashChatItemBubbleBuilder
       long l = paramBaseChatItemLayout.uniseq;
       paramBaseChatItemLayout.arkContainer.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramBaseChatItemLayout.ark_app_message.appName, paramBaseChatItemLayout.ark_app_message.appView, paramBaseChatItemLayout.ark_app_message.appMinVersion, paramBaseChatItemLayout.ark_app_message.appResId, paramBaseChatItemLayout.ark_app_message.getMeta(l, false), this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().scaledDensity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, FlashChatPanel.a(), FlashChatPanel.b(), FlashChatPanel.a(), FlashChatPanel.b(), paramBaseChatItemLayout);
       if (bool) {
-        paramView.setCallback(new uvc(this, paramBaseChatItemLayout));
+        paramView.setCallback(new vac(this, paramBaseChatItemLayout));
       }
       for (;;)
       {
@@ -264,9 +264,9 @@ public class ArkFlashChatItemBubbleBuilder
     switch (paramInt)
     {
     default: 
-    case 2131375573: 
-    case 2131366776: 
-    case 2131363517: 
+    case 2131375639: 
+    case 2131366774: 
+    case 2131363536: 
       do
       {
         do
@@ -298,7 +298,7 @@ public class ArkFlashChatItemBubbleBuilder
       paramChatMessage.putExtras(paramContext);
       ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramChatMessage, 21);
       return;
-    case 2131375567: 
+    case 2131375633: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     case 2131361906: 
@@ -318,10 +318,10 @@ public class ArkFlashChatItemBubbleBuilder
     do
     {
       return;
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433635);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433636);
+      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433649);
+      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433650);
     } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new uvf(this, paramView), new uvg(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new vaf(this, paramView), new vag(this)).show();
   }
   
   protected void a(View paramView, ChatMessage paramChatMessage)
@@ -339,13 +339,13 @@ public class ArkFlashChatItemBubbleBuilder
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     paramView = (ChatItemBuilder.BaseHolder)AIOUtils.a(paramView);
-    localQQCustomMenu.a(2131375573, "复制", 2130838305);
+    localQQCustomMenu.a(2131375639, "复制", 2130838310);
     if (paramView != null)
     {
       paramView = (MessageForArkFlashChat)paramView.a;
       if ((paramView != null) && (paramView.ark_app_message != null))
       {
-        localQQCustomMenu.a(2131363517, this.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
+        localQQCustomMenu.a(2131363536, this.jdField_a_of_type_AndroidContentContext.getString(2131435099), 2130838318);
         ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
         if ((paramView.extraflag != 32768) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramView))) {
           a(localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView);

@@ -1,22 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import com.tencent.mobileqq.ark.ArkAppCGI.QueryAppInfoByAppNameBatchResult;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 import java.util.HashMap;
 
-public final class abch
-  implements Runnable
+class abch
+  extends ArkAppCGI.ArkAppCGICallback
 {
-  public abch(String[] paramArrayOfString) {}
+  abch(abcg paramabcg) {}
   
-  public void run()
+  public void a(ArkAppCGI.QueryAppInfoByAppNameBatchResult paramQueryAppInfoByAppNameBatchResult, Object paramObject)
   {
-    if (this.a == null) {}
-    for (int i = 0;; i = this.a.length)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("preloadFileCount", String.valueOf(i));
-      StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ARMAP_OFFLINE_ENTER", true, 0L, 0L, localHashMap, "", false);
-      return;
-    }
+    paramObject = (HashMap)paramObject;
+    ArkLocalAppMgr.a(this.a.a, paramQueryAppInfoByAppNameBatchResult, paramObject);
   }
 }
 

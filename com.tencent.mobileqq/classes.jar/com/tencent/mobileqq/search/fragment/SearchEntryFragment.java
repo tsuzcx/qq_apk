@@ -12,7 +12,6 @@ import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.BaseSearchEntryModel;
-import com.tencent.mobileqq.search.ContentRecommendModel;
 import com.tencent.mobileqq.search.HistorySearchEntryModel;
 import com.tencent.mobileqq.search.HistorySearchEntryModel.OnHistorySearchCountListener;
 import com.tencent.mobileqq.search.SearchEntryConfigManager;
@@ -80,69 +79,13 @@ public class SearchEntryFragment
     {
       if (bool)
       {
-        getView().setBackgroundResource(2130838580);
+        getView().setBackgroundResource(2130838586);
         return;
       }
-      getView().setBackgroundResource(2130838579);
+      getView().setBackgroundResource(2130838585);
       return;
     }
     getView().setBackgroundResource(0);
-  }
-  
-  public void a(SearchEntryDataModel paramSearchEntryDataModel)
-  {
-    int j = 0;
-    if (getActivity() == null) {
-      QLog.e("SearchEntryFragment", 1, "in refreshContentRecommendModel() getActivity() is null.");
-    }
-    int[] arrayOfInt;
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0));
-      i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        if ((this.jdField_a_of_type_JavaUtilList.get(i) instanceof ContentRecommendModel))
-        {
-          ((BaseSearchEntryModel)this.jdField_a_of_type_JavaUtilList.get(i)).a(paramSearchEntryDataModel);
-          return;
-        }
-        i += 1;
-      }
-      arrayOfInt = SearchEntryConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a(this.jdField_a_of_type_JavaLangString));
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchEntryFragment", 2, "refreshContentRecommendModel modelIdList = " + arrayOfInt);
-      }
-    } while ((arrayOfInt == null) || (arrayOfInt.length <= 0));
-    int i = j;
-    label155:
-    BaseSearchEntryModel localBaseSearchEntryModel;
-    if (i < arrayOfInt.length) {
-      if (arrayOfInt[i] == 4)
-      {
-        localBaseSearchEntryModel = BaseSearchEntryModel.a(4, a(this.jdField_a_of_type_JavaLangString));
-        if (QLog.isColorLevel()) {
-          QLog.d("SearchEntryFragment", 2, "mModelList.size = " + this.jdField_a_of_type_JavaUtilList.size() + " , i = " + i);
-        }
-        if (this.jdField_a_of_type_JavaUtilList.size() < i) {
-          break label293;
-        }
-        this.jdField_a_of_type_JavaUtilList.add(i, localBaseSearchEntryModel);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localBaseSearchEntryModel.a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, null), i);
-      localBaseSearchEntryModel.a(paramSearchEntryDataModel);
-      i += 1;
-      break label155;
-      break;
-      label293:
-      this.jdField_a_of_type_JavaUtilList.add(localBaseSearchEntryModel);
-    }
   }
   
   public void a(List paramList)

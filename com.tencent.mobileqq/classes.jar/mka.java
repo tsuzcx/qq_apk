@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar.TabHolder;
+import com.tencent.qphone.base.util.QLog;
 
-class mka
-  extends AnimateUtils.AnimationAdapter
+public class mka
+  implements Animator.AnimatorListener
 {
-  mka(mjz parammjz) {}
+  public mka(BaseTabbar.TabHolder paramTabHolder) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimation = new ScaleAnimation(1.05F, 0.95F, 1.05F, 0.95F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(100L);
-    paramAnimation.setAnimationListener(new mkb(this));
-    this.a.a.a.startAnimation(paramAnimation);
+    QLog.d("TabBarView", 4, "onAnimationEnd");
+    BaseTabbar.TabHolder.b(this.a);
+    this.a.b.clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

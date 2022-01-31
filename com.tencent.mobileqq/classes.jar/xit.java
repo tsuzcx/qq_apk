@@ -1,25 +1,36 @@
-import android.content.Intent;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.util.Pair;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import java.util.List;
 
 public class xit
-  implements View.OnClickListener
+  extends PagerAdapter
 {
-  public xit(BannerManager paramBannerManager) {}
+  public xit(CommonHbFragment paramCommonHbFragment) {}
   
-  public void onClick(View paramView)
+  public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    Intent localIntent = new Intent(BannerManager.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("uin", ((QQAppInterface)BannerManager.a(this.a).getAppRuntime()).getCurrentAccountUin());
-    paramView = (Pair)paramView.getTag();
-    if (paramView != null) {
-      BannerManager.a(this.a).startActivity(localIntent.putExtra("url", "https://qzs.qq.com/iot/mobile/xiaowei-qq-proxy/index.html?din=" + ((Long)paramView.first).longValue() + "&deviceRemark=" + (String)paramView.second));
+    ((ViewPager)paramView).removeView((View)CommonHbFragment.b(this.a).get(paramInt));
+  }
+  
+  public int getCount()
+  {
+    if (CommonHbFragment.b(this.a) != null) {
+      return CommonHbFragment.b(this.a).size();
     }
+    return 0;
+  }
+  
+  public Object instantiateItem(View paramView, int paramInt)
+  {
+    ((ViewPager)paramView).addView((View)CommonHbFragment.b(this.a).get(paramInt), 0);
+    return CommonHbFragment.b(this.a).get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

@@ -1,17 +1,14 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 
 public class mms
-  implements MessageQueue.IdleHandler
+  implements Runnable
 {
-  public mms(FastWebActivity paramFastWebActivity) {}
+  public mms(ReadInJoyNickNameTextView paramReadInJoyNickNameTextView, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    FastWebRequestUtil.a(FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).c), FastWebActivity.a(this.a).k, FastWebActivity.a(this.a).c(), FastWebActivity.a(this.a));
-    return false;
+    ReadInJoyNickNameTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo, ReadInJoyNickNameTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView));
   }
 }
 

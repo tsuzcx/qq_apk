@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.precover;
 
-import agnb;
-import agnc;
-import agnd;
+import agrq;
+import agrr;
+import agrs;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -57,7 +57,7 @@ public class PrecoverManager
     this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverReporter = new PrecoverReporter(this);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      ThreadManager.post(new agnb(this), 10, null, false);
+      ThreadManager.post(new agrq(this), 10, null, false);
       return;
     }
     b();
@@ -558,7 +558,7 @@ public class PrecoverManager
     this.jdField_a_of_type_ComTencentMobileqqPrecoverPrecoverResDownloader.b(this);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilHashSet = null;
-    ThreadManager.post(new agnd(this), 5, null, false);
+    ThreadManager.post(new agrs(this), 5, null, false);
   }
   
   protected void a(PrecoverResource paramPrecoverResource)
@@ -604,7 +604,7 @@ public class PrecoverManager
     for (String str = "null";; str = paramString)
     {
       QLog.d("PrecoverManager", 1, new Object[] { "startDownload, businessId=", str });
-      ThreadManager.post(new agnc(this, paramString), 5, null, false);
+      ThreadManager.post(new agrr(this, paramString), 5, null, false);
       return;
     }
   }

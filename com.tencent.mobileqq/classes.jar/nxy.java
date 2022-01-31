@@ -1,14 +1,26 @@
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 
-class nxy
-  implements Runnable
+public class nxy
+  implements Animation.AnimationListener
 {
-  nxy(nxw paramnxw) {}
+  public nxy(QQStoryBaseActivity paramQQStoryBaseActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.b();
+    if (this.a.c != null)
+    {
+      this.a.c.clearAnimation();
+      ((ViewGroup)((ViewGroup)this.a.findViewById(16908290)).getChildAt(0)).removeView(this.a.c);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

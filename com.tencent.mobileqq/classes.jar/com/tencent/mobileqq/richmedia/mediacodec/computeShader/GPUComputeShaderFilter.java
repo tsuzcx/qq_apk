@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.richmedia.mediacodec.computeShader;
 
 import android.annotation.SuppressLint;
+import android.opengl.GLES20;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.sveffects.SLog;
 
@@ -18,6 +19,23 @@ public class GPUComputeShaderFilter
     this.jdField_a_of_type_Int = paramInt;
   }
   
+  public int a()
+  {
+    a("onDispatchComputePrepare");
+    GLES20.glUseProgram(this.b);
+    a("glUseProgram");
+    return this.b;
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt % 16;
+    if (i == 0) {
+      return paramInt;
+    }
+    return paramInt + 16 - i;
+  }
+  
   public void a()
   {
     if (this.jdField_a_of_type_Boolean) {
@@ -28,6 +46,32 @@ public class GPUComputeShaderFilter
       SLog.a("GPUComputeShaderFilter", new RuntimeException("failed creating ComputeProgram " + getClass().getSimpleName()));
     }
     this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt < 0) {
+      SLog.a("GPUComputeShaderFilter", new RuntimeException("Unable to locate '" + paramString + "' in program"));
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    for (;;)
+    {
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
+      }
+      SLog.a("GPUComputeShaderFilter", new RuntimeException(paramString + ": glError " + i));
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    GLES20.glDeleteProgram(this.b);
+    this.b = 0;
   }
 }
 

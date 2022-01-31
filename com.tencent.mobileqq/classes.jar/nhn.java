@@ -1,46 +1,39 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qqstory.newshare.ui.ActionSheetShareUI;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.widget.ActionSheet;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.WeatherDataProvider;
+import com.tencent.biz.qqstory.model.WeatherDataProvider.WeatherInfo;
+import com.tencent.biz.qqstory.network.request.GetWeatherRequest;
+import com.tencent.biz.qqstory.network.response.GetWeatherResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class nhn
-  implements AdapterView.OnItemClickListener
+  implements CmdTaskManger.CommandCallback
 {
-  public nhn(ActionSheetShareUI paramActionSheetShareUI) {}
+  public nhn(WeatherDataProvider paramWeatherDataProvider) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(@NonNull GetWeatherRequest paramGetWeatherRequest, @Nullable GetWeatherResponse paramGetWeatherResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (ActionSheetShareUI.a(this.a).a().isShowing()) {
-      ActionSheetShareUI.a(this.a).a().dismiss();
-    }
-    int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramView.getTag()).a.c;
-    if ((i == 9) || (i == 10)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131435319;
-      }
+    SLog.b("WeatherDataProvider", "requestWeather Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramGetWeatherResponse != null))
+    {
+      SLog.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramGetWeatherResponse.b));
+      this.a.jdField_a_of_type_JavaLangObject = new WeatherDataProvider.WeatherInfo(paramGetWeatherResponse.b);
+      SLog.c("WeatherDataProvider", "update local weather data.");
+      paramGetWeatherRequest = (StoryConfigManager)SuperManager.a(10);
+      paramGetWeatherRequest.b("edit_video_weather_filter_data", Integer.valueOf(paramGetWeatherResponse.b));
+      paramGetWeatherRequest.b("edit_video_weather_expiry_time", Long.valueOf(System.currentTimeMillis() + 14400000L));
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
     }
     for (;;)
     {
-      if (paramInt != -1)
-      {
-        QRUtils.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435320;
-        }
-      }
-      else
-      {
-        this.a.a(i);
-        return;
-      }
-      paramInt = -1;
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      SLog.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetWeatherRequest });
+      this.a.a(false, null);
     }
   }
 }

@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRecognition;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.automator.step.QQComicStep;
 
-public final class zxs
-  implements Parcelable.Creator
+public class zxs
+  implements Runnable
 {
-  public ARRecognition a(Parcel paramParcel)
-  {
-    return new ARRecognition(paramParcel);
-  }
+  public zxs(QQComicStep paramQQComicStep) {}
   
-  public ARRecognition[] a(int paramInt)
+  public void run()
   {
-    return new ARRecognition[paramInt];
+    ThreadManager.executeOnNetWorkThread(new zxt(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zxs
  * JD-Core Version:    0.7.0.1
  */

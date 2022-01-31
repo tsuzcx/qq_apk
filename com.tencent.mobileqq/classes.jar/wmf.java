@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class wmf
-  implements Runnable
 {
-  public wmf(ContactsTroopAdapter paramContactsTroopAdapter) {}
-  
-  public void run()
-  {
-    ContactsTroopAdapter.a(this.a);
-  }
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
 }
 
 

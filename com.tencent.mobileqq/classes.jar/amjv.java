@@ -1,62 +1,39 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.jsp.QQComicJsPlugin;
-import cooperation.comic.utils.QQComicPluginBridge;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Rect;
 
 public class amjv
-  implements Runnable
 {
-  public amjv(QQComicJsPlugin paramQQComicJsPlugin, long paramLong, String paramString1, JSONObject paramJSONObject, String paramString2) {}
+  private int jdField_a_of_type_Int;
+  private Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private int b;
+  private int c;
   
-  public void run()
+  private amjv(Bitmap paramBitmap, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicDebug", 2, "waitPluginAndHandleJsCall start");
-    }
-    if (!QQComicPluginBridge.a)
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
+    if (paramBitmap != null)
     {
-      QQComicPluginBridge.a(BaseApplication.getContext());
-      for (long l = 0L; (!QQComicPluginBridge.a) && (l < this.jdField_a_of_type_Long); l += 50L) {
-        SystemClock.sleep(50L);
-      }
-    }
-    if (QQComicPluginBridge.a) {
-      ThreadManager.getUIHandler().post(new amjw(this));
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicDebug", 2, "waitPluginAndHandleJsCall end");
-      }
+      this.b = paramBitmap.getScaledWidth(paramInt);
+      this.c = paramBitmap.getScaledHeight(paramInt);
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidGraphicsBitmap$Config = paramBitmap.getConfig();
       return;
-      if (TextUtils.isEmpty(this.b)) {
-        continue;
-      }
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("code", 2001);
-        localJSONObject.put("message", "QQComic is not ready");
-        QQComicJsPlugin.b(this.jdField_a_of_type_CooperationComicJspQQComicJsPlugin, this.b, new String[] { localJSONObject.toString() });
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
     }
+    this.jdField_a_of_type_Int = 4;
+  }
+  
+  private void a(Rect paramRect)
+  {
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjv
  * JD-Core Version:    0.7.0.1
  */

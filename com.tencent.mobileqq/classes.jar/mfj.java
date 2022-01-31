@@ -1,73 +1,108 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.VideoPreDownloadParam;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.os.SystemClock;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout.CustomClickListener;
 
 public class mfj
-  implements Runnable
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private List jdField_a_of_type_JavaUtilList;
+  public mfj(VideoFeedsGestureLayout paramVideoFeedsGestureLayout) {}
   
-  public mfj(VideoPreDownloadMgr paramVideoPreDownloadMgr, List paramList)
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (VideoFeedsGestureLayout.a(this.a) != null)
+      {
+        VideoFeedsGestureLayout.a(this.a, SystemClock.uptimeMillis());
+        VideoFeedsGestureLayout.a(this.a).a(this.a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+      }
+    }
   }
   
-  public void run()
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if ((VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr) == null) || (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0) || (VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr) == null)) {}
-    do
+    if (VideoFeedsGestureLayout.a(this.a) != null) {
+      VideoFeedsGestureLayout.a(this.a).b(this.a);
+    }
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    paramFloat1 = 1.0F;
+    int i = com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper.a(VideoFeedsGestureLayout.a(this.a))[0];
+    i = com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper.a(VideoFeedsGestureLayout.a(this.a))[1];
+    paramFloat2 = paramMotionEvent1.getY() - paramMotionEvent2.getY();
+    float f = paramMotionEvent2.getX() - paramMotionEvent1.getX();
+    if (VideoFeedsGestureLayout.a(this.a) == 0)
     {
-      return;
-      int j;
-      for (int i = 0; i < this.jdField_a_of_type_JavaUtilList.size(); i = j + 1)
+      if (Math.abs(f) - Math.abs(paramFloat2) >= 0.0F) {
+        break label154;
+      }
+      if (paramMotionEvent1.getX() >= this.a.getWidth() / 2) {
+        break label142;
+      }
+      VideoFeedsGestureLayout.a(this.a, 2);
+    }
+    switch (VideoFeedsGestureLayout.a(this.a))
+    {
+    default: 
+    case 1: 
+    case 2: 
+      label142:
+      label154:
+      do
       {
-        localObject1 = (VideoPreDownloadMgr.VideoPreDownloadParam)this.jdField_a_of_type_JavaUtilList.get(i);
-        j = i;
-        if (VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr).contains(((VideoPreDownloadMgr.VideoPreDownloadParam)localObject1).a))
-        {
-          this.jdField_a_of_type_JavaUtilList.remove(i);
-          j = i - 1;
+        return false;
+        VideoFeedsGestureLayout.a(this.a, 1);
+        break;
+        VideoFeedsGestureLayout.a(this.a, 3);
+        break;
+      } while (VideoFeedsGestureLayout.a(this.a) == null);
+      paramFloat2 /= this.a.getHeight() / 2;
+      if (Math.abs(paramFloat2) > 1.0F) {
+        if (paramFloat2 <= 1.0F) {
+          break;
         }
       }
-      if (QLog.isColorLevel())
+      break;
+    }
+    for (;;)
+    {
+      this.a.a(VideoFeedsGestureLayout.a(this.a), paramFloat1);
+      return false;
+      paramFloat1 = -1.0F;
+      continue;
+      if (VideoFeedsGestureLayout.a(this.a) == null) {
+        break;
+      }
+      paramFloat2 = f / (this.a.getWidth() / 4 * 3);
+      if (Math.abs(paramFloat2) > 1.0F) {
+        if (paramFloat2 <= 1.0F) {}
+      }
+      for (;;)
       {
-        localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
-        VideoPreDownloadMgr.VideoPreDownloadParam localVideoPreDownloadParam;
-        for (localObject1 = ""; ((Iterator)localObject2).hasNext(); localObject1 = (String)localObject1 + localVideoPreDownloadParam.a + " | ") {
-          localVideoPreDownloadParam = (VideoPreDownloadMgr.VideoPreDownloadParam)((Iterator)localObject2).next();
-        }
-        QLog.i(VideoPreDownloadMgr.a(), 2, "当前预下载列表: " + (String)localObject1);
+        this.a.a(VideoFeedsGestureLayout.a(this.a), paramFloat1);
+        return false;
+        paramFloat1 = -1.0F;
+        continue;
+        paramFloat1 = paramFloat2;
       }
-    } while (this.jdField_a_of_type_JavaUtilList.size() == 0);
-    Object localObject1 = (VideoPreDownloadMgr.VideoPreDownloadParam)this.jdField_a_of_type_JavaUtilList.get(0);
-    Object localObject2 = VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr);
-    if (localObject2 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(VideoPreDownloadMgr.a(), 2, "当前没有做预下载，启动预下载");
-      }
-      VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr, this.jdField_a_of_type_JavaUtilList);
-      VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr);
-      return;
+      paramFloat1 = paramFloat2;
     }
-    if (((String)localObject2).equals(((VideoPreDownloadMgr.VideoPreDownloadParam)localObject1).a))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(VideoPreDownloadMgr.a(), 2, "当前预下载与list第一项一致");
-      }
-      this.jdField_a_of_type_JavaUtilList.remove(0);
-      VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr, this.jdField_a_of_type_JavaUtilList);
-      return;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((VideoFeedsGestureLayout.a(this.a) != null) && (SystemClock.uptimeMillis() - VideoFeedsGestureLayout.a(this.a) > 500L)) {
+      VideoFeedsGestureLayout.a(this.a).a(this.a);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "当前预下载与list第一项不一致，暂停预下载任务，重新启动预下载");
-    }
-    VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.e();
-    VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr);
+    return false;
   }
 }
 

@@ -1,41 +1,36 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.DownloadQueryListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
 
-public final class algl
-  implements Runnable
+public class algl
+  implements Animation.AnimationListener
 {
-  public algl(String paramString, DownloadQueryListener paramDownloadQueryListener) {}
+  public algl(WorldCupShareFragment paramWorldCupShareFragment) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    LogUtility.a(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia enter");
-    try
+    paramAnimation = this.a.getView();
+    ImageView localImageView = (ImageView)paramAnimation.findViewById(2131375534);
+    localImageView.setVisibility(8);
+    if (WorldCupShareFragment.a(this.a) != null)
     {
-      new ArrayList();
-      List localList = DownloadManager.a().b(this.jdField_a_of_type_JavaLangString);
-      LogUtility.a(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia result = " + localList);
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.b_(localList);
-      }
-      return;
+      WorldCupShareFragment.a(this.a).cancelAnimation();
+      WorldCupShareFragment.a(this.a, null);
     }
-    catch (Exception localException)
-    {
-      do
-      {
-        LogUtility.c(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
-      } while (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
-    }
+    localImageView.setImageDrawable(null);
+    WorldCupShareFragment.a(this.a, paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     algl
  * JD-Core Version:    0.7.0.1
  */

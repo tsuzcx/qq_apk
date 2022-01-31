@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import airv;
-import airw;
+import aiwy;
+import aiwz;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.app.QQStoryConstant;
@@ -107,7 +107,7 @@ public class StoryUploadProcessor
   
   public static void q()
   {
-    Bosses.get().postLightWeightJob(new airw(), 0);
+    Bosses.get().postLightWeightJob(new aiwz(), 0);
   }
   
   protected long a(long paramLong)
@@ -211,11 +211,11 @@ public class StoryUploadProcessor
     return super.a(paramInt1, paramInt2);
   }
   
-  public void an_()
+  public void ap_()
   {
     SLog.d(jdField_a_of_type_JavaLangString, "send file %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i });
     this.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
-    airv localairv = new airv(this, SystemClock.uptimeMillis());
+    aiwy localaiwy = new aiwy(this, SystemClock.uptimeMillis());
     int i = -1;
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_b_of_type_Int == 196610)
     {
@@ -223,7 +223,7 @@ public class StoryUploadProcessor
       qqstory_bhd_upload_pic.ReqStoryPic localReqStoryPic = new qqstory_bhd_upload_pic.ReqStoryPic();
       localReqStoryPic.platform.set(2);
       localReqStoryPic.tojpg.set(0);
-      localReqStoryPic.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+      localReqStoryPic.version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
       this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_ArrayOfByte = localReqStoryPic.toByteArray();
     }
     for (;;)
@@ -246,7 +246,7 @@ public class StoryUploadProcessor
         if ((this.jdField_c_of_type_ArrayOfByte == null) || (this.jdField_c_of_type_ArrayOfByte.length == 0) || (this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte.length == 0)) {
           HwServlet.getConfig(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_b_of_type_JavaLangString);
         }
-        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localairv, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_ArrayOfByte, false);
+        this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), i, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, localaiwy, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_ArrayOfByte, false);
         int j = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
         SLog.c(jdField_a_of_type_JavaLangString, "Transaction submit RetCode:" + j + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " UniSeq:" + this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long + " MD5:" + this.jdField_c_of_type_JavaLangString + " uuid:" + this.g + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + i);
         if (j != 0)
@@ -265,9 +265,9 @@ public class StoryUploadProcessor
     }
   }
   
-  public void ap_()
+  public void ar_()
   {
-    super.ap_();
+    super.ar_();
     SLog.d(jdField_a_of_type_JavaLangString, "start upload %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i });
     if ((this.jdField_a_of_type_ArrayOfByte == null) && (!e()))
     {
@@ -281,7 +281,7 @@ public class StoryUploadProcessor
       d();
       return;
     }
-    an_();
+    ap_();
   }
   
   public int b()
@@ -373,7 +373,7 @@ public class StoryUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.StoryUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

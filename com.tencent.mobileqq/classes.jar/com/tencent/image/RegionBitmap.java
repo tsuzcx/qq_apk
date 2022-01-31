@@ -10,6 +10,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.pic.JpegOptions;
 import com.tencent.mobileqq.pic.JpegRegionDecoder;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +23,7 @@ public final class RegionBitmap
   private static final int MSG_RECYCLE_REGION_BITMAP = 2;
   private static final int MSG_UPDATE_DECODE_REGION = 1;
   private static final String TAG = "RegionBitmap";
-  private static HandlerThread mWorkThread = new HandlerThread("URLDrawable-Region-Update-Task");
+  private static HandlerThread mWorkThread = ThreadManagerV2.newFreeHandlerThread("URLDrawable-Region-Update-Task", 0);
   private WeakReference<OnUpdateCallback> mCallback;
   private LinkedList<DrawData> mDataList = new LinkedList();
   private Object mDataLock = new Object();

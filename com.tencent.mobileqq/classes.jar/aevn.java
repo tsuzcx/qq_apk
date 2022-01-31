@@ -1,54 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.IFetchFeedListener;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_write.AddFeedRsp;
+import com.tencent.biz.ProtoServlet;
+import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import mqq.app.MobileQQ;
+import mqq.app.NewIntent;
+import org.json.JSONObject;
 
-public class aevn
-  implements CsTask.Callback
+public final class aevn
+  implements Runnable
 {
-  public aevn(ImageFeedsUploader paramImageFeedsUploader, ImageFeedsUploader.IFetchFeedListener paramIFetchFeedListener, PicFeedUploadInfo paramPicFeedUploadInfo, int paramInt) {}
+  public aevn(String paramString, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    paramBundle = new ilive_feeds_write.AddFeedRsp();
+    Object localObject = new JSONObject();
     try
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (paramBundle.ret.get() != 0) {
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener.a("");
-        }
-      }
-      while (this.jdField_a_of_type_Int == 3)
-      {
-        ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader).jdField_a_of_type_Int = paramBundle.ret.get();
-        ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader, ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader));
-        return;
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener.a(new String(paramBundle.feed_id.get().toByteArray()));
-        }
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo.feedId = new String(paramBundle.feed_id.get().toByteArray());
-      }
+      ((JSONObject)localObject).put("targetuin", Long.parseLong(this.jdField_a_of_type_JavaLangString));
+      ((JSONObject)localObject).put("type", this.jdField_a_of_type_Int);
+      NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), ProtoServlet.class);
+      localNewIntent.putExtra("cmd", "NearbySvr.get_chat_signature");
+      WebSsoBody.WebSsoRequestBody localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
+      localObject = ((JSONObject)localObject).toString();
+      localWebSsoRequestBody.data.set((String)localObject);
+      localNewIntent.putExtra("data", localWebSsoRequestBody.toByteArray());
+      localNewIntent.setObserver(new aevo(this));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener.a("");
-      }
-      if (this.jdField_a_of_type_Int == 3)
-      {
-        ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader).jdField_a_of_type_Int = -1005;
-        ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader, ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader));
-      }
-    }
+    catch (Exception localException) {}
   }
 }
 

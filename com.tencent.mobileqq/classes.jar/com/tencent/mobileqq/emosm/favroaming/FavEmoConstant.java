@@ -13,7 +13,7 @@ public class FavEmoConstant
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    return AppConstants.aU + paramString;
+    return AppConstants.aV + paramString;
   }
   
   public static String a(String paramString1, String paramString2, String paramString3)

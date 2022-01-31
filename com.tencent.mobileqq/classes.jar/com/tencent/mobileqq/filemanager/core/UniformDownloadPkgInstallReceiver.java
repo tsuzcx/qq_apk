@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aczz;
+import adig;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -39,7 +39,7 @@ public class UniformDownloadPkgInstallReceiver
     if (QLog.isColorLevel()) {
       QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] package operate broadcast. action:" + paramContext + " pkgName:" + paramIntent);
     }
-    ThreadManager.executeOnSubThread(new aczz(this, paramContext, paramIntent));
+    ThreadManager.executeOnSubThread(new adig(this, paramContext, paramIntent));
   }
 }
 

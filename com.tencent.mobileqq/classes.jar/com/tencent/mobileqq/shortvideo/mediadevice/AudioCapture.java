@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import aibz;
+import aigt;
 import android.content.Context;
 import android.media.AudioRecord;
 import android.os.SystemClock;
@@ -138,7 +138,7 @@ public class AudioCapture
     this.jdField_g_of_type_Boolean = false;
     this.jdField_h_of_type_Boolean = false;
     this.jdField_i_of_type_Boolean = RMVideoStateMgr.a().b(6);
-    new aibz(this).start();
+    new aigt(this).start();
     return true;
   }
   
@@ -160,9 +160,6 @@ public class AudioCapture
     {
       this.jdField_e_of_type_Boolean = false;
       this.jdField_i_of_type_Int = -1;
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioCapture", 2, "checkAudioPrivilage[ERR_AUDIO_INVALID_OPERATION]: result=" + paramInt);
-      }
     }
     for (;;)
     {
@@ -192,13 +189,13 @@ public class AudioCapture
       {
         bool = CameraCompatibleList.a(CameraCompatibleList.p);
         if ((!bool) || (this.jdField_d_of_type_Int >= 5)) {
-          break label334;
+          break label303;
         }
         this.jdField_h_of_type_Boolean = PreviewContext.checkIsDisablePrivilage(this.jdField_a_of_type_ArrayOfByte, j);
-        label184:
+        label153:
         this.jdField_d_of_type_Int += 1;
         if (this.jdField_h_of_type_Boolean) {
-          break label342;
+          break label311;
         }
         this.jdField_g_of_type_Boolean = true;
       }
@@ -212,10 +209,10 @@ public class AudioCapture
         }
         QLog.d("AudioCapture", 2, "checkAudioPrivilage: mDisableAudioPrivilage=" + this.jdField_h_of_type_Boolean + " limit=" + j + " mAudioCanUsed=" + this.jdField_e_of_type_Boolean);
         break;
-        label334:
+        label303:
         this.jdField_h_of_type_Boolean = false;
-        break label184;
-        label342:
+        break label153;
+        label311:
         if ((this.jdField_h_of_type_Boolean) && (this.jdField_d_of_type_Int >= 5))
         {
           this.jdField_g_of_type_Boolean = true;

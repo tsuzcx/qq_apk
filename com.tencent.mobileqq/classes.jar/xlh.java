@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig.ConfigInfo;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public final class xlh
+public class xlh
   implements Runnable
 {
-  public xlh(MessageHandler paramMessageHandler, String paramString, int paramInt) {}
+  public xlh(PreloadManager paramPreloadManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "synDataFromMoggy");
+    }
+    Object localObject = (QWalletConfigManager)this.a.a.getManager(244);
+    if (localObject != null)
+    {
+      ((QWalletConfigManager)localObject).a("preload", this.a);
+      localObject = ((QWalletConfigManager)localObject).a("preload");
+      this.a.a((QWalletConfig.ConfigInfo)localObject);
+    }
   }
 }
 

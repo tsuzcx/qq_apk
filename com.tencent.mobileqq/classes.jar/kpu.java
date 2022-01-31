@@ -1,17 +1,38 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.FullScreenTopContainerHolder;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class kpu
-  implements Runnable
+  extends Handler
 {
-  public kpu(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, AccountDetailBaseAdapter.FullScreenTopContainerHolder paramFullScreenTopContainerHolder, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2) {}
+  public kpu(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter$FullScreenTopContainerHolder.a.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter$FullScreenTopContainerHolder.b.setLayoutParams(this.b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    switch (paramMessage.what)
+    {
+    case -1: 
+    default: 
+      return;
+    case 0: 
+      this.a.a.jdField_a_of_type_Byte = 0;
+      LebaSearchPluginManagerActivity.a(this.a);
+      localStringBuilder.append(this.a.getString(2131430539));
+      localStringBuilder.append(this.a.getString(2131430536));
+      localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strResName);
+      QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+      return;
+    }
+    this.a.a.jdField_a_of_type_Byte = 1;
+    LebaSearchPluginManagerActivity.a(this.a);
+    localStringBuilder.append(this.a.getString(2131430539));
+    localStringBuilder.append(this.a.getString(2131430537));
+    localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strResName);
+    QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
   }
 }
 

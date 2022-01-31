@@ -1,36 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgDBHelper;
-import com.tencent.mobileqq.activity.qwallet.notifymsg.NotifyMsgManager;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 
-public final class xfh
+class xfh
   implements Runnable
 {
-  public xfh(boolean paramBoolean, ArrayList paramArrayList) {}
+  xfh(xfg paramxfg, int paramInt) {}
   
   public void run()
   {
-    do
-    {
-      synchronized (NotifyMsgManager.jdField_a_of_type_JavaLangObject)
-      {
-        if (NotifyMsgManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletNotifymsgNotifyMsgDBHelper == null) {
-          NotifyMsgManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletNotifymsgNotifyMsgDBHelper = new NotifyMsgDBHelper(BaseApplicationImpl.getContext());
-        }
-        ??? = QWalletTools.a();
-        if (??? == null) {
-          return;
-        }
-      }
-    } while (NotifyMsgManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletNotifymsgNotifyMsgDBHelper == null);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      NotifyMsgManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletNotifymsgNotifyMsgDBHelper.b(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_Int == 1) {
+      PasswdRedBagManager.a(this.jdField_a_of_type_Xfg.a).a(this.jdField_a_of_type_Xfg.a.b);
+    }
+    while (this.jdField_a_of_type_Int != 0) {
       return;
     }
-    NotifyMsgManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletNotifymsgNotifyMsgDBHelper.c(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
+    PasswdRedBagManager.a(this.jdField_a_of_type_Xfg.a).a(this.jdField_a_of_type_Xfg.a.a);
   }
 }
 

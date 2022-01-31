@@ -19,7 +19,7 @@ public class AdvertisementPopupWindow
   
   public void onClick(View paramView)
   {
-    QQToast.a(BaseApplication.getContext(), 0, 2131438684, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+    QQToast.a(BaseApplication.getContext(), 0, 2131438707, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
     dismiss();
     AdvertisementRecentUserManager.a().a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 3, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem);
   }

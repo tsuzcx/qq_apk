@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import ahod;
+import ahsv;
 import android.support.annotation.NonNull;
 import android.view.Surface;
 
@@ -10,7 +10,7 @@ public abstract interface FlowDecodeSurface
   
   public abstract void a();
   
-  public abstract void a(@NonNull ahod paramahod, boolean paramBoolean);
+  public abstract void a(@NonNull ahsv paramahsv, boolean paramBoolean);
   
   public abstract void b();
 }

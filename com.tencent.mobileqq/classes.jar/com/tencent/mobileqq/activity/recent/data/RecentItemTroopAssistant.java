@@ -34,8 +34,8 @@ public class RecentItemTroopAssistant
   {
     if (this.jdField_c_of_type_Int > 0)
     {
-      this.jdField_d_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131436684), new Object[] { Integer.valueOf(this.jdField_c_of_type_Int) });
-      this.e = paramContext.getResources().getColor(2131494288);
+      this.jdField_d_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131436704), new Object[] { Integer.valueOf(this.jdField_c_of_type_Int) });
+      this.e = paramContext.getResources().getColor(2131494294);
       return;
     }
     this.jdField_d_of_type_JavaLangCharSequence = "";
@@ -67,7 +67,7 @@ public class RecentItemTroopAssistant
     }
     super.a(paramQQAppInterface, paramContext);
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131435186);
+      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131435202);
     }
     QQMessageFacade localQQMessageFacade = paramQQAppInterface.a();
     TroopAssistantManager localTroopAssistantManager;
@@ -100,14 +100,14 @@ public class RecentItemTroopAssistant
         if ((TextUtils.isEmpty(localMsgSummary.b)) && (TextUtils.isEmpty(localMsgSummary.jdField_c_of_type_JavaLangCharSequence)))
         {
           localMsgSummary.jdField_a_of_type_JavaLangCharSequence = null;
-          localMsgSummary.b = paramContext.getString(2131435187);
+          localMsgSummary.b = paramContext.getString(2131435203);
         }
         a(paramQQAppInterface);
         a(paramQQAppInterface, localMsgSummary);
         a(paramQQAppInterface, paramContext, localMsgSummary);
         a(paramContext);
         if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)) && (localObject != null) && (localMsgSummary != null) && (AnonymousChatHelper.a((MessageRecord)localObject))) {
-          this.jdField_c_of_type_JavaLangCharSequence = localMsgSummary.a(paramContext, paramContext.getResources().getString(2131430287), -1);
+          this.jdField_c_of_type_JavaLangCharSequence = localMsgSummary.a(paramContext, paramContext.getResources().getString(2131430290), -1);
         }
         if (!AppSetting.b) {
           break;

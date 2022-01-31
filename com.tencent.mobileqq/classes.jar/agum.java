@@ -1,31 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.qcall.LightalkShieldHandler;
-import com.tencent.mobileqq.qcall.LightalkSwitchHanlder;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.UinUtils;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class agum
-  implements DialogInterface.OnClickListener
+public class agum
+  implements Runnable
 {
-  agum(aguk paramaguk, QQCustomDialog paramQQCustomDialog) {}
+  public agum(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, int paramInt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    Object localObject = new agun(this);
+    int i = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (DownloadListener)localObject);
+    if ((i == 19) || (i == 0))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(20);
+      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("style download success , url : %s, position : %d ", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.b.remove(this.jdField_a_of_type_JavaLangString);
     }
-    while (paramInt != 1) {
+    do
+    {
       return;
-    }
-    QCallDetailActivity.a(this.jdField_a_of_type_Aguk.a).b(10, UinUtils.a(QCallDetailActivity.a(this.jdField_a_of_type_Aguk.a)));
-    QCallDetailActivity.a(this.jdField_a_of_type_Aguk.a).a((byte)0);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(21);
+      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
+    } while (!QLog.isColorLevel());
+    QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("styles download fail , url : %s, position : %d ", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agum
  * JD-Core Version:    0.7.0.1
  */

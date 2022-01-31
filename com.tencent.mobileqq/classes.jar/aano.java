@@ -1,31 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.av.avgesture.AVGestureWrapper;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class aano
-  implements DialogInterface.OnClickListener
+class aano
+  implements Runnable
 {
-  public aano(ArCardSelectMemberActivity paramArCardSelectMemberActivity) {}
+  aano(aann paramaann) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (!NetworkUtil.g(this.a.getApplicationContext())) {
-      QQToast.a(this.a, 2131437530, 1).a();
-    }
-    for (;;)
+    try
     {
-      paramDialogInterface.dismiss();
-      ArCardSelectMemberActivity.a(this.a, null);
+      AVGestureWrapper.clearCache();
+      ARWorldCupGameLogicManager.a().e();
       return;
-      this.a.u();
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        QLog.i("AREngine_AREngine", 2, "AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = " + localUnsatisfiedLinkError.getMessage());
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.i("AREngine_AREngine", 2, "AVGestureWrapper.clearCache failed. err = " + localException.getMessage());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aano
  * JD-Core Version:    0.7.0.1
  */

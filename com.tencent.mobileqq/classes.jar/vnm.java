@@ -1,19 +1,10 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.SystemItemBuilder;
 
-class vnm
-  implements EIPCResultCallback
+public class vnm
+  extends BaseBubbleBuilder.ViewHolder
 {
-  vnm(vnk paramvnk) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (-102 == paramEIPCResult.code) {
-      AIOGalleryScene.M(this.a.a).finish();
-    }
-  }
+  public vnm(SystemItemBuilder paramSystemItemBuilder) {}
 }
 
 

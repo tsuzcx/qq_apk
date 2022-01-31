@@ -3,7 +3,6 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -34,8 +33,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-import mez;
-import mfa;
+import mim;
+import min;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,7 +53,7 @@ public class VideoPlayerWrapper
   private TVK_NetVideoInfo jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_NetVideoInfo;
   private TVK_UserInfo jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo;
   private Object jdField_a_of_type_JavaLangObject;
-  public ArrayList a;
+  private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   public boolean a;
   private int b;
@@ -68,8 +67,7 @@ public class VideoPlayerWrapper
   private long f;
   private long g;
   private long h;
-  private long i;
-  private long j;
+  private long i = -1L;
   
   public VideoPlayerWrapper(Context paramContext)
   {
@@ -98,26 +96,26 @@ public class VideoPlayerWrapper
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper$MediaPlayListenerAdapter != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper$MediaPlayListenerAdapter.a(this, paramString);
     }
-    long l = System.currentTimeMillis();
-    if ((!TextUtils.isEmpty(paramString)) && ((this.j == 0L) || (l - this.j > 5000L))) {}
+    QLog.d("Q.readinjoy.video", 2, "[TVK_IMediaPlayer] OnDownloadCallback(): s:" + paramString);
     try
     {
       paramString = new JSONObject(paramString);
-      l = paramString.getLong("fileSize");
-      int k = paramString.getInt("speedKBS");
-      int m = paramString.getInt("offset");
+      long l = paramString.getLong("fileSize");
+      int j = paramString.getInt("speedKBS");
+      int k = paramString.getInt("offset");
+      int m = paramString.getInt("callBackType");
       if ((l > 0L) && (this.jdField_b_of_type_Long == 0L)) {
         this.jdField_b_of_type_Long = l;
       }
-      if (k >= 0)
+      if (m == 2)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList == null) {
           this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
         }
-        this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(k));
+        this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
       }
-      if (m > 0) {
-        this.jdField_c_of_type_Long = m;
+      if (k > 0) {
+        this.jdField_c_of_type_Long = k;
       }
       return;
     }
@@ -176,6 +174,26 @@ public class VideoPlayerWrapper
   public TVK_IMediaPlayer a()
   {
     return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+  }
+  
+  public String a()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int j = 0;
+      while (j < k)
+      {
+        localStringBuilder.append(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(j)).intValue());
+        if (j != k - 1) {
+          localStringBuilder.append(",");
+        }
+        j += 1;
+      }
+      return localStringBuilder.toString();
+    }
+    return "";
   }
   
   public void a()
@@ -293,7 +311,7 @@ public class VideoPlayerWrapper
     if (this.jdField_a_of_type_AndroidContentContext != null)
     {
       if (!paramBoolean2) {
-        break label281;
+        break label280;
       }
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_AndroidContentContext, ThirdVideoManager.a(paramString2), paramLong1, 0L, paramString1, null);
     }
@@ -304,7 +322,7 @@ public class VideoPlayerWrapper
       this.f = paramLong1;
       this.jdField_a_of_type_Int = paramInt1;
       return;
-      label281:
+      label280:
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_a_of_type_AndroidContentContext, paramString2, paramLong1, 0L, paramString1);
     }
   }
@@ -445,18 +463,18 @@ public class VideoPlayerWrapper
   
   public long e()
   {
-    if ((this.i == 0L) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+    if ((this.i == -1L) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      int n = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int m = Math.min(10, this.jdField_a_of_type_JavaUtilArrayList.size());
+      int j = 0;
       int k = 0;
-      int m = 0;
-      while (k < n)
+      while (j < m)
       {
-        m += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(k)).intValue();
-        k += 1;
+        k += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(j)).intValue();
+        j += 1;
       }
-      if (n != 0) {
-        this.i = (m / n);
+      if (m != 0) {
+        this.i = (k / m);
       }
     }
     return this.i;
@@ -473,13 +491,26 @@ public class VideoPlayerWrapper
   
   public long f()
   {
-    long l2 = 0L;
+    long l2 = -1L;
     long l1 = l2;
-    if (this.jdField_a_of_type_Long > 0L)
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
       l1 = l2;
-      if (this.jdField_c_of_type_Long > 0L) {
-        l1 = this.jdField_c_of_type_Long / this.jdField_a_of_type_Long;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+        int j = 0;
+        l1 = -1L;
+        if (j < k)
+        {
+          int m = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(j)).intValue();
+          if (j == 0) {}
+          for (l1 = m;; l1 = Math.min(m, l1))
+          {
+            j += 1;
+            break;
+          }
+        }
       }
     }
     return l1;
@@ -494,6 +525,33 @@ public class VideoPlayerWrapper
     }
   }
   
+  public long g()
+  {
+    long l2 = -1L;
+    long l1 = l2;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      l1 = l2;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        int k = this.jdField_a_of_type_JavaUtilArrayList.size();
+        int j = 0;
+        l1 = -1L;
+        if (j < k)
+        {
+          int m = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(j)).intValue();
+          if (j == 0) {}
+          for (l1 = m;; l1 = Math.max(m, l1))
+          {
+            j += 1;
+            break;
+          }
+        }
+      }
+    }
+    return l1;
+  }
+  
   public void g()
   {
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
@@ -501,11 +559,25 @@ public class VideoPlayerWrapper
     }
   }
   
+  public long h()
+  {
+    long l2 = 0L;
+    long l1 = l2;
+    if (this.jdField_a_of_type_Long > 0L)
+    {
+      l1 = l2;
+      if (this.jdField_c_of_type_Long > 0L) {
+        l1 = this.jdField_c_of_type_Long / this.jdField_a_of_type_Long;
+      }
+    }
+    return l1;
+  }
+  
   public void h()
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(8);
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      ThreadManager.executeOnSubThread(new mfa(this, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer));
+      ThreadManager.executeOnSubThread(new min(this, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer));
     }
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() != null))
     {
@@ -522,7 +594,6 @@ public class VideoPlayerWrapper
     this.jdField_a_of_type_JavaUtilArrayList = null;
     this.i = 0L;
     this.jdField_c_of_type_Long = 0L;
-    this.j = 0L;
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "VideoPlayerWrapper: destory ");
     }
@@ -648,7 +719,7 @@ public class VideoPlayerWrapper
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
       this.d = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
     }
-    ThreadManager.post(new mez(this, paramTVK_IMediaPlayer), 5, null, false);
+    ThreadManager.post(new mim(this, paramTVK_IMediaPlayer), 5, null, false);
   }
 }
 

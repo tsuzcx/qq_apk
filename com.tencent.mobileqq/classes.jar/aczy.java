@@ -1,143 +1,47 @@
-import android.app.Notification;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.RemoteViews;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class aczy
+  implements Runnable
 {
-  float jdField_a_of_type_Float = 14.0F;
-  int jdField_a_of_type_Int = 0;
-  DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
-  Integer jdField_a_of_type_JavaLangInteger = null;
-  final String jdField_a_of_type_JavaLangString = "SearchForText";
-  float jdField_b_of_type_Float = 16.0F;
-  Integer jdField_b_of_type_JavaLangInteger = null;
-  final String jdField_b_of_type_JavaLangString = "SearchForTitle";
+  public aczy(QfileLocalFileDocTabView paramQfileLocalFileDocTabView) {}
   
-  public aczy(UniformDownloadNfn paramUniformDownloadNfn, Context paramContext)
+  public void run()
   {
-    if (paramContext != null)
+    HashMap localHashMap = new HashMap();
+    Object localObject1 = FMSettings.a().b();
+    if (this.a.a.d() != 8) {}
+    for (boolean bool = true;; bool = false)
     {
-      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-      a(paramContext, false);
-    }
-  }
-  
-  private boolean a(ViewGroup paramViewGroup)
-  {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      FileCategoryUtil.a(bool, (String)localObject1, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
+      localObject1 = FMSettings.a().a();
+      if (localObject1 != null) {
+        FileCategoryUtil.a(bool, (String)localObject1, ".doc|.docx|.wps|.pages|.ppt|.pptx.|.dps|.keynote|.xls|.xlsx|.et|.numbers|.pdf|", "", localHashMap, null);
+      }
+      localObject1 = new HashMap();
+      Iterator localIterator = localHashMap.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForTitle".equals(localTextView.getText().toString()))
-        {
-          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_b_of_type_Float = localTextView.getTextSize();
-          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
+        Object localObject2 = (String)localIterator.next();
+        String str = this.a.a((String)localObject2);
+        localObject2 = (List)localHashMap.get(localObject2);
+        if (!((HashMap)localObject1).containsKey(str)) {
+          ((HashMap)localObject1).put(str, new ArrayList());
         }
+        ((List)((HashMap)localObject1).get(str)).addAll((Collection)localObject2);
       }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
     }
-    return false;
-  }
-  
-  private boolean b(ViewGroup paramViewGroup)
-  {
-    int j = paramViewGroup.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      if ((paramViewGroup.getChildAt(i) instanceof TextView))
-      {
-        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
-        if ("SearchForText".equals(localTextView.getText().toString()))
-        {
-          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
-          this.jdField_a_of_type_Float = localTextView.getTextSize();
-          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
-          return true;
-        }
-      }
-      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
-      {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Integer a()
-  {
-    return this.jdField_a_of_type_JavaLangInteger;
-  }
-  
-  public void a(Context paramContext, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
-    }
-    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {}
-    while (this.jdField_a_of_type_Int > 3) {
-      return;
-    }
-    this.jdField_a_of_type_Int += 1;
-    try
-    {
-      Notification localNotification = new Notification();
-      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
-      LinearLayout localLinearLayout = new LinearLayout(paramContext);
-      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, localLinearLayout);
-      if (!a(paramContext)) {
-        QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. recurseTitleGroup failed");
-      }
-      if (!b(paramContext)) {
-        QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. recurseTextGroup, failed");
-      }
-      localLinearLayout.removeAllViews();
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.w(UniformDownloadNfn.jdField_a_of_type_JavaLangString, 1, "[UniformDL]. extractColors, exception");
-      paramContext.printStackTrace();
-      return;
-    }
-    catch (NoSuchFieldError paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public Integer b()
-  {
-    return this.jdField_b_of_type_JavaLangInteger;
+    FileCategoryUtil.a((Map)localObject1);
+    QfileLocalFileDocTabView.a(this.a, new aczz(this, (HashMap)localObject1));
   }
 }
 

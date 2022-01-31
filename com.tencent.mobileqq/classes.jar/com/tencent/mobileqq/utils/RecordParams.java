@@ -370,6 +370,7 @@ public abstract class RecordParams
         QLog.d("RecordParams", 2, "getSilkFs " + paramArrayOfByte[0] + str);
       }
     } while (str.startsWith("#!SILK_V"));
+    QLog.e("RecordParams", 1, "isSilkFileHead: headString = " + str);
     return false;
   }
   

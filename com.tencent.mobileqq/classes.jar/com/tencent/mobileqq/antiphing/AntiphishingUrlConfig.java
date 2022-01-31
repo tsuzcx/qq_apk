@@ -14,16 +14,16 @@ import java.util.ArrayList;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
-import yjg;
-import yjh;
-import yji;
+import ypl;
+import ypm;
+import ypn;
 
 public class AntiphishingUrlConfig
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new yjg(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new ypl(this, Looper.getMainLooper());
   private String jdField_a_of_type_JavaLangString = "antiphishingConfig";
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private boolean jdField_a_of_type_Boolean;
@@ -68,7 +68,7 @@ public class AntiphishingUrlConfig
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_b_of_type_Int = paramInt;
     QLog.d(this.jdField_a_of_type_JavaLangString, 1, "filehash:" + paramString2 + "downloadurl:" + paramString1);
-    ThreadManager.post(new yjh(this, paramContext, paramString1, paramString2), 5, null, true);
+    ThreadManager.post(new ypm(this, paramContext, paramString1, paramString2), 5, null, true);
   }
   
   public void a(String paramString, Context paramContext)
@@ -85,12 +85,12 @@ public class AntiphishingUrlConfig
       return false;
     }
     localObject = new File((String)localObject);
-    yji localyji = new yji();
+    ypn localypn = new ypn();
     try
     {
-      SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new InputStreamReader(new FileInputStream((File)localObject), "UTF-8")), localyji);
-      this.jdField_a_of_type_Int = localyji.a();
-      this.jdField_a_of_type_JavaUtilArrayList = localyji.a();
+      SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new InputStreamReader(new FileInputStream((File)localObject), "UTF-8")), localypn);
+      this.jdField_a_of_type_Int = localypn.a();
+      this.jdField_a_of_type_JavaUtilArrayList = localypn.a();
       return true;
     }
     catch (Exception localException)

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import actn;
-import acto;
-import actp;
-import actq;
-import actr;
+import adbu;
+import adbv;
+import adbw;
+import adbx;
+import adby;
 import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
@@ -33,7 +33,7 @@ public class QfileRecentPicFileTabView
 {
   private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver;
   private IClickListener_Ver51 jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51;
-  QfilePinnedHeaderExpandableListView.OnSelectListener jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener = new actq(this);
+  QfilePinnedHeaderExpandableListView.OnSelectListener jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView$OnSelectListener = new adbx(this);
   
   public QfileRecentPicFileTabView(Context paramContext)
   {
@@ -75,7 +75,7 @@ public class QfileRecentPicFileTabView
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new actn(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new adbu(this);
   }
   
   private void k()
@@ -89,7 +89,7 @@ public class QfileRecentPicFileTabView
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a().Q();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new acto(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51 = new adbv(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilIClickListener_Ver51);
   }
   
@@ -155,7 +155,7 @@ public class QfileRecentPicFileTabView
       this.jdField_a_of_type_JavaUtilList.add(paramFileManagerEntity);
       Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
     }
-    a(new actp(this, paramFileManagerEntity));
+    a(new adbw(this, paramFileManagerEntity));
   }
   
   protected boolean b(FileManagerEntity paramFileManagerEntity)
@@ -194,7 +194,7 @@ public class QfileRecentPicFileTabView
   
   public void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.runOnUiThread(new actr(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.runOnUiThread(new adby(this));
   }
   
   public void j()

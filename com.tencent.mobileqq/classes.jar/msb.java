@@ -1,28 +1,35 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter.VideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
+import java.util.List;
 
 public class msb
   implements Runnable
 {
-  public msb(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface) {}
+  public msb(FastWebVideoFeedsAdapter paramFastWebVideoFeedsAdapter) {}
   
   public void run()
   {
-    Object localObject = BaseApplication.getContext().getSharedPreferences("sp_public_account_with_cuin_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    if (localObject != null)
+    FastWebVideoInfo localFastWebVideoInfo = (FastWebVideoInfo)FastWebVideoFeedsAdapter.a(this.a).get(0);
+    Object localObject;
+    if (FastWebVideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_read_time", ServiceAccountFolderManager.b(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager));
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_enter_time", ServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager));
-      ((SharedPreferences.Editor)localObject).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("ServiceAccountFolderManager", 2, "setFolderLastReadTime->mFolderLastReadTime:" + ServiceAccountFolderManager.b(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager) + ", mFolderLastEnterTime:" + ServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager));
+      localObject = FastWebVideoFeedsAdapter.a(this.a).getChildAt(FastWebVideoFeedsAdapter.a(this.a).getHeaderViewsCount());
+      if ((localObject != null) && ((((View)localObject).getTag() instanceof FastWebVideoFeedsAdapter.VideoItemHolder)))
+      {
+        localObject = (FastWebVideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
+        if (!localFastWebVideoInfo.a(FastWebVideoFeedsAdapter.a(this.a), FastWebVideoFeedsAdapter.a(this.a))) {
+          break label106;
+        }
+        ((FastWebVideoFeedsAdapter.VideoItemHolder)localObject).k.setText(localFastWebVideoInfo.j);
       }
     }
+    return;
+    label106:
+    ((FastWebVideoFeedsAdapter.VideoItemHolder)localObject).a.setText(localFastWebVideoInfo.j);
   }
 }
 

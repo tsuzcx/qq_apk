@@ -24,7 +24,7 @@ public class AppSetting
   public static int c = 0;
   private static final String c;
   public static boolean c = false;
-  public static final String channelId = "10001264";
+  public static final String channelId = "70124";
   public static int d;
   private static String d;
   public static boolean d;
@@ -41,7 +41,7 @@ public class AppSetting
   
   static
   {
-    jdField_a_of_type_Int = 537057068;
+    jdField_a_of_type_Int = 537057539;
     jdField_a_of_type_Boolean = true;
     c = Build.VERSION.RELEASE;
     jdField_d_of_type_Int = 1048576;
@@ -76,7 +76,7 @@ public class AppSetting
   
   public static int a(String paramString)
   {
-    String[] arrayOfString = "7.6.3".split("\\.");
+    String[] arrayOfString = "7.6.8".split("\\.");
     paramString = paramString.split("\\.");
     int m;
     int n;
@@ -109,7 +109,7 @@ public class AppSetting
   
   public static final String a()
   {
-    return "B6ADC917EDCDFB1F";
+    return "2FA567FED11ED607";
   }
   
   public static String a(Context paramContext, String paramString)
@@ -146,7 +146,7 @@ public class AppSetting
       }
     }
     localStringBuffer.append((String)localObject2 + "/");
-    localStringBuffer.append("10001264/");
+    localStringBuffer.append("70124/");
     localStringBuffer.append("/");
     localStringBuffer.append("/");
     localStringBuffer.append("/");
@@ -354,7 +354,7 @@ public class AppSetting
       if (str2.length() > 20) {
         localObject2 = str2.substring(0, 20);
       }
-      jdField_d_of_type_JavaLangString = "AQQ_2013 4.6/2013 7.6.33565&NA_0/000000&ADR&" + jdField_e_of_type_JavaLangString + "18" + "&" + (String)localObject2 + "&" + "10001264" + "&" + "B6ADC917EDCDFB1F" + "&" + c + "&" + "V3";
+      jdField_d_of_type_JavaLangString = "AQQ_2013 4.6/2013 7.6.83615&NA_0/000000&ADR&" + jdField_e_of_type_JavaLangString + "18" + "&" + (String)localObject2 + "&" + "70124" + "&" + "2FA567FED11ED607" + "&" + c + "&" + "V3";
       return jdField_d_of_type_JavaLangString;
       label299:
       str2 = "ALL";
@@ -363,12 +363,12 @@ public class AppSetting
   
   public static final String c()
   {
-    return "android 7.6.3";
+    return "android 7.6.8";
   }
   
   public static String d()
   {
-    return "351230";
+    return "355371";
   }
 }
 

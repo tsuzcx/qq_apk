@@ -11,14 +11,14 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToastNotifier;
-import tsj;
-import tsk;
+import txb;
+import txc;
 
 public class SettingUncommUsedContactsActivity
   extends IphoneTitleBarActivity
 {
-  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new tsk(this);
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tsj(this);
+  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new txc(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new txb(this);
   public FormSwitchItem a;
   final String jdField_a_of_type_JavaLangString = "SettingUnommUsedContacts";
   public FormSwitchItem b;
@@ -32,22 +32,22 @@ public class SettingUncommUsedContactsActivity
   
   void a()
   {
-    setContentViewB(2130970618);
-    setTitle(2131437753);
-    this.leftView.setText(2131433698);
+    setContentViewB(2130970631);
+    setTitle(2131437773);
+    this.leftView.setText(2131433712);
     this.rightViewText.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371444));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371442));
     this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), this.app.d(false));
-    this.b = ((FormSwitchItem)findViewById(2131371445));
+    this.b = ((FormSwitchItem)findViewById(2131371443));
     this.b.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
     a(this.b.a(), this.app.e(false));
     if (AppSetting.b)
     {
-      this.centerView.setContentDescription(getString(2131437753));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131437756));
+      this.centerView.setContentDescription(getString(2131437773));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131437776));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setFocusable(true);
-      this.b.setContentDescription(getString(2131437757));
+      this.b.setContentDescription(getString(2131437777));
       this.b.setFocusable(true);
     }
   }

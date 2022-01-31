@@ -1,30 +1,23 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnVideoDataEventListener;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.mobileqq.service.message.MessageCache;
 
 public class adfk
-  implements FileBrowserModelBase.OnVideoDataEventListener
 {
-  public adfk(VideoFilePresenter paramVideoFilePresenter) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
   
-  public void a()
+  public adfk(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt)
   {
-    this.a.a.runOnUiThread(new adfl(this));
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.a.a(paramInt, paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.a.a.runOnUiThread(new adfm(this, paramString1));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = MessageCache.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adfk
  * JD-Core Version:    0.7.0.1
  */

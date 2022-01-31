@@ -51,8 +51,8 @@ public class PullActiveManager
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = 9653;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = AppConstants.ao;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = AppConstants.ao;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = AppConstants.ap;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = AppConstants.ap;
       if (this.jdField_a_of_type_AndroidContentIntent != null) {
         this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(jdField_b_of_type_JavaLangString);
       }
@@ -77,7 +77,7 @@ public class PullActiveManager
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null)
     {
       localObject = new RecentUser();
-      ((RecentUser)localObject).uin = AppConstants.ao;
+      ((RecentUser)localObject).uin = AppConstants.ap;
       ((RecentUser)localObject).type = 9653;
       ((RecentUser)localObject).msgType = -1000;
       this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush = new RecentItemPullActivePush((RecentUser)localObject);

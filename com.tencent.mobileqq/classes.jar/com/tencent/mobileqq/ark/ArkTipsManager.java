@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark;
 
-import aayf;
-import aayg;
-import aayh;
-import aayj;
-import aayk;
+import abfa;
+import abfb;
+import abfc;
+import abfe;
+import abff;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -39,8 +39,8 @@ public class ArkTipsManager
 {
   private static volatile ArkTipsManager jdField_a_of_type_ComTencentMobileqqArkArkTipsManager;
   private long jdField_a_of_type_Long = -1L;
-  private aayk jdField_a_of_type_Aayk;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aayf(this);
+  private abff jdField_a_of_type_Abff;
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new abfa(this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private WeakReference b;
@@ -76,19 +76,19 @@ public class ArkTipsManager
   
   private void a(Bitmap paramBitmap, Context paramContext)
   {
-    if ((this.jdField_a_of_type_Aayk != null) && (paramContext != null))
+    if ((this.jdField_a_of_type_Abff != null) && (paramContext != null))
     {
       paramBitmap = new BitmapDrawable(paramContext.getResources(), paramBitmap);
-      if (this.jdField_a_of_type_Aayk.jdField_a_of_type_JavaLangRefWeakReference != null)
+      if (this.jdField_a_of_type_Abff.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        paramContext = (TipsBar)this.jdField_a_of_type_Aayk.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramContext = (TipsBar)this.jdField_a_of_type_Abff.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (paramContext != null) {
           paramContext.setTipsIcon(paramBitmap);
         }
       }
-      if (this.jdField_a_of_type_Aayk.jdField_b_of_type_JavaLangRefWeakReference != null)
+      if (this.jdField_a_of_type_Abff.jdField_b_of_type_JavaLangRefWeakReference != null)
       {
-        paramContext = (ArkTipsBar)this.jdField_a_of_type_Aayk.jdField_b_of_type_JavaLangRefWeakReference.get();
+        paramContext = (ArkTipsBar)this.jdField_a_of_type_Abff.jdField_b_of_type_JavaLangRefWeakReference.get();
         if (paramContext != null) {
           paramContext.a(paramBitmap);
         }
@@ -191,13 +191,13 @@ public class ArkTipsManager
   
   private void a(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_Aayk != null) && (this.jdField_a_of_type_Aayk.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Aayk.jdField_a_of_type_JavaLangString.equals(paramString1)) && (this.jdField_b_of_type_JavaLangRefWeakReference != null))
+    if ((this.jdField_a_of_type_Abff != null) && (this.jdField_a_of_type_Abff.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Abff.jdField_a_of_type_JavaLangString.equals(paramString1)) && (this.jdField_b_of_type_JavaLangRefWeakReference != null))
     {
       paramString1 = (BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get();
       if (paramString1 != null)
       {
-        paramString1 = paramString1.a(paramString2, this.jdField_a_of_type_Aayk.jdField_a_of_type_Long);
-        this.jdField_a_of_type_Aayk.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramString1);
+        paramString1 = paramString1.a(paramString2, this.jdField_a_of_type_Abff.jdField_a_of_type_Long);
+        this.jdField_a_of_type_Abff.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramString1);
       }
     }
   }
@@ -209,16 +209,16 @@ public class ArkTipsManager
   
   public ArkAioContainerWrapper a()
   {
-    if (this.jdField_a_of_type_Aayk == null) {
+    if (this.jdField_a_of_type_Abff == null) {
       return null;
     }
-    return this.jdField_a_of_type_Aayk.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper;
+    return this.jdField_a_of_type_Abff.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper;
   }
   
   public MessageForArkApp a()
   {
-    if (this.jdField_a_of_type_Aayk != null) {
-      return this.jdField_a_of_type_Aayk.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp;
+    if (this.jdField_a_of_type_Abff != null) {
+      return this.jdField_a_of_type_Abff.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp;
     }
     return null;
   }
@@ -226,11 +226,11 @@ public class ArkTipsManager
   public TipsBar a(Context paramContext)
   {
     TipsBar localTipsBar = new TipsBar(paramContext);
-    aayk localaayk = this.jdField_a_of_type_Aayk;
-    if ((localaayk != null) && (localaayk.jdField_b_of_type_JavaLangString != null))
+    abff localabff = this.jdField_a_of_type_Abff;
+    if ((localabff != null) && (localabff.jdField_b_of_type_JavaLangString != null))
     {
-      localaayk.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localTipsBar);
-      localTipsBar.setTipsText(localaayk.jdField_b_of_type_JavaLangString);
+      localabff.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localTipsBar);
+      localTipsBar.setTipsText(localabff.jdField_b_of_type_JavaLangString);
     }
     a(paramContext);
     return localTipsBar;
@@ -238,8 +238,8 @@ public class ArkTipsManager
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Aayk != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Aayk.d)) && (this.c != null)) {
-      ArkAppDataReport.i((QQAppInterface)this.c.get(), this.jdField_a_of_type_Aayk.d);
+    if ((this.jdField_a_of_type_Abff != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Abff.d)) && (this.c != null)) {
+      ArkAppDataReport.i((QQAppInterface)this.c.get(), this.jdField_a_of_type_Abff.d);
     }
   }
   
@@ -249,58 +249,58 @@ public class ArkTipsManager
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("useq=").append(paramLong);
-      if (this.jdField_a_of_type_Aayk != null) {
+      if (this.jdField_a_of_type_Abff != null) {
         break label66;
       }
     }
     label66:
-    for (String str = "";; str = "<>" + this.jdField_a_of_type_Aayk.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper + "," + this.jdField_a_of_type_Aayk.jdField_b_of_type_Long)
+    for (String str = "";; str = "<>" + this.jdField_a_of_type_Abff.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper + "," + this.jdField_a_of_type_Abff.jdField_b_of_type_Long)
     {
       QLog.d("ArkTipsManager", 2, str);
-      ArkAppCenter.a().postToMainThread(new aayj(this, paramLong));
+      ArkAppCenter.a().postToMainThread(new abfe(this, paramLong));
       return;
     }
   }
   
   public void a(Activity paramActivity, QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_Aayk == null) || (paramActivity == null) || (paramQQAppInterface == null)) {
+    if ((this.jdField_a_of_type_Abff == null) || (paramActivity == null) || (paramQQAppInterface == null)) {
       return;
     }
-    int i = this.jdField_a_of_type_Aayk.jdField_a_of_type_Int;
-    String str1 = this.jdField_a_of_type_Aayk.jdField_a_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_Aayk.c;
+    int i = this.jdField_a_of_type_Abff.jdField_a_of_type_Int;
+    String str1 = this.jdField_a_of_type_Abff.jdField_a_of_type_JavaLangString;
+    String str2 = this.jdField_a_of_type_Abff.c;
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("need_jump_to_msg", true);
-    localBundle.putLong("searched_timeorseq", this.jdField_a_of_type_Aayk.jdField_a_of_type_Long);
+    localBundle.putLong("searched_timeorseq", this.jdField_a_of_type_Abff.jdField_a_of_type_Long);
     RecentUtil.a(paramActivity, paramQQAppInterface, str1, i, str2, false, localBundle);
   }
   
   public void a(Context paramContext)
   {
-    if (this.jdField_a_of_type_Aayk == null) {
+    if (this.jdField_a_of_type_Abff == null) {
       return;
     }
-    String str1 = this.jdField_a_of_type_Aayk.d;
+    String str1 = this.jdField_a_of_type_Abff.d;
     ArkLocalAppMgr localArkLocalAppMgr = ((ArkAppCenter)((QQAppInterface)this.c.get()).getManager(120)).a();
     String str2 = localArkLocalAppMgr.a(str1, null);
     if (str2 != null)
     {
-      ArkAppCenter.a(str2, new aayg(this, paramContext));
+      ArkAppCenter.a(str2, new abfb(this, paramContext));
       return;
     }
-    localArkLocalAppMgr.a(str1, "0.0.0.1", null, new aayh(this, paramContext));
+    localArkLocalAppMgr.a(str1, "0.0.0.1", null, new abfc(this, paramContext));
   }
   
   public void a(BaseChatPie paramBaseChatPie)
   {
     this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
-    if (this.jdField_a_of_type_Aayk != null)
+    if (this.jdField_a_of_type_Abff != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ArkTipsManager", 2, "onEnterAIO");
       }
-      a(paramBaseChatPie.a(), this.jdField_a_of_type_Aayk.jdField_b_of_type_JavaLangString);
+      a(paramBaseChatPie.a(), this.jdField_a_of_type_Abff.jdField_b_of_type_JavaLangString);
     }
   }
   
@@ -333,7 +333,7 @@ public class ArkTipsManager
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder().append("showTip sessUin:").append(str1).append(",first Show ? ");
-        if (this.jdField_a_of_type_Aayk != null) {
+        if (this.jdField_a_of_type_Abff != null) {
           break;
         }
         bool = true;
@@ -346,13 +346,13 @@ public class ArkTipsManager
     {
       localObject = paramMessageForArkApp.ark_app_message.appName;
       label207:
-      if (this.jdField_a_of_type_Aayk != null) {
+      if (this.jdField_a_of_type_Abff != null) {
         break label364;
       }
-      this.jdField_a_of_type_Aayk = new aayk(paramArkAioContainerWrapper, str1, l1, l2, str2, paramSessionInfo.jdField_a_of_type_Int, (String)localObject, paramMessageForArkApp);
+      this.jdField_a_of_type_Abff = new abff(paramArkAioContainerWrapper, str1, l1, l2, str2, paramSessionInfo.jdField_a_of_type_Int, (String)localObject, paramMessageForArkApp);
     }
     label364:
-    while ((this.jdField_a_of_type_Aayk.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper == paramArkAioContainerWrapper) && (l1 == this.jdField_a_of_type_Aayk.jdField_a_of_type_Long))
+    while ((this.jdField_a_of_type_Abff.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper == paramArkAioContainerWrapper) && (l1 == this.jdField_a_of_type_Abff.jdField_a_of_type_Long))
     {
       if (paramQQAppInterface != null) {
         paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
@@ -361,7 +361,7 @@ public class ArkTipsManager
         QLog.i("ArkTipsManager", 2, "showTip view:" + paramArkAioContainerWrapper + "msgID ? " + l1);
       }
       a(paramMessageForArkApp);
-      this.jdField_a_of_type_Aayk.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Abff.jdField_b_of_type_JavaLangString = paramString;
       a(paramString);
       a(str1, paramString);
       if (paramMessageForArkApp.ark_app_message != null) {
@@ -374,25 +374,25 @@ public class ArkTipsManager
       localObject = "";
       break label207;
     }
-    if ((this.jdField_a_of_type_Aayk.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper != paramArkAioContainerWrapper) && (this.jdField_a_of_type_Aayk.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper != null))
+    if ((this.jdField_a_of_type_Abff.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper != paramArkAioContainerWrapper) && (this.jdField_a_of_type_Abff.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper != null))
     {
-      if (str1.equals(this.jdField_a_of_type_Aayk.jdField_a_of_type_JavaLangString)) {
+      if (str1.equals(this.jdField_a_of_type_Abff.jdField_a_of_type_JavaLangString)) {
         break label462;
       }
-      a(this.jdField_a_of_type_Aayk.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, true);
+      a(this.jdField_a_of_type_Abff.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, true);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aayk.a(paramArkAioContainerWrapper, str1, l1, l2, str2, paramSessionInfo.jdField_a_of_type_Int, (String)localObject, paramMessageForArkApp);
+      this.jdField_a_of_type_Abff.a(paramArkAioContainerWrapper, str1, l1, l2, str2, paramSessionInfo.jdField_a_of_type_Int, (String)localObject, paramMessageForArkApp);
       break;
       label462:
-      a(this.jdField_a_of_type_Aayk.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, false);
+      a(this.jdField_a_of_type_Abff.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, false);
     }
   }
   
   public void a(ArkAppContainer paramArkAppContainer, SessionInfo paramSessionInfo, String paramString)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Aayk == null) || (paramString == null) || (paramArkAppContainer != this.jdField_a_of_type_Aayk.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper)) {
+    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Abff == null) || (paramString == null) || (paramArkAppContainer != this.jdField_a_of_type_Abff.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper)) {
       break label29;
     }
     label29:
@@ -410,13 +410,13 @@ public class ArkTipsManager
     label186:
     for (String str = "";; str = paramSessionInfo.jdField_a_of_type_JavaLangString)
     {
-      QLog.d("ArkTipsManager", 2, str + ",tar:" + this.jdField_a_of_type_Aayk.jdField_a_of_type_JavaLangString + ",c=" + paramArkAppContainer);
-      this.jdField_a_of_type_Aayk.jdField_b_of_type_JavaLangString = paramString;
+      QLog.d("ArkTipsManager", 2, str + ",tar:" + this.jdField_a_of_type_Abff.jdField_a_of_type_JavaLangString + ",c=" + paramArkAppContainer);
+      this.jdField_a_of_type_Abff.jdField_b_of_type_JavaLangString = paramString;
       a(paramString);
-      if ((paramSessionInfo == null) || (paramSessionInfo.jdField_a_of_type_JavaLangString == null) || (!paramSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Aayk.jdField_a_of_type_JavaLangString)) || (paramSessionInfo.jdField_a_of_type_Int != this.jdField_a_of_type_Aayk.jdField_a_of_type_Int)) {
+      if ((paramSessionInfo == null) || (paramSessionInfo.jdField_a_of_type_JavaLangString == null) || (!paramSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Abff.jdField_a_of_type_JavaLangString)) || (paramSessionInfo.jdField_a_of_type_Int != this.jdField_a_of_type_Abff.jdField_a_of_type_Int)) {
         break;
       }
-      a(this.jdField_a_of_type_Aayk.jdField_a_of_type_JavaLangString, paramString);
+      a(this.jdField_a_of_type_Abff.jdField_a_of_type_JavaLangString, paramString);
       return;
     }
   }
@@ -429,7 +429,7 @@ public class ArkTipsManager
     }
     QNotificationManager localQNotificationManager = new QNotificationManager(paramQQAppInterface.getApp());
     NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(paramQQAppInterface.getApp());
-    localBuilder.setSmallIcon(2130839537).setWhen(System.currentTimeMillis()).setContentTitle(paramString1).setContentText(paramString2).setContentIntent(PendingIntent.getActivity(paramQQAppInterface.getApp(), 0, new Intent(), 0));
+    localBuilder.setSmallIcon(2130839552).setWhen(System.currentTimeMillis()).setContentTitle(paramString1).setContentText(paramString2).setContentIntent(PendingIntent.getActivity(paramQQAppInterface.getApp(), 0, new Intent(), 0));
     paramQQAppInterface = localBuilder.build();
     paramQQAppInterface.flags = 16;
     localQNotificationManager.notify("ArkTipsManager", 211, paramQQAppInterface);
@@ -442,8 +442,8 @@ public class ArkTipsManager
   
   public boolean a(long paramLong)
   {
-    if (this.jdField_a_of_type_Aayk == null) {}
-    while (this.jdField_a_of_type_Aayk.jdField_b_of_type_Long != paramLong) {
+    if (this.jdField_a_of_type_Abff == null) {}
+    while (this.jdField_a_of_type_Abff.jdField_b_of_type_Long != paramLong) {
       return false;
     }
     return true;
@@ -455,7 +455,7 @@ public class ArkTipsManager
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder().append("hideTips : mCurrentTip :");
-      if (this.jdField_a_of_type_Aayk != null) {
+      if (this.jdField_a_of_type_Abff != null) {
         break label131;
       }
     }
@@ -463,7 +463,7 @@ public class ArkTipsManager
     for (boolean bool = true;; bool = false)
     {
       QLog.d("ArkTipsManager", 2, bool);
-      if (this.jdField_a_of_type_Aayk != null)
+      if (this.jdField_a_of_type_Abff != null)
       {
         if (this.c != null)
         {
@@ -472,7 +472,7 @@ public class ArkTipsManager
             ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
           }
         }
-        this.jdField_a_of_type_Aayk = null;
+        this.jdField_a_of_type_Abff = null;
         if (this.jdField_b_of_type_JavaLangRefWeakReference != null)
         {
           localObject = (BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get();
@@ -501,12 +501,12 @@ public class ArkTipsManager
   
   public void c()
   {
-    if (this.jdField_a_of_type_Aayk != null)
+    if (this.jdField_a_of_type_Abff != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ArkTipsManager", 2, "onEnterConversation");
       }
-      a(this.jdField_a_of_type_Aayk.jdField_b_of_type_JavaLangString);
+      a(this.jdField_a_of_type_Abff.jdField_b_of_type_JavaLangString);
     }
   }
 }

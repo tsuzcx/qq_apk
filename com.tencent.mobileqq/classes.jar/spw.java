@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
-public final class spw
-  implements DialogInterface.OnClickListener
+public class spw
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  
+  private spw(DiscussionMemberActivity paramDiscussionMemberActivity) {}
 }
 
 

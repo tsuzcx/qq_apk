@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.qq.im.poi.LbsPackPoiListAdapter;
+import com.qq.im.poi.LbsPackPoiListActivity;
 import com.qq.im.poi.LbsPackPoiListAdapter.onClickListener;
 import com.qq.im.poi.PoiInfo;
 
 public class ans
-  implements View.OnClickListener
+  implements LbsPackPoiListAdapter.onClickListener
 {
-  public ans(LbsPackPoiListAdapter paramLbsPackPoiListAdapter, PoiInfo paramPoiInfo) {}
+  public ans(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(PoiInfo paramPoiInfo)
   {
-    if (this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter.a != null) {
-      this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter.a.a(this.jdField_a_of_type_ComQqImPoiPoiInfo);
-    }
+    LbsPackPoiListActivity.a(this.a, paramPoiInfo);
   }
 }
 

@@ -1,27 +1,45 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.rookery.asyncHttpClient.AsyncHttpClient;
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpResponseInterceptor;
+import org.apache.http.protocol.HttpContext;
 
 public class jdx
-  implements Runnable
+  implements HttpResponseInterceptor
 {
-  jdx(VideoController paramVideoController) {}
+  public jdx(AsyncHttpClient paramAsyncHttpClient) {}
   
-  public void run()
+  public void process(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
   {
-    if (this.a.a() == null) {
+    paramHttpContext = paramHttpResponse.getEntity();
+    if (paramHttpContext == null) {}
+    for (;;)
+    {
       return;
+      paramHttpContext = paramHttpContext.getContentEncoding();
+      if (paramHttpContext != null)
+      {
+        paramHttpContext = paramHttpContext.getElements();
+        int j = paramHttpContext.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (paramHttpContext[i].getName().equalsIgnoreCase("gzip"))
+          {
+            paramHttpResponse.setEntity(new jdy(paramHttpResponse.getEntity()));
+            return;
+          }
+          i += 1;
+        }
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "MultiHideCallNotAcceptRunnable");
-    }
-    this.a.a().L = false;
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(702) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     jdx
  * JD-Core Version:    0.7.0.1
  */

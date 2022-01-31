@@ -1,19 +1,25 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatHistoryFileView;
+import com.tencent.mobileqq.adapter.ChatHistoryFileAdapter;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
 
-class sff
-  implements Runnable
+public class sff
+  extends FMObserver
 {
-  sff(sfe paramsfe, String paramString) {}
+  public sff(ChatHistoryFileView paramChatHistoryFileView) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Sfe.jdField_a_of_type_Sfd.a.c) {}
-    while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Sfe.jdField_a_of_type_AndroidWidgetTextView == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Sfe.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    this.a.a.notifyDataSetChanged();
   }
 }
 

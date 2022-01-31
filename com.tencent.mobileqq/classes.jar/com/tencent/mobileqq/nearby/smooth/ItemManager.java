@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.smooth;
 
-import afmi;
-import afmk;
-import afml;
-import afmm;
+import afqh;
+import afqj;
+import afqk;
+import afql;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
@@ -13,7 +13,7 @@ import com.tencent.widget.AbsListView;
 public final class ItemManager
 {
   public int a;
-  public afmi a;
+  public afqh a;
   public final Handler a;
   final ItemLoader a;
   public boolean a;
@@ -27,22 +27,22 @@ public final class ItemManager
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  public void a(afmi paramafmi)
+  public void a(afqh paramafqh)
   {
-    this.jdField_a_of_type_Afmi = paramafmi;
-    if (this.jdField_a_of_type_Afmi != null)
+    this.jdField_a_of_type_Afqh = paramafqh;
+    if (this.jdField_a_of_type_Afqh != null)
     {
-      paramafmi = this.jdField_a_of_type_Afmi.a();
-      paramafmi.setOnScrollListener(new afml(this, null));
-      paramafmi.setOnTouchListener(new afmk(this, null));
-      paramafmi.setOnItemSelectedListener(new afmm(this, null));
+      paramafqh = this.jdField_a_of_type_Afqh.a();
+      paramafqh.setOnScrollListener(new afqk(this, null));
+      paramafqh.setOnTouchListener(new afqj(this, null));
+      paramafqh.setOnItemSelectedListener(new afql(this, null));
     }
   }
   
   public void a(View paramView1, View paramView2, int paramInt)
   {
-    this.jdField_a_of_type_Afmi.a();
-    ListAdapter localListAdapter = this.jdField_a_of_type_Afmi.a();
+    this.jdField_a_of_type_Afqh.a();
+    ListAdapter localListAdapter = this.jdField_a_of_type_Afqh.a();
     if ((this.jdField_a_of_type_Int != 2) && (!this.jdField_a_of_type_Boolean)) {}
     for (boolean bool = true;; bool = false)
     {
@@ -53,10 +53,10 @@ public final class ItemManager
   
   public void b()
   {
-    if (this.jdField_a_of_type_Afmi == null) {
+    if (this.jdField_a_of_type_Afqh == null) {
       throw new IllegalStateException("Cannot cancel requests with no managed view");
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Afmi.a());
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Afqh.a());
   }
 }
 

@@ -1,36 +1,21 @@
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class nnw
-  implements AbsListView.OnScrollListener
+  implements DialogInterface.OnDismissListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  int c = 0;
+  public nnw(FeedsPlayModeBase paramFeedsPlayModeBase, Boolean[] paramArrayOfBoolean) {}
   
-  public nnw(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FeedsPlayModeBase", 2, "[az]isResumeVideoPlaySelf === >" + this.jdField_a_of_type_ArrayOfJavaLangBoolean);
     }
-    else {
-      return;
+    if (!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue()) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.s();
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
-    nnz.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
   }
 }
 

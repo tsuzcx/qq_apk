@@ -1,16 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.qcall.PstnManager;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
 
 public class rle
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
-  public rle(AssistantSettingActivity paramAssistantSettingActivity, PstnManager paramPstnManager) {}
+  public rle(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.b(paramBoolean);
+    long l = this.a.app.a();
+    SubAccountManager localSubAccountManager = (SubAccountManager)this.a.app.getManager(60);
+    this.a.runOnUiThread(new rlf(this, l));
   }
 }
 

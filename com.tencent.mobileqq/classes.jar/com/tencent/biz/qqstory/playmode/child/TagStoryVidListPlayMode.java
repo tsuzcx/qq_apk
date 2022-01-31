@@ -6,7 +6,7 @@ import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
 import com.tencent.mobileqq.jsp.QQStoryApiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import nln;
+import npx;
 
 public class TagStoryVidListPlayMode
   extends TagStoryPlayMode
@@ -36,7 +36,7 @@ public class TagStoryVidListPlayMode
     if (this.d != null)
     {
       localBatchGetVideoInfo = new BatchGetVideoInfo(this.d);
-      localBatchGetVideoInfo.a(new nln(this, localBatchGetVideoInfo, paramBundle));
+      localBatchGetVideoInfo.a(new npx(this, localBatchGetVideoInfo, paramBundle));
       localBatchGetVideoInfo.b();
     }
     while (!QLog.isColorLevel())

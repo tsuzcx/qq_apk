@@ -1,16 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.NearbyFlowerManager;
+import com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby;
+import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeyg
-  implements View.OnClickListener
+  extends TroopGiftCallback
 {
-  public aeyg(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aeyg(TroopGiftPanelForNearby paramTroopGiftPanelForNearby) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.l();
+    NearbyFlowerManager.a("gift_store", "suc_one", this.a.a(), TroopGiftPanelForNearby.a(this.a) + "", "", "");
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    }
+    if (paramInt == 20007) {
+      QQToast.a(TroopGiftPanelForNearby.a(this.a), "对方拒收了你的礼物", 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+    }
+    for (;;)
+    {
+      NearbyFlowerManager.a("gift_store", "fail_one", this.a.a(), TroopGiftPanelForNearby.b(this.a) + "", "", "");
+      return;
+      QQToast.a(TroopGiftPanelForNearby.b(this.a), "赠送失败", 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+    }
   }
 }
 

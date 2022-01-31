@@ -1,17 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.lightReply.FacePicDectect.FaceDetectFinishedListener;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.groupvideo.GVideoLoadingUI;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
 
 public class aebx
-  implements FacePicDectect.FaceDetectFinishedListener
+  extends Handler
 {
-  public aebx(LightReplyMenuManager paramLightReplyMenuManager, Context paramContext, boolean paramBoolean, String paramString) {}
-  
-  public void a(int paramInt)
+  public aebx(GroupVideoLoadingFragment paramGroupVideoLoadingFragment, Looper paramLooper)
   {
-    ThreadManager.getUIHandler().post(new aeby(this, paramInt));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.arg1;
+    if (i < GroupVideoLoadingFragment.a(this.a)) {
+      return;
+    }
+    GroupVideoLoadingFragment.b(this.a, i);
+    GroupVideoLoadingFragment.a(this.a).a(GroupVideoLoadingFragment.a(this.a), 0L);
+    paramMessage = Message.obtain();
+    if (GroupVideoLoadingFragment.a(this.a) >= 90) {
+      i += 1;
+    }
+    for (;;)
+    {
+      paramMessage.arg1 = i;
+      sendMessageDelayed(paramMessage, 500L);
+      return;
+      i += 8;
+    }
   }
 }
 

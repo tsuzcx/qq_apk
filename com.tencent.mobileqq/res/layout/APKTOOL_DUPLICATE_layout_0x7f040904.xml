@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a285f" android:padding="6.0dip" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginTop="24.5dip" android:layout_marginRight="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021567" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@null" />
-</merge>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a282f" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a12f5">
+        <TextView android:textSize="16.0sp" android:textColor="#4dffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="暂时没有人赞或者评论" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021751" android:drawablePadding="20.0dip" />
+    </LinearLayout>
+    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26d6" android:paddingTop="11.5dip" android:paddingBottom="11.5dip" android:visibility="gone" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@null" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a12f5" android:layout_alignParentTop="true" />
+    <com.tencent.mobileqq.activity.aio.InputLinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12f5" android:background="#e6525253" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="54.5dip" android:layout_alignParentBottom="true">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06ba" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+        <LinearLayout android:gravity="bottom|center|left" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2691" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02173f" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.5dip" android:layout_marginBottom="12.0dip" android:layout_weight="1.0">
+            <com.tencent.widget.XEditTextEx android:textSize="14.0dip" android:textColor="#ffffffff" android:textColorHint="#ffcccccc" android:gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2692" android:background="@null" android:paddingLeft="13.5dip" android:paddingTop="5.0dip" android:paddingRight="13.5dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="101.0dip" android:maxLength="200" android:inputType="textMultiLine" android:imeOptions="actionSend" android:textSelectHandle="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022261" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a198f" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218cc" />
+    </com.tencent.mobileqq.activity.aio.InputLinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2830" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a12f5">
+        <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="16.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2831" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12c3" android:drawablePadding="15.0dip" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bae" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="加载失败，点击重试" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021880" android:drawablePadding="15.0dip" />
+    </LinearLayout>
+</RelativeLayout>

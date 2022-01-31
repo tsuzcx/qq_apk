@@ -23,8 +23,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
-import kny;
-import knz;
+import kqd;
+import kqe;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
 
@@ -53,7 +53,7 @@ public class NowLiveManager
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Char = '0';
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new kny(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new kqd(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("now_msg_sp" + paramQQAppInterface.getCurrentAccountUin(), 0);
     a();
@@ -69,18 +69,18 @@ public class NowLiveManager
     return this.jdField_b_of_type_JavaLangString;
   }
   
-  public knz a(String paramString, long paramLong)
+  public kqe a(String paramString, long paramLong)
   {
-    knz localknz2 = (knz)this.jdField_a_of_type_JavaUtilHashMap.get(paramString + paramLong);
-    knz localknz1 = localknz2;
-    if (localknz2 == null)
+    kqe localkqe2 = (kqe)this.jdField_a_of_type_JavaUtilHashMap.get(paramString + paramLong);
+    kqe localkqe1 = localkqe2;
+    if (localkqe2 == null)
     {
-      localknz1 = new knz(this);
-      localknz1.jdField_a_of_type_JavaLangString = paramString;
-      localknz1.jdField_a_of_type_Long = paramLong;
-      this.jdField_a_of_type_JavaUtilHashMap.put(localknz1.a(), localknz1);
+      localkqe1 = new kqe(this);
+      localkqe1.jdField_a_of_type_JavaLangString = paramString;
+      localkqe1.jdField_a_of_type_Long = paramLong;
+      this.jdField_a_of_type_JavaUtilHashMap.put(localkqe1.a(), localkqe1);
     }
-    return localknz1;
+    return localkqe1;
   }
   
   public void a()
@@ -390,7 +390,7 @@ public class NowLiveManager
           break;
         }
         localAppSetting = (BusinessInfoCheckUpdate.AppSetting)localIterator.next();
-      } while (localAppSetting.appid.get() != 3050);
+      } while (localAppSetting.appid.get() != 6005);
       return localAppSetting.setting.get();
     }
     return false;

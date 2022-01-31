@@ -1,12 +1,18 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
 
-public class ybj
-  implements BubblePopupWindow.OnDismissListener
+class ybj
+  implements Runnable
 {
-  public ybj(SelectMemberBuddyListAdapter paramSelectMemberBuddyListAdapter) {}
+  ybj(ybf paramybf) {}
   
-  public void a() {}
+  public void run()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.u();
+    }
+  }
 }
 
 

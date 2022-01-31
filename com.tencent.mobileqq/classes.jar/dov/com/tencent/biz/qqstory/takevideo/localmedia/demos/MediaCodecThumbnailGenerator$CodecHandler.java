@@ -11,8 +11,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
-import aoca;
-import aocb;
+import aokv;
+import aokw;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -439,7 +439,7 @@ public class MediaCodecThumbnailGenerator$CodecHandler
     localThumbnailResult.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramThumbnailTaskContext.jdField_a_of_type_JavaUtilArrayList);
     localThumbnailResult.b = Collections.unmodifiableList(paramThumbnailTaskContext.jdField_b_of_type_JavaUtilArrayList);
     localThumbnailResult.jdField_a_of_type_Int = paramThumbnailTaskContext.jdField_a_of_type_Int;
-    this.a.a.post(new aoca(this, paramThumbnailTaskContext, bool, localThumbnailResult));
+    this.a.a.post(new aokv(this, paramThumbnailTaskContext, bool, localThumbnailResult));
   }
   
   private void a(MediaCodecThumbnailGenerator.ThumbnailTaskContext paramThumbnailTaskContext, boolean paramBoolean)
@@ -530,7 +530,7 @@ public class MediaCodecThumbnailGenerator$CodecHandler
               }
               localArrayList1.add(localThumbnailProgress.jdField_a_of_type_JavaLangString);
               localArrayList2.add(localObject1);
-              this.a.a.post(new aocb(this, paramThumbnailTaskContext, localThumbnailProgress));
+              this.a.a.post(new aokw(this, paramThumbnailTaskContext, localThumbnailProgress));
               paramThumbnailTaskContext.d += 1;
               obtainMessage(2, paramThumbnailTaskContext).sendToTarget();
               return;

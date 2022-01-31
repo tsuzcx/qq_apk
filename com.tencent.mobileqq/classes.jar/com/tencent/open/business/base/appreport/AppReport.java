@@ -1,7 +1,7 @@
 package com.tencent.open.business.base.appreport;
 
-import alfr;
-import alfs;
+import alnj;
+import alnk;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -716,12 +716,12 @@ public class AppReport
   
   public static void a(Context paramContext, String paramString1, int paramInt, String paramString2, WebView paramWebView, String paramString3)
   {
-    ThreadManager.executeOnNetWorkThread(new alfr(paramString1, paramInt, paramContext, paramString2, paramWebView, paramString3));
+    ThreadManager.executeOnNetWorkThread(new alnj(paramString1, paramInt, paramContext, paramString2, paramWebView, paramString3));
   }
   
   public static void a(Context paramContext, String paramString1, WebView paramWebView, String paramString2, boolean paramBoolean)
   {
-    new Handler(Looper.getMainLooper()).postDelayed(new alfs(paramContext, paramString1, paramWebView, paramString2, paramBoolean), 60002L);
+    new Handler(Looper.getMainLooper()).postDelayed(new alnk(paramContext, paramString1, paramWebView, paramString2, paramBoolean), 60002L);
   }
   
   public static boolean a()

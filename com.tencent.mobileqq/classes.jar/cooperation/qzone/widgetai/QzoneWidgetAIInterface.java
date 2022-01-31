@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
-import aneg;
+import anmg;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -79,7 +79,7 @@ public class QzoneWidgetAIInterface
   
   public static String getBuildNumber()
   {
-    return "3565";
+    return "3615";
   }
   
   public static String getBuilderNumber()
@@ -170,12 +170,12 @@ public class QzoneWidgetAIInterface
   {
     String str = QZonePluginUtils.b();
     if (!str.equals("qzone_widgetai.apk")) {
-      QZonePluginMangerHelper.a(getContext(), new aneg(str));
+      QZonePluginMangerHelper.a(getContext(), new anmg(str));
     }
     for (;;)
     {
       return version;
-      version = "2013 7.6.3";
+      version = "2013 7.6.8";
     }
   }
   

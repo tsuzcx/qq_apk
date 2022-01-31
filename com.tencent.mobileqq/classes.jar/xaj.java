@@ -1,25 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.util.List;
-
-class xaj
-  implements Runnable
+public class xaj
 {
-  xaj(xai paramxai, DownloadTask paramDownloadTask) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
+  public xaj(String paramString)
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a.size();
-    Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a();
-    int i = 0;
-    while (i < j)
+    String[] arrayOfString = paramString.split(" ");
+    if (arrayOfString.length == 1)
     {
-      String str = (String)this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a.get(i);
-      PreloadImgManager.a(this.jdField_a_of_type_Xai.a, BaseApplication.getContext(), localBundle.getString(str), str);
-      i += 1;
+      this.jdField_a_of_type_JavaLangString = arrayOfString[0];
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
+    if (arrayOfString.length == 4)
+    {
+      this.b = arrayOfString[0];
+      this.c = arrayOfString[1];
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = arrayOfString[3];
+      return;
+    }
+    if (arrayOfString.length > 4)
+    {
+      int j = arrayOfString.length;
+      paramString = "";
+      int i = 0;
+      while (i < j - 4)
+      {
+        paramString = paramString + arrayOfString[i] + " ";
+        i += 1;
+      }
+      this.d = paramString;
+      this.b = arrayOfString[(j - 4)];
+      this.c = arrayOfString[(j - 3)];
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = arrayOfString[(j - 1)];
+      return;
+    }
+    throw new RuntimeException("format error!");
   }
 }
 

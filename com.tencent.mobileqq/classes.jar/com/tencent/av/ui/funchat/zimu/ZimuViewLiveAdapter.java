@@ -76,8 +76,8 @@ public class ZimuViewLiveAdapter
       localView = paramLayoutInflater.inflate(paramInt2, paramViewGroup, false);
     }
     paramLayoutInflater = a(paramInt1);
-    paramView = localView.findViewById(2131363063);
-    paramViewGroup = (TextView)localView.findViewById(2131363632);
+    paramView = localView.findViewById(2131363068);
+    paramViewGroup = (TextView)localView.findViewById(2131363651);
     paramViewGroup.setTextSize(0, this.jdField_a_of_type_Int);
     if (paramLayoutInflater.jdField_a_of_type_Boolean)
     {
@@ -131,12 +131,12 @@ public class ZimuViewLiveAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return a(this.jdField_a_of_type_AndroidViewLayoutInflater, paramInt, paramView, paramViewGroup, 2130969283);
+    return a(this.jdField_a_of_type_AndroidViewLayoutInflater, paramInt, paramView, paramViewGroup, 2130969281);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuViewLiveAdapter
  * JD-Core Version:    0.7.0.1
  */

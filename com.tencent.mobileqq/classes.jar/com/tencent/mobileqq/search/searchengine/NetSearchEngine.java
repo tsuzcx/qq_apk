@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ahwf;
-import ahwg;
-import ahwh;
+import aiav;
+import aiaw;
+import aiax;
 import android.os.Bundle;
 import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,7 +24,7 @@ public class NetSearchEngine
   public static double a;
   public static double b;
   private int jdField_a_of_type_Int = -1;
-  private ahwh jdField_a_of_type_Ahwh;
+  private aiax jdField_a_of_type_Aiax;
   public ContactSearchFacade a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Future jdField_a_of_type_JavaUtilConcurrentFuture;
@@ -38,7 +38,7 @@ public class NetSearchEngine
     if (paramThreadPoolExecutor == null) {
       this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(3, 5, 5L, TimeUnit.SECONDS, new LinkedBlockingQueue(128));
     }
-    SosoInterface.a(new ahwf(this, 0, true, false, 60000L, false, false, "SearchContacts"));
+    SosoInterface.a(new aiav(this, 0, true, false, 60000L, false, false, "SearchContacts"));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactSearchFacade = new ContactSearchFacade(paramQQAppInterface);
   }
   
@@ -85,11 +85,11 @@ public class NetSearchEngine
       return null;
     }
     localObject = new ArrayList();
-    this.jdField_a_of_type_Ahwh = new ahwh(this, paramSearchRequest.jdField_a_of_type_JavaLangString, arrayOfInt, j, new ahwg(this, (List)localObject));
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Ahwh);
+    this.jdField_a_of_type_Aiax = new aiax(this, paramSearchRequest.jdField_a_of_type_JavaLangString, arrayOfInt, j, new aiaw(this, (List)localObject));
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Aiax);
     try
     {
-      this.jdField_a_of_type_Ahwh.a.await();
+      this.jdField_a_of_type_Aiax.a.await();
       return localObject;
     }
     catch (InterruptedException paramSearchRequest)
@@ -121,8 +121,8 @@ public class NetSearchEngine
     if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_Ahwh = new ahwh(this, paramSearchRequest.jdField_a_of_type_JavaLangString, (int[])localObject, j, paramISearchListener);
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Ahwh);
+    this.jdField_a_of_type_Aiax = new aiax(this, paramSearchRequest.jdField_a_of_type_JavaLangString, (int[])localObject, j, paramISearchListener);
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Aiax);
   }
   
   public void b()
@@ -134,8 +134,8 @@ public class NetSearchEngine
         this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.remove((Runnable)this.jdField_a_of_type_JavaUtilConcurrentFuture);
       }
     }
-    if (this.jdField_a_of_type_Ahwh != null) {
-      this.jdField_a_of_type_Ahwh.a();
+    if (this.jdField_a_of_type_Aiax != null) {
+      this.jdField_a_of_type_Aiax.a();
     }
   }
   

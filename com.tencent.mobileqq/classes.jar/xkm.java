@@ -1,45 +1,36 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDBHelper;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDbManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
-public class xkm
-  implements View.OnClickListener
+public final class xkm
+  implements Runnable
 {
-  public xkm(RecentAdapter paramRecentAdapter) {}
+  public xkm(boolean paramBoolean, ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (paramView == null) {}
-    Object localObject1;
-    RecentBaseData localRecentBaseData;
     do
     {
-      do
+      synchronized (GoldMsgDbManager.jdField_a_of_type_JavaLangObject)
       {
-        int i;
-        do
-        {
+        if (GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper == null) {
+          GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper = new GoldMsgDBHelper(BaseApplicationImpl.getContext());
+        }
+        ??? = QWalletTools.a();
+        if (??? == null) {
           return;
-          i = paramView.getId();
-        } while ((i < 0) || (i >= this.a.getCount()));
-        localObject1 = this.a.getItem(i);
-      } while ((localObject1 == null) || (!(localObject1 instanceof RecentBaseData)));
-      localRecentBaseData = (RecentBaseData)localObject1;
-      Object localObject2 = null;
-      localObject1 = localObject2;
-      if ((paramView instanceof TextView))
-      {
-        paramView = ((TextView)paramView).getText();
-        localObject1 = localObject2;
-        if (paramView != null) {
-          localObject1 = paramView.toString();
         }
       }
-    } while (TextUtils.isEmpty((CharSequence)localObject1));
-    this.a.a(localRecentBaseData, (String)localObject1, "1");
+    } while (GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper == null);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper.a(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
+      return;
+    }
+    GoldMsgDbManager.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgDBHelper.b(((QQAppInterface)???).c(), this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

@@ -28,7 +28,7 @@ public class ReportDef$RepUtil
     if (paramInt == 3000) {
       return 2;
     }
-    if (AppConstants.ay.equals(paramString)) {
+    if (AppConstants.az.equals(paramString)) {
       return 3;
     }
     if (AppConstants.J.equals(paramString)) {

@@ -30,9 +30,9 @@ import com.tencent.widget.ActionSheet;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import nlg;
-import nll;
-import nlm;
+import npq;
+import npv;
+import npw;
 
 public class ShareGroupHotSortPlayMode
   extends NewFriendsPlayMode
@@ -94,7 +94,7 @@ public class ShareGroupHotSortPlayMode
     if (this.d != null)
     {
       localBatchGetVideoInfo = new BatchGetVideoInfo(this.d);
-      localBatchGetVideoInfo.a(new nlg(this, localBatchGetVideoInfo, paramBundle));
+      localBatchGetVideoInfo.a(new npq(this, localBatchGetVideoInfo, paramBundle));
       localBatchGetVideoInfo.b();
     }
     while (!QLog.isColorLevel())
@@ -126,21 +126,21 @@ public class ShareGroupHotSortPlayMode
       }
     }
     if ((localShareGroupItem != null) && (localShareGroupItem.isPublic())) {
-      paramActionSheet.b(2131434737);
+      paramActionSheet.b(2131434753);
     }
     for (;;)
     {
       if ((!bool) || (paramStoryVideoItem.mStoryType == 2)) {
-        paramActionSheet.b(2131435116);
+        paramActionSheet.b(2131435132);
       }
       if ((bool) || ((localShareGroupItem != null) && (localShareGroupItem.isOwner())) || (i != 0)) {
-        paramActionSheet.b(2131434739);
+        paramActionSheet.b(2131434755);
       }
       return;
       label171:
       i = 0;
       break;
-      paramActionSheet.b(2131434558);
+      paramActionSheet.b(2131434574);
     }
   }
   
@@ -150,25 +150,25 @@ public class ShareGroupHotSortPlayMode
     if ((this.b >= 0) && (this.b < this.e.size())) {}
     for (String str = (String)this.e.get(this.b);; str = "")
     {
-      if (paramString.equals(localResources.getString(2131434737)))
+      if (paramString.equals(localResources.getString(2131434753)))
       {
         paramView = ((ShareGroupManager)SuperManager.a(7)).a(this.c);
-        a().a(2131433100).a(ShareGroupSingleStoryShareMode.a(paramView, paramStoryVideoItem, str)).a(new nll(this, this, paramView)).a();
+        a().a(2131433114).a(ShareGroupSingleStoryShareMode.a(paramView, paramStoryVideoItem, str)).a(new npv(this, this, paramView)).a();
         StoryReportor.a("share_story", "share_single", 0, 0, new String[] { paramView.getReportUserType() });
         return true;
       }
-      if (paramString.equals(localResources.getString(2131435116)))
+      if (paramString.equals(localResources.getString(2131435132)))
       {
         if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver == null)
         {
           this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver = new FeedsPlayModeBase.ReportVideoReceiver(this);
           a("", this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver);
         }
-        PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_AndroidAppActivity, paramStoryVideoItem, new nlm(this));
+        PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_AndroidAppActivity, paramStoryVideoItem, new npw(this));
         StoryReportor.a("story_grp", "clk_one", a(), 0, new String[] { "7", PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.b), "", str });
         return true;
       }
-      if (paramString.equals(localResources.getString(2131434739)))
+      if (paramString.equals(localResources.getString(2131434755)))
       {
         StoryReportor.a("play_video", "clk_delete", 0, 0, new String[] { "", "", "", paramStoryVideoItem.mVid });
         if ((paramStoryVideoItem.isUploadFail()) || (paramStoryVideoItem.isUploading()))

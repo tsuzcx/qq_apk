@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import akaf;
+import akht;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -15,7 +15,7 @@ public class ImageCache
     if (QLog.isColorLevel()) {
       QLog.d("ImageCache", 2, "Memory cache size = " + paramInt + "MB");
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new akaf(this, paramInt * 1024 * 1024);
+    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new akht(this, paramInt * 1024 * 1024);
   }
   
   public void a()
@@ -26,7 +26,7 @@ public class ImageCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.ImageCache
  * JD-Core Version:    0.7.0.1
  */

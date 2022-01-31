@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import java.lang.ref.WeakReference;
 
-class aiox
-  implements Runnable
+public class aiox
+  extends Handler
 {
-  aiox(aiov paramaiov, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  private WeakReference a;
   
-  public void run()
+  public aiox(StructMsgItemVideo paramStructMsgItemVideo)
   {
-    this.jdField_a_of_type_Aiov.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
+    this.a = new WeakReference(paramStructMsgItemVideo);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((StructMsgItemVideo)this.a.get() != null) {
+      ((AnyScaleTypeImageView)paramMessage.obj).setImageResource(2130842779);
+    }
   }
 }
 

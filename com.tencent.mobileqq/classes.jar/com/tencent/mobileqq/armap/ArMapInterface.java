@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import abce;
-import abcf;
+import abje;
+import abjf;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -209,7 +209,7 @@ public class ArMapInterface
       if (this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory = new QQEntityManagerFactory(paramString);
-        ThreadManager.post(new abce(this), 5, null, false);
+        ThreadManager.post(new abje(this), 5, null, false);
       }
       return this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory;
     }
@@ -305,7 +305,7 @@ public class ArMapInterface
     this.jdField_a_of_type_ComTencentMobileqqArmapIpcArMapIPC = ArMapIPC.a();
     this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader = new NonMainAppHeadLoader(getApp(), 1);
     this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader.a();
-    ThreadManager.post(new abcf(this), 8, null, true);
+    ThreadManager.post(new abjf(this), 8, null, true);
   }
   
   protected void onDestroy()

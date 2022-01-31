@@ -24,13 +24,13 @@ public abstract interface EditDoodleExport
   
   public abstract byte[] a(int paramInt);
   
-  public abstract void az_();
+  public abstract void b();
   
   public abstract void c();
   
   public abstract boolean c();
   
-  public abstract boolean j_();
+  public abstract boolean g_();
 }
 
 

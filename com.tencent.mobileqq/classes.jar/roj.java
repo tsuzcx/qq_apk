@@ -1,29 +1,24 @@
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.util.Utils;
 
 public class roj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public roj(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public roj(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (AuthDevVerifyCodeActivity.a(this.a).isShowing()))
-      {
-        AuthDevVerifyCodeActivity.a(this.a).dismiss();
-        AuthDevVerifyCodeActivity.a(this.a).cancel();
-      }
-      AuthDevVerifyCodeActivity.a(this.a, null);
-      return;
+    this.a.a("", null);
+    ReportController.b(this.a.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, "", "", "", "");
+    if (Utils.b(AddFriendVerifyActivity.a(this.a))) {
+      ReportController.b(this.a.app, "dc00898", "", "", "0X8008275", "0X8008275", 0, 0, "", "", "", "");
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+    if (!TextUtils.isEmpty(this.a.f)) {
+      ReportController.b(this.a.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
     }
   }
 }

@@ -3,20 +3,17 @@ import android.view.View.OnClickListener;
 import com.qq.im.poi.LbsPackInfo;
 import com.qq.im.poi.LbsPackListAdapter;
 import com.qq.im.poi.LbsPackListAdapter.LbsPackItemCallback;
-import java.util.List;
 
 public class amx
   implements View.OnClickListener
 {
-  public amx(LbsPackListAdapter paramLbsPackListAdapter, int paramInt, LbsPackInfo paramLbsPackInfo) {}
+  public amx(LbsPackListAdapter paramLbsPackListAdapter, LbsPackInfo paramLbsPackInfo, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_Int < 0) || (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter.a.size())) {}
-    while (LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter) == null) {
-      return;
+    if (LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter) != null) {
+      LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter).a(this.jdField_a_of_type_ComQqImPoiLbsPackInfo, this.jdField_a_of_type_Int);
     }
-    LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter).c(this.jdField_a_of_type_ComQqImPoiLbsPackInfo, this.jdField_a_of_type_Int);
   }
 }
 

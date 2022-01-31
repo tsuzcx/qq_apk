@@ -1,31 +1,46 @@
-import android.app.Activity;
-import com.tencent.biz.addContactTroopView.AddContactTroopHandler.IGetPopClassAndSearchCB;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicAdapter;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicData;
+import com.tencent.qphone.base.util.QLog;
 
 public class wjh
-  implements AddContactTroopHandler.IGetPopClassAndSearchCB
+  extends Handler
 {
-  public wjh(TroopView paramTroopView) {}
-  
-  public void a()
+  public wjh(ZhituManager paramZhituManager, Looper paramLooper)
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
-    }
-    TroopView.b(this.a, true);
-    TroopView.c(this.a, true);
-    TroopView.a(this.a).sendEmptyMessage(4);
+    super(paramLooper);
   }
   
-  public void b()
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
+    switch (paramMessage.what)
+    {
     }
-    TroopView.b(this.a, true);
-    TroopView.c(this.a, false);
-    TroopView.a(this.a).sendEmptyMessage(5);
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        paramMessage = (ZhituPicData)paramMessage.obj;
+        if (QLog.isColorLevel()) {
+          QLog.d("ZhituManager", 2, ZhituManager.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
+        }
+        this.a.d(paramMessage);
+        return;
+        i = paramMessage.arg1;
+        paramMessage = (String)paramMessage.obj;
+        if (paramMessage.equals(this.a.a())) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ZhituManager", 2, ZhituManager.a(paramMessage, "main handler", "reqKey is outdated, skip"));
+      return;
+    } while (this.a.a == null);
+    this.a.a.a(i, paramMessage);
   }
 }
 

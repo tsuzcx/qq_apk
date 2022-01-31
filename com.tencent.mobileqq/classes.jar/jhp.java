@@ -1,32 +1,23 @@
+import android.os.Handler;
+import com.tencent.av.AVLog;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+
 public class jhp
+  implements Runnable
 {
-  public static final float[] a;
+  public jhp(MagicFaceDataEntity paramMagicFaceDataEntity, String paramString) {}
   
-  static
+  public void run()
   {
-    int k = 0;
-    a = new float[16384];
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= 16384) {
-        break;
-      }
-      a[i] = ((float)Math.sin((i + 0.5F) / 16384.0F * 6.283186F));
-      i += 1;
-    }
-    while (j < 360)
-    {
-      a[((int)(j * 45.511112F) & 0x3FFF)] = ((float)Math.sin(j * 0.01745329F));
-      j += 90;
-    }
+    AVLog.c("MagicFaceDataEntity", "reloadDecrateList 2:" + this.jdField_a_of_type_JavaLangString);
+    jhq localjhq = new jhq(this);
+    this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity.a.a().post(localjhq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jhp
  * JD-Core Version:    0.7.0.1
  */

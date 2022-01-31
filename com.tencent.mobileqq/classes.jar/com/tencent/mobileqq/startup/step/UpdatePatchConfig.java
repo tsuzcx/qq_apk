@@ -26,7 +26,7 @@ public class UpdatePatchConfig
         Object localObject1 = paramContext.getSharedPreferences("hotpatch_preference", 4).edit();
         ((SharedPreferences.Editor)localObject1).clear();
         ((SharedPreferences.Editor)localObject1).commit();
-        localObject1 = new File(PatchCommonUtil.a("dex", ""));
+        localObject1 = new File(PatchCommonUtil.a(""));
         if (((File)localObject1).exists())
         {
           localObject1 = ((File)localObject1).listFiles();
@@ -37,10 +37,10 @@ public class UpdatePatchConfig
             {
               Object localObject2 = localObject1[i];
               if ((localObject2 == null) || (!localObject2.exists())) {
-                break label200;
+                break label198;
               }
               localObject2.delete();
-              break label200;
+              break label198;
             }
           }
         }
@@ -55,7 +55,7 @@ public class UpdatePatchConfig
         QLog.d("PatchLogTag", 1, "UpdatePatchConfig clearPatchConfig exception=" + paramContext);
         return;
       }
-      label200:
+      label198:
       i += 1;
     }
   }

@@ -1,74 +1,31 @@
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.component.network.downloader.impl.ipc.Const;
-import com.tencent.component.network.downloader.impl.ipc.DownloadSerice;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.GalleryPageView;
 
 public class pjx
-  implements Downloader.DownloadListener
+  implements Animation.AnimationListener
 {
-  public pjx(DownloadSerice paramDownloadSerice, Messenger paramMessenger) {}
+  public pjx(GalleryPageView paramGalleryPageView) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramString = Const.a(paramString);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramString = Const.b(paramString, paramDownloadResult);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    paramString = Const.a(paramString, paramLong, paramFloat);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramString = Const.a(paramString, paramDownloadResult);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
+    if (!this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.d()) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pjx
  * JD-Core Version:    0.7.0.1
  */

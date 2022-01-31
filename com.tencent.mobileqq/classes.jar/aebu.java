@@ -1,27 +1,28 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.lightReply.LightReplyAdapter;
-import com.tencent.mobileqq.lightReply.LightReplyAdapter.ViewHolder;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
+import com.tencent.mobileqq.intervideo.huayang.Monitor;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class aebu
-  implements View.OnTouchListener
+  implements GroupVideoManager.CheckListener
 {
-  public aebu(LightReplyAdapter paramLightReplyAdapter, LightReplyAdapter.ViewHolder paramViewHolder) {}
+  public aebu(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramBoolean)
     {
+      GroupVideoLoadingFragment.a(this.a, false);
+      return;
+    }
+    if (!NetworkUtil.a(GroupVideoLoadingFragment.a(this.a))) {
+      GroupVideoLoadingFragment.a(this.a, true);
     }
     for (;;)
     {
-      return false;
-      if ((this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyAdapter$ViewHolder.a != null) && (this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyAdapter$ViewHolder.a.getDrawable() != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyAdapter$ViewHolder.a.getDrawable().mutate().setAlpha(50);
-      }
+      Monitor.b("2880338");
+      return;
+      GroupVideoLoadingFragment.a(this.a, false);
     }
   }
 }

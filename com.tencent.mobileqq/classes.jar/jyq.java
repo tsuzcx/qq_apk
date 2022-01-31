@@ -1,23 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.PSTNC2CActivity;
-import com.tencent.av.utils.PstnUtils;
+import com.tencent.av.AVLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
 class jyq
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  jyq(jyo paramjyo) {}
+  jyq(jyn paramjyn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
-    PstnUtils.a(this.a.a.app, this.a.a, 1, 8);
+    int i = 1;
+    if (this.a.a.a != null) {
+      i = this.a.a.a.b();
+    }
+    for (;;)
+    {
+      if (i < MultiVideoCtrlLayerUIBase.a) {
+        this.a.a.M();
+      }
+      return;
+      AVLog.e(this.a.a.c, "mVideoController == null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jyq
  * JD-Core Version:    0.7.0.1
  */

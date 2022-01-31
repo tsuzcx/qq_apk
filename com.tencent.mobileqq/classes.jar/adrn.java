@@ -1,28 +1,20 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public final class adrn
-  implements Comparator
+class adrn
+  implements DialogInterface.OnClickListener
 {
-  private int a(long paramLong1, long paramLong2)
-  {
-    if (paramLong1 < paramLong2) {
-      return -1;
-    }
-    if (paramLong1 == paramLong2) {
-      return 0;
-    }
-    return 1;
-  }
+  adrn(adrm paramadrm) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return a(paramFile1.lastModified(), paramFile2.lastModified());
+    SendBottomBar.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adrn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
-import com.tencent.av.utils.TraeHelper;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.redbag.GuideTip2;
 
 public class khf
-  implements ActionSheet.OnDismissListener
+  implements View.OnClickListener
 {
-  public khf(TraeHelper paramTraeHelper) {}
+  public khf(GuideTip2 paramGuideTip2) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Trae_DRP 0X8008D22 at: " + System.currentTimeMillis());
-    }
-    ReportController.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
+    this.a.a(true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     khf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.ZanCombolEffectView;
 
-public class vqx
+class vqx
   implements Runnable
 {
-  public vqx(BaseTroopChatPie paramBaseTroopChatPie, TroopTipsMsgMgr paramTroopTipsMsgMgr) {}
+  vqx(vqw paramvqw) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTipsMsgMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    HapticManager.a().a();
+    ZanCombolEffectView.a(this.a.a, HapticManager.a().a(ZanCombolEffectView.a(this.a.a), 2));
   }
 }
 

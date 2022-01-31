@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.widget.RectMaskView;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class akwq
   implements Runnable
 {
-  public akwq(RectMaskView paramRectMaskView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public akwq(SwiftBrowserLongClickHandler paramSwiftBrowserLongClickHandler) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRectMaskView.invalidate(this.jdField_a_of_type_Int, this.b, this.c, this.d);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
+    QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, 2131430004, 1).b(this.a.jdField_a_of_type_Int);
   }
 }
 

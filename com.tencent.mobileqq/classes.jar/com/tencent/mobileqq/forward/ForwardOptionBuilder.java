@@ -116,8 +116,11 @@ public class ForwardOptionBuilder
       if (i == 34) {
         return new ForwardApolloGameMsgOption(paramIntent);
       }
-    } while (i != 36);
-    return new ForwardTribeShortVideoMsgOption(paramIntent);
+      if (i == 36) {
+        return new ForwardTribeShortVideoMsgOption(paramIntent);
+      }
+    } while (i != 37);
+    return new ForwardHiboomMsgOption(paramIntent);
   }
   
   public static ForwardBaseOption a(Intent paramIntent, QQAppInterface paramQQAppInterface, Activity paramActivity)

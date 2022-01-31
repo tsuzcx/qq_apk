@@ -1,48 +1,21 @@
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Timer;
-import java.util.TimerTask;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-public final class znw
-  extends Timer
+public class znw
+  extends SendMessageHandler.SendMessageRunnable
 {
-  public znw(String paramString)
-  {
-    super(paramString);
-  }
+  public znw(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord, msg_svc.PbSendMsgReq paramPbSendMsgReq, BusinessObserver paramBusinessObserver, boolean paramBoolean) {}
   
-  public void cancel()
+  public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.e("ThreadManager", 2, "Can't cancel Global Timer");
+      QLog.d("Q.msg.MessageHandler", 2, "--->sendRichTextMessageWith_MR : resend message");
     }
-  }
-  
-  public void schedule(TimerTask paramTimerTask, long paramLong)
-  {
-    try
-    {
-      super.schedule(paramTimerTask, paramLong);
-      return;
-    }
-    catch (Exception paramTimerTask)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ThreadManager", 2, "timer schedule err", paramTimerTask);
-    }
-  }
-  
-  public void schedule(TimerTask paramTimerTask, long paramLong1, long paramLong2)
-  {
-    try
-    {
-      super.schedule(paramTimerTask, paramLong1, paramLong2);
-      return;
-    }
-    catch (Exception paramTimerTask)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ThreadManager", 2, "timer schedule2 err", paramTimerTask);
-    }
+    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq, this.c, this.b, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, this.jdField_a_of_type_Boolean);
   }
 }
 

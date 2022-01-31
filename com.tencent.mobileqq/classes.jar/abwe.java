@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import com.tencent.mobileqq.camera.CameraManager.CameraAFCallback;
 
-public class abwe
-  implements DialogInterface.OnClickListener
+class abwe
+  implements Runnable
 {
-  public abwe(DBFixDialogUI paramDBFixDialogUI) {}
+  abwe(abwd paramabwd, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.cancel();
+    abwd.a(this.jdField_a_of_type_Abwd).a(this.jdField_a_of_type_Boolean, abwd.a(this.jdField_a_of_type_Abwd));
   }
 }
 

@@ -1,30 +1,21 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.CommUtils;
-import com.tencent.biz.common.util.CommUtils.IHttpGetString;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
 
-public final class klt
-  extends AsyncTask
+public class klt
+  implements DialogInterface.OnDismissListener
 {
-  String jdField_a_of_type_JavaLangString = "";
+  public klt(PoiMapActivity paramPoiMapActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
   
-  public klt(CommUtils.IHttpGetString paramIHttpGetString, String paramString) {}
-  
-  protected Void a(Void... paramVarArgs)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaLangString = CommUtils.a(this.b);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    super.onPostExecute(paramVoid);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_ComTencentBizCommonUtilCommUtils$IHttpGetString.a();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizCommonUtilCommUtils$IHttpGetString.a(this.jdField_a_of_type_JavaLangString);
+    PoiMapActivity.d(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setEnabled(false);
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHandler().postDelayed(new klu(this), 150L);
   }
 }
 

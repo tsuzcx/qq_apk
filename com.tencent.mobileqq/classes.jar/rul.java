@@ -1,16 +1,23 @@
-import android.widget.CursorAdapter;
-import com.tencent.mobileqq.activity.BaseSystemActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class rul
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rul(BaseSystemActivity paramBaseSystemActivity) {}
+  public rul(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.getCursor() != null) {
-      this.a.b();
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
+    paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+    paramView.putInt("funcall_tip_" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 4);
+    paramView.commit();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder;
 
-import ahoc;
+import ahsu;
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.view.Surface;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 public class HWVideoDecoder
   implements IVideoDecoder
 {
-  private ahoc jdField_a_of_type_Ahoc;
+  private ahsu jdField_a_of_type_Ahsu;
   private DecodeOutputSurface jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeOutputSurface;
   private Thread jdField_a_of_type_JavaLangThread;
   
@@ -30,9 +30,9 @@ public class HWVideoDecoder
     try
     {
       localThread.join();
-      this.jdField_a_of_type_Ahoc = new ahoc(paramDecodeConfig.a, paramSurface, paramHWDecodeListener);
-      this.jdField_a_of_type_Ahoc.a(paramDecodeConfig);
-      this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_Ahoc, "HWVideoDecoder-Thread", 8);
+      this.jdField_a_of_type_Ahsu = new ahsu(paramDecodeConfig.a, paramSurface, paramHWDecodeListener);
+      this.jdField_a_of_type_Ahsu.a(paramDecodeConfig);
+      this.jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(this.jdField_a_of_type_Ahsu, "HWVideoDecoder-Thread", 8);
       this.jdField_a_of_type_JavaLangThread.start();
       return;
     }
@@ -51,15 +51,15 @@ public class HWVideoDecoder
       this.jdField_a_of_type_JavaLangThread.interrupt();
     }
     this.jdField_a_of_type_JavaLangThread = null;
-    this.jdField_a_of_type_Ahoc = null;
+    this.jdField_a_of_type_Ahsu = null;
   }
   
   public void a(int paramInt)
   {
-    ahoc localahoc = this.jdField_a_of_type_Ahoc;
-    if (localahoc != null)
+    ahsu localahsu = this.jdField_a_of_type_Ahsu;
+    if (localahsu != null)
     {
-      localahoc.a(paramInt);
+      localahsu.a(paramInt);
       SLog.a("HWVideoDecoder", "setSpeedType %d", Integer.valueOf(paramInt));
       return;
     }
@@ -68,11 +68,11 @@ public class HWVideoDecoder
   
   public void a(long paramLong1, long paramLong2)
   {
-    ahoc localahoc = this.jdField_a_of_type_Ahoc;
-    if (localahoc != null)
+    ahsu localahsu = this.jdField_a_of_type_Ahsu;
+    if (localahsu != null)
     {
       SLog.a("HWVideoDecoder", "setPlayRange [%d ms, %d ms]", Long.valueOf(paramLong1), Long.valueOf(paramLong2));
-      localahoc.a(paramLong1, paramLong2);
+      localahsu.a(paramLong1, paramLong2);
       return;
     }
     SLog.d("HWVideoDecoder", "setPlayRange failed, can not find DecodeRunnable");
@@ -86,10 +86,10 @@ public class HWVideoDecoder
   
   public void b()
   {
-    ahoc localahoc = this.jdField_a_of_type_Ahoc;
-    if (localahoc != null)
+    ahsu localahsu = this.jdField_a_of_type_Ahsu;
+    if (localahsu != null)
     {
-      ahoc.a(localahoc, true);
+      ahsu.a(localahsu, true);
       SLog.b("HWVideoDecoder", "pauseDecode");
       return;
     }
@@ -98,13 +98,13 @@ public class HWVideoDecoder
   
   public void c()
   {
-    ahoc localahoc = this.jdField_a_of_type_Ahoc;
-    if (localahoc != null)
+    ahsu localahsu = this.jdField_a_of_type_Ahsu;
+    if (localahsu != null)
     {
-      ahoc.a(localahoc, false);
-      synchronized (ahoc.a(localahoc))
+      ahsu.a(localahsu, false);
+      synchronized (ahsu.a(localahsu))
       {
-        ahoc.a(localahoc).notifyAll();
+        ahsu.a(localahsu).notifyAll();
         SLog.b("HWVideoDecoder", "resumeDecode");
         return;
       }

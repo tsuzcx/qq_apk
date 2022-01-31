@@ -18,11 +18,12 @@ import com.tencent.mobileqq.confess.TagUtils;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForConfessNews;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import java.util.Locale;
-import uvm;
-import uvn;
+import vam;
+import van;
 
 public class ConfessNewsItemBuilder
   extends AbstractChatItemBuilder
@@ -34,103 +35,118 @@ public class ConfessNewsItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramOnLongClickAndTouchListener = (MessageForConfessNews)paramMessageRecord;
-    uvn localuvn = (uvn)paramViewHolder;
+    Object localObject = (MessageForConfessNews)paramMessageRecord;
+    van localvan = (van)paramViewHolder;
     paramLinearLayout = paramView;
     if (paramView == null)
     {
-      paramLinearLayout = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968744, null);
-      localuvn.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131363378));
-      localuvn.c = ((TextView)paramLinearLayout.findViewById(2131363537));
-      localuvn.d = ((TextView)paramLinearLayout.findViewById(2131363538));
-      localuvn.jdField_b_of_type_AndroidViewView = paramLinearLayout.findViewById(2131363057);
-      localuvn.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView = ((ConfessNewsBgView)paramLinearLayout.findViewById(2131363534));
-      localuvn.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setPressMask(true);
-      localuvn.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setOnClickListener(new uvm(this));
+      paramLinearLayout = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968747, null);
+      localvan.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131363397));
+      localvan.c = ((TextView)paramLinearLayout.findViewById(2131363556));
+      localvan.d = ((TextView)paramLinearLayout.findViewById(2131363557));
+      localvan.jdField_b_of_type_AndroidViewView = paramLinearLayout.findViewById(2131363062);
+      localvan.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView = ((ConfessNewsBgView)paramLinearLayout.findViewById(2131363553));
+      localvan.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setPressMask(true);
+      localvan.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setOnClickListener(new vam(this));
     }
-    localuvn.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setTag(paramOnLongClickAndTouchListener);
-    localuvn.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setBgType(paramOnLongClickAndTouchListener.nBGType);
-    localuvn.jdField_a_of_type_Long = paramMessageRecord.uniseq;
-    localuvn.jdField_a_of_type_JavaLangString = paramMessageRecord.frienduin;
+    localvan.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setTag(localObject);
+    localvan.jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView.setBgType(((MessageForConfessNews)localObject).nBGType);
+    localvan.jdField_a_of_type_Long = paramMessageRecord.uniseq;
+    localvan.jdField_a_of_type_JavaLangString = paramMessageRecord.frienduin;
     int i;
-    label256:
+    label243:
     String str;
-    float f;
-    if (paramMessageRecord.istroop == 0)
+    if ((paramMessageRecord.istroop != 0) || (paramMessageRecord.istroop == 1))
     {
       i = 1;
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramOnLongClickAndTouchListener.strRecUin);
-      if ((i == 0) && (bool)) {
-        break label527;
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((MessageForConfessNews)localObject).strConfessorUin);
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((MessageForConfessNews)localObject).strRecUin)) {
+        break label530;
       }
-      paramView = paramOnLongClickAndTouchListener.strRecNick;
-      paramMessageRecord = paramView;
-      if (paramView != null)
-      {
-        paramMessageRecord = paramView;
-        if (paramView.length() > 7) {
-          paramMessageRecord = ConfessShareHelper.a(paramView, 7.0F);
-        }
+      paramMessageRecord = String.format(Locale.getDefault(), "%s收到的坦白说", new Object[] { "我" });
+      localvan.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageRecord);
+      str = ((MessageForConfessNews)localObject).strConfessorDesc;
+      float f = TagUtils.a(str);
+      paramView = ((MessageForConfessNews)localObject).strConfessorNick;
+      if (bool) {
+        paramView = "我";
       }
-      paramMessageRecord = String.format(Locale.getDefault(), "%s收到的坦白说", new Object[] { paramMessageRecord });
-      localuvn.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageRecord);
-      str = paramOnLongClickAndTouchListener.strConfessorDesc;
-      f = TagUtils.a(str);
-      paramView = paramOnLongClickAndTouchListener.strConfessorNick;
-      if ((i != 0) || (bool)) {
-        break label595;
+      if (((MessageForConfessNews)localObject).confessTime > 0L) {
+        break label637;
       }
-      paramView = "我";
+      paramOnLongClickAndTouchListener = "";
+      label294:
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("来自");
+      if ((i != 0) && (!bool)) {
+        ((StringBuilder)localObject).append("本群");
+      }
+      ((StringBuilder)localObject).append(paramView);
+      if (!TextUtils.isEmpty(paramOnLongClickAndTouchListener)) {
+        ((StringBuilder)localObject).append(" | ").append(paramOnLongClickAndTouchListener);
+      }
+      localvan.d.setText(((StringBuilder)localObject).toString());
+      if (f <= 8.0F) {
+        break label657;
+      }
+      localvan.c.setTextSize(1, 21.0F);
+      localvan.c.setLineSpacing(0.0F, 1.2F);
+      if ((f > 12.0F) || (!TagUtils.a(str))) {
+        break label678;
+      }
+      i = (int)(f * 0.7D);
     }
-    label312:
-    label589:
-    label595:
-    for (;;)
+    label530:
+    label678:
+    for (paramView = str.substring(0, i) + "\n" + str.substring(i, str.length());; paramView = str)
     {
-      StringBuilder localStringBuilder;
-      if (paramOnLongClickAndTouchListener.confessTime <= 0L)
+      localvan.c.setText(paramView);
+      if (b)
       {
-        paramOnLongClickAndTouchListener = "";
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("来自").append(paramView);
-        if (!TextUtils.isEmpty(paramOnLongClickAndTouchListener)) {
-          localStringBuilder.append(" | ").append(paramOnLongClickAndTouchListener);
-        }
-        localuvn.d.setText(localStringBuilder.toString());
-        if (f <= 8.0F) {
-          break label568;
-        }
-        localuvn.c.setTextSize(1, 21.0F);
-        localuvn.c.setLineSpacing(0.0F, 1.2F);
-        if ((f > 12.0F) || (!TagUtils.a(str))) {
-          break label589;
-        }
-        i = (int)(f * 0.7D);
+        paramViewHolder.b.append(paramMessageRecord).append(paramView).append(",").append(((StringBuilder)localObject).toString());
+        paramLinearLayout.setContentDescription(paramViewHolder.b.toString());
       }
-      for (paramView = str.substring(0, i) + "\n" + str.substring(i, str.length());; paramView = str)
-      {
-        localuvn.c.setText(paramView);
-        if (b)
+      return paramLinearLayout;
+      i = 0;
+      break;
+      paramView = ((MessageForConfessNews)localObject).strRecNick;
+      paramMessageRecord = paramView;
+      if (i != 0) {
+        if (((MessageForConfessNews)localObject).nRecNickType != 1)
         {
-          paramViewHolder.b.append(paramMessageRecord).append(paramView).append(",").append(localStringBuilder.toString());
-          paramLinearLayout.setContentDescription(paramViewHolder.b.toString());
+          paramMessageRecord = paramView;
+          if (!TextUtils.isEmpty(paramView)) {}
         }
-        return paramLinearLayout;
-        i = 0;
-        break;
-        paramMessageRecord = String.format(Locale.getDefault(), "%s收到的坦白说", new Object[] { "我" });
-        break label256;
-        paramOnLongClickAndTouchListener = TimeFormatterUtils.a(paramOnLongClickAndTouchListener.confessTime * 1000L, true, "");
-        break label312;
-        localuvn.c.setTextSize(1, 24.0F);
-        localuvn.c.setLineSpacing(0.0F, 1.0F);
+        else
+        {
+          paramOnLongClickAndTouchListener = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).strRecUin);
+          paramMessageRecord = paramView;
+          if (!TextUtils.isEmpty(paramOnLongClickAndTouchListener)) {
+            paramMessageRecord = paramOnLongClickAndTouchListener;
+          }
+        }
       }
+      paramView = paramMessageRecord;
+      if (paramMessageRecord != null)
+      {
+        paramView = paramMessageRecord;
+        if (paramMessageRecord.length() > 7) {
+          paramView = ConfessShareHelper.a(paramMessageRecord, 7.0F);
+        }
+      }
+      paramMessageRecord = String.format(Locale.getDefault(), "%s收到的坦白说", new Object[] { paramView });
+      break label243;
+      label637:
+      paramOnLongClickAndTouchListener = TimeFormatterUtils.a(((MessageForConfessNews)localObject).confessTime * 1000L, true, "");
+      break label294;
+      localvan.c.setTextSize(1, 24.0F);
+      localvan.c.setLineSpacing(0.0F, 1.0F);
     }
   }
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new uvn();
+    return new van();
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

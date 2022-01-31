@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import adar;
+import adiy;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class ForwardFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new adar();
+  public static final Parcelable.Creator CREATOR = new adiy();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private WeiYunFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo;

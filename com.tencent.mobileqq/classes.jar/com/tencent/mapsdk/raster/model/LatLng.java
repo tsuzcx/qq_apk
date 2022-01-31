@@ -16,7 +16,7 @@ public final class LatLng
     if ((-180.0D <= paramDouble2) && (paramDouble2 < 180.0D)) {}
     for (this.longitude = parseDouble(paramDouble2);; this.longitude = parseDouble(((paramDouble2 - 180.0D) % 360.0D + 360.0D) % 360.0D - 180.0D))
     {
-      this.latitude = parseDouble(Math.max(-90.0D, Math.min(90.0D, paramDouble1)));
+      this.latitude = parseDouble(Math.max(-85.0D, Math.min(85.0D, paramDouble1)));
       return;
     }
   }

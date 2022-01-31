@@ -110,13 +110,13 @@ public class d
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
-    //   2: new 124	java/util/zip/ZipFile
+    //   2: new 124	com/tencent/commonsdk/zip/QZipFile
     //   5: dup
     //   6: aload_0
-    //   7: invokespecial 127	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   7: invokespecial 127	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/lang/String;)V
     //   10: astore 7
     //   12: aload 7
-    //   14: invokevirtual 131	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   14: invokevirtual 131	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   17: astore 8
     //   19: aconst_null
     //   20: astore_0
@@ -141,7 +141,7 @@ public class d
     //   59: astore 5
     //   61: aload 7
     //   63: aload 9
-    //   65: invokevirtual 147	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   65: invokevirtual 147	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   68: astore 6
     //   70: aload 6
     //   72: astore_0
@@ -240,7 +240,7 @@ public class d
     //   262: aload 7
     //   264: ifnull +8 -> 272
     //   267: aload 7
-    //   269: invokevirtual 193	java/util/zip/ZipFile:close	()V
+    //   269: invokevirtual 193	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   272: aload_0
     //   273: ifnull +7 -> 280
     //   276: aload_0
@@ -259,7 +259,7 @@ public class d
     //   301: aload 7
     //   303: ifnull +8 -> 311
     //   306: aload 7
-    //   308: invokevirtual 193	java/util/zip/ZipFile:close	()V
+    //   308: invokevirtual 193	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   311: aload_0
     //   312: ifnull +7 -> 319
     //   315: aload_0
@@ -294,7 +294,7 @@ public class d
     //   22	314	4	localObject2	Object
     //   25	232	5	str	String
     //   68	3	6	localInputStream	InputStream
-    //   10	297	7	localZipFile	java.util.zip.ZipFile
+    //   10	297	7	localQZipFile	com.tencent.commonsdk.zip.QZipFile
     //   17	27	8	localEnumeration	java.util.Enumeration
     //   53	28	9	localZipEntry	java.util.zip.ZipEntry
     // Exception table:

@@ -1,58 +1,63 @@
-import android.content.Context;
-import com.tencent.av.utils.TroopMemberUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.NearbyFlowerManager;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton.OnClickListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
-import com.tencent.mobileqq.troop.utils.TroopGiftUtil;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajva
-  implements ImageButton.OnClickListener
+public final class ajva
+  implements TroopManager.ITroopMemberInfoCallBack
 {
-  public ajva(TroopGiftAnimationController paramTroopGiftAnimationController) {}
+  public ajva(String paramString1, String paramString2, boolean paramBoolean, QQAppInterface paramQQAppInterface, HWTroopUtils.OnHomeworkTroopIdentityCheckListener paramOnHomeworkTroopIdentityCheckListener) {}
   
-  public void a(Sprite paramSprite)
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (this.a.jdField_a_of_type_Int >= 4)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      NearbyFlowerManager.a("cartoon", "clk_inter", TroopGiftAnimationController.a(this.a).frienduin, TroopGiftUtil.b(TroopGiftAnimationController.a(this.a)) + "", "", "");
-      paramSprite = TroopGiftAnimationController.a(this.a);
-      if ((paramSprite != null) && (NetworkUtil.a(paramSprite) == 0))
-      {
-        ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
-        paramSprite = paramSprite.getString(2131429788);
-        ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a(paramSprite, TroopGiftAnimationController.a(this.a).n, DisplayUtil.a(TroopGiftAnimationController.a(this.a), 16.0F));
+      localStringBuilder = new StringBuilder().append("checkHomeworkTroopIdentity. troopUin=").append(this.jdField_a_of_type_JavaLangString).append(", memberUin=").append(this.b).append(", level=");
+      if (paramTroopMemberInfo != null) {
+        break label150;
+      }
+      localObject = "";
+      localStringBuilder = localStringBuilder.append(localObject).append(", reqMemberInfo=").append(this.jdField_a_of_type_Boolean).append(", hwIdentity=");
+      if (paramTroopMemberInfo != null) {
+        break label162;
       }
     }
-    else
+    label150:
+    label162:
+    for (Object localObject = "";; localObject = Integer.valueOf(paramTroopMemberInfo.hwIdentity))
     {
-      if (TroopGiftAnimationController.a(this.a) != null) {}
-      for (paramSprite = "0";; paramSprite = "1")
-      {
-        ReportController.b(null, "dc00899", "Grp_flower", "", "forall", "Clk_grab", 0, 0, "" + TroopGiftAnimationController.a(this.a).frienduin, "" + TroopGiftUtil.b(TroopGiftAnimationController.a(this.a)), paramSprite, "" + TroopMemberUtil.a(localAppInterface, localAppInterface.getCurrentAccountUin(), TroopGiftAnimationController.a(this.a).frienduin));
-        break;
+      QLog.i("hw_troop", 2, localObject);
+      if (paramTroopMemberInfo != null) {
+        break label216;
       }
+      if (this.jdField_a_of_type_Boolean) {}
+      try
+      {
+        long l1 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
+        long l2 = Long.parseLong(this.b);
+        ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(l1, l2, true);
+        return;
+      }
+      catch (NumberFormatException paramTroopMemberInfo)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("hw_troop", 2, new Object[] { "checkIdentity NumberFormatException,info.troopuin=", this.jdField_a_of_type_JavaLangString, ", memberuin=", this.b });
+        return;
+      }
+      localObject = Integer.valueOf(paramTroopMemberInfo.level);
+      break;
     }
-    ((TroopGiftToAllSurfaceView)this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView).a();
-    paramSprite = (TroopGiftManager)localAppInterface.getManager(112);
-    TroopGiftAnimationController.a(this.a).a = NetConnInfoCenter.getServerTimeMillis();
-    if (this.a.jdField_a_of_type_Int > 3)
+    label216:
+    if (!HWTroopUtils.a(paramTroopMemberInfo.hwIdentity))
     {
-      paramSprite.a("OidbSvc.0x7f7", 2039, this.a.jdField_a_of_type_Int, TroopGiftAnimationController.a(this.a).frienduin, TroopGiftAnimationController.a(this.a).bagId, 3000L, TroopGiftAnimationController.a(this.a));
+      ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).e(this.jdField_a_of_type_JavaLangString, this.b);
       return;
     }
-    paramSprite.a("OidbSvc.0x6b5", 1717, this.a.jdField_a_of_type_Int, TroopGiftAnimationController.a(this.a).frienduin, TroopGiftAnimationController.a(this.a).bagId, 3000L, TroopGiftAnimationController.a(this.a));
+    HWTroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHWTroopUtils$OnHomeworkTroopIdentityCheckListener, paramTroopMemberInfo.level);
   }
 }
 

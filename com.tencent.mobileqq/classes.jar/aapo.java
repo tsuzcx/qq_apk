@@ -1,30 +1,36 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import java.util.ArrayList;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.ar.aidl.IArConfigManager;
+import com.tencent.mobileqq.ar.aidl.IArConfigManager.Stub;
+import com.tencent.mobileqq.ar.config.DownloadDependRes;
+import com.tencent.qphone.base.util.QLog;
 
 public class aapo
-  implements Runnable
+  implements ServiceConnection
 {
-  public aapo(ArkAppModuleReg.ModuleQQ paramModuleQQ, int paramInt, ArrayList paramArrayList) {}
+  public aapo(DownloadDependRes paramDownloadDependRes) {}
   
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    Intent localIntent = new Intent(localBaseActivity, TroopAvatarWallPreviewActivity.class);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("index", this.jdField_a_of_type_Int);
-    localBundle.putStringArrayList("seqNum", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putBoolean("needBottomBar", false);
-    localBundle.putBoolean("IS_EDIT", false);
-    localBundle.putBoolean("is_use_path", true);
-    localBundle.putBoolean("is_show_action", true);
-    localBundle.putBoolean("is_not_show_index", false);
-    localBundle.putBoolean("is_index_show_bottom", true);
-    localIntent.putExtras(localBundle);
-    localBaseActivity.startActivity(localIntent);
+    QLog.w("WorldCupMgr", 1, "onServiceConnected, name[" + paramComponentName + "]");
+    try
+    {
+      this.a.a = IArConfigManager.Stub.a(paramIBinder);
+      this.a.a.a(DownloadDependRes.a(this.a));
+      this.a.a.c();
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      QLog.w("WorldCupMgr", 1, "onServiceConnected, Exception", paramComponentName);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    QLog.w("WorldCupMgr", 1, "onServiceDisconnected, name[" + paramComponentName + "]");
+    this.a.a();
   }
 }
 

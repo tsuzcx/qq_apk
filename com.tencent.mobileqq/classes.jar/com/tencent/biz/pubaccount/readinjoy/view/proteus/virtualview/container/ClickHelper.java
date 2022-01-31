@@ -5,13 +5,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IContainer;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import mqv;
+import mun;
 
 public class ClickHelper
 {
   protected int a;
   protected IContainer a;
-  protected mqv a;
+  protected mun a;
   public boolean a;
   protected int b;
   public boolean b;
@@ -22,7 +22,7 @@ public class ClickHelper
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreIContainer = paramIContainer;
-    this.jdField_a_of_type_Mqv = new mqv(this);
+    this.jdField_a_of_type_Mun = new mun(this);
   }
   
   public boolean a(MotionEvent paramMotionEvent)
@@ -46,10 +46,10 @@ public class ClickHelper
         this.jdField_b_of_type_Int = this.d;
       } while (!localViewBase.a(this.c, this.d));
       localObject = localView.getHandler();
-      ((Handler)localObject).removeCallbacks(this.jdField_a_of_type_Mqv);
-      this.jdField_a_of_type_Mqv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreIContainer.a());
-      this.jdField_a_of_type_Mqv.a(localView);
-      ((Handler)localObject).postDelayed(this.jdField_a_of_type_Mqv, 500L);
+      ((Handler)localObject).removeCallbacks(this.jdField_a_of_type_Mun);
+      this.jdField_a_of_type_Mun.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreIContainer.a());
+      this.jdField_a_of_type_Mun.a(localView);
+      ((Handler)localObject).postDelayed(this.jdField_a_of_type_Mun, 500L);
       localViewBase.a(paramMotionEvent);
       return true;
     case 1: 
@@ -72,7 +72,7 @@ public class ClickHelper
       int i = (int)paramMotionEvent.getX();
       int j = (int)paramMotionEvent.getY();
       if (Math.sqrt(Math.pow(i - this.jdField_a_of_type_Int, 2.0D) + Math.pow(j - this.jdField_b_of_type_Int, 2.0D)) > 5.0D) {
-        localView.removeCallbacks(this.jdField_a_of_type_Mqv);
+        localView.removeCallbacks(this.jdField_a_of_type_Mun);
       }
       this.jdField_a_of_type_Int = i;
       this.jdField_b_of_type_Int = j;

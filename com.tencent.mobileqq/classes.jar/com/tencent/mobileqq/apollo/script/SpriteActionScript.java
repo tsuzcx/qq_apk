@@ -173,10 +173,10 @@ public class SpriteActionScript
         {
           paramString = new JSONArray();
           ApolloManager localApolloManager = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getManager(152);
-          if (localApolloManager.k == null) {
+          if (localApolloManager.h == null) {
             break label118;
           }
-          paramString = new JSONArray(localApolloManager.k);
+          paramString = new JSONArray(localApolloManager.h);
           localJSONObject.put("petConfig", paramString);
           paramString = new HandleResult();
           paramString.b = true;
@@ -520,7 +520,7 @@ public class SpriteActionScript
           localJSONObject.put("height", paramInt2);
           localJSONObject.put("screenW", DeviceInfoUtil.j());
           localJSONObject.put("screenH", DeviceInfoUtil.k());
-          localJSONObject.put("qqVer", "7.6.3");
+          localJSONObject.put("qqVer", "7.6.8");
           localJSONObject.put("uin", this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.b);
           localJSONObject.put("density", DeviceInfoUtil.a);
           localJSONObject.put("wait", "def/basic/action/1/action/action");

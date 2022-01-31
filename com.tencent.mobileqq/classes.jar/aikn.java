@@ -1,35 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SubAccountObserver;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public final class aikn
-  extends SubAccountObserver
+  implements Runnable
 {
-  public aikn(QQAppInterface paramQQAppInterface) {}
+  public aikn(String paramString1, String paramString2) {}
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SUB_ACCOUNT", 2, "initAllData() onGetKeyBack() thread.name=" + Thread.currentThread().getName());
-    }
-    paramString1 = (SubAccountManager)this.a.getManager(60);
-    int j;
-    if ((paramString3 != null) && (paramString3.length() > 0))
+    try
     {
-      j = 1;
-      i = j;
-      if (paramString1 != null) {
-        paramString1.a(paramString2, paramString3, false);
-      }
-    }
-    for (int i = j;; i = 0)
-    {
-      if (i == 0) {
-        paramString1.e(paramString2);
-      }
+      Intent localIntent = new Intent();
+      localIntent.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      localIntent.putExtra("reporting_tag", this.a);
+      localIntent.putExtra("reporting_detail", this.b);
+      localIntent.putExtra("reporting_count", 1);
+      localIntent.putExtra("is_runtime", 0);
+      BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
       return;
     }
+    catch (Exception localException) {}
   }
 }
 

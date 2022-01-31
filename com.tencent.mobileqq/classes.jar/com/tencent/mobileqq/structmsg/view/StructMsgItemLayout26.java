@@ -52,7 +52,7 @@ public class StructMsgItemLayout26
   {
     BubbleViewLayout localBubbleViewLayout = new BubbleViewLayout(paramContext);
     localBubbleViewLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    localBubbleViewLayout.setId(2131365670);
+    localBubbleViewLayout.setId(2131365675);
     localBubbleViewLayout.setRadius(10.0F);
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
@@ -107,7 +107,7 @@ public class StructMsgItemLayout26
           ((RelativeLayout.LayoutParams)localObject3).addRule(14);
           ((RelativeLayout)localObject2).addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
           localObject1 = new ImageView(paramContext);
-          ((ImageView)localObject1).setImageResource(2130839718);
+          ((ImageView)localObject1).setImageResource(2130839733);
           localObject3 = new RelativeLayout.LayoutParams(-2, -2);
           ((RelativeLayout.LayoutParams)localObject3).addRule(13);
           ((RelativeLayout)localObject2).addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
@@ -159,7 +159,7 @@ public class StructMsgItemLayout26
               return null;
             }
             boolean bool = paramBundle.getBoolean("isSend", true);
-            ((BubbleViewLayout)((View)localObject2).findViewById(2131365670)).a = bool;
+            ((BubbleViewLayout)((View)localObject2).findViewById(2131365675)).a = bool;
             if (!bool) {
               break label683;
             }

@@ -5,8 +5,8 @@ import android.content.Context;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
-import kfr;
-import kfs;
+import khx;
+import khy;
 
 public class AvCustomDialog
   extends Dialog
@@ -20,7 +20,7 @@ public class AvCustomDialog
   void a()
   {
     super.getWindow().setGravity(17);
-    super.setContentView(2130969365);
+    super.setContentView(2130969363);
   }
   
   public void a(View paramView, boolean paramBoolean)
@@ -28,8 +28,8 @@ public class AvCustomDialog
     if (paramBoolean) {
       b();
     }
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131366289);
-    localFrameLayout.setOnClickListener(new kfr(this));
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131366294);
+    localFrameLayout.setOnClickListener(new khx(this));
     if (paramView != null) {
       localFrameLayout.addView(paramView);
     }
@@ -37,12 +37,12 @@ public class AvCustomDialog
   
   void b()
   {
-    findViewById(2131366288).setOnClickListener(new kfs(this));
+    findViewById(2131366293).setOnClickListener(new khy(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.AvCustomDialog
  * JD-Core Version:    0.7.0.1
  */

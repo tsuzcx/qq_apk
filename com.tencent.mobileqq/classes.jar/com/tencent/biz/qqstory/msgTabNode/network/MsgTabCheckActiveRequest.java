@@ -6,7 +6,9 @@ import com.tencent.biz.qqstory.channel.BaseResponse;
 import com.tencent.biz.qqstory.channel.NetworkRequest;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckActivity;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class MsgTabCheckActiveRequest
@@ -49,6 +51,8 @@ public class MsgTabCheckActiveRequest
     if (!TextUtils.isEmpty(this.c)) {
       localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
     }
+    SLog.a("MsgTabCheckActiveRequest", "client version=%s", "7.6.8");
+    localReqCheckActivity.version.set("7.6.8");
     return localReqCheckActivity.toByteArray();
   }
   

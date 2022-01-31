@@ -1,124 +1,66 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.av.AVLog;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.business.manager.report.VideoNodeReporter;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class jgo
 {
-  public int a;
-  public long a;
-  String jdField_a_of_type_JavaLangString;
+  public static String a;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  jgp jdField_a_of_type_Jgp;
   boolean jdField_a_of_type_Boolean = false;
-  long[] jdField_a_of_type_ArrayOfLong = new long[41];
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d = "KilledBySystem";
   
-  public jgo()
+  static
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
+    jdField_a_of_type_JavaLangString = "GAudioMsgReceiver";
   }
   
-  public String a()
+  public jgo(VideoAppInterface paramVideoAppInterface)
   {
-    String str1 = Build.MODEL;
-    String str2 = String.valueOf(Build.VERSION.SDK_INT);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Android").append('|');
-    localStringBuilder.append(str1).append('|');
-    localStringBuilder.append(str2).append('|');
-    localStringBuilder.append(str2).append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append('|');
-    if (this.jdField_b_of_type_Int != -1) {
-      localStringBuilder.append(this.jdField_b_of_type_Int).append('|');
-    }
-    for (;;)
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Jgp = new jgp(paramVideoAppInterface);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      localStringBuilder.append(this.jdField_a_of_type_Int).append('|');
-      return localStringBuilder.toString();
-      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[20])).append('|');
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Jgp);
+      this.jdField_a_of_type_Boolean = false;
     }
   }
   
-  public String a(int paramInt, long paramLong)
+  public void b()
   {
-    if ((paramInt >= 0) && (paramInt < 41))
-    {
-      StringBuilder localStringBuilder;
-      if (paramLong == 1L)
-      {
-        this.jdField_a_of_type_ArrayOfLong[paramInt] = 1L;
-        localStringBuilder = new StringBuilder();
-        paramInt = 0;
-        label34:
-        if (paramInt >= 41) {
-          break label242;
-        }
-        switch (paramInt)
-        {
-        default: 
-          localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt])).append('|');
-        }
-      }
-      for (;;)
-      {
-        paramInt += 1;
-        break label34;
-        this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
-        break;
-        if (this.jdField_a_of_type_ArrayOfLong[14] == 0L)
-        {
-          this.jdField_a_of_type_JavaLangString = VideoNodeReporter.a();
-          this.jdField_a_of_type_ArrayOfLong[14] = 1L;
-        }
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append('|');
-        continue;
-        localStringBuilder.append(this.d).append('|');
-        continue;
-        localStringBuilder.append(0).append('|');
-        continue;
-        if (this.jdField_b_of_type_Long > 0L) {
-          this.jdField_c_of_type_Long = ((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L);
-        }
-        localStringBuilder.append(this.jdField_c_of_type_Long).append('|');
-      }
-      label242:
-      return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQGAudioMsg Receiver");
     }
-    AVLog.d("VideoNodeReporter", "buildBody report error:" + paramInt);
-    return null;
-  }
-  
-  public void a(SessionInfo paramSessionInfo, String paramString)
-  {
-    if (paramSessionInfo != null)
-    {
-      if (paramSessionInfo.j != -1) {
-        this.jdField_a_of_type_Int = paramSessionInfo.j;
-      }
-      if (paramSessionInfo.d != 0) {
-        this.jdField_b_of_type_Int = paramSessionInfo.d;
-      }
-      if (!TextUtils.isEmpty(paramSessionInfo.jdField_c_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = paramSessionInfo.jdField_c_of_type_JavaLangString;
-      }
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_c_of_type_JavaLangString = paramString;
+    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
+    localIntentFilter.addAction("tencent.video.q2v.AddDiscussMember");
+    localIntentFilter.addAction("tencent.video.q2v.SwitchToDiscuss");
+    localIntentFilter.addAction("tencent.video.q2v.GroupSystemMsg");
+    localIntentFilter.addAction("tencent.video.q2v.SelectMember");
+    localIntentFilter.addAction("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoGift");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoLevelUpgrade");
+    localIntentFilter.addAction("tencent.video.q2v.pstnCardInfoChanged");
+    localIntentFilter.addAction("tencent.video.q2v.GvideoMemUntInvite");
+    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box");
+    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box_by_invite_id");
+    localIntentFilter.addAction("tencent.video.q2v.randomMultiOwnerOnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.random1V1OnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.avreportOnlinePush");
+    localIntentFilter.addAction("tencent.video.q2v.AudioTransPush");
+    localIntentFilter.addAction("tencent.video.q2v.AudioEngineReady");
+    localIntentFilter.addAction("tencent.video.q2v.GroupInfoChanged");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Jgp, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jgo
  * JD-Core Version:    0.7.0.1
  */

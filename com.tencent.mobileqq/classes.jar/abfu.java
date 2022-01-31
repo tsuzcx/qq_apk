@@ -1,33 +1,19 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPC;
-import com.tencent.mobileqq.armap.ipc.IPCConstants;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
-import eipc.EIPCResult;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
+import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
 
 public class abfu
-  implements EIPCOnGetConnectionListener
+  implements View.OnClickListener
 {
-  public abfu(ArMapIPC paramArMapIPC) {}
+  public abfu(ArkAppListActivity paramArkAppListActivity, String paramString) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void onClick(View paramView)
   {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    this.a.a = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPC", 2, "onConnectBind " + paramEIPCConnection);
-    }
-    this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    this.a.a = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPC", 2, "onConnectUnbind " + paramEIPCConnection);
-    }
-    this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity, ArkAuthorityInfoActivity.class);
+    paramView.putExtra("intent_extra_authority_app_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAppListActivity.startActivity(paramView);
   }
 }
 

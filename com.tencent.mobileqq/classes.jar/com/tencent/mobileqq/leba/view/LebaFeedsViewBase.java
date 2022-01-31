@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.leba.view;
 
-import aebk;
-import aebl;
+import aeju;
+import aejv;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -48,13 +48,13 @@ public abstract class LebaFeedsViewBase
   static
   {
     jdField_d_of_type_Int = -1;
-    jdField_b_of_type_AndroidViewView$OnTouchListener = new aebl();
+    jdField_b_of_type_AndroidViewView$OnTouchListener = new aejv();
   }
   
   public LebaFeedsViewBase(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new aebk(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new aeju(this);
     if (jdField_d_of_type_Int < 0) {
       jdField_d_of_type_Int = AIOUtils.a(12.0F, paramContext.getResources());
     }
@@ -178,21 +178,21 @@ public abstract class LebaFeedsViewBase
         } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
         return;
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840611);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840626);
       } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840612);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840627);
     } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
   
   protected void h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsDislikeMaskView = ((LebaFeedsDislikeMaskView)super.findViewById(2131366701));
+    this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsDislikeMaskView = ((LebaFeedsDislikeMaskView)super.findViewById(2131366699));
     this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsDislikeMaskView.setListener(this);
     this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsDislikeMaskView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131366702));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131366700));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsDislikeMaskView.setButtonView(this.jdField_a_of_type_AndroidWidgetButton);
   }

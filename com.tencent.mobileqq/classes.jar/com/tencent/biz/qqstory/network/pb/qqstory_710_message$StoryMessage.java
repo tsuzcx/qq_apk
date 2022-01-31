@@ -12,6 +12,7 @@ public final class qqstory_710_message$StoryMessage
   extends MessageMicro
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public qqstory_710_message.StoryAnswerInfo answer_info = new qqstory_710_message.StoryAnswerInfo();
   public qqstory_710_message.StoryCommentInfo comment_info = new qqstory_710_message.StoryCommentInfo();
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public qqstory_710_message.StoryGradeInfo grade_info = new qqstory_710_message.StoryGradeInfo();
@@ -29,7 +30,7 @@ public final class qqstory_710_message$StoryMessage
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56, 64, 74, 82, 90, 98, 106 }, new String[] { "like_info", "comment_info", "publish_info", "video_info", "feed_id", "message_id", "src_type", "src_uid", "official_info", "share_info", "medal_info", "vote_info", "grade_info" }, new Object[] { null, null, null, null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null, null, null, null, null }, StoryMessage.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 56, 64, 74, 82, 90, 98, 106, 114 }, new String[] { "like_info", "comment_info", "publish_info", "video_info", "feed_id", "message_id", "src_type", "src_uid", "official_info", "share_info", "medal_info", "vote_info", "grade_info", "answer_info" }, new Object[] { null, null, null, null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), null, null, null, null, null, null }, StoryMessage.class);
   }
 }
 

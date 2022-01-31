@@ -13,14 +13,14 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import zta;
+import zzl;
 
 public class ConversationProxy
   extends BaseProxy
 {
   private QQConcurrentHashMap jdField_a_of_type_ComTencentCommonsdkCacheQQConcurrentHashMap = new QQConcurrentHashMap(1005, 0, 100);
   EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = null;
-  NoColumnErrorHandler jdField_a_of_type_ComTencentMobileqqPersistenceNoColumnErrorHandler = new zta(this);
+  NoColumnErrorHandler jdField_a_of_type_ComTencentMobileqqPersistenceNoColumnErrorHandler = new zzl(this);
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private boolean jdField_a_of_type_Boolean;
   

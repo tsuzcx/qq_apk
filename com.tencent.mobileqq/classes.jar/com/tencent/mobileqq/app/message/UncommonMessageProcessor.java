@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.app.message;
 
+import aaav;
+import aaaw;
+import aaax;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -62,9 +65,6 @@ import msg.blessing_helper.blessing_helper.msg;
 import tencent.im.msgrevoke.msgrevoke_userdef.MsgInfoUserDef;
 import tencent.im.msgrevoke.msgrevoke_userdef.MsgInfoUserDef.MsgInfoDef;
 import tencent.im.msgrevoke.msgrevoke_userdef.UinTypeUserDef;
-import zuk;
-import zul;
-import zum;
 
 public class UncommonMessageProcessor
   extends BaseMessageProcessor
@@ -1142,7 +1142,7 @@ public class UncommonMessageProcessor
           i2 = 0;
           while (i2 < 12)
           {
-            localSendMessageHandler.a(new zum(this, localMessageRecord, l1));
+            localSendMessageHandler.a(new aaax(this, localMessageRecord, l1));
             i2 += 1;
           }
           i2 = 0;
@@ -1178,7 +1178,7 @@ public class UncommonMessageProcessor
     if (((paramMessageRecord instanceof MessageForShortVideo)) && (((MessageForShortVideo)paramMessageRecord).redBagType == LocalMediaInfo.REDBAG_TYPE_GET)) {}
     for (boolean bool = true;; bool = false)
     {
-      a(false, true, true, 0L, new zuk(this, paramMessageRecord, bool, paramArrayList));
+      a(false, true, true, 0L, new aaav(this, paramMessageRecord, bool, paramArrayList));
       return;
     }
   }
@@ -1251,7 +1251,7 @@ public class UncommonMessageProcessor
       if (i1 >= 12) {
         break;
       }
-      localSendMessageHandler.a(new zul(this, paramList));
+      localSendMessageHandler.a(new aaaw(this, paramList));
       i1 += 1;
     }
     label93:

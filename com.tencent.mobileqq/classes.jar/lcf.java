@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.hotpic.HotPicData;
-import com.tencent.mobileqq.hotpic.PublicAccountGifListener;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class lcf
-  implements PublicAccountGifListener
+  implements Runnable
 {
-  public lcf(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public lcf(EcShopAssistantManager paramEcShopAssistantManager, String paramString) {}
   
-  public void a(HotPicData paramHotPicData)
+  public void run()
   {
-    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
-      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager.a.getEntityManagerFactory().createEntityManager();
+    if (EcShopAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager, localEntityManager, this.jdField_a_of_type_JavaLangString)) {
+      EcShopAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager, this.jdField_a_of_type_JavaLangString);
     }
+    localEntityManager.a();
   }
 }
 

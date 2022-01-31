@@ -1,8 +1,4 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter.ViewTag;
-
-public class ybp
-  extends SelectMemberBuddyListAdapter.ViewTag
-{}
+public class ybp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar

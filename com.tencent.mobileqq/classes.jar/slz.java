@@ -1,15 +1,16 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
 class slz
   implements Runnable
 {
-  slz(sly paramsly) {}
+  slz(slw paramslw) {}
   
   public void run()
   {
-    this.a.a.a.clearFocus();
-    this.a.a.onBackEvent();
+    if (this.a.a.a.b != 5) {
+      this.a.a.a.b();
+    }
   }
 }
 

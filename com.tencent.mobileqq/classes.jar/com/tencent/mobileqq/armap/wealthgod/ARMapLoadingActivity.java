@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.armap.wealthgod;
 
-import abhw;
-import abhx;
-import abhy;
-import abhz;
-import abia;
-import abib;
-import abic;
-import abid;
-import abie;
-import abif;
-import abig;
-import abih;
-import abii;
-import abij;
-import abik;
+import abox;
+import aboy;
+import aboz;
+import abpa;
+import abpb;
+import abpc;
+import abpd;
+import abpe;
+import abpf;
+import abpg;
+import abph;
+import abpi;
+import abpj;
+import abpk;
+import abpl;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -339,7 +339,7 @@ public class ARMapLoadingActivity
     if (QLog.isColorLevel()) {
       QLog.d("ARMapLoadingActivity", 2, String.format("reportLoadFail failType=%s subType=%s failInfo=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }));
     }
-    ThreadManager.post(new abhz(this, paramInt1, paramInt2, paramString), 5, null, false);
+    ThreadManager.post(new abpa(this, paramInt1, paramInt2, paramString), 5, null, false);
   }
   
   private void b(boolean paramBoolean)
@@ -347,7 +347,7 @@ public class ARMapLoadingActivity
     if (QLog.isColorLevel()) {
       QLog.d("ARMapLoadingActivity", 2, String.format("reportPreStartThreadSuccess success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    ThreadManager.post(new abia(this, paramBoolean), 5, null, false);
+    ThreadManager.post(new abpb(this, paramBoolean), 5, null, false);
   }
   
   private boolean b()
@@ -367,7 +367,7 @@ public class ARMapLoadingActivity
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new abic(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new abpd(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED");
       localIntentFilter.addAction("com.tencent.mobileqq.armap.ACTION_START_ARMAP_COMPLETED");
@@ -380,7 +380,7 @@ public class ARMapLoadingActivity
     if (QLog.isColorLevel()) {
       QLog.d("ARMapLoadingActivity", 2, String.format("reportStartThreadTimeout timeout=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    ThreadManager.post(new abib(this, paramBoolean), 5, null, false);
+    ThreadManager.post(new abpc(this, paramBoolean), 5, null, false);
   }
   
   private void d()
@@ -447,8 +447,8 @@ public class ARMapLoadingActivity
     if (this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator == null)
     {
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[0]);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new abid(this));
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addListener(new abie(this));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new abpe(this));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addListener(new abpf(this));
     }
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setIntValues(new int[] { 0, 80 });
@@ -473,7 +473,7 @@ public class ARMapLoadingActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapLoadingActivity$LoadingTimeStamp.c = System.currentTimeMillis();
     if (this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener == null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abif(this, 3, true, true, 0L, false, false, "wealthgod_locate_check");
+      this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abpg(this, 3, true, true, 0L, false, false, "wealthgod_locate_check");
     }
     SosoInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
     this.jdField_c_of_type_Boolean = false;
@@ -488,7 +488,7 @@ public class ARMapLoadingActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapLoadingActivity$LoadingTimeStamp.e = System.currentTimeMillis();
     if (this.jdField_a_of_type_ComTencentMobileqqArmapArMapObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new abig(this);
+      this.jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new abph(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqArmapArMapObserver);
     this.jdField_a_of_type_ComTencentMobileqqArmapArMapHandler.a(this.jdField_a_of_type_Long, false, 1, null);
@@ -504,7 +504,7 @@ public class ARMapLoadingActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapLoadingActivity$LoadingTimeStamp.g = System.currentTimeMillis();
     if (this.jdField_a_of_type_ComTencentMobileqqArmapConfigConfigCheckHander$Listener == null) {
-      this.jdField_a_of_type_ComTencentMobileqqArmapConfigConfigCheckHander$Listener = new abih(this);
+      this.jdField_a_of_type_ComTencentMobileqqArmapConfigConfigCheckHander$Listener = new abpi(this);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfigManager != null)
     {
@@ -535,9 +535,9 @@ public class ARMapLoadingActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapLoadingActivity$LoadingTimeStamp.i = System.currentTimeMillis();
     if (this.jdField_a_of_type_ComTencentMobileqqEarlydownloadEarlyDownloadManager$EarlyDownLoadListener == null) {
-      this.jdField_a_of_type_ComTencentMobileqqEarlydownloadEarlyDownloadManager$EarlyDownLoadListener = new abii(this);
+      this.jdField_a_of_type_ComTencentMobileqqEarlydownloadEarlyDownloadManager$EarlyDownLoadListener = new abpj(this);
     }
-    ThreadManager.postImmediately(new abij(this), null, false);
+    ThreadManager.postImmediately(new abpk(this), null, false);
     this.jdField_e_of_type_Boolean = false;
   }
   
@@ -640,7 +640,7 @@ public class ARMapLoadingActivity
       QLog.d("ARMapLoadingActivity", 2, "enableTouchToRetry");
     }
     if (this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.setOnClickListener(new abhx(this));
+      this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.setOnClickListener(new aboy(this));
     }
   }
   
@@ -656,7 +656,7 @@ public class ARMapLoadingActivity
   
   private void w()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230, null, "定位不到你的位置，请检查网络设置及定位权限后再尝试一次吧。", "我知道了", null, null, new abhy(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230, null, "定位不到你的位置，请检查网络设置及定位权限后再尝试一次吧。", "我知道了", null, null, new aboz(this));
     try
     {
       localQQCustomDialog.show();
@@ -798,14 +798,14 @@ public class ARMapLoadingActivity
     C();
     this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapLoadingActivity$LoadingTimeStamp.jdField_a_of_type_Long = System.currentTimeMillis();
     SplashBitmapUtils.a(this.app);
-    setContentView(2130970214);
+    setContentView(2130970229);
     this.jdField_a_of_type_AndroidContentContext = this;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.app;
     this.jdField_a_of_type_ComTencentMobileqqArmapArMapHandler = ((ArMapHandler)this.app.a(101));
     this.jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfigManager = ((ARMapConfigManager)this.app.getManager(189));
     this.jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig = this.jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfigManager.a();
     this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfigManager.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView = ((ARMapSplashView)findViewById(2131369642));
+    this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView = ((ARMapSplashView)findViewById(2131369652));
     if (this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.setSplashMode(2);
@@ -813,11 +813,11 @@ public class ARMapLoadingActivity
       this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.setProgressMax(100);
       this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapSplashView.setARMapConfig(this.jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig);
     }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369644));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369654));
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369643));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369653));
     if (this.mSystemBarComp != null)
     {
       this.mSystemBarComp.setStatusColor(0);
@@ -828,7 +828,7 @@ public class ARMapLoadingActivity
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, k, 0, 0);
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler = new abik(this, getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new abpl(this, getMainLooper(), this);
     c();
     Intent localIntent = getIntent();
     if (localIntent != null)
@@ -869,7 +869,7 @@ public class ARMapLoadingActivity
       if (getIntent().getBooleanExtra("from_jump", false))
       {
         this.jdField_a_of_type_Long = getIntent().getLongExtra("adcode", 0L);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new abhw(this), 400L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new abox(this), 400L);
         if (QLog.isColorLevel()) {
           QLog.d("ARMapLoadingActivity", 2, "armaploading activity fromJump  mADCode：" + this.jdField_a_of_type_Long);
         }
@@ -896,7 +896,7 @@ public class ARMapLoadingActivity
     d();
     if (this.jdField_a_of_type_ComTencentMobileqqEarlydownloadEarlyDownloadManager$EarlyDownLoadListener != null)
     {
-      ArNativeSoDownloadHandler localArNativeSoDownloadHandler = (ArNativeSoDownloadHandler)((EarlyDownloadManager)this.app.getManager(76)).a("qq.android.ar.native.so_v7.6.5.1");
+      ArNativeSoDownloadHandler localArNativeSoDownloadHandler = (ArNativeSoDownloadHandler)((EarlyDownloadManager)this.app.getManager(76)).a("qq.android.ar.native.so_v7.6.5.2");
       if (localArNativeSoDownloadHandler != null) {
         localArNativeSoDownloadHandler.b(this.jdField_a_of_type_ComTencentMobileqqEarlydownloadEarlyDownloadManager$EarlyDownLoadListener);
       }

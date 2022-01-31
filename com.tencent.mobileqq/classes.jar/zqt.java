@@ -1,27 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetConfig;
-import com.tencent.mobileqq.config.ResourcePluginListener;
+import android.os.Process;
+import com.tencent.mobileqq.app.ProcessExitReceiver;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class zqt
-  extends ResourcePluginListener
+  implements Runnable
 {
-  private zqt(GetConfig paramGetConfig) {}
+  public zqt(ProcessExitReceiver paramProcessExitReceiver) {}
   
-  public void a(byte paramByte)
+  public void run()
   {
-    if (GetConfig.a(this.a) == 44)
-    {
-      if ((paramByte != 2) && (paramByte == 3)) {}
-      GetConfig.b(this.a).b.c(GetConfig.a(this.a));
-      this.a.a(7);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProcessExitReceiver", 2, "Kill process " + MobileQQ.getMobileQQ().getProcessName());
     }
-  }
-  
-  public void b(byte paramByte)
-  {
-    if ((paramByte != 2) && (paramByte == 3)) {}
-    GetConfig.c(this.a).b.d(this);
+    Process.killProcess(Process.myPid());
   }
 }
 

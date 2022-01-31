@@ -1,15 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinHandler.ReadInJoySkinObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class lgb
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+  extends ReadInJoySkinHandler.ReadInJoySkinObserver
 {
-  public lgb(ReadInJoyArkViewController paramReadInJoyArkViewController, String paramString1, String paramString2) {}
+  public lgb(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyArkReadInJoyArkViewController.a(this.jdField_a_of_type_JavaLangString, this.b, "download", paramInt);
+    if (paramBoolean) {
+      ThreadManager.post(new lgc(this, paramGuideInfo2, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
+    }
   }
 }
 

@@ -8,7 +8,7 @@ public class SvEffectSdkInitor$QQLowLightResource
 {
   public String a()
   {
-    return AppConstants.aJ;
+    return AppConstants.aK;
   }
 }
 

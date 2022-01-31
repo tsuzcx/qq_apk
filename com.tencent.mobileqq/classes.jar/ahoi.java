@@ -1,9 +1,23 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
-public class ahoi
-  extends ahoh
+class ahoi
+  extends AnimatorListenerAdapter
 {
-  public ahoi(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase, boolean paramBoolean) {}
+  ahoi(ahog paramahog) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    EffectsCameraCaptureFragment.a(this.a.a).setVisibility(8);
+    EffectsCameraCaptureFragment.j(this.a.a, false);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    EffectsCameraCaptureFragment.j(this.a.a, true);
+  }
 }
 
 

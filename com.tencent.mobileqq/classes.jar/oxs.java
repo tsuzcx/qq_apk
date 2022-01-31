@@ -1,27 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.util.TroopReportor;
 
 public class oxs
-  extends Handler
+  implements Runnable
 {
-  public oxs(TroopNewGuidePopWindow paramTroopNewGuidePopWindow) {}
+  public oxs(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    String str = "temp_qrcode_share_" + this.a.jdField_c_of_type_JavaLangString + ".png";
+    try
     {
-    default: 
+      str = QRUtils.a(this.a.getApplicationContext(), str, this.a.b);
+      this.a.runOnUiThread(new oxu(this, str));
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd);
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      if (this.a.jdField_c_of_type_Int == 2) {
+        TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
+      }
+      this.a.runOnUiThread(new oxt(this));
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd != null) {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd);
-    }
-    this.a.a();
   }
 }
 

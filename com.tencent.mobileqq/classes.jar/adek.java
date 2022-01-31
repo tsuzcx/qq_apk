@@ -1,34 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.PictureFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.PictureFileViewer;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import java.lang.ref.WeakReference;
 
 public class adek
-  implements AdapterView.OnItemClickListener
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public adek(PictureFilePresenter paramPictureFilePresenter) {}
+  public adek(FileVideoManager.VideoControl paramVideoControl) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    paramAdapterView = this.a;
-    if (!PictureFilePresenter.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PictureFilePresenter.a(paramAdapterView, bool);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener.a(PictureFilePresenter.a(this.a));
-      }
-      if (!PictureFilePresenter.a(this.a)) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.b(false);
-      return;
+    QLog.e("FileVideoManager<FileAssistant>", 1, "mediaPlayer onError:errorType[" + paramInt1 + "], errorCode[" + paramInt2 + "],extra[" + paramInt3 + "],detailInfo[" + paramString + "]");
+    paramTVK_IMediaPlayer = (FileVideoManager.FileVideoManagerCallback)this.a.a.get();
+    if (paramTVK_IMediaPlayer != null) {
+      paramTVK_IMediaPlayer.a(paramInt2, "视频文件不存在或已损坏");
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(true);
-    this.a.b();
+    return false;
   }
 }
 

@@ -6,8 +6,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import naa;
-import nab;
+import ndv;
+import ndw;
 
 public class AsyncFileDownloader$InnerBaseDownloader
   implements AsyncFileDownloader.InnerDownloader
@@ -16,7 +16,7 @@ public class AsyncFileDownloader$InnerBaseDownloader
   
   protected AsyncFileDownloader$InnerBaseDownloader(AsyncFileDownloader paramAsyncFileDownloader)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new nab(this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new ndw(this);
   }
   
   protected INetEngine a()
@@ -32,13 +32,13 @@ public class AsyncFileDownloader$InnerBaseDownloader
     localHttpNetReq.jdField_a_of_type_JavaLangString = paramDownloadTask.jdField_d_of_type_JavaLangString;
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.jdField_c_of_type_JavaLangString = paramDownloadTask.e;
-    localHttpNetReq.jdField_d_of_type_JavaLangString = paramDownloadTask.jdField_f_of_type_JavaLangString;
-    localHttpNetReq.e = paramDownloadTask.jdField_f_of_type_Int;
+    localHttpNetReq.jdField_d_of_type_JavaLangString = paramDownloadTask.f;
+    localHttpNetReq.e = paramDownloadTask.g;
     localHttpNetReq.jdField_c_of_type_Int = 3;
     localHttpNetReq.a(paramDownloadTask);
     localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
     paramDownloadTask.a = localHttpNetReq;
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new naa(this);
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ndv(this);
     a().a(localHttpNetReq);
     SLog.a("AsyncFileDownloader", "start download with base downloader, task = %s", paramDownloadTask);
   }

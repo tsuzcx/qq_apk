@@ -30,11 +30,11 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import nbe;
-import nbf;
-import nbg;
-import nbh;
-import nbi;
+import nez;
+import nfa;
+import nfb;
+import nfc;
+import nfd;
 
 @TargetApi(14)
 public class StoryVideoUploadTask
@@ -96,26 +96,26 @@ public class StoryVideoUploadTask
           }
           localObject = new ImageFileObject(true);
           ((ImageFileObject)localObject).jdField_a_of_type_JavaLangString = paramStoryVideoTaskInfo.jdField_e_of_type_JavaLangString;
-          ((ImageFileObject)localObject).a(new nbe(this, paramStoryVideoTaskInfo));
+          ((ImageFileObject)localObject).a(new nez(this, paramStoryVideoTaskInfo));
           paramStoryVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localObject);
           if ((TextUtils.isEmpty(paramStoryVideoTaskInfo.jdField_f_of_type_JavaLangString)) || (!TextUtils.isEmpty(paramStoryVideoTaskInfo.l))) {
             break label698;
           }
           localObject = new ImageFileObject(true);
           ((ImageFileObject)localObject).jdField_a_of_type_JavaLangString = paramStoryVideoTaskInfo.jdField_f_of_type_JavaLangString;
-          ((ImageFileObject)localObject).a(new nbf(this, paramStoryVideoTaskInfo));
+          ((ImageFileObject)localObject).a(new nfa(this, paramStoryVideoTaskInfo));
           paramStoryVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localObject);
           if (!TextUtils.isEmpty(((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_g_of_type_JavaLangString)) {
             break label708;
           }
           localObject = new StoryVideoFileObject(((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a(), ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_a_of_type_JavaLangString);
-          ((StoryVideoFileObject)localObject).a(new nbg(this));
+          ((StoryVideoFileObject)localObject).a(new nfb(this));
           paramStoryVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localObject);
           if ((TextUtils.isEmpty(((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_j_of_type_JavaLangString)) && (!TextUtils.isEmpty(((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_b_of_type_JavaLangString)))
           {
             localObject = new ImageFileObject(false);
             ((ImageFileObject)localObject).jdField_a_of_type_JavaLangString = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).jdField_b_of_type_JavaLangString;
-            ((ImageFileObject)localObject).a(new nbh(this));
+            ((ImageFileObject)localObject).a(new nfc(this));
             paramStoryVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localObject);
           }
           return;
@@ -298,7 +298,7 @@ public class StoryVideoUploadTask
         localPublishStoryVideoRequest.s = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().getStringExtra("i_l", null);
         localPublishStoryVideoRequest.t = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).l;
         localPublishStoryVideoRequest.jdField_c_of_type_Boolean = ((StoryVideoTaskInfo)this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a().getBooleanExtra("story_sync_qzone", false);
-        CmdTaskManger.a().a(localPublishStoryVideoRequest, new nbi(this));
+        CmdTaskManger.a().a(localPublishStoryVideoRequest, new nfd(this));
         return;
         i = 0;
       }

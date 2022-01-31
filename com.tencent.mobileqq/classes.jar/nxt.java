@@ -1,29 +1,36 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter;
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListAdapter;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView.OnHorizontalScrollListener;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerListAdapter;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.biz.qqstory.utils.DateUtils;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-class nxt
-  implements Runnable
+public class nxt
 {
-  nxt(nxs paramnxs, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, boolean paramBoolean, QQUserUIItem paramQQUserUIItem) {}
+  public TextView a;
+  public StoryPickerHorizontalListView a;
   
-  public void run()
+  public nxt(StoryPickerListAdapter paramStoryPickerListAdapter, View paramView, StoryPickerHorizontalListView.OnHorizontalScrollListener paramOnHorizontalScrollListener)
   {
-    StoryPlayVideoActivity.a((FragmentActivity)MemoriesVideoListSegment.a(this.jdField_a_of_type_Nxs.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment), MemoriesVideoListSegment.a(this.jdField_a_of_type_Nxs.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Nxs.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Nxs.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Boolean, StoryMemoriesFragment.a(this.jdField_a_of_type_Nxs.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment.jdField_a_of_type_Int));
-    int i = StoryMemoriesFragment.a(this.jdField_a_of_type_Nxs.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe()) {}
-    for (String str = "1";; str = "2")
-    {
-      StoryReportor.a("memory", "clk_video", i, 0, new String[] { str, "", "", this.jdField_a_of_type_Nxs.b });
-      SLog.b("Q.qqstory.memories.MemoriesVideoListSegment", "go to player , collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Nxs.b, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Nxs.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilArrayList });
-      return;
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364227));
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView = ((StoryPickerHorizontalListView)paramView.findViewById(2131372009));
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setSelection(0);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setOnHorizontalScrollListener(paramOnHorizontalScrollListener);
+    paramView = (StoryPickerHorizontalListAdapter)this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.a();
+    paramView.a(paramStoryPickerListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalItemClickListener);
+    paramView.a(paramStoryPickerListAdapter.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnCheckBoxClickListener);
+  }
+  
+  public void a(int paramInt, VideoCollectionItem paramVideoCollectionItem)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setData(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView.setTag(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(DateUtils.a(paramVideoCollectionItem.collectionTime));
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.jdField_a_of_type_JavaUtilHashMap.put(paramVideoCollectionItem.collectionId, new WeakReference(this));
   }
 }
 

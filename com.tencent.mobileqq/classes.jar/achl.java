@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.extendfriend.ExtendFriendResourceDownloader;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
 
-public class achl
-  implements INetEngine.INetEngineListener
+class achl
+  implements Runnable
 {
-  public achl(ExtendFriendResourceDownloader paramExtendFriendResourceDownloader) {}
+  achl(achk paramachk, URLDrawable paramURLDrawable) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp) {}
+  public void run()
+  {
+    this.jdField_a_of_type_Achk.a.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     achl
  * JD-Core Version:    0.7.0.1
  */

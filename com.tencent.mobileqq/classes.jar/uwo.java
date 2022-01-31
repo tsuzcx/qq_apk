@@ -1,26 +1,52 @@
-import android.text.TextPaint;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer.DoodleDrawerListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
+import com.tencent.qphone.base.util.QLog;
 
 public class uwo
-  implements Runnable
+  implements DoodleDrawer.DoodleDrawerListener
 {
-  public uwo(FileItemBuilder paramFileItemBuilder, uwr paramuwr, FileManagerEntity paramFileManagerEntity) {}
+  public uwo(DoodleMsgView paramDoodleMsgView) {}
   
-  public void run()
+  public void a(String paramString, int paramInt)
   {
-    TextView localTextView = this.jdField_a_of_type_Uwr.a;
-    String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
-    boolean bool = FileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder);
-    int j = this.jdField_a_of_type_Uwr.a.getMeasuredWidth();
-    TextPaint localTextPaint = this.jdField_a_of_type_Uwr.a.getPaint();
-    if (FileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder)) {}
-    for (int i = 2;; i = 3)
+    QLog.d("DoodleMsgView", 2, "onDataState:" + paramInt + " - " + paramString);
+    this.a.a(new uwq(this, paramInt));
+  }
+  
+  public void a(String arg1, long paramLong, Bitmap paramBitmap)
+  {
+    if (DoodleMsgView.a(this.a) == null) {}
+    for (;;)
     {
-      localTextView.setText(FileManagerUtil.a(str, bool, j, localTextPaint, i));
       return;
+      if (paramBitmap != null) {
+        if (DoodleMsgView.a(this.a, paramBitmap.getWidth(), paramBitmap.getHeight())) {
+          if (DoodleMsgView.a(this.a) == null)
+          {
+            DoodleMsgView.a(this.a, new Paint());
+            DoodleMsgView.a(this.a).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+            DoodleMsgView.a(this.a).setAntiAlias(true);
+          }
+        }
+      }
+      synchronized (this.a)
+      {
+        DoodleMsgView.a(this.a).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, DoodleMsgView.a(this.a).getWidth(), DoodleMsgView.a(this.a).getHeight()), DoodleMsgView.a(this.a));
+        this.a.postInvalidate();
+        if ((!DoodleMsgView.a(this.a)) || (paramLong < DoodleMsgView.a(this.a).a()) || (DoodleMsgView.a(this.a) < DoodleMsgView.a(this.a).a())) {
+          continue;
+        }
+        this.a.d();
+        this.a.a(new uwp(this));
+        return;
+      }
     }
   }
 }

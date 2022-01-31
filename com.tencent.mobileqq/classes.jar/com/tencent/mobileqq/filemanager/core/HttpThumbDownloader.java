@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acwp;
+import adey;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -128,7 +128,7 @@ public class HttpThumbDownloader
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpThumbDownloader$ThumbEventCallback = paramThumbEventCallback;
     QLog.i("ZipThumbDownloader", 1, "[downloadThumb]  ID[" + this.jdField_a_of_type_Long + "] add WaitDowloadTask waiting...");
     this.jdField_d_of_type_Long = System.currentTimeMillis();
-    ThreadManager.post(new acwp(this), 8, null, false);
+    ThreadManager.post(new adey(this), 8, null, false);
   }
   
   public void a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)

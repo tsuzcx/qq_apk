@@ -1,72 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.gameplay.QAVGamePlaySoConfigInfo;
-import com.tencent.av.gameplay.QavGPDownloadManager.IGPDownloadStatusListener;
-import com.tencent.av.gameplay.QavGPDownloadObserver;
-import com.tencent.av.gameplay.QavGamePlayUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.av.AVLog;
+import com.tencent.av.business.manager.EffectConfigBase.IEffectConfigCallback;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import com.tencent.av.business.manager.pendant.PendantItem;
 
 public class jhs
-  extends BroadcastReceiver
+  implements EffectConfigBase.IEffectConfigCallback
 {
-  public jhs(QavGPDownloadObserver paramQavGPDownloadObserver) {}
+  public jhs(MagicFaceDataEntity paramMagicFaceDataEntity) {}
   
-  public void onReceive(Context arg1, Intent paramIntent)
+  public void a(PendantItem paramPendantItem) {}
+  
+  public void a(PendantItem paramPendantItem, int paramInt) {}
+  
+  public void a(PendantItem paramPendantItem, boolean paramBoolean)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    for (;;)
-    {
-      return;
-      if (!"tencent.video.qavgameplaysomgr.notify".equals(paramIntent.getAction())) {
-        continue;
-      }
-      int i = paramIntent.getIntExtra("Event_Progress", 0);
-      if ((i == 100) || (i < 0))
-      {
-        this.a.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo = QAVGamePlaySoConfigInfo.a();
-        int j = this.a.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_Int = QavGamePlayUtil.a(this.a.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo);
-        boolean bool;
-        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
-        {
-          bool = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("QavGPDownloadManager", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGameplay[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo }));
-          }
-          paramIntent = new ArrayList();
-        }
-        synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-        {
-          paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-          ??? = paramIntent.iterator();
-          while (???.hasNext()) {
-            ((QavGPDownloadManager.IGPDownloadStatusListener)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
-          }
-          bool = false;
-        }
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGPDownloadManager", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
-      }
-      paramIntent = new ArrayList();
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        ??? = paramIntent.iterator();
-        if (!???.hasNext()) {
-          continue;
-        }
-        ((QavGPDownloadManager.IGPDownloadStatusListener)???.next()).a(i);
-      }
+    AVLog.c("MagicFaceDataEntity", "onDownloadFinish: " + paramPendantItem.toString() + "|" + paramBoolean);
+    if (paramBoolean) {
+      MagicFaceDataEntity.a(this.a, paramPendantItem);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jhs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,41 @@
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager.GetSingleMusicInfoCallback;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.weiyun.ResponseHandler;
 
 public class anoz
-  implements QIMMusicConfigManager.GetSingleMusicInfoCallback
+  extends Handler
 {
-  public anoz(MusicFragmentProviderView paramMusicFragmentProviderView) {}
-  
-  public void a(boolean paramBoolean, Object paramObject)
+  public anoz(Looper paramLooper)
   {
-    Message localMessage;
-    if (this.a.a != null)
-    {
-      localMessage = this.a.a.obtainMessage();
-      if (!paramBoolean) {
-        break label61;
-      }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 0) {
+      ResponseHandler.a(0);
     }
-    label61:
-    for (int i = 1;; i = 0)
-    {
-      localMessage.arg1 = i;
-      localMessage.obj = paramObject;
-      localMessage.what = 7;
-      this.a.a.sendMessage(localMessage);
+    while ((paramMessage.what != 1) || (!ResponseHandler.a()) || (TextUtils.isEmpty(ResponseHandler.a())) || (TextUtils.isEmpty(ResponseHandler.b()))) {
       return;
     }
+    String str1 = ResponseHandler.a();
+    String str2 = ResponseHandler.b();
+    int i = ResponseHandler.a();
+    int j = ResponseHandler.b();
+    String str3 = ResponseHandler.a(BaseApplicationImpl.getApplication());
+    Process.setThreadPriority(10);
+    ResponseHandler.a((QQAppInterface)paramMessage.obj, str1, str2, i, j, str3);
+    ResponseHandler.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anoz
  * JD-Core Version:    0.7.0.1
  */

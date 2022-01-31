@@ -72,7 +72,7 @@ public class ComponentTitle
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2130969591, this, true);
+    LayoutInflater.from(paramContext).inflate(2130969587, this, true);
     this.c = ((TextView)findViewById(2131367055));
   }
   
@@ -214,7 +214,7 @@ public class ComponentTitle
     }
     return;
     label68:
-    this.c.setTextColor(getContext().getResources().getColor(2131493480));
+    this.c.setTextColor(getContext().getResources().getColor(2131493482));
   }
 }
 

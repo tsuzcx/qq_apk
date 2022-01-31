@@ -1,29 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.utils.QQLSSensor;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class tin
-  implements Runnable
+  implements View.OnClickListener
 {
-  public tin(QQLSActivity paramQQLSActivity) {}
+  public tin(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSSensor", 2, "====openSensor===" + Thread.currentThread().getId());
-      }
-      this.a.a = new QQLSSensor(this.a.getApplicationContext(), this.a);
-      this.a.a.a();
-      if (QQLSActivity.a(this.a).hasMessages(8)) {
-        QQLSActivity.a(this.a).removeMessages(8);
-      }
-      Message localMessage = QQLSActivity.a(this.a).obtainMessage(8);
-      QQLSActivity.a(this.a).sendMessageDelayed(localMessage, 1500L);
-    }
+    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
+    this.a.startActivity(paramView);
+    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,19 +1,15 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.SplitedProgressBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class opo
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public opo(StoryVideoPlayer paramStoryVideoPlayer) {}
+  public opo(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.d)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,7 +1,7 @@
 package cooperation.qlink;
 
-import amns;
-import amnt;
+import amvd;
+import amve;
 import android.content.ServiceConnection;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -10,7 +10,7 @@ import mqq.app.AppRuntime;
 public class QlinkServiceProxy
 {
   private volatile long jdField_a_of_type_Long = -1L;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new amns(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new amvd(this);
   private volatile IQlinkService jdField_a_of_type_CooperationQlinkIQlinkService;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private ConcurrentLinkedQueue jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
@@ -29,9 +29,9 @@ public class QlinkServiceProxy
   
   private void b()
   {
-    amnt localamnt = new amnt(this);
-    localamnt.setName("handleWaitSendProxyMsgThread");
-    localamnt.start();
+    amve localamve = new amve(this);
+    localamve.setName("handleWaitSendProxyMsgThread");
+    localamve.start();
   }
   
   private void b(SendMsg paramSendMsg)

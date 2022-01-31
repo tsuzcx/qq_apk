@@ -1,43 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class wtf
-  extends Handler
+  extends ContactBindObserver
 {
-  private WeakReference a;
+  private wtf(PhoneContactFragment paramPhoneContactFragment) {}
   
-  public wtf(BaseActivityView paramBaseActivityView)
+  protected void a(boolean paramBoolean)
   {
-    this.a = new WeakReference(paramBaseActivityView);
+    this.a.c();
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool = true;
-    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
-    if (localBaseActivityView == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.PhoneContactFragment", 2, "onQueryBindState " + paramBoolean1 + " " + paramBoolean2);
     }
-    switch (paramMessage.what)
+    if (PhoneContactFragment.b(this.a))
     {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localBaseActivityView.b(i, bool);
-        return;
-        bool = false;
+      if (this.a.a != null) {
+        this.a.a.a(4, paramBoolean1, null);
       }
-    case 2: 
-      localBaseActivityView.f();
-      return;
+      if (paramBoolean1) {
+        this.a.c();
+      }
+      PhoneContactFragment.a(this.a, false);
     }
-    localBaseActivityView.i();
   }
 }
 

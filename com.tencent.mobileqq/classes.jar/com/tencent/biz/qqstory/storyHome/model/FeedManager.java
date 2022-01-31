@@ -30,8 +30,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import nym;
-import nyn;
+import odb;
+import odc;
 
 public class FeedManager
   implements IManager
@@ -153,7 +153,7 @@ public class FeedManager
   
   public static void b(String paramString)
   {
-    Bosses.get().postLightWeightJob(new nym(paramString), 10);
+    Bosses.get().postLightWeightJob(new odb(paramString), 10);
   }
   
   public FeedCommentBackgroundSyncer a()
@@ -454,7 +454,7 @@ public class FeedManager
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     long l = ((Long)((StoryConfigManager)SuperManager.a(10)).b("key_disable_auto_refresh_time", Long.valueOf(60000L))).longValue();
-    ThreadManager.getUIHandler().postDelayed(new nyn(this), l);
+    ThreadManager.getUIHandler().postDelayed(new odc(this), l);
   }
   
   public void c(List paramList, boolean paramBoolean)

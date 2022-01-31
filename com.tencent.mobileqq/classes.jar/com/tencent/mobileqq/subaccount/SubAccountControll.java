@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.subaccount;
 
 import QQService.BindUin;
-import aikn;
-import aikp;
-import aikq;
-import aikr;
-import aiks;
+import aipi;
+import aipk;
+import aipl;
+import aipm;
+import aipn;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -66,7 +66,7 @@ public class SubAccountControll
   public static String a;
   public long a;
   public QQAppInterface a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new aikq(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new aipl(this);
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
   public boolean a;
@@ -260,7 +260,7 @@ public class SubAccountControll
       int i;
       if (localObject != null)
       {
-        i = ((Integer)((aiks)localObject).jdField_a_of_type_JavaLangObject).intValue();
+        i = ((Integer)((aipn)localObject).jdField_a_of_type_JavaLangObject).intValue();
         return i;
       }
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("qq_subaccount_associated_cache", 0);
@@ -268,7 +268,7 @@ public class SubAccountControll
       {
         i = ((SharedPreferences)localObject).getInt(paramString, 0);
         if (this.jdField_c_of_type_JavaUtilArrayList != null) {
-          this.jdField_c_of_type_JavaUtilArrayList.add(new aiks(paramString, Integer.valueOf(i)));
+          this.jdField_c_of_type_JavaUtilArrayList.add(new aipn(paramString, Integer.valueOf(i)));
         }
         return i;
       }
@@ -280,16 +280,16 @@ public class SubAccountControll
     }
   }
   
-  private aiks a(String paramString)
+  private aipn a(String paramString)
   {
     if (this.jdField_c_of_type_JavaUtilArrayList != null)
     {
       Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        aiks localaiks = (aiks)localIterator.next();
-        if ((localaiks != null) && (TextUtils.equals(localaiks.jdField_a_of_type_JavaLangString, paramString))) {
-          return localaiks;
+        aipn localaipn = (aipn)localIterator.next();
+        if ((localaipn != null) && (TextUtils.equals(localaipn.jdField_a_of_type_JavaLangString, paramString))) {
+          return localaipn;
         }
       }
     }
@@ -441,15 +441,15 @@ public class SubAccountControll
       paramString2.append(paramQQAppInterface).append(paramString1);
       paramString1 = paramString2.toString();
       return paramString1;
-      paramString1 = localBaseApplication.getString(2131434668);
+      paramString1 = localBaseApplication.getString(2131434684);
       continue;
-      paramString1 = localBaseApplication.getString(2131434669);
+      paramString1 = localBaseApplication.getString(2131434685);
       continue;
-      paramString1 = localBaseApplication.getString(2131434670);
+      paramString1 = localBaseApplication.getString(2131434686);
       continue;
-      paramString1 = localBaseApplication.getString(2131434678);
+      paramString1 = localBaseApplication.getString(2131434694);
       continue;
-      paramString1 = localBaseApplication.getString(2131434679);
+      paramString1 = localBaseApplication.getString(2131434695);
     }
     return paramString2 + paramString1;
   }
@@ -465,7 +465,7 @@ public class SubAccountControll
       Object localObject = a(paramString);
       if (localObject != null)
       {
-        paramString = (String)((aiks)localObject).jdField_a_of_type_JavaLangObject;
+        paramString = (String)((aipn)localObject).jdField_a_of_type_JavaLangObject;
         return paramString;
       }
       localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("qq_subaccount_associated_cache", 0);
@@ -473,7 +473,7 @@ public class SubAccountControll
       {
         localObject = ((SharedPreferences)localObject).getString(paramString, "");
         if (this.jdField_c_of_type_JavaUtilArrayList != null) {
-          this.jdField_c_of_type_JavaUtilArrayList.add(new aiks(paramString, localObject));
+          this.jdField_c_of_type_JavaUtilArrayList.add(new aipn(paramString, localObject));
         }
         return localObject;
       }
@@ -502,10 +502,10 @@ public class SubAccountControll
     {
       try
       {
-        aiks localaiks = localSubAccountControll.a(paramString);
-        if (localaiks != null)
+        aipn localaipn = localSubAccountControll.a(paramString);
+        if (localaipn != null)
         {
-          localArrayList.addAll((ArrayList)localaiks.jdField_a_of_type_JavaLangObject);
+          localArrayList.addAll((ArrayList)localaipn.jdField_a_of_type_JavaLangObject);
           localSubAccountControll.jdField_b_of_type_JavaUtilConcurrentLocksLock.unlock();
           if (QLog.isColorLevel()) {
             QLog.d("SUB_ACCOUNT", 2, "getSubAccountSpecialCareList  list=" + localArrayList);
@@ -521,7 +521,7 @@ public class SubAccountControll
         }
         else
         {
-          localSubAccountControll.jdField_c_of_type_JavaUtilArrayList.add(new aiks(paramString, localArrayList));
+          localSubAccountControll.jdField_c_of_type_JavaUtilArrayList.add(new aipn(paramString, localArrayList));
           continue;
         }
         i += 1;
@@ -669,7 +669,7 @@ public class SubAccountControll
           bool = ((Boolean)localPair.second).booleanValue();
         }
         if (bool) {
-          paramQQAppInterface.getSubAccountKey(paramQQAppInterface.getAccount(), localSubAccountInfo.subuin, new aikn(paramQQAppInterface));
+          paramQQAppInterface.getSubAccountKey(paramQQAppInterface.getAccount(), localSubAccountInfo.subuin, new aipi(paramQQAppInterface));
         }
       }
       if (QLog.isColorLevel()) {
@@ -883,7 +883,7 @@ public class SubAccountControll
       if ((localArrayList.size() != 0) || (((List)localObject4).size() > 1)) {
         break;
       }
-      paramMsgSummary.b = paramContext.getString(2131436414);
+      paramMsgSummary.b = paramContext.getString(2131436434);
     } while (!QLog.isColorLevel());
     QLog.d("SUB_ACCOUNT", 2, "setRecentItemSubAccountDescription() no sub & other account");
     return;
@@ -947,7 +947,7 @@ public class SubAccountControll
           if (!a(paramQQAppInterface, ((SubAccountInfo)localObject1).subuin).contains(((SubAccountMessage)localObject2).senderuin)) {
             break label697;
           }
-          paramRecentItemSubAccount.d = ("[" + paramContext.getString(2131437908) + "]");
+          paramRecentItemSubAccount.d = ("[" + paramContext.getString(2131437928) + "]");
           paramMsgSummary.b = ((CharSequence)localObject5);
         }
         for (;;)
@@ -1030,7 +1030,7 @@ public class SubAccountControll
         break;
         if (i > 0)
         {
-          paramMsgSummary.b = paramContext.getString(2131436410, new Object[] { String.valueOf(i) });
+          paramMsgSummary.b = paramContext.getString(2131436430, new Object[] { String.valueOf(i) });
           if (QLog.isColorLevel()) {
             QLog.d("SUB_ACCOUNT", 2, "setRecentItemSubAccountDescription() unread third account size=" + i);
           }
@@ -1038,7 +1038,7 @@ public class SubAccountControll
           paramRecentItemSubAccount.b = 3;
           return;
         }
-        paramMsgSummary.b = paramContext.getString(2131436406);
+        paramMsgSummary.b = paramContext.getString(2131436426);
         return;
         k = i;
         i = j;
@@ -1065,11 +1065,11 @@ public class SubAccountControll
       }
       return;
     }
-    localObject1 = paramBaseActivity.getString(2131436340);
-    Object localObject2 = paramBaseActivity.getString(2131436355, new Object[] { Integer.valueOf(2) });
+    localObject1 = paramBaseActivity.getString(2131436360);
+    Object localObject2 = paramBaseActivity.getString(2131436375, new Object[] { Integer.valueOf(2) });
     localObject1 = DialogUtil.a(paramBaseActivity, 230).setTitle((String)localObject1).setMessage((CharSequence)localObject2);
     ((QQCustomDialog)localObject1).setOwnerActivity(paramBaseActivity);
-    ((QQCustomDialog)localObject1).setPositiveButton(paramBaseActivity.getString(2131436320), new aikp(paramQQAppInterface, paramBaseActivity));
+    ((QQCustomDialog)localObject1).setPositiveButton(paramBaseActivity.getString(2131436340), new aipk(paramQQAppInterface, paramBaseActivity));
     ((QQCustomDialog)localObject1).setCancelable(false);
     ((QQCustomDialog)localObject1).show();
   }
@@ -1345,7 +1345,7 @@ public class SubAccountControll
         if (paramString2 != null) {
           paramString2.jdField_a_of_type_JavaLangObject = localArrayList;
         } else {
-          localSubAccountControll.jdField_c_of_type_JavaUtilArrayList.add(new aiks(paramString1, localArrayList));
+          localSubAccountControll.jdField_c_of_type_JavaUtilArrayList.add(new aipn(paramString1, localArrayList));
         }
       }
       finally
@@ -1502,7 +1502,9 @@ public class SubAccountControll
               if (QLog.isColorLevel()) {
                 QLog.d("SUB_ACCOUNT", 2, "cleanAllSubAccountMessageUnread confirmSubAccountMsgNumReaded once subuin=" + str + " needConfirm=" + paramBoolean);
               }
-              paramQQAppInterface.a().a(str, paramString);
+              if (paramQQAppInterface.a() != null) {
+                paramQQAppInterface.a().a(str, paramString);
+              }
             }
           }
         }
@@ -1645,10 +1647,10 @@ public class SubAccountControll
     {
       localObject = (SubAccountManager)paramQQAppInterface.getManager(60);
       if (localObject == null) {
-        break label372;
+        break label381;
       }
     }
-    label372:
+    label381:
     for (Object localObject = ((SubAccountManager)localObject).a(paramString);; localObject = null)
     {
       SubAccountProtocManager localSubAccountProtocManager = (SubAccountProtocManager)paramQQAppInterface.getManager(27);
@@ -1685,7 +1687,10 @@ public class SubAccountControll
       if (QLog.isColorLevel()) {
         QLog.d("SUB_ACCOUNT", 2, "getSubAccountMessage() lockMsg later really start get subaccount message account = " + paramQQAppInterface.getAccount() + "; sAccount = " + paramString);
       }
-      ((MessageHandler)paramQQAppInterface.a(0)).a().a((byte)3, 0, paramString, (String)localObject, null);
+      paramQQAppInterface = (MessageHandler)paramQQAppInterface.a(0);
+      if (paramQQAppInterface.a() != null) {
+        paramQQAppInterface.a().a((byte)3, 0, paramString, (String)localObject, null);
+      }
       return true;
     }
   }
@@ -1749,7 +1754,7 @@ public class SubAccountControll
         localObject = a(paramString);
         if (localObject == null)
         {
-          this.jdField_c_of_type_JavaUtilArrayList.add(new aiks(paramString, paramObject));
+          this.jdField_c_of_type_JavaUtilArrayList.add(new aipn(paramString, paramObject));
           bool1 = true;
           this.jdField_b_of_type_JavaUtilConcurrentLocksLock.unlock();
           bool2 = bool1;
@@ -1767,9 +1772,9 @@ public class SubAccountControll
           ((SharedPreferences)localObject).edit().putInt(paramString, ((Integer)paramObject).intValue()).commit();
           return bool1;
         }
-        if (((paramObject instanceof Integer)) && ((((aiks)localObject).jdField_a_of_type_JavaLangObject instanceof Integer)))
+        if (((paramObject instanceof Integer)) && ((((aipn)localObject).jdField_a_of_type_JavaLangObject instanceof Integer)))
         {
-          if ((Integer)((aiks)localObject).jdField_a_of_type_JavaLangObject == (Integer)paramObject) {
+          if ((Integer)((aipn)localObject).jdField_a_of_type_JavaLangObject == (Integer)paramObject) {
             break label346;
           }
           bool2 = true;
@@ -1777,7 +1782,7 @@ public class SubAccountControll
           if (!bool2) {
             continue;
           }
-          ((aiks)localObject).jdField_a_of_type_JavaLangObject = paramObject;
+          ((aipn)localObject).jdField_a_of_type_JavaLangObject = paramObject;
           bool1 = bool2;
           continue;
         }
@@ -1789,9 +1794,9 @@ public class SubAccountControll
       {
         this.jdField_b_of_type_JavaUtilConcurrentLocksLock.unlock();
       }
-      if ((((aiks)localObject).jdField_a_of_type_JavaLangObject instanceof String))
+      if ((((aipn)localObject).jdField_a_of_type_JavaLangObject instanceof String))
       {
-        bool1 = TextUtils.equals((String)((aiks)localObject).jdField_a_of_type_JavaLangObject, (String)paramObject);
+        bool1 = TextUtils.equals((String)((aipn)localObject).jdField_a_of_type_JavaLangObject, (String)paramObject);
         if (!bool1)
         {
           bool2 = true;
@@ -1880,7 +1885,7 @@ public class SubAccountControll
   public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString)
   {
     if ((paramQQAppInterface == null) || (!paramQQAppInterface.isRunning())) {}
-    Object localObject;
+    Object localObject1;
     label110:
     do
     {
@@ -1889,41 +1894,44 @@ public class SubAccountControll
       do
       {
         return;
-        localObject = (SubAccountControll)paramQQAppInterface.getManager(61);
-        if (localObject == null) {
+        localObject1 = (SubAccountControll)paramQQAppInterface.getManager(61);
+        if (localObject1 == null) {
           break label110;
         }
         l1 = System.currentTimeMillis();
-        l2 = (l1 - ((SubAccountControll)localObject).jdField_b_of_type_Long) / 1000L;
-        if (l2 >= ((SubAccountControll)localObject).jdField_a_of_type_Long) {
+        l2 = (l1 - ((SubAccountControll)localObject1).jdField_b_of_type_Long) / 1000L;
+        if (l2 >= ((SubAccountControll)localObject1).jdField_a_of_type_Long) {
           break;
         }
       } while (!QLog.isColorLevel());
-      QLog.d("SUB_ACCOUNT", 2, "getSubAccountSpecialCareListFromService skip adviseGap=" + ((SubAccountControll)localObject).jdField_a_of_type_Long + "  realGap=" + l2);
+      QLog.d("SUB_ACCOUNT", 2, "getSubAccountSpecialCareListFromService skip adviseGap=" + ((SubAccountControll)localObject1).jdField_a_of_type_Long + "  realGap=" + l2);
       return;
-      ((SubAccountControll)localObject).jdField_b_of_type_Long = l1;
-      localObject = (SubAccountManager)paramQQAppInterface.getManager(60);
-    } while (localObject == null);
-    ArrayList localArrayList = new ArrayList();
+      ((SubAccountControll)localObject1).jdField_b_of_type_Long = l1;
+      localObject1 = (SubAccountManager)paramQQAppInterface.getManager(60);
+    } while (localObject1 == null);
+    Object localObject2 = new ArrayList();
     if (paramBoolean) {
-      localArrayList.addAll(((SubAccountManager)localObject).b());
+      ((List)localObject2).addAll(((SubAccountManager)localObject1).b());
     }
     for (;;)
     {
-      paramString = localArrayList.iterator();
+      paramString = ((List)localObject2).iterator();
       while (paramString.hasNext())
       {
-        localObject = (SubAccountInfo)paramString.next();
-        if ((localObject != null) && (!TextUtils.isEmpty(((SubAccountInfo)localObject).subuin)))
+        localObject1 = (SubAccountInfo)paramString.next();
+        if ((localObject1 != null) && (!TextUtils.isEmpty(((SubAccountInfo)localObject1).subuin)))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("SUB_ACCOUNT", 2, "getSubAccountSpecialCareListFromService uin=" + ((SubAccountInfo)localObject).subuin);
+            QLog.d("SUB_ACCOUNT", 2, "getSubAccountSpecialCareListFromService uin=" + ((SubAccountInfo)localObject1).subuin);
           }
-          ((MessageHandler)paramQQAppInterface.a(0)).a().a((SubAccountInfo)localObject);
+          localObject2 = (MessageHandler)paramQQAppInterface.a(0);
+          if (((MessageHandler)localObject2).a() != null) {
+            ((MessageHandler)localObject2).a().a((SubAccountInfo)localObject1);
+          }
         }
       }
       break;
-      localArrayList.add(((SubAccountManager)localObject).a(paramString));
+      ((List)localObject2).add(((SubAccountManager)localObject1).a(paramString));
     }
   }
   
@@ -2099,7 +2107,10 @@ public class SubAccountControll
         if (QLog.isColorLevel()) {
           QLog.d("SUB_ACCOUNT", 2, "requestThirdQQUnreadMsgNum() really start get other qq unread message mainUin=" + str + " isCronJob=" + paramBoolean);
         }
-        ((MessageHandler)paramQQAppInterface.a(0)).a().a(paramBoolean, (ArrayList)localObject1);
+        paramQQAppInterface = (MessageHandler)paramQQAppInterface.a(0);
+        if (paramQQAppInterface.a() != null) {
+          paramQQAppInterface.a().a(paramBoolean, (ArrayList)localObject1);
+        }
         return true;
       }
     }
@@ -2542,12 +2553,12 @@ public class SubAccountControll
     //   473: invokevirtual 816	com/tencent/mobileqq/utils/QQCustomDialog:setPositiveButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   476: pop
     //   477: aload_1
-    //   478: new 1175	aiko
+    //   478: new 1175	aipj
     //   481: dup
     //   482: aload_0
     //   483: aload 8
     //   485: iload 6
-    //   487: invokespecial 1178	aiko:<init>	(Lcom/tencent/mobileqq/subaccount/SubAccountControll;Ljava/lang/String;I)V
+    //   487: invokespecial 1178	aipj:<init>	(Lcom/tencent/mobileqq/subaccount/SubAccountControll;Ljava/lang/String;I)V
     //   490: invokevirtual 1182	com/tencent/mobileqq/utils/QQCustomDialog:setOnCancelListener	(Landroid/content/DialogInterface$OnCancelListener;)V
     //   493: aload_1
     //   494: invokevirtual 823	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
@@ -2870,7 +2881,7 @@ public class SubAccountControll
         ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
       }
       if (this.jdField_b_of_type_JavaLangRunnable == null) {
-        this.jdField_b_of_type_JavaLangRunnable = new aikr(this, paramQQAppInterface);
+        this.jdField_b_of_type_JavaLangRunnable = new aipm(this, paramQQAppInterface);
       }
       ThreadManager.getSubThreadHandler().postDelayed(this.jdField_b_of_type_JavaLangRunnable, this.d * 1000L);
     } while (!QLog.isColorLevel());

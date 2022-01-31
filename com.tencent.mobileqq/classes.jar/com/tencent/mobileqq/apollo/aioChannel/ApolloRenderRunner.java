@@ -2,12 +2,13 @@ package com.tencent.mobileqq.apollo.aioChannel;
 
 import android.text.TextUtils;
 import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import yow;
+import yvc;
 
 public class ApolloRenderRunner
 {
@@ -48,7 +49,7 @@ public class ApolloRenderRunner
         }
       }
       finally {}
-      if (((localIRenderRunner instanceof View)) && (((View)localIRenderRunner).isShown()))
+      if (((localIRenderRunner instanceof View)) && (((View)localIRenderRunner).getVisibility() == 0))
       {
         if (QLog.isColorLevel()) {
           QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner find renderTask:" + localIRenderRunner);
@@ -66,6 +67,75 @@ public class ApolloRenderRunner
         {
           return localObject2;
           label226:
+          if (!localArrayList.isEmpty())
+          {
+            this.a.removeAll(localArrayList);
+            if (QLog.isColorLevel()) {
+              QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner not find");
+          }
+        }
+      }
+      i -= 1;
+    }
+  }
+  
+  public IRenderRunner a(int paramInt)
+  {
+    for (;;)
+    {
+      int i;
+      ArrayList localArrayList;
+      IRenderRunner localIRenderRunner;
+      try
+      {
+        i = this.a.size();
+        localArrayList = new ArrayList();
+        i -= 1;
+        if (i < 0) {
+          break label235;
+        }
+        WeakReference localWeakReference = (WeakReference)this.a.get(i);
+        if (localWeakReference == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner apolloViewWeakReference is null");
+          }
+        }
+        else
+        {
+          localIRenderRunner = (IRenderRunner)localWeakReference.get();
+          if (localIRenderRunner == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner apolloSurfaceView is null");
+            }
+            localArrayList.add(localWeakReference);
+          }
+        }
+      }
+      finally {}
+      if (((localIRenderRunner instanceof ApolloSurfaceView)) && (((ApolloSurfaceView)localIRenderRunner).getGameId() == paramInt))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_JsRenderRunner", 2, "getRunningRenderRunner find renderTask:" + localIRenderRunner);
+        }
+        Object localObject2 = localIRenderRunner;
+        if (!localArrayList.isEmpty())
+        {
+          this.a.removeAll(localArrayList);
+          localObject2 = localIRenderRunner;
+          if (QLog.isColorLevel()) {
+            QLog.d("apollochannel_JsRenderRunner", 2, "mRenderRunners.removeAll(invalidRunners):" + this.a.size());
+          }
+        }
+        for (localObject2 = localIRenderRunner;; localObject2 = null)
+        {
+          return localObject2;
+          label235:
           if (!localArrayList.isEmpty())
           {
             this.a.removeAll(localArrayList);
@@ -219,7 +289,7 @@ public class ApolloRenderRunner
         }
         if (paramLong == localIRenderRunner.getRuntimeState())
         {
-          localIRenderRunner.runRenderTask(new yow(this, localIRenderRunner, paramLong, paramApolloCmdChannel, paramInt, paramString1, paramString2));
+          localIRenderRunner.runRenderTask(new yvc(this, localIRenderRunner, paramLong, paramApolloCmdChannel, paramInt, paramString1, paramString2));
           if (QLog.isColorLevel()) {
             QLog.d("apollochannel_JsRenderRunner", 2, "callbackEngine getRenderRunner find runtimeState:" + l);
           }

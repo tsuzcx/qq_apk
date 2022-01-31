@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.SimpleAccount;
 
 public class thw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public thw(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public thw(NotificationActivity paramNotificationActivity, SimpleAccount paramSimpleAccount) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.setText("");
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app.login(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     thw
  * JD-Core Version:    0.7.0.1
  */

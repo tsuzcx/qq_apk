@@ -1,22 +1,29 @@
 import android.app.Activity;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.CheckGameListener;
+import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare;
+import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public final class yxu
+public class yxu
   implements Runnable
 {
-  public yxu(String paramString, Activity paramActivity, ApolloGameWrapper.CheckGameListener paramCheckGameListener) {}
+  public yxu(CmGameCommonShare paramCmGameCommonShare) {}
   
   public void run()
   {
-    CmGameMainManager localCmGameMainManager = CmGameMainManager.a(this.jdField_a_of_type_JavaLangString);
-    if ((localCmGameMainManager == null) || (localCmGameMainManager.a == null) || (localCmGameMainManager.a.get() != this.jdField_a_of_type_AndroidAppActivity))
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameWrapper$CheckGameListener.a(false, localCmGameMainManager);
+      JSONObject localJSONObject = new JSONObject(CmGameCommonShare.a(this.a));
+      localJSONObject.put("gameId", CmGameCommonShare.a(this.a));
+      localJSONObject.put("isSelectFriend", 1);
+      ApolloGameBasicEventUtil.a(CmGameCommonShare.a(this.a), localJSONObject.toString(), (Activity)CmGameCommonShare.a(this.a).get());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameWrapper$CheckGameListener.a(true, localCmGameMainManager);
+    catch (Exception localException)
+    {
+      QLog.e("apollo_cmGame_CmGameCommonShare", 1, localException, new Object[0]);
+    }
   }
 }
 

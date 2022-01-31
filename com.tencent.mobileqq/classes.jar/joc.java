@@ -1,31 +1,42 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenDoubleVideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
-public class joc
+class joc
   implements Runnable
 {
-  public joc(SmallScreenDoubleVideoControlUI paramSmallScreenDoubleVideoControlUI) {}
+  joc(job paramjob, String paramString) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
-    {
-      SessionInfo localSessionInfo = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a(localSessionInfo.c, 0);
-      this.a.jdField_a_of_type_ComTencentAvVideoController.b(225);
-      this.a.jdField_a_of_type_ComTencentAvVideoController.c(localSessionInfo.c, 9);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), localSessionInfo.c, Boolean.valueOf(true) });
-      QLog.d("SmallScreenDoubleVideoControlUI", 1, "exit when onCreate fail");
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1008);
+    if ((this.jdField_a_of_type_Job.a.getActivity() == null) || (this.jdField_a_of_type_Job.a.getActivity().isFinishing())) {
+      return;
     }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      RedPacketShareFragment.a(this.jdField_a_of_type_Job.a);
+      QRUtils.a(1, 2131430006);
+      return;
+    }
+    this.jdField_a_of_type_Job.a.a(false);
+    String str = String.format(BaseApplication.getContext().getString(2131429670), new Object[] { RedPacketShareFragment.b(this.jdField_a_of_type_Job.a), RedPacketShareFragment.c(this.jdField_a_of_type_Job.a) });
+    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.a();
+    if (this.jdField_a_of_type_Job.a.a != null)
+    {
+      localUserInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Job.a.a.getAccount();
+      localUserInfo.b = this.jdField_a_of_type_Job.a.a.getDisplayName(0, this.jdField_a_of_type_Job.a.a.getCurrentAccountUin(), null);
+    }
+    QZoneHelper.a(this.jdField_a_of_type_Job.a.getActivity(), localUserInfo, this.jdField_a_of_type_JavaLangString, BaseApplication.getContext().getString(2131429970), str, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     joc
  * JD-Core Version:    0.7.0.1
  */

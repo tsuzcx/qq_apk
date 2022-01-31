@@ -16,9 +16,9 @@ import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
-import kgp;
-import kgq;
-import kgr;
+import kiv;
+import kiw;
+import kix;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
@@ -29,8 +29,8 @@ public class ScoreManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "qav" + File.separator;
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new kgr();
+    jdField_a_of_type_JavaLangString = AppConstants.aK + "qav" + File.separator;
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new kix();
   }
   
   public static long a(String paramString)
@@ -189,7 +189,7 @@ public class ScoreManager
   
   static void a(String paramString1, String paramString2, String paramString3)
   {
-    ThreadManager.getFileThreadHandler().post(new kgp(paramString2, paramString3, paramString1));
+    ThreadManager.getFileThreadHandler().post(new kiv(paramString2, paramString3, paramString1));
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, ScoreManager.DownloadInfo paramDownloadInfo)
@@ -201,9 +201,9 @@ public class ScoreManager
     if (paramDownloadInfo == null) {
       return false;
     }
-    kgq localkgq = new kgq(paramDownloadInfo);
+    kiw localkiw = new kiw(paramDownloadInfo);
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = localkgq;
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = localkiw;
     localHttpNetReq.jdField_a_of_type_JavaLangString = paramDownloadInfo.jdField_a_of_type_JavaLangString;
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.c = paramDownloadInfo.c;
@@ -267,7 +267,7 @@ public class ScoreManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.ScoreManager
  * JD-Core Version:    0.7.0.1
  */

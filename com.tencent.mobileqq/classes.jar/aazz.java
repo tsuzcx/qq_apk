@@ -1,30 +1,13 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.tencentmap.mapsdk.map.MapView;
-import com.tencent.tencentmap.mapsdk.map.Projection;
-import com.tencent.tencentmap.mapsdk.map.TencentMap;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapLoadedListener;
+import com.tencent.mobileqq.ark.ArkAppCGI;
 
 public class aazz
-  implements TencentMap.OnMapLoadedListener
+  implements abac
 {
-  public aazz(ARMapActivity paramARMapActivity) {}
+  public aazz(ArkAppCGI paramArkAppCGI) {}
   
-  public void onMapLoaded()
+  public void a(abad paramabad, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    this.a.e = true;
-    if (this.a.a != null)
-    {
-      Projection localProjection = this.a.a.getProjection();
-      TencentMap localTencentMap = this.a.a.getMap();
-      if ((localProjection != null) && (localTencentMap != null))
-      {
-        Point localPoint = localProjection.toScreenLocation(localTencentMap.getMapCenter());
-        localPoint.offset(0, AIOUtils.a(60.0F, this.a.getResources()) * -1);
-        localTencentMap.setCenter(localProjection.fromScreenLocation(localPoint));
-      }
-    }
+    this.a.a((abag)paramabad, paramBoolean, paramArrayOfByte);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.gift;
 
-import aepv;
+import aeyg;
 import android.content.Context;
 import com.tencent.biz.troopgift.TroopGiftAioItemData;
 import com.tencent.biz.troopgift.TroopGiftPanel;
@@ -80,7 +80,7 @@ public class TroopGiftPanelForNearby
       if (localTroopGiftAioItemData.b == 0) {}
       for (int k = 1;; k = 0)
       {
-        ((TroopGiftManager)localObject).a("OidbSvc.0x7f6", 2038, i, m, str, 2, j, l, n, k, localTroopGiftAioItemData.jdField_a_of_type_Int, 0, new aepv(this), localTroopGiftAioItemData.jdField_e_of_type_Int);
+        ((TroopGiftManager)localObject).a("OidbSvc.0x7f6", 2038, i, m, str, 2, j, l, n, k, localTroopGiftAioItemData.jdField_a_of_type_Int, 0, new aeyg(this), localTroopGiftAioItemData.jdField_e_of_type_Int);
         this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData = null;
         return;

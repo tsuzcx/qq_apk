@@ -14,11 +14,11 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
-import nbm;
-import nbn;
-import nbo;
-import nbq;
-import nbr;
+import nfh;
+import nfi;
+import nfj;
+import nfl;
+import nfm;
 import org.json.JSONArray;
 
 public class QQStoryCmdHandler
@@ -30,7 +30,7 @@ public class QQStoryCmdHandler
   public QQStoryCmdHandler()
   {
     this.jdField_a_of_type_JavaUtilSet = new CopyOnWriteArraySet();
-    Bosses.get().postJob(new nbm(this));
+    Bosses.get().postJob(new nfh(this));
   }
   
   private void a(NetworkRequest paramNetworkRequest, int paramInt, String paramString, long paramLong)
@@ -51,7 +51,7 @@ public class QQStoryCmdHandler
         SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:" + paramNetworkRequest.a() + " channel error:%d, msg:%s, take time:%d ,retry time:%d , retry now", new Object[] { Integer.valueOf(i), paramArrayOfByte, Long.valueOf(l), Integer.valueOf(paramNetworkRequest.b) });
         paramNetworkRequest.b += 1;
         paramArrayOfByte = Bosses.get();
-        paramNetworkRequest = new nbr(this, paramNetworkRequest);
+        paramNetworkRequest = new nfm(this, paramNetworkRequest);
         if (i == 2901) {}
         for (i = 500;; i = 2000)
         {
@@ -71,7 +71,19 @@ public class QQStoryCmdHandler
       a(paramNetworkRequest, 940002, "rsp data error", l);
       return;
     }
-    paramBundle = paramNetworkRequest.a(paramArrayOfByte);
+    paramBundle = null;
+    try
+    {
+      BaseResponse localBaseResponse = paramNetworkRequest.a(paramArrayOfByte);
+      paramBundle = localBaseResponse;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        SLog.c("Q.qqstory.net:QQStoryCmdHandler", "decode pb fail", localException);
+      }
+    }
     if (paramBundle == null)
     {
       SLog.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error. response is null", new Object[] { paramNetworkRequest.a() });
@@ -100,7 +112,7 @@ public class QQStoryCmdHandler
   
   public void a(Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    Bosses.get().postJob(new nbq(this, paramBundle, paramArrayOfByte));
+    Bosses.get().postJob(new nfl(this, paramBundle, paramArrayOfByte));
   }
   
   public void a(NetworkRequest paramNetworkRequest)
@@ -109,10 +121,10 @@ public class QQStoryCmdHandler
     {
       if (!NetworkUtils.a(QQStoryContext.a().a()))
       {
-        Bosses.get().scheduleJobDelayed(new nbn(this, paramNetworkRequest), 100);
+        Bosses.get().scheduleJobDelayed(new nfi(this, paramNetworkRequest), 100);
         return;
       }
-      Bosses.get().postJob(new nbo(this, paramNetworkRequest));
+      Bosses.get().postJob(new nfj(this, paramNetworkRequest));
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)

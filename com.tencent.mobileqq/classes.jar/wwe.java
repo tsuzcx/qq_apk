@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
-public class wwe
-  implements DialogInterface.OnCancelListener
+class wwe
+  implements Runnable
 {
-  public wwe(CameraPreviewActivity paramCameraPreviewActivity) {}
+  wwe(wwd paramwwd) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a = null;
+    this.a.a.a(39, null);
   }
 }
 

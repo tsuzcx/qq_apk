@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import abjd;
-import abje;
-import abjf;
-import abjg;
-import abjh;
-import abji;
-import abjj;
-import abjk;
-import abjm;
+import abqe;
+import abqf;
+import abqg;
+import abqh;
+import abqi;
+import abqj;
+import abqk;
+import abql;
+import abqn;
 import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -61,11 +61,11 @@ public class DynamicAvatarManager
   private Resources jdField_a_of_type_AndroidContentResResources;
   public SparseArray a;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  DeviceProfileManager.DPCObserver jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$DPCObserver = new abjm(this);
+  DeviceProfileManager.DPCObserver jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$DPCObserver = new abqn(this);
   private DynamicAvatarConfig jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarConfig;
-  private DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager$IDynamicAvatarDownloadCallback = new abjh(this);
+  private DynamicAvatarDownloadManager.IDynamicAvatarDownloadCallback jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager$IDynamicAvatarDownloadCallback = new abqi(this);
   public DynamicAvatarDownloadManager a;
-  private DynamicAvatarInfoObserver jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarInfoObserver = new abje(this);
+  private DynamicAvatarInfoObserver jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarInfoObserver = new abqf(this);
   public Runnable a;
   public String a;
   public ArrayList a;
@@ -85,7 +85,7 @@ public class DynamicAvatarManager
   public DynamicAvatarManager(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaLangRunnable = new abjk(this);
+    this.jdField_a_of_type_JavaLangRunnable = new abql(this);
     if (paramAppInterface == null)
     {
       if (QLog.isColorLevel()) {
@@ -103,9 +103,9 @@ public class DynamicAvatarManager
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager = new DynamicAvatarDownloadManager(paramAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarDownloadManager$IDynamicAvatarDownloadCallback);
     paramAppInterface = new ThreadPoolParams();
-    paramAppInterface.jdField_a_of_type_JavaLangString = "dynamic_avatar";
-    paramAppInterface.jdField_b_of_type_Int = 2;
-    paramAppInterface.jdField_c_of_type_Int = 8;
+    paramAppInterface.poolThreadName = "dynamic_avatar";
+    paramAppInterface.corePoolsize = 2;
+    paramAppInterface.maxPooolSize = 8;
     this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(paramAppInterface);
     this.jdField_a_of_type_AndroidContentResResources = BaseApplicationImpl.getContext().getResources();
     a();
@@ -607,13 +607,13 @@ public class DynamicAvatarManager
       localArrayList1.add(str);
       localArrayList1.add(a(paramDynamicFaceDrawable, true));
       if ((paramDynamicFaceDrawable.jdField_e_of_type_Int == 1) || (paramDynamicFaceDrawable.jdField_e_of_type_Int == 0)) {
-        ThreadManager.post(new abji(this, paramDynamicFaceDrawable, System.currentTimeMillis()), 5, null, true);
+        ThreadManager.post(new abqj(this, paramDynamicFaceDrawable, System.currentTimeMillis()), 5, null, true);
       }
       if (paramDynamicFaceDrawable.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
         ((DynamicAvatarView)paramDynamicFaceDrawable.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_JavaLangString = "";
       }
     }
-    ThreadManager.postImmediately(new abjj(this, paramDynamicFaceDrawable), null, true);
+    ThreadManager.postImmediately(new abqk(this, paramDynamicFaceDrawable), null, true);
   }
   
   public void a(DynamicFaceDrawable paramDynamicFaceDrawable, boolean paramBoolean1, boolean paramBoolean2)
@@ -632,7 +632,7 @@ public class DynamicAvatarManager
         synchronized (this.d)
         {
           this.d.remove(paramDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
-          ??? = new abjf(this, paramDynamicFaceDrawable, (String)???);
+          ??? = new abqg(this, paramDynamicFaceDrawable, (String)???);
           if (!paramBoolean2)
           {
             l1 = 0L;
@@ -640,7 +640,7 @@ public class DynamicAvatarManager
             if (DeviceInfoUtil.b() <= 2) {
               l2 = l1 * 2L;
             }
-            ThreadManager.getSubThreadHandler().postDelayed(new abjg(this, (Runnable)???), l2);
+            ThreadManager.getSubThreadHandler().postDelayed(new abqh(this, (Runnable)???), l2);
             return;
             paramDynamicFaceDrawable = finally;
             throw paramDynamicFaceDrawable;
@@ -893,7 +893,7 @@ public class DynamicAvatarManager
           QLog.w("Q.dynamicAvatar", 2, "getDynamicAvatar isVideoSoLibLoaded false.");
         }
       } while (this.jdField_a_of_type_Boolean);
-      ThreadManager.getSubThreadHandler().postDelayed(new abjd(this), 10000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new abqe(this), 10000L);
       this.jdField_a_of_type_Boolean = true;
       return;
       if (paramDynamicFaceDrawable.f) {

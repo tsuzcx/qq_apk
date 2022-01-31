@@ -1,24 +1,13 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditItemBase.OnEditItemListener;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferMgr;
 
 public class ajlf
-  implements View.OnKeyListener
+  implements Runnable
 {
-  public ajlf(TextItem paramTextItem, TextItem.TextViewHolder paramTextViewHolder) {}
+  public ajlf(TroopFileTransferMgr paramTroopFileTransferMgr) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getSelectionStart() == 0))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder);
-      return true;
-    }
-    return false;
+    TroopFileTransferMgr.a(this.a);
   }
 }
 

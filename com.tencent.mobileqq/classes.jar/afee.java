@@ -1,52 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.nearby.profilecard.ProfileQiqiLiveController;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ProgressButton;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.LoadCommentsCallback;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.view.CommentsView;
+import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
 
 public class afee
-  implements DialogInterface.OnClickListener
+  implements CommentsDataSource.LoadCommentsCallback
 {
-  public afee(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public afee(CommentsPresenterImpl paramCommentsPresenterImpl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 1)
+    if (CommentsPresenterImpl.a(this.a) != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.a(2);
-      }
-      if (NearbyProfileDisplayPanel.a(this.a) != null)
-      {
-        if (!this.a.m) {
-          break label88;
-        }
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_trigger", 0, 0, NearbyProfileDisplayPanel.a(this.a).uin, "", "yes", "android");
-      }
+      CommentsPresenterImpl.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131430840));
+      CommentsPresenterImpl.a(this.a).b();
+      CommentsPresenterImpl.a(this.a).c();
     }
-    label88:
-    do
+  }
+  
+  public void a(Comments paramComments)
+  {
+    if (CommentsPresenterImpl.a(this.a) != null)
     {
-      do
-      {
-        return;
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_goon", 0, 0, NearbyProfileDisplayPanel.a(this.a).uin, "", "yes", "android");
-        return;
-      } while (paramInt != 0);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.a(10);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131438093);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(0);
-      }
-      this.a.jdField_a_of_type_Int = 2;
-    } while (NearbyProfileDisplayPanel.a(this.a) == null);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_cancel", 0, 0, NearbyProfileDisplayPanel.a(this.a).uin, "", "yes", "android");
+      CommentsPresenterImpl.a(this.a);
+      CommentsPresenterImpl.a(this.a).a(paramComments);
+      CommentsPresenterImpl.a(this.a).b();
+    }
   }
 }
 

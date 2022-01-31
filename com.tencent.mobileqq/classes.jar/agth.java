@@ -1,34 +1,36 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class agth
-  extends LSRecordAnimations.LSRecordAnimationCallback
+class agth
+  implements Runnable
 {
-  public agth(LSRecordPanel paramLSRecordPanel) {}
+  agth(agtg paramagtg, boolean paramBoolean, String paramString) {}
   
-  public void a(Animation paramAnimation, float paramFloat)
+  public void run()
   {
-    if ((this.a.c == null) && (this.a.a != null) && (paramFloat >= 0.5F)) {
-      this.a.f();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+      localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_Agtg.a.sendBroadcast(localIntent);
+      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_Agtg.a.getString(2131430003, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_Agtg.a.getTitleBarHeight());
     }
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startExpandAnimation onAnimationEnd");
+    for (;;)
+    {
+      this.jdField_a_of_type_Agtg.a.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Agtg.a.b = true;
+      return;
+      QRUtils.a(1, 2131430004);
     }
-    if (paramAnimation == this.a.a) {
-      this.a.h();
-    }
-    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agth
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
 public class mkj
   implements Runnable
 {
-  public mkj(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public mkj(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
   
   public void run()
   {
-    ReadinjoyTabFrame.a(this.a);
+    if (this.a.h)
+    {
+      this.a.h = false;
+      ReadInJoyBaseAdapter.a(this.a);
+      return;
+    }
+    ReadInJoyBaseAdapter.b(this.a);
   }
 }
 

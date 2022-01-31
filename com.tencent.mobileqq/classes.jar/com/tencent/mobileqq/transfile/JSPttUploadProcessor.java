@@ -211,7 +211,7 @@ public class JSPttUploadProcessor
         if (l2 >= this.q) {
           break label498;
         }
-        an_();
+        ap_();
         return;
         a(this.b, paramNetResp, false);
         a(-9527, "", a(this.i, this.jdField_f_of_type_Int), this.b);
@@ -284,7 +284,7 @@ public class JSPttUploadProcessor
             this.jdField_s_of_type_Long = 0L;
             this.t = paramRichProtoReq.jdField_a_of_type_Int;
             PublicAccountH5AbilityForPtt.c(this.jdField_f_of_type_JavaLangString);
-            an_();
+            ap_();
           }
         }
         d();
@@ -292,9 +292,9 @@ public class JSPttUploadProcessor
     }
   }
   
-  public void ap_()
+  public void ar_()
   {
-    super.ap_();
+    super.ar_();
     b(false);
   }
   
@@ -362,7 +362,7 @@ public class JSPttUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.JSPttUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

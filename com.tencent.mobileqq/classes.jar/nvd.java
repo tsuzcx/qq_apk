@@ -1,42 +1,225 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.KeyboardAndEmojiManager;
-import com.tencent.mobileqq.emoticonview.EmoticonCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
-import com.tencent.mobileqq.text.TextUtils;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.media.MediaCodec;
+import android.media.MediaFormat;
+import android.util.Log;
+import android.view.Surface;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaExtractor;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.SeekMode;
 
+@TargetApi(16)
 public class nvd
-  implements EmoticonCallback
+  extends nva
 {
-  public nvd(KeyboardAndEmojiManager paramKeyboardAndEmojiManager) {}
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(EmoticonInfo paramEmoticonInfo)
+  public nvd(MediaExtractor paramMediaExtractor, boolean paramBoolean1, int paramInt, nvc paramnvc, Surface paramSurface, boolean paramBoolean2)
   {
-    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (KeyboardAndEmojiManager.a(this.a) != null)) {
-      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).a(PlayModeUtils.a(), KeyboardAndEmojiManager.a(this.a), KeyboardAndEmojiManager.a(this.a), null);
+    super(paramMediaExtractor, paramBoolean1, paramInt, paramnvc);
+    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
+    this.jdField_a_of_type_Boolean = paramBoolean2;
+    a();
+  }
+  
+  @TargetApi(16)
+  private long a(long paramLong, MediaExtractor paramMediaExtractor, MediaCodec paramMediaCodec)
+  {
+    paramMediaCodec.flush();
+    paramMediaExtractor.a(paramLong, 0);
+    if (paramMediaExtractor.a() == paramLong)
+    {
+      Log.d(this.jdField_a_of_type_JavaLangString, "skip fastseek, already there");
+      return paramLong;
+    }
+    b();
+    a(false);
+    paramMediaExtractor.a(paramLong, 0);
+    long l1 = 0L;
+    long l3 = 9223372036854775807L;
+    int i = 0;
+    while ((paramMediaExtractor.a()) && (i < 20))
+    {
+      long l5 = paramLong - paramMediaExtractor.a();
+      long l4 = l3;
+      long l2 = l1;
+      if (l5 >= 0L)
+      {
+        l4 = l3;
+        l2 = l1;
+        if (l5 < l3)
+        {
+          l2 = paramMediaExtractor.a();
+          l4 = l5;
+        }
+      }
+      l3 = l4;
+      l1 = l2;
+      if (l5 < 0L)
+      {
+        i += 1;
+        l3 = l4;
+        l1 = l2;
+      }
+    }
+    paramMediaExtractor.a(l1, 0);
+    while (paramMediaExtractor.a() != l1) {
+      paramMediaExtractor.a();
+    }
+    Log.d(this.jdField_a_of_type_JavaLangString, "exact fastseek match:       " + paramMediaExtractor.a());
+    return l1;
+  }
+  
+  public int a()
+  {
+    MediaFormat localMediaFormat = a();
+    if (localMediaFormat != null)
+    {
+      float f = localMediaFormat.getInteger("height");
+      return (int)(localMediaFormat.getFloat("mpx-dar") * f);
+    }
+    return 0;
+  }
+  
+  protected nvb a(MediaPlayer.SeekMode paramSeekMode, long paramLong, MediaExtractor paramMediaExtractor, MediaCodec paramMediaCodec)
+  {
+    long l1 = -1L;
+    long l2 = paramLong / 1000L;
+    nvb localnvb2 = super.a(paramSeekMode, paramLong, paramMediaExtractor, paramMediaCodec);
+    if (localnvb2 == null)
+    {
+      paramSeekMode = null;
+      return paramSeekMode;
+    }
+    nvb localnvb1;
+    if ((paramSeekMode.b() == 3) || (paramSeekMode.b() == 2) || (paramSeekMode.b() == 0) || (paramSeekMode.b() == 1))
+    {
+      Log.d(this.jdField_a_of_type_JavaLangString, "fast seek to " + paramLong + " arrived at " + localnvb2.jdField_a_of_type_Long);
+      paramLong = l2;
+      localnvb1 = localnvb2;
+    }
+    for (;;)
+    {
+      paramSeekMode = localnvb1;
+      if (l1 != paramLong) {
+        break;
+      }
+      Log.d(this.jdField_a_of_type_JavaLangString, "exact seek match!");
+      return localnvb1;
+      if (paramSeekMode.b() == 6)
+      {
+        a(localnvb2, false);
+        a(paramLong, paramMediaExtractor, paramMediaCodec);
+        paramMediaExtractor = a(true, true);
+        if (paramMediaExtractor == null) {
+          return null;
+        }
+        Log.d(this.jdField_a_of_type_JavaLangString, "fast_exact seek to " + paramLong + " arrived at " + paramMediaExtractor.jdField_a_of_type_Long);
+        paramSeekMode = paramMediaExtractor;
+        if (paramMediaExtractor.jdField_a_of_type_Long >= paramLong) {
+          break;
+        }
+        Log.d(this.jdField_a_of_type_JavaLangString, "presentation is behind...");
+        return paramMediaExtractor;
+      }
+      if (paramSeekMode.b() != 4)
+      {
+        localnvb1 = localnvb2;
+        paramLong = l2;
+        if (paramSeekMode.b() != 5) {}
+      }
+      else
+      {
+        paramLong = localnvb2.jdField_a_of_type_Long / 1000L;
+        int i = 0;
+        localnvb1 = localnvb2;
+        l1 = l2;
+        l2 = -1L;
+        while (paramLong < l1)
+        {
+          if (i == 0) {
+            Log.d(this.jdField_a_of_type_JavaLangString, "skipping frames...");
+          }
+          i += 1;
+          if (b()) {
+            l1 = localnvb1.jdField_a_of_type_Long / 1000L;
+          }
+          if (localnvb1.jdField_a_of_type_Boolean)
+          {
+            Log.d(this.jdField_a_of_type_JavaLangString, "end of stream reached, seeking to last frame");
+            a(localnvb1, false);
+            return a(paramSeekMode, l2, paramMediaExtractor, paramMediaCodec);
+          }
+          l2 = localnvb1.jdField_a_of_type_Long;
+          a(localnvb1, false);
+          localnvb1 = a(true, true);
+          if (localnvb1 == null) {
+            return null;
+          }
+          paramLong = localnvb1.jdField_a_of_type_Long / 1000L;
+        }
+        Log.d(this.jdField_a_of_type_JavaLangString, "frame new position:         " + localnvb1.jdField_a_of_type_Long);
+        Log.d(this.jdField_a_of_type_JavaLangString, "seeking finished, skipped " + i + " frames");
+        if ((paramSeekMode.b() == 5) && (paramLong > l1))
+        {
+          if (i == 0)
+          {
+            Log.w(this.jdField_a_of_type_JavaLangString, "this should never happen");
+            l2 = paramLong;
+            paramLong = l1;
+            l1 = l2;
+          }
+          else
+          {
+            Log.d(this.jdField_a_of_type_JavaLangString, "exact seek: repeat seek for previous frame at " + l2);
+            a(localnvb1, false);
+            return a(paramSeekMode, l2, paramMediaExtractor, paramMediaCodec);
+          }
+        }
+        else
+        {
+          l2 = paramLong;
+          paramLong = l1;
+          l1 = l2;
+        }
+      }
     }
   }
   
-  public void a(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
-  
-  public boolean a(EmoticonInfo paramEmoticonInfo)
+  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
-    return false;
+    paramMediaCodec.configure(paramMediaFormat, this.jdField_a_of_type_AndroidViewSurface, null, 0);
   }
   
-  public void b()
+  public void a(Surface paramSurface)
   {
-    if (KeyboardAndEmojiManager.a(this.a) != null) {
-      TextUtils.a(KeyboardAndEmojiManager.a(this.a));
+    if (paramSurface == null) {
+      throw new RuntimeException("surface must not be null");
     }
+    this.jdField_a_of_type_AndroidViewSurface = paramSurface;
+    a();
   }
   
-  public void b(EmoticonInfo paramEmoticonInfo) {}
+  @SuppressLint({"NewApi"})
+  public void a(nvb paramnvb, long paramLong)
+  {
+    a(paramnvb, true);
+  }
   
-  public void c() {}
+  public void a(nvb paramnvb, boolean paramBoolean)
+  {
+    a().releaseOutputBuffer(paramnvb.jdField_a_of_type_Int, paramBoolean);
+    c(paramnvb);
+  }
   
-  public void setting() {}
+  public int b()
+  {
+    MediaFormat localMediaFormat = a();
+    if (localMediaFormat != null) {
+      return localMediaFormat.getInteger("height");
+    }
+    return 0;
+  }
 }
 
 

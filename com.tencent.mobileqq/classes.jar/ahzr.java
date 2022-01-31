@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
 import java.util.List;
 
-public final class ahzr
-  implements Runnable
+public class ahzr
 {
-  public ahzr(QQAppInterface paramQQAppInterface, List paramList) {}
+  public String a;
+  public List a;
   
-  public void run()
+  public ahzr(ApproximateSearchEngine paramApproximateSearchEngine, String paramString, List paramList)
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, new ahzs(this), "msf_quic_lib");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahzr
  * JD-Core Version:    0.7.0.1
  */

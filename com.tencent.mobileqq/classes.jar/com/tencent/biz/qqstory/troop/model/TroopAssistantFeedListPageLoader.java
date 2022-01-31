@@ -11,7 +11,7 @@ import com.tencent.biz.qqstory.storyHome.model.HomeFeedAllInfoPullSegment;
 import com.tencent.biz.qqstory.storyHome.model.HomeFeedData;
 import com.tribe.async.async.JobSegment;
 import java.util.List;
-import onw;
+import osi;
 
 public class TroopAssistantFeedListPageLoader
   extends FeedListPageLoaderBase
@@ -44,7 +44,7 @@ public class TroopAssistantFeedListPageLoader
   
   protected JobSegment a(FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
   {
-    return new onw(paramFeedIdListCache);
+    return new osi(paramFeedIdListCache);
   }
   
   protected void a(List paramList, boolean paramBoolean)

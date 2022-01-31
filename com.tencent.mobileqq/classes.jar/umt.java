@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.activity.aio.PokePanelAdapter;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
-class umt
-  implements Runnable
+public class umt
+  implements ValueAnimation.AnimationUpdateListener
 {
-  umt(umr paramumr, String paramString1, String paramString2, boolean paramBoolean) {}
+  public umt(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    PokePanel.a(this.jdField_a_of_type_Umr.a).a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b).intValue(), false, this.jdField_a_of_type_Boolean);
+    this.a.c.setText(paramInteger + "");
+    if (paramInteger.intValue() > 9999)
+    {
+      this.a.c.setTextSize(36.0F);
+      return;
+    }
+    this.a.c.setTextSize(44.0F);
   }
 }
 

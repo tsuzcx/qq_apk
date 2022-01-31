@@ -1,31 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.now.download.local.DownloadCallbackNativeImpl;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.widget.Workspace.SavedState;
 
-class alfc
-  implements DialogInterface.OnClickListener
+public final class alfc
+  implements Parcelable.Creator
 {
-  alfc(alfa paramalfa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Workspace.SavedState a(Parcel paramParcel)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      DownloadNativeApi.a(this.a.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadNativeApi).d(this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
+    return new Workspace.SavedState(paramParcel, null);
+  }
+  
+  public Workspace.SavedState[] a(int paramInt)
+  {
+    return new Workspace.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alfc
  * JD-Core Version:    0.7.0.1
  */

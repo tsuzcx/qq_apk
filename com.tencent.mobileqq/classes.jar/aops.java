@@ -1,12 +1,25 @@
-import dov.com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import android.graphics.drawable.AnimationDrawable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class aops
+  implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int = 0;
-  DownloadInfo jdField_a_of_type_DovComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
-  int c = 0;
+  public aops(VideoFilterViewPager paramVideoFilterViewPager, ImageView paramImageView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    paramAnimation = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
+    if ((paramAnimation instanceof AnimationDrawable)) {
+      ((AnimationDrawable)paramAnimation).start();
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

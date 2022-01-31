@@ -42,7 +42,7 @@ public class TroopBarShortVideoUploadUtil
     // Byte code:
     //   0: invokestatic 29	java/lang/System:currentTimeMillis	()J
     //   3: lstore 10
-    //   5: new 31	ajdi
+    //   5: new 31	ajil
     //   8: dup
     //   9: aload_0
     //   10: aload_1
@@ -52,15 +52,15 @@ public class TroopBarShortVideoUploadUtil
     //   16: i2l
     //   17: lconst_0
     //   18: lconst_0
-    //   19: invokespecial 34	ajdi:<init>	([B[BJJJJJ)V
+    //   19: invokespecial 34	ajil:<init>	([B[BJJJJJ)V
     //   22: astore_0
-    //   23: new 36	ajdh
+    //   23: new 36	ajik
     //   26: dup
     //   27: iload 8
     //   29: sipush 348
     //   32: iadd
     //   33: i2l
-    //   34: invokespecial 39	ajdh:<init>	(J)V
+    //   34: invokespecial 39	ajik:<init>	(J)V
     //   37: astore_1
     //   38: iload 8
     //   40: sipush 364
@@ -69,10 +69,10 @@ public class TroopBarShortVideoUploadUtil
     //   47: astore 12
     //   49: aload_1
     //   50: aload 12
-    //   52: invokevirtual 48	ajdh:a	(Ljava/nio/ByteBuffer;)V
+    //   52: invokevirtual 48	ajik:a	(Ljava/nio/ByteBuffer;)V
     //   55: aload_0
     //   56: aload 12
-    //   58: invokevirtual 49	ajdi:a	(Ljava/nio/ByteBuffer;)V
+    //   58: invokevirtual 49	ajil:a	(Ljava/nio/ByteBuffer;)V
     //   61: aload 5
     //   63: lload 6
     //   65: invokevirtual 54	java/io/RandomAccessFile:seek	(J)V
@@ -172,23 +172,23 @@ public class TroopBarShortVideoUploadUtil
     //   250: invokevirtual 130	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   253: invokestatic 133	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
     //   256: astore 12
-    //   258: new 36	ajdh
+    //   258: new 36	ajik
     //   261: dup
     //   262: aload 12
-    //   264: invokespecial 135	ajdh:<init>	(Ljava/nio/ByteBuffer;)V
+    //   264: invokespecial 135	ajik:<init>	(Ljava/nio/ByteBuffer;)V
     //   267: astore 5
-    //   269: new 137	ajdj
+    //   269: new 137	ajim
     //   272: dup
     //   273: aload 12
-    //   275: invokespecial 138	ajdj:<init>	(Ljava/nio/ByteBuffer;)V
+    //   275: invokespecial 138	ajim:<init>	(Ljava/nio/ByteBuffer;)V
     //   278: astore 12
     //   280: aload 5
-    //   282: getfield 142	ajdh:b	J
+    //   282: getfield 142	ajik:b	J
     //   285: lconst_0
     //   286: lcmp
     //   287: ifne +189 -> 476
     //   290: aload 12
-    //   292: getfield 145	ajdj:jdField_a_of_type_Int	I
+    //   292: getfield 145	ajim:jdField_a_of_type_Int	I
     //   295: istore 9
     //   297: iload 9
     //   299: iconst_1
@@ -239,7 +239,7 @@ public class TroopBarShortVideoUploadUtil
     //   401: lload_3
     //   402: lreturn
     //   403: aload 12
-    //   405: getfield 182	ajdj:jdField_a_of_type_Long	J
+    //   405: getfield 182	ajim:jdField_a_of_type_Long	J
     //   408: lstore_3
     //   409: goto -106 -> 303
     //   412: astore_0
@@ -432,7 +432,7 @@ public class TroopBarShortVideoUploadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopBarShortVideoUploadUtil
  * JD-Core Version:    0.7.0.1
  */

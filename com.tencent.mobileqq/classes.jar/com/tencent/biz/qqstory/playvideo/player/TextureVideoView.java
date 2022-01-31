@@ -30,12 +30,12 @@ import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer
 import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
-import npa;
-import npb;
-import npc;
-import npd;
-import npe;
-import npg;
+import ntp;
+import ntq;
+import ntr;
+import nts;
+import ntt;
+import ntv;
 
 @TargetApi(14)
 public class TextureVideoView
@@ -46,22 +46,22 @@ public class TextureVideoView
   protected Uri a;
   protected Surface a;
   public MediaController a;
-  private IMediaPlayer.OnBufferingUpdateListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener = new npg(this);
+  private IMediaPlayer.OnBufferingUpdateListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener = new ntv(this);
   public IMediaPlayer.OnCompletionListener a;
   public IMediaPlayer.OnErrorListener a;
   public IMediaPlayer.OnInfoListener a;
   public IMediaPlayer.OnPreparedListener a;
   protected IMediaPlayer.OnSeekCompleteListener a;
-  IMediaPlayer.OnVideoSizeChangedListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener = new npa(this);
+  IMediaPlayer.OnVideoSizeChangedListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener = new ntp(this);
   protected IMediaPlayer.onTextureUpdateListener a;
   public IMediaPlayer a;
   public String a;
   protected Map a;
   public int b;
-  private IMediaPlayer.OnCompletionListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener = new npc(this);
-  private IMediaPlayer.OnErrorListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener = new npe(this);
-  private IMediaPlayer.OnInfoListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener = new npd(this);
-  IMediaPlayer.OnPreparedListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener = new npb(this);
+  private IMediaPlayer.OnCompletionListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener = new ntr(this);
+  private IMediaPlayer.OnErrorListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener = new ntt(this);
+  private IMediaPlayer.OnInfoListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener = new nts(this);
+  IMediaPlayer.OnPreparedListener jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener = new ntq(this);
   public boolean b;
   protected int c;
   public boolean c;

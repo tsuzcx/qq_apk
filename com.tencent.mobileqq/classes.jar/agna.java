@@ -1,38 +1,37 @@
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.portal.ShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agna
-  implements WXShareHelper.WXShareListener
+  extends Animation
 {
-  public agna(ShareHelper paramShareHelper, String paramString) {}
+  float jdField_a_of_type_Float;
+  float b;
   
-  public void a(BaseResp paramBaseResp)
+  public agna(ScanTorchActivity paramScanTorchActivity) {}
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
+    if (paramFloat < 0.382F) {}
+    for (float f = 1.0F + paramFloat / 0.382F * 0.382F;; f = 1.382F - (paramFloat - 0.382F) / 0.618F * 0.382F)
+    {
+      paramTransformation.getMatrix().setScale(f, f, this.jdField_a_of_type_Float / 2.0F, this.b / 2.0F);
+      super.applyTransformation(paramFloat, paramTransformation);
       return;
     }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435303);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      QRUtils.a(2, 2131435302);
-    }
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Float = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agna
  * JD-Core Version:    0.7.0.1
  */

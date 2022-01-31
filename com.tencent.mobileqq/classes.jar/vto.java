@@ -1,45 +1,40 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.AccountNotMatchException;
 
 public class vto
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public vto(GameRoomChatPie paramGameRoomChatPie) {}
+  public vto(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
-    if (i == 0) {
-      if ((paramView != null) && (paramView.d()))
-      {
-        this.a.j.setText("正在发言");
-        this.a.j.setPressed(true);
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.b();
-        paramView.a(true);
-      }
-    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilList;
+    if ((localObject == null) || (((List)localObject).size() == 0)) {}
     do
     {
-      return true;
-      this.a.o(false);
-      return true;
-      if ((i != 3) && (i != 1)) {
-        break;
+      do
+      {
+        return;
+        localObject = AIOImageProviderService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+      } while ((localObject == null) || (!MessageForPic.class.isInstance(localObject)));
+      localObject = (MessageForPic)localObject;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOImageProviderService", 2, "payFlow,id:" + this.jdField_a_of_type_Long + ",subId:" + this.jdField_a_of_type_Int);
+        }
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localQQAppInterface, (MessageForPic)localObject);
+        return;
       }
-      this.a.j.setText("按住发言");
-      this.a.j.setPressed(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.c();
-    } while (paramView == null);
-    paramView.a(false);
-    return true;
-    return false;
+      catch (AccountNotMatchException localAccountNotMatchException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("AIOImageProviderService", 2, "no appRuntime");
   }
 }
 

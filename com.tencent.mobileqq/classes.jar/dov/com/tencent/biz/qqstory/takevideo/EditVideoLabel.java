@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewStub;
 import android.widget.TextView;
-import antz;
-import anua;
-import anub;
+import aocp;
+import aocq;
+import aocr;
 import com.tencent.util.InputMethodUtil;
 import com.tencent.widget.XEditTextEx;
 import dov.com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
@@ -40,7 +40,7 @@ public class EditVideoLabel
     }
   }
   
-  private void j()
+  private void i()
   {
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.a() == 0))
     {
@@ -55,8 +55,8 @@ public class EditVideoLabel
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart == null)
     {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart = new QQStoryAddVideoLabelViewPart(this.jdField_a_of_type_AndroidViewViewStub.inflate());
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.a(new anua(this));
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.b(new anub(this));
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.a(new aocq(this));
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.b(new aocr(this));
     }
   }
   
@@ -68,9 +68,9 @@ public class EditVideoLabel
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364422));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364447));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new antz(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(new aocp(this));
   }
   
   public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)
@@ -122,10 +122,10 @@ public class EditVideoLabel
     switch (paramInt)
     {
     default: 
-      j();
+      i();
       return;
     case 0: 
-      j();
+      i();
       return;
     }
     c();

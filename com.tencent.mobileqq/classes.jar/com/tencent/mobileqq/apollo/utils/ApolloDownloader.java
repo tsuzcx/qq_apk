@@ -131,7 +131,7 @@ public class ApolloDownloader
           }
           throw new FileDownloadFailedException(9301, 0L, "downloadImage fail", false, false);
         }
-        return new File(AppConstants.aJ);
+        return new File(AppConstants.aK);
       }
       label460:
       paramOutputStream = null;

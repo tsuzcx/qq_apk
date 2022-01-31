@@ -1,33 +1,32 @@
-import com.tencent.component.media.gif.NewGifDrawable;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.biz.webviewplugin.HotchatPlugin;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class pfz
-  implements Runnable
+  implements TroopMemberApiClient.Callback
 {
-  long jdField_a_of_type_Long;
+  public pfz(HotchatPlugin paramHotchatPlugin) {}
   
-  public pfz(NewGifDrawable paramNewGifDrawable, long paramLong)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void run()
-  {
-    long l = 0L;
-    NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
-    NewGifDrawable localNewGifDrawable = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable;
-    ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
-    pgb localpgb = NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
-    if (this.jdField_a_of_type_Long > 0L) {
-      l = this.jdField_a_of_type_Long;
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
+    {
+      ArrayList localArrayList = paramBundle.getStringArrayList("uins");
+      paramBundle = paramBundle.getStringArrayList("tinyIds");
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        HotchatPlugin.a(this.a).put(paramBundle.get(i), localArrayList.get(i));
+        i += 1;
+      }
     }
-    localNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = localScheduledThreadPoolExecutor.schedule(localpgb, l, TimeUnit.MILLISECONDS);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pfz
  * JD-Core Version:    0.7.0.1
  */

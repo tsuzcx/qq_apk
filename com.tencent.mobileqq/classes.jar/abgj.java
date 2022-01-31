@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
 public class abgj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public abgj(ARGridMapViewDialog paramARGridMapViewDialog, POIInfo paramPOIInfo, int paramInt) {}
+  public abgj(ARMapActivity paramARMapActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ARGridMapViewDialog.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog, this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo, this.jdField_a_of_type_Int);
+    this.a.b = 1;
+    this.a.a.post(new abgk(this));
+    ARMapEngine.guideToPOI(0.0F);
+    ThreadManager.post(new abgl(this), 5, null, false);
   }
 }
 

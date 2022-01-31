@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.ar.ARGlobalConfigManager;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
 
 public class zxg
-  implements Runnable
+  extends FriendListObserver
 {
-  public zxg(ARGlobalConfigManager paramARGlobalConfigManager) {}
+  private zxg(GetGeneralSettings paramGetGeneralSettings) {}
   
-  public void run()
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a();
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      GetGeneralSettings.a(this.a).a = 3;
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zxg
  * JD-Core Version:    0.7.0.1
  */

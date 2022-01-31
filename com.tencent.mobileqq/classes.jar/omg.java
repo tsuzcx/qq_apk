@@ -1,11 +1,27 @@
-import android.widget.ImageView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 
-class omg
+public class omg
+  implements Animator.AnimatorListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
+  public omg(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
   
-  omg(omf paramomf) {}
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2131034167);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2131034167);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

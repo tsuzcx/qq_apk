@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.config;
 
-import aaiw;
-import aaix;
+import aapn;
+import aapo;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import com.tencent.common.app.AppInterface;
@@ -78,8 +78,8 @@ public class DownloadDependRes
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = new aaiw(this);
-    this.jdField_a_of_type_AndroidContentServiceConnection = new aaix(this);
+    this.jdField_a_of_type_ComTencentMobileqqArAidlIArSoCallback = new aapn(this);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new aapo(this);
     Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ArConfigService.class);
     boolean bool = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
     QLog.w("WorldCupMgr", 1, "bindServer, ret[" + bool + "]");

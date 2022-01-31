@@ -42,7 +42,7 @@ public class PasterDataManager$DoodleEmojiDownloadEventReceiver
           paramPasterDataManager.a((FacePackage)localObject);
           return;
         }
-        SLog.a(this.TAG, "notify ui we new progress : " + paramDoodleEmojiDownloadEvent.b + " / " + paramDoodleEmojiDownloadEvent.jdField_a_of_type_Long);
+        SLog.b(this.TAG, "notify ui we new progress : " + paramDoodleEmojiDownloadEvent.b + " / " + paramDoodleEmojiDownloadEvent.jdField_a_of_type_Long);
         ((NormalFacePackage)localObject).b = true;
         ((NormalFacePackage)localObject).g = null;
         ((NormalFacePackage)localObject).c = ((int)paramDoodleEmojiDownloadEvent.jdField_a_of_type_Long);

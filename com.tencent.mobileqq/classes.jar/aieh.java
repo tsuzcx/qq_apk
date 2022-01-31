@@ -1,22 +1,14 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.transfile.NetResp;
 
 public class aieh
-  extends aiej
+  implements Runnable
 {
-  public aieh(TCProgressBar paramTCProgressBar)
-  {
-    super(paramTCProgressBar);
-  }
+  public aieh(ShortVideoResourceManager paramShortVideoResourceManager, NetResp paramNetResp) {}
   
-  public void a(Canvas paramCanvas)
+  public void run()
   {
-    this.a.b.left = this.f;
-    this.a.b.right = (this.f + this.g);
-    this.a.a.setColor(this.a.m);
-    paramCanvas.drawRect(this.a.b, this.a.a);
-    super.a(paramCanvas);
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager, this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp);
   }
 }
 

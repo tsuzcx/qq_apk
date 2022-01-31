@@ -1,83 +1,96 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.util.DisplayMetrics;
-import com.tencent.av.ui.redbag.RedBagUtil;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ar.RemoteArConfigManager;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.mobileqq.ar.aidl.IArRemoteCallback.Stub;
+import com.tencent.qphone.base.util.QLog;
 
 public class aakd
-  extends aakq
+  extends IArRemoteCallback.Stub
 {
-  public int a;
-  public BitmapDrawable a;
-  public WorldCupConfigInfo a;
-  public HashMap a;
-  public int b;
-  HashMap b;
-  public int c = 1;
-  public int d = 1;
-  public int e = 1;
-  public int f = 1;
+  public aakd(RemoteArConfigManager paramRemoteArConfigManager) {}
   
-  public aakd()
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(2);
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap(2);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 1;
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = null;
-    this.jdField_b_of_type_JavaUtilHashMap.clear();
-  }
-  
-  boolean a(Resources paramResources)
-  {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.a(0) + "splash/";
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo.b;
-    int i = 0;
-    while (i < 2)
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadSuccess ");
+    }
+    if (RemoteArConfigManager.a(this.a) == null)
     {
-      localObject = RedBagUtil.a(paramResources, str1 + "splash" + i + ".png");
-      if (localObject == null) {
-        return false;
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadSuccess error mHandler is null ");
+      return;
+    }
+    RemoteArConfigManager.a(this.a).sendMessage(RemoteArConfigManager.a(this.a).obtainMessage(3));
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadError|error= " + paramInt);
+    }
+    if (RemoteArConfigManager.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadError error mHandler is null ");
+      return;
+    }
+    RemoteArConfigManager.a(this.a).sendMessage(RemoteArConfigManager.a(this.a).obtainMessage(5, Integer.valueOf(paramInt)));
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (paramLong2 != 0L)
+    {
+      long l = 100L * paramLong1 / paramLong2;
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadProcess percent= " + l);
       }
-      this.jdField_a_of_type_Int = ((Bitmap)localObject).getWidth();
-      this.jdField_b_of_type_Int = ((Bitmap)localObject).getHeight();
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), new BitmapDrawable((Bitmap)localObject));
-      i += 1;
+      if (RemoteArConfigManager.a(this.a) == null) {
+        QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadProcess error mHandler is null ");
+      }
     }
-    Object localObject = RedBagUtil.a(paramResources, str1 + "skip_button.png");
-    if (localObject == null) {
-      return false;
-    }
-    this.e = ((Bitmap)localObject).getWidth();
-    this.f = ((Bitmap)localObject).getHeight();
-    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable((Bitmap)localObject);
-    i = 0;
-    while (i < 2)
+    else
     {
-      String str2 = "img_" + i + ".png";
-      if (bool) {}
-      for (localObject = "img_" + i + ".png";; localObject = "no_" + i + ".png")
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 4;
+    localMessage.arg1 = ((int)paramLong1);
+    localMessage.arg2 = ((int)paramLong2);
+    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onConfigChanged!");
+    }
+    if (RemoteArConfigManager.a(this.a) == null) {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onConfigChanged error mHandler is null ");
+    }
+    do
+    {
+      return;
+      if (paramArConfigInfo != null)
       {
-        localObject = RedBagUtil.a(str1 + "images/" + (String)localObject, paramResources.getDisplayMetrics().densityDpi, paramResources.getDisplayMetrics().densityDpi);
-        if (localObject != null) {
-          break;
-        }
-        return false;
+        Message localMessage = Message.obtain();
+        localMessage.what = 1;
+        localMessage.obj = paramArConfigInfo;
+        RemoteArConfigManager.a(this.a).sendMessage(localMessage);
       }
-      this.c = AIOUtils.a(((Bitmap)localObject).getWidth() / 2, paramResources);
-      this.d = AIOUtils.a(((Bitmap)localObject).getHeight() / 2, paramResources);
-      this.jdField_b_of_type_JavaUtilHashMap.put(str2, localObject);
-      i += 1;
-    }
-    return true;
+      if (paramArEffectConfig != null)
+      {
+        paramArConfigInfo = Message.obtain();
+        paramArConfigInfo.what = 2;
+        paramArConfigInfo.obj = paramArEffectConfig;
+        RemoteArConfigManager.a(this.a).sendMessage(paramArConfigInfo);
+      }
+    } while (paramARCommonConfigInfo == null);
+    paramArConfigInfo = Message.obtain();
+    paramArConfigInfo.what = 9;
+    paramArConfigInfo.obj = paramARCommonConfigInfo;
+    RemoteArConfigManager.a(this.a).sendMessage(paramArConfigInfo);
   }
 }
 

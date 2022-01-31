@@ -1,41 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.app.HotChatHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
 
 public class wac
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public wac(TroopChatPie paramTroopChatPie) {}
+  public wac(HotChatPie paramHotChatPie, HotChatInfo paramHotChatInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = (TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if ((NetworkUtil.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null)) {
-      if (((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-        paramDialogInterface.j(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic = new TroopFeedsCenterLogic(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, HotChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie), HotChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie), this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.Q, null);
     }
-    for (;;)
-    {
-      new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_quitgrp").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
+    HotChatHandler localHotChatHandler = (HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.userCreate == 1) {
+      localHotChatHandler.b(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin);
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.uuid == null) {
       return;
-      paramDialogInterface.i(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      continue;
-      if (paramDialogInterface != null) {
-        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131434613, 0).a();
-      } else {
-        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131435287, 0).a();
-      }
     }
+    localHotChatHandler.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.uuid.getBytes(), this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin);
   }
 }
 

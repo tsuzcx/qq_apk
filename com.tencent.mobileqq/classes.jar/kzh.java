@@ -1,21 +1,33 @@
-import com.tencent.biz.pubaccount.SuperWebView;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class kzh
-  implements Runnable
+public final class kzh
+  implements BusinessObserver
 {
-  public kzh(SuperWebView paramSuperWebView) {}
-  
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Iterator localIterator = SuperWebView.a(this.a).iterator();
-    while (localIterator.hasNext())
+    if (paramBoolean) {}
+    try
     {
-      String str = (String)localIterator.next();
-      SuperWebView.a(this.a, str);
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
+          QLog.d("NativeAdUtils", 2, "nativeEngineAdReport success!" + localWebSsoResponseBody.data.get());
+        }
+      }
+      return;
     }
-    SuperWebView.a(this.a).clear();
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
   }
 }
 

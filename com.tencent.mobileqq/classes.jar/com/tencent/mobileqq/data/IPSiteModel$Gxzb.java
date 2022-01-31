@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abub;
+import acbt;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class IPSiteModel$Gxzb
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abub();
+  public static final Parcelable.Creator CREATOR = new acbt();
   public String appName;
   public int appid;
   public String cover;

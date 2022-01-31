@@ -1,24 +1,35 @@
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader.OnPreloaderListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class nex
-  implements MsgTabStoryVideoPreloader.OnPreloaderListener
+  extends SimpleObserver
 {
-  private long jdField_a_of_type_Long;
+  private nex(BasePublishTask paramBasePublishTask) {}
   
-  public nex(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate) {}
-  
-  public void a()
+  public void a(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (paramErrorMessage.isSuccess())
+    {
+      this.a.a(new ErrorMessage());
+      return;
+    }
+    this.a.a(paramErrorMessage);
   }
   
-  public void b()
+  public void onCancel() {}
+  
+  public void onComplete() {}
+  
+  public void onError(@NonNull Error paramError)
   {
-    if (this.jdField_a_of_type_Long != 0L) {
-      StoryReportor.b("msgtab", "preload_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    if ((paramError instanceof ErrorMessage))
+    {
+      this.a.a((ErrorMessage)paramError);
+      return;
     }
+    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
   }
 }
 

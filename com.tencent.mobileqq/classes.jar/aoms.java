@@ -1,16 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
 
 public class aoms
-  implements ValueAnimator.AnimatorUpdateListener
+  extends Property
 {
-  public aoms(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aoms(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f);
+    super(paramClass, paramString);
+  }
+  
+  public Float a(GroundDrawable paramGroundDrawable)
+  {
+    if (paramGroundDrawable != null) {
+      return Float.valueOf(GroundDrawable.d(paramGroundDrawable));
+    }
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
+  {
+    if (paramGroundDrawable != null) {
+      GroundDrawable.c(paramGroundDrawable, paramFloat.floatValue());
+    }
   }
 }
 

@@ -1,23 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.TroopPickerViewHelper;
-import com.tencent.mobileqq.troop.widget.TroopPickerViewHelper.OnConfirmListener;
-import com.tencent.widget.ActionSheet;
-import java.util.Calendar;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
-public class ajui
-  implements View.OnClickListener
+class ajui
+  implements Runnable
 {
-  public ajui(TroopPickerViewHelper paramTroopPickerViewHelper, TroopPickerViewHelper.OnConfirmListener paramOnConfirmListener) {}
+  ajui(ajuh paramajuh) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper) != null) && (TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).isShowing())) {
-      TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).dismiss();
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper$OnConfirmListener != null) && (TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper) != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper$OnConfirmListener.a(TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).getTimeInMillis());
-    }
+    this.a.a.a(AIOAnimationControlManager.a(this.a.a));
   }
 }
 

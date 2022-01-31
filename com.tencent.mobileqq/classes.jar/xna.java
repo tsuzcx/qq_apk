@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.2;
 
-class xna
-  implements DialogInterface.OnClickListener
+public class xna
+  implements Runnable
 {
-  xna(xmz paramxmz) {}
+  public xna(RedPacketProxy.2 param2, RedPacketInfoBase paramRedPacketInfoBase) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketProxy$2.a.onGetSkin(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase);
+  }
 }
 
 

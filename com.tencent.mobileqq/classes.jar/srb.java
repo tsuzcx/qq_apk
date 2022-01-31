@@ -1,34 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.report.lp.LpReportManager;
-import cooperation.qzone.util.QZLog;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 
 public class srb
-  implements Runnable
+  implements TabBarView.OnTabChangeListener
 {
-  public srb(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public srb(EmosmActivity paramEmosmActivity) {}
   
-  public void run()
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    try
-    {
-      if (!TextUtils.isEmpty(this.a.a.a.a))
-      {
-        Object localObject = this.a.a.a.a;
-        if (this.a.a.a.a.startsWith("+")) {
-          localObject = this.a.a.a.a.substring(1);
-        }
-        localObject = new LpReportInfo_pf00064(699, 1, Long.valueOf((String)localObject).longValue());
-        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
-      }
+    if (paramInt1 == paramInt2) {
       return;
     }
-    catch (Exception localException)
+    if (paramInt2 == 0) {
+      this.a.b = 1;
+    }
+    for (;;)
     {
-      QZLog.e("QzoneReport", "LpReportInfoProfile", localException);
+      this.a.c = false;
+      this.a.runOnUiThread(this.a.a);
+      return;
+      if (paramInt2 == 1) {
+        this.a.b = 2;
+      }
     }
   }
 }

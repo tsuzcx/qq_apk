@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
-public class tku
-  implements Runnable
+class tku
+  extends ContactBindObserver
 {
-  public tku(QQSettingMe paramQQSettingMe) {}
+  tku(tkt paramtkt) {}
   
-  public void run()
+  protected void b(boolean paramBoolean)
   {
-    boolean bool = ApolloGameUtil.a(this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, new Object[] { "[updateCmshowStatus] isApolloUser=", Boolean.valueOf(bool) });
+    super.b(paramBoolean);
+    PhoneUnityChangeActivity.a(this.a.a.a);
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      this.a.a.a.setResult(4001);
+      this.a.a.a.finish();
     }
-    if (bool) {
-      this.a.m();
-    }
-    this.a.c();
-    if (bool) {
-      this.a.d();
-    }
-    this.a.e();
   }
 }
 

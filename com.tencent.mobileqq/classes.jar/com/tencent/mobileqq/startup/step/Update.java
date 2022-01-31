@@ -79,11 +79,6 @@ public class Update
     }
   }
   
-  public void a(boolean paramBoolean)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("StepUpdate", 0).edit().putBoolean("checkQzoneLover", paramBoolean).apply();
-  }
-  
   protected boolean a()
   {
     this.d = 10500;
@@ -109,14 +104,10 @@ public class Update
         {
           localObject = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 0);
           str1 = "ProcFirstLaunch" + BaseApplicationImpl.processName;
-          str2 = ((SharedPreferences)localObject).getString(str1, "");
-          if (!TextUtils.isEmpty(str2)) {
-            continue;
-          }
-          a(false);
-          if (!TextUtils.equals("351230", str2))
+          String str2 = ((SharedPreferences)localObject).getString(str1, "");
+          if (!TextUtils.equals("355371", str2))
           {
-            QLog.i("Update", 1, String.format("updateInstallPlugin %s %s %s", new Object[] { str1, str2, String.valueOf("351230") }));
+            QLog.i("Update", 1, String.format("updateInstallPlugin %s %s %s", new Object[] { str1, str2, String.valueOf("355371") }));
             BaseApplicationImpl.isCurrentVersionFirstLaunch = true;
             if (TextUtils.isEmpty(str2)) {
               BaseApplicationImpl.isFirstLaunchNew = true;
@@ -134,7 +125,7 @@ public class Update
               }
               boolean bool2 = Step.AmStepFactory.b(0, this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector, jdField_a_of_type_ArrayOfInt).c();
               QLog.e("AutoMonitor", 1, "UPDATE_STEPS " + bool2);
-              ((SharedPreferences)localObject).edit().putString(str1, "351230").commit();
+              ((SharedPreferences)localObject).edit().putString(str1, "355371").commit();
             }
             SharedPreferencesProxyManager.getInstance().trySave();
           }
@@ -149,15 +140,9 @@ public class Update
       catch (InterruptedException localInterruptedException)
       {
         String str1;
-        String str2;
         localInterruptedException.printStackTrace();
         continue;
-        if (TextUtils.equals("351230", str2)) {
-          continue;
-        }
-        a(true);
-        continue;
-        localInterruptedException.edit().putString(str1, "351230").commit();
+        localInterruptedException.edit().putString(str1, "355371").commit();
         continue;
       }
       boolean bool1 = true;
@@ -186,10 +171,10 @@ public class Update
             this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localAppActivity.getWindow().getDecorView());
             if (this.jdField_a_of_type_AndroidViewViewGroup != null)
             {
-              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a.getApplicationContext(), 2130971580, null));
+              this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate(this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a.getApplicationContext(), 2130971606, null));
               this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-              this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375044));
-              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375045));
+              this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375096));
+              this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375097));
               this.jdField_a_of_type_AndroidWidgetTextView.setText("升级中，请耐心等待...");
               this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
             }
@@ -214,7 +199,7 @@ public class Update
         } while (this.jdField_a_of_type_AndroidWidgetProgressBar.getProgress() > i);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
         if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a.getString(2131436676), new Object[] { Integer.valueOf(i) }));
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a.getString(2131436696), new Object[] { Integer.valueOf(i) }));
         }
       } while (i >= 99);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 100L);

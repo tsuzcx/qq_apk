@@ -6,7 +6,7 @@ import android.graphics.PointF;
 import android.opengl.GLES20;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import aoaj;
+import aojb;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleItem;
@@ -316,7 +316,7 @@ public class PersonalityOperator
         }
       }
       this.jdField_a_of_type_ComTencentTtpicModelVideoMaterial = paramQQVideoMaterial;
-      paramQQVideoMaterial = new aoaj(this, paramQQVideoMaterial);
+      paramQQVideoMaterial = new aojb(this, paramQQVideoMaterial);
       if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLineListener != null) {
         this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLineListener.a(paramQQVideoMaterial);
       }

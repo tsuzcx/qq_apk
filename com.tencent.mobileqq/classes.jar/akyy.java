@@ -1,16 +1,67 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.webview.webso.SHA1Util;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
+import com.tencent.mobileqq.webview.webso.WebSoUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-public final class akyy
-  implements DialogInterface.OnClickListener
+public class akyy
+  implements Runnable
 {
-  public akyy(String paramString, int paramInt1, int paramInt2) {}
+  public akyy(WebSoService paramWebSoService, File paramFile, String paramString, WebSoService.CallBack paramCallBack, Uri paramUri) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(null, "P_CliOper", "Safe_SensMsg", this.jdField_a_of_type_JavaLangString, "Alert_Dialog", "Cancel", this.jdField_a_of_type_Int, this.b, "", "", "", "");
-    paramDialogInterface.dismiss();
+    try
+    {
+      long l = System.currentTimeMillis();
+      String str = FileUtils.b(this.jdField_a_of_type_JavaIoFile);
+      if (QLog.isColorLevel()) {
+        QLog.d("WebSoService", 2, "readFileToString cost=" + (System.currentTimeMillis() - l));
+      }
+      if (!TextUtils.isEmpty(str))
+      {
+        l = System.currentTimeMillis();
+        if (SHA1Util.a(str).equals(this.jdField_a_of_type_JavaLangString))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("WebSoService", 2, "verify html success cost=" + (System.currentTimeMillis() - l));
+          }
+          this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a(str);
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("WebSoService", 2, "verify html fail cost=" + (System.currentTimeMillis() - l));
+        }
+        WebSoUtils.a(this.jdField_a_of_type_AndroidNetUri);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a("");
+        return;
+      }
+    }
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebSoService", 2, "deal eTag exception=" + localIOException.getMessage());
+      }
+      WebSoUtils.a(this.jdField_a_of_type_AndroidNetUri);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a("");
+      localIOException.printStackTrace();
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebSoService", 2, "verify load data exception=" + localOutOfMemoryError.getMessage());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a("");
+      localOutOfMemoryError.printStackTrace();
+      VipUtils.a(null, "webview_report", "0X8006511", "0X8006511", 1, 1, null);
+    }
   }
 }
 

@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import java.util.Comparator;
 
-public class agih
-  implements Runnable
+public final class agih
+  implements Comparator
 {
-  public agih(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void run()
+  public int a(ShuayishuaConfig paramShuayishuaConfig1, ShuayishuaConfig paramShuayishuaConfig2)
   {
-    ScanTorchActivity.b(this.a, true, ScanTorchActivity.d(this.a));
-    ScanTorchActivity.w(this.a);
+    long l = paramShuayishuaConfig1.realBegin - paramShuayishuaConfig2.realBegin;
+    if (l > 0L) {
+      return 1;
+    }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
   }
 }
 

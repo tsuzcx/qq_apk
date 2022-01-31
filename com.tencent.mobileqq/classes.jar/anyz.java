@@ -1,14 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.graphics.PointF;
+import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector;
+import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector.SimpleOnMoveGestureListener;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
+import dov.com.qq.im.cropvideo.RenderFilter;
 
 public class anyz
-  implements Runnable
+  extends MoveGestureDetector.SimpleOnMoveGestureListener
 {
-  public anyz(DoodleLayout paramDoodleLayout, TextLayer.TextItem paramTextItem) {}
+  public anyz(CropVideoActivity paramCropVideoActivity) {}
   
-  public void run()
+  public boolean b(MoveGestureDetector paramMoveGestureDetector)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$TextItem);
+    float f1 = paramMoveGestureDetector.a().x;
+    float f2 = paramMoveGestureDetector.a().y;
+    CropVideoActivity.a(this.a).a(f1, f2, 0.0F);
+    return true;
   }
 }
 

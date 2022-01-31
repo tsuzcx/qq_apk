@@ -1,30 +1,20 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.DownloaderGetCodeClient;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
 
 public class alhd
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public alhd(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  public alhd(MSFIntChkStrike paramMSFIntChkStrike, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      LogUtility.c(DownloadManager.a, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d + " begin getApkCode ......");
-      DownloaderGetCodeClient.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b);
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
-    }
+    MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike, paramDialogInterface, paramInt, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alhd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,84 +1,32 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.music.MusicPlayerSceneListener;
-import dov.com.qq.im.capture.music.QimMusicPlayer;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
-import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipParam;
+import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
+import com.tencent.mobileqq.service.message.MessageCache;
 
-public class anoy
-  implements MusicPlayerSceneListener
+public final class anoy
+  implements Runnable
 {
-  public anoy(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  public anoy(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5, QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  public void run()
   {
-    this.a.i();
-  }
-  
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (paramInt != -1)
-    {
-      this.a.a(paramInt);
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
-      return;
-    }
-    this.a.i();
-  }
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.a.a != null)
-    {
-      if (paramMusicItemInfo.d == 2) {
-        this.a.a.c(true);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.a.c(false);
-  }
-  
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    this.a.a(paramInt);
-    if (paramInt != -1)
-    {
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
-    }
-    for (;;)
-    {
-      if (MusicFragmentProviderView.a(this.a) != null) {
-        MusicFragmentProviderView.a(this.a).f();
-      }
-      return;
-      this.a.i();
-    }
-  }
-  
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (paramInt != -1)
-    {
-      this.a.j();
-      return;
-    }
-    this.a.i();
-  }
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    this.a.i();
+    Process.setThreadPriority(10);
+    UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, -5023, 2424833, MessageCache.a());
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("key_action", 1);
+    ((Bundle)localObject).putString("key_action_DATA", this.d);
+    localUniteGrayTipParam.a(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.e.length(), (Bundle)localObject);
+    localObject = new MessageForUniteGrayTip();
+    ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localUniteGrayTipParam);
+    UniteGrayTipUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anoy
  * JD-Core Version:    0.7.0.1
  */

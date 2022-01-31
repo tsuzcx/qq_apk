@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.jsp;
 
-import ajlu;
-import ajlv;
-import ajlw;
-import ajlx;
+import ajtg;
+import ajth;
+import ajti;
+import ajtj;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -82,7 +82,7 @@ public class TroopNoticeJsHandler
     //   29: new 75	java/lang/StringBuilder
     //   32: dup
     //   33: invokespecial 76	java/lang/StringBuilder:<init>	()V
-    //   36: getstatic 81	com/tencent/mobileqq/app/AppConstants:ba	Ljava/lang/String;
+    //   36: getstatic 81	com/tencent/mobileqq/app/AppConstants:bb	Ljava/lang/String;
     //   39: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: ldc 87
     //   44: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -522,7 +522,7 @@ public class TroopNoticeJsHandler
             }
             if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
             {
-              this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ajlu(this);
+              this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ajtg(this);
               localObject5 = new IntentFilter("android.intent.action.WEBJSCALL");
               ((Activity)localObject1).registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject5);
             }
@@ -555,7 +555,7 @@ public class TroopNoticeJsHandler
   
   protected void b(String paramString)
   {
-    ThreadManager.post(new ajlv(this, paramString), 5, null, true);
+    ThreadManager.post(new ajth(this, paramString), 5, null, true);
   }
   
   public void c(String paramString)
@@ -579,7 +579,7 @@ public class TroopNoticeJsHandler
           String str4 = ((JSONObject)localObject).optString("headFields");
           localObject = ((JSONObject)localObject).optString("postParams");
           String str5 = LoginHelper.a(localAppInterface);
-          localActivity.runOnUiThread(new ajlw(this, paramString, str1, a(localAppInterface.getCurrentAccountUin(), str2, str3, (String)localObject, str4, str5, b)));
+          localActivity.runOnUiThread(new ajti(this, paramString, str1, a(localAppInterface.getCurrentAccountUin(), str2, str3, (String)localObject, str4, str5, b)));
           return;
         }
       }
@@ -589,7 +589,7 @@ public class TroopNoticeJsHandler
   
   protected void d(String paramString)
   {
-    ThreadManager.post(new ajlx(this, paramString), 5, null, false);
+    ThreadManager.post(new ajtj(this, paramString), 5, null, false);
   }
   
   public void e(String paramString)
@@ -732,7 +732,7 @@ public class TroopNoticeJsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler
  * JD-Core Version:    0.7.0.1
  */

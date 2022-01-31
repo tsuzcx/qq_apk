@@ -1,36 +1,43 @@
 package com.tencent.mapsdk.rastercore.tile.b;
 
-import com.tencent.mapsdk.rastercore.d.e;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.mapsdk.raster.model.TileProvider;
+import com.tencent.mapsdk.rastercore.d.a.1;
+import com.tencent.mapsdk.rastercore.tile.MapTile.MapSource;
+import java.util.Map;
+import java.util.WeakHashMap;
 
-public class b
-  extends a
+public final class b
 {
-  private String[] a = { "https://s0.map.gtimg.com/oversea", "https://s1.map.gtimg.com/oversea", "https://s2.map.gtimg.com/oversea", "https://s3.map.gtimg.com/oversea" };
+  private static Map<MapTile.MapSource, TileProvider> a = new WeakHashMap();
   
-  public URL getTileUrl(int paramInt1, int paramInt2, int paramInt3, Object... paramVarArgs)
+  public static TileProvider a(com.tencent.mapsdk.rastercore.d.f paramf, MapTile.MapSource paramMapSource)
   {
-    int i = e.t();
-    int j = e.s();
-    paramVarArgs = e.v();
-    int k = e.u();
-    int m = a(paramInt1 + paramInt2, this.a.length);
-    Object localObject = this.a[m];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((String)localObject);
-    localStringBuilder.append("?z=").append(paramInt3).append("&x=").append(paramInt1).append("&y=").append(paramInt2).append("&styleid=").append(k).append("&scene=").append(i).append("&version=").append(j).append("&ch=").append(paramVarArgs);
-    paramVarArgs = localStringBuilder.toString();
-    try
+    if (paramf.f().a() > 1) {}
+    for (int i = 2;; i = 1)
     {
-      localObject = new URL(paramVarArgs);
-      return localObject;
+      paramf = (TileProvider)a.get(paramMapSource);
+      if (paramf == null) {
+        break;
+      }
+      return paramf;
     }
-    catch (MalformedURLException localMalformedURLException)
+    switch (1.a[paramMapSource.ordinal()])
     {
-      new StringBuilder("Unable to new URL with ").append(paramVarArgs);
+    default: 
+      return null;
+    case 1: 
+      paramf = new d(i);
     }
-    return null;
+    for (;;)
+    {
+      a.put(paramMapSource, paramf);
+      return paramf;
+      paramf = new f(i);
+      continue;
+      paramf = new c(i);
+      continue;
+      paramf = new e(i);
+    }
   }
 }
 

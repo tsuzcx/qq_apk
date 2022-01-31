@@ -1,40 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.troop.createNewTroop.SubCateListView;
-import com.tencent.mobileqq.troop.createNewTroop.SubCateListView.OnToggleSubListListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-public class ajbw
-  extends AnimatorListenerAdapter
+class ajbw
+  implements Runnable
 {
-  public ajbw(SubCateListView paramSubCateListView, boolean paramBoolean, View paramView, int paramInt) {}
+  ajbw(ajbv paramajbv) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramAnimator = new int[2];
-      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
-      i = UIUtils.b(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListView.jdField_a_of_type_AndroidContentContext) - paramAnimator[1];
-      if (i >= this.jdField_a_of_type_Int) {}
-    }
-    for (int i = this.jdField_a_of_type_Int - i;; i = 0)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListView.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListView$OnToggleSubListListener != null)
-      {
-        paramAnimator = this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListView.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopSubCateListView$OnToggleSubListListener;
-        if (!this.jdField_a_of_type_Boolean) {
-          bool = true;
-        }
-        paramAnimator.a(bool, i);
-      }
+    if (this.a.a.b == null) {
       return;
     }
+    this.a.a.b.setVisibility(8);
   }
 }
 

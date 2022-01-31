@@ -12,8 +12,8 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anvj;
-import anvk;
+import aodz;
+import aoea;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
@@ -100,15 +100,15 @@ public class EditVideoVote
   private void a(EditVideoVote.VoteInfo paramVoteInfo, int paramInt)
   {
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog != null) {
-      j();
+      i();
     }
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog = new VoteDialog(a(), this, paramVoteInfo, paramInt);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog.setContentView(2130970903);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog.setContentView(2130970920);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog.setOnDismissListener(this);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog.show();
   }
   
-  private void j()
+  private void i()
   {
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog.isShowing()))
     {
@@ -218,7 +218,7 @@ public class EditVideoVote
   {
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog.isShowing()))
     {
-      j();
+      i();
       return true;
     }
     return false;
@@ -229,7 +229,7 @@ public class EditVideoVote
     switch (paramInt)
     {
     default: 
-      j();
+      i();
       return;
     }
     int i = -1;
@@ -257,9 +257,10 @@ public class EditVideoVote
     EditVideoVote.VoteInfo localVoteInfo = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoVote$VoteInfo;
     if (localVoteInfo != null)
     {
-      if (a(localVoteInfo) != null)
+      Object localObject = a(localVoteInfo);
+      if (localObject != null)
       {
-        Object localObject = a(localVoteInfo).toString();
+        localObject = ((JSONObject)localObject).toString();
         SLog.a("Q.qqstory.publish.edit.EditVideoVote", "editVideoPrePublish, vote json:%s", localObject);
         paramGenerateContext.a.putExtra("pl", localObject);
         paramGenerateContext = new StringBuilder();
@@ -306,7 +307,7 @@ public class EditVideoVote
         if (i == 0) {}
         for (localObject = "还没有输入问题哦";; localObject = "还有未输入的选项哦")
         {
-          DialogUtil.a(localContext, 230, (String)localObject, null, "我知道了", "输入", new anvj(this, i), new anvk(this)).show();
+          DialogUtil.a(localContext, 230, (String)localObject, null, "我知道了", "输入", new aodz(this, i), new aoea(this)).show();
           return false;
           i += 1;
           break;

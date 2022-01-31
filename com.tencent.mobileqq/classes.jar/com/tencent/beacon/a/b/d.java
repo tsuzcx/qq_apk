@@ -1,636 +1,497 @@
 package com.tencent.beacon.a.b;
 
-import android.content.Context;
-import android.util.Base64;
-import android.util.SparseArray;
-import com.tencent.beacon.a.c;
-import com.tencent.beacon.a.f;
-import com.tencent.beacon.d.a;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
-public class d
+public final class d
 {
-  private static d a = null;
-  private String b = "http://oth.str.mdt.qq.com:8080/analytics/upload";
-  private int c = 360;
-  private int d = 1;
-  private int e = 100;
-  private SparseArray<a> f = null;
-  private Map<String, String> g = null;
-  private byte h = 3;
-  private byte i = 2;
-  private String j = "*^@K#K@!";
-  private String k = "";
-  private String l = "";
-  private String m = "";
-  
-  private d()
-  {
-    this.f.put(1, new a(1));
-    this.f.put(2, new a(2));
-    this.f.put(3, new a(3));
-  }
+  private static d a;
+  private int b = 12;
+  private int c = 60;
+  private int d = 12;
+  private int e = 60;
+  private int f = 20;
+  private boolean g = false;
+  private boolean h = true;
+  private Set<String> i = null;
+  private Map<String, Float> j = null;
+  private boolean k = false;
+  private boolean l = false;
+  private int m = 10485760;
+  private boolean n = false;
+  private float o = 1.0F;
+  private boolean p = false;
+  private int q = 1;
   
   public static d a()
   {
-    if (a == null) {}
     try
     {
       if (a == null) {
         a = new d();
       }
-      return a;
+      d locald = a;
+      return locald;
     }
     finally {}
   }
   
-  private void c(String paramString)
-  {
-    try
-    {
-      this.l = paramString;
-      this.k = Base64.encodeToString(f.a(paramString), 2);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  private void d(String paramString)
-  {
-    try
-    {
-      this.m = paramString;
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
   /* Error */
-  final void a(Context paramContext)
+  public final void a(Map<String, String> paramMap)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: ldc 96
-    //   5: invokestatic 99	com/tencent/beacon/a/f:a	(Landroid/content/Context;Ljava/lang/String;)[Ljava/lang/Object;
-    //   8: astore 6
-    //   10: aload 6
-    //   12: ifnull +55 -> 67
-    //   15: aload 6
-    //   17: arraylength
-    //   18: iconst_3
-    //   19: if_icmpne +48 -> 67
-    //   22: new 101	java/util/Date
-    //   25: dup
-    //   26: invokespecial 102	java/util/Date:<init>	()V
-    //   29: invokevirtual 106	java/util/Date:getTime	()J
-    //   32: ldc2_w 107
-    //   35: ldiv
-    //   36: lstore 4
-    //   38: aload 6
-    //   40: iconst_2
-    //   41: aaload
-    //   42: checkcast 110	java/lang/Long
-    //   45: invokevirtual 113	java/lang/Long:longValue	()J
-    //   48: lstore_2
-    //   49: lload_2
-    //   50: lload 4
-    //   52: lcmp
-    //   53: ifle +14 -> 67
-    //   56: aload_0
-    //   57: aload 6
-    //   59: iconst_1
-    //   60: aaload
-    //   61: checkcast 115	java/lang/String
-    //   64: invokespecial 117	com/tencent/beacon/a/b/d:d	(Ljava/lang/String;)V
-    //   67: aload_0
-    //   68: aload_1
-    //   69: invokestatic 121	com/tencent/beacon/a/f:r	(Landroid/content/Context;)Ljava/lang/String;
-    //   72: invokespecial 123	com/tencent/beacon/a/b/d:c	(Ljava/lang/String;)V
-    //   75: aload_0
-    //   76: monitorexit
-    //   77: return
-    //   78: astore 7
-    //   80: lconst_0
-    //   81: lstore_2
-    //   82: goto -33 -> 49
-    //   85: astore_1
-    //   86: aload_0
-    //   87: monitorexit
-    //   88: aload_1
-    //   89: athrow
+    //   3: ifnull +441 -> 444
+    //   6: aload_0
+    //   7: aload_1
+    //   8: ldc 76
+    //   10: invokeinterface 82 2 0
+    //   15: checkcast 84	java/lang/String
+    //   18: aload_0
+    //   19: getfield 35	com/tencent/beacon/a/b/d:b	I
+    //   22: iconst_1
+    //   23: bipush 50
+    //   25: invokestatic 89	com/tencent/beacon/a/a:a	(Ljava/lang/String;III)I
+    //   28: putfield 35	com/tencent/beacon/a/b/d:b	I
+    //   31: aload_0
+    //   32: aload_1
+    //   33: ldc 91
+    //   35: invokeinterface 82 2 0
+    //   40: checkcast 84	java/lang/String
+    //   43: aload_0
+    //   44: getfield 37	com/tencent/beacon/a/b/d:c	I
+    //   47: bipush 10
+    //   49: sipush 600
+    //   52: invokestatic 89	com/tencent/beacon/a/a:a	(Ljava/lang/String;III)I
+    //   55: putfield 37	com/tencent/beacon/a/b/d:c	I
+    //   58: aload_0
+    //   59: aload_1
+    //   60: ldc 93
+    //   62: invokeinterface 82 2 0
+    //   67: checkcast 84	java/lang/String
+    //   70: aload_0
+    //   71: getfield 39	com/tencent/beacon/a/b/d:d	I
+    //   74: iconst_1
+    //   75: bipush 50
+    //   77: invokestatic 89	com/tencent/beacon/a/a:a	(Ljava/lang/String;III)I
+    //   80: putfield 39	com/tencent/beacon/a/b/d:d	I
+    //   83: aload_0
+    //   84: aload_1
+    //   85: ldc 95
+    //   87: invokeinterface 82 2 0
+    //   92: checkcast 84	java/lang/String
+    //   95: aload_0
+    //   96: getfield 41	com/tencent/beacon/a/b/d:e	I
+    //   99: bipush 30
+    //   101: sipush 600
+    //   104: invokestatic 89	com/tencent/beacon/a/a:a	(Ljava/lang/String;III)I
+    //   107: putfield 41	com/tencent/beacon/a/b/d:e	I
+    //   110: aload_0
+    //   111: aload_1
+    //   112: ldc 97
+    //   114: invokeinterface 82 2 0
+    //   119: checkcast 84	java/lang/String
+    //   122: aload_0
+    //   123: getfield 43	com/tencent/beacon/a/b/d:f	I
+    //   126: iconst_1
+    //   127: bipush 100
+    //   129: invokestatic 89	com/tencent/beacon/a/a:a	(Ljava/lang/String;III)I
+    //   132: putfield 43	com/tencent/beacon/a/b/d:f	I
+    //   135: aload_0
+    //   136: aload_1
+    //   137: ldc 99
+    //   139: invokeinterface 82 2 0
+    //   144: checkcast 84	java/lang/String
+    //   147: aload_0
+    //   148: getfield 47	com/tencent/beacon/a/b/d:h	Z
+    //   151: invokestatic 102	com/tencent/beacon/a/a:a	(Ljava/lang/String;Z)Z
+    //   154: putfield 47	com/tencent/beacon/a/b/d:h	Z
+    //   157: aload_0
+    //   158: aload_1
+    //   159: ldc 104
+    //   161: invokeinterface 82 2 0
+    //   166: checkcast 84	java/lang/String
+    //   169: aload_0
+    //   170: getfield 53	com/tencent/beacon/a/b/d:k	Z
+    //   173: invokestatic 102	com/tencent/beacon/a/a:a	(Ljava/lang/String;Z)Z
+    //   176: putfield 53	com/tencent/beacon/a/b/d:k	Z
+    //   179: aload_0
+    //   180: aload_1
+    //   181: ldc 106
+    //   183: invokeinterface 82 2 0
+    //   188: checkcast 84	java/lang/String
+    //   191: aload_0
+    //   192: getfield 55	com/tencent/beacon/a/b/d:l	Z
+    //   195: invokestatic 102	com/tencent/beacon/a/a:a	(Ljava/lang/String;Z)Z
+    //   198: putfield 55	com/tencent/beacon/a/b/d:l	Z
+    //   201: aload_0
+    //   202: aload_1
+    //   203: ldc 108
+    //   205: invokeinterface 82 2 0
+    //   210: checkcast 84	java/lang/String
+    //   213: aload_0
+    //   214: getfield 45	com/tencent/beacon/a/b/d:g	Z
+    //   217: invokestatic 102	com/tencent/beacon/a/a:a	(Ljava/lang/String;Z)Z
+    //   220: putfield 45	com/tencent/beacon/a/b/d:g	Z
+    //   223: aload_0
+    //   224: aload_1
+    //   225: ldc 110
+    //   227: invokeinterface 82 2 0
+    //   232: checkcast 84	java/lang/String
+    //   235: aload_0
+    //   236: getfield 58	com/tencent/beacon/a/b/d:m	I
+    //   239: ldc 111
+    //   241: ldc 56
+    //   243: invokestatic 89	com/tencent/beacon/a/a:a	(Ljava/lang/String;III)I
+    //   246: putfield 58	com/tencent/beacon/a/b/d:m	I
+    //   249: aload_1
+    //   250: ldc 113
+    //   252: invokeinterface 82 2 0
+    //   257: checkcast 84	java/lang/String
+    //   260: getstatic 117	com/tencent/beacon/a/g/a:b	Z
+    //   263: invokestatic 102	com/tencent/beacon/a/a:a	(Ljava/lang/String;Z)Z
+    //   266: putstatic 117	com/tencent/beacon/a/g/a:b	Z
+    //   269: aload_0
+    //   270: aload_1
+    //   271: ldc 119
+    //   273: invokeinterface 82 2 0
+    //   278: checkcast 84	java/lang/String
+    //   281: aload_0
+    //   282: getfield 60	com/tencent/beacon/a/b/d:n	Z
+    //   285: invokestatic 102	com/tencent/beacon/a/a:a	(Ljava/lang/String;Z)Z
+    //   288: putfield 60	com/tencent/beacon/a/b/d:n	Z
+    //   291: aload_1
+    //   292: ldc 121
+    //   294: invokeinterface 82 2 0
+    //   299: checkcast 84	java/lang/String
+    //   302: astore_3
+    //   303: aload_3
+    //   304: ifnull +53 -> 357
+    //   307: aload_3
+    //   308: invokevirtual 125	java/lang/String:trim	()Ljava/lang/String;
+    //   311: astore_3
+    //   312: aload_3
+    //   313: invokevirtual 129	java/lang/String:length	()I
+    //   316: ifle +41 -> 357
+    //   319: aload_3
+    //   320: ldc 131
+    //   322: invokevirtual 135	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   325: astore_3
+    //   326: aload_3
+    //   327: arraylength
+    //   328: istore_2
+    //   329: iload_2
+    //   330: iconst_2
+    //   331: if_icmpne +26 -> 357
+    //   334: aload_0
+    //   335: aload_3
+    //   336: iconst_0
+    //   337: aaload
+    //   338: invokestatic 141	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   341: invokevirtual 145	java/lang/Float:floatValue	()F
+    //   344: aload_3
+    //   345: iconst_1
+    //   346: aaload
+    //   347: invokestatic 141	java/lang/Float:valueOf	(Ljava/lang/String;)Ljava/lang/Float;
+    //   350: invokevirtual 145	java/lang/Float:floatValue	()F
+    //   353: fdiv
+    //   354: putfield 62	com/tencent/beacon/a/b/d:o	F
+    //   357: aload_0
+    //   358: aload_1
+    //   359: ldc 147
+    //   361: invokeinterface 82 2 0
+    //   366: checkcast 84	java/lang/String
+    //   369: aload_0
+    //   370: getfield 64	com/tencent/beacon/a/b/d:p	Z
+    //   373: invokestatic 102	com/tencent/beacon/a/a:a	(Ljava/lang/String;Z)Z
+    //   376: putfield 64	com/tencent/beacon/a/b/d:p	Z
+    //   379: aload_0
+    //   380: aload_1
+    //   381: ldc 149
+    //   383: invokeinterface 82 2 0
+    //   388: checkcast 84	java/lang/String
+    //   391: aload_0
+    //   392: getfield 66	com/tencent/beacon/a/b/d:q	I
+    //   395: iconst_1
+    //   396: ldc 150
+    //   398: invokestatic 89	com/tencent/beacon/a/a:a	(Ljava/lang/String;III)I
+    //   401: putfield 66	com/tencent/beacon/a/b/d:q	I
+    //   404: aload_0
+    //   405: getfield 37	com/tencent/beacon/a/b/d:c	I
+    //   408: bipush 60
+    //   410: if_icmpeq +14 -> 424
+    //   413: invokestatic 155	com/tencent/beacon/a/b/j:g	()Lcom/tencent/beacon/a/b/j;
+    //   416: invokevirtual 158	com/tencent/beacon/a/b/j:j	()Lcom/tencent/beacon/a/b/f;
+    //   419: invokeinterface 162 1 0
+    //   424: aload_0
+    //   425: getfield 41	com/tencent/beacon/a/b/d:e	I
+    //   428: bipush 60
+    //   430: if_icmpeq +14 -> 444
+    //   433: invokestatic 155	com/tencent/beacon/a/b/j:g	()Lcom/tencent/beacon/a/b/j;
+    //   436: invokevirtual 164	com/tencent/beacon/a/b/j:i	()Lcom/tencent/beacon/a/b/f;
+    //   439: invokeinterface 162 1 0
+    //   444: aload_0
+    //   445: monitorexit
+    //   446: return
+    //   447: astore_1
+    //   448: aload_1
+    //   449: invokestatic 167	com/tencent/beacon/a/g/a:a	(Ljava/lang/Throwable;)V
+    //   452: goto -8 -> 444
+    //   455: astore_1
+    //   456: aload_0
+    //   457: monitorexit
+    //   458: aload_1
+    //   459: athrow
+    //   460: astore_3
+    //   461: goto -104 -> 357
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	90	0	this	d
-    //   0	90	1	paramContext	Context
-    //   48	34	2	l1	long
-    //   36	15	4	l2	long
-    //   8	50	6	arrayOfObject	Object[]
-    //   78	1	7	localException	Exception
+    //   0	464	0	this	d
+    //   0	464	1	paramMap	Map<String, String>
+    //   328	4	2	i1	int
+    //   302	43	3	localObject	Object
+    //   460	1	3	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   38	49	78	java/lang/Exception
-    //   2	10	85	finally
-    //   15	38	85	finally
-    //   38	49	85	finally
-    //   56	67	85	finally
-    //   67	75	85	finally
+    //   6	303	447	java/lang/Exception
+    //   307	329	447	java/lang/Exception
+    //   357	424	447	java/lang/Exception
+    //   424	444	447	java/lang/Exception
+    //   6	303	455	finally
+    //   307	329	455	finally
+    //   334	357	455	finally
+    //   357	424	455	finally
+    //   424	444	455	finally
+    //   448	452	455	finally
+    //   334	357	460	java/lang/Exception
   }
   
-  public final void a(final Context paramContext, String paramString1, final String paramString2)
+  public final void a(Set<String> paramSet)
   {
     try
     {
-      this.m = paramString1;
-      paramContext = new Runnable()
+      this.i = paramSet;
+      return;
+    }
+    finally
+    {
+      paramSet = finally;
+      throw paramSet;
+    }
+  }
+  
+  public final boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    try
+    {
+      if (this.i != null)
       {
-        public final void run()
-        {
-          String str = d.this;
+        bool1 = bool2;
+        if (this.i.size() > 0) {
+          bool1 = this.i.contains(paramString);
+        }
+      }
+      return bool1;
+    }
+    finally {}
+  }
+  
+  public final int b()
+  {
+    try
+    {
+      int i1 = this.b;
+      return i1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void b(Set<String> paramSet)
+  {
+    try
+    {
+      if (this.j == null) {
+        this.j = new HashMap();
+      }
+      paramSet = paramSet.iterator();
+      while (paramSet.hasNext())
+      {
+        String[] arrayOfString = ((String)paramSet.next()).split(",");
+        int i1 = arrayOfString.length;
+        if (i1 == 3) {
           try
           {
-            l1 = f.e(paramString2).getTime() / 1000L;
-            long l2 = l1;
-            if (l1 == 0L) {
-              l2 = new Date().getTime() / 1000L + 86400L;
-            }
-            f.a(paramContext, "sid", new Object[] { str, Long.valueOf(l2) });
-            return;
+            float f1 = Float.valueOf(arrayOfString[1]).floatValue() / Float.valueOf(arrayOfString[2]).floatValue();
+            this.j.put(arrayOfString[0].toLowerCase(), Float.valueOf(f1));
           }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              long l1 = 0L;
-            }
-          }
+          catch (Exception localException) {}
         }
-      };
-      c.a().a(paramContext);
+      }
       return;
     }
-    finally
+    finally {}
+  }
+  
+  public final boolean b(String paramString)
+  {
+    for (;;)
     {
-      paramContext = finally;
-      throw paramContext;
-    }
-  }
-  
-  public final void a(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public final void a(Map<String, String> paramMap)
-  {
-    this.g = paramMap;
-  }
-  
-  /* Error */
-  public final a b(int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 49	com/tencent/beacon/a/b/d:f	Landroid/util/SparseArray;
-    //   6: ifnull +19 -> 25
-    //   9: aload_0
-    //   10: getfield 49	com/tencent/beacon/a/b/d:f	Landroid/util/SparseArray;
-    //   13: iload_1
-    //   14: invokevirtual 143	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   17: checkcast 8	com/tencent/beacon/a/b/d$a
-    //   20: astore_2
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: aload_2
-    //   24: areturn
-    //   25: aconst_null
-    //   26: astore_2
-    //   27: goto -6 -> 21
-    //   30: astore_2
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: aload_2
-    //   34: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	35	0	this	d
-    //   0	35	1	paramInt	int
-    //   20	7	2	locala	a
-    //   30	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	21	30	finally
-  }
-  
-  public final String b()
-  {
-    return this.b;
-  }
-  
-  public final void b(String paramString)
-  {
-    try
-    {
-      this.j = paramString;
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
+      try
+      {
+        boolean bool;
+        if (this.j != null)
+        {
+          Object localObject = this.j.get(paramString);
+          if (localObject != null) {}
+        }
+        else
+        {
+          bool = true;
+          return bool;
+        }
+        int i1 = (int)(((Float)this.j.get(paramString.toLowerCase())).floatValue() * 1000.0F);
+        int i2 = new Random().nextInt(1000);
+        if (i2 + 1 > i1) {
+          bool = false;
+        } else {
+          bool = true;
+        }
+      }
+      finally {}
     }
   }
   
   public final int c()
   {
-    return this.c;
+    try
+    {
+      int i1 = this.c;
+      return i1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public final Map<String, String> d()
+  public final int d()
+  {
+    try
+    {
+      int i1 = this.d;
+      return i1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final int e()
+  {
+    try
+    {
+      int i1 = this.e;
+      return i1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final int f()
+  {
+    try
+    {
+      int i1 = this.f;
+      return i1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final boolean g()
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    try
+    {
+      if (this.n)
+      {
+        Calendar localCalendar = Calendar.getInstance();
+        int i1 = localCalendar.get(11);
+        int i2 = localCalendar.get(12);
+        bool1 = bool2;
+        if (i1 == 0)
+        {
+          bool1 = bool2;
+          if (i2 >= 0)
+          {
+            bool1 = bool2;
+            if (30 >= i2)
+            {
+              i1 = (int)(this.o * 1000.0F);
+              i2 = new Random().nextInt(1000);
+              bool1 = bool2;
+              if (i2 + 1 > i1) {
+                bool1 = false;
+              }
+            }
+          }
+        }
+      }
+      return bool1;
+    }
+    finally {}
+  }
+  
+  public final boolean h()
   {
     return this.g;
   }
   
-  /* Error */
-  public final SparseArray<a> e()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 49	com/tencent/beacon/a/b/d:f	Landroid/util/SparseArray;
-    //   6: ifnull +23 -> 29
-    //   9: new 150	com/tencent/beacon/d/d
-    //   12: dup
-    //   13: invokespecial 151	com/tencent/beacon/d/d:<init>	()V
-    //   16: pop
-    //   17: aload_0
-    //   18: getfield 49	com/tencent/beacon/a/b/d:f	Landroid/util/SparseArray;
-    //   21: invokestatic 154	com/tencent/beacon/d/d:a	(Landroid/util/SparseArray;)Landroid/util/SparseArray;
-    //   24: astore_1
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: aload_1
-    //   28: areturn
-    //   29: aconst_null
-    //   30: astore_1
-    //   31: goto -6 -> 25
-    //   34: astore_1
-    //   35: aload_0
-    //   36: monitorexit
-    //   37: aload_1
-    //   38: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	39	0	this	d
-    //   24	7	1	localSparseArray	SparseArray
-    //   34	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	25	34	finally
-  }
-  
-  public final boolean f()
-  {
-    if (this.g != null)
-    {
-      String str = (String)this.g.get("updateQimei");
-      if ((str != null) && ("n".equalsIgnoreCase(str))) {
-        return false;
-      }
-      if ((str != null) && ("y".equalsIgnoreCase(str))) {
-        return true;
-      }
-    }
-    return true;
-  }
-  
-  public final int g()
-  {
-    if (this.g != null)
-    {
-      String str = (String)this.g.get("maxQIMEIQueryOneDay");
-      if ((str != null) && (!str.trim().equals("")))
-      {
-        int n = this.d;
-        try
-        {
-          int i1 = Integer.valueOf(str).intValue();
-          return i1;
-        }
-        catch (Exception localException)
-        {
-          return n;
-        }
-      }
-    }
-    return this.d;
-  }
-  
-  public final int h()
-  {
-    if (this.g != null)
-    {
-      String str = (String)this.g.get("maxStrategyQueryOneDay");
-      if ((str != null) && (!str.trim().equals("")))
-      {
-        int n = this.e;
-        try
-        {
-          int i1 = Integer.valueOf(str).intValue();
-          return i1;
-        }
-        catch (Exception localException)
-        {
-          return n;
-        }
-      }
-    }
-    return this.e;
-  }
-  
-  /* Error */
   public final boolean i()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 51	com/tencent/beacon/a/b/d:g	Ljava/util/Map;
-    //   6: ifnull +50 -> 56
-    //   9: aload_0
-    //   10: getfield 51	com/tencent/beacon/a/b/d:g	Ljava/util/Map;
-    //   13: ldc 193
-    //   15: invokeinterface 163 2 0
-    //   20: checkcast 115	java/lang/String
-    //   23: astore_3
-    //   24: aload_3
-    //   25: ifnull +31 -> 56
-    //   28: ldc 171
-    //   30: aload_3
-    //   31: invokevirtual 169	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   34: ifeq +22 -> 56
-    //   37: invokestatic 199	java/util/Calendar:getInstance	()Ljava/util/Calendar;
-    //   40: bipush 11
-    //   42: invokevirtual 202	java/util/Calendar:get	(I)I
-    //   45: istore_1
-    //   46: iload_1
-    //   47: ifne +9 -> 56
-    //   50: iconst_1
-    //   51: istore_2
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: iload_2
-    //   55: ireturn
-    //   56: iconst_0
-    //   57: istore_2
-    //   58: goto -6 -> 52
-    //   61: astore_3
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload_3
-    //   65: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	66	0	this	d
-    //   45	2	1	n	int
-    //   51	7	2	bool	boolean
-    //   23	8	3	str	String
-    //   61	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	24	61	finally
-    //   28	46	61	finally
+    return this.k;
   }
   
-  /* Error */
   public final boolean j()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 51	com/tencent/beacon/a/b/d:g	Ljava/util/Map;
-    //   6: ifnull +50 -> 56
-    //   9: aload_0
-    //   10: getfield 51	com/tencent/beacon/a/b/d:g	Ljava/util/Map;
-    //   13: ldc 204
-    //   15: invokeinterface 163 2 0
-    //   20: checkcast 115	java/lang/String
-    //   23: astore_3
-    //   24: aload_3
-    //   25: ifnull +31 -> 56
-    //   28: ldc 171
-    //   30: aload_3
-    //   31: invokevirtual 169	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   34: ifeq +22 -> 56
-    //   37: invokestatic 199	java/util/Calendar:getInstance	()Ljava/util/Calendar;
-    //   40: bipush 11
-    //   42: invokevirtual 202	java/util/Calendar:get	(I)I
-    //   45: istore_1
-    //   46: iload_1
-    //   47: ifne +9 -> 56
-    //   50: iconst_1
-    //   51: istore_2
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: iload_2
-    //   55: ireturn
-    //   56: iconst_0
-    //   57: istore_2
-    //   58: goto -6 -> 52
-    //   61: astore_3
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload_3
-    //   65: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	66	0	this	d
-    //   45	2	1	n	int
-    //   51	7	2	bool	boolean
-    //   23	8	3	str	String
-    //   61	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	24	61	finally
-    //   28	46	61	finally
+    return this.l;
   }
   
-  public final byte k()
+  public final int k()
   {
-    try
-    {
-      byte b1 = this.h;
-      return b1;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.m;
   }
   
-  public final byte l()
+  public final int l()
   {
-    try
-    {
-      byte b1 = this.i;
-      return b1;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.q;
   }
   
-  public final String m()
+  public final boolean m()
   {
-    try
-    {
-      String str = this.j;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final String n()
-  {
-    try
-    {
-      String str = this.k;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final String o()
-  {
-    try
-    {
-      String str = this.l;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final String p()
-  {
-    try
-    {
-      String str = this.m;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static final class a
-  {
-    private final int a;
-    private boolean b = false;
-    private String c = "http://oth.eve.mdt.qq.com:8080/analytics/upload";
-    private String d = "http://jrlt.beacon.qq.com/analytics/upload";
-    private Map<String, String> e = null;
-    private Set<String> f = null;
-    private Set<String> g = null;
-    
-    public a(int paramInt)
-    {
-      this.a = paramInt;
-    }
-    
-    public final void a(String paramString)
-    {
-      this.c = paramString;
-    }
-    
-    public final void a(Map<String, String> paramMap)
-    {
-      this.e = paramMap;
-    }
-    
-    public final void a(Set<String> paramSet)
-    {
-      this.f = paramSet;
-    }
-    
-    public final void a(boolean paramBoolean)
-    {
-      this.b = paramBoolean;
-    }
-    
-    public final boolean a()
-    {
-      return this.b;
-    }
-    
-    public final String b()
-    {
-      if (a.b) {
-        return this.d;
-      }
-      return this.c;
-    }
-    
-    public final void b(Set<String> paramSet)
-    {
-      this.g = paramSet;
-    }
-    
-    public final Map<String, String> c()
-    {
-      return this.e;
-    }
-    
-    public final Set<String> d()
-    {
-      return this.f;
-    }
-    
-    public final int e()
-    {
-      return this.a;
-    }
-    
-    public final Set<String> f()
-    {
-      return this.g;
-    }
+    return this.p;
   }
 }
 

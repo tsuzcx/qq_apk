@@ -1,8 +1,8 @@
 package cooperation.dingdong;
 
-import amku;
-import amkv;
-import amkw;
+import amsg;
+import amsh;
+import amsi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -47,7 +47,7 @@ public class DingdongPluginManager
 {
   public static final long a;
   private int jdField_a_of_type_Int;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new amku(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new amsg(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private final DingdongPluginRemoteCmdHandler jdField_a_of_type_CooperationDingdongDingdongPluginRemoteCmdHandler;
   private ScheduleReminderMgr jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr;
@@ -80,7 +80,7 @@ public class DingdongPluginManager
       localJSONObject.put("actionType", 1);
       if (paramBoolean)
       {
-        localJSONObject.put("actionUin", AppConstants.al);
+        localJSONObject.put("actionUin", AppConstants.am);
         localJSONObject.put("actionUinType", 9999);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localJSONObject);
@@ -110,7 +110,7 @@ public class DingdongPluginManager
   
   public void a(int paramInt1, int paramInt2)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.al, 9999);
+    int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.am, 9999);
     if (paramInt1 == i) {
       if (QLog.isColorLevel()) {
         QLog.i("DingdongPluginManager", 2, "new unreadNum is the same with current unreadNum[" + i + "].");
@@ -119,7 +119,7 @@ public class DingdongPluginManager
     do
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(AppConstants.al, 9999, paramInt1 - i);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(AppConstants.am, 9999, paramInt1 - i);
       a(true);
       this.jdField_a_of_type_Int = paramInt1;
       this.jdField_b_of_type_Int = paramInt2;
@@ -134,8 +134,8 @@ public class DingdongPluginManager
     {
       synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        amkw localamkw = (amkw)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-        if (localamkw == null)
+        amsi localamsi = (amsi)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+        if (localamsi == null)
         {
           if (QLog.isColorLevel()) {
             QLog.i("DingdongPluginManager", 2, "updateSystemCalendarForDel del null data ");
@@ -144,13 +144,13 @@ public class DingdongPluginManager
           DingdongPluginBizObserver.ScheduleMoreSummaryData localScheduleMoreSummaryData = new DingdongPluginBizObserver.ScheduleMoreSummaryData();
           Object localObject2 = new DingdongPluginDataFactory.ScheduleSummaryData();
           localScheduleMoreSummaryData.jdField_a_of_type_Long = paramLong;
-          ((DingdongPluginDataFactory.ScheduleSummaryData)localObject2).id = localamkw.jdField_a_of_type_JavaLangString;
+          ((DingdongPluginDataFactory.ScheduleSummaryData)localObject2).id = localamsi.jdField_a_of_type_JavaLangString;
           localScheduleMoreSummaryData.jdField_a_of_type_CooperationDingdongDingdongPluginDataFactory$ScheduleSummaryData = ((DingdongPluginDataFactory.ScheduleSummaryData)localObject2);
           if (QLog.isColorLevel()) {
             QLog.i("DingdongPluginManager", 2, "updateSystemCalendarForDel type = " + i);
           }
           localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_schedule_del_data", 0);
-          ((SharedPreferences)localObject2).edit().putLong(localamkw.jdField_a_of_type_JavaLangString, localamkw.jdField_b_of_type_Long);
+          ((SharedPreferences)localObject2).edit().putLong(localamsi.jdField_a_of_type_JavaLangString, localamsi.jdField_b_of_type_Long);
           ((SharedPreferences)localObject2).edit().commit();
           DingdongCalendarSyncUtil.a(i, localScheduleMoreSummaryData);
           return;
@@ -311,21 +311,21 @@ public class DingdongPluginManager
   
   public void a(DingdongPluginBizObserver.ScheduleMoreSummaryData paramScheduleMoreSummaryData)
   {
-    amkw localamkw;
+    amsi localamsi;
     if (paramScheduleMoreSummaryData != null)
     {
-      localamkw = (amkw)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramScheduleMoreSummaryData.jdField_a_of_type_Long));
-      if (localamkw != null) {
+      localamsi = (amsi)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramScheduleMoreSummaryData.jdField_a_of_type_Long));
+      if (localamsi != null) {
         break label83;
       }
     }
     label83:
-    for (int i = 0;; i = localamkw.jdField_a_of_type_Int)
+    for (int i = 0;; i = localamsi.jdField_a_of_type_Int)
     {
       if (QLog.isColorLevel()) {
         QLog.i("DingdongPluginManager", 2, "onGetScheduleDetailNotify type = " + i);
       }
-      new amkv(this, i, localamkw).execute(new DingdongPluginBizObserver.ScheduleMoreSummaryData[] { paramScheduleMoreSummaryData });
+      new amsh(this, i, localamsi).execute(new DingdongPluginBizObserver.ScheduleMoreSummaryData[] { paramScheduleMoreSummaryData });
       return;
     }
   }
@@ -366,15 +366,15 @@ public class DingdongPluginManager
     if (QLog.isColorLevel()) {
       QLog.d("DingdongPluginManager", 2, "updateSystemCalendar type = " + i + " summaryData =" + paramMessageForDingdongSchedule);
     }
-    amkw localamkw = new amkw(this, null);
+    amsi localamsi = new amsi(this, null);
     long l = this.jdField_b_of_type_Long;
     this.jdField_b_of_type_Long = (1L + l);
-    localamkw.jdField_a_of_type_Long = l;
-    localamkw.jdField_a_of_type_Int = i;
-    localamkw.jdField_b_of_type_Long = paramLong;
-    localamkw.jdField_a_of_type_JavaLangString = paramMessageForDingdongSchedule.id;
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localamkw.jdField_a_of_type_Long), localamkw);
-    ((DingdongPluginBizHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(75)).a(localamkw.jdField_a_of_type_Long, paramMessageForDingdongSchedule.id);
+    localamsi.jdField_a_of_type_Long = l;
+    localamsi.jdField_a_of_type_Int = i;
+    localamsi.jdField_b_of_type_Long = paramLong;
+    localamsi.jdField_a_of_type_JavaLangString = paramMessageForDingdongSchedule.id;
+    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localamsi.jdField_a_of_type_Long), localamsi);
+    ((DingdongPluginBizHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(75)).a(localamsi.jdField_a_of_type_Long, paramMessageForDingdongSchedule.id);
   }
   
   public void a(ScheduleReminderMgr.onScheduleTipsListener paramonScheduleTipsListener)
@@ -405,7 +405,7 @@ public class DingdongPluginManager
       if (!paramBoolean3) {
         ((DingdongPluginBizHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(75)).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.al, 9999, paramBoolean1, paramBoolean2);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.am, 9999, paramBoolean1, paramBoolean2);
       this.jdField_a_of_type_Int = 0;
     }
   }
@@ -427,15 +427,15 @@ public class DingdongPluginManager
     if (QLog.isColorLevel()) {
       QLog.d("DingdongPluginManager", 2, "updateSystemCalendar type = " + paramInt + " id =" + paramString);
     }
-    amkw localamkw = new amkw(this, null);
+    amsi localamsi = new amsi(this, null);
     long l = this.jdField_b_of_type_Long;
     this.jdField_b_of_type_Long = (1L + l);
-    localamkw.jdField_a_of_type_Long = l;
-    localamkw.jdField_a_of_type_Int = paramInt;
-    localamkw.jdField_b_of_type_Long = paramLong;
-    localamkw.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localamkw.jdField_a_of_type_Long), localamkw);
-    ((DingdongPluginBizHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(75)).a(localamkw.jdField_a_of_type_Long, paramString);
+    localamsi.jdField_a_of_type_Long = l;
+    localamsi.jdField_a_of_type_Int = paramInt;
+    localamsi.jdField_b_of_type_Long = paramLong;
+    localamsi.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localamsi.jdField_a_of_type_Long), localamsi);
+    ((DingdongPluginBizHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(75)).a(localamsi.jdField_a_of_type_Long, paramString);
   }
   
   public void c(String paramString)

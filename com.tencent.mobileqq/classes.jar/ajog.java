@@ -1,19 +1,13 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
-import com.tencent.mobileqq.troop.utils.UploadingTask;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
 public class ajog
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ajog(TroopAvatarManger paramTroopAvatarManger, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, UploadingTask paramUploadingTask, Class paramClass, ArrayList paramArrayList, HashMap paramHashMap) {}
+  public ajog(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void run()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "0", "0", this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsUploadingTask.a(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, str);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

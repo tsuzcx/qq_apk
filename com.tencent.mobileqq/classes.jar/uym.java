@@ -1,32 +1,79 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
-import com.tencent.device.utils.SmartDeviceReport;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.open.base.ToastUtil;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.style.ForegroundColorSpan;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.ActivityChatItemBuilder;
 
-class uym
-  implements DialogInterface.OnClickListener
+public class uym
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  uym(uyk paramuyk) {}
+  public uym(ActivityChatItemBuilder paramActivityChatItemBuilder, TextView paramTextView, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private String a(String paramString)
   {
-    if (!NetworkUtil.g(this.a.a.jdField_a_of_type_AndroidContentContext)) {
-      ToastUtil.a().a(2131427738);
-    }
-    do
+    paramString = paramString.toCharArray();
+    int i = 0;
+    if (i < paramString.length)
     {
-      return;
-      paramDialogInterface = (SmartDeviceProxyMgr)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
-      paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, 1, 0);
-      paramDialogInterface = paramDialogInterface.a(Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-    } while (paramDialogInterface == null);
-    SmartDeviceReport.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), "Usr_AIO_Menu", 5, 0, paramDialogInterface.productId);
+      if (paramString[i] == '　') {
+        paramString[i] = 32;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
+          paramString[i] = ((char)(paramString[i] - 65248));
+        }
+      }
+    }
+    return new String(paramString);
+  }
+  
+  public boolean onPreDraw()
+  {
+    int j = 0;
+    int k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() * 2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
+    String str2 = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemActivityChatItemBuilder.a.getString(2131429685) + ">");
+    String str3 = a(this.jdField_a_of_type_JavaLangString);
+    String str1 = "  " + str2;
+    Object localObject = str3 + str1;
+    if (localTextPaint.measureText((String)localObject + "      ") < k) {}
+    label338:
+    for (;;)
+    {
+      k = ((String)localObject).length();
+      int i = j;
+      if (k > str2.length()) {
+        i = k - str2.length();
+      }
+      localObject = new SpannableString((CharSequence)localObject);
+      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.rgb(26, 144, 240)), i, k, 33);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      return true;
+      String str4 = "..." + str1;
+      int m = str3.length();
+      i = 0;
+      for (;;)
+      {
+        if (i >= m) {
+          break label338;
+        }
+        str1 = str3.substring(0, m - i) + str4;
+        localObject = str1;
+        if (localTextPaint.measureText(str1 + "      ") < k) {
+          break;
+        }
+        i += 1;
+        localObject = str1;
+      }
+    }
   }
 }
 

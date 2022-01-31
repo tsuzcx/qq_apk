@@ -1,16 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class pcg
-  implements View.OnClickListener
+  implements FFmpegExecuteResponseCallback
 {
-  public pcg(PubAccountUIPlugin paramPubAccountUIPlugin) {}
+  pcg(VideoCombineHelper paramVideoCombineHelper) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.b.setClickable(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onStart");
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    b(true);
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b(String paramString)
+  {
+    b(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onFailure" + paramString);
+    }
+  }
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onProgress" + paramString);
+    }
   }
 }
 

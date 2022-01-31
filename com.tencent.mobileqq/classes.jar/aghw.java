@@ -1,32 +1,32 @@
-import com.tencent.mobileqq.binhai.BinHaiMsgDialog;
-import com.tencent.mobileqq.binhai.BinHaiMsgDialog.Listener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aghw
-  implements BinHaiMsgDialog.Listener
+  extends Handler
 {
-  public aghw(ScanTorchActivity paramScanTorchActivity) {}
+  public aghw(ScanOcrView paramScanOcrView) {}
   
-  public void a(BinHaiMsgDialog paramBinHaiMsgDialog)
+  public void handleMessage(Message paramMessage)
   {
-    paramBinHaiMsgDialog.dismiss();
-    ScanTorchActivity.n(this.a);
-  }
-  
-  public void b(BinHaiMsgDialog paramBinHaiMsgDialog)
-  {
-    paramBinHaiMsgDialog.dismiss();
-    ScanTorchActivity.n(this.a);
-  }
-  
-  public void c(BinHaiMsgDialog paramBinHaiMsgDialog)
-  {
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a(paramMessage.arg1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghw
  * JD-Core Version:    0.7.0.1
  */

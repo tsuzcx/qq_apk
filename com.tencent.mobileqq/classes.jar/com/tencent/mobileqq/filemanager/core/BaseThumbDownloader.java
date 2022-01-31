@@ -238,6 +238,14 @@ public class BaseThumbDownloader
         QLog.w("BaseThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] size(wh)[" + paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ":" + paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + "] thumb is Downloading,waiting please!");
         return;
       }
+      paramString = paramSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+      i = paramString.mThumbRetryCount;
+      paramString.mThumbRetryCount = (i + 1);
+      if (i > 10)
+      {
+        QLog.w("BaseThumbDownloader<FileAssistant>", 1, "thumb retry over 10 count, igon!");
+        return;
+      }
       paramSession.jdField_a_of_type_Long = l;
       a(paramSession);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a();

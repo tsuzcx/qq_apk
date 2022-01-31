@@ -1,68 +1,54 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.JobReporter;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
 
-public final class zfw
-  extends Handler
+public class zfw
+  implements View.OnClickListener
 {
-  public zfw(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public zfw(ApolloPanel paramApolloPanel, Bundle paramBundle, ApolloActionData paramApolloActionData) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if ((paramMessage.what == 1) && (paramMessage.obj != null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null))
     {
-      paramMessage = new WeakReference((Thread)paramMessage.obj);
-      JobReporter.access$000().add(paramMessage);
-    }
-    do
-    {
-      int i;
-      do
+      paramView = null;
+      if (this.jdField_a_of_type_AndroidOsBundle != null) {
+        paramView = this.jdField_a_of_type_AndroidOsBundle.getString("activityUrl");
+      }
+      Object localObject = paramView;
+      if (TextUtils.isEmpty(paramView)) {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPanel", 2, new Object[] { "[realshowNewActionFloatView] btn click, activityUrl=", localObject });
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        return;
-        if (paramMessage.what != 2) {
-          break;
-        }
-        JobReporter.access$100();
-        long l = System.currentTimeMillis();
-        if ((l - JobReporter.access$200() > 86400000L) && (JobReporter.access$300() > 0L) && (JobReporter.ramdomReport(10)))
-        {
-          paramMessage = (String)paramMessage.obj;
-          StatisticCollector.a(BaseApplicationImpl.getApplication()).a(paramMessage, "thread_monitor_peak_count", true, JobReporter.access$300(), 1L, null, "", false);
-          if (QLog.isColorLevel()) {
-            QLog.d("JobReporter", 2, "reportThreadPeakCount Yes " + JobReporter.access$300());
-          }
-          JobReporter.access$202(l);
-          SharedPreUtils.b(l);
-          JobReporter.access$302(0L);
-          SharedPreUtils.a(JobReporter.access$300());
-          return;
-        }
-        i = JobReporter.access$400();
-        if (QLog.isColorLevel()) {
-          QLog.d("JobReporter", 2, "saveThreadPeakCount count" + i + " sThreadPeakCount " + JobReporter.access$300());
-        }
-      } while (i <= JobReporter.access$300());
-      JobReporter.access$302(i);
-      SharedPreUtils.a(JobReporter.access$300());
-      return;
-    } while (paramMessage.what == 3);
-    super.handleMessage(paramMessage);
+        paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+        paramView.putExtra("url", (String)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
+      }
+      ApolloPanel.c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zfw
  * JD-Core Version:    0.7.0.1
  */

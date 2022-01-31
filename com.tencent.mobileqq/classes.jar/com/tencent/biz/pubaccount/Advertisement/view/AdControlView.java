@@ -8,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
-import kuw;
-import kux;
+import kxd;
+import kxe;
 
 public class AdControlView
   extends RelativeLayout
@@ -43,16 +43,16 @@ public class AdControlView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(getContext()).inflate(2130969030, this);
-    this.d = findViewById(2131364806);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364807);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131364809);
-    this.c = findViewById(2131364808);
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar = ((AdvertisementSplitedProgressBar)findViewById(2131364810));
-    this.d.setContentDescription(getResources().getString(2131435991));
-    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131436801));
-    this.jdField_b_of_type_AndroidViewView.setContentDescription(getResources().getString(2131437778));
-    this.c.setContentDescription(getResources().getString(2131437778));
+    LayoutInflater.from(getContext()).inflate(2130969033, this);
+    this.d = findViewById(2131364833);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364834);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131364836);
+    this.c = findViewById(2131364835);
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar = ((AdvertisementSplitedProgressBar)findViewById(2131364837));
+    this.d.setContentDescription(getResources().getString(2131436009));
+    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131436821));
+    this.jdField_b_of_type_AndroidViewView.setContentDescription(getResources().getString(2131437798));
+    this.c.setContentDescription(getResources().getString(2131437798));
   }
   
   private void d()
@@ -60,8 +60,8 @@ public class AdControlView
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F, 1.0F }).setDuration(1000L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(3);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new kuw(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new kux(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new kxd(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new kxe(this));
   }
   
   public View a()
@@ -78,7 +78,7 @@ public class AdControlView
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839660);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839675);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     this.jdField_a_of_type_Boolean = true;
   }

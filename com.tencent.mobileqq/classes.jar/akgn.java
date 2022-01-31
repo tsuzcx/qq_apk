@@ -1,18 +1,22 @@
-import android.graphics.Point;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.EditText;
 
 public final class akgn
-  implements akgp
+  extends View.AccessibilityDelegate
 {
-  public Point a(float paramFloat, Point paramPoint1, Point paramPoint2)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    float f1 = paramPoint1.x;
-    float f2 = paramPoint1.y;
-    return new Point((int)(f1 + (paramPoint2.x - f1) * paramFloat), (int)(f2 + (paramPoint2.y - f2) * paramFloat));
+    EditText localEditText = (EditText)paramView;
+    localEditText.setHint("");
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    paramAccessibilityNodeInfo.setContentDescription(localEditText.getContentDescription());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.emoticon;
 
-import acde;
-import acdf;
-import acdg;
+import aclf;
+import aclg;
+import aclh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -544,7 +544,7 @@ public class EmojiStickerManager
     try
     {
       if (Utils.a()) {
-        return AppConstants.aJ + File.separator + ".emojiSticker_v2.1" + File.separator;
+        return AppConstants.aK + File.separator + ".emojiSticker_v2.1" + File.separator;
       }
       String str = BaseApplicationImpl.getApplication().getDir(".emojiSticker_v2.1", 0).getAbsoluteFile() + File.separator;
       return str;
@@ -584,12 +584,12 @@ public class EmojiStickerManager
   
   public static void a()
   {
-    ThreadManager.post(new acdf(), 5, null, false);
+    ThreadManager.post(new aclg(), 5, null, false);
   }
   
   public static void a(Context paramContext, QQAppInterface paramQQAppInterface, URLDrawable paramURLDrawable, String paramString, PicMessageExtraData paramPicMessageExtraData, MessengerService paramMessengerService, Bundle paramBundle)
   {
-    new acdg(paramBundle, paramMessengerService, paramURLDrawable, paramQQAppInterface, paramPicMessageExtraData).execute(new Void[0]);
+    new aclh(paramBundle, paramMessengerService, paramURLDrawable, paramQQAppInterface, paramPicMessageExtraData).execute(new Void[0]);
   }
   
   private void a(BaseChatPie paramBaseChatPie, List paramList, long paramLong)
@@ -820,7 +820,7 @@ public class EmojiStickerManager
         break label827;
       }
       localObject3 = new MessageForUniteGrayTip();
-      localObject4 = BaseApplicationImpl.getApplication().getString(2131438847);
+      localObject4 = BaseApplicationImpl.getApplication().getString(2131438871);
       ((MessageForUniteGrayTip)localObject3).initGrayTipMsg(paramQQAppInterface, new UniteGrayTipParam(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).senderuin, (String)localObject4, this.jdField_a_of_type_Int, -5040, 1, localStickerInfo.hostMsgTime));
       ((MessageForUniteGrayTip)localObject3).shmsgseq = ((Long)localPair.first).longValue();
       ((MessageForUniteGrayTip)localObject3).msgUid = ((Long)localPair.second).longValue();
@@ -1196,7 +1196,7 @@ public class EmojiStickerManager
       ((CustomEmotionData)localObject).eId = paramPicMessageExtraData.emojiPkgId;
     }
     localFavroamingDBManager.c((CustomEmotionData)localObject);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(AppConstants.bt))) {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(AppConstants.bu))) {
       ReportController.b(null, "CliOper", "", "", "ep_mall", "0X800695C", 0, 0, "", "", "", "");
     }
     a(paramQQAppInterface, paramStructMsgForImageShare, (CustomEmotionData)localObject);
@@ -1357,7 +1357,7 @@ public class EmojiStickerManager
       if (m != 0)
       {
         localObject4 = new MessageForUniteGrayTip();
-        localObject5 = BaseApplicationImpl.getApplication().getString(2131438847);
+        localObject5 = BaseApplicationImpl.getApplication().getString(2131438871);
         ((MessageForUniteGrayTip)localObject4).initGrayTipMsg(paramQQAppInterface, new UniteGrayTipParam(((MessageRecord)localObject3).frienduin, ((MessageRecord)localObject3).senderuin, (String)localObject5, this.jdField_a_of_type_Int, -5040, 1, ((MessageRecord)localObject3).time));
         ((MessageForUniteGrayTip)localObject4).shmsgseq = ((Long)localPair1.first).longValue();
         ((MessageForUniteGrayTip)localObject4).msgUid = ((Long)localPair1.second).longValue();
@@ -1627,7 +1627,7 @@ public class EmojiStickerManager
   public Drawable a(Context paramContext)
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      return paramContext.getResources().getDrawable(2130838902);
+      return paramContext.getResources().getDrawable(2130838911);
     }
     return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
@@ -1871,7 +1871,7 @@ public class EmojiStickerManager
     l = -1;
     jdField_a_of_type_AndroidViewView = null;
     List localList = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt).e(paramString, paramInt);
-    ThreadManager.post(new acde(this, localList, paramString, paramInt, paramBoolean), 5, null, false);
+    ThreadManager.post(new aclf(this, localList, paramString, paramInt, paramBoolean), 5, null, false);
     if (paramBaseChatPie.jdField_c_of_type_AndroidViewViewGroup != null)
     {
       paramString = (TopGestureLayout)paramBaseChatPie.jdField_c_of_type_AndroidViewViewGroup;

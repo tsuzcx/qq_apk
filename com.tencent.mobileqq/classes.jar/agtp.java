@@ -1,38 +1,37 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.ptt.player.AmrPlayer;
-import com.tencent.mobileqq.ptt.player.IPttPlayerListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
+import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.OnUseResListener;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class agtp
-  extends Thread
+class agtp
+  implements Runnable
 {
-  private agtp(AmrPlayer paramAmrPlayer) {}
+  agtp(agto paramagto, String paramString) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AmrPlayer", 2, "playAmr " + AmrPlayer.a(this.a));
-    }
-    try
-    {
-      AmrPlayer.a(this.a).b();
-      AmrPlayer.a(this.a).start();
-      if (AmrPlayer.a(this.a, AmrPlayer.a(this.a) - 1000) > 0) {
-        AmrPlayer.a(this.a).seekTo(AmrPlayer.a(this.a));
-      }
+    if (this.jdField_a_of_type_Agto.jdField_a_of_type_Agtj.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
       return;
     }
-    catch (Exception localException)
+    this.jdField_a_of_type_Agto.jdField_a_of_type_Agtj.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(false);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      while (AmrPlayer.a(this.a) == null) {}
-      AmrPlayer.a(this.a).sendEmptyMessage(1);
+      QRUtils.a(1, 2131430006);
+      return;
     }
+    if (this.jdField_a_of_type_Agto.jdField_a_of_type_Long == 2L)
+    {
+      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agto.jdField_a_of_type_Agtj.a.jdField_a_of_type_AndroidGraphicsBitmap, 0);
+      return;
+    }
+    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agto.jdField_a_of_type_Agtj.a.jdField_a_of_type_AndroidGraphicsBitmap, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agtp
  * JD-Core Version:    0.7.0.1
  */

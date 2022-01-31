@@ -21,8 +21,8 @@ import java.util.List;
 import mqq.os.MqqHandler;
 import tencent.im.oidb.cmd0x857.TroopTips0x857.GoldMsgTipsElem;
 import tencent.im.oidb.cmd0x858.oidb_0x858.GoldMsgTipsElem;
-import xer;
-import xes;
+import xkl;
+import xkm;
 
 public class GoldMsgDbManager
 {
@@ -46,29 +46,34 @@ public class GoldMsgDbManager
   
   public static GoldMsgDBHelper.GoldMsgNotifyRecord a(MessageRecord paramMessageRecord)
   {
-    String str;
     if (paramMessageRecord != null)
     {
-      str = paramMessageRecord.getExtInfoFromExtStr("goldmsg_order_id");
-      if (!TextUtils.isEmpty(str)) {
+      ??? = paramMessageRecord.getExtInfoFromExtStr("goldmsg_order_id");
+      if (!TextUtils.isEmpty((CharSequence)???)) {
         break label25;
       }
     }
-    label25:
-    do
+    for (;;)
     {
       return null;
-      str = null;
+      ??? = null;
       break;
+      label25:
       if (jdField_a_of_type_Int == 2) {
-        return (GoldMsgDBHelper.GoldMsgNotifyRecord)jdField_a_of_type_JavaUtilHashMap.get(str);
+        return (GoldMsgDBHelper.GoldMsgNotifyRecord)jdField_a_of_type_JavaUtilHashMap.get(???);
       }
-      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramMessageRecord)) {
-        jdField_a_of_type_JavaUtilArrayList.add(paramMessageRecord);
+      synchronized (jdField_a_of_type_JavaUtilArrayList)
+      {
+        if (!jdField_a_of_type_JavaUtilArrayList.contains(paramMessageRecord)) {
+          jdField_a_of_type_JavaUtilArrayList.add(paramMessageRecord);
+        }
+        if (jdField_a_of_type_Int != 0) {
+          continue;
+        }
+        a();
+        return null;
       }
-    } while (jdField_a_of_type_Int != 0);
-    a();
-    return null;
+    }
   }
   
   protected static GoldMsgDBHelper.GoldMsgNotifyRecord a(String paramString, List paramList)
@@ -102,7 +107,7 @@ public class GoldMsgDbManager
   protected static void a()
   {
     jdField_a_of_type_Int = 1;
-    ThreadManager.post(new xer(), 10, null, false);
+    ThreadManager.excute(new xkl(), 32, null, false);
   }
   
   public static void a(int paramInt, String paramString, TroopTips0x857.GoldMsgTipsElem paramGoldMsgTipsElem, oidb_0x858.GoldMsgTipsElem paramGoldMsgTipsElem1)
@@ -156,7 +161,7 @@ public class GoldMsgDbManager
       i3 = n;
       i2 = i1;
       if (!paramGoldMsgTipsElem1.uin.has()) {
-        break label899;
+        break label906;
       }
       localObject = paramGoldMsgTipsElem1.uin.get();
       paramGoldMsgTipsElem1 = paramGoldMsgTipsElem;
@@ -166,7 +171,7 @@ public class GoldMsgDbManager
     {
       if ((k != 1) && (k != 2)) {}
       label257:
-      label814:
+      label821:
       do
       {
         do
@@ -211,7 +216,7 @@ public class GoldMsgDbManager
             i3 = n;
             i2 = i1;
             if (!paramGoldMsgTipsElem.uin.has()) {
-              break label899;
+              break label906;
             }
             paramGoldMsgTipsElem = paramGoldMsgTipsElem.uin.get();
             i2 = i;
@@ -242,12 +247,12 @@ public class GoldMsgDbManager
               paramInt += 1;
             }
           }
-          localBundle.putStringArrayList("uins", paramString);
+          localBundle.putStringArrayList("uins", new ArrayList(paramString));
           if (QLog.isColorLevel()) {
             QLog.i(jdField_a_of_type_JavaLangString, 2, "onReceiveGroupSysNotify type:" + k + " billno:" + paramGoldMsgTipsElem1 + " result:" + i + " finishState:" + i1 + " amount:" + j + " total:" + m + " interval:" + n + " gLoadDbState:" + jdField_a_of_type_Int + " uins:" + paramString.toString());
           }
           if (k != 1) {
-            break label814;
+            break label821;
           }
         } while (i != 1);
         QWalletSetting.a(((QQAppInterface)localObject).getCurrentAccountUin(), "goldmsg_has_right", false);
@@ -281,7 +286,7 @@ public class GoldMsgDbManager
       }
       ((QQAppInterface)localObject).notifyObservers(GoldConfigObserver.class, 12, true, localBundle);
       return;
-      label899:
+      label906:
       k = i7;
       paramGoldMsgTipsElem = null;
       paramGoldMsgTipsElem1 = (oidb_0x858.GoldMsgTipsElem)localObject;
@@ -318,47 +323,50 @@ public class GoldMsgDbManager
   {
     int i = 0;
     if (TextUtils.isEmpty(paramString)) {}
-    GoldMsgDBHelper.GoldMsgNotifyRecord localGoldMsgNotifyRecord;
     for (;;)
     {
       return;
-      localGoldMsgNotifyRecord = (GoldMsgDBHelper.GoldMsgNotifyRecord)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localGoldMsgNotifyRecord != null) {
-        break;
-      }
-      if (paramArrayList != null) {
-        i = paramArrayList.size();
-      }
-      paramArrayList = new GoldMsgDBHelper.GoldMsgNotifyRecord(paramString, paramInt1, paramArrayList, paramInt2, paramInt3, i);
-      if (jdField_a_of_type_Int == 2)
+      ??? = (GoldMsgDBHelper.GoldMsgNotifyRecord)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (??? == null)
       {
-        jdField_a_of_type_JavaUtilHashMap.put(paramArrayList.jdField_a_of_type_JavaLangString, paramArrayList);
-        paramString = new ArrayList();
-        paramString.add(paramArrayList);
-        a(paramString, true);
-        return;
-      }
-      paramString = a(paramString, b);
-      if (paramString == null) {
-        b.add(paramArrayList);
-      }
-      while (jdField_a_of_type_Int == 0)
-      {
-        a();
-        return;
-        paramString.a(paramArrayList.jdField_a_of_type_JavaUtilArrayList);
-        paramString.c = paramInt3;
-        if (paramArrayList.jdField_a_of_type_Int == 1) {
-          paramString.jdField_a_of_type_Int = 1;
+        if (paramArrayList != null) {
+          i = paramArrayList.size();
         }
-        if (paramArrayList.b == 1) {
+        paramArrayList = new GoldMsgDBHelper.GoldMsgNotifyRecord(paramString, paramInt1, paramArrayList, paramInt2, paramInt3, i);
+        if (jdField_a_of_type_Int == 2)
+        {
+          jdField_a_of_type_JavaUtilHashMap.put(paramArrayList.jdField_a_of_type_JavaLangString, paramArrayList);
+          paramString = new ArrayList();
+          paramString.add(paramArrayList);
+          a(paramString, true);
+          return;
+        }
+        synchronized (b)
+        {
+          paramString = a(paramString, b);
+          if (paramString == null) {
+            b.add(paramArrayList);
+          }
+          do
+          {
+            if (jdField_a_of_type_Int != 0) {
+              break;
+            }
+            a();
+            return;
+            paramString.a(paramArrayList.jdField_a_of_type_JavaUtilArrayList);
+            paramString.c = paramInt3;
+            if (paramArrayList.jdField_a_of_type_Int == 1) {
+              paramString.jdField_a_of_type_Int = 1;
+            }
+          } while (paramArrayList.b != 1);
           paramString.b = 1;
         }
       }
     }
-    i = localGoldMsgNotifyRecord.a(paramArrayList);
+    i = ((GoldMsgDBHelper.GoldMsgNotifyRecord)???).a(paramArrayList);
     if (i > 0) {
-      localGoldMsgNotifyRecord.d = (i + localGoldMsgNotifyRecord.d);
+      ((GoldMsgDBHelper.GoldMsgNotifyRecord)???).d = (i + ((GoldMsgDBHelper.GoldMsgNotifyRecord)???).d);
     }
     for (int j = 1;; j = 0)
     {
@@ -366,9 +374,9 @@ public class GoldMsgDbManager
       if (paramInt1 == 1)
       {
         i = j;
-        if (localGoldMsgNotifyRecord.jdField_a_of_type_Int != paramInt1)
+        if (((GoldMsgDBHelper.GoldMsgNotifyRecord)???).jdField_a_of_type_Int != paramInt1)
         {
-          localGoldMsgNotifyRecord.jdField_a_of_type_Int = paramInt1;
+          ((GoldMsgDBHelper.GoldMsgNotifyRecord)???).jdField_a_of_type_Int = paramInt1;
           i = 1;
         }
       }
@@ -376,10 +384,10 @@ public class GoldMsgDbManager
       if (paramInt2 == 1)
       {
         paramInt1 = i;
-        if (localGoldMsgNotifyRecord.b != paramInt2)
+        if (((GoldMsgDBHelper.GoldMsgNotifyRecord)???).b != paramInt2)
         {
-          localGoldMsgNotifyRecord.b = paramInt2;
-          localGoldMsgNotifyRecord.c = paramInt3;
+          ((GoldMsgDBHelper.GoldMsgNotifyRecord)???).b = paramInt2;
+          ((GoldMsgDBHelper.GoldMsgNotifyRecord)???).c = paramInt3;
           paramInt1 = 1;
         }
       }
@@ -387,7 +395,7 @@ public class GoldMsgDbManager
         break;
       }
       paramString = new ArrayList();
-      paramString.add(localGoldMsgNotifyRecord);
+      paramString.add(???);
       a(paramString, false);
       return;
     }
@@ -395,7 +403,7 @@ public class GoldMsgDbManager
   
   public static void a(ArrayList paramArrayList, boolean paramBoolean)
   {
-    ThreadManager.post(new xes(paramBoolean, paramArrayList), 5, null, false);
+    ThreadManager.post(new xkm(paramBoolean, paramArrayList), 5, null, false);
   }
   
   public static void b()

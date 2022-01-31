@@ -3,9 +3,9 @@ package dov.com.tencent.mobileqq.shortvideo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aoog;
-import aopo;
-import aopp;
+import aowy;
+import aoya;
+import aoyb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
@@ -205,7 +205,7 @@ public class PendantVersionManager
   
   private static void a()
   {
-    ThreadManager.post(new aoog(), 5, null, false);
+    ThreadManager.post(new aowy(), 5, null, false);
   }
   
   public static void a(boolean paramBoolean) {}
@@ -214,7 +214,7 @@ public class PendantVersionManager
   {
     String str = paramString.trim();
     VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK signature=" + paramString, null);
-    paramString = aopo.a(str);
+    paramString = aoya.a(str);
     int i = paramString.a();
     VideoEnvironment.a("PendantVersionManager", "checkSignatureVersionIsOK errCode=" + i + ",trimSignature=" + str, null);
     if (i == 0)
@@ -471,19 +471,19 @@ public class PendantVersionManager
           str = ((String)paramString2.get(i)).trim();
         } while (TextUtils.isEmpty(str));
         VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK trimValue=" + str, null);
-        localObject = aopo.a(str);
-        j = ((aopp)localObject).a('|');
+        localObject = aoya.a(str);
+        j = ((aoyb)localObject).a('|');
         if (j != 0) {
           break label405;
         }
-        str = paramString1 + ((aopp)localObject).b();
+        str = paramString1 + ((aoyb)localObject).b();
         File localFile = new File(str);
         if (!localFile.exists())
         {
           VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK[exists=false] fileName=" + str, null);
           return false;
         }
-        j = Integer.parseInt(((aopp)localObject).c());
+        j = Integer.parseInt(((aoyb)localObject).c());
         l = localFile.length();
       } while (j == l);
       VideoEnvironment.a("PendantVersionManager", "checkUnzipFileListSizeIsOK sizeConfig=" + j + ",fileSize=" + l, null);

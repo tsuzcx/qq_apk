@@ -1,7 +1,7 @@
 package com.tencent.open.agent;
 
-import albx;
-import albz;
+import aljp;
+import aljr;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,9 +36,9 @@ public class FriendChooser$GridViewAdapter
     Friend localFriend = (Friend)getItem(paramInt);
     if (paramView == null)
     {
-      paramViewGroup = new albz();
-      paramView = this.a.getLayoutInflater().inflate(2130969033, null);
-      paramViewGroup.a = ((ImageView)paramView.findViewById(2131362739));
+      paramViewGroup = new aljr();
+      paramView = this.a.getLayoutInflater().inflate(2130969036, null);
+      paramViewGroup.a = ((ImageView)paramView.findViewById(2131362744));
       paramView.setTag(paramViewGroup);
     }
     Bitmap localBitmap;
@@ -51,11 +51,11 @@ public class FriendChooser$GridViewAdapter
       if (localBitmap != null) {
         break;
       }
-      paramViewGroup.a.setImageResource(2130839132);
+      paramViewGroup.a.setImageResource(2130839147);
       paramViewGroup = paramViewGroup.a;
-      ImageLoader.a().a(localFriend.d, new albx(this, paramViewGroup));
+      ImageLoader.a().a(localFriend.d, new aljp(this, paramViewGroup));
       return paramView;
-      paramViewGroup = (albz)paramView.getTag();
+      paramViewGroup = (aljr)paramView.getTag();
     }
     paramViewGroup.a.setImageBitmap(localBitmap);
     return paramView;

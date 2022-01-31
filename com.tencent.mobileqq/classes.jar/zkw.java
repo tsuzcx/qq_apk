@@ -1,19 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.contact.OnlineStatusIconHelper;
+import com.tencent.mobileqq.app.FriendListHandler;
 
 public class zkw
   implements Runnable
 {
-  public zkw(QQAppInterface paramQQAppInterface) {}
+  public zkw(FriendListHandler paramFriendListHandler) {}
   
   public void run()
   {
-    try
-    {
-      QQAppInterface.k(this.a).unregisterReceiver(QQAppInterface.a(this.a));
-      return;
-    }
-    catch (Exception localException) {}
+    OnlineStatusIconHelper.a();
+    this.a.d();
   }
 }
 

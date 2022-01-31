@@ -20,6 +20,19 @@ public class UiThreadUtil
     finally {}
   }
   
+  public static void a(Runnable paramRunnable, long paramLong)
+  {
+    try
+    {
+      if (a == null) {
+        a = new Handler(Looper.getMainLooper());
+      }
+      a.postDelayed(paramRunnable, paramLong);
+      return;
+    }
+    finally {}
+  }
+  
   public static boolean a()
   {
     return Looper.getMainLooper().getThread() == Thread.currentThread();

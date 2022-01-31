@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.richmedia.dc.DataAdapter;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
 
-public abstract class ahnt
-  extends DataAdapter
+public class ahnt
+  implements ProviderContainerView.ContainerViewListener
 {
-  public int b = -1;
-  public int c;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
-  public int g = -1;
-  public int h = -1;
+  public ahnt(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  
+  public void a(View paramView, int paramInt)
+  {
+    EffectsCameraCaptureFragment.a(this.a).setState(1);
+  }
+  
+  public void y_()
+  {
+    EffectsCameraCaptureFragment.a(this.a).setState(2);
+  }
 }
 
 

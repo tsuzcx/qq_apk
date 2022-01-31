@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import adis;
+import adqz;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,9 +51,9 @@ public class HorizontalListViewAdapter
     if (paramView == null)
     {
       paramViewGroup = new HorizontalListViewAdapter.HlistViewHolder();
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970008, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368760));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368761));
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970019, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368763));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368764));
       paramView.setTag(paramViewGroup);
       if (paramInt != this.jdField_a_of_type_Int) {
         break label147;
@@ -65,7 +65,7 @@ public class HorizontalListViewAdapter
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((HorizontalListViewAdapter.MenuData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(FileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext, ((HorizontalListViewAdapter.MenuData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int));
       paramView.setTag(paramViewGroup);
-      paramView.setOnClickListener(new adis(this, paramInt));
+      paramView.setOnClickListener(new adqz(this, paramInt));
       return paramView;
       paramViewGroup = (HorizontalListViewAdapter.HlistViewHolder)paramView.getTag();
       break;

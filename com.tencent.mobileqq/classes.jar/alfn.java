@@ -1,54 +1,35 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.base.http.HttpCacheData;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
-public final class alfn
-  implements DbCacheData.DbCreator
+class alfn
+  implements Runnable
 {
-  public int a()
-  {
-    return 1;
-  }
+  alfn(alfm paramalfm, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3) {}
   
-  public HttpCacheData a(Cursor paramCursor)
+  public void run()
   {
-    try
-    {
-      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
-      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
-      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
-      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
-      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
-      paramCursor = Parcel.obtain();
-      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-      paramCursor.setDataPosition(0);
-      localObject = paramCursor.readString();
-      paramCursor.recycle();
-      paramCursor = new HttpCacheData(str1, str2, l1, l2, (String)localObject);
-      return paramCursor;
+    Object localObject = new StateListDrawable();
+    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    ((StateListDrawable)localObject).addState(new int[] { 16842919 }, localBitmapDrawable);
+    localBitmapDrawable = new BitmapDrawable(this.b);
+    ((StateListDrawable)localObject).addState(new int[0], localBitmapDrawable);
+    if (ARWorldCupGameLogicManager.a(this.jdField_a_of_type_Alfm.a) != null) {
+      ARWorldCupGameLogicManager.a(this.jdField_a_of_type_Alfm.a).setBackgroundDrawable((Drawable)localObject);
     }
-    catch (Exception paramCursor)
-    {
-      paramCursor.printStackTrace();
+    localObject = new BitmapDrawable(this.c);
+    if (ARWorldCupGameLogicManager.a(this.jdField_a_of_type_Alfm.a) != null) {
+      ARWorldCupGameLogicManager.a(this.jdField_a_of_type_Alfm.a).setBackgroundDrawable((Drawable)localObject);
     }
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] a()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("urlKey", "TEXT"), new DbCacheData.Structure("ETag", "TEXT"), new DbCacheData.Structure("lastModify", "INTEGER"), new DbCacheData.Structure("cacheTime", "INTEGER"), new DbCacheData.Structure("response", "BLOB") };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alfn
  * JD-Core Version:    0.7.0.1
  */

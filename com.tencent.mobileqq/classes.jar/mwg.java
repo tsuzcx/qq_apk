@@ -1,24 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
 
 class mwg
-  implements HttpWebCgiAsyncTask.Callback
+  implements Runnable
 {
-  mwg(mwf parammwf) {}
+  mwg(mwc parammwc) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void run()
   {
-    if (paramJSONObject != null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
-      }
+    if (this.a.a.a != null) {
+      this.a.a.a.h();
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
   }
 }
 

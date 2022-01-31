@@ -1,21 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
+import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
+import java.util.ArrayList;
 
 public class lwn
-  implements Animation.AnimationListener
+  implements KandianPopupWindow.OnUninterestConfirmListener
 {
-  public lwn(ComponentSocialOperation paramComponentSocialOperation) {}
+  public lwn(FeedItemCell paramFeedItemCell) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
   {
-    this.a.a.post(new lwo(this));
+    FeedItemCell.a(this.a, (IReadInJoyModel)this.a.a, paramInt, paramArrayList, paramObject);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

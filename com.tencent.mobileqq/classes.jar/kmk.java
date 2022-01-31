@@ -1,21 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class kmk
-  extends Handler
+  extends MessageObserver
 {
-  public kmk(SensorAPIJavaScript paramSensorAPIJavaScript) {}
+  public kmk(TroopRedTouchHandler paramTroopRedTouchHandler) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramMessage.what == 5) {
-      this.a.a((String)paramMessage.obj);
+    if (105 == paramInt)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "mGetRedPointPushObserver");
+      }
+      this.a.a(105, true, paramObject);
     }
-    while (paramMessage.what != 291) {
-      return;
-    }
-    this.a.updateMicStatus((String)paramMessage.obj);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.werewolves;
 
-import aksj;
+import alaa;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class WerewolvesPluginManager
   implements FaceDecoder.DecodeTaskCompletionListener
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new aksj(this, Looper.getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new alaa(this, Looper.getMainLooper());
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   ViewPluginLoader jdField_a_of_type_ComTencentBizViewpluginViewPluginLoader = (ViewPluginLoader)ViewPluginLoader.jdField_a_of_type_JavaUtilHashMap.get("Werewolves.apk");
   GameRoomChatPie jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie;
@@ -155,7 +155,7 @@ public class WerewolvesPluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesPluginManager
  * JD-Core Version:    0.7.0.1
  */

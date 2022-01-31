@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-class sgo
-  implements Runnable
+public class sgo
+  implements IIconListener
 {
-  sgo(sgn paramsgn, boolean paramBoolean) {}
+  public sgo(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Sgn.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(this.jdField_a_of_type_Sgn.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Sgn.jdField_a_of_type_Boolean);
+    if ((this.a.f != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      ChatSettingActivity.a(this.a, this.a.a, this.a.f);
+    }
   }
 }
 

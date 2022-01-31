@@ -1,46 +1,13 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
 
-class yco
+public class yco
   implements Runnable
 {
-  yco(ycn paramycn, List paramList) {}
+  public yco(RDBaseDataManager paramRDBaseDataManager, ycf paramycf, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    int i = 0;
-    try
-    {
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("onUpdateTroopGetMemberList:");
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          break label159;
-        }
-      }
-      for (;;)
-      {
-        QLog.d("TroopMemberListInnerFrame", 2, i);
-        this.jdField_a_of_type_Ycn.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.jdField_a_of_type_Ycn.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("key_last_update_time" + this.jdField_a_of_type_Ycn.a.b, System.currentTimeMillis()).commit();
-        TroopMemberListInnerFrame.a(this.jdField_a_of_type_Ycn.a, this.jdField_a_of_type_Ycn.a.b, this.jdField_a_of_type_JavaUtilList);
-        return;
-        label159:
-        i = this.jdField_a_of_type_JavaUtilList.size();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopMemberListInnerFrame", 2, "onUpdateTroopGetMemberList:" + localException.toString());
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesRDBaseDataManager.c(this.jdField_a_of_type_Ycf.a, (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b));
   }
 }
 

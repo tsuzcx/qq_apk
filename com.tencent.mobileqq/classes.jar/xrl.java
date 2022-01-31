@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.recent.RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder;
 
 public class xrl
-  implements Runnable
+  extends RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder
 {
-  public xrl(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void run()
-  {
-    this.a.M();
-  }
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

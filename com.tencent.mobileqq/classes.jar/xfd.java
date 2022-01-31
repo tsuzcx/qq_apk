@@ -1,24 +1,36 @@
+import Wallet.GoldMsgGetReq;
+import Wallet.GoldMsgGetRsp;
+import Wallet.GoldMsgSetReq;
+import Wallet.GoldMsgSetRsp;
+import android.content.Context;
 import android.content.Intent;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
 
-class xfd
-  extends ClickableSpan
+public abstract class xfd
 {
-  xfd(xfb paramxfb, String paramString) {}
+  final int jdField_a_of_type_Int;
+  Context jdField_a_of_type_AndroidContentContext;
+  final String c;
+  final String d;
+  final String e;
   
-  public void onClick(View paramView)
+  xfd(GoldMsgSettingActivity paramGoldMsgSettingActivity, Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    if (BaseActivity.sTopActivity == null) {
-      return;
-    }
-    paramView = new Intent(BaseActivity.sTopActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-    BaseActivity.sTopActivity.startActivityForResult(paramView, -1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public abstract void a(View paramView);
+  
+  void a(boolean paramBoolean, GoldMsgGetReq paramGoldMsgGetReq, GoldMsgGetRsp paramGoldMsgGetRsp) {}
+  
+  void a(boolean paramBoolean, GoldMsgSetReq paramGoldMsgSetReq, GoldMsgSetRsp paramGoldMsgSetRsp) {}
+  
+  abstract boolean a();
 }
 
 

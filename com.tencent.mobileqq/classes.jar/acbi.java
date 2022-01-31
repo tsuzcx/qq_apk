@@ -1,61 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.mobileqq.data.qzone.FeedInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
 
-class acbi
+public class acbi
   implements Runnable
 {
-  acbi(acbg paramacbg, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface, int paramInt, Bundle paramBundle) {}
+  public acbi(FeedsManager paramFeedsManager) {}
   
   public void run()
   {
-    Object localObject2 = LebaShowListManager.a().a();
-    Object localObject1;
-    if (localObject2 != null)
-    {
-      localObject1 = localObject2;
-      if (!((List)localObject2).isEmpty()) {}
+    long l = NetConnInfoCenter.getServerTime();
+    int i = FeedsManager.access$000(this.a).a(new FeedInfo().getTableName(), "feedTime<?", new String[] { String.valueOf(l - 604800L) });
+    if (QLog.isColorLevel()) {
+      QLog.i("FeedsManager", 2, String.format("删除 %d 条 7天前的feeds记录", new Object[] { Integer.valueOf(i) }));
     }
-    else
+    Object localObject = (ArrayList)FeedsManager.access$000(this.a).a(FeedInfo.class);
+    if (localObject != null)
     {
-      LebaShowListManager.a().a(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      localObject1 = LebaShowListManager.a().a();
-    }
-    if (localObject1 != null)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      do
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        localObject2 = (LebaViewItem)((Iterator)localObject1).next();
-      } while ((localObject2 == null) || (((LebaViewItem)localObject2).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo == null) || (((LebaViewItem)localObject2).jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId != this.jdField_a_of_type_Int));
-    }
-    for (int i = ((LebaViewItem)localObject2).jdField_a_of_type_Byte;; i = -1)
-    {
-      localObject1 = new Bundle();
-      if (i == -1)
-      {
-        ((Bundle)localObject1).putInt("ret", 1);
-        if (i != 0) {
-          break label171;
-        }
-      }
-      label171:
-      for (i = 1;; i = 0)
-      {
-        ((Bundle)localObject1).putInt("type", i);
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-        return;
-        ((Bundle)localObject1).putInt("ret", 0);
-        break;
+        FeedInfo localFeedInfo = (FeedInfo)((Iterator)localObject).next();
+        this.a.feedInfoCache.put(String.valueOf(localFeedInfo.ownerUin), localFeedInfo);
       }
     }
   }

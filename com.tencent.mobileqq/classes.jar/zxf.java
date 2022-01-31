@@ -1,19 +1,7 @@
-import com.tencent.mobileqq.ar.ARGlobalConfigManager;
-
-public class zxf
-  implements Runnable
-{
-  public zxf(ARGlobalConfigManager paramARGlobalConfigManager) {}
-  
-  public void run()
-  {
-    this.a.a();
-    this.a.a();
-  }
-}
+public class zxf {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zxf
  * JD-Core Version:    0.7.0.1
  */

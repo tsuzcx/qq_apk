@@ -1,66 +1,52 @@
-import android.os.Handler;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.common.GloableValue;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
-class xux
-  implements Runnable
+public class xux
+  implements View.OnTouchListener
 {
-  xux(xuw paramxuw) {}
+  public xux(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] delayInit,run start");
+    int i = paramMotionEvent.getAction();
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    if (i == 0) {
+      this.a.b.setText(null);
     }
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.f())
+    do
     {
-      RMVideoStateMgr.b(null);
-      if (localRMVideoStateMgr.f()) {}
+      return false;
+      if (i == 2)
+      {
+        if (f < this.a.a * -1)
+        {
+          this.a.a(false, false);
+          return true;
+        }
+        this.a.a(true, false);
+        return true;
+      }
+      if (i == 3)
+      {
+        this.a.a(false, true);
+        return false;
+      }
+    } while (i != 1);
+    if (f < this.a.a * -1)
+    {
+      this.a.l = false;
+      this.a.a(false, true);
     }
     for (;;)
     {
-      return;
-      File localFile = new File(GloableValue.b + File.separator + ".nomedia");
-      if (!localFile.exists()) {}
-      try
-      {
-        localFile.createNewFile();
-        label84:
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoInitState", 2, "[@] delayInit, post timeout runnable");
-        }
-        localRMVideoStateMgr.a.postDelayed(this.a.a, 10000L);
-        localRMVideoStateMgr.l();
-        localRMVideoStateMgr.m();
-        localRMVideoStateMgr.k();
-        try
-        {
-          AVCodec.get().init();
-          this.a.c = true;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("RMVideoInitState", 2, "[@] delayInit,run finish");
-          return;
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-        {
-          for (;;)
-          {
-            localUnsatisfiedLinkError.printStackTrace();
-            this.a.c = false;
-          }
-        }
-      }
-      catch (IOException localIOException)
-      {
-        break label84;
-      }
+      this.a.b.setText(2131438183);
+      return false;
+      this.a.l = true;
+      this.a.a(true, true);
     }
   }
 }

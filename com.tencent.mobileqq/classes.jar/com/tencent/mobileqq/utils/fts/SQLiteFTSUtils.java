@@ -173,13 +173,13 @@ public class SQLiteFTSUtils
         return ContactUtils.a(paramQQAppInterface, paramString1, paramInt);
       }
       if (AppConstants.F.equals(paramString1)) {
-        return paramContext.getString(2131434943);
+        return paramContext.getString(2131434959);
       }
       if (AppConstants.H.equals(paramString1)) {
-        return paramContext.getString(2131434941);
+        return paramContext.getString(2131434957);
       }
       if (AppConstants.D.equals(paramString1)) {
-        return paramContext.getString(2131434982);
+        return paramContext.getString(2131434998);
       }
       if (paramInt != 1000) {
         break;
@@ -297,7 +297,7 @@ public class SQLiteFTSUtils
           break label429;
         }
         localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
-        ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494305)), 0, paramString.length(), 17);
+        ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494311)), 0, paramString.length(), 17);
         localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo((String)localObject1, 0, new Pair(localObject2, null)));
         i = m + 1;
       }
@@ -350,7 +350,7 @@ public class SQLiteFTSUtils
               if (((String)localObject1).toLowerCase().startsWith(paramString.toLowerCase()))
               {
                 localObject3 = new SpannableStringBuilder("(" + (String)localObject1 + ")");
-                ((SpannableStringBuilder)localObject3).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494305)), 1, paramString.length() + 1, 17);
+                ((SpannableStringBuilder)localObject3).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494311)), 1, paramString.length() + 1, 17);
                 localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo((String)localObject1, 0, new Pair(localObject2, localObject3)));
                 i = m + 1;
                 break label193;
@@ -360,7 +360,7 @@ public class SQLiteFTSUtils
               {
                 i = localObject3[1];
                 localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
-                ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494305)), 0, i, 17);
+                ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494311)), 0, i, 17);
                 localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo((String)localObject1, 0, new Pair(localObject2, null)));
                 i = m + 1;
                 break label193;
@@ -372,7 +372,7 @@ public class SQLiteFTSUtils
               }
               i = localObject3[1];
               localObject2 = new SpannableStringBuilder((CharSequence)localObject2);
-              ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494305)), 0, i, 17);
+              ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494311)), 0, i, 17);
               localArrayList.add(new SQLiteFTSUtils.MsgSearchContactInfo((String)localObject1, 0, new Pair(localObject2, null)));
               i = m + 1;
               break label193;

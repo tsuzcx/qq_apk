@@ -1,16 +1,16 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.OnAdapterNotify;
 
 public class vri
-  extends MessageObserver
+  implements Runnable
 {
-  public vri(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public vri(AIOGalleryAdapter paramAIOGalleryAdapter) {}
   
-  protected void e(boolean paramBoolean)
+  public void run()
   {
-    super.e(paramBoolean);
-    this.a.a.sendEmptyMessage(0);
+    if (this.a.a != null) {
+      this.a.a.a(1);
+    }
   }
 }
 

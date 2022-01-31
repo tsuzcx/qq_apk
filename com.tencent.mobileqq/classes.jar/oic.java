@@ -1,39 +1,54 @@
 import android.app.Activity;
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.takevideo.dancemachine.VideoSharer;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.provider.MediaStore.Images.Media;
+import com.dataline.util.file.MediaStoreUtil;
+import com.tencent.biz.qqstory.takevideo.EditPicSave;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class oic
-  implements WXShareHelper.WXShareListener
+  implements Runnable
 {
-  oic(oia paramoia, Bitmap paramBitmap) {}
+  oic(oib paramoib, String paramString) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachinePKVideoSharer", 2, "[DanceMachine Share]  shareToWechat errorCode : " + paramBaseResp.errCode + "   errorStr : " + paramBaseResp.errCode + "  transaction : " + paramBaseResp.transaction + "  openId : " + paramBaseResp.openId + " type : " + paramBaseResp.getType());
-    }
-    if ((paramBaseResp.errCode != 0) && (paramBaseResp.errCode != -2)) {
-      this.jdField_a_of_type_Oia.a.a.runOnUiThread(new oid(this));
-    }
-    if (paramBaseResp.errCode == 0)
+    try
     {
-      if (VideoSharer.a(this.jdField_a_of_type_Oia.a) != 2) {
-        break label180;
+      String str = PlusPanelUtils.a();
+      File localFile = new File(str);
+      if (FileUtils.a(new File(this.jdField_a_of_type_JavaLangString), localFile))
+      {
+        Object localObject = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject);
+        localObject = ((BitmapFactory.Options)localObject).outMimeType;
+        int i = MediaStoreUtil.a(str);
+        ContentValues localContentValues = new ContentValues(7);
+        localContentValues.put("title", localFile.getName());
+        localContentValues.put("_display_name", localFile.getName());
+        localContentValues.put("date_modified", Long.valueOf(localFile.lastModified() / 1000L));
+        localContentValues.put("mime_type", (String)localObject);
+        localContentValues.put("orientation", Integer.valueOf(i));
+        localContentValues.put("_data", str);
+        localContentValues.put("_size", Long.valueOf(localFile.length()));
+        if (this.jdField_a_of_type_Oib.a.a.getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, localContentValues) == null) {
+          MediaStore.Images.Media.insertImage(this.jdField_a_of_type_Oib.a.a.getActivity().getContentResolver(), str, localFile.getName(), null);
+        }
       }
-      CaptureReportUtil.a("wechat_moments", VideoSharer.a(this.jdField_a_of_type_Oia.a));
-    }
-    label180:
-    while (VideoSharer.a(this.jdField_a_of_type_Oia.a) != 1) {
       return;
     }
-    CaptureReportUtil.a("wechat_friends", VideoSharer.a(this.jdField_a_of_type_Oia.a));
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("EditPicSave", 2, "savePic " + localException.toString());
+    }
   }
 }
 

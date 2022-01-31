@@ -1,8 +1,7 @@
 package cooperation.plugin;
 
-import ammo;
-import ammp;
-import ammq;
+import amua;
+import amub;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +9,6 @@ import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
@@ -38,7 +36,7 @@ public class PluginPreInstaller
   private static final String[] e = { "qqreaderplugin.apk", "comic_plugin.apk", "wlx_jtcode.apk" };
   private Context jdField_a_of_type_AndroidContentContext;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new ammo(this);
+  private OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new amua(this);
   private IPluginManager jdField_a_of_type_CooperationPluginIPluginManager;
   
   public PluginPreInstaller(Context paramContext, IPluginManager paramIPluginManager, QQAppInterface paramQQAppInterface)
@@ -117,7 +115,7 @@ public class PluginPreInstaller
     this.jdField_a_of_type_CooperationPluginIPluginManager.a(paramString, this.jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener, true);
     if (("qqreaderplugin.apk".equals(paramString)) && (QRUtility.a(this.jdField_a_of_type_AndroidContentContext) == -1))
     {
-      ThreadManager.post(new ammq(this), 5, null, false);
+      ThreadManager.post(new amub(this), 5, null, false);
       if (QLog.isColorLevel()) {
         QLog.e("PluginPreInstaller", 2, "");
       }
@@ -158,7 +156,6 @@ public class PluginPreInstaller
   {
     try
     {
-      SosoInterface.a(new ammp(this, 3, true, true, 300000L, false, false, "buscardLocation"));
       Iterator localIterator = a().iterator();
       while (localIterator.hasNext())
       {

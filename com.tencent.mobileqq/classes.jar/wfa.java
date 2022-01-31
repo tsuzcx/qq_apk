@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.activity.bless.BlessManager;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
 
-public class wfa
-  implements Runnable
+class wfa
+  implements HWTroopUtils.OnHomeworkTroopIdentityCheckListener
 {
-  public wfa(BlessManager paramBlessManager) {}
+  wfa(wey paramwey) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (BlessManager.a(this.a) != null)
-    {
-      if (!BlessManager.a(this.a))
-      {
-        BlessManager.b(this.a, BlessManager.a(this.a, BlessManager.a(this.a), false));
-        BlessManager.a(this.a, BlessManager.a(this.a));
-        BlessManager.a(this.a, BlessManager.a(this.a), true);
-      }
-      return;
+    if (this.a.a.a != null) {
+      this.a.a.a.c(HWTroopUtils.b(paramInt));
     }
-    BlessManager.a(this.a, false);
   }
 }
 

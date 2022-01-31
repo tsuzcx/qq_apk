@@ -1,30 +1,19 @@
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
 
 class abeh
   implements Runnable
 {
-  abeh(abed paramabed, float paramFloat) {}
+  abeh(abeg paramabeg, String paramString, AtTroopMemberSpan[] paramArrayOfAtTroopMemberSpan) {}
   
   public void run()
   {
-    if (!ShopScanActivity.b(this.jdField_a_of_type_Abed.a)) {
+    if ((ArkRecommendController.a(this.jdField_a_of_type_Abeg.a) == null) || (ArkRecommendController.a(this.jdField_a_of_type_Abeg.a) == null) || (ArkRecommendController.a(this.jdField_a_of_type_Abeg.a).a == null)) {
       return;
     }
-    int i = (int)(this.jdField_a_of_type_Float * 100.0F);
-    if (this.jdField_a_of_type_Abed.a.b.getVisibility() != 0)
-    {
-      this.jdField_a_of_type_Abed.a.b.setVisibility(0);
-      if (this.jdField_a_of_type_Abed.a.e != null) {
-        this.jdField_a_of_type_Abed.a.e.setVisibility(8);
-      }
-    }
-    this.jdField_a_of_type_Abed.a.a.setProgress(i);
-    this.jdField_a_of_type_Abed.a.g.setText(this.jdField_a_of_type_Abed.a.getResources().getString(2131438498));
+    ArkRecommendController.a(this.jdField_a_of_type_Abeg.a).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfComTencentMobileqqTroopTextAtTroopMemberSpan, this.jdField_a_of_type_Abeg.a);
   }
 }
 

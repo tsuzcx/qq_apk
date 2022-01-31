@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class POIFilterData$POIFilterPageItem
   extends FilterData.FilterPageItem
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364848);
+  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364875);
   
   POIFilterData$POIFilterPageItem(POIFilterData paramPOIFilterData, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
@@ -19,7 +19,7 @@ public class POIFilterData$POIFilterPageItem
   
   protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramContext).inflate(2130970807, paramViewGroup, false);
+    return LayoutInflater.from(paramContext).inflate(2130970824, paramViewGroup, false);
   }
   
   public void a()

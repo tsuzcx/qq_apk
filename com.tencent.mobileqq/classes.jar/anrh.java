@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
-public final class anrh
-  implements Parcelable.Creator
+public class anrh
+  implements Runnable
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
-  {
-    return new EditLocalVideoSource(paramParcel);
-  }
+  public anrh(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
-  public EditLocalVideoSource[] a(int paramInt)
+  public void run()
   {
-    return new EditLocalVideoSource[paramInt];
+    QLog.d("VERSION_CODES", 2, "onVideoCaptured. mDanceRestartToRecord = true  restart to record.");
+    this.a.e();
   }
 }
 

@@ -1,26 +1,19 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
-import com.tencent.widget.BubblePopupWindow;
+import com.tencent.mobileqq.data.DynamicAvatar;
+import com.tencent.mobileqq.util.DynamicFaceDrawable;
 
 public class akgw
-  extends TextView
+  implements Runnable
 {
-  public akgw(QQCustomMenuImageLayout paramQQCustomMenuImageLayout, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public akgw(DynamicFaceDrawable paramDynamicFaceDrawable, DynamicAvatar paramDynamicAvatar) {}
   
-  public boolean performClick()
+  public void run()
   {
-    boolean bool = super.performClick();
-    QQCustomMenuImageLayout.a(this.a).a();
-    return bool;
+    this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqDataDynamicAvatar);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgw
  * JD-Core Version:    0.7.0.1
  */

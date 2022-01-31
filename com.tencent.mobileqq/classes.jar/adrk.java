@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class adrk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adrk(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout, int paramInt) {}
+  public adrk(SendBottomBar paramSendBottomBar) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    HotVideoMongoliaRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    if (SendBottomBar.a(this.a) != null) {
+      SendBottomBar.a(this.a).a();
+    }
+    FileManagerUtil.a(SendBottomBar.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adrk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
-class txl
-  implements Runnable
+public class txl
+  implements CompoundButton.OnCheckedChangeListener
 {
-  txl(txk paramtxk, TroopGagMgr paramTroopGagMgr) {}
+  public txl(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr.a(this.jdField_a_of_type_Txk.a.a, true);
+    SoundAndVibrateActivity.a(this.a, paramBoolean);
   }
 }
 

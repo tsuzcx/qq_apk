@@ -1,182 +1,90 @@
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.IQQServiceCallback;
-import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
+import org.json.JSONObject;
 
 public class jmt
-  implements IQQServiceCallback
 {
-  private IBinder a;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  boolean jdField_a_of_type_Boolean;
+  public int b;
+  String b;
+  String c;
+  public String d;
+  String e = "client";
   
-  public jmt(IBinder paramIBinder)
+  public jmt(RandomWebProtocol paramRandomWebProtocol)
   {
-    this.a = paramIBinder;
-  }
-  
-  public Bundle a(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    this.jdField_a_of_type_Int = 0;
+    String str = RandomWebProtocol.a(paramRandomWebProtocol).getAccount();
+    paramRandomWebProtocol = (TicketManager)RandomWebProtocol.a(paramRandomWebProtocol).getManager(2);
+    if (paramRandomWebProtocol == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = "7.6.8";
+    this.jdField_a_of_type_Boolean = false;
+    try
     {
-      try
+      this.jdField_a_of_type_Long = Long.parseLong(str);
+      this.jdField_b_of_type_JavaLangString = paramRandomWebProtocol.getSkey(str);
+      this.jdField_b_of_type_Int = -1;
+      this.jdField_a_of_type_OrgJsonJSONObject = null;
+      this.c = null;
+      this.d = null;
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
       {
-        localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-        localParcel1.writeString(paramString);
-        localParcel1.writeInt(paramInt1);
-        localParcel1.writeInt(paramInt2);
-        if (paramBundle != null)
-        {
-          localParcel1.writeInt(1);
-          paramBundle.writeToParcel(localParcel1, 0);
-          this.a.transact(5, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramString = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
-            return paramString;
-          }
+        this.jdField_a_of_type_Long = 0L;
+        if (QLog.isColorLevel()) {
+          QLog.d("RandomWebProtocol", 2, "[randomWeb] init Req error: failed parse self_uin: " + str);
         }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramString = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
       }
     }
   }
   
-  /* Error */
-  public void a(com.tencent.av.service.RecvMsg paramRecvMsg)
+  jmt(RandomWebProtocol paramRandomWebProtocol, jmt paramjmt)
   {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_1
-    //   11: ifnull +33 -> 44
-    //   14: aload_2
-    //   15: iconst_1
-    //   16: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   19: aload_1
-    //   20: aload_2
-    //   21: iconst_0
-    //   22: invokevirtual 72	com/tencent/av/service/RecvMsg:writeToParcel	(Landroid/os/Parcel;I)V
-    //   25: aload_0
-    //   26: getfield 15	jmt:a	Landroid/os/IBinder;
-    //   29: iconst_1
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: iconst_1
-    //   33: invokeinterface 48 5 0
-    //   38: pop
-    //   39: aload_2
-    //   40: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   49: goto -24 -> 25
-    //   52: astore_1
-    //   53: aload_2
-    //   54: invokevirtual 68	android/os/Parcel:recycle	()V
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	jmt
-    //   0	59	1	paramRecvMsg	com.tencent.av.service.RecvMsg
-    //   3	51	2	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	52	finally
-    //   14	25	52	finally
-    //   25	39	52	finally
-    //   44	49	52	finally
+    this.jdField_a_of_type_Int = paramjmt.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramjmt.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramjmt.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Long = paramjmt.jdField_a_of_type_Long;
+    this.jdField_b_of_type_JavaLangString = paramjmt.jdField_b_of_type_JavaLangString;
+    this.jdField_b_of_type_Int = paramjmt.jdField_b_of_type_Int;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramjmt.jdField_a_of_type_OrgJsonJSONObject;
+    this.c = paramjmt.c;
+    this.d = paramjmt.d;
+    this.e = paramjmt.e;
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  String a()
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
+    if (this.jdField_a_of_type_Int == 0) {
+      return "";
+    }
     try
     {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("reqtype", this.jdField_a_of_type_Int).put("qqversion", this.jdField_a_of_type_JavaLangString).put("isdebug", this.jdField_a_of_type_Boolean).put("self_uin", this.jdField_a_of_type_Long).put("self_skey", this.jdField_b_of_type_JavaLangString).put("self_gender", this.jdField_b_of_type_Int).put("reqbody", this.jdField_a_of_type_OrgJsonJSONObject);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    finally
+    catch (Exception localException)
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      localException.printStackTrace();
     }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
-  {
-    int i = 0;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      if (paramBoolean) {
-        i = 1;
-      }
-      localParcel1.writeInt(i);
-      localParcel1.writeString(paramString1);
-      localParcel1.writeString(paramString2);
-      localParcel1.writeString(paramString3);
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceCallback");
-      localParcel.writeTypedArray(paramArrayOfRecvGVideoLevelInfo, 0);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jmt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,24 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.Window;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.RelativeLayout;
 import com.qq.im.poi.LbsPackPoiListActivity;
-import com.tencent.widget.XListView;
 
 public class ann
-  implements Handler.Callback
+  implements DialogInterface.OnDismissListener
 {
-  public ann(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
+  public ann(LbsPackPoiListActivity paramLbsPackPoiListActivity, int paramInt, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 100: 
-      this.a.a = false;
-      LbsPackPoiListActivity.a(this.a).springBackOverScrollHeaderView();
-      return true;
-    }
-    this.a.runOnUiThread(new ano(this));
-    return true;
+    LbsPackPoiListActivity.a(this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity, false);
+    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.a.setVisibility(0);
+    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.getWindow().peekDecorView().getWindowToken(), 0);
   }
 }
 

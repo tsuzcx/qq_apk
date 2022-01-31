@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class sqk
   implements Runnable
 {
-  public sqk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sqk(EditInfoActivity paramEditInfoActivity) {}
   
   public void run()
   {
-    this.a.G();
-    this.a.I();
+    this.a.a();
   }
 }
 

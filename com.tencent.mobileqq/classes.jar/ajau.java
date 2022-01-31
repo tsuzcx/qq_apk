@@ -1,17 +1,23 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ajau
   implements ActionSheet.OnButtonClickListener
 {
-  public ajau(TroopWebviewPlugin paramTroopWebviewPlugin) {}
+  public ajau(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, ActionSheet paramActionSheet) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    TroopWebviewPlugin.a(this.a);
-    if (paramInt == 0) {
-      TroopWebviewPlugin.a(this.a, "");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      TroopAvatarWallEditActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a);
     }
   }
 }

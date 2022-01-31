@@ -10,8 +10,8 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.PicUploadThread;
 import java.util.ArrayList;
-import leu;
-import lew;
+import lhi;
+import lhk;
 
 public class ReadInJoyUploadAvatarActivity
   extends IphoneTitleBarActivity
@@ -39,7 +39,7 @@ public class ReadInJoyUploadAvatarActivity
   
   protected void a(String paramString)
   {
-    a(paramString, new lew(this, Looper.getMainLooper(), paramString));
+    a(paramString, new lhk(this, Looper.getMainLooper(), paramString));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -47,8 +47,8 @@ public class ReadInJoyUploadAvatarActivity
     super.doOnCreate(paramBundle);
     setContentView(new View(this));
     setTitle("移动和缩放", "移动和缩放");
-    setLeftViewName(2131435689);
-    this.jdField_a_of_type_AndroidOsHandler.post(new leu(this));
+    setLeftViewName(2131435705);
+    this.jdField_a_of_type_AndroidOsHandler.post(new lhi(this));
     paramBundle = getIntent().getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
     if ((paramBundle == null) || (paramBundle.isEmpty()))
     {

@@ -1,13 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class mdj
   implements Runnable
 {
-  public mdj(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mdj(ReadInJoyWebDataManager paramReadInJoyWebDataManager, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    this.a.d();
+    long l = ReadInJoyWebDataManager.a();
+    try
+    {
+      ReadInJoyWebDataManager.a(l);
+      if (ReadInJoyWebDataManager.b() > 52428800L) {
+        return;
+      }
+    }
+    finally {}
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager.a(this.jdField_a_of_type_JavaNetURL.toString(), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

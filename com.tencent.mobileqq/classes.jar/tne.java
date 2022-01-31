@@ -1,26 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import mqq.util.WeakReference;
 
 public class tne
-  implements ActionSheet.OnButtonClickListener
+  implements TabBarView.OnTabChangeListener
 {
-  public tne(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity, ActionSheet paramActionSheet) {}
+  final WeakReference a;
   
-  public void OnClick(View paramView, int paramInt)
+  public tne(QQBrowserActivity paramQQBrowserActivity)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMsgHistoryActivity.app, "CliOper", "", "", "Setting_tab", "Clk_clean_msg", 0, 0, "0", "0", "", "");
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMsgHistoryActivity.isFinishing())
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMsgHistoryActivity.showDialog(1);
+    this.a = new WeakReference(paramQQBrowserActivity);
+  }
+  
+  public void onTabSelected(int paramInt1, int paramInt2)
+  {
+    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
+    if (localQQBrowserActivity == null) {}
+    while (paramInt1 == paramInt2) {
+      return;
     }
-    paramView = new tnf(this);
-    ThreadManager.getSubThreadHandler().post(paramView);
+    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
   }
 }
 

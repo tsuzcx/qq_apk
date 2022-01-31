@@ -1,48 +1,18 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import com.tencent.mobileqq.ark.ArkTipsManager;
 
 public class abfc
-  extends SosoInterface.OnLocationListener
+  implements ArkLocalAppMgr.IGetAppPathByNameCallback
 {
-  public abfc(ARMapConfigManager paramARMapConfigManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public abfc(ArkTipsManager paramArkTipsManager, Context paramContext) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    long l2 = -1L;
-    long l1 = l2;
-    if (paramSosoLbsInfo != null)
-    {
-      l1 = l2;
-      if (paramSosoLbsInfo.a == null) {}
-    }
-    try
-    {
-      l1 = Long.valueOf(paramSosoLbsInfo.a.f).longValue();
-      ARMapConfigManager.a(this.a, paramSosoLbsInfo.a.b);
-      ARMapConfigManager.b(this.a, paramSosoLbsInfo.a.a);
-      this.a.e = l1;
-      if (l1 > 0L) {
-        ARMapConfigManager.a(this.a, 0L);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapConfigManager", 2, String.format("onFirstLocationFinish errCode=%s adCode=%s mLongitude=%s mLatitude=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(l1), Double.valueOf(ARMapConfigManager.a(this.a)), Double.valueOf(ARMapConfigManager.b(this.a)) }));
-      }
-      return;
-    }
-    catch (Exception paramSosoLbsInfo)
-    {
-      for (;;)
-      {
-        l1 = -1L;
-        ARMapConfigManager.a(this.a, 0.0D);
-        ARMapConfigManager.b(this.a, 0.0D);
-      }
+    if ((paramInt == 0) && (paramAppPathInfo.a != null)) {
+      ArkAppCenter.a(paramAppPathInfo.a, new abfd(this));
     }
   }
 }

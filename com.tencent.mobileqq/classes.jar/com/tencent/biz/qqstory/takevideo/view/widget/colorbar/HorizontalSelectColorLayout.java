@@ -11,10 +11,10 @@ import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.strategy.StrokeStr
 import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import omc;
-import omd;
-import ome;
-import omf;
+import oqo;
+import oqp;
+import oqq;
+import oqr;
 
 public class HorizontalSelectColorLayout
   extends RelativeLayout
@@ -26,7 +26,7 @@ public class HorizontalSelectColorLayout
   public HorizontalSelectColorLayout.OnUndoViewClickListener a;
   HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  omf jdField_a_of_type_Omf;
+  oqr jdField_a_of_type_Oqr;
   public boolean a;
   
   public HorizontalSelectColorLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -43,19 +43,19 @@ public class HorizontalSelectColorLayout
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2130970751, this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)super.findViewById(2131371817));
+    LayoutInflater.from(getContext()).inflate(2130970767, this);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)super.findViewById(2131371816));
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setStayDisplayOffsetZero(true);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(new omc(this));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemSelectedListener(new omd(this));
-    this.jdField_a_of_type_Omf = new omf(this, getContext());
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Omf);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371818));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ome(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(new oqo(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemSelectedListener(new oqp(this));
+    this.jdField_a_of_type_Oqr = new oqr(this, getContext());
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Oqr);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131371817));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new oqq(this));
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getContext().getString(2131433449));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getContext().getString(2131433463));
   }
   
   private void a(int paramInt)
@@ -64,7 +64,7 @@ public class HorizontalSelectColorLayout
     do
     {
       return;
-      this.jdField_a_of_type_Omf.a(paramInt);
+      this.jdField_a_of_type_Oqr.a(paramInt);
       this.jdField_a_of_type_Int = paramInt;
     } while (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnStrokeSelectedListener == null);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnStrokeSelectedListener.a(a());
@@ -123,14 +123,14 @@ public class HorizontalSelectColorLayout
     {
       i = 0;
       ((ImageView)localObject).setVisibility(i);
-      localObject = super.findViewById(2131371819);
+      localObject = super.findViewById(2131371818);
       if (!paramBoolean) {
         break label135;
       }
       i = 0;
       ((View)localObject).setVisibility(i);
-      localObject = super.findViewById(2131369750);
-      localView = super.findViewById(2131363259);
+      localObject = super.findViewById(2131369760);
+      localView = super.findViewById(2131363276);
       if (paramInt != 0) {
         break label142;
       }
@@ -140,14 +140,14 @@ public class HorizontalSelectColorLayout
         break label176;
       }
       this.jdField_a_of_type_JavaUtilArrayList.clear();
-      paramStrokeStrategy.b(this.jdField_a_of_type_JavaUtilArrayList, getContext());
-      if (this.jdField_a_of_type_Omf != null) {
-        this.jdField_a_of_type_Omf.a(this.jdField_a_of_type_JavaUtilArrayList);
+      paramStrokeStrategy.a(this.jdField_a_of_type_JavaUtilArrayList, getContext());
+      if (this.jdField_a_of_type_Oqr != null) {
+        this.jdField_a_of_type_Oqr.a(this.jdField_a_of_type_JavaUtilArrayList);
       }
     }
     for (;;)
     {
-      super.setBackgroundColor(super.getContext().getResources().getColor(2131493776));
+      super.setBackgroundColor(super.getContext().getResources().getColor(2131493781));
       return;
       i = 8;
       break;

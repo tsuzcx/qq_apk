@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.widget.Switch;
 
 public class lgy
-  implements DialogInterface.OnClickListener
+  implements ActionSheet.OnDismissListener
 {
-  public lgy(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lgy(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss()
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    boolean bool = true;
+    ReadInJoySettingActivity.a(this.a, true);
+    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
+    if (!ReadInJoySettingActivity.a(this.a)) {}
+    for (;;)
+    {
+      localSwitch.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      bool = false;
+    }
   }
 }
 

@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.common.util.FileChooserHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.PoiMapActivity;
 
 public class klv
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  public klv(FileChooserHelper paramFileChooserHelper) {}
+  public klv(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    FileChooserHelper.a(this.a);
+    this.a.a.setText("");
   }
 }
 

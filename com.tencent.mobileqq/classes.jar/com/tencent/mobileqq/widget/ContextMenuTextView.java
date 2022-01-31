@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import aktk;
-import aktm;
+import albb;
+import albd;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.SpanWatcher;
@@ -17,7 +17,7 @@ import com.tencent.widget.BubblePopupWindow;
 public class ContextMenuTextView
   extends TextView
 {
-  aktm jdField_a_of_type_Aktm = new aktm(this, null);
+  albd jdField_a_of_type_Albd = new albd(this, null);
   private Context jdField_a_of_type_AndroidContentContext;
   public View.OnClickListener a;
   public BubblePopupWindow a;
@@ -27,20 +27,20 @@ public class ContextMenuTextView
   public ContextMenuTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aktk(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new albb(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Aktm);
+    setOnLongClickListener(this.jdField_a_of_type_Albd);
     setSelectAllOnFocus(true);
   }
   
   public ContextMenuTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aktk(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new albb(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setOnLongClickListener(this.jdField_a_of_type_Aktm);
+    setOnLongClickListener(this.jdField_a_of_type_Albd);
     setSelectAllOnFocus(true);
-    setOnTouchListener(this.jdField_a_of_type_Aktm);
+    setOnTouchListener(this.jdField_a_of_type_Albd);
   }
   
   private void a(Object paramObject)
@@ -122,7 +122,7 @@ public class ContextMenuTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContextMenuTextView
  * JD-Core Version:    0.7.0.1
  */

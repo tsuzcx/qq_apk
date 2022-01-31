@@ -1112,7 +1112,7 @@ class TbsApkDownloader
     {
       l3 = TbsDownloadConfig.getInstance(this.mContext).mPreferences.getLong("tbs_apkfilesize", 0L);
       if ((localObject1 == null) || (!((File)localObject1).exists())) {
-        break label744;
+        break label755;
       }
       l1 = l2;
       if (l3 > 0L)
@@ -1127,20 +1127,25 @@ class TbsApkDownloader
       this.mDownloadStat.setCheckErrorDetail("fileLength:" + l1 + ",contentLength:" + l3);
       return false;
       TbsLog.i("TbsDownload", "[TbsApkDownloader.verifyTbsApk] length(" + l1 + ") successful!");
-      int i = -1;
+      int j = -1;
+      int i = j;
       if (paramBoolean2)
       {
-        int j = ApkUtil.getApkVersion(this.mContext, (File)localObject1);
-        int k = TbsDownloadConfig.getInstance(this.mContext).mPreferences.getInt("tbs_download_version", 0);
         i = j;
-        if (k != j)
+        if (!paramBoolean1)
         {
-          TbsLog.i("TbsDownload", "[TbsApkDownloader.verifyTbsApk] isTempFile=" + paramBoolean1 + " versionCode failed");
-          if (!paramBoolean1) {
-            break;
+          j = ApkUtil.getApkVersion(this.mContext, (File)localObject1);
+          int k = TbsDownloadConfig.getInstance(this.mContext).mPreferences.getInt("tbs_download_version", 0);
+          i = j;
+          if (k != j)
+          {
+            TbsLog.i("TbsDownload", "[TbsApkDownloader.verifyTbsApk] isTempFile=" + paramBoolean1 + " versionCode failed");
+            if (!paramBoolean1) {
+              break;
+            }
+            this.mDownloadStat.setCheckErrorDetail("fileVersion:" + j + ",configVersion:" + k);
+            return false;
           }
-          this.mDownloadStat.setCheckErrorDetail("fileVersion:" + j + ",configVersion:" + k);
-          return false;
         }
       }
       TbsLog.i("TbsDownload", "[TbsApkDownloader.verifyTbsApk] tbsApkVersionCode(" + i + ") successful!");
@@ -1180,16 +1185,16 @@ class TbsApkDownloader
         }
         paramBoolean2 = paramBoolean1;
         if (paramBoolean1) {
-          break label711;
+          break label722;
         }
         setDownloadStat(109, errorToString((Throwable)localObject1), true);
         return false;
       }
       paramBoolean2 = false;
-      label711:
+      label722:
       TbsLog.i("TbsDownload", "[TbsApkDownloader.verifyTbsApk] rename(" + paramBoolean2 + ") successful!");
       return true;
-      label744:
+      label755:
       l1 = 0L;
     }
   }

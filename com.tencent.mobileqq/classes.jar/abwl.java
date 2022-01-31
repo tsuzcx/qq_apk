@@ -1,34 +1,44 @@
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.common.galleryactivity.AbstractAnimationManager;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.AbstractImageListModel;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
+import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.mobileqq.campuscircle.CampusCirclePicBrowserActivity;
+import com.tencent.mobileqq.campuscircle.CampusCirclePicBrowserGalleryScene;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
 
-class abwl
-  implements Runnable
+public class abwl
+  extends GalleryManager
 {
-  abwl(abwj paramabwj, boolean paramBoolean, String paramString1, String paramString2) {}
+  public abwl(CampusCirclePicBrowserActivity paramCampusCirclePicBrowserActivity) {}
   
-  public void run()
+  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Abwj.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (this.jdField_a_of_type_Abwj.a.jdField_a_of_type_JavaUtilList != null))
-    {
-      Iterator localIterator = this.jdField_a_of_type_Abwj.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        if (localRecentBaseData.a().equals(this.jdField_a_of_type_JavaLangString))
-        {
-          localRecentBaseData.b = this.b;
-          this.jdField_a_of_type_Abwj.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Abwj.a.jdField_a_of_type_Int);
-        }
-      }
-    }
+    return super.a(paramActivity, paramAbstractImageListModel);
+  }
+  
+  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    this.a.a = new CampusCirclePicBrowserGalleryScene((CampusCirclePicBrowserActivity)paramActivity, paramAbstractImageListModel);
+    return this.a.a;
+  }
+  
+  public AbstractImageListModel a(Activity paramActivity)
+  {
+    paramActivity = new PicBrowserModel(this.a, CampusCirclePicBrowserActivity.a(this.a));
+    paramActivity.a(CampusCirclePicBrowserActivity.a(this.a));
+    return paramActivity;
+  }
+  
+  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwl
  * JD-Core Version:    0.7.0.1
  */

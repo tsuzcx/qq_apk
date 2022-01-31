@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ed8" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f20" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mobileqq.armap.wealthgod.ARMapFlakeView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f21" android:layout_width="fill_parent" android:layout_height="400.0dip" />
-    <ImageView android:layout_gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f22" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0737" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0738" />
-    <ImageView android:layout_gravity="center|right|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f23" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0739" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d073a" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f24" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ImageView android:layout_gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f25" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d073b" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d073c" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d073d" />
-    <ImageView android:layout_gravity="right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f26" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d073f" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0740" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0741" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f27" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</merge>
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ed9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212ee" android:layout_width="320.0dip" android:layout_height="420.0dip" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eda" android:layout_width="164.0dip" android:layout_height="209.0dip" android:layout_marginBottom="24.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212f7" android:scaleType="fitXY" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1edb" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="20.0dip" android:textColor="#fffbd49d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1edb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="获得皇室战争收集卡1张" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1edc" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="16.0dip" android:textColor="#fffbd49d" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1edc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="24.0dip" android:text="集齐卡片可兑换Q币" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1edd" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="18.0dip" android:textColor="#ffcf3a50" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1edd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212f2" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:text="立即查看" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ede" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021782" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1ed9" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

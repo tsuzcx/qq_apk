@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
 
 public class vbv
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vbv(MedalNewsItemBuilder paramMedalNewsItemBuilder) {}
+  public vbv(FilePicItemBuilder paramFilePicItemBuilder) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    MedalNewsItemBuilder.a(this.a, true, this.a.a.getCurrentAccountUin());
+    this.a.c = false;
   }
 }
 

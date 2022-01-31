@@ -1,55 +1,21 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.pic.compress.Utils;
-import com.tencent.mobileqq.search.util.SearchUtils.GenerateGifWithTextCallback;
-import com.tencent.mobileqq.utils.Base64Util;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.MD5;
-import org.json.JSONObject;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import com.tencent.mobileqq.hiboom.HiBoomTextView.OnDoubleClick;
 
 public class adxr
-  implements SearchUtils.GenerateGifWithTextCallback
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public adxr(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public adxr(HiBoomTextView paramHiBoomTextView) {}
   
-  public void a(String paramString)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (paramString == null)
+    if (this.a.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
-      return;
+      this.a.a.a(this.a);
+      return true;
     }
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        byte[] arrayOfByte = FileUtils.a(paramString);
-        if (arrayOfByte == null) {
-          break;
-        }
-        localJSONObject.put("code", 0);
-        StringBuilder localStringBuilder = new StringBuilder("data:");
-        if (Utils.a(paramString))
-        {
-          str = "image/gif;";
-          localStringBuilder.append(str);
-          localStringBuilder.append("base64,");
-          localStringBuilder.append(Base64Util.encodeToString(arrayOfByte, 0));
-          localJSONObject.put("imgData", localStringBuilder);
-          localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
-          localJSONObject.put("imagePath", paramString);
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
-        return;
-      }
-      String str = "image/jpg;";
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+    return super.onDoubleTap(paramMotionEvent);
   }
 }
 

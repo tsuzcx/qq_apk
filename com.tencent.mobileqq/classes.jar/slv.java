@@ -1,23 +1,18 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumObserver;
 
-class slv
-  implements Runnable
+public class slv
+  extends TroopQZoneUploadAlbumObserver
 {
-  slv(slt paramslt, int paramInt) {}
+  public slv(Conversation paramConversation) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Slt.a.a.setText(this.jdField_a_of_type_Slt.a.jdField_c_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Slt.a.jdField_c_of_type_Int)
-    {
-      this.jdField_a_of_type_Slt.a.a.setTextColor(-65536);
-      this.jdField_a_of_type_Slt.a.rightViewText.setEnabled(false);
+    if (!(paramObject instanceof String)) {
       return;
     }
-    this.jdField_a_of_type_Slt.a.a.setTextColor(Color.rgb(119, 119, 119));
-    this.jdField_a_of_type_Slt.a.rightViewText.setEnabled(true);
+    paramObject = (String)paramObject;
+    this.a.a(8, paramObject, -2147483648);
   }
 }
 

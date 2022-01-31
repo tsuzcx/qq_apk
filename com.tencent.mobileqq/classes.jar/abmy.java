@@ -1,23 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.BusinessCardServlet;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.armap.ipc.ArMapIPC;
+import com.tencent.mobileqq.armap.ipc.IAsyncObserver;
+import eipc.EIPCResult;
 
 public class abmy
-  implements View.OnClickListener
+  implements Runnable
 {
-  public abmy(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString) {}
+  public abmy(ArMapIPC paramArMapIPC, IAsyncObserver paramIAsyncObserver, String paramString, EIPCResult paramEIPCResult) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a.isShowing()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a = null;
-    }
-    BusinessCardServlet.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.b("删除名片...");
+    this.jdField_a_of_type_ComTencentMobileqqArmapIpcIAsyncObserver.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
   }
 }
 

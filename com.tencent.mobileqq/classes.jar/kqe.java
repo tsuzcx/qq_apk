@@ -1,18 +1,24 @@
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailBaseInfoModel;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.now.NowLiveManager;
+import java.util.ArrayList;
+import java.util.List;
 
-class kqe
-  implements Runnable
+public class kqe
 {
-  kqe(kqd paramkqd, AccountDetail paramAccountDetail) {}
+  public int a;
+  public long a;
+  public String a;
+  public List a;
+  String b;
   
-  public void run()
+  public kqe(NowLiveManager paramNowLiveManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailInSubThread");
-    }
-    AccountDetailBaseInfoModel.a(this.jdField_a_of_type_Kqd.a, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long;
   }
 }
 

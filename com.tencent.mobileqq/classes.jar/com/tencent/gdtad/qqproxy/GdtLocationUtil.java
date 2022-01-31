@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import qlc;
+import qpt;
 
 public enum GdtLocationUtil
 {
@@ -12,7 +12,7 @@ public enum GdtLocationUtil
   
   public final String TAG = GdtLocationUtil.class.getSimpleName();
   public SosoInterface.SosoLocation mLocation = null;
-  SosoInterface.OnLocationListener onLocationListener = new qlc(this, 3, true, true, 60000L, false, false, this.TAG);
+  SosoInterface.OnLocationListener onLocationListener = new qpt(this, 3, true, true, 60000L, false, false, this.TAG);
   
   public int[] getLocation()
   {

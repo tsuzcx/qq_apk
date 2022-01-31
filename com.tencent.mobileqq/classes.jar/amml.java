@@ -1,30 +1,98 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.plugin.PluginManagerV2;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
 
 public class amml
-  implements DialogInterface.OnClickListener
+  implements Animator.AnimatorListener
 {
-  private String jdField_a_of_type_JavaLangString;
+  final float jdField_a_of_type_Float;
+  private final ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  public boolean a;
+  final float jdField_b_of_type_Float;
+  public final int b;
+  public final RecyclerView.ViewHolder b;
+  public boolean b;
+  final float c;
+  public final int c;
+  public boolean c;
+  final float d;
+  public float e;
+  public float f;
+  private float g;
   
-  private amml(PluginManagerV2 paramPluginManagerV2, String paramString)
+  amml(ItemTouchHelper paramItemTouchHelper, RecyclerView.ViewHolder paramViewHolder, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt1;
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.d = paramFloat4;
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ammm(this, paramItemTouchHelper));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setTarget(paramViewHolder.itemView);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this);
+    a(0.0F);
   }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    switch (paramInt)
+    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(false);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.g = paramFloat;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramLong);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Float == this.jdField_c_of_type_Float) {}
+    for (this.e = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationX(); this.jdField_b_of_type_Float == this.d; this.e = (this.jdField_a_of_type_Float + this.g * (this.jdField_c_of_type_Float - this.jdField_a_of_type_Float)))
     {
-    default: 
+      this.f = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationY();
       return;
     }
-    this.jdField_a_of_type_CooperationPluginPluginManagerV2.cancelInstall(this.jdField_a_of_type_JavaLangString);
+    this.f = (this.jdField_b_of_type_Float + this.g * (this.d - this.jdField_b_of_type_Float));
   }
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    a(1.0F);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (!this.jdField_c_of_type_Boolean) {
+      this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(true);
+    }
+    this.jdField_c_of_type_Boolean = true;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amml
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.dc.DataCollector;
 
-class ahsq
-  implements View.OnClickListener
+public class ahsq
+  extends Handler
 {
-  ahsq(ahso paramahso) {}
-  
-  public void onClick(View paramView)
+  public ahsq(DataCollector paramDataCollector, Looper paramLooper)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.f.setVisibility(8);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahsq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
-import com.tencent.biz.ui.PopupMenu;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 
 public class ozx
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public ozx(PopupMenu paramPopupMenu, String paramString, int paramInt) {}
+  public ozx(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiPopupMenu.a != null) {
-      this.jdField_a_of_type_ComTencentBizUiPopupMenu.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
-    }
-    paramView.post(new ozy(this));
+    return true;
   }
 }
 

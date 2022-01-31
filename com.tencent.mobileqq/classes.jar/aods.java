@@ -1,58 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.ContainerDrawable;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
+import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
 
 public class aods
-  implements Animator.AnimatorListener
+  implements ProgressPieDrawable.OnProgressListener
 {
-  public aods(ContainerDrawable paramContainerDrawable) {}
+  public aods(EditVideoSave paramEditVideoSave) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(ProgressPieDrawable paramProgressPieDrawable)
   {
-    if (!ContainerDrawable.a(this.a)) {}
-    do
-    {
-      return;
-      if (ContainerDrawable.b(this.a)) {
-        break;
-      }
-      ContainerDrawable.a(this.a, false);
-    } while (ContainerDrawable.b(this.a) != 2);
-    ContainerDrawable.a(this.a, 0);
-    return;
-    ContainerDrawable.a(this.a, false);
-    ContainerDrawable.a(this.a, 0);
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (!ContainerDrawable.a(this.a)) {
-      return;
-    }
-    if (!ContainerDrawable.b(this.a))
-    {
-      ContainerDrawable.a(this.a, false);
-      if (ContainerDrawable.b(this.a) == 1)
-      {
-        ContainerDrawable.a(this.a, 3);
-        return;
-      }
-      ContainerDrawable.a(this.a, 0);
-      return;
-    }
-    if (ContainerDrawable.b(this.a) == 1)
-    {
-      ContainerDrawable.a(this.a, 2);
-      ContainerDrawable.a(this.a, ContainerDrawable.b(this.a), 1000);
-      return;
-    }
-    ContainerDrawable.a(this.a, false);
-    ContainerDrawable.a(this.a, 0);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

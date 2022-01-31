@@ -1,34 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0194" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06ce" android:layout_width="fill_parent" android:layout_height="110.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02121a" android:scaleType="fitXY" />
-    <com.tencent.qlink.widget.QlinkWaveBgRelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d14" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a06ce" />
-    <com.tencent.mobileqq.widget.navbar.NavBarCommon android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1d15" android:layout_below="@id/rlCommenTitle">
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03cf" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0211fc" android:layout_width="170.0dip" android:layout_height="170.0dip" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0196" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03a8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:maxWidth="300.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b120c" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a03cf" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0196" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d16" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxWidth="300.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b120d" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a03a8" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-    </RelativeLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d15" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:weightSum="100.0" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1d17">
-        <TextView android:layout_width="0.0dip" android:layout_height="44.0dip" android:layout_weight="16.0" />
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d18" android:background="@drawable/common_btn_white" android:layout_width="0.0dip" android:layout_height="44.0dip" android:layout_weight="68.0">
-            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-                <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d19" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021211" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d1a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="发文件" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f75" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173">
+                <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/account_switch" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="name" formItem:customHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394" formItem:rightIcon="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02066b" formItem:rightIconWidth="34.0dip" formItem:rightIconHeight="34.0dip" formItem:showArrow="true" />
+                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cd1" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407fa" />
+                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cd2" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407fb" />
+                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cd3" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407fb" />
             </LinearLayout>
-        </RelativeLayout>
-        <TextView android:layout_width="0.0dip" android:layout_height="44.0dip" android:layout_weight="16.0" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d17" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="35.0dip" android:weightSum="100.0" android:layout_alignParentBottom="true">
-        <TextView android:layout_width="0.0dip" android:layout_height="44.0dip" android:layout_weight="16.0" />
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d1b" android:background="@drawable/common_btn_white" android:layout_width="0.0dip" android:layout_height="44.0dip" android:layout_weight="68.0">
-            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-                <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d1c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02120d" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1d1d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="收文件" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173">
+                <include android:id="@id/qqsetting2_msg_notify" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407fc" />
+                <include android:id="@id/qqsetting2_msg_history" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407fc" />
             </LinearLayout>
-        </RelativeLayout>
-        <TextView android:layout_width="0.0dip" android:layout_height="44.0dip" android:layout_weight="16.0" />
-    </LinearLayout>
-</RelativeLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include android:id="@id/qqsetting2_permission_privacy" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407fc" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407fa" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173">
+                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cd7" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407fc" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173">
+                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cd8" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407fc" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173">
+                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cd9" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407fa" />
+            </LinearLayout>
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cda" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0013" formItem:customHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394" formItem:showArrow="true" />
+            <include android:id="@id/about" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407fc" />
+            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cdc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173">
+                <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cdd" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0013" formItem:customHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394" formItem:showArrow="true" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cde" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173">
+                <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a001c" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0013" formItem:customHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394" formItem:showArrow="true" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cdf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173">
+                <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ce0" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0013" formItem:customHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394" formItem:showArrow="true" />
+            </LinearLayout>
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ce1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0013" formItem:customHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ce2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0013" formItem:customHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394" formItem:showArrow="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ce3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0013" formItem:customHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394" formItem:showArrow="true" />
+            <LinearLayout android:orientation="vertical" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0173">
+                <com.tencent.mobileqq.widget.FormSimpleItem android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="APKTOOL_DUPLICATE_id_0x7f0a0013" formItem:customHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394" formItem:showArrow="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

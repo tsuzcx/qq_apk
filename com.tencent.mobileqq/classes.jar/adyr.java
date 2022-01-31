@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.leba.LebaFeedsManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.qphone.base.util.QLog;
 
-public class adyr
-  implements Runnable
+class adyr
+  implements DialogInterface.OnClickListener
 {
-  public adyr(LebaFeedsManager paramLebaFeedsManager) {}
+  adyr(adyq paramadyq) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LebaFeedsManager.a(this.a);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a == 1) {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(0);
+    }
+    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
   }
 }
 

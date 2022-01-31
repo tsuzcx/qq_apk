@@ -1,26 +1,29 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.utils.MessagePkgUtils;
+import com.tencent.mobileqq.data.MessageForApollo;
 
-public class zdo
+public final class zdo
   implements Runnable
 {
-  public zdo(FrameHelperActivity paramFrameHelperActivity) {}
+  public zdo(MessageForApollo paramMessageForApollo, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
   public void run()
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().app == null)) {}
-    do
+    try
     {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.hasPlayed = true;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage.isPlayed = true;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData = MessagePkgUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.mApolloMessage);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.msgData);
       return;
-      this.a.l();
-    } while (this.a.a == null);
-    this.a.a.sendEmptyMessage(9);
+    }
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zdo
  * JD-Core Version:    0.7.0.1
  */

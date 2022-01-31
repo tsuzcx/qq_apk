@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.RemoteException;
-import anen;
-import aneo;
-import anep;
-import aneq;
-import aner;
+import anmq;
+import anmr;
+import anms;
+import anmt;
+import anmu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
 import com.tencent.device.file.DevVideoMsgProcessor;
@@ -48,8 +48,8 @@ public class SmartDeviceIPCHost
   public SmartDeviceIPCHost(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new anen(this, Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidContentServiceConnection = new aneo(this);
+    this.jdField_a_of_type_AndroidOsHandler = new anmq(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidContentServiceConnection = new anmr(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null)) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this);
@@ -181,7 +181,7 @@ public class SmartDeviceIPCHost
       localObject = Looper.getMainLooper();
       if (Thread.currentThread() != ((Looper)localObject).getThread())
       {
-        new Handler((Looper)localObject).post(new anep(this, paramBundle));
+        new Handler((Looper)localObject).post(new anms(this, paramBundle));
         return;
       }
       this.jdField_a_of_type_JavaUtilArrayList.add(paramBundle);
@@ -317,7 +317,7 @@ public class SmartDeviceIPCHost
       Object localObject1 = Looper.getMainLooper();
       if (Thread.currentThread() != ((Looper)localObject1).getThread())
       {
-        new Handler((Looper)localObject1).post(new aneq(this));
+        new Handler((Looper)localObject1).post(new anmt(this));
         return;
       }
       while (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
@@ -361,7 +361,7 @@ public class SmartDeviceIPCHost
       }
       return;
     }
-    localPluginCommunicationHandler.register(new aner(this, "com.qqsmartdevice.remotecall"));
+    localPluginCommunicationHandler.register(new anmu(this, "com.qqsmartdevice.remotecall"));
   }
   
   public void update(Observable paramObservable, Object paramObject)

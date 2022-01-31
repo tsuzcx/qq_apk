@@ -1,24 +1,24 @@
-import com.tencent.biz.addContactTroopView.AddContactTroopManage;
-import tencent.im.troop_view.troopviewInfo.RspBody;
+import com.tencent.av.widget.shimmer.ShimmerTextView;
 
 public class kki
   implements Runnable
 {
-  public kki(AddContactTroopManage paramAddContactTroopManage, troopviewInfo.RspBody paramRspBody) {}
+  public kki(ShimmerTextView paramShimmerTextView) {}
   
   public void run()
   {
-    synchronized (this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopManage)
-    {
-      this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopManage.jdField_a_of_type_TencentImTroop_viewTroopviewInfo$RspBody = this.jdField_a_of_type_TencentImTroop_viewTroopviewInfo$RspBody;
-      AddContactTroopManage.a(this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopManage, this.jdField_a_of_type_TencentImTroop_viewTroopviewInfo$RspBody);
-      return;
+    ShimmerTextView localShimmerTextView = this.a;
+    localShimmerTextView.a += 1;
+    if (this.a.a >= 50) {
+      this.a.a = 0;
     }
+    this.a.setGradientX(this.a.getWidth() * this.a.a / 50);
+    this.a.postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kki
  * JD-Core Version:    0.7.0.1
  */

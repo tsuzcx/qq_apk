@@ -84,8 +84,8 @@ public class ShortVideoGuideUtil
       paramAppInterface.putExtra("flow_camera_video_mode", true);
       if (bool2)
       {
-        paramString1 = PlusPanelUtils.a(AppConstants.aV);
-        paramString2 = new File(AppConstants.aV);
+        paramString1 = PlusPanelUtils.a(AppConstants.aW);
+        paramString2 = new File(AppConstants.aW);
         if (!paramString2.exists()) {
           paramString2.mkdirs();
         }

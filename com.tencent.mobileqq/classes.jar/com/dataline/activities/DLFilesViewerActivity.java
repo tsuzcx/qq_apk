@@ -142,16 +142,16 @@ public class DLFilesViewerActivity
       return false;
     }
     getWindow().setBackgroundDrawableResource(2131492895);
-    setContentView(2130968875);
+    setContentView(2130968879);
     getWindow().setBackgroundDrawable(null);
     b();
-    findViewById(2131364128);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131364129));
+    findViewById(2131364153);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131364154));
     this.jdField_a_of_type_ComTencentWidgetXListView.setStackFromBottom(true);
     this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter = new DatalineFilesAdapter(this, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet, this, this.app);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComDatalineUtilDatalineFilesAdapter);
-    paramBundle = LayoutInflater.from(getActivity()).inflate(2130968796, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getActivity().getResources().getDrawable(2130842196));
+    paramBundle = LayoutInflater.from(getActivity()).inflate(2130968800, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(getActivity().getResources().getDrawable(2130842228));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(paramBundle);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver);
     paramBundle = this.app.a();

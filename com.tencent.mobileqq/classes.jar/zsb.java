@@ -1,32 +1,30 @@
-import java.util.ArrayList;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.Constants.LogoutReason;
 
 public class zsb
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
-  public long e;
+  public zsb(QQAppInterface paramQQAppInterface) {}
   
-  public zsb(long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList paramArrayList, String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public zsb(long paramLong, ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    if (!QQAppInterface.a(this.a).verifyAuthentication())
+    {
+      QLog.e("QQAppInterface", 1, "", new RuntimeException("WTF"));
+      if (this.a.isLogin()) {
+        this.a.logout(true);
+      }
+      Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
+      localIntent.putExtra("title", "登录失败");
+      localIntent.putExtra("msg", "登录失败");
+      localIntent.putExtra("reason", Constants.LogoutReason.kicked);
+      localIntent.addFlags(268435456);
+      BaseApplicationImpl.sApplication.startActivity(localIntent);
+    }
   }
 }
 

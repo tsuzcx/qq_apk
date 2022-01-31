@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-class rik
-  implements Runnable
+public class rik
+  implements AbstractUnifiedMonitor.ThreadMonitorCallback
 {
-  rik(rij paramrij, String paramString) {}
+  public rik(DropFrameMonitor paramDropFrameMonitor) {}
   
-  public void run()
+  public void onThreadMonitorEnd(int paramInt)
   {
-    ((FriendListHandler)this.jdField_a_of_type_Rij.a.app.a(1)).a(this.jdField_a_of_type_JavaLangString, 0, 3999, "", true, false, -1L);
+    if (paramInt == 10) {
+      DropFrameMonitor.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     rik
  * JD-Core Version:    0.7.0.1
  */

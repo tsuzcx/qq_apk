@@ -1,19 +1,18 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.forward.ForwardShareCardOption;
 
-public final class adun
+class adun
   implements Runnable
 {
-  public adun(AppRuntime paramAppRuntime) {}
+  adun(adum paramadum) {}
   
   public void run()
   {
-    HtmlOffline.b("3136", this.a, true, new aduo(this));
+    this.a.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adun
  * JD-Core Version:    0.7.0.1
  */

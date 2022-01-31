@@ -1,27 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.permission.ComplexPart;
-import dov.com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Group;
-import dov.com.tencent.biz.qqstory.takevideo.permission.PermissionPart.PartCallback;
+import android.os.Handler;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import java.util.TimerTask;
 
 public class aocv
-  implements View.OnClickListener
+  extends TimerTask
 {
-  public aocv(ComplexPart paramComplexPart, ComplexPart.Group paramGroup) {}
+  private aocv(EditVideoMusic paramEditVideoMusic) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a()) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group.b();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart.a != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart.a.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart);
-      }
-      return;
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group.c();
-    }
+    this.a.a.sendEmptyMessage(1001);
   }
 }
 

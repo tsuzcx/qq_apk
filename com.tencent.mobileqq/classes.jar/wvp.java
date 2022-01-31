@@ -1,16 +1,12 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.phone.TosActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class wvp
-  implements View.OnLongClickListener
+class wvp
+  implements DialogInterface.OnClickListener
 {
-  public wvp(TosActivity paramTosActivity) {}
+  wvp(wvo paramwvo) {}
   
-  public boolean onLongClick(View paramView)
-  {
-    return true;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

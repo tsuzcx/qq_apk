@@ -1,57 +1,87 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.Doraemon.AppInfo;
+import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import tencent.im.oidb.oidb_0xb60.GetPrivilegeRsp;
+import tencent.im.oidb.oidb_0xb60.RspBody;
 
-public class rjg
-  implements View.OnClickListener
+class rjg
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public rjg(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  rjg(rjf paramrjf, rje paramrje) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.a.a != null)
-    {
-      this.a.getWindow().setSoftInputMode(2);
-      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "onResult type=" + this.jdField_a_of_type_Rje.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_Int + ", appid=" + this.jdField_a_of_type_Rje.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
     }
-    if (AddFriendVerifyActivity.a(this.a).getText().toString().length() > 90)
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      paramView = new Dialog(this.a, 2131624516);
-      paramView.setContentView(2130971508);
-      ((TextView)paramView.findViewById(2131362776)).setText(this.a.getString(2131434784));
-      ((ProgressBar)paramView.findViewById(2131362775)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131374243)).setImageResource(2130838752);
-      paramView.show();
+      rjf.a(this.jdField_a_of_type_Rjf, new ErrorMessage(paramInt, "DoraemonOpenAPI.permissionHelper.jobApiPermission|req error"));
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "req error");
+      }
     }
     do
     {
-      return;
-      this.a.a(AddFriendVerifyActivity.a(this.a).getText().toString(), true);
-      if (!NetworkUtil.d(this.a)) {
-        break;
+      for (;;)
+      {
+        return;
+        paramBundle = new oidb_0xb60.RspBody();
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if ((paramBundle.get_privilege_rsp.api_groups.has()) && (paramBundle.get_privilege_rsp.next_req_duration.has())) {
+            break label213;
+          }
+          rjf.b(this.jdField_a_of_type_Rjf, new ErrorMessage(-1, "DoraemonOpenAPI.permissionHelper.jobApiPermission|rsp invalid"));
+          if (QLog.isColorLevel())
+          {
+            QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "rsp invalid");
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+        {
+          rjf.c(this.jdField_a_of_type_Rjf, new ErrorMessage(-1, "DoraemonOpenAPI.permissionHelper.jobApiPermission|parse rsp error"));
+        }
       }
-      AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0));
-    } while (!"d2g".equals(this.a.getIntent().getStringExtra("jump_from")));
-    ReportController.b(this.a.app, "P_CliOper", "Grp_discuss", "", "discuss_set", "send_ask", 0, 0, AddFriendVerifyActivity.a(this.a), "", "", "");
+    } while (!QLog.isColorLevel());
+    QLog.i("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "parse rsp error", paramArrayOfByte);
     return;
-    QQToast.a(this.a, 1, 2131434811, 0).b(this.a.getTitleBarHeight());
+    label213:
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.permissionHelper.jobApiPermission", 2, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
+    }
+    paramArrayOfByte = DefaultDoraemonAppInfoHelper.a();
+    paramArrayOfByte.a(paramBundle.get_privilege_rsp.api_groups.get(), this.jdField_a_of_type_Rje.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaUtilSet);
+    if (paramBundle.get_privilege_rsp.api_names.size() > 0)
+    {
+      Iterator localIterator = paramBundle.get_privilege_rsp.api_names.get().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (DefaultDoraemonAppInfoHelper.a(paramArrayOfByte, str)) {
+          this.jdField_a_of_type_Rje.jdField_a_of_type_ComTencentMobileqqDoraemonAppInfo.jdField_a_of_type_JavaUtilSet.add(str);
+        }
+      }
+    }
+    this.jdField_a_of_type_Rje.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + paramBundle.get_privilege_rsp.next_req_duration.get() * 1000L);
+    rjf.a(this.jdField_a_of_type_Rjf, this.jdField_a_of_type_Rje);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rjg
  * JD-Core Version:    0.7.0.1
  */

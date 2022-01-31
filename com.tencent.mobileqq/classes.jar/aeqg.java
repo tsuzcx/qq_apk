@@ -1,30 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.data.EmoticonTab;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class aeqg
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public aeqg(NearbyGuideActivity paramNearbyGuideActivity, ActionSheet paramActionSheet) {}
+  public aeqg(EmoticonManager paramEmoticonManager, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    switch (paramInt)
+    EmoticonTab localEmoticonTab = (EmoticonTab)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a(EmoticonTab.class, this.jdField_a_of_type_JavaLangString);
+    if (localEmoticonTab != null) {}
+    for (localEmoticonTab.aioHave = true;; localEmoticonTab.aioHave = true)
     {
-    default: 
+      EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, localEmoticonTab);
       return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.h();
-      return;
+      localEmoticonTab = new EmoticonTab();
+      localEmoticonTab.epId = this.jdField_a_of_type_JavaLangString;
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqg
  * JD-Core Version:    0.7.0.1
  */

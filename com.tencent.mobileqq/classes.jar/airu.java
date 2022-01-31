@@ -1,88 +1,57 @@
-import ConfigPush.FileStoragePushFSSvcList;
-import ConfigPush.FileStorageServerListInfo;
-import com.tencent.mobileqq.transfile.SosoSrvAddrProvider;
-import com.tencent.mobileqq.transfile.SosoSrvAddrProvider.SosoSrvAddrType;
-import java.util.ArrayList;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.TeamWorkAuthorizeUinListAdapter;
+import com.tencent.mobileqq.teamwork.TeamWorkAuthorizeUinListAdapter.Holder;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class airu
+  implements ActionSheet.OnButtonClickListener
 {
-  private int[] jdField_a_of_type_ArrayOfInt;
+  public airu(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, TeamWorkAuthorizeUinListAdapter.Holder paramHolder, SparseArray paramSparseArray, ActionSheet paramActionSheet) {}
   
-  public airu(SosoSrvAddrProvider paramSosoSrvAddrProvider) {}
-  
-  private int a(int[] paramArrayOfInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramArrayOfInt != null)
+    TimDocSSOMsg.UinRightInfo localUinRightInfo = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkAuthorizeUinListAdapter$Holder.a;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) {
+      paramInt = -1;
+    }
+    switch (paramInt)
     {
-      ArrayList localArrayList = new ArrayList();
-      int j = 5;
-      int i = 0;
-      if (i < paramArrayOfInt.length)
+    default: 
+    case 2131439192: 
+    case 2131439193: 
+      for (;;)
       {
-        int k;
-        if (paramArrayOfInt[i] < j)
-        {
-          k = paramArrayOfInt[i];
-          localArrayList.clear();
-          localArrayList.add(Integer.valueOf(i));
+        TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.a.notifyDataSetChanged();
+        if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
+          this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
         }
-        for (;;)
-        {
-          i += 1;
-          j = k;
-          break;
-          k = j;
-          if (paramArrayOfInt[i] == j)
-          {
-            localArrayList.add(Integer.valueOf(i));
-            k = j;
-          }
-        }
-      }
-      if (localArrayList.size() > 0) {
-        return ((Integer)localArrayList.get(0)).intValue();
+        return;
+        paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
+        break;
+        localUinRightInfo.uint32_right.set(1);
+        continue;
+        localUinRightInfo.uint32_right.set(2);
       }
     }
-    return -1;
-  }
-  
-  public FileStorageServerListInfo a(SosoSrvAddrProvider.SosoSrvAddrType paramSosoSrvAddrType)
-  {
-    Object localObject2 = null;
-    ArrayList localArrayList = SosoSrvAddrProvider.a(this.jdField_a_of_type_ComTencentMobileqqTransfileSosoSrvAddrProvider, paramSosoSrvAddrType);
-    Object localObject1 = localObject2;
-    if (localArrayList != null)
+    if ((localUinRightInfo.uint32_right.get() == 1) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b == 1)) {}
+    for (paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131439200);; paramView = this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getString(2131439199))
     {
-      localObject1 = localObject2;
-      if (localArrayList.size() > 0)
-      {
-        int i = a(a(paramSosoSrvAddrType));
-        localObject1 = localObject2;
-        if (i > -1)
-        {
-          localObject1 = localObject2;
-          if (i < localArrayList.size()) {
-            localObject1 = (FileStorageServerListInfo)localArrayList.get(i);
-          }
-        }
+      DialogUtil.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.getActivity(), 230, "提示", paramView, 2131433029, 2131434057, new airv(this, localUinRightInfo), new airw(this)).show();
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment.b != 1) {
+        break;
       }
+      ReportController.b(TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment), "dc00898", "", "", "0x8007CFC", "0x8007CFC", 0, 0, "", "", "", "");
+      break;
     }
-    return localObject1;
-  }
-  
-  public void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
-  {
-    if ((paramFileStoragePushFSSvcList != null) && (paramFileStoragePushFSSvcList.vUrlEncodeServiceList != null) && (paramFileStoragePushFSSvcList.vUrlEncodeServiceList.size() > 0)) {
-      this.jdField_a_of_type_ArrayOfInt = new int[paramFileStoragePushFSSvcList.vUrlEncodeServiceList.size()];
-    }
-  }
-  
-  int[] a(SosoSrvAddrProvider.SosoSrvAddrType paramSosoSrvAddrType)
-  {
-    if (paramSosoSrvAddrType == SosoSrvAddrProvider.SosoSrvAddrType.URL_ENCODE_SRV) {
-      return this.jdField_a_of_type_ArrayOfInt;
-    }
-    return null;
   }
 }
 

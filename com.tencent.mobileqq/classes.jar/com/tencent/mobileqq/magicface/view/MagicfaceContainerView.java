@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.magicface.view;
 
-import aeeg;
+import aemq;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 public class MagicfaceContainerView
   extends RelativeLayout
 {
-  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new aeeg(this);
+  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new aemq(this);
   GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   public MagicfaceContainerView.MagicfaceGestureListener a;
   boolean jdField_a_of_type_Boolean = false;

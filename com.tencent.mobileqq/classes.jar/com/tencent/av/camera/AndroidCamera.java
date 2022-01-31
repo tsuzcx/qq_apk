@@ -25,13 +25,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
-import jgq;
-import jgr;
+import jit;
+import jiu;
 
 public class AndroidCamera
 {
   public static int a;
-  static jgr jdField_a_of_type_Jgr = new jgr();
+  static jiu jdField_a_of_type_Jiu = new jiu();
   public static boolean a;
   static int jdField_b_of_type_Int = 15000;
   private static boolean jdField_f_of_type_Boolean;
@@ -39,7 +39,7 @@ public class AndroidCamera
   public static int l = 480;
   public static int m = 17;
   public Context a;
-  private Camera.PreviewCallback jdField_a_of_type_AndroidHardwareCamera$PreviewCallback = new jgq(this);
+  private Camera.PreviewCallback jdField_a_of_type_AndroidHardwareCamera$PreviewCallback = new jit(this);
   public Camera a;
   Display jdField_a_of_type_AndroidViewDisplay;
   public AndroidCamera.CameraPreviewCallback a;
@@ -76,8 +76,8 @@ public class AndroidCamera
     this.jdField_e_of_type_Int = DeviceInfoUtil.a();
     this.jdField_a_of_type_JavaLangString = Build.MODEL;
     this.jdField_b_of_type_JavaLangString = Build.MANUFACTURER;
-    jdField_a_of_type_Jgr.jdField_b_of_type_Int = -1;
-    jdField_a_of_type_Jgr.jdField_c_of_type_Int = -1;
+    jdField_a_of_type_Jiu.jdField_b_of_type_Int = -1;
+    jdField_a_of_type_Jiu.jdField_c_of_type_Int = -1;
     AVLog.c("AndroidCamera", "Device_Tag = " + this.jdField_b_of_type_JavaLangString + ": " + this.jdField_a_of_type_JavaLangString);
     AVLog.c("AndroidCamera", "Rom_Tag = " + Build.VERSION.INCREMENTAL);
   }
@@ -556,9 +556,9 @@ public class AndroidCamera
     return b();
   }
   
-  protected jgr a(int paramInt, Camera paramCamera)
+  protected jiu a(int paramInt, Camera paramCamera)
   {
-    paramCamera = new jgr();
+    paramCamera = new jiu();
     try
     {
       Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
@@ -607,7 +607,7 @@ public class AndroidCamera
     for (;;)
     {
       return;
-      synchronized (jdField_a_of_type_Jgr)
+      synchronized (jdField_a_of_type_Jiu)
       {
         a(this.jdField_f_of_type_Int, this.jdField_a_of_type_AndroidHardwareCamera);
       }
@@ -658,7 +658,7 @@ public class AndroidCamera
     for (;;)
     {
       return;
-      synchronized (jdField_a_of_type_Jgr)
+      synchronized (jdField_a_of_type_Jiu)
       {
         a(this.jdField_f_of_type_Int, this.jdField_a_of_type_AndroidHardwareCamera);
       }
@@ -757,14 +757,14 @@ public class AndroidCamera
   
   protected boolean a(int paramInt, Camera paramCamera)
   {
-    jgr localjgr = a(paramInt, paramCamera);
-    AVLog.c("AndroidCamera", "getCameraDisplayOrientation orientation:" + localjgr.jdField_b_of_type_Int + ",rotation:" + localjgr.jdField_c_of_type_Int);
+    jiu localjiu = a(paramInt, paramCamera);
+    AVLog.c("AndroidCamera", "getCameraDisplayOrientation orientation:" + localjiu.jdField_b_of_type_Int + ",rotation:" + localjiu.jdField_c_of_type_Int);
     this.h = b();
     this.g = c();
-    if (localjgr.jdField_a_of_type_Int == 1)
+    if (localjiu.jdField_a_of_type_Int == 1)
     {
       paramInt = (360 - (d() + e()) % 360) % 360;
-      if (localjgr.jdField_a_of_type_Int != 1) {
+      if (localjiu.jdField_a_of_type_Int != 1) {
         break label166;
       }
     }
@@ -772,8 +772,8 @@ public class AndroidCamera
     for (paramInt = (paramInt + a(this.jdField_e_of_type_Boolean)) % 360;; paramInt = (paramInt + b(this.jdField_e_of_type_Boolean)) % 360)
     {
       a(paramCamera, paramInt);
-      jdField_a_of_type_Jgr.jdField_a_of_type_Int = localjgr.jdField_a_of_type_Int;
-      jdField_a_of_type_Jgr.jdField_b_of_type_Int = localjgr.jdField_b_of_type_Int;
+      jdField_a_of_type_Jiu.jdField_a_of_type_Int = localjiu.jdField_a_of_type_Int;
+      jdField_a_of_type_Jiu.jdField_b_of_type_Int = localjiu.jdField_b_of_type_Int;
       return true;
       paramInt = (d() - e() + 360) % 360;
       break;
@@ -1027,7 +1027,7 @@ public class AndroidCamera
     //   17: putfield 55	com/tencent/av/camera/AndroidCamera:jdField_d_of_type_Int	I
     //   20: aload_0
     //   21: getfield 55	com/tencent/av/camera/AndroidCamera:jdField_d_of_type_Int	I
-    //   24: ifle +222 -> 246
+    //   24: ifle +227 -> 251
     //   27: new 348	android/hardware/Camera$CameraInfo
     //   30: dup
     //   31: invokespecial 349	android/hardware/Camera$CameraInfo:<init>	()V
@@ -1045,7 +1045,7 @@ public class AndroidCamera
     //   49: iload_1
     //   50: aload_0
     //   51: getfield 55	com/tencent/av/camera/AndroidCamera:jdField_d_of_type_Int	I
-    //   54: if_icmpge +146 -> 200
+    //   54: if_icmpge +151 -> 205
     //   57: aload_3
     //   58: astore 4
     //   60: aload_3
@@ -1093,99 +1093,102 @@ public class AndroidCamera
     //   126: iconst_0
     //   127: putfield 345	com/tencent/av/camera/AndroidCamera:jdField_f_of_type_Int	I
     //   130: ldc 123
-    //   132: new 125	java/lang/StringBuilder
-    //   135: dup
-    //   136: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   139: ldc_w 623
-    //   142: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: aload_3
-    //   146: invokevirtual 361	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
-    //   149: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   152: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   155: invokestatic 143	com/tencent/av/AVLog:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   158: aconst_null
-    //   159: astore 4
-    //   161: goto -47 -> 114
-    //   164: astore_3
-    //   165: aconst_null
-    //   166: astore 5
-    //   168: ldc 123
-    //   170: new 125	java/lang/StringBuilder
-    //   173: dup
-    //   174: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   177: ldc_w 625
-    //   180: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: aload_3
-    //   184: invokevirtual 364	java/lang/SecurityException:getMessage	()Ljava/lang/String;
-    //   187: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   190: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   193: invokestatic 143	com/tencent/av/AVLog:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   196: aload 5
-    //   198: astore 6
-    //   200: aload 6
-    //   202: areturn
-    //   203: astore_3
-    //   204: aconst_null
-    //   205: astore 4
-    //   207: ldc 123
-    //   209: new 125	java/lang/StringBuilder
-    //   212: dup
-    //   213: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   216: ldc_w 360
-    //   219: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: aload_3
-    //   223: invokevirtual 367	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   226: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   229: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   232: invokestatic 143	com/tencent/av/AVLog:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   235: aload 4
-    //   237: areturn
-    //   238: astore_3
-    //   239: goto -32 -> 207
-    //   242: astore_3
-    //   243: goto -75 -> 168
-    //   246: aconst_null
-    //   247: areturn
+    //   132: iconst_1
+    //   133: new 125	java/lang/StringBuilder
+    //   136: dup
+    //   137: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   140: ldc_w 623
+    //   143: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   146: iload_1
+    //   147: invokevirtual 167	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   150: ldc_w 504
+    //   153: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   159: aload_3
+    //   160: invokestatic 626	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   163: aconst_null
+    //   164: astore 4
+    //   166: goto -52 -> 114
+    //   169: astore_3
+    //   170: aconst_null
+    //   171: astore 5
+    //   173: ldc 123
+    //   175: new 125	java/lang/StringBuilder
+    //   178: dup
+    //   179: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   182: ldc_w 628
+    //   185: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: aload_3
+    //   189: invokevirtual 364	java/lang/SecurityException:getMessage	()Ljava/lang/String;
+    //   192: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   195: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   198: invokestatic 143	com/tencent/av/AVLog:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   201: aload 5
+    //   203: astore 6
+    //   205: aload 6
+    //   207: areturn
+    //   208: astore_3
+    //   209: aconst_null
+    //   210: astore 4
+    //   212: ldc 123
+    //   214: new 125	java/lang/StringBuilder
+    //   217: dup
+    //   218: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   221: ldc_w 360
+    //   224: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   227: aload_3
+    //   228: invokevirtual 367	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   231: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   237: invokestatic 143	com/tencent/av/AVLog:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   240: aload 4
+    //   242: areturn
+    //   243: astore_3
+    //   244: goto -32 -> 212
+    //   247: astore_3
+    //   248: goto -75 -> 173
+    //   251: aconst_null
+    //   252: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	248	0	this	AndroidCamera
-    //   37	81	1	n	int
+    //   0	253	0	this	AndroidCamera
+    //   37	110	1	n	int
     //   80	7	2	i1	int
     //   39	82	3	localObject1	Object
-    //   124	22	3	localRuntimeException	RuntimeException
-    //   164	20	3	localSecurityException1	SecurityException
-    //   203	20	3	localException1	Exception
-    //   238	1	3	localException2	Exception
-    //   242	1	3	localSecurityException2	SecurityException
-    //   44	192	4	localObject2	Object
-    //   47	150	5	localObject3	Object
-    //   41	160	6	localObject4	Object
+    //   124	36	3	localRuntimeException	RuntimeException
+    //   169	20	3	localSecurityException1	SecurityException
+    //   208	20	3	localException1	Exception
+    //   243	1	3	localException2	Exception
+    //   247	1	3	localSecurityException2	SecurityException
+    //   44	197	4	localObject2	Object
+    //   47	155	5	localObject3	Object
+    //   41	165	6	localObject4	Object
     //   34	42	7	localCameraInfo	Camera.CameraInfo
     // Exception table:
     //   from	to	target	type
     //   95	100	124	java/lang/RuntimeException
     //   106	111	124	java/lang/RuntimeException
-    //   5	20	164	java/lang/SecurityException
-    //   20	36	164	java/lang/SecurityException
-    //   125	158	164	java/lang/SecurityException
-    //   5	20	203	java/lang/Exception
-    //   20	36	203	java/lang/Exception
-    //   125	158	203	java/lang/Exception
-    //   49	57	238	java/lang/Exception
-    //   63	69	238	java/lang/Exception
-    //   75	81	238	java/lang/Exception
-    //   95	100	238	java/lang/Exception
-    //   106	111	238	java/lang/Exception
-    //   49	57	242	java/lang/SecurityException
-    //   63	69	242	java/lang/SecurityException
-    //   75	81	242	java/lang/SecurityException
-    //   95	100	242	java/lang/SecurityException
-    //   106	111	242	java/lang/SecurityException
+    //   5	20	169	java/lang/SecurityException
+    //   20	36	169	java/lang/SecurityException
+    //   125	163	169	java/lang/SecurityException
+    //   5	20	208	java/lang/Exception
+    //   20	36	208	java/lang/Exception
+    //   125	163	208	java/lang/Exception
+    //   49	57	243	java/lang/Exception
+    //   63	69	243	java/lang/Exception
+    //   75	81	243	java/lang/Exception
+    //   95	100	243	java/lang/Exception
+    //   106	111	243	java/lang/Exception
+    //   49	57	247	java/lang/SecurityException
+    //   63	69	247	java/lang/SecurityException
+    //   75	81	247	java/lang/SecurityException
+    //   95	100	247	java/lang/SecurityException
+    //   106	111	247	java/lang/SecurityException
   }
   
   public void b(int paramInt)
   {
-    jdField_a_of_type_Jgr.jdField_c_of_type_Int = ((this.h + paramInt) % 360);
+    jdField_a_of_type_Jiu.jdField_c_of_type_Int = ((this.h + paramInt) % 360);
   }
   
   protected boolean b()
@@ -1341,7 +1344,7 @@ public class AndroidCamera
   
   public int d()
   {
-    if (jdField_a_of_type_Jgr.jdField_b_of_type_Int == -1)
+    if (jdField_a_of_type_Jiu.jdField_b_of_type_Int == -1)
     {
       if (this.jdField_c_of_type_Int == 1) {
         return 270;
@@ -1350,7 +1353,7 @@ public class AndroidCamera
         return 90;
       }
     }
-    return jdField_a_of_type_Jgr.jdField_b_of_type_Int;
+    return jdField_a_of_type_Jiu.jdField_b_of_type_Int;
   }
   
   public boolean d()
@@ -1364,10 +1367,10 @@ public class AndroidCamera
   
   public int e()
   {
-    if (jdField_a_of_type_Jgr.jdField_c_of_type_Int == -1) {
+    if (jdField_a_of_type_Jiu.jdField_c_of_type_Int == -1) {
       return 0;
     }
-    return jdField_a_of_type_Jgr.jdField_c_of_type_Int;
+    return jdField_a_of_type_Jiu.jdField_c_of_type_Int;
   }
   
   public boolean e()
@@ -1387,7 +1390,7 @@ public class AndroidCamera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.camera.AndroidCamera
  * JD-Core Version:    0.7.0.1
  */

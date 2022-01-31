@@ -1,26 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class zao
-  extends BroadcastReceiver
+  implements Runnable
 {
-  private zao(BaseActivity2 paramBaseActivity2) {}
+  public zao(ApolloStoreActivity paramApolloStoreActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+    if (!ApolloEngine.a())
     {
-      BaseActivity2.T = false;
-      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.T);
+      QLog.e("ApolloStoreActivity", 1, "error engine not ready");
+      return;
     }
+    this.a.a.sendEmptyMessage(357);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zao
  * JD-Core Version:    0.7.0.1
  */

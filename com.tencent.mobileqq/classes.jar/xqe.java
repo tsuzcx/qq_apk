@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.mobileqq.activity.bless.BlessManager;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class xqe
   implements Runnable
 {
-  public xqe(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xqe(RecentAdapter paramRecentAdapter) {}
   
   public void run()
   {
-    int i = (int)(this.a.a.getHeight() * 0.35F);
-    ViewGroup.LayoutParams localLayoutParams = this.a.c.getLayoutParams();
-    localLayoutParams.height = (i - this.a.d.getHeight());
-    this.a.c.setLayoutParams(localLayoutParams);
+    ((BlessManager)this.a.a.getManager(137)).b(true);
   }
 }
 

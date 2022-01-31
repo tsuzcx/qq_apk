@@ -1,52 +1,23 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgTranslator;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgTranslator.TranslatorListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import java.io.OutputStream;
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule.BussinessData;
 
 public class usb
-  implements DoodleMsgTranslator.TranslatorListener
+  implements Runnable
 {
-  public usb(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
+  public usb(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, AioAnimationRule paramAioAnimationRule) {}
   
-  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
+  public void run()
   {
-    if (paramDoodleData == null) {
-      return false;
-    }
-    paramDoodleData = paramDoodleData.toByteArray();
-    byte[] arrayOfByte = DoodleMsgTranslator.a(paramDoodleData.length);
-    try
+    AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a == null) {}
+    for (int i = -1;; i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a.a)
     {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleData)
-    {
-      break label33;
-    }
-  }
-  
-  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
-  {
-    if (paramDoodleHeader == null) {
-      return false;
-    }
-    paramDoodleHeader = paramDoodleHeader.toByteArray();
-    byte[] arrayOfByte = DoodleMsgTranslator.a(paramDoodleHeader.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleHeader)
-    {
-      break label33;
+      localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(0), Integer.valueOf(i) });
+      return;
     }
   }
 }

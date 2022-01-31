@@ -1,30 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter.ViewHolder;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import java.util.List;
+import com.tencent.mobileqq.activity.bless.BlessManager;
+import com.tencent.mobileqq.activity.bless.BlessTask;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class wki
-  implements View.OnClickListener
+  extends DownloadListener
 {
-  public wki(NotificationAdapter paramNotificationAdapter) {}
+  public wki(BlessManager paramBlessManager, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DownloadTask paramDownloadTask)
   {
-    NotificationAdapter.ViewHolder localViewHolder = (NotificationAdapter.ViewHolder)paramView.getTag();
-    if ((localViewHolder == null) || (!(localViewHolder instanceof NotificationAdapter.ViewHolder))) {
+    BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).remove(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).remove(this.jdField_a_of_type_JavaLangString);
+    if (paramDownloadTask.a() == 3)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessManager", 2, "download finished " + this.b);
+      }
+      if ((this.b != null) && (BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager) != null) && (this.b.equals(BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).starVideo))) {
+        BlessManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-    paramView = (View)paramView.getParent();
-    if ((paramView instanceof ShaderAnimLayout)) {
-      ((ShaderAnimLayout)paramView).d();
-    }
-    NotificationAdapter.a(this.a, localViewHolder.a);
-    this.a.jdField_a_of_type_JavaUtilList.add(NotificationAdapter.a(this.a).remove(this.a.getCount() - localViewHolder.b - 1));
-    this.a.notifyDataSetChanged();
+    QLog.d("BlessManager", 2, "downloadFile failed: " + paramDownloadTask.b + " code=" + paramDownloadTask.a);
   }
 }
 

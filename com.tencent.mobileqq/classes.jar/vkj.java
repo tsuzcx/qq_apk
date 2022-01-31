@@ -1,11 +1,54 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.Holder;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import java.lang.ref.WeakReference;
 
 public class vkj
-  extends vkh
+  implements Runnable
 {
-  public vkj(QQAppInterface paramQQAppInterface)
+  private WeakReference a;
+  private WeakReference b;
+  private WeakReference c;
+  private WeakReference d;
+  
+  public vkj(MessageForScribble paramMessageForScribble, ScribbleItemBuilder.Holder paramHolder, Handler paramHandler, Context paramContext)
   {
-    super(paramQQAppInterface);
+    this.a = new WeakReference(paramMessageForScribble);
+    this.b = new WeakReference(paramHolder);
+    this.c = new WeakReference(paramHandler);
+    this.d = new WeakReference(paramContext);
+  }
+  
+  public void run()
+  {
+    if (this.a != null) {}
+    for (MessageForScribble localMessageForScribble = (MessageForScribble)this.a.get();; localMessageForScribble = null)
+    {
+      if (this.b != null) {}
+      for (ScribbleItemBuilder.Holder localHolder = (ScribbleItemBuilder.Holder)this.b.get();; localHolder = null)
+      {
+        if (this.c != null) {}
+        for (Handler localHandler = (Handler)this.c.get();; localHandler = null)
+        {
+          if (this.d != null) {}
+          for (Context localContext = (Context)this.d.get();; localContext = null)
+          {
+            if ((localMessageForScribble == null) || (localHandler == null) || (localHolder == null) || (localContext == null)) {}
+            do
+            {
+              return;
+              ScribbleItemBuilder.a(localMessageForScribble);
+              ScribbleItemBuilder.a(localMessageForScribble, localHolder, localMessageForScribble.mUiProgress, false, localContext, localHandler);
+            } while (!localHolder.a.isShown());
+            localHandler.postDelayed(localMessageForScribble.mUpdateProgressRunnable, 50L);
+            return;
+          }
+        }
+      }
+    }
   }
 }
 

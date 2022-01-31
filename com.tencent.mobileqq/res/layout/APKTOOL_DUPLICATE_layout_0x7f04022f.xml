@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dc7" android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="0.6dip" android:layout_marginBottom="9.699982dip" />
-    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dc8" android:layout_width="fill_parent" android:layout_height="41.0dip">
-        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dc9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="一个标题" />
-        <TextView android:id="@id/info" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0282" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0284" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dca" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dcb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020468" android:focusable="false" android:layout_width="fill_parent" android:layout_height="20.0dip" />
-</LinearLayout>
+    <com.tencent.mobileqq.widget.TabBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dd3" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0327" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0327" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040104" />
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dd4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0dd3" />
+</RelativeLayout>

@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.widget.ActionSheet;
-
 public class mxw
-  implements View.OnClickListener
 {
-  public mxw(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
-    }
-  }
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
 }
 
 

@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.text.TextUtils.LoadSysEmojiCallback;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class aisz
+public final class aisz
   implements Runnable
 {
-  aisz(aisy paramaisy) {}
+  public aisz(int paramInt, TextUtils.LoadSysEmojiCallback paramLoadSysEmojiCallback) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.getActivity(), 2, "已保存到本地相册", 0).a();
+    Drawable localDrawable = TextUtils.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
+    if ((localDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback.a(localDrawable);
+    }
   }
 }
 

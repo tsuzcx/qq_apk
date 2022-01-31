@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.richmedia.NewPreFlowCamera;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class xst
   implements Runnable
 {
-  public xst(NewPreFlowCamera paramNewPreFlowCamera) {}
+  public xst(LoginView paramLoginView) {}
   
   public void run()
   {
-    GestureMgr.a().b();
+    this.a.c.setVisibility(0);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
+    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
+    localTranslateAnimation.setDuration(500L);
+    localTranslateAnimation.setFillAfter(true);
+    localTranslateAnimation.setAnimationListener(new xsu(this));
+    this.a.c.startAnimation(localTranslateAnimation);
   }
 }
 

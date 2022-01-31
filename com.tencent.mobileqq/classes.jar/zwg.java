@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.asyncdb.cache.RoamDateCache;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-class zwg
-  implements Runnable
+public class zwg
+  implements Comparator
 {
-  zwg(zwe paramzwe, SosoInterface.OnLocationListener paramOnLocationListener) {}
+  public zwg(RoamDateCache paramRoamDateCache) {}
   
-  public void run()
+  public int a(Map.Entry paramEntry1, Map.Entry paramEntry2)
   {
-    if (!SosoInterface.OnLocationListener.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener)) {
-      SosoInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
+    paramEntry1 = ((java.lang.String)paramEntry1.getKey()).split("&")[1];
+    int i = Integer.parseInt(paramEntry1.split("-")[0]);
+    int j = Integer.parseInt(paramEntry1.split("-")[1]);
+    paramEntry1 = ((java.lang.String)paramEntry2.getKey()).split("&")[1];
+    int k = Integer.parseInt(paramEntry1.split("-")[0]);
+    int m = Integer.parseInt(paramEntry1.split("-")[1]);
+    if (i > k) {
+      return 1;
     }
+    if (i == k) {
+      return j - m;
+    }
+    return -1;
   }
 }
 

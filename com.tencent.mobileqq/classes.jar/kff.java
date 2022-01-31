@@ -1,63 +1,47 @@
-import com.tencent.av.business.handler.AVC2CDataHandler.C2CDataHandler;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.av.AVLog;
+import com.tencent.av.business.manager.filter.FilterItem;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager.FilterTextAdapter;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager.OnEffectFilterChangeListener;
+import java.lang.ref.WeakReference;
 
-class kff
-  implements AVC2CDataHandler.C2CDataHandler
+public class kff
+  implements ViewPager.OnPageChangeListener
 {
-  kff(kfe paramkfe) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  public kff(EffectFilterTextPager paramEffectFilterTextPager, EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
   {
-    boolean bool2 = true;
-    if (11 != paramInt1) {}
-    do
-    {
-      return false;
-      QLog.w(this.a.i, 1, "onC2CDataCome, subType[" + paramInt2 + "], mPeerSupportRedBag[" + this.a.jdField_a_of_type_Int + "], mPeerSendMode[" + this.a.jdField_a_of_type_Boolean + "]");
-      paramArrayOfByte = this.a.a();
-    } while (paramArrayOfByte == null);
-    boolean bool1;
-    switch (paramInt2)
-    {
-    default: 
-      bool1 = false;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnEffectFilterChangeListener);
+  }
+  
+  public void onPageScrollStateChanged(int paramInt)
+  {
+    AVLog.c("EffectFilterTextPager", "onPageScrollStateChanged : " + paramInt);
+    if (paramInt == 0) {
+      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a(1300);
     }
-    for (;;)
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    AVLog.c("EffectFilterTextPager", "onPageScrollStateChanged onPageSelected : " + paramInt + "|" + EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager));
+    if ((EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) != paramInt) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      return bool1;
-      this.a.jdField_a_of_type_Int = 2;
-      paramArrayOfByte.b("AbilityResDownloading");
-      bool1 = bool2;
-      continue;
-      this.a.jdField_a_of_type_Int = 1;
-      paramArrayOfByte.b("AbilityEnable");
-      bool1 = bool2;
-      continue;
-      this.a.jdField_a_of_type_Int = 0;
-      paramArrayOfByte.b("AbilityDisable");
-      bool1 = bool2;
-      continue;
-      this.a.jdField_a_of_type_Boolean = true;
-      bool1 = bool2;
-      if (this.a.jdField_a_of_type_Int != 1)
-      {
-        this.a.jdField_a_of_type_Int = 1;
-        paramArrayOfByte.b("Enter_SendMode");
-        bool1 = bool2;
-        continue;
-        this.a.jdField_a_of_type_Boolean = false;
-        bool1 = bool2;
-        continue;
-        paramArrayOfByte.a(this.a.b);
-        bool1 = bool2;
+      FilterItem localFilterItem = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a.a(paramInt);
+      if (localFilterItem != null) {
+        ((EffectFilterTextPager.OnEffectFilterChangeListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt, localFilterItem.getId());
       }
+      EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager, -1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kff
  * JD-Core Version:    0.7.0.1
  */

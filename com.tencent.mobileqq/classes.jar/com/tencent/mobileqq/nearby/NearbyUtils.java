@@ -1,13 +1,16 @@
 package com.tencent.mobileqq.nearby;
 
-import aenc;
+import aevn;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -128,6 +131,13 @@ public final class NearbyUtils
     QLog.i(paramString1, 2, localStringBuilder.toString());
   }
   
+  public static void a(Activity paramActivity, int paramInt)
+  {
+    Intent localIntent = new Intent(paramActivity, BindNumberActivity.class);
+    localIntent.putExtra("kSrouce", 20);
+    paramActivity.startActivityForResult(localIntent, paramInt);
+  }
+  
   public static void a(EditText paramEditText, int paramInt)
   {
     String str = paramEditText.getText().toString();
@@ -163,7 +173,22 @@ public final class NearbyUtils
     if (QLog.isColorLevel()) {
       QLog.d("NearbyUtils", 2, "targetUin:" + paramString + "|type:" + paramInt);
     }
-    ThreadManager.post(new aenc(paramString, paramInt, paramQQAppInterface), 8, null, false);
+    ThreadManager.post(new aevn(paramString, paramInt, paramQQAppInterface), 8, null, false);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  {
+    if (paramString2 == null) {
+      paramString2 = "";
+    }
+    for (;;)
+    {
+      ReportController.b(paramQQAppInterface, "dc00899", "grp_lbs", paramString2, "talk_safety_check", paramString1, 0, 0, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.bindphone", 2, "report talk check: action=" + paramString1 + ", toUin=" + paramString2);
+      }
+      return;
+    }
   }
   
   public static void a(NearbyAppInterface paramNearbyAppInterface, String paramString, int paramInt)

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import aidt;
+import aiin;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Environment;
@@ -12,6 +12,7 @@ import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.mobileqq.shortvideo.PendantVersionManager;
 import com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr;
 import com.tencent.mobileqq.shortvideo.ShortVideoPortraitResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoTrackingResourceMgr;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
 import com.tencent.qphone.base.util.QLog;
@@ -33,6 +34,7 @@ public class PtvFilterSoLoad
   private static final String[] jdField_c_of_type_ArrayOfJavaLangString = { "qq.android.native.short.video.x86", "qq.android.native.short.video", "qq.android.native.short.video.v658", "qq.android.native.short.video.v660", "qq.android.native.short.video.v665", "qq.android.native.short.video.v670", "qq.android.native.short.video.v700" };
   private static boolean d;
   private static boolean e;
+  private static boolean f;
   
   static
   {
@@ -40,7 +42,7 @@ public class PtvFilterSoLoad
     jdField_a_of_type_JavaLangString = Environment.getDataDirectory() + "/data/" + "com.tencent.mobileqq" + "/app_lib/qq_filter/";
     jdField_a_of_type_JavaLangObject = new Object();
     jdField_a_of_type_ComTencentMobileqqShortvideoUtilPtvFilterSoLoad$SVFilterDownloadSession = new PtvFilterSoLoad.SVFilterDownloadSession();
-    jdField_b_of_type_JavaLangString = AppConstants.aJ + "early";
+    jdField_b_of_type_JavaLangString = AppConstants.aK + "early";
   }
   
   public static int a()
@@ -171,13 +173,13 @@ public class PtvFilterSoLoad
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 145	com/tencent/mobileqq/shortvideo/util/PtvFilterSoLoad:b	()Z
+    //   3: invokestatic 146	com/tencent/mobileqq/shortvideo/util/PtvFilterSoLoad:b	()Z
     //   6: ifeq +24 -> 30
     //   9: aload_0
-    //   10: invokestatic 212	com/tencent/mobileqq/shortvideo/ShortVideoResDownload:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   10: invokestatic 213	com/tencent/mobileqq/shortvideo/ShortVideoResDownload:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
     //   13: pop
     //   14: aload_1
-    //   15: invokestatic 147	com/tencent/mobileqq/shortvideo/util/PtvFilterSoLoad:a	(Landroid/content/Context;)Z
+    //   15: invokestatic 148	com/tencent/mobileqq/shortvideo/util/PtvFilterSoLoad:a	(Landroid/content/Context;)Z
     //   18: istore_2
     //   19: iload_2
     //   20: ifeq +10 -> 30
@@ -210,6 +212,26 @@ public class PtvFilterSoLoad
     return PtvFilterSoLoad.SVFilterSoLoadStatus.a(paramString);
   }
   
+  public static int b()
+  {
+    int i;
+    if (g()) {
+      if (TrackerSoLoader.a()) {
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PtvFilterSoLoad", 2, "getTrackingSoState:" + i);
+      }
+      return i;
+      i = 2;
+      continue;
+      i = 0;
+    }
+  }
+  
   public static String b(Context paramContext)
   {
     int[] arrayOfInt = new int[1];
@@ -227,7 +249,7 @@ public class PtvFilterSoLoad
     if (!jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_Boolean = true;
-      ThreadManager.post(new aidt(), 5, null, false);
+      ThreadManager.post(new aiin(), 5, null, false);
     }
   }
   
@@ -309,6 +331,17 @@ public class PtvFilterSoLoad
     return true;
   }
   
+  public static String e(Context paramContext)
+  {
+    paramContext = ShortVideoTrackingResourceMgr.a();
+    if (paramContext.equals("Tracking000_0"))
+    {
+      VideoEnvironment.a("PtvFilterSoLoad", "getTrackingBasePath:pathVersion=Tracking000_0", null);
+      return null;
+    }
+    return ShortVideoTrackingResourceMgr.b() + paramContext + File.separator;
+  }
+  
   public static boolean e()
   {
     boolean bool4 = false;
@@ -380,6 +413,12 @@ public class PtvFilterSoLoad
       }
       return e;
     }
+  }
+  
+  public static boolean g()
+  {
+    f = true;
+    return f;
   }
 }
 

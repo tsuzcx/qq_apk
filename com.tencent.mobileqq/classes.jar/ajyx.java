@@ -1,46 +1,33 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mapsdk.raster.model.GeoPoint;
+import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
+import com.tencent.mobileqq.troop.widget.AutoLocationMapView.AutoLocationCallback;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.tencentmap.mapsdk.map.MapController;
+import com.tencent.tencentmap.mapsdk.map.Overlay;
 
-public final class ajyx
-  implements DownloadParams.DecodeHandler
+public class ajyx
+  extends Handler
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public ajyx(AutoLocationMapView paramAutoLocationMapView) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramBitmap == null) || (paramDownloadParams == null)) {}
-    int i;
-    int j;
-    int k;
-    int m;
-    do
+    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
+    this.a.clearAllOverlays();
+    if (paramMessage.arg1 == 0)
     {
-      do
-      {
-        return paramBitmap;
-        paramDownloadParams = paramDownloadParams.tag;
-      } while ((!(paramDownloadParams instanceof int[])) || (((int[])paramDownloadParams).length != 4));
-      paramDownloadParams = (int[])paramDownloadParams;
-      i = paramDownloadParams[0];
-      j = paramDownloadParams[1];
-      k = paramDownloadParams[2];
-      m = paramDownloadParams[3];
-    } while ((k <= 0) || (m <= 0) || ((k == paramBitmap.getWidth()) && (m == paramBitmap.getHeight())));
-    try
-    {
-      paramDownloadParams = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(paramDownloadParams);
-      Matrix localMatrix = new Matrix();
-      URLDrawableDecodeHandler.a(localMatrix, paramBitmap.getWidth(), paramBitmap.getHeight(), k, m, i, j);
-      localCanvas.drawBitmap(paramBitmap, localMatrix, new Paint(6));
-      return paramDownloadParams;
+      Object localObject = this.a.getController();
+      ((MapController)localObject).setCenter(localGeoPoint);
+      ((MapController)localObject).setZoom(this.a.getMaxZoomLevel());
+      localObject = new ajyy(BitmapManager.a(this.a.getContext().getResources(), 2130840555), localGeoPoint);
+      this.a.addOverlay((Overlay)localObject);
     }
-    catch (OutOfMemoryError paramDownloadParams) {}
-    return paramBitmap;
+    if (this.a.a != null) {
+      this.a.a.a(paramMessage.arg1, localGeoPoint);
+    }
   }
 }
 

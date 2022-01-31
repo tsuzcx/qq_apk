@@ -1,46 +1,36 @@
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateViewPagerAdapter;
-import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.HashMap;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import cooperation.weiyun.sdk.download.WyDownloader;
+import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
 
 public class anpz
-  implements Runnable
+  implements INetEngine.INetEngineListener
 {
-  public anpz(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  public anpz(WyDownloader paramWyDownloader, WyDownloader.IDownloadListener paramIDownloadListener, String paramString1, String paramString2) {}
   
-  public void run()
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewQIMPtvTemplateProviderView.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter.a.get(Integer.valueOf(this.jdField_a_of_type_DovComQqImCaptureViewQIMPtvTemplateProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem()));
-    if (localGridView != null)
-    {
-      localListAdapter = localGridView.a();
-      if ((localListAdapter instanceof QIMPtvTemplateAdapter))
-      {
-        i = ((QIMPtvTemplateAdapter)localListAdapter).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-        ((QIMPtvTemplateAdapter)localListAdapter).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, i);
-        localGridView.requestFocusFromTouch();
-        localGridView.setFocusableInTouchMode(true);
-        localGridView.setSelection(i);
-        ((QIMPtvTemplateAdapter)localListAdapter).notifyDataSetChanged();
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      ListAdapter localListAdapter;
-      int i;
+    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadListener.a(this.jdField_a_of_type_JavaLangString, paramLong2, (float)paramLong1);
+  }
+  
+  public void a(NetResp paramNetResp)
+  {
+    if (paramNetResp.jdField_a_of_type_Int == 3) {
       return;
     }
-    QLog.d("PtvTemplateProviderView", 2, "gridView is null");
+    if (paramNetResp.jdField_a_of_type_Int == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      int i = paramNetResp.b;
+      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadListener.a(this.jdField_a_of_type_JavaLangString, this.b, bool, paramNetResp.jdField_a_of_type_JavaLangString, i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpz
  * JD-Core Version:    0.7.0.1
  */

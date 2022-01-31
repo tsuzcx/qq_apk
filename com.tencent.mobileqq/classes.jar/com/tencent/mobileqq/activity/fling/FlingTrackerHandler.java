@@ -13,7 +13,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import com.tencent.mobileqq.util.OrientationUtil;
 import java.lang.ref.WeakReference;
-import wpo;
+import wuz;
 
 public class FlingTrackerHandler
   extends FlingHandler
@@ -25,7 +25,7 @@ public class FlingTrackerHandler
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private ContentWrapView jdField_a_of_type_ComTencentMobileqqActivityFlingContentWrapView;
   private TopLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopLayout;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new wpo(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new wuz(this);
   
   public FlingTrackerHandler(Activity paramActivity)
   {

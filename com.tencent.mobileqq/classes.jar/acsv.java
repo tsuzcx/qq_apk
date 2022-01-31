@@ -1,27 +1,17 @@
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import com.tencent.mobileqq.util.ProfileCardUtil;
 
 public class acsv
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
-  public acsv(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public acsv(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(View paramView)
   {
-    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
-      return false;
-    }
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131362740, paramView.getContext().getString(2131434041));
-    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localQQCustomMenu);
-    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new acsw(this, paramView), new acsy(this, paramView));
-    return true;
+    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
   }
 }
 

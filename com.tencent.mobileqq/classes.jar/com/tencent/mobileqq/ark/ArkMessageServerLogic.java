@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ark;
 
-import aawi;
-import aawj;
-import aawl;
-import aawo;
-import aaws;
-import aaww;
-import aawy;
+import abdd;
+import abde;
+import abdg;
+import abdj;
+import abdn;
+import abdr;
+import abdt;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.SystemClock;
@@ -101,7 +101,7 @@ public class ArkMessageServerLogic
   
   public static void a(ArkMessageServerLogic.IRequestArkAppListHandler paramIRequestArkAppListHandler)
   {
-    ThreadManager.post(new aaww(paramIRequestArkAppListHandler), 5, null, true);
+    ThreadManager.post(new abdr(paramIRequestArkAppListHandler), 5, null, true);
   }
   
   private static void a(String paramString)
@@ -121,22 +121,22 @@ public class ArkMessageServerLogic
   
   public static void a(String paramString, Object paramObject, ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler paramIAnalyzeArkBabyQReplyByServerHandler)
   {
-    a(new aawo(paramString, paramObject, paramIAnalyzeArkBabyQReplyByServerHandler));
+    a(new abdj(paramString, paramObject, paramIAnalyzeArkBabyQReplyByServerHandler));
   }
   
   public static void a(String paramString, Object paramObject, ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler paramIAnalyzeTextIntentByServerHandler)
   {
-    a(new aawl(paramString, paramObject, paramIAnalyzeTextIntentByServerHandler));
+    a(new abdg(paramString, paramObject, paramIAnalyzeTextIntentByServerHandler));
   }
   
   public static void a(String paramString, Object paramObject, ArkMessageServerLogic.IPassiveSearchIntentByServerHandler paramIPassiveSearchIntentByServerHandler)
   {
-    a(new aaws(paramString, paramObject, paramIPassiveSearchIntentByServerHandler));
+    a(new abdn(paramString, paramObject, paramIPassiveSearchIntentByServerHandler));
   }
   
   public static void a(ArrayList paramArrayList, boolean paramBoolean, long paramLong, ArkMessageServerLogic.ServerCheckCallback paramServerCheckCallback)
   {
-    a(new aawj(paramArrayList, paramBoolean, paramLong, paramServerCheckCallback));
+    a(new abde(paramArrayList, paramBoolean, paramLong, paramServerCheckCallback));
   }
   
   private static boolean a()
@@ -144,9 +144,9 @@ public class ArkMessageServerLogic
     return true;
   }
   
-  private static String b(aawy paramaawy, String paramString)
+  private static String b(abdt paramabdt, String paramString)
   {
-    if ((paramaawy == null) || (TextUtils.isEmpty(paramaawy.jdField_a_of_type_JavaLangString))) {
+    if ((paramabdt == null) || (TextUtils.isEmpty(paramabdt.jdField_a_of_type_JavaLangString))) {
       return "";
     }
     for (;;)
@@ -154,31 +154,31 @@ public class ArkMessageServerLogic
       try
       {
         JSONObject localJSONObject1 = new JSONObject();
-        localJSONObject1.put("text", paramaawy.jdField_a_of_type_JavaLangString);
+        localJSONObject1.put("text", paramabdt.jdField_a_of_type_JavaLangString);
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject1.put("meta", localJSONObject2);
-        paramaawy = ArkAppCenter.a();
-        if (TextUtils.isEmpty(paramaawy))
+        paramabdt = ArkAppCenter.a();
+        if (TextUtils.isEmpty(paramabdt))
         {
           if (!TextUtils.isEmpty(paramString)) {
             localJSONObject2.put("City.Name", paramString);
           }
-          paramaawy = localJSONObject1.toString();
-          return paramaawy;
+          paramabdt = localJSONObject1.toString();
+          return paramabdt;
         }
       }
-      catch (Exception paramaawy)
+      catch (Exception paramabdt)
       {
-        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("getAnalyzeTextIntentReq, exception=%s", new Object[] { paramaawy.getMessage() }));
+        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("getAnalyzeTextIntentReq, exception=%s", new Object[] { paramabdt.getMessage() }));
         return "";
       }
-      paramString = paramaawy;
+      paramString = paramabdt;
     }
   }
   
-  private static String b(aawy paramaawy, String paramString, double paramDouble1, double paramDouble2)
+  private static String b(abdt paramabdt, String paramString, double paramDouble1, double paramDouble2)
   {
-    if (paramaawy == null) {
+    if (paramabdt == null) {
       return "";
     }
     for (;;)
@@ -186,9 +186,9 @@ public class ArkMessageServerLogic
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("text", paramaawy.jdField_a_of_type_JavaLangString);
-        paramaawy = ArkAppCenter.a();
-        if (TextUtils.isEmpty(paramaawy))
+        localJSONObject.put("text", paramabdt.jdField_a_of_type_JavaLangString);
+        paramabdt = ArkAppCenter.a();
+        if (TextUtils.isEmpty(paramabdt))
         {
           if (!TextUtils.isEmpty(paramString)) {
             localJSONObject.put("City.Name", paramString);
@@ -196,33 +196,33 @@ public class ArkMessageServerLogic
           paramString = ArkAppCenter.a();
           if (paramString == null)
           {
-            paramaawy = new double[2];
-            paramaawy[0] = paramDouble1;
-            paramaawy[1] = paramDouble2;
-            if ((paramaawy != null) && (Math.abs(paramaawy[0]) > 1.0E-006D) && (Math.abs(paramaawy[1]) > 1.0E-006D))
+            paramabdt = new double[2];
+            paramabdt[0] = paramDouble1;
+            paramabdt[1] = paramDouble2;
+            if ((paramabdt != null) && (Math.abs(paramabdt[0]) > 1.0E-006D) && (Math.abs(paramabdt[1]) > 1.0E-006D))
             {
-              localJSONObject.put("Location.Longitude", paramaawy[1]);
-              localJSONObject.put("Location.Latitude", paramaawy[0]);
+              localJSONObject.put("Location.Longitude", paramabdt[1]);
+              localJSONObject.put("Location.Latitude", paramabdt[0]);
             }
             return localJSONObject.toString();
           }
           if (Math.abs(paramString[0]) >= 1.0E-006D)
           {
-            paramaawy = paramString;
+            paramabdt = paramString;
             if (Math.abs(paramString[1]) >= 1.0E-006D) {
               continue;
             }
           }
           paramString[0] = paramDouble1;
           paramString[1] = paramDouble2;
-          paramaawy = paramString;
+          paramabdt = paramString;
           continue;
         }
-        paramString = paramaawy;
+        paramString = paramabdt;
       }
-      catch (Exception paramaawy)
+      catch (Exception paramabdt)
       {
-        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("getArkSearchReq, exception=%s", new Object[] { paramaawy.getMessage() }));
+        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("getArkSearchReq, exception=%s", new Object[] { paramabdt.getMessage() }));
         return "";
       }
     }
@@ -440,7 +440,7 @@ public class ArkMessageServerLogic
   {
     if (a())
     {
-      jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.a(new aawi(paramArkGetLocationCallback));
+      jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.a(new abdd(paramArkGetLocationCallback));
       return;
     }
     if (paramArkGetLocationCallback != null) {

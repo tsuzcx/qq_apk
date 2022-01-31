@@ -1,25 +1,19 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuTextBuilder;
 
 public class lej
-  implements ActionSheet.OnButtonClickListener
+  extends Editable.Factory
 {
-  public lej(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public lej(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    switch (paramInt)
-    {
+    if ((paramCharSequence instanceof BiuTextBuilder)) {
+      return (Editable)paramCharSequence;
     }
-    for (;;)
-    {
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return;
-      ReadInJoySettingActivity.a(this.a, false);
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
-    }
+    return new BiuTextBuilder(paramCharSequence, 3, 20);
   }
 }
 

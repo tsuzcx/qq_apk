@@ -1,19 +1,19 @@
-import android.os.Process;
-import com.tencent.mobileqq.app.ProcessExitReceiver;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-
 public class zjw
-  implements Runnable
 {
-  public zjw(ProcessExitReceiver paramProcessExitReceiver) {}
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "0";
+  public String d = "";
   
-  public void run()
+  zjw()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProcessExitReceiver", 2, "Kill process " + MobileQQ.getMobileQQ().getProcessName());
-    }
-    Process.killProcess(Process.myPid());
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "DPCXMLParseInfo: key=" + this.jdField_a_of_type_JavaLangString + ",value=" + this.b + ",weight=" + this.jdField_a_of_type_Int + ",taskId=" + this.c + ",testType=" + this.d;
   }
 }
 

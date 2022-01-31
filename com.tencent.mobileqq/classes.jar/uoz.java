@@ -1,35 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgAnimatorCtr;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgLayAnim;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
 public class uoz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public uoz(GoldMsgLayAnim paramGoldMsgLayAnim) {}
+  public uoz(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    float f = i / 100.0F;
-    int j = (int)(this.a.jdField_b_of_type_Int * f);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("GoldMsgLayAnim", 4, "updateTextView currentValue=" + i + ",fraction=" + f + ",textOldWidth=" + this.a.jdField_b_of_type_Int + ",textNewWidth=" + j);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().width = j;
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(f);
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
-    if ((paramValueAnimator == this.a.jdField_a_of_type_AndroidAnimationValueAnimator) && (i == 100)) {
-      this.a.a();
-    }
-    while ((paramValueAnimator != this.a.jdField_b_of_type_AndroidAnimationValueAnimator) || (i != 0)) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgAnimatorCtr.a();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

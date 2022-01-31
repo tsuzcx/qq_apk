@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amav;
+import amif;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import android.view.View.BaseSavedState;
 public class CirclePageIndicator$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new amav();
+  public static final Parcelable.Creator CREATOR = new amif();
   int a;
   
   private CirclePageIndicator$SavedState(Parcel paramParcel)

@@ -1,33 +1,14 @@
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
+import com.tencent.biz.qqstory.playmode.util.NewDiscoverBannerDataProvider;
 
-public final class nol
-  implements TVK_ICacheMgr.IPreloadCallback
+public class nol
+  implements Runnable
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
-  {
-    synchronized ()
-    {
-      SLog.d("Q.qqstory.player.TVKPreloader", "preloadVideo onPreLoadFailed, preloadItem = %s, s = %s, s1 = %s, cost %d ms", new Object[] { TVKPreloader.a(), paramString1, paramString2, Long.valueOf(SystemClock.uptimeMillis() - TVKPreloader.a()) });
-      TVKPreloader.PreloadItem localPreloadItem = TVKPreloader.a();
-      TVKPreloader.a().post(new non(this, localPreloadItem, paramString1, paramInt, paramString2));
-      return;
-    }
-  }
+  public nol(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode) {}
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
+  public void run()
   {
-    synchronized ()
-    {
-      SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo onPreLoadSuccess, preloadItem = %s, s = %s, s1 = %s,  cost %d ms", TVKPreloader.a(), paramString1, paramString2, Long.valueOf(SystemClock.uptimeMillis() - TVKPreloader.a()));
-      paramString1 = TVKPreloader.a();
-      TVKPreloader.a().post(new nom(this, paramString1));
-      return;
-    }
+    this.a.a.a(true);
   }
 }
 

@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-class zhx
+public class zhx
   implements Runnable
 {
-  zhx(zhw paramzhw, boolean paramBoolean) {}
+  String jdField_a_of_type_JavaLangString = null;
+  
+  zhx(BrowserAppInterface paramBrowserAppInterface, String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      synchronized (NewFriendManager.a(this.jdField_a_of_type_Zhw.a))
-      {
-        Iterator localIterator = NewFriendManager.a(this.jdField_a_of_type_Zhw.a).iterator();
-        if (localIterator.hasNext()) {
-          ((NewFriendManager.INewFriendListener)localIterator.next()).Q_();
-        }
-      }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, 1).a();
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import aifo;
-import aifp;
+import aiki;
+import aikj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources.NotFoundException;
@@ -835,7 +835,7 @@ public class SetSplash
             if (QLog.isColorLevel()) {
               QLog.d("SetSplash", 2, "getDynamicSplashDrawable() playTimes=" + k + ", playInterval=" + m + ", totalFilesCount=" + n + ", totalPlayTime=" + i);
             }
-            ThreadManager.post(new aifp(), 5, null, false);
+            ThreadManager.post(new aikj(), 5, null, false);
             if (paramStartupDirector != null) {
               paramStartupDirector.jdField_a_of_type_Long = i;
             }
@@ -874,7 +874,7 @@ public class SetSplash
   
   private static void a()
   {
-    ThreadManager.getFileThreadHandler().postDelayed(new aifo(), 5000L);
+    ThreadManager.getFileThreadHandler().postDelayed(new aiki(), 5000L);
   }
   
   private static boolean a(Context paramContext)

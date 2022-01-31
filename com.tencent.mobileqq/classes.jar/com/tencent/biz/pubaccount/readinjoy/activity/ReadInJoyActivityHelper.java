@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -69,6 +70,11 @@ public class ReadInJoyActivityHelper
   
   public static void a(Context paramContext, int paramInt1, String paramString, int paramInt2, int paramInt3, Map paramMap)
   {
+    a(paramContext, paramInt1, paramString, paramInt2, paramInt3, paramMap, false);
+  }
+  
+  public static void a(Context paramContext, int paramInt1, String paramString, int paramInt2, int paramInt3, Map paramMap, boolean paramBoolean)
+  {
     Intent localIntent = new Intent(paramContext, ReadInJoyChannelActivity.class);
     localIntent.putExtra("channel_id", paramInt1);
     localIntent.putExtra("channel_name", paramString);
@@ -81,13 +87,21 @@ public class ReadInJoyActivityHelper
       paramString.setMap(paramMap);
       localIntent.putExtra("channel_map_data", paramString);
     }
+    if (paramBoolean) {
+      localIntent.addFlags(67108864);
+    }
     paramContext.startActivity(localIntent);
   }
   
   public static void a(Context paramContext, int paramInt, Map paramMap)
   {
+    a(paramContext, paramInt, paramMap, false);
+  }
+  
+  public static void a(Context paramContext, int paramInt, Map paramMap, boolean paramBoolean)
+  {
     WeishiReportUtil.b();
-    a(paramContext, 40677, "微视", 7, paramInt, paramMap);
+    a(paramContext, 40677, "微视", 7, paramInt, paramMap, paramBoolean);
   }
   
   public static void a(Context paramContext, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2, boolean paramBoolean)
@@ -137,7 +151,7 @@ public class ReadInJoyActivityHelper
         localIntent.setFlags(268435456);
       }
       paramContext.startActivity(localIntent);
-      ((KandianMergeManager)BaseApplicationImpl.getApplication().getRuntime().getManager(161)).e();
+      ((KandianMergeManager)BaseApplicationImpl.getApplication().getRuntime().getManager(161)).f();
       return;
       localIntent.putExtra("from_search", false);
     }
@@ -178,7 +192,7 @@ public class ReadInJoyActivityHelper
     for (;;)
     {
       if ((paramInt2 == 0) && (!ReadInJoyHelper.h())) {
-        ((KandianMergeManager)paramQQAppInterface.getManager(161)).e();
+        ((KandianMergeManager)paramQQAppInterface.getManager(161)).f();
       }
       return;
       if (!ReadInJoyHelper.h()) {
@@ -197,6 +211,7 @@ public class ReadInJoyActivityHelper
       break;
       if (paramInt1 == 9)
       {
+        ReadInJoyUtils.b(true);
         localIntent.putExtra("from_lock_screen", true);
         QLog.d(ReadInJoyActivityHelper.class.getSimpleName(), 2, "start kandian activity, launch from lock screen");
       }

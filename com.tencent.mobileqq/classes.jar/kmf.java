@@ -1,14 +1,15 @@
-import com.tencent.biz.flatbuffers.FlatBuffersParser;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BizTroopHandler;
 
 public final class kmf
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public kmf(File paramFile, boolean paramBoolean) {}
+  public kmf(BizTroopHandler paramBizTroopHandler, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FlatBuffersParser.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.c(this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

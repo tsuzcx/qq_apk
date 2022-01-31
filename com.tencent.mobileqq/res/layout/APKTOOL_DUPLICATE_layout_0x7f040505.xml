@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#fff8f9fa" android:layout_width="fill_parent" android:layout_height="41.0dip"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="#ffbbbbbb" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a196f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:text="第一屏" />
-</LinearLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e65" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043f" android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <ImageView android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e6" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="7.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02048c" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c054c" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03c7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="104.0dip" android:maxWidth="130.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a09e6" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0686" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02b6" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:id="@id/info" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b16a8" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0686" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

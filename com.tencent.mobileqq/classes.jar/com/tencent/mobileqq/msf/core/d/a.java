@@ -40,7 +40,7 @@ public class a
   private AtomicBoolean d = new AtomicBoolean(false);
   private AtomicBoolean e = new AtomicBoolean(false);
   private AtomicInteger f = new AtomicInteger(0);
-  private HashSet g = new HashSet();
+  private HashSet g = new HashSet(64);
   private MsfCore i;
   private d j;
   private long k;

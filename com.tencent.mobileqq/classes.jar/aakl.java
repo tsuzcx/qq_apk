@@ -1,27 +1,22 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class aakl
-  extends aakq
+  implements Runnable
 {
-  public final int a;
-  public final String a;
-  public final HashMap a;
-  public String b;
+  public aakl(ScanEntranceReport paramScanEntranceReport, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5) {}
   
-  public aakl(String paramString, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(this.jdField_a_of_type_Int);
-  }
-  
-  void a() {}
-  
-  boolean a(Resources paramResources)
-  {
-    return WorldCupMgr.a(paramResources, this, this.b);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("first_init", String.valueOf(this.jdField_a_of_type_Boolean));
+    localHashMap.put("bind_time", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("got_config_time", String.valueOf(this.b));
+    localHashMap.put("resource_check_time", String.valueOf(this.c));
+    localHashMap.put("dependence_wait_time", String.valueOf(this.d));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_init_pre", true, this.e, 0L, localHashMap, "");
   }
 }
 

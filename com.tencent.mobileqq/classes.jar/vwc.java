@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.BaseTroopChatPie;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
 
-class vwc
+public class vwc
   implements Runnable
 {
-  vwc(vwb paramvwb) {}
+  public vwc(BaseTroopChatPie paramBaseTroopChatPie) {}
   
   public void run()
   {
-    if (!NearbyChatPie.a(this.a.a)) {
-      this.a.a.k();
-    }
+    this.a.a.setText("<<消息过滤模式>>");
+    BaseTroopChatPie.a(this.a).setEnabled(true);
   }
 }
 

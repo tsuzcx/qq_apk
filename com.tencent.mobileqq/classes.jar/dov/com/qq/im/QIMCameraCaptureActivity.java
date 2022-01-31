@@ -152,8 +152,8 @@ public class QIMCameraCaptureActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.getWindow().addFlags(128);
-    this.U = true;
-    this.V = false;
+    this.W = true;
+    this.X = false;
     this.jdField_a_of_type_DovComQqImSettingIQIMCameraLifeCallback = QIMEffectCameraCaptureUnitBuilder.a(getIntent().getIntExtra("edit_video_type", 10002), this, this);
     super.onCreate(paramBundle);
     this.jdField_a_of_type_DovComQqImSettingIQIMCameraLifeCallback.a(paramBundle);
@@ -185,14 +185,14 @@ public class QIMCameraCaptureActivity
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_DovComQqImSettingIQIMCameraLifeCallback.p();
+    this.jdField_a_of_type_DovComQqImSettingIQIMCameraLifeCallback.q();
   }
   
   public void onResume()
   {
     super.onResume();
     this.jdField_a_of_type_DovComQqImSettingIQIMCameraLifeCallback.e(true);
-    this.jdField_a_of_type_DovComQqImSettingIQIMCameraLifeCallback.a();
+    this.jdField_a_of_type_DovComQqImSettingIQIMCameraLifeCallback.d();
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)

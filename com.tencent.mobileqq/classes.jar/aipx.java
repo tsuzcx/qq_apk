@@ -1,85 +1,97 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-import com.tencent.mobileqq.transfile.TransferRequest.AppInfo;
-import com.tencent.open.agent.report.ReportCenter;
+import android.content.Context;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.Texture;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.LinkedList;
 
 public class aipx
-  extends aipl
+  implements Runnable
 {
-  private AtomicInteger a;
-  private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
+  public aipx(FrameSprite paramFrameSprite, Context paramContext, SpriteGLView paramSpriteGLView) {}
   
-  public aipx(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
+  public void run()
   {
-    super(paramForwardSdkShareProcessor);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaLangString = "UrlExchangeStep";
-  }
-  
-  protected boolean a()
-  {
-    return (ForwardSdkShareProcessor.c(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get()) || (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -1) || (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 2);
-  }
-  
-  protected void d()
-  {
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    int j = 0;
+    for (;;)
     {
-      f();
-      return;
-    }
-    if ((!TextUtils.isEmpty(ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor))) && (ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).length() > 150)) {
-      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("targetUrl", ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
-    }
-    if (!TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).c)) {
-      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("sourceUrl", ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).c);
-    }
-    if (!TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).d)) {
-      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("sourceIcon", ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).d);
-    }
-    if ((ForwardSdkShareProcessor.e(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) == 2) && (HttpUtil.a(ForwardSdkShareProcessor.h(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)))) {
-      ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("audioUrl", ForwardSdkShareProcessor.h(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
-    }
-    Bundle localBundle;
-    if (TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)))
-    {
-      ForwardSdkShareProcessor.c(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor, ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).e);
-      ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).set(false);
-      QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|use app icon:" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
-      localBundle = new Bundle();
-      localBundle.putString("report_type", "102");
-      localBundle.putString("act_type", "18");
-      if (!TextUtils.isEmpty(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor))) {
-        break label464;
+      int i;
+      try
+      {
+        long l = System.currentTimeMillis();
+        i = 0;
+        Object localObject;
+        if ((i < FrameSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite).length) && (!FrameSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite)))
+        {
+          localObject = new Texture(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, FrameSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite)[i]);
+          FrameSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite, i, (Texture)localObject);
+          i += 1;
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("FrameSprite", 2, "FrameSprite: read time = " + (System.currentTimeMillis() - l));
+        }
+        l = System.currentTimeMillis();
+        i = j;
+        if ((i < FrameSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite).length) && (!FrameSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite)))
+        {
+          if ((!FrameSprite.b(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite)) || (i % 2 == 0))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("FrameSprite", 2, "FrameSprite: deode:" + i);
+            }
+            localObject = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite;
+            if (FrameSprite.b(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite))
+            {
+              j = i / 2;
+              FrameSprite.a((FrameSprite)localObject, j);
+              if ((!FrameSprite.c(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite)) && ((i == this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite.a - 1) || (i == FrameSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite).length - 1)))
+              {
+                if ((FrameSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite) == 20) && ((int)(System.currentTimeMillis() - l) / this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite.a > 50))
+                {
+                  this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite.a(10);
+                  FrameSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite, true);
+                  if (QLog.isColorLevel()) {
+                    QLog.d("FrameSprite", 2, "mIsHalf = true");
+                  }
+                  this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new aipy(this));
+                }
+                this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite.a();
+              }
+              if (FrameSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite) != null)
+              {
+                j = FrameSprite.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite).size();
+                int k = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite.a;
+                if (j >= k)
+                {
+                  try
+                  {
+                    Thread.sleep(16L);
+                  }
+                  catch (InterruptedException localInterruptedException) {}
+                  continue;
+                }
+              }
+            }
+            else
+            {
+              j = i;
+              continue;
+            }
+          }
+        }
+        else {
+          return;
+        }
       }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FrameSprite", 2, "FrameSprite: " + QLog.getStackTraceString(localException));
+        }
+      }
+      i += 1;
     }
-    label464:
-    for (String str = "1";; str = "0")
-    {
-      localBundle.putString("intext_1", str);
-      ReportCenter.a().a(localBundle, "" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor), this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.c(), false);
-      if ((!ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get()) && (HttpUtil.a(ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)))) {
-        ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).put("imageUrl", ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.share.ForwardSdkShareProcessor", 2, "UrlExchangeStep|process|url=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).toString());
-      }
-      if (!ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).isEmpty()) {
-        break;
-      }
-      ForwardSdkShareProcessor.c(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).set(true);
-      b();
-      return;
-    }
-    ThreadManager.post(new aipy(this), 8, null, true);
   }
 }
 

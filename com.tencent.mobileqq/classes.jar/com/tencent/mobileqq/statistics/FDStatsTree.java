@@ -1,10 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import aifv;
-import com.tencent.TMG.utils.QLog;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class FDStatsTree
@@ -16,28 +12,6 @@ public class FDStatsTree
   public FDStatsTree()
   {
     this.jdField_a_of_type_Int += 1;
-  }
-  
-  public void a(FDStatsInspector paramFDStatsInspector)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqStatisticsFDStatsTree$TreeNode.a("", this.jdField_a_of_type_JavaUtilList);
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, new aifv(this));
-    Object localObject = new ArrayList(10);
-    int i = 0;
-    while ((i < 10) && (i < this.jdField_a_of_type_JavaUtilList.size()))
-    {
-      ((List)localObject).add(this.jdField_a_of_type_JavaUtilList.get(i));
-      i += 1;
-    }
-    this.jdField_a_of_type_JavaUtilList = ((List)localObject);
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      FDStatsTree.ResultObj localResultObj = (FDStatsTree.ResultObj)((Iterator)localObject).next();
-      QLog.d("FDStatsTree", 0, localResultObj.jdField_a_of_type_JavaLangString + " : " + localResultObj.jdField_a_of_type_Int);
-      paramFDStatsInspector.a(localResultObj);
-    }
   }
   
   public void a(String paramString)

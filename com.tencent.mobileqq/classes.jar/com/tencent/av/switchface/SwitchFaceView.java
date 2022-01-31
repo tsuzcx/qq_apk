@@ -23,8 +23,8 @@ import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
-import jpe;
-import jpf;
+import jrh;
+import jri;
 
 public class SwitchFaceView
 {
@@ -81,7 +81,7 @@ public class SwitchFaceView
     paramList.add(new PointF(f1 + (f2 - f3), ((PointF)paramList.get(83)).y - ((PointF)paramList.get(59)).y + f4));
   }
   
-  private void a(jpf paramjpf)
+  private void a(jri paramjri)
   {
     if (this.jdField_a_of_type_Boolean) {}
     try
@@ -89,10 +89,10 @@ public class SwitchFaceView
       this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor.b();
       this.jdField_a_of_type_Boolean = false;
       int i = 0;
-      while (i < paramjpf.jdField_a_of_type_ArrayOfJpe.length)
+      while (i < paramjri.jdField_a_of_type_ArrayOfJrh.length)
       {
-        if (paramjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_ComTencentAvUiGLVideoView != null) {
-          paramjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_ComTencentAvUiGLVideoView.a(0, 0, 0);
+        if (paramjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_ComTencentAvUiGLVideoView != null) {
+          paramjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_ComTencentAvUiGLVideoView.a(0, 0, 0);
         }
         this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceYUVRender[i].b();
         i += 1;
@@ -127,7 +127,7 @@ public class SwitchFaceView
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
     long l2;
     long l1;
-    jpf localjpf;
+    jri localjri;
     int m;
     int k;
     int j;
@@ -141,8 +141,8 @@ public class SwitchFaceView
       if (localVideoLayerUIBase == null) {
         break label1689;
       }
-      localjpf = new jpf(this);
-      localjpf.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas = paramGLCanvas;
+      localjri = new jri(this);
+      localjri.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas = paramGLCanvas;
       m = 0;
       k = 1;
       j = 0;
@@ -151,7 +151,7 @@ public class SwitchFaceView
         paramGLCanvas = localVideoLayerUIBase.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[j];
         localObject = paramGLCanvas.a();
         int i1 = paramGLCanvas.a();
-        if (m >= localjpf.jdField_a_of_type_ArrayOfJpe.length) {
+        if (m >= localjri.jdField_a_of_type_ArrayOfJrh.length) {
           break;
         }
         n = k;
@@ -162,7 +162,7 @@ public class SwitchFaceView
           i = m;
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
-            localjpf.jdField_a_of_type_ArrayOfJpe[m].jdField_a_of_type_ComTencentAvUiGLVideoView = paramGLCanvas;
+            localjri.jdField_a_of_type_ArrayOfJrh[m].jdField_a_of_type_ComTencentAvUiGLVideoView = paramGLCanvas;
             m += 1;
             n = k;
             i = m;
@@ -179,7 +179,7 @@ public class SwitchFaceView
       }
     }
     boolean bool;
-    if ((m == localjpf.jdField_a_of_type_ArrayOfJpe.length) && (k != 0) && (paramVideoAppInterface != null) && (paramVideoAppInterface.a(3)))
+    if ((m == localjri.jdField_a_of_type_ArrayOfJrh.length) && (k != 0) && (paramVideoAppInterface != null) && (paramVideoAppInterface.a(3)))
     {
       paramVideoAppInterface = (FaceItem)((EffectFaceManager)paramVideoAppInterface.a(3)).a();
       if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId())) && ("huanlian".equalsIgnoreCase(paramVideoAppInterface.getId())))
@@ -203,19 +203,19 @@ public class SwitchFaceView
         if (i >= 2) {
           break label1312;
         }
-        paramVideoAppInterface = localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_ComTencentAvUiGLVideoView.a();
-        localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_ArrayOfByte = paramVideoAppInterface.a();
-        localjpf.jdField_a_of_type_ArrayOfJpe[i].c = paramVideoAppInterface.k();
-        localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_Int = paramVideoAppInterface.h();
-        localjpf.jdField_a_of_type_ArrayOfJpe[i].b = paramVideoAppInterface.i();
-        localjpf.jdField_a_of_type_ArrayOfJpe[i].d = paramVideoAppInterface.j();
-        if (localjpf.jdField_a_of_type_ArrayOfJpe[i].d % 2 != 0) {
+        paramVideoAppInterface = localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_ComTencentAvUiGLVideoView.a();
+        localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_ArrayOfByte = paramVideoAppInterface.a();
+        localjri.jdField_a_of_type_ArrayOfJrh[i].c = paramVideoAppInterface.k();
+        localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_Int = paramVideoAppInterface.h();
+        localjri.jdField_a_of_type_ArrayOfJrh[i].b = paramVideoAppInterface.i();
+        localjri.jdField_a_of_type_ArrayOfJrh[i].d = paramVideoAppInterface.j();
+        if (localjri.jdField_a_of_type_ArrayOfJrh[i].d % 2 != 0) {
           break label1163;
         }
-        localjpf.jdField_a_of_type_ArrayOfJpe[i].e = localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_Int;
-        localjpf.jdField_a_of_type_ArrayOfJpe[i].f = localjpf.jdField_a_of_type_ArrayOfJpe[i].b;
+        localjri.jdField_a_of_type_ArrayOfJrh[i].e = localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_Int;
+        localjri.jdField_a_of_type_ArrayOfJrh[i].f = localjri.jdField_a_of_type_ArrayOfJrh[i].b;
         label489:
-        paramGLCanvas = localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_ComTencentAvUiGLVideoView.a();
+        paramGLCanvas = localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_ComTencentAvUiGLVideoView.a();
         paramVideoAppInterface = paramVideoAppInterface.c();
         if (paramVideoAppInterface == null) {
           break label2021;
@@ -230,18 +230,18 @@ public class SwitchFaceView
       if ((paramVideoAppInterface != null) && (paramVideoAppInterface.jdField_a_of_type_ArrayOfByte != null))
       {
         localObject = ByteBuffer.wrap(paramVideoAppInterface.jdField_a_of_type_ArrayOfByte);
-        localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList = new ArrayList();
         if (localVideoLayerUIBase.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().b(paramGLCanvas) != 2) {
           break label1210;
         }
         j = 1;
-        if (localjpf.jdField_a_of_type_ArrayOfJpe[i].e * paramVideoAppInterface.b >= localjpf.jdField_a_of_type_ArrayOfJpe[i].f * paramVideoAppInterface.jdField_a_of_type_Short) {
+        if (localjri.jdField_a_of_type_ArrayOfJrh[i].e * paramVideoAppInterface.b >= localjri.jdField_a_of_type_ArrayOfJrh[i].f * paramVideoAppInterface.jdField_a_of_type_Short) {
           break label1216;
         }
-        k = paramVideoAppInterface.jdField_a_of_type_Short * localjpf.jdField_a_of_type_ArrayOfJpe[i].f / paramVideoAppInterface.b;
-        m = (localjpf.jdField_a_of_type_ArrayOfJpe[i].e - k) / 2;
+        k = paramVideoAppInterface.jdField_a_of_type_Short * localjri.jdField_a_of_type_ArrayOfJrh[i].f / paramVideoAppInterface.b;
+        m = (localjri.jdField_a_of_type_ArrayOfJrh[i].e - k) / 2;
         k = 0;
-        f1 = localjpf.jdField_a_of_type_ArrayOfJpe[i].f / paramVideoAppInterface.b / 1000000.0F;
+        f1 = localjri.jdField_a_of_type_ArrayOfJrh[i].f / paramVideoAppInterface.b / 1000000.0F;
         n = 0;
       }
       for (;;)
@@ -252,25 +252,25 @@ public class SwitchFaceView
           paramVideoAppInterface.x = (m + ((ByteBuffer)localObject).getInt(n) * f1);
           paramVideoAppInterface.y = (k + ((ByteBuffer)localObject).getInt(n + 4) * f1);
           if (j != 0) {
-            paramVideoAppInterface.x = (localjpf.jdField_a_of_type_ArrayOfJpe[i].e - paramVideoAppInterface.x);
+            paramVideoAppInterface.x = (localjri.jdField_a_of_type_ArrayOfJrh[i].e - paramVideoAppInterface.x);
           }
-          if ((paramVideoAppInterface.x < 0.0F) || (paramVideoAppInterface.x > localjpf.jdField_a_of_type_ArrayOfJpe[i].e) || (paramVideoAppInterface.y < 0.0F) || (paramVideoAppInterface.y > localjpf.jdField_a_of_type_ArrayOfJpe[i].f)) {
-            localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList = null;
+          if ((paramVideoAppInterface.x < 0.0F) || (paramVideoAppInterface.x > localjri.jdField_a_of_type_ArrayOfJrh[i].e) || (paramVideoAppInterface.y < 0.0F) || (paramVideoAppInterface.y > localjri.jdField_a_of_type_ArrayOfJrh[i].f)) {
+            localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList = null;
           }
         }
         else
         {
-          if (localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList != null)
+          if (localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList != null)
           {
-            if (localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList.size() == 83) {
-              a(localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList);
+            if (localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList.size() == 83) {
+              a(localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList);
             }
-            f1 = Math.abs(((PointF)localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList.get(0)).x - ((PointF)localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList.get(64)).x);
-            float f2 = Math.abs(((PointF)localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList.get(18)).x - ((PointF)localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList.get(64)).x);
-            float f3 = Math.abs(((PointF)localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList.get(89)).y - ((PointF)localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList.get(64)).y);
-            float f4 = Math.abs(((PointF)localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList.get(9)).y - ((PointF)localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList.get(64)).y);
+            f1 = Math.abs(((PointF)localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList.get(0)).x - ((PointF)localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList.get(64)).x);
+            float f2 = Math.abs(((PointF)localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList.get(18)).x - ((PointF)localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList.get(64)).x);
+            float f3 = Math.abs(((PointF)localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList.get(89)).y - ((PointF)localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList.get(64)).y);
+            float f4 = Math.abs(((PointF)localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList.get(9)).y - ((PointF)localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList.get(64)).y);
             if ((6.0F * f1 < f2) || (f1 > f2 * 6.0F) || (6.0F * f3 < f4) || (f3 > f4 * 6.0F)) {
-              localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList = null;
+              localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList = null;
             }
           }
           i += 1;
@@ -279,31 +279,31 @@ public class SwitchFaceView
           break;
           paramVideoAppInterface = paramVideoAppInterface.getId();
           break label311;
-          localjpf.jdField_a_of_type_ArrayOfJpe[i].e = localjpf.jdField_a_of_type_ArrayOfJpe[i].b;
-          localjpf.jdField_a_of_type_ArrayOfJpe[i].f = localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_Int;
+          localjri.jdField_a_of_type_ArrayOfJrh[i].e = localjri.jdField_a_of_type_ArrayOfJrh[i].b;
+          localjri.jdField_a_of_type_ArrayOfJrh[i].f = localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_Int;
           break label489;
           j = 0;
           break label579;
-          k = paramVideoAppInterface.b * localjpf.jdField_a_of_type_ArrayOfJpe[i].e / paramVideoAppInterface.jdField_a_of_type_Short;
+          k = paramVideoAppInterface.b * localjri.jdField_a_of_type_ArrayOfJrh[i].e / paramVideoAppInterface.jdField_a_of_type_Short;
           m = 0;
-          k = (localjpf.jdField_a_of_type_ArrayOfJpe[i].f - k) / 2;
-          f1 = localjpf.jdField_a_of_type_ArrayOfJpe[i].e / paramVideoAppInterface.jdField_a_of_type_Short / 1000000.0F;
+          k = (localjri.jdField_a_of_type_ArrayOfJrh[i].f - k) / 2;
+          f1 = localjri.jdField_a_of_type_ArrayOfJrh[i].e / paramVideoAppInterface.jdField_a_of_type_Short / 1000000.0F;
           break label681;
         }
-        localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_JavaUtilArrayList.add(paramVideoAppInterface);
+        localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_JavaUtilArrayList.add(paramVideoAppInterface);
         n += 8;
       }
       i = 0;
       while (i < 2)
       {
-        this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceYUVRender[i].a(localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_Int, localjpf.jdField_a_of_type_ArrayOfJpe[i].b, localjpf.jdField_a_of_type_ArrayOfJpe[i].c, localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_ArrayOfByte, localjpf.jdField_a_of_type_ArrayOfJpe[i].d);
+        this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceYUVRender[i].a(localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_Int, localjri.jdField_a_of_type_ArrayOfJrh[i].b, localjri.jdField_a_of_type_ArrayOfJrh[i].c, localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_ArrayOfByte, localjri.jdField_a_of_type_ArrayOfJrh[i].d);
         i += 1;
       }
       for (;;)
       {
         try
         {
-          if ((GLES20.glCheckFramebufferStatus(36160) == 36053) && (!VideoUtil.isEmpty(localjpf.jdField_a_of_type_ArrayOfJpe[0].jdField_a_of_type_JavaUtilArrayList)) && (!VideoUtil.isEmpty(localjpf.jdField_a_of_type_ArrayOfJpe[1].jdField_a_of_type_JavaUtilArrayList))) {
+          if ((GLES20.glCheckFramebufferStatus(36160) == 36053) && (!VideoUtil.isEmpty(localjri.jdField_a_of_type_ArrayOfJrh[0].jdField_a_of_type_JavaUtilArrayList)) && (!VideoUtil.isEmpty(localjri.jdField_a_of_type_ArrayOfJrh[1].jdField_a_of_type_JavaUtilArrayList))) {
             l2 = System.currentTimeMillis();
           }
         }
@@ -319,7 +319,7 @@ public class SwitchFaceView
             this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor.a();
             this.jdField_a_of_type_Boolean = true;
           }
-          paramVideoAppInterface = this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor.a(this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceYUVRender[0].a(), localjpf.jdField_a_of_type_ArrayOfJpe[0].jdField_a_of_type_JavaUtilArrayList, localjpf.jdField_a_of_type_ArrayOfJpe[0].e, localjpf.jdField_a_of_type_ArrayOfJpe[0].f, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceYUVRender[1].a(), localjpf.jdField_a_of_type_ArrayOfJpe[1].jdField_a_of_type_JavaUtilArrayList, localjpf.jdField_a_of_type_ArrayOfJpe[1].e, localjpf.jdField_a_of_type_ArrayOfJpe[1].f);
+          paramVideoAppInterface = this.jdField_a_of_type_ComTencentTtpicModule_switchfaceSwitchFaceProcessor.a(this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceYUVRender[0].a(), localjri.jdField_a_of_type_ArrayOfJrh[0].jdField_a_of_type_JavaUtilArrayList, localjri.jdField_a_of_type_ArrayOfJrh[0].e, localjri.jdField_a_of_type_ArrayOfJrh[0].f, this.jdField_a_of_type_ArrayOfComTencentAvSwitchfaceSwitchFaceYUVRender[1].a(), localjri.jdField_a_of_type_ArrayOfJrh[1].jdField_a_of_type_JavaUtilArrayList, localjri.jdField_a_of_type_ArrayOfJrh[1].e, localjri.jdField_a_of_type_ArrayOfJrh[1].f);
           l1 = System.currentTimeMillis();
           i = 0;
           if (i >= 2) {}
@@ -333,7 +333,7 @@ public class SwitchFaceView
         }
         try
         {
-          localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_ComTencentAvUiGLVideoView.a(paramVideoAppInterface[i], localjpf.jdField_a_of_type_ArrayOfJpe[i].e, localjpf.jdField_a_of_type_ArrayOfJpe[i].f);
+          localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_ComTencentAvUiGLVideoView.a(paramVideoAppInterface[i], localjri.jdField_a_of_type_ArrayOfJrh[i].e, localjri.jdField_a_of_type_ArrayOfJrh[i].f);
           i += 1;
         }
         catch (RuntimeException paramVideoAppInterface)
@@ -345,9 +345,9 @@ public class SwitchFaceView
       }
       l3 = l1;
       l4 = l2;
-      if ((localjpf.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas instanceof GLES20Canvas))
+      if ((localjri.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas instanceof GLES20Canvas))
       {
-        GLES20.glViewport(0, 0, ((GLES20Canvas)localjpf.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas).c(), ((GLES20Canvas)localjpf.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas).d());
+        GLES20.glViewport(0, 0, ((GLES20Canvas)localjri.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas).c(), ((GLES20Canvas)localjri.jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas).d());
         l4 = l2;
         l3 = l1;
       }
@@ -366,7 +366,7 @@ public class SwitchFaceView
         i = 0;
         while (i < 2)
         {
-          localjpf.jdField_a_of_type_ArrayOfJpe[i].jdField_a_of_type_ComTencentAvUiGLVideoView.a(0, 0, 0);
+          localjri.jdField_a_of_type_ArrayOfJrh[i].jdField_a_of_type_ComTencentAvUiGLVideoView.a(0, 0, 0);
           i += 1;
         }
         if (QLog.isColorLevel())
@@ -384,11 +384,11 @@ public class SwitchFaceView
           QLog.e("SwitchFaceView", 2, paramVideoAppInterface);
         }
         break;
-        a(localjpf);
+        a(localjri);
         l3 = 0L;
         l4 = 0L;
         break label1681;
-        a(localjpf);
+        a(localjri);
         l2 = l3;
         l1 = l4;
       }
@@ -448,7 +448,7 @@ public class SwitchFaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.switchface.SwitchFaceView
  * JD-Core Version:    0.7.0.1
  */

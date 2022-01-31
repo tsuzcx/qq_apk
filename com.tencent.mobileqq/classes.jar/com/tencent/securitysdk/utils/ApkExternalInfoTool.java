@@ -1,7 +1,7 @@
 package com.tencent.securitysdk.utils;
 
-import alym;
-import alyn;
+import amfv;
+import amfw;
 import android.util.Pair;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -167,10 +167,10 @@ public final class ApkExternalInfoTool
     //   133: astore_0
     //   134: aload_1
     //   135: astore_2
-    //   136: new 211	alym
+    //   136: new 211	amfv
     //   139: dup
     //   140: aconst_null
-    //   141: invokespecial 214	alym:<init>	(Lalyl;)V
+    //   141: invokespecial 214	amfv:<init>	(Lamfu;)V
     //   144: astore 4
     //   146: aload_1
     //   147: astore_0
@@ -178,13 +178,13 @@ public final class ApkExternalInfoTool
     //   149: astore_2
     //   150: aload 4
     //   152: aload_3
-    //   153: invokevirtual 217	alym:a	([B)V
+    //   153: invokevirtual 217	amfv:a	([B)V
     //   156: aload_1
     //   157: astore_0
     //   158: aload_1
     //   159: astore_2
     //   160: aload 4
-    //   162: getfield 220	alym:a	Ljava/util/Properties;
+    //   162: getfield 220	amfv:a	Ljava/util/Properties;
     //   165: ldc 222
     //   167: invokevirtual 228	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   170: astore_3
@@ -257,7 +257,7 @@ public final class ApkExternalInfoTool
     //   254	6	1	localFile2	File
     //   80	162	2	localObject3	Object
     //   85	168	3	localObject4	Object
-    //   144	17	4	localalym	alym
+    //   144	17	4	localamfv	amfv
     // Exception table:
     //   from	to	target	type
     //   42	62	189	java/lang/Throwable
@@ -323,7 +323,7 @@ public final class ApkExternalInfoTool
       localObject1 = ApkSignatureSchemeV2Verifier.a(paramString);
       localByteBuffer1 = (ByteBuffer)((Pair)localObject1).first;
       l2 = ((Long)((Pair)localObject1).second).longValue();
-      if (alyn.a(paramString, l2)) {
+      if (amfw.a(paramString, l2)) {
         throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("ZIP64 APK not supported");
       }
     }
@@ -345,7 +345,7 @@ public final class ApkExternalInfoTool
         paramArrayOfByte = a(localByteBuffer2, paramInt, paramArrayOfByte);
         localObject2 = (ByteBuffer)paramArrayOfByte.first;
         l3 = ((Long)paramArrayOfByte.second).longValue();
-        alyn.a(localByteBuffer1, l1 + l3);
+        amfw.a(localByteBuffer1, l1 + l3);
         paramString.seek(l2);
         paramString.write(((ByteBuffer)localObject2).array(), ((ByteBuffer)localObject2).arrayOffset() + ((ByteBuffer)localObject2).position(), ((ByteBuffer)localObject2).remaining());
         paramString.write(((ByteBuffer)localObject1).array(), ((ByteBuffer)localObject1).arrayOffset() + ((ByteBuffer)localObject1).position(), ((ByteBuffer)localObject1).remaining());
@@ -412,7 +412,7 @@ public final class ApkExternalInfoTool
       localObject = ApkSignatureSchemeV2Verifier.a(paramString);
       localByteBuffer = (ByteBuffer)((Pair)localObject).first;
       l = ((Long)((Pair)localObject).second).longValue();
-      if (alyn.a(paramString, l)) {
+      if (amfw.a(paramString, l)) {
         throw new ApkSignatureSchemeV2Verifier.SignatureNotFoundException("ZIP64 APK not supported");
       }
     }
@@ -457,7 +457,7 @@ public final class ApkExternalInfoTool
     try
     {
       localRandomAccessFile = new RandomAccessFile(paramFile, "rw");
-      alym localalym;
+      amfv localamfv;
       int i;
       if (paramString == null) {
         break label155;
@@ -468,10 +468,10 @@ public final class ApkExternalInfoTool
       try
       {
         paramFile = a(a(localRandomAccessFile));
-        localalym = new alym(null);
-        localalym.a(paramFile);
-        localalym.a.setProperty("apkSecurityCode", paramString);
-        paramFile = localalym.a();
+        localamfv = new amfv(null);
+        localamfv.a(paramFile);
+        localamfv.a.setProperty("apkSecurityCode", paramString);
+        paramFile = localamfv.a();
         localRandomAccessFile.seek(jdField_a_of_type_Int);
         localRandomAccessFile.write(new ZipShort(paramFile.length).a());
         localRandomAccessFile.write(paramFile);
@@ -503,10 +503,10 @@ public final class ApkExternalInfoTool
     try
     {
       byte[] arrayOfByte = a(a(paramFile.getAbsolutePath(), 2036624993));
-      alym localalym = new alym(null);
-      localalym.a(arrayOfByte);
-      localalym.a.setProperty("apkSecurityCode", paramString);
-      paramString = localalym.a();
+      amfv localamfv = new amfv(null);
+      localamfv.a(arrayOfByte);
+      localamfv.a.setProperty("apkSecurityCode", paramString);
+      paramString = localamfv.a();
       a(paramFile.getAbsolutePath(), 2036624993, paramString);
       return;
     }

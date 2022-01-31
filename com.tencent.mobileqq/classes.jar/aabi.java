@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ContentValues;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class aabi
   implements Runnable
 {
-  public aabi(Interactive3DRenderable paramInteractive3DRenderable, int paramInt, float paramFloat1, float paramFloat2, long paramLong) {}
+  public aabi(DataLineMsgProxy paramDataLineMsgProxy, long paramLong) {}
   
   public void run()
   {
-    Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).native_onTouchEnd(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b, 6, this.jdField_a_of_type_Long, Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).mCurrentActiveId);
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "ACTION_POINTER_UP native_onTouchEnd");
+    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_Long);
+    if (localDataLineMsgRecord != null)
+    {
+      localDataLineMsgRecord.issuc = false;
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("issuc", Boolean.valueOf(false));
+      this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a, localContentValues, "msgId=?", new String[] { String.valueOf(localDataLineMsgRecord.msgId) }, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aabi
  * JD-Core Version:    0.7.0.1
  */

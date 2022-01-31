@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.precover.ipc;
 
-import agnf;
+import agru;
 import eipc.EIPCResultCallback;
 import java.util.List;
 import java.util.Vector;
 
 public class PrecoverIPCClient
 {
-  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new agnf(this);
+  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new agru(this);
   private List jdField_a_of_type_JavaUtilList = new Vector();
 }
 

@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
-public class adrs
-  implements DialogInterface.OnClickListener
+class adrs
+  implements Runnable
 {
-  public adrs(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  adrs(adrr paramadrr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    SendBottomBar.a(this.a.a, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adrs
  * JD-Core Version:    0.7.0.1
  */

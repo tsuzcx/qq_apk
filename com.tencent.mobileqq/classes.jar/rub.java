@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.DialogInterface;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 
-class rub
-  implements Runnable
+public class rub
+  extends DialogUtil.DialogOnClickAdapter
 {
-  rub(rua paramrua) {}
+  public rub(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((BaseChatPie.b(this.a.a.a) != null) && (BaseChatPie.b(this.a.a.a).getParent() != null)) {
-      ((ViewGroup)BaseChatPie.b(this.a.a.a).getParent()).removeView(BaseChatPie.b(this.a.a.a));
-    }
-    BaseChatPie.b(this.a.a.a, null);
+    paramDialogInterface.dismiss();
   }
 }
 

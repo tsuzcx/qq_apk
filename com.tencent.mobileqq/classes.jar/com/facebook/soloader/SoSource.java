@@ -32,7 +32,7 @@ public abstract class SoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.facebook.soloader.SoSource
  * JD-Core Version:    0.7.0.1
  */

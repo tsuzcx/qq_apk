@@ -1,29 +1,64 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnArticleWrapperClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnBiuClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnCommentClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnJumpWrapperClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnLikeClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.mobileqq.util.FaceDecoder;
 
-public class lmv
-  implements Runnable
+public final class lmv
+  implements ViewFactory.FoundClickableViewListener
 {
-  public lmv(ReadinjoySPEventReport paramReadinjoySPEventReport, int paramInt, long paramLong) {}
+  public lmv(VafContext paramVafContext, FaceDecoder paramFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IReadInJoyModel paramIReadInJoyModel, Container paramContainer, BaseArticleInfo paramBaseArticleInfo) {}
   
-  public void run()
+  public void a(ViewBase paramViewBase)
   {
-    ArrayList localArrayList = new ArrayList();
-    oidb_cmd0x80a.AttributeList localAttributeList1 = new oidb_cmd0x80a.AttributeList();
-    localAttributeList1.att_id.set(1);
-    localAttributeList1.att_name.set("action");
-    localAttributeList1.att_value.set("" + this.jdField_a_of_type_Int);
-    oidb_cmd0x80a.AttributeList localAttributeList2 = new oidb_cmd0x80a.AttributeList();
-    localAttributeList2.att_id.set(2);
-    localAttributeList2.att_name.set("leavetime");
-    localAttributeList2.att_value.set(String.valueOf(this.jdField_a_of_type_Long / 1000L));
-    localArrayList.add(localAttributeList1);
-    localArrayList.add(localAttributeList2);
-    PublicAccountUtil.a(20, "AppinpushDisappear", localArrayList);
+    if (paramViewBase.a() == null) {
+      return;
+    }
+    switch (StringCommon.a(paramViewBase.a()))
+    {
+    case 1009: 
+    default: 
+      paramViewBase.a(new lmy(this, paramViewBase));
+      return;
+    case 1001: 
+      paramViewBase.a(new lmw(this, paramViewBase));
+      return;
+    case 1002: 
+      paramViewBase.a(new OnLikeClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
+      return;
+    case 1003: 
+      paramViewBase.a(new OnCommentClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
+      return;
+    case 1004: 
+      paramViewBase.a(new OnBiuClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
+      return;
+    case 1005: 
+      paramViewBase.a(new OnTopicRecommendHeaderClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
+      return;
+    case 1006: 
+      paramViewBase.a(new OnTopicRecommendHeaderFollowClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
+      return;
+    case 1007: 
+      paramViewBase.a().setOnClickListener(new lmx(this));
+      return;
+    case 1008: 
+      paramViewBase.a(new OnArticleWrapperClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter));
+      return;
+    }
+    paramViewBase.a(new OnJumpWrapperClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a(), (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
   }
 }
 

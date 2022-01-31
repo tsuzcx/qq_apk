@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import ndh;
-import ndi;
+import nhc;
+import nhd;
 
 public class TroopVidToVideoInfoPuller
   implements IEventReceiver
@@ -49,7 +49,7 @@ public class TroopVidToVideoInfoPuller
   {
     BatchHandlerListPuller localBatchHandlerListPuller = BatchHandlerListPuller.a(paramList);
     localBatchHandlerListPuller.a("Q.qqstory.net:TroopVidToVideoInfoPuller");
-    localBatchHandlerListPuller.a(new ndi(this, paramList));
+    localBatchHandlerListPuller.a(new nhd(this, paramList));
     return localBatchHandlerListPuller;
   }
   
@@ -94,7 +94,7 @@ public class TroopVidToVideoInfoPuller
       localArrayList.add(paramList);
       break;
       paramList = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-      paramList.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      paramList.errorInfo = paramErrorMessage;
       boolean bool;
       label198:
       int i;
@@ -190,7 +190,7 @@ public class TroopVidToVideoInfoPuller
   
   protected void d()
   {
-    Bosses.get().postJob(new ndh(this));
+    Bosses.get().postJob(new nhc(this));
   }
   
   public boolean isValidate()

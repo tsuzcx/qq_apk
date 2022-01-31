@@ -33,7 +33,7 @@ public class QQFilterLogManager
   {
     long l = SystemClock.elapsedRealtimeNanos() - b;
     if (((SLog.a()) && (jdField_a_of_type_Boolean)) || ((SLog.a()) && (a(l)))) {
-      SLog.d(jdField_a_of_type_JavaLangString, "QQFilterRenderManager_渲染item耗时:[" + paramString + " 毫秒=" + l / 1000000L + "ms 微秒=" + l / 1000L + "us]");
+      SLog.d(jdField_a_of_type_JavaLangString, "QQFilterRenderManager_渲染item耗时:[" + paramString + " 毫秒=" + l / 1000000L + "ms" + " 微秒=" + l / 1000L + "us]");
     }
   }
   
@@ -79,7 +79,7 @@ public class QQFilterLogManager
   {
     long l = SystemClock.elapsedRealtimeNanos() - c;
     if ((SLog.a()) && (jdField_a_of_type_Boolean)) {
-      SLog.b(jdField_a_of_type_JavaLangString, "QQFilterRenderManager_一帧结束 总耗时[ 毫秒=" + l / 1000000L + "ms 微秒=" + l / 1000L + "us]");
+      SLog.b(jdField_a_of_type_JavaLangString, "QQFilterRenderManager_一帧结束 总耗时[ 毫秒=" + l / 1000000L + "ms" + " 微秒=" + l / 1000L + "us]");
     }
     if (QmcfManager.a().a()) {
       QmcfManager.a().a(l / 1000000L);
@@ -90,7 +90,7 @@ public class QQFilterLogManager
   {
     long l = SystemClock.elapsedRealtimeNanos() - jdField_a_of_type_Long;
     if ((SLog.a()) && (jdField_a_of_type_Boolean)) {
-      SLog.d(jdField_a_of_type_JavaLangString, "QQFilterRenderManager 生命周期结束耗时 [" + paramString + " 毫秒=" + l / 1000000L + "ms 微秒=" + l / 1000L + "us]");
+      SLog.d(jdField_a_of_type_JavaLangString, "QQFilterRenderManager 生命周期结束耗时 [" + paramString + " 毫秒=" + l / 1000000L + "ms" + " 微秒=" + l / 1000L + "us]");
     }
   }
   
@@ -103,7 +103,7 @@ public class QQFilterLogManager
   {
     long l = SystemClock.elapsedRealtimeNanos() - d;
     if ((SLog.a()) && (jdField_a_of_type_Boolean)) {
-      SLog.d(jdField_a_of_type_JavaLangString, "QQFilterRenderManager 挂件：  [" + paramString + " 毫秒=" + l / 1000000L + "ms 微秒=" + l / 1000L + "us]");
+      SLog.d(jdField_a_of_type_JavaLangString, "QQFilterRenderManager 挂件：  [" + paramString + " 毫秒=" + l / 1000000L + "ms" + " 微秒=" + l / 1000L + "us]");
     }
   }
 }

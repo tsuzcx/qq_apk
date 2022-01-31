@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import mqq.os.MqqHandler;
 
 public class yel
-  implements FMDialogUtil.FMDialogInterface
+  extends MqqHandler
 {
-  public yel(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public yel(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    switch (paramMessage.what)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    ContactsInnerFrame.a(this.a);
   }
-  
-  public void b() {}
 }
 
 

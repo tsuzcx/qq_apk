@@ -1,33 +1,14 @@
-import android.view.View;
-import com.tencent.biz.now.NowVideoController;
-import com.tencent.mobileqq.widget.PAVideoView;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.common.util.FileChooserHelper;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class kob
-  implements Runnable
+  implements ActionSheet.OnDismissListener
 {
-  public kob(NowVideoController paramNowVideoController, int paramInt1, int paramInt2) {}
+  public kob(FileChooserHelper paramFileChooserHelper) {}
   
-  public void run()
+  public void onDismiss()
   {
-    if (NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController) == null) {}
-    for (;;)
-    {
-      return;
-      int i = this.jdField_a_of_type_Int;
-      while (i <= this.b)
-      {
-        Object localObject = NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController).getChildAt(i - this.jdField_a_of_type_Int);
-        if (localObject != null)
-        {
-          localObject = (PAVideoView)((View)localObject).findViewById(2131362177);
-          if ((localObject != null) && (((PAVideoView)localObject).j == 4)) {
-            ((PAVideoView)localObject).c();
-          }
-        }
-        i += 1;
-      }
-    }
+    FileChooserHelper.a(this.a);
   }
 }
 

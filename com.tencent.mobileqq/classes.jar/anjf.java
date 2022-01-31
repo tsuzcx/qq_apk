@@ -1,19 +1,32 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.graphics.drawable.Drawable;
+import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-public class anjf
-  implements Runnable
+public final class anjf
+  implements InvocationHandler
 {
-  public anjf(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anjf(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
   
-  public void run()
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    QIMEffectCameraCaptureUnit.b(this.a);
-    QIMEffectCameraCaptureUnit.c(this.a);
+    if (paramMethod.getName().equals("onFailed")) {
+      if (this.a != null) {
+        this.a.onFailed();
+      }
+    }
+    for (;;)
+    {
+      return null;
+      if ((paramMethod.getName().equals("onLoaded")) && (this.a != null)) {
+        this.a.onLoaded((Drawable)paramArrayOfObject[0]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjf
  * JD-Core Version:    0.7.0.1
  */

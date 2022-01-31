@@ -1,72 +1,103 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.DownloadResult.Status;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.TicketManagerImpl;
+import cooperation.qzone.webviewplugin.sound.QzoneSoundPlugin;
+import org.json.JSONObject;
 
-public final class anly
-  extends anmb
+public class anly
+  implements Downloader.DownloadListener
 {
-  public anly(QIMMusicConfigManager paramQIMMusicConfigManager)
-  {
-    super(paramQIMMusicConfigManager);
-  }
+  public anly(QzoneSoundPlugin paramQzoneSoundPlugin, String paramString) {}
   
-  anlz a()
+  public void onDownloadCanceled(String paramString)
   {
-    return new anlz(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager);
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    if (paramNetResp.c == 200)
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadCanceled:" + paramString);
+    }
+    try
     {
-      if (paramNetResp.a != null)
-      {
-        anlz localanlz = a();
-        localanlz.jdField_a_of_type_JavaLangString = new String(paramNetResp.a);
-        localanlz.a();
-        this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(0, true, localanlz.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      a(false);
-      this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(0, false, "Have no data.");
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", -1);
+      localJSONObject.put("message", paramString);
+      QzoneSoundPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlugin).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
       return;
     }
-    a(false);
-    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(0, false, "Http Request fail, code=" + paramNetResp.c);
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadCanceled : " + paramString.getMessage());
+    }
   }
   
-  public void run()
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_Int = 0;
-    localHttpNetReq.e = 1;
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
-    long l = System.currentTimeMillis() / 1000L;
-    String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.c);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("app_id", "2000000025");
-    localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");
-    localHashMap.put("device_id", DeviceInfoUtil.a());
-    localHashMap.put("timestamp", String.valueOf(l));
-    localHashMap.put("sign", a(l));
-    localHashMap.putAll(a(this.c, str));
-    localHttpNetReq.jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_self.fcg", localHashMap);
     if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigManager", 2, "QQMusicReq SongList api request, req url=" + localHttpNetReq.jdField_a_of_type_JavaLangString);
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadFailed:" + paramString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.a(localHttpNetReq);
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject();
+        if (paramDownloadResult == null) {
+          continue;
+        }
+        DownloadResult.Status localStatus = paramDownloadResult.getStatus();
+        if (localStatus == null) {
+          continue;
+        }
+        paramString.put("code", localStatus.failReason);
+        paramString.put("message", paramDownloadResult.getDetailDownloadInfo());
+      }
+      catch (Exception paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadFailed : " + paramString.getMessage());
+        return;
+        paramString.put("code", -1);
+        paramString.put("message", "DownloadFailed");
+        continue;
+      }
+      QzoneSoundPlugin.b(this.jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlugin).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+      paramString.put("code", -1);
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, new Object[] { "onDownloadProgress: ", paramString + " : " + paramLong + " : " + paramFloat });
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneSoundPlugin", 2, "onDownloadSucceed");
+    }
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("code", 0);
+      paramString.put("message", "success");
+      QzoneSoundPlugin.c(this.jdField_a_of_type_CooperationQzoneWebviewpluginSoundQzoneSoundPlugin).callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("QzoneSoundPlugin", 2, "DownloaderFactory onDownloadSucceed : " + paramString.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anly
  * JD-Core Version:    0.7.0.1
  */

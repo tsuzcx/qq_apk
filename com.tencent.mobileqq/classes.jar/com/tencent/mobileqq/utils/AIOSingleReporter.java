@@ -66,20 +66,34 @@ public class AIOSingleReporter
     int k = paramChatXListView.getLastVisiblePosition();
     int j = paramChatXListView.getHeaderViewsCount();
     if (i > j) {}
-    while ((i >= j) && (i <= k))
+    for (;;)
     {
-      ChatMessage localChatMessage = (ChatMessage)paramChatXListView.getAdapter().getItem(i);
-      if ((localChatMessage != null) && ((localChatMessage instanceof MessageForShortVideo)))
+      if ((i < j) || (i > k)) {
+        break label147;
+      }
+      try
       {
-        long l2 = localChatMessage.uniseq;
-        if (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(l2))) {
-          localHashSet.add(Long.valueOf(l2));
+        ChatMessage localChatMessage = (ChatMessage)paramChatXListView.getAdapter().getItem(i);
+        if ((localChatMessage != null) && ((localChatMessage instanceof MessageForShortVideo)))
+        {
+          long l2 = localChatMessage.uniseq;
+          if (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(l2))) {
+            localHashSet.add(Long.valueOf(l2));
+          }
+        }
+      }
+      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+      {
+        for (;;)
+        {
+          localIndexOutOfBoundsException.printStackTrace();
         }
       }
       i += 1;
       continue;
       i = j;
     }
+    label147:
     this.jdField_a_of_type_JavaUtilHashSet = localHashSet;
     QLog.d("ShortVideoUtils", 2, "markVisibleView cost time: " + (SystemClock.uptimeMillis() - l1));
   }

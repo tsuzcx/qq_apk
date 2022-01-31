@@ -1,48 +1,33 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class sbg
-  implements Runnable
+public final class sbg
+  implements DialogInterface.OnCancelListener
 {
-  sbg(sbf paramsbf, int paramInt, DevlockInfo paramDevlockInfo) {}
+  public sbg(boolean paramBoolean, int paramInt, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    boolean bool2 = true;
-    this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.d();
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null))
+    if (this.jdField_a_of_type_Boolean)
     {
-      ChatHistoryForC2C localChatHistoryForC2C = this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C;
-      boolean bool1;
-      if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.DevSetup == 1)
-      {
-        bool1 = true;
-        if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet != 1) {
-          break label77;
-        }
+      if (this.jdField_a_of_type_Int != 2) {
+        break label56;
       }
-      for (;;)
-      {
-        localChatHistoryForC2C.a(bool1, bool2, this.jdField_a_of_type_Sbf.jdField_a_of_type_Boolean);
-        return;
-        bool1 = false;
-        break;
-        label77:
-        bool2 = false;
+      ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+      }
+      return;
+      label56:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
       }
     }
-    if (1 == this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a.b())
-    {
-      this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.g();
-      return;
-    }
-    if (!this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.a.f())
-    {
-      this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b();
-      return;
-    }
-    this.jdField_a_of_type_Sbf.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b(this.jdField_a_of_type_Sbf.jdField_a_of_type_Boolean);
   }
 }
 

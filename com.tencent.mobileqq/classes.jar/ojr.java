@@ -1,63 +1,26 @@
-import android.util.SparseBooleanArray;
+import android.graphics.Color;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.model.TextInfo;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.EditVideoLabel;
 
 public class ojr
-  implements EditTextDialog.EditTextDialogEventListener
+  implements View.OnTouchListener
 {
-  private ojr(DoodleLayout paramDoodleLayout) {}
+  public ojr(EditVideoLabel paramEditVideoLabel) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a().c();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a().a(paramInt);
-  }
-  
-  public void a(boolean paramBoolean, TextInfo paramTextInfo)
-  {
-    TextLayer localTextLayer = this.a.a();
-    if (paramBoolean)
+    switch (paramMotionEvent.getAction())
     {
-      localTextLayer.a(true);
-      switch (this.a.b)
-      {
-      }
-      for (;;)
-      {
-        this.a.c(3);
-        return;
-        this.a.a().b(false);
-      }
-    }
-    if (paramTextInfo.jdField_a_of_type_Int != -1) {
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
     }
     for (;;)
     {
-      localTextLayer.a(paramTextInfo);
-      localTextLayer.a(false);
-      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
-      this.a.c(0);
-      this.a.d(0);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.i();
-      return;
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.b(3, paramInt);
+      return false;
+      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
+      continue;
+      this.a.a.setTextColor(Color.parseColor("#ffffff"));
     }
   }
 }

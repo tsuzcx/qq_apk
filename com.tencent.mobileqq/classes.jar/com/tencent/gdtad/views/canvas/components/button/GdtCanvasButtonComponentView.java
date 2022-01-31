@@ -8,7 +8,7 @@ import com.tencent.gdtad.views.GdtViewStatus;
 import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentView;
 import com.tencent.gdtad.views.canvas.framework.GdtCanvasButtonView;
 import java.lang.ref.WeakReference;
-import qlg;
+import qpx;
 
 public class GdtCanvasButtonComponentView
   extends GdtCanvasComponentView
@@ -39,7 +39,7 @@ public class GdtCanvasButtonComponentView
     addView(paramContext, localLayoutParams);
     paramGdtCanvasButtonComponentData = paramGdtCanvasButtonComponentData.actionUrl;
     if (!TextUtils.isEmpty(paramGdtCanvasButtonComponentData)) {
-      paramContext.setOnClickListener(new qlg(this, paramGdtCanvasButtonComponentData));
+      paramContext.setOnClickListener(new qpx(this, paramGdtCanvasButtonComponentData));
     }
     this.jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus = new GdtViewStatus(new WeakReference(paramContext), new WeakReference(this));
     a(true);

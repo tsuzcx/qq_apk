@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import aepb;
-import aepc;
-import aepd;
-import aepe;
-import aepf;
-import aepg;
-import aeph;
+import aexm;
+import aexn;
+import aexo;
+import aexp;
+import aexq;
+import aexr;
+import aexs;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -36,7 +36,7 @@ public class GameRoomUtils
   
   public static QQCustomDialog a(Activity paramActivity, String paramString, int paramInt, long paramLong)
   {
-    paramString = DialogUtil.a(paramActivity, 230, null, "当前正在组队中，无法加入", "返回", "查看我的组队", new aepg(paramActivity, paramString, paramInt, paramLong), new aeph());
+    paramString = DialogUtil.a(paramActivity, 230, null, "当前正在组队中，无法加入", "返回", "查看我的组队", new aexr(paramActivity, paramString, paramInt, paramLong), new aexs());
     if (!paramActivity.isFinishing()) {
       paramString.show();
     }
@@ -45,14 +45,21 @@ public class GameRoomUtils
   
   public static QQCustomDialog a(Activity paramActivity, String paramString1, String paramString2)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
-    localQQCustomDialog.setTitle(paramString1);
-    localQQCustomDialog.setMessage(paramString2);
-    localQQCustomDialog.setNegativeButton("返回", new aepe());
-    localQQCustomDialog.setPositiveButton("发起新的游戏", new aepf(paramActivity));
-    if (!paramActivity.isFinishing()) {
-      localQQCustomDialog.show();
+    if (paramActivity.isFinishing()) {
+      paramString1 = null;
     }
+    QQCustomDialog localQQCustomDialog;
+    do
+    {
+      return paramString1;
+      localQQCustomDialog = DialogUtil.a(paramActivity, 230);
+      localQQCustomDialog.setTitle(paramString1);
+      localQQCustomDialog.setMessage(paramString2);
+      localQQCustomDialog.setNegativeButton("返回", new aexp());
+      localQQCustomDialog.setPositiveButton("发起新的游戏", new aexq(paramActivity));
+      paramString1 = localQQCustomDialog;
+    } while (paramActivity.isFinishing());
+    localQQCustomDialog.show();
     return localQQCustomDialog;
   }
   
@@ -61,7 +68,7 @@ public class GameRoomUtils
     paramContext = DialogUtil.a(paramContext, 230);
     paramContext.setTitle(paramString1);
     paramContext.setMessage(paramString2);
-    paramContext.setPositiveButton(2131433016, new aepd());
+    paramContext.setPositiveButton(2131433030, new aexo());
     paramContext.show();
     return paramContext;
   }
@@ -71,8 +78,8 @@ public class GameRoomUtils
     QQCustomDialog localQQCustomDialog = DialogUtil.a(paramContext, 230);
     localQQCustomDialog.setTitle(paramString1);
     localQQCustomDialog.setMessage(paramString2);
-    localQQCustomDialog.setNegativeButton("返回", new aepb());
-    localQQCustomDialog.setPositiveButton("查看我的组队", new aepc(paramContext, paramString3, paramInt));
+    localQQCustomDialog.setNegativeButton("返回", new aexm());
+    localQQCustomDialog.setPositiveButton("查看我的组队", new aexn(paramContext, paramString3, paramInt));
     localQQCustomDialog.show();
     return localQQCustomDialog;
   }

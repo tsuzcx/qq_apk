@@ -52,7 +52,7 @@ public class ReportUtil
       {
         localJSONObject.put("network_type", i);
         localJSONObject.put("os", "1");
-        localJSONObject.put("version", "7.6.3".replace(".", ""));
+        localJSONObject.put("version", "7.6.8".replace(".", ""));
         localJSONObject.put("imei", ReadInJoyUtils.f());
         localJSONObject.put("imsi", ReadInJoyUtils.g());
         localJSONObject.put("rcmInfo", paramRecommendData.h);

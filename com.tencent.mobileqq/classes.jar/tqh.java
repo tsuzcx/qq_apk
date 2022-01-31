@@ -1,20 +1,18 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class tqh
-  extends MqqHandler
+  extends ConfigObserver
 {
-  public tqh(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public tqh(QQSettingMe paramQQSettingMe) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
+    if (this.a.c) {
+      this.a.s();
     }
-    this.a.finish();
   }
 }
 

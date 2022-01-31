@@ -1,15 +1,34 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment;
+import com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
+import com.tencent.biz.qqstory.network.response.GetCollectionVideoListResponse;
+import com.tencent.biz.qqstory.playvideo.model.MemorySharePlayingListSync;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
+import java.util.List;
 
-public class ntk
-  implements Runnable
+class ntk
+  implements BatchHandlerListPuller.IPullResultCallback
 {
-  public ntk(QQStoryBaseFragment paramQQStoryBaseFragment) {}
+  ntk(ntj paramntj, BatchHandlerListPuller paramBatchHandlerListPuller, GetCollectionVideoListResponse paramGetCollectionVideoListResponse) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    ((UserManager)SuperManager.a(2)).c();
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
+    DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent localPlayerVideoListEvent = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
+    localPlayerVideoListEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ntj.a.jdField_b_of_type_JavaLangString;
+    localPlayerVideoListEvent.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Ntj.a.jdField_d_of_type_JavaLangString;
+    localPlayerVideoListEvent.jdField_a_of_type_Boolean = false;
+    localPlayerVideoListEvent.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetCollectionVideoListResponse.jdField_a_of_type_Boolean;
+    localPlayerVideoListEvent.c = this.jdField_a_of_type_Ntj.a.jdField_d_of_type_Boolean;
+    localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Ntj.a.jdField_a_of_type_JavaUtilList;
+    localPlayerVideoListEvent.jdField_a_of_type_Int = localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.size();
+    if (localPlayerVideoListEvent.jdField_a_of_type_Int < localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.size()) {
+      localPlayerVideoListEvent.jdField_a_of_type_Int = localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.size();
+    }
+    Dispatchers.get().dispatch(localPlayerVideoListEvent);
+    SLog.b("Q.qqstory.player.MemorySharePlayingListSync", "get video list return:" + localPlayerVideoListEvent);
   }
 }
 

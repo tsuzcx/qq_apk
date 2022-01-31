@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.remind.widget;
 
-import ahgd;
-import ahge;
-import ahgf;
-import ahgg;
+import ahku;
+import ahkv;
+import ahkw;
+import ahkx;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -36,9 +36,9 @@ public class IosTimepicker
   private IosTimepicker.FormatDataListener jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$FormatDataListener;
   private IosTimepicker.OnTimePickerSelectListener jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker$OnTimePickerSelectListener;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new ahge(this);
-  private VerticalGallery.OnEndFlingListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener = new ahgg(this);
-  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = new ahgf(this);
+  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new ahkv(this);
+  private VerticalGallery.OnEndFlingListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener = new ahkx(this);
+  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = new ahkw(this);
   private int[] jdField_a_of_type_ArrayOfInt;
   private BaseAdapter[] jdField_a_of_type_ArrayOfAndroidWidgetBaseAdapter;
   private WheelView[] jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
@@ -133,21 +133,21 @@ public class IosTimepicker
       i += 1;
     }
     paramActionSheet = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.jdField_a_of_type_Int = paramActionSheet.getColor(2131494273);
-    this.jdField_b_of_type_Int = paramActionSheet.getColor(2131494248);
+    this.jdField_a_of_type_Int = paramActionSheet.getColor(2131494279);
+    this.jdField_b_of_type_Int = paramActionSheet.getColor(2131494254);
     this.jdField_a_of_type_ArrayOfJavaLangString = TimeHelper.jdField_a_of_type_ArrayOfJavaLangString;
     this.jdField_b_of_type_ArrayOfJavaLangString = TimeHelper.jdField_b_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131375464);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375468));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375465));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370272));
-    i = paramActionSheet.getColor(2131494284);
-    findViewById(2131375466).setBackgroundColor(i);
-    findViewById(2131375467).setBackgroundColor(i);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(paramActionSheet.getColor(2131494250));
-    i = paramActionSheet.getColor(2131494283);
-    findViewById(2131365875).setBackgroundColor(i);
-    findViewById(2131365876).setBackgroundColor(i);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131375524);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375528));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375525));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370281));
+    i = paramActionSheet.getColor(2131494290);
+    findViewById(2131375526).setBackgroundColor(i);
+    findViewById(2131375527).setBackgroundColor(i);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(paramActionSheet.getColor(2131494256));
+    i = paramActionSheet.getColor(2131494289);
+    findViewById(2131365880).setBackgroundColor(i);
+    findViewById(2131365881).setBackgroundColor(i);
     if (paramOnClickListener != null)
     {
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
@@ -175,7 +175,7 @@ public class IosTimepicker
         paramContext.setOnEndFlingListener(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener);
         i += 1;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahgd(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahku(this));
       break;
       label514:
       i = 0;
@@ -183,9 +183,9 @@ public class IosTimepicker
       {
         paramOnTimePickerSelectListener = this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[i];
         if (i == 0) {}
-        for (paramContext = new LinearLayout.LayoutParams(paramActionSheet.getDimensionPixelSize(2131560811), -1);; paramContext = new LinearLayout.LayoutParams(paramActionSheet.getDimensionPixelSize(2131560812), -1))
+        for (paramContext = new LinearLayout.LayoutParams(paramActionSheet.getDimensionPixelSize(2131560814), -1);; paramContext = new LinearLayout.LayoutParams(paramActionSheet.getDimensionPixelSize(2131560815), -1))
         {
-          paramContext.setMargins(0, paramActionSheet.getDimensionPixelSize(2131560814), 0, paramActionSheet.getDimensionPixelSize(2131560815));
+          paramContext.setMargins(0, paramActionSheet.getDimensionPixelSize(2131560817), 0, paramActionSheet.getDimensionPixelSize(2131560818));
           paramOnTimePickerSelectListener.setLayoutParams(paramContext);
           if (i != 0)
           {

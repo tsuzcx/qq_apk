@@ -1,24 +1,24 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class lnw
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public lnw(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement, String paramString, ActionSheet paramActionSheet) {}
+  public lnw(KandianMergeManager paramKandianMergeManager, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    Object localObject = ReadInJoyHelper.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), true, false);
+    if (localObject != null)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement.getActivity());
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
+      {
+        ((SharedPreferences.Editor)localObject).putInt("kandian_follow_data_length", this.jdField_a_of_type_Int);
+        ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
+      }
     }
   }
 }

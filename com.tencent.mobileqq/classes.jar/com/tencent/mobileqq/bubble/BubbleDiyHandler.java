@@ -141,7 +141,7 @@ public class BubbleDiyHandler
       localBubble_Req_Comm = new BubbleDiyComu.Bubble_Req_Comm();
       localBubble_Req_Comm.platform.set(109L);
       localBubble_Req_Comm.osver.set(Build.VERSION.RELEASE);
-      localBubble_Req_Comm.mqqver.set("7.6.3");
+      localBubble_Req_Comm.mqqver.set("7.6.8");
       localBubble_GetDiyText_Req = new BubbleDiyComu.Bubble_GetDiyText_Req();
       localArrayList = new ArrayList();
       Iterator localIterator = paramList.iterator();

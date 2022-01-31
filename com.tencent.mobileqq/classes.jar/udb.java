@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils.TroopPrivilegeCallback;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class udb
   implements Runnable
 {
-  udb(uda paramuda, int paramInt) {}
+  udb(uda paramuda, TroopUploadingThread.UploadState paramUploadState) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Uda.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotificationUtils$TroopPrivilegeCallback.a(this.jdField_a_of_type_Uda.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Uda.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Uda.a.c) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Uda.a.o();
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a == 1)
+      {
+        this.jdField_a_of_type_Uda.a.m();
+        return;
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.a != 2);
+    String str = AvatarWallAdapter.a(this.jdField_a_of_type_Uda.a.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopUploadingThread$UploadState.b);
+    QQToast.a(BaseApplication.getContext(), 1, str, 0).a();
   }
 }
 

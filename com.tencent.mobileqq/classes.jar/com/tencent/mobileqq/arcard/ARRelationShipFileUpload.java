@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.arcard;
 
-import aana;
-import aanb;
+import aatu;
+import aatv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.api.ITransactionCallback;
@@ -197,8 +197,8 @@ public class ARRelationShipFileUpload
         i = 0;
         while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          QLog.i("ARRelationShipFileUpload", 1, "cancelTransactionTask. sessionId = " + ((aanb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload$ARRelationShipReqInfo.b);
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().cancelTransactionTask(((aanb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
+          QLog.i("ARRelationShipFileUpload", 1, "cancelTransactionTask. sessionId = " + ((aatv)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload$ARRelationShipReqInfo.b);
+          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().cancelTransactionTask(((aatv)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
           i += 1;
         }
         this.jdField_a_of_type_JavaUtilArrayList.clear();
@@ -221,7 +221,7 @@ public class ARRelationShipFileUpload
       return false;
     }
     new File(paramARRelationShipReqInfo.jdField_a_of_type_JavaLangString);
-    Object localObject1 = new aana(this, paramARRelationShipReqInfo);
+    Object localObject1 = new aatu(this, paramARRelationShipReqInfo);
     Object localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
     if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length == 0)) {}
     try
@@ -251,10 +251,10 @@ public class ARRelationShipFileUpload
       for (;;)
       {
         localObject1 = new Transaction((String)localObject2, i, paramARRelationShipReqInfo.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, arrayOfByte, (ITransactionCallback)localObject1);
-        localObject2 = new aanb();
-        ((aanb)localObject2).jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload$ARRelationShipReqInfo = paramARRelationShipReqInfo;
-        ((aanb)localObject2).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = ((Transaction)localObject1);
-        ((aanb)localObject2).jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload$ARRelationShipFileUploadCallBack = ???;
+        localObject2 = new aatv();
+        ((aatv)localObject2).jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload$ARRelationShipReqInfo = paramARRelationShipReqInfo;
+        ((aatv)localObject2).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = ((Transaction)localObject1);
+        ((aatv)localObject2).jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload$ARRelationShipFileUploadCallBack = ???;
         synchronized (this.jdField_a_of_type_JavaLangObject)
         {
           this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);

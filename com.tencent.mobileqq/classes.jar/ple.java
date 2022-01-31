@@ -1,22 +1,16 @@
-import com.tencent.component.network.utils.http.PoolingClientConnectionManager;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import org.apache.http.conn.ClientConnectionRequest;
-import org.apache.http.conn.ManagedClientConnection;
+import android.graphics.drawable.Drawable;
+import com.tencent.component.media.image.ImageLoader;
+import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
+import com.tencent.component.media.image.ImageLoader.Options;
 
 public class ple
-  implements ClientConnectionRequest
+  implements Runnable
 {
-  public ple(PoolingClientConnectionManager paramPoolingClientConnectionManager, Future paramFuture) {}
+  public ple(ImageLoader paramImageLoader, ImageLoader.ImageLoadListener paramImageLoadListener, String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions) {}
   
-  public void abortRequest()
+  public void run()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
-  }
-  
-  public ManagedClientConnection getConnection(long paramLong, TimeUnit paramTimeUnit)
-  {
-    return this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolingClientConnectionManager.a(this.jdField_a_of_type_JavaUtilConcurrentFuture, paramLong, paramTimeUnit);
+    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener.onImageLoaded(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options);
   }
 }
 

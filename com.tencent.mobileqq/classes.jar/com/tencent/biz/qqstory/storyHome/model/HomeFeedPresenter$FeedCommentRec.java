@@ -19,7 +19,7 @@ public class HomeFeedPresenter$FeedCommentRec
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
   {
     int i = 1;
-    if (paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGetFeedCommentEvent.errorInfo.isSuccess())
     {
       localObject = paramHomeFeedPresenter.a(paramGetFeedCommentEvent.jdField_a_of_type_JavaLangString);
       if (localObject == null) {

@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeNoImageSocial;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebContentGetCallback;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class lue
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lue(FeedItemCellTypeNoImageSocial paramFeedItemCellTypeNoImageSocial) {}
+  public lue(FastWebModule paramFastWebModule, FastWebModule.FastWebContentGetCallback paramFastWebContentGetCallback, boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (paramView != null) {
-      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFastWebModule$FastWebContentGetCallback.a(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
   }
 }
 

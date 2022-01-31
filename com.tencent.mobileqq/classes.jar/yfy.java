@@ -1,45 +1,23 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.EditText;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.ContactFriendInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class yfy
-  implements OverScrollViewListener
+  implements DialogInterface.OnClickListener
 {
-  public yfy(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public yfy(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    ((ContactFriendInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).g();
+    paramDialogInterface.dismiss();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063FA", "0X80063FA", 1, 0, "", "", "", "");
   }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-    if (NetworkUtil.d(this.a))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(true);
-      this.a.jdField_a_of_type_Boolean = true;
-      ((QzoneContactsFeedManager)this.a.app.getManager(90)).a();
-      return true;
-    }
-    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

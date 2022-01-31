@@ -8,7 +8,7 @@ import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import vik;
+import vnm;
 
 public class SystemItemBuilder
   extends BaseBubbleBuilder
@@ -25,7 +25,7 @@ public class SystemItemBuilder
   
   protected BaseBubbleBuilder.ViewHolder a()
   {
-    return new vik(this);
+    return new vnm(this);
   }
   
   protected String a(ChatMessage paramChatMessage)

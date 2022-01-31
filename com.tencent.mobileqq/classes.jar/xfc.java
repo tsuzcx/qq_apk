@@ -1,42 +1,29 @@
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
 
 class xfc
-  implements NearbyCustomDialog.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  xfc(xfb paramxfb, String paramString) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(View paramView)
+  xfc(xfa paramxfa) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (BaseActivity.sTopActivity == null) {
-      return;
+    if (!paramBoolean) {
+      GoldMsgAioState.a(this.jdField_a_of_type_Xfa.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldMsgSettingActivity.getWindow(), this.jdField_a_of_type_Xfa.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldMsgSettingActivity, paramView);
     }
-    try
+    do
     {
-      paramView = new JSONObject();
-      paramView.put("viewTag", "goldmsg_open");
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("skip_confirm", "1");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        ((JSONObject)localObject).put("returl", this.jdField_a_of_type_JavaLangString);
-      }
-      paramView.put("extra_data", ((JSONObject)localObject).toString());
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("json", paramView.toString());
-      ((Bundle)localObject).putString("callbackSn", "0");
-      PayBridgeActivity.a(BaseActivity.sTopActivity, 5, (Bundle)localObject);
       return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-    }
+      this.jdField_a_of_type_Xfa.c = true;
+    } while (this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Xfa.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.jdField_a_of_type_Xfa.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Xfa.jdField_a_of_type_AndroidTextTextWatcher);
   }
 }
 

@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class agva
-  implements ActionSheet.OnDismissListener
+  implements Animation.AnimationListener
 {
-  public agva(QCallDetailActivity paramQCallDetailActivity) {}
+  public agva(BreatheEffectView paramBreatheEffectView) {}
   
-  public void onDismiss()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8005AFA", "0X8005AFA", 0, 0, "", "", "", "");
+    this.a.a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agva
  * JD-Core Version:    0.7.0.1
  */

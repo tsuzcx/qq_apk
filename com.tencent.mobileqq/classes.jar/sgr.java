@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.QvipSpecialCareObserver;
 
 public class sgr
-  implements View.OnClickListener
+  extends QvipSpecialCareObserver
 {
-  public sgr(Conversation paramConversation, PortalManager paramPortalManager) {}
+  public sgr(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(Object paramObject)
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).removeView(Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation));
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), true);
+    if (paramObject != null) {
+      ((Integer)paramObject).intValue();
     }
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
   }
 }
 

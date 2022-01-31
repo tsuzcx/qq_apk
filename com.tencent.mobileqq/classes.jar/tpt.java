@@ -1,70 +1,96 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import android.content.res.Resources;
+import android.text.SpannableStringBuilder;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.util.QQSettingUtil;
+import com.tencent.mobileqq.vas.VipGrayConfigHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import mqq.observer.WtloginObserver;
 
-public class tpt
-  extends WtloginObserver
+class tpt
+  implements Runnable
 {
-  public tpt(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
+  tpt(tps paramtps) {}
   
-  public void OnRegGetSMSVerifyLoginAccount(int paramInt, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RegisterPersonalInfoActivity", 2, "OnRegGetSMSVerifyLoginAccount ret=" + paramInt + " uin=" + paramLong);
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if (paramInt == 0)
-    {
-      RegisterPersonalInfoActivity.a(this.a, Long.valueOf(paramLong).toString());
-      RegisterPersonalInfoActivity.a(this.a, paramArrayOfByte2);
-      if (TextUtils.isEmpty(RegisterPersonalInfoActivity.a(this.a)))
-      {
-        this.a.a(2131434215, 1);
-        return;
-      }
-      if ((RegisterPersonalInfoActivity.a(this.a) == null) || (RegisterPersonalInfoActivity.a(this.a).length == 0))
-      {
-        this.a.a(2131434215, 1);
-        return;
-      }
-      paramArrayOfByte1 = new Intent(this.a, RegisterQQNumberActivity.class);
-      paramArrayOfByte1.putExtra("phonenum", this.a.a);
-      paramArrayOfByte1.putExtra("key", this.a.jdField_b_of_type_JavaLangString);
-      paramArrayOfByte1.putExtra("key_register_is_phone_num_registered", this.a.jdField_b_of_type_Boolean);
-      paramArrayOfByte1.putExtra("uin", RegisterPersonalInfoActivity.a(this.a));
-      paramArrayOfByte1.putExtra("key_register_sign", RegisterPersonalInfoActivity.a(this.a));
-      paramArrayOfByte1.putExtra("key_register_from_send_sms", RegisterPersonalInfoActivity.a(this.a));
-      paramArrayOfByte1.putExtra("key_register_chose_bind_phone", true);
-      this.a.startActivity(paramArrayOfByte1);
-      this.a.finish();
-      return;
-    }
-    if (paramArrayOfByte3 != null) {}
     for (;;)
     {
+      boolean bool1;
+      boolean bool2;
+      int j;
       try
       {
-        paramArrayOfByte1 = new String(paramArrayOfByte3, "utf-8");
-        if (!TextUtils.isEmpty(paramArrayOfByte1)) {
-          break;
+        localObject = new SpannableStringBuilder();
+        localResources = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
+        if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.bSuperVipOpen != 1) {
+          break label503;
         }
-        this.a.a(2131434215, 1);
+        bool1 = true;
+        if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.bQQVipOpen != 1) {
+          break label508;
+        }
+        bool2 = true;
+        j = this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.iQQVipLevel;
+        if (!QLog.isColorLevel()) {
+          break label488;
+        }
+        QLog.d("QQSettingRedesign", 2, "updateLevelAndVip bSuperVipOpen=" + bool1 + ",bQQVipOpen=" + bool2 + ",VipLevel=" + j + ",QQLevel=" + this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel);
+      }
+      catch (Throwable localThrowable)
+      {
+        Object localObject;
+        Resources localResources;
+        localThrowable.printStackTrace();
         return;
       }
-      catch (UnsupportedEncodingException paramArrayOfByte1)
-      {
-        paramArrayOfByte1.printStackTrace();
+      int i = Math.max(j, 1);
+      ((SpannableStringBuilder)localObject).append(QQSettingUtil.a(this.a.a.b, localResources, bool1, bool2, i));
+      if (VipGrayConfigHelper.a().a(bool1, this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingLoginTime)) {
+        ((SpannableStringBuilder)localObject).append(QQSettingUtil.a(this.a.a.b, localResources, this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingGameId, this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingDan, this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.namePlateOfKingDanDisplatSwitch));
       }
-      paramArrayOfByte1 = null;
+      ((SpannableStringBuilder)localObject).append(QQSettingUtil.a(localResources, this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel));
+      this.a.a.b.setText((CharSequence)localObject);
+      this.a.a.b.setContentDescription("等级：" + this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel);
+      this.a.a.a(bool1, bool2, i);
+      if (AppSetting.b)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(QQSettingMe.a(this.a.a));
+        if (bool1)
+        {
+          ((StringBuilder)localObject).append("你是尊贵的超级会员");
+          if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel > 0) {
+            ((StringBuilder)localObject).append(" 等级").append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel);
+          }
+          this.a.a.jdField_a_of_type_AndroidViewView.setContentDescription(((StringBuilder)localObject).toString());
+          return;
+        }
+        if (bool2)
+        {
+          ((StringBuilder)localObject).append("你是尊贵的会员");
+          continue;
+          label488:
+          if (!bool1)
+          {
+            i = j;
+            if (!bool2) {}
+          }
+        }
+      }
+      else
+      {
+        return;
+        label503:
+        bool1 = false;
+        continue;
+        label508:
+        bool2 = false;
+      }
     }
-    this.a.a(paramArrayOfByte1, 1);
   }
 }
 

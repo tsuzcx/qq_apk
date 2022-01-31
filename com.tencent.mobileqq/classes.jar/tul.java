@@ -1,56 +1,70 @@
 import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.Locale;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import mqq.observer.WtloginObserver;
 
 public class tul
-  implements ActionSheet.OnButtonClickListener
+  extends WtloginObserver
 {
-  public tul(SubLoginActivity paramSubLoginActivity) {}
+  public tul(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void OnRegGetSMSVerifyLoginAccount(int paramInt, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    if (this.a.jdField_b_of_type_Boolean) {
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterPersonalInfoActivity", 2, "OnRegGetSMSVerifyLoginAccount ret=" + paramInt + " uin=" + paramLong);
+    }
+    if (this.a.isFinishing()) {
       return;
     }
+    this.a.c();
     if (paramInt == 0)
     {
-      paramView = null;
-      if (SubLoginActivity.a(this.a) != null) {
-        paramView = SubLoginActivity.a(this.a).getText().toString();
-      }
-      if (TextUtils.isEmpty(paramView)) {
-        break label193;
-      }
-    }
-    label193:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756", paramView });; paramView = "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756")
-    {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", SubLoginActivity.a(this.a));
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      for (;;)
+      RegisterPersonalInfoActivity.a(this.a, Long.valueOf(paramLong).toString());
+      RegisterPersonalInfoActivity.a(this.a, paramArrayOfByte2);
+      if (TextUtils.isEmpty(RegisterPersonalInfoActivity.a(this.a)))
       {
-        this.a.jdField_b_of_type_Boolean = true;
-        this.a.a.dismiss();
+        this.a.a(2131434231, 1);
         return;
-        if (paramInt == 1)
-        {
-          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-          paramView.putExtra("isSubaccount", true);
-          paramView.putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
-          this.a.startActivity(paramView);
-        }
       }
+      if ((RegisterPersonalInfoActivity.a(this.a) == null) || (RegisterPersonalInfoActivity.a(this.a).length == 0))
+      {
+        this.a.a(2131434231, 1);
+        return;
+      }
+      paramArrayOfByte1 = new Intent(this.a, RegisterQQNumberActivity.class);
+      paramArrayOfByte1.putExtra("phonenum", this.a.a);
+      paramArrayOfByte1.putExtra("key", this.a.jdField_b_of_type_JavaLangString);
+      paramArrayOfByte1.putExtra("key_register_is_phone_num_registered", this.a.jdField_b_of_type_Boolean);
+      paramArrayOfByte1.putExtra("uin", RegisterPersonalInfoActivity.a(this.a));
+      paramArrayOfByte1.putExtra("key_register_sign", RegisterPersonalInfoActivity.a(this.a));
+      paramArrayOfByte1.putExtra("key_register_from_send_sms", RegisterPersonalInfoActivity.a(this.a));
+      paramArrayOfByte1.putExtra("key_register_chose_bind_phone", true);
+      this.a.startActivity(paramArrayOfByte1);
+      this.a.finish();
+      return;
     }
+    if (paramArrayOfByte3 != null) {}
+    for (;;)
+    {
+      try
+      {
+        paramArrayOfByte1 = new String(paramArrayOfByte3, "utf-8");
+        if (!TextUtils.isEmpty(paramArrayOfByte1)) {
+          break;
+        }
+        this.a.a(2131434231, 1);
+        return;
+      }
+      catch (UnsupportedEncodingException paramArrayOfByte1)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+      paramArrayOfByte1 = null;
+    }
+    this.a.a(paramArrayOfByte1, 1);
   }
 }
 

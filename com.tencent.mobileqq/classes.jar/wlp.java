@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RecommendTroopManagerImp;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class wlp
   implements Runnable
 {
-  public wlp(TroopActivity paramTroopActivity, BaseTroopView paramBaseTroopView) {}
+  public wlp(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment, int paramInt) {}
   
   public void run()
   {
-    boolean bool = ((RecommendTroopManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getManager(21)).b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.runOnUiThread(new wlq(this, bool));
+    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.b, 20);
+    if (localList != null) {
+      ThreadManager.getUIHandler().post(new wlq(this, localList));
+    }
   }
 }
 

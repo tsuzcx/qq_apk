@@ -1,47 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
 
 public class vzr
-  extends FriendListObserver
+  implements DialogInterface.OnClickListener
 {
-  public vzr(TroopChatPie paramTroopChatPie) {}
+  public vzr(GameRoomChatPie paramGameRoomChatPie, WerewolvesPluginInterface paramWerewolvesPluginInterface) {}
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map paramMap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("onSetGenralSettingsTroopFilter: isSuc = ").append(paramBoolean).append(", size = ");
-      if (paramMap == null)
-      {
-        i = 0;
-        QLog.d("Q.aio.TroopChatPie", 2, i);
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.W = true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.V = true;
+    GameRoomChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie, false);
+    if ((this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.a()) && (!this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.b())) {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
     }
-    else
-    {
-      if ((paramMap != null) && (paramMap.size() != 0)) {
-        break label74;
-      }
-    }
-    label74:
-    while (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())
-    {
-      return;
-      i = paramMap.size();
-      break;
-    }
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131434513), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131434514), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
   }
 }
 

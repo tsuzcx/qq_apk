@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.equipmentlock;
 
-import achf;
+import acpi;
 import android.content.Context;
 import android.text.format.Time;
 import com.tencent.ims.devlock_mobile_phone.status;
@@ -66,21 +66,21 @@ public class DevlockPhoneStatus
   
   public void a(Context paramContext, String paramString)
   {
-    achf localachf = new achf(this);
-    String str2 = paramContext.getString(2131436624);
-    String str1 = paramContext.getString(2131436628);
+    acpi localacpi = new acpi(this);
+    String str2 = paramContext.getString(2131436644);
+    String str1 = paramContext.getString(2131436648);
     long l = this.jdField_a_of_type_Long * 1000L;
     if (l > 0L)
     {
       localObject = new Time();
       ((Time)localObject).set(l);
     }
-    for (Object localObject = String.format(paramContext.getString(2131436626), new Object[] { Integer.valueOf(((Time)localObject).year), Integer.valueOf(((Time)localObject).month + 1), Integer.valueOf(((Time)localObject).monthDay), Integer.valueOf(((Time)localObject).hour), Integer.valueOf(((Time)localObject).minute) });; localObject = paramContext.getString(2131436627))
+    for (Object localObject = String.format(paramContext.getString(2131436646), new Object[] { Integer.valueOf(((Time)localObject).year), Integer.valueOf(((Time)localObject).month + 1), Integer.valueOf(((Time)localObject).monthDay), Integer.valueOf(((Time)localObject).hour), Integer.valueOf(((Time)localObject).minute) });; localObject = paramContext.getString(2131436647))
     {
-      paramContext = DialogUtil.a(paramContext, 230, str2, String.format(paramContext.getString(2131436625), new Object[] { paramString, localObject }), null, localachf);
+      paramContext = DialogUtil.a(paramContext, 230, str2, String.format(paramContext.getString(2131436645), new Object[] { paramString, localObject }), null, localacpi);
       if (paramContext != null)
       {
-        paramContext.setNegativeButton(str1, localachf);
+        paramContext.setNegativeButton(str1, localacpi);
         paramContext.show();
       }
       return;

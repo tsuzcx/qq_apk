@@ -1,42 +1,57 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
+import com.tencent.mobileqq.nearby.now.view.widget.TopicViewItem;
+import java.util.List;
 
 public class affz
-  implements Animation.AnimationListener
+  extends BaseAdapter
 {
-  public affz(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public affz(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int getCount()
   {
-    if (paramAnimation == NearbyProfileDisplayTribePanel.b(this.a))
-    {
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(8);
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(4);
-      NearbyProfileDisplayTribePanel.a(this.a).clearAnimation();
-      NearbyProfileDisplayTribePanel.a(this.a).clearAnimation();
-      NearbyProfileDisplayTribePanel.a(this.a).setBackgroundResource(2130845274);
-      NearbyProfileDisplayTribePanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494188));
-      NearbyProfileDisplayTribePanel.b(this.a).setTextColor(this.a.a.getResources().getColor(2131494188));
+    if ((StartLiveTopicLabelListView.a(this.a) == null) || (StartLiveTopicLabelListView.a(this.a).size() == 0)) {
+      return 0;
     }
+    return StartLiveTopicLabelListView.a(this.a).size();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public Object getItem(int paramInt)
   {
-    if (paramAnimation == NearbyProfileDisplayTribePanel.a(this.a))
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(0);
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(0);
-      NearbyProfileDisplayTribePanel.a(this.a).setBackgroundResource(2130846264);
-      NearbyProfileDisplayTribePanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494210));
-      NearbyProfileDisplayTribePanel.b(this.a).setTextColor(this.a.a.getResources().getColor(2131494210));
+      paramViewGroup = new afgb(this.a, null);
+      paramView = new TopicViewItem(StartLiveTopicLabelListView.a(this.a));
+      paramView.setTag(paramViewGroup);
+      paramViewGroup.a = ((String)StartLiveTopicLabelListView.a(this.a).get(paramInt));
+      if (!"+标签".equals(paramViewGroup.a)) {
+        break label130;
+      }
+      paramView.setBackgroundResource(StartLiveTopicLabelListView.a(this.a));
+      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.b(this.a));
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(new afga(this));
+      ((TopicViewItem)paramView).setText(paramViewGroup.a);
+      return paramView;
+      paramViewGroup = (afgb)paramView.getTag();
+      break;
+      label130:
+      paramView.setBackgroundResource(StartLiveTopicLabelListView.c(this.a));
+      ((TopicViewItem)paramView).setTextColor(StartLiveTopicLabelListView.d(this.a));
     }
   }
 }

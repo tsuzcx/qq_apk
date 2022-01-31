@@ -1,30 +1,23 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo;
 
-class jpt
-  implements Runnable
+public final class jpt
+  implements Parcelable.Creator
 {
-  jpt(jps paramjps) {}
-  
-  public void run()
+  public RecvGVideoLevelInfo a(Parcel paramParcel)
   {
-    if ((this.a.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.a.jdField_a_of_type_ComTencentAvVideoController.a().g != 4) && (this.a.a.b == 1) && (!this.a.a.jdField_a_of_type_Boolean))
-    {
-      this.a.a.b(false);
-      this.a.a.d(false);
-      if ((this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null) && ((this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI instanceof DoubleVideoCtrlUI)))
-      {
-        ((DoubleVideoCtrlUI)this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI).a();
-        ((DoubleVideoCtrlUI)this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI).b(true);
-      }
-    }
+    return new RecvGVideoLevelInfo(paramParcel);
+  }
+  
+  public RecvGVideoLevelInfo[] a(int paramInt)
+  {
+    return new RecvGVideoLevelInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,37 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.sonic.SonicJsPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sonic.sdk.SonicDiffDataCallback;
+import org.json.JSONObject;
 
-class akue
-  implements Runnable
+public class akue
+  implements SonicDiffDataCallback
 {
-  akue(akud paramakud, View paramView) {}
+  public akue(SonicJsPlugin paramSonicJsPlugin, boolean paramBoolean, CustomWebView paramCustomWebView, String paramString) {}
   
-  public void run()
+  public void callback(String paramString)
   {
-    this.jdField_a_of_type_Akud.a.jdField_a_of_type_Akug.showDropDown();
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Akud.a.b);
-    this.jdField_a_of_type_Akud.a.jdField_a_of_type_Boolean = true;
+    str = "";
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (!this.jdField_a_of_type_Boolean) {
+        paramString.remove("result");
+      }
+      paramString = paramString.toString();
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        QLog.e("SonicSdkImpl_SonicJsPlugin", 1, "reloadHttpData error!", paramString);
+        paramString = str;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SonicSdkImpl_SonicJsPlugin", 2, "reloadHttpData , notify data: " + paramString);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.jdField_a_of_type_JavaLangString, new String[] { paramString });
   }
 }
 

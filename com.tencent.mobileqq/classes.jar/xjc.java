@@ -1,34 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
 
 public class xjc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xjc(BannerManager paramBannerManager) {}
+  public xjc(CommonHbFragment paramCommonHbFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    BannerManager.a(this.a).app.getPreferences();
-    UpgradeController.a().a();
-    if (UpgradeController.a().a() == 4)
-    {
-      UpgradeController.a().a(BannerManager.a(this.a));
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "1");
+    if ("1".equals(CommonHbFragment.f(this.a))) {
+      CommonHbFragment.b(this.a).performClick();
     }
-    for (;;)
+    do
     {
-      this.a.a(-1, null);
       return;
-      UpgradeDetailActivity.a(BannerManager.a(this.a), UpgradeController.a().a(), true, true, true);
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "1");
-    }
+      if ("2".equals(CommonHbFragment.f(this.a)))
+      {
+        CommonHbFragment.c(this.a).performClick();
+        return;
+      }
+    } while (!"3".equals(CommonHbFragment.f(this.a)));
+    CommonHbFragment.d(this.a).performClick();
   }
 }
 

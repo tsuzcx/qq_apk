@@ -1,48 +1,26 @@
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import java.util.ArrayList;
 
 public class zhy
-  implements PhoneContactManager.IPhoneContactListener
+  implements Runnable
 {
-  public zhy(NewFriendManager paramNewFriendManager) {}
+  public zhy(CardHandler paramCardHandler, int paramInt, ArrayList paramArrayList) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b.getCurrentAccountUin();
+    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b.getManager(50);
+    Card localCard = localFriendsManager.a(str);
+    if (localCard != null)
+    {
+      localCard.iVoteIncrement = this.jdField_a_of_type_Int;
+      localFriendsManager.a(localCard);
     }
-    this.a.b();
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
-    }
-    this.a.b();
-  }
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
-    }
-    if ((paramInt & 0x1) != 0) {
-      synchronized (NewFriendManager.a(this.a))
-      {
-        Iterator localIterator = NewFriendManager.a(this.a).iterator();
-        if (localIterator.hasNext()) {
-          ((NewFriendManager.INewFriendListener)localIterator.next()).b();
-        }
-      }
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      CardHandler.a(str, this.jdField_a_of_type_JavaUtilArrayList);
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.musicgene;
 
-import aekh;
+import aesr;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -25,7 +25,7 @@ public class MusicGeneQQBrowserActivity
   
   public MusicGeneQQBrowserActivity()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aekh(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aesr(this);
     this.jdField_a_of_type_JavaLangClass = MusicGeneQQBrowserActivity.MusicGeneQQBrowserFragment.class;
   }
   

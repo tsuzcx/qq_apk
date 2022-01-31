@@ -77,7 +77,7 @@ public class SendVidPollDataHandler
     {
       paramCommonRequest.mergeFrom(paramCommonResponse.a);
       paramCommonResponse = new SendVidPollDataHandler.SendVidPollDataResultEvent();
-      paramCommonResponse.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramCommonRequest.result.error_code.get(), paramCommonRequest.result.error_desc.get().toStringUtf8());
+      paramCommonResponse.errorInfo = new ErrorMessage(paramCommonRequest.result.error_code.get(), paramCommonRequest.result.error_desc.get().toStringUtf8());
       paramCommonResponse.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
       paramCommonResponse.jdField_b_of_type_JavaLangString = this.c;
       paramCommonResponse.jdField_a_of_type_Int = paramCommonRequest.comment_id.get();

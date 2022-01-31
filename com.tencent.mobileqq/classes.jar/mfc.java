@@ -1,39 +1,30 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.OnVideoPluginInstallListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import java.util.List;
 
 public class mfc
-  implements Handler.Callback
+  implements Runnable
 {
-  public mfc(VideoPluginInstall paramVideoPluginInstall) {}
+  public mfc(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    VideoInfo localVideoInfo = (VideoInfo)VideoFeedsAdapter.a(this.a).get(0);
+    if (VideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
+      Object localObject = VideoFeedsAdapter.a(this.a).getChildAt(VideoFeedsAdapter.a(this.a).getHeaderViewsCount());
+      if ((localObject != null) && ((((View)localObject).getTag() instanceof VideoFeedsAdapter.VideoItemHolder)))
       {
-        do
-        {
-          return true;
-          VideoPluginInstall.a(this.a, false);
-          VideoPluginInstall.a(this.a).removeMessages(0);
-        } while (VideoPluginInstall.a(this.a) == null);
-        VideoPluginInstall.a(this.a).c(true);
-        return true;
-        VideoPluginInstall.a(this.a, false);
-        VideoPluginInstall.a(this.a).removeMessages(1);
-      } while (VideoPluginInstall.a(this.a) == null);
-      VideoPluginInstall.a(this.a).c(false);
-      return true;
+        localObject = (VideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
+        if (((VideoFeedsAdapter.VideoItemHolder)localObject).o != null) {
+          VideoFeedsHelper.a(localVideoInfo.o, localVideoInfo.p, ((VideoFeedsAdapter.VideoItemHolder)localObject).o);
+        }
+      }
     }
-    VideoPluginInstall.a(this.a, true);
-    return true;
   }
 }
 

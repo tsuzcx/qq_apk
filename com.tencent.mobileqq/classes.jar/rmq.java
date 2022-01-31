@@ -1,32 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class rmq
-  implements DialogInterface.OnClickListener
+  extends TroopObserver
 {
-  public rmq(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public rmq(AddFriendActivity paramAddFriendActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "switchFail -> to LoginActivity which=" + paramInt);
+    this.a.removeObserver(this.a.a);
+    if ((paramBoolean1) && (paramByte == 0) && (paramTroopInfo != null) && (Utils.a(paramTroopInfo.troopuin, this.a.b)))
+    {
+      if (SearchUtils.a(paramTroopInfo.troopowneruin))
+      {
+        Message localMessage = Message.obtain();
+        localMessage.what = 3;
+        if (paramBoolean2) {}
+        for (paramByte = 1;; paramByte = 0)
+        {
+          localMessage.arg1 = paramByte;
+          localMessage.obj = paramTroopInfo;
+          AddFriendActivity.a(this.a).sendMessageDelayed(localMessage, 300L);
+          return;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AddFriendActivity", 2, "TroopObserver.onTroopSearch: troopUin=" + this.a.b + " 是异常号，群主uin = " + paramTroopInfo.troopowneruin);
+      }
+      AddFriendActivity.a(this.a);
+      this.a.a(2131434970);
+      return;
     }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setPackage(this.a.getPackageName());
-    paramDialogInterface.setClass(this.a, LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    paramDialogInterface.putExtra("fromsubaccount", true);
-    if (this.a.a != null) {
-      paramDialogInterface.putExtra("uin", this.a.a);
+    AddFriendActivity.a(this.a);
+    if (!paramBoolean1)
+    {
+      if (!NetworkUtil.d(BaseApplication.getContext()))
+      {
+        this.a.a(2131434461);
+        return;
+      }
+      this.a.a(2131434465);
+      return;
     }
-    paramDialogInterface.putExtra("befault_uin", this.a.app.getCurrentAccountUin());
-    this.a.startActivityForResult(paramDialogInterface, 1011);
-    this.a.a = null;
+    if (paramByte == 2)
+    {
+      this.a.a(2131434970);
+      return;
+    }
+    if (paramByte == 3)
+    {
+      this.a.a(2131434971);
+      return;
+    }
+    if (paramByte == 4)
+    {
+      this.a.a(2131434972);
+      return;
+    }
+    this.a.a(2131434970);
   }
 }
 

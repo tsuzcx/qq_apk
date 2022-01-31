@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.armap.config.BaseCheckHandler.ItemConfig;
-import com.tencent.mobileqq.armap.config.POICheckHander;
+import android.view.View;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class abfo
-  implements Runnable
+class abfo
+  implements ActionSheet.OnButtonClickListener
 {
-  public abfo(POICheckHander paramPOICheckHander, BaseCheckHandler.ItemConfig paramItemConfig) {}
+  abfo(abfm paramabfm, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapConfigPOICheckHander.a(this.jdField_a_of_type_ComTencentMobileqqArmapConfigBaseCheckHandler$ItemConfig);
+    this.jdField_a_of_type_Abfm.a.e();
+    this.jdField_a_of_type_Abfm.a.f();
+    this.jdField_a_of_type_Abfm.a.g();
+    this.jdField_a_of_type_Abfm.a.h();
+    this.jdField_a_of_type_Abfm.a.b("本地所有数据已删除成功");
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

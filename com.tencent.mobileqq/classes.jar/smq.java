@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.activity.Conversation;
 
-class smq
-  implements Runnable
+public class smq
+  extends QQStoryObserver
 {
-  smq(smo paramsmo, EmoticonPackage paramEmoticonPackage, int paramInt) {}
+  public smq(Conversation paramConversation) {}
   
-  public void run()
+  public void d(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Smo.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(this.jdField_a_of_type_Smo.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.jdField_a_of_type_Int);
+    if (paramBoolean)
+    {
+      SLog.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
+      this.a.a(1055, 0L, false);
+      return;
+    }
+    Conversation.a(this.a, false);
   }
 }
 

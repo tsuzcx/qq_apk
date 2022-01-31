@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.view.FrameGifView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 
 public class tmf
-  implements Runnable
+  extends GameCenterObserver
 {
-  public tmf(QQSettingMe paramQQSettingMe) {}
+  public tmf(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QQSettingMe.a(this.a).b();
+    if (PublicAccountListActivity.a(this.a)) {
+      PublicAccountListActivity.a(this.a);
+    }
   }
 }
 

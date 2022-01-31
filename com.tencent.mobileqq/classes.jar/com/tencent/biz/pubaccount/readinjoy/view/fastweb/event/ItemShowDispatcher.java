@@ -9,22 +9,22 @@ import com.tencent.widget.AbsListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mmy;
-import mmz;
+import mqq;
 import mqq.os.MqqHandler;
+import mqr;
 
 public class ItemShowDispatcher
 {
-  private long jdField_a_of_type_Long;
+  private final int jdField_a_of_type_Int = 1000;
   private SparseArray jdField_a_of_type_AndroidUtilSparseArray;
   private Pair jdField_a_of_type_ComTencentUtilPair;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new mmy(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new mqq(this);
   private String jdField_a_of_type_JavaLangString = ItemShowDispatcher.class.getSimpleName();
-  private mmz jdField_a_of_type_Mmz;
+  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private mqr jdField_a_of_type_Mqr;
   private int[] jdField_a_of_type_ArrayOfInt;
   private SparseArray jdField_b_of_type_AndroidUtilSparseArray;
   private Pair jdField_b_of_type_ComTencentUtilPair;
-  private Pair c;
   
   private Pair a(Pair paramPair1, Pair paramPair2)
   {
@@ -104,61 +104,6 @@ public class ItemShowDispatcher
   
   private void a(Pair paramPair)
   {
-    if ((paramPair == null) || (this.jdField_a_of_type_AndroidUtilSparseArray == null) || (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) {}
-    do
-    {
-      return;
-      paramPair = a(paramPair, this.jdField_a_of_type_ComTencentUtilPair);
-    } while (paramPair == null);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "one second : " + paramPair.first + " ---  " + paramPair.second);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
-    {
-      int j = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-      if ((j >= ((Integer)paramPair.first).intValue()) && (j <= ((Integer)paramPair.second).intValue()))
-      {
-        ((ItemShowDispatcher.ItemShowCallback)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).a();
-        localArrayList.add(Integer.valueOf(j));
-      }
-      i += 1;
-    }
-    paramPair = localArrayList.iterator();
-    while (paramPair.hasNext())
-    {
-      i = ((Integer)paramPair.next()).intValue();
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-    }
-    c();
-  }
-  
-  private boolean a()
-  {
-    if ((this.jdField_a_of_type_ComTencentUtilPair == null) && (this.jdField_b_of_type_ComTencentUtilPair == null)) {}
-    while ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length == 0) || (((this.jdField_a_of_type_AndroidUtilSparseArray == null) || (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) && ((this.jdField_b_of_type_AndroidUtilSparseArray == null) || (this.jdField_b_of_type_AndroidUtilSparseArray.size() == 0)))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private boolean a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {}
-    while (paramInt1 / paramInt2 < 0.5D) {
-      return false;
-    }
-    return true;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    }
-  }
-  
-  private void b(Pair paramPair)
-  {
     if ((paramPair == null) || (this.jdField_b_of_type_AndroidUtilSparseArray == null) || (this.jdField_b_of_type_AndroidUtilSparseArray.size() == 0)) {
       return;
     }
@@ -181,25 +126,108 @@ public class ItemShowDispatcher
       i = ((Integer)paramPair.next()).intValue();
       this.jdField_b_of_type_AndroidUtilSparseArray.remove(i);
     }
-    d();
+    e();
+  }
+  
+  private boolean a()
+  {
+    if ((this.jdField_a_of_type_ComTencentUtilPair == null) && (this.jdField_b_of_type_ComTencentUtilPair == null)) {}
+    while ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length == 0) || (((this.jdField_a_of_type_AndroidUtilSparseArray == null) || (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) && ((this.jdField_b_of_type_AndroidUtilSparseArray == null) || (this.jdField_b_of_type_AndroidUtilSparseArray.size() == 0)))) {
+      return false;
+    }
+    return true;
+  }
+  
+  private boolean a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {}
+    while (paramInt1 / paramInt2 < 0.5D) {
+      return false;
+    }
+    return true;
+  }
+  
+  private void b()
+  {
+    if ((this.jdField_a_of_type_AndroidUtilSparseArray == null) || (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) {}
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doAdCallback(all) ");
+      }
+      localArrayList = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        ItemShowDispatcher.AdPostionReportManager localAdPostionReportManager = (ItemShowDispatcher.AdPostionReportManager)localIterator.next();
+        if ((localAdPostionReportManager.jdField_a_of_type_JavaLangLong.longValue() != 0L) && (System.currentTimeMillis() - localAdPostionReportManager.jdField_a_of_type_JavaLangLong.longValue() >= 1000L))
+        {
+          localArrayList.add(Integer.valueOf(localAdPostionReportManager.jdField_a_of_type_Int));
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "time is out , need report ,ad pos is =" + localAdPostionReportManager.jdField_a_of_type_Int + "  show time=" + localAdPostionReportManager.jdField_a_of_type_JavaLangLong);
+          }
+        }
+      }
+    } while (localArrayList.size() <= 0);
+    b(localArrayList);
   }
   
   private void b(AbsListView paramAbsListView, int paramInt)
   {
-    paramAbsListView = a(paramAbsListView);
-    b(a(paramAbsListView, this.jdField_b_of_type_ComTencentUtilPair));
-    if ((this.c != null) && (this.jdField_a_of_type_Long > 0L))
+    a(a(a(paramAbsListView), this.jdField_b_of_type_ComTencentUtilPair));
+  }
+  
+  private void b(ArrayList paramArrayList)
+  {
+    if ((this.jdField_a_of_type_AndroidUtilSparseArray == null) || (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0)) {}
+    label205:
+    for (;;)
     {
-      Pair localPair = a(this.c, paramAbsListView);
-      if ((localPair != null) && (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 1000L)) {
-        a(localPair);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, " (ArrayList<Integer> adPositionlist) ");
+      }
+      ArrayList localArrayList = new ArrayList();
+      paramArrayList = paramArrayList.iterator();
+      for (;;)
+      {
+        if (!paramArrayList.hasNext()) {
+          break label205;
+        }
+        Integer localInteger = (Integer)paramArrayList.next();
+        Object localObject = (ItemShowDispatcher.ItemShowCallback)this.jdField_a_of_type_AndroidUtilSparseArray.get(localInteger.intValue());
+        if (localObject != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "doAdCallback(ArrayList<Integer> adPositionlist) pos=" + localInteger);
+          }
+          ((ItemShowDispatcher.ItemShowCallback)localObject).a();
+          localArrayList.add(localInteger);
+          this.jdField_a_of_type_AndroidUtilSparseArray.remove(localInteger.intValue());
+          localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            ItemShowDispatcher.AdPostionReportManager localAdPostionReportManager = (ItemShowDispatcher.AdPostionReportManager)((Iterator)localObject).next();
+            if ((localAdPostionReportManager == null) || (localAdPostionReportManager.jdField_a_of_type_Int != localInteger.intValue())) {
+              break;
+            }
+            this.jdField_a_of_type_JavaUtilArrayList.remove(localAdPostionReportManager);
+          }
+        }
       }
     }
-    this.c = paramAbsListView;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
   private void c()
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    }
+  }
+  
+  private void d()
   {
     int m = 2147483647;
     int j = -1;
@@ -222,7 +250,7 @@ public class ItemShowDispatcher
     this.jdField_a_of_type_ComTencentUtilPair = new Pair(Integer.valueOf(m), Integer.valueOf(j));
   }
   
-  private void d()
+  private void e()
   {
     int m = 2147483647;
     int j = -1;
@@ -256,16 +284,16 @@ public class ItemShowDispatcher
     if (this.jdField_a_of_type_JavaLangRunnable != null) {
       ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
-    if (this.jdField_a_of_type_Mmz != null) {
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Mmz);
+    if (this.jdField_a_of_type_Mqr != null) {
+      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Mqr);
     }
   }
   
   public void a(int paramInt, ItemShowDispatcher.ItemShowCallback paramItemShowCallback)
   {
-    b();
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramItemShowCallback);
     c();
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramItemShowCallback);
+    d();
   }
   
   public void a(AbsListView paramAbsListView, int paramInt)
@@ -274,28 +302,82 @@ public class ItemShowDispatcher
     if (!a()) {
       return;
     }
-    if (this.jdField_a_of_type_Mmz == null) {
-      this.jdField_a_of_type_Mmz = new mmz(this, paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Mqr == null) {
+      this.jdField_a_of_type_Mqr = new mqr(this, paramAbsListView, paramInt);
     }
     switch (paramInt)
     {
     default: 
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Mmz);
       return;
     case 0: 
       b(paramAbsListView, paramInt);
-      ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_Mmz);
       ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
       return;
     }
     b(paramAbsListView, paramInt);
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_Mmz, 1000L);
+    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!a()) {}
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      localArrayList = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        ItemShowDispatcher.AdPostionReportManager localAdPostionReportManager = (ItemShowDispatcher.AdPostionReportManager)localIterator.next();
+        if (a(paramAbsListView, paramInt1, paramInt2, paramInt3, localAdPostionReportManager.jdField_a_of_type_Int))
+        {
+          if ((localAdPostionReportManager.jdField_a_of_type_JavaLangLong.longValue() != 0L) && (System.currentTimeMillis() - localAdPostionReportManager.jdField_a_of_type_JavaLangLong.longValue() >= 1000L))
+          {
+            localArrayList.add(Integer.valueOf(localAdPostionReportManager.jdField_a_of_type_Int));
+            if (QLog.isColorLevel()) {
+              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "need report ,ad pos is =" + localAdPostionReportManager.jdField_a_of_type_Int + "  show time=" + localAdPostionReportManager.jdField_a_of_type_JavaLangLong);
+            }
+          }
+          else if (localAdPostionReportManager.jdField_a_of_type_JavaLangLong.longValue() == 0L)
+          {
+            localAdPostionReportManager.jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
+          }
+        }
+        else {
+          localAdPostionReportManager.jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
+        }
+      }
+    } while (localArrayList.size() <= 0);
+    b(localArrayList);
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      ItemShowDispatcher.AdPostionReportManager localAdPostionReportManager = new ItemShowDispatcher.AdPostionReportManager(((Integer)paramArrayList.next()).intValue(), Long.valueOf(0L));
+      this.jdField_a_of_type_JavaUtilArrayList.add(localAdPostionReportManager);
+    }
   }
   
   public void a(int[] paramArrayOfInt)
   {
     this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
+  }
+  
+  public boolean a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((paramInt4 < paramInt1) || (paramInt4 > paramInt1 + paramInt2)) {}
+    View localView;
+    do
+    {
+      return false;
+      localView = paramAbsListView.getChildAt(paramInt4 - paramInt1);
+    } while (localView == null);
+    return a(Math.abs(paramAbsListView.getBottom() - localView.getTop() - paramAbsListView.getTop()), this.jdField_a_of_type_ArrayOfInt[paramInt4]);
   }
   
   public void b(int paramInt, ItemShowDispatcher.ItemShowCallback paramItemShowCallback)
@@ -304,7 +386,7 @@ public class ItemShowDispatcher
       this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
     }
     this.jdField_b_of_type_AndroidUtilSparseArray.put(paramInt, paramItemShowCallback);
-    d();
+    e();
   }
 }
 

@@ -1,47 +1,42 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Set;
+import android.os.CountDownTimer;
+import android.widget.TextView;
+import com.tencent.mobileqq.portal.PrepareView;
 
 public class agrl
-  implements BusinessObserver
+  extends CountDownTimer
 {
-  private WeakReference a;
-  
-  public agrl(ProfileHeaderView paramProfileHeaderView)
+  public agrl(PrepareView paramPrepareView, long paramLong1, long paramLong2)
   {
-    this.a = new WeakReference(paramProfileHeaderView);
+    super(paramLong1, paramLong2);
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onFinish()
   {
-    if ((paramBoolean) && (paramInt == 66) && ((paramObject instanceof Set)))
-    {
-      paramObject = (Set)paramObject;
-      ProfileHeaderView localProfileHeaderView = (ProfileHeaderView)this.a.get();
-      if (localProfileHeaderView == null) {
-        break label80;
-      }
-      if (paramObject.contains(localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString))
-      {
-        localProfileHeaderView.c(localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, false);
-        localProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-      }
+    PrepareView.a(this.a).setText("00");
+    PrepareView.b(this.a).setText("00");
+    this.a.a();
+  }
+  
+  public void onTick(long paramLong)
+  {
+    int j = (int)(paramLong / 1000L);
+    int i = j / 60;
+    j %= 60;
+    String str1 = Integer.toString(i);
+    String str2 = Integer.toString(j);
+    if (i < 10) {
+      str1 = "0" + Integer.toString(i);
     }
-    label80:
-    while (!QLog.isColorLevel()) {
-      return;
+    if (j < 10) {
+      str2 = "0" + Integer.toString(j);
     }
-    QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "Can't get reference to ProfileHeadView.");
+    PrepareView.a(this.a).setText(str1);
+    PrepareView.b(this.a).setText(str2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrl
  * JD-Core Version:    0.7.0.1
  */

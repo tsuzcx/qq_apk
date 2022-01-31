@@ -1,58 +1,39 @@
-import com.tencent.mobileqq.shortvideo.common.Observable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
-public class aiah
+public final class aiah
+  extends ThreadPoolExecutor
 {
-  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  public aiah(Observable paramObservable) {}
-  
-  public ArrayList a(Object paramObject)
+  public aiah(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
   {
-    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramObject);
+    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
   }
   
-  public void a(Object paramObject)
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    if ((paramRunnable instanceof FutureTask)) {}
+    try
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      ArrayList localArrayList = (ArrayList)localEntry.getValue();
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        Object localObject = localArrayList.get(i);
-        if ((localObject == paramObject) || ((localObject != null) && (localObject.equals(paramObject)))) {
-          ((ArrayList)localEntry.getValue()).remove(paramObject);
-        } else {
-          i += 1;
-        }
-      }
+      ((FutureTask)paramRunnable).get();
+      return;
     }
-  }
-  
-  public void a(Object paramObject1, Object paramObject2)
-  {
-    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramObject1);
-    ArrayList localArrayList1 = localArrayList2;
-    if (localArrayList2 == null)
+    catch (ExecutionException paramRunnable)
     {
-      localArrayList1 = new ArrayList();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramObject1, localArrayList1);
+      while (!QLog.isColorLevel()) {}
+      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
+      return;
     }
-    if (!localArrayList1.contains(paramObject2)) {
-      localArrayList1.add(paramObject2);
-    }
+    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiah
  * JD-Core Version:    0.7.0.1
  */

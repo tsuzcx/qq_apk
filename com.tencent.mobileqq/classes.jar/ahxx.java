@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.UniteSearchHandler;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import mqq.os.MqqHandler;
 
-class ahxx
+public class ahxx
   implements Runnable
 {
-  ahxx(ahxw paramahxw) {}
+  public ahxx(HotWordsForSubBussFragment paramHotWordsForSubBussFragment, boolean paramBoolean) {}
   
   public void run()
   {
-    long l = QZoneManagerImp.a(this.a.a);
-    QZoneManagerImp.a(this.a.a);
-    QZoneManagerImp.a(this.a.a, QZoneManagerImp.b(this.a.a));
-    this.a.a.a(l | QZoneManagerImp.a(this.a.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.QZoneManagerImp.", 2, "onChange notifyQQTab type:" + Long.toBinaryString(QZoneManagerImp.a(this.a.a)));
-    }
+    byte[] arrayOfByte = this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment.a.a(UniteSearchHandler.a);
+    ThreadManager.getUIHandler().post(new ahxy(this, arrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxx
  * JD-Core Version:    0.7.0.1
  */

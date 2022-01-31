@@ -1,52 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.GroupListOpenFrame;
 
-public final class aljt
-  implements Parcelable.Creator
+public class aljt
+  implements View.OnTouchListener
 {
-  public WadlJsBridgeDownloadInfo a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.d = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.e = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_j_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_g_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localWadlJsBridgeDownloadInfo.jdField_b_of_type_Boolean = bool1;
-      localWadlJsBridgeDownloadInfo.l = paramParcel.readString();
-      localWadlJsBridgeDownloadInfo.i = paramParcel.readInt();
-      localWadlJsBridgeDownloadInfo.jdField_j_of_type_Int = paramParcel.readInt();
-      localWadlJsBridgeDownloadInfo.m = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label203;
-      }
-    }
-    label203:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localWadlJsBridgeDownloadInfo.jdField_c_of_type_Boolean = bool1;
-      return localWadlJsBridgeDownloadInfo;
-      bool1 = false;
-      break;
-    }
-  }
+  public aljt(GroupListOpenFrame paramGroupListOpenFrame) {}
   
-  public WadlJsBridgeDownloadInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new WadlJsBridgeDownloadInfo[paramInt];
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.a.c();
+    }
+    return true;
   }
 }
 

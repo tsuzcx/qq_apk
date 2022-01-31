@@ -1,15 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
 
-public class aoec
-  implements ValueAnimator.AnimatorUpdateListener
+class aoec
+  implements Runnable
 {
-  public aoec(GroundDrawable paramGroundDrawable) {}
+  aoec(aoeb paramaoeb) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.invalidateSelf();
+    this.a.a.c();
+    QQToast.a(this.a.a, "对不起，视频处理异常...", 0).a();
+    this.a.a.finish();
   }
 }
 

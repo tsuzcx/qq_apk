@@ -38,7 +38,7 @@ public class GLLyricsManager
   {
     if (paramString == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.h_(false);
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.f_(false);
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.b();
@@ -52,7 +52,7 @@ public class GLLyricsManager
     paramString.set(f1, f2, i - f1, this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.b() + f2 + this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.a());
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.b(paramString);
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.d(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.h_(true);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.f_(true);
   }
   
   public void a()
@@ -113,7 +113,7 @@ public class GLLyricsManager
   public void b()
   {
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.h_(false);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.f_(false);
   }
 }
 

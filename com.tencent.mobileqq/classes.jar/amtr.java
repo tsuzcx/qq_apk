@@ -1,38 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.UploadSoDownloader;
-import java.io.File;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import cooperation.plugin.PluginDownloader.OnPluginDownLoadListener;
 
 public class amtr
-  implements Runnable
 {
-  public amtr(UploadSoDownloader paramUploadSoDownloader) {}
-  
-  public void run()
-  {
-    boolean bool = UploadSoDownloader.a(this.a, UploadSoDownloader.a().getAbsolutePath());
-    QLog.d("UploadEnv", 1, "check so md5 result: " + bool);
-    if (bool)
-    {
-      UploadSoDownloader.a(true);
-      return;
-    }
-    try
-    {
-      if (UploadSoDownloader.a().exists()) {
-        UploadSoDownloader.a().delete();
-      }
-      UploadSoDownloader.a(this.a, false);
-      UploadSoDownloader.a(false);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
+  private HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
+  private AbsPreDownloadTask jdField_a_of_type_ComTencentMobileqqTransfilePredownloadAbsPreDownloadTask;
+  private PluginDownloader.OnPluginDownLoadListener jdField_a_of_type_CooperationPluginPluginDownloader$OnPluginDownLoadListener;
 }
 
 

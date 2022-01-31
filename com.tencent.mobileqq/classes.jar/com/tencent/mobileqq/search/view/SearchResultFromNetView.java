@@ -36,7 +36,7 @@ public class SearchResultFromNetView
     switch (this.jdField_a_of_type_Int)
     {
     default: 
-      this.jdField_b_of_type_Int = 2130969409;
+      this.jdField_b_of_type_Int = 2130969405;
       localResources = paramViewGroup.getResources();
       localLinearLayout = new LinearLayout(paramViewGroup.getContext());
       localLinearLayout.setOrientation(1);
@@ -46,7 +46,7 @@ public class SearchResultFromNetView
       {
         localLinearLayout.setBackgroundColor(localResources.getColor(2131492948));
         if (a()) {
-          paramViewGroup.setBackgroundResource(2130838580);
+          paramViewGroup.setBackgroundResource(2130838586);
         }
       }
       break;
@@ -58,21 +58,21 @@ public class SearchResultFromNetView
       this.d = localLinearLayout;
       a();
       return;
-      this.jdField_b_of_type_Int = 2130969714;
+      this.jdField_b_of_type_Int = 2130969711;
       break;
-      this.jdField_b_of_type_Int = 2130969379;
+      this.jdField_b_of_type_Int = 2130969377;
       break;
-      this.jdField_b_of_type_Int = 2130970494;
+      this.jdField_b_of_type_Int = 2130970506;
       break;
-      this.jdField_b_of_type_Int = 2130970495;
+      this.jdField_b_of_type_Int = 2130970507;
       break;
-      this.jdField_b_of_type_Int = 2130969388;
+      this.jdField_b_of_type_Int = 2130969386;
       break;
       paramViewGroup.setBackgroundColor(localResources.getColor(2131492948));
       continue;
       localLinearLayout.setBackgroundColor(localResources.getColor(2131492969));
       if (a()) {
-        paramViewGroup.setBackgroundResource(2130838579);
+        paramViewGroup.setBackgroundResource(2130838585);
       } else {
         paramViewGroup.setBackgroundColor(localResources.getColor(2131492969));
       }
@@ -92,26 +92,26 @@ public class SearchResultFromNetView
   protected void a()
   {
     super.a();
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131362719));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131366373));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131362724));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131366378));
     switch (this.jdField_a_of_type_Int)
     {
     default: 
       return;
     case 1001: 
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131365208));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131365235));
       return;
     case 1002: 
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131366587));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131370860));
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)this.d.findViewById(2131370861));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131366585));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131370847));
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)this.d.findViewById(2131370848));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = this.d.findViewById(2131363960);
-    this.jdField_b_of_type_AndroidViewView = this.d.findViewById(2131366355);
-    this.jdField_c_of_type_AndroidViewView = this.d.findViewById(2131366354);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131364763));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.d.findViewById(2131366356));
+    this.jdField_a_of_type_AndroidViewView = this.d.findViewById(2131363985);
+    this.jdField_b_of_type_AndroidViewView = this.d.findViewById(2131366360);
+    this.jdField_c_of_type_AndroidViewView = this.d.findViewById(2131366359);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131364787));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.d.findViewById(2131366361));
   }
   
   public boolean a()

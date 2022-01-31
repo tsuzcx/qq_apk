@@ -1,36 +1,15 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
 
 public class afeo
-  extends FragmentPagerAdapter
+  implements DialogInterface.OnDismissListener
 {
-  private List jdField_a_of_type_JavaUtilList;
+  public afeo(PlayOperationViewModel paramPlayOperationViewModel) {}
   
-  public afeo(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, FragmentManager paramFragmentManager, List paramList)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramFragmentManager);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public Fragment a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.a.a = false;
   }
 }
 

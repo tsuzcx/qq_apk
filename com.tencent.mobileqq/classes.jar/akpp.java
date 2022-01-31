@@ -1,28 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.vas.VasManager.CompleteListener;
+import java.lang.ref.WeakReference;
 
 public class akpp
-  implements Runnable
+  extends WeakReference
+  implements VasManager.CompleteListener
 {
-  public akpp(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler, int paramInt) {}
-  
-  public void run()
+  public akpp(VasManager.CompleteListener paramCompleteListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.e = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_AndroidGraphicsBitmap, "ShotCache_");
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "onDetectScreenshot->save file time:" + System.currentTimeMillis());
+    super(paramCompleteListener);
+  }
+  
+  public void a(Object paramObject1, Object paramObject2)
+  {
+    VasManager.CompleteListener localCompleteListener = (VasManager.CompleteListener)get();
+    if (localCompleteListener != null) {
+      localCompleteListener.a(paramObject1, paramObject2);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.b)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.b = false;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
   }
 }
 

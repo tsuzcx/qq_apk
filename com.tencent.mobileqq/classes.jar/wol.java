@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.ViewFactory.GuideView.OnItemClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class wol
-  extends View.AccessibilityDelegate
+  implements ViewFactory.GuideView.OnItemClickListener
 {
-  public wol(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  public wol(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchContactsFragment", 2, "guide view | onItemClick type is:" + paramInt + " keyWords is:" + paramString);
     }
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.a(paramString, false);
   }
 }
 

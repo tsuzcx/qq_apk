@@ -12,6 +12,7 @@ import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.confess.ConfessMsgUtil;
 import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.data.FeedsManager;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.data.MessageForFile;
 import com.tencent.mobileqq.data.MessageForFoldMsg;
@@ -50,13 +51,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import ztk;
-import ztl;
-import ztm;
+import zzv;
+import zzw;
+import zzx;
 
 public class MsgProxyUtils
 {
-  static Comparator jdField_a_of_type_JavaUtilComparator = new ztk();
+  static Comparator jdField_a_of_type_JavaUtilComparator = new zzv();
   private static ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   public static final int[] a;
   public static final String[] a;
@@ -88,7 +89,7 @@ public class MsgProxyUtils
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { -1004, -1001, -1002, -2012, -2006, -4001, 193, 734, 230, -4002, -4003, -4004, -2015, -1014, -2061, -4008, -4009, -4012, -2021, -2018, -1040, -1039, -4005, -3009, -4020, -3010, -3011, -2019, -1041, -1043, -1044, -1045, -5000, -5006, -1017, 1018, -1042, 2024, -1026, -1027, -1028, -5005, -1046, -2027, -2037, -3013, -3014, -3015, -5007, -2030, -4021, -4022, -5011, -1013, -5020, -5022, -5023, -2060, -2023, -2062, -2065, -2064 };
+    jdField_a_of_type_ArrayOfInt = new int[] { -1004, -1001, -1002, -2012, -2006, -4001, 193, 734, 230, -4002, -4003, -4004, -2015, -1014, -2061, -4008, -4009, -4012, -2021, -2018, -1040, -1039, -4005, -3009, -4020, -3010, -3011, -2019, -1041, -1043, -1044, -1045, -5000, -5006, -1017, 1018, -1042, 2024, -1026, -1027, -1028, -5005, -1046, -2027, -2037, -3013, -3014, -3015, -5007, -2030, -4021, -4022, -5011, -1013, -5020, -5022, -5023, -2060, -2023, -2062, -2065, -2064, -3016, -2063 };
     jdField_b_of_type_ArrayOfInt = new int[] { -2031, -2035, -2036, -2038, -2042, -2043, -5040, -5021 };
     jdField_c_of_type_ArrayOfInt = new int[] { -3006, -2035, -2036, -2038 };
     d = new int[] { -4004, -4003, -4009, -4020, -3010, -3011, -1044, -1026, -1027, -5005, -4021, -4022, -5011, -3014, -2064 };
@@ -104,8 +105,8 @@ public class MsgProxyUtils
     n = new int[] { -1001, -2009, -2016, -4008 };
     o = new int[] { -1047, -5040 };
     p = new int[] { -5040, -5020, -5021, -5022, -5023 };
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { AppConstants.G, AppConstants.v, AppConstants.X, AppConstants.ae, AppConstants.af, AppConstants.C, AppConstants.F, AppConstants.aE };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { AppConstants.as };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { AppConstants.G, AppConstants.v, AppConstants.X, AppConstants.ae, AppConstants.af, AppConstants.C, AppConstants.F, AppConstants.aF };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { AppConstants.at };
     q = new int[] { 0, 1000, 1004, 1020, 1006, 1001, 10002, 10004, 1009, 1003, 1005, 1008, 1023, 1021, 1029, 1022, 1024, 1025, 1010, 7400, 1032, 1033, 1034 };
     r = new int[] { 1033, 1034 };
     s = new int[] { 1000, 1004, 1020 };
@@ -209,7 +210,7 @@ public class MsgProxyUtils
         break label82;
       }
       MessageRecord localMessageRecord = (MessageRecord)paramList.get(i1);
-      if (!TextUtils.equals(localMessageRecord.frienduin, AppConstants.as))
+      if (!TextUtils.equals(localMessageRecord.frienduin, AppConstants.at))
       {
         localObject = localMessageRecord;
         if (localMessageRecord.msgtype != -2006) {
@@ -373,7 +374,7 @@ public class MsgProxyUtils
       return localArrayList;
     }
     if (paramBoolean) {
-      Collections.sort(paramList, new ztl());
+      Collections.sort(paramList, new zzw());
     }
     long l1 = ((MessageRecord)paramList.get(paramList.size() - 1)).shmsgseq;
     int i2 = paramList.size() - 1;
@@ -736,11 +737,17 @@ public class MsgProxyUtils
     while (localIterator.hasNext())
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      if (localMessageRecord == null) {
+      if (localMessageRecord == null)
+      {
         localArrayList.add(localMessageRecord);
-      } else if ((localMessageRecord.msgtype == -2006) || (!localMessageRecord.isValid) || (localMessageRecord.msgtype == -2032)) {
+      }
+      else if ((localMessageRecord.msgtype == -2006) || (!localMessageRecord.isValid) || (localMessageRecord.msgtype == -2032))
+      {
         localArrayList.add(localMessageRecord);
-      } else if ((localMessageRecord.msgtype == -2015) && ((localMessageRecord instanceof MessageForQzoneFeed))) {
+      }
+      else if ((localMessageRecord.msgtype == -2015) && ((localMessageRecord instanceof MessageForQzoneFeed)))
+      {
+        ((MessageForQzoneFeed)localMessageRecord).parse();
         if (QZoneHelper.j())
         {
           if (QLog.isColorLevel()) {
@@ -752,6 +759,13 @@ public class MsgProxyUtils
         {
           if (QLog.isColorLevel()) {
             QLog.i("Q.msg.MsgProxyUtils", 2, "QZoneFeeds ,空间aio feeds格式不兼容，不再显示");
+          }
+          localArrayList.add(localMessageRecord);
+        }
+        else if (FeedsManager.isShowStatus(localMessageRecord.frienduin))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.msg.MsgProxyUtils", 2, "QZoneFeeds ,当前会话列表中有新动态，先将aio中的feeds隐藏，避免aio中的feeds跳变");
           }
           localArrayList.add(localMessageRecord);
         }
@@ -1234,7 +1248,7 @@ public class MsgProxyUtils
   public static boolean a(String paramString, int paramInt)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (((a(paramInt) == 1001) || (a(paramInt) == 10002)) && ((!AppConstants.G.equals(paramString)) && ((a(paramInt) != 1009) || (!AppConstants.v.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.X.equals(paramString))) && ((a(paramInt) != 1001) || (!AppConstants.ae.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.af.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.G.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.ae.equals(paramString))) && ((a(paramInt) != 1032) || (!AppConstants.aE.equals(paramString))))) {
+    while (((a(paramInt) == 1001) || (a(paramInt) == 10002)) && ((!AppConstants.G.equals(paramString)) && ((a(paramInt) != 1009) || (!AppConstants.v.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.X.equals(paramString))) && ((a(paramInt) != 1001) || (!AppConstants.ae.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.af.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.G.equals(paramString))) && ((a(paramInt) != 1010) || (!AppConstants.ae.equals(paramString))) && ((a(paramInt) != 1032) || (!AppConstants.aF.equals(paramString))))) {
       return false;
     }
     return true;
@@ -1392,7 +1406,7 @@ public class MsgProxyUtils
   
   public static void b(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
   {
-    ThreadManager.post(new ztm(paramQQAppInterface, paramString, paramInt1, paramInt2), 8, null, true);
+    ThreadManager.post(new zzx(paramQQAppInterface, paramString, paramInt1, paramInt2), 8, null, true);
   }
   
   public static void b(List paramList, MessageRecord paramMessageRecord, boolean paramBoolean)
@@ -1556,7 +1570,7 @@ public class MsgProxyUtils
                     } while (!QLog.isColorLevel());
                     QLog.d("Q.msg.MsgProxyUtils", 2, "-------->compMsgContent: samePic: picSize:" + paramMessageRecord1[1] + ",picType:" + paramMessageRecord1[2] + ",isSend == true");
                     return true;
-                    if (!str.contains(AppConstants.aJ)) {
+                    if (!str.contains(AppConstants.aK)) {
                       break;
                     }
                     paramMessageRecord2 = localObject[0].split("/");
@@ -1969,7 +1983,7 @@ public class MsgProxyUtils
   
   public static boolean e(String paramString)
   {
-    return AppConstants.ag.equals(paramString);
+    return AppConstants.ai.equals(paramString);
   }
   
   public static boolean f(int paramInt)
@@ -1989,7 +2003,7 @@ public class MsgProxyUtils
   
   public static boolean f(String paramString)
   {
-    return AppConstants.ah.equals(paramString);
+    return AppConstants.ag.equals(paramString);
   }
   
   public static boolean g(int paramInt)
@@ -2012,6 +2026,11 @@ public class MsgProxyUtils
       }
       i1 += 1;
     }
+  }
+  
+  public static boolean g(String paramString)
+  {
+    return AppConstants.ah.equals(paramString);
   }
   
   public static boolean h(int paramInt)

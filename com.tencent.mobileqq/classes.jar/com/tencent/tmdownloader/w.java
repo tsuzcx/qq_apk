@@ -20,7 +20,7 @@ class w
       do
       {
         return;
-        r.c("TMAssistantDownloadSDKService", "MSG_INIT_YYBMG......");
+        r.c("TMADownloadSDKService", "MSG_INIT_YYBMG......");
       } while ((GlobalUtil.getInstance().getQQDownloaderAPILevel() < 5) && (GlobalUtil.getInstance().getQQDownloaderConnectLevel() < 1));
       if (TMAssistantDownloadService.access$200(this.a) == null) {
         TMAssistantDownloadService.access$202(this.a, new c());
@@ -30,7 +30,7 @@ class w
       sendEmptyMessage(1);
       return;
     }
-    r.c("TMAssistantDownloadSDKService", "MSG_HANDSHAKE_YYB......");
+    r.c("TMADownloadSDKService", "MSG_HANDSHAKE_YYB......");
     TMAssistantDownloadService.access$200(this.a).a();
   }
 }

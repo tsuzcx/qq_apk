@@ -1,45 +1,53 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.ARTipsVisibleListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.now.NowDataReporter;
+import com.tencent.mobileqq.intervideo.now.NowFromData;
+import com.tencent.mobileqq.intervideo.now.NowProxy;
+import com.tencent.mobileqq.intervideo.now.NowProxy.ListNameData;
+import com.tencent.mobileqq.now.enter.widget.NowAnswerPreloadManager;
+import com.tencent.open.business.base.AppUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
 
-public class agex
-  implements ARTipsManager.ARTipsVisibleListener
+public final class agex
+  implements Runnable
 {
-  public agex(ScanTorchActivity paramScanTorchActivity) {}
+  public agex(QQAppInterface paramQQAppInterface, long paramLong) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    int j = 4;
-    RelativeLayout localRelativeLayout;
-    if (ScanTorchActivity.a(this.a) != null)
+    if (AppUtil.a("com.tencent.now"))
     {
-      localRelativeLayout = ScanTorchActivity.a(this.a);
-      if (paramBoolean)
-      {
-        i = 4;
-        localRelativeLayout.setVisibility(i);
-      }
-    }
-    else if (this.a.b != null)
-    {
-      localRelativeLayout = this.a.b;
-      if (!paramBoolean) {
-        break label70;
-      }
-    }
-    label70:
-    for (int i = j;; i = 0)
-    {
-      localRelativeLayout.setVisibility(i);
+      new NowDataReporter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b("10888", "auto_enter_answer", "1");
+      QLog.i("NowAnswerPreloadManager", 3, "openAnswerRoom----NOW APP is Exist, will Launch It!");
+      localObject1 = new Intent("android.intent.action.VIEW", Uri.parse("tnow://openpage/enterroom?roomid=" + this.jdField_a_of_type_Long + "&roomtype=8001&source=10888&anchorId=" + NowAnswerPreloadManager.a() + "&timestamp=" + System.currentTimeMillis()));
+      ((Intent)localObject1).setFlags(268435456);
+      BaseApplicationImpl.getContext().startActivity((Intent)localObject1);
       return;
-      i = 0;
-      break;
     }
+    new NowDataReporter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b("10888", "auto_enter_answer", "2");
+    QLog.i("NowAnswerPreloadManager", 3, "openAnswerRoom----NOW APP is not Exist, will Launch Plugin!");
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject1 = (NowProxy)((QQAppInterface)localObject1).getManager(181);
+    localObject2 = new Bundle();
+    ((Bundle)localObject2).putString("roomtype", "8001");
+    Object localObject3 = new ArrayList();
+    ((ArrayList)localObject3).add("");
+    localObject3 = new NowProxy.ListNameData((ArrayList)localObject3, 0);
+    NowFromData localNowFromData = new NowFromData();
+    localNowFromData.a = "10888";
+    localNowFromData.b = "10000";
+    ((NowProxy)localObject1).a((NowProxy.ListNameData)localObject3, NowAnswerPreloadManager.b(), localNowFromData, 2, (Bundle)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agex
  * JD-Core Version:    0.7.0.1
  */

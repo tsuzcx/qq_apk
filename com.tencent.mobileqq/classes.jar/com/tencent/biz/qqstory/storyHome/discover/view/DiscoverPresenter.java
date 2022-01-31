@@ -33,13 +33,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
-import nvx;
-import nvy;
-import nvz;
-import nwa;
-import nwb;
-import nwc;
-import nwd;
+import oam;
+import oan;
+import oao;
+import oap;
+import oaq;
+import oar;
+import oas;
 
 public class DiscoverPresenter
   implements IEventReceiver
@@ -54,9 +54,9 @@ public class DiscoverPresenter
   private DiscoverPresenter.GetFeedFeatureReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter$GetFeedFeatureReceiver;
   private final IDiscoverView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewIDiscoverView;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private nwb jdField_a_of_type_Nwb;
-  public nwc a;
-  private nwd jdField_a_of_type_Nwd;
+  private oaq jdField_a_of_type_Oaq;
+  public oar a;
+  private oas jdField_a_of_type_Oas;
   private ArrayList b = new ArrayList();
   
   static
@@ -168,7 +168,7 @@ public class DiscoverPresenter
     {
       ((qqstory_service.RspGetHotTopicInfo)localObject).mergeFrom(paramArrayOfByte);
       paramArrayOfByte = new HotTopicInfoItem(this.jdField_a_of_type_Long, (qqstory_service.RspGetHotTopicInfo)localObject);
-      ThreadManager.getUIHandler().post(new nwa(this, paramArrayOfByte));
+      ThreadManager.getUIHandler().post(new oap(this, paramArrayOfByte));
       localObject = new DiscoverPresenter.TopicInfoUpdateEvent();
       ((DiscoverPresenter.TopicInfoUpdateEvent)localObject).a = paramArrayOfByte;
       Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject);
@@ -188,21 +188,21 @@ public class DiscoverPresenter
     String str = StoryApi.a("StorySvc.get_hot_topic_info");
     qqstory_service.ReqGetHotTopicInfo localReqGetHotTopicInfo = new qqstory_service.ReqGetHotTopicInfo();
     localReqGetHotTopicInfo.topic_id.set(this.jdField_a_of_type_Long);
-    CmdTaskManger.a().a(new CommonRequest(str, localReqGetHotTopicInfo, null), new nvz(this));
+    CmdTaskManger.a().a(new CommonRequest(str, localReqGetHotTopicInfo, null), new oao(this));
   }
   
   public void a()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter$FeedInteractiveRec = new DiscoverPresenter.FeedInteractiveRec(this);
     Dispatchers.get().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter$FeedInteractiveRec);
-    this.jdField_a_of_type_Nwb = new nwb(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nwb);
-    this.jdField_a_of_type_Nwc = new nwc(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nwc);
+    this.jdField_a_of_type_Oaq = new oaq(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Oaq);
+    this.jdField_a_of_type_Oar = new oar(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Oar);
     if (this.jdField_a_of_type_Int == 0)
     {
-      this.jdField_a_of_type_Nwd = new nwd(this);
-      Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nwd);
+      this.jdField_a_of_type_Oas = new oas(this);
+      Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Oas);
     }
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter$GetFeedFeatureReceiver = new DiscoverPresenter.GetFeedFeatureReceiver(this);
     Dispatchers.get().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter$GetFeedFeatureReceiver);
@@ -230,14 +230,14 @@ public class DiscoverPresenter
     for (;;)
     {
       return;
-      Bosses.get().postLightWeightJob(new nvx(this), 0);
+      Bosses.get().postLightWeightJob(new oam(this), 0);
       return;
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader.a();
       return;
       if (this.jdField_a_of_type_Int == 0)
       {
         localObject = (LbsManager)SuperManager.a(9);
-        ((LbsManager)localObject).a(new nvy(this, (LbsManager)localObject));
+        ((LbsManager)localObject).a(new oan(this, (LbsManager)localObject));
         ((LbsManager)localObject).a(1000);
       }
       while (this.jdField_a_of_type_Int == 2)
@@ -252,12 +252,12 @@ public class DiscoverPresenter
   public void b()
   {
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter$FeedInteractiveRec);
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nwb);
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nwc);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Oaq);
+    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Oar);
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter$GetFeedFeatureReceiver);
     ((QQStoryDiscoverFragment)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewIDiscoverView).getActivity();
     if (this.jdField_a_of_type_Int == 0) {
-      Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nwd);
+      Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Oas);
     }
     UIUtils.a(false);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);

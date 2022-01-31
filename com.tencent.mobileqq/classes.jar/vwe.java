@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
 
 public class vwe
-  implements Runnable
+  extends Handler
 {
-  public vwe(NearbyChatPie paramNearbyChatPie) {}
+  public vwe(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (!NearbyChatPie.b(this.a)) {
-      ((TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).p(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    super.handleMessage(paramMessage);
+    if (this.a.p.isShown()) {
+      this.a.p.setVisibility(8);
     }
   }
 }

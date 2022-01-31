@@ -1,29 +1,33 @@
-import com.tencent.mobileqq.filemanager.data.search.FileManagerSearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
 public class adav
   implements Runnable
 {
-  public ISearchListener a;
-  public SearchRequest a;
-  
-  private adav(FileManagerSearchEngine paramFileManagerSearchEngine) {}
+  public adav(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
   public void run()
   {
-    SearchRequest localSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
-    String str = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a;
-    List localList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine.a(localSearchRequest);
-    try
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.f()) && (this.a.jdField_a_of_type_JavaUtilLinkedHashMap != null) && (this.a.jdField_a_of_type_JavaUtilLinkedHashMap.size() > 0))
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) && (localSearchRequest == this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a))) {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (String)localIterator.next();
+        localObject = ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject)).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          if (((FileManagerEntity)((Iterator)localObject).next()).sendCloudUnsuccessful()) {
+            ((Iterator)localObject).remove();
+          }
+        }
       }
-      return;
     }
-    finally {}
+    this.a.e();
   }
 }
 

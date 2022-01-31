@@ -5,6 +5,8 @@ public abstract interface EditButtonExport
 {
   public abstract void a(int paramInt);
   
+  public abstract void b();
+  
   public abstract void b(int paramInt);
 }
 

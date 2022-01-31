@@ -1,24 +1,15 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class lhc
-  implements ActionSheet.OnButtonClickListener
+  implements ActionSheet.OnDismissListener
 {
-  public lhc(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity, ActionSheet paramActionSheet) {}
+  public lhc(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity.d();
-    }
+    ReadInJoySettingActivity.c(this.a).cancel();
   }
 }
 

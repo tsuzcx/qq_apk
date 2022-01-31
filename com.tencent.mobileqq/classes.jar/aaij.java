@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.opengl.GLES20;
+import com.tencent.mobileqq.ar.ARVideoUtil;
+import com.tencent.mobileqq.ar.keying.KeyingBase.UserInterface;
 
-public class aaij
-  implements Runnable
+class aaij
+  implements KeyingBase.UserInterface
 {
-  public aaij(ARReport paramARReport, long paramLong) {}
+  aaij(aaii paramaaii) {}
   
-  public void run()
+  public void a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("loadingtime", String.valueOf(this.jdField_a_of_type_Long));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARWebView", true, 0L, 0L, localHashMap, "");
+    GLES20.glUniform1i(aaii.a(this.a), aaii.b(this.a));
+  }
+  
+  public void a(int paramInt)
+  {
+    aaii.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    ARVideoUtil.a("glGetUniformLocation uDisplayType");
   }
 }
 

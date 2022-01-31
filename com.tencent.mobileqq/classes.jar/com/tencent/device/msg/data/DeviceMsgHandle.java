@@ -47,10 +47,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONObject;
-import qbg;
-import qbh;
-import qbi;
-import qbj;
+import qfy;
+import qfz;
+import qga;
+import qgb;
 
 public class DeviceMsgHandle
   extends BusinessHandler
@@ -64,13 +64,13 @@ public class DeviceMsgHandle
   public static String f;
   public static String g;
   public static String h;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new qbh(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new qfz(this);
   public DeviceAVFileMsgObserver a;
-  private DeviceFileObserver jdField_a_of_type_ComTencentDeviceFileDeviceFileObserver = new qbg(this);
+  private DeviceFileObserver jdField_a_of_type_ComTencentDeviceFileDeviceFileObserver = new qfy(this);
   public DevSingleStructMsgProcessor a;
   private DeviceComnFileMsgProcessor jdField_a_of_type_ComTencentDeviceMsgDataDeviceComnFileMsgProcessor;
   public DeviceGroupChatMsgProcessor a;
-  SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new qbj(this);
+  SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new qgb(this);
   public HashMap a;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   public ConcurrentHashMap a;
@@ -198,8 +198,8 @@ public class DeviceMsgHandle
     paramString4 = SubString.a(paramString4, 45, "UTF-8", "...");
     paramString5 = SubString.a(paramString5, 90, "UTF-8", "...");
     String str = "我在这里，点击查看：http://maps.google.com/maps?q=" + paramString2 + "," + paramString3 + "&iwloc=A&hl=zh-CN (" + paramString5 + ")";
-    if (!paramContext.getResources().getString(2131430559).equals(paramString4)) {}
-    for (paramContext = paramContext.getResources().getString(2131435571) + " " + paramString4;; paramContext = paramContext.getResources().getString(2131435571))
+    if (!paramContext.getResources().getString(2131430562).equals(paramString4)) {}
+    for (paramContext = paramContext.getResources().getString(2131435587) + " " + paramString4;; paramContext = paramContext.getResources().getString(2131435587))
     {
       paramString2 = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.PoiMapActivity&type=sharedmap&lat=" + paramString2 + "&lon=" + paramString3 + "&title=" + paramString4 + "&loc=" + paramString5 + "&dpid=" + paramString6;
       paramContext = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).b(32).a(paramContext).b(str).a("plugin", paramString2, paramString2, paramString2, paramString2).a();
@@ -231,7 +231,7 @@ public class DeviceMsgHandle
     if (paramString == null) {
       return;
     }
-    new Handler(Looper.getMainLooper()).postDelayed(new qbi(this, paramString), 0L);
+    new Handler(Looper.getMainLooper()).postDelayed(new qga(this, paramString), 0L);
   }
   
   private void a(List paramList)

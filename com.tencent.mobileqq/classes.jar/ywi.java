@@ -1,21 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloGameShare;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureSoManager.Callback;
+import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
+import eipc.EIPCResult;
 
 public class ywi
-  implements AdapterView.OnItemClickListener
+  implements ReadInJoyCameraCaptureSoManager.Callback
 {
-  public ywi(ApolloGameShare paramApolloGameShare, String paramString) {}
+  public ywi(CmGameServerQIPCModule paramCmGameServerQIPCModule, int paramInt) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt)
   {
-    paramAdapterView = this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameShare.a.obtainMessage();
-    paramAdapterView.what = ((int)paramLong);
-    paramAdapterView.obj = this.jdField_a_of_type_JavaLangString;
-    paramAdapterView.sendToTarget();
+    CmGameServerQIPCModule.b = false;
+    if (paramInt == 1)
+    {
+      EIPCResult localEIPCResult = EIPCResult.createResult(0, new Bundle());
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessCmGameServerQIPCModule.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+    }
   }
 }
 

@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class rrd
   implements Runnable
 {
-  public rrd(BaseChatPie paramBaseChatPie) {}
+  public rrd(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 10);
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "refreshAllData isFinishing() = " + this.a.isFinishing());
+    }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    AssociatedAccountActivity.a(this.a);
+    AssociatedAccountActivity.b(this.a);
   }
 }
 

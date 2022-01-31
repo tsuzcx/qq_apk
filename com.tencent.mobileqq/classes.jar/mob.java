@@ -1,11 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class mob
+public class mob
   implements Runnable
 {
+  public mob(ReadinjoyTabFrame paramReadinjoyTabFrame, long paramLong) {}
+  
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c();
+    PublicAccountReportUtils.a((QQAppInterface)ReadInJoyUtils.a(), "CliOper", "", "", "0X80066F7", "0X80066F7", 1, 1, Long.toString(this.jdField_a_of_type_Long / 1000L), "", "", ReadInJoyUtils.d(), false);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.4tab", 2, "report ReadinjoyTabFrame use time: " + Long.toString(this.jdField_a_of_type_Long / 1000L));
+    }
   }
 }
 

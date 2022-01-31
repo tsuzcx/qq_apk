@@ -9,22 +9,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import usi;
-import uta;
-import utb;
-import utc;
-import ute;
-import utf;
+import uxi;
+import uya;
+import uyb;
+import uyc;
+import uye;
+import uyf;
 
 public class HalfAlgorithm
   extends PathAlgorithm
-  implements utf
+  implements uyf
 {
   private int jdField_a_of_type_Int;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private List jdField_a_of_type_JavaUtilList;
   private Map jdField_a_of_type_JavaUtilMap;
-  private utb jdField_a_of_type_Utb = new utb();
+  private uyb jdField_a_of_type_Uyb = new uyb();
   
   private void a()
   {
@@ -83,7 +83,7 @@ public class HalfAlgorithm
       return;
       paramPath.reset();
       paramPath.moveTo(paramFloat1, paramFloat2);
-      this.jdField_a_of_type_Utb.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+      this.jdField_a_of_type_Uyb.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
     } while (paramList == null);
     paramList.clear();
     a();
@@ -102,12 +102,12 @@ public class HalfAlgorithm
     }
     synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      utc localutc = new utc();
-      localutc.jdField_a_of_type_Int = paramInt;
-      localutc.jdField_a_of_type_Boolean = paramBoolean;
-      localutc.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-      localutc.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localutc);
+      uyc localuyc = new uyc();
+      localuyc.jdField_a_of_type_Int = paramInt;
+      localuyc.jdField_a_of_type_Boolean = paramBoolean;
+      localuyc.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+      localuyc.jdField_a_of_type_JavaUtilList = paramList;
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localuyc);
       if (this.jdField_a_of_type_JavaUtilMap.size() == this.jdField_a_of_type_Int)
       {
         this.jdField_a_of_type_JavaUtilMap.notifyAll();
@@ -121,13 +121,13 @@ public class HalfAlgorithm
   {
     if (paramList == null)
     {
-      this.jdField_a_of_type_Utb.a();
-      paramPath.quadTo(this.jdField_a_of_type_Utb.c.jdField_a_of_type_Float, this.jdField_a_of_type_Utb.c.b, this.jdField_a_of_type_Utb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Utb.b.b);
+      this.jdField_a_of_type_Uyb.a();
+      paramPath.quadTo(this.jdField_a_of_type_Uyb.c.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.c.b, this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.b.b);
       return;
     }
     a();
-    this.jdField_a_of_type_Utb.a();
-    if (a(this.jdField_a_of_type_Utb.a.jdField_a_of_type_Float, this.jdField_a_of_type_Utb.a.b, this.jdField_a_of_type_Utb.a.c, this.jdField_a_of_type_Utb.a.jdField_a_of_type_Long, this.jdField_a_of_type_Utb.c.jdField_a_of_type_Float, this.jdField_a_of_type_Utb.c.b, this.jdField_a_of_type_Utb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Utb.b.b, this.jdField_a_of_type_Utb.b.c, this.jdField_a_of_type_Utb.b.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList))
+    this.jdField_a_of_type_Uyb.a();
+    if (a(this.jdField_a_of_type_Uyb.a.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.a.b, this.jdField_a_of_type_Uyb.a.c, this.jdField_a_of_type_Uyb.a.jdField_a_of_type_Long, this.jdField_a_of_type_Uyb.c.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.c.b, this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.b.b, this.jdField_a_of_type_Uyb.b.c, this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList))
     {
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
@@ -231,7 +231,7 @@ public class HalfAlgorithm
       localObject1 = (PathData.PointData)((Iterator)localObject2).next();
       if (??? == null)
       {
-        ??? = new ute();
+        ??? = new uye();
         ???.a(paramInt);
         ???.a(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a());
         paramPath.moveTo(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b());
@@ -241,13 +241,13 @@ public class HalfAlgorithm
         localObject1 = ???.a();
         i = this.jdField_a_of_type_Int + 1;
         this.jdField_a_of_type_Int = i;
-        ThreadManager.post(new usi(this, i, (List)localObject1, this), 8, null, true);
+        ThreadManager.post(new uxi(this, i, (List)localObject1, this), 8, null, true);
       }
     }
     ???.a();
     paramInt = this.jdField_a_of_type_Int + 1;
     this.jdField_a_of_type_Int = paramInt;
-    ThreadManager.post(new usi(this, paramInt, ???.jdField_a_of_type_JavaUtilList, this), 8, null, true);
+    ThreadManager.post(new uxi(this, paramInt, ???.jdField_a_of_type_JavaUtilList, this), 8, null, true);
     synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
       QLog.d("DoodleAlgorithm", 2, "tranpath wait:" + this.jdField_a_of_type_Int + " - " + this.jdField_a_of_type_JavaUtilMap.size());
@@ -263,13 +263,13 @@ public class HalfAlgorithm
         localObject1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (utc)((Iterator)localObject1).next();
-          if (((utc)localObject2).jdField_a_of_type_AndroidGraphicsPath != null) {
-            paramPath.addPath(((utc)localObject2).jdField_a_of_type_AndroidGraphicsPath);
+          localObject2 = (uyc)((Iterator)localObject1).next();
+          if (((uyc)localObject2).jdField_a_of_type_AndroidGraphicsPath != null) {
+            paramPath.addPath(((uyc)localObject2).jdField_a_of_type_AndroidGraphicsPath);
           }
-          if (((utc)localObject2).jdField_a_of_type_JavaUtilList != null)
+          if (((uyc)localObject2).jdField_a_of_type_JavaUtilList != null)
           {
-            a(paramList2, ((utc)localObject2).jdField_a_of_type_JavaUtilList);
+            a(paramList2, ((uyc)localObject2).jdField_a_of_type_JavaUtilList);
             continue;
             paramPath = finally;
             throw paramPath;
@@ -311,13 +311,13 @@ public class HalfAlgorithm
     }
     if (paramList == null)
     {
-      this.jdField_a_of_type_Utb.a(paramFloat1, paramFloat2, paramFloat3, paramLong, true);
-      paramPath.quadTo(this.jdField_a_of_type_Utb.c.jdField_a_of_type_Float, this.jdField_a_of_type_Utb.c.b, this.jdField_a_of_type_Utb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Utb.b.b);
+      this.jdField_a_of_type_Uyb.a(paramFloat1, paramFloat2, paramFloat3, paramLong, true);
+      paramPath.quadTo(this.jdField_a_of_type_Uyb.c.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.c.b, this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.b.b);
       return;
     }
     a();
-    boolean bool = a(this.jdField_a_of_type_Utb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Utb.b.b, this.jdField_a_of_type_Utb.b.c, this.jdField_a_of_type_Utb.b.jdField_a_of_type_Long, this.jdField_a_of_type_Utb.d.jdField_a_of_type_Float, this.jdField_a_of_type_Utb.d.b, (this.jdField_a_of_type_Utb.d.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.jdField_a_of_type_Utb.d.b + paramFloat2) / 2.0F, (this.jdField_a_of_type_Utb.d.c + paramFloat3) / 2.0F, (this.jdField_a_of_type_Utb.d.jdField_a_of_type_Long + paramLong) / 2L, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Utb.a(paramFloat1, paramFloat2, paramFloat3, paramLong, bool);
+    boolean bool = a(this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.b.b, this.jdField_a_of_type_Uyb.b.c, this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Long, this.jdField_a_of_type_Uyb.d.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.d.b, (this.jdField_a_of_type_Uyb.d.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.jdField_a_of_type_Uyb.d.b + paramFloat2) / 2.0F, (this.jdField_a_of_type_Uyb.d.c + paramFloat3) / 2.0F, (this.jdField_a_of_type_Uyb.d.jdField_a_of_type_Long + paramLong) / 2L, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Uyb.a(paramFloat1, paramFloat2, paramFloat3, paramLong, bool);
     if (bool)
     {
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)

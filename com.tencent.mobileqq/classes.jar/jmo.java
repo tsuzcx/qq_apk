@@ -1,27 +1,31 @@
-import com.tencent.av.service.AVServiceForQQ;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class jmo
-  implements Runnable
+public class jmo
+  implements DialogInterface.OnClickListener
 {
-  jmo(jmn paramjmn) {}
+  public jmo(RandomController paramRandomController) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      this.a.a.startForeground(2130840353, this.a.a.jdField_a_of_type_AndroidAppNotification);
-      return;
+    if (RandomController.a(this.a) == 2) {
+      ReportController.b(null, "CliOper", "", "", "0X8005729", "0X8005729", 0, 0, "", "", "", "");
     }
-    catch (Exception localException)
+    for (;;)
     {
-      QLog.d(this.a.a.jdField_a_of_type_JavaLangString, 1, "setAVServiceForegroud, e = " + localException);
+      this.a.c();
+      return;
+      if (RandomController.a(this.a) == 1) {
+        ReportController.b(null, "CliOper", "", "", "0X8005727", "0X8005727", 0, 0, "", "", "", "");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jmo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahmu
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ahmu(ShareActionSheet paramShareActionSheet) {}
+  public ahmu(CameraCaptureFragment paramCameraCaptureFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
+    QLog.d("CameraCaptureFragment", 2, "onVideoCaptured. mDanceRestartToRecord = true  restart to record.");
+    this.a.z_();
   }
 }
 

@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
 
 public class afdj
-  implements Runnable
+  implements IVideoView.OnErrorListener
 {
-  public afdj(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public afdj(VideoPlayerView paramVideoPlayerView, VideoData paramVideoData) {}
   
-  public void run()
+  public boolean a(IVideoView paramIVideoView, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    Object localObject = (FriendsManager)this.a.a.app.getManager(50);
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((FriendsManager)localObject).a(this.a.a.getCurrentAccountUin()))
-    {
-      this.a.a.runOnUiThread(new afdk(this, (Card)localObject));
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
     }
+    return true;
   }
 }
 

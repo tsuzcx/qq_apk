@@ -1,18 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class off
-  implements DialogInterface.OnDismissListener
+  implements INetInfoHandler
 {
-  public off(EditVideoMusic paramEditVideoMusic) {}
+  public off(FeedSegment paramFeedSegment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onNetMobile2None()
   {
-    this.a.a.a(0);
-    VideoEditReport.a("0X80076DD");
+    FeedSegment.b(this.a, FeedSegment.a(3));
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    FeedSegment.b(this.a, FeedSegment.a(1));
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    FeedSegment.b(this.a, FeedSegment.a(2));
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    FeedSegment.b(this.a, FeedSegment.a(1));
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    FeedSegment.b(this.a, FeedSegment.a(2));
+  }
+  
+  public void onNetWifi2None()
+  {
+    FeedSegment.b(this.a, FeedSegment.a(3));
   }
 }
 

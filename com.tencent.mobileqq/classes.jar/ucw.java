@@ -1,35 +1,16 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.StrangerHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public class ucw
-  implements View.OnClickListener
+class ucw
+  implements Runnable
 {
-  public ucw(TroopRequestActivity paramTroopRequestActivity) {}
+  ucw(ucv paramucv, TroopInfo paramTroopInfo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (StrangerHandler)this.a.app.a(26);
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      if (!TextUtils.isEmpty(this.a.b)) {
-        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
-      }
-      paramView.a(localArrayList);
-      return;
-    }
-    catch (NumberFormatException paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", paramView);
-    }
+    ((TroopManager)this.jdField_a_of_type_Ucv.a.app.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
   }
 }
 

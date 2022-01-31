@@ -15,6 +15,7 @@ import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -29,14 +30,38 @@ import com.tencent.util.WeakReferenceHandler;
 
 public class EditPicRawImage
   extends EditVideoPart
-  implements Handler.Callback, View.OnTouchListener, Runnable
+  implements Handler.Callback, View.OnLayoutChangeListener, View.OnTouchListener, Runnable
 {
+  public static final String[] a;
+  public static boolean b;
   float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int = 0;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
   boolean jdField_a_of_type_Boolean = false;
   float b;
+  
+  static
+  {
+    int i = 0;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MIX 2S" };
+    String str1 = Build.MODEL;
+    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    while (i < j)
+    {
+      String str2 = arrayOfString[i];
+      if (str1.equalsIgnoreCase(str2))
+      {
+        jdField_b_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("EditPicActivity.EditVideoRawImage", 2, "IS_HEIGHT_PIXEL_CHANGE:" + str2);
+        }
+      }
+      i += 1;
+    }
+  }
   
   public EditPicRawImage(@NonNull EditVideoPartManager paramEditVideoPartManager)
   {
@@ -73,46 +98,16 @@ public class EditPicRawImage
     return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
   
-  public RectF a(Bitmap paramBitmap)
-  {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView.getImageMatrix();
-    float[] arrayOfFloat = new float[9];
-    ((Matrix)localObject).getValues(arrayOfFloat);
-    float f4 = arrayOfFloat[0];
-    localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getDisplayMetrics();
-    int i = ((DisplayMetrics)localObject).widthPixels;
-    int j = ((DisplayMetrics)localObject).heightPixels;
-    int k = paramBitmap.getWidth();
-    int m = paramBitmap.getHeight();
-    float f1 = j / i;
-    float f2;
-    float f3;
-    if (m / k > f1)
-    {
-      f2 = j;
-      f1 = j / m;
-      f3 = k * f1 + 0.5F;
-    }
-    for (;;)
-    {
-      paramBitmap = new RectF(0.0F, 0.0F, f3, f2);
-      SLog.c("EditPicActivity.EditVideoRawImage", "getDisplayBounds " + paramBitmap + " scale " + f1 + " old scale " + f4);
-      return paramBitmap;
-      f3 = i;
-      f1 = i / k;
-      f2 = m * f1 + 0.5F;
-    }
-  }
-  
   public void a()
   {
     super.a();
     ThreadManager.post(this, 8, null, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364349));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364374));
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 1) {
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
+    this.jdField_a_of_type_AndroidWidgetImageView.addOnLayoutChangeListener(this);
   }
   
   public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)
@@ -133,39 +128,79 @@ public class EditPicRawImage
   public void a(Bitmap paramBitmap, boolean paramBoolean)
   {
     if (paramBitmap == this.jdField_a_of_type_AndroidGraphicsBitmap) {}
-    EditDoodleExport localEditDoodleExport;
     do
     {
-      do
-      {
-        return;
-        if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-          this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-        if (Build.MANUFACTURER.equalsIgnoreCase("Letv"))
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.destroyDrawingCache();
-          this.jdField_a_of_type_AndroidWidgetImageView.refreshDrawableState();
-          this.jdField_a_of_type_AndroidWidgetImageView.invalidate();
-        }
-      } while (paramBoolean);
-      paramBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      localEditDoodleExport = (EditDoodleExport)a(EditDoodleExport.class);
-    } while (localEditDoodleExport == null);
-    try
-    {
-      localEditDoodleExport.a((int)paramBitmap.width(), (int)paramBitmap.height());
       return;
-    }
-    catch (Exception paramBitmap) {}
+      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      if (Build.MANUFACTURER.equalsIgnoreCase("Letv"))
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.destroyDrawingCache();
+        this.jdField_a_of_type_AndroidWidgetImageView.refreshDrawableState();
+        this.jdField_a_of_type_AndroidWidgetImageView.invalidate();
+      }
+    } while (paramBoolean);
+    e();
   }
   
   public void d()
   {
     super.d();
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(999);
+    this.jdField_a_of_type_AndroidWidgetImageView.removeOnLayoutChangeListener(this);
+  }
+  
+  void e()
+  {
+    Object localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject2 = this.jdField_a_of_type_AndroidWidgetImageView.getImageMatrix();
+    float[] arrayOfFloat = new float[9];
+    ((Matrix)localObject2).getValues(arrayOfFloat);
+    float f4 = arrayOfFloat[0];
+    localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getDisplayMetrics();
+    int k = ((DisplayMetrics)localObject2).widthPixels;
+    int j = ((DisplayMetrics)localObject2).heightPixels;
+    int i = j;
+    if (jdField_b_of_type_Boolean)
+    {
+      i = j;
+      if (this.jdField_a_of_type_Int != 0) {
+        i = this.jdField_a_of_type_Int;
+      }
+    }
+    j = ((Bitmap)localObject1).getWidth();
+    int m = ((Bitmap)localObject1).getHeight();
+    float f1 = i / k;
+    float f2;
+    float f3;
+    if (m / j > f1)
+    {
+      f2 = i;
+      f1 = i / m;
+      f3 = j * f1 + 0.5F;
+    }
+    for (;;)
+    {
+      localObject1 = new RectF(0.0F, 0.0F, f3, f2);
+      SLog.c("EditPicActivity.EditVideoRawImage", "getDisplayBounds " + localObject1 + " scale " + f1 + " old scale " + f4);
+      localObject2 = (EditDoodleExport)a(EditDoodleExport.class);
+      if (localObject2 != null) {}
+      try
+      {
+        ((EditDoodleExport)localObject2).a((int)((RectF)localObject1).width(), (int)((RectF)localObject1).height());
+        if (QLog.isColorLevel()) {
+          QLog.d("EditPicActivity.EditVideoRawImage", 2, "resizeDoodleView width:" + ((RectF)localObject1).width() + " height:" + ((RectF)localObject1).height());
+        }
+        return;
+      }
+      catch (Exception localException) {}
+      f3 = k;
+      f1 = k / j;
+      f2 = m * f1 + 0.5F;
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -180,7 +215,7 @@ public class EditPicRawImage
         return false;
         if (paramMessage.what == 998)
         {
-          QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getApplicationContext(), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getString(2131438722), 0).a();
+          QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getApplicationContext(), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().getResources().getString(2131438745), 0).a();
           this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(0, null, 2131034158, 0);
           return false;
         }
@@ -204,6 +239,29 @@ public class EditPicRawImage
     return false;
   }
   
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    if (jdField_b_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EditPicActivity.EditVideoRawImage", 1, "onLayoutChange, height pixel change" + paramInt1 + " " + paramInt2 + " " + paramInt3 + " " + paramInt4 + " " + paramInt5 + " " + paramInt6 + " " + paramInt7 + " " + paramInt8 + " ");
+      }
+      if (paramInt8 != paramInt4) {
+        this.jdField_a_of_type_Int = (paramInt4 - paramInt2);
+      }
+    }
+    try
+    {
+      e();
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("EditPicActivity.EditVideoRawImage", 1, "onLayoutChange, resizeDoodleView Throwable" + paramView.getMessage());
+    }
+  }
+  
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -213,11 +271,11 @@ public class EditPicRawImage
     {
       return true;
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
+      this.jdField_b_of_type_Float = paramMotionEvent.getY();
       continue;
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      if ((Math.abs(f1 - this.jdField_a_of_type_Float) < 10.0F) && (Math.abs(f2 - this.b) < 10.0F) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.f != 12)) {
+      if ((Math.abs(f1 - this.jdField_a_of_type_Float) < 10.0F) && (Math.abs(f2 - this.jdField_b_of_type_Float) < 10.0F) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.f != 12)) {
         if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int != 2)
         {
           this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(5);

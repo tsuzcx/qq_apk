@@ -1,22 +1,14 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.mobileqq.activity.Conversation;
 
-public class slg
-  implements TextWatcher
+class slg
+  implements Runnable
 {
-  private slg(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  slg(slf paramslf, boolean paramBoolean) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.a(paramEditable);
+    this.jdField_a_of_type_Slf.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(this.jdField_a_of_type_Slf.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Slf.jdField_a_of_type_Boolean);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

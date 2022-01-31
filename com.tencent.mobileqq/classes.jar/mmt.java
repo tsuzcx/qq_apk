@@ -1,17 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Interpolator;
 
-public class mmt
-  implements Runnable
+public final class mmt
+  implements Interpolator
 {
-  public mmt(FastWebActivity paramFastWebActivity) {}
-  
-  public void run()
+  public float getInterpolation(float paramFloat)
   {
-    FastWebActivity.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d(FastWebActivity.a(this.a), 2, "reset mIsWaitingForFavoriteResult = false, not to block request too long.");
-    }
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

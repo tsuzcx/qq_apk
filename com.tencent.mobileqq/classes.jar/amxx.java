@@ -1,74 +1,40 @@
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginInstaller;
-import cooperation.qzone.plugin.QZonePluginManager;
-import cooperation.qzone.plugin.QZonePluginManager.LaunchState;
+import cooperation.qqpim.QQPimDefineList;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimPluginLoadRunnable.IPluginLoadListener;
+import cooperation.qqpim.QQPimPluginProxyService;
 
 public class amxx
-  extends OnQZonePluginInstallListner.Stub
+  implements QQPimPluginLoadRunnable.IPluginLoadListener
 {
-  private QZonePluginManager.LaunchState jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState;
+  public amxx(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
   
-  public amxx(QZonePluginManager paramQZonePluginManager, QZonePluginManager.LaunchState paramLaunchState)
-  {
-    this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState = paramLaunchState;
-  }
-  
-  public void a(String paramString)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallBegin." + paramString);
+      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
     }
+    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
   }
   
-  public void a(String paramString, float paramFloat, long paramLong)
+  public void a(float paramFloat)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallDownloadProgress." + paramString);
+      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
     }
   }
   
-  public void a(String paramString, int paramInt)
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallError." + paramString + "," + paramInt);
-    }
-    QZonePluginManager.LaunchState localLaunchState = this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState;
-    if ((localLaunchState != null) && (localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener != null))
-    {
-      paramString = this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager.a(paramString);
-      if ((paramString != null) && (paramString.k != null)) {
-        localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams.c = paramString.k;
-      }
-      paramString = localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener;
-      if (paramInt != 2) {
-        break label122;
-      }
-    }
-    label122:
-    for (boolean bool = true;; bool = false)
-    {
-      paramString.a(bool, localLaunchState.jdField_a_of_type_AndroidContentContext, localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
-      return;
+      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
     }
   }
   
-  public void b(String paramString)
+  public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallFinish." + paramString);
-    }
-    paramString = this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState;
-    if ((paramString != null) && (paramString.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener != null))
-    {
-      PluginRecord localPluginRecord = QZonePluginManager.a(this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager).a(paramString.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams.b);
-      if ((localPluginRecord != null) && (localPluginRecord.k != null)) {
-        paramString.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams.c = localPluginRecord.k;
-      }
-      paramString.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
+      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
     }
   }
 }

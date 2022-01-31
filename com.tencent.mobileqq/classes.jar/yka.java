@@ -1,70 +1,59 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class yka
-  implements ApolloResDownloader.OnApolloDownLoadListener
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public yka(ApolloManager paramApolloManager) {}
+  public yka(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      if ((paramInt1 > 0) && (!ApolloUtil.c(paramInt1))) {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloManager", 2, "role rsc NOT complete.");
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
     }
-    label96:
-    do
+    if (paramBoolean)
     {
-      do
-      {
-        return;
-        if (paramArrayOfInt != null)
-        {
-          paramInt1 = 0;
-          for (;;)
-          {
-            if (paramInt1 >= paramArrayOfInt.length) {
-              break label96;
-            }
-            if (!ApolloUtil.b(paramArrayOfInt[paramInt1]))
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("ApolloManager", 2, "dress rsc NOT complete, id:" + paramArrayOfInt[paramInt1]);
-              return;
-            }
-            paramInt1 += 1;
-          }
-        }
-        paramArrayOfInt = new ArrayList(1);
-        paramArrayOfInt.add(paramString);
-        ((VasExtensionHandler)this.a.a.a(71)).a(2, true, paramArrayOfInt);
-      } while (!QLog.isColorLevel());
-      QLog.d("ApolloManager", 2, "apollo dress download ok notifyUI uin: " + paramString.substring(0, 4));
-      return;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramArrayOfInt = new ArrayList(1);
-        paramArrayOfInt.add(paramString);
-        ((VasExtensionHandler)this.a.a.a(71)).a(2, false, paramArrayOfInt);
+      paramSeekBar = this.a;
+      paramSeekBar.g += 1;
+      ShortVideoPlayActivity.b(this.a, true);
+    }
+    this.a.b(paramInt * this.a.b / 10000L);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    ShortVideoPlayActivity.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.a.l();
+    paramSeekBar = this.a;
+    paramSeekBar.h += 1;
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    int j = (int)(i * this.a.b / 10000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
+    }
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    {
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloManager", 2, "apollo dress download failed " + paramString.substring(0, 4));
+      this.a.a(j);
+    }
+    ShortVideoPlayActivity.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yka
  * JD-Core Version:    0.7.0.1
  */

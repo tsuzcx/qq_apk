@@ -6,14 +6,30 @@ public class ReadInJoyStringUtils
   
   static
   {
-    String[] arrayOfString1 = { "&amp;", "&" };
-    String[] arrayOfString2 = { "&agrave;", "à" };
-    String[] arrayOfString3 = { "&acirc;", "â" };
-    String[] arrayOfString4 = { "&AElig;", "Æ" };
-    String[] arrayOfString5 = { "&ccedil;", "ç" };
-    String[] arrayOfString6 = { "&ecirc;", "ê" };
-    String[] arrayOfString7 = { "&Uuml;", "Ü" };
-    a = new String[][] { { "&lt;", "<" }, { "&gt;", ">" }, arrayOfString1, { "&quot;", "\"" }, arrayOfString2, { "&Agrave;", "À" }, arrayOfString3, { "&auml;", "ä" }, { "&Auml;", "Ä" }, { "&Acirc;", "Â" }, { "&aring;", "å" }, { "&Aring;", "Å" }, { "&aelig;", "æ" }, arrayOfString4, arrayOfString5, { "&Ccedil;", "Ç" }, { "&eacute;", "é" }, { "&Eacute;", "É" }, { "&egrave;", "è" }, { "&Egrave;", "È" }, arrayOfString6, { "&Ecirc;", "Ê" }, { "&euml;", "ë" }, { "&Euml;", "Ë" }, { "&iuml;", "ï" }, { "&Iuml;", "Ï" }, { "&ocirc;", "ô" }, { "&Ocirc;", "Ô" }, { "&ouml;", "ö" }, { "&Ouml;", "Ö" }, { "&oslash;", "ø" }, { "&Oslash;", "Ø" }, { "&szlig;", "ß" }, { "&ugrave;", "ù" }, { "&Ugrave;", "Ù" }, { "&ucirc;", "û" }, { "&Ucirc;", "Û" }, { "&uuml;", "ü" }, arrayOfString7, { "&nbsp;", " " }, { "&copy;", "©" }, { "&reg;", "®" }, { "&euro;", "₠" } };
+    String[] arrayOfString1 = { "&lt;", "<" };
+    String[] arrayOfString2 = { "&amp;", "&" };
+    String[] arrayOfString3 = { "&quot;", "\"" };
+    String[] arrayOfString4 = { "&acirc;", "â" };
+    String[] arrayOfString5 = { "&auml;", "ä" };
+    String[] arrayOfString6 = { "&aring;", "å" };
+    String[] arrayOfString7 = { "&Aring;", "Å" };
+    String[] arrayOfString8 = { "&aelig;", "æ" };
+    String[] arrayOfString9 = { "&AElig;", "Æ" };
+    String[] arrayOfString10 = { "&ccedil;", "ç" };
+    String[] arrayOfString11 = { "&eacute;", "é" };
+    String[] arrayOfString12 = { "&Eacute;", "É" };
+    String[] arrayOfString13 = { "&egrave;", "è" };
+    String[] arrayOfString14 = { "&Egrave;", "È" };
+    String[] arrayOfString15 = { "&Euml;", "Ë" };
+    String[] arrayOfString16 = { "&iuml;", "ï" };
+    String[] arrayOfString17 = { "&Ocirc;", "Ô" };
+    String[] arrayOfString18 = { "&ouml;", "ö" };
+    String[] arrayOfString19 = { "&Oslash;", "Ø" };
+    String[] arrayOfString20 = { "&ugrave;", "ù" };
+    String[] arrayOfString21 = { "&Ucirc;", "Û" };
+    String[] arrayOfString22 = { "&uuml;", "ü" };
+    String[] arrayOfString23 = { "&reg;", "®" };
+    a = new String[][] { arrayOfString1, { "&gt;", ">" }, arrayOfString2, arrayOfString3, { "&agrave;", "à" }, { "&Agrave;", "À" }, arrayOfString4, arrayOfString5, { "&Auml;", "Ä" }, { "&Acirc;", "Â" }, arrayOfString6, arrayOfString7, arrayOfString8, arrayOfString9, arrayOfString10, { "&Ccedil;", "Ç" }, arrayOfString11, arrayOfString12, arrayOfString13, arrayOfString14, { "&ecirc;", "ê" }, { "&Ecirc;", "Ê" }, { "&euml;", "ë" }, arrayOfString15, arrayOfString16, { "&Iuml;", "Ï" }, { "&ocirc;", "ô" }, arrayOfString17, arrayOfString18, { "&Ouml;", "Ö" }, { "&oslash;", "ø" }, arrayOfString19, { "&szlig;", "ß" }, arrayOfString20, { "&Ugrave;", "Ù" }, { "&ucirc;", "û" }, arrayOfString21, arrayOfString22, { "&Uuml;", "Ü" }, { "&nbsp;", " " }, { "&copy;", "©" }, arrayOfString23, { "&euro;", "₠" } };
   }
   
   public static String a(String paramString, int paramInt)

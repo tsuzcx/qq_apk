@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.biz.flatbuffers.FlatBuffersParser;
+import java.io.File;
 
-class kom
+public final class kom
   implements Runnable
 {
-  kom(kol paramkol) {}
+  public kom(File paramFile, boolean paramBoolean) {}
   
   public void run()
   {
-    EqqAccountDetailActivity.b(this.a.a, false);
+    FlatBuffersParser.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean);
   }
 }
 

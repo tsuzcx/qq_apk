@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
-import java.util.List;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-class afln
-  implements Runnable
+public class afln
+  implements ActionSheet.OnDismissListener
 {
-  afln(aflm paramaflm, List paramList) {}
+  public afln(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void run()
+  public void onDismiss()
   {
-    if (this.jdField_a_of_type_Aflm.a != null) {
-      this.jdField_a_of_type_Aflm.a.a(this.jdField_a_of_type_JavaUtilList);
-    }
+    NearbyProfileEditPanel.a(this.a, this.a.b, false);
   }
 }
 

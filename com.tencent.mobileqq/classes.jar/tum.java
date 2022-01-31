@@ -1,23 +1,32 @@
 import android.os.Message;
-import com.tencent.mobileqq.activity.SubLoginActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
 public class tum
   extends MqqHandler
 {
-  public tum(SubLoginActivity paramSubLoginActivity) {}
+  public tum(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    default: 
+    }
+    do
+    {
       return;
-    case 1982: 
       this.a.finish();
       return;
-    }
-    this.a.c();
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterPhoneNumActivity.a(this.a, paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
   }
 }
 

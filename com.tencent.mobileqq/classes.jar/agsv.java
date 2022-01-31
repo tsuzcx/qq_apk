@@ -1,53 +1,70 @@
-import com.tencent.mobileqq.app.FriendsManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.like.PraiseManager;
-import com.tencent.mobileqq.profile.vote.VoteHelper;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class agsv
-  implements Runnable
+class agsv
+  extends RecyclerView.OnScrollListener
 {
-  public agsv(VoteHelper paramVoteHelper, long paramLong, int paramInt, boolean paramBoolean) {}
+  agsv(agsu paramagsu, PersonalityLabelInfo paramPersonalityLabelInfo) {}
   
-  public void run()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    int j = 2;
-    boolean bool = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a.getManager(50)).b(Long.toString(this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrollStateChanged newState:" + paramInt);
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrolled dx:" + paramInt1 + " dy:" + paramInt2);
+    }
     int i;
-    if (this.jdField_a_of_type_Int == 2) {
-      if (bool)
-      {
-        i = 5;
-        if (PraiseManager.a(this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a) <= 0) {
-          break label134;
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break label129;
-        }
+    int j;
+    if (paramInt1 > 0)
+    {
+      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+      paramInt2 = paramRecyclerView.getChildCount();
+      i = paramRecyclerView.getItemCount();
+      j = paramRecyclerView.findLastVisibleItemPositions(null)[0];
+      paramRecyclerView = PersonalityLabelGalleryActivity.c(this.jdField_a_of_type_Agsu.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id));
+      if (paramRecyclerView == null) {
+        break label271;
       }
+      if (((Integer)paramRecyclerView).intValue() != 1) {
+        break label252;
+      }
+      paramInt1 = 1;
     }
     for (;;)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a, "CliOper", "", "", "P_prof", "Prof_good", i, 1, j, "0", "1", this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a.getCurrentAccountUin(), Long.toString(this.jdField_a_of_type_Long));
-      return;
-      i = 6;
-      break;
-      if (bool)
+      PersonalityLabelHandler localPersonalityLabelHandler;
+      if ((!PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Agsu.a)) && (paramInt1 == 0) && (paramInt2 > 0) && (j >= i - 1))
       {
-        i = 7;
+        PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Agsu.a, true);
+        QLog.i("PersonalityLabelGalleryActivity", 2, "load more photos");
+        localPersonalityLabelHandler = (PersonalityLabelHandler)this.jdField_a_of_type_Agsu.a.app.a(112);
+        if (!PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Agsu.a)) {
+          break label257;
+        }
+      }
+      label257:
+      for (paramRecyclerView = this.jdField_a_of_type_Agsu.a.app.getCurrentAccountUin();; paramRecyclerView = PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Agsu.a))
+      {
+        localPersonalityLabelHandler.a(paramRecyclerView, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id, 20, (byte[])PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Agsu.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id)));
+        return;
+        label252:
+        paramInt1 = 0;
         break;
       }
-      i = 8;
-      break;
-      label129:
-      j = 3;
-      continue;
-      label134:
-      if (this.jdField_a_of_type_Boolean) {
-        j = 0;
-      } else {
-        j = 1;
-      }
+      label271:
+      paramInt1 = 0;
     }
   }
 }

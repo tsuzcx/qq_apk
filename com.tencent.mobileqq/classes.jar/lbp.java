@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoAdInfo;
 
-public class lbp
-  implements View.OnClickListener
+public final class lbp
+  implements Parcelable.Creator
 {
-  public lbp(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
-  
-  public void onClick(View paramView)
+  public VideoAdInfo a(Parcel paramParcel)
   {
-    this.a.onBackEvent();
+    return new VideoAdInfo(paramParcel);
+  }
+  
+  public VideoAdInfo[] a(int paramInt)
+  {
+    return new VideoAdInfo[paramInt];
   }
 }
 

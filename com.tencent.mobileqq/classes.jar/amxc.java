@@ -1,85 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Handler;
-import android.os.Looper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.QZonePatchService;
-import java.util.LinkedList;
+import cooperation.qqfav.widget.QfavJumpActivity;
+import java.io.InputStream;
 
 public class amxc
+  implements DialogInterface.OnClickListener
 {
-  private static amxc jdField_a_of_type_Amxc;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private volatile boolean jdField_a_of_type_Boolean;
+  public amxc(QfavJumpActivity paramQfavJumpActivity, String paramString, InputStream paramInputStream, long paramLong) {}
   
-  public static amxc a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (jdField_a_of_type_Amxc == null) {}
     try
     {
-      if (jdField_a_of_type_Amxc == null) {
-        jdField_a_of_type_Amxc = new amxc();
-      }
-      return jdField_a_of_type_Amxc;
-    }
-    finally {}
-  }
-  
-  private void a(amxe paramamxe)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "processInner, " + paramamxe + ", " + QZonePatchService.class);
-    }
-    if (QZonePatchService.class == null) {}
-    do
-    {
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
       return;
-      Context localContext = amxe.a(paramamxe).getApplicationContext();
-      Intent localIntent = new Intent(localContext, QZonePatchService.class);
-      try
-      {
-        localContext.bindService(localIntent, paramamxe, 1);
-        return;
-      }
-      catch (SecurityException paramamxe) {}
-    } while (!QLog.isColorLevel());
-    QLog.i("QZonePluginManger", 2, "processInner", paramamxe);
-  }
-  
-  private void a(amxe paramamxe, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "processInnerDelay. " + paramInt + ", " + paramamxe);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new amxd(this, paramamxe), paramInt);
-  }
-  
-  public void a(Context arg1, ServiceConnection paramServiceConnection, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "PluginRemoteProcessor.process, " + paramInt);
-    }
-    paramServiceConnection = new amxe(this, paramServiceConnection, ???, paramInt);
-    if (this.jdField_a_of_type_Boolean)
+    catch (Exception paramDialogInterface)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "queue");
+        QLog.w("qqfav|QfavJumpActivity", 2, "copy file error", paramDialogInterface);
       }
-      synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
-      {
-        this.jdField_a_of_type_JavaUtilLinkedList.offer(paramServiceConnection);
-        return;
-      }
+      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.a());
     }
-    this.jdField_a_of_type_Boolean = true;
-    a(paramServiceConnection);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.now.send.PublishManager;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.NearbyFakeActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeuf
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public aeuf(PublishManager paramPublishManager) {}
+  public aeuf(NearbyFakeActivity paramNearbyFakeActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new NowVideoReporter().h("video_public").i("clk_cancelbox").e("2");
-    if (this.a.b) {}
-    for (paramInt = 2;; paramInt = 1)
+    switch (paramMessage.what)
     {
-      paramDialogInterface.a(paramInt).d(PublishManager.b(this.a)).b(this.a.a);
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
       return;
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
+      }
+      NearbyFakeActivity.a(this.a, 1);
     }
   }
 }

@@ -1,46 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.InformationPasterResDownloader;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.PluginInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import cooperation.thirdpay.ThirdPayGate;
 
 public class anna
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anna(QIMInformationPasterManager paramQIMInformationPasterManager, List paramList) {}
+  public anna(ThirdPayGate paramThirdPayGate, String paramString, PluginInterface paramPluginInterface, Activity paramActivity, Bundle paramBundle) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "patch pull res");
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    InfomationFacePackage.Item localItem;
-    while (localIterator.hasNext())
-    {
-      localItem = (InfomationFacePackage.Item)localIterator.next();
-      if ((!TextUtils.isEmpty(localItem.d)) && (!this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a(localItem))) {
-        QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).add(localItem);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "need download size:" + QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).size());
-    }
-    localIterator = QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).iterator();
-    while (localIterator.hasNext())
-    {
-      localItem = (InfomationFacePackage.Item)localIterator.next();
-      this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a.a(localItem, new annb(this));
-    }
+    ReportController.a(null, "P_CliOper", "cardpay", "", "installPlugin", "download-again", 0, 0, this.jdField_a_of_type_JavaLangString, "by download", "", "");
+    paramDialogInterface.dismiss();
+    ThirdPayGate.access$100(this.jdField_a_of_type_CooperationThirdpayThirdPayGate, this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterface, this.jdField_a_of_type_JavaLangString);
+    ThirdPayGate.access$200(this.jdField_a_of_type_CooperationThirdpayThirdPayGate, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterface, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anna
  * JD-Core Version:    0.7.0.1
  */

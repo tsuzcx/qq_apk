@@ -1,53 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.groupvideo.GVideoWebPlugin;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginLoader;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class adtk
-  extends BroadcastReceiver
+  implements Handler.Callback
 {
-  public adtk(GVideoWebPlugin paramGVideoWebPlugin) {}
+  public adtk(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramContext = paramIntent.getAction();
-    int j = paramIntent.getIntExtra("key_state", -1);
-    int k;
-    int i;
-    if (paramContext.equals(HuayangJsPlugin.a("com.tencent.od")))
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "state:" + j);
-      }
-      paramContext = IVPluginLoader.a;
-      k = paramContext.length;
-      i = 0;
+    default: 
+      return false;
+    case 0: 
+      ForwardSdkBaseOption.a(this.a);
     }
     for (;;)
     {
-      if ((i >= k) || ((j == paramContext[i]) && (GVideoWebPlugin.a(this.a).isShowing()))) {}
-      try
-      {
-        GVideoWebPlugin.a(this.a).dismiss();
-        label105:
-        i += 1;
-        continue;
-        return;
-      }
-      catch (Throwable paramIntent)
-      {
-        break label105;
+      return true;
+      ForwardSdkBaseOption.b(this.a);
+      continue;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (this.a.jdField_a_of_type_Adtz != null)) {
+        this.a.jdField_a_of_type_Adtz.a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adtk
  * JD-Core Version:    0.7.0.1
  */

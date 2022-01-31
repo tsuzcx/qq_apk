@@ -1,17 +1,23 @@
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.DeviceFileItemBuilder;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-class vav
-  implements Runnable
+public class vav
+  extends BaseBubbleBuilder.ViewHolder
 {
-  vav(vau paramvau, MarketFaceItemBuilder.Holder paramHolder) {}
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.f.setVisibility(8);
-  }
+  public vav(DeviceFileItemBuilder paramDeviceFileItemBuilder) {}
 }
 
 

@@ -1,16 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public final class mca
-  implements UserOperationModule.Ox978RespCallBack
+class mca
+  implements Runnable
 {
-  public mca(String paramString, boolean paramBoolean) {}
+  mca(mbz parammbz) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount uin=" + this.jdField_a_of_type_JavaLangString + ", isSuccess=" + paramBoolean + ", isUGC=" + this.jdField_a_of_type_Boolean);
-    }
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "initCompositionManager: success, update UI");
+    ReadInJoyDeliverVideoActivity.a(this.a.a).setVisibility(4);
+    ReadInJoyDeliverVideoActivity.a(this.a.a).setVisibility(0);
+    ReadInJoyDeliverVideoActivity.a(this.a.a).setClickable(true);
+    ReadInJoyDeliverVideoActivity.a(this.a.a, true);
   }
 }
 

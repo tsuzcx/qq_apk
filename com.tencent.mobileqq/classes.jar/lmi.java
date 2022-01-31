@@ -1,30 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CommentLikeObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter.SecondCommentOperationCallback;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public final class lmi
-  implements Runnable
+  implements ArticleCommentModule.CommentLikeObserver
 {
-  public lmi(long paramLong) {}
+  public lmi(int paramInt, ReadInJoySecondCommentListAdapter.SecondCommentOperationCallback paramSecondCommentOperationCallback) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo, String paramString, int paramInt)
   {
-    if (ReadinjoySPEventReport.b(23))
-    {
-      oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(1);
-      localAttributeList.att_name.set("time");
-      localAttributeList.att_value.set(String.valueOf(this.a / 1000L));
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(localAttributeList);
-      PublicAccountUtil.a(23, "LeaveQQ", localArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentUtils", 2, "zan done success,comment type = " + this.jdField_a_of_type_Int);
     }
-    ThreadManager.executeOnSubThread(new lmj(this));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter$SecondCommentOperationCallback != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter$SecondCommentOperationCallback.a(paramString, null, 3, null);
+    }
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentUtils", 2, "zan done failed,comment type = " + this.jdField_a_of_type_Int + "comment id = " + paramString1 + "err code =" + paramInt + "err msg =" + paramString2);
+    }
   }
 }
 

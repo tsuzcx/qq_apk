@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aiix;
+import ains;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -56,7 +56,7 @@ public class StructMsgItemLayout14
   private LinearLayout a(Context paramContext)
   {
     Resources localResources = paramContext.getResources();
-    paramContext = new aiix(this, paramContext);
+    paramContext = new ains(this, paramContext);
     paramContext.setOrientation(1);
     paramContext.setGravity(1);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);

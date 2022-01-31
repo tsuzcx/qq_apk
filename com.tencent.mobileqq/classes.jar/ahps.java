@@ -1,77 +1,47 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.richstatus.StatusJsHandler;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richmedia.capture.gesture.GLGestureProxy;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout.CaptureButtonListenerInterceptor;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ahps
-  implements BusinessObserver
+  implements View.OnTouchListener
 {
-  public ahps(StatusJsHandler paramStatusJsHandler) {}
+  public ahps(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
+      QLog.i("CameraCaptureLayout", 2, "touch action:" + (paramMotionEvent.getAction() & 0xFF) + ", shortVideoShot:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", actionUp:" + this.a.b.get() + ", isOver:" + CameraCaptureButtonLayout.a(this.a));
     }
-    if (!paramBoolean)
+    this.a.a();
+    GLGestureProxy.a().a(paramMotionEvent, true, this.a.jdField_a_of_type_AndroidWidgetImageView, CameraCaptureButtonLayout.a(this.a));
+    if (CameraCaptureButtonLayout.a(this.a)) {}
+    do
     {
-      this.a.a(2131430033);
-      this.a.a(this.a.c, "false");
-      return;
-    }
-    for (;;)
-    {
-      try
+      return false;
+      switch (paramMotionEvent.getAction() & 0xFF)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break;
-        }
-        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-        localFollowResponse.mergeFrom(paramBundle);
-        if ((!localFollowResponse.ret_info.has()) || (!((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.has())) {
-          break label321;
-        }
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType = 1;
-          this.a.a(localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-          ((PublicAccountHandler)localBaseActivity.app.a(11)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-          PublicAccountManager.a().a(localBaseActivity.getApplicationContext(), localBaseActivity.app, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, null, true);
-          this.a.a(this.a.c, "true");
-          return;
-        }
-        if (paramInt == 58)
-        {
-          this.a.a(2131430041);
-          break;
-        }
-        if (paramInt == 65)
-        {
-          this.a.a(2131430042);
-          break;
-        }
-        this.a.a(2131430033);
+      case 2: 
+      default: 
+        return false;
       }
-      catch (Exception paramBundle) {}
-      break;
-      label321:
-      paramInt = -1;
+    } while (CameraCaptureButtonLayout.b(this.a));
+    if ((CameraCaptureButtonLayout.a(this.a) != null) && (!CameraCaptureButtonLayout.a(this.a).a())) {
+      return true;
     }
+    this.a.b();
+    if ((CameraCaptureButtonLayout.a(this.a) == 3) || (CameraCaptureButtonLayout.a(this.a) == 1)) {
+      CameraCaptureButtonLayout.a(this.a).sendEmptyMessageDelayed(1, 100L);
+    }
+    CameraCaptureButtonLayout.a(this.a, true);
+    return true;
+    CameraCaptureButtonLayout.b(this.a);
+    return true;
   }
 }
 

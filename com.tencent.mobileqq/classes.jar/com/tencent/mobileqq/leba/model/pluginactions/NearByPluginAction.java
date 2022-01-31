@@ -52,7 +52,7 @@ public class NearByPluginAction
       return;
       if (LebaUtils.a(localQQAppInterface.getAccount()))
       {
-        paramImageView.setImageResource(2130842670);
+        paramImageView.setImageResource(2130842705);
         return;
       }
     } while (paramBitmap == null);
@@ -203,7 +203,7 @@ public class NearByPluginAction
     }
     paramLebaGridItemInfo = paramLebaGridItemInfo.a;
     paramLebaGridItemInfo = (Bitmap)BaseApplicationImpl.sImageHashMap.get(paramLebaGridItemInfo);
-    b((ImageView)paramView.findViewById(2131366363), paramLebaGridItemInfo);
+    b((ImageView)paramView.findViewById(2131366368), paramLebaGridItemInfo);
   }
   
   public void b(LebaGridItemInfo paramLebaGridItemInfo)

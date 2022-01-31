@@ -1,112 +1,30 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.widget.FadeIconImageView;
+import cooperation.qqfav.QfavUtil;
+import cooperation.qqfav.widget.FavoriteActionSheet;
+import cooperation.qqfav.widget.FavoriteActionSheet.Actions;
+import cooperation.qqfav.widget.LocationDetailActivity;
+import mqq.app.AppRuntime;
 
 public class amwz
-  implements OnQZoneLiveSoDownloadListener
+  extends FavoriteActionSheet
 {
-  private IBinder a;
-  
-  public amwz(IBinder paramIBinder)
+  public amwz(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, FavoriteActionSheet.Actions paramActions, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
   {
-    this.a = paramIBinder;
+    super(paramActivity, paramActions, paramInt1, paramInt2, paramAppRuntime);
   }
   
-  public void a()
+  public void onClick(View paramView)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    if (LocationDetailActivity.a(this.a))
     {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+      QfavUtil.a(true);
+      if (LocationDetailActivity.a(this.a) != null) {
+        LocationDetailActivity.a(this.a).setVisibility(8);
+      }
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      localParcel1.writeFloat(paramFloat);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(5, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void c()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    super.onClick(paramView);
   }
 }
 

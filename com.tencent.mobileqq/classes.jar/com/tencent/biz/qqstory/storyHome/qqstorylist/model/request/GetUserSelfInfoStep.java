@@ -13,7 +13,7 @@ import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.model.Repository;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import nzn;
+import oec;
 
 public class GetUserSelfInfoStep
   extends SimpleStep
@@ -90,7 +90,7 @@ public class GetUserSelfInfoStep
       if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRepository == null) {
         break;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRepository.a(new nzn(this, paramResponse));
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRepository.a(new oec(this, paramResponse));
       return;
       label129:
       bool = false;

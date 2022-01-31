@@ -1,46 +1,27 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.AppProtocolObserver;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager.AtlasCallback;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleExtInfo;
-import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.RspBody;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class loj
-  extends ProtoUtils.AppProtocolObserver
+  implements Runnable
 {
-  public loj(ReadInJoyAtlasManager paramReadInJoyAtlasManager, ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback) {}
+  public loj(KandianMergeManager paramKandianMergeManager, QQMessageFacade paramQQMessageFacade, String paramString1, String paramString2, int paramInt, boolean paramBoolean) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyAtlasManager.a, 2, "onResult, errorCode=" + paramInt);
-    }
-    if ((paramInt != -1) && (paramArrayOfByte != null)) {
-      try
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(AppConstants.at, 7220);
+    if (localMessageRecord != null) {}
+    for (localMessageRecord = KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);; localMessageRecord = KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int))
+    {
+      if (localMessageRecord != null)
       {
-        paramBundle = new oidb_cmd0xad6.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if ((paramBundle.msg_ext_info.has()) && (((oidb_cmd0xad6.ArticleExtInfo)paramBundle.msg_ext_info.get()).uint64_comment.has()))
-        {
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null) {
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(true, ((oidb_cmd0xad6.ArticleExtInfo)paramBundle.msg_ext_info.get()).uint64_comment.get(), 0);
-          }
-        }
-        else if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(false, 0L, -1);
-          return;
-        }
+        ReadInJoyUtils.a(localMessageRecord);
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localMessageRecord, KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).c());
       }
-      catch (Exception paramArrayOfByte)
-      {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(false, 0L, -1);
-        }
-        QLog.e(ReadInJoyAtlasManager.a, 1, "onResult(), exception=" + paramArrayOfByte.toString());
-      }
+      return;
     }
   }
 }

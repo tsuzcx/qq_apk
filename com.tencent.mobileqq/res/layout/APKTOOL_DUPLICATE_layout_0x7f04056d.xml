@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eb1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0d85" android:layout_centerInParent="true" />
+    <CheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a84" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02065b" android:focusable="false" android:clickable="false" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="15.0dip" android:checked="false" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a85" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1a84" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a86" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0396" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0396" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0390" android:scaleType="fitXY" />
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038b" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0577" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a87" android:paddingRight="20.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
 </RelativeLayout>

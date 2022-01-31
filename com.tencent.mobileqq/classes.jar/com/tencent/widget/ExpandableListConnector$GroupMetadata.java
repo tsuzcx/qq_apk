@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import ambj;
+import amit;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ExpandableListConnector$GroupMetadata
   implements Parcelable, Comparable
 {
-  public static final Parcelable.Creator CREATOR = new ambj();
+  public static final Parcelable.Creator CREATOR = new amit();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
   int b;

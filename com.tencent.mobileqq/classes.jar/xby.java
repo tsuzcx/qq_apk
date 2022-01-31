@@ -1,66 +1,21 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.MimeHelper;
 
-public class xby
-  implements TextWatcher
+public final class xby
+  extends MediaFileFilter
 {
-  public xby(TransactionActivity paramTransactionActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public boolean a(String paramString)
   {
-    if (TransactionActivity.a(this.a).getText().length() > 4) {
-      if (!TransactionActivity.a(this.a).isEnabled())
-      {
-        TransactionActivity.a(this.a).setEnabled(true);
-        TransactionActivity.a(this.a).setClickable(true);
-        this.a.a(TransactionActivity.a(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.a(this.a), "");
-      }
-    }
-    try
+    String[] arrayOfString = MimeHelper.a(paramString);
+    if (arrayOfString != null)
     {
-      if ((TransactionActivity.b(this.a).getText().length() > 0) && (!TransactionActivity.b(this.a).getText().toString().startsWith(".")) && (!TransactionActivity.b(this.a).getText().toString().endsWith(".")) && (TransactionActivity.a(this.a, TransactionActivity.b(this.a).getText().toString())))
-      {
-        f = Float.parseFloat(paramEditable.toString());
-        if ((TransactionActivity.b(this.a) > 0) && (!TextUtils.isEmpty(TransactionActivity.b(this.a))) && (f * 100.0F >= TransactionActivity.b(this.a)) && (!TextUtils.isEmpty(TransactionActivity.b(this.a)))) {
-          this.a.a(TransactionActivity.b(this.a));
-        }
-        if (!TransactionActivity.b(this.a).isEnabled())
-        {
-          TransactionActivity.b(this.a).setEnabled(true);
-          TransactionActivity.b(this.a).setClickable(true);
-          this.a.a(TransactionActivity.a(this.a), 128, "transfer.amount.enable", "", "", TransactionActivity.a(this.a), "");
-        }
+      if (("image".equals(arrayOfString[0])) && (MimeHelper.a(arrayOfString[1]))) {}
+      while (MimeHelper.b(paramString)) {
+        return false;
       }
-      while (!TransactionActivity.b(this.a).isEnabled())
-      {
-        float f;
-        return;
-        if (!TransactionActivity.a(this.a).isEnabled()) {
-          break;
-        }
-        TransactionActivity.a(this.a).setClickable(false);
-        TransactionActivity.a(this.a).setEnabled(false);
-        this.a.a(TransactionActivity.a(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.a(this.a), "");
-        break;
-      }
-      TransactionActivity.b(this.a).setClickable(false);
-      TransactionActivity.b(this.a).setEnabled(false);
-      this.a.a(TransactionActivity.a(this.a), 128, "transfer.amount.disable", "", "", TransactionActivity.a(this.a), "");
-      return;
     }
-    catch (Exception paramEditable)
-    {
-      paramEditable.printStackTrace();
-    }
+    return true;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

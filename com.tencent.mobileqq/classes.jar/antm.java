@@ -1,82 +1,84 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFilter.ItemViewGestureListener;
+import com.tencent.widget.GridView;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
+import dov.com.tencent.mobileqq.activity.richmedia.PtvTemplateItemView;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import java.util.ArrayList;
 
-public class antm
-  implements View.OnTouchListener
+class antm
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private EditVideoFilter.ItemViewGestureListener jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 5;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  private boolean jdField_b_of_type_Boolean;
+  antm(antl paramantl, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean) {}
   
-  public antm(EditVideoFilter.ItemViewGestureListener paramItemViewGestureListener)
+  public void run()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener = paramItemViewGestureListener;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener == null) {}
-    do
+    int j = this.jdField_a_of_type_Antl.a.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
+    int k = this.jdField_a_of_type_Antl.a.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
+    int i = j;
+    if (i <= k)
     {
+      if (i < 0) {}
       do
       {
-        float f;
-        do
-        {
-          do
-          {
-            return true;
-            f = paramMotionEvent.getY();
-            switch (paramMotionEvent.getAction() & 0xFF)
-            {
-            case 3: 
-            case 4: 
-            default: 
-              return true;
-            case 0: 
-              this.jdField_a_of_type_Int = ((int)f);
-              this.jdField_a_of_type_Boolean = false;
-              this.jdField_b_of_type_Boolean = false;
-              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-              return true;
-            }
-          } while (paramMotionEvent.getPointerCount() > 2);
-          if (this.jdField_b_of_type_Boolean)
-          {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-            return true;
-          }
-          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
-        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
-        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
-        return true;
-        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
-          this.jdField_a_of_type_Boolean = true;
+        i += 1;
+        break;
+        localObject1 = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Antl.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+      } while ((localObject1 == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject1).id.equals(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
+      ((PtvTemplateManager.PtvTemplateInfo)localObject1).downloading = false;
+      ((PtvTemplateManager.PtvTemplateInfo)localObject1).usable = this.jdField_a_of_type_Boolean;
+      Object localObject2 = this.jdField_a_of_type_Antl.a.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
+      if ((localObject2 instanceof PtvTemplateItemView))
+      {
+        localObject2 = (PtvTemplateItemView)localObject2;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label214;
         }
-      } while (!this.jdField_b_of_type_Boolean);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-      return true;
-    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-    return true;
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramView);
+        i = 1000;
+        ((PtvTemplateItemView)localObject2).a(i);
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        ((QIMPtvTemplateManager)QIMManager.a(3)).a(112, localObject1);
+      }
     }
-    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
-      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
+    if ((QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Antl.a) < 0) || (QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Antl.a) >= this.jdField_a_of_type_Antl.a.jdField_a_of_type_JavaUtilArrayList.size())) {}
+    label214:
+    while ((!((PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Antl.a.jdField_a_of_type_JavaUtilArrayList.get(QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Antl.a))).id.equals(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)) || (!this.jdField_a_of_type_Boolean) || (QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Antl.a) == null))
+    {
+      return;
+      i = -1;
+      break;
     }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    return true;
+    Object localObject1 = QIMPtvTemplateManager.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name;
+    QIMPtvTemplateAdapter.jdField_a_of_type_JavaLangString = (String)localObject1;
+    QIMPtvTemplateAdapter.jdField_b_of_type_Int = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.categoryId;
+    QIMPtvTemplateAdapter.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id;
+    if (this.jdField_a_of_type_Antl.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.kind == 3)
+    {
+      QIMPtvTemplateAdapter.jdField_a_of_type_JavaLangString = "";
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Antl.a).a((String)localObject1);
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Antl.a).a("", false, false);
+    }
+    for (;;)
+    {
+      i = AdvancedProviderView.b();
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Antl.a).c(i);
+      i = AdvancedProviderView.c();
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Antl.a).b(i, false);
+      localObject1 = (QIMPtvTemplateManager)QIMManager.a(3);
+      ((QIMPtvTemplateManager)localObject1).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, 111);
+      ((QIMPtvTemplateManager)localObject1).a(3, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.categoryId, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id);
+      ((QIMPtvTemplateManager)localObject1).a(113, null);
+      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.templateStyle != 0) {
+        break;
+      }
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Antl.a).a(101, new Object[0]);
+      return;
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Antl.a).a((String)localObject1, false, false);
+      QIMPtvTemplateAdapter.a(this.jdField_a_of_type_Antl.a).a(null);
+    }
   }
 }
 

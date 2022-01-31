@@ -1,115 +1,85 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.DeleteCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.List;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class lis
-  implements ArticleCommentModule.DeleteCommentObserver
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public lis(ArticleCommentModule paramArticleCommentModule, String paramString1, String paramString2, ArticleCommentModule.DeleteCommentObserver paramDeleteCommentObserver) {}
+  public lis(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString1, String paramString2)
+  public void onGlobalLayout()
   {
-    int j = 0;
-    int i = j;
-    if (paramInt == 2) {
-      i = j;
-    }
-    try
+    Object localObject = new Rect();
+    ReadInJoyDeliverBiuActivity.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = ReadInJoyDeliverBiuActivity.b(this.a).getRootView().getHeight();
+    int j = i - ((Rect)localObject).height();
+    boolean bool;
+    if (j > 100)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.commentType != 1) {
-        break label216;
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout screenHeight:" + i + ", ExternalPanelheight:" + j + ", isShowKeybroad:" + bool);
       }
-      paramInt = 0;
-    }
-    catch (Exception localException)
-    {
-      Object localObject1;
-      Object localObject2;
-      label115:
-      CommentInfo localCommentInfo;
-      while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver != null)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver.a(paramArticleInfo, paramString1, paramString2, -1, "parser local data error");
-        return;
-        i = 0;
-        while (i == 0)
-        {
-          paramInt += 1;
-          break;
-          i = 0;
-          break label115;
-        }
+      i = ReadInJoyDeliverBiuActivity.a(this.a).getHeight();
+      if (bool == ReadInJoyDeliverBiuActivity.a(this.a)) {
+        break label394;
       }
-    }
-    if (paramInt < ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).size())
-    {
-      localObject1 = (CommentInfo)ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).get(paramInt);
-      if ((TextUtils.isEmpty(((CommentInfo)localObject1).commentId)) || (!((CommentInfo)localObject1).commentId.equalsIgnoreCase(paramString1))) {
-        break label350;
+      if (j > ReadInJoyDeliverBiuActivity.a(this.a)) {
+        ReadInJoyDeliverBiuActivity.a(this.a, j);
       }
-      localObject2 = ((CommentInfo)ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).get(paramInt)).mCommentItemLists;
-      if (localObject2 != null) {
-        break label357;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + ReadInJoyDeliverBiuActivity.b(this.a));
       }
-      break label350;
-      if (i >= ((List)localObject2).size()) {
-        break label344;
+      j = i - ReadInJoyDeliverBiuActivity.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.d(this.a) + ", maxHeight:" + j);
       }
-      localCommentInfo = (CommentInfo)((List)localObject2).get(i);
-      if ((TextUtils.isEmpty(localCommentInfo.commentId)) || (!localCommentInfo.commentId.equalsIgnoreCase(paramString2))) {
+      ReadInJoyDeliverBiuActivity.a(this.a).setMaxHeight(j);
+      ReadInJoyDeliverBiuActivity.a(this.a, bool);
+      localObject = this.a;
+      if (i >= ReadInJoyDeliverBiuActivity.e(this.a)) {
         break label372;
       }
-      ((CommentInfo)localObject1).toLogString("delete sub comment:");
-      ((List)localObject2).remove(i);
-      i = 1;
-      break label363;
+      j = i;
+      label283:
+      ReadInJoyDeliverBiuActivity.b((ReadInJoyDeliverBiuActivity)localObject, j);
+      localObject = this.a;
+      if (i <= ReadInJoyDeliverBiuActivity.f(this.a)) {
+        break label383;
+      }
+      label307:
+      ReadInJoyDeliverBiuActivity.c((ReadInJoyDeliverBiuActivity)localObject, i);
     }
-    label388:
     for (;;)
     {
-      label188:
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver != null)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver.a(paramArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.commentType, paramString1, paramString2);
-        return;
+      ReadInJoyDeliverBiuActivity.d(this.a, ReadInJoyDeliverBiuActivity.h(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mExternalPanelheight:" + ReadInJoyDeliverBiuActivity.g(this.a));
       }
-      for (;;)
+      return;
+      bool = false;
+      break;
+      label372:
+      j = ReadInJoyDeliverBiuActivity.e(this.a);
+      break label283;
+      label383:
+      i = ReadInJoyDeliverBiuActivity.f(this.a);
+      break label307;
+      label394:
+      if ((ReadInJoyDeliverBiuActivity.g(this.a) != ReadInJoyDeliverBiuActivity.h(this.a)) && (i == ReadInJoyDeliverBiuActivity.f(this.a)))
       {
-        label216:
-        if (i >= ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).size()) {
-          break label388;
+        i -= ReadInJoyDeliverBiuActivity.h(this.a);
+        j = i - ReadInJoyDeliverBiuActivity.i(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.j(this.a) + ", maxHeight:" + j);
         }
-        localObject2 = (CommentInfo)ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).get(i);
-        localObject1 = this.jdField_a_of_type_JavaLangString;
-        if (paramInt == 2) {
-          localObject1 = this.b;
-        }
-        if ((!TextUtils.isEmpty(((CommentInfo)localObject2).commentId)) && (((CommentInfo)localObject2).commentId.equalsIgnoreCase((String)localObject1)))
-        {
-          ((CommentInfo)localObject2).toLogString("delete comment:");
-          ArticleCommentModule.access$100(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule).remove(i);
-          break label188;
-          label344:
-          label350:
-          label357:
-          label363:
-          return;
-          label372:
-          i += 1;
-          break;
-        }
-        i += 1;
+        ReadInJoyDeliverBiuActivity.b(this.a).setMaxHeight(j);
       }
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$DeleteCommentObserver.a(paramArticleInfo, paramString1, paramString2, paramInt, paramString3);
     }
   }
 }

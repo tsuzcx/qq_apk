@@ -1,30 +1,63 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.agent.datamodel.Friend;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView.DropdownCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public final class alcu
-  implements Parcelable.Creator
+public class alcu
+  implements View.OnClickListener
 {
-  public Friend a(Parcel paramParcel)
-  {
-    Friend localFriend = new Friend();
-    localFriend.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFriend.b = paramParcel.readString();
-    localFriend.c = paramParcel.readString();
-    localFriend.d = paramParcel.readString();
-    localFriend.jdField_a_of_type_Int = paramParcel.readInt();
-    localFriend.e = paramParcel.readString();
-    return localFriend;
-  }
+  public alcu(NewStyleDropdownView paramNewStyleDropdownView) {}
   
-  public Friend[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new Friend[paramInt];
+    this.a.jdField_a_of_type_Alcx.clearFocus();
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Alcx.getWindowToken(), 0);
+    Drawable localDrawable;
+    StringBuilder localStringBuilder;
+    if ((this.a.jdField_a_of_type_Alcx.getAdapter() != null) && (this.a.jdField_a_of_type_Alcx.getAdapter().getCount() > 0))
+    {
+      localDrawable = ((ImageView)paramView).getDrawable();
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("arrow clicked, drawable is down=");
+        if (localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
+          break label248;
+        }
+      }
+    }
+    label248:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("NewStyleDropdownView", 2, bool + ", isLastDropDown=" + this.a.jdField_a_of_type_Boolean);
+      if ((localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
+        break;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.c(false);
+      }
+      NewStyleDropdownView.a(this.a).postDelayed(new alcv(this, paramView), 500L);
+      paramView = paramView.getContext();
+      if ((paramView != null) && ((paramView instanceof LoginActivity))) {
+        ReportController.a(((LoginActivity)paramView).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
+      }
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.c(true);
+    }
+    this.a.jdField_a_of_type_Alcx.dismissDropDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alcu
  * JD-Core Version:    0.7.0.1
  */

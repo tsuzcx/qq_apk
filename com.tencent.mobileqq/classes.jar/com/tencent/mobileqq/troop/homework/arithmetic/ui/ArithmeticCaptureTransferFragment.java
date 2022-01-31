@@ -32,9 +32,12 @@ public class ArithmeticCaptureTransferFragment
     AbsHomeWorkFragment.a((Activity)paramContext, ArithmeticCaptureTransferFragment.class, localIntent, paramInt, paramString1);
   }
   
-  protected int a()
+  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return 2130969899;
+    paramLayoutInflater = new Bundle();
+    paramLayoutInflater.putString("troop_uin", this.jdField_a_of_type_JavaLangString);
+    CameraCaptureActivity.a(getActivity(), ArithmeticCameraCaptureFragment.class.getName(), paramLayoutInflater, 10001);
+    getActivity().overridePendingTransition(2131034327, 2131034167);
   }
   
   protected void a(@Nullable String paramString)
@@ -53,12 +56,9 @@ public class ArithmeticCaptureTransferFragment
     }
   }
   
-  protected void b(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected int getContentLayoutId()
   {
-    paramLayoutInflater = new Bundle();
-    paramLayoutInflater.putString("troop_uin", this.jdField_a_of_type_JavaLangString);
-    CameraCaptureActivity.a(getActivity(), ArithmeticCameraCaptureFragment.class.getName(), paramLayoutInflater, 10001);
-    getActivity().overridePendingTransition(2131034327, 2131034167);
+    return 2130969910;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -79,7 +79,7 @@ public class ArithmeticCaptureTransferFragment
       }
     }
     a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo.a(1));
-    b();
+    a();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -90,7 +90,7 @@ public class ArithmeticCaptureTransferFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithmeticCaptureTransferFragment
  * JD-Core Version:    0.7.0.1
  */

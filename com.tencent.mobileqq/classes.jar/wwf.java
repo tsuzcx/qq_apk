@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 
-public class wwf
-  implements DialogInterface.OnDismissListener
+class wwf
+  implements Runnable
 {
-  public wwf(CameraPreviewActivity paramCameraPreviewActivity) {}
+  wwf(wwd paramwwd, int paramInt, Object paramObject) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.a = null;
+    this.jdField_a_of_type_Wwd.a.a(39, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangObject);
   }
 }
 

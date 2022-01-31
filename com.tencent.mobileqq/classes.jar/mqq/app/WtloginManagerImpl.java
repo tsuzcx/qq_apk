@@ -363,7 +363,16 @@ public class WtloginManagerImpl
     if (QLog.isColorLevel()) {
       QLog.d("sp", 2, "getHasPwd uin= " + paramString);
     }
-    return this.localWtloginHelper.getHasPassword(Long.valueOf(paramString).longValue());
+    try
+    {
+      boolean bool = this.localWtloginHelper.getHasPassword(Long.valueOf(paramString).longValue());
+      return bool;
+    }
+    catch (NumberFormatException paramString)
+    {
+      QLog.d("sp", 1, "getHasPwd e:", paramString);
+    }
+    return false;
   }
   
   public byte[] getPkgSigFromApkName(Context paramContext, String paramString)

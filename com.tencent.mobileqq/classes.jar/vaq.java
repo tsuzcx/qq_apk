@@ -1,13 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
-
 public class vaq
-  implements DialogInterface.OnClickListener
 {
-  public vaq(LongMsgItemBuilder paramLongMsgItemBuilder) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
 }
 
 

@@ -37,6 +37,7 @@ public class TroopMemberInfo
   public String hwCourse;
   public int hwIdentity;
   public String hwName;
+  public int isShowQZone;
   public boolean isTroopFollowed;
   public long join_time;
   public long last_active_time;
@@ -120,6 +121,7 @@ public class TroopMemberInfo
       this.commonFrdCnt = paramCursor.getInt(paramCursor.getColumnIndex("commonFrdCnt"));
       this.hwIdentity = paramCursor.getInt(paramCursor.getColumnIndex("hwIdentity"));
       this.recommendRemark = paramCursor.getString(paramCursor.getColumnIndex("recommendRemark"));
+      this.isShowQZone = paramCursor.getInt(paramCursor.getColumnIndex("isShowQZone"));
       return true;
     }
   }
@@ -170,6 +172,7 @@ public class TroopMemberInfo
     localStringBuilder.append(", globalTroopLevel=").append(this.globalTroopLevel);
     localStringBuilder.append(", hwIdentity=").append(this.hwIdentity);
     localStringBuilder.append(", recommendRemark=").append(this.recommendRemark);
+    localStringBuilder.append(", isShowQzone=").append(this.isShowQZone);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

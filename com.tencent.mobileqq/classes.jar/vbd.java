@@ -1,16 +1,30 @@
 import android.content.Context;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class vbd
-  implements Runnable
+public class vbd
+  extends ClickableSpan
 {
-  public vbd(int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, String paramString) {}
+  public vbd(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidContentContext.getString(2131433265), this.jdField_a_of_type_JavaLangString);
+    if (!NetworkUtil.d(this.a.a))
+    {
+      QQToast.a(this.a.a, "当前网络连接不可用，请确认后再使用", 2000).a();
+      return;
+    }
+    paramView = new Intent();
+    paramView.setFlags(268435456);
+    paramView.setAction("android.intent.action.VIEW");
+    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
+    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
+    this.a.a.startActivity(paramView);
   }
 }
 

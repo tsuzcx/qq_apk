@@ -1,26 +1,27 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper;
 import java.util.List;
 
-public class acfd
+class acfd
   implements Runnable
 {
-  public acfd(EmoticonMainPanel paramEmoticonMainPanel, EmoticonPackage paramEmoticonPackage) {}
+  acfd(acfb paramacfb, List paramList) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b.contains(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage)) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.b.add(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.g = true;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.j = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getVisibility() == 0)
+    if (this.jdField_a_of_type_Acfb.a.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "refresh magic emoji.");
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        this.jdField_a_of_type_Acfb.a.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper.a(this.jdField_a_of_type_JavaUtilList);
       }
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.c(0);
+      this.jdField_a_of_type_Acfb.a.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_Acfb.a.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper.a();
+      this.jdField_a_of_type_Acfb.a.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_Acfb.a.jdField_d_of_type_AndroidViewView);
+      this.jdField_a_of_type_Acfb.a.jdField_d_of_type_Boolean = true;
+      if ((this.jdField_a_of_type_Acfb.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && ((this.jdField_a_of_type_Acfb.a.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Acfb.a.jdField_a_of_type_JavaUtilList.size() == 0))) {
+        this.jdField_a_of_type_Acfb.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.notifyDataSetChanged();
+      }
     }
   }
 }

@@ -1,30 +1,70 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.SendVidPollDataResultReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.async.JobContext;
 
-public class nyy
+class nyy
   implements Runnable
 {
-  public nyy(HomeFeedPresenter.SendVidPollDataResultReceiver paramSendVidPollDataResultReceiver, CommentLikeFeedItem paramCommentLikeFeedItem, CommentEntry paramCommentEntry) {}
+  nyy(nyx paramnyx, boolean paramBoolean) {}
   
   public void run()
   {
-    CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-    if (HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem))
+    int i1 = 0;
+    if (DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a).isJobCancelled())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.type = 3;
-      localCommentManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-    }
-    for (;;)
-    {
-      ((FeedManager)SuperManager.a(11)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
       return;
-      localCommentManager.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
     }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      Object localObject = (Integer)this.jdField_a_of_type_Nyx.getFunctionResult(0);
+      if (localObject != null) {
+        DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a).a.mViewTotalTime = ((Integer)localObject).intValue();
+      }
+      if (DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a).a()) {}
+      int m;
+      int n;
+      for (int j = 2;; j = 1)
+      {
+        int k = 0;
+        int i = 1;
+        for (;;)
+        {
+          m = i;
+          n = i1;
+          if (k >= j) {
+            break;
+          }
+          localObject = (nyw)this.jdField_a_of_type_Nyx.getFunctionResult(i);
+          if (localObject != null)
+          {
+            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a).b(((nyw)localObject).jdField_a_of_type_JavaUtilList, true, ((nyw)localObject).jdField_a_of_type_Boolean);
+            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a).b(((nyw)localObject).jdField_a_of_type_Boolean, ((nyw)localObject).jdField_a_of_type_Int);
+            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a).a.mHadLike = ((nyw)localObject).b;
+          }
+          k += 1;
+          i += 1;
+        }
+      }
+      while (n < j)
+      {
+        localObject = (nyv)this.jdField_a_of_type_Nyx.getFunctionResult(m);
+        if (localObject != null)
+        {
+          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a).a(((nyv)localObject).jdField_a_of_type_JavaUtilList, true, ((nyv)localObject).jdField_a_of_type_Boolean);
+          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a).a(((nyv)localObject).jdField_a_of_type_Boolean, ((nyv)localObject).jdField_a_of_type_Int);
+          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a).a(((nyv)localObject).jdField_a_of_type_Boolean, ((nyv)localObject).b);
+          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a).a(((nyv)localObject).jdField_a_of_type_Boolean, ((nyv)localObject).jdField_a_of_type_JavaLangString);
+        }
+        n += 1;
+        m += 1;
+      }
+      DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a, DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a));
+      return;
+    }
+    DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nyx.a, new ErrorMessage(-1, "get feed interact data error."));
   }
 }
 

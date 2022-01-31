@@ -12,7 +12,7 @@ public class RichProto$RichProtoResp$PicDownResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.PicDownResp
  * JD-Core Version:    0.7.0.1
  */

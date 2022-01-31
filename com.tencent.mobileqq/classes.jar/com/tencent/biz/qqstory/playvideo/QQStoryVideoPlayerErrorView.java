@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.boundaries.StoryApi;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class QQStoryVideoPlayerErrorView
   extends RelativeLayout
@@ -35,8 +36,8 @@ public class QQStoryVideoPlayerErrorView
     if (paramInt == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      setTipsText(StoryApi.a(2131432099));
-      setTipsIcon(2130843404);
+      setTipsText(StoryApi.a(2131432110));
+      setTipsIcon(2130843440);
       setTipsTextSize(16.0F);
     }
     do
@@ -46,7 +47,7 @@ public class QQStoryVideoPlayerErrorView
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         setTipsText("加载失败，点击重试");
-        setTipsIcon(2130843516);
+        setTipsIcon(2130843549);
         setTipsTextSize(14.0F);
         return;
       }
@@ -56,9 +57,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130970892, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362728));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131363215));
+    paramContext = LayoutInflater.from(paramContext).inflate(2130970909, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362733));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131363219));
   }
   
   public void setCloseViewVisibility(boolean paramBoolean)
@@ -84,8 +85,16 @@ public class QQStoryVideoPlayerErrorView
   
   public void setTipsIcon(int paramInt)
   {
-    Drawable localDrawable = getResources().getDrawable(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
+    try
+    {
+      Drawable localDrawable = getResources().getDrawable(paramInt);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      SLog.d("QQStoryVideoPlayerErrorView", "oom ,set tips error");
+    }
   }
   
   public void setTipsText(String paramString)

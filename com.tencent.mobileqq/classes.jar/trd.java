@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
 
-public class trd
-  extends FriendListObserver
+class trd
+  implements Runnable
 {
-  public trd(SearchFriendListActivity paramSearchFriendListActivity) {}
+  trd(trc paramtrc, int paramInt, String paramString) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (paramBoolean) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    if (this.jdField_a_of_type_Trc.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext == null) {
+      return;
     }
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null)) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_Trc.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(QQSettingMe.a(this.jdField_a_of_type_Trc.a), this.jdField_a_of_type_Trc.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Trc.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
     }
+    QQSettingMe.a(this.jdField_a_of_type_Trc.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 

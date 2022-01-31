@@ -1,31 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
-import dov.com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import dov.com.tencent.biz.qqstory.takevideo.EditInteractExport;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.LayerEventListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class aohk
-  implements Runnable
+public class aohk
+  implements VoteLayer.LayerEventListener
 {
-  aohk(aohe paramaohe) {}
+  public aohk(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
-    boolean bool1 = localSharedPreferences.getBoolean("sv_has_reported_front_camera_compatibility", false);
-    boolean bool2 = localSharedPreferences.getBoolean("sv_has_reported_back_camera_compatibility", false);
-    CameraControl localCameraControl = CameraControl.a();
-    if ((!bool1) && (FlowCameraConstant.a == 1))
+    SLog.b("DoodleLayout", "deleteInteractPaster.");
+    if (DoodleLayout.a(this.a) != null)
     {
-      NewFlowCameraReporter.a(localCameraControl.a(), "front");
-      localSharedPreferences.edit().putBoolean("sv_has_reported_front_camera_compatibility", true).commit();
+      EditInteractExport localEditInteractExport = (EditInteractExport)DoodleLayout.a(this.a).a(EditInteractExport.class);
+      if (localEditInteractExport != null) {
+        localEditInteractExport.b();
+      }
     }
-    while ((bool2) || (FlowCameraConstant.a != 2)) {
-      return;
+  }
+  
+  public boolean a(VoteLayer.VoteItem paramVoteItem)
+  {
+    boolean bool = false;
+    if (this.a.a != null)
+    {
+      this.a.a.setVisibility(0);
+      if (this.a.a.a.b()) {
+        this.a.a.a.a().j = false;
+      }
+      this.a.a.a.a(paramVoteItem);
+      paramVoteItem.j = true;
+      paramVoteItem = paramVoteItem.a;
+      if (!this.a.a.a()) {
+        bool = true;
+      }
+      paramVoteItem.a(bool);
+      this.a.a.requestLayout();
+      return true;
     }
-    NewFlowCameraReporter.a(localCameraControl.a(), "back");
-    localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
+    return false;
   }
 }
 

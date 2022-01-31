@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class mme
-  implements Runnable
+public class mme
+  implements View.OnClickListener
 {
-  mme(mmc parammmc) {}
+  public mme(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.finish();
+    this.a.a(false);
+    ThreadManager.executeOnSubThread(new mmf(this));
   }
 }
 

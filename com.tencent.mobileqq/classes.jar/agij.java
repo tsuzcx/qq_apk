@@ -1,17 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import java.util.List;
 
 public class agij
-  implements ARTipsManager.ButtonClickListener
+  implements Runnable
 {
-  public agij(ScanTorchActivity paramScanTorchActivity) {}
+  public agij(OlympicManager paramOlympicManager, List paramList1, List paramList2) {}
   
-  public void a()
+  public void run()
   {
-    ScanTorchActivity.g(this.a);
-    ScanTorchActivity.j(this.a, true);
-    ScanTorchActivity.a(this.a).postDelayed(new agik(this), 1000L);
+    OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager, "olympic_predown_shua", this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

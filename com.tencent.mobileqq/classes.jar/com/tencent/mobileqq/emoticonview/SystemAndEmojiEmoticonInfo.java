@@ -235,7 +235,7 @@ public class SystemAndEmojiEmoticonInfo
     }
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplication.getContext().getResources().getDrawable(2130837580);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplication.getContext().getResources().getDrawable(2130837579);
     }
     catch (Exception localException)
     {

@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.pic.StructMsgPicPreDelegate;
 
 public class agps
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public agps(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public agps(PicPreDownloader paramPicPreDownloader, MessageForStructing paramMessageForStructing) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.e();
-    this.a.g();
-    ReportController.b(this.a.app, "P_CliOper", "Vip_SummaryCard", "", "SummaryCard", "CLICK_VIPOPENSERVICE", 0, 0, "", "", "", "");
+    StructMsgPicPreDelegate.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a);
   }
 }
 

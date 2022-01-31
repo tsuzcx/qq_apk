@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
-import aldn;
-import aldp;
+import allf;
+import allh;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RecentTaskInfo;
@@ -66,8 +66,8 @@ public class AppInterface
       if (paramString1.equals("0"))
       {
         StaticAnalyz.a("100", "ANDROIDQQ.STORE.UPDATECHECKBOX", "");
-        paramString1 = new aldn(this, paramString2);
-        this.mHandler.post(new aldp(this, paramString1));
+        paramString1 = new allf(this, paramString2);
+        this.mHandler.post(new allh(this, paramString1));
         return null;
       }
     } while (!paramString1.equals("1"));

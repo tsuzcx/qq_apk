@@ -1,19 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qqdataline.ipc.DatalineRemoteManager;
 
 public class amwa
   implements DialogInterface.OnClickListener
 {
-  public amwa(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public amwa(DatalineRemoteManager paramDatalineRemoteManager) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.resumePlay();
-    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
-    paramDialogInterface.dismiss();
-    QzoneWebMusicJsPlugin.access$902(this.a, false);
+    this.a.b = true;
+    DatalineRemoteManager.a(this.a, 1);
+    DatalineRemoteManager.b(this.a);
   }
 }
 

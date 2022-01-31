@@ -1,28 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.doutu.DoutuData;
 
-public class acfy
-  implements Animation.AnimationListener
+public final class acfy
+  implements Parcelable.Creator
 {
-  public acfy(FastImagePreviewLayout paramFastImagePreviewLayout) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public DoutuData a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.a, 2, "removeFastImage fadeoutanimation ended");
-    }
-    this.a.removeAllViews();
+    return new DoutuData(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public DoutuData[] a(int paramInt)
+  {
+    return new DoutuData[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfy
  * JD-Core Version:    0.7.0.1
  */

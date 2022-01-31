@@ -1,15 +1,47 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
+import com.tencent.biz.qqstory.network.request.GetTagListRequest;
+import com.tencent.biz.qqstory.network.response.GetTagListResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import com.tencent.biz.qqstory.takevideo.tag.IEditVideoTagView;
+import com.tencent.biz.qqstory.takevideo.tag.TagItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class oqj
-  implements Handler.Callback
+  extends CmdTaskManger.UIThreadCallback
 {
-  public oqj(SegmentList paramSegmentList) {}
+  public oqj(EditVideoTagPresenter paramEditVideoTagPresenter) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(@NonNull GetTagListRequest paramGetTagListRequest, @Nullable GetTagListResponse paramGetTagListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    return SegmentList.a(this.a, paramMessage);
+    SLog.b("EditVideoTagPresenter", "refresh onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramGetTagListResponse != null))
+    {
+      SLog.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramGetTagListResponse.toString());
+      paramGetTagListRequest = paramGetTagListResponse.jdField_a_of_type_JavaUtilList;
+      if (paramGetTagListRequest.contains(EditVideoTagPresenter.a(this.a)))
+      {
+        int i = paramGetTagListRequest.indexOf(EditVideoTagPresenter.a(this.a));
+        EditVideoTagPresenter.a(this.a, (TagItem)paramGetTagListRequest.get(i));
+        EditVideoTagPresenter.a(this.a).clear();
+        EditVideoTagPresenter.a(this.a).addAll(paramGetTagListRequest);
+        EditVideoTagPresenter.a(this.a, paramGetTagListResponse.jdField_a_of_type_JavaLangString);
+        EditVideoTagPresenter.a(this.a, paramGetTagListResponse.b);
+        ThreadManager.executeOnSubThread(new oqk(this));
+      }
+    }
+    for (;;)
+    {
+      EditVideoTagPresenter.a(this.a).a(paramErrorMessage.errorCode, EditVideoTagPresenter.a(this.a), this.a.a());
+      return;
+      EditVideoTagPresenter.a(this.a, null);
+      break;
+      SLog.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
+    }
   }
 }
 

@@ -1,24 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.data.MessageForFile;
 
 public class vtj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vtj(FriendChatPie paramFriendChatPie) {}
+  public vtj(AIOImageProviderService paramAIOImageProviderService, MessageForFile paramMessageForFile, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (FriendChatPie.a(this.a).getVisibility() == 0) {
-      ThreadManager.post(new vtk(this), 5, null, false);
-    }
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
-    PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
   }
 }
 

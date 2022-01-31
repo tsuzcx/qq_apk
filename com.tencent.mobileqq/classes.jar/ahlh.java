@@ -1,30 +1,16 @@
-import android.graphics.SurfaceTexture;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.ShortVideoExceptionReporter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.richmedia.VideoSendTaskManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class ahlh
   implements Runnable
 {
-  public ahlh(CameraCaptureView paramCameraCaptureView, SurfaceTexture paramSurfaceTexture) {}
+  public ahlh(VideoSendTaskManager paramVideoSendTaskManager, HashMap paramHashMap) {}
   
   public void run()
   {
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.requestRender();
-      return;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        QLog.e("CameraCaptureView", 2, localException, new Object[0]);
-      } while (CameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView));
-      ShortVideoExceptionReporter.a(localException);
-      CameraCaptureView.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, true);
-    }
+    StatisticCollector.a(BaseApplication.getContext()).a(null, "actPreUploadVideoCancel", true, 0L, -1L, this.jdField_a_of_type_JavaUtilHashMap, "");
   }
 }
 

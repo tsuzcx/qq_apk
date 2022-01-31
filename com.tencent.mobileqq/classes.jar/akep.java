@@ -1,31 +1,31 @@
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel.DispatchKeyEventListener;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.UploadPicCallback;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class akep
-  implements SystemEmoticonPanel.DispatchKeyEventListener
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public akep(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
+  public akep(TroopPicEffectsEditActivity.UploadPicCallback paramUploadPicCallback, TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
-    {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-      this.a.b = false;
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopPicEffectsEditActivity", 2, "payForPhoto. onResult. errorCode=" + paramInt);
     }
-    return false;
+    if (paramInt == 0)
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 2, "发送成功", 0).a();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 1, "发送失败", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akep
  * JD-Core Version:    0.7.0.1
  */

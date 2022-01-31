@@ -1,59 +1,55 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayBasePanel;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel;
-import com.tencent.util.ProfilePerformanceReport;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView.GestureListener;
 
 public class afdc
-  extends Handler
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public afdc(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  private afdc(StuffContainerView paramStuffContainerView) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 101: 
-    case 100: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a();
-          ProfilePerformanceReport localProfilePerformanceReport = ProfilePerformanceReport.b;
-          if ((localProfilePerformanceReport != null) && (localProfilePerformanceReport.a())) {
-            localProfilePerformanceReport.b(5);
-          }
-        } while (paramMessage.obj == null);
-        paramMessage = (NearbyPeopleCard)paramMessage.obj;
-        this.a.b = true;
-        NearbyPeopleProfileActivity.a(this.a, paramMessage, true, false);
-        return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      NearbyPeopleProfileActivity.a(this.a).b();
-      return;
-    case 102: 
-      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 202: 
-      NearbyPeopleProfileActivity.a(this.a).a(true);
-      this.a.a.sendEmptyMessageDelayed(203, 1500L);
-      return;
-    case 203: 
-      NearbyPeopleProfileActivity.a(this.a).a(false);
-      return;
-    case 204: 
-      this.a.a(this.a.getString(2131437455));
-      return;
-    case 207: 
-      this.a.a("正在加载...");
-      return;
+    if (this.a.a == null) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    this.a.a();
+    float f2;
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
+    {
+      float f1 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
+      f2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
+      if (Math.abs(f1) <= Math.abs(f2)) {
+        break label143;
+      }
+      if (Math.abs(Math.asin(Math.abs(f2) / Math.sqrt(f2 * f2 + f1 * f1))) < 0.5235987755982988D)
+      {
+        if (f1 >= 0.0F) {
+          break label128;
+        }
+        this.a.a.g();
+      }
+    }
+    for (;;)
+    {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label128:
+      this.a.a.j();
+      continue;
+      label143:
+      if (f2 > 0.0F) {
+        this.a.a.h();
+      } else {
+        this.a.a.i();
+      }
+    }
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      this.a.a.f();
+    }
+    return false;
   }
 }
 

@@ -146,10 +146,8 @@ public class QQProfileItem
     Object localObject2 = paramRspBody.rpt_msg_contentItem.get();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(((List)localObject2).size());
     if ((paramRspBody.uint32_over_flag.has()) && (paramRspBody.uint32_over_flag.get() == 1)) {}
-    label324:
-    label6738:
-    label6882:
-    label6885:
+    label1549:
+    label4771:
     for (boolean bool1 = true;; bool1 = false)
     {
       if (QLog.isColorLevel()) {
@@ -172,13 +170,14 @@ public class QQProfileItem
         {
           localObject2 = (Oidb_0x5e0.ContentItem)localIterator1.next();
           if (!((Oidb_0x5e0.ContentItem)localObject2).uint32_update_profile_id.has()) {
-            break label6895;
+            break label6943;
           }
           switch (((Oidb_0x5e0.ContentItem)localObject2).uint32_update_profile_id.get())
           {
           case 8: 
           case 14: 
           default: 
+            label324:
             if ((localObject1 != null) && (!TextUtils.isEmpty(((ClassicHeadActivityManager.FriendHeadFlagItem)localObject1).jdField_a_of_type_JavaLangString)))
             {
               localObject2 = (ClassicHeadActivityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(198);
@@ -191,8 +190,8 @@ public class QQProfileItem
           }
         }
       }
-      label3557:
-      label6895:
+      label4524:
+      label6838:
       for (;;)
       {
         break;
@@ -242,6 +241,7 @@ public class QQProfileItem
           }
           j = 0;
         }
+        label3644:
         for (;;)
         {
           ((Card)localObject2).shGender = ((short)j);
@@ -257,6 +257,7 @@ public class QQProfileItem
             QLog.d("ProfileService.CheckUpdateReq", 2, "CheckUpdate  sex: uin = " + new StringBuilder().append(l1).append("temp").toString().substring(0, 4) + " sex = " + j);
           }
           break;
+          label829:
           if (j == 2)
           {
             j = 1;
@@ -456,7 +457,7 @@ public class QQProfileItem
                 {
                   localObject6 = ((Oidb_0x5d0.SnsUpateBuffer)localObject7).rpt_uin32_idlist.get().iterator();
                   if (!((Iterator)localObject6).hasNext()) {
-                    break label3595;
+                    break label3644;
                   }
                   if (((Integer)((Iterator)localObject6).next()).intValue() != 4051) {
                     continue;
@@ -465,7 +466,7 @@ public class QQProfileItem
                   if (QLog.isColorLevel())
                   {
                     if (((String)localObject5).length() < 4) {
-                      break label6885;
+                      break label6933;
                     }
                     localObject2 = ((String)localObject5).substring(((String)localObject5).length() - 4);
                     QLog.d("ProfileService.CheckUpdateReq", 2, "CheckUpdate ValueBit : shd: " + (String)localObject2);
@@ -480,14 +481,13 @@ public class QQProfileItem
                 localObject7 = null;
                 continue;
                 if (localObject7 == null) {
-                  break label3595;
+                  break label3644;
                 }
               }
               Object localObject3;
               Iterator localIterator2;
-              Oidb_0x5d0.SnsUpdateItem localSnsUpdateItem;
               Object localObject8;
-              int i8;
+              int i9;
               if ((((Oidb_0x5d0.SnsUpateBuffer)localObject7).uint64_uin.has()) && (((Oidb_0x5d0.SnsUpateBuffer)localObject7).rpt_msg_sns_update_item.has()))
               {
                 localObject3 = ((Oidb_0x5d0.SnsUpateBuffer)localObject7).rpt_msg_sns_update_item.get();
@@ -496,18 +496,18 @@ public class QQProfileItem
                 localObject5 = null;
                 if (localIterator2.hasNext())
                 {
-                  localSnsUpdateItem = (Oidb_0x5d0.SnsUpdateItem)localIterator2.next();
+                  localObject8 = (Oidb_0x5d0.SnsUpdateItem)localIterator2.next();
                   localObject6 = localObject5;
-                  if (localSnsUpdateItem != null)
+                  if (localObject8 != null)
                   {
                     localObject6 = localObject5;
-                    if (localSnsUpdateItem.uint32_update_sns_type.has())
+                    if (((Oidb_0x5d0.SnsUpdateItem)localObject8).uint32_update_sns_type.has())
                     {
                       localObject6 = localObject5;
-                      if (localSnsUpdateItem.bytes_value.has())
+                      if (((Oidb_0x5d0.SnsUpdateItem)localObject8).bytes_value.has())
                       {
-                        if (localSnsUpdateItem.uint32_update_sns_type.get() == 13568) {
-                          QvipSpecialCareManager.a(String.valueOf(((Oidb_0x5d0.SnsUpateBuffer)localObject7).uint64_uin.get()), localSnsUpdateItem.bytes_value.get().toStringUtf8(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+                        if (((Oidb_0x5d0.SnsUpdateItem)localObject8).uint32_update_sns_type.get() == 13568) {
+                          QvipSpecialCareManager.a(String.valueOf(((Oidb_0x5d0.SnsUpateBuffer)localObject7).uint64_uin.get()), ((Oidb_0x5d0.SnsUpdateItem)localObject8).bytes_value.get().toStringUtf8(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
                         }
                         localObject3 = localObject5;
                         if (localObject5 == null)
@@ -520,23 +520,24 @@ public class QQProfileItem
                             ((SpecialCareInfo)localObject3).uin = String.valueOf(String.valueOf(l1));
                           }
                         }
-                        j = localSnsUpdateItem.uint32_update_sns_type.get();
-                        localObject5 = localSnsUpdateItem.bytes_value.get().toStringUtf8();
+                        j = ((Oidb_0x5d0.SnsUpdateItem)localObject8).uint32_update_sns_type.get();
+                        localObject5 = ((Oidb_0x5d0.SnsUpdateItem)localObject8).bytes_value.get().toStringUtf8();
                         FriendListHandler.a((SpecialCareInfo)localObject3, j, (String)localObject5);
                         if (QLog.isColorLevel()) {
                           QLog.d("ProfileService.CheckUpdateReq", 2, "handleCheckUpdateRspBody uin=" + ((SpecialCareInfo)localObject3).uin + ", itemtype=" + j + ",itemVal=" + (String)localObject5);
                         }
-                        if (localSnsUpdateItem.uint32_update_sns_type.get() == 13575)
+                        localObject6 = localObject3;
+                        if (((Oidb_0x5d0.SnsUpdateItem)localObject8).uint32_update_sns_type.get() == 13575)
                         {
                           if (QLog.isColorLevel()) {
                             QLog.d("HotFriend_ProfileService.CheckUpdateReq", 2, "handleCheckUpdateRspBody uin= " + l1);
                           }
                           localObject6 = String.valueOf(((Oidb_0x5d0.SnsUpateBuffer)localObject7).uint64_uin.get());
-                          localObject8 = localSnsUpdateItem.bytes_value.get().toByteArray();
-                          i8 = localObject8.length;
+                          localObject8 = ((Oidb_0x5d0.SnsUpdateItem)localObject8).bytes_value.get().toByteArray();
+                          i9 = localObject8.length;
                           localObject5 = localFriendsManager.a((String)localObject6);
                           if (localObject5 != null) {
-                            break label6882;
+                            break label6930;
                           }
                           localObject5 = new ExtensionInfo();
                           ((ExtensionInfo)localObject5).uin = ((String)localObject6);
@@ -550,7 +551,7 @@ public class QQProfileItem
               {
                 k = 0;
                 j = 0;
-                if (i8 >= 3)
+                if (i9 >= 3)
                 {
                   k = localObject8[0] & 0xFF;
                   j = (localObject8[1] << 8 & 0xFF00) + (localObject8[2] & 0xFF);
@@ -559,7 +560,7 @@ public class QQProfileItem
                 }
                 n = 0;
                 m = 0;
-                if (i8 >= 6)
+                if (i9 >= 6)
                 {
                   n = localObject8[3] & 0xFF;
                   m = (localObject8[4] << 8 & 0xFF00) + (localObject8[5] & 0xFF);
@@ -568,7 +569,7 @@ public class QQProfileItem
                 }
                 i2 = 0;
                 i1 = 0;
-                if (i8 >= 9)
+                if (i9 >= 9)
                 {
                   i2 = localObject8[6] & 0xFF;
                   i1 = (localObject8[7] << 8 & 0xFF00) + (localObject8[8] & 0xFF);
@@ -576,13 +577,13 @@ public class QQProfileItem
                   ((ExtensionInfo)localObject5).bestIntimacyDays = i1;
                 }
                 int i3 = 0;
-                if (i8 >= 11)
+                if (i9 >= 11)
                 {
                   i3 = (localObject8[9] << 8 & 0xFF00) + (localObject8[10] & 0xFF);
                   ((ExtensionInfo)localObject5).lastpraiseTime = (86400 * i3 - 28800);
                 }
                 int i4 = 0;
-                if (i8 >= 13)
+                if (i9 >= 13)
                 {
                   i4 = (localObject8[11] << 8 & 0xFF00) + (localObject8[12] & 0xFF);
                   ((ExtensionInfo)localObject5).lastChatTime = (86400 * i4 - 28800);
@@ -590,7 +591,7 @@ public class QQProfileItem
                 int i7 = 0;
                 int i6 = 0;
                 int i5 = 0;
-                if (i8 >= 18)
+                if (i9 >= 18)
                 {
                   i7 = localObject8[13] & 0xFF;
                   i5 = localObject8[14];
@@ -600,52 +601,43 @@ public class QQProfileItem
                   ((ExtensionInfo)localObject5).qzoneHotDays = i6;
                   ((ExtensionInfo)localObject5).lastQzoneVisitTime = (86400 * i5 - 28800);
                 }
-                if (HotReactiveHelper.a())
+                if (i9 >= 24)
                 {
-                  ((ExtensionInfo)localObject5).hasRemindChat = false;
-                  ((ExtensionInfo)localObject5).hasRemindPraise = false;
-                  ((ExtensionInfo)localObject5).hasRemindQzoneVisit = false;
+                  i8 = localObject8[18];
+                  int i10 = localObject8[19];
+                  int i11 = localObject8[20];
+                  int i12 = localObject8[21];
+                  int i13 = localObject8[22];
+                  int i14 = localObject8[23];
+                  ((ExtensionInfo)localObject5).loverChatLevel = (i8 & 0xFF);
+                  ((ExtensionInfo)localObject5).loverChatDays = ((i10 << 8 & 0xFF00) + (i11 & 0xFF));
+                  ((ExtensionInfo)localObject5).loverLastChatTime = (86400 * ((i12 << 8 & 0xFF00) + (i13 & 0xFF)) - 28800);
+                  ((ExtensionInfo)localObject5).loverFlag = (i14 & 0xFF);
                 }
-                localFriendsManager.a((ExtensionInfo)localObject5);
-                if (QLog.isColorLevel())
-                {
-                  localObject8 = new StringBuilder();
-                  ((StringBuilder)localObject8).append("QQprofileItem === hotFriend uin: ").append((String)localObject6).append(",dataLength=").append(i8).append(", praiseData=").append(k).append("|").append(j).append(",chatData=").append(n).append("|").append(m).append(",closeData=").append(i2).append("|").append(i1).append(",lastpraiseTime=").append(i3).append(",lastChatTime=").append(i4).append(",qzoneLevel=").append(i7).append(",qzoneDay=").append(i6).append(",lastQzoneDay=").append(i5).append(",hasRemindChat=").append(((ExtensionInfo)localObject5).hasRemindChat).append(",hasRemindPraise=").append(((ExtensionInfo)localObject5).hasRemindPraise).append(",hasRemindQzoneVisit=").append(((ExtensionInfo)localObject5).hasRemindQzoneVisit);
-                  QLog.i("FriendReactive", 2, ((StringBuilder)localObject8).toString());
+                int i8 = 0;
+                if (i9 >= 25) {
+                  i8 = localObject8[24] & 0xFF;
                 }
-                localArrayList2.add(((ExtensionInfo)localObject5).uin);
-                localObject6 = localObject3;
-                if (localSnsUpdateItem.uint32_update_sns_type.get() == 13824)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("HotFriend_ProfileService.CheckUpdateReq", 2, "handleCheckUpdateRspBody QIM uin= " + l1);
-                  }
-                  localObject8 = String.valueOf(((Oidb_0x5d0.SnsUpateBuffer)localObject7).uint64_uin.get());
-                  localObject6 = localFriendsManager.a((String)localObject8);
-                  localObject5 = localObject6;
-                  if (localObject6 == null)
-                  {
-                    localObject5 = new ExtensionInfo();
-                    ((ExtensionInfo)localObject5).uin = ((String)localObject8);
-                  }
-                  localObject6 = localSnsUpdateItem.bytes_value.get().toByteArray();
-                  if ((localObject6 != null) && (localObject6.length >= 1)) {
-                    if ((localObject6[0] & 0x4) != 4) {
-                      break label3557;
-                    }
-                  }
-                }
+                if (i8 != 0) {}
                 for (boolean bool2 = true;; bool2 = false)
                 {
-                  ((ExtensionInfo)localObject5).isQzoneLover = bool2;
-                  localObject6 = localObject3;
+                  ((ExtensionInfo)localObject5).loverTransFlag = bool2;
+                  if (HotReactiveHelper.a())
+                  {
+                    ((ExtensionInfo)localObject5).hasRemindChat = false;
+                    ((ExtensionInfo)localObject5).hasRemindPraise = false;
+                    ((ExtensionInfo)localObject5).hasRemindQzoneVisit = false;
+                    ((ExtensionInfo)localObject5).hasRemindLoverChat = false;
+                  }
+                  localFriendsManager.a((ExtensionInfo)localObject5);
                   if (QLog.isColorLevel())
                   {
-                    localObject6 = new StringBuilder();
-                    ((StringBuilder)localObject6).append("QQprofileItem === hotFriend QIM uin: ").append((String)localObject8).append(",isQzoneLover=").append(((ExtensionInfo)localObject5).isQzoneLover);
-                    QLog.i("FriendReactive", 2, ((StringBuilder)localObject6).toString());
-                    localObject6 = localObject3;
+                    localObject8 = new StringBuilder();
+                    ((StringBuilder)localObject8).append("QQprofileItem === hotFriend uin: ").append((String)localObject6).append(",dataLength=").append(i9).append(", praiseData=").append(k).append("|").append(j).append(",chatData=").append(n).append("|").append(m).append(",closeData=").append(i2).append("|").append(i1).append(",lastpraiseTime=").append(i3).append(",lastChatTime=").append(i4).append(",qzoneLevel=").append(i7).append(",qzoneDay=").append(i6).append(",lastQzoneDay=").append(i5).append(",cLoverLevel=").append(((ExtensionInfo)localObject5).loverChatLevel).append(",wLoverDay=").append(((ExtensionInfo)localObject5).loverChatDays).append(",wLstLoverDay=").append(((ExtensionInfo)localObject5).loverLastChatTime).append(",cLoverFlag=").append(((ExtensionInfo)localObject5).loverFlag).append(",cTransFlag=").append(((ExtensionInfo)localObject5).loverTransFlag).append(",hasRemindChat=").append(((ExtensionInfo)localObject5).hasRemindChat).append(",hasRemindPraise=").append(((ExtensionInfo)localObject5).hasRemindPraise).append(",hasRemindQzoneVisit=").append(((ExtensionInfo)localObject5).hasRemindQzoneVisit).append(",hasRemindLoverChat=").append(((ExtensionInfo)localObject5).hasRemindLoverChat);
+                    QLog.i("FriendReactive", 2, ((StringBuilder)localObject8).toString());
                   }
+                  localArrayList2.add(((ExtensionInfo)localObject5).uin);
+                  localObject6 = localObject3;
                   localObject5 = localObject6;
                   break;
                 }
@@ -778,9 +770,8 @@ public class QQProfileItem
                   localObject7 = ((ApolloManager)localObject6).b(l1 + "");
                   localIterator2 = ((List)localObject3).iterator();
                   j = 0;
-                  label4475:
                   if (!localIterator2.hasNext()) {
-                    break label5933;
+                    break label5981;
                   }
                   localObject3 = (Oidb_0x5e0.ProfileTvInfo)localIterator2.next();
                   k = ((Oidb_0x5e0.ProfileTvInfo)localObject3).uint32_field_id.get();
@@ -792,24 +783,23 @@ public class QQProfileItem
                   {
                   default: 
                     k = j;
-                    label4723:
                     j = k;
                   }
                 }
                 for (;;)
                 {
-                  break label4475;
+                  break label4524;
                   ((ClassicHeadActivityManager.FriendHeadFlagItem)localObject1).a();
                   ((ClassicHeadActivityManager.FriendHeadFlagItem)localObject1).jdField_a_of_type_JavaLangString = Long.toString(l1);
                   break;
                   l2 = (int)((Oidb_0x5e0.ProfileTvInfo)localObject3).uint64_field_int_value.get();
                   k = j;
                   if (localObject7 == null) {
-                    break label4723;
+                    break label4771;
                   }
                   k = j;
                   if (((ApolloBaseInfo)localObject7).apolloVipLevel == l2) {
-                    break label4723;
+                    break label4771;
                   }
                   ((ApolloBaseInfo)localObject7).apolloVipLevel = ((int)l2);
                   j = 1;
@@ -817,11 +807,11 @@ public class QQProfileItem
                   l2 = (int)((Oidb_0x5e0.ProfileTvInfo)localObject3).uint64_field_int_value.get();
                   k = j;
                   if (localObject7 == null) {
-                    break label4723;
+                    break label4771;
                   }
                   k = j;
                   if (((ApolloBaseInfo)localObject7).apolloVipFlag == l2) {
-                    break label4723;
+                    break label4771;
                   }
                   ((ApolloBaseInfo)localObject7).apolloVipFlag = ((int)l2);
                   j = 1;
@@ -829,11 +819,11 @@ public class QQProfileItem
                   l2 = (int)((Oidb_0x5e0.ProfileTvInfo)localObject3).uint64_field_int_value.get();
                   k = j;
                   if (localObject7 == null) {
-                    break label4723;
+                    break label4771;
                   }
                   k = j;
                   if (((ApolloBaseInfo)localObject7).apolloStatus == l2) {
-                    break label4723;
+                    break label4771;
                   }
                   ((ApolloBaseInfo)localObject7).apolloStatus = ((int)l2);
                   j = 1;
@@ -841,11 +831,11 @@ public class QQProfileItem
                   l2 = ((Oidb_0x5e0.ProfileTvInfo)localObject3).uint64_field_int_value.get();
                   k = j;
                   if (localObject7 == null) {
-                    break label4723;
+                    break label4771;
                   }
                   k = j;
                   if (((ApolloBaseInfo)localObject7).apolloServerTS == l2) {
-                    break label4723;
+                    break label4771;
                   }
                   ((ApolloBaseInfo)localObject7).apolloServerTS = l2;
                   j = 1;
@@ -853,15 +843,15 @@ public class QQProfileItem
                   l2 = ((Oidb_0x5e0.ProfileTvInfo)localObject3).uint64_field_int_value.get();
                   k = j;
                   if (l2 >= NetConnInfoCenter.getServerTime()) {
-                    break label4723;
+                    break label4771;
                   }
                   k = j;
                   if (localObject7 == null) {
-                    break label4723;
+                    break label4771;
                   }
                   k = j;
                   if (((ApolloBaseInfo)localObject7).apolloSignValidTS == l2) {
-                    break label4723;
+                    break label4771;
                   }
                   ((ApolloBaseInfo)localObject7).apolloLocalSignTs = ((ApolloBaseInfo)localObject7).apolloSignValidTS;
                   ((ApolloBaseInfo)localObject7).apolloSignValidTS = l2;
@@ -881,7 +871,7 @@ public class QQProfileItem
                   }
                   k = j;
                   if (!QLog.isColorLevel()) {
-                    break label4723;
+                    break label4771;
                   }
                   QLog.d("ProfileService.CheckUpdateReq", 2, "apollo aiSwitch profileupdate :" + l2);
                   continue;
@@ -902,7 +892,7 @@ public class QQProfileItem
                   }
                   k = j;
                   if (!QLog.isColorLevel()) {
-                    break label4723;
+                    break label4771;
                   }
                   QLog.d("QQProfileItem", 2, "update, Get Font, uin=" + l1 + ", id=" + ((ExtensionInfo)localObject3).uVipFont + ", type = " + ((ExtensionInfo)localObject3).vipFontType);
                   continue;
@@ -922,7 +912,7 @@ public class QQProfileItem
                   }
                   k = j;
                   if (!QLog.isColorLevel()) {
-                    break label4723;
+                    break label4771;
                   }
                   QLog.d("QQProfileItem", 2, "update, Get magic font, uin= " + l1 + ", magicfont = " + ((ExtensionInfo)localObject3).magicFont);
                   continue;
@@ -943,7 +933,7 @@ public class QQProfileItem
                   }
                   k = j;
                   if (!QLog.isColorLevel()) {
-                    break label4723;
+                    break label4771;
                   }
                   QLog.d("QQProfileItem", 2, "update, Get font effect, uin= " + l1 + ", fontEffect = " + ((ExtensionInfo)localObject3).fontEffect + ", updateTime = " + ((ExtensionInfo)localObject3).fontEffectLastUpdateTime);
                   continue;
@@ -980,16 +970,17 @@ public class QQProfileItem
                   }
                   k = j;
                   if (((ExtensionInfo)localObject3).medalUpdateTimestamp == l2) {
-                    break label4723;
+                    break label4771;
                   }
                   ((ExtensionInfo)localObject3).medalUpdateTimestamp = l2;
                   localFriendsManager.a((ExtensionInfo)localObject3);
                   k = j;
                   if (!QLog.isColorLevel()) {
-                    break label4723;
+                    break label4771;
                   }
                   QLog.d("QQProfileItem", 2, "update uin=" + l1 + " medalUpdateTimestamp=" + l2);
                 }
+                label5981:
                 if (j != 0) {
                   ((ApolloManager)localObject6).a((ApolloBaseInfo)localObject7);
                 }
@@ -1049,7 +1040,7 @@ public class QQProfileItem
                       ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(107, true, localArrayList2);
                     }
                     if ((!bool1) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0)) {
-                      break label6738;
+                      break label6786;
                     }
                     localObject5 = localFriendsManager.c();
                     localObject1 = new ArrayList();
@@ -1097,7 +1088,7 @@ public class QQProfileItem
                 {
                   localObject4 = paramRspBody.rpt_msg_ProfileListResult.get();
                   if (localObject4 == null) {
-                    break label6790;
+                    break label6838;
                   }
                   localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
                   localObject4 = ((List)localObject4).iterator();

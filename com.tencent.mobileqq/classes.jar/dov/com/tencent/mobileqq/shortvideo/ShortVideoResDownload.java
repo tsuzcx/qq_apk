@@ -1,6 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import aopg;
+import aoxs;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceStatus.ISVConfig;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
@@ -12,7 +12,7 @@ public class ShortVideoResDownload
   implements ShortVideoResourceStatus.ISVConfig
 {
   private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private aopg jdField_a_of_type_Aopg;
+  private aoxs jdField_a_of_type_Aoxs;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
   
@@ -35,10 +35,10 @@ public class ShortVideoResDownload
         }
         PtvFilterSoLoad.a(VideoEnvironment.a());
         if (PtvFilterSoLoad.d()) {
-          ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Aopg);
+          ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Aoxs);
         }
       } while (!PtvFilterSoLoad.e());
-      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Aopg);
+      ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Aoxs);
       return;
       VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| check config error=" + paramInt1, null);
       return;

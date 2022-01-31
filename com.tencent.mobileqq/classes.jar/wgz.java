@@ -1,51 +1,24 @@
-import com.tencent.mobileqq.activity.contact.OnlineStatusIconHelper;
-import java.util.HashMap;
-import org.xml.sax.Attributes;
-import org.xml.sax.Locator;
-import org.xml.sax.helpers.DefaultHandler;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationItem;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
+import java.util.List;
+import java.util.Map;
 
 public class wgz
-  extends DefaultHandler
+  implements Runnable
 {
-  public wgz(OnlineStatusIconHelper paramOnlineStatusIconHelper) {}
+  public wgz(StickerBubbleAnimationView paramStickerBubbleAnimationView, StickerBubbleAnimationItem paramStickerBubbleAnimationItem) {}
   
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
-  
-  public void endDocument() {}
-  
-  public void endElement(String paramString1, String paramString2, String paramString3) {}
-  
-  public void endPrefixMapping(String paramString) {}
-  
-  public void ignorableWhitespace(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
-  
-  public void processingInstruction(String paramString1, String paramString2) {}
-  
-  public void setDocumentLocator(Locator paramLocator) {}
-  
-  public void skippedEntity(String paramString) {}
-  
-  public void startDocument() {}
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  public void run()
   {
-    if (paramString3.equals("config")) {
-      this.a.a.clear();
-    }
-    while (!paramString3.equals("value")) {
-      return;
-    }
-    int i = Integer.parseInt(paramAttributes.getValue("termType"));
-    try
+    List localList = (List)StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).get(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem.a());
+    if ((localList == null) || (!localList.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem)))
     {
-      int j = Integer.parseInt(paramAttributes.getValue("icon"));
-      this.a.a.put(Integer.valueOf(i), Integer.valueOf(j));
-      return;
+      localList = (List)StickerBubbleAnimationView.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).get(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem.a());
+      if (localList != null) {
+        localList.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationItem);
+      }
     }
-    catch (Exception paramString1) {}
   }
-  
-  public void startPrefixMapping(String paramString1, String paramString2) {}
 }
 
 

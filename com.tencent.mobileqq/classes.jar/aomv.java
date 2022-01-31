@@ -1,17 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import android.graphics.RectF;
 
-public class aomv
-  implements View.OnTouchListener
+public abstract interface aomv
 {
-  public aomv(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  public abstract void a(int paramInt);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return this.a.a(paramView, paramMotionEvent);
-  }
+  public abstract void a(int paramInt1, int paramInt2, RectF paramRectF);
+  
+  public abstract void a(int paramInt, RectF paramRectF);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

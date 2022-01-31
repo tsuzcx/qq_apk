@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahue;
+import ahyv;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.TextView;
@@ -42,7 +42,7 @@ public class ContactSearchResultMobilePresenter
   protected void d(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     super.d(paramISearchResultModel, paramISearchResultView);
-    ((ContactSearchResultMobileView)paramISearchResultView).a().setOnClickListener(new ahue(this, paramISearchResultModel));
+    ((ContactSearchResultMobileView)paramISearchResultView).a().setOnClickListener(new ahyv(this, paramISearchResultModel));
   }
 }
 

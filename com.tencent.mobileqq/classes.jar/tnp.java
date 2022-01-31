@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.activity.QQLSActivity;
 
 public class tnp
   implements Runnable
 {
-  public tnp(QQSettingSettingActivity paramQQSettingSettingActivity, FriendsManager paramFriendsManager, String paramString) {}
+  public tnp(QQLSActivity paramQQLSActivity) {}
   
   public void run()
   {
-    Card localCard = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingSettingActivity.runOnUiThread(new tnq(this, localCard));
+    this.a.b();
   }
 }
 

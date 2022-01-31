@@ -1,21 +1,20 @@
-import android.view.View;
-import com.tencent.av.smallscreen.SmallScreenVideoLayerUI;
+import com.tencent.av.service.QavWrapper;
+import com.tencent.av.service.QavWrapper.OnReadyListener;
 
-public class jpd
-  implements Runnable
+class jpd
+  implements QavWrapper.OnReadyListener
 {
-  public jpd(SmallScreenVideoLayerUI paramSmallScreenVideoLayerUI) {}
+  jpd(jpc paramjpc, String paramString) {}
   
-  public void run()
+  public void a(QavWrapper paramQavWrapper)
   {
-    if (SmallScreenVideoLayerUI.a(this.a) != null) {
-      SmallScreenVideoLayerUI.b(this.a).findViewById(2131366257).setVisibility(8);
-    }
+    paramQavWrapper.a(this.jdField_a_of_type_JavaLangString);
+    paramQavWrapper.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpd
  * JD-Core Version:    0.7.0.1
  */

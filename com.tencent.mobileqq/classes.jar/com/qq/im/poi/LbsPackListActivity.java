@@ -1,10 +1,10 @@
 package com.qq.im.poi;
 
-import amq;
-import amr;
 import ams;
 import amt;
 import amu;
+import amv;
+import amw;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -79,20 +79,20 @@ public class LbsPackListActivity
   
   public LbsPackListActivity()
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener = new amr(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollLinstener = new ams(this);
-    this.jdField_a_of_type_AndroidOsHandler = new amt(this, Looper.getMainLooper());
-    this.jdField_a_of_type_ComQqImPoiLbsPackObserver = new amu(this);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener = new amt(this);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollLinstener = new amu(this);
+    this.jdField_a_of_type_AndroidOsHandler = new amv(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComQqImPoiLbsPackObserver = new amw(this);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentWidgetLbsPackHorizontalListView = ((LbsPackHorizontalListView)findViewById(2131362850));
+    this.jdField_a_of_type_ComTencentWidgetLbsPackHorizontalListView = ((LbsPackHorizontalListView)findViewById(2131362855));
     this.jdField_a_of_type_ComTencentWidgetLbsPackHorizontalListView.setOnScrollStateChangedListener(this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollStateChangedListener);
     this.jdField_a_of_type_ComTencentWidgetLbsPackHorizontalListView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnScrollLinstener);
     this.jdField_a_of_type_ComTencentWidgetLbsPackHorizontalListView.setStayDisplayOffsetZero(true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362851));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new amq(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362856));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ams(this));
     int m = getResources().getDisplayMetrics().widthPixels;
     this.jdField_c_of_type_Int = ((int)(m * 0.025F));
     this.jdField_d_of_type_Int = ((int)(m * 0.8F));
@@ -103,7 +103,7 @@ public class LbsPackListActivity
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(new AbsListView.LayoutParams(this.f, -1));
     ProgressBar localProgressBar = new ProgressBar(getApplicationContext());
     localProgressBar.setIndeterminate(true);
-    localProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130838596));
+    localProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130838602));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(18.0F, getResources()), AIOUtils.a(18.0F, getResources()));
     localLayoutParams.addRule(15);
     localLayoutParams.leftMargin = ((this.f + this.jdField_c_of_type_Int - AIOUtils.a(18.0F, getResources())) / 2 - this.jdField_c_of_type_Int);

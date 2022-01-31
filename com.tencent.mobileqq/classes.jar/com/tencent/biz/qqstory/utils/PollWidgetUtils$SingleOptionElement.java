@@ -18,8 +18,8 @@ public class PollWidgetUtils$SingleOptionElement
 {
   public static final int[] a;
   public static final int[] b;
-  public static final int[] c = { 2130842022, 2130842025 };
-  public static final int[] d = { 2131369145, 2131369143 };
+  public static final int[] c = { 2130842053, 2130842056 };
+  public static final int[] d = { 2131369146, 2131369144 };
   int jdField_a_of_type_Int;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public boolean a;
@@ -27,8 +27,8 @@ public class PollWidgetUtils$SingleOptionElement
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131369144, 2131369142 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130842021, 2130842024 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131369145, 2131369143 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130842052, 2130842055 };
   }
   
   public PollWidgetUtils$SingleOptionElement(PollWidgetUtils.WidgetWrapper paramWidgetWrapper, View paramView, int paramInt)
@@ -139,7 +139,7 @@ public class PollWidgetUtils$SingleOptionElement
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841967);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130841998);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);

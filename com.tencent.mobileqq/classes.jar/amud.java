@@ -1,44 +1,46 @@
-import cooperation.qzone.cache.FileCacheService;
-import cooperation.qzone.font.FontInterface.FontResult;
-import cooperation.qzone.font.FontManager;
-import java.io.File;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.pluginbridge.BridgeHelper;
+import cooperation.pluginbridge.BridgePluginInstallActivity;
+import cooperation.qqwifi.PluginLoadDialog;
 
 public class amud
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public amud(FontManager paramFontManager, int paramInt1, int paramInt2, FontInterface.FontResult paramFontResult, String paramString1, String paramString2) {}
-  
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject1 = FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager);
-    Object localObject2 = new File((String)localObject1, FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
-    if (((File)localObject2).exists())
-    {
-      if (this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult == null) {
-        break label162;
-      }
-      FontManager.a().a(((File)localObject2).getAbsolutePath(), true);
-      this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult.a(this.jdField_a_of_type_Int, ((File)localObject2).getAbsolutePath(), this.jdField_a_of_type_JavaLangString);
+    paramIntent = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
     }
-    label162:
-    while ((FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult)) || (this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult == null))
+    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
+    try
     {
-      return;
-      if (this.jdField_b_of_type_Int == 1)
+      paramContext.unregisterReceiver(BridgeHelper.a());
+      BridgeHelper.a(null);
+      if (BridgeHelper.a() != null)
       {
-        localObject1 = new File((String)localObject1, FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int, 0));
-        if (((File)localObject1).exists())
-        {
-          localObject2 = FontManager.b(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int, 1);
-          if (FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, ((File)localObject1).getAbsolutePath(), (String)localObject2))
-          {
-            this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult.a(this.jdField_a_of_type_Int, (String)localObject2, this.jdField_a_of_type_JavaLangString);
-            return;
-          }
+        BridgeHelper.a().dismiss();
+        BridgeHelper.a(null);
+      }
+      if ((paramContext instanceof BridgePluginInstallActivity))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("BridgeHelper", 2, "Activity finish!");
         }
+        ((BridgePluginInstallActivity)paramContext).finish();
+      }
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        paramIntent.printStackTrace();
       }
     }
-    this.jdField_a_of_type_CooperationQzoneFontFontInterface$FontResult.a(this.jdField_a_of_type_Int, null, this.jdField_a_of_type_JavaLangString);
   }
 }
 

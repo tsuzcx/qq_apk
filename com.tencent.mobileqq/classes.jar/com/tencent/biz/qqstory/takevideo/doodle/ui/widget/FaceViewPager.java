@@ -5,7 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
-import okl;
+import opa;
 
 public class FaceViewPager
   extends ViewPager
@@ -27,7 +27,7 @@ public class FaceViewPager
   private void a()
   {
     this.a = new ArrayList();
-    setOnPageChangeListener(new okl(this));
+    setOnPageChangeListener(new opa(this));
   }
   
   public void a(FaceViewPager.PageChangedObserver paramPageChangedObserver)

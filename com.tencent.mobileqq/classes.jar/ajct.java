@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.troop.data.TroopAioKeywordHelper;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class ajct
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ajct(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, String paramString1, String paramString2, Integer paramInteger) {}
+  public ajct(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaLangInteger);
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b)
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b.contains(str)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b.add(str);
-      }
-      TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.a, str);
-      return;
-    }
+    this.a.setResult(-1, null);
+    this.a.finish();
   }
 }
 

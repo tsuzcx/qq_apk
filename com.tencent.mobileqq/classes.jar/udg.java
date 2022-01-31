@@ -1,21 +1,47 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.RequestPublicAccountObserver;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.List;
+import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.GbarInfo;
+import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspBody;
+import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspInfo;
 
 public class udg
-  extends TroopBindPubAccountProtocol.RequestPublicAccountObserver
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public udg(TroopRequestActivity paramTroopRequestActivity) {}
+  public udg(TroopInfoActivity paramTroopInfoActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramBoolean) && (paramAccountDetail != null))
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    for (;;)
     {
-      this.a.k.setText(paramAccountDetail.name);
-      this.a.b.setVisibility(0);
-      this.a.e();
+      return;
+      try
+      {
+        paramBundle = new oidb_cmd0x6f6.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = paramBundle.rpt_msg_rsp_info.get();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
+        {
+          paramArrayOfByte = (oidb_cmd0x6f6.RspInfo)paramArrayOfByte.get(0);
+          if ((paramArrayOfByte != null) && (paramArrayOfByte.uint32_result.get() == 0))
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramArrayOfByte.stgbarinfo.uint32_bid.get();
+            this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
+            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramArrayOfByte.stgbarinfo.str_name.get().toStringUtf8();
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+            return;
+          }
+        }
+      }
+      catch (Exception paramArrayOfByte) {}
     }
   }
 }

@@ -1,46 +1,57 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.mobileqq.extendfriend.fragment.GroupItemClickListeneer;
 
 public class acqj
-  implements Runnable
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public acqj(QfileLocalFileDelMediaTabView paramQfileLocalFileDelMediaTabView) {}
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private GroupItemClickListeneer jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer;
   
-  public void run()
+  public acqj(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView, GroupItemClickListeneer paramGroupItemClickListeneer)
   {
-    HashMap localHashMap = new HashMap();
-    FileCategoryUtil.a(false, FMSettings.a().b(), ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", "", localHashMap, null);
-    Object localObject1 = FMSettings.a().a();
-    if (localObject1 != null) {
-      FileCategoryUtil.a(false, (String)localObject1, ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|", "", localHashMap, null);
-    }
-    localObject1 = new HashMap();
-    Iterator localIterator = localHashMap.keySet().iterator();
-    while (localIterator.hasNext())
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer = paramGroupItemClickListeneer;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362837));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(ExtendFriendGroupFragment.a(paramExtendFriendGroupFragment));
+  }
+  
+  public void a(acqj paramacqj, int paramInt)
+  {
+    String str = "";
+    boolean bool = false;
+    switch (paramInt)
     {
-      Object localObject2 = (String)localIterator.next();
-      String str = this.a.a((String)localObject2);
-      localObject2 = (List)localHashMap.get(localObject2);
-      if (!((HashMap)localObject1).containsKey(str)) {
-        ((HashMap)localObject1).put(str, new ArrayList());
-      }
-      ((List)((HashMap)localObject1).get(str)).addAll((Collection)localObject2);
     }
-    FileCategoryUtil.a((Map)localObject1);
-    QfileLocalFileDelMediaTabView.a(this.a, new acqk(this, (HashMap)localObject1));
+    for (;;)
+    {
+      paramacqj.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      paramacqj.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
+      return;
+      str = "载入中，请稍候...";
+      continue;
+      str = "加载失败，点击重试";
+      bool = true;
+      continue;
+      str = "暂无更多的群啦~";
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer != null) {
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentGroupItemClickListeneer.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqj
  * JD-Core Version:    0.7.0.1
  */

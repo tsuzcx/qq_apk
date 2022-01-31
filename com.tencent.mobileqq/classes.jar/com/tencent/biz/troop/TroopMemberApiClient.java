@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import ovu;
-import ovv;
+import pal;
+import pam;
 
 public class TroopMemberApiClient
 {
@@ -51,12 +51,12 @@ public class TroopMemberApiClient
   
   private TroopMemberApiClient()
   {
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(new ovv(this));
+    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(new pam(this));
     this.jdField_b_of_type_AndroidOsMessenger = null;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_AndroidContentServiceConnection = new ovu(this);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new pal(this);
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
@@ -253,6 +253,14 @@ public class TroopMemberApiClient
     Bundle localBundle = new Bundle();
     localBundle.putLong("roomId", paramLong);
     a(89, localBundle);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("followUin", paramLong);
+    localBundle.putInt("followInfo", paramInt);
+    a(121, localBundle);
   }
   
   public void a(long paramLong1, String paramString1, String paramString2, long paramLong2, int paramInt, TroopMemberApiClient.Callback paramCallback)
@@ -632,9 +640,8 @@ public class TroopMemberApiClient
   public void b(String paramString)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("pluginPackageName", paramString);
-    localBundle.putString("appType", "hy_sixgod");
-    a(72, localBundle);
+    localBundle.putString("troopUin", paramString);
+    a(34, localBundle);
   }
   
   public void b(String paramString, int paramInt)
@@ -716,6 +723,14 @@ public class TroopMemberApiClient
     a(114, localBundle);
   }
   
+  public void b(String paramString, boolean paramBoolean)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("troopUin", paramString);
+    localBundle.putBoolean("isChecked", paramBoolean);
+    a(122, localBundle);
+  }
+  
   public void b(ArrayList paramArrayList)
   {
     Bundle localBundle = new Bundle();
@@ -746,7 +761,7 @@ public class TroopMemberApiClient
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("troopUin", paramString);
-    a(34, localBundle);
+    a(35, localBundle);
   }
   
   public void c(String paramString, int paramInt)
@@ -773,9 +788,9 @@ public class TroopMemberApiClient
   public void c(String paramString1, String paramString2)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("troopCode", paramString2);
-    a(41, localBundle);
+    localBundle.putString("pluginPackageName", paramString1);
+    localBundle.putString("appType", paramString2);
+    a(72, localBundle);
   }
   
   public void c(String paramString1, String paramString2, TroopMemberApiClient.Callback paramCallback)
@@ -805,16 +820,16 @@ public class TroopMemberApiClient
   public void d(String paramString)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    a(35, localBundle);
+    localBundle.putString("troopCode", paramString);
+    a(99, localBundle);
   }
   
   public void d(String paramString1, String paramString2)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("localFilePath", paramString1);
-    localBundle.putString("fileDisPlayName", paramString2);
-    a(47, localBundle);
+    localBundle.putString("troopUin", paramString1);
+    localBundle.putString("troopCode", paramString2);
+    a(41, localBundle);
   }
   
   public void d(String paramString1, String paramString2, TroopMemberApiClient.Callback paramCallback)
@@ -840,19 +855,12 @@ public class TroopMemberApiClient
     a(52, localBundle);
   }
   
-  public void e(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString);
-    a(99, localBundle);
-  }
-  
   public void e(String paramString1, String paramString2)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("uin", paramString2);
-    a(98, localBundle);
+    localBundle.putString("localFilePath", paramString1);
+    localBundle.putString("fileDisPlayName", paramString2);
+    a(47, localBundle);
   }
   
   public void e(String paramString1, String paramString2, TroopMemberApiClient.Callback paramCallback)
@@ -884,7 +892,7 @@ public class TroopMemberApiClient
     Bundle localBundle = new Bundle();
     localBundle.putString("troopCode", paramString1);
     localBundle.putString("uin", paramString2);
-    a(101, localBundle);
+    a(98, localBundle);
   }
   
   public void g()
@@ -900,9 +908,9 @@ public class TroopMemberApiClient
   public void g(String paramString1, String paramString2)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("type", paramString2);
-    a(118, localBundle);
+    localBundle.putString("troopCode", paramString1);
+    localBundle.putString("uin", paramString2);
+    a(101, localBundle);
   }
   
   public void h()
@@ -918,6 +926,14 @@ public class TroopMemberApiClient
       QLog.d("Readinjoy", 2, "TroopMemberApiClient getReadinjoyCurrentSkin");
     }
     a(113, localBundle);
+  }
+  
+  public void h(String paramString1, String paramString2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("troopUin", paramString1);
+    localBundle.putString("type", paramString2);
+    a(118, localBundle);
   }
   
   public void i()

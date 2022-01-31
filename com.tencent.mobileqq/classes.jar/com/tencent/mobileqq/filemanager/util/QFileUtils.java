@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class QFileUtils
 {
@@ -63,6 +64,18 @@ public class QFileUtils
       return paramString1;
     }
     return (String)TextUtils.ellipsize(paramString1, paramTextView1, paramInt2 - i * 2 - j - k, TextUtils.TruncateAt.END);
+  }
+  
+  public static boolean a(FileManagerEntity paramFileManagerEntity)
+  {
+    int i;
+    int j;
+    if (paramFileManagerEntity != null)
+    {
+      i = paramFileManagerEntity.nOpType;
+      j = paramFileManagerEntity.status;
+    }
+    return ((i != 21) && (i != 22) && (i != 24) && (i != 25) && (i != 28) && (i != 30)) || ((j != 0) && (j != 2));
   }
 }
 

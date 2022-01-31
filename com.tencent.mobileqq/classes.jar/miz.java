@@ -1,21 +1,22 @@
-import android.support.v4.view.MotionEventCompat;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview.NaviMaskTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
 public class miz
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public miz(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview) {}
+  public miz(VideoShareHelper paramVideoShareHelper) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if ((MotionEventCompat.getActionMasked(paramMotionEvent) == 0) && (ReadInJoyNavigationGridview.a(this.a) != null)) {
-      ReadInJoyNavigationGridview.a(this.a).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mShareActionSheet cancle button OnClick");
     }
-    return true;
+    if (VideoShareHelper.a(this.a).isShowing()) {
+      VideoShareHelper.a(this.a).dismiss();
+    }
   }
 }
 

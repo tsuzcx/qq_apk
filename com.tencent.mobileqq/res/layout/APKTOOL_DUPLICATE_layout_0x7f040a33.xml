@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="100.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ffaaaaaa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="还没有评论哦, 赶快抢占沙发吧!" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+<ImageView android:layout_width="fill_parent" android:layout_height="0.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022343" android:scaleType="fitXY"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

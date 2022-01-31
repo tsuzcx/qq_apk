@@ -75,16 +75,16 @@ public class GetEmosmList
     {
       ((EmoticonHandler)localObject3).a(0, 0);
       if (!((Boolean)localObject1).booleanValue()) {
-        break label707;
+        break label708;
       }
-      ((EmoticonHandler)localObject3).a(0, 0, 1);
+      ((EmoticonHandler)localObject3).a(0, 0, 1, 0);
     }
     for (;;)
     {
       return 7;
       ((EmoticonHandler)localObject3).d(0);
       break;
-      label707:
+      label708:
       ((EmoticonHandler)localObject3).d(1);
     }
   }

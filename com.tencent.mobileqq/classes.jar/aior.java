@@ -1,32 +1,23 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.service.message.MessageFactoryReceiver.UploadStreamStruct;
-import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
 
-public class aior
-  extends MessageObserver
+class aior
+  implements DialogInterface.OnClickListener
 {
-  public aior(BuddyTransfileProcessor paramBuddyTransfileProcessor) {}
+  aior(aioq paramaioq, Context paramContext, View paramView) {}
   
-  protected void a(boolean paramBoolean, MessageFactoryReceiver.UploadStreamStruct paramUploadStreamStruct)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramUploadStreamStruct != null) && (QLog.isColorLevel())) {
-      QLog.e("streamptt.send", 2, "onUpdateUploadStreamFinished Key:" + paramUploadStreamStruct.jdField_a_of_type_JavaLangString + " seq:" + paramUploadStreamStruct.jdField_a_of_type_Short + " Layer:" + paramUploadStreamStruct.jdField_a_of_type_Int + " RespCode:" + paramUploadStreamStruct.b);
+    StructMsgItemVideo.a(this.jdField_a_of_type_Aioq.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
+      ReportController.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
     }
-    if ((this.a.a != null) && (QLog.isColorLevel())) {
-      QLog.e("streamptt.send", 2, "isSuccess:" + paramBoolean + "　FilePath:" + this.a.a.c + " isStreamPttSuccess:" + this.a.d);
-    }
-    this.a.c(2);
-    if ((paramUploadStreamStruct == null) || (paramUploadStreamStruct.jdField_a_of_type_JavaLangString == null) || (!paramUploadStreamStruct.jdField_a_of_type_JavaLangString.equalsIgnoreCase(this.a.a.c))) {
-      return;
-    }
-    if (!paramBoolean)
-    {
-      BuddyTransfileProcessor.a(this.a, false, paramUploadStreamStruct);
-      return;
-    }
-    BuddyTransfileProcessor.a(this.a, true, paramUploadStreamStruct);
+    paramDialogInterface.dismiss();
   }
 }
 

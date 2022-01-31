@@ -1,19 +1,18 @@
-import com.tencent.mqpsdk.secsrv.MQPAPPScanService;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
 
 public class akzi
-  extends Thread
+  implements Runnable
 {
-  public akzi(MQPAPPScanService paramMQPAPPScanService, byte[] paramArrayOfByte) {}
+  public akzi(WebViewJumpPlugin paramWebViewJumpPlugin) {}
   
   public void run()
   {
-    try
-    {
-      MQPAPPScanService.a += 1;
-      MQPAPPScanService.a(this.jdField_a_of_type_ComTencentMqpsdkSecsrvMQPAPPScanService, this.jdField_a_of_type_ArrayOfByte);
-      return;
+    Activity localActivity = this.a.mRuntime.a();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      localActivity.finish();
     }
-    finally {}
   }
 }
 

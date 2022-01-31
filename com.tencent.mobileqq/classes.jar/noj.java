@@ -1,22 +1,15 @@
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import com.tencent.biz.qqstory.playmode.child.MyMemoryPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
-public final class noj
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+public class noj
+  implements Runnable
 {
-  public void onComplete(String arg1, String paramString2)
+  public noj(MyMemoryPlayMode paramMyMemoryPlayMode, int paramInt) {}
+  
+  public void run()
   {
-    SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo onComplete, %s", paramString2);
-    synchronized (TVKPreloader.a())
-    {
-      SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo onComplete, preloadItem = %s, downloadString = %s,  cost %d ms", TVKPreloader.a(), paramString2, Long.valueOf(SystemClock.uptimeMillis() - TVKPreloader.a()));
-      paramString2 = TVKPreloader.a();
-      TVKPreloader.a().post(new nok(this, paramString2));
-      return;
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMyMemoryPlayMode.e = false;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMyMemoryPlayMode.a.setCurrentItem(this.jdField_a_of_type_Int, false);
   }
 }
 

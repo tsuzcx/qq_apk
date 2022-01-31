@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 
-public class aezm
-  implements View.OnClickListener
+public final class aezm
+  implements Parcelable.Creator
 {
-  public aezm(PlayOperationViewModel paramPlayOperationViewModel) {}
-  
-  public void onClick(View paramView)
+  public InterestTagInfo a(Parcel paramParcel)
   {
-    this.a.h(paramView);
+    return new InterestTagInfo(paramParcel);
+  }
+  
+  public InterestTagInfo[] a(int paramInt)
+  {
+    return new InterestTagInfo[paramInt];
   }
 }
 

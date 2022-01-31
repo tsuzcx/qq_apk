@@ -1,14 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class opp
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public opp(StoryVideoPlayer paramStoryVideoPlayer, Bundle paramBundle) {}
+  public opp(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StoryVideoPlayer.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer, this.jdField_a_of_type_AndroidOsBundle);
+    this.a.a.h();
+    paramDialogInterface.dismiss();
+    this.a.dismiss();
   }
 }
 

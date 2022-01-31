@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.app.BaseActivity;
-
 class ycz
-  implements Runnable
 {
-  ycz(ycw paramycw) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public void run()
+  public ycz(long paramLong, int paramInt1, int paramInt2)
   {
-    this.a.a.setResult(0);
-    this.a.a.finish();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt1;
   }
 }
 

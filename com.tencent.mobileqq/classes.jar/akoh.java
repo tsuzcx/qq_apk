@@ -1,35 +1,70 @@
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.mobileqq.webview.swift.component.SwiftPreloadCookieManager;
+import android.os.Handler;
+import com.tencent.mobileqq.utils.VoicePlayer;
+import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
-public final class akoh
+public class akoh
   implements Runnable
 {
-  public akoh(List paramList, SwiftPreloadCookieManager paramSwiftPreloadCookieManager) {}
+  int jdField_a_of_type_Int = 0;
+  
+  public akoh(VoicePlayer paramVoicePlayer) {}
   
   public void run()
   {
-    Set localSet = AuthorizeConfig.a().a("pskey");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if ((VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 4) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 5) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 6) || (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 8)) {
+      this.jdField_a_of_type_Int = 0;
+    }
+    do
     {
-      String str = (String)localIterator.next();
-      if (!localSet.contains(str))
+      return;
+      if (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == 3)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("SwiftBrowserCookieMonster", 2, str + " doesn't need pskey any more,so delete! ");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftPreloadCookieManager.b(str, "p_skey");
+        this.jdField_a_of_type_Int = VoicePlayer.b(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer);
+        return;
       }
+    } while (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == null);
+    int k = VoicePlayer.c(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer);
+    int i = VoicePlayer.b(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer);
+    if (i < this.jdField_a_of_type_Int) {
+      i = this.jdField_a_of_type_Int;
+    }
+    for (;;)
+    {
+      int j = k;
+      if (this.jdField_a_of_type_Int != 0)
+      {
+        j = k;
+        if (this.jdField_a_of_type_Int == i)
+        {
+          j = k;
+          if (this.jdField_a_of_type_Int > k - 200)
+          {
+            QLog.d("Q.profilecard.VoicePlayer", 2, "change duration from " + i + " to " + i);
+            j = i;
+          }
+        }
+      }
+      if (i > this.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_Int = i;
+      }
+      Iterator localIterator = VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).iterator();
+      while (localIterator.hasNext()) {
+        ((VoicePlayer.VoicePlayerListener)localIterator.next()).a(VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer), j, i);
+      }
+      if (VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer) == null) {
+        break;
+      }
+      VoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer).postDelayed(this, 50L);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akoh
  * JD-Core Version:    0.7.0.1
  */

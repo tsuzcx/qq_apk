@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="720.0px" android:layout_height="1080.0px"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0426" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f04" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e48" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0404d6" />
-            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1713" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020dc2" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_margin="20.0dip">
-                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a170a" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                    <com.tenpay.sdk.i.aj android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a170b" android:visibility="gone" android:layout_height="34.0dip" android:imeOptions="actionDone" android:imeActionLabel="@string/APKTOOL_DUPLICATE_string_0x7f0b0e64" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00e3" />
-                    <include android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0404ce" />
-                </LinearLayout>
-            </LinearLayout>
-            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04cf" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a170c" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="18.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0f7d" android:includeFontPadding="false" />
-        </LinearLayout>
-        <com.tenpay.api.MyKeyboardWindow android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a16bf" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="220.0px">
+        <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e2f" android:layout_width="110.0px" android:layout_height="125.0px" />
+        <TextView android:textSize="95.0px" android:textColor="@android:color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0px" android:text="QQ支付" />
     </LinearLayout>
-</RelativeLayout>
+    <RelativeLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0361" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1768" android:background="@android:color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1769" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="42.0px" android:textStyle="bold" android:textColor="@android:color/black" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0px" android:text="¥" />
+                <TextView android:textSize="68.0px" android:textStyle="bold" android:textColor="@android:color/black" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0px" android:text="25.80" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a176a" />
+                <TextView android:textSize="32.0px" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="付款说明" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a176b" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176d" android:background="#ffdedede" android:layout_width="380.0px" android:layout_height="380.0px" android:layout_margin="30.0px" />
+            <TextView android:textSize="30.0px" android:textColor="@android:color/black" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="18.0px" android:text="我有一对双胞胎" />
+        </LinearLayout>
+        <TextView android:textSize="50.0px" android:textColor="@android:color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0px" android:text="用QQ扫一扫付钱" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>

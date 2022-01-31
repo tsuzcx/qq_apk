@@ -1,16 +1,29 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.opengl.GLSurfaceView.Renderer;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class sky
-  implements View.OnClickListener
+  implements GLSurfaceView.Renderer
 {
-  public sky(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public sky(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void onDrawFrame(GL10 paramGL10) {}
+  
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2) {}
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    this.a.a = paramGL10.glGetString(7937);
+    if (this.a.a != null) {
+      ThreadManager.post(new skz(this), 5, null, true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_GPU", 2, "onSurfaceCreated|GL_RENDERER= " + this.a.a);
+    }
+    this.a.a(new sla(this));
   }
 }
 

@@ -90,7 +90,7 @@ class HealthUiPlugin$1
       {
         try
         {
-          ((StringBuilder)localObject2).append("jd").append("|").append(URLEncoder.encode(this.val$url, "UTF-8")).append("|").append(???).append("|").append("android").append("|").append("7.6.3").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
+          ((StringBuilder)localObject2).append("jd").append("|").append(URLEncoder.encode(this.val$url, "UTF-8")).append("|").append(???).append("|").append("android").append("|").append("7.6.8").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
           DcReportUtil.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
           if ((!this.val$url.contains("91160.com")) && (!this.val$url.contains("guahao.com"))) {
             continue;
@@ -115,7 +115,7 @@ class HealthUiPlugin$1
                 QLog.d("HealthUiPlugin", 2, "report guahao url \n" + (String)localObject5);
               }
               Object localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("jiankang").append("|").append((String)localObject5).append("|").append(???).append("|").append("android").append("|").append("7.6.3").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
+              ((StringBuilder)localObject2).append("jiankang").append("|").append((String)localObject5).append("|").append(???).append("|").append("android").append("|").append("7.6.8").append("|").append("|").append("|").append("|").append("|").append("|").append("|");
               DcReportUtil.a(null, "dc00454", ((StringBuilder)localObject2).toString(), false);
               return;
               localObject3 = finally;
@@ -152,7 +152,7 @@ class HealthUiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.HealthUiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

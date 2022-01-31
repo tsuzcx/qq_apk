@@ -1,48 +1,17 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.TMG.utils.SoUtil;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.tmg_opensdk.TMG_Downloader;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.apollo.drawer.CardDrawerStatus;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
 
 public class yvj
-  implements AVCallback
+  implements Runnable
 {
-  public yvj(AVEngineWalper paramAVEngineWalper) {}
+  public yvj(CardDrawerStatus paramCardDrawerStatus, QQAppInterface paramQQAppInterface) {}
   
-  public void onComplete(int paramInt, String paramString)
+  public void run()
   {
-    if (paramInt == 0)
-    {
-      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
-      if (!this.a.a())
-      {
-        FileUtils.d(TMG_Downloader.a() + "libqav_graphics.so", TMG_Downloader.a() + "libtmg_graphics.so");
-        boolean bool = SoUtil.loadSo("tmg_graphics");
-        QLog.e("AVEngineWalper", 1, "first check failed, rename bLoad = " + bool);
-        if (!this.a.a())
-        {
-          QLog.e("AVEngineWalper", 1, "Second check failed, stop engine~~~");
-          AVEngineWalper.a(this.a, false);
-          this.a.a();
-          paramInt = 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.a != null) {
-        this.a.a.a(paramInt, paramString);
-      }
-      return;
-      AVEngineWalper.a(this.a, true);
-      QLog.e("AVEngineWalper", 1, "start successfully second try~~~~");
-      continue;
-      AVEngineWalper.a(this.a, true);
-      QLog.e("AVEngineWalper", 1, "start successfully~~~~");
-      continue;
-      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) == null)) {
+      QLog.w("CardDrawerStatus", 1, "MediaPlayerManager is null");
     }
   }
 }

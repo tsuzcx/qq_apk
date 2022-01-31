@@ -1,51 +1,176 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import java.lang.ref.WeakReference;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewPropertyAnimator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.ark.ArkViewImplement.InputCallback;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.widget.BubblePopupWindow;
 
 public class uzy
-  extends ClickableSpan
+  implements ArkViewImplement.InputCallback
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference b;
+  public uzy(ArkAppView paramArkAppView) {}
   
-  public uzy(GrayTipsItemBuilder paramGrayTipsItemBuilder, QQAppInterface paramQQAppInterface, Context paramContext)
+  private void a(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Context localContext = (Context)this.b.get();
-    if ((paramView == null) || (localContext == null)) {}
-    while (!(localContext instanceof Activity)) {
-      return;
-    }
-    if (!NetworkUtil.d(localContext))
+    if (paramView != null)
     {
-      QQToast.a(localContext, 2131433009, 0).b(localContext.getResources().getDimensionPixelSize(2131558448));
-      return;
+      paramView.clearAnimation();
+      paramView.setVisibility(8);
     }
-    Intent localIntent = new Intent(localContext, QQSpecialCareSettingActivity.class);
-    localIntent.putExtra("key_friend_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a.a);
-    localContext.startActivity(localIntent);
-    VipUtils.a(paramView, "Vip_SpecialRemind", "0X8005057", "0X8005057", 0, 1, new String[0]);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint) {}
+  private void a(View paramView, int paramInt1, int paramInt2)
+  {
+    if (paramView != null)
+    {
+      paramView.setVisibility(0);
+      paramView.animate().x(paramInt1).y(paramInt2).setDuration(0L).start();
+    }
+  }
+  
+  public void onFocusChanged(boolean paramBoolean)
+  {
+    ViewGroup localViewGroup = (ViewGroup)this.a.getParent();
+    if (ArkAppView.a(this.a) != null) {
+      localViewGroup = ArkAppView.a(this.a);
+    }
+    if (localViewGroup == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      Object localObject2 = this.a.getResources().getDrawable(2130838197);
+      Object localObject1 = this.a.getResources().getDrawable(2130838196);
+      int i = ((Drawable)localObject2).getIntrinsicWidth();
+      int j = ((Drawable)localObject2).getIntrinsicHeight();
+      this.a.setInputSetSelectHolderSize(i, j);
+      this.a.setInputSetCaretHolderSize(((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+      if (ArkAppView.a(this.a) == null)
+      {
+        ArkAppView.a(this.a, new ImageView(this.a.getContext()));
+        ArkAppView.a(this.a).setBackgroundDrawable((Drawable)localObject2);
+        ArkAppView.a(this.a).setScaleX(-1.0F);
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        localViewGroup.addView(ArkAppView.a(this.a), localLayoutParams);
+        ArkAppView.a(this.a).setVisibility(8);
+        ArkAppView.a(this.a).setOnTouchListener(this.a);
+      }
+      if (ArkAppView.b(this.a) == null)
+      {
+        ArkAppView.b(this.a, new ImageView(this.a.getContext()));
+        ArkAppView.b(this.a).setBackgroundDrawable((Drawable)localObject2);
+        localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+        localViewGroup.addView(ArkAppView.b(this.a), (ViewGroup.LayoutParams)localObject2);
+        ArkAppView.b(this.a).setVisibility(8);
+        ArkAppView.a(this.a).setOnTouchListener(this.a);
+      }
+      if (ArkAppView.c(this.a) == null)
+      {
+        ArkAppView.c(this.a, new ImageView(this.a.getContext()));
+        ArkAppView.c(this.a).setBackgroundDrawable((Drawable)localObject1);
+        localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+        localViewGroup.addView(ArkAppView.c(this.a), (ViewGroup.LayoutParams)localObject1);
+        ArkAppView.c(this.a).setVisibility(8);
+        ArkAppView.c(this.a).setOnTouchListener(this.a);
+      }
+    }
+    a(ArkAppView.a(this.a));
+    a(ArkAppView.b(this.a));
+    a(ArkAppView.c(this.a));
+  }
+  
+  public void onHideMenu(View paramView)
+  {
+    if (ArkAppView.a(this.a) != null)
+    {
+      ArkAppView.a(this.a).a();
+      ArkAppView.a(this.a, null);
+    }
+  }
+  
+  public void onSelectChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    ViewGroup localViewGroup = (ViewGroup)this.a.getParent();
+    if (ArkAppView.a(this.a) != null) {
+      localViewGroup = ArkAppView.a(this.a);
+    }
+    if (localViewGroup == null) {
+      return;
+    }
+    if ((paramInt1 > 0) && (paramInt2 > 0) && ((paramInt1 < paramInt3) || (paramInt2 < paramInt4)))
+    {
+      int j = ArkAppView.a(this.a).getWidth();
+      int i = j;
+      if (j <= 0) {
+        i = this.a.getResources().getDrawable(2130838197).getIntrinsicWidth();
+      }
+      a(ArkAppView.a(this.a), this.a.getLeft() + paramInt1 - i, this.a.getTop() + paramInt2);
+      if ((paramInt3 <= 0) || (paramInt4 <= 0) || ((paramInt1 >= paramInt3) && (paramInt2 >= paramInt4))) {
+        break label277;
+      }
+      a(ArkAppView.b(this.a), this.a.getLeft() + paramInt3, this.a.getTop() + paramInt4);
+    }
+    for (;;)
+    {
+      if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {
+        break label291;
+      }
+      paramInt2 = ArkAppView.c(this.a).getWidth();
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 0) {
+        paramInt1 = this.a.getResources().getDrawable(2130838196).getIntrinsicWidth();
+      }
+      a(ArkAppView.c(this.a), this.a.getLeft() + paramInt3 - paramInt1 / 2, this.a.getTop() + paramInt4);
+      return;
+      a(ArkAppView.a(this.a));
+      break;
+      label277:
+      a(ArkAppView.b(this.a));
+    }
+    label291:
+    a(ArkAppView.c(this.a));
+  }
+  
+  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (ArkAppView.a(this.a) != null)
+    {
+      ArkAppView.a(this.a).a();
+      ArkAppView.a(this.a, null);
+    }
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    if (paramInt4 == 2)
+    {
+      localQQCustomMenu.a(0, "剪切");
+      localQQCustomMenu.a(1, "复制");
+      localQQCustomMenu.a(2, "粘贴");
+    }
+    for (;;)
+    {
+      int i = this.a.getResources().getDrawable(2130838196).getIntrinsicHeight();
+      ArkViewImplement.ArkViewInterface localArkViewInterface = (ArkViewImplement.ArkViewInterface)paramView;
+      ArkAppView.a(this.a, BubbleContextMenu.a(paramView, paramInt1, paramInt2, paramInt3 + i, localQQCustomMenu, new uzz(this, paramInt4, localArkViewInterface)));
+      return;
+      if (paramInt4 == 1)
+      {
+        localQQCustomMenu.a(0, "选择");
+        localQQCustomMenu.a(1, "全选");
+        localQQCustomMenu.a(2, "粘贴");
+      }
+      else
+      {
+        localQQCustomMenu.a(0, "粘贴");
+      }
+    }
+  }
 }
 
 

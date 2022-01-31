@@ -316,11 +316,17 @@ public class CrashReport
   
   public static void initNativeCrashReport(Context paramContext, String paramString, boolean paramBoolean, List<File> paramList)
   {
-    initNativeCrashReport(paramContext, paramString, paramBoolean, paramList, null);
+    initNativeCrashReport(paramContext, paramString, paramBoolean, paramList, null, 0L);
   }
   
   @SuppressLint({"SdCardPath"})
   public static void initNativeCrashReport(Context paramContext, String paramString, boolean paramBoolean, List<File> paramList, File paramFile)
+  {
+    initNativeCrashReport(paramContext, paramString, paramBoolean, paramList, paramFile, 0L);
+  }
+  
+  @SuppressLint({"SdCardPath"})
+  public static void initNativeCrashReport(Context paramContext, String paramString, boolean paramBoolean, List<File> paramList, File paramFile, long paramLong)
   {
     if (!a) {}
     do
@@ -347,7 +353,7 @@ public class CrashReport
       {
         x.c("no setted SO , query so!", new Object[0]);
         paramList = "/data/data/" + paramContext.getPackageName() + "/lib/";
-        w.a().a(new a(paramContext, paramList, (List)localObject));
+        w.a().a(new a(paramContext, paramList, (List)localObject), paramLong);
       }
       paramList = NativeCrashHandler.getInstance();
       if ((paramList != null) && (!z.a(paramString))) {
@@ -359,8 +365,8 @@ public class CrashReport
       paramContext = c.a();
     } while (paramContext == null);
     paramContext.e();
-    paramContext.a(0L);
-    paramContext.b(0L);
+    paramContext.a(paramLong);
+    paramContext.b(paramLong);
   }
   
   public static boolean needUploadCrash(Context paramContext)

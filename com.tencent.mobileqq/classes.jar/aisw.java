@@ -1,20 +1,16 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.text.QzoneTextBuilder;
 
-public class aisw
-  implements View.OnTouchListener
+public final class aisw
+  extends Editable.Factory
 {
-  public aisw(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.getActivity().finish();
+    if ((paramCharSequence instanceof QzoneTextBuilder)) {
+      return (Editable)paramCharSequence;
     }
-    return true;
+    return new QzoneTextBuilder(paramCharSequence, 3, 20);
   }
 }
 

@@ -1,29 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class ksw
-  implements DialogInterface.OnClickListener
+class ksw
+  implements TVK_SDKMgr.InstallListener
 {
-  public ksw(AccountDetailActivity paramAccountDetailActivity, Activity paramActivity) {}
+  ksw(ksv paramksv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.k = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.doOnBackPressed();
-      ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.a()).longValue());
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.f();
-    paramDialogInterface.dismiss();
+    com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.a = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
+    }
+    com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.a = true;
   }
 }
 

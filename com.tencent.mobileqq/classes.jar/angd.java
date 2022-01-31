@@ -1,24 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import cooperation.troop_homework.TroopHomeworkHelper;
-import cooperation.troop_homework.jsp.TroopHWVoiceController;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.QzoneOnlineTimeCollectRptService;
+import mqq.os.MqqHandler;
 
 public class angd
   implements Runnable
 {
-  public angd(TroopHWVoiceController paramTroopHWVoiceController) {}
+  public angd(QzoneOnlineTimeCollectRptService paramQzoneOnlineTimeCollectRptService) {}
   
   public void run()
   {
-    String str = TroopHomeworkHelper.a(TroopHWVoiceController.a(this.a));
-    if (!TextUtils.isEmpty(str))
-    {
-      Message localMessage = TroopHWVoiceController.a(this.a).obtainMessage();
-      localMessage.what = 0;
-      localMessage.obj = str;
-      localMessage.sendToTarget();
+    ThreadManager.getSubThreadHandler().removeCallbacks(QzoneOnlineTimeCollectRptService.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneOnlineTimeCollectRptService", 2, "mOnlineTimeCheckTraceRunnable run");
     }
+    this.a.d();
+    ThreadManager.getSubThreadHandler().postDelayed(this, QzoneOnlineTimeCollectRptService.a(this.a));
   }
 }
 

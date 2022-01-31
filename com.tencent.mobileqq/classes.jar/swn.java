@@ -1,21 +1,14 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class swn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public swn(LbsBaseActivity paramLbsBaseActivity) {}
+  public swn(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    NearbySPUtil.a(this.a.getAppInterface().getAccount(), true);
-    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
-      this.a.a(LbsBaseActivity.a(this.a));
-    }
+    this.a.a.startAnimation(this.a.b);
   }
 }
 

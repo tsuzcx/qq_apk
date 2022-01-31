@@ -1,15 +1,27 @@
-import android.view.View;
-import com.tencent.biz.ui.CustomMenuBar;
+import android.view.SurfaceHolder;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 public class ozw
-  implements Runnable
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  public ozw(CustomMenuBar paramCustomMenuBar) {}
+  public ozw(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void run()
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.a.b = false;
-    this.a.a.setVisibility(4);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
+    }
+  }
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
+    }
   }
 }
 

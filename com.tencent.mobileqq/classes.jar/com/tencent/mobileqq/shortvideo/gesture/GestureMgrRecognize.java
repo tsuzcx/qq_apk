@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.shortvideo.gesture;
 
-import aibq;
-import aibr;
-import aibs;
-import aibt;
+import aigk;
+import aigl;
+import aigm;
+import aign;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.os.SystemClock;
@@ -32,9 +32,9 @@ public class GestureMgrRecognize
   static int g;
   int jdField_a_of_type_Int = 5;
   public long a;
-  public aibr a;
-  public aibs a;
-  aibt jdField_a_of_type_Aibt = null;
+  public aigl a;
+  public aigm a;
+  aign jdField_a_of_type_Aign = null;
   boolean jdField_a_of_type_Boolean = false;
   long jdField_b_of_type_Long = 200L;
   boolean jdField_b_of_type_Boolean = true;
@@ -55,9 +55,9 @@ public class GestureMgrRecognize
   
   private GestureMgrRecognize()
   {
-    this.jdField_a_of_type_Aibs = new aibs(this);
+    this.jdField_a_of_type_Aigm = new aigm(this);
     this.jdField_a_of_type_Long = 20L;
-    this.jdField_a_of_type_Aibr = null;
+    this.jdField_a_of_type_Aigl = null;
     this.jdField_c_of_type_Int = 0;
     this.jdField_c_of_type_Long = 0L;
   }
@@ -69,20 +69,20 @@ public class GestureMgrRecognize
     return i;
   }
   
-  public static GestureKeyInfo a(int paramInt1, aibr paramaibr, String paramString, long[] paramArrayOfLong, int paramInt2)
+  public static GestureKeyInfo a(int paramInt1, aigl paramaigl, String paramString, long[] paramArrayOfLong, int paramInt2)
   {
     GestureKeyInfo localGestureKeyInfo = new GestureKeyInfo();
     long l1 = SystemClock.elapsedRealtime();
     AVGestureWrapper localAVGestureWrapper = new AVGestureWrapper();
-    if (localAVGestureWrapper.doCalc(paramaibr.jdField_a_of_type_ArrayOfByte, paramaibr.jdField_a_of_type_Int, paramaibr.jdField_b_of_type_Int, 0, 0, true))
+    if (localAVGestureWrapper.doCalc(paramaigl.jdField_a_of_type_ArrayOfByte, paramaigl.jdField_a_of_type_Int, paramaigl.jdField_b_of_type_Int, 0, 0, true))
     {
       localGestureKeyInfo.jdField_a_of_type_JavaLangString = localAVGestureWrapper.getGestureType();
       localGestureKeyInfo.jdField_a_of_type_Boolean = true;
       localGestureKeyInfo.jdField_a_of_type_AndroidGraphicsRectF = localAVGestureWrapper.getHotRegionInOriginImg();
       localGestureKeyInfo.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = localAVGestureWrapper.getKeyPoints();
       localGestureKeyInfo.jdField_a_of_type_Long = System.currentTimeMillis();
-      float f1 = paramaibr.d / paramaibr.jdField_b_of_type_Int;
-      float f2 = paramaibr.jdField_c_of_type_Int / paramaibr.jdField_a_of_type_Int;
+      float f1 = paramaigl.d / paramaigl.jdField_b_of_type_Int;
+      float f2 = paramaigl.jdField_c_of_type_Int / paramaigl.jdField_a_of_type_Int;
       localGestureKeyInfo.jdField_a_of_type_AndroidGraphicsRectF.top *= f1;
       localGestureKeyInfo.jdField_a_of_type_AndroidGraphicsRectF.bottom *= f1;
       localGestureKeyInfo.jdField_a_of_type_AndroidGraphicsRectF.left *= f2;
@@ -97,16 +97,16 @@ public class GestureMgrRecognize
         localPointF.y *= f1;
         i += 1;
       }
-      localGestureKeyInfo.jdField_b_of_type_Int = paramaibr.jdField_b_of_type_Int;
-      localGestureKeyInfo.jdField_a_of_type_Int = paramaibr.jdField_a_of_type_Int;
-      localGestureKeyInfo.jdField_c_of_type_Int = paramaibr.jdField_c_of_type_Int;
-      localGestureKeyInfo.d = paramaibr.d;
+      localGestureKeyInfo.jdField_b_of_type_Int = paramaigl.jdField_b_of_type_Int;
+      localGestureKeyInfo.jdField_a_of_type_Int = paramaigl.jdField_a_of_type_Int;
+      localGestureKeyInfo.jdField_c_of_type_Int = paramaigl.jdField_c_of_type_Int;
+      localGestureKeyInfo.d = paramaigl.d;
     }
     localAVGestureWrapper.destroyRecognizor();
     long l2 = SystemClock.elapsedRealtime();
     paramArrayOfLong[paramInt2] = (l2 - l1);
     if (SLog.a()) {
-      SLog.d("GestureMgrRecognize|costtime", String.format("doProcess, mToken[%s], cost[%s], lastType[%s], srcSize[%s, %s], timeStamp[%s], RecognizeType[%s], vaild[%s], rcHot[%s], hotPoint{%s}", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(l2 - l1), paramString, Integer.valueOf(paramaibr.jdField_a_of_type_Int), Integer.valueOf(paramaibr.jdField_b_of_type_Int), Long.valueOf(localGestureKeyInfo.jdField_a_of_type_Long), localGestureKeyInfo.jdField_a_of_type_JavaLangString, Boolean.valueOf(localGestureKeyInfo.jdField_a_of_type_Boolean), localGestureKeyInfo.jdField_a_of_type_AndroidGraphicsRectF, a(localGestureKeyInfo.jdField_a_of_type_ArrayOfAndroidGraphicsPointF) }));
+      SLog.d("GestureMgrRecognize|costtime", String.format("doProcess, mToken[%s], cost[%s], lastType[%s], srcSize[%s, %s], timeStamp[%s], RecognizeType[%s], vaild[%s], rcHot[%s], hotPoint{%s}", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(l2 - l1), paramString, Integer.valueOf(paramaigl.jdField_a_of_type_Int), Integer.valueOf(paramaigl.jdField_b_of_type_Int), Long.valueOf(localGestureKeyInfo.jdField_a_of_type_Long), localGestureKeyInfo.jdField_a_of_type_JavaLangString, Boolean.valueOf(localGestureKeyInfo.jdField_a_of_type_Boolean), localGestureKeyInfo.jdField_a_of_type_AndroidGraphicsRectF, a(localGestureKeyInfo.jdField_a_of_type_ArrayOfAndroidGraphicsPointF) }));
     }
     return localGestureKeyInfo;
   }
@@ -141,44 +141,44 @@ public class GestureMgrRecognize
     }
   }
   
-  public static void a(int paramInt, aibs paramaibs, GestureKeyInfo paramGestureKeyInfo)
+  public static void a(int paramInt, aigm paramaigm, GestureKeyInfo paramGestureKeyInfo)
   {
     if (paramGestureKeyInfo.jdField_a_of_type_Boolean) {
-      if (!paramGestureKeyInfo.jdField_a_of_type_JavaLangString.equals(paramaibs.jdField_b_of_type_JavaLangString))
+      if (!paramGestureKeyInfo.jdField_a_of_type_JavaLangString.equals(paramaigm.jdField_b_of_type_JavaLangString))
       {
-        paramaibs.jdField_b_of_type_JavaLangString = paramGestureKeyInfo.jdField_a_of_type_JavaLangString;
-        paramaibs.e = 1;
-        if (!paramGestureKeyInfo.jdField_a_of_type_JavaLangString.equals(paramaibs.jdField_a_of_type_JavaLangString)) {
-          paramaibs.f += 1;
+        paramaigm.jdField_b_of_type_JavaLangString = paramGestureKeyInfo.jdField_a_of_type_JavaLangString;
+        paramaigm.e = 1;
+        if (!paramGestureKeyInfo.jdField_a_of_type_JavaLangString.equals(paramaigm.jdField_a_of_type_JavaLangString)) {
+          paramaigm.f += 1;
         }
         label58:
-        if (paramaibs.e < f) {
+        if (paramaigm.e < f) {
           break label216;
         }
-        paramaibs.jdField_a_of_type_JavaLangString = paramaibs.jdField_b_of_type_JavaLangString;
-        paramaibs.f = 0;
-        paramaibs.jdField_a_of_type_Boolean = true;
+        paramaigm.jdField_a_of_type_JavaLangString = paramaigm.jdField_b_of_type_JavaLangString;
+        paramaigm.f = 0;
+        paramaigm.jdField_a_of_type_Boolean = true;
       }
     }
     for (;;)
     {
-      if ((paramGestureKeyInfo.jdField_a_of_type_Boolean) && (paramGestureKeyInfo.jdField_a_of_type_JavaLangString.equals(paramaibs.jdField_a_of_type_JavaLangString))) {
-        paramGestureKeyInfo.a(paramaibs);
+      if ((paramGestureKeyInfo.jdField_a_of_type_Boolean) && (paramGestureKeyInfo.jdField_a_of_type_JavaLangString.equals(paramaigm.jdField_a_of_type_JavaLangString))) {
+        paramGestureKeyInfo.a(paramaigm);
       }
       if (SLog.a()) {
-        SLog.d("GestureMgrRecognize", String.format("mergeData, mToken[%s], vaild[%s], type[%s], missCount[%s], curType[%s], hitCount[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramaibs.jdField_a_of_type_Boolean), paramaibs.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaibs.f), paramaibs.jdField_b_of_type_JavaLangString, Integer.valueOf(paramaibs.e) }));
+        SLog.d("GestureMgrRecognize", String.format("mergeData, mToken[%s], vaild[%s], type[%s], missCount[%s], curType[%s], hitCount[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramaigm.jdField_a_of_type_Boolean), paramaigm.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaigm.f), paramaigm.jdField_b_of_type_JavaLangString, Integer.valueOf(paramaigm.e) }));
       }
       return;
-      paramaibs.e += 1;
+      paramaigm.e += 1;
       break;
-      paramaibs.f += 1;
-      paramaibs.e = 0;
+      paramaigm.f += 1;
+      paramaigm.e = 0;
       break label58;
       label216:
-      if (paramaibs.f >= g)
+      if (paramaigm.f >= g)
       {
-        paramaibs.jdField_a_of_type_JavaLangString = null;
-        paramaibs.jdField_a_of_type_Boolean = false;
+        paramaigm.jdField_a_of_type_JavaLangString = null;
+        paramaigm.jdField_a_of_type_Boolean = false;
       }
     }
   }
@@ -243,7 +243,7 @@ public class GestureMgrRecognize
           String str = SdkContext.a().a().a().d();
           AVGestureWrapper.setFilePath(str, str, "");
           AVGestureWrapper.setGlobalConfigFile(str);
-          AVGestureWrapper.setAVGestureReport(new aibq());
+          AVGestureWrapper.setAVGestureReport(new aigk());
           AVGestureWrapper.setShouldUpload(SdkContext.a().a().a().a());
           SLog.d("GestureMgrRecognize", String.format("loadSo suc, [%s]", new Object[] { AVGestureWrapper.getVersionInfo() }));
           return bool;
@@ -278,7 +278,7 @@ public class GestureMgrRecognize
   public GestureKeyInfo a()
   {
     GestureKeyInfo localGestureKeyInfo = new GestureKeyInfo();
-    this.jdField_a_of_type_Aibs.a(localGestureKeyInfo);
+    this.jdField_a_of_type_Aigm.a(localGestureKeyInfo);
     return localGestureKeyInfo;
   }
   
@@ -307,17 +307,17 @@ public class GestureMgrRecognize
     //   35: invokestatic 197	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   38: invokestatic 200	com/tencent/sveffects/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   41: aload_0
-    //   42: new 396	aibt
+    //   42: new 396	aign
     //   45: dup
     //   46: aload_0
     //   47: aload_0
     //   48: getfield 72	com/tencent/mobileqq/shortvideo/gesture/GestureMgrRecognize:jdField_c_of_type_Int	I
-    //   51: invokespecial 399	aibt:<init>	(Lcom/tencent/mobileqq/shortvideo/gesture/GestureMgrRecognize;I)V
-    //   54: putfield 74	com/tencent/mobileqq/shortvideo/gesture/GestureMgrRecognize:jdField_a_of_type_Aibt	Laibt;
+    //   51: invokespecial 399	aign:<init>	(Lcom/tencent/mobileqq/shortvideo/gesture/GestureMgrRecognize;I)V
+    //   54: putfield 74	com/tencent/mobileqq/shortvideo/gesture/GestureMgrRecognize:jdField_a_of_type_Aign	Laign;
     //   57: new 401	java/lang/Thread
     //   60: dup
     //   61: aload_0
-    //   62: getfield 74	com/tencent/mobileqq/shortvideo/gesture/GestureMgrRecognize:jdField_a_of_type_Aibt	Laibt;
+    //   62: getfield 74	com/tencent/mobileqq/shortvideo/gesture/GestureMgrRecognize:jdField_a_of_type_Aign	Laign;
     //   65: invokespecial 404	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
     //   68: astore_1
     //   69: aload_1
@@ -411,7 +411,7 @@ public class GestureMgrRecognize
     }
     try
     {
-      this.jdField_a_of_type_Aibr = new aibr(this, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4);
+      this.jdField_a_of_type_Aigl = new aigl(this, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4);
       return;
     }
     catch (OutOfMemoryError paramArrayOfByte)
@@ -452,13 +452,13 @@ public class GestureMgrRecognize
   {
     try
     {
-      this.jdField_a_of_type_Aibs.a();
-      this.jdField_a_of_type_Aibr = null;
+      this.jdField_a_of_type_Aigm.a();
+      this.jdField_a_of_type_Aigl = null;
       if (this.jdField_c_of_type_Int != 0)
       {
         SLog.d("GestureMgrRecognize", String.format("stop, curToken[%s]", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int) }));
         this.jdField_c_of_type_Int = 0;
-        this.jdField_a_of_type_Aibt = null;
+        this.jdField_a_of_type_Aign = null;
       }
       return;
     }

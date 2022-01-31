@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-public class yoq
+class yoq
   implements Runnable
 {
-  public yoq(ApolloCmdChannel paramApolloCmdChannel, String paramString1, String paramString2, int paramInt, long paramLong) {}
+  yoq(yop paramyop) {}
   
   public void run()
   {
-    ApolloCmdChannel.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SystemMsgListAdapter", 4, "onGetCampusInfo notify refresh list");
+    }
+    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yoq
  * JD-Core Version:    0.7.0.1
  */

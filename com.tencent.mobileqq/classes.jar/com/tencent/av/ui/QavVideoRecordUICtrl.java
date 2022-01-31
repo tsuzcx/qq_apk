@@ -53,17 +53,17 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashSet;
 import java.util.Locale;
-import jzp;
-import jzr;
-import jzs;
-import jzt;
-import jzu;
-import jzv;
-import jzw;
-import jzx;
-import jzy;
-import jzz;
-import kaa;
+import kbt;
+import kbv;
+import kbw;
+import kbx;
+import kby;
+import kbz;
+import kca;
+import kcb;
+import kcc;
+import kcd;
+import kce;
 
 @TargetApi(18)
 public class QavVideoRecordUICtrl
@@ -245,7 +245,7 @@ public class QavVideoRecordUICtrl
       return;
       if (paramLong >= 0L)
       {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new jzr(this), 1000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new kbv(this), 1000L);
         a(1003, this.jdField_a_of_type_ComTencentAvUiAVActivity.getResources().getString(2131429646), 3000L, 1);
         QavRecordReporter.a("0X8008AB0");
       }
@@ -277,19 +277,19 @@ public class QavVideoRecordUICtrl
   
   private void a(VideoAppInterface paramVideoAppInterface)
   {
-    LayoutInflater.from(this.jdField_a_of_type_ComTencentAvUiAVActivity).inflate(2130969373, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366309));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366310));
-    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366311));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366315));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366314));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366316));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366313);
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366312));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363259);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365833);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365835);
-    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365834);
+    LayoutInflater.from(this.jdField_a_of_type_ComTencentAvUiAVActivity).inflate(2130969371, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366314));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366315));
+    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366316));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366320));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366319));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366321));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366318);
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366317));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363276);
+    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365838);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365840);
+    this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365839);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
     this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams());
     this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams());
@@ -302,12 +302,12 @@ public class QavVideoRecordUICtrl
     this.jdField_a_of_type_Int = AIOUtils.a(51.0F, this.jdField_a_of_type_ComTencentAvUiAVActivity.getResources());
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvUiAVActivity.getString(2131429625);
     this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidWidgetTextView.setOnTouchListener(new jzt(this));
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView = ((QavRecordButtonView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365842));
+    this.jdField_d_of_type_AndroidWidgetTextView.setOnTouchListener(new kbx(this));
+    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView = ((QavRecordButtonView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365847));
     this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365843));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365844));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365848));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365849));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     if (paramVideoAppInterface.f()) {
       this.jdField_d_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_ComTencentAvUiAVActivity.getResources().getString(2131429654));
@@ -391,9 +391,6 @@ public class QavVideoRecordUICtrl
   private void o()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(5);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(8);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
     b(false);
     d(false);
@@ -477,10 +474,10 @@ public class QavVideoRecordUICtrl
     int i2 = b(2131560114);
     int i3 = b(2131560112);
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener == null) {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new jzx(this, j, m, n, k, i1, i2, i3);
+      this.jdField_b_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new kcb(this, j, m, n, k, i1, i2, i3);
     }
     if (this.jdField_b_of_type_AndroidAnimationAnimator$AnimatorListener == null) {
-      this.jdField_b_of_type_AndroidAnimationAnimator$AnimatorListener = new jzy(this);
+      this.jdField_b_of_type_AndroidAnimationAnimator$AnimatorListener = new kcc(this);
     }
     if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null)
     {
@@ -511,10 +508,10 @@ public class QavVideoRecordUICtrl
     int i2 = b(2131560114);
     int i3 = b(2131560112);
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener == null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new jzz(this, j, m + j, n - k, k, i1, i3, i2);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new kcd(this, j, m + j, n - k, k, i1, i3, i2);
     }
     if (this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener == null) {
-      this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new kaa(this);
+      this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new kce(this);
     }
     if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
     {
@@ -952,14 +949,14 @@ public class QavVideoRecordUICtrl
     if ((paramInt == 1) || (paramInt == 2) || (paramInt == 5)) {}
     do
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new jzv(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new kbz(this));
       do
       {
         return;
       } while (paramInt != 4);
       this.jdField_g_of_type_Boolean = true;
     } while (b() < 1000L);
-    this.jdField_a_of_type_AndroidOsHandler.post(new jzw(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new kca(this));
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -1071,7 +1068,7 @@ public class QavVideoRecordUICtrl
         continue;
       }
       FileSwapHelper.a(paramString, this.jdField_a_of_type_ComTencentAvUiAVActivity);
-      this.jdField_a_of_type_AndroidOsHandler.post(new jzu(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new kby(this));
     }
   }
   
@@ -1503,7 +1500,7 @@ public class QavVideoRecordUICtrl
     for (boolean bool = true;; bool = false)
     {
       ((DoubleVideoCtrlUI)localObject).k(bool);
-      localObject = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536);
+      localObject = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362541);
       if (localObject != null) {
         ((RedPacketGameView)localObject).setScoreMarginTop(a(paramBoolean));
       }
@@ -1640,6 +1637,9 @@ public class QavVideoRecordUICtrl
     jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(11);
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder != null) {
+      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.b();
+    }
   }
   
   public void e(int paramInt)
@@ -1681,8 +1681,8 @@ public class QavVideoRecordUICtrl
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
       localLayoutParams.setMargins(AIOUtils.a(10.0F, this.jdField_a_of_type_ComTencentAvUiAVActivity.getResources()), 0, 0, 0);
       localLayoutParams.addRule(2, 0);
-      localLayoutParams.addRule(1, 2131365842);
-      localLayoutParams.addRule(6, 2131365842);
+      localLayoutParams.addRule(1, 2131365847);
+      localLayoutParams.addRule(6, 2131365847);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
       if (paramInt == 0)
       {
@@ -1699,7 +1699,7 @@ public class QavVideoRecordUICtrl
     }
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
     localLayoutParams.setMargins(AIOUtils.a(-12.5F, this.jdField_a_of_type_ComTencentAvUiAVActivity.getResources()), 0, 0, AIOUtils.a(32.5F, this.jdField_a_of_type_ComTencentAvUiAVActivity.getResources()));
-    localLayoutParams.addRule(2, 2131365842);
+    localLayoutParams.addRule(2, 2131365847);
     localLayoutParams.addRule(1, 0);
     localLayoutParams.addRule(6, 0);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
@@ -1757,7 +1757,7 @@ public class QavVideoRecordUICtrl
     for (paramInt = 1;; paramInt = 0)
     {
       if (paramInt != 0) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new jzs(this), 2000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new kbw(this), 2000L);
       }
       for (;;)
       {
@@ -1848,7 +1848,7 @@ public class QavVideoRecordUICtrl
       if (!jdField_b_of_type_Boolean) {
         return true;
       }
-      ThreadManager.postImmediately(new jzp(this), null, false);
+      ThreadManager.postImmediately(new kbt(this), null, false);
       continue;
       QLog.d("QavVideoRecordUICtrl", 1, "on msg time, msg=" + paramMessage.what);
       a(paramMessage.what, false, paramMessage.arg1 - 1);
@@ -2039,7 +2039,7 @@ public class QavVideoRecordUICtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.QavVideoRecordUICtrl
  * JD-Core Version:    0.7.0.1
  */

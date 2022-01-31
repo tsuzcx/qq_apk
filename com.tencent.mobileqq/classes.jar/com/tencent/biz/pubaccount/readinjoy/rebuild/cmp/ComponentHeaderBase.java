@@ -58,7 +58,7 @@ public abstract class ComponentHeaderBase
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969576, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969572, this, true);
   }
   
   public void a() {}

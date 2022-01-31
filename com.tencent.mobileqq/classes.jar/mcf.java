@@ -1,18 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-public final class mcf
-  extends AnimatorListenerAdapter
+public class mcf
+  implements PublicAccountImageDownListener
 {
-  public mcf(View paramView) {}
+  public mcf(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
   {
-    this.a.setAlpha(1.0F);
-    this.a.setLayerType(0, null);
-    this.a.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
+    }
+    ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.a(paramCloseableBitmap.a()));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.c(this.a));
+    }
+    this.a.setRightViewTextDisable(1);
   }
+  
+  public void a(URL paramURL, Throwable paramThrowable) {}
 }
 
 

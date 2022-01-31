@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import mqq.os.MqqHandler;
+import com.tencent.av.utils.GVideoGrayConfig;
+import com.tencent.av.utils.GVideoGrayConfig.GVideoPreDownloadListener;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aecb
-  implements Runnable
+  implements GVideoGrayConfig.GVideoPreDownloadListener
 {
-  public aecb(LightReplyMenuManager paramLightReplyMenuManager, String paramString1, String paramString2) {}
+  public aecb(GroupVideoManager paramGroupVideoManager) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    synchronized ()
-    {
-      boolean bool = FileUtils.a(this.jdField_a_of_type_JavaLangString, this.b);
-      if (!bool) {
-        ThreadManager.getUIHandler().post(new aecc(this));
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
+    }
+    GVideoGrayConfig.a().a();
+    if (paramInt == 1) {
+      GroupVideoManager.a("group_video", new aecc(this));
     }
   }
 }

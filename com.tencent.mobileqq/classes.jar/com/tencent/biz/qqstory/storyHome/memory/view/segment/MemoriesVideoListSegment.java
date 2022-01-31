@@ -40,8 +40,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import nxr;
-import nxs;
+import ocg;
+import och;
 
 public class MemoriesVideoListSegment
   extends SegmentView
@@ -115,16 +115,16 @@ public class MemoriesVideoListSegment
   {
     paramInt = a(paramInt);
     if (paramInt == 0) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970776, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970792, paramViewGroup, false));
     }
     if (paramInt == 1) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970766, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970782, paramViewGroup, false));
     }
     if (paramInt == 2) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970774, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970790, paramViewGroup, false));
     }
     if (paramInt == 3) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970771, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970787, paramViewGroup, false));
     }
     throw new IllegalStateException("create view error because unknown view type:" + paramInt);
   }
@@ -149,7 +149,7 @@ public class MemoriesVideoListSegment
   
   public void a(String paramString1, int paramInt, View paramView, String paramString2)
   {
-    Bosses.get().postJob(new nxs(this, paramString1, paramInt, paramView, paramString2));
+    Bosses.get().postJob(new och(this, paramString1, paramInt, paramView, paramString2));
   }
   
   public void a(String paramString, List paramList)
@@ -203,9 +203,9 @@ public class MemoriesVideoListSegment
   public View b(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
     paramViewGroup = (VideoCollectionItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesVideoCollectionPresenter.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131369116);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131369117);
-    View localView = paramBaseViewHolder.a(2131371862);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131369117);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131369118);
+    View localView = paramBaseViewHolder.a(2131371861);
     if (ThemeUtil.isInNightMode(PlayModeUtils.a()))
     {
       localTextView2.setTextColor(Color.parseColor("#44608a"));
@@ -225,7 +225,7 @@ public class MemoriesVideoListSegment
     {
       localView.setVisibility(paramInt);
       return paramBaseViewHolder.a();
-      localTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438711, new Object[] { Integer.valueOf(paramViewGroup.collectionCount) }));
+      localTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438734, new Object[] { Integer.valueOf(paramViewGroup.collectionCount) }));
       break;
     }
   }
@@ -238,18 +238,18 @@ public class MemoriesVideoListSegment
   
   public View c(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    Object localObject3 = (RelativeLayout)paramBaseViewHolder.a(2131366704);
-    Object localObject4 = (TextView)paramBaseViewHolder.a(2131371864);
-    Object localObject5 = (TextView)paramBaseViewHolder.a(2131371865);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371868);
-    paramViewGroup = (MemoriesInnerListView)paramBaseViewHolder.a(2131371871);
-    Object localObject1 = paramBaseViewHolder.a(2131371863);
-    Object localObject2 = (ImageView)paramBaseViewHolder.a(2131371866);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371870);
+    Object localObject3 = (RelativeLayout)paramBaseViewHolder.a(2131366702);
+    Object localObject4 = (TextView)paramBaseViewHolder.a(2131371863);
+    Object localObject5 = (TextView)paramBaseViewHolder.a(2131371864);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371867);
+    paramViewGroup = (MemoriesInnerListView)paramBaseViewHolder.a(2131371870);
+    Object localObject1 = paramBaseViewHolder.a(2131371862);
+    Object localObject2 = (ImageView)paramBaseViewHolder.a(2131371865);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131371869);
     if (ThemeUtil.isInNightMode(PlayModeUtils.a()))
     {
       ((View)localObject1).setBackgroundColor(Color.parseColor("#0c284e"));
-      ((ImageView)localObject2).setBackgroundResource(2130843557);
+      ((ImageView)localObject2).setBackgroundResource(2130843590);
       localTextView1.setTextColor(Color.parseColor("#44608a"));
       ((TextView)localObject4).setTextColor(Color.parseColor("#6991b8"));
       ((TextView)localObject5).setTextColor(Color.parseColor("#6991b8"));
@@ -271,7 +271,7 @@ public class MemoriesVideoListSegment
       localObject4 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject3).getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject4).setMargins(0, 0, 0, 0);
       ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-      localTextView1.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438709, new Object[] { Integer.valueOf(((VideoCollectionItem)localObject2).collectionCount) }));
+      localTextView1.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438732, new Object[] { Integer.valueOf(((VideoCollectionItem)localObject2).collectionCount) }));
       if (!TextUtils.isEmpty(((VideoCollectionItem)localObject2).address)) {
         break label588;
       }
@@ -347,9 +347,17 @@ public class MemoriesVideoListSegment
     return 4;
   }
   
+  public void e_(boolean paramBoolean)
+  {
+    super.e_(paramBoolean);
+    if (this.jdField_a_of_type_Boolean) {
+      f();
+    }
+  }
+  
   public void f()
   {
-    a().setOnLoadMoreListener(a(), new nxr(this));
+    a().setOnLoadMoreListener(a(), new ocg(this));
     SegmentList localSegmentList = a();
     String str = a();
     if (!a()) {}
@@ -357,14 +365,6 @@ public class MemoriesVideoListSegment
     {
       localSegmentList.setLoadMoreComplete(str, true, bool);
       return;
-    }
-  }
-  
-  public void f_(boolean paramBoolean)
-  {
-    super.f_(paramBoolean);
-    if (this.jdField_a_of_type_Boolean) {
-      f();
     }
   }
   

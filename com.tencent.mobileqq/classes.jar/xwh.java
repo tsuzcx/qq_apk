@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDConfigServletProxy;
-import com.tencent.mobileqq.activity.richmedia.subtitles.RDConfigServletProxy.RDConfigServletProxyListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.Size;
+import java.util.Comparator;
 
-public final class xwh
-  implements RDConfigServletProxy.RDConfigServletProxyListener
+public class xwh
+  implements Comparator
 {
-  public xwh(QQAppInterface paramQQAppInterface, int paramInt, String paramString) {}
+  public xwh(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public int a(Size paramSize1, Size paramSize2)
   {
-    RDConfigServletProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, paramString);
-    return true;
+    if ((paramSize1.a < paramSize2.a) || ((paramSize1.a == paramSize2.a) && (paramSize1.b < paramSize2.b))) {
+      return -1;
+    }
+    if ((paramSize1.a != paramSize2.a) || (paramSize1.b != paramSize2.b)) {
+      return 1;
+    }
+    return 0;
   }
 }
 

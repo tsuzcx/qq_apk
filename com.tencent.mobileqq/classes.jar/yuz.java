@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 
 public class yuz
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public yuz(String paramString, ApolloAudioPlayer paramApolloAudioPlayer, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloAudioPlayer);
-  }
+  public yuz(ApolloCmdChannel paramApolloCmdChannel, long paramLong, int paramInt) {}
   
   public void run()
   {
-    ApolloAudioPlayer localApolloAudioPlayer = (ApolloAudioPlayer)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloAudioPlayer == null) {
-      return;
-    }
-    ApolloAudioPlayer.a(localApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ApolloCmdChannel.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 

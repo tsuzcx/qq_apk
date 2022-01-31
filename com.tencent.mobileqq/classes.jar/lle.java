@@ -1,53 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONObject;
 
-public final class lle
-  implements Runnable
+public class lle
+  implements NativeCommentServlet.CommentObserver
 {
-  public lle(int paramInt, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4) {}
+  public lle(ArticleCommentModule paramArticleCommentModule) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(1);
-    localAttributeList.att_name.set("ExitType");
-    localAttributeList.att_value.set(WeishiReportUtil.a(this.jdField_a_of_type_Int));
-    localArrayList.add(localAttributeList);
-    localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(2);
-    localAttributeList.att_name.set("FolderStatus");
-    localAttributeList.att_value.set(String.valueOf(this.jdField_a_of_type_JavaLangString));
-    localArrayList.add(localAttributeList);
-    localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(3);
-    localAttributeList.att_name.set("Time");
-    localAttributeList.att_value.set(String.valueOf(ReadinjoySPEventReport.a(this.jdField_a_of_type_Long) / 1000L));
-    localArrayList.add(localAttributeList);
-    if (!"1".equals(this.jdField_a_of_type_JavaLangString))
-    {
-      localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(5);
-      localAttributeList.att_name.set("StrategyID");
-      localAttributeList.att_value.set(this.b);
-      localArrayList.add(localAttributeList);
-      localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(6);
-      localAttributeList.att_name.set("AlgorithmID");
-      localAttributeList.att_value.set(this.c);
-      localArrayList.add(localAttributeList);
-      localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(7);
-      localAttributeList.att_name.set("costtime");
-      localAttributeList.att_value.set("" + this.d);
-      localArrayList.add(localAttributeList);
+    if (ArticleCommentModule.access$000(this.a) != null) {
+      ArticleCommentModule.access$000(this.a).a(paramArticleInfo, paramInt, paramString);
     }
-    PublicAccountUtil.a(26, "ExitWS", localArrayList);
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, JSONObject paramJSONObject, String paramString)
+  {
+    if (this.a.dealwithRawComment(paramJSONObject)) {
+      if (ArticleCommentModule.access$000(this.a) != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TRACE_COMMENT_LIST", 2, "element size=" + ArticleCommentModule.access$100(this.a).size());
+        }
+        ArticleCommentModule.access$000(this.a).a(paramArticleInfo);
+      }
+    }
+    while (ArticleCommentModule.access$000(this.a) == null) {
+      return;
+    }
+    ArticleCommentModule.access$000(this.a).a(paramArticleInfo, -1, " json formate error");
   }
 }
 

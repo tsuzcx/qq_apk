@@ -1,18 +1,21 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
 
 public class ofb
-  implements Runnable
+  extends ChildViewClickListener
 {
-  private ofb(EditVideoGuide paramEditVideoGuide) {}
+  public ofb(FeedSegment paramFeedSegment) {}
   
-  public void run()
+  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (this.a.a.compareAndSet(true, false))
+    switch (paramView.getId())
     {
-      this.a.a(false);
-      this.a.e();
+    default: 
+      return;
     }
+    this.a.l();
   }
 }
 

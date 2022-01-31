@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.PicFowardInfo;
-import com.tencent.mobileqq.pic.PicUploadInfo;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public abstract interface agkx
+public class agkx
+  implements Runnable
 {
-  public abstract MessageRecord a(PicFowardInfo paramPicFowardInfo);
+  public agkx(ScanTorchActivity paramScanTorchActivity, String paramString) {}
   
-  public abstract MessageRecord a(PicUploadInfo paramPicUploadInfo);
+  public void run()
+  {
+    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agkx
  * JD-Core Version:    0.7.0.1
  */

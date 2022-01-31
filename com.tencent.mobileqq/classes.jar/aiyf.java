@@ -1,20 +1,44 @@
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.PrefixSelectedListener;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.transfile.StoryUploadProcessor;
+import com.tencent.mobileqq.tribe.videoupload.TribeVideoFileObject;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class aiyf
-  implements TribeTitlePrefixPanelView.PrefixSelectedListener
+  implements UpCallBack
 {
-  private aiyf(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aiyf(TribeVideoFileObject paramTribeVideoFileObject) {}
   
-  public void a(TribeTitlePrefixPanelView.TitlePrefixItem paramTitlePrefixItem)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeViewTribeTitlePrefixPanelView$TitlePrefixItem = paramTitlePrefixItem;
-    this.a.jdField_a_of_type_ComTencentMobileqqTribeTribePostTitlePrefixPanelController.b();
-    this.a.e(true);
-    ReportController.b(null, "dc00899", "Grp_tribe", "", "pub_page", "choose_prefix", 0, 0, this.a.r, "", "", "");
+    return null;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
+  
+  public void b(UpCallBack.SendResult paramSendResult)
+  {
+    if (paramSendResult.jdField_b_of_type_Int == 0)
+    {
+      this.a.a.c = paramSendResult.jdField_b_of_type_JavaLangString;
+      this.a.a.a = paramSendResult.c;
+      TribeVideoFileObject.a(this.a);
+      TribeVideoFileObject.a(this.a, new ErrorMessage());
+      return;
+    }
+    if ((paramSendResult.jdField_b_of_type_Int == StoryUploadProcessor.a(940010)) && (TribeVideoFileObject.a(this.a).getAndIncrement() < 2))
+    {
+      TribeVideoFileObject.b(this.a);
+      SLog.d("tribe_publish_TribeVideoFileObject", "retry load file");
+      return;
+    }
+    TribeVideoFileObject.c(this.a);
+    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
+    TribeVideoFileObject.a(this.a, paramSendResult);
   }
 }
 

@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher;
 
-public final class odt
-  implements Parcelable.Creator
+public class odt
+  extends ContentObserver
 {
-  public EditTakePhotoSource a(Parcel paramParcel)
+  public odt(LocalVideoPusher paramLocalVideoPusher, Handler paramHandler)
   {
-    return new EditTakePhotoSource(paramParcel);
+    super(paramHandler);
   }
   
-  public EditTakePhotoSource[] a(int paramInt)
+  public void onChange(boolean paramBoolean)
   {
-    return new EditTakePhotoSource[paramInt];
+    super.onChange(paramBoolean);
+    if (!this.a.a)
+    {
+      this.a.b();
+      return;
+    }
+    this.a.b = true;
   }
 }
 

@@ -14,14 +14,14 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
-import lxp;
-import lxq;
-import lxr;
-import lxs;
-import lxt;
-import lxu;
-import lxv;
-import lxw;
+import mbc;
+import mbd;
+import mbe;
+import mbf;
+import mbg;
+import mbh;
+import mbi;
+import mbj;
 import mqq.os.MqqHandler;
 import tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.BBInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.MsgBody;
@@ -31,12 +31,12 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.TipsBody;
 
 public class KandianOx210MsgInfo
 {
-  public static int i = -1;
-  public static int j = i + 1;
+  public static int j = -1;
   public static int k = j + 1;
-  public static int l = -1;
-  public static int m = l + 1;
+  public static int l = k + 1;
+  public static int m = -1;
   public static int n = m + 1;
+  public static int o = n + 1;
   public int a;
   public long a;
   public String a;
@@ -58,6 +58,7 @@ public class KandianOx210MsgInfo
   public int g;
   public String g;
   public int h;
+  public int i;
   
   public KandianOx210MsgInfo()
   {
@@ -66,7 +67,7 @@ public class KandianOx210MsgInfo
   
   public static int a(byte[] paramArrayOfByte)
   {
-    int i1 = i;
+    int i1 = j;
     for (;;)
     {
       try
@@ -91,16 +92,16 @@ public class KandianOx210MsgInfo
         QLog.d("KandianOx210MsgInfo", 2, "get0x210MsgType = " + i1);
       }
       return i1;
-      i2 = j;
+      i2 = k;
+      i1 = i2;
+      continue;
+      i2 = l;
       i1 = i2;
       continue;
       i2 = k;
       i1 = i2;
       continue;
-      i2 = j;
-      i1 = i2;
-      continue;
-      i2 = j;
+      i2 = k;
       i1 = i2;
     }
   }
@@ -163,22 +164,22 @@ public class KandianOx210MsgInfo
         {
           submsgtype0xc5.StyleSheet localStyleSheet = (submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get();
           if (!localStyleSheet.uint32_show_folder.has()) {
-            break label906;
+            break label920;
           }
           paramInt = localStyleSheet.uint32_show_folder.get();
-          localKandianOx210MsgInfo.jdField_d_of_type_Int = paramInt;
+          localKandianOx210MsgInfo.jdField_e_of_type_Int = paramInt;
           if (!localStyleSheet.folder_red_type.has()) {
-            break label911;
+            break label925;
           }
           paramInt = localStyleSheet.folder_red_type.get();
-          localKandianOx210MsgInfo.jdField_f_of_type_Int = paramInt;
+          localKandianOx210MsgInfo.jdField_g_of_type_Int = paramInt;
           if (!localStyleSheet.bytes_orange_word.has()) {
-            break label916;
+            break label930;
           }
           paramArrayOfByte = localStyleSheet.bytes_orange_word.get().toStringUtf8();
           localKandianOx210MsgInfo.jdField_a_of_type_JavaLangString = paramArrayOfByte;
           if (!localStyleSheet.bytes_summary.has()) {
-            break label921;
+            break label935;
           }
           paramArrayOfByte = localStyleSheet.bytes_summary.get().toStringUtf8();
           localKandianOx210MsgInfo.jdField_b_of_type_JavaLangString = paramArrayOfByte;
@@ -188,12 +189,12 @@ public class KandianOx210MsgInfo
             if (localStyleSheet.uint32_show_lock_screen.has())
             {
               paramInt = localStyleSheet.uint32_show_lock_screen.get();
-              localKandianOx210MsgInfo.jdField_e_of_type_Int = paramInt;
+              localKandianOx210MsgInfo.jdField_f_of_type_Int = paramInt;
               paramInt = i1;
               if (localTipsBody.tips_ui_type.has()) {
                 paramInt = localStyleSheet.msg_tip_body.tips_ui_type.get();
               }
-              localKandianOx210MsgInfo.jdField_g_of_type_Int = paramInt;
+              localKandianOx210MsgInfo.h = paramInt;
               if (localTipsBody.uint64_uin.has())
               {
                 l1 = localStyleSheet.msg_tip_body.uint64_uin.get();
@@ -219,10 +220,13 @@ public class KandianOx210MsgInfo
                 paramArrayOfByte = localStyleSheet.msg_tip_body.bytes_business_info.get().toStringUtf8();
                 localKandianOx210MsgInfo.jdField_g_of_type_JavaLangString = paramArrayOfByte;
                 if ((localMsgBody.msg_notify_infos.has()) && (localMsgBody.msg_notify_infos.get() != null) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.has()) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get() != null) && (((submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get()).msg_type.has())) {
-                  localKandianOx210MsgInfo.h = ((submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get()).msg_type.get();
+                  localKandianOx210MsgInfo.i = ((submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get()).msg_type.get();
                 }
-                if ((((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_bb_info.has()) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_bb_info.get() != null)) {
-                  localKandianOx210MsgInfo.jdField_c_of_type_Long = ((submsgtype0xc5.BBInfo)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_bb_info.get()).uint64_bb_uin.get();
+                if ((((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_bb_info.has()) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_bb_info.get() != null))
+                {
+                  paramArrayOfByte = (submsgtype0xc5.BBInfo)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_bb_info.get();
+                  localKandianOx210MsgInfo.jdField_c_of_type_Long = paramArrayOfByte.uint64_bb_uin.get();
+                  localKandianOx210MsgInfo.jdField_d_of_type_Int = paramArrayOfByte.uint32_src.get();
                 }
                 return localKandianOx210MsgInfo;
               }
@@ -257,23 +261,23 @@ public class KandianOx210MsgInfo
         return null;
       }
       return null;
-      label906:
+      label920:
       paramInt = 0;
       continue;
-      label911:
+      label925:
       paramInt = 0;
       continue;
-      label916:
+      label930:
       paramArrayOfByte = null;
       continue;
-      label921:
+      label935:
       paramArrayOfByte = null;
     }
   }
   
   public static int b(byte[] paramArrayOfByte)
   {
-    int i1 = l;
+    int i1 = m;
     for (;;)
     {
       try
@@ -298,13 +302,13 @@ public class KandianOx210MsgInfo
         QLog.d("KandianOx210MsgInfo", 2, "get0x210MsgType = " + i1);
       }
       return i1;
-      i2 = m;
-      i1 = i2;
-      continue;
-      i2 = m;
+      i2 = n;
       i1 = i2;
       continue;
       i2 = n;
+      i1 = i2;
+      continue;
+      i2 = o;
       i1 = i2;
     }
   }
@@ -367,42 +371,42 @@ public class KandianOx210MsgInfo
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxp(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new mbc(this, paramQQAppInterface));
   }
   
   public void b(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxq(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new mbd(this, paramQQAppInterface));
   }
   
   public void c(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxr(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new mbe(this, paramQQAppInterface));
   }
   
   public void d(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxs(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new mbf(this, paramQQAppInterface));
   }
   
   public void e(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxt(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new mbg(this, paramQQAppInterface));
   }
   
   public void f(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxu(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new mbh(this, paramQQAppInterface));
   }
   
   public void g(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxv(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new mbi(this, paramQQAppInterface));
   }
   
   public void h(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.getSubThreadHandler().post(new lxw(this, paramQQAppInterface));
+    ThreadManager.getSubThreadHandler().post(new mbj(this, paramQQAppInterface));
   }
 }
 

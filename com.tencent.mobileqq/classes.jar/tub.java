@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.util.FaceDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class tub
-  implements Runnable
+public class tub
+  implements DialogInterface.OnClickListener
 {
-  tub(tua paramtua, String paramString, int paramInt) {}
+  public tub(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Tua.a.app, 1, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Tua.a.runOnUiThread(new tuc(this, localFaceDrawable));
+    paramDialogInterface.dismiss();
+    RegisterChooseLoginActivity.a(this.a, false);
+    RegisterByNicknameAndPwdActivity.a(this.a.app, this.a, this.a.a, this.a.b, RegisterChooseLoginActivity.a(this.a), true, this.a.c, false);
+    ReportController.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
+    ReportController.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 2, 0, "", "", "", "");
   }
 }
 

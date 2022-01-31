@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.log;
 
-import aech;
+import aekr;
 import android.content.Context;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
@@ -47,7 +47,7 @@ public class VipWebViewReportLog
     jdField_a_of_type_JavaUtilSet = new HashSet();
     jdField_b_of_type_Int = 1;
     jdField_c_of_type_Int = 2;
-    jdField_b_of_type_JavaLangString = AppConstants.aJ + "WebViewCheck" + File.separator;
+    jdField_b_of_type_JavaLangString = AppConstants.aK + "WebViewCheck" + File.separator;
     jdField_d_of_type_JavaLangString = "null";
     e = "null";
     f = "null";
@@ -58,7 +58,7 @@ public class VipWebViewReportLog
   {
     if ((jdField_a_of_type_JavaLangThread == null) || (!jdField_a_of_type_JavaLangThread.isAlive()))
     {
-      jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(new aech(), "WebviewLoadConfig", 8);
+      jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(new aekr(), "WebviewLoadConfig", 8);
       if (QLog.isColorLevel()) {
         QLog.d("WebCoreDump", 1, "ready to load config at:" + System.currentTimeMillis());
       }

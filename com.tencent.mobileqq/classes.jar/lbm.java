@@ -1,16 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import com.tencent.biz.pubaccount.PublicAccountUnfollowTask;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 
-class lbm
-  extends AnimatorListenerAdapter
+public class lbm
+  implements Runnable
 {
-  lbm(lbl paramlbl) {}
+  public lbm(PublicAccountUnfollowTask paramPublicAccountUnfollowTask) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    this.a.a.a.setVisibility(8);
+    PublicAccountUtil.a(PublicAccountUnfollowTask.a(this.a), PublicAccountUnfollowTask.a(this.a), PublicAccountUnfollowTask.a(this.a), false, this.a);
   }
 }
 

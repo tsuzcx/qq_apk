@@ -1,22 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.ApolloTicker;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import com.tencent.qphone.base.util.QLog;
 
-class yyb
-  implements Animation.AnimationListener
+public class yyb
+  implements Runnable
 {
-  yyb(yya paramyya) {}
+  public yyb(CmGameLauncher paramCmGameLauncher) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.a.a.a.b.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.a = null;
+    if ((CmGameLauncher.a(this.a) != null) && (CmGameLauncher.a(this.a).getRender() != null) && (CmGameLauncher.a(this.a).getRender().mApolloTicker != null))
+    {
+      ApolloRender.tickerResume(CmGameLauncher.a(this.a).getRender().mApolloTicker.ticker);
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameLauncher", 2, "mResumeTickerTask");
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

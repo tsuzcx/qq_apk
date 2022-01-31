@@ -8,7 +8,7 @@ import com.tencent.av.service.RecvMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Observable;
 import java.util.Observer;
-import jfb;
+import jhd;
 
 public class VideoObserver
   implements Observer
@@ -421,7 +421,7 @@ public class VideoObserver
       if (this.a == null) {
         this.a = new Handler(paramObservable);
       }
-      this.a.post(new jfb(this, paramObject));
+      this.a.post(new jhd(this, paramObject));
       return;
     }
     a(paramObject);
@@ -429,7 +429,7 @@ public class VideoObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.app.VideoObserver
  * JD-Core Version:    0.7.0.1
  */

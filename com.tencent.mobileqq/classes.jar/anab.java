@@ -1,12 +1,18 @@
-import cooperation.qzone.sim.DeviceInfoUtil;
-import cooperation.qzone.util.NetworkState.NetworkStateListener;
+import android.widget.Button;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.utils.DisplayUtils;
+import cooperation.qzone.QzoneGiftFullScreenViewController;
 
-public final class anab
-  implements NetworkState.NetworkStateListener
+public class anab
+  implements Runnable
 {
-  public void onNetworkConnect(boolean paramBoolean)
+  public anab(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController) {}
+  
+  public void run()
   {
-    DeviceInfoUtil.a(null);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    localLayoutParams.rightMargin = ((int)DisplayUtils.a(QzoneGiftFullScreenViewController.a(this.a), 10.0F));
+    this.a.a.setLayoutParams(localLayoutParams);
   }
 }
 

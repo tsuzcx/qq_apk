@@ -1,34 +1,28 @@
+import android.app.Activity;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForReplyText.LightReplyMsgRich2;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import cooperation.dingdong.DingdongPluginHelper;
 
 public class ver
-  extends TextItemBuilder.Holder
+  extends ClickableSpan
 {
-  public ViewGroup a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ETTextView a;
-  public MessageForReplyText.LightReplyMsgRich2 a;
-  public BubbleImageView a;
-  public View b;
-  public ViewGroup b;
-  public TextView b;
-  public BubbleImageView b;
-  public ViewGroup c;
-  public TextView c;
-  public TextView d;
-  public int e;
+  public ver(GrayTipsItemBuilder paramGrayTipsItemBuilder, String paramString, MessageForGrayTips paramMessageForGrayTips) {}
   
-  public ver(ReplyTextItemBuilder paramReplyTextItemBuilder) {}
+  public void onClick(View paramView)
+  {
+    int i = Integer.parseInt(this.jdField_a_of_type_JavaLangString);
+    DingdongPluginHelper.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a, i, this.jdField_a_of_type_ComTencentMobileqqDataMessageForGrayTips.getExtInfoFromExtStr("approval_workid"));
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

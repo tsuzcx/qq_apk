@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import adcn;
-import adco;
-import adcq;
+import adku;
+import adkv;
+import adkx;
 import android.app.Activity;
 import com.dataline.core.DirectForwarder;
 import com.dataline.util.DataLineReportUtil;
@@ -188,7 +188,7 @@ public class DatalineFileModel
   public IDownloadController a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController = new adcq(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController = new adkx(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController;
   }
@@ -196,7 +196,7 @@ public class DatalineFileModel
   public IUploadController a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController = new adco(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController = new adkv(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController;
   }
@@ -211,7 +211,7 @@ public class DatalineFileModel
     if (this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new adcn(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineObserver = new adku(this);
     if (QLog.isDevelopLevel()) {
       QLog.i("fobserver<FileAssistant>", 1, "del datalineObserver");
     }

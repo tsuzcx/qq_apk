@@ -1,15 +1,30 @@
-import com.tencent.mobileqq.addon.DiyPendantFetcher;
-import com.tencent.mobileqq.app.SVIPHandler;
+import com.tencent.mobileqq.app.IndividualRedPacketManager;
+import java.io.File;
+import java.util.Comparator;
 
 public class zms
-  implements Runnable
+  implements Comparator
 {
-  public zms(SVIPHandler paramSVIPHandler, String paramString) {}
+  public zms(IndividualRedPacketManager paramIndividualRedPacketManager) {}
   
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    DiyPendantFetcher localDiyPendantFetcher = DiyPendantFetcher.a();
-    localDiyPendantFetcher.a(this.jdField_a_of_type_ComTencentMobileqqAppSVIPHandler.b, this.jdField_a_of_type_JavaLangString, new zmt(this, localDiyPendantFetcher));
+    long l2 = 0L;
+    if (paramFile1 != null) {}
+    for (long l1 = paramFile1.lastModified();; l1 = 0L)
+    {
+      if (paramFile2 != null) {
+        l2 = paramFile2.lastModified();
+      }
+      if (l2 >= l1) {
+        break;
+      }
+      return -1;
+    }
+    if (l2 > l1) {
+      return 1;
+    }
+    return 0;
   }
 }
 

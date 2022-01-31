@@ -1,7 +1,7 @@
 package com.tencent.qqprotect.common;
 
-import alwn;
-import alwo;
+import amdw;
+import amdx;
 import android.os.Handler.Callback;
 import android.os.Message;
 import com.tencent.biz.ProtoUtils;
@@ -87,7 +87,7 @@ public class QSecRptControllerImpl
     if (QLog.isColorLevel()) {
       QLog.d("QSRPT", 2, String.format("report status: cached(%d): %d items, reporting(%d): %d items, sending: %d items", new Object[] { this.jdField_a_of_type_JavaLangInteger, Integer.valueOf(((Vector)this.jdField_a_of_type_JavaUtilVector.get(this.jdField_a_of_type_JavaLangInteger.intValue())).size()), this.b, Integer.valueOf(((Vector)this.jdField_a_of_type_JavaUtilVector.get(this.b.intValue())).size()), Integer.valueOf(paramReqBody.LogItem_reportdata.size()) }));
     }
-    ProtoUtils.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), new alwo(this), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
+    ProtoUtils.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), new amdx(this), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
   }
   
   private void a(QSecRptItem paramQSecRptItem)
@@ -117,7 +117,7 @@ public class QSecRptControllerImpl
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    ThreadManager.post(new alwn(this), 5, null, true);
+    ThreadManager.post(new amdw(this), 5, null, true);
   }
   
   protected void b(String paramString, int paramInt1, int paramInt2, int paramInt3)

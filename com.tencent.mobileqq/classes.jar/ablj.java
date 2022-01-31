@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.bubble.BubbleManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.scanfu.view.CameraDialog;
 
 public class ablj
-  implements ThreadExcutor.IThreadListener
+  implements View.OnClickListener
 {
-  public ablj(BubbleManager paramBubbleManager, int paramInt) {}
+  public ablj(ShopScanActivity paramShopScanActivity, CameraDialog paramCameraDialog) {}
   
-  public void a() {}
-  
-  public void b()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqScanfuViewCameraDialog.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.finish();
   }
 }
 

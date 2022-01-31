@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import cooperation.qzone.patch.QZonePatchService;
 
-public final class aneh
+public class aneh
   implements Runnable
 {
-  public aneh(ArkLocalAppMgr paramArkLocalAppMgr, String paramString1, String paramString2, String paramString3) {}
+  public aneh(QZonePatchService paramQZonePatchService, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.a(this.jdField_a_of_type_JavaLangString, this.b, new Object(), new anei(this));
+    QZonePatchService.b("收到补丁包回报");
+    QZonePatchService.b("不管成功还是失败，验证补丁包");
+    QZonePatchService.a();
+    QZonePatchService.b(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

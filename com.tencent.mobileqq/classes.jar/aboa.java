@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.BusinessCardManager;
-import com.tencent.mobileqq.businessCard.activity.FlowCameraPhotoActivity;
+import com.tencent.mobileqq.armap.POIInfo;
+import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import java.util.List;
 
-public class aboa
-  implements View.OnClickListener
+class aboa
+  implements Runnable
 {
-  public aboa(FlowCameraPhotoActivity paramFlowCameraPhotoActivity) {}
+  aboa(abny paramabny, POIInfo paramPOIInfo, List paramList, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView.setVisibility(8);
-    if (this.a.a != null) {
-      this.a.a.a(2, false);
-    }
+    this.jdField_a_of_type_Abny.a.a(this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int);
   }
 }
 

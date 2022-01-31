@@ -1,32 +1,23 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextResDownloader;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.IDynamicTextResDownloadCallback;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class anwg
+public class anwg
   implements Runnable
 {
-  anwg(anwf paramanwf) {}
+  public anwg(DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, DynamicTextConfigManager.IDynamicTextResDownloadCallback paramIDynamicTextResDownloadCallback) {}
   
   public void run()
   {
-    if (this.a.a.jdField_a_of_type_JavaUtilList.size() > 0)
+    Iterator localIterator = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean.fontInfos.iterator();
+    while (localIterator.hasNext())
     {
-      HWEditLocalVideoPlayer.Mp4VideoFragmentInfo localMp4VideoFragmentInfo = (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(0);
-      HWEditLocalVideoPlayer.a(this.a.a, localMp4VideoFragmentInfo);
-    }
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
-      HWEditLocalVideoPlayer.a(this.a.a, this.a.a.jdField_a_of_type_Int);
-      HWEditLocalVideoPlayer.a(this.a.a).set(true);
-      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true);
-      return;
-      SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", "mFragmentInfos is empty");
+      DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo localDynamicTextFontInfo = (DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localIterator.next();
+      DynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager).a(localDynamicTextFontInfo, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$IDynamicTextResDownloadCallback);
     }
   }
 }

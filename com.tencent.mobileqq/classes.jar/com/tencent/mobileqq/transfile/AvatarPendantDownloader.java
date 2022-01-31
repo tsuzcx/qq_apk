@@ -29,7 +29,7 @@ public class AvatarPendantDownloader
       if (!"DEFAULT_HEAD".equals(paramOutputStream)) {
         break;
       }
-      localObject2 = AppConstants.aJ + "avatarPendantDefaultHead" + str;
+      localObject2 = AppConstants.aK + "avatarPendantDefaultHead" + str;
       localObject1 = new File((String)localObject2);
       paramOutputStream = (OutputStream)localObject1;
     } while (((File)localObject1).exists());
@@ -63,7 +63,7 @@ public class AvatarPendantDownloader
             if ((!"AIO_STATIC".equals(paramOutputStream)) || (TextUtils.isEmpty(str))) {
               break label410;
             }
-            paramOutputStream = new File(AppConstants.bv + str);
+            paramOutputStream = new File(AppConstants.bw + str);
             if (!paramOutputStream.exists()) {
               paramOutputStream.mkdir();
             }
@@ -102,7 +102,7 @@ public class AvatarPendantDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AvatarPendantDownloader
  * JD-Core Version:    0.7.0.1
  */

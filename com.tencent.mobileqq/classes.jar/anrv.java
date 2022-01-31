@@ -1,28 +1,30 @@
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
-import dov.com.qq.im.capture.poi.FacePoiUI;
-import dov.com.qq.im.capture.poi.FacePoiUI.FacePoiUIListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anrv
-  implements FacePoiUI.FacePoiUIListener
+  extends Handler
 {
-  public anrv(EditProviderPart paramEditProviderPart) {}
-  
-  public void aC_()
+  public anrv(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, Looper paramLooper)
   {
-    EditProviderPart.a(this.a).d();
+    super(paramLooper);
   }
   
-  public void b()
+  public void handleMessage(Message paramMessage)
   {
-    EditProviderPart.a(this.a).d();
-    EditProviderPart.a(this.a).a();
-    EditProviderPart.a(this.a).a(EditProviderPart.a(this.a));
-  }
-  
-  public void c()
-  {
-    EditProviderPart.a(this.a).d();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {
+        this.a.a.u();
+      }
+    }
   }
 }
 

@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
 
-class rug
-  implements DialogInterface.OnClickListener
+public class rug
+  implements Runnable
 {
-  rug(rue paramrue) {}
+  public rug(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    SpriteCommFunc.a(this.a.a, "receipt_msg", false);
   }
 }
 

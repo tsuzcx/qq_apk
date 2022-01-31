@@ -1,25 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.lebasearch.SearchProtocol.SearchObserver;
-import java.util.List;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.common.offline.util.ILog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public final class knp
-  extends Handler
+  implements Runnable
 {
-  public knp(Looper paramLooper, SearchProtocol.SearchObserver paramSearchObserver)
-  {
-    super(paramLooper);
-  }
+  public knp(int paramInt, String paramString, AppRuntime paramAppRuntime, HashMap paramHashMap, AsyncBack paramAsyncBack, boolean paramBoolean) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (paramMessage.arg1 == 0)
+    if (HtmlOffline.a.a()) {
+      HtmlOffline.a.a("HtmlCheckUpdate", 2, "start checkUpThread. delay:" + this.jdField_a_of_type_Int + ", businessId:" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Int > 0) {}
+    try
     {
-      this.a.a(paramMessage.arg1, (List)paramMessage.obj);
+      Thread.sleep(this.jdField_a_of_type_Int * 1000);
+      label75:
+      HtmlOffline.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack, true, true, this.jdField_a_of_type_Boolean);
       return;
     }
-    this.a.a(paramMessage.arg1, null);
+    catch (InterruptedException localInterruptedException)
+    {
+      break label75;
+    }
   }
 }
 

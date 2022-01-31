@@ -33,20 +33,20 @@ public class PluginLoadDialog
   {
     super.requestWindowFeature(1);
     Object localObject1 = LayoutInflater.from(paramContext);
-    View localView = ((LayoutInflater)localObject1).inflate(2130968837, null);
+    View localView = ((LayoutInflater)localObject1).inflate(2130968841, null);
     try
     {
-      Object localObject2 = ((LayoutInflater)localObject1).inflate(2130970913, (ViewGroup)localView, false);
-      localObject1 = (RelativeLayout)localView.findViewById(2131364019);
+      Object localObject2 = ((LayoutInflater)localObject1).inflate(2130970931, (ViewGroup)localView, false);
+      localObject1 = (RelativeLayout)localView.findViewById(2131364044);
       Object localObject3 = new RelativeLayout.LayoutParams(-1, -1);
-      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131363244);
+      ((RelativeLayout.LayoutParams)localObject3).addRule(3, 2131363261);
       ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-      localObject2 = (TextView)localView.findViewById(2131363245);
+      localObject2 = (TextView)localView.findViewById(2131363262);
       IphoneTitleBarActivity.setLayerType((View)localObject2);
       if (localObject2 != null) {
         ((TextView)localObject2).setText("返回");
       }
-      localObject3 = (TextView)localView.findViewById(2131363381);
+      localObject3 = (TextView)localView.findViewById(2131363400);
       IphoneTitleBarActivity.setLayerType((View)localObject2);
       if (localObject3 != null) {
         ((TextView)localObject3).setText(paramString);
@@ -60,7 +60,7 @@ public class PluginLoadDialog
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
         paramString.addFlags(67108864);
-        new SystemBarCompact(this, true, paramContext.getResources().getColor(2131494254)).init();
+        new SystemBarCompact(this, true, paramContext.getResources().getColor(2131494260)).init();
         localView.setFitsSystemWindows(true);
         localView.setPadding(0, ImmersiveUtils.a(paramContext), 0, 0);
       }
@@ -71,8 +71,8 @@ public class PluginLoadDialog
       if (QLog.isColorLevel()) {
         QLog.e("QQWIFIPluginLoadDialog", 2, "layout with merge ,use framelayout to immersive");
       }
-      super.setContentView(2130970913);
-      getWindow().setFeatureInt(7, 2130968832);
+      super.setContentView(2130970931);
+      getWindow().setFeatureInt(7, 2130968836);
     }
   }
 }

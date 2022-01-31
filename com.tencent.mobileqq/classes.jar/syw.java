@@ -1,13 +1,43 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDManualGuideActivity;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class syw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public syw(LebaListMgrActivity paramLebaListMgrActivity) {}
+  public syw(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LebaListMgrActivity.a(this.a, true);
+    switch (paramView.getId())
+    {
+    case 2131364737: 
+    case 2131364738: 
+    case 2131364741: 
+    case 2131364742: 
+    default: 
+      return;
+    case 2131364736: 
+      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 20);
+      this.a.a();
+      return;
+    case 2131364740: 
+      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 21);
+      this.a.a();
+      return;
+    case 2131364739: 
+      paramView = new Intent(this.a, GesturePWDManualGuideActivity.class);
+      this.a.startActivity(paramView);
+      return;
+    }
+    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
+    this.a.startActivityForResult(paramView, 11);
+    this.a.overridePendingTransition(2131034134, 2131034131);
   }
 }
 

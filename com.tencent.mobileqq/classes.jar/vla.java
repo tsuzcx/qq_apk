@@ -1,26 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder.Holder;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class vla
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public vla(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  public vla(ShortVideoPTVItemBuilder paramShortVideoPTVItemBuilder, MessageForShortVideo paramMessageForShortVideo, ShortVideoPTVItemBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
-    if (UnlimitedBladeWorks.a(this.a)) {
-      paramValueAnimator.leftMargin = 0;
-    }
-    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
+    switch (paramInt)
     {
-      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      paramValueAnimator.leftMargin = i;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder$Holder);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder$Holder);
+      }
     }
   }
 }

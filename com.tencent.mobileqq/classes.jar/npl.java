@@ -1,47 +1,53 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.child.OutSingleSharePlayMode;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
+import com.tencent.mobileqq.app.FriendListObserver;
+import java.util.ArrayList;
 
 public class npl
-  implements TVK_SDKMgr.OnLogListener
+  extends FriendListObserver
 {
-  public int d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
+  public npl(OutSingleSharePlayMode paramOutSingleSharePlayMode) {}
   
-  public int e(String paramString1, String paramString2)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2);
+    String str;
+    if ((paramBoolean) && (paramString != null))
+    {
+      str = QQStoryContext.a().a(paramString);
+      if (!TextUtils.equals(str, paramString)) {
+        break label27;
+      }
     }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
+    label137:
+    for (;;)
+    {
+      return;
+      label27:
+      int i = 0;
+      for (;;)
+      {
+        if (i >= this.a.a.jdField_a_of_type_AndroidUtilSparseArray.size()) {
+          break label137;
+        }
+        VideoPlayerPagerAdapter.VideoViewHolder localVideoViewHolder = (VideoPlayerPagerAdapter.VideoViewHolder)this.a.a.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+        if (localVideoViewHolder == null) {
+          break;
+        }
+        if (TextUtils.equals(paramString, String.valueOf(((StoryVideoItem)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(localVideoViewHolder.c)).mOwnerUid)))
+        {
+          this.a.d();
+          SLog.d("Q.qqstory.player.NewFriendsPlayMode", "update nickname=%s, uin=%s", new Object[] { str, paramString });
+          return;
+        }
+        i += 1;
+      }
     }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
   }
 }
 

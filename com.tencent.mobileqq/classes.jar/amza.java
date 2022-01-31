@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.plugin.QZonePluginManager;
 
-public class amza
+public final class amza
   implements Runnable
 {
-  public amza(QZoneShareActivity paramQZoneShareActivity) {}
+  public amza(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    int i = this.a.b();
-    int j = this.a.a();
-    ThreadManager.getUIHandler().post(new amzb(this, i - j));
+    QZonePluginManager localQZonePluginManager = (QZonePluginManager)this.a.getManager(174);
+    if (localQZonePluginManager != null) {
+      localQZonePluginManager.b();
+    }
   }
 }
 

@@ -21,14 +21,14 @@ public class GroupEditeDragSortAdapter
   {
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130970357, null);
+      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130970372, null);
     }
     paramViewGroup.setVisibility(0);
-    paramViewGroup.findViewById(2131362741).setVisibility(8);
-    paramView = (TextView)paramViewGroup.findViewById(2131370191);
+    paramViewGroup.findViewById(2131362746).setVisibility(8);
+    paramView = (TextView)paramViewGroup.findViewById(2131370200);
     Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     paramView.setText(localGroups.group_name);
-    ViewCompat.setImportantForAccessibility(paramViewGroup.findViewById(2131370189), 1);
+    ViewCompat.setImportantForAccessibility(paramViewGroup.findViewById(2131370198), 1);
     paramViewGroup.setContentDescription(localGroups.group_name + "分组");
     return paramViewGroup;
   }

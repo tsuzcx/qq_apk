@@ -1,25 +1,13 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
 
-public class ajhg
-  implements View.OnFocusChangeListener
+class ajhg
+  implements Runnable
 {
-  public ajhg(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  ajhg(ajhf paramajhf) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void run()
   {
-    paramView = this.a;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublishHomeWorkFragment.b(paramView, bool);
-      if (paramBoolean) {
-        PublishHomeWorkFragment.a(this.a, PublishHomeWorkFragment.a(this.a).a());
-      }
-      return;
-    }
+    TroopAioKeywordTipBar.a(this.a.a, false);
   }
 }
 

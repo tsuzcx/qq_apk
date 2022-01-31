@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import adls;
+import adtz;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.biz.webviewplugin.Share;
@@ -40,8 +40,8 @@ public class ForwardQZoneRichImageOption
   {
     if ((paramQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null))
     {
-      this.jdField_a_of_type_Adls = new adls(this, this.jdField_a_of_type_AndroidAppActivity);
-      paramQQCustomDialog.addView(this.jdField_a_of_type_Adls.a());
+      this.jdField_a_of_type_Adtz = new adtz(this, this.jdField_a_of_type_AndroidAppActivity);
+      paramQQCustomDialog.addView(this.jdField_a_of_type_Adtz.a());
       a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName, paramQQCustomDialog);
     }
     return false;

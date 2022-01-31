@@ -12,7 +12,7 @@ import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ocb;
+import ogq;
 
 public class SquareFeedAllInfoPullSegment
   extends JobSegment
@@ -31,7 +31,7 @@ public class SquareFeedAllInfoPullSegment
     }
     localObject = new BatchGetSquareFeedInfoRequest();
     ((BatchGetSquareFeedInfoRequest)localObject).jdField_a_of_type_JavaUtilList = paramJobContext;
-    CmdTaskManger.a().a((NetworkRequest)localObject, new ocb(this, paramGetFeedIdListResult, localArrayList));
+    CmdTaskManger.a().a((NetworkRequest)localObject, new ogq(this, paramGetFeedIdListResult, localArrayList));
   }
   
   protected void a(JobContext paramJobContext, FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult)

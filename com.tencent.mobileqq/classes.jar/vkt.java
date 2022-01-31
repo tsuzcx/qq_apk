@@ -1,29 +1,37 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.IOnOfflineResCallback;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Calendar;
 
-public final class vkt
-  implements AsyncBack
+public class vkt
+  implements Runnable
 {
-  public void a(int paramInt) {}
+  public vkt(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
   
-  public void a(String paramString, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
+    boolean bool = false;
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    SharedPreferences localSharedPreferences = this.a.a.getPreferences();
+    long l1 = localSharedPreferences.getLong("key_check_temp", 0L);
+    long l2 = localCalendar.getTimeInMillis();
+    if (l1 < l2) {
+      bool = true;
     }
-    if ((paramInt == 0) && (paramString == null))
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoItemBuilder", 2, "TempCleanTask, lastCheck=" + l1 + ", today:" + l2 + ", needClean : " + bool);
+    }
+    if (bool)
     {
-      paramString = TroopSignItemBuilder.TroopSignVideoItemBuilder.a.entrySet().iterator();
-      while (paramString.hasNext()) {
-        ((TroopSignItemBuilder.TroopSignVideoItemBuilder.IOnOfflineResCallback)((Map.Entry)paramString.next()).getValue()).a(paramInt);
-      }
-      TroopSignItemBuilder.TroopSignVideoItemBuilder.a.clear();
+      localSharedPreferences.edit().putLong("key_check_temp", l2).commit();
+      ShortVideoUtils.a("", true);
     }
   }
 }

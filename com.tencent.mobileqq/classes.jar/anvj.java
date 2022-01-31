@@ -1,37 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoVote;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
+import android.os.Handler;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
+import dov.com.qq.im.capture.paster.PasterDataManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
+import java.util.Collections;
+import java.util.List;
 
 public class anvj
-  implements DialogInterface.OnClickListener
+  implements DoodleEmojiManager.POIPostersRequestCallback
 {
-  static
-  {
-    if (!EditVideoVote.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  public anvj(PasterDataManager paramPasterDataManager) {}
   
-  public anvj(EditVideoVote paramEditVideoVote, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, List paramList)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    VoteLayer.VoteItem localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoVote.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localVoteItem == null)) {
-      throw new AssertionError();
+    SLog.b("PasterDataManager", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    List localList = paramList;
+    if (paramList == null) {
+      localList = Collections.EMPTY_LIST;
     }
-    EditVideoVote.a(paramDialogInterface, localVoteItem);
-    paramDialogInterface.putInt("element_index", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoVote.a.a(35, paramDialogInterface);
+    Dispatchers.get().dispatch(new DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent(paramInt, localList));
   }
 }
 

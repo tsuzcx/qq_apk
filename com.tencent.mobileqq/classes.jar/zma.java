@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.app.RecommendTroopManagerImp;
-import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.RspBody;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class zma
-  implements Runnable
+public final class zma
+  implements DialogInterface.OnClickListener
 {
-  public zma(RecommendTroopManagerImp paramRecommendTroopManagerImp, long paramLong, oidb_0x9fb.RspBody paramRspBody) {}
+  public zma(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RecommendTroopManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppRecommendTroopManagerImp, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentImOidbCmd0x9fbOidb_0x9fb$RspBody);
+    HotChatManager.a(this.jdField_a_of_type_AndroidAppActivity, false);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C6B", "0X8004C6B", 0, 0, "", "", "", "");
   }
 }
 

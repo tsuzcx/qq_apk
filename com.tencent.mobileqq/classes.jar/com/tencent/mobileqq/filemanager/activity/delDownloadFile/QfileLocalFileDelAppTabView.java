@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.delDownloadFile;
 
-import acqh;
+import acyo;
 import android.content.Context;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
@@ -21,7 +21,7 @@ public class QfileLocalFileDelAppTabView
     this.b.clear();
     this.b.put("未安装", new ArrayList());
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this);
-    this.jdField_a_of_type_JavaLangRunnable = new acqh(this);
+    this.jdField_a_of_type_JavaLangRunnable = new acyo(this);
     ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }

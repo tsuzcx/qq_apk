@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import java.lang.ref.WeakReference;
 
-public class accn
+class accn
   implements Runnable
 {
-  public accn(WebIPCOperator paramWebIPCOperator, acct paramacct) {}
+  accn(accm paramaccm, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator.e(this.jdField_a_of_type_Acct.a);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_Accm.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    ((TroopHandler)localQQAppInterface.a(20)).a(Long.parseLong(this.jdField_a_of_type_Accm.jdField_a_of_type_JavaLangString), Long.parseLong(this.jdField_a_of_type_JavaLangString));
   }
 }
 

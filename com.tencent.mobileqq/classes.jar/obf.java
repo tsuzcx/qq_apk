@@ -1,15 +1,13 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserSelfInfoStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.utils.UncheckedCallable;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
 
 public class obf
-  implements UncheckedCallable
+  implements Runnable
 {
-  public obf(NewMyStorySegment paramNewMyStorySegment) {}
+  public obf(StoryMemoriesFragment paramStoryMemoriesFragment) {}
   
-  public GetUserSelfInfoStep a()
+  public void run()
   {
-    return new GetUserSelfInfoStep(null);
+    this.a.c();
   }
 }
 

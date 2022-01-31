@@ -1,27 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.now.enter.NowFestivalEnterFragment;
+import com.tencent.mobileqq.now.enter.NowFestivalWebViewFragment;
 
 public class ageo
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public ageo(ARTipsManager paramARTipsManager) {}
+  public ageo(NowFestivalEnterFragment paramNowFestivalEnterFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (ARTipsManager.a(this.a) != null)
-    {
-      ARTipsManager.a(this.a).setAlpha(f);
-      ARTipsManager.a(this.a).setTranslationY((1.0F - f) * AIOUtils.a(25.0F, ARTipsManager.a(this.a)));
-    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("url", NowFestivalEnterFragment.a(this.a));
+    localIntent.setClass(NowFestivalEnterFragment.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("fragment_class", NowFestivalWebViewFragment.class.getCanonicalName());
+    NowFestivalEnterFragment.a(this.a).startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ageo
  * JD-Core Version:    0.7.0.1
  */

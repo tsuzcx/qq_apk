@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public final class wdr
-  implements Parcelable.Creator
+public class wdr
+  implements Runnable
 {
-  public ZhituImgResponse a(Parcel paramParcel)
-  {
-    return new ZhituImgResponse(paramParcel);
-  }
+  public wdr(PublicAccountChatPie paramPublicAccountChatPie, ChatMessage paramChatMessage) {}
   
-  public ZhituImgResponse[] a(int paramInt)
+  public void run()
   {
-    return new ZhituImgResponse[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
   }
 }
 

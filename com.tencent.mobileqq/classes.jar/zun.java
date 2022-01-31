@@ -1,21 +1,36 @@
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
+import com.tencent.qphone.base.util.QLog;
 
 public class zun
-  implements Comparator
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public zun(MsgLruCache paramMsgLruCache) {}
+  public zun(TroopHandler paramTroopHandler) {}
   
-  public int a(Map.Entry paramEntry1, Map.Entry paramEntry2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (((Integer)paramEntry1.getValue()).intValue() < ((Integer)paramEntry2.getValue()).intValue()) {
-      return 1;
+    if (paramInt == 0)
+    {
+      paramBundle = new oidb_0x496.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        TroopHandler.a(this.a, paramBundle);
+        TroopHandler.b(this.a, paramBundle);
+        TroopHandler.c(this.a, paramBundle);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
+        return;
+      }
     }
-    if (paramEntry1.getValue() == paramEntry2.getValue()) {
-      return 0;
-    }
-    return -1;
+    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
   }
 }
 

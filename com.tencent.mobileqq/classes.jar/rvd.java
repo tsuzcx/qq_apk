@@ -1,47 +1,54 @@
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.voicechange.VoiceChangeBasicParams;
+import com.tencent.mobileqq.voicechange.VoiceChangeManager;
+import com.tencent.mobileqq.voicechange.VoiceChangeModeParams;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public final class rvd
+class rvd
   implements Runnable
 {
-  public rvd(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong) {}
+  rvd(rvc paramrvc, String paramString1, int paramInt, String paramString2) {}
   
   public void run()
   {
-    try
+    long l = 0L;
+    Object localObject1 = this.jdField_a_of_type_Rvc.a.a();
+    Object localObject2 = BuddyTransfileProcessor.a(this.jdField_a_of_type_Rvc.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null, 2, null);
+    localObject2 = MessageForPtt.getLocalFilePath(((QQRecorder.RecorderParam)localObject1).c, (String)localObject2);
+    String str = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf(".")).concat(".pcm");
+    if (!FileUtils.d(this.jdField_a_of_type_JavaLangString, str))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSendFromLocal()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq));
+      if (QLog.isColorLevel()) {
+        QLog.d("sougouptt", 2, "copy failed, return");
       }
-      AbsStructMsg localAbsStructMsg = StructMsgFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-      if ((localAbsStructMsg instanceof StructMsgForImageShare))
-      {
-        StructMsgForImageShare.resendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (StructMsgForImageShare)localAbsStructMsg);
-        return;
-      }
-      if (((localAbsStructMsg instanceof AbsShareMsg)) && (ForwardUtils.a(((AbsShareMsg)localAbsStructMsg).forwardType, localAbsStructMsg.mMsgServiceID)))
-      {
-        AbsShareMsg.resendSdkShareMessage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (AbsShareMsg)localAbsStructMsg);
-        return;
-      }
+      return;
     }
-    catch (RuntimeException localRuntimeException)
-    {
-      QLog.e("ChatActivityFacade", 1, "resendStructMessage error :", localRuntimeException);
-      throw localRuntimeException;
+    this.jdField_a_of_type_Rvc.a.c = 0L;
+    Object localObject3 = new File(str);
+    if (((File)localObject3).exists()) {
+      l = ((File)localObject3).length();
     }
-    MessageRecord localMessageRecord = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, null, true);
+    double d = QQRecorder.a(this.jdField_a_of_type_Int, 2, 2, l);
+    if (QLog.isColorLevel()) {
+      QLog.d("sougouptt", 2, "file size = " + l + " timelength = " + d);
+    }
+    localObject3 = new VoiceChangeBasicParams((String)localObject2, this.jdField_a_of_type_Int, ((QQRecorder.RecorderParam)localObject1).b, ((QQRecorder.RecorderParam)localObject1).c, 0);
+    VoiceChangeManager.a(this.jdField_a_of_type_Rvc.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), (VoiceChangeBasicParams)localObject3, null, null, VoiceChangeModeParams.a(str));
+    this.jdField_a_of_type_Rvc.a.a((String)localObject2, (int)d, (QQRecorder.RecorderParam)localObject1, this.b);
+    localObject1 = (InputMethodManager)this.jdField_a_of_type_Rvc.a.jdField_a_of_type_AndroidContentContext.getSystemService("input_method");
+    localObject2 = new Bundle();
+    ((Bundle)localObject2).putString("PCMFilePath", this.jdField_a_of_type_JavaLangString);
+    ((InputMethodManager)localObject1).sendAppPrivateCommand(this.jdField_a_of_type_Rvc.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, "com.tencent.mobileqq_handleCompleted", (Bundle)localObject2);
   }
 }
 

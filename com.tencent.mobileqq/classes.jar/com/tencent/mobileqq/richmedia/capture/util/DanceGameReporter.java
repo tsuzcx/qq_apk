@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
-import ahks;
+import ahpj;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -58,10 +58,10 @@ public class DanceGameReporter
       localObject1 = (BoyDataReport.BoyItem)paramBoyDataReport.next();
       if (localHashMap.containsKey(((BoyDataReport.BoyItem)localObject1).a))
       {
-        localObject2 = (ahks)localHashMap.get(((BoyDataReport.BoyItem)localObject1).a);
-        ((ahks)localObject2).b();
+        localObject2 = (ahpj)localHashMap.get(((BoyDataReport.BoyItem)localObject1).a);
+        ((ahpj)localObject2).b();
         if (((BoyDataReport.BoyItem)localObject1).b >= 1) {
-          ((ahks)localObject2).a();
+          ((ahpj)localObject2).a();
         }
       }
       else
@@ -70,7 +70,7 @@ public class DanceGameReporter
         if (((BoyDataReport.BoyItem)localObject1).b >= 1) {}
         for (int i = 1;; i = 0)
         {
-          localObject2 = new ahks(this, (String)localObject2, 1, i);
+          localObject2 = new ahpj(this, (String)localObject2, 1, i);
           localHashMap.put(((BoyDataReport.BoyItem)localObject1).a, localObject2);
           break;
         }
@@ -84,7 +84,7 @@ public class DanceGameReporter
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
-      paramBoyDataReport.put(localObject2, String.valueOf(((ahks)localHashMap.get(localObject2)).a()));
+      paramBoyDataReport.put(localObject2, String.valueOf(((ahpj)localHashMap.get(localObject2)).a()));
     }
     StatisticCollector.a(BaseApplicationImpl.getContext()).a(null, "dg_action_match", true, 0L, 0L, paramBoyDataReport, "");
   }

@@ -1,14 +1,13 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
 
-public class vhu
-  implements PopupWindow.OnDismissListener
+class vhu
+  implements Runnable
 {
-  public vhu(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  vhu(vht paramvht, boolean paramBoolean) {}
   
-  public void onDismiss()
+  public void run()
   {
-    StructingMsgItemBuilder.b(this.a, false);
+    this.jdField_a_of_type_Vht.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a(this.jdField_a_of_type_Vht.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_Vht.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, this.jdField_a_of_type_Vht.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener, this.jdField_a_of_type_Vht.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder$Holder, this.jdField_a_of_type_Boolean);
   }
 }
 

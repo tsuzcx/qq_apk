@@ -1,30 +1,23 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.media.MediaRecorder;
+import android.media.MediaRecorder.OnErrorListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMStoryEffectCameraCaptureUnit;
-import dov.com.qq.im.setting.IQIMCameraContainer;
+import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin.SimpleAACRecorder;
 
 public class ankg
-  extends BroadcastReceiver
+  implements MediaRecorder.OnErrorListener
 {
-  public ankg(QIMStoryEffectCameraCaptureUnit paramQIMStoryEffectCameraCaptureUnit) {}
+  public ankg(QzoneAudioRecordPlugin.SimpleAACRecorder paramSimpleAACRecorder) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onError(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStoryEffectCameraCaptureUnit", 2, new Object[] { "onReceive action=", paramContext });
-    }
-    if ("dov.com.qq.im.finish_capture_action".equals(paramContext)) {
-      this.a.a.a().finish();
-    }
+    paramMediaRecorder = "(code = " + paramInt1 + ", extra = " + paramInt2 + ")";
+    QzoneAudioRecordPlugin.SimpleAACRecorder.a(this.a, paramInt1, paramMediaRecorder);
+    QLog.w("QzoneVoiceRecordPlugin.SimpleRecorder", 1, "MediaRecorder error " + paramMediaRecorder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankg
  * JD-Core Version:    0.7.0.1
  */

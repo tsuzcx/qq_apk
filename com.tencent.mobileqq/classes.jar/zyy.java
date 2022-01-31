@@ -1,21 +1,30 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManagerImpl;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor;
+import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 
 public class zyy
-  implements Runnable
+  implements BaseMessageProcessor.RequestBuilder
 {
-  public zyy(ARRenderManagerImpl paramARRenderManagerImpl, ARBaseRender paramARBaseRender) {}
+  public zyy(BaseMessageProcessor paramBaseMessageProcessor, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq) {}
   
-  public void run()
+  public ToServiceMsg a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageProcessor.a.a("PbMessageSvc.PbMsgReadedReport");
+    byte[] arrayOfByte = this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray();
+    if (arrayOfByte != null)
+    {
+      localToServiceMsg.putWupBuffer(arrayOfByte);
+      localToServiceMsg.setEnableFastResend(true);
+      return localToServiceMsg;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zyy
  * JD-Core Version:    0.7.0.1
  */

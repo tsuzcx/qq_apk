@@ -1,39 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class adds
-  extends BizTroopObserver
+  implements Runnable
 {
-  public adds(TroopFileModel paramTroopFileModel) {}
+  public adds(FileManagerRSWorker paramFileManagerRSWorker) {}
   
-  protected void a(Object paramObject)
+  public void run()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    paramObject = (TroopFileStatusInfo)paramObject;
-    if (((FileManagerEntity)localObject).TroopUin != paramObject.jdField_a_of_type_Long) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TroopFileModel<FileAssistant>", 4, "difference troop uin file");
+    if (this.a.b == 0)
+    {
+      if (this.a.f != null)
+      {
+        this.a.a(this.a.f, 0L);
+        return;
+      }
+      this.a.b();
+      return;
+    }
+    if (this.a.f.equalsIgnoreCase(""))
+    {
+      this.a.a();
+      return;
+    }
+    try
+    {
+      if (this.a.jdField_a_of_type_JavaIoOutputStream != null) {
+        this.a.jdField_a_of_type_JavaIoOutputStream.flush();
+      }
+      this.a.jdField_a_of_type_Long = FileManagerUtil.a(this.a.d);
+      QLog.i("FileManagerRSWorker<FileAssistant>", 1, "nSessionId[" + this.a.c + "]retry request Httpmsg,rd[" + String.valueOf(this.a.jdField_a_of_type_Long) + "]");
+      FileManagerRSWorker.a(this.a, this.a.jdField_a_of_type_Long, this.a.h);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        QLog.e("FileManagerRSWorker<FileAssistant>", 1, localIOException.getMessage());
       }
     }
-    do
-    {
-      return;
-      if (TextUtils.isEmpty(TroopFileModel.a(this.a)))
-      {
-        localObject = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
-        if (((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaUtilUUID != null) {
-          TroopFileModel.a(this.a, ((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaUtilUUID.toString());
-        }
-      }
-    } while ((paramObject.jdField_a_of_type_JavaUtilUUID == null) || (TroopFileModel.a(this.a) == null) || (!TroopFileModel.a(this.a).equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString())));
-    TroopFileModel.a(this.a, paramObject);
   }
 }
 

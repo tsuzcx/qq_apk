@@ -1,20 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
 
 public class mfg
-  implements ThirdVideoManager.UUIDToUrlCallback
+  implements Animation.AnimationListener
 {
-  public mfg(VideoPreDownloadMgr paramVideoPreDownloadMgr, int paramInt) {}
+  public mfg(VideoFeedsCommentManager paramVideoFeedsCommentManager) {}
   
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
+    if (VideoFeedsCommentManager.a(this.a) != null) {
+      VideoFeedsCommentManager.a(this.a).setVisibility(8);
     }
-    ThreadManager.post(new mfh(this, paramString2, paramString1, paramInt), 5, null, true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

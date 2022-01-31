@@ -1,19 +1,15 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.webview.WebViewTitleStyleHelper;
 
-class tnd
+public class tnd
   implements Runnable
 {
-  tnd(tnc paramtnc, tni paramtni) {}
+  public tnd(QQBrowserActivity paramQQBrowserActivity) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_Tnc.a.app.getPreferences().edit();
-    localEditor.putString("chatHistoryEventName", this.jdField_a_of_type_Tni.a);
-    localEditor.putBoolean("chatHistoryEventEntryFirstShow", true);
-    localEditor.commit();
+    WebViewTitleStyleHelper.a().a(BaseApplicationImpl.sApplication.waitAppRuntime(null));
   }
 }
 

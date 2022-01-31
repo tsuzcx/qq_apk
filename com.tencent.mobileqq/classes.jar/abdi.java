@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
 
-public class abdi
-  implements Runnable
+class abdi
+  implements BusinessObserver
 {
-  public abdi(ShopScanActivity paramShopScanActivity) {}
+  abdi(abdh paramabdh) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    ShopScanActivity.d(this.a);
-    ShopScanActivity.a(this.a, null);
+    Object localObject = null;
+    String str = (String)paramObject;
+    paramObject = localObject;
+    if (paramBoolean)
+    {
+      paramObject = localObject;
+      if (!TextUtils.isEmpty(str)) {
+        paramObject = ArkMessageServerLogic.a(this.a.a.jdField_a_of_type_JavaLangString, str);
+      }
+    }
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler != null) {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler.a(this.a.a.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_JavaLangObject, paramObject);
+    }
   }
 }
 

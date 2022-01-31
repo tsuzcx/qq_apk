@@ -8,6 +8,7 @@ import android.content.pm.ApplicationInfo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Looper;
+import android.text.TextUtils;
 import com.tencent.av.AVLog;
 import com.tencent.av.VideoController;
 import com.tencent.av.config.Common;
@@ -20,8 +21,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Vector;
-import jip;
-import jiq;
+import jks;
+import jkt;
 
 public class QQGAudioCtrl
 {
@@ -131,7 +132,7 @@ public class QQGAudioCtrl
   private static String mCameraParameters;
   static QQGAudioCtrl sQQGAudioCtrl;
   private int appid;
-  jip mEventHandler = null;
+  jks mEventHandler = null;
   long mGroupId = 0L;
   public Vector mInviteGAudioUinList = new Vector();
   public boolean mIsSwitchGroup;
@@ -160,7 +161,7 @@ public class QQGAudioCtrl
       if (localLooper == null) {
         break label126;
       }
-      this.mEventHandler = new jip(this, localLooper);
+      this.mEventHandler = new jks(this, localLooper);
     }
     for (;;)
     {
@@ -169,7 +170,7 @@ public class QQGAudioCtrl
       label126:
       localLooper = Looper.myLooper();
       if (localLooper != null) {
-        this.mEventHandler = new jip(this, localLooper);
+        this.mEventHandler = new jks(this, localLooper);
       } else {
         this.mEventHandler = null;
       }
@@ -428,37 +429,81 @@ public class QQGAudioCtrl
   
   public String GetSharpConfigPayloadFromFile()
   {
-    Object localObject = Common.a(BaseApplicationImpl.getContext(), "SharpConfigPayload");
-    if (localObject != null)
+    Object localObject1 = Common.a(BaseApplicationImpl.getContext(), "SharpConfigPayload");
+    if (localObject1 != null)
     {
-      String str = new String((byte[])localObject);
-      int i = str.indexOf('|');
-      localObject = str.substring(0, i);
-      str = str.substring(i + 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("", 2, "GetSharpConfigPayloadFromFile multi version: " + (String)localObject + ". payload: " + str);
+      String str2 = new String((byte[])localObject1);
+      int i = str2.indexOf('|');
+      Object localObject2 = "";
+      String str1 = "";
+      try
+      {
+        localObject1 = str2.substring(0, i);
       }
-      return str;
+      catch (Exception localException2)
+      {
+        try
+        {
+          for (;;)
+          {
+            localObject2 = str2.substring(i + 1);
+            if (QLog.isColorLevel()) {
+              QLog.d("QQGAudioCtrl", 2, "GetSharpConfigPayloadFromFile multi version: " + (String)localObject1 + ". payload: " + (String)localObject2);
+            }
+            return localObject2;
+            localException2 = localException2;
+            localObject1 = localObject2;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("QQGAudioCtrl", 2, "GetSharpConfigPayloadFromFile version e = " + localException2);
+              localObject1 = localObject2;
+            }
+          }
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            localObject2 = str1;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("QQGAudioCtrl", 2, "GetSharpConfigPayloadFromFile payload e = " + localException1);
+              localObject2 = str1;
+            }
+          }
+        }
+      }
     }
     return "";
   }
   
   public int GetSharpConfigVersionFromFile()
   {
-    int i = 0;
-    Object localObject = Common.a(BaseApplicationImpl.getContext(), "SharpConfigPayload");
-    if (localObject != null)
+    try
     {
-      String str = new String((byte[])localObject);
-      i = str.indexOf('|');
-      localObject = str.substring(0, i);
-      str = str.substring(i + 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("", 2, "GetSharpConfigPayloadFromFile multi version: " + (String)localObject + ". payload: " + str);
+      Object localObject = Common.a(BaseApplicationImpl.getContext(), "SharpConfigPayload");
+      if (localObject != null)
+      {
+        String str = new String((byte[])localObject);
+        if (!TextUtils.isEmpty(str))
+        {
+          int i = str.indexOf('|');
+          localObject = str.substring(0, i);
+          str = str.substring(i + 1);
+          if (QLog.isColorLevel()) {
+            QLog.d("", 2, "GetSharpConfigPayloadFromFile multi version: " + (String)localObject + ". payload: " + str);
+          }
+          return Integer.parseInt((String)localObject);
+        }
+        QLog.w("QQGAudioCtrl", 1, "GetSharpConfigVersionFromFile, payloadBufTmp[" + str + "]");
+        return 0;
       }
-      i = Integer.parseInt((String)localObject);
     }
-    return i;
+    catch (Exception localException)
+    {
+      QLog.w("QQGAudioCtrl", 1, "GetSharpConfigVersionFromFile, Exception", localException);
+    }
+    return 0;
   }
   
   public native int Invite(long[] paramArrayOfLong, int paramInt1, String[] paramArrayOfString, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, int paramInt4);
@@ -824,22 +869,22 @@ public class QQGAudioCtrl
   {
     if (this.mEventHandler != null)
     {
-      localjiq = new jiq(this);
-      localjiq.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-      localjiq.jdField_a_of_type_Long = paramLong2;
-      localjiq.jdField_b_of_type_Long = paramLong1;
-      localjiq.c = paramInt2;
-      localjiq.jdField_a_of_type_Int = paramInt3;
-      localjiq.jdField_b_of_type_Int = paramInt4;
+      localjkt = new jkt(this);
+      localjkt.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      localjkt.jdField_a_of_type_Long = paramLong2;
+      localjkt.jdField_b_of_type_Long = paramLong1;
+      localjkt.c = paramInt2;
+      localjkt.jdField_a_of_type_Int = paramInt3;
+      localjkt.jdField_b_of_type_Int = paramInt4;
       if (paramArrayOfByte == null)
       {
         paramInt2 = 0;
-        localjiq.d = paramInt2;
+        localjkt.d = paramInt2;
         paramArrayOfByte = this.mEventHandler.obtainMessage();
         if (paramArrayOfByte != null)
         {
           paramArrayOfByte.what = paramInt1;
-          paramArrayOfByte.obj = localjiq;
+          paramArrayOfByte.obj = localjkt;
           this.mEventHandler.sendMessage(paramArrayOfByte);
         }
       }
@@ -847,7 +892,7 @@ public class QQGAudioCtrl
     while (!QLog.isColorLevel()) {
       for (;;)
       {
-        jiq localjiq;
+        jkt localjkt;
         return;
         paramInt2 = paramArrayOfByte.length;
       }
@@ -1127,7 +1172,7 @@ public class QQGAudioCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.gaudio.QQGAudioCtrl
  * JD-Core Version:    0.7.0.1
  */

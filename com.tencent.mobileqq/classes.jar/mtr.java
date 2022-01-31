@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-class mtr
-  implements Runnable
+public class mtr
 {
-  mtr(mtq parammtq) {}
-  
-  public void run()
-  {
-    SubscriptRecommendController.a(this.a.a.a, false);
-  }
+  public TextView a;
+  public URLImageView a;
+  public mtq a;
+  public TextView b;
+  public TextView c;
 }
 
 

@@ -1,23 +1,33 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class zyg
-  implements Runnable
+  extends TroopObserver
 {
-  public zyg(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
+  private zyg(UpdateTroop paramUpdateTroop) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    if (ARVideoRecordUIControllerImpl.a(this.a) != null)
-    {
-      ARVideoRecordUIControllerImpl.a(this.a).a(0);
-      ARVideoRecordUIControllerImpl.a(this.a).b();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
     }
+    if (!paramBoolean)
+    {
+      this.a.a(6);
+      return;
+    }
+    UpdateTroop.a(this.a).a.edit().putBoolean("isTrooplistok", true).commit();
+    UpdateTroop.b(this.a).a(3, true, Integer.valueOf(2));
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zyg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.olympic.OlympicManager;
+import EncounterSvc.RespEncounterInfo;
+import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper;
+import com.tencent.mobileqq.util.FaceDecoder;
 
 public class agdz
   implements Runnable
 {
-  public agdz(OlympicManager paramOlympicManager, int paramInt) {}
+  public agdz(ChatPushCarrierHelper paramChatPushCarrierHelper, String paramString, RespEncounterInfo paramRespEncounterInfo) {}
   
   public void run()
   {
-    synchronized (OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager))
+    FaceDecoder localFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper.a;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp > 0) {}
+    for (long l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.stranger_face_timestamp;; l = this.jdField_a_of_type_EncounterSvcRespEncounterInfo.common_face_timestamp)
     {
-      SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager.a.getPreferences();
-      if (localSharedPreferences != null) {
-        localSharedPreferences.edit().putInt("isTorchbearer", this.jdField_a_of_type_Int).commit();
-      }
+      localFaceDecoder.a(32, str, 200, l);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agdz
  * JD-Core Version:    0.7.0.1
  */

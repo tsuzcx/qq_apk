@@ -51,9 +51,9 @@ import cooperation.qwallet.plugin.PatternLockUtils;
 import mqq.app.AppRuntime;
 import mqq.app.Constants.LogoutReason;
 import mqq.os.MqqHandler;
-import szp;
-import szq;
-import szr;
+import teh;
+import tei;
+import tej;
 
 public class LoginActivity
   extends FragmentActivity
@@ -78,7 +78,7 @@ public class LoginActivity
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    ThreadManager.postImmediately(new szp(paramQQAppInterface, paramString), null, false);
+    ThreadManager.postImmediately(new teh(paramQQAppInterface, paramString), null, false);
     try
     {
       StatisticCollector.a(BaseApplicationImpl.sApplication).a(paramString);
@@ -219,16 +219,16 @@ public class LoginActivity
     if ((paramString != null) && (paramString.length() > 0))
     {
       JumpAction localJumpAction = JumpParser.a(this.app, this, paramString);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) || ("web".equals(localJumpAction.a("src_type"))) || (localJumpAction.e()) || (localJumpAction.f()))
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) || ("web".equals(localJumpAction.a("src_type"))) || (localJumpAction.f()) || (localJumpAction.g()))
       {
         localJumpAction.b((String)localObject);
-        if (localJumpAction.e()) {
+        if (localJumpAction.f()) {
           this.jdField_a_of_type_Boolean = false;
         }
         localJumpAction.b();
         return true;
       }
-      if (("h5".equalsIgnoreCase(localJumpAction.a("jump_from"))) && (localJumpAction.d()))
+      if (("h5".equalsIgnoreCase(localJumpAction.a("jump_from"))) && (localJumpAction.e()))
       {
         getIntent().putExtra("package_from_h5", "pakage_from_h5");
         getIntent().putExtra("jump_action_from_h5", paramString);
@@ -272,7 +272,7 @@ public class LoginActivity
       String str = this.app.getAccount();
       localIntent.putExtra("login_success_uin", str);
       sendBroadcast(localIntent);
-      ThreadManager.getUIHandler().postDelayed(new szr(this, str), 1000L);
+      ThreadManager.getUIHandler().postDelayed(new tej(this, str), 1000L);
       bool = true;
     }
     return bool;
@@ -424,7 +424,7 @@ public class LoginActivity
   {
     Object localObject = getSupportFragmentManager();
     FragmentTransaction localFragmentTransaction = ((FragmentManager)localObject).beginTransaction();
-    localObject = ((FragmentManager)localObject).findFragmentById(2131374937);
+    localObject = ((FragmentManager)localObject).findFragmentById(2131374989);
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment != null) || (localObject != null))
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment == null) && (localObject != null) && ((localObject instanceof GuideBaseFragment))) {
@@ -433,7 +433,7 @@ public class LoginActivity
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment.a(null);
       }
-      localFragmentTransaction.replace(2131374937, paramGuideBaseFragment);
+      localFragmentTransaction.replace(2131374989, paramGuideBaseFragment);
       if (VersionUtils.e()) {
         localFragmentTransaction.commitAllowingStateLoss();
       }
@@ -445,7 +445,7 @@ public class LoginActivity
       return;
       localFragmentTransaction.commit();
       continue;
-      localFragmentTransaction.add(2131374937, paramGuideBaseFragment);
+      localFragmentTransaction.add(2131374989, paramGuideBaseFragment);
       if (VersionUtils.e()) {
         localFragmentTransaction.commitAllowingStateLoss();
       } else {
@@ -472,7 +472,7 @@ public class LoginActivity
     e();
     if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842704);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842739);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
   }
@@ -494,7 +494,7 @@ public class LoginActivity
     this.c = getIntent().getBooleanExtra("IS_ADD_ACCOUNT", false);
     this.e = getIntent().getBooleanExtra("from_register_choose", false);
     this.d = getIntent().getBooleanExtra("login_from_account_change", false);
-    a(2130842704);
+    a(2130842739);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       SoftInputResizeLayout.a(this);
     }
@@ -509,13 +509,13 @@ public class LoginActivity
         QLog.d("LoginActivity", 2, "LoginActivity app is " + this.app);
       }
       this.jdField_a_of_type_Boolean = true;
-      super.setContentView(2130971499);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374935));
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131374937));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374936));
+      super.setContentView(2130971525);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131374987));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131374989));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374988));
       if (paramBundle != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment = ((GuideBaseFragment)getSupportFragmentManager().findFragmentById(2131374937));
+        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment = ((GuideBaseFragment)getSupportFragmentManager().findFragmentById(2131374989));
         if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment != null) {
           this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment.a(this);
         }
@@ -676,7 +676,7 @@ public class LoginActivity
           }
           if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
           {
-            this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842704);
+            this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842739);
             this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
           }
           if (QLog.isColorLevel())
@@ -716,7 +716,7 @@ public class LoginActivity
       if (PhoneNumLoginImpl.a().a()) {
         return;
       }
-      ThreadManager.postImmediately(new szq(this), null, false);
+      ThreadManager.postImmediately(new tei(this), null, false);
       a(this.app.getAccount());
       if (!isFinishing()) {}
       try

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agni;
+import agrx;
 import java.util.List;
 
 public abstract interface PLUploadManager$UploadListener
 {
-  public abstract void a(long paramLong, agni paramagni);
+  public abstract void a(long paramLong, agrx paramagrx);
   
   public abstract void a(List paramList, long paramLong);
 }

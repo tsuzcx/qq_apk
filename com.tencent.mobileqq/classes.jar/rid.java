@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.litetransfersdk.ProtocolHelper;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class rid
   implements Runnable
 {
-  public rid(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public rid(ProtocolHelper paramProtocolHelper) {}
   
   public void run()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.a = true;
-    AddFriendLogicActivity.a(this.a).hide();
-    AddFriendLogicActivity.a(this.a);
+    FMToastUtil.a(2131427562);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rid
  * JD-Core Version:    0.7.0.1
  */

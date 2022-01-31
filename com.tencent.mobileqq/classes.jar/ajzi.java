@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.data.DynamicAvatar;
-import com.tencent.mobileqq.util.DynamicFaceDrawable;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.widget.GridView;
 
 public class ajzi
   implements Runnable
 {
-  public ajzi(DynamicFaceDrawable paramDynamicFaceDrawable, DynamicAvatar paramDynamicAvatar) {}
+  public ajzi(AvatarWallAdapter paramAvatarWallAdapter, int paramInt, ViewGroup.LayoutParams paramLayoutParams) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilDynamicFaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqDataDynamicAvatar);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.setNumColumns(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
   }
 }
 

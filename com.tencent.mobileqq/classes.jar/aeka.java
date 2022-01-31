@@ -1,32 +1,55 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.utils.MusicCacheManager;
+import com.tencent.mobileqq.lightReply.FacePicDectect;
+import com.tencent.mobileqq.lightReply.FacePicDectect.FaceDetectFinishedListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import com.tencent.ttpic.util.youtu.VideoPreviewFaceOutlineDetector;
 
 public class aeka
   implements Runnable
 {
-  public aeka(QQPlayerService paramQQPlayerService) {}
+  public aeka(FacePicDectect paramFacePicDectect, FacePicDectect.FaceDetectFinishedListener paramFaceDetectFinishedListener) {}
   
   public void run()
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    SharedPreferences localSharedPreferences = this.a.getSharedPreferences("QQPlayerService.sp", 0);
-    long l1 = localSharedPreferences.getLong("del_timestamp", 0L);
-    long l2 = localCalendar.getTimeInMillis();
-    if (l1 < l2)
+    try
     {
-      localSharedPreferences.edit().putLong("del_timestamp", l2).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCacheManager", 2, "lastDel<today =====>> delCacheByTimeAndSpace");
+      int j;
+      int i;
+      if (FacePicDectect.a() != null)
+      {
+        long l1 = System.currentTimeMillis();
+        FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect).doTrack(FacePicDectect.a(), FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1, FacePicDectect.b(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1);
+        FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect).doFaceDetect(FacePicDectect.a(), FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1, FacePicDectect.b(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1);
+        j = FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect).getFaceCount();
+        FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect).doTrack(FacePicDectect.a(), FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1, FacePicDectect.b(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1);
+        if (QLog.isColorLevel()) {
+          QLog.i("faceDetectPLL", 2, "detect face temp count" + j);
+        }
+        long l2 = System.currentTimeMillis();
+        if (QLog.isColorLevel()) {
+          QLog.d("FacePicDetect", 2, "detect time is" + (l2 - l1));
+        }
+        i = FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect).getFaceCount();
       }
-      MusicCacheManager.b();
+      for (;;)
+      {
+        i = Math.max(i, j);
+        if (QLog.isColorLevel()) {
+          QLog.d("FacePicDetect", 2, "faceDetect faceCount = " + i);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect$FaceDetectFinishedListener.a(i);
+        FacePicDectect.a(null);
+        return;
+        QLog.e("FacePicDetect", 1, "rgbdata is null");
+        i = -1;
+        j = -1;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("FacePicDetect", 1, "face detect failed", localException);
+      this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect$FaceDetectFinishedListener.a(-1);
+      FacePicDectect.a(null);
     }
   }
 }

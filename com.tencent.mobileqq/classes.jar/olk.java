@@ -1,17 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWLog;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWProto;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
+import com.tencent.biz.qqstory.takevideo.EditVideoTag;
+import com.tencent.biz.qqstory.takevideo.EditVideoTag.EditBehavior;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
 
 public class olk
-  extends Handler
+  implements QQStoryPullToRefreshListView.PullToRefreshListener
 {
-  public olk(RMWService paramRMWService) {}
+  public olk(EditVideoTag paramEditVideoTag) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    RMWLog.a("RMWService", "service.handle : " + RMWProto.a(paramMessage));
+    EditVideoTag.EditBehavior localEditBehavior = EditVideoTag.a(this.a);
+    EditVideoTag.a(this.a, EditVideoTag.a(this.a)).a(localEditBehavior);
   }
 }
 

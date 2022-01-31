@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import afbm;
+import afgj;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -18,7 +18,7 @@ public class NearbyProfilePicBrowserActivity
   {
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("intent_param_show_del_pic_and_set_head", false);
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new afbm(this);
+      this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new afgj(this);
     }
     return super.doOnCreate(paramBundle);
   }

@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView.ScrollEventCallback;
+import android.widget.TextView;
 
-public class mfw
-  implements ReadInJoyBaseListView.ScrollEventCallback
+public final class mfw
+  implements Runnable
 {
-  public mfw(VideoUIManager paramVideoUIManager) {}
+  public mfw(TextView paramTextView, StringBuilder paramStringBuilder) {}
   
-  public void a()
+  public void run()
   {
-    this.a.b();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangStringBuilder);
   }
 }
 

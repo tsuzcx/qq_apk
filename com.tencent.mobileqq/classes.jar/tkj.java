@@ -1,16 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class tkj
-  implements DialogInterface.OnClickListener
+class tkj
+  implements DialogInterface.OnCancelListener
 {
-  public tkj(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  tkj(tkf paramtkf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    ThreadManager.executeOnNetWorkThread(new tkk(this));
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 

@@ -1,21 +1,16 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class vfd
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public vfd(ScribbleItemBuilder paramScribbleItemBuilder) {}
+  public vfd(HeartCombolEffectView paramHeartCombolEffectView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
-    if (localMessageRecord != null) {
-      ((FlashChatManager)this.a.a.getManager(216)).a(paramView.getContext(), localMessageRecord);
-    }
+    return true;
   }
 }
 

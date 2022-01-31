@@ -27,32 +27,32 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import ngi;
-import ngj;
-import ngk;
-import ngl;
-import ngm;
-import ngn;
-import ngo;
-import ngp;
-import ngq;
-import ngr;
-import ngs;
-import ngt;
-import ngu;
-import ngv;
-import ngw;
-import ngx;
-import ngy;
-import ngz;
-import nha;
-import nhb;
-import nhc;
-import nhd;
-import nhe;
-import nhf;
-import nhg;
-import nhh;
+import nks;
+import nkt;
+import nku;
+import nkv;
+import nkw;
+import nkx;
+import nky;
+import nkz;
+import nla;
+import nlb;
+import nlc;
+import nld;
+import nle;
+import nlf;
+import nlg;
+import nlh;
+import nli;
+import nlj;
+import nlk;
+import nll;
+import nlm;
+import nln;
+import nlo;
+import nlp;
+import nlq;
+import nlr;
 
 public abstract class ShareModeBase
 {
@@ -224,7 +224,7 @@ public abstract class ShareModeBase
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ngx(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nlh(this));
       return;
     }
     ShareData localShareData = new ShareData();
@@ -257,7 +257,7 @@ public abstract class ShareModeBase
   protected void b(ShareCopyLinkData paramShareCopyLinkData)
   {
     String str = paramShareCopyLinkData.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ngo(this, str, null, false, paramShareCopyLinkData)).a(new ngn(this, paramShareCopyLinkData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareCopyLinkData));
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nky(this, str, null, false, paramShareCopyLinkData)).a(new nkx(this, paramShareCopyLinkData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareCopyLinkData));
   }
   
   protected final void b(ShareData paramShareData)
@@ -291,15 +291,15 @@ public abstract class ShareModeBase
   protected void b(ShareQQData paramShareQQData)
   {
     if ((paramShareQQData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareQQData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ngi(this, paramShareQQData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareQQData));
+      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nks(this, paramShareQQData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareQQData));
     }
     for (;;)
     {
       String str = paramShareQQData.h;
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nhb(this, str, null, true, paramShareQQData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareQQData));
+      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nll(this, str, null, true, paramShareQQData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareQQData));
       return;
       if ((paramShareQQData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareQQData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isInteractVideo())) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ngt(this, paramShareQQData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareQQData));
+        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nld(this, paramShareQQData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareQQData));
       }
     }
   }
@@ -307,16 +307,16 @@ public abstract class ShareModeBase
   protected void b(ShareQZoneData paramShareQZoneData)
   {
     String str = paramShareQZoneData.e;
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nhh(this, str, null, false, paramShareQZoneData));
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nlr(this, str, null, false, paramShareQZoneData));
     if ((paramShareQZoneData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareQZoneData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ngk(this, paramShareQZoneData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)).a(new ngj(this, paramShareQZoneData));
+      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nku(this, paramShareQZoneData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)).a(new nkt(this, paramShareQZoneData));
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareQZoneData));
       return;
       if ((paramShareQZoneData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareQZoneData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isInteractVideo())) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ngm(this, paramShareQZoneData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)).a(new ngl(this, paramShareQZoneData));
+        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nkw(this, paramShareQZoneData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)).a(new nkv(this, paramShareQZoneData));
       }
     }
   }
@@ -324,16 +324,16 @@ public abstract class ShareModeBase
   protected void b(ShareSinaData paramShareSinaData)
   {
     String str = paramShareSinaData.c;
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ngp(this, str, null, false, paramShareSinaData));
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nkz(this, str, null, false, paramShareSinaData));
     if ((paramShareSinaData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareSinaData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ngs(this, paramShareSinaData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareSinaData)).a(new ngr(this, paramShareSinaData)).a(new ngq(this, paramShareSinaData));
+      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nlc(this, paramShareSinaData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareSinaData)).a(new nlb(this, paramShareSinaData)).a(new nla(this, paramShareSinaData));
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareSinaData));
       return;
       if ((paramShareSinaData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareSinaData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isInteractVideo())) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ngw(this, paramShareSinaData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareSinaData)).a(new ngv(this, paramShareSinaData)).a(new ngu(this, paramShareSinaData));
+        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nlg(this, paramShareSinaData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareSinaData)).a(new nlf(this, paramShareSinaData)).a(new nle(this, paramShareSinaData));
       } else {
         this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new DownloadPic2FileJob(paramShareSinaData.e, paramShareSinaData.d, paramShareSinaData.jdField_a_of_type_Boolean));
       }
@@ -367,23 +367,23 @@ public abstract class ShareModeBase
     {
       return;
     }
-    ThreadManager.getUIHandler().post(new ngy(this, localShareData));
+    ThreadManager.getUIHandler().post(new nli(this, localShareData));
   }
   
   protected void c(ShareWeChatData paramShareWeChatData)
   {
     String str = paramShareWeChatData.d;
     SLog.b("Q.qqstory.share.ShareModeBase", "handleShareToWeChatJob url: %s", str);
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nhc(this, str, null, false, paramShareWeChatData));
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nlm(this, str, null, false, paramShareWeChatData));
     if ((paramShareWeChatData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareWeChatData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nhd(this, paramShareWeChatData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareWeChatData));
+      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nln(this, paramShareWeChatData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareWeChatData));
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nhg(this, paramShareWeChatData.e)).a(new nhf(this, paramShareWeChatData.b, paramShareWeChatData.c, paramShareWeChatData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareWeChatData));
+      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nlq(this, paramShareWeChatData.e)).a(new nlp(this, paramShareWeChatData.b, paramShareWeChatData.c, paramShareWeChatData)).a(new JobExecutor.OnJobExecuteResultCallback(this, paramShareWeChatData));
       return;
       if ((paramShareWeChatData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null) && (paramShareWeChatData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isInteractVideo())) {
-        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nhe(this, paramShareWeChatData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareWeChatData));
+        this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new nlo(this, paramShareWeChatData.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramShareWeChatData));
       }
     }
   }
@@ -410,7 +410,7 @@ public abstract class ShareModeBase
     {
       return;
     }
-    ThreadManager.getUIHandler().post(new ngz(this, localShareData));
+    ThreadManager.getUIHandler().post(new nlj(this, localShareData));
   }
   
   public void e(ShareData paramShareData)
@@ -435,7 +435,7 @@ public abstract class ShareModeBase
     {
       return;
     }
-    ThreadManager.getUIHandler().post(new nha(this, localShareData));
+    ThreadManager.getUIHandler().post(new nlk(this, localShareData));
   }
 }
 

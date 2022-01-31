@@ -1,15 +1,30 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import mqq.os.MqqHandler;
 
 public class uau
-  implements Runnable
+  extends TroopObserver
 {
-  public uau(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public uau(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    ((TroopHandler)this.a.app.a(20)).a(this.a.b, this.a.i, this.a.e);
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a.sendEmptyMessage(1);
+      }
+    }
+    while ((paramInt1 != 2) || (paramInt2 != 0)) {
+      return;
+    }
+    TroopAssistantManager.a().b(paramString, this.a.app);
+    this.a.c();
+  }
+  
+  protected void b(String paramString)
+  {
+    this.a.c();
   }
 }
 

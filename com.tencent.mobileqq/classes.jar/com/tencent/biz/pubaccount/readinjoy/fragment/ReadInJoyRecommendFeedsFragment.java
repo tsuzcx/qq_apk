@@ -61,7 +61,7 @@ public class ReadInJoyRecommendFeedsFragment
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyKanDianViewController.a(paramBoolean);
           ReadInJoyLogicEngineEventDispatcher.a().a(3, null);
         }
-        if ((paramBundle.e() > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyKanDianViewController != null)) {
+        if ((paramBundle.f() > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyKanDianViewController != null)) {
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyKanDianViewController.a(false);
         }
       }

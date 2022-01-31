@@ -1,60 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkUtil;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.mobileqq.ark.ArkAppEnvConfig;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.data.ArkAppMessage;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar.Tab;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 
-public final class lfz
-  implements Runnable
+public class lfz
+  extends ReadInJoyObserver
 {
-  public void run()
+  public lfz(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    Object localObject2 = ReadInJoyHelper.c(ReadInJoyUtils.a());
-    String str = ReadInJoyHelper.d(ReadInJoyUtils.a());
-    Object localObject1;
-    if ((ArkAppEnvConfig.a() != null) && (ArkAppEnvConfig.a().a() == 2))
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden" + paramBoolean);
+    }
+    if (paramInt1 == 0)
     {
-      localObject1 = "com.tencent.kandianfeeds";
-      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(str))) {
-        break label190;
-      }
-      ArkLocalAppMgr localArkLocalAppMgr = ReadInJoyArkUtil.a();
-      localObject1 = "";
-      if (localArkLocalAppMgr != null) {
-        localObject1 = localArkLocalAppMgr.a((String)localObject2, str);
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label126;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArkUtil", 2, new Object[] { "No need to preDownload, appName: ", localObject2, ", appMinVersion: ", str, ", appPath: ", localObject1 });
+      ReadInJoyBaseFragment localReadInJoyBaseFragment = ReadInJoyNewFeedsActivity.a(this.a).a(ReadInJoyNewFeedsActivity.a(this.a)).a();
+      if ((localReadInJoyBaseFragment != null) && ((localReadInJoyBaseFragment instanceof ReadInJoySelfFragment))) {
+        ((ReadInJoySelfFragment)localReadInJoyBaseFragment).a(paramInt2, paramInt3, paramBoolean);
       }
     }
-    label126:
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = "com.tencent.test.kandianfeeds";
-        break;
-        localObject1 = new ArkAppMessage();
-        ((ArkAppMessage)localObject1).appName = ((String)localObject2);
-        ((ArkAppMessage)localObject1).appMinVersion = str;
-        ReadInJoyArkUtil.a((ArkAppMessage)localObject1, 0);
-      } while (!QLog.isColorLevel());
-      QLog.d("ReadInJoyArkUtil", 2, new Object[] { "After login preDownload begin, appName: ", ((ArkAppMessage)localObject1).appName, ", appMinVersion: ", ((ArkAppMessage)localObject1).appMinVersion });
-      return;
-      localObject2 = new ArkAppMessage();
-      ((ArkAppMessage)localObject2).appName = ((String)localObject1);
-      ((ArkAppMessage)localObject2).appMinVersion = "1.0.0.1";
-      ReadInJoyArkUtil.a((ArkAppMessage)localObject2, 0);
-    } while (!QLog.isColorLevel());
-    label190:
-    QLog.d("ReadInJoyArkUtil", 2, new Object[] { "After login preDownload begin, appName: ", ((ArkAppMessage)localObject2).appName, ", appMinVersion: ", ((ArkAppMessage)localObject2).appMinVersion });
+  }
+  
+  public void a(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
+    }
+    this.a.runOnUiThread(new lga(this));
   }
 }
 

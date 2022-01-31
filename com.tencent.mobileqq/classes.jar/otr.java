@@ -1,42 +1,17 @@
-import android.graphics.Rect;
-import android.os.CountDownTimer;
-import android.view.MotionEvent;
-import android.view.TouchDelegate;
-import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.util.AccessibilityUtil;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.QLog;
 
 class otr
-  extends TouchDelegate
+  implements Runnable
 {
-  otr(otq paramotq, Rect paramRect, View paramView)
-  {
-    super(paramRect, paramView);
-  }
+  otr(otq paramotq) {}
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", 2, "ThreadName:" + Thread.currentThread().getName());
     }
-    for (;;)
-    {
-      return true;
-      if (QRDisplayActivity.a(this.a.a) != null)
-      {
-        QRDisplayActivity.a(this.a.a, false);
-        QRDisplayActivity.a(this.a.a).start();
-        continue;
-        if (QRDisplayActivity.a(this.a.a) != null) {
-          QRDisplayActivity.a(this.a.a).cancel();
-        }
-        if (!QRDisplayActivity.a(this.a.a))
-        {
-          AccessibilityUtil.c(this.a.a.d);
-          this.a.a.onClick(this.a.a.d);
-        }
-      }
-    }
+    this.a.a.a();
   }
 }
 

@@ -54,7 +54,7 @@ public class StructMsgItemLayout5Adapter
       localTextView.setGravity(80);
       localTextView.setEllipsize(TextUtils.TruncateAt.END);
       if (paramBoolean) {
-        localTextView.setBackgroundResource(2130839694);
+        localTextView.setBackgroundResource(2130839709);
       }
       int i = AIOUtils.a(12.5F, localResources);
       int j = AIOUtils.a(12.0F, localResources);
@@ -80,7 +80,7 @@ public class StructMsgItemLayout5Adapter
       } while (!paramBoolean);
       paramView = localTextView;
     } while (localTextView.getBackground() != null);
-    localTextView.setBackgroundResource(2130839694);
+    localTextView.setBackgroundResource(2130839709);
     return localTextView;
   }
   

@@ -13,9 +13,9 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.List;
-import kkp;
-import kkq;
-import kkr;
+import kmw;
+import kmx;
+import kmy;
 import tencent.im.troop_search_searchtab.searchtab.Card;
 import tencent.im.troop_search_searchtab.searchtab.TitleBar;
 
@@ -33,21 +33,21 @@ public class TroopCardSameCity
   public TroopCardSameCity(ContactBaseView.IAddContactContext paramIAddContactContext)
   {
     super(paramIAddContactContext);
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = new kkr(this);
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = new kmy(this);
   }
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366413));
-    this.b = ((TextView)findViewById(2131366416));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366414));
-    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView = ((GridViewForScrollView)findViewById(2131366418));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366411));
+    this.b = ((TextView)findViewById(2131366414));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366412));
+    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView = ((GridViewForScrollView)findViewById(2131366416));
     this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
   }
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView.setOnItemClickListener(new kkp(this));
+    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView.setOnItemClickListener(new kmw(this));
   }
   
   private void h()
@@ -59,13 +59,13 @@ public class TroopCardSameCity
   {
     this.b.setVisibility(0);
     this.b.setText(this.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.str_transfer_desc.get());
-    this.b.setOnClickListener(new kkq(this));
+    this.b.setOnClickListener(new kmx(this));
   }
   
   public void a()
   {
     super.a();
-    setContentView(2130969415);
+    setContentView(2130969411);
     f();
     g();
   }
@@ -86,7 +86,7 @@ public class TroopCardSameCity
       if (!TextUtils.isEmpty(((searchtab.TitleBar)this.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.title_bar.get()).str_icon_url.get())) {
         break label178;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846324);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846406);
       if ((!TextUtils.isEmpty(paramCard.str_transfer_desc.get())) && (!TextUtils.isEmpty(paramCard.str_transfer_url.get()))) {
         break label211;
       }

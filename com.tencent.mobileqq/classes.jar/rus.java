@@ -1,26 +1,15 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class rus
-  implements Runnable
+public class rus
+  implements DialogInterface.OnClickListener
 {
-  public rus(Context paramContext, ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface) {}
+  public rus(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-    ChatActivityFacade.jdField_a_of_type_ComTencentMobileqqDataChatMessage = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430175);
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet.a(str);
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131434041, 3);
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet.a(new rut(this));
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+    paramDialogInterface.dismiss();
   }
 }
 

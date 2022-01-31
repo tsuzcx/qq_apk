@@ -10,7 +10,7 @@ public class CampusCircleConstant
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130842357, 2130842356, 2130842355 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130842392, 2130842391, 2130842390 };
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "一年级", "二年级", "三年级", "四年级", "五年级", "六年级" };
   }
 }

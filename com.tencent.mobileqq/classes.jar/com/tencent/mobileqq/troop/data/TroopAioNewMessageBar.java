@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import ajda;
+import ajid;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Message;
@@ -50,7 +50,7 @@ public class TroopAioNewMessageBar
   public TroopAioNewMessageBar()
   {
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new ajda(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ajid(this);
   }
   
   private void a(TextView paramTextView, int paramInt)
@@ -58,8 +58,8 @@ public class TroopAioNewMessageBar
     Object localObject;
     if (paramInt == e)
     {
-      paramTextView.setText(2131430187);
-      paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130840396, 0);
+      paramTextView.setText(2131430190);
+      paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130840411, 0);
       paramTextView.setCompoundDrawablePadding(4);
       paramTextView.setGravity(17);
       localObject = (RelativeLayout.LayoutParams)paramTextView.getLayoutParams();
@@ -182,7 +182,7 @@ public class TroopAioNewMessageBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioNewMessageBar
  * JD-Core Version:    0.7.0.1
  */

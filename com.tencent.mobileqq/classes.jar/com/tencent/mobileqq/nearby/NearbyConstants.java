@@ -4,7 +4,7 @@ import com.tencent.mobileqq.app.AppConstants;
 
 public abstract interface NearbyConstants
 {
-  public static final String a = AppConstants.aJ + ".nearby_hearanim";
+  public static final String a = AppConstants.aK + ".nearby_hearanim";
 }
 
 

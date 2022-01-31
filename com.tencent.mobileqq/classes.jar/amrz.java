@@ -1,25 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.utils.QQComicRedTouchManager;
 
-class amrz
-  implements Runnable
+public class amrz
+  extends BroadcastReceiver
 {
-  amrz(amry paramamry, float paramFloat) {}
+  public amrz(QQComicRedTouchManager paramQQComicRedTouchManager) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((int)(this.jdField_a_of_type_Float * 100.0F) > 0)
-    {
-      this.jdField_a_of_type_Amry.a.a.removeMessages(1009);
-      this.jdField_a_of_type_Amry.a.a.obtainMessage(1004, 100, 0).sendToTarget();
-      this.jdField_a_of_type_Amry.a.a(false, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginRedTouchManager", 2, "Received red touch push");
     }
-    while (!this.jdField_a_of_type_Amry.a.e) {
-      return;
-    }
-    this.jdField_a_of_type_Amry.a.a.removeMessages(1009);
-    this.jdField_a_of_type_Amry.a.a(true, true);
+    QQComicRedTouchManager.a(this.a);
+    QQComicRedTouchManager.b(this.a);
   }
 }
 

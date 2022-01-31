@@ -16,12 +16,12 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.Property;
-import aoei;
-import aoej;
-import aoek;
-import aoel;
-import aoem;
-import aoen;
+import aona;
+import aonb;
+import aonc;
+import aond;
+import aone;
+import aonf;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class MarkDrawable
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private AnimationDrawable jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Property jdField_a_of_type_AndroidUtilProperty = new aoei(this, Integer.class, "bfIndex");
+  Property jdField_a_of_type_AndroidUtilProperty = new aona(this, Integer.class, "bfIndex");
   private String jdField_a_of_type_JavaLangString;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -50,12 +50,12 @@ public class MarkDrawable
   private int jdField_b_of_type_Int = 255;
   private AnimationDrawable jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  Property jdField_b_of_type_AndroidUtilProperty = new aoej(this, Integer.class, "textAlpha");
+  Property jdField_b_of_type_AndroidUtilProperty = new aonb(this, Integer.class, "textAlpha");
   private Map jdField_b_of_type_JavaUtilMap = new HashMap();
   private float jdField_c_of_type_Float = 30.0F;
   private int jdField_c_of_type_Int = 1;
   private AnimationDrawable jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable;
-  Property jdField_c_of_type_AndroidUtilProperty = new aoek(this, Float.class, "textPos");
+  Property jdField_c_of_type_AndroidUtilProperty = new aonc(this, Float.class, "textPos");
   private float d = 70.0F;
   private float e = 60.0F;
   private float f = 50.0F;
@@ -122,8 +122,8 @@ public class MarkDrawable
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aoel(this));
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aoem(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aond(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aone(this));
         this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       }
       return;
@@ -266,18 +266,18 @@ public class MarkDrawable
     if (paramContext == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilMap.put("1/2", paramContext.getResources().getDrawable(2130839569));
-    this.jdField_a_of_type_JavaUtilMap.put("1/4", paramContext.getResources().getDrawable(2130839570));
-    this.jdField_a_of_type_JavaUtilMap.put("1x", paramContext.getResources().getDrawable(2130839571));
-    this.jdField_a_of_type_JavaUtilMap.put("2x", paramContext.getResources().getDrawable(2130839572));
-    this.jdField_a_of_type_JavaUtilMap.put("4x", paramContext.getResources().getDrawable(2130839573));
-    this.jdField_a_of_type_JavaUtilMap.put("倒播", paramContext.getResources().getDrawable(2130839596));
-    this.jdField_b_of_type_JavaUtilMap.put("1/2", paramContext.getResources().getDrawable(2130839613));
-    this.jdField_b_of_type_JavaUtilMap.put("1/4", paramContext.getResources().getDrawable(2130839614));
-    this.jdField_b_of_type_JavaUtilMap.put("1x", paramContext.getResources().getDrawable(2130839615));
-    this.jdField_b_of_type_JavaUtilMap.put("2x", paramContext.getResources().getDrawable(2130839616));
-    this.jdField_b_of_type_JavaUtilMap.put("4x", paramContext.getResources().getDrawable(2130839617));
-    this.jdField_b_of_type_JavaUtilMap.put("倒播", paramContext.getResources().getDrawable(2130839618));
+    this.jdField_a_of_type_JavaUtilMap.put("1/2", paramContext.getResources().getDrawable(2130839584));
+    this.jdField_a_of_type_JavaUtilMap.put("1/4", paramContext.getResources().getDrawable(2130839585));
+    this.jdField_a_of_type_JavaUtilMap.put("1x", paramContext.getResources().getDrawable(2130839586));
+    this.jdField_a_of_type_JavaUtilMap.put("2x", paramContext.getResources().getDrawable(2130839587));
+    this.jdField_a_of_type_JavaUtilMap.put("4x", paramContext.getResources().getDrawable(2130839588));
+    this.jdField_a_of_type_JavaUtilMap.put("倒播", paramContext.getResources().getDrawable(2130839611));
+    this.jdField_b_of_type_JavaUtilMap.put("1/2", paramContext.getResources().getDrawable(2130839628));
+    this.jdField_b_of_type_JavaUtilMap.put("1/4", paramContext.getResources().getDrawable(2130839629));
+    this.jdField_b_of_type_JavaUtilMap.put("1x", paramContext.getResources().getDrawable(2130839630));
+    this.jdField_b_of_type_JavaUtilMap.put("2x", paramContext.getResources().getDrawable(2130839631));
+    this.jdField_b_of_type_JavaUtilMap.put("4x", paramContext.getResources().getDrawable(2130839632));
+    this.jdField_b_of_type_JavaUtilMap.put("倒播", paramContext.getResources().getDrawable(2130839633));
   }
   
   private void b(Canvas paramCanvas)
@@ -318,7 +318,7 @@ public class MarkDrawable
         this.jdField_b_of_type_Int = 51;
       }
     }
-    aoen localaoen;
+    aonf localaonf;
     do
     {
       do
@@ -332,9 +332,9 @@ public class MarkDrawable
         this.jdField_b_of_type_Int = 255;
         return;
       } while ((this.jdField_c_of_type_Int != 4) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable == null));
-      localaoen = (aoen)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localaoen == null);
-    localaoen.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames());
+      localaonf = (aonf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localaonf == null);
+    localaonf.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.getNumberOfFrames());
   }
   
   private void c(Canvas paramCanvas)
@@ -363,37 +363,37 @@ public class MarkDrawable
   private void d(int paramInt)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    aoen localaoen;
+    aonf localaonf;
     do
     {
       return;
-      localaoen = (aoen)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localaoen == null);
-    localaoen.e(paramInt);
+      localaonf = (aonf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localaonf == null);
+    localaonf.e(paramInt);
   }
   
   private void e(int paramInt)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    aoen localaoen;
+    aonf localaonf;
     do
     {
       return;
-      localaoen = (aoen)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localaoen == null);
-    localaoen.d(paramInt);
+      localaonf = (aonf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localaonf == null);
+    localaonf.d(paramInt);
   }
   
   private void f(int paramInt)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    aoen localaoen;
+    aonf localaonf;
     do
     {
       return;
-      localaoen = (aoen)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localaoen == null);
-    localaoen.f(paramInt);
+      localaonf = (aonf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localaonf == null);
+    localaonf.f(paramInt);
   }
   
   public int a()
@@ -457,14 +457,14 @@ public class MarkDrawable
     invalidateSelf();
   }
   
-  public boolean a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, aoen paramaoen)
+  public boolean a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, aonf paramaonf)
   {
     b();
     a(paramContext);
     this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = a(paramContext, paramInt1);
     this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable = a(paramContext, paramInt2);
     this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable = a(paramContext, paramInt3);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaoen);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaonf);
     b(paramContext);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_c_of_type_Float);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(16777215);

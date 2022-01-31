@@ -19,7 +19,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import xyb;
+import yek;
 
 public class SensorFrameImageView
   extends URLImageView
@@ -29,7 +29,7 @@ public class SensorFrameImageView
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
-  private SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener = new xyb(this);
+  private SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener = new yek(this);
   private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;

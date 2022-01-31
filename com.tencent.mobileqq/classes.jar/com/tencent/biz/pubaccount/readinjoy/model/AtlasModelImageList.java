@@ -6,9 +6,10 @@ import java.util.List;
 public class AtlasModelImageList
   extends AtlasModel
 {
+  public boolean hasMoreData;
   public List imageList;
   
-  public AtlasModelImageList(List paramList)
+  public AtlasModelImageList(List paramList, boolean paramBoolean)
   {
     this.type = 3;
     Object localObject = paramList;
@@ -16,6 +17,7 @@ public class AtlasModelImageList
       localObject = new ArrayList();
     }
     this.imageList = ((List)localObject);
+    this.hasMoreData = paramBoolean;
   }
 }
 

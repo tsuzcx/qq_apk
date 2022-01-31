@@ -5,8 +5,8 @@ import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import ncn;
-import nco;
+import ngi;
+import ngj;
 
 public abstract class HeaderAndFooterAdapter
   extends RecyclerView.Adapter
@@ -43,10 +43,10 @@ public abstract class HeaderAndFooterAdapter
     for (;;)
     {
       if (this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseAdapter$OnItemClickListener != null) {
-        paramViewGroup.itemView.setOnClickListener(new ncn(this, paramViewGroup));
+        paramViewGroup.itemView.setOnClickListener(new ngi(this, paramViewGroup));
       }
       if (this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseAdapter$OnItemLongClickListener != null) {
-        paramViewGroup.itemView.setOnLongClickListener(new nco(this, paramViewGroup));
+        paramViewGroup.itemView.setOnLongClickListener(new ngj(this, paramViewGroup));
       }
       return paramViewGroup;
       if (paramInt == 1025) {

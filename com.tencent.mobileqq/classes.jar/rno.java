@@ -1,38 +1,29 @@
-import QQService.SvcDevLoginInfo;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class rno
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public rno(AuthDevActivity paramAuthDevActivity, RelativeLayout paramRelativeLayout, int paramInt) {}
+  public rno(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramView.stDeviceItemDes);
-    if (Arrays.equals(NetConnInfoCenter.GUID, paramView.vecGuid)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    switch (paramMotionEvent.getAction() & 0xFF)
     {
-      AuthDevActivity localAuthDevActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity;
-      String str1 = paramView.strDeviceName;
-      String str2 = AuthDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
-      int i = this.jdField_a_of_type_Int;
-      if (paramView.iLoginPlatform == 3L) {}
-      for (;;)
-      {
-        AuthDevActivity.a(localAuthDevActivity, str1, localArrayList, str2, i, bool2, bool1, paramView.iAppId);
-        return;
-        bool2 = false;
-      }
     }
+    do
+    {
+      return false;
+      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
+    } while (!paramView.isActive());
+    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    return false;
   }
 }
 

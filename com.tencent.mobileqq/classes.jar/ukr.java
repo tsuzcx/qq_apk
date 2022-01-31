@@ -1,43 +1,32 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.PanelRedPkgElem;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import com.tencent.open.appcircle.st.AppCircleReportManager;
+import com.tencent.open.appcircle.st.STUtils;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.ToastUtil;
+import com.tencent.open.downloadnew.MyAppApi;
+import mqq.os.MqqHandler;
 
 public class ukr
-  implements CustomizeStrategyFactory.HBCustomizeStrategy
+  implements DialogInterface.OnClickListener
 {
-  QWalletConfigManager jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = null;
-  PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public ukr(UpgradeActivity paramUpgradeActivity) {}
   
-  public ukr(QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = ((QWalletConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(244));
+    LogUtility.b("qqBaseActivity", STUtils.a(10010, 1, 3, 200));
+    AppCircleReportManager.a().a(17, STUtils.a(10010, 1, 3, 200));
+    if (!MyAppApi.a().b()) {
+      ToastUtil.a().a("应用宝未安装，请重新安装应用宝");
     }
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    ThreadManager.post(new uks(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
-  {
-    if ((paramRedPacketInfo != null) && ((paramBaseRedPkgElem instanceof PanelRedPkgElem)))
+    for (;;)
     {
-      paramBaseRedPkgElem = (PanelRedPkgElem)paramBaseRedPkgElem;
-      paramRedPacketInfo.icon = paramBaseRedPkgElem.a;
-      paramRedPacketInfo.resPath = paramBaseRedPkgElem.b;
+      ThreadManager.getSubThreadHandler().postDelayed(new uks(this), 500L);
+      return;
+      NewUpgradeDialog.a(this.a);
     }
   }
 }

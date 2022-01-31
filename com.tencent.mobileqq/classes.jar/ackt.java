@@ -1,23 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 
-public class ackt
-  implements Animation.AnimationListener
+class ackt
+  implements Runnable
 {
-  public ackt(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  ackt(acks paramacks, acku paramacku) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.l = false;
-    this.a.a.setVisibility(8);
-    this.a.e();
+    this.jdField_a_of_type_Acks.a.e(this.jdField_a_of_type_Acku.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

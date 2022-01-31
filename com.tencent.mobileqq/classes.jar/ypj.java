@@ -1,26 +1,24 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.apollo.game.ApolloGameResManager;
-import com.tencent.mobileqq.apollo.game.ApolloGameResManager.ApolloGameRes;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.antiphing.AntiphingHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class ypj
-  extends LruCache
+  implements DialogInterface.OnClickListener
 {
-  public ypj(ApolloGameResManager paramApolloGameResManager, int paramInt)
-  {
-    super(paramInt);
-  }
+  public ypj(AntiphingHandler paramAntiphingHandler) {}
   
-  protected int a(String paramString, ApolloGameResManager.ApolloGameRes paramApolloGameRes)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramApolloGameRes == null) || (paramApolloGameRes.a == null)) {
-      return 0;
+    if (QLog.isDevelopLevel()) {
+      QLog.d(AntiphingHandler.a(this.a), 4, "right button is clicked! ");
     }
-    return paramApolloGameRes.a.length;
+    AntiphingHandler.a(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ypj
  * JD-Core Version:    0.7.0.1
  */

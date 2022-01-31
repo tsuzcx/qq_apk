@@ -1,45 +1,16 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.OnLoadListener;
 
 public class afgm
-  implements IphonePickerView.PickerViewAdapter
+  implements Runnable
 {
-  public afgm(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public afgm(PicBrowserGalleryAdapter paramPicBrowserGalleryAdapter, int paramInt1, int paramInt2) {}
   
-  public int getColumnCount()
+  public void run()
   {
-    return 1;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    return 4;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    int i = 3;
-    if (paramInt2 < 0) {}
-    for (paramInt1 = 0;; paramInt1 = paramInt2)
-    {
-      if (paramInt1 > 3) {
-        paramInt1 = i;
-      }
-      for (;;)
-      {
-        switch (paramInt1)
-        {
-        default: 
-          return "";
-        case 0: 
-          return "保密";
-        case 1: 
-          return "单身";
-        case 2: 
-          return "恋爱中";
-        }
-        return "已婚";
-      }
+    PicBrowserGalleryAdapter.b(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter, this.jdField_a_of_type_Int, this.b);
+    if (PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter) != null) {
+      PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter).b(this.jdField_a_of_type_Int, this.b);
     }
   }
 }

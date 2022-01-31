@@ -1,29 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class ygz
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  private WeakReference a;
+  public ygz(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public ygz(BuddyListAdapter paramBuddyListAdapter)
-  {
-    this.a = new WeakReference(paramBuddyListAdapter);
-  }
-  
-  public void onClick(View paramView)
-  {
-    BuddyListAdapter localBuddyListAdapter = (BuddyListAdapter)this.a.get();
-    if (localBuddyListAdapter != null) {
-      localBuddyListAdapter.onClick(paramView);
-    }
-  }
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ygz
  * JD-Core Version:    0.7.0.1
  */

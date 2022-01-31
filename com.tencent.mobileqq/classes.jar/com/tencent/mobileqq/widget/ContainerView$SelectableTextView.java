@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import akth;
-import akti;
-import aktj;
+import alay;
+import alaz;
+import alba;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
@@ -24,7 +24,7 @@ public class ContainerView$SelectableTextView
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new akti(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new alaz(this);
   private SelectableTextView jdField_a_of_type_ComTencentMobileqqWidgetContainerView$SelectableTextView = this;
   
   public ContainerView$SelectableTextView(ContainerView paramContainerView, Context paramContext)
@@ -47,14 +47,14 @@ public class ContainerView$SelectableTextView
     setGravity(19);
     setScroller(null);
     setHighlightColor(1722605812);
-    setTextSelectHandle(2130846223);
-    setTextSelectHandleLeft(2130846222);
-    setTextSelectHandleRight(2130846224);
+    setTextSelectHandle(2130846305);
+    setTextSelectHandleLeft(2130846304);
+    setTextSelectHandleRight(2130846306);
     setTextSize(28.0F);
     setTextColor(-16777216);
     setVisibility(4);
     if (Build.VERSION.SDK_INT >= 11) {
-      setCustomSelectionActionModeCallback(new akth(this, paramContainerView));
+      setCustomSelectionActionModeCallback(new alay(this, paramContainerView));
     }
   }
   
@@ -151,7 +151,7 @@ public class ContainerView$SelectableTextView
     setFocusable(true);
     setFocusableInTouchMode(true);
     setClickable(paramBoolean);
-    setOnLongClickListener(new aktj(this));
+    setOnLongClickListener(new alba(this));
   }
   
   public void setTextSelectHandle(int paramInt)
@@ -192,7 +192,7 @@ public class ContainerView$SelectableTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContainerView.SelectableTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,35 @@
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteFull;
+import com.tencent.av.ui.QavPanelSoundWaveView;
 
-class kbr
-  implements QavInOutAnimation.QavOutAnimationListener
+public class kbr
+  extends BroadcastReceiver
 {
-  kbr(kbq paramkbq) {}
+  public kbr(QavPanel paramQavPanel) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a.a != null)
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
     {
-      this.a.a.a.setViewEnable(2131364247, false);
-      this.a.a.a.setViewEnable(2131365414, false);
-      this.a.a.a.setViewEnable(2131365413, false);
-      this.a.a.a.setViewEnable(2131365411, false);
-      this.a.a.a.setViewEnable(2131365409, false);
-      this.a.a.a.setViewEnable(2131364249, false);
-    }
-  }
-  
-  public void b()
-  {
-    VideoInviteFull.a(this.a.a);
-    VideoInviteFull.a(this.a.a, 0, 2131034269);
+      do
+      {
+        return;
+        if (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
+          break;
+        }
+      } while ((this.a.a == null) || (!this.a.c));
+      this.a.a.f();
+      return;
+    } while ((!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) || (this.a.a == null));
+    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kbr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,21 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.RelativeLayout;
-import cooperation.qzone.share.QZoneShareActivity;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneStartupMonitor;
 
-public class amzr
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class amzr
+  implements Runnable
 {
-  public amzr(QZoneShareActivity paramQZoneShareActivity, RelativeLayout paramRelativeLayout) {}
+  amzr(amzq paramamzq, int paramInt) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    if (QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) - i > 150) {
-      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(0);
-    }
-    for (;;)
+    QZoneStartupMonitor.a(this.jdField_a_of_type_Amzq.a);
+    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "atuoRecoveryQzoneCount", 1) > this.jdField_a_of_type_Int)
     {
-      QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, i);
-      return;
-      if ((i - QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity) > 150) && (!this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.d)) {
-        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.c.setVisibility(4);
-      }
+      QLog.i("QZoneStartupMonitor", 1, "oat 不合法，并且wns配置要自动修复，重新安装qzone=");
+      QZoneStartupMonitor.b(this.jdField_a_of_type_Amzq.a);
+      LocalMultiProcConfig.putInt("key_recovery_count", this.jdField_a_of_type_Int + 1);
     }
   }
 }

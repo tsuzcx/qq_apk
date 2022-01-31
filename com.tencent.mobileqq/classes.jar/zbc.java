@@ -1,54 +1,26 @@
-import com.tencent.mobileqq.app.CardHandler;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.store.webview.ApolloSSOConfig;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadTaskCallback;
-import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
 
 public class zbc
-  implements IUploadTaskCallback
+  implements BusinessObserver
 {
-  public zbc(CardHandler paramCardHandler) {}
+  public zbc(ApolloSSOConfig paramApolloSSOConfig, AppInterface paramAppInterface) {}
   
-  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloSSOConfig.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramBoolean, paramBundle);
     if (QLog.isColorLevel()) {
-      QLog.e("Q.qzonephotowall", 2, "onUploadError " + paramString + " path:" + paramAbstractUploadTask.uploadFilePath);
-    }
-    this.a.a(71, false, new Object[] { paramAbstractUploadTask.uploadFilePath });
-  }
-  
-  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2)
-  {
-    if (paramLong1 == paramLong2)
-    {
-      this.a.b = null;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qzonephotowall", 2, "onUploadProgress is 100%");
-      }
-    }
-  }
-  
-  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt) {}
-  
-  public void onUploadSucceed(AbstractUploadTask arg1, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qzonephotowall", 2, "onUploadSucceed ");
-    }
-    synchronized (CardHandler.a(this.a))
-    {
-      if (CardHandler.a(this.a).size() != 0)
-      {
-        CardHandler.a(this.a);
-        return;
-      }
-      this.a.a(71, true, new Object[0]);
+      QLog.d("apollo_client_ApolloSSOConfig", 2, "checkRequestSendSSO, type:" + paramInt + "isSuccess:" + paramBoolean + "onReceive use:" + (System.currentTimeMillis() - l));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zbc
  * JD-Core Version:    0.7.0.1
  */

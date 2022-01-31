@@ -17,9 +17,9 @@ public class LebaFeedsDayHeaderView
   public LebaFeedsDayHeaderView(Context paramContext)
   {
     super(paramContext);
-    LayoutInflater.from(paramContext).inflate(2130969493, this, true);
-    this.a = ((TextView)super.findViewById(2131366704));
-    this.b = ((TextView)super.findViewById(2131366705));
+    LayoutInflater.from(paramContext).inflate(2130969489, this, true);
+    this.a = ((TextView)super.findViewById(2131366702));
+    this.b = ((TextView)super.findViewById(2131366703));
     e();
   }
   

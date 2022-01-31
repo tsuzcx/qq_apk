@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahst;
-import ahsu;
+import ahxk;
+import ahxl;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,7 +17,7 @@ import java.util.List;
 public class AssociateSearchWordsFragment
   extends Fragment
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahst(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahxk(this);
   public View.OnTouchListener a;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   private List jdField_a_of_type_JavaUtilList;
@@ -25,7 +25,7 @@ public class AssociateSearchWordsFragment
   
   public AssociateSearchWordsFragment()
   {
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ahsu(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new ahxl(this);
   }
   
   public void a(List paramList)
@@ -59,8 +59,8 @@ public class AssociateSearchWordsFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969378, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramLayoutInflater.findViewById(2131366330));
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969376, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramLayoutInflater.findViewById(2131366335));
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_a_of_type_Boolean = true;

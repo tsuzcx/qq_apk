@@ -1,22 +1,20 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr.ClickReportObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class ajof
-  extends TroopAppMgr.ClickReportObserver
+  implements DialogInterface.OnClickListener
 {
-  public ajof(TroopAppMgr paramTroopAppMgr) {}
+  public ajof(PublishHomeWorkFragment paramPublishHomeWorkFragment, FormSwitchItem paramFormSwitchItem, CompoundButton paramCompoundButton) {}
   
-  protected void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {}
-    synchronized (this.a.a)
-    {
-      this.a.a.clear();
-      this.a.b();
-      TroopAppMgr.a(this.a);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(false);
+    PublishHomeWorkFragment.c(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment, false);
+    PublishHomeWorkFragment.d(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment, false);
+    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(false);
   }
 }
 

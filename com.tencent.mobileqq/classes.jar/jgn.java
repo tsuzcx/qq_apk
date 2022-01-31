@@ -1,36 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.av.business.manager.report.VideoNodeReporter;
-import com.tencent.mobileqq.statistics.DcReportUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.GAudioExitMonitor;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
 
 public class jgn
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public jgn(VideoNodeReporter paramVideoNodeReporter, long paramLong) {}
+  public jgn(GAudioExitMonitor paramGAudioExitMonitor) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = VideoNodeReporter.a(this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter, this.jdField_a_of_type_Long);
-    QLog.d("VideoNodeReporter", 1, "reportToServer ,roomId = " + this.jdField_a_of_type_Long + ", detail = " + (String)localObject);
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_Long != 0L)) {
-      DcReportUtil.a(null, "dc02402", (String)localObject);
-    }
-    VideoNodeReporter.a(this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter, this.jdField_a_of_type_Long);
-    localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a.iterator();
-    while (((Iterator)localObject).hasNext())
+    if ((paramIntent != null) && ("com.tencent.av.EXIT_VIDEO_PROCESS".equals(paramIntent.getAction())))
     {
-      jgo localjgo = (jgo)((Iterator)localObject).next();
-      if (this.jdField_a_of_type_Long == localjgo.jdField_a_of_type_Long) {
-        ((Iterator)localObject).remove();
+      paramContext = GAudioExitMonitor.a(this.a).a();
+      if (paramContext != null)
+      {
+        paramContext.a(false, 0, new int[] { paramContext.a().D });
+        paramContext.b(202);
+        paramContext.d(1011);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jgn
  * JD-Core Version:    0.7.0.1
  */

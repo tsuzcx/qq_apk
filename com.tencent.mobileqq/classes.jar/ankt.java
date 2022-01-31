@@ -1,23 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import dov.com.qq.im.capture.QIMCaptureController;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.font.FontInterface.TrueTypeResult;
+import cooperation.qzone.webviewplugin.QzonePersonalizeJsPlugin;
 
 public class ankt
-  implements Runnable
+  implements FontInterface.TrueTypeResult
 {
-  public ankt(QIMCaptureController paramQIMCaptureController) {}
+  public ankt(QzonePersonalizeJsPlugin paramQzonePersonalizeJsPlugin) {}
   
-  public void run()
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a;
-    if (localQQAppInterface != null) {
-      ConfigServlet.h(localQQAppInterface, localQQAppInterface.c());
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
     }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      QzonePersonalizeJsPlugin.a(this.a, paramString2, -2, "font download failed.");
+      return;
+    }
+    QzonePersonalizeJsPlugin.a(this.a, paramString2, 0, "success");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankt
  * JD-Core Version:    0.7.0.1
  */

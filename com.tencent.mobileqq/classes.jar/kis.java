@@ -1,39 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.av.utils.PopupDialogQQSide;
 
 public class kis
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public kis(AuthorizeConfig paramAuthorizeConfig, TicketManager paramTicketManager, String paramString, String[] paramArrayOfString) {}
+  public kis(PopupDialogQQSide paramPopupDialogQQSide) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      if (this.jdField_a_of_type_MqqManagerTicketManager != null) {
-        if ((this.jdField_a_of_type_MqqManagerTicketManager.GetPskey(this.jdField_a_of_type_JavaLangString, 16L, this.jdField_a_of_type_ArrayOfJavaLangString, null) == null) || (TextUtils.isEmpty(this.jdField_a_of_type_MqqManagerTicketManager.getSkey(this.jdField_a_of_type_JavaLangString)))) {
-          break label78;
-        }
-      }
-      label78:
-      for (boolean bool = true;; bool = false)
-      {
-        QLog.d("AuthorizeConfig", 1, "pre hits result : " + bool);
-        return;
-      }
-      return;
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
-    catch (Exception localException)
-    {
-      QLog.e("AuthorizeConfig", 1, "preload k exception ");
+    if (this.a.getActivity() != null) {
+      this.a.getActivity().doOnBackPressed();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kis
  * JD-Core Version:    0.7.0.1
  */

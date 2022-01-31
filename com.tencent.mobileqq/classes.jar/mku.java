@@ -1,15 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview.NaviMaskTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
-public class mku
-  implements ReadInJoyNavigationGridview.NaviMaskTouchListener
+class mku
+  implements Runnable
 {
-  public mku(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  mku(mks parammks) {}
   
-  public void a()
+  public void run()
   {
-    ReadinjoyTabFrame.a(this.a).a(null);
+    this.a.a.notifyDataSetChanged();
+    if ((!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a()) && (!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c())) {
+      ReadInJoyBaseAdapter.a(this.a.a, this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, 0);
+    }
   }
 }
 

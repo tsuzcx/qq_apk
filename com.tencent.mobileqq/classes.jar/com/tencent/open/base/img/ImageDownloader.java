@@ -335,13 +335,13 @@ public class ImageDownloader
     //   235: iconst_0
     //   236: getstatic 16	com/tencent/open/base/img/ImageDownloader:jdField_a_of_type_Int	I
     //   239: invokevirtual 307	java/io/InputStream:read	([BII)I
-    //   242: istore_1
-    //   243: iload_1
+    //   242: istore_2
+    //   243: iload_2
     //   244: ifle +77 -> 321
     //   247: getstatic 19	com/tencent/open/base/img/ImageDownloader:b	I
-    //   250: istore_2
+    //   250: istore_1
     //   251: lload_3
-    //   252: iload_2
+    //   252: iload_1
     //   253: i2l
     //   254: lcmp
     //   255: iflt +49 -> 304
@@ -370,10 +370,10 @@ public class ImageDownloader
     //   304: aload 13
     //   306: aload 9
     //   308: iconst_0
-    //   309: iload_1
+    //   309: iload_2
     //   310: invokevirtual 314	java/io/ByteArrayOutputStream:write	([BII)V
     //   313: lload_3
-    //   314: iload_1
+    //   314: iload_2
     //   315: i2l
     //   316: ladd
     //   317: lstore_3
@@ -612,14 +612,14 @@ public class ImageDownloader
     //   827: astore 7
     //   829: goto -230 -> 599
     //   832: astore 9
-    //   834: aload 8
-    //   836: astore 12
-    //   838: aconst_null
-    //   839: astore_0
-    //   840: aload 7
-    //   842: astore 8
+    //   834: aconst_null
+    //   835: astore_0
+    //   836: aload 7
+    //   838: astore 12
+    //   840: aload 8
+    //   842: astore 7
     //   844: aload 12
-    //   846: astore 7
+    //   846: astore 8
     //   848: goto -249 -> 599
     //   851: astore 13
     //   853: aload 9
@@ -638,34 +638,34 @@ public class ImageDownloader
     //   879: astore 11
     //   881: aload 9
     //   883: astore_0
-    //   884: aload 8
+    //   884: aload 7
     //   886: astore 12
-    //   888: aload 7
-    //   890: astore 8
-    //   892: aload 13
-    //   894: astore 9
+    //   888: aload 13
+    //   890: astore 9
+    //   892: aload 8
+    //   894: astore 7
     //   896: aload 12
-    //   898: astore 7
+    //   898: astore 8
     //   900: goto -301 -> 599
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	903	0	paramImageInfo	ImageInfo
-    //   242	73	1	i	int
-    //   250	3	2	j	int
+    //   250	3	1	i	int
+    //   242	73	2	j	int
     //   114	204	3	l	long
     //   81	588	5	bool1	boolean
     //   7	660	6	bool2	boolean
-    //   13	886	7	localObject1	Object
+    //   13	882	7	localObject1	Object
     //   211	506	8	localInputStream	java.io.InputStream
     //   733	3	8	localException1	Exception
-    //   745	146	8	localObject2	Object
+    //   745	154	8	localObject2	Object
     //   220	332	9	localObject3	Object
     //   586	20	9	localException2	Exception
     //   699	71	9	localObject4	Object
     //   789	1	9	localException3	Exception
     //   810	1	9	localException4	Exception
     //   832	22	9	localException5	Exception
-    //   862	33	9	localObject5	Object
+    //   862	29	9	localObject5	Object
     //   396	418	10	localObject6	Object
     //   4	639	11	localObject7	Object
     //   766	10	11	localObject8	Object
@@ -673,7 +673,7 @@ public class ImageDownloader
     //   1	896	12	localObject10	Object
     //   229	250	13	localByteArrayOutputStream	java.io.ByteArrayOutputStream
     //   851	10	13	localException6	Exception
-    //   875	18	13	localException7	Exception
+    //   875	14	13	localException7	Exception
     //   366	130	14	str	String
     // Exception table:
     //   from	to	target	type

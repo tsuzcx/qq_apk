@@ -1,23 +1,23 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVPbInfo;
 
-public class jom
-  extends OrientationEventListener
+public final class jom
+  implements Parcelable.Creator
 {
-  public jom(SmallScreenRelativeLayout paramSmallScreenRelativeLayout, Context paramContext, int paramInt)
+  public AVPbInfo a(Parcel paramParcel)
   {
-    super(paramContext, paramInt);
+    return new AVPbInfo(paramParcel);
   }
   
-  public void onOrientationChanged(int paramInt)
+  public AVPbInfo[] a(int paramInt)
   {
-    this.a.a();
+    return new AVPbInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jom
  * JD-Core Version:    0.7.0.1
  */

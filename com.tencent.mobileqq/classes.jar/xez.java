@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
+import Wallet.GoldMsgGetReq;
+import Wallet.GoldMsgGetRsp;
+import Wallet.GoldMsgSetReq;
+import Wallet.GoldMsgSetRsp;
+import com.tencent.mobileqq.activity.qwallet.GoldConfigObserver;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
 
 public class xez
-  implements Runnable
+  extends GoldConfigObserver
 {
-  public xez(GoldMsgPayManager paramGoldMsgPayManager) {}
+  public xez(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, GoldMsgGetReq paramGoldMsgGetReq, GoldMsgGetRsp paramGoldMsgGetRsp)
   {
-    this.a.a();
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramGoldMsgGetReq, paramGoldMsgGetRsp);
+    }
+  }
+  
+  public void a(boolean paramBoolean, GoldMsgSetReq paramGoldMsgSetReq, GoldMsgSetRsp paramGoldMsgSetRsp)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramGoldMsgSetReq, paramGoldMsgSetRsp);
+    }
   }
 }
 

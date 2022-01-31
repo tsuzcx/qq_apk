@@ -1,14 +1,20 @@
-import android.view.View;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.biz.qqstory.utils.Image2Video;
+import com.tencent.biz.qqstory.utils.Image2Video.Image2VideoListener;
+import com.tencent.biz.qqstory.utils.Image2Video.ResultInfo;
 
-class osx
-  implements BubblePopupWindow.OnDismissListener
+public class osx
+  implements Image2Video.Image2VideoListener
 {
-  osx(osw paramosw, View paramView) {}
+  public osx(Image2Video paramImage2Video, Image2Video.ResultInfo paramResultInfo) {}
   
-  public void a()
+  public void a(Image2Video.ResultInfo paramResultInfo)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryUtilsImage2Video$ResultInfo)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryUtilsImage2Video$ResultInfo.a(paramResultInfo);
+      this.jdField_a_of_type_ComTencentBizQqstoryUtilsImage2Video$ResultInfo.notify();
+      return;
+    }
   }
 }
 

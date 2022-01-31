@@ -1,17 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import android.view.View;
+import android.view.ViewGroup;
+import java.lang.ref.SoftReference;
 
-class vnl
-  implements DialogInterface.OnClickListener
+public class vnl
 {
-  vnl(vnk paramvnk) {}
+  public String a;
+  SoftReference a;
+  SoftReference b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vnl(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    paramDialogInterface.dismiss();
-    AIOGalleryScene.v(this.a.a).setResult(8001);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
+    this.b = new SoftReference(paramViewGroup);
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+  }
+  
+  public ViewGroup a()
+  {
+    return (ViewGroup)this.b.get();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.b = new SoftReference(paramViewGroup);
   }
 }
 

@@ -1,36 +1,31 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
-import android.view.View;
-import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.SystemClock;
+import com.tencent.mobileqq.shortvideo.ptvfilter.FilterProcessRender;
+import com.tencent.mobileqq.shortvideo.ptvfilter.gesture.GestureMonitorManager;
+import com.tencent.mobileqq.shortvideo.ptvfilter.test.PtvFilterTimeStatistics;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.facedetect.FaceDetector;
 
-public final class aihj
-  implements ActionSheet.OnButtonClickListener
+public class aihj
+  implements Runnable
 {
-  public aihj(String paramString, Context paramContext) {}
+  public aihj(FilterProcessRender paramFilterProcessRender, aihk paramaihk) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      StructMsgClickHandler.a().dismiss();
-      return;
-      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      continue;
-      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+    long l1 = SystemClock.elapsedRealtimeNanos();
+    GestureMonitorManager.a().c();
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterFilterProcessRender.a.doFaceDetect(this.jdField_a_of_type_Aihk.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Aihk.jdField_a_of_type_Int, this.jdField_a_of_type_Aihk.b);
+    GestureMonitorManager.a().d();
+    long l2 = SystemClock.elapsedRealtimeNanos();
+    PtvFilterTimeStatistics.a((l2 - l1) / 1000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("PtvFilterUtils", 2, "FilterProcessRender_showPreview[doFaceDetect=" + (l2 - l1) / 1000L + "us]");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aihj
  * JD-Core Version:    0.7.0.1
  */

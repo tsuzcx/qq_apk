@@ -1,85 +1,46 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy.WXShareHelperFromReadInjoyListener;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebShareReportInterface;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
+import android.widget.Button;
+import com.tencent.mobileqq.freshnews.QQInputView;
+import com.tencent.mobileqq.freshnews.QQInputView.IQQInputCallback;
+import com.tencent.widget.XEditTextEx;
 
-class adwr
-  implements WxShareHelperFromReadInjoy.WXShareHelperFromReadInjoyListener
+public class adwr
+  implements Runnable
 {
-  adwr(adwp paramadwp) {}
+  public adwr(QQInputView paramQQInputView) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    boolean bool;
-    switch (paramBaseResp.errCode)
+    String str1 = null;
+    String str2;
+    if (QQInputView.a(this.a) != null)
     {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435303);
-      bool = false;
+      str2 = QQInputView.a(this.a).a();
+      str1 = QQInputView.a(this.a).b();
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(str2))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.callJs(this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
-        return;
-        QRUtils.a(2, 2131435302);
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface != null) && (this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebUiMethodInterface != null))
-        {
-          int i;
-          label171:
-          String str1;
-          String str2;
-          String str3;
-          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
-          {
-            i = 1009;
-            paramBaseResp = this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface.f();
-            str1 = this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface.g();
-            str2 = this.a.b;
-            str3 = AccountDetailActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebUiMethodInterface.b());
-            String str4 = this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebShareReportInterface.h();
-            if ((str4 == null) || ("".equals(str4))) {
-              break label314;
-            }
-            PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$WebUiMethodInterface.b(), str3, false);
-          }
-          for (;;)
-          {
-            bool = true;
-            break;
-            i = 1004;
-            break label171;
-            label314:
-            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
-              i = 1003;
-            }
-            PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
-          }
-          bool = false;
-        }
+        QQInputView.a(this.a).setText(str2);
+        QQInputView.a(this.a).setSelection(str2.length());
+        QQInputView.a(this.a).setEnabled(true);
+        QQInputView.a(this.a).setSelected(true);
       }
-      else
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
+      while (TextUtils.isEmpty(str1)) {
         return;
       }
-      bool = true;
+      QQInputView.a(this.a).setHint(str1);
+      QQInputView.a(this.a).setEnabled(false);
+      QQInputView.a(this.a).setSelected(false);
+      return;
+      str2 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adwr
  * JD-Core Version:    0.7.0.1
  */

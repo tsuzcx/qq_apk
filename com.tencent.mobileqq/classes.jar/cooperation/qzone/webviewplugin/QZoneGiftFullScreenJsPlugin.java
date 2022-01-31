@@ -1,10 +1,10 @@
 package cooperation.qzone.webviewplugin;
 
-import anbm;
-import anbn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import anjm;
+import anjn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.magicface.model.MagicfaceResLoader;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -80,7 +80,7 @@ public class QZoneGiftFullScreenJsPlugin
   
   private void b(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new anbm(this, paramArrayOfString));
+    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new anjm(this, paramArrayOfString));
   }
   
   private void c(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
@@ -126,7 +126,7 @@ public class QZoneGiftFullScreenJsPlugin
       } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
       this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController = new QzoneGiftFullScreenViewController(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a());
     } while (!QzoneGiftFullScreenViewController.a());
-    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.a(paramWebViewPlugin, paramArrayOfString, new anbn(this, paramPluginRuntime));
+    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.a(paramWebViewPlugin, paramArrayOfString, new anjn(this, paramPluginRuntime));
   }
   
   public void a()

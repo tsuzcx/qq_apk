@@ -1,17 +1,29 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.troop.data.TroopAioTips;
+import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
+import com.tencent.qphone.base.util.QLog;
 
-class vzz
-  implements HWTroopUtils.OnHomeworkTroopIdentityCheckListener
+public class vzz
+  implements Runnable
 {
-  vzz(vzs paramvzs) {}
+  public vzz(HotChatPie paramHotChatPie) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.c(HWTroopUtils.b(paramInt));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getVisibility() == 0) {
+      this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setVisibility(4);
+    }
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getCount();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) && (this.a.r != i)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.a(true);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.a() > 0)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.c(4);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_red_point", 2, "update, mLastMsgCountBeforeSwitch2PostTab:" + this.a.r + ",current msgItemCount:" + i);
     }
   }
 }

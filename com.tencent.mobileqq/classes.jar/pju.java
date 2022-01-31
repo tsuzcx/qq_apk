@@ -1,47 +1,45 @@
-import com.squareup.okhttp.Request.Builder;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.component.network.downloader.impl.ImageDownloaderInitializer;
-import com.tencent.component.network.downloader.strategy.DownloadPreprocessStrategy;
-import com.tencent.component.network.downloader.strategy.DownloadPreprocessStrategy.DownloadPool;
-import com.tencent.component.network.downloader.strategy.KeepAliveStrategy;
-import com.tencent.component.network.module.base.Config;
-import org.apache.http.HttpRequest;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
+import com.tencent.common.galleryactivity.AnimationLister;
+import com.tencent.common.galleryactivity.GalleryManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class pju
-  implements DownloadPreprocessStrategy
+public class pju
+  implements AnimationLister
 {
-  public pju(Downloader paramDownloader) {}
+  public pju(AbstractImageListScene paramAbstractImageListScene) {}
   
-  public DownloadPreprocessStrategy.DownloadPool a(String paramString1, String paramString2)
+  public void b()
   {
-    if (Config.a(paramString2)) {
-      return DownloadPreprocessStrategy.DownloadPool.HTTP2;
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
     }
-    if (ImageDownloaderInitializer.a(paramString2)) {
-      return DownloadPreprocessStrategy.DownloadPool.SPECIFIC1;
+    if (this.a.a.a() != this.a) {
+      this.a.l();
     }
-    paramString1 = this.a.getKeepAliveStrategy();
-    if ((paramString1 != null) && (paramString1.a(paramString2))) {
-      return DownloadPreprocessStrategy.DownloadPool.SPECIFIC;
-    }
-    return DownloadPreprocessStrategy.DownloadPool.COMMON;
+    this.a.b();
   }
   
-  public String a(String paramString)
+  public void c()
   {
-    return paramString;
+    this.a.c();
   }
   
-  public void a(String paramString1, String paramString2, HttpRequest paramHttpRequest, Request.Builder paramBuilder, int paramInt)
+  public void d()
   {
-    if ((paramHttpRequest != null) && (paramString2 != null) && (ImageDownloaderInitializer.b(paramString2))) {
-      paramHttpRequest.addHeader("Cookie", "uin=o" + Config.a() + ";");
+    this.a.d();
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
     }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pju
  * JD-Core Version:    0.7.0.1
  */

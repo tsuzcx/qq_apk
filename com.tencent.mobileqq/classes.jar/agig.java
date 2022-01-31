@@ -1,19 +1,19 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.ar.ARDeviceController;
+import com.tencent.mobileqq.olympic.OlympicManager;
 
 public class agig
   implements Runnable
 {
-  public agig(ScanTorchActivity paramScanTorchActivity) {}
+  public agig(OlympicManager paramOlympicManager) {}
   
   public void run()
   {
-    Bitmap localBitmap = ScanTorchActivity.a(this.a, "res/fudai/alertbg.png", false);
-    if (localBitmap != null) {
-      BaseApplicationImpl.sImageCache.put("res/fudai/alertbg.png", localBitmap);
-    }
+    ARDeviceController.a();
+    this.a.a();
+    this.a.a();
+    this.a.a();
+    this.a.c();
+    this.a.d();
   }
 }
 

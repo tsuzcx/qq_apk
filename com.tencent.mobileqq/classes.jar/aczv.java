@@ -1,26 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.HashMap;
 
 public class aczv
+  implements Runnable
 {
-  public final int a;
-  final long jdField_a_of_type_Long;
-  final Bundle jdField_a_of_type_AndroidOsBundle;
-  public UniformDownloader a;
-  public final String a;
-  public final int b;
+  public aczv(QfileLocalFileAppTabView paramQfileLocalFileAppTabView) {}
   
-  public aczv(UniformDownloadMgr paramUniformDownloadMgr, Bundle paramBundle, int paramInt1, UniformDownloader paramUniformDownloader, long paramLong, int paramInt2)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader = paramUniformDownloader;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramUniformDownloader.a();
-    this.b = paramInt2;
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] new DownloadInst.[ mUDID:[" + this.jdField_a_of_type_Long + "] url:" + this.jdField_a_of_type_JavaLangString + " ]");
+    FileCategoryUtil.a(this.a.a, this.a);
+    HashMap localHashMap = new HashMap();
+    FileCategoryUtil.a(true, FMSettings.a().b(), ".apk", "", localHashMap, this.a);
+    String str = FMSettings.a().a();
+    if (str != null) {
+      FileCategoryUtil.a(true, str, ".apk", "", localHashMap, null);
+    }
+    FileCategoryUtil.a(localHashMap);
+    QfileLocalFileAppTabView.a(this.a, new aczw(this));
   }
 }
 

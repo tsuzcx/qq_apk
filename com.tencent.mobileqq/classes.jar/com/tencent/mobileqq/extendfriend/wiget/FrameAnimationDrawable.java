@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import ackd;
+import acsk;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
@@ -56,7 +56,7 @@ public class FrameAnimationDrawable
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
         this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
-        ThreadManager.getUIHandler().post(new ackd(this));
+        ThreadManager.getUIHandler().post(new acsk(this));
       }
       return;
     }

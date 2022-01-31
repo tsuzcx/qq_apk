@@ -1,34 +1,87 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceSensorOperation;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.javahook.BadTokenHooker;
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import com.tencent.mobileqq.util.Utils;
+import java.lang.reflect.Field;
 
 public class aedz
-  implements MagicfaceActionManager.MagicfaceSensorOperation
+  implements HookMethodCallback
 {
-  public aedz(MagicfaceActionManager paramMagicfaceActionManager) {}
-  
-  public void a()
+  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    AppRuntime localAppRuntime;
-    if (this.a.jdField_a_of_type_Int == 1)
-    {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
-      }
-    }
+    if (paramMethodHookParam.throwable == null) {}
+    View localView;
     do
     {
       return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+      localView = (View)paramMethodHookParam.args[0];
+    } while (localView == null);
+    Object localObject1 = localView.getContext();
+    Object localObject2 = localObject1;
+    if ("android.view.ContextThemeWrapper".equals(localObject1.getClass().getName())) {}
+    label295:
+    for (;;)
+    {
+      try
+      {
+        localObject2 = Class.forName("android.view.ContextThemeWrapper").getDeclaredField("mBase");
+        ((Field)localObject2).setAccessible(true);
+        localObject2 = ((Field)localObject2).get(localView.getContext());
+        if ((localObject2 == null) || (!(localObject2 instanceof Context))) {
+          break label295;
+        }
+        localObject2 = (Context)localObject2;
+        localObject1 = localObject2;
+        localObject2 = localObject1;
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
+      {
+        Utils.a(localClassNotFoundException);
+        Object localObject3 = localObject1;
+        continue;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        Utils.a(localNoSuchFieldException);
+        Object localObject4 = localObject1;
+        continue;
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        Utils.a(localIllegalArgumentException);
+        Object localObject5 = localObject1;
+        continue;
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        Utils.a(localIllegalAccessException);
+        Object localObject6 = localObject1;
+        continue;
+        localObject1 = paramMethodHookParam.throwable;
+        continue;
+        paramMethodHookParam.throwable = new RuntimeException(paramMethodHookParam.throwable.getMessage() + " -- context is " + localObject6.getClass().getName(), paramMethodHookParam.throwable);
+        return;
+      }
+      if (paramMethodHookParam.throwable.getCause() != null)
+      {
+        localObject1 = paramMethodHookParam.throwable.getCause();
+        if ((!(localObject2 instanceof Activity)) || (((Activity)localObject2).isFinishing()) || (!(localObject1 instanceof WindowManager.BadTokenException))) {
+          continue;
+        }
+        BadTokenHooker.a(1, localObject2.getClass().getName(), paramMethodHookParam.throwable.getMessage(), 0);
+        BadTokenHooker.a(2, localObject2.getClass().getName(), null, 10000);
+        BadTokenHooker.a(3, localObject2.getClass().getName(), null, 60000);
+        paramMethodHookParam.throwable = null;
+        ((Activity)localObject2).finish();
+      }
+    }
   }
+  
+  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 

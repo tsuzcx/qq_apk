@@ -1,13 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
 
-public class nwf
-  implements DialogInterface.OnDismissListener
+public abstract interface nwf
 {
-  public nwf(StoryDiscoverActivity paramStoryDiscoverActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  @NonNull
+  public abstract Stream a(nwb paramnwb);
 }
 
 

@@ -127,15 +127,15 @@ public class EcshopWebActivity
     int i = paramMotionEvent.getAction();
     if (this.jdField_a_of_type_AndroidViewViewGroup == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366769));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366767));
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362369));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362372));
       }
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
         return super.dispatchTouchEvent(paramMotionEvent);
       }
     }
-    View localView = findViewById(2131363244);
+    View localView = findViewById(2131363261);
     if (localView == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }

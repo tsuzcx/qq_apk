@@ -41,9 +41,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.io.File;
-import kwz;
-import kxa;
-import kxb;
+import kzg;
+import kzh;
+import kzi;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
@@ -65,13 +65,14 @@ public class NativeAdUtils
   public static int k = 3;
   public static int l = 4;
   public static int m = 5;
-  public static int n = 10;
-  public static int o = 11;
-  public static int p = 1;
-  public static int q = 2;
+  public static int n = 7;
+  public static int o = 10;
+  public static int p = 11;
+  public static int q = 1;
   public static int r = 2;
-  public static int s = 9;
-  public static int t = 10;
+  public static int s = 2;
+  public static int t = 9;
+  public static int u = 10;
   
   static
   {
@@ -120,8 +121,8 @@ public class NativeAdUtils
   public static Dialog a(Context paramContext, String paramString1, String paramString2, View.OnClickListener paramOnClickListener1, String paramString3, View.OnClickListener paramOnClickListener2, String paramString4)
   {
     paramContext = new Dialog(paramContext, 2131624516);
-    paramContext.setContentView(2130968842);
-    TextView localTextView = (TextView)paramContext.findViewById(2131364034);
+    paramContext.setContentView(2130968846);
+    TextView localTextView = (TextView)paramContext.findViewById(2131364059);
     if (localTextView != null)
     {
       if (paramString1 != null) {
@@ -130,7 +131,7 @@ public class NativeAdUtils
     }
     else
     {
-      paramString1 = (TextView)paramContext.findViewById(2131362776);
+      paramString1 = (TextView)paramContext.findViewById(2131362781);
       if (paramString1 != null)
       {
         if (paramString4 == null) {
@@ -139,7 +140,7 @@ public class NativeAdUtils
         paramString1.setText(paramString4);
       }
       label68:
-      paramString1 = (TextView)paramContext.findViewById(2131364037);
+      paramString1 = (TextView)paramContext.findViewById(2131364062);
       if (paramString1 != null)
       {
         if (paramString2 == null) {
@@ -153,7 +154,7 @@ public class NativeAdUtils
     }
     for (;;)
     {
-      paramString1 = (TextView)paramContext.findViewById(2131364038);
+      paramString1 = (TextView)paramContext.findViewById(2131364063);
       if (paramString1 != null)
       {
         if (paramString3 == null) {
@@ -225,7 +226,7 @@ public class NativeAdUtils
       localJSONObject.put("uin", paramQQAppInterface.getAccount());
       localJSONObject.put("ts", NetConnInfoCenter.getServerTimeMillis());
       localJSONObject.put("dinfo", b(paramQQAppInterface.getApplication().getApplicationContext()));
-      localJSONObject.put("ver", "7.6.3");
+      localJSONObject.put("ver", "7.6.8");
       localJSONObject.put("type", paramInt1);
       localJSONObject.put("stype", paramInt2);
       localJSONObject.put("isdpg", 1);
@@ -321,7 +322,7 @@ public class NativeAdUtils
       if (paramAppInterface == null) {
         return;
       }
-      ThreadManager.post(new kxb(paramAppInterface.getAccount(), paramInt1, paramInt2, paramContext, paramAdvertisementInfo, paramVideoAdInfo, paramLong, paramJSONObject, paramAppInterface), 5, null, true);
+      ThreadManager.post(new kzi(paramAppInterface.getAccount(), paramInt1, paramInt2, paramContext, paramAdvertisementInfo, paramVideoAdInfo, paramLong, paramJSONObject, paramAppInterface), 5, null, true);
       return;
     }
   }
@@ -345,7 +346,7 @@ public class NativeAdUtils
         paramString = new NewIntent(paramQQAppInterface.getApplication(), PublicAccountServlet.class);
         paramString.putExtra("cmd", "MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_report");
         paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
-        paramString.setObserver(new kxa());
+        paramString.setObserver(new kzh());
         paramQQAppInterface.startServlet(paramString);
       }
       return;
@@ -365,7 +366,7 @@ public class NativeAdUtils
       localJSONObject.put("adId", paramString1);
       localJSONObject.put("channelId", paramString2);
       localJSONObject.put("info", paramString3);
-      localJSONObject.put("version", "7.6.3");
+      localJSONObject.put("version", "7.6.8");
       localJSONObject.put("actionCode", paramInt1);
       localJSONObject.put("subType", paramInt2);
       if (paramInt1 == 4) {
@@ -382,7 +383,7 @@ public class NativeAdUtils
         paramString2 = new NewIntent(paramQQAppInterface.getApplication(), PublicAccountServlet.class);
         paramString2.putExtra("cmd", "MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad");
         paramString2.putExtra("data", paramString1.toByteArray());
-        paramString2.setObserver(new kwz());
+        paramString2.setObserver(new kzg());
         paramQQAppInterface.startServlet(paramString2);
       }
       return;

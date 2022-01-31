@@ -1,24 +1,33 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.ocr.OcrCamera;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.view.MaskView;
 
-class aggz
-  implements Runnable
+public class aggz
+  implements SurfaceHolder.Callback
 {
-  aggz(aggv paramaggv) {}
+  public aggz(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void run()
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a())
+    ScanOcrActivity.a(this.a, paramSurfaceHolder);
+    if (ScanOcrActivity.a(this.a) == null)
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.b();
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      ScanOcrActivity.a(this.a, new OcrCamera(this.a, this.a.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback, ScanOcrActivity.a(this.a)));
+      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
+      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
+      ScanOcrActivity.a(this.a).a();
     }
   }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aggz
  * JD-Core Version:    0.7.0.1
  */

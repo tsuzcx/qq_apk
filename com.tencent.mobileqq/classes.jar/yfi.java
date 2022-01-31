@@ -1,26 +1,71 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.app.QvipSpecialCareObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.qphone.base.util.QLog;
 
 public class yfi
-  extends QvipSpecialCareObserver
+  implements View.OnClickListener
 {
-  public yfi(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  public yfi(FriendTabView paramFriendTabView) {}
   
-  public void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
-    }
-    if (paramObject != null) {
-      this.a.stopTitleProgress();
-    }
-    switch (((Integer)paramObject).intValue())
+    QLog.d("FriendTabView", 2, "----->onBuddyListClick");
+    yhy localyhy = (yhy)paramView.getTag();
+    String str;
+    boolean bool;
+    if ((localyhy != null) && (localyhy.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localyhy.jdField_a_of_type_JavaLangObject != null))
     {
-    default: 
-      return;
+      str = "";
+      if (!(localyhy.jdField_a_of_type_JavaLangObject instanceof Friends)) {
+        break label233;
+      }
+      str = ((Friends)localyhy.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
+      if (localyhy.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      {
+        if (!localyhy.jdField_a_of_type_JavaLangString.startsWith("+")) {
+          break label259;
+        }
+        bool = this.a.a.a(localyhy.jdField_a_of_type_JavaLangString, str, 4, "-1", "");
+        label110:
+        if (QLog.isDevelopLevel()) {
+          QLog.d("FriendTabView", 2, "----->onBuddyListClick = " + bool);
+        }
+        localyhy.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+        if (AppSetting.b)
+        {
+          if (!localyhy.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+            break label284;
+          }
+          paramView.setContentDescription(localyhy.d.getText().toString() + "已选中,双击取消");
+        }
+      }
     }
-    QQSpecialFriendSettingActivity.a(this.a);
+    for (;;)
+    {
+      this.a.c();
+      if (AppSetting.b) {
+        paramView.postDelayed(new yfj(this, paramView), 2000L);
+      }
+      return;
+      label233:
+      if (!(localyhy.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
+        break;
+      }
+      str = ((PhoneContact)localyhy.jdField_a_of_type_JavaLangObject).name;
+      break;
+      label259:
+      bool = this.a.a.a(localyhy.jdField_a_of_type_JavaLangString, str, 0, "-1", "");
+      break label110;
+      label284:
+      paramView.setContentDescription(localyhy.d.getText().toString() + "未选中,双击选中");
+    }
   }
 }
 

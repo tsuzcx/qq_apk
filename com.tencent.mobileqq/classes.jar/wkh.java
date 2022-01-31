@@ -1,109 +1,40 @@
-import com.tencent.mobileqq.activity.contact.troop.DiscussionView;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.activity.bless.BlessBaseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class wkh
-  extends DiscussionObserver
+  extends MessageObserver
 {
-  private wkh(DiscussionView paramDiscussionView) {}
+  public wkh(BlessBaseActivity paramBlessBaseActivity) {}
   
-  protected void a()
+  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.i();
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    if (this.a.c)
-    {
-      this.a.c = false;
-      if (paramBoolean)
-      {
-        DiscussionView.a(this.a).a(0);
-        this.a.a(100, 800L);
-      }
-    }
-    else
-    {
+    this.a.a();
+    if (!this.a.jdField_a_of_type_Boolean) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-    this.a.b(2131434349);
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    this.a.jdField_a_of_type_Boolean = false;
+    if (paramInt == 67L)
+    {
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.a.a(paramLong);
+      QQToast.a(this.a.app.getApp(), 2131438305, 1).a();
     }
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-    }
-  }
-  
-  protected void b()
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionView", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.notifyDataSetChanged();
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessManager", 2, "onSendBlessMsgResp failed:" + paramInt + " waitTime=" + paramLong);
+      }
+      this.a.b(paramBoolean1);
+      return;
+      if (!paramBoolean1) {
+        QQToast.a(this.a.app.getApp(), 2131438306, 1).a();
+      }
     }
   }
 }

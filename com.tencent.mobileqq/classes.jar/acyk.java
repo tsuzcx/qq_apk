@@ -1,30 +1,69 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class acyk
-  extends acxm
+  extends FMObserver
 {
-  public acyk(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  public acyk(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  
+  protected void a(int paramInt, String paramString1, String paramString2)
   {
-    super(paramOnlineFileSessionWorker);
+    super.a(paramInt, paramString1, paramString2);
+    this.a.b(false);
   }
   
-  protected String a()
+  protected void a(Integer paramInteger, long paramLong, String paramString)
   {
-    return "StateSenderCancelSendWhenPause";
+    FileManagerUtil.a(paramLong, paramInteger.intValue(), paramString);
   }
   
-  protected void a()
+  protected void a(String paramString1, boolean paramBoolean, int paramInt1, String paramString2, List paramList, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    QfileCloudFileTabView.b(this.a, true);
+    QfileCloudFileTabView.c(this.a, paramBoolean);
+    this.a.jdField_c_of_type_Int = paramInt2;
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
+      paramInt1 = FileManagerUtil.a(localWeiYunFileInfo.jdField_c_of_type_JavaLangString);
+      String str;
+      if (paramInt1 == 0)
+      {
+        str = QfileCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo.a, localWeiYunFileInfo.e, 3, localWeiYunFileInfo);
+        if (str != null) {
+          localWeiYunFileInfo.h = str;
+        }
+      }
+      else if (2 == paramInt1)
+      {
+        str = QfileCloudFileTabView.b(this.a).a().b(localWeiYunFileInfo.a, localWeiYunFileInfo.e, 2, localWeiYunFileInfo);
+        if (str != null) {
+          localWeiYunFileInfo.h = str;
+        }
+      }
+    }
+    if (!paramString1.equals(this.a.b)) {
       return;
     }
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 8);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Acxm.a() + "->StateSenderCancelSend)");
-    this.jdField_a_of_type_Acxm = new acyj(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    if (QfileCloudFileTabView.b(this.a)) {
+      this.a.a.clear();
+    }
+    this.a.a.addAll(paramList);
+    if (!this.a.b.equalsIgnoreCase("picture")) {
+      this.a.setListFooter();
+    }
+    this.a.jdField_c_of_type_JavaLangString = paramString2;
+    this.a.jdField_c_of_type_Boolean = true;
+    this.a.g();
+    this.a.a();
   }
 }
 

@@ -1,17 +1,39 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
-import com.tencent.mobileqq.lyric.util.Singleton;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher;
 
-public final class aecq
-  extends Singleton
+public class aecq
+  implements Runnable
 {
-  protected TimerTaskManager a(Void paramVoid)
+  public aecq(HuayangPluginLauncher paramHuayangPluginLauncher, boolean paramBoolean) {}
+  
+  public void run()
   {
-    return new TimerTaskManager();
+    if (HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher) == null) {
+      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, HuayangPluginLauncher.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher));
+    }
+    if ((HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher) != null) && (HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher)))
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        break label108;
+      }
+      Message localMessage = Message.obtain(HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher), 2);
+      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher).sendMessage(localMessage);
+      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher));
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher.jdField_a_of_type_Boolean = true;
+    }
+    for (;;)
+    {
+      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, false);
+      return;
+      label108:
+      HuayangPluginLauncher.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecq
  * JD-Core Version:    0.7.0.1
  */

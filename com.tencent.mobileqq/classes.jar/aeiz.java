@@ -1,15 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class aeiz
-  implements DialogInterface.OnClickListener
+  implements AbsListView.OnScrollListener
 {
-  public aeiz(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public aeiz(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (LebaWithFeeds.a(this.a) != null) {
+      LebaWithFeeds.a(this.a).a(paramAbsListView, paramInt);
+    }
+    if (LebaWithFeeds.b(this.a) != null) {
+      LebaWithFeeds.b(this.a).a(paramAbsListView, paramInt);
+    }
+    if (LebaWithFeeds.c(this.a) != null) {
+      LebaWithFeeds.c(this.a).a(paramAbsListView, paramInt);
+    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (LebaWithFeeds.a(this.a) != null) {
+      LebaWithFeeds.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+    if (LebaWithFeeds.b(this.a) != null) {
+      LebaWithFeeds.b(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+    if (LebaWithFeeds.c(this.a) != null) {
+      LebaWithFeeds.c(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
   }
 }
 

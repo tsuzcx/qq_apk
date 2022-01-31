@@ -1,29 +1,83 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.MQLruCache;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.pic.PicReq;
+import com.tencent.mobileqq.pic.PicResult;
+import com.tencent.mobileqq.pic.PicUploadInfo;
+import com.tencent.mobileqq.pic.PresendPicMgrService;
+import com.tencent.mobileqq.pic.UiCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AccountNotMatchException;
 
 public class agqb
-  implements Runnable
+  implements UiCallBack
 {
-  public agqb(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, String paramString, int paramInt) {}
+  public agqb(PresendPicMgrService paramPresendPicMgrService, PicReq paramPicReq) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, PicResult paramPicResult) {}
+  
+  public void a(int paramInt, ArrayList paramArrayList) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, PicResult arg2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, false);
-    if (localObject != null)
+    UpCallBack.SendResult localSendResult = (UpCallBack.SendResult)???.a;
+    Object localObject2 = new StringBuilder().append("PresendStatus: destPath:").append(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.g).append(",uuid:").append(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_JavaLangString).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true, mainUploadFinish:true, uploadResult:");
+    if (paramInt == 0)
     {
-      localObject = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.getResources(), (Bitmap)localObject);
-      BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_JavaLangString, localObject);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage();
-      ((Message)localObject).what = 28;
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
+      ??? = "ResultOk";
+      Logger.a("PresendPicMgrService", "onSend ", ???);
+      Logger.a("PresendPicMgrService", "onSend", " SendResult = " + localSendResult);
+    }
+    for (;;)
+    {
+      synchronized (PresendPicMgrService.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgrService))
+      {
+        if (!PresendPicMgrService.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgrService))
+        {
+          if (paramInt == 0)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c = 1;
+            Logger.a("PresendPicMgrService", "onSend", " SendButton not clicked, add senReq to mUploadFinishList,senReq = " + this.jdField_a_of_type_ComTencentMobileqqPicPicReq);
+            PresendPicMgrService.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgrService).add(this.jdField_a_of_type_ComTencentMobileqqPicPicReq);
+            return;
+            ??? = "ResultFail";
+            break;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c = 2;
+        }
+      }
+      if (paramInt == 0)
+      {
+        try
+        {
+          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(PresendPicMgrService.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgrService));
+          localObject2 = (MessageRecord)this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.a;
+          localQQAppInterface.a().b((MessageRecord)localObject2, null);
+          Logger.a("PresendPicMgrService", "onSend", " SendButton has been clicked, sendMessage directly! ,senReq = " + this.jdField_a_of_type_ComTencentMobileqqPicPicReq);
+        }
+        catch (AccountNotMatchException localAccountNotMatchException) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("PresendPicMgrService", 2, "no appRuntime");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("PresendPicMgrService", 2, "onSend SendResult = " + localAccountNotMatchException + ", upload failed");
+      }
     }
   }
+  
+  public void c(int paramInt, PicResult paramPicResult) {}
+  
+  public void d(int paramInt, PicResult paramPicResult) {}
 }
 
 

@@ -1,14 +1,21 @@
-import cooperation.weiyun.channel.HttpChannel;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public final class anhk
-  implements Runnable
+public class anhk
+  implements View.OnClickListener
 {
-  public anhk(String paramString, JSONObject paramJSONObject) {}
+  public anhk(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    HttpChannel.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+    if (!this.a.d)
+    {
+      this.a.f();
+      return;
+    }
+    this.a.h();
+    this.a.a();
   }
 }
 

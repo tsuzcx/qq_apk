@@ -25,7 +25,7 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView.OnScrollChangeListener;
 import java.util.ArrayList;
 import java.util.List;
-import nsh;
+import nwx;
 
 public class QQStoryShareGroupProfileActivity$UIEventListenerImpl
   implements View.OnClickListener, ShareGroupsListView.UIEventListener, AbsListView.OnScrollListener, ListView.OnScrollChangeListener
@@ -123,7 +123,7 @@ public class QQStoryShareGroupProfileActivity$UIEventListenerImpl
     if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare == null) {
       this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare = StoryShare.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare.a("分享日迹圈子").a(ShareGroupOneDayStoryShareMode.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem, paramStoryVideoItem, paramString1, paramLong, paramInt)).a(new nsh(this)).a();
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare.a("分享小视频圈子").a(ShareGroupOneDayStoryShareMode.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem, paramStoryVideoItem, paramString1, paramLong, paramInt)).a(new nwx(this)).a();
     StoryReportor.a("share_story", "share_day", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
   }
   
@@ -169,10 +169,10 @@ public class QQStoryShareGroupProfileActivity$UIEventListenerImpl
     {
     default: 
       return;
-    case 2131371825: 
+    case 2131371824: 
       QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, "5", 1004);
       return;
-    case 2131363245: 
+    case 2131363262: 
       this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.finish();
       return;
     }

@@ -15,7 +15,7 @@ final class Elf32_Shdr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.facebook.soloader.Elf32_Shdr
  * JD-Core Version:    0.7.0.1
  */

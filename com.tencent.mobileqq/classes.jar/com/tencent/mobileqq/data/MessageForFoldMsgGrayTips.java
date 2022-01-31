@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abuh;
+import acca;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -45,7 +45,7 @@ public class MessageForFoldMsgGrayTips
     if (this.clickSpan == null)
     {
       this.clickSpan = new SpannableString("口令红包");
-      this.clickSpan.setSpan(new abuh(this, paramQQAppInterface, paramContext, i | 0xFF000000), 0, this.clickSpan.length(), 33);
+      this.clickSpan.setSpan(new acca(this, paramQQAppInterface, paramContext, i | 0xFF000000), 0, this.clickSpan.length(), 33);
     }
     this.msg = "";
     paramQQAppInterface = new SpannableStringBuilder();

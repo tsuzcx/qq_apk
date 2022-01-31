@@ -31,19 +31,19 @@ public class ARWorldCupGameTouchView
   public ARWorldCupGameTouchView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    LayoutInflater.from(paramContext).inflate(2130970197, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369519));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369520));
-    this.jdField_a_of_type_ComTencentMobileqqWorldcupTouchSliceView = ((TouchSliceView)findViewById(2131369518));
+    LayoutInflater.from(paramContext).inflate(2130970212, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369528));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369529));
+    this.jdField_a_of_type_ComTencentMobileqqWorldcupTouchSliceView = ((TouchSliceView)findViewById(2131369527));
   }
   
   public ARWorldCupGameTouchView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2130970197, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369519));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369520));
-    this.jdField_a_of_type_ComTencentMobileqqWorldcupTouchSliceView = ((TouchSliceView)findViewById(2131369518));
+    LayoutInflater.from(paramContext).inflate(2130970212, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369528));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369529));
+    this.jdField_a_of_type_ComTencentMobileqqWorldcupTouchSliceView = ((TouchSliceView)findViewById(2131369527));
   }
   
   public void a()
@@ -139,7 +139,7 @@ public class ARWorldCupGameTouchView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.worldcup.ARWorldCupGameTouchView
  * JD-Core Version:    0.7.0.1
  */

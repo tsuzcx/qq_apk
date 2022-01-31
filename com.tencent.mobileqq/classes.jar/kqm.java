@@ -1,27 +1,88 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.now.PluginRecordHelper;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.txproxy.HostInterface;
+import java.net.URL;
 
 public class kqm
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements Runnable
 {
-  public kqm(AccountDetailVideoManager paramAccountDetailVideoManager) {}
+  public kqm(PluginRecordHelper paramPluginRecordHelper, long paramLong, HostInterface paramHostInterface) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void run()
   {
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_ComTencentBizNowPluginRecordHelper.jdField_a_of_type_Boolean = true;
+    String str3 = "http://now.qq.com/cgi-bin/now/web/room/get_room_info_v2?room_id=" + this.jdField_a_of_type_Long;
+    QLog.i(PluginRecordHelper.jdField_a_of_type_JavaLangString, 1, " 请求录播cgi URL = " + str3 + " time = " + System.currentTimeMillis());
+    String str1 = "";
+    String str2 = "";
+    Object localObject2 = str1;
+    if (this.jdField_a_of_type_ComTencentTxproxyHostInterface.useIpDirectConnect())
     {
-      paramTVK_IMediaPlayer = new StringBuilder();
-      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
-      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
-      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
-      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
-      QLog.e("AccountDetailVideoManager", 2, paramTVK_IMediaPlayer.toString());
+      localObject2 = str1;
+      if (PluginRecordHelper.b()) {}
     }
-    this.a.a.runOnUiThread(new kqn(this));
-    return false;
+    for (;;)
+    {
+      try
+      {
+        localObject1 = new URL(str3).getHost();
+        localObject2 = localObject1;
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localObject2 = localObject1;
+          if ("now.qq.com".equals(localObject1))
+          {
+            str1 = this.jdField_a_of_type_ComTencentTxproxyHostInterface.reqDns((String)localObject1);
+            localObject2 = localObject1;
+            if (!TextUtils.isEmpty(str1))
+            {
+              str1 = InnerDns.a(str3, str1);
+              if (QLog.isColorLevel()) {
+                QLog.d(PluginRecordHelper.jdField_a_of_type_JavaLangString, 2, "use ip:" + str1);
+              }
+              bool = true;
+              localObject2 = localObject1;
+              localObject1 = str1;
+              long l = System.currentTimeMillis();
+              QLog.d(PluginRecordHelper.jdField_a_of_type_JavaLangString, 1, "before downloadBuffer, useIpConn=" + bool);
+              if (bool)
+              {
+                localObject1 = PluginRecordHelper.a(this.jdField_a_of_type_ComTencentBizNowPluginRecordHelper, (String)localObject1, true, (String)localObject2);
+                this.jdField_a_of_type_ComTencentBizNowPluginRecordHelper.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+                QLog.d(PluginRecordHelper.jdField_a_of_type_JavaLangString, 1, "end downloadBuffer, timeCost=" + this.jdField_a_of_type_ComTencentBizNowPluginRecordHelper.jdField_a_of_type_Long + ", json=" + (String)localObject1);
+                PluginRecordHelper.a(this.jdField_a_of_type_ComTencentBizNowPluginRecordHelper, (String)localObject1);
+                if (this.jdField_a_of_type_ComTencentBizNowPluginRecordHelper.jdField_a_of_type_AndroidOsHandler != null)
+                {
+                  localObject1 = new Message();
+                  ((Message)localObject1).what = 1001;
+                  this.jdField_a_of_type_ComTencentBizNowPluginRecordHelper.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
+                }
+                this.jdField_a_of_type_ComTencentBizNowPluginRecordHelper.jdField_a_of_type_Boolean = false;
+                return;
+              }
+            }
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        localObject1 = str1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e(PluginRecordHelper.jdField_a_of_type_JavaLangString, 2, "hasRecording exp:" + localException.toString());
+        localObject1 = str1;
+        continue;
+        localObject1 = PluginRecordHelper.a(this.jdField_a_of_type_ComTencentBizNowPluginRecordHelper, str3, false, "");
+        continue;
+      }
+      boolean bool = false;
+      Object localObject1 = str2;
+    }
   }
 }
 

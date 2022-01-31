@@ -1,14 +1,17 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.ark.ArkViewAdjustFromKeyboard;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAiAppPanel;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class aayl
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  public aayl(ArkViewAdjustFromKeyboard paramArkViewAdjustFromKeyboard) {}
+  public aayl(ArkAiAppPanel paramArkAiAppPanel) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    ArkViewAdjustFromKeyboard.a(this.a);
+    ArkAppCenter.a().post(new aaym(this));
   }
 }
 

@@ -48,8 +48,6 @@ import pb.unite.search.DynamicBusinessHotWord.GroupWord;
 import pb.unite.search.DynamicBusinessHotWord.HotWordItem;
 import pb.unite.search.DynamicBusinessHotWord.ReqBody;
 import pb.unite.search.DynamicBusinessHotWord.RspBody;
-import pb.unite.search.DynamicContentRecommend.ReqBody;
-import pb.unite.search.DynamicContentRecommend.RspBody;
 import pb.unite.search.DynamicDiscovery.ReqBody;
 import pb.unite.search.DynamicDiscovery.RspBody;
 import pb.unite.search.DynamicSearch.ExtensionRequestInfo;
@@ -59,7 +57,7 @@ import pb.unite.search.DynamicTabSearch.RspBody;
 import pb.unite.search.UniteSearch.ReqBody;
 import pb.unite.search.UniteSearch.RspBody;
 import pb.unite.search.UniteSearch.TabItemGroup;
-import zpg;
+import zvr;
 
 public class UniteSearchHandler
   extends BusinessHandler
@@ -123,7 +121,7 @@ public class UniteSearchHandler
     }
     if (paramInt == 1000)
     {
-      ThreadManager.post(new zpg(this, paramString1, paramObject), 5, null, true);
+      ThreadManager.post(new zvr(this, paramString1, paramObject), 5, null, true);
       BaseApplication.getContext().getSharedPreferences(paramString1, 0).edit().putString(paramString2, System.currentTimeMillis() + "").commit();
     }
     while (!QLog.isColorLevel()) {
@@ -541,71 +539,9 @@ public class UniteSearchHandler
     a(1000, false, paramObject);
   }
   
-  private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int i = paramFromServiceMsg.getResultCode();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.UniteSearchHandler", 2, "<<---handleContentRecommendResult. resultCode=" + i);
-    }
-    if ((i != 1000) || (paramObject == null) || (!(paramObject instanceof byte[])))
-    {
-      a(1008, false, null);
-      SharedPreUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 5);
-    }
-    do
-    {
-      return;
-      paramFromServiceMsg = new DynamicContentRecommend.RspBody();
-      try
-      {
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        i = paramFromServiceMsg.result_code.get();
-        paramObject = paramFromServiceMsg.error_msg.get().toStringUtf8();
-        if (i != 0) {
-          break;
-        }
-        i = paramFromServiceMsg.cache_time.get();
-        paramToServiceMsg = SearchEntryDataModel.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramFromServiceMsg, paramToServiceMsg.extraData.getInt("fromType"));
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.uniteSearch.UniteSearchHandler", 2, "response data: cacheTime:" + i + ",recommendResult :" + paramToServiceMsg.toString());
-        }
-        a(1008, true, new Object[] { paramToServiceMsg });
-        SharedPreUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-      {
-        a(1008, false, null);
-        SharedPreUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 5);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.uniteSearch.UniteSearchHandler", 2, "handleContentRecommendResult, InvalidProtocolBufferMicroException e= " + paramToServiceMsg);
-    return;
-    SharedPreUtils.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 5);
-    a(1008, false, new Object[] { Integer.valueOf(i), paramObject });
-  }
-  
   protected Class a()
   {
     return UniteSearchObserver.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.uniteSearch.UniteSearchHandler", 2, " sendContentRecommendRequest.");
-    }
-    if (!SharedPreUtils.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-      return;
-    }
-    DynamicContentRecommend.ReqBody localReqBody = new DynamicContentRecommend.ReqBody();
-    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
-    localReqBody.business.set(128);
-    ToServiceMsg localToServiceMsg = a("DynamicScRecommend.1");
-    localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
-    localToServiceMsg.extraData.putLong("send_req_time", System.currentTimeMillis());
-    localToServiceMsg.extraData.putInt("fromType", paramInt);
-    b(localToServiceMsg);
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -621,7 +557,7 @@ public class UniteSearchHandler
       return;
     }
     paramQQAppInterface = new DynamicDiscovery.ReqBody();
-    paramQQAppInterface.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    paramQQAppInterface.version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     paramQQAppInterface.business.set(128);
     paramQQAppInterface.from_type.set(6);
     ToServiceMsg localToServiceMsg = a("kandian_search_hot_word.1");
@@ -643,7 +579,7 @@ public class UniteSearchHandler
       return;
     }
     paramQQAppInterface = new DynamicDiscovery.ReqBody();
-    paramQQAppInterface.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    paramQQAppInterface.version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     paramQQAppInterface.business.set(128);
     paramQQAppInterface.from_type.set(paramInt);
     ToServiceMsg localToServiceMsg = a("DynamicScDiscovery.1");
@@ -766,11 +702,6 @@ public class UniteSearchHandler
         b(paramToServiceMsg, paramFromServiceMsg.getResultCode(), paramObject);
         return;
       }
-      if ("DynamicScRecommend.1".equals(str))
-      {
-        f(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
     } while (!"kandian_search_hot_word.1".equals(str));
     c(paramToServiceMsg, paramFromServiceMsg.getResultCode(), paramObject);
   }
@@ -792,7 +723,7 @@ public class UniteSearchHandler
       return;
     }
     localReqBody.key_word.set(ByteStringMicro.copyFromUtf8(paramString));
-    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     localReqBody.business.set(128);
     localReqBody.need_flag.set(paramInt);
     ToServiceMsg localToServiceMsg = a("dynamic_association_word.1");
@@ -829,7 +760,7 @@ public class UniteSearchHandler
         i = paramInt2 - 1;
       }
       localReqBody.key_word.set(ByteStringMicro.copyFromUtf8(paramString1));
-      localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+      localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
       if (paramBoolean2) {
         localReqBody.client_has_people_and_qun.set(1);
       }
@@ -947,7 +878,7 @@ public class UniteSearchHandler
       return;
     }
     localReqBody.key_word.set(ByteStringMicro.copyFromUtf8(paramString1));
-    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     Object localObject = new DynamicSearch.RootSearcherRequest();
     ((DynamicSearch.RootSearcherRequest)localObject).business.set(128);
     ((DynamicSearch.RootSearcherRequest)localObject).page_size.set(paramInt1);
@@ -1029,7 +960,7 @@ public class UniteSearchHandler
     }
     DynamicBusinessHotWord.ReqBody localReqBody = new DynamicBusinessHotWord.ReqBody();
     localReqBody.business.set(128);
-    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    localReqBody.version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     ToServiceMsg localToServiceMsg = a("dynamic_busi_hot_word.1");
     localToServiceMsg.putWupBuffer(localReqBody.toByteArray());
     b(localToServiceMsg);

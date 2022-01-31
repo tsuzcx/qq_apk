@@ -1,30 +1,32 @@
-import android.os.Bundle;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class aldz
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public aldz(BaseJsCallBack paramBaseJsCallBack, String paramString) {}
+  public aldz(QQToast paramQQToast, Toast paramToast) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_JavaLangString.equals("1")) {
-      bool = true;
-    }
-    if (BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack) != null)
+    if (paramMotionEvent.getAction() == 0)
     {
-      SendMsg localSendMsg = new SendMsg("changeLoadingTip");
-      localSendMsg.a.putBoolean("showLoadingView", bool);
-      BaseJsCallBack.access$000(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack).b(localSendMsg);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, "start to cancel toast");
+      }
+      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast, true);
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aldz
  * JD-Core Version:    0.7.0.1
  */

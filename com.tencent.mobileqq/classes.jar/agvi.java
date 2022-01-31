@@ -1,23 +1,47 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import com.tencent.mobileqq.qcall.QCallProxy;
-import java.util.Comparator;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
+import com.tencent.mobileqq.profile.view.VipScaledViewPager;
 
 public class agvi
-  implements Comparator
+  implements ViewPager.OnPageChangeListener
 {
-  public agvi(QCallProxy paramQCallProxy) {}
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public agvi(PhotoViewForShopping paramPhotoViewForShopping) {}
+  
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
-      return 0;
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.b();
+      this.jdField_a_of_type_Boolean = true;
     }
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    if (paramInt == 2) {
+      this.b = true;
+    }
+    if (paramInt == 0)
+    {
+      if (this.b)
+      {
+        this.b = false;
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
   }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agvi
  * JD-Core Version:    0.7.0.1
  */

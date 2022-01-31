@@ -1,86 +1,90 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import android.app.Activity;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.telephony.TelephonyManager;
+import com.tencent.biz.ProtoServlet;
+import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
+import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.app.NewIntent;
+import tencent.im.nearbygroup.ext.NearbyGroupExt.ReqBody;
+import tencent.im.troop_search_userinfo.userinfo.AppInfo;
+import tencent.im.troop_search_userinfo.userinfo.DevAttr;
+import tencent.im.troop_search_userinfo.userinfo.GPS;
+import tencent.im.troop_search_userinfo.userinfo.UserInfo;
 
 public class wqd
-  extends Handler
+  extends SosoInterface.OnLocationListener
 {
-  public wqd(MainAssistObserver paramMainAssistObserver, Looper paramLooper)
+  public wqd(RecommendTroopView paramRecommendTroopView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    super(paramLooper);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.isLogin())) {}
-    do
+    Object localObject1;
+    Object localObject2;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null))
     {
-      do
+      this.a.b = Double.valueOf(paramSosoLbsInfo.a.a * 1000000.0D).intValue();
+      this.a.c = Double.valueOf(paramSosoLbsInfo.a.b * 1000000.0D).intValue();
+      paramSosoLbsInfo = new userinfo.UserInfo();
+      localObject1 = new userinfo.GPS();
+      if (this.a.b != 0)
       {
-        return;
-        switch (paramMessage.what)
+        ((userinfo.GPS)localObject1).uint32_lat.set(this.a.b);
+        ((userinfo.GPS)localObject1).uint32_lon.set(this.a.c);
+        paramSosoLbsInfo.gps.set((MessageMicro)localObject1);
+        localObject1 = (TelephonyManager)this.a.a().getSystemService("phone");
+        if (localObject1 != null)
         {
-        default: 
-          return;
-        case 0: 
-          paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-          this.a.a(35, paramMessage);
-          return;
-        case 28929: 
-          paramMessage = paramMessage.getData();
-        }
-      } while (paramMessage == null);
-      int i = paramMessage.getInt("result");
-      if ((i == -1) || (i == -2))
-      {
-        if (i == -1) {
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433442);
-        }
-        for (String str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433443);; str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433445))
-        {
-          try
-          {
-            if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
-            {
-              if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-                this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-              }
-              this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, paramMessage, str, new wqe(this), null);
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new wqf(this));
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new wqg(this));
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-            return;
+          localObject2 = new userinfo.DevAttr();
+          if (((TelephonyManager)localObject1).getSimSerialNumber() != null) {
+            ((userinfo.DevAttr)localObject2).str_imei.set(((TelephonyManager)localObject1).getSimSerialNumber());
           }
-          catch (Exception paramMessage) {}
-          if (!QLog.isColorLevel()) {
-            break;
+          if (((TelephonyManager)localObject1).getSubscriberId() != null) {
+            ((userinfo.DevAttr)localObject2).str_imsi.set(((TelephonyManager)localObject1).getSubscriberId());
           }
-          paramMessage.printStackTrace();
-          return;
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433444);
+          if (((TelephonyManager)localObject1).getLine1Number() != null) {
+            ((userinfo.DevAttr)localObject2).str_phonenum.set(((TelephonyManager)localObject1).getLine1Number());
+          }
+          paramSosoLbsInfo.attr.set((MessageMicro)localObject2);
         }
+        localObject1 = new userinfo.AppInfo();
+        ((userinfo.AppInfo)localObject1).plat_type.set(2);
       }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(34, paramMessage);
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(33, paramMessage);
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(36, paramMessage);
+    }
+    try
+    {
+      localObject2 = this.a.a().getPackageManager().getPackageInfo(this.a.a().getPackageName(), 0);
+      ((userinfo.AppInfo)localObject1).str_app_version.set(((PackageInfo)localObject2).versionName);
+      paramSosoLbsInfo.app_info.set((MessageMicro)localObject1);
+      localObject1 = new NearbyGroupExt.ReqBody();
+      ((NearbyGroupExt.ReqBody)localObject1).user_info.set(paramSosoLbsInfo);
+      ((NearbyGroupExt.ReqBody)localObject1).uint32_type.set(2);
+      paramSosoLbsInfo = new NewIntent(this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a().getApplicationContext(), ProtoServlet.class);
+      paramSosoLbsInfo.putExtra("cmd", "NearbyGroupExt.GetGroupList");
+      paramSosoLbsInfo.putExtra("data", ((NearbyGroupExt.ReqBody)localObject1).toByteArray());
+      paramSosoLbsInfo.setObserver(new wqe(this));
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramSosoLbsInfo);
+      return;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      for (;;)
+      {
+        localNameNotFoundException.printStackTrace();
+      }
+    }
   }
 }
 

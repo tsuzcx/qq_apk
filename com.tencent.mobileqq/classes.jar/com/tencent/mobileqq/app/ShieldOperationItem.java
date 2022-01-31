@@ -3,12 +3,12 @@ package com.tencent.mobileqq.app;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zmx;
+import ztt;
 
 public class ShieldOperationItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new zmx();
+  public static final Parcelable.Creator CREATOR = new ztt();
   public int a;
   public long[] a;
   public int b;

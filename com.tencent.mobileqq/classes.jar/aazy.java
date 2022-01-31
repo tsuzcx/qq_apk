@@ -1,20 +1,13 @@
-import com.tencent.mapsdk.raster.model.CameraPosition;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapCameraChangeListener;
+import com.tencent.mobileqq.ark.ArkAppCGI;
 
 public class aazy
-  implements TencentMap.OnMapCameraChangeListener
+  implements abac
 {
-  public aazy(ARMapActivity paramARMapActivity) {}
+  public aazy(ArkAppCGI paramArkAppCGI) {}
   
-  public void onCameraChange(CameraPosition paramCameraPosition) {}
-  
-  public void onCameraChangeFinish(CameraPosition paramCameraPosition)
+  public void a(abad paramabad, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    if (ARMapActivity.a(this.a) != null) {
-      ARMapActivity.a(this.a).a();
-    }
+    this.a.a((abah)paramabad, paramBoolean, paramArrayOfByte);
   }
 }
 

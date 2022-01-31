@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadinjoyFixPosArticleManager;
-import com.tencent.biz.pubaccount.readinjoy.model.FixPosArticleInterface.FixPosArticleAsyncListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import cooperation.readinjoy.ReadInJoyHelper;
 
-class lon
-  implements FixPosArticleInterface.FixPosArticleAsyncListener
+public class lon
+  implements Runnable
 {
-  lon(lom paramlom) {}
+  public lon(KandianMergeManager paramKandianMergeManager, int paramInt) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    ReadinjoyFixPosArticleManager.a(this.a.a, paramInt);
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), 1).edit();
+    localEditor.putInt("subscribe_push_msg_status", this.jdField_a_of_type_Int);
+    ReadInJoyHelper.a(localEditor, true);
   }
 }
 

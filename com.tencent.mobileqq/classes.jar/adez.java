@@ -1,14 +1,46 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.core.OfflinePreviewController;
+import com.tencent.mobileqq.filemanager.data.FMConfig;
+import com.tencent.qphone.base.util.QLog;
 
 public class adez
-  implements Runnable
+  extends FMObserver
 {
-  public adez(VideoFilePresenter paramVideoFilePresenter) {}
+  public adez(OfflinePreviewController paramOfflinePreviewController) {}
   
-  public void run()
+  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6)
   {
-    this.a.a.e();
+    label110:
+    for (;;)
+    {
+      try
+      {
+        if (FMConfig.a)
+        {
+          paramString4 = "183.61.37.13";
+          paramString5 = "443";
+          if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback != null) {
+            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString3, paramString2, this.a.jdField_a_of_type_JavaLangString);
+          }
+        }
+        else
+        {
+          if ((paramString4 == null) || (paramString4.length() <= 0)) {
+            break label110;
+          }
+          paramString5 = String.valueOf(paramInt2);
+          continue;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.e(this.a.b, 2, " callback is null");
+          continue;
+          paramString4 = paramString5;
+        }
+      }
+      finally {}
+    }
   }
 }
 

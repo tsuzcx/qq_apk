@@ -1,29 +1,20 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.drawable.DrawableContainer;
-import com.tencent.component.media.image.drawable.MatrixDrawable;
+import android.app.Activity;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 
-public class phz
-  extends phv
+class phz
+  implements Runnable
 {
-  public phz(Drawable paramDrawable, DrawableContainer paramDrawableContainer)
-  {
-    super(paramDrawable, paramDrawableContainer);
-  }
+  phz(phy paramphy, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
   
-  public phz(phv paramphv, DrawableContainer paramDrawableContainer, Resources paramResources)
+  public void run()
   {
-    super(paramphv, paramDrawableContainer, paramResources);
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new MatrixDrawable(this, null, null);
+    this.jdField_a_of_type_Phy.a.a(this.jdField_a_of_type_Phy.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     phz
  * JD-Core Version:    0.7.0.1
  */

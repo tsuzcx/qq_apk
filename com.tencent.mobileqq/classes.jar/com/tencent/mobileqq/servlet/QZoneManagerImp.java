@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.servlet;
 
-import ahxw;
-import ahxy;
-import ahxz;
-import ahya;
+import aicn;
+import aicp;
+import aicq;
+import aicr;
 import android.annotation.TargetApi;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -24,6 +24,7 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.UndealCount.QZoneCountInfo;
 import cooperation.qzone.UndealCount.QZoneCountUserInfo;
+import cooperation.qzone.util.QZLog;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -52,12 +53,12 @@ public class QZoneManagerImp
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (this.jdField_a_of_type_AndroidDatabaseContentObserver == null) {
-      this.jdField_a_of_type_AndroidDatabaseContentObserver = new ahxw(this, null);
+      this.jdField_a_of_type_AndroidDatabaseContentObserver = new aicn(this, null);
     }
     try
     {
       paramQQAppInterface.getApplication().getContentResolver().registerContentObserver(QZoneConfigConst.h, true, this.jdField_a_of_type_AndroidDatabaseContentObserver);
-      ThreadManager.post(new ahxy(this), 8, null, true);
+      ThreadManager.post(new aicp(this), 8, null, true);
       return;
     }
     catch (Exception paramQQAppInterface)
@@ -91,7 +92,7 @@ public class QZoneManagerImp
     if ((paramQZoneCountInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
       return;
     }
-    ThreadManager.post(new ahxz(this, new QZoneCountInfo(paramQZoneCountInfo), paramInt), 5, null, false);
+    ThreadManager.post(new aicq(this, new QZoneCountInfo(paramQZoneCountInfo), paramInt), 5, null, false);
   }
   
   private boolean a(QQAppInterface paramQQAppInterface)
@@ -99,7 +100,7 @@ public class QZoneManagerImp
     if (paramQQAppInterface == null) {
       return false;
     }
-    return LocalMultiProcConfig.getBool(paramQQAppInterface.getApp().getApplicationContext().getString(2131434207) + paramQQAppInterface.getAccount(), true);
+    return LocalMultiProcConfig.getBool(paramQQAppInterface.getApp().getApplicationContext().getString(2131434223) + paramQQAppInterface.getAccount(), true);
   }
   
   /* Error */
@@ -393,7 +394,7 @@ public class QZoneManagerImp
       }
       if (paramInt == 3)
       {
-        ThreadManager.post(new ahya(this, paramInt), 8, null, true);
+        ThreadManager.post(new aicr(this, paramInt), 8, null, true);
         return;
       }
     } while ((paramInt != 5) && (paramInt != 6) && (paramInt != 7) && (paramInt != 8));
@@ -439,19 +440,34 @@ public class QZoneManagerImp
   public void a(long paramLong)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    NewIntent localNewIntent;
-    do
+    for (;;)
     {
       return;
-      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), QZoneNotifyServlet.class);
-      localNewIntent.setAction("Qzone_Refresh_UI");
-      localNewIntent.putExtra("notify_type", paramLong);
-    } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+      try
+      {
+        NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), QZoneNotifyServlet.class);
+        localNewIntent.setAction("Qzone_Refresh_UI");
+        localNewIntent.putExtra("notify_type", paramLong);
+        if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("QZoneManagerImp.", 1, "", localThrowable);
+      }
+    }
   }
   
   public void a(Exception paramException)
   {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    {
+      QZLog.e("QZoneManagerImp.", "handleException app == null");
+      return;
+    }
     String str;
     if ((paramException instanceof IllegalArgumentException)) {
       if ((paramException.getMessage() != null) && (paramException.getMessage().contains("Unknown URI"))) {

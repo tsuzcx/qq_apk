@@ -1,23 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
 
-class omx
-  implements ValueAnimator.AnimatorUpdateListener
+public class omx
+  extends AnimatorListenerAdapter
 {
-  omx(omw paramomw, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
+  public omx(FaceLayer.FaceItem paramFaceItem) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)StoryMultiFragmentPart.a(this.jdField_a_of_type_Omw.a).getLayoutParams();
-    paramValueAnimator.width = ((int)((this.jdField_a_of_type_Int - this.b) * f1 + this.b));
-    paramValueAnimator.height = ((int)((this.c - this.d) * f1 + this.d));
-    paramValueAnimator.leftMargin = ((int)((this.e + 0) * f1 + 0.0F));
-    paramValueAnimator.bottomMargin = ((int)(f1 * (this.f + 0) + 0.0F));
-    StoryMultiFragmentPart.a(this.jdField_a_of_type_Omw.a).setLayoutParams(paramValueAnimator);
+    SLog.b("FaceLayer", "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    SLog.b("FaceLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.b.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    SLog.b("FaceLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 

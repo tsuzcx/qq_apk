@@ -15,7 +15,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import anee;
+import anme;
 
 public class RedTouchExtendButton
   extends ExtendButton
@@ -61,7 +61,7 @@ public class RedTouchExtendButton
       int i = a() - a(2);
       if (this.d == 0)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846051);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846133);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, j, this.c + i, this.c + j);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       }
@@ -83,7 +83,7 @@ public class RedTouchExtendButton
         localRect.right = (m + j);
         float f1 = a(0) + k;
         float f2 = ((Paint.FontMetrics)localObject2).top;
-        localObject2 = getResources().getDrawable(2130846051);
+        localObject2 = getResources().getDrawable(2130846133);
         ((Drawable)localObject2).getBounds();
         ((Drawable)localObject2).setBounds(j, k, localRect.right, localRect.bottom);
         ((Drawable)localObject2).draw(paramCanvas);
@@ -92,7 +92,7 @@ public class RedTouchExtendButton
       }
       if (this.d == 3)
       {
-        localObject1 = getResources().getDrawable(2130844904);
+        localObject1 = getResources().getDrawable(2130844979);
         i += a(2);
         j = getHeight() / 2 - ((Drawable)localObject1).getIntrinsicHeight() / 2;
         ((Drawable)localObject1).setBounds(i, j, ((Drawable)localObject1).getIntrinsicWidth() + i, ((Drawable)localObject1).getIntrinsicHeight() + j);
@@ -263,7 +263,7 @@ public class RedTouchExtendButton
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new anee(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new anme(this));
   }
   
   public void invalidateDrawable(Drawable paramDrawable)

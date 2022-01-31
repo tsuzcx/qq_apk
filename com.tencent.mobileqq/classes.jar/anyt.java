@@ -1,13 +1,26 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
+import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView.VideoSegmentPickerListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import java.lang.ref.WeakReference;
 
 public class anyt
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anyt(DoodleLayout paramDoodleLayout) {}
+  public anyt(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a(0, Boolean.valueOf(false));
+    VideoSegmentPickerProviderView.a(this.a).a.a();
+    if (VideoSegmentPickerProviderView.a(this.a) != null)
+    {
+      paramView = (VideoSegmentPickerProviderView.VideoSegmentPickerListener)VideoSegmentPickerProviderView.a(this.a).get();
+      if (paramView != null) {
+        paramView.a(0L, 0L);
+      }
+    }
   }
 }
 

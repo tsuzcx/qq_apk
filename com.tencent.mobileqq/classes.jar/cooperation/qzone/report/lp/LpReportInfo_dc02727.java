@@ -82,7 +82,7 @@ public class LpReportInfo_dc02727
         report(new LpReportInfo_dc02727(paramJSONArray.getJSONObject(i)), paramBoolean1, paramBoolean2);
         i += 1;
       }
-      QZLog.i("LpReportInfo_dc02727", "upload2: json ＝  " + paramJSONArray.toString());
+      QZLog.i("LpReportInfo_dc02727", "upload2: report to lp dc02727");
       return;
     }
     catch (Throwable paramJSONArray)

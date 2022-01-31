@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.ReportCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.ReportCallback;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
 public class aflf
-  implements NearbyMomentProtocol.ReportCallback
+  implements Runnable
 {
-  public aflf(NearbyMomentManager paramNearbyMomentManager, NearbyMomentManager.ReportCallback paramReportCallback) {}
+  public aflf(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$ReportCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$ReportCallback.a(paramBoolean);
-    }
+    int i = this.a.h.getTop();
+    int j = (int)(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a * 20.0F);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollTo(0, i - j);
   }
 }
 

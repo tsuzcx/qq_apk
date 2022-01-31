@@ -1,29 +1,20 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.apollo.ApolloGameArkHandler;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-public class yjq
-  implements Runnable
+class yjq
+  implements DialogInterface.OnClickListener
 {
-  public yjq(ApolloGameArkHandler paramApolloGameArkHandler, MessageForApollo paramMessageForApollo, String paramString1, String paramString2) {}
+  yjq(yjp paramyjp) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      ark.arkNotify(ApolloGameArkHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo), this.jdField_a_of_type_JavaLangString, this.b, "json");
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQ_CmGame", 1, localThrowable, new Object[0]);
-    }
+    this.a.a.s();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yjq
  * JD-Core Version:    0.7.0.1
  */

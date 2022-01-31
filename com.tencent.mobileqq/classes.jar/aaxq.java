@@ -1,32 +1,18 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.statistics.ArkAppReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.ark.ArkAppInfo.ContextActionAppInfo;
+import java.util.Comparator;
 
-public class aaxq
-  implements DialogInterface.OnClickListener
+class aaxq
+  implements Comparator
 {
-  public aaxq(ArkRecommendController paramArkRecommendController, QQCustomDialog paramQQCustomDialog, QQAppInterface paramQQAppInterface, Context paramContext) {}
+  aaxq(aaxp paramaaxp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(ArkAppInfo.ContextActionAppInfo paramContextActionAppInfo1, ArkAppInfo.ContextActionAppInfo paramContextActionAppInfo2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
-    {
-      ArkRecommendController.a(ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      ArkAppReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "__global__", "ArkAlertDialogNotConfirm", 0L, 0L, 0L, 0L, 0L, "", "");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      ArkRecommendController.a(this.jdField_a_of_type_AndroidContentContext, "close", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
+    int i = paramContextActionAppInfo1.a.compareTo(paramContextActionAppInfo2.a);
+    if (i != 0) {
+      return i;
     }
-    catch (Exception paramDialogInterface)
-    {
-      ArkAppCenter.b("ArkDialog", String.format("NegativeButton click failed, err=%s", new Object[] { paramDialogInterface.getMessage() }));
-    }
+    return paramContextActionAppInfo1.b.compareTo(paramContextActionAppInfo2.b);
   }
 }
 

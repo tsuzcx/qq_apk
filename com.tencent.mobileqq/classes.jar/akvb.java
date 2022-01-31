@@ -1,19 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.musicpendant.MusicPendantManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.MusicPendantView;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class akvb
   implements Runnable
 {
-  public akvb(MusicPendantView paramMusicPendantView) {}
+  public akvb(WebViewFragment paramWebViewFragment, Activity paramActivity) {}
   
   public void run()
   {
-    Card localCard = MusicPendantManager.a().a();
-    if ((localCard != null) && (localCard.autoPlayMusicPendant) && (!NetworkUtil.b(BaseApplicationImpl.getContext()))) {
-      MusicPendantManager.a().b();
+    if (MyAppApi.d()) {
+      MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity);
     }
   }
 }

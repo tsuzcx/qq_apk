@@ -1,34 +1,13 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaFeedsDislikeMaskView;
+import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
 
 public class aebh
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public aebh(LebaFeedsDislikeMaskView paramLebaFeedsDislikeMaskView) {}
+  public aebh(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    LebaFeedsDislikeMaskView.a(this.a).setAlpha(1.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleX(1.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleY(1.0F);
-    LebaFeedsDislikeMaskView.a(this.a, LebaFeedsDislikeMaskView.a(this.a));
-    this.a.invalidate();
-    LebaFeedsDislikeMaskView.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    LebaFeedsDislikeMaskView.a(this.a).setAlpha(0.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleX(0.0F);
-    LebaFeedsDislikeMaskView.a(this.a).setScaleY(0.0F);
-    LebaFeedsDislikeMaskView.a(this.a, 0);
-    this.a.invalidate();
+    ImaxAdVideoPreloadManager.a(this.a, 2);
   }
 }
 

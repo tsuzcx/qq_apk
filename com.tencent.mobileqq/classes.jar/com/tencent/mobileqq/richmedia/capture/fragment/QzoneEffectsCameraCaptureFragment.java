@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.richmedia.capture.fragment;
 
-import ahkf;
-import ahkg;
-import ahkh;
-import ahki;
-import ahkj;
+import ahow;
+import ahox;
+import ahoy;
+import ahoz;
+import ahpa;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -86,10 +87,10 @@ public class QzoneEffectsCameraCaptureFragment
   private LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
   private FlowComponentInterface jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowComponentInterface;
   private CameraCaptureView.VideoCaptureResult jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
-  private String jdField_a_of_type_JavaLangString;
   private int c;
   private int d;
-  private int e;
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString;
   private String f;
   private String g;
   private String h;
@@ -339,7 +340,7 @@ public class QzoneEffectsCameraCaptureFragment
     if ((getActivity() == null) || (getActivity().isFinishing())) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("topic_id");
+    this.jdField_e_of_type_JavaLangString = paramBundle.getString("topic_id");
     this.jdField_f_of_type_JavaLangString = paramBundle.getString("short_video_refer");
     a(paramBundle, this.jdField_f_of_type_JavaLangString);
     this.jdField_j_of_type_Boolean = paramBundle.getBoolean("is_glance_video", false);
@@ -507,7 +508,7 @@ public class QzoneEffectsCameraCaptureFragment
       Intent localIntent = new Intent(BaseApplicationImpl.getContext(), EditLocalVideoActivity.class);
       localIntent.putExtras(paramIntent);
       localIntent.putExtra("is_qzone_vip", this.jdField_n_of_type_Boolean);
-      localIntent.putExtra("param.topicId", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("param.topicId", this.jdField_e_of_type_JavaLangString);
       localIntent.putExtra("param.topicSyncQzone", this.jdField_i_of_type_Boolean);
       localIntent.putExtra("extra_key_font_id", this.jdField_a_of_type_Int);
       localIntent.putExtra("extra_key_font_format_type", this.jdField_c_of_type_Int);
@@ -516,7 +517,7 @@ public class QzoneEffectsCameraCaptureFragment
       localIntent.putExtra("extra_key_super_font_info", this.jdField_j_of_type_JavaLangString);
       localIntent.putExtra("short_video_refer", this.jdField_f_of_type_JavaLangString);
       localIntent.putExtra("set_user_callback", this.jdField_a_of_type_AndroidOsBundle.getString("set_user_callback"));
-      ThreadManager.getUIHandler().postDelayed(new ahkj(this, localIntent), 0L);
+      ThreadManager.getUIHandler().postDelayed(new ahpa(this, localIntent), 0L);
       return;
     }
     catch (Exception paramIntent)
@@ -532,7 +533,9 @@ public class QzoneEffectsCameraCaptureFragment
     boolean bool1 = paramBundle.getBoolean("flow_camera_video_mode", true);
     boolean bool2 = paramBundle.getBoolean("flow_camera_capture_mode", true);
     int i1;
-    if ((bool1) && (bool2)) {
+    if ((bool1) && (bool2))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout.setRecordTipsWording(getResources().getString(2131438700));
       i1 = 1;
     }
     for (;;)
@@ -552,17 +555,19 @@ public class QzoneEffectsCameraCaptureFragment
         return;
         if ((bool1) && (!bool2))
         {
+          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout.setRecordTipsWording(getResources().getString(2131438698));
           i1 = 3;
           break;
         }
         if ((bool1) || (!bool2)) {
-          break label178;
+          break label229;
         }
         i1 = 2;
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout.setRecordTipsWording(getResources().getString(2131438699));
         break;
         b(QzoneConfig.getInstance().getConfig("MiniVideo", "QzoneVideoMiniFrame", 6));
       }
-      label178:
+      label229:
       i1 = 1;
     }
   }
@@ -697,7 +702,7 @@ public class QzoneEffectsCameraCaptureFragment
         }
         i2 = 1;
         i1 = i3;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
         {
           i1 = i3;
           if (!"ref_h5_record_video".equals(this.jdField_f_of_type_JavaLangString))
@@ -742,7 +747,7 @@ public class QzoneEffectsCameraCaptureFragment
         paramVideoCaptureResult.putExtra("key_font_id", this.jdField_a_of_type_Int);
         paramVideoCaptureResult.putExtra("op_department", "grp_qzone");
         paramVideoCaptureResult.putExtra("op_type", "video_edit");
-        paramVideoCaptureResult.putExtra("topic_id", this.jdField_a_of_type_JavaLangString);
+        paramVideoCaptureResult.putExtra("topic_id", this.jdField_e_of_type_JavaLangString);
         paramVideoCaptureResult.putExtra("enable_priv_list", this.jdField_k_of_type_Boolean);
         paramVideoCaptureResult.putExtra("enable_input_text", this.jdField_l_of_type_Boolean);
         paramVideoCaptureResult.putExtra("enable_sync_qzone", this.jdField_m_of_type_Boolean);
@@ -801,11 +806,11 @@ public class QzoneEffectsCameraCaptureFragment
           continue;
         }
         p();
-        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399);
+        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363418);
         if (!StringUtil.a(paramString)) {
           continue;
         }
-        localTextView.setText(2131434314);
+        localTextView.setText(2131434330);
       }
       catch (Throwable paramString)
       {
@@ -826,7 +831,7 @@ public class QzoneEffectsCameraCaptureFragment
       this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(getActivity(), 2131624516);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969178);
     }
   }
   
@@ -835,7 +840,7 @@ public class QzoneEffectsCameraCaptureFragment
     if ((getActivity() == null) || (getActivity().isFinishing())) {
       return;
     }
-    getActivity().runOnUiThread(new ahki(this, paramBoolean, paramString));
+    getActivity().runOnUiThread(new ahoz(this, paramBoolean, paramString));
   }
   
   private int c()
@@ -878,9 +883,9 @@ public class QzoneEffectsCameraCaptureFragment
   private void c(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
   {
     if (getActivity() != null) {
-      getActivity().runOnUiThread(new ahkg(this));
+      getActivity().runOnUiThread(new ahox(this));
     }
-    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new ahkh(this, paramVideoCaptureResult, paramLocalMediaInfo));
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new ahoy(this, paramVideoCaptureResult, paramLocalMediaInfo));
   }
   
   private void d(int paramInt)
@@ -900,7 +905,7 @@ public class QzoneEffectsCameraCaptureFragment
   {
     if (this.p)
     {
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)getView().findViewById(2131370116));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)getView().findViewById(2131370125));
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     }
@@ -979,10 +984,10 @@ public class QzoneEffectsCameraCaptureFragment
         localCaptureParam.b(localSize.b());
         localCaptureParam.a(SVParamManager.a().a(this.jdField_e_of_type_Int));
         i1 *= SVParamManager.a().a(this.jdField_e_of_type_Int) * 1000;
-        localCaptureParam.d(i1);
+        localCaptureParam.h(i1);
         com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.r = i1;
-        localCaptureParam.e(1);
-        localCaptureParam.c(this.jdField_e_of_type_Int);
+        localCaptureParam.i(1);
+        localCaptureParam.g(this.jdField_e_of_type_Int);
         return localCaptureParam;
         if (this.r) {
           this.jdField_e_of_type_Int = 1;
@@ -1074,7 +1079,7 @@ public class QzoneEffectsCameraCaptureFragment
       localVideoSendPublicParam.jdField_e_of_type_Int = paramInt3;
       localVideoSendPublicParam.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
       localVideoSendPublicParam.jdField_a_of_type_Boolean = this.o;
-      localVideoSendPublicParam.jdField_j_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localVideoSendPublicParam.jdField_j_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
       localVideoSendPublicParam.jdField_b_of_type_Boolean = paramBoolean1;
       localVideoSendPublicParam.jdField_f_of_type_Int = paramInt4;
       localVideoSendPublicParam.jdField_g_of_type_Int = paramInt5;
@@ -1113,7 +1118,7 @@ public class QzoneEffectsCameraCaptureFragment
   
   protected int b()
   {
-    return 2130971170;
+    return 2130971193;
   }
   
   protected boolean c()
@@ -1121,9 +1126,9 @@ public class QzoneEffectsCameraCaptureFragment
     return false;
   }
   
-  protected void e()
+  protected void d()
   {
-    super.e();
+    super.d();
     if (this.r) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a(102, this.jdField_k_of_type_JavaLangString, this.jdField_l_of_type_JavaLangString);
     }
@@ -1236,7 +1241,7 @@ public class QzoneEffectsCameraCaptureFragment
     super.onViewCreated(paramView, paramBundle);
     n();
     b(this.jdField_a_of_type_AndroidOsBundle);
-    ThreadManager.getUIHandler().postDelayed(new ahkf(this), 500L);
+    ThreadManager.getUIHandler().postDelayed(new ahow(this), 500L);
   }
 }
 

@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ar.config.MainEntryAni;
+import java.lang.ref.WeakReference;
 
-class aaqa
+public class aaqa
   implements Runnable
 {
-  aaqa(aapz paramaapz) {}
+  public aaqa(MainEntryAni paramMainEntryAni, WeakReference paramWeakReference) {}
   
   public void run()
   {
-    ArkAppModuleReg.ModuleQQ.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, this.a.a.jdField_a_of_type_Long, this.a.a.c, 16L, this.a.a.b, 1);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    {
+      ((ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
+      ((ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setImageDrawable(null);
+    }
   }
 }
 

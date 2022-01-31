@@ -1,13 +1,16 @@
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-class aobi
-  implements Runnable
+public class aobi
+  implements View.OnClickListener
 {
-  aobi(aobh paramaobh, aobe paramaobe) {}
+  public aobi(EditVideoButton paramEditVideoButton) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aobe.a(this.jdField_a_of_type_Aobe.a.getProgress());
+    this.a.a.a(22);
   }
 }
 

@@ -4,6 +4,8 @@ import IMMsgBodyPack.PersonInfoChange;
 import IMMsgBodyPack.PersonInfoField;
 import OnlinePushPack.MsgInfo;
 import OnlinePushPack.SvcReqPushMsg;
+import aaad;
+import aaae;
 import com.qq.taf.jce.JceInputStream;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.FriendListHandler;
@@ -13,8 +15,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import zts;
-import ztt;
 
 public class ProfileCardMessageProcessor
   extends BaseMessageProcessor
@@ -71,7 +71,7 @@ public class ProfileCardMessageProcessor
             paramMsgInfo.c(this.a.getAccount());
           }
           if (i != 0) {
-            BaseApplicationImpl.sUiHandler.postDelayed(new ztt(this), 150L);
+            BaseApplicationImpl.sUiHandler.postDelayed(new aaae(this), 150L);
           }
         }
         do
@@ -89,14 +89,14 @@ public class ProfileCardMessageProcessor
     }
   }
   
-  public zts a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public aaad a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     switch (paramInt)
     {
     }
     for (;;)
     {
-      return new zts(null, false);
+      return new aaad(null, false);
       if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
         a(paramMsgInfo);
       } else {

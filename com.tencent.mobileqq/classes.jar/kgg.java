@@ -1,50 +1,27 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.av.utils.PhoneStatusMonitor;
-import com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusListener;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.GetRedBag;
 import com.tencent.qphone.base.util.QLog;
 
 public class kgg
-  extends PhoneStateListener
+  implements khe
 {
-  public kgg(PhoneStatusMonitor paramPhoneStatusMonitor) {}
+  public kgg(AVRedBagMgr paramAVRedBagMgr) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void a(GetRedBag paramGetRedBag)
   {
-    switch (paramInt)
+    if (paramGetRedBag == this.a.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag)
     {
-    }
-    for (;;)
-    {
-      super.onCallStateChanged(paramInt, paramString);
+      this.a.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag = null;
+      this.a.jdField_a_of_type_Khe = null;
+      this.a.a("onGetRedBagResult", AVRedBagMgr.d(this.a), paramGetRedBag.a);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_IDLE  mIsCalling:  " + this.a.jdField_a_of_type_Boolean);
-      }
-      if (this.a.jdField_a_of_type_Boolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged isCallingRunnable mIsCalling: " + this.a.jdField_a_of_type_Boolean);
-        }
-        ThreadManager.post(this.a.jdField_a_of_type_JavaLangRunnable, 8, null, false);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("PhoneStatusMonitor", 2, "onCallStateChanged CALL_STATE_RINGING or CALL_STATE_OFFHOOK");
-        }
-        if (!this.a.jdField_a_of_type_Boolean)
-        {
-          this.a.jdField_a_of_type_Boolean = true;
-          if (this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener != null) {
-            this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener.a(true);
-          }
-        }
-      }
     }
+    QLog.w("AVRedBag", 1, "onGetRedBagResult,  GetRedBag不一致，callback[" + paramGetRedBag + "], src[" + this.a.jdField_a_of_type_ComTencentAvUiRedbagGetRedBag + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kgg
  * JD-Core Version:    0.7.0.1
  */

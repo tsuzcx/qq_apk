@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.portal;
 
-import agmd;
-import agme;
+import agqs;
+import agqt;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -76,7 +76,7 @@ public class FlakeView
   
   public void a(int paramInt, String... paramVarArgs)
   {
-    ThreadManager.post(new agmd(this, paramVarArgs, paramInt), 5, null, false);
+    ThreadManager.post(new agqs(this, paramVarArgs, paramInt), 5, null, false);
   }
   
   public void a(boolean paramBoolean)
@@ -286,7 +286,7 @@ public class FlakeView
   
   public void setImagePath(String paramString, long paramLong)
   {
-    ThreadManager.post(new agme(this, paramString), 5, null, false);
+    ThreadManager.post(new agqt(this, paramString), 5, null, false);
     this.jdField_d_of_type_Long = System.currentTimeMillis();
     this.jdField_c_of_type_Long = paramLong;
   }

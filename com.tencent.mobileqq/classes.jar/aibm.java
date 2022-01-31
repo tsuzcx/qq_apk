@@ -1,46 +1,18 @@
-import com.tencent.filter.Frame;
-import com.tencent.mobileqq.shortvideo.filter.QQPtvVideoFilter;
-import com.tencent.sveffects.SLog;
-import com.tencent.ttpic.gles.SegmentDataPipe;
-import com.tencent.ttpic.thread.SegmentGLThread;
-import com.tencent.ttpic.util.OnSegmentReadyListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aibm
-  implements OnSegmentReadyListener
+public final class aibm
+  implements DialogInterface.OnClickListener
 {
-  public aibm(QQPtvVideoFilter paramQQPtvVideoFilter) {}
-  
-  public SegmentDataPipe getReadyData()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return QQPtvVideoFilter.a(this.a).getCurrentDataPipe();
-  }
-  
-  public boolean needWait()
-  {
-    return QQPtvVideoFilter.a(this.a).needWait();
-  }
-  
-  public void onTextureReady(Frame paramFrame)
-  {
-    if (QQPtvVideoFilter.a(this.a) != null) {
-      QQPtvVideoFilter.a(this.a).postSegJob(paramFrame);
-    }
-  }
-  
-  public void reset()
-  {
-    if (QQPtvVideoFilter.a(this.a) != null)
-    {
-      QQPtvVideoFilter.a(this.a).reset();
-      if (SLog.a()) {
-        SLog.d("QQPtvVideoFilter", "initSegmentGLThread reset!");
-      }
-    }
+    com.tencent.mobileqq.search.util.VADHelper.c = false;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aibm
  * JD-Core Version:    0.7.0.1
  */

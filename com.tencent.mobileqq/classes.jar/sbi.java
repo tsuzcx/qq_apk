@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 
-class sbi
-  implements Runnable
+public final class sbi
+  implements DialogInterface.OnClickListener
 {
-  sbi(sbh paramsbh, boolean paramBoolean) {}
+  public sbi(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Sbh.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.d();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Sbh.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b(this.jdField_a_of_type_Sbh.jdField_a_of_type_Boolean);
-      return;
+    if (this.a != null) {
+      this.a.a();
     }
-    this.jdField_a_of_type_Sbh.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.g();
+    paramDialogInterface.dismiss();
   }
 }
 

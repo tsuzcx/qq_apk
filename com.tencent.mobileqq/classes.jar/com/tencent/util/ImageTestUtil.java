@@ -22,7 +22,7 @@ public class ImageTestUtil
       {
         if (localObject[i].equals(paramString))
         {
-          localObject = AppConstants.aP + "dump_";
+          localObject = AppConstants.aQ + "dump_";
           try
           {
             Debug.dumpHprofData((String)localObject + paramString + System.currentTimeMillis());

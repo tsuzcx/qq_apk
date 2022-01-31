@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.C2CMessageManager;
+import java.util.Comparator;
 
 public class zsq
-  implements Runnable
+  implements Comparator
 {
-  public zsq(C2CMessageManager paramC2CMessageManager) {}
-  
-  public void run()
+  public int a(zsp paramzsp1, zsp paramzsp2)
   {
-    this.a.a.x();
+    if (paramzsp1.b < paramzsp2.b) {
+      return -1;
+    }
+    if (paramzsp1.b > paramzsp2.b) {
+      return 1;
+    }
+    return 0;
   }
 }
 

@@ -1,21 +1,34 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class afjg
-  extends TroopGiftCallback
+  implements UniformDownloader.IUniformDownloaderListener
 {
-  public afjg(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public afjg(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void a(long paramLong)
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle) {}
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    if (paramLong > 0L)
-    {
-      NearbyProfileFragment.a(this.a).setText(String.format("获得%d礼物积分", new Object[] { Long.valueOf(paramLong) }));
-      return;
-    }
-    NearbyProfileFragment.a(this.a).setText("我的礼物积分");
+    QLog.i("NearbyProfileDisplayPanel", 1, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
+    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
+    paramBundle.edit().putInt("state", 1);
+    paramBundle.edit().putString("filePath", paramString);
   }
+  
+  public void b(int paramInt, Bundle paramBundle) {}
+  
+  public void c(int paramInt, Bundle paramBundle) {}
+  
+  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

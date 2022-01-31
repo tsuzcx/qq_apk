@@ -5,7 +5,7 @@ import com.tencent.av.opengl.utils.AVGLUtils;
 import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilter;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
-import khv;
+import kkc;
 
 public class FilterProcess
 {
@@ -63,15 +63,15 @@ public class FilterProcess
     return (System.nanoTime() - l) / 1000L / 1000L;
   }
   
-  khv a(QQAVImageFilter paramQQAVImageFilter, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  kkc a(QQAVImageFilter paramQQAVImageFilter, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramQQAVImageFilter != null)
     {
       paramQQAVImageFilter.onOutputSizeChanged(this.c, this.d);
       paramQQAVImageFilter.onDraw2(paramInt2, paramInt3);
-      return new khv(this, paramInt3, paramInt4);
+      return new kkc(this, paramInt3, paramInt4);
     }
-    return new khv(this, paramInt1, paramInt2);
+    return new kkc(this, paramInt1, paramInt2);
   }
   
   void a()
@@ -119,7 +119,7 @@ public class FilterProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.videoeffect.FilterProcess
  * JD-Core Version:    0.7.0.1
  */

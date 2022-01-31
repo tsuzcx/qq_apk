@@ -36,7 +36,7 @@ public class QZoneCrashHandler
     //   1: astore 5
     //   3: new 30	java/io/File
     //   6: dup
-    //   7: getstatic 35	com/tencent/mobileqq/app/AppConstants:aO	Ljava/lang/String;
+    //   7: getstatic 35	com/tencent/mobileqq/app/AppConstants:aP	Ljava/lang/String;
     //   10: invokespecial 38	java/io/File:<init>	(Ljava/lang/String;)V
     //   13: astore 4
     //   15: aload 4
@@ -50,7 +50,7 @@ public class QZoneCrashHandler
     //   33: new 47	java/lang/StringBuilder
     //   36: dup
     //   37: invokespecial 48	java/lang/StringBuilder:<init>	()V
-    //   40: getstatic 35	com/tencent/mobileqq/app/AppConstants:aO	Ljava/lang/String;
+    //   40: getstatic 35	com/tencent/mobileqq/app/AppConstants:aP	Ljava/lang/String;
     //   43: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   46: ldc 54
     //   48: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;

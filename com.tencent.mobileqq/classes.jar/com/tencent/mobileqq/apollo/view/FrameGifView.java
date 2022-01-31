@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import yzr;
+import zgr;
 
 public class FrameGifView
   extends ImageView
@@ -15,7 +15,7 @@ public class FrameGifView
 {
   FrameGifView.AnimationListener jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener;
   protected QQFrameZipDecoder a;
-  private yzr jdField_a_of_type_Yzr = new yzr();
+  private zgr jdField_a_of_type_Zgr = new zgr();
   
   public FrameGifView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -75,9 +75,9 @@ public class FrameGifView
     }
     if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null)
     {
-      this.jdField_a_of_type_Yzr.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder, paramInt, paramString1, paramString2, paramBoolean);
-      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_Yzr);
-      ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_Yzr);
+      this.jdField_a_of_type_Zgr.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder, paramInt, paramString1, paramString2, paramBoolean);
+      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_Zgr);
+      ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_Zgr);
     }
   }
   

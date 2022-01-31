@@ -1,33 +1,32 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.ar.ARMusicController;
 import com.tencent.qphone.base.util.QLog;
 
 public class aaec
-  implements Runnable
+  implements MediaPlayer.OnPreparedListener
 {
-  public aaec(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData) {}
+  public aaec(ARMusicController paramARMusicController) {}
   
-  public void run()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
     try
     {
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqArScanningData.a, null, null, false);
-      if (localURLDrawable != null)
-      {
-        if (localURLDrawable.getStatus() != 1)
-        {
-          localURLDrawable.startDownload();
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqArScanningData.b = ImageUtil.a(localURLDrawable);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMusicController", 2, "load bg music success. : " + ARMusicController.b(this.a));
       }
+      this.a.a.seekTo(0);
+      ARMusicController.b(this.a, true);
+      if (ARMusicController.b(this.a))
+      {
+        this.a.a.start();
+        ARMusicController.c(this.a, false);
+      }
+      return;
     }
-    catch (Exception localException)
+    catch (Exception paramMediaPlayer)
     {
-      QLog.e("ScanningSurfaceView", 1, "preloadImage catch an exception.", localException);
+      paramMediaPlayer.printStackTrace();
     }
   }
 }

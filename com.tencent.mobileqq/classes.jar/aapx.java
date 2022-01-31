@@ -1,39 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.animation.Animator;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.AnimatorAdapter;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.config.MainDownAni;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 class aapx
-  implements DialogInterface.OnClickListener
+  extends AnimatorAdapter
 {
-  aapx(aapv paramaapv, QQCustomDialog paramQQCustomDialog) {}
+  aapx(aapv paramaapv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ArkAppCenter.a().post(new aapy(this));
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    QLog.w(MainDownAni.a(this.a.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni), 1, "loadDownAnimation动画结束");
+    this.a.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.b(this.a.jdField_a_of_type_Aapz, this.a.jdField_a_of_type_Aaqg);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    QLog.w(MainDownAni.a(this.a.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni), 1, "loadDownAnimation动画开始");
+    paramAnimator = (ImageView)this.a.jdField_a_of_type_Aapz.c.get();
+    if (paramAnimator != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      label38:
-      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aapv.a, "ark_authority_api_login", this.jdField_a_of_type_Aapv.c, 2);
-      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438819), 2131435269, 2131435269, new DialogUtil.DialogOnClickAdapter(), null);
-      try
-      {
-        paramDialogInterface.show();
-        return;
-      }
-      catch (Exception paramDialogInterface) {}
+      paramAnimator.setVisibility(4);
+      paramAnimator.setImageDrawable(null);
     }
-    catch (Exception paramDialogInterface)
-    {
-      break label38;
+    paramAnimator = (ImageView)this.a.jdField_a_of_type_Aapz.e.get();
+    if (paramAnimator != null) {
+      paramAnimator.setVisibility(0);
     }
+    ThreadManager.getUIHandler().postDelayed(new aapy(this), 1700L);
   }
 }
 

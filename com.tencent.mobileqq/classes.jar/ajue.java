@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
-class ajue
+public class ajue
   implements Runnable
 {
-  ajue(ajud paramajud, TroopMoreDetailView paramTroopMoreDetailView, ArrayList paramArrayList) {}
+  public ajue(AIOAnimationControlManager paramAIOAnimationControlManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.a(0, this.jdField_a_of_type_JavaUtilArrayList, true, 2, true);
+    AIOAnimationControlManager.a(this.a);
+    this.a.a();
   }
 }
 

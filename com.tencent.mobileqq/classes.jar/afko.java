@@ -1,20 +1,32 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.NearbyVideoUtils;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
-class afko
-  implements NearbyMomentManager.GetLocalUnPiblishListCallback
+public class afko
+  implements View.OnClickListener
 {
-  afko(afkn paramafkn, List paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  public afko(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  public void a(List paramList)
+  public void onClick(View paramView)
   {
-    NearbyMomentFragment.b(this.jdField_a_of_type_Afkn.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).clear();
-    NearbyMomentFragment.b(this.jdField_a_of_type_Afkn.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).addAll(paramList);
-    this.jdField_a_of_type_JavaUtilList.addAll(0, paramList);
-    this.jdField_a_of_type_Afkn.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment.b();
-    NearbyMomentFragment.a(this.jdField_a_of_type_Afkn.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, this.jdField_a_of_type_JavaUtilList);
-    NearbyMomentFragment.a(this.jdField_a_of_type_Afkn.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Afkn.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment$RefreshCallback);
+    if (!NearbyVideoUtils.a(this.a.a, this.a.a.app))
+    {
+      boolean bool = SharedPreUtils.a(this.a.a);
+      NearbyVideoUtils.a(this.a.a, NearbyProfileDisplayTribePanel.a(this.a), NearbyProfileDisplayTribePanel.a(this.a).videoInfo.d, NearbyProfileDisplayTribePanel.a(this.a).videoInfo.a, NearbyProfileDisplayTribePanel.a(this.a).uin, this.a.a.e, bool);
+    }
+    paramView = NearbyProfileDisplayTribePanel.a(this.a).uin;
+    StringBuilder localStringBuilder = new StringBuilder().append("");
+    if (this.a.a.e == 2) {}
+    for (int i = 1;; i = 2)
+    {
+      NearbyVideoUtils.a("clk_video_entry", new String[] { "1", paramView, i });
+      return;
+    }
   }
 }
 

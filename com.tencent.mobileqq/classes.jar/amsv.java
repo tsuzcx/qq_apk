@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
+import cooperation.plugin.IPluginManager;
 
-public final class amsv
-  implements DialogInterface.OnClickListener
+public class amsv
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amsv(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity) {}
+  
+  public void run()
   {
-    if (LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false)) {
-      LocalMultiProcConfig.putBool("comboqz_protect_enable", false);
+    if (this.a.a == null) {
+      return;
     }
-    paramDialogInterface.dismiss();
+    this.a.a.a("group_video_plugin.apk", false, GVideoPluginInstallerActivity.a(this.a));
   }
 }
 

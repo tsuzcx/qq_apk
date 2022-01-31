@@ -1,34 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
-class acqk
-  implements Runnable
+public class acqk
+  extends RecyclerView.ViewHolder
 {
-  acqk(acqj paramacqj, HashMap paramHashMap) {}
-  
-  public void run()
+  public acqk(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView)
   {
-    QfileLocalFileDelMediaTabView.a(this.jdField_a_of_type_Acqj.a).clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-      if (localList.size() != 0) {
-        QfileLocalFileDelMediaTabView.b(this.jdField_a_of_type_Acqj.a).put(str, localList);
-      }
-    }
-    this.jdField_a_of_type_Acqj.a.i();
-    this.jdField_a_of_type_Acqj.a.setSelect(0);
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqk
  * JD-Core Version:    0.7.0.1
  */

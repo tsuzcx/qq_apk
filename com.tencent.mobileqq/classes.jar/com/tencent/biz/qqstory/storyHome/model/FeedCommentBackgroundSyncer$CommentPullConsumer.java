@@ -4,8 +4,8 @@ import com.tencent.biz.qqstory.base.Producer.ConsumerBase;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tribe.async.async.ThreadOffFunction;
 import com.tribe.async.reactive.Stream;
-import nyi;
-import nyj;
+import ocx;
+import ocy;
 
 public class FeedCommentBackgroundSyncer$CommentPullConsumer
   extends Producer.ConsumerBase
@@ -14,8 +14,8 @@ public class FeedCommentBackgroundSyncer$CommentPullConsumer
   
   public void a(FeedCommentSync paramFeedCommentSync)
   {
-    this.a = Stream.of(paramFeedCommentSync).map(new ThreadOffFunction(2)).map(new nyj(null));
-    this.a.subscribe(new nyi(this));
+    this.a = Stream.of(paramFeedCommentSync).map(new ThreadOffFunction(2)).map(new ocy(null));
+    this.a.subscribe(new ocx(this));
   }
   
   public void c()

@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class vmz
   implements Runnable
 {
-  public vmz(AIOGalleryScene paramAIOGalleryScene) {}
+  public vmz(StructingMsgItemBuilder paramStructingMsgItemBuilder, Dialog paramDialog) {}
   
   public void run()
   {
-    if (this.a.o) {
-      return;
+    if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    AIOGalleryScene localAIOGalleryScene = this.a;
-    localAIOGalleryScene.h += this.a.i;
-    if (this.a.h > 99)
-    {
-      this.a.h = 99;
-      this.a.d(this.a.h);
-      return;
-    }
-    this.a.d(this.a.h);
-    this.a.v();
   }
 }
 

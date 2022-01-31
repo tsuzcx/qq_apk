@@ -6,7 +6,7 @@ import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 public class SvEffectSdkInitor$QQSpecialAVFilterResource
   implements SpecialAVFilterResource
 {
-  public static final String a = AppConstants.aI + "/tencent/qq/music/";
+  public static final String a = AppConstants.aJ + "/tencent/qq/music/";
   
   public String a()
   {

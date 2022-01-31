@@ -1,11 +1,11 @@
 package cooperation.qzone.webviewplugin;
 
-import anct;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
+import ankt;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity;
@@ -42,7 +42,7 @@ public class QzonePersonalizeJsPlugin
   
   QzonePersonalizeJsPlugin()
   {
-    this.jdField_a_of_type_CooperationQzoneFontFontInterface$TrueTypeResult = new anct(this);
+    this.jdField_a_of_type_CooperationQzoneFontFontInterface$TrueTypeResult = new ankt(this);
   }
   
   public static void a(CustomWebView paramCustomWebView)
@@ -134,7 +134,7 @@ public class QzonePersonalizeJsPlugin
       {
         paramVarArgs = new JSONObject(paramVarArgs[0]);
         str1 = paramVarArgs.optString("url");
-        i = paramVarArgs.optInt("id");
+        i = paramVarArgs.optInt("id", -1);
         j = paramVarArgs.optInt("download");
         str2 = paramVarArgs.optString("callback");
         if ((j != 0) && (TextUtils.isEmpty(str1)))
@@ -154,7 +154,7 @@ public class QzonePersonalizeJsPlugin
         return;
       }
       if (Build.VERSION.SDK_INT >= 11) {
-        break label192;
+        break label193;
       }
       QLog.e("QzonePersonalizeJsPlugin", 1, "low android version system, so not to download font. sdk = " + Build.VERSION.SDK_INT);
       a(str2, -1, "font has not been cached.");
@@ -166,7 +166,7 @@ public class QzonePersonalizeJsPlugin
         a(str2, 0, "success");
         return;
       }
-      label192:
+      label193:
       do
       {
         paramVarArgs = this.jdField_a_of_type_CooperationQzoneFontFontInterface$TrueTypeResult;
@@ -291,7 +291,7 @@ public class QzonePersonalizeJsPlugin
         JSONObject localJSONObject = new JSONObject(paramVarArgs[0]);
         l = localJSONObject.optLong("uin");
         str = localJSONObject.optString("url");
-        i = localJSONObject.optInt("id");
+        i = localJSONObject.optInt("id", -1);
         j = localJSONObject.optInt("formatType");
         if (localJSONObject.optInt("sparkle_id", -1) != -1) {
           d(paramVarArgs);
@@ -401,7 +401,7 @@ public class QzonePersonalizeJsPlugin
           if ((paramVarArgs != null) && (paramVarArgs.length() > 0))
           {
             if ((((JSONObject)localObject).has("toast")) && (((JSONObject)localObject).getBoolean("toast"))) {
-              QQToast.a(paramPluginRuntime.a(), 2, 2131437252, 0).a();
+              QQToast.a(paramPluginRuntime.a(), 2, 2131437272, 0).a();
             }
             localObject = new long[paramVarArgs.length()];
             while (i < paramVarArgs.length())

@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManagerImpl;
-import java.util.Map;
+import com.tencent.mobileqq.app.message.BaseMessageProcessorForTroopAndDisc;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class zza
-  implements Runnable
+  implements Comparator
 {
-  public zza(ARRenderManagerImpl paramARRenderManagerImpl) {}
+  public zza(BaseMessageProcessorForTroopAndDisc paramBaseMessageProcessorForTroopAndDisc) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null)
-    {
-      this.a.jdField_a_of_type_JavaUtilMap.remove(this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a());
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = null;
-    }
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zza
  * JD-Core Version:    0.7.0.1
  */

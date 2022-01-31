@@ -1,13 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.biz.qqstory.base.QQStoryHandler;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeWatchedRequest;
 
-public class ost
-  implements DialogInterface.OnClickListener
+public final class ost
+  extends MsgTabNodeWatchedRequest
 {
-  public ost(QRCardActivity paramQRCardActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public String a()
+  {
+    return QQStoryHandler.n;
+  }
 }
 
 

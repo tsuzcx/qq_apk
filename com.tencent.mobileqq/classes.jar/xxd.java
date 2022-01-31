@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
-import java.io.File;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-class xxd
+public class xxd
   implements Runnable
 {
-  xxd(xxc paramxxc, File paramFile) {}
+  public xxd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
   public void run()
   {
-    ShortVideoCaptureController.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+    if (this.a.a != null) {
+      this.a.a.removeCallbacks(this.a.b);
+    }
   }
 }
 

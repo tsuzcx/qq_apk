@@ -1,22 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.biz.pubaccount.util.ProfileParams.Builder;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public final class muw
-  implements Parcelable.Creator
+public class muw
+  implements Runnable
 {
-  public ProfileParams a(Parcel paramParcel)
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public muw(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager, boolean paramBoolean)
   {
-    ProfileParams.Builder localBuilder = new ProfileParams.Builder();
-    localBuilder.a(paramParcel.readString()).a(paramParcel.readInt()).b(paramParcel.readString()).c(paramParcel.readString()).d(paramParcel.readString()).a((ProfileParams.CurLoginUsr)paramParcel.readParcelable(ProfileParams.CurLoginUsr.CREATOR.getClass().getClassLoader()));
-    return localBuilder.a();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadInJoySkinAnimManager);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public ProfileParams[] a(int paramInt)
+  public void run()
   {
-    return new ProfileParams[paramInt];
+    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localReadInJoySkinAnimManager != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoySkinAnimManager", 1, "InitResourceRunnable folder = " + ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager));
+      }
+      ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager, this.jdField_a_of_type_Boolean);
+    }
   }
 }
 

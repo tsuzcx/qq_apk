@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020439" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/skin_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="63.5dip" android:layout_marginRight="23.5dip">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c6f" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="11.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02065d" />
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
-            <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0547" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03c2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-            <TextView android:textSize="14.0dip" android:textColor="#ff949494" android:id="@id/lastMsgTime" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
-    <ImageView android:layout_width="13.5dip" android:layout_height="17.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ce6" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <Space android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0978" android:layout_width="320.0dip" android:layout_height="177.5dip" android:scaleType="fitXY" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c058b" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0eb6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <Space android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+</LinearLayout>

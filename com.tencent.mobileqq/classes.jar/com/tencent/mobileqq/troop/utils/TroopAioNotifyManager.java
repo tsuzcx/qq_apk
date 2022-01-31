@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajny;
-import ajnz;
+import ajvl;
+import ajvm;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -218,7 +218,7 @@ public class TroopAioNotifyManager
     if (paramTroopAIONotifyItem == null) {
       return;
     }
-    ThreadManager.post(new ajnz(paramQQAppInterface, paramTroopAIONotifyItem), 8, null, false);
+    ThreadManager.post(new ajvm(paramQQAppInterface, paramTroopAIONotifyItem), 8, null, false);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -239,7 +239,7 @@ public class TroopAioNotifyManager
       ChatActivityUtils.a(paramQQAppInterface, paramString, Integer.valueOf(0));
       return;
     }
-    ThreadManager.post(new ajny(paramQQAppInterface, paramString, localTroopHandler), 8, null, true);
+    ThreadManager.post(new ajvl(paramQQAppInterface, paramString, localTroopHandler), 8, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, List paramList)
@@ -382,7 +382,7 @@ public class TroopAioNotifyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopAioNotifyManager
  * JD-Core Version:    0.7.0.1
  */

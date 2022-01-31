@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.pulltorefresh.internal;
 
-import acjs;
+import acrz;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Matrix;
@@ -13,7 +13,7 @@ import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
 public class RotateLoadingLayout
-  extends acjs
+  extends acrz
 {
   private float jdField_a_of_type_Float;
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix;
@@ -55,7 +55,7 @@ public class RotateLoadingLayout
   
   protected int b()
   {
-    return 2130839639;
+    return 2130839654;
   }
   
   protected void b(float paramFloat)

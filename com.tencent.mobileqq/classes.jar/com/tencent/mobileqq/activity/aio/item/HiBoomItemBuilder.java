@@ -1,19 +1,18 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.mobileqq.activity.ChatActivityFacade;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.HiBoomMessage;
 import com.tencent.mobileqq.data.MessageForHiBoom;
@@ -21,44 +20,46 @@ import com.tencent.mobileqq.hiboom.HiBoomManager;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
 import com.tencent.mobileqq.hiboom.HiBoomTextView.OnDoubleClick;
 import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import com.tencent.qphone.base.util.QLog;
-import vah;
-import vai;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import vfi;
+import vfj;
+import vfk;
 
 public class HiBoomItemBuilder
-  extends QIMTailItemBubbleBuilder
+  extends BaseBubbleBuilder
 {
-  protected View.OnClickListener a;
-  HiBoomTextView.OnDoubleClick a;
+  private HiBoomTextView.OnDoubleClick a;
   public Context b;
   
   public HiBoomItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vah(this);
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$OnDoubleClick = new vai(this);
+    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$OnDoubleClick = new vfi(this);
     this.jdField_b_of_type_AndroidContentContext = paramContext;
   }
   
-  private void a(ChatMessage paramChatMessage, int paramInt) {}
+  private void e(ChatMessage paramChatMessage)
+  {
+    if ((paramChatMessage instanceof MessageForHiBoom))
+    {
+      paramChatMessage = (MessageForHiBoom)paramChatMessage;
+      ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(paramChatMessage.mHiBoomMessage.id, paramChatMessage.mHiBoomMessage.text, 1);
+      paramChatMessage = HiBoomManager.a(this.jdField_b_of_type_AndroidContentContext);
+      if (paramChatMessage != null)
+      {
+        paramChatMessage.a("正在转发嗨爆消息...");
+        paramChatMessage.show();
+      }
+    }
+  }
   
   public int a(ChatMessage paramChatMessage)
   {
     return 0;
-  }
-  
-  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
-  {
-    paramViewGroup = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramOnLongClickAndTouchListener);
-    paramView = paramViewGroup;
-    if ((paramViewGroup instanceof BaseChatItemLayout))
-    {
-      paramView = (BaseChatItemLayout)paramViewGroup;
-      paramView = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramChatMessage, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    }
-    return paramView;
   }
   
   protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
@@ -72,26 +73,13 @@ public class HiBoomItemBuilder
       paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$OnDoubleClick = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView$OnDoubleClick;
       if ((paramChatMessage instanceof MessageForHiBoom))
       {
-        paramBaseChatItemLayout = (MessageForHiBoom)paramChatMessage;
-        if (paramBaseChatItemLayout.mHiBoomMessage != null)
+        paramChatMessage = (MessageForHiBoom)paramChatMessage;
+        if (paramChatMessage.mHiBoomMessage != null)
         {
-          paramViewHolder.setHiBoom(paramBaseChatItemLayout.mHiBoomMessage.id, 1, HiBoomManager.a);
-          paramViewHolder.setText(paramBaseChatItemLayout.mHiBoomMessage.text);
-          if (QLog.isColorLevel())
-          {
-            paramView = "getBubbleView hiboom message id = " + paramBaseChatItemLayout.mHiBoomMessage.id;
-            paramChatMessage = paramView;
-            if (paramBaseChatItemLayout.mHiBoomMessage != null)
-            {
-              paramChatMessage = paramView;
-              if (!TextUtils.isEmpty(paramBaseChatItemLayout.mHiBoomMessage.text)) {
-                paramChatMessage = paramView + " text = " + paramBaseChatItemLayout.mHiBoomMessage.text.charAt(0);
-              }
-            }
-            QLog.d("HiBoomFont.ItemBuilder", 2, paramChatMessage);
-          }
+          paramViewHolder.setHiBoom(paramChatMessage.mHiBoomMessage.id, 1, HiBoomManager.a);
+          paramViewHolder.setText(paramChatMessage.mHiBoomMessage.text);
           if (jdField_b_of_type_Boolean) {
-            paramViewHolder.setContentDescription(a(paramBaseChatItemLayout));
+            paramViewHolder.setContentDescription(a(paramChatMessage));
           }
         }
       }
@@ -128,20 +116,28 @@ public class HiBoomItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131375577: 
+    case 2131375643: 
       super.c(paramChatMessage);
       return;
-    case 2131362395: 
-      a(paramChatMessage, 2);
+    case 2131362399: 
+      e(paramChatMessage);
       return;
-    case 2131362396: 
-      a(paramChatMessage, 1);
-      return;
-    case 2131375567: 
+    case 2131375633: 
       ChatActivityFacade.a(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
     super.a(paramChatMessage);
+  }
+  
+  protected void a(View paramView)
+  {
+    super.a(paramView);
+    paramView = AIOUtils.a(paramView);
+    String str1 = this.jdField_b_of_type_AndroidContentContext.getString(2131433649);
+    String str2 = this.jdField_b_of_type_AndroidContentContext.getString(2131433650);
+    if (paramView.isSendFromLocal()) {
+      DialogUtil.a(this.jdField_b_of_type_AndroidContentContext, 230, str1, str2, new vfj(this, paramView), new vfk(this)).show();
+    }
   }
   
   public QQCustomMenuItem[] a(View paramView)
@@ -150,6 +146,9 @@ public class HiBoomItemBuilder
     if ((AIOUtils.a(paramView) instanceof HiBoomItemBuilder.HiBoomHolder))
     {
       paramView = (HiBoomItemBuilder.HiBoomHolder)AIOUtils.a(paramView);
+      if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForHiBoom)) {
+        localQQCustomMenu.a(2131362399, this.jdField_b_of_type_AndroidContentContext.getString(2131435099), 2130838318);
+      }
       if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extraflag != 32768) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) {
         a(localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
       }

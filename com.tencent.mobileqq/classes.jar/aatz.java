@@ -1,34 +1,37 @@
-import com.tencent.ark.ArkEnvironmentManager.Log;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
+import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
+import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
+import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-public final class aatz
-  implements ArkEnvironmentManager.Log
+class aatz
+  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
 {
-  public void d(String paramString1, String paramString2)
+  aatz(aatw paramaatw) {}
+  
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
+    this.a.a.a(1, paramInt);
   }
   
-  public void e(String paramString1, String paramString2)
+  public void a(String paramString)
   {
-    QLog.e(paramString1, 1, paramString2);
+    ARVideoPreviewActivity.a(this.a.a).post(new aaua(this));
   }
   
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
+  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp) {}
   
-  public void w(String paramString1, String paramString2)
+  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo)
   {
-    QLog.w(paramString1, 1, paramString2);
+    paramString = paramUploadPicExtInfo.bytes_download_url.get().toStringUtf8();
+    this.a.a.a(1, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aatz
  * JD-Core Version:    0.7.0.1
  */

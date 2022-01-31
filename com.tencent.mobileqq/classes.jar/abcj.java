@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.armap.CameraSurfaceView;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
 
-public class abcj
+class abcj
   implements Runnable
 {
-  public abcj(CameraSurfaceView paramCameraSurfaceView) {}
+  abcj(abci paramabci, boolean paramBoolean, byte[] paramArrayOfByte, Object paramObject) {}
   
   public void run()
   {
-    this.a.d();
+    ArkLocalAppMgr.a(this.jdField_a_of_type_Abci.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte, (ArkLocalAppMgr.UpdateAppByNameTask)this.jdField_a_of_type_JavaLangObject);
   }
 }
 

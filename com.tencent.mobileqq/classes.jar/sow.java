@@ -1,34 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.util.WeakReferenceHandler;
 
-class sow
-  implements Runnable
+public class sow
+  extends CardObserver
 {
-  sow(sov paramsov) {}
+  public sow(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if ((this.a.a.app == null) || (this.a.a.b == null)) {}
-    do
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
+      if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
+        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+      }
       return;
-      localObject = (FriendsManager)this.a.a.app.getManager(50);
-    } while (localObject == null);
-    Card localCard = ((FriendsManager)localObject).a(this.a.a.a.a.a);
-    Message localMessage = Message.obtain();
-    localMessage.what = 3;
-    Object localObject = localCard;
-    if (localCard == null) {
-      localObject = this.a.a.a.a.a;
     }
-    localMessage.obj = localObject;
-    this.a.a.b.sendMessage(localMessage);
   }
 }
 

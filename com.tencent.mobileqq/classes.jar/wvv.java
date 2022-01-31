@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.CardObserver;
 
 public class wvv
-  implements Runnable
+  extends CardObserver
 {
-  public wvv(AlbumListAdapter paramAlbumListAdapter, QQAlbumInfo paramQQAlbumInfo) {}
+  public wvv(MainAssistObserver paramMainAssistObserver) {}
   
-  public void run()
+  protected void e(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
+    if (paramBoolean) {
+      this.a.e();
+    }
+  }
+  
+  protected void m(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      this.a.e();
+    }
   }
 }
 

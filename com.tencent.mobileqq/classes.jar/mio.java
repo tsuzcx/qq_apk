@@ -1,32 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class mio
   implements Runnable
 {
-  public mio(ReadInJoyListViewGroup paramReadInJoyListViewGroup, RefreshData paramRefreshData, ReadInJoyRefreshManager paramReadInJoyRefreshManager, SkinData paramSkinData, ReadInJoySkinManager paramReadInJoySkinManager) {}
+  public mio(VideoPluginInstall paramVideoPluginInstall) {}
   
   public void run()
   {
-    int i = (int)(System.currentTimeMillis() / 1000L);
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData != null) && (i >= this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.beginTime) && (i <= this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.endTime) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.isShown) && (RefreshRes.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.id)) && (RefreshRes.a() != 0))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.id);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.a(true);
-      RefreshRes.a();
-      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).sendEmptyMessage(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "start install video sdk in subThread");
     }
-    while ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData == null) || (i < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.beginTime) || (i > this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.endTime) || (!CommonSkinRes.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.id)) || (CommonSkinRes.b() == 0)) {
+    try
+    {
+      if (VideoPluginInstall.a(this.a) != null) {
+        TVK_SDKMgr.installPlugin(VideoPluginInstall.a(this.a), new miq(VideoPluginInstall.a(this.a)));
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoySkinManager.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.id);
-    CommonSkinRes.a();
-    ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).sendEmptyMessage(1);
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.readinjoy.video", 2, "TVK_SDKMgr.installPlugin ERROR e=" + localException.getMessage());
+    }
   }
 }
 

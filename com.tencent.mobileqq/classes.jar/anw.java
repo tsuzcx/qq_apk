@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.qq.im.poi.LbsStrangerPoiDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.qq.im.poi.LbsPackSendActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class anw
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public anw(LbsStrangerPoiDialog paramLbsStrangerPoiDialog) {}
+  public anw(LbsPackSendActivity paramLbsPackSendActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

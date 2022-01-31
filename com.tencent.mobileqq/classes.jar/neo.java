@@ -1,70 +1,29 @@
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class neo
-  extends QQStoryObserver
+  implements Runnable
 {
-  public neo(MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
+  public neo(VideoCompositeHelper paramVideoCompositeHelper, PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack) {}
   
-  public void a(byte paramByte)
+  public void run()
   {
-    boolean bool = true;
-    this.a.a = paramByte;
-    MsgTabStoryNodeConfigManager.c(this.a, true);
-    MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager;
-    if (paramByte != -1)
+    try
     {
-      if (paramByte == 0) {
-        MsgTabStoryNodeConfigManager.b(this.a);
-      }
-      localMsgTabStoryNodeConfigManager = this.a;
-      if (paramByte != 2) {
-        break label88;
-      }
-    }
-    for (;;)
-    {
-      localMsgTabStoryNodeConfigManager.a(bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
-      }
-      return;
-      label88:
-      bool = false;
-    }
-  }
-  
-  public void b()
-  {
-    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-    this.a.b = ((Boolean)localStoryConfigManager.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
-    }
-    MsgTabStoryNodeConfigManager.a(this.a);
-    MsgTabStoryNodeConfigManager.a(this.a, true);
-    MsgTabStoryNodeConfigManager.a(this.a, true);
-    MsgTabStoryNodeConfigManager.b(this.a);
-  }
-  
-  public void f(boolean paramBoolean)
-  {
-    if (!MsgTabStoryNodeConfigManager.a(this.a))
-    {
-      if (paramBoolean)
+      try
       {
-        this.a.c = this.a.a();
-        MsgTabStoryNodeConfigManager.a(this.a);
-        MsgTabStoryNodeConfigManager.a(this.a, true);
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack);
+        return;
       }
-      MsgTabStoryNodeConfigManager.b(this.a, true);
-      MsgTabStoryNodeConfigManager.b(this.a);
+      finally {}
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
+    catch (Exception localException)
+    {
+      SLog.c(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "do composite exception", localException);
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(942012, localException.getMessage(), "");
     }
   }
 }

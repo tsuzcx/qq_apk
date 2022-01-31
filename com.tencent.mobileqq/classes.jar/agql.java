@@ -1,23 +1,52 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.portal.ConversationHongBao;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.portal.ProgressViewRed;
 
 public class agql
-  implements ValueAnimation.AnimationUpdateListener
+  extends CountDownTimer
 {
-  public agql(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
-  
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  public agql(ConversationHongBao paramConversationHongBao, long paramLong1, long paramLong2, long[] paramArrayOfLong)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+    super(paramLong1, paramLong2);
+  }
+  
+  public void onFinish()
+  {
+    PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(78);
+    if (localPortalManager != null) {
+      localPortalManager.a();
+    }
+  }
+  
+  public void onTick(long paramLong)
+  {
+    if (ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao).getVisibility() == 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.a(paramLong);
+      ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao).a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_JavaLangStringBuilder);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_ComTencentMobileqqPortalFormalView.getVisibility() == 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.a(paramLong);
+      this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_b_of_type_JavaLangStringBuilder);
+    }
+    paramLong = System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_b_of_type_Long;
+    if (paramLong > 2000L) {
+      this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(1);
+    }
+    while (paramLong <= 1000L) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agql
  * JD-Core Version:    0.7.0.1
  */

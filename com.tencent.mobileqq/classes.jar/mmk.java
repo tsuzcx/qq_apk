@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.RecommendAndAdCallback;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class mmk
-  implements FastWebRequestUtil.RecommendAndAdCallback
+  implements Runnable
 {
-  public mmk(FastWebActivity paramFastWebActivity) {}
+  public mmk(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void a(boolean paramBoolean, String paramString, List paramList1, List paramList2)
+  public void run()
   {
-    this.a.runOnUiThread(new mml(this, paramBoolean, paramString, paramList1, paramList2));
+    if (ReadInJoyListViewGroup.a(this.a) != null) {
+      ReadInJoyListViewGroup.a(this.a).setVisibility(8);
+    }
   }
 }
 

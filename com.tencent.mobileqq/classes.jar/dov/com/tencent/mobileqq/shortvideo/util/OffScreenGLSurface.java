@@ -8,8 +8,8 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
-import aoql;
-import aoqm;
+import aoyx;
+import aoyy;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
 import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
@@ -31,7 +31,7 @@ public class OffScreenGLSurface
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private aoqm jdField_a_of_type_Aoqm = new aoqm(null);
+  private aoyy jdField_a_of_type_Aoyy = new aoyy(null);
   GLVideoClipUtil jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewGLVideoClipUtil;
   private PreviewContext jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext;
   public OffScreenGLSurface.GLSharedData a;
@@ -80,11 +80,11 @@ public class OffScreenGLSurface
   
   private void a(AVIOStruct paramAVIOStruct)
   {
-    this.jdField_a_of_type_Aoqm.jdField_a_of_type_Int = paramAVIOStruct.pFrameIndex;
+    this.jdField_a_of_type_Aoyy.jdField_a_of_type_Int = paramAVIOStruct.pFrameIndex;
     paramAVIOStruct.pFrameIndex = 0;
-    this.jdField_a_of_type_Aoqm.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Aoqm.jdField_b_of_type_Int = 0;
-    GLSurfaceUtil.a("handleMessage:writeVideoFrame[false]  mThumbPicControl.mSendThumbOKIndex=" + this.jdField_a_of_type_Aoqm.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Aoyy.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Aoyy.jdField_b_of_type_Int = 0;
+    GLSurfaceUtil.a("handleMessage:writeVideoFrame[false]  mThumbPicControl.mSendThumbOKIndex=" + this.jdField_a_of_type_Aoyy.jdField_a_of_type_Int);
   }
   
   private boolean a()
@@ -299,9 +299,9 @@ public class OffScreenGLSurface
         d();
         this.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilOffScreenGLSurface$GLSharedData.a();
         this.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilOffScreenGLSurface$GLSharedData.a = null;
-        this.jdField_a_of_type_Aoqm.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Aoqm.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Aoqm.jdField_a_of_type_Int = -1;
+        this.jdField_a_of_type_Aoyy.jdField_b_of_type_Int = 0;
+        this.jdField_a_of_type_Aoyy.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Aoyy.jdField_a_of_type_Int = -1;
         f();
       } while (!QLog.isColorLevel());
       QLog.d("OffScreenGLSurface", 2, "[FILE_CACHE_OPENGL_RANDER_DATA_FINISH]");
@@ -377,7 +377,7 @@ public class OffScreenGLSurface
             localObject = localAVIOStruct;
             if (localAVIOStruct.pFrameIndex == 0)
             {
-              this.jdField_a_of_type_Aoqm.jdField_a_of_type_Boolean = true;
+              this.jdField_a_of_type_Aoyy.jdField_a_of_type_Boolean = true;
               localObject = localAVIOStruct;
             }
             label752:
@@ -392,13 +392,13 @@ public class OffScreenGLSurface
             bool1 = this.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilOffScreenGLSurface$GLSharedData.a.a();
             if ((QLog.isColorLevel()) && (localStringBuilder != null))
             {
-              localStringBuilder.append("write ns=").append(this.jdField_a_of_type_Aoqm.jdField_a_of_type_Boolean).append("|");
+              localStringBuilder.append("write ns=").append(this.jdField_a_of_type_Aoyy.jdField_a_of_type_Boolean).append("|");
               localStringBuilder.append("fi=").append(((AVIOStruct)localObject).pFrameIndex).append("|");
               localStringBuilder.append("hrf=").append(bool1).append("|");
             }
             if (!bool1)
             {
-              if (this.jdField_a_of_type_Aoqm.jdField_a_of_type_Boolean) {
+              if (this.jdField_a_of_type_Aoyy.jdField_a_of_type_Boolean) {
                 a((AVIOStruct)localObject);
               }
               localTextureDataPipe.a();
@@ -422,7 +422,7 @@ public class OffScreenGLSurface
             this.g = this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame;
           }
           if ((this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext != null) && (this.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame)) {
-            this.jdField_a_of_type_AndroidOsHandler.post(new aoql(this));
+            this.jdField_a_of_type_AndroidOsHandler.post(new aoyx(this));
           }
           if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilPtvFilterOpenglFrameBuffer != null)
           {

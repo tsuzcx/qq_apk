@@ -1,12 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
 
-class ons
-  implements View.OnClickListener
+public class ons
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ons(onr paramonr) {}
+  private ons(EditTextDialog paramEditTextDialog) {}
   
-  public void onClick(View paramView) {}
+  public void onGlobalLayout()
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
+    {
+      this.a.dismiss();
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener.a(this.a.a());
+  }
 }
 
 

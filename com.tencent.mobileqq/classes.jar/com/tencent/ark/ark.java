@@ -16,6 +16,9 @@ public class ark
   public static final int APP_INPUTTYPE_TELEPHONE = 5;
   public static final int APP_INPUTTYPE_TEXT = 0;
   public static final int APP_MINVER_HIGHER = 3;
+  public static final int APP_SCRIPT_TYPE_JAVASCRIPT = 2;
+  public static final int APP_SCRIPT_TYPE_LUA = 1;
+  public static final int APP_SCRIPT_TYPE_NULL = 0;
   public static final int APP_TARGETVER_LOWER = 2;
   public static final int APP_URLCHECKING_LIST_TYPE_BLACK = 1;
   public static final int APP_URLCHECKING_LIST_TYPE_WHITE = 0;
@@ -49,12 +52,12 @@ public class ark
   
   public static final long arkGetARMv7LibCRC32()
   {
-    return 4138033766L;
+    return 3080963197L;
   }
   
   public static final int arkGetARMv7LibSize()
   {
-    return 3104924;
+    return 3150108;
   }
   
   public static final native Container arkGetContainer(long paramLong);
@@ -73,12 +76,12 @@ public class ark
   
   public static final int arkGetPlatformBuildNumber()
   {
-    return 73516;
+    return 73699;
   }
   
   public static final int arkGetPlatformVersion()
   {
-    return 18;
+    return 17;
   }
   
   public static final long arkGetPngARMv7LibCRC32()
@@ -100,6 +103,8 @@ public class ark
   public static final native int arkHTTPStartup();
   
   public static final native boolean arkNotify(String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public static final native void arkSetLibraryPath(String paramString);
   
   public static final native void arkSetPixelScale(float paramFloat);
   
@@ -129,6 +134,8 @@ public class ark
     public native String GetLauncher();
     
     public native String GetPermissions();
+    
+    public native int GetScriptType();
     
     public native String GetSystemPathFromLocal(String paramString);
     

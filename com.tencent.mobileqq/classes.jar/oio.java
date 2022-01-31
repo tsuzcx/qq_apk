@@ -1,15 +1,28 @@
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
 public class oio
-  implements FilenameFilter
+  implements EditVideoPoiPickerCallback
 {
-  public oio(DoodleEmojiManager paramDoodleEmojiManager) {}
+  public oio(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a()
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
+    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
+  }
+  
+  public void a(TroopBarPOI paramTroopBarPOI)
+  {
+    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
+    if (paramTroopBarPOI != null)
+    {
+      this.a.a.setLocation(paramTroopBarPOI.a());
+      return;
+    }
+    this.a.a.setLocation("None for test!!");
   }
 }
 

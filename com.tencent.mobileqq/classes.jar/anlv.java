@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
 
 public class anlv
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public anlv(QIMMusicConfigManager paramQIMMusicConfigManager) {}
+  public anlv(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a();
-    this.a.a().notifyObservers(CaptureConfigUpdateObserver.class, 1, true, null);
+    QZoneCoverStoreJsPlugin.a(this.a, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlv
  * JD-Core Version:    0.7.0.1
  */

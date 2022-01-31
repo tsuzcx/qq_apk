@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajuk;
-import ajul;
+import akbx;
+import akby;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -44,14 +44,14 @@ public class TroopSignVideoView
         b(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite);
       }
       this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite = new ajul(this, this, getContext(), true);
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite = new akby(this, this, getContext(), true);
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a = true;
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c = true;
       a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite);
     }
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(true);
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.b(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(new ajuk(this));
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(new akbx(this));
     if (QLog.isColorLevel()) {
       QLog.d("SpriteGLView", 2, "SpriteGLView->play");
     }
@@ -121,7 +121,7 @@ public class TroopSignVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopSignVideoView
  * JD-Core Version:    0.7.0.1
  */

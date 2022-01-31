@@ -1,32 +1,13 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
 
 public class adex
-  implements AudioManager.OnAudioFocusChangeListener
+  implements Runnable
 {
-  public adex(VideoFilePresenter paramVideoFilePresenter) {}
+  public adex(FileVideoManager.VideoControl paramVideoControl) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void run()
   {
-    if (paramInt == -2) {
-      if ((this.a.a != null) && (this.a.a.isPlaying())) {
-        VideoFilePresenter.a(this.a);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt != 1) {
-          break;
-        }
-      } while ((this.a.a == null) || (this.a.a.isPlaying()));
-      VideoFilePresenter.b(this.a);
-      return;
-    } while ((paramInt != -1) || (this.a.a == null) || (!this.a.a.isPlaying()));
-    VideoFilePresenter.a(this.a);
+    FileVideoManager.VideoControl.d(this.a);
   }
 }
 

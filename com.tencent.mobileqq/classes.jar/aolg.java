@@ -1,13 +1,43 @@
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
+import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-class aolg
+public class aolg
   implements Runnable
 {
-  aolg(aolf paramaolf) {}
+  public aolg(VideoFrameLoader paramVideoFrameLoader) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.a, 1, "分享失败", 0).a();
+    if (VideoFrameLoader.a(this.a) != VideoFrameLoader.a(this.a).size())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFrameLoader", 2, "onLoadEnd , framecount error!" + VideoFrameLoader.a(this.a) + "-" + VideoFrameLoader.a(this.a).size());
+      }
+      if ((!VideoFrameLoader.a(this.a)) && (VideoFrameLoader.a(this.a).size() == 0))
+      {
+        VideoFrameLoader.a(this.a, true);
+        this.a.b();
+        VideoFrameLoader.a(this.a, new aolb(VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), VideoFrameLoader.c(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.d(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), this.a));
+        ThreadManager.post(VideoFrameLoader.a(this.a), 10, null, true);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoFrameLoader", 2, "onLoadEnd , retry with retriever!");
+        }
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (VideoFrameLoader.a(this.a) != null) {}
+      for (VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.a).get(); localVideoFrameLoaderListener != null; localVideoFrameLoaderListener = null)
+      {
+        localVideoFrameLoaderListener.c();
+        return;
+      }
+    }
   }
 }
 

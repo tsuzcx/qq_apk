@@ -1,21 +1,16 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.model.MyVideoSharePlayingListSync;
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.IBatchGetVideoInfoCallback;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.VideoInfoListEvent;
 
 public class now
-  implements Comparator
+  implements BatchGetVideoInfoHandler.IBatchGetVideoInfoCallback
 {
-  public now(MyVideoSharePlayingListSync paramMyVideoSharePlayingListSync) {}
+  public now(NewFriendsPlayMode paramNewFriendsPlayMode) {}
   
-  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
+  public void a(BatchGetVideoInfoHandler.VideoInfoListEvent paramVideoInfoListEvent)
   {
-    if (paramStoryVideoItem1.mCreateTime > paramStoryVideoItem2.mCreateTime) {
-      return 1;
-    }
-    if (paramStoryVideoItem1.mCreateTime < paramStoryVideoItem2.mCreateTime) {
-      return -1;
-    }
-    return 0;
+    this.a.a.post(new nox(this, paramVideoInfoListEvent));
   }
 }
 

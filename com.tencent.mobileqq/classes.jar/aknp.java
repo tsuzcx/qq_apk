@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
-class aknp
+public class aknp
   implements Runnable
 {
-  aknp(akno paramakno) {}
+  public aknp(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
   
   public void run()
   {
-    SwiftBrowserTBSHandler localSwiftBrowserTBSHandler = (SwiftBrowserTBSHandler)this.a.a.a.a(16);
-    if (localSwiftBrowserTBSHandler != null) {
-      localSwiftBrowserTBSHandler.a();
+    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
+      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
     }
+    while (this.a.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_b_of_type_Int)
+    {
+      this.a.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+      return;
+      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    }
+    this.a.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aknp
  * JD-Core Version:    0.7.0.1
  */

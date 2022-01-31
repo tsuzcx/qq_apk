@@ -1,21 +1,19 @@
 package com.tencent.mapsdk.rastercore.a;
 
-import com.tencent.mapsdk.rastercore.b.c;
-import com.tencent.mapsdk.rastercore.d.e;
 import com.tencent.tencentmap.mapsdk.map.CancelableCallback;
 
 public final class b
   extends a
 {
-  private c d;
-  private c e;
+  private com.tencent.mapsdk.rastercore.b.f d;
+  private com.tencent.mapsdk.rastercore.b.f e;
   private double f;
   private double g;
   
-  public b(e parame, c paramc, long paramLong, CancelableCallback paramCancelableCallback)
+  public b(com.tencent.mapsdk.rastercore.d.f paramf, com.tencent.mapsdk.rastercore.b.f paramf1, long paramLong, CancelableCallback paramCancelableCallback)
   {
-    super(parame, paramLong, paramCancelableCallback);
-    this.e = paramc;
+    super(paramf, paramLong, paramCancelableCallback);
+    this.e = paramf1;
   }
   
   protected final void a(float paramFloat)

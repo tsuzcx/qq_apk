@@ -277,9 +277,18 @@ public class SimpleQGPlayer
     return (this.o != null) && (this.o.c());
   }
   
+  public byte[] onGetValue(int paramInt, String paramString)
+  {
+    QGLog.d("QGPlayer.SimpleQGPlayer", "onGetValue type " + paramInt + ", key " + paramString);
+    if (this.q != null) {
+      return this.q.onGetValue(paramInt, paramString);
+    }
+    return new byte[0];
+  }
+  
   public void onPlayEvent(final int paramInt, final Bundle paramBundle)
   {
-    if (paramInt != 6003) {
+    if ((paramInt != 6003) && (paramInt != 6006) && (paramInt != 6008)) {
       QGLog.i("QGPlayer.SimpleQGPlayer", "onPlayEvent event " + paramInt);
     }
     if (this.s == null) {}

@@ -7,7 +7,7 @@ public class ruc
   
   public void run()
   {
-    this.a.an();
+    this.a.A = false;
   }
 }
 

@@ -10,16 +10,18 @@ import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.mobileqq.utils.ContactConfig;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
-import zlv;
-import zlw;
+import mqq.os.MqqHandler;
+import zsr;
+import zss;
 
 public class QQHeadDownloadHandler
   extends FaceDownloader
 {
   private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130839279, 2130846282, 2130846283, 2130846284 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130839298, 2130846364, 2130846365, 2130846366 };
   private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MqqHandler b = new MqqHandler(ThreadManager.getSubThreadLooper());
   
   public QQHeadDownloadHandler(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
@@ -41,33 +43,33 @@ public class QQHeadDownloadHandler
     //   10: iload_1
     //   11: istore_3
     //   12: iload_1
-    //   13: getstatic 17	com/tencent/mobileqq/app/QQHeadDownloadHandler:jdField_a_of_type_ArrayOfInt	[I
+    //   13: getstatic 19	com/tencent/mobileqq/app/QQHeadDownloadHandler:jdField_a_of_type_ArrayOfInt	[I
     //   16: arraylength
     //   17: if_icmplt +5 -> 22
     //   20: iconst_0
     //   21: istore_3
     //   22: aload_0
-    //   23: getfield 31	com/tencent/mobileqq/app/QQHeadDownloadHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   26: invokevirtual 44	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   29: invokevirtual 50	mqq/app/MobileQQ:getResources	()Landroid/content/res/Resources;
-    //   32: getstatic 17	com/tencent/mobileqq/app/QQHeadDownloadHandler:jdField_a_of_type_ArrayOfInt	[I
+    //   23: getfield 46	com/tencent/mobileqq/app/QQHeadDownloadHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   26: invokevirtual 59	com/tencent/mobileqq/app/QQAppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   29: invokevirtual 65	mqq/app/MobileQQ:getResources	()Landroid/content/res/Resources;
+    //   32: getstatic 19	com/tencent/mobileqq/app/QQHeadDownloadHandler:jdField_a_of_type_ArrayOfInt	[I
     //   35: iload_3
     //   36: iaload
-    //   37: invokevirtual 56	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   37: invokevirtual 71	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
     //   40: astore 6
     //   42: aload 6
     //   44: astore 4
     //   46: sipush 512
     //   49: newarray byte
     //   51: astore 6
-    //   53: new 58	java/io/FileOutputStream
+    //   53: new 73	java/io/FileOutputStream
     //   56: dup
     //   57: aload_2
-    //   58: invokespecial 61	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   58: invokespecial 76	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   61: astore_2
     //   62: aload 4
     //   64: aload 6
-    //   66: invokevirtual 67	java/io/InputStream:read	([B)I
+    //   66: invokevirtual 82	java/io/InputStream:read	([B)I
     //   69: istore_1
     //   70: iload_1
     //   71: ifle +51 -> 122
@@ -75,33 +77,33 @@ public class QQHeadDownloadHandler
     //   75: aload 6
     //   77: iconst_0
     //   78: iload_1
-    //   79: invokevirtual 71	java/io/FileOutputStream:write	([BII)V
+    //   79: invokevirtual 86	java/io/FileOutputStream:write	([BII)V
     //   82: goto -20 -> 62
     //   85: astore 5
-    //   87: invokestatic 77	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   87: invokestatic 92	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   90: ifeq +13 -> 103
-    //   93: ldc 79
+    //   93: ldc 94
     //   95: iconst_2
-    //   96: ldc 81
+    //   96: ldc 96
     //   98: aload 5
-    //   100: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   100: invokestatic 100	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   103: aload_2
     //   104: ifnull +7 -> 111
     //   107: aload_2
-    //   108: invokevirtual 88	java/io/FileOutputStream:close	()V
+    //   108: invokevirtual 103	java/io/FileOutputStream:close	()V
     //   111: aload 4
     //   113: ifnull +8 -> 121
     //   116: aload 4
-    //   118: invokevirtual 89	java/io/InputStream:close	()V
+    //   118: invokevirtual 104	java/io/InputStream:close	()V
     //   121: return
     //   122: aload_2
     //   123: ifnull +7 -> 130
     //   126: aload_2
-    //   127: invokevirtual 88	java/io/FileOutputStream:close	()V
+    //   127: invokevirtual 103	java/io/FileOutputStream:close	()V
     //   130: aload 4
     //   132: ifnull -11 -> 121
     //   135: aload 4
-    //   137: invokevirtual 89	java/io/InputStream:close	()V
+    //   137: invokevirtual 104	java/io/InputStream:close	()V
     //   140: return
     //   141: astore_2
     //   142: aconst_null
@@ -109,11 +111,11 @@ public class QQHeadDownloadHandler
     //   145: aload 5
     //   147: ifnull +8 -> 155
     //   150: aload 5
-    //   152: invokevirtual 88	java/io/FileOutputStream:close	()V
+    //   152: invokevirtual 103	java/io/FileOutputStream:close	()V
     //   155: aload 4
     //   157: ifnull +8 -> 165
     //   160: aload 4
-    //   162: invokevirtual 89	java/io/InputStream:close	()V
+    //   162: invokevirtual 104	java/io/InputStream:close	()V
     //   165: aload_2
     //   166: athrow
     //   167: astore_2
@@ -219,7 +221,7 @@ public class QQHeadDownloadHandler
     try
     {
       if (TextUtils.isEmpty(localQQHeadInfo.downLoadUrl)) {
-        break label4658;
+        break label4722;
       }
       bool3 = bool2;
       i9 = i10;
@@ -228,7 +230,7 @@ public class QQHeadDownloadHandler
       localObject5 = localObject4;
       i6 = i14;
       if (localQQHeadInfo.dstUsrType != 4) {
-        break label2580;
+        break label2582;
       }
       bool3 = bool2;
       i9 = i10;
@@ -240,13 +242,13 @@ public class QQHeadDownloadHandler
     }
     catch (Throwable paramFaceInfo) {}finally
     {
-      ThreadManager.postImmediately(new zlv(this, i9, str, localQQHeadInfo.idType, localQQHeadInfo.dstUsrType, 4, i5, (String)localObject5, i6, System.currentTimeMillis()), null, false);
+      ThreadManager.postImmediately(new zsr(this, i9, str, localQQHeadInfo.idType, localQQHeadInfo.dstUsrType, 4, i5, (String)localObject5, i6, System.currentTimeMillis()), null, false);
       if (i18 != 0) {
-        break label3296;
+        break label3298;
       }
       localObject1 = (ClassicHeadActivityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(198);
       if ((localObject1 == null) || (!((ClassicHeadActivityManager)localObject1).a())) {
-        break label3296;
+        break label3298;
       }
       ((ClassicHeadActivityManager)localObject1).a(String.valueOf(localQQHeadInfo.uin));
     }
@@ -328,7 +330,7 @@ public class QQHeadDownloadHandler
           localObject5 = localObject4;
           i6 = i14;
           if (localSetting.bHeadType == localQQHeadInfo.cHeadType) {
-            break label3015;
+            break label3017;
           }
         }
       }
@@ -450,18 +452,19 @@ public class QQHeadDownloadHandler
           i6 = i14;
         }
       }
+      label4747:
       for (;;)
       {
         Object localObject2;
         Object localObject6;
         File localFile;
-        label2070:
-        label2206:
-        label3015:
+        label2072:
+        label2208:
+        label3017:
         long l1;
-        label2580:
+        label2582:
         long l2;
-        label3296:
+        label3298:
         bool1 = false;
         continue;
         i9 = i10;
@@ -477,7 +480,7 @@ public class QQHeadDownloadHandler
         m = i15;
         j = a((String)localObject4, localFile, paramFaceInfo, false);
         if (j != 0) {
-          break label4720;
+          break label4784;
         }
         i9 = i10;
         i18 = i19;
@@ -491,19 +494,33 @@ public class QQHeadDownloadHandler
         localObject3 = localObject4;
         m = j;
         i3 = (int)localFile.length();
-        i18 = 1;
-        bool4 = true;
+        bool2 = true;
+        bool6 = true;
         bool3 = true;
         i9 = i10;
+        i18 = bool2;
         i5 = i3;
         localObject5 = localObject4;
         i6 = j;
         bool5 = bool1;
         i8 = i11;
+        bool4 = bool6;
         i1 = i3;
         localObject3 = localObject4;
         m = j;
-        ThreadManager.postImmediately(new zlw(this, localSetting, paramFaceInfo), null, false);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localSetting);
+        i9 = i10;
+        i18 = bool2;
+        i5 = i3;
+        localObject5 = localObject4;
+        i6 = j;
+        bool5 = bool1;
+        i8 = i11;
+        bool4 = bool6;
+        i1 = i3;
+        localObject3 = localObject4;
+        m = j;
+        this.b.postAtFrontOfQueue(new zss(this, localSetting, paramFaceInfo));
         i4 = j;
         continue;
         i9 = i;
@@ -592,7 +609,7 @@ public class QQHeadDownloadHandler
             k = i3;
             localObject6 = localObject4;
             n = i4;
-            break label4683;
+            break label4747;
             i9 = i7;
             i18 = bool2;
             i5 = k;
@@ -742,8 +759,7 @@ public class QQHeadDownloadHandler
             this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(4, true, new Object[] { str });
           }
         }
-        label4658:
-        label4683:
+        label4722:
         do
         {
           i = j;
@@ -752,7 +768,7 @@ public class QQHeadDownloadHandler
           localObject4 = localObject6;
           bool1 = bool2;
           bool2 = bool3;
-          break label2206;
+          break label2208;
           break label349;
           localObject1 = str;
           break;
@@ -763,9 +779,9 @@ public class QQHeadDownloadHandler
           i7 = i17;
           k = i8;
           n = m;
-          break label2206;
+          break label2208;
           if (bool2) {
-            break label2070;
+            break label2072;
           }
         } while (bool1);
       }

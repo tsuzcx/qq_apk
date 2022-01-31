@@ -16,7 +16,7 @@ public class ApolloGameConst
     b = 1;
     c = 1;
     d = 1;
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + ".apollo/game";
+    jdField_a_of_type_JavaLangString = AppConstants.aK + ".apollo/game";
   }
 }
 

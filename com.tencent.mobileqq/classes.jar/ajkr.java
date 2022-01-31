@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
 
 class ajkr
-  implements Runnable
+  implements FrameSprite.OnFrameEndListener
 {
-  ajkr(ajkq paramajkq) {}
+  ajkr(ajkj paramajkj) {}
   
-  public void run()
+  public void a()
   {
-    AudioItem.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem, this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo);
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null)
+    {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.n();
+      this.a.a.jdField_a_of_type_AndroidOsHandler.post(new ajks(this));
+    }
   }
 }
 

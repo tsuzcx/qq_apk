@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import afmp;
-import afmq;
+import afqo;
+import afqp;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -30,18 +30,18 @@ public class NearbyCustomDialog
   public NearbyCustomDialog(Context paramContext)
   {
     super(paramContext, 2131624516);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new afmp(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new afqo(this);
     a();
   }
   
   private void a()
   {
-    setContentView(2130968849);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364057));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363378));
-    this.b = ((TextView)findViewById(2131364058));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131364059));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363172));
+    setContentView(2130968853);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364082));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363397));
+    this.b = ((TextView)findViewById(2131364083));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131364084));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363176));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("关闭");
   }
@@ -84,12 +84,12 @@ public class NearbyCustomDialog
     for (int i = paramButtonInfo.jdField_a_of_type_Int;; i = -1)
     {
       localButton.setTextColor(i);
-      localButton.setOnClickListener(new afmq(this, paramButtonInfo));
+      localButton.setOnClickListener(new afqp(this, paramButtonInfo));
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localButton, localLayoutParams);
       return this;
       localObject = "";
       break;
-      localObject = getContext().getResources().getDrawable(2130838491);
+      localObject = getContext().getResources().getDrawable(2130838497);
       break label76;
     }
   }

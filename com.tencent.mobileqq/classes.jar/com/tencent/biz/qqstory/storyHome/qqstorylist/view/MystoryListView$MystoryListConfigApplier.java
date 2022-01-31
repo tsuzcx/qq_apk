@@ -29,8 +29,8 @@ public class MystoryListView$MystoryListConfigApplier
     paramSegmentList.a(new LocalVideoPushSegment(localActivity));
     localObject = new FeedSegment(localActivity, localActivity, 10, (IMyStoryListView)localObject, bool);
     paramSegmentList.a((SegmentView)localObject);
-    paramSegmentList.a(new PlaceholderSegment(localActivity, "FeedSegment", "还没有好友更新日迹\n拍摄一段小视频，分享眼前的世界", 2130843552, 2130843553));
-    ((FeedSegment)localObject).f_(true);
+    paramSegmentList.a(new PlaceholderSegment(localActivity, "FeedSegment", "还没有好友更新小视频\n拍摄一段视频，分享眼前的世界", 2130843585, 2130843586));
+    ((FeedSegment)localObject).e_(true);
   }
 }
 

@@ -1,25 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.addContactTroopView.TroopCardXingquBuluo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.im.troop_search_searchtab.searchtab.Card;
-import tencent.im.troop_search_searchtab.searchtab.TitleBar;
+import android.graphics.Matrix;
+import com.tencent.av.widget.stageview.StageEffectView.StageMember;
 
 public class kkt
-  implements View.OnClickListener
 {
-  public kkt(TroopCardXingquBuluo paramTroopCardXingquBuluo) {}
+  public float a;
+  public int a;
+  public final Matrix a;
+  public StageEffectView.StageMember a;
+  public kks a;
+  public kkt a;
+  public boolean a;
+  public float b;
+  public float c;
+  public float d;
+  public float e;
+  public float f;
   
-  public void onClick(View paramView)
+  private kkt()
   {
-    this.a.a(this.a.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.str_transfer_url.get());
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_more", 0, 0, "", this.a.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.title_bar.str_desc.get(), "", "");
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  }
+  
+  public void a(kkt paramkkt)
+  {
+    this.jdField_a_of_type_Int = paramkkt.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Float = paramkkt.jdField_a_of_type_Float;
+    this.b = paramkkt.b;
+    this.c = paramkkt.c;
+    this.d = paramkkt.d;
+    this.e = paramkkt.e;
+    this.f = paramkkt.d;
+    this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramkkt.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_Kks = paramkkt.jdField_a_of_type_Kks;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kkt
  * JD-Core Version:    0.7.0.1
  */

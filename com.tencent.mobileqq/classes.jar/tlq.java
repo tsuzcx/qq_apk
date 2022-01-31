@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 class tlq
   implements Runnable
 {
-  tlq(tlo paramtlo) {}
+  tlq(tlp paramtlp, int paramInt) {}
   
   public void run()
   {
-    if (QQSettingMe.a(this.a.a) != null) {
-      QQSettingMe.a(this.a.a).a(this.a.a.a);
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Tlp.a.b(2131434472, 2);
     }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_Tlp.a.b(2131427331, 2);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != -1);
+    this.jdField_a_of_type_Tlp.a.b(2131427330, 1);
   }
 }
 

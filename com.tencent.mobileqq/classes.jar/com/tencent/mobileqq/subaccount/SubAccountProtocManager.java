@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.subaccount;
 
-import aikt;
-import aiku;
+import aipo;
+import aipp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SubAccountBindHandler;
 import com.tencent.mobileqq.app.SubAccountBindObserver;
@@ -17,8 +17,8 @@ public class SubAccountProtocManager
   private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
   private static byte[] jdField_c_of_type_ArrayOfByte = new byte[0];
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new aikt(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aiku(this);
+  private SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new aipo(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aipp(this);
   private boolean jdField_a_of_type_Boolean;
   private boolean jdField_b_of_type_Boolean;
   private boolean jdField_c_of_type_Boolean;

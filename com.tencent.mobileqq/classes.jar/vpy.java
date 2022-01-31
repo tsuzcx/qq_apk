@@ -1,20 +1,10 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SwipeUpAndDragListener;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.TroopUnreadTipsChatItemBuilder;
 
-class vpy
-  implements Animation.AnimationListener
+public class vpy
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  vpy(vpw paramvpw, PhotoListPanel.SwipeUpAndDragListener paramSwipeUpAndDragListener) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Vpw.a();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public vpy(TroopUnreadTipsChatItemBuilder paramTroopUnreadTipsChatItemBuilder) {}
 }
 
 

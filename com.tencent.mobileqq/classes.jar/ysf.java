@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ysf
   implements Runnable
 {
-  public ysf(SpriteUIHandler paramSpriteUIHandler, long paramLong, int paramInt) {}
+  public ysf(ApolloRenderDriver paramApolloRenderDriver, String paramString) {}
   
   public void run()
   {
-    SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    }
   }
 }
 

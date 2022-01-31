@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public class akqs
-  implements Runnable
+class akqs
+  implements TVK_SDKMgr.InstallListener
 {
-  public akqs(SwiftWebAccelerator paramSwiftWebAccelerator, SwiftReuseTouchWebView paramSwiftReuseTouchWebView) {}
+  akqs(akqr paramakqr) {}
   
-  public void run()
+  public void onInstallProgress(float paramFloat)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView.destroy();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("WebLog_SwiftWebAccelerator", 1, "doMainStep_WarnUpWebView error:" + localException.toString());
-    }
+    this.a.a.c = ((int)(100.0F * paramFloat));
+    this.a.a.b.sendEmptyMessage(2);
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    this.a.a.d = paramInt;
+    this.a.a.b.sendEmptyMessage(1);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    this.a.a.b.sendEmptyMessage(0);
   }
 }
 

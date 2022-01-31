@@ -1,16 +1,29 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
-import java.io.File;
-import java.io.FileFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.music.QimMusicPlayer;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
 
 public class aoao
-  implements FileFilter
+  implements View.OnClickListener
 {
-  public aoao(NormalFacePackage paramNormalFacePackage) {}
+  public aoao(EditRecognitionPart paramEditRecognitionPart) {}
   
-  public boolean accept(File paramFile)
+  public void onClick(View paramView)
   {
-    paramFile = paramFile.getName();
-    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp")) || (paramFile.endsWith(".apng")) || (paramFile.endsWith(".gif"));
+    if (QLog.isColorLevel()) {
+      QLog.i("EditRecognitionPart", 2, "mRecognitionBubble onClick: invoked. ");
+    }
+    paramView = ((QimMusicPlayer)QIMManager.a().c(8)).b();
+    if ((MusicProviderView.a) && (paramView != null) && (paramView.a != EditRecognitionPart.a(this.a).a) && (paramView.d == 5))
+    {
+      this.a.c();
+      return;
+    }
+    EditRecognitionPart.a(this.a);
   }
 }
 

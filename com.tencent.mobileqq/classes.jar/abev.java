@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig.ResInfo;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.ArkPassiveSearchInfo;
+import com.tencent.mobileqq.ark.ArkRecommendLogic.SemanticAnalysisResult;
+import java.lang.ref.WeakReference;
 
-public final class abev
-  implements Parcelable.Creator
+class abev
+  implements Runnable
 {
-  public ARMapConfig.ResInfo a(Parcel paramParcel)
-  {
-    return new ARMapConfig.ResInfo(paramParcel);
-  }
+  abev(abeu paramabeu, ArkMessageServerLogic.ArkPassiveSearchInfo paramArkPassiveSearchInfo) {}
   
-  public ARMapConfig.ResInfo[] a(int paramInt)
+  public void run()
   {
-    return new ARMapConfig.ResInfo[paramInt];
+    if (this.jdField_a_of_type_Abeu.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      ArkAppCenter.b("ArkApp.ArkRecommendLogic", String.format("passiveSearchText, this is null, return", new Object[0]));
+    }
+    ArkRecommendLogic.SemanticAnalysisResult localSemanticAnalysisResult;
+    do
+    {
+      return;
+      localSemanticAnalysisResult = (ArkRecommendLogic.SemanticAnalysisResult)this.jdField_a_of_type_Abeu.b.get();
+    } while (localSemanticAnalysisResult == null);
+    localSemanticAnalysisResult.a(this.jdField_a_of_type_Abeu.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$ArkPassiveSearchInfo);
   }
 }
 

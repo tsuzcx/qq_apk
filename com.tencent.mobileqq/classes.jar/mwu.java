@@ -1,28 +1,15 @@
-import android.os.FileObserver;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.util.ScreenshotContentObserver;
-import com.tencent.biz.pubaccount.util.ScreenshotContentObserver.Listener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
+import java.util.ArrayList;
 
 public class mwu
-  extends FileObserver
 {
-  public mwu(ScreenshotContentObserver paramScreenshotContentObserver, String paramString1, int paramInt, String paramString2)
-  {
-    super(paramString1, paramInt);
-  }
+  public ViewGroup a;
+  public ArrayList a;
   
-  public void onEvent(int paramInt, String paramString)
+  private mwu(SubscriptFeedsAdapter paramSubscriptFeedsAdapter)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScreenshotContentObserver", 2, "onEvent->time:" + System.currentTimeMillis() + ", path:" + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || (paramInt != 256)) {}
-    while ((paramString.equalsIgnoreCase(ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver))) || (paramString.contains("temp")) || (ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver) == null)) {
-      return;
-    }
-    ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver).a(null, this.jdField_a_of_type_JavaLangString + paramString, 1);
-    ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver, paramString);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
 }
 

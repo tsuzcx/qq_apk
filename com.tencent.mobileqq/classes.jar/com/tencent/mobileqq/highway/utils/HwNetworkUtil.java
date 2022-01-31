@@ -230,6 +230,13 @@ public class HwNetworkUtil
       {
         localSecurityException.printStackTrace();
       }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
       return 5;
     }
     if ((localObject1 != null) && (localObject1.isAvailable())) {}

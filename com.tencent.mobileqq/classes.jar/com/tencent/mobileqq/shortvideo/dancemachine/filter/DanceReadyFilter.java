@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.shortvideo.dancemachine.filter;
 
-import aiar;
-import aias;
-import aiat;
-import aiau;
-import aiav;
-import aiaw;
-import aiax;
-import aiay;
-import aiaz;
+import aifj;
+import aifk;
+import aifl;
+import aifm;
+import aifn;
+import aifo;
+import aifp;
+import aifq;
+import aifr;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.SystemClock;
@@ -48,7 +48,7 @@ public class DanceReadyFilter
   private GLMaskImageView jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView;
   private GLProgressBar jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar;
   private ResourceManager jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager;
-  TreeSet jdField_a_of_type_JavaUtilTreeSet = new TreeSet(new aiaz(this));
+  TreeSet jdField_a_of_type_JavaUtilTreeSet = new TreeSet(new aifr(this));
   private boolean jdField_a_of_type_Boolean = false;
   private long jdField_b_of_type_Long = 0L;
   private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
@@ -82,7 +82,7 @@ public class DanceReadyFilter
     AnimationSet localAnimationSet = new AnimationSet(false);
     Object localObject = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new aias(this));
+    ((Animation)localObject).setAnimationListener(new aifk(this));
     localAnimationSet.addAnimation((Animation)localObject);
     localObject = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
     ((Animation)localObject).setDuration(600L);
@@ -91,7 +91,7 @@ public class DanceReadyFilter
     localObject = new AlphaAnimation(1.0F, 0.0F);
     ((Animation)localObject).setDuration(600L);
     ((Animation)localObject).setStartOffset(100L);
-    ((Animation)localObject).setAnimationListener(new aiat(this));
+    ((Animation)localObject).setAnimationListener(new aifl(this));
     localAnimationSet.addAnimation((Animation)localObject);
     localAnimationSet.setStartOffset(700L);
     return localAnimationSet;
@@ -115,14 +115,14 @@ public class DanceReadyFilter
       localScaleAnimation.setStartOffset(300L);
       localScaleAnimation.setFillEnabled(true);
       localScaleAnimation.setFillAfter(true);
-      localScaleAnimation.setAnimationListener(new aiaw(this));
+      localScaleAnimation.setAnimationListener(new aifo(this));
       return localScaleAnimation;
     }
     ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(200L);
     localScaleAnimation.setFillEnabled(true);
     localScaleAnimation.setFillAfter(true);
-    localScaleAnimation.setAnimationListener(new aiax(this));
+    localScaleAnimation.setAnimationListener(new aifp(this));
     return localScaleAnimation;
   }
   
@@ -171,7 +171,7 @@ public class DanceReadyFilter
     AnimationSet localAnimationSet = new AnimationSet(false);
     Object localObject = new AlphaAnimation(1.0F, 1.0F);
     ((Animation)localObject).setDuration(300L);
-    ((Animation)localObject).setAnimationListener(new aiau(this));
+    ((Animation)localObject).setAnimationListener(new aifm(this));
     localAnimationSet.addAnimation((Animation)localObject);
     localObject = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
     ((Animation)localObject).setDuration(200L);
@@ -224,7 +224,7 @@ public class DanceReadyFilter
     localAnimationSet.setStartOffset(300L);
     localAnimationSet.setFillEnabled(true);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new aiav(this));
+    localAnimationSet.setAnimationListener(new aifn(this));
     localAnimationSet.setStartOffset(300L);
     return localAnimationSet;
   }
@@ -244,7 +244,7 @@ public class DanceReadyFilter
     localAlphaAnimation.setDuration(200L);
     localAlphaAnimation.setFillEnabled(true);
     localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new aiay(this));
+    localAlphaAnimation.setAnimationListener(new aifq(this));
     localAlphaAnimation.setStartOffset(100L);
     return localAlphaAnimation;
   }
@@ -317,7 +317,7 @@ public class DanceReadyFilter
         localObject1 = new RectF(0.0F, -j, paramInt1, 0.0F);
         this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.b((RectF)localObject1);
         this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.d((RectF)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.h_(true);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.f_(true);
         this.h = j;
         this.i = paramInt2;
       }
@@ -408,7 +408,7 @@ public class DanceReadyFilter
       this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(paramInt1, j - paramInt1);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(2000);
       this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(0L);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(new aiar(this));
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(new aifj(this));
       return;
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.jdField_a_of_type_JavaLangString;
       break;
@@ -441,15 +441,15 @@ public class DanceReadyFilter
     this.jdField_e_of_type_Int = 3;
     this.jdField_f_of_type_Int = 3;
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(false);
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(false);
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(false);
-    this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(false);
-    this.jdField_e_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(true);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.h_(true);
-    this.jdField_f_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(true);
-    this.jdField_g_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(true);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.h_(true);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(false);
+    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(false);
+    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(false);
+    this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(false);
+    this.jdField_e_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(true);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.f_(true);
+    this.jdField_f_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(true);
+    this.jdField_g_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(true);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.f_(true);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = a();
     this.jdField_b_of_type_AndroidViewAnimationAnimation = b();
     this.jdField_c_of_type_AndroidViewAnimationAnimation = a(false);

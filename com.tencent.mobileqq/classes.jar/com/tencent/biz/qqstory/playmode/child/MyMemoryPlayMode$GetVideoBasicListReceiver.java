@@ -26,11 +26,11 @@ public class MyMemoryPlayMode$GetVideoBasicListReceiver
   
   public void a(@NonNull VideoPlayModeBase paramVideoPlayModeBase, @NonNull VidToBasicInfoHandler.GetVideoBasicInfoListEvent paramGetVideoBasicInfoListEvent)
   {
-    if ((paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null)) {
+    if ((paramGetVideoBasicInfoListEvent.errorInfo.isFail()) || (paramGetVideoBasicInfoListEvent.a == null)) {
       return;
     }
     Activity localActivity = paramVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a;
-    paramGetVideoBasicInfoListEvent = paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList.iterator();
+    paramGetVideoBasicInfoListEvent = paramGetVideoBasicInfoListEvent.a.iterator();
     label162:
     for (;;)
     {

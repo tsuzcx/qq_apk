@@ -6,7 +6,7 @@ import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
-import nai;
+import ned;
 
 @TargetApi(14)
 public class CacheCleaner
@@ -21,8 +21,8 @@ public class CacheCleaner
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aZ + "qqstory/";
-    jdField_b_of_type_JavaLangString = AppConstants.aZ + "qqstory_watermark/";
+    jdField_a_of_type_JavaLangString = AppConstants.ba + "qqstory/";
+    jdField_b_of_type_JavaLangString = AppConstants.ba + "qqstory_watermark/";
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { jdField_a_of_type_JavaLangString, jdField_b_of_type_JavaLangString };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { QQStoryConstant.f, QQStoryConstant.i, QQStoryConstant.q };
   }
@@ -37,7 +37,7 @@ public class CacheCleaner
   
   protected void a()
   {
-    ThreadManager.post(new nai(this), 2, null, false);
+    ThreadManager.post(new ned(this), 2, null, false);
   }
   
   public void a(boolean paramBoolean)

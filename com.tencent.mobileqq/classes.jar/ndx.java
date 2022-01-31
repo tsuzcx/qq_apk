@@ -1,16 +1,18 @@
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class ndx
-  implements Runnable
+  extends SimpleJob
 {
-  public ndx(LbsManager paramLbsManager, int paramInt) {}
+  public ndx(PlayingListPreloader paramPlayingListPreloader, String paramString, String[] paramArrayOfString) {}
   
-  public void run()
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    SLog.d("LbsManager", "onLocation Timeout  %d ms", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.a(false, this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.b);
-    LbsManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager, true);
+    PlayingListPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

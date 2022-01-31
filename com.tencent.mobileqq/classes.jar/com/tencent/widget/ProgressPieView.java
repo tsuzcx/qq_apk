@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import amdd;
-import amde;
+import amkn;
+import amko;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -25,8 +25,8 @@ public class ProgressPieView
   static LruCache jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(8);
   public float a;
   public int a;
-  amdd jdField_a_of_type_Amdd = new amdd(this);
-  amde jdField_a_of_type_Amde = new amde(this);
+  amkn jdField_a_of_type_Amkn = new amkn(this);
+  amko jdField_a_of_type_Amko = new amko(this);
   public Paint a;
   Rect jdField_a_of_type_AndroidGraphicsRect;
   RectF jdField_a_of_type_AndroidGraphicsRectF;

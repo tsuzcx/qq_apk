@@ -1,43 +1,63 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.FirstCommentEvent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class mbu
-  implements ReadInJoyCommentUtils.FirstCommentEvent
+  extends ReadInJoyObserver
 {
-  public mbu(VideoFeedsCommentManager paramVideoFeedsCommentManager) {}
+  public mbu(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2)
   {
-    VideoFeedsCommentManager.a(this.a).e += paramInt;
-    VideoFeedsCommentManager.a(this.a).b(VideoFeedsCommentManager.a(this.a).g);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.a(paramBoolean, false);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverUGCActivity", 2, "onDeliverUGCResult retCode=" + paramInt1 + ", feedsId=" + paramLong + ", rowkey=" + paramString1 + ", status=" + paramInt2 + ", comment=" + paramString2);
     }
-    if (VideoFeedsCommentManager.a(this.a) != null)
+    ReadInJoyDeliverUGCActivity.d(this.a, true);
+    ReadInJoyDeliverUGCActivity.e(this.a);
+    ReadInJoyDeliverUGCActivity.b(this.a, paramInt1);
+    if (paramInt1 == 0)
     {
-      if (VideoFeedsCommentManager.a(this.a).a(VideoFeedsCommentManager.a(this.a)))
+      ReadInJoyDeliverUGCActivity.c(this.a, 2, this.a.getString(2131438907));
+      ReadInJoyDeliverUGCActivity.c(this.a, -1);
+      ReadInJoyDeliverUGCActivity.e(this.a, true);
+      for (;;)
       {
-        this.a.a(false, true);
+        try
+        {
+          ReadInJoyDeliverUGCActivity.a(this.a).put("feedsId", String.valueOf(paramLong));
+          ReadInJoyDeliverUGCActivity.a(this.a).put("rowkey", paramString1);
+          ReadInJoyDeliverUGCActivity.a(this.a).put("status", paramInt2);
+          paramString1 = paramString2;
+          if (paramString2 == null) {
+            paramString1 = "";
+          }
+          ReadInJoyDeliverUGCActivity.a(this.a).put("comment", new String(Base64Util.encode(paramString1.getBytes(), 0)));
+          if (ReadInJoyDeliverUGCActivity.c(this.a) != 12) {
+            continue;
+          }
+          ReadInJoyDeliverUGCActivity.a(this.a).put("feedsType", 4);
+        }
+        catch (Exception paramString1)
+        {
+          continue;
+        }
+        this.a.finish();
+        ReadInJoyLogicEngine.a().b(true);
         return;
+        if (ReadInJoyDeliverUGCActivity.c(this.a) == 13) {
+          ReadInJoyDeliverUGCActivity.a(this.a).put("feedsType", 5);
+        }
       }
-      this.a.a(false, false);
+    }
+    if (paramInt1 == 33)
+    {
+      ReadInJoyDeliverUGCActivity.d(this.a, 1, this.a.getString(2131438893));
       return;
     }
-    this.a.a(false, false);
+    ReadInJoyDeliverUGCActivity.e(this.a, 1, this.a.getString(2131438908));
   }
 }
 

@@ -28,10 +28,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import nxe;
-import nxf;
-import nxg;
-import nxh;
+import obt;
+import obu;
+import obv;
+import obw;
 
 public class MemoryDataPuller
   implements IEventReceiver
@@ -39,7 +39,7 @@ public class MemoryDataPuller
   public INetPageLoader a;
   public Map a;
   protected Set a;
-  protected nxh a;
+  protected obw a;
   protected boolean a;
   public String b;
   public boolean b;
@@ -123,13 +123,13 @@ public class MemoryDataPuller
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkINetPageLoader = a();
-    this.jdField_a_of_type_Nxh = new nxh(this);
-    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Nxh);
+    this.jdField_a_of_type_Obw = new obw(this);
+    Dispatchers.get().registerSubscriber(this.jdField_a_of_type_Obw);
   }
   
   public void a(VideoCollectionItem paramVideoCollectionItem)
   {
-    Bosses.get().postJob(new nxf(this, paramVideoCollectionItem));
+    Bosses.get().postJob(new obu(this, paramVideoCollectionItem));
   }
   
   public void a(String paramString)
@@ -203,17 +203,17 @@ public class MemoryDataPuller
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Nxh != null)
+    if (this.jdField_a_of_type_Obw != null)
     {
-      Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Nxh);
-      this.jdField_a_of_type_Nxh = null;
+      Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_Obw);
+      this.jdField_a_of_type_Obw = null;
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
   }
   
   public void b(String paramString)
   {
-    Bosses.get().postJob(new nxg(this, paramString));
+    Bosses.get().postJob(new obv(this, paramString));
   }
   
   public void b(List paramList, boolean paramBoolean)
@@ -236,7 +236,7 @@ public class MemoryDataPuller
   public void c()
   {
     this.jdField_b_of_type_Boolean = false;
-    Bosses.get().postJob(new nxe(this));
+    Bosses.get().postJob(new obt(this));
   }
   
   public void d()

@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ube
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public ube(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public ube(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a.postDelayed(new ucg(this.a), 150L);
+    TroopAssistantActivity.a(this.a);
+    ReportController.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_close", 0, 0, "", "", "", "");
   }
 }
 

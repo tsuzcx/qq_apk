@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMCommonLoadingView;
 
-public class aojh
-  implements DialogInterface.OnClickListener
+class aojh
+  implements Runnable
 {
-  public aojh(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  aojh(aojg paramaojg, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.s();
+    aojg.a(this.jdField_a_of_type_Aojg).setVisibility(0);
+    aojg.a(this.jdField_a_of_type_Aojg).setProgress(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("InformationFaceAdapter", 2, "progress:" + this.jdField_a_of_type_Int);
+    }
   }
 }
 

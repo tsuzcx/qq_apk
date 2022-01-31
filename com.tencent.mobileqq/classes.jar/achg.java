@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import com.tencent.mobileqq.vas.VasH5PayUtil;
 
 public class achg
-  extends FriendListObserver
+  implements DialogInterface.OnClickListener
 {
-  public achg(EquipLockWebImpl paramEquipLockWebImpl) {}
+  public achg(EmoticonFromGroupManager paramEmoticonFromGroupManager, BaseActivity paramBaseActivity) {}
   
-  protected void onGetRecommendDeviceList(boolean paramBoolean, ArrayList paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      EquipmentLockImpl.a().a(paramArrayList);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    for (;;)
-    {
-      EquipLockWebImpl.a(this.a, false);
-      EquipLockWebImpl.b(this.a, false);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
-      }
+    if (paramInt == 1) {
+      VasH5PayUtil.a(EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", EmoticonFromGroupManager.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager).getString(2131436963), "");
     }
   }
 }

@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-class achb
-  implements Runnable
+public class achb
+  implements Handler.Callback
 {
-  achb(acha paramacha) {}
+  public achb(EmoticonFromGroupDBManager paramEmoticonFromGroupDBManager) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(this.a.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerFrameLayout);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return true;
+      this.a.b = true;
+      QLog.i("EmoticonFromGroup_DBManager", 1, "set db tag, mCanWriteDataToDB = true.");
+    } while (this.a.b() < 300);
+    EmoticonFromGroupDBManager.a(this.a).clear();
+    return true;
   }
 }
 

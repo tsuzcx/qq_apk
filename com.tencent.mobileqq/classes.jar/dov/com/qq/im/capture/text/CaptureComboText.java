@@ -2,8 +2,8 @@ package dov.com.qq.im.capture.text;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
-import annq;
-import annr;
+import anwd;
+import anwe;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,7 @@ public class CaptureComboText
 {
   private float jdField_a_of_type_Float;
   private DynamicTextConfigManager.DynamicTextConfigBean jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean;
-  private DynamicTextConfigManager.IDynamicTextResDownloadCallback jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$IDynamicTextResDownloadCallback = new annr(this);
+  private DynamicTextConfigManager.IDynamicTextResDownloadCallback jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$IDynamicTextResDownloadCallback = new anwe(this);
   private DynamicTextConfigManager jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager;
   private String jdField_a_of_type_JavaLangString;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -112,8 +112,8 @@ public class CaptureComboText
       localDoodleLayout.a().k();
       return 0;
     }
-    QQToast.a(paramActivity, paramActivity.getString(2131439211), 0).a();
-    ThreadManager.getUIHandler().post(new annq(this, localDoodleLayout));
+    QQToast.a(paramActivity, paramActivity.getString(2131439243), 0).a();
+    ThreadManager.getUIHandler().post(new anwd(this, localDoodleLayout));
     return 0;
   }
   

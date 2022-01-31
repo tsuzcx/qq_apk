@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f30" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02dc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b8f" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f31" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02dc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b8f" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f32" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02dc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b8f" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f33" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02dc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b8f" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f34" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02dc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b8f" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33a8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02dc" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b8f" />
-    <com.tencent.mobileqq.widget.RightArrowTextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01de" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a039b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020439" android:padding="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2a0c" android:drawablePadding="10.0dip" />
-</LinearLayout>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:background="@drawable/skin_header_bar_bg" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" tencent:skintype="title_bg_bar"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/top_back_left_selector" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="96.0dip" android:minWidth="55.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12a4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="主标题" android:singleLine="true" tencent:skintype="header_name" style="@style/TitleText" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c054a" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12a5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="副标题" android:singleLine="true" tencent:skintype="header_name" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33e1" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a12a4" android:layout_centerVertical="true">
+        <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206e4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

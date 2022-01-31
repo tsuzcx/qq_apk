@@ -1,53 +1,66 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class oha
-  implements Runnable
+  extends TransProcessorHandler
 {
-  public oha(EditWebVideoPartManager paramEditWebVideoPartManager, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
+  public oha(CommonPicUploadFragment paramCommonPicUploadFragment) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_Int = 0;
-    EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_latitude", 0.0D));
-    EditWebVideoPartManager.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_longitude", 0.0D));
-    boolean bool1;
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.b != 24) || (localFileMsg.c != CommonPicUploadFragment.a(this.a, CommonPicUploadFragment.a(this.a)))) {}
+    do
     {
-      EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager);
-      bool1 = false;
-    }
-    for (;;)
-    {
-      EncodeVideoTask localEncodeVideoTask = new EncodeVideoTask(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam.b, bool1, EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager));
-      localEncodeVideoTask.a(EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager));
-      localEncodeVideoTask.execute(new Void[0]);
-      return;
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
+      do
       {
-        boolean bool2 = true;
-        int i = EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam);
-        bool1 = bool2;
-        if (i != 0)
-        {
-          EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager).a(i);
-          bool1 = bool2;
+        return;
+      } while (localFileMsg.f.equals(CommonPicUploadFragment.b(this.a)));
+      switch (paramMessage.what)
+      {
+      case 1004: 
+      default: 
+        return;
+      case 1003: 
+        if (QLog.isColorLevel()) {
+          QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send finished!" + CommonPicUploadFragment.a(this.a));
         }
+        break;
       }
-      else
+    } while (CommonPicUploadFragment.a(this.a));
+    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
+    try
+    {
+      paramMessage.mergeFrom(localFileMsg.a, 0, localFileMsg.a.length);
+      CommonPicUploadFragment.a(this.a, true);
+      CommonPicUploadFragment.b(this.a, localFileMsg.f);
+      CommonPicUploadFragment.c(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
+      CommonPicUploadFragment.d(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
+      if (QLog.isColorLevel()) {
+        QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler mUuid=" + CommonPicUploadFragment.c(this.a) + ", mPicMd5=" + CommonPicUploadFragment.b(this.a) + ", mPicUrl=" + CommonPicUploadFragment.d(this.a));
+      }
+      CommonPicUploadFragment.a(this.a).sendEmptyMessage(1005);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
       {
-        EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager).a(-13);
-        bool1 = false;
+        localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send error:" + localFileMsg.g);
+    }
+    CommonPicUploadFragment.a(this.a).sendEmptyMessage(1003);
   }
 }
 

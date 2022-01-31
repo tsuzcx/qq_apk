@@ -36,7 +36,7 @@ import com.tribe.async.dispatch.IEventReceiver;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import nwe;
+import oat;
 
 public class QQStoryDiscoverFragment
   extends Fragment
@@ -137,7 +137,7 @@ public class QQStoryDiscoverFragment
   
   public void a(List paramList, DiscoverPagerLoader.GetDiscoverCardsEvent paramGetDiscoverCardsEvent)
   {
-    if (paramGetDiscoverCardsEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramGetDiscoverCardsEvent.errorInfo.isSuccess())
     {
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter.a(paramList);
       this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.invalidateSpanAssignments();
@@ -146,7 +146,7 @@ public class QQStoryDiscoverFragment
     if (!paramGetDiscoverCardsEvent.b)
     {
       paramList = this.jdField_a_of_type_ComTencentBizQqstoryViewPull2refreshXRecyclerView.a();
-      boolean bool2 = paramGetDiscoverCardsEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess();
+      boolean bool2 = paramGetDiscoverCardsEvent.errorInfo.isSuccess();
       if (paramGetDiscoverCardsEvent.jdField_a_of_type_Boolean) {
         break label111;
       }
@@ -271,8 +271,8 @@ public class QQStoryDiscoverFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2130970747, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPull2refreshXRecyclerView = ((XRecyclerView)paramViewGroup.findViewById(2131371800));
+    paramViewGroup = paramLayoutInflater.inflate(2130970763, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewPull2refreshXRecyclerView = ((XRecyclerView)paramViewGroup.findViewById(2131371799));
     this.jdField_a_of_type_ComTencentBizQqstoryViewPull2refreshXRecyclerView.setPullToRefreshListener(this);
     this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter = this.jdField_a_of_type_ComTencentBizQqstoryViewPull2refreshXRecyclerView.a();
     this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager = new StaggeredGridLayoutManager(2, 1);
@@ -282,13 +282,13 @@ public class QQStoryDiscoverFragment
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter = new StoryDiscoverAdapter(this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter, this.jdField_a_of_type_Int, this.b);
     if (this.jdField_a_of_type_Int == 2)
     {
-      paramLayoutInflater = paramLayoutInflater.inflate(2130970748, null, false);
+      paramLayoutInflater = paramLayoutInflater.inflate(2130970764, null, false);
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter.a(paramLayoutInflater);
     }
     this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter);
     paramLayoutInflater = this.jdField_a_of_type_ComTencentBizQqstoryViewPull2refreshXRecyclerView.a();
     paramLayoutInflater.a(15);
-    paramLayoutInflater.a(new nwe(this));
+    paramLayoutInflater.a(new oat(this));
     paramLayoutInflater.a(true, false);
     this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.setPadding(UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.getContext(), 2.5F), 0, UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.getContext(), 2.5F), UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.getContext(), 100.0F));
     this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.setClipToPadding(false);

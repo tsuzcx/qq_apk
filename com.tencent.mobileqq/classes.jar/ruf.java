@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
-class ruf
-  implements DialogInterface.OnClickListener
+public class ruf
+  implements Runnable
 {
-  ruf(rue paramrue) {}
+  public ruf(BaseChatPie paramBaseChatPie, AIOAnimationControlManager paramAIOAnimationControlManager, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_Boolean);
   }
 }
 

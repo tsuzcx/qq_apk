@@ -1,6 +1,6 @@
 package cooperation.plugin;
 
-import ammf;
+import amtr;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -84,13 +84,13 @@ public class PluginDownloader
     String str = (String)paramNetReq.a();
     if (paramInt2 > 0)
     {
-      paramNetReq = (ammf)this.b.get(str);
+      paramNetReq = (amtr)this.b.get(str);
       if (paramNetReq == null) {
         break label95;
       }
     }
     label95:
-    for (paramNetReq = ammf.a(paramNetReq);; paramNetReq = null)
+    for (paramNetReq = amtr.a(paramNetReq);; paramNetReq = null)
     {
       if (paramNetReq != null) {
         paramNetReq.a(paramInt1, paramInt2, str);
@@ -161,10 +161,10 @@ public class PluginDownloader
       if (localObject != null) {
         this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.a(((HttpEngineTask)localObject).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.jdField_a_of_type_JavaLangString);
       }
-      localObject = new ammf(null);
-      ammf.a((ammf)localObject, paramHttpNetReq);
-      ammf.a((ammf)localObject, paramOnPluginDownLoadListener);
-      ammf.a((ammf)localObject, paramAbsPreDownloadTask);
+      localObject = new amtr(null);
+      amtr.a((amtr)localObject, paramHttpNetReq);
+      amtr.a((amtr)localObject, paramOnPluginDownLoadListener);
+      amtr.a((amtr)localObject, paramAbsPreDownloadTask);
       this.b.put(paramString, localObject);
       return;
     }
@@ -210,13 +210,13 @@ public class PluginDownloader
     for (boolean bool = true;; bool = false)
     {
       Object localObject = (PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(192);
-      ammf localammf = (ammf)this.b.remove(str);
-      if (localammf != null)
+      amtr localamtr = (amtr)this.b.remove(str);
+      if (localamtr != null)
       {
-        if (ammf.a(localammf) != null) {
-          ((PreDownloadController)localObject).a(ammf.a(localammf).jdField_a_of_type_JavaLangString, paramNetResp.jdField_a_of_type_Long);
+        if (amtr.a(localamtr) != null) {
+          ((PreDownloadController)localObject).a(amtr.a(localamtr).jdField_a_of_type_JavaLangString, paramNetResp.jdField_a_of_type_Long);
         }
-        localObject = ammf.a(localammf);
+        localObject = amtr.a(localamtr);
         a(str, paramNetResp);
         a(a(this.jdField_a_of_type_AndroidContentContext), str, false);
         if (QLog.isColorLevel())
@@ -245,26 +245,26 @@ public class PluginDownloader
       HttpEngineTask localHttpEngineTask;
       try
       {
-        localObject = (ammf)this.b.remove(paramString);
+        localObject = (amtr)this.b.remove(paramString);
         localHttpEngineTask = (HttpEngineTask)this.c.remove(paramString);
         this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
         if ((localObject != null) || (localHttpEngineTask != null))
         {
           if (localObject != null)
           {
-            if (ammf.a((ammf)localObject) != null) {
-              this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.a(ammf.a((ammf)localObject).jdField_a_of_type_JavaLangString);
+            if (amtr.a((amtr)localObject) != null) {
+              this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.a(amtr.a((amtr)localObject).jdField_a_of_type_JavaLangString);
             }
           }
           else
           {
             if (localObject != null) {
-              this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.a(ammf.a((ammf)localObject).jdField_a_of_type_JavaLangString);
+              this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.a(amtr.a((amtr)localObject).jdField_a_of_type_JavaLangString);
             }
             if (localObject == null) {
               break label185;
             }
-            localObject = ammf.a((ammf)localObject);
+            localObject = amtr.a((amtr)localObject);
             if (localObject != null) {
               ((PluginDownloader.OnPluginDownLoadListener)localObject).d(paramString);
             }
@@ -279,7 +279,7 @@ public class PluginDownloader
       {
         this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).b(ammf.a((ammf)localObject));
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).b(amtr.a((amtr)localObject));
       continue;
       label185:
       Object localObject = (PluginDownloader.OnPluginDownLoadListener)localHttpEngineTask.jdField_a_of_type_JavaLangObject;

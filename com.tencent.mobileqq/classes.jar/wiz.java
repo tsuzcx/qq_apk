@@ -1,23 +1,18 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
 
 public final class wiz
-  implements MessageQueue.IdleHandler
+  implements Parcelable.Creator
 {
-  final SearchContactsActivity a;
-  
-  public wiz(SearchContactsActivity paramSearchContactsActivity)
+  public ZhituImgResponse a(Parcel paramParcel)
   {
-    this.a = paramSearchContactsActivity;
+    return new ZhituImgResponse(paramParcel);
   }
   
-  public boolean queueIdle()
+  public ZhituImgResponse[] a(int paramInt)
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    return new ZhituImgResponse[paramInt];
   }
 }
 

@@ -1,16 +1,15 @@
-import com.qq.im.poi.LbsPackManager;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.graphics.Bitmap;
+import com.qq.im.poi.LbsPackListAdapter;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
 
 public class ane
-  implements Runnable
+  implements NonMainAppHeadLoader.FaceObserver
 {
-  public ane(LbsPackManager paramLbsPackManager, ARMapActivity paramARMapActivity, String paramString) {}
+  public ane(LbsPackListAdapter paramLbsPackListAdapter) {}
   
-  public void run()
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    ARMapEngine localARMapEngine = this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a;
-    ARMapEngine.nativeRequestLbsPOIListByPid(this.jdField_a_of_type_JavaLangString);
+    this.a.notifyDataSetChanged();
   }
 }
 

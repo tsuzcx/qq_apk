@@ -1,25 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.music.humrecognition.HumUtils;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import android.widget.FrameLayout;
 
-public class anml
+public final class anml
   implements View.OnClickListener
 {
-  public anml(HummingActivity paramHummingActivity) {}
+  public anml(FrameLayout paramFrameLayout, View paramView) {}
   
   public void onClick(View paramView)
   {
-    if (HumUtils.b()) {
-      return;
-    }
-    HummingActivity.a(this.a, 1);
-    HummingActivity.b(this.a);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anml
  * JD-Core Version:    0.7.0.1
  */

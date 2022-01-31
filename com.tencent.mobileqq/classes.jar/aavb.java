@@ -1,42 +1,23 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
 
 class aavb
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+  implements ArkAppEventObserverManager.ConnectionCallback
 {
-  static
+  aavb(aauq paramaauq, long paramLong) {}
+  
+  public void a(long paramLong)
   {
-    if (!ArkLocalAppMgr.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aauq.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
   }
   
-  aavb(aava paramaava, String paramString) {}
-  
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if ((paramInt == 0) && (paramAppPathInfo != null))
-    {
-      ArkLocalAppMgr.a(this.jdField_a_of_type_Aava.a.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aava.a.jdField_a_of_type_Aavw, paramInt, paramString, paramAppPathInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    if (paramInt == 0)
-    {
-      if (!jdField_a_of_type_Boolean) {
-        throw new AssertionError();
-      }
-      paramInt = -1;
-      paramString = "ret is 0 but path is null";
-    }
-    for (;;)
-    {
-      ArkLocalAppMgr.a(this.jdField_a_of_type_Aava.a.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aava.a.jdField_a_of_type_Aavw, paramInt, paramString, null, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
+    ArkAppDeviceModule.a(this.jdField_a_of_type_Aauq.a, this.jdField_a_of_type_Long, paramBoolean, paramString);
   }
 }
 

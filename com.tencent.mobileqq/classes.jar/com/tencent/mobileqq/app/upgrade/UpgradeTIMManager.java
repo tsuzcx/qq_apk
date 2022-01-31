@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.upgrade;
 
+import aadc;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -23,18 +24,17 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import zwp;
 
 public class UpgradeTIMManager
   implements INetInfoHandler, Manager
 {
-  private static final String jdField_a_of_type_JavaLangString = AppConstants.aJ + "tim";
+  private static final String jdField_a_of_type_JavaLangString = AppConstants.aK + "tim";
+  private aadc jdField_a_of_type_Aadc;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private OfflineDownloader jdField_a_of_type_ComTencentBizCommonOfflineUtilOfflineDownloader;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private UpgradeTIMWrapper jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper;
   private File jdField_a_of_type_JavaIoFile;
-  private zwp jdField_a_of_type_Zwp;
   private boolean jdField_a_of_type_Boolean;
   
   public UpgradeTIMManager(QQAppInterface paramQQAppInterface)
@@ -52,8 +52,8 @@ public class UpgradeTIMManager
   
   private void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Zwp = new zwp(this, paramString1, paramString2);
-    ThreadManager.post(this.jdField_a_of_type_Zwp, 5, null, true);
+    this.jdField_a_of_type_Aadc = new aadc(this, paramString1, paramString2);
+    ThreadManager.post(this.jdField_a_of_type_Aadc, 5, null, true);
     a();
   }
   
@@ -117,7 +117,7 @@ public class UpgradeTIMManager
   
   private void d()
   {
-    this.jdField_a_of_type_Zwp = null;
+    this.jdField_a_of_type_Aadc = null;
     b();
     if (this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper != null) {
       b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper);
@@ -144,10 +144,10 @@ public class UpgradeTIMManager
       localIntent.putExtra("url", paramString);
       localIntent.putExtra("hide_operation_bar", true);
       paramContext.startActivity(localIntent);
-      if (this.jdField_a_of_type_Zwp != null)
+      if (this.jdField_a_of_type_Aadc != null)
       {
-        zwp.a(this.jdField_a_of_type_Zwp);
-        this.jdField_a_of_type_Zwp = null;
+        aadc.a(this.jdField_a_of_type_Aadc);
+        this.jdField_a_of_type_Aadc = null;
       }
       b();
     }
@@ -158,7 +158,7 @@ public class UpgradeTIMManager
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeTIMManager", 2, "onReceiveUpgradeInfo, with wrapper");
     }
-    if (this.jdField_a_of_type_Zwp != null)
+    if (this.jdField_a_of_type_Aadc != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper = paramUpgradeTIMWrapper;
       return;
@@ -185,7 +185,7 @@ public class UpgradeTIMManager
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeTIMManager", 2, "onReceiveUpgradeInfo");
     }
-    if (this.jdField_a_of_type_Zwp != null) {}
+    if (this.jdField_a_of_type_Aadc != null) {}
     while ((a()) || (!NetworkUtil.h(BaseApplication.getContext()))) {
       return;
     }
@@ -204,8 +204,8 @@ public class UpgradeTIMManager
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeTIMManager", 2, "onNetWifi2None, resume download");
     }
-    if (this.jdField_a_of_type_Zwp != null) {
-      zwp.b(this.jdField_a_of_type_Zwp);
+    if (this.jdField_a_of_type_Aadc != null) {
+      aadc.b(this.jdField_a_of_type_Aadc);
     }
   }
   
@@ -214,8 +214,8 @@ public class UpgradeTIMManager
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeTIMManager", 2, "onNetNone2Mobile, pause download");
     }
-    if (this.jdField_a_of_type_Zwp != null) {
-      zwp.a(this.jdField_a_of_type_Zwp);
+    if (this.jdField_a_of_type_Aadc != null) {
+      aadc.a(this.jdField_a_of_type_Aadc);
     }
   }
   
@@ -224,8 +224,8 @@ public class UpgradeTIMManager
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeTIMManager", 2, "onNetWifi2None, resume download");
     }
-    if (this.jdField_a_of_type_Zwp != null) {
-      zwp.b(this.jdField_a_of_type_Zwp);
+    if (this.jdField_a_of_type_Aadc != null) {
+      aadc.b(this.jdField_a_of_type_Aadc);
     }
   }
   
@@ -234,8 +234,8 @@ public class UpgradeTIMManager
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeTIMManager", 2, "onNetWifi2Mobile, pause download");
     }
-    if (this.jdField_a_of_type_Zwp != null) {
-      zwp.a(this.jdField_a_of_type_Zwp);
+    if (this.jdField_a_of_type_Aadc != null) {
+      aadc.a(this.jdField_a_of_type_Aadc);
     }
   }
   
@@ -244,8 +244,8 @@ public class UpgradeTIMManager
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeTIMManager", 2, "onNetWifi2None, pause download");
     }
-    if (this.jdField_a_of_type_Zwp != null) {
-      zwp.a(this.jdField_a_of_type_Zwp);
+    if (this.jdField_a_of_type_Aadc != null) {
+      aadc.a(this.jdField_a_of_type_Aadc);
     }
   }
 }

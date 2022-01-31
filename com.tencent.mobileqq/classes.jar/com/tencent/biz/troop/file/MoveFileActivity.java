@@ -31,15 +31,15 @@ import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
-import oyd;
-import oye;
-import oyf;
-import oyg;
-import oyh;
-import oyi;
-import oyj;
-import oyk;
-import oyl;
+import pcv;
+import pcw;
+import pcx;
+import pcy;
+import pcz;
+import pda;
+import pdb;
+import pdc;
+import pdd;
 
 public class MoveFileActivity
   extends IphoneTitleBarActivity
@@ -50,15 +50,15 @@ public class MoveFileActivity
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TroopFileProtocol.CreateFolderObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$CreateFolderObserver = new oyk(this);
-  private TroopFileProtocol.GetFileListObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$GetFileListObserver = new oyf(this);
+  private TroopFileProtocol.CreateFolderObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$CreateFolderObserver = new pdc(this);
+  private TroopFileProtocol.GetFileListObserver jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$GetFileListObserver = new pcx(this);
   private ByteStringMicro jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
   private TroopFileManager jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   public String a;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private oyl jdField_a_of_type_Oyl = new oyl(this, null);
+  private pdd jdField_a_of_type_Pdd = new pdd(this, null);
   public boolean a;
   private int jdField_b_of_type_Int = -1;
   private String jdField_b_of_type_JavaLangString;
@@ -130,29 +130,29 @@ public class MoveFileActivity
       return;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838508);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838514);
     this.jdField_a_of_type_AndroidWidgetButton.setTextAppearance(getActivity(), 2131624424);
     this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_Oyl.notifyDataSetChanged();
+    this.jdField_a_of_type_Pdd.notifyDataSetChanged();
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    paramString1 = InputDialog.a(this, paramString1, "", 2131433015, 2131432417, new oyg(this), new oyh(this));
+    paramString1 = InputDialog.a(this, paramString1, "", 2131433029, 2131432428, new pcy(this), new pcz(this));
     paramString2 = paramString1.getEditText();
     if (!TextUtils.isEmpty(paramString3)) {
       paramString2.setText(paramString3);
     }
     paramString2.setFilters(new InputFilter[] { new InputFilter.LengthFilter(48) });
     paramString2.setHint(2131429706);
-    paramString2.addTextChangedListener(new oyi(this, paramString2, paramString1));
+    paramString2.addTextChangedListener(new pda(this, paramString2, paramString1));
     if (!TextUtils.isEmpty(paramString4)) {
       paramString1.a(paramString4, -65536);
     }
     paramString1.getBtnight().setEnabled(false);
     paramString1.getBtnight().setTextColor(getResources().getColor(2131493063));
     paramString1.show();
-    new Handler(getMainLooper()).post(new oyj(this, paramString2));
+    new Handler(getMainLooper()).post(new pdb(this, paramString2));
   }
   
   public void a(boolean paramBoolean)
@@ -168,8 +168,8 @@ public class MoveFileActivity
       return;
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434346);
-    Drawable localDrawable = getResources().getDrawable(2130838596);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434362);
+    Drawable localDrawable = getResources().getDrawable(2130838602);
     localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
     ((Animatable)localDrawable).start();
@@ -222,33 +222,33 @@ public class MoveFileActivity
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileManager = TroopFileManager.a(this.app, this.jdField_a_of_type_Long);
     paramBundle = (LayoutInflater)getSystemService("layout_inflater");
-    localObject = paramBundle.inflate(2130969888, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)((View)localObject).findViewById(2131363733));
+    localObject = paramBundle.inflate(2130969899, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)((View)localObject).findViewById(2131363757));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setFocusable(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    TextView localTextView = (TextView)((View)localObject).findViewById(2131368375);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131364082));
+    TextView localTextView = (TextView)((View)localObject).findViewById(2131368377);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131364107));
     localTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     setContentView((View)localObject);
     setTitle(2131429713);
-    localTextView = (TextView)findViewById(2131363428);
-    localTextView.setText(2131433015);
+    localTextView = (TextView)findViewById(2131363447);
+    localTextView.setText(2131433029);
     localTextView.setOnClickListener(this);
     localTextView.setVisibility(0);
     this.leftView.setVisibility(8);
-    localObject = (TextView)((View)localObject).findViewById(2131364113);
-    TextUtils.ellipsize(this.jdField_d_of_type_JavaLangString, ((TextView)localObject).getPaint(), AIOUtils.a(230.0F, getResources()), TextUtils.TruncateAt.MIDDLE, false, new oyd(this, (TextView)localObject));
-    this.jdField_a_of_type_AndroidViewView = paramBundle.inflate(2130969893, null);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131368386).setBackgroundResource(2130838214);
+    localObject = (TextView)((View)localObject).findViewById(2131364138);
+    TextUtils.ellipsize(this.jdField_d_of_type_JavaLangString, ((TextView)localObject).getPaint(), AIOUtils.a(230.0F, getResources()), TextUtils.TruncateAt.MIDDLE, false, new pcv(this, (TextView)localObject));
+    this.jdField_a_of_type_AndroidViewView = paramBundle.inflate(2130969904, null);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131368388).setBackgroundResource(2130838219);
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368387));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494214));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Oyl);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Oyl);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368389));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494220));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Pdd);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Pdd);
     c();
     ReportController.b(this.app, "P_CliOper", "Grp_files", "", "file", "move_file", 0, 0, Long.toString(this.jdField_a_of_type_Long), "", "", "");
     return true;
@@ -286,7 +286,7 @@ public class MoveFileActivity
         {
           if (TroopFileUtils.a(this.app, this, this.jdField_a_of_type_Long) != 0)
           {
-            TroopFileProtocol.a(this.app, this.jdField_a_of_type_Long, paramView.jdField_a_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, paramView.jdField_b_of_type_JavaLangString, new oye(this, paramView));
+            TroopFileProtocol.a(this.app, this.jdField_a_of_type_Long, paramView.jdField_a_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, paramView.jdField_b_of_type_JavaLangString, new pcw(this, paramView));
             a(2131429712);
             return;
           }

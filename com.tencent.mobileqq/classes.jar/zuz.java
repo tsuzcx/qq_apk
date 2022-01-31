@@ -1,44 +1,30 @@
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy.LoadMoreAioMessageCb;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSetList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
 
-class zuz
+public class zuz
   implements Runnable
 {
-  zuz(zuy paramzuy, List paramList) {}
+  public zuz(TroopManager paramTroopManager, TroopMemberInfo paramTroopMemberInfo, String paramString) {}
   
   public void run()
   {
-    int j = 0;
-    int i = j;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      i = j;
-      if (DataLineMsgProxy.a(this.jdField_a_of_type_Zuy.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy) != null)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        i = 0;
-        if (localIterator.hasNext())
-        {
-          DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-          if (!DataLineMsgProxy.a(this.jdField_a_of_type_Zuy.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy).insertFrontToList(localDataLineMsgRecord)) {
-            break label107;
-          }
-          i += 1;
-        }
-      }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.getEntityManagerFactory().createEntityManager();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
+      ((EntityManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
-    label107:
     for (;;)
     {
-      break;
-      if (this.jdField_a_of_type_Zuy.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$LoadMoreAioMessageCb != null) {
-        this.jdField_a_of_type_Zuy.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$LoadMoreAioMessageCb.a(i);
-      }
+      ((EntityManager)localObject).a();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_JavaLangString);
+      new Handler(Looper.getMainLooper()).post(new zva(this, (ArrayList)localObject));
       return;
+      ((EntityManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
     }
   }
 }

@@ -1,22 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.FeedItemThumbAdapter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class nvs
-  implements ValueAnimator.AnimatorUpdateListener
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public nvs(FeedItemThumbAdapter paramFeedItemThumbAdapter, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  public nvs(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate, boolean paramBoolean) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    try
+    if (paramInt != 0)
     {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
-      return;
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(2, bool);
+        this.a.a(0, this.a.a.getString(2131435390));
+        return;
+      }
     }
-    catch (Exception paramValueAnimator) {}
+    ((QQStoryManager)this.a.a.app.getManager(180)).a(this.b);
   }
 }
 

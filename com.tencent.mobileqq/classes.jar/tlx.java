@@ -1,21 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class tlx
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public tlx(QQSettingMe paramQQSettingMe) {}
+  public tlx(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      QLog.i("SSOHttpUtils", 2, "PublicAccount RefreshStepsObserver onReceive");
-      ThreadManager.post(new tly(this), 5, null, true);
-    }
+    ProfileLabelEditorActivity.a(this.a);
   }
 }
 

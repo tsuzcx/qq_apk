@@ -1,9 +1,9 @@
 package cooperation.qqfav.widget;
 
-import amps;
-import ampt;
-import ampu;
-import ampv;
+import amxd;
+import amxe;
+import amxf;
+import amxg;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -218,24 +218,24 @@ public class QfavJumpActivity
     //   366: aload_0
     //   367: ldc 178
     //   369: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
-    //   372: new 180	ampq
+    //   372: new 180	amxb
     //   375: dup
     //   376: aload_0
     //   377: aload_1
-    //   378: invokespecial 183	ampq:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/io/InputStream;)V
+    //   378: invokespecial 183	amxb:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/io/InputStream;)V
     //   381: invokevirtual 187	com/tencent/mobileqq/utils/QQCustomDialog:setNegativeButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   384: pop
     //   385: aload 8
     //   387: aload_0
     //   388: ldc 188
     //   390: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
-    //   393: new 190	ampr
+    //   393: new 190	amxc
     //   396: dup
     //   397: aload_0
     //   398: aload 7
     //   400: aload_1
     //   401: lload 4
-    //   403: invokespecial 193	ampr:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/lang/String;Ljava/io/InputStream;J)V
+    //   403: invokespecial 193	amxc:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/lang/String;Ljava/io/InputStream;J)V
     //   406: invokevirtual 196	com/tencent/mobileqq/utils/QQCustomDialog:setPositiveButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
     //   409: pop
     //   410: aload 8
@@ -341,23 +341,23 @@ public class QfavJumpActivity
   private void a(String paramString)
   {
     QQCustomDialog localQQCustomDialog = new QQCustomDialog(this, 2131624516);
-    localQQCustomDialog.setContentView(2130968851);
-    localQQCustomDialog.setTitle(getString(2131434781));
+    localQQCustomDialog.setContentView(2130968855);
+    localQQCustomDialog.setTitle(getString(2131434797));
     localQQCustomDialog.setMessage(paramString);
     localQQCustomDialog.setCanceledOnTouchOutside(false);
     localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.setNegativeButton(getString(2131433698), new ampv(this));
+    localQQCustomDialog.setNegativeButton(getString(2131433712), new amxg(this));
     localQQCustomDialog.show();
   }
   
   private void a(String paramString, InputStream paramInputStream, long paramLong)
   {
     this.jdField_a_of_type_Boolean = true;
-    ThreadManager.post(new amps(this, paramString, paramInputStream, paramLong), 5, null, true);
+    ThreadManager.post(new amxd(this, paramString, paramInputStream, paramLong), 5, null, true);
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, getString(2131436295), "取消", new ampt(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new ampu(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, getString(2131436315), "取消", new amxe(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new amxf(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
@@ -410,7 +410,7 @@ public class QfavJumpActivity
   public String a()
   {
     if (jdField_a_of_type_JavaLangString == null) {
-      return getString(2131436286);
+      return getString(2131436306);
     }
     return jdField_a_of_type_JavaLangString;
   }

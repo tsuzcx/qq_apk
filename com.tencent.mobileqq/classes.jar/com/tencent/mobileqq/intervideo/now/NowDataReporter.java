@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import adut;
-import aduu;
+import aedc;
+import aedd;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -105,7 +105,7 @@ public class NowDataReporter
     }
   }
   
-  private void d()
+  private void f()
   {
     jdField_a_of_type_Long = 0L;
     this.f = "";
@@ -135,23 +135,43 @@ public class NowDataReporter
   
   public void a()
   {
-    long l1 = System.currentTimeMillis();
-    jdField_a_of_type_Long = l1;
+    for (;;)
+    {
+      try
+      {
+        NowDataReporter localNowDataReporter = i(this.jdField_a_of_type_JavaLangString).g(this.jdField_b_of_type_JavaLangString).h(this.jdField_c_of_type_JavaLangString).b("no_network");
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
+        }
+        str = "1";
+        localNowDataReporter.c(str).e();
+      }
+      catch (Exception localException)
+      {
+        String str;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("NowDataReporter", 2, "reportNoNetwork Exception");
+        continue;
+      }
+      a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "jump_h5", true, this.jdField_d_of_type_Int, this.jdField_b_of_type_Int, this.h, this.i, this.j, this.k, "", true);
+      return;
+      str = "0";
+    }
+  }
+  
+  public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
+  {
     try
     {
-      b("now_retry").c();
-      a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "now_retry", false, 0, 0, this.h, this.i, this.j, this.k, "", false);
-      new Handler().postDelayed(new aduu(this, l1), 60000L);
+      b("get_record_res").c(String.valueOf(paramInt1)).d(paramString).e(String.valueOf(paramInt2)).j(String.valueOf(paramLong)).e();
       return;
     }
-    catch (Exception localException)
+    catch (Exception paramString)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NowDataReporter", 2, "reportRetry Exception");
-        }
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.d("NowDataReporter", 2, "reportRecordCgi Exception");
     }
   }
   
@@ -188,7 +208,7 @@ public class NowDataReporter
         this.i = paramBundle.getString("d2");
         this.j = paramBundle.getString("d3");
         this.k = paramBundle.getString("d4");
-        c();
+        e();
         if ((this.f.equals("check_version_complete")) && (this.j.equals("1"))) {
           this.jdField_a_of_type_Boolean = false;
         }
@@ -196,7 +216,7 @@ public class NowDataReporter
           break;
         }
         if ((this.f.equals("cancel_run")) || (this.f.equals("cancel_in_plugin")) || (this.f.equals("download_fail")) || (this.f.equals("boot_fail")) || (this.f.equals("login_fail")) || (this.f.equals("enter_fail"))) {
-          break label499;
+          break label500;
         }
         int i1 = i2;
         if (this.f.equals("download_start"))
@@ -258,7 +278,7 @@ public class NowDataReporter
       }
       QLog.d("NowDataReporter", 2, "onReportFromXProxy Exception");
       return;
-      label499:
+      label500:
       boolean bool1 = true;
       boolean bool2 = true;
     }
@@ -279,7 +299,7 @@ public class NowDataReporter
           continue;
         }
         str1 = "1";
-        localNowDataReporter.c(str1).j(str2).b("enter_activity").c();
+        localNowDataReporter.c(str1).j(str2).b("enter_activity").e();
       }
       catch (Exception localException)
       {
@@ -301,8 +321,11 @@ public class NowDataReporter
     long l1 = paramBundle.getLong("flag", 0L);
     long l2 = paramBundle.getLong("code", 0L);
     long l3 = paramBundle.getLong("subcode", 0L);
-    long l4 = System.currentTimeMillis();
-    long l5 = jdField_a_of_type_Long;
+    if (jdField_a_of_type_Long > 0L)
+    {
+      System.currentTimeMillis();
+      long l4 = jdField_a_of_type_Long;
+    }
     for (;;)
     {
       try
@@ -312,7 +335,7 @@ public class NowDataReporter
           continue;
         }
         paramString2 = "1";
-        paramBundle.c(paramString2).d(String.valueOf(l2)).e(String.valueOf(l3)).f(String.valueOf(l1)).j(String.valueOf(System.currentTimeMillis() - jdField_a_of_type_Long)).c();
+        paramBundle.c(paramString2).d(String.valueOf(l2)).e(String.valueOf(l3)).f(String.valueOf(l1)).j("0").e();
       }
       catch (Exception paramString2)
       {
@@ -322,7 +345,8 @@ public class NowDataReporter
         QLog.d("NowDataReporter", 2, "reportEnterPluginRoom Exception");
         continue;
       }
-      a(jdField_a_of_type_Long, paramString1, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "enter_room", true, this.jdField_d_of_type_Int, this.jdField_b_of_type_Int, this.h, this.i, this.j, this.k, String.valueOf(l4 - l5), true);
+      a(jdField_a_of_type_Long, paramString1, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "enter_room", true, this.jdField_d_of_type_Int, this.jdField_b_of_type_Int, this.h, this.i, this.j, this.k, "0", true);
+      jdField_a_of_type_Long = 0L;
       return;
       paramString2 = "0";
     }
@@ -335,7 +359,7 @@ public class NowDataReporter
     }
     try
     {
-      i(paramString1).b(paramString2).c(paramString3).c();
+      i(paramString1).b(paramString2).c(paramString3).e();
       return;
     }
     catch (Exception paramString1)
@@ -349,7 +373,7 @@ public class NowDataReporter
   {
     try
     {
-      i(paramString1).g(paramString2).b("jump_h5").c(paramString3).d(paramString4).c();
+      i(paramString1).g(paramString2).b("jump_h5").c(paramString3).d(paramString4).e();
       a(jdField_a_of_type_Long, paramString1, paramString2, this.jdField_c_of_type_JavaLangString, "jump_h5", true, this.jdField_d_of_type_Int, this.jdField_b_of_type_Int, this.h, this.i, this.j, this.k, "", true);
       return;
     }
@@ -423,7 +447,7 @@ public class NowDataReporter
           continue;
         }
         str = "1";
-        localNowDataReporter.c(str).c();
+        localNowDataReporter.c(str).e();
       }
       catch (Exception localException)
       {
@@ -442,7 +466,7 @@ public class NowDataReporter
   
   public void a(boolean paramBoolean1, String paramString1, String paramString2, String paramString3, boolean paramBoolean2, boolean paramBoolean3)
   {
-    d();
+    f();
     long l1 = System.currentTimeMillis();
     jdField_a_of_type_Long = l1;
     this.jdField_a_of_type_Boolean = paramBoolean1;
@@ -458,7 +482,7 @@ public class NowDataReporter
       str1 = "1";
       localNowDataReporter = localNowDataReporter.c(str1);
       if (!paramBoolean2) {
-        break label245;
+        break label243;
       }
       str1 = "1";
     }
@@ -480,9 +504,9 @@ public class NowDataReporter
     if (paramBoolean3) {}
     for (str1 = "1";; str1 = "0")
     {
-      localNowDataReporter.e(str1).c();
+      localNowDataReporter.e(str1).e();
       a(jdField_a_of_type_Long, paramString1, paramString2, paramString3, "now_entry", false, 0, 0, this.h, this.i, this.j, this.k, "", false);
-      new Handler().postDelayed(new adut(this, l1), 60000L);
+      new Handler().postDelayed(new aedc(this, l1), 90000L);
       return;
       label209:
       str1 = "0";
@@ -498,6 +522,117 @@ public class NowDataReporter
   
   public void b()
   {
+    long l1 = System.currentTimeMillis();
+    jdField_a_of_type_Long = l1;
+    try
+    {
+      b("now_retry").e();
+      a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "now_retry", false, 0, 0, this.h, this.i, this.j, this.k, "", false);
+      new Handler().postDelayed(new aedd(this, l1), 60000L);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NowDataReporter", 2, "reportRetry Exception");
+        }
+      }
+    }
+  }
+  
+  public void b(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NowDataReporter", 2, "reportAutoEnterAnswer souece = " + paramString1 + ", opname = " + paramString2);
+    }
+    try
+    {
+      i(paramString1).b(paramString2).c(paramString3).e();
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("NowDataReporter", 2, "reportEnterPluginActivity Exception");
+    }
+  }
+  
+  public void b(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    try
+    {
+      i(paramString1).g(paramString2).h(paramString3).b("jump_app").c(paramString4).e();
+      a(jdField_a_of_type_Long, paramString1, paramString2, paramString3, "jump_app", true, this.jdField_d_of_type_Int, this.jdField_b_of_type_Int, this.h, this.i, this.j, this.k, "", true);
+      return;
+    }
+    catch (Exception paramString4)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NowDataReporter", 2, "reportJumpAPP Exception");
+        }
+      }
+    }
+  }
+  
+  public void b(boolean paramBoolean1, String paramString1, String paramString2, String paramString3, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    long l1 = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    if (QLog.isColorLevel()) {
+      QLog.d("NowDataReporter", 2, "reportNowEntryDuringRecordFetching: source = " + paramString1 + "roomid = " + paramString2 + "roomType = " + paramString3);
+    }
+    try
+    {
+      localNowDataReporter = i(paramString1).g(paramString2).h(paramString3).b("nowentry_record_fetching");
+      if (!paramBoolean1) {
+        break label175;
+      }
+      str1 = "1";
+      localNowDataReporter = localNowDataReporter.c(str1);
+      if (!paramBoolean2) {
+        break label209;
+      }
+      str1 = "1";
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        NowDataReporter localNowDataReporter;
+        String str1;
+        label175:
+        if (QLog.isColorLevel())
+        {
+          QLog.d("NowDataReporter", 2, "reportNowEntryDuringRecordFetching");
+          continue;
+          String str2 = "0";
+        }
+      }
+    }
+    localNowDataReporter = localNowDataReporter.d(str1);
+    if (paramBoolean3) {}
+    for (str1 = "1";; str1 = "0")
+    {
+      localNowDataReporter.e(str1).e();
+      a(l1, paramString1, paramString2, paramString3, "nowentry_record_fetching", true, 0, 0, this.h, this.i, this.j, this.k, "", true);
+      return;
+      str1 = "0";
+      break;
+    }
+  }
+  
+  public NowDataReporter c(String paramString)
+  {
+    this.h = paramString;
+    return this;
+  }
+  
+  public void c()
+  {
     for (;;)
     {
       try
@@ -507,7 +642,7 @@ public class NowDataReporter
           continue;
         }
         str = "1";
-        localNowDataReporter.c(str).c();
+        localNowDataReporter.c(str).e();
       }
       catch (Exception localException)
       {
@@ -524,67 +659,53 @@ public class NowDataReporter
     }
   }
   
-  public void b(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NowDataReporter", 2, "reportAutoEnterAnswer souece = " + paramString1 + ", opname = " + paramString2);
-    }
-    try
-    {
-      i(paramString1).b(paramString2).c(paramString3).c();
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("NowDataReporter", 2, "reportEnterPluginActivity Exception");
-    }
-  }
-  
-  public void b(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    try
-    {
-      i(paramString1).g(paramString2).h(paramString3).b("jump_app").c(paramString4).c();
-      a(jdField_a_of_type_Long, paramString1, paramString2, paramString3, "jump_app", true, this.jdField_d_of_type_Int, this.jdField_b_of_type_Int, this.h, this.i, this.j, this.k, "", true);
-      return;
-    }
-    catch (Exception paramString4)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NowDataReporter", 2, "reportJumpAPP Exception");
-        }
-      }
-    }
-  }
-  
-  public NowDataReporter c(String paramString)
-  {
-    this.h = paramString;
-    return this;
-  }
-  
-  public void c()
-  {
-    String str1 = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
-    String str2 = String.valueOf(ApkUtils.a(BaseApplicationImpl.getContext()));
-    this.jdField_d_of_type_JavaLangString = (HttpUtil.a() + "");
-    QLog.i("NowDataReporter", 1, "nowDatareport: source = " + this.jdField_a_of_type_JavaLangString + " roomid = " + this.jdField_b_of_type_JavaLangString + " roomType = " + this.jdField_c_of_type_JavaLangString + " op_name = " + this.f + " op_in = " + this.jdField_d_of_type_Int + " d1= " + this.h + " d2=" + this.i + " d3=" + this.j + " d4=" + this.k + " timelong=" + this.l + " op_result = " + this.jdField_b_of_type_Int + " qq_version = " + str2 + "  optime = " + str1 + " lastOpName = " + this.o);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc02882", "grp_lbs", this.g, this.e, this.f, this.jdField_d_of_type_Int, 1, this.jdField_b_of_type_Int, this.h, this.i, this.j, this.k + "|" + this.l + "|" + this.jdField_b_of_type_JavaLangString + "|" + this.jdField_c_of_type_JavaLangString + "|" + this.jdField_a_of_type_JavaLangString + "|" + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_c_of_type_Int + "|" + this.n + "|" + this.m + "|" + this.jdField_a_of_type_Int + "|" + this.p + "|" + str2 + "|" + str1 + "|" + this.o);
-  }
-  
   public NowDataReporter d(String paramString)
   {
     this.i = paramString;
     return this;
   }
   
+  public void d()
+  {
+    for (;;)
+    {
+      try
+      {
+        NowDataReporter localNowDataReporter = b("confirm_not_wifi");
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
+        }
+        str = "1";
+        localNowDataReporter.c(str).e();
+      }
+      catch (Exception localException)
+      {
+        String str;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("NowDataReporter", 2, "reportConfirmNotWifi Exception");
+        continue;
+      }
+      a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "confirm_not_wifi", false, this.jdField_d_of_type_Int, this.jdField_b_of_type_Int, this.h, this.i, this.j, this.k, "", false);
+      return;
+      str = "0";
+    }
+  }
+  
   public NowDataReporter e(String paramString)
   {
     this.j = paramString;
     return this;
+  }
+  
+  public void e()
+  {
+    String str1 = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
+    String str2 = String.valueOf(ApkUtils.a(BaseApplicationImpl.getContext()));
+    this.jdField_d_of_type_JavaLangString = (HttpUtil.a() + "");
+    QLog.i("NowDataReporter", 1, "nowDatareport: source = " + this.jdField_a_of_type_JavaLangString + " roomid = " + this.jdField_b_of_type_JavaLangString + " roomType = " + this.jdField_c_of_type_JavaLangString + " op_name = " + this.f + " op_in = " + this.jdField_d_of_type_Int + " d1= " + this.h + " d2=" + this.i + " d3=" + this.j + " d4=" + this.k + " timelong=" + this.l + " op_result = " + this.jdField_b_of_type_Int + " qq_version = " + str2 + "  optime = " + str1 + " lastOpName = " + this.o);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc02882", "grp_lbs", this.g, this.e, this.f, this.jdField_d_of_type_Int, 1, this.jdField_b_of_type_Int, this.h, this.i, this.j, this.k + "|" + this.l + "|" + this.jdField_b_of_type_JavaLangString + "|" + this.jdField_c_of_type_JavaLangString + "|" + this.jdField_a_of_type_JavaLangString + "|" + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_c_of_type_Int + "|" + this.n + "|" + this.m + "|" + this.jdField_a_of_type_Int + "|" + this.p + "|" + str2 + "|" + str1 + "|" + this.o);
   }
   
   public NowDataReporter f(String paramString)

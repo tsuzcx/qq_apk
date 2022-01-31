@@ -1,16 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.biz.pubaccount.util.PublicTracker;
+import com.tencent.mobileqq.widget.BounceScrollView.DrawFinishedListener;
 
 public class lgo
-  extends PublicAccountObserver
+  implements BounceScrollView.DrawFinishedListener
 {
-  public lgo(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public lgo(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
   
-  public void a(boolean paramBoolean, ArrayList paramArrayList)
+  public void a()
   {
-    if (paramBoolean) {
-      ReadInJoyDeliverBiuActivity.a(this.a, paramArrayList);
+    if (ReadInJoySelfActivity.a(this.a))
+    {
+      ReadInJoySelfActivity.a(this.a, false);
+      PublicTracker.a("self_tab_cost", null);
     }
   }
 }

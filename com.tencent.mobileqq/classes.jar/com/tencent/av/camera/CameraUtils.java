@@ -17,14 +17,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observer;
-import jgt;
-import jgu;
-import jgv;
-import jgw;
-import jgx;
-import jgy;
-import jgz;
-import jha;
+import jiw;
+import jix;
+import jiy;
+import jiz;
+import jja;
+import jjb;
+import jjc;
+import jjd;
 
 public class CameraUtils
 {
@@ -34,16 +34,16 @@ public class CameraUtils
   public SurfaceTexture a;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public VideoController a;
-  AndroidCamera.CameraPreviewCallback jdField_a_of_type_ComTencentAvCameraAndroidCamera$CameraPreviewCallback = new jgt(this);
+  AndroidCamera.CameraPreviewCallback jdField_a_of_type_ComTencentAvCameraAndroidCamera$CameraPreviewCallback = new jiw(this);
   public VcCamera a;
   private Map jdField_a_of_type_JavaUtilMap = new HashMap(2);
-  private jgu jdField_a_of_type_Jgu;
-  private jgv jdField_a_of_type_Jgv;
-  jgw jdField_a_of_type_Jgw = new jgw(this);
-  jgx jdField_a_of_type_Jgx = new jgx(this);
-  jgy jdField_a_of_type_Jgy = new jgy(this);
-  jgz jdField_a_of_type_Jgz = new jgz(this);
-  private jha jdField_a_of_type_Jha;
+  private jix jdField_a_of_type_Jix;
+  private jiy jdField_a_of_type_Jiy;
+  jiz jdField_a_of_type_Jiz = new jiz(this);
+  jja jdField_a_of_type_Jja = new jja(this);
+  jjb jdField_a_of_type_Jjb = new jjb(this);
+  jjc jdField_a_of_type_Jjc = new jjc(this);
+  private jjd jdField_a_of_type_Jjd;
   public boolean a;
   boolean b = false;
   
@@ -70,7 +70,7 @@ public class CameraUtils
     }
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("AppStoreWorkThread");
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Jha = new jha(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_Jjd = new jjd(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     this.jdField_a_of_type_JavaUtilMap.put("0", Integer.valueOf(1));
     this.jdField_a_of_type_JavaUtilMap.put("1", Integer.valueOf(1));
   }
@@ -88,12 +88,12 @@ public class CameraUtils
     finally {}
   }
   
-  private jgv a()
+  private jiy a()
   {
-    if (this.jdField_a_of_type_Jgv == null) {
-      this.jdField_a_of_type_Jgv = new jgv(this);
+    if (this.jdField_a_of_type_Jiy == null) {
+      this.jdField_a_of_type_Jiy = new jiy(this);
     }
-    return this.jdField_a_of_type_Jgv;
+    return this.jdField_a_of_type_Jiy;
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -155,15 +155,15 @@ public class CameraUtils
     if (QLog.isColorLevel()) {
       QLog.w("CameraUtils", 2, "startNoPreviewRunnable[" + paramString + "]");
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.a().a().removeCallbacks(this.jdField_a_of_type_Jgx);
-    this.jdField_a_of_type_ComTencentAvVideoController.a().a().postDelayed(this.jdField_a_of_type_Jgx, 10000L);
+    this.jdField_a_of_type_ComTencentAvVideoController.a().a().removeCallbacks(this.jdField_a_of_type_Jja);
+    this.jdField_a_of_type_ComTencentAvVideoController.a().a().postDelayed(this.jdField_a_of_type_Jja, 10000L);
     this.b = false;
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Jha != null) {
-      this.jdField_a_of_type_Jha.a("reopenCamera_" + paramString, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Jjd != null) {
+      this.jdField_a_of_type_Jjd.a("reopenCamera_" + paramString, paramInt1, paramInt2);
     }
   }
   
@@ -181,8 +181,8 @@ public class CameraUtils
     }
     if (this.jdField_a_of_type_ComTencentAvCameraVcCamera.f())
     {
-      this.jdField_a_of_type_Jgw.a(paramBoolean);
-      ThreadManager.post(this.jdField_a_of_type_Jgw, 8, null, false);
+      this.jdField_a_of_type_Jiz.a(paramBoolean);
+      ThreadManager.post(this.jdField_a_of_type_Jiz, 8, null, false);
     }
   }
   
@@ -232,7 +232,7 @@ public class CameraUtils
         QLog.w("CameraUtils", 2, "stopNoPreviewRunnable[" + paramString + "]");
       }
       this.b = true;
-      this.jdField_a_of_type_ComTencentAvVideoController.a().a().removeCallbacks(this.jdField_a_of_type_Jgx);
+      this.jdField_a_of_type_ComTencentAvVideoController.a().a().removeCallbacks(this.jdField_a_of_type_Jja);
     }
   }
   
@@ -271,7 +271,7 @@ public class CameraUtils
     if (QLog.isColorLevel()) {
       QLog.e("CameraUtils", 2, "openCamera");
     }
-    ThreadManager.post(this.jdField_a_of_type_Jgy, 8, null, false);
+    ThreadManager.post(this.jdField_a_of_type_Jjb, 8, null, false);
   }
   
   public boolean c()
@@ -289,28 +289,28 @@ public class CameraUtils
   public void d()
   {
     if (this.jdField_a_of_type_ComTencentAvCameraVcCamera.f()) {
-      ThreadManager.post(this.jdField_a_of_type_Jgz, 8, null, false);
+      ThreadManager.post(this.jdField_a_of_type_Jjc, 8, null, false);
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Jgu == null)
+    if (this.jdField_a_of_type_Jix == null)
     {
-      this.jdField_a_of_type_Jgu = new jgu(this);
+      this.jdField_a_of_type_Jix = new jix(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.tencent.mobileqq.qav.camera.availability");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Jgu, localIntentFilter);
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Jix, localIntentFilter);
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Jgu != null) {}
+    if (this.jdField_a_of_type_Jix != null) {}
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Jgu);
-      this.jdField_a_of_type_Jgu = null;
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Jix);
+      this.jdField_a_of_type_Jix = null;
       return;
     }
     catch (Exception localException)
@@ -340,7 +340,7 @@ public class CameraUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.camera.CameraUtils
  * JD-Core Version:    0.7.0.1
  */

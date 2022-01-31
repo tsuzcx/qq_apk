@@ -1,19 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class vyb
-  extends FriendListObserver
+class vyb
+  implements Runnable
 {
-  public vyb(PublicAccountChatPie paramPublicAccountChatPie, ImageView paramImageView) {}
+  vyb(vya paramvya, MessageRecord paramMessageRecord) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a().a))) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a, paramString, (byte)3));
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.sendFailCode == 41)
+    {
+      QQToast.a(this.jdField_a_of_type_Vya.a.a.getApp(), 2131436104, 0).a();
+      return;
     }
+    QQToast.a(this.jdField_a_of_type_Vya.a.a.getApp(), 2131438870, 0).a();
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Vya.a.a.c(), "Stick", "Send", "1", 0, 6, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 

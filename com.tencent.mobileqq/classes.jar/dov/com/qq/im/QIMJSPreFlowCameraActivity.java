@@ -30,7 +30,7 @@ public class QIMJSPreFlowCameraActivity
         paramBundle.printStackTrace();
         continue;
       }
-      ((CaptureComboManager)QIMManager.a(5)).f();
+      ((CaptureComboManager)QIMManager.a(5)).g();
       int i = localIntent.getIntExtra("firsttab", 0);
       int j = localIntent.getIntExtra("secondtab", 0);
       String str = localIntent.getStringExtra("itemid");

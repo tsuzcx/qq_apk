@@ -1,67 +1,44 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class tlo
   extends CardObserver
 {
-  public tlo(QQSettingMe paramQQSettingMe) {}
+  public tlo(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  protected void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean, String paramString)
   {
+    if (!this.a.a.a.equals(paramString)) {
+      return;
+    }
+    this.a.e();
     if (paramBoolean)
     {
-      QQSettingMe.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onSetMedal");
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
+      this.a.a(2131433484, 2);
       return;
-      if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ((paramObject instanceof Card)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new tlp(this));
-        ThreadManager.post(new tlq(this), 5, null, true);
-        return;
-      }
-    } while ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!(paramObject instanceof Card)) || (this.a.c) || (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)));
-    ThreadManager.post(new tlr(this, (Card)paramObject), 5, null, true);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.a(paramString);
     }
+    this.a.a(2131433483, 1);
   }
   
-  protected void e(boolean paramBoolean)
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new tls(this));
-    }
-  }
-  
-  protected void m(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    if ((paramBoolean1) && (paramBoolean2 != this.a.c.a()))
     {
-      QQSettingMe.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onGetMedal medalSwitchDisable= " + paramBoolean2);
-      }
+      this.a.c.setOnCheckedChangeListener(null);
+      this.a.c.setChecked(paramBoolean2);
+      this.a.c.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  protected void c(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2 != this.a.c.a()))
+    {
+      this.a.c.setOnCheckedChangeListener(null);
+      this.a.c.setChecked(paramBoolean2);
+      this.a.c.setOnCheckedChangeListener(this.a);
     }
   }
 }

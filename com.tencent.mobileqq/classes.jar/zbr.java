@@ -1,42 +1,44 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper.NewApkInfo;
-import com.tencent.mobileqq.utils.SPSettings;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
+import com.tencent.mobileqq.apollo.task.IAudioPlayerListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class zbr
-  implements Runnable
+  implements MediaPlayer.OnCompletionListener
 {
-  public zbr(ConfigHandler paramConfigHandler) {}
+  public zbr(ApolloAudioPlayer paramApolloAudioPlayer, int paramInt, String paramString) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer arg1)
   {
-    Object localObject = UpgradeController.a().a();
-    if ((localObject == null) || (((UpgradeDetailWrapper)localObject).a == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloAudioPlayer", 2, "[onCompletion]");
     }
-    boolean bool = SPSettings.b();
-    int i = SPSettings.b();
-    int j = ((UpgradeDetailWrapper)localObject).a.a;
-    if ((bool) && (j == i)) {}
-    for (i = 1;; i = 0)
+    int i = this.jdField_a_of_type_Int - 1;
+    if (i == 0) {}
+    do
     {
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (i != 0) {
-        break;
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_JavaLangObject)
+      {
+        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, null);
+        if (ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer) != null) {
+          ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer).a();
+        }
+        return;
       }
-      UpgradeController.a().a((QQAppInterface)localObject, true);
-      SPSettings.b(j);
-      SPSettings.b(true);
-      return;
-    }
+      if (!this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_Boolean)
+      {
+        QLog.d("ApolloAudioPlayer", 2, "[repeat play]");
+        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, i);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloAudioPlayer", 2, "Paused. NOT play");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zbr
  * JD-Core Version:    0.7.0.1
  */

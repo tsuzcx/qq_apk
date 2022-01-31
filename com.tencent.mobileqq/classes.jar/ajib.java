@@ -1,14 +1,13 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
 
-class ajib
+public class ajib
   implements Runnable
 {
-  ajib(ajia paramajia, Bitmap paramBitmap) {}
+  public ajib(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ajia.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    TroopAioMsgNavigateBar.a(this.a, -1);
   }
 }
 

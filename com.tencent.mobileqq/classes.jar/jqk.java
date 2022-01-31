@@ -1,22 +1,30 @@
-import com.tencent.av.ui.BaseInviteFloatBarUICtr;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
 import com.tencent.qphone.base.util.QLog;
 
-public class jqk
+class jqk
   implements Runnable
 {
-  public jqk(BaseInviteFloatBarUICtr paramBaseInviteFloatBarUICtr) {}
+  jqk(jqh paramjqh) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "timeout~ mPeerUin:" + this.a.c);
+      QLog.d("SmallScreenMultiVideoControlUI", 2, "AutoCheckVideoRunnable");
     }
-    this.a.d();
+    if (this.a.a.jdField_a_of_type_ComTencentAvVideoController != null) {
+      this.a.a.jdField_a_of_type_ComTencentAvVideoController.a().an = true;
+    }
+    this.a.a.p();
+    if ((this.a.a.c == 1) && (this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
+      this.a.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.a.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqk
  * JD-Core Version:    0.7.0.1
  */

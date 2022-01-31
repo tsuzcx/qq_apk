@@ -1,64 +1,123 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.QQDownloadListener;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBTaskInfo;
-import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class alir
-  implements Runnable
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public alir(MyAppApi.QQDownloadListener paramQQDownloadListener, TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, int paramInt1, int paramInt2, String paramString) {}
+  public alir(BindGroupActivity paramBindGroupActivity) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    int i;
-    DownloadManager localDownloadManager;
-    DownloadInfo localDownloadInfo;
-    if (this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
+    switch (paramInt)
     {
-      LogUtility.a("State_Log", "OpenSDK onDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param SNGAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
-      i = DownloadManager.a(this.jdField_a_of_type_Int);
-      LogUtility.c("State_Log", "onDownloadTaskStateChanged--localState = " + i + "state = " + this.jdField_a_of_type_Int + "errorCode = " + this.b);
-      localDownloadManager = DownloadManager.a();
-      localDownloadInfo = localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId, i);
-      if ((localDownloadInfo != null) || (this.jdField_a_of_type_Int == 6)) {
-        break label383;
-      }
-      localDownloadInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, null);
-      localDownloadManager.e(localDownloadInfo);
-      localDownloadManager.b(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId, i);
     }
-    while (localDownloadInfo != null)
+    do
     {
-      LogUtility.c("State_Log", "onDownloadTaskStateChanged notifyListener localState=" + i + " dlInfo=" + localDownloadInfo.toString());
-      localDownloadManager.a(i, localDownloadInfo, this.b, this.jdField_a_of_type_JavaLangString);
       return;
-      LogUtility.a("State_Log", "OpenSDK onDownloadTaskStateChanged state=" + this.jdField_a_of_type_Int + " errorCode=" + this.b + " param== null");
-      return;
-      label383:
-      if (((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3)) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.e())) {
-        try
+    } while (paramJSONObject == null);
+    for (;;)
+    {
+      try
+      {
+        paramInt = ((Integer)paramJSONObject.get("retcode")).intValue();
+        paramJSONObject = (JSONObject)paramJSONObject.get("result");
+        if ((paramInt != 0) || (paramJSONObject == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("BindGroupActivity", 2, "checkApiState onResult. retCode = " + paramInt + "\n");
+        }
+        paramBundle = (JSONObject)paramJSONObject.get("basics");
+        Object localObject2;
+        if (paramBundle != null)
         {
-          TMAssistantCallYYBTaskInfo localTMAssistantCallYYBTaskInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$QQDownloadListener.a.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct);
-          if (localTMAssistantCallYYBTaskInfo != null)
+          paramBundle = (JSONArray)paramBundle.get("datas");
+          if (paramBundle != null)
           {
-            long l1 = localTMAssistantCallYYBTaskInfo.mReceiveDataLen;
-            long l2 = localTMAssistantCallYYBTaskInfo.mTotalDataLen;
-            int j = (int)((float)l1 * 100.0F / (float)l2);
-            localDownloadInfo.g = j;
-            LogUtility.a("MyAppApi", "onDownloadTaskStateChanged info progress = " + j);
+            paramInt = 0;
+            if (paramInt < paramBundle.length())
+            {
+              localObject2 = (JSONObject)paramBundle.get(paramInt);
+              str = (String)((JSONObject)localObject2).get("name");
+              i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
+              localObject1 = (String)((JSONObject)localObject2).get("api");
+              localObject2 = (String)((JSONObject)localObject2).get("msg");
+              if (!QLog.isColorLevel()) {
+                break label717;
+              }
+              QLog.i("BindGroupActivity", 2, "checkApiState onResult, basics name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg = " + (String)localObject2 + "\n");
+              break label717;
+            }
           }
         }
-        catch (Exception localException)
+        paramBundle = (JSONObject)paramJSONObject.get("friendlink");
+        if (paramBundle != null)
         {
-          LogUtility.c("MyAppApi", "getDownloadTaskState>>>", localException);
+          paramBundle = (JSONArray)paramBundle.get("datas");
+          if (paramBundle != null)
+          {
+            paramInt = 0;
+            if (paramInt < paramBundle.length())
+            {
+              localObject2 = (JSONObject)paramBundle.get(paramInt);
+              str = (String)((JSONObject)localObject2).get("name");
+              i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
+              localObject1 = (String)((JSONObject)localObject2).get("api");
+              localObject2 = (String)((JSONObject)localObject2).get("msg");
+              if (("bind_group".equals(localObject1)) && (i != 1)) {
+                this.a.runOnUiThread(new alis(this));
+              }
+              if (!QLog.isColorLevel()) {
+                break label724;
+              }
+              QLog.i("BindGroupActivity", 2, "checkApiState onResult, friendlink name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg= " + (String)localObject2 + "\n");
+              break label724;
+            }
+          }
+        }
+        paramInt = ((Integer)paramJSONObject.get("appid")).intValue();
+        if (QLog.isColorLevel()) {
+          QLog.i("BindGroupActivity", 2, "checkApiState onResult, appid =" + paramInt + "\n");
+        }
+        paramJSONObject = (JSONObject)paramJSONObject.get("qqpay");
+        if (paramJSONObject == null) {
+          break;
+        }
+        paramJSONObject = (JSONArray)paramJSONObject.get("datas");
+        if (paramJSONObject == null) {
+          break;
+        }
+        paramInt = 0;
+        if (paramInt >= paramJSONObject.length()) {
+          break;
+        }
+        Object localObject1 = (JSONObject)paramJSONObject.get(paramInt);
+        paramBundle = (String)((JSONObject)localObject1).get("name");
+        int i = ((Integer)((JSONObject)localObject1).get("state")).intValue();
+        String str = (String)((JSONObject)localObject1).get("api");
+        localObject1 = (String)((JSONObject)localObject1).get("msg");
+        if (QLog.isColorLevel()) {
+          QLog.i("BindGroupActivity", 2, "checkApiState onResult, qqpay name = " + paramBundle + " state = " + i + " api = " + str + " msg= " + (String)localObject1 + "\n");
+        }
+        paramInt += 1;
+        continue;
+        if (!QLog.isColorLevel()) {
+          break;
         }
       }
+      catch (Exception paramJSONObject) {}
+      QLog.d("BindGroupActivity", 2, "checkApiState onResult " + paramJSONObject.toString());
+      return;
+      label717:
+      paramInt += 1;
+      continue;
+      label724:
+      paramInt += 1;
     }
-    LogUtility.c("MyAppApi", "onDownloadTaskStateChanged notifyListener error dlInfo == null");
   }
 }
 

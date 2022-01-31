@@ -1,66 +1,42 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qidian.controller.QidianBusinessObserver;
+import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class rnm
-  implements CompoundButton.OnCheckedChangeListener
+  extends QidianBusinessObserver
 {
-  public rnm(AuthDevActivity paramAuthDevActivity) {}
+  public rnm(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void b(boolean paramBoolean, HashMap paramHashMap)
   {
-    boolean bool = true;
-    paramBoolean = false;
-    if (paramCompoundButton == AuthDevActivity.a(this.a).a())
+    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
-      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramCompoundButton = AuthDevActivity.a(this.a);
-      if (AuthDevActivity.a(this.a).a())
-      {
-        paramBoolean = false;
-        paramCompoundButton.setChecked(paramBoolean);
-        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-        if (NetworkUtil.d(this.a)) {
-          break label118;
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
+        if (AddFriendVerifyActivity.b(this.a) != null)
+        {
+          str = AddFriendVerifyActivity.b(this.a).getText().toString();
+          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
+            AddFriendVerifyActivity.b(this.a).setText(paramHashMap.nickname);
+          }
         }
-        QQToast.a(this.a, this.a.getString(2131433009), 0).b(this.a.getTitleBarHeight());
       }
     }
-    label118:
-    while (paramCompoundButton != AuthDevActivity.b(this.a).a())
+    while (!QLog.isColorLevel())
     {
+      String str;
       do
       {
-        for (;;)
-        {
-          return;
-          paramBoolean = true;
-        }
-        paramCompoundButton = (SecSvcHandler)this.a.app.a(34);
-      } while (paramCompoundButton == null);
-      if (!AuthDevActivity.a(this.a).a()) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramCompoundButton.a(paramBoolean);
         return;
-      }
-    }
-    AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
-    paramCompoundButton = AuthDevActivity.b(this.a);
-    if (AuthDevActivity.b(this.a).a()) {}
-    for (;;)
-    {
-      paramCompoundButton.setChecked(paramBoolean);
-      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-      AuthDevActivity.a(this.a);
+      } while (!QLog.isColorLevel());
+      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
       return;
-      paramBoolean = true;
     }
+    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
   }
 }
 

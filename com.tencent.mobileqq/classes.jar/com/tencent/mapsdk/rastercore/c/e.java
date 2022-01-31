@@ -3,6 +3,7 @@ package com.tencent.mapsdk.rastercore.c;
 import android.graphics.Point;
 import android.graphics.PointF;
 import com.tencent.mapsdk.rastercore.d.b;
+import com.tencent.mapsdk.rastercore.d.f;
 
 public final class e
   extends a
@@ -20,15 +21,15 @@ public final class e
     this.e = paramPoint;
   }
   
-  public final void a(com.tencent.mapsdk.rastercore.d.e parame)
+  public final void a(f paramf)
   {
     if (this.e != null)
     {
       PointF localPointF = new PointF(this.e.x, this.e.y);
-      parame.c().a(this.d, localPointF, this.a, this.c);
+      paramf.c().a(this.d, localPointF, this.a, this.c);
       return;
     }
-    parame.c().a(this.d, this.a, this.c);
+    paramf.c().a(this.d, this.a, this.c);
   }
 }
 

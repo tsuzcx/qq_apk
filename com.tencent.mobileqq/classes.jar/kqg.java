@@ -1,30 +1,31 @@
-import com.tencent.biz.pubaccount.AccountDetail.bean.AccountDetailDynamicInfo;
-import com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfoEntity;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicDataManager;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicListModel;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.biz.now.NowVideoController;
+import com.tencent.mobileqq.widget.PAVideoView;
+import com.tencent.widget.AbsListView;
 
 public class kqg
   implements Runnable
 {
-  public kqg(AccountDetailDynamicDataManager paramAccountDetailDynamicDataManager, long paramLong, QQAppInterface paramQQAppInterface, PublicAccountObserver paramPublicAccountObserver) {}
+  public kqg(NowVideoController paramNowVideoController, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    Object localObject = (DynamicInfoEntity)AccountDetailDynamicDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailModelAccountDetailDynamicDataManager).a(DynamicInfoEntity.class, this.jdField_a_of_type_Long);
-    if ((localObject != null) && (this.jdField_a_of_type_Long == Long.parseLong(((DynamicInfoEntity)localObject).puin)) && (((DynamicInfoEntity)localObject).dynamicInfoData != null))
+    if (NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController) == null) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicDataManager", 2, "getDynamicListForFirstEnterFromDB null != dynamicInfoEntity");
-      }
-      int i = AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, ((DynamicInfoEntity)localObject).dynamicInfoData, true);
-      localObject = AccountDetailDynamicDataManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_Long);
-      if ((i == 0) && (localObject != null) && (!((AccountDetailDynamicInfo)localObject).a().isEmpty())) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.a(true, i);
+      return;
+      int i = this.jdField_a_of_type_Int;
+      while (i <= this.b)
+      {
+        Object localObject = NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController).getChildAt(i - this.jdField_a_of_type_Int);
+        if (localObject != null)
+        {
+          localObject = (PAVideoView)((View)localObject).findViewById(2131362177);
+          if ((localObject != null) && (((PAVideoView)localObject).j == 4)) {
+            ((PAVideoView)localObject).d();
+          }
+        }
+        i += 1;
       }
     }
   }

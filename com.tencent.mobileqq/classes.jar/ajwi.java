@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ajwi
-  extends TroopGiftCallback
+  implements Runnable
 {
-  ajwi(ajvw paramajvw) {}
+  ajwi(ajwh paramajwh) {}
   
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
-    }
+    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131558448);
+    QQToast.a(BaseApplicationImpl.sApplication, "转发成功", 0).b(i);
   }
 }
 

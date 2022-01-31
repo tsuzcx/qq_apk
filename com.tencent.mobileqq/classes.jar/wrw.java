@@ -1,14 +1,50 @@
-import android.view.View;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
-
-class wrw
-  implements BubblePopupWindow.OnDismissListener
+public class wrw
 {
-  wrw(wrv paramwrv, View paramView) {}
+  private static int jdField_b_of_type_Int;
+  private static final Object jdField_b_of_type_JavaLangObject = new Object();
+  private static wrw jdField_b_of_type_Wrw;
+  public int a;
+  public Object a;
+  private wrw a;
+  
+  public wrw(int paramInt, Object paramObject)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public static wrw a(int paramInt, Object paramObject)
+  {
+    synchronized (jdField_b_of_type_JavaLangObject)
+    {
+      if (jdField_b_of_type_Wrw != null)
+      {
+        wrw localwrw = jdField_b_of_type_Wrw;
+        jdField_b_of_type_Wrw = localwrw.jdField_a_of_type_Wrw;
+        localwrw.jdField_a_of_type_Wrw = null;
+        jdField_b_of_type_Int -= 1;
+        localwrw.jdField_a_of_type_Int = paramInt;
+        localwrw.jdField_a_of_type_JavaLangObject = paramObject;
+        return localwrw;
+      }
+      return new wrw(paramInt, paramObject);
+    }
+  }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangObject = null;
+    synchronized (jdField_b_of_type_JavaLangObject)
+    {
+      if (jdField_b_of_type_Int < 50)
+      {
+        this.jdField_a_of_type_Wrw = jdField_b_of_type_Wrw;
+        jdField_b_of_type_Wrw = this;
+        jdField_b_of_type_Int += 1;
+      }
+      return;
+    }
   }
 }
 

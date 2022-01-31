@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class tfs
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public tfs(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public tfs(MainFragment paramMainFragment) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    PhoneUnityBindInfoActivity.a(this.a).g();
-    PhoneUnityBindInfoActivity.b(this.a).f = true;
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 

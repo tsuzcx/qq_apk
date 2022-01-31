@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import adlc;
+import adtj;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -523,7 +523,7 @@ public class ForwardQQStoryMsgOption
   public void onGlobalLayout()
   {
     if (this.jdField_a_of_type_AndroidWidgetScrollView != null) {
-      this.jdField_a_of_type_AndroidWidgetScrollView.post(new adlc(this));
+      this.jdField_a_of_type_AndroidWidgetScrollView.post(new adtj(this));
     }
   }
   

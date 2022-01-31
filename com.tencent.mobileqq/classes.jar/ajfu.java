@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 
-class ajfu
+public class ajfu
   implements Runnable
 {
-  ajfu(ajft paramajft) {}
+  public ajfu(TroopWebviewPlugin paramTroopWebviewPlugin, String paramString) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectManager.c(this.a.jdField_a_of_type_JavaLangString);
+    SensorAPIJavaScript.returnToAio(this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.a, this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.mRuntime.a(), this.jdField_a_of_type_JavaLangString, true);
   }
 }
 

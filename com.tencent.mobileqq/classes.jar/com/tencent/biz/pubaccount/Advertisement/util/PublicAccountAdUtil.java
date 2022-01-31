@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import kuv;
+import kxc;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.PhoneInfo;
 
 public class PublicAccountAdUtil
@@ -125,7 +125,7 @@ public class PublicAccountAdUtil
               if (QLog.isColorLevel()) {
                 QLog.d("AD_Util", 2, "start preload msgid:" + ((AdvertisementItem)localObject1).c);
               }
-              ThreadManager.executeOnSubThread(new kuv(localArrayList1));
+              ThreadManager.executeOnSubThread(new kxc(localArrayList1));
               if (paramQQAppInterface == null) {
                 break;
               }

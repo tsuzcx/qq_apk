@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.app.AutomatorObserver;
-import com.tencent.mobileqq.app.automator.step.RegisterProxy;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
 
 public class zrk
-  extends AutomatorObserver
+  implements Runnable
 {
-  private zrk(RegisterProxy paramRegisterProxy) {}
+  public zrk(QQAppInterface paramQQAppInterface) {}
   
-  protected void a()
-  {
-    this.a.a(10000L);
-  }
+  public void run() {}
 }
 
 

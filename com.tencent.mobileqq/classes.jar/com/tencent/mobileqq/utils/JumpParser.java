@@ -49,6 +49,14 @@ public class JumpParser
         }
         i += 1;
       }
+      if (paramString.startsWith("mqqapi://nearby_entry/nearby_feed"))
+      {
+        paramQQAppInterface = new JumpAction(paramQQAppInterface, paramContext);
+        paramQQAppInterface.a = paramString;
+        paramQQAppInterface.b = "nearby_entry";
+        paramQQAppInterface.c = "nearby_feed";
+        return paramQQAppInterface;
+      }
       if (paramString.startsWith("mqqapi://now/playmedia"))
       {
         paramQQAppInterface = new JumpAction(paramQQAppInterface, paramContext);
@@ -166,6 +174,27 @@ public class JumpParser
           return paramQQAppInterface;
         }
         paramContext = paramContext[1].split("&");
+        if (paramContext != null)
+        {
+          i = 0;
+          while (i < paramContext.length)
+          {
+            paramString = paramContext[i].split("=");
+            if ((paramString != null) && (paramString.length == 2)) {
+              paramQQAppInterface.a(paramString[0], paramString[1]);
+            }
+            i += 1;
+          }
+        }
+        return paramQQAppInterface;
+      }
+      if (str1.startsWith("mqqapi://ftssearch/openmixweb"))
+      {
+        paramQQAppInterface = new JumpAction(paramQQAppInterface, paramContext);
+        paramQQAppInterface.a = str1;
+        paramQQAppInterface.b = "ftssearch";
+        paramQQAppInterface.c = "openmixweb";
+        paramContext = str1.replace("mqqapi://ftssearch/openmixweb?", "").replace("^?", "").split("&");
         if (paramContext != null)
         {
           i = 0;
@@ -709,60 +738,60 @@ public class JumpParser
     boolean bool6 = localException2.startsWith("mqqtribe://");
     boolean bool7 = localException2.startsWith("mqqverifycode://");
     boolean bool8 = localException2.startsWith("mqqdevlock://");
-    label3395:
+    label3552:
     int k;
-    label3420:
+    label3577:
     boolean bool9;
     boolean bool10;
     if ((localException2.startsWith("mqqapi://im/chat")) && (localException2.contains("chat_type=crm")) && (localException2.contains("kfnick=")))
     {
       i = 1;
       if ((!localException2.startsWith("mqqapi://card/show_pslcard")) || (!localException2.contains("card_type=troopmember"))) {
-        break label3555;
+        break label3712;
       }
       j = 1;
       if ((!localException2.startsWith("mqqapi://qstory")) || (!localException2.contains("topicid="))) {
-        break label3561;
+        break label3718;
       }
       k = 1;
       bool9 = localException2.startsWith("mqqapi://qqcomic/");
       bool10 = a(localException2);
       boolean bool11 = localException2.startsWith("mqqconferenceflyticket://");
       if ((localException2.startsWith("mqqopensdkapi://bizAgent/")) || (bool2) || (bool3) || (bool4) || (bool6) || (bool1) || (j != 0) || (bool10) || (bool9) || (k != 0)) {
-        break label3567;
+        break label3724;
       }
       j = 1;
-      label3506:
+      label3663:
       paramString = localException2;
       if (j == 0) {
-        break label3579;
+        break label3736;
       }
       if ((bool2) || (i != 0) || (bool11)) {
-        break label3573;
+        break label3730;
       }
     }
-    label3555:
-    label3561:
-    label3567:
-    label3573:
+    label3712:
+    label3718:
+    label3724:
+    label3730:
     for (bool1 = true;; bool1 = false)
     {
       localObject1 = a(localException2, bool1);
       paramString = (String)localObject1;
       if (localObject1 != null) {
-        break label3579;
+        break label3736;
       }
       return null;
       i = 0;
       break;
       j = 0;
-      break label3395;
+      break label3552;
       k = 0;
-      break label3420;
+      break label3577;
       j = 0;
-      break label3506;
+      break label3663;
     }
-    label3579:
+    label3736:
     if ((bool5) || (bool2) || (bool3) || (bool4) || (bool6) || (bool7) || (bool8) || (bool10) || (bool9)) {}
     for (Object localObject1 = a(paramString, "?"); localObject1.length != 2; localObject1 = paramString.split("\\?")) {
       return null;
@@ -787,7 +816,7 @@ public class JumpParser
       {
         paramQQAppInterface = paramQQAppInterface.split("/");
         if (paramQQAppInterface.length == 2) {
-          break label4129;
+          break label4285;
         }
         return null;
         bool1 = false;
@@ -852,7 +881,7 @@ public class JumpParser
           }
         }
       }
-      label4129:
+      label4285:
       paramContext.a = paramString;
       paramContext.b = paramQQAppInterface[0];
       paramContext.c = paramQQAppInterface[1];
@@ -885,7 +914,7 @@ public class JumpParser
         if (paramString.length == 2)
         {
           if (!bool4) {
-            break label4296;
+            break label4452;
           }
           paramContext.a(paramString[0], a(paramString[1], false));
         }
@@ -893,7 +922,7 @@ public class JumpParser
         {
           i += 1;
           break;
-          label4296:
+          label4452:
           paramContext.a(paramString[0], paramString[1]);
         }
       }

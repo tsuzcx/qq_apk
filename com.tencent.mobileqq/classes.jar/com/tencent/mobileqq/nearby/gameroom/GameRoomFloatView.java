@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import aenn;
-import aeno;
-import aenp;
-import aenq;
-import aenr;
+import aevy;
+import aevz;
+import aewa;
+import aewb;
+import aewc;
 import android.animation.ValueAnimator;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -55,8 +55,8 @@ public class GameRoomFloatView
   
   public GameRoomFloatView(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver = new aenq(this);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aenr(this);
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver = new aewb(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aewc(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(this);
@@ -85,12 +85,12 @@ public class GameRoomFloatView
     for (;;)
     {
       ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { localLayoutParams.x, j });
-      localValueAnimator.addUpdateListener(new aeno(this, localLayoutParams, localValueAnimator));
+      localValueAnimator.addUpdateListener(new aevz(this, localLayoutParams, localValueAnimator));
       localValueAnimator.setDuration(200L);
       localValueAnimator.setTarget(this.jdField_a_of_type_AndroidWidgetTextView);
       localValueAnimator.start();
       localValueAnimator = ValueAnimator.ofInt(new int[] { localLayoutParams.y, i });
-      localValueAnimator.addUpdateListener(new aenp(this, localLayoutParams, localValueAnimator));
+      localValueAnimator.addUpdateListener(new aewa(this, localLayoutParams, localValueAnimator));
       localValueAnimator.setDuration(200L);
       localValueAnimator.setTarget(this.jdField_a_of_type_AndroidWidgetTextView);
       localValueAnimator.start();
@@ -167,7 +167,7 @@ public class GameRoomFloatView
       ((WindowManager.LayoutParams)localObject).gravity = 51;
       ((WindowManager.LayoutParams)localObject).x = (i - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 62.0F) - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F));
       ((WindowManager.LayoutParams)localObject).y = ((int)((j - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 67.0F)) * 0.25F));
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130840324);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130840339);
       this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
       this.jdField_b_of_type_Boolean = true;
       if (paramInt1 == 0) {
@@ -175,7 +175,7 @@ public class GameRoomFloatView
       }
       for (;;)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aenn(this, paramInt1, paramLong, paramString2, paramString1, paramInt2));
+        this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aevy(this, paramInt1, paramLong, paramString2, paramString1, paramInt2));
         ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver);
         return;
         this.jdField_a_of_type_AndroidWidgetTextView.setText("游戏中");

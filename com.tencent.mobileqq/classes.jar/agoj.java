@@ -1,28 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
-class agoj
-  implements DialogInterface.OnClickListener
+public class agoj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  agoj(agof paramagof, View paramView, PersonalityLabelInfo paramPersonalityLabelInfo) {}
+  public agoj(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    paramDialogInterface = (agoe)this.jdField_a_of_type_AndroidViewView.getTag(2131362740);
-    if (paramDialogInterface != null) {
-      this.jdField_a_of_type_Agof.a.a(paramDialogInterface.e, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
-    }
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agoj
  * JD-Core Version:    0.7.0.1
  */

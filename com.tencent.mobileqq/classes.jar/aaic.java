@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable;
 
 public class aaic
   implements Runnable
 {
-  public aaic(ARReport paramARReport, long paramLong) {}
+  public aaic(MultiFragmentAnimRenderable paramMultiFragmentAnimRenderable, ARBaseRender paramARBaseRender) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "SensorTrackManagerInit", true, 0L, 0L, localHashMap, "");
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a();
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.b();
   }
 }
 

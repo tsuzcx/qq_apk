@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
 
 public class ailb
-  implements Action.OnActionEndListener
+  implements Runnable
 {
-  public ailb(SceneBuilder paramSceneBuilder) {}
+  public ailb(UnifiedMonitor paramUnifiedMonitor) {}
   
-  public void a()
+  public void run()
   {
-    SceneBuilder.a(this.a).a();
+    DropFrameMonitor.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ailb
  * JD-Core Version:    0.7.0.1
  */

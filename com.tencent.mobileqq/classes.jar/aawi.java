@@ -1,66 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.AddressCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import java.util.ArrayList;
 
-public final class aawi
-  implements ArkAppLocationManager.AddressCallback
+public class aawi
+  implements Runnable
 {
-  public aawi(ArkAppLocationManager.ArkGetLocationCallback paramArkGetLocationCallback) {}
+  public aawi(ArkAppModuleReg.ModuleQQ paramModuleQQ, int paramInt, ArrayList paramArrayList) {}
   
-  public void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    double d2;
-    double d1;
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      if (!TextUtils.isEmpty(paramSosoLbsInfo.a.e)) {
-        ArkMessageServerLogic.jdField_a_of_type_JavaLangString = paramSosoLbsInfo.a.e;
-      }
-      if ((Math.abs(paramSosoLbsInfo.a.c) <= 1.0E-006D) || (Math.abs(paramSosoLbsInfo.a.d) <= 1.0E-006D)) {
-        break label193;
-      }
-      d2 = paramSosoLbsInfo.a.c;
-      d1 = paramSosoLbsInfo.a.d;
-    }
-    for (;;)
-    {
-      if ((Math.abs(d2) > 1.0E-006D) && (Math.abs(d1) > 1.0E-006D))
-      {
-        ArkMessageServerLogic.jdField_a_of_type_Double = d2;
-        ArkMessageServerLogic.b = d1;
-      }
-      if (!TextUtils.isEmpty(ArkMessageServerLogic.jdField_a_of_type_JavaLangString))
-      {
-        ArkMessageServerLogic.b();
-        if (this.a != null) {
-          this.a.a(ArkMessageServerLogic.jdField_a_of_type_JavaLangString, ArkMessageServerLogic.jdField_a_of_type_Double, ArkMessageServerLogic.b);
-        }
-        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("getCurrentAddress, city=%s, lat=%f, lon=%f", new Object[] { ArkMessageServerLogic.jdField_a_of_type_JavaLangString, Double.valueOf(ArkMessageServerLogic.jdField_a_of_type_Double), Double.valueOf(ArkMessageServerLogic.b) }));
-        return;
-        label193:
-        if ((Math.abs(paramSosoLbsInfo.a.jdField_a_of_type_Double) > 1.0E-006D) && (Math.abs(paramSosoLbsInfo.a.b) > 1.0E-006D))
-        {
-          paramSosoLbsInfo = ArkAppEventObserverManager.a(paramSosoLbsInfo.a.b, paramSosoLbsInfo.a.jdField_a_of_type_Double);
-          d1 = paramSosoLbsInfo[0];
-          d2 = paramSosoLbsInfo[1];
-        }
-      }
-      else
-      {
-        if (this.a != null) {
-          this.a.a("", 0.0D, 0.0D);
-        }
-        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", String.format("getCurrentAddress,location get failed", new Object[0]));
-        return;
-      }
-      d1 = 0.0D;
-      d2 = 0.0D;
-    }
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    Intent localIntent = new Intent(localBaseActivity, TroopAvatarWallPreviewActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("index", this.jdField_a_of_type_Int);
+    localBundle.putStringArrayList("seqNum", this.jdField_a_of_type_JavaUtilArrayList);
+    localBundle.putBoolean("needBottomBar", false);
+    localBundle.putBoolean("IS_EDIT", false);
+    localBundle.putBoolean("is_use_path", true);
+    localBundle.putBoolean("is_show_action", true);
+    localBundle.putBoolean("is_not_show_index", false);
+    localBundle.putBoolean("is_index_show_bottom", true);
+    localIntent.putExtras(localBundle);
+    localBaseActivity.startActivity(localIntent);
   }
 }
 

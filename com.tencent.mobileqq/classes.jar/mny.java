@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.RecommendAndAd;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.ResponseCallback;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public final class mny
-  implements FastWebRequestUtil.ResponseCallback
+public class mny
+  implements Runnable
 {
-  public mny(FastWebRequestUtil.RecommendAndAd paramRecommendAndAd) {}
+  public mny(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void a(boolean paramBoolean, List paramList)
+  public void run()
   {
-    this.a.a(paramList);
+    ReadInJoyGlobalReporter.a().a(this.a.a, NetConnInfoCenter.getServerTimeMillis(), ReadInJoyUtils.e(), ReadInJoyUtils.d);
   }
 }
 

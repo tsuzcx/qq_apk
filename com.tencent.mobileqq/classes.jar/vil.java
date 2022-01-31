@@ -1,54 +1,35 @@
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder;
 
 public class vil
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public vil(TextItemBuilder paramTextItemBuilder) {}
+  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new vim(this));
+  View jdField_a_of_type_AndroidViewView = null;
+  final OnLongClickAndTouchListener jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener;
   
-  public void onClick(View paramView)
+  public vil(QQStoryCommentItemBuilder paramQQStoryCommentItemBuilder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    Object localObject = AIOUtils.a(paramView);
-    if (!(localObject instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener = paramOnLongClickAndTouchListener;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
     }
-    do
+    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
     {
-      do
-      {
-        do
-        {
-          return;
-          localObject = (MessageForText)localObject;
-        } while (TextItemBuilder.a(this.a));
-        if (((MessageForText)localObject).msgtype == -1003)
-        {
-          AIOUtils.m = true;
-          localObject = PkgTools.a(((MessageForText)localObject).action);
-          localObject = JumpParser.a(this.a.a, paramView.getContext(), (String)localObject);
-          if (localObject != null) {
-            ((JumpAction)localObject).b();
-          }
-        }
-      } while (!(paramView instanceof ETTextView));
-      paramView = (ETTextView)paramView;
-      if (paramView.c())
-      {
-        paramView.a(true);
-        return;
-      }
-    } while (!paramView.b());
-    paramView.b(true);
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+      return true;
+    }
+    this.jdField_a_of_type_AndroidViewView = null;
+    return false;
   }
 }
 

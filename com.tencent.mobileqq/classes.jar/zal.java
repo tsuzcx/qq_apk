@@ -1,31 +1,72 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.app.ShakeListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class zal
-  extends ShakeListener
+public final class zal
+  extends DownloadListener
 {
-  public void a()
+  public zal(File paramFile) {}
+  
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity == null)
+    super.onDone(paramDownloadTask);
+    if ((3 == paramDownloadTask.a()) && (this.a.exists())) {}
+    try
     {
-      ScreenShot.a("MyShakeListener - top activity is null");
+      ZipUtils.a(this.a, this.a.getParent() + File.separator);
+      label166:
       return;
     }
-    if (!localBaseActivity.mCurrentActivityShakeFlag)
+    catch (Exception paramDownloadTask)
     {
-      ScreenShot.a("MyShakeListener - shake flag is false");
-      return;
+      paramDownloadTask = paramDownloadTask;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + paramDownloadTask.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception paramDownloadTask)
+      {
+        return;
+      }
     }
-    ThreadManager.getSubThreadHandler().post(new zam(this, localBaseActivity));
+    catch (OutOfMemoryError paramDownloadTask)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + paramDownloadTask.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception paramDownloadTask)
+      {
+        return;
+      }
+    }
+    finally
+    {
+      try
+      {
+        this.a.delete();
+        throw paramDownloadTask;
+      }
+      catch (Exception localException)
+      {
+        break label166;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zal
  * JD-Core Version:    0.7.0.1
  */

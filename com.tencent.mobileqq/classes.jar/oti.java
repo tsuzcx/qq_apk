@@ -1,21 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import android.content.DialogInterface.OnClickListener;
 
-public class oti
-  implements DialogInterface.OnCancelListener
+public final class oti
+  implements DialogInterface.OnClickListener
 {
-  public oti(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.d) {
-      return;
-    }
-    this.a.h = -1;
-    this.a.d = true;
-    QRDisplayActivity.a(this.a).b();
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerRecallListener;
 
-class acix
-  implements Runnable
+public class acix
+  implements EmojiStickerManager.StickerRecallListener
 {
-  acix(aciw paramaciw) {}
+  public acix(MessengerService paramMessengerService) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      ExtendFriendSquareFragment.a(this.a.a).a(0, true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ExtendFriendSquareFragment", 1, "onScrolled fail.", localException);
+    if (this.a.a != null) {
+      EmojiStickerManager.a().a(this.a.a, paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acix
  * JD-Core Version:    0.7.0.1
  */

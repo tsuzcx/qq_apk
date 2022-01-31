@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import aduv;
-import aduw;
-import adux;
-import aduy;
-import aduz;
-import adva;
+import aede;
+import aedf;
+import aedg;
+import aedh;
+import aedi;
+import aedj;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -48,6 +48,8 @@ public class NowLoadingActivity
   public boolean d = false;
   boolean e = false;
   boolean f = false;
+  boolean g = false;
+  boolean h = false;
   
   public NowLoadingActivity()
   {
@@ -63,8 +65,8 @@ public class NowLoadingActivity
     if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo != null)
     {
       localNowProxy.a.a(this);
-      NowPerfUtil.e();
-      if (!localNowProxy.a.a(this.f))
+      NowPerfUtil.b();
+      if (!localNowProxy.a.a(this.h))
       {
         QLog.e("XProxy|NowLoadingActivity", 1, "NowLoadingActivity ,NowPlugin mPlugininfo为空，直接finish ");
         localNowProxy.a.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.a("enter_exception", "1", "", "", "");
@@ -97,19 +99,37 @@ public class NowLoadingActivity
     if (jdField_c_of_type_Boolean) {
       a();
     }
+    NowProxy localNowProxy;
     do
     {
       return;
-      this.f = ((NowProxy)((QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null)).getManager(181)).a.jdField_a_of_type_ComTencentTxproxyXPlugin.hasLocalPlugin();
+      localNowProxy = (NowProxy)((QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null)).getManager(181);
+      boolean bool2 = localNowProxy.a.jdField_a_of_type_ComTencentTxproxyXPlugin.hasLocalPlugin();
+      boolean bool1 = bool2;
+      if (this.e)
+      {
+        bool1 = bool2;
+        if (bool2)
+        {
+          bool1 = bool2;
+          if (!this.f)
+          {
+            localNowProxy.a.jdField_a_of_type_ComTencentTxproxyXPlugin.clearAllLocalData();
+            bool1 = false;
+          }
+        }
+      }
+      this.h = bool1;
       if (!NetworkUtil.g(this))
       {
         a("Live", -10002, "网络连接错误，请稍候再试!");
+        localNowProxy.a.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.a();
         return;
       }
       if (NetworkUtil.a(this)) {
-        break label178;
+        break label245;
       }
-      if ((NetworkUtil.a(this) == 1) || (this.f)) {
+      if ((NetworkUtil.a(this) == 1) || (this.h)) {
         break;
       }
       AlertDialog.Builder localBuilder = new AlertDialog.Builder(this);
@@ -124,6 +144,7 @@ public class NowLoadingActivity
     } while (isFinishing());
     try
     {
+      localNowProxy.a.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.d();
       this.jdField_a_of_type_AndroidAppAlertDialog.show();
       return;
     }
@@ -134,7 +155,7 @@ public class NowLoadingActivity
     }
     a();
     return;
-    label178:
+    label245:
     a();
   }
   
@@ -147,12 +168,12 @@ public class NowLoadingActivity
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    new Handler().postDelayed(new adva(this), 3000L);
+    new Handler().postDelayed(new aedj(this), 3000L);
   }
   
   public void a(String paramString, int paramInt)
   {
-    runOnUiThread(new aduz(this, paramInt));
+    runOnUiThread(new aedi(this, paramInt));
   }
   
   public void a(String paramString1, int paramInt, String paramString2)
@@ -172,13 +193,13 @@ public class NowLoadingActivity
     if (paramString2.equals("action.now.showloading"))
     {
       QLog.i("XProxy|NowLoadingActivity", 1, "Now插件已显示，NowLoadingActivity 销毁");
-      new Handler().postDelayed(new adux(this), 0L);
+      new Handler().postDelayed(new aedg(this), 0L);
     }
     while (!paramString2.equals("action.now.removeoutloading")) {
       return;
     }
     QLog.i("XProxy|NowLoadingActivity", 1, "收到广播action.now.removeoutloading");
-    new Handler().postDelayed(new aduy(this), 0L);
+    new Handler().postDelayed(new aedh(this), 0L);
   }
   
   public void b(String paramString)
@@ -200,10 +221,10 @@ public class NowLoadingActivity
   public void onBackPressed()
   {
     NowProxy localNowProxy = (NowProxy)((QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null)).getManager(181);
-    if (!this.e)
+    if (!this.g)
     {
       localNowProxy.a.a("nowloadingback");
-      this.e = true;
+      this.g = true;
     }
     finish();
   }
@@ -249,29 +270,31 @@ public class NowLoadingActivity
     QLog.i("XProxy|NowLoadingActivity", 1, "NowLoadingActivity  onCreate ");
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    setContentView(2130970791);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370201);
-    this.jdField_a_of_type_ComTencentBizUiRoundProgressBar = ((RoundProgressBar)findViewById(2131371922));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131371923));
+    setContentView(2130970808);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370210);
+    this.jdField_a_of_type_ComTencentBizUiRoundProgressBar = ((RoundProgressBar)findViewById(2131371930));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131371931));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
     paramBundle = getIntent().getExtras();
     paramBundle.setClassLoader(getClass().getClassLoader());
     this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = ((IVPluginInfo)paramBundle.getParcelable("plugininfo"));
-    paramBundle = (ImageView)findViewById(2131371670);
+    this.e = paramBundle.getBoolean("isPluginUpdate", false);
+    this.f = paramBundle.getBoolean("isSilentUpdateComplete", false);
+    paramBundle = (ImageView)findViewById(2131371668);
     try
     {
-      paramBundle.setImageDrawable(getResources().getDrawable(2130839545));
-      findViewById(2131371670).setVisibility(0);
+      paramBundle.setImageDrawable(getResources().getDrawable(2130839560));
+      findViewById(2131371668).setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371924));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370209));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371449));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371932));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370218));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371447));
       paramBundle = (NowProxy)((QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null)).getManager(181);
       if (paramBundle.a.a() == 3) {
         a("Live", 95);
       }
-      findViewById(2131371670).setOnClickListener(new aduv(this, paramBundle));
-      new Handler().postDelayed(new aduw(this, paramBundle), 10L);
+      findViewById(2131371668).setOnClickListener(new aede(this, paramBundle));
+      new Handler().postDelayed(new aedf(this, paramBundle), 10L);
       return;
     }
     catch (Throwable paramBundle)

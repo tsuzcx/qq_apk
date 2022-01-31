@@ -1,65 +1,69 @@
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.widget.CheckBox;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.XPanelContainer;
-import java.util.HashMap;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import cooperation.qzone.QZoneClickReport;
+import cooperation.qzone.QZoneClickReport.ReportInfo;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
 
-public class vuh
-  implements View.OnClickListener
+class vuh
+  implements Runnable
 {
-  public vuh(GameRoomChatPie paramGameRoomChatPie) {}
+  vuh(vug paramvug, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    HashMap localHashMap1 = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a().b();
-    HashMap localHashMap2 = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a().a();
-    if (paramView == this.a.n) {
-      if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getVisibility() != 0)
+    PhotoListPanel.a(this.jdField_a_of_type_Vug.a, this.jdField_a_of_type_Vug.a.findViewById(2131369487));
+    PhotoListPanel.a(this.jdField_a_of_type_Vug.a).setBackgroundResource(2130845887);
+    PhotoListPanel.a(this.jdField_a_of_type_Vug.a).setVisibility(0);
+    PhotoListPanel.a(this.jdField_a_of_type_Vug.a, (CheckBox)this.jdField_a_of_type_Vug.a.findViewById(2131370193));
+    PhotoListPanel.a(this.jdField_a_of_type_Vug.a, (TextView)this.jdField_a_of_type_Vug.a.findViewById(2131370195));
+    PhotoListPanel.b(this.jdField_a_of_type_Vug.a, (TextView)this.jdField_a_of_type_Vug.a.findViewById(2131370194));
+    PhotoListPanel.b(this.jdField_a_of_type_Vug.a, this.jdField_a_of_type_Vug.a.findViewById(2131370192));
+    PhotoListPanel.c(this.jdField_a_of_type_Vug.a, this.jdField_a_of_type_Vug.a.findViewById(2131370196));
+    PhotoListPanel.a(this.jdField_a_of_type_Vug.a).setOnClickListener(this.jdField_a_of_type_Vug.a);
+    PhotoListPanel.b(this.jdField_a_of_type_Vug.a).setOnClickListener(this.jdField_a_of_type_Vug.a);
+    PhotoListPanel.a(this.jdField_a_of_type_Vug.a).setOnClickListener(this.jdField_a_of_type_Vug.a);
+    PhotoListPanel.a(this.jdField_a_of_type_Vug.a).setOnClickListener(this.jdField_a_of_type_Vug.a);
+    PhotoListPanel.a(this.jdField_a_of_type_Vug.a, PhotoListPanel.a(this.jdField_a_of_type_Vug.a), PhotoListPanel.b(this.jdField_a_of_type_Vug.a), this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject = new LpReportInfo_pf00064(723, 1, 1);
+      LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
+      PhotoListPanel.a(this.jdField_a_of_type_Vug.a, "aio_sync_qzone", "operation_type", "panel_expose");
+    }
+    for (;;)
+    {
+      PhotoListPanel.a(this.jdField_a_of_type_Vug.a).setOnCheckedChangeListener(null);
+      PhotoListPanel.a(this.jdField_a_of_type_Vug.a).setChecked(this.b);
+      if (AppSetting.b)
       {
-        if (localHashMap1 != null) {
-          this.a.n.setImageDrawable((Drawable)localHashMap1.get("audioIcon"));
+        CheckBox localCheckBox = PhotoListPanel.a(this.jdField_a_of_type_Vug.a);
+        if (!this.jdField_a_of_type_Boolean) {
+          break;
         }
-        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
-        GameRoomChatPie.a(this.a).setVisibility(0);
-        this.a.j.setVisibility(4);
-        GameRoomChatPie.a(this.a).a(25);
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel != null) && (localHashMap2 != null)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.setBackgroundColor(((Integer)localHashMap2.get("quickWordBgColor")).intValue());
-        }
+        localObject = "同步上传至";
+        localCheckBox.setContentDescription((CharSequence)localObject);
       }
+      PhotoListPanel.a(this.jdField_a_of_type_Vug.a).setOnCheckedChangeListener(this.jdField_a_of_type_Vug.a);
+      PhotoListPanel.a(this.jdField_a_of_type_Vug.a).setOnClickListener(this.jdField_a_of_type_Vug.a);
+      this.jdField_a_of_type_Vug.a.h();
+      return;
+      localObject = new QZoneClickReport.ReportInfo();
+      ((QZoneClickReport.ReportInfo)localObject).a = Long.valueOf(this.jdField_a_of_type_Vug.a.a).longValue();
+      ((QZoneClickReport.ReportInfo)localObject).c = "459";
+      ((QZoneClickReport.ReportInfo)localObject).d = "1";
+      QZoneClickReport.report(this.jdField_a_of_type_Vug.a.a, (QZoneClickReport.ReportInfo)localObject, true);
     }
-    while (paramView != this.a.o)
+    StringBuilder localStringBuilder = new StringBuilder().append("上传到").append(PhotoListPanel.b(this.jdField_a_of_type_Vug.a)).append(" ");
+    if (this.b) {}
+    for (Object localObject = "已选中";; localObject = "未选中")
     {
-      return;
-      if (localHashMap1 != null) {
-        this.a.n.setImageDrawable((Drawable)localHashMap1.get("textIcon"));
-      }
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(4);
-      GameRoomChatPie.b(this.a).setVisibility(4);
-      this.a.j.setVisibility(0);
-      this.a.ay();
-      return;
+      localObject = (String)localObject;
+      break;
     }
-    if (GameRoomChatPie.b(this.a).a() != 3)
-    {
-      this.a.a(Integer.valueOf(3));
-      if (localHashMap1 != null) {
-        this.a.n.setImageDrawable((Drawable)localHashMap1.get("audioIcon"));
-      }
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
-      GameRoomChatPie.c(this.a).setVisibility(0);
-      this.a.j.setVisibility(4);
-      return;
-    }
-    this.a.ay();
   }
 }
 

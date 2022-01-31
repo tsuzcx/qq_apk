@@ -1,38 +1,52 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.network.request.GetTagListRequest;
-import com.tencent.biz.qqstory.network.response.GetTagListResponse;
+import android.os.Handler;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import com.tencent.biz.qqstory.takevideo.tag.IEditVideoTagView;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
+import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.ShortVideoExceptionReporter;
 
-public class olz
-  extends CmdTaskManger.UIThreadCallback
+class olz
+  implements HWEncodeListener
 {
-  public olz(EditVideoTagPresenter paramEditVideoTagPresenter) {}
+  olz(oly paramoly, HWEditLocalVideoPlayer.Mp4VideoFragmentInfo paramMp4VideoFragmentInfo) {}
   
-  public void a(@NonNull GetTagListRequest paramGetTagListRequest, @Nullable GetTagListResponse paramGetTagListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    SLog.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetTagListResponse != null))
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.a = paramString;
+    SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "onEncodeFinish  iframe file filePath = " + paramString);
+    HWEditLocalVideoPlayer.a(this.jdField_a_of_type_Oly.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer).post(new oma(this));
+  }
+  
+  public void a_(int paramInt, Throwable paramThrowable)
+  {
+    SLog.e("Q.qqstory.record.HWEditLocalVideoPlayer", "encode error errorCode = " + paramInt + " Exception = " + paramThrowable);
+    if (this.jdField_a_of_type_Oly.b == 0)
     {
-      SLog.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramGetTagListResponse.toString());
-      EditVideoTagPresenter.a(this.a).addAll(paramGetTagListResponse.jdField_a_of_type_JavaUtilList);
-      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.jdField_a_of_type_JavaLangString);
-      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.b);
-      ThreadManager.executeOnSubThread(new oma(this));
-    }
-    for (;;)
-    {
-      EditVideoTagPresenter.a(this.a).b(paramErrorMessage.errorCode, EditVideoTagPresenter.a(this.a), this.a.a());
+      this.jdField_a_of_type_Oly.b = 1;
+      this.jdField_a_of_type_Oly.jdField_a_of_type_Int = 3;
+      SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Reencode i frame video by mIFrameInterval = " + this.jdField_a_of_type_Oly.b + " mFrameRate = " + this.jdField_a_of_type_Oly.jdField_a_of_type_Int);
+      HWEditLocalVideoPlayer.a(this.jdField_a_of_type_Oly.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer).postDelayed(this.jdField_a_of_type_Oly, 1000L);
       return;
-      SLog.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
+    }
+    SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Reencode i frame video failed");
+    try
+    {
+      ShortVideoExceptionReporter.a(paramThrowable);
+      HWEditLocalVideoPlayer.a(this.jdField_a_of_type_Oly.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer).post(new omb(this));
+      return;
+    }
+    catch (Throwable paramThrowable)
+    {
+      for (;;)
+      {
+        paramThrowable.printStackTrace();
+      }
     }
   }
+  
+  public void b() {}
 }
 
 

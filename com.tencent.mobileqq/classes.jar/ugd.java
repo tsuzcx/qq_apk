@@ -1,19 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
 import com.tencent.mobileqq.statistics.ReportController;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
 public class ugd
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ugd(UpgradeActivity paramUpgradeActivity) {}
+  public ugd(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    UpgradeActivity.a(this.a, true);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, UpgradeConstants.b(), String.valueOf(0), UpgradeController.a(), "");
+    paramView = (TroopMemberListActivity.ATroopMember)paramView.getTag();
+    if (paramView != null)
+    {
+      QZoneHelper.a(this.a, QZoneHelper.UserInfo.a(), paramView.a, 0, 0, 0);
+      ReportController.b(this.a.app, "dc00899", "Grp_Qzone", "", "mber_list", "clk_qzone", 0, 0, this.a.b, "", "", "");
+    }
   }
 }
 

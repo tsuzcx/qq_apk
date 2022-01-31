@@ -1,27 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
-import org.json.JSONException;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ajhf
-  implements View.OnClickListener
+  extends MessageObserver
 {
-  public ajhf(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public ajhf(TroopAioKeywordTipBar paramTroopAioKeywordTipBar) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    InputMethodUtil.b(paramView);
-    try
+    if ((!TroopAioKeywordTipBar.a(this.a)) || (TroopAioKeywordTipBar.a(this.a) == null)) {}
+    for (;;)
     {
-      PublishHomeWorkFragment.c(this.a);
       return;
-    }
-    catch (JSONException paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", paramView);
+      if (paramList == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAioKeywordTipBar", 2, "msgList == null is true");
+        }
+      }
+      else
+      {
+        paramList = paramList.iterator();
+        do
+        {
+          if (!paramList.hasNext()) {
+            break;
+          }
+        } while (((MessageRecord)paramList.next()).uniseq != TroopAioKeywordTipBar.a(this.a).uniseq);
+        for (int i = 1; i != 0; i = 0)
+        {
+          ThreadManager.getUIHandler().post(new ajhg(this));
+          return;
+        }
+      }
     }
   }
 }

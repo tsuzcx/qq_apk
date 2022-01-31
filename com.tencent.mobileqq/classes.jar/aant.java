@@ -1,14 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aant
-  implements DialogInterface.OnClickListener
+public class aant
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public aant(AREngine paramAREngine) {}
+  
+  public void run()
+  {
+    QLog.i("AREngine_AREngine", 1, "uninit run. mIsInited = " + AREngine.e(this.a));
+    AREngine.b(this.a);
+    AREngine.b(this.a, 0);
+    AREngine.b(this.a, false);
+    QLog.i("AREngine_AREngine", 1, "uninit end. mIsInited = " + AREngine.e(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aant
  * JD-Core Version:    0.7.0.1
  */

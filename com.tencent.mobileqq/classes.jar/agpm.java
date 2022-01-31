@@ -1,15 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.profile.ProfileCardWebviewPlugin;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.pic.PreDownloadStrategyBeta;
 
 public class agpm
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public agpm(ProfileCardWebviewPlugin paramProfileCardWebviewPlugin) {}
+  public agpm(PicPreDownloader paramPicPreDownloader, QQAppInterface paramQQAppInterface) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    ProfileCardWebviewPlugin.a(this.a, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

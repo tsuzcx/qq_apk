@@ -3,12 +3,12 @@ package com.tencent.component.network.downloader;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import pji;
+import poa;
 
 public final class DownloadResult$Process
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pji();
+  public static final Parcelable.Creator CREATOR = new poa();
   public long a;
   public long b;
   public long c;

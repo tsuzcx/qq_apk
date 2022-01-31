@@ -9,8 +9,8 @@ import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.ArrayList;
 import java.util.List;
-import oqv;
-import oqw;
+import ovk;
+import ovl;
 
 public class InnerListView
   extends LinearLayout
@@ -76,8 +76,8 @@ public class InnerListView
             if (((View)localObject).getParent() == null) {
               addView((View)localObject, getChildCount() - a());
             }
-            ((View)localObject).setOnClickListener(new oqv(this, i));
-            ((View)localObject).setOnLongClickListener(new oqw(this, i));
+            ((View)localObject).setOnClickListener(new ovk(this, i));
+            ((View)localObject).setOnLongClickListener(new ovl(this, i));
             i += 1;
             break;
             localObject = new BaseViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListViewAdapter.a(), this, false));

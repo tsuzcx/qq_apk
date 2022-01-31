@@ -1,32 +1,22 @@
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import com.tencent.open.downloadnew.common.PackageInstallReceiver;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.CardContainer;
+import com.tencent.qphone.base.util.QLog;
 
 public class aljh
-  implements Runnable
+  extends URLDrawableDownListener.Adapter
 {
-  public aljh(PackageInstallReceiver paramPackageInstallReceiver, String paramString1, String paramString2) {}
+  public aljh(CardContainer paramCardContainer) {}
   
-  public void run()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED >> " + this.jdField_a_of_type_JavaLangString);
-    DownloadInfo localDownloadInfo = DownloadDBHelper.a().a(this.b);
-    if (localDownloadInfo != null)
-    {
-      LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED info != null>> " + localDownloadInfo.toString() + " " + localDownloadInfo.b + " " + localDownloadInfo.d);
-      DownloadManager.a().d(localDownloadInfo);
-      AppCircleReportManager.a().a(101, localDownloadInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("CardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
     }
-    for (;;)
-    {
-      DownloadManager.a().a(6, localDownloadInfo);
-      return;
-      localDownloadInfo = new DownloadInfo("", this.b);
-      LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_ADDED info == null>> " + localDownloadInfo.toString());
-    }
+    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
+    this.a.a.setVisibility(8);
   }
 }
 

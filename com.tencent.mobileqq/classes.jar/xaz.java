@@ -1,30 +1,52 @@
-import Wallet.WalletSkinRsp;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.PhoneUnityManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 class xaz
-  implements PreloadManager.OnGetPathListener
+  implements DialogInterface.OnClickListener
 {
-  xaz(xay paramxay, String paramString) {}
+  xaz(xax paramxax) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletSkinHandler", 2, "setWalletSkin OnGetPathListener:" + paramInt + "|" + paramPathResult);
+    if (this.a.a.jdField_b_of_type_Int == 2) {
+      ReportController.b(this.a.a.app, "CliOper", "", "", "0X8005B8A", "0X8005B8A", 1, 0, "", "", "", "");
     }
-    if ((paramInt != 0) || (TextUtils.isEmpty(paramPathResult.folderPath)))
+    for (;;)
     {
-      QWalletSkinHandler.a(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
+      paramDialogInterface.dismiss();
+      if (NetworkUtil.d(this.a.a)) {
+        break;
+      }
+      this.a.a.b(2131434629);
+      return;
+      if (this.a.a.jdField_b_of_type_Int == 6) {
+        ReportController.b(this.a.a.app, "CliOper", "", "", "0X8005B8A", "0X8005B8A", 2, 0, "", "", "", "");
+      } else if (this.a.a.jdField_b_of_type_Int == 7) {
+        ReportController.b(this.a.a.app, "CliOper", "", "", "0X8005B8A", "0X8005B8A", 3, 0, "", "", "", "");
+      }
+    }
+    paramDialogInterface = this.a.a.a.a();
+    if ((paramDialogInterface == null) || (paramDialogInterface.nationCode == null) || (paramDialogInterface.mobileNo == null))
+    {
+      this.a.a.setResult(0);
+      this.a.a.finish();
       return;
     }
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xay.jdField_a_of_type_WalletWalletSkinRsp.skinID);
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xay.jdField_a_of_type_WalletWalletSkinRsp.zipUrl);
-    QWalletSkinHandler.b(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xay.jdField_a_of_type_WalletWalletSkinRsp.zipMd5);
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xay.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler);
+    if (this.a.a.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
+    {
+      this.a.a.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new xba(this);
+      this.a.a.app.registObserver(this.a.a.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+    }
+    PhoneUnityManager localPhoneUnityManager = (PhoneUnityManager)this.a.a.app.getManager(101);
+    this.a.a.a.b(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
+    this.a.a.a(2131434469, 0L, true);
   }
 }
 

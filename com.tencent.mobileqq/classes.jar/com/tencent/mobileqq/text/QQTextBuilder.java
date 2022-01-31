@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.text;
 
-import ains;
+import aisv;
 import android.text.Editable.Factory;
 import android.text.SpannableStringBuilder;
 import com.tencent.mobileqq.emosm.EmosmUtils;
@@ -15,7 +15,7 @@ public class QQTextBuilder
   
   static
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new ains();
+    jdField_a_of_type_AndroidTextEditable$Factory = new aisv();
   }
   
   public QQTextBuilder(CharSequence paramCharSequence, int paramInt)
@@ -95,7 +95,6 @@ public class QQTextBuilder
     catch (IndexOutOfBoundsException paramArrayOfChar)
     {
       QLog.e("QQTextBuilder", 1, "text:" + a());
-      throw paramArrayOfChar;
     }
   }
   
@@ -282,7 +281,7 @@ public class QQTextBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQTextBuilder
  * JD-Core Version:    0.7.0.1
  */

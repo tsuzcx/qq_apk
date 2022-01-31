@@ -1,17 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
-import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import java.util.List;
 
 public class lti
-  implements KandianPopupWindow.OnUninterestConfirmListener
+  implements Runnable
 {
-  public lti(FeedItemCell paramFeedItemCell) {}
+  public lti(ArticleInfoModule paramArticleInfoModule, boolean paramBoolean, int paramInt, List paramList) {}
   
-  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
+  public void run()
   {
-    FeedItemCell.a(this.a, (IReadInJoyModel)this.a.a, paramInt, paramArrayList, paramObject);
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
+    List localList = ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_JavaUtilList);
+    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_Int, localList);
   }
 }
 

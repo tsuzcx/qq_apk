@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amtl;
+import anaw;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
@@ -84,7 +84,7 @@ public class QzoneVideoSoDownloadModule
           QLog.e("QzoneVideoSoDownloadModule", 1, "receiver == null");
           return EIPCResult.createResult(-1, null);
         }
-        ShortVideoResourceManager.a((QQAppInterface)localObject, new amtl(this, (QQAppInterface)localObject, paramString));
+        ShortVideoResourceManager.a((QQAppInterface)localObject, new anaw(this, (QQAppInterface)localObject, paramString));
         return EIPCResult.createResult(0, new Bundle());
       }
       return EIPCResult.createResult(-1, null);

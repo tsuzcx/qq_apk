@@ -298,7 +298,7 @@ public class LebaUtils
   
   public static int c(int paramInt)
   {
-    int i = 2131493444;
+    int i = 2131493446;
     switch (paramInt)
     {
     default: 
@@ -321,15 +321,15 @@ public class LebaUtils
       default: 
         return 2131492971;
       case 1: 
-        return 2131493445;
+        return 2131493447;
       }
-      return 2131493445;
+      return 2131493447;
     case 3: 
       paramInt = i;
       switch (a)
       {
       }
-      for (paramInt = 2131492971;; paramInt = 2131494267) {
+      for (paramInt = 2131492971;; paramInt = 2131494273) {
         return paramInt;
       }
     }
@@ -339,7 +339,7 @@ public class LebaUtils
     default: 
       return 2131492971;
     }
-    return 2131494219;
+    return 2131494225;
   }
   
   public static int d(int paramInt)
@@ -347,7 +347,7 @@ public class LebaUtils
     switch (a)
     {
     }
-    return 2130840610;
+    return 2130840625;
   }
 }
 

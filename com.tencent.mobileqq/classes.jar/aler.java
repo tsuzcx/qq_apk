@@ -1,102 +1,46 @@
-import com.tencent.mobileqq.intervideo.now.NowUtil;
-import com.tencent.open.appcommon.now.download.DownloadCenterImpl;
-import com.tencent.open.appcommon.now.download.IDownloadCallback;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.open.downloadnew.DownloadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class aler
-  implements DownloadListener
+  extends Handler
 {
-  public aler(DownloadCenterImpl paramDownloadCenterImpl) {}
+  public aler(TabBarView paramTabBarView) {}
   
-  public void a(DownloadInfo paramDownloadInfo)
+  public void handleMessage(Message paramMessage)
   {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).a(paramDownloadInfo);
-    }
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).a(paramDownloadInfo, paramInt1, paramString, paramInt2);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).a(paramString1, paramString2);
-    }
-  }
-  
-  public void a(List paramList)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).a(paramList);
-    }
-  }
-  
-  public void b(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).b(paramDownloadInfo);
-    }
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).b(paramString1, paramString2);
-    }
-  }
-  
-  public void c(DownloadInfo paramDownloadInfo)
-  {
-    if (NowUtil.a(paramDownloadInfo.k, paramDownloadInfo.b, paramDownloadInfo.d))
+    switch (paramMessage.what)
     {
-      if (!NowUtil.b().equals(paramDownloadInfo.k))
+    default: 
+      return;
+    case 0: 
+      TabBarView.a(this.a, 0.0F);
+      TabBarView.a(this.a, (float)(TabBarView.a(this.a) + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (TabBarView.a(this.a) < 1.0F)
       {
-        NowUtil.a(paramDownloadInfo.k);
-        paramDownloadInfo.k = NowUtil.b();
+        TabBarView.a(this.a, (float)(TabBarView.a(this.a) + 0.1D));
+        this.a.invalidate();
+        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+        return;
       }
-      DownloadManager.a().e(paramDownloadInfo);
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
+      return;
     }
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).c(paramDownloadInfo);
-    }
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).c(paramString1, paramString2);
-    }
-  }
-  
-  public void d(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).d(paramDownloadInfo);
-    }
+    TabBarView.a(this.a, this.a.h, TabBarView.a(this.a));
+    TabBarView.a(this.a, 1.0F);
+    TabBarView.b(this.a, this.a.h, TabBarView.a(this.a));
+    this.a.h = TabBarView.a(this.a);
+    this.a.invalidate();
+    TabBarView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aler
  * JD-Core Version:    0.7.0.1
  */

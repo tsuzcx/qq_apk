@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.qipc;
 
-import agvn;
-import agvo;
+import ahaa;
+import ahab;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -25,10 +25,10 @@ public class QIPCEnvironmentInit
     try
     {
       QIPCClientHelper.getInstance().adapterService = QIPCServiceEx.class;
-      QIPCClientHelper.setupThreadEngine(new agvn());
+      QIPCClientHelper.setupThreadEngine(new ahaa());
       if (TextUtils.equals(MobileQQ.processName, BaseApplicationImpl.sApplication.getApplicationContext().getPackageName()))
       {
-        QIPCServerHelper.getInstance().getServer().setModuleFactory(new agvo());
+        QIPCServerHelper.getInstance().getServer().setModuleFactory(new ahab());
         if (BaseApplicationImpl.useQIPCStart(MobileQQ.processName))
         {
           if (QLog.isColorLevel()) {

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="210.0dip" android:layout_height="140.0dip"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.armap.wealthgod.ARMapFlakeView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f05" android:layout_width="140.0dip" android:layout_height="60.0dip" android:layout_marginLeft="50.0dip" android:layout_marginTop="80.0dip" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f06" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212b7" android:layout_width="210.0dip" android:layout_height="77.5dip" android:layout_marginTop="19.5dip" android:layout_centerHorizontal="true" />
-    <com.tencent.mobileqq.armap.SdCardImageAnimView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f07" android:layout_width="150.0dip" android:layout_height="90.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <TextView android:textSize="12.0dip" android:textColor="#ff666666" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f08" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="38.0dip" android:maxLines="1" android:layout_alignParentTop="true" />
-    <TextView android:textSize="27.0dip" android:textColor="#ffff6262" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07e2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-4.5dip" android:maxLines="1" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1f08" />
-</RelativeLayout>
+    <com.tencent.mobileqq.armap.wealthgod.ARMapSplashView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eb4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eb5" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eb6" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212cc" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070c" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070d" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070e" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d070f" />
+    </LinearLayout>
+</FrameLayout>

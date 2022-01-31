@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.SelfInfoModule;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.magic.models.PFile;
 
-public class lrs
-  implements Runnable
+public final class lrs
+  implements Parcelable.Creator
 {
-  public lrs(SelfInfoModule paramSelfInfoModule, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
-  
-  public void run()
+  public PFile a(Parcel paramParcel)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean);
+    return new PFile(paramParcel);
+  }
+  
+  public PFile[] a(int paramInt)
+  {
+    return new PFile[paramInt];
   }
 }
 

@@ -1,27 +1,23 @@
-import android.app.Activity;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.biz.common.util.FileChooserHelper;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.PoiMapActivity;
 
 public class klw
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public klw(FileChooserHelper paramFileChooserHelper, Activity paramActivity, String paramString, ActionSheet paramActionSheet) {}
+  public klw(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    String str = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getText().toString();
+    paramView = str;
+    if (str == null) {
+      paramView = "";
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      FileChooserHelper.a(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      FileChooserHelper.a(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_cancel", paramView, "", "", "");
   }
 }
 

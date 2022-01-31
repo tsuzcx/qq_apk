@@ -1,47 +1,14 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
-public abstract class uvr
+public class uvr
+  implements Runnable
 {
-  protected int a;
-  protected String a;
-  protected vaj a;
-  protected int b;
-  protected String b;
+  public uvr(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  public int a()
+  public void run()
   {
-    return this.jdField_b_of_type_Int;
+    this.a.b();
   }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public abstract void a();
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(vaj paramvaj)
-  {
-    this.jdField_a_of_type_Vaj = paramvaj;
-  }
-  
-  public boolean a(String paramString)
-  {
-    a();
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = -1;
-    return true;
-  }
-  
-  public abstract boolean b(String paramString);
 }
 
 

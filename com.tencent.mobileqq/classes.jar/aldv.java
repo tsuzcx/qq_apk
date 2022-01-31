@@ -1,20 +1,34 @@
-import android.os.Bundle;
-import com.tencent.open.appcommon.js.BaseJsCallBack;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mapsdk.raster.model.GeoPoint;
+import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.mobileqq.widget.QQMapView.QQMapViewObserver;
 
 public class aldv
-  implements Runnable
+  extends Handler
 {
-  public aldv(BaseJsCallBack paramBaseJsCallBack, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2) {}
+  public aldv(QQMapView paramQQMapView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    MyAppApi.a().a(this.jdField_a_of_type_ComTencentOpenAppcommonJsBaseJsCallBack.activity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean, this.b);
+    GeoPoint localGeoPoint;
+    if ((paramMessage != null) && (paramMessage.obj != null) && (this.a.a != null)) {
+      localGeoPoint = (GeoPoint)paramMessage.obj;
+    }
+    switch (paramMessage.arg1)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.a.a(localGeoPoint);
+      return;
+    }
+    this.a.a.b(localGeoPoint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aldv
  * JD-Core Version:    0.7.0.1
  */

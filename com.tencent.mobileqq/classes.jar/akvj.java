@@ -1,16 +1,36 @@
 import android.view.View;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo.Holder;
-import com.tencent.mobileqq.widget.PAVideoView;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserSetting;
+import com.tencent.qphone.base.util.QLog;
 
 public class akvj
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public akvj(PAVideoView paramPAVideoView) {}
+  public akvj(WebViewFragment paramWebViewFragment) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.a != null)) {
-      this.a.a.a.setVisibility(8);
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserSetting.a("web_view_long_click", true))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
+      }
+      return true;
+    }
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserSetting.a("image_long_click", false))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
+      }
+      return false;
+    }
+    SwiftBrowserLongClickHandler localSwiftBrowserLongClickHandler = (SwiftBrowserLongClickHandler)this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider.a(8);
+    if ((localSwiftBrowserLongClickHandler != null) && (localSwiftBrowserLongClickHandler.a(paramView))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
 }

@@ -1,11 +1,11 @@
 package cooperation.qzone.patch;
 
-import amwt;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Log;
+import aneh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -119,7 +119,7 @@ public class QZonePatchService
   
   private static void a(int paramInt)
   {
-    LocalMultiProcConfig.putInt("V 7.6.3.3565p_ver", paramInt);
+    LocalMultiProcConfig.putInt("V 7.6.8.3615p_ver", paramInt);
   }
   
   private static void a(long paramLong)
@@ -706,7 +706,7 @@ public class QZonePatchService
     if (QzoneConfig.getInstance().getConfig("QZoneSetting", "isPatchEnable", 1) == 0) {
       return;
     }
-    ThreadManager.postDownLoadTask(new amwt(this, paramString1, paramString2), 8, null, false);
+    ThreadManager.postDownLoadTask(new aneh(this, paramString1, paramString2), 8, null, false);
   }
 }
 

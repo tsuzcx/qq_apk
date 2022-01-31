@@ -1,16 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import java.util.ArrayList;
 
 public class andv
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public andv(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin) {}
+  public andv(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt, ArrayList paramArrayList) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    QZoneCoverStoreJsPlugin.a(this.a, paramIntent);
+    RemoteHandleManager.a().a().a(QzoneWebMusicJsPlugin.access$200(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

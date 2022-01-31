@@ -1,66 +1,68 @@
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-import com.tencent.open.data.SharedPrefs;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.TicketManager;
-import mqq.observer.SSOAccountObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class aipp
-  extends aipl
+  implements Runnable
 {
-  private SSOAccountObserver a;
-  private AtomicBoolean c = new AtomicBoolean(false);
+  public aipp(SubAccountProtocManager paramSubAccountProtocManager) {}
   
-  public aipp(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
+  public void run()
   {
-    super(paramForwardSdkShareProcessor);
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new aipq(this);
-    this.jdField_a_of_type_JavaLangString = "GetSKeyStep";
-  }
-  
-  protected boolean a()
-  {
-    return (this.c.get()) && (!TextUtils.isEmpty(ForwardSdkShareProcessor.f(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)));
-  }
-  
-  protected void d()
-  {
-    String str = this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetSKeyStep|process|account=" + str + ",refresh=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
-    }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      f();
+    SharedPreferences localSharedPreferences = SubAccountProtocManager.a(this.a).getApp().getSharedPreferences("mobileQQ", 0);
+    long l2 = localSharedPreferences.getLong("subaccount_last_report_time_" + SubAccountProtocManager.a(this.a).getCurrentAccountUin(), 0L);
+    long l3 = System.currentTimeMillis() - 10L;
+    Object localObject = Calendar.getInstance();
+    Calendar localCalendar1 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(l2);
+    localCalendar1.add(5, 1);
+    localCalendar1.clear(10);
+    localCalendar1.clear(12);
+    localCalendar1.clear(13);
+    localCalendar1.clear(14);
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar2.add(5, 1);
+    localCalendar2.clear(10);
+    localCalendar2.clear(12);
+    localCalendar2.clear(13);
+    localCalendar2.clear(14);
+    long l1 = localCalendar2.getTimeInMillis() - l3 - 100L;
+    if (l1 < 0L) {
+      l1 = 86400000L;
     }
     for (;;)
     {
-      return;
-      if (!this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.c())
+      if ((l2 > 0L) && (((Calendar)localObject).after(localCalendar1)) && (SubAccountControll.a(SubAccountProtocManager.a(this.a))))
       {
-        QLog.d("Q.share.ForwardSdkShareProcessor", 1, "illegal app = " + this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a);
-        this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.b(9366, "illegal app");
-        c();
-        return;
-      }
-      int i;
-      if ((!ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor)) && (!SharedPrefs.a(str)))
-      {
-        str = ((TicketManager)this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.getManager(2)).getSkey(str);
-        if (!TextUtils.isEmpty(str))
-        {
-          i = 0;
-          ForwardSdkShareProcessor.d(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor, str);
-          this.c.set(true);
-          b();
+        boolean bool = SubAccountControll.b(SubAccountProtocManager.a(this.a));
+        localObject = new HashMap();
+        if (!bool) {
+          break label437;
         }
       }
-      while (i != 0)
+      label437:
+      for (int i = 1;; i = 0)
       {
-        this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.ssoGetTicketNoPasswd(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.a.getCurrentAccountUin(), 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
+        ((Map)localObject).put("Top_bind_account", Integer.valueOf(i));
+        StatisticCollector.a(SubAccountProtocManager.a(this.a).getApp()).b(SubAccountProtocManager.a(this.a), SubAccountProtocManager.a(this.a).getCurrentAccountUin(), (Map)localObject);
+        localSharedPreferences.edit().putLong("subaccount_last_report_time_" + SubAccountProtocManager.a(this.a).getCurrentAccountUin(), l3).commit();
+        if (l2 == 0L) {
+          localSharedPreferences.edit().putLong("subaccount_last_report_time_" + SubAccountProtocManager.a(this.a).getCurrentAccountUin(), l3).commit();
+        }
+        l2 = (Math.random() * 30.0D * 60.0D * 1000.0D);
+        if (ThreadManager.getSubThreadHandler() != null) {
+          ThreadManager.getSubThreadHandler().postDelayed(SubAccountProtocManager.a(this.a), l2 + l1 + 60000L);
+        }
         return;
-        i = 1;
       }
     }
   }

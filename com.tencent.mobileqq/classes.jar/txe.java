@@ -1,18 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
-class txe
-  implements DialogInterface.OnClickListener
+public class txe
+  implements DialogInterface.OnDismissListener
 {
-  txe(txc paramtxc, QQCustomDialog paramQQCustomDialog) {}
+  public txe(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ReportController.b(this.jdField_a_of_type_Txc.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Txc.a.a, "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    this.a.finish();
   }
 }
 

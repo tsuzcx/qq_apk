@@ -22,22 +22,22 @@ import com.tencent.gdtad.views.canvas.framework.GdtCanvasTextData;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import java.lang.ref.WeakReference;
-import qlh;
-import qlk;
-import qll;
-import qlo;
-import qlr;
+import qpy;
+import qqb;
+import qqc;
+import qqf;
+import qqi;
 
 public class GdtCanvasFormComponentView
   extends GdtCanvasComponentView
   implements GdtCanvasFormListener
 {
   private int jdField_a_of_type_Int = -1;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new qlk(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new qqb(this);
   private GdtCanvasFormComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsFormGdtCanvasFormComponentData;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
-  private qlo jdField_a_of_type_Qlo;
+  private qqf jdField_a_of_type_Qqf;
   
   public GdtCanvasFormComponentView(Context paramContext, WeakReference paramWeakReference, GdtCanvasFormComponentData paramGdtCanvasFormComponentData)
   {
@@ -74,12 +74,12 @@ public class GdtCanvasFormComponentView
         localLayoutParams.gravity = 1;
         localLinearLayout.addView((View)localObject, localLayoutParams);
       }
-      this.jdField_a_of_type_Qlo = new qlo(paramContext, a().table, new WeakReference(this));
+      this.jdField_a_of_type_Qqf = new qqf(paramContext, a().table, new WeakReference(this));
       localObject = new LinearLayout.LayoutParams(-1, -2);
       if (i != 0) {
         ((LinearLayout.LayoutParams)localObject).setMargins(0, a().padding, 0, 0);
       }
-      localLinearLayout.addView(this.jdField_a_of_type_Qlo, (ViewGroup.LayoutParams)localObject);
+      localLinearLayout.addView(this.jdField_a_of_type_Qqf, (ViewGroup.LayoutParams)localObject);
       paramContext = new GdtCanvasButtonView(paramContext, a().button);
       localObject = new LinearLayout.LayoutParams(-1, a().buttonHeight);
       ((LinearLayout.LayoutParams)localObject).setMargins(0, a().padding, 0, 0);
@@ -99,8 +99,8 @@ public class GdtCanvasFormComponentView
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsFormGdtCanvasFormComponentData = paramGdtCanvasFormComponentData;
-    qlr.a(new WeakReference(a()));
-    qll.a(new WeakReference(a()), new WeakReference(a()));
+    qqi.a(new WeakReference(a()));
+    qqc.a(new WeakReference(a()), new WeakReference(a()));
     a(paramContext);
     this.jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus = new GdtViewStatus(new WeakReference(this), new WeakReference(this));
     a(true);
@@ -164,17 +164,17 @@ public class GdtCanvasFormComponentView
   
   private void i()
   {
-    if (this.jdField_a_of_type_Qlo == null)
+    if (this.jdField_a_of_type_Qqf == null)
     {
       GdtLog.d("GdtCanvasFormComponentView", "reset error");
       return;
     }
-    this.jdField_a_of_type_Qlo.a();
+    this.jdField_a_of_type_Qqf.a();
   }
   
   private void j()
   {
-    qlh.a(a(), a(), new WeakReference(this));
+    qpy.a(a(), a(), new WeakReference(this));
   }
   
   public GdtViewStatus a()
@@ -205,7 +205,7 @@ public class GdtCanvasFormComponentView
               break;
             }
             this.jdField_a_of_type_Int = -1;
-            this.jdField_a_of_type_Qlo.a(-1);
+            this.jdField_a_of_type_Qqf.a(-1);
           } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c()));
           this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), 2, a().button.text.text + "成功", 0);
           this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
@@ -214,7 +214,7 @@ public class GdtCanvasFormComponentView
             break;
           }
           this.jdField_a_of_type_Int = -1;
-          this.jdField_a_of_type_Qlo.a(-1);
+          this.jdField_a_of_type_Qqf.a(-1);
         } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c()));
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), 1, a().button.text.text + "失败", 0);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
@@ -224,13 +224,13 @@ public class GdtCanvasFormComponentView
         }
       } while ((paramGdtCanvasFormError.b != -1) && (paramGdtCanvasFormError.b != this.jdField_a_of_type_Int));
       this.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_Qlo.a(-1);
+      this.jdField_a_of_type_Qqf.a(-1);
       return;
       if ((paramGdtCanvasFormError.b == -1) || (TextUtils.isEmpty(paramGdtCanvasFormError.toString()))) {
         break;
       }
       this.jdField_a_of_type_Int = paramGdtCanvasFormError.b;
-      this.jdField_a_of_type_Qlo.a(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Qqf.a(this.jdField_a_of_type_Int);
     } while ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c()));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getContext(), 1, paramGdtCanvasFormError.toString(), 0);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();

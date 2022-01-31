@@ -1,10 +1,4 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-
-public final class zwl
-  implements Runnable
-{
-  public void run() {}
-}
+public class zwl {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

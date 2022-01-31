@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import achx;
+import acqc;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -48,7 +48,7 @@ public class ExtendFriendFragment
   private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new achx(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new acqc(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -60,19 +60,19 @@ public class ExtendFriendFragment
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private TextView c;
   
-  private void b()
+  private void a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendFragment", 2, "loadSquareFragment");
     }
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130842492);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130842527);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-10776065);
     }
     if (this.jdField_b_of_type_AndroidWidgetTextView != null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130842493);
+      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130842528);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
     }
     if (this.jdField_a_of_type_AndroidSupportV4AppFragmentManager != null)
@@ -86,7 +86,7 @@ public class ExtendFriendFragment
       if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.isAdded()) {
         break label147;
       }
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction().hide(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment).add(2131363551, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment, "squareFragment").commit();
+      this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction().hide(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment).add(2131363570, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment, "squareFragment").commit();
     }
     for (;;)
     {
@@ -99,19 +99,19 @@ public class ExtendFriendFragment
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.b();
   }
   
-  private void c()
+  private void b()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ExtendFriendFragment", 2, "loadGroupFragment");
     }
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130842491);
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130842526);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     }
     if (this.jdField_b_of_type_AndroidWidgetTextView != null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130842494);
+      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130842529);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-10776065);
     }
     if (this.jdField_a_of_type_AndroidSupportV4AppFragmentManager != null)
@@ -125,7 +125,7 @@ public class ExtendFriendFragment
       if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.isAdded()) {
         break label161;
       }
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction().hide(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment).add(2131363551, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment, "groupFragment").commit();
+      this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction().hide(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment).add(2131363570, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment, "groupFragment").commit();
     }
     for (;;)
     {
@@ -141,7 +141,7 @@ public class ExtendFriendFragment
     this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a();
   }
   
-  private void d()
+  private void c()
   {
     Object localObject3 = null;
     SharedPreferences localSharedPreferences = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getApp().getSharedPreferences(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getCurrentAccountUin(), 0);
@@ -149,9 +149,9 @@ public class ExtendFriendFragment
     Object localObject4;
     if ((!localSharedPreferences.getBoolean("pref_extend_friend_has_show_first_guide", false)) && (this.jdField_a_of_type_AndroidViewViewGroup != null))
     {
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2130970330, null));
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2130970345, null));
       this.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(this);
-      localObject1 = this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131370087);
+      localObject1 = this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131370096);
       localObject4 = (RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject4).topMargin += ImmersiveUtils.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
@@ -164,8 +164,8 @@ public class ExtendFriendFragment
       localObject1 = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject1).inPreferredConfig = Bitmap.Config.RGB_565;
       localObject1 = ExtendFriendResourceUtil.a((String)localObject4, (BitmapFactory.Options)localObject1);
-      ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131370088)).setImageBitmap((Bitmap)localObject1);
-      this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131370089).setOnClickListener(this);
+      ((ImageView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131370097)).setImageBitmap((Bitmap)localObject1);
+      this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131370098).setOnClickListener(this);
       localObject1 = new Gallery.LayoutParams(-1, -1);
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_b_of_type_AndroidViewViewGroup, (ViewGroup.LayoutParams)localObject1);
       localObject1 = localSharedPreferences.edit();
@@ -184,7 +184,7 @@ public class ExtendFriendFragment
     }
   }
   
-  private void e()
+  private void d()
   {
     if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_b_of_type_AndroidViewViewGroup != null))
     {
@@ -193,14 +193,14 @@ public class ExtendFriendFragment
     }
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean b()
+  public boolean needImmersive()
   {
     return false;
+  }
+  
+  public boolean needStatusTrans()
+  {
+    return true;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -219,8 +219,8 @@ public class ExtendFriendFragment
     switch (paramView.getId())
     {
     default: 
-    case 2131370072: 
-    case 2131370076: 
+    case 2131370081: 
+    case 2131370085: 
       do
       {
         do
@@ -234,15 +234,15 @@ public class ExtendFriendFragment
       ProfileActivity.b(getActivity(), paramView, 1031);
       ReportController.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X80092D1", "0X80092D1", 0, 0, "", "", "", "");
       return;
-    case 2131370089: 
-      e();
+    case 2131370098: 
+      d();
       return;
-    case 2131370073: 
-      b();
+    case 2131370082: 
+      a();
       ReportController.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X80092D2", "0X80092D2", 0, 0, "", "", "", "");
       return;
     }
-    c();
+    b();
     ReportController.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, "dc00898", "", "", "0X80092D3", "0X80092D3", 0, 0, "", "", "", "");
   }
   
@@ -267,14 +267,14 @@ public class ExtendFriendFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2130970326, null));
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363380);
-    paramViewGroup = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370072);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370073));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370074));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370075));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370076);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362371);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2130970341, null));
+    paramLayoutInflater = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363399);
+    paramViewGroup = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370081);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370082));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370083));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370084));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370085);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362374);
     if (paramLayoutInflater != null)
     {
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramLayoutInflater.getLayoutParams();
@@ -331,7 +331,7 @@ public class ExtendFriendFragment
         this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment = ((ExtendFriendSquareFragment)this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("squareFragment"));
         this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment = ((ExtendFriendGroupFragment)this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.findFragmentByTag("groupFragment"));
       }
-      b();
+      a();
       return this.jdField_a_of_type_AndroidViewViewGroup;
       i = 8;
       break;
@@ -359,7 +359,7 @@ public class ExtendFriendFragment
   public void onResume()
   {
     super.onResume();
-    d();
+    c();
   }
 }
 

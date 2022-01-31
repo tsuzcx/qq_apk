@@ -1,15 +1,21 @@
-import com.tencent.biz.qqstory.takevideo.permission.PermissionPart;
+import com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import com.tencent.mobileqq.widget.ProgressPieDrawable;
+import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class olg
+  implements ProgressPieDrawable.OnProgressListener
 {
-  public final int a;
-  public final PermissionPart a;
+  public olg(EditVideoSave paramEditVideoSave) {}
   
-  public olg(PermissionPart paramPermissionPart, int paramInt)
+  public void a(ProgressPieDrawable paramProgressPieDrawable)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionPermissionPart = paramPermissionPart;
-    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    }
   }
+  
+  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

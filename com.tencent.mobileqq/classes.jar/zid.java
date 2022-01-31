@@ -1,31 +1,28 @@
-import com.tencent.mobileqq.app.PPCLoginAuthHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.profile.upload.VipUploadUtils;
+import com.tencent.mobileqq.profile.upload.config.VipUploadConfigImpl;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 
 public class zid
-  implements Runnable
+  extends VipUploadConfigImpl
 {
-  public zid(PPCLoginAuthHandler paramPPCLoginAuthHandler) {}
-  
-  public void run()
+  public zid(CardHandler paramCardHandler, long paramLong)
   {
-    EntityManager localEntityManager = this.a.a.getEntityManagerFactory(this.a.a.getCurrentAccountUin()).createEntityManager();
-    ExtensionInfo localExtensionInfo = (ExtensionInfo)localEntityManager.a(ExtensionInfo.class, this.a.a.getAccount());
-    if (localExtensionInfo != null)
+    super(paramLong);
+  }
+  
+  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  {
+    paramUploadImageSize = VipUploadUtils.a(paramAbstractUploadTask.uploadFilePath);
+    if (paramUploadImageSize != null)
     {
-      localExtensionInfo.commingRingId = 0L;
-      localEntityManager.a(localExtensionInfo);
+      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
+      paramUploadImageSize.recycle();
+      return paramAbstractUploadTask;
     }
-    for (;;)
-    {
-      localEntityManager.a();
-      return;
-      localExtensionInfo = new ExtensionInfo();
-      localExtensionInfo.uin = this.a.a.getAccount();
-      localEntityManager.a(localExtensionInfo);
-    }
+    return new IUploadConfig.UploadImageSize(640, 1136, 100);
   }
 }
 

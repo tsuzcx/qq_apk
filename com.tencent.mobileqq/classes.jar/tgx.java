@@ -1,24 +1,28 @@
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.app.NearbyObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class tgx
-  extends CardObserver
+  extends NearbyObserver
 {
-  public tgx(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public tgx(NearbyActivity paramNearbyActivity) {}
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    if (paramBoolean)
-    {
-      this.a.setResult(-1);
-      this.a.b(2131434979);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
     }
-    for (;;)
+    if ("OidbSvc.0xafc_1".equals(paramString))
     {
-      this.a.a = false;
-      this.a.finish();
-      return;
-      this.a.b(2131434980);
+      if (paramBoolean) {
+        this.a.n = paramLong;
+      }
+      if (!this.a.c)
+      {
+        this.a.b.removeMessages(this.a.d);
+        this.a.b.sendEmptyMessageDelayed(this.a.d, this.a.n);
+      }
     }
   }
 }

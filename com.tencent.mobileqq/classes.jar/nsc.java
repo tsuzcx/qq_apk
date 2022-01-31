@@ -1,13 +1,22 @@
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.playvideo.ProgressControler;
 
-class nsc
-  implements Runnable
+public class nsc
+  extends Handler
 {
-  nsc(nsb paramnsb, QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
-  
-  public void run()
+  public nsc(ProgressControler paramProgressControler, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.finish();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
   }
 }
 

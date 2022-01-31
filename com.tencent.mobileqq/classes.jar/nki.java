@@ -1,33 +1,40 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.newshare.StoryShare;
+import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.ui.OnShareUIListener;
 
 public class nki
-  implements Runnable
+  implements OnShareUIListener
 {
-  public nki(NewFriendsPlayMode paramNewFriendsPlayMode, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, StoryVideoItem paramStoryVideoItem) {}
+  public nki(StoryShare paramStoryShare) {}
   
-  public void run()
+  public void a()
   {
-    VideoListFeedItem localVideoListFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.c);
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (localVideoListFeedItem != null)
-    {
-      localObject1 = localObject2;
-      if (localVideoListFeedItem.getOwner() != null)
-      {
-        localObject1 = localObject2;
-        if ((localVideoListFeedItem.getOwner() instanceof QQUserUIItem)) {
-          localObject1 = ((QQUserUIItem)localVideoListFeedItem.getOwner()).qq;
-        }
-      }
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).c();
     }
-    ThreadManager.getUIHandler().post(new nkj(this, (String)localObject1));
+  }
+  
+  public void a(int paramInt)
+  {
+    StoryShare.a(this.a).a(paramInt);
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).b(paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).d();
+    }
+  }
+  
+  public void c()
+  {
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).d(-1);
+    }
   }
 }
 

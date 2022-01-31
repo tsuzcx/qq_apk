@@ -1,12 +1,17 @@
 package com.tencent.hotpatch.utils;
 
 import android.os.Build.VERSION;
+import android.text.TextUtils;
+import java.io.File;
 
 public class PatchCommonUtil
 {
-  public static String a(String paramString1, String paramString2)
+  public static String a(String paramString)
   {
-    return "/data/data/com.tencent.mobileqq/files/hotpatch/" + "/" + paramString1 + "/" + paramString2;
+    if (TextUtils.isEmpty(paramString)) {
+      return "/data/data/com.tencent.mobileqq/files/hotpatch";
+    }
+    return "/data/data/com.tencent.mobileqq/files/hotpatch" + File.separator + paramString;
   }
   
   public static boolean a()
@@ -22,6 +27,11 @@ public class PatchCommonUtil
   public static boolean c()
   {
     return Build.VERSION.SDK_INT >= 24;
+  }
+  
+  public static boolean d()
+  {
+    return Build.VERSION.SDK_INT >= 26;
   }
 }
 

@@ -53,12 +53,6 @@ public class NowVideoReporter
     return this;
   }
   
-  public NowVideoReporter a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
   public NowVideoReporter a(String paramString)
   {
     this.jdField_d_of_type_JavaLangString = paramString;

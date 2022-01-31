@@ -1,20 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserDebugHelper;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
 
 public class akop
-  implements DialogInterface.OnClickListener
 {
-  public akop(SwiftBrowserDebugHelper paramSwiftBrowserDebugHelper) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public static final KapalaiAdapterUtil a = new KapalaiAdapterUtil(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akop
  * JD-Core Version:    0.7.0.1
  */

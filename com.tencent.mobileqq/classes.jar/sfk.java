@@ -1,20 +1,14 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class sfk
-  extends FlingGestureHandler
+class sfk
+  implements DialogInterface.OnClickListener
 {
-  public sfk(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  sfk(sfj paramsfj) {}
   
-  public void flingLToR()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.a) {
-      super.flingLToR();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

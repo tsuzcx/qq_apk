@@ -1,27 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-public class adqu
-  implements Animation.AnimationListener
+class adqu
+  implements Runnable
 {
-  public adqu(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder) {}
+  adqu(adqs paramadqs, String paramString1, int paramInt, String paramString2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (this.a.a == 3) {
-      this.a.d.setVisibility(8);
-    }
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adqs.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adqs.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adqu
  * JD-Core Version:    0.7.0.1
  */

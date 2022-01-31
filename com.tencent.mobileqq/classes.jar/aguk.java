@@ -1,204 +1,81 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.biz.webviewplugin.ReportPlugin;
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.ShieldMsgManger;
-import com.tencent.mobileqq.phone.PhoneNumberInfo;
-import com.tencent.mobileqq.phone.PhoneNumberUtil;
-import com.tencent.mobileqq.qcall.LightalkShieldData;
-import com.tencent.mobileqq.qcall.LightalkShieldHandler;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.UinUtils;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.mobileqq.profile.ProfileCardTemplateInfo;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.mobileqq.profile.view.VipScaledViewPager;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.QQToastNotifier;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aguk
-  implements ActionSheet.OnButtonClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  public aguk(QCallDetailActivity paramQCallDetailActivity, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, ActionSheet paramActionSheet) {}
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public void OnClick(View paramView, int paramInt)
+  public aguk(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
+  
+  public void onPageScrollStateChanged(int paramInt)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageScrollStateChanged state = " + paramInt);
     }
-    for (;;)
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      return;
-      if (!NetworkUtil.d(BaseApplication.getContext()))
-      {
-        QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a(2131433103, 1);
-        return;
-      }
-      if (QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 26)
-      {
-        paramView = PhoneNumberUtil.a(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity));
-        paramView = paramView.a + "-" + paramView.c;
-        if (this.jdField_a_of_type_Boolean) {
-          QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).b(20, paramView);
-        }
-      }
-      for (;;)
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label802;
-        }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8004E6F", "0X8004E6F", 0, 0, "", "", "", "");
-        break;
-        QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a(20, paramView);
-        continue;
-        paramInt = 0;
-        long l;
-        Object localObject;
-        try
-        {
-          Long.parseLong(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity));
-          if (!this.b) {
-            break label393;
-          }
-        }
-        catch (Exception paramView)
-        {
-          for (;;)
-          {
-            try
-            {
-              l = Long.parseLong(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity));
-              if (!this.jdField_a_of_type_Boolean) {
-                break label359;
-              }
-              if (this.c) {
-                break label325;
-              }
-              paramView = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 0);
-              paramView.setTitle(2131437808);
-              paramView.setMessage(2131437809);
-              paramView.setCanceledOnTouchOutside(false);
-              localObject = new agul(this, paramView, l);
-              paramView.setNegativeButton(2131437811, (DialogInterface.OnClickListener)localObject);
-              paramView.setPositiveButton(2131437810, (DialogInterface.OnClickListener)localObject);
-              paramView.show();
-            }
-            catch (Exception paramView)
-            {
-              QQToast.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 1, "无效的号码", 0).b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.getTitleBarHeight());
-            }
-            paramView = paramView;
-            paramInt = 1;
-          }
-        }
-        break;
-        label325:
-        paramView = QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-        if (!this.jdField_a_of_type_Boolean) {}
-        for (boolean bool = true;; bool = false)
-        {
-          paramView.a(l, bool);
-          break;
-        }
-        label359:
-        paramView = QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-        if (!this.jdField_a_of_type_Boolean) {}
-        for (bool = true;; bool = false)
-        {
-          paramView.a(l, bool);
-          break;
-        }
-        label393:
-        label783:
-        if (paramInt != 0)
-        {
-          paramView = new LightalkShieldData();
-          paramView.qcallId = UinUtils.a(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity));
-          paramView.phone = QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-          if (this.jdField_a_of_type_Boolean)
-          {
-            if (!this.c)
-            {
-              paramView = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 0);
-              paramView.setTitle(2131437808);
-              paramView.setMessage(2131437809);
-              paramView.setCanceledOnTouchOutside(false);
-              localObject = new agum(this, paramView);
-              paramView.setNegativeButton(2131437811, (DialogInterface.OnClickListener)localObject);
-              paramView.setPositiveButton(2131437810, (DialogInterface.OnClickListener)localObject);
-              paramView.show();
-            }
-            else
-            {
-              QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).b(10, UinUtils.a(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity)));
-              ReportController.b(null, "CliOper", "", "", "0X8006256", "0X8006256", 0, 0, "", "", "", "");
-            }
-          }
-          else
-          {
-            QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a(10, UinUtils.a(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity)));
-            ReportController.b(null, "CliOper", "", "", "0X8006256", "0X8006256", 1, 0, "", "", "", "");
-          }
-        }
-        else
-        {
-          ArrayList localArrayList;
-          try
-          {
-            l = Long.parseLong(QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity));
-            localObject = (ShieldMsgManger)this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app.getManager(15);
-            localArrayList = new ArrayList();
-            if (localObject != null) {
-              localArrayList.add(Long.valueOf(l));
-            }
-            if (!this.jdField_a_of_type_Boolean) {
-              break label783;
-            }
-            if (this.c) {
-              break label764;
-            }
-            paramView = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 0);
-            paramView.setTitle(2131437808);
-            paramView.setMessage(2131437809);
-            paramView.setCanceledOnTouchOutside(false);
-            localObject = new agun(this, paramView, (ShieldMsgManger)localObject, localArrayList);
-            paramView.setNegativeButton(2131437811, (DialogInterface.OnClickListener)localObject);
-            paramView.setPositiveButton(2131437810, (DialogInterface.OnClickListener)localObject);
-            paramView.show();
-          }
-          catch (Exception paramView)
-          {
-            QQToast.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 1, "无效的号码", 0).b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.getTitleBarHeight());
-          }
-          break;
-          label764:
-          if (localObject != null)
-          {
-            ((ShieldMsgManger)localObject).b(this.jdField_a_of_type_Int, localArrayList);
-            continue;
-            if (localObject != null) {
-              ((ShieldMsgManger)localObject).a(this.jdField_a_of_type_Int, localArrayList);
-            }
-          }
-        }
-      }
-      label802:
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8004E6E", "0X8004E6E", 0, 0, "", "", "", "");
-      continue;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8004FA9", "0X8004FA9", 0, 0, "", "", "", "");
-      ReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 410, "", QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity), this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app.getCurrentAccountUin());
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.b();
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x);
+      this.b = true;
     }
+    if (paramInt == 2) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    if (paramInt == 0)
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x);
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
+      }
+      if (this.b)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
+        this.b = false;
+      }
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageScrolled pos = " + paramInt1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.b();
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "onPageSelected pos = " + paramInt);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.a();
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.d(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.x = paramInt;
+    if (((ProfileCardTemplateInfo)this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_JavaUtilList.get(paramInt)).a.l == ProfileCardTemplate.h)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "report shopping template = " + paramInt);
+      }
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, "CliOper", "", "", "Shop_Malltemplate", "0X8005B93", 0, 0, "", "", "", "");
+    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, "CliOper", "", "", "card_mall", "0X8004C26", 0, 0, "", "", "", VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app, this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.app.getCurrentAccountUin()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aguk
  * JD-Core Version:    0.7.0.1
  */

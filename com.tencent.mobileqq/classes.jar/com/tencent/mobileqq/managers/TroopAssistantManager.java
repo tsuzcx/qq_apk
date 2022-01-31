@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.managers;
 
-import aeff;
-import aefg;
-import aefh;
-import aefi;
+import aenp;
+import aenq;
+import aenr;
+import aens;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
@@ -168,10 +168,10 @@ public class TroopAssistantManager
     //   20: invokeinterface 115 1 0
     //   25: ifle +189 -> 214
     //   28: aload_2
-    //   29: new 117	aefj
+    //   29: new 117	aent
     //   32: dup
     //   33: aload_0
-    //   34: invokespecial 120	aefj:<init>	(Lcom/tencent/mobileqq/managers/TroopAssistantManager;)V
+    //   34: invokespecial 120	aent:<init>	(Lcom/tencent/mobileqq/managers/TroopAssistantManager;)V
     //   37: invokestatic 126	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   40: invokestatic 132	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   43: ifeq +33 -> 76
@@ -336,7 +336,7 @@ public class TroopAssistantManager
             this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaUtilList.size(), paramTroopAssistantData);
           }
         }
-        ThreadManager.post(new aefi(this, paramTroopAssistantData, paramEntityManager), 8, null, false);
+        ThreadManager.post(new aens(this, paramTroopAssistantData, paramEntityManager), 8, null, false);
         return;
         paramEntityManager = finally;
         throw paramEntityManager;
@@ -420,7 +420,7 @@ public class TroopAssistantManager
       }
       if (paramString != null)
       {
-        ThreadManager.post(new aefh(this, paramEntityManager, paramString), 8, null, false);
+        ThreadManager.post(new aenr(this, paramEntityManager, paramString), 8, null, false);
         return true;
         paramEntityManager = finally;
         throw paramEntityManager;
@@ -472,7 +472,7 @@ public class TroopAssistantManager
     if (paramQQAppInterface == null) {
       return;
     }
-    ThreadManager.post(new aeff(this, paramQQAppInterface), 5, null, false);
+    ThreadManager.post(new aenp(this, paramQQAppInterface), 5, null, false);
   }
   
   private void k(QQAppInterface paramQQAppInterface)
@@ -601,7 +601,7 @@ public class TroopAssistantManager
   
   public void a(QQAppInterface paramQQAppInterface, ProtoUtils.TroopProtocolObserver paramTroopProtocolObserver)
   {
-    ThreadManager.post(new aefg(this, paramQQAppInterface, paramTroopProtocolObserver), 8, null, true);
+    ThreadManager.post(new aenq(this, paramQQAppInterface, paramTroopProtocolObserver), 8, null, true);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)

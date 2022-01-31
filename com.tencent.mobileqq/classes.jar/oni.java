@@ -1,19 +1,36 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.network.request.GetEmojiPackInfoListRequest;
+import com.tencent.biz.qqstory.network.response.GetEmojiPackInfoListResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
 
 public class oni
-  implements View.OnLongClickListener
+  implements CmdTaskManger.CommandCallback
 {
-  public oni(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
+  public oni(DoodleEmojiManager paramDoodleEmojiManager) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(@NonNull GetEmojiPackInfoListRequest paramGetEmojiPackInfoListRequest, @Nullable GetEmojiPackInfoListResponse paramGetEmojiPackInfoListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    SLog.b("DoodleEmojiManager", "fireRequestEmojiPackList, result : " + paramGetEmojiPackInfoListResponse + ", errorMsg = " + paramErrorMessage);
+    synchronized (this.a.jdField_b_of_type_JavaLangObject)
+    {
+      if (!TextUtils.equals(paramGetEmojiPackInfoListRequest.a, this.a.jdField_b_of_type_JavaLangString))
+      {
+        SLog.d("DoodleEmojiManager", "cookie mismatch ! ignore this response : " + paramGetEmojiPackInfoListResponse);
+        return;
+      }
+      if ((paramGetEmojiPackInfoListResponse == null) || (paramErrorMessage.isFail()))
+      {
+        SLog.d("DoodleEmojiManager", "get emoji error : " + paramGetEmojiPackInfoListResponse + ", " + paramErrorMessage);
+        return;
+      }
     }
-    return true;
+    this.a.jdField_b_of_type_JavaLangString = paramGetEmojiPackInfoListResponse.a;
+    this.a.a(TextUtils.isEmpty(paramGetEmojiPackInfoListRequest.a), paramGetEmojiPackInfoListResponse, false);
   }
 }
 

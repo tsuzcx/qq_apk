@@ -1,13 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraProgressView;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lhq
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public lhq(ReadInJoyCameraProgressView paramReadInJoyCameraProgressView) {}
+  public lhq(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.invalidate();
+    if (paramInt == 0)
+    {
+      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo, false);
+      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity).dismiss();
+    }
   }
 }
 

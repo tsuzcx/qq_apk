@@ -1,51 +1,32 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.portal.ImageAlphaSwitchView;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
 public class agrc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public agrc(ProfileHeaderView paramProfileHeaderView, View paramView1, View paramView2, ProfileCardInfo paramProfileCardInfo) {}
+  public agrc(ImageAlphaSwitchView paramImageAlphaSwitchView) {}
   
-  public void onGlobalLayout()
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth() - AIOUtils.a(45.0F, this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.getResources());
-    int j = this.b.getWidth();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "updateJueban widthLike = " + i + ", widthJueban = " + j);
-    }
-    if ((i != 0) && (j != 0))
+    this.a.jdField_a_of_type_Float = paramFloat1.floatValue();
+    if (paramFloat1.floatValue() >= 255.0F)
     {
-      localObject = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).rightMargin -= (j - i) / 2;
-      this.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.b;
+      this.a.b = null;
+      this.a.jdField_a_of_type_Float = 0.0F;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.cancel();
+        this.a.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = null;
+      }
     }
-    Object localObject = new DataTag(34, null);
-    this.b.setTag(localObject);
-    this.b.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(ProfileHeaderView.f, ProfileHeaderView.b);
-    if (Build.VERSION.SDK_INT < 16)
-    {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrc
  * JD-Core Version:    0.7.0.1
  */

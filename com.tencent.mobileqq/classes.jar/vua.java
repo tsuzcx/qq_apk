@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
 public class vua
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public vua(GameRoomChatPie paramGameRoomChatPie) {}
+  public vua(PhotoListPanel paramPhotoListPanel, String paramString, boolean paramBoolean) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.b(1);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a.edit().putBoolean(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean).commit();
   }
 }
 

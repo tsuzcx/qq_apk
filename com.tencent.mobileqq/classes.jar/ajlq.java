@@ -1,16 +1,13 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr;
 
-class ajlq
+public class ajlq
   implements Runnable
 {
-  ajlq(ajlo paramajlo) {}
+  public ajlq(TroopFileDownloadMgr paramTroopFileDownloadMgr, int paramInt) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.getAdapter().notifyItemChanged(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.c);
+    this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadTroopFileDownloadMgr.a(this.jdField_a_of_type_Int, null);
   }
 }
 

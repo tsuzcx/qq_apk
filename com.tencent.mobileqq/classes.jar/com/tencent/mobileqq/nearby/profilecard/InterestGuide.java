@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import afbx;
+import afgu;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -88,22 +88,22 @@ public class InterestGuide
         this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float * 120.0F));
       }
       k = 0;
-      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131370716);
+      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131370707);
       if (localObject != null)
       {
         ((View)localObject).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-        paramMessage = ((View)localObject).findViewById(2131363379);
-        localObject = ((View)localObject).findViewById(2131370717);
+        paramMessage = ((View)localObject).findViewById(2131363398);
+        localObject = ((View)localObject).findViewById(2131370708);
         i = this.jdField_a_of_type_ArrayOfInt[1];
         k = paramMessage.getMeasuredHeight() + i + ((View)localObject).getMeasuredHeight();
       }
       paramMessage = new int[3];
       Message tmp268_267 = paramMessage;
-      tmp268_267[0] = 2131363060;
+      tmp268_267[0] = 2131363065;
       Message tmp273_268 = tmp268_267;
-      tmp273_268[1] = 2131370730;
+      tmp273_268[1] = 2131370721;
       Message tmp278_273 = tmp273_268;
-      tmp278_273[2] = 2131370731;
+      tmp278_273[2] = 2131370722;
       tmp278_273;
       i = this.c;
       m = 0;
@@ -189,8 +189,8 @@ public class InterestGuide
           if (m <= this.jdField_a_of_type_Int) {
             break label1031;
           }
-          paramMessage = LayoutInflater.from(localContext).inflate(2130970434, null);
-          ((Button)paramMessage.findViewById(2131365810)).setOnClickListener(this);
+          paramMessage = LayoutInflater.from(localContext).inflate(2130970449, null);
+          ((Button)paramMessage.findViewById(2131365815)).setOnClickListener(this);
         }
       }
     }
@@ -210,8 +210,8 @@ public class InterestGuide
       this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView, 51, 0, 0);
       return true;
       label1003:
-      paramMessage = LayoutInflater.from(localContext).inflate(2130970435, null);
-      ((Button)paramMessage.findViewById(2131365810)).setOnClickListener(this);
+      paramMessage = LayoutInflater.from(localContext).inflate(2130970450, null);
+      ((Button)paramMessage.findViewById(2131365815)).setOnClickListener(this);
       break;
       label1031:
       paramMessage = new View(localContext);
@@ -223,13 +223,13 @@ public class InterestGuide
     if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
     {
       this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      paramView = (BounceScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370705);
+      paramView = (BounceScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370696);
       if (paramView != null) {
         paramView.setScrollListener(null);
       }
       jdField_a_of_type_JavaLangRefWeakReference = null;
       jdField_a_of_type_JavaLangBoolean = Boolean.FALSE;
-      ThreadManager.post(new afbx(this), 5, null, false);
+      ThreadManager.post(new afgu(this), 5, null, false);
     }
   }
 }

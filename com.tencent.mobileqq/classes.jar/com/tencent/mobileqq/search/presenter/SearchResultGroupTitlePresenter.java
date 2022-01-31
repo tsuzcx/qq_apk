@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahum;
+import ahzd;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.text.SpannableString;
@@ -30,12 +30,12 @@ public class SearchResultGroupTitlePresenter
       localGroupSearchModeTitle = (GroupSearchModeTitle)paramIModel;
       localObject = localGroupSearchModeTitle.a();
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label389;
+        break label391;
       }
       localObject = "";
     }
-    label384:
-    label389:
+    label386:
+    label391:
     for (;;)
     {
       if (((GroupSearchModeTitle)paramIModel).b())
@@ -43,31 +43,31 @@ public class SearchResultGroupTitlePresenter
         String str = localGroupSearchModeTitle.b();
         if (!TextUtils.isEmpty(str))
         {
-          str = SearchUtils.a(localSearchResultGroupTitleView.a(), 10.0F * SearchUtils.a(localSearchResultGroupTitleView.a(), "测"), 1, str, str, false).toString();
+          str = SearchUtils.a(localSearchResultGroupTitleView.a(), 10.0F * SearchUtils.a(localSearchResultGroupTitleView.a(), "测"), 1, str, str, false, false, true).toString();
           localObject = new SpannableString(str + "-" + (String)localObject);
           ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#12B7F5")), 0, str.length(), 34);
           localSearchResultGroupTitleView.a().setText((CharSequence)localObject);
           if (!localGroupSearchModeTitle.a()) {
-            break label342;
+            break label344;
           }
           paramISearchResultGroupView.b().setText(localGroupSearchModeTitle.c());
           paramISearchResultGroupView.b().setVisibility(0);
-          label198:
+          label200:
           paramISearchResultGroupView.b().setTag(2131362080, Integer.valueOf(-1));
           if ((paramIModel instanceof ISearchResultGroupModel))
           {
             paramIModel = (ISearchResultGroupModel)paramIModel;
-            paramISearchResultGroupView.b().setOnClickListener(new ahum(this, paramIModel));
+            paramISearchResultGroupView.b().setOnClickListener(new ahzd(this, paramIModel));
           }
           paramIModel = localSearchResultGroupTitleView.a().getResources();
           if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-            break label356;
+            break label358;
           }
           localSearchResultGroupTitleView.a.setBackgroundColor(paramIModel.getColor(2131492950));
-          label278:
+          label280:
           paramIModel = paramISearchResultGroupView.a().getTag(2131362080);
           if (!(paramIModel instanceof Integer)) {
-            break label384;
+            break label386;
           }
         }
       }
@@ -76,8 +76,8 @@ public class SearchResultGroupTitlePresenter
         if (i > 0) {
           localSearchResultGroupTitleView.a(true);
         }
-        label342:
-        label356:
+        label344:
+        label358:
         while (i != 0)
         {
           return;
@@ -86,9 +86,9 @@ public class SearchResultGroupTitlePresenter
           localSearchResultGroupTitleView.a().setText((CharSequence)localObject);
           break;
           paramISearchResultGroupView.b().setVisibility(8);
-          break label198;
+          break label200;
           localSearchResultGroupTitleView.a.setBackgroundColor(paramIModel.getColor(2131492949));
-          break label278;
+          break label280;
         }
         localSearchResultGroupTitleView.a(false);
         return;

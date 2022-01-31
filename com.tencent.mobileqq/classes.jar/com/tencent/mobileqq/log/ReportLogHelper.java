@@ -31,7 +31,7 @@ public abstract class ReportLogHelper
     //   1: astore 4
     //   3: new 43	java/io/File
     //   6: dup
-    //   7: getstatic 85	com/tencent/mobileqq/app/AppConstants:aO	Ljava/lang/String;
+    //   7: getstatic 85	com/tencent/mobileqq/app/AppConstants:aP	Ljava/lang/String;
     //   10: invokespecial 63	java/io/File:<init>	(Ljava/lang/String;)V
     //   13: astore_3
     //   14: aload_3
@@ -47,7 +47,7 @@ public abstract class ReportLogHelper
     //   34: new 49	java/lang/StringBuilder
     //   37: dup
     //   38: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   41: getstatic 85	com/tencent/mobileqq/app/AppConstants:aO	Ljava/lang/String;
+    //   41: getstatic 85	com/tencent/mobileqq/app/AppConstants:aP	Ljava/lang/String;
     //   44: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   47: ldc 89
     //   49: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;

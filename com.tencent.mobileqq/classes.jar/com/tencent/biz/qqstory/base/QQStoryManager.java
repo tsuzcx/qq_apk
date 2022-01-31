@@ -2,6 +2,7 @@ package com.tencent.biz.qqstory.base;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.app.QQStoryContext;
@@ -23,7 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
-import mzn;
+import ndi;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -38,6 +39,7 @@ public class QQStoryManager
   public static final String f;
   protected int a;
   SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
+  public Drawable a;
   public QQStoryContext a;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
@@ -137,7 +139,7 @@ public class QQStoryManager
     }
     while (localList != null)
     {
-      Bosses.get().postJob(new mzn(this, paramBoolean));
+      Bosses.get().postJob(new ndi(this, paramBoolean));
       return localList;
       if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
         localList = this.jdField_a_of_type_JavaUtilList;

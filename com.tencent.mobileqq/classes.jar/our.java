@@ -1,14 +1,15 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
-import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.StoryImageDialog;
 
-public final class our
-  extends ScannerActivity.QQDialogCancelListener
+public class our
+  implements View.OnClickListener
 {
-  public our(QrHandleResultCallBack paramQrHandleResultCallBack) {}
+  public our(StoryImageDialog paramStoryImageDialog) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a();
+    this.a.dismiss();
   }
 }
 

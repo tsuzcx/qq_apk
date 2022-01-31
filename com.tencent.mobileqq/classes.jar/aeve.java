@@ -1,13 +1,28 @@
-import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
 public class aeve
-  implements Runnable
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public aeve(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  public aeve(NearbyProxy paramNearbyProxy) {}
   
-  public void run()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.a.d();
+    synchronized (this.a.a)
+    {
+      if (this.a.a.contains(paramString))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyProxy", 2, "onDecodeTaskCompleted: reqUin=" + paramString + ", avatar=" + paramBitmap);
+        }
+        this.a.a.remove(paramString);
+        NearbyProxy.a(this.a, 4154, new Object[] { Integer.valueOf(paramInt2), paramString, paramBitmap });
+      }
+      return;
+    }
   }
 }
 

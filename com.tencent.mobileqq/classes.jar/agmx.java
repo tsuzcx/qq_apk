@@ -1,21 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.portal.RedPacketServlet;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agmx
   implements Runnable
 {
-  public agmx(RedPacketServlet paramRedPacketServlet, Intent paramIntent) {}
+  public agmx(ScanTorchActivity paramScanTorchActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPortalRedPacketServlet.getAppRuntime().startServlet((NewIntent)this.jdField_a_of_type_AndroidContentIntent);
+    ScanTorchActivity.c(this.a, true, ScanTorchActivity.c(this.a));
+    ScanTorchActivity.y(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmx
  * JD-Core Version:    0.7.0.1
  */

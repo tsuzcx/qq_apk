@@ -179,7 +179,16 @@ public class GenericNewGifDecoder
   
   public boolean reset()
   {
-    return this.jdField_a_of_type_ComTencentComponentMediaGifGifInfoHandle.reset();
+    try
+    {
+      boolean bool = this.jdField_a_of_type_ComTencentComponentMediaGifGifInfoHandle.reset();
+      return bool;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      ImageManagerEnv.getLogger().w("GenericNewGifDecoder", new Object[] { "reset failed,catch an exception:", Log.getStackTraceString(localUnsatisfiedLinkError) });
+    }
+    return false;
   }
   
   public Bitmap seekToFrame(int paramInt, Bitmap paramBitmap)

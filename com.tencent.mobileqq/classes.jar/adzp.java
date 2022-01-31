@@ -1,21 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.LebaGridHandler;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.view.LebaGridIndicator.onPageSeletedListener;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlCallBack;
+import com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlResult;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.ShortVideoDownResp;
+import com.tencent.mobileqq.transfile.protohandler.RichProtoProc.RichProtoCallback;
+import java.util.List;
 
 public class adzp
-  implements LebaGridIndicator.onPageSeletedListener
+  implements RichProtoProc.RichProtoCallback
 {
-  public adzp(LebaWithFeeds paramLebaWithFeeds) {}
+  public adzp(HotVideoData paramHotVideoData, HotVideoData.HotVideoGetUrlResult paramHotVideoGetUrlResult, HotVideoData.HotVideoGetUrlCallBack paramHotVideoGetUrlCallBack) {}
   
-  public void a(int paramInt)
+  public void a(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
   {
-    LebaWithFeeds.a(this.a, 1);
-  }
-  
-  public void b(int paramInt)
-  {
-    ((LebaGridHandler)this.a.a.a(106)).a(2, true, Integer.valueOf(paramInt));
+    if (paramRichProtoResp != null) {
+      if (paramRichProtoResp.a.size() > 0)
+      {
+        paramRichProtoReq = (RichProto.RichProtoResp.ShortVideoDownResp)paramRichProtoResp.a.get(0);
+        this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.a(paramRichProtoReq);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlCallBack.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_JavaLangString = "Unknown error！";
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData$HotVideoGetUrlResult.jdField_a_of_type_JavaLangString = "Unknown error！";
+    }
   }
 }
 

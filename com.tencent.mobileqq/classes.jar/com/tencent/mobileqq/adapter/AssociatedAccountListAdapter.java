@@ -58,11 +58,11 @@ public class AssociatedAccountListAdapter
     FaceDrawable localFaceDrawable;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971618, paramViewGroup, false);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971644, paramViewGroup, false);
       paramViewGroup = new AssociatedAccountListAdapter.ViewHolder(this);
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131363378));
-      paramViewGroup.b = ((SingleLineTextView)paramView.findViewById(2131365659));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131362719));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131363397));
+      paramViewGroup.b = ((SingleLineTextView)paramView.findViewById(2131365664));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131362724));
       paramView.setTag(paramViewGroup);
       localAssociatedAccountListItemData = (AssociatedAccountListItemData)getItem(paramInt);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqSubaccountAssociatedAccountListItemData = localAssociatedAccountListItemData;
@@ -77,7 +77,7 @@ public class AssociatedAccountListAdapter
           if (localAssociatedAccountListItemData.e != 0) {
             break label237;
           }
-          paramView.findViewById(2131375184).setBackgroundDrawable(null);
+          paramView.findViewById(2131375236).setBackgroundDrawable(null);
         }
       }
     }
@@ -94,7 +94,7 @@ public class AssociatedAccountListAdapter
       paramViewGroup = (AssociatedAccountListAdapter.ViewHolder)paramView.getTag();
       break;
       label237:
-      paramView.findViewById(2131375184).setBackgroundResource(2130846108);
+      paramView.findViewById(2131375236).setBackgroundResource(2130846190);
     }
   }
   
@@ -103,10 +103,10 @@ public class AssociatedAccountListAdapter
     int i;
     if (paramView == null)
     {
-      i = 2130971614;
+      i = 2130971640;
       if (paramInt2 == 7)
       {
-        i = 2130971615;
+        i = 2130971641;
         paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(i, paramViewGroup, false);
         paramViewGroup = new AssociatedAccountListAdapter.ViewHolder(this);
         paramView.setTag(paramViewGroup);
@@ -128,7 +128,7 @@ public class AssociatedAccountListAdapter
       if (paramInt2 != 4) {
         break;
       }
-      i = 2130971617;
+      i = 2130971643;
       break;
       paramViewGroup = (AssociatedAccountListAdapter.ViewHolder)paramView.getTag();
     }
@@ -142,9 +142,9 @@ public class AssociatedAccountListAdapter
     for (;;)
     {
       return;
-      int i = 2130842533;
+      int i = 2130842568;
       if (this.jdField_a_of_type_Boolean) {
-        i = 2130838623;
+        i = 2130838629;
       }
       Object localObject1;
       Object localObject2;
@@ -153,14 +153,14 @@ public class AssociatedAccountListAdapter
       default: 
         return;
       case 1: 
-        paramView.setBackgroundResource(2130838635);
+        paramView.setBackgroundResource(2130838641);
         return;
       case 2: 
-        paramView.setBackgroundResource(2130838623);
+        paramView.setBackgroundResource(2130838629);
         return;
       case 3: 
       case 4: 
-        localObject1 = paramView.findViewById(2131363630);
+        localObject1 = paramView.findViewById(2131363649);
         View localView;
         float f;
         if (this.jdField_a_of_type_Boolean)
@@ -168,13 +168,13 @@ public class AssociatedAccountListAdapter
           if (localObject1 != null) {
             ((View)localObject1).setVisibility(8);
           }
-          localView = paramView.findViewById(2131375194);
+          localView = paramView.findViewById(2131375246);
           localObject2 = paramView.getLayoutParams();
           f = DeviceInfoUtil.a();
           if (!paramAssociatedAccountListItemData.jdField_b_of_type_Boolean) {
             break label285;
           }
-          localObject1 = paramView.findViewById(2131375190);
+          localObject1 = paramView.findViewById(2131375242);
           paramAssociatedAccountListItemData = (AssociatedAccountListItemData)localObject1;
           if (localObject1 == null) {
             paramAssociatedAccountListItemData = paramView;
@@ -186,7 +186,7 @@ public class AssociatedAccountListAdapter
           ((ViewGroup.LayoutParams)localObject2).height = ((int)(74.0F * f));
           if (this.jdField_a_of_type_Boolean)
           {
-            paramAssociatedAccountListItemData = (UpArrowView)paramView.findViewById(2131363443);
+            paramAssociatedAccountListItemData = (UpArrowView)paramView.findViewById(2131363462);
             if (paramAssociatedAccountListItemData != null) {
               paramAssociatedAccountListItemData.setTheme(true);
             }
@@ -219,7 +219,7 @@ public class AssociatedAccountListAdapter
       }
       if (paramAssociatedAccountListItemData.jdField_b_of_type_Boolean)
       {
-        localObject2 = paramView.findViewById(2131375190);
+        localObject2 = paramView.findViewById(2131375242);
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = paramView;
@@ -231,18 +231,18 @@ public class AssociatedAccountListAdapter
         if (!this.jdField_a_of_type_Boolean) {
           break label428;
         }
-        localObject1 = paramView.findViewById(2131363630);
+        localObject1 = paramView.findViewById(2131363649);
         if (localObject1 != null) {
           ((View)localObject1).setVisibility(8);
         }
         if (!paramAssociatedAccountListItemData.jdField_b_of_type_Boolean) {
           break;
         }
-        paramAssociatedAccountListItemData = paramView.findViewById(2131373108);
+        paramAssociatedAccountListItemData = paramView.findViewById(2131373121);
         if (paramAssociatedAccountListItemData != null) {
           paramAssociatedAccountListItemData.setVisibility(8);
         }
-        paramView = (UpArrowView)paramView.findViewById(2131363443);
+        paramView = (UpArrowView)paramView.findViewById(2131363462);
         if (paramView == null) {
           break;
         }
@@ -265,7 +265,7 @@ public class AssociatedAccountListAdapter
     int m;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971620, paramViewGroup, false);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971646, paramViewGroup, false);
       paramViewGroup = new AssociatedAccountListAdapter.ViewHolder(this);
       paramView.setTag(paramViewGroup);
       localAssociatedAccountListItemData = (AssociatedAccountListItemData)getItem(paramInt);
@@ -277,7 +277,7 @@ public class AssociatedAccountListAdapter
       if (paramViewGroup == null) {
         break label607;
       }
-      localFrameLayout = (FrameLayout)paramView.findViewById(2131364073);
+      localFrameLayout = (FrameLayout)paramView.findViewById(2131364098);
       k = paramViewGroup.size();
       i = localFrameLayout.getChildCount();
       f1 = DeviceInfoUtil.a();
@@ -306,15 +306,15 @@ public class AssociatedAccountListAdapter
         {
           while (i < k)
           {
-            localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971619, null, false);
+            localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971645, null, false);
             localObject2 = new FrameLayout.LayoutParams(j, m);
             int n = i / paramInt;
             ((FrameLayout.LayoutParams)localObject2).leftMargin = ((int)(i % paramInt * (j + f1)));
             ((FrameLayout.LayoutParams)localObject2).topMargin = (n * m);
             localViewHolder = new AssociatedAccountListAdapter.ViewHolder(this);
-            localViewHolder.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)((View)localObject1).findViewById(2131362719));
-            localViewHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)((View)localObject1).findViewById(2131363378));
-            localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject1).findViewById(2131363207));
+            localViewHolder.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)((View)localObject1).findViewById(2131362724));
+            localViewHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)((View)localObject1).findViewById(2131363397));
+            localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject1).findViewById(2131363211));
             ((View)localObject1).setTag(localViewHolder);
             localFrameLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
             i += 1;
@@ -350,7 +350,7 @@ public class AssociatedAccountListAdapter
           j = 0;
           if (m > 0)
           {
-            j = 2130846056;
+            j = 2130846138;
             i = 3;
           }
           localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, paramView);
@@ -376,12 +376,12 @@ public class AssociatedAccountListAdapter
     Object localObject;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971613, paramViewGroup, false);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971639, paramViewGroup, false);
       paramViewGroup = new AssociatedAccountListAdapter.ViewHolder(this);
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131363378));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)localView.findViewById(2131362719));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131363207));
-      paramViewGroup.b = ((SingleLineTextView)localView.findViewById(2131365659));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131363397));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)localView.findViewById(2131362724));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131363211));
+      paramViewGroup.b = ((SingleLineTextView)localView.findViewById(2131365664));
       localView.setTag(paramViewGroup);
       localAssociatedAccountListItemData = (AssociatedAccountListItemData)getItem(paramInt);
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqSubaccountAssociatedAccountListItemData = localAssociatedAccountListItemData;
@@ -422,11 +422,11 @@ public class AssociatedAccountListAdapter
       int k;
       if (m > 0)
       {
-        j = 2130846055;
+        j = 2130846137;
         k = 3;
         if ((2 == localAssociatedAccountListItemData.jdField_c_of_type_Int) || (3 == localAssociatedAccountListItemData.jdField_c_of_type_Int))
         {
-          paramView = "[" + localResources.getString(2131437908) + "]";
+          paramView = "[" + localResources.getString(2131437928) + "]";
           paramInt = 0;
           i = j;
         }
@@ -456,9 +456,9 @@ public class AssociatedAccountListAdapter
         else
         {
           f = DeviceInfoUtil.a();
-          paramView = localResources.getColorStateList(2131494265);
-          localObject = localResources.getColorStateList(2131494217);
-          i = localResources.getColor(2131494288);
+          paramView = localResources.getColorStateList(2131494271);
+          localObject = localResources.getColorStateList(2131494223);
+          i = localResources.getColor(2131494294);
           paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor((ColorStateList)localObject);
           paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(paramView, 0);
           paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 0);
@@ -563,7 +563,7 @@ public class AssociatedAccountListAdapter
     default: 
       View localView = paramView;
       if (paramView == null) {
-        localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971616, paramViewGroup, false);
+        localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971642, paramViewGroup, false);
       }
       return localView;
     case 3: 

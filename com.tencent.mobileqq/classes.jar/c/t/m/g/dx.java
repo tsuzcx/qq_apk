@@ -1,105 +1,105 @@
 package c.t.m.g;
 
-import android.annotation.SuppressLint;
-import android.net.wifi.ScanResult;
-import android.os.Build.VERSION;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.util.Pair;
+import com.tencent.map.geolocation.internal.TencentHttpClient;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public final class dx
+  implements TencentHttpClient
 {
-  private static List<String> a;
+  private byte[] a = new byte[512];
   
-  static
+  private static String a(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    a = localArrayList;
-    localArrayList.add("mobile");
-    a.add("16wifi");
-    a.add("cmcc");
-    a.add("360wifi");
-    a.add("androidap");
-    a.add("htcphone");
-    a.add("xiaomi");
-    a.add("lenovo");
-    a.add("macbook");
-  }
-  
-  @SuppressLint({"NewApi"})
-  public static void a(List<ScanResult> paramList)
-  {
-    HashSet localHashSet = new HashSet();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    String str2 = "GBK";
+    String str1 = str2;
+    int j;
+    int i;
+    if (paramString != null)
     {
-      ScanResult localScanResult = (ScanResult)localIterator.next();
-      String str = localScanResult.BSSID;
-      if ((str == null) || (str.equals("000000000000")) || (str.equals("00-00-00-00-00-00")) || (str.equals("00:00:00:00:00:00")) || (localScanResult.level >= 0)) {
-        localIterator.remove();
-      } else if (localHashSet.contains(str)) {
-        localIterator.remove();
-      } else {
-        localHashSet.add(str);
-      }
+      paramString = paramString.split(";");
+      j = paramString.length;
+      i = 0;
     }
-    f.a.a("WifiBlackList", "after step1 filter : " + paramList.size());
-    try
+    for (;;)
     {
-      b(paramList);
-      f.a.a("WifiBlackList", "after step2 filter : " + paramList.size());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      str1 = str2;
+      if (i < j)
       {
-        f.a.b("WifiBlackList", "strict filter throw exception");
-      }
-    }
-  }
-  
-  @SuppressLint({"NewApi"})
-  private static void b(List<ScanResult> paramList)
-  {
-    ArrayList localArrayList2 = null;
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    Object localObject = localArrayList2;
-    if (Build.VERSION.SDK_INT >= 21) {}
-    try
-    {
-      localObject = ((ScanResult)paramList.get(0)).getClass().getField("wifiSsid");
-      ((Field)localObject).setAccessible(true);
-      localArrayList2 = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ScanResult localScanResult = (ScanResult)paramList.next();
-        if ((Build.VERSION.SDK_INT >= 21) && (localObject != null)) {
-          try
-          {
-            if (((Field)localObject).get(localScanResult) == null)
-            {
-              paramList.remove();
-              localArrayList2.add(localScanResult);
-            }
-          }
-          catch (Exception localException) {}
+        str1 = paramString[i].trim();
+        int k = str1.indexOf("charset=");
+        if (-1 != k) {
+          str1 = str1.substring(k + 8, str1.length());
         }
       }
-      localArrayList2.size();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      else
       {
-        ArrayList localArrayList1 = localArrayList2;
+        return str1;
       }
+      i += 1;
+    }
+  }
+  
+  private byte[] a(InputStream paramInputStream)
+    throws IOException
+  {
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(256);
+    for (;;)
+    {
+      int i = paramInputStream.read(this.a);
+      if (i == -1) {
+        break;
+      }
+      localByteArrayOutputStream.write(this.a, 0, i);
+    }
+    paramInputStream.close();
+    return localByteArrayOutputStream.toByteArray();
+  }
+  
+  public final Pair<byte[], String> postSync(String paramString, byte[] paramArrayOfByte)
+    throws IOException
+  {
+    paramString = (HttpURLConnection)new URL(paramString).openConnection();
+    for (;;)
+    {
+      try
+      {
+        paramString.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
+        paramString.setRequestMethod("POST");
+        paramString.setConnectTimeout(10000);
+        paramString.setDoOutput(true);
+        paramString.setFixedLengthStreamingMode(paramArrayOfByte.length);
+        localObject = paramString.getOutputStream();
+        ((OutputStream)localObject).write(paramArrayOfByte);
+        ((OutputStream)localObject).flush();
+        ((OutputStream)localObject).close();
+        int i = paramString.getResponseCode();
+        switch (i)
+        {
+        case 200: 
+          throw new IOException("net sdk error: ".concat(String.valueOf(i)));
+        }
+      }
+      finally
+      {
+        paramString.disconnect();
+      }
+      paramArrayOfByte = a(paramString.getHeaderField("content-type"));
+      Object localObject = a(paramString.getInputStream());
+      if ((localObject == null) || (localObject.length == 0))
+      {
+        paramArrayOfByte = Pair.create("{}".getBytes(), "utf-8");
+        paramString.disconnect();
+        return paramArrayOfByte;
+      }
+      paramArrayOfByte = Pair.create(localObject, paramArrayOfByte);
+      paramString.disconnect();
+      return paramArrayOfByte;
     }
   }
 }

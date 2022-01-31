@@ -1,36 +1,35 @@
-import android.content.Context;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper;
-import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 import com.tencent.qphone.base.util.QLog;
 
-class aduc
+public class aduc
   implements Runnable
 {
-  aduc(adub paramadub, boolean paramBoolean1, boolean paramBoolean2) {}
+  public aduc(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HuayangPluginNewDownloader", 2, "startLoadingActivity：" + System.currentTimeMillis());
-    }
-    Context localContext = HuayangDowanloadHelper.a(this.jdField_a_of_type_Adub.a);
-    String str2 = adub.a(this.jdField_a_of_type_Adub);
-    IVPluginInfo localIVPluginInfo = adub.a(this.jdField_a_of_type_Adub);
-    InstalledPlugin localInstalledPlugin = adub.a(this.jdField_a_of_type_Adub);
-    String str3 = HuayangDowanloadHelper.d(this.jdField_a_of_type_Adub.a);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str1 = HuayangDowanloadHelper.e(this.jdField_a_of_type_Adub.a);; str1 = null)
+    if (this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {}
+    do
     {
-      HuayangLoadbackgroudActivity.a(localContext, str2, localIVPluginInfo, localInstalledPlugin, str3, str1, this.b, this.jdField_a_of_type_Boolean, HuayangDowanloadHelper.c(this.jdField_a_of_type_Adub.a));
       return;
-    }
+      if (QLog.isColorLevel()) {
+        QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->preForward--fetch openid timeout");
+      }
+      this.a.h = true;
+      this.a.t();
+    } while (!ForwardSdkShareOption.a(this.a));
+    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.e.intValue());
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aduc
  * JD-Core Version:    0.7.0.1
  */

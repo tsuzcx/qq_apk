@@ -1,25 +1,17 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
-import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aaqn
-  implements QQPlayerService.QQPlayerCallback
+public class aaqn
+  implements IMediaPlayer.OnErrorListener
 {
-  public String getToken()
-  {
-    return ArkAppMusicModule.a();
-  }
+  public aaqn(SplashPopupWin paramSplashPopupWin) {}
   
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    ArkAppCenter.a().post(new aaqp(this, paramSongInfo));
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    ArkAppCenter.a().post(new aaqo(this, paramInt));
+    QLog.w("WorldCupMgr", 1, "SplashPopupWin.onError, what[" + paramInt1 + "], extra[" + paramInt2 + "]");
+    return false;
   }
 }
 

@@ -8,7 +8,7 @@ import java.util.List;
 public final class PolylineOptions
 {
   private float arrowGap = 90.0F;
-  private String arrowTexture = "";
+  private BitmapDescriptor arrowTexture;
   private int color = -16777216;
   private int edgeColor = -983041;
   private float edgeWidth = 0.0F;
@@ -50,10 +50,10 @@ public final class PolylineOptions
     return this;
   }
   
-  public final PolylineOptions arrowTexture(String paramString)
+  public final PolylineOptions arrowTexture(BitmapDescriptor paramBitmapDescriptor)
   {
-    if ((paramString != null) && (paramString.length() > 0)) {
-      this.arrowTexture = paramString;
+    if (paramBitmapDescriptor != null) {
+      this.arrowTexture = paramBitmapDescriptor;
     }
     return this;
   }
@@ -89,7 +89,7 @@ public final class PolylineOptions
     return this.arrowGap;
   }
   
-  public final String getArrowTexture()
+  public final BitmapDescriptor getArrowTexture()
   {
     return this.arrowTexture;
   }

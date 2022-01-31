@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import adhz;
+import adqg;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
@@ -707,11 +707,21 @@ public class FilePicURLDrawlableHelper
         break;
       }
       return paramFileManagerEntity.replace("/", "");
-      if (!TextUtils.isEmpty(paramFileManagerEntity.Uuid)) {
+      if (!TextUtils.isEmpty(paramFileManagerEntity.Uuid))
+      {
         paramFileManagerEntity = MD5.a(paramFileManagerEntity.Uuid);
-      } else if (FileUtil.b(paramFileManagerEntity.getFilePath())) {
-        paramFileManagerEntity = HexUtil.a(FileManagerUtil.c(paramFileManagerEntity.getFilePath())).toUpperCase();
-      } else {
+      }
+      else if (FileUtil.b(paramFileManagerEntity.getFilePath()))
+      {
+        localObject = FileManagerUtil.c(paramFileManagerEntity.getFilePath());
+        if ((localObject != null) && (localObject.length > 0)) {
+          paramFileManagerEntity = HexUtil.a((byte[])localObject).toUpperCase();
+        } else {
+          paramFileManagerEntity = MD5.a(paramFileManagerEntity.fileName);
+        }
+      }
+      else
+      {
         paramFileManagerEntity = MD5.a(paramFileManagerEntity.fileName);
       }
     }
@@ -936,7 +946,7 @@ public class FilePicURLDrawlableHelper
         localObject2 = localObject1;
         if (b(paramFileManagerEntity))
         {
-          ThreadManager.post(new adhz(paramFileManagerEntity), 8, null, false);
+          ThreadManager.post(new adqg(paramFileManagerEntity), 8, null, false);
           localObject2 = localObject1;
         }
       }

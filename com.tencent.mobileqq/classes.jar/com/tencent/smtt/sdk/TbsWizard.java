@@ -88,7 +88,7 @@ class TbsWizard
       str2 = this.mDexOptPath;
       str3 = QbSdk.getTbsCoreVersionString();
       String str4 = TbsShareManager.getHostCorePathAppDefined();
-      localObject1 = ((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject2, String.class, String.class }, new Object[] { paramContext, localObject3, localObject4, str1, str2, "3.6.0.1214", Integer.valueOf(43608), str3, str4 });
+      localObject1 = ((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject2, String.class, String.class }, new Object[] { paramContext, localObject3, localObject4, str1, str2, "3.6.0.1236", Integer.valueOf(43609), str3, str4 });
       localObject2 = localObject1;
       if (localObject1 == null)
       {
@@ -128,7 +128,7 @@ class TbsWizard
       str1 = this.mtbsInstallLocation;
       str2 = this.mDexOptPath;
       str3 = QbSdk.getTbsCoreVersionString();
-      localObject1 = ((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject2, String.class }, new Object[] { paramContext, localObject3, localObject4, str1, str2, "3.6.0.1214", Integer.valueOf(43608), str3 });
+      localObject1 = ((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject2, String.class }, new Object[] { paramContext, localObject3, localObject4, str1, str2, "3.6.0.1236", Integer.valueOf(43609), str3 });
       break;
       label631:
       if ((localObject2 instanceof Integer))
@@ -152,12 +152,12 @@ class TbsWizard
   
   private void setSdkVersionInTbsShell()
   {
-    this.mDexLoader.setStaticField("com.tencent.tbs.tbsshell.TBSShell", "VERSION", Integer.valueOf(43608));
+    this.mDexLoader.setStaticField("com.tencent.tbs.tbsshell.TBSShell", "VERSION", Integer.valueOf(43609));
   }
   
   private void setSdkVersionNameInTbsShell()
   {
-    this.mDexLoader.invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "setTesSdkVersionName", new Class[] { String.class }, new Object[] { "3.6.0.1214" });
+    this.mDexLoader.invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "setTesSdkVersionName", new Class[] { String.class }, new Object[] { "3.6.0.1236" });
   }
   
   public Object createGamePlayer(Context paramContext)

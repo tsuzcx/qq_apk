@@ -98,7 +98,7 @@ public class PttSilkAndChangeVoiceSoHandler
     }
     int i = VcSystemInfo.f();
     if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload cpuArch = " + i + " isUserNeedDownload try match version=" + "7.6.3" + " data.version=" + ((PttSilkAndChangeVoiceSoData)localObject).version);
+      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload cpuArch = " + i + " isUserNeedDownload try match version=" + "7.6.8" + " data.version=" + ((PttSilkAndChangeVoiceSoData)localObject).version);
     }
     localObject = this.a.getPreferences();
     if (!((SharedPreferences)localObject).getBoolean("hasReportedCpuArch", false))

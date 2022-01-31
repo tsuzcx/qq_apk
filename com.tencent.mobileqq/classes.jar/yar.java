@@ -1,59 +1,81 @@
-import android.app.Dialog;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.OnViewPagerItemVisiableChangeListener;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.qphone.base.util.QLog;
 
 public class yar
-  extends Handler
+  implements ViewPager.OnPageChangeListener
 {
-  public yar(SelectMemberActivity paramSelectMemberActivity, Looper paramLooper)
+  public yar(VideoFilterViewPager paramVideoFilterViewPager) {}
+  
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
     }
-    do
-    {
-      do
-      {
-        return;
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
-        return;
-      } while ((this.a.b == null) || (!this.a.b.isShowing()));
-      this.a.b.dismiss();
-      this.a.setResult(-1);
-      if (!TextUtils.isEmpty(this.a.jdField_g_of_type_JavaLangString))
-      {
-        paramMessage = this.a.jdField_g_of_type_JavaLangString;
-        QQToast.a(this.a, 2, paramMessage, 1500).b(this.a.getTitleBarHeight());
-        postDelayed(new yas(this), 1500L);
-        return;
-      }
-      if (this.a.jdField_g_of_type_Boolean) {}
-      for (int i = 2131435998;; i = 2131435999)
-      {
-        paramMessage = this.a.getResources().getString(i);
-        break;
-      }
-    } while ((this.a.b == null) || (!this.a.b.isShowing()));
-    this.a.b.dismiss();
-    String str = (String)paramMessage.obj;
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131436000);
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "onPageSelected position: " + paramInt);
     }
-    QQToast.a(this.a, 1, paramMessage, 1500).b(this.a.getTitleBarHeight());
+    int i = VideoFilterViewPager.a(this.a).a(paramInt);
+    if ((VideoFilterViewPager.a(this.a) != null) && (i != 0))
+    {
+      VideoFilterViewPager.a(this.a).a(0);
+      VideoFilterViewPager.a(this.a, i);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener state: 0");
+      }
+    }
+    for (;;)
+    {
+      FlowCameraMqqAction.a("", "0X8007804", "", "", "", "");
+      Object localObject1 = VideoFilterViewPager.a(this.a).a(paramInt);
+      VideoFilterTools.a().a((FilterDesc)localObject1);
+      localObject1 = VideoFilterViewPager.a(this.a).a(paramInt);
+      if (localObject1 != null)
+      {
+        localObject2 = new yas(this, paramInt, (View)localObject1);
+        ((View)localObject1).setVisibility(0);
+        ((View)localObject1).postDelayed((Runnable)localObject2, 1800L);
+        ((View)localObject1).setTag(localObject2);
+        VideoFilterViewPager.a(this.a, (View)localObject1, paramInt, false);
+      }
+      localObject1 = VideoFilterViewPager.a(this.a).a(paramInt - 1);
+      Object localObject2 = VideoFilterViewPager.a(this.a).a(paramInt + 1);
+      if (localObject1 != null)
+      {
+        ((View)localObject1).removeCallbacks((Runnable)((View)localObject1).getTag());
+        ((View)localObject1).clearAnimation();
+      }
+      if (localObject2 != null)
+      {
+        ((View)localObject2).removeCallbacks((Runnable)((View)localObject2).getTag());
+        ((View)localObject2).clearAnimation();
+      }
+      return;
+      if ((VideoFilterViewPager.a(this.a) != null) && (VideoFilterViewPager.a(this.a).a(paramInt) == 0) && (VideoFilterViewPager.a(this.a) != 0))
+      {
+        VideoFilterViewPager.a(this.a).a(0);
+        VideoFilterViewPager.a(this.a, 0);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener state-check: 0");
+        }
+      }
+    }
   }
 }
 

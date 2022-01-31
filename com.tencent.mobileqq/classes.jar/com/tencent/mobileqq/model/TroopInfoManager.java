@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import aeiv;
+import aerf;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -229,48 +229,60 @@ public class TroopInfoManager
   {
     for (;;)
     {
-      TroopMessageNavigateInfo localTroopMessageNavigateInfo;
       try
       {
         if (!this.jdField_a_of_type_Boolean) {
           c();
         }
         Iterator localIterator = this.c.values().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        Object localObject2 = localIterator.next();
-        if (!(localObject2 instanceof List)) {
-          continue;
-        }
-        localObject2 = ((List)localObject2).iterator();
-        if (((Iterator)localObject2).hasNext())
+        i = 0;
+        if (localIterator.hasNext())
         {
-          localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)((Iterator)localObject2).next();
-          if (localTroopMessageNavigateInfo == null) {
+          Object localObject2 = localIterator.next();
+          if ((localObject2 instanceof List))
+          {
+            localObject2 = ((List)localObject2).iterator();
+            j = i;
+            if (!((Iterator)localObject2).hasNext()) {
+              break label254;
+            }
+            TroopMessageNavigateInfo localTroopMessageNavigateInfo = (TroopMessageNavigateInfo)((Iterator)localObject2).next();
+            if (localTroopMessageNavigateInfo == null) {
+              continue;
+            }
+            if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_ADD)
+            {
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 3, null);
+              i = 1;
+              continue;
+            }
+            if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_MODIFY)
+            {
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 4, null);
+              i = 1;
+              continue;
+            }
+            if (localTroopMessageNavigateInfo.status != TroopMessageNavigateInfo.STATUS_DELETE) {
+              continue;
+            }
+            this.c.remove(localTroopMessageNavigateInfo.troopCode);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 5, null);
+            i = 1;
             continue;
-          }
-          if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_ADD) {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 3, null);
           }
         }
         else
         {
-          continue;
-        }
-        if (localTroopMessageNavigateInfo.status != TroopMessageNavigateInfo.STATUS_MODIFY) {
-          break label157;
+          if (i != 0) {
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().f();
+          }
+          return;
         }
       }
       finally {}
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 4, null);
-      continue;
-      label157:
-      if (localTroopMessageNavigateInfo.status == TroopMessageNavigateInfo.STATUS_DELETE)
-      {
-        this.c.remove(localTroopMessageNavigateInfo.troopCode);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localTroopMessageNavigateInfo.troopCode, 1, localTroopMessageNavigateInfo.getTableName(), localTroopMessageNavigateInfo, 5, null);
-      }
+      int j = i;
+      label254:
+      int i = j;
     }
   }
   
@@ -298,10 +310,10 @@ public class TroopInfoManager
     //   29: aload_1
     //   30: invokevirtual 111	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   33: checkcast 113	java/util/List
-    //   36: new 169	com/tencent/mobileqq/model/TroopInfoManager$NavigationMsgComparator
+    //   36: new 171	com/tencent/mobileqq/model/TroopInfoManager$NavigationMsgComparator
     //   39: dup
-    //   40: invokespecial 170	com/tencent/mobileqq/model/TroopInfoManager$NavigationMsgComparator:<init>	()V
-    //   43: invokestatic 176	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   40: invokespecial 172	com/tencent/mobileqq/model/TroopInfoManager$NavigationMsgComparator:<init>	()V
+    //   43: invokestatic 178	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
     //   46: goto -24 -> 22
     //   49: astore_1
     //   50: aload_0
@@ -347,7 +359,7 @@ public class TroopInfoManager
     //   43: aload_1
     //   44: ifnull +16 -> 60
     //   47: aload_1
-    //   48: invokeinterface 179 1 0
+    //   48: invokeinterface 181 1 0
     //   53: istore 4
     //   55: iload 4
     //   57: ifeq +9 -> 66
@@ -358,7 +370,7 @@ public class TroopInfoManager
     //   64: iload_2
     //   65: ireturn
     //   66: aload_1
-    //   67: invokeinterface 183 1 0
+    //   67: invokeinterface 185 1 0
     //   72: istore_3
     //   73: iconst_0
     //   74: istore_2
@@ -367,7 +379,7 @@ public class TroopInfoManager
     //   77: if_icmpge +42 -> 119
     //   80: aload_1
     //   81: iload_2
-    //   82: invokeinterface 186 2 0
+    //   82: invokeinterface 188 2 0
     //   87: checkcast 74	com/tencent/mobileqq/data/TroopMessageNavigateInfo
     //   90: astore 5
     //   92: aload 5
@@ -380,7 +392,7 @@ public class TroopInfoManager
     //   106: istore_2
     //   107: goto -32 -> 75
     //   110: aload 5
-    //   112: getfield 189	com/tencent/mobileqq/data/TroopMessageNavigateInfo:type	I
+    //   112: getfield 191	com/tencent/mobileqq/data/TroopMessageNavigateInfo:type	I
     //   115: istore_2
     //   116: goto -54 -> 62
     //   119: iconst_m1
@@ -418,20 +430,20 @@ public class TroopInfoManager
     //   2: aload_0
     //   3: getfield 30	com/tencent/mobileqq/model/TroopInfoManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   6: aload_1
-    //   7: invokevirtual 191	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   7: invokevirtual 193	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   10: ifeq +22 -> 32
     //   13: aload_0
     //   14: getfield 30	com/tencent/mobileqq/model/TroopInfoManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   17: aload_1
-    //   18: invokevirtual 192	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   21: checkcast 194	java/lang/Long
-    //   24: invokevirtual 198	java/lang/Long:longValue	()J
+    //   18: invokevirtual 194	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   21: checkcast 196	java/lang/Long
+    //   24: invokevirtual 200	java/lang/Long:longValue	()J
     //   27: lstore_2
     //   28: aload_0
     //   29: monitorexit
     //   30: lload_2
     //   31: lreturn
-    //   32: ldc2_w 199
+    //   32: ldc2_w 201
     //   35: lstore_2
     //   36: goto -8 -> 28
     //   39: astore_1
@@ -885,7 +897,7 @@ public class TroopInfoManager
     //   43: aload_1
     //   44: ifnull +16 -> 60
     //   47: aload_1
-    //   48: invokeinterface 179 1 0
+    //   48: invokeinterface 181 1 0
     //   53: istore 4
     //   55: iload 4
     //   57: ifeq +11 -> 68
@@ -896,7 +908,7 @@ public class TroopInfoManager
     //   65: lload 5
     //   67: lreturn
     //   68: aload_1
-    //   69: invokeinterface 183 1 0
+    //   69: invokeinterface 185 1 0
     //   74: istore_3
     //   75: iconst_0
     //   76: istore_2
@@ -905,7 +917,7 @@ public class TroopInfoManager
     //   79: if_icmpge +43 -> 122
     //   82: aload_1
     //   83: iload_2
-    //   84: invokeinterface 186 2 0
+    //   84: invokeinterface 188 2 0
     //   89: checkcast 74	com/tencent/mobileqq/data/TroopMessageNavigateInfo
     //   92: astore 7
     //   94: aload 7
@@ -918,7 +930,7 @@ public class TroopInfoManager
     //   108: istore_2
     //   109: goto -32 -> 77
     //   112: aload 7
-    //   114: getfield 280	com/tencent/mobileqq/data/TroopMessageNavigateInfo:msgseq	J
+    //   114: getfield 282	com/tencent/mobileqq/data/TroopMessageNavigateInfo:msgseq	J
     //   117: lstore 5
     //   119: goto -56 -> 63
     //   122: lconst_0
@@ -955,7 +967,7 @@ public class TroopInfoManager
   
   protected void b()
   {
-    ThreadManager.post(new aeiv(this), 8, null, false);
+    ThreadManager.post(new aerf(this), 8, null, false);
   }
   
   public void b(String paramString)

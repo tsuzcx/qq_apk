@@ -1,21 +1,14 @@
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.OnVideoPlayListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.biz.now.NowVideoView;
 
 class kqk
   implements Runnable
 {
-  kqk(kqj paramkqj) {}
+  kqk(kqj paramkqj, ImageView paramImageView) {}
   
   public void run()
   {
-    if (this.a.a.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailVideoManager", 2, "onPlayStart time=" + System.currentTimeMillis());
-      }
-      this.a.a.a.a.f();
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_Kqj.a.a);
   }
 }
 

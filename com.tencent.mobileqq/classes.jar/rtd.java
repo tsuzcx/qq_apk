@@ -1,26 +1,71 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.utils.VipUtils;
+import java.lang.ref.WeakReference;
+import mqq.manager.VerifyDevLockManager.NotifyType;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class rtd
-  implements DialogInterface.OnClickListener
+public class rtd
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  rtd(rtc paramrtc, int paramInt) {}
+  private WeakReference a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public rtd(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
   {
-    paramDialogInterface = ApolloConstant.I + "&actionId=" + this.jdField_a_of_type_Int + "&_bid=2282";
-    Intent localIntent = new Intent(this.jdField_a_of_type_Rtc.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramDialogInterface);
-    this.jdField_a_of_type_Rtc.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(localIntent);
-    VipUtils.a(this.jdField_a_of_type_Rtc.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "vip_alert_view", ApolloUtil.b(this.jdField_a_of_type_Rtc.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { "" + this.jdField_a_of_type_Int, "1" });
+    this.a = new WeakReference(paramVerifyDevLockObserver);
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+    this.a = null;
+  }
+  
+  public int getSeq()
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        return localVerifyDevLockObserver.getSeq();
+      }
+    }
+    return super.getSeq();
+  }
+  
+  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        localVerifyDevLockObserver.onRecvNotice(paramNotifyType, paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
+      }
+    }
+  }
+  
+  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null) {
+        localVerifyDevLockObserver.onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
+      }
+    }
+  }
+  
+  public void setSeq(int paramInt)
+  {
+    if (this.a != null)
+    {
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
+      if (localVerifyDevLockObserver != null)
+      {
+        localVerifyDevLockObserver.setSeq(paramInt);
+        return;
+      }
+    }
+    super.setSeq(paramInt);
   }
 }
 

@@ -1,57 +1,37 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import com.tracking.sdk.TrackerManager;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleStickerTrackerOrigin;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
-import java.util.HashMap;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
+import com.tencent.biz.qqstory.network.request.GetTagListRequest;
+import com.tencent.biz.qqstory.network.response.GetTagListResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import dov.com.tencent.biz.qqstory.takevideo.tag.IEditVideoTagView;
+import java.util.List;
 
 public class aono
-  extends Handler
+  extends CmdTaskManger.UIThreadCallback
 {
-  public aono(SimpleStickerTrackerOrigin paramSimpleStickerTrackerOrigin, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aono(EditVideoTagPresenter paramEditVideoTagPresenter) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(@NonNull GetTagListRequest paramGetTagListRequest, @Nullable GetTagListResponse paramGetTagListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    switch (paramMessage.what)
+    SLog.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramGetTagListResponse != null))
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (byte[])paramMessage.obj;
-      TrackerManager.newInstance().openTrack(paramMessage, 2, 0, this.a.jdField_a_of_type_Float, this.a.b, this.a.c, this.a.d, SimpleStickerTrackerOrigin.a(this.a), SimpleStickerTrackerOrigin.b(this.a), 1.0F);
-      this.a.jdField_a_of_type_Boolean = true;
-      return;
-    case 2: 
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleStickerTrackerOrigin", 2, "handle frame start");
-      }
-      SimpleStickerTrackerOrigin.a(this.a).clear();
-      return;
-    case 3: 
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleStickerTrackerOrigin", 2, "handle frame in  , thread id=" + Thread.currentThread().getId());
-      }
-      SimpleStickerTrackerOrigin.a(this.a);
-      return;
+      SLog.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramGetTagListResponse.toString());
+      EditVideoTagPresenter.a(this.a).addAll(paramGetTagListResponse.jdField_a_of_type_JavaUtilList);
+      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.jdField_a_of_type_JavaLangString);
+      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.b);
+      ThreadManager.executeOnSubThread(new aonp(this));
     }
-    long l1 = System.currentTimeMillis();
-    long l2 = SimpleStickerTrackerOrigin.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTrackerOrigin", 2, "handle finish cos time  =" + (l1 - l2));
-    }
-    if (SimpleStickerTrackerOrigin.a(this.a) != null)
+    for (;;)
     {
-      paramMessage = new HashMap();
-      paramMessage.putAll(SimpleStickerTrackerOrigin.a(this.a));
-      SimpleStickerTrackerOrigin.a(this.a).a(paramMessage);
+      EditVideoTagPresenter.a(this.a).b(paramErrorMessage.errorCode, EditVideoTagPresenter.a(this.a), this.a.a());
+      return;
+      SLog.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
-    this.a.a();
   }
 }
 

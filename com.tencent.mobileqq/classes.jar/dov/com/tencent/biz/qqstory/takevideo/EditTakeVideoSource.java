@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import ansg;
+import aoax;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.troop.data.MediaInfo;
 import java.io.File;
@@ -12,7 +12,7 @@ import java.io.File;
 public class EditTakeVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new ansg();
+  public static final Parcelable.Creator CREATOR = new aoax();
   @NonNull
   public final LocalMediaInfo a;
   @NonNull

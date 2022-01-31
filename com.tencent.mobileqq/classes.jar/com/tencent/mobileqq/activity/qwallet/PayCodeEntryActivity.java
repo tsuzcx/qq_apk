@@ -27,13 +27,13 @@ import java.io.File;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xab;
-import xac;
-import xad;
-import xae;
-import xaf;
-import xag;
-import xah;
+import xfr;
+import xfs;
+import xft;
+import xfu;
+import xfv;
+import xfw;
+import xfx;
 
 public class PayCodeEntryActivity
   extends BaseActivity
@@ -44,7 +44,7 @@ public class PayCodeEntryActivity
   private String jdField_a_of_type_JavaLangString = "";
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private xah jdField_a_of_type_Xah;
+  private xfx jdField_a_of_type_Xfx;
   private boolean jdField_a_of_type_Boolean;
   private String b = "wlx_city_gray_config_";
   
@@ -67,13 +67,13 @@ public class PayCodeEntryActivity
       if (QLog.isColorLevel()) {
         QLog.d("PayCodeEntryActivity", 2, "wlx checkByDbFileExist is exists , go to default wlxpage");
       }
-      xag localxag = new xag(this, null);
-      localxag.jdField_a_of_type_JavaLangString = "";
-      localxag.b = "";
-      localxag.c = "乘车码";
-      localxag.d = "公交地铁刷码出行";
-      localxag.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localxag);
+      xfw localxfw = new xfw(this, null);
+      localxfw.jdField_a_of_type_JavaLangString = "";
+      localxfw.b = "";
+      localxfw.c = "乘车码";
+      localxfw.d = "公交地铁刷码出行";
+      localxfw.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localxfw);
       b();
       return;
     }
@@ -99,16 +99,16 @@ public class PayCodeEntryActivity
   private void b()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    ((TextView)findViewById(2131363381)).setText("付款");
-    ((TextView)findViewById(2131363245)).setOnClickListener(new xab(this));
-    ((TextView)findViewById(2131368104)).setOnClickListener(new xac(this));
-    findViewById(2131368095).setOnClickListener(new xad(this));
-    Object localObject1 = (xag)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    findViewById(2131368096).setOnClickListener(new xae(this, (xag)localObject1));
-    ((TextView)findViewById(2131368098)).setText(((xag)localObject1).c);
-    ((TextView)findViewById(2131368099)).setText(((xag)localObject1).d);
-    Object localObject2 = (ImageView)findViewById(2131368097);
-    if (((xag)localObject1).jdField_a_of_type_Boolean) {
+    ((TextView)findViewById(2131363400)).setText("付款");
+    ((TextView)findViewById(2131363262)).setOnClickListener(new xfr(this));
+    ((TextView)findViewById(2131368119)).setOnClickListener(new xfs(this));
+    findViewById(2131368110).setOnClickListener(new xft(this));
+    Object localObject1 = (xfw)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    findViewById(2131368111).setOnClickListener(new xfu(this, (xfw)localObject1));
+    ((TextView)findViewById(2131368113)).setText(((xfw)localObject1).c);
+    ((TextView)findViewById(2131368114)).setText(((xfw)localObject1).d);
+    Object localObject2 = (ImageView)findViewById(2131368112);
+    if (((xfw)localObject1).jdField_a_of_type_Boolean) {
       ((ImageView)localObject2).setVisibility(0);
     }
     while (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)
@@ -116,22 +116,22 @@ public class PayCodeEntryActivity
       return;
       ((ImageView)localObject2).setVisibility(8);
     }
-    localObject1 = (xag)this.jdField_a_of_type_JavaUtilArrayList.get(1);
-    localObject2 = findViewById(2131368100);
+    localObject1 = (xfw)this.jdField_a_of_type_JavaUtilArrayList.get(1);
+    localObject2 = findViewById(2131368115);
     ((View)localObject2).setVisibility(0);
-    ((View)localObject2).setOnClickListener(new xaf(this, (xag)localObject1));
-    ((TextView)findViewById(2131368102)).setText(((xag)localObject1).c);
-    ((TextView)findViewById(2131368103)).setText(((xag)localObject1).d);
-    localObject2 = (ImageView)findViewById(2131368101);
-    if (((xag)localObject1).jdField_a_of_type_Boolean) {
+    ((View)localObject2).setOnClickListener(new xfv(this, (xfw)localObject1));
+    ((TextView)findViewById(2131368117)).setText(((xfw)localObject1).c);
+    ((TextView)findViewById(2131368118)).setText(((xfw)localObject1).d);
+    localObject2 = (ImageView)findViewById(2131368116);
+    if (((xfw)localObject1).jdField_a_of_type_Boolean) {
       ((ImageView)localObject2).setVisibility(0);
     }
     for (;;)
     {
       localObject1 = new IntentFilter();
       ((IntentFilter)localObject1).addAction("wlx.plugin.paycode.enterpage.exit");
-      this.jdField_a_of_type_Xah = new xah(this, null);
-      registerReceiver(this.jdField_a_of_type_Xah, (IntentFilter)localObject1);
+      this.jdField_a_of_type_Xfx = new xfx(this, null);
+      registerReceiver(this.jdField_a_of_type_Xfx, (IntentFilter)localObject1);
       return;
       ((ImageView)localObject2).setVisibility(8);
     }
@@ -301,11 +301,11 @@ public class PayCodeEntryActivity
       localObject3 = ((JSONArray)localObject1).optJSONObject(i);
       if (localObject3 != null)
       {
-        localObject4 = new xag(this, null);
-        ((xag)localObject4).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("ykt_id");
-        ((xag)localObject4).b = ((JSONObject)localObject2).optString("city_code");
-        ((xag)localObject4).c = ((JSONObject)localObject3).optString("show_name");
-        ((xag)localObject4).d = ((JSONObject)localObject3).optString("show_tips");
+        localObject4 = new xfw(this, null);
+        ((xfw)localObject4).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("ykt_id");
+        ((xfw)localObject4).b = ((JSONObject)localObject2).optString("city_code");
+        ((xfw)localObject4).c = ((JSONObject)localObject3).optString("show_name");
+        ((xfw)localObject4).d = ((JSONObject)localObject3).optString("show_tips");
         if (((JSONObject)localObject3).optInt("show_icon") != 1) {
           break label674;
         }
@@ -315,7 +315,7 @@ public class PayCodeEntryActivity
     label674:
     for (boolean bool = true;; bool = false)
     {
-      ((xag)localObject4).jdField_a_of_type_Boolean = bool;
+      ((xfw)localObject4).jdField_a_of_type_Boolean = bool;
       this.jdField_a_of_type_JavaUtilArrayList.add(localObject4);
       i += 1;
       break label422;
@@ -368,7 +368,7 @@ public class PayCodeEntryActivity
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("type=").append(paramString2);
-    localStringBuilder.append("&qqversion=").append("7.6.3");
+    localStringBuilder.append("&qqversion=").append("7.6.8");
     localStringBuilder.append("&city=").append(this.jdField_a_of_type_JavaLangString);
     localStringBuilder.append("&pageid=").append(a());
     localStringBuilder.append("&dotid=").append(a()).append(paramString3);
@@ -395,7 +395,7 @@ public class PayCodeEntryActivity
   {
     super.doOnCreate(paramBundle);
     setContentView(2130969817);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362840));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362845));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setFitsSystemWindows(true);
@@ -455,8 +455,8 @@ public class PayCodeEntryActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Xah != null) {
-      unregisterReceiver(this.jdField_a_of_type_Xah);
+    if (this.jdField_a_of_type_Xfx != null) {
+      unregisterReceiver(this.jdField_a_of_type_Xfx);
     }
   }
   

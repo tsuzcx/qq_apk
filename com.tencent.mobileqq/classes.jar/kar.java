@@ -1,29 +1,22 @@
-import com.tencent.av.ui.ControlUIObserver;
-import com.tencent.av.ui.VideoControlUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class kar
-  extends ControlUIObserver
+  implements DialogInterface.OnClickListener
 {
-  public kar(VideoControlUI paramVideoControlUI) {}
+  public kar(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.u == 2) {
-      if (!this.a.g())
-      {
-        if (paramBoolean) {
-          this.a.b.update(null, new Object[] { Integer.valueOf(110) });
-        }
-      }
-      else {
-        this.a.v(paramInt);
-      }
-    }
+    paramDialogInterface.dismiss();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063FA", "0X80063FA", 5, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kar
  * JD-Core Version:    0.7.0.1
  */

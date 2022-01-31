@@ -22,7 +22,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import utg;
+import uyg;
 
 public class ColorPicker
   extends RDBaseListLayout
@@ -118,7 +118,7 @@ public class ColorPicker
     localViewHolder.a(localRelativeLayout);
     localRelativeLayout.setOnClickListener(this);
     localViewHolder.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    Object localObject = getContext().getResources().getDrawable(2130837563);
+    Object localObject = getContext().getResources().getDrawable(2130837562);
     localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
     localObject = new RelativeLayout.LayoutParams(-1, -1);
     localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
@@ -133,7 +133,7 @@ public class ColorPicker
       ((RelativeLayout.LayoutParams)localObject).setMargins(paramInt, paramInt, paramInt, paramInt);
       ((RelativeLayout)localViewHolder.a()).addView(localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView);
       localRelativeLayout.addView(localViewHolder.jdField_a_of_type_AndroidWidgetImageView);
-      localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setListener(new utg(this, localViewHolder));
+      localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setListener(new uyg(this, localViewHolder));
       localViewHolder.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       if (paramColorPickerData.a != 0) {
         break;

@@ -1,16 +1,17 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class oef
-  extends PtvTemplateManager.DoodleInfoLoadObserver
+  implements DialogInterface.OnClickListener
 {
-  public oef(EditVideoDoodle paramEditVideoDoodle) {}
+  public oef(StoryListPresenter paramStoryListPresenter) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
-    this.a.b();
+    StoryReportor.a("home_page", "guide_known", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
   }
 }
 

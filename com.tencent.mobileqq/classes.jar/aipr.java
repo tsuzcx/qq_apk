@@ -1,40 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
 
 public class aipr
-  extends aipl
+  implements Runnable
 {
-  private int a;
+  public aipr(SubAccountManager paramSubAccountManager, SubAccountInfo paramSubAccountInfo) {}
   
-  public aipr(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
+  public void run()
   {
-    super(paramForwardSdkShareProcessor);
-    this.jdField_a_of_type_JavaLangString = "ImageUploadStep";
-  }
-  
-  protected boolean a()
-  {
-    return ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get();
-  }
-  
-  protected void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "ImageUploadStep|process|ready=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + ",remoteUrl=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + " ,localUrl=" + ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
+    if (this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountManager.a(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      f();
-      return;
-    }
-    if (ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get())
-    {
-      b();
-      return;
-    }
-    ThreadManager.post(new aips(this), 8, null, true);
   }
 }
 

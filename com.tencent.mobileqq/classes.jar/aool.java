@@ -1,65 +1,45 @@
-import android.text.TextUtils;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.animation.Animator;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowPlusPanel;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
 
 public class aool
-  implements Runnable
+  extends aooa
 {
-  public aool(PtvTemplateManager paramPtvTemplateManager) {}
+  public aool(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (PtvTemplateManager.b == null) {}
-    File[] arrayOfFile;
-    do
-    {
-      return;
-      arrayOfFile = PtvTemplateManager.b.listFiles();
-    } while ((arrayOfFile == null) || (arrayOfFile.length == 0));
-    int k = arrayOfFile.length;
-    int i = 0;
-    label32:
-    File localFile;
-    if (i < k)
-    {
-      localFile = arrayOfFile[i];
-      if ((localFile != null) && (localFile.isFile())) {
-        break label63;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationEnd <<===");
     }
-    label63:
-    label208:
-    for (;;)
+    this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.x();
+    this.a.m();
+    if (!this.a.g) {
+      this.a.e(false);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationStart ===>>");
+    }
+    this.a.e.setVisibility(0);
+    this.a.f.setBackgroundColor(this.a.getResources().getColor(2131493275));
+    this.a.d = true;
+    if (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel != null) {
+      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel.b();
+    }
+    if (this.a.g)
     {
-      i += 1;
-      break label32;
-      break;
-      Object localObject = localFile.getName();
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).contains(".")))
-      {
-        localObject = this.a.a.doodleInfos.iterator();
-        PtvTemplateManager.DoodleInfo localDoodleInfo;
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localDoodleInfo = (PtvTemplateManager.DoodleInfo)((Iterator)localObject).next();
-        } while ((localDoodleInfo == null) || (TextUtils.isEmpty(localDoodleInfo.doodleName)) || (!localFile.getName().equalsIgnoreCase(localDoodleInfo.doodleName)));
-        for (int j = 1;; j = 0)
-        {
-          if (j != 0) {
-            break label208;
-          }
-          localFile.deleteOnExit();
-          new File(PtvTemplateManager.c + localFile.getName()).deleteOnExit();
-          break;
-        }
-      }
+      this.a.b.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.a.b.setLongClickable(false);
     }
   }
 }

@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.apollo.GLTextureView;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.adapter.BuddyListAdapter;
+import java.lang.ref.WeakReference;
 
 public class ynj
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public ynj(GLTextureView paramGLTextureView) {}
+  private WeakReference a;
   
-  public void run()
+  public ynj(BuddyListAdapter paramBuddyListAdapter)
   {
-    GLTextureView.access$1800(this.a, 1.0F);
+    this.a = new WeakReference(paramBuddyListAdapter);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    BuddyListAdapter localBuddyListAdapter = (BuddyListAdapter)this.a.get();
+    if (localBuddyListAdapter != null) {
+      return localBuddyListAdapter.onLongClick(paramView);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ynj
  * JD-Core Version:    0.7.0.1
  */

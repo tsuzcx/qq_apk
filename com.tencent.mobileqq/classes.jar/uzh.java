@@ -1,53 +1,43 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.ark.ModuleRegister;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
+import com.tencent.mobileqq.ark.ArkAppCenterEvent;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.qphone.base.util.QLog;
 
-public class uzh
-  extends ClickableSpan
+public final class uzh
+  implements ark.ApplicationCallback
 {
-  public uzh(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
-  
-  public void onClick(View paramView)
+  public void AppCreate(String paramString, ark.Application paramApplication)
   {
-    Intent localIntent;
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, EditActivity.class);
-      paramView = ((DiscussionManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if ((paramView == null) || (!paramView.hasRenamed())) {
-        break label193;
-      }
-    }
-    label193:
-    for (paramView = paramView.discussionName;; paramView = "")
-    {
-      localIntent.putExtra("title", 2131433993);
-      localIntent.putExtra("action", 102);
-      localIntent.putExtra("limit", 48);
-      localIntent.putExtra("current", paramView);
-      localIntent.putExtra("canPostNull", false);
-      localIntent.putExtra("multiLine", false);
-      localIntent.putExtra("selfSet_leftViewText", this.a.jdField_a_of_type_AndroidContentContext.getString(2131432414));
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 6002);
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800666A", "0X800666A", 0, 0, "", "", "", "");
-      return;
-    }
+    ArkAppCenterEvent.a(0, paramString, null);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void AppDestroy(String paramString, ark.Application paramApplication)
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    ArkAppCenterEvent.a(1, paramString, null);
+  }
+  
+  public void OutputScriptError(String paramString1, String paramString2)
+  {
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
+    }
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkAppContainer", 1, String.format("%s.script error: %s", new Object[] { str, paramString1 }));
+    }
+    ArkAppDataReport.c(null, str, paramString1);
+  }
+  
+  public void RegisterModules(ark.ModuleRegister paramModuleRegister, String paramString)
+  {
+    ArkAppModuleReg.a(paramModuleRegister, paramString);
   }
 }
 

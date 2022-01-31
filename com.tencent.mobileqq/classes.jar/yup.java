@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.apollo.store.webview.ApolloUrlInterceptor;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.apollo.ai.ApolloAIActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class yup
-  implements Runnable
+  implements ClickableColorSpanTextView.SpanClickListener
 {
-  public yup(ApolloUrlInterceptor paramApolloUrlInterceptor) {}
+  public yup(ApolloAIActivity paramApolloAIActivity) {}
   
-  public void run()
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    ApolloUrlInterceptor.a(this.a);
+    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

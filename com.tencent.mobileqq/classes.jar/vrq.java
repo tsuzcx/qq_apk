@@ -1,40 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
 
 public class vrq
-  extends PublicAccountObserver
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  public vrq(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  AIOGalleryAdapter a;
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public vrq(AIOGalleryAdapter paramAIOGalleryAdapter)
   {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
-    }
+    this.a = paramAIOGalleryAdapter;
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onPlayRepeat(int paramInt)
   {
-    if (paramBoolean) {
-      this.a.c(this.a.a.getIntent());
+    if (paramInt != 1) {
+      return;
     }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c(this.a.a.getIntent());
-    }
-  }
-  
-  public void v_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
-    }
+    new Handler(Looper.getMainLooper()).post(new vrr(this));
   }
 }
 

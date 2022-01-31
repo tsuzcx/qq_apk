@@ -1,19 +1,28 @@
-import com.tencent.av.gameplay.ARNativeBridge;
-import com.tencent.av.ui.GamePlayView;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
 public class jux
-  implements Runnable
+  implements URLDrawable.URLDrawableListener
 {
-  public jux(GamePlayView paramGamePlayView, byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public jux(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, URLDrawable paramURLDrawable) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    GamePlayView.a(this.jdField_a_of_type_ComTencentAvUiGamePlayView).native_updateParticleTexture(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
+      DoubleVideoCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jux
  * JD-Core Version:    0.7.0.1
  */

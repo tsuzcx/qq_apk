@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import java.util.Comparator;
+import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class yvt
-  implements Comparator
+  implements Runnable
 {
-  public yvt(ApolloDaoManager paramApolloDaoManager) {}
+  public yvt(ApolloGameStateMachine paramApolloGameStateMachine) {}
   
-  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
+  public void run()
   {
-    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
-      return 0;
+    if ((!ApolloGameStateMachine.a.get()) && (ApolloGameStateMachine.a(this.a) != null))
+    {
+      ThreadManager.removeJobFromThreadPool(ApolloGameStateMachine.a(this.a), 16);
+      ThreadManager.excute(ApolloGameStateMachine.a(this.a), 16, null, true);
     }
-    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
-      return 1;
-    }
-    return -1;
   }
 }
 

@@ -7,44 +7,44 @@ import android.support.v4.app.Fragment;
 public class PublicBaseFragment
   extends Fragment
 {
-  public void a(Activity paramActivity) {}
+  public void initWindowStyleAndAnimation(Activity paramActivity) {}
   
-  public void a(Intent paramIntent) {}
-  
-  public boolean a()
+  public boolean isSupportScreenShot()
   {
     return true;
   }
   
-  public void b(boolean paramBoolean) {}
-  
-  public boolean b()
+  public boolean isWrapContent()
   {
     return true;
   }
   
-  public boolean c()
+  public boolean needImmersive()
   {
     return true;
   }
   
-  public boolean d()
+  public boolean needStatusTrans()
+  {
+    return true;
+  }
+  
+  public void onAccountChanged() {}
+  
+  public boolean onBackEvent()
   {
     return false;
   }
   
-  public boolean i()
-  {
-    return true;
-  }
+  public void onFinish() {}
   
-  public void k() {}
+  public void onNewIntent(Intent paramIntent) {}
   
-  public void l() {}
+  public void onPostThemeChanged() {}
   
-  public void m() {}
+  public void onPreThemeChanged() {}
   
-  public void u_() {}
+  public void onWindowFocusChanged(boolean paramBoolean) {}
 }
 
 

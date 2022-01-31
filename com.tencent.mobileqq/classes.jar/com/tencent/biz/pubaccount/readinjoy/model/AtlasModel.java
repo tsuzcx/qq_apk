@@ -7,8 +7,9 @@ public class AtlasModel
 {
   public static final int TYPE_IMAGE = 1;
   public static final int TYPE_IMAGE_LIST = 3;
+  public static final int TYPE_LOADING_MORE_VIEW = 4;
   public static final int TYPE_RECOMMEND_LIST = 2;
-  public static final int TYPE_TOTAL_SIZE = 3;
+  public static final int TYPE_TOTAL_SIZE = 4;
   public String jumpUrl;
   public long modelEnterTime;
   public long modelExitTime;

@@ -1,17 +1,13 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditDoodleExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import dov.com.qq.im.capture.data.CaptureComboManager;
 
 public class antx
   implements Runnable
 {
-  public antx(EditVideoGuide paramEditVideoGuide) {}
+  public antx(CaptureComboManager paramCaptureComboManager) {}
   
   public void run()
   {
-    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.a.a(EditDoodleExport.class);
-    if (localEditDoodleExport != null) {
-      localEditDoodleExport.c();
-    }
+    this.a.d();
   }
 }
 

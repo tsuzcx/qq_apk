@@ -179,14 +179,14 @@ public class ComponentInfo
       {
         localObject = new JSONObject(((AdvertisementInfo)localObject).mAdExt);
         if (PackageUtil.a(getContext(), ((JSONObject)localObject).optString("pkg_name"))) {
-          this.b.setText(getContext().getString(2131438686));
+          this.b.setText(getContext().getString(2131438709));
         }
         for (;;)
         {
           label72:
           this.b.setVisibility(0);
           return;
-          this.b.setText(getContext().getString(2131438685));
+          this.b.setText(getContext().getString(2131438708));
         }
       }
       catch (JSONException localJSONException)
@@ -206,11 +206,11 @@ public class ComponentInfo
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130969585, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366878));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramContext.findViewById(2131362754));
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969581, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366877));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramContext.findViewById(2131362759));
     this.b = ((TextView)paramContext.findViewById(2131367049));
-    this.c = ((TextView)paramContext.findViewById(2131366880));
+    this.c = ((TextView)paramContext.findViewById(2131366879));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramContext.findViewById(2131367020));
   }
   

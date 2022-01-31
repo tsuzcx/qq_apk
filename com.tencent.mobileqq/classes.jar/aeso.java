@@ -1,16 +1,16 @@
-class aeso
-  implements Runnable
+import android.media.MediaPlayer;
+import android.os.Looper;
+import com.tencent.mobileqq.music.SongInfo;
+
+public class aeso
 {
-  aeso(aesn paramaesn, String paramString) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_Aesn.a.a(this.jdField_a_of_type_JavaLangString);
-  }
+  public MediaPlayer a;
+  public Looper a;
+  public SongInfo a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeso
  * JD-Core Version:    0.7.0.1
  */

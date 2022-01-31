@@ -1,18 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.mobileqq.armap.ArMapHandler;
+import com.tencent.mobileqq.armap.ArMapInterface;
+import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.mobileqq.armap.map.ARGridMapViewDialog.POIExtarData;
 
 public class abns
-  implements AdapterView.OnItemSelectedListener
+  implements Runnable
 {
-  public abns(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public abns(ARGridMapViewDialog paramARGridMapViewDialog, ARGridMapViewDialog.POIExtarData paramPOIExtarData) {}
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    this.a.b = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a.addObserver(ARGridMapViewDialog.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog));
+    ((ArMapHandler)this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a.a(2)).a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog$POIExtarData.b, this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog$POIExtarData.a, null);
   }
 }
 

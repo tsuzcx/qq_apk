@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class rmk
   implements Runnable
 {
-  public rmk(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public rmk(AddAccountActivity paramAddAccountActivity) {}
   
   public void run()
   {
-    AssociatedAccountActivity.b(this.a);
+    AddAccountActivity.a(this.a.app, this.a.app.getAccount());
   }
 }
 

@@ -1,21 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class roo
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public roo(AutoRemarkActivity paramAutoRemarkActivity) {}
+  public roo(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TextUtils.isEmpty(this.a.a)) {}
-    while (((FriendsManager)this.a.app.getManager(50)).a(this.a.a) != null) {
-      return;
-    }
-    ((FriendListHandler)this.a.app.a(1)).b(this.a.a);
+    this.a.a.cancel();
   }
 }
 

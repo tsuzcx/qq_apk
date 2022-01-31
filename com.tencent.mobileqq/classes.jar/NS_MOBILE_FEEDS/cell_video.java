@@ -16,6 +16,7 @@ public final class cell_video
   static Map cache_gaussPicUrl;
   static s_kingcard cache_stKingCard;
   static ArrayList cache_vcCovers;
+  static int cache_video_click_type = 0;
   static int cache_video_show_type;
   static int cache_video_source;
   static s_videoremark cache_videoremark;
@@ -42,6 +43,7 @@ public final class cell_video
   public s_kingcard stKingCard;
   public String toast = "";
   public ArrayList vcCovers;
+  public int video_click_type;
   public int video_form;
   public int video_show_type;
   public int video_source;
@@ -81,7 +83,7 @@ public final class cell_video
   
   public cell_video() {}
   
-  public cell_video(String paramString1, String paramString2, Map paramMap1, int paramInt1, String paramString3, String paramString4, int paramInt2, byte paramByte1, long paramLong, Map paramMap2, byte paramByte2, int paramInt3, String paramString5, Map paramMap3, s_videoremark params_videoremark, int paramInt4, boolean paramBoolean1, int paramInt5, String paramString6, String paramString7, int paramInt6, int paramInt7, boolean paramBoolean2, int paramInt8, String paramString8, boolean paramBoolean3, boolean paramBoolean4, int paramInt9, ArrayList paramArrayList, int paramInt10, Map paramMap4, s_weishi params_weishi, s_kingcard params_kingcard, s_button params_button)
+  public cell_video(String paramString1, String paramString2, Map paramMap1, int paramInt1, String paramString3, String paramString4, int paramInt2, byte paramByte1, long paramLong, Map paramMap2, byte paramByte2, int paramInt3, String paramString5, Map paramMap3, s_videoremark params_videoremark, int paramInt4, boolean paramBoolean1, int paramInt5, String paramString6, String paramString7, int paramInt6, int paramInt7, boolean paramBoolean2, int paramInt8, String paramString8, boolean paramBoolean3, boolean paramBoolean4, int paramInt9, ArrayList paramArrayList, int paramInt10, Map paramMap4, s_weishi params_weishi, s_kingcard params_kingcard, s_button params_button, int paramInt11)
   {
     this.videoid = paramString1;
     this.videourl = paramString2;
@@ -117,6 +119,7 @@ public final class cell_video
     this.weishi = params_weishi;
     this.stKingCard = params_kingcard;
     this.bottom_button = params_button;
+    this.video_click_type = paramInt11;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -155,6 +158,7 @@ public final class cell_video
     this.weishi = ((s_weishi)paramJceInputStream.read(cache_weishi, 31, false));
     this.stKingCard = ((s_kingcard)paramJceInputStream.read(cache_stKingCard, 32, false));
     this.bottom_button = ((s_button)paramJceInputStream.read(cache_bottom_button, 33, false));
+    this.video_click_type = paramJceInputStream.read(this.video_click_type, 34, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -227,6 +231,7 @@ public final class cell_video
     if (this.bottom_button != null) {
       paramJceOutputStream.write(this.bottom_button, 33);
     }
+    paramJceOutputStream.write(this.video_click_type, 34);
   }
 }
 

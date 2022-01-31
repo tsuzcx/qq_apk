@@ -1,24 +1,24 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
+import com.tencent.biz.pubaccount.readinjoy.view.RainView.AnimationEndListener;
+import java.lang.ref.WeakReference;
 
 public class ldk
-  implements Runnable
+  implements RainView.AnimationEndListener
 {
-  public ldk(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
+  private WeakReference a;
   
-  public void run()
+  public ldk(ReadInJoyRainAnimationController paramReadInJoyRainAnimationController)
   {
-    if (this.jdField_a_of_type_Int <= 0)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(2131433297);
+    this.a = new WeakReference(paramReadInJoyRainAnimationController);
+  }
+  
+  public void a()
+  {
+    ReadInJoyRainAnimationController localReadInJoyRainAnimationController = (ReadInJoyRainAnimationController)this.a.get();
+    if ((localReadInJoyRainAnimationController == null) || (!localReadInJoyRainAnimationController.b())) {
       return;
     }
-    if (this.jdField_a_of_type_Int > 99)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getString(2131433297), Integer.valueOf(99) }));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getString(2131433297), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    ReadInJoyRainAnimationController.a(localReadInJoyRainAnimationController).sendEmptyMessage(1);
   }
 }
 

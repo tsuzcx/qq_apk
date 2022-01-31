@@ -1,31 +1,33 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.gaudio.BaseGaInvite;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.pendant.EffectPendantTips;
 
-@SuppressLint({"HandlerLeak"})
 public class jig
-  extends Handler
+  implements Runnable
 {
-  public jig(BaseGaInvite paramBaseGaInvite) {}
+  public jig(EffectPendantTips paramEffectPendantTips, int paramInt1, int paramInt2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    try
     {
-    default: 
-      return;
-    case 0: 
-      this.a.b();
+      if (this.jdField_a_of_type_Int != 0)
+      {
+        String str = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.a(EffectPendantTips.a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips), this.jdField_a_of_type_Int);
+        if (!TextUtils.isEmpty(str)) {
+          this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.b(this.b, str);
+        }
+      }
       return;
     }
-    this.a.a("Msg");
-    super.sendEmptyMessageDelayed(1, 2000L);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jig
  * JD-Core Version:    0.7.0.1
  */

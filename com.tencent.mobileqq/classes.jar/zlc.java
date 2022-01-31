@@ -1,15 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.FriendListHandler;
 
-class zlc
-  implements Runnable
+public class zlc
 {
-  zlc(zlb paramzlb, Context paramContext, Intent paramIntent) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
   
-  public void run()
+  public zlc(FriendListHandler paramFriendListHandler)
   {
-    QQAppInterface.a(this.jdField_a_of_type_Zlb.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 

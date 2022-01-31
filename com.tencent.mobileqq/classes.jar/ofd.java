@@ -1,16 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoLabel;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
 public class ofd
-  implements View.OnClickListener
+  extends SimpleJob
 {
-  public ofd(EditVideoLabel paramEditVideoLabel) {}
+  public ofd(FeedSegment paramFeedSegment, List paramList) {}
   
-  public void onClick(View paramView)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.a.a.a(0);
+    TVKPreloader.a();
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.toArray();
+    int j = paramJobContext.length;
+    int i = 0;
+    while (i < j)
+    {
+      TVKPreloader.a(paramJobContext[i].toString());
+      i += 1;
+    }
+    return null;
   }
 }
 

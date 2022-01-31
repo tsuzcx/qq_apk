@@ -1,16 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScanTask;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScaner;
 
 public class ajmo
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public ajmo(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public ajmo(TroopFileScaner paramTroopFileScaner, long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return false;
+    TroopFileScaner.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScaner, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScanTask);
   }
 }
 

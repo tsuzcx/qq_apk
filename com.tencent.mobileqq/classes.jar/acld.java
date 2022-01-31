@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiManager;
+import com.tencent.mobileqq.emoticon.EmotionJsonDownloadListener;
 
-class acld
-  implements DialogInterface.OnDismissListener
+public class acld
+  extends EmotionJsonDownloadListener
 {
-  acld(acla paramacla) {}
+  public acld(EmojiManager paramEmojiManager, String paramString, Object paramObject) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(EmoticonPackage arg1, int paramInt, Bundle paramBundle)
   {
-    acla.a(this.a).dismiss();
+    if (???.epId.equals(this.jdField_a_of_type_JavaLangString)) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaLangObject.notify();
+        return;
+      }
+    }
   }
 }
 

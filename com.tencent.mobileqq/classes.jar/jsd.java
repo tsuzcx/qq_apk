@@ -1,22 +1,23 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.utils.TraeHelper;
+import com.tencent.av.gaudio.VideoViewInfo;
+import java.util.Comparator;
 
-public class jsd
-  implements Runnable
+class jsd
+  implements Comparator
 {
-  public jsd(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  jsd(jsc paramjsc) {}
   
-  public void run()
+  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper != null) && (this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.b()) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new jse(this));
+    if (paramVideoViewInfo1.a) {}
+    while (paramVideoViewInfo2.a) {
+      return 1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jsd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,58 @@
-import android.os.Bundle;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class lbi
-  implements MessageQueue.IdleHandler
+public final class lbi
+  implements Runnable
 {
-  public lbi(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  public lbi(String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, boolean paramBoolean) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    if (!WebIPCOperator.a().a())
+    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject = str;
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
+    try
     {
-      WebIPCOperator.a().a().doBindService(BaseApplicationImpl.getApplication());
-      WebIPCOperator.a().a(new lbj(this));
-      return false;
+      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = (QQAppInterface)localObject;
+        if (localObject != null) {
+          if (!((PublicAccountDataManager)((AppInterface)localObject).getManager(55)).a(Long.valueOf(this.jdField_b_of_type_JavaLangString))) {
+            break label135;
+          }
+        }
+        label135:
+        for (localObject = "1";; localObject = "0")
+        {
+          localJSONObject.put("fans", localObject);
+          localObject = localJSONObject.toString();
+          PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.e, this.f, this.g, (String)localObject, this.jdField_a_of_type_Boolean);
+          return;
+        }
+      }
     }
-    Bundle localBundle = DataFactory.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
-    WebIPCOperator.a().a(localBundle);
-    return false;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localObject = str;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("PublicAccountReportUtils", 2, "doVideoDataReportWithFansInfoInR5() error exception = " + localException.getMessage());
+          localObject = str;
+          continue;
+          localObject = null;
+        }
+      }
+    }
   }
 }
 

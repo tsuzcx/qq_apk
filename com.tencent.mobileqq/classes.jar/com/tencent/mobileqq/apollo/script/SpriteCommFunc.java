@@ -6,7 +6,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import ysc;
+import yyt;
 
 public class SpriteCommFunc
 {
@@ -31,7 +31,7 @@ public class SpriteCommFunc
       QLog.w("cmshow_scripted_SpriteCommFunc", 2, "task NOT exist, msgId:" + paramLong);
       return;
     }
-    ThreadManager.post(new ysc(paramQQAppInterface, paramString), 5, null, true);
+    ThreadManager.post(new yyt(paramQQAppInterface, paramString), 5, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -69,12 +69,18 @@ public class SpriteCommFunc
     if (!SpriteUtil.c(paramQQAppInterface)) {}
     do
     {
+      SpriteScriptManager localSpriteScriptManager;
       do
       {
         return;
-        paramQQAppInterface = SpriteUtil.a(paramQQAppInterface);
-      } while (paramQQAppInterface == null);
-      paramQQAppInterface = paramQQAppInterface.a();
+        localSpriteScriptManager = SpriteUtil.a(paramQQAppInterface);
+      } while (localSpriteScriptManager == null);
+      if (SpriteUtil.a(paramQQAppInterface))
+      {
+        QLog.i("cmshow_scripted_SpriteCommFunc", 1, "showOrHideSprite double should hide");
+        return;
+      }
+      paramQQAppInterface = localSpriteScriptManager.a();
     } while (paramQQAppInterface == null);
     paramQQAppInterface.a(paramBoolean, false, paramString);
   }

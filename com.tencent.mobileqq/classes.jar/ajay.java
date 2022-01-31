@@ -1,18 +1,13 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
 
 public class ajay
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ajay(ContactListAdapter paramContactListAdapter) {}
+  public ajay(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public void onClick(View paramView)
-  {
-    GroupManagerActivity.a((Activity)ContactListAdapter.a(this.a));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

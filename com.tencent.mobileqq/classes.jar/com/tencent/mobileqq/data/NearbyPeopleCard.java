@@ -106,6 +106,7 @@ public class NearbyPeopleCard
   public int mHeartNum;
   public byte[] mQQStoryData;
   public byte maritalStatus;
+  public int maskMsgFlag;
   public int nLastGameFlag;
   public byte[] nearbyInfo;
   @notColumn

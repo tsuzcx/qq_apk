@@ -1,47 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloaderGetCodeServer;
-import eipc.EIPCResult;
-import java.util.Map;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alhq
-  extends QIPCModule
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public alhq(DownloaderGetCodeServer paramDownloaderGetCodeServer, String paramString)
-  {
-    super(paramString);
-  }
+  public alhq(AuthorityActivity paramAuthorityActivity) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onGlobalLayout()
   {
-    LogUtility.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    Object localObject = DownloaderGetCodeServer.a(this.a);
-    if (localObject == null) {
-      LogUtility.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
-    }
-    String str;
-    int i;
-    do
+    int i = this.a.jdField_a_of_type_AndroidViewView.getHeight();
+    int j = this.a.b.getHeight();
+    if ((j != 0) && (i != 0))
     {
-      do
-      {
-        return null;
-      } while ((!"DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) || (paramBundle == null));
-      str = paramBundle.getString("PackageName");
-      i = paramBundle.getInt("VersionCode");
-      LogUtility.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " packageName|" + str + " versionCode|" + i);
-    } while (str == null);
-    ((QQAppInterface)localObject).a(DownloaderGetCodeServer.a(this.a));
-    paramString = (ConfigHandler)((QQAppInterface)localObject).a(4);
-    localObject = str + "_" + i;
-    paramBundle.putInt("CallbackId", paramInt);
-    paramBundle = new Bundle(paramBundle);
-    DownloaderGetCodeServer.a(this.a).put(localObject, paramBundle);
-    paramString.a(str, i, (String)localObject);
-    return null;
+      QLog.d("AuthorityActivity", 2, "height_root=" + i + " height_bt=" + j);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setMaxHeight(i - j);
+      this.a.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

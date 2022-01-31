@@ -1,19 +1,21 @@
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
+import mqq.os.MqqHandler;
 
-public final class algd
+public class algd
   implements Runnable
 {
-  public algd(DownloadListener paramDownloadListener) {}
+  public algd(WorldCupShareFragment paramWorldCupShareFragment) {}
   
   public void run()
   {
-    DownloadManager.a().b(this.a);
+    String str = WorldCupShareFragment.b(this.a);
+    ThreadManager.getUIHandler().post(new alge(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     algd
  * JD-Core Version:    0.7.0.1
  */

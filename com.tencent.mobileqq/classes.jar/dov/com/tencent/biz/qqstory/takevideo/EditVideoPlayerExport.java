@@ -1,6 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.graphics.Bitmap;
+import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
 import java.util.List;
 
 public abstract interface EditVideoPlayerExport
@@ -23,6 +24,8 @@ public abstract interface EditVideoPlayerExport
   public abstract void a(Bitmap paramBitmap);
   
   public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
+  
+  public abstract void a(TransferData paramTransferData);
   
   public abstract void a(boolean paramBoolean);
   

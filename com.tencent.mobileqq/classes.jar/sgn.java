@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.utils.QQUtils;
 
 public class sgn
   implements Runnable
 {
-  public sgn(Conversation paramConversation, int paramInt, boolean paramBoolean) {}
+  public sgn(ChatSettingActivity paramChatSettingActivity) {}
   
   public void run()
   {
-    boolean bool = NetworkUtil.e(BaseApplication.getContext());
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(new sgo(this, bool));
+    QQUtils.a(this.a.app, ChatSettingActivity.b(this.a), ChatSettingActivity.f(this.a), this.a.getTitleBarHeight(), this.a.a, 500, "0", ChatSettingActivity.a(this.a));
   }
 }
 

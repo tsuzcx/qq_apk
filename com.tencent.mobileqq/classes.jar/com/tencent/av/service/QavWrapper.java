@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.RemoteException;
 import com.tencent.qphone.base.util.QLog;
-import jnp;
+import jps;
 
 public class QavWrapper
 {
   Context jdField_a_of_type_AndroidContentContext = null;
   public IAVServiceForQQ a;
   public QavWrapper.OnReadyListener a;
-  jnp jdField_a_of_type_Jnp = new jnp(this);
+  jps jdField_a_of_type_Jps = new jps(this);
   
   public QavWrapper(Context paramContext)
   {
@@ -74,7 +74,7 @@ public class QavWrapper
     if (this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ == null)
     {
       Intent localIntent = new Intent(paramContext, AVServiceForQQ.class);
-      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.jdField_a_of_type_Jnp, 1);
+      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.jdField_a_of_type_Jps, 1);
       if (QLog.isColorLevel()) {
         QLog.d("QavWrapper", 2, "bindService result == " + bool);
       }
@@ -149,7 +149,7 @@ public class QavWrapper
   
   public void b(Context paramContext)
   {
-    paramContext.getApplicationContext().unbindService(this.jdField_a_of_type_Jnp);
+    paramContext.getApplicationContext().unbindService(this.jdField_a_of_type_Jps);
     this.jdField_a_of_type_ComTencentAvServiceIAVServiceForQQ = null;
   }
   
@@ -175,7 +175,7 @@ public class QavWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.service.QavWrapper
  * JD-Core Version:    0.7.0.1
  */

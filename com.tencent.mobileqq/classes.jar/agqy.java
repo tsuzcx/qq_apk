@@ -1,33 +1,23 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileBaseView;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
+import java.util.Comparator;
 
 public class agqy
-  implements Runnable
+  implements Comparator
 {
-  public agqy(ProfileBaseView paramProfileBaseView, ProfileCardInfo paramProfileCardInfo, boolean paramBoolean) {}
-  
-  public void run()
+  public int a(PortalManager.ComboNumber paramComboNumber1, PortalManager.ComboNumber paramComboNumber2)
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-    agqz localagqz = new agqz(this, localExtensionInfo);
-    ThreadManager.getUIHandler().post(localagqz);
-    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (AvatarPendantUtil.b(localExtensionInfo.pendantId)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
-      AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+    if (paramComboNumber1.number > paramComboNumber2.number) {
+      return 1;
     }
+    if (paramComboNumber1.number < paramComboNumber2.number) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqy
  * JD-Core Version:    0.7.0.1
  */

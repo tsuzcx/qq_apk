@@ -51,21 +51,21 @@ import com.tencent.widget.ActionSheetHelper;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
-import rju;
-import rjw;
-import rjx;
-import rjy;
-import rjz;
-import rka;
-import rkb;
-import rkf;
-import rkg;
-import rkh;
-import rki;
-import rkj;
-import rkk;
-import rkl;
-import rkm;
+import rom;
+import roo;
+import rop;
+import roq;
+import ror;
+import ros;
+import rot;
+import rox;
+import roy;
+import roz;
+import rpa;
+import rpb;
+import rpc;
+import rpd;
+import rpe;
 import tencent.mobileim.structmsg.structmsg.AddFrdSNInfo;
 import tencent.mobileim.structmsg.structmsg.FriendInfo;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
@@ -81,16 +81,16 @@ public class AddRequestActivity
   public int a;
   public long a;
   public Dialog a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new rkj(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new rpb(this);
   View jdField_a_of_type_AndroidViewView;
   Button jdField_a_of_type_AndroidWidgetButton;
   public TextView a;
   URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   public CardHandler a;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new rjz(this);
-  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new rkb(this);
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new rkm(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new rjy(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ror(this);
+  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new rot(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new rpe(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new roq(this);
   public QQCustomDialog a;
   private Serializable jdField_a_of_type_JavaIoSerializable;
   public String a;
@@ -100,13 +100,13 @@ public class AddRequestActivity
   protected float b;
   private int jdField_b_of_type_Int;
   public long b;
-  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new rkk(this);
+  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new rpc(this);
   Button jdField_b_of_type_AndroidWidgetButton;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   public String b;
   private int jdField_c_of_type_Int = 3999;
   private long jdField_c_of_type_Long;
-  View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new rkl(this);
+  View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new rpd(this);
   Button jdField_c_of_type_AndroidWidgetButton;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
   String jdField_c_of_type_JavaLangString = null;
@@ -128,18 +128,18 @@ public class AddRequestActivity
   {
     int j = 0;
     a();
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371515));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371516));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371517));
-    TextView localTextView = (TextView)findViewById(2131371526);
-    Object localObject2 = (LinearLayout)findViewById(2131371519);
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131371525);
-    ImageView localImageView = (ImageView)findViewById(2131362739);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362894));
-    Object localObject3 = (TextView)findViewById(2131371520);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371528));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131368570));
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131371521));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371513));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371514));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371515));
+    TextView localTextView = (TextView)findViewById(2131371524);
+    Object localObject2 = (LinearLayout)findViewById(2131371517);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131371523);
+    ImageView localImageView = (ImageView)findViewById(2131362744);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362899));
+    Object localObject3 = (TextView)findViewById(2131371518);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371526));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131368573));
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131371519));
     if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null) && (TextUtils.isEmpty(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_additional.get()))) {
       this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_describe.get();
     }
@@ -165,7 +165,7 @@ public class AddRequestActivity
       if ((this.jdField_e_of_type_JavaLangString == null) || (this.jdField_e_of_type_JavaLangString.equals(""))) {
         break label560;
       }
-      ((LinearLayout)localObject2).setBackgroundResource(2130838633);
+      ((LinearLayout)localObject2).setBackgroundResource(2130838639);
       if (((LinearLayout)localObject2).getVisibility() != 0) {
         ((LinearLayout)localObject2).setVisibility(0);
       }
@@ -173,7 +173,7 @@ public class AddRequestActivity
       if (localLinearLayout.getVisibility() != 0) {
         localLinearLayout.setVisibility(0);
       }
-      localLinearLayout.setBackgroundResource(2130838630);
+      localLinearLayout.setBackgroundResource(2130838636);
       if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg == null) || (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg == null) || (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.actions.get() == null)) {
         break label1458;
       }
@@ -197,12 +197,12 @@ public class AddRequestActivity
     {
       i += 1;
       break label447;
-      localObject2 = (LinearLayout)findViewById(2131371522);
-      localObject1 = (TextView)findViewById(2131371523);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131371524));
+      localObject2 = (LinearLayout)findViewById(2131371520);
+      localObject1 = (TextView)findViewById(2131371521);
+      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131371522));
       break;
       label560:
-      ((LinearLayout)localObject2).setBackgroundResource(2130838630);
+      ((LinearLayout)localObject2).setBackgroundResource(2130838636);
       ((LinearLayout)localObject2).setVisibility(0);
       localLinearLayout.setVisibility(8);
       break label382;
@@ -217,11 +217,11 @@ public class AddRequestActivity
         if (localLinearLayout.getVisibility() != 0) {
           localLinearLayout.setVisibility(0);
         }
-        localLinearLayout.setBackgroundResource(2130838630);
+        localLinearLayout.setBackgroundResource(2130838636);
         break label382;
       }
-      localObject3 = (ViewGroup)findViewById(2131371513);
-      ((View)localObject3).setBackgroundResource(2130838623);
+      localObject3 = (ViewGroup)findViewById(2131371511);
+      ((View)localObject3).setBackgroundResource(2130838629);
       ((View)localObject3).setVisibility(0);
       ((LinearLayout)localObject2).setVisibility(8);
       localLinearLayout.setVisibility(8);
@@ -237,14 +237,14 @@ public class AddRequestActivity
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
     label762:
-    localObject2 = (TextView)findViewById(2131370273);
+    localObject2 = (TextView)findViewById(2131370282);
     if ((this.jdField_c_of_type_Int == 3014) || (this.jdField_c_of_type_Int == 2014))
     {
       ((TextView)localObject2).setVisibility(0);
       label800:
-      ((TextView)findViewById(2131368576)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localObject2 = (TextView)findViewById(2131368575);
-      localObject3 = (TextView)findViewById(2131368574);
+      ((TextView)findViewById(2131368579)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localObject2 = (TextView)findViewById(2131368578);
+      localObject3 = (TextView)findViewById(2131368577);
       ((TextView)localObject3).setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null))
       {
@@ -263,7 +263,7 @@ public class AddRequestActivity
       default: 
         this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
         label1037:
-        this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371514));
+        this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371512));
         if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.has()) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.msg_joint_friend.has() == true))
         {
           this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.friend_info.msg_joint_friend.get());
@@ -283,7 +283,7 @@ public class AddRequestActivity
             if (!TextUtils.isEmpty((CharSequence)localObject2)) {
               break label1593;
             }
-            ThreadManager.post(new rkf(this), 5, null, true);
+            ThreadManager.post(new rox(this), 5, null, true);
           }
           label1255:
           if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
@@ -311,7 +311,7 @@ public class AddRequestActivity
           localObject2 = FaceDrawable.a(this.app, 200, this.jdField_a_of_type_JavaLangString, true);
           label1384:
           localImageView.setBackgroundDrawable((Drawable)localObject2);
-          ((ViewGroup)findViewById(2131371513)).setOnClickListener(new rkg(this));
+          ((ViewGroup)findViewById(2131371511)).setOnClickListener(new roy(this));
           ((TextView)localObject1).setText(StringUtil.a(this.jdField_d_of_type_JavaLangString));
           if (this.jdField_b_of_type_Int != 2) {
             break label1638;
@@ -344,7 +344,7 @@ public class AddRequestActivity
       this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
       break label1037;
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-      ThreadManager.post(new rju(this), 5, null, true);
+      ThreadManager.post(new rom(this), 5, null, true);
       break label1135;
       label1593:
       this.jdField_b_of_type_JavaLangString = ((String)localObject2);
@@ -585,7 +585,7 @@ public class AddRequestActivity
       }
       if (i == 0)
       {
-        localObject1 = getString(2131433941);
+        localObject1 = getString(2131433957);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
         i = paramCard.age;
@@ -593,7 +593,7 @@ public class AddRequestActivity
         if (i <= 0) {
           break label383;
         }
-        localObject1 = i + getString(2131433943);
+        localObject1 = i + getString(2131433959);
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         label115:
         this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
@@ -633,7 +633,7 @@ public class AddRequestActivity
         return;
         if (i == 1)
         {
-          localObject1 = getString(2131433942);
+          localObject1 = getString(2131433958);
           this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
           break;
         }
@@ -655,25 +655,25 @@ public class AddRequestActivity
       return;
     }
     this.jdField_b_of_type_JavaLangString = paramString;
-    runOnUiThread(new rka(this));
+    runOnUiThread(new ros(this));
   }
   
   public void b()
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.a(getString(2131433452), 3);
-    localActionSheet.a(new rkh(this, localActionSheet));
-    localActionSheet.c(2131433015);
+    localActionSheet.a(getString(2131433466), 3);
+    localActionSheet.a(new roz(this, localActionSheet));
+    localActionSheet.c(2131433029);
     localActionSheet.show();
   }
   
   public void c()
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.a(getString(2131434716));
-    localActionSheet.a(getString(2131434714), 3);
-    localActionSheet.a(new rki(this, localActionSheet));
-    localActionSheet.c(2131433015);
+    localActionSheet.a(getString(2131434732));
+    localActionSheet.a(getString(2131434730), 3);
+    localActionSheet.a(new rpa(this, localActionSheet));
+    localActionSheet.c(2131433029);
     localActionSheet.show();
   }
   
@@ -685,7 +685,7 @@ public class AddRequestActivity
     if ((!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))) {
       this.jdField_e_of_type_JavaLangString = String.format(Locale.getDefault(), "%s-%s", new Object[] { this.jdField_e_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
     }
-    TextView localTextView = (TextView)findViewById(2131371526);
+    TextView localTextView = (TextView)findViewById(2131371524);
     if ((localTextView != null) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (!this.jdField_e_of_type_JavaLangString.equals(localTextView.getText()))) {
       localTextView.setText(this.jdField_e_of_type_JavaLangString);
     }
@@ -730,9 +730,9 @@ public class AddRequestActivity
     if (getIntent().hasExtra("param_wzry_data")) {
       this.jdField_a_of_type_JavaIoSerializable = getIntent().getSerializableExtra("param_wzry_data");
     }
-    super.setContentView(2130970634);
-    setContentBackgroundResource(2130838214);
-    TextView localTextView = (TextView)findViewById(2131371529);
+    super.setContentView(2130970647);
+    setContentBackgroundResource(2130838219);
+    TextView localTextView = (TextView)findViewById(2131371527);
     if ((paramBundle != null) && (!paramBundle.equals("")))
     {
       localTextView.setText(paramBundle);
@@ -772,7 +772,7 @@ public class AddRequestActivity
   public void onClick(View paramView)
   {
     if (!NetworkUtil.d(this)) {
-      QQToast.a(this, getString(2131433213), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131433227), 0).b(getTitleBarHeight());
     }
     label841:
     for (;;)
@@ -799,7 +799,7 @@ public class AddRequestActivity
         if (j == 0) {
           break label841;
         }
-        a(2131434453, 1000L, false);
+        a(2131434469, 1000L, false);
         return;
         long l1 = FriendSystemMsgController.a().b();
         paramView = FriendSystemMsgController.a().a(Long.valueOf(l1));
@@ -897,12 +897,12 @@ public class AddRequestActivity
     default: 
       return super.onCreateDialog(paramInt);
     case 1: 
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setTitle(getString(2131433454)).setMessage(2131433455).setPositiveButton(2131433456, new rjx(this)).setNegativeButton(2131433699, new rjw(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setTitle(getString(2131433468)).setMessage(2131433469).setPositiveButton(2131433470, new rop(this)).setNegativeButton(2131433713, new roo(this));
       return this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
     }
     this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624516);
     this.jdField_a_of_type_AndroidAppDialog.setContentView(2130968595);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131362776)).setText(2131433471);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131362781)).setText(2131433485);
     return this.jdField_a_of_type_AndroidAppDialog;
   }
 }

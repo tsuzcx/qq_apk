@@ -1,7 +1,7 @@
 package cooperation.photoplus;
 
-import amlq;
-import amlr;
+import amtc;
+import amtd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -36,7 +36,7 @@ public class PhotoPlusManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "PhotoPlus/";
+    jdField_a_of_type_JavaLangString = AppConstants.aK + "PhotoPlus/";
   }
   
   public PhotoPlusManager(AppInterface paramAppInterface)
@@ -76,7 +76,7 @@ public class PhotoPlusManager
       QLog.d("PhotoPlusManager", 2, "[download] startDownload: " + paramString1 + " path=" + paramString2);
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, localDownloadTask);
-    localDownloaderInterface.a(localDownloadTask, new amlq(this, paramString2, paramString1, paramString3), null);
+    localDownloaderInterface.a(localDownloadTask, new amtc(this, paramString2, paramString1, paramString3), null);
   }
   
   private void a(List paramList)
@@ -225,7 +225,7 @@ public class PhotoPlusManager
     if (QLog.isColorLevel()) {
       QLog.d("PhotoPlusManager", 2, "[updateStickerResource] isDelete=" + paramBoolean);
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.post(new amlr(this, this.jdField_a_of_type_JavaUtilList, paramBoolean));
+    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.post(new amtd(this, this.jdField_a_of_type_JavaUtilList, paramBoolean));
   }
   
   public boolean a()

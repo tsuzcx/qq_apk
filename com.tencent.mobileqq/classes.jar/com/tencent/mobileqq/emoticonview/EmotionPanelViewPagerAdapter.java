@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acfv;
+import acnw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Looper;
@@ -62,7 +62,7 @@ public class EmotionPanelViewPagerAdapter
   
   private void a(int paramInt, EmotionPanelInfo paramEmotionPanelInfo, BaseEmotionAdapter paramBaseEmotionAdapter, ListView paramListView)
   {
-    ThreadManager.post(new acfv(this, paramInt, paramEmotionPanelInfo, paramBaseEmotionAdapter, paramListView), 5, null, true);
+    ThreadManager.post(new acnw(this, paramInt, paramEmotionPanelInfo, paramBaseEmotionAdapter, paramListView), 5, null, true);
   }
   
   private void a(EmoticonPackage paramEmoticonPackage, BaseEmotionAdapter paramBaseEmotionAdapter, List paramList)
@@ -362,7 +362,7 @@ public class EmotionPanelViewPagerAdapter
     }
     localEmotionPanelListView.setDivider(null);
     localEmotionPanelListView.setEdgeEffectEnabled(false);
-    localEmotionPanelListView.setSelector(2130846443);
+    localEmotionPanelListView.setSelector(2130846525);
     EmotionPanelInfo localEmotionPanelInfo = (EmotionPanelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     int i = EmotionPanelConstans.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localEmotionPanelInfo);
     BaseEmotionAdapter localBaseEmotionAdapter = EmotionPanelListViewAdapterBuilder.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, localEmotionPanelInfo.b, i, localEmotionPanelInfo.jdField_a_of_type_Int, localEmotionPanelInfo.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);

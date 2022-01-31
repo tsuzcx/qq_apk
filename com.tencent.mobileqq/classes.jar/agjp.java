@@ -1,17 +1,14 @@
+import android.widget.TextView;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.widget.QQToast;
 
-public class agjp
+class agjp
   implements Runnable
 {
-  public agjp(ScanTorchActivity paramScanTorchActivity) {}
+  agjp(agjn paramagjn) {}
   
   public void run()
   {
-    QQToast localQQToast = QQToast.a(this.a, "本机型无法支持穿越，请换其它手机穿越。", 1);
-    localQQToast.a();
-    localQQToast.a();
-    this.a.finish();
+    ScanTorchActivity.a(this.a.a).setVisibility(0);
   }
 }
 

@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArModelResource;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public final class aakw
-  implements Parcelable.Creator
+public class aakw
+  implements Runnable
 {
-  public ArModelResource a(Parcel paramParcel)
-  {
-    return new ArModelResource(paramParcel);
-  }
+  public aakw(ScanningSurfaceView paramScanningSurfaceView, String paramString1, String paramString2) {}
   
-  public ArModelResource[] a(int paramInt)
+  public void run()
   {
-    return new ArModelResource[paramInt];
+    if (ScanningSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView).size() > 0)
+    {
+      ScanningSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView).add(this.jdField_a_of_type_JavaLangString);
+      ScanningSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.b);
+      ReportController.b(null, "dc00898", "", "", "0X8008350", "0X8008350", 0, 0, "", "", "", "");
+      return;
+    }
+    QLog.d("ScanningSurfaceView", 1, "the dataList is null, cancel the jump action.");
   }
 }
 

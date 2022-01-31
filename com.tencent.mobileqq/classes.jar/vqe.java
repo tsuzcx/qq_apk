@@ -1,25 +1,17 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameListener;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-class vqe
-  implements Runnable
+public class vqe
+  implements CustomFrameAnimationDrawable.FrameListener
 {
-  vqe(vqd paramvqd, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, StateListDrawable paramStateListDrawable) {}
+  public vqe(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Vqd.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (this.jdField_a_of_type_Vqd.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
-    {
-      this.jdField_a_of_type_Vqd.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundDrawable(this.b);
-      this.jdField_a_of_type_Vqd.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTextColor(-16777216);
+    if (paramInt == 23) {
+      UnlimitedBladeWorks.a(this.a).start();
     }
-    this.jdField_a_of_type_Vqd.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setBackgroundDrawable(this.c);
-    this.jdField_a_of_type_Vqd.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
   }
 }
 

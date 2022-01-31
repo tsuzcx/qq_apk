@@ -215,7 +215,7 @@ public class JumpUtil
             if ((paramFragment instanceof TribeEffectsCameraCaptureFragment))
             {
               paramVideoCaptureResult.putExtra("needTheme", ((TribeEffectsCameraCaptureFragment)paramFragment).i);
-              paramVideoCaptureResult.putExtra("from", ((TribeEffectsCameraCaptureFragment)paramFragment).jdField_a_of_type_JavaLangString);
+              paramVideoCaptureResult.putExtra("from", ((TribeEffectsCameraCaptureFragment)paramFragment).e);
               paramVideoCaptureResult.putExtra("theme_id", ((TribeEffectsCameraCaptureFragment)paramFragment).c);
               paramVideoCaptureResult.putExtra("theme_name", ((TribeEffectsCameraCaptureFragment)paramFragment).f);
             }

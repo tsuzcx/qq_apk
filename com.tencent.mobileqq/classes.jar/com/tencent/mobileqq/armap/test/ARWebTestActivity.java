@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.armap.test;
 
-import abhp;
-import abhq;
-import abhr;
-import abhs;
+import aboq;
+import abor;
+import abos;
+import abot;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -80,12 +80,12 @@ public class ARWebTestActivity
       b();
       return;
     }
-    runOnUiThread(new abhp(this));
+    runOnUiThread(new aboq(this));
   }
   
   public void b()
   {
-    runOnUiThread(new abhs(this));
+    runOnUiThread(new abot(this));
   }
   
   protected void b(WebView paramWebView, String paramString)
@@ -93,19 +93,19 @@ public class ARWebTestActivity
     if (QLog.isDevelopLevel()) {
       QLog.d("ARWebTestActivity", 4, String.format(Locale.getDefault(), "onPageFinished cost: %d  mUserClicked: %b", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), Boolean.valueOf(this.g) }));
     }
-    runOnUiThread(new abhq(this));
-    this.jdField_b_of_type_ComTencentBizUiTouchWebView.postDelayed(new abhr(this, paramString), 15000L);
+    runOnUiThread(new abor(this));
+    this.jdField_b_of_type_ComTencentBizUiTouchWebView.postDelayed(new abos(this, paramString), 15000L);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
     boolean bool = super.doOnCreate(paramBundle);
-    setContentView(2130970241);
+    setContentView(2130970256);
     paramBundle = (FrameLayout)findViewById(2131367143);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369798));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363628));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369799));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369808));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363647));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369809));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_ComTencentBizUiTouchWebView = b(paramBundle);
     this.jdField_b_of_type_ComTencentBizUiTouchWebView.loadUrl("http://mma.qq.com/dev-tmp/qqar-map/map.html");

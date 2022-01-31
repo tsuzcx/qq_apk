@@ -21,22 +21,22 @@ public class MsgTabStoryNodeDelegate$UpdateUserInfoEventReceiver
   {
     int j;
     int i;
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null) && (!paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((paramUpdateUserInfoEvent.errorInfo.isSuccess()) && (paramUpdateUserInfoEvent.a != null) && (!paramUpdateUserInfoEvent.a.isEmpty()))
     {
       if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver isSuccess userUIItems: " + paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
+        QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver isSuccess userUIItems: " + paramUpdateUserInfoEvent.a);
       }
-      j = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.size();
+      j = paramUpdateUserInfoEvent.a.size();
       i = 0;
     }
     while (i < j)
     {
-      QQUserUIItem localQQUserUIItem = (QQUserUIItem)paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.get(i);
+      QQUserUIItem localQQUserUIItem = (QQUserUIItem)paramUpdateUserInfoEvent.a.get(i);
       paramMsgTabStoryNodeDelegate.a(paramMsgTabStoryNodeDelegate.a.a(localQQUserUIItem.uid));
       i += 1;
       continue;
       if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", userUIItems = " + paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
+        QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramUpdateUserInfoEvent.errorInfo + ", userUIItems = " + paramUpdateUserInfoEvent.a);
       }
     }
   }

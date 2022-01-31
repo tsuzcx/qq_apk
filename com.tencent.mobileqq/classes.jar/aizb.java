@@ -1,18 +1,23 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.util.InputMethodUtil;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
 
 public class aizb
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public aizb(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public aizb(AudioRecordFragment paramAudioRecordFragment) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    InputMethodUtil.a(this.a.jdField_a_of_type_AndroidWidgetEditText);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setSelected(false);
-    this.a.c.setSelected(false);
+    this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+    this.a.jdField_b_of_type_AndroidViewView.setBackgroundColor(1291845632);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

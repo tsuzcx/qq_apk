@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aioq;
+import aitt;
 import android.os.Environment;
 import android.os.Message;
 import com.tencent.common.app.AppInterface;
@@ -91,7 +91,7 @@ public class BaseTransProcessor
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     jdField_a_of_type_JavaLangObject = new Object();
     jdField_k_of_type_JavaLangString = "param_reason";
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aioq();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aitt();
   }
   
   public BaseTransProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
@@ -457,7 +457,7 @@ public class BaseTransProcessor
   
   public String a(String paramString1, String paramString2, int paramInt)
   {
-    return MessageForPtt.getLocalFilePath(paramInt, AppConstants.aJ + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount() + "/" + "ptt" + "/" + paramString1 + "_" + FileMsg.a() + ".amr");
+    return MessageForPtt.getLocalFilePath(paramInt, AppConstants.aK + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount() + "/" + "ptt" + "/" + paramString1 + "_" + FileMsg.a() + ".amr");
   }
   
   protected String a(String paramString, List paramList)
@@ -815,7 +815,7 @@ public class BaseTransProcessor
     return true;
   }
   
-  public void ap_() {}
+  public void ar_() {}
   
   public int b()
   {
@@ -1125,7 +1125,7 @@ public class BaseTransProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BaseTransProcessor
  * JD-Core Version:    0.7.0.1
  */

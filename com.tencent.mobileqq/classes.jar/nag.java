@@ -1,70 +1,50 @@
-import com.tencent.biz.qqstory.base.preload.DownloadTask;
-import com.tencent.biz.qqstory.base.preload.IVideoPreloader.OnPreloadListener;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager.IOnQueueStateChangeListener;
-import com.tencent.biz.qqstory.base.preload.PreloadQueue;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
-public class nag
+class nag
   implements Runnable
 {
-  public volatile boolean a;
-  
-  private nag(PreloadDownloader paramPreloadDownloader)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  nag(naf paramnaf, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
   
   public void run()
   {
+    Object localObject1 = new AccountDetail(this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
+    Object localObject2 = this.jdField_a_of_type_Naf.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory(this.jdField_a_of_type_Naf.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).createEntityManager();
+    if (localObject2 != null) {
+      ((EntityManager)localObject2).b((Entity)localObject1);
+    }
+    if ((this.jdField_a_of_type_Naf.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
+    {
+      localObject2 = (PublicAccountHandler)((QQAppInterface)this.jdField_a_of_type_Naf.jdField_a_of_type_ComTencentCommonAppAppInterface).a(11);
+      if (localObject2 != null) {
+        ((PublicAccountHandler)localObject2).a(localObject1);
+      }
+    }
+    if (this.jdField_a_of_type_Naf.jdField_a_of_type_Int >= 0)
+    {
+      if (!(this.jdField_a_of_type_Naf.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
+        break label139;
+      }
+      localObject1 = (QQAppInterface)this.jdField_a_of_type_Naf.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    }
     for (;;)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue == null)
-      {
-        try
-        {
-          Thread.sleep(1000L);
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          localInterruptedException.printStackTrace();
-        }
-      }
-      else
-      {
-        if ((this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloaderManager$IOnQueueStateChangeListener != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue.isBusy())) {
-          this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloaderManager$IOnQueueStateChangeListener.a(this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a());
-        }
-        ??? = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue;
-        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask = ((PreloadQueue)???).getFirstAndBlockIfLowestPriority();
-        DownloadTask localDownloadTask1 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask;
-        if (localDownloadTask1 != null)
-        {
-          localDownloadTask1.c = ((PreloadQueue)???).getId();
-          for (;;)
-          {
-            Iterator localIterator;
-            synchronized (PreloadDownloader.jdField_a_of_type_JavaLangObject)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_JavaUtilList.iterator();
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              IVideoPreloader.OnPreloadListener localOnPreloadListener = (IVideoPreloader.OnPreloadListener)((WeakReference)localIterator.next()).get();
-              if (localOnPreloadListener != null) {
-                localOnPreloadListener.a(localDownloadTask1.jdField_b_of_type_JavaLangString, localDownloadTask1.a, localDownloadTask1);
-              }
-            }
-            localIterator.remove();
-          }
-          localDownloadTask2.jdField_b_of_type_Int = 1;
-          this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.b(localDownloadTask2);
-        }
+      PublicAccountReportUtils.a((QQAppInterface)localObject1, this.jdField_a_of_type_Naf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Naf.jdField_a_of_type_Int);
+      return;
+      label139:
+      localObject1 = BaseApplicationImpl.getApplication().peekAppRuntime();
+      if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface))) {
+        localObject1 = (QQAppInterface)localObject1;
+      } else {
+        localObject1 = null;
       }
     }
   }

@@ -5,12 +5,12 @@ public class ArNativeSoData
 {
   public String getSharedPreferencesName()
   {
-    return "early_qq.android.ar.native.so_v7.6.5.1";
+    return "early_qq.android.ar.native.so_v7.6.5.2";
   }
   
   public String getStrResName()
   {
-    return "qq.android.ar.native.so_v7.6.5.1";
+    return "qq.android.ar.native.so_v7.6.5.2";
   }
 }
 

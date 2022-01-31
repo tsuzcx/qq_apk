@@ -1,22 +1,13 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionListAdapter;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+import com.tencent.biz.qqstory.takevideo.EditVideoShareGroup;
 
 public class olh
   implements View.OnClickListener
 {
-  public olh(PermissionSettingActivity paramPermissionSettingActivity) {}
+  public olh(EditVideoShareGroup paramEditVideoShareGroup) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = PermissionSettingActivity.a(this.a).a();
-    if (paramView != null)
-    {
-      PermissionSettingActivity.a(this.a, paramView);
-      this.a.finish();
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 

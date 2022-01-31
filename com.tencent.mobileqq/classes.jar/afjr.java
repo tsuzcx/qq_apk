@@ -1,32 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder.MomentViewHolder;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.MomentFeedInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.nearby.profilecard.OnTagClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class afjr
-  implements DialogInterface.OnClickListener
+  implements OnTagClickListener
 {
-  public afjr(BaseMomentItemBuilder paramBaseMomentItemBuilder, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder, MomentFeedInfo paramMomentFeedInfo) {}
+  public afjr(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo)
   {
-    if (!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_AndroidContentContext))
+    if (QLog.isColorLevel()) {
+      QLog.i("NearbyProfileDisplayTribePanel", 2, "click troops item  tuin:" + paramInterestTagInfo.tagJumpUrl);
+    }
+    if (paramInterestTagInfo.tagJumpUrl.equals("icon_more_url"))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_AndroidContentContext, 1, "网络异常，无法操作", 0).a();
+      paramView = new Intent(this.a.a, QQBrowserActivity.class);
+      paramView.putExtra("url", this.a.e);
+      this.a.a.startActivity(paramView);
+      paramInterestTagInfo = this.a.a.app;
+      if (this.a.a.e == 2) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        ReportController.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_more_grp", 0, 0, paramView, "", "", "");
+        return;
+      }
+    }
+    paramView = TroopInfoActivity.a(paramInterestTagInfo.tagJumpUrl, 33);
+    ChatSettingForTroop.a(this.a.a, paramView, -1);
+    paramInterestTagInfo = this.a.a.app;
+    if (this.a.a.e == 2) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      ReportController.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_grp", 0, 0, paramView, "", "", "");
       return;
     }
-    paramDialogInterface = (NearbyMomentManager)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder))
-    {
-      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c, new afjs(this));
-      return;
-    }
-    paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.a, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.d, new afjt(this));
   }
 }
 

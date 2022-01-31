@@ -1,17 +1,27 @@
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.text.format.DateFormat;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.utils.StringUtil;
+import java.util.List;
 
 public class tam
-  implements View.OnCreateContextMenuListener
+  implements Runnable
 {
-  public tam(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public tam(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  public void run()
   {
-    paramContextMenu.clear();
+    String str1 = StringUtil.a(this.a.c, 0, 32);
+    String str2 = StringUtil.a(this.a.e, 0, 32);
+    if (this.a.jdField_a_of_type_JavaUtilList != null) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + String.format("(%d人)", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()) }));
+    }
+    for (;;)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(str2 + " 创建于 " + DateFormat.format("yy-M-d", this.a.jdField_b_of_type_Long));
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
+    }
   }
 }
 

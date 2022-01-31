@@ -43,7 +43,7 @@ public class StructMsgItemHr
         {
           return paramBundle;
         } while (this.e != 1);
-        paramBundle.setBackgroundResource(2130844237);
+        paramBundle.setBackgroundResource(2130844303);
       } while (Build.VERSION.SDK_INT < 11);
       paramBundle.setLayerType(1, null);
       return paramBundle;

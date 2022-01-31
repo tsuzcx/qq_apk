@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-public class adqt
+class adqt
   implements Runnable
 {
-  public adqt(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, int paramInt) {}
+  adqt(adqs paramadqs, String paramString, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.b(this.jdField_a_of_type_Int);
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adqs.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adqt
  * JD-Core Version:    0.7.0.1
  */

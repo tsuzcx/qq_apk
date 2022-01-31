@@ -1,15 +1,31 @@
-import android.os.Bundle;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import android.text.Editable;
+import android.widget.EditText;
+import cooperation.qzone.share.QZoneShareActivity;
 
-class angr
+public class angr
   implements Runnable
 {
-  angr(angp paramangp, Bundle paramBundle) {}
+  public angr(QZoneShareActivity paramQZoneShareActivity) {}
   
   public void run()
   {
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    this.jdField_a_of_type_Angp.a.a(localBundle);
+    Editable localEditable;
+    if (this.a.a != null)
+    {
+      localEditable = this.a.a.getText();
+      if (localEditable == null) {
+        break label71;
+      }
+    }
+    label71:
+    for (int i = localEditable.length();; i = 0)
+    {
+      this.a.a.setSelection(i);
+      if ((!this.a.isFinishing()) && (!this.a.d)) {
+        this.a.h();
+      }
+      return;
+    }
   }
 }
 

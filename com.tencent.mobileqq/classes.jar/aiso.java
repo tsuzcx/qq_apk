@@ -1,16 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.FlowComponentInterface;
-import com.tencent.mobileqq.tribe.fragment.TribeEffectsCameraCaptureFragment;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import java.io.File;
 
 public class aiso
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aiso(TribeEffectsCameraCaptureFragment paramTribeEffectsCameraCaptureFragment) {}
+  public aiso(ShareAppLogHelper paramShareAppLogHelper) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.a(this.a.getActivity());
+    int i = ShareAppLogHelper.a(this.a);
+    if (i != 0)
+    {
+      ShareAppLogHelper.a(this.a, i);
+      ShareAppLogHelper.a(this.a);
+      return;
+    }
+    i = ShareAppLogHelper.b(this.a);
+    if (i == 1)
+    {
+      ShareAppLogHelper.b(this.a, i);
+      ShareAppLogHelper.b(this.a);
+      if (!ShareAppLogHelper.a(this.a)) {
+        ShareAppLogHelper.a(this.a, ShareAppLogHelper.a(this.a));
+      }
+    }
+    for (;;)
+    {
+      ShareAppLogHelper.a(this.a);
+      return;
+      try
+      {
+        File localFile = new File(ShareAppLogHelper.a(this.a));
+        if (!localFile.exists()) {
+          continue;
+        }
+        localFile.delete();
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      continue;
+      if (i == 0) {
+        ShareAppLogHelper.a(this.a, ShareAppLogHelper.a(this.a));
+      } else {
+        ShareAppLogHelper.a(this.a, i);
+      }
+    }
   }
 }
 

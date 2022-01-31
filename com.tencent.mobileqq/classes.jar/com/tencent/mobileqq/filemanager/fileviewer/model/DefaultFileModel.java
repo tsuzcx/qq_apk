@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import adcs;
-import adcu;
-import adcv;
-import adcw;
-import adcx;
-import adcy;
+import adkz;
+import adlb;
+import adlc;
+import adld;
+import adle;
+import adlf;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -117,7 +117,7 @@ public abstract class DefaultFileModel
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
       }
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback == null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback = new adcs(this);
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback = new adkz(this);
       }
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback);
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFilePreViewControllerBase.a();
@@ -161,7 +161,7 @@ public abstract class DefaultFileModel
   public IThumbController a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIThumbController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIThumbController = new adcv(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIThumbController = new adlc(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIThumbController;
   }
@@ -205,7 +205,7 @@ public abstract class DefaultFileModel
         if (!bool) {
           break label439;
         }
-        localArrayList.add(HorizontalListViewAdapter.a(2130841599, "存到微云", FileOperaterUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, str)));
+        localArrayList.add(HorizontalListViewAdapter.a(2130841626, "存到微云", FileOperaterUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, str)));
       }
       if (!bool) {
         break label483;
@@ -218,22 +218,22 @@ public abstract class DefaultFileModel
       try
       {
         localObject1 = FileManagerUtil.a(new FileInfo(str));
-        localObject3 = HorizontalListViewAdapter.a(2130841595, "发给好友", FileOperaterUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, (FileManagerEntity)localObject1, this.jdField_a_of_type_AndroidAppActivity));
+        localObject3 = HorizontalListViewAdapter.a(2130841622, "发给好友", FileOperaterUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, (FileManagerEntity)localObject1, this.jdField_a_of_type_AndroidAppActivity));
         localArrayList.add(localObject3);
         if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_convert_teamwork_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 4).getBoolean("tim_convert_teamwork_show_file_viewer_menu", false)) && (localObject1 != null) && (TeamWorkUtils.a(((FileManagerEntity)localObject1).strFilePath, ((FileManagerEntity)localObject1).fileName)))
         {
-          localObject3 = HorizontalListViewAdapter.a(2130837536, "在线编辑", FileOperaterUtils.a((FileManagerEntity)localObject1, this.jdField_a_of_type_AndroidAppActivity));
+          localObject3 = HorizontalListViewAdapter.a(2130837535, "在线编辑", FileOperaterUtils.a((FileManagerEntity)localObject1, this.jdField_a_of_type_AndroidAppActivity));
           ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009062", "0X8009062", 0, 0, "", "", "", "");
           localArrayList.add(localObject3);
         }
         if (FileManagerUtil.c((FileManagerEntity)localObject1)) {
-          localArrayList.add(HorizontalListViewAdapter.a(2130841573, "收藏", FileOperaterUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, (FileManagerEntity)localObject1)));
+          localArrayList.add(HorizontalListViewAdapter.a(2130841600, "收藏", FileOperaterUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, (FileManagerEntity)localObject1)));
         }
         if ((bool) && (((DataLineHandler)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a(8)).a.a(a()))) {
-          localArrayList.add(HorizontalListViewAdapter.a(2130841597, "打印", FileOperaterUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, b())));
+          localArrayList.add(HorizontalListViewAdapter.a(2130841624, "打印", FileOperaterUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, b())));
         }
         if (bool) {
-          localArrayList.add(HorizontalListViewAdapter.a(2130841596, "用其他应用打开", FileOperaterUtils.a(this.jdField_a_of_type_AndroidAppActivity, str)));
+          localArrayList.add(HorizontalListViewAdapter.a(2130841623, "用其他应用打开", FileOperaterUtils.a(this.jdField_a_of_type_AndroidAppActivity, str)));
         }
         return localArrayList;
         i = 0;
@@ -242,7 +242,7 @@ public abstract class DefaultFileModel
         if (d() != 1) {
           break label136;
         }
-        localArrayList.add(HorizontalListViewAdapter.a(2130841599, "存到微云", FileOperaterUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, (FileManagerEntity)localObject3)));
+        localArrayList.add(HorizontalListViewAdapter.a(2130841626, "存到微云", FileOperaterUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, (FileManagerEntity)localObject3)));
       }
       catch (FileNotFoundException localFileNotFoundException)
       {
@@ -251,7 +251,7 @@ public abstract class DefaultFileModel
         continue;
       }
       label483:
-      HorizontalListViewAdapter.MenuData localMenuData = HorizontalListViewAdapter.a(2130841595, "发给好友", FileOperaterUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, (FileManagerEntity)localObject3, this.jdField_a_of_type_AndroidAppActivity));
+      HorizontalListViewAdapter.MenuData localMenuData = HorizontalListViewAdapter.a(2130841622, "发给好友", FileOperaterUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, (FileManagerEntity)localObject3, this.jdField_a_of_type_AndroidAppActivity));
       Object localObject2 = localObject3;
       localObject3 = localMenuData;
     }
@@ -322,7 +322,7 @@ public abstract class DefaultFileModel
     if (localFileManagerEntity == null) {
       return;
     }
-    FileVideoManager.a(c()).a(localFileManagerEntity, new adcy(this, paramOnVideoDataEventListener));
+    FileVideoManager.a(c()).a(localFileManagerEntity, new adlf(this, paramOnVideoDataEventListener));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, FileManagerEntity paramFileManagerEntity, TroopFileProtocol.OnGetZipFileList paramOnGetZipFileList)
@@ -331,7 +331,7 @@ public abstract class DefaultFileModel
     if (paramFileManagerEntity.getCloudType() == 2) {}
     for (boolean bool = true;; bool = false)
     {
-      paramString1 = new HttpWebCgiAsyncTask2(str, "GET", new adcu(this, new ArrayList(), paramString4, paramFileManagerEntity, bool, paramString5, paramString1, paramString2, paramString3, paramInt, paramOnGetZipFileList), 1000, null);
+      paramString1 = new HttpWebCgiAsyncTask2(str, "GET", new adlb(this, new ArrayList(), paramString4, paramFileManagerEntity, bool, paramString5, paramString1, paramString2, paramString3, paramInt, paramOnGetZipFileList), 1000, null);
       paramString2 = new Bundle();
       paramString2.putString("version", DeviceInfoUtil.d());
       paramString2.putString("Cookie", "FTN5K=" + paramString5);
@@ -442,8 +442,8 @@ public abstract class DefaultFileModel
     {
       if (bool)
       {
-        localArrayList.add(HorizontalListViewAdapter.a(0, "保存到手机", new adcw(this)));
-        localArrayList.add(HorizontalListViewAdapter.a(0, "用其他应用打开", new adcx(this)));
+        localArrayList.add(HorizontalListViewAdapter.a(0, "保存到手机", new adld(this)));
+        localArrayList.add(HorizontalListViewAdapter.a(0, "用其他应用打开", new adle(this)));
       }
       return localArrayList;
       localArrayList.add(HorizontalListViewAdapter.a(0, "存到微云", FileOperaterUtils.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, b())));
@@ -636,7 +636,7 @@ public abstract class DefaultFileModel
       if (NetworkUtil.g(this.jdField_a_of_type_AndroidAppActivity)) {
         break;
       }
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_a_of_type_AndroidAppActivity.getString(2131433009), 1).b(j());
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_a_of_type_AndroidAppActivity.getString(2131433023), 1).b(j());
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().peerType == 3000) {
         str = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().selfUin);

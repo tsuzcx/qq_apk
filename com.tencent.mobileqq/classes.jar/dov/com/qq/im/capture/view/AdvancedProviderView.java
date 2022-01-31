@@ -13,9 +13,9 @@ import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import anos;
-import anot;
-import anou;
+import anxf;
+import anxg;
+import anxh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
 import com.tencent.mobileqq.utils.ValueAnimation;
@@ -39,7 +39,7 @@ public class AdvancedProviderView
   
   private Animation a(QIMProviderContainerView paramQIMProviderContainerView, View paramView, float paramFloat1, float paramFloat2)
   {
-    return new ValueAnimation(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new anou(this, paramQIMProviderContainerView, paramView));
+    return new ValueAnimation(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new anxh(this, paramQIMProviderContainerView, paramView));
   }
   
   public static int b()
@@ -82,13 +82,13 @@ public class AdvancedProviderView
   
   protected int a()
   {
-    return 2130970076;
+    return 2130970087;
   }
   
   public void a()
   {
-    SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368941);
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368940);
+    SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368944);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368943);
     int i = c();
     localSeekBar.setProgress(i);
     localTextView.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(i / 10.0F) }));
@@ -110,33 +110,33 @@ public class AdvancedProviderView
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970076, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970087, this, false);
     }
-    paramBundle = this.jdField_a_of_type_AndroidViewView.findViewById(2131368936);
+    paramBundle = this.jdField_a_of_type_AndroidViewView.findViewById(2131368939);
     if (!CaptureUtil.f()) {
       paramBundle.setVisibility(8);
     }
-    View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131368939);
-    SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368938);
+    View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131368942);
+    SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368941);
     if (Build.VERSION.SDK_INT >= 21) {
       localSeekBar.setSplitTrack(false);
     }
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368937);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368940);
     int i = b();
     localSeekBar.setProgress(i);
     localTextView.setText("+" + i / 10.0F);
-    QIMProviderContainerView localQIMProviderContainerView = (QIMProviderContainerView)((Activity)getContext()).findViewById(2131368982);
-    View localView2 = ((Activity)getContext()).findViewById(2131366244);
-    localSeekBar.setOnSeekBarChangeListener(new anos(this, localTextView, localView2, paramBundle, localQIMProviderContainerView, localView1));
-    localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368941);
+    QIMProviderContainerView localQIMProviderContainerView = (QIMProviderContainerView)((Activity)getContext()).findViewById(2131368983);
+    View localView2 = ((Activity)getContext()).findViewById(2131366249);
+    localSeekBar.setOnSeekBarChangeListener(new anxf(this, localTextView, localView2, paramBundle, localQIMProviderContainerView, localView1));
+    localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368944);
     if (Build.VERSION.SDK_INT >= 21) {
       localSeekBar.setSplitTrack(false);
     }
-    localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368940);
+    localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368943);
     i = c();
     localSeekBar.setProgress(i);
     localTextView.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(i / 10.0F) }));
-    localSeekBar.setOnSeekBarChangeListener(new anot(this, localTextView, localView2, localView1, localQIMProviderContainerView, paramBundle));
+    localSeekBar.setOnSeekBarChangeListener(new anxg(this, localTextView, localView2, localView1, localQIMProviderContainerView, paramBundle));
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     a(this.jdField_a_of_type_AndroidViewView);
   }
@@ -161,8 +161,8 @@ public class AdvancedProviderView
     do
     {
       return;
-      SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368938);
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368937);
+      SeekBar localSeekBar = (SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368941);
+      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368940);
       i = b();
       localSeekBar.setProgress(i);
       localTextView.setText("+" + i / 10.0F);

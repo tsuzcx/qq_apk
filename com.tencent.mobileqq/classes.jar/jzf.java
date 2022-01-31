@@ -1,80 +1,410 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import com.tencent.av.VideoController;
-import com.tencent.av.ui.QavInOutAnimation;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.QavPanelSoundWaveView;
+import com.tencent.av.app.GAudioUIObserver;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.gaudio.VideoViewInfo;
+import com.tencent.av.ui.ControlUIObserver;
+import com.tencent.av.ui.MultiMembersAudioUI;
+import com.tencent.av.ui.MultiMembersVideoUI;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.utils.EllipsisUtil;
+import com.tencent.av.utils.TipsManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class jzf
-  implements Animation.AnimationListener
+  extends GAudioUIObserver
 {
-  public jzf(QavInOutAnimation paramQavInOutAnimation) {}
+  public jzf(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(int paramInt1, long paramLong1, long paramLong2, long paramLong3, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+    super.a(paramInt1, paramLong1, paramLong2, paramLong3, paramInt2);
+    label332:
+    label349:
+    VideoViewInfo localVideoViewInfo;
+    switch (paramInt1)
     {
-      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.clearAnimation();
-      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.startAnimation(this.a.f);
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a() != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a().startAnimation(this.a.jdField_g_of_type_AndroidViewAnimationAnimation);
+    default: 
+    case 96: 
+    case 97: 
+    case 98: 
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.d(this.a.jdField_c_of_type_JavaLangString, 2, "onGaOperationResult, 请求对方视频成功, info" + paramLong2 + "]");
+          }
+          if (paramLong2 == 1L)
+          {
+            this.a.i("onGaOperationResult");
+            this.a.R();
+            this.a.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a().c);
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d(this.a.jdField_c_of_type_JavaLangString, 2, "onGaOperationResult --> EV_GA_SDK_REQUEST_VIDEO_SUC Failed. Info = " + paramLong2);
+        return;
+        QLog.w(this.a.jdField_c_of_type_JavaLangString, 1, "onGaOperationResult, 请求对方视频失败, result[" + paramInt1 + "], info[" + paramLong2 + "]");
+      } while (paramLong2 != 1L);
+      this.a.c(this.a.jdField_c_of_type_Long, paramInt1, false, -1);
+      return;
+    case 90: 
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_c_of_type_JavaLangString, 2, "go on stage success CameraNum=" + this.a.n);
       }
+      if (paramLong2 == 3L) {
+        if (this.a.n > 1)
+        {
+          this.a.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
+          ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a().c;
+          paramInt1 = 0;
+          if (paramInt1 >= localArrayList.size()) {
+            break label688;
+          }
+          localVideoViewInfo = (VideoViewInfo)localArrayList.get(paramInt1);
+          if (paramLong1 != localVideoViewInfo.jdField_a_of_type_Long) {
+            break label455;
+          }
+        }
+      }
+      break;
     }
-    if (this.a.jdField_a_of_type_AndroidViewView != null)
+    label688:
+    for (boolean bool = localVideoViewInfo.jdField_a_of_type_Boolean;; bool = false)
     {
-      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_c_of_type_AndroidViewAnimationAnimation);
+      this.a.jdField_b_of_type_ComTencentAvUiControlUIObserver.update(null, new Object[] { Integer.valueOf(105), Boolean.valueOf(bool) });
+      this.a.ad();
+      this.a.R();
+      this.a.c(true);
+      return;
+      this.a.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(8);
+      break label332;
+      label455:
+      paramInt1 += 1;
+      break label349;
+      this.a.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(8);
+      this.a.t(2131365404);
+      this.a.n();
+      if (paramLong2 == 2L)
+      {
+        this.a.n(54);
+        return;
       }
-    }
-    if (this.a.b != null)
-    {
-      this.a.b.clearAnimation();
-      if (this.a.b.getVisibility() == 0) {
-        this.a.b.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
+      if (paramLong2 != 4L) {
+        break;
       }
-    }
-    if (this.a.jdField_c_of_type_AndroidViewView != null)
-    {
-      this.a.jdField_c_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_c_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_c_of_type_AndroidViewView.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
+      this.a.n(55);
+      if (this.a.d != 2) {
+        break;
       }
-    }
-    if (this.a.jdField_d_of_type_AndroidViewView != null)
-    {
-      this.a.jdField_d_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_d_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_d_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      ReportController.b(null, "CliOper", "", "", "0X8004CFD", "0X8004CFD", 0, 0, "", "", "", "");
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_c_of_type_JavaLangString, 2, "go on stage failed");
       }
-    }
-    if (this.a.jdField_e_of_type_AndroidViewView != null)
-    {
-      this.a.jdField_e_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_e_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_e_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      this.a.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(8);
+      this.a.t(2131365404);
+      this.a.n();
+      if (paramLong2 == 7L) {
+        this.a.n(56);
       }
-    }
-    if (this.a.jdField_g_of_type_AndroidViewView != null)
-    {
-      this.a.jdField_g_of_type_AndroidViewView.clearAnimation();
-      if (this.a.jdField_g_of_type_AndroidViewView.getVisibility() == 0) {
-        this.a.jdField_g_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      while (this.a.d == 2)
+      {
+        ReportController.b(null, "CliOper", "", "", "0X800441E", "0X800441E", 0, 0, "", "", "", "");
+        return;
+        this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.b(48, true);
       }
-    }
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)) {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().au = true;
+      this.a.n();
+      return;
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    super.a(paramLong, paramInt1, paramInt2, paramBoolean);
+    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(paramLong, paramInt1, paramInt2, paramBoolean);
+    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersVideoUI.a(paramLong, paramInt1, paramInt2, paramBoolean);
+    if (paramLong == this.a.jdField_c_of_type_Long) {
+      this.a.x();
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void a(long paramLong1, long paramLong2)
+  {
+    super.a(paramLong1, paramLong2);
+    this.a.c(paramLong2, 5, false, 72);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, int paramInt)
+  {
+    super.a(paramLong1, paramLong2, paramInt);
+    if (paramLong2 == this.a.jdField_c_of_type_Long) {
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_f_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(this.a.jdField_c_of_type_JavaLangString, 2, "onMemberVideoOut-->Server Go off Stage ,must close local video");
+        }
+        this.a.O();
+        if (this.a.jdField_a_of_type_ComTencentAvVideoController != null) {
+          this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_c_of_type_Long, this.a.jdField_a_of_type_ComTencentAvVideoController.a().c, 1, false);
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.c(paramLong2, 6, false, 73);
+      return;
+      VideoViewInfo localVideoViewInfo = new VideoViewInfo();
+      localVideoViewInfo.jdField_a_of_type_Long = paramLong2;
+      localVideoViewInfo.jdField_a_of_type_Int = paramInt;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localVideoViewInfo);
+      this.a.jdField_b_of_type_ComTencentAvUiControlUIObserver.update(null, new Object[] { Integer.valueOf(104), localArrayList });
+      if (paramInt == 2)
+      {
+        TipsManager.c(106);
+        this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(106);
+      }
+    }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.jdField_c_of_type_JavaLangString, 1, "onMemberLeave, mRelationId[" + this.a.jdField_b_of_type_Long + "], groupId[" + paramLong1 + "], friendUin[" + paramLong2 + "], isQQUser[" + this.a.jdField_e_of_type_Boolean + "->" + paramBoolean + "]");
+    }
+    if (this.a.jdField_b_of_type_Long != paramLong1) {
+      return;
+    }
+    this.a.jdField_e_of_type_Boolean = paramBoolean;
+    super.a(paramLong1, paramLong2, paramBoolean);
+    this.a.c(paramLong2, 1, true, 71);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.jdField_c_of_type_JavaLangString, 1, "onMemberJoin, mRelationId[" + this.a.jdField_b_of_type_Long + "], groupId[" + paramLong1 + "], isQQUser[" + paramBoolean2 + "], friendUin[" + paramLong2 + "], isRefresh[" + paramBoolean1 + "]");
+    }
+    if (this.a.jdField_b_of_type_Long != paramLong1) {
+      return;
+    }
+    this.a.jdField_e_of_type_Boolean = paramBoolean2;
+    this.a.c(paramLong2, 0, paramBoolean1, 70);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.a(paramLong, paramBoolean1, paramBoolean2);
+    if (paramBoolean1) {}
+    for (int i = 42;; i = 43)
+    {
+      this.a.c(paramLong, 2, paramBoolean2, i);
+      return;
+    }
+  }
+  
+  protected void a(ArrayList paramArrayList, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      TipsManager.c(104);
+      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(104);
+      if (this.a.jdField_e_of_type_JavaLangRunnable != null)
+      {
+        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.a.jdField_e_of_type_JavaLangRunnable);
+        this.a.jdField_e_of_type_JavaLangRunnable = null;
+      }
+      return;
+    }
+    if ((paramInt == 1) && (((Long)paramArrayList.get(0)).longValue() == this.a.jdField_c_of_type_Long))
+    {
+      this.a.j.setText("自我静音");
+      TipsManager.a(104, "你的环境有些嘈杂，为免影响他人，不发言时请静音。");
+      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(104, "你的环境有些嘈杂，为免影响他人，不发言时请静音。", false);
+      return;
+    }
+    Object localObject;
+    long l;
+    if (this.a.jdField_e_of_type_JavaLangRunnable == null)
+    {
+      this.a.jdField_e_of_type_JavaLangRunnable = new jzl(this.a);
+      localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+      Runnable localRunnable = this.a.jdField_e_of_type_JavaLangRunnable;
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController.jdField_c_of_type_Long < 2000L)
+      {
+        l = 2000L;
+        ((Handler)localObject).postDelayed(localRunnable, l);
+      }
+    }
+    else
+    {
+      paramArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(String.valueOf(paramArrayList.get(0)), String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_f_of_type_Long), this.a.d);
+      float f = this.a.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131559833);
+      localObject = new StringBuilder();
+      EllipsisUtil.b((StringBuilder)localObject, paramArrayList, this.a.i.getPaint(), f);
+      if (paramInt != 1) {
+        break label362;
+      }
+      ((StringBuilder)localObject).append("的环境有些嘈杂。");
+      this.a.j.setText("将TA静音");
+    }
+    for (;;)
+    {
+      paramArrayList = ((StringBuilder)localObject).toString();
+      TipsManager.a(104, paramArrayList);
+      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(104, paramArrayList, false);
+      return;
+      l = this.a.jdField_a_of_type_ComTencentAvVideoController.jdField_c_of_type_Long;
+      break;
+      label362:
+      ((StringBuilder)localObject).append("等").append(paramInt);
+      ((StringBuilder)localObject).append("人的环境有些嘈杂。");
+      this.a.j.setText("设置他们的麦克风静音");
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.b(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
+    int i;
+    int j;
+    if (paramBoolean1)
+    {
+      i = 7;
+      j = 78;
+    }
+    for (;;)
+    {
+      this.a.c(paramLong2, i, false, j);
+      return;
+      i = 8;
+      j = 79;
+      TipsManager.c(106);
+      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(106);
+    }
+  }
+  
+  protected void b(long paramLong, boolean paramBoolean)
+  {
+    super.b(paramLong, paramBoolean);
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController.y) {}
+    do
+    {
+      return;
+      this.a.x();
+    } while ((paramLong == 0L) || (paramLong == this.a.jdField_c_of_type_Long));
+    Object localObject2;
+    if (this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager != null)
+    {
+      localObject2 = this.a.jdField_a_of_type_ComTencentAvVideoController.a(String.valueOf(paramLong), String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_f_of_type_Long), this.a.d);
+      if (localObject2 != null)
+      {
+        localObject1 = localObject2;
+        if (((String)localObject2).length() != 0) {}
+      }
+      else
+      {
+        localObject1 = String.valueOf(paramLong);
+      }
+      float f = this.a.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131559833);
+      localObject2 = new StringBuilder();
+      EllipsisUtil.b((StringBuilder)localObject2, (String)localObject1, this.a.i.getPaint(), f);
+      if (!paramBoolean) {
+        break label219;
+      }
+    }
+    label219:
+    for (Object localObject1 = this.a.jdField_a_of_type_AndroidContentResResources.getString(2131429162);; localObject1 = this.a.jdField_a_of_type_AndroidContentResResources.getString(2131429163))
+    {
+      ((StringBuilder)localObject2).append((String)localObject1);
+      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(70, ((StringBuilder)localObject2).toString(), 5000L, 0);
+      this.a.k(paramBoolean);
+      return;
+    }
+  }
+  
+  protected void c()
+  {
+    super.c();
+    if ((this.a.f != null) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() != null)) {
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.a.f);
+    }
+  }
+  
+  protected void c(long paramLong)
+  {
+    super.c(paramLong);
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_f_of_type_Long == paramLong) {
+      this.a.i(true);
+    }
+  }
+  
+  protected void c(long paramLong, int paramInt)
+  {
+    super.c(paramLong, paramInt);
+    paramInt = this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, paramInt);
+    if ((paramInt != -1) && (((VideoViewInfo)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(paramInt)).jdField_a_of_type_Boolean))
+    {
+      TipsManager.c(106);
+      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(106);
+      TipsManager.c(103);
+      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(103);
+    }
+    this.a.ad();
+    this.a.j("onFirstFrameDataComeIn");
+  }
+  
+  protected void c(long paramLong, boolean paramBoolean)
+  {
+    super.c(paramLong, paramBoolean);
+    this.a.x();
+    if (paramLong == this.a.jdField_c_of_type_Long) {
+      return;
+    }
+    Object localObject2;
+    if (this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager != null)
+    {
+      localObject2 = this.a.jdField_a_of_type_ComTencentAvVideoController.a(String.valueOf(paramLong), String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().jdField_f_of_type_Long), this.a.d);
+      if (localObject2 != null)
+      {
+        localObject1 = localObject2;
+        if (((String)localObject2).length() != 0) {}
+      }
+      else
+      {
+        localObject1 = String.valueOf(paramLong);
+      }
+      float f = this.a.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131559833);
+      localObject2 = new StringBuilder();
+      EllipsisUtil.b((StringBuilder)localObject2, (String)localObject1, this.a.i.getPaint(), f);
+      if (!paramBoolean) {
+        break label200;
+      }
+    }
+    label200:
+    for (Object localObject1 = this.a.jdField_a_of_type_AndroidContentResResources.getString(2131429160);; localObject1 = this.a.jdField_a_of_type_AndroidContentResResources.getString(2131429161))
+    {
+      ((StringBuilder)localObject2).append((String)localObject1);
+      this.a.jdField_a_of_type_ComTencentAvUtilsTipsManager.a(70, ((StringBuilder)localObject2).toString(), 5000L, 0);
+      this.a.k(paramBoolean);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jzf
  * JD-Core Version:    0.7.0.1
  */

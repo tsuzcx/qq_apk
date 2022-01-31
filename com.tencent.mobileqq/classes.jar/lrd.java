@@ -1,41 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.AppProtocolObserver;
+import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager;
+import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager.AtlasCallback;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleExtInfo;
+import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.RspBody;
 
 public class lrd
+  extends ProtoUtils.AppProtocolObserver
 {
-  private long jdField_a_of_type_Long;
-  Object jdField_a_of_type_JavaLangObject;
-  public boolean a;
-  private long b;
+  public lrd(ReadInJoyAtlasManager paramReadInJoyAtlasManager, ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback) {}
   
-  public lrd(FastWebModule paramFastWebModule, Object paramObject)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this(paramFastWebModule, paramObject, 600000L);
-    if (paramObject == null) {
-      this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(ReadInJoyAtlasManager.a, 2, "getAtlasCommentCount onResult, errorCode=" + paramInt);
     }
-  }
-  
-  public lrd(FastWebModule paramFastWebModule, Object paramObject, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.b = System.currentTimeMillis();
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.b = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
+    if ((paramInt != -1) && (paramArrayOfByte != null)) {
+      try
+      {
+        paramBundle = new oidb_cmd0xad6.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((paramBundle.msg_ext_info.has()) && (((oidb_cmd0xad6.ArticleExtInfo)paramBundle.msg_ext_info.get()).uint64_comment.has()))
+        {
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null) {
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(true, ((oidb_cmd0xad6.ArticleExtInfo)paramBundle.msg_ext_info.get()).uint64_comment.get(), 0);
+          }
+        }
+        else if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null)
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(false, 0L, -1);
+          return;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null) {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(false, 0L, -1);
+        }
+        QLog.e(ReadInJoyAtlasManager.a, 1, "getAtlasCommentCount onResult(), exception=" + paramArrayOfByte.toString());
+      }
+    }
   }
 }
 

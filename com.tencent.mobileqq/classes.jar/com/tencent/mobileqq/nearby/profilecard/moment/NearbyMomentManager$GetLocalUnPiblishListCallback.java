@@ -1,11 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import java.util.List;
-
-public abstract interface NearbyMomentManager$GetLocalUnPiblishListCallback
-{
-  public abstract void a(List paramList);
-}
+public abstract interface NearbyMomentManager$GetLocalUnPiblishListCallback {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar

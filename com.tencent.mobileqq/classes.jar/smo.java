@@ -1,29 +1,18 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
-public class smo
-  extends EmoticonPackageDownloadListener
+class smo
+  implements Runnable
 {
-  public smo(EmosmActivity paramEmosmActivity) {}
+  smo(smi paramsmi) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public void run()
   {
-    this.a.runOnUiThread(new smq(this, paramEmoticonPackage, paramInt));
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
-    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
-      return;
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.a();
+      this.a.a.a.a(-1, null);
     }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.runOnUiThread(new smp(this, paramEmoticonPackage));
   }
 }
 

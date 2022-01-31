@@ -1,24 +1,15 @@
-import android.graphics.Bitmap;
-import android.util.Pair;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem;
 
-class ajsk
+public class ajsk
   implements Runnable
 {
-  ajsk(ajsj paramajsj, Pair paramPair) {}
+  public ajsk(ImageItem paramImageItem, EditItemInfoBase paramEditItemInfoBase) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_AndroidWidgetImageView.getTag() instanceof String))
-    {
-      String str = (String)this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_AndroidWidgetImageView.getTag();
-      if ((this.jdField_a_of_type_AndroidUtilPair != null) && (str.endsWith(this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_JavaLangString)))
-      {
-        this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)this.jdField_a_of_type_AndroidUtilPair.first);
-        HotChatPostItemView.a(this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_JavaLangString, (Bitmap)this.jdField_a_of_type_AndroidUtilPair.first);
-      }
-    }
+    ImageItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiImageItem, (ImageInfo)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase, true);
   }
 }
 

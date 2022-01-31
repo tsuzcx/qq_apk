@@ -321,9 +321,9 @@ public class QQLSRecentManager
       {
         localObject1 = paramString;
         i = paramInt;
-        if (AppConstants.as.equals(paramString))
+        if (AppConstants.at.equals(paramString))
         {
-          localObject1 = AppConstants.ar;
+          localObject1 = AppConstants.as;
           i = 1008;
         }
       }
@@ -406,7 +406,7 @@ public class QQLSRecentManager
           if (((paramString != null) && (paramString.type == i) && (AppConstants.G.equals(paramString.uin))) || ((paramString != null) && (paramString.type == i) && (AppConstants.X.equals(paramString.uin)))) {
             break label1913;
           }
-          if ((paramString != null) && (AppConstants.C.equals(paramString.uin)) && ((AppConstants.K.equals(localObject1)) || (AppConstants.ap.equals(localObject1)) || (AppConstants.aw.equals(localObject1)))) {
+          if ((paramString != null) && (AppConstants.C.equals(paramString.uin)) && ((AppConstants.K.equals(localObject1)) || (AppConstants.aq.equals(localObject1)) || (AppConstants.ax.equals(localObject1)))) {
             break label1960;
           }
           if ((paramString == null) || (paramString.type != 1032) || (MsgProxyUtils.a(i) != 1032)) {
@@ -442,7 +442,7 @@ public class QQLSRecentManager
               paramInt = ((DatingProxyManager)localObject4).a().a();
               break label1963;
             }
-            if (localRecentBaseData.a().equals(AppConstants.ao))
+            if (localRecentBaseData.a().equals(AppConstants.ap))
             {
               localObject4 = (PullActiveManager)paramQQAppInterface.getManager(144);
               if (localObject4 == null) {
@@ -480,7 +480,7 @@ public class QQLSRecentManager
       if ((paramInt > 0) && (paramString != null))
       {
         if ((NewFriendManager.a(paramQQAppInterface, paramString.a())) && (AppConstants.Z.equals(paramString.a()))) {
-          paramString.b = paramQQAppInterface.getApp().getString(2131437235);
+          paramString.b = paramQQAppInterface.getApp().getString(2131437255);
         }
         localObject1 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
         if (((Iterator)localObject1).hasNext())
@@ -586,7 +586,7 @@ public class QQLSRecentManager
           jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
           break label1221;
         }
-        if ((paramString.a().equals(AppConstants.ai)) && (((RecentBaseData)localObject2).a().equals(paramString.a())))
+        if ((paramString.a().equals(AppConstants.aj)) && (((RecentBaseData)localObject2).a().equals(paramString.a())))
         {
           jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
           break label1221;
@@ -702,8 +702,8 @@ public class QQLSRecentManager
       } while (!QLog.isColorLevel());
       QLog.d("QQLSActivity", 2, "QQLSRecentManager update retrun because unread =0 || isNewFriendEnterAio" + f);
       return;
-      bool1 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435404), "qqsetting_lock_screen_whenexit_key", true);
-      bool2 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434202), "qqsetting_notify_showcontent_key", true);
+      bool1 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435420), "qqsetting_lock_screen_whenexit_key", true);
+      bool2 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434218), "qqsetting_notify_showcontent_key", true);
     } while ((!Boolean.valueOf(bool1).booleanValue()) || (!Boolean.valueOf(bool2).booleanValue()));
     a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, AppConstants.C, 4000, false);
   }

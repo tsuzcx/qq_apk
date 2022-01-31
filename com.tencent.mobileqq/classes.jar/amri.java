@@ -1,26 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GeoInfo;
-import cooperation.qzone.LbsDataV2.GetGeoInfoRsp;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import cooperation.comic.jsp.QQComicJsPlugin;
 
-public final class amri
-  implements Parcelable.Creator
+class amri
+  implements Runnable
 {
-  public LbsDataV2.GetGeoInfoRsp a(Parcel paramParcel)
-  {
-    LbsDataV2.GetGeoInfoRsp localGetGeoInfoRsp = new LbsDataV2.GetGeoInfoRsp();
-    if (paramParcel != null)
-    {
-      localGetGeoInfoRsp.stGps = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
-      localGetGeoInfoRsp.stGeoInfo = ((LbsDataV2.GeoInfo)paramParcel.readParcelable(LbsDataV2.GeoInfo.class.getClassLoader()));
-    }
-    return localGetGeoInfoRsp;
-  }
+  amri(amrh paramamrh) {}
   
-  public LbsDataV2.GetGeoInfoRsp[] a(int paramInt)
+  public void run()
   {
-    return null;
+    this.a.jdField_a_of_type_CooperationComicJspQQComicJsPlugin.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.b);
   }
 }
 

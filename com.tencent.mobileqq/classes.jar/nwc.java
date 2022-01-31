@@ -1,34 +1,38 @@
+import android.graphics.Bitmap;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
-import com.tencent.biz.qqstory.playmode.child.DiscoverPlayMode.PlayVideoEvent;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class nwc
-  extends UIBaseEventReceiver
+class nwc
+  extends SimpleObserver
 {
-  public nwc(DiscoverPresenter paramDiscoverPresenter)
+  nwc(nwb paramnwb) {}
+  
+  public void a(Bitmap paramBitmap)
   {
-    super(paramDiscoverPresenter);
+    super.onNext(paramBitmap);
+    IconLog.b(nwb.a(this.a), "onNext, oldResult=%s, newResult=%s", nwb.a(this.a), paramBitmap);
+    nwb.a(this.a, paramBitmap);
+    nwb.a(this.a, true);
   }
   
-  public void a(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPlayMode.PlayVideoEvent paramPlayVideoEvent)
+  public void onCancel()
   {
-    if (DiscoverPresenter.a.size() == 0) {}
-    while ((DiscoverPresenter)((WeakReference)DiscoverPresenter.a.get(DiscoverPresenter.a.size() - 1)).get() != paramDiscoverPresenter) {
-      return;
-    }
-    DiscoverPresenter.a(paramDiscoverPresenter).a(paramPlayVideoEvent);
+    super.onCancel();
+    IconLog.a(nwb.a(this.a), "onCancel");
+    onError(new ErrorMessage(-1, "onCancel"));
   }
   
-  public Class acceptEventClass()
+  public void onError(@NonNull Error paramError)
   {
-    return DiscoverPlayMode.PlayVideoEvent.class;
+    super.onError(paramError);
+    IconLog.c(nwb.a(this.a), "onError, oldError=%s, newError=%s", nwb.a(this.a), paramError);
+    nwb.a(this.a, paramError);
+    nwb.a(this.a, SystemClock.uptimeMillis());
+    nwb.a(this.a, false);
   }
-  
-  public void b(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPlayMode.PlayVideoEvent paramPlayVideoEvent) {}
 }
 
 

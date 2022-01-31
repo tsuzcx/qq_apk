@@ -1,19 +1,16 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-public class kul
+class kul
   implements Runnable
 {
-  public kul(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager, ArrayList paramArrayList) {}
+  kul(kuk paramkuk, Drawable paramDrawable) {}
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      AdvertisementVideoPreloadManager.b(((PAAdPreloadTask)localIterator.next()).mVideoVid);
-    }
+    this.jdField_a_of_type_Kuk.a.a.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_Kuk.a.a.notifyDataSetChanged();
   }
 }
 

@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.search.util;
 
-import ahws;
-import ahwt;
-import ahwu;
+import aibi;
+import aibj;
+import aibk;
+import aibl;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -286,9 +287,63 @@ public class SearchUtils
     return a(paramString2.indexOf(paramString1), paramString1.length(), paramString2.length(), paramBoolean1, paramBoolean2);
   }
   
+  public static aibl a(CharSequence paramCharSequence, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.SearchUtils", 2, "getHighLightMatchedMessage" + paramCharSequence + "|" + paramString);
+    }
+    if ((TextUtils.isEmpty(paramCharSequence)) || (TextUtils.isEmpty(paramString))) {
+      return new aibl(paramCharSequence);
+    }
+    String str = paramCharSequence.toString().toLowerCase();
+    int m = str.indexOf(paramString);
+    int k = paramString.length();
+    int j = k;
+    int i = m;
+    Object localObject = paramString;
+    if (m < 0)
+    {
+      paramString = paramString.toLowerCase();
+      m = str.indexOf(paramString);
+      j = k;
+      i = m;
+      localObject = paramString;
+      if (m < 0)
+      {
+        if (!paramBoolean) {
+          break label298;
+        }
+        localObject = a(str, paramString, 1);
+        if (localObject[0] < 0) {
+          break label256;
+        }
+        i = localObject[0];
+        j = localObject[1];
+      }
+    }
+    for (localObject = paramString;; localObject = paramString)
+    {
+      paramCharSequence = new SpannableStringBuilder(paramCharSequence);
+      for (k = i; (k >= 0) && (k < paramCharSequence.length()) && (k + j <= paramCharSequence.length()) && (j > 0); k = str.indexOf((String)localObject, k + j)) {
+        paramCharSequence.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), k, k + j, 17);
+      }
+      label256:
+      localObject = a(str, paramString, 2);
+      if (localObject[0] < 0) {
+        break;
+      }
+      i = localObject[0];
+      j = localObject[1];
+    }
+    return new aibl(paramCharSequence);
+    label298:
+    return new aibl(paramCharSequence);
+    return new aibl(paramCharSequence, i, j);
+  }
+  
   public static Drawable a(Bitmap paramBitmap)
   {
-    Drawable localDrawable = BaseApplicationImpl.sApplication.getResources().getDrawable(2130839196);
+    Drawable localDrawable = BaseApplicationImpl.sApplication.getResources().getDrawable(2130839213);
     if ((localDrawable instanceof SkinnableBitmapDrawable)) {
       ((SkinnableBitmapDrawable)localDrawable).setGravity(81);
     }
@@ -333,10 +388,10 @@ public class SearchUtils
         return new BitmapDrawable(ImageUtil.b());
       }
       if (paramInt == 102) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130841588);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130841615);
       }
       if (paramInt == 106) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130843908);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130843974);
       }
       if (paramInt == 105)
       {
@@ -347,25 +402,25 @@ public class SearchUtils
         return PublicAccountConfigUtil.a(BaseApplicationImpl.sApplication, 1);
       }
       if (String.valueOf(9999L).equals(paramString)) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839201);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839220);
       }
       if (String.valueOf(9994L).equals(paramString)) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839208);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839227);
       }
       if (String.valueOf(9992L).equals(paramString)) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839206);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839225);
       }
-      if (AppConstants.at.equals(paramString)) {
+      if (AppConstants.au.equals(paramString)) {
         return ServiceAccountFolderManager.a();
       }
       if (String.valueOf(9980L).equals(paramString)) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839207);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839226);
       }
       if (String.valueOf(9973L).equals(paramString)) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130842153);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130842185);
       }
       if (paramInt == 9889987) {
-        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130840585);
+        return BaseApplicationImpl.sApplication.getResources().getDrawable(2130840600);
       }
       if (paramInt == 108)
       {
@@ -377,7 +432,7 @@ public class SearchUtils
       else
       {
         if (String.valueOf(AppConstants.C).equals(paramString)) {
-          return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839200);
+          return BaseApplicationImpl.sApplication.getResources().getDrawable(2130839217);
         }
         if (paramInt == 110)
         {
@@ -609,13 +664,183 @@ public class SearchUtils
     }
   }
   
-  public static CharSequence a(TextView paramTextView, float paramFloat, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  public static CharSequence a(TextView paramTextView, float paramFloat, int paramInt, CharSequence paramCharSequence, List paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramInt == 1) {
-      return a(paramTextView, paramFloat, paramString1, paramString2, paramBoolean);
+    return a(paramTextView, paramFloat, paramInt, paramCharSequence, paramList, paramBoolean1, paramBoolean2, false);
+  }
+  
+  public static CharSequence a(TextView paramTextView, float paramFloat, int paramInt, CharSequence paramCharSequence, List paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.uniteSearch.SearchUtils", 2, "getHighLightMatchedMessageWithWidth" + paramCharSequence);
     }
-    float f = a(paramTextView, "测");
-    return a(paramTextView, paramInt * paramFloat - f * (paramInt - 1), paramString1, paramString2, paramBoolean);
+    float f1 = a(paramTextView, "测");
+    f1 = paramInt * paramFloat - f1 * (paramInt - 1);
+    if ((TextUtils.isEmpty(paramCharSequence)) || (paramTextView == null) || (f1 <= 0.0F)) {
+      paramList = "";
+    }
+    int i;
+    int j;
+    label121:
+    float f2;
+    label365:
+    do
+    {
+      do
+      {
+        do
+        {
+          return paramList;
+          if ((paramList != null) && (paramList.size() != 0)) {
+            break;
+          }
+          paramList = paramCharSequence;
+        } while (!paramBoolean3);
+        return a(paramTextView, f1, paramCharSequence);
+        i = -1;
+        j = 0;
+        k = 0;
+        int n;
+        int m;
+        if (k < paramList.size())
+        {
+          localObject = (String)paramList.get(k);
+          if (TextUtils.isEmpty((CharSequence)localObject))
+          {
+            n = i;
+            m = j;
+          }
+        }
+        for (;;)
+        {
+          k += 1;
+          j = m;
+          i = n;
+          break label121;
+          if ((i >= 0) && (j > 1) && (((String)localObject).length() == 1))
+          {
+            paramList = paramCharSequence;
+            if (a(paramTextView, paramCharSequence) <= f1) {
+              break;
+            }
+            if ((!TextUtils.isEmpty(paramCharSequence)) && (i >= 0) && (i + j <= paramCharSequence.length())) {
+              break label365;
+            }
+            paramList = paramCharSequence;
+            if (!paramBoolean3) {
+              break;
+            }
+            return a(paramTextView, f1, paramCharSequence);
+          }
+          aibl localaibl = a(paramCharSequence, (String)localObject, paramBoolean1);
+          localObject = localaibl.jdField_a_of_type_JavaLangCharSequence;
+          m = j;
+          n = i;
+          paramCharSequence = (CharSequence)localObject;
+          if (i == -1)
+          {
+            m = j;
+            n = i;
+            paramCharSequence = (CharSequence)localObject;
+            if (j == 0)
+            {
+              m = j;
+              n = i;
+              paramCharSequence = (CharSequence)localObject;
+              if (localaibl.jdField_a_of_type_Int != -1)
+              {
+                m = j;
+                n = i;
+                paramCharSequence = (CharSequence)localObject;
+                if (localaibl.jdField_b_of_type_Int > 0)
+                {
+                  n = localaibl.jdField_a_of_type_Int;
+                  m = localaibl.jdField_b_of_type_Int;
+                  paramCharSequence = (CharSequence)localObject;
+                }
+              }
+            }
+          }
+        }
+        localObject = paramCharSequence.subSequence(0, i + j);
+        paramList = (List)localObject;
+        if (i + j < paramCharSequence.length()) {
+          paramList = localObject + "…";
+        }
+        if (a(paramTextView, paramList) > f1) {
+          break;
+        }
+        paramList = paramCharSequence;
+      } while (!paramBoolean3);
+      return a(paramTextView, f1, paramCharSequence);
+      if ((paramInt == 1) || (!paramBoolean2)) {
+        return a(paramTextView, f1, paramCharSequence, i, j);
+      }
+      f2 = paramFloat / 2.0F;
+      paramList = paramCharSequence;
+    } while (f2 > a(paramTextView, paramCharSequence));
+    Object localObject = new StringBuilder();
+    paramInt = 0;
+    paramFloat = 0.0F;
+    int k = paramInt;
+    if (paramFloat < f2)
+    {
+      k = paramInt;
+      if (paramInt < paramCharSequence.length())
+      {
+        ((StringBuilder)localObject).append(paramCharSequence.charAt(paramInt));
+        paramFloat = a(paramTextView, ((StringBuilder)localObject).toString());
+        if (paramFloat <= f2) {
+          break label713;
+        }
+        ((StringBuilder)localObject).deleteCharAt(paramInt);
+        k = paramInt - 1;
+      }
+    }
+    label567:
+    paramList = new SpannableStringBuilder(paramCharSequence.subSequence(0, k + 1));
+    paramInt = k + 1;
+    paramFloat = f1 - a(paramTextView, ((StringBuilder)localObject).toString());
+    if (paramInt < paramCharSequence.length())
+    {
+      paramCharSequence = paramCharSequence.subSequence(paramInt, paramCharSequence.length());
+      if (paramInt < i) {
+        break label740;
+      }
+      paramTextView = a(paramTextView, paramFloat, paramCharSequence);
+      if (paramInt >= i + j) {
+        break label730;
+      }
+      paramInt = Math.min(paramTextView.length(), j - (paramInt - i));
+      paramTextView = new SpannableStringBuilder(paramTextView);
+      paramTextView.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), 0, paramInt, 17);
+      paramList.append(paramTextView);
+    }
+    for (;;)
+    {
+      return paramList;
+      label713:
+      k = paramInt;
+      if (paramFloat == f2) {
+        break label567;
+      }
+      paramInt += 1;
+      break;
+      label730:
+      paramList.append(paramTextView);
+      continue;
+      label740:
+      paramList.append(a(paramTextView, paramFloat, paramCharSequence, i - paramInt, j));
+    }
+  }
+  
+  public static CharSequence a(TextView paramTextView, float paramFloat, int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(paramString2)) {
+      localArrayList.add(paramString2);
+    }
+    return a(paramTextView, paramFloat, paramInt, paramString1, localArrayList, paramBoolean1, paramBoolean2, paramBoolean3);
   }
   
   public static CharSequence a(TextView paramTextView, float paramFloat, CharSequence paramCharSequence)
@@ -640,7 +865,7 @@ public class SearchUtils
         ((StringBuilder)localObject).append(paramCharSequence.charAt(i));
         f = a(paramTextView, ((StringBuilder)localObject).toString());
         if (f <= paramFloat) {
-          break label173;
+          break label180;
         }
         ((StringBuilder)localObject).deleteCharAt(i);
         j = i - 1;
@@ -649,13 +874,15 @@ public class SearchUtils
     label121:
     localObject = paramCharSequence.subSequence(0, j + 1);
     paramTextView = new SpannableStringBuilder((CharSequence)localObject);
-    if (j < paramCharSequence.length() - 1) {
-      paramTextView.replace(j, j + 1, "…");
+    if (j < paramCharSequence.length() - 1)
+    {
+      paramTextView.delete(j, j + 1);
+      paramTextView.append("…", 0, 1);
     }
     for (;;)
     {
       return paramTextView;
-      label173:
+      label180:
       j = i;
       if (f == paramFloat) {
         break label121;
@@ -666,196 +893,115 @@ public class SearchUtils
     }
   }
   
-  public static CharSequence a(TextView paramTextView, float paramFloat, String paramString1, String paramString2, boolean paramBoolean)
+  public static CharSequence a(TextView paramTextView, float paramFloat, CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (paramTextView == null) || (paramFloat <= 0.0F))
+    if ((TextUtils.isEmpty(paramCharSequence)) || (paramTextView == null) || (paramFloat <= 0.0F))
     {
-      paramTextView = "";
-      return paramTextView;
+      localObject = "";
+      return localObject;
     }
-    if (TextUtils.isEmpty(paramString2)) {
-      return a(paramTextView, paramFloat, paramString1);
+    if ((paramInt1 < 0) || (paramInt1 + paramInt2 > paramCharSequence.length())) {
+      return a(paramTextView, paramFloat, paramCharSequence);
     }
-    float f2 = paramFloat - a(paramTextView, "…");
-    String str = paramString1.toLowerCase();
-    int m = str.indexOf(paramString2);
-    int j = paramString2.length();
-    int k = j;
-    int i = m;
-    Object localObject = paramString2;
-    if (m < 0)
+    Object localObject = paramCharSequence.subSequence(paramInt1, paramInt1 + paramInt2);
+    float f1 = a(paramTextView, ((CharSequence)localObject).toString());
+    paramInt2 = paramInt1 + paramInt2;
+    localObject = new StringBuilder((CharSequence)localObject);
+    float f2 = f1;
+    int j = paramInt2;
+    int k;
+    int i;
+    if (f1 < paramFloat)
     {
-      paramString2 = paramString2.toLowerCase();
-      m = str.indexOf(paramString2);
-      k = j;
-      i = m;
-      localObject = paramString2;
-      if (m < 0)
-      {
-        if (!paramBoolean) {
-          break label205;
-        }
-        localObject = a(str, paramString2, 1);
-        if (localObject[0] < 0) {
-          break label166;
-        }
-        i = localObject[0];
-      }
-    }
-    for (j = localObject[1];; j = localObject[1])
-    {
-      localObject = paramString2;
-      k = j;
-      if (i >= 0) {
-        break label213;
-      }
-      return a(paramTextView, f2, paramString1);
-      label166:
-      localObject = a(str, paramString2, 2);
-      if (localObject[0] < 0) {
-        break;
-      }
-      i = localObject[0];
-    }
-    return a(paramTextView, f2, paramString1);
-    label205:
-    return a(paramTextView, f2, paramString1);
-    label213:
-    paramString2 = paramString1.substring(i, i + k);
-    float f1 = a(paramTextView, paramString2);
-    m = i + k;
-    paramString2 = new StringBuilder(paramString2);
-    j = m;
-    paramFloat = f1;
-    int i1;
-    int n;
-    if (f1 < f2)
-    {
-      i1 = 0;
-      j = m;
-      n = i;
-      label274:
-      if ((f1 >= f2) || ((n <= 0) && (j >= paramString1.length()))) {
-        break label784;
-      }
-      m = n;
-      paramFloat = f1;
-      if (i1 % 2 == 0)
-      {
-        m = n;
-        paramFloat = f1;
-        if (n > 0)
+      k = 0;
+      i = paramInt1;
+      paramInt1 = paramInt2;
+      f2 = f1;
+      label120:
+      paramInt2 = i;
+      j = paramInt1;
+      if (f2 < paramFloat) {
+        if (i <= 0)
         {
-          n -= 1;
-          paramString2.insert(0, paramString1.charAt(n));
-          f1 = a(paramTextView, paramString2.toString());
-          m = n;
-          paramFloat = f1;
-          if (f1 > f2)
-          {
-            paramString2.deleteCharAt(0);
-            n += 1;
-            m = j;
-            j = n;
+          paramInt2 = i;
+          j = paramInt1;
+          if (paramInt1 >= paramCharSequence.length()) {}
+        }
+        else
+        {
+          paramInt2 = i;
+          f1 = f2;
+          if (k % 2 != 0) {
+            break label348;
           }
+          paramInt2 = i;
+          f1 = f2;
+          if (i <= 0) {
+            break label348;
+          }
+          i -= 1;
+          ((StringBuilder)localObject).insert(0, paramCharSequence.charAt(i));
+          f2 = a(paramTextView, ((StringBuilder)localObject).toString());
+          paramInt2 = i;
+          f1 = f2;
+          if (f2 <= paramFloat) {
+            break label348;
+          }
+          paramInt2 = i + 1;
+          ((StringBuilder)localObject).deleteCharAt(0);
+          j = paramInt1;
         }
       }
     }
     for (;;)
     {
-      label385:
-      if (j > 0)
+      label247:
+      paramTextView = new SpannableStringBuilder(paramCharSequence.subSequence(paramInt2, j));
+      if ((paramInt2 > 0) && (!TextUtils.isEmpty(paramTextView)))
       {
-        i -= j;
-        paramString2.replace(0, 1, "…");
-        if ((i == 0) && (k > 1))
-        {
-          i = 1;
-          j = k - 1;
-        }
+        paramTextView.delete(0, 1);
+        paramTextView = new SpannableStringBuilder("…").append(paramTextView);
       }
       for (;;)
       {
-        if (m < paramString1.length()) {
-          paramString2.append("…");
+        localObject = paramTextView;
+        if (j >= paramCharSequence.length()) {
+          break;
         }
-        paramTextView = paramString2.toString();
-        if (TextUtils.isEmpty(paramTextView))
+        localObject = paramTextView;
+        if (TextUtils.isEmpty(paramTextView)) {
+          break;
+        }
+        paramTextView.delete(paramTextView.length() - 1, paramTextView.length());
+        paramTextView.append("…");
+        return paramTextView;
+        label348:
+        if ((k % 2 != 0) && (paramInt1 < paramCharSequence.length()))
         {
-          return "";
-          if ((i1 % 2 != 0) && (j < paramString1.length()))
+          i = paramInt1 + 1;
+          ((StringBuilder)localObject).insert(((StringBuilder)localObject).length(), paramCharSequence.charAt(i - 1));
+          f2 = a(paramTextView, ((StringBuilder)localObject).toString());
+          paramInt1 = i;
+          f1 = f2;
+          if (f2 > paramFloat)
           {
-            n = j + 1;
-            paramString2.insert(paramString2.length(), paramString1.charAt(n - 1));
-            f1 = a(paramTextView, paramString2.toString());
-            j = n;
-            paramFloat = f1;
-            if (f1 > f2)
-            {
-              paramString2.deleteCharAt(paramString2.length() - 1);
-              j = m;
-              m = n - 1;
-              break label385;
-            }
+            ((StringBuilder)localObject).deleteCharAt(((StringBuilder)localObject).length() - 1);
+            j = i - 1;
+            break label247;
           }
-          i1 += 1;
-          n = m;
-          f1 = paramFloat;
-          break label274;
-          while ((paramFloat > f2) && (j > i))
-          {
-            paramString2.deleteCharAt(j - i - 1);
-            j -= 1;
-            paramFloat = a(paramTextView, paramString2.toString());
-          }
-          k = paramString2.length();
-          if (k == 0) {
-            return "";
-          }
-          if (i <= 0) {
-            break label759;
-          }
-          paramString2.replace(0, 1, "…");
-          i = 1;
-          k -= 1;
-          m = j;
-          j = k;
-          continue;
         }
-        paramString2 = paramTextView.toLowerCase();
-        paramString1 = new SpannableStringBuilder(paramTextView);
-        for (;;)
+        k += 1;
+        i = paramInt2;
+        f2 = f1;
+        break label120;
+        while ((f2 > paramFloat) && (j > paramInt1))
         {
-          paramTextView = paramString1;
-          if (i < 0) {
-            break;
-          }
-          paramTextView = paramString1;
-          if (i >= paramString1.length()) {
-            break;
-          }
-          paramTextView = paramString1;
-          if (i + j > paramString1.length()) {
-            break;
-          }
-          paramTextView = paramString1;
-          if (j <= 0) {
-            break;
-          }
-          paramString1.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), i, i + j, 17);
-          i = paramString2.indexOf((String)localObject, i + j);
+          ((StringBuilder)localObject).deleteCharAt(j - paramInt1 - 1);
+          j -= 1;
+          f2 = a(paramTextView, ((StringBuilder)localObject).toString());
         }
-        label759:
-        m = j;
-        j = k;
-        continue;
-        j = k;
-        continue;
-        j = k;
       }
-      label784:
-      m = j;
-      j = n;
+      paramInt2 = paramInt1;
     }
   }
   
@@ -864,7 +1010,7 @@ public class SearchUtils
     int n = 0;
     if (jdField_a_of_type_AndroidGraphicsPaint == null)
     {
-      jdField_a_of_type_AndroidGraphicsPaint = ((TextView)LayoutInflater.from(paramQQAppInterface.getApp()).inflate(2130971532, null).findViewById(2131363378)).getPaint();
+      jdField_a_of_type_AndroidGraphicsPaint = ((TextView)LayoutInflater.from(paramQQAppInterface.getApp()).inflate(2130971558, null).findViewById(2131363397)).getPaint();
       if (jdField_c_of_type_Int == 0) {
         jdField_c_of_type_Int = paramQQAppInterface.getApp().getResources().getDimensionPixelOffset(2131559126);
       }
@@ -886,7 +1032,7 @@ public class SearchUtils
       {
         paramQQAppInterface = a(str, paramString2, 1);
         if (paramQQAppInterface[0] < 0) {
-          break label423;
+          break label422;
         }
         i = paramQQAppInterface[0];
         j = paramQQAppInterface[1];
@@ -914,7 +1060,7 @@ public class SearchUtils
         if ((f1 > f2) || (m >= paramInt))
         {
           if (f2 > 0.0F) {
-            break label472;
+            break label471;
           }
           paramInt = n;
           paramString1 = "…" + paramString1.substring(i - paramInt);
@@ -934,7 +1080,7 @@ public class SearchUtils
           i = paramString2.indexOf(paramQQAppInterface, j + i);
           j = paramQQAppInterface.length();
           continue;
-          label423:
+          label422:
           paramQQAppInterface = a(str, paramString2, 2);
           if (paramQQAppInterface[0] >= 0)
           {
@@ -949,7 +1095,7 @@ public class SearchUtils
         }
       }
       return paramString1;
-      label472:
+      label471:
       paramInt = m;
       break label294;
       paramString2 = str;
@@ -963,7 +1109,7 @@ public class SearchUtils
     }
     if (jdField_a_of_type_AndroidGraphicsPaint == null)
     {
-      jdField_a_of_type_AndroidGraphicsPaint = ((TextView)LayoutInflater.from(paramQQAppInterface.getApp()).inflate(2130971532, null).findViewById(2131363378)).getPaint();
+      jdField_a_of_type_AndroidGraphicsPaint = ((TextView)LayoutInflater.from(paramQQAppInterface.getApp()).inflate(2130971558, null).findViewById(2131363397)).getPaint();
       if (jdField_c_of_type_Int == 0) {
         jdField_c_of_type_Int = paramQQAppInterface.getApp().getResources().getDimensionPixelOffset(2131559126);
       }
@@ -1113,11 +1259,11 @@ public class SearchUtils
       if (m < 0)
       {
         if (!paramBoolean) {
-          break label290;
+          break label289;
         }
         localObject = a(str, paramString2, 1);
         if (localObject[0] < 0) {
-          break label250;
+          break label249;
         }
         i = localObject[0];
         j = localObject[1];
@@ -1141,7 +1287,7 @@ public class SearchUtils
           i = paramString2.indexOf((String)localObject, i + j);
           j = ((String)localObject).length();
           continue;
-          label250:
+          label249:
           localObject = a(str, paramString2, 2);
           if (localObject[0] >= 0)
           {
@@ -1150,7 +1296,7 @@ public class SearchUtils
             break;
           }
           return new SpannableStringBuilder(paramString1);
-          label290:
+          label289:
           return new SpannableStringBuilder(paramString1);
         }
       }
@@ -1283,11 +1429,11 @@ public class SearchUtils
         paramInt = str2.indexOf(str1);
         i = str1.length();
         if (paramInt >= 0) {
-          break label272;
+          break label271;
         }
         paramInt = str2.indexOf(str1.toLowerCase());
       } while (paramInt < 0);
-      label272:
+      label271:
       for (;;)
       {
         paramString.setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), paramInt, paramInt + i, 17);
@@ -1827,7 +1973,7 @@ public class SearchUtils
   
   public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, List paramList, String paramString3, Rect paramRect, SearchUtils.GenerateGifWithTextCallback paramGenerateGifWithTextCallback)
   {
-    ThreadManager.post(new ahwu(paramString1, paramString2, paramList, paramString3, paramRect, paramAppInterface, paramGenerateGifWithTextCallback), 8, null, true);
+    ThreadManager.post(new aibk(paramString1, paramString2, paramList, paramString3, paramRect, paramAppInterface, paramGenerateGifWithTextCallback), 8, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
@@ -1869,12 +2015,12 @@ public class SearchUtils
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    ThreadManager.postImmediately(new ahws(paramInt, paramString2, paramString3, paramString1, paramQQAppInterface), null, false);
+    ThreadManager.postImmediately(new aibi(paramInt, paramString2, paramString3, paramString1, paramQQAppInterface), null, false);
   }
   
   public static void a(IContactSearchModel paramIContactSearchModel, View paramView)
   {
-    ThreadManager.postImmediately(new ahwt(paramView, paramIContactSearchModel), null, true);
+    ThreadManager.postImmediately(new aibj(paramView, paramIContactSearchModel), null, true);
   }
   
   public static void a(String paramString)
@@ -2372,7 +2518,7 @@ public class SearchUtils
     if (k < 0)
     {
       if (!paramBoolean) {
-        break label277;
+        break label276;
       }
       int[] arrayOfInt = a(str, (String)localObject, 1);
       if (arrayOfInt[0] >= 0)
@@ -2387,14 +2533,14 @@ public class SearchUtils
     else
     {
       if ((j <= paramInt) && ((j <= 6) || (j + i <= paramInt))) {
-        break label288;
+        break label287;
       }
       paramString1 = "…" + paramString1.substring(j - 6);
       str = "…" + str.substring(j - 6);
       j = 7;
     }
-    label277:
-    label288:
+    label276:
+    label287:
     for (;;)
     {
       paramString1 = new SpannableStringBuilder(paramString1);
@@ -2519,7 +2665,7 @@ public class SearchUtils
       for (paramInt = 8;; paramInt = k + 1)
       {
         localObject2 = new SpannableStringBuilder((CharSequence)localObject1);
-        ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494265)), 0, ((String)localObject1).length(), 17);
+        ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131494271)), 0, ((String)localObject1).length(), 17);
         while (paramInt >= 0)
         {
           ((SpannableStringBuilder)localObject2).setSpan(new ForegroundColorSpan(BaseApplicationImpl.sApplication.getResources().getColor(2131492951)), paramInt, paramInt + i, 17);

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.text;
 
-import ainr;
+import aisu;
 import android.content.res.Resources;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetricsInt;
@@ -44,7 +44,7 @@ public class QQText$SmallEmojiSpan
   
   private void a()
   {
-    ThreadManager.post(new ainr(this), 5, null, true);
+    ThreadManager.post(new aisu(this), 5, null, true);
   }
   
   public int a()
@@ -78,42 +78,42 @@ public class QQText$SmallEmojiSpan
     this.b = paramInt;
   }
   
+  public void a(EmoticonPackage paramEmoticonPackage)
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQText", 2, "updateApngFlag mIsAPNG = true");
+      }
+    }
+  }
+  
   protected Drawable b()
   {
-    Object localObject1 = new SmallEmoticonInfo(QQText.c());
-    Object localObject2 = new Emoticon();
-    ((Emoticon)localObject2).eId = String.valueOf(this.f);
-    ((Emoticon)localObject2).epId = String.valueOf(this.e);
+    Object localObject = new SmallEmoticonInfo(QQText.c());
+    Emoticon localEmoticon = new Emoticon();
+    localEmoticon.eId = String.valueOf(this.f);
+    localEmoticon.epId = String.valueOf(this.e);
     if (!this.jdField_b_of_type_Boolean)
     {
-      ((Emoticon)localObject2).jobType = 3;
-      ((SmallEmoticonInfo)localObject1).jdField_a_of_type_ComTencentMobileqqDataEmoticon = ((Emoticon)localObject2);
-      localObject1 = ((SmallEmoticonInfo)localObject1).a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density);
+      localEmoticon.jobType = 3;
+      ((SmallEmoticonInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataEmoticon = localEmoticon;
+      localObject = ((SmallEmoticonInfo)localObject).a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density);
     }
     for (;;)
     {
-      if (localObject1 != null) {
-        ((Drawable)localObject1).setBounds(0, 0, this.d, this.d);
+      if (localObject != null) {
+        ((Drawable)localObject).setBounds(0, 0, this.d, this.d);
       }
-      return localObject1;
-      ((Emoticon)localObject2).jobType = 3;
-      ((SmallEmoticonInfo)localObject1).jdField_a_of_type_ComTencentMobileqqDataEmoticon = ((Emoticon)localObject2);
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        localObject2 = EmoticonUtils.a();
-        if (localObject2 != null)
-        {
-          localObject2 = ((EmoticonManager)localObject2).a(String.valueOf(this.e));
-          if ((localObject2 != null) && (((EmoticonPackage)localObject2).isAPNG == 2)) {
-            this.jdField_a_of_type_Boolean = true;
-          }
-        }
-      }
+      return localObject;
+      localEmoticon.jobType = 3;
+      ((SmallEmoticonInfo)localObject).jdField_a_of_type_ComTencentMobileqqDataEmoticon = localEmoticon;
       if (QLog.isColorLevel()) {
         QLog.d("QQText", 2, "SmallEmojiSpan doGetDrawable: epid = " + this.e + " eid = " + this.f + " isAPNG = " + this.jdField_a_of_type_Boolean);
       }
-      ((SmallEmoticonInfo)localObject1).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-      localObject1 = ((SmallEmoticonInfo)localObject1).b(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density);
+      ((SmallEmoticonInfo)localObject).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      localObject = ((SmallEmoticonInfo)localObject).b(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density);
       a();
     }
   }
@@ -132,7 +132,7 @@ public class QQText$SmallEmojiSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQText.SmallEmojiSpan
  * JD-Core Version:    0.7.0.1
  */

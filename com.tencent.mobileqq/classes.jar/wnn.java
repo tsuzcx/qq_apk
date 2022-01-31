@@ -1,16 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
 
 public class wnn
-  implements IIconListener
+  implements Runnable
 {
-  private wnn(FriendFragment paramFriendFragment) {}
+  public wnn(ClassificationSearchFragment paramClassificationSearchFragment, SearchResult paramSearchResult) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
-      FriendFragment.a(this.a, 1400L, false);
+    ClassificationSearchFragment localClassificationSearchFragment;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult != null)
+    {
+      localClassificationSearchFragment = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult.a) {
+        break label30;
+      }
+    }
+    label30:
+    for (int i = 1;; i = 0)
+    {
+      ClassificationSearchFragment.a(localClassificationSearchFragment, i);
+      return;
     }
   }
 }

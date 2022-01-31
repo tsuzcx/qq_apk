@@ -1,28 +1,33 @@
-import android.graphics.Matrix;
-import android.graphics.PointF;
 import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.mobileqq.widget.RatioLayout;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelBoard;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelBoard.IScroll;
+import mqq.util.WeakReference;
 
 public class agsb
-  implements ValueAnimation.AnimationUpdateListener
+  implements Runnable
 {
-  public agsb(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
+  public agsb(PersonalityLabelBoard paramPersonalityLabelBoard) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void run()
   {
-    paramTransformation.getMatrix().setScale(paramFloat1.floatValue(), paramFloat1.floatValue(), this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
-    paramFloat = this.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f1 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b.x;
-    float f2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.getWidth();
-    float f3 = this.jdField_a_of_type_AndroidGraphicsPointF.y;
-    float f4 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b.y;
-    float f5 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.getHeight();
-    paramTransformation.getMatrix().postTranslate((paramFloat - f1) * f2 * paramFloat1.floatValue(), (f3 - f4) * f5 * paramFloat1.floatValue());
-    paramTransformation.getMatrix().postRotate(paramFloat1.floatValue() * 120.0F - 120.0F, this.jdField_a_of_type_AndroidViewView.getWidth() * 0.5F, this.jdField_a_of_type_AndroidViewView.getHeight() * 0.5F);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel.isCloseByUser == 0)) {
+      if (this.a.jdField_a_of_type_MqqUtilWeakReference != null) {
+        break label62;
+      }
+    }
+    label62:
+    for (PersonalityLabelBoard.IScroll localIScroll = null;; localIScroll = (PersonalityLabelBoard.IScroll)this.a.jdField_a_of_type_MqqUtilWeakReference.get())
+    {
+      if (localIScroll != null)
+      {
+        int i = this.a.jdField_a_of_type_AndroidViewView.getTop();
+        if (i >= 0) {
+          localIScroll.d(i);
+        }
+      }
+      return;
+    }
   }
 }
 

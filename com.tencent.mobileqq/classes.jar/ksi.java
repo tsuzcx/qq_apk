@@ -1,13 +1,18 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.handler.AccountDetailBaseItemClickHandler;
 
-class ksi
-  implements Runnable
+public class ksi
+  implements View.OnClickListener
 {
-  ksi(ksh paramksh) {}
+  public ksi(AccountDetailBaseItemClickHandler paramAccountDetailBaseItemClickHandler, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.f();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

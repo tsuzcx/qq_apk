@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import com.tencent.qphone.base.util.BaseApplication;
+import java.lang.reflect.Method;
 
 public class SystemUtil
 {
@@ -32,12 +33,51 @@ public class SystemUtil
     if (a(paramContext)) {
       return 80;
     }
+    if (c(paramContext)) {
+      return a(paramContext)[1];
+    }
     return 0;
   }
   
   public static boolean a(Context paramContext)
   {
     return paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
+  }
+  
+  public static int[] a(Context paramContext)
+  {
+    int[] arrayOfInt = new int[2];
+    int[] tmp5_4 = arrayOfInt;
+    tmp5_4[0] = 0;
+    int[] tmp9_5 = tmp5_4;
+    tmp9_5[1] = 0;
+    tmp9_5;
+    try
+    {
+      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
+      paramContext = (int[])paramContext.getMethod("getNotchSize", new Class[0]).invoke(paramContext, new Object[0]);
+      return paramContext;
+    }
+    catch (ClassNotFoundException paramContext)
+    {
+      paramContext = paramContext;
+      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize ClassNotFoundException");
+      return arrayOfInt;
+    }
+    catch (NoSuchMethodException paramContext)
+    {
+      paramContext = paramContext;
+      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize NoSuchMethodException");
+      return arrayOfInt;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext = paramContext;
+      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize Exception");
+      return arrayOfInt;
+    }
+    finally {}
+    return arrayOfInt;
   }
   
   public static boolean b(Context paramContext)
@@ -55,6 +95,36 @@ public class SystemUtil
     {
       QZLog.e(jdField_a_of_type_JavaLangString, 2, paramContext, new Object[0]);
     }
+    return false;
+  }
+  
+  public static boolean c(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
+      boolean bool = ((Boolean)paramContext.getMethod("hasNotchInScreen", new Class[0]).invoke(paramContext, new Object[0])).booleanValue();
+      return bool;
+    }
+    catch (ClassNotFoundException paramContext)
+    {
+      paramContext = paramContext;
+      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen ClassNotFoundException");
+      return false;
+    }
+    catch (NoSuchMethodException paramContext)
+    {
+      paramContext = paramContext;
+      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen NoSuchMethodException");
+      return false;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext = paramContext;
+      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen Exception");
+      return false;
+    }
+    finally {}
     return false;
   }
 }

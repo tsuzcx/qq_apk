@@ -1,23 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.widget.YellowTipsLayout;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.NumberCheckBox;
 
 public class xdn
-  implements Runnable
 {
-  public xdn(CommonHbFragment paramCommonHbFragment, String paramString) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  public NumberCheckBox a;
+  xdk jdField_a_of_type_Xdk;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  public ImageView c;
+  ImageView d;
   
-  public void run()
-  {
-    JSONObject localJSONObject = YellowTipsLayout.getYellowTipsConfig(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.a.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
-    Handler localHandler = CommonHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment);
-    if (localHandler == null) {
-      return;
-    }
-    localHandler.post(new xdo(this, localJSONObject));
-  }
+  xdn(xdm paramxdm) {}
 }
 
 

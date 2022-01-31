@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.portal;
 
-import agls;
-import aglt;
-import aglu;
-import aglv;
-import aglw;
-import aglx;
-import agly;
-import aglz;
-import agma;
-import agmb;
-import agmc;
+import agqh;
+import agqi;
+import agqj;
+import agqk;
+import agql;
+import agqm;
+import agqn;
+import agqo;
+import agqp;
+import agqq;
+import agqr;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.res.Resources;
@@ -112,8 +112,8 @@ public class ConversationHongBao
     this.jdField_d_of_type_Long = 0L;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangRunnable = new agls(this);
-    this.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener = new aglv(this);
+    this.jdField_a_of_type_JavaLangRunnable = new agqh(this);
+    this.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener = new agqk(this);
     this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(12);
     this.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder(8);
     this.jdField_b_of_type_Boolean = true;
@@ -243,8 +243,8 @@ public class ConversationHongBao
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(300L);
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new agmb(this, paramView2, paramView1, paramView3));
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new agmc(this, paramView3);
+      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new agqq(this, paramView2, paramView1, paramView3));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new agqr(this, paramView3);
     }
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
@@ -280,8 +280,8 @@ public class ConversationHongBao
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(300L);
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new aglt(this, paramView2, paramView1, paramView3));
-      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new aglu(this, paramView3, paramView1);
+      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new agqi(this, paramView2, paramView1, paramView3));
+      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new agqj(this, paramView3, paramView1);
     }
     this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
     this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
@@ -390,7 +390,7 @@ public class ConversationHongBao
     {
       this.jdField_d_of_type_Int = 2;
       d();
-      this.jdField_a_of_type_ComTencentWidgetHongBaoListView.s();
+      this.jdField_a_of_type_ComTencentWidgetHongBaoListView.r();
       this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.a();
       this.jdField_a_of_type_ComTencentWidgetHongBaoListView.setComboListener(this.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener);
       this.jdField_a_of_type_ComTencentMobileqqPortalPrepareView.setVisibility(0);
@@ -459,11 +459,11 @@ public class ConversationHongBao
         HongbaoShowerActivity.a();
         this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.b();
         this.jdField_a_of_type_ComTencentMobileqqPortalProgressViewRed.setVisibility(8);
-        this.jdField_a_of_type_ComTencentWidgetHongBaoListView.s();
+        this.jdField_a_of_type_ComTencentWidgetHongBaoListView.r();
         if (this.jdField_c_of_type_Boolean)
         {
           this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.c();
-          this.jdField_a_of_type_ComTencentWidgetHongBaoListView.p();
+          this.jdField_a_of_type_ComTencentWidgetHongBaoListView.o();
         }
         a();
         p();
@@ -497,15 +497,15 @@ public class ConversationHongBao
           this.jdField_a_of_type_ComTencentWidgetHongBaoListView.setSpringbackOffset(0);
           this.jdField_a_of_type_ComTencentWidgetHongBaoListView.springBackTo(0);
           this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setVisibility(0);
-          this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.e();
+          this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.h();
           this.jdField_a_of_type_ComTencentMobileqqPortalProgressViewRed.setVisibility(8);
           if (this.jdField_b_of_type_Boolean) {
-            this.jdField_a_of_type_ComTencentWidgetHongBaoListView.s();
+            this.jdField_a_of_type_ComTencentWidgetHongBaoListView.r();
           }
           k();
           a();
           p();
-          this.jdField_a_of_type_ComTencentWidgetHongBaoListView.q();
+          this.jdField_a_of_type_ComTencentWidgetHongBaoListView.p();
           a(false);
           this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setProgressLogo(paramBitmap2, false);
         }
@@ -605,8 +605,8 @@ public class ConversationHongBao
   {
     if (this.jdField_d_of_type_Int == -1)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363964));
-      this.jdField_a_of_type_ComTencentWidgetHongBaoListView = ((HongBaoListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363972));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363989));
+      this.jdField_a_of_type_ComTencentWidgetHongBaoListView = ((HongBaoListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363997));
       this.jdField_a_of_type_ComTencentWidgetHongBaoListView.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao = this;
       this.jdField_a_of_type_ComTencentWidgetHongBaoListView.jdField_e_of_type_Int = ((int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559584));
       localObject = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
@@ -616,7 +616,7 @@ public class ConversationHongBao
         this.jdField_f_of_type_Int = this.jdField_a_of_type_ComTencentWidgetHongBaoListView.jdField_e_of_type_Int;
         this.jdField_g_of_type_Int = this.jdField_a_of_type_ComTencentWidgetHongBaoListView.jdField_f_of_type_Int;
         this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559597));
-        this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView = ((BreathEffectView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363979));
+        this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView = ((BreathEffectView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364004));
         this.jdField_a_of_type_ComTencentMobileqqPortalPrepareView = new PrepareView(this.jdField_a_of_type_AndroidAppActivity);
         this.jdField_a_of_type_ComTencentMobileqqPortalFormalView = new FormalView(this.jdField_a_of_type_AndroidAppActivity);
         localObject = new ViewGroup.LayoutParams(-1, -1);
@@ -635,8 +635,8 @@ public class ConversationHongBao
         this.jdField_b_of_type_Int = i;
         this.jdField_a_of_type_ComTencentMobileqqPortalProgressViewRed.setLayoutParams((ViewGroup.LayoutParams)localObject);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqPortalProgressViewRed);
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363973));
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aglx(this));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363998));
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new agqm(this));
         this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a(this.jdField_a_of_type_AndroidViewViewGroup);
         this.jdField_d_of_type_Int = 1;
       }
@@ -682,7 +682,7 @@ public class ConversationHongBao
       this.jdField_a_of_type_ComTencentMobileqqPortalProgressViewRed.setAlpha(0);
       this.jdField_a_of_type_ComTencentMobileqqPortalProgressViewRed.setVisibility(0);
       FrameHelperActivity.a(false);
-      this.jdField_a_of_type_ComTencentWidgetHongBaoListView.r();
+      this.jdField_a_of_type_ComTencentWidgetHongBaoListView.q();
       if ((paramLong != -1L) && (this.jdField_a_of_type_ComTencentWidgetHongBaoListView.jdField_d_of_type_Int == 0))
       {
         this.jdField_a_of_type_ComTencentWidgetHongBaoListView.setSelection(0);
@@ -690,7 +690,7 @@ public class ConversationHongBao
         this.jdField_a_of_type_ComTencentWidgetHongBaoListView.springBackTo(-this.jdField_b_of_type_Int);
       }
       k();
-      this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.e();
+      this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.h();
       p();
     }
     if (paramLong == -1L)
@@ -706,7 +706,7 @@ public class ConversationHongBao
       if ((this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean)) {
         localPortalManager.b(2);
       }
-      this.jdField_a_of_type_AndroidOsCountDownTimer = new aglw(this, arrayOfLong[1], 40L, arrayOfLong);
+      this.jdField_a_of_type_AndroidOsCountDownTimer = new agql(this, arrayOfLong[1], 40L, arrayOfLong);
       this.jdField_a_of_type_AndroidOsCountDownTimer.start();
       return;
       if (!this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.jdField_a_of_type_Boolean) {
@@ -766,10 +766,10 @@ public class ConversationHongBao
     this.jdField_a_of_type_ComTencentWidgetHongBaoListView.setSpringbackOffset(0);
     this.jdField_a_of_type_ComTencentWidgetHongBaoListView.springBackTo(0);
     FrameHelperActivity.a(true);
-    this.jdField_a_of_type_ComTencentWidgetHongBaoListView.k();
+    this.jdField_a_of_type_ComTencentWidgetHongBaoListView.j();
     k();
     a();
-    this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.e();
+    this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.h();
     this.jdField_a_of_type_ComTencentMobileqqPortalPrepareView.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setVisibility(8);
     this.jdField_a_of_type_ComTencentMobileqqPortalProgressViewRed.setVisibility(8);
@@ -794,7 +794,7 @@ public class ConversationHongBao
     localAlphaAnimation.setStartOffset(1L);
     localAlphaAnimation.setDuration(200L);
     localAlphaAnimation.setInterpolator(new AccelerateInterpolator());
-    localAlphaAnimation.setAnimationListener(new agly(this));
+    localAlphaAnimation.setAnimationListener(new agqn(this));
     int i = (int)this.jdField_a_of_type_AndroidViewViewGroup.getResources().getDimension(2131559600);
     int j = -this.jdField_a_of_type_ComTencentWidgetHongBaoListView.b();
     if (QLog.isColorLevel()) {
@@ -803,13 +803,13 @@ public class ConversationHongBao
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0, 0.0F, 0, 0.0F, 0, j, 0, i + j);
     localTranslateAnimation.setDuration(1500L);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new aglz(this));
+    localTranslateAnimation.setAnimationListener(new agqo(this));
     localAnimationSet.addAnimation(localTranslateAnimation);
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(500L);
     localAlphaAnimation.setStartOffset(1000L);
-    localAlphaAnimation.setAnimationListener(new agma(this));
+    localAlphaAnimation.setAnimationListener(new agqp(this));
     localAnimationSet.addAnimation(localAlphaAnimation);
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAnimationSet);
@@ -825,7 +825,7 @@ public class ConversationHongBao
     if (QLog.isColorLevel()) {
       QLog.d("PortalManager", 2, "hongbaoMode");
     }
-    this.jdField_a_of_type_ComTencentWidgetHongBaoListView.m();
+    this.jdField_a_of_type_ComTencentWidgetHongBaoListView.l();
   }
   
   public void e()
@@ -849,7 +849,7 @@ public class ConversationHongBao
       i();
       return;
       this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.c();
-      this.jdField_a_of_type_ComTencentWidgetHongBaoListView.p();
+      this.jdField_a_of_type_ComTencentWidgetHongBaoListView.o();
       break;
       this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.a();
       continue;
@@ -912,7 +912,7 @@ public class ConversationHongBao
         a(true, this.jdField_a_of_type_ComTencentMobileqqPortalPrepareView.jdField_a_of_type_Long);
         continue;
         this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.c();
-        this.jdField_a_of_type_ComTencentWidgetHongBaoListView.p();
+        this.jdField_a_of_type_ComTencentWidgetHongBaoListView.o();
         if ((this.jdField_a_of_type_ComTencentMobileqqPortalFormalView != null) && (this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.jdField_a_of_type_Int == 3)) {
           a(true, this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.jdField_a_of_type_Long);
         }
@@ -1015,10 +1015,10 @@ public class ConversationHongBao
       this.jdField_a_of_type_ComTencentMobileqqPortalPrepareView.c();
     }
     if (this.jdField_a_of_type_ComTencentWidgetHongBaoListView != null) {
-      this.jdField_a_of_type_ComTencentWidgetHongBaoListView.q();
+      this.jdField_a_of_type_ComTencentWidgetHongBaoListView.p();
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.e();
+      this.jdField_a_of_type_ComTencentMobileqqPortalBreathEffectView.h();
     }
     if (this.jdField_a_of_type_AndroidOsCountDownTimer != null) {
       this.jdField_a_of_type_AndroidOsCountDownTimer.cancel();

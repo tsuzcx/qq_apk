@@ -1,36 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.text.TextUtils;
+import com.tencent.biz.lebasearch.SearchProtocol;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import cooperation.comic.PluginPreloader;
+import cooperation.comic.QQComicPreloadManager;
+import cooperation.qqreader.QRProcessManager;
 
 public class tcv
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public tcv(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
+  public tcv(Leba paramLeba) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    try
+    Object localObject = this.a.a.getCurrentAccountUin();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      if (this.jdField_a_of_type_Boolean != bool) {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
+      long l = WebProcessManager.a((String)localObject);
+      if (System.currentTimeMillis() - l < 604800000L) {
+        WebProcessManager.a(Leba.a(), "key_health_dns_parse");
       }
-      label39:
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
-      return;
+      l = WebProcessManager.c((String)localObject);
+      if (System.currentTimeMillis() - l < 259200000L) {
+        WebProcessManager.a(Leba.b(), "key_gamecenter_dns_parse");
+      }
+      l = WebProcessManager.a((String)localObject, "key_reader_click_time");
+      if (System.currentTimeMillis() - l < 259200000L) {
+        WebProcessManager.a(Leba.c(), "key_reader_dns_parse");
+      }
     }
-    catch (Exception paramDialogInterface)
+    localObject = (QRProcessManager)this.a.a.getManager(128);
+    if (localObject != null) {
+      ((QRProcessManager)localObject).a(6);
+    }
+    localObject = (QQComicPreloadManager)this.a.a.getManager(141);
+    if (localObject != null) {
+      PluginPreloader.a(((QQComicPreloadManager)localObject).a(6), 500L);
+    }
+    if (LebaShowListManager.a().a())
     {
-      break label39;
+      SearchProtocol.a(this.a.a(), 10800000L, "Leba");
+      SearchProtocol.a(this.a.a, this.a.a());
+      Leba.b(this.a);
     }
+    ThreadManager.post(new tcw(this), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tcv
  * JD-Core Version:    0.7.0.1
  */

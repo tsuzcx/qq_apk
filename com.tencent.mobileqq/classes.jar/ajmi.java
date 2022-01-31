@@ -1,18 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchMgr;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenMgr;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr;
 
-class ajmi
-  implements FrameSprite.OnFrameEndListener
+public class ajmi
+  implements Runnable
 {
-  ajmi(ajmg paramajmg) {}
+  public ajmi(TroopFileThumbnailMgr paramTroopFileThumbnailMgr) {}
   
-  public void a()
+  public void run()
   {
-    if (RobotResourcesManager.a(this.a.a) != null) {
-      new Handler(Looper.getMainLooper()).post(new ajmj(this));
-    }
+    TroopFileThumbnailMgr.a(this.a).b();
+    TroopFileThumbnailMgr.a(this.a).b();
   }
 }
 

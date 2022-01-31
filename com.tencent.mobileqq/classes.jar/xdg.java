@@ -1,22 +1,18 @@
-import Wallet.PopDialog;
-import Wallet.SkinInfo;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.HbSkinInfo;
-import cooperation.qwallet.plugin.TenUtils;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
 
 class xdg
-  implements DialogInterface.OnClickListener
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  xdg(xdf paramxdf, HbSkinInfo paramHbSkinInfo) {}
+  xdg(xde paramxde, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentHbSkinInfo.a.pop_dialog.left_url;
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      TenUtils.startQQBrowser(this.jdField_a_of_type_Xdf.a.getActivity(), paramDialogInterface);
+    this.jdField_a_of_type_Xde.a.d();
+    if (QQStoryFlowCallback.a(this.jdField_a_of_type_Xde.a, paramLocalMediaInfo)) {
+      this.jdField_a_of_type_Xde.a.a(paramLocalMediaInfo, this.jdField_a_of_type_Int);
     }
   }
 }

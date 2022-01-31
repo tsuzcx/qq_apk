@@ -1,23 +1,14 @@
-import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
-import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.widget.TextView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 class nbz
-  extends OnSimpleShareListener
+  implements Runnable
 {
-  nbz(nbx paramnbx) {}
+  nbz(nby paramnby, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    super.a();
-    FeedCommentLikeLego.a(this.a.a, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    StoryReportor.a("home_page", "suc_share", 1, paramInt, new String[] { StoryReportor.b(this.a.a.a) + "", StoryReportor.a(this.a.a.a) + "", this.a.a.a.feedId });
+    this.jdField_a_of_type_Nby.a.b.setText("" + this.jdField_a_of_type_Int);
   }
 }
 

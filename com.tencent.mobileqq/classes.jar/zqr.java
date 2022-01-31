@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.app.AutomatorObserver;
-import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.PrinterStatusHandler;
 
 public class zqr
-  extends AutomatorObserver
+  extends MessageObserver
 {
-  private zqr(GetCheckUpdate paramGetCheckUpdate) {}
+  public zqr(PrinterStatusHandler paramPrinterStatusHandler) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected void a(int paramInt1, int paramInt2)
   {
-    this.a.a(7);
+    this.a.b();
   }
 }
 

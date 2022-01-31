@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import com.tencent.mobileqq.vas.VasApngUtil.ApngSoLoadCallBack;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
 import mqq.os.MqqHandler;
 
 class aojk
-  implements DialogInterface.OnClickListener
+  implements VasApngUtil.ApngSoLoadCallBack
 {
-  aojk(aojj paramaojj) {}
+  aojk(aojj paramaojj, BaseFaceListAdapter paramBaseFaceListAdapter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.b, this.a.a.a, this.a.a.g + ".mp4", true));
+    ThreadManager.getUIHandler().post(new aojl(this));
   }
 }
 

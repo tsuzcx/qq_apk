@@ -1,22 +1,13 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 
 public class uuq
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+  implements Runnable
 {
-  public uuq(ArkAppItemBubbleBuilder.Holder paramHolder1, ArkAppItemBubbleBuilder.Holder paramHolder2) {}
+  public uuq(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void run()
   {
-    if ((paramInt == 0) && (paramAppPathInfo.a != null))
-    {
-      ArkAppCenter.a(paramAppPathInfo.a, new uur(this));
-      paramString = ArkAppCenter.b(paramAppPathInfo.a);
-      ArkAppCenter.a().postToMainThread(new uus(this, paramString));
-    }
+    this.a.f();
   }
 }
 

@@ -1,18 +1,22 @@
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.troop.model.TroopStoryAIOVideoListSynchronizer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnStrokeSelectedListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class ony
-  implements BatchHandlerListPuller.IPullResultCallback
+  implements HorizontalSelectColorLayout.OnStrokeSelectedListener
 {
-  public ony(TroopStoryAIOVideoListSynchronizer paramTroopStoryAIOVideoListSynchronizer, BatchHandlerListPuller paramBatchHandlerListPuller) {}
+  public ony(DoodleLayout paramDoodleLayout) {}
   
-  public void a(boolean paramBoolean)
+  public void a(@NonNull HorizontalStroke paramHorizontalStroke)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.a.set(false);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.c();
+    VideoEditReport.b("0X80075CD");
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 2);
+    }
   }
 }
 

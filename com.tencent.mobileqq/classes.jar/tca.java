@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.observer.GetRedPointExObserver;
 
 public class tca
-  implements View.OnClickListener
+  extends GetRedPointExObserver
 {
-  public tca(NearbyActivity paramNearbyActivity) {}
+  public tca(Leba paramLeba) {}
   
-  public void onClick(View paramView)
+  protected void a(Object paramObject)
   {
-    int i = 0;
-    while (i < this.a.a.size())
-    {
-      ((View.OnClickListener)this.a.a.get(i)).onClick(paramView);
-      i += 1;
-    }
+    Leba.c(this.a);
   }
 }
 

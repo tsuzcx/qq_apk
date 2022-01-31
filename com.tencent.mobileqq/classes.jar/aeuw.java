@@ -1,23 +1,18 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
-import com.tencent.mobileqq.nearby.now.utils.CommentsUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
 
-public class aeuw
-  implements InputFilter
+public final class aeuw
+  implements Runnable
 {
-  public aeuw(SmallVideoSendFragment paramSmallVideoSendFragment) {}
+  public aeuw(String paramString) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void run()
   {
-    Object localObject = paramCharSequence;
-    if (CommentsUtil.a(paramSpanned.toString()) + CommentsUtil.a(paramCharSequence.toString()) > 140)
-    {
-      QQToast.a(this.a.a(), 0, "最多输入140个字", 0).a();
-      localObject = "";
-    }
-    return localObject;
+    NearbyProcessMonitor.b(this.a);
+    NearbyProcessMonitor.a(this.a);
+    NearbyProcessMonitor.a += 1;
+    NearbySPUtil.a(this.a);
+    NearbyProcessMonitor.a();
   }
 }
 

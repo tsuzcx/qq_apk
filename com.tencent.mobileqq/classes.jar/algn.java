@@ -1,18 +1,24 @@
-import com.tencent.open.downloadnew.DownloadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public final class algn
-  implements Runnable
+public class algn
+  extends BroadcastReceiver
 {
-  public algn(String paramString1, String paramString2, boolean paramBoolean) {}
+  public algn(WXShareHelper paramWXShareHelper) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    DownloadManager.a().b(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    if (WXShareHelper.a(this.a) != null) {
+      WXShareHelper.a(this.a).handleIntent(paramIntent, this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     algn
  * JD-Core Version:    0.7.0.1
  */

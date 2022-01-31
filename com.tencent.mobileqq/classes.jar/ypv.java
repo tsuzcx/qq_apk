@@ -1,18 +1,23 @@
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.apollo.ApolloGameArkHandler;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ypv
   implements Runnable
 {
-  public ypv(ApolloWebGameActivity paramApolloWebGameActivity, int paramInt1, int paramInt2, Intent paramIntent) {}
+  public ypv(ApolloGameArkHandler paramApolloGameArkHandler, MessageForApollo paramMessageForApollo, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if (ApolloWebGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloWebGameActivity).a().getRender() != null) {
-      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    try
+    {
+      ark.arkNotify(ApolloGameArkHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloGameArkHandler, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo), this.jdField_a_of_type_JavaLangString, this.b, "json");
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QQ_CmGame", 1, localThrowable, new Object[0]);
     }
   }
 }

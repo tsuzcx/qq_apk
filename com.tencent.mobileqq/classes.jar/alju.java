@@ -1,44 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.open.wadl.WLog;
-import com.tencent.open.wadl.WadlJsBridgeService;
-import cooperation.wadl.ipc.WadlParams;
-import cooperation.wadl.ipc.WadlProxyServiceUtil;
-import cooperation.wadl.ipc.WadlProxyServiceWrap;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.GroupListOpenFrame;
+import com.tencent.open.agent.GroupListOpenFrame.GroupListAdapter;
 
-public final class alju
-  extends Handler
+public class alju
+  implements View.OnClickListener
 {
-  public alju(WadlJsBridgeService paramWadlJsBridgeService, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public alju(GroupListOpenFrame.GroupListAdapter paramGroupListAdapter, int paramInt, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    String str = (String)paramMessage.obj;
-    WLog.b(WadlJsBridgeService.a(), "The obj field of msg:" + paramMessage.what + "," + paramMessage.obj);
-    switch (paramMessage.what)
-    {
-    case 2: 
-    case 3: 
-    default: 
-    case 0: 
-    case 4: 
-      for (;;)
-      {
-        this.a.stopSelf(paramMessage.arg1);
-        return;
-        WadlProxyServiceUtil.a().b(4, str);
-      }
-    case 5: 
-      WadlProxyServiceUtil.a().a(4, str);
-      return;
-    }
-    paramMessage = new WadlParams(str, "");
-    paramMessage.c = 4;
-    WadlProxyServiceUtil.a().c(paramMessage);
+    paramView = new Bundle();
+    paramView.putInt("group_index", this.jdField_a_of_type_Int);
+    paramView.putString("group_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter.a.a.a(1, paramView);
   }
 }
 

@@ -1,16 +1,18 @@
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.CompletedHandler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
 
 public class ofz
-  implements Runnable
+  implements SimpleStepExector.CompletedHandler
 {
-  public ofz(EditVideoPlayer paramEditVideoPlayer, int paramInt, byte[] paramArrayOfByte) {}
+  public ofz(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public void run()
+  public void a()
   {
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "setMosaic %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    VideoSourceHelper.nativeSetMosaic(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
+    SLog.d("NewMyStorySegment", "finish get all data from server steps");
+    new Handler(Looper.getMainLooper()).post(new oga(this));
   }
 }
 

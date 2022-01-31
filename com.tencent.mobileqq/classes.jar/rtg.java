@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class rtg
-  implements DialogInterface.OnClickListener
+public class rtg
+  implements Runnable
 {
-  rtg(rtc paramrtc) {}
+  public rtg(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    if (TextUtils.isEmpty(this.a.a)) {}
+    while (((FriendsManager)this.a.app.getManager(50)).a(this.a.a) != null) {
+      return;
+    }
+    ((FriendListHandler)this.a.app.a(1)).b(this.a.a);
   }
 }
 

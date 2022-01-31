@@ -1,35 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileBaseExpandableListAdapter.CloudItemHolder;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.equipmentlock.EquipLockWebImpl;
+import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class acpk
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public acpk(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public acpk(EquipLockWebImpl paramEquipLockWebImpl) {}
   
-  public void onClick(View paramView)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    Object localObject = paramView.getTag();
-    int i;
-    if ((localObject instanceof QfileCloudFileBaseExpandableListAdapter.CloudItemHolder))
-    {
-      paramView = (QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)paramView.getTag();
-      i = paramView.c;
-      paramView = (WeiYunFileInfo)paramView.a;
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
     }
-    for (;;)
+    if (paramInt == 0)
     {
-      this.a.a(paramView, i);
-      do
+      EquipLockWebImpl.c(this.a, true);
+      if (EquipLockWebImpl.a(this.a) != null)
       {
-        return;
-      } while (!(localObject instanceof ImageHolder));
-      paramView = (WeiYunFileInfo)((ImageHolder)paramView.getTag()).a;
-      i = -1;
+        paramWUserSigInfo = (QQAppInterface)EquipLockWebImpl.a(this.a).get();
+        if ((paramWUserSigInfo != null) && (EquipmentLockImpl.a().a(paramWUserSigInfo))) {}
+      }
+      else
+      {
+        EquipLockWebImpl.a(this.a, false);
+        EquipLockWebImpl.b(this.a, false);
+      }
+      return;
     }
+    EquipLockWebImpl.a(this.a, false);
+    EquipLockWebImpl.c(this.a, false);
   }
 }
 

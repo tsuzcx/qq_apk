@@ -1,21 +1,13 @@
-import com.tencent.ark.ArkDebugger;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.VIPDonateMsgItemBuilder;
 
 public class vqm
-  implements Runnable
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public vqm(ArkDebugChatPie paramArkDebugChatPie) {}
+  public RelativeLayout a;
   
-  public void run()
-  {
-    ArkDebugger.Create();
-    ArkDebugger.SetCallback(new vqn(this));
-    ArkDebugChatPie.a(this.a, ArkAppCenter.f());
-    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.f());
-    ArkDispatchTask.getInstance().postToMainThread(new vqt(this));
-  }
+  private vqm(VIPDonateMsgItemBuilder paramVIPDonateMsgItemBuilder) {}
 }
 
 

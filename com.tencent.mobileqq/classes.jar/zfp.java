@@ -1,35 +1,32 @@
-import com.tencent.mobileqq.app.IndividualRedPacketManager;
-import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader;
-import com.tencent.mobileqq.vas.IndividualRedPacketResDownloader.RedPacketTemplateInfo;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionPackage;
 import com.tencent.qphone.base.util.QLog;
 
 public class zfp
   implements Runnable
 {
-  public zfp(IndividualRedPacketManager paramIndividualRedPacketManager) {}
+  public zfp(ApolloPanel paramApolloPanel, ApolloActionPackage paramApolloActionPackage) {}
   
   public void run()
   {
-    this.a.a(true);
     if (QLog.isColorLevel()) {
-      QLog.d(IndividualRedPacketManager.b(), 2, "AIO_BG_WIDTH:" + this.a.b);
+      QLog.d("ApolloPanel", 2, "[checkRedTab] clear new action info");
     }
-    this.a.a().e();
-    this.a.a().d();
-    this.a.a().c();
-    this.a.a();
-    if (this.a.j > 0)
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a != null))
     {
-      IndividualRedPacketResDownloader.RedPacketTemplateInfo localRedPacketTemplateInfo = this.a.a().a(String.valueOf(this.a.j), true);
-      if ((localRedPacketTemplateInfo == null) || (localRedPacketTemplateInfo.a == null) || (localRedPacketTemplateInfo.b == null) || (localRedPacketTemplateInfo.c == null)) {
-        this.a.a().a(16L, String.valueOf(this.a.j), null);
+      ApolloDaoManager localApolloDaoManager = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.getManager(154);
+      if (localApolloDaoManager != null) {
+        localApolloDaoManager.a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPackage);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zfp
  * JD-Core Version:    0.7.0.1
  */

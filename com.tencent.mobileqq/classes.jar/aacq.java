@@ -1,18 +1,40 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aacq
-  implements Runnable
+public final class aacq
+  extends BroadcastReceiver
 {
-  aacq(aacp paramaacp, ArConfigService paramArConfigService, int paramInt) {}
-  
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ArConfigService.a(this.jdField_a_of_type_ComTencentMobileqqArArConfigService, this.jdField_a_of_type_Int);
+    if (paramIntent == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
+            break;
+          }
+          SosoInterface.a(true);
+        } while (!QLog.isColorLevel());
+        QLog.i("SOSO.LBS", 2, "onReceive action is screen on.");
+        return;
+      } while (!paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"));
+      SosoInterface.a(false);
+      SosoInterface.a().sendEmptyMessage(1002);
+    } while (!QLog.isColorLevel());
+    QLog.i("SOSO.LBS", 2, "onReceive action is screen off.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aacq
  * JD-Core Version:    0.7.0.1
  */

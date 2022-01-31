@@ -1,17 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import android.app.Activity;
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
+import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
 
-class anei
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+public final class anei
+  implements IQZonePluginManager.OnPluginReadyListener
 {
-  anei(aneh paramaneh) {}
-  
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a(boolean paramBoolean, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
   {
-    if (paramInt == 0) {
-      ReadInJoyArkViewController.a().a("0", this.a.c);
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
     }
+    if (paramBoolean)
+    {
+      IQZonePluginManager.b((Activity)paramContext, paramPluginParams);
+      return;
+    }
+    Toast.makeText(BaseApplicationImpl.getContext(), "加载失败", 0).show();
   }
 }
 

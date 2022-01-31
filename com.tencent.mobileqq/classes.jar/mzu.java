@@ -1,40 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.VideoServerInfoManager;
-import com.tencent.biz.qqstory.base.VideoServerInfoManager.ServerInfo;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.network.request.RefreshVideoFileKeyRequest;
-import com.tencent.biz.qqstory.network.response.RefreshVideoFileKeyResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
 
-public class mzu
-  implements CmdTaskManger.CommandCallback
+public final class mzu
+  implements Runnable
 {
-  public mzu(VideoServerInfoManager paramVideoServerInfoManager) {}
+  public mzu(Uri paramUri, int paramInt, String paramString) {}
   
-  public void a(RefreshVideoFileKeyRequest arg1, RefreshVideoFileKeyResponse paramRefreshVideoFileKeyResponse, ErrorMessage paramErrorMessage)
+  public void run()
   {
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (paramErrorMessage.isSuccess()) {}
-    for (;;)
+    try
     {
-      synchronized (this.a.jdField_b_of_type_JavaLangObject)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo = paramRefreshVideoFileKeyResponse.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo;
-        this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo.a();
-        SLog.b("Q.qqstory.publish:VideoServerInfoManager", "get server inf %s", this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo);
-        this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      }
-      synchronized (this.a.jdField_a_of_type_JavaLangObject)
-      {
-        this.a.jdField_a_of_type_JavaLangObject.notifyAll();
-        return;
-        paramRefreshVideoFileKeyResponse = finally;
-        throw paramRefreshVideoFileKeyResponse;
-        SLog.b("Q.qqstory.publish:VideoServerInfoManager", "get server info:%s", paramErrorMessage);
-      }
+      PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006510", "0X8006510", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, "", false);
+      return;
     }
+    catch (Exception localException) {}
   }
 }
 

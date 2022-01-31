@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
 
-public final class oos
-  implements DialogInterface.OnClickListener
+public class oos
+  implements Runnable
 {
-  public oos(DownloadInfo paramDownloadInfo) {}
+  public oos(FaceListPage paramFaceListPage, FacePackage paramFacePackage) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    WeishiGuideUtils.a(this.a);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage);
   }
 }
 

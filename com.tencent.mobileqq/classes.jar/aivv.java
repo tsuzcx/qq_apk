@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.mobileqq.transfile.RichMediaUtil;
+import java.util.TimerTask;
 
-public class aivv
-  implements DialogInterface.OnClickListener
+public final class aivv
+  extends TimerTask
 {
-  public aivv(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  public aivv(String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    RichMediaUtil.a(this.a, false, null);
+  }
 }
 
 

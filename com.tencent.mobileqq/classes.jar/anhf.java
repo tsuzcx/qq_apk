@@ -1,74 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
-import com.tencent.weiyun.transmission.upload.UploadFile;
-import com.tencent.weiyun.utils.Utils;
-import cooperation.weiyun.WeiyunHelper;
-import cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgRsp;
-import cooperation.weiyun.sdk.api.IWeiyunCallback;
-import cooperation.weiyun.utils.StringUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.QZoneShareManager;
+import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.share.QzoneShareServlet;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.manager.TicketManager;
 
 class anhf
-  implements IWeiyunCallback
+  implements Runnable
 {
-  anhf(anhd paramanhd, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback, UploadFile paramUploadFile) {}
+  anhf(anhe paramanhe, ArrayList paramArrayList, String paramString) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
-  }
-  
-  public void a(WeiyunPB.QqSdkFileUploadMsgRsp paramQqSdkFileUploadMsgRsp)
-  {
-    if (paramQqSdkFileUploadMsgRsp == null)
+    Object localObject = this.jdField_a_of_type_Anhe.a.a.app.getAccount();
+    String str = ((TicketManager)this.jdField_a_of_type_Anhe.a.a.app.getManager(2)).getSkey((String)localObject);
+    if (new ArrayList(this.jdField_a_of_type_JavaUtilArrayList).equals(QZoneShareManager.a(this.jdField_a_of_type_JavaUtilArrayList, (String)localObject, str, "1"))) {
+      QLog.e("QZoneShare", 1, "imageChangeError!");
+    }
+    try
     {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, "服务器回包为空!");
+      l1 = Long.parseLong(QZoneShareActivity.a(this.jdField_a_of_type_Anhe.a.a).f);
+      long l2 = l1;
+      if (l1 <= 0L) {
+        l2 = this.jdField_a_of_type_Anhe.a.a.app.getLongAccountUin();
+      }
+      localObject = new NewIntent(this.jdField_a_of_type_Anhe.a.a, QzoneShareServlet.class);
+      ((NewIntent)localObject).putExtra("reason", this.jdField_a_of_type_JavaLangString);
+      ((NewIntent)localObject).putExtra("uin", l2);
+      ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.a(this.jdField_a_of_type_Anhe.a.a));
+      BaseApplicationImpl.getApplication().getRuntime().startServlet((NewIntent)localObject);
+      QLog.e("QZoneShare", 1, "startShare()");
       return;
     }
-    Object localObject1 = paramQqSdkFileUploadMsgRsp.pdir_key.get();
-    Object localObject3 = paramQqSdkFileUploadMsgRsp.ppdir_key.get();
-    Object localObject2;
-    label54:
-    boolean bool;
-    String str;
-    if (localObject1 == null)
+    catch (Exception localException)
     {
-      localObject1 = null;
-      if (localObject3 != null) {
-        break label237;
+      for (;;)
+      {
+        long l1 = 0L;
       }
-      localObject2 = null;
-      if ((localObject1 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey))) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = ((String)localObject1);
-      }
-      if ((localObject3 != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey))) {
-        this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = ((String)localObject2);
-      }
-      WeiyunHelper.a((String)localObject2, (String)localObject1);
-      localObject2 = this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile;
-      bool = paramQqSdkFileUploadMsgRsp.file_exist.get();
-      localObject3 = paramQqSdkFileUploadMsgRsp.file_id.get();
-      str = paramQqSdkFileUploadMsgRsp.server_name.get();
-      if (!WeiyunTransmissionGlobal.getInstance().isNativeUpload()) {
-        break label247;
-      }
-    }
-    label237:
-    label247:
-    for (localObject1 = paramQqSdkFileUploadMsgRsp.inside_upload_ip.get();; localObject1 = paramQqSdkFileUploadMsgRsp.outside_upload_ip.get())
-    {
-      ((UploadFile)localObject2).setServerInfo(bool, (String)localObject3, str, (String)localObject1, paramQqSdkFileUploadMsgRsp.server_port.get(), Utils.bytes2HexStr(paramQqSdkFileUploadMsgRsp.check_key.get().toByteArray()).toLowerCase(), paramQqSdkFileUploadMsgRsp.channel_count.get(), Integer.toString(paramQqSdkFileUploadMsgRsp.file_version.get()));
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
-      return;
-      localObject1 = StringUtils.a((ByteStringMicro)localObject1);
-      break;
-      localObject2 = StringUtils.a((ByteStringMicro)localObject3);
-      break label54;
     }
   }
 }

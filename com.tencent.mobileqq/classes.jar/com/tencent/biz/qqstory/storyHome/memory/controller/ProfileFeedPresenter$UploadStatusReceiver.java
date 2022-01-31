@@ -16,7 +16,7 @@ public class ProfileFeedPresenter$UploadStatusReceiver
   
   public void a(@NonNull ProfileFeedPresenter paramProfileFeedPresenter, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    if (paramStoryVideoPublishStatusEvent.a.isSuccess())
+    if (paramStoryVideoPublishStatusEvent.errorInfo.isSuccess())
     {
       if (!paramStoryVideoPublishStatusEvent.a()) {
         break label25;

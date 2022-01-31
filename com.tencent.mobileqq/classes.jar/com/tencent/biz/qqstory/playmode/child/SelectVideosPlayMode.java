@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import nlc;
+import npm;
 
 public class SelectVideosPlayMode
   extends NewFriendsPlayMode
@@ -81,7 +81,7 @@ public class SelectVideosPlayMode
         }
       }
       localObject = new BatchGetVideoInfo(this.jdField_a_of_type_JavaUtilList);
-      ((BatchGetVideoInfo)localObject).a(new nlc(this, (BatchGetVideoInfo)localObject, paramBundle));
+      ((BatchGetVideoInfo)localObject).a(new npm(this, (BatchGetVideoInfo)localObject, paramBundle));
       ((BatchGetVideoInfo)localObject).b();
       if (this.j <= 0) {
         break label206;
@@ -110,7 +110,7 @@ public class SelectVideosPlayMode
   {
     PlayPanelController.b(paramLayoutInflater, this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$TopViewHolder);
     PlayPanelController.a(paramLayoutInflater, this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$TopViewHolder);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$TopViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372126));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$TopViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372134));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("完成(" + this.j + ")");
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.d = true;
@@ -146,7 +146,7 @@ public class SelectVideosPlayMode
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(((StoryVideoItem)localObject).mVid)) {}
     for (boolean bool1 = ((Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(((StoryVideoItem)localObject).mVid)).booleanValue();; bool1 = false)
     {
-      paramView = (ImageView)localVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372127);
+      paramView = (ImageView)localVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372135);
       if (bool1) {
         break label288;
       }
@@ -157,7 +157,7 @@ public class SelectVideosPlayMode
       return;
     }
     this.j += 1;
-    paramView.setImageResource(2130842154);
+    paramView.setImageResource(2130842186);
     if (this.j == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
@@ -179,7 +179,7 @@ public class SelectVideosPlayMode
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
       return;
       this.j -= 1;
-      paramView.setImageResource(2130842983);
+      paramView.setImageResource(2130843015);
       break;
       this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
       break label215;
@@ -192,14 +192,14 @@ public class SelectVideosPlayMode
     for (boolean bool = ((Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramStoryVideoItem.mVid)).booleanValue();; bool = false)
     {
       paramStoryVideoItem.mIsPlaying = 0;
-      paramVideoViewHolder = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372127);
+      paramVideoViewHolder = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidUtilSparseArray.get(2131372135);
       if (!bool) {
         break;
       }
-      paramVideoViewHolder.setImageResource(2130842154);
+      paramVideoViewHolder.setImageResource(2130842186);
       return;
     }
-    paramVideoViewHolder.setImageResource(2130842983);
+    paramVideoViewHolder.setImageResource(2130843015);
   }
   
   public void b(DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent paramPlayerVideoListEvent) {}

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akwc;
+import aldt;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -24,7 +24,7 @@ public class ProgressPieDrawable
   static LruCache jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(8);
   public float a;
   public int a;
-  public akwc a;
+  public aldt a;
   public Paint a;
   Rect jdField_a_of_type_AndroidGraphicsRect;
   RectF jdField_a_of_type_AndroidGraphicsRectF;
@@ -70,7 +70,7 @@ public class ProgressPieDrawable
     this.jdField_d_of_type_Int = 1;
     this.jdField_e_of_type_Int = 25;
     this.jdField_f_of_type_Int = 2;
-    this.jdField_a_of_type_Akwc = new akwc(this);
+    this.jdField_a_of_type_Aldt = new aldt(this);
     this.jdField_f_of_type_Boolean = true;
     this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
     a(paramContext);
@@ -91,8 +91,8 @@ public class ProgressPieDrawable
   
   public void a()
   {
-    this.jdField_a_of_type_Akwc.removeMessages(0);
-    this.jdField_a_of_type_Akwc.a(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Aldt.removeMessages(0);
+    this.jdField_a_of_type_Aldt.a(this.jdField_b_of_type_Int);
     invalidateSelf();
   }
   
@@ -169,12 +169,12 @@ public class ProgressPieDrawable
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Akwc.removeMessages(0);
+    this.jdField_a_of_type_Aldt.removeMessages(0);
     if (!a(paramInt)) {
       throw new IllegalArgumentException(String.format("Animation progress (%d) is greater than the max progress (%d) or lower than 0 ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int) }));
     }
-    this.jdField_a_of_type_Akwc.a(paramInt);
-    this.jdField_a_of_type_Akwc.sendEmptyMessage(0);
+    this.jdField_a_of_type_Aldt.a(paramInt);
+    this.jdField_a_of_type_Aldt.sendEmptyMessage(0);
     invalidateSelf();
   }
   
@@ -406,7 +406,7 @@ public class ProgressPieDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProgressPieDrawable
  * JD-Core Version:    0.7.0.1
  */

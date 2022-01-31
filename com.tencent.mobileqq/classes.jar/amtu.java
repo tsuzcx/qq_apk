@@ -1,31 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import cooperation.qzone.WatchActivityManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.Dex2Oat.ResultCallback;
+import cooperation.plugin.PluginInstaller;
+import java.io.File;
 
 public class amtu
-  extends BroadcastReceiver
+  implements Dex2Oat.ResultCallback
 {
-  private String jdField_a_of_type_JavaLangString;
+  public amtu(PluginInstaller paramPluginInstaller) {}
   
-  private amtu(WatchActivityManager paramWatchActivityManager) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
-        break label40;
-      }
-      WatchActivityManager.a(this.jdField_a_of_type_CooperationQzoneWatchActivityManager, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "dex2Oat onStart " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
     }
-    label40:
-    while (!this.jdField_a_of_type_JavaLangString.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
-      return;
+  }
+  
+  public void a(File paramFile1, File paramFile2, File paramFile3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "dex2Oat onSuccess " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
     }
-    WatchActivityManager.b(this.jdField_a_of_type_CooperationQzoneWatchActivityManager, true);
+  }
+  
+  public void a(File paramFile1, File paramFile2, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "preDex2Oat onFailed " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
+    }
   }
 }
 

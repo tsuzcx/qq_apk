@@ -1,12 +1,17 @@
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class ajbc
-  implements BubblePopupWindow.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public ajbc(ContactListAdapter paramContactListAdapter) {}
+  public ajbc(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void a() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

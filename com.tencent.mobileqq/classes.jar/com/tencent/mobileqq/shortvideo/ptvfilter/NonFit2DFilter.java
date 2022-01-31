@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter;
 
-import aicr;
+import aihl;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -40,7 +40,7 @@ public class NonFit2DFilter
   protected long a;
   PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
   protected Param.TextureBitmapParam a;
-  private GLGestureListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureGLGestureListener = new aicr(this);
+  private GLGestureListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureGestureGLGestureListener = new aihl(this);
   private AudioUtils.Player jdField_a_of_type_ComTencentTtpicUtilAudioUtils$Player;
   protected String a;
   public boolean a;

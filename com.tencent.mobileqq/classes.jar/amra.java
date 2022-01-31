@@ -1,41 +1,14 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.common.offline.AsyncBack;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import java.lang.ref.WeakReference;
 
-class amra
-  implements AsyncBack
+public abstract class amra
+  implements Runnable
 {
-  amra(amqz paramamqz) {}
+  final WeakReference a;
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  amra(QQAppInterface paramQQAppInterface)
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.e("QReaderHelper", 2, "Load offline package finish, code = " + paramInt);
-    }
-    switch (paramInt)
-    {
-    }
-    for (int i = 0;; i = 1)
-    {
-      paramString = this.a.a.getApplication().getSharedPreferences("qr_offline_fail", 0);
-      int k = paramString.getInt("offlinePkgDownloadFailCount", 0);
-      if (i != 0) {
-        j = k + 1;
-      }
-      if (j != k) {
-        paramString.edit().putInt("offlinePkgDownloadFailCount", j).commit();
-      }
-      if ((i != 0) && (QLog.isColorLevel())) {
-        QLog.e("QReaderHelper", 2, "offline package update failed:" + paramInt);
-      }
-      return;
-    }
+    this.a = new WeakReference(paramQQAppInterface);
   }
 }
 

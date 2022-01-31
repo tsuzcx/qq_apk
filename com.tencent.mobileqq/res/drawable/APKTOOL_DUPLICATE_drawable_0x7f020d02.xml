@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@color/APKTOOL_DUPLICATE_color_0x7f0c0261" />
-</selector>
+    <solid android:color="#fff1f3f6" />
+    <corners android:radius="16.0dip" />
+    <padding android:left="12.0dip" android:top="6.0dip" android:right="12.0dip" android:bottom="6.0dip" />
+</shape>

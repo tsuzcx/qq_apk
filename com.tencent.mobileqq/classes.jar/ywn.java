@@ -1,14 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAccountHandler;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class ywn
-  implements Runnable
+public class ywn
+  extends FriendListObserver
 {
-  ywn(ywm paramywm, Bundle paramBundle) {}
+  public ywn(CmGameAccountHandler paramCmGameAccountHandler) {}
   
-  public void run()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    ApolloGameUtil.a(this.jdField_a_of_type_Ywm.a, this.jdField_a_of_type_AndroidOsBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
+    }
+    if ((CmGameAccountHandler.a(this.a) != null) && (CmGameAccountHandler.a(this.a).get(paramString + "nick") != null))
+    {
+      int i = ((Integer)CmGameAccountHandler.a(this.a).remove(paramString + "nick")).intValue();
+      this.a.a(i, paramString, 1);
+    }
   }
 }
 

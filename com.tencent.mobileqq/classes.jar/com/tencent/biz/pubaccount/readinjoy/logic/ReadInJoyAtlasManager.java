@@ -24,16 +24,14 @@ import cooperation.qqfav.QfavBuilder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import log;
-import loh;
-import loi;
-import loj;
-import lok;
+import lrb;
+import lrc;
+import lrd;
+import lre;
 import tencent.im.oidb.FavoriteCKVData.KandianFavoriteBizData;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.Client;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ReqArticle;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ReqBody;
-import tencent.im.oidb.cmd0xb2d.cmd0xb2d.ReqBody;
 import tencent.im.oidb.cmd0xb3e.cmd0xb3e.ReqBody;
 import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteReqBody;
 import tencent.im.oidb.cmd0xb40.oidb_0xb40.ReqBody;
@@ -86,7 +84,7 @@ public class ReadInJoyAtlasManager
     {
       ReadInJoyUtils.a("Key_First_ReadInJoy_Favorite", Integer.valueOf(1), true);
       if (!paramBoolean) {
-        DialogUtil.b(paramContext, 230, paramContext.getString(2131431595), "你可在看点内点击“我的”找到“我的收藏”。\n收藏的内容将会上传保存，在其他手机上登录QQ，也可以在看点内找到你收藏的内容。\n", 2131433015, 2131431598, new lok(), null).setMessageCount(null).show();
+        DialogUtil.b(paramContext, 230, paramContext.getString(2131431606), "你可在看点内点击“我的”找到“我的收藏”。\n收藏的内容将会上传保存，在其他手机上登录QQ，也可以在看点内找到你收藏的内容。\n", 2131433029, 2131431609, new lre(), null).setMessageCount(null).show();
       }
       bool = true;
     }
@@ -206,11 +204,11 @@ public class ReadInJoyAtlasManager
   public void a(String paramString, ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback)
   {
     if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException("fetchAtlasList(). rowKey can not be null.");
+      throw new RuntimeException("fetchAtlasRecommendList(). rowKey can not be null.");
     }
-    cmd0xb2d.ReqBody localReqBody = new cmd0xb2d.ReqBody();
+    cmd0xb3e.ReqBody localReqBody = new cmd0xb3e.ReqBody();
     localReqBody.bytes_gallery_rowkey.set(ByteStringMicro.copyFromUtf8(paramString));
-    ProtoUtils.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new log(this, paramAtlasCallback), localReqBody.toByteArray(), "OidbSvc.0xb2d", 2861, 1, null, 0L);
+    ProtoUtils.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new lrb(this, paramAtlasCallback), localReqBody.toByteArray(), "OidbSvc.0xb3e", 2878, 2, null, 0L);
   }
   
   public void a(String paramString1, String paramString2, ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback)
@@ -223,7 +221,7 @@ public class ReadInJoyAtlasManager
     }
     oidb_cmd0xad6.ReqBody localReqBody = new oidb_cmd0xad6.ReqBody();
     oidb_cmd0xad6.Client localClient = new oidb_cmd0xad6.Client();
-    localClient.bytes_version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    localClient.bytes_version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     localClient.uint32_type.set(1);
     oidb_cmd0xad6.ReqArticle localReqArticle = new oidb_cmd0xad6.ReqArticle();
     localReqArticle.bytes_row_key.set(ByteStringMicro.copyFromUtf8(paramString1));
@@ -232,7 +230,7 @@ public class ReadInJoyAtlasManager
     localReqBody.uint32_comment.set(1);
     localReqBody.uint32_comment_key_type.set(1);
     localReqBody.msg_req_article.set(localReqArticle);
-    ProtoUtils.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new loj(this, paramAtlasCallback), localReqBody.toByteArray(), "OidbSvc.0xad6", 2774, 1, null, 0L);
+    ProtoUtils.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new lrd(this, paramAtlasCallback), localReqBody.toByteArray(), "OidbSvc.0xad6", 2774, 1, null, 0L);
   }
   
   public void a(List paramList, ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback)
@@ -255,17 +253,7 @@ public class ReadInJoyAtlasManager
     }
     localReqBody.msg_check_favorite_req.set(localCheckFavoriteReqBody);
     paramList = new Bundle();
-    ProtoUtils.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new loi(this, paramAtlasCallback), localReqBody.toByteArray(), "OidbSvc.0xb40", 2880, 1, paramList, 0L);
-  }
-  
-  public void b(String paramString, ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException("fetchAtlasRecommendList(). rowKey can not be null.");
-    }
-    cmd0xb3e.ReqBody localReqBody = new cmd0xb3e.ReqBody();
-    localReqBody.bytes_gallery_rowkey.set(ByteStringMicro.copyFromUtf8(paramString));
-    ProtoUtils.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new loh(this, paramAtlasCallback), localReqBody.toByteArray(), "OidbSvc.0xb3e", 2878, 2, null, 0L);
+    ProtoUtils.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new lrc(this, paramAtlasCallback), localReqBody.toByteArray(), "OidbSvc.0xb40", 2880, 1, paramList, 0L);
   }
 }
 

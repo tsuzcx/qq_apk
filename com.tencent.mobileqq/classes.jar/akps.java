@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import com.tencent.mobileqq.vas.VasPalette.OcNode;
+import java.util.Comparator;
 
-public class akps
-  implements Runnable
+public final class akps
+  implements Comparator
 {
-  public akps(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
-  
-  public void run()
+  public int a(VasPalette.OcNode paramOcNode1, VasPalette.OcNode paramOcNode2)
   {
-    this.a.b = this.a.a(this.a.f);
+    return paramOcNode2.a - paramOcNode1.a;
   }
 }
 

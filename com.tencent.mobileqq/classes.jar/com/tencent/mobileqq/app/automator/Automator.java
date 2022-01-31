@@ -373,11 +373,6 @@ public class Automator
     a(4, true, null);
   }
   
-  public boolean e()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppAutomatorLinearGroup != null;
-  }
-  
   public void run()
   {
     int i;

@@ -22,7 +22,7 @@ import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.util.WeakReferenceHandler;
-import ocn;
+import ohc;
 
 public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
@@ -37,14 +37,22 @@ public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
   private void a(RelativeLayout paramRelativeLayout)
   {
     FadedButton localFadedButton = new FadedButton(getActivity());
-    localFadedButton.setBackgroundResource(2130843179);
+    localFadedButton.setBackgroundResource(2130843211);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(ScreenUtil.a(40.0F), ScreenUtil.a(40.0F));
     localLayoutParams.addRule(12, -1);
     localLayoutParams.addRule(14, -1);
     localLayoutParams.bottomMargin = ScreenUtil.a(35.0F);
     localFadedButton.setLayoutParams(localLayoutParams);
-    localFadedButton.setOnClickListener(new ocn(this));
+    localFadedButton.setOnClickListener(new ohc(this));
     paramRelativeLayout.addView(localFadedButton);
+  }
+  
+  public void L_()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDancemachinePKVideoSharer.a("share_VIDEO", null, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "onShareVideoClick");
+    }
   }
   
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
@@ -91,14 +99,6 @@ public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
     int i = super.d(paramBundle);
     a().setVisibility(8);
     return i;
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDancemachinePKVideoSharer.a("share_VIDEO", null, null, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "onShareVideoClick");
-    }
   }
   
   public boolean handleMessage(Message paramMessage)

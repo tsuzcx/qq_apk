@@ -39,7 +39,7 @@ public class PinYinSpan
   {
     paramPaint.reset();
     paramPaint.setAntiAlias(true);
-    switch (anoh.a[paramPaintType.ordinal()])
+    switch (anwu.a[paramPaintType.ordinal()])
     {
     }
     do

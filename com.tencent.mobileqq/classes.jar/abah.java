@@ -1,14 +1,9 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
-
 public class abah
-  implements Runnable
+  extends abad
 {
-  public abah(ARMapActivity paramARMapActivity, long paramLong) {}
-  
-  public void run()
+  private abah()
   {
-    ARMapEngine.removePOITask(this.jdField_a_of_type_Long);
+    super(null);
   }
 }
 

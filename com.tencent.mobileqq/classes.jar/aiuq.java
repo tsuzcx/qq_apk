@@ -1,28 +1,63 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
+import com.tencent.mobileqq.transfile.TransferRequest.AppInfo;
+import com.tencent.open.agent.AgentActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.observer.BusinessObserver;
 
 public class aiuq
-  extends SosoInterface.OnLocationListener
+  extends aiuo
 {
-  public aiuq(QLifeCommentActivity paramQLifeCommentActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private int jdField_a_of_type_Int;
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new aiur(this);
+  private AtomicBoolean c = new AtomicBoolean(false);
+  
+  public aiuq(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    super(paramForwardSdkShareProcessor);
+    this.jdField_a_of_type_JavaLangString = "GetAppInfoStep";
+    AtomicBoolean localAtomicBoolean = this.c;
+    if (ForwardSdkShareProcessor.a(paramForwardSdkShareProcessor).jdField_a_of_type_Int == 1) {}
+    for (;;)
+    {
+      localAtomicBoolean.set(bool);
+      return;
+      bool = false;
+    }
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected boolean a()
+  {
+    return this.c.get();
+  }
+  
+  protected void d()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QLifeCommentActivity", 2, "onLocationFinish() errCode=" + paramInt);
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|process|appId=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + ",pkgName=" + ForwardSdkShareProcessor.g(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + ",retry=" + this.jdField_a_of_type_Int);
     }
-    if (paramSosoLbsInfo != null)
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      this.a.a = paramSosoLbsInfo.a.a;
-      this.a.b = paramSosoLbsInfo.a.b;
+      f();
+      return;
     }
-    QLifeCommentActivity.a(this.a, this.a.a, this.a.b);
+    ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor, System.currentTimeMillis());
+    switch (ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor))
+    {
+    default: 
+      return;
+    case 2: 
+      Share.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor), this.jdField_a_of_type_MqqObserverBusinessObserver);
+      return;
+    }
+    long l = ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) / 1000L;
+    String str = AgentActivity.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_AndroidContentContext, ForwardSdkShareProcessor.g(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor), l + "");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|process|sign: " + str);
+    }
+    Share.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor), str, l, this.jdField_a_of_type_MqqObserverBusinessObserver);
   }
 }
 

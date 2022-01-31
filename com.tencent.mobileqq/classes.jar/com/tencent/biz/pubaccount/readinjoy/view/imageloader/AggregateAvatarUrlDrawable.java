@@ -57,7 +57,7 @@ public class AggregateAvatarUrlDrawable
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    this.b = PuzzleAvatarUtil.a(paramBitmap, BitmapFactory.decodeResource(paramResources, 2130842367), 0.0F, 1.0F);
+    this.b = PuzzleAvatarUtil.a(paramBitmap, BitmapFactory.decodeResource(paramResources, 2130842402), 0.0F, 1.0F);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, this.b.getWidth(), this.b.getHeight());
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, paramInt * 0.75F, paramInt * 0.75F);
     this.jdField_a_of_type_ComTencentImageURLDrawable.setBounds(new Rect(Math.round(paramInt * 0.52F), Math.round(paramInt * 0.52F), paramInt, paramInt));

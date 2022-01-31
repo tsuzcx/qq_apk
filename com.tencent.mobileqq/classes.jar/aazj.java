@@ -1,19 +1,31 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.text.TextUtils;
 
-public class aazj
-  implements Runnable
+class aazj
 {
-  public aazj(ARMapActivity paramARMapActivity) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void run()
+  public void a()
   {
-    this.a.b = 1;
-    this.a.a.post(new aazk(this));
-    ARMapEngine.guideToPOI(0.0F);
-    ThreadManager.post(new aazl(this), 5, null, false);
+    this.e = null;
+    this.f = null;
+    this.g = null;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int >= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d));
+  }
+  
+  public boolean b()
+  {
+    return (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g));
   }
 }
 

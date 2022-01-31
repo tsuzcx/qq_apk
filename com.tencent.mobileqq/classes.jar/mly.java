@@ -1,15 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySocialMsgTips;
 
-public class mly
+class mly
   implements Runnable
 {
-  public mly(FastWebActivity paramFastWebActivity, List paramList) {}
+  mly(mlx parammlx, KandianOx210MsgInfo paramKandianOx210MsgInfo) {}
   
   public void run()
   {
-    ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaUtilList);
+    if ((ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mlx.a) != null) && (ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mlx.a).a())) {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a <= 0)
+      {
+        ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mlx.a).b();
+        ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mlx.a).removeHeaderView(ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mlx.a).a());
+      }
+    }
+    while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a <= 0)
+    {
+      return;
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mlx.a).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo);
+      return;
+    }
+    this.jdField_a_of_type_Mlx.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo);
   }
 }
 

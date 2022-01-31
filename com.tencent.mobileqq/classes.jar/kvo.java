@@ -1,16 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.CustomWebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class kvo
-  implements DialogInterface.OnCancelListener
+class kvo
+  implements DialogInterface.OnDismissListener
 {
-  public kvo(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
+  kvo(kvn paramkvn) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (QLog.isColorLevel()) {
+      QLog.i("PublicAccountAdvertisementActivity", 2, "action dismiss");
+    }
   }
 }
 

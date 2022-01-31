@@ -1,60 +1,35 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aaoz
-  implements INetInfoHandler
+  implements Runnable
 {
-  public aaoz(ArkAppEventObserverManager paramArkAppEventObserverManager) {}
+  public aaoz(ARReport paramARReport, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString) {}
   
-  public void onNetMobile2None()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2None mLastNetType=" + ArkAppEventObserverManager.a(this.a));
+    HashMap localHashMap = new HashMap();
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_a_of_type_Long)) {
+      localHashMap.put("local_load_feature_time", String.valueOf(this.jdField_a_of_type_Long));
     }
-    ArkAppCenter.a().post(new aapf(this));
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2Wifi mLastNetType=" + ArkAppEventObserverManager.a(this.a));
+    if (this.b > 0L) {
+      localHashMap.put("local_load_feature_count", String.valueOf(this.b));
     }
-    ArkAppCenter.a().post(new aape(this));
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Mobile mLastNetType=" + ArkAppEventObserverManager.a(this.a));
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.c)) {
+      localHashMap.put("local_recognize_time", String.valueOf(this.c));
     }
-    ArkAppCenter.a().post(new aapd(this));
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Wifi mLastNetType=" + ArkAppEventObserverManager.a(this.a));
+    if (this.d > 0L) {
+      localHashMap.put("local_recognize_times", String.valueOf(this.d));
     }
-    ArkAppCenter.a().post(new aapc(this));
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2Mobile mLastNetType=" + ArkAppEventObserverManager.a(this.a));
+    if (this.e > 0L) {
+      localHashMap.put("local_recognize_quality", String.valueOf(this.e));
     }
-    ArkAppCenter.a().post(new aapb(this));
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2None mLastNetType=" + ArkAppEventObserverManager.a(this.a));
+    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
+      localHashMap.put("local_recognize_featureid", this.jdField_a_of_type_JavaLangString);
     }
-    ArkAppCenter.a().post(new aapa(this));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARLocal", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

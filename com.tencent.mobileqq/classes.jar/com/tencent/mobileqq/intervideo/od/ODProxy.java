@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.od;
 
-import advm;
+import aedw;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,16 +8,13 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.cooperation.ApkUtils;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.intervideo.IVPluginInfo;
 import com.tencent.mobileqq.intervideo.LoginKeyHelper;
 import com.tencent.mobileqq.intervideo.LoginKeyHelper.AccountInfo;
 import com.tencent.mobileqq.intervideo.LoginKeyHelper.GetLoginKeyListener;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.txproxy.InitParam;
 import com.tencent.txproxy.RunPluginParams;
 import com.tencent.txproxy.XPlugin;
 import java.util.ArrayList;
@@ -30,8 +27,7 @@ public class ODProxy
   implements LoginKeyHelper.GetLoginKeyListener, Manager
 {
   long jdField_a_of_type_Long = 0L;
-  advm jdField_a_of_type_Advm = new advm(this);
-  private Context jdField_a_of_type_AndroidContentContext;
+  aedw jdField_a_of_type_Aedw = new aedw(this);
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
   LoginKeyHelper jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper = new LoginKeyHelper();
@@ -85,7 +81,7 @@ public class ODProxy
       localBundle.putInt("gender", j);
       localBundle.putInt("vastype", 2);
       localBundle.putLong("hostid", Long.parseLong(str2));
-      localBundle.putString("authkey", paramLoginKeyHelper.a().jdField_a_of_type_JavaLangString);
+      localBundle.putString("authkey", paramLoginKeyHelper.a().a);
       localBundle.putString("appid", paramIVPluginInfo.b);
       localBundle.putString("vasname", paramIVPluginInfo.g);
       localBundle.putString("userdata", paramIVPluginInfo.d);
@@ -134,36 +130,9 @@ public class ODProxy
     }
   }
   
-  private void c()
-  {
-    InitParam localInitParam = new InitParam();
-    localInitParam.mPluginName = "odapp";
-    localInitParam.mChannelId = String.valueOf(2);
-    localInitParam.mSourceVersion = String.valueOf(ApkUtils.a(BaseApplicationImpl.getContext()));
-    localInitParam.mSourceId = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localInitParam.mDefaultLoadApkActivity = "com.tencent.mobileqq.intervideo.od.ODLoadApkActivity";
-    localInitParam.isDownloadInHost = true;
-    localInitParam.mLoadApkActivityClazz = ODLoadApkActivity.class;
-    this.jdField_a_of_type_ComTencentTxproxyXPlugin.setInitData(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), localInitParam);
-  }
-  
   public void a() {}
   
-  public void a(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    c();
-    paramString1 = new IVPluginInfo();
-    int i = (int)(Math.random() * 1.0D + 0.5D);
-    paramString1.jdField_a_of_type_Long = paramLong;
-    paramString1.e = String.valueOf(paramInt);
-    paramString1.b = "1104763709";
-    paramString1.jdField_c_of_type_JavaLangString = "com.tencent.mobileqq";
-    paramString1.jdField_a_of_type_JavaLangString = "Od";
-    paramString1.g = paramString2;
-    paramString1.d = paramString3;
-    a(paramContext, paramString1, true);
-  }
+  public void a(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt) {}
   
   protected void a(String paramString)
   {
@@ -173,30 +142,6 @@ public class ODProxy
   public void a(String paramString, boolean paramBoolean, int paramInt)
   {
     b();
-  }
-  
-  protected boolean a(Context paramContext, IVPluginInfo paramIVPluginInfo, boolean paramBoolean)
-  {
-    if (paramIVPluginInfo == null) {
-      return false;
-    }
-    paramIVPluginInfo.b = "1104763709";
-    paramIVPluginInfo.jdField_c_of_type_JavaLangString = "com.tencent.mobileqq";
-    paramIVPluginInfo.jdField_a_of_type_JavaLangString = "Od";
-    if (paramBoolean)
-    {
-      Intent localIntent = new Intent(paramContext, ODLoadingActivity.class);
-      localIntent.putExtra("plugininfo", paramIVPluginInfo);
-      localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      localIntent.setFlags(268435456);
-      paramContext.startActivity(localIntent);
-    }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = paramIVPluginInfo;
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramIVPluginInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentContext, paramIVPluginInfo.b, this);
-    }
   }
   
   public void b()

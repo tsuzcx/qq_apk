@@ -1,26 +1,41 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.HintDrawable;
+import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aoef
-  extends Property
+  implements Runnable
 {
-  public aoef(HintDrawable paramHintDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public aoef(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload, RMVideoStateMgr paramRMVideoStateMgr) {}
   
-  public Integer a(HintDrawable paramHintDrawable)
+  public void run()
   {
-    if (paramHintDrawable != null) {
-      return Integer.valueOf(HintDrawable.a(paramHintDrawable));
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
+      }
+      RecordManager.a().a().recordSubmit();
+      return;
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(HintDrawable paramHintDrawable, Integer paramInteger)
-  {
-    if (paramHintDrawable != null) {
-      HintDrawable.a(paramHintDrawable, paramInteger.intValue());
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        localUnsatisfiedLinkError.printStackTrace();
+        synchronized (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+        {
+          this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+          this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
+          return;
+        }
+      }
     }
   }
 }

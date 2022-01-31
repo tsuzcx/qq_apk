@@ -1,19 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
 
 class aiwo
-  implements AdapterView.OnItemLongClickListener
+  implements Runnable
 {
-  aiwo(aiwl paramaiwl) {}
+  aiwo(aiwm paramaiwm, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    if ((this.a.a.a.e) || (this.a.a.a.d)) {
-      TroopAvatarWallPreviewActivity.c(this.a.a.a);
-    }
-    return true;
+    this.jdField_a_of_type_Aiwm.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 3);
   }
 }
 

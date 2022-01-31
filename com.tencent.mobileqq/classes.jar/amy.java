@@ -1,24 +1,19 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.View.OnClickListener;
+import com.qq.im.poi.LbsPackInfo;
 import com.qq.im.poi.LbsPackListAdapter;
-import com.tencent.mobileqq.businessCard.helpers.ViewHelper;
+import com.qq.im.poi.LbsPackListAdapter.LbsPackItemCallback;
 
 public class amy
-  extends Animation
+  implements View.OnClickListener
 {
-  public amy(LbsPackListAdapter paramLbsPackListAdapter, int paramInt1, int paramInt2, View paramView) {}
+  public amy(LbsPackListAdapter paramLbsPackListAdapter, LbsPackInfo paramLbsPackInfo, int paramInt) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onClick(View paramView)
   {
-    float f1 = this.jdField_a_of_type_Int;
-    float f2 = this.b;
-    ViewHelper.f(this.jdField_a_of_type_AndroidViewView, f1 * f2 * paramFloat);
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+    if (LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter) != null) {
+      LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter).b(this.jdField_a_of_type_ComQqImPoiLbsPackInfo, this.jdField_a_of_type_Int);
+    }
   }
 }
 

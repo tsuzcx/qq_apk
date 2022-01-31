@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.ar.ARLBSPOIDialog;
 
 public class aadx
   implements Runnable
 {
-  public aadx(ScanEntranceReport paramScanEntranceReport, int paramInt, long paramLong) {}
+  public aadx(ARLBSPOIDialog paramARLBSPOIDialog) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("neon_opened", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_success", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    if (!this.a.jdField_a_of_type_Boolean) {
+      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    }
   }
 }
 

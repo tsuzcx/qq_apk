@@ -1,40 +1,23 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.arcard.ARBlessWordFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
 
-public class aalc
-  implements View.OnFocusChangeListener
+public final class aalc
+  implements Parcelable.Creator
 {
-  public aalc(ARBlessWordFragment paramARBlessWordFragment) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public ARScanStarFaceActInfo a(Parcel paramParcel)
   {
-    this.a.a = paramBoolean;
-    TextView localTextView = ARBlessWordFragment.a(this.a);
-    if (paramBoolean)
-    {
-      paramView = "请输入20个字以内的祝福";
-      localTextView.setText(paramView);
-      paramView = ARBlessWordFragment.a(this.a);
-      if (!paramBoolean) {
-        break label57;
-      }
-    }
-    label57:
-    for (int i = 8;; i = 0)
-    {
-      paramView.setVisibility(i);
-      return;
-      paramView = "点击重新编辑";
-      break;
-    }
+    return new ARScanStarFaceActInfo(paramParcel);
+  }
+  
+  public ARScanStarFaceActInfo[] a(int paramInt)
+  {
+    return new ARScanStarFaceActInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aalc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,34 @@
-import com.tencent.biz.qqstory.database.StoryEntry;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.support.v4.util.MQLruCache;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.mobileqq.app.AppConstants;
+import java.io.File;
 
 public class ncw
-  implements Runnable
+  extends Thread
 {
-  public ncw(StoryManager paramStoryManager, EntityManager paramEntityManager, StoryEntry paramStoryEntry, String paramString, int paramInt) {}
+  public ncw(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseStoryEntry, StoryEntry.getUidSelectionNoArg(), new String[] { String.valueOf(this.jdField_a_of_type_JavaLangString), String.valueOf(this.jdField_a_of_type_Int) });
+    if (this.a.a != null) {
+      this.a.a.releaseLargeCache();
+    }
+    long l = System.currentTimeMillis();
+    Object localObject1 = new File(AppConstants.cu);
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    {
+      localObject1 = ((File)localObject1).listFiles();
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject2 = localObject1[i];
+        if (l - localObject2.lastModified() > 172800000L) {
+          localObject2.delete();
+        }
+        i += 1;
+      }
+    }
   }
 }
 

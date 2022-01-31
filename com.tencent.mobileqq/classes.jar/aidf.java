@@ -1,37 +1,65 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCClient;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQVideoMaterial;
+import com.tencent.mobileqq.shortvideo.ptvfilter.material.TemplateParser;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aidf
   implements Runnable
 {
-  public aidf(RedBagVideoManager paramRedBagVideoManager) {}
+  public aidf(PtvTemplateManager paramPtvTemplateManager, File paramFile, boolean paramBoolean, PtvTemplateManager.DoodleInfoLoadObserver paramDoodleInfoLoadObserver, AppInterface paramAppInterface) {}
   
   public void run()
   {
-    String str1 = null;
-    if (RedBagVideoManager.a(this.a) == null) {}
-    while (RedBagVideoManager.a(this.a).jdField_e_of_type_Int != LocalMediaInfo.REDBAG_TYPE_GET) {
-      return;
-    }
-    String str2 = RedBagVideoManager.a(this.a).d;
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("VALUE_USER_UIN_TO_GET_NICK_NAME", str2);
-    localObject = VideoPlayIPCClient.a().a("CMD_GET_NICK_NAME_BY_UIN", (Bundle)localObject);
-    if ((localObject == null) && (QLog.isColorLevel())) {
-      QLog.d("RedBagVideoManager", 2, "getNickName VideoPlayIPCClient.callServer value=null");
-    }
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("VALUE_USER_NICK_NAME");; localObject = "")
+    Object localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_JavaIoFile);
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+    do
     {
-      Bundle localBundle = VideoPlayIPCClient.a().a("CMD_GET_CURRENT_NICK_NAME", null);
-      if (localBundle != null) {
-        str1 = localBundle.getString("VALUE_GET_CURRENT_NICK_NAME");
+      return;
+      localObject1 = PtvTemplateManager.a((String)localObject1);
+    } while ((localObject1 == null) || (((PtvTemplateManager.PtvTemplateInfo)localObject1).doodleInfos == null) || (((PtvTemplateManager.PtvTemplateInfo)localObject1).doodleInfos.isEmpty()));
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_d_of_type_JavaUtilArrayList.clear();
+    ??? = ((PtvTemplateManager.PtvTemplateInfo)localObject1).doodleInfos.iterator();
+    while (((Iterator)???).hasNext())
+    {
+      Object localObject4 = (PtvTemplateManager.DoodleInfo)((Iterator)???).next();
+      if (localObject4 != null)
+      {
+        ((PtvTemplateManager.DoodleInfo)localObject4).doodleUsable = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a((PtvTemplateManager.DoodleInfo)localObject4, true);
+        if ((((PtvTemplateManager.DoodleInfo)localObject4).doodleUsable) && (this.jdField_a_of_type_Boolean))
+        {
+          localObject4 = PtvTemplateManager.c + ((PtvTemplateManager.DoodleInfo)localObject4).doodleName;
+          QQVideoMaterial localQQVideoMaterial = TemplateParser.a((String)localObject4, "params");
+          if (localQQVideoMaterial != null)
+          {
+            localQQVideoMaterial.setDataPath((String)localObject4);
+            this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_d_of_type_JavaUtilArrayList.add(localQQVideoMaterial);
+            if (QLog.isDevelopLevel()) {
+              QLog.d("Doodle_Strokes_PtvTemplateManager", 4, new Object[] { "initLocalDoodleInfo add DoodleMaterial:", localQQVideoMaterial.getId() });
+            }
+          }
+        }
       }
-      this.a.a(RedBagVideoManager.a(this.a), str2, (String)localObject, str1, RedBagVideoManager.a(this.a).c, RedBagVideoManager.a(this.a).h, RedBagVideoManager.a(this.a).jdField_e_of_type_JavaLangString);
+    }
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.jdField_d_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a = ((PtvTemplateManager.PtvTemplateInfo)localObject1);
+      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfoLoadObserver != null) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfoLoadObserver.a();
+      }
+      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (PtvFilterSoLoad.b())) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      }
+      PtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager);
       return;
     }
   }

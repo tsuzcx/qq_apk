@@ -1,16 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
 
-public class adkp
-  implements DialogInterface.OnClickListener
+class adkp
+  implements Runnable
 {
-  public adkp(ForwardFileBaseOption paramForwardFileBaseOption) {}
+  adkp(adko paramadko) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.finish();
+    if (this.a.a.a != null) {
+      this.a.a.a.f();
+    }
   }
 }
 

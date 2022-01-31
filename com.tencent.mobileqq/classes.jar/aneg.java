@@ -1,25 +1,15 @@
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginMangerHelper;
-import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
-import cooperation.qzone.widgetai.QzoneWidgetAIInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
 public final class aneg
-  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
+  implements Runnable
 {
-  public aneg(String paramString) {}
+  public aneg(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
   
-  public void a(IQZonePluginManager paramIQZonePluginManager)
+  public void run()
   {
-    if (paramIQZonePluginManager == null) {
-      QZonePluginMangerHelper.a(QzoneWidgetAIInterface.getContext(), this);
-    }
-    do
-    {
-      return;
-      paramIQZonePluginManager = paramIQZonePluginManager.a(this.a);
-    } while (paramIQZonePluginManager == null);
-    QzoneWidgetAIInterface.access$002(paramIQZonePluginManager.c);
+    StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
   }
 }
 

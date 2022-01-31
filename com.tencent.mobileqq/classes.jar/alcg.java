@@ -1,63 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.manager.WtloginManager;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Handler;
+import com.tencent.mobileqq.widget.ImageViewTouchBase;
 
 public class alcg
-  extends WtloginObserver
+  implements Runnable
 {
-  public alcg(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  public alcg(ImageViewTouchBase paramImageViewTouchBase, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {}
   
-  public void OnCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.quicklogin.", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
+    long l = System.currentTimeMillis();
+    float f1 = Math.min(this.jdField_a_of_type_Float, (float)(l - this.jdField_a_of_type_Long));
+    float f2 = this.b;
+    float f3 = this.c;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.zoomTo(f2 + f3 * f1, this.d, this.e);
+    if (f1 < this.jdField_a_of_type_Float) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.mHandler.post(this);
     }
-    if (paramInt == 0)
-    {
-      this.a.a(null);
-      this.a.moveTaskToBack(true);
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "登录失败(" + paramInt + ")", 2000).a();
-    this.a.a(null);
-    this.a.moveTaskToBack(true);
-  }
-  
-  public void OnException(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.quicklogin.", 2, "OnException e=" + paramString);
-    }
-    this.a.a(null);
-    this.a.moveTaskToBack(true);
-  }
-  
-  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (paramInt == 0)
-    {
-      paramArrayOfByte1 = new ArrayList();
-      this.a.a.CloseCode(paramString, 16L, QuickLoginAuthorityActivity.a(this.a), 1, paramArrayOfByte1, QuickLoginAuthorityActivity.a(this.a));
-    }
-    do
-    {
-      return;
-      QQToast.a(BaseApplicationImpl.getContext(), 1, "登录失败(" + paramInt + ")", 2000).a();
-      this.a.a(null);
-      this.a.moveTaskToBack(true);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.quicklogin.", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alcg
  * JD-Core Version:    0.7.0.1
  */

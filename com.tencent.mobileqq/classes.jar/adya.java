@@ -1,40 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
 
-class adya
-  implements TroopMemberApiClient.Callback
+public class adya
+  implements URLDrawable.DownloadListener
 {
-  adya(adxz paramadxz, String paramString) {}
+  public adya(HotPicMainPanel paramHotPicMainPanel, ImageView paramImageView) {}
   
-  public void a(Bundle paramBundle)
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
   {
-    if (paramBundle.getBoolean("isSuccess", false))
-    {
-      int i = paramBundle.getInt("appid");
-      Object localObject = paramBundle.getString("openId");
-      if ((i != this.jdField_a_of_type_Adxz.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_Adxz.jdField_a_of_type_JavaLangString))) {
-        break label120;
-      }
-      paramBundle = paramBundle.getString("uin");
-      if (!TextUtils.isEmpty(paramBundle))
-      {
-        localObject = new Intent(this.jdField_a_of_type_Adxz.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
-        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("memberUin", paramBundle);
-        this.jdField_a_of_type_Adxz.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
-      }
-    }
-    label120:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.post(new adyb(this));
   }
 }
 

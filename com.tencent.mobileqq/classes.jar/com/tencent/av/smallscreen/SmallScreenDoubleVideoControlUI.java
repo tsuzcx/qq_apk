@@ -11,13 +11,13 @@ import com.tencent.av.doodle.DoodleLogic;
 import com.tencent.av.ui.ControlUIObserver;
 import com.tencent.av.utils.TipsManager;
 import com.tencent.qphone.base.util.QLog;
-import joc;
-import jod;
+import jqf;
+import jqg;
 
 public class SmallScreenDoubleVideoControlUI
   extends SmallScreenVideoControlUI
 {
-  Runnable jdField_a_of_type_JavaLangRunnable = new jod(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new jqg(this);
   boolean jdField_a_of_type_Boolean = false;
   
   public SmallScreenDoubleVideoControlUI(VideoAppInterface paramVideoAppInterface, SmallScreenService paramSmallScreenService, ControlUIObserver paramControlUIObserver)
@@ -218,7 +218,7 @@ public class SmallScreenDoubleVideoControlUI
       if (localSessionInfo.i == 1011) {
         this.b.setText(2131429418);
       }
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new joc(this), 150L);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new jqf(this), 150L);
       return;
     }
   }
@@ -393,7 +393,7 @@ public class SmallScreenDoubleVideoControlUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenDoubleVideoControlUI
  * JD-Core Version:    0.7.0.1
  */

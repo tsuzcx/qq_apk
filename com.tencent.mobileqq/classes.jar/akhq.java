@@ -1,74 +1,35 @@
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.vas.FlashCarGameManager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.HbThemeConfigManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.HashSet;
+import java.util.Set;
 import org.json.JSONObject;
 
 public class akhq
-  extends SosoInterface.OnLocationListener
+  implements Runnable
 {
-  public akhq(FlashCarGameManager paramFlashCarGameManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public akhq(HbThemeConfigManager paramHbThemeConfigManager, Context paramContext, JSONObject paramJSONObject, QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    if (FlashCarGameManager.d) {
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("qb_tenpay_share_face", 0).edit();
+    ((SharedPreferences.Editor)localObject).putString("hb_face", HbThemeConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilHbThemeConfigManager, this.jdField_a_of_type_OrgJsonJSONObject).toString());
+    ((SharedPreferences.Editor)localObject).commit();
+    localObject = HbThemeConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilHbThemeConfigManager).optString("hb_face_imgurl");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
       return;
     }
-    String str = "{\"isFromSplash\":1}";
-    Object localObject = str;
-    if (paramInt == 0)
-    {
-      localObject = str;
-      if (paramSosoLbsInfo != null)
-      {
-        localObject = str;
-        if (paramSosoLbsInfo.a != null) {
-          if (QLog.isColorLevel()) {
-            QLog.d("FlashCarGame", 2, "onLocationFinish errCode = " + paramInt + " location = " + paramSosoLbsInfo.a.e + paramSosoLbsInfo.a.d + paramSosoLbsInfo.a.g + paramSosoLbsInfo.a.j);
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("HbThemeConfigManager", 2, "start downloading img...");
     }
-    try
-    {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("isFromSplash", 1);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("nation", paramSosoLbsInfo.a.c);
-      localJSONObject.put("province", paramSosoLbsInfo.a.d);
-      localJSONObject.put("city", paramSosoLbsInfo.a.e);
-      localJSONObject.put("district", paramSosoLbsInfo.a.g);
-      localJSONObject.put("street", paramSosoLbsInfo.a.j);
-      localJSONObject.put("streetNo", paramSosoLbsInfo.a.k);
-      localJSONObject.put("town", paramSosoLbsInfo.a.h);
-      localJSONObject.put("village", paramSosoLbsInfo.a.i);
-      ((JSONObject)localObject).put("Location", localJSONObject);
-      localObject = ((JSONObject)localObject).toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("FlashCarGame", 2, "gameParam = " + (String)localObject);
-      }
-      if (FlashCarGameManager.a(this.a) != null)
-      {
-        FlashCarGameManager.a(this.a).removeMessages(261);
-        FlashCarGameManager.a(this.a).sendEmptyMessageDelayed(259, 2000L);
-      }
-      ApolloGameActivity.a(FlashCarGameManager.a(this.a), 3003, 1, (String)localObject, null);
-      return;
-    }
-    catch (Exception paramSosoLbsInfo)
-    {
-      for (;;)
-      {
-        QLog.e("FlashCarGame", 2, "onLocationFinish error: " + paramSosoLbsInfo.getMessage());
-        localObject = str;
-      }
-    }
+    HashSet localHashSet = new HashSet(2);
+    localHashSet.add(localObject);
+    PreloadImgManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localHashSet);
   }
 }
 

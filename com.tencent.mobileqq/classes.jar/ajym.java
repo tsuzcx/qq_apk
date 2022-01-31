@@ -1,37 +1,83 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class ajym
-  implements DownloadParams.DecodeHandler
+public class ajym
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public ajym(TroopTopicMgr paramTroopTopicMgr, TroopTopicMgr.DoLikeCallback paramDoLikeCallback) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
+    if (paramArrayOfByte == null)
     {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 2);
-    paramDownloadParams = (int[])localObject;
-    float f2 = DeviceInfoUtil.a();
-    float f1 = f2;
-    if (f2 < 0.01F) {
-      f1 = 1.0F;
+      if (QLog.isColorLevel()) {
+        QLog.e(".troop.troop_topic.TroopTopicMgr", 2, "getSharePostInfo failed, data == null");
+      }
+      return;
     }
-    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
-    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
-    return ImageUtil.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+    int k = 0;
+    int j = 0;
+    paramBundle = null;
+    paramInt = j;
+    i = k;
+    try
+    {
+      WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+      paramInt = j;
+      i = k;
+      localWebSsoResponseBody.mergeFrom(paramArrayOfByte);
+      paramInt = j;
+      i = k;
+      j = localWebSsoResponseBody.ret.get();
+      if (j != 0) {
+        break label220;
+      }
+      paramInt = j;
+      i = j;
+      paramArrayOfByte = new JSONObject(localWebSsoResponseBody.data.get());
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        i = paramInt;
+        paramInt = i;
+        paramArrayOfByte = paramBundle;
+        if (QLog.isColorLevel())
+        {
+          QLog.e(".troop.troop_topic.TroopTopicMgr", 2, "getSharePostInfo got InvalidProtocolBufferMicroException exception:" + localInvalidProtocolBufferMicroException.getMessage());
+          paramInt = i;
+          paramArrayOfByte = paramBundle;
+        }
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        paramInt = i;
+        paramArrayOfByte = paramBundle;
+        if (QLog.isColorLevel())
+        {
+          QLog.e(".troop.troop_topic.TroopTopicMgr", 2, "getSharePostInfo got JSONException exception:" + localJSONException.getMessage());
+          paramInt = i;
+          paramArrayOfByte = paramBundle;
+          continue;
+          paramArrayOfByte = null;
+        }
+      }
+    }
+    paramInt = j;
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr$DoLikeCallback.a(paramInt, paramArrayOfByte);
   }
 }
 

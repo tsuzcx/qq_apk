@@ -1,59 +1,71 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.TopayManager;
-import com.tencent.mobileqq.activity.qwallet.TopayManager.5;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 public class xbu
-  implements Runnable
+  extends BaseAdapter
 {
-  public xbu(TopayManager.5 param5, int paramInt, Bundle paramBundle) {}
+  public xbu(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void run()
+  public String a(int paramInt)
   {
-    SelectMemberActivity localSelectMemberActivity = (SelectMemberActivity)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localSelectMemberActivity == null) || (localSelectMemberActivity.isFinishing())) {
-      return;
+    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
+      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
     }
-    TopayManager.a(localSelectMemberActivity, false);
-    if (this.jdField_a_of_type_Int == 0)
+    return null;
+  }
+  
+  public int getCount()
+  {
+    if (CameraPreviewActivity.a(this.a) != null) {
+      return CameraPreviewActivity.a(this.a).size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.jdField_a_of_type_AndroidOsResultReceiver.send(1, null);
-      ReportController.b(QWalletTools.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.aio.send", 0, 0, "", "", "", "");
-      int i = localSelectMemberActivity.getIntent().getIntExtra("iPayFrom", -1);
-      if (QLog.isColorLevel()) {
-        QLog.e("TopayManager", 2, "iPayFrom : " + i);
-      }
-      if (i == 1)
-      {
-        TopayManager.a(localSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.b);
-        return;
-      }
-      TopayManager.b(localSelectMemberActivity, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTopayManager$5.b);
-      return;
+      paramView = this.a.getLayoutInflater().inflate(2130969175, null);
+      paramViewGroup = new xbv();
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131365523));
+      paramView.setTag(paramViewGroup);
     }
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {}
-    for (String str = this.jdField_a_of_type_AndroidOsBundle.getString("retmsg");; str = null)
+    for (;;)
     {
-      if (TextUtils.isEmpty(str)) {
-        str = localSelectMemberActivity.getResources().getString(2131435603);
+      Object localObject = a(paramInt);
+      if (localObject == null) {
+        break;
       }
-      for (;;)
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists()) {}
+      try
       {
-        DialogUtil.a(localSelectMemberActivity, 231, null, str, localSelectMemberActivity.getResources().getString(2131433016), null, null, new xbv(this)).show();
-        ReportController.b(QWalletTools.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.errwinshow", 0, 0, "", "", "", "");
-        return;
+        paramViewGroup.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
+        return paramView;
       }
+      catch (MalformedURLException paramViewGroup)
+      {
+        paramViewGroup.printStackTrace();
+        return paramView;
+      }
+      paramViewGroup = (xbv)paramView.getTag();
     }
+    paramViewGroup.a.setImageDrawable(null);
+    return paramView;
   }
 }
 

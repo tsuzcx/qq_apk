@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.OnAdapterNotify;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.widget.PopupMenuDialog.OnDismissListener;
 
-class vmp
-  implements Runnable
+public class vmp
+  implements PopupMenuDialog.OnDismissListener
 {
-  vmp(vmo paramvmo) {}
+  public vmp(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void run()
-  {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(0);
-    }
-  }
+  public void a() {}
 }
 
 

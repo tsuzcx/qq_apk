@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2246" android:paddingTop="50.0dip" android:paddingBottom="80.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2247" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02147f" />
-        <TextView android:textSize="16.0sp" android:textColor="#ffbbbbbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="网络异常，请点击刷新" />
-    </LinearLayout>
-</FrameLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1379" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214c3" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0368" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0369" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214c5" android:scaleType="centerInside" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1581" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0364" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0365" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214c4" android:scaleType="centerInside" />
+</LinearLayout>

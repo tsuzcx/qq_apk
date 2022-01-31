@@ -1,40 +1,36 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
+import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
 
 public class uaw
-  extends TroopGiftCallback
+  implements PopupMenuDialog.OnClickActionListener
 {
-  public uaw(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public uaw(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList error");
-    }
-    TroopMemberListActivity.a(this.a, true);
-    if (TroopMemberListActivity.b(this.a))
+    boolean bool = false;
+    switch (paramMenuItem.a)
     {
-      paramString = this.a.a.obtainMessage(12, null);
-      this.a.a.sendMessage(paramString);
+    default: 
+      return;
+    case 0: 
+      paramMenuItem = this.a;
+      if (!this.a.d) {
+        bool = true;
+      }
+      paramMenuItem.d = bool;
+      TroopAssistantManager.a().b(this.a.app, this.a.d);
+      return;
     }
-  }
-  
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList");
-    }
-    TroopMemberListActivity.a(this.a, paramArrayOfLong1);
-    TroopMemberListActivity.b(this.a, paramArrayOfLong2);
-    TroopMemberListActivity.c(this.a, paramArrayOfLong3);
-    TroopMemberListActivity.a(this.a, true);
-    if (TroopMemberListActivity.b(this.a))
-    {
-      paramArrayOfLong1 = this.a.a.obtainMessage(12, null);
-      this.a.a.sendMessage(paramArrayOfLong1);
-    }
+    paramMenuItem = new Intent(this.a, TroopAssisSettingActivity.class);
+    paramMenuItem.setFlags(67108864);
+    this.a.startActivity(paramMenuItem);
+    ReportController.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,16 +1,25 @@
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import android.content.Context;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+import com.tencent.biz.qqstory.notification.StoryMsgNotification;
+import com.tencent.mobileqq.msf.sdk.QNotificationManager;
 
 public class nmg
-  implements BatchHandlerListPuller.IPullResultCallback
+  implements Runnable
 {
-  public nmg(BatchGetVideoInfo paramBatchGetVideoInfo, BatchHandlerListPuller paramBatchHandlerListPuller) {}
+  public nmg(StoryMsgNotification paramStoryMsgNotification, Context paramContext) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.d();
+    StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    QNotificationManager localQNotificationManager = new QNotificationManager(this.jdField_a_of_type_AndroidContentContext);
+    int j = StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.size();
+    int i = 0;
+    while (i < j)
+    {
+      localQNotificationManager.cancel("StoryMsgNotification", StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.get(StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.keyAt(i)));
+      i += 1;
+    }
   }
 }
 

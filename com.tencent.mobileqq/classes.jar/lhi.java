@@ -1,13 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import android.app.ProgressDialog;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
 
 public class lhi
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public lhi(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lhi(ReadInJoyUploadAvatarActivity paramReadInJoyUploadAvatarActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.a = new ProgressDialog(this.a, 2131624516);
+    this.a.a.setCancelable(true);
+    this.a.a.show();
+    this.a.a.setContentView(2130969178);
+    ((TextView)this.a.a.findViewById(2131363418)).setText("上传中...");
+    this.a.a.setOnCancelListener(new lhj(this));
+  }
 }
 
 

@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.ark;
 
-import aarm;
-import aarn;
-import aasc;
+import aayg;
+import aayh;
+import aayw;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Pair;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -35,6 +36,7 @@ public class ArkAiAppCenter
   public static int b;
   public static String b;
   public static List b;
+  public static Map b;
   public static boolean b;
   public static List c;
   public static boolean c;
@@ -53,7 +55,7 @@ public class ArkAiAppCenter
   public static boolean n;
   private static boolean o;
   private static boolean p;
-  private aasc jdField_a_of_type_Aasc;
+  private aayw jdField_a_of_type_Aayw;
   private ArkAiDictMgr jdField_a_of_type_ComTencentMobileqqArkArkAiDictMgr;
   private ArkAppCenter jdField_a_of_type_ComTencentMobileqqArkArkAppCenter;
   
@@ -75,6 +77,7 @@ public class ArkAiAppCenter
       jdField_a_of_type_JavaUtilList = new ArrayList();
       jdField_b_of_type_JavaUtilList = new ArrayList();
       jdField_a_of_type_JavaUtilMap = new HashMap();
+      jdField_b_of_type_JavaUtilMap = new HashMap();
       jdField_c_of_type_JavaUtilList = new ArrayList();
       jdField_d_of_type_JavaUtilList = new ArrayList();
       jdField_e_of_type_JavaUtilList = new ArrayList();
@@ -100,7 +103,7 @@ public class ArkAiAppCenter
     jdField_e_of_type_Boolean = SharedPreUtils.e(BaseApplicationImpl.sApplication, str);
     f = SharedPreUtils.f(BaseApplicationImpl.sApplication, str);
     g = SharedPreUtils.g(BaseApplicationImpl.sApplication, str);
-    jdField_a_of_type_Int = SharedPreUtils.ap(BaseApplicationImpl.sApplication, str);
+    jdField_a_of_type_Int = SharedPreUtils.an(BaseApplicationImpl.sApplication, str);
     n = SharedPreUtils.h(BaseApplicationImpl.sApplication, str);
     if ((jdField_a_of_type_Boolean) && (!jdField_b_of_type_Boolean)) {}
     for (boolean bool = true;; bool = false)
@@ -110,7 +113,7 @@ public class ArkAiAppCenter
         ArkAppCenter.b("ArkApp.AI", "ArkAiAppCenter isServerDisable");
       }
       this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictMgr = new ArkAiDictMgr(paramArkAppCenter.b());
-      this.jdField_a_of_type_Aasc = new aasc(paramArkAppCenter.b());
+      this.jdField_a_of_type_Aayw = new aayw(paramArkAppCenter.b());
       d();
       a();
       c();
@@ -218,7 +221,7 @@ public class ArkAiAppCenter
   
   public void a()
   {
-    this.jdField_a_of_type_Aasc.a();
+    this.jdField_a_of_type_Aayw.a();
   }
   
   public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -246,7 +249,7 @@ public class ArkAiAppCenter
     l = a(paramString, "ark_terms_dialog_switch");
     jdField_a_of_type_JavaLangString = a(paramString, "ark_terms_url");
     jdField_b_of_type_JavaLangString = a(paramString, "ark_terms_text");
-    j = this.jdField_a_of_type_Aasc.a(paramString);
+    j = this.jdField_a_of_type_Aayw.a(paramString);
     m = a(paramString, "ark_android_https_switch");
     a(m);
   }
@@ -296,111 +299,117 @@ public class ArkAiAppCenter
   public void c()
   {
     Object localObject1 = SharedPreUtils.m(BaseApplicationImpl.getApplication());
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
       ArkAppCenter.b("ArkApp.AI", "updateArkAiKeywordConfig, keywordCfgJsonStr is empty");
-      return;
     }
-    label24:
-    Object localObject8;
-    JSONArray localJSONArray;
-    label249:
-    Object localObject2;
-    label317:
-    label324:
-    label1143:
-    do
+    label259:
+    label421:
+    label1966:
+    label2094:
+    label2101:
+    label2106:
+    for (;;)
     {
-      JSONObject localJSONObject;
-      do
+      return;
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      jdField_a_of_type_JavaUtilList.clear();
+      jdField_b_of_type_JavaUtilList.clear();
+      Object localObject5;
+      Object localObject6;
+      Object localObject3;
+      Object localObject9;
+      Object localObject8;
+      Object localObject7;
+      JSONArray localJSONArray2;
+      Object localObject4;
+      JSONArray localJSONArray1;
+      int i1;
+      try
       {
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        jdField_a_of_type_JavaUtilList.clear();
-        jdField_b_of_type_JavaUtilList.clear();
-        Object localObject5;
-        Object localObject7;
-        Object localObject6;
-        try
+        localObject5 = new JSONObject((String)localObject1);
+        localObject6 = ((JSONObject)localObject5).optJSONArray("ark_server_keyword_configs");
+        localObject3 = ((JSONObject)localObject5).optString("ark_ai_match_graytips_visibility");
+        localObject9 = ((JSONObject)localObject5).optJSONArray("meta_white_url_config");
+        localObject8 = ((JSONObject)localObject5).optJSONArray("meta_black_url_config");
+        localObject7 = ((JSONObject)localObject5).optJSONArray("ark_navi_msg_appnames");
+        localJSONArray2 = ((JSONObject)localObject5).optJSONArray("ark_module_api_frequency");
+        localObject4 = ((JSONObject)localObject5).optJSONObject("app_global_url_config");
+        localJSONArray1 = ((JSONObject)localObject5).optJSONArray("ark_jsdebugger_download");
+        localObject1 = localObject3;
+        if (localObject3 == null)
         {
-          localObject4 = new JSONObject((String)localObject1);
-          localObject5 = ((JSONObject)localObject4).optJSONArray("ark_server_keyword_configs");
-          localObject3 = ((JSONObject)localObject4).optString("ark_ai_match_graytips_visibility");
-          localObject8 = ((JSONObject)localObject4).optJSONArray("meta_white_url_config");
-          localObject7 = ((JSONObject)localObject4).optJSONArray("meta_black_url_config");
-          localObject6 = ((JSONObject)localObject4).optJSONArray("ark_navi_msg_appnames");
-          localJSONArray = ((JSONObject)localObject4).optJSONArray("ark_module_api_frequency");
-          localJSONObject = ((JSONObject)localObject4).optJSONObject("app_global_url_config");
-          localObject1 = localObject3;
-          if (localObject3 == null)
-          {
-            ArkAppCenter.b("ArkApp.AI", "updateArkAiKeywordConfig, ark_ai_match_graytips_visibility is empty");
-            localObject1 = "false";
-          }
-          ArkAppCenter.b("ArkApp.AI", "updateArkAiKeywordConfig, ark_ai_match_graytips_visibility cfgGTipSwitch=" + (String)localObject1);
-          localObject3 = this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter.a();
-          SharedPreUtils.j(BaseApplicationImpl.getApplication(), (String)localObject1, ((QQAppInterface)localObject3).c());
-          if (!QLog.isDebugVersion()) {
-            break;
-          }
-          QLog.d("ArkApp.ArkAppContainer.checkUrl", 4, String.format("jsonslist:%s,%s,%s,%s,%s", new Object[] { localObject5, localObject1, localObject8, localObject7, localObject6 }));
+          ArkAppCenter.b("ArkApp.AI", "updateArkAiKeywordConfig, ark_ai_match_graytips_visibility is empty");
+          localObject1 = "false";
         }
-        catch (JSONException localJSONException)
-        {
-          ArkAppCenter.b("ArkApp.AI", String.format("updateArkAiKeywordConfig, parse json failed, err=%s", new Object[] { localJSONException.getMessage() }));
-          return;
+        ArkAppCenter.b("ArkApp.AI", "updateArkAiKeywordConfig, ark_ai_match_graytips_visibility cfgGTipSwitch=" + (String)localObject1);
+        localObject3 = this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter.a();
+        SharedPreUtils.j(BaseApplicationImpl.getApplication(), (String)localObject1, ((QQAppInterface)localObject3).c());
+        if (!QLog.isDebugVersion()) {
+          break label1991;
         }
-        if (i1 < ((JSONArray)localObject8).length())
-        {
-          localObject1 = ((JSONArray)localObject8).getString(i1);
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label1880;
-          }
+        QLog.d("ArkApp.ArkAppContainer.checkUrl", 4, String.format("jsonslist:%s,%s,%s,%s,%s", new Object[] { localObject6, localObject1, localObject9, localObject8, localObject7 }));
+      }
+      catch (JSONException localJSONException)
+      {
+        ArkAppCenter.b("ArkApp.AI", String.format("updateArkAiKeywordConfig, parse json failed, err=%s", new Object[] { localJSONException.getMessage() }));
+        return;
+      }
+      label327:
+      label334:
+      Object localObject2;
+      int i2;
+      if (i1 < ((JSONArray)localObject9).length())
+      {
+        localObject1 = ((JSONArray)localObject9).getString(i1);
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           jdField_a_of_type_JavaUtilList.add(localObject1);
-          break label1880;
+        }
+      }
+      else
+      {
+        if (localObject8 != null)
+        {
+          i1 = 0;
+          if (i1 < ((JSONArray)localObject8).length())
+          {
+            localObject2 = ((JSONArray)localObject8).getString(i1);
+            if (TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label2008;
+            }
+            jdField_b_of_type_JavaUtilList.add(localObject2);
+            break label2008;
+          }
         }
         if (localObject7 != null)
         {
-          i1 = 0;
+          if (!QLog.isDebugVersion()) {
+            break label2015;
+          }
+          QLog.d("ArkApp.ArkAppContainer.checkUrl", 4, "naviLen:" + ((JSONArray)localObject7).length());
+          break label2015;
           if (i1 < ((JSONArray)localObject7).length())
           {
-            localObject2 = ((JSONArray)localObject7).getString(i1);
-            if (TextUtils.isEmpty((CharSequence)localObject2)) {
-              break label1887;
-            }
-            jdField_b_of_type_JavaUtilList.add(localObject2);
-            break label1887;
-          }
-        }
-        if (localObject6 != null)
-        {
-          if (!QLog.isDebugVersion()) {
-            break label1894;
-          }
-          QLog.d("ArkApp.ArkAppContainer.checkUrl", 4, "naviLen:" + ((JSONArray)localObject6).length());
-          break label1894;
-          if (i1 < ((JSONArray)localObject6).length())
-          {
-            localObject2 = ((JSONArray)localObject6).optString(i1);
+            localObject2 = ((JSONArray)localObject7).optString(i1);
             if ((TextUtils.isEmpty((CharSequence)localObject2)) || (jdField_e_of_type_JavaUtilList.contains(localObject2))) {
-              break label1899;
+              break label2020;
             }
             jdField_e_of_type_JavaUtilList.add(localObject2);
-            break label1899;
+            break label2020;
           }
         }
         if (QLog.isColorLevel()) {
           QLog.d("ArkApp.ArkAppContainer.checkUrl", 2, "sArkUrlWhiteList=" + jdField_a_of_type_JavaUtilList + "sArkUrlBlackList=" + jdField_b_of_type_JavaUtilList + "\n naviAppNames=" + jdField_e_of_type_JavaUtilList);
         }
-        if (localObject5 != null) {
-          break label1906;
+        if (localObject6 != null) {
+          break label2027;
         }
         ArkAppCenter.b("ArkApp.AI", "updateArkAiKeywordConfig, ark_server_keyword_configs is empty");
         return;
-        if (i1 < ((JSONArray)localObject5).length())
+        if (i1 < ((JSONArray)localObject6).length())
         {
-          localObject2 = ((JSONArray)localObject5).optJSONObject(i1);
+          localObject2 = ((JSONArray)localObject6).optJSONObject(i1);
           if (localObject2 == null) {
-            break label1911;
+            break label2032;
           }
           localObject3 = new ArkAiAppCenter.ArkAiKeywordConfig(this);
           ((ArkAiAppCenter.ArkAiKeywordConfig)localObject3).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("context", "");
@@ -411,24 +420,24 @@ public class ArkAiAppCenter
           if ((TextUtils.isEmpty(((ArkAiAppCenter.ArkAiKeywordConfig)localObject3).jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(((ArkAiAppCenter.ArkAiKeywordConfig)localObject3).jdField_b_of_type_JavaLangString)) || (!bool) || (TextUtils.isEmpty(((ArkAiAppCenter.ArkAiKeywordConfig)localObject3).jdField_c_of_type_JavaLangString)) || (TextUtils.isEmpty(((ArkAiAppCenter.ArkAiKeywordConfig)localObject3).d)))
           {
             ArkAppCenter.b("ArkApp.AI", String.format("updateArkAiKeywordConfig, invalid config info, type=%s, contextSize=%d, enable=%s, pattern=%s, tip=%s", new Object[] { ((ArkAiAppCenter.ArkAiKeywordConfig)localObject3).jdField_a_of_type_JavaLangString, ((ArkAiAppCenter.ArkAiKeywordConfig)localObject3).jdField_b_of_type_JavaLangString, Boolean.valueOf(bool), ((ArkAiAppCenter.ArkAiKeywordConfig)localObject3).jdField_c_of_type_JavaLangString, ((ArkAiAppCenter.ArkAiKeywordConfig)localObject3).d }));
-            break label1911;
+            break label2032;
           }
           jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((ArkAiAppCenter.ArkAiKeywordConfig)localObject3).jdField_a_of_type_JavaLangString, localObject3);
-          break label1911;
+          break label2032;
         }
-        ArkRecommendController.jdField_a_of_type_Int = ((JSONObject)localObject4).optInt("singlecontext_singleapp_card_limit", 5);
-        ArkRecommendController.jdField_b_of_type_Int = ((JSONObject)localObject4).optInt("ark_app_limit", 3);
-        ArkRecommendController.jdField_c_of_type_Int = ((JSONObject)localObject4).optInt("ark_each_app_card_limit", 1);
-        ArkRecommendController.d = ((JSONObject)localObject4).optInt("ark_input_apps_limit", 3);
-        ArkRecommendController.e = ((JSONObject)localObject4).optInt("ark_input_each_context_apps_limit", 3);
-        jdField_b_of_type_Int = ((JSONObject)localObject4).optInt("ark_search_report_rate", 100);
-        ArkRecommendController.f = ((JSONObject)localObject4).optInt("ark_babyq_card_limit_total", 10);
-        ArkRecommendController.g = ((JSONObject)localObject4).optInt("ark_babyq_card_limit_per_app", 1);
-        ArkRecommendController.i = ((JSONObject)localObject4).optInt("ark_babyq_guide_count_limit_per_day", 1);
-        ArkRecommendController.j = ((JSONObject)localObject4).optInt("ark_babyq_guide_day_limit_total", 3);
-        ArkRecommendController.jdField_a_of_type_JavaLangString = ((JSONObject)localObject4).optString("ark_babyq_guide_hint_text", ArkRecommendController.jdField_a_of_type_JavaLangString);
-        ArkRecommendController.jdField_a_of_type_Long = ((JSONObject)localObject4).optLong("ark_babyq_bubble_disappear_duration", 10000L);
-        localObject2 = ((JSONObject)localObject4).optJSONArray("ark_babyq_input_hint_text_list");
+        ArkRecommendController.jdField_a_of_type_Int = ((JSONObject)localObject5).optInt("singlecontext_singleapp_card_limit", 5);
+        ArkRecommendController.jdField_b_of_type_Int = ((JSONObject)localObject5).optInt("ark_app_limit", 3);
+        ArkRecommendController.jdField_c_of_type_Int = ((JSONObject)localObject5).optInt("ark_each_app_card_limit", 1);
+        ArkRecommendController.d = ((JSONObject)localObject5).optInt("ark_input_apps_limit", 3);
+        ArkRecommendController.e = ((JSONObject)localObject5).optInt("ark_input_each_context_apps_limit", 3);
+        jdField_b_of_type_Int = ((JSONObject)localObject5).optInt("ark_search_report_rate", 100);
+        ArkRecommendController.f = ((JSONObject)localObject5).optInt("ark_babyq_card_limit_total", 10);
+        ArkRecommendController.g = ((JSONObject)localObject5).optInt("ark_babyq_card_limit_per_app", 1);
+        ArkRecommendController.i = ((JSONObject)localObject5).optInt("ark_babyq_guide_count_limit_per_day", 1);
+        ArkRecommendController.j = ((JSONObject)localObject5).optInt("ark_babyq_guide_day_limit_total", 3);
+        ArkRecommendController.jdField_a_of_type_JavaLangString = ((JSONObject)localObject5).optString("ark_babyq_guide_hint_text", ArkRecommendController.jdField_a_of_type_JavaLangString);
+        ArkRecommendController.jdField_a_of_type_Long = ((JSONObject)localObject5).optLong("ark_babyq_bubble_disappear_duration", 10000L);
+        localObject2 = ((JSONObject)localObject5).optJSONArray("ark_babyq_input_hint_text_list");
         if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
         {
           localObject2 = ((JSONArray)localObject2).optString(new Random().nextInt(((JSONArray)localObject2).length()));
@@ -436,33 +445,33 @@ public class ArkAiAppCenter
             ArkRecommendController.jdField_b_of_type_JavaLangString = (String)localObject2;
           }
         }
-        ArkRecommendController.jdField_c_of_type_JavaLangString = ((JSONObject)localObject4).optString("ark_babyq_no_result_recommend_title");
-        localObject2 = ((JSONObject)localObject4).optJSONArray("ark_babyq_no_result_recommend_items");
+        ArkRecommendController.jdField_c_of_type_JavaLangString = ((JSONObject)localObject5).optString("ark_babyq_no_result_recommend_title");
+        localObject2 = ((JSONObject)localObject5).optJSONArray("ark_babyq_no_result_recommend_items");
         if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0)) {
           if (ArkRecommendController.jdField_a_of_type_JavaUtilArrayList == null)
           {
             ArkRecommendController.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-            break label1918;
+            break label2039;
             if (i1 < ((JSONArray)localObject2).length())
             {
               localObject3 = ((JSONArray)localObject2).optString(i1);
               if (TextUtils.isEmpty((CharSequence)localObject3)) {
-                break label1923;
+                break label2044;
               }
               ArkRecommendController.jdField_a_of_type_JavaUtilArrayList.add(localObject3);
-              break label1923;
+              break label2044;
             }
           }
           else
           {
             ArkRecommendController.jdField_a_of_type_JavaUtilArrayList.clear();
-            break label1918;
+            break label2039;
           }
         }
-        ArkRecommendController.k = ((JSONObject)localObject4).optInt("ark_babyq_gray_tip_total_limit", 1);
-        localObject2 = ((JSONObject)localObject4).optJSONArray("ark_babyq_gray_tip_configs");
+        ArkRecommendController.k = ((JSONObject)localObject5).optInt("ark_babyq_gray_tip_total_limit", 1);
+        localObject2 = ((JSONObject)localObject5).optJSONArray("ark_babyq_gray_tip_configs");
         if ((localObject2 == null) || (((JSONArray)localObject2).length() <= 0)) {
-          break label1949;
+          break label2070;
         }
         if (ArkRecommendController.jdField_a_of_type_JavaUtilHashMap == null) {
           ArkRecommendController.jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -472,189 +481,208 @@ public class ArkAiAppCenter
         while (ArkRecommendController.jdField_b_of_type_JavaUtilHashMap == null)
         {
           ArkRecommendController.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-          break label1930;
+          break label2051;
           if (i1 >= ((JSONArray)localObject2).length()) {
-            break label1949;
+            break label2070;
           }
           localObject3 = ((JSONArray)localObject2).optJSONObject(i1);
           if (localObject3 == null) {
-            break label1942;
+            break label2063;
           }
           i3 = ((JSONObject)localObject3).optInt("type");
           i4 = ((JSONObject)localObject3).optInt("limit");
           if (i3 != 4) {
-            break label1399;
+            break label1409;
           }
           localObject3 = ((JSONObject)localObject3).optJSONArray("tips_array");
           if ((localObject3 == null) || (((JSONArray)localObject3).length() <= 0)) {
-            break label1942;
+            break label2063;
           }
           i2 = 0;
+          label1224:
           if (i2 >= ((JSONArray)localObject3).length()) {
-            break label1942;
+            break label2063;
           }
-          localObject7 = ((JSONArray)localObject3).optJSONObject(i2);
-          if (localObject7 == null) {
-            break label1935;
+          localObject8 = ((JSONArray)localObject3).optJSONObject(i2);
+          if (localObject8 == null) {
+            break label2056;
           }
-          localObject4 = ((JSONObject)localObject7).optString("prefix");
-          localObject5 = ((JSONObject)localObject7).optString("keyword");
-          localObject6 = ((JSONObject)localObject7).optString("postfix");
-          localObject7 = ((JSONObject)localObject7).optString("app");
-          if ((TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty((CharSequence)localObject5)) || (TextUtils.isEmpty((CharSequence)localObject6)) || (TextUtils.isEmpty((CharSequence)localObject7))) {
-            break label1935;
+          localObject5 = ((JSONObject)localObject8).optString("prefix");
+          localObject6 = ((JSONObject)localObject8).optString("keyword");
+          localObject7 = ((JSONObject)localObject8).optString("postfix");
+          localObject8 = ((JSONObject)localObject8).optString("app");
+          if ((TextUtils.isEmpty((CharSequence)localObject5)) || (TextUtils.isEmpty((CharSequence)localObject6)) || (TextUtils.isEmpty((CharSequence)localObject7)) || (TextUtils.isEmpty((CharSequence)localObject8))) {
+            break label2056;
           }
-          localObject8 = new ArkRecommendController.ArkAtBabyqGrayTipConfig();
-          ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject8).jdField_a_of_type_Int = i3;
-          ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject8).jdField_b_of_type_Int = i4;
-          ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject8).jdField_a_of_type_JavaLangString = ((String)localObject4 + (String)localObject5 + (String)localObject6);
-          ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject8).jdField_b_of_type_JavaLangString = ((String)localObject7);
-          ArkRecommendController.jdField_b_of_type_JavaUtilHashMap.put(localObject5, localObject8);
-          break label1935;
+          localObject9 = new ArkRecommendController.ArkAtBabyqGrayTipConfig();
+          ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject9).jdField_a_of_type_Int = i3;
+          ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject9).jdField_b_of_type_Int = i4;
+          ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject9).jdField_a_of_type_JavaLangString = ((String)localObject5 + (String)localObject6 + (String)localObject7);
+          ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject9).jdField_b_of_type_JavaLangString = ((String)localObject8);
+          ArkRecommendController.jdField_b_of_type_JavaUtilHashMap.put(localObject6, localObject9);
+          break label2056;
           ArkRecommendController.jdField_a_of_type_JavaUtilHashMap.clear();
         }
         ArkRecommendController.jdField_b_of_type_JavaUtilHashMap.clear();
-        break label1930;
+        break label2051;
         if (i3 <= 0) {
-          break label1942;
+          break label2063;
         }
         localObject3 = ((JSONObject)localObject3).optString("tip");
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label1942;
+          break label2063;
         }
-        Object localObject4 = new ArkRecommendController.ArkAtBabyqGrayTipConfig();
-        ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject4).jdField_a_of_type_Int = i3;
-        ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject4).jdField_b_of_type_Int = i4;
-        ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject4).jdField_a_of_type_JavaLangString = ((String)localObject3);
-        ArkRecommendController.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject4).jdField_a_of_type_Int), localObject4);
-        break label1942;
-        if (i1 < localJSONArray.length())
+        localObject5 = new ArkRecommendController.ArkAtBabyqGrayTipConfig();
+        ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject5).jdField_a_of_type_Int = i3;
+        ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject5).jdField_b_of_type_Int = i4;
+        ((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject5).jdField_a_of_type_JavaLangString = ((String)localObject3);
+        ArkRecommendController.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(((ArkRecommendController.ArkAtBabyqGrayTipConfig)localObject5).jdField_a_of_type_Int), localObject5);
+        break label2063;
+        label1480:
+        if (i1 < localJSONArray2.length())
         {
-          localObject2 = localJSONArray.optJSONObject(i1);
+          localObject2 = localJSONArray2.optJSONObject(i1);
           if (localObject2 == null) {
-            break label1959;
+            break label2080;
           }
-          localObject4 = ((JSONObject)localObject2).optString("module");
-          localObject5 = ((JSONObject)localObject2).optString("api");
+          localObject5 = ((JSONObject)localObject2).optString("module");
+          localObject6 = ((JSONObject)localObject2).optString("api");
           long l1 = ((JSONObject)localObject2).optLong("times", -1L);
           long l2 = ((JSONObject)localObject2).optLong("period", -1L);
-          if ((TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty((CharSequence)localObject5)) || (l1 == -1L) || (l2 == -1L)) {
-            break label1959;
+          if ((TextUtils.isEmpty((CharSequence)localObject5)) || (TextUtils.isEmpty((CharSequence)localObject6)) || (l1 == -1L) || (l2 == -1L)) {
+            break label2080;
           }
-          localObject3 = (List)jdField_a_of_type_JavaUtilMap.get(localObject4);
+          localObject3 = (List)jdField_a_of_type_JavaUtilMap.get(localObject5);
           localObject2 = localObject3;
           if (localObject3 == null)
           {
             localObject2 = new ArrayList();
-            jdField_a_of_type_JavaUtilMap.put(localObject4, localObject2);
+            jdField_a_of_type_JavaUtilMap.put(localObject5, localObject2);
           }
-          ((List)localObject2).add(new ArkAiAppCenter.ApiFrequencyConfig(this, (String)localObject5, l1, l2));
-          break label1959;
+          ((List)localObject2).add(new ArkAiAppCenter.ApiFrequencyConfig(this, (String)localObject6, l1, l2));
+          break label2080;
         }
-      } while (localJSONObject == null);
-      ArkAppCenter.a(true);
-      if (!ArkAppCenter.jdField_b_of_type_Boolean) {
-        break;
-      }
-      localObject2 = localJSONObject.optJSONArray("white");
-      if (localObject2 != null)
-      {
-        i2 = ((JSONArray)localObject2).length();
-        localObject3 = new String[i2];
-        i1 = 0;
-        if (i1 < i2)
+        label1653:
+        if (localObject4 != null)
         {
-          localObject3[i1] = ((JSONArray)localObject2).optString(i1, "");
-          if (!QLog.isColorLevel()) {
+          ArkAppCenter.a(true);
+          if (!ArkAppCenter.jdField_b_of_type_Boolean) {
             break label1966;
           }
-          QLog.d("ArkApp.AI", 2, String.format("updateArkAiKeywordConfig.appGlobalUrlConfig.white.%s", new Object[] { localObject3[i1] }));
-          break label1966;
+          localObject2 = ((JSONObject)localObject4).optJSONArray("white");
+          if (localObject2 != null)
+          {
+            i2 = ((JSONArray)localObject2).length();
+            localObject3 = new String[i2];
+            i1 = 0;
+            if (i1 < i2)
+            {
+              localObject3[i1] = ((JSONArray)localObject2).optString(i1, "");
+              if (!QLog.isColorLevel()) {
+                break label2087;
+              }
+              QLog.d("ArkApp.AI", 2, String.format("updateArkAiKeywordConfig.appGlobalUrlConfig.white.%s", new Object[] { localObject3[i1] }));
+              break label2087;
+            }
+            ArkAppCenter.a().post(new aayg(this, (String[])localObject3));
+          }
+          localObject2 = ((JSONObject)localObject4).optJSONArray("black");
+          if (localObject2 != null)
+          {
+            i2 = ((JSONArray)localObject2).length();
+            localObject3 = new String[i2];
+            i1 = 0;
+            label1791:
+            if (i1 < i2)
+            {
+              localObject3[i1] = ((JSONArray)localObject2).optString(i1, "");
+              if (!QLog.isColorLevel()) {
+                break label2094;
+              }
+              QLog.d("ArkApp.AI", 2, String.format("updateArkAiKeywordConfig.appGlobalUrlConfig.black.%s", new Object[] { localObject3[i1] }));
+              break label2094;
+            }
+            ArkAppCenter.a().post(new aayh(this, (String[])localObject3));
+          }
         }
-        ArkAppCenter.a().post(new aarm(this, (String[])localObject3));
+        label1856:
+        if (localJSONArray1 != null)
+        {
+          i2 = localJSONArray1.length();
+          i1 = 0;
+        }
       }
-      localObject2 = localJSONObject.optJSONArray("black");
-    } while (localObject2 == null);
-    label411:
-    label1214:
-    label1399:
-    int i2 = ((JSONArray)localObject2).length();
-    label536:
-    label1470:
-    Object localObject3 = new String[i2];
-    label1027:
-    label1687:
-    int i1 = 0;
-    for (;;)
-    {
-      if (i1 < i2)
+      for (;;)
       {
-        localObject3[i1] = ((JSONArray)localObject2).optString(i1, "");
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkApp.AI", 2, String.format("updateArkAiKeywordConfig.appGlobalUrlConfig.black.%s", new Object[] { localObject3[i1] }));
+        if (i1 >= i2) {
+          break label2106;
         }
+        localObject4 = localJSONArray1.optJSONObject(i1);
+        if (localObject4 != null)
+        {
+          localObject2 = ((JSONObject)localObject4).optString("jscmd5");
+          localObject3 = ((JSONObject)localObject4).optString("url");
+          localObject4 = ((JSONObject)localObject4).optString("md5");
+          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty((CharSequence)localObject3)))
+          {
+            jdField_b_of_type_JavaUtilMap.put(localObject2, new Pair(localObject3, localObject4));
+            break label2101;
+            if (!QLog.isColorLevel()) {
+              break label1856;
+            }
+            QLog.d("ArkApp.AI", 2, String.format("updateArkAiKeywordConfig.setupArkEnvironment.failed", new Object[0]));
+            break label1856;
+            break;
+            label1991:
+            if (localObject9 == null) {
+              break label327;
+            }
+            i1 = 0;
+            break label259;
+            i1 += 1;
+            break label259;
+            label2008:
+            i1 += 1;
+            break label334;
+            label2015:
+            i1 = 0;
+            break label421;
+            label2020:
+            i1 += 1;
+            break label421;
+            label2027:
+            i1 = 0;
+            break label546;
+            label2032:
+            i1 += 1;
+            break label546;
+            label2039:
+            i1 = 0;
+            break label1037;
+            label2044:
+            i1 += 1;
+            break label1037;
+            i1 = 0;
+            break label1153;
+            i2 += 1;
+            break label1224;
+            i1 += 1;
+            break label1153;
+            if (localJSONArray2 == null) {
+              break label1653;
+            }
+            i1 = 0;
+            break label1480;
+            i1 += 1;
+            break label1480;
+            i1 += 1;
+            break label1697;
+            i1 += 1;
+            break label1791;
+          }
+        }
+        i1 += 1;
       }
-      else
-      {
-        ArkAppCenter.a().post(new aarn(this, (String[])localObject3));
-        return;
-        if (!QLog.isColorLevel()) {
-          break label24;
-        }
-        QLog.d("ArkApp.AI", 2, String.format("updateArkAiKeywordConfig.setupArkEnvironment.failed", new Object[0]));
-        return;
-        if (localObject8 == null) {
-          break label317;
-        }
-        i1 = 0;
-        break label249;
-        label1880:
-        i1 += 1;
-        break label249;
-        label1887:
-        i1 += 1;
-        break label324;
-        label1894:
-        i1 = 0;
-        break label411;
-        label1899:
-        i1 += 1;
-        break label411;
-        label1906:
-        i1 = 0;
-        break label536;
-        label1911:
-        i1 += 1;
-        break label536;
-        label1918:
-        i1 = 0;
-        break label1027;
-        label1923:
-        i1 += 1;
-        break label1027;
-        label1930:
-        i1 = 0;
-        break label1143;
-        label1935:
-        i2 += 1;
-        break label1214;
-        label1942:
-        i1 += 1;
-        break label1143;
-        label1949:
-        if (localJSONArray == null) {
-          break;
-        }
-        i1 = 0;
-        break label1470;
-        label1959:
-        i1 += 1;
-        break label1470;
-        label1966:
-        i1 += 1;
-        break label1687;
-      }
-      i1 += 1;
     }
   }
 }

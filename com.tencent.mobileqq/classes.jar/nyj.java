@@ -1,21 +1,34 @@
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class nyj
-  extends JobSegment
+  extends GetRedPointExObserver
 {
-  private int jdField_a_of_type_Int;
-  private CommentListPageLoader jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  public nyj(QQStoryMainController paramQQStoryMainController) {}
   
-  protected void a(JobContext paramJobContext, FeedCommentSync paramFeedCommentSync)
+  protected void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader = new CommentListPageLoader(paramFeedCommentSync, new nyk(this, paramJobContext, paramFeedCommentSync));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.c();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    MessageNotifySegment localMessageNotifySegment;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
+      }
+      paramObject = ((TroopRedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).a(49);
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + TroopRedTouchManager.a(paramObject));
+      }
+      localMessageNotifySegment = (MessageNotifySegment)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
+    } while (localMessageNotifySegment == null);
+    localMessageNotifySegment.a(paramObject);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.q();
   }
 }
 

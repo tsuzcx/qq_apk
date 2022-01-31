@@ -2,6 +2,7 @@ package com.tencent.mobileqq.apollo.utils;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -14,7 +15,7 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import ywh;
+import zda;
 
 public class ApolloGameRscVerify
 {
@@ -52,7 +53,7 @@ public class ApolloGameRscVerify
     StatisticCollector.a(BaseApplicationImpl.getContext()).a(paramString, "cmshow_game_rsc_error", true, -1L, -1L, localHashMap, "", true);
   }
   
-  private boolean a()
+  private boolean b()
   {
     File localFile;
     try
@@ -95,7 +96,17 @@ public class ApolloGameRscVerify
   
   public void a()
   {
-    ThreadManager.post(new ywh(this), 5, null, true);
+    ThreadManager.post(new zda(this), 5, null, true);
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (this.jdField_a_of_type_OrgJsonJSONObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)));
   }
   
   /* Error */
@@ -104,228 +115,228 @@ public class ApolloGameRscVerify
     // Byte code:
     //   0: aload_0
     //   1: getfield 23	com/tencent/mobileqq/apollo/utils/ApolloGameRscVerify:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   4: invokevirtual 226	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   4: invokevirtual 237	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   7: ifeq +50 -> 57
     //   10: aload_0
     //   11: getfield 50	com/tencent/mobileqq/apollo/utils/ApolloGameRscVerify:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
     //   14: ifnull +43 -> 57
     //   17: aload_2
-    //   18: invokestatic 232	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   18: invokestatic 231	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   21: ifne +36 -> 57
     //   24: aload_1
-    //   25: invokestatic 232	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   25: invokestatic 231	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   28: ifne +29 -> 57
     //   31: aload_1
-    //   32: ldc 234
-    //   34: invokevirtual 239	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   32: ldc 239
+    //   34: invokevirtual 244	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   37: ifeq +20 -> 57
     //   40: aload_0
     //   41: getfield 25	com/tencent/mobileqq/apollo/utils/ApolloGameRscVerify:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   44: ifnull +13 -> 57
     //   47: aload_0
     //   48: getfield 25	com/tencent/mobileqq/apollo/utils/ApolloGameRscVerify:jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   51: invokevirtual 226	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   51: invokevirtual 237	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   54: ifeq +5 -> 59
     //   57: iconst_0
     //   58: ireturn
-    //   59: invokestatic 245	java/lang/System:currentTimeMillis	()J
+    //   59: invokestatic 250	java/lang/System:currentTimeMillis	()J
     //   62: pop2
     //   63: aconst_null
     //   64: astore 4
     //   66: aconst_null
     //   67: astore 5
-    //   69: new 152	java/io/File
+    //   69: new 155	java/io/File
     //   72: dup
     //   73: aload_1
-    //   74: invokespecial 246	java/io/File:<init>	(Ljava/lang/String;)V
+    //   74: invokespecial 251	java/io/File:<init>	(Ljava/lang/String;)V
     //   77: astore 7
     //   79: aload 4
     //   81: astore_3
     //   82: aload 7
-    //   84: invokevirtual 165	java/io/File:exists	()Z
-    //   87: ifne +36 -> 123
+    //   84: invokevirtual 168	java/io/File:exists	()Z
+    //   87: ifne +37 -> 124
     //   90: aload 4
     //   92: astore_3
     //   93: aload_0
     //   94: aload_2
     //   95: iconst_1
-    //   96: invokespecial 169	com/tencent/mobileqq/apollo/utils/ApolloGameRscVerify:a	(Ljava/lang/String;I)V
+    //   96: invokespecial 172	com/tencent/mobileqq/apollo/utils/ApolloGameRscVerify:a	(Ljava/lang/String;I)V
     //   99: iconst_0
     //   100: ifeq -43 -> 57
-    //   103: new 248	java/lang/NullPointerException
+    //   103: new 253	java/lang/NullPointerException
     //   106: dup
-    //   107: invokespecial 249	java/lang/NullPointerException:<init>	()V
+    //   107: invokespecial 254	java/lang/NullPointerException:<init>	()V
     //   110: athrow
     //   111: astore_1
     //   112: ldc 53
     //   114: iconst_1
-    //   115: ldc 251
-    //   117: aload_1
-    //   118: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   121: iconst_0
-    //   122: ireturn
-    //   123: aload 4
-    //   125: astore_3
-    //   126: aload_0
-    //   127: getfield 50	com/tencent/mobileqq/apollo/utils/ApolloGameRscVerify:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
-    //   130: aload_2
-    //   131: invokevirtual 255	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   134: astore 6
-    //   136: aload 4
-    //   138: astore_3
-    //   139: new 257	java/io/FileInputStream
-    //   142: dup
-    //   143: aload_1
-    //   144: invokespecial 258	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   147: astore 4
-    //   149: aload 4
-    //   151: aload 7
-    //   153: invokevirtual 261	java/io/File:length	()J
-    //   156: invokestatic 267	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   159: invokestatic 273	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   162: astore_3
-    //   163: aload_3
-    //   164: invokestatic 232	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   167: ifne +56 -> 223
-    //   170: aload 6
-    //   172: invokestatic 232	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   175: ifne +48 -> 223
-    //   178: aload_3
-    //   179: invokevirtual 276	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   182: aload 6
-    //   184: invokevirtual 276	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   187: invokevirtual 280	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   190: ifne +33 -> 223
-    //   193: aload_0
-    //   194: aload_2
-    //   195: iconst_4
-    //   196: invokespecial 169	com/tencent/mobileqq/apollo/utils/ApolloGameRscVerify:a	(Ljava/lang/String;I)V
-    //   199: aload 4
-    //   201: ifnull -144 -> 57
-    //   204: aload 4
-    //   206: invokevirtual 283	java/io/FileInputStream:close	()V
-    //   209: iconst_0
-    //   210: ireturn
-    //   211: astore_1
-    //   212: ldc 53
-    //   214: iconst_1
-    //   215: ldc 251
-    //   217: aload_1
-    //   218: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   221: iconst_0
-    //   222: ireturn
-    //   223: aload 4
-    //   225: ifnull +8 -> 233
-    //   228: aload 4
-    //   230: invokevirtual 283	java/io/FileInputStream:close	()V
-    //   233: iconst_1
-    //   234: ireturn
-    //   235: astore_1
-    //   236: ldc 53
-    //   238: iconst_1
-    //   239: ldc 251
-    //   241: aload_1
-    //   242: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   245: goto -12 -> 233
-    //   248: astore_3
-    //   249: aload 5
-    //   251: astore 4
-    //   253: aload_3
-    //   254: astore 5
-    //   256: aload 4
-    //   258: astore_3
-    //   259: ldc 53
-    //   261: iconst_1
-    //   262: bipush 6
-    //   264: anewarray 4	java/lang/Object
-    //   267: dup
-    //   268: iconst_0
-    //   269: ldc_w 285
-    //   272: aastore
-    //   273: dup
-    //   274: iconst_1
-    //   275: aload 5
-    //   277: aastore
-    //   278: dup
-    //   279: iconst_2
-    //   280: ldc_w 287
-    //   283: aastore
-    //   284: dup
-    //   285: iconst_3
-    //   286: aload_1
-    //   287: aastore
-    //   288: dup
-    //   289: iconst_4
-    //   290: ldc_w 289
-    //   293: aastore
-    //   294: dup
-    //   295: iconst_5
-    //   296: aload_2
-    //   297: aastore
-    //   298: invokestatic 292	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   301: aload 4
-    //   303: ifnull -70 -> 233
-    //   306: aload 4
-    //   308: invokevirtual 283	java/io/FileInputStream:close	()V
-    //   311: goto -78 -> 233
-    //   314: astore_1
-    //   315: ldc 53
-    //   317: iconst_1
-    //   318: ldc 251
-    //   320: aload_1
-    //   321: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   324: goto -91 -> 233
-    //   327: astore_1
-    //   328: aload_3
-    //   329: ifnull +7 -> 336
+    //   115: ldc_w 256
+    //   118: aload_1
+    //   119: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   122: iconst_0
+    //   123: ireturn
+    //   124: aload 4
+    //   126: astore_3
+    //   127: aload_0
+    //   128: getfield 50	com/tencent/mobileqq/apollo/utils/ApolloGameRscVerify:jdField_a_of_type_OrgJsonJSONObject	Lorg/json/JSONObject;
+    //   131: aload_2
+    //   132: invokevirtual 225	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   135: astore 6
+    //   137: aload 4
+    //   139: astore_3
+    //   140: new 258	java/io/FileInputStream
+    //   143: dup
+    //   144: aload_1
+    //   145: invokespecial 259	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   148: astore 4
+    //   150: aload 4
+    //   152: aload 7
+    //   154: invokevirtual 262	java/io/File:length	()J
+    //   157: invokestatic 268	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   160: invokestatic 274	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   163: astore_3
+    //   164: aload_3
+    //   165: invokestatic 231	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   168: ifne +57 -> 225
+    //   171: aload 6
+    //   173: invokestatic 231	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   176: ifne +49 -> 225
+    //   179: aload_3
+    //   180: invokevirtual 277	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   183: aload 6
+    //   185: invokevirtual 277	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   188: invokevirtual 281	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   191: ifne +34 -> 225
+    //   194: aload_0
+    //   195: aload_2
+    //   196: iconst_4
+    //   197: invokespecial 172	com/tencent/mobileqq/apollo/utils/ApolloGameRscVerify:a	(Ljava/lang/String;I)V
+    //   200: aload 4
+    //   202: ifnull -145 -> 57
+    //   205: aload 4
+    //   207: invokevirtual 284	java/io/FileInputStream:close	()V
+    //   210: iconst_0
+    //   211: ireturn
+    //   212: astore_1
+    //   213: ldc 53
+    //   215: iconst_1
+    //   216: ldc_w 256
+    //   219: aload_1
+    //   220: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   223: iconst_0
+    //   224: ireturn
+    //   225: aload 4
+    //   227: ifnull +8 -> 235
+    //   230: aload 4
+    //   232: invokevirtual 284	java/io/FileInputStream:close	()V
+    //   235: iconst_1
+    //   236: ireturn
+    //   237: astore_1
+    //   238: ldc 53
+    //   240: iconst_1
+    //   241: ldc_w 256
+    //   244: aload_1
+    //   245: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   248: goto -13 -> 235
+    //   251: astore_3
+    //   252: aload 5
+    //   254: astore 4
+    //   256: aload_3
+    //   257: astore 5
+    //   259: aload 4
+    //   261: astore_3
+    //   262: ldc 53
+    //   264: iconst_1
+    //   265: bipush 6
+    //   267: anewarray 4	java/lang/Object
+    //   270: dup
+    //   271: iconst_0
+    //   272: ldc_w 286
+    //   275: aastore
+    //   276: dup
+    //   277: iconst_1
+    //   278: aload 5
+    //   280: aastore
+    //   281: dup
+    //   282: iconst_2
+    //   283: ldc_w 288
+    //   286: aastore
+    //   287: dup
+    //   288: iconst_3
+    //   289: aload_1
+    //   290: aastore
+    //   291: dup
+    //   292: iconst_4
+    //   293: ldc_w 290
+    //   296: aastore
+    //   297: dup
+    //   298: iconst_5
+    //   299: aload_2
+    //   300: aastore
+    //   301: invokestatic 293	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   304: aload 4
+    //   306: ifnull -71 -> 235
+    //   309: aload 4
+    //   311: invokevirtual 284	java/io/FileInputStream:close	()V
+    //   314: goto -79 -> 235
+    //   317: astore_1
+    //   318: ldc 53
+    //   320: iconst_1
+    //   321: ldc_w 256
+    //   324: aload_1
+    //   325: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   328: goto -93 -> 235
+    //   331: astore_1
     //   332: aload_3
-    //   333: invokevirtual 283	java/io/FileInputStream:close	()V
-    //   336: aload_1
-    //   337: athrow
-    //   338: astore_2
-    //   339: ldc 53
-    //   341: iconst_1
-    //   342: ldc 251
-    //   344: aload_2
-    //   345: invokestatic 187	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   348: goto -12 -> 336
-    //   351: astore_1
-    //   352: aload 4
-    //   354: astore_3
-    //   355: goto -27 -> 328
-    //   358: astore 5
-    //   360: goto -104 -> 256
+    //   333: ifnull +7 -> 340
+    //   336: aload_3
+    //   337: invokevirtual 284	java/io/FileInputStream:close	()V
+    //   340: aload_1
+    //   341: athrow
+    //   342: astore_2
+    //   343: ldc 53
+    //   345: iconst_1
+    //   346: ldc_w 256
+    //   349: aload_2
+    //   350: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   353: goto -13 -> 340
+    //   356: astore_1
+    //   357: aload 4
+    //   359: astore_3
+    //   360: goto -28 -> 332
+    //   363: astore 5
+    //   365: goto -106 -> 259
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	363	0	this	ApolloGameRscVerify
-    //   0	363	1	paramString1	String
-    //   0	363	2	paramString2	String
-    //   81	98	3	localObject1	Object
-    //   248	6	3	localThrowable1	Throwable
-    //   258	97	3	localObject2	Object
-    //   64	289	4	localObject3	Object
-    //   67	209	5	localObject4	Object
-    //   358	1	5	localThrowable2	Throwable
-    //   134	49	6	str	String
-    //   77	75	7	localFile	File
+    //   0	368	0	this	ApolloGameRscVerify
+    //   0	368	1	paramString1	String
+    //   0	368	2	paramString2	String
+    //   81	99	3	localObject1	Object
+    //   251	6	3	localThrowable1	Throwable
+    //   261	99	3	localObject2	Object
+    //   64	294	4	localObject3	Object
+    //   67	212	5	localObject4	Object
+    //   363	1	5	localThrowable2	Throwable
+    //   135	49	6	str	String
+    //   77	76	7	localFile	File
     // Exception table:
     //   from	to	target	type
     //   103	111	111	java/io/IOException
-    //   204	209	211	java/io/IOException
-    //   228	233	235	java/io/IOException
-    //   82	90	248	java/lang/Throwable
-    //   93	99	248	java/lang/Throwable
-    //   126	136	248	java/lang/Throwable
-    //   139	149	248	java/lang/Throwable
-    //   306	311	314	java/io/IOException
-    //   82	90	327	finally
-    //   93	99	327	finally
-    //   126	136	327	finally
-    //   139	149	327	finally
-    //   259	301	327	finally
-    //   332	336	338	java/io/IOException
-    //   149	199	351	finally
-    //   149	199	358	java/lang/Throwable
+    //   205	210	212	java/io/IOException
+    //   230	235	237	java/io/IOException
+    //   82	90	251	java/lang/Throwable
+    //   93	99	251	java/lang/Throwable
+    //   127	137	251	java/lang/Throwable
+    //   140	150	251	java/lang/Throwable
+    //   309	314	317	java/io/IOException
+    //   82	90	331	finally
+    //   93	99	331	finally
+    //   127	137	331	finally
+    //   140	150	331	finally
+    //   262	304	331	finally
+    //   336	340	342	java/io/IOException
+    //   150	200	356	finally
+    //   150	200	363	java/lang/Throwable
   }
   
   public void b()

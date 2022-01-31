@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import ahnb;
-import ahnc;
-import ahnd;
-import ahne;
+import ahrt;
+import ahru;
+import ahrv;
+import ahrw;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -38,7 +38,7 @@ public class ConnManager
   
   private void b(long paramLong)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ahne(this, paramLong));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ahrw(this, paramLong));
   }
   
   public void a()
@@ -141,7 +141,7 @@ public class ConnManager
       return;
       if (paramBoolean)
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(new ahnb(this, paramIConnection, paramLong, paramHostInfo));
+        this.jdField_a_of_type_AndroidOsHandler.post(new ahrt(this, paramIConnection, paramLong, paramHostInfo));
         return;
       }
       paramIConnection = paramHostInfo.jdField_a_of_type_JavaLangString;
@@ -203,14 +203,14 @@ public class ConnManager
         QLog.d(jdField_a_of_type_JavaLangString, 2, "onConnect failed reconnect ip = " + this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.jdField_a_of_type_JavaLangString + ", port =" + this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.jdField_a_of_type_Int);
       }
       if (paramInt == 3) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ahnc(this, paramLong), 2000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ahru(this, paramLong), 2000L);
       }
       while (this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo != null)
       {
         paramIConnection = this.jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo;
         paramIConnection.c += 1;
         return;
-        this.jdField_a_of_type_AndroidOsHandler.post(new ahnd(this, paramLong));
+        this.jdField_a_of_type_AndroidOsHandler.post(new ahrv(this, paramLong));
       }
     }
   }

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
-import ahku;
-import ahkw;
-import ahkx;
+import ahpl;
+import ahpn;
+import ahpo;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -36,7 +36,7 @@ public class ReportBadCase
   
   public static void a()
   {
-    ThreadManager.post(new ahkw(), 5, null, true);
+    ThreadManager.post(new ahpn(), 5, null, true);
   }
   
   public static void a(AppInterface paramAppInterface)
@@ -46,7 +46,7 @@ public class ReportBadCase
       a();
       return;
     }
-    ThreadManager.post(new ahkx(paramAppInterface), 5, null, true);
+    ThreadManager.post(new ahpo(paramAppInterface), 5, null, true);
   }
   
   private static void a(StringBuilder paramStringBuilder, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3)
@@ -447,7 +447,7 @@ public class ReportBadCase
   
   private static String c()
   {
-    Object localObject = new StringBuilder(AppConstants.aJ);
+    Object localObject = new StringBuilder(AppConstants.aK);
     ((StringBuilder)localObject).append("sv_capture_xx");
     ((StringBuilder)localObject).append(File.separator);
     localObject = ((StringBuilder)localObject).toString();
@@ -515,7 +515,7 @@ public class ReportBadCase
     if (paramBadDataFrame.jdField_a_of_type_JavaNioByteBuffer != null)
     {
       paramBadDataFrame.b = null;
-      ThreadManager.post(new ahku(this, paramBadDataFrame), 5, null, true);
+      ThreadManager.post(new ahpl(this, paramBadDataFrame), 5, null, true);
     }
   }
 }

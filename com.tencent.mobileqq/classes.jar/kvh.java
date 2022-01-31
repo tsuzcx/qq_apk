@@ -1,14 +1,25 @@
-import android.animation.ValueAnimator;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.InfoUpdateListener;
+import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
+import java.lang.ref.WeakReference;
 
 public class kvh
-  implements Runnable
+  implements FriendProfileImageModel.InfoUpdateListener
 {
-  public kvh(VideoCoverView paramVideoCoverView) {}
+  WeakReference a;
   
-  public void run()
+  public kvh(AccountDetailActivity paramAccountDetailActivity)
   {
-    VideoCoverView.a(this.a).start();
+    this.a = new WeakReference(paramAccountDetailActivity);
+  }
+  
+  public void a(FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo)
+  {
+    if ((this.a == null) || (this.a.get() == null)) {
+      return;
+    }
+    ((AccountDetailActivity)this.a.get()).a(paramProfileImageInfo);
+    ((AccountDetailActivity)this.a.get()).O();
   }
 }
 

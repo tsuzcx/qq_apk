@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby;
 
-import aelw;
-import aelx;
-import aely;
+import aeug;
+import aeuh;
+import aeui;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -60,8 +60,8 @@ public class NearbyFragmentEnterAdapter
   public NearbyFragmentEnterAdapter(Context paramContext, LinearLayout paramLinearLayout)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangRunnable = new aelw(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aely(this);
+    this.jdField_a_of_type_JavaLangRunnable = new aeug(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aeui(this);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Float = ((float)(DeviceInfoUtil.j() * 2L / 9L));
@@ -71,7 +71,7 @@ public class NearbyFragmentEnterAdapter
     if (this.jdField_a_of_type_Int > i) {
       this.jdField_a_of_type_Int = i;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839133);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839148);
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = new GradientDrawable();
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor("#FFDDDFE2"));
     this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setCornerRadius(this.jdField_a_of_type_Int / 2);
@@ -82,13 +82,13 @@ public class NearbyFragmentEnterAdapter
   public View a(int paramInt)
   {
     NearbyFragmentEnterAdapter.EnterItem localEnterItem = (NearbyFragmentEnterAdapter.EnterItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969117, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969120, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
     NearbyFragmentEnterAdapter.ViewHolder localViewHolder = new NearbyFragmentEnterAdapter.ViewHolder();
-    localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131362719));
-    localViewHolder.b = ((URLImageView)localView.findViewById(2131365250));
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365251));
-    localViewHolder.c = ((URLImageView)localView.findViewById(2131365252));
-    localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131363858));
+    localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131362724));
+    localViewHolder.b = ((URLImageView)localView.findViewById(2131365277));
+    localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365278));
+    localViewHolder.c = ((URLImageView)localView.findViewById(2131365279));
+    localViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131363882));
     localViewHolder.jdField_a_of_type_Int = paramInt;
     localView.setTag(localViewHolder);
     localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -114,7 +114,7 @@ public class NearbyFragmentEnterAdapter
     {
       localViewHolder.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(this.jdField_a_of_type_AndroidContentContext, localViewHolder.jdField_a_of_type_ComTencentImageURLImageView);
       localViewHolder.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a(53).a();
-      localView.setTag(2131364004, Integer.valueOf(localEnterItem.jdField_b_of_type_Int));
+      localView.setTag(2131364029, Integer.valueOf(localEnterItem.jdField_b_of_type_Int));
     }
     if (localEnterItem.jdField_a_of_type_Int == 1) {
       if (this.jdField_a_of_type_JavaUtilList != null)
@@ -262,7 +262,7 @@ public class NearbyFragmentEnterAdapter
       if ((localObject2 != null) && (((View)localObject2).getTag() != null))
       {
         NearbyFragmentEnterAdapter.ViewHolder localViewHolder = (NearbyFragmentEnterAdapter.ViewHolder)((View)localObject2).getTag();
-        Object localObject1 = (Integer)((View)localObject2).getTag(2131364004);
+        Object localObject1 = (Integer)((View)localObject2).getTag(2131364029);
         localObject2 = (Integer)((View)localObject2).getTag(2131367250);
         if ((localObject1 != null) && (localObject2 != null))
         {
@@ -305,7 +305,7 @@ public class NearbyFragmentEnterAdapter
     {
       localObject = ObjectAnimator.ofFloat(paramViewHolder.b, "alpha", new float[] { 1.0F, 0.2F });
       ((ObjectAnimator)localObject).setInterpolator(new AccelerateInterpolator());
-      ((ObjectAnimator)localObject).addListener(new aelx(this, paramViewHolder, paramNearAnchorInfo));
+      ((ObjectAnimator)localObject).addListener(new aeuh(this, paramViewHolder, paramNearAnchorInfo));
       ((ObjectAnimator)localObject).setDuration(300L).start();
       return;
     }

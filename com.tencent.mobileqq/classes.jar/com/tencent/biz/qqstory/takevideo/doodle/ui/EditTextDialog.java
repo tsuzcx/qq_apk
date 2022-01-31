@@ -26,14 +26,14 @@ import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectCo
 import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.strategy.EditDialogStrokeStrategy;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.StringUtil;
-import oiw;
-import oix;
-import oiy;
-import oiz;
-import oja;
-import ojb;
-import ojc;
-import ojd;
+import onl;
+import onm;
+import onn;
+import ono;
+import onp;
+import onq;
+import onr;
+import ons;
 
 public class EditTextDialog
   extends Dialog
@@ -65,13 +65,13 @@ public class EditTextDialog
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2130970713, null));
-    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new ojd(this, null);
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new ojc(this, null));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364382));
-    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(super.getContext().getResources().getColor(2131493776));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371712));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371713));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2130970729, null));
+    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new ons(this, null);
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new onr(this, null));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364407));
+    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(super.getContext().getResources().getColor(2131493781));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371710));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371711));
     if (TextLayer.jdField_a_of_type_Int > DisplayUtil.a(getContext(), 14.0F)) {
       this.jdField_a_of_type_AndroidWidgetEditText.setPadding(TextLayer.jdField_a_of_type_Int, DisplayUtil.a(getContext(), 5.0F), TextLayer.jdField_a_of_type_Int, DisplayUtil.a(getContext(), 5.0F));
     }
@@ -79,15 +79,15 @@ public class EditTextDialog
     {
       this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
       this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new oiw(this));
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new oix(this));
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new oiy(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout = ((HorizontalSelectColorLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364375));
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new onl(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new onm(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new onn(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout = ((HorizontalSelectColorLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364400));
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setStrokeStrategy(new EditDialogStrokeStrategy(), false, 0);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setSelectedStrokeWithColor(com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke.a[7]);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setOnStrokeSelectedListener(new oiz(this));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new oja(this));
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ojb(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setOnStrokeSelectedListener(new ono(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new onp(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new onq(this));
       return;
       this.jdField_a_of_type_AndroidWidgetEditText.setPadding(DisplayUtil.a(getContext(), 14.0F), DisplayUtil.a(getContext(), 5.0F), DisplayUtil.a(getContext(), 14.0F), DisplayUtil.a(getContext(), 5.0F));
     }
@@ -172,7 +172,7 @@ public class EditTextDialog
       this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
       if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.c == 2)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(super.getContext().getResources().getColor(2131493776));
+        this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(super.getContext().getResources().getColor(2131493781));
         this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setVisibility(0);
         this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setSelectedStrokeWithColor(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.jdField_a_of_type_Int);
       }

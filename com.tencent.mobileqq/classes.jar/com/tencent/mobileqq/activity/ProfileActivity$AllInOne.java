@@ -6,12 +6,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
-import tgk;
+import tle;
 
 public class ProfileActivity$AllInOne
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new tgk();
+  public static final Parcelable.Creator CREATOR = new tle();
   public byte a;
   public int a;
   public long a;

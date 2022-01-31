@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abve;
+import acda;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.List;
 public class QQPhotoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abve();
+  public static final Parcelable.Creator CREATOR = new acda();
   private static List photoInfoCache = new ArrayList();
   private long id;
   private String mPath;

@@ -45,18 +45,18 @@ public class TroopSignItemBuilder$TroopSignPicItemBuilder
     localMessageForTroopSign.parse();
     if (paramView == null)
     {
-      paramChatMessage = LayoutInflater.from(this.a).inflate(2130971593, paramBaseChatItemLayout, false);
+      paramChatMessage = LayoutInflater.from(this.a).inflate(2130971619, paramBaseChatItemLayout, false);
       paramChatMessage.setLayoutParams(new RelativeLayout.LayoutParams(this.b + BaseChatItemLayout.j + DisplayUtil.a(this.a, 10.0F), this.d + BaseChatItemLayout.g + BaseChatItemLayout.h));
       paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramChatMessage);
-      paramViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364477));
-      paramViewHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363378));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363527));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375167));
-      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375168));
-      paramViewHolder.jdField_b_of_type_AndroidViewView = paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375166);
-      paramViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375170));
-      paramViewHolder.d = ((TextView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375171));
-      paramViewHolder.jdField_c_of_type_AndroidViewView = paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375169);
+      paramViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = ((BubbleImageView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364504));
+      paramViewHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363397));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363546));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375219));
+      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375220));
+      paramViewHolder.jdField_b_of_type_AndroidViewView = paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375218);
+      paramViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375222));
+      paramViewHolder.d = ((TextView)paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375223));
+      paramViewHolder.jdField_c_of_type_AndroidViewView = paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131375221);
       paramViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.c(false);
       paramViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       paramViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.d(false);

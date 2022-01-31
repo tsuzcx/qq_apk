@@ -1,20 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import com.tencent.mobileqq.app.fms.SearchListener;
 
 public class zyh
-  implements Runnable
+  implements SearchListener
 {
-  public zyh(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
+  public zyh(FullMessageSearchManager paramFullMessageSearchManager) {}
   
-  public void run()
+  public void a(FullMessageSearchResult paramFullMessageSearchResult)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "AR视频保存失败，请重新录制。", 1).a();
+    FullMessageSearchManager.a(this.a);
+    this.a.notifyObservers(paramFullMessageSearchResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zyh
  * JD-Core Version:    0.7.0.1
  */

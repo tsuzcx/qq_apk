@@ -1,31 +1,8 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.qqstory.base.StoryHaloManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgData;
-
 public class mzr
-  implements Runnable
 {
-  public mzr(StoryHaloManager paramStoryHaloManager, RecentItemChatMsgData paramRecentItemChatMsgData, View paramView) {}
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBaseStoryHaloManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a()) == null) {}
-    Activity localActivity;
-    do
-    {
-      return;
-      localActivity = (Activity)this.jdField_a_of_type_AndroidViewView.getContext();
-    } while (localActivity == null);
-    localActivity.runOnUiThread(new mzs(this, localActivity));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.o == -1) {}
-    for (int i = 1;; i = 0)
-    {
-      StoryReportor.a("msg_tab", "circle_clk", 0, i, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemChatMsgData.a() });
-      return;
-    }
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 

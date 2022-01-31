@@ -1,22 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.app.FavEmoRoamingObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class srr
-  implements Animation.AnimationListener
+  extends FavEmoRoamingObserver
 {
-  public srr(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public srr(FavEmosmManageActivity paramFavEmosmManageActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.app.removeObserver(this);
+    this.a.b.clear();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

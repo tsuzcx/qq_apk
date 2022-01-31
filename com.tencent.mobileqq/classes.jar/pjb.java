@@ -1,38 +1,24 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.photogif.QzoneAnimationDrawable;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.widgets.ShareAioResultDialog;
 
 public class pjb
-  implements ImageLoader.ImageLoadListener
+  implements View.OnClickListener
 {
-  private pjb(QzoneAnimationDrawable paramQzoneAnimationDrawable) {}
+  public pjb(ShareAioResultDialog paramShareAioResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions)
+  public void onClick(View paramView)
   {
-    QzoneAnimationDrawable.a(this.a);
-  }
-  
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions)
-  {
-    QzoneAnimationDrawable.a(this.a);
-  }
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
-  {
-    QzoneAnimationDrawable.a(this.a, paramDrawable);
-    if (QzoneAnimationDrawable.a(this.a))
-    {
-      QzoneAnimationDrawable.a(this.a, false);
-      QzoneAnimationDrawable.b(this.a);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog, 0);
     }
+    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.dismiss();
   }
-  
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pjb
  * JD-Core Version:    0.7.0.1
  */

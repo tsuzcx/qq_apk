@@ -1,15 +1,26 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.troop.widget.ProfileGuideHelper;
 
-class svu
-  implements Runnable
+public class svu
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  svu(svt paramsvt, Bitmap paramBitmap) {}
+  public svu(FriendProfileCardActivity paramFriendProfileCardActivity, View paramView, int paramInt1, int paramInt2) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Svt.a.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    int[] arrayOfInt = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(arrayOfInt);
+    int i = arrayOfInt[1];
+    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
+    if ((i + j <= this.jdField_a_of_type_Int - this.b) && (i != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.k))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a(i, j, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.k = i;
+    }
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

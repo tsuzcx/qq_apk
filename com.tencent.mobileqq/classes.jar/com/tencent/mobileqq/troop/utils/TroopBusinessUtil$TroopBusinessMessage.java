@@ -44,10 +44,21 @@ public class TroopBusinessUtil$TroopBusinessMessage
     }
     return localTroopBusinessMessage;
   }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TroopBusinessMessage");
+    localStringBuilder.append(",").append("nick").append("=").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(",").append("flag").append("=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",").append("clk").append("=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(",").append("head").append("=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBusinessUtil.TroopBusinessMessage
  * JD-Core Version:    0.7.0.1
  */

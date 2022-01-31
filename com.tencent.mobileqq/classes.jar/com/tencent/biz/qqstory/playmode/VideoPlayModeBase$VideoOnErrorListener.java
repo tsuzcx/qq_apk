@@ -12,7 +12,7 @@ import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHold
 import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import njd;
+import nnn;
 
 public class VideoPlayModeBase$VideoOnErrorListener
   implements IVideoView.OnErrorListener
@@ -44,7 +44,7 @@ public class VideoPlayModeBase$VideoOnErrorListener
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_Int = 7;
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
-    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new njd(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nnn(this));
     if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath != null)
     {
       paramString = new File(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalVideoPath);

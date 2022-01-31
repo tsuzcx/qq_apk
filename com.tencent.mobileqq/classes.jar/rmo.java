@@ -1,58 +1,71 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
 public class rmo
-  implements Runnable
+  implements TextWatcher
 {
-  public rmo(AssociatedAccountActivity paramAssociatedAccountActivity, QQMessageFacade paramQQMessageFacade) {}
+  public rmo(AddAccountActivity paramAddAccountActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.isFinishing()) {
-      return;
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
+      AddAccountActivity.a(this.a, null);
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131433297);
-    int i;
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade != null)
-    {
-      i = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app.a();
-      if ((localObject == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a == null)) {
-        break label231;
-      }
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a);
-      Iterator localIterator = localArrayList.iterator();
-      while (localIterator.hasNext()) {
-        i -= ((ConversationFacade)localObject).a(((SubAccountInfo)localIterator.next()).subuin, 7000);
-      }
-      localArrayList.clear();
-    }
-    label231:
+    String str;
+    SimpleAccount localSimpleAccount;
     for (;;)
     {
-      if (i > 0)
+      return;
+      if (paramCharSequence != null)
       {
-        localObject = Integer.toString(i);
-        if (i > 99) {
-          localObject = "99+";
+        str = paramCharSequence.toString();
+        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
+          break;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("AssociatedAccountActivity", 2, "updateUnreadNumOnTitleBar unreadText = " + (String)localObject);
+        paramInt1 = 0;
+        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+        {
+          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
+          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
+            break label110;
+          }
+          paramInt1 += 1;
         }
       }
-      for (localObject = str + "(" + (String)localObject + ")";; localObject = str)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.runOnUiThread(new rmp(this, (String)localObject));
-        return;
+    }
+    label110:
+    if (this.a.app == null)
+    {
+      paramCharSequence = localSimpleAccount.getUin();
+      label126:
+      if (!str.equals(paramCharSequence)) {
+        break label198;
       }
+      if ((localSimpleAccount == null) || (!localSimpleAccount.isLogined())) {
+        break label200;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("!@#ewaGbhkc$!!=");
+      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
+      return;
+      paramCharSequence = this.a.app.b(localSimpleAccount.getUin());
+      break label126;
+      label198:
+      break;
+      label200:
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
     }
   }
 }

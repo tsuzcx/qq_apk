@@ -1,23 +1,44 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import android.text.TextUtils;
+import com.tencent.image.JpegExifReader.JpegExifReaderInterface;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aijw
-  implements DialogInterface.OnClickListener
+public class aijw
+  implements JpegExifReader.JpegExifReaderInterface
 {
-  aijw(aijv paramaijv, Context paramContext, View paramView) {}
+  public void doReport(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean readEnableFromDPC()
   {
-    StructMsgItemVideo.a(this.jdField_a_of_type_Aijv.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-      ReportController.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
+    try
+    {
+      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name(), null);
+      if (QLog.isColorLevel()) {
+        QLog.d("JpegExifReader", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length >= 9)
+        {
+          int i = Integer.parseInt(localObject[8]);
+          if (i != 1) {
+            break label81;
+          }
+        }
+      }
     }
-    paramDialogInterface.dismiss();
+    catch (Exception localException)
+    {
+      label81:
+      while (!QLog.isColorLevel()) {}
+      QLog.e("JpegExifReader", 2, "read dpc", localException);
+    }
+    return true;
+    return false;
+    return true;
   }
 }
 

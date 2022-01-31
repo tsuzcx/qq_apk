@@ -1,37 +1,32 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.utils.QQUtils;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 class acci
   implements Runnable
 {
-  acci(acbg paramacbg, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  acci(acce paramacce, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    Bitmap localBitmap = QQUtils.a(this.jdField_a_of_type_JavaLangString, this.b, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    Bundle localBundle = new Bundle();
-    if (localBitmap != null)
-    {
-      Object localObject = new HashMap();
-      ((Map)localObject).put("starHomeUrl", this.c);
-      ((Map)localObject).put("nickname", this.d);
-      ((Map)localObject).put("starId", this.b);
-      localObject = QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sid", (Map)localObject);
-      QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject, this.d, localBitmap);
-      localBundle.putInt("ret", 0);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MessageForNearbyMarketGrayTips", 4, "0X80052C4");
     }
-    for (;;)
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052C4", "0X80052C4", 0, 0, acce.a(this.jdField_a_of_type_Acce).frienduin, "", "", "");
+    QQAppInterface localQQAppInterface;
+    if ((acce.a(this.jdField_a_of_type_Acce).AioType == 1) || (acce.a(this.jdField_a_of_type_Acce).AioType == 3))
     {
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (acce.a(this.jdField_a_of_type_Acce).AioType != 0) {
+        break label122;
+      }
+    }
+    label122:
+    for (String str = "0";; str = "1")
+    {
+      ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_blue", 0, 0, str, "", "", "");
       return;
-      localBundle.putInt("ret", -4);
     }
   }
 }

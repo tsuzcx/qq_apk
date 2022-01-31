@@ -1,46 +1,34 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ShoppingPhotoItemInfo;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping.StylePagerAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.lang.ref.Reference;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class agqx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public agqx(PhotoViewForShopping.StylePagerAdapter paramStylePagerAdapter) {}
+  public agqx(FormalView paramFormalView, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = paramView.getId();
-    if (PhotoViewForShopping.a(this.a.a).get() != null)
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      paramView = new Intent((Context)PhotoViewForShopping.a(this.a.a).get(), QQBrowserActivity.class);
-      paramView.putExtra("url", ((ShoppingPhotoItemInfo)this.a.a.jdField_a_of_type_JavaUtilList.get(i)).b);
-      ((Activity)PhotoViewForShopping.a(this.a.a).get()).startActivity(paramView);
-      if (PhotoViewForShopping.a(this.a.a).a.a.equals(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-        ReportController.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Shop_lifeservice", "", "Shop_Mtemplatewindowclk", "0X8005B94", 0, 0, "", "", "", "");
+      PortalManager.ComboNumber localComboNumber = (PortalManager.ComboNumber)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localComboNumber != null)
+      {
+        PortalManager.a(localComboNumber.numberImageMD5, "hb_icon_path");
+        if (QLog.isColorLevel()) {
+          QLog.d("FormalView", 2, "setComboNumberList, preload p=" + localComboNumber);
+        }
       }
+      i += 1;
     }
-    else
-    {
-      return;
-    }
-    ReportController.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Shop_lifeservice", "", "Shop_Ftemplatewindowclk", "0X8005B98", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,27 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.AnimationEndListener;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
 
 public class aihr
-  implements View.OnLongClickListener
+  implements CustomFrameAnimationDrawable.AnimationEndListener
 {
-  public aihr(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  public aihr(RedBagVideoManager paramRedBagVideoManager, CustomFrameAnimationDrawable paramCustomFrameAnimationDrawable) {}
   
-  public boolean onLongClick(View paramView)
+  public void a()
   {
-    StructMsgForGeneralShare.clickedItemIndex = 0;
-    AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)paramView.getTag();
-    if (!TextUtils.isEmpty(localAbsStructMsgElement.s)) {
-      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localAbsStructMsgElement.s).intValue();
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager.c > 0) {
+      return;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.g();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable.c();
+    RedBagVideoManager localRedBagVideoManager = this.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager;
+    localRedBagVideoManager.c += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aihr
  * JD-Core Version:    0.7.0.1
  */

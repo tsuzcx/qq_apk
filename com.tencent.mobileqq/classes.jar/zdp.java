@@ -1,24 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.theme.diy.ThemeBackground;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
-public class zdp
+public final class zdp
   implements Runnable
 {
-  public zdp(FrameHelperActivity paramFrameHelperActivity, AppRuntime paramAppRuntime) {}
+  public zdp(ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.removeMessages(15);
-    ThemeBackground localThemeBackground = ThemeBackground.getThemeBgObj(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getApplicationContext(), 1, "setting");
-    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.sendMessage(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.obtainMessage(15, localThemeBackground));
+    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localObject != null)
+    {
+      localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(19);
+      if (localObject != null) {
+        ((QQMessageFacade)localObject).a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zdp
  * JD-Core Version:    0.7.0.1
  */

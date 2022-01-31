@@ -1,32 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.av.utils.QAVNotification;
+import android.os.Handler;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
 
 public class kgn
+  implements MenuItem.OnMenuItemClickListener
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public kgn(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface, AVRedBagMgr paramAVRedBagMgr) {}
   
-  public kgn(QAVNotification paramQAVNotification, String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, int paramInt1, int paramInt2, int paramInt3)
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(8002) });
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.b(true);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new kgo(this), 10000L);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kgn
  * JD-Core Version:    0.7.0.1
  */

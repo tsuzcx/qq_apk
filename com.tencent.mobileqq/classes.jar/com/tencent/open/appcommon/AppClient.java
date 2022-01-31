@@ -1,8 +1,8 @@
 package com.tencent.open.appcommon;
 
-import aldg;
-import aldh;
-import aldi;
+import alky;
+import alkz;
+import alla;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -249,7 +249,7 @@ public class AppClient
       if ((TextUtils.isEmpty((CharSequence)localObject5)) || (TextUtils.isEmpty((CharSequence)localObject4)) || ("0".equals(localObject5)) || (localObject3 == null) || (!MyAppApi.a().c()) || (!bool)) {
         break label737;
       }
-      ThreadManager.getSubThreadHandler().post(new aldh(paramBundle, (Bundle)localObject3, localMalformedURLException, (String)localObject2, paramActivity));
+      ThreadManager.getSubThreadHandler().post(new alkz(paramBundle, (Bundle)localObject3, localMalformedURLException, (String)localObject2, paramActivity));
       return;
       localObject3 = null;
       localObject4 = null;
@@ -576,7 +576,7 @@ public class AppClient
       }
     }
     label1143:
-    ThreadManager.getSubThreadHandler().post(new aldg(paramString1, localBundle, str1, paramActivity, localIntent, paramBundle));
+    ThreadManager.getSubThreadHandler().post(new alky(paramString1, localBundle, str1, paramActivity, localIntent, paramBundle));
     return;
     label1167:
     paramActivity.startActivityForResult(localIntent, 200);
@@ -778,7 +778,7 @@ public class AppClient
     String str2 = paramBundle.getString("appId");
     boolean bool = paramBundle.getBoolean("autoDownload");
     StaticAnalyz.a("200", "ANDROIDQQ.SHARESOURCE", str2);
-    ThreadManager.executeOnSubThread(new aldi(str2, str1, paramActivity, bool));
+    ThreadManager.executeOnSubThread(new alla(str2, str1, paramActivity, bool));
   }
   
   public static void b(Activity paramActivity, String paramString1, String paramString2, String paramString3)

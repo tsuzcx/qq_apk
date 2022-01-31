@@ -1,13 +1,25 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import mqq.util.WeakReference;
 
-class kvf
-  implements Runnable
+public class kvf
+  extends FriendListObserver
 {
-  kvf(kve paramkve) {}
+  WeakReference a;
   
-  public void run()
+  public kvf(AccountDetailActivity paramAccountDetailActivity)
   {
-    VideoCoverView.a(this.a.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVideoCoverView, this.a.a.jdField_a_of_type_AndroidContentContext);
+    this.a = new WeakReference(paramAccountDetailActivity);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    AccountDetailActivity localAccountDetailActivity = (AccountDetailActivity)this.a.get();
+    if (localAccountDetailActivity == null) {}
+    while ((localAccountDetailActivity.j) || (!paramBoolean) || (!paramString.equals(localAccountDetailActivity.d))) {
+      return;
+    }
+    localAccountDetailActivity.O();
   }
 }
 

@@ -1,24 +1,41 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class vwv
-  implements Animation.AnimationListener
+  extends PublicAccountObserver
 {
-  public vwv(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vwv(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    this.a.p = 5;
-    PublicAccountChatPie.c(this.a).post(new vww(this));
-    this.a.a.sendEmptyMessage(1);
+    if (paramInt == 0) {
+      this.a.c(this.a.a.getIntent());
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c(this.a.a.getIntent());
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c(this.a.a.getIntent());
+    }
+  }
+  
+  public void t_()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
+    }
+  }
 }
 
 

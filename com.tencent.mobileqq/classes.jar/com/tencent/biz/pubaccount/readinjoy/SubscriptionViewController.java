@@ -14,7 +14,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySubscriptionListViewGr
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import com.tencent.mobileqq.app.BaseActivity;
 import java.util.List;
-import lbd;
+import ldm;
 
 public class SubscriptionViewController
   extends ReadInJoyBaseViewController
@@ -27,7 +27,7 @@ public class SubscriptionViewController
   public SubscriptionViewController(Activity paramActivity)
   {
     super(paramActivity);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lbd(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new ldm(this);
   }
   
   public ViewGroup a()

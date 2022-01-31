@@ -1,36 +1,33 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.VideoViewHolder;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.TroopEnterEffectData;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectManager;
+import com.tencent.mobileqq.vas.IndividuationUrlHelper;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class ajki
-  implements Runnable
+public class ajki
+  implements View.OnTouchListener
 {
-  ajki(ajkh paramajkh, VideoInfo paramVideoInfo) {}
+  public ajki(TroopEnterEffectController paramTroopEnterEffectController, String paramString, TroopEnterEffectController.TroopEnterEffectData paramTroopEnterEffectData) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).e = 95;
-    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).g = -2147483648;
-    XMediaEditor localXMediaEditor = (XMediaEditor)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).get();
-    if (localXMediaEditor != null)
+    if (paramMotionEvent.getAction() == 1)
     {
-      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a).c);
-      if ((localObject instanceof VideoItem.VideoViewHolder))
-      {
-        localObject = (VideoItem.VideoViewHolder)localObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(((VideoItem.VideoViewHolder)localObject).a.getTag())) {
-          ((VideoItem)((XMediaEditorAdapter)localXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajkh.a), 0);
-        }
-      }
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.a.getContext(), QQBrowserActivity.class);
+      paramMotionEvent = IndividuationUrlHelper.a("troopEnterEffect");
+      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.b);
+      this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.a.getContext().startActivity(paramView);
+      TroopEnterEffectManager.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.b });
+      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$TroopEnterEffectData.a), "");
     }
+    return true;
   }
 }
 

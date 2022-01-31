@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-public class ufr
-  implements DialogInterface.OnKeyListener
+class ufr
+  implements Runnable
 {
-  public ufr(UpgradeActivity paramUpgradeActivity) {}
+  ufr(ufq paramufq) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if (paramInt == 4) {
-      this.a.a();
-    }
-    return false;
+    this.a.a.m();
   }
 }
 

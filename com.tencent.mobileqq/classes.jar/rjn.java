@@ -1,66 +1,85 @@
-import android.app.Dialog;
-import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.anonymous.QQAnonymousDialog;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.Doraemon.APIParam;
+import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule.LoginInfo;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.AppFriendsInfo;
+import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.RspBody;
 
 public class rjn
-  implements View.OnClickListener
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public rjn(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public rjn(UserInfoModule paramUserInfoModule, APICallback paramAPICallback) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.a.a != null)
-    {
-      this.a.getWindow().setSoftInputMode(2);
-      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
+    if (QLog.isColorLevel()) {
+      QLog.i(UserInfoModule.jdField_a_of_type_JavaLangString, 2, "onResult appid=" + UserInfoModule.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule).jdField_a_of_type_JavaLangString + ", openid=" + this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.jdField_a_of_type_JavaLangString + ", openkey=" + this.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule.jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule$LoginInfo.b + ", code=" + paramInt);
     }
-    paramView = AddFriendVerifyActivity.a(this.a).getText().toString().trim();
-    if (TextUtils.isEmpty(paramView))
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      if (!this.a.isFinishing())
+      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramInt, "getappfriends result error, try again");
+      return;
+    }
+    paramBundle = new Oidb_0xb6e.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = paramBundle;
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      ArrayList localArrayList;
+      for (;;)
       {
-        paramView = new QQAnonymousDialog(this.a);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText("请输入答案");
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846074);
-        paramView.a();
+        paramArrayOfByte = null;
+        paramBundle.printStackTrace();
       }
+      paramBundle.put("appfriends", localArrayList);
+      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, paramBundle);
       return;
     }
-    if (paramView.length() > 90)
+    if (paramArrayOfByte != null)
     {
-      paramView = new Dialog(this.a, 2131624516);
-      paramView.setContentView(2130971508);
-      ((TextView)paramView.findViewById(2131362776)).setText(this.a.getString(2131434784));
-      ((ProgressBar)paramView.findViewById(2131362775)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131374243)).setImageResource(2130838752);
-      paramView.show();
-      return;
+      paramBundle = new APIParam();
+      localArrayList = new ArrayList();
+      paramArrayOfByte = paramArrayOfByte.rpt_friends_info.get().iterator();
+      while (paramArrayOfByte.hasNext())
+      {
+        Object localObject = (Oidb_0xb6e.AppFriendsInfo)paramArrayOfByte.next();
+        String str1 = ((Oidb_0xb6e.AppFriendsInfo)localObject).openid.get();
+        String str2 = ((Oidb_0xb6e.AppFriendsInfo)localObject).nick.get().toStringUtf8();
+        localObject = ((Oidb_0xb6e.AppFriendsInfo)localObject).figure_url_qq.get();
+        if (!TextUtils.isEmpty(str1))
+        {
+          HashMap localHashMap = new HashMap();
+          localHashMap.put("openid", str1.toUpperCase());
+          localHashMap.put("nickName", str2);
+          localHashMap.put("avatarUrl", localObject);
+          localArrayList.add(localHashMap);
+        }
+      }
     }
-    this.a.a(paramView, true);
-    if (NetworkUtil.d(this.a))
-    {
-      AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), paramView, this.a.getIntent().getIntExtra("stat_option", 0));
-      return;
-    }
-    QQToast.a(this.a, 1, 2131434811, 0).b(this.a.getTitleBarHeight());
+    DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "parse result error, try again");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rjn
  * JD-Core Version:    0.7.0.1
  */

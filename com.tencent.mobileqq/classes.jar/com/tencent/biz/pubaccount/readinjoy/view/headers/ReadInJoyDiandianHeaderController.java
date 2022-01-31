@@ -12,14 +12,14 @@ import com.tencent.mobileqq.widget.MeasureGridView;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
-import mpx;
+import mtp;
 
 public class ReadInJoyDiandianHeaderController
   extends HeaderViewController
 {
   public ColorDrawable a;
   private View jdField_a_of_type_AndroidViewView;
-  private ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new mpx(this);
+  private ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new mtp(this);
   private ReadInJoyDiandianHeaderController.HeaderListAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController$HeaderListAdapter;
   private MeasureGridView jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
@@ -29,7 +29,7 @@ public class ReadInJoyDiandianHeaderController
   public ReadInJoyDiandianHeaderController(Context paramContext)
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130969601, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130969597, null);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView = ((MeasureGridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367085));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController$HeaderListAdapter = new ReadInJoyDiandianHeaderController.HeaderListAdapter(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyDiandianHeaderController$HeaderListAdapter);

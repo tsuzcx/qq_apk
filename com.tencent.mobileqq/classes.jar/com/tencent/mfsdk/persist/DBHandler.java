@@ -177,7 +177,7 @@ public class DBHandler
     //   111: pop
     //   112: aload 13
     //   114: invokeinterface 203 1 0
-    //   119: ifne +394 -> 513
+    //   119: ifne +402 -> 521
     //   122: aload 13
     //   124: aload 13
     //   126: ldc 205
@@ -189,233 +189,241 @@ public class DBHandler
     //   144: ldc 207
     //   146: invokeinterface 72 2 0
     //   151: invokeinterface 211 2 0
-    //   156: istore_2
-    //   157: aload 13
-    //   159: aload 13
-    //   161: ldc 213
-    //   163: invokeinterface 72 2 0
-    //   168: invokeinterface 106 2 0
-    //   173: lstore 9
-    //   175: aload 13
-    //   177: aload 13
-    //   179: ldc 215
-    //   181: invokeinterface 72 2 0
-    //   186: invokeinterface 106 2 0
-    //   191: lstore 11
-    //   193: aload 13
-    //   195: aload 13
-    //   197: ldc 217
-    //   199: invokeinterface 72 2 0
-    //   204: invokeinterface 76 2 0
-    //   209: istore_3
-    //   210: aload 13
-    //   212: aload 13
-    //   214: ldc 219
-    //   216: invokeinterface 72 2 0
-    //   221: invokeinterface 76 2 0
-    //   226: istore 4
-    //   228: aload 13
-    //   230: aload 13
-    //   232: ldc 221
-    //   234: invokeinterface 72 2 0
-    //   239: invokeinterface 76 2 0
-    //   244: istore 5
-    //   246: aload 13
-    //   248: aload 13
-    //   250: ldc 223
-    //   252: invokeinterface 72 2 0
-    //   257: invokeinterface 76 2 0
-    //   262: istore 6
-    //   264: aload 13
-    //   266: aload 13
-    //   268: ldc 225
-    //   270: invokeinterface 72 2 0
-    //   275: invokeinterface 76 2 0
-    //   280: istore 7
-    //   282: aload 13
-    //   284: aload 13
-    //   286: ldc 227
-    //   288: invokeinterface 72 2 0
-    //   293: invokeinterface 76 2 0
-    //   298: istore 8
-    //   300: aload 14
-    //   302: aload 16
-    //   304: new 122	com/tencent/mfsdk/collector/DropResultObject
-    //   307: dup
-    //   308: lload 11
-    //   310: lload 9
-    //   312: bipush 6
-    //   314: newarray long
-    //   316: dup
-    //   317: iconst_0
-    //   318: iload_3
-    //   319: i2l
-    //   320: lastore
-    //   321: dup
-    //   322: iconst_1
-    //   323: iload 4
-    //   325: i2l
-    //   326: lastore
-    //   327: dup
-    //   328: iconst_2
-    //   329: iload 5
-    //   331: i2l
-    //   332: lastore
-    //   333: dup
-    //   334: iconst_3
-    //   335: iload 6
-    //   337: i2l
-    //   338: lastore
-    //   339: dup
-    //   340: iconst_4
-    //   341: iload 7
-    //   343: i2l
-    //   344: lastore
-    //   345: dup
-    //   346: iconst_5
-    //   347: iload 8
-    //   349: i2l
-    //   350: lastore
-    //   351: invokespecial 230	com/tencent/mfsdk/collector/DropResultObject:<init>	(JJ[J)V
-    //   354: invokevirtual 233	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   357: pop
-    //   358: new 82	org/json/JSONObject
-    //   361: dup
-    //   362: invokespecial 115	org/json/JSONObject:<init>	()V
-    //   365: astore 16
-    //   367: new 82	org/json/JSONObject
-    //   370: dup
-    //   371: invokespecial 115	org/json/JSONObject:<init>	()V
-    //   374: astore 17
-    //   376: aload 17
-    //   378: ldc 235
-    //   380: iconst_1
-    //   381: invokestatic 148	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   384: invokevirtual 141	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   387: pop
-    //   388: aload 17
-    //   390: ldc 237
-    //   392: iload_2
-    //   393: invokestatic 148	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   396: invokevirtual 141	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   399: pop
-    //   400: aload 16
-    //   402: ldc 239
-    //   404: aload_0
-    //   405: aload 14
-    //   407: invokespecial 241	com/tencent/mfsdk/persist/DBHandler:a	(Ljava/util/HashMap;)Lorg/json/JSONObject;
-    //   410: invokevirtual 141	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   413: pop
-    //   414: aload 16
-    //   416: ldc 243
-    //   418: aload 17
-    //   420: invokevirtual 141	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   423: pop
-    //   424: aload 16
-    //   426: ldc 245
-    //   428: bipush 101
-    //   430: invokevirtual 248	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   433: pop
-    //   434: aload 15
-    //   436: new 63	com/tencent/mfsdk/collector/ResultObject
-    //   439: dup
-    //   440: iconst_0
-    //   441: ldc 250
-    //   443: iconst_1
-    //   444: lconst_1
-    //   445: lconst_1
-    //   446: aload 16
+    //   156: istore_3
+    //   157: iload_3
+    //   158: istore_2
+    //   159: iload_3
+    //   160: ifgt +5 -> 165
+    //   163: iconst_1
+    //   164: istore_2
+    //   165: aload 13
+    //   167: aload 13
+    //   169: ldc 213
+    //   171: invokeinterface 72 2 0
+    //   176: invokeinterface 106 2 0
+    //   181: lstore 9
+    //   183: aload 13
+    //   185: aload 13
+    //   187: ldc 215
+    //   189: invokeinterface 72 2 0
+    //   194: invokeinterface 106 2 0
+    //   199: lstore 11
+    //   201: aload 13
+    //   203: aload 13
+    //   205: ldc 217
+    //   207: invokeinterface 72 2 0
+    //   212: invokeinterface 76 2 0
+    //   217: istore_3
+    //   218: aload 13
+    //   220: aload 13
+    //   222: ldc 219
+    //   224: invokeinterface 72 2 0
+    //   229: invokeinterface 76 2 0
+    //   234: istore 4
+    //   236: aload 13
+    //   238: aload 13
+    //   240: ldc 221
+    //   242: invokeinterface 72 2 0
+    //   247: invokeinterface 76 2 0
+    //   252: istore 5
+    //   254: aload 13
+    //   256: aload 13
+    //   258: ldc 223
+    //   260: invokeinterface 72 2 0
+    //   265: invokeinterface 76 2 0
+    //   270: istore 6
+    //   272: aload 13
+    //   274: aload 13
+    //   276: ldc 225
+    //   278: invokeinterface 72 2 0
+    //   283: invokeinterface 76 2 0
+    //   288: istore 7
+    //   290: aload 13
+    //   292: aload 13
+    //   294: ldc 227
+    //   296: invokeinterface 72 2 0
+    //   301: invokeinterface 76 2 0
+    //   306: istore 8
+    //   308: aload 14
+    //   310: aload 16
+    //   312: new 122	com/tencent/mfsdk/collector/DropResultObject
+    //   315: dup
+    //   316: lload 11
+    //   318: lload 9
+    //   320: bipush 6
+    //   322: newarray long
+    //   324: dup
+    //   325: iconst_0
+    //   326: iload_3
+    //   327: i2l
+    //   328: lastore
+    //   329: dup
+    //   330: iconst_1
+    //   331: iload 4
+    //   333: i2l
+    //   334: lastore
+    //   335: dup
+    //   336: iconst_2
+    //   337: iload 5
+    //   339: i2l
+    //   340: lastore
+    //   341: dup
+    //   342: iconst_3
+    //   343: iload 6
+    //   345: i2l
+    //   346: lastore
+    //   347: dup
+    //   348: iconst_4
+    //   349: iload 7
+    //   351: i2l
+    //   352: lastore
+    //   353: dup
+    //   354: iconst_5
+    //   355: iload 8
+    //   357: i2l
+    //   358: lastore
+    //   359: invokespecial 230	com/tencent/mfsdk/collector/DropResultObject:<init>	(JJ[J)V
+    //   362: invokevirtual 233	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   365: pop
+    //   366: new 82	org/json/JSONObject
+    //   369: dup
+    //   370: invokespecial 115	org/json/JSONObject:<init>	()V
+    //   373: astore 16
+    //   375: new 82	org/json/JSONObject
+    //   378: dup
+    //   379: invokespecial 115	org/json/JSONObject:<init>	()V
+    //   382: astore 17
+    //   384: aload 17
+    //   386: ldc 235
+    //   388: iconst_1
+    //   389: invokestatic 148	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   392: invokevirtual 141	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   395: pop
+    //   396: aload 17
+    //   398: ldc 237
+    //   400: iload_2
+    //   401: invokestatic 148	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   404: invokevirtual 141	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   407: pop
+    //   408: aload 16
+    //   410: ldc 239
+    //   412: aload_0
+    //   413: aload 14
+    //   415: invokespecial 241	com/tencent/mfsdk/persist/DBHandler:a	(Ljava/util/HashMap;)Lorg/json/JSONObject;
+    //   418: invokevirtual 141	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   421: pop
+    //   422: aload 16
+    //   424: ldc 243
+    //   426: aload 17
+    //   428: invokevirtual 141	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   431: pop
+    //   432: aload 16
+    //   434: ldc 245
+    //   436: bipush 101
+    //   438: invokevirtual 248	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   441: pop
+    //   442: aload 15
+    //   444: new 63	com/tencent/mfsdk/collector/ResultObject
+    //   447: dup
     //   448: iconst_0
-    //   449: iconst_1
-    //   450: getstatic 253	com/tencent/mfsdk/MagnifierSDK:jdField_a_of_type_Long	J
-    //   453: invokespecial 256	com/tencent/mfsdk/collector/ResultObject:<init>	(ILjava/lang/String;ZJJLorg/json/JSONObject;ZZJ)V
-    //   456: invokeinterface 262 2 0
-    //   461: pop
-    //   462: aload 14
-    //   464: invokevirtual 265	java/util/HashMap:clear	()V
-    //   467: aload 13
-    //   469: invokeinterface 268 1 0
-    //   474: pop
-    //   475: goto -363 -> 112
-    //   478: astore 14
-    //   480: invokestatic 45	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   483: ifeq +15 -> 498
-    //   486: ldc 47
-    //   488: iconst_2
-    //   489: aload 14
-    //   491: iconst_0
-    //   492: anewarray 4	java/lang/Object
-    //   495: invokestatic 51	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   498: aload 13
-    //   500: ifnull +10 -> 510
-    //   503: aload 13
-    //   505: invokeinterface 197 1 0
-    //   510: aload 15
-    //   512: areturn
-    //   513: aload_0
-    //   514: ldc 188
-    //   516: aconst_null
-    //   517: aconst_null
-    //   518: invokespecial 270	com/tencent/mfsdk/persist/DBHandler:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   521: pop
-    //   522: aload 13
-    //   524: ifnull -14 -> 510
-    //   527: aload 13
-    //   529: invokeinterface 197 1 0
-    //   534: goto -24 -> 510
-    //   537: astore 14
-    //   539: aconst_null
-    //   540: astore 13
-    //   542: aload 13
-    //   544: ifnull +10 -> 554
-    //   547: aload 13
-    //   549: invokeinterface 197 1 0
-    //   554: aload 14
-    //   556: athrow
-    //   557: astore 14
-    //   559: goto -17 -> 542
-    //   562: astore 14
-    //   564: goto -22 -> 542
-    //   567: astore 14
-    //   569: aconst_null
-    //   570: astore 13
-    //   572: goto -92 -> 480
+    //   449: ldc 250
+    //   451: iconst_1
+    //   452: lconst_1
+    //   453: lconst_1
+    //   454: aload 16
+    //   456: iconst_0
+    //   457: iconst_1
+    //   458: getstatic 253	com/tencent/mfsdk/MagnifierSDK:jdField_a_of_type_Long	J
+    //   461: invokespecial 256	com/tencent/mfsdk/collector/ResultObject:<init>	(ILjava/lang/String;ZJJLorg/json/JSONObject;ZZJ)V
+    //   464: invokeinterface 262 2 0
+    //   469: pop
+    //   470: aload 14
+    //   472: invokevirtual 265	java/util/HashMap:clear	()V
+    //   475: aload 13
+    //   477: invokeinterface 268 1 0
+    //   482: pop
+    //   483: goto -371 -> 112
+    //   486: astore 14
+    //   488: invokestatic 45	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   491: ifeq +15 -> 506
+    //   494: ldc 47
+    //   496: iconst_2
+    //   497: aload 14
+    //   499: iconst_0
+    //   500: anewarray 4	java/lang/Object
+    //   503: invokestatic 51	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   506: aload 13
+    //   508: ifnull +10 -> 518
+    //   511: aload 13
+    //   513: invokeinterface 197 1 0
+    //   518: aload 15
+    //   520: areturn
+    //   521: aload_0
+    //   522: ldc 188
+    //   524: aconst_null
+    //   525: aconst_null
+    //   526: invokespecial 270	com/tencent/mfsdk/persist/DBHandler:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   529: pop
+    //   530: aload 13
+    //   532: ifnull -14 -> 518
+    //   535: aload 13
+    //   537: invokeinterface 197 1 0
+    //   542: goto -24 -> 518
+    //   545: astore 14
+    //   547: aconst_null
+    //   548: astore 13
+    //   550: aload 13
+    //   552: ifnull +10 -> 562
+    //   555: aload 13
+    //   557: invokeinterface 197 1 0
+    //   562: aload 14
+    //   564: athrow
+    //   565: astore 14
+    //   567: goto -17 -> 550
+    //   570: astore 14
+    //   572: goto -22 -> 550
+    //   575: astore 14
+    //   577: aconst_null
+    //   578: astore 13
+    //   580: goto -92 -> 488
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	575	0	this	DBHandler
-    //   0	575	1	paramBoolean	boolean
-    //   156	237	2	i	int
-    //   209	110	3	j	int
-    //   226	98	4	k	int
-    //   244	86	5	m	int
-    //   262	74	6	n	int
-    //   280	62	7	i1	int
-    //   298	50	8	i2	int
-    //   173	138	9	l1	long
-    //   191	118	11	l2	long
-    //   63	508	13	localCursor	Cursor
-    //   40	423	14	localHashMap	HashMap
-    //   478	12	14	localException1	Exception
-    //   537	18	14	localObject1	Object
-    //   557	1	14	localObject2	Object
-    //   562	1	14	localObject3	Object
-    //   567	1	14	localException2	Exception
-    //   31	480	15	localArrayList	java.util.ArrayList
-    //   138	309	16	localObject4	Object
-    //   374	45	17	localJSONObject	JSONObject
+    //   0	583	0	this	DBHandler
+    //   0	583	1	paramBoolean	boolean
+    //   158	243	2	i	int
+    //   156	171	3	j	int
+    //   234	98	4	k	int
+    //   252	86	5	m	int
+    //   270	74	6	n	int
+    //   288	62	7	i1	int
+    //   306	50	8	i2	int
+    //   181	138	9	l1	long
+    //   199	118	11	l2	long
+    //   63	516	13	localCursor	Cursor
+    //   40	431	14	localHashMap	HashMap
+    //   486	12	14	localException1	Exception
+    //   545	18	14	localObject1	Object
+    //   565	1	14	localObject2	Object
+    //   570	1	14	localObject3	Object
+    //   575	1	14	localException2	Exception
+    //   31	488	15	localArrayList	java.util.ArrayList
+    //   138	317	16	localObject4	Object
+    //   382	45	17	localJSONObject	JSONObject
     // Exception table:
     //   from	to	target	type
-    //   104	112	478	java/lang/Exception
-    //   112	475	478	java/lang/Exception
-    //   513	522	478	java/lang/Exception
-    //   47	65	537	finally
-    //   84	101	537	finally
-    //   104	112	557	finally
-    //   112	475	557	finally
-    //   513	522	557	finally
-    //   480	498	562	finally
-    //   47	65	567	java/lang/Exception
-    //   84	101	567	java/lang/Exception
+    //   104	112	486	java/lang/Exception
+    //   112	157	486	java/lang/Exception
+    //   165	483	486	java/lang/Exception
+    //   521	530	486	java/lang/Exception
+    //   47	65	545	finally
+    //   84	101	545	finally
+    //   104	112	565	finally
+    //   112	157	565	finally
+    //   165	483	565	finally
+    //   521	530	565	finally
+    //   488	506	570	finally
+    //   47	65	575	java/lang/Exception
+    //   84	101	575	java/lang/Exception
   }
   
   public int a()

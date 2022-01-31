@@ -21,7 +21,7 @@ public abstract class FlowCameraConstant
   public static String a()
   {
     Calendar localCalendar = Calendar.getInstance();
-    StringBuilder localStringBuilder = new StringBuilder(AppConstants.aR);
+    StringBuilder localStringBuilder = new StringBuilder(AppConstants.aS);
     localStringBuilder.append("IMG");
     localStringBuilder.append(localCalendar.get(1));
     int i = localCalendar.get(2) + 1;

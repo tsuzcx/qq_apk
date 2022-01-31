@@ -1,15 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
 class aayx
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  aayx(aayw paramaayw, QQCustomDialog paramQQCustomDialog) {}
+  aayx(aayw paramaayw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    Object localObject = (QQAppInterface)aayw.a(this.a).get();
+    if (localObject == null)
+    {
+      ArkAppCenter.b("ArkApp.Dict.Update", "updateLocalDict, qq app is NULL, return");
+      return;
+    }
+    localObject = aayw.a((QQAppInterface)localObject);
+    String str1 = aayw.a((JSONObject)localObject);
+    JSONObject localJSONObject = aayw.a();
+    String str2 = aayw.a(localJSONObject);
+    if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)))
+    {
+      if (str2.equals(str1))
+      {
+        ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateLocalDict, local id is equal to remote id, check file integrity, id=%s", new Object[] { str2 }));
+        aayw.a(this.a, (JSONObject)localObject);
+        return;
+      }
+      ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateLocalDict, local id is diff from remote id, start updating, id=%s->%s", new Object[] { str2, str1 }));
+      aayw.a(this.a, localJSONObject, (JSONObject)localObject);
+      return;
+    }
+    if (!TextUtils.isEmpty(str2))
+    {
+      ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateLocalDict, remote id not exist, check local files, id=%s", new Object[] { str2 }));
+      aayw.a(this.a, localJSONObject);
+      return;
+    }
+    if (!TextUtils.isEmpty(str1))
+    {
+      ArkAppCenter.b("ArkApp.Dict.Update", String.format("remoteLocalDict, remote id exist, update, id=%s", new Object[] { str1 }));
+      aayw.a(this.a, null, (JSONObject)localObject);
+      return;
+    }
+    ArkAppCenter.b("ArkApp.Dict.Update", "updateLocalDict, local and remote id are both empty, do nothing");
   }
 }
 

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.transfile;
 
 import QQService.StreamData;
 import QQService.StreamInfo;
-import aior;
-import aios;
+import aitu;
+import aitv;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -53,7 +53,7 @@ public class BuddyTransfileProcessor
   public static boolean c;
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long = -1L;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aior(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aitu(this);
   public QQAppInterface a;
   private String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
@@ -170,7 +170,7 @@ public class BuddyTransfileProcessor
   
   public static String a(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    paramString1 = AppConstants.aJ + paramString1 + "/";
+    paramString1 = AppConstants.aK + paramString1 + "/";
     Object localObject;
     switch (paramInt)
     {
@@ -236,7 +236,7 @@ public class BuddyTransfileProcessor
         paramString2 = ".jpg";
         paramArrayOfByte = str1;
         break;
-        localObject = AppConstants.aX;
+        localObject = AppConstants.aY;
         paramString1 = paramString2;
         if (paramString2 == null)
         {
@@ -508,7 +508,7 @@ public class BuddyTransfileProcessor
     if (((File)localObject2).exists())
     {
       ((MessageForPtt)localObject1).fileSize = ((File)localObject2).length();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800610E", "0X800610E", 1, 0, "", "", "", "7.6.3");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800610E", "0X800610E", 1, 0, "", "", "", "7.6.8");
       ((MessageForPtt)localObject1).itemType = 2;
       ((MessageForPtt)localObject1).isread = false;
       ((MessageForPtt)localObject1).shmsgseq = ((short)paramStreamInfo.msgSeq);
@@ -571,7 +571,7 @@ public class BuddyTransfileProcessor
       }
       return null;
       ((MessageForPtt)localObject1).fileSize = 1000L;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800610E", "0X800610E", 2, 0, "", "", "", "7.6.3");
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800610E", "0X800610E", 2, 0, "", "", "", "7.6.8");
       break;
       i = 0;
       break label313;
@@ -728,7 +728,7 @@ public class BuddyTransfileProcessor
         return;
       }
     } while ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService == null) || (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()));
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new aios(this, str, paramShort, paramLong, paramBundle, paramBoolean));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new aitv(this, str, paramShort, paramLong, paramBundle, paramBoolean));
   }
   
   protected void a(boolean paramBoolean)
@@ -812,7 +812,7 @@ public class BuddyTransfileProcessor
     }
   }
   
-  public void ap_() {}
+  public void ar_() {}
   
   void d()
   {
@@ -933,7 +933,7 @@ public class BuddyTransfileProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BuddyTransfileProcessor
  * JD-Core Version:    0.7.0.1
  */

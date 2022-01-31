@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.map;
 
-import abhl;
+import abom;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -43,7 +43,7 @@ public class LbsPackShareDialog
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
     this.jdField_a_of_type_ComQqImPoiPoiInfo = paramPoiInfo;
     this.jdField_a_of_type_JavaLangString = paramString;
-    setContentView(2130970379);
+    setContentView(2130970394);
     a();
   }
   
@@ -54,12 +54,12 @@ public class LbsPackShareDialog
     localLayoutParams.width = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDisplayMetrics().widthPixels;
     localLayoutParams.height = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDisplayMetrics().heightPixels;
     localWindow.setAttributes(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362841));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370303));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370304));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131362846));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370312));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370313));
     this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComQqImPoiPoiInfo.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131370306));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363978));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131370315));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364003));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
@@ -109,7 +109,7 @@ public class LbsPackShareDialog
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
-    localAnimationSet.setAnimationListener(new abhl(this));
+    localAnimationSet.setAnimationListener(new abom(this));
   }
   
   public void onClick(View paramView)
@@ -123,7 +123,7 @@ public class LbsPackShareDialog
     {
     default: 
       return;
-    case 2131363978: 
+    case 2131364003: 
       c();
       return;
     }

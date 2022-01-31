@@ -1,33 +1,15 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.RecommendTroopManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class zlz
-  implements BusinessObserver
+public final class zlz
+  implements View.OnClickListener
 {
-  public zlz(RecommendTroopManagerImp paramRecommendTroopManagerImp, long paramLong) {}
+  public zlz(Dialog paramDialog) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppRecommendTroopManagerImp.a.append(2, Boolean.valueOf(false));
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer onReceive :" + paramBoolean);
-    }
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null) {
-        break label79;
-      }
-      RecommendTroopManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppRecommendTroopManagerImp, 2, this.jdField_a_of_type_Long, paramBundle);
-    }
-    label79:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer success data is null");
+    this.a.dismiss();
   }
 }
 

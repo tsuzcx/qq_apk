@@ -1,13 +1,22 @@
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.addContactTroopView.TroopCardSameCity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.List;
+import tencent.im.troop_search_searchtab.searchtab.Item2;
 
-class kmw
-  implements Runnable
+public class kmw
+  implements AdapterView.OnItemClickListener
 {
-  kmw(kmv paramkmv, String paramString1, String paramString2) {}
+  public kmw(TroopCardSameCity paramTroopCardSameCity) {}
   
-  public void run()
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Kmv.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.b });
+    paramAdapterView = (searchtab.Item2)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.a.a(paramAdapterView.str_transfer_url.get());
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_localac", 0, 0, "", "", "", "");
   }
 }
 

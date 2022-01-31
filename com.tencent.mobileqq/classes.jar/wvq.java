@@ -1,25 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import cooperation.weiyun.utils.PreferenceUtils;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class wvq
-  implements View.OnClickListener
+class wvq
+  implements DialogInterface.OnCancelListener
 {
-  public wvq(AlbumListActivity paramAlbumListActivity) {}
+  wvq(wvo paramwvo) {}
   
-  public void onClick(View paramView)
-  {
-    if (AlbumListActivity.a(this.a)) {
-      PreferenceUtils.a(this.a.getApplicationContext(), this.a.a, "pref_select_album", PreferenceUtils.a(AlbumListActivity.a(this.a).iterator()));
-    }
-    if (this.a.i) {
-      StoryReportor.a("pic_choose_slides", "exit_picChoose", 0, 0, new String[0]);
-    }
-    this.a.onBackPressed();
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

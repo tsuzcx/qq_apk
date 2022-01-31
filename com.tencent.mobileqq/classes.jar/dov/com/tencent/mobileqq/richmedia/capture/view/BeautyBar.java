@@ -12,10 +12,10 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import aomc;
-import aomd;
-import aome;
-import aomf;
+import aous;
+import aout;
+import aouu;
+import aouv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import mqq.app.AppRuntime;
@@ -27,7 +27,7 @@ public class BeautyBar
   public static long a;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aomc(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new aous(this);
   private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   public SeekBar.OnSeekBarChangeListener a;
@@ -46,19 +46,19 @@ public class BeautyBar
   public BeautyBar(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new aomd(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new aout(this);
   }
   
   public BeautyBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new aomd(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new aout(this);
   }
   
   public BeautyBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new aomd(this);
+    this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new aout(this);
   }
   
   private void a()
@@ -67,19 +67,19 @@ public class BeautyBar
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131370158));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131370167));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new aome(this));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130842995);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370159));
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new aouu(this));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130843027);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370168));
     this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = null;
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     int i = localSharedPreferences.getInt("beauty_level" + str, (int)(jdField_a_of_type_Float * 100.0F));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(i);
-    post(new aomf(this, i));
+    post(new aouv(this, i));
   }
   
   private void a(int paramInt, boolean paramBoolean)

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.mediacodec.widget;
 
-import ahow;
-import ahox;
+import ahto;
+import ahtp;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
@@ -26,6 +26,8 @@ import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.ShortVideoExceptionReporter;
 import com.tencent.mobileqq.shortvideo.util.AudioEncoder;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.util.MediaMetadataUtils;
+import dov.com.tencent.mobileqq.shortvideo.util.MediaMetadataUtils.MetaData;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
@@ -37,7 +39,7 @@ public class HWVideoPlayView
   protected int a;
   public long a;
   protected SurfaceTexture a;
-  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new ahow(this);
+  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new ahto(this);
   public final AudioDecoder.AudioDecodeConfig a;
   public AudioDecoder a;
   public final DecodeConfig a;
@@ -49,8 +51,10 @@ public class HWVideoPlayView
   public boolean b;
   public int c;
   public volatile boolean c;
-  int d = 0;
-  int e = 0;
+  protected int d;
+  protected int e;
+  int f = 0;
+  int g = 0;
   
   public HWVideoPlayView(Context paramContext)
   {
@@ -146,7 +150,7 @@ public class HWVideoPlayView
   public void e()
   {
     QLog.d("HWVideoPlayView", 4, "onDecodeStart");
-    this.d = 0;
+    this.f = 0;
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener.e();
     }
@@ -180,7 +184,7 @@ public class HWVideoPlayView
   
   public void j()
   {
-    queueEvent(new ahox(this));
+    queueEvent(new ahtp(this));
   }
   
   public void k()
@@ -194,8 +198,8 @@ public class HWVideoPlayView
   public void l()
   {
     QLog.d("HWVideoPlayView", 4, "onDecodeRepeat");
-    this.d = 0;
-    this.e = 0;
+    this.f = 0;
+    this.g = 0;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder.a();
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderHWDecodeListener.l();
@@ -213,8 +217,8 @@ public class HWVideoPlayView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    int i = this.e;
-    this.e = (i + 1);
+    int i = this.g;
+    this.g = (i + 1);
     SLog.a("HWVideoPlayView", "onDrawFrame index = %d", Integer.valueOf(i));
     try
     {
@@ -223,7 +227,7 @@ public class HWVideoPlayView
         this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
         paramGL10 = new float[16];
         this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(paramGL10);
-        a(paramGL10, GPUBaseFilter.a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int));
+        a(paramGL10, GPUBaseFilter.a(this.d, this.e, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int));
       }
       return;
     }
@@ -235,8 +239,8 @@ public class HWVideoPlayView
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    int i = this.d;
-    this.d = (i + 1);
+    int i = this.f;
+    this.f = (i + 1);
     SLog.a("HWVideoPlayView", "yarkey onFrameAvailable %d", Integer.valueOf(i));
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
     requestRender();
@@ -308,6 +312,13 @@ public class HWVideoPlayView
     }
     this.jdField_a_of_type_Long = VideoCompositeHelper.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioDecodeConfig.c = this.jdField_a_of_type_Long;
+    paramString2 = new MediaMetadataUtils.MetaData();
+    int i = MediaMetadataUtils.a(paramString1, paramString2);
+    this.d = paramString2.a[0];
+    this.e = paramString2.a[1];
+    if (QLog.isColorLevel()) {
+      QLog.d("HWVideoPlayView", 2, "setFilePath: errcode = " + i + " ; videoWidth = " + this.d + " , videoHeight=" + this.e);
+    }
   }
   
   public void setMuteAudio(boolean paramBoolean)

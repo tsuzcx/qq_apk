@@ -1,17 +1,24 @@
-import android.graphics.Rect;
-import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.app.IndividualRedPacketManager;
+import com.tencent.mobileqq.app.IndividualRedPacketManager.VIPHBStrategy;
+import com.tencent.qphone.base.util.QLog;
 
 public class zmu
   implements Runnable
 {
-  public zmu(ScreenShot paramScreenShot, zmv paramzmv) {}
+  public zmu(IndividualRedPacketManager.VIPHBStrategy paramVIPHBStrategy, IndividualRedPacketManager paramIndividualRedPacketManager, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Zmv.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Zmv.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
+    try
+    {
+      IndividualRedPacketManager.a(IndividualRedPacketManager.VIPHBStrategy.a(this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager$VIPHBStrategy), this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
+      return;
     }
-    this.jdField_a_of_type_Zmv.invalidate();
+    catch (Exception localException)
+    {
+      QLog.e(IndividualRedPacketManager.b(), 1, "dealRedPacketToShow failed", localException);
+    }
   }
 }
 

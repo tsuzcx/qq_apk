@@ -1,23 +1,61 @@
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.open.wadl.WLog;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import cooperation.wadl.ipc.IWadlServiceCallBack.Stub;
+import cooperation.wadl.ipc.WadlProxyServiceManager;
 
-public final class anor
-  implements Runnable
+public class anor
+  extends IWadlServiceCallBack.Stub
 {
-  public anor(File paramFile, String paramString1, String paramString2) {}
+  public anor(WadlProxyServiceManager paramWadlProxyServiceManager) {}
   
-  public void run()
+  public void a(String paramString, Bundle paramBundle)
   {
-    FileUtils.a(this.jdField_a_of_type_JavaIoFile.getPath() + File.separator, this.jdField_a_of_type_JavaLangString, this.b);
     if (QLog.isColorLevel()) {
-      QLog.i("QIMFileUtils", 2, "paster config save to file " + this.jdField_a_of_type_JavaIoFile.getPath() + File.separator + this.jdField_a_of_type_JavaLangString);
+      WLog.b("WadlProxyServiceManager", "##@Call back from Service: " + paramString);
     }
+    paramBundle.setClassLoader(getClass().getClassLoader());
+    if (paramString != null)
+    {
+      if (!paramString.equals("WADL.REVERSE_HEART_CMD")) {
+        break label88;
+      }
+      paramString = WadlProxyServiceManager.a(this.a).obtainMessage();
+      paramString.what = 4;
+      paramString.setData(paramBundle);
+      WadlProxyServiceManager.a(this.a).sendMessage(paramString);
+    }
+    label88:
+    do
+    {
+      return;
+      if (paramString.equals("WADL.REVERSE_ACTION_CMD"))
+      {
+        paramString = WadlProxyServiceManager.a(this.a).obtainMessage();
+        paramString.what = 3;
+        paramString.setData(paramBundle);
+        WadlProxyServiceManager.a(this.a).sendMessage(paramString);
+        return;
+      }
+      if (paramString.equals("WADL.REVERSE_STOP_MONITOR_CMD"))
+      {
+        paramString = WadlProxyServiceManager.a(this.a).obtainMessage();
+        paramString.what = 5;
+        paramString.setData(paramBundle);
+        WadlProxyServiceManager.a(this.a).sendMessage(paramString);
+        return;
+      }
+    } while (!paramString.equals("WADL.REVERSE_START_MONITOR_CMD"));
+    paramString = WadlProxyServiceManager.a(this.a).obtainMessage();
+    paramString.what = 6;
+    paramString.setData(paramBundle);
+    WadlProxyServiceManager.a(this.a).sendMessage(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
-import com.tencent.mobileqq.data.MessageForMedalNews;
+import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 
 class vbu
   implements Runnable
@@ -9,7 +9,9 @@ class vbu
   
   public void run()
   {
-    MedalNewsItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMedalNewsItemBuilder, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMedalNewsItemBuilder.a.d, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.level, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.id, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.ts, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.seq);
+    if ((FileUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath)) || (FileUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strMiddleThumPath))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.b();
+    }
   }
 }
 

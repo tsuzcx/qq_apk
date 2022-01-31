@@ -1,32 +1,28 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
+import com.tencent.biz.qqstory.storyHome.StoryHomePushYellowBarHandler;
 
 public class nyg
-  extends QQUIEventReceiver
+  implements Runnable
 {
-  public nyg(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
-  {
-    super(paramStoryMessageListActivity);
-  }
+  public nyg(QQStoryMainController paramQQStoryMainController) {}
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void run()
   {
-    if (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
-      }
-      paramStoryMessageListActivity.e();
+    if (QQStoryMainController.a(this.a)) {
+      return;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+    this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = this.a.a();
+    this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.setInputViewHideListener(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeStoryHomePushYellowBarHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
+    QQStoryMainController.a(this.a, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a());
+    QQStoryMainController.a(this.a, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a());
+    QQStoryMainController.a(this.a).setVisibility(8);
+    QQStoryMainController.a(this.a).setVisibility(8);
+    QQStoryMainController.a(this.a.jdField_a_of_type_AndroidAppActivity, "mainHallConfig", QQStoryMainController.a(this.a), QQStoryMainController.a(this.a));
   }
 }
 

@@ -1,32 +1,65 @@
-import com.tencent.mobileqq.doutu.DoutuEmotionHorizonListView.HorizonListViewTouchListener;
-import com.tencent.mobileqq.doutu.DoutuManager;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.ConditionSearchManager.ISearchListener;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.util.ThreadPriorityManager;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import java.util.List;
 
 public class abye
-  implements DoutuEmotionHorizonListView.HorizonListViewTouchListener
+  implements ConditionSearchManager.ISearchListener
 {
-  public abye(DoutuManager paramDoutuManager, MqqHandler paramMqqHandler) {}
+  public abye(SearchResultActivity paramSearchResultActivity) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
+    int i = 1;
+    if (paramInt == 3) {
+      if (!paramBoolean1)
       {
-        return;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(80);
+        this.a.b = 3;
+        this.a.jdField_a_of_type_Abyg.notifyDataSetChanged();
+      }
+    }
+    while (paramInt != 2)
+    {
       return;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(80, 5000L);
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      }
+      paramList = this.a;
+      if (paramBoolean2) {}
+      for (paramInt = i;; paramInt = 0)
+      {
+        paramList.b = paramInt;
+        break;
+      }
+    }
+    if (paramBoolean1)
+    {
+      ThreadPriorityManager.a(true);
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        this.a.jdField_a_of_type_JavaUtilList.clear();
+        this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      }
+      this.a.jdField_a_of_type_Abyg.notifyDataSetChanged();
+      ThreadPriorityManager.a(false);
+      SearchResultActivity.a(this.a).a(0);
+      paramList = Message.obtain();
+      paramList.what = 5;
+      SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
+      return;
+    }
+    SearchResultActivity.a(this.a).a(1);
+    paramList = Message.obtain();
+    paramList.what = 4;
+    SearchResultActivity.a(this.a).sendMessageDelayed(paramList, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abye
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,33 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.MessageObserver;
+import mqq.os.MqqHandler;
 
-class sds
-  implements Runnable
+public class sds
+  extends MessageObserver
 {
-  sds(sdr paramsdr) {}
+  public sds(ChatHistory paramChatHistory) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    this.a.a.v();
+    this.a.r();
+    if (!paramBoolean)
+    {
+      Message localMessage = this.a.a.obtainMessage(5);
+      this.a.a(localMessage);
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(3);
+      this.a.a(localMessage);
+      return;
+    }
+    Message localMessage = this.a.a.obtainMessage(2);
+    this.a.a(localMessage);
   }
 }
 

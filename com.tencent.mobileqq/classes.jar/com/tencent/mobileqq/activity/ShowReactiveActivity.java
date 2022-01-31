@@ -30,14 +30,14 @@ import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 import com.tencent.widget.AlphaDrawable;
-import tso;
+import txg;
 
 public class ShowReactiveActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new tso(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new txg(this);
   FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
   FormMutiItem jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem;
   FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
@@ -63,6 +63,16 @@ public class ShowReactiveActivity
     paramCompoundButton.setOnCheckedChangeListener(this);
   }
   
+  private void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Intent localIntent = new Intent(this, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    startActivity(localIntent);
+  }
+  
   public View a(int paramInt)
   {
     return findViewById(paramInt);
@@ -70,23 +80,23 @@ public class ShowReactiveActivity
   
   public void a()
   {
-    setLeftViewName(2131432414);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)a(2131371393));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131371431));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem = ((FormMutiItem)a(2131371432));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem = ((FormMutiItem)a(2131371433));
+    setLeftViewName(2131432425);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)a(2131371391));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131371429));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem = ((FormMutiItem)a(2131371430));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem = ((FormMutiItem)a(2131371431));
     this.c = ((FormMutiItem)a(2131371434));
     this.d = ((FormMutiItem)a(2131371435));
     this.e = ((FormMutiItem)a(2131371438));
     this.f = ((FormMutiItem)a(2131371439));
-    this.g = ((FormMutiItem)a(2131371440));
-    this.h = ((FormMutiItem)a(2131371441));
+    this.g = ((FormMutiItem)a(2131371432));
+    this.h = ((FormMutiItem)a(2131371433));
     this.j = ((FormMutiItem)a(2131371436));
     this.k = ((FormMutiItem)a(2131371437));
-    this.i = ((FormMutiItem)a(2131371442));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131371430));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371428));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131371429));
+    this.i = ((FormMutiItem)a(2131371440));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131371428));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371426));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)a(2131371427));
     Object localObject2 = (FriendsManager)this.app.getManager(50);
     boolean bool2 = ((FriendsManager)localObject2).d();
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
@@ -104,59 +114,63 @@ public class ShowReactiveActivity
       }
       localObject1 = ((FriendsManager)localObject2).a(this.jdField_a_of_type_JavaLangString, false);
       m = ((FriendsManager)localObject2).b(this.jdField_a_of_type_JavaLangString, (ExtensionInfo)localObject1, bool2);
-      ((FriendsManager)localObject2).c(this.jdField_a_of_type_JavaLangString, (ExtensionInfo)localObject1, bool2);
       ((FriendsManager)localObject2).d(this.jdField_a_of_type_JavaLangString, (ExtensionInfo)localObject1, bool2);
+      ((FriendsManager)localObject2).e(this.jdField_a_of_type_JavaLangString, (ExtensionInfo)localObject1, bool2);
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (getIntent().getBooleanExtra("showFriendDays", false))) {
-        break label900;
+        break label949;
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(8);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130845927));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130846009));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(HotReactiveHelper.a(this, 1));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormMutiItem.setSecondLineText(HotReactiveHelper.a(this, 7));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130845913));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setLeftIcon(getResources().getDrawable(2130845993));
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setFirstLineText(HotReactiveHelper.a(this, 2));
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormMutiItem.setSecondLineText(HotReactiveHelper.a(this, 8));
-      this.c.setLeftIcon(getResources().getDrawable(2130845930));
+      this.c.setLeftIcon(getResources().getDrawable(2130846012));
       this.c.setFirstLineText(HotReactiveHelper.a(this, 3));
       this.c.setSecondLineText(HotReactiveHelper.a(this, 9));
-      this.d.setLeftIcon(getResources().getDrawable(2130845916));
+      this.d.setLeftIcon(getResources().getDrawable(2130845996));
       this.d.setFirstLineText(HotReactiveHelper.a(this, 4));
       this.d.setSecondLineText(HotReactiveHelper.a(this, 10));
-      this.e.setLeftIcon(getResources().getDrawable(2130845929));
+      this.e.setLeftIcon(getResources().getDrawable(2130846011));
       this.e.setFirstLineText(HotReactiveHelper.a(this, 5));
       this.e.setSecondLineText(HotReactiveHelper.a(this, 11));
-      this.f.setLeftIcon(getResources().getDrawable(2130845915));
+      this.f.setLeftIcon(getResources().getDrawable(2130845995));
       this.f.setFirstLineText(HotReactiveHelper.a(this, 6));
       this.f.setSecondLineText(HotReactiveHelper.a(this, 12));
-      this.g.setLeftIcon(getResources().getDrawable(2130845922));
+      this.g.setLeftIcon(getResources().getDrawable(2130846003));
       this.g.setFirstLineText(HotReactiveHelper.a(this, 59));
       this.g.setSecondLineText(HotReactiveHelper.a(this, 61));
-      this.h.setLeftIcon(getResources().getDrawable(2130845921));
+      this.g.setRightIcon(getResources().getDrawable(2130838580));
+      this.g.setOnClickListener(this);
+      this.h.setLeftIcon(getResources().getDrawable(2130846001));
       this.h.setFirstLineText(HotReactiveHelper.a(this, 60));
       this.h.setSecondLineText(HotReactiveHelper.a(this, 62));
-      this.j.setLeftIcon(getResources().getDrawable(2130845923));
+      this.h.setRightIcon(getResources().getDrawable(2130838580));
+      this.h.setOnClickListener(this);
+      this.j.setLeftIcon(getResources().getDrawable(2130846005));
       this.j.setFirstLineText(HotReactiveHelper.a(this, 36));
       this.j.setSecondLineText(HotReactiveHelper.a(this, 34));
-      this.k.setLeftIcon(getResources().getDrawable(2130845925));
+      this.k.setLeftIcon(getResources().getDrawable(2130846007));
       this.k.setFirstLineText(HotReactiveHelper.a(this, 37));
       this.k.setSecondLineText(HotReactiveHelper.a(this, 35));
-      localObject1 = new AlphaDrawable(this, 2130845927, 2130845928);
+      localObject1 = new AlphaDrawable(this, 2130846009, 2130846010);
       this.i.setLeftIcon((Drawable)localObject1);
       HotReactiveHelper.a((AlphaDrawable)localObject1);
       this.i.setFirstLineText(HotReactiveHelper.a(this, 30));
       this.i.setSecondLineText(HotReactiveHelper.a(this, 31));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(HotReactiveHelper.a(this, 29));
       if (AppSetting.b) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131438568));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131438588));
       }
       return;
       bool1 = false;
       break;
-      label900:
+      label949:
       localObject2 = ContactUtils.n(this.app, this.jdField_a_of_type_JavaLangString);
       String str = "你和好友" + (String)localObject2 + "获取以下标识";
       this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
@@ -169,12 +183,12 @@ public class ShowReactiveActivity
       else if (m == 2)
       {
         this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
-        a(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, str, (String)localObject2, ((ExtensionInfo)localObject1).chatDays, 2130845927);
+        a(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, str, (String)localObject2, ((ExtensionInfo)localObject1).chatDays, 2130846009);
       }
       else if (m == 1)
       {
         this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setVisibility(0);
-        a(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, str, (String)localObject2, ((ExtensionInfo)localObject1).chatDays, 2130845927);
+        a(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, str, (String)localObject2, ((ExtensionInfo)localObject1).chatDays, 2130846009);
       }
     }
   }
@@ -192,8 +206,8 @@ public class ShowReactiveActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970617);
-    setTitle(2131435466);
+    super.setContentView(2130970630);
+    setTitle(2131435482);
     this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)this.app.getManager(50));
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("friendUin");
     a();
@@ -212,16 +226,16 @@ public class ShowReactiveActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    String str = getString(2131436861);
+    String str = getString(2131436881);
     SpecialCareInfo localSpecialCareInfo = ((FriendsManager)this.app.getManager(50)).a(this.jdField_a_of_type_JavaLangString);
     if ((localSpecialCareInfo == null) || (localSpecialCareInfo.globalSwitch == 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131436036));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131436054));
     }
-    for (str = str + getString(2131436036);; str = str + getString(2131436037))
+    for (str = str + getString(2131436054);; str = str + getString(2131436055))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(str);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131436037));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(getString(2131436055));
     }
   }
   
@@ -231,7 +245,7 @@ public class ShowReactiveActivity
     boolean bool2 = false;
     if (!NetworkUtil.d(getActivity()))
     {
-      QQToast.a(getApplicationContext(), 2131436066, 1).a();
+      QQToast.a(getApplicationContext(), 2131436084, 1).a();
       bool1 = bool2;
       if (!paramBoolean) {
         bool1 = true;
@@ -266,13 +280,18 @@ public class ShowReactiveActivity
   {
     switch (paramView.getId())
     {
+    case 2131371430: 
+    case 2131371431: 
     default: 
       return;
+    case 2131371429: 
+      paramView = new Intent(this, QQSpecialCareSettingActivity.class);
+      paramView.putExtra("key_friend_uin", this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("key_start_from", 4);
+      startActivity(paramView);
+      return;
     }
-    paramView = new Intent(this, QQSpecialCareSettingActivity.class);
-    paramView.putExtra("key_friend_uin", this.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("key_start_from", 4);
-    startActivity(paramView);
+    a(HotReactiveHelper.a(this, 77));
   }
 }
 

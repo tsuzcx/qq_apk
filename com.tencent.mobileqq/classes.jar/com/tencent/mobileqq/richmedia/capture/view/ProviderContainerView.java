@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import ahmk;
-import ahml;
-import ahmm;
-import ahmn;
-import ahmo;
+import ahrd;
+import ahre;
+import ahrf;
+import ahrg;
+import ahrh;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -50,7 +50,7 @@ public class ProviderContainerView
   implements ISupportAdvertisement
 {
   private int jdField_a_of_type_Int = -1;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahmk(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ahrd(this);
   View jdField_a_of_type_AndroidViewView;
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -112,12 +112,12 @@ public class ProviderContainerView
     paramInt = UIUtils.a(getContext(), 80.0F);
     Object localObject = new AnimatorSet();
     ((AnimatorSet)localObject).playTogether(new Animator[] { ObjectAnimator.ofFloat(this, "translationY", new float[] { paramInt, 0.0F }), CaptureAnimationUtils.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131492879), 0, 153), CaptureAnimationUtils.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131492879), 0, 153), CaptureAnimationUtils.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131492879), 0, 153) });
-    ((AnimatorSet)localObject).addListener(new ahml(this));
+    ((AnimatorSet)localObject).addListener(new ahre(this));
     ((AnimatorSet)localObject).setDuration(300L).start();
     localObject = CaptureAnimationUtils.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView, 0.0F, 1.0F);
     ((Animation)localObject).setStartOffset(200L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new ahmm(this));
+    ((Animation)localObject).setAnimationListener(new ahrf(this));
     startAnimation((Animation)localObject);
   }
   
@@ -151,7 +151,7 @@ public class ProviderContainerView
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView.ai_();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView.ak_();
       return;
       int i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilProviderViewBuilder.b(paramInt);
       localProviderView = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilProviderViewBuilder.a(getContext(), i);
@@ -259,7 +259,7 @@ public class ProviderContainerView
         return;
       }
     } while (paramInt != 104);
-    paramRedDotImageView.setContentDescription(getResources().getText(2131439114));
+    paramRedDotImageView.setContentDescription(getResources().getText(2131439141));
   }
   
   private void b(boolean paramBoolean)
@@ -267,24 +267,24 @@ public class ProviderContainerView
     Object localObject = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, UIUtils.a(getContext(), 80.0F) });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playTogether(new Animator[] { localObject, CaptureAnimationUtils.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131492879), 153, 0), CaptureAnimationUtils.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131492879), 153, 0), CaptureAnimationUtils.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131492879), 153, 0) });
-    localAnimatorSet.addListener(new ahmn(this));
+    localAnimatorSet.addListener(new ahrg(this));
     localAnimatorSet.setDuration(300L).start();
     localObject = CaptureAnimationUtils.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView, 1.0F, 0.0F);
     ((Animation)localObject).setStartOffset(0L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new ahmo(this, paramBoolean));
+    ((Animation)localObject).setAnimationListener(new ahrh(this, paramBoolean));
     startAnimation((Animation)localObject);
   }
   
   private void h()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2130970581, null);
+    View localView = LayoutInflater.from(getContext()).inflate(2130970594, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369120));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131364450));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131369121);
-    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131369122);
-    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131371221);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369121));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131364475));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131369122);
+    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131369123);
+    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131371219);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilProviderViewBuilder = new ProviderViewBuilder(0);
   }
   
@@ -518,7 +518,7 @@ public class ProviderContainerView
       {
         ((RedDotImageView)localObject).setReddotXOffsetDp(12);
         ((RedDotImageView)localObject).setReddotYOffsetDp(8);
-        ((RedDotImageView)localObject).setRedDotDrawable(getResources().getDrawable(2130845579));
+        ((RedDotImageView)localObject).setRedDotDrawable(getResources().getDrawable(2130845660));
       }
       ((RedDotImageView)localObject).a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilProviderViewBuilder.a(i));
       ((RedDotImageView)localObject).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -636,8 +636,8 @@ public class ProviderContainerView
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilEffectsListenerController = paramEffectsListenerController;
     this.jdField_e_of_type_AndroidViewView = paramEffectsListenerController.jdField_a_of_type_AndroidViewView;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout = ((CameraCaptureButtonLayout)this.jdField_e_of_type_AndroidViewView.findViewById(2131368954));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView = ((EffectsCameraCaptureView)this.jdField_e_of_type_AndroidViewView.findViewById(2131366945));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureButtonLayout = ((CameraCaptureButtonLayout)this.jdField_e_of_type_AndroidViewView.findViewById(2131368957));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView = ((EffectsCameraCaptureView)this.jdField_e_of_type_AndroidViewView.findViewById(2131366943));
   }
   
   public void setNeedAdvertisement(boolean paramBoolean)

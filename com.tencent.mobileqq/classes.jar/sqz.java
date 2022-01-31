@@ -1,26 +1,27 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.troop.widget.ProfileGuideHelper;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortListView.DropListener;
+import com.tencent.mobileqq.emoticon.EmojiListenerManager;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class sqz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DragSortListView.DropListener
 {
-  public sqz(FriendProfileCardActivity paramFriendProfileCardActivity, View paramView, int paramInt1, int paramInt2) {}
+  public sqz(EmosmActivity paramEmosmActivity) {}
   
-  public void onGlobalLayout()
+  public void b_(int paramInt1, int paramInt2)
   {
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(arrayOfInt);
-    int i = arrayOfInt[1];
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-    if ((i + j <= this.jdField_a_of_type_Int - this.b) && (i != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.j))
+    if (paramInt1 != paramInt2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a(i, j, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.j = i;
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
+      this.a.a.a(localEmoticonPackage);
+      this.a.a.b(true);
+      this.a.a.a(localEmoticonPackage, paramInt2);
+      EmojiListenerManager.a().a(localEmoticonPackage, paramInt1, paramInt2);
+      this.a.c = true;
+      ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aaeu;
+import aall;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -24,7 +24,7 @@ public abstract class IArSoCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IArSoCallback))) {
       return (IArSoCallback)localIInterface;
     }
-    return new aaeu(paramIBinder);
+    return new aall(paramIBinder);
   }
   
   public IBinder asBinder()

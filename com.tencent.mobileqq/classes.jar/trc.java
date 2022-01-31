@@ -1,34 +1,35 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
+import com.tencent.mobileqq.apollo.script.callback.ISpriteDrawerInfoCallback;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class trc
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public class trc
+  implements ISpriteDrawerInfoCallback
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ScoreQAVFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
+  public trc(QQSettingMe paramQQSettingMe) {}
   
-  public trc(trb paramtrb, View paramView, ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
+  public void a()
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131366251));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener.a(paramView, getPosition());
-    }
-    while (!QLog.isColorLevel()) {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext == null) {}
+    while (this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(QQSettingMe.a(this.a), this.a.c, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity) != 0) {
       return;
     }
-    QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
+    this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(QQSettingMe.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.c);
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, new Object[] { "[onApolloClick] ", "apolloStatus:", Integer.valueOf(paramInt1), ",clickPart:", Integer.valueOf(paramInt2), ",apolloId:", paramString });
+    }
+    if (paramInt1 == 0)
+    {
+      this.a.L();
+      return;
+    }
+    ThreadManager.getUIHandler().post(new trd(this, paramInt2, paramString));
   }
 }
 

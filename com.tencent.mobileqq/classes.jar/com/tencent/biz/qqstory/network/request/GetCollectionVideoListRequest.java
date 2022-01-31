@@ -25,6 +25,7 @@ public class GetCollectionVideoListRequest
   public int e;
   public String e;
   public int f;
+  public int g;
   
   public GetCollectionVideoListRequest()
   {
@@ -73,6 +74,7 @@ public class GetCollectionVideoListRequest
     {
       AssertUtils.a(this.jdField_c_of_type_JavaLangString);
       localReqGetCollectionVideoList.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+      localReqGetCollectionVideoList.video_dir.set(this.g);
       return localReqGetCollectionVideoList.toByteArray();
       localReqGetCollectionVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
       localReqGetCollectionVideoList.identify.set(this.f);

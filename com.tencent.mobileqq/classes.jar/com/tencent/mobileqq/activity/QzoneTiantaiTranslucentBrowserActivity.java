@@ -10,22 +10,22 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import cooperation.qzone.thread.BaseHandler;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.webviewplugin.QzonePersonalizeJsPlugin;
-import toa;
-import tob;
+import tss;
+import tst;
 
 public class QzoneTiantaiTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
 {
   private long jdField_a_of_type_Long;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new tob(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new toa(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new tst(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new tss(this);
   private volatile boolean jdField_a_of_type_Boolean;
   private volatile boolean b;
   private volatile boolean c;
   
   private void a()
   {
-    View localView = findViewById(2131362369);
+    View localView = findViewById(2131362372);
     if (localView == null) {
       return;
     }

@@ -1,40 +1,25 @@
-import com.tencent.open.appcommon.now.download.DownloadCenterImpl;
-import com.tencent.open.appcommon.now.download.IDownloadCallback;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class ales
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ales(DownloadCenterImpl paramDownloadCenterImpl, ArrayList paramArrayList) {}
+  public ales(TabBarView paramTabBarView, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LogUtility.a("DownloadCenterImpl", "getQueryDownloadAction enter");
-    ArrayList localArrayList = new ArrayList();
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      localObject = (DownloadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (DownloadManager.a().a((DownloadInfo)localObject)) {
-        localArrayList.add(localObject);
-      }
-      i += 1;
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a < 500L) {
+      return;
     }
-    Object localObject = DownloadCenterImpl.a(this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadDownloadCenterImpl).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((IDownloadCallback)((Iterator)localObject).next()).b(localArrayList);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a = l;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ales
  * JD-Core Version:    0.7.0.1
  */

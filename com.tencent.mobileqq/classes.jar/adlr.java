@@ -1,47 +1,21 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.SSOAccountObserver;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
 
 public class adlr
-  extends SSOAccountObserver
+  implements IDownloadController
 {
-  WeakReference a;
+  public adlr(MPcFileModel paramMPcFileModel) {}
   
-  public adlr(ForwardSdkBaseOption paramForwardSdkBaseOption)
+  public void a()
   {
-    this.a = new WeakReference(paramForwardSdkBaseOption);
+    this.a.a(false, FileModel.a(this.a.a.a()), this.a.b(), new adls(this));
   }
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardSdkBaseOption", 2, "-->onFailed--account = " + paramString + ", ret = " + paramInt2);
-    }
-    paramString = (ForwardSdkBaseOption)this.a.get();
-    if ((paramString != null) && (!paramString.k) && (ForwardSdkBaseOption.a(paramString) != null)) {
-      ForwardSdkBaseOption.a(paramString).sendEmptyMessage(0);
-    }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardSdkBaseOption", 2, "-->onGetTicketNoPasswd--recv g_t_n_p, account = " + paramString);
-    }
-    if (paramInt == 4096) {}
-    for (paramString = new String(paramArrayOfByte);; paramString = null)
-    {
-      paramArrayOfByte = (ForwardSdkBaseOption)this.a.get();
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte.i = paramString;
-        paramArrayOfByte.k = true;
-      }
-      return;
-    }
+    this.a.s();
   }
 }
 

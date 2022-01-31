@@ -28,9 +28,9 @@ import java.lang.ref.WeakReference;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
-import yso;
-import ysp;
-import ysq;
+import yzf;
+import yzg;
+import yzh;
 
 public class ApolloBoxEnterView
   extends FrameGifView
@@ -39,7 +39,7 @@ public class ApolloBoxEnterView
   private int jdField_a_of_type_Int;
   private ApolloPandora jdField_a_of_type_ComTencentMobileqqDataApolloPandora;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  Runnable jdField_a_of_type_JavaLangRunnable = new ysp(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new yzg(this);
   private String jdField_a_of_type_JavaLangString;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private String b;
@@ -70,7 +70,7 @@ public class ApolloBoxEnterView
     this.jdField_a_of_type_JavaLangString = paramString2;
     this.c = paramQQAppInterface.getCurrentAccountUin();
     this.b = paramString1;
-    ThreadManager.executeOnSubThread(new yso(this, paramString1, paramString2));
+    ThreadManager.executeOnSubThread(new yzf(this, paramString1, paramString2));
   }
   
   public void a(String paramString1, String paramString2)
@@ -116,7 +116,7 @@ public class ApolloBoxEnterView
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -241,7 +241,7 @@ public class ApolloBoxEnterView
       return;
       if (paramBoolean)
       {
-        ThreadManager.executeOnSubThread(new ysq(this, paramBundle));
+        ThreadManager.executeOnSubThread(new yzh(this, paramBundle));
         return;
       }
     } while (!QLog.isColorLevel());

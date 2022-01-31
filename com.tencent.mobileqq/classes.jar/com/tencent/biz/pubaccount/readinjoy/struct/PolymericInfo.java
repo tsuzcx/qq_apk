@@ -24,6 +24,7 @@ public class PolymericInfo
   public int d;
   public long d;
   public String d;
+  public int e;
   public long e;
   public long f;
   
@@ -46,12 +47,13 @@ public class PolymericInfo
       localPolymericInfo.jdField_c_of_type_Long = paramPackInfo.uint64_pack_id.get();
       localPolymericInfo.jdField_d_of_type_JavaLangString = ((oidb_cmd0x68b.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).str_header_jump_url.get();
       localPolymericInfo.jdField_b_of_type_Int = ((oidb_cmd0x68b.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_icon_shape.get();
-      localPolymericInfo.e = ((oidb_cmd0x68b.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_algorithm_id.get();
+      localPolymericInfo.jdField_e_of_type_Long = ((oidb_cmd0x68b.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_algorithm_id.get();
       localPolymericInfo.jdField_d_of_type_Long = ((oidb_cmd0x68b.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_strategy_id.get();
       localPolymericInfo.f = ((oidb_cmd0x68b.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint64_topic_id.get();
       localPolymericInfo.jdField_a_of_type_Long = ((oidb_cmd0x68b.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_posttime.get();
       localPolymericInfo.jdField_c_of_type_Int = ((oidb_cmd0x68b.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_topic_number_count.get();
       localPolymericInfo.jdField_d_of_type_Int = ((oidb_cmd0x68b.SpecialTopicInfo)paramPackInfo.msg_special_topic_info.get()).uint32_video_count.get();
+      localPolymericInfo.jdField_e_of_type_Int = paramPackInfo.uint32_follow_status.get();
       return localPolymericInfo;
     }
     catch (Exception paramPackInfo) {}
@@ -60,7 +62,7 @@ public class PolymericInfo
   
   public String toString()
   {
-    return "PolymericInfo【 packID : " + this.jdField_c_of_type_Long + "\n polymericType : " + this.jdField_a_of_type_Int + "\n algorithmID : " + this.e + "\n strategyID : " + this.jdField_d_of_type_Long + "\n title : " + this.jdField_a_of_type_JavaLangString + "\n desc : " + this.jdField_b_of_type_JavaLangString + "\n publicTime : " + this.jdField_a_of_type_Long + "\n iconUrl : " + this.jdField_c_of_type_JavaLangString + "\n uin : " + this.jdField_b_of_type_Long + "\n topicID : " + this.f + "\n topicMemberCount : " + this.jdField_c_of_type_Int + "\n jumpUrl : " + this.jdField_d_of_type_JavaLangString + "\n videoCount : " + this.jdField_d_of_type_Int + "】";
+    return "PolymericInfo【 packID : " + this.jdField_c_of_type_Long + "\n polymericType : " + this.jdField_a_of_type_Int + "\n algorithmID : " + this.jdField_e_of_type_Long + "\n strategyID : " + this.jdField_d_of_type_Long + "\n title : " + this.jdField_a_of_type_JavaLangString + "\n desc : " + this.jdField_b_of_type_JavaLangString + "\n publicTime : " + this.jdField_a_of_type_Long + "\n iconUrl : " + this.jdField_c_of_type_JavaLangString + "\n uin : " + this.jdField_b_of_type_Long + "\n topicID : " + this.f + "\n topicMemberCount : " + this.jdField_c_of_type_Int + "\n jumpUrl : " + this.jdField_d_of_type_JavaLangString + "\n videoCount : " + this.jdField_d_of_type_Int + "\n followStatus : " + this.jdField_e_of_type_Int + "】";
   }
 }
 

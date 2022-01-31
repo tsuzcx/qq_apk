@@ -1,40 +1,32 @@
-import android.graphics.Color;
-import android.os.Build.VERSION;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.TipsView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
 public class aixh
-  implements Runnable
+  implements EIPCOnGetConnectionListener
 {
-  public aixh(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aixh(InnerDns paramInnerDns) {}
   
-  public void run()
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    TroopBarPublishActivity localTroopBarPublishActivity = this.a;
-    TEditText localTEditText = this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText;
-    int j = DisplayUtil.a(this.a, 71.0F);
-    if (Build.VERSION.SDK_INT < 19)
-    {
-      i = DisplayUtil.a(this.a, 20.0F);
-      TipsView.a(localTroopBarPublishActivity, localTEditText, "添加话题，更快上热门", 1, 1, j, i, DisplayUtil.a(this.a, 20.0F), 5000, Color.argb(204, 0, 0, 0));
-      SharedPreUtils.a(this.a, this.a.app.getCurrentAccountUin(), "tribe_video_post_has_show_tips", true);
-      if ((this.a.jdField_b_of_type_AndroidWidgetTextView == null) || (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
-        break label150;
-      }
+    if (paramEIPCConnection != null) {
+      InnerDns.a(this.a, paramEIPCConnection.procName);
     }
-    label150:
-    for (int i = 2;; i = 1)
-    {
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_guide", i, 0, "", "", "", "");
-      return;
-      i = 0;
-      break;
+    InnerDns.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "onConnectBind");
+    }
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      InnerDns.a(this.a, paramEIPCConnection.procName);
+    }
+    InnerDns.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "onConnectUnbind");
     }
   }
 }

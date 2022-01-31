@@ -17,39 +17,39 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.util.FaceDrawable;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
-import trd;
-import tre;
-import trf;
+import tvv;
+import tvw;
+import tvx;
 
 public class SearchFriendListActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new trd(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tvv(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private tre jdField_a_of_type_Tre;
+  private tvw jdField_a_of_type_Tvw;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
   public void a(View paramView, int paramInt)
   {
     SearchInfo localSearchInfo = (SearchInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    trf localtrf = (trf)paramView.getTag();
+    tvx localtvx = (tvx)paramView.getTag();
     if (!TextUtils.isEmpty(localSearchInfo.strNick))
     {
-      localtrf.jdField_a_of_type_AndroidWidgetTextView.setText(localSearchInfo.strNick);
+      localtvx.jdField_a_of_type_AndroidWidgetTextView.setText(localSearchInfo.strNick);
       if (localSearchInfo.eSource != 1) {
         break label187;
       }
-      localtrf.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.a(this.app, String.valueOf(localSearchInfo.lUIN), (byte)3));
-      localtrf.b.setText("QQ号码: " + localSearchInfo.lUIN);
+      localtvx.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.a(this.app, String.valueOf(localSearchInfo.lUIN), (byte)3));
+      localtvx.b.setText("QQ号码: " + localSearchInfo.lUIN);
     }
     for (;;)
     {
-      localtrf.jdField_a_of_type_Int = paramInt;
-      paramView.setContentDescription(localtrf.jdField_a_of_type_AndroidWidgetTextView.getText());
+      localtvx.jdField_a_of_type_Int = paramInt;
+      paramView.setContentDescription(localtvx.jdField_a_of_type_AndroidWidgetTextView.getText());
       return;
-      TextView localTextView = localtrf.jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = localtvx.jdField_a_of_type_AndroidWidgetTextView;
       if (localSearchInfo.eSource == 1) {}
       for (String str = localSearchInfo.lUIN + "";; str = localSearchInfo.strMobile)
       {
@@ -57,27 +57,27 @@ public class SearchFriendListActivity
         break;
       }
       label187:
-      localtrf.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.b(this.app, localSearchInfo.strMobile, (byte)3));
-      localtrf.b.setText("手机号码: " + localSearchInfo.strMobile);
+      localtvx.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.b(this.app, localSearchInfo.strMobile, (byte)3));
+      localtvx.b.setText("手机号码: " + localSearchInfo.strMobile);
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130971522);
-    setContentBackgroundResource(2130838214);
+    super.setContentView(2130971548);
+    setContentBackgroundResource(2130838219);
     setTitle("搜索结果");
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131375010));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838214);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131375062));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838219);
     addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     paramBundle = new JceInputStream(getIntent().getByteArrayExtra("param_search_resp"));
     RespSearch localRespSearch = new RespSearch();
     localRespSearch.readFrom(paramBundle);
     this.jdField_a_of_type_JavaUtilArrayList = localRespSearch.vRecords;
     this.jdField_a_of_type_ArrayOfByte = localRespSearch.vSecureSig;
-    this.jdField_a_of_type_Tre = new tre(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Tre);
+    this.jdField_a_of_type_Tvw = new tvw(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Tvw);
     return true;
   }
   
@@ -104,7 +104,7 @@ public class SearchFriendListActivity
     }
     label78:
     label123:
-    while (!(localObject instanceof trf))
+    while (!(localObject instanceof tvx))
     {
       return;
       if (paramView.bInContact == 1) {}
@@ -114,7 +114,7 @@ public class SearchFriendListActivity
         break;
       }
     }
-    paramView = (trf)paramView.getTag();
+    paramView = (tvx)paramView.getTag();
     localObject = (SearchInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramView.jdField_a_of_type_Int);
     if (((SearchInfo)localObject).bIsEnterpriseQQ == 0)
     {

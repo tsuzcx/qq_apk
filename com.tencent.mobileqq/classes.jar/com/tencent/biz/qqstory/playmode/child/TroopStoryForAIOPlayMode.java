@@ -44,8 +44,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import nlt;
-import nlu;
+import nqd;
+import nqe;
 
 public class TroopStoryForAIOPlayMode
   extends TroopStoryPlayModeBase
@@ -60,7 +60,7 @@ public class TroopStoryForAIOPlayMode
   {
     super(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
     this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryForAIOPlayMode$StoryVideoTagUpdateReceiver = new TroopStoryForAIOPlayMode.StoryVideoTagUpdateReceiver(this);
-    a(new nlu(this));
+    a(new nqe(this));
     b(1);
   }
   
@@ -135,19 +135,19 @@ public class TroopStoryForAIOPlayMode
   {
     if (a(paramStoryVideoItem))
     {
-      paramActionSheet.b(2131435871);
-      paramActionSheet.b(2131437383);
-      paramActionSheet.b(2131435895);
-      paramActionSheet.b(2131435875);
-      paramActionSheet.b(2131435882);
+      paramActionSheet.b(2131435887);
+      paramActionSheet.b(2131437403);
+      paramActionSheet.b(2131435911);
+      paramActionSheet.b(2131435891);
+      paramActionSheet.b(2131435898);
     }
     do
     {
       return;
-      paramActionSheet.b(2131435871);
-      paramActionSheet.b(2131435895);
+      paramActionSheet.b(2131435887);
+      paramActionSheet.b(2131435911);
     } while (PlayModeUtils.a(paramStoryVideoItem));
-    paramActionSheet.b(2131435116);
+    paramActionSheet.b(2131435132);
   }
   
   protected boolean a(View paramView, String paramString, StoryVideoItem paramStoryVideoItem)
@@ -158,7 +158,7 @@ public class TroopStoryForAIOPlayMode
     if ((localObject2 instanceof MessageForShortVideo))
     {
       localObject2 = (MessageForShortVideo)localObject2;
-      if (paramString.equals(((Resources)localObject3).getString(2131435871)))
+      if (paramString.equals(((Resources)localObject3).getString(2131435887)))
       {
         StoryReportor.a("story_grp", "clk_one", a(), 0, new String[] { "1", PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.b), "", "" });
         paramView = AIOImageProviderService.a((MessageForShortVideo)localObject2);
@@ -172,7 +172,7 @@ public class TroopStoryForAIOPlayMode
     for (;;)
     {
       return false;
-      if (paramString.equals(((Resources)localObject3).getString(2131435875)))
+      if (paramString.equals(((Resources)localObject3).getString(2131435891)))
       {
         StoryReportor.a("story_grp", "clk_one", a(), 0, new String[] { "5", PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.b), "", "" });
         paramView = AIOImageProviderService.a((MessageForShortVideo)localObject2);
@@ -182,7 +182,7 @@ public class TroopStoryForAIOPlayMode
           QfavReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 5);
         }
       }
-      else if (paramString.equals(((Resources)localObject3).getString(2131435882)))
+      else if (paramString.equals(((Resources)localObject3).getString(2131435898)))
       {
         paramView = TroopStoryUtil.a(paramStoryVideoItem.mVid);
         paramString = new Bundle();
@@ -208,7 +208,7 @@ public class TroopStoryForAIOPlayMode
         if ((localObject2 instanceof MessageForTroopStory))
         {
           localObject1 = (MessageForTroopStory)localObject2;
-          if (paramString.equals(((Resources)localObject3).getString(2131435871)))
+          if (paramString.equals(((Resources)localObject3).getString(2131435887)))
           {
             StoryReportor.a("story_grp", "clk_one", a(), 0, new String[] { "1", PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.b), "", "" });
             if (QLog.isColorLevel()) {
@@ -311,7 +311,7 @@ public class TroopStoryForAIOPlayMode
     {
       this.jdField_h_of_type_Boolean = bool;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-      this.jdField_a_of_type_AndroidOsHandler.post(new nlt(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new nqd(this));
       return;
       label414:
       if (i != 0) {}

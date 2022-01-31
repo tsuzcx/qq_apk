@@ -1,19 +1,26 @@
-import com.tencent.av.gaudio.BaseGaInvite;
-import java.util.TimerTask;
+import com.tencent.av.business.manager.pendant.EffectPendantTips;
 
 public class jih
-  extends TimerTask
+  implements Runnable
 {
-  public jih(BaseGaInvite paramBaseGaInvite) {}
+  public jih(EffectPendantTips paramEffectPendantTips, int paramInt) {}
   
   public void run()
   {
-    this.a.a.sendEmptyMessage(0);
+    try
+    {
+      this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.b(this.jdField_a_of_type_Int, null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jih
  * JD-Core Version:    0.7.0.1
  */

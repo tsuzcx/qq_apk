@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a34" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" android:overScrollMode="never" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a3e" android:layout_width="14.0dip" android:layout_height="10.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c0b" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="66.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0a3e" android:layout_centerVertical="true">
+        <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c054c" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a3f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="DOV好友" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff818284" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a40" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="DOV好友" />
+    </LinearLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a41" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="36.0dip" android:layout_alignParentBottom="true" />
 </RelativeLayout>

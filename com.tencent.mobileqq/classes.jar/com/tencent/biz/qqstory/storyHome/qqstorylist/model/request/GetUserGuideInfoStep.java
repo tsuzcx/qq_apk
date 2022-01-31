@@ -7,7 +7,7 @@ import com.tencent.biz.qqstory.channel.CmdTaskManger;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import nzm;
+import oeb;
 
 public class GetUserGuideInfoStep
   extends SimpleStep
@@ -47,7 +47,7 @@ public class GetUserGuideInfoStep
       b(paramErrorMessage);
       return;
     }
-    ThreadManager.getUIHandler().post(new nzm(this, paramResponse));
+    ThreadManager.getUIHandler().post(new oeb(this, paramResponse));
     d();
   }
   

@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
-import com.tencent.mobileqq.database.corrupt.DBFixLoadingDialog;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManager.CameraAFCallback;
+import com.tencent.mobileqq.camera.CameraManager.CameraProxy;
 
 public class abwd
-  implements Runnable
+  implements Camera.AutoFocusCallback
 {
-  public abwd(DBFixDialogUI paramDBFixDialogUI, int paramInt) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final CameraManager.CameraAFCallback jdField_a_of_type_ComTencentMobileqqCameraCameraManager$CameraAFCallback;
+  private final CameraManager.CameraProxy jdField_a_of_type_ComTencentMobileqqCameraCameraManager$CameraProxy;
   
-  public void run()
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    if (this.jdField_a_of_type_Int == DBFixLoadingDialog.d) {
-      DBFixDialogUI.c(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixDialogUI);
-    }
-    while (this.jdField_a_of_type_Int != DBFixLoadingDialog.e) {
-      return;
-    }
-    DBFixDialogUI.d(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixDialogUI);
+    this.jdField_a_of_type_AndroidOsHandler.post(new abwe(this, paramBoolean));
   }
 }
 

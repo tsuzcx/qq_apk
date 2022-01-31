@@ -1,26 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.BlurMaskFilter;
+import android.graphics.BlurMaskFilter.Blur;
+import android.graphics.Paint;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
 
-class aofw
-  implements DialogInterface.OnClickListener
+public class aofw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aofw(aofv paramaofv) {}
+  public aofw(FaceLayer.FaceItem paramFaceItem) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramDialogInterface = this.a.a.getIntent();
-    paramDialogInterface.putExtra("flow_back", 0);
-    this.a.a.setResult(1001, paramDialogInterface);
-    paramDialogInterface = null;
-    if (this.a.a.g) {
-      paramDialogInterface = this.a.a.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoClipSpec;
-    }
-    this.a.a.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a(this.a.a.d, this.a.a.e, this.a.a.n, this.a.a.g, paramDialogInterface);
-    this.a.a.finish();
+    this.a.p = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.b.g.setMaskFilter(new BlurMaskFilter(this.a.p, BlurMaskFilter.Blur.OUTER));
+    this.a.b.k();
   }
 }
 

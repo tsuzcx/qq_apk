@@ -1,44 +1,62 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopEntranceBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import java.util.ArrayList;
 
 public class ajdu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ajdu(TroopEntranceBar paramTroopEntranceBar) {}
+  public ajdu(TroopBarReplyActivity paramTroopBarReplyActivity, int paramInt) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject2 = "";
-    Object localObject1 = "";
-    Object localObject4 = PublicAccountUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (localObject4 != null)
+    switch (paramInt)
     {
-      localObject3 = ((AccountDetail)localObject4).uin;
-      localObject4 = ((AccountDetail)localObject4).name;
-      localObject1 = localObject4;
-      localObject2 = localObject3;
-      if (localObject4 != null)
-      {
-        localObject1 = localObject4;
-        localObject2 = localObject3;
-        if (((String)localObject4).endsWith("·部落"))
-        {
-          localObject1 = ((String)localObject4).substring(0, ((String)localObject4).length() - 3);
-          localObject2 = localObject3;
-        }
-      }
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface.dismiss();
+      return;
     }
-    localObject1 = String.format("https://buluo.qq.com/mobile/relativegroup.html?from=%s&scode=%s&keyword=%s&channel=1&_wv=1027&_bid=128", new Object[] { "qun_aio", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localObject1 });
-    Object localObject3 = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    ((Intent)localObject3).putExtra("url", (String)localObject1);
-    this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject3);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "clk_tribechat_aio", "exp_tribechat_aio", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject2, "", "");
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 4: 
+    case 6: 
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
+      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.h();
+      return;
+    case 2: 
+      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(new ajdv(this), 200L);
+      return;
+    case 3: 
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
+      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.b(4);
+      return;
+    case 1: 
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
+      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.g();
+      return;
+    case 7: 
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
+      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.b(3);
+      return;
+    }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarReplyActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(new ajdw(this), 200L);
   }
 }
 

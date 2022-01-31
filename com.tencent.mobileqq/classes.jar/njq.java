@@ -1,15 +1,13 @@
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase.FeedInfoUpdateReceiver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
 
 public class njq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public njq(FeedsPlayModeBase.FeedInfoUpdateReceiver paramFeedInfoUpdateReceiver, FeedsPlayModeBase paramFeedsPlayModeBase) {}
+  public njq(MsgTabStoryNodeView paramMsgTabStoryNodeView) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.v();
-  }
+  public void onClick(View paramView) {}
 }
 
 

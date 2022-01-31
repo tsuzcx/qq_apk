@@ -1,31 +1,35 @@
 import android.os.Bundle;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack;
-import cooperation.qqpim.QQPimTipsInfo;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import cooperation.buscard.BuscardPluginRemoteCommand;
 
-class amqp
-  implements EIPCResultCallback
+public class amqp
+  extends PublicAccountObserver
 {
-  amqp(amqo paramamqo) {}
+  public amqp(BuscardPluginRemoteCommand paramBuscardPluginRemoteCommand, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.a).hashCode());
-    }
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putBoolean("isSuccess", paramBoolean);
+    ((Bundle)localObject).putString("uin", paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putAll((Bundle)localObject);
+    if (QLog.isColorLevel())
     {
-      paramEIPCResult = paramEIPCResult.data.getParcelable(QQPimDefineList.n);
-      if (paramEIPCResult != null)
-      {
-        paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
-        this.a.a.a = paramEIPCResult;
-        QQPimGetTipsInfoIPC.a(this.a.a).a(paramEIPCResult);
+      localObject = new StringBuilder().append("publicAccount.followUin, isSuccess=").append(paramBoolean).append("; result=");
+      if (this.jdField_a_of_type_AndroidOsBundle == null) {
+        break label108;
       }
+    }
+    label108:
+    for (paramString = this.jdField_a_of_type_AndroidOsBundle.toString();; paramString = "null")
+    {
+      QLog.d("BuscardPluginRemoteCommand", 2, paramString);
+      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
+      }
+      return;
     }
   }
 }

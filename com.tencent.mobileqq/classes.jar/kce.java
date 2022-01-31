@@ -1,35 +1,53 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.RecvMsg;
-import com.tencent.av.ui.VideoLayerUI;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
+import com.tencent.qphone.base.util.QLog;
 
 public class kce
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  private kce(VideoLayerUI paramVideoLayerUI) {}
+  public kce(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.a.a == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationCancel");
     }
-    if (VideoLayerUI.a(this.a).size() > 0)
-    {
-      this.a.a.a().removeCallbacks(VideoLayerUI.a(this.a));
-      this.a.a.a().removeCallbacks(VideoLayerUI.b(this.a));
-      RecvMsg localRecvMsg = (RecvMsg)VideoLayerUI.a(this.a).remove(0);
-      VideoLayerUI.a(this.a, localRecvMsg);
-      this.a.a.a().postDelayed(VideoLayerUI.a(this.a), 3000L);
-      this.a.a.a().postDelayed(VideoLayerUI.b(this.a), 3000L);
-      return;
+    this.a.b(3, false);
+    QavVideoRecordUICtrl.b(this.a).requestLayout();
+    QavVideoRecordUICtrl.b(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationEnd");
     }
-    this.a.a.a().removeCallbacks(VideoLayerUI.a(this.a));
+    this.a.c(3);
+    QavVideoRecordUICtrl.b(this.a).requestLayout();
+    QavVideoRecordUICtrl.b(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationStart");
+    }
+    QavVideoRecordUICtrl.a(this.a).setVisibility(0);
+    QavVideoRecordUICtrl.a(this.a).setAlpha(0.0F);
+    QavVideoRecordUICtrl.b(this.a).setVisibility(0);
+    QavVideoRecordUICtrl.b(this.a).setAlpha(0.0F);
+    QavVideoRecordUICtrl.e(this.a).height = -2;
+    QavVideoRecordUICtrl.e(this.a).width = -2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kce
  * JD-Core Version:    0.7.0.1
  */

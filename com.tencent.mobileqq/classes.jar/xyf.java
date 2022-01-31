@@ -1,24 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
+import com.tencent.qphone.base.util.QLog;
 
 public class xyf
-  extends BroadcastReceiver
+  implements Camera.AutoFocusCallback
 {
-  public xyf(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public xyf(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    if ((NetworkUtil.d(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.c) && (this.a.isResume()))
-    {
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean);
     }
+    NewFlowCameraReporter.a(paramBoolean);
+    NewFlowCameraActivity.b(this.a);
   }
 }
 

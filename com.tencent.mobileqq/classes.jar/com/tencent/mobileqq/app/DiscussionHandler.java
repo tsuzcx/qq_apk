@@ -106,8 +106,8 @@ import tencent.im.oidb.cmd0x921.cmd0x921.GetAtAllRemainRsp;
 import tencent.im.oidb.cmd0x921.cmd0x921.ReqBody;
 import tencent.im.oidb.cmd0x921.cmd0x921.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import zcx;
-import zcy;
+import zjx;
+import zjy;
 
 public class DiscussionHandler
   extends BusinessHandler
@@ -1461,7 +1461,7 @@ public class DiscussionHandler
           try
           {
             localObject1 = new String[2];
-            localObject1[0] = AppConstants.bm;
+            localObject1[0] = AppConstants.bn;
             localObject1[1] = "/data/data/com.tencent.mobileqq/files/head/_hd/";
             int k = localObject1.length;
             i = 0;
@@ -1563,7 +1563,7 @@ public class DiscussionHandler
             try
             {
               localObject1 = new String[2];
-              localObject1[0] = AppConstants.bm;
+              localObject1[0] = AppConstants.bn;
               localObject1[1] = "/data/data/com.tencent.mobileqq/files/head/_hd/";
               int k = localObject1.length;
               i = 0;
@@ -2048,7 +2048,7 @@ public class DiscussionHandler
   
   void c(long paramLong, ArrayList paramArrayList)
   {
-    ThreadManager.post(new zcy(this, paramLong, paramArrayList), 5, null, false);
+    ThreadManager.post(new zjy(this, paramLong, paramArrayList), 5, null, false);
   }
   
   protected void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -2912,21 +2912,21 @@ public class DiscussionHandler
           case 108: 
           case 109: 
           default: 
-            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438455);
+            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438475);
           }
           for (;;)
           {
-            ThreadManager.getUIHandler().post(new zcx(this, paramToServiceMsg));
+            ThreadManager.getUIHandler().post(new zjx(this, paramToServiceMsg));
             break label336;
             i = 0;
             break;
-            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438449);
+            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438469);
             continue;
-            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438450);
+            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438470);
             continue;
-            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438451);
+            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438471);
             continue;
-            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438456);
+            paramToServiceMsg = BaseApplicationImpl.getApplication().getResources().getString(2131438476);
           }
         }
       }

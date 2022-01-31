@@ -1,20 +1,17 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class skv
   implements DialogInterface.OnDismissListener
 {
-  public skv(DiscussionMemberActivity paramDiscussionMemberActivity, int paramInt, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager, FriendListObserver paramFriendListObserver) {}
+  public skv(Conversation paramConversation) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.getHandler().postDelayed(new skw(this), 150L);
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
+    }
   }
 }
 

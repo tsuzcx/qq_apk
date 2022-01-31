@@ -1,31 +1,33 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.confess.ConfessMsgUtil;
+import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
 
 public class zgs
-  implements Runnable
+  extends DownloadListener
 {
-  public zgs(MessageHandler paramMessageHandler, boolean paramBoolean) {}
+  public zgs(QQFrameZipDecoder paramQQFrameZipDecoder, String paramString1, String paramString2, String paramString3) {}
   
-  public void run()
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    try
-    {
-      ConfessMsgUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b, false);
-      ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b, false);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.f(this.jdField_a_of_type_Boolean);
-      return;
+    super.onDone(paramDownloadTask);
+    if (3 == paramDownloadTask.a()) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
     }
-    catch (RuntimeException localRuntimeException)
+    for (;;)
     {
-      QLog.e("Q.msg.MessageHandler", 1, "sendMsgReadedReportInAll error :", localRuntimeException);
-      throw localRuntimeException;
+      if (QLog.isColorLevel()) {
+        QLog.d("SimpleFrameZipDecoder", 2, "downloadZip onDone task.getStatus()->" + paramDownloadTask.a());
+      }
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a = 2;
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zgs
  * JD-Core Version:    0.7.0.1
  */

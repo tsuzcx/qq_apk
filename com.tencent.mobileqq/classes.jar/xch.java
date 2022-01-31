@@ -1,20 +1,17 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.aio.qwallet.ScrollPlayer;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
 
 public class xch
-  extends RecyclerView.OnScrollListener
+  implements View.OnLayoutChangeListener
 {
-  public xch(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public xch(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ScrollPlayer.a(bool);
-      return;
+    if (((paramInt1 != paramInt5) || (paramInt2 != paramInt6) || (paramInt3 != paramInt7) || (paramInt4 != paramInt8)) && (this.a.a != null)) {
+      this.a.a.sendEmptyMessage(1001);
     }
   }
 }

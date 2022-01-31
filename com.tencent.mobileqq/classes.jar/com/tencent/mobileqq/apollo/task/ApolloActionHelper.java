@@ -496,10 +496,18 @@ public class ApolloActionHelper
     int j;
     if (("-1".equals(paramString)) || ("-2".equals(paramString)))
     {
-      if ("-1".equals(paramString)) {}
-      for (i = 1;; i = 2)
+      if ("-1".equals(paramString))
       {
-        localObject1 = ApolloResDownloader.a(i);
+        i = 1;
+        localObject2 = ApolloResDownloader.a(i);
+        if (!a(paramString, i, (int[])localObject2, paramQQAppInterface)) {
+          break label201;
+        }
+        paramString = (String)localObject2;
+      }
+      for (;;)
+      {
+        localObject1 = paramString;
         paramString = new StringBuilder();
         paramString.append("******roleId:[");
         paramString.append(i);
@@ -514,6 +522,14 @@ public class ApolloActionHelper
           paramString.append(localObject1[j]);
           j += 1;
         }
+        i = 2;
+        break;
+        label201:
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloActionHelper", 2, new Object[] { "role and dress is not ready,uin:", paramString, ",roleId:", Integer.valueOf(0) });
+        }
+        paramString = (String)localObject1;
+        i = 0;
       }
     }
     Object localObject2 = ((ApolloManager)paramQQAppInterface.getManager(152)).b(paramString);
@@ -529,7 +545,7 @@ public class ApolloActionHelper
       }
       if (((ApolloBaseInfo)localObject2).apolloLocalTS != ((ApolloBaseInfo)localObject2).apolloServerTS)
       {
-        QLog.i("ApolloActionHelper", 1, "dress changed, uin:" + paramString);
+        QLog.i("ApolloActionHelper", 1, "dress changed, uin:" + ApolloUtil.d(paramString));
         ApolloManager.a(paramQQAppInterface, paramString, "getRoleDressIdByUin");
       }
       arrayOfApolloDress = ((ApolloBaseInfo)localObject2).getApolloDress(false);
@@ -537,9 +553,9 @@ public class ApolloActionHelper
       {
         j = arrayOfApolloDress.length;
         i = 0;
-        label352:
+        label418:
         if (i >= j) {
-          break label652;
+          break label713;
         }
         ApolloDress localApolloDress = arrayOfApolloDress[i];
         localObject2 = localApolloDress.a();
@@ -549,8 +565,8 @@ public class ApolloActionHelper
             QLog.d("ApolloActionHelper", 2, "valid role and dress RSC.");
           }
           i = localApolloDress.a;
-          localObject1 = localObject2;
           j = 1;
+          localObject1 = localObject2;
         }
       }
     }
@@ -571,11 +587,10 @@ public class ApolloActionHelper
           {
             QLog.d("ApolloActionHelper", 2, "current dress NOT downloaded, check basic dress");
             i = j;
-            paramString = (String)localObject2;
           }
         }
       }
-      for (;;)
+      for (paramString = (String)localObject2;; paramString = (String)localObject1)
       {
         localObject1 = paramString;
         break;
@@ -583,26 +598,25 @@ public class ApolloActionHelper
           QLog.d("ApolloActionHelper", 2, "try to get history dress ....");
         }
         i += 1;
-        break label352;
+        break label418;
         if (QLog.isColorLevel()) {
           QLog.d("ApolloActionHelper", 2, "uin: " + paramString + " dress is null");
         }
-        paramString = (String)localObject1;
-        i = 0;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloActionHelper", 2, "warning: apolloBaseInfo or apolloBaseInfo.apolloDress is NULL, fail to get role info. apolloBaseInfo:" + localObject2);
+        for (;;)
+        {
+          i = 0;
+          break;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloActionHelper", 2, "warning: apolloBaseInfo or apolloBaseInfo.apolloDress is NULL, fail to get role info. apolloBaseInfo:" + localObject2);
+          }
         }
-        i = 0;
-        break;
         paramString.append("]****");
         if (QLog.isColorLevel()) {
           QLog.d("ApolloActionHelper", 2, paramString.toString());
         }
         return new Object[] { Integer.valueOf(i), localObject1 };
-        paramString = (String)localObject1;
       }
-      label652:
+      label713:
       j = 0;
       i = 0;
     }

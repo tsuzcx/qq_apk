@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import mqq.util.WeakReference;
 
@@ -276,11 +277,33 @@ public class AppActivity
       }
       return;
     }
-    catch (Exception localException)
+    catch (IllegalArgumentException localIllegalArgumentException1)
     {
       for (;;)
       {
-        localException.printStackTrace();
+        QLog.d("AppActivity", 1, "super onResume", localIllegalArgumentException1);
+        try
+        {
+          Field localField = Activity.class.getDeclaredField("mCalled");
+          localField.setAccessible(true);
+          localField.set(this, Boolean.valueOf(true));
+        }
+        catch (NoSuchFieldException localNoSuchFieldException)
+        {
+          localNoSuchFieldException.printStackTrace();
+        }
+        catch (SecurityException localSecurityException)
+        {
+          localSecurityException.printStackTrace();
+        }
+        catch (IllegalArgumentException localIllegalArgumentException2)
+        {
+          localIllegalArgumentException2.printStackTrace();
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          localIllegalAccessException.printStackTrace();
+        }
       }
     }
   }

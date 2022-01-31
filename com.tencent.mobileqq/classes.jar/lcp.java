@@ -1,21 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
 
 public class lcp
-  implements Runnable
 {
-  public lcp(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
+  public View a;
+  public Button a;
+  public ImageView a;
+  public DragTextView a;
+  public SingleLineTextView a;
+  public String a;
+  public ImageView[] a;
+  public SingleLineTextView b;
   
-  public void run()
-  {
-    QQMessageFacade localQQMessageFacade = this.a.app.a();
-    if (localQQMessageFacade != null)
-    {
-      int i = localQQMessageFacade.b();
-      this.a.a(i);
-    }
-  }
+  public lcp(ShopFolderAdapter paramShopFolderAdapter) {}
 }
 
 

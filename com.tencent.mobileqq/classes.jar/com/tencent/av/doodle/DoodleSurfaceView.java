@@ -64,7 +64,7 @@ public class DoodleSurfaceView
   @TargetApi(11)
   private void a(Context paramContext)
   {
-    setId(2131362535);
+    setId(2131362540);
     setClickable(false);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
@@ -370,7 +370,7 @@ public class DoodleSurfaceView
       paramMotionEvent = getContext();
       if ((paramMotionEvent instanceof AVActivity))
       {
-        localObject = ((View)localObject).findViewById(2131362534);
+        localObject = ((View)localObject).findViewById(2131362539);
         if (localObject != null)
         {
           paramMotionEvent = ((AVActivity)paramMotionEvent).a;
@@ -387,12 +387,15 @@ public class DoodleSurfaceView
       Object localObject = getContext();
       if ((localObject instanceof AVActivity))
       {
-        paramMotionEvent = ((View)getParent()).findViewById(2131362534);
+        paramMotionEvent = ((View)getParent()).findViewById(2131362539);
         if (paramMotionEvent != null)
         {
           localObject = ((AVActivity)localObject).a;
-          paramMotionEvent.startAnimation(((VideoControlUI)localObject).a(true));
-          ((VideoControlUI)localObject).z();
+          if (localObject != null)
+          {
+            paramMotionEvent.startAnimation(((VideoControlUI)localObject).a(true));
+            ((VideoControlUI)localObject).z();
+          }
         }
       }
       invalidate();
@@ -441,7 +444,7 @@ public class DoodleSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.doodle.DoodleSurfaceView
  * JD-Core Version:    0.7.0.1
  */

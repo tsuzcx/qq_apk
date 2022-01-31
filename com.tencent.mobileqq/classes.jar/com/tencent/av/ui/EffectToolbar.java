@@ -37,9 +37,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
-import jua;
-import jub;
-import juc;
+import jwe;
+import jwf;
+import jwg;
 
 public class EffectToolbar
   extends BaseToolbar
@@ -48,10 +48,10 @@ public class EffectToolbar
   private static final String TAG = "EffectToolbar";
   QAVPtvTemplateAdapter mAdapter;
   public Button mEarbackBtn = null;
-  QAVPtvTemplateAdapter.IEffectCallback mEffectClickCallback = new jua(this);
+  QAVPtvTemplateAdapter.IEffectCallback mEffectClickCallback = new jwe(this);
   boolean mEnableGesture = false;
   HorizontalListView mListView;
-  protected juc mObserver;
+  protected jwg mObserver;
   private EffectPendantTools mPendantManager;
   public Map mPtvTemplateInfoMap = new HashMap();
   ArrayList mTemplateList = null;
@@ -65,14 +65,24 @@ public class EffectToolbar
   @Nullable
   private String getCurrentPendantId()
   {
-    Object localObject = (PendantItem)this.mPendantManager.a();
-    if ((localObject == null) || (!((PendantItem)localObject).isShow())) {}
-    for (localObject = null;; localObject = ((PendantItem)localObject).getId())
+    Object localObject;
+    if (this.mPendantManager.jdField_c_of_type_JavaLangString != null)
+    {
+      localObject = this.mPendantManager.jdField_c_of_type_JavaLangString;
+      this.mPendantManager.jdField_c_of_type_JavaLangString = null;
+    }
+    for (;;)
     {
       if (QLog.isColorLevel()) {
         QLog.i("EffectToolbar", 2, String.format("getCurrentPendantId", new Object[0]));
       }
       return localObject;
+      localObject = (PendantItem)this.mPendantManager.a();
+      if ((localObject == null) || (!((PendantItem)localObject).isShow())) {
+        localObject = null;
+      } else {
+        localObject = ((PendantItem)localObject).getId();
+      }
     }
   }
   
@@ -81,27 +91,31 @@ public class EffectToolbar
     paramObservable = (Object[])paramObject;
     switch (((Integer)paramObservable[0]).intValue())
     {
+    case 169: 
+    case 170: 
     default: 
       return;
-    }
-    paramObject = (FaceItem)paramObservable[1];
-    StringBuilder localStringBuilder = new StringBuilder().append("TYPE_NOTIFY_FACE_ITEM_STATE_CHANGE :");
-    if (paramObject == null) {}
-    for (paramObservable = "null";; paramObservable = paramObject.getId())
-    {
-      AVLog.d("EffectToolbar", paramObservable);
-      if (paramObject == null) {
-        break;
+    case 168: 
+      paramObject = (FaceItem)paramObservable[1];
+      StringBuilder localStringBuilder = new StringBuilder().append("TYPE_NOTIFY_FACE_ITEM_STATE_CHANGE :");
+      if (paramObject == null) {}
+      for (paramObservable = "null";; paramObservable = paramObject.getId())
+      {
+        AVLog.d("EffectToolbar", paramObservable);
+        if (paramObject == null) {
+          break;
+        }
+        setLastItem();
+        return;
       }
-      setLastItem();
-      return;
     }
+    setLastItem();
   }
   
   private void postSetCurrentItemById(String paramString)
   {
     notifyEvent(Integer.valueOf(6101), null, Boolean.valueOf(true));
-    this.mApp.a().post(new jub(this, paramString));
+    this.mApp.a().post(new jwf(this, paramString));
     boolean bool;
     if (this.mApp.a(3))
     {
@@ -221,9 +235,9 @@ public class EffectToolbar
   
   private void updateEarbackBtn()
   {
-    int i = 2130840361;
+    int i = 2130840376;
     if (this.mApp.a().a().aC) {
-      i = 2130840362;
+      i = 2130840377;
     }
     this.mEarbackBtn.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
@@ -236,7 +250,7 @@ public class EffectToolbar
     localArrayList.add(localObject);
     localObject = new QavListItemBase.ItemInfo();
     ((QavListItemBase.ItemInfo)localObject).jdField_a_of_type_JavaLangString = "0";
-    ((QavListItemBase.ItemInfo)localObject).b = String.valueOf(2130840282);
+    ((QavListItemBase.ItemInfo)localObject).b = String.valueOf(2130840297);
     ((QavListItemBase.ItemInfo)localObject).d = "取消挂件";
     localArrayList.add(localObject);
     this.mPtvTemplateInfoMap.clear();
@@ -270,9 +284,9 @@ public class EffectToolbar
     {
       this.mUIInfo = new BaseToolbar.UIInfo();
       this.mUIInfo.d = 1;
-      this.mUIInfo.g = 2130969361;
+      this.mUIInfo.g = 2130969359;
       this.mUIInfo.e = 103414;
-      this.mUIInfo.f = 2130840343;
+      this.mUIInfo.f = 2130840358;
       this.mUIInfo.jdField_a_of_type_JavaLangString = this.mApp.getApp().getResources().getString(2131428742);
     }
     return this.mUIInfo;
@@ -328,8 +342,8 @@ public class EffectToolbar
   protected void onCreate(AVActivity paramAVActivity)
   {
     this.mPendantManager = ((EffectPendantTools)this.mApp.a(2));
-    this.mObserver = new juc(this);
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366275));
+    this.mObserver = new jwg(this);
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131366280));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mTemplateList = addItem_with_Double_Video_type(this.mApp);
     this.mAdapter = new QAVPtvTemplateAdapter(this.mApp, paramAVActivity, this.mTemplateList, this.mListView);
@@ -341,7 +355,7 @@ public class EffectToolbar
     this.mAdapter.a(this);
     this.mListView.setAdapter(this.mAdapter);
     setLastItem();
-    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131366282));
+    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131366287));
     this.mEarbackBtn.setOnClickListener(this);
     AVEffectPendantReport.c();
   }
@@ -455,7 +469,7 @@ public class EffectToolbar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.EffectToolbar
  * JD-Core Version:    0.7.0.1
  */

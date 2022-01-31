@@ -1,44 +1,52 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.utils.FileUtils;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import dov.com.tencent.mobileqq.shortvideo.hwcodec.SVHwThumbGen;
+import android.os.FileObserver;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
-class aopv
-  extends AsyncTask
+public class aopv
+  extends FileObserver
 {
-  aopv(aopu paramaopu) {}
+  private boolean a;
   
-  protected Integer a(Void... paramVarArgs)
+  private void a()
   {
-    long l = System.currentTimeMillis();
-    paramVarArgs = aopu.a(this.a) + "shortvideo_thumb.jpg";
-    int j = this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwThumbGen.a(aopu.b(this.a), SVHwEncoder.f(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder), SVHwEncoder.g(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder), SVHwEncoder.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder), SVHwEncoder.b(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder), paramVarArgs);
-    int i = j;
-    String str;
-    if (j == 0)
+    if (!this.a)
     {
-      str = ShortVideoUtils.a(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwThumbGen.jdField_a_of_type_JavaLangString, "jpg");
-      if (!FileUtils.c(paramVarArgs, str)) {
-        break label177;
-      }
-      this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwThumbGen.b = str;
-      i = j;
+      this.a = true;
+      RMVideoStateMgr.a().a(new aopw(this));
     }
-    for (;;)
+  }
+  
+  public void onEvent(int paramInt, String paramString)
+  {
+    if ((paramInt & 0x20) == 32) {
+      if (QLog.isColorLevel()) {
+        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
+      }
+    }
+    do
     {
-      this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwThumbGen.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-      this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwThumbGen.jdField_a_of_type_Int = i;
-      aopu.a(this.a, true);
-      return Integer.valueOf(i);
-      label177:
-      i = j;
-      if (!FileUtils.b(str))
+      return;
+      if ((paramInt & 0x400) == 1024)
       {
-        this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoHwcodecSVHwEncoder.a("doInBackground()", "rename failure, mThumbFilePath = " + paramVarArgs + ",thumbPath=" + str);
-        i = -3;
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
+        }
+        a();
+        return;
       }
+      if ((paramInt & 0x200) == 512)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
+        }
+        a();
+        return;
+      }
+    } while ((paramInt & 0x8) != 8);
+    if (QLog.isColorLevel()) {
+      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
     }
+    a();
   }
 }
 

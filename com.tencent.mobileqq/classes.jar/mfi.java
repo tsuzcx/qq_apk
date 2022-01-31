@@ -1,29 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import java.util.Set;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
 
 public class mfi
-  implements Runnable
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  public mfi(VideoFeedsCommentManager paramVideoFeedsCommentManager) {}
   
-  public mfi(VideoPreDownloadMgr paramVideoPreDownloadMgr, boolean paramBoolean)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    ReadInJoyCommentListFragment localReadInJoyCommentListFragment;
+    if (VideoFeedsCommentManager.a(this.a) != null)
     {
-      if (VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr) != null) {
-        VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr).add(VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr));
-      }
-      if (VideoPreDownloadMgr.a() != null) {
-        VideoPreDownloadMgr.a().add(VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr));
+      localReadInJoyCommentListFragment = VideoFeedsCommentManager.a(this.a);
+      if ((paramInt & 0x2) != 0) {
+        break label32;
       }
     }
-    VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr, null);
-    VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr);
+    label32:
+    for (boolean bool = true;; bool = false)
+    {
+      localReadInJoyCommentListFragment.b(bool);
+      return;
+    }
   }
 }
 

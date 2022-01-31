@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import abwf;
-import abwg;
+import acec;
+import aced;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -44,7 +44,7 @@ public class DBFixLoadingDialog
   private DBFixLoadingDialog.onDBFixCall jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixLoadingDialog$onDBFixCall;
   private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
   private File jdField_a_of_type_JavaIoFile;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new abwg(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aced(this);
   private long jdField_b_of_type_Long;
   private File jdField_b_of_type_JavaIoFile;
   private String jdField_b_of_type_JavaLangString;
@@ -120,8 +120,8 @@ public class DBFixLoadingDialog
   {
     super.onCreate(paramBundle);
     super.requestWindowFeature(1);
-    super.setContentView(2130969067);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364974));
+    super.setContentView(2130969070);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365001));
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     this.jdField_a_of_type_JavaIoFile = this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_b_of_type_JavaLangString + ".db");
     this.jdField_b_of_type_JavaIoFile = this.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.jdField_b_of_type_JavaLangString + "_dump.db");
@@ -144,7 +144,7 @@ public class DBFixLoadingDialog
       String str = localSharedPreferences.getString(paramBundle + DBFixManager.k, "");
       localSharedPreferences.edit().putString(paramBundle + DBFixManager.k, str + "_" + jdField_a_of_type_Int).commit();
       ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 10, null, true);
-      super.setOnKeyListener(new abwf(this));
+      super.setOnKeyListener(new acec(this));
       return;
     }
   }

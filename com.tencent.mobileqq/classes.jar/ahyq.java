@@ -1,71 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.io.File;
+import com.tencent.mobileqq.app.GlobalSearchObserver;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
+import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ahyq
-  implements Runnable
+  extends GlobalSearchObserver
 {
-  public ahyq(PtvTemplateManager paramPtvTemplateManager) {}
+  public ahyq(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
   
-  public void run()
+  public void a(boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2)
   {
-    if (PtvTemplateManager.b == null) {}
-    File[] arrayOfFile;
-    do
+    super.a(paramBoolean, paramArrayList1, paramArrayList2);
+    paramArrayList2 = (String)paramArrayList2.get(0);
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    if ((paramBoolean) && (paramArrayList1 != null) && (paramArrayList1.size() >= 1))
     {
-      return;
-      arrayOfFile = PtvTemplateManager.b.listFiles();
-    } while ((arrayOfFile == null) || (arrayOfFile.length == 0));
-    int k = arrayOfFile.length;
-    int i = 0;
-    label32:
-    File localFile;
-    if (i < k)
-    {
-      localFile = arrayOfFile[i];
-      if ((localFile != null) && (localFile.isFile())) {
-        break label63;
-      }
-    }
-    label63:
-    label208:
-    for (;;)
-    {
-      i += 1;
-      break label32;
-      break;
-      Object localObject = localFile.getName();
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).contains(".")))
+      paramArrayList1 = ((ArrayList)paramArrayList1.get(0)).iterator();
+      while (paramArrayList1.hasNext())
       {
-        localObject = this.a.a.doodleInfos.iterator();
-        PtvTemplateManager.DoodleInfo localDoodleInfo;
-        do
+        Object localObject = (String)paramArrayList1.next();
+        if (((String)localObject).charAt(0) < '')
         {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
+          localObject = SQLiteFTSUtils.b((String)localObject);
+          if ((localObject != null) && (localObject.length > 0))
+          {
+            int j = localObject.length;
+            int i = 0;
+            while (i < j)
+            {
+              localStringBuilder.append(localObject[i]).append(" ");
+              i += 1;
+            }
           }
-          localDoodleInfo = (PtvTemplateManager.DoodleInfo)((Iterator)localObject).next();
-        } while ((localDoodleInfo == null) || (TextUtils.isEmpty(localDoodleInfo.doodleName)) || (!localFile.getName().equalsIgnoreCase(localDoodleInfo.doodleName)));
-        for (int j = 1;; j = 0)
+        }
+        else
         {
-          if (j != 0) {
-            break label208;
-          }
-          localFile.deleteOnExit();
-          new File(PtvTemplateManager.c + localFile.getName()).deleteOnExit();
-          break;
+          localStringBuilder.append((String)localObject).append(" ");
         }
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
+      }
+    }
+    FTSMessageSearchEngine.a(this.a).put(paramArrayList2, localStringBuilder);
+    paramArrayList1 = FTSMessageSearchEngine.b(this.a).get(paramArrayList2);
+    if (paramArrayList1 != null) {
+      try
+      {
+        paramArrayList1.notify();
+        return;
+      }
+      finally {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahyq
  * JD-Core Version:    0.7.0.1
  */

@@ -20,9 +20,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
-import www;
-import wwx;
-import wwy;
+import xck;
+import xcl;
+import xcm;
 
 public class PhotoCropForPortraitActivity
   extends PhotoCropActivity
@@ -35,23 +35,23 @@ public class PhotoCropForPortraitActivity
   private void b()
   {
     boolean bool = true;
-    Object localObject = (RelativeLayout)findViewById(2131363109);
+    Object localObject = (RelativeLayout)findViewById(2131363113);
     if (localObject == null) {
       return;
     }
-    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2130969174, null);
+    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2130969172, null);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(9);
     localLayoutParams.addRule(12);
     localLayoutParams.bottomMargin = AIOUtils.a(20.0F, getResources());
     ((RelativeLayout)localObject).addView(localViewGroup, localLayoutParams);
-    int i = SharedPreUtils.ay(this, getCurrentAccountUin());
+    int i = SharedPreUtils.aw(this, getCurrentAccountUin());
     if (i == -1)
     {
       try
       {
         this.h = 1;
-        localObject = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.headCfg.name(), "24|3500|1");
+        localObject = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.headCfg.name(), "24|3500|1|0");
         if (QLog.isColorLevel()) {
           QLog.i("qqBaseActivity", 2, "initSyncQZoneUI, " + (String)localObject);
         }
@@ -76,13 +76,13 @@ public class PhotoCropForPortraitActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364444));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364469));
       if (i != 0) {}
       for (;;)
       {
         this.jdField_c_of_type_Boolean = bool;
         this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_c_of_type_Boolean);
-        localViewGroup.setOnClickListener(new wwy(this));
+        localViewGroup.setOnClickListener(new xcm(this));
         return;
         this.h = 3;
         break;
@@ -99,7 +99,7 @@ public class PhotoCropForPortraitActivity
     String str = this.app.getCurrentAccountUin();
     localObject = ((FriendsManager)localObject).a(str);
     if ((localObject != null) && (((ExtensionInfo)localObject).isPendantValid()) && (this.d)) {
-      this.jdField_a_of_type_AndroidOsHandler = new wwx(this, (ExtensionInfo)localObject, str);
+      this.jdField_a_of_type_AndroidOsHandler = new xcl(this, (ExtensionInfo)localObject, str);
     }
     super.a(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     b();
@@ -114,9 +114,9 @@ public class PhotoCropForPortraitActivity
     {
       if (getIntent().getBooleanExtra("open_chat_from_avator", false))
       {
-        this.jdField_c_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365508));
+        this.jdField_c_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365513));
         this.jdField_c_of_type_AndroidWidgetButton.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new www(this));
+        this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(new xck(this));
       }
       return bool;
       getWindow().setFlags(16777216, 16777216);

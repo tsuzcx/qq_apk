@@ -1,20 +1,45 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.LBSDetetor;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.widget.XPanelContainer;
+import dov.com.qq.im.capture.text.DynamicTextBuilder;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import dov.com.qq.im.capture.text.EditTextPreView.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
 
 public class aogk
-  implements Handler.Callback
+  implements EditTextPreView.OnClickListener
 {
-  public aogk(LBSDetetor paramLBSDetetor) {}
+  public aogk(EditTextDialog paramEditTextDialog) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
+    if ((paramDynamicTextItem != null) && (paramInt > -1))
+    {
+      paramView = paramDynamicTextItem.a(paramInt);
+      if (paramView != null)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
+        if (!paramView.equals(DynamicTextBuilder.a(paramDynamicTextItem.c(), paramInt))) {
+          break label132;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(EditTextDialog.a(this.a));
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
+        if (this.a.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
+          this.a.jdField_a_of_type_AndroidWidgetEditText.selectAll();
+        }
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) {
+          this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(1);
+        }
+        return;
+        label132:
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
+      }
     }
-    LBSDetetor.a(this.a, false, null, paramMessage.what);
-    return false;
+    this.a.a(false);
   }
 }
 

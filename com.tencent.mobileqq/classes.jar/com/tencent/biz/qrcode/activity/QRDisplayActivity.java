@@ -74,6 +74,7 @@ import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qidian.controller.QidianBusinessObserver;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
@@ -84,29 +85,30 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import osz;
-import ota;
-import otd;
-import ote;
-import otf;
-import otg;
-import oth;
-import oti;
-import otj;
-import otk;
-import otm;
-import oto;
-import otp;
-import otq;
-import ots;
-import ott;
-import otw;
-import otx;
-import oty;
-import otz;
-import oua;
-import oub;
-import oud;
+import oxp;
+import oxq;
+import oxs;
+import oxv;
+import oxw;
+import oxx;
+import oxy;
+import oxz;
+import oya;
+import oyb;
+import oyc;
+import oye;
+import oyf;
+import oyh;
+import oyi;
+import oyk;
+import oyl;
+import oyo;
+import oyp;
+import oyq;
+import oyr;
+import oys;
+import oyt;
+import oyu;
 
 public class QRDisplayActivity
   extends IphoneTitleBarActivity
@@ -116,22 +118,23 @@ public class QRDisplayActivity
   protected long a;
   public Bitmap a;
   public Bundle a;
-  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer = new ots(this, 1000L, 200L);
+  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer = new oyk(this, 1000L, 200L);
   protected Handler a;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new otx(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new oyq(this);
   protected View a;
   public ImageView a;
   protected TextView a;
   public BitMatrix a;
   protected CodeMaskManager a;
-  QRDisplayActivity.GetNicknameObserver jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$GetNicknameObserver = new osz(this);
+  QRDisplayActivity.GetNicknameObserver jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$GetNicknameObserver = new oxp(this);
   private PcmPlayer jdField_a_of_type_ComTencentChirpPcmPlayer;
   public DiscussionHandler a;
-  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new oto(this);
+  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new oye(this);
   private ChirpSoHandler jdField_a_of_type_ComTencentMobileqqEarlydownloadHandlerChirpSoHandler;
   private ShareActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener;
+  QidianBusinessObserver jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver = new oyp(this);
   ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
   public Runnable a;
   public String a;
@@ -156,35 +159,36 @@ public class QRDisplayActivity
   protected TextView c;
   protected Runnable c;
   public String c;
-  protected boolean c;
+  public boolean c;
   public int d;
   public View d;
   public ImageView d;
   public String d;
-  public boolean d;
+  protected boolean d;
   public int e;
-  View jdField_e_of_type_AndroidViewView;
+  View e;
   public String e;
-  private boolean jdField_e_of_type_Boolean;
+  public boolean e;
   int jdField_f_of_type_Int;
   protected View f;
   protected String f;
-  private volatile boolean jdField_f_of_type_Boolean;
+  private boolean jdField_f_of_type_Boolean;
   public int g;
   protected View g;
   public String g;
-  private boolean g;
+  private volatile boolean g;
   public int h;
   protected View h;
+  private boolean h;
   
   public QRDisplayActivity()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = true;
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangRunnable = new ott(this);
-    this.jdField_b_of_type_JavaLangRunnable = new otw(this);
-    this.jdField_c_of_type_JavaLangRunnable = new oty(this);
+    this.jdField_a_of_type_JavaLangRunnable = new oyl(this);
+    this.jdField_b_of_type_JavaLangRunnable = new oyo(this);
+    this.jdField_c_of_type_JavaLangRunnable = new oyr(this);
     this.jdField_h_of_type_Int = -1;
   }
   
@@ -216,81 +220,81 @@ public class QRDisplayActivity
   private boolean a(String paramString)
   {
     // Byte code:
-    //   0: new 153	java/io/File
+    //   0: new 159	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 156	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 162	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_1
     //   9: aload_1
-    //   10: invokevirtual 160	java/io/File:exists	()Z
+    //   10: invokevirtual 166	java/io/File:exists	()Z
     //   13: ifne +183 -> 196
-    //   16: new 162	com/tencent/chirp/ChirpWrapper
+    //   16: new 168	com/tencent/chirp/ChirpWrapper
     //   19: dup
-    //   20: invokespecial 163	com/tencent/chirp/ChirpWrapper:<init>	()V
+    //   20: invokespecial 169	com/tencent/chirp/ChirpWrapper:<init>	()V
     //   23: astore 5
     //   25: aload 5
-    //   27: invokevirtual 165	com/tencent/chirp/ChirpWrapper:a	()I
-    //   30: ifne +290 -> 320
+    //   27: invokevirtual 171	com/tencent/chirp/ChirpWrapper:a	()I
+    //   30: ifne +291 -> 321
     //   33: aload_0
-    //   34: getfield 169	com/tencent/biz/qrcode/activity/QRDisplayActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   37: invokevirtual 175	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   34: getfield 175	com/tencent/biz/qrcode/activity/QRDisplayActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   37: invokevirtual 181	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   40: astore_3
-    //   41: new 177	java/lang/String
+    //   41: new 183	java/lang/String
     //   44: dup
-    //   45: ldc 179
-    //   47: invokespecial 180	java/lang/String:<init>	(Ljava/lang/String;)V
+    //   45: ldc 185
+    //   47: invokespecial 186	java/lang/String:<init>	(Ljava/lang/String;)V
     //   50: astore 4
-    //   52: new 182	java/lang/StringBuilder
+    //   52: new 188	java/lang/StringBuilder
     //   55: dup
-    //   56: invokespecial 183	java/lang/StringBuilder:<init>	()V
-    //   59: ldc 185
-    //   61: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokespecial 189	java/lang/StringBuilder:<init>	()V
+    //   59: ldc 191
+    //   61: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: aload 4
     //   66: iconst_0
     //   67: bipush 14
     //   69: aload_3
-    //   70: invokevirtual 192	java/lang/String:length	()I
+    //   70: invokevirtual 198	java/lang/String:length	()I
     //   73: isub
-    //   74: invokevirtual 196	java/lang/String:substring	(II)Ljava/lang/String;
-    //   77: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: invokevirtual 202	java/lang/String:substring	(II)Ljava/lang/String;
+    //   77: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   80: aload_3
-    //   81: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   81: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   87: astore_3
-    //   88: invokestatic 204	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   88: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   91: ifeq +28 -> 119
-    //   94: ldc 206
+    //   94: ldc 212
     //   96: iconst_2
-    //   97: new 182	java/lang/StringBuilder
+    //   97: new 188	java/lang/StringBuilder
     //   100: dup
-    //   101: invokespecial 183	java/lang/StringBuilder:<init>	()V
-    //   104: ldc 208
-    //   106: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: invokespecial 189	java/lang/StringBuilder:<init>	()V
+    //   104: ldc 214
+    //   106: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: aload_3
-    //   110: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   116: invokestatic 211	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   110: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   116: invokestatic 217	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   119: aload 5
     //   121: aload_3
-    //   122: invokevirtual 214	com/tencent/chirp/ChirpWrapper:a	(Ljava/lang/String;)Landroid/util/Pair;
+    //   122: invokevirtual 220	com/tencent/chirp/ChirpWrapper:a	(Ljava/lang/String;)Landroid/util/Pair;
     //   125: astore_3
     //   126: aload_3
-    //   127: getfield 220	android/util/Pair:first	Ljava/lang/Object;
-    //   130: checkcast 222	java/lang/Integer
-    //   133: invokevirtual 225	java/lang/Integer:intValue	()I
+    //   127: getfield 226	android/util/Pair:first	Ljava/lang/Object;
+    //   130: checkcast 228	java/lang/Integer
+    //   133: invokevirtual 231	java/lang/Integer:intValue	()I
     //   136: istore_2
     //   137: aload_3
-    //   138: getfield 228	android/util/Pair:second	Ljava/lang/Object;
-    //   141: checkcast 230	[S
+    //   138: getfield 234	android/util/Pair:second	Ljava/lang/Object;
+    //   141: checkcast 236	[S
     //   144: astore 4
     //   146: iload_2
     //   147: ifne +135 -> 282
     //   150: aload 4
     //   152: ifnull +130 -> 282
-    //   155: new 232	java/io/FileOutputStream
+    //   155: new 238	java/io/FileOutputStream
     //   158: dup
     //   159: aload_1
-    //   160: invokespecial 235	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   160: invokespecial 241	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   163: astore_3
     //   164: aload 4
     //   166: arraylength
@@ -300,16 +304,16 @@ public class QRDisplayActivity
     //   171: astore_1
     //   172: aload 4
     //   174: aload_1
-    //   175: invokestatic 237	com/tencent/biz/qrcode/activity/QRDisplayActivity:a	([S[B)V
+    //   175: invokestatic 243	com/tencent/biz/qrcode/activity/QRDisplayActivity:a	([S[B)V
     //   178: aload_3
     //   179: aload_1
-    //   180: invokevirtual 241	java/io/FileOutputStream:write	([B)V
+    //   180: invokevirtual 247	java/io/FileOutputStream:write	([B)V
     //   183: aload_3
     //   184: ifnull +7 -> 191
     //   187: aload_3
-    //   188: invokevirtual 244	java/io/FileOutputStream:close	()V
+    //   188: invokevirtual 250	java/io/FileOutputStream:close	()V
     //   191: aload 5
-    //   193: invokevirtual 246	com/tencent/chirp/ChirpWrapper:a	()V
+    //   193: invokevirtual 252	com/tencent/chirp/ChirpWrapper:a	()V
     //   196: iconst_1
     //   197: ireturn
     //   198: astore_1
@@ -317,33 +321,33 @@ public class QRDisplayActivity
     //   200: athrow
     //   201: astore_1
     //   202: aload 5
-    //   204: invokevirtual 246	com/tencent/chirp/ChirpWrapper:a	()V
+    //   204: invokevirtual 252	com/tencent/chirp/ChirpWrapper:a	()V
     //   207: aload_1
     //   208: athrow
     //   209: astore_3
     //   210: aconst_null
     //   211: astore_1
-    //   212: invokestatic 204	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   212: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   215: ifeq +12 -> 227
-    //   218: ldc 206
+    //   218: ldc 212
     //   220: iconst_2
-    //   221: ldc 248
+    //   221: ldc 254
     //   223: aload_3
-    //   224: invokestatic 251	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   224: invokestatic 257	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   227: aload_1
     //   228: astore_3
     //   229: aload_1
     //   230: ifnull +9 -> 239
     //   233: aload_1
-    //   234: invokevirtual 244	java/io/FileOutputStream:close	()V
+    //   234: invokevirtual 250	java/io/FileOutputStream:close	()V
     //   237: aconst_null
     //   238: astore_3
     //   239: aload_3
     //   240: ifnull +7 -> 247
     //   243: aload_3
-    //   244: invokevirtual 244	java/io/FileOutputStream:close	()V
+    //   244: invokevirtual 250	java/io/FileOutputStream:close	()V
     //   247: aload 5
-    //   249: invokevirtual 246	com/tencent/chirp/ChirpWrapper:a	()V
+    //   249: invokevirtual 252	com/tencent/chirp/ChirpWrapper:a	()V
     //   252: iconst_0
     //   253: ireturn
     //   254: astore_1
@@ -359,7 +363,7 @@ public class QRDisplayActivity
     //   266: aload_3
     //   267: ifnull +7 -> 274
     //   270: aload_3
-    //   271: invokevirtual 244	java/io/FileOutputStream:close	()V
+    //   271: invokevirtual 250	java/io/FileOutputStream:close	()V
     //   274: aload_1
     //   275: athrow
     //   276: astore_1
@@ -368,61 +372,61 @@ public class QRDisplayActivity
     //   279: astore_1
     //   280: aload_1
     //   281: athrow
-    //   282: invokestatic 204	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   285: ifeq +28 -> 313
-    //   288: ldc 206
+    //   282: invokestatic 210	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   285: ifeq +29 -> 314
+    //   288: ldc 212
     //   290: iconst_4
-    //   291: new 182	java/lang/StringBuilder
+    //   291: new 188	java/lang/StringBuilder
     //   294: dup
-    //   295: invokespecial 183	java/lang/StringBuilder:<init>	()V
-    //   298: ldc 253
-    //   300: invokevirtual 189	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   303: iload_2
-    //   304: invokevirtual 256	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   307: invokevirtual 199	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   310: invokestatic 211	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   313: aload 5
-    //   315: invokevirtual 246	com/tencent/chirp/ChirpWrapper:a	()V
-    //   318: iconst_0
-    //   319: ireturn
-    //   320: aload 5
-    //   322: invokevirtual 246	com/tencent/chirp/ChirpWrapper:a	()V
-    //   325: iconst_0
-    //   326: ireturn
-    //   327: astore_1
-    //   328: goto -137 -> 191
-    //   331: astore_1
-    //   332: goto -85 -> 247
-    //   335: astore_3
-    //   336: goto -62 -> 274
-    //   339: astore_1
-    //   340: goto -74 -> 266
-    //   343: astore 4
-    //   345: aload_1
-    //   346: astore_3
-    //   347: aload 4
-    //   349: astore_1
-    //   350: goto -84 -> 266
-    //   353: astore 4
-    //   355: aload_3
-    //   356: astore_1
-    //   357: aload 4
-    //   359: astore_3
-    //   360: goto -148 -> 212
+    //   295: invokespecial 189	java/lang/StringBuilder:<init>	()V
+    //   298: ldc_w 259
+    //   301: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   304: iload_2
+    //   305: invokevirtual 262	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   308: invokevirtual 205	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   311: invokestatic 217	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   314: aload 5
+    //   316: invokevirtual 252	com/tencent/chirp/ChirpWrapper:a	()V
+    //   319: iconst_0
+    //   320: ireturn
+    //   321: aload 5
+    //   323: invokevirtual 252	com/tencent/chirp/ChirpWrapper:a	()V
+    //   326: iconst_0
+    //   327: ireturn
+    //   328: astore_1
+    //   329: goto -138 -> 191
+    //   332: astore_1
+    //   333: goto -86 -> 247
+    //   336: astore_3
+    //   337: goto -63 -> 274
+    //   340: astore_1
+    //   341: goto -75 -> 266
+    //   344: astore 4
+    //   346: aload_1
+    //   347: astore_3
+    //   348: aload 4
+    //   350: astore_1
+    //   351: goto -85 -> 266
+    //   354: astore 4
+    //   356: aload_3
+    //   357: astore_1
+    //   358: aload 4
+    //   360: astore_3
+    //   361: goto -149 -> 212
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	363	0	this	QRDisplayActivity
-    //   0	363	1	paramString	String
-    //   136	168	2	i	int
+    //   0	364	0	this	QRDisplayActivity
+    //   0	364	1	paramString	String
+    //   136	169	2	i	int
     //   40	148	3	localObject1	Object
     //   209	15	3	localException1	Exception
     //   228	43	3	str	String
-    //   335	1	3	localIOException	java.io.IOException
-    //   346	14	3	localObject2	Object
+    //   336	1	3	localIOException	java.io.IOException
+    //   347	14	3	localObject2	Object
     //   50	123	4	localObject3	Object
-    //   343	5	4	localObject4	Object
-    //   353	5	4	localException2	Exception
-    //   23	298	5	localChirpWrapper	ChirpWrapper
+    //   344	5	4	localObject4	Object
+    //   354	5	4	localException2	Exception
+    //   23	299	5	localChirpWrapper	ChirpWrapper
     // Exception table:
     //   from	to	target	type
     //   187	191	198	finally
@@ -432,7 +436,7 @@ public class QRDisplayActivity
     //   274	276	201	finally
     //   277	279	201	finally
     //   280	282	201	finally
-    //   282	313	201	finally
+    //   282	314	201	finally
     //   155	164	209	java/lang/Exception
     //   233	237	254	java/io/IOException
     //   233	237	260	finally
@@ -440,40 +444,40 @@ public class QRDisplayActivity
     //   261	263	263	finally
     //   243	247	276	finally
     //   270	274	279	finally
-    //   187	191	327	java/io/IOException
-    //   243	247	331	java/io/IOException
-    //   270	274	335	java/io/IOException
-    //   164	183	339	finally
-    //   212	227	343	finally
-    //   164	183	353	java/lang/Exception
+    //   187	191	328	java/io/IOException
+    //   243	247	332	java/io/IOException
+    //   270	274	336	java/io/IOException
+    //   164	183	340	finally
+    //   212	227	344	finally
+    //   164	183	354	java/lang/Exception
   }
   
   public static List[] a(Context paramContext)
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430108);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430110);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838341;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.jdField_c_of_type_Int = 0;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430114);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838337;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430116);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838342;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.jdField_c_of_type_Int = 1;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430126);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838340;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430128);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838345;
     localActionSheetItem.jdField_c_of_type_Int = 2;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430127);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838334;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430129);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838339;
     localActionSheetItem.jdField_c_of_type_Int = 3;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
@@ -485,7 +489,7 @@ public class QRDisplayActivity
     String str1;
     if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      QQToast.a(this, getString(2131433009), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131433023), 0).b(getTitleBarHeight());
       if (QLog.isColorLevel()) {
         QLog.i("QRDisplayActivity", 2, "tryToGetShareLink: net is not supported");
       }
@@ -531,7 +535,7 @@ public class QRDisplayActivity
             case 3: 
               try
               {
-                ThreadManager.post(new otm(this, "temp_qrcode_share_" + this.jdField_c_of_type_JavaLangString + ".png"), 8, null, true);
+                ThreadManager.post(new oyf(this, "temp_qrcode_share_" + this.jdField_c_of_type_JavaLangString + ".png"), 8, null, true);
                 if (this.jdField_c_of_type_Int != 2) {
                   break label474;
                 }
@@ -541,21 +545,21 @@ public class QRDisplayActivity
               catch (OutOfMemoryError localOutOfMemoryError2)
               {
                 String str2;
-                QRUtils.a(1, 2131430003);
+                QRUtils.a(1, 2131430005);
               }
               try
               {
                 if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
                 {
-                  this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new otj(this);
+                  this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new oyb(this);
                   WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
                 }
-                ThreadManager.post(new otk(this), 8, null, true);
+                ThreadManager.post(new oyc(this), 8, null, true);
                 return;
               }
               catch (OutOfMemoryError localOutOfMemoryError1)
               {
-                QRUtils.a(1, 2131430003);
+                QRUtils.a(1, 2131430005);
               }
             }
           } while (this.jdField_c_of_type_Int != 2);
@@ -697,7 +701,7 @@ public class QRDisplayActivity
     }
     for (;;)
     {
-      a(2130838739, str);
+      a(2130838748, str);
       finish();
       return;
       str = "多人聊天不存在";
@@ -759,7 +763,7 @@ public class QRDisplayActivity
     if ((this.jdField_a_of_type_Long & 0x800) != 0L)
     {
       if (this.jdField_b_of_type_Int == 2) {
-        i = 2130841430;
+        i = 2130841457;
       }
     }
     else
@@ -783,14 +787,14 @@ public class QRDisplayActivity
       if (this.jdField_b_of_type_Int != 1) {
         break;
       }
-      i = 2130841430;
+      i = 2130841457;
       break;
       label412:
       if (super.isResume())
       {
         paramBundle = DialogUtil.a(this, 230);
-        paramBundle.setMessage(2131429915);
-        paramBundle.setPositiveButton(2131433016, new otd(this));
+        paramBundle.setMessage(2131429916);
+        paramBundle.setPositiveButton(2131433030, new oxv(this));
         paramBundle.show();
       }
       else
@@ -845,16 +849,16 @@ public class QRDisplayActivity
     if (this.jdField_b_of_type_ComTencentWidgetActionSheet == null)
     {
       this.jdField_b_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131430006, 1);
       this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131430008, 1);
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131430009, 1);
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131433015);
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new otz(this));
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new oua(this));
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131430010, 1);
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131430011, 1);
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131433029);
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new oys(this));
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new oyt(this));
     }
     if (!this.jdField_b_of_type_ComTencentWidgetActionSheet.isShowing())
     {
-      this.jdField_d_of_type_Boolean = false;
+      this.jdField_e_of_type_Boolean = false;
       this.jdField_b_of_type_ComTencentWidgetActionSheet.show();
     }
   }
@@ -879,7 +883,7 @@ public class QRDisplayActivity
   
   public void d()
   {
-    ThreadManager.executeOnFileThread(new oub(this));
+    ThreadManager.executeOnFileThread(new oxq(this));
     String str = null;
     if (this.jdField_c_of_type_Int == 1) {
       str = "saveConsumerQRcard";
@@ -918,7 +922,7 @@ public class QRDisplayActivity
         if (paramInt1 != 1) {
           break label205;
         }
-        a(0, getString(2131430007));
+        a(0, getString(2131430009));
         if (QLog.isColorLevel()) {
           QLog.i("QRDisplayActivity", 2, "shareQRCode success");
         }
@@ -961,7 +965,7 @@ public class QRDisplayActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    super.setContentView(2130969705);
+    super.setContentView(2130969702);
     paramBundle = super.getIntent();
     this.jdField_f_of_type_JavaLangString = paramBundle.getStringExtra("from");
     this.jdField_g_of_type_Int = paramBundle.getIntExtra("reportFlag", 0);
@@ -973,22 +977,23 @@ public class QRDisplayActivity
     this.jdField_a_of_type_Int = paramBundle.getIntExtra("adminLevel", 2);
     this.jdField_a_of_type_Long = paramBundle.getLongExtra("GroupFlagExt", 0L);
     this.jdField_b_of_type_Int = ((int)paramBundle.getLongExtra("AuthGroupType", 0L));
+    this.jdField_c_of_type_Boolean = paramBundle.getBooleanExtra("isQidianPrivateTroop", false);
     int i;
     Object localObject1;
     if (this.jdField_c_of_type_Int == 1)
     {
-      this.jdField_b_of_type_JavaLangString = getString(2131429992);
-      paramBundle = findViewById(2131367546);
+      this.jdField_b_of_type_JavaLangString = getString(2131429994);
+      paramBundle = findViewById(2131367553);
       paramBundle.setVisibility(0);
-      this.jdField_f_of_type_AndroidViewView = findViewById(2131367547);
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367548));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367549));
-      this.jdField_g_of_type_AndroidViewView = findViewById(2131367550);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367551));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367552));
-      this.jdField_h_of_type_AndroidViewView = findViewById(2131367553);
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367554));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367555));
+      this.jdField_f_of_type_AndroidViewView = findViewById(2131367554);
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367555));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367556));
+      this.jdField_g_of_type_AndroidViewView = findViewById(2131367557);
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367558));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367559));
+      this.jdField_h_of_type_AndroidViewView = findViewById(2131367560);
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367561));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367562));
       i = (getWindowManager().getDefaultDisplay().getWidth() - getResources().getDimensionPixelSize(2131558694) * 3) / 8;
       localObject1 = (ViewGroup.MarginLayoutParams)paramBundle.getLayoutParams();
       if (localObject1 != null)
@@ -1006,18 +1011,18 @@ public class QRDisplayActivity
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131367541);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367544));
-      this.jdField_c_of_type_AndroidViewView = super.findViewById(2131367540);
-      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131367563);
-      this.jdField_d_of_type_AndroidViewView = findViewById(2131367545);
-      this.jdField_e_of_type_AndroidViewView = findViewById(2131367556);
-      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131429921));
+      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131367548);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367551));
+      this.jdField_c_of_type_AndroidViewView = super.findViewById(2131367547);
+      this.jdField_a_of_type_AndroidViewView = super.findViewById(2131367570);
+      this.jdField_d_of_type_AndroidViewView = findViewById(2131367552);
+      this.jdField_e_of_type_AndroidViewView = findViewById(2131367563);
+      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131429922));
       if (QLog.isDevelopLevel()) {
         QLog.d("QRDisplayActivity", 4, "display qrcode, type: " + this.jdField_c_of_type_Int);
       }
       if (this.jdField_c_of_type_Int != 5) {
-        break label1396;
+        break label1408;
       }
       getIntent().getStringExtra("discussion_shorturl");
       addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver);
@@ -1026,8 +1031,8 @@ public class QRDisplayActivity
         this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler = ((DiscussionHandler)this.app.a(6));
         this.app.registObserver(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$GetNicknameObserver);
       }
-      this.leftView.setContentDescription(getString(2131430205));
-      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131430206));
+      this.leftView.setContentDescription(getString(2131430208));
+      this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131430209));
       setResult(-1, getIntent());
       paramBundle = (FriendsManager)this.app.getManager(50);
       localObject2 = (DiscussionManager)this.app.getManager(52);
@@ -1052,22 +1057,22 @@ public class QRDisplayActivity
       return true;
       if (this.jdField_c_of_type_Int == 2)
       {
-        findViewById(2131367542).setVisibility(0);
-        findViewById(2131367560).setVisibility(0);
-        findViewById(2131367561).setOnClickListener(this);
-        findViewById(2131367562).setOnClickListener(this);
-        this.jdField_b_of_type_JavaLangString = getString(2131429993);
-        paramBundle = getString(2131430613);
+        findViewById(2131367549).setVisibility(0);
+        findViewById(2131367567).setVisibility(0);
+        findViewById(2131367568).setOnClickListener(this);
+        findViewById(2131367569).setOnClickListener(this);
+        this.jdField_b_of_type_JavaLangString = getString(2131429995);
+        paramBundle = getString(2131430616);
         this.leftView.setText(paramBundle);
         this.leftView.setContentDescription(paramBundle);
       }
       else if (this.jdField_c_of_type_Int == 5)
       {
-        findViewById(2131367542).setVisibility(0);
-        findViewById(2131367560).setVisibility(0);
-        findViewById(2131367561).setOnClickListener(this);
-        findViewById(2131367562).setOnClickListener(this);
-        this.jdField_b_of_type_JavaLangString = getString(2131429997);
+        findViewById(2131367549).setVisibility(0);
+        findViewById(2131367567).setVisibility(0);
+        findViewById(2131367568).setOnClickListener(this);
+        findViewById(2131367569).setOnClickListener(this);
+        this.jdField_b_of_type_JavaLangString = getString(2131429999);
       }
     }
     Object localObject2 = ((DiscussionManager)localObject2).a(this.jdField_c_of_type_JavaLangString);
@@ -1089,7 +1094,7 @@ public class QRDisplayActivity
       for (;;)
       {
         if (!((Iterator)localObject1).hasNext()) {
-          break label1226;
+          break label1238;
         }
         localObject2 = (DiscussionMemberInfo)((Iterator)localObject1).next();
         if (this.app.getAccount().equals(((DiscussionMemberInfo)localObject2).memberUin))
@@ -1108,9 +1113,9 @@ public class QRDisplayActivity
           this.jdField_a_of_type_JavaUtilList.add(((DiscussionMemberInfo)localObject2).memberUin);
         }
       }
-      label1226:
+      label1238:
       if ((this.jdField_b_of_type_JavaUtilList.size() >= 5) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-        break label1441;
+        break label1461;
       }
       if (QLog.isDevelopLevel()) {
         QLog.d("QRDisplayActivity", 4, "fetch nicks from server");
@@ -1125,20 +1130,22 @@ public class QRDisplayActivity
       }
       ((DiscussionHandler)this.app.a(6)).a(new String[] { "20002" }, paramBundle);
     }
-    label1441:
+    label1408:
+    label1461:
     for (int j = 0;; j = 1)
     {
       i = j;
       if (this.jdField_b_of_type_JavaUtilList.size() <= 0) {
         break;
       }
-      Collections.sort(this.jdField_b_of_type_JavaUtilList, new oud(this));
+      Collections.sort(this.jdField_b_of_type_JavaUtilList, new oyu(this));
       this.jdField_a_of_type_JavaLangString = a(this.jdField_b_of_type_JavaUtilList);
       i = j;
       break;
-      label1396:
-      if (this.jdField_c_of_type_Int == 2) {
-        this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131429995, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+      if (this.jdField_c_of_type_Int == 2)
+      {
+        this.jdField_d_of_type_AndroidViewView.setContentDescription(getString(2131429997, new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString }));
+        addObserver(this.jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver);
       }
       i = 1;
       break;
@@ -1160,15 +1167,22 @@ public class QRDisplayActivity
       removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver);
       this.app.unRegistObserver(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$GetNicknameObserver);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null)
+    for (;;)
     {
-      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = null;
+      if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null)
+      {
+        WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+        this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = null;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqEarlydownloadHandlerChirpSoHandler != null) {
+        this.jdField_a_of_type_ComTencentMobileqqEarlydownloadHandlerChirpSoHandler.b(this);
+      }
+      super.doOnDestroy();
+      return;
+      if (this.jdField_c_of_type_Int == 5) {
+        removeObserver(this.jdField_a_of_type_ComTencentQidianControllerQidianBusinessObserver);
+      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqEarlydownloadHandlerChirpSoHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqEarlydownloadHandlerChirpSoHandler.b(this);
-    }
-    super.doOnDestroy();
   }
   
   protected void doOnPause()
@@ -1189,7 +1203,7 @@ public class QRDisplayActivity
   
   public void e()
   {
-    ThreadManager.executeOnFileThread(new ota(this));
+    ThreadManager.executeOnFileThread(new oxs(this));
     String str = null;
     if (this.jdField_c_of_type_Int == 1) {
       str = "shareConsumerQRcard";
@@ -1215,15 +1229,15 @@ public class QRDisplayActivity
       QLog.d("QRDisplayActivity", 2, "get code template");
     }
     Object localObject = this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager;
-    boolean bool2 = this.jdField_c_of_type_Boolean;
+    boolean bool2 = this.jdField_d_of_type_Boolean;
     if ((this.jdField_a_of_type_Long & 0x800) != 0L) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       ((CodeMaskManager)localObject).a(this, bool2, bool1, this.jdField_b_of_type_Int);
-      if (!this.jdField_c_of_type_Boolean) {
+      if (!this.jdField_d_of_type_Boolean) {
         break;
       }
-      this.jdField_c_of_type_Boolean = false;
+      this.jdField_d_of_type_Boolean = false;
       return;
     }
     if (this.jdField_c_of_type_Int == 1) {}
@@ -1240,8 +1254,8 @@ public class QRDisplayActivity
     if (super.isResume())
     {
       QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
-      localQQCustomDialog.setMessage(2131429914);
-      localQQCustomDialog.setPositiveButton(2131433016, new ote(this));
+      localQQCustomDialog.setMessage(2131429915);
+      localQQCustomDialog.setPositiveButton(2131433030, new oxw(this));
       localQQCustomDialog.show();
       return;
     }
@@ -1252,20 +1266,20 @@ public class QRDisplayActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
     {
-      otg localotg = new otg(this);
-      oth localoth = new oth(this);
+      oxy localoxy = new oxy(this);
+      oxz localoxz = new oxz(this);
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(getString(2131433100));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(getString(2131433114));
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(a(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localoth);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(new oti(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localotg);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localoxz);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(new oya(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localoxy);
     }
     try
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder != null) && (!this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a()))
       {
-        this.jdField_d_of_type_Boolean = false;
+        this.jdField_e_of_type_Boolean = false;
         this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a();
       }
       return;
@@ -1313,20 +1327,20 @@ public class QRDisplayActivity
     }
     for (;;)
     {
-      BaseApplicationImpl.sUiHandler.post(new otq(this, bool1));
+      BaseApplicationImpl.sUiHandler.post(new oyi(this, bool1));
       break;
       boolean bool2 = true;
       bool1 = bool2;
-      if (!this.jdField_g_of_type_Boolean)
+      if (!this.jdField_h_of_type_Boolean)
       {
-        BaseApplicationImpl.sUiHandler.post(new otp(this));
-        this.jdField_g_of_type_Boolean = true;
+        BaseApplicationImpl.sUiHandler.post(new oyh(this));
+        this.jdField_h_of_type_Boolean = true;
         bool1 = bool2;
         continue;
         if (QLog.isColorLevel()) {
-          QLog.d("QRDisplayActivity", 2, "playQRCodeFailed = " + this.jdField_f_of_type_Boolean);
+          QLog.d("QRDisplayActivity", 2, "playQRCodeFailed = " + this.jdField_g_of_type_Boolean);
         }
-        if (this.jdField_f_of_type_Boolean) {
+        if (this.jdField_g_of_type_Boolean) {
           break;
         }
         String str = getFilesDir() + this.app.getCurrentAccountUin() + "_vqr.dat";
@@ -1342,11 +1356,11 @@ public class QRDisplayActivity
         label519:
         for (bool1 = true;; bool1 = false)
         {
-          this.jdField_f_of_type_Boolean = bool1;
+          this.jdField_g_of_type_Boolean = bool1;
           if (QLog.isColorLevel()) {
-            QLog.d("QRDisplayActivity", 2, "playQRCodeFailed = " + this.jdField_f_of_type_Boolean);
+            QLog.d("QRDisplayActivity", 2, "playQRCodeFailed = " + this.jdField_g_of_type_Boolean);
           }
-          if (this.jdField_f_of_type_Boolean) {
+          if (this.jdField_g_of_type_Boolean) {
             break label524;
           }
           if (this.jdField_a_of_type_ComTencentChirpPcmPlayer == null)
@@ -1428,7 +1442,7 @@ public class QRDisplayActivity
     {
       return;
       this.jdField_c_of_type_Long = l;
-      if (paramView.getId() == 2131367545)
+      if (paramView.getId() == 2131367552)
       {
         if (this.jdField_a_of_type_Boolean) {
           continue;
@@ -1451,7 +1465,7 @@ public class QRDisplayActivity
         c();
         return;
       }
-      if (paramView.getId() == 2131367559) {
+      if (paramView.getId() == 2131367566) {
         if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null) {
           this.jdField_a_of_type_ComTencentWidgetActionSheet = new LinkShareActionSheetBuilder(this).a(this);
         }
@@ -1462,7 +1476,7 @@ public class QRDisplayActivity
         label184:
         ReportController.b(this.app, "CliOper", "", "", "0X80040F6", "0X80040F6", 0, 0, "", "", "", "");
         return;
-        if (paramView.getId() == 2131367561)
+        if (paramView.getId() == 2131367568)
         {
           if (this.jdField_a_of_type_Boolean) {
             continue;
@@ -1480,7 +1494,7 @@ public class QRDisplayActivity
           new ReportTask(this.app).a("P_CliOper").b("Grp_set").c("Grp_data").d("qr_save").a(new String[] { this.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Int) }).a();
           return;
         }
-        if (paramView.getId() == 2131367562)
+        if (paramView.getId() == 2131367569)
         {
           h();
           if (this.jdField_c_of_type_Int != 5) {
@@ -1489,23 +1503,23 @@ public class QRDisplayActivity
           ReportController.b(this.app, "CliOper", "", "", "0X8006673", "0X8006673", 0, 0, "", "", "", "");
           return;
         }
-        if ((paramView.getId() == 2131367554) || (paramView.getId() == 2131367555))
+        if ((paramView.getId() == 2131367561) || (paramView.getId() == 2131367562))
         {
           i();
           return;
         }
-        if (paramView.getId() == 2131367547)
+        if (paramView.getId() == 2131367554)
         {
           b(7);
           return;
         }
-        if (paramView.getId() == 2131367550)
+        if (paramView.getId() == 2131367557)
         {
           b(8);
           ReportController.b(this.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "fukuanTCclick", 0, 0, "", "", "", "");
           return;
         }
-        if (paramView.getId() != 2131367553) {
+        if (paramView.getId() != 2131367560) {
           continue;
         }
         i();
@@ -1529,7 +1543,7 @@ public class QRDisplayActivity
       return;
       int i = -1;
       if (!WXShareHelper.a().a()) {
-        i = 2131435319;
+        i = 2131435335;
       }
       for (;;)
       {
@@ -1539,13 +1553,13 @@ public class QRDisplayActivity
         QRUtils.a(1, i);
         break;
         if (!WXShareHelper.a().b()) {
-          i = 2131435320;
+          i = 2131435336;
         }
       }
       label93:
       if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new otf(this);
+        this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new oxx(this);
         WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
       }
       paramView = this.app;
@@ -1560,7 +1574,7 @@ public class QRDisplayActivity
         this.jdField_g_of_type_JavaLangString = String.valueOf(System.currentTimeMillis());
         paramAdapterView = WXShareHelper.a();
         paramView = this.jdField_g_of_type_JavaLangString;
-        str1 = String.format(getString(2131435931), new Object[] { this.jdField_a_of_type_JavaLangString });
+        str1 = String.format(getString(2131435949), new Object[] { this.jdField_a_of_type_JavaLangString });
         localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
         str2 = this.jdField_d_of_type_JavaLangString;
         if (paramInt != 2) {
@@ -1578,7 +1592,7 @@ public class QRDisplayActivity
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435070);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435086);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
       }
       DiscussionInfoCardActivity.a(this.app, this, 2, this.jdField_e_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_f_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);

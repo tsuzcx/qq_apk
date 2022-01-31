@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.test;
 
-import abht;
+import abou;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
@@ -12,7 +12,7 @@ import com.tencent.widget.immersive.SystemBarCompact;
 public class ArmapJumpActivity
   extends ARMapBaseActivity
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new abht(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new abou(this);
   Button jdField_a_of_type_AndroidWidgetButton;
   public EditText a;
   public EditText b;
@@ -27,11 +27,11 @@ public class ArmapJumpActivity
       this.mSystemBarComp.setStatusColor(i);
       this.mSystemBarComp.setStatusBarColor(i);
     }
-    setContentView(2130970212);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369620));
-    this.b = ((EditText)findViewById(2131369622));
-    this.c = ((EditText)findViewById(2131369624));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369625));
+    setContentView(2130970227);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131369630));
+    this.b = ((EditText)findViewById(2131369632));
+    this.c = ((EditText)findViewById(2131369634));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369635));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     return true;
   }

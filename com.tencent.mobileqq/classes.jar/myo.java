@@ -1,14 +1,29 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.util.PreloadManager;
+import java.util.Iterator;
+import java.util.List;
 
-class myo
+public class myo
   implements Runnable
 {
-  myo(mye parammye) {}
+  public myo(PreloadManager paramPreloadManager) {}
   
   public void run()
   {
-    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null)) {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).b(true);
+    ??? = PreloadManager.a(this.a).iterator();
+    while (((Iterator)???).hasNext())
+    {
+      String str = (String)((Iterator)???).next();
+      PreloadManager.a(this.a, str);
+    }
+    synchronized (this.a.b)
+    {
+      PreloadManager.a(this.a).clear();
+      if (PreloadManager.b(this.a).size() > 0)
+      {
+        this.a.a();
+        return;
+      }
+      this.a.a = false;
     }
   }
 }

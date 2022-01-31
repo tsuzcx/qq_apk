@@ -14,9 +14,11 @@ public class ARWorldCupVideoInfo
 {
   public static int a;
   public static int b;
+  ARWorldCupVideoInfo.BackConfirmDialogInfo jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupVideoInfo$BackConfirmDialogInfo;
   List jdField_a_of_type_JavaUtilList;
   Map jdField_a_of_type_JavaUtilMap;
   double[] jdField_a_of_type_ArrayOfDouble;
+  ARWorldCupVideoInfo.BackConfirmDialogInfo jdField_b_of_type_ComTencentMobileqqWorldcupARWorldCupVideoInfo$BackConfirmDialogInfo;
   List jdField_b_of_type_JavaUtilList;
   double[] jdField_b_of_type_ArrayOfDouble;
   List c;
@@ -31,61 +33,63 @@ public class ARWorldCupVideoInfo
   
   static ARWorldCupVideoInfo a(String paramString)
   {
+    JSONObject localJSONObject;
+    Object localObject3;
     Object localObject4;
     int i;
     try
     {
-      localObject1 = new JSONObject(paramString);
+      localJSONObject = new JSONObject(paramString);
       paramString = new ARWorldCupVideoInfo();
       paramString.jdField_a_of_type_JavaUtilMap = new HashMap();
-      localObject2 = ((JSONObject)localObject1).getJSONObject("videofileinfo");
-      if (localObject2 != null)
+      localObject1 = localJSONObject.getJSONObject("videofileinfo");
+      if (localObject1 != null)
       {
-        localObject3 = ((JSONObject)localObject2).keys();
-        while (((Iterator)localObject3).hasNext())
+        localObject2 = ((JSONObject)localObject1).keys();
+        while (((Iterator)localObject2).hasNext())
         {
-          localObject4 = (String)((Iterator)localObject3).next();
-          JSONArray localJSONArray = ((JSONObject)localObject2).getJSONArray((String)localObject4);
-          double[] arrayOfDouble = new double[localJSONArray.length()];
+          localObject3 = (String)((Iterator)localObject2).next();
+          localObject4 = ((JSONObject)localObject1).getJSONArray((String)localObject3);
+          double[] arrayOfDouble = new double[((JSONArray)localObject4).length()];
           i = 0;
           while (i < arrayOfDouble.length)
           {
-            arrayOfDouble[i] = localJSONArray.getDouble(i);
+            arrayOfDouble[i] = ((JSONArray)localObject4).getDouble(i);
             i += 1;
           }
-          paramString.jdField_a_of_type_JavaUtilMap.put(localObject4, arrayOfDouble);
+          paramString.jdField_a_of_type_JavaUtilMap.put(localObject3, arrayOfDouble);
         }
       }
-      localObject2 = ((JSONObject)localObject1).getJSONObject("360ballvideoinfo");
+      localObject1 = localJSONObject.getJSONObject("360ballvideoinfo");
     }
     catch (Exception paramString)
     {
       QLog.d("ARWorldCupGlobalSceneRenderable_ARWorldCupGameUtil", 1, String.format("parseJson, Exception\n%s", new Object[] { paramString }));
       return null;
     }
-    Object localObject3 = ((JSONObject)localObject2).getJSONArray("translatearray");
-    if ((localObject3 != null) && (((JSONArray)localObject3).length() > 0))
-    {
-      paramString.jdField_a_of_type_ArrayOfDouble = new double[((JSONArray)localObject3).length()];
-      i = 0;
-      while (i < ((JSONArray)localObject3).length())
-      {
-        paramString.jdField_a_of_type_ArrayOfDouble[i] = ((JSONArray)localObject3).getDouble(i);
-        i += 1;
-      }
-    }
-    Object localObject2 = ((JSONObject)localObject2).getJSONArray("timearray");
+    Object localObject2 = ((JSONObject)localObject1).getJSONArray("translatearray");
     if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
     {
-      paramString.jdField_b_of_type_ArrayOfDouble = new double[((JSONArray)localObject2).length()];
+      paramString.jdField_a_of_type_ArrayOfDouble = new double[((JSONArray)localObject2).length()];
       i = 0;
       while (i < ((JSONArray)localObject2).length())
       {
-        paramString.jdField_b_of_type_ArrayOfDouble[i] = ((JSONArray)localObject2).getDouble(i);
+        paramString.jdField_a_of_type_ArrayOfDouble[i] = ((JSONArray)localObject2).getDouble(i);
         i += 1;
       }
     }
-    Object localObject1 = ((JSONObject)localObject1).getJSONObject("360balltoastinfo");
+    Object localObject1 = ((JSONObject)localObject1).getJSONArray("timearray");
+    if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+    {
+      paramString.jdField_b_of_type_ArrayOfDouble = new double[((JSONArray)localObject1).length()];
+      i = 0;
+      while (i < ((JSONArray)localObject1).length())
+      {
+        paramString.jdField_b_of_type_ArrayOfDouble[i] = ((JSONArray)localObject1).getDouble(i);
+        i += 1;
+      }
+    }
+    localObject1 = localJSONObject.getJSONObject("360balltoastinfo");
     if (localObject1 != null)
     {
       localObject2 = ((JSONObject)localObject1).getJSONArray("360bigscreeninfo");
@@ -177,6 +181,30 @@ public class ARWorldCupVideoInfo
         }
       }
     }
+    if (localJSONObject.has("traversiondoordialog"))
+    {
+      localObject1 = localJSONObject.getJSONObject("traversiondoordialog");
+      if (localObject1 != null)
+      {
+        localObject2 = new ARWorldCupVideoInfo.BackConfirmDialogInfo();
+        ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("context");
+        ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject2).b = ((JSONObject)localObject1).optString("back");
+        ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject2).c = ((JSONObject)localObject1).optString("confirm");
+        paramString.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupVideoInfo$BackConfirmDialogInfo = ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject2);
+      }
+    }
+    if (localJSONObject.has("gamedialog"))
+    {
+      localJSONObject = localJSONObject.getJSONObject("gamedialog");
+      if (localJSONObject != null)
+      {
+        localObject1 = new ARWorldCupVideoInfo.BackConfirmDialogInfo();
+        ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject1).jdField_a_of_type_JavaLangString = localJSONObject.optString("context");
+        ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject1).b = localJSONObject.optString("back");
+        ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject1).c = localJSONObject.optString("confirm");
+        paramString.jdField_b_of_type_ComTencentMobileqqWorldcupARWorldCupVideoInfo$BackConfirmDialogInfo = ((ARWorldCupVideoInfo.BackConfirmDialogInfo)localObject1);
+      }
+    }
     return paramString;
   }
   
@@ -203,40 +231,79 @@ public class ARWorldCupVideoInfo
   
   public Vector3 a(long paramLong)
   {
-    Object localObject;
-    if ((paramLong < 0L) || (this.jdField_a_of_type_ArrayOfDouble == null) || (this.jdField_b_of_type_ArrayOfDouble == null)) {
-      localObject = null;
+    Object localObject1;
+    boolean bool;
+    label77:
+    Object localObject2;
+    if ((paramLong < 0L) || (this.jdField_a_of_type_ArrayOfDouble == null) || (this.jdField_b_of_type_ArrayOfDouble == null))
+    {
+      localObject1 = new StringBuilder().append("getTranslateByTime:").append(paramLong).append("|");
+      if (this.jdField_a_of_type_ArrayOfDouble == null)
+      {
+        bool = true;
+        localObject1 = ((StringBuilder)localObject1).append(bool).append("|");
+        if (this.jdField_b_of_type_ArrayOfDouble != null) {
+          break label105;
+        }
+        bool = true;
+        QLog.d("ARWorldCupGlobalSceneRenderable_ARWorldCupGameUtilgetTranslateByTime", 1, bool);
+        localObject2 = null;
+      }
     }
     for (;;)
     {
-      return localObject;
+      return localObject2;
+      bool = false;
+      break;
+      label105:
+      bool = false;
+      break label77;
+      localObject1 = null;
+      int i = 0;
+      localObject2 = localObject1;
       try
       {
-        Vector3 localVector3 = new Vector3();
-        int i = 0;
-        for (;;)
+        if (i < this.jdField_b_of_type_ArrayOfDouble.length - 1)
         {
-          localObject = localVector3;
-          if (i >= 2) {
-            break;
-          }
-          if ((paramLong > this.jdField_b_of_type_ArrayOfDouble[i]) && (paramLong < this.jdField_b_of_type_ArrayOfDouble[(i + 1)]))
+          localObject2 = localObject1;
+          if (paramLong > this.jdField_b_of_type_ArrayOfDouble[i])
           {
-            double d1 = (this.jdField_a_of_type_ArrayOfDouble[((i + 1) * 3)] - this.jdField_a_of_type_ArrayOfDouble[(i * 3)]) * (paramLong - this.jdField_b_of_type_ArrayOfDouble[i]) / (this.jdField_b_of_type_ArrayOfDouble[(i + 1)] - this.jdField_b_of_type_ArrayOfDouble[i]);
-            double d2 = this.jdField_a_of_type_ArrayOfDouble[(i * 3)];
-            double d3 = (this.jdField_a_of_type_ArrayOfDouble[((i + 1) * 3 + 1)] - this.jdField_a_of_type_ArrayOfDouble[(i * 3 + 1)]) * (paramLong - this.jdField_b_of_type_ArrayOfDouble[i]) / (this.jdField_b_of_type_ArrayOfDouble[(i + 1)] - this.jdField_b_of_type_ArrayOfDouble[i]);
-            double d4 = this.jdField_a_of_type_ArrayOfDouble[(i * 3 + 1)];
-            localVector3.set((float)((this.jdField_a_of_type_ArrayOfDouble[((i + 1) * 3 + 2)] - this.jdField_a_of_type_ArrayOfDouble[(i * 3 + 2)]) * (paramLong - this.jdField_b_of_type_ArrayOfDouble[i]) / (this.jdField_b_of_type_ArrayOfDouble[(i + 1)] - this.jdField_b_of_type_ArrayOfDouble[i]) + this.jdField_a_of_type_ArrayOfDouble[(i * 3 + 2)]), (float)(d3 + d4), (float)(d1 + d2));
+            localObject2 = localObject1;
+            if (paramLong <= this.jdField_b_of_type_ArrayOfDouble[(i + 1)])
+            {
+              double d1 = (this.jdField_a_of_type_ArrayOfDouble[((i + 1) * 3)] - this.jdField_a_of_type_ArrayOfDouble[(i * 3)]) * (paramLong - this.jdField_b_of_type_ArrayOfDouble[i]) / (this.jdField_b_of_type_ArrayOfDouble[(i + 1)] - this.jdField_b_of_type_ArrayOfDouble[i]);
+              double d2 = this.jdField_a_of_type_ArrayOfDouble[(i * 3)];
+              double d3 = (this.jdField_a_of_type_ArrayOfDouble[((i + 1) * 3 + 1)] - this.jdField_a_of_type_ArrayOfDouble[(i * 3 + 1)]) * (paramLong - this.jdField_b_of_type_ArrayOfDouble[i]) / (this.jdField_b_of_type_ArrayOfDouble[(i + 1)] - this.jdField_b_of_type_ArrayOfDouble[i]);
+              double d4 = this.jdField_a_of_type_ArrayOfDouble[(i * 3 + 1)];
+              double d5 = (this.jdField_a_of_type_ArrayOfDouble[((i + 1) * 3 + 2)] - this.jdField_a_of_type_ArrayOfDouble[(i * 3 + 2)]) * (paramLong - this.jdField_b_of_type_ArrayOfDouble[i]) / (this.jdField_b_of_type_ArrayOfDouble[(i + 1)] - this.jdField_b_of_type_ArrayOfDouble[i]);
+              double d6 = this.jdField_a_of_type_ArrayOfDouble[(i * 3 + 2)];
+              localObject2 = new Vector3();
+              ((Vector3)localObject2).set((float)(d5 + d6), (float)(d3 + d4), (float)(d1 + d2));
+              QLog.d("ARWorldCupGlobalSceneRenderable_ARWorldCupGameUtilgetTranslateByTime", 1, "getTranslateByTime:" + paramLong + "|" + ((Vector3)localObject2).x + "|" + ((Vector3)localObject2).y + "|" + ((Vector3)localObject2).z);
+            }
           }
           i += 1;
+          localObject1 = localObject2;
         }
-        return null;
       }
       catch (Exception localException)
       {
-        QLog.d("ARWorldCupGlobalSceneRenderable_ARWorldCupGameUtil", 1, String.format("getTranslateByTime, Exception\n%s", new Object[] { localException }));
+        QLog.e("ARWorldCupGlobalSceneRenderable_ARWorldCupGameUtil", 1, String.format("getTranslateByTime, Exception\n%s", new Object[] { localException }));
       }
     }
+    return null;
+  }
+  
+  public ARWorldCupVideoInfo.BackConfirmDialogInfo a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 0: 
+      return this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupVideoInfo$BackConfirmDialogInfo;
+    }
+    return this.jdField_b_of_type_ComTencentMobileqqWorldcupARWorldCupVideoInfo$BackConfirmDialogInfo;
   }
   
   public ARWorldCupVideoInfo.BigScreenShowInfo a()
@@ -306,7 +373,7 @@ public class ARWorldCupVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.worldcup.ARWorldCupVideoInfo
  * JD-Core Version:    0.7.0.1
  */

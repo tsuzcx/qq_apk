@@ -1,17 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agjy
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public agjy(ScanIconAnimateView paramScanIconAnimateView) {}
+  public agjy(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.d = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * -1.0F * AIOUtils.a(1.5F, this.a.getResources()));
-    this.a.invalidate();
+    ScanTorchActivity.c(this.a, false);
+    ScanTorchActivity.i(this.a);
+    ScanTorchActivity.j(this.a);
   }
 }
 

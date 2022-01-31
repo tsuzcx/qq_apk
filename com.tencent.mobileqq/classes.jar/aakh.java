@@ -1,37 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aakh
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public aakh(WorldCupMgr paramWorldCupMgr) {}
+  public aakh(ScanEntranceReport paramScanEntranceReport, String paramString, int paramInt1, int paramInt2) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2)) {
-      return;
-    }
-    switch (paramIntent.getIntExtra("event", 0))
-    {
-    default: 
-      return;
-    case 1: 
-      int i = paramIntent.getIntExtra("download_Index", 0);
-      int j = paramIntent.getIntExtra("download_Progress", 0);
-      if (AudioHelper.e()) {
-        QLog.w("WorldCupMgr", 1, "receive notify, index[" + i + "], progress[" + j + "]");
-      }
-      this.a.a(i, j);
-      return;
-    }
-    paramContext = paramIntent.getStringExtra("config_Content");
-    this.a.c(paramContext);
-    this.a.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("device_name", this.jdField_a_of_type_JavaLangString);
+    localHashMap.put("memory_size", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_average_fps", true, this.b, 0L, localHashMap, "");
   }
 }
 

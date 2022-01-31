@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import java.util.ArrayList;
 
-public class siu
-  implements DialogInterface.OnClickListener
+class siu
+  implements Runnable
 {
-  public siu(Conversation paramConversation) {}
+  siu(sit paramsit, ArrayList paramArrayList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    View localView;
+    do
+    {
+      return;
+      localView = this.jdField_a_of_type_Sit.a.a[33];
+    } while (localView == null);
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+      localView.setVisibility(8);
     }
-    ReportController.b(this.a.a, "CliOper", "", "", "0X800815E", "0X800815E", 0, 0, "", "", "", "");
-    ReportController.b(this.a.a, "CliOper", "", "", "0X8008656", "0X8008656", 0, 0, "", "", "", "");
+    for (;;)
+    {
+      this.jdField_a_of_type_Sit.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
+      return;
+      localView.setVisibility(0);
+    }
   }
 }
 

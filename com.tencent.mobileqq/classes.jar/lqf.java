@@ -1,42 +1,87 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeResult;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter.OnChildGalleryEventListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
+import com.tencent.biz.pubaccount.readinjoy.logic.ReadinjoyAtlasPageLoader;
+import com.tencent.biz.pubaccount.readinjoy.model.AtlasModel;
+import com.tencent.biz.pubaccount.readinjoy.model.AtlasModelImage;
+import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import tencent.im.oidb.gallery.gallery.GalleryInfo;
+import tencent.im.oidb.gallery.gallery.PictureInfo;
 
 public class lqf
-  implements Runnable
+  implements ReadInJoyAtlasViewPagerAdapter.OnChildGalleryEventListener
 {
-  public lqf(ArticleInfoModule paramArticleInfoModule, int paramInt, List paramList) {}
+  public lqf(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    Object localObject;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (QLog.isColorLevel()) {
+      QLog.d(ReadInJoyAtlasFragment.jdField_a_of_type_JavaLangString, 2, "start loadMoreData");
+    }
+    ReadInJoyAtlasFragment.a(this.a).b();
+  }
+  
+  public void a(int paramInt, AtlasModel paramAtlasModel)
+  {
+    if ((paramAtlasModel != null) && ((paramAtlasModel instanceof AtlasModelImage)))
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext())
+      ReadInJoyAtlasFragment.a(this.a).a(3, null);
+      if (ReadInJoyAtlasFragment.a(this.a) == 1)
       {
-        DislikeResult localDislikeResult = (DislikeResult)((Iterator)localObject).next();
-        if (localDislikeResult.jdField_a_of_type_Int != 0) {
-          QLog.e("ArticleInfoModule", 2, "dislike fail ,articleID : " + localDislikeResult.jdField_a_of_type_Long + ", failCode : " + localDislikeResult.jdField_a_of_type_Int + ",fialMessage : " + localDislikeResult.jdField_a_of_type_JavaLangString);
+        if (!this.a.jdField_a_of_type_Boolean) {
+          break label54;
         }
+        this.a.f();
       }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.jdField_a_of_type_Int == 0)
+    return;
+    label54:
+    this.a.e();
+  }
+  
+  public void a(int paramInt, AtlasModel paramAtlasModel1, AtlasModel paramAtlasModel2)
+  {
+    if ((paramAtlasModel1 != null) && ((paramAtlasModel1 instanceof AtlasModelImage)))
     {
-      localObject = new StringBuilder().append("dislike upload successful ! count : ");
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        break label175;
+      paramAtlasModel1 = (AtlasModelImage)paramAtlasModel1;
+      if (paramAtlasModel2 != null)
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putSerializable("lastShowImageModel", paramAtlasModel2);
+        ReadInJoyAtlasFragment.a(this.a).a(-1, localBundle);
+      }
+      if (ReadInJoyAtlasFragment.a(this.a)) {
+        ReadInJoyAtlasFragment.c(this.a, false);
+      }
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.getVisibility() != 0) {
+          this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setVisibility(0);
+        }
+        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setText(paramInt, (int)ReadInJoyAtlasFragment.a(this.a).uint64_pic_count.get(), ReadInJoyAtlasFragment.a(this.a, paramAtlasModel1));
+        ReadInJoyAtlasFragment.a(this.a, paramInt);
+        if ((paramAtlasModel1.pictureInfo != null) && (paramAtlasModel1.pictureInfo.bytes_pic_url.has())) {
+          ReadInJoyAtlasFragment.a(this.a, paramAtlasModel1.pictureInfo.bytes_pic_url.get().toStringUtf8());
+        }
+        return;
+        ReadInJoyAtlasFragment.a(this.a).a(2, null);
       }
     }
-    label175:
-    for (int i = this.jdField_a_of_type_JavaUtilList.size();; i = 0)
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setText("");
+    ReadInJoyAtlasFragment.a(this.a, paramInt);
+  }
+  
+  public void b(int paramInt, AtlasModel paramAtlasModel)
+  {
+    if ((paramAtlasModel != null) && ((paramAtlasModel instanceof AtlasModelImage)))
     {
-      QLog.d("ArticleInfoModule", 2, i);
-      return;
+      paramAtlasModel = ((AtlasModelImage)paramAtlasModel).pictureInfo.bytes_pic_url.get().toStringUtf8();
+      ReadInJoyAtlasFragment.a(this.a, paramAtlasModel);
     }
   }
 }

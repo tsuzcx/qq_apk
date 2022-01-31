@@ -1,15 +1,45 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView.OnEndScrollListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class krz
-  implements DialogInterface.OnDismissListener
+  implements AccountDetailXListView.OnEndScrollListener
 {
-  public krz(AccountDetailActivity paramAccountDetailActivity) {}
+  public krz(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt)
   {
-    this.a.r = false;
+    float f;
+    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
+    {
+      paramInt = -this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
+      }
+      f = 150.0F * this.a.jdField_a_of_type_Float;
+      if (paramInt != 0)
+      {
+        if (!this.a.e) {
+          break label127;
+        }
+        if (paramInt <= f) {
+          break label119;
+        }
+        this.a.d(paramInt);
+      }
+    }
+    return;
+    label119:
+    this.a.e();
+    return;
+    label127:
+    if (paramInt > this.a.o - f)
+    {
+      this.a.d(paramInt);
+      return;
+    }
+    this.a.e();
   }
 }
 

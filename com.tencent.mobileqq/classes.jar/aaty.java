@@ -1,18 +1,19 @@
-import android.os.HandlerThread;
-import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
 
-public final class aaty
-  implements ArkEnvironmentManager.ThreadCreater
+class aaty
+  implements Runnable
 {
-  public HandlerThread createHanderThread(String paramString)
+  aaty(aatx paramaatx) {}
+  
+  public void run()
   {
-    return ThreadManager.newFreeHandlerThread(paramString, -1);
+    ARVideoPreviewActivity.a(this.a.a.a);
+    ARVideoPreviewActivity.b(this.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaty
  * JD-Core Version:    0.7.0.1
  */

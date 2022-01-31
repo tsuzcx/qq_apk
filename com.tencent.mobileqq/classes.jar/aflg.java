@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.DeleteFeedCallback;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
 
 public class aflg
-  implements NearbyMomentProtocol.DeleteFeedCallback
+  implements TextWatcher
 {
-  public aflg(NearbyMomentManager paramNearbyMomentManager, NearbyMomentManager.DeleteFeedCallback paramDeleteFeedCallback) {}
+  public aflg(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager.a(paramString, false);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$DeleteFeedCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$DeleteFeedCallback.a(paramBoolean, paramString);
-    }
+    NearbyUtils.a(this.a.a, 30);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

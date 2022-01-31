@@ -1,58 +1,21 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
-import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout.OnActionListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
 
 public class afms
-  implements GestureDetector.OnGestureListener
+  implements TextWatcher
 {
-  public afms(OverCoverFrameLayout paramOverCoverFrameLayout) {}
+  public afms(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void afterTextChanged(Editable paramEditable)
   {
-    return true;
+    NearbyUtils.a(this.a.a, 30);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (Math.abs(paramFloat2) <= this.a.e) {}
-    while ((this.a.a != null) && (this.a.a.a())) {
-      return false;
-    }
-    if (paramFloat2 < 0.0F) {
-      this.a.a();
-    }
-    for (;;)
-    {
-      return true;
-      this.a.b();
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (Math.abs(paramFloat2) <= this.a.d) {}
-    while ((this.a.a != null) && (this.a.a.a())) {
-      return false;
-    }
-    if (paramFloat2 > 0.0F) {
-      this.a.a();
-    }
-    for (;;)
-    {
-      return true;
-      this.a.b();
-    }
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

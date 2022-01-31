@@ -15,13 +15,13 @@ class MQPSecJsPlugin$4
   {
     WebUiBaseInterface localWebUiBaseInterface = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
     if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebTitleBarInterface))) {
-      QQToast.a(this.this$0.activity, this.this$0.activity.getString(2131433009), 0).b(((WebUiUtils.WebTitleBarInterface)localWebUiBaseInterface).b());
+      QQToast.a(this.this$0.activity, this.this$0.activity.getString(2131433023), 0).b(((WebUiUtils.WebTitleBarInterface)localWebUiBaseInterface).b());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MQPSecJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

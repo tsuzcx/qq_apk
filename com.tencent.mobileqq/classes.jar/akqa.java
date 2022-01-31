@@ -1,62 +1,27 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.mobileqq.statistics.DcReportUtil;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.CrashStepStatsEntry;
-import java.net.URLEncoder;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.util.HashMap;
 
 public class akqa
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akqa(SwiftBrowserStatistics paramSwiftBrowserStatistics, String paramString, int paramInt) {}
+  public akqa(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString, Context paramContext) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str3 = "";
-    try
+    if (((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).getOutputMute())
     {
-      localObject = Uri.parse(this.jdField_a_of_type_JavaLangString);
-      str1 = str3;
-      if (localObject != null)
-      {
-        str1 = ((Uri)localObject).getHost();
-        if (TextUtils.isEmpty(str1)) {
-          return;
-        }
-        if ((!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.m) && (!AuthorizeConfig.a().i(str1))) {
-          return;
-        }
-        str1 = URLEncoder.encode(this.jdField_a_of_type_JavaLangString);
-      }
+      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(false);
+      ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843409));
+      return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject;
-        String str1;
-        localException.printStackTrace();
-        String str2 = str3;
-        continue;
-        str3 = "0";
-      }
-    }
-    if (!TextUtils.isEmpty(str1))
-    {
-      localObject = new StringBuilder();
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.a.jdField_a_of_type_Int == 13)
-      {
-        str3 = "1";
-        ((StringBuilder)localObject).append(str3).append("|");
-        ((StringBuilder)localObject).append(String.valueOf(-this.jdField_a_of_type_Int)).append("|");
-        ((StringBuilder)localObject).append(str1).append("|");
-        ((StringBuilder)localObject).append(str1).append("|");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-        DcReportUtil.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
-        return;
-      }
-    }
+    ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).setOutputMute(true);
+    ((ImageView)paramView).setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843408));
   }
 }
 

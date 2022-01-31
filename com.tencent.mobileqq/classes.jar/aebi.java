@@ -1,19 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaFeedsDislikeMaskView;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
 
 public class aebi
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public aebi(LebaFeedsDislikeMaskView paramLebaFeedsDislikeMaskView) {}
+  public aebi(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager, QQAppInterface paramQQAppInterface) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    LebaFeedsDislikeMaskView.a(this.a, LebaFeedsDislikeMaskView.a(this.a) - (int)(LebaFeedsDislikeMaskView.a(this.a) * f));
-    LebaFeedsDislikeMaskView.a(this.a).setAlpha(1.0F - f);
-    this.a.invalidate();
+    PublicAccountManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

@@ -1,17 +1,16 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.app.Dialog;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
 
 public class nni
-  implements AbsListView.OnScrollListener
+  implements Runnable
 {
-  public nni(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public nni(VideoPlayModeBase paramVideoPlayModeBase) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    this.a.b = paramInt1;
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
   }
 }
 

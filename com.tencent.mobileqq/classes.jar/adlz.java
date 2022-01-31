@@ -1,21 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.open.agent.report.ReportCenter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
 public class adlz
-  implements DialogInterface.OnClickListener
+  extends BizTroopObserver
 {
-  public adlz(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  public adlz(TroopFileModel paramTroopFileModel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(Object paramObject)
   {
-    if (this.a.c) {
-      ReportCenter.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", String.valueOf(this.a.jdField_a_of_type_Long), "1000", "51", "0", false);
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
+    paramObject = (TroopFileStatusInfo)paramObject;
+    if (((FileManagerEntity)localObject).TroopUin != paramObject.jdField_a_of_type_Long) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TroopFileModel<FileAssistant>", 4, "difference troop uin file");
+      }
     }
-    ForwardSdkBaseOption.a(this.a.jdField_a_of_type_AndroidAppActivity, true, "addToQQFavorites", this.a.b);
+    do
+    {
+      return;
+      if (TextUtils.isEmpty(TroopFileModel.a(this.a)))
+      {
+        localObject = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
+        if (((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaUtilUUID != null) {
+          TroopFileModel.a(this.a, ((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaUtilUUID.toString());
+        }
+      }
+    } while ((paramObject.jdField_a_of_type_JavaUtilUUID == null) || (TroopFileModel.a(this.a) == null) || (!TroopFileModel.a(this.a).equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString())));
+    TroopFileModel.a(this.a, paramObject);
   }
 }
 

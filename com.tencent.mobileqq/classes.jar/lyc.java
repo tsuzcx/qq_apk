@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeTopicMulti;
 
-class lyc
-  implements Runnable
+public class lyc
+  implements View.OnClickListener
 {
-  lyc(lyb paramlyb) {}
+  public lyc(FeedItemCellTypeTopicMulti paramFeedItemCellTypeTopicMulti) {}
   
-  public void run()
-  {
-    ReadInJoyDeliverUGCActivity.a(this.a.a, ReadInJoyDeliverUGCActivity.a(this.a.a));
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.armap.CameraSurfaceView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
 public class abci
-  implements Runnable
+  extends ArkAppCGI.ArkAppCGICallback
 {
-  public abci(CameraSurfaceView paramCameraSurfaceView) {}
+  public abci(ArkLocalAppMgr paramArkLocalAppMgr) {}
   
-  public void run()
+  public void a(boolean paramBoolean, byte[] paramArrayOfByte, Object paramObject)
   {
-    this.a.a(true);
+    ThreadManager.post(new abcj(this, paramBoolean, paramArrayOfByte, paramObject), 5, null, true);
   }
 }
 

@@ -1,4 +1,4 @@
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopSearchResultDialog;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
 
 class ajdl
   implements Runnable
@@ -7,7 +7,7 @@ class ajdl
   
   public void run()
   {
-    new NewTroopSearchResultDialog(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback).show();
+    this.a.a.a(0);
   }
 }
 

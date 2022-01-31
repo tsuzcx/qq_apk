@@ -1,11 +1,11 @@
 import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class lwa
   implements UserOperationModule.Ox978RespCallBack
 {
-  public lwa(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  public lwa(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
   
   public void a(boolean paramBoolean, String paramString, int paramInt)
   {

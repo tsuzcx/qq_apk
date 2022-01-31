@@ -1,14 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.magic.models.AndroidPs;
 
-public class lrp
-  implements Runnable
+public final class lrp
+  implements Parcelable.Creator
 {
-  public lrp(ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, ToServiceMsg paramToServiceMsg) {}
-  
-  public void run()
+  public AndroidPs a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
+    return new AndroidPs(paramParcel);
+  }
+  
+  public AndroidPs[] a(int paramInt)
+  {
+    return new AndroidPs[paramInt];
   }
 }
 

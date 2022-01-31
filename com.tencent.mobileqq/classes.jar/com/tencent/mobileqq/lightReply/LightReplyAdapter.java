@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.lightReply;
 
-import aebu;
+import aeke;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -37,10 +37,10 @@ public class LightReplyAdapter
     this.b = new ArrayList();
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841444, paramContext.getTheme());
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841471, paramContext.getTheme());
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841444);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841471);
   }
   
   private void a(View paramView, int paramInt)
@@ -101,7 +101,7 @@ public class LightReplyAdapter
         ((URLDrawable)localObject).restartDownload();
       }
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(new aebu(this, paramViewGroup));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(new aeke(this, paramViewGroup));
       a(paramView, paramInt);
       return paramView;
       paramViewGroup = (LightReplyAdapter.ViewHolder)paramView.getTag();

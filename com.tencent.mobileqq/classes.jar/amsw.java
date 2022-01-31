@@ -1,14 +1,10 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import cooperation.qzone.LocalMultiProcConfig;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 public final class amsw
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnDismissListener
 {
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    LocalMultiProcConfig.putBool("qz_safe_mode_no_tip", paramBoolean);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

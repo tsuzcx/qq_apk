@@ -82,7 +82,7 @@ public class PreloadInfoCheckUpdateItem
       Object localObject3 = new PreloadInfoCheckUpdate.ControlReqHead();
       ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).protocol_ver.set(1);
       ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).client_plat_id.set(109);
-      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).client_ver.set("7.6.3");
+      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).client_ver.set("7.6.8");
       ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).os_ver.set(Build.VERSION.SDK);
       ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).uin.set(this.a.getLongAccountUin());
       ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).mem.set((int)DeviceInfoUtil.e() / 1048576);

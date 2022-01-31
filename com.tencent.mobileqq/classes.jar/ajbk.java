@@ -1,23 +1,17 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class ajbk
-  implements AdapterView.OnItemClickListener
+  extends BroadcastReceiver
 {
-  public ajbk(NewTroopContactView paramNewTroopContactView) {}
+  public ajbk(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramAdapterView = ((ResultRecord)paramView.getTag()).a;
-    if (this.a.a(paramAdapterView))
-    {
-      NewTroopContactView.a(this.a, paramAdapterView);
-      this.a.a.notifyDataSetChanged();
-      this.a.b(false);
+    if ((paramIntent != null) && (paramIntent.getAction().equals("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete"))) {
+      this.a.finish();
     }
   }
 }

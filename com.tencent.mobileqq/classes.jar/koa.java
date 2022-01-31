@@ -1,25 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.now.NowVideoController;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.CommUtils;
+import com.tencent.biz.common.util.CommUtils.IHttpGetString;
 
-public class koa
-  extends Handler
+public final class koa
+  extends AsyncTask
 {
-  public koa(NowVideoController paramNowVideoController, Looper paramLooper)
+  String jdField_a_of_type_JavaLangString = "";
+  
+  public koa(CommUtils.IHttpGetString paramIHttpGetString, String paramString) {}
+  
+  protected Void a(Void... paramVarArgs)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaLangString = CommUtils.a(this.b);
+    return null;
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(Void paramVoid)
   {
-    switch (paramMessage.what)
+    super.onPostExecute(paramVoid);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-    default: 
+      this.jdField_a_of_type_ComTencentBizCommonUtilCommUtils$IHttpGetString.a();
       return;
     }
-    this.a.a = true;
-    NowVideoController.a(this.a);
+    this.jdField_a_of_type_ComTencentBizCommonUtilCommUtils$IHttpGetString.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

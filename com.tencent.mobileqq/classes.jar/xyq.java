@@ -1,40 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.QzEditVideoPartManager;
+import com.tencent.open.base.ToastUtil;
 
 public class xyq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public xyq(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public xyq(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (!NewFlowEditVideoActivity.a(this.a))
     {
-    }
-    boolean bool;
-    do
-    {
+      NewFlowEditVideoActivity.a(this.a);
       return;
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break;
-      }
-      bool = true;
-      paramDialogInterface.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f != 32);
-    if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (paramDialogInterface = "friendsfinder.all.confirm";; paramDialogInterface = "friendsfinder.all.cancel")
-    {
-      QWalletTools.a(0, paramDialogInterface);
-      return;
-      bool = false;
-      break;
     }
+    if (NewFlowEditVideoActivity.b(this.a))
+    {
+      ToastUtil.a().a("不使用超清");
+      NewFlowEditVideoActivity.a(this.a, false);
+      NewFlowEditVideoActivity.a(this.a).setBackgroundResource(2130845380);
+      ((QzEditVideoPartManager)NewFlowEditVideoActivity.a(this.a)).f = false;
+      return;
+    }
+    ToastUtil.a().a("使用超清");
+    NewFlowEditVideoActivity.a(this.a, true);
+    NewFlowEditVideoActivity.a(this.a).setBackgroundResource(2130845379);
+    ((QzEditVideoPartManager)NewFlowEditVideoActivity.b(this.a)).f = true;
   }
 }
 

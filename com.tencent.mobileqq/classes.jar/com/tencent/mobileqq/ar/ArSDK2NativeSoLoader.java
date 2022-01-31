@@ -31,8 +31,8 @@ public class ArSDK2NativeSoLoader
   
   public static int a(String paramString1, String paramString2)
   {
+    int i = -5;
     Object localObject;
-    int i;
     for (;;)
     {
       try
@@ -45,8 +45,9 @@ public class ArSDK2NativeSoLoader
           paramString2 = ArNativeSoLoaderBase.a("arsdk2", "v7.3.5.1", ArNativeSoLoaderBase.b("arsdk2", "v7.3.5.1", "arsdk2")) + File.separator + "md5_config.xml";
           localObject = new File(paramString2);
           if (!((File)localObject).exists()) {
-            break label781;
+            break label826;
           }
+          new HashMap();
         }
         catch (IOException paramString2)
         {
@@ -65,30 +66,33 @@ public class ArSDK2NativeSoLoader
       finally {}
       try
       {
-        paramString2 = FileUtils.b((File)localObject);
-        paramString1 = a(paramString2);
-        if (paramString1.size() <= 0) {
-          break label751;
+        paramString2 = a(FileUtils.b((File)localObject));
+        if (paramString2.size() <= 0) {
+          break label796;
         }
-        paramString2 = paramString1.entrySet().iterator();
+        paramString2 = paramString2.entrySet().iterator();
         if (!paramString2.hasNext()) {
-          break label822;
+          break label867;
         }
         localObject = (Map.Entry)paramString2.next();
         paramString1 = "";
         if (!((String)((Map.Entry)localObject).getKey()).equalsIgnoreCase("libAlphaAR")) {
-          break label528;
+          break label573;
         }
         paramString1 = ArNativeSoLoaderBase.a("arsdk2", "v7.3.5.1", ArNativeSoLoaderBase.b("arsdk2", "v7.3.5.1", "arsdk2")) + File.separator + (String)((Map.Entry)localObject).getKey() + ".so";
         ArNativeSoLoaderBase.a("arsdk2", "v7.3.5.1", "libAlphaAR", (String)((Map.Entry)localObject).getValue());
       }
       catch (IOException paramString2)
       {
-        i = -5;
+        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
+        continue;
+      }
+      catch (OutOfMemoryError paramString2)
+      {
         QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
         continue;
         if (!((String)((Map.Entry)localObject).getKey()).equalsIgnoreCase("libYTCommon")) {
-          break label619;
+          break label664;
         }
         paramString1 = ArNativeSoLoaderBase.a("arsdk2", "v7.3.5.1", ArNativeSoLoaderBase.b("arsdk2", "v7.3.5.1", "arsdk2")) + File.separator + (String)((Map.Entry)localObject).getKey() + ".so";
         ArNativeSoLoaderBase.a("arsdk2", "v7.3.5.1", "libYTCommon", (String)((Map.Entry)localObject).getValue());
@@ -123,14 +127,14 @@ public class ArSDK2NativeSoLoader
     for (;;)
     {
       return i;
-      label528:
-      label619:
-      label751:
+      label573:
       QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", configFilename = " + paramString2);
-      label781:
+      label664:
+      label796:
+      label826:
       i = -2;
       continue;
-      label822:
+      label867:
       QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. result = " + 0);
       i = 0;
     }
@@ -140,48 +144,48 @@ public class ArSDK2NativeSoLoader
   public static String a()
   {
     // Byte code:
-    //   0: ldc 174
+    //   0: ldc 177
     //   2: astore 4
-    //   4: new 31	java/lang/StringBuilder
+    //   4: new 33	java/lang/StringBuilder
     //   7: dup
-    //   8: invokespecial 32	java/lang/StringBuilder:<init>	()V
+    //   8: invokespecial 34	java/lang/StringBuilder:<init>	()V
     //   11: ldc 13
     //   13: ldc 15
     //   15: ldc 13
     //   17: ldc 15
     //   19: ldc 13
     //   21: invokestatic 21	com/tencent/mobileqq/ar/ArNativeSoLoaderBase:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   24: invokestatic 55	com/tencent/mobileqq/ar/ArNativeSoLoaderBase:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   27: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: getstatic 66	java/io/File:separator	Ljava/lang/String;
-    //   33: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: ldc 162
-    //   38: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   24: invokestatic 57	com/tencent/mobileqq/ar/ArNativeSoLoaderBase:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   27: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: getstatic 68	java/io/File:separator	Ljava/lang/String;
+    //   33: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: ldc 165
+    //   38: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   44: astore_1
-    //   45: new 31	java/lang/StringBuilder
+    //   45: new 33	java/lang/StringBuilder
     //   48: dup
-    //   49: invokespecial 32	java/lang/StringBuilder:<init>	()V
+    //   49: invokespecial 34	java/lang/StringBuilder:<init>	()V
     //   52: astore_3
-    //   53: new 62	java/io/File
+    //   53: new 64	java/io/File
     //   56: dup
     //   57: aload_1
-    //   58: invokespecial 71	java/io/File:<init>	(Ljava/lang/String;)V
+    //   58: invokespecial 73	java/io/File:<init>	(Ljava/lang/String;)V
     //   61: astore_1
-    //   62: new 176	java/io/BufferedReader
+    //   62: new 179	java/io/BufferedReader
     //   65: dup
-    //   66: new 178	java/io/FileReader
+    //   66: new 181	java/io/FileReader
     //   69: dup
     //   70: aload_1
-    //   71: invokespecial 181	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   74: invokespecial 184	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   71: invokespecial 184	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   74: invokespecial 187	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   77: astore_2
     //   78: iconst_1
     //   79: istore_0
     //   80: aload_2
     //   81: astore_1
     //   82: aload_2
-    //   83: invokevirtual 187	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   83: invokevirtual 190	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   86: astore 5
     //   88: aload 5
     //   90: ifnull +19 -> 109
@@ -189,7 +193,7 @@ public class ArSDK2NativeSoLoader
     //   94: astore_1
     //   95: aload_3
     //   96: aload 5
-    //   98: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   101: pop
     //   102: iload_0
     //   103: iconst_1
@@ -199,31 +203,31 @@ public class ArSDK2NativeSoLoader
     //   109: aload_2
     //   110: astore_1
     //   111: aload_2
-    //   112: invokevirtual 190	java/io/BufferedReader:close	()V
+    //   112: invokevirtual 193	java/io/BufferedReader:close	()V
     //   115: aload_2
     //   116: astore_1
     //   117: aload_3
-    //   118: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   118: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   121: astore_3
     //   122: aload_3
     //   123: astore_1
     //   124: aload_2
     //   125: ifnull +9 -> 134
     //   128: aload_2
-    //   129: invokevirtual 190	java/io/BufferedReader:close	()V
+    //   129: invokevirtual 193	java/io/BufferedReader:close	()V
     //   132: aload_3
     //   133: astore_1
-    //   134: ldc 29
+    //   134: ldc 31
     //   136: iconst_2
-    //   137: new 31	java/lang/StringBuilder
+    //   137: new 33	java/lang/StringBuilder
     //   140: dup
-    //   141: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   144: ldc 192
-    //   146: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   141: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   144: ldc 195
+    //   146: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   149: aload_1
-    //   150: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   156: invokestatic 50	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   150: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   156: invokestatic 52	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   159: aload_1
     //   160: areturn
     //   161: astore_3
@@ -232,13 +236,13 @@ public class ArSDK2NativeSoLoader
     //   164: aload_2
     //   165: astore_1
     //   166: aload_3
-    //   167: invokevirtual 195	java/io/IOException:printStackTrace	()V
+    //   167: invokevirtual 198	java/io/IOException:printStackTrace	()V
     //   170: aload 4
     //   172: astore_1
     //   173: aload_2
     //   174: ifnull -40 -> 134
     //   177: aload_2
-    //   178: invokevirtual 190	java/io/BufferedReader:close	()V
+    //   178: invokevirtual 193	java/io/BufferedReader:close	()V
     //   181: aload 4
     //   183: astore_1
     //   184: goto -50 -> 134
@@ -252,7 +256,7 @@ public class ArSDK2NativeSoLoader
     //   197: aload_1
     //   198: ifnull +7 -> 205
     //   201: aload_1
-    //   202: invokevirtual 190	java/io/BufferedReader:close	()V
+    //   202: invokevirtual 193	java/io/BufferedReader:close	()V
     //   205: aload_2
     //   206: athrow
     //   207: astore_1

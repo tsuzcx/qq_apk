@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel;
 
 public class afhp
-  implements DialogInterface.OnClickListener
+  implements ConditionSearchManager.IConfigListener
 {
-  public afhp(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, QQCustomDialog paramQQCustomDialog) {}
+  public afhp(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if ((paramBoolean) && (paramInt == 2))
+    {
+      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
+        break label41;
+      }
+      NearbyPeopleProfileActivity.a(this.a).d();
     }
-    while (paramInt != 0) {
+    label41:
+    while (NearbyPeopleProfileActivity.a(this.a) == null) {
       return;
     }
   }

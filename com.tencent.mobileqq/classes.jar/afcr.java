@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afcr
-  implements ConditionSearchManager.IConfigListener
+  implements View.OnTouchListener
 {
-  public afcr(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public afcr(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a();
-    if (!paramBoolean) {
-      this.a.b(this.a.getString(2131437298));
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (!ShortVideoCommentsView.a(this.a)) {}
+      this.a.l();
+      ShortVideoCommentsView.b(this.a);
     }
-    while ((this.a.e != 1) || (paramInt != 2)) {
-      return;
-    }
-    NearbyPeopleProfileActivity.a(this.a).c();
+    return false;
   }
 }
 

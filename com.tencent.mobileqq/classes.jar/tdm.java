@@ -1,43 +1,22 @@
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import java.util.List;
 
-public class tdm
-  extends ClickableSpan
+class tdm
+  implements Runnable
 {
-  public String a;
-  public WeakReference a;
+  tdm(tdl paramtdl, List paramList) {}
   
-  public tdm(String paramString, WeakReference paramWeakReference)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
-    {
-      paramView = (NotificationActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      paramView.startActivity(localIntent);
+    if (LebaListMgrActivity.a(this.jdField_a_of_type_Tdl.a) != null) {
+      LebaListMgrActivity.a(this.jdField_a_of_type_Tdl.a).a(this.jdField_a_of_type_JavaUtilList);
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tdm
  * JD-Core Version:    0.7.0.1
  */

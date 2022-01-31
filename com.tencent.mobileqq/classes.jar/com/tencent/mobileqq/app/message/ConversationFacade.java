@@ -43,7 +43,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import zsz;
+import zzk;
 
 public class ConversationFacade
   extends Observable
@@ -203,15 +203,15 @@ public class ConversationFacade
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
       ConcurrentHashMap localConcurrentHashMap = MsgPool.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).a();
-      if ((localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.G, 1001)) != null) || (localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.v, 1009)) != null) || (localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.X, 1010)) != null) || (localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.aE, 1032)) != null)) {
-        ThreadManager.post(new zsz(this), 8, null, false);
+      if ((localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.G, 1001)) != null) || (localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.v, 1009)) != null) || (localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.X, 1010)) != null) || (localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.aF, 1032)) != null)) {
+        ThreadManager.post(new zzk(this), 8, null, false);
       }
       return;
     }
     b(AppConstants.G, 1001);
     b(AppConstants.v, 1009);
     b(AppConstants.X, 1010);
-    b(AppConstants.aE, 1032);
+    b(AppConstants.aF, 1032);
   }
   
   public int a()
@@ -470,7 +470,7 @@ public class ConversationFacade
     do
     {
       return;
-      if ((paramInt != 1008) || (!TextUtils.equals(paramString, AppConstants.ar))) {
+      if ((paramInt != 1008) || (!TextUtils.equals(paramString, AppConstants.as))) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -625,7 +625,7 @@ public class ConversationFacade
     String str1 = paramString2;
     if (paramInt2 == 0)
     {
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131437897);
+      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131437917);
       str1 = paramString2;
       if (paramString2.indexOf(str2) == 0) {
         str1 = paramString2.substring(str2.length());
@@ -841,7 +841,7 @@ public class ConversationFacade
             if (paramInt != 1032) {
               break label228;
             }
-            localObject = a(paramInt).a(AppConstants.aE, 1032);
+            localObject = a(paramInt).a(AppConstants.aF, 1032);
             str = null;
             continue;
           }
@@ -916,7 +916,7 @@ public class ConversationFacade
   
   public void b(String paramString, int paramInt)
   {
-    if (AppConstants.aE.equals(paramString)) {
+    if (AppConstants.aF.equals(paramString)) {
       d(paramString, paramInt);
     }
     do
@@ -1561,7 +1561,7 @@ public class ConversationFacade
               n = i;
               i1 = j;
               if (e(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop) <= 0) {
-                break label399;
+                break label410;
               }
             }
             localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop, a(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop) * 2).iterator();
@@ -1579,7 +1579,7 @@ public class ConversationFacade
                 j += b(localMessageRecord);
               }
             }
-            if (MsgProxyUtils.d(((MessageRecord)localObject2).senderuin)) {
+            if ((MsgProxyUtils.d(((MessageRecord)localObject2).senderuin)) || (MsgProxyUtils.e(((MessageRecord)localObject2).senderuin))) {
               break;
             }
             m = k;
@@ -1601,15 +1601,15 @@ public class ConversationFacade
           k += 1;
         }
       }
-      label399:
+      label410:
       if ((!TextUtils.isEmpty(str)) || (i1 <= 0)) {
-        break label620;
+        break label631;
       }
       str = ((MessageRecord)localObject2).senderuin;
     }
-    label447:
-    label610:
-    label620:
+    label458:
+    label621:
+    label631:
     for (;;)
     {
       k = m;
@@ -1624,7 +1624,7 @@ public class ConversationFacade
           localObject1 = a().a(paramString, paramInt);
           localObject2 = a();
           if (localObject1 != null) {
-            break label610;
+            break label621;
           }
         }
       }
@@ -1640,7 +1640,7 @@ public class ConversationFacade
         QLog.d("Q.unread.Facade", 2, "calculateMsgBoxUnreadCount boxUin=" + paramString + ", unread=" + k + ", giftCount=" + i + ", redPacketCount=" + j);
         return;
         m = 0;
-        break label447;
+        break label458;
       }
     }
   }

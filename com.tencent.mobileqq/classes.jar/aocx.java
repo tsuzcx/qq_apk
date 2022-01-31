@@ -1,14 +1,24 @@
-import dov.com.tencent.biz.qqstory.takevideo.permission.PermissionPart;
+import android.view.View;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class aocx
+  implements ActionSheet.OnButtonClickListener
 {
-  public final int a;
-  public final PermissionPart a;
+  public aocx(EditVideoPartManager paramEditVideoPartManager, ActionSheet paramActionSheet) {}
   
-  public aocx(PermissionPart paramPermissionPart, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionPermissionPart = paramPermissionPart;
-    this.jdField_a_of_type_Int = paramInt;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b();
+    }
   }
 }
 

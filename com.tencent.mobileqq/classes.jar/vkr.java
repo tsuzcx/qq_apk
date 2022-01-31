@@ -1,22 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.IOnOfflineResCallback;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
 
 public class vkr
-  implements TroopSignItemBuilder.TroopSignVideoItemBuilder.IOnOfflineResCallback
+  implements DialogInterface.OnClickListener
 {
-  public vkr(TroopSignItemBuilder.TroopSignVideoItemBuilder paramTroopSignVideoItemBuilder, String paramString, TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder paramSignVideoItemHolder) {}
+  public vkr(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (new File(this.jdField_a_of_type_JavaLangString).exists())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.a.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopSignItemBuilder$TroopSignVideoItemBuilder$SignVideoItemHolder.e.setVisibility(8);
-    }
+    com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.a = 0L;
   }
 }
 

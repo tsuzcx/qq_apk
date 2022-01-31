@@ -1,17 +1,17 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.qidian.PhotoWallViewForQiDianProfile.PhotoAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
 
 public class allm
+  implements DialogInterface.OnClickListener
 {
-  public TextView a;
-  public URLImageView a;
+  public allm(BaseJsCallBack paramBaseJsCallBack) {}
   
-  public allm(PhotoWallViewForQiDianProfile.PhotoAdapter paramPhotoAdapter) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     allm
  * JD-Core Version:    0.7.0.1
  */

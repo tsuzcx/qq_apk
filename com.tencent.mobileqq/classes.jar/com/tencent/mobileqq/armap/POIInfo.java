@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import abda;
+import abka;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -17,7 +17,7 @@ import tencent.im.oidb.cmd0x7bb.oidb_0x7bb.PoiInfo;
 public class POIInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abda();
+  public static final Parcelable.Creator CREATOR = new abka();
   public double a;
   public int a;
   public long a;

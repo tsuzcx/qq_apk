@@ -1,19 +1,15 @@
-import android.media.AudioManager;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
 
 public class kte
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public kte(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public kte(AccountDetailGroupListContainer paramAccountDetailGroupListContainer) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("volumeTrace", 2, ",music system is thread " + PublicAccountAdvertisementActivity.a(this.a).a);
-    }
-    PublicAccountAdvertisementActivity.a(this.a).setStreamVolume(3, PublicAccountAdvertisementActivity.a(this.a).a, 0);
+    this.a.e = false;
   }
 }
 

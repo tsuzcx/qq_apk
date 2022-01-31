@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.nearby.now.view.logic.VideoInfoListenerImpl;
+import com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView;
 
 public class afdn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public afdn(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public afdn(VideoInfoListenerImpl paramVideoInfoListenerImpl) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = ActionSheet.a(this.a.a);
-    paramView.a(2131432526, 1);
-    paramView.c(2131433015);
-    paramView.a(new afdo(this, paramView));
-    paramView.show();
+    if (VideoInfoListenerImpl.a(this.a) != null) {
+      VideoInfoListenerImpl.a(this.a).setVisibility(0);
+    }
   }
 }
 

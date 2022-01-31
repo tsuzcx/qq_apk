@@ -1,30 +1,25 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.avatar.dynamicavatar.VasFaceManager;
+import com.tencent.mobileqq.util.FaceDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class tpr
-  implements TextWatcher
+  implements Runnable
 {
-  public tpr(RegisterPersonalInfoActivity paramRegisterPersonalInfoActivity) {}
+  public tpr(QQSettingMe paramQQSettingMe, String paramString) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    if (paramEditable == null) {
-      return;
+    FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, (byte)3);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFaceDrawable, 1, this.jdField_a_of_type_JavaLangString, 100, true, true, 6);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.b.setVisibility(VasFaceManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.A();
+    if (QLog.isDevelopLevel()) {
+      QLog.i("QQSettingRedesign", 4, "updateFace, " + this.jdField_a_of_type_JavaLangString);
     }
-    if (TextUtils.isEmpty(paramEditable.toString()))
-    {
-      RegisterPersonalInfoActivity.a(this.a).setEnabled(false);
-      return;
-    }
-    RegisterPersonalInfoActivity.a(this.a).setEnabled(true);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

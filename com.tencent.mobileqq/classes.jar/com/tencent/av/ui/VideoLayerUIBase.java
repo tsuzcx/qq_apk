@@ -35,10 +35,10 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Observable;
-import kcg;
-import kch;
-import kci;
-import kcj;
+import kek;
+import kel;
+import kem;
+import ken;
 
 public class VideoLayerUIBase
   extends GLViewGroup
@@ -58,7 +58,7 @@ public class VideoLayerUIBase
   private TextureRender jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender;
   public Runnable a;
   public final String a;
-  protected kcj a;
+  protected ken a;
   public boolean a;
   private float[] jdField_a_of_type_ArrayOfFloat;
   public GLVideoView[] a;
@@ -77,8 +77,8 @@ public class VideoLayerUIBase
   public VideoLayerUIBase(VideoAppInterface paramVideoAppInterface, Context paramContext, View paramView)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangRunnable = new kcg(this);
-    this.jdField_b_of_type_JavaLangRunnable = new kch(this);
+    this.jdField_a_of_type_JavaLangRunnable = new kek(this);
+    this.jdField_b_of_type_JavaLangRunnable = new kel(this);
     this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.a());
     QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onCreate:" + this + ", VideoAppInterface:" + paramVideoAppInterface + ", rootView:" + paramView);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
@@ -86,9 +86,9 @@ public class VideoLayerUIBase
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366302));
-    this.jdField_a_of_type_Kcj = new kcj(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Kcj);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366307));
+    this.jdField_a_of_type_Ken = new ken(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Ken);
   }
   
   private void a(GLCanvas paramGLCanvas, boolean paramBoolean)
@@ -849,7 +849,7 @@ public class VideoLayerUIBase
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onDestroy:" + this);
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Kcj);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Ken);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
     this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.setOnTouchListener(null);
     this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.setContentPane(null);
@@ -963,7 +963,7 @@ public class VideoLayerUIBase
     }
     for (;;)
     {
-      localObject = new kci(this, paramInt, n, i1, j, k, null);
+      localObject = new kem(this, paramInt, n, i1, j, k, null);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post((Runnable)localObject);
       return;
       k += this.jdField_b_of_type_Int;
@@ -989,7 +989,7 @@ public class VideoLayerUIBase
   
   public void n()
   {
-    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = ((GLRootView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366255));
+    this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView = ((GLRootView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366260));
     this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.setContentPane(this);
     this.jdField_a_of_type_ComTencentAvSwitchfaceSwitchFaceView = this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.a();
     this.jdField_a_of_type_ComTencentAvSwitchfaceSwitchFaceView.a(this);
@@ -1012,7 +1012,7 @@ public class VideoLayerUIBase
     }
   }
   
-  public void r_()
+  public void q_()
   {
     if (this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView != null) {
       this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView.onResume();
@@ -1022,7 +1022,7 @@ public class VideoLayerUIBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUIBase
  * JD-Core Version:    0.7.0.1
  */

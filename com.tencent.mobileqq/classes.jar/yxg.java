@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.apollo.view.ApolloGameHotChatController;
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
 
 public class yxg
   implements Runnable
 {
-  public yxg(ApolloGameHotChatController paramApolloGameHotChatController, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public yxg(CmGameAvHandler paramCmGameAvHandler) {}
   
   public void run()
   {
-    ((HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
+    CmGameAvHandler.a(this.a, true);
   }
 }
 

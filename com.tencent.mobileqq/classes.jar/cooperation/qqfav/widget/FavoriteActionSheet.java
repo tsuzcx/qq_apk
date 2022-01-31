@@ -1,7 +1,7 @@
 package cooperation.qqfav.widget;
 
-import ampl;
-import ampm;
+import amww;
+import amwx;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -40,32 +40,32 @@ public class FavoriteActionSheet
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(paramActivity, null));
     if ((this.jdField_a_of_type_Int & 0x10) != 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131434552, 5);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131434568, 5);
       this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(16));
     }
     if ((this.jdField_a_of_type_Int & 0x20) != 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131431711, 5);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131431722, 5);
       this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(32));
     }
     if ((this.jdField_a_of_type_Int & 0x40) != 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131431729, 5);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131431740, 5);
       this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(64));
     }
     if ((this.jdField_a_of_type_Int & 0x1) != 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131435083, 5);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131435099, 5);
       this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
     }
     if ((this.jdField_a_of_type_Int & 0x2) != 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131430005, 5);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131430007, 5);
       this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(2));
     }
     if ((this.jdField_a_of_type_Int & 0x4) != 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131431563, 5);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131431574, 5);
       this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(4));
     }
     if ((this.jdField_a_of_type_Int & 0x8) != 0)
@@ -73,9 +73,9 @@ public class FavoriteActionSheet
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131428216, 5);
       this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(8));
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new ampl(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new ampm(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new amww(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new amwx(this));
   }
   
   private void b()

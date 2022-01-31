@@ -21,7 +21,7 @@ public final class g
     return new i(paramString, paramArrayOfByte);
   }
   
-  public final f.a a(e parame)
+  public final f a(e parame)
   {
     int i = 0;
     if (parame == null) {
@@ -31,26 +31,28 @@ public final class g
       throw new RuntimeException("execute...IHttpRequest should be create by API:createRequest");
     }
     i locali = (i)parame;
-    locali.k = System.currentTimeMillis();
-    v.a("app_http_use_proxy", 0, 1, 1);
-    parame = new k(locali);
-    if (locali.g <= 0)
+    locali.g = null;
+    locali.n = System.currentTimeMillis();
+    x.a.a("app_http_use_proxy", 0, 1, 1);
+    parame = new l(locali);
+    locali.h = parame;
+    if (locali.j <= 0)
     {
       locali.a(parame.a());
       parame = locali.d();
       if (i != 0) {
-        locali.j = true;
+        locali.m = true;
       }
       if (parame != null) {
-        break label164;
+        break label174;
       }
-      parame = new aj(-14, "force return timeout:" + locali.g);
+      parame = new ao(-14, "force return timeout:" + locali.j);
     }
-    label164:
+    label174:
     for (;;)
     {
-      return new f.a(parame);
-      x.a.a().a.execute(new h(parame, locali));
+      return new j(parame);
+      aa.a.a().a.execute(new h(parame, locali));
       if (locali.c()) {
         break;
       }

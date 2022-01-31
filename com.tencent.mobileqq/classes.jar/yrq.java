@@ -1,59 +1,31 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.util;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.Doraemon.APIParam;
+import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
+import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
+import com.tencent.mobileqq.apollo.ApolloRender;
 
-public class yrq
-  extends WtloginObserver
+public final class yrq
+  implements APICallback
 {
-  public int a;
-  public int b;
+  public yrq(View paramView, DoraemonAPIManager paramDoraemonAPIManager, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6) {}
   
-  public yrq(CmGameMainManager paramCmGameMainManager) {}
+  public void a() {}
   
-  public void OnGetOpenKeyWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, ErrMsg paramErrMsg)
+  public void a(int paramInt)
   {
-    if (paramInt2 == 0)
-    {
-      paramString = util.buf_to_string(paramArrayOfByte2);
-      if (QLog.isColorLevel()) {
-        QLog.i("cmgame_process.CmGameMainManager", 2, "OnGetOpenKeyWithoutPasswd token:" + paramString);
-      }
-      paramArrayOfByte1 = this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameMainManager.a();
-      if (paramArrayOfByte1 != null) {
-        break label57;
-      }
-    }
-    for (;;)
-    {
-      return;
-      try
-      {
-        label57:
-        paramArrayOfByte2 = new JSONObject();
-        paramArrayOfByte2.put("appId", paramLong2);
-        paramArrayOfByte2.put("gameId", this.jdField_a_of_type_Int);
-        paramArrayOfByte2.put("openKey", paramString);
-        CmGameCmdChannel.a(paramArrayOfByte1).a(0, "cs.on_get_open_key.local", paramArrayOfByte2.toString(), this.b);
-        paramArrayOfByte1 = ((ApolloDaoManager)paramArrayOfByte1.getManager(154)).a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameMainManager.a.game.gameId);
-        if (paramArrayOfByte1 != null)
-        {
-          paramArrayOfByte1.openKey = paramString;
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("cmgame_process.CmGameMainManager", 1, "OpenKeyObserver error:", paramString);
-      }
-    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
+  }
+  
+  public void a(APIParam paramAPIParam)
+  {
+    paramAPIParam = (String)DoraemonUtil.a(paramAPIParam, "city", "");
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramAPIParam, 0, "location success");
   }
 }
 

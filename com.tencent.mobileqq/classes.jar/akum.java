@@ -1,19 +1,23 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.GuideViewBuilder;
-import java.util.ArrayList;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class akum
+  implements TouchWebView.OnScrollChangedListener
 {
-  public View.OnClickListener a;
-  public View a;
-  public ArrayList a;
-  public int[] a;
+  public akum(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
   
-  private akum(GuideViewBuilder paramGuideViewBuilder)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = null;
+    this.a.b = paramInt2;
+    this.a.a(this.a.b, this.a.f);
+    paramView = this.a.a.a();
+    if ((paramView != null) && (!TextUtils.isEmpty(this.a.d))) {
+      paramView.a(this.a.d, new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2), String.valueOf(paramInt3), String.valueOf(paramInt4) });
+    }
   }
 }
 

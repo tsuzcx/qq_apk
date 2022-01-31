@@ -1,62 +1,54 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.config.DownloadIconsListener;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.leba.header.LebaGridUtils;
+import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
+import com.tencent.mobileqq.leba.model.PluginInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
-import mqq.app.MobileQQ;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aeij
-  implements Runnable
+  extends DownloadIconsListener
 {
-  public aeij(EmoticonManager paramEmoticonManager, int paramInt) {}
+  public aeij(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void run()
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    Object localObject = new File(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir(), "recommemd_emotion_file__" + this.jdField_a_of_type_Int + this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    if (!((File)localObject).exists()) {}
-    for (;;)
+    int i = 0;
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      try
-      {
-        if (!((File)localObject).createNewFile())
-        {
-          QLog.e("EmoticonManager", 1, "writeRecommendInfoFromFileToCache, create file fail");
-          return;
-        }
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-      }
-      byte[] arrayOfByte = FileUtils.a((File)localObject);
-      localObject = new EmosmPb.SubCmd0x5RspBQRecommend();
-      if (arrayOfByte == null) {
-        continue;
-      }
-      try
-      {
-        ((EmosmPb.SubCmd0x5RspBQRecommend)localObject).mergeFrom(arrayOfByte);
-        if (localObject == null) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonManager", 2, "writeRecommendInfoFromFileToCache post to uithread");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.jdField_a_of_type_AndroidOsHandler.post(new aeik(this, (EmosmPb.SubCmd0x5RspBQRecommend)localObject));
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localObject = null;
-          localException.printStackTrace();
-        }
+      localObject = new StringBuilder().append("DownloadIconsListener onDownloadSuc, key=").append(paramString).append(", bitmap is null?");
+      if (paramBitmap != null) {
+        break label218;
       }
     }
+    label218:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("Q.lebatab.leba_with_feeds", 2, bool);
+      int j = this.a.a.size();
+      while (i < j)
+      {
+        localObject = (LebaGridItemInfo)this.a.a.get(i);
+        if ((localObject != null) && (((LebaGridItemInfo)localObject).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo != null) && (paramString.equals(((LebaGridItemInfo)localObject).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.pkgName)) && (paramBitmap != null))
+        {
+          File localFile = LebaGridUtils.a(this.a.a(), paramString, ((LebaGridItemInfo)localObject).jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.resBigUrl);
+          if (localFile != null)
+          {
+            ((LebaGridItemInfo)localObject).jdField_a_of_type_JavaLangString = ("LebaIcon://" + localFile.getAbsolutePath());
+            if ((BaseApplicationImpl.sImageHashMap != null) && (BaseApplicationImpl.sImageHashMap.get(((LebaGridItemInfo)localObject).jdField_a_of_type_JavaLangString) == null)) {
+              BaseApplicationImpl.sImageHashMap.put(((LebaGridItemInfo)localObject).jdField_a_of_type_JavaLangString, paramBitmap);
+            }
+          }
+        }
+        i += 1;
+      }
+    }
+    this.a.a(new aeik(this, paramString, paramBitmap));
   }
 }
 

@@ -1,46 +1,43 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.ProGallery;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import com.tencent.mobileqq.vip.DownloaderInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class wyn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wyn(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference b;
   
-  public void onClick(View paramView)
+  public wyn(AvatarPendantActivity paramAvatarPendantActivity, DownloadListener paramDownloadListener, QQAppInterface paramQQAppInterface)
   {
-    this.a.jdField_b_of_type_AndroidWidgetButton.setClickable(false);
-    if (this.a.getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
-    {
-      paramView = this.a.jdField_b_of_type_JavaUtilArrayList.iterator();
-      for (long l = 0L; paramView.hasNext(); l = FileUtils.a((String)paramView.next()) + l) {}
-      if (this.a.jdField_b_of_type_JavaUtilArrayList.size() == 0)
-      {
-        int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.getFirstVisiblePosition();
-        if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-          FileUtils.a((String)this.a.jdField_a_of_type_JavaUtilArrayList.get(i));
-        }
-      }
-      if (FileManagerUtil.a()) {
-        FMDialogUtil.a(this.a, 2131428241, 2131428237, new wyo(this));
-      }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDownloadListener);
+    this.b = new WeakReference(paramQQAppInterface);
+  }
+  
+  public void run()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AvatarPendantActivity", 2, "checkAvatarPendantMarketIcon start...");
     }
-    for (;;)
+    if ((this.b.get() != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
     {
-      LpReportInfo_pf00064.allReport(603, 1);
-      return;
-      this.a.i();
-      continue;
-      this.a.i();
+      DownloaderInterface localDownloaderInterface = ((DownloaderFactory)((QQAppInterface)this.b.get()).getManager(46)).a(1);
+      if (localDownloaderInterface.a(AvatarPendantUtil.a) == null)
+      {
+        Object localObject = new File(AvatarPendantUtil.b + "/icon.zip");
+        localObject = new DownloadTask(AvatarPendantUtil.a, (File)localObject);
+        ((DownloadTask)localObject).n = false;
+        Bundle localBundle = new Bundle();
+        localDownloaderInterface.a((DownloadTask)localObject, (DownloadListener)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localBundle);
+      }
     }
   }
 }

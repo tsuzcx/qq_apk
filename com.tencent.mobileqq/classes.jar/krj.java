@@ -1,40 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.widget.Switch;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class krj
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public krj(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, PaConfigAttr.PaConfigInfo paramPaConfigInfo, boolean paramBoolean, Switch paramSwitch) {}
+  public krj(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      if ((3 == this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.e) && (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d == 0))
-      {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer;
-        localPaConfigInfo = this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo;
-        if (!this.jdField_a_of_type_Boolean) {
-          paramDialogInterface.a(localPaConfigInfo, bool);
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "updateUnfollowInfo");
     }
-    while (paramInt != 1) {
-      for (;;)
-      {
-        PaConfigAttr.PaConfigInfo localPaConfigInfo;
-        return;
-        bool = false;
-      }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null) {}
+    try
+    {
+      EqqAccountDetailActivity.a(this.a).b(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+      this.a.d(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+      EqqAccountDetailActivity.b(this.a).sendEmptyMessage(2);
+      EqqAccountDetailActivity.b(this.a).a().a(EqqAccountDetailActivity.b(this.a), EqqAccountDetailActivity.c(this.a));
+      EqqAccountDetailActivity.c(this.a).a().a(EqqAccountDetailActivity.c(this.a), 1024);
+      EqqAccountDetailActivity.d(this.a).a().a(EqqAccountDetailActivity.d(this.a), 0);
+      ReportController.b(EqqAccountDetailActivity.e(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.e(this.a), "0X8004E43", "0X8004E43", 0, 0, EqqAccountDetailActivity.f(this.a), "", "", "");
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_Boolean);
+    catch (Exception localException) {}
   }
 }
 

@@ -1,25 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectGuidePicActivity;
+import com.tencent.biz.troop.file.TroopFileProtocol.GetOneFileInfoObserver;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
 public class ajwu
-  implements View.OnTouchListener
+  extends TroopFileProtocol.GetOneFileInfoObserver
 {
-  public ajwu(TroopPicEffectGuidePicActivity paramTroopPicEffectGuidePicActivity) {}
+  public ajwu(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      paramView.setAlpha(0.5F);
-    }
-    for (;;)
+    if ((paramBoolean) && (paramFileInfo != null))
     {
-      return false;
-      if ((i == 1) || (i == 3)) {
-        paramView.setAlpha(1.0F);
+      String str = paramFileInfo.str_file_id.get();
+      Object localObject = str;
+      if (!str.startsWith("/")) {
+        localObject = "/" + str;
       }
+      localObject = this.a.a().a((String)localObject);
+      if (localObject != null)
+      {
+        ((TroopFileInfo)localObject).a = paramFileInfo.uint32_bus_id.get();
+        ((TroopFileInfo)localObject).c = paramFileInfo.uint32_dead_time.get();
+      }
+      this.a.a().d((TroopFileInfo)localObject);
     }
   }
 }

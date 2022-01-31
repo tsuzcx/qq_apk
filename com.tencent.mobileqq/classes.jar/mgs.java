@@ -1,38 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
 public class mgs
-  implements HttpWebCgiAsyncTask.Callback
+  implements Animation.AnimationListener
 {
-  public mgs(ReadInJoyAllInOneBar paramReadInJoyAllInOneBar) {}
+  public mgs(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramInt != 1000) || (paramJSONObject != null)) {}
-    for (;;)
-    {
-      try
-      {
-        if (paramJSONObject.optInt("ret") == 0) {
-          break label61;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        QLog.e(ReadInJoyAllInOneBar.a, 1, "requestCode == REQUEST_CODE_COMMENT. parse result failed. result=" + paramJSONObject);
-        return;
-      }
-      ReadInJoyAllInOneBar.a(this.a, bool);
-      return;
-      label61:
-      boolean bool = true;
-      continue;
-      bool = false;
-    }
+    VideoFeedsPlayActivity.c(this.a).startAnimation(this.a.b);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

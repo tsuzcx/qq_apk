@@ -1,33 +1,39 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import com.tencent.open.appcommon.js.AppInterface;
-import com.tencent.open.downloadnew.MyAppDialog;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class aldp
   implements Runnable
 {
-  public aldp(AppInterface paramAppInterface, DialogInterface.OnClickListener paramOnClickListener) {}
+  public aldp(ProfileCardMoreInfoView paramProfileCardMoreInfoView, Card paramCard) {}
   
   public void run()
   {
-    Resources localResources = this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.activity.getResources();
-    MyAppDialog localMyAppDialog = new MyAppDialog(this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.activity);
-    localMyAppDialog.a(2131428541, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, true);
-    localMyAppDialog.b(2131428542, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, true);
-    localMyAppDialog.a(localResources.getString(2131428532));
-    localMyAppDialog.b(localResources.getString(2131428543));
-    localMyAppDialog.setCancelable(false);
-    localMyAppDialog.setOnDismissListener(new aldq(this));
-    if ((this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.activity != null) && (!this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.activity.isFinishing())) {
-      localMyAppDialog.show();
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a == null)) {}
+    Object localObject;
+    do
+    {
+      return;
+      localObject = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+    } while (localObject == null);
+    if ((!ProfileActivity.AllInOne.f(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a)) || (this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.h) || ("0".equals(((ProfileShoppingPhotoInfo)localObject).bindShoppingNo)))
+    {
+      localObject = (View)this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_JavaUtilHashMap.remove("map_key_shopping_photo");
+      return;
     }
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsAppInterface.tipDialog = localMyAppDialog;
+    new MqqHandler(Looper.getMainLooper()).post(new aldq(this, (ProfileShoppingPhotoInfo)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aldp
  * JD-Core Version:    0.7.0.1
  */

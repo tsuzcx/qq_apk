@@ -1,18 +1,36 @@
-import dov.com.qq.im.capture.poi.FacePoiUI;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager.TroopPluginCallback;
 
-public class annk
-  implements Runnable
+class annk
+  extends Handler
 {
-  public annk(FacePoiUI paramFacePoiUI, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void run()
+  annk(annj paramannj, Looper paramLooper)
   {
-    FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI, this.jdField_a_of_type_Boolean, this.b);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(0);
+      return;
+    } while (this.a.a == null);
+    this.a.a.a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annk
  * JD-Core Version:    0.7.0.1
  */

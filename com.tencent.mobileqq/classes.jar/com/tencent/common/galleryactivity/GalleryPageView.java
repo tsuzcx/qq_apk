@@ -9,9 +9,9 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.widget.AdapterView;
-import pff;
-import pfg;
-import pfh;
+import pjx;
+import pjy;
+import pjz;
 
 public class GalleryPageView
   extends AbstractGalleryPageView
@@ -20,7 +20,7 @@ public class GalleryPageView
   AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
   public TextView a;
   public AbstractGalleryScene a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new pfh(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new pjz(this);
   private boolean jdField_a_of_type_Boolean = true;
   public AlphaAnimation b = new AlphaAnimation(1.0F, 0.0F);
   
@@ -50,8 +50,8 @@ public class GalleryPageView
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
     this.b.setDuration(300L);
     this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene = paramAbstractGalleryScene;
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new pff(this));
-    this.b.setAnimationListener(new pfg(this));
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new pjx(this));
+    this.b.setAnimationListener(new pjy(this));
   }
   
   public void a(AdapterView paramAdapterView, int paramInt)

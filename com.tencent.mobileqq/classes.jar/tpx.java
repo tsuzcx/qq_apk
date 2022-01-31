@@ -1,13 +1,30 @@
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class tpx
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public tpx(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public tpx(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    RegisterPhoneNumActivity.a(this.a, true);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.a.a.setAlpha(0.5F);
+      this.a.a.invalidate();
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        this.a.a.setAlpha(1.0F);
+        this.a.a.invalidate();
+      }
+    }
   }
 }
 

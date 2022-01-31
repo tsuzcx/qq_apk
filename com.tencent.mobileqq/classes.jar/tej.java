@@ -1,15 +1,17 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.mobileqq.activity.Now;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class tej
   implements Runnable
 {
-  public tej(Now paramNow) {}
+  public tej(LoginActivity paramLoginActivity, String paramString) {}
   
   public void run()
   {
-    ((UserManager)SuperManager.a(2)).c();
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity", 2, "-->login success(finish after ls), go to AgentActivity, account:" + this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.finish();
   }
 }
 

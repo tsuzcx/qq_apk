@@ -1,37 +1,25 @@
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.widget.ActionSheet;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rkp
-  implements IphonePickerView.IphonePickListener
+  implements View.OnClickListener
 {
-  public rkp(AgeSelectionActivity paramAgeSelectionActivity) {}
+  public rkp(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onConfirmBtClicked()
+  public void onClick(View paramView)
   {
-    if ((AgeSelectionActivity.a(this.a) != null) && (AgeSelectionActivity.a(this.a).isShowing())) {
-      AgeSelectionActivity.a(this.a).dismiss();
+    ReportController.b(this.a.app, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
+    if (SettingCloneUtil.readValue(this.a.app.getApplication(), this.a.app.getAccount(), null, "pcactive_config", false)) {
+      this.a.app.startPCActivePolling(this.a.app.getAccount(), "logout");
     }
-  }
-  
-  public void onItemSelected(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      AgeSelectionActivity.a(this.a);
-      if ((AgeSelectionActivity.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        AgeSelectionActivity.a(this.a).a(2);
-      }
-      return;
-      AgeSelectionActivity.a(this.a, paramInt2);
-      continue;
-      AgeSelectionActivity.b(this.a, paramInt2);
-      continue;
-      AgeSelectionActivity.c(this.a, paramInt2);
+    AccountManageActivity.a(this.a.getActivity(), this.a.app);
+    if ((this.a.b != null) && (this.a.b.isShowing())) {
+      this.a.b.dismiss();
     }
   }
 }

@@ -5,7 +5,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import klt;
+import koa;
 
 public class CommUtils
 {
@@ -37,7 +37,7 @@ public class CommUtils
   
   public static void a(String paramString, CommUtils.IHttpGetString paramIHttpGetString)
   {
-    new klt(paramIHttpGetString, paramString).execute(new Void[0]);
+    new koa(paramIHttpGetString, paramString).execute(new Void[0]);
   }
 }
 

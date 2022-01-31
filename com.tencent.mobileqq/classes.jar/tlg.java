@@ -1,19 +1,13 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class tlg
-  implements IIconListener
+  implements Runnable
 {
-  public tlg(QQSettingMe paramQQSettingMe) {}
+  public tlg(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
-      this.a.B();
-    }
+    this.a.f();
   }
 }
 

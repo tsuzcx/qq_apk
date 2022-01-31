@@ -1,65 +1,61 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListenerAdapter;
-import cooperation.qzone.networkedmodule.QzoneModuleConst;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.NetworkState;
-import java.util.List;
+import android.os.RemoteException;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
 
-public class amwo
-  extends ModuleDownloadListenerAdapter
+class amwo
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public amwo(QzoneModuleManager paramQzoneModuleManager) {}
+  amwo(amwn paramamwn) {}
   
-  private void a()
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    if (!NetworkState.isWifiConn())
+    try
     {
-      QLog.w("QzoneModuleManager", 1, "isWifiConn:false,so stop update.");
-      return;
-    }
-    QzoneModuleManager.access$008(this.a);
-    for (;;)
-    {
-      if (QzoneModuleManager.access$000(this.a) < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
+      if (!paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
       {
-        String str = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(QzoneModuleManager.access$000(this.a));
-        if (this.a.checkIfNeedUpdate(str)) {
-          this.a.updateModule(str, this);
+        if (this.a.a == null)
+        {
+          paramPluginManagerClient.installPlugin("qqfav.apk");
+          return;
         }
-      }
-      else
-      {
-        if (QzoneModuleManager.access$000(this.a) != QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size()) {
-          break;
-        }
-        QLog.i("QzoneModuleManager", 1, "updateAllModules completed--totalModules:" + QzoneModuleManager.access$000(this.a));
+        paramPluginManagerClient.installPlugin("qqfav.apk", this.a.a);
         return;
       }
-      QzoneModuleManager.access$008(this.a);
     }
-  }
-  
-  public void onDownloadCanceled(String paramString)
-  {
-    super.onDownloadCanceled(paramString);
-    a();
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    super.onDownloadFailed(paramString);
-    a();
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    super.onDownloadSucceed(paramString);
-    a();
+    catch (Exception paramPluginManagerClient)
+    {
+      if (this.a.a != null)
+      {
+        try
+        {
+          this.a.a.onInstallError("qqfav.apk", -1);
+          return;
+        }
+        catch (RemoteException paramPluginManagerClient)
+        {
+          paramPluginManagerClient.printStackTrace();
+          return;
+        }
+        paramPluginManagerClient = this.a.a;
+        if (paramPluginManagerClient != null) {
+          try
+          {
+            this.a.a.onInstallFinish("qqfav.apk");
+            return;
+          }
+          catch (RemoteException paramPluginManagerClient)
+          {
+            paramPluginManagerClient.printStackTrace();
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amwo
  * JD-Core Version:    0.7.0.1
  */

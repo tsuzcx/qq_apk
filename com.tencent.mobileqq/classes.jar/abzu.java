@@ -1,38 +1,27 @@
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.mobileqq.emosm.favroaming.SyncListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.confess.TroopConfessItemBuilder;
+import com.tencent.mobileqq.confess.TroopConfessUtil;
+import com.tencent.mobileqq.confess.data.TroopConfessMsg;
+import com.tencent.mobileqq.data.MessageForTroopConfess;
+import java.util.List;
 
 public class abzu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abzu(FavroamingManager paramFavroamingManager) {}
+  public abzu(TroopConfessItemBuilder paramTroopConfessItemBuilder, MessageForTroopConfess paramMessageForTroopConfess) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = 0;
-    while (i < this.a.a.size())
-    {
-      if (this.a.a.get(i) != null)
-      {
-        SyncListener localSyncListener = (SyncListener)((WeakReference)this.a.a.get(i)).get();
-        if (localSyncListener != null)
-        {
-          localSyncListener.a(null, FavroamingManager.a(), FavroamingManager.a().get());
-          if (QLog.isColorLevel()) {
-            QLog.i("FavroamingManager", 2, "now notify listener on file done!");
-          }
-        }
-      }
-      i += 1;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items.isEmpty())) {
+      TroopConfessUtil.a(this.jdField_a_of_type_ComTencentMobileqqConfessTroopConfessItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqConfessTroopConfessItemBuilder.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_ComTencentMobileqqConfessTroopConfessItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessTopicId(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.confessorUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessToUin()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import afmn;
-import afmo;
+import afqm;
+import afqn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -59,7 +59,7 @@ public class AvatarWallViewPager
     this.jdField_b_of_type_Boolean = true;
     this.jdField_b_of_type_Int = 500;
     this.jdField_c_of_type_Int = 4000;
-    this.jdField_a_of_type_AndroidOsHandler = new afmn(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new afqm(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     c();
   }
@@ -77,7 +77,7 @@ public class AvatarWallViewPager
     if (paramBoolean)
     {
       if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.a(getResources(), Color.parseColor("#CC12B7F5"), getResources().getDrawable(2130841314));
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.a(getResources(), Color.parseColor("#CC12B7F5"), getResources().getDrawable(2130841341));
       }
       localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
       if (!paramBoolean) {
@@ -92,7 +92,7 @@ public class AvatarWallViewPager
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
         break;
       }
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.a(getResources(), Color.parseColor("#66FFFFFF"), getResources().getDrawable(2130841314));
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.a(getResources(), Color.parseColor("#66FFFFFF"), getResources().getDrawable(2130841341));
       break;
     }
   }
@@ -156,7 +156,7 @@ public class AvatarWallViewPager
     AvatarWallViewPager.RollerChangeListener localRollerChangeListener = new AvatarWallViewPager.RollerChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager$RollerChangeListener = localRollerChangeListener;
     localRollViewPager.setOnPageChangeListener(localRollerChangeListener);
-    new afmo(this, this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator()).a();
+    new afqn(this, this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator()).a();
   }
   
   protected void d()
@@ -228,7 +228,7 @@ public class AvatarWallViewPager
   public void setScrollInterpolator(Interpolator paramInterpolator)
   {
     if (paramInterpolator != null) {
-      new afmo(this, this.jdField_a_of_type_AndroidContentContext, paramInterpolator).a();
+      new afqn(this, this.jdField_a_of_type_AndroidContentContext, paramInterpolator).a();
     }
   }
 }

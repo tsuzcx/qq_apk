@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import adit;
-import adiw;
-import adix;
-import adiy;
+import adra;
+import adrd;
+import adre;
+import adrf;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -70,7 +70,7 @@ public class QfileEditBottomBar
   public QfileEditBottomBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970006, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970017, this, true);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     b();
   }
@@ -79,11 +79,11 @@ public class QfileEditBottomBar
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getAppRuntime());
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368754));
-    this.b = ((ImageView)findViewById(2131368755));
-    this.c = ((ImageView)findViewById(2131368757));
-    this.d = ((ImageView)findViewById(2131368756));
-    this.e = ((ImageView)findViewById(2131368758));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368757));
+    this.b = ((ImageView)findViewById(2131368758));
+    this.c = ((ImageView)findViewById(2131368760));
+    this.d = ((ImageView)findViewById(2131368759));
+    this.e = ((ImageView)findViewById(2131368761));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.b.setOnClickListener(this);
     this.c.setOnClickListener(this);
@@ -445,8 +445,8 @@ public class QfileEditBottomBar
     }
     for (;;)
     {
-      paramView.c(2131433015);
-      paramView.a(new adit(this, paramView));
+      paramView.c(2131433029);
+      paramView.a(new adra(this, paramView));
       paramView.show();
       return;
       label84:
@@ -473,12 +473,12 @@ public class QfileEditBottomBar
       }
       if (!NetworkUtil.d(this.jdField_a_of_type_AndroidContentContext))
       {
-        FileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext.getString(2131437312));
+        FileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext.getString(2131437332));
         return;
       }
       if (FMDataCache.d() > FMConfig.a())
       {
-        FileManagerUtil.a(false, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, new adiw(this));
+        FileManagerUtil.a(false, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, new adrd(this));
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e();
@@ -492,24 +492,24 @@ public class QfileEditBottomBar
       return;
       if (!NetworkUtil.d(this.jdField_a_of_type_AndroidContentContext))
       {
-        FileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext.getString(2131437312));
+        FileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext.getString(2131437332));
         return;
       }
       if (FileManagerUtil.a(false, FMDataCache.c()))
       {
-        FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 2131428241, 2131428238, new adix(this));
+        FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 2131428241, 2131428238, new adre(this));
         return;
       }
       if ((FMDataCache.b() > FMConfig.a()) && (FileManagerUtil.a()))
       {
-        FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 2131428241, 2131428238, new adiy(this));
+        FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 2131428241, 2131428238, new adrf(this));
         return;
       }
       c();
       return;
       if (!NetworkUtil.d(this.jdField_a_of_type_AndroidContentContext))
       {
-        FileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext.getString(2131437312));
+        FileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext.getString(2131437332));
         return;
       }
       d();

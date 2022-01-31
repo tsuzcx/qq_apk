@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flashchat;
 
-import adjs;
+import adrz;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -73,7 +73,7 @@ public class FlashChatManager
   
   static
   {
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new adjs());
+    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new adrz());
   }
   
   public FlashChatManager(QQAppInterface paramQQAppInterface)
@@ -888,7 +888,7 @@ public class FlashChatManager
       }
     }
     label87:
-    for (Object localObject = AppConstants.aJ;; localObject = ((Context)localObject).getCacheDir().getAbsolutePath())
+    for (Object localObject = AppConstants.aK;; localObject = ((Context)localObject).getCacheDir().getAbsolutePath())
     {
       this.jdField_a_of_type_JavaLangString = ((String)localObject + File.separator + "flashchat" + File.separator);
       new File(this.jdField_a_of_type_JavaLangString).mkdirs();

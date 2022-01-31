@@ -1,18 +1,19 @@
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.LangTextItem;
 
 public class anwr
-  implements IMediaPlayer.OnErrorListener
+  implements anwk
 {
-  public anwr(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public anwr(LangTextItem paramLangTextItem) {}
   
-  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
-    return true;
+    if (paramInt == 0) {
+      return TroopFileUtils.b(paramString);
+    }
+    return "";
   }
 }
 

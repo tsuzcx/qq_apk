@@ -1,17 +1,31 @@
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.InputViewHideListener;
+import com.tencent.biz.pubaccount.PublicAccountArticleHandler;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.PhotoCollectionInfo;
+import java.util.ArrayList;
 
 public class nck
   implements Runnable
 {
-  public nck(StoryInputBarView paramStoryInputBarView) {}
+  public nck(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
   public void run()
   {
-    if (StoryInputBarView.a(this.a) != null) {
-      StoryInputBarView.a(this.a).e();
+    PublicAccountImageCollectionMainActivity.a(this.a).c(this.a.b);
+    PublicAccountImageCollectionMainActivity.a(this.a).e(this.a.b);
+    PublicAccountImageCollectionMainActivity.a(this.a).b(this.a.b);
+    PublicAccountImageCollectionMainActivity.a(this.a).d(this.a.b);
+    if (PublicAccountImageCollectionMainActivity.c(this.a))
+    {
+      PublicAccountImageCollectionMainActivity.a(this.a).a(this.a.b, PublicAccountImageCollectionMainActivity.a(this.a), PublicAccountImageCollectionMainActivity.e(this.a), PublicAccountImageCollectionMainActivity.f(this.a));
+      return;
     }
-    StoryInputBarView.b(this.a);
+    if ((PublicAccountImageCollectionMainActivity.a(this.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a).a != null)) {}
+    for (int i = PublicAccountImageCollectionMainActivity.a(this.a).a.size();; i = 0)
+    {
+      PublicAccountReportUtils.a(null, this.a.a, "0X8007B8A", "0X8007B8A", 0, 0, this.a.b, this.a.c, "" + PublicAccountImageCollectionMainActivity.b(this.a, PublicAccountImageCollectionMainActivity.a(this.a)), "" + i, false);
+      return;
+    }
   }
 }
 

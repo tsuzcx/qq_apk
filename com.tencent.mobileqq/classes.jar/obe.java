@@ -1,15 +1,52 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryFeatureDataStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.utils.UncheckedCallable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
-public class obe
-  implements UncheckedCallable
+class obe
+  extends OnSimpleShareListener
 {
-  public obe(NewMyStorySegment paramNewMyStorySegment) {}
+  obe(obc paramobc) {}
   
-  public GetMyStoryFeatureDataStep a()
+  public void a()
   {
-    return new GetMyStoryFeatureDataStep();
+    super.a();
+    StoryMemoriesFragment.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    boolean bool = QQStoryContext.a().b(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
+    int i;
+    int j;
+    String str1;
+    if (StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip)
+    {
+      i = 1;
+      j = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_Int);
+      if (!bool) {
+        break label124;
+      }
+      str1 = "1";
+      label76:
+      if (i != 1) {
+        break label131;
+      }
+    }
+    label131:
+    for (String str2 = "1";; str2 = "2")
+    {
+      StoryReportor.a("memory", "share_suc", j, paramInt, new String[] { str1, str2, "", "" });
+      return;
+      i = 0;
+      break;
+      label124:
+      str1 = "2";
+      break label76;
+    }
   }
 }
 

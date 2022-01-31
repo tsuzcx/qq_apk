@@ -1,13 +1,26 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.QzEditVideoPartManager.GenerateGifCheck;
 
 public class xyt
-  extends TroopMemberListActivity.ViewHolder
+  implements QzEditVideoPartManager.GenerateGifCheck
 {
-  public CheckBox a;
+  public xyt(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
   
-  private xyt(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      NewFlowEditVideoActivity.c(this.a).setVisibility(8);
+      NewFlowEditVideoActivity.a(this.a).setVisibility(8);
+      NewFlowEditVideoActivity.c(this.a, false);
+      return;
+    }
+    NewFlowEditVideoActivity.c(this.a).setVisibility(0);
+    NewFlowEditVideoActivity.a(this.a).setVisibility(0);
+    NewFlowEditVideoActivity.c(this.a, NewFlowEditVideoActivity.c(this.a).isSelected());
+  }
 }
 
 

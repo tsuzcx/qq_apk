@@ -1,32 +1,31 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.biz.pubaccount.AccountDetail.bean.AccountDetailDynamicInfo;
+import com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfoEntity;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicDataManager;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicListModel;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ksn
   implements Runnable
 {
-  public ksn(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
+  public ksn(AccountDetailDynamicDataManager paramAccountDetailDynamicDataManager, long paramLong, QQAppInterface paramQQAppInterface, PublicAccountObserver paramPublicAccountObserver) {}
   
   public void run()
   {
-    try
-    {
-      int i = DisplayUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, 110.0F);
-      Bitmap localBitmap = ImageUtil.a(this.jdField_a_of_type_JavaLangString, i, i);
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(ImageUtil.c(localBitmap, i, i));
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-      return;
-    }
-    catch (Exception localException)
+    Object localObject = (DynamicInfoEntity)AccountDetailDynamicDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailModelAccountDetailDynamicDataManager).a(DynamicInfoEntity.class, this.jdField_a_of_type_Long);
+    if ((localObject != null) && (this.jdField_a_of_type_Long == Long.parseLong(((DynamicInfoEntity)localObject).puin)) && (((DynamicInfoEntity)localObject).dynamicInfoData != null))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, localException.toString());
+        QLog.d("AccountDetailDynamicDataManager", 2, "getDynamicListForFirstEnterFromDB null != dynamicInfoEntity");
       }
-      localException.printStackTrace();
+      int i = AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, ((DynamicInfoEntity)localObject).dynamicInfoData, true);
+      localObject = AccountDetailDynamicDataManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_Long);
+      if ((i == 0) && (localObject != null) && (!((AccountDetailDynamicInfo)localObject).a().isEmpty())) {
+        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.a(true, i);
+      }
     }
   }
 }

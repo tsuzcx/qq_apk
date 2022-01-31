@@ -1,25 +1,46 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.script.SpriteScriptManager;
-import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.app.ActivityManager.TaskDescription;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class yzo
   implements Runnable
 {
-  public yzo(ChatApolloViewListener paramChatApolloViewListener) {}
+  public yzo(ApolloGameActivity paramApolloGameActivity, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
-    if (this.a.a == null) {}
-    BaseChatPie localBaseChatPie;
-    do
+    try
     {
+      if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (ApolloGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity) != null) && (ApolloGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity).game != null))
+      {
+        int i = AIOUtils.a(28.0F, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.getResources());
+        Bitmap localBitmap = ImageUtil.a(this.jdField_a_of_type_ComTencentImageURLDrawable, i, i);
+        if (localBitmap != null)
+        {
+          int j = (int)(localBitmap.getWidth() / 3.0F);
+          Object localObject = RoundedBitmapDrawableFactory.create(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.getResources(), localBitmap);
+          ((RoundedBitmapDrawable)localObject).setCornerRadius(j);
+          ((RoundedBitmapDrawable)localObject).setAntiAlias(true);
+          localObject = new ActivityManager.TaskDescription(ApolloGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity).game.name, ImageUtil.a((Drawable)localObject, i, i));
+          this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.setTaskDescription((ActivityManager.TaskDescription)localObject);
+          localBitmap.recycle();
+        }
+      }
       return;
-      localBaseChatPie = (BaseChatPie)this.a.a.get();
-    } while ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
-    ((SpriteScriptManager)localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(248)).a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.ApolloGameActivity", 1, localThrowable, new Object[0]);
+    }
   }
 }
 

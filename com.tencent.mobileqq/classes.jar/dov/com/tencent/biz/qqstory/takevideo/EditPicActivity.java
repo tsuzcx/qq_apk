@@ -13,7 +13,7 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
-import anri;
+import anzv;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
@@ -34,7 +34,6 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.VideoModule;
 import dov.com.qq.im.capture.QIMManager;
 import dov.com.qq.im.capture.paster.PasterDataManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
 import dov.com.qq.im.capture.text.DynamicTextItem;
 import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
 import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterBridgeActivity;
@@ -58,7 +57,7 @@ public class EditPicActivity
   implements EditVideoPartManager.IEditVideoPartManager, EditVideoUi
 {
   private EditVideoPartManager jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager = new EditPicPartManager();
-  PtvTemplateManager.DoodleInfoLoadObserver jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfoLoadObserver = new anri(this);
+  PtvTemplateManager.DoodleInfoLoadObserver jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfoLoadObserver = new anzv(this);
   
   public static Intent a(Activity paramActivity, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, boolean paramBoolean8, boolean paramBoolean9, boolean paramBoolean10, boolean paramBoolean11, int paramInt1, int paramInt2, int paramInt3)
   {
@@ -431,7 +430,7 @@ public class EditPicActivity
         {
           ((PasterDataManager)localObject).a(2);
           getWindow().addFlags(1024);
-          setContentViewC(2130968947);
+          setContentViewC(2130968949);
           this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(this, paramBundle);
           if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter != null)
           {
@@ -495,7 +494,6 @@ public class EditPicActivity
     if (localPasterDataManager != null) {
       localPasterDataManager.a(1);
     }
-    ((QIMInformationPasterManager)QIMManager.a().c(12)).a("");
   }
   
   protected void doOnPause()

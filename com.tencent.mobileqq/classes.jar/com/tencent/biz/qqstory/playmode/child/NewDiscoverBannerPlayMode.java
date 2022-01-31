@@ -36,12 +36,12 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import java.util.ArrayList;
 import java.util.List;
-import nkb;
-import nkc;
-import nke;
-import nkf;
-import nkg;
-import nkh;
+import nol;
+import nom;
+import noo;
+import nop;
+import noq;
+import nor;
 
 public class NewDiscoverBannerPlayMode
   extends NewFriendsPlayMode
@@ -78,7 +78,7 @@ public class NewDiscoverBannerPlayMode
     {
       this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilNewDiscoverBannerDataProvider = new NewDiscoverBannerDataProvider(paramBundle);
       this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilNewDiscoverBannerDataProvider.a(this);
-      ThreadManager.post(new nkb(this), 8, null, true);
+      ThreadManager.post(new nol(this), 8, null, true);
     }
   }
   
@@ -110,7 +110,7 @@ public class NewDiscoverBannerPlayMode
         this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.b = paramVideoData.b;
         this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
         this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nkc(this));
+        this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nom(this));
         return;
         if (QLog.isColorLevel()) {
           QLog.i("NewDiscoverBannerPlayMode", 2, "event.errorInfo.isFail(): errorCode:" + paramVideoData.b);
@@ -143,7 +143,7 @@ public class NewDiscoverBannerPlayMode
       paramVideoData.a(i);
       this.e = true;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-      this.jdField_a_of_type_AndroidOsHandler.post(new nke(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new noo(this));
       return;
       if (!PlayModeUtils.b((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.get(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() - 1)))
       {
@@ -159,17 +159,17 @@ public class NewDiscoverBannerPlayMode
   public void a(VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, StoryVideoItem paramStoryVideoItem)
   {
     super.a(paramVideoViewHolder, paramStoryVideoItem);
-    paramStoryVideoItem = (ImageView)paramVideoViewHolder.a.get(2131372140);
-    paramVideoViewHolder = (TextView)paramVideoViewHolder.a.get(2131372139);
+    paramStoryVideoItem = (ImageView)paramVideoViewHolder.a.get(2131372148);
+    paramVideoViewHolder = (TextView)paramVideoViewHolder.a.get(2131372147);
     paramStoryVideoItem.setVisibility(8);
     paramVideoViewHolder.setVisibility(8);
   }
   
   protected void a(ActionSheet paramActionSheet, StoryVideoItem paramStoryVideoItem)
   {
-    paramActionSheet.b(2131434737);
+    paramActionSheet.b(2131434753);
     if (!PlayModeUtils.a(paramStoryVideoItem)) {
-      paramActionSheet.b(2131435116);
+      paramActionSheet.b(2131435132);
     }
   }
   
@@ -197,7 +197,7 @@ public class NewDiscoverBannerPlayMode
     {
       bool = true;
       localVideoListFeedItem = a(this.b);
-      if (!paramString.equals(paramView.getString(2131434737))) {
+      if (!paramString.equals(paramView.getString(2131434753))) {
         break label366;
       }
       if (localVideoListFeedItem != null) {
@@ -207,7 +207,7 @@ public class NewDiscoverBannerPlayMode
       if (!paramStoryVideoItem.isMine()) {
         break label227;
       }
-      a().a(2131433100).a(new nkf(this, this, localVideoListFeedItem, paramView, paramStoryVideoItem)).a(new MyContentStoryShareMode(paramStoryVideoItem, false, paramView)).a();
+      a().a(2131433114).a(new nop(this, this, localVideoListFeedItem, paramView, paramStoryVideoItem)).a(new MyContentStoryShareMode(paramStoryVideoItem, false, paramView)).a();
       if (!bool) {
         break label351;
       }
@@ -235,7 +235,7 @@ public class NewDiscoverBannerPlayMode
       {
         paramString = new BigVContentShareMode(paramStoryVideoItem, paramView);
         label242:
-        a().a(2131433100).a(new nkg(this, this, bool, localVideoListFeedItem, paramView, paramStoryVideoItem)).a(paramString).a();
+        a().a(2131433114).a(new noq(this, this, bool, localVideoListFeedItem, paramView, paramStoryVideoItem)).a(paramString).a();
         if (!bool) {
           break label345;
         }
@@ -253,14 +253,14 @@ public class NewDiscoverBannerPlayMode
     label345:
     label351:
     label366:
-    if (paramString.equals(paramView.getString(2131435116)))
+    if (paramString.equals(paramView.getString(2131435132)))
     {
       if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver == null)
       {
         this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver = new FeedsPlayModeBase.ReportVideoReceiver(this);
         a("", this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver);
       }
-      PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_AndroidAppActivity, paramStoryVideoItem, new nkh(this));
+      PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_AndroidAppActivity, paramStoryVideoItem, new nor(this));
       if (bool)
       {
         i = 1;

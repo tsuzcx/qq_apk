@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import zrp;
+import zya;
 
 public class TimerCheckMsgCount
   extends AsyncStep
@@ -243,7 +243,7 @@ public class TimerCheckMsgCount
   
   protected int a()
   {
-    ThreadManager.executeOnNetWorkThread(new zrp(this));
+    ThreadManager.executeOnNetWorkThread(new zya(this));
     return 7;
   }
 }

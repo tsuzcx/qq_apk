@@ -24,7 +24,7 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import tfx;
+import tkr;
 
 public class PhoneUnityChangeActivity
   extends DialogBaseActivity
@@ -45,9 +45,9 @@ public class PhoneUnityChangeActivity
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
       this.jdField_a_of_type_ComTencentWidgetActionSheet.setCanceledOnTouchOutside(true);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a("解绑", 3);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new tfx(this));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new tkr(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
     }
     if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) && (!isFinishing())) {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
@@ -79,15 +79,15 @@ public class PhoneUnityChangeActivity
       }
       super.setTitle("更换手机号码");
       Object localObject2 = "更换手机号码#name#，\n将更新以下功能。".replace("#name#", PhoneUnityManager.a(this.jdField_a_of_type_JavaLangString));
-      ((TextView)findViewById(2131365489)).setText((CharSequence)localObject2);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365491));
+      ((TextView)findViewById(2131365494)).setText((CharSequence)localObject2);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365496));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      localObject2 = (ImageView)findViewById(2131363474);
+      localObject2 = (ImageView)findViewById(2131363493);
       ((ImageView)localObject2).setVisibility(0);
       if (AppSetting.b) {
-        ((ImageView)localObject2).setContentDescription(getString(2131436854));
+        ((ImageView)localObject2).setContentDescription(getString(2131436874));
       }
-      ((ImageView)localObject2).setBackgroundResource(2130839147);
+      ((ImageView)localObject2).setBackgroundResource(2130839162);
       ((ImageView)localObject2).setOnClickListener(this);
     }
     return true;
@@ -114,7 +114,7 @@ public class PhoneUnityChangeActivity
     do
     {
       return true;
-      super.setContentView(2130969170);
+      super.setContentView(2130969168);
       this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager = ((PhoneContactManager)this.app.getManager(10));
     } while (a());
     super.finish();
@@ -153,13 +153,13 @@ public class PhoneUnityChangeActivity
     {
     default: 
       return;
-    case 2131363474: 
+    case 2131363493: 
       a();
       return;
-    case 2131365491: 
+    case 2131365496: 
       if (!NetworkUtil.d(this))
       {
-        b(2131434613);
+        b(2131434629);
         return;
       }
       paramView = new Intent(this, BindNumberActivity.class);

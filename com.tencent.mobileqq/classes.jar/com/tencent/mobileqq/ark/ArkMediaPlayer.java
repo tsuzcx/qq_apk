@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ark;
 
-import aawf;
-import aawg;
-import aawh;
+import abda;
+import abdb;
+import abdc;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.ark.ArkPlayer;
@@ -28,7 +28,7 @@ public class ArkMediaPlayer
   
   static
   {
-    jdField_a_of_type_ComTencentArkArk$PlayerStubFactory = new aawf();
+    jdField_a_of_type_ComTencentArkArk$PlayerStubFactory = new abda();
   }
   
   public ArkMediaPlayer()
@@ -109,12 +109,12 @@ public class ArkMediaPlayer
   
   public void c()
   {
-    ArkAppCenter.a().post(new aawg(this));
+    ArkAppCenter.a().post(new abdb(this));
   }
   
   public void d()
   {
-    ArkAppCenter.a().post(new aawh(this));
+    ArkAppCenter.a().post(new abdc(this));
   }
 }
 

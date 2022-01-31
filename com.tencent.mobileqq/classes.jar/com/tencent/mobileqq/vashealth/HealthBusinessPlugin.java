@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.vashealth;
 
-import akik;
-import akil;
-import akim;
-import akio;
-import akip;
-import akir;
-import akiu;
-import akiv;
-import akiw;
-import akix;
-import akiy;
-import akiz;
-import akja;
-import akjc;
-import akje;
-import akjf;
-import akjg;
-import akjh;
-import akji;
+import akpz;
+import akqa;
+import akqb;
+import akqd;
+import akqe;
+import akqg;
+import akqj;
+import akqk;
+import akql;
+import akqm;
+import akqn;
+import akqo;
+import akqp;
+import akqr;
+import akqt;
+import akqu;
+import akqv;
+import akqw;
+import akqx;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -116,7 +116,7 @@ public class HealthBusinessPlugin
   public static HashMap b;
   public static HashMap c;
   public int a;
-  akjg jdField_a_of_type_Akjg = null;
+  akqv jdField_a_of_type_Akqv = null;
   public Point a;
   Uri jdField_a_of_type_AndroidNetUri;
   public Handler a;
@@ -173,7 +173,7 @@ public class HealthBusinessPlugin
     this.jdField_a_of_type_AndroidGraphicsPoint = new Point();
     this.jdField_b_of_type_AndroidGraphicsPoint = new Point();
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_b_of_type_AndroidOsHandler = new akix(this);
+    this.jdField_b_of_type_AndroidOsHandler = new akqm(this);
     this.jdField_f_of_type_Boolean = false;
     this.mPluginNameSpace = "healthSport";
   }
@@ -185,7 +185,7 @@ public class HealthBusinessPlugin
     int i2 = 0;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar((Context)localObject2);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(((Context)localObject2).getResources().getDrawable(2130839231));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(((Context)localObject2).getResources().getDrawable(2130839250));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminate(true);
     double d1;
     double d2;
@@ -272,13 +272,13 @@ public class HealthBusinessPlugin
         paramJSONObject.show();
         return -1;
         if (NetworkUtil.b(BaseApplication.getContext()) == 1) {}
-        ThreadManager.post(new akjc(this), 5, null, true);
+        ThreadManager.post(new akqr(this), 5, null, true);
       }
       localIVideoViewBase = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView_Scroll(this.mRuntime.a());
       localObject4 = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(this.mRuntime.a(), localIVideoViewBase);
       ((TVK_IMediaPlayer)localObject4).setLoopback(true);
-      this.jdField_a_of_type_JavaLangRunnable = new akje(this);
-      this.jdField_b_of_type_JavaLangRunnable = new akjf(this);
+      this.jdField_a_of_type_JavaLangRunnable = new akqt(this);
+      this.jdField_b_of_type_JavaLangRunnable = new akqu(this);
       a((TVK_IMediaPlayer)localObject4);
       localObject6 = new TVK_UserInfo();
       ((TVK_UserInfo)localObject6).setLoginCookie("");
@@ -304,15 +304,15 @@ public class HealthBusinessPlugin
         if (QLog.isColorLevel()) {
           QLog.d("HealthBusinessPlugin", 2, "sDensity:" + f1);
         }
-        localObject6 = (FrameLayout)LayoutInflater.from((Context)localObject2).inflate(2130969692, null);
-        paramJSONObject = new akjh();
-        paramJSONObject.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131362355));
-        paramJSONObject.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131362351));
-        paramJSONObject.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131362352));
-        paramJSONObject.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131362353));
-        paramJSONObject.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)((FrameLayout)localObject6).findViewById(2131364679));
-        paramJSONObject.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131362354));
-        paramJSONObject.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131367503));
+        localObject6 = (FrameLayout)LayoutInflater.from((Context)localObject2).inflate(2130969689, null);
+        paramJSONObject = new akqw();
+        paramJSONObject.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131362358));
+        paramJSONObject.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131362354));
+        paramJSONObject.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131362355));
+        paramJSONObject.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131362356));
+        paramJSONObject.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)((FrameLayout)localObject6).findViewById(2131364703));
+        paramJSONObject.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131362357));
+        paramJSONObject.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131367510));
         localObject1 = new FrameLayout((Context)localObject2);
         ((FrameLayout)localObject1).addView((View)localIVideoViewBase);
         ((FrameLayout)localObject1).addView((View)localObject6);
@@ -360,10 +360,10 @@ public class HealthBusinessPlugin
     ((TVK_IMediaPlayer)this.d.get(str)).setOutputMute(false);
     label701:
     paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(((Context)localObject2).getResources().getDrawable(2130843374));
-    paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new akil(this, str, (Context)localObject2));
+    paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(((Context)localObject2).getResources().getDrawable(2130843409));
+    paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new akqa(this, str, (Context)localObject2));
     new FrameLayout.LayoutParams(AIOUtils.a(45.0F, ((Context)localObject2).getResources()), AIOUtils.a(43.0F, ((Context)localObject2).getResources())).gravity = 85;
-    paramJSONObject.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new akim(this, str, paramJSONObject));
+    paramJSONObject.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new akqb(this, str, paramJSONObject));
     n = this.mRuntime.a().getResources().getDisplayMetrics().widthPixels;
     int i1 = (int)(((DisplayMetrics)localObject3).density * d3 * 0.7D);
     i2 = (int)(((DisplayMetrics)localObject3).density * d3 * 0.15D);
@@ -384,7 +384,7 @@ public class HealthBusinessPlugin
     }
     paramJSONObject.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_f_of_type_Boolean = false;
-    paramJSONObject.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new akio(this, str));
+    paramJSONObject.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new akqd(this, str));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager$VideoPlayParam = new VideoPlayManager.VideoPlayParam();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper = new VideoPlayerWrapper((Context)localObject2);
     new FrameLayout.LayoutParams(-2, AIOUtils.a(43.0F, ((Context)localObject2).getResources())).gravity = 85;
@@ -395,15 +395,15 @@ public class HealthBusinessPlugin
     for (;;)
     {
       a(paramJSONObject.jdField_a_of_type_AndroidWidgetTextView, str, paramJSONObject.jdField_b_of_type_AndroidWidgetTextView, paramJSONObject.jdField_c_of_type_AndroidWidgetTextView, paramJSONObject.jdField_a_of_type_AndroidWidgetSeekBar);
-      localObject2 = new akip(this);
+      localObject2 = new akqe(this);
       this.mRuntime.a().setOnTouchListener((View.OnTouchListener)localObject2);
       paramJSONObject.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
-      paramJSONObject.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new akir(this, paramJSONObject, localIVideoViewBase, (FrameLayout)localObject1));
+      paramJSONObject.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new akqg(this, paramJSONObject, localIVideoViewBase, (FrameLayout)localObject1));
       return 0;
       label1673:
       ((TVK_IMediaPlayer)this.d.get(str)).setOutputMute(true);
       paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(((Context)localObject2).getResources().getDrawable(2130843373));
+      paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(((Context)localObject2).getResources().getDrawable(2130843408));
       break;
       paramJSONObject.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
@@ -425,14 +425,14 @@ public class HealthBusinessPlugin
     for (;;)
     {
       return;
-      Object localObject = new File(AppConstants.aP);
+      Object localObject = new File(AppConstants.aQ);
       boolean bool;
       if (((File)localObject).exists()) {
         bool = true;
       }
       while ((bool) && (((File)localObject).canWrite()))
       {
-        this.jdField_a_of_type_AndroidNetUri = Uri.fromFile(new File(AppConstants.aP + System.currentTimeMillis() + ".jpg"));
+        this.jdField_a_of_type_AndroidNetUri = Uri.fromFile(new File(AppConstants.aQ + System.currentTimeMillis() + ".jpg"));
         if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
         {
           QLog.e("HealthBusinessPlugin", 1, "temp ids lost!");
@@ -451,7 +451,7 @@ public class HealthBusinessPlugin
       if (this.mRuntime == null) {}
       for (localObject = null; (localObject != null) && (!((Activity)localObject).isFinishing()); localObject = this.mRuntime.a())
       {
-        QQToast.a((Context)localObject, 2131430352, 1).b(((BaseActivity)localObject).getTitleBarHeight());
+        QQToast.a((Context)localObject, 2131430355, 1).b(((BaseActivity)localObject).getTitleBarHeight());
         return;
       }
     }
@@ -494,14 +494,14 @@ public class HealthBusinessPlugin
     }
     paramTextView1 = new WeakReference(paramTextView1);
     Timer localTimer = new Timer();
-    localTimer.schedule(new akiw(this, paramTextView1, paramString, paramTextView2, paramTextView3, paramSeekBar), 0L, 1000L);
+    localTimer.schedule(new akql(this, paramTextView1, paramString, paramTextView2, paramTextView3, paramSeekBar), 0L, 1000L);
     this.g.put(paramString, localTimer);
   }
   
   void a(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    paramTVK_IMediaPlayer.setOnVideoPreparedListener(new akiu(this));
-    paramTVK_IMediaPlayer.setOnCompletionListener(new akiv(this));
+    paramTVK_IMediaPlayer.setOnVideoPreparedListener(new akqj(this));
+    paramTVK_IMediaPlayer.setOnCompletionListener(new akqk(this));
   }
   
   public void a(String paramString)
@@ -525,7 +525,7 @@ public class HealthBusinessPlugin
   }
   
   /* Error */
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, Map paramMap, Bundle paramBundle, akji paramakji)
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, Map paramMap, Bundle paramBundle, akqx paramakqx)
   {
     // Byte code:
     //   0: invokestatic 652	java/lang/System:currentTimeMillis	()J
@@ -826,7 +826,7 @@ public class HealthBusinessPlugin
     //   689: aload 17
     //   691: astore_2
     //   692: aload 7
-    //   694: getfield 1069	akji:jdField_a_of_type_Boolean	Z
+    //   694: getfield 1069	akqx:jdField_a_of_type_Boolean	Z
     //   697: iconst_1
     //   698: if_icmpne +198 -> 896
     //   701: aload 17
@@ -843,42 +843,42 @@ public class HealthBusinessPlugin
     //   724: astore_2
     //   725: getstatic 48	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   728: aload 7
-    //   730: getfield 1072	akji:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   730: getfield 1072	akqx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   733: invokeinterface 1077 2 0
     //   738: ifeq +20 -> 758
     //   741: aload 17
     //   743: astore_2
     //   744: getstatic 48	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   747: aload 7
-    //   749: getfield 1072	akji:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   749: getfield 1072	akqx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   752: invokeinterface 1080 2 0
     //   757: pop
     //   758: aload 17
     //   760: astore_2
     //   761: getstatic 52	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   764: aload 7
-    //   766: getfield 1072	akji:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   766: getfield 1072	akqx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   769: invokevirtual 489	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   772: ifnull +18 -> 790
     //   775: aload 17
     //   777: astore_2
     //   778: getstatic 52	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   781: aload 7
-    //   783: getfield 1072	akji:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   783: getfield 1072	akqx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   786: invokevirtual 1082	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   789: pop
     //   790: aload 17
     //   792: astore_2
     //   793: getstatic 50	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   796: aload 7
-    //   798: getfield 1072	akji:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   798: getfield 1072	akqx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   801: invokevirtual 489	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   804: ifnull +18 -> 822
     //   807: aload 17
     //   809: astore_2
     //   810: getstatic 50	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   813: aload 7
-    //   815: getfield 1072	akji:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   815: getfield 1072	akqx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   818: invokevirtual 1082	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   821: pop
     //   822: aload 17
@@ -950,7 +950,7 @@ public class HealthBusinessPlugin
     //   980: astore_2
     //   981: getstatic 52	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   984: aload 7
-    //   986: getfield 1072	akji:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   986: getfield 1072	akqx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   989: lload 13
     //   991: l2d
     //   992: lload 11
@@ -1054,7 +1054,7 @@ public class HealthBusinessPlugin
     //   1207: invokevirtual 395	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1210: getstatic 52	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   1213: aload 7
-    //   1215: getfield 1072	akji:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1215: getfield 1072	akqx:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   1218: invokevirtual 489	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   1221: invokevirtual 1019	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   1224: invokevirtual 401	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -1314,7 +1314,7 @@ public class HealthBusinessPlugin
     //   0	1756	4	paramString4	String
     //   0	1756	5	paramMap	Map
     //   0	1756	6	paramBundle	Bundle
-    //   0	1756	7	paramakji	akji
+    //   0	1756	7	paramakqx	akqx
     //   118	1634	8	m	int
     //   45	1701	9	l1	long
     //   31	1697	11	l2	long
@@ -1550,7 +1550,7 @@ public class HealthBusinessPlugin
       if (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        ImageView localImageView = (ImageView)((FrameLayout)this.jdField_e_of_type_JavaUtilHashMap.get(str)).findViewById(2131362355);
+        ImageView localImageView = (ImageView)((FrameLayout)this.jdField_e_of_type_JavaUtilHashMap.get(str)).findViewById(2131362358);
         if (str.equals(paramJSONObject)) {
           ((TVK_IMediaPlayer)this.d.get(paramJSONObject)).start();
         }
@@ -1586,8 +1586,8 @@ public class HealthBusinessPlugin
       if (!this.d.containsKey(paramJSONObject)) {
         return -3;
       }
-      localImageView = (ImageView)((FrameLayout)this.jdField_e_of_type_JavaUtilHashMap.get(paramJSONObject)).findViewById(2131362355);
-      localImageView.setImageResource(2130845291);
+      localImageView = (ImageView)((FrameLayout)this.jdField_e_of_type_JavaUtilHashMap.get(paramJSONObject)).findViewById(2131362358);
+      localImageView.setImageResource(2130845367);
       localImageView.setVisibility(0);
       ((TVK_IMediaPlayer)this.d.get(paramJSONObject)).pause();
       this.jdField_a_of_type_Boolean = true;
@@ -1734,12 +1734,12 @@ public class HealthBusinessPlugin
         {
           paramString1 = this.mRuntime.a();
           this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramString1, paramString1.getResources().getDimensionPixelSize(2131558448));
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435483);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435499);
         }
         if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
           this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
         }
-        ThreadManager.post(new akiy(this, paramJsBridgeListener, paramString2), 5, null, true);
+        ThreadManager.post(new akqn(this, paramJsBridgeListener, paramString2), 5, null, true);
       }
     }
     else
@@ -1834,7 +1834,7 @@ public class HealthBusinessPlugin
         }
         if ((this.mRuntime.a() instanceof BaseActivity))
         {
-          paramJsBridgeListener = new akji(this, (BaseActivity)this.mRuntime.a(), paramJsBridgeListener, paramString1, (String)localObject1, bool, paramString3, paramVarArgs);
+          paramJsBridgeListener = new akqx(this, (BaseActivity)this.mRuntime.a(), paramJsBridgeListener, paramString1, (String)localObject1, bool, paramString3, paramVarArgs);
           jdField_b_of_type_JavaUtilHashMap.put(localObject1, paramJsBridgeListener);
           ThreadManager.post(paramJsBridgeListener, 5, null, false);
         }
@@ -1887,7 +1887,7 @@ public class HealthBusinessPlugin
         if (paramJsBridgeListener == null) {
           return true;
         }
-        ThreadManager.post(new akiz(this, paramJsBridgeListener, paramString2), 5, null, true);
+        ThreadManager.post(new akqo(this, paramJsBridgeListener, paramString2), 5, null, true);
       }
       else if ("uploadVideoCount".equals(paramString3))
       {
@@ -1953,7 +1953,7 @@ public class HealthBusinessPlugin
         {
           paramString1 = new JSONObject();
           paramJsBridgeListener = paramJsBridgeListener.optString("groupID");
-          paramJsBridgeListener = (akji)jdField_b_of_type_JavaUtilHashMap.get(paramJsBridgeListener);
+          paramJsBridgeListener = (akqx)jdField_b_of_type_JavaUtilHashMap.get(paramJsBridgeListener);
           if (paramJsBridgeListener != null)
           {
             paramJsBridgeListener.jdField_a_of_type_Boolean = true;
@@ -2071,7 +2071,7 @@ public class HealthBusinessPlugin
           paramString3.uin.set((int)Long.parseLong(paramJsBridgeListener));
           paramString3.type.set(-1);
           paramString3.ext.set(String.valueOf(0));
-          paramString2.setObserver(new akja(this, paramString1));
+          paramString2.setObserver(new akqp(this, paramString1));
           paramString2.putExtra("data", paramString3.toByteArray());
           this.mRuntime.a().startServlet(paramString2);
         }
@@ -2177,11 +2177,11 @@ public class HealthBusinessPlugin
     //   114: aload_0
     //   115: getfield 106	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
     //   118: ifnull -89 -> 29
-    //   121: new 1653	akjb
+    //   121: new 1653	akqq
     //   124: dup
     //   125: aload_0
     //   126: aload_1
-    //   127: invokespecial 1656	akjb:<init>	(Lcom/tencent/mobileqq/vashealth/HealthBusinessPlugin;Ljava/util/List;)V
+    //   127: invokespecial 1656	akqq:<init>	(Lcom/tencent/mobileqq/vashealth/HealthBusinessPlugin;Ljava/util/List;)V
     //   130: iconst_5
     //   131: aconst_null
     //   132: iconst_1
@@ -2456,7 +2456,7 @@ public class HealthBusinessPlugin
   {
     super.onDestroy();
     this.jdField_a_of_type_ComTencentBizUiRefreshView.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Akjg);
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Akqv);
     QLog.d("HealthBusinessPlugin", 1, "onDestroy");
   }
   
@@ -2466,7 +2466,7 @@ public class HealthBusinessPlugin
     paramCustomWebView = new FrameLayout.LayoutParams(-1, -1);
     paramCustomWebView.topMargin = 0;
     paramCustomWebView.leftMargin = 0;
-    this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)this.mRuntime.a().findViewById(2131366769));
+    this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)this.mRuntime.a().findViewById(2131366767));
     if (QLog.isColorLevel()) {
       QLog.d("HealthBusinessPlugin", 2, "videoLayout id:" + this.jdField_a_of_type_ComTencentBizUiRefreshView.getResources());
     }
@@ -2477,16 +2477,16 @@ public class HealthBusinessPlugin
       this.jdField_a_of_type_ComTencentBizUiRefreshView.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramCustomWebView);
       this.jdField_a_of_type_ComTencentBizUiTouchWebView = ((TouchWebView)this.mRuntime.a());
       this.jdField_a_of_type_AndroidWidgetFrameLayout.scrollBy(0, this.jdField_a_of_type_ComTencentBizUiTouchWebView.b);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListener(new akik(this));
+      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListener(new akpz(this));
       QLog.d("HealthBusinessPlugin", 1, "onWebViewCreated");
     }
-    this.jdField_a_of_type_Akjg = new akjg(this, this);
-    AppNetConnInfo.registerConnectionChangeReceiver(this.mRuntime.a(), this.jdField_a_of_type_Akjg);
+    this.jdField_a_of_type_Akqv = new akqv(this, this);
+    AppNetConnInfo.registerConnectionChangeReceiver(this.mRuntime.a(), this.jdField_a_of_type_Akqv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin
  * JD-Core Version:    0.7.0.1
  */

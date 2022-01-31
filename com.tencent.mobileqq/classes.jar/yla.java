@@ -1,62 +1,54 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.video.IMediaPlayer;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import mqq.os.MqqHandler;
 
-public final class yla
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class yla
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public yla(ApolloRender paramApolloRender, View paramView) {}
+  public yla(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onGlobalLayout()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow == null) || (!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mShowEditWindow)) {
-      QLog.e("rogersxiao", 2, "render.mEditWindow return");
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
     }
-    do
+    this.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onStartTrackingTouch: progress = " + i);
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onStopTrackingTouch: 当前位置为 = " + i);
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer != null)
     {
-      return;
-      localObject = new Rect();
-      this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame((Rect)localObject);
-      i = (int)DeviceInfoUtil.m();
-      int j = ((Rect)localObject).bottom;
-      int k = ((Rect)localObject).top;
-      ImmersiveUtils.a(this.jdField_a_of_type_AndroidViewView.getContext());
-      if (i - (j - k) >= 200) {
-        break;
+      if (this.a.a() == 2) {
+        this.a.b();
       }
-    } while (!ApolloRender.sIsKeyBoardShow);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.dismiss();
-    ApolloRender.sIsKeyBoardDissmiss = true;
-    return;
-    int i = ((Rect)localObject).bottom - this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight();
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
-    if (((SharedPreferences)localObject).getInt("sp_key_apollo_keyboard_height", 0) != i)
-    {
-      ((SharedPreferences)localObject).edit().putInt("sp_key_apollo_keyboard_height", i).commit();
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
-      ApolloRender.sIsKeyBoardDissmiss = false;
+      this.a.c.setImageResource(2130843369);
+      this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a(i);
+      this.a.jdField_a_of_type_MqqOsMqqHandler.post(this.a.jdField_a_of_type_JavaLangRunnable);
+      this.a.b.setEnabled(false);
+      this.a.b.setTextColor(-2130706433);
     }
-    if (ApolloRender.sIsKeyBoardDissmiss)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
-      ApolloRender.sIsKeyBoardDissmiss = false;
-    }
-    ApolloRender.sIsKeyBoardShow = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yla
  * JD-Core Version:    0.7.0.1
  */

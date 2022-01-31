@@ -1,20 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.troop.data.TroopEntranceBar;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.mobileqq.troop.utils.TroopBindPublicAccountMgr;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
 
 class ajdw
-  implements HttpWebCgiAsyncTask.Callback
+  implements Runnable
 {
-  ajdw(ajdv paramajdv, TroopBindPublicAccountMgr paramTroopBindPublicAccountMgr, int paramInt) {}
+  ajdw(ajdu paramajdu) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void run()
   {
-    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopBindPublicAccountMgr.a(this.jdField_a_of_type_Ajdv.a.a.a, 0, this.jdField_a_of_type_Int);
-    }
+    this.a.a.a.sendEmptyMessage(1006);
   }
 }
 

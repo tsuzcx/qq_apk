@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class kug
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public kug(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager, String paramString) {}
+  public kug(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    AdvertisementVideoPreloadManager.b(this.jdField_a_of_type_JavaLangString);
+    this.a.r = false;
   }
 }
 

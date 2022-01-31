@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
-import amrx;
-import amry;
-import amsb;
+import amzi;
+import amzj;
+import amzm;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +11,7 @@ import android.os.RemoteException;
 import android.text.TextUtils;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -21,6 +22,7 @@ import cooperation.qzone.plugin.QZonePluginManager;
 import cooperation.qzone.plugin.QZonePluginMangerHelper;
 import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
 import cooperation.qzone.plugin.QZonePluginUtils;
+import cooperation.qzone.plugin.QZoneRemotePluginHandler;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
 import cooperation.qzone.report.lp.LpReportInfo_dc00321;
 import cooperation.qzone.report.lp.LpReportInfo_dc01500;
@@ -59,7 +61,7 @@ public class QZoneLiveVideoDownLoadActivtyV2
       if (QZonePluginUtils.a("com.tencent.mobileqq:qzonelive"))
       {
         RemoteHandleManager.a().a("cmd.killLiveVideo", new Bundle(), false);
-        new Handler().postDelayed(new amrx(this, paramPluginBaseInfo), 500L);
+        new Handler().postDelayed(new amzi(this, paramPluginBaseInfo), 500L);
       }
     }
     else {
@@ -82,6 +84,16 @@ public class QZoneLiveVideoDownLoadActivtyV2
     {
       QZonePluginMangerHelper.a(this, this);
       return;
+    }
+    QQAppInterface localQQAppInterface2 = (QQAppInterface)getAppRuntime();
+    QQAppInterface localQQAppInterface1 = localQQAppInterface2;
+    if (localQQAppInterface2 == null)
+    {
+      QLog.i("QZoneLiveVideoDownLoadActivtyV2", 1, "onQzonePluginClientReady: getAppRuntime return null.");
+      localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (localQQAppInterface1 != null) {
+      QZoneRemotePluginHandler.a().a(localQQAppInterface1);
     }
     this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager = paramIQZonePluginManager;
     paramIQZonePluginManager = this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a("qzone_live_video_plugin_hack.apk");
@@ -154,7 +166,7 @@ public class QZoneLiveVideoDownLoadActivtyV2
     super.b();
     try
     {
-      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a("qzone_live_video_plugin_hack.apk", new amsb(this), this.c);
+      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a("qzone_live_video_plugin_hack.apk", new amzm(this), this.c);
       return;
     }
     catch (RemoteException localRemoteException)
@@ -206,7 +218,7 @@ public class QZoneLiveVideoDownLoadActivtyV2
     if ((this.c == 1) && (!QZonePluginUtils.a(BaseApplicationImpl.getContext())) && (this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager != null)) {
       try
       {
-        this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a(new amry(this), 1);
+        this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a(new amzj(this), 1);
         return;
       }
       catch (RemoteException localRemoteException)

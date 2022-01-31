@@ -1,16 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.graphics.Paint;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class tok
-  implements DialogInterface.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public tok(RegisterActivity paramRegisterActivity) {}
+  public tok(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    this.a.a = 0;
-    this.a.finish();
+    int i = this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getWidth();
+    if (i > 0)
+    {
+      int j = DisplayUtil.a(this.a, 10.0F);
+      Object localObject = new Paint();
+      ((Paint)localObject).setTextSize(DisplayUtil.a(this.a, 14.0F));
+      ((Paint)localObject).setAntiAlias(true);
+      int k = (int)(((Paint)localObject).measureText(this.a.e.getText().toString()) + 1.0F);
+      ((Paint)localObject).setTextSize(DisplayUtil.a(this.a, 20.0F));
+      if ((int)(((Paint)localObject).measureText(this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) + 1.0F) + (k + j) > i)
+      {
+        localObject = this.a.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).width = (i - j - k);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

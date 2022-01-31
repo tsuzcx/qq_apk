@@ -11,8 +11,8 @@ public class PrinterDefaultActivity
 {
   private void a()
   {
-    ((TextView)findViewById(2131363245)).setVisibility(8);
-    TextView localTextView = (TextView)findViewById(2131363428);
+    ((TextView)findViewById(2131363262)).setVisibility(8);
+    TextView localTextView = (TextView)findViewById(2131363447);
     localTextView.setVisibility(0);
     localTextView.setText("关闭");
     localTextView.setOnClickListener(new cl(this));
@@ -22,7 +22,7 @@ public class PrinterDefaultActivity
   {
     super.doOnCreate(paramBundle);
     super.getWindow().setBackgroundDrawableResource(2131492895);
-    setContentView(2130968884);
+    setContentView(2130968888);
     setTitle(2131427673);
     super.getWindow().setBackgroundDrawable(null);
     a();

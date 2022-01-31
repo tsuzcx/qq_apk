@@ -43,11 +43,11 @@ public class EmotionDownloadOrInvalidAdapter
         if (QLog.isColorLevel()) {
           QLog.d("EmotionDownloadOrInvalidAdapter", 2, "getEmotionView position = " + paramInt + ";view form inflater");
         }
-        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970947, null);
+        paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970965, null);
         paramViewHolder.setLayoutParams(paramView);
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionDownloadOrUpdateAdapter$EmotionDownloadOrUpdateViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewHolder.findViewById(2131364477));
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionDownloadOrUpdateAdapter$EmotionDownloadOrUpdateViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131364482));
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionDownloadOrUpdateAdapter$EmotionDownloadOrUpdateViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = ((ProgressButton)paramViewHolder.findViewById(2131364483));
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionDownloadOrUpdateAdapter$EmotionDownloadOrUpdateViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewHolder.findViewById(2131364504));
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionDownloadOrUpdateAdapter$EmotionDownloadOrUpdateViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewHolder.findViewById(2131364509));
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionDownloadOrUpdateAdapter$EmotionDownloadOrUpdateViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = ((ProgressButton)paramViewHolder.findViewById(2131364510));
         a(this.c, paramViewHolder);
         paramViewHolder.setTag(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionDownloadOrUpdateAdapter$EmotionDownloadOrUpdateViewHolder);
       }

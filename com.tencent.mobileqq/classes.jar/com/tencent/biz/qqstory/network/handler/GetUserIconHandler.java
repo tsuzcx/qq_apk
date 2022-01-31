@@ -5,39 +5,36 @@ import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import nfp;
+import njz;
 
 public class GetUserIconHandler
 {
   private static final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private static Set jdField_a_of_type_JavaUtilSet = new HashSet();
-  public boolean a;
+  public static boolean a;
   
-  public GetUserIconHandler()
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!jdField_a_of_type_JavaUtilSet.contains(paramString)) {}
     synchronized (jdField_a_of_type_JavaUtilArrayList)
     {
-      jdField_a_of_type_JavaUtilArrayList.add(paramString);
-      jdField_a_of_type_JavaUtilSet.add(paramString);
-      if (!this.jdField_a_of_type_Boolean)
+      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
       {
-        this.jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new nfp(this), 5, null, true);
+        jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        jdField_a_of_type_JavaUtilSet.add(paramString);
+      }
+      if (!jdField_a_of_type_Boolean)
+      {
+        jdField_a_of_type_Boolean = true;
+        ThreadManager.post(new njz(), 5, null, true);
       }
       return;
     }
   }
   
-  public void a(ArrayList paramArrayList)
+  public static void a(ArrayList paramArrayList)
   {
-    paramArrayList = new GetUserIconHandler.GetUserIconListRequest(this, paramArrayList);
-    GetUserIconHandler.GetUserIconListResponse localGetUserIconListResponse = new GetUserIconHandler.GetUserIconListResponse(this);
+    paramArrayList = new GetUserIconHandler.GetUserIconListRequest(paramArrayList);
+    GetUserIconHandler.GetUserIconListResponse localGetUserIconListResponse = new GetUserIconHandler.GetUserIconListResponse();
     LegoNetworkRequester.a().a(paramArrayList, localGetUserIconListResponse);
   }
 }

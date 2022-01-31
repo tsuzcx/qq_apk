@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
-public class xba
-  implements Runnable
+class xba
+  extends ContactBindObserver
 {
-  public xba(QWalletSkinHandler paramQWalletSkinHandler, QWalletSkinHandler.SkinListener paramSkinListener, boolean paramBoolean) {}
+  xba(xaz paramxaz) {}
   
-  public void run()
+  protected void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener.onResult(this.jdField_a_of_type_Boolean);
+    this.a.a.a.b();
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
+    {
+      this.a.a.a.a.a(true, true);
+      this.a.a.a.setResult(4002);
+      this.a.a.a.finish();
+    }
   }
 }
 

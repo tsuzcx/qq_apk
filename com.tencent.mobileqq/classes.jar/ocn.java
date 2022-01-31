@@ -1,16 +1,13 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
-public class ocn
-  implements View.OnClickListener
+class ocn
+  implements Runnable
 {
-  public ocn(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
+  ocn(ocl paramocl) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.getActivity().finish();
+    this.a.a.b();
   }
 }
 

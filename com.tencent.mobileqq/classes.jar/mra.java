@@ -1,88 +1,40 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
+import android.text.Html;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.LinkData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
 
 public class mra
-  extends View
+  extends BaseItemViewHolder
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g = -16777216;
+  private TextView a;
   
-  public mra(Context paramContext)
+  public mra(View paramView, BaseData paramBaseData)
   {
-    super(paramContext);
+    super(paramView, paramBaseData);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367129));
+    paramView.setOnClickListener(this);
   }
   
-  public void a(int paramInt)
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.e = paramInt;
-  }
-  
-  public void e(int paramInt)
-  {
-    this.f = paramInt;
-  }
-  
-  public void f(int paramInt)
-  {
-    this.g = paramInt;
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_Int != 0)
+    switch (paramBaseData2.d)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      VirtualViewUtils.b(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
+    default: 
+      return;
     }
-    super.onDraw(paramCanvas);
-    if (this.f > 0)
-    {
-      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      }
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
-      VirtualViewUtils.a(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
-    }
+    paramBaseData1 = (LinkData)paramBaseData2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(Html.fromHtml(paramBaseData1.a));
   }
   
-  public void setBackgroundColor(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    paramView = (LinkData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+    ReadInJoyUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), paramView.b);
   }
 }
 

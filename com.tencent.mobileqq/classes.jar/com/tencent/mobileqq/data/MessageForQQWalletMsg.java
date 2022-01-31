@@ -18,6 +18,7 @@ public class MessageForQQWalletMsg
   public static final int MSG_TYPE_COMMON_REDPACKET_SPECIFY = 7;
   public static final int MSG_TYPE_COMMON_REDPACKET_SPECIFY_OVER_3 = 11;
   public static final int MSG_TYPE_COMMON_THEME_REDPACKET = 4;
+  public static final int MSG_TYPE_H5_REDPACKET = 17;
   public static final int MSG_TYPE_INDIVIDUAL_REDPACKET = 2001;
   public static final int MSG_TYPE_LOOK_REDPACKET = 14;
   public static final int MSG_TYPE_LUCY_REDPACKET = 3;
@@ -38,7 +39,7 @@ public class MessageForQQWalletMsg
   private static int VERSION17;
   private static int VERSION2;
   private static int VERSION32;
-  public static int[] mMsgType = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 2002 };
+  public static int[] mMsgType = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 2002, 17 };
   public int fromHBList;
   public boolean isLoadFinish;
   public QQWalletRedPacketMsg mQQWalletRedPacketMsg;
@@ -118,145 +119,145 @@ public class MessageForQQWalletMsg
   protected void doParse()
   {
     // Byte code:
-    //   0: new 172	java/io/ObjectInputStream
+    //   0: new 174	java/io/ObjectInputStream
     //   3: dup
-    //   4: new 174	java/io/ByteArrayInputStream
+    //   4: new 176	java/io/ByteArrayInputStream
     //   7: dup
     //   8: aload_0
-    //   9: getfield 178	com/tencent/mobileqq/data/MessageForQQWalletMsg:msgData	[B
-    //   12: invokespecial 181	java/io/ByteArrayInputStream:<init>	([B)V
-    //   15: invokespecial 184	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   9: getfield 180	com/tencent/mobileqq/data/MessageForQQWalletMsg:msgData	[B
+    //   12: invokespecial 183	java/io/ByteArrayInputStream:<init>	([B)V
+    //   15: invokespecial 186	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   18: astore 4
     //   20: aload 4
     //   22: astore_3
     //   23: aload 4
-    //   25: invokevirtual 188	java/io/ObjectInputStream:readInt	()I
+    //   25: invokevirtual 190	java/io/ObjectInputStream:readInt	()I
     //   28: istore_1
     //   29: aload 4
     //   31: astore_3
     //   32: iload_1
-    //   33: getstatic 69	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION1	I
+    //   33: getstatic 71	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION1	I
     //   36: if_icmpeq +13 -> 49
     //   39: aload 4
     //   41: astore_3
     //   42: iload_1
-    //   43: getstatic 71	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION2	I
+    //   43: getstatic 73	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION2	I
     //   46: if_icmpne +55 -> 101
     //   49: aload 4
     //   51: astore_3
     //   52: aload 4
-    //   54: invokevirtual 188	java/io/ObjectInputStream:readInt	()I
-    //   57: getstatic 65	com/tencent/mobileqq/data/MessageForQQWalletMsg:QQWALLET_TYPE_TRANSFER	I
+    //   54: invokevirtual 190	java/io/ObjectInputStream:readInt	()I
+    //   57: getstatic 67	com/tencent/mobileqq/data/MessageForQQWalletMsg:QQWALLET_TYPE_TRANSFER	I
     //   60: if_icmpne +30 -> 90
     //   63: aload 4
     //   65: astore_3
     //   66: aload_0
-    //   67: new 101	com/tencent/mobileqq/data/QQWalletTransferMsg
+    //   67: new 103	com/tencent/mobileqq/data/QQWalletTransferMsg
     //   70: dup
-    //   71: invokespecial 189	com/tencent/mobileqq/data/QQWalletTransferMsg:<init>	()V
-    //   74: putfield 99	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
+    //   71: invokespecial 191	com/tencent/mobileqq/data/QQWalletTransferMsg:<init>	()V
+    //   74: putfield 101	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
     //   77: aload 4
     //   79: astore_3
     //   80: aload_0
-    //   81: getfield 99	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
+    //   81: getfield 101	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
     //   84: iload_1
     //   85: aload 4
-    //   87: invokevirtual 193	com/tencent/mobileqq/data/QQWalletTransferMsg:readExternal	(ILjava/io/ObjectInput;)V
+    //   87: invokevirtual 195	com/tencent/mobileqq/data/QQWalletTransferMsg:readExternal	(ILjava/io/ObjectInput;)V
     //   90: aload 4
     //   92: ifnull +8 -> 100
     //   95: aload 4
-    //   97: invokevirtual 196	java/io/ObjectInputStream:close	()V
+    //   97: invokevirtual 198	java/io/ObjectInputStream:close	()V
     //   100: return
     //   101: aload 4
     //   103: astore_3
     //   104: iload_1
-    //   105: getstatic 73	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION17	I
+    //   105: getstatic 75	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION17	I
     //   108: if_icmpne +89 -> 197
     //   111: aload 4
     //   113: astore_3
     //   114: aload_0
-    //   115: new 112	com/tencent/mobileqq/data/QQWalletRedPacketMsg
+    //   115: new 114	com/tencent/mobileqq/data/QQWalletRedPacketMsg
     //   118: dup
-    //   119: invokespecial 197	com/tencent/mobileqq/data/QQWalletRedPacketMsg:<init>	()V
-    //   122: putfield 110	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
+    //   119: invokespecial 199	com/tencent/mobileqq/data/QQWalletRedPacketMsg:<init>	()V
+    //   122: putfield 112	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
     //   125: aload 4
     //   127: astore_3
     //   128: aload_0
-    //   129: getfield 110	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
+    //   129: getfield 112	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
     //   132: aload 4
-    //   134: invokevirtual 200	com/tencent/mobileqq/data/QQWalletRedPacketMsg:readExternal	(Ljava/io/ObjectInput;)V
+    //   134: invokevirtual 202	com/tencent/mobileqq/data/QQWalletRedPacketMsg:readExternal	(Ljava/io/ObjectInput;)V
     //   137: goto -47 -> 90
     //   140: astore 5
     //   142: aload 4
     //   144: astore_3
-    //   145: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   145: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   148: ifeq +16 -> 164
     //   151: aload 4
     //   153: astore_3
-    //   154: ldc 202
+    //   154: ldc 204
     //   156: iconst_2
-    //   157: ldc 204
+    //   157: ldc 206
     //   159: aload 5
-    //   161: invokestatic 207	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   161: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   164: aload 4
     //   166: astore_3
     //   167: aload_0
     //   168: aconst_null
-    //   169: putfield 99	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
+    //   169: putfield 101	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
     //   172: aload 4
     //   174: astore_3
     //   175: aload_0
     //   176: aconst_null
-    //   177: putfield 110	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
+    //   177: putfield 112	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
     //   180: aload 4
     //   182: ifnull -82 -> 100
     //   185: aload 4
-    //   187: invokevirtual 196	java/io/ObjectInputStream:close	()V
+    //   187: invokevirtual 198	java/io/ObjectInputStream:close	()V
     //   190: return
     //   191: astore_3
     //   192: aload_3
-    //   193: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   193: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   196: return
     //   197: aload 4
     //   199: astore_3
     //   200: iload_1
-    //   201: getstatic 75	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION32	I
+    //   201: getstatic 77	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION32	I
     //   204: if_icmplt -114 -> 90
     //   207: aload 4
     //   209: astore_3
     //   210: aload 4
-    //   212: invokevirtual 188	java/io/ObjectInputStream:readInt	()I
+    //   212: invokevirtual 190	java/io/ObjectInputStream:readInt	()I
     //   215: istore_1
     //   216: aload 4
     //   218: astore_3
     //   219: aload 4
-    //   221: invokevirtual 188	java/io/ObjectInputStream:readInt	()I
+    //   221: invokevirtual 190	java/io/ObjectInputStream:readInt	()I
     //   224: istore_2
     //   225: aload 4
     //   227: astore_3
     //   228: aload_0
     //   229: aload 4
-    //   231: invokevirtual 188	java/io/ObjectInputStream:readInt	()I
-    //   234: putfield 96	com/tencent/mobileqq/data/MessageForQQWalletMsg:messageType	I
+    //   231: invokevirtual 190	java/io/ObjectInputStream:readInt	()I
+    //   234: putfield 98	com/tencent/mobileqq/data/MessageForQQWalletMsg:messageType	I
     //   237: aload 4
     //   239: astore_3
     //   240: iload_1
-    //   241: getstatic 65	com/tencent/mobileqq/data/MessageForQQWalletMsg:QQWALLET_TYPE_TRANSFER	I
+    //   241: getstatic 67	com/tencent/mobileqq/data/MessageForQQWalletMsg:QQWALLET_TYPE_TRANSFER	I
     //   244: if_icmpne +53 -> 297
     //   247: aload 4
     //   249: astore_3
     //   250: aload_0
-    //   251: new 101	com/tencent/mobileqq/data/QQWalletTransferMsg
+    //   251: new 103	com/tencent/mobileqq/data/QQWalletTransferMsg
     //   254: dup
-    //   255: invokespecial 189	com/tencent/mobileqq/data/QQWalletTransferMsg:<init>	()V
-    //   258: putfield 99	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
+    //   255: invokespecial 191	com/tencent/mobileqq/data/QQWalletTransferMsg:<init>	()V
+    //   258: putfield 101	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
     //   261: aload 4
     //   263: astore_3
     //   264: aload_0
-    //   265: getfield 99	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
+    //   265: getfield 101	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
     //   268: iload_2
     //   269: aload 4
-    //   271: invokevirtual 193	com/tencent/mobileqq/data/QQWalletTransferMsg:readExternal	(ILjava/io/ObjectInput;)V
+    //   271: invokevirtual 195	com/tencent/mobileqq/data/QQWalletTransferMsg:readExternal	(ILjava/io/ObjectInput;)V
     //   274: goto -184 -> 90
     //   277: astore 5
     //   279: aload_3
@@ -266,35 +267,35 @@ public class MessageForQQWalletMsg
     //   285: aload 4
     //   287: ifnull +8 -> 295
     //   290: aload 4
-    //   292: invokevirtual 196	java/io/ObjectInputStream:close	()V
+    //   292: invokevirtual 198	java/io/ObjectInputStream:close	()V
     //   295: aload_3
     //   296: athrow
     //   297: aload 4
     //   299: astore_3
     //   300: iload_1
-    //   301: getstatic 67	com/tencent/mobileqq/data/MessageForQQWalletMsg:QQWALLET_TYPE_REDPACKET	I
+    //   301: getstatic 69	com/tencent/mobileqq/data/MessageForQQWalletMsg:QQWALLET_TYPE_REDPACKET	I
     //   304: if_icmpne -214 -> 90
     //   307: aload 4
     //   309: astore_3
     //   310: aload_0
-    //   311: new 112	com/tencent/mobileqq/data/QQWalletRedPacketMsg
+    //   311: new 114	com/tencent/mobileqq/data/QQWalletRedPacketMsg
     //   314: dup
-    //   315: invokespecial 197	com/tencent/mobileqq/data/QQWalletRedPacketMsg:<init>	()V
-    //   318: putfield 110	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
+    //   315: invokespecial 199	com/tencent/mobileqq/data/QQWalletRedPacketMsg:<init>	()V
+    //   318: putfield 112	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
     //   321: aload 4
     //   323: astore_3
     //   324: aload_0
-    //   325: getfield 110	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
+    //   325: getfield 112	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
     //   328: aload 4
-    //   330: invokevirtual 200	com/tencent/mobileqq/data/QQWalletRedPacketMsg:readExternal	(Ljava/io/ObjectInput;)V
+    //   330: invokevirtual 202	com/tencent/mobileqq/data/QQWalletRedPacketMsg:readExternal	(Ljava/io/ObjectInput;)V
     //   333: goto -243 -> 90
     //   336: astore_3
     //   337: aload_3
-    //   338: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   338: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   341: return
     //   342: astore 4
     //   344: aload 4
-    //   346: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   346: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   349: goto -54 -> 295
     //   352: astore_3
     //   353: aconst_null
@@ -477,105 +478,105 @@ public class MessageForQQWalletMsg
     //   0: aconst_null
     //   1: astore_1
     //   2: aload_0
-    //   3: getfield 99	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
+    //   3: getfield 101	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
     //   6: ifnull +220 -> 226
-    //   9: new 288	java/io/ByteArrayOutputStream
+    //   9: new 290	java/io/ByteArrayOutputStream
     //   12: dup
-    //   13: invokespecial 289	java/io/ByteArrayOutputStream:<init>	()V
+    //   13: invokespecial 291	java/io/ByteArrayOutputStream:<init>	()V
     //   16: astore 4
-    //   18: new 291	java/io/ObjectOutputStream
+    //   18: new 293	java/io/ObjectOutputStream
     //   21: dup
     //   22: aload 4
-    //   24: invokespecial 294	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   24: invokespecial 296	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   27: astore_2
     //   28: aload_2
     //   29: astore_1
     //   30: aload_2
-    //   31: getstatic 75	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION32	I
-    //   34: invokevirtual 298	java/io/ObjectOutputStream:writeInt	(I)V
+    //   31: getstatic 77	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION32	I
+    //   34: invokevirtual 300	java/io/ObjectOutputStream:writeInt	(I)V
     //   37: aload_2
     //   38: astore_1
     //   39: aload_2
-    //   40: getstatic 65	com/tencent/mobileqq/data/MessageForQQWalletMsg:QQWALLET_TYPE_TRANSFER	I
-    //   43: invokevirtual 298	java/io/ObjectOutputStream:writeInt	(I)V
+    //   40: getstatic 67	com/tencent/mobileqq/data/MessageForQQWalletMsg:QQWALLET_TYPE_TRANSFER	I
+    //   43: invokevirtual 300	java/io/ObjectOutputStream:writeInt	(I)V
     //   46: aload_2
     //   47: astore_1
     //   48: aload_2
-    //   49: getstatic 77	com/tencent/mobileqq/data/MessageForQQWalletMsg:SUBVERSION_TRANSFER	I
-    //   52: invokevirtual 298	java/io/ObjectOutputStream:writeInt	(I)V
+    //   49: getstatic 79	com/tencent/mobileqq/data/MessageForQQWalletMsg:SUBVERSION_TRANSFER	I
+    //   52: invokevirtual 300	java/io/ObjectOutputStream:writeInt	(I)V
     //   55: aload_2
     //   56: astore_1
     //   57: aload_2
     //   58: aload_0
-    //   59: getfield 96	com/tencent/mobileqq/data/MessageForQQWalletMsg:messageType	I
-    //   62: invokevirtual 298	java/io/ObjectOutputStream:writeInt	(I)V
+    //   59: getfield 98	com/tencent/mobileqq/data/MessageForQQWalletMsg:messageType	I
+    //   62: invokevirtual 300	java/io/ObjectOutputStream:writeInt	(I)V
     //   65: aload_2
     //   66: astore_1
     //   67: aload_0
-    //   68: getfield 99	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
+    //   68: getfield 101	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletTransferMsg	Lcom/tencent/mobileqq/data/QQWalletTransferMsg;
     //   71: aload_2
-    //   72: invokevirtual 302	com/tencent/mobileqq/data/QQWalletTransferMsg:writeExternal	(Ljava/io/ObjectOutput;)V
+    //   72: invokevirtual 304	com/tencent/mobileqq/data/QQWalletTransferMsg:writeExternal	(Ljava/io/ObjectOutput;)V
     //   75: aload_2
     //   76: astore_1
     //   77: aload_2
-    //   78: invokevirtual 303	java/io/ObjectOutputStream:close	()V
+    //   78: invokevirtual 305	java/io/ObjectOutputStream:close	()V
     //   81: aload_2
     //   82: astore_1
     //   83: aload_0
     //   84: aload 4
-    //   86: invokevirtual 306	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   89: putfield 178	com/tencent/mobileqq/data/MessageForQQWalletMsg:msgData	[B
+    //   86: invokevirtual 308	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   89: putfield 180	com/tencent/mobileqq/data/MessageForQQWalletMsg:msgData	[B
     //   92: aload_2
     //   93: ifnull +7 -> 100
     //   96: aload_2
-    //   97: invokevirtual 303	java/io/ObjectOutputStream:close	()V
+    //   97: invokevirtual 305	java/io/ObjectOutputStream:close	()V
     //   100: aload 4
     //   102: ifnull +8 -> 110
     //   105: aload 4
-    //   107: invokevirtual 307	java/io/ByteArrayOutputStream:close	()V
+    //   107: invokevirtual 309	java/io/ByteArrayOutputStream:close	()V
     //   110: return
     //   111: astore_1
     //   112: aload_1
-    //   113: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   113: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   116: goto -16 -> 100
     //   119: astore_1
     //   120: aload_1
-    //   121: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   121: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   124: return
     //   125: astore_3
     //   126: aconst_null
     //   127: astore_2
     //   128: aload_2
     //   129: astore_1
-    //   130: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   130: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   133: ifeq +15 -> 148
     //   136: aload_2
     //   137: astore_1
-    //   138: ldc 202
+    //   138: ldc 204
     //   140: iconst_2
-    //   141: ldc_w 309
+    //   141: ldc_w 311
     //   144: aload_3
-    //   145: invokestatic 207	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   145: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   148: aload_2
     //   149: astore_1
     //   150: aload_3
-    //   151: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   151: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   154: aload_2
     //   155: ifnull +7 -> 162
     //   158: aload_2
-    //   159: invokevirtual 303	java/io/ObjectOutputStream:close	()V
+    //   159: invokevirtual 305	java/io/ObjectOutputStream:close	()V
     //   162: aload 4
     //   164: ifnull -54 -> 110
     //   167: aload 4
-    //   169: invokevirtual 307	java/io/ByteArrayOutputStream:close	()V
+    //   169: invokevirtual 309	java/io/ByteArrayOutputStream:close	()V
     //   172: return
     //   173: astore_1
     //   174: aload_1
-    //   175: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   175: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   178: return
     //   179: astore_1
     //   180: aload_1
-    //   181: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   181: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   184: goto -22 -> 162
     //   187: astore_2
     //   188: aconst_null
@@ -583,99 +584,99 @@ public class MessageForQQWalletMsg
     //   190: aload_1
     //   191: ifnull +7 -> 198
     //   194: aload_1
-    //   195: invokevirtual 303	java/io/ObjectOutputStream:close	()V
+    //   195: invokevirtual 305	java/io/ObjectOutputStream:close	()V
     //   198: aload 4
     //   200: ifnull +8 -> 208
     //   203: aload 4
-    //   205: invokevirtual 307	java/io/ByteArrayOutputStream:close	()V
+    //   205: invokevirtual 309	java/io/ByteArrayOutputStream:close	()V
     //   208: aload_2
     //   209: athrow
     //   210: astore_1
     //   211: aload_1
-    //   212: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   212: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   215: goto -17 -> 198
     //   218: astore_1
     //   219: aload_1
-    //   220: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   220: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   223: goto -15 -> 208
     //   226: aload_0
-    //   227: getfield 110	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
+    //   227: getfield 112	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
     //   230: ifnull -120 -> 110
-    //   233: new 288	java/io/ByteArrayOutputStream
+    //   233: new 290	java/io/ByteArrayOutputStream
     //   236: dup
-    //   237: invokespecial 289	java/io/ByteArrayOutputStream:<init>	()V
+    //   237: invokespecial 291	java/io/ByteArrayOutputStream:<init>	()V
     //   240: astore 4
-    //   242: new 291	java/io/ObjectOutputStream
+    //   242: new 293	java/io/ObjectOutputStream
     //   245: dup
     //   246: aload 4
-    //   248: invokespecial 294	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   248: invokespecial 296	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   251: astore_2
     //   252: aload_2
-    //   253: getstatic 75	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION32	I
-    //   256: invokevirtual 298	java/io/ObjectOutputStream:writeInt	(I)V
+    //   253: getstatic 77	com/tencent/mobileqq/data/MessageForQQWalletMsg:VERSION32	I
+    //   256: invokevirtual 300	java/io/ObjectOutputStream:writeInt	(I)V
     //   259: aload_2
-    //   260: getstatic 67	com/tencent/mobileqq/data/MessageForQQWalletMsg:QQWALLET_TYPE_REDPACKET	I
-    //   263: invokevirtual 298	java/io/ObjectOutputStream:writeInt	(I)V
+    //   260: getstatic 69	com/tencent/mobileqq/data/MessageForQQWalletMsg:QQWALLET_TYPE_REDPACKET	I
+    //   263: invokevirtual 300	java/io/ObjectOutputStream:writeInt	(I)V
     //   266: aload_2
-    //   267: getstatic 79	com/tencent/mobileqq/data/MessageForQQWalletMsg:SUBVERSION_REDPACKET	I
-    //   270: invokevirtual 298	java/io/ObjectOutputStream:writeInt	(I)V
+    //   267: getstatic 81	com/tencent/mobileqq/data/MessageForQQWalletMsg:SUBVERSION_REDPACKET	I
+    //   270: invokevirtual 300	java/io/ObjectOutputStream:writeInt	(I)V
     //   273: aload_2
     //   274: aload_0
-    //   275: getfield 96	com/tencent/mobileqq/data/MessageForQQWalletMsg:messageType	I
-    //   278: invokevirtual 298	java/io/ObjectOutputStream:writeInt	(I)V
+    //   275: getfield 98	com/tencent/mobileqq/data/MessageForQQWalletMsg:messageType	I
+    //   278: invokevirtual 300	java/io/ObjectOutputStream:writeInt	(I)V
     //   281: aload_0
-    //   282: getfield 110	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
+    //   282: getfield 112	com/tencent/mobileqq/data/MessageForQQWalletMsg:mQQWalletRedPacketMsg	Lcom/tencent/mobileqq/data/QQWalletRedPacketMsg;
     //   285: aload_2
-    //   286: invokevirtual 310	com/tencent/mobileqq/data/QQWalletRedPacketMsg:writeExternal	(Ljava/io/ObjectOutput;)V
+    //   286: invokevirtual 312	com/tencent/mobileqq/data/QQWalletRedPacketMsg:writeExternal	(Ljava/io/ObjectOutput;)V
     //   289: aload_2
-    //   290: invokevirtual 303	java/io/ObjectOutputStream:close	()V
+    //   290: invokevirtual 305	java/io/ObjectOutputStream:close	()V
     //   293: aload_0
     //   294: aload 4
-    //   296: invokevirtual 306	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   299: putfield 178	com/tencent/mobileqq/data/MessageForQQWalletMsg:msgData	[B
+    //   296: invokevirtual 308	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   299: putfield 180	com/tencent/mobileqq/data/MessageForQQWalletMsg:msgData	[B
     //   302: aload_2
     //   303: ifnull +7 -> 310
     //   306: aload_2
-    //   307: invokevirtual 303	java/io/ObjectOutputStream:close	()V
+    //   307: invokevirtual 305	java/io/ObjectOutputStream:close	()V
     //   310: aload 4
     //   312: ifnull -202 -> 110
     //   315: aload 4
-    //   317: invokevirtual 307	java/io/ByteArrayOutputStream:close	()V
+    //   317: invokevirtual 309	java/io/ByteArrayOutputStream:close	()V
     //   320: return
     //   321: astore_1
     //   322: aload_1
-    //   323: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   323: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   326: return
     //   327: astore_1
     //   328: aload_1
-    //   329: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   329: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   332: goto -22 -> 310
     //   335: astore_2
-    //   336: invokestatic 145	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   336: invokestatic 147	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   339: ifeq +13 -> 352
-    //   342: ldc 202
+    //   342: ldc 204
     //   344: iconst_2
-    //   345: ldc_w 309
+    //   345: ldc_w 311
     //   348: aload_2
-    //   349: invokestatic 207	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   349: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   352: aload_2
-    //   353: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   353: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   356: aload_1
     //   357: ifnull +7 -> 364
     //   360: aload_1
-    //   361: invokevirtual 303	java/io/ObjectOutputStream:close	()V
+    //   361: invokevirtual 305	java/io/ObjectOutputStream:close	()V
     //   364: aload 4
     //   366: ifnull -256 -> 110
     //   369: aload 4
-    //   371: invokevirtual 307	java/io/ByteArrayOutputStream:close	()V
+    //   371: invokevirtual 309	java/io/ByteArrayOutputStream:close	()V
     //   374: return
     //   375: astore_1
     //   376: aload_1
-    //   377: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   377: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   380: return
     //   381: astore_1
     //   382: aload_1
-    //   383: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   383: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   386: goto -22 -> 364
     //   389: astore_1
     //   390: aconst_null
@@ -683,20 +684,20 @@ public class MessageForQQWalletMsg
     //   392: aload_2
     //   393: ifnull +7 -> 400
     //   396: aload_2
-    //   397: invokevirtual 303	java/io/ObjectOutputStream:close	()V
+    //   397: invokevirtual 305	java/io/ObjectOutputStream:close	()V
     //   400: aload 4
     //   402: ifnull +8 -> 410
     //   405: aload 4
-    //   407: invokevirtual 307	java/io/ByteArrayOutputStream:close	()V
+    //   407: invokevirtual 309	java/io/ByteArrayOutputStream:close	()V
     //   410: aload_1
     //   411: athrow
     //   412: astore_2
     //   413: aload_2
-    //   414: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   414: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   417: goto -17 -> 400
     //   420: astore_2
     //   421: aload_2
-    //   422: invokevirtual 210	java/lang/Exception:printStackTrace	()V
+    //   422: invokevirtual 212	java/lang/Exception:printStackTrace	()V
     //   425: goto -15 -> 410
     //   428: astore_1
     //   429: goto -37 -> 392

@@ -1,27 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class ryf
-  implements Animation.AnimationListener
+class ryf
+  implements Runnable
 {
-  public ryf(ChatFragment paramChatFragment) {}
+  ryf(rye paramrye) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationEnd");
-    this.a.b(1);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationRepeat");
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationStart");
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
   }
 }
 

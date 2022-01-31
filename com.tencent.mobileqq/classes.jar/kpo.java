@@ -1,25 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.data.AccountDetail;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
 public class kpo
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public kpo(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public kpo(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).B();
-    String str = this.a.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
-    for (paramView = "02";; paramView = "01")
-    {
-      PublicAccountReportUtils.a(null, str, "0X8007CA4", "0X8007CA4", 0, 0, paramView, String.valueOf(AccountDetailBaseAdapter.a(this.a)), "", "", false);
-      return;
-    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int i = this.a.getWindow().getDecorView().getBottom();
+    int j = this.a.getWindow().getDecorView().getTop();
+    LebaSearchPluginManagerActivity.a(this.a, i - j);
   }
 }
 

@@ -1,34 +1,30 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
-public class adqe
-  implements TVK_SDKMgr.InstallListener
+public final class adqe
+  extends ClickableSpan
 {
-  public adqe(HotPicPageView paramHotPicPageView, HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, int paramInt) {}
+  public adqe(FileManagerUtil.TipsClickedInterface paramTipsClickedInterface) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new adqh(this));
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManagerHotPicPageView", 2, "tencent sdk onInstalledFail");
+    if (this.a != null) {
+      this.a.a(paramView);
     }
   }
   
-  public void onInstalledSuccessed()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
-    new Thread(new adqf(this)).run();
+    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adqe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,78 @@
-import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
-import com.tencent.mobileqq.bubble.VipBubbleDrawable;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ARScanFragment;
+import com.tencent.mobileqq.armap.ArMapObserver;
+import com.tencent.mobileqq.armap.ItemInfo;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class abky
-  implements Runnable
+  extends ArMapObserver
 {
-  public abky(BubbleDiyFetcher paramBubbleDiyFetcher, Set paramSet) {}
+  public abky(ShopScanActivity paramShopScanActivity) {}
   
-  public void run()
+  public void onOpenPOI(boolean paramBoolean1, int paramInt1, ItemInfo paramItemInfo, boolean paramBoolean2, int paramInt2, int paramInt3, boolean paramBoolean3)
   {
-    HashSet localHashSet = new HashSet();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a.iterator();
-    while (localIterator.hasNext())
+    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(299)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(299);
+    }
+    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(297))
     {
-      VipBubbleDrawable localVipBubbleDrawable = (VipBubbleDrawable)localIterator.next();
-      if ((localVipBubbleDrawable != null) && (localVipBubbleDrawable.getCallback() != null))
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(297);
+      if (QLog.isColorLevel()) {
+        QLog.i("ShopScanActivity", 2, "onOpenPoi isSuccess: " + paramBoolean1 + ", resultCode: " + paramInt1 + ", mode: " + paramInt3 + ", holder: " + paramBoolean2 + ", bussiType: " + paramInt2 + ", isServerSuccess: " + paramBoolean3 + ", itemInfo: " + paramItemInfo);
+      }
+      if (paramItemInfo != null) {
+        QLog.i("ShopScanActivity", 1, "itemInfo is " + paramItemInfo.toString());
+      }
+      if (!paramBoolean1) {
+        break label321;
+      }
+      ShopScanActivity.b(this.a, true);
+      label192:
+      ShopScanActivity.d(this.a, paramBoolean3);
+      if ((paramBoolean1) && (paramInt1 == 0)) {
+        break label409;
+      }
+      switch (paramInt1)
       {
-        String str = localVipBubbleDrawable.a;
-        if ((this.jdField_a_of_type_JavaUtilSet.contains(str)) && (!localHashSet.contains(localVipBubbleDrawable)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("BubbleDiyFetcher", 2, "refresh uinAndDiyId drawables: " + str + ", vipBubbleDrawable:" + localVipBubbleDrawable.toString());
-          }
-          localHashSet.add(localVipBubbleDrawable);
-          localVipBubbleDrawable.invalidateSelf();
-          this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a.remove(localVipBubbleDrawable);
+      default: 
+        paramItemInfo = "领奖失败，请稍候再试。";
+        this.a.runOnUiThread(new abkz(this, paramItemInfo));
+        ShopScanActivity.a(this.a, ShopScanActivity.a(this.a), false);
+      }
+    }
+    label321:
+    while ((paramItemInfo == null) || (paramItemInfo.e <= 0)) {
+      for (;;)
+      {
+        return;
+        ShopScanActivity.f(this.a);
+        break;
+        if (paramInt1 == 19) {
+          break label192;
         }
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a.remove(localVipBubbleDrawable);
+        ShopScanActivity.c(this.a, true);
+        break label192;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(298, 30000L);
+        paramItemInfo = "领奖失败，请稍候再试。";
+        continue;
+        paramItemInfo = "你已经领过这里的奖品了。";
+        continue;
+        paramItemInfo = "请到达指定地点后再扫描领奖。";
+        continue;
+        paramItemInfo = "今天领奖次数已达到上限。";
+        continue;
+        paramItemInfo = "来晚了一步，奖品已经发完了。";
+        continue;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(298, 30000L);
+        paramItemInfo = "领奖失败，请稍候再试。";
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleDiyFetcher", 2, "wait for refresh size: " + this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a.size());
-    }
+    label409:
+    paramItemInfo.h = ShopScanActivity.b(this.a);
+    this.a.runOnUiThread(new abla(this, paramItemInfo));
+    this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.b(true);
+    ShopScanActivity.a(this.a, ShopScanActivity.a(this.a), true);
   }
 }
 

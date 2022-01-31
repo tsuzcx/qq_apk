@@ -2,512 +2,606 @@ package com.tencent.mapsdk.rastercore.d;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Point;
-import android.graphics.PointF;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Scroller;
+import android.view.ViewGroup.LayoutParams;
 import com.tencent.mapsdk.raster.model.CameraPosition;
-import com.tencent.mapsdk.raster.model.LatLng;
-import com.tencent.mapsdk.rastercore.a.a.a;
-import com.tencent.tencentmap.mapsdk.map.CancelableCallback;
+import com.tencent.mapsdk.raster.model.QMapLanguage;
+import com.tencent.mapsdk.rastercore.c.a;
+import com.tencent.mapsdk.rastercore.d;
+import com.tencent.mapsdk.rastercore.d.a;
 import com.tencent.tencentmap.mapsdk.map.MapView;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.InfoWindowAdapter;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnInfoWindowClickListener;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapCameraChangeListener;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapClickListener;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapLongClickListener;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMarkerClickListener;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMarkerDraggedListener;
+import com.tencent.tencentmap.mapsdk.map.TencentMap.OnScreenShotListener;
 
 public final class f
-  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, View.OnKeyListener
+  implements c.a, d.a
 {
-  private long A = 0L;
-  private Point B;
-  private e a;
-  private b b;
-  private a c;
-  private GestureDetector d;
-  private MotionEvent e;
-  private TencentMap.OnMapClickListener f;
-  private TencentMap.OnMapLongClickListener g;
-  private TencentMap.OnMapCameraChangeListener h;
-  private TencentMap.OnInfoWindowClickListener i;
-  private TencentMap.InfoWindowAdapter j;
-  private TencentMap.OnMarkerDraggedListener k;
-  private TencentMap.OnMarkerClickListener l;
-  private float m = 1.0F;
-  private float n = 1.0F;
-  private float o = 1.0F;
-  private boolean p = false;
-  private boolean q = false;
-  private boolean r = false;
-  private Scroller s;
-  private int t = 0;
-  private int u = 0;
-  private long v;
-  private float w;
-  private float x;
-  private float y;
-  private float z;
+  private static int E = 160;
+  public static int a = 0;
+  public static int b = 0;
+  public static int c = 0;
+  public static int d = 0;
+  public static int e = 0;
+  public static int f = 0;
+  public static int g = 0;
+  public static int h = 0;
+  private static volatile Context i;
+  private static boolean x = true;
+  private static volatile String z = QMapLanguage.getLanguageCode(QMapLanguage.QMapLanguage_en);
+  private boolean A = false;
+  private boolean B = false;
+  private com.tencent.mapsdk.rastercore.b.c C;
+  private com.tencent.mapsdk.rastercore.a D;
+  private MapView j;
+  private a k;
+  private b l;
+  private g m;
+  private com.tencent.mapsdk.rastercore.tile.a.1 n;
+  private com.tencent.mapsdk.rastercore.tile.f o;
+  private com.tencent.mapsdk.rastercore.d.a.a p;
+  private c q;
+  private a.1 r;
+  private volatile com.tencent.mapsdk.rastercore.g.b s;
+  private com.tencent.mapsdk.rastercore.g.a t;
+  private int u = 1;
+  private TencentMap.OnScreenShotListener v = null;
+  private boolean w = false;
+  private Rect y = null;
   
-  public f(e parame)
+  public f(MapView paramMapView)
   {
-    this.a = parame;
-    this.b = parame.c();
-    this.c = parame.e();
-    this.d = new GestureDetector(e.a().getApplicationContext(), this);
-    this.s = new Scroller(e.a());
-    new DisplayMetrics();
-    parame = e.a().getApplicationContext().getResources().getDisplayMetrics();
-    this.t = (parame.widthPixels / 2);
-    this.u = (parame.heightPixels / 2);
+    Object localObject = paramMapView.getContext().getApplicationContext();
+    i = (Context)localObject;
+    E = ((Context)localObject).getResources().getDisplayMetrics().densityDpi;
+    com.tencent.mapsdk.rastercore.tile.a.a.a().a(i);
+    com.tencent.mapsdk.rastercore.f.a.a().a(i);
+    e.a().a(i);
+    h.l();
+    this.j = paramMapView;
+    this.r = new a.1(this);
+    this.s = new com.tencent.mapsdk.rastercore.g.b(this);
+    this.p = new com.tencent.mapsdk.rastercore.d.a.a(this);
+    this.q = new c(this);
+    this.t = new com.tencent.mapsdk.rastercore.g.a(this);
+    this.k = new a(this);
+    this.l = new b(this);
+    this.m = new g(this);
+    this.n = new com.tencent.mapsdk.rastercore.tile.a.1(this);
+    this.o = new com.tencent.mapsdk.rastercore.tile.f(this);
+    this.q.a();
+    localObject = new ViewGroup.LayoutParams(-1, -1);
+    paramMapView.addView(this.l, (ViewGroup.LayoutParams)localObject);
+    paramMapView.addView(this.t, (ViewGroup.LayoutParams)localObject);
+    paramMapView.addView(this.s, (ViewGroup.LayoutParams)localObject);
+    this.r.b(1);
+    this.r.a(true);
+    this.r.c(0);
+    this.D = new com.tencent.mapsdk.rastercore.a();
+    this.D.a();
+    new com.tencent.mapsdk.rastercore.c(i, this).a();
+    new d(i, this).a();
   }
   
-  private static float c(MotionEvent paramMotionEvent)
+  public static Context a()
   {
-    float f1 = paramMotionEvent.getX(0) - paramMotionEvent.getX(1);
-    float f2 = paramMotionEvent.getY(0) - paramMotionEvent.getY(1);
-    new StringBuilder("event0.x:").append(paramMotionEvent.getX(0)).append(",event0.y:").append(paramMotionEvent.getY(0)).append(";  event1.x:").append(paramMotionEvent.getX(1)).append(",event1.y:").append(paramMotionEvent.getY(1));
-    return (float)Math.sqrt(f1 * f1 + f2 * f2);
+    return i;
   }
   
-  public final void a()
+  public static void a(String paramString)
   {
-    int i1;
-    int i2;
-    if (this.s.computeScrollOffset())
+    z = paramString;
+  }
+  
+  public static void e(boolean paramBoolean)
+  {
+    x = false;
+  }
+  
+  public static void n() {}
+  
+  public static boolean p()
+  {
+    return x;
+  }
+  
+  public static String q()
+  {
+    return z;
+  }
+  
+  public static int s()
+  {
+    return E;
+  }
+  
+  private com.tencent.mapsdk.rastercore.b.c t()
+  {
+    com.tencent.mapsdk.rastercore.b.f[] arrayOff = this.q.b();
+    com.tencent.mapsdk.rastercore.b.f localf = this.l.b();
+    float f1 = this.q.d().getZoom();
+    if (this.C == null) {
+      this.C = new com.tencent.mapsdk.rastercore.b.c(localf, arrayOff, f1);
+    }
+    for (;;)
     {
-      i1 = this.s.getCurrX() - this.t;
-      i2 = this.s.getCurrY() - this.u;
-      this.t = this.s.getCurrX();
-      this.u = this.s.getCurrY();
-      this.b.scrollBy(i1, i2);
-      if (this.s.isFinished())
-      {
-        if (this.h != null) {
-          a(true);
-        }
-        this.a.a(false, false);
+      return this.C;
+      this.C.a(localf, arrayOff, f1);
+    }
+  }
+  
+  public final void a(float paramFloat)
+  {
+    if (this.s != null)
+    {
+      this.s.a(paramFloat);
+      this.s.invalidate();
+    }
+  }
+  
+  public final void a(int paramInt)
+  {
+    this.u = paramInt;
+    a(false, false);
+  }
+  
+  public final void a(int paramInt, int[] paramArrayOfInt)
+  {
+    if (this.s != null) {
+      this.s.a(paramArrayOfInt);
+    }
+  }
+  
+  public final void a(Bitmap paramBitmap)
+  {
+    if (this.s != null)
+    {
+      this.s.a(paramBitmap);
+      this.s.invalidate();
+    }
+  }
+  
+  public final void a(Bundle paramBundle)
+  {
+    if (paramBundle != null)
+    {
+      this.r.e(paramBundle.getBoolean("ANIMATION_ENABLED", true));
+      this.r.b(paramBundle.getBoolean("SCROLL_ENABLED", true));
+      this.r.c(paramBundle.getBoolean("ZOOM_ENABLED", true));
+      this.r.b(paramBundle.getInt("LOGO_POSITION", 0));
+      this.r.c(paramBundle.getInt("SCALEVIEW_POSITION", 0));
+      this.r.a(paramBundle.getBoolean("SCALE_CONTROLL_ENABLED", true));
+      this.l.b(paramBundle.getDouble("ZOOM", this.l.c()), false, null);
+      Double localDouble = Double.valueOf(paramBundle.getDouble("CENTERX", (0.0D / 0.0D)));
+      paramBundle = Double.valueOf(paramBundle.getDouble("CENTERY", (0.0D / 0.0D)));
+      if ((!localDouble.isNaN()) && (!paramBundle.isNaN())) {
+        this.l.a(new com.tencent.mapsdk.rastercore.b.f(localDouble.doubleValue(), paramBundle.doubleValue()));
       }
     }
-    else
+  }
+  
+  public final void a(TencentMap.OnScreenShotListener paramOnScreenShotListener)
+  {
+    a(paramOnScreenShotListener, null);
+  }
+  
+  public final void a(TencentMap.OnScreenShotListener paramOnScreenShotListener, Rect paramRect)
+  {
+    this.v = paramOnScreenShotListener;
+    this.y = paramRect;
+    com.tencent.mapsdk.rastercore.f.b.a(this.l, 1);
+    if (this.w)
     {
+      o();
       return;
     }
-    if (Math.abs(i1) < 6) {
-      Math.abs(i2);
-    }
-    this.a.a(false, false);
-  }
-  
-  public final void a(TencentMap.InfoWindowAdapter paramInfoWindowAdapter)
-  {
-    this.j = paramInfoWindowAdapter;
-  }
-  
-  public final void a(TencentMap.OnInfoWindowClickListener paramOnInfoWindowClickListener)
-  {
-    this.i = paramOnInfoWindowClickListener;
-  }
-  
-  public final void a(TencentMap.OnMapCameraChangeListener paramOnMapCameraChangeListener)
-  {
-    this.h = paramOnMapCameraChangeListener;
-  }
-  
-  public final void a(TencentMap.OnMapClickListener paramOnMapClickListener)
-  {
-    this.f = paramOnMapClickListener;
-  }
-  
-  public final void a(TencentMap.OnMapLongClickListener paramOnMapLongClickListener)
-  {
-    this.g = paramOnMapLongClickListener;
-  }
-  
-  public final void a(TencentMap.OnMarkerClickListener paramOnMarkerClickListener)
-  {
-    this.l = paramOnMarkerClickListener;
-  }
-  
-  public final void a(TencentMap.OnMarkerDraggedListener paramOnMarkerDraggedListener)
-  {
-    this.k = paramOnMarkerDraggedListener;
+    this.l.a(true);
+    a(false, false);
   }
   
   public final void a(boolean paramBoolean)
   {
-    CameraPosition localCameraPosition;
-    if (this.h != null)
-    {
-      localCameraPosition = this.a.b().d();
-      if (paramBoolean)
-      {
-        this.h.onCameraChangeFinish(localCameraPosition);
-        this.r = false;
-      }
+    if (paramBoolean) {
+      a(false, false);
     }
-    else
-    {
-      return;
-    }
-    this.h.onCameraChange(localCameraPosition);
-    this.r = true;
   }
   
-  public final boolean a(MotionEvent paramMotionEvent)
+  public final void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool = false;
-    int i2 = 0;
-    int i1 = i2;
-    label180:
-    Object localObject;
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    default: 
-      i1 = i2;
-    case 3: 
-    case 4: 
-    case 0: 
-      for (;;)
-      {
-        if (i1 != 0) {
-          this.A = paramMotionEvent.getEventTime();
-        }
-        if ((i1 == 0) && (!this.q)) {
-          this.d.onTouchEvent(paramMotionEvent);
-        }
-        if ((paramMotionEvent.getAction() == 1) && (!this.q) && (this.h != null) && (this.s.isFinished()) && ((this.p) || (this.r))) {
-          a(true);
-        }
-        if (i1 != 0)
-        {
-          paramMotionEvent.setAction(3);
-          this.d.onTouchEvent(paramMotionEvent);
-        }
-        this.c.a(paramMotionEvent);
-        bool = true;
-        return bool;
-        new StringBuilder("event0.x:").append(paramMotionEvent.getX(0)).append(",event0.y:").append(paramMotionEvent.getY(0));
-        this.a.d().stopAnimation();
-        i1 = i2;
-        if (this.a.f().g())
-        {
-          this.a.j();
-          i1 = i2;
-        }
-      }
-    case 1: 
-      this.A = paramMotionEvent.getEventTime();
-      if (this.a.f().g()) {
-        this.a.k();
-      }
-      if ((paramMotionEvent.getEventTime() - this.v < 200L) && (((Math.abs(paramMotionEvent.getX(0) - this.x) < 10.0F) && (Math.abs(paramMotionEvent.getY(0) - this.z) < 10.0F)) || ((Math.abs(paramMotionEvent.getX(0) - this.w) < 10.0F) && (Math.abs(paramMotionEvent.getY(0) - this.y) < 10.0F))))
-      {
-        localObject = this.b.d();
-        if ((this.a.f().a() >= 3) && (this.a.f().b() > 1.0F))
-        {
-          i1 = 1;
-          label420:
-          if (i1 == 0) {
-            break label492;
-          }
-          ((com.tencent.mapsdk.rastercore.b.a)localObject).a(1.3D);
-          label433:
-          if (this.a.f().i()) {
-            this.b.b(true, null);
-          }
-        }
-      }
-      break;
+    this.w = false;
+    if (this.p != null) {
+      this.p.a(t());
     }
-    for (i1 = 1;; i1 = 0)
-    {
-      this.v = 0L;
-      this.w = 0.0F;
-      this.y = 0.0F;
-      this.p = false;
-      this.o = 0.0F;
-      break;
-      i1 = 0;
-      break label420;
-      label492:
-      ((com.tencent.mapsdk.rastercore.b.a)localObject).a(1.0D);
-      break label433;
-      i1 = i2;
-      if (paramMotionEvent.getPointerCount() <= 1) {
-        break;
-      }
-      this.v = paramMotionEvent.getEventTime();
-      this.x = paramMotionEvent.getX(0);
-      this.z = paramMotionEvent.getY(0);
-      this.w = paramMotionEvent.getX(1);
-      this.y = paramMotionEvent.getY(1);
-      this.o = c(paramMotionEvent);
-      i1 = i2;
-      break;
-      i1 = i2;
-      if (paramMotionEvent.getPointerCount() != 2) {
-        break;
-      }
-      new StringBuilder("event0.x:").append(paramMotionEvent.getX(0)).append(",event0.y:").append(paramMotionEvent.getY(0)).append(";  event1.x:").append(paramMotionEvent.getX(1)).append(",event1.y:").append(paramMotionEvent.getY(1));
-      if (this.q)
-      {
-        double d1 = Math.sqrt(this.n * this.m);
-        localObject = new PointF(this.b.getWidth() / 2, this.b.getHeight() / 2);
-        this.b.a((d1 - 1.0D) * 1.5D + this.b.c(), (PointF)localObject, true, 200L, a.a.b, new CancelableCallback()
-        {
-          public final void onCancel()
-          {
-            f.a(f.this, false);
-          }
-          
-          public final void onFinish()
-          {
-            f.a(f.this, false);
-          }
-        });
-      }
-      this.B = null;
-      i1 = i2;
-      break;
-      i1 = i2;
-      if (paramMotionEvent.getPointerCount() <= 1) {
-        break;
-      }
-      if (!this.a.f().i()) {
-        break label180;
-      }
-      float f1 = c(paramMotionEvent);
-      i1 = i2;
-      if (f1 < 10.0F) {
-        break;
-      }
-      if (this.o < 10.0F)
-      {
-        this.o = f1;
-        i1 = i2;
-        break;
-      }
-      this.m = this.n;
-      this.n = (f1 / this.o);
-      new StringBuilder().append(this.n);
-      i1 = i2;
-      if (Math.abs(this.n - 1.0F) < 0.01D) {
-        break;
-      }
-      localObject = new PointF(this.b.getWidth() / 2, this.b.getHeight() / 2);
-      this.b.a(this.n, (PointF)localObject);
-      a(false);
-      this.o = f1;
-      this.a.a(false, false);
-      this.q = true;
-      i1 = 1;
-      break;
-    }
+    this.n.a(paramBoolean1, paramBoolean2);
+    this.j.layout();
+    this.j.postInvalidate();
   }
   
-  public final void b()
+  public final c b()
   {
-    this.s.abortAnimation();
+    return this.q;
   }
   
-  public final void b(MotionEvent paramMotionEvent)
+  public final void b(int paramInt)
   {
-    if (this.e != null) {
-      this.e.recycle();
-    }
-    this.e = paramMotionEvent;
-    if (this.e.getAction() == 0)
+    if (this.s != null)
     {
-      if (this.B == null) {
-        this.B = new Point();
+      this.s.a(paramInt);
+      this.s.invalidate();
+      if (this.t.getVisibility() == 0) {
+        this.t.invalidate();
       }
-      this.B.x = ((int)this.e.getX());
-      this.B.y = ((int)this.e.getY());
     }
   }
   
-  public final MotionEvent c()
+  public final void b(final Bitmap paramBitmap)
   {
-    return this.e;
+    this.j.post(new Runnable()
+    {
+      public final void run()
+      {
+        f.this.a(paramBitmap);
+      }
+    });
   }
   
-  public final TencentMap.OnMarkerClickListener d()
+  public final void b(Bundle paramBundle)
+  {
+    paramBundle.putBoolean("ANIMATION_ENABLED", this.r.k());
+    paramBundle.putBoolean("SCROLL_ENABLED", this.r.h());
+    paramBundle.putBoolean("ZOOM_ENABLED", this.r.i());
+    paramBundle.putInt("LOGO_POSITION", this.r.j());
+    paramBundle.putInt("SCALEVIEW_POSITION", this.r.f());
+    paramBundle.putBoolean("SCALE_CONTROLL_ENABLED", this.r.g());
+    paramBundle.putDouble("ZOOM", this.l.c());
+    paramBundle.putDouble("CENTERX", this.l.b().b());
+    paramBundle.putDouble("CENTERY", this.l.b().a());
+  }
+  
+  public final void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.p.a();
+    }
+    com.tencent.mapsdk.rastercore.d.a.a locala = this.p;
+    com.tencent.mapsdk.rastercore.d.a.a.a(h.j());
+    this.p.a(t());
+    a(false, false);
+  }
+  
+  public final b c()
   {
     return this.l;
   }
   
-  public final TencentMap.OnMarkerDraggedListener e()
+  public final void c(int paramInt)
   {
-    return this.k;
+    if ((this.t != null) && (this.t.getVisibility() == 0))
+    {
+      this.t.a(paramInt);
+      this.t.invalidate();
+    }
   }
   
-  public final TencentMap.OnInfoWindowClickListener f()
+  public final void c(boolean paramBoolean)
   {
-    return this.i;
+    if (paramBoolean)
+    {
+      this.t.setVisibility(0);
+      this.t.d();
+      return;
+    }
+    com.tencent.mapsdk.rastercore.g.a locala = this.t;
+    com.tencent.mapsdk.rastercore.g.a.b();
+    locala = this.t;
+    com.tencent.mapsdk.rastercore.g.a.c();
+    this.t.setVisibility(8);
   }
   
-  public final TencentMap.InfoWindowAdapter g()
+  public final MapView d()
   {
     return this.j;
   }
   
-  public final boolean onDoubleTap(MotionEvent paramMotionEvent)
+  protected final void d(boolean paramBoolean)
   {
-    if (!this.a.f().i()) {}
-    label128:
-    for (;;)
+    this.w = paramBoolean;
+  }
+  
+  public final a e()
+  {
+    return this.k;
+  }
+  
+  public final a.1 f()
+  {
+    return this.r;
+  }
+  
+  protected final void f(boolean paramBoolean)
+  {
+    this.A = paramBoolean;
+  }
+  
+  public final com.tencent.mapsdk.rastercore.tile.a.1 g()
+  {
+    return this.n;
+  }
+  
+  public final void g(boolean paramBoolean)
+  {
+    if (paramBoolean != this.B)
     {
-      return true;
-      com.tencent.mapsdk.rastercore.b.a locala = this.b.d();
-      int i1;
-      if ((this.a.f().a() >= 3) && (this.a.f().b() > 1.0F))
+      this.B = paramBoolean;
+      a(false, false);
+    }
+  }
+  
+  public final g h()
+  {
+    return this.m;
+  }
+  
+  public final com.tencent.mapsdk.rastercore.tile.f i()
+  {
+    return this.o;
+  }
+  
+  public final void j()
+  {
+    this.t.e();
+  }
+  
+  public final void k()
+  {
+    this.t.d();
+  }
+  
+  public final int l()
+  {
+    return this.u;
+  }
+  
+  public final void m()
+  {
+    this.t.a();
+    this.s.a();
+    this.k.b();
+    this.j.stopAnimation();
+    this.j.removeAllViews();
+    this.n.a();
+    this.p.b();
+    e.a().b();
+    com.tencent.mapsdk.rastercore.tile.a.a.a().c();
+    new Thread()
+    {
+      /* Error */
+      public final void run()
       {
-        i1 = 1;
-        if (i1 == 0) {
-          break label122;
-        }
-        locala.a(1.3D);
+        // Byte code:
+        //   0: aconst_null
+        //   1: astore_2
+        //   2: new 21	java/lang/StringBuilder
+        //   5: dup
+        //   6: invokespecial 22	java/lang/StringBuilder:<init>	()V
+        //   9: getstatic 26	com/tencent/mapsdk/rastercore/d/f:c	I
+        //   12: invokestatic 32	java/lang/Integer:toString	(I)Ljava/lang/String;
+        //   15: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   18: ldc 38
+        //   20: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   23: getstatic 41	com/tencent/mapsdk/rastercore/d/f:d	I
+        //   26: invokestatic 32	java/lang/Integer:toString	(I)Ljava/lang/String;
+        //   29: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   32: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   35: astore_3
+        //   36: new 21	java/lang/StringBuilder
+        //   39: dup
+        //   40: invokespecial 22	java/lang/StringBuilder:<init>	()V
+        //   43: getstatic 46	com/tencent/mapsdk/rastercore/d/f:a	I
+        //   46: invokestatic 32	java/lang/Integer:toString	(I)Ljava/lang/String;
+        //   49: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   52: ldc 38
+        //   54: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   57: getstatic 49	com/tencent/mapsdk/rastercore/d/f:b	I
+        //   60: invokestatic 32	java/lang/Integer:toString	(I)Ljava/lang/String;
+        //   63: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   66: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   69: astore 4
+        //   71: new 21	java/lang/StringBuilder
+        //   74: dup
+        //   75: invokespecial 22	java/lang/StringBuilder:<init>	()V
+        //   78: getstatic 52	com/tencent/mapsdk/rastercore/d/f:e	I
+        //   81: invokestatic 32	java/lang/Integer:toString	(I)Ljava/lang/String;
+        //   84: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   87: ldc 38
+        //   89: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   92: iconst_0
+        //   93: invokestatic 32	java/lang/Integer:toString	(I)Ljava/lang/String;
+        //   96: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   99: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   102: astore 5
+        //   104: new 21	java/lang/StringBuilder
+        //   107: dup
+        //   108: invokespecial 22	java/lang/StringBuilder:<init>	()V
+        //   111: getstatic 55	com/tencent/mapsdk/rastercore/d/f:f	I
+        //   114: invokestatic 32	java/lang/Integer:toString	(I)Ljava/lang/String;
+        //   117: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   120: ldc 38
+        //   122: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   125: iconst_0
+        //   126: invokestatic 32	java/lang/Integer:toString	(I)Ljava/lang/String;
+        //   129: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   132: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   135: astore 6
+        //   137: new 21	java/lang/StringBuilder
+        //   140: dup
+        //   141: ldc 57
+        //   143: invokespecial 60	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+        //   146: astore 7
+        //   148: aload_0
+        //   149: getfield 12	com/tencent/mapsdk/rastercore/d/f$1:a	Lcom/tencent/mapsdk/rastercore/d/f;
+        //   152: invokestatic 63	com/tencent/mapsdk/rastercore/d/f:a	(Lcom/tencent/mapsdk/rastercore/d/f;)Lcom/tencent/mapsdk/rastercore/a;
+        //   155: ifnull +214 -> 369
+        //   158: aload_0
+        //   159: getfield 12	com/tencent/mapsdk/rastercore/d/f$1:a	Lcom/tencent/mapsdk/rastercore/d/f;
+        //   162: invokestatic 63	com/tencent/mapsdk/rastercore/d/f:a	(Lcom/tencent/mapsdk/rastercore/d/f;)Lcom/tencent/mapsdk/rastercore/a;
+        //   165: invokevirtual 67	com/tencent/mapsdk/rastercore/a:c	()Ljava/lang/String;
+        //   168: ifnonnull +134 -> 302
+        //   171: goto +198 -> 369
+        //   174: new 69	java/net/URL
+        //   177: dup
+        //   178: aload 7
+        //   180: aload_1
+        //   181: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   184: ldc 71
+        //   186: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   189: aload_3
+        //   190: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   193: ldc 73
+        //   195: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   198: aload 4
+        //   200: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   203: ldc 75
+        //   205: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   208: aload 5
+        //   210: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   213: ldc 77
+        //   215: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   218: aload 6
+        //   220: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   223: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   226: invokespecial 78	java/net/URL:<init>	(Ljava/lang/String;)V
+        //   229: invokevirtual 82	java/net/URL:openConnection	()Ljava/net/URLConnection;
+        //   232: checkcast 84	java/net/HttpURLConnection
+        //   235: astore_1
+        //   236: aload_1
+        //   237: ldc 86
+        //   239: invokevirtual 89	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+        //   242: aload_1
+        //   243: invokevirtual 92	java/net/HttpURLConnection:connect	()V
+        //   246: aload_1
+        //   247: invokevirtual 96	java/net/HttpURLConnection:getResponseCode	()I
+        //   250: sipush 200
+        //   253: if_icmpne +40 -> 293
+        //   256: aload_1
+        //   257: invokevirtual 100	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+        //   260: pop
+        //   261: iconst_0
+        //   262: putstatic 26	com/tencent/mapsdk/rastercore/d/f:c	I
+        //   265: iconst_0
+        //   266: putstatic 41	com/tencent/mapsdk/rastercore/d/f:d	I
+        //   269: iconst_0
+        //   270: putstatic 46	com/tencent/mapsdk/rastercore/d/f:a	I
+        //   273: iconst_0
+        //   274: putstatic 49	com/tencent/mapsdk/rastercore/d/f:b	I
+        //   277: iconst_0
+        //   278: putstatic 52	com/tencent/mapsdk/rastercore/d/f:e	I
+        //   281: iconst_0
+        //   282: putstatic 55	com/tencent/mapsdk/rastercore/d/f:f	I
+        //   285: iconst_0
+        //   286: putstatic 103	com/tencent/mapsdk/rastercore/d/f:g	I
+        //   289: iconst_0
+        //   290: putstatic 49	com/tencent/mapsdk/rastercore/d/f:b	I
+        //   293: aload_1
+        //   294: ifnull +7 -> 301
+        //   297: aload_1
+        //   298: invokevirtual 106	java/net/HttpURLConnection:disconnect	()V
+        //   301: return
+        //   302: new 21	java/lang/StringBuilder
+        //   305: dup
+        //   306: invokespecial 22	java/lang/StringBuilder:<init>	()V
+        //   309: aload_0
+        //   310: getfield 12	com/tencent/mapsdk/rastercore/d/f$1:a	Lcom/tencent/mapsdk/rastercore/d/f;
+        //   313: invokestatic 63	com/tencent/mapsdk/rastercore/d/f:a	(Lcom/tencent/mapsdk/rastercore/d/f;)Lcom/tencent/mapsdk/rastercore/a;
+        //   316: invokevirtual 67	com/tencent/mapsdk/rastercore/a:c	()Ljava/lang/String;
+        //   319: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   322: ldc 108
+        //   324: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   327: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   330: astore_1
+        //   331: goto -157 -> 174
+        //   334: astore_1
+        //   335: aconst_null
+        //   336: astore_1
+        //   337: aload_1
+        //   338: ifnull -37 -> 301
+        //   341: aload_1
+        //   342: invokevirtual 106	java/net/HttpURLConnection:disconnect	()V
+        //   345: return
+        //   346: astore_3
+        //   347: aload_2
+        //   348: astore_1
+        //   349: aload_3
+        //   350: astore_2
+        //   351: aload_1
+        //   352: ifnull +7 -> 359
+        //   355: aload_1
+        //   356: invokevirtual 106	java/net/HttpURLConnection:disconnect	()V
+        //   359: aload_2
+        //   360: athrow
+        //   361: astore_2
+        //   362: goto -11 -> 351
+        //   365: astore_2
+        //   366: goto -29 -> 337
+        //   369: ldc 110
+        //   371: astore_1
+        //   372: goto -198 -> 174
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	375	0	this	1
+        //   180	151	1	localObject1	Object
+        //   334	1	1	localException1	java.lang.Exception
+        //   336	36	1	localObject2	Object
+        //   1	359	2	localObject3	Object
+        //   361	1	2	localObject4	Object
+        //   365	1	2	localException2	java.lang.Exception
+        //   35	155	3	str1	String
+        //   346	4	3	localObject5	Object
+        //   69	130	4	str2	String
+        //   102	107	5	str3	String
+        //   135	84	6	str4	String
+        //   146	33	7	localStringBuilder	java.lang.StringBuilder
+        // Exception table:
+        //   from	to	target	type
+        //   2	171	334	java/lang/Exception
+        //   174	236	334	java/lang/Exception
+        //   302	331	334	java/lang/Exception
+        //   2	171	346	finally
+        //   174	236	346	finally
+        //   302	331	346	finally
+        //   236	293	361	finally
+        //   236	293	365	java/lang/Exception
       }
-      for (;;)
-      {
-        if (this.b.d().a() >= this.a.b().i().a()) {
-          break label128;
-        }
-        this.b.a(new PointF(paramMotionEvent.getX(), paramMotionEvent.getY()), true, null);
-        return true;
-        i1 = 0;
-        break;
-        label122:
-        locala.a(1.0D);
+    }.start();
+    System.gc();
+  }
+  
+  protected final void o()
+  {
+    if (this.v != null)
+    {
+      this.j.setDrawingCacheEnabled(true);
+      this.j.buildDrawingCache();
+      if (this.y != null) {
+        break label73;
       }
     }
-  }
-  
-  public final boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public final boolean onDown(MotionEvent paramMotionEvent)
-  {
-    this.p = false;
-    return false;
-  }
-  
-  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    this.p = false;
-    if (!this.a.f().h()) {
-      return true;
-    }
-    this.s.fling(this.t, this.u, (int)(-paramFloat1 * 0.6D), (int)(-paramFloat2 * 0.6D), -2147483647, 2147483647, -2147483647, 2147483647);
-    this.a.a(false, false);
-    return true;
-  }
-  
-  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    switch (paramInt)
+    label73:
+    for (Bitmap localBitmap = Bitmap.createBitmap(this.j.getDrawingCache());; localBitmap = Bitmap.createBitmap(this.j.getDrawingCache(), this.y.left, this.y.top, this.y.width(), this.y.height()))
     {
-    default: 
-      return false;
-    case 21: 
-      this.b.scrollBy(-10, 0);
-      return true;
-    case 22: 
-      this.b.scrollBy(10, 0);
-      return true;
-    case 19: 
-      this.b.scrollBy(0, -10);
-      return true;
-    }
-    this.b.scrollBy(0, 10);
-    return true;
-  }
-  
-  public final void onLongPress(MotionEvent paramMotionEvent)
-  {
-    this.p = false;
-    LatLng localLatLng = this.a.b().a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-    this.c.a(com.tencent.mapsdk.rastercore.f.b.a(localLatLng), paramMotionEvent);
-    if (this.g != null) {
-      this.g.onMapLongClick(localLatLng);
-    }
-  }
-  
-  public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (!this.a.f().h()) {
-      this.p = false;
-    }
-    while ((this.q) || (paramMotionEvent2.getEventTime() - this.A < 30L)) {
-      return true;
-    }
-    this.p = true;
-    int i1 = (int)this.e.getX();
-    int i2 = (int)this.e.getY();
-    if (this.B == null)
-    {
-      this.B = new Point();
-      this.B.x = i1;
-      this.B.y = i2;
-      return true;
-    }
-    int i3 = this.B.x;
-    int i4 = this.B.y;
-    this.b.scrollBy(i3 - i1, i4 - i2);
-    this.B.x = i1;
-    this.B.y = i2;
-    a(false);
-    return true;
-  }
-  
-  public final void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public final boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    this.p = false;
-    try
-    {
-      paramMotionEvent = this.a.b().a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-      if (this.c.a(com.tencent.mapsdk.rastercore.f.b.a(paramMotionEvent))) {
-        return true;
+      this.j.destroyDrawingCache();
+      this.v.onMapScreenShot(localBitmap);
+      if (this.A) {
+        com.tencent.mapsdk.rastercore.f.b.a(this.l, 2);
       }
-      if (this.f != null)
-      {
-        this.f.onMapClick(paramMotionEvent);
-        this.a.d().setFocusable(true);
-        this.a.d().setFocusableInTouchMode(true);
-        this.a.d().requestFocus();
-        paramMotionEvent = (InputMethodManager)e.a().getSystemService("input_method");
-        if (paramMotionEvent.isActive())
-        {
-          paramMotionEvent.hideSoftInputFromWindow(this.a.d().getWindowToken(), 0);
-          return true;
-        }
-      }
+      return;
     }
-    catch (Exception paramMotionEvent)
-    {
-      paramMotionEvent.printStackTrace();
-    }
-    return true;
+  }
+  
+  public final boolean r()
+  {
+    return this.B;
   }
 }
 

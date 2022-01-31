@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.util.Pair;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import java.util.ArrayList;
 
 class sin
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  sin(sim paramsim, SubAccountControll paramSubAccountControll, Pair paramPair) {}
+  sin(sim paramsim, ArrayList paramArrayList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    View localView;
+    do
+    {
+      return;
+      localView = this.jdField_a_of_type_Sim.a.a[33];
+    } while (localView == null);
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+      localView.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Sim.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
+      return;
+      localView.setVisibility(0);
+    }
   }
 }
 

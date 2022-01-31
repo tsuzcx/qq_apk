@@ -1,22 +1,45 @@
-import android.graphics.Rect;
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.richmedia.RichmediaService;
+import com.tencent.mobileqq.richmedia.VideoSendTaskManager;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.utils.LogTag;
+import java.util.HashMap;
 
 public class ahlk
-  implements Camera.AutoFocusCallback
+  implements Runnable
 {
-  public ahlk(CameraCaptureView paramCameraCaptureView, File paramFile, int paramInt, boolean paramBoolean) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public ahlk(VideoSendTaskManager paramVideoSendTaskManager, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "requestFocus when capture : " + paramBoolean);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void run()
+  {
+    Object localObject = (TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).get(this.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
+    {
+      LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]TransferRequest is removed");
+      return;
     }
-    CameraCaptureView.a().a(this.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.b), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1);
+    localObject = (MessageForShortVideo)((TransferRequest)localObject).a;
+    if ((TextUtils.isEmpty(((MessageForShortVideo)localObject).md5)) || (TextUtils.isEmpty(((MessageForShortVideo)localObject).mLocalMd5)))
+    {
+      LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]Remove failed:md5=" + ((MessageForShortVideo)localObject).md5 + ",localMd5=" + ((MessageForShortVideo)localObject).mLocalMd5);
+      return;
+    }
+    VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).remove(this.jdField_a_of_type_JavaLangString);
+    localObject = RichmediaService.a();
+    if (localObject != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("vidoe_record_uniseq", this.jdField_a_of_type_JavaLangString);
+      ((RichmediaService)localObject).a(1002, -1, localBundle);
+    }
+    LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]Remove success");
   }
 }
 

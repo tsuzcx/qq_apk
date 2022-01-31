@@ -1,17 +1,32 @@
-import android.content.Context;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.offline.util.IOfflineDownloader;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.TabView;
+import com.tencent.qphone.base.util.QLog;
 
-public final class klk
-  implements Runnable
+public class klk
+  implements View.OnClickListener
 {
-  public klk(Context paramContext, String paramString1, String paramString2, String paramString3, long paramLong, AsyncBack paramAsyncBack, HashMap paramHashMap) {}
+  public klk(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    HtmlOffline.a.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.c, new kll(this), this.jdField_a_of_type_JavaUtilHashMap);
+    if ((paramView instanceof PoiMapActivity.TabView))
+    {
+      this.a.a(((PoiMapActivity.TabView)paramView).a);
+      this.a.i();
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "mTabClickListener" + ((PoiMapActivity.TabView)paramView).a);
+      }
+      if (PoiMapActivity.a(this.a)) {
+        this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), "", "", "", "");
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.a("share_locate", "click_tab" + (((PoiMapActivity.TabView)paramView).a + 1), this.a.f, this.a.e, "", "");
   }
 }
 

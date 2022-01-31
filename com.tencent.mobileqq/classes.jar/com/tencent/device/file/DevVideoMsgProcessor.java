@@ -28,7 +28,7 @@ import com.tencent.open.base.ToastUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.os.MqqHandler;
-import pxn;
+import qcf;
 
 public class DevVideoMsgProcessor
   implements DeviceAVFileMsgObserver.DevMsgProcessor
@@ -41,10 +41,10 @@ public class DevVideoMsgProcessor
     }
     if (!Utils.a())
     {
-      ToastUtil.a().a(2131434770);
+      ToastUtil.a().a(2131434786);
       return;
     }
-    Object localObject = AppConstants.aJ + "shortvideo/" + System.currentTimeMillis() + ".mp4";
+    Object localObject = AppConstants.aK + "shortvideo/" + System.currentTimeMillis() + ".mp4";
     Intent localIntent = new Intent("android.media.action.VIDEO_CAPTURE");
     localIntent.putExtra("android.intent.extra.videoQuality", 1);
     PreferenceManager.getDefaultSharedPreferences(paramActivity.getApplicationContext()).edit().putString("device_video_path", (String)localObject).commit();
@@ -64,7 +64,7 @@ public class DevVideoMsgProcessor
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
-    ThreadManager.getFileThreadHandler().post(new pxn(paramString1, paramString2, paramQQAppInterface));
+    ThreadManager.getFileThreadHandler().post(new qcf(paramString1, paramString2, paramQQAppInterface));
   }
   
   public void a(Session paramSession, String paramString, long paramLong, int paramInt, float paramFloat)

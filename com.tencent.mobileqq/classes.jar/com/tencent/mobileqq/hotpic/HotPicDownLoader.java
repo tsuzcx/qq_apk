@@ -17,7 +17,7 @@ import java.net.URL;
 public class HotPicDownLoader
   extends ProtocolDownloader.Adapter
 {
-  public static final String a = AppConstants.aJ + "hotpic/";
+  public static final String a = AppConstants.aK + "hotpic/";
   
   public static File a(String paramString)
   {

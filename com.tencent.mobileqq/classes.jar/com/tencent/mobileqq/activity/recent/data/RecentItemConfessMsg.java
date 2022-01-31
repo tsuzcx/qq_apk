@@ -57,7 +57,7 @@ public class RecentItemConfessMsg
     do
     {
       return;
-      if ((this.j == 1032) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, AppConstants.aF)))
+      if ((this.j == 1032) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, AppConstants.aG)))
       {
         localObject2 = a();
         str = ContactUtils.b(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin, true);
@@ -148,9 +148,9 @@ public class RecentItemConfessMsg
       this.j = 0;
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 1032) && (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, AppConstants.aF)))
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 1032) && (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, AppConstants.aG)))
     {
-      this.jdField_a_of_type_JavaLangString = AppConstants.aF;
+      this.jdField_a_of_type_JavaLangString = AppConstants.aG;
       this.j = 1032;
       return;
     }

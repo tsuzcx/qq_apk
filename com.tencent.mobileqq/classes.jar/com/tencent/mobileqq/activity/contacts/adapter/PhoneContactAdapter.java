@@ -57,7 +57,7 @@ public class PhoneContactAdapter
     return this.jdField_a_of_type_JavaUtilList.isEmpty();
   }
   
-  private void b()
+  private void c()
   {
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
@@ -105,6 +105,12 @@ public class PhoneContactAdapter
       ((PhoneContactManagerImp)localObject1).b(true);
     }
     this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void Z_()
+  {
+    super.Z_();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
   
   public void a()
@@ -159,16 +165,16 @@ public class PhoneContactAdapter
     {
       if (this.jdField_a_of_type_AndroidViewView == null)
       {
-        this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130968808, null);
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838587);
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131363840).setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.findViewById(2131363841).setVisibility(8);
-        paramView = (SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363842);
+        this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130968812, null);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838593);
+        this.jdField_a_of_type_AndroidViewView.findViewById(2131363864).setVisibility(8);
+        this.jdField_a_of_type_AndroidViewView.findViewById(2131363865).setVisibility(8);
+        paramView = (SingleLineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363866);
         paramView.setText("通讯录");
         paramViewGroup = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
         paramViewGroup.leftMargin /= 2;
         paramView.setLayoutParams(paramViewGroup);
-        ((SimpleTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363843)).setText("0");
+        ((SimpleTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363867)).setText("0");
       }
       return this.jdField_a_of_type_AndroidViewView;
     }
@@ -187,7 +193,7 @@ public class PhoneContactAdapter
   public void notifyDataSetChanged()
   {
     this.jdField_a_of_type_Boolean = true;
-    b();
+    c();
     super.notifyDataSetChanged();
   }
   

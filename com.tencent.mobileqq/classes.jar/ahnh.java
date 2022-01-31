@@ -1,30 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.SparseArray;
-import com.tencent.mobileqq.richmedia.dc.DCAIOPreview;
-import com.tencent.mobileqq.richmedia.dc.DataReport;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahnh
-  extends Handler
+  implements Runnable
 {
-  public ahnh(DCAIOPreview paramDCAIOPreview, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ahnh(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    paramMessage = DataReport.a();
-    int j = DCAIOPreview.a(this.a).size();
-    int i = 0;
-    while (i < j)
-    {
-      ahni localahni = (ahni)DCAIOPreview.a(this.a).valueAt(i);
-      paramMessage.a(new ahnz("Pic.AioPreview", localahni.a("Pic.AioPreview")));
-      paramMessage.a(new ahnz("Pic.AioPreview.Preload", localahni.a("Pic.AioPreview.Preload")));
-      i += 1;
+    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "onDownloadProgress mGestureState=" + CaptureSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + " mVideoState=" + CaptureSoDownloadFragmentAllWaite.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + ",mFilterSoState=" + CaptureSoDownloadFragmentAllWaite.d(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite) + ",mQmcfState=" + CaptureSoDownloadFragmentAllWaite.e(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite));
     }
+    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, "GestureDownloadProgress");
   }
 }
 

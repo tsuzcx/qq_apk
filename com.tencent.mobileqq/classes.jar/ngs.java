@@ -1,32 +1,19 @@
+import com.tencent.biz.qqstory.model.StoryManager;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.AssertUtils;
 
 public class ngs
-  extends AddPollViewJob
+  implements Runnable
 {
-  public ngs(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareSinaData paramShareSinaData)
-  {
-    super(paramStoryVideoItem);
-  }
+  public ngs(StoryManager paramStoryManager, String paramString) {}
   
-  public boolean b()
+  public void run()
   {
-    String str = (String)a("result");
-    AssertUtils.a(str);
-    AssertUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d == null)
+    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString);
+    if (localStoryVideoItem != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d = "";
-      SLog.c(this.b, "imageLocalPath is null", new Throwable());
+      localStoryVideoItem.mHadRead = 1;
+      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString, localStoryVideoItem);
     }
-    a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.a));
-    return true;
   }
 }
 

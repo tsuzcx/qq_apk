@@ -1,22 +1,20 @@
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.RefreshView.OnRefreshListener;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class adoa
-  implements RefreshView.OnRefreshListener
+  implements Runnable
 {
-  public adoa(NowLiveFragment paramNowLiveFragment) {}
+  public adoa(MusicFileViewer paramMusicFileViewer, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.x();
-    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.c();
+    MusicFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer).setText(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString, false, MusicFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer).getMeasuredWidth(), MusicFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer).getPaint(), 2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adoa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionPackage;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.ApolloTicker;
+import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class yyp
   implements Runnable
 {
-  public yyp(ApolloPanel paramApolloPanel, ApolloActionPackage paramApolloActionPackage) {}
+  public yyp(SpriteBackgroundManager paramSpriteBackgroundManager) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPanel", 2, "[checkRedTab] clear new action info");
+    ApolloTextureView localApolloTextureView = (ApolloTextureView)SpriteBackgroundManager.a(this.a).get();
+    if ((localApolloTextureView != null) && (localApolloTextureView.getRender() != null) && (localApolloTextureView.getRender().mApolloTicker != null)) {
+      ApolloRender.tickerResume(localApolloTextureView.getRender().mApolloTicker.ticker);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a != null))
-    {
-      ApolloDaoManager localApolloDaoManager = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.getManager(154);
-      if (localApolloDaoManager != null) {
-        localApolloDaoManager.a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPackage);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "mResumeTickerTask");
     }
   }
 }

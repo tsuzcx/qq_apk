@@ -1,56 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.channel.StoryMsfServlet;
-import com.tencent.common.app.AppInterface;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.NewIntent;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView.ScaleType;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class nbo
-  extends SimpleJob
+  implements View.OnTouchListener
 {
-  public nbo(QQStoryCmdHandler paramQQStoryCmdHandler, NetworkRequest paramNetworkRequest) {}
+  public nbo(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
+    if (PublicAccountImageCollectionMainActivity.a(this.a))
     {
-      paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a();
-      paramArrayOfObject = Integer.valueOf(QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).getAndIncrement());
-      AppInterface localAppInterface = QQStoryContext.a();
-      NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), StoryMsfServlet.class);
-      localNewIntent.putExtra("storySeq", paramArrayOfObject);
-      localNewIntent.putExtra("cmd", this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a());
-      localNewIntent.putExtra("data", paramJobContext);
-      localNewIntent.putExtra("start_time", System.currentTimeMillis());
-      if (this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a.contains(Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a())))
-      {
-        localNewIntent.putExtra("timeout", 10000L);
-        localNewIntent.putExtra("support_retry", true);
+      this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, "current operation is" + paramMotionEvent.getAction());
       }
-      QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).put(paramArrayOfObject, this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest);
-      localAppInterface.startServlet(localNewIntent);
-      return null;
+      if ((paramMotionEvent.getAction() == 1) && (this.a.b[0] < this.a.jdField_a_of_type_ArrayOfFloat[0]))
+      {
+        PublicAccountImageCollectionMainActivity.a(this.a).setImageMatrix(this.a.c);
+        PublicAccountImageCollectionMainActivity.a(this.a).setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      return true;
     }
-    catch (QQStoryCmdHandler.IllegalUinException paramJobContext)
-    {
-      Bosses.get().scheduleJobDelayed(new nbp(this, paramJobContext), 100);
-    }
-    return null;
-  }
-  
-  public int getJobType()
-  {
-    return 16;
+    this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 

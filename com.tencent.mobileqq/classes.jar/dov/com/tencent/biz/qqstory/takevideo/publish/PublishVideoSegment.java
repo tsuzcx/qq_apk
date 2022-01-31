@@ -25,6 +25,7 @@ import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
 import java.io.File;
 import java.util.TimeZone;
 
@@ -54,7 +55,7 @@ public class PublishVideoSegment
     localPublishVideoEntry.publishState = 1;
     localPublishVideoEntry.videoUploadTempDir = paramGenerateContext.jdField_b_of_type_JavaLangString;
     int i;
-    label708:
+    label724:
     Object localObject2;
     Object localObject1;
     if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
@@ -81,6 +82,10 @@ public class PublishVideoSegment
         localPublishVideoEntry.videoWidth = paramJobContext.a();
       }
       localPublishVideoEntry.videoCreateTime = paramJobContext.a.addedDate;
+      i = 1;
+      if (i != 0) {
+        VideoFilterTools.a().a(localPublishVideoEntry);
+      }
       SLog.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : edit source = %s", new Object[] { paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource });
       SLog.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : fake vid = %s", new Object[] { localPublishVideoEntry.fakeVid });
       SLog.d("Q.qqstory.publish.edit.PublishVideoSegment", "publish : mLocalRawVideoDir = %s", new Object[] { localPublishVideoEntry.mLocalRawVideoDir });
@@ -111,19 +116,19 @@ public class PublishVideoSegment
         localObject2 = (EditLocalVideoSource)paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
         paramJobContext = ((EditLocalVideoSource)localObject2).a();
         if (this.a.a() == 1) {
-          break label2067;
+          break label2097;
         }
         localObject1 = new File(paramJobContext);
-        localObject1 = AppConstants.aS + localPublishVideoEntry.fakeVid + File.separator + ((File)localObject1).getName();
+        localObject1 = AppConstants.aT + localPublishVideoEntry.fakeVid + File.separator + ((File)localObject1).getName();
         if (!com.tencent.mobileqq.utils.FileUtils.d(paramJobContext, (String)localObject1)) {
-          break label2067;
+          break label2097;
         }
         paramJobContext = (JobContext)localObject1;
       }
     }
-    label1935:
-    label2064:
-    label2067:
+    label1965:
+    label2094:
+    label2097:
     for (;;)
     {
       localPublishVideoEntry.mLocalRawVideoDir = paramJobContext;
@@ -136,9 +141,10 @@ public class PublishVideoSegment
       {
         localPublishVideoEntry.videoDuration = ((EditLocalVideoSource)localObject2).a.mDuration;
         localPublishVideoEntry.videoCreateTime = ((EditLocalVideoSource)localObject2).a.addedDate;
+        i = 1;
         break;
         i = 0;
-        break label708;
+        break label724;
         localPublishVideoEntry.videoWidth = ((EditLocalVideoSource)localObject2).a();
       }
       if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
@@ -151,28 +157,23 @@ public class PublishVideoSegment
         localPublishVideoEntry.recordFrames = paramJobContext.jdField_a_of_type_Int;
         localPublishVideoEntry.videoWidth = paramJobContext.a();
         localPublishVideoEntry.videoHeight = paramJobContext.b();
-        if (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode == 1)
-        {
+        if (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode == 1) {
           localPublishVideoEntry.videoDuration = (paramJobContext.jdField_a_of_type_Long / 2L);
-          break;
         }
-        if (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode == 2)
+        for (;;)
         {
-          localPublishVideoEntry.videoDuration = (paramJobContext.jdField_a_of_type_Long * 2L);
+          i = 1;
           break;
+          if (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode == 2) {
+            localPublishVideoEntry.videoDuration = (paramJobContext.jdField_a_of_type_Long * 2L);
+          } else if (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode == 4) {
+            localPublishVideoEntry.videoDuration = (paramJobContext.jdField_a_of_type_Long * 4L);
+          } else if (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode == 3) {
+            localPublishVideoEntry.videoDuration = (((float)paramJobContext.jdField_a_of_type_Long / 1.5F));
+          } else {
+            localPublishVideoEntry.videoDuration = paramJobContext.jdField_a_of_type_Long;
+          }
         }
-        if (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode == 4)
-        {
-          localPublishVideoEntry.videoDuration = (paramJobContext.jdField_a_of_type_Long * 4L);
-          break;
-        }
-        if (paramGenerateContext.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode == 3)
-        {
-          localPublishVideoEntry.videoDuration = (((float)paramJobContext.jdField_a_of_type_Long / 1.5F));
-          break;
-        }
-        localPublishVideoEntry.videoDuration = paramJobContext.jdField_a_of_type_Long;
-        break;
       }
       if (((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakePhotoSource)) || ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalPhotoSource)))
       {
@@ -187,7 +188,7 @@ public class PublishVideoSegment
         for (;;)
         {
           if (localPublishVideoEntry.thumbPath == null) {
-            break label1333;
+            break label1355;
           }
           localPublishVideoEntry.mLocalRawVideoDir = localPublishVideoEntry.thumbPath;
           if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakePhotoSource)) {
@@ -201,12 +202,13 @@ public class PublishVideoSegment
           localPublishVideoEntry.videoWidth = paramJobContext.outWidth;
           localPublishVideoEntry.videoHeight = paramJobContext.outHeight;
           localPublishVideoEntry.videoDuration = 5000L;
+          i = 0;
           break;
           localPublishVideoEntry.isLocalPublish = false;
         }
-        label1333:
+        label1355:
         if ((paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishGeneratePicArgs.jdField_b_of_type_Boolean) || (!paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishGeneratePicArgs.jdField_a_of_type_Boolean)) {
-          break label2064;
+          break label2094;
         }
         paramJobContext = paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishGeneratePicArgs.jdField_b_of_type_JavaLangString;
       }
@@ -216,11 +218,14 @@ public class PublishVideoSegment
         break;
         super.notifyError(new ErrorMessage(-1, "illegal argument " + paramGenerateContext.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource));
         return;
-        paramJobContext = new File(localPublishVideoEntry.thumbPath);
-        if ((!paramJobContext.exists()) || (!paramJobContext.isFile()) || (paramJobContext.length() <= 0L))
+        if (localPublishVideoEntry.thumbPath != null)
         {
-          super.notifyError(new ErrorMessage(-1, "thumbFile is invalid : " + paramJobContext));
-          return;
+          paramJobContext = new File(localPublishVideoEntry.thumbPath);
+          if ((!paramJobContext.exists()) || (!paramJobContext.isFile()) || (paramJobContext.length() <= 0L))
+          {
+            super.notifyError(new ErrorMessage(-1, "thumbFile is invalid : " + paramJobContext));
+            return;
+          }
         }
         if (localPublishVideoEntry.doodlePath != null)
         {
@@ -299,11 +304,11 @@ public class PublishVideoSegment
           {
             j = 1;
             if (!paramGenerateContext.d) {
-              break label2049;
+              break label2079;
             }
             k = 1;
             if (!localPublishVideoEntry.hwEncodeRecordVideo) {
-              break label2055;
+              break label2085;
             }
           }
           for (int m = 1;; m = 0)
@@ -314,7 +319,7 @@ public class PublishVideoSegment
             j = 0;
             break;
             k = 0;
-            break label1935;
+            break label1965;
           }
         }
       }

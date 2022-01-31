@@ -1,23 +1,32 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.apollo.view.ApolloGameHotChatController;
+import com.tencent.TMG.sdk.AVVideoCtrl.SwitchCameraCompleteCallback;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import org.json.JSONObject;
 
-public class yxj
-  implements Animation.AnimationListener
+class yxj
+  extends AVVideoCtrl.SwitchCameraCompleteCallback
 {
-  public yxj(ApolloGameHotChatController paramApolloGameHotChatController, TipsManager paramTipsManager) {}
+  yxj(yxi paramyxi) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onComplete(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
+    int i = 0;
+    if (paramInt2 == 0) {}
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", i);
+        localJSONObject.put("cameraPos", paramInt1);
+        localJSONObject.put("errCode", paramInt2);
+        CmGameUtil.a().callbackFromRequest(this.a.a, 0, "cs.audioRoom_camera_switch.local", localJSONObject.toString());
+        return;
+      }
+      catch (Exception localException) {}
+      i = -1;
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

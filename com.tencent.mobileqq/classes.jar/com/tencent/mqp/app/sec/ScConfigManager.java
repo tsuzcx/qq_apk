@@ -1,7 +1,7 @@
 package com.tencent.mqp.app.sec;
 
-import akzd;
-import akze;
+import algv;
+import algw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class ScConfigManager
 {
   private static final ScConfigManager jdField_a_of_type_ComTencentMqpAppSecScConfigManager = new ScConfigManager();
-  private static final akzd[] jdField_a_of_type_ArrayOfAkzd = { new akzd("SecCenterConfig", new SecCenterConfigParser()) };
+  private static final algv[] jdField_a_of_type_ArrayOfAlgv = { new algv("SecCenterConfig", new SecCenterConfigParser()) };
   private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private HashMap b = new HashMap();
   
@@ -24,14 +24,14 @@ public class ScConfigManager
   
   public static IConfigParser a(String paramString)
   {
-    akzd[] arrayOfakzd = jdField_a_of_type_ArrayOfAkzd;
-    int j = arrayOfakzd.length;
+    algv[] arrayOfalgv = jdField_a_of_type_ArrayOfAlgv;
+    int j = arrayOfalgv.length;
     int i = 0;
     while (i < j)
     {
-      akzd localakzd = arrayOfakzd[i];
-      if (localakzd.jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return localakzd.jdField_a_of_type_ComTencentMqpAppSecIConfigParser;
+      algv localalgv = arrayOfalgv[i];
+      if (localalgv.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localalgv.jdField_a_of_type_ComTencentMqpAppSecIConfigParser;
       }
       i += 1;
     }
@@ -293,7 +293,7 @@ public class ScConfigManager
   public void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
     if (a(paramString, false) == null) {
-      ThreadManager.executeOnFileThread(new akze(this, paramQQAppInterface, paramString, paramBoolean));
+      ThreadManager.executeOnFileThread(new algw(this, paramQQAppInterface, paramString, paramBoolean));
     }
   }
   

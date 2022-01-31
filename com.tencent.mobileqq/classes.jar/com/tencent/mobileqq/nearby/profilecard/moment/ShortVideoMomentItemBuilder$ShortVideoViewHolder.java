@@ -8,7 +8,7 @@ public class ShortVideoMomentItemBuilder$ShortVideoViewHolder
 {
   public ImageView f;
   public ImageView g;
-  public TextView j;
+  public TextView i;
   
   public ShortVideoMomentItemBuilder$ShortVideoViewHolder(ShortVideoMomentItemBuilder paramShortVideoMomentItemBuilder)
   {

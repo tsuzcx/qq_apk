@@ -1,66 +1,87 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.LikeResultItem;
+import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
+import com.tencent.mobileqq.profile.vote.VoteHelper;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class umr
-  extends VasQuickUpdateManager.CallBacker
+  extends NearbyCardObserver
 {
-  public umr(PokePanel paramPokePanel) {}
+  public umr(VisitorsActivity paramVisitorsActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    boolean bool3 = true;
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (paramLong == 21L)
+    if ((paramBoolean) && (TextUtils.equals("0", paramString)))
     {
-      if ((!paramString1.equals("poke.effectList")) || (paramInt1 != 0)) {
-        break label107;
+      if (this.a.jdField_a_of_type_Unk != null) {
+        this.a.jdField_a_of_type_Unk.notifyDataSetChanged();
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.PokePanel", 2, "download vas poke list, refresh now.");
+      if (this.a.b != null) {
+        this.a.b.notifyDataSetChanged();
       }
-      paramString1 = paramVasQuickUpdateManager.a;
-      ThreadManager.getUIHandler().post(new ums(this, paramString1));
-      paramString1 = "";
-      paramString2 = "";
-      bool1 = bool2;
     }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if (!paramString1.equals(this.a.app.getCurrentAccountUin())) {}
+    do
+    {
+      return;
+      if (paramInt2 == 1)
+      {
+        if (!paramBoolean)
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.b(paramString2, paramInt1, false);
+          return;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(paramString2, paramInt1, false);
+        return;
+      }
+    } while (paramInt2 != 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(Long.parseLong(paramString2));
+  }
+  
+  protected void a(boolean paramBoolean, ArrayList paramArrayList, int paramInt)
+  {
+    if ((paramBoolean) && (paramArrayList != null)) {}
     for (;;)
     {
-      if (!TextUtils.isEmpty(paramString2)) {
-        ThreadManager.getUIHandler().post(new umt(this, paramString2, paramString1, bool1));
-      }
-      return;
-      label107:
-      if (paramString1.startsWith("poke.item.effect."))
+      NearbyLikeLimitManager.LikeResultItem localLikeResultItem;
+      try
       {
-        paramString1 = paramString1.substring("poke.item.effect.".length(), paramString1.length());
-        if (paramInt1 != 0) {}
-        for (;;)
+        if (paramArrayList.size() > 0)
         {
-          paramString2 = "poke.item.effect.";
-          break;
-          bool1 = false;
+          paramArrayList = paramArrayList.iterator();
+          if (paramArrayList.hasNext())
+          {
+            localLikeResultItem = (NearbyLikeLimitManager.LikeResultItem)paramArrayList.next();
+            if (paramInt != 511) {
+              break label121;
+            }
+            if (localLikeResultItem.jdField_a_of_type_Int != 0) {
+              continue;
+            }
+            VoteHelper localVoteHelper = this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper;
+            String str = localLikeResultItem.jdField_a_of_type_Long + "";
+            int i = localLikeResultItem.b;
+            localVoteHelper.a(str, localLikeResultItem.c + i, false);
+            continue;
+          }
         }
+        return;
       }
-      if (paramString1.startsWith("poke.item.res."))
+      catch (Exception paramArrayList)
       {
-        paramString1 = paramString1.substring("poke.item.res.".length(), paramString1.length());
-        if (paramInt1 != 0) {}
-        for (bool1 = bool3;; bool1 = false)
-        {
-          paramString2 = "poke.item.res.";
-          break;
-        }
+        paramArrayList.printStackTrace();
       }
-      paramString1 = "";
-      paramString2 = "";
-      bool1 = bool2;
+      label121:
+      if (localLikeResultItem.jdField_a_of_type_Int == 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a(localLikeResultItem.jdField_a_of_type_Long);
+      }
     }
   }
 }

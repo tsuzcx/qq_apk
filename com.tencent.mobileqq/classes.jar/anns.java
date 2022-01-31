@@ -1,22 +1,68 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import dov.com.qq.im.capture.text.DynamicTextBuilder;
-import java.util.Arrays;
-import java.util.Map;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import cooperation.troop_homework.jsp.TroopHWFileDownloadManager;
+import cooperation.troop_homework.jsp.TroopHWFileDownloadManager.OnDownloadStateListener;
+import java.io.File;
+import java.util.HashMap;
 
-public final class anns
-  implements Runnable
+public class anns
+  implements ITMAssistantDownloadClientListener
 {
-  public anns(QQAppInterface paramQQAppInterface) {}
+  public anns(TroopHWFileDownloadManager paramTroopHWFileDownloadManager) {}
   
-  public void run()
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    String str = this.a.getCurrentNickname();
-    DynamicTextBuilder.a().put(Integer.valueOf(5), Arrays.asList(new String[] { "旅行的意义", "MY JOURNEY \n" + str }));
+    paramTMAssistantDownloadClient = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString);
+    if (paramTMAssistantDownloadClient != null) {
+      paramTMAssistantDownloadClient.a(paramString, paramLong1, paramLong2);
+    }
   }
+  
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    int i = 4;
+    paramTMAssistantDownloadClient = "";
+    if (paramInt1 == 4)
+    {
+      paramTMAssistantDownloadClient = (String)TroopHWFileDownloadManager.b(this.a).get(paramString1);
+      localObject = paramTMAssistantDownloadClient.substring(paramTMAssistantDownloadClient.lastIndexOf("/") + 1);
+      localObject = new File(TroopHWFileDownloadManager.a(this.a) + (String)localObject);
+      if (((File)localObject).exists()) {
+        ((File)localObject).renameTo(new File(paramTMAssistantDownloadClient));
+      }
+      TroopHWFileDownloadManager.b(this.a).remove(paramString1);
+    }
+    Object localObject = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString1);
+    if (localObject != null) {
+      switch (paramInt1)
+      {
+      default: 
+        i = 0;
+      }
+    }
+    for (;;)
+    {
+      ((TroopHWFileDownloadManager.OnDownloadStateListener)localObject).a(paramString1, i, paramInt2, paramString2, paramTMAssistantDownloadClient);
+      return;
+      i = 2;
+      continue;
+      i = 6;
+      continue;
+      i = 3;
+      TroopHWFileDownloadManager.a(this.a).remove(paramString1);
+      continue;
+      i = 1;
+      continue;
+      i = 5;
+      TroopHWFileDownloadManager.a(this.a).remove(paramString1);
+    }
+  }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anns
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.sveffects;
 
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
 import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
 
 public class SvEffectSdkInitor$QQAVFilterResource
@@ -9,9 +8,9 @@ public class SvEffectSdkInitor$QQAVFilterResource
   public String a()
   {
     if (SvEffectSdkInitor.a) {
-      return "assets://qaveffect/filter/";
+      return dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.b;
     }
-    return CaptureVideoFilterManager.b;
+    return com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.b;
   }
 }
 

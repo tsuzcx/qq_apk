@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akso;
+import alaf;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -34,10 +34,10 @@ public class AnimationTextView
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   public float b;
   private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  Runnable jdField_b_of_type_JavaLangRunnable = new akso(this);
+  Runnable jdField_b_of_type_JavaLangRunnable = new alaf(this);
   private boolean jdField_b_of_type_Boolean;
-  public boolean j = true;
-  public boolean k;
+  public boolean i = true;
+  public boolean j;
   
   public AnimationTextView(Context paramContext)
   {
@@ -56,7 +56,7 @@ public class AnimationTextView
   
   private void a()
   {
-    int i = 0;
+    int k = 0;
     float f1 = this.jdField_a_of_type_Float;
     float f3 = TextItemBuilder.f;
     float f2 = this.jdField_b_of_type_Float - TextItemBuilder.d;
@@ -74,9 +74,9 @@ public class AnimationTextView
           localObject = (QQText)localObject;
           localObject = (QQText.EmoticonSpan[])((QQText)localObject).getSpans(0, ((QQText)localObject).length(), QQText.EmoticonSpan.class);
           int n;
-          for (int m = 0; i < localObject.length; m = n)
+          for (int m = 0; k < localObject.length; m = n)
           {
-            QQText.SmallEmojiSpan localSmallEmojiSpan = localObject[i];
+            QQText.SmallEmojiSpan localSmallEmojiSpan = localObject[k];
             n = m;
             if ((localSmallEmojiSpan instanceof QQText.SmallEmojiSpan))
             {
@@ -106,7 +106,7 @@ public class AnimationTextView
                 }
               }
             }
-            i += 1;
+            k += 1;
           }
           if (m != 0)
           {
@@ -123,9 +123,9 @@ public class AnimationTextView
         }
         localObject = getResources();
         if (bool) {}
-        for (i = 2130845785;; i = 2130845621)
+        for (k = 2130845866;; k = 2130845702)
         {
-          localBubbleInfo.a(this, ((Resources)localObject).getDrawable(i));
+          localBubbleInfo.a(this, ((Resources)localObject).getDrawable(k));
           return;
         }
       }
@@ -144,16 +144,16 @@ public class AnimationTextView
       if ((arrayOfSpanWatcher != null) && (arrayOfSpanWatcher.length > 0))
       {
         int i1 = arrayOfSpanWatcher.length;
-        int i = 0;
+        int k = 0;
         for (;;)
         {
-          if (i < i1)
+          if (k < i1)
           {
-            SpanWatcher localSpanWatcher = arrayOfSpanWatcher[i];
+            SpanWatcher localSpanWatcher = arrayOfSpanWatcher[k];
             try
             {
               localSpanWatcher.onSpanChanged((Spannable)localObject, paramObject, m, n, m, n);
-              i += 1;
+              k += 1;
             }
             catch (Exception localException)
             {
@@ -173,14 +173,14 @@ public class AnimationTextView
   public static boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
   {
     if (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > 200L) {}
-    int i;
+    int k;
     int m;
     do
     {
       return false;
-      i = (int)paramMotionEvent2.getX() - (int)paramMotionEvent3.getX();
+      k = (int)paramMotionEvent2.getX() - (int)paramMotionEvent3.getX();
       m = (int)paramMotionEvent2.getY() - (int)paramMotionEvent3.getY();
-    } while (i * i + m * m >= 10000);
+    } while (k * k + m * m >= 10000);
     return true;
   }
   
@@ -196,14 +196,14 @@ public class AnimationTextView
       {
         this.jdField_a_of_type_Boolean = true;
         int m = localObject1.length;
-        int i = 0;
-        while (i < m)
+        int k = 0;
+        while (k < m)
         {
-          Object localObject2 = localObject1[i];
+          Object localObject2 = localObject1[k];
           if (localObject2.a() == paramDrawable) {
             a(localObject2);
           }
-          i += 1;
+          k += 1;
         }
         this.jdField_a_of_type_Boolean = false;
       }
@@ -214,13 +214,13 @@ public class AnimationTextView
   {
     if (this.jdField_b_of_type_Boolean)
     {
-      int i = getCurrentTextColor();
+      int k = getCurrentTextColor();
       getPaint().setStyle(Paint.Style.STROKE);
       getPaint().setStrokeWidth(3.0F);
       setTextColor(this.jdField_a_of_type_Int);
       super.onDraw(paramCanvas);
       getPaint().setStyle(Paint.Style.FILL);
-      setTextColor(i);
+      setTextColor(k);
       super.onDraw(paramCanvas);
       return;
     }
@@ -238,13 +238,13 @@ public class AnimationTextView
         this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
         if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) && (this.jdField_a_of_type_AndroidViewMotionEvent != null) && (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent)))
         {
-          this.j = false;
+          this.i = false;
           this.jdField_a_of_type_AndroidViewMotionEvent = null;
           this.jdField_b_of_type_AndroidViewMotionEvent = null;
           if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick != null)
           {
             this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView$OnDoubleClick.a(this);
-            this.k = true;
+            this.j = true;
             if (QLog.isColorLevel()) {
               QLog.d("AnimationTextView", 2, "DoubleClick invoked");
             }
@@ -257,7 +257,7 @@ public class AnimationTextView
         if ((this.jdField_b_of_type_AndroidViewMotionEvent != null) || (paramMotionEvent.getAction() != 0)) {
           break label192;
         }
-        this.j = true;
+        this.i = true;
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
         this.jdField_b_of_type_Float = paramMotionEvent.getY();
         a();
@@ -279,9 +279,9 @@ public class AnimationTextView
           return super.onTouchEvent(paramMotionEvent);
         }
         this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        if (this.k)
+        if (this.j)
         {
-          this.k = false;
+          this.j = false;
           this.jdField_b_of_type_AndroidViewMotionEvent = null;
         }
         postDelayed(this.jdField_b_of_type_JavaLangRunnable, 200L);
@@ -304,7 +304,7 @@ public class AnimationTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    int i = 0;
+    int k = 0;
     CharSequence localCharSequence = getText();
     super.setText(paramCharSequence, paramBufferType);
     if ((localCharSequence != paramCharSequence) && ((getText() instanceof Spannable)))
@@ -312,13 +312,13 @@ public class AnimationTextView
       paramCharSequence = (Spannable)getText();
       paramCharSequence = (QQText.EmoticonSpan[])paramCharSequence.getSpans(0, paramCharSequence.length(), QQText.EmoticonSpan.class);
       paramBufferType = new Drawable[paramCharSequence.length];
-      while (i < paramCharSequence.length)
+      while (k < paramCharSequence.length)
       {
-        paramBufferType[i] = paramCharSequence[i].a();
-        if (paramBufferType[i] != null) {
-          paramBufferType[i].setCallback(this);
+        paramBufferType[k] = paramCharSequence[k].a();
+        if (paramBufferType[k] != null) {
+          paramBufferType[k].setCallback(this);
         }
-        i += 1;
+        k += 1;
       }
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramBufferType;
     }
@@ -331,7 +331,7 @@ public class AnimationTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationTextView
  * JD-Core Version:    0.7.0.1
  */

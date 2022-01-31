@@ -1,13 +1,28 @@
-import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.utils.AssertUtils;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.ArithResult;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithResultView;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
+import org.json.JSONException;
 
-public final class ajnp
-  implements Runnable
+public class ajnp
+  implements View.OnClickListener
 {
-  public ajnp(HWTroopUtils.OnHomeworkTroopIdentityCheckListener paramOnHomeworkTroopIdentityCheckListener, int paramInt) {}
+  public ajnp(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHWTroopUtils$OnHomeworkTroopIdentityCheckListener.a(this.jdField_a_of_type_Int);
+    try
+    {
+      CheckArithHWResultFragment.a(this.a, CheckArithHWResultFragment.a(this.a).a(), CheckArithHWResultFragment.a(this.a).a());
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      paramView.printStackTrace();
+      AssertUtils.a("QQ.Troop.homework.CheckArithHWResultFragment//onClick toJSON error:" + paramView, new Object[0]);
+    }
   }
 }
 

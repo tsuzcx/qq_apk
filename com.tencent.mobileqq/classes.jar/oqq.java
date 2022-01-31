@@ -1,14 +1,22 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.view.segment.SegmentManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnUndoViewClickListener;
 
 public class oqq
-  extends DataSetObserver
+  implements View.OnClickListener
 {
-  public oqq(SegmentManager paramSegmentManager) {}
+  public oqq(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public void onChanged()
+  public void onClick(View paramView)
   {
-    SegmentManager.a(this.a, true);
+    SLog.b("SelectColorLayout", "onUndoClick: undoTypeEnable=" + this.a.jdField_a_of_type_Boolean);
+    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
+    while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnUndoViewClickListener == null)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnUndoViewClickListener.a();
   }
 }
 

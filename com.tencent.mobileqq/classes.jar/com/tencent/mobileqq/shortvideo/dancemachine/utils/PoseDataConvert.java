@@ -10,14 +10,15 @@ public class PoseDataConvert
   static
   {
     int[] arrayOfInt1 = { 14, 15 };
-    int[] arrayOfInt2 = { 16, 17 };
-    int[] arrayOfInt3 = { 2, 5 };
-    int[] arrayOfInt4 = { 3, 6 };
-    int[] arrayOfInt5 = { 4, 7 };
+    int[] arrayOfInt2 = { 2, 5 };
+    int[] arrayOfInt3 = { 3, 6 };
+    int[] arrayOfInt4 = { 4, 7 };
+    int[] arrayOfInt5 = { 10, 13 };
     int[] arrayOfInt6 = { 34, 35 };
-    int[] arrayOfInt7 = { 27, 30 };
-    int[] arrayOfInt8 = { 28, 31 };
-    a = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, { 8, 11 }, { 9, 12 }, { 10, 13 }, { 32, 33 }, arrayOfInt6, { 20, 23 }, { 21, 24 }, { 22, 25 }, { 26, 29 }, arrayOfInt7, arrayOfInt8 };
+    int[] arrayOfInt7 = { 20, 23 };
+    int[] arrayOfInt8 = { 22, 25 };
+    int[] arrayOfInt9 = { 26, 29 };
+    a = new int[][] { arrayOfInt1, { 16, 17 }, arrayOfInt2, arrayOfInt3, arrayOfInt4, { 8, 11 }, { 9, 12 }, arrayOfInt5, { 32, 33 }, arrayOfInt6, arrayOfInt7, { 21, 24 }, arrayOfInt8, arrayOfInt9, { 27, 30 }, { 28, 31 } };
   }
   
   public static void a(List paramList)

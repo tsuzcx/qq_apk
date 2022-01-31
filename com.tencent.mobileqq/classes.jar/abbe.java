@@ -1,27 +1,17 @@
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
 
 public class abbe
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public abbe(ARMapActivity paramARMapActivity) {}
+  public abbe(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, String paramString, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    if (ARMapActivity.b(this.a) != paramValueAnimator.intValue())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapActivity", 2, String.format("updateProgress mCurProgress=%s", new Object[] { Integer.valueOf(ARMapActivity.b(this.a)) }));
-      }
-      ARMapActivity.b(this.a, paramValueAnimator.intValue());
-      if (ARMapActivity.a(this.a) != null) {
-        ARMapActivity.a(this.a).setProgress(ARMapActivity.b(this.a));
-      }
-    }
+    String str = ArkAppCenter.b(this.jdField_a_of_type_JavaLangString);
+    ArkAppCenter.a().postToMainThread(new abbf(this, str));
   }
 }
 

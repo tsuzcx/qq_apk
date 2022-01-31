@@ -1,49 +1,18 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchTask;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class zrx
-  implements Comparator
+  implements Runnable
 {
-  public zrx(FullMessageSearchTask paramFullMessageSearchTask) {}
+  public zrx(QQAppInterface paramQQAppInterface, StringBuilder paramStringBuilder) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public void run()
   {
-    int j = -1;
-    paramEntity1 = (RecentUser)paramEntity1;
-    paramEntity2 = (RecentUser)paramEntity2;
-    long l1 = Math.max(paramEntity1.lastmsgtime, paramEntity1.lastmsgdrafttime);
-    long l2 = Math.max(paramEntity2.lastmsgtime, paramEntity2.lastmsgdrafttime);
-    int i;
-    if (l1 < l2)
-    {
-      i = 1;
-      if (paramEntity1.type != paramEntity2.type) {
-        break label80;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("QQAppInterface", 2, "isCallTabShow needupdate,result=" + this.jdField_a_of_type_JavaLangStringBuilder);
     }
-    label80:
-    do
-    {
-      do
-      {
-        return i;
-        if (l1 == l2)
-        {
-          i = 0;
-          break;
-        }
-        i = -1;
-        break;
-        i = j;
-      } while (paramEntity1.type == 0);
-      if (paramEntity2.type == 0) {
-        return 1;
-      }
-      i = j;
-    } while (paramEntity1.type - paramEntity2.type > 0);
-    return 1;
+    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null, "qqsetting_calltab_show_key", this.jdField_a_of_type_JavaLangStringBuilder.toString());
   }
 }
 

@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager;
 
 public class via
-  implements DialogInterface.OnClickListener
 {
-  public via(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public via(PokeItemAnimationManager paramPokeItemAnimationManager)
+  {
+    this.jdField_a_of_type_Long = -1L;
+  }
 }
 
 

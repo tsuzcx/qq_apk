@@ -1,55 +1,50 @@
-import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
-import com.tencent.mobileqq.mqsafeedit.MD5;
-import com.tencent.mobileqq.transfile.VasExtensionDownloader;
+import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
+import com.tencent.mobileqq.teamwork.spread.BaseTimAIOTipsProcessor.ListResult;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.Iterator;
+import java.util.List;
 
-public class aisa
-  implements Runnable
+class aisa
+  implements BaseTimAIOTipsProcessor.ListResult
 {
-  public aisa(VasExtensionDownloader paramVasExtensionDownloader, FavoriteEmoticonInfo paramFavoriteEmoticonInfo) {}
+  aisa(airz paramairz, String paramString) {}
   
-  public void run()
+  public void a(List paramList)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof AppInterface)) {}
-    CustomEmotionData localCustomEmotionData;
+    if ((paramList == null) || (paramList.size() == 0)) {
+      if (QLog.isDebugVersion())
+      {
+        if (paramList != null) {
+          break label34;
+        }
+        paramList = "lst is null";
+        QLog.i("AIOMessageSpreadManager", 1, paramList);
+      }
+    }
+    label34:
+    float f1;
+    float f2;
     do
     {
       return;
-      localObject = (FavroamingDBManager)((AppInterface)localObject).getManager(148);
-      localCustomEmotionData = ((FavroamingDBManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.e);
-    } while ((localCustomEmotionData == null) || (!new File(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d).exists()));
-    if ("needDownload".equals(localCustomEmotionData.RomaingType)) {
-      localCustomEmotionData.RomaingType = "isUpdate";
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData romaing type  isUpdate, path: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d);
-      }
-      if ((TextUtils.isEmpty(localCustomEmotionData.md5)) && (!TextUtils.isEmpty(localCustomEmotionData.emoPath)))
+      while (!paramList.hasNext())
       {
-        localCustomEmotionData.md5 = HexUtil.bytes2HexStr(MD5.getFileMd5(localCustomEmotionData.emoPath));
-        if (QLog.isColorLevel()) {
-          QLog.i("VasExtensionDownloader", 2, "update CustomEmotionData md5 , path: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmoticonInfo.d);
-        }
-      }
-      if ("needDel".equals(localCustomEmotionData.RomaingType)) {
+        paramList = "lst.size() = 0";
         break;
+        f1 = AIOMessageSpreadManager.a(this.jdField_a_of_type_Airz.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a();
+        paramList = paramList.iterator();
       }
-      ((FavroamingDBManager)localObject).b(localCustomEmotionData);
-      return;
-      if ("overflow".equals(localCustomEmotionData.RomaingType)) {
-        localCustomEmotionData.RomaingType = "overflow_downloaded";
+      str = (String)paramList.next();
+      f2 = AIOMessageSpreadManager.a(this.jdField_a_of_type_Airz.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_JavaLangString, str);
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOMessageSpreadManager", 1, "file[" + this.jdField_a_of_type_JavaLangString + "] and [" + str + "], precentage[" + f2 + "]");
       }
-    }
+    } while (f2 - f1 <= 0.0F);
+    String str = AIOMessageSpreadManager.a(this.jdField_a_of_type_Airz.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).b();
+    paramList = AIOMessageSpreadManager.a(this.jdField_a_of_type_Airz.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).c();
+    str = str + "。" + paramList;
+    AIOMessageSpreadManager.a(this.jdField_a_of_type_Airz.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_Airz.jdField_a_of_type_ComTencentMobileqqDataChatMessage, str, paramList, "precent", null);
   }
 }
 

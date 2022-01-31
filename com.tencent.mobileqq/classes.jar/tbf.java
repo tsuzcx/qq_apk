@@ -1,20 +1,23 @@
-import com.tencent.biz.now.NowLiveManager;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.KplCard;
+import com.tencent.qphone.base.util.QLog;
 
 public class tbf
-  extends GetRedPointExObserver
+  extends CardObserver
 {
-  public tbf(MainFragment paramMainFragment) {}
+  public tbf(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  protected void a(Object paramObject)
+  protected void f(boolean paramBoolean, Object paramObject)
   {
-    paramObject = MainFragment.a(this.a).a();
-    if ((paramObject == null) || (!paramObject.a)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
     }
-    MainFragment.a(this.a);
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
+    {
+      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
+      this.a.a = ((KplCard)paramObject);
+    }
   }
 }
 

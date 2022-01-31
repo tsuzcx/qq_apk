@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicInteger;
-import ype;
+import yvk;
 
 public class ApolloFragmentManager
 {
@@ -71,6 +71,9 @@ public class ApolloFragmentManager
   
   public ApolloFragment a()
   {
+    if ((jdField_a_of_type_JavaUtilStack == null) || (jdField_a_of_type_JavaUtilStack.isEmpty())) {
+      return null;
+    }
     return (ApolloFragment)jdField_a_of_type_JavaUtilStack.peek();
   }
   
@@ -119,7 +122,7 @@ public class ApolloFragmentManager
   {
     // Byte code:
     //   0: getstatic 24	com/tencent/mobileqq/apollo/game/ApolloFragmentManager:b	Ljava/util/Stack;
-    //   3: invokevirtual 154	java/util/Stack:empty	()Z
+    //   3: invokevirtual 157	java/util/Stack:empty	()Z
     //   6: ifeq +34 -> 40
     //   9: aconst_null
     //   10: astore_3
@@ -127,76 +130,76 @@ public class ApolloFragmentManager
     //   12: ifnull +41 -> 53
     //   15: getstatic 22	com/tencent/mobileqq/apollo/game/ApolloFragmentManager:jdField_a_of_type_JavaUtilStack	Ljava/util/Stack;
     //   18: aload_3
-    //   19: invokevirtual 116	java/util/Stack:push	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   19: invokevirtual 119	java/util/Stack:push	(Ljava/lang/Object;)Ljava/lang/Object;
     //   22: pop
     //   23: aload_1
     //   24: ifnull +11 -> 35
     //   27: aload_3
     //   28: aload_1
-    //   29: invokevirtual 131	android/content/Intent:getExtras	()Landroid/os/Bundle;
-    //   32: invokevirtual 133	com/tencent/mobileqq/apollo/game/ApolloFragment:b	(Landroid/os/Bundle;)V
+    //   29: invokevirtual 134	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   32: invokevirtual 136	com/tencent/mobileqq/apollo/game/ApolloFragment:b	(Landroid/os/Bundle;)V
     //   35: aload_0
-    //   36: invokevirtual 135	com/tencent/mobileqq/apollo/game/ApolloFragmentManager:b	()V
+    //   36: invokevirtual 138	com/tencent/mobileqq/apollo/game/ApolloFragmentManager:b	()V
     //   39: return
     //   40: getstatic 24	com/tencent/mobileqq/apollo/game/ApolloFragmentManager:b	Ljava/util/Stack;
-    //   43: invokevirtual 109	java/util/Stack:pop	()Ljava/lang/Object;
-    //   46: checkcast 93	com/tencent/mobileqq/apollo/game/ApolloFragment
+    //   43: invokevirtual 112	java/util/Stack:pop	()Ljava/lang/Object;
+    //   46: checkcast 96	com/tencent/mobileqq/apollo/game/ApolloFragment
     //   49: astore_3
     //   50: goto -39 -> 11
     //   53: ldc 2
     //   55: monitorenter
-    //   56: new 118	android/os/Bundle
+    //   56: new 121	android/os/Bundle
     //   59: dup
-    //   60: invokespecial 119	android/os/Bundle:<init>	()V
+    //   60: invokespecial 122	android/os/Bundle:<init>	()V
     //   63: astore_3
     //   64: aload_1
     //   65: ifnull +90 -> 155
     //   68: aload_1
-    //   69: ldc 156
+    //   69: ldc 159
     //   71: iconst_1
-    //   72: invokevirtual 160	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   72: invokevirtual 163	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   75: pop
     //   76: aload_3
-    //   77: ldc 121
+    //   77: ldc 124
     //   79: aload_1
-    //   80: invokevirtual 125	android/os/Bundle:putParcelable	(Ljava/lang/String;Landroid/os/Parcelable;)V
+    //   80: invokevirtual 128	android/os/Bundle:putParcelable	(Ljava/lang/String;Landroid/os/Parcelable;)V
     //   83: aload_2
-    //   84: invokevirtual 165	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   87: checkcast 93	com/tencent/mobileqq/apollo/game/ApolloFragment
+    //   84: invokevirtual 168	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   87: checkcast 96	com/tencent/mobileqq/apollo/game/ApolloFragment
     //   90: astore_2
     //   91: aload_1
-    //   92: ldc 167
+    //   92: ldc 170
     //   94: getstatic 31	com/tencent/mobileqq/apollo/game/ApolloFragmentManager:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   97: invokevirtual 170	java/util/concurrent/atomic/AtomicInteger:getAndIncrement	()I
-    //   100: invokevirtual 173	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   97: invokevirtual 173	java/util/concurrent/atomic/AtomicInteger:getAndIncrement	()I
+    //   100: invokevirtual 176	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   103: pop
     //   104: aload_2
     //   105: aload_3
-    //   106: invokevirtual 176	com/tencent/mobileqq/apollo/game/ApolloFragment:setArguments	(Landroid/os/Bundle;)V
+    //   106: invokevirtual 179	com/tencent/mobileqq/apollo/game/ApolloFragment:setArguments	(Landroid/os/Bundle;)V
     //   109: getstatic 22	com/tencent/mobileqq/apollo/game/ApolloFragmentManager:jdField_a_of_type_JavaUtilStack	Ljava/util/Stack;
     //   112: aload_2
-    //   113: invokevirtual 116	java/util/Stack:push	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   113: invokevirtual 119	java/util/Stack:push	(Ljava/lang/Object;)Ljava/lang/Object;
     //   116: pop
     //   117: aload_0
     //   118: getfield 36	com/tencent/mobileqq/apollo/game/ApolloFragmentManager:jdField_a_of_type_AndroidSupportV4AppFragmentActivity	Landroid/support/v4/app/FragmentActivity;
-    //   121: invokevirtual 182	android/support/v4/app/FragmentActivity:getIntent	()Landroid/content/Intent;
+    //   121: invokevirtual 185	android/support/v4/app/FragmentActivity:getIntent	()Landroid/content/Intent;
     //   124: astore_3
     //   125: aload_3
     //   126: aload_1
-    //   127: invokevirtual 186	android/content/Intent:putExtras	(Landroid/content/Intent;)Landroid/content/Intent;
+    //   127: invokevirtual 189	android/content/Intent:putExtras	(Landroid/content/Intent;)Landroid/content/Intent;
     //   130: pop
     //   131: aload_2
     //   132: aload_1
-    //   133: invokevirtual 131	android/content/Intent:getExtras	()Landroid/os/Bundle;
-    //   136: invokevirtual 133	com/tencent/mobileqq/apollo/game/ApolloFragment:b	(Landroid/os/Bundle;)V
+    //   133: invokevirtual 134	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   136: invokevirtual 136	com/tencent/mobileqq/apollo/game/ApolloFragment:b	(Landroid/os/Bundle;)V
     //   139: aload_2
     //   140: aload_1
-    //   141: invokevirtual 131	android/content/Intent:getExtras	()Landroid/os/Bundle;
-    //   144: invokevirtual 189	com/tencent/mobileqq/apollo/game/ApolloFragment:c	(Landroid/os/Bundle;)V
+    //   141: invokevirtual 134	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   144: invokevirtual 192	com/tencent/mobileqq/apollo/game/ApolloFragment:c	(Landroid/os/Bundle;)V
     //   147: aload_0
     //   148: getfield 36	com/tencent/mobileqq/apollo/game/ApolloFragmentManager:jdField_a_of_type_AndroidSupportV4AppFragmentActivity	Landroid/support/v4/app/FragmentActivity;
     //   151: aload_3
-    //   152: invokevirtual 192	android/support/v4/app/FragmentActivity:setIntent	(Landroid/content/Intent;)V
+    //   152: invokevirtual 195	android/support/v4/app/FragmentActivity:setIntent	(Landroid/content/Intent;)V
     //   155: ldc 2
     //   157: monitorexit
     //   158: goto -123 -> 35
@@ -206,12 +209,12 @@ public class ApolloFragmentManager
     //   165: aload_1
     //   166: athrow
     //   167: astore_1
-    //   168: ldc 142
+    //   168: ldc 145
     //   170: iconst_1
     //   171: aload_1
     //   172: iconst_0
     //   173: anewarray 4	java/lang/Object
-    //   176: invokestatic 196	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   176: invokestatic 199	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   179: goto -24 -> 155
     // Local variable table:
     //   start	length	slot	name	signature
@@ -264,7 +267,9 @@ public class ApolloFragmentManager
       ApolloFragment localApolloFragment = (ApolloFragment)jdField_a_of_type_JavaUtilStack.peek();
       if (localApolloFragment != null)
       {
-        QLog.e("ApolloFragmentManager", 1, "[notifyViewChange] " + localApolloFragment.b() + " " + localApolloFragment.a());
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloFragmentManager", 2, "[notifyViewChange] " + localApolloFragment.b() + " " + localApolloFragment.a());
+        }
         if (!localApolloFragment.isAdded()) {
           this.jdField_a_of_type_AndroidSupportV4AppFragmentManager.beginTransaction().add(this.jdField_a_of_type_Int, localApolloFragment).commit();
         }
@@ -273,7 +278,7 @@ public class ApolloFragmentManager
         b(b);
         b(jdField_a_of_type_JavaUtilStack);
         if ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) && ((this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof ApolloGameActivity))) {
-          this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new ype(this, localApolloFragment));
+          this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new yvk(this, localApolloFragment));
         }
       }
     }

@@ -1,11 +1,16 @@
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQNoResultBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class uze
-  implements ActionSheet.OnDismissListener
+public class uze
+  implements Runnable
 {
-  uze(uzb paramuzb) {}
+  public uze(ArkAppBabyQNoResultBuilder paramArkAppBabyQNoResultBuilder, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage) {}
   
-  public void onDismiss() {}
+  public void run()
+  {
+    ArkAppBabyQNoResultBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo);
+  }
 }
 
 

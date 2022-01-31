@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.LogTag;
 import com.tencent.mobileqq.widget.QQToast;
@@ -15,14 +16,15 @@ import cooperation.qzone.util.QZLog;
 import cooperation.weiyun.utils.PreferenceUtils;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import wxw;
-import wxz;
-import wya;
+import xdm;
+import xdp;
+import xdq;
 
 public class PhotoListActivity$QueryPhotoTask
   extends AsyncTask
@@ -72,61 +74,74 @@ public class PhotoListActivity$QueryPhotoTask
         }
         paramVarArgs = AlbumUtil.a(this.a, 1000, paramVarArgs, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter);
       }
+      else if (this.a.P)
+      {
+        paramVarArgs = AlbumUtil.a(this.a, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString, i, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter, 0, 240, true, null, false, this.a.jdField_e_of_type_Long);
+      }
       else
       {
         paramVarArgs = AlbumUtil.b(this.a, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString, i, this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter, this.a.jdField_e_of_type_Long);
       }
     }
-    if ((this.a.jdField_c_of_type_JavaUtilArrayList != null) && (this.a.jdField_c_of_type_JavaUtilArrayList.size() != 0))
+    if (((PhotoListActivity.d(this.a)) || (PhotoListActivity.e(this.a))) && (QzoneConfig.getInstance().getConfig("PhotoAlbum", "paranoramaOpenCheck", 1) != 0))
     {
+      PhotoListActivity.a(this.a, paramVarArgs);
+      if ((this.a.jdField_c_of_type_JavaUtilArrayList == null) || (this.a.jdField_c_of_type_JavaUtilArrayList.size() == 0)) {
+        break label660;
+      }
       i = 0;
-      if (i < this.a.jdField_c_of_type_JavaUtilArrayList.size())
-      {
-        localObject1 = (String)this.a.jdField_c_of_type_JavaUtilArrayList.get(i);
-        if (TextUtils.isEmpty((CharSequence)localObject1))
+      label456:
+      if (i >= this.a.jdField_c_of_type_JavaUtilArrayList.size()) {
+        break label660;
+      }
+      localObject1 = (String)this.a.jdField_c_of_type_JavaUtilArrayList.get(i);
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label521;
+      }
+      QZLog.e("PhotoListActivity:QueryPhotoTask", "doInBackground: filter photo error, tempPath null");
+      j = i;
+    }
+    for (;;)
+    {
+      i = j + 1;
+      break label456;
+      QLog.i("PhotoListActivity", 2, "@panoramatest isnot fromqzone");
+      break;
+      label521:
+      j = i;
+      if (!new File((String)localObject1).exists()) {
+        if ((((String)localObject1).startsWith("http")) && (this.a.jdField_b_of_type_JavaUtilHashMap != null))
         {
-          QZLog.e("PhotoListActivity:QueryPhotoTask", "doInBackground: filter photo error, tempPath null");
           j = i;
+          if (this.a.jdField_b_of_type_JavaUtilHashMap.containsKey(localObject1)) {}
         }
-        for (;;)
+        else
         {
-          i = j + 1;
-          break;
-          j = i;
-          if (!new File((String)localObject1).exists()) {
-            if ((((String)localObject1).startsWith("http")) && (this.a.jdField_b_of_type_JavaUtilHashMap != null))
+          this.a.jdField_c_of_type_JavaUtilArrayList.remove(i);
+          i -= 1;
+          if (!PhotoListActivity.e(this.a))
+          {
+            j = i;
+            if (!PhotoListActivity.d(this.a)) {}
+          }
+          else
+          {
+            j = i;
+            if (this.a.jdField_c_of_type_JavaUtilHashMap != null)
             {
               j = i;
-              if (this.a.jdField_b_of_type_JavaUtilHashMap.containsKey(localObject1)) {}
-            }
-            else
-            {
-              this.a.jdField_c_of_type_JavaUtilArrayList.remove(i);
-              i -= 1;
-              if (!PhotoListActivity.d(this.a))
+              if (this.a.jdField_c_of_type_JavaUtilHashMap.containsKey(localObject1))
               {
+                this.a.jdField_c_of_type_JavaUtilHashMap.remove(localObject1);
                 j = i;
-                if (!PhotoListActivity.e(this.a)) {}
-              }
-              else
-              {
-                j = i;
-                if (this.a.jdField_c_of_type_JavaUtilHashMap != null)
-                {
-                  j = i;
-                  if (this.a.jdField_c_of_type_JavaUtilHashMap.containsKey(localObject1))
-                  {
-                    this.a.jdField_c_of_type_JavaUtilHashMap.remove(localObject1);
-                    j = i;
-                  }
-                }
               }
             }
           }
         }
       }
     }
-    if (this.a.J)
+    label660:
+    if (this.a.L)
     {
       i = paramVarArgs.size() - 1;
       while (i >= 0)
@@ -168,12 +183,24 @@ public class PhotoListActivity$QueryPhotoTask
         }
       }
     }
-    if (this.a.L)
+    if (this.a.N)
     {
       i = paramVarArgs.size() - 1;
       while (i >= 0)
       {
         if (!((LocalMediaInfo)paramVarArgs.get(i)).path.endsWith(".mp4")) {
+          paramVarArgs.remove(i);
+        }
+        i -= 1;
+      }
+    }
+    if (this.a.P)
+    {
+      i = paramVarArgs.size() - 1;
+      while (i >= 0)
+      {
+        localObject1 = (LocalMediaInfo)paramVarArgs.get(i);
+        if (!QQStoryFlowCallback.b(this.a, (LocalMediaInfo)localObject1)) {
           paramVarArgs.remove(i);
         }
         i -= 1;
@@ -202,175 +229,214 @@ public class PhotoListActivity$QueryPhotoTask
         }
         paramVarArgs.addAll(0, PhotoListActivity.a().values());
       }
-      int n = paramVarArgs.size();
-      localObject1 = new ArrayList(n);
-      i = 0;
-      int m = 0;
-      if (m < paramVarArgs.size())
+      if ((this.a.D) && (this.a.jdField_b_of_type_JavaLangString.equals("$VideoAlbumId")))
       {
-        localObject2 = (LocalMediaInfo)paramVarArgs.get(m);
-        if (((LocalMediaInfo)localObject2).path == null) {
-          j = i;
-        }
-        for (;;)
+        localObject1 = paramVarArgs.iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          m += 1;
-          i = j;
-          break;
-          int i1 = AlbumUtil.a((LocalMediaInfo)localObject2);
-          if (((PhotoListActivity.d(this.a)) || (PhotoListActivity.e(this.a)) || (PhotoListActivity.f(this.a))) && (this.a.I))
+          localObject2 = (LocalMediaInfo)((Iterator)localObject1).next();
+          if ((localObject2 != null) && (!TextUtils.isEmpty(((LocalMediaInfo)localObject2).path)))
           {
-            ((LocalMediaInfo)localObject2).position = Integer.valueOf(m);
-            ((ArrayList)localObject1).add(((LocalMediaInfo)localObject2).path);
-            if (this.a.jdField_c_of_type_JavaUtilArrayList.contains(((LocalMediaInfo)localObject2).path))
-            {
-              ((LocalMediaInfo)localObject2).selectStatus = 1;
-              if (!this.a.d.contains(((LocalMediaInfo)localObject2).position)) {
-                this.a.d.add(((LocalMediaInfo)localObject2).position);
-              }
-              if ((this.a.I) && (i1 == 1))
-              {
-                localObject3 = this.a;
-                ((PhotoListActivity)localObject3).p += 1;
-                if (this.a.p == 1) {
-                  this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)localObject2);
-                }
-              }
-              if ((this.a.C) && (this.a.jdField_c_of_type_JavaUtilHashMap != null) && (!this.a.jdField_c_of_type_JavaUtilHashMap.containsKey(((LocalMediaInfo)localObject2).path))) {
-                this.a.jdField_c_of_type_JavaUtilHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
-              }
-              j = i;
-              if (TextUtils.isEmpty(((LocalMediaInfo)localObject2).mMimeType)) {
-                continue;
-              }
-              j = i;
-              if (!"image/gif".equals(((LocalMediaInfo)localObject2).mMimeType)) {
-                continue;
-              }
-              localObject2 = this.a;
-              ((PhotoListActivity)localObject2).q += 1;
-              j = i;
+            PhotoListActivity.a().remove(((LocalMediaInfo)localObject2).path);
+            if (this.a.jdField_c_of_type_JavaUtilHashMap != null) {
+              this.a.jdField_c_of_type_JavaUtilHashMap.remove(((LocalMediaInfo)localObject2).path);
             }
           }
-          else
+        }
+        localObject1 = PhotoListActivity.a().values();
+        if (localObject1 != null)
+        {
+          localObject1 = ((Collection)localObject1).iterator();
+          i = 0;
+          if (((Iterator)localObject1).hasNext())
           {
-            if (i1 == 0)
+            localObject2 = (LocalMediaInfo)((Iterator)localObject1).next();
+            if ((localObject2 == null) || (!"video/mp4".equals(((LocalMediaInfo)localObject2).mMimeType))) {
+              break label2269;
+            }
+            paramVarArgs.add(i, localObject2);
+            i += 1;
+          }
+        }
+      }
+      label2206:
+      label2223:
+      label2269:
+      for (;;)
+      {
+        break;
+        int n = paramVarArgs.size();
+        localObject1 = new ArrayList(n);
+        i = 0;
+        int m = 0;
+        if (m < paramVarArgs.size())
+        {
+          localObject2 = (LocalMediaInfo)paramVarArgs.get(m);
+          if (((LocalMediaInfo)localObject2).path == null) {
+            j = i;
+          }
+          for (;;)
+          {
+            m += 1;
+            i = j;
+            break;
+            int i1 = AlbumUtil.a((LocalMediaInfo)localObject2);
+            if (((PhotoListActivity.e(this.a)) || (PhotoListActivity.d(this.a)) || (PhotoListActivity.f(this.a))) && (this.a.K))
             {
+              ((LocalMediaInfo)localObject2).position = Integer.valueOf(m);
               ((ArrayList)localObject1).add(((LocalMediaInfo)localObject2).path);
-              j = i;
-            }
-            for (;;)
-            {
-              ((LocalMediaInfo)localObject2).position = Integer.valueOf(m - j);
-              i = j;
-              break;
-              j = i;
-              if (i1 == 1) {
-                j = i + 1;
+              if (this.a.jdField_c_of_type_JavaUtilArrayList.contains(((LocalMediaInfo)localObject2).path))
+              {
+                ((LocalMediaInfo)localObject2).selectStatus = 1;
+                if (!this.a.d.contains(((LocalMediaInfo)localObject2).position)) {
+                  this.a.d.add(((LocalMediaInfo)localObject2).position);
+                }
+                if ((this.a.K) && (i1 == 1))
+                {
+                  localObject3 = this.a;
+                  ((PhotoListActivity)localObject3).p += 1;
+                  if (this.a.p == 1) {
+                    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)localObject2);
+                  }
+                }
+                if ((this.a.C) && (this.a.jdField_c_of_type_JavaUtilHashMap != null) && (!this.a.jdField_c_of_type_JavaUtilHashMap.containsKey(((LocalMediaInfo)localObject2).path))) {
+                  this.a.jdField_c_of_type_JavaUtilHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
+                }
+                j = i;
+                if (TextUtils.isEmpty(((LocalMediaInfo)localObject2).mMimeType)) {
+                  continue;
+                }
+                j = i;
+                if (!"image/gif".equals(((LocalMediaInfo)localObject2).mMimeType)) {
+                  continue;
+                }
+                localObject2 = this.a;
+                ((PhotoListActivity)localObject2).q += 1;
+                j = i;
               }
-            }
-          }
-          if ((this.a.jdField_c_of_type_JavaUtilArrayList.size() < this.a.i) && (this.a.jdField_m_of_type_JavaLangString != null) && (((LocalMediaInfo)localObject2).path.equals(this.a.jdField_m_of_type_JavaLangString)))
-          {
-            ((LocalMediaInfo)localObject2).selectStatus = 1;
-            this.a.jdField_c_of_type_JavaUtilArrayList.add(((LocalMediaInfo)localObject2).path);
-            this.a.d.add(((LocalMediaInfo)localObject2).position);
-            if ((!PhotoListActivity.d(this.a)) && (!PhotoListActivity.e(this.a)))
-            {
-              j = i;
-              if (!PhotoListActivity.g(this.a)) {}
             }
             else
             {
-              this.a.jdField_c_of_type_JavaUtilHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
+              if (i1 == 0)
+              {
+                ((ArrayList)localObject1).add(((LocalMediaInfo)localObject2).path);
+                j = i;
+              }
+              for (;;)
+              {
+                ((LocalMediaInfo)localObject2).position = Integer.valueOf(m - j);
+                i = j;
+                break;
+                j = i;
+                if (i1 == 1) {
+                  j = i + 1;
+                }
+              }
+            }
+            if ((this.a.jdField_c_of_type_JavaUtilArrayList.size() < this.a.i) && (this.a.jdField_m_of_type_JavaLangString != null) && (((LocalMediaInfo)localObject2).path.equals(this.a.jdField_m_of_type_JavaLangString)))
+            {
+              ((LocalMediaInfo)localObject2).selectStatus = 1;
+              this.a.jdField_c_of_type_JavaUtilArrayList.add(((LocalMediaInfo)localObject2).path);
+              this.a.d.add(((LocalMediaInfo)localObject2).position);
+              if ((!PhotoListActivity.e(this.a)) && (!PhotoListActivity.d(this.a)))
+              {
+                j = i;
+                if (!PhotoListActivity.g(this.a)) {}
+              }
+              else
+              {
+                this.a.jdField_c_of_type_JavaUtilHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
+                j = i;
+              }
+            }
+            else if ((this.a.jdField_u_of_type_Boolean) && (l1 - l2 <= 60000L) && (k == paramVarArgs.size()) && (((LocalMediaInfo)localObject2).path.equals(AlbumUtil.jdField_a_of_type_JavaLangString)))
+            {
+              ((LocalMediaInfo)localObject2).selectStatus = 3;
+              j = i;
+            }
+            else
+            {
+              ((LocalMediaInfo)localObject2).selectStatus = 2;
               j = i;
             }
           }
-          else if ((this.a.jdField_u_of_type_Boolean) && (l1 - l2 <= 60000L) && (k == paramVarArgs.size()) && (((LocalMediaInfo)localObject2).path.equals(AlbumUtil.jdField_a_of_type_JavaLangString)))
-          {
-            ((LocalMediaInfo)localObject2).selectStatus = 3;
-            j = i;
-          }
-          else
-          {
-            ((LocalMediaInfo)localObject2).selectStatus = 2;
-            j = i;
-          }
         }
-      }
-      if (((PhotoListActivity.d(this.a)) || (PhotoListActivity.e(this.a)) || (PhotoListActivity.f(this.a))) && (this.a.I))
-      {
-        System.currentTimeMillis();
-        if (PhotoListActivity.jdField_a_of_type_JavaUtilHashMap == null)
+        if (((PhotoListActivity.e(this.a)) || (PhotoListActivity.d(this.a)) || (PhotoListActivity.f(this.a))) && (this.a.K))
         {
-          PhotoListActivity.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-          i = 0;
-          label1793:
-          if (i >= n) {
-            break label1852;
+          System.currentTimeMillis();
+          if (PhotoListActivity.jdField_a_of_type_JavaUtilHashMap == null)
+          {
+            PhotoListActivity.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+            i = 0;
+            label2164:
+            if (i >= n) {
+              break label2223;
+            }
+            localObject2 = (LocalMediaInfo)paramVarArgs.get(i);
+            if (((LocalMediaInfo)localObject2).path != null) {
+              break label2206;
+            }
           }
-          localObject2 = (LocalMediaInfo)paramVarArgs.get(i);
-          if (((LocalMediaInfo)localObject2).path != null) {
-            break label1835;
+          for (;;)
+          {
+            i += 1;
+            break label2164;
+            PhotoListActivity.jdField_a_of_type_JavaUtilHashMap.clear();
+            break;
+            PhotoListActivity.jdField_a_of_type_JavaUtilHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
           }
+          System.currentTimeMillis();
         }
-        for (;;)
+        if (n > 1000)
         {
-          i += 1;
-          break label1793;
-          PhotoListActivity.jdField_a_of_type_JavaUtilHashMap.clear();
-          break;
-          label1835:
-          PhotoListActivity.jdField_a_of_type_JavaUtilHashMap.put(((LocalMediaInfo)localObject2).path, localObject2);
+          PhotoListActivity.jdField_a_of_type_JavaUtilArrayList = (ArrayList)localObject1;
+          this.a.x = true;
+          return paramVarArgs;
         }
-        label1852:
-        System.currentTimeMillis();
-      }
-      if (n > 1000)
-      {
-        PhotoListActivity.jdField_a_of_type_JavaUtilArrayList = (ArrayList)localObject1;
-        this.a.x = true;
+        this.a.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
+        this.a.x = false;
         return paramVarArgs;
       }
-      this.a.jdField_b_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
-      this.a.x = false;
-      return paramVarArgs;
     }
   }
   
   protected void a(List paramList)
   {
     int m = 0;
-    this.a.runOnUiThread(new wya(this));
+    this.a.runOnUiThread(new xdq(this));
     Object localObject;
     if (paramList == null)
     {
-      localObject = paramList;
-      if (this.a.C)
+      if ((!this.a.C) || (!this.a.jdField_b_of_type_JavaLangString.equals("$RecentAlbumId")))
       {
         localObject = paramList;
-        if (this.a.jdField_b_of_type_JavaLangString.equals("$RecentAlbumId"))
+        if (this.a.D)
         {
-          paramList = new LocalMediaInfo();
-          paramList.mMimeType = "mobileqq/camera";
-          localObject = new ArrayList();
-          ((List)localObject).add(0, paramList);
+          localObject = paramList;
+          if (!this.a.jdField_b_of_type_JavaLangString.equals("$VideoAlbumId")) {}
         }
       }
-      this.a.jdField_a_of_type_Wxw.a((List)localObject);
-      this.a.jdField_a_of_type_Wxw.notifyDataSetChanged();
+      else
+      {
+        paramList = new LocalMediaInfo();
+        paramList.mMimeType = "mobileqq/camera";
+        localObject = new ArrayList();
+        ((List)localObject).add(0, paramList);
+      }
+      this.a.jdField_a_of_type_Xdm.a((List)localObject);
+      this.a.jdField_a_of_type_Xdm.notifyDataSetChanged();
       this.a.e();
       QQToast.a(this.a, "暂无媒体文件", 1000).a();
       return;
     }
-    if (((this.a.C) || (this.a.J)) && (this.a.jdField_b_of_type_JavaLangString.equals("$RecentAlbumId")))
+    if (((!this.a.C) && (!this.a.L)) || ((this.a.jdField_b_of_type_JavaLangString.equals("$RecentAlbumId")) || ((this.a.D) && (this.a.jdField_b_of_type_JavaLangString.equals("$VideoAlbumId")))))
     {
       localObject = new LocalMediaInfo();
       ((LocalMediaInfo)localObject).mMimeType = "mobileqq/camera";
       paramList.add(0, localObject);
     }
-    this.a.jdField_a_of_type_Wxw.a(paramList);
-    label231:
+    this.a.jdField_a_of_type_Xdm.a(paramList);
+    label283:
     int i;
     if (paramList.isEmpty())
     {
@@ -379,26 +445,29 @@ public class PhotoListActivity$QueryPhotoTask
       {
         this.a.h = false;
         if (this.a.r != -1) {
-          break label635;
+          break label687;
         }
         i = PhotoListActivity.jdField_m_of_type_Int;
-        label264:
+        label316:
         if (i != -1) {
-          break label662;
+          break label714;
         }
         localObject = (LinkedHashMap)AlbumUtil.jdField_b_of_type_JavaUtilHashMap.get(this.a.jdField_b_of_type_JavaLangString);
         if (localObject == null) {
-          break label698;
+          break label750;
         }
         j = ((LinkedHashMap)localObject).size();
         if (j <= 0) {
-          break label698;
+          break label750;
         }
       }
     }
-    label646:
-    label662:
+    label410:
+    label541:
+    label687:
     label698:
+    label714:
+    label750:
     for (int j = ((Integer)((LinkedHashMap)localObject).get(localObject.keySet().toArray()[(j - 1)])).intValue();; j = i)
     {
       i = j;
@@ -410,12 +479,11 @@ public class PhotoListActivity$QueryPhotoTask
         {
           localObject = paramList.iterator();
           k = 0;
-          label358:
           i = j;
           if (((Iterator)localObject).hasNext())
           {
             if (((LocalMediaInfo)((Iterator)localObject).next()).selectStatus != 3) {
-              break label646;
+              break label698;
             }
             i = k;
           }
@@ -426,7 +494,6 @@ public class PhotoListActivity$QueryPhotoTask
         k = paramList.size();
         localObject = (String)this.a.jdField_c_of_type_JavaUtilArrayList.get(this.a.jdField_c_of_type_JavaUtilArrayList.size() - 1);
         j = 0;
-        label460:
         if (j < k) {
           if (((String)localObject).equals(((LocalMediaInfo)paramList.get(j)).path)) {
             i = j;
@@ -435,39 +502,37 @@ public class PhotoListActivity$QueryPhotoTask
       }
       for (;;)
       {
-        label489:
-        j = this.a.jdField_a_of_type_Wxw.getCount();
+        j = this.a.jdField_a_of_type_Xdm.getCount();
         if (j == 0) {
           j = m;
         }
         for (;;)
         {
           this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setSelection(j);
-          this.a.jdField_a_of_type_Wxw.notifyDataSetChanged();
+          this.a.jdField_a_of_type_Xdm.notifyDataSetChanged();
           this.a.e();
-          if ((!this.a.N) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager == null)) {
+          if ((!this.a.P) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager == null)) {
             break;
           }
           this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.a(this.a.jdField_c_of_type_JavaUtilArrayList);
           return;
-          if ((!this.a.J) || (paramList.size() != 1)) {
-            break label231;
+          if ((!this.a.L) || (paramList.size() != 1)) {
+            break label283;
           }
           QQToast.a(this.a, "暂无媒体文件", 1000).a();
           if (this.a.jdField_e_of_type_AndroidWidgetTextView == null) {
-            break label231;
+            break label283;
           }
           this.a.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-          break label231;
-          label635:
+          break label283;
           i = this.a.r;
-          break label264;
+          break label316;
           k += 1;
-          break label358;
+          break label410;
           j += 1;
-          break label460;
+          break label512;
           PhotoListActivity.jdField_m_of_type_Int = -1;
-          break label489;
+          break label541;
           if (i > j - 1)
           {
             j -= 1;
@@ -487,7 +552,7 @@ public class PhotoListActivity$QueryPhotoTask
   protected void onPreExecute()
   {
     super.onPreExecute();
-    this.a.runOnUiThread(new wxz(this));
+    this.a.runOnUiThread(new xdp(this));
   }
 }
 

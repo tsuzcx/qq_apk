@@ -1,20 +1,40 @@
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementStatistics;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout;
+import com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout.OnDraggingListener;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class kvi
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements DragFrameLayout.OnDraggingListener
 {
-  public kvi(VideoCoverView paramVideoCoverView) {}
+  public kvi(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.a.jdField_a_of_type_Int = 7;
-    AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString);
-    this.a.g();
+    if (paramInt1 - paramInt3 > DisplayUtil.a(this.a, 60.0F))
+    {
+      PublicAccountAdvertisementActivity.a(this.a);
+      PublicAccountAdvertisementActivity.b(this.a);
+      this.a.finish();
+      return;
+    }
+    PublicAccountAdvertisementActivity.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return (!PublicAccountAdvertisementActivity.a(this.a)) && (!PublicAccountAdvertisementActivity.b(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
     return false;
   }
 }

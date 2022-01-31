@@ -1,17 +1,12 @@
-import android.app.Activity;
-import cooperation.plugin.IPluginManager.OnOpenPluginListener;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.plugin.QZonePluginDownloader.OnPluginDownloadListner;
 
-public final class anfd
-  implements IPluginManager.OnOpenPluginListener
+public class anfd
 {
-  public anfd(Activity paramActivity) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      this.a.finish();
-    }
-  }
+  private int jdField_a_of_type_Int;
+  private PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
+  private QZonePluginDownloader.OnPluginDownloadListner jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader$OnPluginDownloadListner;
+  private String jdField_a_of_type_JavaLangString;
 }
 
 

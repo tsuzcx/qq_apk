@@ -141,9 +141,9 @@ public class ShareToActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130970814);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131371961));
-    paramBundle = getLayoutInflater().inflate(2130970815, null);
+    setContentView(2130970831);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131371969));
+    paramBundle = getLayoutInflater().inflate(2130970832, null);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(paramBundle);
     paramBundle = getIntent().getStringArrayListExtra("share_to_group_key");
     ArrayList localArrayList = a();

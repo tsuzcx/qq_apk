@@ -1,6 +1,6 @@
 package com.tencent.open.appcircle.widget;
 
-import aldf;
+import alkx;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ public class AppNewsTitleBar
 {
   private int jdField_a_of_type_Int;
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aldf(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new alkx(this);
   private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
@@ -41,10 +41,10 @@ public class AppNewsTitleBar
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2130968697, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363258));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131363256));
-    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131363257));
+    LayoutInflater.from(paramContext).inflate(2130968700, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363275));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131363273));
+    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131363274));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_CooperationQappcenterRemoteRemoteServiceProxy = RemoteServiceProxy.a(String.valueOf(CommonDataAdapter.a().a()));
@@ -53,12 +53,12 @@ public class AppNewsTitleBar
   private void b()
   {
     if (this.jdField_a_of_type_Int == 1) {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130839789);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130839804);
     }
     while (this.jdField_a_of_type_Int != 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130839788);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130839803);
   }
   
   public void a()

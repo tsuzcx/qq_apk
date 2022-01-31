@@ -1,20 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.os.Environment;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler;
+import java.io.File;
 
 public class akwu
-  extends Animation
+  implements Runnable
 {
-  public akwu(ShaderAnimLayout paramShaderAnimLayout) {}
+  public akwu(SwiftBrowserMiscHandler paramSwiftBrowserMiscHandler) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_Boolean == true) {}
-    for (this.a.jdField_a_of_type_Float = (1.0F - paramFloat);; this.a.jdField_a_of_type_Float = paramFloat)
-    {
-      this.a.invalidate();
-      return;
-    }
+    FileUtil.a(new File(Environment.getExternalStorageDirectory(), "/tencent/MobileQQ/ShareScreenShots"));
   }
 }
 

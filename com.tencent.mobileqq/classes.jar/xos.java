@@ -1,26 +1,46 @@
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.net.URLEncoder;
 
 public class xos
   implements View.OnClickListener
 {
-  public xos(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
+  public xos(BannerManager paramBannerManager, String paramString) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
-    if (((!QLog.isColorLevel()) || (!FileUtils.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (FlowCameraConstant.a == 1))
-    {
-      FlowCameraMqqAction.b("", "0X8005F5B", "0");
+    if (!BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager)) {
       return;
     }
-    FlowCameraMqqAction.b("", "0X8005F5B", "1");
+    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager, false);
+    new Handler().postDelayed(new xot(this), 1000L);
+    paramView = ((QQAppInterface)BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getAppRuntime()).getCurrentAccountUin();
+    Object localObject = new StringBuilder(this.jdField_a_of_type_JavaLangString + "&ADTAG=aio.run.click");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append("uin=");
+    ((StringBuilder)localObject).append(paramView);
+    ((StringBuilder)localObject).append("&plat=1");
+    ((StringBuilder)localObject).append("&app=1");
+    ((StringBuilder)localObject).append("&version=7.6.8.3615");
+    ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
+    ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
+    ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
+    localObject = ((StringBuilder)localObject).toString();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("url", (String)localObject);
+    localIntent.putExtra("uin", paramView);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hide_more_button", true);
+    VasWebviewUtil.openQQBrowserActivity(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), (String)localObject, 32768L, localIntent, false, -1);
   }
 }
 

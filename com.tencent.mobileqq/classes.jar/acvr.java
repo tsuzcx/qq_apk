@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.filemanager.core.FileUploader;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
 
 public class acvr
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public acvr(FileUploader paramFileUploader) {}
+  public acvr(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(FileUploader.a(this.a));
+    this.a.a.a(null);
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 

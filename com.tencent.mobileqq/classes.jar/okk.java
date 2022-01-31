@@ -1,19 +1,13 @@
-import android.animation.ValueAnimator;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.SimpleAnimatorListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
 
-public class okk
-  extends AnimatorFactory.SimpleAnimatorListener
+class okk
+  implements Runnable
 {
-  public okk(ElasticImageView paramElasticImageView) {}
+  okk(okj paramokj) {}
   
-  public void a(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ElasticImageView.a(this.a, this.a.d);
-    SLog.b("ElasticImageView", "updateAnimator:" + this.a.d);
-    ElasticImageView.a(this.a);
+    this.a.a.ac_();
   }
 }
 

@@ -1,34 +1,32 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsNewActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class mww
-  extends Handler
+  implements Runnable
 {
-  public mww(SwipeBackLayout paramSwipeBackLayout) {}
+  public mww(SubscriptFeedsNewActivity paramSubscriptFeedsNewActivity, int paramInt1, int paramInt2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    try
     {
-    default: 
-      super.handleMessage(paramMessage);
+      int[] arrayOfInt = new int[2];
+      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsNewActivity.rightViewText.getLocationInWindow(arrayOfInt);
+      int i = this.jdField_a_of_type_Int;
+      int j = arrayOfInt[0];
+      int k = this.b;
+      int m = AIOUtils.a(2.0F, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsNewActivity.getResources());
+      SubscriptFeedsNewActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsNewActivity).showAsDropDown(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsNewActivity.rightViewText, i - j - k - m, -AIOUtils.a(5.0F, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsNewActivity.getResources()));
+      return;
     }
-    do
+    catch (Exception localException)
     {
-      do
-      {
-        return;
-      } while (SwipeBackLayout.a(this.a));
-      SwipeBackLayout.a(this.a, true);
-    } while (!(SwipeBackLayout.a(this.a) instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
+      while (!QLog.isColorLevel()) {}
+      QLog.e("IphoneTitleBarActivity", 2, "showSubscriptCenterGuideWindow, " + localException);
     }
-    SwipeBackLayout.b(this.a, true);
-    ((Activity)SwipeBackLayout.a(this.a)).finish();
   }
 }
 

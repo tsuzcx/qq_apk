@@ -1,18 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
-public class ajbr
-  extends AnimatorListenerAdapter
+class ajbr
+  implements AdapterView.OnItemLongClickListener
 {
-  public ajbr(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  ajbr(ajbo paramajbo) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
+    if ((this.a.a.a.e) || (this.a.a.a.d)) {
+      TroopAvatarWallPreviewActivity.c(this.a.a.a);
     }
+    return true;
   }
 }
 

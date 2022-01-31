@@ -1,21 +1,13 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
 
-public class ujz
-  extends View.AccessibilityDelegate
+class ujz
+  implements Runnable
 {
-  public ujz(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  ujz(ujy paramujy) {}
   
-  @TargetApi(16)
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public void run()
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramAccessibilityNodeInfo.setVisibleToUser(false);
-    }
+    this.a.a.notifyDataSetChanged();
   }
 }
 

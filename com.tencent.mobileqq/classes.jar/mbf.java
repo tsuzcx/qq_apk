@@ -1,86 +1,20 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.PreDownloadController;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.VideoPreDownloadParam;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class mbf
-  implements VideoPreDownloadMgr.PreDownloadController
+  implements Runnable
 {
-  public mbf(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public mbf(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
   
-  public List a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    int m = 0;
-    int k = 0;
-    ArrayList localArrayList = new ArrayList();
-    List localList;
-    int j;
-    int i;
-    VideoInfo localVideoInfo;
-    if (paramInt >= 0)
-    {
-      localList = VideoFeedsAdapter.a(this.a);
-      j = paramInt + 1;
-      if (j >= localList.size()) {
-        break label334;
-      }
-      if (paramBoolean) {}
-      for (i = 4;; i = 3)
-      {
-        int n = Math.min(i + paramInt, localList.size() - 1);
-        i = 0;
-        while (j <= n)
-        {
-          localVideoInfo = (VideoInfo)localList.get(j);
-          localArrayList.add(new VideoPreDownloadMgr.VideoPreDownloadParam(localVideoInfo.jdField_a_of_type_JavaLangString, localVideoInfo.g, localVideoInfo.jdField_a_of_type_Int, localVideoInfo.d));
-          i += 1;
-          j += 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "scroll to next = " + paramBoolean + " preDownload to forward = " + i);
-      }
-      j = paramInt - 1;
-      i = m;
-      if (j >= 0)
-      {
-        if (paramBoolean) {}
-        for (i = 1;; i = 2)
-        {
-          m = Math.max(paramInt - i, 0);
-          paramInt = k;
-          for (;;)
-          {
-            i = paramInt;
-            if (j < m) {
-              break;
-            }
-            localVideoInfo = (VideoInfo)localList.get(j);
-            localArrayList.add(new VideoPreDownloadMgr.VideoPreDownloadParam(localVideoInfo.jdField_a_of_type_JavaLangString, localVideoInfo.g, localVideoInfo.jdField_a_of_type_Int, localVideoInfo.d));
-            paramInt += 1;
-            j -= 1;
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "scroll to next = " + paramBoolean + " preDownload to backward = " + i);
-      }
-      return localArrayList;
-      label334:
-      i = 0;
-    }
-  }
-  
-  public boolean a()
-  {
-    return NetworkUtil.h(VideoFeedsAdapter.a(this.a));
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
+    localEditor.putString("kandian_push_0x210_msg_for_follow_show_in_folder", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a());
+    localEditor.putLong("kandian_push_0x210_c5_msg_time", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.d);
+    ReadInJoyHelper.a(localEditor, true);
   }
 }
 

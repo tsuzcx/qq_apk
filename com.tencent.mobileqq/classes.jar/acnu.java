@@ -1,15 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import java.util.TimerTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder;
+import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class acnu
-  extends TimerTask
+public class acnu
+  implements Runnable
 {
-  acnu(acnt paramacnt) {}
+  public acnu(EmotionPanelDataBuilder paramEmotionPanelDataBuilder, QQAppInterface paramQQAppInterface, int paramInt1, EmoticonPackage paramEmoticonPackage, int paramInt2, int paramInt3, boolean paramBoolean, EmotionPanelDataBuilder.EmotionPanelDataCallback paramEmotionPanelDataCallback) {}
   
   public void run()
   {
-    MPFileVerifyPwdView.a(this.a.a).runOnUiThread(new acnv(this));
+    List localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelDataBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.b, this.c, this.jdField_a_of_type_Boolean);
+    ThreadManager.getUIHandler().post(new acnv(this, localList));
   }
 }
 

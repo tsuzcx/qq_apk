@@ -1,18 +1,36 @@
 package c.t.m.g;
 
-import java.lang.reflect.Method;
+import java.util.Iterator;
 
 public final class et
 {
-  public final Class<?> a;
-  public final Method b;
-  public final Object c;
+  private final String a;
   
-  public et(Class<?> paramClass, Method paramMethod, Object paramObject)
+  public et(String paramString)
   {
-    this.a = paramClass;
-    this.b = paramMethod;
-    this.c = paramObject;
+    this.a = paramString;
+  }
+  
+  public final StringBuilder a(StringBuilder paramStringBuilder, Iterator<?> paramIterator)
+  {
+    Object localObject;
+    if (paramIterator.hasNext())
+    {
+      localObject = paramIterator.next();
+      if (localObject != null) {
+        paramStringBuilder.append(localObject.toString());
+      }
+    }
+    while (paramIterator.hasNext())
+    {
+      localObject = paramIterator.next();
+      if (localObject != null)
+      {
+        paramStringBuilder.append(this.a);
+        paramStringBuilder.append(localObject.toString());
+      }
+    }
+    return paramStringBuilder;
   }
 }
 

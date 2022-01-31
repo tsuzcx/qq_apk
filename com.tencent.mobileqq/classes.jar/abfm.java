@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.armap.config.BaseCheckHandler.ItemConfig;
-import com.tencent.mobileqq.armap.config.OpenBoxCheckHander;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 public class abfm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abfm(OpenBoxCheckHander paramOpenBoxCheckHander, BaseCheckHandler.ItemConfig paramItemConfig) {}
+  public abfm(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapConfigOpenBoxCheckHander.a(this.jdField_a_of_type_ComTencentMobileqqArmapConfigBaseCheckHandler$ItemConfig);
+    paramView = (ActionSheet)ActionSheetHelper.a(BaseActivity.sTopActivity, null);
+    paramView.a(BaseActivity.sTopActivity.getString(2131438863));
+    paramView.a(2131438865, 3);
+    paramView.c(2131438866);
+    paramView.setOnDismissListener(new abfn(this, paramView));
+    paramView.a(new abfo(this, paramView));
+    if (!paramView.isShowing()) {
+      paramView.show();
+    }
   }
 }
 

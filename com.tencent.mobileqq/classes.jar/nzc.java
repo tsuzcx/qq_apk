@@ -1,33 +1,40 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader.Config;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.InfoPrinter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.LikeManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListRequest;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.async.JobContext;
 
-public class nzc
-  extends LruCache
+class nzc
+  implements CmdTaskManger.CommandCallback
 {
-  public nzc(URLImageLoader paramURLImageLoader, int paramInt)
-  {
-    super(paramInt);
-  }
+  nzc(nzb paramnzb, JobContext paramJobContext, String paramString) {}
   
-  protected int a(URLImageLoader.Config paramConfig, Drawable paramDrawable)
+  public void a(@NonNull DetailLikeListLoader.GetLikeListRequest paramGetLikeListRequest, @Nullable DetailLikeListLoader.GetLikeListResponse paramGetLikeListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramDrawable instanceof BitmapDrawable))
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramConfig, " size=", Integer.valueOf(i) });
-        return i;
-      }
+      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
+      return;
     }
-    return 524288;
+    if ((paramGetLikeListResponse == null) || (paramErrorMessage.isFail()))
+    {
+      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
+      nzb.a(this.jdField_a_of_type_Nzb, paramErrorMessage);
+      return;
+    }
+    if (this.jdField_a_of_type_Nzb.a == 0) {}
+    for (boolean bool = false;; bool = true)
+    {
+      ((LikeManager)SuperManager.a(15)).a(paramGetLikeListResponse.a, this.jdField_a_of_type_JavaLangString, bool, true);
+      paramGetLikeListRequest = new nyw(bool, paramGetLikeListResponse.a, paramGetLikeListResponse.b, paramGetLikeListResponse.c);
+      nzb.a(this.jdField_a_of_type_Nzb, paramGetLikeListRequest);
+      return;
+    }
   }
 }
 

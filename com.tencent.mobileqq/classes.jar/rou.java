@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
-public class rou
-  implements DialogInterface.OnClickListener
+class rou
+  implements Runnable
 {
-  public rou(BaseChatPie paramBaseChatPie) {}
+  rou(rot paramrot) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.a.a.d();
   }
 }
 

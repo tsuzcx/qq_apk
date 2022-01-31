@@ -1,31 +1,39 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahip
   implements Runnable
 {
-  public ahip(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite, boolean paramBoolean, int paramInt) {}
+  public ahip(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "onStatusChanged: " + this.jdField_a_of_type_Boolean + " error:" + this.jdField_a_of_type_Int);
+      QLog.d("ReceiptMessageDetailFragment", 2, "mSendReadReportRequestRunnable");
     }
-    if (!this.jdField_a_of_type_Boolean)
+    switch (ReceiptMessageDetailFragment.a(this.a).a)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131432978, 0).a();
-      CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, -1);
+    default: 
+      return;
+    case 1: 
+      ReceiptMessageDetailFragment.c(this.a);
+      return;
+    case 3000: 
+      ReceiptMessageDetailFragment.d(this.a);
       return;
     }
-    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, 101);
-    CaptureSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragmentAllWaite, "onStatusChanged");
+    ReceiptMessageDetailFragment.a(this.a).addObserver(ReceiptMessageDetailFragment.a(this.a), false);
+    QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c");
+    ReceiptMessageDetailFragment.a(this.a, ReceiptMessageDetailFragment.a(this.a).a().a(ReceiptMessageDetailFragment.a(this.a), ReceiptMessageDetailFragment.a(this.a, ReceiptMessageDetailFragment.a(this.a).getCurrentAccountUin()), ReceiptMessageDetailFragment.a(this.a), MessageUtils.a(ReceiptMessageDetailFragment.b(this.a))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahip
  * JD-Core Version:    0.7.0.1
  */

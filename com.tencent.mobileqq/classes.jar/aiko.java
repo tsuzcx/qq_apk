@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class aiko
-  implements DialogInterface.OnCancelListener
+public final class aiko
+  implements Runnable
 {
-  public aiko(SubAccountControll paramSubAccountControll, String paramString, int paramInt) {}
+  public aiko(String paramString1, String paramString2) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+    try
+    {
+      Intent localIntent = new Intent();
+      localIntent.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      localIntent.putExtra("reporting_tag", this.a);
+      localIntent.putExtra("reporting_detail", this.b);
+      localIntent.putExtra("reporting_count", 1);
+      localIntent.putExtra("is_runtime", 0);
+      BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

@@ -1,8 +1,23 @@
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-public abstract interface wcd
+public class wcd
+  implements Animation.AnimationListener
 {
-  public abstract void a(View paramView);
+  public wcd(PublicAccountChatPie paramPublicAccountChatPie) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.R = false;
+    this.a.aa = false;
+    this.a.c(this.a.jdField_o_of_type_AndroidViewView);
+    this.a.jdField_o_of_type_Int = 1;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

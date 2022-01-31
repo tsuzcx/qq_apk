@@ -485,6 +485,7 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d4_0", new int[] { 26 });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d2_0", new int[] { 26 });
     jdField_a_of_type_JavaUtilMap.put("ClubInfoSvc.queryPrivExt", new int[] { 27 });
+    jdField_a_of_type_JavaUtilMap.put("ClubInfoSvc.guanjiaReport", new int[] { 27 });
     jdField_a_of_type_JavaUtilMap.put("CardPayControl.queryChannel", new int[] { 29 });
     jdField_a_of_type_JavaUtilMap.put("CardPayControl.queryOrderIndex", new int[] { 29 });
     jdField_a_of_type_JavaUtilMap.put("CardPayControl.queryPayOrder", new int[] { 29 });
@@ -611,6 +612,8 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.closeAIOSessionReport", new int[] { 85 });
     jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.WpaGenSigMsg", new int[] { 85 });
     jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.webimAddFriend", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("QidianSsoProto.getQidianGroupInfo", new int[] { 85 });
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x782", new int[] { 85 });
     jdField_a_of_type_JavaUtilMap.put("SQQShopCliLog.RtReport", new int[] { 88 });
     jdField_a_of_type_JavaUtilMap.put("SQQShopMsgSvc.GetRichMsgInfo", new int[] { 88 });
     jdField_a_of_type_JavaUtilMap.put("SQQShopCliLog.AdFeedback", new int[] { 88 });
@@ -680,7 +683,6 @@ public class Cmd2HandlerMap
     jdField_a_of_type_JavaUtilMap.put("dynamic_busi_hot_word.1", new int[] { 111 });
     jdField_a_of_type_JavaUtilMap.put("dynamic_unite_search.1", new int[] { 111 });
     jdField_a_of_type_JavaUtilMap.put("dynamic_association_word.1", new int[] { 111 });
-    jdField_a_of_type_JavaUtilMap.put("DynamicScRecommend.1", new int[] { 111 });
     jdField_a_of_type_JavaUtilMap.put("DynamicScDiscovery.1", new int[] { 111 });
     jdField_a_of_type_JavaUtilMap.put("kandian_search_hot_word.1", new int[] { 111 });
     jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x990", new int[] { 113 });

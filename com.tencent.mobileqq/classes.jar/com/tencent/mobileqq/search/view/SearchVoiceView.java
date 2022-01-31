@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.view;
 
-import ahwx;
+import aibo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -45,7 +45,7 @@ public class SearchVoiceView
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private SweepGradient jdField_a_of_type_AndroidGraphicsSweepGradient;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new ahwx(this));
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new aibo(this));
   private SearchVoiceView.OnStateEndListener jdField_a_of_type_ComTencentMobileqqSearchViewSearchVoiceView$OnStateEndListener;
   private float jdField_b_of_type_Float;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;

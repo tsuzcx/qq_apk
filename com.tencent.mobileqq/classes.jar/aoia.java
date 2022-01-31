@@ -1,14 +1,17 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView.CaptureListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.base.DoodleStrategy;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
 public class aoia
-  implements Runnable
+  implements DoodleStrategy
 {
-  public aoia(CameraGLSurfaceView paramCameraGLSurfaceView, CameraGLSurfaceView.CaptureListener paramCaptureListener) {}
+  public aoia(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a(List paramList, DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener;
+    paramList.add(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer);
+    paramList.add(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerInteractPasterLayer);
   }
 }
 

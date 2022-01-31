@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajtg;
-import ajth;
-import ajtj;
+import akat;
+import akau;
+import akaw;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -78,11 +78,11 @@ public class TroopFeedViewFactory
     switch (paramInt)
     {
     default: 
-      return new ajth(this);
+      return new akau(this);
     case 0: 
-      return new ajth(this);
+      return new akau(this);
     }
-    return new ajtj(this);
+    return new akaw(this);
   }
   
   public void a()
@@ -92,7 +92,7 @@ public class TroopFeedViewFactory
   
   public void onClick(View paramView)
   {
-    if ((paramView.getTag() instanceof ajtg))
+    if ((paramView.getTag() instanceof akat))
     {
       this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.b(true);
       break label18;
@@ -135,7 +135,7 @@ public class TroopFeedViewFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopFeedViewFactory
  * JD-Core Version:    0.7.0.1
  */

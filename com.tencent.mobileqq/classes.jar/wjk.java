@@ -1,48 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
 
 public class wjk
-  extends Handler
+  implements Runnable
 {
-  public WeakReference a;
+  public wjk(ZhituManager paramZhituManager, ZhituResponse paramZhituResponse, String paramString1, int paramInt, String paramString2) {}
   
-  public wjk(TroopView paramTroopView)
+  public void run()
   {
-    this.a = new WeakReference(paramTroopView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {}
-    do
-    {
-      return;
-      super.handleMessage(paramMessage);
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        TroopView.a(localTroopView).springBackOverScrollHeaderView();
-        return;
-      case 1: 
-        TroopView.a(localTroopView).springBackOverScrollHeaderView();
-        TroopView.a(localTroopView, 1, 2131434349);
-        return;
-      }
-    } while ((!TroopView.a(localTroopView)) || (TroopView.b(localTroopView)));
-    TroopView.f(localTroopView, true);
-    TroopView.a(localTroopView, false);
-    return;
-    TroopView.a(localTroopView, true);
-    return;
-    TroopView.b(localTroopView);
-    return;
-    TroopView.c(localTroopView);
+    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 

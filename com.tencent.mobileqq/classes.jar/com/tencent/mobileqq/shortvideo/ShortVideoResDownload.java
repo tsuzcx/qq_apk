@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahzn;
+import aiee;
 import android.util.SparseArray;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
@@ -14,7 +14,7 @@ public class ShortVideoResDownload
   private static SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(5);
   private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   public int a;
-  private ahzn jdField_a_of_type_Ahzn;
+  private aiee jdField_a_of_type_Aiee;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString = "ShortVideoResDownload_";
   boolean jdField_a_of_type_Boolean;
@@ -24,7 +24,7 @@ public class ShortVideoResDownload
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
     this.jdField_a_of_type_JavaLangString += this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Ahzn = new ahzn(this.jdField_a_of_type_JavaLangString, this);
+    this.jdField_a_of_type_Aiee = new aiee(this.jdField_a_of_type_JavaLangString, this);
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
@@ -110,32 +110,37 @@ public class ShortVideoResDownload
       if (paramInt1 == 0)
       {
         VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| check config success...", null);
-        this.jdField_a_of_type_Ahzn.jdField_a_of_type_Boolean = false;
-        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahzn);
+        this.jdField_a_of_type_Aiee.jdField_a_of_type_Boolean = false;
+        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Aiee);
         VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| mDownloadFilterSo=false", null);
         if (this.jdField_a_of_type_Boolean)
         {
           if (PtvFilterSoLoad.a(VideoEnvironment.a()) == 0) {
-            break label239;
+            break label265;
           }
-          ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahzn);
-          this.jdField_a_of_type_Ahzn.b = false;
+          ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Aiee);
+          this.jdField_a_of_type_Aiee.b = false;
         }
         for (;;)
         {
           if (PtvFilterSoLoad.d())
           {
-            this.jdField_a_of_type_Ahzn.c = false;
-            ShortVideoResourceManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahzn);
+            this.jdField_a_of_type_Aiee.c = false;
+            ShortVideoResourceManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Aiee);
           }
           if (PtvFilterSoLoad.e())
           {
-            this.jdField_a_of_type_Ahzn.d = false;
-            ShortVideoResourceManager.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahzn);
+            this.jdField_a_of_type_Aiee.d = false;
+            ShortVideoResourceManager.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Aiee);
           }
-          this.jdField_a_of_type_Ahzn.a();
+          if (PtvFilterSoLoad.g())
+          {
+            this.jdField_a_of_type_Aiee.e = false;
+            ShortVideoResourceManager.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Aiee);
+          }
+          this.jdField_a_of_type_Aiee.a();
           return;
-          label239:
+          label265:
           VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| getFilterSoState != 2", null);
         }
       }

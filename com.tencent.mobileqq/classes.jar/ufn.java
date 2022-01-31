@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
 
 public class ufn
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ufn(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  public ufn(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    ((TroopHandler)this.a.app.a(20)).a(this.a.b, this.a.i, this.a.e);
+  }
 }
 
 

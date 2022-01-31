@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateSquareView;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.mobileqq.ptt.LSRecordTextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
 
-class agtf
-  implements Runnable
+public final class agtf
+  implements Parcelable.Creator
 {
-  agtf(agte paramagte) {}
-  
-  public void run()
+  public PersonalityLabelPhoto a(Parcel paramParcel)
   {
-    this.a.a.d = null;
-    LSRecordPanel.a(this.a.a).setVisibility(4);
-    LSRecordPanel.a(this.a.a).setVisibility(4);
+    return new PersonalityLabelPhoto(paramParcel);
+  }
+  
+  public PersonalityLabelPhoto[] a(int paramInt)
+  {
+    return new PersonalityLabelPhoto[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agtf
  * JD-Core Version:    0.7.0.1
  */

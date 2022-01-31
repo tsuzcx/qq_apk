@@ -27,7 +27,7 @@ import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.FixSizeImageView;
-import lvt;
+import lzg;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,6 +44,7 @@ public class ComponentHeaderPublish
   public boolean a;
   private TextView b;
   public boolean b;
+  public boolean c;
   
   public ComponentHeaderPublish(Context paramContext)
   {
@@ -123,33 +124,34 @@ public class ComponentHeaderPublish
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a() != null))
     {
       ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
-      SpannableStringBuilder localSpannableStringBuilder;
+      Object localObject1;
+      Object localObject2;
       if ((!TextUtils.isEmpty(localArticleInfo.mSummary)) || (this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean))
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setVisibility(0);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMaxLines(7);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpanText("更多");
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new lvt(this));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setMoreSpan(new lzg(this));
         if (this.jdField_a_of_type_Boolean)
         {
-          localSpannableStringBuilder = new SpannableStringBuilder();
+          localObject1 = new SpannableStringBuilder();
           if ((localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a != null))
           {
-            localSpannableStringBuilder.append(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a);
+            ((SpannableStringBuilder)localObject1).append(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a);
             if (QLog.isColorLevel()) {
               QLog.d("Q.readinjoy.ui", 2, "Comment String: " + localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$PGCFeedsInfo.a);
             }
-            localSpannableStringBuilder.append(" ");
-            localSpannableStringBuilder.append("阅读原文");
-            ComponentAccountSummary.ReadArticleSpan localReadArticleSpan = new ComponentAccountSummary.ReadArticleSpan(localArticleInfo, -3355444, getContext(), getResources(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt);
-            localReadArticleSpan.a = 17;
-            localSpannableStringBuilder.setSpan(localReadArticleSpan, localSpannableStringBuilder.length() - "阅读原文".length(), localSpannableStringBuilder.length(), 33);
-            localSpannableStringBuilder.append(" ");
+            ((SpannableStringBuilder)localObject1).append(" ");
+            ((SpannableStringBuilder)localObject1).append("阅读原文");
+            localObject2 = new ComponentAccountSummary.ReadArticleSpan(localArticleInfo, -3355444, getContext(), getResources(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt);
+            ((ComponentAccountSummary.ReadArticleSpan)localObject2).a = 17;
+            ((SpannableStringBuilder)localObject1).setSpan(localObject2, ((SpannableStringBuilder)localObject1).length() - "阅读原文".length(), ((SpannableStringBuilder)localObject1).length(), 33);
+            ((SpannableStringBuilder)localObject1).append(" ");
             this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.jdField_a_of_type_Boolean = true;
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(localSpannableStringBuilder);
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText((CharSequence)localObject1);
             label290:
             if (localArticleInfo.mTime <= 0L) {
-              break label386;
+              break label429;
             }
             this.jdField_b_of_type_AndroidWidgetTextView.setText(ReadInJoyTimeUtils.a(localArticleInfo.mTime, true));
           }
@@ -162,18 +164,28 @@ public class ComponentHeaderPublish
         if (localArticleInfo.mTitle == null) {
           break;
         }
-        localSpannableStringBuilder.append(localArticleInfo.mTitle);
+        ((SpannableStringBuilder)localObject1).append(localArticleInfo.mTitle);
         break;
         if (this.jdField_b_of_type_Boolean)
         {
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setHeight(0);
           break label290;
         }
+        if (this.c)
+        {
+          localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView;
+          if (!TextUtils.isEmpty(localArticleInfo.mTitle)) {}
+          for (localObject1 = localArticleInfo.mTitle;; localObject1 = localArticleInfo.mSummary)
+          {
+            ((ReadInJoyYAFolderTextView)localObject2).setText((CharSequence)localObject1);
+            break;
+          }
+        }
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(localArticleInfo.mSummary);
         break label290;
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setVisibility(8);
         break label290;
-        label386:
+        label429:
         this.jdField_b_of_type_AndroidWidgetTextView.setText("刚刚");
       }
     }
@@ -219,7 +231,7 @@ public class ComponentHeaderPublish
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969581, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969577, this, true);
   }
   
   public void a(long paramLong, Bitmap paramBitmap)
@@ -233,10 +245,10 @@ public class ComponentHeaderPublish
   {
     super.a(paramView);
     this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131367037));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362894));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362899));
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366704));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365659));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366702));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131365664));
     this.jdField_a_of_type_AndroidViewView = findViewById(2131367024);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRingAvatarView = ((RingAvatarView)findViewById(2131367023));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367028));

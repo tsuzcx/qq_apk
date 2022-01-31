@@ -1,33 +1,15 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout.DoodleLayoutListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
 
 public class urw
-  implements DoodleLayout.DoodleLayoutListener
+  implements Runnable
 {
-  public urw(DoodlePanel paramDoodlePanel) {}
+  public urw(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    DoodlePanel.a(this.a);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 2)
-    {
-      if (!DoodlePanel.a(this.a))
-      {
-        DoodlePanel.a(this.a, true);
-        urx localurx = new urx(this);
-        DialogUtil.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131439077), null, this.a.getContext().getString(2131439081), localurx, null).show();
-      }
-      return;
-    }
-    QQToast.a(this.a.getContext(), this.a.getContext().getString(2131439078), 0).a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.a(2, 300, new Object[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

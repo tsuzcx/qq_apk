@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView.OnUIClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListAdapter.HotSortCardHolder;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
 public class nso
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public nso(ShareGroupsListAdapter.HotSortCardHolder paramHotSortCardHolder, String paramString) {}
+  public nso(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onPreDraw()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener.a(null, 0, this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter$HotSortCardHolder.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.a(this.a.a, this.a.g, this.a.h);
+    this.a.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
   }
 }
 

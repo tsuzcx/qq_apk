@@ -1,17 +1,16 @@
-import java.lang.ref.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
 
-class vfc
-  implements Runnable
+public class vfc
+  implements View.OnTouchListener
 {
-  vfc(vez paramvez, WeakReference paramWeakReference, int paramInt) {}
+  public vfc(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    vez localvez = (vez)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localvez == null) {
-      return;
-    }
-    localvez.a(this.jdField_a_of_type_Int, -1, null);
+    return true;
   }
 }
 

@@ -1,28 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.component.network.utils.NetworkUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.ImageButton;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class aeoe
-  implements View.OnClickListener
+  implements PopupWindow.OnDismissListener
 {
-  public aeoe(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public aeoe(MedalGuideView paramMedalGuideView) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    if (!NetworkUtils.isNetworkAvailable(this.a))
-    {
-      QQToast.a(this.a, 1, 2131434811, 1).a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
     }
-    this.a.d();
-    this.a.a("invite_page", "clk_exit");
+    this.a.d = true;
+    this.a.a.performClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeoe
  * JD-Core Version:    0.7.0.1
  */

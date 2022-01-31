@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
+import android.graphics.Color;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.util.JSONUtils;
@@ -22,7 +23,7 @@ import org.json.JSONObject;
 public class WorldCupShareInfo
 {
   public static final boolean DEBUG = false;
-  public static final String RES_ROOT = AppConstants.aI + File.separator + "WorldCupShareResource" + File.separator;
+  public static final String RES_ROOT = AppConstants.aJ + File.separator + "WorldCupShareResource" + File.separator;
   private static final String TAG = "WorldCupShareInfo";
   public String AIOMsgImageUrl;
   public String AIOMsgJumpUrl;
@@ -223,6 +224,20 @@ public class WorldCupShareInfo
     //   99	104	166	finally
     //   9	21	170	java/io/IOException
     //   46	69	170	java/io/IOException
+  }
+  
+  public static int parseColor(String paramString)
+  {
+    try
+    {
+      int i = Color.parseColor(paramString);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("WorldCupShareInfo", 1, "WL_DEBUG parseColor e = " + paramString);
+    }
+    return -1;
   }
   
   public Date getDate(String paramString)

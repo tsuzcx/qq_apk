@@ -1,24 +1,31 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aapg
-  implements SensorEventListener
+public final class aapg
+  implements INetEngine.IBreakDownFix
 {
-  public aapg(ArkAppEventObserverManager paramArkAppEventObserverManager) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void a(NetReq paramNetReq, NetResp paramNetResp)
   {
-    if (paramSensorEvent.sensor.getType() == 1) {
-      ArkAppEventObserverManager.a(this.a, paramSensorEvent);
-    }
-    while (paramSensorEvent.sensor.getType() != 3) {
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    while (!(paramNetReq instanceof HttpNetReq)) {
       return;
     }
-    ArkAppEventObserverManager.b(this.a, paramSensorEvent);
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
+    localHttpNetReq.jdField_a_of_type_Long += paramNetResp.c;
+    paramNetResp.c = 0L;
+    paramNetResp = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-";
+    localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
+    paramNetResp = localHttpNetReq.jdField_a_of_type_JavaLangString;
+    if (paramNetResp.contains("range="))
+    {
+      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+      localHttpNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + localHttpNetReq.jdField_a_of_type_Long);
+    }
+    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).jdField_a_of_type_JavaLangString + ", offset=" + localHttpNetReq.jdField_a_of_type_Long);
   }
 }
 

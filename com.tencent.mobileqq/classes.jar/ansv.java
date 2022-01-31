@@ -1,29 +1,28 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI;
+import dov.com.qq.im.capture.poi.FacePoiUI;
+import dov.com.qq.im.capture.poi.FacePoiUI.FacePoiUIListener;
 
 public class ansv
-  implements EditVideoPoiPickerCallback
+  implements FacePoiUI.FacePoiUIListener
 {
-  public ansv(EditVideoDoodle paramEditVideoDoodle) {}
+  public ansv(QIMCaptureController paramQIMCaptureController) {}
   
-  public void a()
+  public void aD_()
   {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
+    QIMCaptureController.a(this.a).d();
   }
   
-  public void a(TroopBarPOI paramTroopBarPOI)
+  public void b()
   {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    this.a.a.setLocation(paramTroopBarPOI);
-    if (paramTroopBarPOI != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.b = bool;
-      return;
-    }
+    QIMCaptureController.a(this.a).d();
+    QIMCaptureController.a(this.a).a();
+    QIMCaptureController.a(this.a).a(QIMCaptureController.a(this.a));
+  }
+  
+  public void c()
+  {
+    QIMCaptureController.a(this.a).d();
   }
 }
 

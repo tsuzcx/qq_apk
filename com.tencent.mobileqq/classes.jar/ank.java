@@ -1,35 +1,17 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.qq.im.poi.LbsPackPoiListActivity;
 
 public class ank
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public ank(LbsPackPoiListActivity paramLbsPackPoiListActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  public ank(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
-    {
-      LbsPackPoiListActivity.a(this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity).show();
-      this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.b.setAnimation(null);
-      this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.a.setVisibility(8);
-    }
-    while (paramAnimation != this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComQqImPoiLbsPackPoiListActivity.b.requestLayout();
+    LbsPackPoiListActivity.a(this.a).setText("");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

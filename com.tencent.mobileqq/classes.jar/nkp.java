@@ -1,21 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class nkp
-  implements View.OnClickListener
+  implements UpCallBack
 {
-  public nkp(NewFriendsPlayMode paramNewFriendsPlayMode) {}
+  public nkp(UploadImageJob paramUploadImageJob) {}
   
-  public void onClick(View paramView)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    return null;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
+  
+  public void b(UpCallBack.SendResult paramSendResult)
+  {
+    if ((paramSendResult.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramSendResult.jdField_b_of_type_JavaLangString)))
+    {
+      this.a.a("UploadImageJob_out_image_url", paramSendResult.jdField_b_of_type_JavaLangString);
+      UploadImageJob.a(this.a, true);
+      return;
+    }
+    paramSendResult = new ErrorMessage(paramSendResult.jdField_b_of_type_Int, paramSendResult.a);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramSendResult, new Object[0]);
+    }
+    UploadImageJob.b(this.a, false);
   }
 }
 

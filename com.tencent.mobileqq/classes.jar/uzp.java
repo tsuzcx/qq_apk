@@ -1,20 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.filemanager.data.FMConfig;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
 
-public class uzp
-  implements FileManagerUtil.TipsClickedInterface
+class uzp
+  implements Runnable
 {
-  public uzp(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  uzp(uzo paramuzo, String paramString) {}
   
-  public void a(View paramView)
+  public void run()
   {
-    paramView = FMConfig.a();
-    FileManagerUtil.a(this.a.a, paramView);
-    FileManagerReporter.a("0X8007FA2");
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      this.jdField_a_of_type_Uzo.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.jdField_a_of_type_Uzo.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_Uzo.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

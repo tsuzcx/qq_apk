@@ -1,15 +1,18 @@
-import cooperation.qzone.font.FontManager;
-import java.io.File;
-import java.io.FileFilter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.RecvMsg;
 
-public class amug
-  implements FileFilter
+public final class amug
+  implements Parcelable.Creator
 {
-  public amug(FontManager paramFontManager) {}
-  
-  public boolean accept(File paramFile)
+  public RecvMsg a(Parcel paramParcel)
   {
-    return paramFile.getName().endsWith(".ftf");
+    return new RecvMsg(paramParcel);
+  }
+  
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
   }
 }
 

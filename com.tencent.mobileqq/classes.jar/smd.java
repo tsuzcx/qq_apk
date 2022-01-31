@@ -1,56 +1,67 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.EmoticonObserver;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.DiscussionObserver;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ArrayList;
 
 public class smd
-  extends EmoticonObserver
+  extends DiscussionObserver
 {
-  public smd(EmosmActivity paramEmosmActivity) {}
+  public smd(Conversation paramConversation) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void a()
   {
-    if (paramInt == 1) {
-      if (paramBoolean)
-      {
-        paramObject = (EmoticonResp)paramObject;
-        this.a.a(paramObject.delEpId);
-        this.a.b();
-        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e();
-      }
+    this.a.a(9, null, -2147483648);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onDelDiscussion");
     }
-    label108:
-    do
-    {
-      do
-      {
-        return;
-        this.a.a();
-        break;
-        if (paramInt != 2) {
-          break label108;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("EmosmActivity", 2, "emoticon fetch:" + paramBoolean);
-        }
-      } while (!paramBoolean);
-      this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
-      return;
-    } while (paramInt != 17);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  {
+    this.a.a(8, Long.toString(paramLong), 3000);
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
     if (paramBoolean)
     {
-      paramObject = ((EmoticonResp)paramObject).ids.iterator();
-      while (paramObject.hasNext())
-      {
-        Integer localInteger = (Integer)paramObject.next();
-        this.a.a(localInteger.intValue());
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_updateDiscussionInfo");
       }
+      this.a.a(0L);
     }
-    this.a.a();
-    this.a.b();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onChangeDiscussionName");
+      }
+      this.a.a(8, paramString, 3000);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "conversation onUpdateDiscussionFaceIcon|[" + paramBoolean1 + ", " + paramBoolean2 + ", " + paramString + "]");
+    }
+    if (paramBoolean1) {
+      this.a.a(new sme(this, paramString));
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onQuitDiscussion");
+      }
+      this.a.a(8, paramString, 3000);
+    }
   }
 }
 

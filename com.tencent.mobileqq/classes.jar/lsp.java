@@ -1,16 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
-import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class lsp
-  implements KandianPopupWindow.OnUninterestConfirmListener
+public class lsp
+  implements Runnable
 {
-  lsp(lso paramlso) {}
+  public lsp(ArticleInfoModule paramArticleInfoModule) {}
   
-  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
+  public void run()
   {
-    ReadInJoyHeaderPresenter.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel, paramInt, paramArrayList, paramObject);
+    SosoInterface.a(ArticleInfoModule.a(), "PublicAccountManager");
+    if (QLog.isColorLevel()) {
+      QLog.d("ArticleInfoModule", 2, "0x68b lbs info start location");
+    }
   }
 }
 

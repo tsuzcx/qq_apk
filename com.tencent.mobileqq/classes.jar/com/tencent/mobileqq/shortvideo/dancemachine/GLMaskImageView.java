@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import aian;
+import aiff;
 import android.graphics.RectF;
 import android.opengl.GLES20;
 import java.nio.FloatBuffer;
@@ -19,21 +19,21 @@ public class GLMaskImageView
     f(4);
   }
   
-  protected void al_()
+  protected void an_()
   {
-    super.al_();
-    int i = ((Integer)this.jdField_a_of_type_Aian.a.get("a_texCoordMask")).intValue();
-    GLES20.glVertexAttribPointer(i, 2, 5126, false, 0, this.jdField_a_of_type_Aian.d() * this.i * 4);
+    super.an_();
+    int i = ((Integer)this.jdField_a_of_type_Aiff.a.get("a_texCoordMask")).intValue();
+    GLES20.glVertexAttribPointer(i, 2, 5126, false, 0, this.jdField_a_of_type_Aiff.d() * this.i * 4);
     GLES20.glEnableVertexAttribArray(i);
-    i = ((Integer)this.jdField_a_of_type_Aian.b.get("u_texture_mask")).intValue();
+    i = ((Integer)this.jdField_a_of_type_Aiff.b.get("u_texture_mask")).intValue();
     GLES20.glActiveTexture(33985);
     GLES20.glBindTexture(3553, this.b.a());
     GLES20.glUniform1i(i, 1);
   }
   
-  protected void am_()
+  protected void ao_()
   {
-    super.am_();
+    super.ao_();
     RectF localRectF1 = b();
     RectF localRectF2 = new RectF(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a());
     this.jdField_a_of_type_AndroidGraphicsRectF.setIntersect(localRectF1, localRectF2);

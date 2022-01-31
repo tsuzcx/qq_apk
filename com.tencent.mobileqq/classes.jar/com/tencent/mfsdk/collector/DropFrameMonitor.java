@@ -18,8 +18,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
-import rdr;
-import rds;
+import rij;
+import rik;
 
 @TargetApi(16)
 public class DropFrameMonitor
@@ -31,7 +31,7 @@ public class DropFrameMonitor
   private Choreographer jdField_a_of_type_AndroidViewChoreographer;
   private final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(DropFrameMonitor.MonitorItem.class, 4);
   private DropFrameMonitor.MonitorItem jdField_a_of_type_ComTencentMfsdkCollectorDropFrameMonitor$MonitorItem;
-  private AbstractUnifiedMonitor.ThreadMonitorCallback jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = new rds(this);
+  private AbstractUnifiedMonitor.ThreadMonitorCallback jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = new rik(this);
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
   private boolean jdField_b_of_type_Boolean;
@@ -269,7 +269,7 @@ public class DropFrameMonitor
     try
     {
       this.jdField_a_of_type_AndroidViewChoreographer = Choreographer.getInstance();
-      this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback = new rdr(this);
+      this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback = new rij(this);
       this.jdField_c_of_type_Long = ((1.0E+009F / f));
       this.jdField_a_of_type_Boolean = true;
       return;

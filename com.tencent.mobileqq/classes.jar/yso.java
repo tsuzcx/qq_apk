@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.ApolloResponseManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
 
-public class yso
+class yso
   implements Runnable
 {
-  public yso(ApolloBoxEnterView paramApolloBoxEnterView, String paramString1, String paramString2) {}
+  yso(ysn paramysn, ApolloActionData paramApolloActionData) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.a(this.jdField_a_of_type_JavaLangString, this.b);
+    if (this.jdField_a_of_type_Ysn.a.a == null) {
+      return;
+    }
+    ((ApolloManager)this.jdField_a_of_type_Ysn.a.a.getManager(152)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
   }
 }
 

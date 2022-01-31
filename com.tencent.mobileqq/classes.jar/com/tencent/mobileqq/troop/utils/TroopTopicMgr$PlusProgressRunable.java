@@ -14,12 +14,12 @@ public class TroopTopicMgr$PlusProgressRunable
   
   public void run()
   {
-    this.a.bn();
+    this.a.bo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopTopicMgr.PlusProgressRunable
  * JD-Core Version:    0.7.0.1
  */

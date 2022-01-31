@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.KandianSetTopInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 
 public class llm
   implements Runnable
 {
-  public llm(KandianMergeManager paramKandianMergeManager) {}
+  public llm(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
   public void run()
   {
-    KandianMergeManager.a(this.a).trySetTopKandianMsg(KandianMergeManager.a(this.a));
+    ReadInJoyCommentComponentFragment.a(this.a, 1);
   }
 }
 

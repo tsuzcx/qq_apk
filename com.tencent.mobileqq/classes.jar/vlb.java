@@ -1,16 +1,23 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameListener;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.image.VideoDrawable.OnAudioPlayOnceListener;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class vlb
-  implements CustomFrameAnimationDrawable.FrameListener
+  implements VideoDrawable.OnAudioPlayOnceListener
 {
-  public vlb(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  public vlb(ShortVideoPTVItemBuilder paramShortVideoPTVItemBuilder) {}
   
-  public void a(int paramInt)
+  public void onFinish()
   {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
+    if (QLog.isColorLevel()) {
+      QLog.e("ShortVideoPTVItemBuilder", 2, "VideoDrawable.OnAudioPlayOnceListener.onFinish");
+    }
+    if ((ShortVideoPTVItemBuilder.a() != null) && (ShortVideoPTVItemBuilder.a().get() != null))
+    {
+      ShortVideoPTVItemBuilder.a(ShortVideoPTVItemBuilder.a(this.a), (ChatMessage)ShortVideoPTVItemBuilder.a().get());
+      ShortVideoPTVItemBuilder.a(null);
     }
   }
 }

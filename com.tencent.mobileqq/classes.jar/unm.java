@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
 
-class unm
-  implements Runnable
+public class unm
+  extends ClickableSpan
 {
-  unm(unl paramunl) {}
+  public unm(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.d();
-    this.a.a.a.invalidate();
+    this.a.b();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(0, 165, 224));
   }
 }
 

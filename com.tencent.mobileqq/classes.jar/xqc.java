@@ -1,15 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.Callback;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.widget.XListView;
 
 public class xqc
-  implements CompoundButton.OnCheckedChangeListener
+  implements RecentTabHaloPresenter.Callback
 {
-  public xqc(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xqc(RecentAdapter paramRecentAdapter) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    NewFlowCameraActivity.a(this.a, paramBoolean);
+    this.a.a.invalidateViews();
   }
 }
 

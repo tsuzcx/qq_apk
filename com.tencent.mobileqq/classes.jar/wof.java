@@ -1,34 +1,39 @@
-import android.text.TextUtils;
+import android.graphics.Bitmap;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment.ListAdapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment.ItemViewHolder;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.widget.XListView;
 
 public class wof
-  implements View.OnClickListener
+  implements IIconListener
 {
-  public wof(PublicAccountFragment.ListAdapter paramListAdapter) {}
+  public wof(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    switch (paramView.getId())
-    {
-    }
-    String str;
-    do
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    for (;;)
     {
       return;
-      str = (String)paramView.getTag(-1);
-      paramView = (String)paramView.getTag(-2);
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramView))) {
-        break;
+      if ((this.a.e == 0) && (this.a.a != null))
+      {
+        int i = this.a.a.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof SearchBaseFragment.ItemViewHolder)))
+          {
+            paramBitmap = (SearchBaseFragment.ItemViewHolder)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
+          }
+          paramInt2 += 1;
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("Contacts.PublicAccountFragment", 2, "onClick - uin = " + str + ", name = " + paramView);
-    return;
-    CrmUtils.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, str, "IvrEnterpriseDetailEngineFalse");
+    }
   }
 }
 

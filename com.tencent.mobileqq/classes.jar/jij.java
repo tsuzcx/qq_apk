@@ -1,45 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.av.business.manager.pendant.EffectPendantTools;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class jij
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
+  public jij(EffectPendantTools paramEffectPendantTools, File paramFile, PendantItem paramPendantItem) {}
   
-  public jij(GaInviteActivity paramGaInviteActivity, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (this.jdField_a_of_type_Int)
+    try
     {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
+      ZipUtils.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.b(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem));
       return;
-      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.h(true);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
-        break;
-        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
-          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.r();
-        }
-      }
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jij
  * JD-Core Version:    0.7.0.1
  */

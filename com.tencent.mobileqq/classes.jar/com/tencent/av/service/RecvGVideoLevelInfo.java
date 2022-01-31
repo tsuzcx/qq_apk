@@ -6,12 +6,12 @@ import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import jnq;
+import jpt;
 
 public class RecvGVideoLevelInfo
   implements Parcelable, Cloneable, Comparable
 {
-  public static final Parcelable.Creator CREATOR = new jnq();
+  public static final Parcelable.Creator CREATOR = new jpt();
   static String a;
   public int a;
   public long a;
@@ -138,7 +138,7 @@ public class RecvGVideoLevelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.service.RecvGVideoLevelInfo
  * JD-Core Version:    0.7.0.1
  */

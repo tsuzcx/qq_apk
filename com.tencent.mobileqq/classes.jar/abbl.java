@@ -1,20 +1,27 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import java.util.ArrayList;
 
-public class abbl
-  implements ClickableColorSpanTextView.SpanClickListener
+class abbl
+  extends ArkAppCGI.ArkAppCGICallback
 {
-  public abbl(ARMapActivity paramARMapActivity) {}
+  abbl(abbk paramabbk) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void a(boolean paramBoolean, ArrayList paramArrayList1, ArrayList arg3, Object paramObject)
   {
-    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://wa.qq.com/help/info.html");
-    this.a.startActivity(paramClickableColorSpanTextView);
+    if ((!paramBoolean) || (paramArrayList1 == null) || (paramArrayList1.isEmpty())) {
+      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("_updatePredownloadAppList, fail.", new Object[0]));
+    }
+    synchronized (ArkLocalAppMgr.b(this.a.a))
+    {
+      ArkLocalAppMgr.b(this.a.a).clear();
+      if (paramArrayList1 != null) {
+        ArkLocalAppMgr.b(this.a.a).addAll(paramArrayList1);
+      }
+      return;
+      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("_updatePredownloadAppList, success, app-count=%d", new Object[] { Integer.valueOf(paramArrayList1.size()) }));
+    }
   }
 }
 

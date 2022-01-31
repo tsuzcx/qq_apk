@@ -1,33 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.av.random.RandomWebProtocol.OnRequestListener;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel.SlideAcceptListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jko
-  extends Thread
+  implements QavPanel.SlideAcceptListener
 {
-  public jko(RandomWebProtocol paramRandomWebProtocol, String paramString1, String paramString2) {}
+  public jko(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    jkx localjkx = new jkx(this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "null"))) {
-      localjkx.a = this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol.a(this.b, this.jdField_a_of_type_JavaLangString);
-    }
-    if (localjkx.a != null) {}
-    for (int i = 0;; i = -1)
+    if (paramBoolean)
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol.a.iterator();
-      while (localIterator.hasNext()) {
-        ((RandomWebProtocol.OnRequestListener)localIterator.next()).a(i, localjkx);
+      if ((!this.a.a.e) && (!this.a.a.l())) {
+        break label62;
       }
+      this.a.f();
+    }
+    for (;;)
+    {
+      ReportController.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
+      return;
+      label62:
+      this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jko
  * JD-Core Version:    0.7.0.1
  */

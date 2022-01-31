@@ -1,64 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PLUploadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
-class agom
-  implements ActionSheet.OnButtonClickListener
+public class agom
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  agom(agol paramagol, agni paramagni) {}
+  public agom(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-      for (;;)
-      {
-        this.jdField_a_of_type_Agol.a.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-        return;
-        this.jdField_a_of_type_Agol.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.a(agol.a(this.jdField_a_of_type_Agol), this.jdField_a_of_type_Agni.a);
-      }
-    }
-    paramView = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Agol.a).get(Long.valueOf(agol.a(this.jdField_a_of_type_Agol)));
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Agol.a.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      return;
-    }
-    paramInt = 0;
-    label115:
-    if (paramInt < paramView.personalityLabelPhotos.size()) {
-      if (((PersonalityLabelPhoto)paramView.personalityLabelPhotos.get(paramInt)).uniseq == this.jdField_a_of_type_Agni.a.uniseq) {
-        paramView.personalityLabelPhotos.remove(paramInt);
-      }
-    }
-    for (;;)
-    {
-      if (paramInt < 0)
-      {
-        this.jdField_a_of_type_Agol.a.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-        return;
-        paramInt += 1;
-        break label115;
-      }
-      paramView.photoCount -= 1;
-      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Agol.a, agol.a(this.jdField_a_of_type_Agol), paramView);
-      this.jdField_a_of_type_Agol.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager.b(agol.a(this.jdField_a_of_type_Agol), this.jdField_a_of_type_Agni.a);
-      break;
-      paramInt = -1;
-    }
+    this.a.d = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * -1.0F * AIOUtils.a(1.5F, this.a.getResources()));
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agom
  * JD-Core Version:    0.7.0.1
  */

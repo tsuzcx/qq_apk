@@ -1,16 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class nid
-  implements View.OnClickListener
+  implements Runnable
 {
-  public nid(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
+  public nid(MsgTabNodeListLoader paramMsgTabNodeListLoader, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a = 0;
-    this.a.a(null);
+    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c)
+    {
+      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.iterator();
+      if (localIterator.hasNext()) {
+        ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).b(this.jdField_a_of_type_Boolean);
+      }
+    }
   }
 }
 

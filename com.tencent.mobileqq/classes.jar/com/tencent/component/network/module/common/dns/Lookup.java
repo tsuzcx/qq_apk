@@ -3,7 +3,7 @@ package com.tencent.component.network.module.common.dns;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketTimeoutException;
-import pkn;
+import ppf;
 
 public class Lookup
 {
@@ -27,9 +27,9 @@ public class Lookup
       return localObject1;
       try
       {
-        Object localObject2 = new pkn();
-        ((pkn)localObject2).a(paramLong);
-        localObject2 = ((pkn)localObject2).a(this.a, (byte[])localObject1);
+        Object localObject2 = new ppf();
+        ((ppf)localObject2).a(paramLong);
+        localObject2 = ((ppf)localObject2).a(this.a, (byte[])localObject1);
         localObject1 = arrayOfInetAddress;
         if (localObject2 == null) {
           continue;

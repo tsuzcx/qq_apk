@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
-import java.util.Observable;
-import java.util.Observer;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
-class ahwb
-  implements Observer
+public class ahwb
+  implements Runnable
 {
-  ahwb(ahwa paramahwa) {}
+  public ahwb(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(MessageSearchEngine.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine, this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a, (FullMessageSearchResult)paramObject));
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 1);
   }
 }
 

@@ -1,16 +1,13 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.BaseResponse;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
 
 public class nbl
   implements Runnable
 {
-  public nbl(CmdTaskManger.UIThreadCallback paramUIThreadCallback, NetworkRequest paramNetworkRequest, BaseResponse paramBaseResponse, ErrorMessage paramErrorMessage) {}
+  public nbl(PublicAccountImageCollectionListView paramPublicAccountImageCollectionListView, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$UIThreadCallback.b(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest, this.jdField_a_of_type_ComTencentBizQqstoryChannelBaseResponse, this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionListView.smoothScrollBy(this.jdField_a_of_type_Int, this.b);
   }
 }
 

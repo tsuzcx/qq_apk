@@ -1,25 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.DevicePicItemBuilder;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
 
 public class uvw
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public uvw(DevicePicItemBuilder paramDevicePicItemBuilder, MessageForDeviceFile paramMessageForDeviceFile, ActionSheet paramActionSheet) {}
+  public uvw(RecordSoundPanel paramRecordSoundPanel) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
+    this.a.f();
   }
 }
 

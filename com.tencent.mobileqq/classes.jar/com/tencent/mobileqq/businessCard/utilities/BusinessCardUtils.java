@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.businessCard.utilities;
 
-import abor;
-import abos;
+import abvs;
+import abvt;
 import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -65,7 +65,7 @@ public class BusinessCardUtils
   public static String a(QQAppInterface paramQQAppInterface)
   {
     Calendar localCalendar = Calendar.getInstance();
-    StringBuilder localStringBuilder = new StringBuilder(AppConstants.aJ + paramQQAppInterface.getCurrentAccountUin() + "/" + "business_card_photo/");
+    StringBuilder localStringBuilder = new StringBuilder(AppConstants.aK + paramQQAppInterface.getCurrentAccountUin() + "/" + "business_card_photo/");
     localStringBuilder.append("IMG");
     localStringBuilder.append(localCalendar.get(1));
     int i = localCalendar.get(2) + 1;
@@ -195,7 +195,7 @@ public class BusinessCardUtils
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestWidth = 1000;
       localURLDrawableOptions.mRequestHeight = 600;
-      ThreadManager.post(new abos(URLDrawable.getDrawable(paramString, localURLDrawableOptions)), 8, null, true);
+      ThreadManager.post(new abvt(URLDrawable.getDrawable(paramString, localURLDrawableOptions)), 8, null, true);
       return;
     }
     catch (Exception paramString)
@@ -230,9 +230,9 @@ public class BusinessCardUtils
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mRequestWidth = paramInt1;
         localURLDrawableOptions.mRequestHeight = paramInt2;
-        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130842335);
+        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130842370);
         paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-        paramURLImageView.setURLDrawableDownListener(new abor(paramURLImageView));
+        paramURLImageView.setURLDrawableDownListener(new abvs(paramURLImageView));
         return;
       }
       catch (Exception paramString) {}

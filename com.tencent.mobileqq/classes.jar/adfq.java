@@ -1,17 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
 public class adfq
-  implements FileManagerUtil.TipsClickedInterface
+  extends adgb
 {
-  public adfq(ZipFilePresenter paramZipFilePresenter) {}
-  
-  public void a(View paramView)
+  public adfq(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    FileManagerUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateAcceptByPC";
   }
 }
 

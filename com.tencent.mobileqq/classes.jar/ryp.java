@@ -1,20 +1,14 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class ryp
   implements Runnable
 {
-  ryp(ryo paramryo) {}
+  ryp(ryo paramryo, ChatMessage paramChatMessage) {}
   
   public void run()
   {
-    int i = this.a.a.app.a().a(this.a.a.b, this.a.a.jdField_a_of_type_Int);
-    Message localMessage = this.a.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(13);
-    localMessage.arg1 = i;
-    this.a.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    this.jdField_a_of_type_Ryo.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_Ryo.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Ryo.b, this.jdField_a_of_type_Ryo.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyEmojs);
   }
 }
 

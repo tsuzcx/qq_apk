@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.arcard;
 
-import aalu;
-import aalv;
-import aalw;
+import aaso;
+import aasp;
+import aasq;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -19,9 +19,9 @@ import mqq.os.MqqHandler;
 
 public class ARCardHeadIconManager
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aalv(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aasp(this);
   private final Context jdField_a_of_type_AndroidContentContext;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aalu(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aaso(this);
   private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private final Hashtable jdField_a_of_type_JavaUtilHashtable = new Hashtable();
   private boolean jdField_a_of_type_Boolean = true;
@@ -35,15 +35,15 @@ public class ARCardHeadIconManager
   {
     if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString))
     {
-      aalw localaalw = (aalw)this.jdField_a_of_type_JavaUtilHashtable.get(paramString);
-      localaalw.jdField_a_of_type_Boolean = true;
-      localaalw.jdField_a_of_type_Long = System.currentTimeMillis();
+      aasq localaasq = (aasq)this.jdField_a_of_type_JavaUtilHashtable.get(paramString);
+      localaasq.jdField_a_of_type_Boolean = true;
+      localaasq.jdField_a_of_type_Long = System.currentTimeMillis();
       this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
       if (1 == this.jdField_a_of_type_JavaUtilArrayList.size()) {
         ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
       }
       if (QLog.isColorLevel()) {
-        QLog.i("DingdongHeadManager", 2, "RequestContactHeadPathByIpc:uin=[" + paramString + "],request_time=[" + localaalw.jdField_a_of_type_Long + "].");
+        QLog.i("DingdongHeadManager", 2, "RequestContactHeadPathByIpc:uin=[" + paramString + "],request_time=[" + localaasq.jdField_a_of_type_Long + "].");
       }
     }
   }
@@ -60,7 +60,7 @@ public class ARCardHeadIconManager
   {
     StringBuilder localStringBuilder = new StringBuilder(256);
     if (SystemUtil.a()) {
-      localStringBuilder.append(AppConstants.bm);
+      localStringBuilder.append(AppConstants.bn);
     }
     for (;;)
     {
@@ -75,31 +75,31 @@ public class ARCardHeadIconManager
   
   public String a(String paramString)
   {
-    aalw localaalw2 = (aalw)this.jdField_a_of_type_JavaUtilHashtable.get(paramString);
-    aalw localaalw1 = localaalw2;
-    if (localaalw2 == null)
+    aasq localaasq2 = (aasq)this.jdField_a_of_type_JavaUtilHashtable.get(paramString);
+    aasq localaasq1 = localaasq2;
+    if (localaasq2 == null)
     {
-      localaalw1 = new aalw(this);
-      this.jdField_a_of_type_JavaUtilHashtable.put(paramString, localaalw1);
+      localaasq1 = new aasq(this);
+      this.jdField_a_of_type_JavaUtilHashtable.put(paramString, localaasq1);
     }
-    if (localaalw1.jdField_a_of_type_Boolean)
+    if (localaasq1.jdField_a_of_type_Boolean)
     {
       long l = System.currentTimeMillis();
-      if (localaalw1.jdField_a_of_type_Long + 1500L < l) {
+      if (localaasq1.jdField_a_of_type_Long + 1500L < l) {
         return null;
       }
-      localaalw1.jdField_a_of_type_Boolean = false;
+      localaasq1.jdField_a_of_type_Boolean = false;
     }
-    if (TextUtils.isEmpty(localaalw1.jdField_a_of_type_JavaLangString)) {
-      localaalw1.jdField_a_of_type_JavaLangString = b(paramString);
+    if (TextUtils.isEmpty(localaasq1.jdField_a_of_type_JavaLangString)) {
+      localaasq1.jdField_a_of_type_JavaLangString = b(paramString);
     }
-    if ((localaalw1.jdField_a_of_type_JavaLangString != null) && (!a(localaalw1.jdField_a_of_type_JavaLangString))) {
-      localaalw1.jdField_a_of_type_JavaLangString = null;
+    if ((localaasq1.jdField_a_of_type_JavaLangString != null) && (!a(localaasq1.jdField_a_of_type_JavaLangString))) {
+      localaasq1.jdField_a_of_type_JavaLangString = null;
     }
-    if ((localaalw1.jdField_a_of_type_JavaLangString == null) && (!localaalw1.jdField_a_of_type_Boolean)) {
+    if ((localaasq1.jdField_a_of_type_JavaLangString == null) && (!localaasq1.jdField_a_of_type_Boolean)) {
       a(paramString);
     }
-    return localaalw1.jdField_a_of_type_JavaLangString;
+    return localaasq1.jdField_a_of_type_JavaLangString;
   }
   
   public void a()

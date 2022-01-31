@@ -1,26 +1,34 @@
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class uwj
-  implements FMDialogUtil.FMDialogInterface
+  implements Runnable
 {
-  public uwj(FileItemBuilder paramFileItemBuilder, FileManagerEntity paramFileManagerEntity) {}
+  public uwj(DoodleMsgLayout paramDoodleMsgLayout, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      return;
+    QLog.d("DoodleMsgLayout", 2, "setDoodleContent start create drawable:" + this.jdField_a_of_type_Int);
+    if (!DoodleResHelper.a().b(1, this.jdField_a_of_type_Int)) {
+      DoodleResHelper.a().b(1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    Drawable localDrawable;
+    do
+    {
+      return;
+      localDrawable = DoodleResHelper.a().a(2, this.jdField_a_of_type_Int, true);
+      if (localDrawable != null) {
+        ((URLDrawable)localDrawable).startDownload();
+      }
+    } while (this.jdField_a_of_type_Int != DoodleMsgLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout));
+    new Handler(Looper.getMainLooper()).post(new uwk(this, localDrawable));
+    QLog.d("DoodleMsgLayout", 2, "setDoodleContent finish create drawable:" + this.jdField_a_of_type_Int);
   }
-  
-  public void b() {}
 }
 
 

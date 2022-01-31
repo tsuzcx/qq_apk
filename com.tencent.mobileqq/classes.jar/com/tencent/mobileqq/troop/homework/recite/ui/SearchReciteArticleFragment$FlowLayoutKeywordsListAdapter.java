@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import ajjt;
+import ajrf;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +39,8 @@ public class SearchReciteArticleFragment$FlowLayoutKeywordsListAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969925, null, false);
-      paramViewGroup = new ajjt(this, null);
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969936, null, false);
+      paramViewGroup = new ajrf(this, null);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361928));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramViewGroup);
       paramView.setTag(paramViewGroup);
@@ -51,13 +51,13 @@ public class SearchReciteArticleFragment$FlowLayoutKeywordsListAdapter
       paramViewGroup.jdField_a_of_type_Int = paramInt;
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       return paramView;
-      paramViewGroup = (ajjt)paramView.getTag();
+      paramViewGroup = (ajrf)paramView.getTag();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter
  * JD-Core Version:    0.7.0.1
  */

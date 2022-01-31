@@ -1,20 +1,16 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class ryh
-  implements DialogInterface.OnCancelListener
+public class ryh
+  implements View.OnTouchListener
 {
-  ryh(ryg paramryg) {}
+  public ryh(BaseChatPie paramBaseChatPie) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    return true;
   }
 }
 

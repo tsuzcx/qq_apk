@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2782" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020441" android:layout_width="fill_parent" android:layout_height="134.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a239c" android:background="@drawable/skin_searchbar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:clickable="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407e6" />
-    </LinearLayout>
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a279b" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f58" android:background="@drawable/skin_searchbar_bg" android:focusable="true" android:visibility="visible" android:scrollbars="none" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <RelativeLayout android:id="@id/result_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/search_box" android:layout_alignParentBottom="true">
-            <com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView android:id="@id/searchList" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@android:color/transparent" android:divider="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043f" android:dividerHeight="1.0px" android:footerDividersEnabled="false" />
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a279c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a279d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:text="未搜索到相关结果" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ef4" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
-                <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a279e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02046d" android:paddingLeft="45.0dip" android:paddingTop="9.0dip" android:paddingRight="45.0dip" android:paddingBottom="9.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="查看全部认证帐号" />
-            </LinearLayout>
-        </RelativeLayout>
-    </FrameLayout>
-</LinearLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2783" android:layout_width="fill_parent" android:layout_height="134.0dip" android:scaleType="matrix" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2784" android:layout_width="wrap_content" android:layout_height="134.0dip">
+        <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0551" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2785" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginLeft="13.0dip" android:text="好友小视频" />
+        <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2786" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_alignParentRight="true">
+            <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0551" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2787" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="查看全部" />
+            <TextView android:textSize="9.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2788" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217d5" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="9.0dip" android:minWidth="6.0dip" android:minHeight="12.0dip" android:includeFontPadding="false" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2789" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217fd" />
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2717" android:paddingLeft="6.5dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="102.0dip" android:layout_marginTop="32.0dip" android:overScrollMode="never" />
+    </RelativeLayout>
+    <com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a278a" android:layout_width="fill_parent" android:layout_height="15.0dip" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a2784" />
+</RelativeLayout>

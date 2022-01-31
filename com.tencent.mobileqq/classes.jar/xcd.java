@@ -1,24 +1,42 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.media.MediaMetadataRetriever;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaDatabaseHelper;
+import com.tencent.mobileqq.activity.photo.MediaScanner;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaScannerListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class xcd
-  extends FriendListObserver
+  implements Runnable
 {
-  public xcd(TransactionActivity paramTransactionActivity) {}
+  public xcd(MediaScanner paramMediaScanner, WeakReference paramWeakReference1, WeakReference paramWeakReference2, int paramInt) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void run()
   {
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
+    try
+    {
+      LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      MediaScanner.OnMediaScannerListener localOnMediaScannerListener = (MediaScanner.OnMediaScannerListener)this.b.get();
+      if (localLocalMediaInfo != null)
+      {
+        if (localOnMediaScannerListener == null) {
+          return;
+        }
+        MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+        localMediaMetadataRetriever.setDataSource(localLocalMediaInfo.path);
+        localLocalMediaInfo.mDuration = Long.parseLong(localMediaMetadataRetriever.extractMetadata(9));
+        localOnMediaScannerListener.a(this.jdField_a_of_type_Int, localLocalMediaInfo);
+        MediaScanner.a(MediaScanner.a(BaseApplicationImpl.getContext())).a(localLocalMediaInfo.path, localLocalMediaInfo.mDuration);
+        return;
+      }
     }
-    TransactionActivity.b(this.a, ContactUtils.c(this.a.app, TransactionActivity.c(this.a), false));
-    paramString = QWalletTools.a(TransactionActivity.a(this.a), TransactionActivity.d(this.a), AIOUtils.a(TransactionActivity.c(this.a), TransactionActivity.a(this.a).getResources()), TransactionActivity.a(this.a).getPaint());
-    TransactionActivity.a(this.a).setText(paramString + "(" + TransactionActivity.c(this.a) + ")");
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MediaScanner", 2, "queryMediaInfoDuration() error=" + localException.getMessage());
+      }
+    }
   }
 }
 

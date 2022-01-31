@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2480" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="64.0dip"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="这里没有兔兔" />
-</RelativeLayout>
+    <TextView android:id="@id/info" android:singleLine="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0282" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0686" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0284" />
+</LinearLayout>

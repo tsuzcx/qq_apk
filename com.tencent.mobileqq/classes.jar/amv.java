@@ -1,19 +1,67 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.qq.im.poi.LbsPackInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.qq.im.poi.LbsPackListActivity;
 import com.qq.im.poi.LbsPackListAdapter;
-import com.qq.im.poi.LbsPackListAdapter.LbsPackItemCallback;
+import com.qq.im.poi.LbsPackManager;
+import com.qq.im.poi.LbsPackMapInfo;
+import com.qq.im.poi.LbsPackPoiInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class amv
-  implements View.OnClickListener
+  extends Handler
 {
-  public amv(LbsPackListAdapter paramLbsPackListAdapter, LbsPackInfo paramLbsPackInfo, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public amv(LbsPackListActivity paramLbsPackListActivity, Looper paramLooper)
   {
-    if (LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter) != null) {
-      LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter).a(this.jdField_a_of_type_ComQqImPoiLbsPackInfo, this.jdField_a_of_type_Int);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
+    long l;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+              } while (LbsPackListActivity.a(this.a) == null);
+              if ((LbsPackListActivity.a(this.a).a == null) || (LbsPackListActivity.a(this.a).a.a == null)) {
+                break;
+              }
+              paramMessage = (LbsPackPoiInfo)LbsPackListActivity.a(this.a).a.a.get(Long.valueOf(LbsPackListActivity.a(this.a)));
+            } while ((paramMessage == null) || (paramMessage.a == null) || (LbsPackListActivity.a(this.a) == null));
+            LbsPackListActivity.a(this.a).addAll(paramMessage.a);
+            LbsPackListActivity.a(this.a).a(LbsPackListActivity.a(this.a), LbsPackListActivity.a(this.a));
+          } while (!QLog.isColorLevel());
+          QLog.d("LbsPack", 2, "LbsPackListActivity handleMessage MSG_REQ_INIT_DATA size=" + paramMessage.a.size());
+          return;
+        } while (!QLog.isColorLevel());
+        QLog.d("LbsPack", 2, "LbsPackListActivity MSG_REQ_INIT_DATA null");
+        return;
+        l = -1L;
+        if ((paramMessage.obj instanceof Long)) {
+          l = ((Long)paramMessage.obj).longValue();
+        }
+      } while (LbsPackListActivity.a(this.a) == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("LbsPack", 2, "LbsPackListActivity handleMessage MSG_REQ_PAGINATION_DATA size=" + LbsPackListActivity.a(this.a).size() + " poiId=" + l + " mPoiId=" + LbsPackListActivity.a(this.a));
+      }
+    } while (l != LbsPackListActivity.a(this.a));
+    LbsPackListActivity.a(this.a).a(LbsPackListActivity.a(this.a), LbsPackListActivity.a(this.a));
   }
 }
 

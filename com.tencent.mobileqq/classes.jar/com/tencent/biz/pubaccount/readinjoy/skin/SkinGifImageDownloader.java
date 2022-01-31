@@ -5,7 +5,7 @@ import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import java.io.File;
 import java.io.OutputStream;
-import lxm;
+import maz;
 
 public class SkinGifImageDownloader
   extends AbsDownloader
@@ -33,7 +33,7 @@ public class SkinGifImageDownloader
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return new lxm(this, paramFile, false, false, 0, 0, 0.0F);
+    return new maz(this, paramFile, false, false, 0, 0, 0.0F);
   }
 }
 

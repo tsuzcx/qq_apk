@@ -4,7 +4,7 @@ import com.tencent.mobileqq.highway.utils.EndPoint;
 
 public abstract interface IConnection
 {
-  public abstract void connect();
+  public abstract boolean connect();
   
   public abstract void disConnect();
   

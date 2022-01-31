@@ -1,34 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CommentLikeObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CommentLikeObserver;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class lit
-  implements NativeCommentServlet.CommentLikeObserver
+  implements Runnable
 {
-  public lit(ArticleCommentModule paramArticleCommentModule, ArticleCommentModule.CommentLikeObserver paramCommentLikeObserver, int paramInt) {}
+  public lit(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity, ArrayList paramArrayList) {}
   
-  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString1, paramInt, paramString2);
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, String paramString, JSONObject paramJSONObject)
-  {
-    try
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInJoyDeliverBiuActivity.app.getCurrentAccountUin();
+    localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_public_account_with_cuin_" + (String)localObject, 4);
+    if (localObject != null)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString, this.jdField_a_of_type_Int);
+      HashSet localHashSet = new HashSet();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        localHashSet.add(String.valueOf((Long)localIterator.next()));
       }
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver == null) {}
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString, -1, "parser local data error");
+      ((SharedPreferences)localObject).edit().putStringSet("readinjoy_deliver_biu_guide_uin", localHashSet);
+      ((SharedPreferences)localObject).edit().commit();
     }
   }
 }

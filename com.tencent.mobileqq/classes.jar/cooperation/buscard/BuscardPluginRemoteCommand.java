@@ -1,8 +1,8 @@
 package cooperation.buscard;
 
-import amjb;
-import amjc;
-import amjd;
+import amqn;
+import amqo;
+import amqp;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -98,7 +98,7 @@ public class BuscardPluginRemoteCommand
         Paint localPaint = new Paint();
         localPaint.setAntiAlias(true);
         Rect localRect = new Rect(paramInt1, paramInt1, paramInt1 + 60, 60 + paramInt1);
-        paramResources = BitmapManager.a(paramResources, 2130841207);
+        paramResources = BitmapManager.a(paramResources, 2130841233);
         if (paramResources != null)
         {
           localCanvas.drawBitmap(paramResources, null, localRect, localPaint);
@@ -180,7 +180,7 @@ public class BuscardPluginRemoteCommand
         }
         if (paramBundle2.equals("location"))
         {
-          SosoInterface.a(new amjc(this, 3, true, true, 300000L, false, false, "buscardLocation", localBundle, paramOnInvokeFinishLinstener));
+          SosoInterface.a(new amqo(this, 3, true, true, 300000L, false, false, "buscardLocation", localBundle, paramOnInvokeFinishLinstener));
           break;
         }
         Object localObject2;
@@ -206,7 +206,7 @@ public class BuscardPluginRemoteCommand
           for (paramBundle2 = (Bundle)localObject1;; paramBundle2 = "null")
           {
             QLog.d("BuscardPluginRemoteCommand", 2, paramBundle2);
-            PublicAccountUtil.a(a(), a().getApp(), (String)localObject1, new amjd(this, localBundle, paramOnInvokeFinishLinstener));
+            PublicAccountUtil.a(a(), a().getApp(), (String)localObject1, new amqp(this, localBundle, paramOnInvokeFinishLinstener));
             break;
           }
         }
@@ -314,7 +314,7 @@ public class BuscardPluginRemoteCommand
     {
       if ((!this.a) && (Thread.currentThread() != Looper.getMainLooper().getThread()))
       {
-        new Handler(Looper.getMainLooper()).post(new amjb(this, paramBundle, localBundle, paramOnInvokeFinishLinstener));
+        new Handler(Looper.getMainLooper()).post(new amqn(this, paramBundle, localBundle, paramOnInvokeFinishLinstener));
         return localBundle;
       }
       paramOnInvokeFinishLinstener = a(paramBundle, localBundle, paramOnInvokeFinishLinstener);

@@ -1,37 +1,27 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class wyf
-  implements SurfaceHolder.Callback
+  implements Animator.AnimatorListener
 {
-  public wyf(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wyf(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "surfaceCreated ");
-    }
-    if ((this.a.q == 1) && (this.a.p > 0))
-    {
-      this.a.a(this.a.p);
-      this.a.p = 0;
-      this.a.q = 0;
-    }
+    this.a.e = AvatarPendantActivity.c;
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "surfaceDestroyed ");
-    }
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
+    this.a.e = AvatarPendantActivity.a;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.e = AvatarPendantActivity.d;
   }
 }
 

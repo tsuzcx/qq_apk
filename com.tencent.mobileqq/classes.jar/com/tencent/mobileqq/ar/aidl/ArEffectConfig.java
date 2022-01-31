@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aaep;
+import aalg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -18,7 +18,7 @@ import org.json.JSONObject;
 public class ArEffectConfig
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aaep();
+  public static final Parcelable.Creator CREATOR = new aalg();
   public int a;
   public ArrayList a;
   public int b;

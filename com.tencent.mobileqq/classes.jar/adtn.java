@@ -1,21 +1,31 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 
-class adtn
-  implements Runnable
+public class adtn
+  implements DialogInterface.OnClickListener
 {
-  adtn(adtm paramadtm) {}
+  public adtn(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.getActivity() != null) {
-      this.a.a.getActivity().finish();
-    }
+    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
+    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.a);
+    paramDialogInterface.putExtra("fragment_id", 1);
+    paramDialogInterface.setFlags(67108864);
+    paramDialogInterface.setFlags(268435456);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adtn
  * JD-Core Version:    0.7.0.1
  */

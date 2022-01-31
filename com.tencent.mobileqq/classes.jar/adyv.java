@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
 
-public class adyv
+class adyv
   implements Runnable
 {
-  public adyv(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController) {}
+  adyv(adyu paramadyu) {}
   
   public void run()
   {
-    this.a.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder, this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
   }
 }
 

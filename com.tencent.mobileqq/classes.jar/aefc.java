@@ -1,25 +1,47 @@
-import android.content.ComponentName;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TimJumpLoginManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.jsp.QQApiPlugin;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class aefc
-  implements DialogInterface.OnClickListener
+class aefc
+  implements TroopMemberApiClient.Callback
 {
-  public aefc(TimJumpLoginManager paramTimJumpLoginManager) {}
+  aefc(aeez paramaeez, Bitmap paramBitmap) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    Intent localIntent = new Intent();
-    localIntent.setComponent(new ComponentName("com.tencent.tim", "com.tencent.mobileqq.activity.SplashActivity"));
-    localIntent.setFlags(268435456);
-    TimJumpLoginManager.a(this.a).getApp().startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    ReportController.b(TimJumpLoginManager.a(this.a), "dc00898", "", "", "0X80085DA", "0X80085DA", 0, 0, "", "", "", "");
+    int j = 0;
+    int i = 0;
+    if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
+    {
+      paramBundle = WxShareHelperFromReadInjoy.a();
+      str1 = this.jdField_a_of_type_Aeez.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
+      str2 = this.jdField_a_of_type_Aeez.d;
+      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      str3 = this.jdField_a_of_type_Aeez.e;
+      str4 = this.jdField_a_of_type_Aeez.b;
+      if ("2".equals(this.jdField_a_of_type_Aeez.jdField_a_of_type_JavaLangString)) {}
+      for (;;)
+      {
+        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
+        return;
+        i = 1;
+      }
+    }
+    paramBundle = WXShareHelper.a();
+    String str1 = this.jdField_a_of_type_Aeez.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
+    String str2 = this.jdField_a_of_type_Aeez.d;
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    String str3 = this.jdField_a_of_type_Aeez.e;
+    String str4 = this.jdField_a_of_type_Aeez.b;
+    if ("2".equals(this.jdField_a_of_type_Aeez.jdField_a_of_type_JavaLangString)) {}
+    for (i = j;; i = 1)
+    {
+      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
+      return;
+    }
   }
 }
 

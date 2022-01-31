@@ -1,13 +1,16 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-public abstract interface ood
+public class ood
+  implements Runnable
 {
-  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
+  public ood(DoodleLayout paramDoodleLayout) {}
   
-  public abstract boolean a();
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public void run()
+  {
+    this.a.a(true);
+    this.a.b(new View[] { this.a.a });
+  }
 }
 
 

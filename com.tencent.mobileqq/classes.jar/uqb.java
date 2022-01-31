@@ -1,53 +1,38 @@
-import com.tencent.av.core.VcSystemInfo;
-import com.tencent.av.utils.TraeHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
-import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
-import com.tencent.mobileqq.earlydownload.handler.QavSoDownloadHandler;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 
-public final class uqb
-  implements Runnable
+class uqb
+  implements PreloadManager.OnGetPathListener
 {
-  public uqb(boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString) {}
+  uqb(uqa paramuqa) {}
   
-  public void run()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
     {
-      if (PressToChangeVoicePanel.jdField_a_of_type_JavaLangString == null) {
-        PressToChangeVoicePanel.jdField_a_of_type_JavaLangString = TraeHelper.a(BaseApplicationImpl.sApplication);
+      paramPathResult = SafeBitmapFactory.decodeFile(paramPathResult, ImageUtil.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 300.0F + 0.5D)));
+      if (paramPathResult != null) {
+        this.a.a.background = paramPathResult;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("AIOAudioPanel", 2, "checkVcSo async:" + PressToChangeVoicePanel.jdField_a_of_type_JavaLangString);
+        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy info.background=" + this.a.a.background);
       }
     }
-    if ((PressToChangeVoicePanel.jdField_a_of_type_JavaLangString != null) || (VcSystemInfo.f() <= 2)) {}
-    for (;;)
+    catch (Throwable paramPathResult)
     {
-      try
+      for (;;)
       {
-        EarlyHandler localEarlyHandler = ((EarlyDownloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(76)).a(QavSoDownloadHandler.e());
-        if (localEarlyHandler == null) {
-          continue;
-        }
-        localEarlyHandler.a(false);
+        paramPathResult.printStackTrace();
       }
-      catch (Exception localException)
-      {
-        QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo Exception:" + localException.getMessage());
-        continue;
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
-      return;
-      QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo null == earlyHandler:");
-      continue;
-      UpdateAvSo.b(BaseApplicationImpl.sApplication, "traeimp-armeabi-v7a", true);
     }
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 

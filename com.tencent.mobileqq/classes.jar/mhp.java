@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
 
 class mhp
   implements Runnable
 {
-  mhp(mhf parammhf) {}
+  mhp(mho parammho, VideoPlayerWrapper paramVideoPlayerWrapper) {}
   
   public void run()
   {
-    this.a.a.notifyDataSetChanged();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.h();
+    }
+    VideoFeedsPlayManager.c(this.jdField_a_of_type_Mho.a);
   }
 }
 

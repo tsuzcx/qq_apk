@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.UploadListener;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyVideoUtils;
+import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
 
-public class aevq
-  implements Runnable
+public final class aevq
+  implements NearbyCustomDialog.OnClickListener
 {
-  public aevq(ImageFeedsUploader paramImageFeedsUploader, PicFeedUploadInfo paramPicFeedUploadInfo) {}
+  public aevq(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    if (ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader) != null) {
-      ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader).a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo);
-    }
+    NearbyVideoUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
   }
 }
 

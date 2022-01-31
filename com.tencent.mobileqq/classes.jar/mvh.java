@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.widget.ActionSheet;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import mqq.os.MqqHandler;
 
 public class mvh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public mvh(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
+  public mvh(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.dismiss();
+    ServiceAccountFolderManager localServiceAccountFolderManager = ServiceAccountFolderManager.a();
+    ServiceAccountFolderActivity.a(this.a, localServiceAccountFolderManager.a());
+    ServiceAccountFolderActivity.a(this.a).sendEmptyMessage(101);
   }
 }
 

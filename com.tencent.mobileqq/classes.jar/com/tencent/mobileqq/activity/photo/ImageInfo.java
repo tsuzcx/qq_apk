@@ -3,13 +3,13 @@ package com.tencent.mobileqq.activity.photo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import wwi;
+import xbw;
 
 public class ImageInfo
   extends BaseImageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new wwi();
+  public static final Parcelable.Creator CREATOR = new xbw();
   public long a;
   public int b;
   public long b;

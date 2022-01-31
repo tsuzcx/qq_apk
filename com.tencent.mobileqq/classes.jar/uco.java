@@ -1,29 +1,17 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class uco
-  extends CardObserver
+  implements DialogInterface.OnDismissListener
 {
-  public uco(TroopRequestActivity paramTroopRequestActivity) {}
+  public uco(TroopInfoActivity paramTroopInfoActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
-    if (paramObject == null) {}
-    Card localCard;
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
-      localCard = (Card)paramObject;
-    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
-    TroopRequestActivity.a(this.a, (Card)paramObject);
   }
 }
 

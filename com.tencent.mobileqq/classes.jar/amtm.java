@@ -1,55 +1,15 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVideoSoDownloadModule;
+import android.content.Context;
+import com.tencent.mobileqq.pluginsdk.PluginProxyService;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class amtm
-  implements ShortVideoResourceManager.INet_ShortVideoResource
+public final class amtm
+  implements Runnable
 {
-  ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
+  public amtm(Context paramContext, IPluginManager.PluginParams paramPluginParams) {}
   
-  public amtm(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, ResultReceiver paramResultReceiver)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
-  }
-  
-  public void C_()
-  {
-    QLog.e("QzoneVideoSoDownloadModule", 1, "onNetWorkNone");
-    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, "短视频插件下载失败：网络异常");
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i("QzoneVideoSoDownloadModule", 1, "onDownloadFinish name=" + paramString1 + " result=" + paramInt + " filePath=" + paramString2);
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label108;
-      }
-      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, "短视频插件下载失败[" + paramInt + "]");
-      ShortVideoErrorReport.b(2, paramInt);
-    }
-    for (;;)
-    {
-      if (paramString1.startsWith("new_qq_android_native_short_filter_")) {}
-      return;
-      label108:
-      if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-      {
-        paramString2 = new Bundle();
-        this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString2);
-      }
-    }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneVideoSoDownloadModule", 4, "onUpdateProgress: name=" + paramString + " curOffset=" + paramLong1 + " totalLen=" + paramLong2);
-    }
+    PluginProxyService.openService(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.d, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.e, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a);
   }
 }
 

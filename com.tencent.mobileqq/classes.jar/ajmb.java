@@ -1,29 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.logic.TroopAvatarWallEditCtrl;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import java.util.ArrayList;
-import mqq.observer.AccountObserver;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troop.filemanager.forward.TroopFileToTroopForwarder;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajmb
-  extends AccountObserver
+  implements Runnable
 {
-  public ajmb(TroopAvatarWallEditCtrl paramTroopAvatarWallEditCtrl) {}
+  public ajmb(TroopFileToTroopForwarder paramTroopFileToTroopForwarder) {}
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public void run()
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    if (paramString1 == null) {
-      while (i > 0)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b - 1);
-        i -= 1;
-      }
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
-      TroopUtils.a(paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter);
-    }
+    int i = BaseApplicationImpl.sApplication.getResources().getDimensionPixelSize(2131558448);
+    QQToast.a(BaseApplicationImpl.sApplication, "转发成功", 0).b(i);
   }
 }
 

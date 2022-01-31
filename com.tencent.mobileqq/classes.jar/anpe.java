@@ -1,32 +1,31 @@
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.adapter.MusicProviderPagerAdapter;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
+import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import cooperation.weiyun.utils.WyReportUtils;
 
-public class anpe
-  implements Runnable
+public final class anpe
+  implements UploadManager.IUploadStatusListener
 {
-  public anpe(MusicProviderView paramMusicProviderView, int paramInt) {}
+  public void onUploadJobAdded(String paramString, long paramLong) {}
   
-  public void run()
+  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
   {
-    GridView localGridView = this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_DovComQqImCaptureAdapterMusicProviderPagerAdapter.a(this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem());
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "position= " + this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem());
+    if (paramBoolean)
+    {
+      if (paramStatusInfo.state != 6) {
+        break label26;
+      }
+      WyReportUtils.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
     }
-    if (localGridView != null) {
-      localGridView.setSelection(this.jdField_a_of_type_Int);
-    }
-    while (!QLog.isColorLevel()) {
+    label26:
+    while (paramStatusInfo.state != 5) {
       return;
     }
-    QLog.e("MusicProviderView", 2, "gridView is null");
+    WyReportUtils.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpe
  * JD-Core Version:    0.7.0.1
  */

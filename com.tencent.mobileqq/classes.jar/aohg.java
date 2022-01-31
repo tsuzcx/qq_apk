@@ -1,65 +1,25 @@
-import android.os.Handler;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.common.GloableValue;
-import java.io.File;
-import java.io.IOException;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 
-class aohg
-  implements Runnable
+public class aohg
+  extends AnimatorListenerAdapter
 {
-  aohg(aohe paramaohe) {}
+  public aohg(DoodleEditView paramDoodleEditView, GestureHelper.ZoomItem paramZoomItem) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] delayInit,run start");
-    }
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.d())
-    {
-      RMVideoStateMgr.b(null);
-      if (!localRMVideoStateMgr.d()) {
-        return;
-      }
-    }
-    File localFile = new File(GloableValue.b + File.separator + ".nomedia");
-    if (!localFile.exists()) {}
-    try
-    {
-      localFile.createNewFile();
-      label84:
-      if (QLog.isColorLevel()) {
-        QLog.d("RMVideoInitState", 2, "[@] delayInit, post timeout runnable");
-      }
-      localRMVideoStateMgr.a.postDelayed(this.a.a, 20000L);
-      localRMVideoStateMgr.k();
-      localRMVideoStateMgr.l();
-      localRMVideoStateMgr.j();
-      try
-      {
-        AVCodec.get().init();
-        this.a.c = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoInitState", 2, "[@] delayInit,run finish");
-        }
-        this.a.g = false;
-        return;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        for (;;)
-        {
-          localUnsatisfiedLinkError.printStackTrace();
-          this.a.c = false;
-        }
-      }
-    }
-    catch (IOException localIOException)
-    {
-      break label84;
-    }
+    SLog.b("DoodleEditView", "onAnimationEnd");
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem.n = 1.0F;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    SLog.b("DoodleEditView", "onAnimationStart");
   }
 }
 

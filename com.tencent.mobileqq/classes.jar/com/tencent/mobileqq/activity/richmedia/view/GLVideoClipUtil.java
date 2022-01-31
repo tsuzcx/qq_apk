@@ -17,7 +17,7 @@ import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
-import xxt;
+import yec;
 
 public class GLVideoClipUtil
 {
@@ -31,7 +31,7 @@ public class GLVideoClipUtil
   private static int q = -1;
   public int a;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private xxt jdField_a_of_type_Xxt = new xxt(this, null);
+  private yec jdField_a_of_type_Yec = new yec(this, null);
   private int[] jdField_a_of_type_ArrayOfInt = new int[1];
   private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer = new ByteBuffer[2];
   public int b;
@@ -176,16 +176,16 @@ public class GLVideoClipUtil
       long l1 = this.r * this.s * 3 / 2;
       if (l1 != paramInt)
       {
-        xxt localxxt = this.jdField_a_of_type_Xxt;
-        localxxt.jdField_a_of_type_Int += 1;
+        yec localyec = this.jdField_a_of_type_Yec;
+        localyec.jdField_a_of_type_Int += 1;
         bool = true;
-        if (this.jdField_a_of_type_Xxt.jdField_a_of_type_Int >= 3) {
+        if (this.jdField_a_of_type_Yec.jdField_a_of_type_Int >= 3) {
           throw new GLVideoClipUtil.GLClipOldLibException("checkDataLength: dataSize=" + l1 + " length=" + paramInt + "prev*preh=" + this.r + " * " + this.s);
         }
       }
       else
       {
-        this.jdField_a_of_type_Xxt.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_Yec.jdField_a_of_type_Int = 0;
       }
     }
     return bool;

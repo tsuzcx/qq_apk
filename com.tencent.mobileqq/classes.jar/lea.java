@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.widget.BounceScrollView.DrawFinishedListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.ActionSheet.OnDismissListener;
+import mqq.os.MqqHandler;
 
 public class lea
-  implements BounceScrollView.DrawFinishedListener
+  implements ActionSheet.OnDismissListener
 {
-  public lea(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
+  public lea(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a()
+  public void onDismiss()
   {
-    if (ReadInJoySelfActivity.a(this.a))
-    {
-      ReadInJoySelfActivity.a(this.a, false);
-      PublicTracker.a("self_tab_cost", null);
+    if ((!this.a.a) && (this.a.h != -1)) {
+      ThreadManager.getUIHandler().postDelayed(new leb(this), 300L);
     }
+    this.a.a = false;
   }
 }
 

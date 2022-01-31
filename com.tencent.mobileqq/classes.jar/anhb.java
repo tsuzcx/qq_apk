@@ -1,26 +1,13 @@
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
-import cooperation.weiyun.utils.WyReportUtils;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public final class anhb
-  implements UploadManager.IUploadStatusListener
+public class anhb
+  implements Runnable
 {
-  public void onUploadJobAdded(String paramString, long paramLong) {}
+  public anhb(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      if (paramStatusInfo.state != 6) {
-        break label26;
-      }
-      WyReportUtils.a(paramString, "actFileWyUp", paramStatusInfo, false, paramLong);
-    }
-    label26:
-    while (paramStatusInfo.state != 5) {
-      return;
-    }
-    WyReportUtils.a(paramString, "actFileWyUp", paramStatusInfo, true, paramLong);
+    QZoneShareActivity.d(this.a);
   }
 }
 

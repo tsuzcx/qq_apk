@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import java.util.List;
 
 public class aieg
   implements Runnable
 {
-  public aieg(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
+  public aieg(ShortVideoResourceManager paramShortVideoResourceManager, List paramList) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.L_();
-    }
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

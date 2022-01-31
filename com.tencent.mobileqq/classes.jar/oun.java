@@ -1,15 +1,18 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
-import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
+import com.tencent.biz.qqstory.view.RingView.DrawInfo;
 
-class oun
-  extends ScannerActivity.QQDialogCancelListener
+public class oun
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  oun(oum paramoum) {}
+  public oun(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ScannerActivity.a(this.a.a).b();
+    this.a.c.a(((Integer)paramValueAnimator.getAnimatedValue("radius")).intValue(), 0.0F);
+    this.a.c.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
 }
 

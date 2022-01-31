@@ -1,46 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.manager.TicketManager;
 
-public class akwc
-  extends Handler
+public final class akwc
+  implements Runnable
 {
-  public int a;
-  
-  public akwc(ProgressPieDrawable paramProgressPieDrawable) {}
-  
-  public void a(int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.isVisible())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b = this.jdField_a_of_type_Int;
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b > this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.e);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b < this.jdField_a_of_type_Int)
-    {
-      int i = this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b + this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.f;
-      if (i <= this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(i);
-      }
-      for (;;)
+    if (SwiftBrowserCookieMonster.a == null) {
+      synchronized (SwiftBrowserCookieMonster.a())
       {
-        sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.e);
+        if (SwiftBrowserCookieMonster.a == null)
+        {
+          Object localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+          if (localObject1 != null)
+          {
+            localObject1 = (TicketManager)((AppRuntime)localObject1).getManager(2);
+            if (localObject1 != null)
+            {
+              SwiftBrowserCookieMonster.a = new akwd();
+              ((TicketManager)localObject1).registTicketManagerListener(SwiftBrowserCookieMonster.a);
+            }
+          }
+        }
         return;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(this.jdField_a_of_type_Int);
       }
     }
-    removeMessages(0);
   }
 }
 

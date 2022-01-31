@@ -1,16 +1,26 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.app.EnterpriseQQObserver;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import java.util.List;
 
 public class vwh
-  implements Runnable
+  extends EnterpriseQQObserver
 {
-  public vwh(NearbyChatPie paramNearbyChatPie) {}
+  public vwh(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.d.setText(this.a.a.d);
+    if (paramBoolean)
+    {
+      this.a.b = EnterpriseQQManager.a(this.a.a).a(this.a.a, this.a.a());
+      this.a.b(this.a.b);
+      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
+        this.a.o(false);
+      }
+    }
   }
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

@@ -1,62 +1,67 @@
-import com.tencent.mobileqq.ar.ARRecord.VideoRecordController.RecordListener;
-import com.tencent.mobileqq.ar.ARRecord.worldcup.ARWorldCupRecordController;
-import com.tencent.mobileqq.ar.ARRecord.worldcup.VideoProcessor;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.mobileqq.app.message.BaseMessageManagerForTroopAndDisc;
+import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Iterator;
+import java.util.List;
 
 public class zyv
-  implements VideoRecordController.RecordListener
+  implements Runnable
 {
-  public zyv(ARWorldCupRecordController paramARWorldCupRecordController) {}
+  public zyv(BaseMessageManagerForTroopAndDisc paramBaseMessageManagerForTroopAndDisc, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, String paramString, int paramInt, long paramLong, boolean paramBoolean) {}
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.worldcup.record", 2, String.format("onRecordFinish, finishType: %s, filePath:%s, state: %s", new Object[] { Integer.valueOf(paramInt), paramString, Integer.valueOf(ARWorldCupRecordController.a(this.a)) }));
-    }
-    if (FileUtil.a(paramString))
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
+    int j = 0;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    ChatMessage localChatMessage;
+    if (localObject != null)
     {
-      if ((ARWorldCupRecordController.a(this.a)) && (ARWorldCupRecordController.a(this.a) == 2)) {
-        ARWorldCupRecordController.b(this.a, VideoProcessor.a(paramString));
-      }
-      ARWorldCupRecordController.a(this.a).add(paramString);
-      if (ARWorldCupRecordController.a(this.a) == 15) {
-        ARWorldCupRecordController.a(this.a, -1, 0L);
-      }
+      localObject = ((List)localObject).iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        localChatMessage = (ChatMessage)((Iterator)localObject).next();
+      } while (MsgProxyUtils.a(localChatMessage));
     }
-    for (;;)
+    for (int i = (int)localChatMessage.shmsgseq;; i = 0)
     {
-      ARWorldCupRecordController.a(this.a, false);
-      return;
-      QLog.e("Q.worldcup.record", 1, String.format("onRecordFinish, filepath: %s is not exist", new Object[] { paramString }));
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    QLog.e("Q.worldcup.record", 1, String.format("onRecordError, errorType: %s, state: %s, mSegmentRecord: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(ARWorldCupRecordController.a(this.a)), Boolean.valueOf(ARWorldCupRecordController.a(this.a)) }));
-    ARWorldCupRecordController.a(this.a, false);
-    if (ARWorldCupRecordController.a(this.a) == 15) {
-      ARWorldCupRecordController.a(this.a, -1, 0L);
-    }
-  }
-  
-  public void i()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.worldcup.record", 2, String.format("onRecordStart, state: %s", new Object[] { Integer.valueOf(ARWorldCupRecordController.a(this.a)) }));
-    }
-    if (ARWorldCupRecordController.a(this.a) == 1) {
-      ARWorldCupRecordController.a(this.a, System.currentTimeMillis());
+      if (i <= this.jdField_a_of_type_Long + 1L) {}
+      for (boolean bool = true; (j == i) || (i <= this.jdField_a_of_type_Long); bool = false)
+      {
+        if ((bool) && (this.jdField_a_of_type_Boolean)) {
+          BaseMessageManagerForTroopAndDisc.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
+        }
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext.g = bool;
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a.post(new zyw(this));
+        return;
+      }
+      int k = (int)(i - this.jdField_a_of_type_Long);
+      j = k;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, k).size() != k)
+      {
+        j = k;
+        if (k > 15) {
+          j = 15;
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext.e = j;
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, j, this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade$RefreshMessageContext);
+      j = i;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zyv
  * JD-Core Version:    0.7.0.1
  */

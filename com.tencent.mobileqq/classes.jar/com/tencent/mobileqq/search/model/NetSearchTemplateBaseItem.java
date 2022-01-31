@@ -28,6 +28,7 @@ import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
 import java.util.HashMap;
 import java.util.List;
 import org.json.JSONException;
@@ -110,11 +111,6 @@ public class NetSearchTemplateBaseItem
     return this.jdField_d_of_type_JavaLangString;
   }
   
-  public String a(CharSequence paramCharSequence)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.a(paramCharSequence);
-  }
-  
   public void a(View paramView)
   {
     Object localObject3 = this.e;
@@ -151,7 +147,7 @@ public class NetSearchTemplateBaseItem
       else
       {
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label491;
+          break label496;
         }
         localObject1 = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), (String)localObject3);
         if (localObject1 == null) {
@@ -164,7 +160,7 @@ public class NetSearchTemplateBaseItem
     catch (JSONException localJSONException)
     {
       label433:
-      label491:
+      label496:
       do
       {
         for (;;)
@@ -176,6 +172,7 @@ public class NetSearchTemplateBaseItem
         Object localObject2;
         if ((((String)localObject3).startsWith("http://")) || (((String)localObject3).startsWith("https://")))
         {
+          QZoneHelper.a((String)localObject3);
           paramView = paramView.getContext();
           localObject2 = new Intent(paramView, QQBrowserActivity.class);
           ((Intent)localObject2).putExtra("url", (String)localObject3);
@@ -260,6 +257,8 @@ public class NetSearchTemplateBaseItem
       this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem$ImageInfo.jdField_a_of_type_JavaLangCharSequence = paramJSONObject.optString("topLeftTagText");
       this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem$ImageInfo.jdField_b_of_type_JavaLangString = paramJSONObject.optString("topLeftTagColor");
       this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem$ImageInfo.jdField_b_of_type_JavaLangCharSequence = paramJSONObject.optString("bottomRightText");
+      this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem$ImageInfo.jdField_c_of_type_JavaLangString = paramJSONObject.optString("bottomRightIconUrl");
+      this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem$ImageInfo.jdField_c_of_type_JavaLangCharSequence = paramJSONObject.optString("bottomRightIconText");
       return;
       bool = false;
     }
@@ -304,26 +303,23 @@ public class NetSearchTemplateBaseItem
   {
     switch (this.jdField_a_of_type_Int)
     {
+    case 5: 
     default: 
       throw new RuntimeException(this.jdField_a_of_type_Int + "in NetSearchTemplateBaseItem.getLayoutId() is not supported!!!");
-    case 1: 
-      return 2130969404;
     case 2: 
-      return 2130969396;
+      return 2130969394;
     case 3: 
-      return 2130969408;
+      return 2130969404;
     case 4: 
-      return 2130969397;
-    case 5: 
-      return 2130969402;
+      return 2130969395;
     case 6: 
-      return 2130969407;
+      return 2130969403;
     case 7: 
-      return 2130969398;
+      return 2130969396;
     case 8: 
-      return 2130969405;
+      return 2130969401;
     }
-    return 2130969406;
+    return 2130969402;
   }
 }
 

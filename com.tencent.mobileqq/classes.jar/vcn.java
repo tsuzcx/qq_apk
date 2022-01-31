@@ -1,15 +1,68 @@
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.transfile.TransFileController.OnCancelListener;
-import java.util.ArrayList;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicHolder;
+import com.tencent.mobileqq.app.FlashPicHelper;
+import com.tencent.mobileqq.app.HotChatHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class vcn
-  implements TransFileController.OnCancelListener
+  implements View.OnClickListener
 {
-  public vcn(PicItemBuilder paramPicItemBuilder) {}
+  public vcn(FlashPicItemBuilder paramFlashPicItemBuilder) {}
   
-  public void a(ArrayList paramArrayList)
+  public void onClick(View paramView)
   {
-    this.a.b();
+    long l = SystemClock.uptimeMillis();
+    if (l - FlashPicItemBuilder.a(this.a) < 800L) {}
+    FlashPicItemBuilder.FlashPicHolder localFlashPicHolder;
+    label169:
+    for (;;)
+    {
+      return;
+      FlashPicItemBuilder.a(this.a, l);
+      localFlashPicHolder = (FlashPicItemBuilder.FlashPicHolder)AIOUtils.a(paramView);
+      if (localFlashPicHolder != null)
+      {
+        Object localObject2 = localFlashPicHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        Object localObject1 = null;
+        paramView = localObject1;
+        if (localObject2 != null)
+        {
+          localObject2 = this.a.a.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq);
+          paramView = localObject1;
+          if ((localObject2 instanceof MessageForPic)) {
+            paramView = (MessageForPic)localObject2;
+          }
+        }
+        if (paramView != null)
+        {
+          if (HotChatHelper.a(paramView)) {}
+          for (boolean bool = HotChatHelper.b(paramView);; bool = FlashPicHelper.b(paramView))
+          {
+            if (bool) {
+              break label169;
+            }
+            if (localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 0) {
+              break label171;
+            }
+            if (localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted()) {
+              break;
+            }
+            localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+            return;
+          }
+        }
+      }
+    }
+    label171:
+    FlashPicItemBuilder.a(this.a, paramView, localFlashPicHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder$FlashPicAIOThumbView);
   }
 }
 

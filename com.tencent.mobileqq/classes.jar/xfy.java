@@ -1,24 +1,18 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import mqq.os.MqqHandler;
 
 public class xfy
-  implements AsyncBack
+  extends DownloadListener
 {
-  public xfy(PreloadModule paramPreloadModule) {}
+  public xfy(PreloadImgManager paramPreloadImgManager) {}
   
-  public void a(int paramInt)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
-    }
+    super.onDone(paramDownloadTask);
+    ThreadManager.getFileThreadHandler().post(new xfz(this, paramDownloadTask));
   }
 }
 

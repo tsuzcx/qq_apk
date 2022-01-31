@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetApkNameCallback;
 
-public class adqk
-  implements DialogInterface.OnClickListener
+public final class adqk
+  implements UniformDownloadUtil.GetApkNameCallback
 {
-  public adqk(HotPicPageView paramHotPicPageView, HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder) {}
+  public adqk(String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(-11);
-    QLog.d("HotPicManagerHotPicPageView", 2, "User disallowed downd");
+    if (paramString == null) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new adql(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adqk
  * JD-Core Version:    0.7.0.1
  */

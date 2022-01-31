@@ -1,72 +1,77 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.app.StrangerObserver;
-import com.tencent.mobileqq.data.Stranger;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
-public class wls
-  extends StrangerObserver
+class wls
+  implements Runnable
 {
-  public wls(TroopActivity paramTroopActivity) {}
+  wls(wlr paramwlr, List paramList) {}
   
-  public void a(boolean paramBoolean, PBRepeatMessageField paramPBRepeatMessageField)
+  public void run()
   {
-    if (paramBoolean)
+    int j = 1;
+    int i = 0;
+    if (this.jdField_a_of_type_Wlr.jdField_a_of_type_Int != this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_Int)
     {
-      if (paramPBRepeatMessageField != null)
-      {
-        paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
-        while (paramPBRepeatMessageField.hasNext())
-        {
-          oidb_0x5d4.DelResult localDelResult = (oidb_0x5d4.DelResult)paramPBRepeatMessageField.next();
-          QLog.d("qqBaseActivity", 2, "ondelete: uin " + localDelResult.uin.get());
-          if (this.a.a != null)
-          {
-            int i = 0;
-            while (i < this.a.a.size())
-            {
-              Stranger localStranger = (Stranger)this.a.a.get(i);
-              if (localStranger.uin.equals(String.valueOf(localDelResult.uin.get()))) {
-                this.a.a.remove(localStranger);
-              }
-              i += 1;
-            }
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("chatHistory.troop.msgList", 2, "loadingContext changed, ignored result local=" + this.jdField_a_of_type_Wlr.jdField_a_of_type_Int + ", global=" + this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_Int);
       }
-    }
-    else if (QLog.isColorLevel()) {
-      QLog.d("qqBaseActivity", 2, "onDelete is failed");
-    }
-  }
-  
-  public void a(boolean paramBoolean, List paramList)
-  {
-    if (paramBoolean) {
-      if (paramList != null)
-      {
-        this.a.a.clear();
-        this.a.a.addAll(paramList);
-        QLog.d("qqBaseActivity", 2, "onGetListRemote :" + this.a.a.size());
-      }
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("qqBaseActivity", 2, "onGetListRemote is failed");
-  }
-  
-  public void b(boolean paramBoolean, List paramList)
-  {
-    if ((paramBoolean) && (paramList != null))
+    ChatHistoryBubbleListAdapter localChatHistoryBubbleListAdapter = this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    boolean bool;
+    label115:
+    int i1;
+    label237:
+    int m;
+    if (this.jdField_a_of_type_JavaUtilList.size() < 20)
     {
-      this.a.a.clear();
-      this.a.a.addAll(paramList);
-      QLog.d("qqBaseActivity", 2, "onGetListLocal :" + this.a.a.size());
+      bool = true;
+      i1 = localChatHistoryBubbleListAdapter.a(localList, bool);
+      if (this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() > 0)
+      {
+        this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(0)).shmsgseq;
+        this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.b = ((MessageRecord)this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1)).shmsgseq;
+      }
+      if ((i1 == 0) || (this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() <= 0)) {
+        break label458;
+      }
+      if (j == 0) {
+        break label463;
+      }
+      m = this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition();
+      int n = this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(0).getTop();
+      k = m;
+      i = n;
+      if (this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getScrollY() < 0) {
+        i = n - this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getScrollY();
+      }
+    }
+    label458:
+    label463:
+    for (int k = m;; k = 0)
+    {
+      this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.hideOverScrollHeaderView();
+      this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a(this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a, this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.b);
+      this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.notifyDataSetChanged();
+      if (j == 0) {
+        break;
+      }
+      this.jdField_a_of_type_Wlr.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setSelectionFromTop(k + i1, i);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("chatHistory.troop.msgList", 2, "update position pos=" + k + ", offset=" + i1 + ", top=" + i);
+      return;
+      bool = false;
+      break label115;
+      j = 0;
+      break label237;
     }
   }
 }

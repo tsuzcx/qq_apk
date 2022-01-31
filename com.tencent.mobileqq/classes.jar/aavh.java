@@ -1,18 +1,15 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
 
-public final class aavh
+class aavh
   implements Runnable
 {
-  public aavh(String paramString) {}
+  aavh(aavg paramaavg) {}
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("ArkAppLastUsedTime", 0).edit();
-    localEditor.putLong(this.a, System.currentTimeMillis());
-    localEditor.commit();
+    aavi localaavi = new aavi(this);
+    this.a.a.jdField_a_of_type_Aauq.a.a.a(localaavi, this.a.a.jdField_a_of_type_Long);
   }
 }
 

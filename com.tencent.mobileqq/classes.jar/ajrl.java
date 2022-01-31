@@ -1,36 +1,45 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import com.tencent.mapsdk.raster.model.GeoPoint;
-import com.tencent.tencentmap.mapsdk.map.MapView;
-import com.tencent.tencentmap.mapsdk.map.Overlay;
-import com.tencent.tencentmap.mapsdk.map.Projection;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+import com.tencent.mobileqq.troop.homework.recite.utils.ReciteDetectManager;
+import com.tencent.mobileqq.troop.homework.recite.utils.ReciteDetectManager.ReciteDetectListener;
+import java.util.List;
 
 public class ajrl
-  extends Overlay
+  extends Handler
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private GeoPoint jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint;
+  public ajrl(ReciteDetectManager paramReciteDetectManager) {}
   
-  public ajrl(Bitmap paramBitmap, GeoPoint paramGeoPoint)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint = paramGeoPoint;
-  }
-  
-  public void draw(Canvas paramCanvas, MapView paramMapView)
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint != null))
+    if (ReciteDetectManager.a(this.a) == null) {}
+    List localList;
+    do
     {
-      Point localPoint = paramMapView.getProjection().toPixels(this.jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint, null);
-      localPoint.x -= this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      localPoint.y -= this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      Paint localPaint = new Paint();
-      localPaint.setAntiAlias(true);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localPoint.x, localPoint.y, localPaint);
-    }
-    super.draw(paramCanvas, paramMapView);
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 0: 
+          paramMessage = (WordInfo)paramMessage.obj;
+          ReciteDetectManager.a(this.a).a(paramMessage);
+          ReciteDetectManager.a(this.a, paramMessage);
+        }
+      } while ((!paramMessage.isDetected) || (paramMessage.paragraphPos != this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size() - 1));
+      localList = ((ParagraphInfo)this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(paramMessage.paragraphPos)).generateOrGetWordInfoList(paramMessage.paragraphPos);
+    } while (paramMessage.wordPos != localList.size() - 2);
+    this.a.a();
+    return;
+    ReciteDetectManager.a(this.a).e();
+    return;
+    ReciteDetectManager.a(this.a).a(this.a.jdField_a_of_type_Int, this.a.b, this.a.c);
+    this.a.jdField_a_of_type_Int = 0;
+    this.a.c = 0;
   }
 }
 

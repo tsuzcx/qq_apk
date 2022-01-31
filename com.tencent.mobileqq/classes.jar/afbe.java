@@ -1,10 +1,19 @@
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.MedalItem;
 
 public final class afbe
+  implements Parcelable.Creator
 {
-  String jdField_a_of_type_JavaLangString;
+  public MedalItem a(Parcel paramParcel)
+  {
+    return new MedalItem(paramParcel);
+  }
   
-  private afbe(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
+  public MedalItem[] a(int paramInt)
+  {
+    return new MedalItem[paramInt];
+  }
 }
 
 

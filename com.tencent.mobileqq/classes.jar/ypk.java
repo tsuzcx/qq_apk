@@ -1,30 +1,18 @@
-import android.os.Process;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.HardwareInfo;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.antiphing.AntiphingHandler;
 
 public class ypk
-  implements Runnable
 {
-  public ypk(ApolloGameStateMachine paramApolloGameStateMachine) {}
+  public int a;
+  public String a;
   
-  public void run()
+  public ypk(AntiphingHandler paramAntiphingHandler)
   {
-    ApolloGameStateMachine.HardwareInfo localHardwareInfo2 = ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo;
-    ApolloGameStateMachine.HardwareInfo localHardwareInfo1 = localHardwareInfo2;
-    if (localHardwareInfo2 == null) {
-      localHardwareInfo1 = new ApolloGameStateMachine.HardwareInfo();
-    }
-    localHardwareInfo1.b = DeviceInfoUtil.a(Process.myPid());
-    localHardwareInfo1.c = DeviceInfoUtil.g();
-    ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo = localHardwareInfo1;
-    ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.jdField_a_of_type_JavaLangString = "0";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ypk
  * JD-Core Version:    0.7.0.1
  */

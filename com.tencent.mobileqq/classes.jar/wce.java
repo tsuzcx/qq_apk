@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationHelper;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleReceiverAnimationRunnable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class wce
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public wce(StickerBubbleReceiverAnimationRunnable paramStickerBubbleReceiverAnimationRunnable) {}
+  public wce(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (StickerBubbleReceiverAnimationRunnable.a(this.a))
-    {
-      StickerBubbleAnimationHelper.a(this.a, StickerBubbleReceiverAnimationRunnable.a(this.a));
-      StickerBubbleReceiverAnimationRunnable.a(this.a, false);
-      StickerBubbleReceiverAnimationRunnable.b(this.a, false);
-    }
+    this.a.R = false;
+    this.a.jdField_o_of_type_Int = 0;
+    this.a.S = false;
+    this.a.ab = false;
+    this.a.aa = false;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.a(this.a.jdField_o_of_type_AndroidViewView, PublicAccountChatPie.a(this.a));
   }
 }
 

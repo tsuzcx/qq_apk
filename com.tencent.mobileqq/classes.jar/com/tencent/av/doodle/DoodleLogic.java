@@ -83,27 +83,35 @@ public class DoodleLogic
   private void b(int paramInt)
   {
     Object localObject = this.jdField_a_of_type_ArrayOfComTencentAvDoodleDoodleItem[0];
+    AVFunDrawing.PointInfo localPointInfo = new AVFunDrawing.PointInfo();
+    localPointInfo.uint32_type.set(paramInt);
+    AVFunDrawing.MessageBody localMessageBody = new AVFunDrawing.MessageBody();
+    localMessageBody.uint32_msg_type.set(2);
+    AVFunDrawing.DrawingInfo localDrawingInfo = new AVFunDrawing.DrawingInfo();
     if (localObject != null)
     {
       float f1 = ((DoodleItem)localObject).jdField_a_of_type_AndroidGraphicsPointF.x;
       float f2 = ((DoodleItem)localObject).jdField_a_of_type_AndroidGraphicsPointF.y;
-      AVFunDrawing.PointInfo localPointInfo = new AVFunDrawing.PointInfo();
       localPointInfo.float_x.set(f1);
       localPointInfo.float_y.set(f2);
-      localPointInfo.uint32_type.set(paramInt);
-      AVFunDrawing.MessageBody localMessageBody = new AVFunDrawing.MessageBody();
-      localMessageBody.uint32_msg_type.set(2);
-      AVFunDrawing.DrawingInfo localDrawingInfo = new AVFunDrawing.DrawingInfo();
       localDrawingInfo.uint32_pen_type.set(((DoodleItem)localObject).jdField_a_of_type_Int);
       localDrawingInfo.str_pen_name.set(((DoodleItem)localObject).jdField_a_of_type_JavaLangString);
       localDrawingInfo.str_pen_color.set("#" + Integer.toHexString(((DoodleItem)localObject).e));
       localDrawingInfo.uint32_pen_width.set(((DoodleItem)localObject).jdField_b_of_type_Int);
       localDrawingInfo.uint32_screen_width.set(((DoodleItem)localObject).c);
       localDrawingInfo.uint32_screen_height.set(((DoodleItem)localObject).d);
+    }
+    for (;;)
+    {
       localDrawingInfo.msg_point_info.add(localPointInfo);
       localMessageBody.drawingInfo.set(localDrawingInfo);
       localObject = localMessageBody.toByteArray();
       this.jdField_a_of_type_ComTencentAvVideoController.a(2, (byte[])localObject);
+      return;
+      SmallScreenUtils.a();
+      if (QLog.isColorLevel()) {
+        QLog.e("DoodleLogic", 2, "WL_DEBUG send point_type = " + paramInt);
+      }
     }
   }
   
@@ -315,7 +323,7 @@ public class DoodleLogic
     // Byte code:
     //   0: aload_0
     //   1: getfield 48	com/tencent/av/doodle/DoodleLogic:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   4: invokevirtual 333	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   4: invokevirtual 335	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   7: aload_0
     //   8: getfield 33	com/tencent/av/doodle/DoodleLogic:jdField_a_of_type_ArrayOfComTencentAvDoodleDoodleItem	[Lcom/tencent/av/doodle/DoodleItem;
     //   11: iload_1
@@ -327,7 +335,7 @@ public class DoodleLogic
     //   21: aaload
     //   22: fload_2
     //   23: fload_3
-    //   24: invokevirtual 359	com/tencent/av/doodle/DoodleItem:a	(FF)Z
+    //   24: invokevirtual 361	com/tencent/av/doodle/DoodleItem:a	(FF)Z
     //   27: ifeq +44 -> 71
     //   30: iload_1
     //   31: ifne +48 -> 79
@@ -341,16 +349,16 @@ public class DoodleLogic
     //   47: ifeq +8 -> 55
     //   50: aload_0
     //   51: iconst_2
-    //   52: invokespecial 340	com/tencent/av/doodle/DoodleLogic:b	(I)V
+    //   52: invokespecial 342	com/tencent/av/doodle/DoodleLogic:b	(I)V
     //   55: aload_0
     //   56: getfield 81	com/tencent/av/doodle/DoodleLogic:jdField_a_of_type_ComTencentAvDoodleDoodleLogic$DoodleLogicListener	Lcom/tencent/av/doodle/DoodleLogic$DoodleLogicListener;
     //   59: ifnull +12 -> 71
     //   62: aload_0
     //   63: getfield 81	com/tencent/av/doodle/DoodleLogic:jdField_a_of_type_ComTencentAvDoodleDoodleLogic$DoodleLogicListener	Lcom/tencent/av/doodle/DoodleLogic$DoodleLogicListener;
-    //   66: invokeinterface 343 1 0
+    //   66: invokeinterface 345 1 0
     //   71: aload_0
     //   72: getfield 48	com/tencent/av/doodle/DoodleLogic:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   75: invokevirtual 346	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   75: invokevirtual 348	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   78: return
     //   79: iconst_0
     //   80: istore 4
@@ -358,7 +366,7 @@ public class DoodleLogic
     //   85: astore 5
     //   87: aload_0
     //   88: getfield 48	com/tencent/av/doodle/DoodleLogic:jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   91: invokevirtual 346	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   91: invokevirtual 348	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   94: aload 5
     //   96: athrow
     // Local variable table:
@@ -413,7 +421,7 @@ public class DoodleLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.doodle.DoodleLogic
  * JD-Core Version:    0.7.0.1
  */

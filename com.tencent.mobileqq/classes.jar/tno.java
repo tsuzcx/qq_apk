@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.ptt.TouchProxyRelativeLayout;
 
-public class tno
-  extends CardObserver
+class tno
+  implements Runnable
 {
-  public tno(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  tno(tnn paramtnn) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
-      QQSettingSettingActivity.a(this.a, (Card)paramObject);
-    }
+    QQLSActivity.a(this.a.a).removeView(QQLSActivity.a(this.a.a));
+    QQLSActivity.a(this.a.a, null);
   }
 }
 

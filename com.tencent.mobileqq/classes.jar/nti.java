@@ -1,26 +1,47 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.model.BasePagePlayingListSync;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class nti
-  implements Animation.AnimationListener
+  extends QQUIEventReceiver
 {
-  public nti(QQStoryBaseActivity paramQQStoryBaseActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public nti(@NonNull BasePagePlayingListSync paramBasePagePlayingListSync)
   {
-    if (this.a.c != null)
+    super(paramBasePagePlayingListSync);
+  }
+  
+  public void a(@NonNull BasePagePlayingListSync paramBasePagePlayingListSync, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
+  {
+    Iterator localIterator = paramBasePagePlayingListSync.a.iterator();
+    int i = 0;
+    for (;;)
     {
-      this.a.c.clearAnimation();
-      ((ViewGroup)((ViewGroup)this.a.findViewById(16908290)).getChildAt(0)).removeView(this.a.c);
+      if (localIterator.hasNext())
+      {
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();
+        if (paramDeleteStoryVideoEvent.a.equals(localStoryVideoItem.mVid))
+        {
+          paramBasePagePlayingListSync.a.remove(i);
+          SLog.a("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "remove vid:%s", localStoryVideoItem.mVid);
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public Class acceptEventClass()
+  {
+    return DeleteStoryVideoEvent.class;
+  }
 }
 
 

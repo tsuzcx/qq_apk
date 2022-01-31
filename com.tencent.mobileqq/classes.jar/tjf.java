@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
 public class tjf
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  public tjf(QQLSActivity paramQQLSActivity) {}
+  public tjf(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramChatMessage1.time == paramChatMessage2.time) {
-      return 0;
-    }
-    if (paramChatMessage1.time > paramChatMessage2.time) {
-      return 1;
-    }
-    return -1;
+    this.a.finish();
   }
 }
 

@@ -1,13 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
-
 public class abak
-  implements DialogInterface.OnDismissListener
 {
-  public abak(ARMapActivity paramARMapActivity) {}
+  public String a;
+  public String b;
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public abak(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

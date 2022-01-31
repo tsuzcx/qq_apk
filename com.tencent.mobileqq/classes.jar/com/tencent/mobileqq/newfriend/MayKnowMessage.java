@@ -30,7 +30,7 @@ public class MayKnowMessage
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaLangString = String.format(BaseApplicationImpl.sApplication.getString(2131435516), new Object[] { paramQQAppInterface });
+      this.jdField_a_of_type_JavaLangString = String.format(BaseApplicationImpl.sApplication.getString(2131435532), new Object[] { paramQQAppInterface });
       return this.jdField_a_of_type_JavaLangString;
       label72:
       paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqDataPushRecommend.nick;

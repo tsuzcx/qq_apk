@@ -1,20 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import java.util.Map;
 
-public class mya
-  extends Handler
+class mya
+  implements Runnable
 {
-  public mya(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  mya(mxz parammxz) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    PublicAccountImageCollectionMainActivity.b(this.a);
+    Bitmap localBitmap = (Bitmap)this.a.jdField_a_of_type_JavaUtilMap.remove("image");
+    this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper.a(GalleryShareHelper.b(this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper), GalleryShareHelper.c(this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper), GalleryShareHelper.d(this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper), localBitmap, this.a.jdField_a_of_type_Int);
   }
 }
 

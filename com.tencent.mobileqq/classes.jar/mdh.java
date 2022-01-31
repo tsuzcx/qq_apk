@@ -1,49 +1,14 @@
-import android.content.Context;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import org.json.JSONObject;
 
 public class mdh
   implements Runnable
 {
-  public mdh(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mdh(ReadInJoyWebDataManager paramReadInJoyWebDataManager, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    TranslateAnimation localTranslateAnimation = this.a.a;
-    RelativeLayout.LayoutParams localLayoutParams;
-    int i;
-    if (localTranslateAnimation != null)
-    {
-      VideoFeedsPlayActivity.b(this.a).setVisibility(0);
-      VideoFeedsPlayActivity.b(this.a).findViewById(2131365654).setVisibility(0);
-      VideoFeedsPlayActivity.b(this.a).findViewById(2131365588).setVisibility(0);
-      VideoFeedsPlayActivity.b(this.a).findViewById(2131365589).setVisibility(0);
-      VideoFeedsPlayActivity.b(this.a).bringToFront();
-      localLayoutParams = (RelativeLayout.LayoutParams)VideoFeedsPlayActivity.b(this.a).getLayoutParams();
-      if (!VideoFeedsPlayActivity.i(this.a)) {
-        break label152;
-      }
-      i = AIOUtils.a(130.0F, this.a.getApplicationContext().getResources());
-    }
-    for (;;)
-    {
-      localLayoutParams.setMargins(0, 0, 0, i);
-      VideoFeedsPlayActivity.b(this.a).setLayoutParams(localLayoutParams);
-      VideoFeedsPlayActivity.b(this.a).startAnimation(localTranslateAnimation);
-      return;
-      label152:
-      if (((VideoInfo)VideoFeedsPlayActivity.a(this.a).get(0)).a(this.a)) {
-        i = AIOUtils.a(65.0F, this.a.getApplicationContext().getResources());
-      } else {
-        i = AIOUtils.a(25.0F, this.a.getApplicationContext().getResources());
-      }
-    }
+    ReadInJoyWebDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

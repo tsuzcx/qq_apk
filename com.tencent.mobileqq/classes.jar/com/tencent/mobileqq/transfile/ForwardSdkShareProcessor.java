@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import aipk;
-import aipl;
-import aipn;
-import aipp;
-import aipr;
-import aipu;
-import aipw;
-import aipx;
+import aiun;
+import aiuo;
+import aiuq;
+import aius;
+import aiuu;
+import aiux;
+import aiuz;
+import aiva;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -32,8 +32,8 @@ public class ForwardSdkShareProcessor
 {
   private int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = 0L;
-  private aipl jdField_a_of_type_Aipl;
-  private aipu jdField_a_of_type_Aipu;
+  private aiuo jdField_a_of_type_Aiuo;
+  private aiux jdField_a_of_type_Aiux;
   public Context a;
   public QQAppInterface a;
   private TransferRequest.AppInfo jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest$AppInfo;
@@ -152,48 +152,48 @@ public class ForwardSdkShareProcessor
     if (this.jdField_o_of_type_Boolean) {
       return;
     }
-    if (this.jdField_a_of_type_Aipl != null) {
-      this.jdField_a_of_type_Aipl.e();
+    if (this.jdField_a_of_type_Aiuo != null) {
+      this.jdField_a_of_type_Aiuo.e();
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransFileController.a.post(new aipk(this));
+    this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransFileController.a.post(new aiun(this));
   }
   
   public int a()
   {
     QLog.d("Q.share.ForwardSdkShareProcessor", 1, "cancel");
     super.a();
-    if (this.jdField_a_of_type_Aipl != null) {
-      this.jdField_a_of_type_Aipl.e();
+    if (this.jdField_a_of_type_Aiuo != null) {
+      this.jdField_a_of_type_Aiuo.e();
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long, 32768, 9037);
     d(1004);
     return 0;
   }
   
-  public void ap_()
+  public void ar_()
   {
     if (QLog.isColorLevel()) {
       QLog.i("Q.share.ForwardSdkShareProcessor", 2, "start");
     }
-    this.jdField_a_of_type_Aipl = new aipw(this);
-    aipx localaipx = new aipx(this);
-    this.jdField_a_of_type_Aipl.a(new aipl[] { localaipx });
-    aipp localaipp = new aipp(this);
-    aipn localaipn = new aipn(this);
-    aipr localaipr = new aipr(this);
-    if ((!localaipx.a()) && (localaipr.a())) {
-      localaipx.a(new aipl[] { localaipn, localaipp });
+    this.jdField_a_of_type_Aiuo = new aiuz(this);
+    aiva localaiva = new aiva(this);
+    this.jdField_a_of_type_Aiuo.a(new aiuo[] { localaiva });
+    aius localaius = new aius(this);
+    aiuq localaiuq = new aiuq(this);
+    aiuu localaiuu = new aiuu(this);
+    if ((!localaiva.a()) && (localaiuu.a())) {
+      localaiva.a(new aiuo[] { localaiuq, localaius });
     }
     for (;;)
     {
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Aipl.a();
+      this.jdField_a_of_type_Aiuo.a();
       d(1001);
       a(1002, MessageHandler.jdField_e_of_type_Int);
       return;
-      localaipx.a(new aipl[] { localaipn, localaipr });
-      this.jdField_a_of_type_Aipu = new aipu(this);
-      localaipr.a(new aipl[] { this.jdField_a_of_type_Aipu, localaipp });
+      localaiva.a(new aiuo[] { localaiuq, localaiuu });
+      this.jdField_a_of_type_Aiux = new aiux(this);
+      localaiuu.a(new aiuo[] { this.jdField_a_of_type_Aiux, localaius });
     }
   }
   
@@ -206,7 +206,7 @@ public class ForwardSdkShareProcessor
     {
       this.k = false;
       this.jdField_o_of_type_Boolean = false;
-      ap_();
+      ar_();
     }
     return 0;
   }
@@ -253,8 +253,8 @@ public class ForwardSdkShareProcessor
     if (!this.k)
     {
       this.k = true;
-      if (this.jdField_a_of_type_Aipl != null) {
-        this.jdField_a_of_type_Aipl.e();
+      if (this.jdField_a_of_type_Aiuo != null) {
+        this.jdField_a_of_type_Aiuo.e();
       }
     }
   }
@@ -264,8 +264,8 @@ public class ForwardSdkShareProcessor
     long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     QLog.w("Q.share.ForwardSdkShareProcessor", 1, "On Error, code=" + this.j + ", cost=" + l1);
     super.d();
-    if (this.jdField_a_of_type_Aipl != null) {
-      this.jdField_a_of_type_Aipl.e();
+    if (this.jdField_a_of_type_Aiuo != null) {
+      this.jdField_a_of_type_Aiuo.e();
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long, 32768, this.j);
     d(1005);
@@ -302,7 +302,7 @@ public class ForwardSdkShareProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardSdkShareProcessor
  * JD-Core Version:    0.7.0.1
  */

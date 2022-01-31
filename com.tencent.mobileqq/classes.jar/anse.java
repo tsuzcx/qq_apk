@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-public final class anse
-  implements Parcelable.Creator
+public class anse
+  implements View.OnClickListener
 {
-  public EditTakeGifSource a(Parcel paramParcel)
-  {
-    return new EditTakeGifSource(paramParcel);
-  }
+  public anse(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public EditTakeGifSource[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new EditTakeGifSource[paramInt];
+    this.a.b();
   }
 }
 

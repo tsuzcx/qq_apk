@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.view.View;
+import android.widget.Toast;
+import com.tencent.open.adapter.CommonDataAdapter;
+import com.tencent.open.base.ToastUtil;
 
-class alnd
+public class alnd
   implements Runnable
 {
-  alnd(alnc paramalnc, QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public alnd(ToastUtil paramToastUtil, View paramView, int paramInt) {}
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, "保存图片失败", 0).b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getTitleBarHeight());
+    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b == null)
+    {
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b = new Toast(CommonDataAdapter.a().a());
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setView(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setDuration(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.show();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setView(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setDuration(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alnd
  * JD-Core Version:    0.7.0.1
  */

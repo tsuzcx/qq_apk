@@ -1,20 +1,25 @@
-import dov.com.qq.im.capture.text.SupernaturalTextItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.wadl.ipc.WadlParams;
 
-public class anom
+public final class anom
+  implements Parcelable.Creator
 {
-  public int a;
-  public String a;
-  public int b = 0;
-  
-  private anom(SupernaturalTextItem paramSupernaturalTextItem)
+  public WadlParams a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
+    WadlParams localWadlParams = new WadlParams("");
+    localWadlParams.a(paramParcel);
+    return localWadlParams;
+  }
+  
+  public WadlParams[] a(int paramInt)
+  {
+    return new WadlParams[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anom
  * JD-Core Version:    0.7.0.1
  */

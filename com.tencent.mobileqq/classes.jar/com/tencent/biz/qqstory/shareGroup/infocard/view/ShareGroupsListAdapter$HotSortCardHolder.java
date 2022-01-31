@@ -20,7 +20,7 @@ import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
 import com.tencent.biz.qqstory.utils.ThumbnailUrlHelper;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
-import nso;
+import nxe;
 
 public class ShareGroupsListAdapter$HotSortCardHolder
   extends RecyclerView.ViewHolder
@@ -41,15 +41,15 @@ public class ShareGroupsListAdapter$HotSortCardHolder
   {
     super(paramView);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371807));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371808));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371809));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371811));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371812));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371813));
-    this.e = ((TextView)paramView.findViewById(2131371814));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371815));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371682));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371806));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371807));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371808));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371810));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371811));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371812));
+    this.e = ((TextView)paramView.findViewById(2131371813));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371814));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371680));
   }
   
   public void a()
@@ -74,9 +74,9 @@ public class ShareGroupsListAdapter$HotSortCardHolder
     Object localObject;
     if (paramHotSortVideoEntry.coverURL == null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843554));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843587));
       localObject = paramHotSortVideoEntry.storyId;
-      this.itemView.setOnClickListener(new nso(this, (String)localObject));
+      this.itemView.setOnClickListener(new nxe(this, (String)localObject));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       localObject = ((UserManager)SuperManager.a(2)).c(paramHotSortVideoEntry.unionId);
       if (localObject != null) {
@@ -87,7 +87,7 @@ public class ShareGroupsListAdapter$HotSortCardHolder
         this.jdField_b_of_type_AndroidWidgetImageView.setTag("NullImage");
         this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(ImageUtil.a());
       }
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(StoryApi.a(2131432087));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(StoryApi.a(2131432098));
       label217:
       if ((paramHotSortVideoEntry.likeCount != 0) || (paramHotSortVideoEntry.viewCount != 0)) {
         break label516;
@@ -137,11 +137,11 @@ public class ShareGroupsListAdapter$HotSortCardHolder
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
       break label217;
       label516:
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843787);
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843857);
       ((Drawable)localObject).setBounds(0, 0, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 12.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 12.0F));
       this.jdField_d_of_type_AndroidWidgetTextView.setText(UIUtils.a(paramHotSortVideoEntry.viewCount));
       this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawables((Drawable)localObject, null, null, null);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843443);
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843477);
       ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getMinimumWidth(), ((Drawable)localObject).getMinimumHeight());
       this.e.setText(UIUtils.a(paramHotSortVideoEntry.likeCount));
       this.e.setCompoundDrawables((Drawable)localObject, null, null, null);

@@ -1,37 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.network.request.GetPoiFacesRequest;
-import com.tencent.biz.qqstory.network.response.GetPoiFacesResponse;
+import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage.FacePackagePageEventListener;
 
 public class ois
-  implements CmdTaskManger.CommandCallback
+  implements FaceListPage.FacePackagePageEventListener
 {
-  public ois(DoodleEmojiManager paramDoodleEmojiManager, WeakReference paramWeakReference) {}
+  public ois(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void a(@NonNull GetPoiFacesRequest paramGetPoiFacesRequest, @Nullable GetPoiFacesResponse paramGetPoiFacesResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void a()
   {
-    if (paramGetPoiFacesResponse == null)
+    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
+    EditVideoDoodle.a(this.a);
+  }
+  
+  public void a(String paramString)
+  {
+    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
+    EditVideoPartManager localEditVideoPartManager = this.a.a;
+    if (this.a.a.a()) {}
+    for (String str = "2";; str = "1")
     {
-      paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramGetPoiFacesRequest != null) {
-        paramGetPoiFacesRequest.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      localEditVideoPartManager.a("download_face", 0, 0, new String[] { str, paramString });
+      VideoEditReport.b("0X80075DD");
+      if (!((DoodleEmojiManager)SuperManager.a(8)).a(paramString, true)) {
+        SLog.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
       }
       return;
     }
-    paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramGetPoiFacesRequest != null)
-    {
-      paramGetPoiFacesRequest.a(0, paramGetPoiFacesResponse.a);
-      return;
-    }
-    SLog.c("DoodleEmojiManager", "requestPoiFaces callback is null");
+  }
+  
+  public void b(String paramString)
+  {
+    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
   }
 }
 

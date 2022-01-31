@@ -26,7 +26,7 @@ public class QfavLoadingDialog
   {
     super(paramContext, 2131624512);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(paramContext).inflate(2130970000, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130970011, null);
     setContentView(paramContext);
     Object localObject = getWindow();
     WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
@@ -34,26 +34,26 @@ public class QfavLoadingDialog
     localLayoutParams.height = -1;
     ((Window)localObject).setAttributes(localLayoutParams);
     setCanceledOnTouchOutside(false);
-    localObject = (TextView)paramContext.findViewById(2131363245);
+    localObject = (TextView)paramContext.findViewById(2131363262);
     if (localObject != null)
     {
       ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(2131433698);
+      ((TextView)localObject).setText(2131433712);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363381));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131363400));
     try
     {
       if (this.jdField_a_of_type_AndroidWidgetTextView != null)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131431566);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131431577);
       }
       label140:
-      paramContext = (FadeIconImageView)paramContext.findViewById(2131363474);
+      paramContext = (FadeIconImageView)paramContext.findViewById(2131363493);
       if (paramContext != null)
       {
         paramContext.setVisibility(0);
-        paramContext.setImageResource(2130839134);
+        paramContext.setImageResource(2130839149);
       }
       if (QLog.isColorLevel()) {
         QLog.d("qqfav", 2, "enter into QfavLoadingDialog");
@@ -77,7 +77,7 @@ public class QfavLoadingDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838598));
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838604));
     if ((this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);

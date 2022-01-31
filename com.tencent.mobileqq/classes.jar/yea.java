@@ -1,62 +1,78 @@
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import mqq.os.MqqHandler;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText;
+import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthConvertor;
+import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LimitListener;
 
 public class yea
-  implements Runnable
+  implements InputFilter
 {
-  public yea(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  private int jdField_a_of_type_Int;
   
-  public void run()
+  public yea(ExtendEditText paramExtendEditText, int paramInt)
   {
-    if (this.a.b())
-    {
-      if (this.a.b <= 0L) {
-        this.a.h();
-      }
-      ShortVideoPlayActivity.a(this.a, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
-      if (ShortVideoPlayActivity.a(this.a) != 0L)
-      {
-        ShortVideoPlayActivity.a(this.a, (int)(ShortVideoPlayActivity.a(this.a) * 10000L / this.a.b + 0.5D));
-        if (!ShortVideoPlayActivity.a(this.a))
-        {
-          this.a.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(ShortVideoPlayActivity.a(this.a));
-          this.a.b(ShortVideoPlayActivity.a(this.a));
-        }
-      }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private void a()
+  {
+    if (ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText) != null) {
+      ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText).a(this.jdField_a_of_type_Int);
     }
-    if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.g != 0L))
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    ExtendEditText.LengthConvertor localLengthConvertor = ExtendEditText.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText);
+    if (localLengthConvertor == null)
     {
-      if (!this.a.jdField_f_of_type_Boolean) {
-        break label352;
+      paramInt3 = paramSpanned.length() - (paramInt4 - paramInt3);
+      if (localLengthConvertor != null) {
+        break label95;
       }
-      ShortVideoPlayActivity.b(this.a, (int)(this.a.jdField_f_of_type_Long * 10000L / this.a.g));
+      paramInt2 -= paramInt1;
     }
     for (;;)
     {
-      if (this.a.jdField_a_of_type_AndroidWidgetSeekBar.getSecondaryProgress() != ShortVideoPlayActivity.b(this.a)) {
-        this.a.jdField_a_of_type_AndroidWidgetSeekBar.setSecondaryProgress(ShortVideoPlayActivity.b(this.a));
+      paramInt3 = this.jdField_a_of_type_Int - paramInt3;
+      if (paramInt3 > 0) {
+        break label109;
       }
-      if ((this.a.c()) && (ShortVideoPlayActivity.c(this.a) > 0) && (ShortVideoPlayActivity.a(this.a) != null) && (ShortVideoPlayActivity.a(this.a).getVisibility() == 0))
-      {
-        String str = ShortVideoUtils.a(this.a.jdField_a_of_type_AndroidContentContext, ShortVideoPlayActivity.c(this.a) * 1024);
-        ShortVideoPlayActivity.a(this.a).setText(str + "/s");
-      }
-      if (!this.a.isFinishing()) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPlayActivity", 2, "check progress, while finishing");
-      }
-      return;
-      label352:
-      ShortVideoPlayActivity.b(this.a, 10000);
+      a();
+      return "";
+      paramInt3 = localLengthConvertor.a(paramSpanned, 0, paramInt3) + localLengthConvertor.a(paramSpanned, paramInt4, paramSpanned.length());
+      break;
+      label95:
+      paramInt2 = localLengthConvertor.a(paramCharSequence, paramInt1, paramInt2);
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 50L);
+    label109:
+    if (paramInt3 >= paramInt2) {
+      return null;
+    }
+    a();
+    if (localLengthConvertor != null)
+    {
+      paramInt3 = localLengthConvertor.b(paramCharSequence, paramInt1, paramInt1 + paramInt3);
+      paramInt2 = paramInt3;
+      if (paramInt3 <= 0) {
+        return "";
+      }
+    }
+    else
+    {
+      paramInt2 = paramInt3;
+    }
+    paramInt3 = paramInt2 + paramInt1;
+    paramInt2 = paramInt3;
+    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
+    {
+      paramInt3 -= 1;
+      paramInt2 = paramInt3;
+      if (paramInt3 == paramInt1) {
+        return "";
+      }
+    }
+    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 

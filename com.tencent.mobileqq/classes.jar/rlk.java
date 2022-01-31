@@ -1,29 +1,45 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class rlk
-  implements CompoundButton.OnCheckedChangeListener
+  extends MessageObserver
 {
-  public rlk(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rlk(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    if (AppSetting.b) {
-      this.a.b.setContentDescription("加入寻找丢失儿童项目");
-    }
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    if (this.a.isFinishing()) {}
+    SubAccountControll localSubAccountControll;
+    do
     {
-      SettingCloneUtil.writeValueForInt(BaseApplication.getContext(), this.a.app.getCurrentAccountUin(), null, "qqsetting_antilost_key", i);
-      AssistantSettingActivity.a(this.a, paramBoolean);
-      return;
-    }
+      for (;;)
+      {
+        return;
+        AccountManageActivity.a(this.a, false);
+        localSubAccountControll = (SubAccountControll)this.a.app.getManager(61);
+        if (paramSubAccountBackProtocData.a != 1) {
+          break;
+        }
+        if ((this.a.isResume()) && (SubAccountControll.a(this.a.app, "sub.uin.all")))
+        {
+          paramString = localSubAccountControll.a("sub.uin.all");
+          int j = paramString.size();
+          int i = 0;
+          while (i < j)
+          {
+            paramSubAccountBackProtocData = (Pair)paramString.get(i);
+            localSubAccountControll.a(this.a.app, this.a, paramSubAccountBackProtocData, new rll(this, localSubAccountControll, paramSubAccountBackProtocData));
+            i += 1;
+          }
+        }
+      }
+    } while (!this.a.isResume());
+    localSubAccountControll.a(paramString, 1, true);
   }
 }
 

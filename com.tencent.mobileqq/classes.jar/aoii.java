@@ -1,15 +1,6 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
-import java.util.ArrayList;
-
-public class aoii
-  implements Runnable
+public abstract interface aoii
 {
-  public aoii(LbsFilterStatusManager paramLbsFilterStatusManager, int paramInt, boolean paramBoolean, ArrayList paramArrayList) {}
-  
-  public void run()
-  {
-    LbsFilterStatusManager.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilArrayList);
-  }
+  public abstract void a();
 }
 
 

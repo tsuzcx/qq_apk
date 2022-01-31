@@ -1,90 +1,36 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
-import android.view.View;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFilter.FilterPagerAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayerExport;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import dov.com.tencent.biz.qqstory.takevideo.filter.FilterData;
-import dov.com.tencent.biz.qqstory.takevideo.filter.FilterData.FilterPageItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import dov.com.qq.im.capture.view.QIMCommonLoadingProgress;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import mqq.os.MqqHandler;
 
 public class antl
-  implements ViewPager.OnPageChangeListener
+  implements PtvTemplateManager.IPtvTemplateDownloadListener
 {
-  private antl(EditVideoFilter paramEditVideoFilter) {}
+  public antl(QIMPtvTemplateAdapter paramQIMPtvTemplateAdapter) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    paramInt2 = 0;
-    int i = paramInt1 % this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a();
-    Object localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(i);
-    if (localObject != null) {}
-    for (paramInt1 = ((FilterData)localObject).jdField_a_of_type_Int;; paramInt1 = 0)
-    {
-      localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a((i + 1) % this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a());
-      if (localObject != null) {
-        paramInt2 = ((FilterData)localObject).jdField_a_of_type_Int;
-      }
-      localObject = (EditVideoPlayerExport)this.a.a(EditVideoPlayerExport.class);
-      if (localObject != null) {
-        ((EditVideoPlayerExport)localObject).a(paramInt1, paramInt2, paramFloat);
-      }
-      return;
-    }
+    ThreadManager.getUIHandler().post(new anto(this, paramPtvTemplateInfo, paramInt));
   }
   
-  public void onPageSelected(int paramInt)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
   {
-    Object localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-    if (localObject != null) {}
-    for (int i = ((FilterData)localObject).jdField_a_of_type_Int;; i = 0)
+    if (paramPtvTemplateInfo.usable) {
+      QIMCommonLoadingProgress.a(paramPtvTemplateInfo).b();
+    }
+    for (;;)
     {
-      this.a.jdField_a_of_type_AndroidUtilSparseArray.put(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(), localObject);
-      if ((i == 2) || (i == 1) || (i == 3) || (i == 0))
+      ThreadManager.getUIHandler().post(new antm(this, paramPtvTemplateInfo, paramBoolean));
+      if (!paramBoolean)
       {
-        localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-        if ((localObject != null) && (TextUtils.isEmpty(((FilterData.FilterPageItem)localObject).jdField_a_of_type_DovComTencentBizQqstoryTakevideoFilterFilterData.b))) {
-          EditVideoFilter.a((FilterData.FilterPageItem)localObject);
-        }
+        FlowCameraMqqAction.a("", "0X80075BB", "", "", "", "");
+        ThreadManager.getUIHandler().post(new antn(this));
       }
-      localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt - 1);
-      FilterData.FilterPageItem localFilterPageItem = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt + 1);
-      if (localObject != null) {
-        ((FilterData.FilterPageItem)localObject).jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      if (localFilterPageItem != null) {
-        localFilterPageItem.jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_Int = i;
-      EditVideoFilter.a(this.a).put(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(), paramInt);
-      localObject = (EditVideoPlayerExport)this.a.a(EditVideoPlayerExport.class);
-      if (localObject != null)
-      {
-        ((EditVideoPlayerExport)localObject).b(i);
-        if ((localObject instanceof HWEditLocalVideoPlayer)) {
-          ((HWEditLocalVideoPlayer)localObject).a(i);
-        }
-        if ((localObject instanceof HWEditImportVideoPlayer)) {
-          ((HWEditImportVideoPlayer)localObject).a(i);
-        }
-      }
-      this.a.k();
-      if (i != 0)
-      {
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a("608", "9", "0", true);
-        VideoEditReport.a("0X80076DE");
-      }
-      SLog.a("Q.qqstory.publish.edit.EditVideoFilter", "LastSelectVideoFilterTime : %s , LastSelectVideoPlayMode : %s .", Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(this.a.jdField_a_of_type_Int));
       return;
+      QIMCommonLoadingProgress.a(paramPtvTemplateInfo).c();
     }
   }
 }

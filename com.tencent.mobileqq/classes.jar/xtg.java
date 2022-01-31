@@ -1,16 +1,33 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import android.content.Context;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
-class xtg
+public class xtg
   implements Runnable
 {
-  xtg(xtf paramxtf, int paramInt, String paramString) {}
+  public xtg(CameraPreviewNew paramCameraPreviewNew, String paramString, int paramInt, Context paramContext) {}
   
   public void run()
   {
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_Xtf.a).setProgress(this.jdField_a_of_type_Int);
-    QzDynamicVideoPreviewActivity.c(this.jdField_a_of_type_Xtf.a).setText(this.jdField_a_of_type_JavaLangString);
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Int == 2002) {
+      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131428347);
+    }
+    localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131428346), new xth(this));
+    try
+    {
+      ((QQCustomDialog)localObject).setCancelable(false);
+      ((QQCustomDialog)localObject).show();
+      return;
+    }
+    catch (WindowManager.BadTokenException localBadTokenException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("CameraPreviewNew", 2, "", localBadTokenException);
+    }
   }
 }
 

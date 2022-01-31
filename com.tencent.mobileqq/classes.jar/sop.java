@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils;
 
-class sop
-  implements Runnable
+public class sop
+  implements DialogInterface.OnClickListener
 {
-  sop(sol paramsol, CardHandler paramCardHandler, String paramString) {}
+  public sop(DialogActivity paramDialogActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_Sol.a, 230, "上传失败", "部分照片上传失败，是否重试上传？", new soq(this), new sor(this));
-    localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.show();
+    TeamWorkUtils.a(this.a.app, this.a);
+    this.a.finish();
+    ReportController.b(this.a.app, "dc00898", "", "", "0X800906A", "0X800906A", 0, 0, "", "", "", "");
   }
 }
 

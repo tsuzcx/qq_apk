@@ -1,17 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public class wzh
-  implements CompoundButton.OnCheckedChangeListener
+class wzh
+  implements Runnable
 {
-  public wzh(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
+  wzh(wzg paramwzg) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean != this.a.a) {
-      GoldMsgSettingActivity.a(this.a, paramBoolean, true);
-    }
+    this.a.a.a.g();
+    this.a.a.a.f = true;
   }
 }
 

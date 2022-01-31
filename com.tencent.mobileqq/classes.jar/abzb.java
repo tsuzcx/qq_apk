@@ -1,32 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.confess.ConfessMsgListFragment;
 
 public class abzb
-  implements Handler.Callback
+  implements Runnable
 {
-  public abzb(EmoticonFromGroupDBManager paramEmoticonFromGroupDBManager) {}
+  public abzb(ConfessMsgListFragment paramConfessMsgListFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return true;
-      this.a.b = true;
-      QLog.i("EmoticonFromGroup_DBManager", 1, "set db tag, mCanWriteDataToDB = true.");
-    } while (this.a.b() < 300);
-    EmoticonFromGroupDBManager.a(this.a).clear();
-    return true;
+    this.a.a.a().d(AppConstants.aF, 1032);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.CardHandler;
 
 public class zia
   implements Runnable
 {
-  public zia(NewFriendManager paramNewFriendManager) {}
+  public zia(CardHandler paramCardHandler) {}
   
   public void run()
   {
-    this.a.a(true);
-    NewFriendManager.a(this.a);
+    CardHandler.a(this.a);
   }
 }
 

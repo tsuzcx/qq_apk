@@ -1,29 +1,19 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public abstract class agjr
+class agjr
+  implements ARTipsManager.ButtonClickListener
 {
-  public long a;
-  public boolean a;
-  public String g = "0";
+  agjr(agjn paramagjn) {}
   
-  agjr()
+  public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  abstract void a(AppInterface paramAppInterface, Bundle paramBundle);
-  
-  public final void b(AppInterface paramAppInterface, Bundle paramBundle)
-  {
-    if (paramBundle == null) {
+    if (ScanTorchActivity.j(this.a.a))
+    {
+      this.a.a.e(9);
       return;
     }
-    this.jdField_a_of_type_Long = paramBundle.getLong("ar_recoglize_mask");
-    this.g = paramBundle.getString("H5Source");
-    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("ar_show_promotion_entry");
-    a(paramAppInterface, paramBundle);
+    ScanTorchActivity.h(this.a.a);
   }
 }
 

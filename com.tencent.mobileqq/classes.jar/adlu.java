@@ -1,24 +1,18 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.troop.file.TroopFileProtocol.OnGetZipFileList;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnZipEventListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
+import java.util.List;
 
-public class adlu
-  extends Handler
+class adlu
+  implements TroopFileProtocol.OnGetZipFileList
 {
-  public adlu(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  adlu(adlt paramadlt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(List paramList)
   {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, "网络异常", 0).a();
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.a(paramList, this.a.a.jdField_a_of_type_JavaLangString, this.a.a.b, this.a.a.c, this.a.a.d);
     }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
   }
 }
 

@@ -1,46 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class akla
+public class akla
   implements Runnable
 {
-  akla(akkz paramakkz, DownloadTask paramDownloadTask) {}
+  public akla(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QueueDownloader", 2, "doTask | run() downloadLimitCount=" + this.jdField_a_of_type_Akkz.a.get() + ",task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.c) && (DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.jdField_a_of_type_JavaLangString)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.jdField_a_of_type_Int = -101;
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.a(-1);
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask.e();
-      this.jdField_a_of_type_Akkz.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-      this.jdField_a_of_type_Akkz.a.addAndGet(-1);
-      this.jdField_a_of_type_Akkz.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("QueueDownloader", 2, "doTask | run() task is limit of failTime, task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-      }
-      return;
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    int i = DownloaderFactory.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, localAppRuntime);
-    if (QLog.isColorLevel()) {
-      QLog.d("QueueDownloader", 2, "doTask | run() download task result=" + i + ",task=" + this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-    }
-    this.jdField_a_of_type_Akkz.a(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
-    this.jdField_a_of_type_Akkz.a.addAndGet(-1);
-    this.jdField_a_of_type_Akkz.a();
+    NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog$YYBDownloadListener.a, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akla
  * JD-Core Version:    0.7.0.1
  */

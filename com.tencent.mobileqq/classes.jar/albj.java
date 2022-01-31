@@ -1,54 +1,45 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import mqq.observer.BusinessObserver;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.CustomedTabWidget;
 
 public class albj
-  implements BusinessObserver
+  implements View.OnTouchListener
 {
-  public albj(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  public albj(CustomedTabWidget paramCustomedTabWidget) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.a.app.getCurrentAccountUin().equals(localObject)) {}
-    for (;;)
+    if (paramMotionEvent.getAction() == 0)
     {
-      return;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      if (paramBoolean)
+      i = 0;
+      if (i < this.a.getChildCount())
       {
-        localObject = new GetAppInfoProto.GetAppinfoResponse();
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle != null)
-          {
-            ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
-            if ((((GetAppInfoProto.GetAppinfoResponse)localObject).has()) && (((GetAppInfoProto.GetAppinfoResponse)localObject).ret.get() == 0))
-            {
-              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-              paramBundle.what = 3;
-              paramBundle.obj = localObject;
-              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
-              return;
-            }
-          }
+        if (this.a.getChildAt(i) != paramView) {
+          break label57;
         }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
-        }
+        this.a.jdField_a_of_type_Int = i;
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.invalidate();
       }
     }
+    label57:
+    while (paramMotionEvent.getAction() != 1) {
+      for (;;)
+      {
+        int i;
+        return false;
+        i += 1;
+      }
+    }
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.invalidate();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     albj
  * JD-Core Version:    0.7.0.1
  */

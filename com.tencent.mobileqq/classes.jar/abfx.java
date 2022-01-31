@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPC;
-import com.tencent.mobileqq.armap.ipc.IAsyncObserver;
-import eipc.EIPCResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class abfx
-  implements Runnable
+class abfx
+  implements DialogInterface.OnClickListener
 {
-  public abfx(ArMapIPC paramArMapIPC, IAsyncObserver paramIAsyncObserver, String paramString, EIPCResult paramEIPCResult) {}
+  abfx(abfw paramabfw, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapIpcIAsyncObserver.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

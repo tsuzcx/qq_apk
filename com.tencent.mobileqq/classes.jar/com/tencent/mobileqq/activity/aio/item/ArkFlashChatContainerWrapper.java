@@ -21,13 +21,13 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import uvb;
+import vab;
 
 public class ArkFlashChatContainerWrapper
   extends ArkAppContainer
 {
   private static final List jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private FlashChatObserver jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatObserver = new uvb(this);
+  private FlashChatObserver jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatObserver = new vab(this);
   public WeakReference a;
   private WeakReference b;
   public int c;

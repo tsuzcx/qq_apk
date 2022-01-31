@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager.TravellerVideoItem;
+import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class aoqt
-  implements Parcelable.Creator
+public class aoqt
+  implements Comparable
 {
-  public ShortVideoTravellerManager.TravellerVideoItem a(Parcel paramParcel)
+  public int a;
+  public long a;
+  public int b;
+  
+  public aoqt(VideoFramesRetriever paramVideoFramesRetriever, long paramLong, int paramInt1, int paramInt2)
   {
-    return new ShortVideoTravellerManager.TravellerVideoItem(paramParcel);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesRetriever.a(paramVideoFramesRetriever));
+    VideoFramesRetriever.a(paramVideoFramesRetriever).put(Integer.valueOf(paramInt1), this);
   }
   
-  public ShortVideoTravellerManager.TravellerVideoItem[] a(int paramInt)
+  public int a(aoqt paramaoqt)
   {
-    return new ShortVideoTravellerManager.TravellerVideoItem[paramInt];
+    return -(int)(this.jdField_a_of_type_Long - paramaoqt.jdField_a_of_type_Long);
   }
 }
 

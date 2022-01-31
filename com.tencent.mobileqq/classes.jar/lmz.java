@@ -1,129 +1,53 @@
-import android.text.TextUtils;
+import android.graphics.drawable.Animatable;
 import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAllInOneBar.OnAllInOnEventListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasAdapter;
+import com.tencent.biz.pubaccount.readinjoy.model.AtlasModelImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 
 public class lmz
-  implements ReadInJoyAllInOneBar.OnAllInOnEventListener
+  implements URLDrawableDownListener
 {
-  public lmz(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  public lmz(ReadInJoyAtlasAdapter paramReadInJoyAtlasAdapter, ImageView paramImageView, AtlasModelImage paramAtlasModelImage, URLImageView paramURLImageView) {}
   
-  public boolean a(int paramInt, View paramView)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    boolean bool1;
-    if (ReadInJoyAtlasFragment.a(this.a) != 1) {
-      bool1 = true;
-    }
-    do
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0)
     {
-      boolean bool2;
-      do
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramView = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
+      if ((paramView instanceof Animatable))
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                do
-                                {
-                                  do
-                                  {
-                                    return bool1;
-                                    bool2 = false;
-                                    switch (paramInt)
-                                    {
-                                    default: 
-                                      return false;
-                                    case 1: 
-                                      bool1 = bool2;
-                                    }
-                                  } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
-                                  bool1 = bool2;
-                                } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
-                                bool1 = bool2;
-                              } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
-                              bool1 = bool2;
-                            } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
-                            if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
-                            for (paramInt = 2;; paramInt = 1)
-                            {
-                              PublicAccountReportUtils.a(null, "", "0X8008E38", "0X8008E38", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a)), false);
-                              GalleryReportedUtils.a(3, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 4, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
-                              return false;
-                            }
-                            bool1 = bool2;
-                          } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
-                          bool1 = bool2;
-                        } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
-                        bool1 = bool2;
-                      } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
-                      bool1 = bool2;
-                    } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
-                    if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
-                    for (paramInt = 2;; paramInt = 1)
-                    {
-                      PublicAccountReportUtils.a(null, "", "0X8008E39", "0X8008E39", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a)), false);
-                      GalleryReportedUtils.a(3, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 4, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
-                      return false;
-                    }
-                    bool1 = bool2;
-                  } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
-                  bool1 = bool2;
-                } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
-                bool1 = bool2;
-              } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
-              bool1 = bool2;
-            } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
-            if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
-            for (paramInt = 2;; paramInt = 1)
-            {
-              PublicAccountReportUtils.a(null, "", "0X8008E3A", "0X8008E3A", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a), this.a.a.b()), false);
-              GalleryReportedUtils.a(8, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 3, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
-              return false;
-            }
-            bool1 = bool2;
-          } while (ReadInJoyAtlasFragment.a(this.a) <= 0L);
-          bool1 = bool2;
-        } while (ReadInJoyAtlasFragment.b(this.a) <= 0L);
-        bool1 = bool2;
-      } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.a(this.a)));
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(ReadInJoyAtlasFragment.b(this.a)));
-    if (ReadInJoyAtlasFragment.b(this.a) < ReadInJoyAtlasFragment.b(this.a) - 1L) {}
-    for (paramInt = 2;; paramInt = 1)
-    {
-      PublicAccountReportUtils.a(null, "", "0X8008E3B", "0X8008E3B", 0, 0, "", "", "", GalleryReportedUtils.a(ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.a(this.a).c(), ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.a(this.a), (int)ReadInJoyAtlasFragment.b(this.a), ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.b(this.a)), false);
-      GalleryReportedUtils.a(25, Long.valueOf(ReadInJoyAtlasFragment.a(this.a).c()).longValue(), (int)ReadInJoyAtlasFragment.c(this.a), 2, ReadInJoyAtlasFragment.c(this.a), ReadInJoyAtlasFragment.d(this.a), paramInt, ReadInJoyAtlasFragment.a(this.a), ReadInJoyAtlasFragment.b(this.a));
-      return false;
+        paramView = (Animatable)paramView;
+        if (!paramView.isRunning()) {
+          paramView.start();
+        }
+      }
     }
   }
   
-  public boolean a(boolean paramBoolean)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return false;
+    int i = paramURLDrawable.getIntrinsicWidth();
+    int j = paramURLDrawable.getIntrinsicHeight();
+    paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAtlasModelImage;
+    if (j / i >= 3) {}
+    for (i = 1;; i = 0)
+    {
+      paramView.picType = i;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasAdapter.a(this.jdField_a_of_type_AndroidWidgetImageView);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAtlasModelImage.modelImageShowTime = System.currentTimeMillis();
+      return;
+    }
   }
 }
 

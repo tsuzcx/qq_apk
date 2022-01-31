@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig.WealthGodActTime;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.SearchArkBabyQInfo;
+import com.tencent.mobileqq.ark.ArkRecommendLogic.SemanticAnalysisResult;
+import java.lang.ref.WeakReference;
 
-public final class abex
-  implements Parcelable.Creator
+class abex
+  implements Runnable
 {
-  public ARMapConfig.WealthGodActTime a(Parcel paramParcel)
-  {
-    return new ARMapConfig.WealthGodActTime(paramParcel);
-  }
+  abex(abew paramabew, ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, boolean paramBoolean) {}
   
-  public ARMapConfig.WealthGodActTime[] a(int paramInt)
+  public void run()
   {
-    return new ARMapConfig.WealthGodActTime[paramInt];
+    if (this.jdField_a_of_type_Abew.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      ArkAppCenter.b("ArkApp.ArkRecommendLogic", String.format("sendBabyQTextIntent, this is null, return", new Object[0]));
+    }
+    ArkRecommendLogic.SemanticAnalysisResult localSemanticAnalysisResult;
+    do
+    {
+      return;
+      localSemanticAnalysisResult = (ArkRecommendLogic.SemanticAnalysisResult)this.jdField_a_of_type_Abew.b.get();
+    } while (localSemanticAnalysisResult == null);
+    localSemanticAnalysisResult.a(this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo, this.jdField_a_of_type_Abew.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Boolean);
   }
 }
 

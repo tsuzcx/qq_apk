@@ -1,20 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class adef
-  implements View.OnClickListener
+public final class adef
+  implements Runnable
 {
-  public adef(MusicFilePresenter paramMusicFilePresenter) {}
+  public adef(long paramLong) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (MusicFilePresenter.a(this.a))
-    {
-      MusicFilePresenter.a(this.a);
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]FreeVideoControl");
     }
-    MusicFilePresenter.b(this.a);
+    if ((FileVideoManager.a == null) || (FileVideoManager.a(FileVideoManager.a) == null) || (!FileVideoManager.a(FileVideoManager.a).containsKey(Long.valueOf(this.a)))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]queue is zero return");
+      }
+    }
+    do
+    {
+      return;
+      FileVideoManager.VideoControl localVideoControl = (FileVideoManager.VideoControl)FileVideoManager.a(FileVideoManager.a).get(Long.valueOf(this.a));
+      localVideoControl.a();
+      FileVideoManager.a(localVideoControl);
+      FileVideoManager.a(FileVideoManager.a).remove(Long.valueOf(this.a));
+    } while (!QLog.isDevelopLevel());
+    QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]removed");
   }
 }
 

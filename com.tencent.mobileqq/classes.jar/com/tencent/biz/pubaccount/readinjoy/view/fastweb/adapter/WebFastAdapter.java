@@ -30,15 +30,15 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mmw;
-import mmx;
+import mqo;
+import mqp;
 
 public class WebFastAdapter
   extends BaseAdapter
   implements OnItemClickListener
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new mmx(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new mqp(this);
   private BaseItemViewHolder jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder;
   private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
@@ -124,7 +124,7 @@ public class WebFastAdapter
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder = paramBaseItemViewHolder;
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
     localQQCustomMenu.a(0, "复制");
-    BubbleContextMenu.a(paramBaseItemViewHolder.jdField_a_of_type_AndroidViewView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new mmw(this, paramBaseItemViewHolder));
+    BubbleContextMenu.a(paramBaseItemViewHolder.jdField_a_of_type_AndroidViewView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new mqo(this, paramBaseItemViewHolder));
   }
   
   public int getCount()

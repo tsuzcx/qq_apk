@@ -1,34 +1,50 @@
-import com.tencent.mobileqq.dating.CarrierHelper;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.campuscircle.CampusCircleHandler;
+import com.tencent.mobileqq.campuscircle.CampusCircleManager;
+import com.tencent.mobileqq.campuscircle.CampusCirclePublishActivity;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Locale;
 
 public class abwp
   implements Runnable
 {
-  public abwp(CarrierHelper paramCarrierHelper, LinkedList paramLinkedList) {}
+  public abwp(CampusCirclePublishActivity paramCampusCirclePublishActivity) {}
   
   public void run()
   {
-    if ((CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper)) || (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())) {
+    boolean bool1 = true;
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager.a(1, null);
+    if ((localObject != null) && (((List)localObject).size() > 0)) {
+      this.a.a((List)localObject);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleHandler.a(1);
+    try
+    {
+      boolean bool2 = PtvFilterSoLoad.a(VideoEnvironment.a(), false);
+      localObject = this.a;
+      if ((VideoEnvironment.b()) && (bool2)) {}
+      for (;;)
+      {
+        ((CampusCirclePublishActivity)localObject).c = bool1;
+        if (QLog.isColorLevel()) {
+          QLog.i("CampusCircle", 2, String.format(Locale.getDefault(), "initAsync hasFilterSoLib:%b isSurpportFilter:%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(this.a.c) }));
+        }
+        return;
+        bool1 = false;
+      }
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-    while (localIterator.hasNext())
+    catch (Exception localException)
     {
-      Integer localInteger = (Integer)localIterator.next();
-      if (5 == localInteger.intValue()) {
-        ReportController.b(CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), "CliOper", "", "", "0X80052A4", "0X80052A4", CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), 0, "", "", "", "");
-      } else if ((CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper) == 2) || (CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper) == 1)) {
-        ReportController.b(CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), "CliOper", "", "", "0X80050D0", "0X80050D0", CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), 0, String.valueOf(localInteger), "", "", "");
-      }
+      localException.printStackTrace();
     }
-    CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwp
  * JD-Core Version:    0.7.0.1
  */

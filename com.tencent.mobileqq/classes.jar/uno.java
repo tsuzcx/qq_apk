@@ -1,42 +1,24 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
 public class uno
-  extends View
+  implements Handler.Callback
 {
-  public uno(ComboAnimation3 paramComboAnimation3, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public uno(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void draw(Canvas paramCanvas)
+  public boolean handleMessage(Message paramMessage)
   {
-    Drawable[] arrayOfDrawable = this.a.a;
-    int j = arrayOfDrawable.length;
-    int i = 0;
-    while (i < j)
+    switch (paramMessage.what)
     {
-      arrayOfDrawable[i].draw(paramCanvas);
-      i += 1;
     }
-  }
-  
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramInt1 = 0;
-    paramInt3 = paramInt4 - paramInt2;
-    Drawable[] arrayOfDrawable = this.a.a;
-    paramInt4 = arrayOfDrawable.length;
-    paramInt2 = 0;
-    while (paramInt1 < paramInt4)
+    for (;;)
     {
-      Drawable localDrawable = arrayOfDrawable[paramInt1];
-      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
-      paramInt2 += localDrawable.getIntrinsicWidth();
-      paramInt1 += 1;
+      return false;
+      if (this.a.a != null) {
+        this.a.a.d();
+      }
     }
   }
 }

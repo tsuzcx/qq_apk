@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
 
-public class aavf
+class aavf
   implements Runnable
 {
-  public aavf(ArkLocalAppMgr paramArkLocalAppMgr, aavw paramaavw) {}
+  aavf(aave paramaave) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aavw.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback != null) {
-      this.jdField_a_of_type_Aavw.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback.a(this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aavw.c);
+    ArkAppDeviceModule.a(this.a.a.jdField_a_of_type_Aauq.a, this.a.a.jdField_a_of_type_Long, false, 0.0D, 0.0D);
+    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Aauq.a.a(this.a.a.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
   }
 }

@@ -1,25 +1,6 @@
-import android.graphics.Color;
-import android.graphics.drawable.ClipDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-
-class xny
-  implements Runnable
+public abstract interface xny
 {
-  xny(xns paramxns) {}
-  
-  public void run()
-  {
-    if (EditLocalVideoActivity.a(this.a.a) == null)
-    {
-      EditLocalVideoActivity.a(this.a.a, (ProgressBar)this.a.a.a(2131370397));
-      EditLocalVideoActivity.a(this.a.a).setProgressDrawable(new ClipDrawable(new ColorDrawable(Color.parseColor("#1ab5ee")), 3, 1));
-      EditLocalVideoActivity.a(this.a.a).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4e000000")));
-    }
-    EditLocalVideoActivity.a(this.a.a).setVisibility(0);
-    EditLocalVideoActivity.a(this.a.a).setProgress(0);
-  }
+  public abstract void a(String paramString);
 }
 
 

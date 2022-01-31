@@ -29,12 +29,12 @@ public class FileSearchDetailActivity
   {
     super.doOnCreate(paramBundle);
     this.b = a;
-    super.setContentView(2130968794);
+    super.setContentView(2130968798);
     super.setTitle(((FileManagerEntity)this.b.a.get(0)).fileName);
     Object localObject = getSupportFragmentManager();
     paramBundle = FileSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
     localObject = ((FragmentManager)localObject).beginTransaction();
-    ((FragmentTransaction)localObject).replace(2131362369, paramBundle);
+    ((FragmentTransaction)localObject).replace(2131362372, paramBundle);
     ((FragmentTransaction)localObject).commit();
     return true;
   }

@@ -1,15 +1,18 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qlink.SendMsg;
 
-public class amvs
-  implements Runnable
+public final class amvs
+  implements Parcelable.Creator
 {
-  public amvs(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void run()
+  public SendMsg a(Parcel paramParcel)
   {
-    RemoteHandleManager.a().a().f();
+    return new SendMsg(paramParcel);
+  }
+  
+  public SendMsg[] a(int paramInt)
+  {
+    return new SendMsg[paramInt];
   }
 }
 

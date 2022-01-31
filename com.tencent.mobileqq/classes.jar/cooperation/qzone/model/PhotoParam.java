@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amut;
+import ance;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.Map;
 public class PhotoParam
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amut();
+  public static final Parcelable.Creator CREATOR = new ance();
   public int a;
   public long a;
   public String a;

@@ -1,78 +1,107 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.activity.fling.ContentWrapView;
-import com.tencent.mobileqq.activity.fling.FlingTrackerHandler;
-import com.tencent.mobileqq.activity.fling.ScreenCapture;
-import com.tencent.mobileqq.activity.fling.TopLayout;
-import java.lang.ref.WeakReference;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.mobileqq.systemmsg.SystemMsgUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class wpo
-  implements Runnable
+  extends MessageObserver
 {
-  public wpo(FlingTrackerHandler paramFlingTrackerHandler) {}
+  public wpo(SystemRequestInfoView paramSystemRequestInfoView) {}
   
-  public void run()
+  protected void a(String paramString)
   {
-    Object localObject1 = (Activity)this.a.a.get();
-    if (localObject1 == null) {}
+    if (this.a.a())
+    {
+      paramString = this.a.getResources().getString(2131433190);
+      QQToast.a(this.a.getContext(), 1, paramString, 0).b(this.a.a());
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionError");
+  }
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin");
+    }
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin stopProgress = fasle");
+      }
+    }
+    long l1;
+    structmsg.StructMsg localStructMsg;
     for (;;)
     {
       return;
-      Object localObject2;
-      if (!ScreenCapture.hasSnapFile((Context)localObject1))
+      long l2 = FriendSystemMsgController.a().b();
+      l1 = l2;
+      if (!TextUtils.isEmpty(paramString1)) {}
+      try
       {
-        if (FlingTrackerHandler.a(this.a) > 5) {
-          FlingTrackerHandler.a(this.a, 0);
+        l1 = Long.parseLong(paramString1);
+        localStructMsg = FriendSystemMsgController.a().a(Long.valueOf(l1));
+        if (!paramBoolean) {
+          if (!TextUtils.isEmpty(paramString3))
+          {
+            QQToast.a(this.a.getContext(), 1, paramString3, 0).b(this.a.a());
+            if (!SystemMsgUtils.a(localStructMsg, paramInt3, paramString2, paramString4)) {
+              continue;
+            }
+            SystemRequestInfoView.a(this.a).finish();
+            return;
+          }
         }
       }
-      else
+      catch (Exception paramString1)
       {
-        localObject2 = (ViewGroup)((Activity)localObject1).getWindow().getDecorView();
-        if (FlingTrackerHandler.a(this.a) != null) {
-          break label303;
-        }
-        FlingTrackerHandler.a(this.a, ((ViewGroup)localObject2).getChildAt(0));
-        View localView = FlingTrackerHandler.a(this.a);
-        FlingTrackerHandler.a(this.a, new TopLayout((Context)localObject1));
-        FlingTrackerHandler.a(this.a).setBackgroundColor(-16777216);
-        TopLayout localTopLayout = FlingTrackerHandler.a(this.a);
-        localTopLayout.setOnDraggingListener(this.a);
-        ((ViewGroup)localObject2).addView(localTopLayout);
-        ((ViewGroup)localObject2).removeView(localView);
-        FlingTrackerHandler.a(this.a, new ContentWrapView((Context)localObject1));
-        localObject2 = FlingTrackerHandler.a(this.a);
-        ((ContentWrapView)localObject2).addView(localView);
-        localTopLayout.setContent((ContentWrapView)localObject2);
-        FlingTrackerHandler.a(this.a, new ImageView((Context)localObject1));
-        FlingTrackerHandler.a(this.a).setScaleType(ImageView.ScaleType.FIT_START);
-        localObject1 = FlingTrackerHandler.a(this.a);
-        ((ImageView)localObject1).setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-        localTopLayout.setBehind((View)localObject1);
-      }
-      while ((this.a.a()) && (FlingTrackerHandler.a(this.a) != null) && (FlingTrackerHandler.a(this.a).getDrawable() == null))
-      {
-        FlingTrackerHandler.a(this.a);
-        return;
-        FlingTrackerHandler.b(this.a);
-        FlingTrackerHandler.a(this.a).postDelayed(this, 100L);
-        return;
-        label303:
-        if (!this.a.a())
+        for (;;)
         {
-          ((ViewGroup)localObject2).addView(FlingTrackerHandler.a(this.a));
-          ((ViewGroup)localObject2).removeView(FlingTrackerHandler.a(this.a));
-          FlingTrackerHandler.a(this.a).addView(FlingTrackerHandler.a(this.a));
+          paramString1.printStackTrace();
+          l1 = l2;
+          continue;
+          paramString3 = this.a.getResources().getString(2131434480);
+        }
+        SystemMsgUtils.a(localStructMsg, paramInt1, paramString2, paramInt2);
+        paramString2 = null;
+        if (paramInt1 != 1) {
+          break label234;
+        }
+      }
+    }
+    SystemRequestInfoView.a(this.a).finish();
+    paramString1 = this.a.getResources().getString(2131433086);
+    for (;;)
+    {
+      QQToast.a(this.a.getContext(), 2, paramString1, 0).b(this.a.a());
+      return;
+      label234:
+      paramString1 = paramString2;
+      if (paramInt1 == 0)
+      {
+        paramString1 = paramString2;
+        if (localStructMsg != null)
+        {
+          paramString1 = this.a.getResources().getString(2131433085);
+          AutoRemarkActivity.a(SystemRequestInfoView.a(this.a), 1017, String.valueOf(localStructMsg.req_uin.get()), l1, null);
         }
       }
     }
   }
+  
+  protected void b(boolean paramBoolean, String paramString) {}
 }
 
 

@@ -1,16 +1,37 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
 
-public class akyl
+class akyl
   implements Runnable
 {
-  public akyl(WorldCupShareFragment paramWorldCupShareFragment) {}
+  akyl(akyk paramakyk, int paramInt) {}
   
   public void run()
   {
-    String str = WorldCupShareFragment.b(this.a);
-    ThreadManager.getUIHandler().post(new akym(this, str));
+    int i = 0;
+    if (this.jdField_a_of_type_Int == 202)
+    {
+      localObject = new String[2];
+      localObject[0] = "https://qc.vip.qq.com/";
+      localObject[1] = "http://m.gamecenter.qq.com";
+      int j = localObject.length;
+      while (i < j)
+      {
+        String str = localObject[i];
+        SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.a(str);
+        if (localSwiftBrowserCookieMonster != null) {
+          localSwiftBrowserCookieMonster.a(str, null, null, null);
+        }
+        i += 1;
+      }
+    }
+    Object localObject = SwiftBrowserCookieMonster.a("http://zb.vip.qq.com/");
+    if (localObject != null) {
+      ((SwiftBrowserCookieMonster)localObject).a("http://zb.vip.qq.com/", null, null, null);
+    }
+    this.jdField_a_of_type_Akyk.jdField_a_of_type_AndroidOsBundle.putBoolean("_should_set_cookie_", true);
+    this.jdField_a_of_type_Akyk.jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator.a(this.jdField_a_of_type_Akyk.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

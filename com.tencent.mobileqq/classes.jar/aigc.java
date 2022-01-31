@@ -1,20 +1,38 @@
-import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import com.tencent.mobileqq.shortvideo.filter.QQMovieFilter;
+import java.lang.ref.WeakReference;
 
 public class aigc
-  implements Runnable
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public aigc(StatisticCollector paramStatisticCollector, ToServiceMsg paramToServiceMsg) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void run()
+  public aigc(QQMovieFilter paramQQMovieFilter)
   {
-    MsfServiceSdk.get().sendMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQMovieFilter);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      QQMovieFilter localQQMovieFilter = (QQMovieFilter)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localQQMovieFilter != null) {
+        localQQMovieFilter.a(paramSurfaceTexture);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aigc
  * JD-Core Version:    0.7.0.1
  */

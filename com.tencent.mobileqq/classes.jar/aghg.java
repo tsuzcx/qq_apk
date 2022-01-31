@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.ocr.question.SearchQuestionFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.util.WeakReferenceHandler;
+import java.io.File;
 
 public class aghg
-  implements ARTipsManager.ButtonClickListener
+  implements Runnable
 {
-  public aghg(ScanTorchActivity paramScanTorchActivity) {}
+  public aghg(SearchQuestionFragment paramSearchQuestionFragment) {}
   
-  public void a()
+  public void run()
   {
-    ScanTorchActivity.p(this.a);
-    ReportController.b(null, "dc00898", "", "", "0X80085B2", "0X80085B2", 0, 0, "", "", "", "");
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    localObject = URLDrawable.getDrawable(new File(this.a.b), (URLDrawable.URLDrawableOptions)localObject);
+    ((URLDrawable)localObject).downloadImediatly();
+    this.a.getActivity().runOnUiThread(new aghh(this, (URLDrawable)localObject));
+    if (NetworkUtil.d(this.a.jdField_a_of_type_AndroidAppActivity))
+    {
+      this.a.a(this.a.b);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghg
  * JD-Core Version:    0.7.0.1
  */

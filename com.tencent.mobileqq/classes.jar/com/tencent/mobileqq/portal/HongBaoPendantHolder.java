@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.portal;
 
-import aglr;
-import agmk;
+import agqf;
+import agqz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -108,7 +108,7 @@ public class HongBaoPendantHolder
     this.c = ((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131559582));
     paramInt3 = this.h / 2;
     paramInt4 = paramInt2 / 2;
-    this.jdField_a_of_type_ComTencentMobileqqPortalBaseAnimHolder.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842624);
+    this.jdField_a_of_type_ComTencentMobileqqPortalBaseAnimHolder.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842659);
     this.jdField_a_of_type_ComTencentMobileqqPortalBaseAnimHolder.a(paramInt3 + paramInt1 - paramInt4, 0, paramInt2, this.c, paramView);
   }
   
@@ -563,7 +563,7 @@ public class HongBaoPendantHolder
     this.m = this.g;
     this.l = this.jdField_a_of_type_Int;
     this.e = 3;
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new aglr();
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new agqf();
     a(1500L);
   }
   
@@ -601,7 +601,7 @@ public class HongBaoPendantHolder
   
   public void d()
   {
-    ValueAnimation localValueAnimation = new ValueAnimation(Float.valueOf(1.0F), Float.valueOf(1.1F), new agmk(this));
+    ValueAnimation localValueAnimation = new ValueAnimation(Float.valueOf(1.0F), Float.valueOf(1.1F), new agqz(this));
     localValueAnimation.setDuration(500L);
     localValueAnimation.setRepeatCount(-1);
     localValueAnimation.setRepeatMode(2);

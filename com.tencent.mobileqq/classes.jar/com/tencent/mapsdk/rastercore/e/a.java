@@ -1,319 +1,220 @@
 package com.tencent.mapsdk.rastercore.e;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.graphics.PointF;
-import android.graphics.RectF;
-import com.tencent.mapsdk.raster.model.BitmapDescriptor;
-import com.tencent.mapsdk.raster.model.GroundOverlayOptions;
+import com.tencent.mapsdk.raster.model.CircleOptions;
 import com.tencent.mapsdk.raster.model.LatLng;
-import com.tencent.mapsdk.raster.model.LatLngBounds;
-import com.tencent.mapsdk.rastercore.d.c;
-import com.tencent.mapsdk.rastercore.d.e;
+import com.tencent.mapsdk.rastercore.d.f;
+import com.tencent.mapsdk.rastercore.f.b;
 
 public class a
-  implements b
+  implements c
 {
-  private BitmapDescriptor a;
-  private LatLng b;
-  private float c;
-  private float d;
-  private LatLngBounds e;
-  private float f;
-  private float g;
-  private boolean h = true;
-  private float i = 0.0F;
-  private float j = 0.5F;
-  private float k = 0.5F;
-  private String l;
-  private Bitmap m;
-  private e n;
-  private com.tencent.mapsdk.rastercore.d.a o;
+  private LatLng a = null;
+  private double b = 0.0D;
+  private float c = 10.0F;
+  private int d = -16777216;
+  private int e = 0;
+  private float f = 0.0F;
+  private boolean g = true;
+  private boolean h = false;
+  private DashPathEffect i = null;
+  private DashPathEffect j;
+  private String k;
+  private f l;
+  private com.tencent.mapsdk.rastercore.d.a m;
   
-  public a(e parame, GroundOverlayOptions paramGroundOverlayOptions)
+  public a(f paramf, CircleOptions paramCircleOptions)
   {
-    this.n = parame;
-    this.o = parame.e();
-    this.l = getId();
-    this.j = paramGroundOverlayOptions.getAnchorU();
-    this.k = paramGroundOverlayOptions.getAnchorV();
-    this.f = paramGroundOverlayOptions.getBearing();
-    this.c = paramGroundOverlayOptions.getWidth();
-    this.d = paramGroundOverlayOptions.getHeight();
-    this.a = paramGroundOverlayOptions.getImage();
-    this.b = paramGroundOverlayOptions.getLocation();
-    this.e = paramGroundOverlayOptions.getBounds();
-    this.i = paramGroundOverlayOptions.getTransparency();
-    this.h = paramGroundOverlayOptions.isVisible();
-    this.g = paramGroundOverlayOptions.getZIndex();
-  }
-  
-  private void g()
-  {
-    double d1 = this.c / (6371000.79D * Math.cos(this.b.getLatitude() * 0.01745329251994329D) * 0.01745329251994329D);
-    double d2 = this.d / 111194.94043265979D;
-    LatLng localLatLng = new LatLng(this.b.getLatitude() - (1.0F - this.k) * d2, this.b.getLongitude() - this.j * d1);
-    double d3 = this.b.getLatitude();
-    double d4 = this.k;
-    double d5 = this.b.getLongitude();
-    this.e = new LatLngBounds(localLatLng, new LatLng(d2 * d4 + d3, d1 * (1.0F - this.j) + d5));
-  }
-  
-  private void h()
-  {
-    LatLng localLatLng1 = this.e.getSouthwest();
-    LatLng localLatLng2 = this.e.getNortheast();
-    this.b = new LatLng(localLatLng1.getLatitude() + (1.0F - this.k) * (localLatLng2.getLatitude() - localLatLng1.getLatitude()), localLatLng1.getLongitude() + this.j * (localLatLng2.getLongitude() - localLatLng1.getLongitude()));
-    this.c = ((float)(6371000.79D * Math.cos(this.b.getLatitude() * 0.01745329251994329D) * (localLatLng2.getLongitude() - localLatLng1.getLongitude()) * 0.01745329251994329D));
-    this.d = ((float)((localLatLng2.getLatitude() - localLatLng1.getLatitude()) * 6371000.79D * 0.01745329251994329D));
+    this.l = paramf;
+    this.m = paramf.e();
+    this.k = getId();
+    this.e = paramCircleOptions.getFillColor();
+    this.a = paramCircleOptions.getCenter();
+    this.g = paramCircleOptions.isVisible();
+    this.c = paramCircleOptions.getStrokeWidth();
+    this.f = paramCircleOptions.getZIndex();
+    this.d = paramCircleOptions.getStrokeColor();
+    this.b = paramCircleOptions.getRadius();
+    this.h = paramCircleOptions.getStrokeDash();
+    this.i = paramCircleOptions.getStrokeDashPathEffect();
+    this.j = new DashPathEffect(new float[] { this.c, this.c }, 0.0F);
   }
   
   public LatLng a()
   {
-    return this.b;
+    return this.a;
+  }
+  
+  public void a(double paramDouble)
+  {
+    this.b = paramDouble;
+    this.l.a(false, false);
   }
   
   public void a(float paramFloat)
   {
-    if (this.c != paramFloat)
-    {
-      this.c = paramFloat;
-      this.d = paramFloat;
-      g();
-    }
-    for (;;)
-    {
-      this.n.a(false, false);
-      return;
-      this.c = paramFloat;
-      this.d = paramFloat;
-    }
+    this.c = paramFloat;
+    this.j = new DashPathEffect(new float[] { this.c, this.c }, 0.0F);
+    this.l.a(false, false);
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  public void a(int paramInt)
   {
-    if ((this.c != paramFloat1) && (this.d != paramFloat2))
-    {
-      this.c = paramFloat1;
-      this.d = paramFloat2;
-      g();
-    }
-    for (;;)
-    {
-      this.n.a(false, false);
-      return;
-      this.c = paramFloat1;
-      this.d = paramFloat2;
-    }
+    this.d = paramInt;
+    this.l.a(false, false);
   }
   
-  public void a(BitmapDescriptor paramBitmapDescriptor)
+  public void a(DashPathEffect paramDashPathEffect)
   {
-    this.a = paramBitmapDescriptor;
-    if (this.a == null) {}
-    this.n.a(false, false);
+    this.i = paramDashPathEffect;
   }
   
   public void a(LatLng paramLatLng)
   {
-    if ((this.b != null) && (!this.b.equals(paramLatLng)))
-    {
-      this.b = paramLatLng;
-      g();
-    }
-    for (;;)
-    {
-      this.n.a(false, false);
-      return;
-      this.b = paramLatLng;
-    }
+    this.a = paramLatLng;
+    this.l.a(false, false);
   }
   
-  public void a(LatLngBounds paramLatLngBounds)
+  public void a(boolean paramBoolean)
   {
-    if ((this.e != null) && (!this.e.equals(paramLatLngBounds)))
-    {
-      this.e = paramLatLngBounds;
-      h();
-    }
-    for (;;)
-    {
-      this.n.a(false, false);
-      return;
-      this.e = paramLatLngBounds;
-    }
+    this.h = paramBoolean;
   }
   
-  public float b()
+  public double b()
   {
-    return this.c;
+    return this.b;
   }
   
-  public void b(float paramFloat)
+  public void b(int paramInt)
   {
-    this.f = paramFloat;
-    this.n.a(false, false);
+    this.e = paramInt;
+    this.l.a(false, false);
   }
   
-  public void b(float paramFloat1, float paramFloat2)
+  public boolean b(LatLng paramLatLng)
   {
-    this.j = paramFloat1;
-    this.k = paramFloat2;
-    this.n.a(false, false);
+    return this.b >= com.tencent.mapsdk.rastercore.c.a(this.a, paramLatLng);
   }
   
   public float c()
   {
-    return this.d;
-  }
-  
-  public void c(float paramFloat)
-  {
-    this.i = paramFloat;
-    this.n.a(false, false);
+    return this.c;
   }
   
   public boolean checkInBounds()
   {
-    if (this.e == null) {}
-    LatLngBounds localLatLngBounds;
-    do
-    {
-      return false;
-      localLatLngBounds = this.n.b().c();
-      if (localLatLngBounds == null) {
-        return true;
-      }
-    } while ((!localLatLngBounds.contains(this.e)) && (!this.e.intersects(localLatLngBounds)));
     return true;
   }
   
-  public LatLngBounds d()
+  public int d()
   {
-    return this.e;
+    return this.d;
   }
   
   public void destroy()
   {
-    try
-    {
-      remove();
-      if (this.a != null)
-      {
-        Bitmap localBitmap = this.a.getBitmap();
-        if (localBitmap != null)
-        {
-          localBitmap.recycle();
-          this.a = null;
-        }
-      }
-      this.b = null;
-      this.e = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      new StringBuilder("GroundOverlayDelegateImp destroy").append(localException.getMessage());
-    }
+    this.a = null;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if ((!this.h) || ((this.b == null) && (this.e == null)) || (this.a == null)) {}
-    label295:
-    for (;;)
+    if ((a() == null) || (this.b <= 0.0D) || (!isVisible())) {}
+    float f1;
+    PointF localPointF;
+    Paint localPaint;
+    do
     {
       return;
-      if (this.b == null) {
-        h();
+      f1 = this.l.b().a(this.a.getLatitude(), (float)b());
+      localPointF = this.l.b().a(this.a);
+      localPaint = new Paint();
+      localPaint.setColor(e());
+      localPaint.setAntiAlias(true);
+      localPaint.setStyle(Paint.Style.FILL);
+      paramCanvas.drawCircle(localPointF.x, localPointF.y, f1, localPaint);
+    } while (b.a(c(), 0.0F));
+    if (this.h)
+    {
+      if (this.i != null) {
+        break label187;
       }
-      for (;;)
-      {
-        if ((this.c == 0.0F) && (this.d == 0.0F)) {
-          break label295;
-        }
-        this.m = this.a.getBitmap();
-        if ((this.m == null) || (this.m.isRecycled())) {
-          break;
-        }
-        Object localObject1 = this.e.getSouthwest();
-        Object localObject2 = this.e.getNortheast();
-        localObject1 = this.n.b().a((LatLng)localObject1);
-        PointF localPointF = this.n.b().a((LatLng)localObject2);
-        localObject2 = new Paint();
-        float f1 = (localPointF.x - ((PointF)localObject1).x) * this.j + ((PointF)localObject1).x;
-        float f2 = (((PointF)localObject1).y - localPointF.y) * this.k + localPointF.y;
-        localObject1 = new RectF(((PointF)localObject1).x - f1, localPointF.y - f2, localPointF.x - f1, ((PointF)localObject1).y - f2);
-        ((Paint)localObject2).setAlpha((int)(255.0F - this.i * 255.0F));
-        ((Paint)localObject2).setFilterBitmap(true);
-        paramCanvas.save();
-        paramCanvas.translate(f1, f2);
-        paramCanvas.rotate(this.f);
-        paramCanvas.drawBitmap(this.m, null, (RectF)localObject1, (Paint)localObject2);
-        paramCanvas.restore();
-        return;
-        if (this.e == null) {
-          g();
-        }
-      }
+      localPaint.setPathEffect(this.j);
+    }
+    for (;;)
+    {
+      localPaint.setColor(d());
+      localPaint.setStyle(Paint.Style.STROKE);
+      localPaint.setStrokeWidth(c());
+      paramCanvas.drawCircle(localPointF.x, localPointF.y, f1, localPaint);
+      return;
+      label187:
+      localPaint.setPathEffect(this.i);
     }
   }
   
-  public float e()
+  public int e()
   {
-    return this.f;
+    return this.e;
   }
   
-  public boolean equalsRemote(b paramb)
+  public boolean equalsRemote(c paramc)
   {
-    return (equals(paramb)) || (paramb.getId().equals(getId()));
+    return (equals(paramc)) || (paramc.getId().equals(getId()));
   }
   
-  public float f()
+  public boolean f()
+  {
+    return this.h;
+  }
+  
+  public DashPathEffect g()
   {
     return this.i;
   }
   
   public String getId()
   {
-    if (this.l == null) {
-      this.l = com.tencent.mapsdk.rastercore.d.a.a("GroundOverlay");
+    if (this.k == null) {
+      this.k = com.tencent.mapsdk.rastercore.d.a.a("Circle");
     }
-    return this.l;
+    return this.k;
   }
   
   public float getZIndex()
   {
-    return this.g;
+    return this.f;
   }
   
   public int hashCodeRemote()
   {
-    return super.hashCode();
+    return 0;
   }
   
   public boolean isVisible()
   {
-    return this.h;
+    return this.g;
   }
   
   public void remove()
   {
-    this.o.b(getId());
+    this.m.b(getId());
   }
   
   public void setVisible(boolean paramBoolean)
   {
-    this.h = paramBoolean;
-    this.n.a(false, false);
+    this.g = paramBoolean;
+    this.l.a(false, false);
   }
   
   public void setZIndex(float paramFloat)
   {
-    this.g = paramFloat;
-    this.o.c();
-    this.n.a(false, false);
+    this.f = paramFloat;
+    this.m.c();
+    this.l.a(false, false);
   }
 }
 

@@ -1,36 +1,15 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.pic.PicBusiManager;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.pic.PicReq;
 
 public class agpn
-  extends Handler
+  implements Runnable
 {
-  public agpn(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public agpn(PicPreDownloader paramPicPreDownloader, PicReq paramPicReq) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if (!this.a.a(paramMessage)) {}
-    switch (paramMessage.what)
-    {
-    case 5: 
-    case 8: 
-    default: 
-      return;
-    case 6: 
-      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
-      {
-        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
-        return;
-      }
-      Toast.makeText(this.a.a.getApplicationContext(), 2131436744, 0).show();
-      return;
-    case 7: 
-      Toast.makeText(this.a.a.getApplicationContext(), 2131436746, 0).show();
-      return;
-    }
-    this.a.d();
+    PicBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq, this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a);
   }
 }
 

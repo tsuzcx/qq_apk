@@ -1,35 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.sonic.SonicJsPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sonic.sdk.SonicDiffDataCallback;
 
 public class akud
-  implements View.OnClickListener
+  implements SonicDiffDataCallback
 {
-  public akud(DropdownView paramDropdownView) {}
+  public akud(SonicJsPlugin paramSonicJsPlugin, CustomWebView paramCustomWebView, String paramString) {}
   
-  public void onClick(View paramView)
+  public void callback(String paramString)
   {
-    this.a.jdField_a_of_type_Akug.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Akug.getWindowToken(), 0);
-    if ((this.a.jdField_a_of_type_Akug.getAdapter() != null) && (this.a.jdField_a_of_type_Akug.getAdapter().getCount() > 0))
-    {
-      if ((((ImageView)paramView).getDrawable() != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
-        break label160;
-      }
-      DropdownView.a(this.a).postDelayed(new akue(this, paramView), 250L);
-      paramView = paramView.getContext();
-      if ((paramView != null) && ((paramView instanceof LoginActivity))) {
-        ReportController.a(((LoginActivity)paramView).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("SonicSdkImpl_SonicJsPlugin", 2, "getDiffData callback updated data: " + paramString.toString());
     }
-    return;
-    label160:
-    this.a.jdField_a_of_type_Akug.dismissDropDown();
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.jdField_a_of_type_JavaLangString, new String[] { paramString });
   }
 }
 

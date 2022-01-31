@@ -1,47 +1,37 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
 import com.tencent.util.MqqWeakReferenceHandler;
-import mqq.observer.BusinessObserver;
-import tencent.im.nearbygroup.ext.NearbyGroupExt.RspBody;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class wku
-  implements BusinessObserver
+public class wku
+  implements EncodeVideoTask.ResultListener
 {
-  wku(wkt paramwkt) {}
+  public wku(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    Object localObject;
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localObject = new NearbyGroupExt.RspBody();
-      }
+    this.a.runOnUiThread(new wkv(this));
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
     }
-    try
+    synchronized (BlessSelectMemberActivity.a())
     {
-      ((NearbyGroupExt.RspBody)localObject).mergeFrom(paramBundle);
-      paramBundle = "";
-      paramInt = 0;
-      if (((NearbyGroupExt.RspBody)localObject).str_wording.has()) {
-        paramBundle = ((NearbyGroupExt.RspBody)localObject).str_wording.get();
-      }
-      if (((NearbyGroupExt.RspBody)localObject).uint32_total_num.has()) {
-        paramInt = ((NearbyGroupExt.RspBody)localObject).uint32_total_num.get();
-      }
-      localObject = this.a.a.a.a().obtainMessage();
-      ((Message)localObject).what = 106;
-      ((Message)localObject).obj = paramBundle;
-      ((Message)localObject).arg1 = paramInt;
-      this.a.a.a.a().sendMessage((Message)localObject);
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
+      this.a.finish();
       return;
     }
-    catch (Exception paramBundle) {}
+  }
+  
+  public void a(String arg1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  {
+    BlessSelectMemberActivity.a = ???;
+    synchronized (BlessSelectMemberActivity.a())
+    {
+      BlessSelectMemberActivity.a().set(true);
+      BlessSelectMemberActivity.a().notifyAll();
+      return;
+    }
   }
 }
 

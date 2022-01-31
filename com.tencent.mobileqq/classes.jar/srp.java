@@ -1,15 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.SyncListener;
 
 public class srp
-  implements View.OnClickListener
+  extends SyncListener
 {
-  public srp(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public srp(FavEmosmManageActivity paramFavEmosmManageActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    FriendProfileImageActivity.a(this.a);
+    this.a.c();
+  }
+  
+  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 28) || (paramInt2 % 28 == 0)) {
+      this.a.c();
+    }
   }
 }
 

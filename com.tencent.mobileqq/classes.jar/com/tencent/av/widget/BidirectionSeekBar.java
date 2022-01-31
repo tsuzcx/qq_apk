@@ -39,13 +39,13 @@ public class BidirectionSeekBar
     if (getThumbOffset() != 0) {
       setThumbOffset(4);
     }
-    int i = getResources().getDrawable(2130840096).getIntrinsicWidth();
+    int i = getResources().getDrawable(2130840111).getIntrinsicWidth();
     Object localObject = getProgressDrawable();
     if ((localObject instanceof LayerDrawable))
     {
       localObject = (LayerDrawable)localObject;
       Drawable localDrawable = ((LayerDrawable)localObject).findDrawableByLayerId(16908301);
-      BidirectionClipDrawable localBidirectionClipDrawable = new BidirectionClipDrawable(getResources().getDrawable(2130840090), getResources().getDrawable(2130840091), 1, i);
+      BidirectionClipDrawable localBidirectionClipDrawable = new BidirectionClipDrawable(getResources().getDrawable(2130840105), getResources().getDrawable(2130840106), 1, i);
       localBidirectionClipDrawable.setLevel(localDrawable.getLevel());
       ((LayerDrawable)localObject).setDrawableByLayerId(16908301, localBidirectionClipDrawable);
     }
@@ -68,7 +68,7 @@ public class BidirectionSeekBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.widget.BidirectionSeekBar
  * JD-Core Version:    0.7.0.1
  */

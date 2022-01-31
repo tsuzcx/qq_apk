@@ -1,13 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import java.lang.ref.WeakReference;
 
-class mhl
+public class mhl
   implements Runnable
 {
-  mhl(mhf parammhf) {}
+  public mhl(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
   
   public void run()
   {
-    this.a.a.notifyDataSetChanged();
+    if (VideoFeedsPlayManager.a(this.a) == null) {
+      return;
+    }
+    VideoFeedsPlayManager.a(this.a).removeMessages(-2);
+    new WeakReference(VideoFeedsPlayManager.a(this.a));
+    new WeakReference(VideoFeedsPlayManager.a(this.a));
+    VideoFeedsPlayManager.a(this.a).sendEmptyMessage(-2);
   }
 }
 

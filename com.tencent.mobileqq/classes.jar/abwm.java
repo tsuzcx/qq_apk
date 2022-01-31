@@ -1,20 +1,45 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.campuscircle.CampusCirclePublishActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ScrollView;
 
 public class abwm
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public abwm(BaseMsgBoxActivity paramBaseMsgBoxActivity, String paramString, int paramInt) {}
+  public abwm(CampusCirclePublishActivity paramCampusCirclePublishActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ((MessageHandler)this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity.app.a(0)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+    int i;
+    if (paramView == this.a.jdField_a_of_type_ComTencentWidgetPrefixXEditText)
+    {
+      i = paramMotionEvent.getAction() & 0xFF;
+      if (i != 0) {
+        break label51;
+      }
+      this.a.jdField_a_of_type_ComTencentWidgetScrollView.requestDisallowInterceptTouchEvent(true);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("CampusCircle", 4, "disallow intercept touch event");
+      }
+    }
+    label51:
+    do
+    {
+      do
+      {
+        return false;
+      } while ((i != 1) && (i != 3));
+      this.a.jdField_a_of_type_ComTencentWidgetScrollView.requestDisallowInterceptTouchEvent(false);
+    } while (!QLog.isDevelopLevel());
+    QLog.i("CampusCircle", 4, "all intercept touch event");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwm
  * JD-Core Version:    0.7.0.1
  */

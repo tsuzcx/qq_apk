@@ -1,25 +1,51 @@
-import com.tencent.biz.qqstory.takevideo.dancemachine.VideoSharer;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditPicSave;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
+import com.tencent.biz.qqstory.takevideo.publish.GeneratePicArgs;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
 
-class oib
-  implements Runnable
+public class oib
+  extends SimpleObserver
 {
-  oib(oia paramoia, int paramInt) {}
+  public oib(EditPicSave paramEditPicSave) {}
   
-  public void run()
+  public void a(GenerateContext paramGenerateContext)
   {
-    String str = "";
-    if (this.jdField_a_of_type_Int == -1) {
-      str = "分享失败";
-    }
-    for (;;)
+    super.onNext(paramGenerateContext);
+    this.a.a(40);
+    paramGenerateContext = paramGenerateContext.a.b;
+    SLog.b("EditPicSave", "picPath = " + paramGenerateContext);
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null)
     {
-      QQToast.a(this.jdField_a_of_type_Oia.a.a, 1, str, 0).a();
-      return;
-      if (this.jdField_a_of_type_Int == -2) {
-        str = "你未安装微博客户端，无法分享。";
-      }
+      ThreadManager.post(new oic(this, paramGenerateContext), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
+      this.a.jdField_a_of_type_Int = 40;
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.b = 10;
+      this.a.e();
     }
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    SLog.d("EditPicSave", "saveVideo cancel !");
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    this.a.h();
+    QQToast.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消保存", 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    SLog.e("EditPicSave", "saveVideo error ：" + paramError);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    QQToast.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 1, "保存失败，请重试 : " + paramError, 0).a();
+    this.a.h();
   }
 }
 

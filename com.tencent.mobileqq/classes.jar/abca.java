@@ -1,15 +1,16 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.ARMapOpenRedPackDialog;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
 
 public class abca
   implements Runnable
 {
-  public abca(ARMapOpenRedPackDialog paramARMapOpenRedPackDialog) {}
+  public abca(ArkLocalAppMgr paramArkLocalAppMgr, abcr paramabcr) {}
   
   public void run()
   {
-    ARMapOpenRedPackDialog.a(this.a).setVisibility(0);
-    ARMapOpenRedPackDialog.a(this.a).startAnimation(ARMapOpenRedPackDialog.a(this.a));
+    if (this.jdField_a_of_type_Abcr.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback != null) {
+      this.jdField_a_of_type_Abcr.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback.a(this.jdField_a_of_type_Abcr.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Abcr.c);
+    }
   }
 }
 

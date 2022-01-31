@@ -2,7 +2,7 @@ package com.tencent.mapsdk.rastercore.a;
 
 import android.graphics.PointF;
 import com.tencent.mapsdk.rastercore.d.b;
-import com.tencent.mapsdk.rastercore.d.e;
+import com.tencent.mapsdk.rastercore.d.f;
 import com.tencent.tencentmap.mapsdk.map.CancelableCallback;
 
 public final class c
@@ -12,9 +12,9 @@ public final class c
   private double e;
   private double f;
   
-  public c(e parame, double paramDouble, PointF paramPointF, long paramLong, CancelableCallback paramCancelableCallback)
+  public c(f paramf, double paramDouble, PointF paramPointF, long paramLong, CancelableCallback paramCancelableCallback)
   {
-    super(parame, paramLong, paramCancelableCallback);
+    super(paramf, paramLong, paramCancelableCallback);
     this.e = paramDouble;
     this.d = paramPointF;
   }

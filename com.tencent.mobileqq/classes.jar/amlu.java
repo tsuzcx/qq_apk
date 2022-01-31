@@ -1,69 +1,31 @@
-import android.util.Log;
-import cooperation.plugin.Dex2Oat;
-import cooperation.plugin.Dex2Oat.ResultCallback;
-import dalvik.system.DexFile;
-import java.io.File;
-import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class amlu
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private final Dex2Oat.ResultCallback jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback;
-  private final File jdField_a_of_type_JavaIoFile;
-  private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private final boolean jdField_a_of_type_Boolean;
-  private final File b;
+  public amlu(XPanelContainer paramXPanelContainer, int paramInt) {}
   
-  public amlu(File paramFile1, File paramFile2, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, CountDownLatch paramCountDownLatch, Dex2Oat.ResultCallback paramResultCallback)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile1;
-    this.b = paramFile2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = paramCountDownLatch;
-    this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback = paramResultCallback;
-    jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void run()
-  {
-    try
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
     {
-      if ((!Dex2Oat.a(this.jdField_a_of_type_JavaIoFile)) && (this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback != null)) {
-        this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback.a(this.jdField_a_of_type_JavaIoFile, this.b, new IOException("dex file " + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " is not exist!"));
+      if (QLog.isColorLevel()) {
+        QLog.d("XPanelContainer", 2, "colseAnim resetPosition");
       }
-      if (this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback != null) {
-        this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback.a(this.jdField_a_of_type_JavaIoFile, this.b);
-      }
-      String str = Dex2Oat.a(this.jdField_a_of_type_JavaIoFile, this.b);
-      DexFile.loadDex(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), str, 0);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-      if (this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback != null) {
-        this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback.a(this.jdField_a_of_type_JavaIoFile, this.b, new File(str));
-      }
+      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      Log.e("plugin_tag.Dex2Oat", "Failed to optimize dex: " + this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), localThrowable);
-      if (this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback != null) {
-        this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback.a(this.jdField_a_of_type_JavaIoFile, this.b, localThrowable);
-      }
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-    }
+    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlu
  * JD-Core Version:    0.7.0.1
  */

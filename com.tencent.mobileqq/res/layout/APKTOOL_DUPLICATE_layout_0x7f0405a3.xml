@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b49" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="15.0dip" android:paddingTop="21.0dip" android:paddingBottom="11.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a162a" android:clickable="true" android:duplicateParentState="true" android:addStatesFromChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:scrollingCache="true" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:isScrollContainer="true" />
-    <com.tencent.mobileqq.widget.GridListView android:gravity="fill" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a030c" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:horizontalSpacing="2.0dip" android:verticalSpacing="2.0dip" android:stretchMode="columnWidth" android:numColumns="3" android:divider="@null" />
-</RelativeLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b3b" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginBottom="6.0dip" />
+    <TextView android:textSize="11.0dip" android:textColor="#ff000000" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b3c" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

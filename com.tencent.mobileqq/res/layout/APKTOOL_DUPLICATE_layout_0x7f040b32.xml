@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a323d" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.module.feedcomponent.ui.common.WrapContentViewPager android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a052a" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+<com.qzone.module.feedcomponent.ui.FeedFamousRecommView android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

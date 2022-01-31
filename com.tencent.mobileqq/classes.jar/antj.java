@@ -1,24 +1,14 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import java.util.Comparator;
+import android.widget.ImageView;
+import dov.com.qq.im.capture.adapter.ComboProviderGridAdapter;
 
-public final class antj
-  implements Comparator
+public class antj
+  implements Runnable
 {
-  public int a(FaceLayer.FaceItem paramFaceItem1, FaceLayer.FaceItem paramFaceItem2)
-  {
-    long l = paramFaceItem1.a - paramFaceItem2.a;
-    if (l < 0L) {
-      return -1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return 1;
-  }
+  public antj(ComboProviderGridAdapter paramComboProviderGridAdapter, ImageView paramImageView) {}
   
-  public boolean equals(Object paramObject)
+  public void run()
   {
-    return (paramObject != null) && ((paramObject instanceof antj));
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
   }
 }
 

@@ -1,14 +1,16 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class afkr
   implements Runnable
 {
-  public afkr(NearbyMomentFragment paramNearbyMomentFragment, URLDrawable paramURLDrawable) {}
+  public afkr(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app, "CliOper", "", "", NearbyProfileDisplayTribePanel.b[(this.jdField_a_of_type_Int - 1)], NearbyProfileDisplayTribePanel.b[(this.jdField_a_of_type_Int - 1)], 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,18 +1,18 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
 
-class lcn
-  implements AsyncBack
+public final class lcn
+  implements Parcelable.Creator
 {
-  lcn(lcl paramlcl) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public RecentShopParcel a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
-    }
+    return new RecentShopParcel(paramParcel);
+  }
+  
+  public RecentShopParcel[] a(int paramInt)
+  {
+    return new RecentShopParcel[paramInt];
   }
 }
 

@@ -1,28 +1,23 @@
+import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import mqq.os.MqqHandler;
 
 public class xon
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xon(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xon(BannerManager paramBannerManager) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.b != null) && (!this.a.b.isEnabled()))
-    {
-      this.a.b.setEnabled(true);
-      this.a.b.setText(2131438162);
-      this.a.b.setTextColor(-15550475);
-    }
-    int i = 0;
-    if (this.a.a != null) {
-      i = this.a.a.c();
-    }
-    if ((!this.a.i.isEnabled()) && (i > 0)) {
-      this.a.i.setEnabled(true);
-    }
+    paramView = new Intent(BannerManager.a(this.a), TroopAssisSettingActivity.class);
+    BannerManager.a(this.a).startActivityForResult(paramView, 9001);
+    BannerManager.a(this.a).sendEmptyMessageDelayed(1, 1000L);
+    ReportController.b(BannerManager.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
   }
 }
 

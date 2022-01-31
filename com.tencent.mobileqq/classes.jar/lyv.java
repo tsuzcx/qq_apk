@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoDeliverController;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class lyv
-  implements View.OnClickListener
+  extends CharacterStyle
 {
-  public lyv(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public lyv(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
   
-  public void onClick(View paramView)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    ReadInJoyDeliverVideoActivity.d(this.a, true);
-    ReadInJoyDeliverVideoActivity.e(this.a);
-    ReadInJoyDeliverVideoActivity.a(this.a).a(ReadInJoyDeliverVideoActivity.c(this.a));
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(AIOUtils.a(2, 14, this.a.getResources()));
   }
 }
 

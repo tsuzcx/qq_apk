@@ -1,18 +1,10 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aexm
-  implements Runnable
+public final class aexm
+  implements DialogInterface.OnClickListener
 {
-  public aexm(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public void run()
-  {
-    ShortVideoCommentsView.c(this.a, true);
-    ShortVideoCommentsView.a(this.a).requestFocus();
-    ShortVideoCommentsView.a(this.a).setVisibility(0);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

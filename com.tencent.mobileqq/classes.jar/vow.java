@@ -1,91 +1,22 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.RemoteException;
-import com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.data.MessageForTroopFile;
 
 public class vow
-  implements ICompressionCallBack
+  implements Runnable
 {
-  private IBinder a;
+  public vow(TroopFileItemBuilder paramTroopFileItemBuilder, Context paramContext, View paramView, MessageForTroopFile paramMessageForTroopFile) {}
   
-  public vow(IBinder paramIBinder)
+  public void run()
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
+    if (!(this.jdField_a_of_type_AndroidContentContext instanceof MultiForwardActivity)) {}
+    for (boolean bool = true;; bool = false)
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(1, localParcel, null, 1);
+      PicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, bool);
       return;
-    }
-    catch (RemoteException paramCompressInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(2, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramCompressInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public void c(CompressInfo paramCompressInfo)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      localParcel.writeParcelable(paramCompressInfo, 1);
-      this.a.transact(3, localParcel, null, 1);
-      return;
-    }
-    catch (RemoteException paramCompressInfo)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
-      }
-      return;
-    }
-    finally
-    {
-      localParcel.recycle();
     }
   }
 }

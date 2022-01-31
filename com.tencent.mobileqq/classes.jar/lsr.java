@@ -1,23 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyView;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
 
 public class lsr
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public lsr(ReadInJoyHeaderPresenter paramReadInJoyHeaderPresenter, ReadInJoyView paramReadInJoyView, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject) {}
+  public lsr(ArticleInfoModule paramArticleInfoModule, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.a().post(new lss(this));
+    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_Int);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

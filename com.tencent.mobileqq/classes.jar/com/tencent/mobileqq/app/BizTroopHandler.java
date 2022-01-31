@@ -79,7 +79,7 @@ import tencent.im.oidb.cmd0x8b4.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.im.video_url.video_url.RspBody;
 import tencent.qun.group_activity.group_activity.RspBody;
-import zar;
+import zhr;
 
 public class BizTroopHandler
   extends BusinessHandler
@@ -479,14 +479,14 @@ public class BizTroopHandler
   private void j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      a(42, false, new Object[] { Integer.valueOf(2131429863) });
+      a(42, false, new Object[] { Integer.valueOf(2131429864) });
     }
     for (;;)
     {
       return;
       if (paramFromServiceMsg.getResultCode() != 1000)
       {
-        a(42, false, new Object[] { Integer.valueOf(2131429863) });
+        a(42, false, new Object[] { Integer.valueOf(2131429864) });
         return;
       }
       paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -495,13 +495,13 @@ public class BizTroopHandler
         paramToServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
         if ((paramToServiceMsg == null) || (!paramToServiceMsg.uint32_result.has()) || (!paramToServiceMsg.bytes_bodybuffer.has()) || (paramToServiceMsg.bytes_bodybuffer.get() == null))
         {
-          a(42, false, new Object[] { Integer.valueOf(2131429863) });
+          a(42, false, new Object[] { Integer.valueOf(2131429864) });
           return;
         }
       }
       catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
-        a(42, false, new Object[] { Integer.valueOf(2131429863) });
+        a(42, false, new Object[] { Integer.valueOf(2131429864) });
         return;
       }
       paramFromServiceMsg = new cmd0x874.RspBody();
@@ -524,7 +524,7 @@ public class BizTroopHandler
       }
       catch (InvalidProtocolBufferMicroException paramToServiceMsg)
       {
-        i = 2131429863;
+        i = 2131429864;
       }
     }
     a(42, false, new Object[] { Integer.valueOf(i) });
@@ -552,7 +552,7 @@ public class BizTroopHandler
     paramObject = (DiscussionManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
     paramObject.jdField_a_of_type_JavaUtilMap.put(paramToServiceMsg, new String[] { paramFromServiceMsg, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() });
     paramObject.jdField_a_of_type_JavaUtilSet.add(paramFromServiceMsg);
-    a(42, true, new Object[] { Integer.valueOf(2131429862), paramToServiceMsg, paramFromServiceMsg, Boolean.valueOf(true) });
+    a(42, true, new Object[] { Integer.valueOf(2131429863), paramToServiceMsg, paramFromServiceMsg, Boolean.valueOf(true) });
     return;
     label520:
     int i = paramFromServiceMsg.uint32_code.get();
@@ -560,7 +560,7 @@ public class BizTroopHandler
     {
     case 9: 
     default: 
-      i = 2131429863;
+      i = 2131429864;
     }
     for (;;)
     {
@@ -571,9 +571,7 @@ public class BizTroopHandler
       }
       catch (InvalidProtocolBufferMicroException paramToServiceMsg) {}
       break;
-      i = 2131429862;
-      continue;
-      i = 2131429864;
+      i = 2131429863;
       continue;
       i = 2131429865;
       continue;
@@ -590,6 +588,8 @@ public class BizTroopHandler
       i = 2131429871;
       continue;
       i = 2131429872;
+      continue;
+      i = 2131429873;
     }
   }
   
@@ -735,6 +735,97 @@ public class BizTroopHandler
   
   private void n(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
+    {
+      a(45, false, null);
+      if (QLog.isColorLevel()) {
+        QLog.i(this.jdField_a_of_type_JavaLangString, 2, "handleConfessTalkSwitch req or resp is null.");
+      }
+    }
+    label150:
+    label300:
+    long l;
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          if (paramFromServiceMsg.getResultCode() != 1000)
+          {
+            a(45, false, null);
+            if (QLog.isColorLevel()) {
+              QLog.i(this.jdField_a_of_type_JavaLangString, 2, "handleConfessTalkSwitch resp result code not ok.");
+            }
+          }
+          else
+          {
+            paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
+            try
+            {
+              paramToServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
+              if (paramToServiceMsg != null) {
+                break label150;
+              }
+              a(45, false, null);
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.i(this.jdField_a_of_type_JavaLangString, 2, "handleConfessTalkSwitch sso pkg is null.");
+              return;
+            }
+            catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+            {
+              a(45, false, null);
+            }
+            if (QLog.isColorLevel())
+            {
+              QLog.i(this.jdField_a_of_type_JavaLangString, 2, "handleConfessTalkSwitch InvalidProtocolBufferMicroException");
+              return;
+              int i = paramToServiceMsg.uint32_result.get();
+              if (i != 0)
+              {
+                a(45, false, new Object[] { Long.valueOf(i) });
+                if (QLog.isColorLevel()) {
+                  QLog.i(this.jdField_a_of_type_JavaLangString, 2, "handleConfessTalkSwitch result code != 0 resultCode : " + i);
+                }
+              }
+              else
+              {
+                paramFromServiceMsg = new oidb_0x89a.RspBody();
+                try
+                {
+                  paramFromServiceMsg.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
+                  if (paramFromServiceMsg != null) {
+                    break label300;
+                  }
+                  a(45, false, null);
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.i(this.jdField_a_of_type_JavaLangString, 2, "handleConfessTalkSwitch rspBody is null.");
+                    return;
+                  }
+                }
+                catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+                {
+                  a(45, false, null);
+                }
+              }
+            }
+          }
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i(this.jdField_a_of_type_JavaLangString, 2, "handleConfessTalkSwitch InvalidProtocolBufferMicroException.");
+      return;
+      l = paramFromServiceMsg.uint64_group_code.get();
+      a(45, true, new Object[] { Long.valueOf(l) });
+    } while (!QLog.isColorLevel());
+    QLog.i(this.jdField_a_of_type_JavaLangString, 2, "handleConfessTalkSwitch success, troopCode is: " + l);
+  }
+  
+  private void o(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
     boolean bool = paramToServiceMsg.extraData.getBoolean("hideTroopIsHide", false);
     if ((paramObject == null) || (!paramFromServiceMsg.isSuccess()))
     {
@@ -764,7 +855,7 @@ public class BizTroopHandler
     a(26, true, Boolean.valueOf(bool));
   }
   
-  private void o(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void p(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
       return;
@@ -826,7 +917,7 @@ public class BizTroopHandler
     a(31, false, paramToServiceMsg);
   }
   
-  private void p(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void q(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "handleShareLbsInTroopBeforeJoinedTroopResp");
@@ -887,7 +978,7 @@ public class BizTroopHandler
     a(33, false, new Object[] { Integer.valueOf(paramToServiceMsg.uint32_result.get()), Integer.valueOf(i), Integer.valueOf(0) });
   }
   
-  private void q(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void r(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
       return;
@@ -1140,8 +1231,13 @@ public class BizTroopHandler
                             c(paramToServiceMsg, paramFromServiceMsg, paramObject);
                             return;
                           }
-                        } while (i != 4);
-                        l(paramToServiceMsg, paramFromServiceMsg, paramObject);
+                          if (i == 4)
+                          {
+                            l(paramToServiceMsg, paramFromServiceMsg, paramObject);
+                            return;
+                          }
+                        } while (i != 9);
+                        n(paramToServiceMsg, paramFromServiceMsg, paramObject);
                         return;
                         if (!"OidbSvc.0x89a_8".equals(str)) {
                           break;
@@ -1271,17 +1367,17 @@ public class BizTroopHandler
         }
         if ("OidbSvc.0x568_21".equals(paramFromServiceMsg.getServiceCmd()))
         {
-          n(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          o(paramToServiceMsg, paramFromServiceMsg, paramObject);
           return;
         }
         if ("GrpMemberLBS.ReportLBS".equals(paramFromServiceMsg.getServiceCmd()))
         {
-          q(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          r(paramToServiceMsg, paramFromServiceMsg, paramObject);
           return;
         }
         if ("OidbSvc.0x8b4".equals(paramFromServiceMsg.getServiceCmd()))
         {
-          p(paramToServiceMsg, paramFromServiceMsg, paramObject);
+          q(paramToServiceMsg, paramFromServiceMsg, paramObject);
           return;
         }
         if (!"OidbSvc.0x5d6_3".equals(paramFromServiceMsg.getServiceCmd())) {
@@ -1289,7 +1385,7 @@ public class BizTroopHandler
         }
         str = paramToServiceMsg.extraData.getString("bizname");
       } while ((str == null) || (!str.equals("shareSelfLbs")));
-      o(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      p(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
       if ("ModifyExamine.GetModifyTimes".equals(paramFromServiceMsg.getServiceCmd()))
       {
@@ -1378,39 +1474,28 @@ public class BizTroopHandler
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    Object localObject = ByteBuffer.allocate(5);
-    for (;;)
+    Object localObject = new oidb_0x89a.ReqBody();
+    ((oidb_0x89a.ReqBody)localObject).uint64_group_code.set(Long.valueOf(paramString).longValue());
+    paramString = new oidb_0x89a.groupinfo();
+    if (!paramBoolean) {}
+    for (int i = 8192;; i = 0)
     {
-      try
-      {
-        ((ByteBuffer)localObject).putInt(Integer.valueOf(paramString).intValue());
-        if (!paramBoolean) {
-          break label155;
-        }
-        ((ByteBuffer)localObject).put((byte)1);
-        localObject = ((ByteBuffer)localObject).array();
-        paramString = new oidb_sso.OIDBSSOPkg();
-        paramString.uint32_command.set(1384);
-        paramString.uint32_result.set(0);
-        paramString.uint32_service_type.set(22);
-        paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom((byte[])localObject));
-        localObject = a("OidbSvc.0x568_22");
-        ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
-        ((ToServiceMsg)localObject).extraData.putBoolean("isAllowAnonymousChat", paramBoolean);
-        b((ToServiceMsg)localObject);
-        return;
+      paramString.uint32_group_flagext3.set(i);
+      paramString.uint32_group_flagext3_mask.set(8192);
+      ((oidb_0x89a.ReqBody)localObject).st_group_info.set(paramString);
+      paramString = new oidb_sso.OIDBSSOPkg();
+      paramString.uint32_command.set(2202);
+      paramString.uint32_result.set(0);
+      paramString.uint32_service_type.set(0);
+      paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x89a.ReqBody)localObject).toByteArray()));
+      localObject = a("OidbSvc.0x89a_0");
+      ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
+      ((ToServiceMsg)localObject).extraData.putInt("key_subcmd", 9);
+      b((ToServiceMsg)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.i(this.jdField_a_of_type_JavaLangString, 2, "setConfessTalkSwitch isOn :" + paramBoolean);
       }
-      catch (NumberFormatException localNumberFormatException) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setAnonymousChat failed because NumberFormatException, troopUin : " + paramString);
       return;
-      label155:
-      localNumberFormatException.put((byte)0);
     }
   }
   
@@ -1543,7 +1628,7 @@ public class BizTroopHandler
     }
     if (n == 0)
     {
-      QQToast.a(BaseApplication.getContext(), 2131429834, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplication.getContext(), 2131429835, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
       return false;
     }
     Object localObject1 = (TroopManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
@@ -1607,7 +1692,7 @@ public class BizTroopHandler
   
   public void b()
   {
-    SosoInterface.a(new zar(this, 0, false, true, 180000L, false, false, this.jdField_a_of_type_JavaLangString));
+    SosoInterface.a(new zhr(this, 0, false, true, 180000L, false, false, this.jdField_a_of_type_JavaLangString));
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1658,45 +1743,39 @@ public class BizTroopHandler
   
   public void b(String paramString, boolean paramBoolean)
   {
-    int j = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.troopMemberDistance", 2, "BizHandler, setShareSelfLbsInTroop:" + paramString + ", " + paramBoolean);
-    }
-    Object localObject2 = new oidb_0x5d6.SnsUpdateItem();
-    ((oidb_0x5d6.SnsUpdateItem)localObject2).uint32_update_sns_type.set(13571);
-    if (paramBoolean) {
-      j = 1;
-    }
-    if (paramBoolean) {}
-    for (int i = (byte)(j & 0x1);; i = (byte)(j & 0x2))
-    {
-      ((oidb_0x5d6.SnsUpdateItem)localObject2).bytes_value.set(ByteStringMicro.copyFrom(new byte[] { i }));
-      ((oidb_0x5d6.SnsUpdateItem)localObject2).uint32_value_offset.set(0);
-      Object localObject1 = new ArrayList();
-      ((List)localObject1).add(localObject2);
-      localObject2 = new oidb_0x5d6.SnsUpateBuffer();
-      ((oidb_0x5d6.SnsUpateBuffer)localObject2).uint64_uin.set(a(paramString));
-      ((oidb_0x5d6.SnsUpateBuffer)localObject2).rpt_msg_sns_update_item.set((List)localObject1);
-      localObject1 = new ArrayList();
-      ((List)localObject1).add(localObject2);
-      localObject2 = new oidb_0x5d6.ReqBody();
-      ((oidb_0x5d6.ReqBody)localObject2).uint32_domain.set(11);
-      ((oidb_0x5d6.ReqBody)localObject2).uint32_seq.set(0);
-      ((oidb_0x5d6.ReqBody)localObject2).rpt_msg_update_buffer.set((List)localObject1);
-      localObject1 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1494);
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(3);
-      ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x5d6.ReqBody)localObject2).toByteArray()));
-      TroopManager localTroopManager = (TroopManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      localObject2 = a("OidbSvc.0x5d6_3");
-      paramString = localTroopManager.b(paramString);
-      ((ToServiceMsg)localObject2).extraData.putString("troopUin", paramString);
-      ((ToServiceMsg)localObject2).extraData.putString("bizname", "shareSelfLbs");
-      ((ToServiceMsg)localObject2).extraData.putBoolean("isShare", paramBoolean);
-      ((ToServiceMsg)localObject2).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
-      b((ToServiceMsg)localObject2);
+    if (TextUtils.isEmpty(paramString)) {
       return;
+    }
+    Object localObject = ByteBuffer.allocate(5);
+    for (;;)
+    {
+      try
+      {
+        ((ByteBuffer)localObject).putInt(Integer.valueOf(paramString).intValue());
+        if (!paramBoolean) {
+          break label155;
+        }
+        ((ByteBuffer)localObject).put((byte)1);
+        localObject = ((ByteBuffer)localObject).array();
+        paramString = new oidb_sso.OIDBSSOPkg();
+        paramString.uint32_command.set(1384);
+        paramString.uint32_result.set(0);
+        paramString.uint32_service_type.set(22);
+        paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom((byte[])localObject));
+        localObject = a("OidbSvc.0x568_22");
+        ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
+        ((ToServiceMsg)localObject).extraData.putBoolean("isAllowAnonymousChat", paramBoolean);
+        b((ToServiceMsg)localObject);
+        return;
+      }
+      catch (NumberFormatException localNumberFormatException) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "setAnonymousChat failed because NumberFormatException, troopUin : " + paramString);
+      return;
+      label155:
+      localNumberFormatException.put((byte)0);
     }
   }
   
@@ -1754,6 +1833,50 @@ public class BizTroopHandler
   public void c(Object paramObject)
   {
     a(20, true, paramObject);
+  }
+  
+  public void c(String paramString, boolean paramBoolean)
+  {
+    int j = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.troopMemberDistance", 2, "BizHandler, setShareSelfLbsInTroop:" + paramString + ", " + paramBoolean);
+    }
+    Object localObject2 = new oidb_0x5d6.SnsUpdateItem();
+    ((oidb_0x5d6.SnsUpdateItem)localObject2).uint32_update_sns_type.set(13571);
+    if (paramBoolean) {
+      j = 1;
+    }
+    if (paramBoolean) {}
+    for (int i = (byte)(j & 0x1);; i = (byte)(j & 0x2))
+    {
+      ((oidb_0x5d6.SnsUpdateItem)localObject2).bytes_value.set(ByteStringMicro.copyFrom(new byte[] { i }));
+      ((oidb_0x5d6.SnsUpdateItem)localObject2).uint32_value_offset.set(0);
+      Object localObject1 = new ArrayList();
+      ((List)localObject1).add(localObject2);
+      localObject2 = new oidb_0x5d6.SnsUpateBuffer();
+      ((oidb_0x5d6.SnsUpateBuffer)localObject2).uint64_uin.set(a(paramString));
+      ((oidb_0x5d6.SnsUpateBuffer)localObject2).rpt_msg_sns_update_item.set((List)localObject1);
+      localObject1 = new ArrayList();
+      ((List)localObject1).add(localObject2);
+      localObject2 = new oidb_0x5d6.ReqBody();
+      ((oidb_0x5d6.ReqBody)localObject2).uint32_domain.set(11);
+      ((oidb_0x5d6.ReqBody)localObject2).uint32_seq.set(0);
+      ((oidb_0x5d6.ReqBody)localObject2).rpt_msg_update_buffer.set((List)localObject1);
+      localObject1 = new oidb_sso.OIDBSSOPkg();
+      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1494);
+      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
+      ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(3);
+      ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x5d6.ReqBody)localObject2).toByteArray()));
+      TroopManager localTroopManager = (TroopManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      localObject2 = a("OidbSvc.0x5d6_3");
+      paramString = localTroopManager.b(paramString);
+      ((ToServiceMsg)localObject2).extraData.putString("troopUin", paramString);
+      ((ToServiceMsg)localObject2).extraData.putString("bizname", "shareSelfLbs");
+      ((ToServiceMsg)localObject2).extraData.putBoolean("isShare", paramBoolean);
+      ((ToServiceMsg)localObject2).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
+      b((ToServiceMsg)localObject2);
+      return;
+    }
   }
   
   public void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

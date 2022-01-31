@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aagm
   implements Runnable
 {
-  public aagm(AREngine paramAREngine, int paramInt) {}
+  public aagm(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
   public void run()
   {
-    if ((AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) && (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2) && (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null))
-    {
-      ARTarget localARTarget = new ARTarget(AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine));
-      AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a(0, localARTarget, this.jdField_a_of_type_Int);
+    this.a.e = 0;
+    QLog.i("ARWorldCupGlobalSceneRenderable", 1, "cleanWorldCupSparks. mInsertedSparkTotalCnt = 0, hasDrawedFrame = " + ARWorldCupGlobalSceneRenderable.c(this.a));
+    if ((ARWorldCupGlobalSceneRenderable.a(this.a) != null) && (ARWorldCupGlobalSceneRenderable.c(this.a))) {
+      ARWorldCupGlobalSceneRenderable.a(this.a).native_cleanWorldCupSparks();
     }
   }
 }

@@ -1,28 +1,21 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomController;
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
 public class jkf
-  implements Runnable
 {
-  public jkf(RandomController paramRandomController) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void run()
+  public jkf(AVNotifyCenter paramAVNotifyCenter, String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RandomController", 2, "mMatchTimeoutRunnable trigger, show timeOutDialog!");
-    }
-    this.a.a = -1;
-    RandomController.a(this.a).a();
-    RandomController.c(this.a);
-    RandomController.a(this.a).a().removeCallbacks(RandomController.c(this.a));
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     jkf
  * JD-Core Version:    0.7.0.1
  */

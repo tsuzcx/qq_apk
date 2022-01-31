@@ -1,27 +1,16 @@
-import android.content.Intent;
-import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import cooperation.qwallet.plugin.TenUtils;
 
 public class xje
   implements View.OnClickListener
 {
-  public xje(BannerManager paramBannerManager, String paramString) {}
+  public xje(CommonHbFragment paramCommonHbFragment, String paramString) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), QQBrowserActivity.class);
-    paramView.putExtra("individuation_url_type", 40100);
-    VasWebviewUtil.openQQBrowserWithoutAD(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), IndividuationUrlHelper.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), "themeDetail", this.jdField_a_of_type_JavaLangString, ""), 32L, paramView, true, -1);
-    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(12).sendToTarget();
-    ReportController.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).app, "CliOper", "", "", "0X8005B9F", "0X8005B9F", 0, 0, "", "", "", "");
+    TenUtils.startQQBrowser(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.getActivity(), this.jdField_a_of_type_JavaLangString);
   }
 }
 

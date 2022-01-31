@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.utils;
 
+import aadj;
 import android.content.Intent;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -66,7 +67,6 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.im.s2c.msgtype0x210.submsgtype0x9b.SubMsgType0x9b.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x9b.SubMsgType0x9b.PbOfficeNotify;
 import tencent.im.s2c.msgtype0x210.submsgtype0x9c.SubMsgType0x9c.MsgBody;
-import zww;
 
 public class DingdongPluginBizHandler
   extends BusinessHandler
@@ -659,7 +659,7 @@ public class DingdongPluginBizHandler
     }
     for (;;)
     {
-      new zww(this, paramToServiceMsg).execute(new Void[] { null, null, null });
+      new aadj(this, paramToServiceMsg).execute(new Void[] { null, null, null });
       return;
       QLog.e("DingdongPluginBizHandler", 1, "0x508_1 respond oidb error: retCode[" + i + "].");
       continue;

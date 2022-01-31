@@ -1,18 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.text.QzoneTextBuilder;
+import java.util.Comparator;
 
 public class aisx
-  implements View.OnClickListener
+  implements Comparator
 {
-  public aisx(TribeVideoPreviewFragment paramTribeVideoPreviewFragment, String paramString) {}
+  public aisx(QzoneTextBuilder paramQzoneTextBuilder) {}
   
-  public void onClick(View paramView)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.a(this.jdField_a_of_type_JavaLangString);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoPreviewFragment.getActivity().app, "dc00899", "Grp_tribe", "", "post", "save_video", 0, 0, "", "", "", "");
+    int i = this.a.getSpanStart(paramObject1);
+    int j = this.a.getSpanStart(paramObject2);
+    if (i == j) {
+      return 0;
+    }
+    if (i > j) {
+      return 1;
+    }
+    return -1;
   }
 }
 

@@ -1,20 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QZoneFeedsObserver;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class sms
-  extends BroadcastReceiver
+  extends QZoneFeedsObserver
 {
-  public sms(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  public sms(Conversation paramConversation) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a()
   {
-    if ("com.tencent.mobileqq.action.update.emotiom".equals(paramIntent.getAction())) {
-      ((FavroamingDBManager)this.a.app.getManager(148)).a(new smt(this));
-    }
+    ThreadManagerV2.getUIHandlerV2().post(new smt(this));
   }
 }
 

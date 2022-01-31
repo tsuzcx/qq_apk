@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import com.tencent.mapsdk.raster.model.CameraPosition;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapCameraChangeListener;
 
-class abgy
-  implements Runnable
+public class abgy
+  implements TencentMap.OnMapCameraChangeListener
 {
-  abgy(abgx paramabgx, ItemInfo paramItemInfo, int paramInt) {}
+  public abgy(ARMapActivity paramARMapActivity) {}
   
-  public void run()
+  public void onCameraChange(CameraPosition paramCameraPosition) {}
+  
+  public void onCameraChangeFinish(CameraPosition paramCameraPosition)
   {
-    ARMapPOIStarDialog.a(this.jdField_a_of_type_Abgx.a, this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo, this.jdField_a_of_type_Int);
+    if (ARMapActivity.a(this.a) != null) {
+      ARMapActivity.a(this.a).a();
+    }
   }
 }
 

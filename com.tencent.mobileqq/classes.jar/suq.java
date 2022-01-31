@@ -1,58 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
-public class suq
-  implements View.OnClickListener
+public final class suq
+  implements DialogInterface.OnClickListener
 {
-  public suq(GroupManagerActivity paramGroupManagerActivity) {}
+  public suq(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, ProfileCardInfo paramProfileCardInfo) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 1;
-    int k = VipUtils.a(this.a.app, null);
-    int i;
-    if ((k & 0x2) != 0)
-    {
-      i = 1;
-      if ((k & 0x4) == 0) {
-        break label92;
-      }
+    FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    for (;;)
-    {
-      if ((i == 0) && (j == 0)) {
-        break label97;
-      }
-      if (30 != this.a.a.size()) {
-        break label145;
-      }
-      paramView = new QQToast(this.a);
-      paramView.d(2000);
-      paramView.c(2131436515);
-      paramView.a();
-      return;
-      i = 0;
-      break;
-      label92:
-      j = 0;
-    }
-    label97:
-    if (16 == this.a.a.size())
-    {
-      paramView = new QQToast(this.a);
-      paramView.d(2000);
-      paramView.c(2131436514);
-      paramView.a();
-      return;
-    }
-    label145:
-    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131435537, 2131435539, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-    GroupManagerActivity.a(this.a, 0);
   }
 }
 

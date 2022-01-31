@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme;
 
-import aioc;
+import aitf;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,7 +33,7 @@ public class ThemeDownloader
   
   public ThemeDownloader(AppRuntime paramAppRuntime, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new aioc(this);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new aitf(this);
     this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     if (paramAppRuntime == null) {
       QLog.e("ThemeDownloader", 1, "ThemeDownloader app == null!!");
@@ -132,20 +132,20 @@ public class ThemeDownloader
       paramThemeDownloadListener = new StringBuilder().append("downloadTheme input data Error1:");
       if (paramContext == null)
       {
-        bool = true;
-        paramContext = paramThemeDownloadListener.append(bool);
+        bool1 = true;
+        paramContext = paramThemeDownloadListener.append(bool1);
         if (paramBundle != null) {
           break label125;
         }
       }
       label125:
-      for (bool = true;; bool = false)
+      for (bool1 = true;; bool1 = false)
       {
-        QLog.e("ThemeDownloader", 1, bool + ", from:" + this.jdField_a_of_type_JavaLangString);
+        QLog.e("ThemeDownloader", 1, bool1 + ", from:" + this.jdField_a_of_type_JavaLangString);
         a(paramBundle, -8, 0, 0);
         ThemeReporter.a(this.jdField_a_of_type_MqqAppAppRuntime, "theme_detail", this.jdField_a_of_type_JavaLangString, 153, -1, -8, "", "", ThemeReporter.jdField_a_of_type_JavaLangString, "0");
         return -8;
-        bool = false;
+        bool1 = false;
         break;
       }
     }
@@ -153,9 +153,9 @@ public class ThemeDownloader
     String str1 = paramBundle.getString("themeId");
     String str2 = paramBundle.getString("version");
     long l1 = paramBundle.getLong("size", 0L);
-    boolean bool = paramBundle.getBoolean("isVoiceTheme", false);
+    boolean bool1 = paramBundle.getBoolean("isVoiceTheme", false);
     if (QLog.isColorLevel()) {
-      QLog.d("ThemeDownloader", 2, "downloadTheme themeId=" + str1 + ",ver=" + str2 + ",size=" + l1 + ",isSound=" + bool + ", url=" + paramThemeDownloadListener + ", from:" + this.jdField_a_of_type_JavaLangString);
+      QLog.d("ThemeDownloader", 2, "downloadTheme themeId=" + str1 + ",ver=" + str2 + ",size=" + l1 + ",isSound=" + bool1 + ", url=" + paramThemeDownloadListener + ", from:" + this.jdField_a_of_type_JavaLangString);
     }
     if (TextUtils.isEmpty(str1))
     {
@@ -167,177 +167,186 @@ public class ThemeDownloader
     ThemeReporter.a(this.jdField_a_of_type_MqqAppAppRuntime, "theme_detail", this.jdField_a_of_type_JavaLangString, 153, -1, 7, str1, str2, ThemeReporter.jdField_a_of_type_JavaLangString, "");
     int i = 0;
     paramThemeDownloadListener = ThemeUtil.getThemeInfo(paramContext, str1);
-    int k;
+    boolean bool2;
     label441:
-    int j;
+    int m;
     if (paramThemeDownloadListener == null)
     {
       i = 1;
       paramThemeDownloadListener = new ThemeUtil.ThemeInfo();
       paramThemeDownloadListener.themeId = str1;
       paramThemeDownloadListener.version = str2;
-      bool = a(paramContext, str1, paramThemeDownloadListener.version, paramThemeDownloadListener.fileNum, "207");
+      bool2 = a(paramContext, str1, paramThemeDownloadListener.version, paramThemeDownloadListener.fileNum, "207");
       if ((!"999".equals(str1)) && (!a(paramContext, str1, "20000000", 0L, "ThemeDownloader.downloadTheme"))) {
-        break label657;
+        break label673;
       }
       k = 1;
-      if ((!bool) || (k == 0)) {
-        break label1345;
+      j = i;
+      bool1 = bool2;
+      if (bool2)
+      {
+        j = i;
+        bool1 = bool2;
+        if (k != 0) {
+          m = 0;
+        }
       }
-      j = 0;
     }
-    label657:
-    label663:
-    label673:
-    label1334:
     try
     {
-      int m = Integer.parseInt(paramThemeDownloadListener.version);
-      j = m;
+      j = Integer.parseInt(paramThemeDownloadListener.version);
+      m = j;
     }
-    catch (Exception localException)
+    catch (Exception localException2)
     {
-      label467:
-      break label467;
+      for (;;) {}
     }
-    if (j < paramThemeDownloadListener.zipVer)
+    int j = i;
+    bool1 = bool2;
+    if (m < paramThemeDownloadListener.zipVer)
     {
       str2 = String.valueOf(paramThemeDownloadListener.zipVer);
       paramThemeDownloadListener.version = str2;
       paramBundle.putString("version", str2);
+      bool1 = false;
       j = 1;
-      bool = false;
     }
-    for (;;)
+    i = j;
+    if (k != 0)
     {
       i = j;
-      if (k != 0)
-      {
-        i = j;
-        if (paramThemeDownloadListener.zipVer < 200) {
-          if (!"999".equals(str1)) {
-            break label663;
-          }
+      if (paramThemeDownloadListener.zipVer < 200) {
+        if (!"999".equals(str1)) {
+          break label679;
         }
       }
-      for (paramThemeDownloadListener.zipVer = 20000000;; paramThemeDownloadListener.zipVer = 200)
-      {
-        i = 1;
-        j = i;
-        if (k == 0)
-        {
-          j = i;
-          if (paramThemeDownloadListener.zipVer > 0)
-          {
-            paramThemeDownloadListener.zipVer = 0;
-            j = 1;
-          }
-        }
-        if (!bool) {
-          break label673;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloader", 2, "downloadTheme isFileExists=true , from:" + this.jdField_a_of_type_JavaLangString);
-        }
-        if (j != 0)
-        {
-          paramThemeDownloadListener.status = "5";
-          ThemeUtil.setThemeInfo(paramContext, paramThemeDownloadListener);
-        }
-        a(paramBundle, 3, 0, 0);
-        return 3;
-        paramBundle.putString("version", paramThemeDownloadListener.version);
-        break;
-        k = 0;
-        break label441;
+    }
+    label673:
+    label679:
+    for (paramThemeDownloadListener.zipVer = 20000000;; paramThemeDownloadListener.zipVer = 200)
+    {
+      i = 1;
+      if ((k != 0) || (paramThemeDownloadListener.zipVer <= 0)) {
+        break label1374;
+      }
+      paramThemeDownloadListener.zipVer = 0;
+      i = 1;
+      if (!bool1) {
+        break label689;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("ThemeDownloader", 2, "downloadTheme isFileExists=false , from:" + this.jdField_a_of_type_JavaLangString);
+        QLog.d("ThemeDownloader", 2, "downloadTheme isFileExists=true , from:" + this.jdField_a_of_type_JavaLangString);
       }
-      if (k != 0)
+      if (i != 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloader", 2, "downloadTheme isZipExist=true , from:" + this.jdField_a_of_type_JavaLangString);
-        }
-        if (j != 0)
-        {
-          paramThemeDownloadListener.status = "3";
-          ThemeUtil.setThemeInfo(paramContext, paramThemeDownloadListener);
-        }
-        a(paramBundle, 2, 0, 0);
-        return 2;
+        paramThemeDownloadListener.status = "5";
+        ThemeUtil.setThemeInfo(paramContext, paramThemeDownloadListener);
       }
+      a(paramBundle, 3, 0, 0);
+      return 3;
+      paramBundle.putString("version", paramThemeDownloadListener.version);
+      break;
+      k = 0;
+      break label441;
+    }
+    label689:
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDownloader", 2, "downloadTheme isFileExists=false , from:" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (k != 0)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("ThemeDownloader", 2, "downloadTheme isThemeZipExist=false , from:" + this.jdField_a_of_type_JavaLangString);
+        QLog.d("ThemeDownloader", 2, "downloadTheme isZipExist=true , from:" + this.jdField_a_of_type_JavaLangString);
       }
-      if (!Utils.a())
+      if (i != 0)
       {
-        QLog.e("ThemeDownloader", 1, "downloadTheme haveSDCard not available., from:" + this.jdField_a_of_type_JavaLangString);
-        a(paramBundle, -11, 0, 0);
-        return -11;
+        paramThemeDownloadListener.status = "3";
+        ThemeUtil.setThemeInfo(paramContext, paramThemeDownloadListener);
       }
-      bool = VipFunCallManager.a(paramContext, "ThemeDownloader", false);
-      if ((QLog.isColorLevel()) || (!bool)) {
-        QLog.d("ThemeDownloader", 2, "downloadTheme Err haveSDCard:" + bool + ", from:" + this.jdField_a_of_type_JavaLangString);
+      a(paramBundle, 2, 0, 0);
+      return 2;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDownloader", 2, "downloadTheme isThemeZipExist=false , from:" + this.jdField_a_of_type_JavaLangString);
+    }
+    bool1 = false;
+    try
+    {
+      bool2 = Utils.a();
+      bool1 = bool2;
+    }
+    catch (Exception localException1)
+    {
+      label839:
+      long l2;
+      break label839;
+    }
+    if (!bool1)
+    {
+      QLog.e("ThemeDownloader", 1, "downloadTheme haveSDCard not available., from:" + this.jdField_a_of_type_JavaLangString);
+      a(paramBundle, -11, 0, 0);
+      return -11;
+    }
+    bool1 = VipFunCallManager.a(paramContext, "ThemeDownloader", false);
+    if ((QLog.isColorLevel()) || (!bool1)) {
+      QLog.d("ThemeDownloader", 2, "downloadTheme Err haveSDCard:" + bool1 + ", from:" + this.jdField_a_of_type_JavaLangString);
+    }
+    l2 = Utils.b();
+    if (l2 < 5242880 + l1)
+    {
+      QLog.e("ThemeDownloader", 1, "downloadTheme Insufficient SDCard space, required:" + l1 + "| reserved:" + 5242880 + "|available:" + l2 + " from:" + this.jdField_a_of_type_JavaLangString);
+      a(paramBundle, -12, 0, 0);
+      return -12;
+    }
+    if (!NetworkUtil.d(paramContext))
+    {
+      QLog.e("ThemeDownloader", 1, "downloadTheme I No network access., from:" + this.jdField_a_of_type_JavaLangString);
+      a(paramBundle, -13, 0, 0);
+      return -13;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqThemeThemeUtil$ThemeInfo = paramThemeDownloadListener;
+    this.jdField_a_of_type_AndroidOsBundle.putInt("srcType", 4);
+    j = paramBundle.getInt("net_type", 2);
+    int k = NetworkUtil.a(paramContext);
+    switch (j)
+    {
+    default: 
+      if (i != 0) {
+        ThemeUtil.setThemeInfo(paramContext, paramThemeDownloadListener);
       }
-      long l2 = Utils.b();
-      if (l2 < 5242880 + l1)
+      this.b = ThemeUtil.getThemeConfigID(str1);
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      paramContext = VasQuickUpdateManager.a(this.jdField_a_of_type_MqqAppAppRuntime, 3L, this.b, ThemeUtil.getThemeDownloadFilePath(paramContext, str1, "20000000"), true, this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+      if (QLog.isColorLevel())
       {
-        QLog.e("ThemeDownloader", 1, "downloadTheme Insufficient SDCard space, required:" + l1 + "| reserved:" + 5242880 + "|available:" + l2 + " from:" + this.jdField_a_of_type_JavaLangString);
-        a(paramBundle, -12, 0, 0);
-        return -12;
-      }
-      if (!NetworkUtil.d(paramContext))
-      {
-        QLog.e("ThemeDownloader", 1, "downloadTheme I No network access., from:" + this.jdField_a_of_type_JavaLangString);
-        a(paramBundle, -13, 0, 0);
-        return -13;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqThemeThemeUtil$ThemeInfo = paramThemeDownloadListener;
-      this.jdField_a_of_type_AndroidOsBundle.putInt("srcType", 4);
-      i = paramBundle.getInt("net_type", 2);
-      k = NetworkUtil.a(paramContext);
-      switch (i)
-      {
-      default: 
-        if (j != 0) {
-          ThemeUtil.setThemeInfo(paramContext, paramThemeDownloadListener);
+        paramBundle = new StringBuilder().append("downloadTheme start, from:").append(this.jdField_a_of_type_JavaLangString).append(",zipFile=");
+        if (paramContext != null) {
+          break label1358;
         }
-        this.b = ThemeUtil.getThemeConfigID(str1);
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        paramContext = VasQuickUpdateManager.a(this.jdField_a_of_type_MqqAppAppRuntime, 3L, this.b, ThemeUtil.getThemeDownloadFilePath(paramContext, str1, "20000000"), true, this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-        if (QLog.isColorLevel())
-        {
-          paramBundle = new StringBuilder().append("downloadTheme start, from:").append(this.jdField_a_of_type_JavaLangString).append(",zipFile=");
-          if (paramContext != null) {
-            break label1334;
-          }
-        }
+      }
+      break;
+    }
+    label1358:
+    for (bool1 = true;; bool1 = false)
+    {
+      QLog.d("ThemeDownloader", 2, bool1);
+      return 4;
+      if (2 != k) {
         break;
       }
-      for (bool = true;; bool = false)
-      {
-        QLog.d("ThemeDownloader", 2, bool);
-        return 4;
-        if (2 != k) {
-          break;
-        }
-        a(paramBundle, -41, 0, 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloader", 2, "downloadTheme NET_TYPE_WITHOUT_G2 return net not match, from:" + this.jdField_a_of_type_JavaLangString);
-        }
-        return -41;
-        if (1 == k) {
-          break;
-        }
-        a(paramBundle, -41, 0, 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloader", 2, "downloadTheme NET_TYPE_ONLY_WIFI return net not match, from:" + this.jdField_a_of_type_JavaLangString);
-        }
-        return -41;
+      a(paramBundle, -41, 0, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeDownloader", 2, "downloadTheme NET_TYPE_WITHOUT_G2 return net not match, from:" + this.jdField_a_of_type_JavaLangString);
       }
-      label1345:
-      j = i;
+      return -41;
+      if (1 == k) {
+        break;
+      }
+      a(paramBundle, -41, 0, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeDownloader", 2, "downloadTheme NET_TYPE_ONLY_WIFI return net not match, from:" + this.jdField_a_of_type_JavaLangString);
+      }
+      return -41;
     }
   }
   
@@ -663,7 +672,7 @@ public class ThemeDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,24 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.dataline.activities.LiteActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.open.agent.report.ReportCenter;
-import com.tencent.open.agent.report.ReportDef.RepUtil;
+import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
+import mqq.app.MobileQQ;
 
-class adlp
-  implements Runnable
+public class adlp
+  implements DialogInterface.OnClickListener
 {
-  adlp(adlo paramadlo) {}
+  public adlp(MPcFileModel paramMPcFileModel) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a(1004, ForwardAbility.ForwardAbilityType.b.intValue());
-    Bundle localBundle = new Bundle();
-    localBundle.putString("report_type", "102");
-    localBundle.putString("act_type", "84");
-    localBundle.putString("intext_1", "" + ReportDef.RepUtil.a(this.a.a.b));
-    localBundle.putString("intext_2", "" + ReportDef.RepUtil.a(this.a.a.jdField_a_of_type_AndroidOsBundle.getInt("uintype"), this.a.a.jdField_a_of_type_AndroidOsBundle.getString("uin")));
-    localBundle.putString("intext_3", "0");
-    localBundle.putString("intext_4", "5");
-    ReportCenter.a().a(localBundle, "", this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+    this.a.c();
+    this.a.a.removeObserver(MPcFileModel.a(this.a));
+    Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
+    localIntent.addFlags(67108864);
+    this.a.a.getApplication().startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 

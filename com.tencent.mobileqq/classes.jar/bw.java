@@ -35,7 +35,7 @@ public class bw
     //   24: aaload
     //   25: checkcast 23	android/net/Uri
     //   28: astore 12
-    //   30: getstatic 29	com/tencent/mobileqq/app/AppConstants:bd	Ljava/lang/String;
+    //   30: getstatic 29	com/tencent/mobileqq/app/AppConstants:be	Ljava/lang/String;
     //   33: astore 10
     //   35: aload 11
     //   37: invokevirtual 33	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;

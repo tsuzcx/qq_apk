@@ -1,63 +1,37 @@
-import android.os.Message;
-import android.view.Surface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleStickerTracker2;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.TrackingDecoderListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
 
 public class aonk
-  implements TrackingDecoderListener
+  implements Animator.AnimatorListener
 {
-  public aonk(SimpleStickerTracker2 paramSimpleStickerTracker2) {}
+  public aonk(PickerContainer paramPickerContainer) {}
   
-  public Surface a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return null;
-  }
-  
-  public void a()
-  {
-    SimpleStickerTracker2.a(this.a, System.currentTimeMillis());
-    if (SimpleStickerTracker2.a(this.a) != null)
+    if (PickerContainer.a(this.a))
     {
-      Message localMessage = SimpleStickerTracker2.a(this.a).obtainMessage(1);
-      SimpleStickerTracker2.a(this.a).sendMessage(localMessage);
+      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
+        this.a.setVisibility(4);
+      }
+      PickerContainer.a(this.a, false);
     }
   }
   
-  public void a(int paramInt, Throwable paramThrowable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTracker2", 2, "SimpleStickerTracker2 onDecodeError errorCode =" + paramInt);
-    }
-    paramThrowable.printStackTrace();
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(byte[] paramArrayOfByte, long paramLong)
-  {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-      SimpleStickerTracker2.a(this.a, paramArrayOfByte, paramLong);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SimpleStickerTracker2", 2, "onDecodeFinish ");
-    }
-    if (SimpleStickerTracker2.a(this.a) != null)
+    if (PickerContainer.a(this.a))
     {
-      Message localMessage = SimpleStickerTracker2.a(this.a).obtainMessage(3);
-      SimpleStickerTracker2.a(this.a).sendMessage(localMessage);
+      if (PickerContainer.b(this.a).floatValue() < 0.01F) {
+        this.a.setVisibility(4);
+      }
+      PickerContainer.a(this.a, false);
     }
   }
   
-  public void c() {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void d() {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

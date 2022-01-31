@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class rqd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rqd(BaseChatPie paramBaseChatPie) {}
+  public rqd(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
-  {
-    this.a.K();
-  }
+  public void onClick(View paramView) {}
 }
 
 

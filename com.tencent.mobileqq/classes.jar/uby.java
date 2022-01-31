@@ -1,16 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity.MemberGridAdapter;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class uby
-  implements View.OnTouchListener
+  extends FriendListObserver
 {
-  public uby(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public uby(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    return true;
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

@@ -1,24 +1,34 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
-import com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState;
+import android.view.View;
+import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
 public class pcs
-  extends Handler
+  implements URLDrawableDownListener
 {
-  public pcs(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, Looper paramLooper)
+  public pcs(TroopNewGuidePopWindow paramTroopNewGuidePopWindow) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    super(paramLooper);
+    this.a.a(false, "onLoadCancelled");
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (!(paramMessage.obj instanceof WebSoCgiService.WebSoCgiState)) {}
-    while (paramMessage.what != 204) {
-      return;
-    }
-    this.a.a((WebSoCgiService.WebSoCgiState)paramMessage.obj);
+    this.a.a(false, "onLoadFailed");
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    this.a.a(false, "onLoadInterrupted");
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.a.a(true, "onLoadSuccessed");
+    this.a.b = true;
   }
 }
 

@@ -1,15 +1,28 @@
 import android.content.Context;
-import android.content.res.Resources;
+import android.content.Intent;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class vbe
-  implements Runnable
+public class vbe
+  extends ClickableSpan
 {
-  public vbe(Context paramContext) {}
+  public vbe(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131434495), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+    if (!NetworkUtil.d(this.a.a))
+    {
+      QQToast.a(this.a.a, "当前网络连接不可用，请确认后再使用", 2000).a();
+      return;
+    }
+    paramView = new Intent(this.a.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
+    paramView.putExtra("hide_more_button", true);
+    this.a.a.startActivity(paramView);
   }
 }
 

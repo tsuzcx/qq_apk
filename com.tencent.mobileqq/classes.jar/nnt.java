@@ -1,31 +1,15 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.playvideo.player.IVideoView;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
 
 public class nnt
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public nnt(ProgressControler paramProgressControler) {}
+  public nnt(FeedsPlayModeBase paramFeedsPlayModeBase) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    IVideoView localIVideoView;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localIVideoView = (IVideoView)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localIVideoView == null);
-    if (localIVideoView.b() > 0L)
-    {
-      this.a.a(this.a.jdField_a_of_type_Int, localIVideoView.a(), localIVideoView.b(), localIVideoView);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
+    this.a.s();
   }
 }
 

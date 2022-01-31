@@ -1,45 +1,61 @@
-import android.content.Context;
+import android.os.Bundle;
+import android.os.Message;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.ReportR5Builder;
-import com.tencent.biz.pubaccount.readinjoy.model.SelfInfoModule.BusinessCountInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySelfInnerListViewAdapter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUploadManager;
+import com.tencent.biz.qqstory.network.pb.qqstory_bhd_upload_pic.RspStoryVideo;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import java.util.HashMap;
 
 public class mjo
-  implements AdapterView.OnItemClickListener
+  extends TransProcessorHandler
 {
-  public mjo(ReadInjoySelfInnerListViewAdapter paramReadInjoySelfInnerListViewAdapter, Context paramContext) {}
+  public mjo(VideoUploadManager paramVideoUploadManager) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    paramAdapterView = (SelfInfoModule.BusinessCountInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySelfInnerListViewAdapter.getItem(paramInt);
-    if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.b)))
-    {
-      if (!paramAdapterView.b.startsWith("mqq://")) {
-        break label154;
-      }
-      paramView = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_AndroidContentContext, paramAdapterView.b);
-      if (paramView != null) {
-        paramView.b();
-      }
-    }
-    for (;;)
-    {
-      paramView = new ReadInJoyUtils.ReportR5Builder().a().a();
-      if (!TextUtils.isEmpty(paramView)) {
-        PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80092FE", "0X80092FE", 0, 0, "" + paramAdapterView.c, "" + paramAdapterView.a, "", paramView, false);
-      }
+    Object localObject = (FileMsg)paramMessage.obj;
+    if ((localObject == null) || ((((FileMsg)localObject).jdField_b_of_type_Int != 24) && (((FileMsg)localObject).jdField_b_of_type_Int != 32))) {}
+    while ((((FileMsg)localObject).jdField_b_of_type_Int == 24) && (((FileMsg)localObject).c != 54)) {
       return;
-      label154:
-      ReadInJoyUtils.b(ReadInjoySelfInnerListViewAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySelfInnerListViewAdapter), paramAdapterView.b);
+    }
+    switch (paramMessage.what)
+    {
+    case 1001: 
+    case 1002: 
+    case 1004: 
+    case 1005: 
+    case 2001: 
+    case 2003: 
+    default: 
+      return;
+    }
+    paramMessage = (Bundle)this.a.b.remove(Long.valueOf(((FileMsg)localObject).jdField_b_of_type_Long));
+    paramMessage.putLong("uniseq", ((FileMsg)localObject).jdField_b_of_type_Long);
+    paramMessage.putString("pic_server_id", ((FileMsg)localObject).i);
+    qqstory_bhd_upload_pic.RspStoryVideo localRspStoryVideo = new qqstory_bhd_upload_pic.RspStoryVideo();
+    try
+    {
+      localRspStoryVideo.mergeFrom(((FileMsg)localObject).a);
+      if (localRspStoryVideo.retcode.get() == 0)
+      {
+        localObject = localRspStoryVideo.cdn_url.get().toStringUtf8();
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          paramMessage.putString("cdn_url", (String)localObject);
+        }
+      }
+      label214:
+      this.a.a.a(84, paramMessage);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      break label214;
     }
   }
 }

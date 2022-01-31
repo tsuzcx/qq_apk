@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.arcard;
 
-import aann;
-import aano;
-import aanp;
-import aanq;
-import aanr;
-import aans;
-import aant;
+import aauh;
+import aaui;
+import aauj;
+import aauk;
+import aaul;
+import aaum;
+import aaun;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -76,7 +76,7 @@ public class ArCardSelectMemberActivity
   
   public static void a(Context paramContext, int paramInt)
   {
-    DialogUtil.b(paramContext, 232, null, paramContext.getString(paramInt), 2131433015, 2131433017, new aans(paramContext), new aant()).show();
+    DialogUtil.b(paramContext, 232, null, paramContext.getString(paramInt), 2131433029, 2131433031, new aaum(paramContext), new aaun()).show();
   }
   
   private void v()
@@ -84,7 +84,7 @@ public class ArCardSelectMemberActivity
     if (this.jdField_a_of_type_ComTencentMobileqqArcardARCardObserver != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardObserver = new aann(this);
+    this.jdField_a_of_type_ComTencentMobileqqArcardARCardObserver = new aauh(this);
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqArcardARCardObserver);
   }
   
@@ -109,13 +109,13 @@ public class ArCardSelectMemberActivity
     if (this.jdField_a_of_type_AndroidAppDialog == null)
     {
       this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624516);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2130968716);
+      this.jdField_a_of_type_AndroidAppDialog.setContentView(2130968719);
       this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(true);
-      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363400).setVisibility(4);
+      this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363419).setVisibility(4);
       this.jdField_a_of_type_AndroidAppDialog.show();
     }
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363399)).setVisibility(8);
-    paramString = (ProgressBar)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363398);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363418)).setVisibility(8);
+    paramString = (ProgressBar)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363417);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(13);
     localLayoutParams.height = AIOUtils.a(45.0F, getResources());
@@ -223,7 +223,7 @@ public class ArCardSelectMemberActivity
       i1 += 1;
     }
     if (this.jdField_a_of_type_JavaUtilArrayList.size() != 1) {
-      localStringBuilder.append(String.format(getString(2131438264), new Object[] { "", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
+      localStringBuilder.append(String.format(getString(2131438284), new Object[] { "", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
     }
     this.p = localStringBuilder.toString();
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
@@ -231,7 +231,7 @@ public class ArCardSelectMemberActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this, (String)localObject1, this.p, null, new aano(this), new aanp(this), 0, false);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this, (String)localObject1, this.p, null, new aaui(this), new aauj(this), 0, false);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageCount(this.jdField_i_of_type_JavaLangString);
       try
       {
@@ -250,20 +250,20 @@ public class ArCardSelectMemberActivity
         localObject1 = new RelativeLayout.LayoutParams(-1, -2);
         ((RelativeLayout.LayoutParams)localObject1).addRule(14);
         ((RelativeLayout.LayoutParams)localObject1).height = ((int)(i1 * 0.800000011920929D / 1.8D));
-        localObject2 = (ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364050);
+        localObject2 = (ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364075);
         ((ImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
         ((ImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_XY);
-        localObject1 = (TextView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364051);
+        localObject1 = (TextView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364076);
         ((TextView)localObject1).setMaxLines(2);
         ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
         ((TextView)localObject1).setGravity(3);
-        ((TextView)localObject1).post(new aanq(this));
-        localObject1 = (TextView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131362776);
+        ((TextView)localObject1).post(new aauk(this));
+        localObject1 = (TextView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131362781);
         ((TextView)localObject1).setMaxLines(1);
         ((TextView)localObject1).setSingleLine(true);
         ((TextView)localObject1).setEllipsize(null);
         ((TextView)localObject1).setGravity(3);
-        ((TextView)localObject1).post(new aanr(this, localStringBuilder, (TextView)localObject1));
+        ((TextView)localObject1).post(new aaul(this, localStringBuilder, (TextView)localObject1));
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
         return;
         localObject1 = "发送到" + localStringBuilder.toString();
@@ -300,7 +300,7 @@ public class ArCardSelectMemberActivity
         QLog.i("ArCardSelectMemberActivity", 2, "handleMessage: send bless msg timeout!");
       }
       t();
-      a(this, 2131437375);
+      a(this, 2131437395);
     }
   }
   

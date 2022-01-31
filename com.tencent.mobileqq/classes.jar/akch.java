@@ -1,27 +1,19 @@
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.ImageView;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
 
-public final class akch
+class akch
   implements Runnable
 {
-  public akch(String paramString, int paramInt, QQAppInterface paramQQAppInterface) {}
+  akch(akcg paramakcg) {}
   
   public void run()
   {
-    try
-    {
-      String str = this.jdField_a_of_type_JavaLangString;
-      int i = this.jdField_a_of_type_Int;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      StatisticConstants.a(new String[] { str }, i, false, true, -1, localQQAppInterface);
-      return;
-    }
-    catch (Exception localException) {}
+    this.a.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akch
  * JD-Core Version:    0.7.0.1
  */

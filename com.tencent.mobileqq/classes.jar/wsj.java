@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.contacts.base.HonestSayController;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wsj
-  extends FriendListObserver
+  implements Runnable
 {
-  public wsj(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public wsj(HonestSayController paramHonestSayController) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new wsk(this));
-    }
+    HonestSayController.a(this.a, true);
+    ReportController.b(HonestSayController.a(this.a), "dc00898", "", "", "0X8008F4A", "0X8008F4A", 1, 0, "", "", "", "");
   }
 }
 

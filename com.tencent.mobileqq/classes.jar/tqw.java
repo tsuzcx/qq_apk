@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.RiskInfoItem;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.utils.DingdongPluginBizObserver;
 
-public final class tqw
-  implements Parcelable.Creator
+public class tqw
+  extends DingdongPluginBizObserver
 {
-  public RiskInfoItem a(Parcel paramParcel)
-  {
-    return new RiskInfoItem(paramParcel, null);
-  }
+  public tqw(QQSettingMe paramQQSettingMe) {}
   
-  public RiskInfoItem[] a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new RiskInfoItem[paramInt];
+    if (paramInt == 5)
+    {
+      QQSettingMe.a(this.a, true);
+      this.a.I();
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramInt != 13);
+      QQSettingMe.a(this.a, true);
+    } while (!QQSettingMe.f(this.a));
+    QQSettingMe.d(this.a);
+    this.a.a(true);
   }
 }
 

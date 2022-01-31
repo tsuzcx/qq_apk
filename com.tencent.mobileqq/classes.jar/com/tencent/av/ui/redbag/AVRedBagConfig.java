@@ -2,8 +2,8 @@ package com.tencent.av.ui.redbag;
 
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.service.IAVRedPacketCallback;
-import kdu;
-import kdv;
+import kfz;
+import kga;
 
 public class AVRedBagConfig
   extends SubHandleBase
@@ -14,13 +14,13 @@ public class AVRedBagConfig
   AVRedBagConfig(AVRedBagMgr paramAVRedBagMgr)
   {
     super(paramAVRedBagMgr);
-    this.jdField_a_of_type_ComTencentAvServiceIAVRedPacketCallback = new kdu(this);
+    this.jdField_a_of_type_ComTencentAvServiceIAVRedPacketCallback = new kfz(this);
   }
   
   void a()
   {
-    kdv localkdv = new kdv(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localkdv);
+    kga localkga = new kga(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localkga);
   }
   
   public void a(AVRedBagConfig.Info paramInfo)
@@ -43,7 +43,7 @@ public class AVRedBagConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.redbag.AVRedBagConfig
  * JD-Core Version:    0.7.0.1
  */

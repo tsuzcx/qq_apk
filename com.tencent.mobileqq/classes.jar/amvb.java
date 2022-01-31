@@ -1,18 +1,68 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiFeedInfo;
+import java.util.HashMap;
 
-public final class amvb
-  implements Parcelable.Creator
+public class amvb
 {
-  public WeishiFeedInfo a(Parcel paramParcel)
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap jdField_a_of_type_JavaUtilHashMap;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  
+  public amvb(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap)
   {
-    return new WeishiFeedInfo(paramParcel);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
   }
   
-  public WeishiFeedInfo[] a(int paramInt)
+  public long a()
   {
-    return new WeishiFeedInfo[paramInt];
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public HashMap a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("], tagName[");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("], success[");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("], size[");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("]");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 

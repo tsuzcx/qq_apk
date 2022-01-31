@@ -1,39 +1,44 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.LikeManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListRequest;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListResponse;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager;
+import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.DebugInfo;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
 import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.util.URLUtil;
 import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import mqq.os.MqqHandler;
 
-class nun
-  implements CmdTaskManger.CommandCallback
+public class nun
+  extends SimpleJob
 {
-  nun(num paramnum, JobContext paramJobContext, String paramString) {}
+  public nun(VideoViewTVKImpl paramVideoViewTVKImpl, VideoServerInfoManager paramVideoServerInfoManager, PlayModeUtils.DebugInfo paramDebugInfo, String paramString, DownloadUrlManager paramDownloadUrlManager, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
   
-  public void a(@NonNull DetailLikeListLoader.GetLikeListRequest paramGetLikeListRequest, @Nullable DetailLikeListLoader.GetLikeListResponse paramGetLikeListResponse, @NonNull ErrorMessage paramErrorMessage)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
-      return;
+    paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c;
+    if (TextUtils.isEmpty(paramJobContext)) {
+      return null;
     }
-    if ((paramGetLikeListResponse == null) || (paramErrorMessage.isFail()))
+    if (paramJobContext.contains("qqstocdnd"))
     {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
-      num.a(this.jdField_a_of_type_Num, paramErrorMessage);
-      return;
+      paramVarArgs = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager.a();
+      SLog.a("VideoViewTVKImpl", "get url key:%s", paramVarArgs);
+      if (TextUtils.isEmpty(paramVarArgs)) {
+        break label80;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c = URLUtil.a(paramJobContext, "authkey", paramVarArgs);
     }
-    if (this.jdField_a_of_type_Num.a == 0) {}
-    for (boolean bool = false;; bool = true)
+    for (;;)
     {
-      ((LikeManager)SuperManager.a(15)).a(paramGetLikeListResponse.a, this.jdField_a_of_type_JavaLangString, bool, true);
-      paramGetLikeListRequest = new nug(bool, paramGetLikeListResponse.a, paramGetLikeListResponse.b, paramGetLikeListResponse.c);
-      num.a(this.jdField_a_of_type_Num, paramGetLikeListRequest);
-      return;
+      ThreadManager.getUIHandler().post(new nup(this));
+      return null;
+      label80:
+      ThreadManager.getUIHandler().post(new nuo(this));
     }
   }
 }

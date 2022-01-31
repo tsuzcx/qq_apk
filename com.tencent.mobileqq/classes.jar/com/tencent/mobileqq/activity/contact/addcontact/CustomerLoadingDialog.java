@@ -20,7 +20,7 @@ public class CustomerLoadingDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    Object localObject = LayoutInflater.from(getContext()).inflate(2130970676, null);
+    Object localObject = LayoutInflater.from(getContext()).inflate(2130970689, null);
     paramBundle = getWindow();
     paramBundle.setContentView((View)localObject);
     localObject = paramBundle.getAttributes();

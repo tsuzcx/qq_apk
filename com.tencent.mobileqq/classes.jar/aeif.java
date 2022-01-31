@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.app.SVIPObserver;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class aeif
-  extends SVIPObserver
+  implements AdapterView.OnItemClickListener
 {
-  public aeif(EmoticonManager paramEmoticonManager) {}
+  public aeif(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void a()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "mVipStatusObserver vip change");
+    if (this.a.c()) {
+      ThreadManager.post(new aeig(this, paramView, paramInt), 8, null, true);
     }
-    super.a();
-    this.a.d();
   }
 }
 

@@ -1,92 +1,57 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTag;
-import com.tencent.util.InputMethodUtil;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.tencent.mobileqq.data.RecentEmotion;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aeql
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aeql(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public aeql(EmoticonManager paramEmoticonManager, RecentEmotion paramRecentEmotion) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (paramView == ChooseInterestTagActivity.b(this.a)) {
-      if (TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
+    if (this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonManager", 2, "addRecentEmotionToCache key = " + this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion.keyword;
+    if (TextUtils.isEmpty(str))
+    {
+      QLog.e("EmoticonManager", 1, "addRecentEmotionToCache keyword empty");
+      return;
+    }
+    RecentEmotion localRecentEmotion = this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion;
+    CopyOnWriteArrayList localCopyOnWriteArrayList = EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, str);
+    if (localCopyOnWriteArrayList != null)
+    {
+      int i = localCopyOnWriteArrayList.indexOf(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
+      if (i > -1)
       {
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), 30, 0, 0);
-        ChooseInterestTagActivity.a(this.a, true, true);
+        localRecentEmotion = (RecentEmotion)localCopyOnWriteArrayList.get(i);
+        localRecentEmotion.replace(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
       }
     }
-    label365:
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
-        break;
-        if (paramView == this.a.leftView)
-        {
-          InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
-          if (ChooseInterestTagActivity.a(this.a))
-          {
-            this.a.finish();
-            return;
-          }
-          localObject = this.a.getIntent();
-          paramView = (View)localObject;
-          if (localObject == null) {
-            paramView = new Intent();
-          }
-          Collections.reverse(ChooseInterestTagActivity.a(this.a));
-          paramView.putParcelableArrayListExtra("choosed_interest_tags", ChooseInterestTagActivity.a(this.a));
-          paramView.putExtra("interest_tag_type", ChooseInterestTagActivity.a(this.a));
-          this.a.setResult(-1, paramView);
-          this.a.finish();
-          return;
-        }
-        if (paramView != this.a.rightViewText) {
-          break label365;
-        }
-        InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
-      } while (!ChooseInterestTagActivity.a(this.a));
-      if (ChooseInterestTagActivity.a(this.a).isEmpty())
-      {
-        ChooseInterestTagActivity.a(this.a, "你还没有选择标签");
-        return;
-      }
-      ChooseInterestTagActivity.a(this.a, 0, "设置标签中...", 0);
-      Collections.reverse(ChooseInterestTagActivity.a(this.a));
-      paramView = new InterestTag(ChooseInterestTagActivity.a(this.a));
-      paramView.a.addAll(ChooseInterestTagActivity.a(this.a));
-      Object localObject = new ArrayList(1);
-      ((List)localObject).add(paramView);
-      ChooseInterestTagActivity.a(this.a).a((List)localObject, 0, 1);
+      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.d.remove(localRecentEmotion);
+      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.d.add(0, localRecentEmotion);
       return;
-    } while (paramView != ChooseInterestTagActivity.a(this.a));
-    ChooseInterestTagActivity.a(this.a).setText("正在加载...");
-    paramView = ChooseInterestTagActivity.a(this.a);
-    int j = ChooseInterestTagActivity.a(this.a);
-    int k = ChooseInterestTagActivity.b(this.a);
-    if (ChooseInterestTagActivity.a(this.a)) {}
-    for (int i = 1;; i = 0)
-    {
-      paramView.a("", j, k, 30, 0, i);
-      return;
+      localCopyOnWriteArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
+      continue;
+      localCopyOnWriteArrayList = new CopyOnWriteArrayList();
+      localCopyOnWriteArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
+      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.e.put(str, localCopyOnWriteArrayList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeql
  * JD-Core Version:    0.7.0.1
  */

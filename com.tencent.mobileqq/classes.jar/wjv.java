@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.activity.contact.newfriend.QIMNotifyAddFriendBuilder;
-import com.tencent.mobileqq.app.QIMNewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.newfriend.QIMNotifyAddFriendMsg;
+import java.io.File;
 
-public class wjv
-  implements Runnable
+public abstract interface wjv
 {
-  public wjv(QIMNotifyAddFriendBuilder paramQIMNotifyAddFriendBuilder) {}
+  public abstract File a(String paramString);
   
-  public void run()
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQIMNewFriendManager.b(((QIMNotifyAddFriendMsg)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wjw(this));
-  }
+  public abstract String c();
 }
 
 

@@ -142,9 +142,9 @@ import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler;
 import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelObserver;
 import com.tencent.mobileqq.profile.ProfileBusiEntry;
 import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.ProfileCardManager;
 import com.tencent.mobileqq.profile.ProfileCardTemplate;
 import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
-import com.tencent.mobileqq.profile.VipWZRYTemplateHelper;
 import com.tencent.mobileqq.profile.diy.DiyTextView;
 import com.tencent.mobileqq.profile.like.PraiseManager;
 import com.tencent.mobileqq.profile.view.ProfileBaseView;
@@ -198,6 +198,7 @@ import com.tencent.mobileqq.vas.IndividuationUrlHelper;
 import com.tencent.mobileqq.vas.VasExtensionManager;
 import com.tencent.mobileqq.vas.VasManager;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.mobileqq.widget.MusicPendantView;
@@ -239,6 +240,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
@@ -246,57 +248,56 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sog;
-import soh;
-import soi;
-import sol;
-import sos;
-import sou;
-import sov;
-import soy;
-import spa;
-import spb;
-import spc;
-import spd;
-import spe;
-import spg;
-import sph;
-import spi;
-import spk;
-import spl;
-import spp;
-import spu;
-import spv;
-import spw;
-import spy;
-import spz;
-import sqa;
-import sqb;
-import sqc;
-import sqd;
-import sqe;
-import sqg;
-import sqh;
-import sqi;
-import sqk;
-import sql;
-import sqm;
-import sqn;
-import sqo;
-import sqp;
-import sqq;
-import sqr;
-import sqs;
-import sqt;
-import sqy;
-import sqz;
-import src;
-import sre;
-import srf;
-import srk;
-import srl;
-import srn;
-import sro;
+import sta;
+import std;
+import stg;
+import stn;
+import stp;
+import stq;
+import stt;
+import stv;
+import stw;
+import stx;
+import sty;
+import stz;
+import sub;
+import suc;
+import sud;
+import suf;
+import sug;
+import suk;
+import sup;
+import suq;
+import sur;
+import sus;
+import sut;
+import suu;
+import suv;
+import suw;
+import sux;
+import suy;
+import suz;
+import svb;
+import svc;
+import sve;
+import svf;
+import svg;
+import svh;
+import svi;
+import svj;
+import svk;
+import svl;
+import svm;
+import svn;
+import svp;
+import svt;
+import svu;
+import svy;
+import swa;
+import swf;
+import swg;
+import swi;
+import swj;
 
 public class FriendProfileCardActivity
   extends ProfileActivity
@@ -311,19 +312,19 @@ public class FriendProfileCardActivity
   protected float a;
   public int a;
   Dialog jdField_a_of_type_AndroidAppDialog;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new spg(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new sub(this);
   public DialogInterface.OnClickListener a;
   public Intent a;
   public Bitmap a;
   public Drawable a;
   public Uri a;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new sqb(this);
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new spp(this);
-  View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new spl(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new suw(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new suk(this);
+  View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener = new sug(this);
   public View a;
   public ViewGroup a;
   public AlphaAnimation a;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new sqi(this);
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new sve(this);
   public ImageView a;
   public LinearLayout a;
   public RelativeLayout a;
@@ -337,18 +338,18 @@ public class FriendProfileCardActivity
   protected ApolloBoxEnterView a;
   private ApolloDrawerInfoViewListener jdField_a_of_type_ComTencentMobileqqApolloViewApolloDrawerInfoViewListener;
   private CardHandler.CardTransProcessorHandler jdField_a_of_type_ComTencentMobileqqAppCardHandler$CardTransProcessorHandler;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new sol(this);
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new sov(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new stg(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new stq(this);
   protected TroopObserver a;
-  CampusCircleObserver jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver = new soi(this);
+  CampusCircleObserver jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver = new std(this);
   public DiniFlyAnimationView a;
-  OnDrawCompleteListener jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener = new sqo(this);
+  OnDrawCompleteListener jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener = new svj(this);
   PreloadProcHitPluginSession jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = new PreloadProcHitPluginSession("qzone_friendprofile", "com.tencent.mobileqq:qzone", QzonePluginProxyActivity.a());
   public PreloadProcHitSession a;
-  GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new soy(this);
-  ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new sou(this);
+  GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new stt(this);
+  ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new stp(this);
   OnGetPersonalityLabelsListener jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelOnGetPersonalityLabelsListener;
-  PersonalityLabelObserver jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelObserver = new sog(this);
+  PersonalityLabelObserver jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelObserver = new sta(this);
   public ProfileBusiEntry a;
   public ProfileCardInfo a;
   public ProfileShoppingPhotoInfo a;
@@ -359,31 +360,31 @@ public class FriendProfileCardActivity
   public PstnCardInfo a;
   public PstnManager a;
   public RedTouch a;
-  IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new sqd(this);
+  IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new suy(this);
   public ProfileGuideHelper a;
   protected QQCustomDialog a;
   public TimeTraceUtil a;
+  VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new sur(this);
   public MusicPendantView a;
   public OnGetPhotoWallListener a;
   public ProfileCardMoreInfoView a;
   public QQProgressDialog a;
   public BusinessInfoCheckUpdate.AppInfo a;
   public WeakReferenceHandler a;
-  AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new sqr(this);
+  AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new svm(this);
   public ActionSheet a;
-  ListView.OnScrollChangeListener jdField_a_of_type_ComTencentWidgetListView$OnScrollChangeListener = new sqq(this);
+  ListView.OnScrollChangeListener jdField_a_of_type_ComTencentWidgetListView$OnScrollChangeListener = new svl(this);
   public PullToZoomHeaderListView a;
   public ImmersiveTitleBar2 a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new src(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new svy(this);
   public String a;
   public ArrayDeque a;
   public ArrayList a;
-  public HashMap a;
   private Vector jdField_a_of_type_JavaUtilVector = new Vector();
   public AtomicBoolean a;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private srl jdField_a_of_type_Srl;
-  srn jdField_a_of_type_Srn = new srn(this);
+  private swg jdField_a_of_type_Swg;
+  swi jdField_a_of_type_Swi = new swi(this);
   boolean jdField_a_of_type_Boolean = false;
   public int[] a;
   public String[] a;
@@ -394,12 +395,12 @@ public class FriendProfileCardActivity
   protected Intent b;
   public Bitmap b;
   public Uri b;
-  Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new sqe(this);
+  Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new suz(this);
   View jdField_b_of_type_AndroidViewView;
   public AlphaAnimation b;
   public ImageView b;
   public TextView b;
-  CardObserver jdField_b_of_type_ComTencentMobileqqAppCardObserver = new sos(this);
+  CardObserver jdField_b_of_type_ComTencentMobileqqAppCardObserver = new stn(this);
   public ShakeImageView b;
   public QQProgressDialog b;
   public WeakReferenceHandler b;
@@ -446,17 +447,18 @@ public class FriendProfileCardActivity
   public int k;
   long k;
   public boolean k;
-  protected int l;
+  public int l;
   protected boolean l;
-  public int m;
+  protected int m;
   protected boolean m;
-  protected int n;
+  public int n;
   public boolean n;
-  public int o;
+  protected int o;
   public boolean o;
-  int p;
-  public int q;
-  private boolean q;
+  public int p;
+  int jdField_q_of_type_Int = 0;
+  private boolean jdField_q_of_type_Boolean;
+  public int r;
   private boolean r;
   private boolean s;
   private boolean t;
@@ -480,20 +482,19 @@ public class FriendProfileCardActivity
     this.jdField_e_of_type_Boolean = true;
     this.jdField_f_of_type_Int = 0;
     this.jdField_e_of_type_JavaLangString = "is_binding_shop";
-    this.jdField_i_of_type_Int = -1;
+    this.jdField_j_of_type_Int = -1;
     this.jdField_b_of_type_AndroidContentIntent = new Intent();
     this.jdField_h_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new spd(this);
-    this.jdField_k_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new stx(this);
+    this.jdField_l_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitSession = new PreloadProcHitSession("profile_card", "com.tencent.mobileqq:tool");
     this.jdField_k_of_type_Boolean = false;
-    this.jdField_o_of_type_Int = -1;
+    this.jdField_p_of_type_Int = -1;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_p_of_type_Int = 0;
-    this.jdField_q_of_type_Int = 30000;
-    this.jdField_b_of_type_JavaLangRunnable = new sqk(this);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new sql(this);
-    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new sqm(this);
+    this.jdField_r_of_type_Int = 30000;
+    this.jdField_b_of_type_JavaLangRunnable = new svf(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new svg(this);
+    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new svh(this);
     this.jdField_j_of_type_JavaLangString = null;
     this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = null;
   }
@@ -564,7 +565,7 @@ public class FriendProfileCardActivity
   
   private void V()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 96) && (d())) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 96) && (e())) {
       return;
     }
     a(this.app, this, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, this.jdField_a_of_type_AndroidAppDialog);
@@ -595,7 +596,7 @@ public class FriendProfileCardActivity
       if (localObject1 == null) {
         break label231;
       }
-      ((TroopManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString, new spy(this, localIntent));
+      ((TroopManager)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString, new sut(this, localIntent));
     }
     label217:
     label231:
@@ -621,8 +622,8 @@ public class FriendProfileCardActivity
       if ((bool) && (i1 < 3))
       {
         TextView localTextView = new TextView(this);
-        localTextView.setId(2131362405);
-        localTextView.setBackgroundResource(2130842471);
+        localTextView.setId(2131362408);
+        localTextView.setBackgroundResource(2130842506);
         localTextView.setIncludeFontPadding(false);
         localTextView.setClickable(false);
         localTextView.setText("快来完善资料吧！");
@@ -633,7 +634,7 @@ public class FriendProfileCardActivity
         localTextView.setPadding(i2, AIOUtils.a(7.0F, getResources()), i3, AIOUtils.a(13.0F, getResources()));
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
         localLayoutParams.addRule(11);
-        localLayoutParams.addRule(2, 2131370262);
+        localLayoutParams.addRule(2, 2131370271);
         localLayoutParams.rightMargin = AIOUtils.a(15.0F, getResources());
         localLayoutParams.bottomMargin = AIOUtils.a(-1.0F, getResources());
         ((PerfRelativeLayout)this.jdField_f_of_type_AndroidViewView).addView(localTextView, localLayoutParams);
@@ -866,8 +867,8 @@ public class FriendProfileCardActivity
       }
       else
       {
-        localImageView = (ImageView)((View)localObject1).findViewById(2131372525);
-        localObject1 = (TextView)((View)localObject1).findViewById(2131372526);
+        localImageView = (ImageView)((View)localObject1).findViewById(2131372536);
+        localObject1 = (TextView)((View)localObject1).findViewById(2131372537);
         if ((localObject1 != null) && (((TextView)localObject1).getWidth() > 0) && (((TextView)localObject1).getHeight() > 0)) {
           if (localImageView == null)
           {
@@ -932,7 +933,7 @@ public class FriendProfileCardActivity
       }
       try
       {
-        ThreadManager.post(new sqt(this, (DiniFlyAnimationView)localImageView), 5, null, true);
+        ThreadManager.post(new svp(this, (DiniFlyAnimationView)localImageView), 5, null, true);
         bool1 = false;
         i1 = 0;
       }
@@ -1120,7 +1121,7 @@ public class FriendProfileCardActivity
       }
       localObject = paramDialog;
       if (paramDialog == null) {
-        localObject = LBSHandler.a(paramBaseActivity, paramBaseActivity.getString(2131437409), new spv(paramQQAppInterface, paramBaseActivity, paramProfileCardInfo), new spw());
+        localObject = LBSHandler.a(paramBaseActivity, paramBaseActivity.getString(2131437429), new suq(paramQQAppInterface, paramBaseActivity, paramProfileCardInfo), new sus());
       }
       if ((localObject != null) && (!((Dialog)localObject).isShowing()) && (!paramBaseActivity.isFinishing())) {
         ((Dialog)localObject).show();
@@ -1292,7 +1293,7 @@ public class FriendProfileCardActivity
         }
         for (;;)
         {
-          paramQQAppInterface = AddFriendLogicActivity.a(paramBaseActivity, 2, str, null, i2, i1, paramQQAppInterface, null, FriendProfileCardActivity.class.getName(), paramBaseActivity.getString(2131433698), null);
+          paramQQAppInterface = AddFriendLogicActivity.a(paramBaseActivity, 2, str, null, i2, i1, paramQQAppInterface, null, FriendProfileCardActivity.class.getName(), paramBaseActivity.getString(2131433712), null);
           paramQQAppInterface.putExtra("param_return_profilecard_pa", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int);
           paramQQAppInterface.putExtra("key_param_age_area", (String)localObject);
           bool = paramBaseActivity.getIntent().getBooleanExtra("from_newer_guide", false);
@@ -1350,7 +1351,7 @@ public class FriendProfileCardActivity
         }
         for (;;)
         {
-          paramQQAppInterface = AddFriendLogicActivity.a(paramBaseActivity, 1, paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramDialog, i2, i1, paramQQAppInterface, null, (String)localObject, paramBaseActivity.getString(2131433698), null);
+          paramQQAppInterface = AddFriendLogicActivity.a(paramBaseActivity, 1, paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramDialog, i2, i1, paramQQAppInterface, null, (String)localObject, paramBaseActivity.getString(2131433712), null);
           paramQQAppInterface.putExtra("from_babyq", bool);
           paramQQAppInterface.putExtra("param_return_profilecard_pa", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int);
           if ((paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 46) || (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 47))
@@ -1382,7 +1383,7 @@ public class FriendProfileCardActivity
           }
           paramQQAppInterface = paramProfileCardInfo.jdField_a_of_type_ArrayOfJavaLangString[5];
           break label1610;
-          paramQQAppInterface = AddFriendLogicActivity.a(paramBaseActivity, 1, paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramDialog, i2, i1, paramQQAppInterface, null, FriendProfileCardActivity.class.getName(), paramBaseActivity.getString(2131433698), null);
+          paramQQAppInterface = AddFriendLogicActivity.a(paramBaseActivity, 1, paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramDialog, i2, i1, paramQQAppInterface, null, FriendProfileCardActivity.class.getName(), paramBaseActivity.getString(2131433712), null);
           paramQQAppInterface.putExtra("from_babyq", bool);
           paramQQAppInterface.putExtra("param_return_profilecard_pa", paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int);
           if ((paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 46) || (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 47))
@@ -1466,7 +1467,7 @@ public class FriendProfileCardActivity
             localIntent.putExtra("chat_subType", 1);
           }
         }
-        if ((paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 70) || (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.g != 101)) {
+        if ((paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 70) || (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_g_of_type_Int != 101)) {
           break label576;
         }
         localIntent.putExtra("is_from_manage_stranger", true);
@@ -1502,47 +1503,47 @@ public class FriendProfileCardActivity
   public static void a(QQAppInterface arg0, ProfileCardInfo paramProfileCardInfo)
   {
     // Byte code:
-    //   0: invokestatic 409	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +13 -> 16
-    //   6: ldc_w 411
+    //   6: ldc_w 416
     //   9: iconst_2
-    //   10: ldc_w 1177
-    //   13: invokestatic 433	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   10: ldc_w 1181
+    //   13: invokestatic 438	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   16: aload_1
-    //   17: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   20: getfield 761	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_JavaLangString	Ljava/lang/String;
+    //   17: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   20: getfield 766	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_JavaLangString	Ljava/lang/String;
     //   23: astore 6
     //   25: aload_1
-    //   26: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   29: getfield 760	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_i_of_type_JavaLangString	Ljava/lang/String;
+    //   26: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   29: getfield 765	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_i_of_type_JavaLangString	Ljava/lang/String;
     //   32: astore_3
     //   33: aload_1
-    //   34: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   37: getfield 763	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:m	Ljava/lang/String;
+    //   34: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   37: getfield 768	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:m	Ljava/lang/String;
     //   40: astore 5
     //   42: aload_1
-    //   43: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   46: getfield 1179	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_l_of_type_JavaLangString	Ljava/lang/String;
+    //   43: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   46: getfield 1183	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_l_of_type_JavaLangString	Ljava/lang/String;
     //   49: astore 12
     //   51: aload_1
-    //   52: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   55: getfield 1181	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_k_of_type_JavaLangString	Ljava/lang/String;
+    //   52: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   55: getfield 1185	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_k_of_type_JavaLangString	Ljava/lang/String;
     //   58: astore 10
     //   60: aload_1
-    //   61: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   64: getfield 1182	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_j_of_type_JavaLangString	Ljava/lang/String;
+    //   61: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   64: getfield 1186	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_j_of_type_JavaLangString	Ljava/lang/String;
     //   67: astore 14
     //   69: aload_1
-    //   70: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   73: getfield 758	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:n	Ljava/lang/String;
+    //   70: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   73: getfield 763	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:n	Ljava/lang/String;
     //   76: astore 13
     //   78: aload 6
     //   80: astore 7
     //   82: aload 6
     //   84: astore 8
     //   86: aload_1
-    //   87: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   90: invokestatic 1184	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:b	(Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;)Z
+    //   87: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   90: invokestatic 1188	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:b	(Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;)Z
     //   93: ifeq +571 -> 664
     //   96: aload 6
     //   98: astore 7
@@ -1550,8 +1551,8 @@ public class FriendProfileCardActivity
     //   102: astore 8
     //   104: aload_0
     //   105: bipush 50
-    //   107: invokevirtual 368	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   110: checkcast 370	com/tencent/mobileqq/app/FriendsManager
+    //   107: invokevirtual 373	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   110: checkcast 375	com/tencent/mobileqq/app/FriendsManager
     //   113: astore 4
     //   115: aload 4
     //   117: ifnonnull +522 -> 639
@@ -1568,15 +1569,15 @@ public class FriendProfileCardActivity
     //   140: aload 6
     //   142: astore 8
     //   144: aload 11
-    //   146: getfield 1187	com/tencent/mobileqq/data/Friends:name	Ljava/lang/String;
-    //   149: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   146: getfield 1191	com/tencent/mobileqq/data/Friends:name	Ljava/lang/String;
+    //   149: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   152: ifne +18 -> 170
     //   155: aload 6
     //   157: astore 7
     //   159: aload 6
     //   161: astore 8
     //   163: aload 11
-    //   165: getfield 1187	com/tencent/mobileqq/data/Friends:name	Ljava/lang/String;
+    //   165: getfield 1191	com/tencent/mobileqq/data/Friends:name	Ljava/lang/String;
     //   168: astore 4
     //   170: aload 4
     //   172: astore 7
@@ -1585,15 +1586,15 @@ public class FriendProfileCardActivity
     //   178: aload 4
     //   180: astore 9
     //   182: aload 11
-    //   184: getfield 1188	com/tencent/mobileqq/data/Friends:remark	Ljava/lang/String;
-    //   187: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   184: getfield 1192	com/tencent/mobileqq/data/Friends:remark	Ljava/lang/String;
+    //   187: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   190: ifne +812 -> 1002
     //   193: aload 4
     //   195: astore 7
     //   197: aload 4
     //   199: astore 8
     //   201: aload 11
-    //   203: getfield 1188	com/tencent/mobileqq/data/Friends:remark	Ljava/lang/String;
+    //   203: getfield 1192	com/tencent/mobileqq/data/Friends:remark	Ljava/lang/String;
     //   206: astore 6
     //   208: aload 4
     //   210: astore_3
@@ -1601,24 +1602,24 @@ public class FriendProfileCardActivity
     //   213: astore 4
     //   215: aload_0
     //   216: bipush 51
-    //   218: invokevirtual 368	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   221: checkcast 479	com/tencent/mobileqq/app/TroopManager
+    //   218: invokevirtual 373	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   221: checkcast 484	com/tencent/mobileqq/app/TroopManager
     //   224: astore 7
     //   226: aload_1
-    //   227: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   230: getfield 1133	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:c	Ljava/lang/String;
+    //   227: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   230: getfield 1137	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:c	Ljava/lang/String;
     //   233: astore 6
     //   235: aload 6
     //   237: astore_0
     //   238: aload 6
-    //   240: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   240: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   243: ifeq +40 -> 283
     //   246: aload 6
     //   248: astore_0
     //   249: aload_1
-    //   250: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   253: getfield 764	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   256: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   250: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   253: getfield 769	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   256: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   259: ifne +24 -> 283
     //   262: aload 6
     //   264: astore_0
@@ -1626,33 +1627,33 @@ public class FriendProfileCardActivity
     //   267: ifnull +16 -> 283
     //   270: aload 7
     //   272: aload_1
-    //   273: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   276: getfield 764	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   279: invokevirtual 1190	com/tencent/mobileqq/app/TroopManager:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   273: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   276: getfield 769	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   279: invokevirtual 1194	com/tencent/mobileqq/app/TroopManager:c	(Ljava/lang/String;)Ljava/lang/String;
     //   282: astore_0
     //   283: aload_0
-    //   284: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   284: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   287: ifne +696 -> 983
     //   290: aload 7
     //   292: ifnull +691 -> 983
     //   295: aload 7
     //   297: aload_0
     //   298: aload_1
-    //   299: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   302: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   305: invokevirtual 1193	com/tencent/mobileqq/app/TroopManager:b	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   299: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   302: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   305: invokevirtual 1197	com/tencent/mobileqq/app/TroopManager:b	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   308: astore_0
     //   309: aload 10
-    //   311: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   311: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   314: ifeq +662 -> 976
     //   317: aload_1
-    //   318: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   321: invokestatic 741	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;)Lcom/tencent/mobileqq/activity/ProfileActivity$CardContactInfo;
+    //   318: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   321: invokestatic 746	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;)Lcom/tencent/mobileqq/activity/ProfileActivity$CardContactInfo;
     //   324: astore 5
     //   326: aload 5
     //   328: ifnull +648 -> 976
     //   331: aload 5
-    //   333: getfield 1065	com/tencent/mobileqq/activity/ProfileActivity$CardContactInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   333: getfield 1069	com/tencent/mobileqq/activity/ProfileActivity$CardContactInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   336: astore 5
     //   338: aload 4
     //   340: astore 6
@@ -1665,139 +1666,139 @@ public class FriendProfileCardActivity
     //   353: aload_0
     //   354: astore 6
     //   356: aload_1
-    //   357: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   357: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   360: astore_0
     //   361: aload_0
     //   362: monitorenter
     //   363: aload_1
-    //   364: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   364: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   367: iconst_0
     //   368: aaload
-    //   369: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   369: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   372: ifeq +11 -> 383
     //   375: aload_1
-    //   376: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   376: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   379: iconst_0
     //   380: aload 4
     //   382: aastore
     //   383: aload_1
-    //   384: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   384: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   387: iconst_4
     //   388: aaload
-    //   389: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   389: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   392: ifeq +11 -> 403
     //   395: aload_1
-    //   396: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   396: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   399: iconst_4
     //   400: aload 5
     //   402: aastore
     //   403: aload_1
-    //   404: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   404: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   407: iconst_3
     //   408: aaload
-    //   409: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   409: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   412: ifeq +11 -> 423
     //   415: aload_1
-    //   416: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   416: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   419: iconst_3
     //   420: aload 9
     //   422: aastore
     //   423: aload_1
-    //   424: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   424: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   427: iconst_5
     //   428: aaload
-    //   429: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   429: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   432: ifeq +11 -> 443
     //   435: aload_1
-    //   436: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   436: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   439: iconst_5
     //   440: aload 12
     //   442: aastore
     //   443: aload_1
-    //   444: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   444: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   447: iconst_1
     //   448: aaload
-    //   449: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   449: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   452: ifeq +11 -> 463
     //   455: aload_1
-    //   456: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   456: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   459: iconst_1
     //   460: aload 6
     //   462: aastore
     //   463: aload_1
-    //   464: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   464: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   467: bipush 6
     //   469: aaload
-    //   470: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   470: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   473: ifeq +12 -> 485
     //   476: aload_1
-    //   477: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   477: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   480: bipush 6
     //   482: aload 14
     //   484: aastore
     //   485: aload_1
-    //   486: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   486: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   489: iconst_2
     //   490: aaload
-    //   491: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   491: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   494: ifeq +11 -> 505
     //   497: aload_1
-    //   498: getfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   498: getfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   501: iconst_2
     //   502: aload 13
     //   504: aastore
     //   505: aload_0
     //   506: monitorexit
-    //   507: invokestatic 409	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   507: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   510: ifeq +128 -> 638
-    //   513: new 413	java/lang/StringBuilder
+    //   513: new 418	java/lang/StringBuilder
     //   516: dup
-    //   517: invokespecial 414	java/lang/StringBuilder:<init>	()V
+    //   517: invokespecial 419	java/lang/StringBuilder:<init>	()V
     //   520: astore_0
     //   521: aload_0
-    //   522: ldc_w 1195
-    //   525: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   528: ldc_w 1197
-    //   531: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   522: ldc_w 1199
+    //   525: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   528: ldc_w 1201
+    //   531: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   534: aload 4
-    //   536: invokestatic 1151	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   539: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   542: ldc_w 1199
-    //   545: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   536: invokestatic 1155	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   539: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   542: ldc_w 1203
+    //   545: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   548: aload 5
-    //   550: invokestatic 1151	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   553: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   556: ldc_w 1201
-    //   559: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   550: invokestatic 1155	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   553: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   556: ldc_w 1205
+    //   559: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   562: aload 9
-    //   564: invokestatic 1151	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   567: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   570: ldc_w 1203
-    //   573: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   564: invokestatic 1155	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   567: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   570: ldc_w 1207
+    //   573: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   576: aload 12
-    //   578: invokestatic 1151	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   581: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   584: ldc_w 1205
-    //   587: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   578: invokestatic 1155	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   581: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   584: ldc_w 1209
+    //   587: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   590: aload 6
-    //   592: invokestatic 1151	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   595: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   598: ldc_w 1207
-    //   601: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   592: invokestatic 1155	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   595: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   598: ldc_w 1211
+    //   601: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   604: aload 13
-    //   606: invokestatic 1151	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   609: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   612: ldc_w 1209
-    //   615: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   606: invokestatic 1155	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   609: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   612: ldc_w 1213
+    //   615: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   618: aload 12
-    //   620: invokestatic 1151	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
-    //   623: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   620: invokestatic 1155	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   623: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   626: pop
-    //   627: ldc_w 411
+    //   627: ldc_w 416
     //   630: iconst_2
     //   631: aload_0
-    //   632: invokevirtual 430	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   635: invokestatic 520	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   632: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   635: invokestatic 525	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   638: return
     //   639: aload 6
     //   641: astore 7
@@ -1805,9 +1806,9 @@ public class FriendProfileCardActivity
     //   645: astore 8
     //   647: aload 4
     //   649: aload_1
-    //   650: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   653: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   656: invokevirtual 402	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
+    //   650: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   653: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   656: invokevirtual 407	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
     //   659: astore 11
     //   661: goto -538 -> 123
     //   664: aload 6
@@ -1815,8 +1816,8 @@ public class FriendProfileCardActivity
     //   668: aload 6
     //   670: astore 8
     //   672: aload_1
-    //   673: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   676: getfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   673: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   676: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
     //   679: ifne +33 -> 712
     //   682: aload 6
     //   684: astore 7
@@ -1824,9 +1825,9 @@ public class FriendProfileCardActivity
     //   688: astore 8
     //   690: aload_0
     //   691: aload_1
-    //   692: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   695: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   698: invokestatic 1212	com/tencent/mobileqq/utils/ContactUtils:j	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   692: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   695: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   698: invokestatic 1216	com/tencent/mobileqq/utils/ContactUtils:j	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
     //   701: astore 6
     //   703: aload_3
     //   704: astore 4
@@ -1840,7 +1841,7 @@ public class FriendProfileCardActivity
     //   720: aload 6
     //   722: astore 4
     //   724: aload 6
-    //   726: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   726: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   729: ifeq +260 -> 989
     //   732: aload 6
     //   734: astore 7
@@ -1849,8 +1850,8 @@ public class FriendProfileCardActivity
     //   740: aload 6
     //   742: astore 4
     //   744: aload_1
-    //   745: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   748: invokestatic 941	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:f	(Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;)Z
+    //   745: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   748: invokestatic 946	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:f	(Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;)Z
     //   751: ifeq +238 -> 989
     //   754: aload 6
     //   756: astore 7
@@ -1858,10 +1859,10 @@ public class FriendProfileCardActivity
     //   760: astore 8
     //   762: aload_0
     //   763: aload_1
-    //   764: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   767: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   764: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   767: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   770: iconst_0
-    //   771: invokestatic 1215	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;I)Ljava/lang/String;
+    //   771: invokestatic 1219	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;I)Ljava/lang/String;
     //   774: astore 4
     //   776: aload 4
     //   778: astore 7
@@ -1869,9 +1870,9 @@ public class FriendProfileCardActivity
     //   782: astore 8
     //   784: aload 4
     //   786: aload_1
-    //   787: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   790: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   793: invokestatic 1218	com/tencent/mobileqq/util/Utils:a	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   787: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   790: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   793: invokestatic 1222	com/tencent/mobileqq/util/Utils:a	(Ljava/lang/Object;Ljava/lang/Object;)Z
     //   796: istore_2
     //   797: iload_2
     //   798: ifeq +191 -> 989
@@ -1893,13 +1894,13 @@ public class FriendProfileCardActivity
     //   826: astore 4
     //   828: aload 10
     //   830: astore 9
-    //   832: invokestatic 409	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   832: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   835: ifeq -479 -> 356
-    //   838: ldc_w 411
+    //   838: ldc_w 416
     //   841: iconst_2
     //   842: aload 8
-    //   844: invokevirtual 518	java/lang/Exception:toString	()Ljava/lang/String;
-    //   847: invokestatic 520	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   844: invokevirtual 523	java/lang/Exception:toString	()Ljava/lang/String;
+    //   847: invokestatic 525	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   850: aload_0
     //   851: astore 6
     //   853: aload_3
@@ -1920,13 +1921,13 @@ public class FriendProfileCardActivity
     //   880: astore 4
     //   882: aload 10
     //   884: astore 9
-    //   886: invokestatic 409	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   886: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   889: ifeq -533 -> 356
-    //   892: ldc_w 411
+    //   892: ldc_w 416
     //   895: iconst_2
     //   896: aload 7
-    //   898: invokevirtual 1219	java/lang/Error:toString	()Ljava/lang/String;
-    //   901: invokestatic 520	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   898: invokevirtual 1223	java/lang/Error:toString	()Ljava/lang/String;
+    //   901: invokestatic 525	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   904: aload_0
     //   905: astore 6
     //   907: aload_3
@@ -2108,9 +2109,9 @@ public class FriendProfileCardActivity
       continue;
       if (localAllInOne.jdField_a_of_type_Int == 3) {
         ReportController.b(paramQQAppInterface, "CliOper", "", "", "WPA", "OpenAIO_scan", 0, 0, "", "", "", "");
-      } else if (localAllInOne.g == 102) {
+      } else if (localAllInOne.jdField_g_of_type_Int == 102) {
         ReportController.b(paramQQAppInterface, "P_CliOper", "Svip", "", "Vip_maproam", "vip_maproam_RandomConversation", 0, 0, "", "", "", "");
-      } else if (localAllInOne.g == 103) {
+      } else if (localAllInOne.jdField_g_of_type_Int == 103) {
         ReportController.b(paramQQAppInterface, "P_CliOper", "Svip", "", "Vip_maproam", "vip_maproam_superConversation", 0, 0, "", "", "", "");
       }
     }
@@ -2263,7 +2264,7 @@ public class FriendProfileCardActivity
     }
   }
   
-  private boolean d()
+  private boolean e()
   {
     boolean bool = true;
     Card localCard = ((FriendsManager)this.app.getManager(50)).a(this.app.c());
@@ -2279,7 +2280,7 @@ public class FriendProfileCardActivity
     label194:
     for (int i1 = 1;; i1 = 2)
     {
-      this.jdField_b_of_type_AndroidAppDialog = ProfileGuideDialogUtils.a(this, i1, new spu(this, localCard));
+      this.jdField_b_of_type_AndroidAppDialog = ProfileGuideDialogUtils.a(this, i1, new sup(this, localCard));
       try
       {
         if (this.jdField_b_of_type_AndroidAppDialog != null) {
@@ -2312,24 +2313,6 @@ public class FriendProfileCardActivity
     }
   }
   
-  private boolean e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-    {
-      Object localObject = (TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131362405);
-      if (localObject != null)
-      {
-        ((PerfRelativeLayout)this.jdField_f_of_type_AndroidViewView).removeView((View)localObject);
-        localObject = "loginwelcome_" + this.app.c();
-        localObject = getApplication().getSharedPreferences((String)localObject, 0).edit();
-        ((SharedPreferences.Editor)localObject).putInt("bubble_tips_time", 3);
-        ((SharedPreferences.Editor)localObject).commit();
-        return true;
-      }
-    }
-    return false;
-  }
-  
   private void f(int paramInt)
   {
     float f1 = (float)DeviceInfoUtil.j() / DeviceInfoUtil.a();
@@ -2345,6 +2328,24 @@ public class FriendProfileCardActivity
     this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoManager.a(f1, this.jdField_a_of_type_Float, 0.0F);
   }
   
+  private boolean f()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
+    {
+      Object localObject = (TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131362408);
+      if (localObject != null)
+      {
+        ((PerfRelativeLayout)this.jdField_f_of_type_AndroidViewView).removeView((View)localObject);
+        localObject = "loginwelcome_" + this.app.c();
+        localObject = getApplication().getSharedPreferences((String)localObject, 0).edit();
+        ((SharedPreferences.Editor)localObject).putInt("bubble_tips_time", 3);
+        ((SharedPreferences.Editor)localObject).commit();
+        return true;
+      }
+    }
+    return false;
+  }
+  
   public void A()
   {
     int i1 = -77;
@@ -2354,7 +2355,7 @@ public class FriendProfileCardActivity
       if (this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView = new DiyTextView(this);
-        this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView.setOnMeasuredListener(new sqg(this));
+        this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView.setOnMeasuredListener(new svb(this));
       }
       this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView.setMaxSize(this.jdField_f_of_type_AndroidViewView.getWidth() * 2 / 3);
       this.jdField_d_of_type_AndroidViewView.setVisibility(0);
@@ -2402,7 +2403,7 @@ public class FriendProfileCardActivity
   public void B()
   {
     if ((Build.VERSION.SDK_INT >= 11) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof FriendProfileCardBgDrawable))) {
-      ThreadManager.post(new sqh(this, ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a()), 5, null, true);
+      ThreadManager.post(new svc(this, ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a()), 5, null, true);
     }
   }
   
@@ -2414,7 +2415,7 @@ public class FriendProfileCardActivity
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.setDrawingCacheEnabled(true);
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.setVisibility(8);
       this.jdField_c_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.getDrawingCache();
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131371041).setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131371037).setVisibility(8);
       if ((this.jdField_c_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_c_of_type_AndroidGraphicsBitmap.isRecycled()))
       {
         this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(getResources(), this.jdField_c_of_type_AndroidGraphicsBitmap));
@@ -2433,7 +2434,7 @@ public class FriendProfileCardActivity
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.setDrawingCacheEnabled(false);
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.setVisibility(0);
       this.jdField_c_of_type_AndroidGraphicsBitmap = null;
-      this.jdField_a_of_type_AndroidViewView.findViewById(2131371041).setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131371037).setVisibility(0);
     }
   }
   
@@ -2450,7 +2451,7 @@ public class FriendProfileCardActivity
       {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131436753);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131436773);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       return;
@@ -2485,7 +2486,7 @@ public class FriendProfileCardActivity
       {
         this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
         this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131433645);
+        this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131433659);
         this.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       return;
@@ -2521,15 +2522,15 @@ public class FriendProfileCardActivity
       if (this.jdField_f_of_type_Int != 1) {
         break label64;
       }
-      str1 = getString(2131436725);
+      str1 = getString(2131436745);
     }
     for (String str2 = "成为会员之后，即可使用该名片";; str2 = "成为超级会员之后，即可使用该名片")
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this, 0, str1, str2, 2131436738, 2131436739, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this, 0, str1, str2, 2131436758, 2131436759, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
       label64:
-      str1 = getString(2131436723);
+      str1 = getString(2131436743);
     }
   }
   
@@ -2626,7 +2627,7 @@ public class FriendProfileCardActivity
   
   public void O()
   {
-    ThreadManager.post(new sqs(this), 5, null, false);
+    ThreadManager.post(new svn(this), 5, null, false);
   }
   
   void P()
@@ -2742,7 +2743,7 @@ public class FriendProfileCardActivity
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetProfileGuideHelper = new ProfileGuideHelper(this, this.app);
     }
     int i2 = (int)getResources().getDimension(2131559298);
-    ((View)localObject1).getViewTreeObserver().addOnGlobalLayoutListener(new sqz(this, (View)localObject1, i1, i2));
+    ((View)localObject1).getViewTreeObserver().addOnGlobalLayoutListener(new svu(this, (View)localObject1, i1, i2));
   }
   
   public Card a(String paramString1, String paramString2)
@@ -2922,7 +2923,7 @@ public class FriendProfileCardActivity
       for (;;)
       {
         if ((this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) && (((this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileTagView)) || ((this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof VipProfileSimpleView)))) {
-          this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new sqp(this), 500L);
+          this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new svk(this), 500L);
         }
         label286:
         if ((this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.getVisibility() != 0) || (paramInt1 != 1)) {
@@ -2936,13 +2937,13 @@ public class FriendProfileCardActivity
         paramString = "1";
         break label150;
         label331:
-        VipUtils.a(this.app, "cmshow", "Apollo", "guest_file_jump", this.jdField_n_of_type_Int, 0, new String[] { "" + ApolloManager.a(this.app), "0", "0", localObject });
+        VipUtils.a(this.app, "cmshow", "Apollo", "guest_file_jump", this.jdField_o_of_type_Int, 0, new String[] { "" + ApolloManager.a(this.app), "0", "0", localObject });
       }
       label404:
       if (paramInt2 == 1) {
         VipUtils.a(this.app, "cmshow", "Apollo", "Guide_bubbles_clk", 0, 0, new String[] { "", "", "", localObject });
       }
-      if ((this.jdField_n_of_type_Boolean) || ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)) || ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (this.app.c().equals(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin))))
+      if ((this.n) || ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)) || ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (this.app.c().equals(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.uin))))
       {
         this.jdField_l_of_type_Boolean = true;
         paramString = new Intent();
@@ -2978,7 +2979,7 @@ public class FriendProfileCardActivity
           VipUtils.a((AppInterface)localObject, "cmshow", "Apollo", "0X80065C0", 1, 0, new String[] { paramString });
           break;
           ApolloUtil.a(this, paramString, "guestprofile", ApolloConstant.Y, null);
-          VipUtils.a(this.app, "cmshow", "Apollo", "guest_file_clk", this.jdField_n_of_type_Int, 0, new String[] { "" + ApolloManager.a(this.app), "0", "0", localObject });
+          VipUtils.a(this.app, "cmshow", "Apollo", "guest_file_clk", this.jdField_o_of_type_Int, 0, new String[] { "" + ApolloManager.a(this.app), "0", "0", localObject });
           break label688;
           break;
         }
@@ -3001,7 +3002,7 @@ public class FriendProfileCardActivity
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           localIntent.putExtra("extra_guest_uin", (String)localObject);
-          VipUtils.a(this.app, "cmshow", "Apollo", "guest_file_clk", this.jdField_n_of_type_Int, 0, new String[] { "" + ApolloManager.a(this.app), "0", "0", localObject });
+          VipUtils.a(this.app, "cmshow", "Apollo", "guest_file_clk", this.jdField_o_of_type_Int, 0, new String[] { "" + ApolloManager.a(this.app), "0", "0", localObject });
         }
         if (!TextUtils.isEmpty(paramString)) {
           localIntent.putExtra("extra_guest_nick", paramString);
@@ -3021,22 +3022,22 @@ public class FriendProfileCardActivity
     G();
     F();
     ProfileCardUtil.a(this.app, paramLong1, paramLong2, null, paramLong3, paramString);
-    this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, this.jdField_q_of_type_Int);
+    this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, this.jdField_r_of_type_Int);
   }
   
   public void a(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.FrdProfileCard", 2, "requestUpdateCard() mHasTriedCount = " + this.jdField_p_of_type_Int);
+      QLog.i("Q.profilecard.FrdProfileCard", 2, "requestUpdateCard() mHasTriedCount = " + this.jdField_q_of_type_Int);
     }
-    if ((this.jdField_p_of_type_Int > 5) && (!paramBoolean)) {}
+    if ((this.jdField_q_of_type_Int > 5) && (!paramBoolean)) {}
     CardHandler localCardHandler;
     do
     {
       return;
       localCardHandler = (CardHandler)this.app.a(2);
     } while (localCardHandler == null);
-    this.jdField_p_of_type_Int += 1;
+    this.jdField_q_of_type_Int += 1;
     byte[] arrayOfByte1;
     if (paramArrayOfByte1 == null)
     {
@@ -3354,12 +3355,12 @@ public class FriendProfileCardActivity
   
   void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i1 = 2131494236;
+    int i1 = 2131494242;
     if (paramView != null)
     {
       DataTag localDataTag = new DataTag(paramInt1, null);
       paramView.setVisibility(0);
-      paramView = (Button)paramView.findViewById(2131365251);
+      paramView = (Button)paramView.findViewById(2131365278);
       paramView.setTag(localDataTag);
       paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       paramView.setContentDescription(getString(paramInt4));
@@ -3367,7 +3368,7 @@ public class FriendProfileCardActivity
       if ((!a(paramInt1)) || (this.jdField_e_of_type_Boolean)) {
         break label150;
       }
-      paramView.setTextColor(getResources().getColor(2131494264));
+      paramView.setTextColor(getResources().getColor(2131494270));
       paramView.setEnabled(this.jdField_e_of_type_Boolean);
       if ((7 == paramInt1) && (QSecFramework.a().a(1001).booleanValue())) {
         QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(1), paramView }, null);
@@ -3377,7 +3378,7 @@ public class FriendProfileCardActivity
     label150:
     if (paramInt3 == 2)
     {
-      paramInt2 = 2131494236;
+      paramInt2 = 2131494242;
       label160:
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label195;
@@ -3389,7 +3390,7 @@ public class FriendProfileCardActivity
     {
       paramView.setTextColor(getResources().getColor(paramInt2));
       break;
-      paramInt2 = 2131494238;
+      paramInt2 = 2131494244;
       break label160;
     }
   }
@@ -3410,7 +3411,7 @@ public class FriendProfileCardActivity
         }
         this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(10);
       }
-      Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371027);
+      Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371023);
       if (localObject != null) {}
       try
       {
@@ -3461,14 +3462,14 @@ public class FriendProfileCardActivity
     int i2 = getResources().getDimensionPixelSize(2131559292);
     if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 33))
     {
-      this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970576, null);
+      this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970589, null);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2);
       localLayoutParams.weight = 1.0F;
       localLayoutParams.rightMargin = i2;
       paramLinearLayout.addView(this.jdField_g_of_type_AndroidViewView, localLayoutParams);
       if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))
       {
-        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130971003, null);
+        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130971021, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = i2;
@@ -3477,7 +3478,7 @@ public class FriendProfileCardActivity
         if (this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
           h();
         }
-        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970529, null);
+        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970542, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = i1;
@@ -3485,22 +3486,22 @@ public class FriendProfileCardActivity
       }
       if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0)
       {
-        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970576, null);
+        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970589, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = i2;
         paramLinearLayout.addView(this.jdField_g_of_type_AndroidViewView, localLayoutParams);
-        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970529, null);
+        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970542, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = i2;
         paramLinearLayout.addView(this.jdField_g_of_type_AndroidViewView, localLayoutParams);
-        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970576, null);
+        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970589, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = i2;
         paramLinearLayout.addView(this.jdField_g_of_type_AndroidViewView, localLayoutParams);
-        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970529, null);
+        this.jdField_g_of_type_AndroidViewView = View.inflate(this, 2130970542, null);
         localLayoutParams = new LinearLayout.LayoutParams(0, -2);
         localLayoutParams.weight = 1.0F;
         localLayoutParams.rightMargin = i2;
@@ -3531,7 +3532,7 @@ public class FriendProfileCardActivity
       paramCardContactInfo = null;
       break;
       label152:
-      a(2131435765, 1);
+      a(2131435781, 1);
     }
   }
   
@@ -3557,7 +3558,7 @@ public class FriendProfileCardActivity
       long l1 = Math.max(DeviceInfoUtil.i(), DeviceInfoUtil.h());
       if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null)
       {
-        this.jdField_l_of_type_Int = paramCheckApolloInfoResult.jdField_a_of_type_Int;
+        this.jdField_m_of_type_Int = paramCheckApolloInfoResult.jdField_a_of_type_Int;
         this.jdField_b_of_type_ArrayOfInt = paramCheckApolloInfoResult.jdField_a_of_type_ArrayOfInt;
         paramCheckApolloInfoResult = (RelativeLayout)this.jdField_f_of_type_AndroidViewView.getParent();
         this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = new ApolloTextureView(this, null);
@@ -3567,8 +3568,8 @@ public class FriendProfileCardActivity
         this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloDrawerInfoViewListener);
         this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setDispatchEvent2Native(true);
         this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
-        this.jdField_a_of_type_Srl = new srl(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoManager.a(this.jdField_a_of_type_Srl);
+        this.jdField_a_of_type_Swg = new swg(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoManager.a(this.jdField_a_of_type_Swg);
         this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoManager.a((String)localObject1);
         localObject2 = new RelativeLayout.LayoutParams((int)(DeviceInfoUtil.j() / 2L), (int)((float)l1 * 0.5F));
         ((RelativeLayout.LayoutParams)localObject2).addRule(12, -1);
@@ -3586,7 +3587,7 @@ public class FriendProfileCardActivity
       }
       for (;;)
       {
-        if (this.jdField_n_of_type_Boolean)
+        if (this.n)
         {
           this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView = new ApolloBoxEnterView(this, null);
           this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setVisibility(8);
@@ -3598,7 +3599,7 @@ public class FriendProfileCardActivity
           ((RelativeLayout.LayoutParams)localObject1).rightMargin = AIOUtils.a(75.0F, getResources());
           paramCheckApolloInfoResult.addView(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView, (ViewGroup.LayoutParams)localObject1);
           b(false);
-          this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setOnClickListener(this.jdField_a_of_type_Srl);
+          this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloBoxEnterView.setOnClickListener(this.jdField_a_of_type_Swg);
         }
         if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getVisibility() == 0) {
           break;
@@ -3608,9 +3609,9 @@ public class FriendProfileCardActivity
         label553:
         localObject2 = ((ApolloManager)this.app.getManager(152)).b(this.app.c());
         if (localObject2 != null) {
-          this.jdField_n_of_type_Int = ((ApolloBaseInfo)localObject2).apolloStatus;
+          this.jdField_o_of_type_Int = ((ApolloBaseInfo)localObject2).apolloStatus;
         }
-        VipUtils.a(this.app, "cmshow", "Apollo", "guest_file_show", this.jdField_n_of_type_Int, 0, new String[] { "" + ApolloManager.a(this.app), "0", "0", localObject1 });
+        VipUtils.a(this.app, "cmshow", "Apollo", "guest_file_show", this.jdField_o_of_type_Int, 0, new String[] { "" + ApolloManager.a(this.app), "0", "0", localObject1 });
       }
     }
   }
@@ -3682,7 +3683,7 @@ public class FriendProfileCardActivity
       if (QLog.isColorLevel()) {
         QLog.i("FriendProfileCardActivity", 2, "card is null,vote failed !");
       }
-      a(2131435787, 1);
+      a(2131435803, 1);
       ((HashMap)localObject1).put("param_FailCode", "-210");
       StatisticCollector.a(this.app.getApp()).a((String)localObject2, "profileCardSendFavorite", false, 0L, 0L, (HashMap)localObject1, "", false);
       return;
@@ -3737,12 +3738,12 @@ public class FriendProfileCardActivity
         {
           ((HashMap)localObject1).put("param_FailCode", "-203");
           StatisticCollector.a(this.app.getApp()).a((String)localObject2, "profileCardSendFavorite", true, 0L, 0L, (HashMap)localObject1, "", false);
-          a(2131435766, 1);
+          a(2131435782, 1);
           return;
         }
         ((HashMap)localObject1).put("param_FailCode", "-204");
         StatisticCollector.a(this.app.getApp()).a((String)localObject2, "profileCardSendFavorite", false, 0L, 0L, (HashMap)localObject1, "", false);
-        a(2131435787, 1);
+        a(2131435803, 1);
         return;
       }
     }
@@ -3771,7 +3772,7 @@ public class FriendProfileCardActivity
         continue;
         if (l1 > jdField_j_of_type_Long)
         {
-          a(2131435787, 1);
+          a(2131435803, 1);
           jdField_i_of_type_Long = SystemClock.uptimeMillis();
         }
         if (i1 != 0) {
@@ -3854,7 +3855,7 @@ public class FriendProfileCardActivity
     {
       c(null);
       a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, paramBoolean);
-      if ((this.jdField_i_of_type_Int != 1) && (paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileBusiEntry != null) && (paramCard != null)) {
+      if ((this.jdField_j_of_type_Int != 1) && (paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileBusiEntry != null) && (paramCard != null)) {
         paramCard.addOrUpdateBuisEntry(this.jdField_a_of_type_ComTencentMobileqqProfileProfileBusiEntry);
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(paramCard, paramBoolean);
@@ -3868,7 +3869,7 @@ public class FriendProfileCardActivity
         if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strReMark)) {
           break label279;
         }
-        this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strReMark + getResources().getString(2131439113));
+        this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strReMark + getResources().getString(2131439140));
       }
     }
     for (;;)
@@ -3880,439 +3881,889 @@ public class FriendProfileCardActivity
       break;
       label279:
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strNick)) {
-        this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strNick + getResources().getString(2131439113));
+        this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.strNick + getResources().getString(2131439140));
       }
     }
   }
   
+  /* Error */
   public void a(Card paramCard, boolean paramBoolean, int paramInt)
   {
-    if ((paramCard == null) || ((paramInt == 1) || (paramInt == 8))) {}
-    ProfilePerformanceReport localProfilePerformanceReport;
-    boolean bool3;
-    boolean bool1;
-    int i3;
-    int i1;
-    int i2;
-    boolean bool2;
-    label408:
-    label433:
-    long l1;
-    Object localObject;
-    long l2;
-    String str1;
-    int i4;
-    String str2;
-    boolean bool4;
-    label724:
-    ProfileCardTemplate localProfileCardTemplate;
-    for (;;)
-    {
-      try
-      {
-        if (paramCard.lCurrentBgId >= 0L) {
-          ReportController.b(this.app, "CliOper", "", "", "card_mall", "Prof_in_client", a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int), 0, Integer.toString(a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), Long.toString(paramCard.lCurrentBgId), "", "");
-        }
-        localProfilePerformanceReport = ProfilePerformanceReport.a;
-        if ((localProfilePerformanceReport != null) && (localProfilePerformanceReport.a())) {
-          localProfilePerformanceReport.a(7);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "onCardUpdate isHeaderViewInited=" + this.jdField_c_of_type_Boolean + ",isNetCard=" + paramBoolean + ",msgType=" + paramInt + ",card=" + paramCard.getProfileCardDesc());
-        }
-        a(paramCard, paramBoolean);
-        b(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-        bool3 = false;
-        bool1 = false;
-        i3 = 0;
-        i1 = 0;
-        i2 = i3;
-        bool2 = bool3;
-        if (paramInt != 8) {
-          break label2156;
-        }
-        i2 = i3;
-        bool2 = bool3;
-        if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
-          break label2156;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "onCardUpdate: SUBTHREAD_MSG_NET_CARD cardInfo.bgurl = " + this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl + "card.bgurl = " + paramCard.backgroundUrl);
-        }
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl))
-        {
-          if (!TextUtils.isEmpty(paramCard.backgroundUrl))
-          {
-            if (!QLog.isColorLevel()) {
-              break label2166;
-            }
-            QLog.d("Q.profilecard.FrdProfileCard", 2, "onCardUpdate bgurl empty change");
-            break label2166;
-          }
-          if (this.jdField_f_of_type_Long != paramCard.lCurrentStyleId) {
-            i1 = 1;
-          }
-          i2 = i1;
-          bool2 = bool1;
-          if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_g_of_type_Long) {
-            break label2156;
-          }
-          i2 = i1;
-          bool2 = bool1;
-          if (TextUtils.isEmpty(paramCard.diyText)) {
-            break label2156;
-          }
-          i3 = 1;
-          i2 = i1;
-          i1 = i3;
-          if (paramInt == 13)
-          {
-            if (!QLog.isColorLevel()) {
-              break label2172;
-            }
-            QLog.d("Q.profilecard.FrdProfileCard", 2, "zipurl downloaded, set updateBG!");
-            break label2172;
-          }
-          if ((paramCard.tempChatSig != null) && (paramCard.tempChatSig.length > 0))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.b = paramCard.tempChatSig;
-            if (QLog.isDevelopLevel()) {
-              QLog.i("FriendProfileCardActivity", 4, String.format(Locale.getDefault(), "onCardUpdate uin: %s sig: %s", new Object[] { Utils.b(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString), Utils.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.b) }));
-            }
-          }
-          this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-          if ((this.jdField_c_of_type_Boolean) && (!bool1))
-          {
-            bool2 = bool1;
-            if (i2 == 0) {
-              continue;
-            }
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.profilecard.FrdProfileCard", 2, "onCardUpdate: isHeaderViewInited = " + this.jdField_c_of_type_Boolean + " updateBG = " + bool1);
-          }
-          bool2 = bool1;
-          bool3 = bool1;
-        }
-      }
-      finally {}
-      try
-      {
-        l1 = paramCard.lCurrentStyleId;
-        bool2 = bool1;
-        bool3 = bool1;
-        i3 = paramCard.templateRet;
-        bool2 = bool1;
-        bool3 = bool1;
-        localObject = paramCard.backgroundUrl;
-        bool2 = bool1;
-        bool3 = bool1;
-        l2 = paramCard.backgroundColor;
-        bool2 = bool1;
-        bool3 = bool1;
-        str1 = paramCard.strZipUrl;
-        bool2 = bool1;
-        bool3 = bool1;
-        i4 = paramCard.dynamicCardFlag;
-        bool2 = bool1;
-        bool3 = bool1;
-        str2 = paramCard.strWzryHeroUrl;
-        if (l1 >= 0L) {
-          continue;
-        }
-        bool2 = bool1;
-        bool3 = bool1;
-        bool4 = NetworkUtil.g(this);
-        if ((!bool4) || (paramBoolean)) {
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = null;
-        continue;
-        bool2 = bool1;
-        bool3 = bool1;
-        if (a(localException)) {
-          break label2017;
-        }
-        bool2 = bool1;
-        bool3 = bool1;
-        if (a(str1)) {
-          break label2017;
-        }
-        bool2 = bool1;
-        bool3 = bool1;
-        if (!a(str2)) {
-          break label2110;
-        }
-        bool2 = bool1;
-        bool3 = bool1;
-        if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          continue;
-        }
-        bool2 = bool1;
-        bool3 = bool1;
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        bool2 = bool1;
-        bool3 = bool1;
-        ThreadManager.post(new srk(this, localProfileCardTemplate, localException, str1, str2, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean), 5, null, true);
-        continue;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        localOutOfMemoryError.printStackTrace();
-        this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = null;
-        bool2 = bool3;
-        continue;
-        bool2 = bool1;
-        bool3 = bool1;
-        this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = null;
-        continue;
-        bool1 = false;
-        continue;
-      }
-      return;
-      if (!this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl.equals(paramCard.backgroundUrl))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "onCardUpdate bgurl change");
-        }
-        bool1 = true;
-        continue;
-        bool2 = bool1;
-        bool3 = bool1;
-        this.jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil.a("initValidTemplateStart", true);
-        bool2 = bool1;
-        bool3 = bool1;
-        localProfileCardTemplate = ProfileCardUtil.a(this.app, l1, true);
-        bool2 = bool1;
-        bool3 = bool1;
-        this.jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil.a("initValidTemplateEnd", "initValidTemplateStart", false);
-        if ((l1 > 0L) && (localProfileCardTemplate != null))
-        {
-          bool2 = bool1;
-          bool3 = bool1;
-          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (i3 == 0)) {}
-        }
-        else
-        {
-          bool2 = bool1;
-          bool3 = bool1;
-          this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = null;
-        }
-      }
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if ((i1 != 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.jdField_g_of_type_Long) && (!VipProfileCardDiyActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextFontId)))
-      {
-        localObject = (VasQuickUpdateManager)this.app.getManager(183);
-        ((VasQuickUpdateManager)localObject).a(new soh(this));
-        ((VasQuickUpdateManager)localObject).a(5L, "font.diycard.android." + this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.diyTextFontId, "FriendProfileCardActivity");
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) && (paramInt == 8) && (!this.r))
-      {
-        this.r = true;
-        if ((paramCard.lUserFlag & 0x800) != 0L)
-        {
-          bool1 = true;
-          bool3 = ((FriendsManager)this.app.getManager(50)).b(paramCard.uin);
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendProfileCardActivity", 2, "onCardUpdate profileFriend=" + bool1 + ", isFriend=" + bool3 + ", card.uin=" + paramCard.uin + ", myUin=" + this.app.getCurrentAccountUin());
-          }
-          if (bool1 == bool3) {
-            break label2178;
-          }
-          QLog.d("FriendProfileCardActivity", 1, "onCardUpdate friend state not equal=" + bool1);
-          ((FriendListHandler)this.app.a(1)).a(paramCard.uin);
-        }
-      }
-      label2178:
-      for (;;)
-      {
-        label1187:
-        localObject = this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(5, i3, paramInt, paramCard);
-        if ((bool2) && (i2 != 0))
-        {
-          ((Message)localObject).arg2 = 12;
-          label1218:
-          ((Message)localObject).sendToTarget();
-          if (i1 != 0) {
-            this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(5, i3, 17, paramCard).sendToTarget();
-          }
-          if ((localProfilePerformanceReport == null) || (!localProfilePerformanceReport.a())) {
-            break label724;
-          }
-          localProfilePerformanceReport.b(7);
-          break label724;
-          bool2 = bool1;
-          bool3 = bool1;
-          boolean bool5 = ProfileCardUtil.a(this.app);
-          bool2 = bool1;
-          bool3 = bool1;
-          boolean bool6 = ProfileCardUtil.a(this.app.getApp(), (String)localObject);
-          bool2 = bool1;
-          bool3 = bool1;
-          bool4 = ProfileCardUtil.b(this.app.getApp(), str1);
-          if ((bool5) && (bool6))
-          {
-            bool2 = bool1;
-            bool3 = bool1;
-            this.jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil.a("initTemplateConfigStart", true);
-            bool2 = bool1;
-            bool3 = bool1;
-            bool5 = localProfileCardTemplate.a(this.app, l2, l1);
-            bool2 = bool1;
-            bool3 = bool1;
-            this.jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil.a("initTemplateConfigEnd", "initTemplateConfigStart", false);
-            bool2 = bool1;
-            bool3 = bool1;
-            this.jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil.a("initTemplateBackgroundStart", true);
-            bool2 = bool1;
-            bool3 = bool1;
-            bool1 |= a((String)localObject, str1, str2);
-            bool2 = bool1;
-            bool3 = bool1;
-            this.jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil.a("initTemplateBackgroundEnd", "initTemplateBackgroundStart", false);
-            if (bool5)
-            {
-              bool2 = bool1;
-              bool3 = bool1;
-            }
-            for (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = localProfileCardTemplate;; this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = null)
-            {
-              if ((i4 == 1) && (!bool4))
-              {
-                bool2 = bool1;
-                bool3 = bool1;
-                if (!a((String)localObject))
-                {
-                  bool2 = bool1;
-                  bool3 = bool1;
-                  if (!a(str1)) {}
-                }
-                else
-                {
-                  bool2 = bool1;
-                  bool3 = bool1;
-                  if (QLog.isColorLevel())
-                  {
-                    bool2 = bool1;
-                    bool3 = bool1;
-                    QLog.d("Q.profilecard.FrdProfileCard", 2, "bg exists but dynamic.zip is not exists, try to download !");
-                  }
-                  bool2 = bool1;
-                  bool3 = bool1;
-                  if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-                  {
-                    bool2 = bool1;
-                    bool3 = bool1;
-                    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-                    bool2 = bool1;
-                    bool3 = bool1;
-                    ThreadManager.post(new srk(this, localProfileCardTemplate, (String)localObject, str1, str2, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean), 5, null, true);
-                  }
-                }
-              }
-              bool2 = bool1;
-              bool3 = bool1;
-              if (paramCard.lCurrentStyleId == ProfileCardTemplate.jdField_j_of_type_Long)
-              {
-                bool2 = bool1;
-                bool3 = bool1;
-                if (!ProfileCardUtil.b(this.app.getApp(), str2))
-                {
-                  bool2 = bool1;
-                  bool3 = bool1;
-                  if (a(str2))
-                  {
-                    bool2 = bool1;
-                    bool3 = bool1;
-                    if (QLog.isColorLevel())
-                    {
-                      bool2 = bool1;
-                      bool3 = bool1;
-                      QLog.d("Q.profilecard.FrdProfileCard", 2, "bg exists but hero pic is not exists, try to download !");
-                    }
-                    bool2 = bool1;
-                    bool3 = bool1;
-                    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-                    {
-                      bool2 = bool1;
-                      bool3 = bool1;
-                      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-                      bool2 = bool1;
-                      bool3 = bool1;
-                      ThreadManager.post(new srk(this, localProfileCardTemplate, (String)localObject, str1, str2, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean), 5, null, true);
-                    }
-                  }
-                }
-              }
-              bool2 = bool1;
-              bool3 = bool1;
-              if (paramCard.lCurrentStyleId != ProfileCardTemplate.jdField_j_of_type_Long)
-              {
-                bool2 = bool1;
-                bool3 = bool1;
-                if (paramCard.lCurrentStyleId != ProfileCardTemplate.jdField_i_of_type_Long) {
-                  break;
-                }
-              }
-              bool2 = bool1;
-              bool3 = bool1;
-              if (this.jdField_i_of_type_Boolean) {
-                break;
-              }
-              bool2 = bool1;
-              bool3 = bool1;
-              if (!VipWZRYTemplateHelper.a(localProfileCardTemplate.l)) {
-                break;
-              }
-              bool2 = bool1;
-              bool3 = bool1;
-              if (VipWZRYTemplateHelper.a(this, "cardWZ.zip")) {
-                break;
-              }
-              bool2 = bool1;
-              bool3 = bool1;
-              VipWZRYTemplateHelper.a(this.app, new sre(this, localProfileCardTemplate, paramCard));
-              bool2 = bool1;
-              bool3 = bool1;
-              this.jdField_i_of_type_Boolean = true;
-              break;
-              bool2 = bool1;
-              bool3 = bool1;
-            }
-          }
-        }
-        label2017:
-        label2156:
-        label2166:
-        label2172:
-        do
-        {
-          i3 = 0;
-          break label1187;
-          if (!bool2) {
-            break label1218;
-          }
-          localOutOfMemoryError.arg2 = 11;
-          break label1218;
-          i1 = 0;
-          bool1 = bool2;
-          break label408;
-          bool1 = true;
-          break;
-          bool1 = true;
-          break label433;
-        } while (!paramBoolean);
-        label2110:
-        i3 = 1;
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +663 -> 666
+    //   6: iload_3
+    //   7: iconst_1
+    //   8: if_icmpeq +9 -> 17
+    //   11: iload_3
+    //   12: bipush 8
+    //   14: if_icmpne +70 -> 84
+    //   17: aload_1
+    //   18: getfield 2519	com/tencent/mobileqq/data/Card:lCurrentBgId	J
+    //   21: lconst_0
+    //   22: lcmp
+    //   23: iflt +61 -> 84
+    //   26: aload_0
+    //   27: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   30: ldc_w 950
+    //   33: ldc 150
+    //   35: ldc 150
+    //   37: ldc_w 2521
+    //   40: ldc_w 2523
+    //   43: aload_0
+    //   44: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   47: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   50: getfield 956	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_Int	I
+    //   53: invokestatic 959	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(I)I
+    //   56: iconst_0
+    //   57: aload_0
+    //   58: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   61: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   64: invokestatic 960	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;)I
+    //   67: invokestatic 963	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   70: aload_1
+    //   71: getfield 2519	com/tencent/mobileqq/data/Card:lCurrentBgId	J
+    //   74: invokestatic 2526	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   77: ldc 150
+    //   79: ldc 150
+    //   81: invokestatic 727	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   84: getstatic 1803	com/tencent/util/ProfilePerformanceReport:a	Lcom/tencent/util/ProfilePerformanceReport;
+    //   87: astore 19
+    //   89: aload 19
+    //   91: ifnull +18 -> 109
+    //   94: aload 19
+    //   96: invokevirtual 1804	com/tencent/util/ProfilePerformanceReport:a	()Z
+    //   99: ifeq +10 -> 109
+    //   102: aload 19
+    //   104: bipush 7
+    //   106: invokevirtual 1806	com/tencent/util/ProfilePerformanceReport:a	(I)V
+    //   109: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   112: ifeq +66 -> 178
+    //   115: ldc_w 416
+    //   118: iconst_2
+    //   119: new 418	java/lang/StringBuilder
+    //   122: dup
+    //   123: invokespecial 419	java/lang/StringBuilder:<init>	()V
+    //   126: ldc_w 2528
+    //   129: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: aload_0
+    //   133: getfield 139	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_c_of_type_Boolean	Z
+    //   136: invokevirtual 2475	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   139: ldc_w 2530
+    //   142: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   145: iload_2
+    //   146: invokevirtual 2475	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   149: ldc_w 2532
+    //   152: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: iload_3
+    //   156: invokevirtual 432	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   159: ldc_w 2534
+    //   162: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: aload_1
+    //   166: invokevirtual 2470	com/tencent/mobileqq/data/Card:getProfileCardDesc	()Ljava/lang/String;
+    //   169: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   175: invokestatic 438	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   178: aload_0
+    //   179: aload_1
+    //   180: iload_2
+    //   181: invokevirtual 2537	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(Lcom/tencent/mobileqq/data/Card;Z)Z
+    //   184: pop
+    //   185: aload_0
+    //   186: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   189: invokestatic 2539	com/tencent/mobileqq/activity/FriendProfileCardActivity:b	(Lcom/tencent/mobileqq/profile/ProfileCardInfo;)V
+    //   192: iconst_0
+    //   193: istore 10
+    //   195: iconst_0
+    //   196: istore 8
+    //   198: iconst_0
+    //   199: istore 6
+    //   201: iconst_0
+    //   202: istore 4
+    //   204: iload 6
+    //   206: istore 5
+    //   208: iload 10
+    //   210: istore 9
+    //   212: iload_3
+    //   213: bipush 8
+    //   215: if_icmpne +1463 -> 1678
+    //   218: iload 6
+    //   220: istore 5
+    //   222: iload 10
+    //   224: istore 9
+    //   226: aload_0
+    //   227: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   230: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   233: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   236: ifne +1442 -> 1678
+    //   239: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   242: ifeq +52 -> 294
+    //   245: ldc_w 416
+    //   248: iconst_2
+    //   249: new 418	java/lang/StringBuilder
+    //   252: dup
+    //   253: invokespecial 419	java/lang/StringBuilder:<init>	()V
+    //   256: ldc_w 2541
+    //   259: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   262: aload_0
+    //   263: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   266: getfield 473	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
+    //   269: getfield 2544	com/tencent/mobileqq/data/Card:backgroundUrl	Ljava/lang/String;
+    //   272: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: ldc_w 2546
+    //   278: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   281: aload_1
+    //   282: getfield 2544	com/tencent/mobileqq/data/Card:backgroundUrl	Ljava/lang/String;
+    //   285: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   288: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   291: invokestatic 438	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   294: aload_0
+    //   295: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   298: getfield 473	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
+    //   301: getfield 2544	com/tencent/mobileqq/data/Card:backgroundUrl	Ljava/lang/String;
+    //   304: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   307: ifeq +362 -> 669
+    //   310: aload_1
+    //   311: getfield 2544	com/tencent/mobileqq/data/Card:backgroundUrl	Ljava/lang/String;
+    //   314: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   317: ifne +22 -> 339
+    //   320: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   323: ifeq +1365 -> 1688
+    //   326: ldc_w 416
+    //   329: iconst_2
+    //   330: ldc_w 2548
+    //   333: invokestatic 438	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   336: goto +1352 -> 1688
+    //   339: aload_0
+    //   340: getfield 2549	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_f_of_type_Long	J
+    //   343: aload_1
+    //   344: getfield 1346	com/tencent/mobileqq/data/Card:lCurrentStyleId	J
+    //   347: lcmp
+    //   348: ifeq +6 -> 354
+    //   351: iconst_1
+    //   352: istore 4
+    //   354: iload 4
+    //   356: istore 5
+    //   358: iload 8
+    //   360: istore 9
+    //   362: aload_0
+    //   363: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   366: getfield 473	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
+    //   369: getfield 1346	com/tencent/mobileqq/data/Card:lCurrentStyleId	J
+    //   372: getstatic 1350	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_g_of_type_Long	J
+    //   375: lcmp
+    //   376: ifne +1302 -> 1678
+    //   379: iload 4
+    //   381: istore 5
+    //   383: iload 8
+    //   385: istore 9
+    //   387: aload_1
+    //   388: getfield 1343	com/tencent/mobileqq/data/Card:diyText	Ljava/lang/String;
+    //   391: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   394: ifne +1284 -> 1678
+    //   397: iconst_1
+    //   398: istore 6
+    //   400: iload 4
+    //   402: istore 5
+    //   404: iload 6
+    //   406: istore 4
+    //   408: iload_3
+    //   409: bipush 13
+    //   411: if_icmpne +22 -> 433
+    //   414: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   417: ifeq +1277 -> 1694
+    //   420: ldc_w 416
+    //   423: iconst_2
+    //   424: ldc_w 2551
+    //   427: invokestatic 438	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   430: goto +1264 -> 1694
+    //   433: aload_1
+    //   434: getfield 2554	com/tencent/mobileqq/data/Card:tempChatSig	[B
+    //   437: ifnull +83 -> 520
+    //   440: aload_1
+    //   441: getfield 2554	com/tencent/mobileqq/data/Card:tempChatSig	[B
+    //   444: arraylength
+    //   445: ifle +75 -> 520
+    //   448: aload_0
+    //   449: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   452: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   455: aload_1
+    //   456: getfield 2554	com/tencent/mobileqq/data/Card:tempChatSig	[B
+    //   459: putfield 1142	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:b	[B
+    //   462: invokestatic 814	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   465: ifeq +55 -> 520
+    //   468: ldc_w 520
+    //   471: iconst_4
+    //   472: invokestatic 841	java/util/Locale:getDefault	()Ljava/util/Locale;
+    //   475: ldc_w 2556
+    //   478: iconst_2
+    //   479: anewarray 845	java/lang/Object
+    //   482: dup
+    //   483: iconst_0
+    //   484: aload_0
+    //   485: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   488: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   491: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   494: invokestatic 1155	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   497: aastore
+    //   498: dup
+    //   499: iconst_1
+    //   500: aload_0
+    //   501: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   504: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   507: getfield 1142	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:b	[B
+    //   510: invokestatic 1158	com/tencent/mobileqq/util/Utils:a	([B)Ljava/lang/String;
+    //   513: aastore
+    //   514: invokestatic 857	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   517: invokestatic 525	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   520: aload_0
+    //   521: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   524: aload_1
+    //   525: putfield 473	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
+    //   528: aload_0
+    //   529: getfield 139	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_c_of_type_Boolean	Z
+    //   532: ifeq +17 -> 549
+    //   535: iload 8
+    //   537: ifne +12 -> 549
+    //   540: iload 8
+    //   542: istore 9
+    //   544: iload 5
+    //   546: ifeq +239 -> 785
+    //   549: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   552: ifeq +44 -> 596
+    //   555: ldc_w 416
+    //   558: iconst_2
+    //   559: new 418	java/lang/StringBuilder
+    //   562: dup
+    //   563: invokespecial 419	java/lang/StringBuilder:<init>	()V
+    //   566: ldc_w 2558
+    //   569: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   572: aload_0
+    //   573: getfield 139	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_c_of_type_Boolean	Z
+    //   576: invokevirtual 2475	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   579: ldc_w 2560
+    //   582: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   585: iload 8
+    //   587: invokevirtual 2475	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   590: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   593: invokestatic 438	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   596: aload_1
+    //   597: getfield 1346	com/tencent/mobileqq/data/Card:lCurrentStyleId	J
+    //   600: lstore 12
+    //   602: aload_1
+    //   603: getfield 2563	com/tencent/mobileqq/data/Card:templateRet	I
+    //   606: istore 6
+    //   608: aload_1
+    //   609: getfield 2544	com/tencent/mobileqq/data/Card:backgroundUrl	Ljava/lang/String;
+    //   612: astore 18
+    //   614: aload_1
+    //   615: getfield 2566	com/tencent/mobileqq/data/Card:backgroundColor	J
+    //   618: lstore 14
+    //   620: aload_1
+    //   621: getfield 2569	com/tencent/mobileqq/data/Card:strZipUrl	Ljava/lang/String;
+    //   624: astore 20
+    //   626: aload_1
+    //   627: getfield 2572	com/tencent/mobileqq/data/Card:dynamicCardFlag	I
+    //   630: istore 7
+    //   632: aload_1
+    //   633: getfield 2575	com/tencent/mobileqq/data/Card:strWzryHeroUrl	Ljava/lang/String;
+    //   636: astore 21
+    //   638: aload_1
+    //   639: getfield 2519	com/tencent/mobileqq/data/Card:lCurrentBgId	J
+    //   642: lstore 16
+    //   644: lload 12
+    //   646: lconst_0
+    //   647: lcmp
+    //   648: ifge +63 -> 711
+    //   651: aload_0
+    //   652: invokestatic 467	com/tencent/mobileqq/utils/NetworkUtil:g	(Landroid/content/Context;)Z
+    //   655: istore 9
+    //   657: iload 9
+    //   659: ifeq +52 -> 711
+    //   662: iload_2
+    //   663: ifne +48 -> 711
+    //   666: aload_0
+    //   667: monitorexit
+    //   668: return
+    //   669: aload_0
+    //   670: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   673: getfield 473	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
+    //   676: getfield 2544	com/tencent/mobileqq/data/Card:backgroundUrl	Ljava/lang/String;
+    //   679: aload_1
+    //   680: getfield 2544	com/tencent/mobileqq/data/Card:backgroundUrl	Ljava/lang/String;
+    //   683: invokevirtual 1120	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   686: ifne -347 -> 339
+    //   689: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   692: ifeq +13 -> 705
+    //   695: ldc_w 416
+    //   698: iconst_2
+    //   699: ldc_w 2577
+    //   702: invokestatic 438	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   705: iconst_1
+    //   706: istore 8
+    //   708: goto -369 -> 339
+    //   711: aload_0
+    //   712: getfield 2108	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
+    //   715: ldc_w 2579
+    //   718: iconst_1
+    //   719: invokevirtual 2115	com/tencent/mobileqq/utils/TimeTraceUtil:a	(Ljava/lang/String;Z)V
+    //   722: aload_0
+    //   723: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   726: lload 12
+    //   728: iconst_1
+    //   729: invokestatic 2582	com/tencent/mobileqq/util/ProfileCardUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JZ)Lcom/tencent/mobileqq/profile/ProfileCardTemplate;
+    //   732: astore 22
+    //   734: aload_0
+    //   735: getfield 2108	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
+    //   738: ldc_w 2584
+    //   741: ldc_w 2579
+    //   744: iconst_0
+    //   745: invokevirtual 2511	com/tencent/mobileqq/utils/TimeTraceUtil:a	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   748: lload 12
+    //   750: lconst_0
+    //   751: lcmp
+    //   752: ifle +21 -> 773
+    //   755: aload 22
+    //   757: ifnull +16 -> 773
+    //   760: aload 18
+    //   762: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   765: ifne +8 -> 773
+    //   768: iload 6
+    //   770: ifeq +404 -> 1174
+    //   773: aload_0
+    //   774: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   777: aconst_null
+    //   778: putfield 2587	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate	Lcom/tencent/mobileqq/profile/ProfileCardTemplate;
+    //   781: iload 8
+    //   783: istore 9
+    //   785: iload 4
+    //   787: ifeq +104 -> 891
+    //   790: aload_0
+    //   791: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   794: getfield 473	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
+    //   797: getfield 1346	com/tencent/mobileqq/data/Card:lCurrentStyleId	J
+    //   800: getstatic 1350	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_g_of_type_Long	J
+    //   803: lcmp
+    //   804: ifne +87 -> 891
+    //   807: aload_0
+    //   808: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   811: getfield 473	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
+    //   814: getfield 1438	com/tencent/mobileqq/data/Card:diyTextFontId	I
+    //   817: invokestatic 2590	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:a	(I)Z
+    //   820: ifne +71 -> 891
+    //   823: aload_0
+    //   824: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   827: sipush 183
+    //   830: invokevirtual 373	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   833: checkcast 2592	com/tencent/mobileqq/vas/VasQuickUpdateManager
+    //   836: astore 18
+    //   838: aload 18
+    //   840: new 2594	stc
+    //   843: dup
+    //   844: aload_0
+    //   845: invokespecial 2595	stc:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;)V
+    //   848: invokevirtual 2598	com/tencent/mobileqq/vas/VasQuickUpdateManager:a	(Lcom/tencent/mobileqq/vas/VasQuickUpdateManager$CallBacker;)V
+    //   851: aload 18
+    //   853: ldc2_w 2599
+    //   856: new 418	java/lang/StringBuilder
+    //   859: dup
+    //   860: invokespecial 419	java/lang/StringBuilder:<init>	()V
+    //   863: ldc_w 2602
+    //   866: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   869: aload_0
+    //   870: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   873: getfield 473	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
+    //   876: getfield 1438	com/tencent/mobileqq/data/Card:diyTextFontId	I
+    //   879: invokevirtual 432	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   882: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   885: ldc_w 520
+    //   888: invokevirtual 2605	com/tencent/mobileqq/vas/VasQuickUpdateManager:a	(JLjava/lang/String;Ljava/lang/String;)V
+    //   891: aload_0
+    //   892: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   895: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   898: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   901: ifeq +799 -> 1700
+    //   904: iload_3
+    //   905: bipush 8
+    //   907: if_icmpne +793 -> 1700
+    //   910: aload_0
+    //   911: getfield 2607	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_r_of_type_Boolean	Z
+    //   914: ifne +786 -> 1700
+    //   917: aload_0
+    //   918: iconst_1
+    //   919: putfield 2607	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_r_of_type_Boolean	Z
+    //   922: aload_1
+    //   923: getfield 2610	com/tencent/mobileqq/data/Card:lUserFlag	J
+    //   926: ldc2_w 2611
+    //   929: land
+    //   930: lconst_0
+    //   931: lcmp
+    //   932: ifeq +714 -> 1646
+    //   935: iconst_1
+    //   936: istore 8
+    //   938: aload_0
+    //   939: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   942: bipush 50
+    //   944: invokevirtual 373	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   947: checkcast 375	com/tencent/mobileqq/app/FriendsManager
+    //   950: aload_1
+    //   951: getfield 478	com/tencent/mobileqq/data/Card:uin	Ljava/lang/String;
+    //   954: invokevirtual 2614	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Z
+    //   957: istore 10
+    //   959: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   962: ifeq +71 -> 1033
+    //   965: ldc_w 520
+    //   968: iconst_2
+    //   969: new 418	java/lang/StringBuilder
+    //   972: dup
+    //   973: invokespecial 419	java/lang/StringBuilder:<init>	()V
+    //   976: ldc_w 2616
+    //   979: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   982: iload 8
+    //   984: invokevirtual 2475	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   987: ldc_w 2618
+    //   990: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   993: iload 10
+    //   995: invokevirtual 2475	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   998: ldc_w 2620
+    //   1001: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1004: aload_1
+    //   1005: getfield 478	com/tencent/mobileqq/data/Card:uin	Ljava/lang/String;
+    //   1008: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1011: ldc_w 2622
+    //   1014: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1017: aload_0
+    //   1018: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1021: invokevirtual 1607	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1024: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1027: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1030: invokestatic 438	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1033: iload 8
+    //   1035: iload 10
+    //   1037: if_icmpeq +663 -> 1700
+    //   1040: ldc_w 520
+    //   1043: iconst_1
+    //   1044: new 418	java/lang/StringBuilder
+    //   1047: dup
+    //   1048: invokespecial 419	java/lang/StringBuilder:<init>	()V
+    //   1051: ldc_w 2624
+    //   1054: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1057: iload 8
+    //   1059: invokevirtual 2475	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1062: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1065: invokestatic 438	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1068: aload_0
+    //   1069: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1072: iconst_1
+    //   1073: invokevirtual 487	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   1076: checkcast 2626	com/tencent/mobileqq/app/FriendListHandler
+    //   1079: aload_1
+    //   1080: getfield 478	com/tencent/mobileqq/data/Card:uin	Ljava/lang/String;
+    //   1083: invokevirtual 2627	com/tencent/mobileqq/app/FriendListHandler:a	(Ljava/lang/String;)V
+    //   1086: goto +614 -> 1700
+    //   1089: aload_0
+    //   1090: getfield 806	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
+    //   1093: iconst_5
+    //   1094: iload 6
+    //   1096: iload_3
+    //   1097: aload_1
+    //   1098: invokevirtual 2630	com/tencent/util/WeakReferenceHandler:obtainMessage	(IIILjava/lang/Object;)Landroid/os/Message;
+    //   1101: astore 18
+    //   1103: iload 9
+    //   1105: ifeq +553 -> 1658
+    //   1108: iload 5
+    //   1110: ifeq +548 -> 1658
+    //   1113: aload 18
+    //   1115: bipush 12
+    //   1117: putfield 2633	android/os/Message:arg2	I
+    //   1120: aload 18
+    //   1122: invokevirtual 2636	android/os/Message:sendToTarget	()V
+    //   1125: iload 4
+    //   1127: ifeq +19 -> 1146
+    //   1130: aload_0
+    //   1131: getfield 806	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
+    //   1134: iconst_5
+    //   1135: iload 6
+    //   1137: bipush 17
+    //   1139: aload_1
+    //   1140: invokevirtual 2630	com/tencent/util/WeakReferenceHandler:obtainMessage	(IIILjava/lang/Object;)Landroid/os/Message;
+    //   1143: invokevirtual 2636	android/os/Message:sendToTarget	()V
+    //   1146: aload 19
+    //   1148: ifnull -482 -> 666
+    //   1151: aload 19
+    //   1153: invokevirtual 1804	com/tencent/util/ProfilePerformanceReport:a	()Z
+    //   1156: ifeq -490 -> 666
+    //   1159: aload 19
+    //   1161: bipush 7
+    //   1163: invokevirtual 2638	com/tencent/util/ProfilePerformanceReport:b	(I)V
+    //   1166: goto -500 -> 666
+    //   1169: astore_1
+    //   1170: aload_0
+    //   1171: monitorexit
+    //   1172: aload_1
+    //   1173: athrow
+    //   1174: aload_0
+    //   1175: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1178: invokestatic 2641	com/tencent/mobileqq/util/ProfileCardUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Z
+    //   1181: istore 10
+    //   1183: lload 16
+    //   1185: ldc2_w 2642
+    //   1188: lcmp
+    //   1189: ifeq +12 -> 1201
+    //   1192: lload 16
+    //   1194: ldc2_w 2644
+    //   1197: lcmp
+    //   1198: ifne +266 -> 1464
+    //   1201: aload_0
+    //   1202: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1205: invokevirtual 1041	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1208: aload 18
+    //   1210: invokestatic 2648	com/tencent/mobileqq/util/ProfileCardUtil:a	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   1213: istore 9
+    //   1215: aload_0
+    //   1216: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1219: invokevirtual 1041	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1222: lload 16
+    //   1224: ldc_w 2650
+    //   1227: invokestatic 2655	com/tencent/mobileqq/profile/ProfileCardManager:a	(Landroid/content/Context;JLjava/lang/String;)Z
+    //   1230: istore 11
+    //   1232: iload 10
+    //   1234: ifeq +381 -> 1615
+    //   1237: iload 9
+    //   1239: ifeq +376 -> 1615
+    //   1242: aload_0
+    //   1243: getfield 2108	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
+    //   1246: ldc_w 2657
+    //   1249: iconst_1
+    //   1250: invokevirtual 2115	com/tencent/mobileqq/utils/TimeTraceUtil:a	(Ljava/lang/String;Z)V
+    //   1253: aload 22
+    //   1255: aload_0
+    //   1256: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1259: lload 14
+    //   1261: lload 12
+    //   1263: invokevirtual 2660	com/tencent/mobileqq/profile/ProfileCardTemplate:a	(Lcom/tencent/mobileqq/app/QQAppInterface;JJ)Z
+    //   1266: istore 9
+    //   1268: aload_0
+    //   1269: getfield 2108	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
+    //   1272: ldc_w 2662
+    //   1275: ldc_w 2657
+    //   1278: iconst_0
+    //   1279: invokevirtual 2511	com/tencent/mobileqq/utils/TimeTraceUtil:a	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   1282: aload_0
+    //   1283: getfield 2108	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
+    //   1286: ldc_w 2664
+    //   1289: iconst_1
+    //   1290: invokevirtual 2115	com/tencent/mobileqq/utils/TimeTraceUtil:a	(Ljava/lang/String;Z)V
+    //   1293: aload_0
+    //   1294: lload 12
+    //   1296: lload 16
+    //   1298: aload 18
+    //   1300: aload 20
+    //   1302: aload 21
+    //   1304: invokevirtual 2667	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(JJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   1307: istore 10
+    //   1309: iload 10
+    //   1311: iload 8
+    //   1313: ior
+    //   1314: istore 8
+    //   1316: aload_0
+    //   1317: getfield 2108	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
+    //   1320: ldc_w 2669
+    //   1323: ldc_w 2664
+    //   1326: iconst_0
+    //   1327: invokevirtual 2511	com/tencent/mobileqq/utils/TimeTraceUtil:a	(Ljava/lang/String;Ljava/lang/String;Z)V
+    //   1330: iload 9
+    //   1332: ifeq +161 -> 1493
+    //   1335: aload_0
+    //   1336: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1339: aload 22
+    //   1341: putfield 2587	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate	Lcom/tencent/mobileqq/profile/ProfileCardTemplate;
+    //   1344: iload 7
+    //   1346: iconst_1
+    //   1347: if_icmpne +179 -> 1526
+    //   1350: iload 11
+    //   1352: ifne +174 -> 1526
+    //   1355: aload_0
+    //   1356: invokevirtual 2671	com/tencent/mobileqq/activity/FriendProfileCardActivity:b	()Z
+    //   1359: ifeq +29 -> 1388
+    //   1362: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1365: ifeq +13 -> 1378
+    //   1368: ldc_w 416
+    //   1371: iconst_2
+    //   1372: ldc_w 2673
+    //   1375: invokestatic 438	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1378: aload_0
+    //   1379: aload 18
+    //   1381: lload 16
+    //   1383: aload 22
+    //   1385: invokevirtual 2676	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(Ljava/lang/String;JLcom/tencent/mobileqq/profile/ProfileCardTemplate;)V
+    //   1388: aload_1
+    //   1389: getfield 1346	com/tencent/mobileqq/data/Card:lCurrentStyleId	J
+    //   1392: getstatic 2677	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_j_of_type_Long	J
+    //   1395: lcmp
+    //   1396: ifeq +14 -> 1410
+    //   1399: aload_1
+    //   1400: getfield 1346	com/tencent/mobileqq/data/Card:lCurrentStyleId	J
+    //   1403: getstatic 2678	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_i_of_type_Long	J
+    //   1406: lcmp
+    //   1407: ifne +54 -> 1461
+    //   1410: aload_0
+    //   1411: getfield 2680	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_i_of_type_Boolean	Z
+    //   1414: ifne +47 -> 1461
+    //   1417: aload 22
+    //   1419: getfield 2682	com/tencent/mobileqq/profile/ProfileCardTemplate:l	J
+    //   1422: invokestatic 2686	com/tencent/mobileqq/profile/VipWZRYTemplateHelper:a	(J)Z
+    //   1425: ifeq +36 -> 1461
+    //   1428: aload_0
+    //   1429: ldc_w 2688
+    //   1432: invokestatic 2689	com/tencent/mobileqq/profile/VipWZRYTemplateHelper:a	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   1435: ifne +26 -> 1461
+    //   1438: aload_0
+    //   1439: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1442: new 2691	stb
+    //   1445: dup
+    //   1446: aload_0
+    //   1447: aload 22
+    //   1449: aload_1
+    //   1450: invokespecial 2694	stb:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;Lcom/tencent/mobileqq/profile/ProfileCardTemplate;Lcom/tencent/mobileqq/data/Card;)V
+    //   1453: invokestatic 2697	com/tencent/mobileqq/profile/VipWZRYTemplateHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/vas/VasQuickUpdateManager$CallBacker;)V
+    //   1456: aload_0
+    //   1457: iconst_1
+    //   1458: putfield 2680	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_i_of_type_Boolean	Z
+    //   1461: goto -680 -> 781
+    //   1464: new 2699	java/io/File
+    //   1467: dup
+    //   1468: aload_0
+    //   1469: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1472: invokevirtual 1041	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1475: lload 12
+    //   1477: lload 16
+    //   1479: invokestatic 2702	com/tencent/mobileqq/profile/ProfileCardManager:a	(Landroid/content/Context;JJ)Ljava/lang/String;
+    //   1482: invokespecial 2704	java/io/File:<init>	(Ljava/lang/String;)V
+    //   1485: invokevirtual 2707	java/io/File:exists	()Z
+    //   1488: istore 9
+    //   1490: goto -275 -> 1215
+    //   1493: aload_0
+    //   1494: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1497: aconst_null
+    //   1498: putfield 2587	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate	Lcom/tencent/mobileqq/profile/ProfileCardTemplate;
+    //   1501: goto -157 -> 1344
+    //   1504: astore 18
+    //   1506: aload 18
+    //   1508: invokevirtual 931	java/lang/Exception:printStackTrace	()V
+    //   1511: aload_0
+    //   1512: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1515: aconst_null
+    //   1516: putfield 2587	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate	Lcom/tencent/mobileqq/profile/ProfileCardTemplate;
+    //   1519: iload 8
+    //   1521: istore 9
+    //   1523: goto -738 -> 785
+    //   1526: aload_1
+    //   1527: getfield 1346	com/tencent/mobileqq/data/Card:lCurrentStyleId	J
+    //   1530: getstatic 2677	com/tencent/mobileqq/profile/ProfileCardTemplate:jdField_j_of_type_Long	J
+    //   1533: lcmp
+    //   1534: ifne -146 -> 1388
+    //   1537: aload_0
+    //   1538: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1541: invokevirtual 1041	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1544: aload_1
+    //   1545: getfield 2519	com/tencent/mobileqq/data/Card:lCurrentBgId	J
+    //   1548: ldc_w 2709
+    //   1551: invokestatic 2655	com/tencent/mobileqq/profile/ProfileCardManager:a	(Landroid/content/Context;JLjava/lang/String;)Z
+    //   1554: ifne -166 -> 1388
+    //   1557: aload_0
+    //   1558: invokevirtual 2671	com/tencent/mobileqq/activity/FriendProfileCardActivity:b	()Z
+    //   1561: ifeq -173 -> 1388
+    //   1564: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1567: ifeq +13 -> 1580
+    //   1570: ldc_w 416
+    //   1573: iconst_2
+    //   1574: ldc_w 2711
+    //   1577: invokestatic 438	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1580: aload_0
+    //   1581: aload 18
+    //   1583: lload 16
+    //   1585: aload 22
+    //   1587: invokevirtual 2676	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(Ljava/lang/String;JLcom/tencent/mobileqq/profile/ProfileCardTemplate;)V
+    //   1590: goto -202 -> 1388
+    //   1593: astore 18
+    //   1595: aload 18
+    //   1597: invokevirtual 2712	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   1600: aload_0
+    //   1601: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1604: aconst_null
+    //   1605: putfield 2587	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate	Lcom/tencent/mobileqq/profile/ProfileCardTemplate;
+    //   1608: iload 8
+    //   1610: istore 9
+    //   1612: goto -827 -> 785
+    //   1615: aload_0
+    //   1616: invokevirtual 2671	com/tencent/mobileqq/activity/FriendProfileCardActivity:b	()Z
+    //   1619: ifeq +16 -> 1635
+    //   1622: aload_0
+    //   1623: aload 18
+    //   1625: lload 16
+    //   1627: aload 22
+    //   1629: invokevirtual 2676	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(Ljava/lang/String;JLcom/tencent/mobileqq/profile/ProfileCardTemplate;)V
+    //   1632: goto -966 -> 666
+    //   1635: aload_0
+    //   1636: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1639: aconst_null
+    //   1640: putfield 2587	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate	Lcom/tencent/mobileqq/profile/ProfileCardTemplate;
+    //   1643: goto -862 -> 781
+    //   1646: iconst_0
+    //   1647: istore 8
+    //   1649: goto -711 -> 938
+    //   1652: iconst_0
+    //   1653: istore 6
+    //   1655: goto -566 -> 1089
+    //   1658: iload 9
+    //   1660: ifeq -540 -> 1120
+    //   1663: aload 18
+    //   1665: bipush 11
+    //   1667: putfield 2633	android/os/Message:arg2	I
+    //   1670: goto -550 -> 1120
+    //   1673: astore 18
+    //   1675: goto -80 -> 1595
+    //   1678: iconst_0
+    //   1679: istore 4
+    //   1681: iload 9
+    //   1683: istore 8
+    //   1685: goto -1277 -> 408
+    //   1688: iconst_1
+    //   1689: istore 8
+    //   1691: goto -1352 -> 339
+    //   1694: iconst_1
+    //   1695: istore 8
+    //   1697: goto -1264 -> 433
+    //   1700: iload_2
+    //   1701: ifeq -49 -> 1652
+    //   1704: iconst_1
+    //   1705: istore 6
+    //   1707: goto -618 -> 1089
+    //   1710: astore 18
+    //   1712: goto -206 -> 1506
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	1715	0	this	FriendProfileCardActivity
+    //   0	1715	1	paramCard	Card
+    //   0	1715	2	paramBoolean	boolean
+    //   0	1715	3	paramInt	int
+    //   202	1478	4	i1	int
+    //   206	903	5	i2	int
+    //   199	1507	6	i3	int
+    //   630	718	7	i4	int
+    //   196	1500	8	bool1	boolean
+    //   210	1472	9	bool2	boolean
+    //   193	1121	10	bool3	boolean
+    //   1230	121	11	bool4	boolean
+    //   600	876	12	l1	long
+    //   618	642	14	l2	long
+    //   642	984	16	l3	long
+    //   612	768	18	localObject	Object
+    //   1504	78	18	localException1	Exception
+    //   1593	71	18	localOutOfMemoryError1	OutOfMemoryError
+    //   1673	1	18	localOutOfMemoryError2	OutOfMemoryError
+    //   1710	1	18	localException2	Exception
+    //   87	1073	19	localProfilePerformanceReport	ProfilePerformanceReport
+    //   624	677	20	str1	String
+    //   636	667	21	str2	String
+    //   732	896	22	localProfileCardTemplate	ProfileCardTemplate
+    // Exception table:
+    //   from	to	target	type
+    //   17	84	1169	finally
+    //   84	89	1169	finally
+    //   94	109	1169	finally
+    //   109	178	1169	finally
+    //   178	192	1169	finally
+    //   226	294	1169	finally
+    //   294	310	1169	finally
+    //   310	336	1169	finally
+    //   339	351	1169	finally
+    //   362	379	1169	finally
+    //   387	397	1169	finally
+    //   414	430	1169	finally
+    //   433	520	1169	finally
+    //   520	535	1169	finally
+    //   549	596	1169	finally
+    //   596	644	1169	finally
+    //   651	657	1169	finally
+    //   669	705	1169	finally
+    //   711	748	1169	finally
+    //   760	768	1169	finally
+    //   773	781	1169	finally
+    //   790	891	1169	finally
+    //   891	904	1169	finally
+    //   910	935	1169	finally
+    //   938	1033	1169	finally
+    //   1040	1086	1169	finally
+    //   1089	1103	1169	finally
+    //   1113	1120	1169	finally
+    //   1120	1125	1169	finally
+    //   1130	1146	1169	finally
+    //   1151	1166	1169	finally
+    //   1174	1183	1169	finally
+    //   1201	1215	1169	finally
+    //   1215	1232	1169	finally
+    //   1242	1309	1169	finally
+    //   1316	1330	1169	finally
+    //   1335	1344	1169	finally
+    //   1355	1378	1169	finally
+    //   1378	1388	1169	finally
+    //   1388	1410	1169	finally
+    //   1410	1461	1169	finally
+    //   1464	1490	1169	finally
+    //   1493	1501	1169	finally
+    //   1506	1519	1169	finally
+    //   1526	1580	1169	finally
+    //   1580	1590	1169	finally
+    //   1595	1608	1169	finally
+    //   1615	1632	1169	finally
+    //   1635	1643	1169	finally
+    //   1663	1670	1169	finally
+    //   1316	1330	1504	java/lang/Exception
+    //   1335	1344	1504	java/lang/Exception
+    //   1355	1378	1504	java/lang/Exception
+    //   1378	1388	1504	java/lang/Exception
+    //   1388	1410	1504	java/lang/Exception
+    //   1410	1461	1504	java/lang/Exception
+    //   1493	1501	1504	java/lang/Exception
+    //   1526	1580	1504	java/lang/Exception
+    //   1580	1590	1504	java/lang/Exception
+    //   1316	1330	1593	java/lang/OutOfMemoryError
+    //   1335	1344	1593	java/lang/OutOfMemoryError
+    //   1355	1378	1593	java/lang/OutOfMemoryError
+    //   1378	1388	1593	java/lang/OutOfMemoryError
+    //   1388	1410	1593	java/lang/OutOfMemoryError
+    //   1410	1461	1593	java/lang/OutOfMemoryError
+    //   1493	1501	1593	java/lang/OutOfMemoryError
+    //   1526	1580	1593	java/lang/OutOfMemoryError
+    //   1580	1590	1593	java/lang/OutOfMemoryError
+    //   596	644	1673	java/lang/OutOfMemoryError
+    //   651	657	1673	java/lang/OutOfMemoryError
+    //   711	748	1673	java/lang/OutOfMemoryError
+    //   760	768	1673	java/lang/OutOfMemoryError
+    //   773	781	1673	java/lang/OutOfMemoryError
+    //   1174	1183	1673	java/lang/OutOfMemoryError
+    //   1201	1215	1673	java/lang/OutOfMemoryError
+    //   1215	1232	1673	java/lang/OutOfMemoryError
+    //   1242	1309	1673	java/lang/OutOfMemoryError
+    //   1464	1490	1673	java/lang/OutOfMemoryError
+    //   1615	1632	1673	java/lang/OutOfMemoryError
+    //   1635	1643	1673	java/lang/OutOfMemoryError
+    //   596	644	1710	java/lang/Exception
+    //   651	657	1710	java/lang/Exception
+    //   711	748	1710	java/lang/Exception
+    //   760	768	1710	java/lang/Exception
+    //   773	781	1710	java/lang/Exception
+    //   1174	1183	1710	java/lang/Exception
+    //   1201	1215	1710	java/lang/Exception
+    //   1215	1232	1710	java/lang/Exception
+    //   1242	1309	1710	java/lang/Exception
+    //   1464	1490	1710	java/lang/Exception
+    //   1615	1632	1710	java/lang/Exception
+    //   1635	1643	1710	java/lang/Exception
   }
   
   public void a(ContactCard paramContactCard, boolean paramBoolean)
@@ -4349,7 +4800,7 @@ public class FriendProfileCardActivity
       this.jdField_i_of_type_JavaLangString = paramShowExternalTroop.troopUin;
       this.jdField_a_of_type_ComTencentMobileqqProfileProfileBusiEntry = new ProfileBusiEntry();
       this.jdField_a_of_type_ComTencentMobileqqProfileProfileBusiEntry.jdField_a_of_type_Int = 1024;
-      this.jdField_a_of_type_ComTencentMobileqqProfileProfileBusiEntry.jdField_b_of_type_JavaLangString = getString(2131430394);
+      this.jdField_a_of_type_ComTencentMobileqqProfileProfileBusiEntry.jdField_b_of_type_JavaLangString = getString(2131430397);
       this.jdField_a_of_type_ComTencentMobileqqProfileProfileBusiEntry.c = paramShowExternalTroop.troopName;
       this.jdField_a_of_type_ComTencentMobileqqProfileProfileBusiEntry.jdField_a_of_type_JavaLangString = paramShowExternalTroop.strFaceUrl;
     } while (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null);
@@ -4523,7 +4974,7 @@ public class FriendProfileCardActivity
     {
       if (paramProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 53)
       {
-        paramProfileCardInfo = (MusicPendantView)findViewById(2131371206);
+        paramProfileCardInfo = (MusicPendantView)findViewById(2131371204);
         if (paramProfileCardInfo != null) {
           MusicPendantManager.a().b(paramProfileCardInfo.a);
         }
@@ -4610,6 +5061,18 @@ public class FriendProfileCardActivity
     QQToast.a(BaseApplication.getContext(), paramInt, paramString, 0).b(getTitleBarHeight());
   }
   
+  void a(String paramString, long paramLong, ProfileCardTemplate paramProfileCardTemplate)
+  {
+    if ((paramLong != 160L) && (paramLong != 1600L)) {
+      ((VasExtensionManager)this.app.getManager(234)).jdField_a_of_type_ComTencentMobileqqProfileProfileCardManager.a(this.app, "card." + paramLong);
+    }
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      ThreadManager.post(new swf(this, paramProfileCardTemplate, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean, paramString, paramLong), 5, null, true);
+    }
+  }
+  
   public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
@@ -4635,7 +5098,7 @@ public class FriendProfileCardActivity
           if (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataContactCard.uin, this.app.getCurrentAccountUin()))
           {
             b(0);
-            this.jdField_o_of_type_Int = 0;
+            this.jdField_p_of_type_Int = 0;
           }
         }
       }
@@ -4644,13 +5107,13 @@ public class FriendProfileCardActivity
         if ((!paramBoolean) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int != 105)) {
           break label282;
         }
-        ReportController.b(this.app, "CliOper", "", "", "0X800716B", "0X800716B", this.jdField_o_of_type_Int, 0, "", "", "", "");
+        ReportController.b(this.app, "CliOper", "", "", "0X800716B", "0X800716B", this.jdField_p_of_type_Int, 0, "", "", "", "");
         return;
         b(4);
         break;
         if (((PhoneContactManager)this.app.getManager(10)).c(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataContactCard.mobileNo) != null)
         {
-          this.jdField_o_of_type_Int = 1;
+          this.jdField_p_of_type_Int = 1;
           if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_b_of_type_Boolean) {}
           for (int i1 = 12;; i1 = 2)
           {
@@ -4658,10 +5121,10 @@ public class FriendProfileCardActivity
             break;
           }
         }
-        this.jdField_o_of_type_Int = 2;
+        this.jdField_p_of_type_Int = 2;
         b(11);
         continue;
-        this.jdField_o_of_type_Int = 3;
+        this.jdField_p_of_type_Int = 3;
         b(10);
       }
     }
@@ -4811,7 +5274,7 @@ public class FriendProfileCardActivity
       if ((this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileBaseView)) {
         ((ProfileBaseView)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView).a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, false);
       }
-      ThreadManager.post(new spk(this), 5, null, false);
+      ThreadManager.post(new suf(this), 5, null, false);
     }
     for (;;)
     {
@@ -4839,29 +5302,29 @@ public class FriendProfileCardActivity
       for (;;)
       {
         if (paramArrayOfInt[i1] == 20) {
-          localActionSheet.a(2131437167);
+          localActionSheet.a(2131437187);
         }
         i1 += 1;
         break;
         if (paramArrayOfInt[i1] == 19)
         {
-          localActionSheet.a(2131438345);
+          localActionSheet.a(2131438365);
           if ((this.jdField_a_of_type_ComTencentMobileqqQcallPstnCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqQcallPstnCardInfo.pstn_c2c_call_time > 0))
           {
-            this.jdField_k_of_type_Int = 1;
-            localActionSheet.a(getResources().getString(2131438343), getResources().getDrawable(2130840359), 0);
+            this.jdField_l_of_type_Int = 1;
+            localActionSheet.a(getResources().getString(2131438363), getResources().getDrawable(2130840374), 0);
             ReportController.b(this.app, "CliOper", "", "", "0X80063FD", "0X80063FD", 1, 0, "", "", "", "");
           }
           else if ((this.jdField_a_of_type_ComTencentMobileqqQcallPstnCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqQcallPstnManager.b() == 1) && (this.jdField_a_of_type_ComTencentMobileqqQcallPstnCardInfo.pstn_c2c_try_status == 0))
           {
-            this.jdField_k_of_type_Int = 2;
-            localActionSheet.a(getResources().getString(2131438343), getResources().getDrawable(2130840358), 0);
+            this.jdField_l_of_type_Int = 2;
+            localActionSheet.a(getResources().getString(2131438363), getResources().getDrawable(2130840373), 0);
             ReportController.b(this.app, "CliOper", "", "", "0X80063FD", "0X80063FD", 3, 0, "", "", "", "");
           }
           else
           {
-            this.jdField_k_of_type_Int = 5;
-            localActionSheet.a(getResources().getString(2131438343), getResources().getDrawable(2130840357), 0);
+            this.jdField_l_of_type_Int = 5;
+            localActionSheet.a(getResources().getString(2131438363), getResources().getDrawable(2130840372), 0);
             ReportController.b(this.app, "CliOper", "", "", "0X80063FD", "0X80063FD", 2, 0, "", "", "", "");
           }
         }
@@ -4871,7 +5334,7 @@ public class FriendProfileCardActivity
         }
       }
     }
-    localActionSheet.a(new spe(this, localActionSheet));
+    localActionSheet.a(new stz(this, localActionSheet));
     try
     {
       if (!isFinishing()) {
@@ -4921,6 +5384,161 @@ public class FriendProfileCardActivity
       return true;
     }
     return false;
+  }
+  
+  public boolean a(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground url=" + paramString1 + ",thread=" + Thread.currentThread().getName());
+    }
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.jdField_j_of_type_Long))
+      {
+        return a(paramLong2, paramString1, paramString3);
+        paramString1 = ProfileCardUtil.a(this, paramString1);
+        if (TextUtils.isEmpty(paramString2)) {}
+        for (paramString2 = "";; paramString2 = ProfileCardManager.a(this, paramLong2) + ".dynamic")
+        {
+          paramString3 = new File(paramString1);
+          if ((!paramString3.isFile()) || (!paramString3.exists())) {
+            break label476;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.profilecard.FrdProfileCard", 2, "background file exists, fileName = " + paramString1);
+          }
+          paramString3 = (Boolean)ProfileCardManager.b.get(Long.valueOf(paramLong2));
+          if ((paramString3 != null) && (paramString3.booleanValue()))
+          {
+            paramString3 = "profilecard:" + paramString1;
+            BaseApplicationImpl.sImageCache.remove(paramString3);
+            ProfileCardManager.b.remove(Long.valueOf(paramLong2));
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground update card and remove old cache bgid=" + paramLong2);
+            }
+          }
+          paramString1 = ProfileCardUtil.a(getResources(), paramString2, paramString1);
+          paramString2 = paramString1.a();
+          if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+            break label424;
+          }
+          paramString3 = ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a();
+          if ((paramString3 == null) || (paramString3 != paramString2)) {
+            break label393;
+          }
+          if (!QLog.isColorLevel()) {
+            break label544;
+          }
+          QLog.i("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground: newBitmap == currentBitmap");
+          break label544;
+          paramString1 = ProfileCardManager.a(this, paramLong1, paramLong2);
+          break;
+        }
+        label393:
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendProfileCardActivity", 2, "initProfileCardBackground recycle bg");
+        }
+        this.jdField_a_of_type_JavaUtilVector.add((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        label424:
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString1;
+        return true;
+      }
+    }
+    catch (Exception paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground exception and msg=" + paramString1.getMessage());
+      }
+      paramString1.printStackTrace();
+      return false;
+    }
+    catch (OutOfMemoryError paramString1)
+    {
+      for (;;)
+      {
+        label476:
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground oom error and msg=" + paramString1.getMessage());
+        }
+        paramString1.printStackTrace();
+        continue;
+        if (paramLong2 != 160L) {
+          if (paramLong2 != 1600L) {}
+        }
+      }
+    }
+    label544:
+    return true;
+  }
+  
+  public boolean a(long paramLong, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "initWzryCardBackground url=" + paramString1 + ",thread=" + Thread.currentThread().getName());
+    }
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {}
+    try
+    {
+      paramString1 = ProfileCardManager.a(this, paramLong);
+      String str2 = paramString1 + "wzBgImage.png";
+      String str1 = paramString1 + "wzMainImage.png";
+      Bitmap localBitmap = (Bitmap)BaseApplicationImpl.sImageCache.get(str2);
+      paramString2 = (Bitmap)BaseApplicationImpl.sImageCache.get(str1);
+      if (localBitmap != null)
+      {
+        paramString1 = localBitmap;
+        if (!localBitmap.isRecycled()) {}
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "background file exists, fileName = " + str2);
+        }
+        paramString1 = BitmapManager.a(str2);
+      }
+      if ((paramString1 != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != paramString1))
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = paramString1;
+        BaseApplicationImpl.sImageCache.put(str2, paramString1);
+      }
+      if (paramString2 != null)
+      {
+        paramString1 = paramString2;
+        if (!paramString2.isRecycled()) {}
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "hero file exists, fileName = " + str1);
+        }
+        paramString1 = BitmapManager.a(str1);
+      }
+      if ((paramString1 != null) && (this.jdField_b_of_type_AndroidGraphicsBitmap != paramString1))
+      {
+        this.jdField_b_of_type_AndroidGraphicsBitmap = paramString1;
+        BaseApplicationImpl.sImageCache.put(str1, paramString1);
+      }
+      return true;
+    }
+    catch (Exception paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground exception and msg=" + paramString1.getMessage());
+      }
+      paramString1.printStackTrace();
+      return false;
+    }
+    catch (OutOfMemoryError paramString1)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground oom error and msg=" + paramString1.getMessage());
+        }
+        paramString1.printStackTrace();
+      }
+    }
   }
   
   public boolean a(View paramView, MotionEvent paramMotionEvent)
@@ -5171,169 +5789,12 @@ public class FriendProfileCardActivity
     return paramBoolean;
   }
   
-  public boolean a(String paramString)
-  {
-    if ((paramString == null) || (paramString.equals(""))) {
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) == null)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(1));
-      return true;
-    }
-    int i1 = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-    if (i1 > 3) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i1 + 1));
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "initWzryCardBackground url=" + paramString1 + ",thread=" + Thread.currentThread().getName());
-    }
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {}
-    try
-    {
-      String str2 = ProfileCardUtil.a(this, paramString1);
-      String str1 = ProfileCardUtil.a(this, paramString2);
-      Bitmap localBitmap = (Bitmap)BaseApplicationImpl.sImageCache.get(str2);
-      paramString2 = (Bitmap)BaseApplicationImpl.sImageCache.get(str1);
-      if (localBitmap != null)
-      {
-        paramString1 = localBitmap;
-        if (!localBitmap.isRecycled()) {}
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "background file exists, fileName = " + str2);
-        }
-        paramString1 = BitmapManager.a(str2);
-      }
-      if ((paramString1 != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != paramString1))
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = paramString1;
-        BaseApplicationImpl.sImageCache.put(str2, paramString1);
-      }
-      if (paramString2 != null)
-      {
-        paramString1 = paramString2;
-        if (!paramString2.isRecycled()) {}
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "hero file exists, fileName = " + str1);
-        }
-        paramString1 = BitmapManager.a(str1);
-      }
-      if ((paramString1 != null) && (this.jdField_b_of_type_AndroidGraphicsBitmap != paramString1))
-      {
-        this.jdField_b_of_type_AndroidGraphicsBitmap = paramString1;
-        BaseApplicationImpl.sImageCache.put(str1, paramString1);
-      }
-      return true;
-    }
-    catch (Exception paramString1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground exception and msg=" + paramString1.getMessage());
-      }
-      paramString1.printStackTrace();
-      return false;
-    }
-    catch (OutOfMemoryError paramString1)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground oom error and msg=" + paramString1.getMessage());
-        }
-        paramString1.printStackTrace();
-      }
-    }
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground url=" + paramString1 + ",thread=" + Thread.currentThread().getName());
-    }
-    if (!TextUtils.isEmpty(paramString1)) {}
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.jdField_j_of_type_Long)) {
-        return a(paramString1, paramString3);
-      }
-      paramString3 = ProfileCardUtil.a(this, paramString1);
-      if (TextUtils.isEmpty(paramString2)) {}
-      for (paramString1 = "";; paramString1 = ProfileCardUtil.c(this.app.getApp()) + "." + ProfileCardUtil.c(paramString2))
-      {
-        paramString2 = new File(paramString3);
-        if ((!paramString2.isFile()) || (!paramString2.exists())) {
-          break label341;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "background file exists, fileName = " + paramString3);
-        }
-        paramString1 = ProfileCardUtil.a(getResources(), paramString1, paramString3);
-        paramString2 = paramString1.a();
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-          break label293;
-        }
-        paramString3 = ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a();
-        if ((paramString3 == null) || (paramString3 != paramString2)) {
-          break;
-        }
-        if (!QLog.isColorLevel()) {
-          break label387;
-        }
-        QLog.i("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground: newBitmap == currentBitmap");
-        break label387;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendProfileCardActivity", 2, "initProfileCardBackground recycle bg");
-      }
-      this.jdField_a_of_type_JavaUtilVector.add((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      label293:
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString1;
-      return true;
-    }
-    catch (Exception paramString1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground exception and msg=" + paramString1.getMessage());
-      }
-      paramString1.printStackTrace();
-      return false;
-    }
-    catch (OutOfMemoryError paramString1)
-    {
-      for (;;)
-      {
-        label341:
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "initProfileCardBackground oom error and msg=" + paramString1.getMessage());
-        }
-        paramString1.printStackTrace();
-      }
-    }
-    label387:
-    return true;
-  }
-  
   public String b()
   {
     if (!TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString)) {
       return this.jdField_j_of_type_JavaLangString;
     }
-    ThreadManager.post(new sqn(this), 8, null, true);
+    ThreadManager.post(new svi(this), 8, null, true);
     return "-1";
   }
   
@@ -5359,34 +5820,49 @@ public class FriendProfileCardActivity
   
   void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_b_of_type_Boolean) && (TroopInfo.isQidianPrivateTroop(this.app, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString))) {
-      paramInt = 0;
+    int i1 = 1;
+    Object localObject;
+    int i2;
+    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_b_of_type_Boolean) && (TroopInfo.isQidianPrivateTroop(this.app, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString)))
+    {
+      localObject = ((TroopManager)this.app.getManager(51)).b(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_d_of_type_JavaLangString);
+      if ((((TroopInfo)localObject).isTroopAdmin(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) || (((TroopInfo)localObject).isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))
+      {
+        i1 = 1;
+        i2 = 1;
+      }
     }
     for (;;)
     {
-      Object localObject = findViewById(2131370262);
-      int i1;
-      if (paramInt != 0)
+      switch (paramInt)
       {
-        i1 = 0;
-        label43:
-        ((View)localObject).setVisibility(i1);
-        localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-        if (paramInt == 0) {
-          break label3069;
-        }
+      default: 
+        paramInt = 0;
       }
-      label3069:
-      for (paramInt = 0;; paramInt = 8)
+      for (;;)
       {
-        ((LinearLayout)localObject).setVisibility(paramInt);
-        return;
-        switch (paramInt)
+        label158:
+        localObject = findViewById(2131370271);
+        if (paramInt != 0)
         {
-        default: 
-          paramInt = 0;
+          i1 = 0;
+          label173:
+          ((View)localObject).setVisibility(i1);
+          localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+          if (paramInt == 0) {
+            break label3175;
+          }
+        }
+        label2871:
+        label3145:
+        label3175:
+        for (paramInt = 0;; paramInt = 8)
+        {
+          ((LinearLayout)localObject).setVisibility(paramInt);
+          return;
+          i1 = 0;
+          i2 = 0;
           break;
-        case 1: 
           localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0);
           if (localObject != null) {
             ((View)localObject).setVisibility(8);
@@ -5396,88 +5872,84 @@ public class FriendProfileCardActivity
             if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
               this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
             }
-            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 81, 2131435763, 2, 2131427390);
-            paramInt = 1;
-            break;
+            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 81, 2131435779, 2, 2131427390);
+            paramInt = i1;
+            break label158;
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 23, 2131436715, 0, 2131427433);
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 81, 2131435763, 2, 2131427390);
-          paramInt = 1;
-          break;
-        case 2: 
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435762, 0, 2131427384);
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 20, 2131435796, 1, 2131427389);
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 8, 2131433647, 2, 2131427385);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 23, 2131436735, 0, 2131427433);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 81, 2131435779, 2, 2131427390);
+          paramInt = i1;
+          break label158;
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435778, 0, 2131427384);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 20, 2131435812, 1, 2131427389);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 8, 2131433661, 2, 2131427385);
           if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3) != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4) != null))
           {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3).setVisibility(8);
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4).setVisibility(8);
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long) || (!(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView))) {
-            break label3075;
+            break label3181;
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435762, 0, 2131427384);
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 20, 2131435796, 1, 2131427389);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435778, 0, 2131427384);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 20, 2131435812, 1, 2131427389);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2).setVisibility(8);
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 8, 2131433647, 0, 2131427385);
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433648, 2, 2131427386);
-          paramInt = 1;
-          break;
-        case 3: 
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435762, 0, 2131427384);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 8, 2131433661, 0, 2131427385);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433662, 2, 2131427386);
+          paramInt = i1;
+          break label158;
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435778, 0, 2131427384);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 8, 2131433647, 2, 2131427385);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 8, 2131433661, 2, 2131427385);
           if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3) != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4) != null))
           {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3).setVisibility(8);
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4).setVisibility(8);
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long) || (!(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView))) {
-            break label3075;
+            break label3181;
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435762, 0, 2131427384);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435778, 0, 2131427384);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2).setVisibility(8);
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 8, 2131433647, 0, 2131427385);
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433648, 2, 2131427386);
-          paramInt = 1;
-          break;
-        case 4: 
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435796, 0, 2131427389);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 8, 2131433661, 0, 2131427385);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433662, 2, 2131427386);
+          paramInt = i1;
+          break label158;
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435812, 0, 2131427389);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 8, 2131433647, 2, 2131427385);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 8, 2131433661, 2, 2131427385);
           if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3) != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4) != null))
           {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3).setVisibility(8);
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4).setVisibility(8);
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long) || (!(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView))) {
-            break label3075;
+            break label3181;
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435796, 0, 2131427389);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435812, 0, 2131427389);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2).setVisibility(8);
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 8, 2131433647, 0, 2131427385);
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433648, 2, 2131427386);
-          paramInt = 1;
-          break;
-        case 5: 
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435762, 0, 2131427384);
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 20, 2131435796, 1, 2131427389);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 8, 2131433661, 0, 2131427385);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433662, 2, 2131427386);
+          paramInt = i1;
+          break label158;
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435778, 0, 2131427384);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 20, 2131435812, 1, 2131427389);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2).setVisibility(8);
           }
@@ -5487,21 +5959,20 @@ public class FriendProfileCardActivity
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4).setVisibility(8);
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long) || (!(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView))) {
-            break label3075;
+            break label3181;
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435762, 0, 2131427384);
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 20, 2131435796, 1, 2131427389);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435778, 0, 2131427384);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 20, 2131435812, 1, 2131427389);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2).setVisibility(8);
           }
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3).setVisibility(8);
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433648, 2, 2131427386);
-          paramInt = 1;
-          break;
-        case 6: 
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435762, 0, 2131427384);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433662, 2, 2131427386);
+          paramInt = i1;
+          break label158;
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435778, 0, 2131427384);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
@@ -5514,9 +5985,9 @@ public class FriendProfileCardActivity
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4).setVisibility(8);
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long) || (!(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView))) {
-            break label3075;
+            break label3181;
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435762, 0, 2131427384);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435778, 0, 2131427384);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
@@ -5526,22 +5997,21 @@ public class FriendProfileCardActivity
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3).setVisibility(8);
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433648, 2, 2131427386);
-          paramInt = 1;
-          break;
-        case 7: 
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433662, 2, 2131427386);
+          paramInt = i1;
+          break label158;
           this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0).setVisibility(8);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 8, 2131433647, 2, 2131427385);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 8, 2131433661, 2, 2131427385);
           if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3) != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4) != null))
           {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3).setVisibility(8);
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4).setVisibility(8);
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long) || (!(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView))) {
-            break label3075;
+            break label3181;
           }
           this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0).setVisibility(8);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
@@ -5550,12 +6020,11 @@ public class FriendProfileCardActivity
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2).setVisibility(8);
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 8, 2131433647, 0, 2131427385);
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433648, 2, 2131427386);
-          paramInt = 1;
-          break;
-        case 8: 
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435796, 0, 2131427389);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 8, 2131433661, 0, 2131427385);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433662, 2, 2131427386);
+          paramInt = i1;
+          break label158;
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435812, 0, 2131427389);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
@@ -5568,9 +6037,9 @@ public class FriendProfileCardActivity
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4).setVisibility(8);
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long) || (!(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView))) {
-            break label3075;
+            break label3181;
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435796, 0, 2131427389);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435812, 0, 2131427389);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
@@ -5580,11 +6049,10 @@ public class FriendProfileCardActivity
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3).setVisibility(8);
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433648, 2, 2131427386);
-          paramInt = 1;
-          break;
-        case 9: 
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435796, 0, 2131427389);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433662, 2, 2131427386);
+          paramInt = i1;
+          break label158;
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435812, 0, 2131427389);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
@@ -5597,9 +6065,9 @@ public class FriendProfileCardActivity
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4).setVisibility(8);
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long) || (!(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView))) {
-            break label3075;
+            break label3181;
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435796, 0, 2131427389);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 20, 2131435812, 0, 2131427389);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2).setVisibility(8);
           }
@@ -5607,13 +6075,12 @@ public class FriendProfileCardActivity
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2).setVisibility(8);
           }
           if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3) == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4) == null)) {
-            break label3075;
+            break label3181;
           }
           this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3).setVisibility(8);
-          paramInt = 1;
-          break;
-        case 10: 
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 59, 2131435816, 0, 2131435816);
+          paramInt = i1;
+          break label158;
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 59, 2131435832, 0, 2131435832);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
@@ -5626,17 +6093,16 @@ public class FriendProfileCardActivity
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4).setVisibility(8);
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long) || (!(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView))) {
-            break label3075;
+            break label3181;
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 41, 2131433648, 3, 2131427386);
-          paramInt = 1;
-          break;
-        case 11: 
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 59, 2131435816, 0, 2131435816);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 41, 2131433662, 3, 2131427386);
+          paramInt = i1;
+          break label158;
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 59, 2131435832, 0, 2131435832);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 7, 2131435762, 2, 2131427384);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 7, 2131435778, 2, 2131427384);
           if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) != null) {
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
@@ -5646,46 +6112,53 @@ public class FriendProfileCardActivity
             this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4).setVisibility(8);
           }
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long) || (!(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView))) {
-            break label3075;
+            break label3181;
           }
-          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 41, 2131433648, 3, 2131427386);
-          paramInt = 1;
-          break;
-        case 12: 
-          if (ProfileActivity.AllInOne.d(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)) {
-            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435762, 0, 2131427384);
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 41, 2131433662, 3, 2131427386);
+          paramInt = i1;
+          break label158;
+          if (ProfileActivity.AllInOne.d(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))
+          {
+            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435778, 0, 2131427384);
+            if ((i2 == 0) || (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1) == null)) {
+              break label3145;
+            }
+            this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).setVisibility(8);
           }
           for (;;)
           {
-            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 77, 2131437718, 1, 2131437718);
-            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 8, 2131433647, 2, 2131427385);
+            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2), 8, 2131433661, 2, 2131427385);
             if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3) != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4) != null))
             {
               this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3).setVisibility(8);
               this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4).setVisibility(8);
             }
             if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long) || (!(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileShoppingView))) {
-              break label3075;
+              break label3181;
             }
-            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435762, 0, 2131427384);
-            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 20, 2131435796, 1, 2131427389);
+            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0), 7, 2131435778, 0, 2131427384);
+            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 20, 2131435812, 1, 2131427389);
             if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2) != null) {
               this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(2).setVisibility(8);
             }
-            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 8, 2131433647, 0, 2131427385);
-            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433648, 2, 2131427386);
-            paramInt = 1;
+            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(3), 8, 2131433661, 0, 2131427385);
+            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(4), 41, 2131433662, 2, 2131427386);
+            paramInt = i1;
             break;
-            if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0) != null) {
-              this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0).setVisibility(8);
+            if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0) == null) {
+              break label2871;
             }
+            this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0).setVisibility(8);
+            break label2871;
+            a(this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1), 77, 2131437738, 1, 2131437738);
           }
           i1 = 8;
-          break label43;
+          break label173;
         }
+        label3181:
+        paramInt = i1;
       }
-      label3075:
-      paramInt = 1;
+      i2 = 0;
     }
   }
   
@@ -5709,7 +6182,7 @@ public class FriendProfileCardActivity
       paramCardContactInfo = null;
       break;
       label128:
-      a(2131435765, 1);
+      a(2131435781, 1);
     }
   }
   
@@ -5764,21 +6237,11 @@ public class FriendProfileCardActivity
   
   public boolean b()
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (this.jdField_k_of_type_Long != 0L)
-    {
-      if (Math.abs(this.jdField_k_of_type_Long - NetConnInfoCenter.getServerTime()) < 60L) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-      if (!bool1)
-      {
-        this.jdField_k_of_type_Long = 0L;
-        bool2 = bool1;
-      }
+    if (this.jdField_g_of_type_Int > 3) {
+      return false;
     }
-    return bool2;
+    this.jdField_g_of_type_Int += 1;
+    return true;
   }
   
   public void c()
@@ -5832,13 +6295,13 @@ public class FriendProfileCardActivity
       paramCardContactInfo = paramCardContactInfo.jdField_a_of_type_JavaLangString;
       break;
       label161:
-      a(2131435781, 1);
+      a(2131435797, 1);
       continue;
       label172:
-      a(2131435780, 1);
+      a(2131435796, 1);
       continue;
       label183:
-      a(2131434612, 1);
+      a(2131434628, 1);
     }
   }
   
@@ -5867,12 +6330,12 @@ public class FriendProfileCardActivity
     int i2;
     if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
     {
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131435715);
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(2131435731);
       if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_h_of_type_Int != 6) {
         break label281;
       }
       y();
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new sph(this));
+      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new suc(this));
       if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
         break label309;
       }
@@ -5900,7 +6363,7 @@ public class FriendProfileCardActivity
           this.jdField_c_of_type_AndroidWidgetTextView.setTag(new DataTag(i3, null));
           this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
           this.jdField_c_of_type_AndroidWidgetTextView.setEnabled(this.jdField_e_of_type_Boolean);
-          this.jdField_c_of_type_AndroidWidgetTextView.setText(2131436751);
+          this.jdField_c_of_type_AndroidWidgetTextView.setText(2131436771);
         }
         for (;;)
         {
@@ -5912,13 +6375,13 @@ public class FriendProfileCardActivity
             this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(this.jdField_e_of_type_Boolean);
             if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
             {
-              this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839155);
+              this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839170);
               this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("二维码");
               return;
-              this.jdField_d_of_type_AndroidWidgetTextView.setText(2131435714);
+              this.jdField_d_of_type_AndroidWidgetTextView.setText(2131435730);
               break;
               label281:
-              this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131433698));
+              this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131433712));
               break label49;
               label298:
               i3 = 65;
@@ -6065,7 +6528,7 @@ public class FriendProfileCardActivity
               this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
               continue;
             }
-            this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839147);
+            this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839162);
             this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("更多");
             return;
           }
@@ -6162,6 +6625,84 @@ public class FriendProfileCardActivity
   
   public boolean c()
   {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (this.jdField_k_of_type_Long != 0L)
+    {
+      if (Math.abs(this.jdField_k_of_type_Long - NetConnInfoCenter.getServerTime()) < 60L) {
+        bool1 = true;
+      }
+      bool2 = bool1;
+      if (!bool1)
+      {
+        this.jdField_k_of_type_Long = 0L;
+        bool2 = bool1;
+      }
+    }
+    return bool2;
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FriendProfileCardActivity", 2, "savePersonalibyLabel2Card");
+    }
+    ThreadManager.postImmediately(new stv(this, (PersonalityLabelHandler)this.app.a(112)), null, true);
+  }
+  
+  public void d(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView != null)
+    {
+      View localView = findViewById(2131370087);
+      PullToZoomHeaderListView localPullToZoomHeaderListView = this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView;
+      paramInt = -paramInt;
+      localPullToZoomHeaderListView.smoothScrollToPositionFromTop(1, localView.getHeight() + paramInt);
+    }
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_i_of_type_JavaLangString = paramString;
+    a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, 4, paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName == null) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName = new MQQProfileName();
+    }
+    paramString = (MQQProfileName)this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName.clone();
+    b(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+    switch (paramString.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName))
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName);
+      continue;
+      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.i(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+        continue;
+        if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) {
+          this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.i(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName);
+      }
+    }
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_k_of_type_Long = NetConnInfoCenter.getServerTime();
+      return;
+    }
+    this.jdField_k_of_type_Long = 0L;
+  }
+  
+  public boolean d()
+  {
     Object localObject2 = null;
     Object localObject1 = null;
     boolean bool2 = false;
@@ -6226,65 +6767,6 @@ public class FriendProfileCardActivity
     }
   }
   
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FriendProfileCardActivity", 2, "savePersonalibyLabel2Card");
-    }
-    ThreadManager.postImmediately(new spa(this, (PersonalityLabelHandler)this.app.a(112)), null, true);
-  }
-  
-  public void d(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView != null)
-    {
-      View localView = findViewById(2131370078);
-      PullToZoomHeaderListView localPullToZoomHeaderListView = this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView;
-      paramInt = -paramInt;
-      localPullToZoomHeaderListView.smoothScrollToPositionFromTop(1, localView.getHeight() + paramInt);
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_i_of_type_JavaLangString = paramString;
-    a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, 4, paramString);
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName == null) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName = new MQQProfileName();
-    }
-    paramString = (MQQProfileName)this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName.clone();
-    b(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-    switch (paramString.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName))
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName);
-      continue;
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.i(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) {
-          this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.i(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqUnifiednameMQQProfileName);
-      }
-    }
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_k_of_type_Long = NetConnInfoCenter.getServerTime();
-      return;
-    }
-    this.jdField_k_of_type_Long = 0L;
-  }
-  
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     boolean bool1 = true;
@@ -6296,7 +6778,7 @@ public class FriendProfileCardActivity
     }
     if (paramInt1 == 1019) {
       if (!NetworkUtil.d(BaseApplication.getContext())) {
-        a(2131434613, 1);
+        a(2131434629, 1);
       }
     }
     label92:
@@ -6345,7 +6827,7 @@ public class FriendProfileCardActivity
         }
         if (!NetworkUtil.d(BaseApplication.getContext()))
         {
-          a(2131434613, 1);
+          a(2131434629, 1);
           return;
         }
       } while ((paramInt2 != -1) || (paramIntent == null));
@@ -6359,7 +6841,7 @@ public class FriendProfileCardActivity
       ((CardHandler)this.app.a(2)).a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, "");
       if ((paramIntent != null) && (paramIntent.getBooleanExtra("param_switches_changed", false)))
       {
-        this.jdField_i_of_type_Int = paramIntent.getIntExtra("param_joined_group_switch", -1);
+        this.jdField_j_of_type_Int = paramIntent.getIntExtra("param_joined_group_switch", -1);
         if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null))
         {
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 56) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 57)) {
@@ -6394,7 +6876,7 @@ public class FriendProfileCardActivity
           return;
           label533:
           if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 35) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 37) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 36)) {
-            break label2625;
+            break label2617;
           }
           localObject = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.b;
           continue;
@@ -6481,9 +6963,7 @@ public class FriendProfileCardActivity
           }
           this.jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil = new TimeTraceUtil();
           this.jdField_f_of_type_Boolean = false;
-          if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-            this.jdField_a_of_type_JavaUtilHashMap.clear();
-          }
+          this.jdField_g_of_type_Int = 0;
           if (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler == null) {
             break;
           }
@@ -6498,7 +6978,7 @@ public class FriendProfileCardActivity
         }
         if (paramInt1 == 1010)
         {
-          if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.g != 101) || (paramInt2 != -1)) {
+          if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_g_of_type_Int != 101) || (paramInt2 != -1)) {
             break;
           }
           finish();
@@ -6570,7 +7050,7 @@ public class FriendProfileCardActivity
         if (localObject == null)
         {
           localCard = null;
-          label1352:
+          label1343:
           if ((localCard != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null))
           {
             this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard = localCard;
@@ -6584,9 +7064,9 @@ public class FriendProfileCardActivity
             this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.i(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
             if ((paramIntent != null) && (paramIntent.getBooleanExtra("param_switches_changed", false)))
             {
-              this.jdField_i_of_type_Int = paramIntent.getIntExtra("param_joined_group_switch", -1);
+              this.jdField_j_of_type_Int = paramIntent.getIntExtra("param_joined_group_switch", -1);
               if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 56) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 57)) {
-                break label1586;
+                break label1577;
               }
               localObject = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.b;
             }
@@ -6599,8 +7079,8 @@ public class FriendProfileCardActivity
         setResult(-1, paramIntent);
         return;
         localCard = ((FriendsManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-        break label1352;
-        label1586:
+        break label1343;
+        label1577:
         if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 35) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 37) || (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 36))
         {
           localObject = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.b;
@@ -6611,7 +7091,7 @@ public class FriendProfileCardActivity
             {
               paramIntent = new StringBuilder().append("back from personality label gallery. resultcode==ok ");
               if (paramInt2 != -1) {
-                break label1840;
+                break label1831;
               }
             }
             for (bool1 = bool2;; bool1 = false)
@@ -6657,7 +7137,7 @@ public class FriendProfileCardActivity
             break;
           }
         }
-        label1840:
+        label1831:
         switch (paramInt1)
         {
         default: 
@@ -6685,7 +7165,7 @@ public class FriendProfileCardActivity
           d(paramIntent);
           return;
         case 21: 
-          paramIntent.putExtra("selfSet_leftViewText", getString(2131433297));
+          paramIntent.putExtra("selfSet_leftViewText", getString(2131433311));
           localObject = AIOUtils.a(new Intent(this, SplashActivity.class), null);
           ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));
           paramIntent = ForwardUtils.a((Intent)localObject);
@@ -6698,7 +7178,7 @@ public class FriendProfileCardActivity
         case 800: 
           if (!NetworkUtil.d(BaseApplication.getContext()))
           {
-            a(2131434613, 1);
+            a(2131434629, 1);
             return;
           }
           bool1 = bool3;
@@ -6717,7 +7197,7 @@ public class FriendProfileCardActivity
             this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
             return;
           }
-          a(2131435925, 1);
+          a(2131435943, 1);
           return;
         case 1004: 
           paramIntent = ((FriendsManager)this.app.getManager(50)).a(this.app.getCurrentAccountUin());
@@ -6776,7 +7256,7 @@ public class FriendProfileCardActivity
           localObject = null;
         }
       }
-      label2625:
+      label2617:
       localObject = null;
     }
   }
@@ -6786,844 +7266,842 @@ public class FriendProfileCardActivity
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 3602	com/tencent/mobileqq/activity/FriendProfileCardActivity:getWindow	()Landroid/view/Window;
+    //   1: invokevirtual 3654	com/tencent/mobileqq/activity/FriendProfileCardActivity:getWindow	()Landroid/view/Window;
     //   4: bipush 253
-    //   6: invokevirtual 3607	android/view/Window:setFormat	(I)V
+    //   6: invokevirtual 3659	android/view/Window:setFormat	(I)V
     //   9: aload_0
-    //   10: invokevirtual 3602	com/tencent/mobileqq/activity/FriendProfileCardActivity:getWindow	()Landroid/view/Window;
-    //   13: new 3609	android/graphics/drawable/ColorDrawable
+    //   10: invokevirtual 3654	com/tencent/mobileqq/activity/FriendProfileCardActivity:getWindow	()Landroid/view/Window;
+    //   13: new 3661	android/graphics/drawable/ColorDrawable
     //   16: dup
     //   17: iconst_m1
-    //   18: invokespecial 3610	android/graphics/drawable/ColorDrawable:<init>	(I)V
-    //   21: invokevirtual 3611	android/view/Window:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   24: getstatic 1799	com/tencent/util/ProfilePerformanceReport:a	Lcom/tencent/util/ProfilePerformanceReport;
+    //   18: invokespecial 3662	android/graphics/drawable/ColorDrawable:<init>	(I)V
+    //   21: invokevirtual 3663	android/view/Window:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   24: getstatic 1803	com/tencent/util/ProfilePerformanceReport:a	Lcom/tencent/util/ProfilePerformanceReport;
     //   27: astore 4
     //   29: aload 4
     //   31: ifnull +29 -> 60
     //   34: aload 4
-    //   36: invokevirtual 1800	com/tencent/util/ProfilePerformanceReport:a	()Z
+    //   36: invokevirtual 1804	com/tencent/util/ProfilePerformanceReport:a	()Z
     //   39: ifeq +21 -> 60
     //   42: aload 4
     //   44: iconst_0
-    //   45: invokevirtual 2631	com/tencent/util/ProfilePerformanceReport:b	(I)V
+    //   45: invokevirtual 2638	com/tencent/util/ProfilePerformanceReport:b	(I)V
     //   48: aload 4
     //   50: iconst_1
-    //   51: invokevirtual 1802	com/tencent/util/ProfilePerformanceReport:a	(I)V
+    //   51: invokevirtual 1806	com/tencent/util/ProfilePerformanceReport:a	(I)V
     //   54: aload 4
     //   56: iconst_2
-    //   57: invokevirtual 1802	com/tencent/util/ProfilePerformanceReport:a	(I)V
+    //   57: invokevirtual 1806	com/tencent/util/ProfilePerformanceReport:a	(I)V
     //   60: aload_0
-    //   61: new 2106	com/tencent/mobileqq/utils/TimeTraceUtil
+    //   61: new 2112	com/tencent/mobileqq/utils/TimeTraceUtil
     //   64: dup
-    //   65: ldc_w 515
-    //   68: invokespecial 3612	com/tencent/mobileqq/utils/TimeTraceUtil:<init>	(Ljava/lang/String;)V
-    //   71: putfield 2102	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
+    //   65: ldc_w 520
+    //   68: invokespecial 3664	com/tencent/mobileqq/utils/TimeTraceUtil:<init>	(Ljava/lang/String;)V
+    //   71: putfield 2108	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
     //   74: aload_0
-    //   75: invokevirtual 1641	com/tencent/mobileqq/activity/FriendProfileCardActivity:getIntent	()Landroid/content/Intent;
+    //   75: invokevirtual 1645	com/tencent/mobileqq/activity/FriendProfileCardActivity:getIntent	()Landroid/content/Intent;
     //   78: astore 4
     //   80: aload_0
     //   81: iconst_0
-    //   82: putfield 3615	com/tencent/mobileqq/activity/FriendProfileCardActivity:mActNeedImmersive	Z
+    //   82: putfield 3667	com/tencent/mobileqq/activity/FriendProfileCardActivity:mActNeedImmersive	Z
     //   85: aload_0
     //   86: aload_1
-    //   87: invokespecial 3617	com/tencent/mobileqq/activity/ProfileActivity:doOnCreate	(Landroid/os/Bundle;)Z
+    //   87: invokespecial 3669	com/tencent/mobileqq/activity/ProfileActivity:doOnCreate	(Landroid/os/Bundle;)Z
     //   90: pop
     //   91: aload_0
-    //   92: getfield 2102	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
-    //   95: ldc_w 3619
+    //   92: getfield 2108	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
+    //   95: ldc_w 3671
     //   98: iconst_0
-    //   99: invokevirtual 2109	com/tencent/mobileqq/utils/TimeTraceUtil:a	(Ljava/lang/String;Z)V
+    //   99: invokevirtual 2115	com/tencent/mobileqq/utils/TimeTraceUtil:a	(Ljava/lang/String;Z)V
     //   102: aload_0
-    //   103: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   103: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   106: ifnull +21 -> 127
     //   109: aload_0
-    //   110: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   113: invokevirtual 3622	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
-    //   116: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   110: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   113: invokevirtual 3674	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   116: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   119: ifne +8 -> 127
     //   122: aload 4
     //   124: ifnonnull +9 -> 133
     //   127: aload_0
-    //   128: invokevirtual 3480	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
+    //   128: invokevirtual 3532	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
     //   131: iconst_0
     //   132: ireturn
     //   133: aload_0
     //   134: aload 4
-    //   136: ldc_w 3624
+    //   136: ldc_w 3676
     //   139: iconst_0
-    //   140: invokevirtual 1080	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   143: putfield 1222	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_q_of_type_Boolean	Z
+    //   140: invokevirtual 1084	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   143: putfield 1226	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_q_of_type_Boolean	Z
     //   146: aload 4
-    //   148: ldc_w 3626
-    //   151: invokevirtual 3453	android/content/Intent:hasExtra	(Ljava/lang/String;)Z
+    //   148: ldc_w 3678
+    //   151: invokevirtual 3506	android/content/Intent:hasExtra	(Ljava/lang/String;)Z
     //   154: ifeq +44 -> 198
     //   157: aload 4
-    //   159: ldc_w 3626
-    //   162: invokevirtual 3630	android/content/Intent:getSerializableExtra	(Ljava/lang/String;)Ljava/io/Serializable;
+    //   159: ldc_w 3678
+    //   162: invokevirtual 3682	android/content/Intent:getSerializableExtra	(Ljava/lang/String;)Ljava/io/Serializable;
     //   165: astore_1
     //   166: aload_1
     //   167: ifnull +31 -> 198
     //   170: aload_0
-    //   171: invokestatic 3635	com/tencent/mobileqq/activity/KPLProfileCardActivity:a	(Landroid/content/Context;)Landroid/content/Intent;
+    //   171: invokestatic 3687	com/tencent/mobileqq/activity/KPLProfileCardActivity:a	(Landroid/content/Context;)Landroid/content/Intent;
     //   174: astore 4
     //   176: aload 4
-    //   178: ldc_w 3626
+    //   178: ldc_w 3678
     //   181: aload_1
-    //   182: invokevirtual 3638	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
+    //   182: invokevirtual 3690	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
     //   185: pop
     //   186: aload_0
     //   187: aload 4
-    //   189: invokevirtual 1655	com/tencent/mobileqq/activity/FriendProfileCardActivity:startActivity	(Landroid/content/Intent;)V
+    //   189: invokevirtual 1659	com/tencent/mobileqq/activity/FriendProfileCardActivity:startActivity	(Landroid/content/Intent;)V
     //   192: aload_0
-    //   193: invokevirtual 3480	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
+    //   193: invokevirtual 3532	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
     //   196: iconst_0
     //   197: ireturn
     //   198: aload_0
     //   199: aload 4
-    //   201: ldc_w 3640
+    //   201: ldc_w 3692
     //   204: iconst_0
-    //   205: invokevirtual 1080	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   208: putfield 3254	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_j_of_type_Boolean	Z
+    //   205: invokevirtual 1084	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   208: putfield 3295	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_j_of_type_Boolean	Z
     //   211: aload_0
     //   212: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
     //   215: aload_0
-    //   216: getfield 294	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_AndroidViewView$OnClickListener	Landroid/view/View$OnClickListener;
-    //   219: putfield 3641	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_AndroidViewView$OnClickListener	Landroid/view/View$OnClickListener;
+    //   216: getfield 299	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_AndroidViewView$OnClickListener	Landroid/view/View$OnClickListener;
+    //   219: putfield 3693	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_AndroidViewView$OnClickListener	Landroid/view/View$OnClickListener;
     //   222: aload_0
     //   223: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
     //   226: aload_0
-    //   227: getfield 289	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_AndroidViewView$OnLongClickListener	Landroid/view/View$OnLongClickListener;
-    //   230: putfield 3642	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_AndroidViewView$OnLongClickListener	Landroid/view/View$OnLongClickListener;
+    //   227: getfield 294	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_AndroidViewView$OnLongClickListener	Landroid/view/View$OnLongClickListener;
+    //   230: putfield 3694	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_AndroidViewView$OnLongClickListener	Landroid/view/View$OnLongClickListener;
     //   233: aload 4
-    //   235: ldc_w 3576
-    //   238: invokevirtual 3645	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   241: checkcast 398	com/tencent/mobileqq/activity/ProfileActivity$AllInOne
+    //   235: ldc_w 3628
+    //   238: invokevirtual 3697	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   241: checkcast 403	com/tencent/mobileqq/activity/ProfileActivity$AllInOne
     //   244: astore_1
     //   245: aload 4
-    //   247: ldc_w 3646
-    //   250: invokevirtual 3453	android/content/Intent:hasExtra	(Ljava/lang/String;)Z
+    //   247: ldc_w 3698
+    //   250: invokevirtual 3506	android/content/Intent:hasExtra	(Ljava/lang/String;)Z
     //   253: istore_3
     //   254: iload_3
-    //   255: ifeq +1567 -> 1822
+    //   255: ifeq +1561 -> 1816
     //   258: aload_0
     //   259: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
     //   262: aload 4
-    //   264: ldc_w 3646
-    //   267: invokevirtual 1109	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   270: putfield 486	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   264: ldc_w 3698
+    //   267: invokevirtual 1113	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   270: putfield 491	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   273: aload_1
-    //   274: ifnonnull +1545 -> 1819
+    //   274: ifnonnull +1539 -> 1813
     //   277: aload 4
-    //   279: ldc_w 3648
-    //   282: invokevirtual 1109	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   279: ldc_w 3700
+    //   282: invokevirtual 1113	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   285: astore_1
     //   286: aload_1
-    //   287: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   290: ifeq +1526 -> 1816
+    //   287: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   290: ifeq +1520 -> 1810
     //   293: aload_0
     //   294: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   297: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   300: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   297: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   300: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   303: astore_1
     //   304: aload_0
-    //   305: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   305: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   308: bipush 50
-    //   310: invokevirtual 368	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   313: checkcast 370	com/tencent/mobileqq/app/FriendsManager
+    //   310: invokevirtual 373	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   313: checkcast 375	com/tencent/mobileqq/app/FriendsManager
     //   316: aload_1
-    //   317: invokevirtual 402	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
+    //   317: invokevirtual 407	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
     //   320: astore 5
     //   322: aload 5
     //   324: ifnull +228 -> 552
     //   327: aload 5
-    //   329: invokevirtual 3650	com/tencent/mobileqq/data/Friends:isFriend	()Z
+    //   329: invokevirtual 3702	com/tencent/mobileqq/data/Friends:isFriend	()Z
     //   332: ifeq +220 -> 552
-    //   335: new 398	com/tencent/mobileqq/activity/ProfileActivity$AllInOne
+    //   335: new 403	com/tencent/mobileqq/activity/ProfileActivity$AllInOne
     //   338: dup
     //   339: aload_1
     //   340: iconst_1
-    //   341: invokespecial 3578	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:<init>	(Ljava/lang/String;I)V
+    //   341: invokespecial 3630	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:<init>	(Ljava/lang/String;I)V
     //   344: astore_1
     //   345: aload_1
     //   346: aload 5
-    //   348: getfield 1187	com/tencent/mobileqq/data/Friends:name	Ljava/lang/String;
-    //   351: putfield 761	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_JavaLangString	Ljava/lang/String;
+    //   348: getfield 1191	com/tencent/mobileqq/data/Friends:name	Ljava/lang/String;
+    //   351: putfield 766	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_JavaLangString	Ljava/lang/String;
     //   354: aload_1
     //   355: aload 5
-    //   357: getfield 1188	com/tencent/mobileqq/data/Friends:remark	Ljava/lang/String;
-    //   360: putfield 760	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_i_of_type_JavaLangString	Ljava/lang/String;
+    //   357: getfield 1192	com/tencent/mobileqq/data/Friends:remark	Ljava/lang/String;
+    //   360: putfield 765	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_i_of_type_JavaLangString	Ljava/lang/String;
     //   363: aload_0
     //   364: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   367: new 559	com/tencent/mobileqq/data/TroopMemberCard
+    //   367: new 564	com/tencent/mobileqq/data/TroopMemberCard
     //   370: dup
-    //   371: invokespecial 3651	com/tencent/mobileqq/data/TroopMemberCard:<init>	()V
-    //   374: putfield 557	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard	Lcom/tencent/mobileqq/data/TroopMemberCard;
+    //   371: invokespecial 3703	com/tencent/mobileqq/data/TroopMemberCard:<init>	()V
+    //   374: putfield 562	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard	Lcom/tencent/mobileqq/data/TroopMemberCard;
     //   377: aload_0
     //   378: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
     //   381: aload 4
-    //   383: ldc_w 3653
+    //   383: ldc_w 3705
     //   386: iconst_m1
-    //   387: invokevirtual 1816	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   390: putfield 1811	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_b_of_type_Int	I
+    //   387: invokevirtual 1821	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   390: putfield 1816	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_b_of_type_Int	I
     //   393: aload_0
     //   394: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   397: getfield 1811	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_b_of_type_Int	I
+    //   397: getfield 1816	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_b_of_type_Int	I
     //   400: bipush 8
     //   402: if_icmpne +15 -> 417
     //   405: aload_0
     //   406: aload 4
-    //   408: ldc_w 3596
-    //   411: invokevirtual 1109	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   408: ldc_w 3648
+    //   411: invokevirtual 1113	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   414: putfield 187	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_h_of_type_JavaLangString	Ljava/lang/String;
     //   417: aload_0
     //   418: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   421: getfield 1811	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_b_of_type_Int	I
+    //   421: getfield 1816	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_b_of_type_Int	I
     //   424: iconst_4
     //   425: if_icmpne +39 -> 464
     //   428: aload_0
-    //   429: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   432: ldc_w 1246
-    //   435: ldc_w 3655
+    //   429: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   432: ldc_w 1250
+    //   435: ldc_w 3707
     //   438: ldc 150
-    //   440: ldc_w 3657
-    //   443: ldc_w 3659
+    //   440: ldc_w 3709
+    //   443: ldc_w 3711
     //   446: iconst_0
     //   447: iconst_0
     //   448: aload_0
     //   449: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   452: getfield 486	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   452: getfield 491	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   455: ldc 150
     //   457: ldc 150
     //   459: ldc 150
-    //   461: invokestatic 722	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   464: new 3661	com/tencent/mobileqq/statistics/ReportTask
+    //   461: invokestatic 727	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   464: new 3713	com/tencent/mobileqq/statistics/ReportTask
     //   467: dup
     //   468: aload_0
-    //   469: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   472: invokespecial 3662	com/tencent/mobileqq/statistics/ReportTask:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   475: ldc_w 3664
-    //   478: invokevirtual 3667	com/tencent/mobileqq/statistics/ReportTask:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/statistics/ReportTask;
-    //   481: ldc_w 3669
-    //   484: invokevirtual 3671	com/tencent/mobileqq/statistics/ReportTask:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/statistics/ReportTask;
-    //   487: ldc_w 3673
-    //   490: invokevirtual 3675	com/tencent/mobileqq/statistics/ReportTask:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/statistics/ReportTask;
-    //   493: ldc_w 3677
-    //   496: invokevirtual 3679	com/tencent/mobileqq/statistics/ReportTask:d	(Ljava/lang/String;)Lcom/tencent/mobileqq/statistics/ReportTask;
+    //   469: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   472: invokespecial 3714	com/tencent/mobileqq/statistics/ReportTask:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   475: ldc_w 3716
+    //   478: invokevirtual 3719	com/tencent/mobileqq/statistics/ReportTask:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/statistics/ReportTask;
+    //   481: ldc_w 3721
+    //   484: invokevirtual 3723	com/tencent/mobileqq/statistics/ReportTask:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/statistics/ReportTask;
+    //   487: ldc_w 3725
+    //   490: invokevirtual 3727	com/tencent/mobileqq/statistics/ReportTask:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/statistics/ReportTask;
+    //   493: ldc_w 3729
+    //   496: invokevirtual 3731	com/tencent/mobileqq/statistics/ReportTask:d	(Ljava/lang/String;)Lcom/tencent/mobileqq/statistics/ReportTask;
     //   499: iconst_1
-    //   500: anewarray 849	java/lang/String
+    //   500: anewarray 853	java/lang/String
     //   503: dup
     //   504: iconst_0
     //   505: aload_0
     //   506: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   509: getfield 486	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   509: getfield 491	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   512: aastore
-    //   513: invokevirtual 3682	com/tencent/mobileqq/statistics/ReportTask:a	([Ljava/lang/String;)Lcom/tencent/mobileqq/statistics/ReportTask;
-    //   516: invokevirtual 3683	com/tencent/mobileqq/statistics/ReportTask:a	()V
+    //   513: invokevirtual 3734	com/tencent/mobileqq/statistics/ReportTask:a	([Ljava/lang/String;)Lcom/tencent/mobileqq/statistics/ReportTask;
+    //   516: invokevirtual 3735	com/tencent/mobileqq/statistics/ReportTask:a	()V
     //   519: aload_0
     //   520: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
     //   523: iload_3
-    //   524: putfield 457	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_b_of_type_Boolean	Z
+    //   524: putfield 462	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_b_of_type_Boolean	Z
     //   527: aload_0
     //   528: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
     //   531: aload_1
-    //   532: putfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   532: putfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
     //   535: aload_0
     //   536: aload_0
     //   537: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   540: invokevirtual 3685	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(Lcom/tencent/mobileqq/profile/ProfileCardInfo;)Z
+    //   540: invokevirtual 3737	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(Lcom/tencent/mobileqq/profile/ProfileCardInfo;)Z
     //   543: ifne +23 -> 566
     //   546: aload_0
-    //   547: invokevirtual 3480	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
+    //   547: invokevirtual 3532	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
     //   550: iconst_0
     //   551: ireturn
-    //   552: new 398	com/tencent/mobileqq/activity/ProfileActivity$AllInOne
+    //   552: new 403	com/tencent/mobileqq/activity/ProfileActivity$AllInOne
     //   555: dup
     //   556: aload_1
     //   557: bipush 21
-    //   559: invokespecial 3578	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:<init>	(Ljava/lang/String;I)V
+    //   559: invokespecial 3630	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:<init>	(Ljava/lang/String;I)V
     //   562: astore_1
     //   563: goto -200 -> 363
     //   566: aload_1
-    //   567: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   570: invokestatic 2900	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Z
+    //   567: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   570: invokestatic 2940	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Z
     //   573: ifeq +25 -> 598
     //   576: aload_0
-    //   577: invokevirtual 3686	com/tencent/mobileqq/activity/FriendProfileCardActivity:getApplicationContext	()Landroid/content/Context;
-    //   580: invokestatic 3688	com/tencent/mobileqq/util/Utils:a	(Landroid/content/Context;)Z
+    //   577: invokevirtual 3738	com/tencent/mobileqq/activity/FriendProfileCardActivity:getApplicationContext	()Landroid/content/Context;
+    //   580: invokestatic 3740	com/tencent/mobileqq/util/Utils:a	(Landroid/content/Context;)Z
     //   583: ifeq +15 -> 598
     //   586: aload_0
     //   587: iconst_0
     //   588: iconst_0
-    //   589: invokevirtual 1946	com/tencent/mobileqq/activity/FriendProfileCardActivity:overridePendingTransition	(II)V
+    //   589: invokevirtual 1951	com/tencent/mobileqq/activity/FriendProfileCardActivity:overridePendingTransition	(II)V
     //   592: aload_0
-    //   593: invokevirtual 3480	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
+    //   593: invokevirtual 3532	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
     //   596: iconst_0
     //   597: ireturn
     //   598: aload_0
     //   599: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   602: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   605: getfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   602: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   605: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
     //   608: bipush 90
     //   610: if_icmpne +48 -> 658
     //   613: aload_0
-    //   614: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   614: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   617: bipush 50
-    //   619: invokevirtual 368	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   622: checkcast 370	com/tencent/mobileqq/app/FriendsManager
+    //   619: invokevirtual 373	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   622: checkcast 375	com/tencent/mobileqq/app/FriendsManager
     //   625: astore_1
     //   626: aload_1
-    //   627: ifnull +177 -> 804
+    //   627: ifnull +151 -> 778
     //   630: aload_1
     //   631: aload_0
     //   632: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   635: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   638: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   641: invokevirtual 2607	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Z
-    //   644: ifeq +160 -> 804
+    //   635: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   638: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   641: invokevirtual 2614	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Z
+    //   644: ifeq +134 -> 778
     //   647: aload_0
     //   648: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   651: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   651: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
     //   654: iconst_1
-    //   655: putfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   655: putfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
     //   658: aload_0
     //   659: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   662: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   665: getfield 951	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_Int	I
+    //   662: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   665: getfield 956	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_Int	I
     //   668: bipush 100
     //   670: if_icmpne +50 -> 720
     //   673: aload_0
     //   674: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   677: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   680: getfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   677: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   680: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
     //   683: bipush 34
     //   685: if_icmpne +35 -> 720
     //   688: aload_0
-    //   689: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   689: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   692: bipush 10
-    //   694: invokevirtual 368	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   697: checkcast 1645	com/tencent/mobileqq/model/PhoneContactManager
-    //   700: invokeinterface 1647 1 0
+    //   694: invokevirtual 373	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   697: checkcast 1649	com/tencent/mobileqq/model/PhoneContactManager
+    //   700: invokeinterface 1651 1 0
     //   705: ifne +15 -> 720
     //   708: aload_0
     //   709: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   712: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   712: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
     //   715: bipush 29
-    //   717: putfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   717: putfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
     //   720: aload_0
     //   721: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   724: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   727: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   730: invokestatic 3691	com/tencent/biz/bmqq/util/BmqqSegmentUtil:b	(Ljava/lang/String;)Z
-    //   733: ifeq +86 -> 819
-    //   736: new 182	android/content/Intent
-    //   739: dup
-    //   740: aload_0
-    //   741: ldc_w 1113
-    //   744: invokespecial 535	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   747: astore_1
-    //   748: aload_0
-    //   749: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   752: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   755: getfield 764	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   758: ifnonnull +20 -> 778
-    //   761: aload_0
-    //   762: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   765: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   768: aload_0
-    //   769: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   772: getfield 486	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   775: putfield 764	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   778: aload_1
-    //   779: ldc_w 3576
-    //   782: aload_0
-    //   783: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   786: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   789: invokevirtual 3581	android/content/Intent:putExtra	(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
-    //   792: pop
+    //   724: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   727: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   730: invokestatic 3743	com/tencent/biz/bmqq/util/BmqqSegmentUtil:b	(Ljava/lang/String;)Z
+    //   733: ifeq +60 -> 793
+    //   736: iload_3
+    //   737: ifne +56 -> 793
+    //   740: new 182	android/content/Intent
+    //   743: dup
+    //   744: aload_0
+    //   745: ldc_w 1117
+    //   748: invokespecial 540	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   751: astore_1
+    //   752: aload_1
+    //   753: ldc_w 3628
+    //   756: aload_0
+    //   757: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   760: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   763: invokevirtual 3633	android/content/Intent:putExtra	(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
+    //   766: pop
+    //   767: aload_0
+    //   768: aload_1
+    //   769: invokespecial 3744	com/tencent/mobileqq/activity/ProfileActivity:startActivity	(Landroid/content/Intent;)V
+    //   772: aload_0
+    //   773: invokespecial 3745	com/tencent/mobileqq/activity/ProfileActivity:finish	()V
+    //   776: iconst_0
+    //   777: ireturn
+    //   778: aload_0
+    //   779: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   782: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   785: bipush 19
+    //   787: putfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   790: goto -132 -> 658
     //   793: aload_0
-    //   794: aload_1
-    //   795: invokespecial 3692	com/tencent/mobileqq/activity/ProfileActivity:startActivity	(Landroid/content/Intent;)V
-    //   798: aload_0
-    //   799: invokespecial 3693	com/tencent/mobileqq/activity/ProfileActivity:finish	()V
-    //   802: iconst_0
-    //   803: ireturn
-    //   804: aload_0
-    //   805: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   808: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   811: bipush 19
-    //   813: putfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
-    //   816: goto -158 -> 658
-    //   819: aload_0
-    //   820: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   823: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   826: getfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
-    //   829: bipush 41
-    //   831: if_icmpne +43 -> 874
-    //   834: aload_0
-    //   835: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   838: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   841: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   844: invokestatic 576	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   847: ifne +27 -> 874
-    //   850: aload_0
-    //   851: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   854: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   857: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   860: ldc_w 1779
-    //   863: invokevirtual 1116	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   866: ifeq +8 -> 874
-    //   869: aload_0
-    //   870: iconst_0
-    //   871: putfield 163	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_e_of_type_Boolean	Z
-    //   874: aload_0
-    //   875: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   878: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   881: getfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
-    //   884: bipush 53
-    //   886: if_icmpeq +37 -> 923
-    //   889: aload_0
-    //   890: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   893: invokevirtual 1603	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   896: aload_0
-    //   897: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   900: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   903: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   906: invokevirtual 1116	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   909: ifeq +14 -> 923
-    //   912: aload_0
-    //   913: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   916: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   919: iconst_0
-    //   920: putfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
-    //   923: aload_0
-    //   924: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   927: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   930: getfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
-    //   933: ifne +8 -> 941
-    //   936: aload_0
-    //   937: iconst_1
-    //   938: putfield 3695	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_g_of_type_Boolean	Z
-    //   941: new 3697	spx
-    //   944: dup
-    //   945: aload_0
-    //   946: invokespecial 3698	spx:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;)V
-    //   949: iconst_5
-    //   950: aconst_null
-    //   951: iconst_0
-    //   952: invokestatic 921	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   794: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   797: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   800: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   803: bipush 41
+    //   805: if_icmpne +43 -> 848
+    //   808: aload_0
+    //   809: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   812: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   815: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   818: invokestatic 581	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   821: ifne +27 -> 848
+    //   824: aload_0
+    //   825: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   828: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   831: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   834: ldc_w 1783
+    //   837: invokevirtual 1120	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   840: ifeq +8 -> 848
+    //   843: aload_0
+    //   844: iconst_0
+    //   845: putfield 163	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_e_of_type_Boolean	Z
+    //   848: aload_0
+    //   849: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   852: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   855: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   858: bipush 53
+    //   860: if_icmpeq +37 -> 897
+    //   863: aload_0
+    //   864: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   867: invokevirtual 1607	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   870: aload_0
+    //   871: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   874: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   877: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   880: invokevirtual 1120	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   883: ifeq +14 -> 897
+    //   886: aload_0
+    //   887: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   890: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   893: iconst_0
+    //   894: putfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   897: aload_0
+    //   898: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   901: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   904: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   907: ifne +8 -> 915
+    //   910: aload_0
+    //   911: iconst_1
+    //   912: putfield 3747	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_g_of_type_Boolean	Z
+    //   915: new 3749	svd
+    //   918: dup
+    //   919: aload_0
+    //   920: invokespecial 3750	svd:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;)V
+    //   923: iconst_5
+    //   924: aconst_null
+    //   925: iconst_0
+    //   926: invokestatic 926	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   929: aload_0
+    //   930: new 385	com/tencent/util/WeakReferenceHandler
+    //   933: dup
+    //   934: invokestatic 3754	com/tencent/mobileqq/app/ThreadManager:getSubThreadLooper	()Landroid/os/Looper;
+    //   937: aload_0
+    //   938: getfield 316	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_AndroidOsHandler$Callback	Landroid/os/Handler$Callback;
+    //   941: invokespecial 3757	com/tencent/util/WeakReferenceHandler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   944: putfield 383	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
+    //   947: aload_0
+    //   948: new 385	com/tencent/util/WeakReferenceHandler
+    //   951: dup
+    //   952: invokestatic 3762	android/os/Looper:getMainLooper	()Landroid/os/Looper;
     //   955: aload_0
-    //   956: new 380	com/tencent/util/WeakReferenceHandler
-    //   959: dup
-    //   960: invokestatic 3702	com/tencent/mobileqq/app/ThreadManager:getSubThreadLooper	()Landroid/os/Looper;
-    //   963: aload_0
-    //   964: getfield 311	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_AndroidOsHandler$Callback	Landroid/os/Handler$Callback;
-    //   967: invokespecial 3705	com/tencent/util/WeakReferenceHandler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   970: putfield 378	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
-    //   973: aload_0
-    //   974: new 380	com/tencent/util/WeakReferenceHandler
-    //   977: dup
-    //   978: invokestatic 3710	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   981: aload_0
-    //   982: getfield 299	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_AndroidOsHandler$Callback	Landroid/os/Handler$Callback;
-    //   985: invokespecial 3705	com/tencent/util/WeakReferenceHandler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
-    //   988: putfield 802	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
-    //   991: aload_0
-    //   992: aload_0
-    //   993: invokevirtual 607	com/tencent/mobileqq/activity/FriendProfileCardActivity:getApplication	()Landroid/app/Application;
-    //   996: aload_0
-    //   997: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1000: invokevirtual 1603	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   1003: invokestatic 3716	com/tencent/mobileqq/utils/SharedPreUtils:al	(Landroid/content/Context;Ljava/lang/String;)I
-    //   1006: i2b
-    //   1007: putfield 1973	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_Byte	B
-    //   1010: aload_0
-    //   1011: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1014: getfield 457	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_b_of_type_Boolean	Z
-    //   1017: ifeq +25 -> 1042
+    //   956: getfield 304	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_AndroidOsHandler$Callback	Landroid/os/Handler$Callback;
+    //   959: invokespecial 3757	com/tencent/util/WeakReferenceHandler:<init>	(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+    //   962: putfield 806	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
+    //   965: aload_0
+    //   966: aload_0
+    //   967: invokevirtual 612	com/tencent/mobileqq/activity/FriendProfileCardActivity:getApplication	()Landroid/app/Application;
+    //   970: aload_0
+    //   971: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   974: invokevirtual 1607	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   977: invokestatic 3768	com/tencent/mobileqq/utils/SharedPreUtils:aj	(Landroid/content/Context;Ljava/lang/String;)I
+    //   980: i2b
+    //   981: putfield 1978	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_Byte	B
+    //   984: aload_0
+    //   985: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   988: getfield 462	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_b_of_type_Boolean	Z
+    //   991: ifeq +25 -> 1016
+    //   994: aload_0
+    //   995: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   998: aload_0
+    //   999: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1002: getfield 491	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   1005: invokestatic 515	com/tencent/mobileqq/data/TroopInfo:isQidianPrivateTroop	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Z
+    //   1008: ifeq +8 -> 1016
+    //   1011: aload_0
+    //   1012: iconst_0
+    //   1013: putfield 1978	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_Byte	B
+    //   1016: aload_0
+    //   1017: invokevirtual 3770	com/tencent/mobileqq/activity/FriendProfileCardActivity:b	()V
     //   1020: aload_0
-    //   1021: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1024: aload_0
-    //   1025: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1028: getfield 486	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   1031: invokestatic 510	com/tencent/mobileqq/data/TroopInfo:isQidianPrivateTroop	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Z
-    //   1034: ifeq +8 -> 1042
+    //   1021: aload_0
+    //   1022: getfield 248	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqAppCardObserver	Lcom/tencent/mobileqq/app/CardObserver;
+    //   1025: invokevirtual 3771	com/tencent/mobileqq/activity/FriendProfileCardActivity:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
+    //   1028: aload_0
+    //   1029: aload_0
+    //   1030: getfield 243	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver	Lcom/tencent/mobileqq/campuscircle/CampusCircleObserver;
+    //   1033: invokevirtual 3771	com/tencent/mobileqq/activity/FriendProfileCardActivity:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
+    //   1036: aload_0
     //   1037: aload_0
-    //   1038: iconst_0
-    //   1039: putfield 1973	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_Byte	B
-    //   1042: aload_0
-    //   1043: invokevirtual 3718	com/tencent/mobileqq/activity/FriendProfileCardActivity:b	()V
-    //   1046: aload_0
-    //   1047: aload_0
-    //   1048: getfield 243	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqAppCardObserver	Lcom/tencent/mobileqq/app/CardObserver;
-    //   1051: invokevirtual 3719	com/tencent/mobileqq/activity/FriendProfileCardActivity:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
-    //   1054: aload_0
+    //   1038: getfield 265	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqAppFriendListObserver	Lcom/tencent/mobileqq/app/FriendListObserver;
+    //   1041: invokevirtual 3771	com/tencent/mobileqq/activity/FriendProfileCardActivity:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
+    //   1044: aload_0
+    //   1045: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1048: aload_0
+    //   1049: getfield 258	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver	Lcom/tencent/mobileqq/phonecontact/ContactBindObserver;
+    //   1052: invokevirtual 3775	com/tencent/mobileqq/app/QQAppInterface:registObserver	(Lmqq/observer/BusinessObserver;)V
     //   1055: aload_0
-    //   1056: getfield 238	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver	Lcom/tencent/mobileqq/campuscircle/CampusCircleObserver;
-    //   1059: invokevirtual 3719	com/tencent/mobileqq/activity/FriendProfileCardActivity:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
-    //   1062: aload_0
+    //   1056: aload_0
+    //   1057: getfield 199	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqAppTroopObserver	Lcom/tencent/mobileqq/app/TroopObserver;
+    //   1060: invokevirtual 3771	com/tencent/mobileqq/activity/FriendProfileCardActivity:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
     //   1063: aload_0
-    //   1064: getfield 260	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqAppFriendListObserver	Lcom/tencent/mobileqq/app/FriendListObserver;
-    //   1067: invokevirtual 3719	com/tencent/mobileqq/activity/FriendProfileCardActivity:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
-    //   1070: aload_0
-    //   1071: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1074: aload_0
-    //   1075: getfield 253	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver	Lcom/tencent/mobileqq/phonecontact/ContactBindObserver;
-    //   1078: invokevirtual 3723	com/tencent/mobileqq/app/QQAppInterface:registObserver	(Lmqq/observer/BusinessObserver;)V
-    //   1081: aload_0
-    //   1082: aload_0
-    //   1083: getfield 199	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqAppTroopObserver	Lcom/tencent/mobileqq/app/TroopObserver;
-    //   1086: invokevirtual 3719	com/tencent/mobileqq/activity/FriendProfileCardActivity:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
-    //   1089: aload_0
-    //   1090: aload_0
-    //   1091: getfield 194	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelObserver	Lcom/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelObserver;
-    //   1094: invokevirtual 3719	com/tencent/mobileqq/activity/FriendProfileCardActivity:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
-    //   1097: aload_0
-    //   1098: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1101: iconst_2
-    //   1102: invokevirtual 482	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   1105: checkcast 1598	com/tencent/mobileqq/app/CardHandler
-    //   1108: astore_1
-    //   1109: aload_1
-    //   1110: ifnull +16 -> 1126
+    //   1064: aload_0
+    //   1065: getfield 194	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelObserver	Lcom/tencent/mobileqq/profile/PersonalityLabel/PersonalityLabelObserver;
+    //   1068: invokevirtual 3771	com/tencent/mobileqq/activity/FriendProfileCardActivity:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
+    //   1071: aload_0
+    //   1072: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1075: sipush 183
+    //   1078: invokevirtual 373	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   1081: checkcast 2592	com/tencent/mobileqq/vas/VasQuickUpdateManager
+    //   1084: aload_0
+    //   1085: getfield 206	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker	Lcom/tencent/mobileqq/vas/VasQuickUpdateManager$CallBacker;
+    //   1088: invokevirtual 2598	com/tencent/mobileqq/vas/VasQuickUpdateManager:a	(Lcom/tencent/mobileqq/vas/VasQuickUpdateManager$CallBacker;)V
+    //   1091: aload_0
+    //   1092: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1095: iconst_2
+    //   1096: invokevirtual 487	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   1099: checkcast 1602	com/tencent/mobileqq/app/CardHandler
+    //   1102: astore_1
+    //   1103: aload_1
+    //   1104: ifnull +16 -> 1120
+    //   1107: aload_0
+    //   1108: aload_1
+    //   1109: aload_0
+    //   1110: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1113: aload_0
-    //   1114: aload_1
-    //   1115: aload_0
-    //   1116: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1119: aload_0
-    //   1120: invokevirtual 3726	com/tencent/mobileqq/app/CardHandler:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/CardHandler$CoverTransCallback;)Lcom/tencent/mobileqq/app/CardHandler$CardTransProcessorHandler;
-    //   1123: putfield 3728	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqAppCardHandler$CardTransProcessorHandler	Lcom/tencent/mobileqq/app/CardHandler$CardTransProcessorHandler;
-    //   1126: aload_0
-    //   1127: new 413	java/lang/StringBuilder
-    //   1130: dup
-    //   1131: invokespecial 414	java/lang/StringBuilder:<init>	()V
-    //   1134: aload_0
-    //   1135: getfield 169	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_e_of_type_JavaLangString	Ljava/lang/String;
-    //   1138: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1141: aload_0
-    //   1142: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1145: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1148: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1151: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1154: invokevirtual 430	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1157: putfield 169	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_e_of_type_JavaLangString	Ljava/lang/String;
-    //   1160: aload_0
-    //   1161: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1164: bipush 14
-    //   1166: invokevirtual 368	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1169: checkcast 3730	com/tencent/mobileqq/richstatus/StatusManager
-    //   1172: astore_1
-    //   1173: aload_1
-    //   1174: ifnull +11 -> 1185
-    //   1177: aload_1
-    //   1178: aload_0
-    //   1179: getfield 306	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener	Lcom/tencent/mobileqq/richstatus/IIconListener;
-    //   1182: invokevirtual 3732	com/tencent/mobileqq/richstatus/StatusManager:a	(Ljava/lang/Object;)V
-    //   1185: aload_0
-    //   1186: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1189: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1192: getfield 951	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_Int	I
-    //   1195: bipush 6
-    //   1197: if_icmpne +24 -> 1221
-    //   1200: aload_0
-    //   1201: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1204: invokevirtual 3735	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
-    //   1207: ifnull +14 -> 1221
-    //   1210: aload_0
-    //   1211: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1214: invokevirtual 3735	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
-    //   1217: aload_0
-    //   1218: invokevirtual 3740	com/tencent/mobileqq/app/message/QQMessageFacade:addObserver	(Ljava/util/Observer;)V
-    //   1221: invokestatic 2809	com/tencent/mobileqq/musicpendant/MusicPendantManager:a	()Lcom/tencent/mobileqq/musicpendant/MusicPendantManager;
-    //   1224: ifnull +56 -> 1280
-    //   1227: aload_0
-    //   1228: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1231: ifnull +49 -> 1280
-    //   1234: aload_0
-    //   1235: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1238: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1241: ifnull +39 -> 1280
-    //   1244: aload_0
-    //   1245: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1248: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1251: getfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
-    //   1254: bipush 53
-    //   1256: if_icmpeq +24 -> 1280
-    //   1259: invokestatic 2809	com/tencent/mobileqq/musicpendant/MusicPendantManager:a	()Lcom/tencent/mobileqq/musicpendant/MusicPendantManager;
-    //   1262: aload_0
-    //   1263: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1266: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1269: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1272: aload_0
-    //   1273: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1276: aload_0
-    //   1277: invokevirtual 3743	com/tencent/mobileqq/musicpendant/MusicPendantManager:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/app/Activity;)V
-    //   1280: aload_0
-    //   1281: iconst_0
-    //   1282: invokevirtual 2443	com/tencent/mobileqq/activity/FriendProfileCardActivity:c	(Z)V
-    //   1285: getstatic 3748	com/tencent/mobileqq/vas/ClubContentJsonTask:a	Lcom/tencent/mobileqq/vas/ClubContentJsonTask$PersonalCardUrlInfo;
-    //   1288: ifnonnull +17 -> 1305
-    //   1291: new 3750	sqj
-    //   1294: dup
-    //   1295: aload_0
-    //   1296: invokespecial 3751	sqj:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;)V
-    //   1299: iconst_5
-    //   1300: aconst_null
-    //   1301: iconst_1
-    //   1302: invokestatic 921	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   1305: aload_0
-    //   1306: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1309: bipush 7
-    //   1311: anewarray 849	java/lang/String
-    //   1314: putfield 756	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   1317: new 3753	sqx
-    //   1320: dup
-    //   1321: aload_0
-    //   1322: invokespecial 3754	sqx:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;)V
-    //   1325: bipush 8
-    //   1327: aconst_null
-    //   1328: iconst_1
-    //   1329: invokestatic 921	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   1332: aload_0
-    //   1333: invokevirtual 2456	com/tencent/mobileqq/activity/FriendProfileCardActivity:j	()V
-    //   1336: aload_0
-    //   1337: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1340: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1343: getfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
-    //   1346: bipush 33
-    //   1348: if_icmpeq +303 -> 1651
-    //   1351: aload_0
-    //   1352: invokevirtual 3755	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	()V
-    //   1355: aload_0
-    //   1356: invokevirtual 3758	com/tencent/mobileqq/activity/FriendProfileCardActivity:x	()V
-    //   1359: aload_0
-    //   1360: invokespecial 933	com/tencent/mobileqq/activity/FriendProfileCardActivity:S	()V
-    //   1363: aload_0
-    //   1364: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1367: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1370: getfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
-    //   1373: ifeq +340 -> 1713
-    //   1376: new 3760	srb
-    //   1379: dup
-    //   1380: aload_0
-    //   1381: invokespecial 3761	srb:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;)V
-    //   1384: bipush 8
-    //   1386: aconst_null
-    //   1387: iconst_1
-    //   1388: invokestatic 921	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   1391: aload_0
-    //   1392: getfield 3290	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   1395: ldc_w 3763
-    //   1398: invokestatic 3768	com/tencent/mobileqq/util/AccessibilityUtil:a	(Landroid/view/View;Ljava/lang/String;)V
-    //   1401: aload_0
-    //   1402: getfield 3290	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   1405: invokestatic 3769	com/tencent/mobileqq/util/AccessibilityUtil:a	(Landroid/view/View;)V
-    //   1408: aload_0
-    //   1409: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1412: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1415: getfield 522	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
-    //   1418: ifne +325 -> 1743
-    //   1421: aload_0
-    //   1422: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1425: ldc_w 1246
-    //   1428: ldc_w 3771
-    //   1431: ldc 150
-    //   1433: ldc_w 3773
-    //   1436: ldc_w 3773
-    //   1439: iconst_0
-    //   1440: iconst_0
+    //   1114: invokevirtual 3778	com/tencent/mobileqq/app/CardHandler:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/app/CardHandler$CoverTransCallback;)Lcom/tencent/mobileqq/app/CardHandler$CardTransProcessorHandler;
+    //   1117: putfield 3780	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqAppCardHandler$CardTransProcessorHandler	Lcom/tencent/mobileqq/app/CardHandler$CardTransProcessorHandler;
+    //   1120: aload_0
+    //   1121: new 418	java/lang/StringBuilder
+    //   1124: dup
+    //   1125: invokespecial 419	java/lang/StringBuilder:<init>	()V
+    //   1128: aload_0
+    //   1129: getfield 169	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   1132: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1135: aload_0
+    //   1136: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1139: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1142: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1145: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1148: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1151: putfield 169	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   1154: aload_0
+    //   1155: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1158: bipush 14
+    //   1160: invokevirtual 373	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   1163: checkcast 3782	com/tencent/mobileqq/richstatus/StatusManager
+    //   1166: astore_1
+    //   1167: aload_1
+    //   1168: ifnull +11 -> 1179
+    //   1171: aload_1
+    //   1172: aload_0
+    //   1173: getfield 311	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener	Lcom/tencent/mobileqq/richstatus/IIconListener;
+    //   1176: invokevirtual 3784	com/tencent/mobileqq/richstatus/StatusManager:a	(Ljava/lang/Object;)V
+    //   1179: aload_0
+    //   1180: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1183: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1186: getfield 956	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_Int	I
+    //   1189: bipush 6
+    //   1191: if_icmpne +24 -> 1215
+    //   1194: aload_0
+    //   1195: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1198: invokevirtual 3787	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   1201: ifnull +14 -> 1215
+    //   1204: aload_0
+    //   1205: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1208: invokevirtual 3787	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/app/message/QQMessageFacade;
+    //   1211: aload_0
+    //   1212: invokevirtual 3792	com/tencent/mobileqq/app/message/QQMessageFacade:addObserver	(Ljava/util/Observer;)V
+    //   1215: invokestatic 2831	com/tencent/mobileqq/musicpendant/MusicPendantManager:a	()Lcom/tencent/mobileqq/musicpendant/MusicPendantManager;
+    //   1218: ifnull +56 -> 1274
+    //   1221: aload_0
+    //   1222: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1225: ifnull +49 -> 1274
+    //   1228: aload_0
+    //   1229: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1232: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1235: ifnull +39 -> 1274
+    //   1238: aload_0
+    //   1239: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1242: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1245: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   1248: bipush 53
+    //   1250: if_icmpeq +24 -> 1274
+    //   1253: invokestatic 2831	com/tencent/mobileqq/musicpendant/MusicPendantManager:a	()Lcom/tencent/mobileqq/musicpendant/MusicPendantManager;
+    //   1256: aload_0
+    //   1257: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1260: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1263: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1266: aload_0
+    //   1267: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1270: aload_0
+    //   1271: invokevirtual 3795	com/tencent/mobileqq/musicpendant/MusicPendantManager:a	(Ljava/lang/String;Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/app/Activity;)V
+    //   1274: aload_0
+    //   1275: iconst_0
+    //   1276: invokevirtual 2450	com/tencent/mobileqq/activity/FriendProfileCardActivity:c	(Z)V
+    //   1279: getstatic 3800	com/tencent/mobileqq/vas/ClubContentJsonTask:a	Lcom/tencent/mobileqq/vas/ClubContentJsonTask$PersonalCardUrlInfo;
+    //   1282: ifnonnull +17 -> 1299
+    //   1285: new 3802	svo
+    //   1288: dup
+    //   1289: aload_0
+    //   1290: invokespecial 3803	svo:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;)V
+    //   1293: iconst_5
+    //   1294: aconst_null
+    //   1295: iconst_1
+    //   1296: invokestatic 926	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   1299: aload_0
+    //   1300: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1303: bipush 7
+    //   1305: anewarray 853	java/lang/String
+    //   1308: putfield 761	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   1311: new 3805	svv
+    //   1314: dup
+    //   1315: aload_0
+    //   1316: invokespecial 3806	svv:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;)V
+    //   1319: bipush 8
+    //   1321: aconst_null
+    //   1322: iconst_1
+    //   1323: invokestatic 926	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   1326: aload_0
+    //   1327: invokevirtual 2463	com/tencent/mobileqq/activity/FriendProfileCardActivity:j	()V
+    //   1330: aload_0
+    //   1331: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1334: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1337: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   1340: bipush 33
+    //   1342: if_icmpeq +303 -> 1645
+    //   1345: aload_0
+    //   1346: invokevirtual 3807	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	()V
+    //   1349: aload_0
+    //   1350: invokevirtual 3810	com/tencent/mobileqq/activity/FriendProfileCardActivity:x	()V
+    //   1353: aload_0
+    //   1354: invokespecial 938	com/tencent/mobileqq/activity/FriendProfileCardActivity:S	()V
+    //   1357: aload_0
+    //   1358: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1361: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1364: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   1367: ifeq +340 -> 1707
+    //   1370: new 3812	svx
+    //   1373: dup
+    //   1374: aload_0
+    //   1375: invokespecial 3813	svx:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;)V
+    //   1378: bipush 8
+    //   1380: aconst_null
+    //   1381: iconst_1
+    //   1382: invokestatic 926	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   1385: aload_0
+    //   1386: getfield 3331	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   1389: ldc_w 3815
+    //   1392: invokestatic 3820	com/tencent/mobileqq/util/AccessibilityUtil:a	(Landroid/view/View;Ljava/lang/String;)V
+    //   1395: aload_0
+    //   1396: getfield 3331	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   1399: invokestatic 3821	com/tencent/mobileqq/util/AccessibilityUtil:a	(Landroid/view/View;)V
+    //   1402: aload_0
+    //   1403: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1406: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1409: getfield 527	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_Int	I
+    //   1412: ifne +325 -> 1737
+    //   1415: aload_0
+    //   1416: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1419: ldc_w 1250
+    //   1422: ldc_w 3823
+    //   1425: ldc 150
+    //   1427: ldc_w 3825
+    //   1430: ldc_w 3825
+    //   1433: iconst_0
+    //   1434: iconst_0
+    //   1435: ldc 150
+    //   1437: ldc 150
+    //   1439: ldc 150
     //   1441: ldc 150
-    //   1443: ldc 150
-    //   1445: ldc 150
-    //   1447: ldc 150
-    //   1449: invokestatic 722	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1452: aload_0
-    //   1453: getfield 2102	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
-    //   1456: ldc_w 3774
-    //   1459: iconst_0
-    //   1460: invokevirtual 2109	com/tencent/mobileqq/utils/TimeTraceUtil:a	(Ljava/lang/String;Z)V
-    //   1463: aload_0
-    //   1464: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1467: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1470: getfield 399	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1473: invokestatic 2900	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Z
-    //   1476: ifeq +52 -> 1528
-    //   1479: iconst_0
-    //   1480: istore_2
-    //   1481: aload_0
-    //   1482: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1485: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1488: getfield 951	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_Int	I
-    //   1491: bipush 59
-    //   1493: if_icmpne +284 -> 1777
-    //   1496: iconst_1
-    //   1497: istore_2
-    //   1498: aload_0
-    //   1499: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1502: ldc_w 715
-    //   1505: ldc 150
-    //   1507: ldc 150
-    //   1509: ldc_w 3776
-    //   1512: ldc_w 3776
-    //   1515: iload_2
-    //   1516: iconst_0
+    //   1443: invokestatic 727	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1446: aload_0
+    //   1447: getfield 2108	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil	Lcom/tencent/mobileqq/utils/TimeTraceUtil;
+    //   1450: ldc_w 3826
+    //   1453: iconst_0
+    //   1454: invokevirtual 2115	com/tencent/mobileqq/utils/TimeTraceUtil:a	(Ljava/lang/String;Z)V
+    //   1457: aload_0
+    //   1458: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1461: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1464: getfield 404	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1467: invokestatic 2940	com/tencent/mobileqq/util/Utils:b	(Ljava/lang/String;)Z
+    //   1470: ifeq +52 -> 1522
+    //   1473: iconst_0
+    //   1474: istore_2
+    //   1475: aload_0
+    //   1476: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1479: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1482: getfield 956	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_Int	I
+    //   1485: bipush 59
+    //   1487: if_icmpne +284 -> 1771
+    //   1490: iconst_1
+    //   1491: istore_2
+    //   1492: aload_0
+    //   1493: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1496: ldc_w 720
+    //   1499: ldc 150
+    //   1501: ldc 150
+    //   1503: ldc_w 3828
+    //   1506: ldc_w 3828
+    //   1509: iload_2
+    //   1510: iconst_0
+    //   1511: ldc 150
+    //   1513: ldc 150
+    //   1515: ldc 150
     //   1517: ldc 150
-    //   1519: ldc 150
-    //   1521: ldc 150
-    //   1523: ldc 150
-    //   1525: invokestatic 722	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1528: aload_0
-    //   1529: aload_0
-    //   1530: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1533: sipush 142
-    //   1536: invokevirtual 368	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1539: checkcast 3018	com/tencent/mobileqq/qcall/PstnManager
-    //   1542: putfield 3016	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqQcallPstnManager	Lcom/tencent/mobileqq/qcall/PstnManager;
-    //   1545: aload_0
-    //   1546: aload_0
-    //   1547: getfield 3016	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqQcallPstnManager	Lcom/tencent/mobileqq/qcall/PstnManager;
-    //   1550: aload_0
-    //   1551: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1554: invokevirtual 1603	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   1557: invokevirtual 3779	com/tencent/mobileqq/qcall/PstnManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/qcall/PstnCardInfo;
-    //   1560: putfield 2999	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqQcallPstnCardInfo	Lcom/tencent/mobileqq/qcall/PstnCardInfo;
-    //   1563: aload_0
-    //   1564: invokevirtual 3781	com/tencent/mobileqq/activity/FriendProfileCardActivity:P	()V
-    //   1567: aload_0
-    //   1568: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1571: bipush 51
-    //   1573: invokevirtual 368	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1576: checkcast 479	com/tencent/mobileqq/app/TroopManager
-    //   1579: aload_0
-    //   1580: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1583: getfield 486	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   1586: invokevirtual 489	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/TroopInfo;
-    //   1589: astore_1
-    //   1590: aload_1
-    //   1591: ifnull +35 -> 1626
-    //   1594: aload_1
-    //   1595: invokevirtual 3784	com/tencent/mobileqq/data/TroopInfo:isGameBind	()Z
-    //   1598: ifeq +28 -> 1626
-    //   1601: ldc_w 3786
-    //   1604: ldc_w 3788
-    //   1607: ldc_w 3790
-    //   1610: iconst_0
+    //   1519: invokestatic 727	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1522: aload_0
+    //   1523: aload_0
+    //   1524: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1527: sipush 142
+    //   1530: invokevirtual 373	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   1533: checkcast 3058	com/tencent/mobileqq/qcall/PstnManager
+    //   1536: putfield 3056	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqQcallPstnManager	Lcom/tencent/mobileqq/qcall/PstnManager;
+    //   1539: aload_0
+    //   1540: aload_0
+    //   1541: getfield 3056	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqQcallPstnManager	Lcom/tencent/mobileqq/qcall/PstnManager;
+    //   1544: aload_0
+    //   1545: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1548: invokevirtual 1607	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1551: invokevirtual 3831	com/tencent/mobileqq/qcall/PstnManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/qcall/PstnCardInfo;
+    //   1554: putfield 3039	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqQcallPstnCardInfo	Lcom/tencent/mobileqq/qcall/PstnCardInfo;
+    //   1557: aload_0
+    //   1558: invokevirtual 3833	com/tencent/mobileqq/activity/FriendProfileCardActivity:P	()V
+    //   1561: aload_0
+    //   1562: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1565: bipush 51
+    //   1567: invokevirtual 373	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   1570: checkcast 484	com/tencent/mobileqq/app/TroopManager
+    //   1573: aload_0
+    //   1574: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1577: getfield 491	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   1580: invokevirtual 494	com/tencent/mobileqq/app/TroopManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/TroopInfo;
+    //   1583: astore_1
+    //   1584: aload_1
+    //   1585: ifnull +35 -> 1620
+    //   1588: aload_1
+    //   1589: invokevirtual 3836	com/tencent/mobileqq/data/TroopInfo:isGameBind	()Z
+    //   1592: ifeq +28 -> 1620
+    //   1595: ldc_w 3838
+    //   1598: ldc_w 3840
+    //   1601: ldc_w 3842
+    //   1604: iconst_0
+    //   1605: iconst_0
+    //   1606: iconst_1
+    //   1607: anewarray 853	java/lang/String
+    //   1610: dup
     //   1611: iconst_0
-    //   1612: iconst_1
-    //   1613: anewarray 849	java/lang/String
-    //   1616: dup
-    //   1617: iconst_0
-    //   1618: aload_1
-    //   1619: getfield 2003	com/tencent/mobileqq/data/TroopInfo:troopuin	Ljava/lang/String;
-    //   1622: aastore
-    //   1623: invokestatic 3795	com/tencent/mobileqq/util/TroopReportor:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
-    //   1626: iconst_1
-    //   1627: ireturn
-    //   1628: astore_1
-    //   1629: invokestatic 409	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1632: ifeq +13 -> 1645
-    //   1635: ldc_w 411
-    //   1638: iconst_2
-    //   1639: ldc 150
-    //   1641: aload_1
-    //   1642: invokestatic 3797	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1612: aload_1
+    //   1613: getfield 2009	com/tencent/mobileqq/data/TroopInfo:troopuin	Ljava/lang/String;
+    //   1616: aastore
+    //   1617: invokestatic 3847	com/tencent/mobileqq/util/TroopReportor:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II[Ljava/lang/String;)V
+    //   1620: iconst_1
+    //   1621: ireturn
+    //   1622: astore_1
+    //   1623: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1626: ifeq +13 -> 1639
+    //   1629: ldc_w 416
+    //   1632: iconst_2
+    //   1633: ldc 150
+    //   1635: aload_1
+    //   1636: invokestatic 3849	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1639: aload_0
+    //   1640: invokevirtual 3532	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
+    //   1643: iconst_0
+    //   1644: ireturn
     //   1645: aload_0
-    //   1646: invokevirtual 3480	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
-    //   1649: iconst_0
-    //   1650: ireturn
-    //   1651: aload_0
-    //   1652: aload_0
-    //   1653: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1656: getfield 468	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
-    //   1659: iconst_0
-    //   1660: invokevirtual 2452	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(Lcom/tencent/mobileqq/data/Card;Z)V
-    //   1663: goto -308 -> 1355
-    //   1666: astore_1
-    //   1667: invokestatic 409	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1670: ifeq +33 -> 1703
-    //   1673: ldc_w 411
-    //   1676: iconst_2
-    //   1677: new 413	java/lang/StringBuilder
-    //   1680: dup
-    //   1681: invokespecial 414	java/lang/StringBuilder:<init>	()V
-    //   1684: ldc_w 3799
-    //   1687: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1690: aload_1
-    //   1691: invokevirtual 518	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1694: invokevirtual 420	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1697: invokevirtual 430	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1700: invokestatic 598	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1703: aload_1
-    //   1704: invokevirtual 926	java/lang/Exception:printStackTrace	()V
+    //   1646: aload_0
+    //   1647: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1650: getfield 473	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqDataCard	Lcom/tencent/mobileqq/data/Card;
+    //   1653: iconst_0
+    //   1654: invokevirtual 2459	com/tencent/mobileqq/activity/FriendProfileCardActivity:a	(Lcom/tencent/mobileqq/data/Card;Z)V
+    //   1657: goto -308 -> 1349
+    //   1660: astore_1
+    //   1661: invokestatic 414	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1664: ifeq +33 -> 1697
+    //   1667: ldc_w 416
+    //   1670: iconst_2
+    //   1671: new 418	java/lang/StringBuilder
+    //   1674: dup
+    //   1675: invokespecial 419	java/lang/StringBuilder:<init>	()V
+    //   1678: ldc_w 3851
+    //   1681: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1684: aload_1
+    //   1685: invokevirtual 523	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1688: invokevirtual 425	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1691: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1694: invokestatic 603	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1697: aload_1
+    //   1698: invokevirtual 931	java/lang/Exception:printStackTrace	()V
+    //   1701: aload_0
+    //   1702: invokevirtual 3532	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
+    //   1705: iconst_0
+    //   1706: ireturn
     //   1707: aload_0
-    //   1708: invokevirtual 3480	com/tencent/mobileqq/activity/FriendProfileCardActivity:finish	()V
-    //   1711: iconst_0
-    //   1712: ireturn
-    //   1713: aload_0
-    //   1714: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1717: aload_0
-    //   1718: getfield 265	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver	Lcom/tencent/mobileqq/observer/GameCenterObserver;
-    //   1721: invokevirtual 3723	com/tencent/mobileqq/app/QQAppInterface:registObserver	(Lmqq/observer/BusinessObserver;)V
-    //   1724: aload_0
-    //   1725: getfield 802	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
-    //   1728: new 3801	sra
-    //   1731: dup
-    //   1732: aload_0
-    //   1733: invokespecial 3802	sra:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;)V
-    //   1736: invokevirtual 3805	com/tencent/util/WeakReferenceHandler:post	(Ljava/lang/Runnable;)Z
-    //   1739: pop
-    //   1740: goto -364 -> 1376
-    //   1743: aload_0
-    //   1744: getfield 362	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1747: ldc_w 1246
-    //   1750: ldc_w 3771
-    //   1753: ldc 150
-    //   1755: ldc_w 3807
-    //   1758: ldc_w 3807
-    //   1761: iconst_0
-    //   1762: iconst_0
+    //   1708: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1711: aload_0
+    //   1712: getfield 270	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver	Lcom/tencent/mobileqq/observer/GameCenterObserver;
+    //   1715: invokevirtual 3775	com/tencent/mobileqq/app/QQAppInterface:registObserver	(Lmqq/observer/BusinessObserver;)V
+    //   1718: aload_0
+    //   1719: getfield 806	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_b_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
+    //   1722: new 3853	svw
+    //   1725: dup
+    //   1726: aload_0
+    //   1727: invokespecial 3854	svw:<init>	(Lcom/tencent/mobileqq/activity/FriendProfileCardActivity;)V
+    //   1730: invokevirtual 3857	com/tencent/util/WeakReferenceHandler:post	(Ljava/lang/Runnable;)Z
+    //   1733: pop
+    //   1734: goto -364 -> 1370
+    //   1737: aload_0
+    //   1738: getfield 367	com/tencent/mobileqq/activity/FriendProfileCardActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1741: ldc_w 1250
+    //   1744: ldc_w 3823
+    //   1747: ldc 150
+    //   1749: ldc_w 3859
+    //   1752: ldc_w 3859
+    //   1755: iconst_0
+    //   1756: iconst_0
+    //   1757: ldc 150
+    //   1759: ldc 150
+    //   1761: ldc 150
     //   1763: ldc 150
-    //   1765: ldc 150
-    //   1767: ldc 150
-    //   1769: ldc 150
-    //   1771: invokestatic 722	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1774: goto -322 -> 1452
-    //   1777: aload_0
-    //   1778: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1781: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1784: getfield 951	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_Int	I
-    //   1787: iconst_1
-    //   1788: if_icmpne +8 -> 1796
-    //   1791: iconst_2
-    //   1792: istore_2
-    //   1793: goto -295 -> 1498
-    //   1796: aload_0
-    //   1797: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
-    //   1800: getfield 396	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
-    //   1803: getfield 951	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_Int	I
-    //   1806: bipush 8
-    //   1808: if_icmpne -310 -> 1498
-    //   1811: iconst_3
-    //   1812: istore_2
-    //   1813: goto -315 -> 1498
-    //   1816: goto -1512 -> 304
-    //   1819: goto -1456 -> 363
-    //   1822: goto -1303 -> 519
+    //   1765: invokestatic 727	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1768: goto -322 -> 1446
+    //   1771: aload_0
+    //   1772: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1775: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1778: getfield 956	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_Int	I
+    //   1781: iconst_1
+    //   1782: if_icmpne +8 -> 1790
+    //   1785: iconst_2
+    //   1786: istore_2
+    //   1787: goto -295 -> 1492
+    //   1790: aload_0
+    //   1791: getfield 146	com/tencent/mobileqq/activity/FriendProfileCardActivity:jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo	Lcom/tencent/mobileqq/profile/ProfileCardInfo;
+    //   1794: getfield 401	com/tencent/mobileqq/profile/ProfileCardInfo:jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne	Lcom/tencent/mobileqq/activity/ProfileActivity$AllInOne;
+    //   1797: getfield 956	com/tencent/mobileqq/activity/ProfileActivity$AllInOne:jdField_h_of_type_Int	I
+    //   1800: bipush 8
+    //   1802: if_icmpne -310 -> 1492
+    //   1805: iconst_3
+    //   1806: istore_2
+    //   1807: goto -315 -> 1492
+    //   1810: goto -1506 -> 304
+    //   1813: goto -1450 -> 363
+    //   1816: goto -1297 -> 519
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1825	0	this	FriendProfileCardActivity
-    //   0	1825	1	paramBundle	Bundle
-    //   1480	333	2	i1	int
-    //   253	271	3	bool	boolean
+    //   0	1819	0	this	FriendProfileCardActivity
+    //   0	1819	1	paramBundle	Bundle
+    //   1474	333	2	i1	int
+    //   253	484	3	bool	boolean
     //   27	380	4	localObject	Object
     //   320	36	5	localFriends	Friends
     // Exception table:
     //   from	to	target	type
-    //   874	923	1628	java/lang/Exception
-    //   1221	1280	1666	java/lang/Exception
-    //   1280	1305	1666	java/lang/Exception
-    //   1305	1355	1666	java/lang/Exception
-    //   1355	1363	1666	java/lang/Exception
-    //   1651	1663	1666	java/lang/Exception
+    //   848	897	1622	java/lang/Exception
+    //   1215	1274	1660	java/lang/Exception
+    //   1274	1299	1660	java/lang/Exception
+    //   1299	1349	1660	java/lang/Exception
+    //   1349	1357	1660	java/lang/Exception
+    //   1645	1657	1660	java/lang/Exception
   }
   
   @SuppressLint({"NewApi"})
@@ -7665,9 +8143,17 @@ public class FriendProfileCardActivity
         this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
         this.app.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver);
         removeObserver(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelObserver);
+        Object localObject1;
         if (this.app != null)
         {
-          Object localObject1 = (StatusManager)this.app.getManager(14);
+          localObject1 = (VasQuickUpdateManager)this.app.getManager(183);
+          if (localObject1 != null) {
+            ((VasQuickUpdateManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+          }
+        }
+        if (this.app != null)
+        {
+          localObject1 = (StatusManager)this.app.getManager(14);
           if (localObject1 != null) {
             ((StatusManager)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener);
           }
@@ -7748,7 +8234,7 @@ public class FriendProfileCardActivity
     Object localObject = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
     if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
       if (!NetworkUtil.d(BaseApplication.getContext())) {
-        a(2131434613, 1);
+        a(2131434629, 1);
       }
     }
     label231:
@@ -7760,7 +8246,7 @@ public class FriendProfileCardActivity
       {
         localCardHandler.b((String)((ArrayList)localObject).get(0));
         H();
-        this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, this.jdField_q_of_type_Int);
+        this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, this.jdField_r_of_type_Int);
         return;
       }
       localCardHandler.a((ArrayList)localObject);
@@ -7790,7 +8276,7 @@ public class FriendProfileCardActivity
             }
           }
           else {
-            a(2131435925, 1);
+            a(2131435943, 1);
           }
         }
       }
@@ -7886,7 +8372,7 @@ public class FriendProfileCardActivity
       {
         WebProcessManager localWebProcessManager = (WebProcessManager)this.app.getManager(12);
         if (localWebProcessManager != null) {
-          localWebProcessManager.a(-1, new sro(this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession));
+          localWebProcessManager.a(-1, new swj(this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession));
         }
         QZoneHelper.a(this.app, this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession);
       }
@@ -7980,12 +8466,12 @@ public class FriendProfileCardActivity
       if ((localProfilePerformanceReport != null) && (localProfilePerformanceReport.a())) {
         localProfilePerformanceReport.b(2);
       }
-      if ((!this.m) || (this.jdField_l_of_type_Boolean))
+      if ((!this.jdField_m_of_type_Boolean) || (this.jdField_l_of_type_Boolean))
       {
         this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(100);
         this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(100, 100L);
         this.jdField_l_of_type_Boolean = false;
-        this.m = true;
+        this.jdField_m_of_type_Boolean = true;
       }
       if (this.jdField_g_of_type_Boolean)
       {
@@ -7999,13 +8485,13 @@ public class FriendProfileCardActivity
   public void e()
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.a(2131436543);
-    localActionSheet.b(2131435815);
-    localActionSheet.b(2131435812);
-    localActionSheet.b(2131435814);
-    localActionSheet.b(2131435813);
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new spb(this, localActionSheet));
+    localActionSheet.a(2131436563);
+    localActionSheet.b(2131435831);
+    localActionSheet.b(2131435828);
+    localActionSheet.b(2131435830);
+    localActionSheet.b(2131435829);
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new stw(this, localActionSheet));
     try
     {
       if (!isFinishing()) {
@@ -8023,7 +8509,7 @@ public class FriendProfileCardActivity
   {
     if (paramInt == 7)
     {
-      this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.post(new sqa(this));
+      this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.post(new suv(this));
       return;
     }
     Object localObject2 = this.app.getCurrentNickname();
@@ -8044,7 +8530,7 @@ public class FriendProfileCardActivity
     for (paramInt = 0;; paramInt = localObject1.length)
     {
       QLog.d("FriendProfileCardActivity", 2, String.format("qzGoQzoneUserHomeActivity vQzoneCoverInfo=%s length=%s", new Object[] { localObject1, Integer.valueOf(paramInt) }));
-      QZoneHelper.a(this, (QZoneHelper.UserInfo)localObject2, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.g, -1, 5, this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession, (byte[])localObject1);
+      QZoneHelper.a(this, (QZoneHelper.UserInfo)localObject2, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_g_of_type_Int, -1, 5, this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession, (byte[])localObject1);
       localObject1 = new QZoneClickReport.ReportInfo();
       ((QZoneClickReport.ReportInfo)localObject1).c = "1";
       ((QZoneClickReport.ReportInfo)localObject1).jdField_d_of_type_JavaLangString = "0";
@@ -8095,7 +8581,7 @@ public class FriendProfileCardActivity
     PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.app.getManager(10);
     PhoneContact localPhoneContact = localPhoneContactManagerImp.c(a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne));
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
-    localActionSheet.b(2131435808);
+    localActionSheet.b(2131435824);
     if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 53)
     {
       ReportController.b(this.app, "CliOper", "", "", "0X8007015", "0X8007015", 0, 0, "", "", "", "");
@@ -8105,8 +8591,8 @@ public class FriendProfileCardActivity
     }
     for (;;)
     {
-      localActionSheet.c(2131433015);
-      localActionSheet.a(new spc(this, localPhoneContactManagerImp, bool, localActionSheet));
+      localActionSheet.c(2131433029);
+      localActionSheet.a(new sty(this, localPhoneContactManagerImp, bool, localActionSheet));
       try
       {
         if (!isFinishing()) {
@@ -8124,7 +8610,7 @@ public class FriendProfileCardActivity
         break;
       }
       if (localPhoneContact.isHiden) {}
-      for (i1 = 2131435811;; i1 = 2131435809)
+      for (i1 = 2131435827;; i1 = 2131435825)
       {
         localActionSheet.b(i1);
         break;
@@ -8145,13 +8631,13 @@ public class FriendProfileCardActivity
       return;
     }
     this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this);
-    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(getResources().getString(2131439113));
-    String str2 = getString(2131430152);
+    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(getResources().getString(2131439140));
+    String str2 = getString(2131430155);
     String str1 = str2;
     if (paramString != null) {
       str1 = str2 + paramString;
     }
-    paramString = new sqy(this, this);
+    paramString = new svt(this, this);
     this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(str1, paramString);
     this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(paramString);
     this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
@@ -8231,13 +8717,13 @@ public class FriendProfileCardActivity
     localObject1 = new FriendProfileCardActivity.ProfileTopGestureLayout(this, this);
     ((FriendProfileCardActivity.ProfileTopGestureLayout)localObject1).setOnFlingGesture(this);
     ((FriendProfileCardActivity.ProfileTopGestureLayout)localObject1).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_f_of_type_AndroidViewView = View.inflate(this, 2130970573, null);
+    this.jdField_f_of_type_AndroidViewView = View.inflate(this, 2130970586, null);
     ((FriendProfileCardActivity.ProfileTopGestureLayout)localObject1).addView(this.jdField_f_of_type_AndroidViewView);
     if ((this.jdField_f_of_type_AndroidViewView instanceof PerfRelativeLayout)) {
       ((PerfRelativeLayout)this.jdField_f_of_type_AndroidViewView).setOnDrawCompleteListener(this.jdField_a_of_type_ComTencentMobileqqFpsreportOnDrawCompleteListener);
     }
-    this.jdField_b_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131371205);
-    this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView = ((PullToZoomHeaderListView)this.jdField_f_of_type_AndroidViewView.findViewById(2131363733));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131371203);
+    this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView = ((PullToZoomHeaderListView)this.jdField_f_of_type_AndroidViewView.findViewById(2131363757));
     this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.setMotionEventInterceptor(this);
     this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.setNeedCheckSpringback(true);
@@ -8245,16 +8731,16 @@ public class FriendProfileCardActivity
     this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener);
     this.jdField_e_of_type_AndroidViewView = new View(this);
     this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.addFooterView(this.jdField_e_of_type_AndroidViewView);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131371209);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131363245));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131363428));
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494188));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131363474));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131363381));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)this.jdField_f_of_type_AndroidViewView.findViewById(2131363379));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMusicPendantView = ((MusicPendantView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371206));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131371207);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131363262));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131363447));
+    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494194));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131363493));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131363400));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)this.jdField_f_of_type_AndroidViewView.findViewById(2131363398));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMusicPendantView = ((MusicPendantView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371204));
     c(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371208));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371206));
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.forbiddenLayer();
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setFitFullScreenXY();
     if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 33)
@@ -8264,14 +8750,14 @@ public class FriendProfileCardActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2130970538, null);
-      localObject2 = View.inflate(this, 2130970534, null);
+      this.jdField_a_of_type_AndroidViewView = View.inflate(this, 2130970551, null);
+      localObject2 = View.inflate(this, 2130970547, null);
       this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.addHeaderView((View)localObject2);
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((View)localObject2).findViewById(2131371026));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((View)localObject2).findViewById(2131371022));
       localObject2 = new DataTag(29, null);
       this.jdField_a_of_type_AndroidViewViewGroup.setTag(localObject2);
       this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371027);
+      localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371023);
       if (localObject2 != null) {}
       try
       {
@@ -8279,16 +8765,16 @@ public class FriendProfileCardActivity
         if (!((Animatable)localObject2).isRunning()) {
           ((Animatable)localObject2).start();
         }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView = ((ProfileCardMoreInfoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371039));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView = ((ProfileCardMoreInfoView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371035));
         this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, this.app, this, this.jdField_q_of_type_Boolean);
         this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.setVisibility(0);
         if (Build.VERSION.SDK_INT >= 11) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.addOnLayoutChangeListener(new spi(this));
+          this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.addOnLayoutChangeListener(new sud(this));
         }
         this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_d_of_type_Boolean = this.jdField_j_of_type_Boolean;
-        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371040));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371207));
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_f_of_type_AndroidViewView.findViewById(2131364148));
+        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371036));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371205));
+        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_f_of_type_AndroidViewView.findViewById(2131364173));
         a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
         if (this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler != null)
@@ -8299,17 +8785,17 @@ public class FriendProfileCardActivity
           localObject2 = this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(10);
           this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.sendMessageDelayed((Message)localObject2, 10000L);
         }
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView = ((ShakeImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371203));
-        this.jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView = ((ShakeImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371204));
-        this.jdField_d_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131371201);
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout = ((SingleTouchLayout)this.jdField_f_of_type_AndroidViewView.findViewById(2131371202));
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewShakeImageView = ((ShakeImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371201));
+        this.jdField_b_of_type_ComTencentMobileqqProfileViewShakeImageView = ((ShakeImageView)this.jdField_f_of_type_AndroidViewView.findViewById(2131371202));
+        this.jdField_d_of_type_AndroidViewView = this.jdField_f_of_type_AndroidViewView.findViewById(2131371199);
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout = ((SingleTouchLayout)this.jdField_f_of_type_AndroidViewView.findViewById(2131371200));
         this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setEditable(false);
         this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setMovable(false);
         this.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.setAdapter(new XSimpleListAdapter(this.jdField_a_of_type_AndroidViewView));
         super.setContentView((View)localObject1);
         localObject1 = (FrameLayout)findViewById(16908290);
         if (localObject1 != null) {
-          ((FrameLayout)localObject1).setBackgroundResource(2130843039);
+          ((FrameLayout)localObject1).setBackgroundResource(2130843071);
         }
         X();
         c(null);
@@ -8357,7 +8843,7 @@ public class FriendProfileCardActivity
     for (Object localObject = "1";; localObject = "2")
     {
       VasWebviewUtil.reportCommercialDrainage(this.app.getCurrentAccountUin(), "Bubble", "ShowEffect", (String)localObject, 1, 0, 0, null, Integer.toString(i1), null);
-      localObject = ((VasExtensionManager)this.app.getManager(234)).a;
+      localObject = ((VasExtensionManager)this.app.getManager(234)).jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager;
       this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader = new FriendProfileCardActivity.ColorScreenLoader(this, i1);
       ((ColorScreenManager)localObject).a(i1, VasManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity$ColorScreenLoader));
       return;
@@ -8379,8 +8865,8 @@ public class FriendProfileCardActivity
     } while (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null);
     this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(8);
     return;
-    ThreadManager.remove(this.jdField_a_of_type_Srn);
-    ThreadManager.post(this.jdField_a_of_type_Srn, 5, null, true);
+    ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_Swi, 16);
+    ThreadManager.excute(this.jdField_a_of_type_Swi, 16, null, true);
   }
   
   public void m()
@@ -8417,7 +8903,7 @@ public class FriendProfileCardActivity
     {
       i3 += ((Resources)localObject).getDimensionPixelSize(2131558670);
       int i5 = Math.min(Math.max(i4 - i2 - i1, i3), i4 / 3);
-      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131371041);
+      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131371037);
       if (QLog.isColorLevel()) {
         QLog.d("Q.profilecard.FrdProfileCard", 2, "updatePlaceHolder mScreenHeight=" + i4 + ",moreInfoViewHeight=" + i1 + ",headerViewHeight=" + i2 + ",minHeight=" + i3 + ",placeHolderViewHeight=" + i5);
       }
@@ -8508,9 +8994,7 @@ public class FriendProfileCardActivity
       this.jdField_a_of_type_ComTencentMobileqqUtilsTimeTraceUtil = new TimeTraceUtil();
       this.jdField_c_of_type_Boolean = false;
       this.jdField_f_of_type_Boolean = false;
-      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-      }
+      this.jdField_g_of_type_Int = 0;
       if (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null)
       {
         Message localMessage = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage();
@@ -8672,7 +9156,7 @@ public class FriendProfileCardActivity
   {
     Intent localIntent = new Intent(this, QRDisplayActivity.class);
     String str = this.app.getCurrentAccountUin();
-    localIntent.putExtra("title", getString(2131430000));
+    localIntent.putExtra("title", getString(2131430002));
     localIntent.putExtra("nick", ContactUtils.j(this.app, str));
     localIntent.putExtra("uin", str);
     localIntent.putExtra("type", 1);
@@ -8700,19 +9184,19 @@ public class FriendProfileCardActivity
       str1 = this.app.getCurrentNickname();
     }
     localUserInfo.jdField_b_of_type_JavaLangString = str1;
-    QZoneHelper.a(this, localUserInfo, Long.valueOf(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)), 1, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.g, -1, this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession);
+    QZoneHelper.a(this, localUserInfo, Long.valueOf(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)), 1, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_g_of_type_Int, -1, this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession);
   }
   
   public void update(Observable paramObservable, Object paramObject)
   {
     if ((paramObject instanceof MessageRecord)) {
-      runOnUiThread(new sqc(this));
+      runOnUiThread(new sux(this));
     }
   }
   
   public void v()
   {
-    ThreadManager.post(new spz(this), 8, null, true);
+    ThreadManager.post(new suu(this), 8, null, true);
   }
   
   public void w()
@@ -8726,7 +9210,7 @@ public class FriendProfileCardActivity
   
   void x()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.g == 100) && (GesturePWDUtils.getJumpLock(getActivity(), this.app.getCurrentAccountUin()))) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_g_of_type_Int == 100) && (GesturePWDUtils.getJumpLock(getActivity(), this.app.getCurrentAccountUin()))) {
       startUnlockActivity();
     }
   }
@@ -8742,18 +9226,18 @@ public class FriendProfileCardActivity
         break label105;
       }
       if (i1 > 99) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131433297) + "(99+)");
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131433311) + "(99+)");
       }
     }
     else
     {
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131433297) + "(" + i1 + ")");
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131433311) + "(" + i1 + ")");
     return;
     label105:
-    getIntent().putExtra("leftViewText", getString(2131433297));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131433297));
+    getIntent().putExtra("leftViewText", getString(2131433311));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131433311));
   }
   
   public void z()
@@ -8789,7 +9273,7 @@ public class FriendProfileCardActivity
               if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard == null) || ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_f_of_type_Long) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId != ProfileCardTemplate.jdField_h_of_type_Long)) || (!(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof FriendProfileCardBgDrawable))) {
                 break label489;
               }
-              ThreadManager.post(new srf(this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable), 5, null, true);
+              ThreadManager.post(new swa(this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable), 5, null, true);
             }
             if (!ThemeUtil.isInNightMode(this.app)) {
               break label514;
@@ -8836,8 +9320,8 @@ public class FriendProfileCardActivity
           this.jdField_c_of_type_AndroidViewView.setVisibility(8);
           continue;
           label533:
-          localView.setForeground(getResources().getDrawable(2130845874));
-          localView.setBackgroundResource(2130843039);
+          localView.setForeground(getResources().getDrawable(2130845954));
+          localView.setBackgroundResource(2130843071);
           this.jdField_a_of_type_AndroidViewView.setBackgroundResource(0);
           this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.setBackgroundResource(0);
           if (this.jdField_c_of_type_AndroidViewView != null) {

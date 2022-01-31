@@ -1,29 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class aohr
   implements Runnable
 {
-  public aohr(RMVideoStateMgr paramRMVideoStateMgr) {}
+  public aohr(DoodleLayout paramDoodleLayout, TextLayer.TextItem paramTextItem) {}
   
   public void run()
   {
-    synchronized (RMVideoStateMgr.a(this.a))
-    {
-      if (this.a.f())
-      {
-        this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.b(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture$OnAudioRecordListener);
-        this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.f();
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoStateMgr", 2, "[@][closeAudioRecord]");
-        }
-      }
-      this.a.d = false;
-      this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-      this.a.e = false;
-      return;
-    }
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$TextItem);
   }
 }
 

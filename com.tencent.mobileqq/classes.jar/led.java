@@ -1,23 +1,14 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class led
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public led(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
+  public led(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    ReadInJoySelfActivity.a(this.a).setVisibility(8);
-    ReadInJoySelfActivity.a(this.a).setAnimation(null);
+    this.a.g();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,18 +1,25 @@
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.biz.troop.TroopMemberApiPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class pan
-  extends pav
+  implements TroopMemberApiClient.Callback
 {
-  public pan(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
-  {
-    super(paramAbsBaseWebViewActivity, null);
-  }
+  public pan(TroopMemberApiPlugin paramTroopMemberApiPlugin, String paramString) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  public void a(Bundle paramBundle)
   {
-    return a(paramWebView, paramString);
+    boolean bool = paramBundle.getBoolean("isSuccess", false);
+    if (bool)
+    {
+      paramBundle = paramBundle.getString("data");
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
   }
 }
 

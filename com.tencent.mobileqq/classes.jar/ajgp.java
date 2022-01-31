@@ -1,20 +1,32 @@
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView.GridViewAdapter;
 
-class ajgp
-  implements View.OnClickListener
+public class ajgp
+  implements View.OnKeyListener
 {
-  ajgp(ajgn paramajgn, CheckBox paramCheckBox) {}
+  public ajgp(NewTroopContactView paramNewTroopContactView) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramView = this.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
+    if (paramInt == 67)
     {
-      paramView.setChecked(bool);
-      return;
+      if (paramKeyEvent.getAction() != 0) {
+        break label35;
+      }
+      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
+    }
+    for (;;)
+    {
+      return false;
+      label35:
+      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView$GridViewAdapter.a();
+      }
     }
   }
 }

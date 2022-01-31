@@ -1,20 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.test.MapTestHelper;
+import android.graphics.Bitmap;
 
-public class abax
-  implements View.OnClickListener
+public final class abax
 {
-  public abax(ARMapActivity paramARMapActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArmapTestMapTestHelper == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArmapTestMapTestHelper = new MapTestHelper(this.a, this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView, new abay(this));
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapTestMapTestHelper.a();
-  }
+  public int a = 1;
+  public Bitmap a;
 }
 
 

@@ -1,53 +1,52 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateWordClickCallback;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo;
+import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
 
 public class ahst
-  implements View.OnClickListener
+  implements HWEncodeListener
 {
-  public ahst(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
+  public ahst(MergeEditVideo paramMergeEditVideo, int[] paramArrayOfInt) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(String arg1)
   {
-    FragmentActivity localFragmentActivity;
-    Object localObject;
-    if (paramView.getTag() != null)
+    StoryReportor.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
+    synchronized (MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo))
     {
-      localFragmentActivity = this.a.getActivity();
-      localObject = (Integer)paramView.getTag(2131362080);
-      paramView = (AssociateSearchWordsFragment.AssociateItem)paramView.getTag(2131362079);
-      switch (paramView.jdField_a_of_type_Int)
+      MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo, true);
+      MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo).notifyAll();
+      return;
+    }
+  }
+  
+  public void a_(int paramInt, Throwable arg2)
+  {
+    String str;
+    if (??? != null) {
+      str = ???.getMessage();
+    }
+    for (;;)
+    {
+      StoryReportor.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
+      SLog.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
+      MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo, paramInt);
+      synchronized (MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo))
       {
+        MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo, true);
+        MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo).notifyAll();
+        return;
+        str = "UNKNOWN ERROR";
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localFragmentActivity instanceof AssociateSearchWordsFragment.AssociateWordClickCallback));
-      Intent localIntent = new Intent(localFragmentActivity, QQBrowserActivity.class);
-      localObject = paramView.e;
-      paramView = (View)localObject;
-      if (!((String)localObject).startsWith("http")) {
-        paramView = "http://" + (String)localObject;
-      }
-      localIntent.putExtra("url", paramView);
-      localFragmentActivity.startActivity(localIntent);
-      localFragmentActivity.finish();
-      return;
-    } while (!(localFragmentActivity instanceof AssociateSearchWordsFragment.AssociateWordClickCallback));
-    ((AssociateSearchWordsFragment.AssociateWordClickCallback)localFragmentActivity).a(paramView.jdField_a_of_type_JavaLangString, paramView.d);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahst
  * JD-Core Version:    0.7.0.1
  */

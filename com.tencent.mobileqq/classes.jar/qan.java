@@ -1,14 +1,15 @@
-import com.tencent.device.msg.activities.DevShortVideoItemBuilder;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.bind.DevicePluginDownloadActivity;
 
 public class qan
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public qan(DevShortVideoItemBuilder paramDevShortVideoItemBuilder) {}
+  public qan(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FMToastUtil.a(2131427563);
+    paramDialogInterface.dismiss();
   }
 }
 

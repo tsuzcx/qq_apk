@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qzone.module.feedcomponent.ui.FeedSearchSeparator android:textSize="16.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3234" android:background="@null" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08b5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="更多动态"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ee0" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d003f" android:textColor="#ff858585" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3243" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="观看记录" />
+</LinearLayout>

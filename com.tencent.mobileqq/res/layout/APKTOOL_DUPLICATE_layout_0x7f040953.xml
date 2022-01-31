@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a291e" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a294d" android:background="#ccffffff" android:layout_width="fill_parent" android:layout_height="43.0dip" android:layout_alignParentTop="true" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a294e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02194a" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="24.0dip" android:layout_marginLeft="9.0dip" android:layout_marginTop="9.0dip" />
-    <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a294f" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021963" />
-        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0043" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2950" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_centerHorizontal="true" />
-    </LinearLayout>
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a10f1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02195e" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a291f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220f7" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2920" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020425" android:clickable="true" android:layout_width="fill_parent" android:layout_height="46.0dip">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2921" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="11.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021977" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0043" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0551" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0641" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="发现更多购物号" android:includeFontPadding="false" android:drawableRight="@drawable/skin_icon_arrow_right_normal" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2921" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0741" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+</LinearLayout>

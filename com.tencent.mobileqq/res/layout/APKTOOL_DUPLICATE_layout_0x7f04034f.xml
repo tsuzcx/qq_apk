@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.flashchat.FlashChatPanel android:orientation="vertical" android:id="@id/panelLayout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.QQViewPager android:id="@id/icon_viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1232" android:layout_centerHorizontal="true" />
-    <FrameLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1232" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02215e" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03fa" android:layout_alignParentBottom="true">
-        <com.tencent.mobileqq.widget.TabBarView android:layout_gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1233" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-        <Button android:gravity="center" android:layout_gravity="center|right" android:id="@id/send_btn" android:paddingLeft="9.0dip" android:paddingRight="9.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0387" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2180" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01eb" />
-    </FrameLayout>
-</com.tencent.mobileqq.flashchat.FlashChatPanel>
+    <ImageView android:layout_width="39.0dip" android:layout_height="39.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f66" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff7e7e7e" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="添加群头像" />
+</LinearLayout>

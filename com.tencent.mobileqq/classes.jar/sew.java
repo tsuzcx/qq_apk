@@ -1,21 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.util.Iterator;
+import java.util.List;
 
-class sew
-  implements DialogInterface.OnClickListener
+public class sew
+  implements FMDialogUtil.FMDialogInterface
 {
-  sew(sev paramsev) {}
+  public sew(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, FileManagerEngine paramFileManagerEngine) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 1)
+    Iterator localIterator;
+    if (this.jdField_a_of_type_JavaUtilList.size() > 1)
     {
-      this.a.a.a.cancel();
-      this.a.a.finish();
+      FMToastUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131428195));
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    }
+    for (;;)
+    {
+      if (!localIterator.hasNext()) {
+        return;
+      }
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful())
+      {
+        if (FileUtils.b(localFileManagerEntity.getFilePath()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+          continue;
+          FMToastUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131428195));
+          break;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+      }
     }
   }
+  
+  public void b() {}
 }
 
 

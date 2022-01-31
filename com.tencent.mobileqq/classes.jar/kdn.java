@@ -1,34 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
-import java.lang.ref.WeakReference;
+import com.tencent.av.ui.VideoInviteFloatBar;
 
-public final class kdn
-  extends Handler
+public class kdn
+  implements Runnable
 {
-  WeakReference a;
+  public kdn(VideoInviteFloatBar paramVideoInviteFloatBar) {}
   
-  public kdn(ZimuViewMotion paramZimuViewMotion)
+  public void run()
   {
-    this.a = new WeakReference(paramZimuViewMotion);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (ZimuViewMotion)this.a.get();
-    } while (paramMessage == null);
-    paramMessage.e();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kdn
  * JD-Core Version:    0.7.0.1
  */

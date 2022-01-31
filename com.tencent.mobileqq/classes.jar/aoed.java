@@ -1,16 +1,25 @@
-import android.graphics.RectF;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
 
-public abstract interface aoed
+public class aoed
+  implements Runnable
 {
-  public abstract void a(int paramInt);
+  public aoed(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public abstract void a(int paramInt1, int paramInt2, RectF paramRectF);
-  
-  public abstract void a(int paramInt, RectF paramRectF);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  public void run()
+  {
+    Runnable localRunnable = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.jdField_a_of_type_JavaLangRunnable;
+    if (localRunnable != null) {
+      localRunnable.run();
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.sApplication, "上传失败", 0).a();
+  }
 }
 
 

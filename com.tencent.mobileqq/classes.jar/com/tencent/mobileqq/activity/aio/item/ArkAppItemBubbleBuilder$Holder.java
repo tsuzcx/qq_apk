@@ -10,9 +10,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ark.ArkAdapterItemInterface;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import uun;
-import uuo;
-import uuq;
+import uzn;
+import uzo;
+import uzq;
 
 public class ArkAppItemBubbleBuilder$Holder
   extends BaseBubbleBuilder.ViewHolder
@@ -27,19 +27,20 @@ public class ArkAppItemBubbleBuilder$Holder
   public void a(Holder paramHolder, ArkAdapterItemInterface paramArkAdapterItemInterface)
   {
     Object localObject = paramArkAdapterItemInterface.getArkAppNameAndPath();
-    paramArkAdapterItemInterface = localObject[0];
+    String str = localObject[0];
     localObject = localObject[1];
+    paramArkAdapterItemInterface.clickTail(null, paramHolder, this.a.getContext());
     if (localObject != null)
     {
-      ArkAppCenter.a((String)localObject, new uun(this, paramHolder));
-      ArkAppCenter.a().post(new uuo(this, (String)localObject, paramHolder));
+      ArkAppCenter.a((String)localObject, new uzn(this, paramHolder));
+      ArkAppCenter.a().post(new uzo(this, (String)localObject, paramHolder));
     }
     do
     {
       return;
-      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    } while (localObject == null);
-    ((ArkAppCenter)((QQAppInterface)localObject).getManager(120)).a().a(paramArkAdapterItemInterface, "0.0.0.1", null, new uuq(this, paramHolder));
+      paramArkAdapterItemInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    } while (paramArkAdapterItemInterface == null);
+    ((ArkAppCenter)paramArkAdapterItemInterface.getManager(120)).a().a(str, "0.0.0.1", null, new uzq(this, paramHolder));
   }
 }
 

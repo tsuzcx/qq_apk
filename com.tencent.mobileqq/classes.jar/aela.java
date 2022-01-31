@@ -1,64 +1,17 @@
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicpendant.MusicPendantListener;
-import com.tencent.mobileqq.musicpendant.MusicPendantManager;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import com.tencent.mobileqq.lyric.util.Singleton;
 
-public class aela
-  implements QQPlayerService.QQPlayerCallback
+public final class aela
+  extends Singleton
 {
-  public aela(MusicPendantManager paramMusicPendantManager) {}
-  
-  public String getToken()
+  protected TimerTaskManager a(Void paramVoid)
   {
-    return MusicPendantManager.a();
-  }
-  
-  public void onPlaySongChanged(SongInfo paramSongInfo)
-  {
-    try
-    {
-      Iterator localIterator = MusicPendantManager.a().iterator();
-      while (localIterator.hasNext())
-      {
-        MusicPendantListener localMusicPendantListener = (MusicPendantListener)((WeakReference)localIterator.next()).get();
-        if (localMusicPendantListener != null) {
-          localMusicPendantListener.a(paramSongInfo);
-        }
-      }
-      return;
-    }
-    catch (Exception paramSongInfo)
-    {
-      paramSongInfo.printStackTrace();
-    }
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    try
-    {
-      Iterator localIterator = MusicPendantManager.a().iterator();
-      while (localIterator.hasNext())
-      {
-        MusicPendantListener localMusicPendantListener = (MusicPendantListener)((WeakReference)localIterator.next()).get();
-        if (localMusicPendantListener != null) {
-          localMusicPendantListener.a(paramInt);
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    return new TimerTaskManager();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aela
  * JD-Core Version:    0.7.0.1
  */

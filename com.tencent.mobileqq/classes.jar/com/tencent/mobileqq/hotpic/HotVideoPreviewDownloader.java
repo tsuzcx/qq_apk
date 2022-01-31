@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adrl;
+import adzu;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -29,7 +29,7 @@ import java.util.Calendar;
 public class HotVideoPreviewDownloader
   extends ProtocolDownloader.Adapter
 {
-  public static final String a = AppConstants.aJ + "hotvideo/preview/";
+  public static final String a = AppConstants.aK + "hotvideo/preview/";
   
   public static Drawable a(Context paramContext, HotVideoData paramHotVideoData)
   {
@@ -237,7 +237,7 @@ public class HotVideoPreviewDownloader
     }
     if (paramDownloadParams.url.isEmpty())
     {
-      paramDownloadParams.GetPreviewURLAsync((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 0, "0", new adrl(this, paramDownloadParams, localFile, paramURLDrawableHandler));
+      paramDownloadParams.GetPreviewURLAsync((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 0, "0", new adzu(this, paramDownloadParams, localFile, paramURLDrawableHandler));
       return localFile;
     }
     a(localFile, paramDownloadParams, paramURLDrawableHandler);

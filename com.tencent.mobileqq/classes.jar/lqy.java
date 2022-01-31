@@ -1,21 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.util.UiThreadUtil;
 
 public class lqy
-  implements Comparator
+  implements Runnable
 {
-  public lqy(ChannelInfoModule paramChannelInfoModule) {}
+  public lqy(DiandianTopConfigManager paramDiandianTopConfigManager) {}
   
-  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
+  public void run()
   {
-    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
-      return 0;
+    synchronized (this.a.a)
+    {
+      AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      UiThreadUtil.a(new lqz(this, FileUtils.a(BaseApplication.getContext().getFileStreamPath("file_readinjoy_diandian_top_config" + localAppInterface.getCurrentAccountUin()))));
+      return;
     }
-    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
-      return -1;
-    }
-    return 1;
   }
 }
 

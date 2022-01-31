@@ -16,7 +16,7 @@ import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentData;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Set;
-import qmj;
+import qra;
 
 public class GdtCanvasView
   extends FrameLayout
@@ -94,8 +94,8 @@ public class GdtCanvasView
   private void e()
   {
     d();
-    inflate(getContext(), 2130969005, this);
-    findViewById(2131362868).setOnClickListener(new qmj(this));
+    inflate(getContext(), 2130969007, this);
+    findViewById(2131362873).setOnClickListener(new qra(this));
   }
   
   private void f()
@@ -215,7 +215,7 @@ public class GdtCanvasView
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData = paramGdtCanvasData;
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager = ((GdtCanvasViewPager)findViewById(2131363114));
+    this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager = ((GdtCanvasViewPager)findViewById(2131363118));
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager.a(new WeakReference(this));
   }
 }

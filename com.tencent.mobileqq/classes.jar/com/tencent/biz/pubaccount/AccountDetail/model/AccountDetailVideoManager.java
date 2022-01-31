@@ -23,11 +23,11 @@ import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import kqi;
-import kql;
-import kqm;
-import kqo;
-import kqq;
+import ksp;
+import kss;
+import kst;
+import ksv;
+import ksx;
 
 public class AccountDetailVideoManager
 {
@@ -35,7 +35,7 @@ public class AccountDetailVideoManager
   static boolean b;
   int jdField_a_of_type_Int;
   public Activity a;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new kqq(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ksx(this);
   Context jdField_a_of_type_AndroidContentContext;
   View jdField_a_of_type_AndroidViewView = null;
   public AccountDetailVideoManager.OnVideoPlayListener a;
@@ -98,7 +98,7 @@ public class AccountDetailVideoManager
   
   private static void c()
   {
-    ThreadManager.post(new kqo(), 2, null, false);
+    ThreadManager.post(new ksv(), 2, null, false);
   }
   
   public void a()
@@ -146,9 +146,9 @@ public class AccountDetailVideoManager
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null)
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(this.jdField_a_of_type_AndroidContentContext, (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new kqi(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new kql(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new kqm(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new ksp(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new kss(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new kst(this));
     }
     for (int i = 1;; i = 0)
     {

@@ -68,7 +68,11 @@ public class NowProxy
   
   public boolean a(NowProxy.ListNameData paramListNameData, long paramLong, NowFromData paramNowFromData, int paramInt, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin.a(paramListNameData, paramLong, paramNowFromData, paramInt, paramBundle);
+    NowPlugin localNowPlugin = this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowPlugin;
+    if (paramNowFromData == null) {}
+    for (paramNowFromData = "unkown";; paramNowFromData = paramNowFromData.a) {
+      return localNowPlugin.a(paramListNameData, paramLong, paramNowFromData, paramInt, paramBundle);
+    }
   }
   
   public void b()

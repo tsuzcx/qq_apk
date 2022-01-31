@@ -31,10 +31,10 @@ import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import zge;
-import zgf;
-import zgg;
-import zgh;
+import znd;
+import zne;
+import znf;
+import zng;
 
 public class MayknowRecommendManager
   implements Manager
@@ -44,7 +44,7 @@ public class MayknowRecommendManager
   private static int jdField_b_of_type_Int = 70;
   private static int jdField_c_of_type_Int = 3;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zgg(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new znf(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
@@ -72,7 +72,7 @@ public class MayknowRecommendManager
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
     this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getSubThreadLooper());
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new zge(this));
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new znd(this));
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
   }
   
@@ -103,12 +103,12 @@ public class MayknowRecommendManager
   
   private void a(String paramString, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.ap, 0, true, false);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.aq, 0, true, false);
     MessageRecord localMessageRecord = MessageRecordFactory.a(-1000);
     localMessageRecord.msgtype = -1000;
     localMessageRecord.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    localMessageRecord.frienduin = AppConstants.ap;
-    localMessageRecord.senderuin = AppConstants.ap;
+    localMessageRecord.frienduin = AppConstants.aq;
+    localMessageRecord.senderuin = AppConstants.aq;
     localMessageRecord.istroop = 0;
     localMessageRecord.msg = paramString;
     localMessageRecord.time = paramLong;
@@ -180,7 +180,7 @@ public class MayknowRecommendManager
         }
       }
       finally {}
-      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new zgf(this), 5000L);
+      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new zne(this), 5000L);
     }
   }
   
@@ -760,7 +760,7 @@ public class MayknowRecommendManager
             }
           }
         }
-        for (paramArrayList = "你有可能认识的人";; paramArrayList = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435516), new Object[] { paramArrayList }))
+        for (paramArrayList = "你有可能认识的人";; paramArrayList = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435532), new Object[] { paramArrayList }))
         {
           a(paramArrayList, paramLong);
           break;
@@ -837,7 +837,7 @@ public class MayknowRecommendManager
   
   public void b()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new zgh(this));
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new zng(this));
   }
   
   public void b(MayKnowRecommend paramMayKnowRecommend, int paramInt1, int paramInt2, int paramInt3)

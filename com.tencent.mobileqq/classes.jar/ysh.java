@@ -1,40 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.script.SpriteContext;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
 
 public class ysh
   implements Runnable
 {
-  public ysh(SpriteUIHandler paramSpriteUIHandler, int paramInt) {}
+  public ysh(ApolloRenderDriver paramApolloRenderDriver) {}
   
   public void run()
   {
-    try
-    {
-      MqqHandler localMqqHandler = SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().a();
-      if (1 == this.jdField_a_of_type_Int)
-      {
-        localMqqHandler.obtainMessage(47, (int)((float)DeviceInfoUtil.i() / 7.0F / 2.84D) + 40, 0).sendToTarget();
-        return;
-      }
-      if (2 == this.jdField_a_of_type_Int)
-      {
-        localMqqHandler.obtainMessage(47, (int)((float)DeviceInfoUtil.i() / 7.0F) + 40, 0).sendToTarget();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("cmshow_scripted_SpriteUIHandler", 1, localException, new Object[0]);
-      return;
-    }
-    if (3 == this.jdField_a_of_type_Int) {
-      localException.sendEmptyMessage(62);
-    }
+    this.a.a.a(ApolloActionHelper.a());
   }
 }
 

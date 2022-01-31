@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
-class syd
-  implements WebProcessManager.WebProcessStartListener
+public class syd
+  implements DialogInterface.OnClickListener
 {
-  syd(syc paramsyc) {}
+  public syd(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      Leba.b(this.a.a.a).a();
-    }
+    paramDialogInterface.dismiss();
+    this.a.a("0X80081E6", 1);
   }
 }
 

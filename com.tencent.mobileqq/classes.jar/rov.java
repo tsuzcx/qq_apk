@@ -1,32 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
-public class rov
-  implements ActionSheet.OnButtonClickListener
+class rov
+  implements Runnable
 {
-  public rov(BaseChatPie paramBaseChatPie, ChatMessage paramChatMessage, ActionSheet paramActionSheet) {}
+  rov(rot paramrot) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt == 0)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
-        break label41;
-      }
-      FileManagerReporter.a("0X8005E4F");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      label41:
-      FileManagerReporter.a("0X8005E4D");
-    }
+    this.a.a.d();
   }
 }
 

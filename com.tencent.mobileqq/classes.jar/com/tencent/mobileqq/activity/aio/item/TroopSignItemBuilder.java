@@ -75,7 +75,7 @@ public abstract class TroopSignItemBuilder
     {
     default: 
       return;
-    case 2131375584: 
+    case 2131375650: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
     }
@@ -140,14 +140,14 @@ public abstract class TroopSignItemBuilder
       localTextView.setEllipsize(TextUtils.TruncateAt.END);
       localTextView.setTextColor(-1);
       localTextView.setTextSize(2, 12.0F);
-      localTextView.setBackgroundResource(2130840645);
+      localTextView.setBackgroundResource(2130840660);
       paramSignItemHolder.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject1);
       paramSignItemHolder.e = localTextView;
       paramSignItemHolder.e.setText(localMessageForTroopSign.srcName);
       if (!TextUtils.isEmpty(localMessageForTroopSign.srcIconUrl))
       {
         localObject2 = localMessageForTroopSign.srcIconUrl;
-        localDrawable = localResources.getDrawable(2130846094);
+        localDrawable = localResources.getDrawable(2130846176);
         localDrawable.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
         localObject1 = new ColorDrawable(15790320);
         ((Drawable)localObject1).setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));

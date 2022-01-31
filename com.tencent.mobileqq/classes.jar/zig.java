@@ -1,54 +1,30 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.ClubContentUpdateHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
 
 public class zig
-  implements Comparator
+  implements Runnable
 {
-  public zig(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zig(ClubContentUpdateHandler paramClubContentUpdateHandler, int paramInt, String paramString) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void run()
   {
-    int i = -1;
-    int j = 1;
-    if ((!paramPhoneContact1.uin.equals("0")) || (!paramPhoneContact2.uin.equals("0"))) {
-      if ((!paramPhoneContact1.uin.equals("0")) && (!paramPhoneContact2.uin.equals("0"))) {
-        i = PhoneContactManagerImp.a(paramPhoneContact1, paramPhoneContact2);
-      }
-    }
-    do
+    try
     {
-      return i;
-      if (!paramPhoneContact2.uin.equals("0")) {}
-      for (i = -1;; i = 1) {
-        return i;
+      ApolloManager localApolloManager = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppClubContentUpdateHandler.a.getManager(152);
+      int i = ApolloUtil.a(2);
+      if (i != this.jdField_a_of_type_Int) {
+        localApolloManager.a(2);
       }
-      if (!paramPhoneContact1.uin.equals("0")) {
-        break;
-      }
-      FriendsManager localFriendsManager = (FriendsManager)PhoneContactManagerImp.a(this.a).getManager(50);
-      bool1 = localFriendsManager.a(paramPhoneContact1.unifiedCode, true);
-      bool2 = localFriendsManager.a(paramPhoneContact2.unifiedCode, true);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      if ((bool1) && (bool2)) {
-        return PhoneContactManagerImp.a(paramPhoneContact1, paramPhoneContact2);
-      }
-    } while (bool2);
-    return 1;
-    boolean bool1 = paramPhoneContact1.isNewRecommend;
-    boolean bool2 = paramPhoneContact2.isNewRecommend;
-    if (((bool1) || (bool2)) && ((!bool1) || (!bool2)))
-    {
-      if (bool2) {}
-      for (i = j;; i = -1) {
-        return i;
-      }
+      QLog.i("ClubContentUpdateHandler", 1, "handleApolloGameRealTimeUpdate name: " + this.jdField_a_of_type_JavaLangString + ", ver: " + this.jdField_a_of_type_Int + ", locver: " + i);
+      return;
     }
-    return PhoneContactManagerImp.a(paramPhoneContact1, paramPhoneContact2);
+    catch (Exception localException)
+    {
+      QLog.e("ClubContentUpdateHandler", 1, "handleApolloGameRealTimeUpdate failed, errInfo" + localException);
+    }
   }
 }
 

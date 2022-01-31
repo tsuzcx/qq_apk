@@ -1,55 +1,39 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.portal.PortalUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.photoplus.PhotoPlusManager;
-import java.util.concurrent.ConcurrentHashMap;
+import android.database.DataSetObservable;
+import android.database.DataSetObserver;
+import com.tencent.widget.XBaseAdapter;
+import java.util.ArrayList;
 
 public class amlq
-  extends DownloadListener
+  extends DataSetObservable
 {
-  public amlq(PhotoPlusManager paramPhotoPlusManager, String paramString1, String paramString2, String paramString3) {}
+  public amlq(XBaseAdapter paramXBaseAdapter) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public void a(int paramInt1, int paramInt2)
   {
-    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
-    if (paramDownloadTask.a() == 3)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] download finished " + this.b);
-      }
-      if (TextUtils.isEmpty(this.c)) {
-        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      paramDownloadTask = PortalUtils.a(this.jdField_a_of_type_JavaLangString);
-      if (this.c.equalsIgnoreCase(paramDownloadTask))
+      int i;
+      synchronized (this.mObservers)
       {
-        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
-        return;
+        i = this.mObservers.size() - 1;
+        if (i >= 0)
+        {
+          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+          if ((localDataSetObserver instanceof amlp)) {
+            ((amlp)localDataSetObserver).a(paramInt1, paramInt2);
+          } else {
+            localDataSetObserver.onChanged();
+          }
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] checkMd5 failed: " + this.jdField_a_of_type_JavaLangString);
-      }
-      FileUtils.d(this.jdField_a_of_type_JavaLangString);
       return;
+      i -= 1;
     }
-    QLog.d("PhotoPlusManager", 2, "[onDone] downloadFile failed: " + paramDownloadTask.b + " code=" + paramDownloadTask.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amlq
  * JD-Core Version:    0.7.0.1
  */

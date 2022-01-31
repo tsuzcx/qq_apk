@@ -1,14 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
-public final class mcd
-  implements Runnable
+class mcd
+  implements DialogInterface.OnClickListener
 {
-  public mcd(View paramView, int paramInt1, int paramInt2) {}
+  mcd(mcc parammcc) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoFeedsHelper.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
+    ForwardSdkShareOption.a(this.a.a, true, "shareToQQ", ReadInJoyDeliverVideoActivity.b(this.a.a));
+    this.a.a.moveTaskToBack(true);
+    this.a.a.finish();
   }
 }
 

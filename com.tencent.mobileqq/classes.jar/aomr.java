@@ -1,25 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView;
+import android.util.Property;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
 
 public class aomr
-  implements Runnable
+  extends Property
 {
-  public aomr(GuideVideoView paramGuideVideoView) {}
-  
-  public void run()
+  public aomr(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DANCE_MACHINE_GUIDE_VIDEO_VIEW", 2, "onVideoPrepared");
-    }
-    this.a.a = true;
-    if (this.a.b)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DANCE_MACHINE_GUIDE_VIDEO_VIEW", 2, "has triggered start, now start");
-      }
-      GuideVideoView.a(this.a).start();
-    }
+    super(paramClass, paramString);
+  }
+  
+  public Float a(GroundDrawable paramGroundDrawable)
+  {
+    return Float.valueOf(GroundDrawable.c(paramGroundDrawable));
+  }
+  
+  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
+  {
+    GroundDrawable.b(paramGroundDrawable, paramFloat.floatValue());
   }
 }
 

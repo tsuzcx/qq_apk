@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.IProgressCallback;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-class tko
-  implements QQSettingCleanActivity.IProgressCallback
+public class tko
+  implements DialogInterface.OnCancelListener
 {
-  tko(tkn paramtkn) {}
+  public tko(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void a(int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.a.setPercent(paramInt);
+    this.a.finish();
   }
 }
 

@@ -1,17 +1,22 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.CompletedListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserGuideInfoStep.Response;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
 
 public class nzm
-  implements Runnable
+  implements View.OnFocusChangeListener
 {
-  public nzm(GetUserGuideInfoStep paramGetUserGuideInfoStep, GetUserGuideInfoStep.Response paramResponse) {}
+  public nzm(DetailCommentHelper paramDetailCommentHelper) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (GetUserGuideInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep) != null) {
-      GetUserGuideInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserGuideInfoStep$Response);
+    if (!paramBoolean) {
+      this.a.b();
     }
+    while (DetailCommentHelper.a(this.a)) {
+      return;
+    }
+    new Handler().postDelayed(new nzn(this), 200L);
   }
 }
 

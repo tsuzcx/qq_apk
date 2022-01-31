@@ -1,26 +1,17 @@
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mqq.MqqImageLoader;
-import com.tencent.plato.sdk.IImageLoader.Listener;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
 
 public class akzj
-  implements URLDrawable.URLDrawableListener
+  implements Runnable
 {
-  public akzj(MqqImageLoader paramMqqImageLoader, IImageLoader.Listener paramListener) {}
+  public akzj(WebViewJumpPlugin paramWebViewJumpPlugin) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentPlatoSdkIImageLoader$Listener != null)
-    {
-      paramURLDrawable = paramURLDrawable.getCurrDrawable();
-      this.jdField_a_of_type_ComTencentPlatoSdkIImageLoader$Listener.onLoad((BitmapDrawable)paramURLDrawable);
+    Activity localActivity = this.a.mRuntime.a();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      localActivity.finish();
     }
   }
 }

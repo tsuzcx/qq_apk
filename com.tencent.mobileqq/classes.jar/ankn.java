@@ -1,24 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-import dov.com.qq.im.capture.QIMCaptureController;
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
+import java.util.ArrayList;
+import java.util.List;
 
-class ankn
-  implements View.OnClickListener
+public class ankn
+  extends Handler
 {
-  ankn(ankm paramankm) {}
+  public ankn(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setScaleX(0.8F);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.setScaleY(0.8F);
-    QIMCaptureController.a(this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView.a(false);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String[])));
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString = (String[])paramMessage.obj;
+    localArrayList.add(QzoneDynamicAlbumPlugin.a(this.a, arrayOfString));
+    this.a.a(localArrayList, paramMessage.arg1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankn
  * JD-Core Version:    0.7.0.1
  */

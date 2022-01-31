@@ -1,68 +1,56 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting.TeamworkKeyWords;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
+import com.tencent.mobileqq.structmsg.StructMsgGroupElement;
+import com.tencent.mobileqq.structmsg.StructMsgGroupItemElement;
+import java.util.List;
 
 public class ainc
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ainc(AIOMessageSpreadManager paramAIOMessageSpreadManager, ChatMessage paramChatMessage, String paramString1, ConfigSetting.TeamworkKeyWords paramTeamworkKeyWords, String paramString2, String paramString3) {}
+  public ainc(StructMsgGroupElement paramStructMsgGroupElement) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject1 = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a().a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
-    Object localObject2 = localObject1;
-    if (localObject1 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("AIOMessageSpreadManager", 1, "cant find cache msg,uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
-      }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {
+      return;
     }
-    HashMap localHashMap = new HashMap();
-    localObject1 = this.jdField_a_of_type_JavaLangString;
-    if ((this.jdField_a_of_type_JavaLangString.contains("%s")) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting$TeamworkKeyWords != null)) {}
     for (;;)
     {
+      int i;
       try
       {
-        String str = String.format(this.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting$TeamworkKeyWords.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting$TeamworkKeyWords.jdField_a_of_type_JavaLangString });
-        localObject1 = str;
-        localHashMap.put("tim_aio_file_tips", str);
-        localObject1 = str;
-        localHashMap.put("tim_aio_file_link", String.format(this.b, new Object[] { this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting$TeamworkKeyWords.jdField_a_of_type_JavaLangString }));
-        localObject1 = str;
+        int j = Integer.parseInt(String.valueOf(paramView.getTag()));
+        i = 0;
+        if (i >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+          break;
+        }
+        paramView = (View)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+        if (paramView == null) {
+          break label156;
+        }
+        if (i != j)
+        {
+          AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)this.a.jdField_a_of_type_JavaUtilList.get(i);
+          if ((localAbsStructMsgElement != null) && ((localAbsStructMsgElement instanceof StructMsgGroupItemElement))) {
+            ((StructMsgGroupItemElement)localAbsStructMsgElement).a();
+          } else {
+            paramView.setVisibility(8);
+          }
+        }
       }
-      catch (Exception localException)
+      catch (Exception paramView)
       {
-        long l;
-        QLog.e("AIOMessageSpreadManager", 2, localException.toString());
-        continue;
+        paramView.printStackTrace();
+        return;
       }
-      localHashMap.put("tim_aio_file_msg_uiniseq", String.valueOf(((MessageRecord)localObject2).uniseq));
-      localHashMap.put("tim_aio_tips_type", this.c);
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting$TeamworkKeyWords != null)
-      {
-        localHashMap.put("tim_aio_tips_template_id", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting$TeamworkKeyWords.jdField_a_of_type_Int));
-        localHashMap.put("tim_aio_tips_template_type", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting$TeamworkKeyWords.b));
-        localHashMap.put("tim_aio_tips_keyword", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting$TeamworkKeyWords.jdField_a_of_type_JavaLangString));
-        localHashMap.put("tim_aio_tips_type", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting$TeamworkKeyWords.b));
+      paramView = (AbsStructMsgElement)this.a.jdField_a_of_type_JavaUtilList.get(i);
+      if ((paramView != null) && ((paramView instanceof StructMsgGroupItemElement))) {
+        ((StructMsgGroupItemElement)paramView).b();
       }
-      l = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a().a(((MessageRecord)localObject2).frienduin, AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).getCurrentAccountUin(), ((MessageRecord)localObject2).istroop, -3016, localHashMap, (String)localObject1, ((MessageRecord)localObject2).msgUid, ((MessageRecord)localObject2).shmsgseq, ((MessageRecord)localObject2).time);
-      if (QLog.isDebugVersion()) {
-        QLog.i("AIOMessageSpreadManager", 1, "insertGaryTips:" + l + "findMsg:" + localObject2.hashCode());
-      }
-      ((MessageRecord)localObject2).saveExtInfoToExtStr("tim_aio_gary_uniseq", String.valueOf(l));
-      AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extStr", ((MessageRecord)localObject2).getExtInfoString());
-      AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject2).extLong));
-      return;
-      localHashMap.put("tim_aio_file_tips", this.jdField_a_of_type_JavaLangString);
-      localHashMap.put("tim_aio_file_link", this.b);
+      label156:
+      i += 1;
     }
   }
 }

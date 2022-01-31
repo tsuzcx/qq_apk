@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCompleteListener;
 
 public class ansb
-  implements DialogInterface.OnClickListener
+  implements GuideVideoView.OnCompleteListener
 {
-  public ansb(EditRecognitionPart paramEditRecognitionPart) {}
+  public ansb(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
-    dov.com.qq.im.capture.view.MusicProviderView.a = false;
-    this.a.a.a.a(this.a.a.a());
-    EditRecognitionPart.a(this.a);
+    QIMEffectCameraCaptureUnit.g(this.a);
   }
 }
 

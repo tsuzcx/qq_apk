@@ -34,8 +34,8 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import mqq.util.WeakReference;
-import pes;
-import pet;
+import pjk;
+import pjl;
 
 public class BaseApplicationImpl
   extends MobileQQ
@@ -72,6 +72,7 @@ public class BaseApplicationImpl
   public static String sImmersiveUtilsEscapedMsg;
   public static boolean sIsBgStartup;
   public static long sLaunchTime;
+  public static String sNativeMonitorEscapedMsg;
   public static int sProcessId;
   public static String sPublicFragmentEscapedMsg;
   public static String sQQAppInterfaceEscapedMsg = "";
@@ -97,10 +98,20 @@ public class BaseApplicationImpl
   
   public BaseApplicationImpl()
   {
-    buildNum = "3565";
-    channelId = "10001264";
-    reportVersionName = "7.6.3.3565";
+    buildNum = "3615";
+    channelId = "70124";
+    reportVersionName = "7.6.8.3615";
     APP_ID = AppSetting.a;
+  }
+  
+  private void attachThreadContext()
+  {
+    com.tencent.mobileqq.app.ThreadSetting.isPublicVersion = true;
+    com.tencent.mobileqq.app.ThreadSetting.isGrayVersion = false;
+    com.tencent.mobileqq.app.ThreadSetting.revision = "355371";
+    com.tencent.mobileqq.app.ThreadSetting.sProcessId = sProcessId;
+    com.tencent.mobileqq.app.ThreadSetting.PROCESS_QQ = 1;
+    com.tencent.mobileqq.app.ThreadSetting.CLR = 2;
   }
   
   public static BaseApplicationImpl getApplication()
@@ -174,18 +185,19 @@ public class BaseApplicationImpl
     super.attachBaseContext(paramContext);
     paramContext = getProcessName();
     long l;
-    label39:
+    label43:
     int j;
     int i;
     if ("com.tencent.mobileqq".equals(paramContext))
     {
       sProcessId = 1;
       com.tencent.qphone.base.util.BaseApplication.processName = paramContext;
+      attachThreadContext();
       if (sProcessId != 1) {
-        break label262;
+        break label268;
       }
       l = 3000L;
-      QLog.init("com.tencent.mobileqq", paramContext, "V 7.6.3.3565", l);
+      QLog.init("com.tencent.mobileqq", paramContext, "V 7.6.8.3615", l);
       j = TOOL_PROCS.length;
       i = 0;
     }
@@ -249,9 +261,9 @@ public class BaseApplicationImpl
         }
         sProcessId = -1;
         break;
-        label262:
+        label268:
         l = 0L;
-        break label39;
+        break label43;
       }
       i += 1;
     }
@@ -288,7 +300,7 @@ public class BaseApplicationImpl
     while (!"channel_id".equals(paramString)) {
       return null;
     }
-    return "10001264";
+    return "70124";
   }
   
   public int getAppId(String paramString)
@@ -433,7 +445,7 @@ public class BaseApplicationImpl
     localHashMap.put("param_retryIndex", Integer.toString(paramInt));
     localHashMap.put("param_uin", paramString);
     StatisticCollector.a(getApplication()).a(paramString, "PcActiveSucc", true, 0L, 0L, localHashMap, "", true);
-    sUiHandler.postDelayed(new pes(this, paramInt, paramString), 10000L);
+    sUiHandler.postDelayed(new pjk(this, paramInt, paramString), 10000L);
     ReportController.b(null, "CliOper", "", "", "0X8004974", "0X8004974", 0, 0, "", "", "", "");
   }
   
@@ -461,7 +473,7 @@ public class BaseApplicationImpl
         else
         {
           i = 1;
-          ThreadManager.getSubThreadHandler().post(new pet(this, paramIntent));
+          ThreadManager.getSubThreadHandler().post(new pjl(this, paramIntent));
         }
       }
     }

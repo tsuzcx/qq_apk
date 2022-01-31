@@ -1,22 +1,84 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthConvertor;
 
-public class ydy
-  implements DialogInterface.OnClickListener
+public final class ydy
+  implements ExtendEditText.LengthConvertor
 {
-  public ydy(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private boolean a(char paramChar)
   {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
+    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS);
+  }
+  
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    int i;
+    if (paramInt1 <= paramInt2)
     {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
+      i = paramInt1;
+      if (paramInt1 > paramInt2) {
+        break label75;
       }
-      this.a.a(this.a.c);
     }
-    com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.a = true;
+    int j;
+    for (;;)
+    {
+      j = 0;
+      paramInt1 = i;
+      while ((paramInt1 < paramInt2) && (paramInt1 < paramCharSequence.length()))
+      {
+        int k = j;
+        if (a(paramCharSequence.charAt(paramInt1))) {
+          k = j + 1;
+        }
+        paramInt1 += 1;
+        j = k;
+      }
+      i = paramInt2;
+      break;
+      label75:
+      paramInt2 = paramInt1;
+    }
+    return j + (paramInt2 - i);
+  }
+  
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    int m = 0;
+    int i;
+    if (paramInt1 <= paramInt2)
+    {
+      i = paramInt1;
+      if (paramInt1 > paramInt2) {
+        break label83;
+      }
+      label16:
+      paramInt1 = i;
+    }
+    int k;
+    for (int j = 0;; j = k)
+    {
+      k = m;
+      if (paramInt1 < paramCharSequence.length())
+      {
+        k = j;
+        if (a(paramCharSequence.charAt(paramInt1))) {
+          k = j + 1;
+        }
+        if (paramInt1 + k >= paramInt2) {
+          k = paramInt1 - i;
+        }
+      }
+      else
+      {
+        return k;
+        i = paramInt2;
+        break;
+        label83:
+        paramInt2 = paramInt1;
+        break label16;
+      }
+      paramInt1 += 1;
+    }
   }
 }
 

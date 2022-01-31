@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.view.View;
-import sbt;
+import sgl;
 
 public abstract class ChatHistoryViewBase
 {
@@ -33,7 +33,7 @@ public abstract class ChatHistoryViewBase
   protected void k()
   {
     this.f = false;
-    new Handler().postDelayed(new sbt(this), 1500L);
+    new Handler().postDelayed(new sgl(this), 1500L);
   }
 }
 

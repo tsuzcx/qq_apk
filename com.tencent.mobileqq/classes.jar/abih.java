@@ -1,46 +1,33 @@
-import android.os.Handler;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.mobileqq.armap.config.ConfigCheckHander;
-import com.tencent.mobileqq.armap.config.ConfigCheckHander.Listener;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.HashMap;
 
 public class abih
-  implements ConfigCheckHander.Listener
+  implements Runnable
 {
-  public abih(ARMapLoadingActivity paramARMapLoadingActivity) {}
+  public abih(ARMapActivity paramARMapActivity, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapLoadingActivity", 2, String.format("handleCheckAndDownloadResMsg onUpdate progress=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-  }
-  
-  public void a(int paramInt, List paramList)
-  {
-    ARMapLoadingActivity.a(this.a).h = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapLoadingActivity", 2, String.format("handleCheckAndDownloadResMsg onResult errCode=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    if ((paramInt == 0) && (paramList != null)) {
-      ARMapLoadingActivity.a(this.a).sendEmptyMessage(110);
-    }
-    for (;;)
+    if ((ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.jdField_a_of_type_Long)) && (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.b)) && (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.c)) && (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.d)) && (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.e)) && (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.f)) && (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.g)) && (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.h))) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (ARMapLoadingActivity.a(this.a) != null)
-      {
-        paramList = ARMapLoadingActivity.a(this.a).a();
-        if (paramList != null) {
-          paramList.a(null);
-        }
+      if (!bool) {
+        QLog.d("ARMapActivity", 1, String.format("reportLoadTime mTimeStamp={%s}", new Object[] { ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity) }));
       }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("loadingTime", String.valueOf(this.jdField_a_of_type_Long));
+      localHashMap.put("locationTime", String.valueOf(this.b));
+      localHashMap.put("requestInfoTime", String.valueOf(this.c));
+      localHashMap.put("resCheckTime", String.valueOf(this.d));
+      localHashMap.put("soCheckTime", String.valueOf(this.e));
+      localHashMap.put("startThreadTime", String.valueOf(this.f));
+      localHashMap.put("launchARMapTime", String.valueOf(this.g));
+      localHashMap.put("loadMapTime", String.valueOf(this.h));
+      StatisticCollector.a(BaseApplication.getContext()).a("", "REPORT_TAG_LOADING_TIME", bool, 0L, 0L, localHashMap, "", false);
       return;
-      paramList = ARMapLoadingActivity.a(this.a).obtainMessage(104);
-      paramList.arg1 = 3;
-      paramList.arg2 = paramInt;
-      ARMapLoadingActivity.a(this.a).sendMessage(paramList);
     }
   }
 }

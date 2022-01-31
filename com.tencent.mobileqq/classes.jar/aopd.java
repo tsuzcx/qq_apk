@@ -1,12 +1,23 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoForwardInfo;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.poi.LbsPackObserver;
+import dov.com.tencent.mobileqq.activity.richmedia.LBSDetetor;
+import java.util.ArrayList;
 
-public abstract interface aopd
+public class aopd
+  extends LbsPackObserver
 {
-  public abstract MessageRecord a(ShortVideoForwardInfo paramShortVideoForwardInfo);
+  private aopd(LBSDetetor paramLBSDetetor) {}
   
-  public abstract MessageRecord a(ShortVideoUploadInfo paramShortVideoUploadInfo);
+  public void a(int paramInt, boolean paramBoolean, ArrayList paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
+    }
+    if ((LBSDetetor.a(this.a) != null) && (LBSDetetor.a(this.a).hasMessages(paramInt))) {
+      LBSDetetor.a(this.a, paramBoolean, paramArrayList, paramInt);
+    }
+  }
 }
 
 

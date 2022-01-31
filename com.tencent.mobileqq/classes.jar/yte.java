@@ -1,24 +1,16 @@
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-class yte
+public class yte
   implements Runnable
 {
-  yte(ytc paramytc, long paramLong, CmGameStartChecker.ICmGameConfirmListener paramICmGameConfirmListener, CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
+  public yte(ApolloTextureView paramApolloTextureView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
   
   public void run()
   {
-    String str = String.format("当前需要更新%.1fM，马上开始?", new Object[] { Float.valueOf((float)this.jdField_a_of_type_Long * 1.0F / 1024.0F / 1024.0F) });
-    ApolloGameActivity.a(this.jdField_a_of_type_Ytc.a).setVisibility(4);
-    ApolloGameActivity.b(this.jdField_a_of_type_Ytc.a).setVisibility(8);
-    ApolloGameActivity.c(this.jdField_a_of_type_Ytc.a).setText(str);
-    ApolloGameActivity.c(this.jdField_a_of_type_Ytc.a).setVisibility(0);
-    ApolloGameActivity.a(this.jdField_a_of_type_Ytc.a).setVisibility(0);
-    ApolloGameActivity.a(this.jdField_a_of_type_Ytc.a).setOnClickListener(new ytf(this));
+    ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
   }
 }
 

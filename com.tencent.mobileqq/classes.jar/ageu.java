@@ -1,33 +1,43 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.olympic.activity.ARTipsCircleProgress;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import com.tencent.mobileqq.now.enter.NowHongbaoPushManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 
 public class ageu
+  implements Runnable
 {
-  public View a;
-  public ViewGroup a;
-  public ImageView a;
-  public TextView a;
-  public ARTipsCircleProgress a;
-  public ViewGroup b;
-  public TextView b;
-  public ViewGroup c;
-  public TextView c;
-  public ViewGroup d;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
-  public TextView h;
+  public ageu(NowHongbaoPushManager paramNowHongbaoPushManager) {}
   
-  private ageu(ARTipsManager paramARTipsManager) {}
+  public void run()
+  {
+    long l = NowHongbaoPushManager.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("NowHongbaoPushManager", 2, "emmitTimerMessage tick = " + l / 1000L + "s, mCurrentTimerTick = " + NowHongbaoPushManager.b(this.a) / 1000L + "s");
+    }
+    if (!NowHongbaoPushManager.a(this.a).hasMessages(17))
+    {
+      NowHongbaoPushManager.a(this.a).sendEmptyMessageDelayed(17, l);
+      NowHongbaoPushManager.a(this.a, l);
+    }
+    do
+    {
+      return;
+      if (NowHongbaoPushManager.b(this.a) != l)
+      {
+        NowHongbaoPushManager.a(this.a).removeMessages(17);
+        if (QLog.isColorLevel()) {
+          QLog.i("NowHongbaoPushManager", 2, "emmitTimerMessage 更新计时器 mCurrentTimerTick=" + NowHongbaoPushManager.b(this.a) / 1000L + "s, newTick=" + l / 1000L + "s");
+        }
+        NowHongbaoPushManager.a(this.a, l);
+        NowHongbaoPushManager.a(this.a).sendEmptyMessageDelayed(17, l);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("NowHongbaoPushManager", 2, "emmitTimerMessage 保持计时器 mCurrentTimerTick=" + NowHongbaoPushManager.b(this.a) / 1000L + "s");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ageu
  * JD-Core Version:    0.7.0.1
  */

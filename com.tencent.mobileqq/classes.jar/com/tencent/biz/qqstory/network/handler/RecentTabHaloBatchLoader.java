@@ -15,6 +15,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 import com.tribe.async.dispatch.Dispatchers;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -34,12 +35,22 @@ public class RecentTabHaloBatchLoader
     b();
   }
   
-  private void a(RecentTabHaloResponse paramRecentTabHaloResponse)
+  private void a(RecentTabHaloRequest paramRecentTabHaloRequest, RecentTabHaloResponse paramRecentTabHaloResponse)
   {
     StoryHaloManager localStoryHaloManager = (StoryHaloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(196);
     List localList = paramRecentTabHaloResponse.a();
-    localStoryHaloManager.a(localList);
     localStoryHaloManager.a(paramRecentTabHaloResponse.a());
+    if (paramRecentTabHaloRequest.b() == 3)
+    {
+      paramRecentTabHaloRequest = localList.iterator();
+      while (paramRecentTabHaloRequest.hasNext())
+      {
+        paramRecentTabHaloResponse = (MsgTabNodeInfo)paramRecentTabHaloRequest.next();
+        localStoryHaloManager.b(paramRecentTabHaloResponse);
+        localStoryHaloManager.c(paramRecentTabHaloResponse);
+      }
+    }
+    localStoryHaloManager.a(localList);
     localStoryHaloManager.a(localList, true);
   }
   
@@ -51,15 +62,18 @@ public class RecentTabHaloBatchLoader
   private void c()
   {
     Object localObject = (StoryHaloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(196);
-    if (!this.b.get())
+    if (!this.b.get()) {}
+    for (;;)
     {
       MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilQueue.poll();
-      while (localMsgTabNodeInfo != null) {
-        ((StoryHaloManager)localObject).a(localMsgTabNodeInfo);
+      if (localMsgTabNodeInfo == null)
+      {
+        localObject = new RecentTabHaloBatchLoader.RecentTabHaloEvent(true);
+        Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject);
+        return;
       }
+      ((StoryHaloManager)localObject).a(localMsgTabNodeInfo);
     }
-    localObject = new RecentTabHaloBatchLoader.RecentTabHaloEvent(true);
-    Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject);
   }
   
   public void a()
@@ -95,7 +109,7 @@ public class RecentTabHaloBatchLoader
     } while (!QLog.isColorLevel());
     QLog.e("RecentTabHaloBatchLoader", 2, "onEvent: failed. Message: exception: " + paramErrorMessage);
     return;
-    a(paramRecentTabHaloResponse);
+    a(paramRecentTabHaloRequest, paramRecentTabHaloResponse);
     this.b.set(false);
     c();
   }
@@ -107,9 +121,7 @@ public class RecentTabHaloBatchLoader
     do
     {
       return;
-      StoryHaloManager localStoryHaloManager = (StoryHaloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(196);
-      str = localStoryHaloManager.a();
-      localStoryHaloManager.a = paramList;
+      str = ((StoryHaloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(196)).a();
     } while (paramList.size() == 0);
     paramList = new RecentTabHaloRequest(str, paramList, paramInt);
     if (QLog.isColorLevel()) {

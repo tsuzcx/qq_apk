@@ -1,15 +1,34 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.os.Handler;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class miq
-  implements Runnable
+  implements TVK_SDKMgr.InstallListener
 {
-  public miq(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  private Handler a;
   
-  public void run()
+  public miq(Handler paramHandler)
   {
-    if (ReadInJoyListViewGroup.a(this.a) != null) {
-      ReadInJoyListViewGroup.a(this.a).setVisibility(8);
+    this.a = paramHandler;
+  }
+  
+  public void onInstallProgress(float paramFloat)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
+    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(1);
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (this.a != null) {
+      this.a.sendEmptyMessage(0);
     }
   }
 }

@@ -102,7 +102,7 @@ public class QRResultHandler
   {
     paramQQAppInterface = new Intent(paramActivity, QQBrowserActivity.class);
     paramString = 1024 + "http://qm.qq.com/cgi-bin/result" + "?p=a&v=" + DeviceInfoUtil.d() + "&r=" + URLEncoder.encode(paramString).replaceAll("\\+", "%20") + "&_wv=1027";
-    paramQQAppInterface.putExtra("title", paramActivity.getString(2131429916));
+    paramQQAppInterface.putExtra("title", paramActivity.getString(2131429917));
     paramQQAppInterface.putExtra("url", paramString);
     paramQQAppInterface.putExtra("key_isReadModeEnabled", true);
     if (paramActivity.getIntent().getBooleanExtra("QRDecode", false) == true)

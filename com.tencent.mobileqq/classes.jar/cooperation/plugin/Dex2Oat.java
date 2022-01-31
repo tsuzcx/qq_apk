@@ -1,7 +1,7 @@
 package cooperation.plugin;
 
-import amlt;
-import amlu;
+import amtf;
+import amtg;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Log;
@@ -95,11 +95,11 @@ public final class Dex2Oat
       ExecutorService localExecutorService = Executors.newFixedThreadPool(paramInt);
       long l = System.nanoTime();
       Object localObject = new ArrayList(paramCollection);
-      Collections.sort((List)localObject, new amlt());
+      Collections.sort((List)localObject, new amtf());
       Collections.reverse((List)localObject);
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        localExecutorService.submit(new amlu((File)((Iterator)localObject).next(), paramFile, paramBoolean, paramString, paramAtomicInteger, localCountDownLatch, paramResultCallback));
+        localExecutorService.submit(new amtg((File)((Iterator)localObject).next(), paramFile, paramBoolean, paramString, paramAtomicInteger, localCountDownLatch, paramResultCallback));
       }
       try
       {

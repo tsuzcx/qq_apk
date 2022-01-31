@@ -1,59 +1,19 @@
-import android.annotation.TargetApi;
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.BaseMovementMethod;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
 
-@TargetApi(11)
 public class mjn
-  extends BaseMovementMethod
+  implements Runnable
 {
-  private static mjn a;
+  public mjn(VideoUIManager paramVideoUIManager) {}
   
-  public static mjn a()
+  public void run()
   {
-    if (a == null) {
-      a = new mjn();
+    if ((VideoUIManager.a(this.a) != null) && (VideoUIManager.a(this.a).a != null)) {
+      PublicAccountReportUtils.a(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", VideoReporter.a(VideoUIManager.a(this.a).a.mVideoVid, VideoUIManager.a(this.a).a.innerUniqueID, (int)VideoUIManager.a(this.a).a.mChannelID, null), false);
     }
-    return a;
-  }
-  
-  public void initialize(TextView paramTextView, Spannable paramSpannable)
-  {
-    Selection.removeSelection(paramSpannable);
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getActionMasked();
-    if ((i == 1) || (i == 0))
-    {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      paramMotionEvent = paramTextView.getLayout();
-      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
-      paramMotionEvent = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (paramMotionEvent.length > 0)
-      {
-        if (i == 1) {
-          paramMotionEvent[0].onClick(paramTextView);
-        }
-        for (;;)
-        {
-          return true;
-          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(paramMotionEvent[0]), paramSpannable.getSpanEnd(paramMotionEvent[0]));
-        }
-      }
-      Selection.removeSelection(paramSpannable);
-    }
-    return false;
   }
 }
 

@@ -25,8 +25,8 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import lnm;
-import lnn;
+import lqg;
+import lqh;
 
 public class ReadInJoyBBCircleFragment
   extends IphoneTitleBarFragment
@@ -34,40 +34,40 @@ public class ReadInJoyBBCircleFragment
   private Context a;
   public ReadInJoyChannelViewController a;
   
-  private void b()
+  private void a()
   {
-    a("点点");
-    if (this.b != null)
+    setTitle("点点");
+    if (this.leftView != null)
     {
-      this.b.setText("返回");
-      this.b.setTextColor(-14408926);
-      this.b.setBackgroundResource(2130845433);
+      this.leftView.setText("返回");
+      this.leftView.setTextColor(-14408926);
+      this.leftView.setBackgroundResource(2130845514);
     }
     Object localObject;
-    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (ReadInJoyUtils.g()))
+    if ((this.rightViewImg != null) && (ReadInJoyUtils.g()))
     {
-      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      localObject = (RelativeLayout.LayoutParams)this.rightViewImg.getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject).width = AIOUtils.a(24.0F, getResources());
       ((RelativeLayout.LayoutParams)localObject).height = AIOUtils.a(24.0F, getResources());
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840764);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new lnm(this));
+      this.rightViewImg.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.rightViewImg.setBackgroundResource(2130840782);
+      this.rightViewImg.setVisibility(0);
+      this.rightViewImg.setOnClickListener(new lqg(this));
     }
-    if (this.d != null)
+    if (this.centerView != null)
     {
-      this.d.setOnClickListener(new lnn(this));
-      this.d.setTextColor(-16777216);
+      this.centerView.setOnClickListener(new lqh(this));
+      this.centerView.setTextColor(-16777216);
     }
-    if (c() != null)
+    if (getTitleBarView() != null)
     {
-      c().setBackgroundResource(0);
-      c().setBackgroundColor(-1);
+      getTitleBarView().setBackgroundResource(0);
+      getTitleBarView().setBackgroundColor(-1);
     }
     if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof PublicFragmentActivity)))
     {
       localObject = ((PublicFragmentActivity)this.jdField_a_of_type_AndroidContentContext).mSystemBarComp;
-      if ((localObject != null) && (b()) && (a()) && (ImmersiveUtils.isSupporImmersive() == 1))
+      if ((localObject != null) && (needImmersive()) && (needStatusTrans()) && (ImmersiveUtils.isSupporImmersive() == 1))
       {
         if (!ThemeUtil.isInNightMode(((PublicFragmentActivity)this.jdField_a_of_type_AndroidContentContext).getAppRuntime())) {
           break label284;
@@ -99,28 +99,28 @@ public class ReadInJoyBBCircleFragment
     ((SystemBarCompact)localObject).setStatusBarDarkMode(true);
   }
   
-  private void c()
+  private void b()
   {
     if (this.jdField_a_of_type_AndroidContentContext != null)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController = new ReadInJoyChannelViewController((Activity)this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a(70);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.b(0);
-      ViewGroup localViewGroup = (ViewGroup)this.e.findViewById(2131367215);
+      ViewGroup localViewGroup = (ViewGroup)this.mContentView.findViewById(2131367215);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a(localViewGroup);
     }
   }
   
-  protected int a()
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return 2130969624;
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+    b();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a();
   }
   
-  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  protected int getContentLayoutId()
   {
-    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    c();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a();
+    return 2130969620;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -180,7 +180,7 @@ public class ReadInJoyBBCircleFragment
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.h();
     }
-    b();
+    a();
   }
   
   public void onStart()

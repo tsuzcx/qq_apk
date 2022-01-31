@@ -1,24 +1,34 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class uie
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public uie(VisitorsActivity paramVisitorsActivity) {}
+  public uie(TroopRequestActivity paramTroopRequestActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    RedTouchItem localRedTouchItem = this.a.a.a(100601);
-    if ((localRedTouchItem != null) && (localRedTouchItem.unReadFlag) && (localRedTouchItem.passThroughLevel > 0))
+    switch (paramInt)
     {
-      localRedTouchItem.passThroughLevel = 0;
-      this.a.a.d();
-      ReportController.b(this.a.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "1", "", "", "");
+    default: 
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
     }
-    ReportController.b(this.a.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "2", "", "", "");
+    if (NetworkUtil.d(BaseApplication.getContext())) {
+      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity);
+    }
+    for (;;)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.app, "P_CliOper", "Grp_sysmsg", "", "verify_msg", "black", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.s, "", "");
+      break;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity, 2131434827, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestActivity.getTitleBarHeight());
+    }
   }
 }
 

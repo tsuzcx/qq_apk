@@ -1,23 +1,12 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.weiyun.utils.PreferenceUtils;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
+import cooperation.qzone.sim.DeviceInfoUtil;
+import cooperation.qzone.util.NetworkState.NetworkStateListener;
 
 public final class anhq
-  implements Runnable
+  implements NetworkState.NetworkStateListener
 {
-  public anhq(Context paramContext) {}
-  
-  public void run()
+  public void onNetworkConnect(boolean paramBoolean)
   {
-    long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    boolean bool1 = PreferenceUtils.a(this.a, String.valueOf(l), "key_pwd_queried", false);
-    boolean bool2 = PreferenceUtils.a(this.a, String.valueOf(l), "key_pwd_has", false);
-    boolean bool3 = PreferenceUtils.a(this.a, String.valueOf(l), "key_pwd_verified", false);
-    cooperation.weiyun.sdk.api.WeiyunApi.a()[0].set(bool1);
-    cooperation.weiyun.sdk.api.WeiyunApi.a()[1].set(bool2);
-    cooperation.weiyun.sdk.api.WeiyunApi.a()[2].set(bool3);
+    DeviceInfoUtil.a(null);
   }
 }
 

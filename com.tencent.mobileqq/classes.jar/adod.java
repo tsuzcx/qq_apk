@@ -1,43 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.teamwork.TeamWorkConvertUtils;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-public final class adod
-  implements Runnable
+public class adod
+  implements View.OnClickListener
 {
-  public void run()
+  public adod(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("module_nearby");
-    if ((localObject instanceof NearbyAppInterface))
-    {
-      localObject = (NearbyProcManager)((NearbyAppInterface)localObject).getManager(213);
-      if (localObject != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NowLiveFragment", 2, "pre login now plugin!");
-        }
-        ((NearbyProcManager)localObject).d();
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      NowLiveFragment.a(true);
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("NowLiveFragment", 2, "pre login now plugin! err npb null;");
-      return;
-    }
-    QLog.d("NowLiveFragment", 2, "pre login now plugin! err runtime null or wrong! app = " + localObject);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
+    SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer, TeamWorkConvertUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a.getString(2131439167), false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adod
  * JD-Core Version:    0.7.0.1
  */

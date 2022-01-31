@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import eipc.EIPCResult;
-import xgf;
+import xlz;
 
 public class QWalletIPCModule$1$1
   extends ResultReceiver
 {
-  public QWalletIPCModule$1$1(xgf paramxgf, Handler paramHandler)
+  public QWalletIPCModule$1$1(xlz paramxlz, Handler paramHandler)
   {
     super(paramHandler);
   }

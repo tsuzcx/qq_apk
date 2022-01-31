@@ -1,41 +1,60 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.troop.homework.config.BeginnerGuideDownloadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajnv
-  extends AsyncTask
+  implements INetEngine.INetEngineListener
 {
-  private WeakReference a;
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private boolean jdField_a_of_type_Boolean;
   
-  public ajnv(RollangleImageView paramRollangleImageView)
+  public ajnv(BeginnerGuideDownloadManager paramBeginnerGuideDownloadManager, Handler paramHandler, int paramInt, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramRollangleImageView);
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  protected Bitmap a(Boolean... paramVarArgs)
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
-    if (localRollangleImageView != null) {
-      return RollangleImageView.a(localRollangleImageView, paramVarArgs[0].booleanValue());
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener Dowloading " + paramLong1 + "/" + paramLong2 + " " + 100L * paramLong1 / paramLong2);
     }
-    return null;
   }
   
-  protected void a(Bitmap paramBitmap)
+  public void a(NetResp paramNetResp)
   {
-    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
-    if (localRollangleImageView != null)
-    {
-      if (paramBitmap != null) {
-        localRollangleImageView.setImageBitmap(paramBitmap);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp: " + paramNetResp.jdField_a_of_type_Int + ", desc: " + paramNetResp.jdField_a_of_type_JavaLangString);
     }
-    else {
+    if (paramNetResp.jdField_a_of_type_Int == 3) {
       return;
     }
-    localRollangleImageView.setImageResource(FileManagerUtil.b(localRollangleImageView.a));
+    if (paramNetResp.jdField_a_of_type_Int == 0)
+    {
+      paramNetResp = BeginnerGuideDownloadManager.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
+      if (BeginnerGuideDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkConfigBeginnerGuideDownloadManager).equalsIgnoreCase(paramNetResp))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success");
+        }
+        BeginnerGuideDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkConfigBeginnerGuideDownloadManager, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener download success, md5 check failed");
+      }
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1112);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideDownloadManager", 2, "BeginnerGuideDownloadManager$DownloadListener onResp error");
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1113);
   }
 }
 

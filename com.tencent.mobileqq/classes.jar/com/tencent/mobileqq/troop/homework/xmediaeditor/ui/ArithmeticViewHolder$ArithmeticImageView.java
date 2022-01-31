@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import ajkm;
-import ajkn;
-import ajko;
+import ajry;
+import ajrz;
+import ajsa;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -46,18 +46,18 @@ public class ArithmeticViewHolder$ArithmeticImageView
   
   private void c()
   {
-    inflate(getContext(), 2130970647, this);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131363628));
-    this.b = ((ImageView)findViewById(2131371553));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = ((MessageProgressView)findViewById(2131366663));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371554));
+    inflate(getContext(), 2130970660, this);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131363647));
+    this.b = ((ImageView)findViewById(2131371551));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = ((MessageProgressView)findViewById(2131366661));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371552));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(UIUtils.a(getContext(), 4.0F));
     this.b.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(0.0F, true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDisplayInTextView(AIOUtils.a(17.0F, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder.itemView.getResources()), -1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(new ajkm(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(new ajry(this));
     b();
   }
   
@@ -71,8 +71,8 @@ public class ArithmeticViewHolder$ArithmeticImageView
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo.jdField_a_of_type_Int = 0;
       ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder, this, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo);
       TroopHomeworkHelper.UploadFileTask localUploadFileTask = new TroopHomeworkHelper.UploadFileTask(PlayModeUtils.a(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo.jdField_b_of_type_JavaLangString, ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder));
-      localUploadFileTask.a(new ajko(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo));
-      ThreadManager.post(new ajkn(this, localUploadFileTask), 8, null, true);
+      localUploadFileTask.a(new ajsa(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo));
+      ThreadManager.post(new ajrz(this, localUploadFileTask), 8, null, true);
     } while (!QLog.isColorLevel());
     QLog.d("ArithmeticViewHolder", 2, "upload picture , local path = " + this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelArithmeticInfo$ArithmeticImageInfo.jdField_b_of_type_JavaLangString);
   }
@@ -109,7 +109,7 @@ public class ArithmeticViewHolder$ArithmeticImageView
     switch (paramView.getId())
     {
     default: 
-    case 2131371553: 
+    case 2131371551: 
       do
       {
         return;
@@ -147,7 +147,7 @@ public class ArithmeticViewHolder$ArithmeticImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView
  * JD-Core Version:    0.7.0.1
  */

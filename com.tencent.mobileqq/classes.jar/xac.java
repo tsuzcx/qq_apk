@@ -1,24 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class xac
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public xac(PayCodeEntryActivity paramPayCodeEntryActivity) {}
+  public xac(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a("payCodeEntry.contractLink", "actQQWlxclick", "0004");
-    paramView = new Intent();
-    paramView.setClass(this.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://wlx.tenpay.com/traffic/protocol/protocol_list.html?_wv=3");
-    paramView.putExtra("hide_operation_bar", true);
-    paramView.putExtra("hide_more_button", true);
-    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-    this.a.startActivity(paramView);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "new user guild confirm unbind");
+      }
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA5", "0X8006AA5", 0, 0, "", "", "", "");
+    }
   }
 }
 

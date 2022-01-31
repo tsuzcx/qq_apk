@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amdm;
+import amkw;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -35,17 +35,17 @@ public class ReadInJoyAccountActiveTips
   {
     this.jdField_a_of_type_Int = ((int)DeviceInfoUtil.j());
     this.jdField_b_of_type_Int = ((int)DeviceInfoUtil.k());
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130969539, null);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130969535, null);
     setContentView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366889));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366888);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366888));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366887);
     setHeight(-2);
     setWidth(-2);
     setBackgroundDrawable(new ColorDrawable(0));
     setTouchable(true);
     setFocusable(true);
     setOutsideTouchable(true);
-    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new amdm(this));
+    this.jdField_b_of_type_AndroidViewView.setOnTouchListener(new amkw(this));
     b();
   }
   

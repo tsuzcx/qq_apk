@@ -25,10 +25,10 @@ import com.tencent.mobileqq.vas.IndividuationUrlHelper;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import szk;
-import szl;
-import szm;
-import szn;
+import tec;
+import ted;
+import tee;
+import tef;
 
 public class LikeSettingActivity
   extends IphoneTitleBarActivity
@@ -36,9 +36,9 @@ public class LikeSettingActivity
 {
   public CompoundButton.OnCheckedChangeListener a;
   public CardHandler a;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new szk(this);
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new tec(this);
   public LikeRankingListManager a;
-  NearbyRelevantObserver jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver = new szl(this);
+  NearbyRelevantObserver jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver = new ted(this);
   PraiseManager jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager;
   FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   public FormSwitchItem a;
@@ -48,7 +48,7 @@ public class LikeSettingActivity
   
   public LikeSettingActivity()
   {
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new szm(this);
+    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new tee(this);
   }
   
   private void a(CompoundButton paramCompoundButton, boolean paramBoolean)
@@ -90,7 +90,7 @@ public class LikeSettingActivity
         }
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-      ThreadManager.post(new szn(this), 5, null, true);
+      ThreadManager.post(new tef(this), 5, null, true);
       return;
     }
   }
@@ -107,17 +107,17 @@ public class LikeSettingActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130970437);
+    setContentView(2130970452);
     setTitle("赞设置");
-    setLeftViewName(2131433698);
+    setLeftViewName(2131433712);
     this.jdField_a_of_type_ComTencentMobileqqAppLikeRankingListManager = ((LikeRankingListManager)this.app.getManager(185));
     this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager = ((PraiseManager)this.app.getManager(208));
     this.jdField_a_of_type_ComTencentMobileqqAppCardHandler = ((CardHandler)this.app.a(2));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131370518));
-    this.b = ((FormSwitchItem)super.findViewById(2131370522));
-    this.c = ((FormSwitchItem)super.findViewById(2131370519));
-    this.d = ((FormSwitchItem)super.findViewById(2131370521));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)super.findViewById(2131370520));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131370527));
+    this.b = ((FormSwitchItem)super.findViewById(2131370531));
+    this.c = ((FormSwitchItem)super.findViewById(2131370528));
+    this.d = ((FormSwitchItem)super.findViewById(2131370530));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)super.findViewById(2131370529));
     a();
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyRelevantObserver);

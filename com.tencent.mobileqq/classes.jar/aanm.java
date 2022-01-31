@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.arcard.ARcardSound;
+import com.tencent.mobileqq.ar.arengine.ARCamera;
+import com.tencent.mobileqq.ar.arengine.AREngine;
 
 public class aanm
+  implements Runnable
 {
-  public int a;
-  public int b;
-  public int c;
+  public aanm(AREngine paramAREngine) {}
   
-  public aanm(ARcardSound paramARcardSound, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
-  }
-  
-  public boolean a()
-  {
-    return this.c == 1;
-  }
-  
-  public boolean b()
-  {
-    return this.c == 2;
-  }
-  
-  public boolean c()
-  {
-    return this.c == 3;
+    if (this.a.a != null) {
+      this.a.a.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aanm
  * JD-Core Version:    0.7.0.1
  */

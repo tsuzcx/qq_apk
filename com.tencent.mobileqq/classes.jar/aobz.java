@@ -1,24 +1,24 @@
-import android.view.KeyEvent;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import dov.com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import java.util.Comparator;
 
-public class aobz
-  implements TextView.OnEditorActionListener
+public final class aobz
+  implements Comparator
 {
-  public aobz(QQStoryAddVideoLabelViewPart paramQQStoryAddVideoLabelViewPart) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public int a(FaceLayer.FaceItem paramFaceItem1, FaceLayer.FaceItem paramFaceItem2)
   {
-    if (paramInt == 6)
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
-      if (paramTextView != null) {
-        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
-      }
+    long l = paramFaceItem1.a - paramFaceItem2.a;
+    if (l < 0L) {
+      return -1;
     }
-    return false;
+    if (l == 0L) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return (paramObject != null) && ((paramObject instanceof aobz));
   }
 }
 

@@ -1,24 +1,16 @@
-import android.os.Bundle;
-import cooperation.qzone.remote.logic.WebEventListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import java.util.ArrayList;
 
 public class ancx
-  implements WebEventListener
+  implements Runnable
 {
-  public ancx(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
+  public ancx(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt1, int paramInt2, ArrayList paramArrayList) {}
   
-  public void onWebEvent(String paramString, Bundle paramBundle)
+  public void run()
   {
-    if ("cmd.troop.download.photo".equals(paramString))
-    {
-      paramString = paramBundle.getBundle("data");
-      paramString.getInt("totalNum");
-      int i = paramString.getInt("successNum");
-      int j = paramString.getInt("failNum");
-      boolean bool = paramString.getBoolean("isDownloadCanceled");
-      paramString = paramString.getString("path");
-      QzoneQunFeedJsPlugin.a(this.a, i, j, paramString, bool);
-    }
+    RemoteHandleManager.a().a().b(QzoneWebMusicJsPlugin.access$200(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

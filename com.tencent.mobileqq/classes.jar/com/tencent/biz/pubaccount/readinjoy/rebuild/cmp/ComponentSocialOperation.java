@@ -30,9 +30,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lwn;
-import lwp;
-import lwq;
+import maa;
+import mac;
+import mad;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -116,8 +116,8 @@ public class ComponentSocialOperation
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130969587, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366849));
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969583, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366848));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131367052));
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131367051));
     this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131367050);
@@ -128,9 +128,9 @@ public class ComponentSocialOperation
     this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setDuration(300L);
     this.jdField_b_of_type_AndroidViewAnimationScaleAnimation.setDuration(200L);
     this.jdField_c_of_type_AndroidViewAnimationScaleAnimation.setDuration(100L);
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new lwn(this));
-    this.jdField_b_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new lwp(this));
-    this.jdField_c_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new lwq(this));
+    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new maa(this));
+    this.jdField_b_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new mac(this));
+    this.jdField_c_of_type_AndroidViewAnimationScaleAnimation.setAnimationListener(new mad(this));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
@@ -184,7 +184,7 @@ public class ComponentSocialOperation
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843369);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843404);
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#07D0B0"));
         label94:
         if (this.jdField_a_of_type_Int <= 0) {
@@ -199,7 +199,7 @@ public class ComponentSocialOperation
         }
         QLog.d("ComponentSocialOperation", 2, "set upvote to " + this.jdField_a_of_type_Boolean + ", set num:" + this.jdField_a_of_type_Int);
         break;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843372);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843407);
         this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
         break label94;
         label189:
@@ -342,7 +342,7 @@ public class ComponentSocialOperation
       }
       ReadInJoyUtils.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
       localObject2 = new ReportInfo();
-      if (paramView.getId() != 2131366849) {
+      if (paramView.getId() != 2131366848) {
         continue;
       }
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo != null)

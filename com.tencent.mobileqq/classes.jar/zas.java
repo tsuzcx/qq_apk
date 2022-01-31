@@ -1,101 +1,99 @@
-import com.tencent.mobileqq.app.BoundedPriorityBlockingQueue;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import android.graphics.Bitmap;
+import android.media.MediaScannerConnection;
+import android.os.Environment;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.utils.FileUtils;
+import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
+import com.tencent.mobileqq.apollo.store.ApolloViewController;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import mqq.os.MqqHandler;
 
-public final class zas
-  implements Iterator
+public class zas
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private final Object[] jdField_a_of_type_ArrayOfJavaLangObject;
-  private int b = -1;
+  public zas(ApolloStoreActivity paramApolloStoreActivity, Bitmap paramBitmap, long paramLong, String paramString) {}
   
-  public zas(BoundedPriorityBlockingQueue paramBoundedPriorityBlockingQueue, Object[] paramArrayOfObject)
+  public void run()
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-  }
-  
-  /* Error */
-  private void a(Object paramObject)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 15	zas:jdField_a_of_type_ComTencentMobileqqAppBoundedPriorityBlockingQueue	Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;
-    //   4: invokestatic 29	com/tencent/mobileqq/app/BoundedPriorityBlockingQueue:a	(Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;)Ljava/util/concurrent/locks/ReentrantLock;
-    //   7: invokevirtual 34	java/util/concurrent/locks/ReentrantLock:lock	()V
-    //   10: iconst_0
-    //   11: istore_2
-    //   12: iload_2
-    //   13: aload_0
-    //   14: getfield 15	zas:jdField_a_of_type_ComTencentMobileqqAppBoundedPriorityBlockingQueue	Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;
-    //   17: invokestatic 37	com/tencent/mobileqq/app/BoundedPriorityBlockingQueue:a	(Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;)I
-    //   20: if_icmpge +24 -> 44
-    //   23: aload_1
-    //   24: aload_0
-    //   25: getfield 15	zas:jdField_a_of_type_ComTencentMobileqqAppBoundedPriorityBlockingQueue	Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;
-    //   28: invokestatic 40	com/tencent/mobileqq/app/BoundedPriorityBlockingQueue:a	(Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;)[Ljava/lang/Object;
-    //   31: iload_2
-    //   32: aaload
-    //   33: if_acmpne +22 -> 55
-    //   36: aload_0
-    //   37: getfield 15	zas:jdField_a_of_type_ComTencentMobileqqAppBoundedPriorityBlockingQueue	Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;
-    //   40: iload_2
-    //   41: invokestatic 43	com/tencent/mobileqq/app/BoundedPriorityBlockingQueue:a	(Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;I)V
-    //   44: aload_0
-    //   45: getfield 15	zas:jdField_a_of_type_ComTencentMobileqqAppBoundedPriorityBlockingQueue	Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;
-    //   48: invokestatic 29	com/tencent/mobileqq/app/BoundedPriorityBlockingQueue:a	(Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;)Ljava/util/concurrent/locks/ReentrantLock;
-    //   51: invokevirtual 46	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   54: return
-    //   55: iload_2
-    //   56: iconst_1
-    //   57: iadd
-    //   58: istore_2
-    //   59: goto -47 -> 12
-    //   62: astore_1
-    //   63: aload_0
-    //   64: getfield 15	zas:jdField_a_of_type_ComTencentMobileqqAppBoundedPriorityBlockingQueue	Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;
-    //   67: invokestatic 29	com/tencent/mobileqq/app/BoundedPriorityBlockingQueue:a	(Lcom/tencent/mobileqq/app/BoundedPriorityBlockingQueue;)Ljava/util/concurrent/locks/ReentrantLock;
-    //   70: invokevirtual 46	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   73: aload_1
-    //   74: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	75	0	this	zas
-    //   0	75	1	paramObject	Object
-    //   11	48	2	i	int
-    // Exception table:
-    //   from	to	target	type
-    //   12	44	62	finally
-  }
-  
-  public boolean hasNext()
-  {
-    return this.jdField_a_of_type_Int < this.jdField_a_of_type_ArrayOfJavaLangObject.length;
-  }
-  
-  public Object next()
-  {
-    if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfJavaLangObject.length) {
-      throw new NoSuchElementException();
+    int i = 0;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloStoreActivity", 2, "[saveImage] failed bitmap null");
+      }
     }
-    this.b = this.jdField_a_of_type_Int;
-    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    return arrayOfObject[i];
-  }
-  
-  public void remove()
-  {
-    if (this.b == -1) {
-      throw new IllegalStateException();
+    String str;
+    do
+    {
+      for (;;)
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloStoreActivity", 2, "[saveImage] consume time " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + " ms");
+        }
+        Message localMessage = Message.obtain();
+        localMessage.what = 256;
+        try
+        {
+          str = Environment.getExternalStorageDirectory().toString();
+          Object localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(Long.valueOf(System.currentTimeMillis()));
+          if (ApolloStoreActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreActivity) != null) {
+            i = ApolloStoreActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreActivity).c();
+          }
+          str = str + "/cmshow/" + i + "_" + (String)localObject + ".png";
+          localObject = new File(str);
+          if (!TextUtils.isEmpty(str))
+          {
+            try
+            {
+              ImageUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject);
+              if ((!TextUtils.isEmpty(str)) && (FileUtils.c(str))) {
+                break label275;
+              }
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.d("ApolloStoreActivity", 2, "[saveImage] failed invalid path");
+              return;
+            }
+            catch (Throwable localThrowable1) {}
+            if (QLog.isColorLevel())
+            {
+              QLog.d("ApolloStoreActivity", 2, "[saveImage] failed save to disk");
+              return;
+            }
+          }
+        }
+        catch (Throwable localThrowable2) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloStoreActivity", 2, "[saveImage] failed create path" + localThrowable2.getMessage());
+    return;
+    try
+    {
+      label275:
+      MediaScannerConnection.scanFile(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreActivity.getApplicationContext(), new String[] { str }, new String[] { "image/png" }, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloStoreActivity", 2, "[saveImage] to media db " + str);
+      }
+      localThrowable2.obj = this.jdField_a_of_type_JavaLangString;
+      localThrowable2.arg1 = 0;
+      this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloStoreActivity.a.sendMessage(localThrowable2);
+      return;
     }
-    a(this.jdField_a_of_type_ArrayOfJavaLangObject[this.b]);
-    this.b = -1;
+    catch (Throwable localThrowable3)
+    {
+      QLog.e("ApolloStoreActivity", 2, "[saveImage] failed exception " + localThrowable3.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zas
  * JD-Core Version:    0.7.0.1
  */

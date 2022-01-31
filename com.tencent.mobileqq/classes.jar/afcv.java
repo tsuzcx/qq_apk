@@ -1,26 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class afcv
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public afcv(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, ActionSheet paramActionSheet) {}
+  private int jdField_a_of_type_Int = 2;
   
-  public void OnClick(View paramView, int paramInt)
+  public afcv(ShortVideoCommentsView paramShortVideoCommentsView, int paramInt)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void run()
+  {
+    switch (this.jdField_a_of_type_Int)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+    default: 
+      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
+      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e();
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.f();
+    case 0: 
+      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
+      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(0);
+      return;
     }
+    ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
+    if ((ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView) != null) && (ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Int != 4)) {
+      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(0);
+    }
+    ShortVideoCommentsView.d(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView);
   }
 }
 

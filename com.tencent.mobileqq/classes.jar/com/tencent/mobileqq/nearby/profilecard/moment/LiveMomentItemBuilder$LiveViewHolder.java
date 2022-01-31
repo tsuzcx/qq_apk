@@ -8,7 +8,7 @@ public class LiveMomentItemBuilder$LiveViewHolder
 {
   public ImageView f;
   public ImageView g;
-  public TextView j;
+  public TextView i;
   
   public LiveMomentItemBuilder$LiveViewHolder(LiveMomentItemBuilder paramLiveMomentItemBuilder)
   {

@@ -5,7 +5,7 @@ import com.tencent.mobileqq.apollo.ApolloTextureView;
 import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import yug;
+import zay;
 
 public class ApolloVoiceDIYHelper
 {
@@ -54,7 +54,7 @@ public class ApolloVoiceDIYHelper
     {
       this.jdField_a_of_type_Double = paramDouble;
       return;
-      localApolloTextureView.queueEvent(new yug(this, localApolloTextureView, paramDouble - this.jdField_a_of_type_Double));
+      localApolloTextureView.queueEvent(new zay(this, localApolloTextureView, paramDouble - this.jdField_a_of_type_Double));
     }
   }
   

@@ -1,31 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class aixn
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aixn(TroopBarPublishActivity paramTroopBarPublishActivity, String paramString) {}
+  public aixn(TribePostTitlePrefixPanelController paramTribePostTitlePrefixPanelController) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_JavaLangString == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.s();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.s = false;
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.g.setText("视频合成失败");
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.g.setTextColor(-65536);
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.setOnClickListener(new aixo(this));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.s = false;
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.g.setText("");
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.g.setCompoundDrawablesWithIntrinsicBounds(2130844803, 0, 0, 0);
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.I = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a.a = new File(this.jdField_a_of_type_JavaLangString).length();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.setOnClickListener(new aixp(this));
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(TroopBarPublishActivity.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity), true);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), i, 0, 0);
   }
 }
 

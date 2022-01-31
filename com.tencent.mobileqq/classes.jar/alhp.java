@@ -1,38 +1,15 @@
-import android.os.Bundle;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ApkGetCodeListener;
-import com.tencent.open.downloadnew.DownloaderGetCodeClient;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.graphics.Bitmap;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.CardContainer;
 
-public class alhp
-  implements EIPCResultCallback
+class alhp
+  implements Runnable
 {
-  public alhp(DownloaderGetCodeClient paramDownloaderGetCodeClient) {}
+  alhp(alho paramalho, Bitmap paramBitmap) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback...");
-    if (paramEIPCResult == null) {
-      return;
-    }
-    paramEIPCResult = paramEIPCResult.data;
-    if (paramEIPCResult == null)
-    {
-      LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback data is null...");
-      return;
-    }
-    String str1 = paramEIPCResult.getString("PackageName");
-    int i = paramEIPCResult.getInt("VersionCode");
-    String str2 = paramEIPCResult.getString("Code");
-    boolean bool = paramEIPCResult.getBoolean("IsSuccess");
-    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback pkgName|" + str1 + " versionCode|" + i + " isSuc|" + bool + " code|" + str2);
-    if (DownloaderGetCodeClient.a(this.a) != null)
-    {
-      DownloaderGetCodeClient.a(this.a).a(str1, i, str2, bool, null);
-      return;
-    }
-    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback getCodeListener is null");
+    this.jdField_a_of_type_Alho.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_ComTencentOpenAgentCardContainer.a(this.jdField_a_of_type_Alho.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Alho.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, false);
   }
 }
 

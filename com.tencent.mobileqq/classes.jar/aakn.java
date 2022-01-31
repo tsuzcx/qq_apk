@@ -1,39 +1,17 @@
-import android.content.res.Resources;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.config.WorldCup;
-import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aakn
-  extends aakq
+  implements Runnable
 {
-  WorldCupConfigInfo jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo;
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  public boolean a;
+  public aakn(ScanEntranceReport paramScanEntranceReport, boolean paramBoolean, long paramLong) {}
   
-  public aakn(String paramString, QQAppInterface paramQQAppInterface)
+  public void run()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = null;
-  }
-  
-  boolean a(Resources paramResources)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupConfigInfo = WorldCupConfigInfo.a(this.jdField_a_of_type_JavaLangString, null);
-    WorldCup.b();
-    if (AudioHelper.e()) {
-      AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    }
-    return true;
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_result", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

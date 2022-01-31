@@ -59,28 +59,28 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import koh;
-import koi;
-import koj;
-import kok;
-import kol;
-import kon;
-import koo;
-import kop;
-import koq;
-import kor;
-import kos;
-import kot;
-import kou;
-import kov;
-import kow;
-import kox;
-import koy;
-import kpa;
-import kpb;
-import kpc;
-import kpd;
-import kpf;
+import kqo;
+import kqp;
+import kqq;
+import kqr;
+import kqs;
+import kqu;
+import kqv;
+import kqw;
+import kqx;
+import kqy;
+import kqz;
+import kra;
+import krb;
+import krc;
+import krd;
+import kre;
+import krf;
+import krh;
+import kri;
+import krj;
+import krk;
+import krm;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 import mqq.os.MqqHandler;
@@ -93,7 +93,7 @@ public class EqqAccountDetailActivity
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public EqqDetail a;
   public mobileqq_mp.GetEqqAccountDetailInfoResponse a;
-  private QidianManager.OnLbsStateChangedListener jdField_a_of_type_ComTencentQidianQidianManager$OnLbsStateChangedListener = new koh(this);
+  private QidianManager.OnLbsStateChangedListener jdField_a_of_type_ComTencentQidianQidianManager$OnLbsStateChangedListener = new kqo(this);
   QidianManager jdField_a_of_type_ComTencentQidianQidianManager;
   Switch jdField_a_of_type_ComTencentWidgetSwitch;
   public String a;
@@ -187,15 +187,15 @@ public class EqqAccountDetailActivity
   
   protected View a(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = super.getLayoutInflater().inflate(2130968724, null);
-    ((ImageView)localView.findViewById(2131362747)).setImageResource(2130838260);
-    ((ImageView)localView.findViewById(2131363443)).setVisibility(0);
-    TextView localTextView = (TextView)localView.findViewById(2131363057);
+    View localView = super.getLayoutInflater().inflate(2130968727, null);
+    ((ImageView)localView.findViewById(2131362752)).setImageResource(2130838265);
+    ((ImageView)localView.findViewById(2131363462)).setVisibility(0);
+    TextView localTextView = (TextView)localView.findViewById(2131363062);
     String str = paramPaConfigInfo.b;
     if (!TextUtils.isEmpty(str))
     {
       localTextView.setText(str);
-      localView.setOnClickListener(new kpf(this, paramPaConfigInfo, str));
+      localView.setOnClickListener(new krm(this, paramPaConfigInfo, str));
       return localView;
     }
     return null;
@@ -289,18 +289,18 @@ public class EqqAccountDetailActivity
     this.jdField_a_of_type_Boolean = false;
     if ((i == 1) || (i == 2))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437774);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437794);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437775);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437795);
   }
   
   public void a(PaConfigAttr.PaConfigInfo paramPaConfigInfo, int paramInt)
   {
     int i = 1;
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
-    localActionSheet.a(2131437774, 5, false);
-    localActionSheet.a(2131437775, 5, false);
+    localActionSheet.a(2131437794, 5, false);
+    localActionSheet.a(2131437795, 5, false);
     if ((paramInt == 1) || (paramInt == 2)) {
       localActionSheet.d(0);
     }
@@ -309,9 +309,9 @@ public class EqqAccountDetailActivity
       if ((paramInt == 1) || (paramInt == 2)) {
         i = 0;
       }
-      localActionSheet.c(2131433015);
-      localActionSheet.setOnDismissListener(new koq(this));
-      localActionSheet.a(new kor(this, paramPaConfigInfo, localActionSheet, i));
+      localActionSheet.c(2131433029);
+      localActionSheet.setOnDismissListener(new kqx(this));
+      localActionSheet.a(new kqy(this, paramPaConfigInfo, localActionSheet, i));
       if (!localActionSheet.isShowing())
       {
         this.jdField_d_of_type_Boolean = false;
@@ -338,7 +338,7 @@ public class EqqAccountDetailActivity
   public void a(PaConfigAttr.PaConfigInfo paramPaConfigInfo, Switch paramSwitch, boolean paramBoolean)
   {
     int i = 1;
-    b(2131430029);
+    b(2131430031);
     NewIntent localNewIntent = new NewIntent(super.getApplicationContext(), PublicAccountServlet.class);
     this.jdField_a_of_type_MqqAppNewIntent = localNewIntent;
     localNewIntent.putExtra("cmd", "set_function_flag");
@@ -353,7 +353,7 @@ public class EqqAccountDetailActivity
       localSetFunctionFlagRequset.value.set(i);
       localSetFunctionFlagRequset.account_type.set(a());
       localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
-      this.jdField_a_of_type_MqqObserverBusinessObserver = new kou(this, paramPaConfigInfo, paramSwitch, i, j, paramBoolean);
+      this.jdField_a_of_type_MqqObserverBusinessObserver = new krb(this, paramPaConfigInfo, paramSwitch, i, j, paramBoolean);
       localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
       this.jdField_c_of_type_Int += 1;
@@ -369,16 +369,16 @@ public class EqqAccountDetailActivity
   
   public void a(EqqDetail paramEqqDetail, boolean paramBoolean)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new koy(this, paramEqqDetail, paramBoolean), 10L);
+    ThreadManager.getSubThreadHandler().postDelayed(new krf(this, paramEqqDetail, paramBoolean), 10L);
   }
   
   void a(String paramString)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
-    localActionSheet.b(2131433828);
-    localActionSheet.c(getString(2131435092) + paramString);
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new kon(this, localActionSheet, paramString));
+    localActionSheet.b(2131433844);
+    localActionSheet.c(getString(2131435108) + paramString);
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new kqu(this, localActionSheet, paramString));
     localActionSheet.show();
   }
   
@@ -554,18 +554,18 @@ public class EqqAccountDetailActivity
       return false;
       if (paramPaConfigInfo.jdField_a_of_type_Int == 1)
       {
-        localObject1 = ((LayoutInflater)localObject1).inflate(2130968724, null);
-        ((ImageView)((View)localObject1).findViewById(2131362747)).setImageResource(2130838261);
-        ((ImageView)((View)localObject1).findViewById(2131363443)).setVisibility(0);
+        localObject1 = ((LayoutInflater)localObject1).inflate(2130968727, null);
+        ((ImageView)((View)localObject1).findViewById(2131362752)).setImageResource(2130838266);
+        ((ImageView)((View)localObject1).findViewById(2131363462)).setVisibility(0);
         localObject2 = paramPaConfigInfo.jdField_c_of_type_JavaLangString;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           return false;
         }
-        ((TextView)((View)localObject1).findViewById(2131363057)).setText((CharSequence)localObject2);
+        ((TextView)((View)localObject1).findViewById(2131363062)).setText((CharSequence)localObject2);
         if (paramPaConfigInfo.jdField_a_of_type_JavaLangString.contains("历史")) {
           ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_d_of_type_JavaLangString, "0X8004E45", "0X8004E45", 0, 0, "", "", "", "");
         }
-        ((View)localObject1).setOnClickListener(new kot(this, (String)localObject2, paramPaConfigInfo));
+        ((View)localObject1).setOnClickListener(new kra(this, (String)localObject2, paramPaConfigInfo));
         i = 0;
         break;
       }
@@ -592,7 +592,7 @@ public class EqqAccountDetailActivity
       if (paramPaConfigInfo.jdField_a_of_type_Int == 5) {
         return false;
       }
-      localObject1 = ((LayoutInflater)localObject1).inflate(2130968724, null);
+      localObject1 = ((LayoutInflater)localObject1).inflate(2130968727, null);
       i = 0;
       break;
       ((View)localObject1).setBackgroundResource(2130837517);
@@ -618,7 +618,7 @@ public class EqqAccountDetailActivity
       }
     }
     label692:
-    paramPaConfigInfo = ((View)localObject1).findViewById(2131363442);
+    paramPaConfigInfo = ((View)localObject1).findViewById(2131363461);
     switch (paramInt)
     {
     default: 
@@ -693,9 +693,9 @@ public class EqqAccountDetailActivity
     if (this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null) {
       return null;
     }
-    View localView = super.getLayoutInflater().inflate(2130968724, null);
-    ((ImageView)localView.findViewById(2131362747)).setImageResource(2130838263);
-    ((ImageView)localView.findViewById(2131363443)).setVisibility(0);
+    View localView = super.getLayoutInflater().inflate(2130968727, null);
+    ((ImageView)localView.findViewById(2131362752)).setImageResource(2130838268);
+    ((ImageView)localView.findViewById(2131363462)).setVisibility(0);
     String str = paramPaConfigInfo.b;
     boolean bool1;
     boolean bool2;
@@ -707,11 +707,11 @@ public class EqqAccountDetailActivity
       if (!bool2) {
         break label166;
       }
-      ((TextView)localView.findViewById(2131363057)).setText(str);
+      ((TextView)localView.findViewById(2131363062)).setText(str);
     }
     for (;;)
     {
-      localView.setOnClickListener(new koi(this, bool2, str, bool1, paramPaConfigInfo));
+      localView.setOnClickListener(new kqp(this, bool2, str, bool1, paramPaConfigInfo));
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Biz_card", "Biz_card_call", 0, 0, this.jdField_d_of_type_JavaLangString, "", "", "");
       return localView;
       return null;
@@ -719,7 +719,7 @@ public class EqqAccountDetailActivity
       if (!bool1) {
         break;
       }
-      ((TextView)localView.findViewById(2131363057)).setText(2131433828);
+      ((TextView)localView.findViewById(2131363062)).setText(2131433844);
     }
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "buildPhoneItem no phone ability and no ivr ability");
@@ -759,7 +759,7 @@ public class EqqAccountDetailActivity
   
   public void b(PaConfigAttr.PaConfigInfo paramPaConfigInfo, int paramInt)
   {
-    b(2131430029);
+    b(2131430031);
     NewIntent localNewIntent = new NewIntent(super.getApplicationContext(), PublicAccountServlet.class);
     this.jdField_b_of_type_MqqAppNewIntent = localNewIntent;
     localNewIntent.putExtra("cmd", "set_function_flag");
@@ -776,7 +776,7 @@ public class EqqAccountDetailActivity
       localSetFunctionFlagRequset.value.set(i);
       localSetFunctionFlagRequset.account_type.set(a());
       localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
-      this.jdField_b_of_type_MqqObserverBusinessObserver = new kos(this, paramPaConfigInfo, i, paramInt);
+      this.jdField_b_of_type_MqqObserverBusinessObserver = new kqz(this, paramPaConfigInfo, i, paramInt);
       localNewIntent.setObserver(this.jdField_b_of_type_MqqObserverBusinessObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
       this.jdField_c_of_type_Int += 1;
@@ -796,8 +796,8 @@ public class EqqAccountDetailActivity
     }
     localQQCustomDialog.setTitle("温馨提示");
     localQQCustomDialog.setMessage(str);
-    localQQCustomDialog.setOnCancelListener(new kov(this, paramPaConfigInfo, paramSwitch));
-    paramPaConfigInfo = new kow(this, paramPaConfigInfo, paramSwitch, paramBoolean);
+    localQQCustomDialog.setOnCancelListener(new krc(this, paramPaConfigInfo, paramSwitch));
+    paramPaConfigInfo = new krd(this, paramPaConfigInfo, paramSwitch, paramBoolean);
     localQQCustomDialog.setNegativeButton("取消", paramPaConfigInfo);
     localQQCustomDialog.setPositiveButton("确定", paramPaConfigInfo);
     try
@@ -872,9 +872,9 @@ public class EqqAccountDetailActivity
     if ((localObject != null) && (((String)localObject).equals("消息公告"))) {
       return null;
     }
-    localObject = super.getLayoutInflater().inflate(2130968724, null);
-    ((ImageView)((View)localObject).findViewById(2131362747)).setImageResource(2130838262);
-    ((TextView)((View)localObject).findViewById(2131363057)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString + " " + paramPaConfigInfo.b);
+    localObject = super.getLayoutInflater().inflate(2130968727, null);
+    ((ImageView)((View)localObject).findViewById(2131362752)).setImageResource(2130838267);
+    ((TextView)((View)localObject).findViewById(2131363062)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString + " " + paramPaConfigInfo.b);
     return localObject;
   }
   
@@ -900,7 +900,7 @@ public class EqqAccountDetailActivity
   
   void c(EqqDetail paramEqqDetail)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new kpa(this, paramEqqDetail), 10L);
+    ThreadManager.getSubThreadHandler().postDelayed(new krh(this, paramEqqDetail), 10L);
   }
   
   protected boolean c()
@@ -914,8 +914,8 @@ public class EqqAccountDetailActivity
   
   protected View d(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
-    View localView = super.getLayoutInflater().inflate(2130971587, null);
-    TextView localTextView = (TextView)localView.findViewById(2131363378);
+    View localView = super.getLayoutInflater().inflate(2130971613, null);
+    TextView localTextView = (TextView)localView.findViewById(2131363397);
     String str2 = paramPaConfigInfo.jdField_a_of_type_JavaLangString;
     String str1 = str2;
     if (str2 != null)
@@ -926,8 +926,8 @@ public class EqqAccountDetailActivity
       }
     }
     localTextView.setText(str1);
-    ((TextView)localView.findViewById(2131363203)).setText(paramPaConfigInfo.b);
-    localView.setOnClickListener(new koj(this));
+    ((TextView)localView.findViewById(2131363207)).setText(paramPaConfigInfo.b);
+    localView.setOnClickListener(new kqq(this));
     return localView;
   }
   
@@ -976,17 +976,17 @@ public class EqqAccountDetailActivity
       }
       return null;
     }
-    View localView = super.getLayoutInflater().inflate(2130971587, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363203));
+    View localView = super.getLayoutInflater().inflate(2130971613, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363207));
     if ((paramPaConfigInfo.jdField_d_of_type_Int == 1) || (paramPaConfigInfo.jdField_d_of_type_Int == 2)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437774);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437794);
     }
     for (;;)
     {
-      ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-      localView.setOnClickListener(new koo(this, paramPaConfigInfo));
+      ((TextView)localView.findViewById(2131363397)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+      localView.setOnClickListener(new kqv(this, paramPaConfigInfo));
       return localView;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437775);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437795);
     }
   }
   
@@ -1015,7 +1015,7 @@ public class EqqAccountDetailActivity
         localGetEqqDetailInfoRequest.eqq_id.set((int)Long.parseLong(this.jdField_d_of_type_JavaLangString));
         label151:
         this.jdField_c_of_type_MqqAppNewIntent.putExtra("data", localGetEqqDetailInfoRequest.toByteArray());
-        this.jdField_c_of_type_MqqObserverBusinessObserver = new kox(this);
+        this.jdField_c_of_type_MqqObserverBusinessObserver = new kre(this);
         this.jdField_c_of_type_MqqAppNewIntent.setObserver(this.jdField_c_of_type_MqqObserverBusinessObserver);
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(this.jdField_c_of_type_MqqAppNewIntent);
         this.jdField_c_of_type_Int += 1;
@@ -1035,9 +1035,9 @@ public class EqqAccountDetailActivity
   View f(PaConfigAttr.PaConfigInfo paramPaConfigInfo)
   {
     boolean bool = true;
-    View localView = getLayoutInflater().inflate(2130971626, null);
-    ((TextView)localView.findViewById(2131363378)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
-    Switch localSwitch = (Switch)localView.findViewById(2131364120);
+    View localView = getLayoutInflater().inflate(2130971652, null);
+    ((TextView)localView.findViewById(2131363397)).setText(paramPaConfigInfo.jdField_a_of_type_JavaLangString);
+    Switch localSwitch = (Switch)localView.findViewById(2131364145);
     this.jdField_a_of_type_ComTencentWidgetSwitch = localSwitch;
     if (paramPaConfigInfo.jdField_d_of_type_Int == 1)
     {
@@ -1049,7 +1049,7 @@ public class EqqAccountDetailActivity
     for (;;)
     {
       a(paramPaConfigInfo.e, bool);
-      localSwitch.setOnCheckedChangeListener(new kop(this, paramPaConfigInfo, localSwitch));
+      localSwitch.setOnCheckedChangeListener(new kqw(this, paramPaConfigInfo, localSwitch));
       return localView;
       localSwitch.setChecked(false);
       break;
@@ -1067,17 +1067,17 @@ public class EqqAccountDetailActivity
   
   public void g()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new kpb(this), 10L);
+    ThreadManager.getSubThreadHandler().postDelayed(new kri(this), 10L);
   }
   
   protected void h()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new kpc(this), 10L);
+    ThreadManager.getSubThreadHandler().postDelayed(new krj(this), 10L);
   }
   
   public void i()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new kpd(this), 10L);
+    ThreadManager.getSubThreadHandler().postDelayed(new krk(this), 10L);
   }
   
   protected void j()
@@ -1195,8 +1195,8 @@ public class EqqAccountDetailActivity
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "follow uin=" + this.jdField_d_of_type_JavaLangString);
     }
     this.i = true;
-    this.jdField_a_of_type_AndroidViewView.postDelayed(new kok(this), 3000L);
-    b(2131430032);
+    this.jdField_a_of_type_AndroidViewView.postDelayed(new kqr(this), 3000L);
+    b(2131430034);
     ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b(this.jdField_d_of_type_JavaLangString);
     this.jdField_d_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), PublicAccountServlet.class);
     this.jdField_d_of_type_MqqAppNewIntent.putExtra("cmd", "follow");
@@ -1207,7 +1207,7 @@ public class EqqAccountDetailActivity
     localFollowRequest.uin.set((int)Long.parseLong(this.jdField_d_of_type_JavaLangString));
     localFollowRequest.account_type.set(a());
     this.jdField_d_of_type_MqqAppNewIntent.putExtra("data", localFollowRequest.toByteArray());
-    this.jdField_d_of_type_MqqObserverBusinessObserver = new kol(this);
+    this.jdField_d_of_type_MqqObserverBusinessObserver = new kqs(this);
     this.jdField_d_of_type_MqqAppNewIntent.setObserver(this.jdField_d_of_type_MqqObserverBusinessObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(this.jdField_d_of_type_MqqAppNewIntent);
     this.jdField_c_of_type_Int += 1;

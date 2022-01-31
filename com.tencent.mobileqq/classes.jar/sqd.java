@@ -1,19 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
 
 public class sqd
-  implements IIconListener
+  implements View.OnClickListener
 {
-  public sqd(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sqd(EditActivity paramEditActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((this.a.a.a != null) && (this.a.a.a.actionId == paramInt1) && (paramInt2 == 200) && (paramBitmap != null)) {
-      this.a.a.a(this.a.a.a);
-    }
+    EditActivity.a(this.a).setVisibility(4);
+    EditActivity.a(this.a).setImageResource(2130844609);
+    EditActivity.a(this.a, false);
   }
 }
 

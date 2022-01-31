@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQNoResultBuilder;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgQueueView;
+import com.tencent.qphone.base.util.QLog;
 
 public class uug
-  implements DialogInterface.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public uug(ArkAppBabyQNoResultBuilder paramArkAppBabyQNoResultBuilder) {}
+  public uug(GoldMsgQueueView paramGoldMsgQueueView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    GoldMsgQueueView.a(this.a, false);
+    GoldMsgQueueView.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("GoldMsgQueueView", 2, "tryDoInsert end");
+    }
+  }
 }
 
 

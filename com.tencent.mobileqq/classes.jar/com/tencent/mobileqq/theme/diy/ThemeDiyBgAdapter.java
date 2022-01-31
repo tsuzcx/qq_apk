@@ -53,7 +53,7 @@ public class ThemeDiyBgAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null) {
-      paramView = this.mInflater.inflate(2130971037, paramViewGroup, false);
+      paramView = this.mInflater.inflate(2130971055, paramViewGroup, false);
     }
     for (;;)
     {
@@ -92,7 +92,7 @@ public class ThemeDiyBgAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDiyBgAdapter
  * JD-Core Version:    0.7.0.1
  */

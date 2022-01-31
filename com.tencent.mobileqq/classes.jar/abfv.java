@@ -1,37 +1,25 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.armap.ipc.ArMapIPC;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity;
 
 public class abfv
-  implements EIPCResultCallback
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abfv(ArMapIPC paramArMapIPC) {}
+  public abfv(ArkAuthorityInfoActivity paramArkAuthorityInfoActivity, int paramInt) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramEIPCResult != null)
+    paramCompoundButton = ArkAuthorityInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity);
+    String str1 = ArkAuthorityInfoActivity.a()[this.jdField_a_of_type_Int];
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqArkSettingArkAuthorityInfoActivity.app.getCurrentAccountUin();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
     {
-      localObject1 = localObject2;
-      if (paramEIPCResult.isSuccess()) {
-        localObject1 = paramEIPCResult.data.getString("action");
-      }
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ArMapIPC", 2, "onCallback error");
-      }
+      ArkAppModuleReg.ModuleQQ.a(paramCompoundButton, str1, str2, i);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPC", 2, "onCallback action:" + (String)localObject1);
-    }
-    this.a.a((String)localObject1, paramEIPCResult);
   }
 }
 

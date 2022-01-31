@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.upgrade;
 
+import aadf;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
@@ -17,12 +18,11 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import mqq.app.MobileQQ;
 import org.xmlpull.v1.XmlPullParser;
-import zws;
 
 public class UpgradeTIMWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new zws();
+  public static final Parcelable.Creator CREATOR = new aadf();
   public int a;
   public String a;
   public String b;

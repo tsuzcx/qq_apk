@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import com.tencent.mobileqq.app.PublicAccountObserver;
 
 public class tcf
-  implements DialogInterface.OnClickListener
+  extends PublicAccountObserver
 {
-  public tcf(NotificationActivity paramNotificationActivity) {}
+  public tcf(Leba paramLeba) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new tcg(this), 1000L);
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tcf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import android.support.v7.widget.RecyclerView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter;
 
 public class xid
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public xid(AnonymousEntranceView paramAnonymousEntranceView) {}
+  public xid(TroopUnAccalimedRedPacketList.HbListAdapter paramHbListAdapter) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(4);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(0);
+    if (TroopUnAccalimedRedPacketList.a() != null) {
+      TroopUnAccalimedRedPacketList.a().invalidateItemDecorations();
     }
   }
 }

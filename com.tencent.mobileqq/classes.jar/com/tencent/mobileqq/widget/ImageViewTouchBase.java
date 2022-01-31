@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import akuo;
-import akup;
+import alcf;
+import alcg;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -333,7 +333,7 @@ public abstract class ImageViewTouchBase
   {
     if (getWidth() <= 0)
     {
-      this.mOnLayoutRunnable = new akuo(this, paramRotateBitmap, paramBoolean);
+      this.mOnLayoutRunnable = new alcf(this, paramRotateBitmap, paramBoolean);
       return;
     }
     if (paramRotateBitmap.a() != null)
@@ -447,7 +447,7 @@ public abstract class ImageViewTouchBase
     paramFloat1 = (paramFloat1 - getScale()) / paramFloat4;
     float f = getScale();
     long l = System.currentTimeMillis();
-    this.mHandler.post(new akup(this, paramFloat4, l, f, paramFloat1, paramFloat2, paramFloat3));
+    this.mHandler.post(new alcg(this, paramFloat4, l, f, paramFloat1, paramFloat2, paramFloat3));
   }
   
   public void zoomToPoint(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -460,7 +460,7 @@ public abstract class ImageViewTouchBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageViewTouchBase
  * JD-Core Version:    0.7.0.1
  */

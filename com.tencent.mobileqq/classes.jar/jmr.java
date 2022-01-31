@@ -1,43 +1,33 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import com.tencent.av.service.IAVServiceCallback;
+import android.text.TextUtils;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.av.random.RandomWebProtocol.OnRequestListener;
+import java.util.Iterator;
+import java.util.List;
 
 public class jmr
-  implements IAVServiceCallback
+  extends Thread
 {
-  private IBinder a;
+  public jmr(RandomWebProtocol paramRandomWebProtocol, String paramString1, String paramString2) {}
   
-  public jmr(IBinder paramIBinder)
+  public void run()
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceCallback");
-      localParcel.writeInt(paramInt1);
-      localParcel.writeInt(paramInt2);
-      localParcel.writeInt(paramInt3);
-      this.a.transact(1, localParcel, null, 1);
-      return;
+    jna localjna = new jna(this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "null"))) {
+      localjna.a = this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol.a(this.b, this.jdField_a_of_type_JavaLangString);
     }
-    finally
+    if (localjna.a != null) {}
+    for (int i = 0;; i = -1)
     {
-      localParcel.recycle();
+      Iterator localIterator = this.jdField_a_of_type_ComTencentAvRandomRandomWebProtocol.a.iterator();
+      while (localIterator.hasNext()) {
+        ((RandomWebProtocol.OnRequestListener)localIterator.next()).a(i, localjna);
+      }
     }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jmr
  * JD-Core Version:    0.7.0.1
  */

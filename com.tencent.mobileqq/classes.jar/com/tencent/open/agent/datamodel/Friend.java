@@ -1,6 +1,6 @@
 package com.tencent.open.agent.datamodel;
 
-import alcu;
+import alkm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class Friend
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new alcu();
+  public static final Parcelable.Creator CREATOR = new alkm();
   public int a;
   public String a;
   public int b;

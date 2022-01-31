@@ -1,17 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 public class tow
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public tow(RegisterActivity paramRegisterActivity) {}
+  public tow(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.sendEmptyMessage(1);
+    if (this.a.a == null)
+    {
+      this.a.a = ((ActionSheet)ActionSheetHelper.a(this.a, null));
+      this.a.a.b(2131431701);
+      this.a.a.b(2131431574);
+      this.a.a.c(2131433029);
+      this.a.a.a(new tox(this));
+    }
+    if (!this.a.a.isShowing()) {
+      this.a.a.show();
+    }
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
   }
 }
 

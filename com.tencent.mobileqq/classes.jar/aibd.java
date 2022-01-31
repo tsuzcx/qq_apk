@@ -1,21 +1,23 @@
-import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
-import com.tencent.mobileqq.shortvideo.facedancegame.GestureDetectManager;
-import com.tencent.sveffects.Reporter;
-import com.tencent.sveffects.SdkContext;
+import com.tencent.mobileqq.search.model.PublicAccountSearchResultModel;
+import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
+import java.util.Comparator;
 
-public class aibd
-  implements AVGestureWrapper.AVUploadReport
+public final class aibd
+  implements Comparator
 {
-  public aibd(GestureDetectManager paramGestureDetectManager) {}
-  
-  public void avGestureUploadReport(String paramString1, String paramString2)
+  public int a(PublicAccountSearchResultModel paramPublicAccountSearchResultModel1, PublicAccountSearchResultModel paramPublicAccountSearchResultModel2)
   {
-    SdkContext.a().a().a("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+    int j = Long.signum(paramPublicAccountSearchResultModel2.b() - paramPublicAccountSearchResultModel1.b());
+    int i = j;
+    if (j == 0) {
+      i = PublicAccountSearchEngine.a(paramPublicAccountSearchResultModel1, paramPublicAccountSearchResultModel2);
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aibd
  * JD-Core Version:    0.7.0.1
  */

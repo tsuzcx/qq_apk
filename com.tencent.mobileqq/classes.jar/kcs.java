@@ -1,41 +1,61 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.QAVPtvTemplateAdapter.IEffectCallback;
-import com.tencent.av.ui.QavListItemBase.ItemInfo;
-import com.tencent.av.ui.VoiceChangeDataReport;
-import com.tencent.av.ui.VoiceChangeToolbar;
-import com.tencent.mobileqq.statistics.MultiVideoRichActionReportCollection;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class kcs
-  implements QAVPtvTemplateAdapter.IEffectCallback
+  extends BroadcastReceiver
 {
-  public kcs(VoiceChangeToolbar paramVoiceChangeToolbar) {}
+  public kcs(VideoControlUI paramVideoControlUI) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    EffectSettingUi.a(this.a.mApp);
-  }
-  
-  public void a(QavListItemBase.ItemInfo paramItemInfo)
-  {
-    AVLog.d(VoiceChangeToolbar.TAG, "onEffectClick| voiceType=" + paramItemInfo.a);
-    int i = Integer.parseInt(paramItemInfo.a);
-    this.a.mApp.a().a().S = i;
-    this.a.mApp.a().a().T = 0;
-    this.a.mApp.a().K();
-    VoiceChangeDataReport.a(this.a.mApp.a().a(), i);
-    EffectSettingUi.a(this.a.mApp);
-    if (this.a.mApp.a().a().d == 4) {
-      MultiVideoRichActionReportCollection.e(String.valueOf(i));
+    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {
+      return;
+    }
+    paramContext = paramIntent.getStringExtra("camera_id");
+    int i = paramIntent.getIntExtra("availability", 1);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.c, 2, "update camera availability status cameraId:" + paramContext + ", value:" + i);
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
+    if (i == 0)
+    {
+      VideoControlUI.b(this.a, false);
+      return;
+    }
+    paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if ((paramContext != null) && (paramContext.size() > 0))
+    {
+      paramContext = paramContext.entrySet().iterator();
+      do
+      {
+        if (!paramContext.hasNext()) {
+          break;
+        }
+      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
+    }
+    for (i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        VideoControlUI.b(this.a, false);
+        return;
+      }
+      VideoControlUI.b(this.a, true);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcs
  * JD-Core Version:    0.7.0.1
  */

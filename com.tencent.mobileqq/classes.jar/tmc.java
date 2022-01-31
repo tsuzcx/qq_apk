@@ -1,28 +1,16 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.utils.DingdongPluginBizObserver;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class tmc
-  extends DingdongPluginBizObserver
+  implements View.OnClickListener
 {
-  public tmc(QQSettingMe paramQQSettingMe) {}
+  public tmc(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramInt == 5)
-    {
-      QQSettingMe.a(this.a, true);
-      this.a.I();
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramInt != 13);
-      QQSettingMe.a(this.a, true);
-    } while (!QQSettingMe.f(this.a));
-    QQSettingMe.d(this.a);
-    this.a.a(true);
+    this.a.a.dismiss();
   }
 }
 

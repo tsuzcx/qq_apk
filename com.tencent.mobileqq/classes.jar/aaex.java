@@ -1,20 +1,11 @@
-import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudFileUploadCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
 
 public class aaex
+  implements Runnable
 {
-  public ARCloudFileUpload.ARCloudFileUploadCallback a;
-  public ARCloudReqInfo a;
-  public Transaction a;
-  public String a;
+  public aaex(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
   
-  public aaex()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
-    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = null;
-  }
+  public void run() {}
 }
 
 

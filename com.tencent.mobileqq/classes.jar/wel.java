@@ -1,10 +1,15 @@
-import java.io.File;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-public abstract interface wel
+public class wel
+  implements Runnable
 {
-  public abstract File a(String paramString);
+  public wel(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public abstract String c();
+  public void run()
+  {
+    ServiceAccountFolderManager.a().b(this.a.a);
+  }
 }
 
 

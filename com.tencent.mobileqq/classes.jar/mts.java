@@ -1,21 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
+import java.util.List;
 
 public class mts
-  implements Animation.AnimationListener
+  extends ReadInJoyObserver
 {
-  public mts(SubscriptRecommendController paramSubscriptRecommendController) {}
+  public mts(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, List paramList)
   {
-    this.a.a(SubscriptRecommendController.a(this.a));
-    this.a.c();
+    if (paramBoolean) {
+      ReadInJoyFeedsHeaderViewController.a(this.a, ReadInJoyFeedsHeaderViewController.a(this.a, paramList));
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

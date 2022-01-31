@@ -1,23 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.av.utils.PstnUtils;
+import com.tencent.av.switchface.SwitchFaceView;
+import com.tencent.av.ui.GLVideoView;
+import java.util.ArrayList;
 
-class jrh
-  implements DialogInterface.OnClickListener
+public class jrh
 {
-  jrh(jre paramjre) {}
+  public int a;
+  public GLVideoView a;
+  public ArrayList a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  jrh(SwitchFaceView paramSwitchFaceView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
-    PstnUtils.a(this.a.a.app, this.a.a, 1, 8);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jrh
  * JD-Core Version:    0.7.0.1
  */

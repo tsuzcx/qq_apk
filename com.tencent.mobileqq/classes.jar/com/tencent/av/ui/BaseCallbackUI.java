@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import jqi;
+import jsm;
 
 public class BaseCallbackUI
 {
@@ -32,15 +32,15 @@ public class BaseCallbackUI
   public BaseCallbackUI(Activity paramActivity, int paramInt)
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131365840));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramActivity.findViewById(2131365850));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131365849));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131365847));
-    this.b = ((TextView)paramActivity.findViewById(2131365848));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131365845));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramActivity.findViewById(2131365855));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131365854));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131365852));
+    this.b = ((TextView)paramActivity.findViewById(2131365853));
     if (paramInt == 1001)
     {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramActivity.getResources().getString(2131438346));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramActivity.getResources().getString(2131438366));
     }
     for (;;)
     {
@@ -49,13 +49,13 @@ public class BaseCallbackUI
       this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(paramActivity);
       this.b.startAnimation(paramActivity);
       b();
-      this.jdField_a_of_type_JavaLangRunnable = new jqi(this);
+      this.jdField_a_of_type_JavaLangRunnable = new jsm(this);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 400L);
       return;
       if (paramInt == 1002)
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramActivity.getResources().getString(2131438351));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramActivity.getResources().getString(2131438371));
       }
     }
   }
@@ -95,7 +95,7 @@ public class BaseCallbackUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.BaseCallbackUI
  * JD-Core Version:    0.7.0.1
  */

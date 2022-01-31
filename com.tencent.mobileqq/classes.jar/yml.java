@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.apollo.ApolloResponseManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-public class yml
-  implements Comparator
+class yml
+  implements Runnable
 {
-  public yml(ApolloResponseManager paramApolloResponseManager) {}
+  yml(ymk paramymk) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void run()
   {
-    return this.a.a(paramApolloActionData2) - this.a.a(paramApolloActionData1);
+    this.a.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yml
  * JD-Core Version:    0.7.0.1
  */

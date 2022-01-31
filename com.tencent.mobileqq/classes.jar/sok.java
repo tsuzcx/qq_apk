@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
-class sok
-  implements Runnable
+public class sok
+  implements DialogInterface.OnClickListener
 {
-  sok(soi paramsoi) {}
+  public sok(DialogActivity paramDialogActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a(this.a.a.a.a, true);
+    paramDialogInterface.cancel();
   }
 }
 

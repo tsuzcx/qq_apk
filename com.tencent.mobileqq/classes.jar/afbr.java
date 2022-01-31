@@ -1,28 +1,35 @@
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryScene;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.io.File;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.view.CommentsAdapter;
 
 public class afbr
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public afbr(PicBrowserGalleryScene paramPicBrowserGalleryScene, ActionSheet paramActionSheet, File paramFile, String paramString) {}
+  public afbr(CommentsAdapter paramCommentsAdapter, long paramLong) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
+    Object localObject = paramView.getContext();
+    if ((localObject instanceof BaseActivity))
     {
-    default: 
-      return;
-    case 0: 
-      AIOGalleryUtils.a(PicBrowserGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryScene), this.jdField_a_of_type_JavaIoFile, Utils.Crc64String(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()));
+      localObject = (BaseActivity)localObject;
+      if ((((BaseActivity)localObject).app == null) || (this.jdField_a_of_type_Long != Long.parseLong(((BaseActivity)localObject).app.getCurrentAccountUin()))) {}
+    }
+    for (int i = 2;; i = 3)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("&from=3");
+      ((StringBuilder)localObject).append("&mode=" + i);
+      localObject = "mqq://card/show_pslcard/?uin=" + this.jdField_a_of_type_Long + "&card_type=nearby" + ((StringBuilder)localObject).toString();
+      paramView.getContext().startActivity(new Intent(paramView.getContext(), JumpActivity.class).setData(Uri.parse((String)localObject)));
       return;
     }
-    PicBrowserGalleryScene.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryScene, this.jdField_a_of_type_JavaLangString);
   }
 }
 

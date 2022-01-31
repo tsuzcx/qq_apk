@@ -1,21 +1,37 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelFunction;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.search.FunctionModuleConfigManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
 public class ahvi
-  extends GroupSearchEngine.SearchEngineEntity
+  implements Runnable
 {
-  public ahvi(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  public ahvi(FunctionModuleConfigManager paramFunctionModuleConfigManager, String paramString) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void run()
   {
-    return new GroupSearchModelFunction(paramList, paramString);
+    try
+    {
+      Object localObject = HttpUtil.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      if (localObject != null)
+      {
+        localObject = FunctionModuleConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqSearchFunctionModuleConfigManager, (byte[])localObject);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqSearchFunctionModuleConfigManager.a((String)localObject);
+          this.jdField_a_of_type_ComTencentMobileqqSearchFunctionModuleConfigManager.c(this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.uniteSearch.FunctionModuleConfigManager", 2, localIOException.toString());
+    }
   }
 }
 

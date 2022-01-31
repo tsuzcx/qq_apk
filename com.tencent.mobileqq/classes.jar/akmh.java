@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.view.WindowManager;
+import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
 
-class akmh
+public class akmh
   implements Runnable
 {
-  akmh(akmf paramakmf, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public akmh(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.jdField_a_of_type_AndroidViewWindowManager.addView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel, this.a.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    this.a.b = true;
+    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.post(new akmi(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akmh
  * JD-Core Version:    0.7.0.1
  */

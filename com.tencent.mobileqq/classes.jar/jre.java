@@ -1,168 +1,73 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.av.app.PstnSessionInfo;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.ui.BaseCallbackUI;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.av.utils.PSTNNotification;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.PstnHandler.CallTypeRspParam;
-import com.tencent.mobileqq.qcall.PstnObserver;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.smallscreen.SmallScreenVideoController;
+import com.tencent.av.smallscreen.SmallScreenVideoLayerUI;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class jre
-  extends PstnObserver
+class jre
+  implements Runnable
 {
-  public jre(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  jre(jrd paramjrd, String paramString, boolean paramBoolean) {}
   
-  public void a()
+  public void run()
   {
-    if (CallbackWaitingActivityExt.a(this.a) != null) {
-      CallbackWaitingActivityExt.a(this.a).a().a().jdField_b_of_type_Int = -1;
-    }
-    this.a.finish();
-  }
-  
-  public void a(Boolean paramBoolean, Object paramObject)
-  {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d(CallbackWaitingActivityExt.a(), 2, "isSuccess = " + paramBoolean);
-    }
-    PstnHandler.CallTypeRspParam localCallTypeRspParam;
-    if ((paramObject instanceof PstnHandler.CallTypeRspParam))
+    Object localObject2 = null;
+    Object localObject1 = this.jdField_a_of_type_Jrd.a.jdField_a_of_type_AndroidContentContext.getSharedPreferences("qav_SP", 0);
+    if (!((SharedPreferences)localObject1).getBoolean("kick_out_self", false))
     {
-      localCallTypeRspParam = (PstnHandler.CallTypeRspParam)paramObject;
-      localObject = localCallTypeRspParam;
-      if (this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo != null)
+      if ((this.jdField_a_of_type_Jrd.a.c != 1) && (this.jdField_a_of_type_Jrd.a.c != 2)) {
+        break label173;
+      }
+      if ((this.jdField_a_of_type_Jrd.a.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Jrd.a.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
       {
-        localObject = localCallTypeRspParam;
-        if (CallbackWaitingActivityExt.a(this.a) != null) {
-          VideoMsgTools.a(CallbackWaitingActivityExt.a(this.a), this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_JavaLangString, CallbackWaitingActivityExt.a(this.a).getAccount(), true, localCallTypeRspParam.jdField_a_of_type_JavaLangString);
-        }
+        this.jdField_a_of_type_Jrd.a.b = this.jdField_a_of_type_Boolean;
+        this.jdField_a_of_type_Jrd.a.d();
+      }
+      if (this.jdField_a_of_type_Jrd.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI != null)
+      {
+        localObject1 = ((SharedPreferences)localObject1).edit();
+        ((SharedPreferences.Editor)localObject1).putInt("video_position", this.jdField_a_of_type_Jrd.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.b());
+        ((SharedPreferences.Editor)localObject1).commit();
       }
     }
-    for (Object localObject = localCallTypeRspParam;; localObject = null)
+    label173:
+    label306:
+    for (;;)
     {
-      if (paramBoolean.booleanValue())
+      return;
+      if ((this.jdField_a_of_type_Jrd.a.c == 3) || (this.jdField_a_of_type_Jrd.a.c == 4))
       {
-        if (localObject != null)
+        if (this.jdField_a_of_type_Jrd.a.jdField_a_of_type_ComTencentAvVideoController == null)
         {
+          localObject1 = null;
+          if (localObject1 != null) {
+            break label300;
+          }
+        }
+        for (localObject1 = localObject2;; localObject1 = ((SessionInfo)localObject1).q)
+        {
+          if ((localObject1 == null) || (this.jdField_a_of_type_JavaLangString == null) || (!((String)localObject1).equals(this.jdField_a_of_type_JavaLangString))) {
+            break label306;
+          }
           if (QLog.isColorLevel()) {
-            QLog.d(CallbackWaitingActivityExt.a(), 2, " retCode = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_a_of_type_Int + " callType = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_b_of_type_Int + " callbackPhone = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_c_of_type_JavaLangString + " callbackPrompt = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_b_of_type_JavaLangString + " toPhone = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_d_of_type_JavaLangString + " callbackId = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_a_of_type_JavaLangString + " peerCallId = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_a_of_type_Long + " ability = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_c_of_type_Int + " phoneNumType = " + ((PstnHandler.CallTypeRspParam)localObject).jdField_d_of_type_Int);
+            QLog.d("SmallScreenVideoController", 2, "[random room owner] onDestroyUI finish");
           }
-          if ((((PstnHandler.CallTypeRspParam)localObject).jdField_b_of_type_Int == 5) && (this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo != null) && (CallbackWaitingActivityExt.a(this.a) != null))
-          {
-            CallbackWaitingActivityExt.f = ((PstnHandler.CallTypeRspParam)localObject).jdField_c_of_type_JavaLangString;
-            paramBoolean = new Intent();
-            paramBoolean.putExtra("callbackId", ((PstnHandler.CallTypeRspParam)localObject).jdField_a_of_type_JavaLangString);
-            paramBoolean.putExtra("toPhone", this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_b_of_type_JavaLangString);
-            paramBoolean.putExtra("fromPhone", this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_c_of_type_JavaLangString);
-            paramBoolean.putExtra("toUin", this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_JavaLangString);
-            paramBoolean.putExtra("fromUin", CallbackWaitingActivityExt.a(this.a).getAccount());
-            paramBoolean.putExtra("uinType", this.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_Int);
-            paramBoolean.putExtra("type", 1001);
-            CallbackWaitingActivityExt.a(this.a, paramBoolean);
-            this.a.jdField_a_of_type_ComTencentAvUiBaseCallbackUI.a.postDelayed(new jrf(this), 30000L);
-          }
-          if ((CallbackWaitingActivityExt.a(this.a) != null) && (CallbackWaitingActivityExt.a(this.a).a().a() != null)) {
-            CallbackWaitingActivityExt.a(this.a).a().a().jdField_b_of_type_Int = 1;
-          }
-        }
-        return;
-      }
-      CallbackWaitingActivityExt.a(this.a).a().a().jdField_b_of_type_Int = -1;
-      paramBoolean = "呼叫失败，请稍后再试。";
-      int i;
-      if ((paramObject != null) && ((paramObject instanceof Integer))) {
-        switch (((Integer)paramObject).intValue())
-        {
-        case 2: 
-        case 4: 
-        case 5: 
-        case 9: 
-        case 10: 
-        default: 
-          paramBoolean = "呼叫失败，请稍后再试。";
-          i = 1;
-        }
-      }
-      for (;;)
-      {
-        if (i == 2)
-        {
-          paramBoolean = PstnUtils.b(this.a.app, 1);
-          paramObject = PstnUtils.c(this.a.app, 1);
-          localObject = PstnUtils.d(this.a.app, 1);
-          DialogUtil.a(this.a, 230, paramBoolean, paramObject, this.a.getString(2131428675), (String)localObject, new jrh(this), new jri(this)).show();
+          this.jdField_a_of_type_Jrd.a.b = this.jdField_a_of_type_Boolean;
+          this.jdField_a_of_type_Jrd.a.d();
           return;
-          paramBoolean = "你拨打的号码有误，请加拨区号后再试。";
-          i = 1;
-          continue;
-          i = 2;
-          continue;
-          paramBoolean = "呼叫失败，暂不支持呼叫此类号码。";
-          i = 1;
-          continue;
-          paramBoolean = "你拨打的号码有误，请检查后再试。";
-          i = 1;
-          continue;
-          paramBoolean = "呼叫失败，暂不支持呼叫国外号码。";
-          i = 1;
-          continue;
-          paramBoolean = "呼叫失败，最多支持同时接入9个手机//固话用户。";
-          i = 1;
-        }
-        else
-        {
-          DialogUtil.b(this.a, 230, "", paramBoolean, 2131428674, 2131428674, null, new jrj(this)).show();
-          return;
-          i = 1;
+          localObject1 = this.jdField_a_of_type_Jrd.a.jdField_a_of_type_ComTencentAvVideoController.a();
+          break;
         }
       }
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    super.a(paramString, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d(CallbackWaitingActivityExt.a(), 2, " callId = " + paramString + ", time = " + paramInt);
-    }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    if (this.a.c != null) {
-      this.a.c.setText(this.a.getResources().getString(2131429562));
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvUtilsPSTNNotification != null) {
-      this.a.jdField_a_of_type_ComTencentAvUtilsPSTNNotification.a(1);
-    }
-    if ((this.a.b != null) && (this.a.jdField_a_of_type_AndroidWidgetButton != null))
-    {
-      this.a.a(this.a.b, false, 2130840125);
-      this.a.b.setClickable(true);
-      this.a.a(this.a.jdField_a_of_type_AndroidWidgetButton, false, 2130840136);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
-    }
-    if (CallbackWaitingActivityExt.a(this.a) != null)
-    {
-      CallbackWaitingActivityExt.a(this.a).a().a().jdField_b_of_type_Int = 2;
-      CallbackWaitingActivityExt.a(this.a).a().g = true;
-      CallbackWaitingActivityExt.a(this.a).a().e(true);
-      CallbackWaitingActivityExt.a(this.a).a().c(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jre
  * JD-Core Version:    0.7.0.1
  */

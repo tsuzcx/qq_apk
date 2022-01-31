@@ -1,95 +1,70 @@
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.teamwork.spread.BaseTimAIOTipsProcessor.ListResult;
-import com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgItemLive;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.StringTokenizer;
 
 public class aine
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aine(BuddyFileAIOMsgTips paramBuddyFileAIOMsgTips, BaseTimAIOTipsProcessor.ListResult paramListResult) {}
+  public aine(StructMsgItemLive paramStructMsgItemLive) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BuddyFileAIOMsgTips", 1, "sub Thread getWordsList by buddyFile[" + System.currentTimeMillis() + "]");
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((!TextUtils.isEmpty(this.a.a.mMsgActionData)) && (this.a.a.mMsgActionData.startsWith("story:"))) {
+      localObject1 = this.a.a.mMsgActionData.substring("story:".length(), this.a.a.mMsgActionData.length() - 1);
     }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBuddyFileAIOMsgTips.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBuddyFileAIOMsgTips.jdField_a_of_type_JavaLangString);
-    if ((localObject1 == null) || (((List)localObject1).size() == 0))
+    for (int i = 1;; i = 2)
     {
+      JumpParser.a(localQQAppInterface, paramView.getContext(), (String)localObject1).b();
       if (QLog.isColorLevel()) {
-        QLog.i("BuddyFileAIOMsgTips", 1, "current AIO has not File,peerType[" + this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBuddyFileAIOMsgTips.jdField_a_of_type_Int + "]");
+        QLog.d("StructMsgQ.qqstory.TAG_NOW_ENTRANCE_ACTION_CONFIG", 2, "actionType:" + i + "|uri:" + (String)localObject1);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBaseTimAIOTipsProcessor$ListResult.a(localArrayList);
       return;
-    }
-    Object localObject2 = new StringTokenizer(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBuddyFileAIOMsgTips.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting.a(), "|");
-    if (!((StringTokenizer)localObject2).hasMoreTokens())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("BuddyFileAIOMsgTips", 1, "config filetype is null");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBaseTimAIOTipsProcessor$ListResult.a(localArrayList);
-      return;
-    }
-    String[] arrayOfString = new String[((StringTokenizer)localObject2).countTokens()];
-    int i = 0;
-    while (((StringTokenizer)localObject2).hasMoreTokens())
-    {
-      arrayOfString[i] = ((StringTokenizer)localObject2).nextToken();
-      i += 1;
-    }
-    long l = MessageCache.a();
-    localObject1 = ((List)localObject1).iterator();
-    label385:
-    label434:
-    for (;;)
-    {
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
-        if (((FileManagerEntity)localObject2).uniseq == this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBuddyFileAIOMsgTips.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) {
-          continue;
-        }
-        if (((FileManagerEntity)localObject2).srvTime - l * 1000L <= 86400000L) {
-          break label369;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("BuddyFileAIOMsgTips", 1, "file is over 24h");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("BuddyFileAIOMsgTips", 1, "find file msg count[" + localArrayList.size() + "]");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadBaseTimAIOTipsProcessor$ListResult.a(localArrayList);
-      return;
-      label369:
-      String str = FileUtil.a(((FileManagerEntity)localObject2).fileName);
-      int j = arrayOfString.length;
+      localObject1 = "0";
+      localObject2 = "-1";
+      String[] arrayOfString1 = this.a.w.substring(this.a.w.indexOf("?") + 1).split("&");
       i = 0;
-      if (i < j) {
-        if (!arrayOfString[i].equalsIgnoreCase(str)) {}
-      }
-      for (i = 1;; i = 0)
+      while (i < arrayOfString1.length)
       {
-        if (i == 0) {
-          break label434;
+        String[] arrayOfString2 = arrayOfString1[i].split("=");
+        localObject5 = localObject2;
+        Object localObject3 = localObject1;
+        if (arrayOfString2.length == 2)
+        {
+          if ("roomid".equals(arrayOfString2[0])) {
+            localObject1 = arrayOfString2[1];
+          }
+          localObject5 = localObject2;
+          localObject3 = localObject1;
         }
-        localArrayList.add(((FileManagerEntity)localObject2).fileName);
-        break;
+        try
+        {
+          if ("from".equals(arrayOfString2[0]))
+          {
+            localObject5 = arrayOfString2[1];
+            localObject3 = localObject1;
+          }
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          for (;;)
+          {
+            localObject5 = localObject2;
+            Object localObject4 = localObject1;
+          }
+        }
         i += 1;
-        break label385;
+        localObject2 = localObject5;
+        localObject1 = localObject3;
       }
+      localObject1 = String.format("mqqapi://now/openroom?src_type=app&version=1&roomid=%s&fromid=%s", new Object[] { localObject1, localObject2 });
     }
   }
 }

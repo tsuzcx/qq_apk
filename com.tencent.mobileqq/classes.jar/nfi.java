@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
+import com.tencent.biz.qqstory.channel.NetworkRequest.IProtocolListener;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
 
 public class nfi
-  implements View.OnClickListener
+  extends Job
 {
-  public nfi(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  public nfi(QQStoryCmdHandler paramQQStoryCmdHandler, NetworkRequest paramNetworkRequest) {}
   
-  public void onClick(View paramView)
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    this.a.a.dismiss();
-    StoryReportor.a("msg_tab", "clk_tips", 0, 0, new String[] { "1", "", "", "" });
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest.a().a(880001, "no network", null);
+    return null;
   }
 }
 

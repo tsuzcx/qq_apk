@@ -20,31 +20,31 @@ import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SwipRightMenuBuilder.SwipItemBaseHolder;
 import java.util.ArrayList;
-import onh;
-import oni;
-import onj;
-import onk;
-import onl;
-import onm;
-import ono;
-import onp;
-import onr;
-import ont;
-import onv;
+import ort;
+import oru;
+import orv;
+import orw;
+import orx;
+import ory;
+import osa;
+import osb;
+import osd;
+import osf;
+import osh;
 
 public class TroopStoryMemoriesListAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131435116, 2131434041 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131435132, 2131434057 };
   private static final int[] b = { 2131493369, 2131493370 };
-  private static final int[] c = { 2131366880, 2131370002 };
+  private static final int[] c = { 2131366879, 2131370011 };
   public final float a;
   public Context a;
   public TroopStoryMemoriesListAdapter.OnUIClickListener a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public ArrayList a;
-  ono jdField_a_of_type_Ono;
+  osa jdField_a_of_type_Osa;
   public boolean a;
   
   private View a(int paramInt, ViewGroup paramViewGroup)
@@ -54,37 +54,37 @@ public class TroopStoryMemoriesListAdapter
     default: 
       return null;
     case 0: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970861, paramViewGroup, false);
-      paramViewGroup.setTag(new onv(this, paramViewGroup));
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970878, paramViewGroup, false);
+      paramViewGroup.setTag(new osh(this, paramViewGroup));
       return paramViewGroup;
     case 1: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970857, paramViewGroup, false);
-      paramViewGroup.setTag(new onk(this, paramViewGroup));
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970874, paramViewGroup, false);
+      paramViewGroup.setTag(new orw(this, paramViewGroup));
       return paramViewGroup;
     case 3: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970859, paramViewGroup, false);
-      paramViewGroup.setTag(new onm(this, paramViewGroup));
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970876, paramViewGroup, false);
+      paramViewGroup.setTag(new ory(this, paramViewGroup));
       return paramViewGroup;
     case 4: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970858, paramViewGroup, false);
-      paramViewGroup.setTag(new onl(this, paramViewGroup));
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970875, paramViewGroup, false);
+      paramViewGroup.setTag(new orx(this, paramViewGroup));
       return paramViewGroup;
     case 2: 
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970860, paramViewGroup, false);
-      paramViewGroup = new ont(this, localView);
-      localView = this.jdField_a_of_type_Ono.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970877, paramViewGroup, false);
+      paramViewGroup = new osf(this, localView);
+      localView = this.jdField_a_of_type_Osa.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
       localView.setTag(paramViewGroup);
       return localView;
     case 5: 
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970860, paramViewGroup, false);
-      paramViewGroup = new onr(this, localView);
-      localView = this.jdField_a_of_type_Ono.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970877, paramViewGroup, false);
+      paramViewGroup = new osd(this, localView);
+      localView = this.jdField_a_of_type_Osa.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
       localView.setTag(paramViewGroup);
       return localView;
     }
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970860, paramViewGroup, false);
-    paramViewGroup = new onp(this, localView);
-    localView = this.jdField_a_of_type_Ono.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970877, paramViewGroup, false);
+    paramViewGroup = new osb(this, localView);
+    localView = this.jdField_a_of_type_Osa.a(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
     localView.setTag(paramViewGroup);
     return localView;
   }
@@ -98,34 +98,34 @@ public class TroopStoryMemoriesListAdapter
     default: 
       return;
     case 0: 
-      ((onv)paramView.getTag()).a(localTroopStoryItemInfo);
+      ((osh)paramView.getTag()).a(localTroopStoryItemInfo);
       return;
     case 1: 
-      ((onk)paramView.getTag()).a(localTroopStoryItemInfo, paramInt);
+      ((orw)paramView.getTag()).a(localTroopStoryItemInfo, paramInt);
       return;
     case 3: 
-      ((onm)paramView.getTag()).a(localTroopStoryItemInfo);
+      ((ory)paramView.getTag()).a(localTroopStoryItemInfo);
       return;
     case 4: 
-      ((onl)paramView.getTag()).a(localTroopStoryItemInfo);
+      ((orx)paramView.getTag()).a(localTroopStoryItemInfo);
       return;
     case 5: 
-      localObject = (onr)paramView.getTag();
-      ((onr)localObject).a(localTroopStoryItemInfo, paramInt);
-      paramView.setOnLongClickListener(new onh(this, paramInt));
-      this.jdField_a_of_type_Ono.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
+      localObject = (osd)paramView.getTag();
+      ((osd)localObject).a(localTroopStoryItemInfo, paramInt);
+      paramView.setOnLongClickListener(new ort(this, paramInt));
+      this.jdField_a_of_type_Osa.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
       return;
     case 6: 
-      localObject = (onp)paramView.getTag();
-      ((onp)localObject).a(localTroopStoryItemInfo, paramInt);
-      paramView.setOnLongClickListener(new oni(this, paramInt));
-      this.jdField_a_of_type_Ono.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
+      localObject = (osb)paramView.getTag();
+      ((osb)localObject).a(localTroopStoryItemInfo, paramInt);
+      paramView.setOnLongClickListener(new oru(this, paramInt));
+      this.jdField_a_of_type_Osa.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
       return;
     }
-    Object localObject = (ont)paramView.getTag();
-    ((ont)localObject).a(localTroopStoryItemInfo, paramInt);
-    paramView.setOnLongClickListener(new onj(this, paramInt));
-    this.jdField_a_of_type_Ono.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
+    Object localObject = (osf)paramView.getTag();
+    ((osf)localObject).a(localTroopStoryItemInfo, paramInt);
+    paramView.setOnLongClickListener(new orv(this, paramInt));
+    this.jdField_a_of_type_Osa.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
   }
   
   private void a(TroopStoryItemInfo paramTroopStoryItemInfo, URLImageView paramURLImageView, TextView paramTextView)

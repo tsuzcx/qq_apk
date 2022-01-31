@@ -1,4 +1,6 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 class tlm
   implements Runnable
@@ -7,7 +9,13 @@ class tlm
   
   public void run()
   {
-    QQSettingMe.c(this.a.a);
+    FormSimpleItem localFormSimpleItem = this.a.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem;
+    if (TextUtils.isEmpty(this.a.a.jdField_c_of_type_JavaLangString)) {}
+    for (String str = "";; str = this.a.a.jdField_c_of_type_JavaLangString)
+    {
+      localFormSimpleItem.setRightText(str);
+      return;
+    }
   }
 }
 

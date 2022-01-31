@@ -1,14 +1,9 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
-import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
-
-class uoi
-  implements Runnable
+public final class uoi
+  extends ThreadLocal
 {
-  uoi(uoh paramuoh) {}
-  
-  public void run()
+  protected char[] a()
   {
-    this.a.a.a(false, this.a.a.b.b);
+    return new char[1024];
   }
 }
 

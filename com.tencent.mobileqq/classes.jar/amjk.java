@@ -1,60 +1,35 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicHelper;
-import cooperation.comic.VipComicJumpActivity;
-import cooperation.comic.VipComicJumpActivity.ComicParam;
-import cooperation.comic.utils.QQComicPluginBridge;
-import cooperation.comic.utils.QQComicPluginBridge.PluginInstallObserver;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.OverScroller;
 
 public class amjk
-  extends amjo
+  implements Runnable
 {
-  public amjk(VipComicJumpActivity paramVipComicJumpActivity, QQAppInterface paramQQAppInterface, VipComicJumpActivity.ComicParam paramComicParam)
-  {
-    super(paramQQAppInterface);
-  }
+  public amjk(HorizontalListView paramHorizontalListView) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null) {
-      return;
-    }
-    if (QQComicPluginBridge.a(localQQAppInterface))
+    if ((this.a.p != -1) || (HorizontalListView.a(this.a) != -1)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicDebug", 2, "plugin is installed.");
+      do
+      {
+        return;
+      } while (!this.a.jdField_a_of_type_ComTencentWidgetOverScroller.a());
+      if (HorizontalListView.jdField_a_of_type_Boolean) {
+        this.a.a("mFlingRunnable", new Object[] { Integer.valueOf(this.a.p) });
       }
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b(this.jdField_a_of_type_CooperationComicVipComicJumpActivity$ComicParam);
-      return;
+    } while (!this.a.jdField_a_of_type_ComTencentWidgetOverScroller.a(this.a.getScrollX() + this.a.h, this.a.getScrollY(), this.a.h, this.a.h, 0, 0));
+    this.a.p = 6;
+    if (HorizontalListView.jdField_a_of_type_Boolean) {
+      this.a.a("mFlingRunnable", new Object[] { "TOUCH_MODE_OVERFLING" });
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicDebug", 2, "wait for plugin installation...");
-    }
-    QQComicPluginBridge.PluginInstallObserver localPluginInstallObserver = new QQComicPluginBridge.PluginInstallObserver();
-    localPluginInstallObserver.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback = new amjl(this);
-    VipComicHelper.a(2, localQQAppInterface);
-    boolean bool = QQComicPluginBridge.a(localQQAppInterface, true, localPluginInstallObserver);
-    this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Long = localPluginInstallObserver.jdField_a_of_type_Long;
-    this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b = localPluginInstallObserver.b;
-    if (!bool)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicDebug", 2, "plugin install failed.");
-      }
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity$ComicParam, localPluginInstallObserver.jdField_a_of_type_Int);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQComicDebug", 2, "plugin is installed now.");
-    }
-    this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b(this.jdField_a_of_type_CooperationComicVipComicJumpActivity$ComicParam);
+    this.a.g(4099);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amjk
  * JD-Core Version:    0.7.0.1
  */

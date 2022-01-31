@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark;
 
-import aaqu;
-import aaqv;
-import aaqx;
-import aaqz;
-import aarb;
-import aarc;
-import aard;
-import aarf;
-import aarg;
-import aarh;
+import aaxo;
+import aaxp;
+import aaxr;
+import aaxt;
+import aaxv;
+import aaxw;
+import aaxx;
+import aaxz;
+import aaya;
+import aayb;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,7 +27,7 @@ public class ArkActionAppMgr
 {
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  Set jdField_a_of_type_JavaUtilSet = new TreeSet(new aaqu(this));
+  Set jdField_a_of_type_JavaUtilSet = new TreeSet(new aaxo(this));
   
   static
   {
@@ -60,20 +60,20 @@ public class ArkActionAppMgr
         ArkAppCenter.b("ArkApp.ActionAppMgr", "_updateAppInfoDB, appInterface is null");
         return -1L;
       }
-      Object localObject = new aard();
+      Object localObject = new aaxx();
       try
       {
-        if (!((aard)localObject).a(localQQAppInterface.getApplication().getApplicationContext(), paramInt))
+        if (!((aaxx)localObject).a(localQQAppInterface.getApplication().getApplicationContext(), paramInt))
         {
           ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_updateAppInfoDB, fail to init db, type=%d", new Object[] { Integer.valueOf(paramInt) }));
           return -1L;
         }
-        if (!((aard)localObject).a(paramArrayList))
+        if (!((aaxx)localObject).a(paramArrayList))
         {
           ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_updateAppInfoDB, fail to update db, type=%d", new Object[] { Integer.valueOf(paramInt) }));
           return -1L;
         }
-        ((aard)localObject).a();
+        ((aaxx)localObject).a();
         paramArrayList = paramArrayList.iterator();
         l2 = l1;
         if (!paramArrayList.hasNext()) {
@@ -90,30 +90,30 @@ public class ArkActionAppMgr
       }
       finally
       {
-        ((aard)localObject).a();
+        ((aaxx)localObject).a();
       }
     }
   }
   
-  private void a(aarg paramaarg)
+  private void a(aaya paramaaya)
   {
     HashSet localHashSet = new HashSet();
-    a(2, paramaarg, localHashSet);
-    a(1, paramaarg, localHashSet);
+    a(2, paramaaya, localHashSet);
+    a(1, paramaaya, localHashSet);
     if (localHashSet.isEmpty())
     {
-      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_getAppNameByAction, query app from db fail, recent=%s, action=%s.%s", new Object[] { Boolean.toString(paramaarg.jdField_a_of_type_Boolean), paramaarg.jdField_a_of_type_JavaLangString, paramaarg.jdField_b_of_type_JavaLangString }));
-      if (!paramaarg.jdField_a_of_type_Boolean)
+      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_getAppNameByAction, query app from db fail, recent=%s, action=%s.%s", new Object[] { Boolean.toString(paramaaya.jdField_a_of_type_Boolean), paramaaya.jdField_a_of_type_JavaLangString, paramaaya.jdField_b_of_type_JavaLangString }));
+      if (!paramaaya.jdField_a_of_type_Boolean)
       {
-        paramaarg.jdField_a_of_type_Boolean = true;
-        if (!a(paramaarg.jdField_a_of_type_JavaLangString, paramaarg.jdField_b_of_type_JavaLangString, 0L, 0L, paramaarg, new aarc(this)))
+        paramaaya.jdField_a_of_type_Boolean = true;
+        if (!a(paramaaya.jdField_a_of_type_JavaLangString, paramaaya.jdField_b_of_type_JavaLangString, 0L, 0L, paramaaya, new aaxw(this)))
         {
-          ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_getAppNameByAction, _updateAppInfo fail, recent=%s, action=%s.%s", new Object[] { Boolean.toString(paramaarg.jdField_a_of_type_Boolean), paramaarg.jdField_a_of_type_JavaLangString, paramaarg.jdField_b_of_type_JavaLangString }));
+          ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_getAppNameByAction, _updateAppInfo fail, recent=%s, action=%s.%s", new Object[] { Boolean.toString(paramaaya.jdField_a_of_type_Boolean), paramaaya.jdField_a_of_type_JavaLangString, paramaaya.jdField_b_of_type_JavaLangString }));
           if (!jdField_a_of_type_Boolean) {
             throw new AssertionError();
           }
         }
-        ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_getAppNameByAction, _updateAppInfo start, recent=%s, action=%s.%s", new Object[] { Boolean.toString(paramaarg.jdField_a_of_type_Boolean), paramaarg.jdField_a_of_type_JavaLangString, paramaarg.jdField_b_of_type_JavaLangString }));
+        ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_getAppNameByAction, _updateAppInfo start, recent=%s, action=%s.%s", new Object[] { Boolean.toString(paramaaya.jdField_a_of_type_Boolean), paramaaya.jdField_a_of_type_JavaLangString, paramaaya.jdField_b_of_type_JavaLangString }));
       }
     }
     do
@@ -126,12 +126,12 @@ public class ArkActionAppMgr
         localStringBuilder.append((String)localIterator.next());
         localStringBuilder.append(";");
       }
-      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_getAppNameByAction, result, action=%s.%s, app-list=%s", new Object[] { paramaarg.jdField_a_of_type_JavaLangString, paramaarg.jdField_b_of_type_JavaLangString, localStringBuilder.toString() }));
-    } while (paramaarg.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr$IGetAppNameByActionCallback == null);
-    paramaarg.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr$IGetAppNameByActionCallback.a(paramaarg.jdField_a_of_type_JavaLangObject, localHashSet);
+      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_getAppNameByAction, result, action=%s.%s, app-list=%s", new Object[] { paramaaya.jdField_a_of_type_JavaLangString, paramaaya.jdField_b_of_type_JavaLangString, localStringBuilder.toString() }));
+    } while (paramaaya.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr$IGetAppNameByActionCallback == null);
+    paramaaya.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr$IGetAppNameByActionCallback.a(paramaaya.jdField_a_of_type_JavaLangObject, localHashSet);
   }
   
-  private void a(aarh paramaarh)
+  private void a(aayb paramaayb)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localQQAppInterface == null)
@@ -139,11 +139,11 @@ public class ArkActionAppMgr
       ArkAppCenter.b("ArkApp.ActionAppMgr", "_updateAppInfoTask, appInterface is null");
       return;
     }
-    ((ArkAppCenter)localQQAppInterface.getManager(120)).a().a(paramaarh.jdField_a_of_type_JavaLangString, paramaarh.jdField_b_of_type_JavaLangString, paramaarh.jdField_b_of_type_Long, paramaarh.jdField_a_of_type_Long, paramaarh, new aaqz(this));
+    ((ArkAppCenter)localQQAppInterface.getManager(120)).a().a(paramaayb.jdField_a_of_type_JavaLangString, paramaayb.jdField_b_of_type_JavaLangString, paramaayb.jdField_b_of_type_Long, paramaayb.jdField_a_of_type_Long, paramaayb, new aaxt(this));
   }
   
   /* Error */
-  private void a(aarh paramaarh, boolean paramBoolean)
+  private void a(aayb paramaayb, boolean paramBoolean)
   {
     // Byte code:
     //   0: iload_2
@@ -154,11 +154,11 @@ public class ArkActionAppMgr
     //   11: astore_3
     //   12: aload_3
     //   13: aload_1
-    //   14: getfield 203	aarh:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   14: getfield 203	aayb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   17: putfield 220	com/tencent/mobileqq/ark/ArkAppInfo$Context:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   20: aload_3
     //   21: aload_1
-    //   22: getfield 204	aarh:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   22: getfield 204	aayb:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   25: putfield 221	com/tencent/mobileqq/ark/ArkAppInfo$Context:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   28: aload_0
     //   29: monitorenter
@@ -179,7 +179,7 @@ public class ArkActionAppMgr
     //   54: aload_0
     //   55: monitorexit
     //   56: aload_1
-    //   57: getfield 231	aarh:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   57: getfield 231	aayb:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   60: invokevirtual 111	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   63: astore_3
     //   64: aload_3
@@ -199,13 +199,13 @@ public class ArkActionAppMgr
     //   101: aload 4
     //   103: getfield 241	android/util/Pair:first	Ljava/lang/Object;
     //   106: aload_1
-    //   107: getfield 203	aarh:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   107: getfield 203	aayb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   110: aload_1
-    //   111: getfield 204	aarh:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   111: getfield 204	aayb:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   114: aload_1
-    //   115: getfield 206	aarh:jdField_b_of_type_Long	J
+    //   115: getfield 206	aayb:jdField_b_of_type_Long	J
     //   118: aload_1
-    //   119: getfield 207	aarh:jdField_a_of_type_Long	J
+    //   119: getfield 207	aayb:jdField_a_of_type_Long	J
     //   122: invokeinterface 244 9 0
     //   127: goto -63 -> 64
     //   130: astore_1
@@ -219,13 +219,13 @@ public class ArkActionAppMgr
     //   138: aload_1
     //   139: athrow
     //   140: aload_1
-    //   141: getfield 231	aarh:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   141: getfield 231	aayb:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   144: invokevirtual 247	java/util/ArrayList:clear	()V
     //   147: return
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	148	0	this	ArkActionAppMgr
-    //   0	148	1	paramaarh	aarh
+    //   0	148	1	paramaayb	aayb
     //   0	148	2	paramBoolean	boolean
     //   11	63	3	localObject	Object
     //   82	20	4	localPair	Pair
@@ -248,14 +248,14 @@ public class ArkActionAppMgr
     do
     {
       return;
-      localObject3 = new aard();
-      ((aard)localObject3).a(((QQAppInterface)localObject1).getApplication().getApplicationContext(), 2);
-      localObject2 = ((aard)localObject3).a();
-      ((aard)localObject3).a();
-      localObject3 = new aard();
-      ((aard)localObject3).a(((QQAppInterface)localObject1).getApplication().getApplicationContext(), 1);
-      localObject1 = ((aard)localObject3).a();
-      ((aard)localObject3).a();
+      localObject3 = new aaxx();
+      ((aaxx)localObject3).a(((QQAppInterface)localObject1).getApplication().getApplicationContext(), 2);
+      localObject2 = ((aaxx)localObject3).a();
+      ((aaxx)localObject3).a();
+      localObject3 = new aaxx();
+      ((aaxx)localObject3).a(((QQAppInterface)localObject1).getApplication().getApplicationContext(), 1);
+      localObject1 = ((aaxx)localObject3).a();
+      ((aaxx)localObject3).a();
       long l = System.currentTimeMillis();
       if (localObject2 != null)
       {
@@ -265,9 +265,9 @@ public class ArkActionAppMgr
           localObject3 = (ArkAppInfo.ContextActionAppInfo)((Iterator)localObject2).next();
           if ((l - ((ArkAppInfo.ContextActionAppInfo)localObject3).jdField_b_of_type_Long) / 1000L >= 93600L)
           {
-            aarf localaarf = new aarf(this, null);
-            localaarf.jdField_a_of_type_Long = ((ArkAppInfo.ContextActionAppInfo)localObject3).jdField_a_of_type_Long;
-            paramMap.put(localObject3, localaarf);
+            aaxz localaaxz = new aaxz(this, null);
+            localaaxz.jdField_a_of_type_Long = ((ArkAppInfo.ContextActionAppInfo)localObject3).jdField_a_of_type_Long;
+            paramMap.put(localObject3, localaaxz);
           }
         }
       }
@@ -280,12 +280,12 @@ public class ArkActionAppMgr
           if ((l - ((ArkAppInfo.ContextActionAppInfo)localObject2).jdField_b_of_type_Long) / 1000L >= 93600L) {
             if (paramMap.containsKey(localObject2))
             {
-              ((aarf)paramMap.get(localObject2)).jdField_b_of_type_Long = ((ArkAppInfo.ContextActionAppInfo)localObject2).jdField_a_of_type_Long;
+              ((aaxz)paramMap.get(localObject2)).jdField_b_of_type_Long = ((ArkAppInfo.ContextActionAppInfo)localObject2).jdField_a_of_type_Long;
             }
             else
             {
-              localObject3 = new aarf(this, null);
-              ((aarf)localObject3).jdField_b_of_type_Long = ((ArkAppInfo.ContextActionAppInfo)localObject2).jdField_a_of_type_Long;
+              localObject3 = new aaxz(this, null);
+              ((aaxz)localObject3).jdField_b_of_type_Long = ((ArkAppInfo.ContextActionAppInfo)localObject2).jdField_a_of_type_Long;
               paramMap.put(localObject2, localObject3);
             }
           }
@@ -303,9 +303,9 @@ public class ArkActionAppMgr
         ((ArkAppInfo.ContextActionAppInfo)localObject2).jdField_b_of_type_JavaLangString = ((ArkAppInfo.Context)localObject3).jdField_b_of_type_JavaLangString;
         if (!paramMap.containsKey(localObject2))
         {
-          localObject3 = new aarf(this, null);
-          ((aarf)localObject3).jdField_a_of_type_Long = 0L;
-          ((aarf)localObject3).jdField_b_of_type_Long = 0L;
+          localObject3 = new aaxz(this, null);
+          ((aaxz)localObject3).jdField_a_of_type_Long = 0L;
+          ((aaxz)localObject3).jdField_b_of_type_Long = 0L;
           paramMap.put(localObject2, localObject3);
         }
       }
@@ -313,7 +313,7 @@ public class ArkActionAppMgr
     finally {}
   }
   
-  private boolean a(int paramInt, aarg paramaarg, HashSet paramHashSet)
+  private boolean a(int paramInt, aaya paramaaya, HashSet paramHashSet)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localQQAppInterface == null)
@@ -321,28 +321,28 @@ public class ArkActionAppMgr
       ArkAppCenter.b("ArkApp.ActionAppMgr", "_getAppNameByActionFromDB, appInterface is null");
       return false;
     }
-    aard localaard = new aard();
+    aaxx localaaxx = new aaxx();
     try
     {
-      if (!localaard.a(localQQAppInterface.getApplication().getApplicationContext(), paramInt))
+      if (!localaaxx.a(localQQAppInterface.getApplication().getApplicationContext(), paramInt))
       {
         ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_getAppNameByActionFromDB, fail to init db, type=%d", new Object[] { Integer.valueOf(paramInt) }));
         return false;
       }
-      paramaarg = localaard.a(paramaarg.jdField_a_of_type_JavaLangString, paramaarg.jdField_b_of_type_JavaLangString);
-      if (paramaarg == null)
+      paramaaya = localaaxx.a(paramaaya.jdField_a_of_type_JavaLangString, paramaaya.jdField_b_of_type_JavaLangString);
+      if (paramaaya == null)
       {
         ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_getAppNameByActionFromDB, getAppInfoByContextAction fail, type=%d", new Object[] { Integer.valueOf(paramInt) }));
         return false;
       }
-      paramaarg = paramaarg.iterator();
-      while (paramaarg.hasNext()) {
-        paramHashSet.add(((ArkAppInfo.ContextActionAppInfo)paramaarg.next()).c);
+      paramaaya = paramaaya.iterator();
+      while (paramaaya.hasNext()) {
+        paramHashSet.add(((ArkAppInfo.ContextActionAppInfo)paramaaya.next()).c);
       }
     }
     finally
     {
-      localaard.a();
+      localaaxx.a();
     }
     return true;
   }
@@ -370,23 +370,23 @@ public class ArkActionAppMgr
         if (!((Iterator)localObject).hasNext()) {
           break label242;
         }
-        aarh localaarh = (aarh)((Iterator)localObject).next();
-        if ((!localaarh.jdField_a_of_type_JavaLangString.equals(paramString1)) || (!localaarh.jdField_b_of_type_JavaLangString.equals(paramString2))) {
+        aayb localaayb = (aayb)((Iterator)localObject).next();
+        if ((!localaayb.jdField_a_of_type_JavaLangString.equals(paramString1)) || (!localaayb.jdField_b_of_type_JavaLangString.equals(paramString2))) {
           continue;
         }
-        localaarh.jdField_a_of_type_JavaUtilArrayList.add(new Pair(paramObject, paramIUpdateActionAppCallback));
+        localaayb.jdField_a_of_type_JavaUtilArrayList.add(new Pair(paramObject, paramIUpdateActionAppCallback));
         i = 1;
         if (i != 0)
         {
           ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_updateAppInfo, task merged, action=%s.%s", new Object[] { paramString1, paramString2 }));
           return true;
         }
-        localObject = new aarh();
-        ((aarh)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((aarh)localObject).jdField_b_of_type_JavaLangString = paramString2;
-        ((aarh)localObject).jdField_a_of_type_Long = paramLong2;
-        ((aarh)localObject).jdField_b_of_type_Long = paramLong1;
-        ((aarh)localObject).jdField_a_of_type_JavaUtilArrayList.add(new Pair(paramObject, paramIUpdateActionAppCallback));
+        localObject = new aayb();
+        ((aayb)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((aayb)localObject).jdField_b_of_type_JavaLangString = paramString2;
+        ((aayb)localObject).jdField_a_of_type_Long = paramLong2;
+        ((aayb)localObject).jdField_b_of_type_Long = paramLong1;
+        ((aayb)localObject).jdField_a_of_type_JavaUtilArrayList.add(new Pair(paramObject, paramIUpdateActionAppCallback));
         this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
         if (localObject != null) {
           break label234;
@@ -398,7 +398,7 @@ public class ArkActionAppMgr
       finally {}
       return false;
       label234:
-      a((aarh)localObject);
+      a((aayb)localObject);
       return true;
       label242:
       int i = 0;
@@ -423,16 +423,16 @@ public class ArkActionAppMgr
     while (localIterator.hasNext())
     {
       ArkAppInfo.ContextActionAppInfo localContextActionAppInfo = (ArkAppInfo.ContextActionAppInfo)localIterator.next();
-      aarf localaarf = (aarf)paramMap.get(localContextActionAppInfo);
+      aaxz localaaxz = (aaxz)paramMap.get(localContextActionAppInfo);
       ArkAppCGI.ActionAppUpdateInfo localActionAppUpdateInfo = new ArkAppCGI.ActionAppUpdateInfo();
       localActionAppUpdateInfo.jdField_a_of_type_JavaLangString = localContextActionAppInfo.jdField_a_of_type_JavaLangString;
       localActionAppUpdateInfo.jdField_b_of_type_JavaLangString = localContextActionAppInfo.jdField_b_of_type_JavaLangString;
-      localActionAppUpdateInfo.jdField_b_of_type_Long = localaarf.jdField_b_of_type_Long;
-      localActionAppUpdateInfo.jdField_a_of_type_Long = localaarf.jdField_a_of_type_Long;
+      localActionAppUpdateInfo.jdField_b_of_type_Long = localaaxz.jdField_b_of_type_Long;
+      localActionAppUpdateInfo.jdField_a_of_type_Long = localaaxz.jdField_a_of_type_Long;
       localArrayList.add(localActionAppUpdateInfo);
     }
     paramMap = new WeakReference(this);
-    ((ArkAppCenter)localQQAppInterface.getManager(120)).a().a(localArrayList, paramMap, new aaqx(this, paramMap, localQQAppInterface));
+    ((ArkAppCenter)localQQAppInterface.getManager(120)).a().a(localArrayList, paramMap, new aaxr(this, paramMap, localQQAppInterface));
   }
   
   public void a()
@@ -447,7 +447,7 @@ public class ArkActionAppMgr
   
   public boolean a()
   {
-    ThreadManager.post(new aaqv(this), 5, null, true);
+    ThreadManager.post(new aaxp(this), 5, null, true);
     return true;
   }
   
@@ -465,13 +465,13 @@ public class ArkActionAppMgr
       if (this.jdField_a_of_type_JavaUtilSet.contains(localObject)) {
         bool = true;
       }
-      localObject = new aarg(null);
-      ((aarg)localObject).jdField_a_of_type_Boolean = bool;
-      ((aarg)localObject).jdField_a_of_type_JavaLangString = paramString1;
-      ((aarg)localObject).jdField_b_of_type_JavaLangString = paramString2;
-      ((aarg)localObject).jdField_a_of_type_JavaLangObject = paramObject;
-      ((aarg)localObject).jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr$IGetAppNameByActionCallback = paramIGetAppNameByActionCallback;
-      ThreadManager.post(new aarb(this, (aarg)localObject), 5, null, true);
+      localObject = new aaya(null);
+      ((aaya)localObject).jdField_a_of_type_Boolean = bool;
+      ((aaya)localObject).jdField_a_of_type_JavaLangString = paramString1;
+      ((aaya)localObject).jdField_b_of_type_JavaLangString = paramString2;
+      ((aaya)localObject).jdField_a_of_type_JavaLangObject = paramObject;
+      ((aaya)localObject).jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr$IGetAppNameByActionCallback = paramIGetAppNameByActionCallback;
+      ThreadManager.post(new aaxv(this, (aaya)localObject), 5, null, true);
       return true;
     }
     finally {}
@@ -484,20 +484,20 @@ public class ArkActionAppMgr
     if (localQQAppInterface == null) {
       ArkAppCenter.b("ArkApp.ActionAppMgr", "clearActionAppCache, appInterface is null");
     }
-    aard localaard;
+    aaxx localaaxx;
     do
     {
       return;
-      localaard = new aard();
-      if (localaard.a(localQQAppInterface.getApplication().getApplicationContext(), 2))
+      localaaxx = new aaxx();
+      if (localaaxx.a(localQQAppInterface.getApplication().getApplicationContext(), 2))
       {
-        localaard.a();
-        localaard.a();
+        localaaxx.a();
+        localaaxx.a();
       }
-      localaard = new aard();
-    } while (!localaard.a(localQQAppInterface.getApplication().getApplicationContext(), 1));
-    localaard.a();
-    localaard.a();
+      localaaxx = new aaxx();
+    } while (!localaaxx.a(localQQAppInterface.getApplication().getApplicationContext(), 1));
+    localaaxx.a();
+    localaaxx.a();
   }
 }
 

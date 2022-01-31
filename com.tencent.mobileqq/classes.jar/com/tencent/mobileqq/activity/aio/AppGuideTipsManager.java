@@ -28,8 +28,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import mqq.manager.Manager;
-import ujp;
-import ujq;
+import uol;
+import uom;
 
 public class AppGuideTipsManager
   implements Manager
@@ -101,7 +101,7 @@ public class AppGuideTipsManager
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    ThreadManager.post(new ujp(this), 5, null, false);
+    ThreadManager.post(new uol(this), 5, null, false);
   }
   
   public void a(int paramInt)
@@ -566,7 +566,7 @@ public class AppGuideTipsManager
   
   public void e()
   {
-    ThreadManager.executeOnSubThread(new ujq(this));
+    ThreadManager.executeOnSubThread(new uom(this));
   }
   
   public void onDestroy() {}

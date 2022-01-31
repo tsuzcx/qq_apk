@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import aada;
+import aajr;
 import android.content.Context;
 import com.tencent.mobileqq.olympic.activity.ARTipsManager;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -19,10 +19,10 @@ public class FaceUIController
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager = paramARTipsManager;
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230);
-    paramContext = new aada(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131430546, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131430547, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131430545);
+    paramContext = new aajr(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131430549, paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131430550, paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131430548);
   }
   
   public void a()

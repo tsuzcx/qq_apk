@@ -34,10 +34,10 @@ import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
-import teh;
-import tei;
-import tej;
-import tek;
+import tjb;
+import tjc;
+import tjd;
+import tje;
 
 public class Now
   extends Frame
@@ -51,7 +51,7 @@ public class Now
   public QQStoryMainController a;
   private MystoryListView jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView;
   ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new teh(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new tjb(this);
   public String a;
   protected boolean a;
   public RelativeLayout b;
@@ -63,7 +63,7 @@ public class Now
   
   public Now()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController = new QQStoryMainController(new tei(this), QQStoryMainController.b);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController = new QQStoryMainController(new tjc(this), QQStoryMainController.b);
   }
   
   public static void a(int paramInt1, int paramInt2)
@@ -92,21 +92,21 @@ public class Now
   
   private void n()
   {
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)a(2131363379));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)a(2131363398));
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131362594));
-    IphoneTitleBarActivity.setLayerType((ViewGroup)a(2131363244));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131372175));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new tek(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131363381));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131367260));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433294);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131362599));
+    IphoneTitleBarActivity.setLayerType((ViewGroup)a(2131363261));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131372185));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new tje(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131363400));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131367261));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433308);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131370723));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131372177));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131370714));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131372187));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)a(2131372176));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)a(2131372186));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
     if (ThemeUtil.isDefaultOrDIYTheme(false))
     {
@@ -118,19 +118,19 @@ public class Now
       return;
     }
     a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845871);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845871);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494212));
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494212));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845951);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845951);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494218));
+    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494218));
   }
   
   private void o()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = ((MystoryListView)a(2131371757));
-    this.d = ((RelativeLayout)a(2131372027));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = ((MystoryListView)a(2131371756));
+    this.d = ((RelativeLayout)a(2131372035));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setIsNowTab(true);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setDivider(null);
-    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.getParent()).setBackgroundColor(a().getColor(2131494255));
+    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.getParent()).setBackgroundColor(a().getColor(2131494261));
   }
   
   @TargetApi(16)
@@ -149,7 +149,7 @@ public class Now
         break label261;
       }
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setContentBackground(((ThemeBackground)localObject).img);
-      this.d.setBackgroundColor(a().getColor(2131494255));
+      this.d.setBackgroundColor(a().getColor(2131494261));
     }
     label261:
     for (int i = 1;; i = 0)
@@ -158,17 +158,17 @@ public class Now
       while ((i == 0) && (j == 0))
       {
         if (ThemeUtil.isNowThemeIsDefault(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setContentBackground(a().getDrawable(2130845865), false);
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setContentBackground(a().getDrawable(2130845945), false);
         }
         for (;;)
         {
-          this.d.setBackgroundColor(a().getColor(2131494255));
+          this.d.setBackgroundColor(a().getColor(2131494261));
           return;
           if (!ThemeUtil.isNowThemeIsAnimate()) {
             break label254;
           }
           localObject = ThemeUtil.getAnimatePathByTag(2);
-          Drawable localDrawable = super.a().getDrawable(2130845807);
+          Drawable localDrawable = super.a().getDrawable(2130845888);
           localObject = VasApngUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, "-conversation-", localDrawable, VasApngUtil.a, "-now-", null);
           if (localObject == null) {
             break label254;
@@ -178,7 +178,7 @@ public class Now
           this.d.setBackgroundDrawable((Drawable)localObject);
           i = 0;
           break;
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setContentBackground(a().getDrawable(2130838215), false);
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setContentBackground(a().getDrawable(2130838220), false);
         }
         label254:
         j = 0;
@@ -205,7 +205,7 @@ public class Now
   public View a(LayoutInflater paramLayoutInflater)
   {
     SLog.b("Q.qqstory.home:NowTab", "Now tab run onCreateView!");
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.inflate(2130970790, null));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.inflate(2130970807, null));
     return this.jdField_b_of_type_AndroidWidgetRelativeLayout;
   }
   
@@ -244,7 +244,7 @@ public class Now
     localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     localHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
     ApngImage.playByTag(5);
-    Bosses.get().postLightWeightJob(new tej(this), 10);
+    Bosses.get().postLightWeightJob(new tjd(this), 10);
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
   
@@ -269,10 +269,10 @@ public class Now
       return;
     }
     a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845871);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845871);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494212));
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494212));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845951);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845951);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494218));
+    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494218));
   }
   
   public void b(boolean paramBoolean)

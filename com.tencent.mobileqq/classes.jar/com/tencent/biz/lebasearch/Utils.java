@@ -44,10 +44,10 @@ import cooperation.comic.VipComicJumpActivity;
 import cooperation.qlink.QQProxyForQlink;
 import cooperation.qqreader.QRBridgeActivity;
 import java.util.HashMap;
-import knr;
-import kns;
-import knt;
-import knu;
+import kpy;
+import kpz;
+import kqa;
+import kqb;
 import org.json.JSONObject;
 
 public class Utils
@@ -107,15 +107,15 @@ public class Utils
   
   public static QQCustomDialog createPluginSetDialogForMain(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, long paramLong, String paramString1, String paramString2, Handler paramHandler)
   {
-    knt localknt = new knt(paramInt, paramQQAppInterface, paramLong, paramHandler);
-    paramHandler = new knu(paramHandler);
+    kqa localkqa = new kqa(paramInt, paramQQAppInterface, paramLong, paramHandler);
+    paramHandler = new kqb(paramHandler);
     int i;
     if (!TextUtils.isEmpty(paramString2))
     {
       if (paramInt != 1) {
         break label116;
       }
-      i = 2131430535;
+      i = 2131430538;
       label42:
       if (paramInt != 1) {
         break label123;
@@ -123,16 +123,16 @@ public class Utils
     }
     label116:
     label123:
-    for (paramInt = 2131430533;; paramInt = 2131430540)
+    for (paramInt = 2131430536;; paramInt = 2131430543)
     {
-      return DialogUtil.a((BaseActivity)paramContext, paramString2, i, paramInt, localknt, paramHandler);
+      return DialogUtil.a((BaseActivity)paramContext, paramString2, i, paramInt, localkqa, paramHandler);
       if (paramInt == 1) {}
-      for (paramQQAppInterface = paramContext.getResources().getString(2131430532, new Object[] { paramString1 });; paramQQAppInterface = paramContext.getString(2131430538, new Object[] { paramString1 }))
+      for (paramQQAppInterface = paramContext.getResources().getString(2131430535, new Object[] { paramString1 });; paramQQAppInterface = paramContext.getString(2131430541, new Object[] { paramString1 }))
       {
         paramString2 = paramQQAppInterface;
         break;
       }
-      i = 2131430539;
+      i = 2131430542;
       break label42;
     }
   }
@@ -140,7 +140,7 @@ public class Utils
   public static QQCustomDialog createPluginSetDialogForWeb(Context paramContext, TroopMemberApiClient paramTroopMemberApiClient, BusinessObserver paramBusinessObserver, int paramInt, long paramLong, String paramString1, String paramString2)
   {
     QQCustomDialog localQQCustomDialog = DialogUtil.a(paramContext, 230);
-    paramBusinessObserver = new knr(paramInt, paramBusinessObserver, paramContext, paramTroopMemberApiClient, paramLong);
+    paramBusinessObserver = new kpy(paramInt, paramBusinessObserver, paramContext, paramTroopMemberApiClient, paramLong);
     paramTroopMemberApiClient = new TextView(paramContext);
     paramTroopMemberApiClient.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     paramTroopMemberApiClient.setTextSize(14.0F);
@@ -149,24 +149,24 @@ public class Utils
     paramTroopMemberApiClient.setPadding((int)DisplayUtils.a(paramContext, 15.0F), (int)DisplayUtils.a(paramContext, 30.0F), (int)DisplayUtils.a(paramContext, 15.0F), (int)DisplayUtils.a(paramContext, 15.0F));
     if (paramInt == 1)
     {
-      localQQCustomDialog.setPositiveButton(2131430535, paramBusinessObserver);
-      localQQCustomDialog.setNegativeButton(2131430533, paramBusinessObserver);
+      localQQCustomDialog.setPositiveButton(2131430538, paramBusinessObserver);
+      localQQCustomDialog.setNegativeButton(2131430536, paramBusinessObserver);
       if (paramString2 != null) {}
       for (;;)
       {
         paramTroopMemberApiClient.setText(paramString2);
         localQQCustomDialog.addView(paramTroopMemberApiClient);
         return localQQCustomDialog;
-        paramString2 = paramContext.getResources().getString(2131430532, new Object[] { paramString1 });
+        paramString2 = paramContext.getResources().getString(2131430535, new Object[] { paramString1 });
       }
     }
     if (paramString2 != null) {}
     for (;;)
     {
-      localQQCustomDialog.setNegativeButton(2131430540, paramBusinessObserver);
-      localQQCustomDialog.setPositiveButton(2131430539, paramBusinessObserver);
+      localQQCustomDialog.setNegativeButton(2131430543, paramBusinessObserver);
+      localQQCustomDialog.setPositiveButton(2131430542, paramBusinessObserver);
       break;
-      paramString2 = paramContext.getString(2131430538, new Object[] { paramString1 });
+      paramString2 = paramContext.getString(2131430541, new Object[] { paramString1 });
     }
   }
   
@@ -369,8 +369,8 @@ public class Utils
     }
     paramHashMap = new Intent(paramContext, ScannerActivity.class);
     paramHashMap.putExtra("from", "Conversation");
-    paramHashMap.putExtra("leftViewText", paramContext.getString(2131433698));
-    paramHashMap.putExtra("selfSet_leftViewText", paramContext.getString(2131433698));
+    paramHashMap.putExtra("leftViewText", paramContext.getString(2131433712));
+    paramHashMap.putExtra("selfSet_leftViewText", paramContext.getString(2131433712));
     paramHashMap.setFlags(67108864);
     paramHashMap.setFlags(276824064);
     paramContext.startActivity(paramHashMap);
@@ -453,7 +453,7 @@ public class Utils
     Bundle localBundle = new Bundle();
     localBundle.putLong("uiResId", paramLong);
     localBundle.putBoolean("isChecked", paramBoolean);
-    paramContext.post(new kns(paramTroopMemberApiClient, localBundle, paramBusinessObserver));
+    paramContext.post(new kpz(paramTroopMemberApiClient, localBundle, paramBusinessObserver));
   }
 }
 

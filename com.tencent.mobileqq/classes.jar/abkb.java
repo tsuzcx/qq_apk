@@ -1,45 +1,50 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.VideoDrawable;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.util.DynamicFaceDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.widget.TextView;
+import com.tencent.mobileqq.armap.RedPackRainCloudView;
+import java.text.NumberFormat;
 
 public class abkb
-  implements VideoDrawable.OnPlayRepeatListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abkb(DynamicAvatarView paramDynamicAvatarView) {}
+  public abkb(RedPackRainCloudView paramRedPackRainCloudView) {}
   
-  public void onPlayRepeat(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    int j = String.valueOf(i).length();
+    if (j >= 8) {
+      RedPackRainCloudView.a(this.a).setTextSize(1, 19.0F);
     }
-    if ((this.a.b) || (paramInt < 1)) {}
-    while (this.a.a == null) {
-      return;
-    }
-    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
-    if ((localObject instanceof URLDrawable))
+    for (;;)
     {
-      localObject = ((URLDrawable)localObject).getCurrDrawable();
-      if ((localObject instanceof VideoDrawable))
-      {
-        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
-        this.a.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a(this.a.a, true);
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
-        }
+      paramValueAnimator = NumberFormat.getNumberInstance();
+      paramValueAnimator = new SpannableString(paramValueAnimator.format(i) + "个");
+      ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-10066330);
+      paramValueAnimator.setSpan(new AbsoluteSizeSpan(12, true), paramValueAnimator.length() - 1, paramValueAnimator.length(), 33);
+      paramValueAnimator.setSpan(localForegroundColorSpan, paramValueAnimator.length() - 1, paramValueAnimator.length(), 33);
+      paramValueAnimator.setSpan(new StyleSpan(1), 0, paramValueAnimator.length() - 1, 33);
+      RedPackRainCloudView.a(this.a).setText(paramValueAnimator);
+      return;
+      if (j >= 7) {
+        RedPackRainCloudView.a(this.a).setTextSize(1, 21.0F);
+      } else if (j >= 6) {
+        RedPackRainCloudView.a(this.a).setTextSize(1, 23.0F);
+      } else if (j >= 5) {
+        RedPackRainCloudView.a(this.a).setTextSize(1, 25.0F);
+      } else {
+        RedPackRainCloudView.a(this.a).setTextSize(1, 27.0F);
       }
     }
-    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abkb
  * JD-Core Version:    0.7.0.1
  */

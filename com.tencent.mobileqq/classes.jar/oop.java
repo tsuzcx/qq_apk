@@ -1,16 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.utils.TranslucentTitleBarHelper;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
 
 public class oop
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public oop(TranslucentTitleBarHelper paramTranslucentTitleBarHelper) {}
+  public oop(DoodleTextureView paramDoodleTextureView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    TranslucentTitleBarHelper.a(this.a, f);
+    PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
+    if (localPersonalityOperator != null)
+    {
+      localPersonalityOperator.a();
+      localPersonalityOperator.a(this.a.jdField_a_of_type_Int, this.a.b);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.h();
+      this.a.a();
+    }
   }
 }
 

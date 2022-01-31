@@ -1,9 +1,9 @@
 package cooperation.qzone.networkedmodule;
 
-import amwo;
-import amwp;
 import android.content.Context;
 import android.text.TextUtils;
+import anec;
+import aned;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -285,7 +285,7 @@ public class QzoneModuleManager
     boolean bool = QzoneModuleLoader.a(str2, localBaseApplicationImpl.getApplicationContext(), paramQzoneModuleRecord.f, paramQzoneModuleRecord);
     this.mModueLoadState.put(str1, Boolean.valueOf(bool));
     if ((bool) && (!this.hasSetVersionNum)) {
-      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new amwp(this));
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new aned(this));
     }
     return bool;
   }
@@ -330,13 +330,13 @@ public class QzoneModuleManager
       return;
       this.mHasStartedUpdateTask = true;
       QLog.i("QzoneModuleManager", 1, "start to updateAllModules.");
-      amwo localamwo = new amwo(this);
+      anec localanec = new anec(this);
       while (this.mNextModuleIndex < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
       {
         String str = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(this.mNextModuleIndex);
         if (checkIfNeedUpdate(str))
         {
-          updateModule(str, localamwo);
+          updateModule(str, localanec);
           return;
         }
         this.mNextModuleIndex += 1;

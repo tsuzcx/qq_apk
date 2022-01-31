@@ -1,28 +1,16 @@
-import com.tencent.open.base.ToastUtil;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
-class aobj
-  implements Runnable
+public class aobj
+  implements View.OnClickListener
 {
-  aobj(aobg paramaobg, boolean paramBoolean, aobe paramaobe, DynamicTextConfigManager paramDynamicTextConfigManager) {}
+  public aobj(EditVideoButton paramEditVideoButton) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Aobe.a(this.jdField_a_of_type_Boolean);
-      ToastUtil.a().a(2131439215);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager.a(this.jdField_a_of_type_Aobe.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean));
-      this.jdField_a_of_type_Aobe.a(this.jdField_a_of_type_Boolean);
-    } while (this.jdField_a_of_type_Aobe.jdField_a_of_type_Int != this.jdField_a_of_type_Aobg.a.d);
-    this.jdField_a_of_type_Aobg.a.a(-1, this.jdField_a_of_type_Aobg.a.d);
+    this.a.a.a(34);
   }
 }
 

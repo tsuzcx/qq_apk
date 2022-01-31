@@ -34,7 +34,7 @@ import cooperation.qzone.util.NetworkState;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import lkh;
+import lmv;
 
 public class ProteusSupportUtil
 {
@@ -72,7 +72,7 @@ public class ProteusSupportUtil
     paramBaseArticleInfo = localObject;
     if (localContainer != null)
     {
-      localContainer.setBackgroundDrawable(paramVafContext.a().getResources().getDrawable(2130839723));
+      localContainer.setBackgroundDrawable(paramVafContext.a().getResources().getDrawable(2130839738));
       paramBaseArticleInfo = new ProteusItemView(paramVafContext.a());
       localContainer.setTag(localTemplateBean);
       paramBaseArticleInfo.a(localContainer);
@@ -237,7 +237,7 @@ public class ProteusSupportUtil
   {
     if ((paramTemplateBean == null) || (paramTemplateBean.a() == null)) {}
     ViewBean localViewBean;
-    label316:
+    label277:
     do
     {
       do
@@ -246,41 +246,24 @@ public class ProteusSupportUtil
         {
           do
           {
-            do
-            {
-              return;
-              switch (paramInt)
-              {
-              default: 
-                return;
-              case 6: 
-                if (!NetworkState.isWifiConn()) {
-                  break label316;
-                }
-                paramIReadInJoyModel = paramTemplateBean.a("id_large_video_icon");
-                if (paramIReadInJoyModel != null) {
-                  paramIReadInJoyModel.a("visibility", "VISIBLE");
-                }
-                paramTemplateBean = paramTemplateBean.a("id_video_bg");
-              }
-            } while (paramTemplateBean == null);
-            paramTemplateBean.a("visibility", "GONE");
             return;
-            localViewBean = paramTemplateBean.a("id_info_avator");
-            if (localViewBean != null) {
-              localViewBean.a("setArticleModel:", paramIReadInJoyModel);
+            switch (paramInt)
+            {
+            default: 
+              return;
+            case 6: 
+            case 66: 
+              if (!NetworkState.isWifiConn()) {
+                break label277;
+              }
+              paramIReadInJoyModel = paramTemplateBean.a("id_large_video_icon");
+              if (paramIReadInJoyModel != null) {
+                paramIReadInJoyModel.a("visibility", "VISIBLE");
+              }
+              paramTemplateBean = paramTemplateBean.a("id_video_bg");
             }
-            localViewBean = paramTemplateBean.a("id_summary");
-            if (localViewBean != null) {
-              localViewBean.a("setArticleModel:", paramIReadInJoyModel);
-            }
-            localViewBean = paramTemplateBean.a("id_biu_comment");
-            if (localViewBean != null) {
-              localViewBean.a("setArticleModel:", paramIReadInJoyModel);
-            }
-            paramTemplateBean = paramTemplateBean.a("id_corner_text_image");
           } while (paramTemplateBean == null);
-          paramTemplateBean.a("setArticleModel:", paramIReadInJoyModel);
+          paramTemplateBean.a("visibility", "GONE");
           return;
           localViewBean = paramTemplateBean.a("id_info_avator");
           if (localViewBean != null) {
@@ -294,17 +277,25 @@ public class ProteusSupportUtil
           if (localViewBean != null) {
             localViewBean.a("setArticleModel:", paramIReadInJoyModel);
           }
-          paramTemplateBean = paramTemplateBean.a("id_multi_image");
+          paramTemplateBean = paramTemplateBean.a("id_corner_text_image");
         } while (paramTemplateBean == null);
-        paramTemplateBean.a("setArticleModel:", paramIReadInJoyModel.a());
+        paramTemplateBean.a("setArticleModel:", paramIReadInJoyModel);
         return;
-        paramIReadInJoyModel = paramTemplateBean.a("id_large_video_icon");
-        if (paramIReadInJoyModel != null) {
-          paramIReadInJoyModel.a("visibility", "VISIBLE");
+        localViewBean = paramTemplateBean.a("id_info_avator");
+        if (localViewBean != null) {
+          localViewBean.a("setArticleModel:", paramIReadInJoyModel);
         }
-        paramTemplateBean = paramTemplateBean.a("id_video_bg");
+        localViewBean = paramTemplateBean.a("id_summary");
+        if (localViewBean != null) {
+          localViewBean.a("setArticleModel:", paramIReadInJoyModel);
+        }
+        localViewBean = paramTemplateBean.a("id_biu_comment");
+        if (localViewBean != null) {
+          localViewBean.a("setArticleModel:", paramIReadInJoyModel);
+        }
+        paramTemplateBean = paramTemplateBean.a("id_multi_image");
       } while (paramTemplateBean == null);
-      paramTemplateBean.a("visibility", "GONE");
+      paramTemplateBean.a("setArticleModel:", paramIReadInJoyModel.a());
       return;
       localViewBean = paramTemplateBean.a("id_large_video_icon");
       if (localViewBean != null) {
@@ -337,12 +328,12 @@ public class ProteusSupportUtil
     }
     Object localObject = (TemplateBean)paramProteusItemView.a().getTag();
     TemplateBean localTemplateBean = a(paramInt, paramBaseArticleInfo);
-    if ((localObject != null) && (localTemplateBean.a() != ((TemplateBean)localObject).a()))
+    if ((localObject != null) && (localTemplateBean != null) && (localTemplateBean.a() != ((TemplateBean)localObject).a()))
     {
       localObject = paramVafContext.a().a(paramVafContext, localTemplateBean);
       if (localObject != null)
       {
-        ((Container)localObject).setBackgroundDrawable(paramVafContext.a().getResources().getDrawable(2130839723));
+        ((Container)localObject).setBackgroundDrawable(paramVafContext.a().getResources().getDrawable(2130839738));
         paramProteusItemView.a();
         paramProteusItemView.a((Container)localObject);
       }
@@ -442,7 +433,7 @@ public class ProteusSupportUtil
   
   private static void a(Container paramContainer, VafContext paramVafContext, FaceDecoder paramFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IReadInJoyModel paramIReadInJoyModel, BaseArticleInfo paramBaseArticleInfo)
   {
-    ViewFactory.a(paramContainer.a(), new lkh(paramVafContext, paramFaceDecoder, paramReadInJoyBaseAdapter, paramIReadInJoyModel, paramContainer, paramBaseArticleInfo));
+    ViewFactory.a(paramContainer.a(), new lmv(paramVafContext, paramFaceDecoder, paramReadInJoyBaseAdapter, paramIReadInJoyModel, paramContainer, paramBaseArticleInfo));
   }
   
   public static void a(VafContext paramVafContext)

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ffffffff" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="#fffafafa" android:layout_height="75.0dip" android:minWidth="187.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0aae" android:background="#ffe9e9e9" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="12.0dip" android:layout_alignParentTop="true" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0aaf" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0aae" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040188" />
-    <com.tencent.widget.HorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ab0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0aaf" android:layout_alignParentLeft="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0abf" android:layout_width="75.0dip" android:layout_height="75.0dip" android:src="#ff777777" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ac0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0abf" android:layout_centerVertical="true">
+        <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ac1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="八字之内周边名称" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ac2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="124905人拥有" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0ac1" />
+    </RelativeLayout>
 </RelativeLayout>

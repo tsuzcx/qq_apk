@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.businessCard.views.BusinessCardChildView;
 
-class abvu
-  implements Runnable
+public abstract interface abvu
 {
-  abvu(abvr paramabvr) {}
+  public abstract void a(BusinessCardChildView paramBusinessCardChildView, Object paramObject);
   
-  public void run()
-  {
-    QQToast.a(this.a.a.getApplicationContext(), "损坏数据库构造完成", 1).a();
-  }
+  public abstract void a(BusinessCardChildView paramBusinessCardChildView, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abvu
  * JD-Core Version:    0.7.0.1
  */

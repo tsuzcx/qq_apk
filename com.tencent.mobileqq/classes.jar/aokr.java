@@ -1,23 +1,38 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.mobileqq.utils.LogTag;
-import dov.com.tencent.mobileqq.richmedia.CompoundProcessor;
-import dov.com.tencent.mobileqq.richmedia.RichmediaClient;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoVote;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.InteractPasterLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
+import dov.com.tencent.biz.qqstory.takevideo.interact.EditVideoInteract;
 
 public class aokr
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aokr(CompoundProcessor paramCompoundProcessor) {}
-  
-  public void run()
+  static
   {
-    RichmediaClient localRichmediaClient = RichmediaClient.a();
-    String str = this.a.a(this.a.jdField_b_of_type_JavaLangString);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("vidoe_record_uniseq", this.a.a);
-    localBundle.putString("full_video_path", str);
-    localBundle.putInt("video_slices_total_time_length", this.a.jdField_b_of_type_Int);
-    localRichmediaClient.a(103, -1, localBundle);
-    LogTag.a(this.a.a, "clicompCompoundProcessor.compressSourceYUV", "path = " + str + ",totalTime = " + this.a.jdField_b_of_type_Int);
+    if (!EditVideoInteract.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  public aokr(EditVideoInteract paramEditVideoInteract) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Bundle();
+    VoteLayer.VoteItem localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractEditVideoInteract.a().a;
+    if ((!jdField_a_of_type_Boolean) && (localVoteItem == null)) {
+      throw new AssertionError();
+    }
+    EditVideoVote.a(paramDialogInterface, localVoteItem);
+    paramDialogInterface.putInt("interact_type", EditVideoInteract.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractEditVideoInteract));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoInteractEditVideoInteract.a.a(38, paramDialogInterface);
   }
 }
 

@@ -1,23 +1,19 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.book.BookEditText;
-import com.tencent.mobileqq.text.QQText;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-public class wfx
-  implements InputFilter
+class wfx
+  implements Runnable
 {
-  public wfx(BookEditText paramBookEditText) {}
+  wfx(wfw paramwfw, String paramString) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void run()
   {
-    this.a.a(paramSpanned.toString());
-    if (this.a.a(paramCharSequence.toString()) == 0) {
-      BookEditText.a(this.a);
-    }
-    while (!QQText.a(paramCharSequence.toString())) {
-      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
-    }
-    return "";
+    TroopChatPie.c(this.jdField_a_of_type_Wfw.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+    TroopChatPie.d(this.jdField_a_of_type_Wfw.a).setText(this.jdField_a_of_type_Wfw.a.a.getResources().getString(2131430455) + this.jdField_a_of_type_JavaLangString);
+    TroopChatPie.a(this.jdField_a_of_type_Wfw.a).setOnClickListener(null);
   }
 }
 

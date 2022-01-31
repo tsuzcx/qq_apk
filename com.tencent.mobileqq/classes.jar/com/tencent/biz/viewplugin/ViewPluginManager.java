@@ -13,9 +13,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import pai;
-import paj;
-import pak;
+import pfa;
+import pfb;
+import pfc;
 
 public class ViewPluginManager
 {
@@ -53,7 +53,7 @@ public class ViewPluginManager
     }
     catch (Exception paramView)
     {
-      ThreadManager.post(new pai(paramView), 2, null, true);
+      ThreadManager.post(new pfa(paramView), 2, null, true);
     }
     return false;
   }
@@ -106,7 +106,7 @@ public class ViewPluginManager
   
   public void a()
   {
-    ThreadManager.post(new pak(this), 8, null, true);
+    ThreadManager.post(new pfc(this), 8, null, true);
   }
   
   public void a(AsyncCallBack paramAsyncCallBack, boolean paramBoolean)
@@ -123,7 +123,7 @@ public class ViewPluginManager
       a();
       Context localContext = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext();
       long l = System.currentTimeMillis();
-      if ((!HtmlOffline.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), str, new paj(this, l, localContext, paramBoolean, paramAsyncCallBack))) && (QLog.isColorLevel())) {
+      if ((!HtmlOffline.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), str, new pfb(this, l, localContext, paramBoolean, paramAsyncCallBack))) && (QLog.isColorLevel())) {
         QLog.i("ViewPluginManager", 2, "plugin:" + this.b + " transToLocalUrl: return false");
       }
       return;

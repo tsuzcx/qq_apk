@@ -1,15 +1,15 @@
 package com.qq.im.poi;
 
-import and;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
-import ane;
 import anf;
 import ang;
+import anh;
+import ani;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -348,7 +348,7 @@ public class LbsPackManager
   
   public void a()
   {
-    ThreadManager.post(new anf(this), 5, null, false);
+    ThreadManager.post(new anh(this), 5, null, false);
   }
   
   public void a(double paramDouble1, double paramDouble2, int paramInt)
@@ -410,7 +410,7 @@ public class LbsPackManager
         {
           localObject = (ARMapActivity)this.jdField_a_of_type_JavaLangRefSoftReference.get();
           if ((localObject != null) && (((ARMapActivity)localObject).jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine != null) && (((ARMapActivity)localObject).jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView != null)) {
-            ((ARMapActivity)localObject).jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new and(this, (ARMapActivity)localObject, paramLong, paramString));
+            ((ARMapActivity)localObject).jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new anf(this, (ARMapActivity)localObject, paramLong, paramString));
           }
         }
         return;
@@ -550,7 +550,7 @@ public class LbsPackManager
     {
       ARMapActivity localARMapActivity = (ARMapActivity)this.jdField_a_of_type_JavaLangRefSoftReference.get();
       if ((localARMapActivity != null) && (localARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine != null) && (localARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView != null)) {
-        localARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new ane(this, localARMapActivity, paramString));
+        localARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.queueEvent(new ang(this, localARMapActivity, paramString));
       }
     }
   }
@@ -564,7 +564,7 @@ public class LbsPackManager
       return;
       localLruCache = jdField_b_of_type_AndroidSupportV4UtilLruCache;
     } while ((localLruCache != null) && (!TextUtils.isEmpty((CharSequence)localLruCache.get(paramString))));
-    ThreadManager.post(new ang(this, paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight(), paramString), 5, null, false);
+    ThreadManager.post(new ani(this, paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight(), paramString), 5, null, false);
   }
   
   public void a(ArrayList paramArrayList)

@@ -1,24 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicListModel;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.qphone.base.util.QLog;
 
 public class krw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public krw(AccountDetailActivity paramAccountDetailActivity) {}
+  public krw(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, ksd paramksd) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "initData loadDatabase");
-    }
-    AccountDetailActivity localAccountDetailActivity = this.a;
-    if (!this.a.e()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localAccountDetailActivity.e = bool;
-      AccountDetailActivity.b(this.a, new krx(this));
-      return;
-    }
+    this.jdField_a_of_type_Ksd.jdField_a_of_type_AndroidWidgetTextView.setText(2131430038);
+    this.jdField_a_of_type_Ksd.b.setVisibility(4);
+    this.jdField_a_of_type_Ksd.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_JavaLangString), ((AccountDetailActivity)this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_AndroidAppActivity).a());
   }
 }
 

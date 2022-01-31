@@ -8,7 +8,7 @@ import com.tribe.async.async.JobContext;
 import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
 import java.util.List;
-import nus;
+import nzh;
 
 public class DetailFeedAllInfoPuller$FeedItemPullSegment
   extends JobSegment
@@ -25,7 +25,7 @@ public class DetailFeedAllInfoPuller$FeedItemPullSegment
   
   protected void a(JobContext paramJobContext, String paramString)
   {
-    CmdTaskManger.a().a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest, new nus(this, paramJobContext));
+    CmdTaskManger.a().a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkRequestBatchGetFriendStoryFeedInfoRequest, new nzh(this, paramJobContext));
   }
 }
 

@@ -1,19 +1,66 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class urq
-  implements Runnable
+public class urq
+  extends VasQuickUpdateManager.CallBacker
 {
-  urq(uro paramuro, int paramInt) {}
+  public urq(PokePanel paramPokePanel) {}
   
-  public void run()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (DoodleMsgView.a(this.jdField_a_of_type_Uro.a) != null)
+    boolean bool3 = true;
+    boolean bool1 = true;
+    boolean bool2 = false;
+    if (paramLong == 21L)
     {
-      urt localurt = (urt)DoodleMsgView.a(this.jdField_a_of_type_Uro.a).get();
-      if (localurt != null) {
-        localurt.a(this.jdField_a_of_type_Int);
+      if ((!paramString1.equals("poke.effectList")) || (paramInt1 != 0)) {
+        break label107;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.aio.PokePanel", 2, "download vas poke list, refresh now.");
+      }
+      paramString1 = paramVasQuickUpdateManager.a;
+      ThreadManager.getUIHandler().post(new urr(this, paramString1));
+      paramString1 = "";
+      paramString2 = "";
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramString2)) {
+        ThreadManager.getUIHandler().post(new urs(this, paramString2, paramString1, bool1));
+      }
+      return;
+      label107:
+      if (paramString1.startsWith("poke.item.effect."))
+      {
+        paramString1 = paramString1.substring("poke.item.effect.".length(), paramString1.length());
+        if (paramInt1 != 0) {}
+        for (;;)
+        {
+          paramString2 = "poke.item.effect.";
+          break;
+          bool1 = false;
+        }
+      }
+      if (paramString1.startsWith("poke.item.res."))
+      {
+        paramString1 = paramString1.substring("poke.item.res.".length(), paramString1.length());
+        if (paramInt1 != 0) {}
+        for (bool1 = bool3;; bool1 = false)
+        {
+          paramString2 = "poke.item.res.";
+          break;
+        }
+      }
+      paramString1 = "";
+      paramString2 = "";
+      bool1 = bool2;
     }
   }
 }

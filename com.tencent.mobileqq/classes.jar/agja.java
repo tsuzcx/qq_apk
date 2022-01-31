@@ -1,22 +1,22 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager;
 
 public class agja
-  implements OnCompositionLoadedListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agja(ScanTorchActivity paramScanTorchActivity) {}
+  public agja(ARTipsManager paramARTipsManager) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    ScanTorchActivity.l(this.a).setImageDrawable(localLottieDrawable);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (ARTipsManager.a(this.a) != null)
+    {
+      ARTipsManager.a(this.a).setAlpha(f);
+      ARTipsManager.a(this.a).setTranslationY((1.0F - f) * AIOUtils.a(25.0F, ARTipsManager.a(this.a)));
+    }
   }
 }
 

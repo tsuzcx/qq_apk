@@ -7,19 +7,17 @@ import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.mapsdk.raster.model.LatLngBounds;
 import com.tencent.mapsdk.raster.model.LatLngBounds.Builder;
 import com.tencent.mapsdk.raster.model.VisibleRegion;
-import com.tencent.mapsdk.rastercore.d.a;
-import com.tencent.mapsdk.rastercore.d.c;
-import com.tencent.mapsdk.rastercore.d.e;
+import com.tencent.mapsdk.rastercore.d.f;
 
 public class Projection
 {
-  private e mapContext;
-  private c projection;
+  private f mapContext;
+  private com.tencent.mapsdk.rastercore.d.c projection;
   
-  public Projection(e parame)
+  public Projection(f paramf)
   {
-    this.mapContext = parame;
-    this.projection = parame.b();
+    this.mapContext = paramf;
+    this.projection = paramf.b();
   }
   
   public double distanceBetween(GeoPoint paramGeoPoint1, GeoPoint paramGeoPoint2)
@@ -29,7 +27,7 @@ public class Projection
   
   public double distanceBetween(LatLng paramLatLng1, LatLng paramLatLng2)
   {
-    return d.a.a(paramLatLng1, paramLatLng2);
+    return com.tencent.mapsdk.rastercore.c.a(paramLatLng1, paramLatLng2);
   }
   
   public GeoPoint fromPixels(int paramInt1, int paramInt2)

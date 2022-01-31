@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 
-public class rrh
+class rrh
   implements Runnable
 {
-  public rrh(BaseChatPie paramBaseChatPie, MessageForShakeWindow paramMessageForShakeWindow) {}
+  rrh(rrg paramrrg, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.am();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShakeWindow.frienduin, false);
+    if (!this.jdField_a_of_type_Rrg.a.isFinishing()) {
+      this.jdField_a_of_type_Rrg.a.leftView.setText(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

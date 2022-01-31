@@ -1,18 +1,24 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
 
 public class abnu
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public abnu(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, ActionSheet paramActionSheet) {}
+  public abnu(ARGridMapViewDialog paramARGridMapViewDialog, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a, QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a.startActivity(paramView);
+    }
   }
 }
 

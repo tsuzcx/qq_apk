@@ -9,6 +9,7 @@ import com.tencent.mapsdk.raster.model.GroundOverlayOptions;
 import com.tencent.mapsdk.raster.model.MarkerOptions;
 import com.tencent.mapsdk.raster.model.PolygonOptions;
 import com.tencent.mapsdk.raster.model.PolylineOptions;
+import com.tencent.mapsdk.rastercore.e.e;
 import com.tencent.mapsdk.rastercore.tile.MapTile.MapSource;
 import com.tencent.tencentmap.mapsdk.map.Overlay;
 import java.util.Arrays;
@@ -23,14 +24,15 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public final class a
 {
   private static int e = 0;
-  private e a;
-  private CopyOnWriteArrayList<com.tencent.mapsdk.rastercore.e.b> b = new CopyOnWriteArrayList();
+  private f a;
+  private CopyOnWriteArrayList<com.tencent.mapsdk.rastercore.e.c> b = new CopyOnWriteArrayList();
   private SortedMap<String, com.tencent.mapsdk.rastercore.e.a.c> c = new TreeMap();
   private a d = new a((byte)0);
+  private int f = 0;
   
-  public a(e parame)
+  public a(f paramf)
   {
-    this.a = parame;
+    this.a = paramf;
   }
   
   public static String a(String paramString)
@@ -46,57 +48,52 @@ public final class a
     return paramMarkerOptions;
   }
   
-  public final com.tencent.mapsdk.rastercore.e.a a(GroundOverlayOptions paramGroundOverlayOptions)
+  public final com.tencent.mapsdk.rastercore.e.a a(CircleOptions paramCircleOptions)
   {
-    paramGroundOverlayOptions = new com.tencent.mapsdk.rastercore.e.a(this.a, paramGroundOverlayOptions);
+    paramCircleOptions = new com.tencent.mapsdk.rastercore.e.a(this.a, paramCircleOptions);
+    a(paramCircleOptions);
+    return paramCircleOptions;
+  }
+  
+  public final com.tencent.mapsdk.rastercore.e.b a(GroundOverlayOptions paramGroundOverlayOptions)
+  {
+    paramGroundOverlayOptions = new com.tencent.mapsdk.rastercore.e.b(this.a, paramGroundOverlayOptions);
     a(paramGroundOverlayOptions);
     return paramGroundOverlayOptions;
   }
   
-  public final com.tencent.mapsdk.rastercore.e.c a(PolygonOptions paramPolygonOptions)
+  public final com.tencent.mapsdk.rastercore.e.d a(PolygonOptions paramPolygonOptions)
   {
-    paramPolygonOptions = new com.tencent.mapsdk.rastercore.e.c(this.a, paramPolygonOptions);
+    paramPolygonOptions = new com.tencent.mapsdk.rastercore.e.d(this.a, paramPolygonOptions);
     a(paramPolygonOptions);
     return paramPolygonOptions;
   }
   
-  public final com.tencent.mapsdk.rastercore.e.d a(PolylineOptions paramPolylineOptions)
+  public final e a(PolylineOptions paramPolylineOptions)
   {
     paramPolylineOptions = new com.tencent.mapsdk.rastercore.e.a.d(this.a, paramPolylineOptions);
     a(paramPolylineOptions);
     return paramPolylineOptions;
   }
   
-  public final com.tencent.mapsdk.rastercore.tile.a.b a(CircleOptions paramCircleOptions)
-  {
-    paramCircleOptions = new com.tencent.mapsdk.rastercore.tile.a.b(this.a, paramCircleOptions);
-    a(paramCircleOptions);
-    return paramCircleOptions;
-  }
-  
   public final void a()
   {
     try
     {
-      Iterator localIterator1 = this.c.entrySet().iterator();
-      while (localIterator1.hasNext())
-      {
-        ((com.tencent.mapsdk.rastercore.e.a.c)((Map.Entry)localIterator1.next()).getValue()).c();
-        continue;
-        this.a.a(false, false);
+      Iterator localIterator = this.c.entrySet().iterator();
+      while (localIterator.hasNext()) {
+        ((com.tencent.mapsdk.rastercore.e.a.c)((Map.Entry)localIterator.next()).getValue()).c();
       }
-    }
-    catch (Exception localException) {}
-    for (;;)
-    {
-      return;
       this.c.clear();
-      Iterator localIterator2 = this.b.iterator();
-      while (localIterator2.hasNext()) {
-        ((com.tencent.mapsdk.rastercore.e.b)localIterator2.next()).destroy();
+      localIterator = this.b.iterator();
+      while (localIterator.hasNext()) {
+        ((com.tencent.mapsdk.rastercore.e.c)localIterator.next()).destroy();
       }
       this.b.clear();
+      com.tencent.mapsdk.rastercore.f.b.a(this.a.c(), 2);
+      return;
     }
+    catch (Exception localException) {}
   }
   
   public final void a(Canvas paramCanvas)
@@ -105,17 +102,28 @@ public final class a
     Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
-      com.tencent.mapsdk.rastercore.e.b localb = (com.tencent.mapsdk.rastercore.e.b)localIterator.next();
-      if ((localb.isVisible()) && ((i <= 20) || (localb.checkInBounds()))) {
-        localb.draw(paramCanvas);
+      com.tencent.mapsdk.rastercore.e.c localc = (com.tencent.mapsdk.rastercore.e.c)localIterator.next();
+      if ((localc.isVisible()) && ((i <= 20) || (localc.checkInBounds()))) {
+        localc.draw(paramCanvas);
       }
     }
   }
   
-  public final void a(com.tencent.mapsdk.rastercore.e.b paramb)
+  public final void a(com.tencent.mapsdk.rastercore.e.c paramc)
   {
-    b(paramb.getId());
-    this.b.add(paramb);
+    b(paramc.getId());
+    this.b.add(paramc);
+    if (!(paramc instanceof com.tencent.mapsdk.rastercore.e.a))
+    {
+      int i = this.f + 1;
+      this.f = i;
+      if (i > 0) {
+        com.tencent.mapsdk.rastercore.f.b.a(this.a.c(), 1);
+      }
+    }
+    if (this.f > 0) {
+      this.a.f(false);
+    }
     c();
     this.a.a(false, false);
   }
@@ -125,9 +133,9 @@ public final class a
     Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
-      com.tencent.mapsdk.rastercore.e.b localb = (com.tencent.mapsdk.rastercore.e.b)localIterator.next();
-      if ((localb instanceof Overlay)) {
-        ((Overlay)localb).onTouchEvent(paramMotionEvent, this.a.d());
+      com.tencent.mapsdk.rastercore.e.c localc = (com.tencent.mapsdk.rastercore.e.c)localIterator.next();
+      if ((localc instanceof Overlay)) {
+        ((Overlay)localc).onTouchEvent(paramMotionEvent, this.a.d());
       }
     }
     return false;
@@ -137,24 +145,24 @@ public final class a
   {
     boolean bool2 = false;
     Iterator localIterator = this.b.iterator();
-    com.tencent.mapsdk.rastercore.e.b localb;
+    com.tencent.mapsdk.rastercore.e.c localc;
     do
     {
       bool1 = bool2;
       if (!localIterator.hasNext()) {
         break;
       }
-      localb = (com.tencent.mapsdk.rastercore.e.b)localIterator.next();
-    } while ((!(localb instanceof Overlay)) || (!((Overlay)localb).onTap(paramGeoPoint, this.a.d())));
+      localc = (com.tencent.mapsdk.rastercore.e.c)localIterator.next();
+    } while ((!(localc instanceof Overlay)) || (!((Overlay)localc).onTap(paramGeoPoint, this.a.d())));
     boolean bool1 = true;
     if (!bool1)
     {
       localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
-        localb = (com.tencent.mapsdk.rastercore.e.b)localIterator.next();
-        if ((localb instanceof Overlay)) {
-          ((Overlay)localb).onEmptyTap(paramGeoPoint);
+        localc = (com.tencent.mapsdk.rastercore.e.c)localIterator.next();
+        if ((localc instanceof Overlay)) {
+          ((Overlay)localc).onEmptyTap(paramGeoPoint);
         }
       }
     }
@@ -166,8 +174,8 @@ public final class a
     Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
-      com.tencent.mapsdk.rastercore.e.b localb = (com.tencent.mapsdk.rastercore.e.b)localIterator.next();
-      if (((localb instanceof Overlay)) && (((Overlay)localb).onLongPress(paramGeoPoint, paramMotionEvent, this.a.d()))) {
+      com.tencent.mapsdk.rastercore.e.c localc = (com.tencent.mapsdk.rastercore.e.c)localIterator.next();
+      if (((localc instanceof Overlay)) && (((Overlay)localc).onLongPress(paramGeoPoint, paramMotionEvent, this.a.d()))) {
         return true;
       }
     }
@@ -182,17 +190,28 @@ public final class a
   public final boolean b(String paramString)
   {
     Iterator localIterator = this.b.iterator();
-    com.tencent.mapsdk.rastercore.e.b localb;
+    com.tencent.mapsdk.rastercore.e.c localc;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localb = (com.tencent.mapsdk.rastercore.e.b)localIterator.next();
-    } while ((localb == null) || (!localb.getId().equals(paramString)));
-    for (paramString = localb; paramString != null; paramString = null)
+      localc = (com.tencent.mapsdk.rastercore.e.c)localIterator.next();
+    } while ((localc == null) || (!localc.getId().equals(paramString)));
+    for (paramString = localc; paramString != null; paramString = null)
     {
       boolean bool = this.b.remove(paramString);
+      if ((bool) && (!(paramString instanceof com.tencent.mapsdk.rastercore.e.a)))
+      {
+        int i = this.f - 1;
+        this.f = i;
+        if (i == 0) {
+          com.tencent.mapsdk.rastercore.f.b.a(this.a.c(), 2);
+        }
+      }
+      if (this.f <= 0) {
+        this.a.f(true);
+      }
       this.a.a(false, false);
       return bool;
     }
@@ -209,7 +228,7 @@ public final class a
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      this.b.add((com.tencent.mapsdk.rastercore.e.b)localObject);
+      this.b.add((com.tencent.mapsdk.rastercore.e.c)localObject);
       i += 1;
     }
   }
@@ -231,8 +250,8 @@ public final class a
     
     public final int compare(Object paramObject1, Object paramObject2)
     {
-      paramObject1 = (com.tencent.mapsdk.rastercore.e.b)paramObject1;
-      paramObject2 = (com.tencent.mapsdk.rastercore.e.b)paramObject2;
+      paramObject1 = (com.tencent.mapsdk.rastercore.e.c)paramObject1;
+      paramObject2 = (com.tencent.mapsdk.rastercore.e.c)paramObject2;
       if ((paramObject1 != null) && (paramObject2 != null)) {
         try
         {

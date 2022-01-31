@@ -78,7 +78,7 @@ public class SignatureTemplateDownloader
     }
     for (;;)
     {
-      return new File(AppConstants.aJ);
+      return new File(AppConstants.aK);
       label90:
       if (SharpPUtil.isSharpPFile(paramString1)) {
         return QQSharpPUtil.a(paramString1);
@@ -91,7 +91,7 @@ public class SignatureTemplateDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.SignatureTemplateDownloader
  * JD-Core Version:    0.7.0.1
  */

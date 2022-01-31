@@ -1,17 +1,18 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.msg.data.DeviceMsgHandle;
+import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.MessageForDeviceText;
 
-public final class vbb
-  implements Runnable
+public class vbb
+  implements DialogInterface.OnClickListener
 {
-  public vbb(Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, Handler paramHandler) {}
+  public vbb(DeviceTextItemBuilder paramDeviceTextItemBuilder, MessageForDeviceText paramMessageForDeviceText) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidOsHandler);
+    ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
   }
 }
 

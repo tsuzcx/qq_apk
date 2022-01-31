@@ -93,7 +93,7 @@ public class FlashChatServlet
       paramIntent = new FlashChatSso.TSsoReq();
       paramIntent.i32_cmd.set(1);
       paramIntent.i32_implat.set(109);
-      paramIntent.str_qq_ver.set("7.6.3");
+      paramIntent.str_qq_ver.set("7.6.8");
       paramIntent = paramIntent.toByteArray();
       ByteBuffer localByteBuffer = ByteBuffer.allocate(paramIntent.length + 4);
       localByteBuffer.putInt(paramIntent.length + 4).put(paramIntent);

@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
 public class agss
-  implements Runnable
+  extends RecyclerView.ItemDecoration
 {
-  public agss(HeartRiseLayerDrawable paramHeartRiseLayerDrawable, int paramInt1, int paramInt2, int paramInt3) {}
+  private final int jdField_a_of_type_Int = (int)(3.0F * PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity));
   
-  public void run()
+  private agss(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    ((agst)this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperHeartRiseLayerDrawable.getDrawable(this.jdField_a_of_type_Int)).a(this.b, this.c);
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

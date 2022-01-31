@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoResDownload;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
 class wxm
-  implements MediaScanner.OnMediaInfoScannerListener
+  implements Runnable
 {
-  wxm(wxk paramwxk, int paramInt) {}
+  wxm(wxl paramwxl) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_Wxk.a.d();
-    if (QQStoryFlowCallback.a(this.jdField_a_of_type_Wxk.a, paramLocalMediaInfo)) {
-      this.jdField_a_of_type_Wxk.a.a(paramLocalMediaInfo, this.jdField_a_of_type_Int);
+    if (!VideoEnvironment.e(this.a.a.app)) {
+      ShortVideoResDownload.a(this.a.a.app);
     }
   }
 }

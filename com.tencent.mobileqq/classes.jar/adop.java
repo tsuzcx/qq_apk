@@ -1,107 +1,55 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import com.tencent.mobileqq.gameparty.GamePartyManager.AsyncRequestCallback;
-import com.tencent.mobileqq.gameparty.PromptDialogActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.report.ReportCenter;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0xaa.SubMsgType0xaa.GameTeam_StartGameMessage;
+import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
 
-public class adop
-  implements GamePartyManager.AsyncRequestCallback
+class adop
+  implements FMSettingInterface.MoveFileCallback
 {
-  public adop(GamePartyManager paramGamePartyManager, long paramLong1, SubMsgType0xaa.GameTeam_StartGameMessage paramGameTeam_StartGameMessage, long paramLong2, boolean paramBoolean) {}
+  adop(adoo paramadoo) {}
   
-  public void a(String paramString)
+  public void a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)GamePartyManager.a(this.jdField_a_of_type_ComTencentMobileqqGamepartyGamePartyManager).get();
-    if (localQQAppInterface == null) {}
-    for (;;)
+    synchronized (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings)
     {
+      FMSettings localFMSettings2 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings;
+      localFMSettings2.jdField_a_of_type_Int += 1;
+      FMSettings.a(1, "onMovedOver,count[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
+      {
+        FMSettings.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettingInterface$MoveFileCallback.a();
+      }
       return;
-      try
-      {
-        paramString = new JSONObject(paramString).getJSONObject("result").getJSONArray("team_list");
-        if (paramString.length() <= 0) {
-          continue;
-        }
-        paramString = paramString.getJSONObject(0);
-        int i;
-        int j;
-        boolean bool;
-        label426:
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        try
-        {
-          i = paramString.getInt("expire");
-          j = i;
-          if (i <= 0) {
-            j = GamePartyManager.a;
-          }
-          i = paramString.getInt("status");
-          if (QLog.isColorLevel()) {
-            QLog.d("GamePartyManager", 2, "handlePushMsg_StartGame, getTeamContext finished, deltaTime = " + this.jdField_a_of_type_Long + ", expire = " + j + ", status = " + i);
-          }
-          if (this.jdField_a_of_type_Long < j)
-          {
-            paramString = paramString.getJSONObject("leader");
-            bool = localQQAppInterface.getCurrentAccountUin().equals(paramString.getString("uin"));
-            if ((i > 0) && (i < 5))
-            {
-              paramString = new Intent(localQQAppInterface.getApp().getApplicationContext(), PromptDialogActivity.class);
-              paramString.addFlags(268435456);
-              paramString.putExtra("title", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_title.get());
-              paramString.putExtra("summary", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_summary.get());
-              paramString.putExtra("picUrl", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_picUrl.get());
-              paramString.putExtra("appid", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_appid.get());
-              paramString.putExtra("packageName", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_packageName.get());
-              paramString.putExtra("gamedata", this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xaaSubMsgType0xaa$GameTeam_StartGameMessage.str_gamedata.get());
-              paramString.putExtra("leader", bool);
-              paramString.putExtra("createMsgTime", this.b);
-              localQQAppInterface.getApp().startActivity(paramString);
-              if (!this.jdField_a_of_type_Boolean) {
-                break label426;
-              }
-              ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2044", "0", false);
-              return;
-              paramString = paramString;
-              if (QLog.isColorLevel()) {
-                QLog.d("GamePartyManager", 2, "handlePushMsg_StartGame, getTeamContext finished, parse json error e = " + paramString);
-              }
-            }
-          }
-          if (this.jdField_a_of_type_Boolean)
-          {
-            ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2044", "1", false);
-            return;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            i = 0;
-          }
-          ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2043", "0", false);
-          return;
-        }
-        ReportCenter.a().a(localQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2043", "1", false);
-      }
     }
   }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings)
+    {
+      FMSettings localFMSettings2 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings;
+      localFMSettings2.jdField_a_of_type_Int += 1;
+      FMSettings.a(1, "onMoveFail,count[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
+      {
+        FMSettings.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettingInterface$MoveFileCallback.a(16);
+      }
+      return;
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    FMSettings localFMSettings = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings;
+    localFMSettings.jdField_a_of_type_Long += paramLong1;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettingInterface$MoveFileCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b);
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adop
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,17 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-import cooperation.troop_homework.TroopHomeworkHelper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.ILabelTextHandle;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.TroopEnterEffectData;
+import com.tencent.mobileqq.utils.ContactUtils;
 
-public class ajkq
-  implements Runnable
+class ajkq
+  implements SceneBuilder.ILabelTextHandle
 {
-  public ajkq(AudioItem paramAudioItem, AudioInfo paramAudioInfo) {}
+  ajkq(ajkj paramajkj, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public String a(Sprite paramSprite, String paramString)
   {
-    String str = TroopHomeworkHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.b);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.b(str);
-    if (!TextUtils.isEmpty(str)) {
-      ((Activity)AudioItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem)).runOnUiThread(new ajkr(this));
-    }
+    return paramString.replace("$NICK$", ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ajkj.a.a, this.jdField_a_of_type_Ajkj.a.b, 1, 0));
   }
 }
 

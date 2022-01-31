@@ -1,17 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopAioNewMessageBar;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
 public class ajda
-  extends Handler
+  implements Runnable
 {
-  public ajda(TroopAioNewMessageBar paramTroopAioNewMessageBar) {}
+  public ajda(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if ((paramMessage.what == TroopAioNewMessageBar.j) && (TroopAioNewMessageBar.e == this.a.k)) {
-      TroopAioNewMessageBar.a(this.a);
-    }
+    this.a.j();
   }
 }
 

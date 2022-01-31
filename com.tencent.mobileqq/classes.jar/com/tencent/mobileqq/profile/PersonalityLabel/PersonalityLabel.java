@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agnj;
-import agnk;
+import agry;
+import agrz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -21,7 +21,7 @@ import tencent.im.oidb.cmd0x8f0.cmd0x8f0.RspBody;
 public class PersonalityLabel
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agnj();
+  public static final Parcelable.Creator CREATOR = new agry();
   public static int CURRENT_VERSION = 2;
   public static final String TAG = "PersonalityLabel";
   public int isCloseByUser;
@@ -104,7 +104,7 @@ public class PersonalityLabel
       if (QLog.isDevelopLevel()) {
         QLog.i("PersonalityLabel", 2, "before unmarsh:" + this.personalityLabelInfos.toString());
       }
-      Collections.sort(this.personalityLabelInfos, new agnk(this));
+      Collections.sort(this.personalityLabelInfos, new agrz(this));
       if (QLog.isDevelopLevel()) {
         QLog.i("PersonalityLabel", 2, "after unmarsh:" + this.personalityLabelInfos.toString());
       }
@@ -229,6 +229,15 @@ public class PersonalityLabel
       return convertFromPb(localRspBody);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("PersonalityLabel", 2, "convertFromPbBytes failed.", paramArrayOfByte);
+        }
+      }
+    }
+    catch (Exception paramArrayOfByte)
     {
       for (;;)
       {

@@ -1,50 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.FlowCameraPhotoActivity;
-import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
-import com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.armap.ArMapHandler;
+import com.tencent.mobileqq.armap.ArMapInterface;
+import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
 
 public class abod
-  extends TransProcessorHandler
+  implements Runnable
 {
-  public abod(FlowCameraPhotoActivity paramFlowCameraPhotoActivity) {}
+  public abod(ARMapPOIStarDialog paramARMapPOIStarDialog, ArMapInterface paramArMapInterface, long paramLong1, long paramLong2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    this.a.d = true;
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1003: 
-      do
-      {
-        do
-        {
-          return;
-        } while (localFileMsg == null);
-        paramMessage = localFileMsg.a;
-        if (paramMessage != null)
-        {
-          this.a.a = CardOCRInfo.a(paramMessage);
-          this.a.runOnUiThread(new aboe(this));
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("BusinessCard_FlowCameraPhotoActivity", 2, "extraInfo is null");
-      return;
-    }
-    paramMessage = localFileMsg.a;
-    if (paramMessage != null) {
-      this.a.a = CardOCRInfo.a(paramMessage);
-    }
-    if (this.a.a != null) {
-      BusinessCardUtils.a(this.a.app.getCurrentAccountUin(), this.a.a.a, -1, false, 0L);
-    }
-    this.a.runOnUiThread(new abof(this));
+    ((ArMapHandler)this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.a(2)).a(this.jdField_a_of_type_Long, this.b, null);
   }
 }
 

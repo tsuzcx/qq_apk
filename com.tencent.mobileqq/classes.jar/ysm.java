@@ -1,21 +1,43 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.script.callback.ISpriteTaskInterface;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ysm
   implements Runnable
 {
-  public ysm(SpriteDrawerInfoBridge paramSpriteDrawerInfoBridge, SpriteTaskParam paramSpriteTaskParam) {}
+  private String jdField_a_of_type_JavaLangString;
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
+  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+  
+  public ysm(ApolloRenderDriver paramApolloRenderDriver, String paramString, ReentrantLock paramReentrantLock, ApolloEngine paramApolloEngine)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = paramReentrantLock;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloEngine);
+  }
   
   public void run()
   {
-    if (SpriteDrawerInfoBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge) != null)
+    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    try
     {
-      if (SpriteDrawerInfoBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge).a()) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.j = 1;
+      ApolloEngine localApolloEngine = (ApolloEngine)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localApolloEngine != null)
+      {
+        QLog.d("ApolloRenderDriver", 2, "run js =" + this.jdField_a_of_type_JavaLangString);
+        localApolloEngine.a(this.jdField_a_of_type_JavaLangString);
+        if (!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a.get()) {
+          localApolloEngine.a(0.0D);
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.a = this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge;
-      SpriteDrawerInfoBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge).a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
     }
   }
 }

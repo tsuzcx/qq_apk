@@ -1,32 +1,63 @@
-import android.net.Uri;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public final class mwc
-  implements Runnable
+public class mwc
+  extends MqqHandler
 {
-  public mwc(Uri paramUri, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void run()
+  public mwc(SubscriptFeedsActivity paramSubscriptFeedsActivity, Looper paramLooper)
   {
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.isFinishing()) {}
+    do
     {
-      try
+      do
       {
-        String str = this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id");
-        int i = this.jdField_a_of_type_Int;
-        if (this.jdField_a_of_type_Int == 0)
+        do
         {
-          i = 100;
-          PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006DF8", "0X8006DF8", this.b, 0, str, this.jdField_a_of_type_JavaLangString, "" + i, "", false);
-          PublicAccountReportUtils.a("0X8006DF8", "", str, this.jdField_a_of_type_JavaLangString, "" + i, "" + this.b);
           return;
-        }
-      }
-      catch (Exception localException)
-      {
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 1002: 
+            try
+            {
+              paramMessage = TroopBarAssistantManager.a().b(this.a.app);
+              this.a.runOnUiThread(new mwd(this, paramMessage));
+              return;
+            }
+            catch (Exception paramMessage) {}
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("SubscriptFeedsActivity", 2, paramMessage.toString());
         return;
-      }
+        this.a.runOnUiThread(new mwe(this));
+        return;
+        paramMessage = paramMessage.getData();
+      } while ((paramMessage == null) || (!ReadInJoyHelper.a()));
+      paramMessage = paramMessage.getSerializable("ReadInJoyArticleList");
+    } while ((paramMessage == null) || (!(paramMessage instanceof ArrayList)));
+    if ((!SubscriptFeedsActivity.a(this.a, (ArrayList)paramMessage)) && (QLog.isColorLevel())) {
+      QLog.d("SubscriptFeedsActivity", 2, "onGetRecommendReadInJoyArticleList data save to sp fail");
     }
+    this.a.runOnUiThread(new mwf(this, paramMessage));
+    return;
+    this.a.runOnUiThread(new mwg(this));
+    return;
+    this.a.runOnUiThread(new mwh(this));
+    return;
+    this.a.runOnUiThread(new mwi(this));
   }
 }
 

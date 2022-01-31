@@ -1,26 +1,21 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.av.ui.EffectSettingBtn;
 
 public class jvo
   implements Runnable
 {
-  public jvo(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, VideoController paramVideoController, String paramString, boolean paramBoolean) {}
+  public jvo(EffectSettingBtn paramEffectSettingBtn) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(242);
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_JavaLangString, 23);
+    if (this.a.a == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.c(this.jdField_a_of_type_JavaLangString, 1);
+    EffectSettingBtn.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jvo
  * JD-Core Version:    0.7.0.1
  */

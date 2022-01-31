@@ -1,30 +1,19 @@
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QIMNewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class taz
   implements Runnable
 {
-  public taz(MainFragment paramMainFragment) {}
+  public taz(JumpActivity paramJumpActivity, Intent paramIntent) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-    if (MainFragment.a(this.a) != null)
-    {
-      MainFragment.a(this.a).addObserver(MainFragment.a(this.a));
-      ((QIMNewFriendManager)MainFragment.a(this.a).getManager(256)).a(MainFragment.a(this.a));
-      MainFragment.a(this.a).registObserver(MainFragment.a(this.a));
-    }
-    MainFragment.a(this.a, false);
+    JumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_AndroidContentIntent.getExtras());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     taz
  * JD-Core Version:    0.7.0.1
  */

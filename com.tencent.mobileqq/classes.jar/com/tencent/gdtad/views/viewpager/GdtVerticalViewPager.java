@@ -3,7 +3,7 @@ package com.tencent.gdtad.views.viewpager;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import qnl;
+import qsc;
 
 public class GdtVerticalViewPager
   extends ViewPager
@@ -22,7 +22,7 @@ public class GdtVerticalViewPager
   
   private void a()
   {
-    setPageTransformer(true, new qnl(null));
+    setPageTransformer(true, new qsc(null));
   }
 }
 

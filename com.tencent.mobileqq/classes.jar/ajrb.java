@@ -1,75 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
 
-public final class ajrb
-  implements BusinessObserver
+public class ajrb
+  implements TextWatcher
 {
-  public ajrb(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public ajrb(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramBoolean) {}
-    for (;;)
+    if (paramEditable.length() == 0)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
-        }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        paramInt = localWebSsoResponseBody.ret.get();
-        if (paramInt == 0)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment ok~~~");
-          return;
-        }
-        paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
-        paramBundle = "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed1, errorCode = " + paramInt + ", msg = " + paramBundle;
-        if (QLog.isColorLevel()) {
-          QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle);
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle = "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed4, msg = " + QLog.getStackTraceString(paramBundle);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle);
-        continue;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, 32768, 1002);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(6003, false, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq) });
+      SearchReciteArticleFragment.a(this.a);
+      SearchReciteArticleFragment.a(this.a, false);
       return;
-      if (QLog.isColorLevel())
-      {
-        QLog.w(".troop.troop_topic.TroopTopicMgr", 2, "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed2, data is null !!!!");
-        continue;
-        paramBundle = "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed3, isSuccess is " + paramBoolean;
-        if (QLog.isColorLevel()) {
-          QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle + paramBoolean);
-        }
-      }
     }
+    SearchReciteArticleFragment.a(this.a).a();
+    SearchReciteArticleFragment.a(this.a).notifyDataSetChanged();
+    SearchReciteArticleFragment.a(this.a).a.a(false);
+    SearchReciteArticleFragment.a(this.a, 0);
+    SearchReciteArticleFragment.a(this.a, true);
+    paramEditable = paramEditable.toString();
+    SearchReciteArticleFragment.a(this.a, paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

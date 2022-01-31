@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import aakr;
+import aarl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ARRelationShip
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aakr();
+  public static final Parcelable.Creator CREATOR = new aarl();
   public long a;
   public String a;
   public String b;

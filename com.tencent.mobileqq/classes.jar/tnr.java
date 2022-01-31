@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.utils.QQLSSensor;
+import com.tencent.qphone.base.util.QLog;
 
 public class tnr
   implements Runnable
 {
-  public tnr(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public tnr(QQLSActivity paramQQLSActivity) {}
   
   public void run()
   {
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8008122", "0X8008122", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSSensor", 2, "====shutSensor===" + Thread.currentThread().getId());
+    }
+    if (this.a.a != null)
+    {
+      this.a.a.b();
+      this.a.a = null;
+    }
   }
 }
 

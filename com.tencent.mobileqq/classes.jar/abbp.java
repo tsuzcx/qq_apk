@@ -1,26 +1,11 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
-public class abbp
-  implements NonMainAppHeadLoader.FaceObserver
+class abbp
+  implements Runnable
 {
-  public abbp(ARMapActivity paramARMapActivity) {}
+  abbp(abbo paramabbo) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
-  {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramBitmap != null) && (paramString1.equals(this.a.h)) && (this.a.j))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapActivity", 2, "onFaceUpdate uin:" + paramString1 + " path=" + paramString2);
-      }
-      this.a.j = false;
-      ThreadManager.post(new abbq(this, paramBitmap), 5, null, false);
-    }
-  }
+  public void run() {}
 }
 
 

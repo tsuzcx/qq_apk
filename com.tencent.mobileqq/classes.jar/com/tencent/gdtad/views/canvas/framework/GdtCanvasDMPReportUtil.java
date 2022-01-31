@@ -15,7 +15,7 @@ import java.io.UnsupportedEncodingException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qme;
+import qqv;
 
 public class GdtCanvasDMPReportUtil
 {
@@ -113,7 +113,7 @@ public class GdtCanvasDMPReportUtil
   
   public static void a(GdtCanvasData paramGdtCanvasData)
   {
-    ThreadManager.post(new qme(paramGdtCanvasData), 5, null, true);
+    ThreadManager.post(new qqv(paramGdtCanvasData), 5, null, true);
   }
   
   private static byte[] a(GdtCanvasData paramGdtCanvasData, JSONObject paramJSONObject, String paramString1, String paramString2)

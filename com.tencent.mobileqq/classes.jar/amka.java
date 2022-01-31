@@ -1,48 +1,50 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import cooperation.comic.ui.QQComicTabBarView;
+import android.widget.Scroller;
+import com.tencent.widget.MovingView;
 
 public class amka
   extends Handler
 {
-  public amka(QQComicTabBarView paramQQComicTabBarView, Looper paramLooper)
+  public amka(MovingView paramMovingView, Looper paramLooper)
   {
     super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 1) {
+      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.jdField_b_of_type_Boolean)) {}
+    }
+    while (paramMessage.what != 2)
     {
-    default: 
       return;
-    case 0: 
-      this.a.b = 0.0F;
-      QQComicTabBarView.a(this.a);
-      super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
-      return;
-    case 1: 
-      if (this.a.b < 1.0F)
+      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
       {
+        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
+        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
+        int k = this.a.c;
+        int m = this.a.d;
+        this.a.c = i;
+        this.a.d = j;
         paramMessage = this.a;
-        paramMessage.b += 0.05F;
-        QQComicTabBarView.b(this.a);
-        super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
+        paramMessage.jdField_a_of_type_Int += i - k;
+        paramMessage = this.a;
+        paramMessage.jdField_b_of_type_Int += j - m;
+        this.a.invalidate();
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 40L);
         return;
       }
-      super.sendMessageDelayed(this.a.a.obtainMessage(2), 16L);
+      this.a.a();
       return;
     }
-    this.a.b = 1.0F;
-    this.a.a(this.a.i, this.a.h);
-    this.a.i = this.a.h;
-    QQComicTabBarView.c(this.a);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amka
  * JD-Core Version:    0.7.0.1
  */

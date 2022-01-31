@@ -9,7 +9,6 @@ import com.tencent.tmassistant.common.jce.ShareUrlConfig;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import com.tencent.tmassistantbase.util.Settings;
 import com.tencent.tmassistantbase.util.f;
-import com.tencent.tmassistantbase.util.g;
 import com.tencent.tmassistantbase.util.r;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -119,7 +118,7 @@ public class b
   
   public <T extends JceStruct> void a(String paramString, byte[] paramArrayOfByte, Class<T> paramClass)
   {
-    f.a(g.b).post(new c(this, paramString, paramArrayOfByte, paramClass));
+    f.a().post(new c(this, paramString, paramArrayOfByte, paramClass));
   }
   
   public void a(byte[] paramArrayOfByte)

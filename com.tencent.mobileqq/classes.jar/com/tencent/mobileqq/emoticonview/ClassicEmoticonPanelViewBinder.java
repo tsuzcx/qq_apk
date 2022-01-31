@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acfj;
+import acnk;
 import android.content.Context;
 import android.view.View;
 import java.util.List;
@@ -51,7 +51,7 @@ public class ClassicEmoticonPanelViewBinder
     } while (i != 2007);
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new acfj(this, 2007);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter = new acnk(this, 2007);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.a(true);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.c(false);
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.b(false);

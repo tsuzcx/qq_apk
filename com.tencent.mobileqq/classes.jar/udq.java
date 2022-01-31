@@ -1,101 +1,85 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
 
 public class udq
-  implements DialogInterface.OnDismissListener
+  extends TroopObserver
 {
-  TroopRobotPickerActivity.RobotPickerData jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
+  public udq(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
   
-  public udq(TroopRobotPickerActivity paramTroopRobotPickerActivity, TroopRobotPickerActivity.RobotPickerData paramRobotPickerData)
+  protected void a(oidb_0xaf4.RspBody paramRspBody, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData = paramRobotPickerData;
+    if (paramRspBody.group_id.has())
+    {
+      paramRspBody = String.valueOf(paramRspBody.group_id.get());
+      if (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramRspBody)) {
+        break label119;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList troopUin not match. rsp uin=" + paramRspBody + ", current uin=" + this.a.jdField_a_of_type_JavaLangString);
+      }
+    }
+    label119:
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList group_id lost. current uin=" + this.a.jdField_a_of_type_JavaLangString);
+      }
+      this.a.d();
+      paramRspBody = this.a.a(1101236949L);
+    } while (paramRspBody == null);
+    this.a.a(paramRspBody);
   }
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(TroopRobotPickerActivity.jdField_a_of_type_JavaLangString, 2, "onDismiss|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType);
+      QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramBoolean);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2)
+    if (!this.a.jdField_a_of_type_JavaLangString.equals(paramLong + "")) {}
+    do
     {
-      paramDialogInterface = new Intent();
-      localJSONObject = new JSONObject();
-      try
+      do
       {
-        localJSONObject.put("ageStart", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex1);
-        localJSONObject.put("ageEnd", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex2);
-        paramDialogInterface.putExtra("result", localJSONObject.toString());
-        paramDialogInterface.putExtra("callback", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.b);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.setResult(-1, paramDialogInterface);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.finish();
-        if (QLog.isColorLevel()) {
-          QLog.d(TroopRobotPickerActivity.jdField_a_of_type_JavaLangString, 2, "onDismiss|mCurAgeIndex1 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex1 + ", mCurAgeIndex2 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mCurAgeIndex2 + ", mAgeSelectIndex1 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex1 + ", mAgeSelectIndex2 : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mAgeSelectIndex2);
-        }
-        return;
-      }
-      catch (JSONException localJSONException1)
-      {
-        for (;;)
+        do
         {
-          localJSONException1.printStackTrace();
-        }
+          do
+          {
+            return;
+            this.a.d();
+          } while (!paramBoolean);
+          localObject = (TroopManager)this.a.app.getManager(51);
+        } while (localObject == null);
+        localObject = ((TroopManager)localObject).a(this.a.jdField_a_of_type_JavaLangString);
+      } while (localObject == null);
+      paramLong = ((TroopInfo)localObject).troopCreditLevel;
+      if (QLog.isColorLevel()) {
+        QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramLong);
       }
-    }
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-    if (i == 1)
+    } while (paramLong == 2L);
+    if (paramLong == 1L)
     {
-      paramDialogInterface = new Intent();
-      localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("sex", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mSexIndex);
-        paramDialogInterface.putExtra("callback", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.b);
-        paramDialogInterface.putExtra("result", localJSONObject.toString());
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.setResult(-1, paramDialogInterface);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.finish();
-        return;
-      }
-      catch (JSONException localJSONException2)
-      {
-        for (;;)
-        {
-          localJSONException2.printStackTrace();
-        }
-      }
+      localObject = DialogUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131434797)).setMessage("无法操作，此群已经完全停封");
+      ((QQCustomDialog)localObject).setPositiveButton(2131430696, new udr(this));
+      ((QQCustomDialog)localObject).setNegativeButton("", null);
+      ((QQCustomDialog)localObject).setCancelable(false);
+      ((QQCustomDialog)localObject).show();
+      return;
     }
-    paramDialogInterface = new Intent();
-    JSONObject localJSONObject = new JSONObject();
-    i = 0;
-    try
-    {
-      while (i < this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray.length)
-      {
-        localJSONObject.put(TroopRobotPickerActivity.jdField_a_of_type_ArrayOfJavaLangString[i], this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCodeArray[i]);
-        localJSONObject.put(TroopRobotPickerActivity.jdField_a_of_type_ArrayOfJavaLangString[i] + "Str", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationArray[i].name);
-        i += 1;
-      }
-      localJSONObject.put("country", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountyCode);
-      localJSONObject.put("countryStr", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationCountry.name);
-    }
-    catch (JSONException localJSONException3)
-    {
-      for (;;)
-      {
-        localJSONException3.printStackTrace();
-      }
-    }
-    paramDialogInterface.putExtra("result", localJSONObject.toString());
-    paramDialogInterface.putExtra("callback", this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity.finish();
+    Object localObject = DialogUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131434797)).setMessage("此群临时停封已经解除");
+    ((QQCustomDialog)localObject).setPositiveButton(2131430696, new uds(this));
+    ((QQCustomDialog)localObject).setNegativeButton("", null);
+    ((QQCustomDialog)localObject).setCancelable(false);
+    ((QQCustomDialog)localObject).show();
   }
 }
 

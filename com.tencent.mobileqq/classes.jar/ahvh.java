@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.search.FunctionModuleConfigManager;
+import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
+import com.tencent.mobileqq.utils.ChnToSpell;
 import java.util.Comparator;
-import java.util.Map;
 
-public final class ahvh
+public class ahvh
   implements Comparator
 {
-  public int a(GroupSearchEngine.SearchEngineEntity paramSearchEngineEntity1, GroupSearchEngine.SearchEngineEntity paramSearchEngineEntity2)
+  public ahvh(FunctionModuleConfigManager paramFunctionModuleConfigManager) {}
+  
+  public int a(GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem1, GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem2)
   {
-    paramSearchEngineEntity2 = (Integer)SearchConfigManager.searchEngineOrder.get(paramSearchEngineEntity2.a);
-    if (paramSearchEngineEntity2 == null) {
-      paramSearchEngineEntity2 = Integer.valueOf(0);
-    }
-    for (;;)
-    {
-      Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramSearchEngineEntity1.a);
-      paramSearchEngineEntity1 = localInteger;
-      if (localInteger == null) {
-        paramSearchEngineEntity1 = Integer.valueOf(0);
-      }
-      return Integer.signum(paramSearchEngineEntity2.intValue() - paramSearchEngineEntity1.intValue());
-    }
+    paramGroupBaseNetSearchModelItem1 = paramGroupBaseNetSearchModelItem1.c;
+    paramGroupBaseNetSearchModelItem2 = paramGroupBaseNetSearchModelItem2.c;
+    return ChnToSpell.a(paramGroupBaseNetSearchModelItem1, 2).compareTo(ChnToSpell.a(paramGroupBaseNetSearchModelItem2, 2));
   }
 }
 

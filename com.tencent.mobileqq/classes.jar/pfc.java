@@ -1,45 +1,29 @@
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.common.galleryactivity.AnimationLister;
-import com.tencent.common.galleryactivity.GalleryManager;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.viewplugin.ViewPluginManager;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class pfc
-  implements AnimationLister
+  implements Runnable
 {
-  public pfc(AbstractImageListScene paramAbstractImageListScene) {}
+  public pfc(ViewPluginManager paramViewPluginManager) {}
   
-  public void b()
+  public void run()
   {
+    String str = "http://" + this.a.b + "?_bid=" + this.a.jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
+      QLog.i("ViewPluginManager", 2, "checkOfflineUpNotCallback.");
     }
-    if (this.a.a.a() != this.a) {
-      this.a.l();
-    }
-    this.a.b();
-  }
-  
-  public void c()
-  {
-    this.a.c();
-  }
-  
-  public void d()
-  {
-    this.a.d();
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
-    }
-    this.a.e();
+    HtmlOffline.b(str, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pfc
  * JD-Core Version:    0.7.0.1
  */

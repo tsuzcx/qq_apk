@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.receipt;
 
-import ahfb;
-import ahfc;
+import ahjs;
+import ahjt;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -73,18 +73,18 @@ public class ReceiptMessageReadMemberListFragment
     paramBundle = paramBundle.getString("ReceiptMessageReadMemberListFragment.EXTRA_KEY_EMPTY_TEXT");
     if (((paramView == null) || (paramView.isEmpty())) && (!TextUtils.isEmpty(paramBundle)))
     {
-      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131363116);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363117)).setText(paramBundle);
+      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131363120);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363121)).setText(paramBundle);
       ((View)localObject).setVisibility(0);
     }
-    paramBundle = (RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363115);
+    paramBundle = (RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363119);
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Object localObject = new ahfc(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, paramBundle, null);
-    ((ahfc)localObject).a(paramView);
+    Object localObject = new ahjt(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, paramBundle, null);
+    ((ahjt)localObject).a(paramView);
     paramBundle.setAdapter((RecyclerView.Adapter)localObject);
     paramBundle.setLayoutManager(new LinearLayoutManager(BaseApplicationImpl.getContext()));
     int i = (int)(getResources().getDisplayMetrics().density * 64.0F);
-    paramBundle.addItemDecoration(new ahfb(getResources().getDrawable(2130837746), i, 0, null));
+    paramBundle.addItemDecoration(new ahjs(getResources().getDrawable(2130837745), i, 0, null));
   }
 }
 

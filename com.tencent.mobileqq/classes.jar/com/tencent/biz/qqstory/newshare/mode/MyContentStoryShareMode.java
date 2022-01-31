@@ -18,7 +18,7 @@ public class MyContentStoryShareMode
   
   static
   {
-    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + StoryApi.a(2131432086);
+    jdField_a_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + StoryApi.a(2131432097);
   }
   
   public MyContentStoryShareMode(StoryVideoItem paramStoryVideoItem, boolean paramBoolean, String paramString)
@@ -32,7 +32,7 @@ public class MyContentStoryShareMode
     int i;
     if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())
     {
-      str = this.c + "的投票" + "日迹";
+      str = this.c + "的投票" + "小视频";
       this.jdField_d_of_type_JavaLangString = str;
       this.f = paramStoryVideoItem.mOwnerUid;
       this.e = localUserManager.a(this.f, false);
@@ -56,7 +56,7 @@ public class MyContentStoryShareMode
       this.jdField_d_of_type_JavaLangString = a();
       this.k = this.jdField_d_of_type_JavaLangString;
       this.i = b();
-      this.j = ("#日迹# " + a() + "（" + this.i + "）");
+      this.j = ("#小视频# " + a() + "（" + this.i + "）");
       this.jdField_d_of_type_Int = 11;
       if (!this.jdField_a_of_type_Boolean) {
         break label356;
@@ -71,7 +71,7 @@ public class MyContentStoryShareMode
       }
       this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 38, 39, 40, 55, 45 };
       return;
-      str = this.c + "的" + "日迹";
+      str = this.c + "的" + "小视频";
       break;
       i = 1;
       break label139;

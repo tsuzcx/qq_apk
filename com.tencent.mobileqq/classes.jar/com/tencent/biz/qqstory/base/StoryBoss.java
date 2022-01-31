@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Future;
-import mzq;
+import ndl;
 
 public class StoryBoss
   implements Boss, MonitorThreadPoolExecutor.ThreadPoolMonitorListener
@@ -45,17 +45,17 @@ public class StoryBoss
   {
     Object localObject = new ExecutorConfig.CpuExecutorConfig();
     ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
-    localThreadPoolParams.a = "story_cpu";
-    localThreadPoolParams.b = ((ExecutorConfig)localObject).getCore();
-    localThreadPoolParams.c = ((ExecutorConfig)localObject).getMaximum();
-    localThreadPoolParams.d = ((ExecutorConfig)localObject).getAliveTime();
+    localThreadPoolParams.poolThreadName = "story_cpu";
+    localThreadPoolParams.corePoolsize = ((ExecutorConfig)localObject).getCore();
+    localThreadPoolParams.maxPooolSize = ((ExecutorConfig)localObject).getMaximum();
+    localThreadPoolParams.keepAliveTime = ((ExecutorConfig)localObject).getAliveTime();
     this.jdField_b_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
     paramContext = new ExecutorConfig.NetworkExecutorConfig(paramContext);
     localObject = new ThreadPoolParams();
-    ((ThreadPoolParams)localObject).a = "story_network";
-    ((ThreadPoolParams)localObject).b = paramContext.getCore();
-    ((ThreadPoolParams)localObject).c = paramContext.getMaximum();
-    ((ThreadPoolParams)localObject).d = paramContext.getAliveTime();
+    ((ThreadPoolParams)localObject).poolThreadName = "story_network";
+    ((ThreadPoolParams)localObject).corePoolsize = paramContext.getCore();
+    ((ThreadPoolParams)localObject).maxPooolSize = paramContext.getMaximum();
+    ((ThreadPoolParams)localObject).keepAliveTime = paramContext.getAliveTime();
     this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool((ThreadPoolParams)localObject);
     this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[0] = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
     this.jdField_a_of_type_ArrayOfJavaUtilConcurrentExecutor[1] = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
@@ -70,7 +70,7 @@ public class StoryBoss
   private Future a(Job paramJob, int paramInt1, int paramInt2, @Nullable FutureListener paramFutureListener, @Nullable Object paramObject)
   {
     paramJob = prepareWorker(paramJob, paramInt2, paramFutureListener, paramObject);
-    paramJob.addFutureListener(new mzq(this, paramJob));
+    paramJob.addFutureListener(new ndl(this, paramJob));
     if (paramInt1 == 0)
     {
       Dispatchers.get().dispatch(paramJob);

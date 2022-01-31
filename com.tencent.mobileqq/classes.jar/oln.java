@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class oln
-  implements DialogInterface.OnCancelListener
+class oln
+  implements Runnable
 {
-  public void onCancel(DialogInterface paramDialogInterface)
+  oln(olm paramolm) {}
+  
+  public void run()
   {
-    com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager.a = true;
+    this.a.a.c();
+    QQToast.a(this.a.a, "对不起，视频处理异常...", 0).a();
+    this.a.a.finish();
   }
 }
 

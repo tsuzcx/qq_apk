@@ -1,19 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.common.app.AppInterface;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
 public class anui
-  extends SimpleJob
+  implements Runnable
 {
-  public anui(EditVideoPartManager paramEditVideoPartManager, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString) {}
+  public anui(QIMMusicConfigManager paramQIMMusicConfigManager) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    StoryReportor.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    this.a.a();
+    this.a.a().notifyObservers(CaptureConfigUpdateObserver.class, 1, true, null);
   }
 }
 

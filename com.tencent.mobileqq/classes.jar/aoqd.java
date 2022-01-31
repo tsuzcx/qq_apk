@@ -1,14 +1,17 @@
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicSoundFile.ProgressListener;
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicWaveformManager;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
 
-public class aoqd
-  implements MusicSoundFile.ProgressListener
+class aoqd
+  implements Runnable
 {
-  public aoqd(MusicWaveformManager paramMusicWaveformManager) {}
+  aoqd(aopy paramaopy) {}
   
-  public boolean a(double paramDouble)
+  public void run()
   {
-    return MusicWaveformManager.a(this.a);
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.u();
+    }
   }
 }
 

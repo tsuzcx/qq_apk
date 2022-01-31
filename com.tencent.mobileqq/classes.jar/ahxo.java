@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import msf.msgcomm.msg_comm.Msg;
+import android.text.TextUtils;
+import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 
-public final class ahxo
+class ahxo
   implements Runnable
 {
-  public ahxo(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
+  ahxo(ahxn paramahxn) {}
   
   public void run()
   {
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.isDetached()) {}
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.c();
+    } while ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.b)) && (!this.a.jdField_a_of_type_Boolean));
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.b);
   }
 }
 

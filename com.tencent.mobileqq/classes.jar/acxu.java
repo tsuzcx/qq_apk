@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class acxu
-  extends acxm
+class acxu
+  implements FMDialogUtil.FMDialogInterface
 {
-  public acxu(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  acxu(acxs paramacxs, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void a()
   {
-    super(paramOnlineFileSessionWorker);
-    this.a = true;
-    this.b = true;
+    QfileBaseCloudFileTabView.e(this.jdField_a_of_type_Acxs.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
   
-  protected String a()
-  {
-    return "StateEnd";
-  }
+  public void b() {}
 }
 
 

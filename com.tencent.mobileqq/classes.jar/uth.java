@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
 
-public class uth
-  implements View.OnClickListener
+class uth
+  implements Runnable
 {
-  public uth(ColorView paramColorView) {}
+  uth(utg paramutg) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (ColorView.a(this.a) != null) {
-      ColorView.a(this.a).a();
-    }
+    this.a.a.a(false, this.a.a.b.b);
   }
 }
 

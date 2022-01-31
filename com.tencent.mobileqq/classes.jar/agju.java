@@ -1,10 +1,15 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class agju
-  extends agjr
+  implements Runnable
 {
-  void a(AppInterface paramAppInterface, Bundle paramBundle) {}
+  public agju(ScanTorchActivity paramScanTorchActivity) {}
+  
+  public void run()
+  {
+    QQToast.a(this.a.getApplicationContext(), "你已经参加过抽奖啦，不要太贪心哦。", 1).b(this.a.getTitleBarHeight());
+  }
 }
 
 

@@ -1,14 +1,19 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.troop.createNewTroop.SubCateListView;
 
 public class ajgy
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ajgy(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public ajgy(SubCateListView paramSubCateListView, View paramView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    PublishHomeWorkFragment.a(this.a).setVisibility(0);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
   }
 }
 

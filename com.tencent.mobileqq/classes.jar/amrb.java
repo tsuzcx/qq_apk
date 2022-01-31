@@ -1,15 +1,9 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import cooperation.qqreader.VipProxyRreLoadReaderProcess;
-import mqq.app.AppRuntime;
-
-public class amrb
-  implements Runnable
+public final class amrb
+  extends ThreadLocal
 {
-  public amrb(VipProxyRreLoadReaderProcess paramVipProxyRreLoadReaderProcess, AppRuntime paramAppRuntime) {}
-  
-  public void run()
+  protected char[] a()
   {
-    HtmlOffline.b("354", this.jdField_a_of_type_MqqAppAppRuntime, true, new amrc(this));
+    return new char[1024];
   }
 }
 

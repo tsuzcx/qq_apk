@@ -1,50 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.mobileqq.app.qim.QIMUndecideNotifyDialog;
+import java.util.ArrayList;
 
 public class aacf
-  implements ARPreSoResourceDownload.ARResourceDownloadCallback
+  implements View.OnClickListener
 {
-  public aacf(ArConfigService paramArConfigService) {}
+  public aacf(QIMUndecideNotifyDialog paramQIMUndecideNotifyDialog, String paramString) {}
   
-  public void a() {}
-  
-  public void a(long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    ArConfigService.b(this.a, (int)(100L * paramLong1 / paramLong2));
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a)) / 3;
-    if (!ArConfigService.d(this.a)) {
-      ArConfigService.a(this.a).post(new aacg(this, i));
-    }
-  }
-  
-  public void a(boolean paramBoolean, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    if (paramBoolean)
-    {
-      ArConfigService.c(this.a, true);
-      if ((ArConfigService.e(this.a)) && (ArConfigService.f(this.a)) && (ArConfigService.g(this.a))) {
-        ArConfigService.a(this.a).post(new aach(this));
-      }
-    }
-    while (ArConfigService.d(this.a)) {
-      return;
-    }
-    ArConfigService.a(this.a).post(new aaci(this));
-    ArConfigService.a(this.a, true);
+    ArrayList localArrayList = new ArrayList(1);
+    localArrayList.add(this.jdField_a_of_type_JavaLangString);
+    StoryPlayVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQimQIMUndecideNotifyDialog.a, paramView, localArrayList, null, 0, 120, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aacf
  * JD-Core Version:    0.7.0.1
  */

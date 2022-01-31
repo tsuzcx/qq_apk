@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ysl;
+import yzc;
 
 public class SpriteUtil
 {
@@ -451,7 +451,7 @@ public class SpriteUtil
       localSharedPreferences.edit().putInt("audio_tips_times" + localSpriteContext.b, i + 1).commit();
       paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
     } while (paramQQAppInterface == null);
-    paramQQAppInterface.post(new ysl());
+    paramQQAppInterface.post(new yzc());
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface)

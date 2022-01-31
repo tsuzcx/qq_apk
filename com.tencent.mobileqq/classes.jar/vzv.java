@@ -1,23 +1,16 @@
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.biz.anonymous.QQAnonymousDialog;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.app.HotChatHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class vzv
+public class vzv
   implements Runnable
 {
-  vzv(vzs paramvzs) {}
+  public vzv(HotChatPie paramHotChatPie) {}
   
   public void run()
   {
-    if (this.a.a.jdField_a_of_type_ComTencentBizAnonymousQQAnonymousDialog != null) {
-      this.a.a.jdField_a_of_type_ComTencentBizAnonymousQQAnonymousDialog.dismiss();
-    }
-    this.a.a.p(true);
-    TroopChatPie.d(this.a.a).postDelayed(new vzw(this), 100L);
-    if (!AnonymousChatHelper.a(this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      TroopChatPie.e(this.a.a).postDelayed(new vzx(this), 200L);
-    }
+    ((HotChatHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 

@@ -1,24 +1,28 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.data.EmoticonTab;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class aeqf
   implements Runnable
 {
-  public aeqf(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public aeqf(EmoticonManager paramEmoticonManager, String paramString) {}
   
   public void run()
   {
-    int i = (int)(this.a.b.getBottom() - this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() + 30.0F * this.a.getResources().getDisplayMetrics().density);
-    this.a.jdField_a_of_type_AndroidWidgetScrollView.smoothScrollBy(0, i);
+    EmoticonTab localEmoticonTab = (EmoticonTab)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a(EmoticonTab.class, this.jdField_a_of_type_JavaLangString);
+    if (localEmoticonTab != null) {}
+    for (localEmoticonTab.kandianHave = true;; localEmoticonTab.kandianHave = true)
+    {
+      EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, localEmoticonTab);
+      return;
+      localEmoticonTab = new EmoticonTab();
+      localEmoticonTab.epId = this.jdField_a_of_type_JavaLangString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,15 @@
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class lha
-  implements Runnable
+  implements ActionSheet.OnDismissListener
 {
-  public lha(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lha(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void onDismiss()
   {
-    ReadInJoyCameraCaptureActivity.a(this.a).setVisibility(0);
+    ReadInJoySettingActivity.b(this.a).cancel();
   }
 }
 

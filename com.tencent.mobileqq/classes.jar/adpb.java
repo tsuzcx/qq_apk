@@ -1,43 +1,28 @@
-import com.tencent.mobileqq.hiboom.HiBoomFontDrawer;
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.text.SpannableString;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class adpb
+public final class adpb
   implements Runnable
 {
-  public adpb(HiBoomFontDrawer paramHiBoomFontDrawer) {}
+  public adpb(CharSequence paramCharSequence, Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
   public void run()
   {
-    if (this.a.a == null) {
+    if ((this.jdField_a_of_type_JavaLangCharSequence instanceof String)) {
+      DialogUtil.b(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, (String)this.jdField_a_of_type_JavaLangCharSequence, 2131428127, 2131428128, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
+    }
+    while (!(this.jdField_a_of_type_JavaLangCharSequence instanceof SpannableString)) {
       return;
     }
-    int i = 0;
-    label13:
-    HiBoomTextView localHiBoomTextView;
-    if (i < this.a.a.size())
-    {
-      localHiBoomTextView = (HiBoomTextView)((WeakReference)this.a.a.get(i)).get();
-      if ((localHiBoomTextView != null) && (localHiBoomTextView.a == this.a.b)) {
-        break label89;
-      }
-      this.a.a.remove(i);
-      i -= 1;
-    }
-    for (;;)
-    {
-      i += 1;
-      break label13;
-      break;
-      label89:
-      localHiBoomTextView.a();
-    }
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangCharSequence, 2131428127, 2131428128, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adpb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 class tha
   implements Runnable
 {
-  tha(tgz paramtgz, List paramList) {}
+  tha(tgz paramtgz) {}
   
   public void run()
   {
-    ProfileLabelEditorActivity.a(this.jdField_a_of_type_Tgz.a, this.jdField_a_of_type_JavaUtilList);
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tha
  * JD-Core Version:    0.7.0.1
  */

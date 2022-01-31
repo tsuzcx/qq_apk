@@ -28,8 +28,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.IEventReceiver;
-import nnc;
-import nnd;
+import nrm;
+import nrn;
 
 public class SendVideoToFriendHelper
   implements IEventReceiver
@@ -60,7 +60,7 @@ public class SendVideoToFriendHelper
     }
     Object localObject = ForwardUtils.a(paramIntent);
     if ((((SessionInfo)localObject).jdField_a_of_type_Int == 1) && (((TroopGagMgr)paramQQAppInterface.getManager(47)).a(((SessionInfo)localObject).jdField_a_of_type_JavaLangString, true).jdField_a_of_type_Boolean)) {
-      QQToast.a(paramQQAppInterface.getApp(), 2131430273, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(paramQQAppInterface.getApp(), 2131430276, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
     }
     do
     {
@@ -199,7 +199,7 @@ public class SendVideoToFriendHelper
   public void a(StoryVideoItem paramStoryVideoItem)
   {
     this.jdField_a_of_type_Boolean = true;
-    ThreadManager.post(new nnd(this, paramStoryVideoItem), 10, null, false);
+    ThreadManager.post(new nrn(this, paramStoryVideoItem), 10, null, false);
   }
   
   public void a(StoryVideoItem paramStoryVideoItem, String paramString)
@@ -207,7 +207,7 @@ public class SendVideoToFriendHelper
     a();
     long l = System.currentTimeMillis();
     SLog.d("SendVideoToFriendHelper", "generateShareThumb start: %d.", new Object[] { Long.valueOf(l) });
-    ThreadManager.post(new nnc(this, l, paramStoryVideoItem, paramString), 10, null, false);
+    ThreadManager.post(new nrm(this, l, paramStoryVideoItem, paramString), 10, null, false);
   }
   
   public boolean a()

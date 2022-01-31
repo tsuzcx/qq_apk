@@ -1,28 +1,19 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agmt
-  extends FriendListObserver
+  implements Runnable
 {
-  public agmt(PortalManager paramPortalManager) {}
+  public agmt(ScanTorchActivity paramScanTorchActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead isSuccess = " + paramBoolean + ", mobileNumber = " + paramString);
-    }
-    if (this.a.a.containsKey(paramString)) {
-      ThreadManager.getSubThreadHandler().post(new agmu(this, paramString, paramBoolean));
-    }
+    ScanTorchActivity.b(this.a, true, ScanTorchActivity.d(this.a));
+    ScanTorchActivity.w(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmt
  * JD-Core Version:    0.7.0.1
  */

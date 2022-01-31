@@ -1,39 +1,15 @@
-import android.text.TextUtils;
-import cooperation.qzone.remote.IActionListener.Stub;
-import cooperation.qzone.remote.RecvMsg;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.WebEventListener;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.common.offline.HtmlOffline;
+import cooperation.qqreader.VipProxyRreLoadReaderProcess;
+import mqq.app.AppRuntime;
 
 public class amym
-  extends IActionListener.Stub
+  implements Runnable
 {
-  public amym(RemoteHandleManager paramRemoteHandleManager) {}
+  public amym(VipProxyRreLoadReaderProcess paramVipProxyRreLoadReaderProcess, AppRuntime paramAppRuntime) {}
   
-  public void onRecvFromMsg(RecvMsg paramRecvMsg)
+  public void run()
   {
-    if (paramRecvMsg == null) {}
-    for (;;)
-    {
-      return;
-      if ((!TextUtils.isEmpty(paramRecvMsg.getServiceCmd())) && (RemoteHandleManager.a(this.a) != null))
-      {
-        Iterator localIterator = RemoteHandleManager.a(this.a).iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (WeakReference)localIterator.next();
-          if (localObject != null)
-          {
-            localObject = (WebEventListener)((WeakReference)localObject).get();
-            if (localObject != null) {
-              ((WebEventListener)localObject).onWebEvent(paramRecvMsg.getServiceCmd(), paramRecvMsg.extraData);
-            }
-          }
-        }
-      }
-    }
+    HtmlOffline.b("354", this.jdField_a_of_type_MqqAppAppRuntime, true, new amyn(this));
   }
 }
 

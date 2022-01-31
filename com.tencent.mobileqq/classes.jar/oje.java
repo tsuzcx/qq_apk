@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
+import com.tencent.biz.qqstory.takevideo.filter.WeatherFilterData;
 
-public final class oje
-  implements ValueAnimator.AnimatorUpdateListener
+class oje
+  implements Runnable
 {
-  public oje(AnimatorFactory.AnimatorListener paramAnimatorListener) {}
+  oje(ojd paramojd, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
+    if (EditVideoFilterNeo.a(this.jdField_a_of_type_Ojd.a) != null) {
+      EditVideoFilterNeo.a(this.jdField_a_of_type_Ojd.a).a(this.jdField_a_of_type_Int);
     }
   }
 }

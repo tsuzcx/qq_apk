@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.armap.map;
 
-import abgx;
-import abha;
-import abhb;
-import abhc;
-import abhd;
-import abhe;
-import abhf;
-import abhg;
-import abhj;
-import abhk;
+import abny;
+import abob;
+import aboc;
+import abod;
+import aboe;
+import abof;
+import abog;
+import aboh;
+import abok;
+import abol;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -61,7 +61,7 @@ public class ARMapPOIStarDialog
   TextView jdField_a_of_type_AndroidWidgetTextView;
   URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   public ArMapInterface a;
-  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new abgx(this);
+  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new abny(this);
   public SanHuaView a;
   public String a;
   public boolean a;
@@ -84,7 +84,7 @@ public class ARMapPOIStarDialog
   public ARMapPOIStarDialog(Context paramContext, long paramLong1, long paramLong2, String paramString1, int paramInt, String paramString2, String paramString3, ArMapInterface paramArMapInterface)
   {
     super(paramContext, 2131624516);
-    setContentView(2130970226);
+    setContentView(2130970241);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Long = paramLong1;
     this.jdField_b_of_type_Long = paramLong2;
@@ -95,8 +95,8 @@ public class ARMapPOIStarDialog
     this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface = paramArMapInterface;
     paramArMapInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqArmapArMapObserver);
     b();
-    this.jdField_a_of_type_AndroidWidgetProgressBar.postDelayed(new abhb(this), 1500L);
-    ThreadManager.postImmediately(new abhc(this, paramArMapInterface, paramLong1, paramLong2), null, false);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.postDelayed(new aboc(this), 1500L);
+    ThreadManager.postImmediately(new abod(this, paramArMapInterface, paramLong1, paramLong2), null, false);
   }
   
   private void a(ItemInfo paramItemInfo, int paramInt)
@@ -108,29 +108,29 @@ public class ARMapPOIStarDialog
     {
       this.jdField_b_of_type_Boolean = true;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        ThreadManager.getUIHandler().postDelayed(new abhj(this), 500L);
+        ThreadManager.getUIHandler().postDelayed(new abok(this), 500L);
       }
       for (;;)
       {
         if (((ARMapActivity)this.jdField_a_of_type_AndroidContentContext).a != null) {
-          ((ARMapActivity)this.jdField_a_of_type_AndroidContentContext).a.queueEvent(new abhk(this, paramItemInfo));
+          ((ARMapActivity)this.jdField_a_of_type_AndroidContentContext).a.queueEvent(new abol(this, paramItemInfo));
         }
         this.jdField_c_of_type_Boolean = true;
         return;
         QQToast.a(this.jdField_a_of_type_AndroidContentContext, "数据异常，请稍候再试", 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
         this.jdField_b_of_type_Boolean = false;
         this.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842266);
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842301);
         this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
       }
     }
     if (QLog.isColorLevel()) {
       QLog.i("ARMapPOIStarDialog", 2, "itemInfo:" + paramItemInfo + " -- taskStatus:" + paramInt);
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131437312, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131437332, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
     this.jdField_b_of_type_Boolean = false;
     this.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842266);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842301);
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
   }
   
@@ -147,26 +147,26 @@ public class ARMapPOIStarDialog
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new abha(this, paramLong));
+    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new abob(this, paramLong));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("你已领取" + paramString);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369710));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131369720));
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131361926));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369714));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369717));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369690));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363978));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369712));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369709));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369711));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363562));
-    this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369716));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new abhd(this));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363828));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369713));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369724));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369727));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131369700));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364003));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369722));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369719));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369721));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363581));
+    this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369726));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new aboe(this));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363852));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369723));
     Object localObject1 = getWindow();
     WindowManager.LayoutParams localLayoutParams = ((Window)localObject1).getAttributes();
     localLayoutParams.width = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
@@ -206,7 +206,7 @@ public class ARMapPOIStarDialog
     localScaleAnimation.setDuration(500L);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new abhe(this));
+    localAnimationSet.setAnimationListener(new abof(this));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
   }
   
@@ -233,7 +233,7 @@ public class ARMapPOIStarDialog
     if ((paramList == null) || (paramList.size() == 0) || (paramPOIInfo == null))
     {
       if (isShowing()) {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131437312, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131437332, 1).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
       }
       if (QLog.isColorLevel()) {
         QLog.d("ARMapPOIStarDialog", 2, "bindData failed");
@@ -275,14 +275,14 @@ public class ARMapPOIStarDialog
         }
         this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramList);
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new abhg(this, paramPOIInfo, paramInt));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aboh(this, paramPOIInfo, paramInt));
     } while (paramInt == -1);
     if (paramInt == 0) {
       a(localItemInfo.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438769, new Object[] { this.jdField_c_of_type_JavaLangString }));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438792, new Object[] { this.jdField_c_of_type_JavaLangString }));
       return;
       if (paramInt == 1)
       {
@@ -292,7 +292,7 @@ public class ARMapPOIStarDialog
       paramList = "";
       break;
       label451:
-      localObject = new abhf(this, paramPOIInfo);
+      localObject = new abog(this, paramPOIInfo);
       this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject);
       break label360;
       a(localItemInfo.jdField_a_of_type_JavaLangString, paramPOIInfo.jdField_b_of_type_Long);

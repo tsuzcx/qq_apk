@@ -121,7 +121,7 @@ public class QQProgressNotifier
       if ((paramString != null) && (!"".equals(paramString.trim()))) {
         break label301;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(localActivity.getString(2131434453));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(localActivity.getString(2131434469));
     }
     for (;;)
     {
@@ -150,7 +150,7 @@ public class QQProgressNotifier
     if ((paramInt1 == 2) || (paramInt1 == 4) || (paramInt1 == 6))
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130838739);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130838748);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(true);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
       if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())
@@ -178,7 +178,7 @@ public class QQProgressNotifier
       paramOnCancelListener.sendMessageDelayed(paramString, l);
       return;
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130838750);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130838759);
       break;
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       break label427;
@@ -247,7 +247,7 @@ public class QQProgressNotifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQProgressNotifier
  * JD-Core Version:    0.7.0.1
  */

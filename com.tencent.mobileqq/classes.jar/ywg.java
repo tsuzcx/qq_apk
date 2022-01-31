@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.plusPanel.AppItemHandler;
+import com.tencent.mobileqq.apollo.plusPanel.data.PlusViewHolder;
+import com.tencent.mobileqq.apollo.plusPanel.view.PlusRecyclerViewAdapter;
+import com.tencent.widget.PopupMenuDialog;
 
-class ywg
-  implements Runnable
+public class ywg
+  implements View.OnClickListener
 {
-  ywg(ywf paramywf, ApolloSurfaceView paramApolloSurfaceView) {}
+  public ywg(PlusRecyclerViewAdapter paramPlusRecyclerViewAdapter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Ywf.a != 0L) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a(this.jdField_a_of_type_Ywf.a);
-    }
+    ((PlusViewHolder)((RecyclerView)paramView.getParent()).getChildViewHolder(paramView)).a.a();
+    PlusRecyclerViewAdapter.a(this.a).dismiss();
   }
 }
 

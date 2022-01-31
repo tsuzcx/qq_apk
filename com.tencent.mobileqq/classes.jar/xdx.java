@@ -1,71 +1,31 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
-import com.tencent.mobileqq.activity.qwallet.widget.RollNumberView;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.util.SurfaceViewUtil;
+import com.tencent.mobileqq.video.IMediaPlayer;
+import com.tencent.mobileqq.video.IMediaPlayer.OnPreparedListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class xdx
-  extends Handler
+  implements IMediaPlayer.OnPreparedListener
 {
-  WeakReference a;
+  public xdx(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public xdx(QzoneHbFragment paramQzoneHbFragment)
+  public void a(IMediaPlayer paramIMediaPlayer)
   {
-    this.a = new WeakReference(paramQzoneHbFragment);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    QzoneHbFragment localQzoneHbFragment = (QzoneHbFragment)this.a.get();
-    if (localQzoneHbFragment == null) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "mMediaPlayer onPrepared: ");
+    }
+    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
+    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid()))
     {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          case 102: 
-          default: 
-            return;
-          case 100: 
-            if (QLog.isColorLevel()) {
-              QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----1");
-            }
-            break;
-          }
-        } while ((QzoneHbFragment.a(localQzoneHbFragment) == null) || (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment))));
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QzoneHbFragment", 2, "MSG_UPDATE----in mModifyAmountBtn.setEnabled(false)");
-          }
-          double d = Double.parseDouble(QzoneHbFragment.a(localQzoneHbFragment));
-          QzoneHbFragment.a(localQzoneHbFragment).reset(d);
-          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
-          QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
-          QzoneHbFragment.a(localQzoneHbFragment).roll();
-          QzoneHbFragment.b(localQzoneHbFragment).setEnabled(false);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          paramMessage.printStackTrace();
-          return;
-        }
-      } while (TextUtils.isEmpty(QzoneHbFragment.a(localQzoneHbFragment)));
-      QzoneHbFragment.a(localQzoneHbFragment).setText(QzoneHbFragment.a(localQzoneHbFragment));
-      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(8);
-      QzoneHbFragment.a(localQzoneHbFragment).setVisibility(0);
-      QzoneHbFragment.b(localQzoneHbFragment).setEnabled(true);
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneHbFragment", 2, "MSG_ROLL_STOP AmountBtn.setEnabled(true)---");
+      FMToastUtil.a(2131437422);
+      return;
+    }
+    SurfaceViewUtil.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.n, this.a.o, this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.d(), this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.e());
+    paramIMediaPlayer.a(localSurfaceHolder);
   }
 }
 

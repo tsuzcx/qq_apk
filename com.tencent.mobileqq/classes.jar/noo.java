@@ -1,20 +1,15 @@
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
-public final class noo
+public class noo
   implements Runnable
 {
-  public noo(TVKPreloader.PreloadItem paramPreloadItem) {}
+  public noo(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode) {}
   
   public void run()
   {
-    Iterator localIterator = TVKPreloader.a().iterator();
-    while (localIterator.hasNext()) {
-      ((TVKPreloader.PreloadListener)localIterator.next()).c(this.a);
-    }
+    this.a.e = false;
+    this.a.a.setCurrentItem(this.a.b, false);
   }
 }
 

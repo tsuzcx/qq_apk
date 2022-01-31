@@ -1,24 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
 
-public class tcn
-  implements DialogInterface.OnClickListener
+class tcn
+  implements Runnable
 {
-  public tcn(NotificationActivity paramNotificationActivity) {}
+  tcn(tck paramtck) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    this.a.startActivity(paramDialogInterface.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
-    this.a.finish();
+    if (Leba.a(this.a.a) != null) {
+      Leba.a(this.a.a).e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tcn
  * JD-Core Version:    0.7.0.1
  */

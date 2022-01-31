@@ -1,40 +1,17 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
 
 public class ksa
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public ksa(AccountDetailActivity paramAccountDetailActivity) {}
+  public ksa(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, ksf paramksf, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2, RelativeLayout.LayoutParams paramLayoutParams3) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (this.a.r) {
-      return;
-    }
-    this.a.r = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.b.dismiss();
-      return;
-      this.a.l = false;
-      this.a.x();
-      if (((EcShopAssistantManager)this.a.a.getManager(87)).a(this.a.d)) {
-        ((EcshopReportHandler)this.a.a.a(88)).a(134243868, this.a.d, null, null, null, 2L, false);
-      }
-      com.tencent.mobileqq.activity.aio.AIOUtils.m = false;
-      if ("2290230341".equals(this.a.d)) {
-        ReportController.b(this.a.a, "CliOper", "", "", "0X80090E7", "0X80090E7", 0, 0, "", "", "", "");
-      }
-    }
+    this.jdField_a_of_type_Ksf.b.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_Ksf.c.setLayoutParams(this.b);
+    this.jdField_a_of_type_Ksf.d.setLayoutParams(this.c);
   }
 }
 

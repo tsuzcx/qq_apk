@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import android.view.View;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.util.AccessibilityUtil;
 
 public class oyh
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public oyh(MoveFileActivity paramMoveFileActivity) {}
+  public oyh(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    CustomAccessibilityDelegate localCustomAccessibilityDelegate = new CustomAccessibilityDelegate(this.a.d, this.a);
+    this.a.d.setAccessibilityDelegate(localCustomAccessibilityDelegate);
+    AccessibilityUtil.a(this.a.a, false);
   }
 }
 

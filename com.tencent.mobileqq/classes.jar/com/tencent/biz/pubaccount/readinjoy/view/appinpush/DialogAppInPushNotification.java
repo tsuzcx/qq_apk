@@ -10,9 +10,9 @@ import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 import com.tencent.image.URLDrawable;
-import mlk;
-import mll;
-import mlm;
+import mpc;
+import mpd;
+import mpe;
 
 public class DialogAppInPushNotification
   extends AppInPushNotification
@@ -28,11 +28,11 @@ public class DialogAppInPushNotification
   private void d()
   {
     this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidContentContext, 2131624716);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2130969600);
-    ImageView localImageView1 = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366940);
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366938);
-    ReadInJoyHeadImageView localReadInJoyHeadImageView = (ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366935);
-    ReadInJoyNickNameTextView localReadInJoyNickNameTextView = (ReadInJoyNickNameTextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366936);
+    this.jdField_a_of_type_AndroidAppDialog.setContentView(2130969596);
+    ImageView localImageView1 = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366936);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366934);
+    ReadInJoyHeadImageView localReadInJoyHeadImageView = (ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366939);
+    ReadInJoyNickNameTextView localReadInJoyNickNameTextView = (ReadInJoyNickNameTextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131366932);
     Button localButton = (Button)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367083);
     ImageView localImageView2 = (ImageView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367084);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
@@ -43,9 +43,9 @@ public class DialogAppInPushNotification
       localTextView.setText(this.b);
       localReadInJoyHeadImageView.setHeadImgByUin(this.f);
       localReadInJoyNickNameTextView.setText(this.e);
-      localButton.setOnClickListener(new mlk(this));
-      localImageView2.setOnClickListener(new mll(this));
-      localImageView2.setOnTouchListener(new mlm(this, localImageView2));
+      localButton.setOnClickListener(new mpc(this));
+      localImageView2.setOnClickListener(new mpd(this));
+      localImageView2.setOnTouchListener(new mpe(this, localImageView2));
       return;
       localImageView1.setVisibility(0);
       this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mLoadingDrawable = new ColorDrawable(-1513241);

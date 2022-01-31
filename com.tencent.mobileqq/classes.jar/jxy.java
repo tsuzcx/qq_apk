@@ -1,29 +1,22 @@
-import com.tencent.av.VideoController.GAudioFriends;
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class jxy
-  implements Comparator
+class jxy
+  implements View.OnLayoutChangeListener
 {
-  public jxy(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  jxy(jxx paramjxx) {}
   
-  public int a(VideoController.GAudioFriends paramGAudioFriends1, VideoController.GAudioFriends paramGAudioFriends2)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if ((paramGAudioFriends2.b) && (paramGAudioFriends1.b)) {
-      return paramGAudioFriends2.e - paramGAudioFriends1.e;
+    if (QLog.isColorLevel()) {
+      QLog.e("MemberPagerAdapter", 2, String.format("view : left[%s], top[%s], right[%s], bottom[%s], oldLeft[%s], oldTop[%s], oldRight[%s], oldBottom[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8) }));
     }
-    if ((!paramGAudioFriends2.b) && (!paramGAudioFriends1.b)) {
-      return paramGAudioFriends2.e - paramGAudioFriends1.e;
-    }
-    if ((paramGAudioFriends2.b) && (!paramGAudioFriends1.b)) {
-      return 1;
-    }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jxy
  * JD-Core Version:    0.7.0.1
  */

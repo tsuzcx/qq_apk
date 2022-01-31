@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 
-class tcg
-  implements Runnable
+public class tcg
+  extends FriendListObserver
 {
-  tcg(tcf paramtcf) {}
+  public tcg(Leba paramLeba) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a.a.a();
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((QZoneManagerImp)this.a.a.getManager(9) == null) {
+      return;
+    }
+    Leba.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tcg
  * JD-Core Version:    0.7.0.1
  */

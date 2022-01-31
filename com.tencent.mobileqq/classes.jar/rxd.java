@@ -1,19 +1,20 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
+import java.util.List;
 
-public final class rxd
-  implements DialogInterface.OnClickListener
+class rxd
+  implements Runnable
 {
-  public rxd(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, ChatActivityUtils.StartVideoListener paramStartVideoListener, Bundle paramBundle) {}
+  rxd(rxc paramrxc, List paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_a_of_type_AndroidOsBundle);
+    BaseChatPie.a(this.jdField_a_of_type_Rxc.a).b();
+    BaseChatPie.a(this.jdField_a_of_type_Rxc.a).c();
+    BaseChatPie.a(this.jdField_a_of_type_Rxc.a).a(this.jdField_a_of_type_Rxc.b);
+    BaseChatPie.a(this.jdField_a_of_type_Rxc.a).a(this.jdField_a_of_type_JavaUtilList);
+    BaseChatPie.a(this.jdField_a_of_type_Rxc.a).a(0);
   }
 }
 

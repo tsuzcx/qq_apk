@@ -1,22 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import java.util.List;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class mrg
-  extends Handler
+class mrg
+  implements Runnable
 {
-  public mrg(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  mrg(mrf parammrf) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    if (!mre.a(this.a.a))
     {
-    default: 
+      mre.a(this.a.a, mre.b(this.a.a));
       return;
     }
-    paramMessage = (List)paramMessage.obj;
-    ReadInJoyNewSearchActivity.a(this.a, paramMessage);
+    mre.a(this.a.a).setVisibility(8);
+    mre.a(this.a.a).setVisibility(8);
   }
 }
 

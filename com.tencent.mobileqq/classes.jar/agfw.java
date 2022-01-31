@@ -1,83 +1,32 @@
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.ar.IArFaceResourceListener;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.ARLocalControl;
-import com.tencent.mobileqq.ar.arengine.ARLocalFaceRecog;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
+import com.tencent.mobileqq.ocr.OcrCamera;
 
 public class agfw
-  implements IArFaceResourceListener
+  implements Camera.PreviewCallback
 {
-  public agfw(ScanTorchActivity paramScanTorchActivity) {}
+  public agfw(OcrCamera paramOcrCamera) {}
   
-  public void a(int paramInt)
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, String.format("onFaceDownloadSuccess type=%s", new Object[] { Integer.valueOf(paramInt) }));
+    if (paramArrayOfByte == null) {
+      return;
     }
-    switch (paramInt)
+    if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!OcrCamera.a(this.a)))
     {
-    }
-    for (;;)
-    {
-      if ((ScanTorchActivity.d(this.a)) && (ScanTorchActivity.e(this.a)) && (this.a.a != null) && (this.a.a.a != null) && (this.a.a.a.a != null) && (this.a.a.a.a.a != null)) {
-        this.a.a.a.a.a.a();
+      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      if ((this.a.e != 1) && (System.currentTimeMillis() - OcrCamera.a(this.a) > this.a.c))
+      {
+        OcrCamera.a(this.a, System.currentTimeMillis());
+        OcrCamera.a(this.a, paramArrayOfByte);
       }
-      ScanTorchActivity.e(this.a);
-      ScanTorchActivity.f(this.a);
-      return;
-      ScanTorchActivity.c(this.a, true);
-      ScanTorchActivity.d(this.a, false);
-      ScanTorchActivity.a(this.a, 100);
-      continue;
-      ScanTorchActivity.e(this.a, true);
-      ScanTorchActivity.f(this.a, false);
-      ScanTorchActivity.b(this.a, 100);
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, String.format("onFaceDownloadProcess type=%s process=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    }
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      ScanTorchActivity.e(this.a);
-      return;
-      ScanTorchActivity.a(this.a, paramInt2);
-      continue;
-      ScanTorchActivity.b(this.a, paramInt2);
-    }
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, String.format("onFaceDownloadError type=%s error=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    }
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      ScanTorchActivity.f(this.a);
-      return;
-      ScanTorchActivity.c(this.a, false);
-      ScanTorchActivity.d(this.a, false);
-      continue;
-      ScanTorchActivity.e(this.a, false);
-      ScanTorchActivity.f(this.a, false);
-    }
+    OcrCamera.a(this.a).addCallbackBuffer(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agfw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.upload.task.VipBaseUpsImageUploadTask;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
-public class uhd
-  extends VipBaseUpsImageUploadTask
+class uhd
+  implements Runnable
 {
-  public uhd(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
-  }
+  uhd(uhc paramuhc, Card paramCard) {}
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void run()
   {
-    switch (paramInt)
+    if (this.jdField_a_of_type_Uhc.a.isFinishing()) {}
+    CardHandler localCardHandler;
+    do
     {
-    default: 
-    case 1001: 
       do
       {
         return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
+        if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null) {
+          TroopRequestActivity.a(this.jdField_a_of_type_Uhc.a, this.jdField_a_of_type_ComTencentMobileqqDataCard);
+        }
+      } while ((this.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (this.jdField_a_of_type_ComTencentMobileqqDataCard.iQQLevel > 0));
+      localCardHandler = (CardHandler)this.jdField_a_of_type_Uhc.a.app.a(2);
+    } while (localCardHandler == null);
+    byte b = (byte)SharedPreUtils.aj(this.jdField_a_of_type_Uhc.a.getApplication(), this.jdField_a_of_type_Uhc.a.app.getCurrentAccountUin());
+    localCardHandler.a(this.jdField_a_of_type_Uhc.a.app.getCurrentAccountUin(), this.jdField_a_of_type_Uhc.a.b, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", 1L, 10004, new byte[] { 0 }, b);
   }
 }
 

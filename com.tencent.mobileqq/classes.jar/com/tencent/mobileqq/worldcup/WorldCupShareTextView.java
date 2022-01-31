@@ -75,7 +75,7 @@ public class WorldCupShareTextView
         k = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramString);
         i2 = a(this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt(null) * f3 + f2);
         if (k >= j) {
-          break label170;
+          break label193;
         }
         f4 = f1;
       }
@@ -86,9 +86,12 @@ public class WorldCupShareTextView
           setSingleLine(false);
           setMaxLines(k);
         }
+        paramString = getLayoutParams();
+        paramString.height = ((int)(237.0F * f4 / 209.0F));
+        setLayoutParams(paramString);
         setTextSize(0, f4);
         return;
-        label170:
+        label193:
         paramInt1 = (paramInt2 - n - i1) / i2;
         if (paramInt1 > i)
         {
@@ -98,11 +101,11 @@ public class WorldCupShareTextView
         }
         f1 -= 1.0F;
         if (f1 > this.c) {
-          break label227;
+          break label250;
         }
         f4 = this.c;
       }
-      label227:
+      label250:
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(f1);
     }
   }
@@ -132,7 +135,7 @@ public class WorldCupShareTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.worldcup.WorldCupShareTextView
  * JD-Core Version:    0.7.0.1
  */

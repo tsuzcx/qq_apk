@@ -1,24 +1,12 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
-
 public class aeur
-  implements Runnable
 {
-  public aeur(SmallVideoSendFragment paramSmallVideoSendFragment) {}
+  public int a;
+  public String a;
   
-  public void run()
+  public aeur(String paramString, int paramInt)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {
-      if (QLog.isColorLevel()) {
-        QLog.w("PublishActivity", 2, "Activity has been destroy.");
-      }
-    }
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.dismiss();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

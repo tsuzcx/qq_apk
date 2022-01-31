@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.util.Pair;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.app.MessageRoamManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.MessageRoamHandler;
+import java.util.Calendar;
+import mqq.os.MqqHandler;
 
-class zoi
+public class zoi
   implements Runnable
 {
-  zoi(zoh paramzoh, ChatMessage paramChatMessage) {}
+  public zoi(MessageRoamManager paramMessageRoamManager, Calendar paramCalendar) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Zoh.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.jdField_a_of_type_Zoh.jdField_a_of_type_Int, this.jdField_a_of_type_Zoh.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)this.jdField_a_of_type_JavaUtilCalendar.clone());
+    int i = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaLangString, ((Long)((Pair)localObject).first).longValue(), ((Long)((Pair)localObject).second).longValue());
+    if (i >= 8)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatHistoryForC2C.class);
+      ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(0), 0L);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaLangString, (Calendar)this.jdField_a_of_type_JavaUtilCalendar.clone(), true, 8 - i);
   }
 }
 

@@ -1,39 +1,40 @@
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.ark.ArkAiBubbleView;
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnFocusChangeListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.arcard.ARBlessWordFragment;
 
 public class aarw
-  implements Runnable
+  implements View.OnFocusChangeListener
 {
-  public aarw(ArkAiBubbleView paramArkAiBubbleView) {}
+  public aarw(ARBlessWordFragment paramARBlessWordFragment) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar == null)
+    this.a.a = paramBoolean;
+    TextView localTextView = ARBlessWordFragment.a(this.a);
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("ark.ai", 2, String.format("ArkAiBubbleView.mScrollBar == null: %h", new Object[] { this.a }));
+      paramView = "请输入20个字以内的祝福";
+      localTextView.setText(paramView);
+      paramView = ARBlessWordFragment.a(this.a);
+      if (!paramBoolean) {
+        break label57;
       }
-      this.a.c();
-      return;
     }
-    this.a.b = true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar.b())
+    label57:
+    for (int i = 8;; i = 0)
     {
-      this.a.c();
+      paramView.setVisibility(i);
       return;
+      paramView = "点击重新编辑";
+      break;
     }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setAnimationListener(this.a);
-    this.a.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aarw
  * JD-Core Version:    0.7.0.1
  */

@@ -131,7 +131,7 @@ public class PttInfoCollector
   
   private static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80059B1", "0X80059B1", paramInt, 0, "", "", "", "7.6.3");
+    ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80059B1", "0X80059B1", paramInt, 0, "", "", "", "7.6.8");
   }
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
@@ -141,7 +141,7 @@ public class PttInfoCollector
     }
     for (;;)
     {
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1D", "0X8005C1D", paramInt1, paramInt2, "", "", "", "7.6.3");
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1D", "0X8005C1D", paramInt1, paramInt2, "", "", "", "7.6.8");
       return;
     }
   }
@@ -188,7 +188,7 @@ public class PttInfoCollector
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1C", "0X8005C1C", i * 10 + paramInt1 * 100 + paramInt2, 0, "", "", "", "7.6.3");
+      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1C", "0X8005C1C", i * 10 + paramInt1 * 100 + paramInt2, 0, "", "", "", "7.6.8");
       return;
     }
   }
@@ -382,7 +382,7 @@ public class PttInfoCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.PttInfoCollector
  * JD-Core Version:    0.7.0.1
  */

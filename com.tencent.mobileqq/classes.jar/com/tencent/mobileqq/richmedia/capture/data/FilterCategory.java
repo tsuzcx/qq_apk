@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import ahhs;
+import ahmj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class FilterCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ahhs();
+  public static final Parcelable.Creator CREATOR = new ahmj();
   public int a;
   public String a;
   public List a;

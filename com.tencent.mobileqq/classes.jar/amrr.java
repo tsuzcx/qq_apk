@@ -1,25 +1,29 @@
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper;
+import cooperation.comic.jsp.QQComicDownloadObserverProxy;
+import cooperation.comic.ui.QQComicTabBarView;
+import cooperation.comic.utils.QQComicPluginBridge;
+import cooperation.comic.utils.QQComicRedTouchManager;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public final class amrr
+public class amrr
   implements Runnable
 {
-  public amrr(long paramLong) {}
+  public amrr(QQComicTabBarView paramQQComicTabBarView) {}
   
   public void run()
   {
-    try
-    {
-      QLog.i("QZoneHelper", 2, "QQ清空缓存数据时的回调 onQQClearLocalCache,uin=" + this.a);
-      LocalMultiProcConfig.putBool("qzone_force_refresh", true);
-      LocalMultiProcConfig.putBool("qzone_first_in", true);
-      QzoneOfflineCacheHelper.updataSmallGameLastCacheFinishTime(this.a, 0L);
-      return;
+    this.a.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
+    this.a.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager = ((QQComicRedTouchManager)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(212));
+    if (this.a.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager != null) {
+      this.a.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager.addObserver(this.a.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager$PluginRedTouchObserver);
     }
-    catch (Exception localException)
-    {
-      QLog.e("QZoneHelper", 1, "QQ清空缓存数据时的回调 error.", localException);
+    if (QQComicPluginBridge.a != null) {
+      QQComicPluginBridge.a.a(this.a.jdField_a_of_type_CooperationComicJspQQComicDownloadCountObserver);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewTabBarView", 2, "register observers");
     }
   }
 }

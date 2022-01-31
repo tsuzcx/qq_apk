@@ -1,20 +1,47 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.C2CMessageManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQHeadDownloadHandler;
 
 public class zsr
   implements Runnable
 {
-  public zsr(C2CMessageManager paramC2CMessageManager, MessageRecord paramMessageRecord) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int c;
+  int d;
+  int e;
+  int f;
+  
+  public zsr(QQHeadDownloadHandler paramQQHeadDownloadHandler, int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2, int paramInt6, long paramLong)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.e = paramInt5;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.f = paramInt6;
+    this.jdField_a_of_type_Long = paramLong;
+  }
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "doMsgRevokeRequest " + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getLogColorContent());
+    QQHeadDownloadHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQHeadDownloadHandler).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, 4, this.e, this.jdField_b_of_type_JavaLangString, this.f, this.jdField_a_of_type_Long);
+    String str = this.c + "_" + this.jdField_a_of_type_JavaLangString;
+    if (this.c == 32) {
+      str = "stranger_" + String.valueOf(this.jdField_b_of_type_Int) + "_" + this.jdField_a_of_type_JavaLangString;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageC2CMessageManager.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L);
+    for (;;)
+    {
+      QQHeadDownloadHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQHeadDownloadHandler).b(str, true);
+      return;
+      if (this.c == 16) {
+        str = "qcall_" + String.valueOf(this.jdField_b_of_type_Int) + "_" + this.jdField_a_of_type_JavaLangString;
+      }
+    }
   }
 }
 

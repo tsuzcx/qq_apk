@@ -1,22 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
-public class vad
-  extends AnimatorListenerAdapter
+class vad
+  implements Runnable
 {
-  public vad(HeartCombolEffectView paramHeartCombolEffectView) {}
+  vad(vac paramvac) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.setVisibility(8);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setVisibility(8);
+    this.a.a.playAnim();
   }
 }
 

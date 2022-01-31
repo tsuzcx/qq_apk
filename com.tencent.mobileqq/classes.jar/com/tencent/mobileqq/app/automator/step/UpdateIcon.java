@@ -21,9 +21,9 @@ public class UpdateIcon
     {
       return 7;
       localSharedPreferences = this.a.b.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 0);
-    } while (!localSharedPreferences.getBoolean("updateShortcutIcon7.6.3.3565", true));
+    } while (!localSharedPreferences.getBoolean("updateShortcutIcon7.6.8.3615", true));
     QQUtils.a(this.a.b, "sid");
-    localSharedPreferences.edit().putBoolean("updateShortcutIcon7.6.3.3565", false).commit();
+    localSharedPreferences.edit().putBoolean("updateShortcutIcon7.6.8.3615", false).commit();
     return 7;
   }
 }

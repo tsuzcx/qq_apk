@@ -1,22 +1,13 @@
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
-class oxj
-  extends oxo
+public class oxj
+  implements DialogInterface.OnClickListener
 {
-  oxj(oxe paramoxe, long paramLong, VideoCombineHelper.Callback paramCallback, File paramFile)
-  {
-    super(paramoxe.a);
-  }
+  public oxj(QRCardActivity paramQRCardActivity) {}
   
-  public void b(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.trace_video_combine", 2, "combineVideos total = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

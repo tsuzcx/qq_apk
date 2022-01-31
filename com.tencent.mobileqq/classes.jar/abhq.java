@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.armap.test.ARWebTestActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abhq
   implements Runnable
 {
-  public abhq(ARWebTestActivity paramARWebTestActivity) {}
+  public abhq(ARMapActivity paramARMapActivity) {}
   
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), "onPageFinished", 0).b(this.a.getTitleBarHeight());
+    ARMapActivity.j(this.a);
   }
 }
 

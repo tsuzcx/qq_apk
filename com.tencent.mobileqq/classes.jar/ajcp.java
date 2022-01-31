@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class ajcp
-  implements Runnable
+  implements VideoCompositeHelper.VideoCompositeCallBack
 {
-  ajcp(ajco paramajco, MessageRecord paramMessageRecord, Integer paramInteger) {}
+  ajcp(ajcn paramajcn) {}
   
-  public void run()
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    String str = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
-      str = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("key_aio_keyword");
+    if (paramInt != 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(null, this.a.jdField_a_of_type_Long);
+      return;
     }
-    this.jdField_a_of_type_Ajco.a.a(str, this.jdField_a_of_type_JavaLangInteger);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.b = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentMobileqqTribeVideoInfo.a = ((int)this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(paramString2, this.a.jdField_a_of_type_Long);
   }
 }
 

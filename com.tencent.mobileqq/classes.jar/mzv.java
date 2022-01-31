@@ -1,17 +1,19 @@
-import com.tencent.biz.qqstory.base.VideoServerInfoManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.net.Uri;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class mzv
-  implements INetEventHandler
+public final class mzv
+  implements Runnable
 {
-  private mzv(VideoServerInfoManager paramVideoServerInfoManager) {}
+  public mzv(Uri paramUri, String paramString) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void run()
   {
-    SLog.d("Q.qqstory.publish:VideoServerInfoManager", "network change");
-    this.a.b.set(true);
+    try
+    {
+      ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A68", "0X8006A68", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_JavaLangString, "", "");
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

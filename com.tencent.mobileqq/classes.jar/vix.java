@@ -1,34 +1,19 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder.Holder;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.QQStoryMsgHolder;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.StoryChatVideoView;
 
-public class vix
-  implements Animation.AnimationListener
+class vix
+  implements Runnable
 {
-  public vix(TextTranslationItemBuilder paramTextTranslationItemBuilder, TextTranslationItemBuilder.Holder paramHolder, CharSequence paramCharSequence) {}
+  vix(viw paramviw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.e.setText(this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.e.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.a);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.a.requestLayout();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.g = 0;
-    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.a.getLayoutParams();
-    paramAnimation.width = -2;
-    paramAnimation.height = -2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.a.setAnimation(null);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.g = 0;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder$Holder.e.startAnimation(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextTranslationItemBuilder.b);
+    Long localLong = (Long)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder.a.getTag();
+    if ((localLong == null) || (localLong.longValue() != this.a.jdField_a_of_type_Long)) {
+      return;
+    }
+    QQStoryItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder.a, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.b, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.c, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a);
   }
 }
 

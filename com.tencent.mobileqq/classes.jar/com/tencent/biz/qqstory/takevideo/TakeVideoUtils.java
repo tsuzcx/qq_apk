@@ -6,8 +6,8 @@ import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import ohs;
-import oht;
+import omh;
+import omi;
 
 @TargetApi(14)
 public class TakeVideoUtils
@@ -52,7 +52,7 @@ public class TakeVideoUtils
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(500L);
     localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new ohs(paramView));
+    localAlphaAnimation.setAnimationListener(new omh(paramView));
     paramView.setVisibility(8);
     paramView.startAnimation(localAlphaAnimation);
   }
@@ -87,7 +87,7 @@ public class TakeVideoUtils
       localAlphaAnimation.setStartOffset(500L);
     }
     localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new oht(paramView));
+    localAlphaAnimation.setAnimationListener(new omi(paramView));
     paramView.setVisibility(0);
     paramView.startAnimation(localAlphaAnimation);
   }

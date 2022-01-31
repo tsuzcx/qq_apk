@@ -1,45 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.widget.PullToZoomListView;
+import com.tencent.widget.UpSideDownDrawable;
 
 public class tdy
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public tdy(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public tdy(LikeRankingListActivity paramLikeRankingListActivity, Bitmap paramBitmap) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
-    {
-      paramContext = paramIntent.getStringExtra("uin");
-      NotifyPushSettingActivity.a(this.a, paramContext);
-    }
-    do
-    {
-      boolean bool;
-      do
-      {
-        return;
-        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
-          break;
-        }
-        paramContext = paramIntent.getStringExtra("uin");
-        bool = paramIntent.getBooleanExtra("configPCActive", false);
-      } while (!this.a.app.getAccount().equals(paramContext));
-      if (true == bool)
-      {
-        NotifyPushSettingActivity.g(this.a).setVisibility(0);
-        return;
-      }
-      NotifyPushSettingActivity.g(this.a).setVisibility(8);
-      return;
-    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
-    paramContext = paramIntent.getStringExtra("uin");
-    NotifyPushSettingActivity.b(this.a, paramContext);
+    UpSideDownDrawable localUpSideDownDrawable = new UpSideDownDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.getWidth(), this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.getHeight());
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.setImageDrawable(localUpSideDownDrawable);
+    localUpSideDownDrawable.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.a.a(false);
   }
 }
 

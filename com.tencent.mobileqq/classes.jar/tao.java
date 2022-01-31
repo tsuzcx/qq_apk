@@ -1,20 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.app.DiscussionHandler;
 
-public class tao
-  extends MqqHandler
+class tao
+  implements Runnable
 {
-  public tao(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
+  tao(tan paramtan) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    Bitmap localBitmap = this.a.a.a.a(this.a.a.f);
+    this.a.a.runOnUiThread(new tap(this, localBitmap));
   }
 }
 

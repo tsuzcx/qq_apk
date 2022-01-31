@@ -1,46 +1,25 @@
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.SwitchAccountActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.musicpendant.MusicPendantManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.MusicPendantView;
 
 public class alcs
-  implements View.OnTouchListener
+  implements Runnable
 {
-  protected GestureDetector.SimpleOnGestureListener a;
-  protected GestureDetector a;
-  View jdField_a_of_type_AndroidViewView;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public alcs(MusicPendantView paramMusicPendantView) {}
   
-  public alcs(SwitchAccountActivity paramSwitchAccountActivity)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new alct(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "action = " + i);
+    Card localCard = MusicPendantManager.a().a();
+    if ((localCard != null) && (localCard.autoPlayMusicPendant) && (!NetworkUtil.b(BaseApplicationImpl.getContext()))) {
+      MusicPendantManager.a().b();
     }
-    if (i == 0)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a == true) {
-        this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = false;
-      }
-    }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alcs
  * JD-Core Version:    0.7.0.1
  */

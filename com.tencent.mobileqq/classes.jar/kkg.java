@@ -1,50 +1,79 @@
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
-import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotRes;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.av.widget.ShareActionSheetBuilder;
+import com.tencent.common.config.AppSetting;
+import mqq.app.BaseActivity;
 
 public class kkg
-  implements Runnable
+  extends BaseAdapter
 {
-  public kkg(TroopRedTouchManager paramTroopRedTouchManager, oidb_0x791.GetRedDotRes paramGetRedDotRes) {}
+  private kkg(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
   
-  public void run()
+  public int getCount()
   {
-    int i = 0;
-    Object localObject1 = new File(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchManager.a.getApplication().getFilesDir(), "TroopRedTouchManager2_" + this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchManager.a.getCurrentAccountUin()).getAbsolutePath();
-    synchronized (this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchManager)
-    {
-      try
-      {
-        FileUtils.a((String)localObject1, this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.toByteArray(), false);
-        localObject1 = new StringBuilder("saveLocalFile==>");
-        while (i < this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.size())
-        {
-          ((StringBuilder)localObject1).append(TroopRedTouchManager.a((oidb_0x791.RedDotInfo)this.jdField_a_of_type_TencentImOidbCmd0x791Oidb_0x791$GetRedDotRes.rpt_msg_reddot_info.get(i)));
-          i += 1;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
+    return 5;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(ShareActionSheetBuilder.a(this.a)).inflate(2130971697, null);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchManager.b + "Q.qqstory.redPoint", 2, localObject2.toString());
+    int i;
+    int j;
+    switch (paramInt)
+    {
+    default: 
+      i = 2131435325;
+      j = 2130838337;
+      paramInt = 2131435349;
+    }
+    for (;;)
+    {
+      paramView = (ImageView)paramViewGroup.findViewById(2131366749);
+      TextView localTextView = (TextView)paramViewGroup.findViewById(2131364341);
+      paramView.setImageResource(j);
+      localTextView.setText(i);
+      if (AppSetting.b) {
+        paramViewGroup.setContentDescription(ShareActionSheetBuilder.a(this.a).getString(paramInt));
+      }
+      return paramViewGroup;
+      i = 2131435317;
+      j = 2130838341;
+      paramInt = 2131435347;
+      continue;
+      i = 2131435324;
+      j = 2130838342;
+      paramInt = 2131435348;
+      continue;
+      i = 2131435315;
+      j = 2130838345;
+      paramInt = 2131435346;
+      continue;
+      i = 2131435314;
+      j = 2130838339;
+      paramInt = 2131435345;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kkg
  * JD-Core Version:    0.7.0.1
  */

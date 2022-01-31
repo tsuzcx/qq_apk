@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
-import nze;
-import nzf;
+import odt;
+import odu;
 
 public class LocalVideoPusher
   implements Handler.Callback, ILocalVideoPusher
@@ -29,7 +29,7 @@ public class LocalVideoPusher
   public static final HashMap a;
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
-  private ContentObserver jdField_a_of_type_AndroidDatabaseContentObserver = new nze(this, new Handler());
+  private ContentObserver jdField_a_of_type_AndroidDatabaseContentObserver = new odt(this, new Handler());
   protected Handler a;
   private LocalVideoPusher.EventCallBack jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher$EventCallBack;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
@@ -290,7 +290,7 @@ public class LocalVideoPusher
       } while ((paramMessage == null) || (paramMessage.size() == 0));
       AddressHelper localAddressHelper = new AddressHelper();
       LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)paramMessage.get(0);
-      localAddressHelper.a(localLocalMediaInfo.latitude, localLocalMediaInfo.longitude, new nzf(this, paramMessage, localLocalMediaInfo));
+      localAddressHelper.a(localLocalMediaInfo.latitude, localLocalMediaInfo.longitude, new odu(this, paramMessage, localLocalMediaInfo));
       return true;
     } while (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher$EventCallBack == null);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher$EventCallBack.a((LocalVideoPusher.Response)paramMessage.obj);

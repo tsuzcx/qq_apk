@@ -1,20 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ahrr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ahrr(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  public ahrr(SplitEffectsCameraCaptureView paramSplitEffectsCameraCaptureView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
+    while (SplitEffectsCameraCaptureView.a(this.a).size() > 0)
+    {
+      String str = (String)SplitEffectsCameraCaptureView.a(this.a).get(0);
+      if (!TextUtils.isEmpty(str))
+      {
+        FileUtils.d(str);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.pubaccount.video.cameracapture.SplitEffectsCameraCaptureView", 2, "deleteLastSegment()：deleteFilePath=" + str);
+        }
+      }
+      SplitEffectsCameraCaptureView.a(this.a).remove(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahrr
  * JD-Core Version:    0.7.0.1
  */

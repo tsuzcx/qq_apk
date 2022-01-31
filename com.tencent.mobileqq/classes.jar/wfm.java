@@ -1,25 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class wfm
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public wfm(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  public wfm(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (!NetworkUtil.g(this.a.getApplicationContext())) {
-      QQToast.a(this.a, 2131437530, 1).a();
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      this.a.W_();
-    }
+    this.a.a.showOverScrollHeader();
   }
 }
 

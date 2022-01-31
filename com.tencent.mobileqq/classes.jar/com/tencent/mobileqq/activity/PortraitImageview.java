@@ -17,11 +17,11 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import com.tencent.mobileqq.activity.photo.RegionView;
-import tgd;
-import tge;
-import tgf;
-import tgg;
-import tgh;
+import tkx;
+import tky;
+import tkz;
+import tla;
+import tlb;
 
 @SuppressLint({"NewApi"})
 public class PortraitImageview
@@ -109,9 +109,9 @@ public class PortraitImageview
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_JavaLangRunnable = new tgd(this);
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new tgh(this));
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new tgg(this, null));
+    this.jdField_c_of_type_JavaLangRunnable = new tkx(this);
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, new tlb(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new tla(this, null));
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(2, null);
     }
@@ -224,7 +224,7 @@ public class PortraitImageview
   {
     paramFloat1 = (paramFloat1 - a()) / paramFloat4;
     float f1 = a();
-    post(new tgf(this, paramFloat4, System.currentTimeMillis(), f1, paramFloat1, paramFloat2, paramFloat3));
+    post(new tkz(this, paramFloat4, System.currentTimeMillis(), f1, paramFloat1, paramFloat2, paramFloat3));
   }
   
   public float b()
@@ -414,7 +414,7 @@ public class PortraitImageview
     }
     if (getWidth() <= 0)
     {
-      this.jdField_b_of_type_JavaLangRunnable = new tge(this, paramBitmap);
+      this.jdField_b_of_type_JavaLangRunnable = new tky(this, paramBitmap);
       return;
     }
     if (paramBitmap != null) {

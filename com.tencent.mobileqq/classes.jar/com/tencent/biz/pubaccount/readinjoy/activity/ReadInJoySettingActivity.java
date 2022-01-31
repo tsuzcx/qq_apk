@@ -45,20 +45,20 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.Calendar;
-import leg;
-import leh;
-import lei;
-import lej;
-import lek;
-import lel;
-import lem;
-import len;
-import leo;
-import lep;
-import leq;
-import ler;
-import les;
-import let;
+import lgu;
+import lgv;
+import lgw;
+import lgx;
+import lgy;
+import lgz;
+import lha;
+import lhb;
+import lhc;
+import lhd;
+import lhe;
+import lhf;
+import lhg;
+import lhh;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 
@@ -69,14 +69,14 @@ public class ReadInJoySettingActivity
   public static final String a;
   public int a;
   public Context a;
-  private DialogInterface.OnKeyListener jdField_a_of_type_AndroidContentDialogInterface$OnKeyListener = new lep(this);
+  private DialogInterface.OnKeyListener jdField_a_of_type_AndroidContentDialogInterface$OnKeyListener = new lhd(this);
   Intent jdField_a_of_type_AndroidContentIntent;
   public Resources a;
   public Handler a;
   View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private KandianMergeManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager;
-  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new leh(this);
+  private PublicAccountObserver jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver = new lgv(this);
   public QQAppInterface a;
   public QQProgressDialog a;
   private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
@@ -112,7 +112,7 @@ public class ReadInJoySettingActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.ar;
+    jdField_a_of_type_JavaLangString = AppConstants.as;
   }
   
   public ReadInJoySettingActivity()
@@ -163,15 +163,15 @@ public class ReadInJoySettingActivity
         label197:
         this.jdField_b_of_type_JavaLangString = PublicAccountConfigUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 3);
         Object localObject = a();
-        ((ImageView)findViewById(2131362719)).setImageDrawable((Drawable)localObject);
-        localObject = (TextView)findViewById(2131365450);
+        ((ImageView)findViewById(2131362724)).setImageDrawable((Drawable)localObject);
+        localObject = (TextView)findViewById(2131365455);
         ((TextView)localObject).setText(this.jdField_b_of_type_JavaLangString);
         ((TextView)localObject).setContentDescription(this.jdField_b_of_type_JavaLangString);
-        localObject = (TextView)findViewById(2131367299);
+        localObject = (TextView)findViewById(2131367300);
         ((TextView)localObject).setText(String.format("根据你的兴趣爱好，为你推荐最想看的资讯：新闻时事、娱乐八卦、科技动漫、文化历史……你想看的，尽在%s。", new Object[] { this.jdField_b_of_type_JavaLangString }));
         ((TextView)localObject).setContentDescription(String.format("根据你的兴趣爱好，为你推荐最想看的资讯：新闻时事、娱乐八卦、科技动漫、文化历史……你想看的，尽在%s。", new Object[] { this.jdField_b_of_type_JavaLangString }));
         e(this.jdField_g_of_type_Boolean);
-        localObject = (TextView)findViewById(2131367309);
+        localObject = (TextView)findViewById(2131367310);
         ((TextView)localObject).setText(String.format("开启后，将不再收到除订阅内容以外的推送提醒", new Object[] { this.jdField_b_of_type_JavaLangString }));
         ((TextView)localObject).setContentDescription(String.format("开启后，将不再收到除订阅内容以外的推送提醒", new Object[] { this.jdField_b_of_type_JavaLangString }));
         d();
@@ -179,25 +179,25 @@ public class ReadInJoySettingActivity
         b(this.jdField_c_of_type_Int);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getTitleBarHeight());
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(true);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(new leg(this));
-        this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131367301));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(new lgu(this));
+        this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131367302));
         this.jdField_b_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_f_of_type_Boolean);
-        this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new leq(this));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363357));
-        this.jdField_c_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131367314));
+        this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new lhe(this));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363374));
+        this.jdField_c_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131367315));
         this.jdField_c_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_h_of_type_Boolean);
-        this.jdField_c_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new ler(this));
+        this.jdField_c_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new lhf(this));
         if (this.jdField_h_of_type_Boolean)
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433554);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433568);
           label535:
-          this.jdField_b_of_type_AndroidViewView = findViewById(2131367300);
+          this.jdField_b_of_type_AndroidViewView = findViewById(2131367301);
           this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-          findViewById(2131367302).setOnClickListener(this);
+          findViewById(2131367303).setOnClickListener(this);
           this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { this.jdField_a_of_type_AndroidContentResResources.getString(2131428471), this.jdField_a_of_type_AndroidContentResResources.getString(2131428472), this.jdField_a_of_type_AndroidContentResResources.getString(2131428473) };
-          ((TextView)findViewById(2131367303)).setText(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]);
+          ((TextView)findViewById(2131367304)).setText(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_c_of_type_Int]);
           bool1 = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          this.jdField_a_of_type_AndroidViewView = findViewById(2131362703);
+          this.jdField_a_of_type_AndroidViewView = findViewById(2131362708);
           if (!bool1) {
             break label737;
           }
@@ -210,14 +210,14 @@ public class ReadInJoySettingActivity
           if (!ReadInJoyHelper.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
             break label756;
           }
-          localObject = findViewById(2131367312);
+          localObject = findViewById(2131367313);
           ((View)localObject).setVisibility(0);
-          ((View)localObject).setOnClickListener(new les(this));
+          ((View)localObject).setOnClickListener(new lhg(this));
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver);
           return;
           bool1 = false;
           break;
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433553);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433567);
           break label535;
           label737:
           if (this.jdField_a_of_type_AndroidViewView != null) {
@@ -225,17 +225,17 @@ public class ReadInJoySettingActivity
           }
         }
         label756:
-        findViewById(2131367306).setVisibility(0);
-        localObject = (TextView)findViewById(2131367307);
+        findViewById(2131367307).setVisibility(0);
+        localObject = (TextView)findViewById(2131367308);
         ((TextView)localObject).setText("仅接收我订阅内容的提醒");
         ((TextView)localObject).setContentDescription("仅接收我订阅内容的提醒");
-        this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131367308));
+        this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131367309));
         localObject = this.jdField_a_of_type_ComTencentWidgetSwitch;
         if (!this.jdField_d_of_type_Boolean) {}
         for (bool1 = bool2;; bool1 = false)
         {
           ((Switch)localObject).setChecked(bool1);
-          this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new let(this));
+          this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new lhh(this));
           break;
         }
       }
@@ -259,9 +259,9 @@ public class ReadInJoySettingActivity
     this.jdField_c_of_type_ComTencentWidgetActionSheet.a(this.jdField_a_of_type_AndroidContentResResources.getString(2131428472), 5, false);
     this.jdField_c_of_type_ComTencentWidgetActionSheet.a(this.jdField_a_of_type_AndroidContentResResources.getString(2131428473), 5, false);
     this.jdField_c_of_type_ComTencentWidgetActionSheet.d(paramInt);
-    this.jdField_c_of_type_ComTencentWidgetActionSheet.c(2131433015);
-    this.jdField_c_of_type_ComTencentWidgetActionSheet.a(new len(this));
-    this.jdField_c_of_type_ComTencentWidgetActionSheet.a(new leo(this));
+    this.jdField_c_of_type_ComTencentWidgetActionSheet.c(2131433029);
+    this.jdField_c_of_type_ComTencentWidgetActionSheet.a(new lhb(this));
+    this.jdField_c_of_type_ComTencentWidgetActionSheet.a(new lhc(this));
   }
   
   private void b(boolean paramBoolean)
@@ -302,9 +302,9 @@ public class ReadInJoySettingActivity
     this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a(str);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a("仅接收我订阅内容的提醒", 3);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new lej(this));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new lek(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433029);
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new lgx(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new lgy(this));
     this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnKeyListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnKeyListener);
   }
   
@@ -328,9 +328,9 @@ public class ReadInJoySettingActivity
     this.jdField_b_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
     this.jdField_b_of_type_ComTencentWidgetActionSheet.a(str);
     this.jdField_b_of_type_ComTencentWidgetActionSheet.a(String.format("停用%s", new Object[] { this.jdField_b_of_type_JavaLangString }), 3);
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131433015);
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new lel(this));
-    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new lem(this));
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131433029);
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new lgz(this));
+    this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new lha(this));
   }
   
   private void d(boolean paramBoolean)
@@ -357,8 +357,8 @@ public class ReadInJoySettingActivity
   
   private void e(boolean paramBoolean)
   {
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131367281);
-    TextView localTextView = (TextView)findViewById(2131367272);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131367282);
+    TextView localTextView = (TextView)findViewById(2131367273);
     if (paramBoolean)
     {
       localLinearLayout.setVisibility(0);
@@ -390,7 +390,7 @@ public class ReadInJoySettingActivity
     {
       this.leftView.setTextColor(-14408926);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130845433);
+      this.leftView.setBackgroundResource(2130845514);
       if (this.centerView != null) {
         this.centerView.setTextColor(-16777216);
       }
@@ -420,7 +420,7 @@ public class ReadInJoySettingActivity
   
   protected void a(int paramInt)
   {
-    this.jdField_b_of_type_AndroidViewView.postDelayed(new lei(this, paramInt), 500L);
+    this.jdField_b_of_type_AndroidViewView.postDelayed(new lgw(this, paramInt), 500L);
   }
   
   public void a(boolean paramBoolean)
@@ -442,7 +442,7 @@ public class ReadInJoySettingActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130969649);
+    setContentView(2130969645);
     this.jdField_a_of_type_AndroidContentIntent = getIntent();
     b();
     a();
@@ -494,10 +494,10 @@ public class ReadInJoySettingActivity
   {
     switch (paramView.getId())
     {
-    case 2131367301: 
+    case 2131367302: 
     default: 
       return;
-    case 2131367300: 
+    case 2131367301: 
       this.jdField_i_of_type_Boolean = true;
       ReadInJoyHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       ReadInJoyActivityHelper.a(this);

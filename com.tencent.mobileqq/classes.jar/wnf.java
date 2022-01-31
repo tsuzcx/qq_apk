@@ -1,29 +1,56 @@
-import com.tencent.device.devicemgr.SmartDeviceObserver;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class wnf
-  extends SmartDeviceObserver
+  implements TextWatcher
 {
-  public wnf(DeviceFragment paramDeviceFragment) {}
+  public wnf(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void a(ArrayList paramArrayList)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.a.e)
+    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetImageButton;
+    if (str.equals("")) {}
+    for (int i = 8;; i = 0)
     {
-      this.a.e = false;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener.a(2, true, null);
+      paramEditable.setVisibility(i);
+      if (this.a.f != ClassificationSearchActivity.c) {
+        break;
       }
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter == null) {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getResources().getString(2131433029));
+      if (AppSetting.b) {
+        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.jdField_a_of_type_AndroidWidgetButton.getText().toString());
+      }
+      if ((str.equals("")) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment != null))
+      {
+        if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d)) {
+          break label219;
+        }
+        ClassificationSearchActivity.a(this.a);
+      }
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.a = ((ArrayList)paramArrayList.clone());
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.notifyDataSetChanged();
+    Button localButton = this.a.jdField_a_of_type_AndroidWidgetButton;
+    if (!str.equals("")) {}
+    for (paramEditable = this.a.getResources().getString(2131433974);; paramEditable = this.a.getResources().getString(2131433029))
+    {
+      localButton.setText(paramEditable);
+      break;
+    }
+    label219:
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

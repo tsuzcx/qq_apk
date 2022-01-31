@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.armap.ARTreasurePlayControl;
-import com.tencent.mobileqq.armap.JniCommon;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
+import com.tencent.util.WeakReferenceHandler;
 
 public class abcd
-  implements Runnable
+  implements abcy
 {
-  public abcd(ARTreasurePlayControl paramARTreasurePlayControl, int paramInt) {}
+  public abcd(ArkLocalAppMgr paramArkLocalAppMgr) {}
   
-  public void run()
+  public void a(ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, Object paramObject)
   {
-    JniCommon.nativeSwitchMode(this.jdField_a_of_type_Int);
+    paramObject = (abcs)paramObject;
+    paramObject.a.post(new abce(this, paramUpdateAppByNameTask, paramObject));
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.businessCard.views;
 
-import abow;
-import abox;
-import aboy;
+import abvx;
+import abvy;
+import abvz;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -113,8 +113,8 @@ public class BusinessCardViewScroller
       this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "stackScroll", new float[] { paramFloat1, paramFloat2 });
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(paramInt);
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(jdField_a_of_type_ComTencentMobileqqBusinessCardHelpersPathInterpolatorDonut);
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addUpdateListener(new abow(this));
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new abox(this, paramRunnable));
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addUpdateListener(new abvx(this));
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new abvy(this, paramRunnable));
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
       return;
     }
@@ -127,20 +127,20 @@ public class BusinessCardViewScroller
       QLog.d("BusinessCard", 2, "scrollToStickPosition direction:" + paramInt);
     }
     if (paramInt == c) {}
-    aboy localaboy;
+    abvz localabvz;
     do
     {
       return;
-      localaboy = null;
+      localabvz = null;
       if (paramInt == jdField_a_of_type_Int) {
-        localaboy = new aboy(this, paramInt);
+        localabvz = new abvz(this, paramInt);
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller$DeckViewScrollerCallbacks == null);
     float f = this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardViewScroller$DeckViewScrollerCallbacks.a(a(), paramInt, false);
     if (paramInt == jdField_a_of_type_Int) {}
     for (paramInt = e - d;; paramInt = e)
     {
-      a(a(), f + a(), localaboy, paramInt);
+      a(a(), f + a(), localabvz, paramInt);
       return;
     }
   }

@@ -1,25 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.qphone.base.util.QLog;
 
-class afca
-  implements Runnable
+public class afca
+  implements DialogInterface.OnClickListener
 {
-  afca(afbz paramafbz, boolean paramBoolean) {}
+  public afca(ShortVideoCommentsView paramShortVideoCommentsView, Activity paramActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Afbz.a, NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Afbz.a), false, false);
-      return;
+    NearbyUtils.a(this.jdField_a_of_type_AndroidAppActivity, 302);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
     }
-    QQToast.a(this.jdField_a_of_type_Afbz.a.getActivity(), 1, "播放失败", 0).b(this.jdField_a_of_type_Afbz.a.getActivity().getTitleBarHeight());
-    NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Afbz.a).setVisibility(0);
-    NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_Afbz.a).setVisibility(0);
-    NearbyAuthVideoPlayerFragment.b(this.jdField_a_of_type_Afbz.a).setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a, "playpage_phone_clk");
   }
 }
 

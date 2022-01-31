@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class aces
-  implements WebProcessManager.WebProcessStartListener
+public class aces
+  implements Runnable
 {
-  aces(acer paramacer) {}
+  public aces(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean) {
-      this.a.a.a.a();
+    if (HotChatFlashPicActivity.a(this.a)) {
+      HotChatFlashPicActivity.c(this.a, HotChatFlashPicActivity.d(this.a));
     }
+    HotChatFlashPicActivity.a(this.a).set(false);
   }
 }
 

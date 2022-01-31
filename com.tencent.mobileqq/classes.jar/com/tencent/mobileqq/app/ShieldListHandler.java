@@ -64,13 +64,13 @@ public class ShieldListHandler
   ShieldListHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getApplication().getString(2131436429);
-    this.jdField_b_of_type_JavaLangString = paramQQAppInterface.getApplication().getString(2131436430);
-    this.c = paramQQAppInterface.getApplication().getString(2131436431);
-    this.d = paramQQAppInterface.getApplication().getString(2131436434);
-    this.e = paramQQAppInterface.getApplication().getString(2131436432);
-    this.f = paramQQAppInterface.getApplication().getString(2131436433);
-    this.g = paramQQAppInterface.getApplication().getString(2131436435);
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getApplication().getString(2131436449);
+    this.jdField_b_of_type_JavaLangString = paramQQAppInterface.getApplication().getString(2131436450);
+    this.c = paramQQAppInterface.getApplication().getString(2131436451);
+    this.d = paramQQAppInterface.getApplication().getString(2131436454);
+    this.e = paramQQAppInterface.getApplication().getString(2131436452);
+    this.f = paramQQAppInterface.getApplication().getString(2131436453);
+    this.g = paramQQAppInterface.getApplication().getString(2131436455);
   }
   
   private int a()

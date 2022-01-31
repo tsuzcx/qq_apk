@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.model;
 
-import aehm;
-import aehn;
-import aeho;
-import aehp;
-import aehr;
+import aepw;
+import aepx;
+import aepy;
+import aepz;
+import aeqb;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -73,7 +73,7 @@ public class ChatBackgroundManager
   public static String c;
   public LruCache a;
   public QQAppInterface a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new aehm(this, "param_WIFIFontDownloadFlow", "param_XGFontDownloadFlow");
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new aepw(this, "param_WIFIFontDownloadFlow", "param_XGFontDownloadFlow");
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory;
   public IPCDownloadListener a;
   String jdField_a_of_type_JavaLangString;
@@ -81,9 +81,9 @@ public class ChatBackgroundManager
   
   static
   {
-    jdField_b_of_type_JavaLangString = AppConstants.bK + "ChatBgJson.txt";
+    jdField_b_of_type_JavaLangString = AppConstants.bL + "ChatBgJson.txt";
     jdField_a_of_type_Int = 1;
-    jdField_a_of_type_AndroidOsHandler = new aehr(BaseApplication.getContext().getMainLooper());
+    jdField_a_of_type_AndroidOsHandler = new aeqb(BaseApplication.getContext().getMainLooper());
   }
   
   public ChatBackgroundManager(QQAppInterface paramQQAppInterface)
@@ -135,9 +135,9 @@ public class ChatBackgroundManager
   public static String a(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
-      return AppConstants.bK + paramString + ".jpg";
+      return AppConstants.bL + paramString + ".jpg";
     }
-    return AppConstants.aJ + "custom_background/" + paramString;
+    return AppConstants.aK + "custom_background/" + paramString;
   }
   
   private Vector a(Context paramContext, SessionInfo paramSessionInfo, String paramString)
@@ -157,7 +157,7 @@ public class ChatBackgroundManager
       }
     }
     this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, new Vector(5));
-    Object localObject = new aeho(this, paramContext);
+    Object localObject = new aepy(this, paramContext);
     if (QLog.isColorLevel()) {
       QLog.d("ChatBackgroundManager", 2, "Background Path=" + paramString + ", start extract background theme color.");
     }
@@ -179,7 +179,7 @@ public class ChatBackgroundManager
     }
     for (;;)
     {
-      ThreadManager.executeOnFileThread(new aehp(this, paramString, paramContext, bool1, (ChatBackgroundManager.BgThemeColorExtractListener)localObject));
+      ThreadManager.executeOnFileThread(new aepz(this, paramString, paramContext, bool1, (ChatBackgroundManager.BgThemeColorExtractListener)localObject));
       return null;
       paramSessionInfo = ImageUtil.b(paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       bool2 = true;
@@ -444,7 +444,7 @@ public class ChatBackgroundManager
         break label153;
       }
       str = paramString.substring(0, i + 1);
-      if (!AppConstants.bK.equals(str)) {
+      if (!AppConstants.bL.equals(str)) {
         break;
       }
       str = paramString.substring(i + 1);
@@ -820,7 +820,7 @@ public class ChatBackgroundManager
     jdField_c_of_type_Int = 0;
     jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     jdField_c_of_type_JavaLangString = null;
-    paramQQAppInterface.a(new aehn(this, paramString, paramQQAppInterface));
+    paramQQAppInterface.a(new aepx(this, paramString, paramQQAppInterface));
   }
   
   public void a(ChatBackgroundInfo paramChatBackgroundInfo, String paramString)

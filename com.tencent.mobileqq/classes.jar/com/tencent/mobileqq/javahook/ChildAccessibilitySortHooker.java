@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.javahook;
 
-import advs;
+import aeec;
 
 public class ChildAccessibilitySortHooker
 {
-  private static advs a = new advs(null);
+  private static aeec a = new aeec(null);
 }
 
 

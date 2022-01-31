@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aijj;
-import aijk;
-import aijl;
+import aioe;
+import aiof;
+import aiog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -53,7 +53,7 @@ public class StructMsgItemLayoutNew2
   
   public StructMsgItemLayoutNew2()
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new aijj(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new aioe(this);
   }
   
   public static String a(AbsShareMsg paramAbsShareMsg, String paramString)
@@ -208,20 +208,20 @@ public class StructMsgItemLayoutNew2
   
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    Object localObject = new aijl(this);
+    Object localObject = new aiog(this);
     Resources localResources = paramContext.getResources();
     View localView;
     int i;
     label122:
     int j;
-    if ((paramView != null) && ((paramView instanceof RelativeLayout)) && (paramView.findViewById(2131365670) != null) && ((paramView.getTag() instanceof aijl)))
+    if ((paramView != null) && ((paramView instanceof RelativeLayout)) && (paramView.findViewById(2131365675) != null) && ((paramView.getTag() instanceof aiog)))
     {
-      localObject = (aijl)paramView.getTag();
+      localObject = (aiog)paramView.getTag();
       localView = paramView;
       paramView = (View)localObject;
       a();
       boolean bool = paramBundle.getBoolean("isSend", true);
-      paramBundle = (BubbleViewLayout)localView.findViewById(2131365670);
+      paramBundle = (BubbleViewLayout)localView.findViewById(2131365675);
       i = 19;
       if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgServiceID != 114) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgServiceID != 116)) {
         break label885;
@@ -250,7 +250,7 @@ public class StructMsgItemLayoutNew2
       paramBundle.setMargins(AIOUtils.a(18.0F, localResources), 0, 0, 0);
       paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(AIOUtils.a(19.5F, localResources), 0, AIOUtils.a(10.0F, localResources), 0);
       label313:
-      paramBundle = localResources.getDrawable(2130846093);
+      paramBundle = localResources.getDrawable(2130846175);
       if (TextUtils.isEmpty(this.v)) {
         break label1166;
       }
@@ -313,20 +313,20 @@ public class StructMsgItemLayoutNew2
       }
       paramView.jdField_b_of_type_AndroidWidgetTextView.setText(new QQTextBuilder(paramBundle, 3, 15));
       paramView.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      paramContext = new aijk(this, paramContext, new String(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgActionData), this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgUrl);
+      paramContext = new aiof(this, paramContext, new String(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgActionData), this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.mMsgUrl);
       paramView.c.setOnClickListener(paramContext);
       paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramContext);
       return localView;
-      localView = LayoutInflater.from(paramContext).inflate(2130969227, null);
-      ((aijl)localObject).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131364477));
-      ((aijl)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363378));
-      ((aijl)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131363527));
-      ((aijl)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365670));
-      ((aijl)localObject).jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365671));
-      ((aijl)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365672));
-      ((aijl)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365673));
-      ((aijl)localObject).c = ((RelativeLayout)localView.findViewById(2131365674));
-      ((aijl)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365675));
+      localView = LayoutInflater.from(paramContext).inflate(2130969225, null);
+      ((aiog)localObject).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131364504));
+      ((aiog)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363397));
+      ((aiog)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131363546));
+      ((aiog)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365675));
+      ((aiog)localObject).jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365676));
+      ((aiog)localObject).jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365677));
+      ((aiog)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365678));
+      ((aiog)localObject).c = ((RelativeLayout)localView.findViewById(2131365679));
+      ((aiog)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365680));
       localView.setTag(localObject);
       paramView = (View)localObject;
       break;

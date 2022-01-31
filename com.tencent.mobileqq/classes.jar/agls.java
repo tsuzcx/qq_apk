@@ -1,39 +1,21 @@
-import com.tencent.mobileqq.portal.ConversationHongBao;
-import com.tencent.widget.HongBaoListView;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class agls
-  implements Runnable
+  implements ARTipsManager.ButtonClickListener
 {
-  public agls(ConversationHongBao paramConversationHongBao) {}
+  public agls(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.a.getScrollY() == 0) {}
-    for (;;)
-    {
-      return;
-      if (this.a.d == 4)
-      {
-        this.a.a.setSpringbackOffset(-this.a.b);
-        if (Math.abs(this.a.a.getScrollY() + this.a.b) > this.a.b * 1.0F / 13.0F) {
-          this.a.a.springBackTo(-this.a.b);
-        }
-      }
-      while (!this.a.a.m)
-      {
-        this.a.a(false);
-        return;
-        this.a.a.setSpringbackOffset(0);
-        if (this.a.a.getScrollY() != 0) {
-          this.a.a.springBackTo(0);
-        }
-      }
-    }
+    ScanTorchActivity.p(this.a);
+    ReportController.b(null, "dc00898", "", "", "0X80085B2", "0X80085B2", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agls
  * JD-Core Version:    0.7.0.1
  */

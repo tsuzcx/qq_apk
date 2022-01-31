@@ -1,96 +1,37 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.TroopHomeworkHelper;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import cooperation.qzone.remote.IServiceHandler.Stub;
+import cooperation.qzone.remote.RemoteServiceProxy;
+import cooperation.qzone.remote.SendMsg;
 
 public class anfv
-  implements Runnable
+  implements ServiceConnection
 {
-  private anfw jdField_a_of_type_Anfw;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
+  public anfv(RemoteServiceProxy paramRemoteServiceProxy) {}
   
-  public anfv(TroopHWJsPlugin paramTroopHWJsPlugin, anfw paramanfw, HashMap paramHashMap)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.jdField_a_of_type_Anfw = paramanfw;
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
+    }
+    this.a.serviceHandler = IServiceHandler.Stub.asInterface(paramIBinder);
+    if (RemoteServiceProxy.access$000(this.a) != null)
+    {
+      paramComponentName = new SendMsg("cmd.registerListener");
+      paramComponentName.actionListener = RemoteServiceProxy.access$000(this.a);
+      this.a.sendMsg(paramComponentName);
+    }
+    this.a.onBaseServiceConnected();
   }
   
-  public void run()
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    Context localContext = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.mRuntime.a().getApplicationContext();
-    File localFile = new File(TroopHWJsPlugin.a);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Map.Entry)localIterator.next();
-      int i = ((Integer)((Map.Entry)localObject).getKey()).intValue();
-      localObject = (String)((Map.Entry)localObject).getValue();
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopHWJsPlugin", 2, "compressVideo, path = " + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        Bitmap localBitmap;
-        String str;
-        int j;
-        try
-        {
-          localBitmap = TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, i, (String)localObject);
-          str = localFile.getAbsolutePath() + new File((String)localObject).getName();
-          this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(i, 0.05F);
-          j = TroopHomeworkHelper.a(localContext, (String)localObject, str);
-          this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(i, 0.1F);
-          if (j != 1) {
-            break label298;
-          }
-          localObject = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, i, (String)localObject, localBitmap, this.jdField_a_of_type_Anfw, 2);
-          this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b.put(Integer.valueOf(i), localObject);
-          ((TroopHWJsPlugin.UploadMediaEntry)localObject).a();
-        }
-        catch (Exception localException)
-        {
-          QLog.e("TroopHWJsPlugin", 2, "compressVideo, Exception happened!", localException);
-          TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin).sendEmptyMessage(0);
-        }
-        continue;
-        label298:
-        TroopHWJsPlugin.UploadMediaEntry localUploadMediaEntry;
-        if ((j == 0) && (new File(str).exists()))
-        {
-          localUploadMediaEntry = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, i, str, localBitmap, this.jdField_a_of_type_Anfw, 2);
-          this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b.put(Integer.valueOf(i), localUploadMediaEntry);
-          localUploadMediaEntry.a();
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("TroopHWJsPlugin", 2, "CompressVideoJob failed:" + j);
-          }
-          localUploadMediaEntry = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, i, localUploadMediaEntry, localBitmap, this.jdField_a_of_type_Anfw, 2);
-          this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.b.put(Integer.valueOf(i), localUploadMediaEntry);
-          localUploadMediaEntry.a();
-        }
-      }
-      else
-      {
-        TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin).sendEmptyMessage(4);
-        QLog.e("TroopHWJsPlugin", 2, "compressVideo,video empty!");
-      }
-    }
+    this.a.serviceHandler = null;
   }
 }
 

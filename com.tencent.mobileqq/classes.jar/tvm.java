@@ -1,58 +1,80 @@
-import android.os.Handler;
-import android.os.Message;
-import com.etrump.mixlayout.FontManager;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.VasExtensionObserver;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class tvm
-  extends DownloadListener
+  extends VasExtensionObserver
 {
-  public tvm(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public tvm(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  protected void d(boolean paramBoolean, Object paramObject)
   {
+    paramObject = (Bundle)paramObject;
+    long l = paramObject.getLong("pendantId");
+    String str = paramObject.getString("uin");
     if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + paramDownloadTask);
+      QLog.d("Q.BabyQ", 2, "handlePendantAuth isSuccess:" + paramBoolean + " pendantId:" + l + " uin:" + str);
     }
-    super.onCancel(paramDownloadTask);
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    super.onDone(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + paramDownloadTask);
-    }
-    if (paramDownloadTask.b()) {}
-    do
-    {
+    if ((l == -1L) || (str == null)) {
       return;
-      if (paramDownloadTask.a() == -1)
-      {
-        paramDownloadTask = new Message();
-        paramDownloadTask.what = 17;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramDownloadTask);
-        return;
-      }
-      paramDownloadTask = this.a.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(this.a.d);
-    } while (paramDownloadTask == null);
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = paramDownloadTask;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + paramDownloadTask);
     }
-    return super.onStart(paramDownloadTask);
+    if (paramBoolean)
+    {
+      FriendsManager localFriendsManager = (FriendsManager)this.a.app.getManager(50);
+      ExtensionInfo localExtensionInfo = localFriendsManager.a(str);
+      paramObject = localExtensionInfo;
+      if (localExtensionInfo == null)
+      {
+        paramObject = new ExtensionInfo();
+        paramObject.uin = str;
+      }
+      paramObject.pendantId = l;
+      paramObject.timestamp = System.currentTimeMillis();
+      localFriendsManager.a(paramObject);
+      if (!TextUtils.isEmpty(this.a.f)) {
+        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      }
+      this.a.finish();
+      return;
+    }
+    int i = paramObject.getInt("result");
+    if (NetworkUtil.d(this.a))
+    {
+      paramObject = "4";
+      switch (i)
+      {
+      default: 
+        label225:
+        i = -1;
+      }
+    }
+    for (;;)
+    {
+      if ((i != -1) && (QLog.isColorLevel())) {
+        QLog.e("Q.BabyQ", 2, "handlePendantAuth error:" + i + paramObject);
+      }
+      QQToast.a(this.a.app.getApp(), 1, "头像挂件使用失败", 0).a();
+      break;
+      paramObject = "3";
+      break label225;
+      i = 2131436930;
+      continue;
+      paramObject = "0";
+      i = 2131436931;
+      continue;
+      paramObject = "1";
+      i = 2131436932;
+      continue;
+      paramObject = "2";
+      i = -1;
+    }
   }
 }
 

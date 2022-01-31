@@ -1,30 +1,22 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.av.ui.GAudioMemberListCtrl;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.utils.TraeHelper;
 
-public final class juh
+public class juh
+  implements Runnable
 {
-  public int a;
-  long jdField_a_of_type_Long;
-  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  public TextView a;
-  boolean jdField_a_of_type_Boolean = false;
-  public ImageView b;
-  TextView b;
-  public boolean b;
+  public juh(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  private juh(GAudioMemberListCtrl paramGAudioMemberListCtrl)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetTextView = null;
-    this.jdField_b_of_type_AndroidWidgetImageView = null;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = -1;
+    if ((this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper != null) && (this.a.jdField_a_of_type_ComTencentAvUtilsTraeHelper.b()) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new jui(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     juh
  * JD-Core Version:    0.7.0.1
  */

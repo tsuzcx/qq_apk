@@ -65,7 +65,7 @@ public class PtvTemplateItemView
     int m = AIOUtils.a(60.0F, getResources());
     int j = AIOUtils.a(70.0F, getResources());
     int n = AIOUtils.a(20.0F, getResources());
-    int i1 = getResources().getColor(2131494214);
+    int i1 = getResources().getColor(2131494220);
     int i2 = getResources().getColor(2131493308);
     int i3 = AIOUtils.a(18.0F, getResources());
     int i = paramInt2;
@@ -90,7 +90,7 @@ public class PtvTemplateItemView
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     localObject = new RelativeLayout.LayoutParams(i3, i3);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843256);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843289);
     ((RelativeLayout.LayoutParams)localObject).addRule(12);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
@@ -171,7 +171,7 @@ public class PtvTemplateItemView
       if (!"0".equals(paramPtvTemplateInfo.id)) {
         break;
       }
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130846407);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130846489);
       break;
       label256:
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);

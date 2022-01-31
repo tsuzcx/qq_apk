@@ -1,19 +1,21 @@
-import com.tencent.av.smallscreen.SmallScreenDialogActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class job
   implements Runnable
 {
-  public job(SmallScreenDialogActivity paramSmallScreenDialogActivity, QQCustomDialog paramQQCustomDialog) {}
+  public job(RedPacketShareFragment paramRedPacketShareFragment) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenDialogActivity.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
+    String str = RedPacketShareFragment.a(this.a);
+    ThreadManager.getUIHandler().post(new joc(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     job
  * JD-Core Version:    0.7.0.1
  */

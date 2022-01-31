@@ -6,7 +6,7 @@ import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager.UrlBitmapDo
 import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import java.util.Map;
-import nfz;
+import nkj;
 
 public class AddInteractViewJob
   extends Job
@@ -30,7 +30,7 @@ public class AddInteractViewJob
     if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout() != null)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader = new ShareGroupIconManager.UrlBitmapDownloaderImp();
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new nfz(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new nkj(this));
       return;
     }
     a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);

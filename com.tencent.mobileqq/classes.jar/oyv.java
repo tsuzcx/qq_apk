@@ -1,31 +1,15 @@
-import android.content.Context;
-import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import com.tencent.biz.troopgift.GridListAdapter;
-import com.tencent.biz.troopgift.GridListAdapter.Holder;
-import com.tencent.biz.troopgift.TroopGiftAioItemData;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
 
 public class oyv
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public oyv(GridListAdapter paramGridListAdapter, GridListAdapter.Holder paramHolder, TroopGiftAioItemData paramTroopGiftAioItemData, int paramInt) {}
+  public oyv(QRJumpActivity paramQRJumpActivity) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    int i = this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.getWidth();
-    int j = this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.getHeight();
-    if ((i == 0) || (j == 0)) {
-      return;
-    }
-    int k = DisplayUtil.a(this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter.a, 5.0F);
-    Paint localPaint = new Paint();
-    localPaint.setTextSize(DisplayUtil.a(this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter.a, 11.0F));
-    float f1 = localPaint.measureText(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData.d);
-    float f2 = DisplayUtil.a(this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter.a, 2.0F);
-    int m = DisplayUtil.a(this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter.a, 1.0F);
-    this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter$Holder.a.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentBizTroopgiftGridListAdapter.a.getResources(), GridListAdapter.a(i, j, k, f1 + f2, m, this.jdField_a_of_type_Int)));
+    this.a.finish();
   }
 }
 

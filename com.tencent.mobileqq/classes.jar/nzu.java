@@ -1,16 +1,15 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.ErrorHandler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailFragment;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
 
 public class nzu
-  implements SimpleStepExector.ErrorHandler
+  extends LoadingMoreHelper.OnLoadMoreSimpleListener
 {
-  public nzu(StoryListPresenter paramStoryListPresenter) {}
+  public nzu(StoryDetailFragment paramStoryDetailFragment) {}
   
-  public void a(ErrorMessage paramErrorMessage)
+  public boolean a(boolean paramBoolean)
   {
-    SLog.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    this.a.d();
+    return true;
   }
 }
 

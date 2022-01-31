@@ -2,6 +2,8 @@ package com.tencent.mobileqq.troop.utils;
 
 public class TroopTechReportUtils$TroopFileReportResultCode
 {
+  public static int A = -98;
+  public static int B = -97;
   public static int a;
   public static int b = 1;
   public static int c = 2;
@@ -13,22 +15,25 @@ public class TroopTechReportUtils$TroopFileReportResultCode
   public static int i = 5;
   public static int j = 6;
   public static int k = 7;
-  public static int l = 101;
-  public static int m = 102;
-  public static int n = 103;
-  public static int o = 104;
-  public static int p = 105;
-  public static int q = 106;
-  public static int r = 107;
-  public static int s = 108;
-  public static int t = 109;
-  public static int u = 100;
-  public static int v = -99;
-  public static int w = -98;
+  public static int l = 8;
+  public static int m = 101;
+  public static int n = 102;
+  public static int o = 103;
+  public static int p = 104;
+  public static int q = 105;
+  public static int r = 106;
+  public static int s = 107;
+  public static int t = 108;
+  public static int u = 109;
+  public static int v = 111;
+  public static int w = 112;
+  public static int x = 113;
+  public static int y = 100;
+  public static int z = -99;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopTechReportUtils.TroopFileReportResultCode
  * JD-Core Version:    0.7.0.1
  */

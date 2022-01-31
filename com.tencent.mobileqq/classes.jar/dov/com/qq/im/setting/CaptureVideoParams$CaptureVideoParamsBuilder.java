@@ -14,6 +14,7 @@ public class CaptureVideoParams$CaptureVideoParamsBuilder
   private boolean f = true;
   private boolean g;
   private boolean h;
+  private boolean i;
   
   public CaptureVideoParams$CaptureVideoParamsBuilder()
   {
@@ -82,6 +83,12 @@ public class CaptureVideoParams$CaptureVideoParamsBuilder
   public CaptureVideoParamsBuilder g(boolean paramBoolean)
   {
     this.h = paramBoolean;
+    return this;
+  }
+  
+  public CaptureVideoParamsBuilder h(boolean paramBoolean)
+  {
+    this.i = paramBoolean;
     return this;
   }
 }

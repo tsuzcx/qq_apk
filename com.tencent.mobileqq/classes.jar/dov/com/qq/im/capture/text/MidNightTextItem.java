@@ -10,8 +10,8 @@ import android.text.SpannableString;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
-import anof;
-import anog;
+import anws;
+import anwt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -34,7 +34,7 @@ public class MidNightTextItem
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private PinYinSpan.OnHanZiToPinYinListener jdField_a_of_type_DovComQqImCaptureTextPinYinSpan$OnHanZiToPinYinListener = new anof(this);
+  private PinYinSpan.OnHanZiToPinYinListener jdField_a_of_type_DovComQqImCaptureTextPinYinSpan$OnHanZiToPinYinListener = new anws(this);
   private PinYinSpan jdField_a_of_type_DovComQqImCaptureTextPinYinSpan;
   private float jdField_b_of_type_Float;
   private Typeface jdField_b_of_type_AndroidGraphicsTypeface;
@@ -71,8 +71,8 @@ public class MidNightTextItem
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      anog localanog = (anog)((Iterator)localObject).next();
-      paramString.setSpan(paramPinYinSpan.clone(), localanog.jdField_a_of_type_Int, localanog.b, 33);
+      anwt localanwt = (anwt)((Iterator)localObject).next();
+      paramString.setSpan(paramPinYinSpan.clone(), localanwt.jdField_a_of_type_Int, localanwt.b, 33);
     }
     return StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 4);
   }
@@ -119,11 +119,11 @@ public class MidNightTextItem
     ArrayList localArrayList = new ArrayList();
     while (paramString.find())
     {
-      anog localanog = new anog(this, null);
-      localanog.jdField_a_of_type_Int = paramString.start();
-      localanog.b = paramString.end();
-      localanog.jdField_a_of_type_JavaLangString = paramString.group();
-      localArrayList.add(localanog);
+      anwt localanwt = new anwt(this, null);
+      localanwt.jdField_a_of_type_Int = paramString.start();
+      localanwt.b = paramString.end();
+      localanwt.jdField_a_of_type_JavaLangString = paramString.group();
+      localArrayList.add(localanwt);
     }
     return localArrayList;
   }

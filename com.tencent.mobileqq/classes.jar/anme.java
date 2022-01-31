@@ -1,24 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.QQMusicPlayerScene;
-import java.util.TimerTask;
+import cooperation.qzone.widget.RedTouchExtendButton;
 
 public class anme
-  extends TimerTask
+  implements Runnable
 {
-  private anme(QQMusicPlayerScene paramQQMusicPlayerScene) {}
+  public anme(RedTouchExtendButton paramRedTouchExtendButton) {}
   
   public void run()
   {
-    this.a.a.sendEmptyMessage(1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMusicPlayerScene", 2, "MyMusicTimerTask MSG_MUSIC_REPLAY");
-    }
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anme
  * JD-Core Version:    0.7.0.1
  */

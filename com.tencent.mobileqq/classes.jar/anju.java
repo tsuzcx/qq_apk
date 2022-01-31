@@ -1,19 +1,18 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnErrorListener;
+import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
 
 public class anju
-  implements GuideVideoView.OnErrorListener
+  implements Runnable
 {
-  public anju(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anju(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    QIMEffectCameraCaptureUnit.e(this.a);
+    QZoneSharePictureJsPlugin.b(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anju
  * JD-Core Version:    0.7.0.1
  */

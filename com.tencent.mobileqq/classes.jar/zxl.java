@@ -1,26 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.ar.ARLBSPOIDialog;
-import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult.POIInfo;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.automator.step.GetSig;
 
 public class zxl
-  implements View.OnClickListener
+  extends MessageObserver
 {
-  public zxl(ARLBSPOIDialog paramARLBSPOIDialog) {}
+  private zxl(GetSig paramGetSig) {}
   
-  public void onClick(View paramView)
+  protected void k(boolean paramBoolean)
   {
-    this.a.dismiss();
-    paramView = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", Double.toString(this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo.a * 1.0D / 1000000.0D)).putExtra("lon", Double.toString(this.a.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo.b * 1.0D / 1000000.0D));
-    this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
+    GetSig localGetSig = this.a;
+    if (paramBoolean) {}
+    for (int i = 7;; i = 6)
+    {
+      localGetSig.a(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zxl
  * JD-Core Version:    0.7.0.1
  */

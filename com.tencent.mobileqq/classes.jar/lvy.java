@@ -1,11 +1,11 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
 
 public class lvy
   implements DialogInterface.OnDismissListener
 {
-  public lvy(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  public lvy(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
   
   public void onDismiss(DialogInterface paramDialogInterface) {}
 }

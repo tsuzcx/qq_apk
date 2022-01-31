@@ -12,8 +12,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import nrw;
-import nrx;
+import nwm;
+import nwn;
 
 public class UrlListToBitmapListSegment
   extends JobSegment
@@ -46,7 +46,7 @@ public class UrlListToBitmapListSegment
       paramList = new Bitmap[i];
       Arrays.fill(paramList, this.jdField_a_of_type_AndroidGraphicsBitmap);
       IconLog.b(this.jdField_a_of_type_JavaLangString, "bitmapListSize = %d, stubBitmap = %s", Integer.valueOf(i), this.jdField_a_of_type_AndroidGraphicsBitmap);
-      Handler localHandler = new Handler(ThreadManager.getSubThreadLooper(), new nrx(this, null));
+      Handler localHandler = new Handler(ThreadManager.getSubThreadLooper(), new nwn(this, null));
       localHandler.sendMessageDelayed(Message.obtain(localHandler, 0, paramList), 300L);
       i = this.jdField_a_of_type_Int / 2;
       Iterator localIterator = paramJobContext.iterator();
@@ -54,7 +54,7 @@ public class UrlListToBitmapListSegment
       {
         String str = (String)localIterator.next();
         if (!"stub_url".equals(str)) {
-          this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(str, i, i, new nrw(this, paramJobContext, paramList, localHandler));
+          this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader.a(str, i, i, new nwm(this, paramJobContext, paramList, localHandler));
         }
       }
     }

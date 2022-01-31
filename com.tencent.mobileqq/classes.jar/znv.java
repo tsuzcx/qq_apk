@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.app.ThreadOptimizer;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ThreadFactory;
 
-public final class znv
-  implements ThreadFactory
+public class znv
+  implements Runnable
 {
-  public Thread newThread(Runnable paramRunnable)
+  public znv(MessageHandler paramMessageHandler, MessageRecord paramMessageRecord) {}
+  
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ThreadManager", 2, "new NetExcutor5Thread");
+    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MsgSend", 4, "delay notify: " + MessageHandler.d);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(8022, true, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin });
     }
-    paramRunnable = new Thread(paramRunnable, "NetExcutor5Thread");
-    if (ThreadOptimizer.a().c()) {
-      paramRunnable.setPriority(1);
-    }
-    return paramRunnable;
   }
 }
 

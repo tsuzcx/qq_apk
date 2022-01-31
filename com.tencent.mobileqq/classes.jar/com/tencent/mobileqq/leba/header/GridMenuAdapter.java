@@ -27,7 +27,7 @@ public abstract class GridMenuAdapter
   protected boolean a;
   protected int b;
   protected ArrayList b;
-  protected int c;
+  public int c;
   private ArrayList c;
   public int d;
   private ArrayList d;
@@ -109,7 +109,7 @@ public abstract class GridMenuAdapter
             break label171;
           }
         }
-        localObject = (GridView)localLayoutInflater.inflate(2130970382, paramViewPager, false);
+        localObject = (GridView)localLayoutInflater.inflate(2130970397, paramViewPager, false);
         continue;
         TroopTechReportUtils.a("leba_gird", "create", localException1.toString(), "", "", "");
       }
@@ -201,7 +201,7 @@ public abstract class GridMenuAdapter
                 break label336;
               }
             }
-            localGridView = (GridView)localLayoutInflater.inflate(2130970382, paramViewPager, false);
+            localGridView = (GridView)localLayoutInflater.inflate(2130970397, paramViewPager, false);
             continue;
             TroopTechReportUtils.a("leba_gird", "create", localException1.toString(), "", "", "");
           }
@@ -309,16 +309,27 @@ public abstract class GridMenuAdapter
     a();
   }
   
-  public boolean a(int paramInt)
+  public boolean a(int paramInt, boolean paramBoolean)
   {
     if (this.jdField_d_of_type_Int == 0) {}
     for (;;)
     {
       return false;
       paramInt /= this.jdField_d_of_type_Int;
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((LebaGridIndicator)localIterator.next()).setButtonToRedDot(paramInt);
+      Iterator localIterator;
+      if (paramBoolean)
+      {
+        localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext()) {
+          ((LebaGridIndicator)localIterator.next()).setButtonToRedDotAndPlayAnimation(paramInt);
+        }
+      }
+      else
+      {
+        localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext()) {
+          ((LebaGridIndicator)localIterator.next()).setButtonToRed(paramInt);
+        }
       }
     }
   }
@@ -333,7 +344,7 @@ public abstract class GridMenuAdapter
     while (localIterator.hasNext())
     {
       LebaGridIndicator localLebaGridIndicator = (LebaGridIndicator)localIterator.next();
-      localLebaGridIndicator.onPageSelected(localLebaGridIndicator.jdField_b_of_type_Int);
+      localLebaGridIndicator.onPageSelected(localLebaGridIndicator.jdField_c_of_type_Int);
     }
   }
 }

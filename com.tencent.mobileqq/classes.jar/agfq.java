@@ -1,19 +1,97 @@
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.text.TextUtils;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class agfq
-  implements Runnable
+  implements ActionMode.Callback
 {
-  public agfq(ScanTorchActivity paramScanTorchActivity) {}
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void run()
+  public agfq(OCRRecognitionResultActivity paramOCRRecognitionResultActivity, TextView paramTextView)
   {
-    this.a.a.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView == null) {}
+    int i;
+    int j;
+    String str;
+    do
+    {
+      return null;
+      i = this.jdField_a_of_type_AndroidWidgetTextView.getSelectionStart();
+      j = this.jdField_a_of_type_AndroidWidgetTextView.getSelectionEnd();
+      str = this.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
+    } while ((TextUtils.isEmpty(str)) || (i >= j) || (i < 0) || (j > str.length()));
+    return str.substring(i, j);
+  }
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    if (paramMenuItem.getItemId() == 2131375681)
+    {
+      paramActionMode = a();
+      if (QLog.isColorLevel()) {
+        QLog.d("OCRRecognitionResultActivity", 2, "onLongClick translate " + paramActionMode);
+      }
+      if (TextUtils.isEmpty(paramActionMode)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRRecognitionResultActivity, 1, "还未选中任何文字", 0).a();
+      }
+    }
+    while (paramMenuItem.getItemId() != 2131375682)
+    {
+      return false;
+      OCRRecognitionResultActivity.c(this.jdField_a_of_type_ComTencentMobileqqOcrOCRRecognitionResultActivity, paramActionMode);
+      OCRRecognitionResultActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRRecognitionResultActivity, 0, "正在翻译...");
+      OCRRecognitionResultActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRRecognitionResultActivity, paramActionMode, OCRRecognitionResultActivity.b(this.jdField_a_of_type_ComTencentMobileqqOcrOCRRecognitionResultActivity));
+      ReportController.b(null, "dc00898", "", "", "0X8009106", "0X8009106", 0, 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X8009107", "0X8009107", 0, 0, "", "", "", "");
+      return true;
+    }
+    paramActionMode = a();
+    if (QLog.isColorLevel()) {
+      QLog.d("OCRRecognitionResultActivity", 2, "onLongClick search " + paramActionMode);
+    }
+    if (TextUtils.isEmpty(paramActionMode))
+    {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRRecognitionResultActivity, 1, "还未选中任何文字", 0).a();
+      return false;
+    }
+    OCRTextSearchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRRecognitionResultActivity, paramActionMode);
+    this.jdField_a_of_type_ComTencentMobileqqOcrOCRRecognitionResultActivity.overridePendingTransition(2131034132, 0);
+    return true;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramActionMode = paramActionMode.getMenuInflater();
+    if (paramActionMode != null) {
+      paramActionMode.inflate(2131820547, paramMenu);
+    }
+    return true;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agfq
  * JD-Core Version:    0.7.0.1
  */

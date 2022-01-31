@@ -1,22 +1,37 @@
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.widget.TextView;
-import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anrt
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public anrt(EditProviderPart paramEditProviderPart, boolean paramBoolean) {}
+  public anrt(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart) == null) {
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEffectCameraCaptureUnit", 2, "clearAnimation end!");
+    }
+    if (QIMEffectCameraCaptureUnit.d(this.a) == null) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart).setVisibility(0);
-      return;
-    }
-    EditProviderPart.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart).setVisibility(8);
+    this.a.j = true;
+    QIMEffectCameraCaptureUnit.d(this.a).setText(2131439129);
+    QIMEffectCameraCaptureUnit.d(this.a).startAnimation(this.a.b);
+    this.a.a.setStartOffset(3000L);
+    this.a.a.setAnimationListener(QIMEffectCameraCaptureUnit.b(this.a));
+    QIMEffectCameraCaptureUnit.d(this.a).setAnimation(this.a.a);
+    this.a.a.startNow();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.j = true;
   }
 }
 

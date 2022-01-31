@@ -2,9 +2,9 @@ package dov.com.qq.im.capture.text;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import annt;
+import anwg;
 import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
@@ -117,7 +117,7 @@ public class DynamicTextConfigManager
     if ((paramDynamicTextConfigBean == null) || (paramDynamicTextConfigBean.fontInfos == null)) {
       return;
     }
-    ThreadManager.postImmediately(new annt(this, paramDynamicTextConfigBean, paramIDynamicTextResDownloadCallback), null, true);
+    ThreadManager.postImmediately(new anwg(this, paramDynamicTextConfigBean, paramIDynamicTextResDownloadCallback), null, true);
   }
   
   public void a(String paramString)

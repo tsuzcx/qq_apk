@@ -15,8 +15,8 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anoc;
-import anod;
+import anwp;
+import anwq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.troop.utils.TroopFileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -157,7 +157,7 @@ public class JourneyTextItem
       return;
     }
     super.a(paramInt, paramString);
-    String str2 = a(paramInt, new anoc(this));
+    String str2 = a(paramInt, new anwp(this));
     if (QLog.isColorLevel()) {
       QLog.i("JourneyTextItem", 2, "setText index: " + paramInt + " text: " + str2);
     }
@@ -332,7 +332,7 @@ public class JourneyTextItem
   public boolean b()
   {
     boolean bool = false;
-    String str1 = a(0, new anod(this));
+    String str1 = a(0, new anwq(this));
     String str2 = b(1);
     if (((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2))) || (super.b())) {
       bool = true;

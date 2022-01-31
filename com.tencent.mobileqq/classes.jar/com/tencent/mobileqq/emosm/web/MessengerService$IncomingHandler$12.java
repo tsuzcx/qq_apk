@@ -1,23 +1,19 @@
 package com.tencent.mobileqq.emosm.web;
 
-import acbg;
+import acjg;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
 import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
 import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,172 +21,69 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$12
   extends IPicDownloadListener
 {
-  public MessengerService$IncomingHandler$12(acbg paramacbg, Bundle paramBundle, QQAppInterface paramQQAppInterface, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$12(acjg paramacjg, Bundle paramBundle, FavroamingDBManager paramFavroamingDBManager, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
   
   public void onDone(List paramList1, List paramList2)
   {
-    int i;
-    int m;
-    int j;
-    int n;
-    if (paramList2 != null) {
-      for (;;)
+    int i = 0;
+    if (paramList2 != null)
+    {
+      try
       {
-        try
-        {
-          if (paramList2.isEmpty()) {
-            continue;
-          }
-          k = paramList2.size();
-          i = 0;
-          if ((paramList1 == null) || (paramList1.isEmpty())) {
-            continue;
-          }
-          i = paramList1.size();
-          this.val$reqbundle.putInt("result", 2);
-          paramList2 = new JSONObject();
-          paramList2.put("succeedNum", i);
-          paramList2.put("failedNum", k);
-          this.val$reqbundle.putString("data", paramList2.toString());
+        if (paramList2.isEmpty()) {
+          break label183;
         }
-        catch (JSONException paramList1)
-        {
-          int i2;
-          HashSet localHashSet;
-          int i1;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("Q.emoji.web.MessengerService", 2, paramList1.getMessage());
-          return;
-          this.val$reqbundle.putInt("result", 0);
-          int k = 0;
-          continue;
-          n = paramList1.size();
-          Object localObject = new ArrayList();
-          localArrayList1 = new ArrayList();
-          localArrayList2 = new ArrayList();
-          if (n + j <= i2) {
-            break label696;
-          }
-          m = 1;
-          paramList1 = paramList1.iterator();
-          if (!paramList1.hasNext()) {
-            continue;
-          }
-          localCustomEmotionData = (CustomEmotionData)paramList1.next();
-          if (m == 0) {
-            continue;
-          }
-          ((ArrayList)localObject).add(localCustomEmotionData.eId);
-          localArrayList1.add(localCustomEmotionData.url);
-          if (localCustomEmotionData.md5 != null) {
-            continue;
-          }
-          localArrayList2.add("");
-          break label693;
-          localArrayList2.add(localCustomEmotionData.md5);
-          break label693;
-          i += 1;
-          localCustomEmotionData.emoId = i;
-          if ((TextUtils.isEmpty(localCustomEmotionData.md5)) || (localHashSet.contains(localCustomEmotionData.md5))) {
-            break label702;
-          }
-          paramList2.c(localCustomEmotionData);
-          break label702;
-          if (m == 0) {
-            break label611;
-          }
-          this.val$reqbundle.putInt("extra_key_over_num", n + j - i2);
-          this.val$reqbundle.putBoolean("openManagerActivity", true);
-          this.val$reqbundle.putStringArrayList("extra_key_paths", localArrayList1);
-          this.val$reqbundle.putStringArrayList("extra_key_pkgids", (ArrayList)localObject);
-          this.val$reqbundle.putStringArrayList("extra_key_md5s", localArrayList2);
-          this.val$reqbundle.putInt("extra_key_faile_count", k);
-          this.val$service.a(this.val$reqbundle);
-          return;
-        }
-        catch (Exception paramList1)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("Q.emoji.web.MessengerService", 2, paramList1.getMessage());
-          return;
-        }
+        j = paramList2.size();
         if ((paramList1 == null) || (paramList1.isEmpty())) {
-          continue;
+          break label152;
         }
-        paramList2 = (FavroamingDBManager)this.val$qqApp.getManager(148);
-        localObject = paramList2.a();
-        i2 = FavEmoConstant.a;
-        i = 0;
-        localHashSet = new HashSet();
-        if (localObject == null) {
-          break label656;
-        }
-        m = 0;
-        j = 1;
-        if (m >= ((List)localObject).size()) {
-          break label680;
-        }
-        i1 = ((CustomEmotionData)((List)localObject).get(m)).emoId;
-        n = j;
-        if (j < i1) {
-          n = i1;
-        }
-        j = i;
-        if ("needDel".equals(((CustomEmotionData)((List)localObject).get(m)).RomaingType)) {
-          break label664;
-        }
-        i += 1;
-        j = i;
-        if (TextUtils.isEmpty(((CustomEmotionData)((List)localObject).get(m)).md5)) {
-          break label664;
-        }
-        localHashSet.add(((CustomEmotionData)((List)localObject).get(m)).md5);
-        j = i;
-        break label664;
-        this.val$reqbundle.putInt("result", 1);
+        i = paramList1.size();
+        this.val$reqbundle.putInt("result", 2);
       }
-    }
-    for (;;)
-    {
-      ArrayList localArrayList1;
-      ArrayList localArrayList2;
-      label380:
-      CustomEmotionData localCustomEmotionData;
-      label611:
-      this.val$service.getApplicationContext().sendBroadcast(new Intent("com.tencent.mobileqq.action.update.emotiom"));
-      paramList1 = this.val$qqApp.getHandler(ChatActivity.class);
-      if (paramList1 != null)
+      catch (JSONException paramList1)
       {
-        paramList1.obtainMessage(10).sendToTarget();
-        continue;
-        label656:
-        j = 0;
-        i = 1;
-        continue;
-        label664:
-        m += 1;
-        i = j;
-        j = n;
-        break;
-        label680:
-        m = i;
-        i = j;
-        j = m;
+        for (;;)
+        {
+          int j;
+          Object localObject;
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.emoji.web.MessengerService", 2, paramList1.getMessage());
+          }
+          return;
+          this.val$reqbundle.putInt("result", 1);
+        }
+      }
+      catch (Exception paramList1)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("Q.emoji.web.MessengerService", 2, paramList1.getMessage());
+        return;
+      }
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("succeedNum", i);
+      ((JSONObject)localObject).put("failedNum", j);
+      this.val$reqbundle.putString("data", ((JSONObject)localObject).toString());
+      paramList2 = paramList2.iterator();
+      while (paramList2.hasNext())
+      {
+        localObject = (CustomEmotionData)paramList2.next();
+        this.val$fdb.a((CustomEmotionData)localObject);
       }
     }
-    label693:
-    label696:
-    label702:
-    for (;;)
+    label152:
+    label183:
+    do
     {
-      break label380;
-      m = 0;
-      break;
-    }
+      this.val$reqbundle.putInt("result", 0);
+      this.val$service.a(this.val$reqbundle);
+      this.val$service.getApplicationContext().sendBroadcast(new Intent("com.tencent.mobileqq.action.update.emotiom"));
+      paramList2 = this.val$qqApp.getHandler(ChatActivity.class);
+      if (paramList2 != null) {
+        paramList2.obtainMessage(10).sendToTarget();
+      }
+      paramList2 = (FavroamingManager)this.val$qqApp.getManager(102);
+    } while ((paramList2 == null) || (paramList1 == null) || (paramList1.isEmpty()));
+    paramList2.a(paramList1);
   }
 }
 

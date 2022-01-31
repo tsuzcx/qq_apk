@@ -1,41 +1,95 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuTextBuilder;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import mqq.os.MqqHandler;
 
 public class llw
-  implements Runnable
+  implements TextWatcher
 {
-  public llw(KandianMergeManager paramKandianMergeManager, MessageRecord paramMessageRecord) {}
+  public llw(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).a().a(AppConstants.as, 7220, false, false);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extInt == 2)
+    int i;
+    label51:
+    label86:
+    ZhituManager localZhituManager;
+    if ((paramEditable instanceof BiuTextBuilder))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isValid = false;
-      if (KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).get() > 0) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.c(2);
+      i = ((BiuTextBuilder)paramEditable).a();
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+      {
+        if (this.a.jdField_c_of_type_Int - i >= -99) {
+          break label236;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("-99");
+      }
+      if (i - this.a.jdField_c_of_type_Int <= 0) {
+        break label261;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF4222"));
+      this.a.jdField_c_of_type_Boolean = true;
+      ReadInJoyCommentComponentFragment.a(this.a);
+      localZhituManager = ReadInJoyCommentComponentFragment.a(this.a);
+      if (localZhituManager != null)
+      {
+        i = paramEditable.toString().trim().length();
+        if (i > 0) {
+          break label294;
+        }
+        this.a.f.setVisibility(8);
       }
     }
-    do
+    for (;;)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extInt == 1)
-      {
-        SessionInfo localSessionInfo = new SessionInfo();
-        localSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.ar;
-        localSessionInfo.jdField_a_of_type_Int = 1008;
-        ChatActivityFacade.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), localSessionInfo);
-        return;
+      if ((i <= 0) || (paramEditable.length() > 24) || (!localZhituManager.a(paramEditable))) {
+        break label308;
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extInt != 5);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isValid = false;
-    KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager).a().b(AppConstants.as, 7220, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+      if (ReadInJoyCommentComponentFragment.a(this.a))
+      {
+        localZhituManager.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramEditable, null, 7220, false);
+        this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(85);
+        this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(85, 10000L);
+      }
+      this.a.f.setImageResource(2130840768);
+      return;
+      i = paramEditable.length();
+      break;
+      label236:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.jdField_c_of_type_Int - i));
+      break label51;
+      label261:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131493503));
+      this.a.jdField_c_of_type_Boolean = false;
+      break label86;
+      label294:
+      this.a.f.setVisibility(0);
+    }
+    label308:
+    localZhituManager.c();
+    ReadInJoyCommentComponentFragment.a(this.a, false);
+    this.a.f.setSelected(false);
+    this.a.f.setImageResource(2130840918);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (ReadInJoyCommentComponentFragment.b(this.a)) {
+      ReadInJoyCommentComponentFragment.c(this.a, false);
+    }
+    while ((!ReadInJoyCommentComponentFragment.c(this.a)) || (paramInt3 != 1) || (paramInt2 != 0) || (!paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@"))) {
+      return;
+    }
+    this.a.b("2");
   }
 }
 

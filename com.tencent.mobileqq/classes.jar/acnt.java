@@ -1,38 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.MPFileVerifyPswEvent;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qqdataline.ipc.DatalineRemoteManager;
-import java.util.Timer;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
+import com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter;
 
 public class acnt
-  implements View.OnClickListener
+  extends EmoticonPackageDownloadListener
 {
-  public acnt(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  public acnt(EmotionNeedDownloadAdapter paramEmotionNeedDownloadAdapter) {}
   
-  public void onClick(View paramView)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (!NetworkUtil.d(BaseApplicationImpl.getContext())) {
-      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131433213));
-    }
-    do
-    {
-      return;
-      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131427660));
-      paramView = (DataLineHandler)MPFileVerifyPwdView.a(this.a).a(8);
-      MPFileVerifyPwdView.a(this.a, paramView.a().a(3));
-      MPFileVerifyPwdView.b(this.a).setEnabled(false);
-      MPFileVerifyPwdView.b(this.a).setTextColor(-7829368);
-      MPFileVerifyPwdView.a(this.a).schedule(new acnu(this), 15000L);
-    } while (MPFileVerifyPwdView.a(this.a) == null);
-    MPFileVerifyPwdView.a(this.a).a(MPFileVerifyPwdView.a(this.a));
+    this.a.b(paramEmoticonPackage);
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  {
+    this.a.a(paramEmoticonPackage, paramInt);
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramEmoticonPackage);
+  }
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
   }
 }
 

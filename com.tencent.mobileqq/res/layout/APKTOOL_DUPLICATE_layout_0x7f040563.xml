@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.fling.TopGestureLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a85" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.troopgift.SendFlowerSurfaceView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a86" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a87" android:padding="18.0dip" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02195e" android:scaleType="centerInside" android:layout_alignParentRight="true" />
-</com.tencent.mobileqq.activity.fling.TopGestureLayout>
+<RelativeLayout android:layout_width="70.0dip" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a4f" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="20.0dip" android:layout_centerHorizontal="true" />
+    <com.tencent.mobileqq.trooponline.widget.RoundTextView android:textSize="9.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0088" android:paddingLeft="4.0dip" android:paddingTop="2.0dip" android:paddingRight="4.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-9.0dip" android:maxWidth="60.0dip" android:minWidth="30.0dip" android:maxLines="1" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1a4f" android:layout_centerHorizontal="true" app:round_bg_color="@color/APKTOOL_DUPLICATE_color_0x7f0c0273" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:ellipsize="end" android:id="@id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="60.0dip" android:singleLine="true" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0088" android:layout_centerHorizontal="true" />
+</RelativeLayout>

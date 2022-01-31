@@ -1,40 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import com.tencent.mobileqq.emosm.favroaming.SyncListener;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import mqq.os.MqqHandler;
 
-class acmm
-  implements DialogInterface.OnClickListener
+public class acmm
+  extends SyncListener
 {
-  acmm(acmj paramacmj, String paramString, UniformDownloadMgr paramUniformDownloadMgr, Bundle paramBundle) {}
+  public acmm(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    String str2 = "http://" + this.jdField_a_of_type_Acmj.a.h + ":" + this.jdField_a_of_type_Acmj.a.i + "/ftn_compress_getfile/rkey=" + this.jdField_a_of_type_Acmj.a.f + "&filetype=" + this.jdField_a_of_type_Acmj.a.b + "&path=";
     if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, str2);
+      QLog.d("EmoticonMainPanel", 2, "upload_finish");
     }
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString;
-    try
-    {
-      String str1 = URLEncoder.encode(this.jdField_a_of_type_JavaLangString, "utf8");
-      paramDialogInterface = str1;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "download_finish");
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
+    ThreadManager.getUIHandler().post(new acmn(this));
+    this.a.i();
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
+  }
+  
+  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
+  {
+    this.a.i();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "roaming_finish");
     }
-    paramDialogInterface = str2 + paramDialogInterface + "&";
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.b(paramDialogInterface, this.jdField_a_of_type_AndroidOsBundle);
-    FileManagerReporter.a("0X80052CE");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      ((FavroamingManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(102)).b(this.a.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingSyncListener);
+    }
+    this.a.i();
   }
 }
 

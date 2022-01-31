@@ -40,14 +40,14 @@ public class ARMapOpenPOIDialog
   {
     super(paramContext, 2131624516);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setContentView(2130970223);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363057);
-    this.c = ((TextView)findViewById(2131362951));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369702));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369707));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369703));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363810));
-    this.d = ((TextView)findViewById(2131369706));
+    setContentView(2130970238);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131363062);
+    this.c = ((TextView)findViewById(2131362956));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369712));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369717));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369713));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363834));
+    this.d = ((TextView)findViewById(2131369716));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.d.setOnClickListener(this);
   }
@@ -145,14 +145,14 @@ public class ARMapOpenPOIDialog
   public void onClick(View paramView)
   {
     Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    if (paramView.getId() == 2131369707) {
+    if (paramView.getId() == 2131369717) {
       if (!localActivity.isFinishing())
       {
         dismiss();
         localActivity.finish();
       }
     }
-    while (paramView.getId() != 2131369706) {
+    while (paramView.getId() != 2131369716) {
       return;
     }
     Intent localIntent = new Intent(localActivity, QQBrowserActivity.class);

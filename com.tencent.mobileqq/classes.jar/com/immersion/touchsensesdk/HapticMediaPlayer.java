@@ -216,13 +216,6 @@ public class HapticMediaPlayer
     Object localObject = null;
     try
     {
-      Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
-      {
-        public void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
-        {
-          HapticMediaPlayer.updateSDKHealthState(paramAnonymousThrowable);
-        }
-      });
       if (!sSDKHealthState)
       {
         Log.e(TAG, "TouchSense SDK has previously encountered a fatal error is now inoperative! Haptics will not be played.");
@@ -313,8 +306,8 @@ public class HapticMediaPlayer
       else
       {
         localObject = localStringBuilder.toString().replaceAll("(\\.0)+$", "");
-        Log.i(TAG, "Native version: " + (String)localObject + ", Jar version: " + "v2.1.14.4");
-        return "v2.1.14.4".contains((CharSequence)localObject);
+        Log.i(TAG, "Native version: " + (String)localObject + ", Jar version: " + "v2.1.14.18");
+        return "v2.1.14.18".contains((CharSequence)localObject);
       }
       if (i != 0) {
         localStringBuilder.append(".");

@@ -52,10 +52,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
-import tih;
-import tii;
-import tij;
-import tik;
+import tnb;
+import tnc;
+import tnd;
+import tne;
 
 public class QQBrowserActivity
   extends FragmentActivity
@@ -89,7 +89,7 @@ public class QQBrowserActivity
     FragmentTransaction localFragmentTransaction = paramQQBrowserActivity.getSupportFragmentManager().beginTransaction();
     paramQQBrowserActivity.a(localFragmentTransaction);
     if (!localWebViewFragment.isAdded()) {
-      localFragmentTransaction.add(2131362369, localWebViewFragment, localWebViewTabBarData.tag);
+      localFragmentTransaction.add(2131362372, localWebViewFragment, localWebViewTabBarData.tag);
     }
     for (;;)
     {
@@ -334,8 +334,8 @@ public class QQBrowserActivity
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 1) && (this.jdField_a_of_type_AndroidViewView == null))
     {
-      this.jdField_a_of_type_AndroidViewView = WebviewFragmentTabBarBuilder.a(this, super.getIntent(), this.jdField_a_of_type_JavaUtilArrayList, new tik(this));
-      this.jdField_a_of_type_AndroidViewView.setId(2131364593);
+      this.jdField_a_of_type_AndroidViewView = WebviewFragmentTabBarBuilder.a(this, super.getIntent(), this.jdField_a_of_type_JavaUtilArrayList, new tne(this));
+      this.jdField_a_of_type_AndroidViewView.setId(2131364617);
       Object localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout.getParent();
       if (!(localObject instanceof FrameLayout)) {
         break label154;
@@ -421,13 +421,13 @@ public class QQBrowserActivity
         ((FrameLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, new FrameLayout.LayoutParams(-1, -1));
         QLog.i("WebLog_QQBrowserActivity", 1, "doOnCreate warning:content is not an instance of FrameLayout.");
       }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131362369);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131362372);
       paramBundle = (WebViewTabBarData)this.jdField_a_of_type_JavaUtilArrayList.get(0);
       localObject1 = a(paramBundle);
       if (((WebViewFragment)localObject1).isAdded()) {
         break;
       }
-      super.getSupportFragmentManager().beginTransaction().add(2131362369, (Fragment)localObject1, paramBundle.tag).commitAllowingStateLoss();
+      super.getSupportFragmentManager().beginTransaction().add(2131362372, (Fragment)localObject1, paramBundle.tag).commitAllowingStateLoss();
       return true;
       paramBundle.removeExtra("tabConfigData");
     }
@@ -665,12 +665,12 @@ public class QQBrowserActivity
     SwiftWebAccelerator.b();
     if (!WebAccelerateHelper.isWebViewCache)
     {
-      ThreadManager.postImmediately(new tih(this), null, false);
+      ThreadManager.postImmediately(new tnb(this), null, false);
       if (InnerDns.b() == null) {
-        ThreadManager.postImmediately(new tii(this), null, false);
+        ThreadManager.postImmediately(new tnc(this), null, false);
       }
       if (!WebViewTitleStyleHelper.a().a) {
-        ThreadManager.postImmediately(new tij(this), null, false);
+        ThreadManager.postImmediately(new tnd(this), null, false);
       }
     }
     super.onCreate(paramBundle);
@@ -681,7 +681,7 @@ public class QQBrowserActivity
     super.onPostThemeChanged();
     WebViewFragment localWebViewFragment = b();
     if (localWebViewFragment != null) {
-      localWebViewFragment.w();
+      localWebViewFragment.U_();
     }
   }
   

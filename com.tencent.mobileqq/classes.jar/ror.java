@@ -1,18 +1,40 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class ror
-  implements Runnable
+  extends CardObserver
 {
-  public ror(BaseChatPie paramBaseChatPie) {}
+  public ror(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "mRunOnShow 800 hasDestory=" + this.a.I);
+    if (!this.a.a.equals(paramString)) {
+      return;
     }
-    if (!this.a.I) {
-      this.a.j(3);
+    if (paramBoolean)
+    {
+      this.a.a(2130838759, this.a.getString(2131433484));
+      return;
+    }
+    this.a.a(2130838748, this.a.getString(2131433483));
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if ((ProfileActivity.e(AddRequestActivity.a(this.a))) && (paramBoolean) && ((paramObject instanceof Card)))
+    {
+      paramObject = (Card)paramObject;
+      if (Utils.a(paramObject.uin, this.a.a)) {
+        this.a.a(paramObject.strCampusName);
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("Q.systemmsg.AddRequestActivity", 4, String.format(Locale.getDefault(), "onGetCampusInfo [%s, %s]", new Object[] { Utils.b(paramObject.uin), Utils.b(paramObject.strCampusName) }));
+      }
     }
   }
 }

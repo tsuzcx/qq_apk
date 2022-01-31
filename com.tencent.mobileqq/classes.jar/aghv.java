@@ -1,40 +1,21 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.binhai.BinHaiHandler;
-import com.tencent.mobileqq.binhai.BinHaiMsgDialog;
-import com.tencent.mobileqq.binhai.BinHaiMsgDialog.Listener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder;
 
 public class aghv
-  implements BinHaiMsgDialog.Listener
 {
-  public aghv(ScanTorchActivity paramScanTorchActivity) {}
+  public ViewGroup a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
   
-  public void a(BinHaiMsgDialog paramBinHaiMsgDialog)
-  {
-    paramBinHaiMsgDialog.dismiss();
-    if (paramBinHaiMsgDialog.jdField_a_of_type_Boolean)
-    {
-      this.a.finish();
-      return;
-    }
-    ScanTorchActivity.a(this.a, true, 0);
-    ((BinHaiHandler)this.a.b.getBusinessHandler(3)).b(ScanTorchActivity.c(this.a), paramBinHaiMsgDialog.jdField_a_of_type_Int);
-  }
-  
-  public void b(BinHaiMsgDialog paramBinHaiMsgDialog)
-  {
-    paramBinHaiMsgDialog.dismiss();
-    this.a.finish();
-  }
-  
-  public void c(BinHaiMsgDialog paramBinHaiMsgDialog)
-  {
-    this.a.finish();
-  }
+  public aghv(SearchSougouResultItemBuilder paramSearchSougouResultItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aghv
  * JD-Core Version:    0.7.0.1
  */

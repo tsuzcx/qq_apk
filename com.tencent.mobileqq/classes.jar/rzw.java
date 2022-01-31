@@ -1,78 +1,51 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.magicface.drawable.PngFrameUtil;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.av.utils.CharacterUtil;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.servlet.QZoneFeedsServlet;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.app.NewIntent;
 
-public class rzw
-  implements QueryCallback
+public final class rzw
+  implements Runnable
 {
-  public rzw(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, ImageView paramImageView1, MarkFaceMessage paramMarkFaceMessage, ImageView paramImageView2) {}
+  public rzw(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
-  public void a(PicEmoticonInfo paramPicEmoticonInfo)
+  public void run()
   {
-    Object localObject;
-    int i;
-    if (paramPicEmoticonInfo != null)
+    ChatActivityFacade.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    long l;
+    NewIntent localNewIntent;
+    if ((ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) || (ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true)))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramPicEmoticonInfo);
-      String str2 = EmoticonUtils.z.replace("[epId]", paramPicEmoticonInfo.a.epId);
-      String str1 = "";
-      localObject = str1;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam != null)
-      {
-        localObject = str1;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam.length > 0) {
-          localObject = new String(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam);
-        }
+      l = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      if (QLog.isColorLevel()) {
+        QLog.i("ChatActivityFacade.QZoneFeeds", 2, "insertFriendNewestFeedIfNeeded   need last publish time:" + l);
       }
-      i = PngFrameUtil.a((String)localObject);
-      if ((!FileUtils.a(str2)) || (i != 1)) {
-        break label190;
-      }
-      i = 3;
+      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), QZoneFeedsServlet.class);
+      localNewIntent.putExtra("selfuin", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
     }
-    for (;;)
+    try
     {
-      if (paramPicEmoticonInfo.a())
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.getResources().getDrawable(2130843978);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      localNewIntent.putExtra("hostuin", new long[] { CharacterUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) });
+      if (QLog.isColorLevel()) {
+        QLog.i("ChatActivityFacade.QZoneFeeds", 2, "insertFriendNewestFeedIfNeeded   lastTime:" + l);
       }
+      localNewIntent.putExtra("lasttime", l);
+      ChatActivityFacade.a().jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ChatActivityFacade.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(ChatActivityFacade.a());
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+      ChatActivityFacade.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      return;
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        this.b.setMinimumHeight((int)(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a * 100.0F));
-        this.b.setMinimumWidth((int)(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a * 100.0F));
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.b, i, paramPicEmoticonInfo);
-        return;
-        label190:
-        if (paramPicEmoticonInfo.b())
-        {
-          i = 2;
-          break;
-        }
-        if (!paramPicEmoticonInfo.c()) {
-          break label254;
-        }
-        i = 1;
-        break;
-        if (i == 1)
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.getResources().getDrawable(2130837573);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        }
+        QLog.e("ChatActivityFacade.QZoneFeeds", 1, "Long.valueOf " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
       }
-      label254:
-      i = 0;
     }
   }
 }

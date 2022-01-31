@@ -1,28 +1,24 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class sad
-  implements FMDialogUtil.FMDialogInterface
+public final class sad
+  implements Runnable
 {
-  public sad(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, FileManagerEngine paramFileManagerEngine) {}
+  public sad(String paramString, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    try
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.b(localFileManagerEntity);
-      }
+      String str = this.jdField_a_of_type_JavaLangString;
+      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      StatisticConstants.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
+      return;
     }
+    catch (Exception localException) {}
   }
-  
-  public void b() {}
 }
 
 

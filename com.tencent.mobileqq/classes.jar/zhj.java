@@ -1,27 +1,24 @@
-import android.util.Pair;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.MessageRoamHandler;
-import java.util.Calendar;
-import mqq.os.MqqHandler;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class zhj
-  implements Runnable
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public zhj(MessageRoamManager paramMessageRoamManager, Calendar paramCalendar) {}
+  public zhj(BaseActivity paramBaseActivity) {}
   
-  public void run()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)this.jdField_a_of_type_JavaUtilCalendar.clone());
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaLangString, ((Long)((Pair)localObject).first).longValue(), ((Long)((Pair)localObject).second).longValue());
-    if (i >= 8)
+    if (paramInt == 0) {}
+    for (boolean bool = false;; bool = true)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatHistoryForC2C.class);
-      ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(0), 0L);
+      BaseActivity.mIsInMultiScreen = bool;
+      this.a.onMultiWindowModeChanged(BaseActivity.mIsInMultiScreen);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("qqBaseActivity", 4, "onSystemUiVisibilityChange:" + paramInt + ",Activity name:" + getClass().getName());
+      }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaLangString, (Calendar)this.jdField_a_of_type_JavaUtilCalendar.clone(), true, 8 - i);
   }
 }
 

@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import VACDReport.ReportRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportMgr;
+import mqq.observer.BusinessObserver;
 
-class xng
-  implements Runnable
+public class xng
+  implements BusinessObserver
 {
-  xng(xnf paramxnf) {}
+  public xng(VACDReportMgr paramVACDReportMgr) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (EditLocalVideoActivity.a(this.a.a) != null)
+    switch (paramInt)
     {
-      EditLocalVideoActivity.a(this.a.a).seekTo(0);
-      EditLocalVideoActivity.a(this.a.a).start();
+    default: 
+      return;
+    }
+    if (paramBundle.containsKey("rsp")) {}
+    for (paramBundle = ((ReportRsp)paramBundle.getSerializable("rsp")).headers;; paramBundle = null)
+    {
+      VACDReportMgr.a(this.a, paramBundle);
+      return;
     }
   }
 }

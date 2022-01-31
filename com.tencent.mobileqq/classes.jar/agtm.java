@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
+import mqq.os.MqqHandler;
 
-public class agtm
+class agtm
   implements Runnable
 {
-  public agtm(LSRecordPanel paramLSRecordPanel) {}
+  agtm(agtj paramagtj) {}
   
   public void run()
   {
-    LSRecordPanel.a(this.a, false);
+    String str = ShareHelper.a(this.a.a);
+    ThreadManager.getUIHandler().post(new agtn(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agtm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,39 @@
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.DingdongScheduleItemBuilder;
-import cooperation.dingdong.DingdongMsgItemTitleImageView;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
 
 public class uwg
-  extends BaseBubbleBuilder.ViewHolder
+  implements URLDrawableDownListener
 {
-  public LinearLayout a;
-  public TextView a;
-  public DingdongMsgItemTitleImageView a;
-  public View b;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public uwg(DoodleMsgLayout paramDoodleMsgLayout) {}
   
-  public uwg(DingdongScheduleItemBuilder paramDingdongScheduleItemBuilder) {}
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == DoodleMsgLayout.a(this.a))
+    {
+      DoodleMsgLayout.a(this.a, true);
+      DoodleMsgLayout.a(this.a);
+    }
+    do
+    {
+      return;
+      if (paramView == DoodleMsgLayout.b(this.a))
+      {
+        ((GifDrawable)paramURLDrawable.getCurrDrawable()).setGIFPlayOnceListener(this.a);
+        return;
+      }
+    } while (paramView != DoodleMsgLayout.c(this.a));
+  }
 }
 
 

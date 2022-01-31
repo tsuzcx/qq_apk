@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.ui.BeautySettingUi;
+import com.tencent.av.app.GAudioUIObserver;
+import com.tencent.av.smallscreen.SmallScreenService;
 
 public class jqr
-  implements DialogInterface.OnDismissListener
+  extends GAudioUIObserver
 {
-  public jqr(BeautySettingUi paramBeautySettingUi, int paramInt) {}
+  public jqr(SmallScreenService paramSmallScreenService) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_ComTencentAvUiBeautySettingUi.c(this.jdField_a_of_type_Int);
-  }
+  protected void a(long paramLong, int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqr
  * JD-Core Version:    0.7.0.1
  */

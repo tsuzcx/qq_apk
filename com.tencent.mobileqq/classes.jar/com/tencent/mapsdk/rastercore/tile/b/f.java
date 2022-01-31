@@ -1,73 +1,44 @@
 package com.tencent.mapsdk.rastercore.tile.b;
 
-import com.tencent.mapsdk.rastercore.b;
+import com.tencent.mapsdk.rastercore.d.h;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public final class f
+public class f
   extends a
 {
-  private String[] a = { "https://m0.map.gtimg.com/hwap", "https://m1.map.gtimg.com/hwap", "https://m2.map.gtimg.com/hwap", "https://m3.map.gtimg.com/hwap" };
+  private String[] a = { "https://s0.map.gtimg.com/oversea", "https://s1.map.gtimg.com/oversea", "https://s2.map.gtimg.com/oversea", "https://s3.map.gtimg.com/oversea" };
   
-  public final URL getTileUrl(int paramInt1, int paramInt2, int paramInt3, Object... paramVarArgs)
+  public f(int paramInt)
   {
-    int n = 0;
-    j = 0;
-    m = b.a;
-    k = m;
-    i = j;
-    if (paramVarArgs != null)
+    super(paramInt);
+  }
+  
+  public URL getTileUrl(int paramInt1, int paramInt2, int paramInt3, Object... paramVarArgs)
+  {
+    int i = a(paramInt1 + paramInt2, this.a.length);
+    paramVarArgs = this.a[i];
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramVarArgs);
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append("z=").append(paramInt3);
+    ((StringBuilder)localObject).append("&x=").append(paramInt1);
+    ((StringBuilder)localObject).append("&y=").append(paramInt2);
+    ((StringBuilder)localObject).append("&styleid=").append(h.e());
+    ((StringBuilder)localObject).append("&scene=").append(h.f());
+    ((StringBuilder)localObject).append("&version=").append(h.g());
+    ((StringBuilder)localObject).append("&ch=").append(com.tencent.mapsdk.rastercore.d.f.q());
+    paramVarArgs = ((StringBuilder)localObject).toString();
+    try
     {
-      k = m;
-      i = j;
-      j = n;
+      localObject = new URL(paramVarArgs);
+      return localObject;
     }
-    for (;;)
+    catch (MalformedURLException localMalformedURLException)
     {
-      try
-      {
-        if (paramVarArgs.length == 2)
-        {
-          j = n;
-          i = Integer.parseInt(paramVarArgs[0].toString());
-          j = i;
-          k = Integer.parseInt(paramVarArgs[1].toString());
-        }
-      }
-      catch (Exception paramVarArgs)
-      {
-        k = m;
-        i = j;
-        continue;
-      }
-      try
-      {
-        j = a(paramInt1 + paramInt2, this.a.length);
-        paramInt2 = (int)(Math.pow(2.0D, paramInt3) - paramInt2 - 1.0D);
-        paramVarArgs = new StringBuilder(128);
-        paramVarArgs.append(this.a[j]);
-        paramVarArgs.append("?");
-        paramVarArgs.append("z=");
-        paramVarArgs.append(paramInt3 - 1);
-        paramVarArgs.append("&x=");
-        paramVarArgs.append(paramInt1);
-        paramVarArgs.append("&y=");
-        paramVarArgs.append(paramInt2);
-        paramVarArgs.append("&styleid=");
-        paramVarArgs.append(b.e);
-        paramVarArgs.append("&scene=");
-        paramVarArgs.append(i);
-        paramVarArgs.append("&version=");
-        paramVarArgs.append(k);
-        paramVarArgs = new URL(paramVarArgs.toString());
-        return paramVarArgs;
-      }
-      catch (MalformedURLException paramVarArgs)
-      {
-        new StringBuilder("Error new URL with str:").append(null);
-        return null;
-      }
+      new StringBuilder("Unable to new URL with ").append(paramVarArgs);
     }
+    return null;
   }
 }
 

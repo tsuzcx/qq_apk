@@ -1,19 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetApkNameCallback;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 
-public final class adid
-  implements UniformDownloadUtil.GetApkNameCallback
+public class adid
 {
-  public adid(String paramString) {}
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public boolean a;
   
-  public void a(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new adie(this));
-  }
+  public adid(UniformDownloadMgr paramUniformDownloadMgr) {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.imaxad;
 
-import adss;
-import adst;
+import aebb;
+import aebc;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -21,9 +21,9 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import tencent.im.c2s.imax.IMaxService.ExposureMsg;
 import tencent.im.c2s.imax.IMaxService.IgnoreADMsg;
 import tencent.im.c2s.imax.IMaxService.ReqBody;
 
@@ -54,41 +54,64 @@ public class ImaxAdNetPresenter
     this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 1000L);
   }
   
-  public void a(AdvertisementItem paramAdvertisementItem, int paramInt)
+  public void a(AdvertisementItem paramAdvertisementItem, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
   {
     if ((paramAdvertisementItem == null) || (paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem == null)) {
       QLog.e("ImaxAdNetPresenter", 1, "doIMaxServiceRequest error " + paramAdvertisementItem);
     }
     AppRuntime localAppRuntime;
+    IMaxService.ReqBody localReqBody;
+    long l;
     do
     {
-      return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while (localAppRuntime == null);
-    IMaxService.ReqBody localReqBody = new IMaxService.ReqBody();
-    Object localObject = new IMaxService.IgnoreADMsg();
-    paramAdvertisementItem = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c;
-    long l = Long.parseLong(localAppRuntime.getAccount());
-    ((IMaxService.IgnoreADMsg)localObject).uint64_uin.set(l);
-    ((IMaxService.IgnoreADMsg)localObject).str_ad_id.set(paramAdvertisementItem);
-    localReqBody.msg_ignoreAD.set((MessageMicro)localObject);
-    localReqBody.int32_type.set(2);
-    paramAdvertisementItem = new NewIntent(BaseApplicationImpl.getApplication(), ProtoServlet.class);
-    localObject = new ImaxAdNetPresenter.IMaxServiceObserver(paramInt);
-    ((ImaxAdNetPresenter.IMaxServiceObserver)localObject).b = 2;
-    paramAdvertisementItem.putExtra("cmd", "iMaxServiceSvc.IgnoreADMsg");
-    paramAdvertisementItem.putExtra("data", localReqBody.toByteArray());
-    paramAdvertisementItem.putExtra("isResend", false);
-    paramAdvertisementItem.setObserver((BusinessObserver)localObject);
-    localAppRuntime.startServlet(paramAdvertisementItem);
+      do
+      {
+        return;
+        localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      } while (localAppRuntime == null);
+      localReqBody = new IMaxService.ReqBody();
+      localObject = paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c;
+      l = Long.parseLong(localAppRuntime.getAccount());
+      if (paramInt2 == 2)
+      {
+        paramAdvertisementItem = new IMaxService.IgnoreADMsg();
+        paramAdvertisementItem.uint64_uin.set(l);
+        paramAdvertisementItem.str_ad_id.set((String)localObject);
+        localReqBody.msg_ignoreAD.set(paramAdvertisementItem);
+        localReqBody.int32_type.set(2);
+        paramAdvertisementItem = new NewIntent(BaseApplicationImpl.getApplication(), ProtoServlet.class);
+        paramQQAppInterface = new ImaxAdNetPresenter.IMaxServiceObserver(paramInt1);
+        paramQQAppInterface.b = 2;
+        paramAdvertisementItem.putExtra("cmd", "iMaxServiceSvc.IgnoreADMsg");
+        paramAdvertisementItem.putExtra("data", localReqBody.toByteArray());
+        paramAdvertisementItem.putExtra("isResend", false);
+        paramAdvertisementItem.setObserver(paramQQAppInterface);
+        localAppRuntime.startServlet(paramAdvertisementItem);
+        return;
+      }
+    } while (paramInt2 != 1);
+    IMaxService.ExposureMsg localExposureMsg = new IMaxService.ExposureMsg();
+    localExposureMsg.str_ad_id.set((String)localObject);
+    localExposureMsg.uint64_uin.set(l);
+    localExposureMsg.uint32_action_type.set(1);
+    localReqBody.msg_exposure.set(localExposureMsg);
+    localReqBody.int32_type.set(1);
+    Object localObject = new NewIntent(BaseApplicationImpl.getApplication(), ProtoServlet.class);
+    paramAdvertisementItem = new ImaxAdNetPresenter.IMaxServiceObserver(paramAdvertisementItem, paramQQAppInterface);
+    paramAdvertisementItem.b = 2;
+    ((NewIntent)localObject).putExtra("cmd", "iMaxServiceSvc.ExposureADMsg");
+    ((NewIntent)localObject).putExtra("data", localReqBody.toByteArray());
+    ((NewIntent)localObject).putExtra("isResend", false);
+    ((NewIntent)localObject).setObserver(paramAdvertisementItem);
+    localAppRuntime.startServlet((NewIntent)localObject);
   }
   
   public void a(QQAppInterface paramQQAppInterface, AdvertisementItem paramAdvertisementItem)
   {
     if (paramAdvertisementItem != null)
     {
-      ReportController.b(paramQQAppInterface, "dc00898", "", paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8009102", "0X8009102", 0, 0, paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), "");
-      a(paramAdvertisementItem, 4);
+      ReportController.b(paramQQAppInterface, "dc00898", "", paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8009102", "0X8009102", 0, 0, paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), paramAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+      a(paramAdvertisementItem, null, 4, 2);
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -144,11 +167,11 @@ public class ImaxAdNetPresenter
           if ("false".equals(paramString1.getExtInfoFromExtStr("recent_list_advertisement_message_first_report")))
           {
             paramString1.saveExtInfoToExtStr("recent_list_advertisement_message_first_report", "true");
-            ThreadManager.post(new adss(this, paramQQAppInterface, paramString1), 5, null, false);
+            ThreadManager.post(new aebb(this, paramQQAppInterface, paramString1), 5, null, false);
             if ((localAdvertisementItem != null) && (localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null))
             {
-              ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5D", "0X8008F5D", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), PublicAccountAdUtil.a(), "");
-              ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5C", "0X8008F5C", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), "");
+              ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5D", "0X8008F5D", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), PublicAccountAdUtil.a(), localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
+              ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5C", "0X8008F5C", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
             }
           }
         }
@@ -162,7 +185,7 @@ public class ImaxAdNetPresenter
         localAdvertisementItem.a();
         localAdvertisementRecentUserManager.a(paramQQAppInterface, 1, localAdvertisementItem);
         if ((localAdvertisementItem != null) && (localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null)) {
-          ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5F", "0X8008F5F", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", "", "");
+          ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5F", "0X8008F5F", 0, 0, localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", "", localAdvertisementItem.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
         }
       }
     }
@@ -234,28 +257,18 @@ public class ImaxAdNetPresenter
           if ("false".equals(paramString1.getExtInfoFromExtStr("recent_list_advertisement_message_first_report")))
           {
             paramString1.saveExtInfoToExtStr("recent_list_advertisement_message_first_report", "true");
-            ThreadManager.post(new adst(this, paramQQAppInterface, paramString1), 5, null, false);
-            if ((localAdvertisementItem1 != null) && (localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null))
-            {
-              ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5D", "0X8008F5D", 0, 0, localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), PublicAccountAdUtil.a(), "");
-              ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5C", "0X8008F5C", 0, 0, localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), "");
+            ThreadManager.post(new aebc(this, paramQQAppInterface, paramString1), 5, null, false);
+            if ((localAdvertisementItem1 != null) && (localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem != null)) {
+              ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5D", "0X8008F5D", 0, 0, localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), PublicAccountAdUtil.a(), localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
             }
           }
         }
       }
     } while ((localAdvertisementItem1 == null) || (localAdvertisementItem1.jdField_a_of_type_Boolean) || (localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem == null));
-    if (localAdvertisementItem1.a())
-    {
-      AdvertisementRecentUserManager.a().a(paramQQAppInterface, 1, localAdvertisementItem1);
-      ImaxAdRecentUserManager.a().b(localAdvertisementItem1);
-      localAdvertisementItem1.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ImaxAdNetPresenter", 2, "do exposure Report");
-      }
-      localAdvertisementItem1.a();
-      ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8009129", "0X8009129", 0, 0, localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", PublicAccountAdUtil.a(), "");
+    if (localAdvertisementItem1.a()) {
+      a(localAdvertisementItem1, paramQQAppInterface, -1, 1);
     }
-    ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5F", "0X8008F5F", 0, 0, localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", "", "");
+    ReportController.b(paramQQAppInterface, "dc00898", "", localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.a, "0X8008F5F", "0X8008F5F", 0, 0, localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.c, "", "", localAdvertisementItem1.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataVideoDownloadItem.b);
   }
   
   public boolean handleMessage(Message paramMessage)

@@ -1,13 +1,35 @@
-import cooperation.qzone.report.lp.LpReportManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.GeoInfo;
+import cooperation.qzone.LbsDataV2.GpsInfo;
 
-public class amys
-  implements Runnable
+public final class amys
+  implements Parcelable.Creator
 {
-  public amys(LpReportManager paramLpReportManager, int paramInt) {}
-  
-  public void run()
+  public LbsDataV2.GeoInfo a(Parcel paramParcel)
   {
-    LpReportManager.access$100(this.jdField_a_of_type_CooperationQzoneReportLpLpReportManager, this.jdField_a_of_type_Int);
+    LbsDataV2.GeoInfo localGeoInfo = new LbsDataV2.GeoInfo();
+    if (paramParcel != null)
+    {
+      localGeoInfo.address = paramParcel.readString();
+      localGeoInfo.iDistrictCode = paramParcel.readInt();
+      localGeoInfo.iRange = paramParcel.readInt();
+      localGeoInfo.strCountry = paramParcel.readString();
+      localGeoInfo.strProvince = paramParcel.readString();
+      localGeoInfo.strCity = paramParcel.readString();
+      localGeoInfo.strDistrict = paramParcel.readString();
+      localGeoInfo.strTown = paramParcel.readString();
+      localGeoInfo.strVillage = paramParcel.readString();
+      localGeoInfo.strRoad = paramParcel.readString();
+      localGeoInfo.strDefaultName = paramParcel.readString();
+      localGeoInfo.gpsInfo = ((LbsDataV2.GpsInfo)paramParcel.readParcelable(LbsDataV2.GpsInfo.class.getClassLoader()));
+    }
+    return localGeoInfo;
+  }
+  
+  public LbsDataV2.GeoInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

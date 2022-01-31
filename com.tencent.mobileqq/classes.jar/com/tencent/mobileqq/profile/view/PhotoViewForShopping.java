@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.view;
 
-import agqv;
-import agqw;
+import agvi;
+import agvj;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -120,8 +120,8 @@ public class PhotoViewForShopping
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
     this.jdField_a_of_type_JavaLangString = paramProfileCardInfo.a.jdField_a_of_type_JavaLangString;
     this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileShoppingView = paramProfileShoppingView;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2130971008, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager = ((VipScaledViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131362804));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2130971026, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager = ((VipScaledViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131362809));
     paramBaseActivity = getResources().getDisplayMetrics();
     this.jdField_a_of_type_Int = paramBaseActivity.widthPixels;
     this.jdField_b_of_type_Int = paramBaseActivity.heightPixels;
@@ -148,8 +148,8 @@ public class PhotoViewForShopping
       this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.setScale(this.h);
       this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.setGap(this.jdField_g_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.setParentView((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.getParent());
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.setOnPageChangeListener(new agqv(this));
-      ThreadManager.executeOnFileThread(new agqw(this, paramProfileCardInfo));
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.setOnPageChangeListener(new agvi(this));
+      ThreadManager.executeOnFileThread(new agvj(this, paramProfileCardInfo));
       return;
       bool = false;
       break;
@@ -256,8 +256,8 @@ public class PhotoViewForShopping
         new ArrayList();
       } while ((paramMessage == null) || (this.jdField_a_of_type_JavaLangRefReference.get() == null));
       String str = paramMessage.shopName;
-      ((FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefReference.get()).jdField_g_of_type_Int = paramMessage.accountFlag;
-      ((FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefReference.get()).h = paramMessage.followType;
+      ((FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefReference.get()).h = paramMessage.accountFlag;
+      ((FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefReference.get()).i = paramMessage.followType;
       ((FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefReference.get()).d = paramMessage.shopName;
       if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileShoppingView != null) {
         this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileShoppingView.b(str, paramMessage.certifiedGrade);

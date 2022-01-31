@@ -78,10 +78,10 @@ public class RecentSayHelloBoxItem
         }
         if (DatingUtil.a(paramQQAppInterface, a(), 1001))
         {
-          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131437897);
-          this.e = paramContext.getResources().getColor(2131494288);
+          this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131437917);
+          this.e = paramContext.getResources().getColor(2131494294);
           ??? = a();
-          ((MsgSummary)???).b = ((ConversationFacade)localObject1).a(a(), 1001, paramContext.getResources().getString(2131437898), 0);
+          ((MsgSummary)???).b = ((ConversationFacade)localObject1).a(a(), 1001, paramContext.getResources().getString(2131437918), 0);
           a(paramQQAppInterface, (MsgSummary)???);
           a(paramQQAppInterface, paramContext, (MsgSummary)???);
           if (QLog.isColorLevel()) {
@@ -112,8 +112,8 @@ public class RecentSayHelloBoxItem
       {
         this.jdField_d_of_type_Boolean = true;
         this.jdField_b_of_type_Int = 1;
-        this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131438802);
-        this.e = paramContext.getResources().getColor(2131494288);
+        this.jdField_d_of_type_JavaLangCharSequence = paramContext.getResources().getString(2131438826);
+        this.e = paramContext.getResources().getColor(2131494294);
         this.jdField_c_of_type_JavaLangCharSequence = "";
         if (QLog.isColorLevel()) {
           QLog.d("Q.msg_box", 2, "boxUin" + a() + ",boxType" + a() + ",HasUnreadGiftMsg");

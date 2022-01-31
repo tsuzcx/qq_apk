@@ -1,54 +1,78 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.troop.TroopManageProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.graphics.Matrix;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Interpolator;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.hotchat.anim.HeartAnimator.Config;
+import com.tencent.mobileqq.hotchat.anim.HeartAnimator.HeartAnimatorListener;
 
 public class adxw
-  implements TroopMemberApiClient.Callback
+  extends Animation
 {
-  public adxw(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public float a;
+  public int a;
+  public PathMeasure a;
+  public View a;
+  public Interpolator a;
+  public HeartAnimator.Config a;
+  public HeartAnimator.HeartAnimatorListener a;
+  public float b;
   
-  public void a(Bundle paramBundle)
+  @TargetApi(11)
+  public adxw(Path paramPath, float paramFloat, View paramView1, View paramView2, HeartAnimator.Config paramConfig)
   {
-    int i = 12;
-    if (paramBundle != null)
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(paramPath, false);
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
+    this.jdField_a_of_type_AndroidViewView = paramView2;
+    this.jdField_b_of_type_Float = paramFloat;
+    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config = paramConfig;
+    paramView1.setLayerType(2, null);
+  }
+  
+  private static float a(int paramInt, float paramFloat)
+  {
+    switch (paramInt)
     {
-      if (paramBundle.getBoolean("isSuccess"))
-      {
-        paramBundle = new Intent();
-        paramBundle.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a() != null) {
-          i = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin, (byte)12);
-        }
-        TroopManageProxyActivity.a("troop_manage_plugin.apk", "管理群", TroopManageProxyActivity.class, this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), paramBundle, TroopManageProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a()), "com.tencent.mobileqq.activity.TroopSetJoinTypeActivity", this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a().getAccount(), i);
+    default: 
+      return (float)Math.pow(paramFloat, 2.0D);
+    case 1: 
+      if (paramFloat < 0.8D) {
+        return 0.0F;
       }
+      return 5.0F * paramFloat - 4.0F;
     }
-    else {
-      return;
-    }
-    paramBundle = new JSONObject();
-    try
+    return 0.5F * paramFloat + 0.5F;
+  }
+  
+  @TargetApi(11)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    Object localObject = paramTransformation.getMatrix();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getMatrix(this.jdField_a_of_type_Float * paramFloat, (Matrix)localObject, 1);
+    float f;
+    if (Build.VERSION.SDK_INT >= 11)
     {
-      paramBundle.put("gc", this.jdField_a_of_type_JavaLangString);
-      paramBundle.put("ret", 1);
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.m, new String[] { paramBundle.toString() });
-      return;
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      f = this.jdField_b_of_type_Float;
+      HeartAnimator.Config localConfig = this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config;
+      ((View)localObject).setRotation(f * paramFloat * HeartAnimator.Config.jdField_b_of_type_Float);
     }
-    catch (JSONException paramBundle)
+    if (this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config.jdField_b_of_type_Boolean)
     {
-      paramBundle.printStackTrace();
+      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
+      this.jdField_a_of_type_AndroidViewView.setScaleX(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config.c * f);
+      this.jdField_a_of_type_AndroidViewView.setScaleY(f * this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config.c);
     }
+    paramTransformation.setAlpha(1.0F - a(this.jdField_a_of_type_Int, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adxw
  * JD-Core Version:    0.7.0.1
  */

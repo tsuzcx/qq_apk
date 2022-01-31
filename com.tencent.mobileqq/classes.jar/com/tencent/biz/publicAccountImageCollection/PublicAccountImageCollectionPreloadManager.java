@@ -33,14 +33,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import myx;
-import myy;
-import myz;
-import mza;
-import mzb;
-import mzc;
-import mzd;
-import mze;
+import ncr;
+import ncs;
+import nct;
+import ncu;
+import ncv;
+import ncw;
+import ncx;
+import ncy;
 
 public class PublicAccountImageCollectionPreloadManager
 {
@@ -130,12 +130,12 @@ public class PublicAccountImageCollectionPreloadManager
   
   private void a(String paramString, byte[] paramArrayOfByte)
   {
-    ThreadManager.postImmediately(new mza(this, paramString, paramArrayOfByte), null, true);
+    ThreadManager.postImmediately(new ncu(this, paramString, paramArrayOfByte), null, true);
   }
   
   private void a(List paramList)
   {
-    ThreadManager.post(new mzb(this, paramList), 5, null, true);
+    ThreadManager.post(new ncv(this, paramList), 5, null, true);
   }
   
   private void b(String paramString)
@@ -143,7 +143,7 @@ public class PublicAccountImageCollectionPreloadManager
     if (paramString == null) {
       return;
     }
-    if (FileUtils.b(AppConstants.ct + paramString))
+    if (FileUtils.b(AppConstants.cu + paramString))
     {
       if (QLog.isColorLevel()) {
         QLog.d(jdField_a_of_type_JavaLangString, 2, "loadPhotoCollectionInfo file exist");
@@ -189,7 +189,7 @@ public class PublicAccountImageCollectionPreloadManager
   
   private void c(String paramString)
   {
-    ThreadManager.executeOnFileThread(new mze(this, paramString));
+    ThreadManager.executeOnFileThread(new ncy(this, paramString));
   }
   
   private void d(String paramString)
@@ -203,10 +203,10 @@ public class PublicAccountImageCollectionPreloadManager
       PublicAccountArticleHandler localPublicAccountArticleHandler = (PublicAccountArticleHandler)((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(93);
       if (this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver == null)
       {
-        this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver = new myy(this, l);
+        this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver = new ncs(this, l);
         localPublicAccountArticleHandler.a(this.jdField_b_of_type_ComTencentBizPubaccountPublicAccountArticleObserver);
       }
-      ThreadManager.executeOnSubThread(new myz(this, localPublicAccountArticleHandler, paramString));
+      ThreadManager.executeOnSubThread(new nct(this, localPublicAccountArticleHandler, paramString));
     }
   }
   
@@ -240,7 +240,7 @@ public class PublicAccountImageCollectionPreloadManager
   
   public void a()
   {
-    ThreadManager.executeOnSubThread(new mzd(this));
+    ThreadManager.executeOnSubThread(new ncx(this));
   }
   
   public void a(PublicAccountArticleObserver paramPublicAccountArticleObserver)
@@ -250,7 +250,7 @@ public class PublicAccountImageCollectionPreloadManager
   
   public void a(PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new myx(this, paramPhotoCollectionInfo));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ncr(this, paramPhotoCollectionInfo));
   }
   
   public void a(PublicAccountImageCollectionUtils.PhotoCollectionInfo paramPhotoCollectionInfo, byte[] paramArrayOfByte)
@@ -403,7 +403,7 @@ public class PublicAccountImageCollectionPreloadManager
   
   public void d()
   {
-    ThreadManager.post(new mzc(this), 5, null, false);
+    ThreadManager.post(new ncw(this), 5, null, false);
   }
 }
 

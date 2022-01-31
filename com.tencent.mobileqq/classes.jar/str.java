@@ -1,21 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.util.WeakReferenceHandler;
 
-public class str
-  implements DialogInterface.OnClickListener
+class str
+  implements Runnable
 {
-  public str(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, QQCustomDialog paramQQCustomDialog) {}
+  str(stq paramstq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
-    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
+    if ((this.a.a.app == null) || (this.a.a.b == null)) {}
+    do
+    {
+      return;
+      localObject = (FriendsManager)this.a.a.app.getManager(50);
+    } while (localObject == null);
+    Card localCard = ((FriendsManager)localObject).a(this.a.a.a.a.a);
+    Message localMessage = Message.obtain();
+    localMessage.what = 3;
+    Object localObject = localCard;
+    if (localCard == null) {
+      localObject = this.a.a.a.a.a;
+    }
+    localMessage.obj = localObject;
+    this.a.a.b.sendMessage(localMessage);
   }
 }
 

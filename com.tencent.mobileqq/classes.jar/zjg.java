@@ -1,34 +1,13 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.DataLineHandler;
 
-class zjg
-  implements Comparator
+public class zjg
+  implements Runnable
 {
-  zjg(zje paramzje) {}
+  public zjg(DataLineHandler paramDataLineHandler, long paramLong, int paramInt1, int paramInt2) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void run()
   {
-    int j = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
-    int i = j;
-    if (j == 0)
-    {
-      Object localObject2 = paramPhoneContact1.pinyinFirst;
-      String str = paramPhoneContact2.pinyinFirst;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      j = ((String)localObject1).compareTo((String)localObject2);
-      i = j;
-      if (j == 0) {
-        i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-      }
-    }
-    return i;
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.OnSessionComplete(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
   }
 }
 

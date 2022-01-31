@@ -1,16 +1,38 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import java.util.Iterator;
+import java.util.List;
 
-class anyf
-  implements Runnable
+public class anyf
+  implements Animator.AnimatorListener
 {
-  anyf(anyd paramanyd) {}
+  public anyf(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.a.a(this.a.a.a(), this.a.a.b());
-    this.a.a.a.a(true);
+    this.a.c.setVisibility(0);
+    QIMProviderContainerView.a(this.a, true);
+    if (QIMProviderContainerView.a(this.a) != null)
+    {
+      paramAnimator = QIMProviderContainerView.a(this.a).iterator();
+      while (paramAnimator.hasNext()) {
+        ((ProviderContainerView.ContainerViewListener)paramAnimator.next()).a(null, 0);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProviderContainerView", 2, "panelOpened : " + QIMProviderContainerView.a(this.a));
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

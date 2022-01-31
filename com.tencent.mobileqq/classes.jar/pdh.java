@@ -1,15 +1,32 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-class pdh
-  implements Runnable
+public final class pdh
+  implements WXShareHelper.WXShareListener
 {
-  pdh(pdg parampdg, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
+  public pdh(String paramString) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_Pdg.a.a(this.jdField_a_of_type_Pdg.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435319);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      QRUtils.a(2, 2131435318);
+    }
   }
 }
 

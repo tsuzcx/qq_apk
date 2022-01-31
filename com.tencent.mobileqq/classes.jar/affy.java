@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
 
 public class affy
-  implements View.OnClickListener
+  extends Animation
 {
-  public affy(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  private affy(MetaballView paramMetaballView) {}
   
-  public void onClick(View paramView)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (!this.a.a.onBackEvent())
-    {
-      this.a.a.finish();
-      this.a.a.b(false);
-    }
+    super.applyTransformation(paramFloat, paramTransformation);
+    MetaballView.a(this.a, paramFloat);
+    this.a.invalidate();
   }
 }
 

@@ -4,18 +4,18 @@ import android.graphics.Canvas;
 import android.view.MotionEvent;
 import com.tencent.mapsdk.raster.model.GeoPoint;
 import com.tencent.mapsdk.rastercore.d.a;
-import com.tencent.mapsdk.rastercore.d.e;
-import com.tencent.mapsdk.rastercore.e.b;
+import com.tencent.mapsdk.rastercore.d.f;
+import com.tencent.mapsdk.rastercore.e.c;
 
 public class Overlay
-  implements b
+  implements c
 {
   protected static final float SHADOW_X_SKEW = -0.89F;
   protected static final float SHADOW_Y_SCALE = 0.5F;
   protected a contentLayer;
   protected String id = getId();
   protected boolean isVisible = true;
-  protected e mapContext;
+  protected f mapContext;
   protected MapView mapView;
   protected float zIndex = 0.0F;
   
@@ -33,9 +33,9 @@ public class Overlay
   
   protected void draw(Canvas paramCanvas, MapView paramMapView) {}
   
-  public boolean equalsRemote(b paramb)
+  public boolean equalsRemote(c paramc)
   {
-    return (equals(paramb)) || (paramb.getId().equals(getId()));
+    return (equals(paramc)) || (paramc.getId().equals(getId()));
   }
   
   public String getId()

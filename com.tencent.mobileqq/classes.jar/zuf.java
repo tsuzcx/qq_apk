@@ -1,36 +1,67 @@
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SubAccountBindHandler;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
+import mqq.observer.SubAccountObserver;
 
 public class zuf
-  implements ProtoReqManager.IProtoRespBack
+  extends SubAccountObserver
 {
-  public zuf(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, long paramLong3) {}
+  public zuf(SubAccountBindHandler paramSubAccountBindHandler, SubAccountBackProtocData paramSubAccountBackProtocData, SubAccountManager paramSubAccountManager, boolean paramBoolean) {}
   
-  public void a(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    try
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if ((paramString3 == null) || (paramString2 == null) || (paramString1 == null))
     {
-      paramProtoResp = paramProtoResp.a.getWupBuffer();
-      paramProtoReq = new structmsg.RspSystemMsgRead();
-      paramProtoReq.mergeFrom(paramProtoResp);
-      int i = paramProtoReq.head.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack key is null or ? happen 0 ? =>");
+        if (paramString3 != null) {
+          break label107;
+        }
+        bool1 = true;
+        paramString3 = localStringBuilder.append(bool1);
+        if (paramString2 != null) {
+          break label113;
+        }
       }
+      label107:
+      label113:
+      for (bool1 = true;; bool1 = false)
+      {
+        paramString2 = paramString3.append(bool1);
+        bool1 = bool2;
+        if (paramString1 == null) {
+          bool1 = true;
+        }
+        QLog.e("SUB_ACCOUNT", 2, bool1);
+        this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.a(2, true, this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData);
+        return;
+        bool1 = false;
+        break;
+      }
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b != null) && (paramString2.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c)) && (paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b.getAccount())))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountManager.a(paramString2, paramString3, this.jdField_a_of_type_Boolean);
+      SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b, (byte)1, paramString2);
+      this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.b = true;
+      this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.a(2, true, this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData);
       return;
     }
-    catch (Exception paramProtoResp)
+    if (QLog.isColorLevel())
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
+      paramString3 = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack error happen 1 ? =>app:");
+      if (this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b == null) {
+        bool1 = true;
+      }
+      QLog.d("SUB_ACCOUNT", 2, bool1 + " subUin:" + paramString2.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c) + " mainAccount:" + paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b.getAccount()));
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.a(2, true, this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData);
   }
 }
 

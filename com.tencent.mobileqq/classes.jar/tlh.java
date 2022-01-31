@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.IActionListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class tlh
-  implements IActionListener
+  implements Runnable
 {
-  public tlh(QQSettingMe paramQQSettingMe) {}
+  public tlh(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.B();
-    }
+    this.a.c(this.a.a.getLeft(), this.a.a.getTop() + this.a.a.getMeasuredHeight() - 20);
   }
 }
 

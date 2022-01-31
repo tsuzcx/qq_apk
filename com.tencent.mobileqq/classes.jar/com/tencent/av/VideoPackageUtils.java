@@ -4,6 +4,7 @@ import com.tencent.av.utils.CharacterUtil;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
@@ -109,6 +110,8 @@ public class VideoPackageUtils
         if (paramArrayOfByte.msg_video_head.has())
         {
           localObject = (hd_video.VideoHead)paramArrayOfByte.msg_video_head.get();
+          localVideoPacket.jdField_a_of_type_JavaLangString = ((hd_video.VideoHead)localObject).str_from_mobile.get();
+          localVideoPacket.jdField_b_of_type_JavaLangString = ((hd_video.VideoHead)localObject).str_from_nation.get();
           localVideoPacket.jdField_a_of_type_Int = ((hd_video.VideoHead)localObject).enum_body_type.get();
           localVideoPacket.jdField_b_of_type_Long = ((hd_video.VideoHead)localObject).uint64_uin.get();
           if (((hd_video.VideoHead)localObject).int32_sub_service_type.has())
@@ -154,7 +157,7 @@ public class VideoPackageUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.VideoPackageUtils
  * JD-Core Version:    0.7.0.1
  */

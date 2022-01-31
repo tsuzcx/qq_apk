@@ -1,15 +1,14 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopFeeMsgItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
 
-public class vjl
-  extends BaseBubbleBuilder.ViewHolder
+class vjl
+  implements Runnable
 {
-  public long a;
-  public RelativeLayout a;
-  public String b;
+  vjl(vjk paramvjk) {}
   
-  private vjl(TroopFeeMsgItemBuilder paramTroopFeeMsgItemBuilder) {}
+  public void run()
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.a.jdField_a_of_type_Vjt, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, this.a.jdField_a_of_type_ComTencentImageURLDrawable);
+  }
 }
 
 

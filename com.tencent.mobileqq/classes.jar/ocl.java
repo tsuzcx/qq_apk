@@ -1,66 +1,66 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.storyHome.messagenotify.MessageData;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ocl
-  extends TransProcessorHandler
+  extends ProtoUtils.StoryProtocolObserver
 {
-  public ocl(CommonPicUploadFragment paramCommonPicUploadFragment) {}
-  
-  public void handleMessage(Message paramMessage)
+  public ocl(StoryMessageListActivity paramStoryMessageListActivity)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.b != 24) || (localFileMsg.c != CommonPicUploadFragment.a(this.a, CommonPicUploadFragment.a(this.a)))) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (localFileMsg.f.equals(CommonPicUploadFragment.b(this.a)));
-      switch (paramMessage.what)
-      {
-      case 1004: 
-      default: 
-        return;
-      case 1003: 
-        if (QLog.isColorLevel()) {
-          QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send finished!" + CommonPicUploadFragment.a(this.a));
-        }
-        break;
-      }
-    } while (CommonPicUploadFragment.a(this.a));
-    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
-    try
-    {
-      paramMessage.mergeFrom(localFileMsg.a, 0, localFileMsg.a.length);
-      CommonPicUploadFragment.a(this.a, true);
-      CommonPicUploadFragment.b(this.a, localFileMsg.f);
-      CommonPicUploadFragment.c(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
-      CommonPicUploadFragment.d(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
-      if (QLog.isColorLevel()) {
-        QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler mUuid=" + CommonPicUploadFragment.c(this.a) + ", mPicMd5=" + CommonPicUploadFragment.b(this.a) + ", mPicUrl=" + CommonPicUploadFragment.d(this.a));
-      }
-      CommonPicUploadFragment.a(this.a).sendEmptyMessage(1005);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("CommonPicUploadFragment", 2, "mPicTransProcessorHandler send error:" + localFileMsg.g);
+      QLog.d("Q.qqstory.msgList", 2, "fetch message list result, code=" + paramInt);
     }
-    CommonPicUploadFragment.a(this.a).sendEmptyMessage(1003);
+    paramBundle = new qqstory_struct.ErrorInfo();
+    qqstory_710_message.RspStoryMessageList localRspStoryMessageList;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
+      {
+        localRspStoryMessageList = new qqstory_710_message.RspStoryMessageList();
+        localRspStoryMessageList.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_710_message.ErrorInfo)localRspStoryMessageList.errinfo.get();
+        paramBundle.error_code.set(paramArrayOfByte.error_code.get());
+        paramBundle.error_desc.set(paramArrayOfByte.error_desc.get());
+        if ((localRspStoryMessageList.errinfo.error_code.has()) && (localRspStoryMessageList.errinfo.error_code.get() == 0))
+        {
+          paramArrayOfByte = new ArrayList(localRspStoryMessageList.message_num.get());
+          Iterator localIterator = localRspStoryMessageList.message_list.get().iterator();
+          while (localIterator.hasNext()) {
+            paramArrayOfByte.add(new MessageData((qqstory_710_message.StoryMessage)localIterator.next()));
+          }
+        }
+        ThreadManager.getUIHandler().post(new ocn(this));
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.msgList", 2, "parse RspStoryMessageList error", paramArrayOfByte);
+        }
+      }
+    } else {
+      return paramBundle;
+    }
+    ThreadManager.getUIHandler().post(new ocm(this, paramArrayOfByte, localRspStoryMessageList));
+    return paramBundle;
   }
 }
 

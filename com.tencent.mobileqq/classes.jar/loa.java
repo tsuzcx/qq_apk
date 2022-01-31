@@ -1,56 +1,114 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetMessageConfigurationResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.observer.BusinessObserver;
 
-class loa
-  implements View.OnClickListener
+public class loa
+  implements BusinessObserver
 {
-  loa(lnz paramlnz) {}
+  public loa(KandianMergeManager paramKandianMergeManager) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (lnz.a(this.a) != null)
-    {
-      paramView = (Context)lnz.a(this.a).get();
-      if (paramView != null)
-      {
-        this.a.b();
-        ReadInJoyUtils.a(paramView, ReadInJoyHelper.g(ReadInJoySubscribeFragement.a(this.a.a)));
-        paramView = (KandianMergeManager)ReadInJoySubscribeFragement.a(this.a.a).getManager(161);
-      }
+    mobileqq_mp.GetMessageConfigurationResponse localGetMessageConfigurationResponse;
+    if (paramBoolean) {
+      localGetMessageConfigurationResponse = new mobileqq_mp.GetMessageConfigurationResponse();
     }
+    label263:
+    label295:
+    label310:
+    label324:
+    label325:
     for (;;)
     {
       try
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("folder_status", ReadInJoyUtils.d);
-        KandianOx210MsgInfo.Biu0x210Msg localBiu0x210Msg = paramView.a();
-        if (localBiu0x210Msg == null) {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label310;
+        }
+        localGetMessageConfigurationResponse.mergeFrom(paramBundle);
+        if ((!localGetMessageConfigurationResponse.ret_info.has()) || (!localGetMessageConfigurationResponse.ret_info.ret_code.has())) {
+          break label295;
+        }
+        paramInt = localGetMessageConfigurationResponse.ret_info.ret_code.get();
+        if (paramInt != 0) {
+          break label263;
+        }
+        if (!localGetMessageConfigurationResponse.type.has()) {
+          break label324;
+        }
+        paramInt = localGetMessageConfigurationResponse.type.get();
+        if (paramInt != 1) {
+          break label325;
+        }
+        paramBoolean = true;
+        paramBundle = BaseActivity.sTopActivity;
+        if (ReadInJoyHelper.f(KandianMergeManager.a(this.a))) {
+          break label206;
+        }
+        if ((paramBundle instanceof ReadInJoySettingActivity))
+        {
+          paramBundle = (ReadInJoySettingActivity)paramBundle;
+          if (paramBundle.a())
+          {
+            QLog.d("KandianMergeManager", 1, "setting: has set kandian status");
+            QLog.d("KandianMergeManager", 1, "result:" + paramInt);
+            return;
+          }
+          this.a.a(paramBoolean);
+          paramBundle.a(paramBoolean);
           continue;
         }
-        l = localBiu0x210Msg.b;
-        localJSONObject.put("reddot_source", l);
-        localJSONObject.toString();
+        this.a.a(paramBoolean);
       }
-      catch (JSONException localJSONException)
+      catch (Exception paramBundle)
       {
-        long l;
-        localJSONException.printStackTrace();
-        continue;
+        QLog.d("KandianMergeManager", 1, "failed to handle request Kandian status configuration");
+        return;
       }
-      paramView.f();
-      return;
-      l = 0L;
+      continue;
+      label206:
+      if ((paramBundle instanceof ReadinjoyMsgManagerActivity))
+      {
+        paramBundle = (ReadinjoyMsgManagerActivity)paramBundle;
+        if (paramBundle.a())
+        {
+          QLog.d("KandianMergeManager", 1, "msg manage: has set kandian status");
+        }
+        else
+        {
+          this.a.a(paramBoolean);
+          paramBundle.a(paramBoolean);
+        }
+      }
+      else
+      {
+        this.a.a(paramBoolean);
+        continue;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("KandianMergeManager", 2, "request Kandian status fail code:" + paramInt);
+          return;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("KandianMergeManager", 2, "request Kandian status wrong resp");
+            return;
+            if (QLog.isColorLevel()) {
+              QLog.d("KandianMergeManager", 2, "request Kandian status fail data null");
+            }
+          }
+        }
+        return;
+        paramBoolean = false;
+      }
     }
   }
 }

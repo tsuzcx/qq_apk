@@ -1,27 +1,18 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.OnWidgetElementClickListener;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetElement;
 
 public class ota
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ota(QRDisplayActivity paramQRDisplayActivity) {}
+  public ota(PollWidgetUtils.WidgetElement paramWidgetElement) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = "temp_qrcode_share_" + this.a.jdField_c_of_type_JavaLangString + ".png";
-    try
-    {
-      str = QRUtils.a(this.a.getApplicationContext(), str, this.a.b);
-      this.a.runOnUiThread(new otc(this, str));
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      if (this.a.jdField_c_of_type_Int == 2) {
-        TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
-      }
-      this.a.runOnUiThread(new otb(this));
+    paramView = this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener;
+    if (paramView != null) {
+      paramView.a(this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$WidgetWrapper, this.a);
     }
   }
 }

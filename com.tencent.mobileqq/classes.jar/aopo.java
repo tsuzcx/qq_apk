@@ -1,8 +1,19 @@
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+
 public class aopo
+  implements Runnable
 {
-  public static aopp a(String paramString)
+  public aopo(VideoFilterViewPager paramVideoFilterViewPager, View paramView) {}
+  
+  public void run()
   {
-    return new aopp(paramString);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(300L);
+    localAlphaAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
+    localAlphaAnimation.setAnimationListener(new aopp(this));
   }
 }
 

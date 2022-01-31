@@ -14,10 +14,10 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anoj;
-import anok;
-import anol;
-import anom;
+import anww;
+import anwx;
+import anwy;
+import anwz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -40,7 +40,7 @@ public class SupernaturalTextItem
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private PinYinSpan.OnPinYinDrawListener jdField_a_of_type_DovComQqImCaptureTextPinYinSpan$OnPinYinDrawListener = new anoj(this);
+  private PinYinSpan.OnPinYinDrawListener jdField_a_of_type_DovComQqImCaptureTextPinYinSpan$OnPinYinDrawListener = new anww(this);
   private float jdField_b_of_type_Float;
   private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   private StaticLayout jdField_b_of_type_AndroidTextStaticLayout;
@@ -105,11 +105,11 @@ public class SupernaturalTextItem
     ArrayList localArrayList = new ArrayList();
     while (paramString.find())
     {
-      anom localanom = new anom(this, null);
-      localanom.jdField_a_of_type_Int = paramString.start();
-      localanom.b = paramString.end();
-      localanom.jdField_a_of_type_JavaLangString = paramString.group();
-      localArrayList.add(localanom);
+      anwz localanwz = new anwz(this, null);
+      localanwz.jdField_a_of_type_Int = paramString.start();
+      localanwz.b = paramString.end();
+      localanwz.jdField_a_of_type_JavaLangString = paramString.group();
+      localArrayList.add(localanwz);
     }
     return localArrayList;
   }
@@ -207,7 +207,7 @@ public class SupernaturalTextItem
       return;
     }
     super.a(paramInt, paramString);
-    Object localObject = a(paramInt, new anok(this));
+    Object localObject = a(paramInt, new anwx(this));
     paramString = (String)localObject;
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       paramString = "　　";
@@ -290,7 +290,7 @@ public class SupernaturalTextItem
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        anom localanom = (anom)((Iterator)localObject).next();
+        anwz localanwz = (anwz)((Iterator)localObject).next();
         PinYinSpan localPinYinSpan = new PinYinSpan();
         localPinYinSpan.b(this.h);
         localPinYinSpan.a(this.i);
@@ -298,7 +298,7 @@ public class SupernaturalTextItem
         localPinYinSpan.a(this.jdField_a_of_type_AndroidGraphicsTypeface);
         localPinYinSpan.a((int)this.o);
         localPinYinSpan.a(this.jdField_a_of_type_DovComQqImCaptureTextPinYinSpan$OnPinYinDrawListener);
-        paramString.setSpan(localPinYinSpan, localanom.jdField_a_of_type_Int, localanom.b, 33);
+        paramString.setSpan(localPinYinSpan, localanwz.jdField_a_of_type_Int, localanwz.b, 33);
       }
       this.jdField_c_of_type_AndroidTextStaticLayout = StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.jdField_b_of_type_AndroidTextTextPaint, (int)this.g, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 1);
       this.l = a(this.jdField_c_of_type_AndroidTextStaticLayout);
@@ -427,7 +427,7 @@ public class SupernaturalTextItem
   {
     boolean bool = false;
     String str1 = b(0);
-    String str2 = a(1, new anol(this));
+    String str2 = a(1, new anwy(this));
     if (((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2))) || (super.b())) {
       bool = true;
     }

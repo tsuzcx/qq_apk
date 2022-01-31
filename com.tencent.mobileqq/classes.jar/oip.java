@@ -1,26 +1,16 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
+import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 
 public class oip
-  extends oiv
+  implements DoodleEditView.DoodleEditViewListener
 {
-  public oip(DoodleEmojiManager paramDoodleEmojiManager, DoodleEmojiItem paramDoodleEmojiItem)
-  {
-    super(paramDoodleEmojiItem);
-  }
+  public oip(EditVideoDoodle paramEditVideoDoodle) {}
   
-  protected void a(@Nullable DoodleEmojiItem arg1)
+  public void a(GestureHelper.ZoomItem paramZoomItem)
   {
-    super.onResult(???);
-    SLog.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.c();
-      return;
-    }
+    this.a.a.a(6);
   }
 }
 

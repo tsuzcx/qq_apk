@@ -2,7 +2,7 @@ package dov.com.qq.im.capture.paster;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import annd;
+import anvq;
 import com.tencent.av.AVNetEngine;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -42,22 +42,19 @@ public class QIMInformationPasterManager$InformationPasterResDownloader
     {
       synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+        localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        if (localArrayList != null)
         {
-          paramItem = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-          if ((paramItem == null) || (paramItem.isEmpty())) {
-            break label310;
+          paramItem = localArrayList.iterator();
+          if (!paramItem.hasNext()) {
+            break label292;
           }
-          localObject = paramItem.iterator();
-          if (!((Iterator)localObject).hasNext()) {
-            break label310;
-          }
-          if (((WeakReference)((Iterator)localObject).next()).get() != paramIInformationPasterResDownloaderCallback) {
+          if (((WeakReference)paramItem.next()).get() != paramIInformationPasterResDownloaderCallback) {
             continue;
           }
           i = 1;
           if (i == 0) {
-            paramItem.add(new WeakReference(paramIInformationPasterResDownloaderCallback));
+            localArrayList.add(new WeakReference(paramIInformationPasterResDownloaderCallback));
           }
           if (QLog.isColorLevel()) {
             QLog.i("QIMInformationPasterManager", 2, "already put url " + str);
@@ -65,11 +62,11 @@ public class QIMInformationPasterManager$InformationPasterResDownloader
           return;
         }
       }
-      Object localObject = new ArrayList();
-      ((ArrayList)localObject).add(new WeakReference(paramIInformationPasterResDownloaderCallback));
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localObject);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new WeakReference(paramIInformationPasterResDownloaderCallback));
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localArrayList);
       paramIInformationPasterResDownloaderCallback = new HttpNetReq();
-      paramIInformationPasterResDownloaderCallback.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new annd(this);
+      paramIInformationPasterResDownloaderCallback.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new anvq(this);
       paramIInformationPasterResDownloaderCallback.jdField_a_of_type_JavaLangString = str;
       paramIInformationPasterResDownloaderCallback.jdField_a_of_type_Int = 0;
       paramIInformationPasterResDownloaderCallback.jdField_c_of_type_JavaLangString = QIMInformationPasterManager.a(paramItem);
@@ -77,7 +74,7 @@ public class QIMInformationPasterManager$InformationPasterResDownloader
       paramIInformationPasterResDownloaderCallback.a(paramItem);
       AVNetEngine.a().a(paramIInformationPasterResDownloaderCallback);
       return;
-      label310:
+      label292:
       int i = 0;
     }
   }

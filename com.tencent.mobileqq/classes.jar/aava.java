@@ -1,38 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
 
 class aava
-  implements Runnable
+  implements ArkAppEventObserverManager.PositionCallback
 {
-  aava(aauz paramaauz, Set paramSet) {}
+  aava(aauq paramaauq, long paramLong) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw.jdField_a_of_type_JavaUtilSet.addAll(this.jdField_a_of_type_JavaUtilSet);
-    if (this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw.jdField_a_of_type_JavaUtilSet.isEmpty())
-    {
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppPathByAction, no app name found, task complete, action=%s.%s", new Object[] { this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw.b }));
-      this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw.jdField_a_of_type_Boolean = true;
-      ArkLocalAppMgr.a(this.jdField_a_of_type_Aauz.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aauq.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = this.jdField_a_of_type_Aauz.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.a(str1, "0.0.0.0");
-        if (!TextUtils.isEmpty(str2)) {
-          ArkLocalAppMgr.a(this.jdField_a_of_type_Aauz.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw, 0, "Found on Local", str2, str1);
-        } else {
-          this.jdField_a_of_type_Aauz.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.a(str1, "0.0.0.0", null, new aavb(this, str1));
-        }
-      }
-    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    ArkAppDeviceModule.a(this.jdField_a_of_type_Aauq.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

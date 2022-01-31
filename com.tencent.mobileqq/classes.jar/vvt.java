@@ -1,23 +1,26 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.widget.QQToast;
 
 class vvt
   implements Runnable
 {
-  vvt(vvs paramvvs, MultiForwardChatPie paramMultiForwardChatPie, CharSequence paramCharSequence) {}
+  vvt(vvr paramvvr, int paramInt) {}
   
   public void run()
   {
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(8);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.d.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.g);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.b, this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.y();
+    ArkDebugChatPie.a(this.jdField_a_of_type_Vvr.a.a);
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (String str = "(监听超时)";; str = "")
+    {
+      ((ArkAppCenter)this.jdField_a_of_type_Vvr.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(120)).a().f();
+      QQToast.a(this.jdField_a_of_type_Vvr.a.a.jdField_a_of_type_AndroidContentContext, String.format("连接已经关闭%s...", new Object[] { str }), 0).a();
+      ArkDispatchTask.getInstance().postToMainThreadDelayed(new vvu(this), 60L);
+      return;
+    }
   }
 }
 

@@ -1,34 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class ttd
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
-  public ttd(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public ttd(RegisterActivity paramRegisterActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    int i = 1;
-    if (paramBoolean)
-    {
-      this.a.app.d(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
-      }
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+      this.a.a.dismiss();
     }
-    for (;;)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
-      return;
-      this.a.app.d(0);
-      break;
-      label68:
-      i = 0;
-    }
+    this.a.a = null;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aija;
-import aijb;
+import ainv;
+import ainw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -41,38 +41,38 @@ public class StructMsgItemLayout20
   
   View a(View paramView, Context paramContext, String paramString)
   {
-    aijb localaijb2;
+    ainw localainw2;
     try
     {
       i = Integer.parseInt(this.u);
       if (paramView == null)
       {
-        aijb localaijb1 = new aijb(this);
-        paramView = View.inflate(paramContext, 2130970944, null);
-        localaijb1.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131362754));
-        localaijb1.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
-        localaijb1.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365294));
-        localaijb1.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362727);
-        paramView.setTag(localaijb1);
-        localaijb1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramString);
+        ainw localainw1 = new ainw(this);
+        paramView = View.inflate(paramContext, 2130970962, null);
+        localainw1.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131362759));
+        localainw1.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362724));
+        localainw1.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365303));
+        localainw1.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362732);
+        paramView.setTag(localainw1);
+        localainw1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramString);
         if (i != 1) {
           break label331;
         }
-        localaijb1.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        localaijb1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(Color.parseColor("#777777"));
-        localaijb1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextSize(14.0F);
-        localaijb1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
-        localaijb1.jdField_a_of_type_AndroidWidgetTextView.setText(this.w);
-        localaijb1.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-        localaijb1.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130838522));
+        localainw1.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        localainw1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(Color.parseColor("#777777"));
+        localainw1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextSize(14.0F);
+        localainw1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
+        localainw1.jdField_a_of_type_AndroidWidgetTextView.setText(this.w);
+        localainw1.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+        localainw1.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130838534));
         paramView.setTag(2131362185, this.b);
-        localaijb1.jdField_a_of_type_AndroidWidgetTextView.setTag(2131362185, this.b);
+        localainw1.jdField_a_of_type_AndroidWidgetTextView.setTag(2131362185, this.b);
         i = AIOUtils.a(17.0F, paramContext.getResources());
         int j = AIOUtils.a(16.0F, paramContext.getResources());
-        localaijb1.jdField_a_of_type_AndroidWidgetTextView.setPadding(j, 0, j, 0);
-        localaijb1.jdField_a_of_type_AndroidWidgetTextView.post(new aija(this, i, localaijb1));
+        localainw1.jdField_a_of_type_AndroidWidgetTextView.setPadding(j, 0, j, 0);
+        localainw1.jdField_a_of_type_AndroidWidgetTextView.post(new ainv(this, i, localainw1));
         paramView.setOnClickListener(this);
-        localaijb1.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+        localainw1.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
         return paramView;
       }
     }
@@ -86,11 +86,11 @@ public class StructMsgItemLayout20
           QLog.e("StructMsgItemLayout20", 1, "content type:" + this.u);
           i = 0;
           continue;
-          localaijb2 = (aijb)paramView.getTag();
+          localainw2 = (ainw)paramView.getTag();
         }
       } while (i != 0);
-      localaijb2.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramString = paramContext.getResources().getDrawable(2130839132);
+      localainw2.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramString = paramContext.getResources().getDrawable(2130839147);
       if (TextUtils.isEmpty(this.v)) {
         break label636;
       }
@@ -105,39 +105,39 @@ public class StructMsgItemLayout20
     }
     paramString.setTag(URLDrawableDecodeHandler.a(i, i, i / 2));
     paramString.setDecodeHandler(URLDrawableDecodeHandler.b);
-    localaijb2.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    localainw2.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
     label446:
     if (this.jdField_a_of_type_Boolean)
     {
-      paramString = paramContext.getResources().getDrawable(2130839751);
-      localaijb2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding(AIOUtils.a(3.0F, paramContext.getResources()));
+      paramString = paramContext.getResources().getDrawable(2130839766);
+      localainw2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding(AIOUtils.a(3.0F, paramContext.getResources()));
       paramString.setBounds(0, 0, AIOUtils.a(15.0F, paramContext.getResources()), AIOUtils.a(15.0F, paramContext.getResources()));
-      localaijb2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, paramString);
-      localaijb2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(Color.parseColor("#000000"));
-      localaijb2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextSize(17.0F);
-      localaijb2.jdField_a_of_type_AndroidWidgetTextView.setTag(localaijb2);
+      localainw2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, paramString);
+      localainw2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(Color.parseColor("#000000"));
+      localainw2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextSize(17.0F);
+      localainw2.jdField_a_of_type_AndroidWidgetTextView.setTag(localainw2);
       if (!((PublicAccountDataManager)((BaseActivity)paramContext).app.getManager(55)).a(Long.valueOf(Long.parseLong(this.x)))) {
         break label661;
       }
-      localaijb2.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
-      localaijb2.jdField_a_of_type_AndroidWidgetTextView.setText("已关注");
-      localaijb2.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      localainw2.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+      localainw2.jdField_a_of_type_AndroidWidgetTextView.setText("已关注");
+      localainw2.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
     }
     for (;;)
     {
       label514:
       paramView.setTag(2131362184, this.x);
-      localaijb2.jdField_a_of_type_AndroidWidgetTextView.setTag(2131362184, this.x);
+      localainw2.jdField_a_of_type_AndroidWidgetTextView.setTag(2131362184, this.x);
       break;
       label636:
-      localaijb2.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+      localainw2.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
       break label446;
-      localaijb2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
+      localainw2.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
       break label514;
       label661:
-      localaijb2.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130838522));
-      localaijb2.jdField_a_of_type_AndroidWidgetTextView.setText("关注");
-      localaijb2.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+      localainw2.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramContext.getResources().getDrawable(2130838534));
+      localainw2.jdField_a_of_type_AndroidWidgetTextView.setText("关注");
+      localainw2.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
     }
   }
   
@@ -375,24 +375,24 @@ public class StructMsgItemLayout20
     //   293: if_icmpne -271 -> 22
     //   296: aload_1
     //   297: invokevirtual 178	android/view/View:getTag	()Ljava/lang/Object;
-    //   300: checkcast 29	aijb
+    //   300: checkcast 29	ainw
     //   303: astore_1
     //   304: aload_1
-    //   305: getfield 61	aijb:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   305: getfield 61	ainw:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   308: iconst_4
     //   309: invokevirtual 500	android/widget/TextView:setVisibility	(I)V
     //   312: aload_1
-    //   313: getfield 65	aijb:jdField_a_of_type_AndroidViewView	Landroid/view/View;
+    //   313: getfield 65	ainw:jdField_a_of_type_AndroidViewView	Landroid/view/View;
     //   316: iconst_0
     //   317: invokevirtual 501	android/view/View:setVisibility	(I)V
     //   320: aload_3
     //   321: aload 4
     //   323: aload 5
-    //   325: new 503	aijc
+    //   325: new 503	ainx
     //   328: dup
     //   329: aload_0
     //   330: aload_1
-    //   331: invokespecial 506	aijc:<init>	(Lcom/tencent/mobileqq/structmsg/view/StructMsgItemLayout20;Laijb;)V
+    //   331: invokespecial 506	ainx:<init>	(Lcom/tencent/mobileqq/structmsg/view/StructMsgItemLayout20;Lainw;)V
     //   334: iconst_1
     //   335: iconst_3
     //   336: invokestatic 509	com/tencent/biz/pubaccount/util/PublicAccountUtil:a	(Lcom/tencent/common/app/AppInterface;Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mobileqq/app/PublicAccountObserver;ZI)V

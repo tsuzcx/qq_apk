@@ -46,7 +46,7 @@ public class FaceDrawableImpl$InternalFriendListObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.FaceDrawableImpl.InternalFriendListObserver
  * JD-Core Version:    0.7.0.1
  */

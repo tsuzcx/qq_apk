@@ -1,17 +1,25 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.qqdataline.QQProxyForDataline;
+import cooperation.qqdataline.ipc.DatalineRemoteManager;
 
 public class amvx
   implements Runnable
 {
-  public amvx(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt1, int paramInt2, int paramInt3) {}
+  public amvx(DatalineRemoteManager paramDatalineRemoteManager) {}
   
   public void run()
   {
-    RemoteHandleManager.a().a().a(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.mRuntime.a().getLongAccountUin(), this.jdField_a_of_type_Int, this.b, this.c);
+    if (BaseActivity.sTopActivity == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("string_from", true);
+    localBundle.putBoolean("string_uin", false);
+    localBundle.putLong("device_din", 0L);
+    localBundle.putInt("sTitleID", 0);
+    QQProxyForDataline.a(BaseActivity.sTopActivity, localBundle, "com.qqdataline.activity.LiteWifiphotoActivity");
+    BaseActivity.sTopActivity.overridePendingTransition(2131034134, 0);
   }
 }
 

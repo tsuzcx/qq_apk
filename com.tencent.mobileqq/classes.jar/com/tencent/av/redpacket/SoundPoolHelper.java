@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import jlh;
+import jnk;
 
 public class SoundPoolHelper
 {
@@ -62,7 +62,7 @@ public class SoundPoolHelper
       if (this.jdField_a_of_type_AndroidMediaSoundPool == null)
       {
         this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_Int, 0);
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new jlh(this, paramOnLoadFinishListener));
+        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new jnk(this, paramOnLoadFinishListener));
       }
       paramOnLoadFinishListener = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramOnLoadFinishListener.hasNext())
@@ -151,7 +151,7 @@ public class SoundPoolHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.redpacket.SoundPoolHelper
  * JD-Core Version:    0.7.0.1
  */

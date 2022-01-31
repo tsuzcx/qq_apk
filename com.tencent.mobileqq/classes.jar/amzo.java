@@ -1,22 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
-public class amzo
-  implements Runnable
+public final class amzo
+  extends AccountObserver
 {
-  public amzo(QZoneShareActivity paramQZoneShareActivity) {}
+  public amzo(String paramString, BusinessObserver paramBusinessObserver) {}
   
-  public void run()
+  public void onChangeToken(boolean paramBoolean, HashMap paramHashMap)
   {
-    if ((this.a.app != null) && (QZoneShareActivity.a(this.a).a > 0L) && (!TextUtils.isEmpty(QZoneShareActivity.a(this.a).i)) && (!this.a.a(this.a.app, QZoneShareActivity.a(this.a).a, QZoneShareActivity.a(this.a).i))) {
-      return;
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
+        break label30;
+      }
     }
-    int i = this.a.b();
-    int j = this.a.a();
-    ThreadManager.getUIHandler().post(new amzp(this, i, j));
+    for (;;)
+    {
+      return;
+      label30:
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
+      {
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
+        {
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          if (this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver != null) {
+            this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(1, true, localOpenID);
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 

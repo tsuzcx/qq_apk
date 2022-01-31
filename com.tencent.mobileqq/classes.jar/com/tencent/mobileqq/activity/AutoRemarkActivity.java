@@ -53,11 +53,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Locale;
 import mqq.os.MqqHandler;
-import rom;
-import ron;
-import roo;
-import rop;
-import roq;
+import rte;
+import rtf;
+import rtg;
+import rth;
+import rti;
 
 public class AutoRemarkActivity
   extends DialogBaseActivity
@@ -67,7 +67,7 @@ public class AutoRemarkActivity
   public Dialog a;
   Bundle jdField_a_of_type_AndroidOsBundle;
   private View jdField_a_of_type_AndroidViewView;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new rop(this);
+  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new rth(this);
   public EditText a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -76,7 +76,7 @@ public class AutoRemarkActivity
   BounceScrollView jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView;
   private Switch jdField_a_of_type_ComTencentWidgetSwitch;
   public String a;
-  private roq jdField_a_of_type_Roq = new roq(this, null);
+  private rti jdField_a_of_type_Rti = new rti(this, null);
   public boolean a;
   public int b;
   private View jdField_b_of_type_AndroidViewView;
@@ -151,12 +151,12 @@ public class AutoRemarkActivity
     Object localObject2;
     if (this.jdField_a_of_type_Int == 0)
     {
-      localObject1 = getString(2131435185);
+      localObject1 = getString(2131435201);
       setTitle((CharSequence)localObject1);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131362908);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131362910);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131362909));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362911));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131362913);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131362915);
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131362914));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362916));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(a(this.app, this.jdField_c_of_type_Int));
       this.jdField_b_of_type_AndroidViewView.setContentDescription("分组：" + a(this.app, this.jdField_c_of_type_Int));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
@@ -187,23 +187,23 @@ public class AutoRemarkActivity
       label272:
       if (paramInt == 0)
       {
-        this.jdField_c_of_type_AndroidViewView = findViewById(2131362912);
+        this.jdField_c_of_type_AndroidViewView = findViewById(2131362917);
         this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-        findViewById(2131363366).setVisibility(0);
-        this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131362913));
+        findViewById(2131363385).setVisibility(0);
+        this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131362918));
         this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this);
       }
       if (this.jdField_a_of_type_Int != 0) {
         break label800;
       }
-      setRightHighlightButton(2131434756, this);
+      setRightHighlightButton(2131434772, this);
       enableRightHighlight(true);
       setLeftViewName(getIntent());
       label352:
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363362));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362893));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362894));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363363));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363381));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362898));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362899));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363382));
       if (this.jdField_a_of_type_AndroidOsBundle == null) {
         break label980;
       }
@@ -227,19 +227,19 @@ public class AutoRemarkActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131363451));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOnTouchListener(new rom(this));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)findViewById(2131363470));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOnTouchListener(new rte(this));
       if (AppSetting.b)
       {
         this.leftView.setContentDescription("返回" + this.leftView.getText().toString() + "界面");
         this.jdField_a_of_type_AndroidViewView.setFocusable(true);
-        this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131433493) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+        this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131433507) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
         this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(null);
         if (paramInt == 0)
         {
           this.jdField_c_of_type_AndroidViewView.setFocusable(true);
-          this.jdField_c_of_type_AndroidViewView.setContentDescription(getResources().getString(2131435181));
-          findViewById(2131363366).setFocusable(true);
+          this.jdField_c_of_type_AndroidViewView.setContentDescription(getResources().getString(2131435197));
+          findViewById(2131363385).setFocusable(true);
         }
       }
       return;
@@ -263,19 +263,19 @@ public class AutoRemarkActivity
       paramInt = 0;
       break label272;
       label800:
-      setRightHighlightButton(2131434534, this);
+      setRightHighlightButton(2131434550, this);
       enableRightHighlight(true);
-      setLeftButton(2131433015, this);
+      setLeftButton(2131433029, this);
       if (this.jdField_a_of_type_Int != 1) {
         break label352;
       }
-      this.jdField_d_of_type_AndroidViewView = findViewById(2131363364);
+      this.jdField_d_of_type_AndroidViewView = findViewById(2131363383);
       this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      localObject1 = (TextView)findViewById(2131363366);
+      localObject1 = (TextView)findViewById(2131363385);
       ((TextView)localObject1).setVisibility(0);
-      ((TextView)localObject1).setText(2131437761);
-      ((TextView)localObject1).setContentDescription(getString(2131437761));
-      this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131363365));
+      ((TextView)localObject1).setText(2131437781);
+      ((TextView)localObject1).setContentDescription(getString(2131437781));
+      this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131363384));
       if (AppSetting.b)
       {
         this.jdField_d_of_type_AndroidViewView.setContentDescription("收起到不常联系好友 ");
@@ -285,7 +285,7 @@ public class AutoRemarkActivity
       this.leftView.setVisibility(8);
       break label352;
       label939:
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131436520) + ": " + (String)localObject2);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(getString(2131436540) + ": " + (String)localObject2);
       break label543;
       label980:
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
@@ -318,7 +318,7 @@ public class AutoRemarkActivity
     {
       this.jdField_a_of_type_AndroidAppDialog.dismiss();
       label34:
-      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, paramString, 0, 2131433016, null, new ron(this));
+      this.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this, paramString, 0, 2131433030, null, new rtf(this));
       try
       {
         this.jdField_a_of_type_AndroidAppDialog.show();
@@ -358,7 +358,7 @@ public class AutoRemarkActivity
   
   private void b()
   {
-    ThreadManager.getSubThreadHandler().post(new roo(this));
+    ThreadManager.getSubThreadHandler().post(new rtg(this));
   }
   
   public void a()
@@ -442,7 +442,7 @@ public class AutoRemarkActivity
       }
     }
     if (AppSetting.b) {
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131433493) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+      this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131433507) + this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
     }
   }
   
@@ -469,8 +469,8 @@ public class AutoRemarkActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130968710);
-    setContentBackgroundResource(2130838214);
+    super.setContentView(2130968713);
+    setContentBackgroundResource(2130838219);
     this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)this.app.a(1));
     Intent localIntent = getIntent();
     this.jdField_a_of_type_Int = localIntent.getIntExtra("param_mode", 0);
@@ -487,7 +487,7 @@ public class AutoRemarkActivity
     this.jdField_a_of_type_AndroidOsBundle = localIntent.getExtras();
     this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromWzry", false);
     a(this.jdField_b_of_type_Int);
-    this.app.addObserver(this.jdField_a_of_type_Roq);
+    this.app.addObserver(this.jdField_a_of_type_Rti);
     if ((paramBundle == null) || (this.jdField_a_of_type_Int == 1))
     {
       if ((NetworkUtil.d(this)) && (a(this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString))) {
@@ -512,7 +512,7 @@ public class AutoRemarkActivity
       for (;;)
       {
         super.doOnDestroy();
-        this.app.removeObserver(this.jdField_a_of_type_Roq);
+        this.app.removeObserver(this.jdField_a_of_type_Rti);
         return;
         getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
       }
@@ -528,7 +528,7 @@ public class AutoRemarkActivity
     boolean bool = false;
     if (!NetworkUtil.d(this))
     {
-      QQToast.a(this.app.getApp(), 1, getString(2131434613), 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApp(), 1, getString(2131434629), 0).b(getTitleBarHeight());
       paramCompoundButton.setOnCheckedChangeListener(null);
       if (!paramBoolean) {
         bool = true;
@@ -555,7 +555,7 @@ public class AutoRemarkActivity
       return;
     } while (paramCompoundButton != this.jdField_a_of_type_ComTencentWidgetSwitch);
     if (AppSetting.b) {
-      this.jdField_c_of_type_AndroidViewView.setContentDescription(getResources().getString(2131435181));
+      this.jdField_c_of_type_AndroidViewView.setContentDescription(getResources().getString(2131435197));
     }
     paramCompoundButton = new Intent("com.tencent.qzone.action.OperateQZonePermission");
     paramCompoundButton.putExtra("qzone_permission_uin", this.jdField_a_of_type_JavaLangString);
@@ -597,10 +597,10 @@ public class AutoRemarkActivity
         return;
         if (!NetworkUtil.d(this))
         {
-          QQToast.a(this.app.getApp(), 1, getString(2131434613), 0).b(getTitleBarHeight());
+          QQToast.a(this.app.getApp(), 1, getString(2131434629), 0).b(getTitleBarHeight());
           return;
         }
-        a(2131434453, 1000L, true);
+        a(2131434469, 1000L, true);
         if (this.jdField_a_of_type_Int != 0) {
           break;
         }
@@ -618,7 +618,7 @@ public class AutoRemarkActivity
       ((FriendsManager)this.app.getManager(50)).a(this.jdField_a_of_type_JavaLangString, true);
       return;
     } while (this.jdField_a_of_type_Int != 1);
-    a(2131434453, 1000L, true);
+    a(2131434469, 1000L, true);
     this.e = 0;
     paramView = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
     if (paramView.length() != 0)

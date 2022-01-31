@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter.WeiyunCallback;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp;
+import cooperation.weiyun.sdk.api.IWeiyunCallback;
 
-class adin
-  implements Runnable
+public class adin
+  implements IWeiyunCallback
 {
-  adin(adil paramadil, String paramString1, int paramInt, String paramString2) {}
+  public adin(WeiYunLogicCenter paramWeiYunLogicCenter, WeiYunLogicCenter.WeiyunCallback paramWeiyunCallback) {}
   
-  public void run()
+  public void a(int paramInt, String paramString, WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adil.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adil.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Failed errorCode=" + paramInt + "; errorMsg=" + paramString);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback.a(paramInt, paramString);
+    }
+  }
+  
+  public void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Success");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter$WeiyunCallback.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adin
  * JD-Core Version:    0.7.0.1
  */

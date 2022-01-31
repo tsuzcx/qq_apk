@@ -1,43 +1,23 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.MagicPlayListener;
+import java.lang.ref.WeakReference;
 
 public class jhy
+  implements Runnable
 {
-  public int a;
-  public long a;
-  final String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public boolean d = false;
-  public boolean e = false;
+  public jhy(MagicfaceBaseDecoder paramMagicfaceBaseDecoder, String paramString, boolean paramBoolean) {}
   
-  public jhy(AVNotifyCenter paramAVNotifyCenter, String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = ("AvChatData_" + paramString + "_" + AudioHelper.a());
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangString + ", mRelationId[" + this.jdField_a_of_type_Long + "], mRelationType[" + this.jdField_c_of_type_Int + "], mUinType[" + this.jdField_b_of_type_Int + "], mPeerUin[" + this.jdField_b_of_type_JavaLangString + "], mIsChating[" + this.d + "], mIsWaitting[" + this.jdField_c_of_type_Boolean + "]";
+    MagicfaceBaseDecoder.MagicPlayListener localMagicPlayListener = (MagicfaceBaseDecoder.MagicPlayListener)this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a.get();
+    if (localMagicPlayListener != null) {
+      localMagicPlayListener.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jhy
  * JD-Core Version:    0.7.0.1
  */

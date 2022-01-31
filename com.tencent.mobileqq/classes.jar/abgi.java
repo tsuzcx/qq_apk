@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.armap.ARGLSurfaceView;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-class abgi
-  implements DialogInterface.OnClickListener
+public class abgi
+  implements Runnable
 {
-  abgi(abgg paramabgg) {}
+  public abgi(ARMapActivity paramARMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    ARMapEngine localARMapEngine = this.a.jdField_a_of_type_ComTencentMobileqqArmapMapARMapEngine;
+    ARMapEngine.nativeSetMapRotateMode(this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.getEngineHandler(), this.a.b);
+  }
 }
 
 

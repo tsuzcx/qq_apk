@@ -8,7 +8,7 @@ import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
-import jjm;
+import jlp;
 
 public class GraphicRenderMgr
 {
@@ -20,7 +20,7 @@ public class GraphicRenderMgr
   public int decoderPtrRef;
   private GraphicRenderMgr.FocusDetectCallback mAutoFocusCallback;
   private Object mAutoFocusCallbackLock = new Object();
-  jjm mSetBeautyOrFaceConfigInfo = new jjm();
+  jlp mSetBeautyOrFaceConfigInfo = new jlp();
   
   private GraphicRenderMgr()
   {
@@ -233,7 +233,7 @@ public class GraphicRenderMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.opengl.GraphicRenderMgr
  * JD-Core Version:    0.7.0.1
  */

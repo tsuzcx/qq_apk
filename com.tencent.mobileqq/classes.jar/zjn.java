@@ -1,36 +1,64 @@
+import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.litetransfersdk.MsgSCBody;
+import com.tencent.litetransfersdk.ProtocolHelper;
 import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.PrinterHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 
 public class zjn
-  extends TimerTask
+  implements Runnable
 {
-  public zjn(PrinterHandler paramPrinterHandler, DataLineHandler paramDataLineHandler, Timer paramTimer) {}
+  public zjn(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a.size() > 0)
+    MsgSCBody localMsgSCBody = new MsgSCBody();
+    cmd0x346.RspBody localRspBody = new cmd0x346.RspBody();
+    localMsgSCBody.uMsgType = 838;
+    if ((this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg == null) || (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null)) {
+      localMsgSCBody.bTimeOut = true;
+    }
+    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("dataline.Printer", 4, " pc下线了");
-      }
-      while (this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a.size() > 0)
-      {
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a.keySet().iterator();
-        if (localIterator.hasNext())
-        {
-          long l = ((Long)localIterator.next()).longValue();
-          this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(0, l, true);
-          this.jdField_a_of_type_ComTencentMobileqqAppPrinterHandler.a(Long.valueOf(l), false);
-        }
+      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.FillMsgSCBody(localMsgSCBody, localRspBody, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg != null) {
+        break label174;
       }
     }
-    this.jdField_a_of_type_JavaUtilTimer.cancel();
+    label174:
+    for (long l = 0L;; l = ((Long)this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("cookie")).longValue())
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReply(Long.valueOf(l).intValue(), localMsgSCBody);
+        return;
+        byte[] arrayOfByte = null;
+        if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer() != null)
+        {
+          int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer().length - 4;
+          if (i < 0) {
+            break;
+          }
+          arrayOfByte = new byte[i];
+          PkgTools.a(arrayOfByte, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
+        }
+        if (arrayOfByte == null) {
+          break;
+        }
+        try
+        {
+          localRspBody.mergeFrom(arrayOfByte);
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+        }
+      }
+      break;
+    }
   }
 }
 

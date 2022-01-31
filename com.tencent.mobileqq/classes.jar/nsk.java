@@ -1,23 +1,15 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader;
-import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader.CacheContext;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class nsk
-  extends SimpleJob
+class nsk
+  implements Runnable
 {
-  public nsk(ShareGroupDateListPageLoader paramShareGroupDateListPageLoader) {}
+  nsk(nsj paramnsj) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void run()
   {
-    if (this.a.a == null) {
-      this.a.a = new ShareGroupDateListPageLoader.CacheContext(this.a, this.a.c);
-    }
-    this.a.d = this.a.a.a;
-    ShareGroupDateListPageLoader.a(this.a);
-    return null;
+    QQToast.a(this.a.a, 1, "网络异常，请稍后重试", 0).a();
+    this.a.a.a(2);
   }
 }
 

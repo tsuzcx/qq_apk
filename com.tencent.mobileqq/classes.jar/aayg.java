@@ -1,18 +1,14 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import com.tencent.ark.ark.Application;
+import com.tencent.mobileqq.ark.ArkAiAppCenter;
 
 public class aayg
-  implements ArkAppCenter.OnGetAppIcon
+  implements Runnable
 {
-  public aayg(ArkTipsManager paramArkTipsManager, Context paramContext) {}
+  public aayg(ArkAiAppCenter paramArkAiAppCenter, String[] paramArrayOfString) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void run()
   {
-    if (paramBitmap != null) {
-      ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
-    }
+    ark.Application.SetUrlCheckingList(this.jdField_a_of_type_ArrayOfJavaLangString, 0);
   }
 }
 

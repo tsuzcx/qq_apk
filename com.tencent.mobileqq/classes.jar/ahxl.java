@@ -1,14 +1,28 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
 
 public class ahxl
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public ahxl(MessagePBElemDecoder paramMessagePBElemDecoder) {}
+  public ahxl(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    PublicAccountManager.a().a(MessagePBElemDecoder.a(this.a));
+    paramView = this.a.getActivity();
+    if ((paramView instanceof ActiveEntitySearchActivity)) {
+      ((ActiveEntitySearchActivity)paramView).c();
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramView instanceof UniteSearchActivity)) {
+        ((UniteSearchActivity)paramView).c();
+      }
+    }
   }
 }
 

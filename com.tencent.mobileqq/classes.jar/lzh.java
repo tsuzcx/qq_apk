@@ -1,36 +1,26 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class lzh
-  extends lzi
+  extends ClickableSpan
 {
-  public lzh(@NonNull Context paramContext, int paramInt)
+  public lzh(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramContext, paramInt);
+    ReadInJoyUtils.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
   }
   
-  public boolean a()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return getCount() == 5;
-  }
-  
-  public boolean a(@NonNull TagInfo paramTagInfo)
-  {
-    int i = getCount();
-    super.a(paramTagInfo);
-    return i != getCount();
-  }
-  
-  @NonNull
-  public View getView(int paramInt, @Nullable View paramView, @NonNull ViewGroup paramViewGroup)
-  {
-    paramView = super.getView(paramInt, paramView, paramViewGroup);
-    paramView.setSelected(true);
-    return paramView;
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(AIOUtils.a(2, 14, this.a.getResources()));
   }
 }
 

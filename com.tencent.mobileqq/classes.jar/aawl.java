@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.LocationCallback;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 
-public final class aawl
-  implements ArkAppLocationManager.ArkGetLocationCallback
+public class aawl
+  implements ArkAppLocationManager.LocationCallback
 {
-  public aawl(String paramString, Object paramObject, ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler paramIAnalyzeTextIntentByServerHandler) {}
+  public aawl(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong) {}
   
-  public void a(String paramString, double paramDouble1, double paramDouble2)
+  public void a()
   {
-    aawy localaawy = new aawy(null);
-    localaawy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localaawy.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
-    localaawy.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler = this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler;
-    ThreadManager.post(new aawm(this, localaawy, paramString), 5, null, true);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.a(this.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

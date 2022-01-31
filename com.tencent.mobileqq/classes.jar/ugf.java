@@ -1,19 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.statistics.ReportController;
+import java.util.List;
 
 public class ugf
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ugf(UpgradeActivity paramUpgradeActivity) {}
+  public ugf(TroopMemberListActivity paramTroopMemberListActivity, List paramList, CheckBox paramCheckBox, Dialog paramDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, UpgradeConstants.b(), String.valueOf(0), UpgradeController.a(), "0");
-    this.a.finish();
+    paramView = (TroopHandler)this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app.a(20);
+    String str;
+    if (paramView != null)
+    {
+      paramView.a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.n;
+      if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label141;
+      }
+    }
+    label141:
+    for (paramView = "0";; paramView = "1")
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "P_CliOper", "Grp_manage", "", "del_mber", "Clk_del", 1, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, str, paramView, "");
+      if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.i();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidAppDialog.show();
+      return;
+    }
   }
 }
 

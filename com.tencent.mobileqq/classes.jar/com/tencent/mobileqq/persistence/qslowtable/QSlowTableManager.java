@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.persistence.qslowtable;
 
-import agki;
+import agow;
 import android.database.Cursor;
 import android.database.SQLException;
 import com.tencent.mobileqq.app.MessageHandler;
@@ -326,7 +326,7 @@ public class QSlowTableManager
       if (this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory = new QSlowTableEntityManagerFactory(str);
-        ThreadManager.post(new agki(this), 8, null, false);
+        ThreadManager.post(new agow(this), 8, null, false);
       }
       return this.jdField_a_of_type_ComTencentMobileqqDataQQEntityManagerFactory;
     }

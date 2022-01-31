@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import javax.net.ssl.HandshakeCompletedEvent;
+import javax.net.ssl.HandshakeCompletedListener;
 
-public class yrx
-  implements Runnable
+public final class yrx
+  implements HandshakeCompletedListener
 {
-  public yrx(SpriteBackgroundManager paramSpriteBackgroundManager) {}
+  public yrx(View paramView, long paramLong) {}
   
-  public void run()
+  public void handshakeCompleted(HandshakeCompletedEvent paramHandshakeCompletedEvent)
   {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)SpriteBackgroundManager.a(this.a).get();
-    if ((localApolloTextureView != null) && (localApolloTextureView.getRender() != null) && (localApolloTextureView.getRender().mApolloTicker != null)) {
-      ApolloRender.tickerPause(localApolloTextureView.getRender().mApolloTicker.ticker);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "mPauseTickerTask");
-    }
+    ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new yry(this));
   }
 }
 

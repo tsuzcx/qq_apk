@@ -1,22 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.onMainVideoTabRedChangeListener;
-import java.util.Iterator;
-import java.util.List;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuTextBuilder;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 
 public class llq
-  implements Runnable
+  extends Editable.Factory
 {
-  public llq(KandianMergeManager paramKandianMergeManager) {}
+  public llq(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void run()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (KandianMergeManager.b(this.a) != null)
-    {
-      Iterator localIterator = KandianMergeManager.b(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((KandianMergeManager.onMainVideoTabRedChangeListener)localIterator.next()).a();
-      }
+    if ((paramCharSequence instanceof BiuTextBuilder)) {
+      return (Editable)paramCharSequence;
     }
+    return new BiuTextBuilder(paramCharSequence, 3, 20);
   }
 }
 

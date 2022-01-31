@@ -1,25 +1,28 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar.OnTabChangeListener;
 
 public class mjy
-  extends AnimateUtils.AnimationAdapter
+  implements View.OnClickListener
 {
-  public mjy(ReadinjoyTabFrame paramReadinjoyTabFrame, View paramView) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    paramAnimation = new ScaleAnimation(1.05F, 0.72F, 1.05F, 0.72F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(170L);
-    paramAnimation.setAnimationListener(new mjz(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-  }
+  public mjy(BaseTabbar paramBaseTabbar, int paramInt) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 300L)
+    {
+      this.jdField_a_of_type_Long = 0L;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
+      }
+      return;
+    }
+    this.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 

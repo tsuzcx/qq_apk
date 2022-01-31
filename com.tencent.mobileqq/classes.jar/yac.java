@@ -1,28 +1,14 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
 
-public class yac
+class yac
   implements Runnable
 {
-  public yac(SelectMemberActivity paramSelectMemberActivity) {}
+  yac(yab paramyab) {}
   
   public void run()
   {
-    TroopHandler localTroopHandler = (TroopHandler)this.a.app.a(20);
-    if (localTroopHandler != null) {}
-    try
-    {
-      localTroopHandler.b(Long.valueOf(this.a.c));
-      localTroopHandler.a(Long.valueOf(this.a.c));
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("SelectMemberActivity", 2, "NumberFormatException : mGroupCode = " + this.a.c);
-    }
+    QzDynamicVideoPreviewActivity.a(this.a.a).setVisibility(0);
   }
 }
 

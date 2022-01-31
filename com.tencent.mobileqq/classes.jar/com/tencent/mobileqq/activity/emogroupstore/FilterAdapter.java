@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
-import wpi;
+import wut;
 
 public class FilterAdapter
   extends BaseAdapter
@@ -51,12 +51,12 @@ public class FilterAdapter
   {
     if (paramView == null)
     {
-      paramViewGroup = new wpi(this, null);
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970952, null, false);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372332));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372333));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372334));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372335));
+      paramViewGroup = new wut(this, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970970, null, false);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372342));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372343));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372344));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372345));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
@@ -68,11 +68,11 @@ public class FilterAdapter
       if (!localFilterItemContent.jdField_a_of_type_Boolean) {
         break;
       }
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838432));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838437));
       return paramView;
-      paramViewGroup = (wpi)paramView.getTag();
+      paramViewGroup = (wut)paramView.getTag();
     }
-    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838434));
+    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838439));
     return paramView;
   }
 }

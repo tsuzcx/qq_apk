@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.qcall;
 
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import agvm;
+import agzz;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -59,18 +59,18 @@ public class QCallStartBrigeActivity
       super.getWindow().addFlags(67108864);
     }
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2130846443);
+    getWindow().setBackgroundDrawableResource(2130846525);
     int i = Resources.getSystem().getIdentifier("title_container", "id", "android");
     paramBundle = (ViewGroup)getWindow().findViewById(i);
     if (paramBundle != null) {
       paramBundle.setVisibility(8);
     }
-    paramBundle = getLayoutInflater().inflate(2130968792, null);
+    paramBundle = getLayoutInflater().inflate(2130968796, null);
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
     paramBundle.setContentDescription("common_footerview_blank");
     addContentView(paramBundle, localLayoutParams);
     paramBundle.setClickable(true);
-    paramBundle.setOnClickListener(new agvm(this));
+    paramBundle.setOnClickListener(new agzz(this));
     return true;
   }
   

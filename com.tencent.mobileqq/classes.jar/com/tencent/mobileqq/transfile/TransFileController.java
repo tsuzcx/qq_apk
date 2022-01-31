@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import QQService.StreamData;
 import QQService.StreamInfo;
-import airx;
+import aixa;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -137,7 +137,7 @@ public class TransFileController
                   continue;
                 }
                 PicPreDownloadUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramTransferRequest);
-                paramBaseTransProcessor.ap_();
+                paramBaseTransProcessor.ar_();
                 if (!paramBoolean) {
                   continue;
                 }
@@ -171,7 +171,7 @@ public class TransFileController
         paramBaseTransProcessor.c(paramString);
       } while (paramBaseTransProcessor.c() != 0);
       PicPreDownloadUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramTransferRequest);
-      paramBaseTransProcessor.ap_();
+      paramBaseTransProcessor.ar_();
     } while (!paramBoolean);
     try
     {
@@ -479,7 +479,7 @@ public class TransFileController
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, Intent paramIntent)
   {
-    ThreadManager.postImmediately(new airx(this, paramString, paramIntent, paramQQAppInterface), null, true);
+    ThreadManager.postImmediately(new aixa(this, paramString, paramIntent, paramQQAppInterface), null, true);
   }
   
   public void a(String paramString)

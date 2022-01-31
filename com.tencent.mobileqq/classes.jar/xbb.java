@@ -1,23 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class xbb
-  implements View.OnClickListener
+  extends ContactBindObserver
 {
-  public xbb(RedPacketRecordFragment paramRedPacketRecordFragment) {}
+  public xbb(SettingActivity2 paramSettingActivity2) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean, int paramInt)
   {
-    if ((!this.a.e()) && (RedPacketRecordFragment.a(this.a) != null) && (paramView != null))
+    if (this.a.c != null)
     {
-      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
-      localIntent.putExtras(RedPacketRecordFragment.a(this.a));
-      localIntent.putExtra("pay_requestcode", 5);
-      paramView.getContext().startActivity(localIntent);
+      this.a.app.unRegistObserver(this.a.c);
+      this.a.c = null;
+    }
+    this.a.b();
+    if (paramBoolean)
+    {
+      if (this.a.c != null)
+      {
+        this.a.app.unRegistObserver(this.a.c);
+        this.a.c = null;
+      }
+      this.a.a();
     }
   }
 }

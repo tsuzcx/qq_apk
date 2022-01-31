@@ -100,9 +100,9 @@ public class LogoIconAdapter
         SLog.e("LogoIconAdapter", "FacePackage is null.");
         return;
       }
-      str = (String)localImageView.getTag(2131362360);
+      str = (String)localImageView.getTag(2131362363);
     } while ((!TextUtils.isEmpty(str)) && (str.equals(localFacePackage.c)));
-    localImageView.setTag(2131362360, localFacePackage.c);
+    localImageView.setTag(2131362363, localFacePackage.c);
     ImageLoader.a().a(this.jdField_a_of_type_AndroidContentContext, localImageView, localFacePackage.c, this.b, this.b, null);
   }
   
@@ -168,10 +168,10 @@ public class LogoIconAdapter
       paramView.setContentDescription("地点贴纸");
       break label57;
       label122:
-      String str = (String)paramView.getTag(2131362360);
+      String str = (String)paramView.getTag(2131362363);
       if ((TextUtils.isEmpty(str)) || (!str.equals(paramViewGroup.c)))
       {
-        paramView.setTag(2131362360, paramViewGroup.c);
+        paramView.setTag(2131362363, paramViewGroup.c);
         ImageLoader.a().a(this.jdField_a_of_type_AndroidContentContext, paramView, paramViewGroup.c, this.b, this.b, null);
       }
     }

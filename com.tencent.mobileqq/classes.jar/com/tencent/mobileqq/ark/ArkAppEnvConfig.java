@@ -39,7 +39,7 @@ public class ArkAppEnvConfig
   private static String a(int paramInt)
   {
     if (a()) {}
-    for (String str = AppConstants.aJ;; str = g()) {
+    for (String str = AppConstants.aK;; str = g()) {
       switch (paramInt)
       {
       default: 
@@ -72,7 +72,7 @@ public class ArkAppEnvConfig
       return g() + "/ArkApp";
     case 1: 
       if (a()) {}
-      for (String str = AppConstants.aJ;; str = g()) {
+      for (String str = AppConstants.aK;; str = g()) {
         return str + "/ArkAppTest";
       }
     }
@@ -87,7 +87,7 @@ public class ArkAppEnvConfig
       return g() + "/pddata/prd/arkapp";
     case 1: 
       if (a()) {}
-      for (String str = AppConstants.aJ;; str = g()) {
+      for (String str = AppConstants.aK;; str = g()) {
         return str + "/ArkAppTest";
       }
     }

@@ -1,37 +1,14 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.mobileqq.app.ConditionSearchManager.IFirstLocationReqCancelListener;
 
 public class wmq
-  extends AsyncTask
+  implements ConditionSearchManager.IFirstLocationReqCancelListener
 {
-  public wmq(CardViewController paramCardViewController, String paramString, wmu paramwmu) {}
+  public wmq(AddContactsView paramAddContactsView) {}
   
-  protected HashMap a(Void... paramVarArgs)
+  public void a()
   {
-    paramVarArgs = null;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      paramVarArgs = CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, this.jdField_a_of_type_JavaLangString);
-    }
-    return paramVarArgs;
-  }
-  
-  protected void a(HashMap paramHashMap)
-  {
-    if (paramHashMap == null) {
-      return;
-    }
-    String str = (String)paramHashMap.get("displayedStr ");
-    paramHashMap = (String)paramHashMap.get("displayingStr ");
-    CardViewController.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, str);
-    CardViewController.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController, paramHashMap);
-    if (this.jdField_a_of_type_Wmu != null)
-    {
-      this.jdField_a_of_type_Wmu.a();
-      return;
-    }
-    CardViewController.d(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardViewController);
+    this.a.a = false;
   }
 }
 

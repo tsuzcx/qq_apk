@@ -22,14 +22,14 @@ public class NewMyStorySegment$DeleteStoryVideoReceiver
   
   public void a(@NonNull NewMyStorySegment paramNewMyStorySegment, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
   {
-    if (paramDeleteStoryVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    if (paramDeleteStoryVideoEvent.errorInfo.isFail())
     {
       SLog.d(this.TAG, "deleted story failed");
-      paramNewMyStorySegment.a(5, paramDeleteStoryVideoEvent.jdField_a_of_type_JavaLangString);
+      paramNewMyStorySegment.a(5, paramDeleteStoryVideoEvent.a);
       return;
     }
-    paramNewMyStorySegment.a(paramDeleteStoryVideoEvent.jdField_a_of_type_JavaLangString);
-    paramNewMyStorySegment.a(new Step[] { new SimpleStep.InitParamSimpleStep(GetMyStoryVideoListStep.Result.a(NewMyStorySegment.a(paramNewMyStorySegment).a.jdField_a_of_type_JavaLangString)), (Step)paramNewMyStorySegment.c.a() });
+    paramNewMyStorySegment.a(paramDeleteStoryVideoEvent.a);
+    paramNewMyStorySegment.a(new Step[] { new SimpleStep.InitParamSimpleStep(GetMyStoryVideoListStep.Result.a(NewMyStorySegment.a(paramNewMyStorySegment).a.a)), (Step)paramNewMyStorySegment.c.a() });
   }
   
   public Class acceptEventClass()

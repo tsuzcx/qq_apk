@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aodj;
+import aome;
 
 public class PublishParam
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aodj();
+  public static final Parcelable.Creator CREATOR = new aome();
   public static final String a;
   public final int a;
   public final long a;

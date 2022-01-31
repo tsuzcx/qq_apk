@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public class wtc
-  implements DialogInterface.OnClickListener
+class wtc
+  implements Runnable
 {
-  public wtc(BaseActivityView paramBaseActivityView) {}
+  wtc(wtb paramwtb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.f();
+    PhoneContactFragment.a(this.a.a).g();
   }
 }
 

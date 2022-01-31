@@ -2,8 +2,8 @@ package com.tencent.biz.qqstory.widget.circularreveal;
 
 import android.animation.Animator;
 import android.view.View;
-import osa;
-import osc;
+import owp;
+import owr;
 
 public final class ViewAnimationCompatUtils
 {
@@ -12,13 +12,27 @@ public final class ViewAnimationCompatUtils
     return a(paramView, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, 2);
   }
   
+  public static Animator a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, float paramFloat9, float paramFloat10)
+  {
+    return a(paramView, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramFloat9, paramFloat10, 2);
+  }
+  
+  public static Animator a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, float paramFloat9, float paramFloat10, int paramInt)
+  {
+    RectangleRevealAnimator localRectangleRevealAnimator = new RectangleRevealAnimator(paramView, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramFloat9, paramFloat10);
+    if (paramInt != paramView.getLayerType()) {
+      localRectangleRevealAnimator.addListener(new owr(paramView, paramInt));
+    }
+    return localRectangleRevealAnimator;
+  }
+  
   public static Animator a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt)
   {
-    osa localosa = osa.a(paramView, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
+    owp localowp = owp.a(paramView, paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
     if (paramInt != paramView.getLayerType()) {
-      localosa.addListener(new osc(paramView, paramInt));
+      localowp.addListener(new owr(paramView, paramInt));
     }
-    return localosa;
+    return localowp;
   }
   
   public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
@@ -28,11 +42,11 @@ public final class ViewAnimationCompatUtils
   
   public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
   {
-    osa localosa = osa.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
+    owp localowp = owp.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
     if (paramInt3 != paramView.getLayerType()) {
-      localosa.addListener(new osc(paramView, paramInt3));
+      localowp.addListener(new owr(paramView, paramInt3));
     }
-    return localosa;
+    return localowp;
   }
 }
 

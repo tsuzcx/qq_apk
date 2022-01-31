@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.observer.GameCenterObserver;
 
 public class stt
-  implements View.OnClickListener
+  extends GameCenterObserver
 {
-  public stt(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
+  public stt(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.finish();
+    ThreadManager.post(new stu(this), 5, null, false);
   }
 }
 

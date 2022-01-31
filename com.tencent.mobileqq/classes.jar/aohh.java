@@ -1,36 +1,13 @@
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
 
-class aohh
+public class aohh
   implements Runnable
 {
-  aohh(aohe paramaohe) {}
+  public aohh(DoodleEditView paramDoodleEditView) {}
   
   public void run()
   {
-    boolean bool = CameraCompatibleList.a(CameraCompatibleList.y);
-    if (bool)
-    {
-      RMVideoStateMgr.a().a(1102, "已经获取权限，需要重新进入打开摄像头", true);
-      return;
-    }
-    try
-    {
-      if ((!this.a.d) && (this.a.f)) {
-        RMVideoStateMgr.a().a(1102, "初始化失败,code=1102", true);
-      }
-      RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-      if (QLog.isColorLevel()) {
-        QLog.e("RMVideoInitState", 2, "[ERR_CODE_INIT_TIMEOUT]初始化失败,code=1102 mIsReadAVCodec=" + this.a.a + " mIsReadCamera=" + this.a.b + " black=" + bool + " rmStateMgr.mIsAudioReady=" + localRMVideoStateMgr.d + " rmStateMgr.mVideoCacheDir=" + localRMVideoStateMgr.a);
-      }
-      RMVideoStateMgr.b(null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.a.setVisibility(0);
   }
 }
 

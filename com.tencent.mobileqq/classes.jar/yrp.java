@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
-import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
+import android.app.Activity;
+import android.view.View;
+import android.view.Window;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class yrp
+public final class yrp
   implements Runnable
 {
-  public yrp(CmGameLauncher paramCmGameLauncher, String paramString) {}
+  public yrp(View paramView, int paramInt) {}
   
   public void run()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("gameId", CmGameLauncher.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher));
-      ApolloGameBasicEventUtil.a(CmGameLauncher.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher), localJSONObject.toString(), this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a());
-      return;
+    Activity localActivity = (Activity)this.jdField_a_of_type_AndroidViewView.getContext();
+    if (this.jdField_a_of_type_Int == 1) {
+      localActivity.getWindow().addFlags(128);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      QLog.e("cmgame_process.CmGameLauncher", 1, localException, new Object[0]);
+      QLog.e("ApolloRender", 2, "SetKeepScreenOn :" + this.jdField_a_of_type_Int);
+      return;
+      localActivity.getWindow().clearFlags(128);
     }
   }
 }

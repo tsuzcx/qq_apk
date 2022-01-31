@@ -1,13 +1,28 @@
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.tencent.biz.qqstory.takevideo.rmw.StoryFaceDrawableFactory;
+import dov.com.tencent.biz.qqstory.takevideo.rmw.StoryFaceDrawableFactory.FaceDrawableListener;
 
 public class aomf
-  implements Runnable
+  extends Handler
 {
-  public aomf(BeautyBar paramBeautyBar, int paramInt) {}
-  
-  public void run()
+  public aomf(StoryFaceDrawableFactory paramStoryFaceDrawableFactory, Looper paramLooper)
   {
-    BeautyBar.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewBeautyBar, this.jdField_a_of_type_Int, true);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1000)
+    {
+      paramMessage = (String)paramMessage.obj;
+      this.a.a(paramMessage);
+    }
+    while ((paramMessage.what != 1002) || (this.a.a == null)) {
+      return;
+    }
+    this.a.a.a();
   }
 }
 

@@ -102,7 +102,7 @@ public class WxShareHelperFromReadInjoy
   {
     if (TextUtils.isEmpty(paramString))
     {
-      QRUtils.a(1, 2131430004);
+      QRUtils.a(1, 2131430006);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();

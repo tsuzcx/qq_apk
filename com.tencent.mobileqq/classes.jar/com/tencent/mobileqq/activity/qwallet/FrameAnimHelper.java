@@ -7,7 +7,7 @@ import com.tencent.mobileqq.widget.AnimationView;
 import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
 import com.tencent.qphone.base.util.QLog;
-import wzd;
+import xet;
 
 public class FrameAnimHelper
 {
@@ -18,7 +18,6 @@ public class FrameAnimHelper
   public FrameAnimHelper(Context paramContext, LinearLayout paramLinearLayout, int paramInt, boolean paramBoolean, AnimationView.MyAnimationListener paramMyAnimationListener)
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    paramLinearLayout.removeAllViews();
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView = new AnimationView(paramContext);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setmRadius(paramInt, paramBoolean);
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView.setAnimationListener(paramMyAnimationListener);
@@ -75,11 +74,11 @@ public class FrameAnimHelper
     if (QLog.isColorLevel()) {
       QLog.i("FrameAnimHelper", 2, "task in thread runs isFolder = " + paramBoolean);
     }
-    wzd localwzd = new wzd(this, null);
+    xet localxet = new xet(this, null);
     if (paramBoolean) {}
     for (String str = "0";; str = "1")
     {
-      localwzd.execute(new String[] { paramString, str });
+      localxet.execute(new String[] { paramString, str });
       return;
     }
   }

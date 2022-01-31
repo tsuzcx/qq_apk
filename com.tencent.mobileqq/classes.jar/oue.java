@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRJumpActivity;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
 public class oue
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  public oue(QRJumpActivity paramQRJumpActivity) {}
+  public oue(StoryVideoPlayer paramStoryVideoPlayer, Bundle paramBundle) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    StoryVideoPlayer.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

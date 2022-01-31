@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView.PopUpListener;
 
-public final class agoq
-  implements Parcelable.Creator
+public class agoq
+  implements Animator.AnimatorListener
 {
-  public PersonalityLabelPhoto a(Parcel paramParcel)
+  public agoq(ScanIconAnimateView paramScanIconAnimateView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new PersonalityLabelPhoto(paramParcel);
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
   
-  public PersonalityLabelPhoto[] a(int paramInt)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return new PersonalityLabelPhoto[paramInt];
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agoq
  * JD-Core Version:    0.7.0.1
  */

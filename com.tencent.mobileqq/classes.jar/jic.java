@@ -1,21 +1,17 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.business.manager.pendant.AVEffectPendantReport;
 
-public class jic
+public final class jic
+  implements Runnable
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public jic(AVNotifyCenter paramAVNotifyCenter, String paramString1, String paramString2, String paramString3)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    AVEffectPendantReport.e();
+    AVEffectPendantReport.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jic
  * JD-Core Version:    0.7.0.1
  */

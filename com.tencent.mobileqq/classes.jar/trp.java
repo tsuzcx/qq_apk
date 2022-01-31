@@ -1,23 +1,15 @@
-import android.os.Handler;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
 public class trp
-  implements INetEventHandler
+  implements View.OnClickListener
 {
-  public trp(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  public trp(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean)
-    {
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131436291), 1).show();
-      trq localtrq = new trq(this);
-      new Handler().postDelayed(localtrq, 3000L);
-    }
+    this.a.d();
   }
 }
 

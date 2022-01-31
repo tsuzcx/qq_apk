@@ -14,10 +14,10 @@ import com.tencent.gdtad.views.viewpager.GdtViewPagerAdapter;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import qmk;
-import qml;
-import qmm;
-import qmn;
+import qrb;
+import qrc;
+import qrd;
+import qre;
 
 public class GdtCanvasViewPager
   extends GdtVerticalViewPager
@@ -111,7 +111,7 @@ public class GdtCanvasViewPager
       getCurrentItem();
       int i = getCurrentItem() + 1;
       a(i).scrollTo(0, 0);
-      postDelayed(new qmm(this, i), 100L);
+      postDelayed(new qrd(this, i), 100L);
     }
   }
   
@@ -155,7 +155,7 @@ public class GdtCanvasViewPager
       getCurrentItem();
       int i = getCurrentItem() - 1;
       a(i).fullScroll(130);
-      postDelayed(new qmn(this, i), 100L);
+      postDelayed(new qre(this, i), 100L);
     }
   }
   
@@ -209,13 +209,13 @@ public class GdtCanvasViewPager
   public void setCurrentItem(int paramInt)
   {
     super.setCurrentItem(paramInt);
-    postDelayed(new qmk(this), 200L);
+    postDelayed(new qrb(this), 200L);
   }
   
   public void setCurrentItem(int paramInt, boolean paramBoolean)
   {
     super.setCurrentItem(paramInt, paramBoolean);
-    postDelayed(new qml(this), 200L);
+    postDelayed(new qrc(this), 200L);
   }
 }
 

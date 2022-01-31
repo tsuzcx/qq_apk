@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-class vmc
-  implements Runnable
+public class vmc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  vmc(vmb paramvmb, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  public vmc(SixCombolEffectView paramSixCombolEffectView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (vma.a(this.jdField_a_of_type_Vmb.a) != null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("peak_pgjpeg", 4, "IAIOImageProviderCallBack.notifyImageResult():isPart " + this.jdField_a_of_type_Boolean);
-      }
-      ((AIOGalleryScene)vma.b(this.jdField_a_of_type_Vmb.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    }
-    if (this.jdField_a_of_type_Vmb.a.a != null) {
-      ((AIOImageListScene)this.jdField_a_of_type_Vmb.a.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 

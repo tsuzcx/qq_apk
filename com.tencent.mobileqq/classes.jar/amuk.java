@@ -1,29 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
+import cooperation.qappcenter.remote.SendMsg;
 
 public final class amuk
   implements Parcelable.Creator
 {
-  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
+  public SendMsg a(Parcel paramParcel)
   {
-    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
-    if (paramParcel != null)
-    {
-      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.c = paramParcel.readDouble();
-      localGameCoverInfo.d = paramParcel.readDouble();
-      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    }
-    return localGameCoverInfo;
+    return new SendMsg(paramParcel);
   }
   
-  public CoverCacheData.GameCoverInfo[] a(int paramInt)
+  public SendMsg[] a(int paramInt)
   {
-    return null;
+    return new SendMsg[paramInt];
   }
 }
 

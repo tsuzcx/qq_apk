@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.tmg_opensdk.TMG_Downloader.TMG_Downloader_DownloadEvent;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloRenderRunner;
+import com.tencent.mobileqq.apollo.aioChannel.IRenderRunner;
+import com.tencent.qphone.base.util.QLog;
 
 public class yvc
-  extends TMG_Downloader.TMG_Downloader_DownloadEvent
+  implements Runnable
 {
-  public yvc(AVEngineWalper paramAVEngineWalper) {}
+  public yvc(ApolloRenderRunner paramApolloRenderRunner, IRenderRunner paramIRenderRunner, long paramLong, ApolloCmdChannel paramApolloCmdChannel, int paramInt, String paramString1, String paramString2) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    if (paramInt == 0) {
-      ThreadManager.getUIHandler().post(new yvd(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner != null) && (this.jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner.getRuntimeState()))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.callbackEngineWrapper(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelIRenderRunner.isJsRuntime(), this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+      if (QLog.isColorLevel()) {
+        QLog.d("apollochannel_JsRenderRunner", 2, "apolloSurfaceView.queueEvent mNativeSSOReqMgr.callbackEngine cmd:" + this.jdField_a_of_type_JavaLangString);
+      }
     }
   }
 }

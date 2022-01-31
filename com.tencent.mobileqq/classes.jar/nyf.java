@@ -1,32 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.TroopNickNameUpdateEvent;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.QQStoryHandler;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class nyf
-  extends QQUIEventReceiver
+  implements Runnable
 {
-  public nyf(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
-  {
-    super(paramStoryMessageListActivity);
-  }
+  public nyf(QQStoryMainController paramQQStoryMainController) {}
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull TroopNickNameManager.TroopNickNameUpdateEvent paramTroopNickNameUpdateEvent)
+  public void run()
   {
-    if (paramTroopNickNameUpdateEvent.a.isSuccess())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
-      }
-      paramStoryMessageListActivity.e();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return TroopNickNameManager.TroopNickNameUpdateEvent.class;
+    ((QQStoryHandler)QQStoryContext.a().a(98)).a(2001, true, null);
   }
 }
 

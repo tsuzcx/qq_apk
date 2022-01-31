@@ -19,8 +19,8 @@ public class ReadInJoyEditVideoButton
   
   private void e()
   {
-    ((ImageView)a(2131364427)).setVisibility(8);
-    ((TextView)a(2131364452)).setText("下一步");
+    ((ImageView)a(2131364452)).setVisibility(8);
+    ((TextView)a(2131364477)).setText("下一步");
   }
   
   public void a()

@@ -1,13 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.view.View.OnFocusChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
 
 public class tbo
-  implements View.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public void onClick(View paramView)
+  public tbo(Leba paramLeba) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    ((ViewGroup)paramView.getParent()).performClick();
+    if (paramBoolean)
+    {
+      paramView.clearFocus();
+      UniteSearchActivity.a(this.a.a(), null, 21, 0L, (HotWordSearchEntryDataModel.HotSearchItem)Leba.a(this.a).getTag(), 3);
+    }
   }
 }
 

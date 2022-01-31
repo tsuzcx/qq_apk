@@ -1,41 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
+import mqq.observer.BusinessObserver;
 
-public class lar
-  extends Handler
+class lar
+  implements BusinessObserver
 {
-  private WeakReference a;
+  lar(laq paramlaq) {}
   
-  public lar(KanDianViewController paramKanDianViewController)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = new WeakReference(paramKanDianViewController);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    KanDianViewController localKanDianViewController = (KanDianViewController)this.a.get();
-    if (localKanDianViewController == null) {}
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 1: 
-          KanDianViewController.a(localKanDianViewController);
-          return;
-        }
-      } while (KanDianViewController.a(localKanDianViewController) == null);
-      KanDianViewController.a(localKanDianViewController).a(KanDianViewController.a(localKanDianViewController));
-      return;
-    } while (KanDianViewController.a(localKanDianViewController) == null);
-    KanDianViewController.a(localKanDianViewController).b();
+    this.a.a.a();
   }
 }
 

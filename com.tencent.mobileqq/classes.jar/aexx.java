@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.view.View;
 
-class aexx
-  implements Runnable
+public abstract interface aexx
 {
-  aexx(aexw paramaexw) {}
+  public abstract void a(View paramView);
   
-  public void run()
-  {
-    ShortVideoCommentsView.b(this.a.a, false);
-  }
+  public abstract void a(View paramView, aeyc paramaeyc);
 }
 
 

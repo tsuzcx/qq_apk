@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richstatus;
 
-import ahpn;
-import ahpo;
+import ahuf;
+import ahug;
 import android.content.Context;
 import android.os.Parcelable;
 import android.text.Editable;
@@ -25,7 +25,7 @@ public class RichStatusEditText
   private static float jdField_a_of_type_Float = 1.0F;
   int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ahpn(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ahuf(this);
   private RichStatusEditText.RichStatusEditListener jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener;
   private ClickableImageSpan jdField_a_of_type_ComTencentMobileqqWidgetClickableImageSpan;
   public boolean a;
@@ -214,11 +214,11 @@ public class RichStatusEditText
     }
   }
   
-  public ahpo a(int paramInt)
+  public ahug a(int paramInt)
   {
     int k = getText().length();
     if ((paramInt < 0) || (paramInt > k)) {
-      return new ahpo(k, k);
+      return new ahug(k, k);
     }
     ImageSpan[] arrayOfImageSpan = (ImageSpan[])a().getSpans(0, k, ImageSpan.class);
     int i1 = arrayOfImageSpan.length;
@@ -242,7 +242,7 @@ public class RichStatusEditText
       {
         k = m;
         continue;
-        return new ahpo(i, k);
+        return new ahug(i, k);
       }
     }
   }
@@ -380,8 +380,8 @@ public class RichStatusEditText
         break label207;
       }
       localObject = a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = ((ahpo)localObject).jdField_a_of_type_Int;
-      this.b = ((ahpo)localObject).b;
+      this.jdField_a_of_type_Int = ((ahug)localObject).jdField_a_of_type_Int;
+      this.b = ((ahug)localObject).b;
       i = 1;
     }
     for (;;)

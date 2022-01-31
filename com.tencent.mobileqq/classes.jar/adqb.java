@@ -1,21 +1,40 @@
-import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.smtt.sdk.ValueCallback;
+import java.lang.ref.WeakReference;
 
-public class adqb
-  implements StaggeredGridLayoutManager.ExceptionListener
+public final class adqb
+  implements ValueCallback
 {
-  public adqb(HotPicPageView paramHotPicPageView) {}
+  public adqb(WeakReference paramWeakReference, Activity paramActivity) {}
   
-  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
+  public void a(String paramString)
   {
-    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localActivity != null) && (paramString != null) && (paramString.startsWith("http")))
+    {
+      if (UniformDownloadMgr.a().a() == null)
+      {
+        paramString = new Bundle();
+        paramString.putString("_filename_from_dlg", this.jdField_a_of_type_AndroidAppActivity.getString(2131435124));
+        Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
+        localIntent.putExtra("param", paramString);
+        localIntent.putExtra("url", "http://mdc.html5.qq.com/d/directdown.jsp?channel_id=10386");
+        localActivity.sendBroadcast(localIntent);
+      }
+    }
+    else {
+      return;
+    }
+    FileManagerUtil.d(localActivity, "http://mdc.html5.qq.com/d/directdown.jsp?channel_id=10386");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adqb
  * JD-Core Version:    0.7.0.1
  */

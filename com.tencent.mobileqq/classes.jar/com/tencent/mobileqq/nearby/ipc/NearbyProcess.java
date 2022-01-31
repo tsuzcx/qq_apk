@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.ipc;
 
-import aerj;
-import aerk;
+import aezu;
+import aezv;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Message;
@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class NearbyProcess
 {
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new aerj(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new aezu(this);
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   public MainProcessInterface a;
   private NearbyProcManager jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcManager;
@@ -21,7 +21,7 @@ public class NearbyProcess
   
   public NearbyProcess(AppInterface paramAppInterface, NearbyProcManager paramNearbyProcManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface = new aerk(this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface = new aezv(this);
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcManager = paramNearbyProcManager;
   }

@@ -1,23 +1,11 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameRankData;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
+import com.tencent.TMG.sdk.AVCallback;
 
-public final class ywr
-  implements Runnable
+class ywr
+  implements AVCallback
 {
-  public ywr(QQAppInterface paramQQAppInterface, ApolloGameRankData paramApolloGameRankData) {}
+  ywr(ywq paramywq) {}
   
-  public void run()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRankData != null))
-    {
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRankData);
-      ((ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154)).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), localArrayList);
-    }
-  }
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 

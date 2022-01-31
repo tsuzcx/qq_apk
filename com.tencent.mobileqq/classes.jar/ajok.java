@@ -1,25 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
-public final class ajok
-  implements DialogInterface.OnClickListener
+public class ajok
+  implements Runnable
 {
-  public ajok(long paramLong) {}
+  public ajok(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      TroopFileTransferManager.e();
-      continue;
-      TroopFileTransferManager.a(this.a);
-    }
+    PublishHomeWorkFragment.a(this.a).setVisibility(0);
   }
 }
 

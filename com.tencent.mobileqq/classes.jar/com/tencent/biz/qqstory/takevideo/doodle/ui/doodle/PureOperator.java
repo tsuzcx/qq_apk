@@ -105,7 +105,9 @@ public class PureOperator
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePureLinePath.a.moveTo(f1, f2);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePureLinePath.a.lineTo(f1 + 1.0F, f2 + 1.0F);
       continue;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePureLinePath.a.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, (this.jdField_a_of_type_Float + f1) / 2.0F, (this.jdField_b_of_type_Float + f2) / 2.0F);
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePureLinePath != null) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePureLinePath.a != null)) {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePureLinePath.a.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, (this.jdField_a_of_type_Float + f1) / 2.0F, (this.jdField_b_of_type_Float + f2) / 2.0F);
+      }
       this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Float = f2;
     }

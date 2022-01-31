@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class kun
   implements Runnable
 {
-  public kun(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  public kun(AccountDetailActivity paramAccountDetailActivity, int paramInt) {}
   
   public void run()
   {
-    this.a.a(1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.c > 0) {
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.c(this.jdField_a_of_type_Int);
+    }
   }
 }
 

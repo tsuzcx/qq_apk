@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
 
-public class acyz
+class acyz
   implements Runnable
 {
-  public acyz(ThumbDownloadManager paramThumbDownloadManager, String paramString) {}
+  acyz(acyy paramacyy, boolean paramBoolean) {}
   
   public void run()
   {
-    ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_JavaLangString);
-    ThumbDownloadManager.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_JavaLangString);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      QfileFileAssistantActivity.e(this.jdField_a_of_type_Acyy.a);
+      return;
+    }
+    QfileFileAssistantActivity.f(this.jdField_a_of_type_Acyy.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acyz
  * JD-Core Version:    0.7.0.1
  */

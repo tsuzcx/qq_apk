@@ -1,64 +1,26 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import com.tencent.component.network.downloader.impl.ipc.Const.SimpleRequest;
-import com.tencent.component.network.downloader.impl.ipc.DownloadSerice;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.common.galleryactivity.GalleryPageView;
 
 public class pjy
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public pjy(DownloadSerice paramDownloadSerice) {}
+  public pjy(GalleryPageView paramGalleryPageView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Log.i("DownloadSerice", "on msg:" + paramMessage.what);
-    for (;;)
-    {
-      try
-      {
-        switch (paramMessage.what)
-        {
-        case 101: 
-          super.handleMessage(paramMessage);
-          return;
-        }
-      }
-      catch (Throwable paramMessage)
-      {
-        Log.e("DownloadSerice", "", paramMessage);
-        return;
-      }
-      if (paramMessage.getData() == null) {
-        break;
-      }
-      Object localObject = paramMessage.getData();
-      ((Bundle)localObject).setClassLoader(this.a.getClassLoader());
-      localObject = (Const.SimpleRequest)((Bundle)localObject).get("request");
-      DownloadSerice.a(this.a, (Const.SimpleRequest)localObject, paramMessage.replyTo);
-      return;
-      if (paramMessage.getData() == null) {
-        break;
-      }
-      localObject = paramMessage.getData();
-      ((Bundle)localObject).setClassLoader(this.a.getClassLoader());
-      localObject = (Const.SimpleRequest)((Bundle)localObject).get("request");
-      DownloadSerice.b(this.a, (Const.SimpleRequest)localObject, paramMessage.replyTo);
-      return;
-      if (paramMessage.getData() == null) {
-        break;
-      }
-      localObject = paramMessage.getData();
-      ((Bundle)localObject).setClassLoader(this.a.getClassLoader());
-      localObject = (Const.SimpleRequest)((Bundle)localObject).get("request");
-      DownloadSerice.c(this.a, (Const.SimpleRequest)localObject, paramMessage.replyTo);
-      return;
-    }
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pjy
  * JD-Core Version:    0.7.0.1
  */

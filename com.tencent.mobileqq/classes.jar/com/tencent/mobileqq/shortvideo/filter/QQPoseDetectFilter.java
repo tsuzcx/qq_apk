@@ -118,6 +118,11 @@ public class QQPoseDetectFilter
     }
   }
   
+  public boolean f_()
+  {
+    return QmcfManager.a().a() == 2;
+  }
+  
   public void h()
   {
     try
@@ -160,11 +165,6 @@ public class QQPoseDetectFilter
       this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
       SLog.a("QQPoseDetectFilter", "process excep!", localError);
     }
-  }
-  
-  public boolean i_()
-  {
-    return QmcfManager.a().a() == 2;
   }
 }
 

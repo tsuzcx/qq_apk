@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import adgs;
-import adgt;
-import adgu;
+import adoz;
+import adpa;
+import adpb;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -48,22 +48,22 @@ public class FMDialogUtil
   
   public static void a(Context paramContext, String paramString, CharSequence paramCharSequence, FMDialogUtil.FMDialogInterface paramFMDialogInterface)
   {
-    adgs localadgs = new adgs(paramFMDialogInterface);
-    paramFMDialogInterface = new adgt(paramFMDialogInterface);
+    adoz localadoz = new adoz(paramFMDialogInterface);
+    paramFMDialogInterface = new adpa(paramFMDialogInterface);
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new adgu(paramCharSequence, paramContext, paramString, localadgs, paramFMDialogInterface));
+      new Handler(localLooper).post(new adpb(paramCharSequence, paramContext, paramString, localadoz, paramFMDialogInterface));
     }
     do
     {
       return;
       if ((paramCharSequence instanceof String))
       {
-        DialogUtil.b(paramContext, 230, paramString, (String)paramCharSequence, 2131428127, 2131428128, localadgs, paramFMDialogInterface).show();
+        DialogUtil.b(paramContext, 230, paramString, (String)paramCharSequence, 2131428127, 2131428128, localadoz, paramFMDialogInterface).show();
         return;
       }
     } while (!(paramCharSequence instanceof SpannableString));
-    DialogUtil.a(paramContext, 230, paramString, paramCharSequence, 2131428127, 2131428128, localadgs, paramFMDialogInterface).show();
+    DialogUtil.a(paramContext, 230, paramString, paramCharSequence, 2131428127, 2131428128, localadoz, paramFMDialogInterface).show();
   }
 }
 

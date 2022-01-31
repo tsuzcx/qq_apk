@@ -1,35 +1,35 @@
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.ui.QAVPtvTemplateAdapter;
+import com.tencent.av.ui.QavListItemBase;
+import com.tencent.av.ui.QavListItemBase.IClickCallback;
+import com.tencent.qphone.base.util.QLog;
 
-class kbd
-  implements QavInOutAnimation.QavOutAnimationListener
+public class kbd
+  implements QavListItemBase.IClickCallback
 {
-  kbd(kbb paramkbb) {}
+  public kbd(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter) {}
   
-  public void a()
+  public void a(int paramInt, QavListItemBase paramQavListItemBase)
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.setViewEnable(2131364247, false);
-      this.a.a.a.setViewEnable(2131365414, false);
-      this.a.a.a.setViewEnable(2131365413, false);
-      this.a.a.a.setViewEnable(2131365411, false);
-      this.a.a.a.setViewEnable(2131365409, false);
-      this.a.a.a.setViewEnable(2131364249, false);
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVPtvTemplateAdapter", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
     }
-  }
-  
-  public void b()
-  {
-    this.a.a.e = true;
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 2131034269);
+    if ((System.currentTimeMillis() - this.a.a < 500L) && (paramInt > 0)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVPtvTemplateAdapter", 2, "PtvTemplateAdapter onItemClicked position yes : " + paramInt);
+    }
+    this.a.a = System.currentTimeMillis();
+    int i = this.a.c;
+    this.a.c = paramInt;
+    this.a.a(i, this.a.c);
+    this.a.a(this.a.c);
+    this.a.c(this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kbd
  * JD-Core Version:    0.7.0.1
  */

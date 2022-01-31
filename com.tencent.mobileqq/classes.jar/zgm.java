@@ -1,34 +1,26 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.msf.sdk.QNotificationManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 
-public class zgm
+class zgm
   implements Runnable
 {
-  public zgm(MessageHandler paramMessageHandler, QNotificationManager paramQNotificationManager) {}
+  zgm(zgl paramzgl) {}
   
   public void run()
   {
-    try
-    {
-      Thread.sleep(5000L);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.msg.MessageHandler", 4, "IPADonline time expired cancel now");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel("Q.msg.MessageHandler_IpadOnlineNotifition", MessageHandler.h);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.msg.MessageHandler", 2, "IPADonline thread Interrupt");
-    }
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
+    localTranslateAnimation.setDuration(400L);
+    localTranslateAnimation.setRepeatCount(1);
+    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+    localTranslateAnimation.setAnimationListener(new zgn(this));
+    this.a.a.a.setVisibility(0);
+    this.a.a.a.startAnimation(localTranslateAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zgm
  * JD-Core Version:    0.7.0.1
  */

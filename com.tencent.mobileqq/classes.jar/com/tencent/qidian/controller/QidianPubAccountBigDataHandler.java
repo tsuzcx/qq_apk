@@ -1,8 +1,8 @@
 package com.tencent.qidian.controller;
 
-import alnm;
-import alnn;
-import alno;
+import aluv;
+import aluw;
+import alux;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -42,7 +42,7 @@ public class QidianPubAccountBigDataHandler
   {
     super(paramQQAppInterface);
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    ThreadManager.post(new alnm(this), 8, null, true);
+    ThreadManager.post(new aluv(this), 8, null, true);
   }
   
   private void a(long paramLong1, PubAccountNavigationMenu paramPubAccountNavigationMenu, long paramLong2)
@@ -63,7 +63,7 @@ public class QidianPubAccountBigDataHandler
         ((subcmd0x519.ReqBody)localObject2).uint32_sub_cmd.set(36);
         ((subcmd0x519.ReqBody)localObject2).msg_get_navigation_menu_req.set((MessageMicro)localObject1);
         localObject1 = new subcmd0x519.CRMMsgHead();
-        ((subcmd0x519.CRMMsgHead)localObject1).uint32_ver_no.set(LoginUtils.a("7.6.3"));
+        ((subcmd0x519.CRMMsgHead)localObject1).uint32_ver_no.set(LoginUtils.a("7.6.8"));
         ((subcmd0x519.CRMMsgHead)localObject1).uint32_crm_sub_cmd.set(36);
         ((subcmd0x519.CRMMsgHead)localObject1).uint32_clienttype.set(2);
         ((subcmd0x519.CRMMsgHead)localObject1).uint64_kf_uin.set(paramLong1);
@@ -102,7 +102,7 @@ public class QidianPubAccountBigDataHandler
   private void a(PubAccountNavigationMenu paramPubAccountNavigationMenu)
   {
     this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramPubAccountNavigationMenu.puin), paramPubAccountNavigationMenu);
-    ThreadManager.post(new alno(this, paramPubAccountNavigationMenu), 5, null, true);
+    ThreadManager.post(new alux(this, paramPubAccountNavigationMenu), 5, null, true);
   }
   
   private void a(boolean paramBoolean, byte[] paramArrayOfByte, Object paramObject)
@@ -326,7 +326,7 @@ public class QidianPubAccountBigDataHandler
         }
         QLog.d("QidianPubAccountBigDataHandler", 2, "getNatigationMenu error: " + paramString.getMessage());
         continue;
-        ThreadManager.post(new alnn(this, l, paramLong), 8, null, true);
+        ThreadManager.post(new aluw(this, l, paramLong), 8, null, true);
         continue;
       }
       if (QLog.isColorLevel()) {

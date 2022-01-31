@@ -1,118 +1,35 @@
-class nqf
-  extends Thread
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.child.TroopStoryPlayModeBase;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+
+public class nqf
+  implements Runnable
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean = true;
+  public nqf(TroopStoryPlayModeBase paramTroopStoryPlayModeBase, StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2, VideoListFeedItem paramVideoListFeedItem, boolean paramBoolean) {}
   
-  nqf(nqe paramnqe)
-  {
-    super("AudioPlayback");
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    try
-    {
-      notify();
-      return;
-    }
-    finally {}
-  }
-  
-  /* Error */
   public void run()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 38	nqf:isInterrupted	()Z
-    //   4: ifne +102 -> 106
-    //   7: aload_0
-    //   8: monitorenter
-    //   9: aload_0
-    //   10: getfield 26	nqf:jdField_a_of_type_Boolean	Z
-    //   13: ifeq +23 -> 36
-    //   16: aload_0
-    //   17: invokevirtual 41	java/lang/Object:wait	()V
-    //   20: goto -11 -> 9
-    //   23: astore_1
-    //   24: aload_0
-    //   25: monitorexit
-    //   26: aload_1
-    //   27: athrow
-    //   28: astore_1
-    //   29: aload_0
-    //   30: invokevirtual 44	nqf:interrupt	()V
-    //   33: goto -33 -> 0
-    //   36: aload_0
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: getfield 24	nqf:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   42: astore_1
-    //   43: aload_1
-    //   44: monitorenter
-    //   45: aload_0
-    //   46: getfield 12	nqf:jdField_a_of_type_Nqe	Lnqe;
-    //   49: getfield 49	nqe:a	Lnqg;
-    //   52: invokevirtual 54	nqg:a	()Lnqh;
-    //   55: astore_2
-    //   56: aload_2
-    //   57: ifnonnull +18 -> 75
-    //   60: aload_0
-    //   61: getfield 24	nqf:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   64: invokevirtual 41	java/lang/Object:wait	()V
-    //   67: goto -22 -> 45
-    //   70: astore_2
-    //   71: aload_1
-    //   72: monitorexit
-    //   73: aload_2
-    //   74: athrow
-    //   75: aload_1
-    //   76: monitorexit
-    //   77: aload_0
-    //   78: getfield 12	nqf:jdField_a_of_type_Nqe	Lnqe;
-    //   81: aload_2
-    //   82: getfield 59	nqh:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
-    //   85: aload_2
-    //   86: getfield 62	nqh:jdField_a_of_type_Long	J
-    //   89: invokevirtual 66	nqe:b	(Ljava/nio/ByteBuffer;J)V
-    //   92: aload_0
-    //   93: getfield 12	nqf:jdField_a_of_type_Nqe	Lnqe;
-    //   96: getfield 49	nqe:a	Lnqg;
-    //   99: aload_2
-    //   100: invokevirtual 69	nqg:a	(Lnqh;)V
-    //   103: goto -103 -> 0
-    //   106: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	107	0	this	nqf
-    //   23	4	1	localObject1	Object
-    //   28	1	1	localInterruptedException	java.lang.InterruptedException
-    //   55	2	2	localnqh1	nqh
-    //   70	30	2	localnqh2	nqh
-    // Exception table:
-    //   from	to	target	type
-    //   9	20	23	finally
-    //   24	26	23	finally
-    //   36	38	23	finally
-    //   7	9	28	java/lang/InterruptedException
-    //   26	28	28	java/lang/InterruptedException
-    //   38	45	28	java/lang/InterruptedException
-    //   73	75	28	java/lang/InterruptedException
-    //   77	103	28	java/lang/InterruptedException
-    //   45	56	70	finally
-    //   60	67	70	finally
-    //   71	73	70	finally
-    //   75	77	70	finally
+    PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.b.mStoryType, String.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.hashCode()));
+    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.a();
+    String str2 = PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.a, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildTroopStoryPlayModeBase.b);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem == null)
+    {
+      str1 = "";
+      StoryReportor.a("story_grp", "clk_one", i, 0, new String[] { "3", str2, "", str1 });
+      if (!this.jdField_a_of_type_Boolean) {
+        break label130;
+      }
+    }
+    label130:
+    for (String str1 = "2";; str1 = "1")
+    {
+      StoryReportor.a("play_video", "clk_download", 0, 0, new String[] { str1 });
+      return;
+      str1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId;
+      break;
+    }
   }
 }
 

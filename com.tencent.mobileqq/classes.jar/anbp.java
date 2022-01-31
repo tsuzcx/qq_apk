@@ -1,62 +1,27 @@
-import android.os.RemoteException;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
-import cooperation.qzone.util.NetworkState;
-import cooperation.qzone.webviewplugin.QZoneLiveJsPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.qzone.font.FontManager;
+import java.io.File;
 
 public class anbp
-  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
+  implements Runnable
 {
-  public anbp(QZoneLiveJsPlugin paramQZoneLiveJsPlugin, JSONObject paramJSONObject, boolean paramBoolean, String paramString) {}
+  public anbp(FontManager paramFontManager, String paramString, int paramInt) {}
   
-  public void a(IQZonePluginManager paramIQZonePluginManager)
+  public void run()
   {
-    if (paramIQZonePluginManager == null) {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FontManager", 4, "begin to download font file from network, url =" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int)))) {
+      FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      FontManager.a(this.jdField_a_of_type_CooperationQzoneFontFontManager, this.jdField_a_of_type_Int);
       return;
+      QLog.e("FontManager", 1, "Font Download Failed, font url = " + this.jdField_a_of_type_JavaLangString);
     }
-    try
-    {
-      localPluginRecord = paramIQZonePluginManager.a("qzone_live_video_plugin_hack.apk");
-      if ((localPluginRecord == null) || (localPluginRecord.a != 4)) {
-        break label104;
-      }
-      this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", true);
-    }
-    catch (JSONException paramIQZonePluginManager)
-    {
-      for (;;)
-      {
-        PluginRecord localPluginRecord;
-        paramIQZonePluginManager.printStackTrace();
-        return;
-        if ((localPluginRecord != null) && ((localPluginRecord.a == 2) || (NetworkState.isWifiConn())))
-        {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("isInstalled", false);
-          if (this.jdField_a_of_type_Boolean)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("QZoneLiveJsPlugin", 2, " needInstall:" + this.jdField_a_of_type_Boolean + ",需要安装插件");
-            }
-            paramIQZonePluginManager.a(localPluginRecord.f, null, 0);
-          }
-        }
-      }
-    }
-    catch (RemoteException paramIQZonePluginManager)
-    {
-      paramIQZonePluginManager.printStackTrace();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneLiveJsPlugin", 2, " 返回结果：" + this.jdField_a_of_type_OrgJsonJSONObject);
-    }
-    this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneLiveJsPlugin.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-    return;
-    label104:
   }
 }
 

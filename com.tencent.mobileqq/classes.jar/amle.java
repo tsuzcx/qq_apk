@@ -1,35 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.dingdong.DingdongPluginDataFactory.ScheduleSummaryData;
-import cooperation.dingdong.DingdongPluginHelper;
-import cooperation.dingdong.data.ScheduleReminderMgr;
-import cooperation.dingdong.data.ScheduleTipsDialog;
+import com.tencent.widget.TCWNumberPicker.Formatter;
+import java.util.Formatter;
 
-public class amle
-  extends AsyncTask
+public final class amle
+  implements TCWNumberPicker.Formatter
 {
-  public amle(ScheduleReminderMgr paramScheduleReminderMgr, DingdongPluginDataFactory.ScheduleSummaryData paramScheduleSummaryData) {}
+  final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+  final Formatter jdField_a_of_type_JavaUtilFormatter = new Formatter(this.jdField_a_of_type_JavaLangStringBuilder);
+  final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[1];
   
-  protected Boolean a(Void... paramVarArgs)
+  public String a(int paramInt)
   {
-    return Boolean.valueOf(DingdongPluginHelper.b(ScheduleReminderMgr.a(this.jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr).getApp().getApplicationContext()));
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    Intent localIntent = new Intent(ScheduleReminderMgr.a(this.jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr).getApp().getApplicationContext(), ScheduleTipsDialog.class);
-    localIntent.setFlags(268435456);
-    localIntent.putExtra("isforeground", paramBoolean);
-    localIntent.putExtra("summaryinfo", this.jdField_a_of_type_CooperationDingdongDingdongPluginDataFactory$ScheduleSummaryData);
-    ScheduleReminderMgr.a(this.jdField_a_of_type_CooperationDingdongDataScheduleReminderMgr).getApp().getApplicationContext().startActivity(localIntent);
+    this.jdField_a_of_type_ArrayOfJavaLangObject[0] = Integer.valueOf(paramInt);
+    this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
+    this.jdField_a_of_type_JavaUtilFormatter.format("%02d", this.jdField_a_of_type_ArrayOfJavaLangObject);
+    return this.jdField_a_of_type_JavaUtilFormatter.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amle
  * JD-Core Version:    0.7.0.1
  */

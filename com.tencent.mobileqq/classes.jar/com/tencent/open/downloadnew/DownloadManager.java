@@ -1,24 +1,24 @@
 package com.tencent.open.downloadnew;
 
-import algp;
-import algs;
-import algt;
-import algu;
-import algv;
-import algx;
-import alha;
-import alhb;
-import alhc;
-import alhd;
-import alhe;
-import alhf;
-import alhg;
-import alhh;
-import alhi;
-import alhl;
-import alhm;
-import alhn;
-import alho;
+import aloh;
+import alok;
+import alol;
+import alom;
+import alon;
+import alop;
+import alos;
+import alot;
+import alou;
+import alov;
+import alow;
+import alox;
+import aloy;
+import aloz;
+import alpa;
+import alpd;
+import alpe;
+import alpf;
+import alpg;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -76,7 +76,7 @@ public class DownloadManager
   public static final String b;
   protected final int a;
   protected long a;
-  private ApkGetCodeListener jdField_a_of_type_ComTencentOpenDownloadnewApkGetCodeListener = new alhb(this);
+  private ApkGetCodeListener jdField_a_of_type_ComTencentOpenDownloadnewApkGetCodeListener = new alot(this);
   private ApkWriteCodeListener jdField_a_of_type_ComTencentOpenDownloadnewApkWriteCodeListener;
   protected PackageInstallReceiver a;
   public ITMAssistantDownloadClientListener a;
@@ -102,9 +102,9 @@ public class DownloadManager
     this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new alhi(this);
+    this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = new alpa(this);
     this.jdField_a_of_type_Int = 1000;
-    this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadLogListener = new alhf(this);
+    this.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadLogListener = new alox(this);
     LogUtility.c(jdField_a_of_type_JavaLangString, "DownloadManager create QQ5.0");
     this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver = new PackageInstallReceiver();
     IntentFilter localIntentFilter = new IntentFilter();
@@ -116,7 +116,7 @@ public class DownloadManager
     NoticeDownloadListener.a().a(ThreadManager.getSubThreadHandler().getLooper());
     a(WebViewDownloadListener.a());
     a(NoticeDownloadListener.a());
-    ThreadManager.getSubThreadHandler().post(new alhc(this));
+    ThreadManager.getSubThreadHandler().post(new alou(this));
     DownloaderGetCodeClient.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewApkGetCodeListener);
   }
   
@@ -199,7 +199,7 @@ public class DownloadManager
       LogUtility.c(jdField_a_of_type_JavaLangString, "receive write code msg but data is null......");
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new alhe(this, paramBundle));
+    ThreadManager.getSubThreadHandler().post(new alow(this, paramBundle));
   }
   
   /* Error */
@@ -238,7 +238,7 @@ public class DownloadManager
   
   private void h(DownloadInfo paramDownloadInfo)
   {
-    ThreadManager.getSubThreadHandler().post(new algv(this, paramDownloadInfo));
+    ThreadManager.getSubThreadHandler().post(new alon(this, paramDownloadInfo));
   }
   
   private void i(DownloadInfo paramDownloadInfo)
@@ -249,7 +249,7 @@ public class DownloadManager
       LogUtility.c(jdField_a_of_type_JavaLangString, "receive get code msg but info is null......");
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new alhd(this, paramDownloadInfo));
+    ThreadManager.getSubThreadHandler().post(new alov(this, paramDownloadInfo));
   }
   
   public int a(DownloadInfo paramDownloadInfo)
@@ -275,7 +275,7 @@ public class DownloadManager
     label77:
     for (localObject = ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString;; localObject = ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString)
     {
-      ThreadManager.getSubThreadHandler().post(new algs(this, (String)localObject));
+      ThreadManager.getSubThreadHandler().post(new alok(this, (String)localObject));
       LogUtility.a(jdField_a_of_type_JavaLangString, "pause url=" + (String)localObject + ", appid=" + paramString);
       return 0;
     }
@@ -475,7 +475,7 @@ public class DownloadManager
   
   public void a()
   {
-    ThreadManager.getSubThreadHandler().post(new algp(this));
+    ThreadManager.getSubThreadHandler().post(new aloh(this));
   }
   
   public void a(int paramInt, DownloadInfo paramDownloadInfo)
@@ -505,19 +505,19 @@ public class DownloadManager
         LogUtility.a(jdField_a_of_type_JavaLangString, "onNetworkConnect ###下载等待:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
         paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
         while (paramString.hasNext()) {
-          ((DownloadListener)paramString.next()).a(paramDownloadInfo);
+          ((DownloadListener)paramString.next()).onDownloadWait(paramDownloadInfo);
         }
       case 3: 
         LogUtility.a(jdField_a_of_type_JavaLangString, "onNetworkConnect ###下载暂停:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
         paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
         while (paramString.hasNext()) {
-          ((DownloadListener)paramString.next()).b(paramDownloadInfo);
+          ((DownloadListener)paramString.next()).onDownloadPause(paramDownloadInfo);
         }
       case 4: 
         LogUtility.a(jdField_a_of_type_JavaLangString, "onNetworkConnect ###下载完成:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
         paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
         while (paramString.hasNext()) {
-          ((DownloadListener)paramString.next()).c(paramDownloadInfo);
+          ((DownloadListener)paramString.next()).onDownloadFinish(paramDownloadInfo);
         }
       case 10: 
         LogUtility.a(jdField_a_of_type_JavaLangString, "onNetworkConnect ###下载取消:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
@@ -528,7 +528,7 @@ public class DownloadManager
         LogUtility.a(jdField_a_of_type_JavaLangString, "downloadInfo.state = " + paramDownloadInfo.a());
         paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
         while (paramString.hasNext()) {
-          ((DownloadListener)paramString.next()).d(paramDownloadInfo);
+          ((DownloadListener)paramString.next()).onDownloadCancel(paramDownloadInfo);
         }
       case 2: 
         if ((paramDownloadInfo.jdField_c_of_type_Int == 1) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L))
@@ -542,7 +542,7 @@ public class DownloadManager
           {
             DownloadListener localDownloadListener = (DownloadListener)paramString.next();
             LogUtility.a(jdField_a_of_type_JavaLangString, "###下载1 listner name" + localDownloadListener.getClass().getName());
-            localDownloadListener.a(paramDownloadInfo);
+            localDownloadListener.onDownloadUpdate(paramDownloadInfo);
           }
         }
         break;
@@ -550,19 +550,19 @@ public class DownloadManager
         LogUtility.a(jdField_a_of_type_JavaLangString, "onNetworkConnect ###安装成功:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
         paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
         while (paramString.hasNext()) {
-          ((DownloadListener)paramString.next()).a(paramDownloadInfo.jdField_b_of_type_JavaLangString, paramDownloadInfo.jdField_d_of_type_JavaLangString);
+          ((DownloadListener)paramString.next()).installSucceed(paramDownloadInfo.jdField_b_of_type_JavaLangString, paramDownloadInfo.jdField_d_of_type_JavaLangString);
         }
       case 13: 
         LogUtility.a(jdField_a_of_type_JavaLangString, "###包被替换:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
         paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
         while (paramString.hasNext()) {
-          ((DownloadListener)paramString.next()).c(paramDownloadInfo.jdField_b_of_type_JavaLangString, paramDownloadInfo.jdField_d_of_type_JavaLangString);
+          ((DownloadListener)paramString.next()).packageReplaced(paramDownloadInfo.jdField_b_of_type_JavaLangString, paramDownloadInfo.jdField_d_of_type_JavaLangString);
         }
       case 9: 
         LogUtility.a(jdField_a_of_type_JavaLangString, "###卸载成功:" + this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size());
         paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
         while (paramString.hasNext()) {
-          ((DownloadListener)paramString.next()).b(paramDownloadInfo.jdField_b_of_type_JavaLangString, paramDownloadInfo.jdField_d_of_type_JavaLangString);
+          ((DownloadListener)paramString.next()).uninstallSucceed(paramDownloadInfo.jdField_b_of_type_JavaLangString, paramDownloadInfo.jdField_d_of_type_JavaLangString);
         }
       }
     }
@@ -570,7 +570,7 @@ public class DownloadManager
   
   public void a(Activity paramActivity, Bundle paramBundle, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2)
   {
-    new Handler(Looper.getMainLooper()).post(new algx(this, paramBundle, paramActivity, paramInt1, paramApkUpdateDetail, paramInt2));
+    new Handler(Looper.getMainLooper()).post(new alop(this, paramBundle, paramActivity, paramInt1, paramApkUpdateDetail, paramInt2));
   }
   
   public void a(AppInterface paramAppInterface)
@@ -597,26 +597,26 @@ public class DownloadManager
     //   5: new 34	java/lang/StringBuilder
     //   8: dup
     //   9: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   12: ldc_w 596
+    //   12: ldc_w 606
     //   15: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   18: aload_1
     //   19: invokevirtual 483	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   22: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   25: invokestatic 99	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   28: aload_1
-    //   29: getfield 598	com/tencent/open/downloadnew/DownloadInfo:jdField_c_of_type_Boolean	Z
+    //   29: getfield 608	com/tencent/open/downloadnew/DownloadInfo:jdField_c_of_type_Boolean	Z
     //   32: ifeq +27 -> 59
-    //   35: ldc_w 600
+    //   35: ldc_w 610
     //   38: aload_1
     //   39: getfield 283	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   42: bipush 100
-    //   44: invokestatic 605	com/tencent/open/base/ImageUtil:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   47: new 607	algq
+    //   44: invokestatic 615	com/tencent/open/base/ImageUtil:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   47: new 617	aloi
     //   50: dup
     //   51: aload_0
     //   52: aload_1
-    //   53: invokespecial 608	algq:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Lcom/tencent/open/downloadnew/DownloadInfo;)V
-    //   56: invokestatic 613	com/tencent/open/base/img/ImageCache:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/open/base/img/ImageDownCallback;)V
+    //   53: invokespecial 618	aloi:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   56: invokestatic 623	com/tencent/open/base/img/ImageCache:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/open/base/img/ImageDownCallback;)V
     //   59: aload_0
     //   60: aload_1
     //   61: getfield 283	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
@@ -627,7 +627,7 @@ public class DownloadManager
     //   74: aload_0
     //   75: aload 4
     //   77: aload_1
-    //   78: invokevirtual 616	com/tencent/open/downloadnew/DownloadManager:a	(Lcom/tencent/open/downloadnew/DownloadInfo;Lcom/tencent/open/downloadnew/DownloadInfo;)Z
+    //   78: invokevirtual 626	com/tencent/open/downloadnew/DownloadManager:a	(Lcom/tencent/open/downloadnew/DownloadInfo;Lcom/tencent/open/downloadnew/DownloadInfo;)Z
     //   81: ifeq +339 -> 420
     //   84: aload 4
     //   86: astore_3
@@ -635,22 +635,22 @@ public class DownloadManager
     //   90: new 34	java/lang/StringBuilder
     //   93: dup
     //   94: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   97: ldc_w 618
+    //   97: ldc_w 628
     //   100: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: aload_1
     //   104: getfield 263	com/tencent/open/downloadnew/DownloadInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   107: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: ldc_w 620
+    //   110: ldc_w 630
     //   113: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: aload_1
-    //   117: getfield 622	com/tencent/open/downloadnew/DownloadInfo:jdField_a_of_type_Boolean	Z
-    //   120: invokevirtual 625	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   123: ldc_w 627
+    //   117: getfield 632	com/tencent/open/downloadnew/DownloadInfo:jdField_a_of_type_Boolean	Z
+    //   120: invokevirtual 635	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   123: ldc_w 637
     //   126: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: aload_1
     //   130: getfield 249	com/tencent/open/downloadnew/DownloadInfo:jdField_a_of_type_Int	I
     //   133: invokevirtual 319	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   136: ldc_w 629
+    //   136: ldc_w 639
     //   139: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   142: aload_0
     //   143: aload_1
@@ -661,18 +661,18 @@ public class DownloadManager
     //   156: invokestatic 262	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   159: aload_0
     //   160: aload_3
-    //   161: invokevirtual 631	com/tencent/open/downloadnew/DownloadManager:e	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
-    //   164: ldc_w 633
+    //   161: invokevirtual 641	com/tencent/open/downloadnew/DownloadManager:e	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   164: ldc_w 643
     //   167: aload_3
     //   168: getfield 234	com/tencent/open/downloadnew/DownloadInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
     //   171: invokevirtual 478	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   174: ifeq +15 -> 189
     //   177: aload_0
-    //   178: invokevirtual 635	com/tencent/open/downloadnew/DownloadManager:b	()Z
+    //   178: invokevirtual 645	com/tencent/open/downloadnew/DownloadManager:b	()Z
     //   181: ifeq +8 -> 189
     //   184: aload_0
     //   185: aload_3
-    //   186: invokevirtual 637	com/tencent/open/downloadnew/DownloadManager:f	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   186: invokevirtual 647	com/tencent/open/downloadnew/DownloadManager:f	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   189: aload_3
     //   190: getfield 249	com/tencent/open/downloadnew/DownloadInfo:jdField_a_of_type_Int	I
     //   193: iconst_1
@@ -683,82 +683,82 @@ public class DownloadManager
     //   202: aload_3
     //   203: getfield 249	com/tencent/open/downloadnew/DownloadInfo:jdField_a_of_type_Int	I
     //   206: istore_2
-    //   207: new 639	java/util/HashMap
+    //   207: new 649	java/util/HashMap
     //   210: dup
-    //   211: invokespecial 640	java/util/HashMap:<init>	()V
+    //   211: invokespecial 650	java/util/HashMap:<init>	()V
     //   214: astore 5
     //   216: aload 5
-    //   218: getstatic 645	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_APPID	Ljava/lang/String;
+    //   218: getstatic 655	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_APPID	Ljava/lang/String;
     //   221: aload_3
     //   222: getfield 283	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   225: invokeinterface 651 3 0
+    //   225: invokeinterface 661 3 0
     //   230: pop
     //   231: aload 5
-    //   233: getstatic 654	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_TASK_PACKNAME	Ljava/lang/String;
+    //   233: getstatic 664	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_TASK_PACKNAME	Ljava/lang/String;
     //   236: aload_3
     //   237: getfield 234	com/tencent/open/downloadnew/DownloadInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   240: invokeinterface 651 3 0
+    //   240: invokeinterface 661 3 0
     //   245: pop
     //   246: aload 5
-    //   248: getstatic 657	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_TASK_VERSION	Ljava/lang/String;
+    //   248: getstatic 667	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_TASK_VERSION	Ljava/lang/String;
     //   251: aload_3
     //   252: getfield 236	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_Int	I
-    //   255: invokestatic 661	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   258: invokeinterface 651 3 0
+    //   255: invokestatic 671	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   258: invokeinterface 661 3 0
     //   263: pop
     //   264: aload 5
-    //   266: getstatic 664	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_VIA	Ljava/lang/String;
+    //   266: getstatic 674	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_VIA	Ljava/lang/String;
     //   269: aload_3
     //   270: getfield 304	com/tencent/open/downloadnew/DownloadInfo:jdField_g_of_type_JavaLangString	Ljava/lang/String;
-    //   273: invokeinterface 651 3 0
+    //   273: invokeinterface 661 3 0
     //   278: pop
     //   279: aload 5
-    //   281: getstatic 667	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_UIN_TYPE	Ljava/lang/String;
-    //   284: ldc_w 669
-    //   287: invokestatic 672	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   290: invokeinterface 651 3 0
+    //   281: getstatic 677	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_UIN_TYPE	Ljava/lang/String;
+    //   284: ldc_w 679
+    //   287: invokestatic 682	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   290: invokeinterface 661 3 0
     //   295: pop
     //   296: aload 5
-    //   298: getstatic 675	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_DOWNLOADTYPE	Ljava/lang/String;
+    //   298: getstatic 685	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_DOWNLOADTYPE	Ljava/lang/String;
     //   301: iconst_2
-    //   302: invokestatic 661	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   305: invokeinterface 651 3 0
+    //   302: invokestatic 671	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   305: invokeinterface 661 3 0
     //   310: pop
     //   311: aload 5
-    //   313: getstatic 678	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_ICON_URL	Ljava/lang/String;
+    //   313: getstatic 688	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_ICON_URL	Ljava/lang/String;
     //   316: aload_3
-    //   317: getfield 681	com/tencent/open/downloadnew/DownloadInfo:l	Ljava/lang/String;
-    //   320: invokeinterface 651 3 0
+    //   317: getfield 691	com/tencent/open/downloadnew/DownloadInfo:l	Ljava/lang/String;
+    //   320: invokeinterface 661 3 0
     //   325: pop
     //   326: aload 5
-    //   328: getstatic 684	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_APP_NAME	Ljava/lang/String;
+    //   328: getstatic 694	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_APP_NAME	Ljava/lang/String;
     //   331: aload_3
-    //   332: getfield 685	com/tencent/open/downloadnew/DownloadInfo:jdField_e_of_type_JavaLangString	Ljava/lang/String;
-    //   335: invokeinterface 651 3 0
+    //   332: getfield 695	com/tencent/open/downloadnew/DownloadInfo:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   335: invokeinterface 661 3 0
     //   340: pop
     //   341: aload 5
-    //   343: getstatic 688	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_SHOW_NOTIFICATION	Ljava/lang/String;
+    //   343: getstatic 698	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_SHOW_NOTIFICATION	Ljava/lang/String;
     //   346: aload_3
-    //   347: getfield 690	com/tencent/open/downloadnew/DownloadInfo:jdField_j_of_type_Int	I
-    //   350: invokestatic 661	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   353: invokeinterface 651 3 0
+    //   347: getfield 700	com/tencent/open/downloadnew/DownloadInfo:jdField_j_of_type_Int	I
+    //   350: invokestatic 671	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   353: invokeinterface 661 3 0
     //   358: pop
     //   359: aload 5
-    //   361: getstatic 693	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_IS_AUTOINSTALL_BY_SDK	Ljava/lang/String;
+    //   361: getstatic 703	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_IS_AUTOINSTALL_BY_SDK	Ljava/lang/String;
     //   364: aload_3
-    //   365: getfield 695	com/tencent/open/downloadnew/DownloadInfo:jdField_d_of_type_Boolean	Z
-    //   368: invokestatic 698	java/lang/String:valueOf	(Z)Ljava/lang/String;
-    //   371: invokeinterface 651 3 0
+    //   365: getfield 705	com/tencent/open/downloadnew/DownloadInfo:jdField_d_of_type_Boolean	Z
+    //   368: invokestatic 708	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   371: invokeinterface 661 3 0
     //   376: pop
     //   377: aload 5
-    //   379: getstatic 701	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_DOWNLOADSIZE	Ljava/lang/String;
+    //   379: getstatic 711	com/tencent/tmassistantbase/common/TMAssistantDownloadConst:PARAM_DOWNLOADSIZE	Ljava/lang/String;
     //   382: aload_3
-    //   383: getfield 703	com/tencent/open/downloadnew/DownloadInfo:jdField_d_of_type_Long	J
-    //   386: invokestatic 706	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   389: invokeinterface 651 3 0
+    //   383: getfield 713	com/tencent/open/downloadnew/DownloadInfo:jdField_d_of_type_Long	J
+    //   386: invokestatic 716	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   389: invokeinterface 661 3 0
     //   394: pop
     //   395: invokestatic 147	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   398: new 708	algr
+    //   398: new 718	aloj
     //   401: dup
     //   402: aload_0
     //   403: aload_1
@@ -766,7 +766,7 @@ public class DownloadManager
     //   406: iload_2
     //   407: aload_3
     //   408: aload 4
-    //   410: invokespecial 711	algr:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Ljava/lang/String;Ljava/util/Map;ILcom/tencent/open/downloadnew/DownloadInfo;Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   410: invokespecial 721	aloj:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;Ljava/lang/String;Ljava/util/Map;ILcom/tencent/open/downloadnew/DownloadInfo;Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   413: invokevirtual 171	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   416: pop
     //   417: aload_0
@@ -775,13 +775,13 @@ public class DownloadManager
     //   420: aload_1
     //   421: astore_3
     //   422: goto -335 -> 87
-    //   425: ldc_w 713
+    //   425: ldc_w 723
     //   428: astore_3
     //   429: aload_1
-    //   430: getfield 715	com/tencent/open/downloadnew/DownloadInfo:jdField_h_of_type_Int	I
+    //   430: getfield 725	com/tencent/open/downloadnew/DownloadInfo:jdField_h_of_type_Int	I
     //   433: bipush 12
     //   435: if_icmpne +7 -> 442
-    //   438: ldc_w 717
+    //   438: ldc_w 727
     //   441: astore_3
     //   442: aload_3
     //   443: aload_1
@@ -789,18 +789,18 @@ public class DownloadManager
     //   447: aload_1
     //   448: getfield 283	com/tencent/open/downloadnew/DownloadInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   451: aload_1
-    //   452: getfield 720	com/tencent/open/downloadnew/DownloadInfo:m	Ljava/lang/String;
-    //   455: invokestatic 725	com/tencent/open/business/base/StaticAnalyz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   452: getfield 730	com/tencent/open/downloadnew/DownloadInfo:m	Ljava/lang/String;
+    //   455: invokestatic 735	com/tencent/open/business/base/StaticAnalyz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   458: getstatic 32	com/tencent/open/downloadnew/DownloadManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   461: new 34	java/lang/StringBuilder
     //   464: dup
     //   465: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   468: ldc_w 727
+    //   468: ldc_w 737
     //   471: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   474: aload_1
     //   475: getfield 263	com/tencent/open/downloadnew/DownloadInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   478: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   481: ldc_w 627
+    //   481: ldc_w 637
     //   484: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   487: aload_1
     //   488: getfield 249	com/tencent/open/downloadnew/DownloadInfo:jdField_a_of_type_Int	I
@@ -869,13 +869,13 @@ public class DownloadManager
       Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
       if (((Iterator)localObject).hasNext())
       {
-        ((DownloadListener)((Iterator)localObject).next()).a(paramDownloadInfo, paramInt, paramString, i);
+        ((DownloadListener)((Iterator)localObject).next()).onDownloadError(paramDownloadInfo, paramInt, paramString, i);
         continue;
         LogUtility.a(jdField_a_of_type_JavaLangString, "onDownloadError ###写码失败引起的..........11111");
         if ((paramDownloadInfo.jdField_d_of_type_JavaLangString != null) && ("com.tencent.mobileqq".equals(paramDownloadInfo.jdField_d_of_type_JavaLangString)) && (paramDownloadInfo.jdField_a_of_type_Int != 1) && (b()))
         {
           LogUtility.a(jdField_a_of_type_JavaLangString, "onDownloadError ###写码失败引起的..........");
-          ThreadManager.getSubThreadHandler().post(new alhl(this, paramDownloadInfo));
+          ThreadManager.getSubThreadHandler().post(new alpd(this, paramDownloadInfo));
           return;
         }
         paramDownloadInfo.a(4);
@@ -884,7 +884,7 @@ public class DownloadManager
           h(paramDownloadInfo);
           return;
         }
-        ThreadManager.getSubThreadHandler().post(new alhm(this, paramDownloadInfo));
+        ThreadManager.getSubThreadHandler().post(new alpe(this, paramDownloadInfo));
         return;
         paramString = CommonDataAdapter.a().a().getString(2131428529);
         i = 3;
@@ -934,7 +934,7 @@ public class DownloadManager
           if (str == null) {
             break;
           }
-          ThreadManager.getSubThreadHandler().post(new alhn(this, str, paramDownloadInfo));
+          ThreadManager.getSubThreadHandler().post(new alpf(this, str, paramDownloadInfo));
           i = j;
           paramString = (String)localObject;
           break;
@@ -1068,43 +1068,43 @@ public class DownloadManager
     //   2: aload_2
     //   3: ifnull +11 -> 14
     //   6: aload_2
-    //   7: getfield 878	com/tencent/apkupdate/logic/data/ApkUpdateDetail:updatemethod	I
+    //   7: getfield 889	com/tencent/apkupdate/logic/data/ApkUpdateDetail:updatemethod	I
     //   10: iconst_4
     //   11: if_icmpeq +20 -> 31
     //   14: getstatic 32	com/tencent/open/downloadnew/DownloadManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   17: ldc_w 880
+    //   17: ldc_w 891
     //   20: invokestatic 99	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   23: aload_0
     //   24: aload_1
-    //   25: invokevirtual 881	com/tencent/open/downloadnew/DownloadManager:a	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   25: invokevirtual 893	com/tencent/open/downloadnew/DownloadManager:a	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   28: aload_0
     //   29: monitorexit
     //   30: return
     //   31: aload_2
-    //   32: getfield 884	com/tencent/apkupdate/logic/data/ApkUpdateDetail:url	Ljava/lang/String;
+    //   32: getfield 896	com/tencent/apkupdate/logic/data/ApkUpdateDetail:url	Ljava/lang/String;
     //   35: astore 5
     //   37: aload_2
-    //   38: getfield 887	com/tencent/apkupdate/logic/data/ApkUpdateDetail:patchsize	I
+    //   38: getfield 899	com/tencent/apkupdate/logic/data/ApkUpdateDetail:patchsize	I
     //   41: i2l
     //   42: lstore_3
     //   43: aload_2
-    //   44: getfield 890	com/tencent/apkupdate/logic/data/ApkUpdateDetail:fileMd5	Ljava/lang/String;
+    //   44: getfield 902	com/tencent/apkupdate/logic/data/ApkUpdateDetail:fileMd5	Ljava/lang/String;
     //   47: astore_2
     //   48: getstatic 32	com/tencent/open/downloadnew/DownloadManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   51: new 34	java/lang/StringBuilder
     //   54: dup
     //   55: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   58: ldc_w 892
+    //   58: ldc_w 904
     //   61: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: lload_3
-    //   65: ldc2_w 893
+    //   65: ldc2_w 905
     //   68: ldiv
-    //   69: invokevirtual 897	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   72: ldc_w 899
+    //   69: invokevirtual 909	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   72: ldc_w 911
     //   75: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: aload_2
     //   79: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: ldc_w 901
+    //   82: ldc_w 913
     //   85: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   88: aload 5
     //   90: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1122,19 +1122,19 @@ public class DownloadManager
     //   113: ifle +8 -> 121
     //   116: aload_1
     //   117: lload_3
-    //   118: putfield 703	com/tencent/open/downloadnew/DownloadInfo:jdField_d_of_type_Long	J
+    //   118: putfield 713	com/tencent/open/downloadnew/DownloadInfo:jdField_d_of_type_Long	J
     //   121: aload_0
     //   122: aload_1
-    //   123: invokevirtual 881	com/tencent/open/downloadnew/DownloadManager:a	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   123: invokevirtual 893	com/tencent/open/downloadnew/DownloadManager:a	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   126: goto -98 -> 28
     //   129: astore_2
     //   130: getstatic 32	com/tencent/open/downloadnew/DownloadManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   133: ldc_w 903
+    //   133: ldc_w 915
     //   136: aload_2
     //   137: invokestatic 369	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   140: aload_0
     //   141: aload_1
-    //   142: invokevirtual 881	com/tencent/open/downloadnew/DownloadManager:a	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   142: invokevirtual 893	com/tencent/open/downloadnew/DownloadManager:a	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
     //   145: goto -117 -> 28
     //   148: astore_1
     //   149: aload_0
@@ -1303,7 +1303,7 @@ public class DownloadManager
     for (localObject = ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString;; localObject = ((DownloadInfo)localObject).jdField_c_of_type_JavaLangString)
     {
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        ThreadManager.getSubThreadHandler().post(new alho(this, paramBoolean, (String)localObject));
+        ThreadManager.getSubThreadHandler().post(new alpg(this, paramBoolean, (String)localObject));
       }
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
       DownloadDBHelper.a().a(paramString);
@@ -1641,8 +1641,8 @@ public class DownloadManager
   
   protected void b()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new alhg(this), 5000L);
-    ThreadManager.getSubThreadHandler().postDelayed(new alhh(this), 10000L);
+    ThreadManager.getSubThreadHandler().postDelayed(new aloy(this), 5000L);
+    ThreadManager.getSubThreadHandler().postDelayed(new aloz(this), 10000L);
   }
   
   public void b(DownloadInfo paramDownloadInfo)
@@ -1665,11 +1665,11 @@ public class DownloadManager
         if (paramDownloadInfo.jdField_a_of_type_Int == 1) {
           h(paramDownloadInfo);
         } else {
-          ThreadManager.getSubThreadHandler().post(new algt(this, paramDownloadInfo));
+          ThreadManager.getSubThreadHandler().post(new alol(this, paramDownloadInfo));
         }
       }
       else {
-        ThreadManager.getSubThreadHandler().post(new algu(this, paramDownloadInfo));
+        ThreadManager.getSubThreadHandler().post(new alom(this, paramDownloadInfo));
       }
     }
   }
@@ -1944,11 +1944,11 @@ public class DownloadManager
     //   18: aload_1
     //   19: invokeinterface 461 1 0
     //   24: checkcast 504	com/tencent/open/downloadnew/DownloadListener
-    //   27: invokevirtual 1169	com/tencent/open/downloadnew/DownloadManager:b	(Lcom/tencent/open/downloadnew/DownloadListener;)V
+    //   27: invokevirtual 1182	com/tencent/open/downloadnew/DownloadManager:b	(Lcom/tencent/open/downloadnew/DownloadListener;)V
     //   30: goto -22 -> 8
     //   33: astore_1
     //   34: getstatic 32	com/tencent/open/downloadnew/DownloadManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   37: ldc_w 1171
+    //   37: ldc_w 1184
     //   40: aload_1
     //   41: invokestatic 348	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   44: ldc 2
@@ -1959,10 +1959,10 @@ public class DownloadManager
     //   53: monitorexit
     //   54: return
     //   55: invokestatic 147	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   58: new 1173	algw
+    //   58: new 1186	aloo
     //   61: dup
     //   62: aload_0
-    //   63: invokespecial 1174	algw:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;)V
+    //   63: invokespecial 1187	aloo:<init>	(Lcom/tencent/open/downloadnew/DownloadManager;)V
     //   66: invokevirtual 171	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   69: pop
     //   70: goto -26 -> 44
@@ -2001,7 +2001,7 @@ public class DownloadManager
   protected void e()
   {
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 200) {
-      ThreadManager.getSubThreadHandler().postDelayed(new alha(this), 3000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new alos(this), 3000L);
     }
   }
   

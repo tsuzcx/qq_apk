@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.discoperation.DiscFileOperator;
+import com.tencent.mobileqq.filemanager.discoperation.FileHttpUploder;
 
-class adjg
-  implements DialogInterface.OnClickListener
+public class adjg
+  implements Runnable
 {
-  adjg(adjf paramadjf) {}
+  public adjg(DiscFileOperator paramDiscFileOperator) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    SendBottomBar.a(this.a.a);
+    this.a.a.b();
   }
 }
 

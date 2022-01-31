@@ -1,25 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.biz.troop.TroopMemberApiPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
 
 public class ovw
-  implements TroopMemberApiClient.Callback
+  implements View.OnClickListener
 {
-  public ovw(TroopMemberApiPlugin paramTroopMemberApiPlugin, String paramString) {}
+  public ovw(SlideTabViewPager paramSlideTabViewPager) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    boolean bool = paramBundle.getBoolean("isSuccess", false);
-    if (bool)
-    {
-      paramBundle = paramBundle.getString("data");
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
+    paramView = (Integer)paramView.getTag();
+    this.a.setTab(paramView.intValue());
   }
 }
 

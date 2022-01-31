@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import wcm;
+import whu;
 
 public class ArkTipsBar
   implements TipsBarTask
@@ -33,8 +33,8 @@ public class ArkTipsBar
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968623, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362942));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new wcm(this));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362947));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new whu(this));
     }
     if ((paramVarArgs != null) && (paramVarArgs.length > 1) && ((paramVarArgs[0] instanceof CharSequence)) && ((paramVarArgs[1] instanceof Long)))
     {
@@ -53,7 +53,7 @@ public class ArkTipsBar
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362940);
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362945);
       if (localImageView != null) {
         localImageView.setImageDrawable(paramDrawable);
       }

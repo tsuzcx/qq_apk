@@ -35,6 +35,7 @@ public final class e_busi_param
   public static final int _BatchOrSingle = 34;
   public static final int _BatchPhotoNum = 30;
   public static final int _BizModTraceInfo = 92;
+  public static final int _BrandUgcId = 162;
   public static final int _CmtNum = 23;
   public static final int _ComboCounts = 111;
   public static final int _CoupleCommentID = 134;
@@ -87,6 +88,7 @@ public final class e_busi_param
   public static final int _IsLike = 24;
   public static final int _IsLiveRecomFeeds = 104;
   public static final int _IsNewSearch = 135;
+  public static final int _IsReadyGetUnreadBar = 164;
   public static final int _IsRealTimeReportTTT = 122;
   public static final int _IsServiceLink = 27;
   public static final int _IsSignIn = 50;
@@ -149,6 +151,7 @@ public final class e_busi_param
   public static final int _SubPraiseType = 125;
   public static final int _SuperPraise = 71;
   public static final int _SupportFeedsNoUpdate = 29;
+  public static final int _TabPageTypeId = 163;
   public static final int _ThumbFillPic = 44;
   public static final int _TihHasMore = 67;
   public static final int _TihListDate = 56;

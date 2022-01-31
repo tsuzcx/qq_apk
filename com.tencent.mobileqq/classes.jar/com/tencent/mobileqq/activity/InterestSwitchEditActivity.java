@@ -12,13 +12,13 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import svk;
+import taf;
 
 public class InterestSwitchEditActivity
   extends IphoneTitleBarActivity
 {
   private CardHandler jdField_a_of_type_ComTencentMobileqqAppCardHandler;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new svk(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new taf(this);
   private Card jdField_a_of_type_ComTencentMobileqqDataCard;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private FormSwitchItem b;
@@ -167,21 +167,21 @@ public class InterestSwitchEditActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970537);
+    super.setContentView(2130970550);
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
     setTitle("兴趣爱好展示设置");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371028));
-    this.b = ((FormSwitchItem)findViewById(2131371029));
-    this.c = ((FormSwitchItem)findViewById(2131371030));
-    this.d = ((FormSwitchItem)findViewById(2131371032));
-    this.f = ((FormSwitchItem)findViewById(2131371033));
-    this.g = ((FormSwitchItem)findViewById(2131371031));
-    this.h = ((FormSwitchItem)findViewById(2131371034));
-    this.e = ((FormSwitchItem)findViewById(2131363976));
-    this.i = ((FormSwitchItem)findViewById(2131371035));
-    this.j = ((FormSwitchItem)findViewById(2131371036));
-    this.k = ((FormSwitchItem)findViewById(2131371037));
-    this.l = ((FormSwitchItem)findViewById(2131371038));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371024));
+    this.b = ((FormSwitchItem)findViewById(2131371025));
+    this.c = ((FormSwitchItem)findViewById(2131371026));
+    this.d = ((FormSwitchItem)findViewById(2131371028));
+    this.f = ((FormSwitchItem)findViewById(2131371029));
+    this.g = ((FormSwitchItem)findViewById(2131371027));
+    this.h = ((FormSwitchItem)findViewById(2131371030));
+    this.e = ((FormSwitchItem)findViewById(2131364001));
+    this.i = ((FormSwitchItem)findViewById(2131371031));
+    this.j = ((FormSwitchItem)findViewById(2131371032));
+    this.k = ((FormSwitchItem)findViewById(2131371033));
+    this.l = ((FormSwitchItem)findViewById(2131371034));
     int n = getIntent().getIntExtra("param_eat_switch", -1);
     int i1 = getIntent().getIntExtra("param_interest_switch", -1);
     int i2 = getIntent().getIntExtra("param_joined_group_switch", -1);
@@ -224,7 +224,7 @@ public class InterestSwitchEditActivity
       return true;
       if (!NetworkUtil.d(BaseApplication.getContext()))
       {
-        QQToast.a(BaseApplicationImpl.sApplication, 2131433213, 0).b(getTitleBarHeight());
+        QQToast.a(BaseApplicationImpl.sApplication, 2131433227, 0).b(getTitleBarHeight());
       }
       else
       {

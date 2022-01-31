@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.share.QZoneShareActivity;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
+import cooperation.qzone.QZoneVideoDownloadActivity;
 
 public class amzv
-  implements View.OnClickListener
+  implements Runnable
 {
-  public amzv(QZoneShareActivity paramQZoneShareActivity) {}
+  public amzv(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.a.d)
-    {
-      this.a.f();
-      return;
-    }
-    this.a.h();
-    this.a.a();
+    P2VEffectLoader.a().a(new amzw(this));
   }
 }
 

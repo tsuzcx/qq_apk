@@ -1,35 +1,67 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appcircle.widget.AppNewsTitleBar;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
+import android.os.Handler;
+import com.tencent.mobileqq.app.CardHandler.NowOnliveGallayCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NowShowVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.PhotoWallView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.ilive.photo.NowLiveGallary.RspBody.PhotoInfo;
 
 public class aldf
-  implements View.OnClickListener
+  extends CardHandler.NowOnliveGallayCallback
 {
-  public aldf(AppNewsTitleBar paramAppNewsTitleBar) {}
+  private WeakReference a;
   
-  public void onClick(View paramView)
+  public aldf(PhotoWallView paramPhotoWallView)
   {
-    switch (paramView.getId())
+    this.a = new WeakReference(paramPhotoWallView);
+  }
+  
+  public void a(int paramInt, List paramList)
+  {
+    if (this.a != null) {}
+    for (PhotoWallView localPhotoWallView = (PhotoWallView)this.a.get();; localPhotoWallView = null)
     {
-    }
-    do
-    {
-      do
-      {
+      if (localPhotoWallView == null) {
         return;
-      } while (AppNewsTitleBar.a(this.a) == null);
-      AppNewsTitleBar.a(this.a).finish();
+      }
+      if (paramInt != 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay errorCode:" + paramInt);
+        }
+        localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PhotoWallView", 2, "onGetNowOnliveGallay size:" + paramList.size());
+      }
+      localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.clear();
+      paramInt = 0;
+      while (paramInt < paramList.size())
+      {
+        Object localObject = (NowLiveGallary.RspBody.PhotoInfo)paramList.get(paramInt);
+        localObject = new NowShowVideoInfo(((NowLiveGallary.RspBody.PhotoInfo)localObject).cover.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).video.get().toStringUtf8(), ((NowLiveGallary.RspBody.PhotoInfo)localObject).timestamp.get());
+        localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        paramInt += 1;
+      }
+      if (localPhotoWallView.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        ReportController.b((QQAppInterface)this.b.get(), "dc00899", "NOW", "", "qq_zlk", "replay_exp", 0, 0, localPhotoWallView.jdField_a_of_type_JavaLangString, "", "", "");
+      }
+      localPhotoWallView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
       return;
-    } while ((AppNewsTitleBar.a(this.a) != 0) || (AppNewsTitleBar.a(this.a) == null));
-    AppNewsTitleBar.a(this.a).b(new SendMsg("onShareClick"));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aldf
  * JD-Core Version:    0.7.0.1
  */

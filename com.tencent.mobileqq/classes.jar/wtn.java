@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.app.FriendListObserver;
 
-class wtn
-  implements DialogInterface.OnClickListener
+public class wtn
+  extends FriendListObserver
 {
-  wtn(wtl paramwtl) {}
+  public wtn(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
+    if (paramBoolean) {
+      this.a.i();
+    }
   }
 }
 

@@ -1,112 +1,70 @@
-import AvatarInfo.QQHeadInfo;
-import com.tencent.mobileqq.app.FaceDownloader;
-import com.tencent.mobileqq.app.FaceHandler;
-import com.tencent.mobileqq.app.NearByFaceDownloader;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.app.ScreenShot;
+import com.tencent.mobileqq.app.ShakeListener;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.util.ReflectionUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class zhp
-  implements Runnable
+  extends ShakeListener
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  FaceInfo jdField_a_of_type_ComTencentMobileqqUtilFaceInfo;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  int c;
-  int d;
-  
-  public zhp(NearByFaceDownloader paramNearByFaceDownloader, int paramInt1, FaceInfo paramFaceInfo, int paramInt2, int paramInt3, String paramString, int paramInt4, long paramLong)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.d = paramInt4;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo = paramFaceInfo;
-  }
-  
-  public void run()
-  {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType + "_" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b + "_" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader.jdField_a_of_type_ComTencentMobileqqAppFaceHandler.a(str1, false);
-    if (NetworkUtil.d(BaseApplication.getContext())) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] <= 0L) || (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l] <= 0L)) {
-        break label770;
+    int i = Build.VERSION.SDK_INT;
+    Object localObject = BaseApplicationImpl.sApplication;
+    boolean bool1;
+    if (i > 10)
+    {
+      i = 4;
+      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("screen_shot", i).getString("currentactivity", null);
+      if ((BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2 != null) && (BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getClass().getName().equals(localObject)))
+      {
+        bool1 = SettingCloneUtil.readValue(BaseApplicationImpl.sApplication, null, BaseApplicationImpl.sApplication.getString(2131433595), "qqsetting_screenshot_key", false);
+        boolean bool2 = ReflectionUtil.a(BaseApplication.getContext());
+        if ((bool1) && (bool2))
+        {
+          if (BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot == null)
+          {
+            if (!BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.T) {
+              break label164;
+            }
+            localObject = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getApplicationContext();
+            label118:
+            BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot = new ScreenShot((Context)localObject, BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getWindow());
+          }
+          bool1 = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot.b();
+          if (!bool1) {
+            break label172;
+          }
+          ScreenShot.a("BaseActivity2 is showing");
+        }
       }
     }
-    label770:
-    for (long l1 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l];; l1 = 0L)
+    for (;;)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] > this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m]) && (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] > 0L)) {}
-      for (long l2 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m];; l2 = 0L)
+      return;
+      i = 0;
+      break;
+      label164:
+      localObject = BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2;
+      break label118;
+      label172:
+      if (!BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.jdField_a_of_type_ComTencentMobileqqAppScreenShot.c()) {
+        BaseActivity2.a(BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2);
+      }
+      while (QLog.isColorLevel())
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.o] > 0L) && (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] > 0L)) {}
-        for (long l3 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.o] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n];; l3 = 0L)
-        {
-          Object localObject1 = new HashMap();
-          ((HashMap)localObject1).put("key", str1);
-          ((HashMap)localObject1).put("totalTime", String.valueOf((float)this.jdField_a_of_type_Long / 1000.0F));
-          ((HashMap)localObject1).put("downInfo_time", String.valueOf(l1));
-          ((HashMap)localObject1).put("downInfo_stime", String.valueOf((float)l1 / 1000.0F));
-          ((HashMap)localObject1).put("interval_time", String.valueOf(l2));
-          ((HashMap)localObject1).put("downPic_time", String.valueOf(l3));
-          ((HashMap)localObject1).put("downPic_stime", String.valueOf((float)l3 / 1000.0F));
-          ((HashMap)localObject1).put("downPic_size", String.valueOf(this.c));
-          ((HashMap)localObject1).put("download_url", this.jdField_a_of_type_JavaLangString);
-          ((HashMap)localObject1).put("param_FailCode", Integer.toString(this.jdField_a_of_type_Int));
-          ((HashMap)localObject1).put("fail_reason", Integer.toString(this.d));
-          ((HashMap)localObject1).put("ssoAndHttp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.e));
-          Object localObject2 = FaceDownloader.a(32);
-          Object localObject3 = StatisticCollector.a(BaseApplication.getContext());
-          String str2 = this.jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
-          boolean bool;
-          if (this.jdField_a_of_type_Int == 0)
-          {
-            bool = true;
-            ((StatisticCollector)localObject3).a(str2, (String)localObject2, bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
-            localObject2 = StatisticCollector.a(BaseApplication.getContext());
-            localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
-            if (this.jdField_a_of_type_Int != 0) {
-              break label747;
-            }
-            bool = true;
-            label528:
-            ((StatisticCollector)localObject2).a((String)localObject3, "actGetNearbyHead", bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
-            if ((QLog.isColorLevel()) || (this.jdField_a_of_type_Long > 3000L))
-            {
-              localObject1 = new StringBuffer(200);
-              ((StringBuffer)localObject1).append("NearByFaceDownloader resultCode=").append(this.jdField_a_of_type_Int);
-              ((StringBuffer)localObject1).append(", key=").append(str1);
-              ((StringBuffer)localObject1).append(", totalTime=").append(String.format("%-5s", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
-              ((StringBuffer)localObject1).append(", downInfoTime=").append(l1);
-              ((StringBuffer)localObject1).append(", intervalTime=").append(l2);
-              ((StringBuffer)localObject1).append(", picSize=").append(String.valueOf(this.c));
-              ((StringBuffer)localObject1).append(", downPicTime=").append(l3);
-              ((StringBuffer)localObject1).append(", reasonCode=").append(this.d);
-              ((StringBuffer)localObject1).append(", downUrl=").append(this.jdField_a_of_type_JavaLangString);
-              if (!QLog.isColorLevel()) {
-                break label753;
-              }
-            }
-          }
-          label747:
-          label753:
-          for (int i = 2;; i = 1)
-          {
-            QLog.i("Q.qqhead.NearByFaceDownloader", i, ((StringBuffer)localObject1).toString());
-            return;
-            bool = false;
-            break;
-            bool = false;
-            break label528;
-          }
+        QLog.d("BaseActivity", 2, "snapshot activate " + bool1);
+        return;
+        if ((!MobileIssueSettings.g) && (Build.VERSION.SDK_INT < 11)) {
+          KapalaiAdapterUtil.a().a(BaseActivity2.jdField_a_of_type_ComTencentMobileqqAppBaseActivity2.getWindow());
         }
       }
     }

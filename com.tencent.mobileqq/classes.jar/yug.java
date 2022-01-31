@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
-public class yug
+class yug
   implements Runnable
 {
-  public yug(ApolloVoiceDIYHelper paramApolloVoiceDIYHelper, ApolloTextureView paramApolloTextureView, double paramDouble) {}
+  yug(yuf paramyuf, String paramString) {}
   
   public void run()
   {
-    ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender();
-    if ((localApolloRender != null) && (localApolloRender.getSavaWrapper() != null)) {
-      localApolloRender.getSavaWrapper().a(this.jdField_a_of_type_Double);
+    if ((this.jdField_a_of_type_Yuf.jdField_a_of_type_Int < 0) && (HotChatCenterFragment.a(this.jdField_a_of_type_Yuf.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment))) {
+      this.jdField_a_of_type_Yuf.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
     }
+    this.jdField_a_of_type_Yuf.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,15 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.GoldConfigObserver;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper.GoldMsgFriendSet;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.io.File;
 
-public class xkk
-  implements DialogInterface.OnClickListener
+public final class xkk
+  implements Runnable
 {
-  public xkk(RecentAdapter paramRecentAdapter) {}
+  public xkk(String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    try
+    {
+      localObject = BaseApplicationImpl.getApplication().getFilesDir() + "/QWallet/.tmp/goldmsg_friends";
+      if (!new File((String)localObject).exists()) {
+        return;
+      }
+      localObject = FileUtils.a((String)localObject);
+      if (localObject != null) {
+        GoldMsgChatHelper.GoldMsgFriendSet.a(new String((byte[])localObject, "utf-8"));
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject;
+        Bundle localBundle;
+        localException.printStackTrace();
+      }
+    }
+    localObject = QWalletTools.a();
+    if (localObject != null)
+    {
+      localBundle = new Bundle();
+      localBundle.putString("friendUin", this.a);
+      ((QQAppInterface)localObject).notifyObservers(GoldConfigObserver.class, 9, true, localBundle);
+      return;
+    }
   }
 }
 

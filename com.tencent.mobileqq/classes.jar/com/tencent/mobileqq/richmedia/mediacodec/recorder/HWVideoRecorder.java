@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec.recorder;
 
-import ahor;
+import ahtj;
 import android.annotation.TargetApi;
 import android.media.MediaFormat;
 import android.opengl.EGL14;
@@ -46,7 +46,7 @@ public class HWVideoRecorder
       QLog.w("HWVideoRecorder", 2, "handleStartRecording EGLContext = " + paramEncodeConfig.a());
     }
     if (this.jdField_a_of_type_Boolean) {
-      d();
+      e();
     }
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig = paramEncodeConfig;
@@ -75,7 +75,7 @@ public class HWVideoRecorder
     }
   }
   
-  private void d()
+  private void e()
   {
     if (QLog.isColorLevel()) {
       QLog.w("HWVideoRecorder", 2, "handleStopRecording");
@@ -85,13 +85,13 @@ public class HWVideoRecorder
       try
       {
         this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderHWVideoEncoder.b();
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeInputSurface.a();
         this.jdField_a_of_type_Boolean = false;
         if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeListener != null)
         {
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeListener.a(this.jdField_a_of_type_JavaLangString);
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeListener = null;
         }
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeInputSurface.a();
         this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeNextListener = null;
         return;
       }
@@ -199,7 +199,7 @@ public class HWVideoRecorder
           if ((this.b) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_Boolean))
           {
             this.b = false;
-            ThumbnailUtil.a(paramInt2, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.b, ThumbnailUtil.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_JavaLangString), new ahor(this));
+            ThumbnailUtil.a(paramInt2, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.b, ThumbnailUtil.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig.jdField_a_of_type_JavaLangString), new ahtj(this));
           }
           if (this.d)
           {
@@ -244,6 +244,18 @@ public class HWVideoRecorder
     Message localMessage = Message.obtain();
     localMessage.what = 1;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWVideoRecorder$RecodeHandler.sendMessage(localMessage);
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeListener = null;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRecorderHWEncodeNextListener = null;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeConfig = null;
   }
 }
 

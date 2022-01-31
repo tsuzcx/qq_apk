@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d51" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.qzone.proxy.feedcomponent.widget.FeedDate android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0536" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a130b" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0536" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d6c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
-    </LinearLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.qzone.proxy.albumcomponent.widget.BigPhotoView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ede" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" />
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </RelativeLayout>
-</LinearLayout>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e91" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

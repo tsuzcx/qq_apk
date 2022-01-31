@@ -1,71 +1,69 @@
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.PortalManager.RedPacketConfig;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-public class agmp
+class agmp
   implements Runnable
 {
-  public agmp(PortalManager paramPortalManager, long paramLong1, long paramLong2, long paramLong3) {}
+  agmp(agml paramagml) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig != null)
+    String[] arrayOfString = new String[15];
+    arrayOfString[0] = "res/redpack/redpack_bg.png";
+    arrayOfString[1] = "res/redpack/redpack_left.png";
+    arrayOfString[2] = "res/redpack/redpack_right.png";
+    arrayOfString[3] = "res/redpack/catch_icon.png";
+    arrayOfString[4] = String.format(Locale.getDefault(), "res/redpack/time_%d.png", new Object[] { Integer.valueOf(0) });
+    arrayOfString[5] = String.format(Locale.getDefault(), "res/redpack/time_%d.png", new Object[] { Integer.valueOf(1) });
+    arrayOfString[6] = String.format(Locale.getDefault(), "res/redpack/time_%d.png", new Object[] { Integer.valueOf(2) });
+    arrayOfString[7] = String.format(Locale.getDefault(), "res/redpack/time_%d.png", new Object[] { Integer.valueOf(3) });
+    arrayOfString[8] = "res/redpack/catchCount_bg.png";
+    arrayOfString[9] = String.format(Locale.getDefault(), "res/redpack/loading_0%d.png", new Object[] { Integer.valueOf(1) });
+    arrayOfString[10] = String.format(Locale.getDefault(), "res/redpack/loading_0%d.png", new Object[] { Integer.valueOf(2) });
+    arrayOfString[11] = String.format(Locale.getDefault(), "res/redpack/loading_0%d.png", new Object[] { Integer.valueOf(3) });
+    arrayOfString[12] = "res/redpack/catch_anim.png";
+    arrayOfString[13] = "res/redpack/raise.png";
+    arrayOfString[14] = "res/redpack/raisetips.png";
+    int j = arrayOfString.length;
+    int i = 0;
+    for (;;)
     {
-      if ((this.jdField_a_of_type_Long <= 0L) || (this.jdField_a_of_type_Long > 60000L) || (PortalManager.jdField_a_of_type_Long == this.jdField_a_of_type_Long)) {
-        break label294;
+      if (i >= j) {
+        return;
       }
-      PortalManager.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.grebInterval == PortalManager.jdField_a_of_type_Long) {
-        break label294;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.grebInterval = PortalManager.jdField_a_of_type_Long;
-    }
-    label294:
-    for (int j = 1;; j = 0)
-    {
-      int i = j;
-      if (this.b != -1L)
+      String str = arrayOfString[i];
+      try
       {
-        i = j;
-        if (PortalManager.b != this.b)
-        {
-          PortalManager.b = this.b;
-          i = j;
-          if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.reportActiveInterval != PortalManager.b)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.reportActiveInterval = PortalManager.b;
-            i = 1;
-          }
+        Bitmap localBitmap = ScanTorchActivity.a(this.a.a.a, str, false);
+        if (localBitmap != null) {
+          BaseApplicationImpl.sImageCache.put(str, localBitmap);
         }
       }
-      j = i;
-      if (this.c != -1L)
+      catch (Throwable localThrowable)
       {
-        j = i;
-        if (PortalManager.c != this.c)
+        if (!QLog.isColorLevel()) {
+          break label297;
+        }
+        QLog.e("ScanTorchActivity", 2, "binhai preload img throwable", localThrowable);
+        while ((localThrowable instanceof OutOfMemoryError))
         {
-          PortalManager.c = this.c;
-          j = i;
-          if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.reportNormalInterval != PortalManager.c)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig.reportNormalInterval = PortalManager.c;
-            j = 1;
-          }
+          System.gc();
+          break;
+          QLog.d("ScanTorchActivity", 1, "binhai preload img t=" + localThrowable.getMessage());
         }
       }
-      if (j != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.a(false, 6, 1000L, this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.jdField_a_of_type_ComTencentMobileqqPortalPortalManager$RedPacketConfig);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PortalManager", 2, "sGrabInterval = " + PortalManager.jdField_a_of_type_Long + ",sReportActiveInterval = " + PortalManager.b + ",sReportNormalInterval = " + PortalManager.c);
-      }
-      return;
+      i += 1;
     }
+    label297:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmp
  * JD-Core Version:    0.7.0.1
  */

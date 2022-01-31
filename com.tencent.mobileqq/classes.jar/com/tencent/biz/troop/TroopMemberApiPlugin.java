@@ -17,9 +17,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ovw;
-import ovx;
-import ovy;
+import pan;
+import pao;
+import pap;
 
 @SuppressLint({"InlinedApi"})
 public class TroopMemberApiPlugin
@@ -205,7 +205,7 @@ public class TroopMemberApiPlugin
             this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = TroopMemberApiClient.a();
             this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a();
           }
-          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(new ovw(this, paramJsBridgeListener));
+          this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(new pan(this, paramJsBridgeListener));
         }
         catch (JSONException paramJsBridgeListener)
         {
@@ -253,9 +253,9 @@ public class TroopMemberApiPlugin
               i += 1;
             }
             if ("createVideoAndSend".equals(paramString3)) {
-              this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a((VideoCombineHelper.CombineParams)localObject2, new ovx(this, paramJsBridgeListener));
+              this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a((VideoCombineHelper.CombineParams)localObject2, new pao(this, paramJsBridgeListener));
             } else {
-              this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a((VideoCombineHelper.CombineParams)localObject2, new ovy(this, paramJsBridgeListener));
+              this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a((VideoCombineHelper.CombineParams)localObject2, new pap(this, paramJsBridgeListener));
             }
           }
           catch (Exception paramJsBridgeListener)

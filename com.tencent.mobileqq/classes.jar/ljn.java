@@ -1,31 +1,15 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
 
 public class ljn
+  implements Runnable
 {
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public ReadInJoyHeadImageView a;
-  public ReadInJoyNickNameTextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
-  public TextView h;
-  public TextView i;
-  public TextView j;
+  public ljn(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public ljn(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter) {}
+  public void run()
+  {
+    ReadInJoyCameraCaptureActivity.b(this.a, ReadInJoyCameraCaptureActivity.c(this.a));
+    ReadInJoyCameraCaptureActivity.a(this.a);
+  }
 }
 
 

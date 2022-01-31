@@ -6,9 +6,9 @@ import java.util.List;
 public abstract class ReadInJoyAtlasManager$AtlasCallbackImpl
   implements ReadInJoyAtlasManager.AtlasCallback
 {
-  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
+  public void a(boolean paramBoolean, int paramInt, Object paramObject) {}
   
-  public void a(boolean paramBoolean, Object paramObject) {}
+  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
   
   public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
   

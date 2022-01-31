@@ -1,28 +1,26 @@
-import android.hardware.Camera;
-import com.tencent.biz.widgets.ScannerView;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.troopplugin.PluginJumpManager;
 
-class pef
-  implements Runnable
+public class pef
+  implements AsyncBack
 {
-  pef(pee parampee) {}
+  public pef(PluginJumpManager paramPluginJumpManager) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    if (this.a.jdField_a_of_type_AndroidHardwareCamera == null) {
+    if (paramInt == 0) {
+      HtmlOffline.a("urlplugin.cfg", this.a.mContext, "1007", new peg(this));
+    }
+    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
       return;
     }
-    try
-    {
-      this.a.jdField_a_of_type_AndroidHardwareCamera.cancelAutoFocus();
-      label21:
-      ScannerView.b(this.a.jdField_a_of_type_ComTencentBizWidgetsScannerView, true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label21;
-    }
+    this.a.loadConfigFromFile();
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

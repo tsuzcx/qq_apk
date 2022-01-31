@@ -1,14 +1,98 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.doodle.LineLayer;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class uxk
+public class uxk
   implements Runnable
 {
-  uxk(uxj paramuxj) {}
+  private int jdField_a_of_type_Int;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
+  private int b = -1;
+  
+  public uxk(LineLayer paramLineLayer, int paramInt1, Map paramMap, int paramInt2, uxt paramuxt)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramuxt);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaUtilMap.putAll(paramMap);
+    this.b = paramInt2;
+  }
   
   public void run()
   {
-    ChatActivityUtils.a(this.a.a.a, 2131433730, 1);
+    localObject3 = null;
+    j = 0;
+    try
+    {
+      localObject1 = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label157;
+      }
+      localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      i = 0;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int k;
+        Object localObject1 = localObject3;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("UndoJob", 2, "exception :" + localException);
+          localObject1 = localObject3;
+          i = j;
+        }
+      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        label157:
+        Object localObject2 = localObject3;
+        int i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("UndoJob", 2, "OOM!!");
+          localObject2 = localObject3;
+          i = j;
+        }
+      }
+    }
+    if (((Iterator)localObject1).hasNext())
+    {
+      k = ((Integer)((Iterator)localObject1).next()).intValue();
+      if ((k > i) && (k <= this.jdField_a_of_type_Int)) {
+        i = k;
+      }
+    }
+    else
+    {
+      localObject1 = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (i != 0)) {
+        localObject1 = BitmapFactory.decodeFile((String)localObject1);
+      }
+      for (;;)
+      {
+        new Handler(Looper.getMainLooper()).post(new uxl(this, i, (Bitmap)localObject1));
+        return;
+        i = this.jdField_a_of_type_Int;
+        break;
+        localObject1 = null;
+        i = 0;
+      }
+    }
   }
 }
 

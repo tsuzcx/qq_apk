@@ -6,19 +6,17 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.text.TextUtils;
-import aoot;
-import aoou;
-import aoov;
-import aoow;
-import aooy;
-import aooz;
-import aopa;
-import aopb;
-import com.tencent.biz.common.util.ZipUtils;
+import aoxf;
+import aoxg;
+import aoxh;
+import aoxi;
+import aoxk;
+import aoxl;
+import aoxm;
+import aoxn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.mobileqq.shortvideo.common.Observable;
@@ -31,7 +29,6 @@ import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMSegmentCaptureManager;
 import dov.com.qq.im.capture.IQIMManager;
@@ -90,7 +87,7 @@ public class QIMPtvTemplateManager
   
   static
   {
-    jdField_a_of_type_JavaLangLong = Long.valueOf(60000L);
+    jdField_a_of_type_JavaLangLong = Long.valueOf(2000L);
     jdField_a_of_type_JavaLangString = "ptv_template_usable";
     jdField_b_of_type_JavaLangString = "ptv_debug";
     jdField_c_of_type_JavaLangString = "ptv_template_usable_doodle";
@@ -100,7 +97,7 @@ public class QIMPtvTemplateManager
       bool = "mounted".equals(Environment.getExternalStorageState());
       if (bool)
       {
-        File localFile1 = new File(AppConstants.aJ);
+        File localFile1 = new File(AppConstants.aK);
         jdField_a_of_type_JavaIoFile = new File(localFile1, "dov_ptv_template_dov");
         jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator + jdField_a_of_type_JavaLangString + File.separator;
         jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator + jdField_b_of_type_JavaLangString;
@@ -128,7 +125,7 @@ public class QIMPtvTemplateManager
     this.jdField_c_of_type_JavaLangObject = new Object();
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-    c();
+    d();
   }
   
   private int a(List paramList, String paramString)
@@ -460,7 +457,7 @@ public class QIMPtvTemplateManager
   
   private void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString, long paramLong1, long paramLong2)
   {
-    paramString = (aopb)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (aoxn)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     if (paramString != null)
     {
       paramString.jdField_a_of_type_Long = paramLong1;
@@ -472,7 +469,7 @@ public class QIMPtvTemplateManager
       long l1 = paramLong2;
       if (!paramPtvTemplateInfo.dgStageUsable)
       {
-        paramString = (aopb)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgStageName);
+        paramString = (aoxn)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgStageName);
         paramLong1 = l2;
         l1 = paramLong2;
         if (paramString != null)
@@ -488,7 +485,7 @@ public class QIMPtvTemplateManager
       l2 = l1;
       if (!paramPtvTemplateInfo.dgModelUsable)
       {
-        paramString = (aopb)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgModelName);
+        paramString = (aoxn)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.dgModelName);
         paramLong2 = paramLong1;
         l2 = l1;
         if (paramString != null)
@@ -505,7 +502,7 @@ public class QIMPtvTemplateManager
       l1 = l2;
       if (!paramPtvTemplateInfo.usable)
       {
-        paramString = (aopb)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.name);
+        paramString = (aoxn)this.jdField_a_of_type_JavaUtilHashMap.get(paramPtvTemplateInfo.name);
         paramLong1 = paramLong2;
         l1 = l2;
         if (paramString != null)
@@ -541,7 +538,7 @@ public class QIMPtvTemplateManager
   
   static void a(String paramString1, String paramString2)
   {
-    ThreadManager.getFileThreadHandler().post(new aoou(paramString2, paramString1));
+    ThreadManager.getFileThreadHandler().post(new aoxg(paramString2, paramString1));
   }
   
   public static boolean a()
@@ -877,73 +874,6 @@ public class QIMPtvTemplateManager
     }
   }
   
-  public List a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramPtvTemplateInfo == null) || (TextUtils.isEmpty(paramPtvTemplateInfo.name))) {
-      return localArrayList;
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject = QIMManager.a();
-        if ((localObject == null) || (!(localObject instanceof AppInterface))) {
-          break label233;
-        }
-        localObject = ((AppInterface)localObject).getCurrentAccountUin();
-        if (!StringUtil.c((String)localObject)) {
-          return localArrayList;
-        }
-      }
-      catch (Throwable paramPtvTemplateInfo)
-      {
-        return localArrayList;
-      }
-      Object localObject = new File(jdField_a_of_type_JavaLangString, paramPtvTemplateInfo.name + File.separator + "params.json");
-      if (!((File)localObject).exists()) {}
-      try
-      {
-        paramPtvTemplateInfo = new File(jdField_a_of_type_JavaIoFile, paramPtvTemplateInfo.name);
-        if (paramPtvTemplateInfo.exists()) {
-          ZipUtils.a(paramPtvTemplateInfo, jdField_a_of_type_JavaLangString);
-        }
-        label135:
-        if (((File)localObject).exists())
-        {
-          paramPtvTemplateInfo = FileUtils.a((File)localObject);
-          if (TextUtils.isEmpty(paramPtvTemplateInfo)) {}
-        }
-        try
-        {
-          paramPtvTemplateInfo = new JSONObject(paramPtvTemplateInfo);
-          if (paramPtvTemplateInfo.has("shaderType")) {
-            localArrayList.add(paramPtvTemplateInfo.get("shaderType"));
-          }
-          if (paramPtvTemplateInfo.has("doodleDefaultColor"))
-          {
-            paramPtvTemplateInfo = Integer.valueOf(paramPtvTemplateInfo.getInt("doodleDefaultColor"));
-            if ((paramPtvTemplateInfo instanceof Integer)) {
-              localArrayList.add(paramPtvTemplateInfo);
-            }
-          }
-        }
-        catch (Exception paramPtvTemplateInfo)
-        {
-          label223:
-          break label223;
-        }
-        return localArrayList;
-      }
-      catch (Throwable paramPtvTemplateInfo)
-      {
-        break label135;
-      }
-      label233:
-      localObject = "";
-    }
-  }
-  
   public List a(File paramFile)
   {
     if (QLog.isColorLevel()) {
@@ -966,39 +896,16 @@ public class QIMPtvTemplateManager
       if ((((TemplateGroupItem)localObject).jdField_a_of_type_JavaUtilList != null) && (((TemplateGroupItem)localObject).jdField_a_of_type_JavaUtilList.size() != 0))
       {
         localObject = ((TemplateGroupItem)localObject).jdField_a_of_type_JavaUtilList.iterator();
-        label143:
-        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-        List localList;
         while (((Iterator)localObject).hasNext())
         {
-          localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
-          if (localPtvTemplateInfo != null)
-          {
+          PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject).next();
+          if (localPtvTemplateInfo != null) {
             localPtvTemplateInfo.usable = a(localPtvTemplateInfo);
-            localList = a(localPtvTemplateInfo);
-            if (localList.size() <= 0) {
-              break label261;
-            }
-            i = ((Integer)localList.get(0)).intValue();
-            label217:
-            localPtvTemplateInfo.type = i;
-            if (localList.size() <= 1) {
-              break label266;
-            }
           }
-        }
-        label261:
-        label266:
-        for (int i = ((Integer)localList.get(1)).intValue();; i = 0)
-        {
-          localPtvTemplateInfo.color = i;
-          break label143;
-          break;
-          i = 0;
-          break label217;
         }
       }
     }
+    c();
     return paramFile;
   }
   
@@ -1089,11 +996,11 @@ public class QIMPtvTemplateManager
     for (;;)
     {
       return;
-      Object localObject = new aopb(this);
+      Object localObject = new aoxn(this);
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localObject);
       this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
       localObject = new HttpNetReq();
-      ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aopa(this, paramString1, paramString2, paramString3);
+      ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aoxm(this, paramString1, paramString2, paramString3);
       ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = paramString2;
       ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
       ((HttpNetReq)localObject).jdField_c_of_type_JavaLangString = new File(jdField_a_of_type_JavaIoFile, paramString1).getPath();
@@ -1241,8 +1148,7 @@ public class QIMPtvTemplateManager
       b(false);
       a(localList, paramInt);
       a().notifyObservers(CaptureConfigUpdateObserver.class, 3, true, null);
-    } while (this.jdField_b_of_type_Boolean);
-    a(this.jdField_a_of_type_JavaUtilList);
+    } while (!this.jdField_b_of_type_Boolean);
   }
   
   public void a(String paramString1, int paramInt, String paramString2)
@@ -1257,9 +1163,34 @@ public class QIMPtvTemplateManager
     a(113, null);
   }
   
-  void a(List paramList)
+  public void a(List paramList)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new aoov(this, paramList), jdField_a_of_type_JavaLangLong.longValue());
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    do
+    {
+      return;
+      paramList = paramList.iterator();
+    } while (!paramList.hasNext());
+    Object localObject = (TemplateGroupItem)paramList.next();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(((TemplateGroupItem)localObject).jdField_a_of_type_JavaUtilList);
+    int i = 0;
+    label63:
+    if (i < localArrayList.size())
+    {
+      localObject = (PtvTemplateManager.PtvTemplateInfo)localArrayList.get(i);
+      if ((localObject != null) && (((PtvTemplateManager.PtvTemplateInfo)localObject).predownload) && (!TextUtils.isEmpty(((PtvTemplateManager.PtvTemplateInfo)localObject).resurl))) {
+        break label116;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label63;
+      break;
+      label116:
+      ThreadManager.getFileThreadHandler().post(new aoxi(this, (PtvTemplateManager.PtvTemplateInfo)localObject));
+    }
   }
   
   public void a(List paramList, int paramInt)
@@ -1268,39 +1199,15 @@ public class QIMPtvTemplateManager
       return;
     }
     ??? = paramList.iterator();
-    if (((Iterator)???).hasNext())
+    while (((Iterator)???).hasNext())
     {
       Iterator localIterator = ((TemplateGroupItem)((Iterator)???).next()).jdField_a_of_type_JavaUtilList.iterator();
-      label49:
-      PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-      List localList;
       while (localIterator.hasNext())
       {
-        localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)localIterator.next();
-        if (localPtvTemplateInfo != null)
-        {
+        PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)localIterator.next();
+        if (localPtvTemplateInfo != null) {
           localPtvTemplateInfo.usable = a(localPtvTemplateInfo);
-          localList = a(localPtvTemplateInfo);
-          if (localList.size() <= 0) {
-            break label167;
-          }
-          paramInt = ((Integer)localList.get(0)).intValue();
-          label123:
-          localPtvTemplateInfo.type = paramInt;
-          if (localList.size() <= 1) {
-            break label172;
-          }
         }
-      }
-      label167:
-      label172:
-      for (paramInt = ((Integer)localList.get(1)).intValue();; paramInt = 0)
-      {
-        localPtvTemplateInfo.color = paramInt;
-        break label49;
-        break;
-        paramInt = 0;
-        break label123;
       }
     }
     synchronized (this.jdField_b_of_type_JavaLangObject)
@@ -1314,7 +1221,7 @@ public class QIMPtvTemplateManager
   
   public void a(boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new aoot(this, paramBoolean), null, false);
+    ThreadManager.postImmediately(new aoxf(this, paramBoolean), null, false);
   }
   
   public boolean a(int paramInt1, int paramInt2, String paramString)
@@ -1398,7 +1305,7 @@ public class QIMPtvTemplateManager
     {
       return;
       HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aooz(this, paramPtvTemplateInfo, paramIPtvTemplateDownloadListener);
+      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aoxl(this, paramPtvTemplateInfo, paramIPtvTemplateDownloadListener);
       localHttpNetReq.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.resurl;
       localHttpNetReq.jdField_a_of_type_Int = 0;
       localHttpNetReq.jdField_c_of_type_JavaLangString = new File(jdField_a_of_type_JavaIoFile, paramPtvTemplateInfo.name).getPath();
@@ -1426,38 +1333,6 @@ public class QIMPtvTemplateManager
     }
   }
   
-  public void b(List paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (BaseApplicationImpl.sProcessId != 1);
-      paramList = paramList.iterator();
-    } while (!paramList.hasNext());
-    List localList = ((TemplateGroupItem)paramList.next()).jdField_a_of_type_JavaUtilList;
-    int i = 0;
-    label52:
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-    if (i < localList.size())
-    {
-      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)localList.get(i);
-      if ((localPtvTemplateInfo != null) && (localPtvTemplateInfo.predownload) && (!TextUtils.isEmpty(localPtvTemplateInfo.resurl))) {
-        break label105;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label52;
-      break;
-      label105:
-      ThreadManager.getFileThreadHandler().post(new aoow(this, localPtvTemplateInfo));
-    }
-  }
-  
   public void b(boolean paramBoolean)
   {
     if (paramBoolean)
@@ -1472,22 +1347,9 @@ public class QIMPtvTemplateManager
     QIMRedDotConfig.saveRedDotConfig(this.jdField_a_of_type_DovComQqImCaptureDataQIMRedDotConfig, jdField_a_of_type_JavaIoFile.getAbsolutePath());
   }
   
-  @TargetApi(9)
-  public void c()
+  void c()
   {
-    File localFile = new File(jdField_a_of_type_JavaIoFile, "ptv_template_new.cfg");
-    if (!localFile.exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMPtvTemplateManager", 2, "initLocalTemplateConfigInfo config file not exist.");
-      }
-      a(false);
-      return;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QIMPtvTemplateManager", 4, String.format("rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
-    }
-    ThreadManager.getFileThreadHandler().post(new aooy(this, localFile));
+    ThreadManager.getSubThreadHandler().postDelayed(new aoxh(this), jdField_a_of_type_JavaLangLong.longValue());
   }
   
   public void c(AppInterface paramAppInterface, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, PtvTemplateManager.IPtvTemplateDownloadListener paramIPtvTemplateDownloadListener)
@@ -1511,7 +1373,25 @@ public class QIMPtvTemplateManager
     this.jdField_b_of_type_JavaUtilArrayList.add(paramPtvTemplateInfo);
   }
   
+  @TargetApi(9)
   public void d()
+  {
+    File localFile = new File(jdField_a_of_type_JavaIoFile, "ptv_template_new.cfg");
+    if (!localFile.exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMPtvTemplateManager", 2, "initLocalTemplateConfigInfo config file not exist.");
+      }
+      a(false);
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QIMPtvTemplateManager", 4, String.format("rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
+    }
+    ThreadManager.postImmediately(new aoxk(this, localFile), null, false);
+  }
+  
+  public void e()
   {
     Iterator localIterator = a().iterator();
     while (localIterator.hasNext())
@@ -1527,7 +1407,7 @@ public class QIMPtvTemplateManager
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
-  public void e()
+  public void f()
   {
     if (this.jdField_a_of_type_DovComQqImCaptureDataTemplateGroupItem == null) {}
     StringBuilder localStringBuilder;

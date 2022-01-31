@@ -1,80 +1,48 @@
-import com.tencent.mobileqq.app.GroupIconHelper;
-import java.util.ArrayList;
+import android.graphics.Color;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
+import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.Builder;
+import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow.DrawableBuilder;
+import java.lang.ref.WeakReference;
 
-public class zem
+class zem
+  implements Runnable
 {
-  public byte a;
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
+  zem(zel paramzel, ImageView paramImageView) {}
   
-  private zem(GroupIconHelper paramGroupIconHelper)
+  public void run()
   {
-    this.jdField_a_of_type_Byte = 1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public void a(byte paramByte)
-  {
-    if (paramByte == 3)
+    if ((zel.a(this.jdField_a_of_type_Zel) == null) && (zel.a(this.jdField_a_of_type_Zel) != null) && (zel.a(this.jdField_a_of_type_Zel).get() != null))
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Byte = 1;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.c = false;
-      this.d = false;
-      this.e = false;
+      Object localObject = (ApolloGameViewBinder)zel.a(this.jdField_a_of_type_Zel).get();
+      if ((ApolloGameViewBinder.a((ApolloGameViewBinder)localObject) != null) && (ApolloGameViewBinder.a((ApolloGameViewBinder)localObject).a != null))
+      {
+        localObject = CalloutPopupWindow.a(ApolloGameViewBinder.a((ApolloGameViewBinder)zel.a(this.jdField_a_of_type_Zel).get()).a).b(8).a(ApolloConstant.an).a(16.0F).a(-1);
+        ((CalloutPopupWindow.Builder)localObject).c(50);
+        localObject = new CalloutPopupWindow.DrawableBuilder((CalloutPopupWindow.Builder)localObject).b(Color.argb(255, 0, 0, 0)).a(5).a();
+        if (localObject != null) {
+          zel.a(this.jdField_a_of_type_Zel, ((CalloutPopupWindow.Builder)localObject).a());
+        }
+      }
     }
-    while (paramByte != 2) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = false;
-    this.e = true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nGroupIconInfo");
-    localStringBuilder.append("\n |-").append("isChanged:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("\n |-").append("state:").append(this.jdField_a_of_type_Byte);
-    localStringBuilder.append("\n |-").append("isSyncFace:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("\n |-").append("startTime:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("faceUinSet:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("faceCount:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("crateIconCount:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("\n |-").append("lastCreatedFaceUinSet:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("isPstnIcon:").append(this.c);
-    localStringBuilder.append("\n |-").append("hasRealPstnUser:").append(this.d);
-    localStringBuilder.append("\n |-").append("isFromCreate:").append(this.e);
-    try
+    if (zel.a(this.jdField_a_of_type_Zel) != null)
     {
-      localStringBuilder.append("\n |-").append("memberFaceList:").append(this.jdField_a_of_type_JavaUtilArrayList);
-      label243:
-      return localStringBuilder.toString();
-    }
-    catch (Exception localException)
-    {
-      break label243;
+      if (QLog.isColorLevel()) {
+        QLog.d("GameListAdapter", 2, "show guide window inner " + this.jdField_a_of_type_AndroidWidgetImageView.getX() + " " + this.jdField_a_of_type_AndroidWidgetImageView.getY());
+      }
+      zel.a(this.jdField_a_of_type_Zel).a(83);
+      zel.a(this.jdField_a_of_type_Zel).c(2);
+      zel.a(this.jdField_a_of_type_Zel).b(this.jdField_a_of_type_AndroidWidgetImageView, 0, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zem
  * JD-Core Version:    0.7.0.1
  */

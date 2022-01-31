@@ -3,10 +3,10 @@ package com.tencent.biz.qqstory.playmode.util;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import nmh;
-import nmi;
-import nmj;
-import nmk;
+import nqr;
+import nqs;
+import nqt;
+import nqu;
 
 public class BatchGetVideoInfoHandler
 {
@@ -46,7 +46,7 @@ public class BatchGetVideoInfoHandler
       this.e = this.jdField_a_of_type_Int;
       this.jdField_a_of_type_Int = this.d;
       BatchGetVideoInfo localBatchGetVideoInfo = new BatchGetVideoInfo(this.jdField_a_of_type_JavaUtilArrayList.subList(this.d, this.e));
-      localBatchGetVideoInfo.a(new nmi(this, localBatchGetVideoInfo));
+      localBatchGetVideoInfo.a(new nqs(this, localBatchGetVideoInfo));
       localBatchGetVideoInfo.b();
       return;
     }
@@ -68,7 +68,7 @@ public class BatchGetVideoInfoHandler
     this.d = this.jdField_a_of_type_Int;
     this.e = this.jdField_b_of_type_Int;
     BatchGetVideoInfo localBatchGetVideoInfo = new BatchGetVideoInfo(this.jdField_a_of_type_JavaUtilArrayList.subList(this.d, this.e));
-    localBatchGetVideoInfo.a(new nmh(this, localBatchGetVideoInfo));
+    localBatchGetVideoInfo.a(new nqr(this, localBatchGetVideoInfo));
     localBatchGetVideoInfo.b();
   }
   
@@ -117,7 +117,7 @@ public class BatchGetVideoInfoHandler
       QLog.i("BatchGetVideoInfoHandler", 2, "retryLastRequest, mReqType:" + this.f + ", start:" + this.d + ",end:" + this.e);
     }
     BatchGetVideoInfo localBatchGetVideoInfo = new BatchGetVideoInfo(this.jdField_a_of_type_JavaUtilArrayList.subList(this.d, this.e));
-    localBatchGetVideoInfo.a(new nmj(this, localBatchGetVideoInfo));
+    localBatchGetVideoInfo.a(new nqt(this, localBatchGetVideoInfo));
     localBatchGetVideoInfo.b();
   }
   
@@ -171,7 +171,7 @@ public class BatchGetVideoInfoHandler
       this.e = i;
       this.jdField_b_of_type_Int = this.e;
       BatchGetVideoInfo localBatchGetVideoInfo = new BatchGetVideoInfo(this.jdField_a_of_type_JavaUtilArrayList.subList(this.d, this.e));
-      localBatchGetVideoInfo.a(new nmk(this, localBatchGetVideoInfo));
+      localBatchGetVideoInfo.a(new nqu(this, localBatchGetVideoInfo));
       localBatchGetVideoInfo.b();
       return;
     }

@@ -42,19 +42,20 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import mwt;
+import nan;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 
 public class ReadinJoyActionUtil
 {
-  public static void a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo)
+  public static void a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
     Object localObject2 = new qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo();
     ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo)localObject2).aid.set(paramAdvertisementInfo.mAdAid);
@@ -76,29 +77,45 @@ public class ReadinJoyActionUtil
     localObject1 = localObject2;
     if (AdvertisementInfo.isAppAdvertisementInfo(paramAdvertisementInfo))
     {
-      paramAdvertisementInfo = Uri.parse((String)localObject2).buildUpon();
+      localObject1 = Uri.parse((String)localObject2).buildUpon();
       if (NetworkUtil.b(BaseApplicationImpl.getApplication()) != 1) {
-        break label221;
+        break label298;
       }
-      paramAdvertisementInfo.appendQueryParameter("autodownload", "1");
+      ((Uri.Builder)localObject1).appendQueryParameter("autodownload", "1");
     }
     for (;;)
     {
-      localObject1 = paramAdvertisementInfo.toString();
-      paramAdvertisementInfo = new GdtVideoCeilingData();
-      paramAdvertisementInfo.setVideoData(localGdtVideoData);
-      paramAdvertisementInfo.setAd(localGdtAd);
-      paramAdvertisementInfo.setWebUrl((String)localObject1);
-      ReadInJoyVideoCeilingFragment.a(paramActivity, ReadInJoyVideoCeilingFragment.class, paramAdvertisementInfo);
+      localObject1 = ((Uri.Builder)localObject1).toString();
+      localObject2 = new GdtVideoCeilingData();
+      ((GdtVideoCeilingData)localObject2).setVideoData(localGdtVideoData);
+      ((GdtVideoCeilingData)localObject2).setAd(localGdtAd);
+      ((GdtVideoCeilingData)localObject2).setWebUrl((String)localObject1);
+      int i = paramAdvertisementInfo.mAdJumpMode;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadinJoyActionUtil", 2, "jump mode = " + i);
+      }
+      if (i != 4) {
+        break label319;
+      }
+      if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdAppJson)) {
+        break;
+      }
+      a(paramActivity, paramAdvertisementInfo, paramReadInJoyBaseAdapter, 0);
       return;
-      label221:
-      paramAdvertisementInfo.appendQueryParameter("autodownload", "0");
+      label298:
+      ((Uri.Builder)localObject1).appendQueryParameter("autodownload", "0");
     }
+    a(paramActivity, paramAdvertisementInfo, null, 0);
+    return;
+    label319:
+    ReadInJoyVideoCeilingFragment.a(paramActivity, ReadInJoyVideoCeilingFragment.class, (GdtVideoCeilingData)localObject2);
   }
   
   private static void a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, int paramInt)
   {
-    a(paramActivity, paramAdvertisementInfo, paramReadInJoyBaseAdapter, paramInt);
+    if (paramReadInJoyBaseAdapter != null) {
+      a(paramActivity, paramAdvertisementInfo, paramReadInJoyBaseAdapter, paramInt);
+    }
     paramReadInJoyBaseAdapter = paramAdvertisementInfo.mAdAppJson;
     Bundle localBundle = new Bundle();
     localBundle.putString("param_ad_json", paramReadInJoyBaseAdapter);
@@ -109,6 +126,7 @@ public class ReadinJoyActionUtil
     localBundle.putInt("param_ad_app_info_kd_pos", paramAdvertisementInfo.mAdKdPos);
     localBundle.putString("param_ad_app_info_product_id", paramAdvertisementInfo.mAdProductId);
     localBundle.putInt("param_ad_app_info_product_type", paramAdvertisementInfo.mAdProductType);
+    localBundle.putString("param_ad_app_info_ap_url", paramAdvertisementInfo.mAdApurl);
     ReadInJoyNativeAdAppFragment.a(paramActivity, ReadInJoyNativeAdAppFragment.class, localBundle);
   }
   
@@ -186,7 +204,7 @@ public class ReadinJoyActionUtil
       if (localObject2 == null) {
         localObject1 = "";
       }
-      if ((FileUtils.b(AppConstants.cn + (String)localObject1)) && (PreloadManager.a().b((String)localObject1) != null))
+      if ((FileUtils.b(AppConstants.co + (String)localObject1)) && (PreloadManager.a().b((String)localObject1) != null))
       {
         localBundle.putString("read_in_joy_from_cache", (String)localObject1);
         if (!paramReadInJoyBaseAdapter.a(paramInt, paramArticleInfo.mArticleID))
@@ -198,7 +216,7 @@ public class ReadinJoyActionUtil
           paramReadInJoyBaseAdapter = paramArticleInfo.a((String)localObject1);
           if ((paramReadInJoyBaseAdapter != null) && (paramReadInJoyBaseAdapter.size() > 0))
           {
-            ThreadManager.post(new mwt(paramArticleInfo, (PreloadManager.ImgStruct)paramReadInJoyBaseAdapter.get(0)), 5, null, false);
+            ThreadManager.post(new nan(paramArticleInfo, (PreloadManager.ImgStruct)paramReadInJoyBaseAdapter.get(0)), 5, null, false);
             if (paramReadInJoyBaseAdapter.size() <= 1) {
               break label727;
             }
@@ -232,9 +250,7 @@ public class ReadinJoyActionUtil
   
   public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, int paramInt)
   {
-    GdtBaseAdItem localGdtBaseAdItem = GdtBaseAdItem.obtain(paramAdvertisementInfo.mAdExt).setClz(ReadInJoyArticleDetailActivity.class).setTraceId(paramAdvertisementInfo.mAdTraceId).setProductId(paramAdvertisementInfo.mAdProductId).setDeepLinkUrl(paramAdvertisementInfo.mAdCustomizedInvokeUrl).setAutoDownLoad(true).setDownloadScheme(paramAdvertisementInfo.mAdRl);
-    localGdtBaseAdItem.setDeepLinkUrl(null).setPackageName(null);
-    GdtAppOpenUtil.a(localGdtBaseAdItem);
+    GdtAppOpenUtil.a(GdtBaseAdItem.obtain(paramAdvertisementInfo.mAdExt).setClz(ReadInJoyArticleDetailActivity.class).setTraceId(paramAdvertisementInfo.mAdTraceId).setProductId(paramAdvertisementInfo.mAdProductId).setDeepLinkUrl(paramAdvertisementInfo.mAdCustomizedInvokeUrl).setAutoDownLoad(true).setDownloadScheme(paramAdvertisementInfo.mAdRl));
     a(paramContext, paramAdvertisementInfo, paramReadInJoyBaseAdapter, paramInt);
   }
   
@@ -314,7 +330,7 @@ public class ReadinJoyActionUtil
       return;
     }
     if (ReadInJoyUtils.a(paramArticleInfo)) {}
-    for (paramInt = NativeAdUtils.o;; paramInt = NativeAdUtils.k)
+    for (paramInt = NativeAdUtils.p;; paramInt = NativeAdUtils.k)
     {
       NativeAdUtils.a(null, paramContext, NativeAdUtils.jdField_a_of_type_Int, paramInt, (AdvertisementInfo)paramArticleInfo, null, 0L);
       return;
@@ -345,7 +361,7 @@ public class ReadinJoyActionUtil
       a(paramActivity, (AdvertisementInfo)paramArticleInfo, paramReadInJoyBaseAdapter, paramInt);
       return;
     }
-    a(paramActivity, (AdvertisementInfo)paramArticleInfo);
+    a(paramActivity, (AdvertisementInfo)paramArticleInfo, null);
     c(paramActivity, paramArticleInfo, paramReadInJoyBaseAdapter, paramInt);
     ReadInJoyLogicEngine.a().a(paramArticleInfo.mArticleID, System.currentTimeMillis());
     paramReadInJoyBaseAdapter.notifyDataSetChanged();
@@ -446,7 +462,7 @@ public class ReadinJoyActionUtil
       return;
     }
     if (ReadInJoyUtils.a(paramArticleInfo)) {}
-    for (paramInt = NativeAdUtils.o;; paramInt = NativeAdUtils.k)
+    for (paramInt = NativeAdUtils.p;; paramInt = NativeAdUtils.k)
     {
       NativeAdUtils.a(null, paramActivity, NativeAdUtils.jdField_a_of_type_Int, paramInt, (AdvertisementInfo)paramArticleInfo, null, 0L);
       return;

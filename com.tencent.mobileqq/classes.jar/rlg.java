@@ -1,20 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class rlg
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
-  public rlg(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rlg(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    paramCompoundButton = (FlashChatManager)this.a.app.getManager(216);
-    if (paramCompoundButton != null) {
-      paramCompoundButton.b(paramBoolean);
-    }
+    this.a.g();
   }
 }
 

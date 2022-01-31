@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agnh;
-import agni;
+import agrw;
+import agrx;
 import android.os.Looper;
 import com.tencent.av.config.ByteBuffer;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -37,7 +37,7 @@ public class PLUploadManager
     }
   }
   
-  private agni a(CompressInfo paramCompressInfo, long paramLong, int paramInt1, int paramInt2, int paramInt3)
+  private agrx a(CompressInfo paramCompressInfo, long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
     long l = System.currentTimeMillis() / 1000L;
     l = paramInt3 | l << 4;
@@ -64,14 +64,14 @@ public class PLUploadManager
     ((PersonalityLabelPhoto)localObject).localThumbPath = paramCompressInfo.e;
     ((PersonalityLabelPhoto)localObject).uniseq = l;
     ((PersonalityLabelPhoto)localObject).local = true;
-    agni localagni = new agni(this);
-    localagni.jdField_a_of_type_Long = paramLong;
-    localagni.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = localTransferRequest;
-    localagni.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto = ((PersonalityLabelPhoto)localObject);
+    agrx localagrx = new agrx(this);
+    localagrx.jdField_a_of_type_Long = paramLong;
+    localagrx.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = localTransferRequest;
+    localagrx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto = ((PersonalityLabelPhoto)localObject);
     if (QLog.isColorLevel()) {
       QLog.i("PLUploadManager", 2, "personality_label uploadPhoto() makeRequst, img_path = " + paramCompressInfo.c + " uniseq:" + l);
     }
-    return localagni;
+    return localagrx;
   }
   
   public int a(long paramLong, PersonalityLabelInfo paramPersonalityLabelInfo, boolean paramBoolean)
@@ -95,36 +95,36 @@ public class PLUploadManager
     int i = k;
     while (i < this.jdField_a_of_type_JavaUtilVector.size())
     {
-      agni localagni = (agni)this.jdField_a_of_type_JavaUtilVector.get(i);
-      if (localagni.jdField_a_of_type_Long != paramLong)
+      agrx localagrx = (agrx)this.jdField_a_of_type_JavaUtilVector.get(i);
+      if (localagrx.jdField_a_of_type_Long != paramLong)
       {
         i += 1;
       }
       else
       {
-        k = localagni.jdField_a_of_type_Int;
+        k = localagrx.jdField_a_of_type_Int;
         if (k < localList.size()) {
-          localList.add(k, localagni.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto);
+          localList.add(k, localagrx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto);
         }
         for (;;)
         {
           paramPersonalityLabelInfo.photoCount += 1;
           j += 1;
           break;
-          localList.add(localagni.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto);
+          localList.add(localagrx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto);
         }
       }
     }
     return j;
   }
   
-  public agni a(long paramLong, PersonalityLabelPhoto paramPersonalityLabelPhoto)
+  public agrx a(long paramLong, PersonalityLabelPhoto paramPersonalityLabelPhoto)
   {
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilVector.size())
     {
-      if ((((agni)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long == paramLong) && (((agni)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq == paramPersonalityLabelPhoto.uniseq)) {
-        return (agni)this.jdField_a_of_type_JavaUtilVector.get(i);
+      if ((((agrx)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long == paramLong) && (((agrx)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq == paramPersonalityLabelPhoto.uniseq)) {
+        return (agrx)this.jdField_a_of_type_JavaUtilVector.get(i);
       }
       i += 1;
     }
@@ -135,9 +135,9 @@ public class PLUploadManager
   {
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilVector.size()) {
-      if ((((agni)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long != paramLong) || (((agni)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq != paramPersonalityLabelPhoto.uniseq)) {}
+      if ((((agrx)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long != paramLong) || (((agrx)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq != paramPersonalityLabelPhoto.uniseq)) {}
     }
-    for (paramPersonalityLabelPhoto = (agni)this.jdField_a_of_type_JavaUtilVector.get(i);; paramPersonalityLabelPhoto = null)
+    for (paramPersonalityLabelPhoto = (agrx)this.jdField_a_of_type_JavaUtilVector.get(i);; paramPersonalityLabelPhoto = null)
     {
       if (paramPersonalityLabelPhoto != null)
       {
@@ -166,13 +166,13 @@ public class PLUploadManager
     int i = 0;
     if (j < paramList.size())
     {
-      agni localagni = a((CompressInfo)paramList.get(j), paramLong, k, paramList.size(), j);
-      if (localagni == null) {
+      agrx localagrx = a((CompressInfo)paramList.get(j), paramLong, k, paramList.size(), j);
+      if (localagrx == null) {
         break label245;
       }
       i += 1;
-      this.jdField_a_of_type_JavaUtilVector.add(0, localagni);
-      localArrayList.add(0, localagni.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto);
+      this.jdField_a_of_type_JavaUtilVector.add(0, localagrx);
+      localArrayList.add(0, localagrx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto);
     }
     label245:
     for (;;)
@@ -185,20 +185,20 @@ public class PLUploadManager
         if (j < this.jdField_a_of_type_JavaUtilVector.size())
         {
           if (j < i) {
-            ((agni)this.jdField_a_of_type_JavaUtilVector.get(j)).jdField_a_of_type_Int = j;
+            ((agrx)this.jdField_a_of_type_JavaUtilVector.get(j)).jdField_a_of_type_Int = j;
           }
           for (;;)
           {
             j += 1;
             break;
-            if (((agni)this.jdField_a_of_type_JavaUtilVector.get(j)).jdField_a_of_type_Long == paramLong)
+            if (((agrx)this.jdField_a_of_type_JavaUtilVector.get(j)).jdField_a_of_type_Long == paramLong)
             {
-              paramList = (agni)this.jdField_a_of_type_JavaUtilVector.get(j);
+              paramList = (agrx)this.jdField_a_of_type_JavaUtilVector.get(j);
               paramList.jdField_a_of_type_Int += i;
             }
           }
         }
-        this.jdField_a_of_type_MqqOsMqqHandler.post(new agnh(this, localArrayList, paramLong));
+        this.jdField_a_of_type_MqqOsMqqHandler.post(new agrw(this, localArrayList, paramLong));
       }
       if (localArrayList.size() > 0) {
         bool = true;
@@ -211,19 +211,19 @@ public class PLUploadManager
   {
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilVector.size()) {
-      if ((((agni)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long != paramLong) || (((agni)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq != paramPersonalityLabelPhoto.uniseq)) {}
+      if ((((agrx)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long != paramLong) || (((agrx)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq != paramPersonalityLabelPhoto.uniseq)) {}
     }
-    for (paramPersonalityLabelPhoto = (agni)this.jdField_a_of_type_JavaUtilVector.remove(i);; paramPersonalityLabelPhoto = null)
+    for (paramPersonalityLabelPhoto = (agrx)this.jdField_a_of_type_JavaUtilVector.remove(i);; paramPersonalityLabelPhoto = null)
     {
       if (i >= 0) {
         for (;;)
         {
           if (i < this.jdField_a_of_type_JavaUtilVector.size())
           {
-            if (((agni)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long == paramLong)
+            if (((agrx)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long == paramLong)
             {
-              agni localagni = (agni)this.jdField_a_of_type_JavaUtilVector.get(i);
-              localagni.jdField_a_of_type_Int -= 1;
+              agrx localagrx = (agrx)this.jdField_a_of_type_JavaUtilVector.get(i);
+              localagrx.jdField_a_of_type_Int -= 1;
             }
             i += 1;
             continue;

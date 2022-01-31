@@ -15,7 +15,7 @@ import com.tencent.pb.ppcloginauth.PPCLoginAuth.rsp;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import zid;
+import zpa;
 
 public class PPCLoginAuthHandler
   extends BusinessHandler
@@ -51,7 +51,7 @@ public class PPCLoginAuthHandler
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
     PPCLoginAuth.plat_info localplat_info = new PPCLoginAuth.plat_info();
     localplat_info.implat.set(109L);
-    localplat_info.mqqver.set("7.6.3.3565");
+    localplat_info.mqqver.set("7.6.8.3615");
     localplat_info.osver.set(Build.VERSION.RELEASE);
     PPCLoginAuth.comering_req localcomering_req = new PPCLoginAuth.comering_req();
     localcomering_req.id.set(String.valueOf(this.jdField_a_of_type_Long));
@@ -78,7 +78,7 @@ public class PPCLoginAuthHandler
       {
         paramToServiceMsg.mergeFrom((byte[])paramObject);
         if ((paramToServiceMsg.ret.get() == 0L) && (((PPCLoginAuth.comering_rsp)paramToServiceMsg.rspcmd_0x01.get()).ret.get() != 0)) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zid(this));
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zpa(this));
         }
         return;
       }

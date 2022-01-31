@@ -1,15 +1,18 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryDesFromVidListStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.utils.UncheckedCallable;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.utils.TranslucentTitleBarHelper;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class obg
-  implements UncheckedCallable
+  implements AbsListView.OnScrollListener
 {
-  public obg(NewMyStorySegment paramNewMyStorySegment) {}
+  public obg(StoryMemoriesFragment paramStoryMemoriesFragment, TranslucentTitleBarHelper paramTranslucentTitleBarHelper) {}
   
-  public GetMyStoryDesFromVidListStep a()
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return new GetMyStoryDesFromVidListStep(new obh(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsTranslucentTitleBarHelper.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
 }
 

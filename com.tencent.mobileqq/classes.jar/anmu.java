@@ -1,53 +1,39 @@
-import dov.com.qq.im.capture.paster.CaptureComboPtvTemplate;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
 
 public class anmu
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
+  extends RemoteCommand
 {
-  public anmu(CaptureComboPtvTemplate paramCaptureComboPtvTemplate) {}
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public anmu(SmartDeviceIPCHost paramSmartDeviceIPCHost, String paramString)
   {
-    synchronized (CaptureComboPtvTemplate.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(CaptureComboPtvTemplate.a(this.a).id))
-      {
-        CaptureComboPtvTemplate.a(this.a).downloading = true;
-        CaptureComboPtvTemplate.a(this.a, 1.0F * paramInt / 100.0F);
-        CaptureComboPtvTemplate.a(this.a, 1);
-      }
-      return;
-    }
+    super(paramString);
   }
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    synchronized (CaptureComboPtvTemplate.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(CaptureComboPtvTemplate.a(this.a).id))
-      {
-        CaptureComboPtvTemplate.a(this.a).downloading = false;
-        CaptureComboPtvTemplate.a(this.a).usable = paramBoolean;
-      }
-      if (paramBoolean)
-      {
-        if (CaptureComboPtvTemplate.a(this.a).id.equals(paramPtvTemplateInfo.id))
-        {
-          CaptureComboPtvTemplate.a(this.a, 3);
-          CaptureComboPtvTemplate.a(this.a, 1.0F);
-          this.a.b();
-        }
-        return;
-      }
-      this.a.a(1);
-      CaptureComboPtvTemplate.a(this.a, 2);
+    if (paramBundle == null) {
+      paramBundle = null;
     }
+    Bundle localBundle;
+    do
+    {
+      return paramBundle;
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localBundle = this.a.b(paramBundle);
+      if (localBundle != null) {
+        localBundle.setClassLoader(getClass().getClassLoader());
+      }
+      paramBundle = localBundle;
+    } while (paramOnInvokeFinishLinstener == null);
+    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmu
  * JD-Core Version:    0.7.0.1
  */

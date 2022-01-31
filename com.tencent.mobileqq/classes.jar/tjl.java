@@ -1,52 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.managers.QQLSRecentManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class tjl
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
+  public tjl(PayBridgeActivity paramPayBridgeActivity, String paramString) {}
   
-  private tjl(QQLSActivity paramQQLSActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
-    do
+    if (paramInt == 1)
     {
-      do
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (BaseActivity.sTopActivity != null))
       {
-        do
-        {
-          return;
-          this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-          if (!"android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
-        return;
-        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
-      return;
-    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
-    if (QLog.isColorLevel())
-    {
-      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
-      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-      QLog.d("QQLSActivity", 2, QQLSRecentManager.f);
+        Intent localIntent = new Intent(BaseActivity.sTopActivity, QQBrowserActivity.class);
+        localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+        this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.startActivity(localIntent);
+      }
+      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.finish();
     }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-    if (!QQLSRecentManager.f) {
-      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
   }
 }
 

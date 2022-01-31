@@ -1,14 +1,8 @@
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
+import android.widget.ImageView;
 
 public class aonw
-  implements Runnable
 {
-  public aonw(HWVideoPlayView paramHWVideoPlayView) {}
-  
-  public void run()
-  {
-    this.a.queueEvent(new aonx(this));
-  }
+  public ImageView a;
 }
 
 

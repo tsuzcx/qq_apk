@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec.utils;
 
-import ahou;
+import ahtm;
 import android.opengl.GLES20;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.nio.IntBuffer;
@@ -31,7 +31,7 @@ public class ThumbnailUtil
     }
     for (;;)
     {
-      ThreadManager.executeOnFileThread(new ahou(paramInt3, paramInt2, arrayOfInt1, arrayOfInt2, paramString, paramThumbnailCallback));
+      ThreadManager.executeOnFileThread(new ahtm(paramInt3, paramInt2, arrayOfInt1, arrayOfInt2, paramString, paramThumbnailCallback));
       return;
       GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, localIntBuffer);
     }

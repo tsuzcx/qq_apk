@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituTextManager;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-public class wek
+class wek
+  implements PublicAccountManager.InitDoneObserver
 {
-  private static ZhituTextManager a = new ZhituTextManager(null);
+  wek(wej paramwej) {}
+  
+  public void a()
+  {
+    this.a.a.a.sendEmptyMessage(1);
+  }
 }
 
 

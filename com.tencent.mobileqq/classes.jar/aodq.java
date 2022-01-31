@@ -1,27 +1,14 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.ContainerDrawable;
+import android.app.Dialog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
 
 public class aodq
-  extends Property
+  implements Runnable
 {
-  public aodq(ContainerDrawable paramContainerDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public aodq(EditVideoSave paramEditVideoSave) {}
   
-  public Integer a(ContainerDrawable paramContainerDrawable)
+  public void run()
   {
-    if (paramContainerDrawable != null) {
-      return Integer.valueOf(ContainerDrawable.a(paramContainerDrawable));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(ContainerDrawable paramContainerDrawable, Integer paramInteger)
-  {
-    if (paramContainerDrawable != null) {
-      ContainerDrawable.a(paramContainerDrawable, paramInteger.intValue());
-    }
+    EditVideoSave.a(this.a).show();
   }
 }
 

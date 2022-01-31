@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
-import com.tencent.mobileqq.shortvideo.util.TextureDataPipe.OnFrameAvailableListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
 public class xxb
-  implements TextureDataPipe.OnFrameAvailableListener
+  implements Runnable
 {
-  public xxb(CameraFilterGLView paramCameraFilterGLView) {}
+  public xxb(NewFlowCameraActivity paramNewFlowCameraActivity, Bitmap paramBitmap) {}
   
-  public void a()
+  public void run()
   {
-    CameraFilterGLView.b(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.b(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.a.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

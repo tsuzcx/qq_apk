@@ -1,6 +1,6 @@
 package com.tencent.mapsdk.rastercore.c;
 
-import com.tencent.mapsdk.rastercore.d.e;
+import com.tencent.mapsdk.rastercore.d.f;
 import com.tencent.tencentmap.mapsdk.map.CancelableCallback;
 
 public abstract class a
@@ -14,7 +14,7 @@ public abstract class a
     this.b = paramLong;
   }
   
-  public abstract void a(e parame);
+  public abstract void a(f paramf);
   
   public final void a(CancelableCallback paramCancelableCallback)
   {

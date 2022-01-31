@@ -1,14 +1,15 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
-public final class pai
-  implements Runnable
+public class pai
+  implements DialogInterface.OnClickListener
 {
-  public pai(Exception paramException) {}
+  public pai(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(null, "P_CliOper", "BizTechReport", "", "leba_search", "leba_search_set_data", 0, 0, HtmlOffline.a("1002"), this.a.getClass().getSimpleName(), null, null);
+    EditUniqueTitleActivity.a(this.a);
   }
 }
 

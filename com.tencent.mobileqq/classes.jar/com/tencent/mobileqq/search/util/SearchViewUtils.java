@@ -36,8 +36,8 @@ public class SearchViewUtils
     if ((paramView instanceof LinearLayout))
     {
       localLinearLayout = (LinearLayout)paramView;
-      localLinearLayout.removeView(localLinearLayout.findViewById(2131362473));
-      localLinearLayout.removeView(localLinearLayout.findViewById(2131362474));
+      localLinearLayout.removeView(localLinearLayout.findViewById(2131362476));
+      localLinearLayout.removeView(localLinearLayout.findViewById(2131362477));
       if (localLinearLayout.getChildCount() == 1)
       {
         localContext = localLinearLayout.getContext();
@@ -67,13 +67,13 @@ public class SearchViewUtils
       if (NetSearchTemplateDividerItem.a(paramInt3))
       {
         paramView = new NetSearchTemplateDividerView(localContext, paramInt3).a();
-        paramView.setId(2131362474);
+        paramView.setId(2131362477);
         localLinearLayout.addView(paramView, 0);
       }
       if (((paramInt2 == 0) || (paramInt1 == 1)) && (paramBoolean) && (i != 1))
       {
         paramView = new View(localLinearLayout.getContext());
-        paramView.setId(2131362473);
+        paramView.setId(2131362476);
         paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, localLinearLayout.getContext().getResources().getDimensionPixelSize(2131559427)));
         localLinearLayout.addView(paramView, 0);
         if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {

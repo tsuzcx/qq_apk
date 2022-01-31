@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c28" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2093" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-        <View android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2094" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02162d" android:layout_width="6.0dip" android:layout_height="6.0dip" />
-        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f56" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="0秒" android:shadowColor="#80000000" android:shadowRadius="2.0" />
+<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:padding="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto"
+  xmlns:roundCorner="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="28.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="QQ扩列宣言" android:singleLine="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c009a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07e0" android:layout_marginBottom="16.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2f09" android:singleLine="true" />
     </LinearLayout>
-    <RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="125.0dip">
-        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2f" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerInParent="true" android:contentDescription="点击拍照，长按录制" />
-        <com.tencent.mobileqq.richmedia.capture.view.CaptureCircleProgress android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c30" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021634" android:visibility="visible" android:layout_width="71.0dip" android:layout_height="71.0dip" android:layout_centerInParent="true" />
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2095" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02161b" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e32" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021641" android:layout_centerInParent="true" android:contentDescription="点击拍照，长按录制" />
-    </RelativeLayout>
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2068" android:layout_width="fill_parent" android:layout_height="wrap_content" roundCorner:qqArMapGuideRadius="4">
+        <EditText android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:textColorHint="#ffcccccc" android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2069" android:padding="16.0dip" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="170.0dip" android:hint="偷偷告诉你，可以这样介绍自己：\n扩列扩列！\n妹子！\n少女音~\n痴迷可爱的小哥哥们，动漫小说什么的也贼喜欢了！\n暖空间什么的交给我没问题的~\n养火什么的我陪你吧唧。\n列表人不多，但是缺个你~" android:maxLines="30" android:focusedByDefault="false" />
+        <View android:background="#ffd8d8d8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.2" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+    <TextView android:textSize="28.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a206a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_marginBottom="16.0dip" android:text="镇楼音" />
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a206b" android:layout_width="fill_parent" android:layout_height="wrap_content" roundCorner:qqArMapGuideRadius="4">
+        <RelativeLayout android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a206c" android:layout_width="fill_parent" android:layout_height="110.0dip">
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_centerHorizontal="true">
+                <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a206d" android:layout_width="54.0dip" android:layout_height="54.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213bb" android:scaleType="center" />
+                <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a206e" android:visibility="gone" android:layout_width="54.0dip" android:layout_height="54.0dip" android:alpha="0.08" />
+            </FrameLayout>
+            <Button android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a054a" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="40.0dip" />
+            <Button android:layout_gravity="center|right|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09e7" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c00da" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="录一段声音会更吸引人哦～" android:includeFontPadding="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a206f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

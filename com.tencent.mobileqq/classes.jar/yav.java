@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import com.tencent.biz.qqstory.base.download.DownloaderImp;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
 
 public class yav
   implements Runnable
 {
-  public yav(SelectMemberActivity paramSelectMemberActivity, String paramString) {}
+  public yav(P2VEditMusicDialog paramP2VEditMusicDialog, String paramString1, String paramString2) {}
   
   public void run()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_add", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a().size()), "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMusicP2VEditMusicDialog.a = new DownloaderImp();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMusicP2VEditMusicDialog.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMusicP2VEditMusicDialog);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMusicP2VEditMusicDialog.a.a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
   }
 }
 

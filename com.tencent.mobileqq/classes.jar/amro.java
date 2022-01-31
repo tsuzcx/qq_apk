@@ -1,37 +1,36 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneHelper.StartActivity;
-import java.util.Iterator;
+import android.util.SparseArray;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.mobileqq.redtouch.RedTouchUI;
+import cooperation.comic.VipComicJumpActivity;
+import cooperation.comic.jsp.QQComicDownloadCountObserver;
+import cooperation.comic.ui.QQComicTabBarView;
+import cooperation.comic.utils.SimpleBiMap;
 import java.util.List;
 
-public final class amro
-  implements Runnable
+public class amro
+  implements QQComicDownloadCountObserver
 {
-  public amro(QZoneHelper.StartActivity paramStartActivity) {}
+  public amro(QQComicTabBarView paramQQComicTabBarView) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if ((localObject == null) || (((List)localObject).size() <= 0))
+    paramInt1 = this.a.a();
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (paramInt1 < 0) || (paramInt1 >= this.a.jdField_a_of_type_JavaUtilList.size())) {}
+    RedTouchUI localRedTouchUI;
+    RedAppInfo localRedAppInfo;
+    do
     {
-      this.a.a(true, false);
       return;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if ("com.tencent.mobileqq:qzone".equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName))
+      paramInt2 = VipComicJumpActivity.a("fav", this.a.jdField_a_of_type_JavaUtilList);
+      if ((paramBoolean) && (paramInt1 != paramInt2))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneHelper", 2, "QzoneProcess is exist");
-        }
-        this.a.a(true, true);
+        this.a.a(paramInt2);
         return;
       }
-    }
-    this.a.a(true, false);
+      localRedTouchUI = (RedTouchUI)this.a.jdField_a_of_type_CooperationComicUtilsSimpleBiMap.get("1113.100801");
+      localRedAppInfo = (RedAppInfo)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
+    } while ((localRedTouchUI == null) || (!localRedTouchUI.a()) || (localRedAppInfo == null) || (localRedTouchUI.a != localRedAppInfo));
+    this.a.a(paramInt2, true);
   }
 }
 

@@ -1,17 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.view.QIMSlidingTabView;
 
 public class anyn
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public anyn(DoodleEditView paramDoodleEditView, GestureHelper.ZoomItem paramZoomItem) {}
+  public anyn(QIMSlidingTabView paramQIMSlidingTabView, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem.n = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.invalidate();
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,42 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.OnProviderContainerTriggerLisener;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.takevideo2.LayoutModifier.FactoryMerger;
+import com.tencent.mobileqq.richmedia.capture.fragment.ArithmeticCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.ArithmeticCaptureView;
 
 public class ahmn
-  implements Animator.AnimatorListener
+  extends LayoutModifier.FactoryMerger
 {
-  public ahmn(ProviderContainerView paramProviderContainerView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public ahmn(ArithmeticCameraCaptureFragment paramArithmeticCameraCaptureFragment, LayoutInflater paramLayoutInflater)
   {
-    this.a.c.setVisibility(8);
-    paramAnimator = ProviderContainerView.a(this.a);
-    if (paramAnimator != null) {
-      paramAnimator.y_();
-    }
-    if (ProviderContainerView.a(this.a) != null)
-    {
-      paramAnimator = ProviderContainerView.a(this.a).iterator();
-      while (paramAnimator.hasNext()) {
-        ((ProviderContainerView.ContainerViewListener)paramAnimator.next()).y_();
-      }
-    }
+    super(paramLayoutInflater);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    if (ProviderContainerView.a(this.a) != null) {
-      ProviderContainerView.a(this.a).b();
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 16842960 });
+    int i = localTypedArray.getResourceId(0, -1);
+    localTypedArray.recycle();
+    if (i == 2131366943) {
+      return new ArithmeticCaptureView(paramContext, paramAttributeSet);
     }
+    return super.a(paramView, paramString, paramContext, paramAttributeSet);
   }
 }
 

@@ -8,7 +8,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.FileObserver;
 import android.provider.MediaStore.Images.Media;
-import mwu;
+import nao;
 
 public class ScreenshotContentObserver
   extends ContentObserver
@@ -31,7 +31,7 @@ public class ScreenshotContentObserver
       if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi"))
       {
         paramContext = ScreenshotContentObserver.ScreenShotPath.jdField_b_of_type_JavaLangString;
-        this.jdField_a_of_type_AndroidOsFileObserver = new mwu(this, paramContext, 256, paramContext);
+        this.jdField_a_of_type_AndroidOsFileObserver = new nao(this, paramContext, 256, paramContext);
       }
     }
     for (;;)

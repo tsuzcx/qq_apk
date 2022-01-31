@@ -1,15 +1,15 @@
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qqstory.newshare.ui.ActionSheetShareUI;
 
 public class nlz
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public nlz(VidListPlayMode paramVidListPlayMode) {}
+  public nlz(ActionSheetShareUI paramActionSheetShareUI) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.e = false;
-    this.a.a.setCurrentItem(this.a.b, false);
+    this.a.f();
   }
 }
 

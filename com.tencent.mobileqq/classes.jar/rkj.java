@@ -1,15 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rkj
   implements View.OnClickListener
 {
-  public rkj(AddRequestActivity paramAddRequestActivity) {}
+  public rkj(AboutActivity paramAboutActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.b();
+    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
+    {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", UpgradeController.a(), "");
+      UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
+    }
   }
 }
 

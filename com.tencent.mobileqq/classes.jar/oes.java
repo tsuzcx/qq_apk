@@ -1,30 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoFragment;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
+import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tencent.widget.ActionSheet.OnDismissListener;
+import java.util.List;
 
 public class oes
-  extends AnimatorListenerAdapter
+  implements ActionSheet.OnDismissListener
 {
-  public oes(EditVideoFragment paramEditVideoFragment, View paramView) {}
+  public oes(FeedSegment paramFeedSegment, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onDismiss()
   {
-    SLog.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    SLog.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    SLog.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
+    StoryHomeFeed localStoryHomeFeed = (StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment.a.a().get(this.jdField_a_of_type_Int);
+    FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment, localStoryHomeFeed, "clk_hide");
   }
 }
 

@@ -1,14 +1,20 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class sjo
-  implements Runnable
+class sjo
+  implements DialogInterface.OnClickListener
 {
-  public sjo(DialogActivity paramDialogActivity, Dialog paramDialog) {}
+  sjo(sjn paramsjn) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DialogActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDialogActivity, this.jdField_a_of_type_AndroidAppDialog);
+    if (paramInt == 1)
+    {
+      this.a.a.a.cancel();
+      this.a.a.finish();
+    }
   }
 }
 

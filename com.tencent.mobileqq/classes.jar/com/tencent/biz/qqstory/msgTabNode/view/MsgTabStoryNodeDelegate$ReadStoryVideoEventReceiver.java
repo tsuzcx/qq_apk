@@ -6,8 +6,10 @@ import com.tencent.biz.qqstory.model.events.ReadStoryVideoEvent;
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
 import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeWatchedRequest;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tribe.async.dispatch.QQUIEventReceiver;
+import nja;
 
 public final class MsgTabStoryNodeDelegate$ReadStoryVideoEventReceiver
   extends QQUIEventReceiver
@@ -19,22 +21,19 @@ public final class MsgTabStoryNodeDelegate$ReadStoryVideoEventReceiver
   
   public void a(@NonNull MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, @NonNull ReadStoryVideoEvent paramReadStoryVideoEvent)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", 2, "Read Event: " + paramReadStoryVideoEvent);
-    }
-    MsgTabNodeInfo localMsgTabNodeInfo = paramMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.a(3, "");
+    SLog.a(this.TAG, "onEvent, %s", String.valueOf(paramReadStoryVideoEvent));
+    MsgTabNodeInfo localMsgTabNodeInfo = paramMsgTabStoryNodeDelegate.a.a(3, "");
     if ((localMsgTabNodeInfo != null) && (paramReadStoryVideoEvent.b.equals(localMsgTabNodeInfo.e)))
     {
+      SLog.b(this.TAG, "onEvent, guideInfoNode read");
       paramMsgTabStoryNodeDelegate = new MsgTabNodeWatchedRequest();
       paramMsgTabStoryNodeDelegate.b = localMsgTabNodeInfo.jdField_a_of_type_JavaLangString;
       paramMsgTabStoryNodeDelegate.c = localMsgTabNodeInfo.jdField_a_of_type_Int;
       paramMsgTabStoryNodeDelegate.d = 0;
       CmdTaskManger.a().a(paramMsgTabStoryNodeDelegate, null);
-    }
-    while (!paramMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.a(paramReadStoryVideoEvent.jdField_a_of_type_JavaLangString, paramReadStoryVideoEvent.jdField_a_of_type_Long)) {
       return;
     }
-    paramMsgTabStoryNodeDelegate.jdField_a_of_type_Boolean = true;
+    ThreadManagerV2.excute(new nja(this, paramMsgTabStoryNodeDelegate, paramReadStoryVideoEvent), 16, null, true);
   }
   
   public Class acceptEventClass()

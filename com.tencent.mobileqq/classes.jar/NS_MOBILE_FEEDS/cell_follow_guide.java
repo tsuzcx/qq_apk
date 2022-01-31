@@ -11,6 +11,7 @@ public final class cell_follow_guide
   static ArrayList cache_followed_list = new ArrayList();
   public int action_type;
   public String action_url = "";
+  public String attach_info = "";
   public String button_text = "";
   public long count;
   public int feed_type;
@@ -27,7 +28,7 @@ public final class cell_follow_guide
   
   public cell_follow_guide() {}
   
-  public cell_follow_guide(ArrayList paramArrayList, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5)
+  public cell_follow_guide(ArrayList paramArrayList, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5, String paramString6)
   {
     this.followed_list = paramArrayList;
     this.count = paramLong;
@@ -38,6 +39,7 @@ public final class cell_follow_guide
     this.action_url = paramString4;
     this.feed_type = paramInt2;
     this.button_text = paramString5;
+    this.attach_info = paramString6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -51,6 +53,7 @@ public final class cell_follow_guide
     this.action_url = paramJceInputStream.readString(6, false);
     this.feed_type = paramJceInputStream.read(this.feed_type, 7, false);
     this.button_text = paramJceInputStream.readString(8, false);
+    this.attach_info = paramJceInputStream.readString(9, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -75,6 +78,9 @@ public final class cell_follow_guide
     paramJceOutputStream.write(this.feed_type, 7);
     if (this.button_text != null) {
       paramJceOutputStream.write(this.button_text, 8);
+    }
+    if (this.attach_info != null) {
+      paramJceOutputStream.write(this.attach_info, 9);
     }
   }
 }

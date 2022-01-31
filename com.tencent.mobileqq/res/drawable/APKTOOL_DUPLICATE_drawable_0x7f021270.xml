@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#44000000" android:endColor="#00000000" android:angle="-90.0" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021273" />
+    <item android:state_enabled="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021271" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021272" />
+</selector>

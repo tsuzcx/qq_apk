@@ -126,7 +126,7 @@ public class QWalletLockScreenActivity
     if (QLog.isColorLevel()) {
       QLog.d("Q.qwallet.push", 2, "QWalletLockScreenActivity doOnCreate taskId" + getTaskId() + Thread.currentThread().getId());
     }
-    setContentView(2130970997);
+    setContentView(2130971015);
     getWindow().addFlags(524288);
     this.mScreenReceiver = new QWalletLockScreenActivity.ScreenBroadcastReceiver(this, null);
     registerListener();
@@ -144,13 +144,13 @@ public class QWalletLockScreenActivity
       this.title = getIntent().getStringExtra("title");
       this.content = getIntent().getStringExtra("content");
       this.time = getIntent().getStringExtra("time");
-      this.titleView = ((TextView)findViewById(2131364950));
-      this.contentView = ((TextView)findViewById(2131370422));
-      this.timeView = ((TextView)findViewById(2131370423));
+      this.titleView = ((TextView)findViewById(2131364977));
+      this.contentView = ((TextView)findViewById(2131370431));
+      this.timeView = ((TextView)findViewById(2131370432));
       this.titleView.setText(this.title);
       this.contentView.setText(this.content);
       this.timeView.setText(this.time);
-      this.mBackBtn = ((RelativeLayout)findViewById(2131362839));
+      this.mBackBtn = ((RelativeLayout)findViewById(2131362844));
       this.mBackBtn.setOnClickListener(this);
       this.contentView.setOnClickListener(this);
     } while (!QLog.isColorLevel());
@@ -210,7 +210,7 @@ public class QWalletLockScreenActivity
     {
     default: 
       return;
-    case 2131370422: 
+    case 2131370431: 
       paramView = this.handler.obtainMessage(9);
       Handler localHandler = this.handler;
       if (GesturePWDUtils.getJumpLock(this, this.app.getCurrentAccountUin())) {}

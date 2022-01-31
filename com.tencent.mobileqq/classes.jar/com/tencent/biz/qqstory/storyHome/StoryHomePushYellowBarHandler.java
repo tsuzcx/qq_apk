@@ -7,15 +7,15 @@ import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.observer.GetRedPointExObserver;
-import nua;
-import nub;
+import nyq;
+import nyr;
 
 public class StoryHomePushYellowBarHandler
 {
   public MystoryListView a;
   public NewMessageYellowBar a;
   protected AppInterface a;
-  private GetRedPointExObserver jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new nua(this);
+  private GetRedPointExObserver jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new nyq(this);
   private boolean jdField_a_of_type_Boolean;
   
   public void a()
@@ -34,7 +34,7 @@ public class StoryHomePushYellowBarHandler
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar = ((NewMessageYellowBar)paramView);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = paramMystoryListView;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.setOnClickListener(new nub(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.setOnClickListener(new nyr(this));
     this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver);
     this.jdField_a_of_type_Boolean = true;
   }

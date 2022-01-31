@@ -1,33 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 
 public class tct
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public tct(NotificationActivity paramNotificationActivity) {}
+  public tct(Leba paramLeba, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    try
-    {
-      ReportController.b(null, "P_CliOper", "Safe_StartAppCheck", "", "DIALOG_PACKAGE_INVALID", "LeftButton", 0, 0, "", "", "", "");
-      this.a.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a(new tcu(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tct
  * JD-Core Version:    0.7.0.1
  */

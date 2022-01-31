@@ -1,57 +1,20 @@
-import SummaryCard.RespSearch;
-import SummaryCard.SearchInfo;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class rhx
-  implements ContactSearchFacade.ISearchListener
+  implements Runnable
 {
-  public rhx(AddFriendActivity paramAddFriendActivity) {}
+  public rhx(LiteTransferWrapper paramLiteTransferWrapper, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  public void run()
   {
-    AddFriendActivity.a(this.a);
-    if ((!paramBoolean) || (paramInt2 != 0) || (paramInt1 != 87) || (!(paramObject instanceof RespSearch))) {
-      if (!TextUtils.isEmpty(paramString)) {
-        this.a.a(paramString);
-      }
+    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
+      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.CancelGroupToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.b, this.jdField_a_of_type_Boolean);
     }
-    do
-    {
-      return;
-      this.a.a(2131434449);
-      return;
-      try
-      {
-        paramString = (RespSearch)paramObject;
-        if ((paramString.vRecords != null) && (!paramString.vRecords.isEmpty())) {
-          break;
-        }
-        this.a.a(2131434751);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        this.a.a(2131434449);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AddFriendActivity", 2, "onSearchResult | searchType = " + paramInt1 + " | isSuccess = " + paramBoolean + " | rsCode = " + paramInt2 + " | data = " + paramObject, paramString);
-    return;
-    if (paramString.vRecords.size() == 1)
-    {
-      AddFriendActivity.a(this.a, (SearchInfo)paramString.vRecords.get(0), this.a.app.getCurrentAccountUin(), paramString.vSecureSig, false, 0);
-      return;
-    }
-    this.a.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rhx
  * JD-Core Version:    0.7.0.1
  */

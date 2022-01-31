@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.QuestionElement;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper;
 
 public class otd
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public otd(QRDisplayActivity paramQRDisplayActivity) {}
+  public otd(PollWidgetUtils.WidgetWrapper paramWidgetWrapper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    if (PollWidgetUtils.WidgetWrapper.a(this.a))
+    {
+      PollWidgetUtils.WidgetWrapper.a(this.a, false);
+      this.a.a.a(false);
+    }
+  }
 }
 
 

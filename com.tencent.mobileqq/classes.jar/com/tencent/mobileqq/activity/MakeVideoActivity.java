@@ -32,9 +32,9 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tbs;
-import tbt;
-import tbu;
+import tgm;
+import tgn;
+import tgo;
 
 public class MakeVideoActivity
   extends Activity
@@ -43,7 +43,7 @@ public class MakeVideoActivity
   final int jdField_a_of_type_Int = 1;
   public Camera a;
   private MediaRecorder jdField_a_of_type_AndroidMediaMediaRecorder;
-  private Handler jdField_a_of_type_AndroidOsHandler = new tbs(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new tgm(this);
   private SurfaceView jdField_a_of_type_AndroidViewSurfaceView;
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
@@ -178,15 +178,15 @@ public class MakeVideoActivity
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)findViewById(2131364941));
+    this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)findViewById(2131364968));
     this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().setType(3);
     this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().setKeepScreenOn(true);
     this.jdField_a_of_type_AndroidViewSurfaceView.setZOrderOnTop(false);
     this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().setFormat(-3);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364942));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364947);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364948);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364946);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364969));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364974);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364975);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364973);
     Object localObject = getResources().getDisplayMetrics();
     int j = (((DisplayMetrics)localObject).widthPixels - a(((DisplayMetrics)localObject).density, 262.0F)) / 2;
     int k = ((DisplayMetrics)localObject).heightPixels;
@@ -201,23 +201,23 @@ public class MakeVideoActivity
     localObject = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidViewView.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).height = (k - m - n);
     this.jdField_c_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364949));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364943));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364944));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364962));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364976));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364970));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364971));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364989));
     localObject = a(this, 2.0F, 0, 1.0F, -16734752);
     this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable((Drawable)localObject);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.i = ((TextView)findViewById(2131363993));
-    this.i.setTextColor(getResources().getColorStateList(2130839334));
+    this.i = ((TextView)findViewById(2131364018));
+    this.i.setTextColor(getResources().getColorStateList(2130839353));
     this.i.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364950));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364951));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364952));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364953));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364954));
-    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364955));
-    this.h = ((TextView)findViewById(2131364956));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364977));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364978));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364979));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364980));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364981));
+    this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364982));
+    this.h = ((TextView)findViewById(2131364983));
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_e_of_type_AndroidWidgetTextView);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_f_of_type_AndroidWidgetTextView);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_g_of_type_AndroidWidgetTextView);
@@ -232,11 +232,11 @@ public class MakeVideoActivity
       this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
     }
     this.jdField_d_of_type_AndroidViewView = findViewById(2131361800);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131364957));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364958));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364959));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364960));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364961));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131364984));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364985));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364986));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364987));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364988));
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_AndroidWidgetImageView);
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_AndroidWidgetImageView);
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_d_of_type_AndroidWidgetImageView);
@@ -298,7 +298,7 @@ public class MakeVideoActivity
     {
     default: 
       return;
-    case 2131364962: 
+    case 2131364989: 
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       this.jdField_d_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#33000000"));
@@ -322,8 +322,8 @@ public class MakeVideoActivity
           this.jdField_a_of_type_AndroidMediaMediaRecorder.setVideoEncoder(2);
           this.jdField_a_of_type_AndroidMediaMediaRecorder.setMaxFileSize(2097152L);
           this.jdField_a_of_type_AndroidMediaMediaRecorder.setOutputFile(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-          this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnInfoListener(new tbt(this));
-          this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnErrorListener(new tbu(this));
+          this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnInfoListener(new tgn(this));
+          this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnErrorListener(new tgo(this));
           this.jdField_a_of_type_AndroidMediaMediaRecorder.setPreviewDisplay(this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().getSurface());
           this.jdField_a_of_type_AndroidMediaMediaRecorder.prepare();
           this.jdField_a_of_type_AndroidMediaMediaRecorder.start();
@@ -555,10 +555,10 @@ public class MakeVideoActivity
     //   423: aload_0
     //   424: getfield 167	com/tencent/mobileqq/activity/MakeVideoActivity:jdField_a_of_type_AndroidViewSurfaceView	Landroid/view/SurfaceView;
     //   427: invokevirtual 227	android/view/SurfaceView:getHolder	()Landroid/view/SurfaceHolder;
-    //   430: new 672	tbr
+    //   430: new 672	tgl
     //   433: dup
     //   434: aload_0
-    //   435: invokespecial 673	tbr:<init>	(Lcom/tencent/mobileqq/activity/MakeVideoActivity;)V
+    //   435: invokespecial 673	tgl:<init>	(Lcom/tencent/mobileqq/activity/MakeVideoActivity;)V
     //   438: invokeinterface 677 2 0
     //   443: return
     //   444: astore_1

@@ -85,6 +85,7 @@ public class StoryVideoItem
   public static final int VIDEO_TYPE_EMPTY = 0;
   public static final int VIDEO_TYPE_ONLY_AT = 2;
   public static final int VIDEO_TYPE_ONLY_WATERMARK = 1;
+  private int debugSourceType;
   public int hasParsedPollLayout = -1;
   public long mAddTime = -1L;
   public int mAllowComment = -1;
@@ -173,7 +174,10 @@ public class StoryVideoItem
   public String shareGroupId;
   public String sourceVid;
   
-  public StoryVideoItem() {}
+  public StoryVideoItem()
+  {
+    this.debugSourceType = 100;
+  }
   
   public StoryVideoItem(StoryVideoEntry paramStoryVideoEntry)
   {
@@ -596,6 +600,7 @@ public class StoryVideoItem
   
   public void convertFrom(qqstory_group.CommentLikeCount paramCommentLikeCount)
   {
+    this.debugSourceType = 10;
     this.mStoryType = 2;
     this.mVid = paramCommentLikeCount.story_id.get().toStringUtf8();
     this.mTotalLikeCount = paramCommentLikeCount.like_count.get();
@@ -621,6 +626,7 @@ public class StoryVideoItem
   
   public void convertFrom(qqstory_struct.ShareGroupVideoInfo paramShareGroupVideoInfo)
   {
+    this.debugSourceType = 9;
     if (paramShareGroupVideoInfo.owenr_name.has()) {
       this.mOwnerName = paramShareGroupVideoInfo.owenr_name.get().toStringUtf8();
     }
@@ -647,6 +653,7 @@ public class StoryVideoItem
   
   public void convertFrom(qqstory_struct.StoryVideoFullInfo paramStoryVideoFullInfo)
   {
+    this.debugSourceType = 6;
     this.mErrorCode = paramStoryVideoFullInfo.error.get();
     this.mVid = paramStoryVideoFullInfo.vid.get().toStringUtf8();
     this.mStoryType = paramStoryVideoFullInfo.type.get();
@@ -700,6 +707,7 @@ public class StoryVideoItem
   
   public void convertFrom(String paramString, qqstory_group.VideoInfoItem paramVideoInfoItem)
   {
+    this.debugSourceType = 5;
     this.mStoryType = 2;
     this.mVid = paramVideoInfoItem.story_id.get().toStringUtf8();
     this.mBasicInfoState = 1;
@@ -749,6 +757,7 @@ public class StoryVideoItem
   
   public void convertFrom(String paramString, qqstory_struct.FeedVideoInfo paramFeedVideoInfo, boolean paramBoolean)
   {
+    this.debugSourceType = 7;
     this.mVid = paramFeedVideoInfo.vid.get().toStringUtf8();
     this.mVideoThumbnailUrl = paramFeedVideoInfo.video_cover.get().toStringUtf8();
     this.mCreateTime = (paramFeedVideoInfo.time.get() * 1000L);
@@ -760,6 +769,7 @@ public class StoryVideoItem
   
   public void convertFrom(String paramString, qqstory_struct.GroupStoryInfo paramGroupStoryInfo)
   {
+    this.debugSourceType = 1;
     this.mVid = paramGroupStoryInfo.story_id.get().toStringUtf8();
     this.mVideoThumbnailUrl = paramGroupStoryInfo.video_cover.get().toStringUtf8();
     this.mOwnerUid = paramGroupStoryInfo.author_uin.get().toStringUtf8();
@@ -770,6 +780,7 @@ public class StoryVideoItem
   
   public void convertFrom(String paramString, qqstory_struct.MultiRecommendItem paramMultiRecommendItem)
   {
+    this.debugSourceType = 8;
     if (paramMultiRecommendItem.feed_id.has()) {}
     for (String str1 = paramMultiRecommendItem.feed_id.get().toStringUtf8();; str1 = "")
     {
@@ -808,6 +819,7 @@ public class StoryVideoItem
   
   public void convertFrom(String paramString, qqstory_struct.StoryVideoBasicInfo paramStoryVideoBasicInfo)
   {
+    this.debugSourceType = 4;
     this.mCreateTime = (paramStoryVideoBasicInfo.create_time.get() * 1000L);
     this.mVid = paramStoryVideoBasicInfo.vid.get().toStringUtf8();
     this.mVideoUrl = paramStoryVideoBasicInfo.video_url.get().toStringUtf8();
@@ -842,6 +854,7 @@ public class StoryVideoItem
   
   public void convertFrom(String paramString, qqstory_struct.StoryVideoFeature paramStoryVideoFeature)
   {
+    this.debugSourceType = 3;
     this.mVid = paramStoryVideoFeature.vid.get().toStringUtf8();
     this.mViewCount = paramStoryVideoFeature.viewer_total_num.get();
     this.mStrangerViewCount = paramStoryVideoFeature.stranger_view_total_num.get();
@@ -863,6 +876,7 @@ public class StoryVideoItem
   
   public void convertFrom(String paramString, qqstory_struct.StoryVideoSimpleInfo paramStoryVideoSimpleInfo)
   {
+    this.debugSourceType = 2;
     this.mVid = paramStoryVideoSimpleInfo.vid.get().toStringUtf8();
     this.mVideoThumbnailUrl = paramStoryVideoSimpleInfo.video_cover.get().toStringUtf8();
     if (paramStoryVideoSimpleInfo.ban_type.has()) {
@@ -1136,6 +1150,7 @@ public class StoryVideoItem
     if (TextUtils.isEmpty(paramObject.mWsSchema)) {
       this.mWsSchema = paramObject.mWsSchema;
     }
+    this.debugSourceType = paramObject.debugSourceType;
   }
   
   public StoryVideoEntry cover2StoryEntry()
@@ -1479,7 +1494,7 @@ public class StoryVideoItem
   
   public String toString()
   {
-    return "StoryVideoItem{mVid='" + this.mVid + '\'' + ", mCreateTime=" + this.mCreateTime + ", mUploadStatus=" + this.mUploadStatus + ", mOwnerUid=" + this.mOwnerUid + ", mOwnerName=" + this.mOwnerName + ", mVideoUrl='" + this.mVideoUrl + '\'' + ", mVideoThumbnailUrl='" + this.mVideoThumbnailUrl + '\'' + ", mOriginalMaskPicUrl='" + this.mOriginalMaskPicUrl + '\'' + ", mViewCount=" + this.mViewCount + ", mViewTotalTime=" + this.mViewTotalTime + ", mVideoDuration=" + this.mVideoDuration + ", mVideoWidth=" + this.mVideoWidth + ", mVideoHeight=" + this.mVideoHeight + ", mVideoBytes=" + this.mVideoBytes + ", mVideoLocalThumbnailPath='" + this.mVideoLocalThumbnailPath + '\'' + ", mLocalVideoPath='" + this.mLocalVideoPath + '\'' + ", mLocalMaskPath='" + this.mLocalMaskPath + '\'' + ", mHasRelatedVideo=" + this.mHasRelatedVideo + ", mDoodleText='" + this.mDoodleText + '\'' + ", mStrangerViewCount=" + this.mStrangerViewCount + ", mUnreadLikeCount=" + this.mUnreadLikeCount + ", mTotalLikeCount=" + this.mTotalLikeCount + ", mStrangerLikeCount=" + this.mStrangerLikeCount + ", mIsPlaying=" + this.mIsPlaying + ", mPreloadMsg='" + this.mPreloadMsg + '\'' + ", preloadPriority=" + this.preloadPriority + ", mUpLoadFailedError=" + this.mUpLoadFailedError + ", mBasicInfoState=" + this.mBasicInfoState + ", mAllowComment=" + this.mAllowComment + ", mAtJsonData='" + this.mAtJsonData + '\'' + ", mAtImagePath='" + this.mAtImagePath + '\'' + ", mIsPicture='" + this.mIsPicture + '\'' + ", mDownloadNetType='" + this.mDownloadNetType + '\'' + ", mTempVideoUrl='" + this.mTempVideoUrl + '\'' + ", mTempThumbUrl='" + this.mTempThumbUrl + '\'' + ", mStoryType='" + this.mStoryType + '\'' + ", mVideoMd5='" + this.mVideoMd5 + '\'' + ", mGroupId='" + this.mGroupId + '\'' + ", mVideoSource=" + this.mVideoSource + ", mVideoIndex=" + this.mVideoIndex + ", mQimVideoInfoItem=" + String.valueOf(this.mQimVideoInfoItem) + '}';
+    return "StoryVideoItem{mVid='" + this.mVid + '\'' + ", mCreateTime=" + this.mCreateTime + ", mUploadStatus=" + this.mUploadStatus + ", mOwnerUid=" + this.mOwnerUid + ", mOwnerName=" + this.mOwnerName + ", mVideoUrl='" + this.mVideoUrl + '\'' + ", mVideoThumbnailUrl='" + this.mVideoThumbnailUrl + '\'' + ", mOriginalMaskPicUrl='" + this.mOriginalMaskPicUrl + '\'' + ", mViewCount=" + this.mViewCount + ", mViewTotalTime=" + this.mViewTotalTime + ", mVideoDuration=" + this.mVideoDuration + ", mVideoWidth=" + this.mVideoWidth + ", mVideoHeight=" + this.mVideoHeight + ", mVideoBytes=" + this.mVideoBytes + ", mVideoLocalThumbnailPath='" + this.mVideoLocalThumbnailPath + '\'' + ", mLocalVideoPath='" + this.mLocalVideoPath + '\'' + ", mLocalMaskPath='" + this.mLocalMaskPath + '\'' + ", mHasRelatedVideo=" + this.mHasRelatedVideo + ", mDoodleText='" + this.mDoodleText + '\'' + ", mStrangerViewCount=" + this.mStrangerViewCount + ", mUnreadLikeCount=" + this.mUnreadLikeCount + ", mTotalLikeCount=" + this.mTotalLikeCount + ", mStrangerLikeCount=" + this.mStrangerLikeCount + ", mIsPlaying=" + this.mIsPlaying + ", mPreloadMsg='" + this.mPreloadMsg + '\'' + ", preloadPriority=" + this.preloadPriority + ", mUpLoadFailedError=" + this.mUpLoadFailedError + ", mBasicInfoState=" + this.mBasicInfoState + ", mAllowComment=" + this.mAllowComment + ", mAtJsonData='" + this.mAtJsonData + '\'' + ", mAtImagePath='" + this.mAtImagePath + '\'' + ", mIsPicture='" + this.mIsPicture + '\'' + ", mDownloadNetType='" + this.mDownloadNetType + '\'' + ", mTempVideoUrl='" + this.mTempVideoUrl + '\'' + ", mTempThumbUrl='" + this.mTempThumbUrl + '\'' + ", mStoryType='" + this.mStoryType + '\'' + ", mVideoMd5='" + this.mVideoMd5 + '\'' + ", mGroupId='" + this.mGroupId + '\'' + ", mVideoSource=" + this.mVideoSource + ", mVideoIndex=" + this.mVideoIndex + ",debugSourceType=" + this.debugSourceType + ", mQimVideoInfoItem=" + String.valueOf(this.mQimVideoInfoItem) + '}';
   }
   
   public long uniqueKey()

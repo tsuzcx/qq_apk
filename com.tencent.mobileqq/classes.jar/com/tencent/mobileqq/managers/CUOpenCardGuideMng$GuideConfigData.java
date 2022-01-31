@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.managers;
 
-import aeex;
+import aenh;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -35,7 +35,7 @@ public class CUOpenCardGuideMng$GuideConfigData
     }
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_JavaUtilArrayList = DeviceInfoUtil.a();
-    ThreadManager.post(new aeex(this), 5, null, false);
+    ThreadManager.post(new aenh(this), 5, null, false);
   }
   
   public void a()

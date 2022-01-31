@@ -1,19 +1,13 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class tup
-  implements View.OnFocusChangeListener
+  implements Runnable
 {
-  public tup(SubLoginActivity paramSubLoginActivity) {}
+  public tup(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void run()
   {
-    if (true == paramBoolean) {
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
-    }
+    RegisterPhoneNumActivity.a(this.a, true);
   }
 }
 

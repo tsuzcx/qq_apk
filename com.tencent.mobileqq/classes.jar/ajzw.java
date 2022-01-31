@@ -1,20 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.util.Pair;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader;
+import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
+import java.util.HashMap;
+import java.util.Queue;
+import mqq.os.MqqHandler;
 
-public final class ajzw
-  implements Parcelable.Creator
+class ajzw
+  implements Runnable
 {
-  public FaceInfo a(Parcel paramParcel)
-  {
-    FaceInfo localFaceInfo = new FaceInfo();
-    localFaceInfo.a(paramParcel);
-    return localFaceInfo;
-  }
+  ajzw(ajzv paramajzv) {}
   
-  public FaceInfo[] a(int paramInt)
+  public void run()
   {
-    return new FaceInfo[paramInt];
+    if (((this.a.jdField_a_of_type_AndroidWidgetImageView.getTag() instanceof String)) && (!((String)this.a.jdField_a_of_type_AndroidWidgetImageView.getTag()).endsWith(this.a.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    try
+    {
+      Pair localPair1 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable), 1);
+      ThreadManager.getUIHandler().post(new ajzx(this, localPair1));
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
+        HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
+        Pair localPair2 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable), 1);
+      }
+    }
   }
 }
 

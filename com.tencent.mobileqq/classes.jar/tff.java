@@ -1,19 +1,43 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class tff
-  implements Runnable
+public class tff
+  extends WtloginObserver
 {
-  tff(tfe paramtfe, short paramShort) {}
+  public tff(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void run()
+  public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
   {
-    PermisionPrivacyActivity localPermisionPrivacyActivity = this.jdField_a_of_type_Tfe.a;
-    if (this.jdField_a_of_type_Short == 0) {}
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel())
     {
-      localPermisionPrivacyActivity.b(bool);
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
+      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
+      if (paramErrMsg != null) {
+        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      }
+    }
+    this.a.c();
+    if (this.a.isFinishing()) {
       return;
     }
+    if (paramInt3 == 0)
+    {
+      this.a.a();
+      return;
+    }
+    paramString1 = null;
+    if (paramErrMsg != null) {
+      paramString1 = paramErrMsg.getMessage();
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      this.a.a(null, paramString1);
+      return;
+    }
+    this.a.a(2131434476, 1);
   }
 }
 

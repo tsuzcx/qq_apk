@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas;
 
-import akhx;
-import akhy;
+import akpk;
+import akpl;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -50,7 +50,7 @@ public class URLInterceptManager
   {
     this.jdField_b_of_type_JavaUtilMap = new HashMap();
     this.jdField_c_of_type_JavaUtilMap = new HashMap();
-    ThreadManager.post(new akhx(this, paramContext), 8, null, true);
+    ThreadManager.post(new akpk(this, paramContext), 8, null, true);
   }
   
   public URLInterceptManager(QQAppInterface paramQQAppInterface)
@@ -130,7 +130,7 @@ public class URLInterceptManager
     label416:
     for (Object localObject = ((JSONObject)localObject).getString("maxVer");; localObject = null)
     {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (IndividuationConfigInfo.a("7.6.3", (String)localObject)) && (IndividuationConfigInfo.a(str3, "7.6.3")))
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (IndividuationConfigInfo.a("7.6.8", (String)localObject)) && (IndividuationConfigInfo.a(str3, "7.6.8")))
       {
         if (QLog.isColorLevel()) {
           QLog.d(jdField_a_of_type_JavaLangString, 2, "Parse from Json: URL = " + str1 + " API = " + str2 + " type = " + j);
@@ -334,7 +334,7 @@ public class URLInterceptManager
       if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
         break label51;
       }
-      ThreadManager.post(new akhy(this, paramQQAppInterface), 8, null, true);
+      ThreadManager.post(new akpl(this, paramQQAppInterface), 8, null, true);
     }
     label51:
     do
@@ -354,7 +354,7 @@ public class URLInterceptManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vas.URLInterceptManager
  * JD-Core Version:    0.7.0.1
  */

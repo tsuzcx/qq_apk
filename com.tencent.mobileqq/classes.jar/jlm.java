@@ -1,25 +1,16 @@
-import com.tencent.av.redpacket.ui.RedPacketGameEmojiAnimation;
-import com.tencent.av.redpacket.ui.RedPacketGameParticleEmoji.OnShowListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.guild.GuildMultiActivity;
 
 public class jlm
-  implements RedPacketGameParticleEmoji.OnShowListener
 {
-  public jlm(RedPacketGameEmojiAnimation paramRedPacketGameEmojiAnimation) {}
+  public int a;
+  public long a;
+  public boolean a;
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedPacketGameEmojiAnimation", 2, "onShow called, needDetectFace set true");
-    }
-    if (this.a.a != null) {
-      this.a.a.c = true;
-    }
-  }
+  public jlm(GuildMultiActivity paramGuildMultiActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jlm
  * JD-Core Version:    0.7.0.1
  */

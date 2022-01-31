@@ -26,15 +26,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
-import mzw;
-import mzx;
+import ndr;
+import nds;
 
 public class DownloadUrlManager
   extends BaseManger
 {
   private LruCache jdField_a_of_type_AndroidUtilLruCache = new LruCache(100);
   private final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  private LruCache b = new LruCache(200);
+  private LruCache b = new LruCache(300);
   
   private DownloadingUrlEntry a(String paramString, int paramInt)
   {
@@ -202,7 +202,7 @@ public class DownloadUrlManager
     if ((paramInt != 0) || (TroopStoryUtil.a(paramString))) {
       return;
     }
-    Bosses.get().postJob(new mzw(this, paramString, paramInt));
+    Bosses.get().postJob(new ndr(this, paramString, paramInt));
   }
   
   public void a(List paramList)
@@ -214,6 +214,8 @@ public class DownloadUrlManager
     EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
     for (;;)
     {
+      List localList;
+      VideoUrlEntry localVideoUrlEntry1;
       try
       {
         localEntityManager.a().a();
@@ -221,25 +223,34 @@ public class DownloadUrlManager
         if (!paramList.hasNext()) {
           break;
         }
-        List localList = (List)paramList.next();
-        if (!localList.isEmpty())
-        {
-          VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
-          localVideoUrlEntry.vid = ((VideoUrlEntry)localList.get(0)).vid;
-          localVideoUrlEntry.setStatus(1001);
-          localEntityManager.a(localVideoUrlEntry, "vid=?", new String[] { localVideoUrlEntry.vid });
-          Iterator localIterator = localList.iterator();
-          if (localIterator.hasNext()) {
-            localEntityManager.b((VideoUrlEntry)localIterator.next());
-          } else {
-            this.jdField_a_of_type_AndroidUtilLruCache.put(localVideoUrlEntry.vid, localList);
-          }
+        localList = (List)paramList.next();
+        if (localList.isEmpty()) {
+          continue;
         }
+        localVideoUrlEntry1 = new VideoUrlEntry();
+        localVideoUrlEntry1.vid = ((VideoUrlEntry)localList.get(0)).vid;
+        localVideoUrlEntry1.setStatus(1001);
+        localEntityManager.a(localVideoUrlEntry1, "vid=?", new String[] { localVideoUrlEntry1.vid });
+        Iterator localIterator = localList.iterator();
+        if (!localIterator.hasNext()) {
+          break label219;
+        }
+        VideoUrlEntry localVideoUrlEntry2 = (VideoUrlEntry)localIterator.next();
+        if (TextUtils.isEmpty(localVideoUrlEntry2.videoUrl))
+        {
+          localIterator.remove();
+          SLog.d("Q.qqstory.DownloadUrlManager", "%s url error!", new Object[] { localVideoUrlEntry2.vid });
+          continue;
+        }
+        localEntityManager.b(localVideoUrlEntry2);
       }
       finally
       {
         localEntityManager.a().b();
       }
+      continue;
+      label219:
+      this.jdField_a_of_type_AndroidUtilLruCache.put(localVideoUrlEntry1.vid, localList);
     }
     localEntityManager.a().c();
     localEntityManager.a().b();
@@ -296,7 +307,7 @@ public class DownloadUrlManager
   
   public void b(String paramString, int paramInt)
   {
-    Bosses.get().postJob(new mzx(this, paramString, paramInt));
+    Bosses.get().postJob(new nds(this, paramString, paramInt));
   }
   
   public void b(List paramList)

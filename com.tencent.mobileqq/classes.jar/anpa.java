@@ -1,19 +1,17 @@
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.weiyun.transmission.WeiyunTransmissionStatus;
 
-public class anpa
-  extends CaptureConfigUpdateObserver
+public final class anpa
+  implements INetEventHandler
 {
-  public anpa(MusicProviderView paramMusicProviderView) {}
-  
-  public void b()
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.a.a(false);
+    WeiyunTransmissionStatus.getInstance().onReceiveNetChanged(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpa
  * JD-Core Version:    0.7.0.1
  */

@@ -31,6 +31,7 @@ public class ArCloudNativeSoLoader
   
   public static int a(String paramString1, String paramString2)
   {
+    int i = -5;
     for (;;)
     {
       try
@@ -43,8 +44,9 @@ public class ArCloudNativeSoLoader
           paramString2 = ArNativeSoLoaderBase.a("arcloud", "v7.3.0.2", ArNativeSoLoaderBase.b("arcloud", "v7.3.0.2", "arcloud")) + File.separator + "md5_config.xml";
           localObject = new File(paramString2);
           if (!((File)localObject).exists()) {
-            break label599;
+            break label644;
           }
+          new HashMap();
         }
         catch (IOException paramString2)
         {
@@ -64,14 +66,13 @@ public class ArCloudNativeSoLoader
       finally {}
       try
       {
-        paramString2 = FileUtils.b((File)localObject);
-        paramString1 = a(paramString2);
-        if (paramString1.size() <= 0) {
-          break label569;
+        paramString2 = a(FileUtils.b((File)localObject));
+        if (paramString2.size() <= 0) {
+          break label614;
         }
-        paramString2 = paramString1.entrySet().iterator();
+        paramString2 = paramString2.entrySet().iterator();
         if (!paramString2.hasNext()) {
-          break label640;
+          break label685;
         }
         localObject = (Map.Entry)paramString2.next();
         paramString1 = "";
@@ -83,7 +84,7 @@ public class ArCloudNativeSoLoader
         localFile = new File(paramString1);
         QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. soFilename = " + paramString1);
         if (!localFile.exists()) {
-          break label528;
+          break label573;
         }
         str = PortalUtils.a(paramString1);
         localObject = (String)((Map.Entry)localObject).getValue();
@@ -96,7 +97,11 @@ public class ArCloudNativeSoLoader
       }
       catch (IOException paramString2)
       {
-        i = -5;
+        QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
+        continue;
+      }
+      catch (OutOfMemoryError paramString2)
+      {
         QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
         continue;
         QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", filename = " + paramString1);
@@ -107,13 +112,13 @@ public class ArCloudNativeSoLoader
         continue;
       }
       return i;
-      label528:
-      label569:
-      label599:
+      label573:
+      label614:
       QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", configFilename = " + paramString2);
-      int i = -2;
+      label644:
+      i = -2;
       continue;
-      label640:
+      label685:
       QLog.i("AREngine_ArCloudNativeSoLoader", 2, "doOnDownloadSuccess. result = " + 0);
       i = 0;
     }

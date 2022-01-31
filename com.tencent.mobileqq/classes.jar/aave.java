@@ -1,93 +1,38 @@
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.GetAppPathByActionResult;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aave
-  implements Runnable
+class aave
+  implements DialogInterface.OnClickListener
 {
-  static
-  {
-    if (!ArkLocalAppMgr.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  aave(aavc paramaavc, QQCustomDialog paramQQCustomDialog) {}
   
-  public aave(ArkLocalAppMgr paramArkLocalAppMgr, int paramInt, String paramString1, String paramString2, aavw paramaavw, String paramString3) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
-    Object localObject3 = this.jdField_a_of_type_JavaLangString;
-    ??? = this.b;
-    ArrayList localArrayList = new ArrayList();
-    if ((i == 0) && (!TextUtils.isEmpty((CharSequence)localObject3)))
+    ArkAppCenter.a().post(new aavf(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
-      ArkLocalAppMgr.a((String)localObject3, String.format("%s.%s", new Object[] { this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aavw.b }), this.jdField_a_of_type_Aavw.jdField_a_of_type_Int, localArrayList);
-      if (!localArrayList.isEmpty()) {
-        break label448;
-      }
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("findAppViewMatchAction, not match, context=%s, action=%s, app-name=%s", new Object[] { this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aavw.b, this.c }));
-      i = -1;
-      ??? = "Action NOT Matched";
-    }
-    label448:
-    for (;;)
-    {
-      if (localArrayList.isEmpty())
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aavc.a, "ark_authority_api_location", this.jdField_a_of_type_Aavc.c, 2);
+      paramDialogInterface = DialogUtil.a(BaseActivity.sTopActivity, BaseActivity.sTopActivity.getString(2131438843), 2131435285, 2131435285, new DialogUtil.DialogOnClickAdapter(), null);
+      try
       {
-        if ((!jdField_a_of_type_Boolean) && (i == 0))
-        {
-          throw new AssertionError();
-          if (i == 0) {
-            i = -1;
-          }
-        }
-        else
-        {
-          localObject3 = new ArkLocalAppMgr.GetAppPathByActionResult();
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).b = this.c;
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).jdField_a_of_type_Int = i;
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).jdField_a_of_type_JavaLangString = ((String)???);
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).c = null;
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).d = null;
-          ((ArkLocalAppMgr.GetAppPathByActionResult)localObject3).e = null;
-          localArrayList.add(localObject3);
-        }
+        paramDialogInterface.show();
+        return;
       }
-      else {
-        synchronized (this.jdField_a_of_type_Aavw)
-        {
-          this.jdField_a_of_type_Aavw.c.addAll(localArrayList);
-          this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaUtilSet.remove(this.c);
-          if (this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaUtilSet.isEmpty())
-          {
-            this.jdField_a_of_type_Aavw.jdField_a_of_type_Boolean = true;
-            ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aavw);
-            return;
-            if ((!jdField_a_of_type_Boolean) && (i != 0)) {
-              throw new AssertionError();
-            }
-            localObject3 = localArrayList.iterator();
-            while (((Iterator)localObject3).hasNext())
-            {
-              ArkLocalAppMgr.GetAppPathByActionResult localGetAppPathByActionResult = (ArkLocalAppMgr.GetAppPathByActionResult)((Iterator)localObject3).next();
-              localGetAppPathByActionResult.b = this.c;
-              localGetAppPathByActionResult.jdField_a_of_type_Int = 0;
-              localGetAppPathByActionResult.jdField_a_of_type_JavaLangString = ((String)???);
-              localGetAppPathByActionResult.c = this.jdField_a_of_type_JavaLangString;
-            }
-          }
-          ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppByAction finished, action=%s.%s, app-count=%d, unfinished-count=%d", new Object[] { this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aavw.b, Integer.valueOf(this.jdField_a_of_type_Aavw.c.size()), Integer.valueOf(this.jdField_a_of_type_Aavw.jdField_a_of_type_JavaUtilSet.size()) }));
-          return;
-        }
-      }
+      catch (Exception paramDialogInterface) {}
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label38;
     }
   }
 }

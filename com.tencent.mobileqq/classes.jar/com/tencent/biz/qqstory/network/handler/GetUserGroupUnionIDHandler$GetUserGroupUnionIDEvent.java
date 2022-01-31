@@ -11,7 +11,7 @@ public class GetUserGroupUnionIDHandler$GetUserGroupUnionIDEvent
   
   public GetUserGroupUnionIDHandler$GetUserGroupUnionIDEvent(ErrorMessage paramErrorMessage)
   {
-    this.a = paramErrorMessage;
+    this.errorInfo = paramErrorMessage;
   }
 }
 

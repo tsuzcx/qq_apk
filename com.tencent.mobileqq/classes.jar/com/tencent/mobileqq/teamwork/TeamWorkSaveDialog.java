@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamwork;
 
-import aimp;
-import aimq;
+import airk;
+import airl;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
@@ -17,13 +17,13 @@ public class TeamWorkSaveDialog
   public TeamWorkSaveDialog(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
     super(paramContext, 2131624516);
-    setContentView(2130971641);
-    paramContext = (TextView)findViewById(2131363378);
+    setContentView(2130971670);
+    paramContext = (TextView)findViewById(2131363397);
     if (!TextUtils.isEmpty(paramString1))
     {
       paramContext.setVisibility(0);
       paramContext.setText(paramString1);
-      paramContext = (TextView)findViewById(2131363057);
+      paramContext = (TextView)findViewById(2131363062);
       if (TextUtils.isEmpty(paramString2)) {
         break label142;
       }
@@ -33,8 +33,8 @@ public class TeamWorkSaveDialog
     }
     for (;;)
     {
-      ((Button)findViewById(2131367754)).setOnClickListener(new aimp(this, paramOnClickListener1));
-      ((ImageView)findViewById(2131363978)).setOnClickListener(new aimq(this, paramOnClickListener2));
+      ((Button)findViewById(2131367764)).setOnClickListener(new airk(this, paramOnClickListener1));
+      ((ImageView)findViewById(2131364003)).setOnClickListener(new airl(this, paramOnClickListener2));
       setCanceledOnTouchOutside(false);
       return;
       paramContext.setVisibility(8);
@@ -46,7 +46,7 @@ public class TeamWorkSaveDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkSaveDialog
  * JD-Core Version:    0.7.0.1
  */

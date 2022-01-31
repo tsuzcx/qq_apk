@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.app.PrinterStatusHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.DataMigrationService;
 
 public class zjr
-  extends TimerTask
+  extends Handler
 {
-  public zjr(PrinterStatusHandler paramPrinterStatusHandler) {}
+  public zjr(DataMigrationService paramDataMigrationService) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ReportController.b(this.a.b, "CliOper", "", "", "0X8004023", "0X8004023", 0, 0, "", "", "", "");
-    if (PrinterStatusHandler.a(this.a) != null)
+    int i = paramMessage.arg1;
+    paramMessage = (Intent)paramMessage.obj;
+    if (paramMessage == null)
     {
-      PrinterStatusHandler.a(this.a).cancel();
-      PrinterStatusHandler.a(this.a, null);
+      this.a.stopSelf(i);
+      return;
     }
+    if ("com.tencent.mobileqq.action.MIGRATION_DATA".equals(paramMessage.getAction()))
+    {
+      DataMigrationService.a(this.a, paramMessage, i);
+      return;
+    }
+    this.a.stopSelf(i);
   }
 }
 

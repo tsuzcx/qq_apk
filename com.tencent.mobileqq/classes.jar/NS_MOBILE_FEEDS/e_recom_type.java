@@ -18,6 +18,7 @@ public final class e_recom_type
   public static final int _enum_recom_type_relation = 9;
   public static final int _enum_recom_type_sc = 6;
   public static final int _enum_recom_type_school_follow_more = 14;
+  public static final int _enum_recom_type_special_follow_more = 17;
   public static final int _enum_recom_type_topic_group = 1;
   public static final int _enum_recom_type_topic_single = 2;
   public static final int _enum_recom_type_video = 3;

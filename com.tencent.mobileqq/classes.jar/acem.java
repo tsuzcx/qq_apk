@@ -1,17 +1,29 @@
-import android.content.Context;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.dating.CarrierHelper;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-class acem
+public class acem
   implements Runnable
 {
-  acem(acel paramacel) {}
+  public acem(CarrierHelper paramCarrierHelper, LinkedList paramLinkedList) {}
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      QQToast.a(this.a.a.a, this.a.a.a.getString(2131438028), 1).b(this.a.a.g);
+    if ((CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper)) || (this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())) {
+      return;
     }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+    while (localIterator.hasNext())
+    {
+      Integer localInteger = (Integer)localIterator.next();
+      if (5 == localInteger.intValue()) {
+        ReportController.b(CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), "CliOper", "", "", "0X80052A4", "0X80052A4", CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), 0, "", "", "", "");
+      } else if ((CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper) == 2) || (CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper) == 1)) {
+        ReportController.b(CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), "CliOper", "", "", "0X80050D0", "0X80050D0", CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper), 0, String.valueOf(localInteger), "", "", "");
+      }
+    }
+    CarrierHelper.a(this.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper, true);
   }
 }
 

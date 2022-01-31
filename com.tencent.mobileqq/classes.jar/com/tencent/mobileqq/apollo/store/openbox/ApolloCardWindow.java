@@ -70,9 +70,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import yuh;
-import yui;
-import yuj;
+import zaz;
+import zba;
+import zbb;
 
 @TargetApi(11)
 public class ApolloCardWindow
@@ -98,10 +98,10 @@ public class ApolloCardWindow
   private BoxCardHandler jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxBoxCardHandler;
   private OpeningCardGroup jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup;
   private RoundRectLinearLayout jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new yui(this);
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new zba(this);
   DownloaderInterface jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  Runnable jdField_a_of_type_JavaLangRunnable = new yuj(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new zbb(this);
   private String jdField_a_of_type_JavaLangString;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -243,7 +243,7 @@ public class ApolloCardWindow
     ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup, (ViewGroup.LayoutParams)localObject3);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxOpeningCardGroup.setClickLayoutListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846269);
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846351);
     localObject3 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject3).addRule(10, -1);
     ((RelativeLayout.LayoutParams)localObject3).addRule(11, -1);
@@ -252,7 +252,7 @@ public class ApolloCardWindow
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(17.0F / jdField_a_of_type_Float);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434937);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131434953);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     super.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject3);
     this.jdField_b_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout = new RoundRectLinearLayout(this.jdField_a_of_type_AndroidContentContext);
@@ -344,7 +344,7 @@ public class ApolloCardWindow
     ((RelativeLayout.LayoutParams)localObject2).bottomMargin = ApolloUtil.a(129.0F, jdField_b_of_type_Float);
     super.addView(this.jdField_b_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject2);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838598);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838604);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(13, -1);
     super.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject2);
@@ -361,7 +361,7 @@ public class ApolloCardWindow
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.setGravity(17);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.setRoundRect((int)(n * 0.008F), -7707920, false);
     this.jdField_d_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838028);
+    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838027);
     localObject2 = new LinearLayout.LayoutParams(-2, -2);
     this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.addView(this.jdField_d_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject2);
     this.jdField_d_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
@@ -405,7 +405,7 @@ public class ApolloCardWindow
       m += 1;
     }
     this.jdField_e_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_e_of_type_AndroidWidgetImageView.setBackgroundResource(2130838027);
+    this.jdField_e_of_type_AndroidWidgetImageView.setBackgroundResource(2130838026);
     localObject1 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject1).addRule(12);
     ((RelativeLayout.LayoutParams)localObject1).addRule(11);
@@ -851,7 +851,7 @@ public class ApolloCardWindow
     ValueAnimator localValueAnimator = new ValueAnimator();
     localValueAnimator.setObjectValues(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     localValueAnimator.setDuration(paramInt3);
-    localValueAnimator.addUpdateListener(new yuh(this, paramTextView));
+    localValueAnimator.addUpdateListener(new zaz(this, paramTextView));
     localValueAnimator.setStartDelay(paramInt4);
     localValueAnimator.start();
   }
@@ -1049,7 +1049,7 @@ public class ApolloCardWindow
               this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
               this.jdField_f_of_type_AndroidWidgetTextView.setText("+" + paramMessage.jdField_c_of_type_Int);
               localObject = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130838023);
+              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130838022);
               localObject = ApolloImageDownloader.a("apollo_card_first_image.png", (URLDrawable.URLDrawableOptions)localObject, paramMessage.jdField_a_of_type_JavaLangString);
               m = ApolloUtil.a(25.0F / jdField_a_of_type_Float, jdField_b_of_type_Float);
               ((URLDrawable)localObject).setBounds(0, 0, (int)(m * 0.8F), m);
@@ -1060,7 +1060,7 @@ public class ApolloCardWindow
               if (this.jdField_c_of_type_AndroidWidgetImageView == null)
               {
                 this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-                this.jdField_c_of_type_AndroidWidgetImageView.setId(2131374904);
+                this.jdField_c_of_type_AndroidWidgetImageView.setId(2131374962);
                 this.jdField_c_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 paramMessage = new RelativeLayout.LayoutParams(ApolloUtil.a(15.0F, jdField_b_of_type_Float), ApolloUtil.a(15.0F, jdField_b_of_type_Float));
                 paramMessage.leftMargin = ApolloUtil.a(12.0F, jdField_b_of_type_Float);
@@ -1342,7 +1342,7 @@ public class ApolloCardWindow
                   {
                     this.jdField_f_of_type_AndroidWidgetTextView.setText("+" + paramMessage.jdField_c_of_type_Int);
                     localObject = URLDrawable.URLDrawableOptions.obtain();
-                    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130838024);
+                    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130838023);
                     localObject = ApolloImageDownloader.a("apollo_card_first_image.png", (URLDrawable.URLDrawableOptions)localObject, paramMessage.jdField_a_of_type_JavaLangString);
                     m = ApolloUtil.a(25.0F / jdField_a_of_type_Float, jdField_b_of_type_Float);
                     ((URLDrawable)localObject).setBounds(0, 0, m, m);
@@ -1409,17 +1409,17 @@ public class ApolloCardWindow
                 if (this.jdField_c_of_type_AndroidWidgetImageView == null) {
                   break;
                 }
-                this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838026);
+                this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130838025);
                 return false;
                 if (this.jdField_g_of_type_AndroidWidgetImageView == null) {
                   break;
                 }
-                this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130838026);
+                this.jdField_g_of_type_AndroidWidgetImageView.setImageResource(2130838025);
                 return false;
                 if (this.jdField_i_of_type_AndroidWidgetImageView == null) {
                   break;
                 }
-                this.jdField_i_of_type_AndroidWidgetImageView.setImageResource(2130838026);
+                this.jdField_i_of_type_AndroidWidgetImageView.setImageResource(2130838025);
                 return false;
                 m = 0;
                 n = 0;

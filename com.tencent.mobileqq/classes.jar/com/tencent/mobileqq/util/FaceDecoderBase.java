@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import ajzp;
+import akhd;
 import android.graphics.Bitmap;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.nearby.NearbyUtils;
@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public abstract class FaceDecoderBase
 {
   public int a;
-  public ajzp a;
+  public akhd a;
   Hashtable a;
   public LinkedList a;
   public boolean a;
@@ -25,7 +25,7 @@ public abstract class FaceDecoderBase
     this.jdField_a_of_type_Int = 10;
     this.jdField_a_of_type_JavaUtilHashtable = new Hashtable();
     this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    this.jdField_a_of_type_Ajzp = null;
+    this.jdField_a_of_type_Akhd = null;
     this.jdField_a_of_type_Boolean = false;
   }
   
@@ -41,9 +41,9 @@ public abstract class FaceDecoderBase
   
   public abstract void a(int paramInt1, String paramString, int paramInt2, long paramLong);
   
-  public void a(ajzp paramajzp)
+  public void a(akhd paramakhd)
   {
-    this.jdField_a_of_type_Ajzp = paramajzp;
+    this.jdField_a_of_type_Akhd = paramakhd;
   }
   
   public abstract void a(AppInterface paramAppInterface);
@@ -125,7 +125,7 @@ public abstract class FaceDecoderBase
     }
     c();
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Ajzp = null;
+    this.jdField_a_of_type_Akhd = null;
     this.jdField_a_of_type_Boolean = false;
   }
   

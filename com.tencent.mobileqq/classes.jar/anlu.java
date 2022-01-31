@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import dov.com.qq.im.capture.music.MusicPlayerScene;
+import android.app.Activity;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qzone.QZoneVideoCommonUtils.onForwardVideoActivityFailedListener;
+import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
 
 public class anlu
-  implements Runnable
+  implements QZoneVideoCommonUtils.onForwardVideoActivityFailedListener
 {
-  public anlu(MusicPlayerScene paramMusicPlayerScene, String paramString, int paramInt) {}
+  public anlu(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin, int paramInt) {}
   
-  public void run()
+  public void onFail(Activity paramActivity, String paramString)
   {
-    this.jdField_a_of_type_DovComQqImCaptureMusicMusicPlayerScene.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    QQToast.a(paramActivity, paramString, 0).b(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlu
  * JD-Core Version:    0.7.0.1
  */

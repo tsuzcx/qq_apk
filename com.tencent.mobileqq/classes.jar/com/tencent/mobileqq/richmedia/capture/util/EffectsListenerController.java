@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
-import ahkt;
+import ahpk;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
@@ -51,8 +51,8 @@ public class EffectsListenerController
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQIMShortVideoEntryDialog = null;
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView = ((EffectsCameraCaptureView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366945));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager = ((CaptureVideoFilterViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131368994));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView = ((EffectsCameraCaptureView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366943));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager = ((CaptureVideoFilterViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131368995));
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
@@ -71,7 +71,7 @@ public class EffectsListenerController
   
   public void a(int paramInt, String paramString)
   {
-    SubtitleLayout localSubtitleLayout = (SubtitleLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370028);
+    SubtitleLayout localSubtitleLayout = (SubtitleLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370037);
     if (localSubtitleLayout != null)
     {
       SubtitleDataManager.a().c = AnimDrawerFactory.a(paramInt);
@@ -141,7 +141,7 @@ public class EffectsListenerController
     label53:
     for (boolean bool = true;; bool = false)
     {
-      localEffectsCameraCaptureView.e(bool);
+      localEffectsCameraCaptureView.f(bool);
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect(paramString);
       return;
     }
@@ -200,7 +200,7 @@ public class EffectsListenerController
       QIMShortVideoEntryDialog localQIMShortVideoEntryDialog = new QIMShortVideoEntryDialog(this.jdField_a_of_type_AndroidViewView.getContext());
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQIMShortVideoEntryDialog = localQIMShortVideoEntryDialog;
       localQIMShortVideoEntryDialog.a(paramString1, paramString2, paramString3, paramString7);
-      localQIMShortVideoEntryDialog.a(new ahkt(this, paramInt, paramBoolean, paramString4, paramString5, paramString6));
+      localQIMShortVideoEntryDialog.a(new ahpk(this, paramInt, paramBoolean, paramString4, paramString5, paramString6));
       localQIMShortVideoEntryDialog.a();
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQIMShortVideoEntryDialog.setOnDismissListener(this);
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQIMShortVideoEntryDialog.show();

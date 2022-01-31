@@ -1,15 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.VideoFlowDecodeWrapper.FlowListener;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
-public class ahom
-  implements VideoFlowDecodeWrapper.FlowListener
+class ahom
+  implements Runnable
 {
-  public ahom(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  ahom(ahoj paramahoj) {}
   
-  public void a()
+  public void run()
   {
-    NeoVideoFilterPlayView.a(this.a).sendEmptyMessage(1);
+    EffectsCameraCaptureFragment.a(this.a.a, false);
   }
 }
 

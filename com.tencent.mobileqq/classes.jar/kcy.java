@@ -1,36 +1,39 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.AVLog;
-import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
 
 public class kcy
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public kcy(VideoControlUI paramVideoControlUI) {}
   
-  public kcy(EffectFilterPanel paramEffectFilterPanel, View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    AVLog.c("EffectFilterPanel", "MyTextAlphaAnimationListener onAnimationEnd :" + localView + "|" + paramAnimation);
-    if (localView != null) {
-      localView.setVisibility(8);
+    this.a.a.a(new Object[] { Integer.valueOf(102) });
+    if (!this.a.n) {
+      return;
+    }
+    if (this.a.v > 5) {
+      this.a.v = 5;
+    }
+    if (this.a.v < 0) {
+      this.a.v = 0;
+    }
+    VideoControlUI localVideoControlUI;
+    if (this.a.i) {
+      localVideoControlUI = this.a;
+    }
+    for (localVideoControlUI.v += 1;; localVideoControlUI.v -= 1)
+    {
+      this.a.a.a().postDelayed(this, VideoControlUI.a(this.a));
+      return;
+      localVideoControlUI = this.a;
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kcy
  * JD-Core Version:    0.7.0.1
  */

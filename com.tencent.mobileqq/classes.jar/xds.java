@@ -1,15 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.AlbumUtil;
 
 public class xds
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public xds(QzoneHbFragment paramQzoneHbFragment) {}
+  public xds(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (PhotoPreviewActivity.c(this.a))
+    {
+      this.a.i();
+      return;
+    }
+    if (this.a.x) {
+      ReportController.b(null, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
+    }
+    if (("FROM_PHOTO_LIST_FLOW".equals(this.a.e)) && (this.a.v)) {
+      this.a.setResult(-1);
+    }
+    this.a.finish();
+    AlbumUtil.a(this.a, true, false);
   }
 }
 

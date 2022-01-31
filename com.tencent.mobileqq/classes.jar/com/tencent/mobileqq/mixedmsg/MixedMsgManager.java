@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mixedmsg;
 
-import aehf;
-import aehg;
-import aehh;
-import aehi;
-import aehj;
-import aehk;
-import aehl;
+import aepp;
+import aepq;
+import aepr;
+import aeps;
+import aept;
+import aepu;
+import aepv;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
@@ -59,7 +59,7 @@ import tencent.im.msg.im_msg_body.RichText;
 public class MixedMsgManager
   implements Manager
 {
-  private static final String jdField_a_of_type_JavaLangString = AppConstants.aJ + "fight/pic_expire.png";
+  private static final String jdField_a_of_type_JavaLangString = AppConstants.aK + "fight/pic_expire.png";
   private long jdField_a_of_type_Long;
   public QQAppInterface a;
   public ConcurrentHashMap a;
@@ -95,7 +95,7 @@ public class MixedMsgManager
           paramString2 = a(paramQQAppInterface, paramString2, null, paramString1, paramInt);
           if (paramString2 != null)
           {
-            ThreadManager.post(new aehk(paramString2), 8, null, true);
+            ThreadManager.post(new aepu(paramString2), 8, null, true);
             paramString2.subMsgId = localArrayList.size();
             localArrayList.add(paramString2);
           }
@@ -275,7 +275,7 @@ public class MixedMsgManager
           if (k >= j) {
             break label512;
           }
-          paramString = new aehh(this, paramQQAppInterface, paramString, paramInt, paramMessageForMixedMsg);
+          paramString = new aepr(this, paramQQAppInterface, paramString, paramInt, paramMessageForMixedMsg);
           paramQQAppInterface.a().b(paramMessageForMixedMsg, paramString);
           if (QLog.isColorLevel()) {
             QLog.d("MixedMsgManager", 2, "packAndSendMsg, richTextLength < " + j + ", send by normal message");
@@ -314,7 +314,7 @@ public class MixedMsgManager
   {
     PicReq localPicReq = PicBusiManager.a(8, 7);
     localPicReq.a(paramArrayList);
-    localPicReq.a(new aehg(this, paramMessageForMixedMsg, paramQQAppInterface, paramString, paramInt));
+    localPicReq.a(new aepq(this, paramMessageForMixedMsg, paramQQAppInterface, paramString, paramInt));
     PicBusiManager.a(localPicReq, paramQQAppInterface);
   }
   
@@ -435,7 +435,7 @@ public class MixedMsgManager
   
   public void a(SessionInfo paramSessionInfo, MessageForMixedMsg paramMessageForMixedMsg, boolean paramBoolean)
   {
-    paramSessionInfo = new aehf(this, paramSessionInfo, paramMessageForMixedMsg, paramBoolean);
+    paramSessionInfo = new aepp(this, paramSessionInfo, paramMessageForMixedMsg, paramBoolean);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramSessionInfo);
   }
   
@@ -459,8 +459,7 @@ public class MixedMsgManager
       if (paramArrayList1 != null)
       {
         paramString2 = new ArrayList(paramArrayList1.msgElemList);
-        paramQQAppInterface.a().a(paramArrayList1, paramQQAppInterface.getCurrentAccountUin());
-        paramQQAppInterface.a().d(paramArrayList1);
+        paramQQAppInterface.a().b(paramArrayList1, paramQQAppInterface.getCurrentAccountUin());
         paramQQAppInterface.a().f(paramString1, paramInt);
         paramString1 = Collections.synchronizedMap(new HashMap());
         int i = paramString2.size();
@@ -475,7 +474,7 @@ public class MixedMsgManager
             if (FileUtil.a(str))
             {
               paramString1.put(str, Integer.valueOf(paramSourceMsgInfo.subMsgId));
-              a(paramQQAppInterface, paramSourceMsgInfo, paramBoolean, new aehl(this, paramArrayList1, paramString1, str, paramArrayList2));
+              a(paramQQAppInterface, paramSourceMsgInfo, paramBoolean, new aepv(this, paramArrayList1, paramString1, str, paramArrayList2));
             }
           }
           paramInt += 1;
@@ -519,8 +518,8 @@ public class MixedMsgManager
       {
         return;
         this.jdField_a_of_type_Long = System.currentTimeMillis();
-        paramString = new aehi(this, paramQQAppInterface, paramMessageForMixedMsg, paramString, paramInt);
-        paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.istroop, paramMessageForMixedMsg.uniseq, 1035, new aehj(this, paramQQAppInterface, paramMessageForMixedMsg, paramString, paramBoolean));
+        paramString = new aeps(this, paramQQAppInterface, paramMessageForMixedMsg, paramString, paramInt);
+        paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.istroop, paramMessageForMixedMsg.uniseq, 1035, new aept(this, paramQQAppInterface, paramMessageForMixedMsg, paramString, paramBoolean));
         if (!paramBoolean) {
           break;
         }

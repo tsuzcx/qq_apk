@@ -1,15 +1,15 @@
-import com.tencent.biz.ui.RefreshView.OnRefreshListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import java.util.Comparator;
 
 public class adxc
-  implements RefreshView.OnRefreshListener
+  implements Comparator
 {
-  public adxc(UiApiPlugin paramUiApiPlugin) {}
+  public adxc(MessageForUniteGrayTip paramMessageForUniteGrayTip) {}
   
-  public void a()
+  public int a(MessageForGrayTips.HightlightItem paramHightlightItem1, MessageForGrayTips.HightlightItem paramHightlightItem2)
   {
-    this.a.dispatchJsEvent("qbrowserPullDown", null, null);
-    this.a.h = true;
+    return paramHightlightItem1.start - paramHightlightItem2.start;
   }
 }
 

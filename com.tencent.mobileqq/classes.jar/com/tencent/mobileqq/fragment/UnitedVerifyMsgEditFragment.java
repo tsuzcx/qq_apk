@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import adof;
+import adwn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,36 +24,36 @@ public class UnitedVerifyMsgEditFragment
   AddFriendVerifyActivity.MaxBytesTextWatcher jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$MaxBytesTextWatcher;
   public BaseActivity a;
   
-  protected int a()
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return 2130970674;
-  }
-  
-  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    super.a(paramLayoutInflater, paramViewGroup, paramBundle);
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_Int = getArguments().getInt("VERIFY_MSG_BYTES_LIMIT", 100);
-    a(getString(2131433032));
-    a(2131433015, null);
-    b(2131433631, this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_e_of_type_AndroidViewView.findViewById(2131362897));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131362896));
+    setTitle(getString(2131433046));
+    setLeftButton(2131433029, null);
+    setRightButton(2131433645, this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131362902));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131362901));
     this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$MaxBytesTextWatcher = new AddFriendVerifyActivity.MaxBytesTextWatcher(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetEditText);
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$MaxBytesTextWatcher);
-    ThreadManager.post(new adof(this), 8, null, true);
+    ThreadManager.post(new adwn(this), 8, null, true);
   }
   
-  public boolean d()
+  protected int getContentLayoutId()
+  {
+    return 2130970687;
+  }
+  
+  public boolean onBackEvent()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(0);
-    boolean bool = super.d();
+    boolean bool = super.onBackEvent();
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.overridePendingTransition(2131034131, 2131034135);
     return bool;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_e_of_type_AndroidWidgetTextView)
+    if (paramView == this.rightViewText)
     {
       paramView = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       Intent localIntent = new Intent();

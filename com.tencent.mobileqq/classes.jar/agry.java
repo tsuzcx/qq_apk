@@ -1,29 +1,19 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
 
-public class agry
-  implements Animation.AnimationListener
+public final class agry
+  implements Parcelable.Creator
 {
-  public agry(ProfileTagView paramProfileTagView, VipTagView paramVipTagView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public PersonalityLabel a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, true);
+    return new PersonalityLabel(paramParcel);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public PersonalityLabel[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a.a != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.getResources().getColor(2131493147), this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.getResources().getColor(2131493146));
-    }
+    return new PersonalityLabel[paramInt];
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

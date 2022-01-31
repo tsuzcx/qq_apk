@@ -1,26 +1,49 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.utils.QQComicRedTouchManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.widget.ProgressPieView;
 
 public class amkn
-  extends BroadcastReceiver
+  extends Handler
 {
-  public amkn(QQComicRedTouchManager paramQQComicRedTouchManager) {}
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public amkn(ProgressPieView paramProgressPieView) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginRedTouchManager", 2, "Received red touch push");
+    if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b > this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.b - 1);
+      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
     }
-    QQComicRedTouchManager.a(this.a);
-    QQComicRedTouchManager.b(this.a);
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b < this.jdField_a_of_type_Int)
+      {
+        int i = this.jdField_a_of_type_ComTencentWidgetProgressPieView.b + this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Int;
+        if (i <= this.jdField_a_of_type_Int) {
+          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
+        }
+        for (;;)
+        {
+          sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
+          return;
+          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_Int);
+        }
+      }
+      removeMessages(0);
+    } while (!this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setVisibility(4);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setShowImage(false);
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkn
  * JD-Core Version:    0.7.0.1
  */

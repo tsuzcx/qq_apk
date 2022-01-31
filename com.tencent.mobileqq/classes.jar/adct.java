@@ -1,28 +1,21 @@
-import com.tencent.biz.troop.file.TroopFileProtocol.OnGetZipFileList;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnZipEventListener;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.app.UniformDownload;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetFileInfoCallBack;
 
-class adct
-  implements TroopFileProtocol.OnGetZipFileList
+public class adct
+  implements UniformDownloadUtil.GetFileInfoCallBack
 {
-  adct(adcs paramadcs) {}
+  public adct(UniformDownload paramUniformDownload, Bundle paramBundle, String paramString, long paramLong1, long paramLong2) {}
   
-  public void a(List paramList)
+  public void a(String paramString, long paramLong)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.a(paramList, this.a.a.jdField_a_of_type_JavaLangString, this.a.a.b, this.a.a.c, this.a.a.d);
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "nofilename.x";
     }
-    if (paramList != null)
-    {
-      ReportController.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin, "", FileManagerUtil.f(this.a.a.a()), "1");
-      return;
-    }
-    ReportController.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin, "-1", FileManagerUtil.f(this.a.a.a()), "1");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppUniformDownload.a.runOnUiThread(new adcu(this, str, paramLong));
   }
 }
 

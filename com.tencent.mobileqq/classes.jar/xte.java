@@ -1,13 +1,29 @@
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import android.widget.Filter;
+import android.widget.Filter.FilterResults;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import java.util.List;
 
 class xte
-  implements Runnable
+  extends Filter
 {
   xte(xtd paramxtd) {}
   
-  public void run()
+  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
   {
-    this.a.a.a();
+    paramCharSequence = new Filter.FilterResults();
+    paramCharSequence.values = this.a.a.a;
+    paramCharSequence.count = this.a.a.a.size();
+    return paramCharSequence;
+  }
+  
+  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
+  {
+    if (paramFilterResults.count > 0)
+    {
+      this.a.notifyDataSetChanged();
+      return;
+    }
+    this.a.notifyDataSetInvalidated();
   }
 }
 

@@ -1,63 +1,51 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportCover;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class tvb
-  extends Client.onRemoteRespObserver
+  extends AccountObserver
 {
-  public tvb(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public tvb(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void onBindedToClient()
+  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4)
   {
+    RegisterSendUpSms.c(this.a, paramInt1);
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onBindedToClient");
+      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
     }
-    TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a);
-  }
-  
-  public void onDisconnectWithService()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onDisconnectWithService");
-    }
-  }
-  
-  public void onPushMsg(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onPushMsg");
-    }
-  }
-  
-  public void onResponse(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "-->onResponse");
-    }
-    if (paramBundle == null) {}
-    String str;
-    do
+    if (paramInt1 == 4) {}
+    for (;;)
     {
-      do
-      {
-        return;
-      } while (paramBundle.getInt("respkey", 0) != TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).key);
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, false);
-      str = paramBundle.getString("cmd");
-      paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response");
-    } while ((!"ipc_cmd_get_team_work_url".equals(str)) || (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) == null));
-    paramBundle = paramBundle.getString("url");
-    if ((!TextUtils.isEmpty(paramBundle)) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) != null) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a()))
-    {
-      this.a.a.loadUrl(paramBundle);
+      RegisterSendUpSms.a(this.a, 0);
       return;
+      RegisterSendUpSms.a(this.a).setEnabled(true);
+      if (paramInt1 == 0)
+      {
+        RegisterSendUpSms.a(this.a).setText("验证成功");
+        RegisterSendUpSms.a(this.a, paramString1);
+        RegisterSendUpSms.b(this.a, paramString2);
+        RegisterSendUpSms.c(this.a, paramString3);
+        RegisterSendUpSms.a(this.a);
+        continue;
+      }
+      paramString1 = paramString4;
+      if (paramInt1 == -1) {}
+      try
+      {
+        paramString1 = new String(paramArrayOfByte, "utf-8");
+        QQToast.a(this.a, paramString1.trim(), 0).b(this.a.getTitleBarHeight());
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          paramString1 = paramString4;
+        }
+      }
     }
-    TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).b();
   }
 }
 

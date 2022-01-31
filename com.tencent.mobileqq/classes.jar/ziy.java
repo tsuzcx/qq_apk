@@ -1,21 +1,25 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationConfigHelper;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class ziy
   implements Runnable
 {
-  public ziy(PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ziy(ConfigHandler paramConfigHandler, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
-    RespondQueryQQBindingStat localRespondQueryQQBindingStat = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
-    if ((localRespondQueryQQBindingStat != null) && (TextUtils.isEmpty(localRespondQueryQQBindingStat.mobileNo)) && (localRespondQueryQQBindingStat.noBindUploadContacts == true))
-    {
-      PhoneContactManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, this.jdField_a_of_type_Boolean);
+    if (!ConfigHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo.strPkgName, 10000L)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("eggs", 2, "handleUpdateEggsActions dpc aio_eggs is false");
+      }
+    }
+    while (AioAnimationConfigHelper.a().a() != null) {
       return;
     }
-    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, this.jdField_a_of_type_Boolean, this.b);
+    AioAnimationConfigHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqAppConfigHandler.b.getApplication());
   }
 }
 

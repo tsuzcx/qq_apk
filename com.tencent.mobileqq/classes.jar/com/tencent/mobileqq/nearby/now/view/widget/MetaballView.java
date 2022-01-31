@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now.view.widget;
 
-import afba;
-import afbb;
+import affx;
+import affy;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -18,8 +18,8 @@ public class MetaballView
 {
   private float jdField_a_of_type_Float = 1.0F;
   private final int jdField_a_of_type_Int = 2;
-  private afba jdField_a_of_type_Afba;
-  private afbb jdField_a_of_type_Afbb;
+  private affx jdField_a_of_type_Affx;
+  private affy jdField_a_of_type_Affy;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -82,17 +82,17 @@ public class MetaballView
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16395392);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    afba localafba = new afba(this, null);
-    localafba.jdField_a_of_type_ArrayOfFloat = new float[] { this.jdField_b_of_type_Float + this.jdField_b_of_type_Int, f1 };
-    localafba.jdField_a_of_type_Float = (this.jdField_b_of_type_Float / 4.0F * 3.0F);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localafba);
+    affx localaffx = new affx(this, null);
+    localaffx.jdField_a_of_type_ArrayOfFloat = new float[] { this.jdField_b_of_type_Float + this.jdField_b_of_type_Int, f1 };
+    localaffx.jdField_a_of_type_Float = (this.jdField_b_of_type_Float / 4.0F * 3.0F);
+    this.jdField_a_of_type_JavaUtilArrayList.add(localaffx);
     int n = 1;
     while (n < 2)
     {
-      localafba = new afba(this, null);
-      localafba.jdField_a_of_type_ArrayOfFloat = new float[] { (this.jdField_b_of_type_Float * 2.0F + this.jdField_b_of_type_Int) * n, f1 };
-      localafba.jdField_a_of_type_Float = this.jdField_b_of_type_Float;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localafba);
+      localaffx = new affx(this, null);
+      localaffx.jdField_a_of_type_ArrayOfFloat = new float[] { (this.jdField_b_of_type_Float * 2.0F + this.jdField_b_of_type_Int) * n, f1 };
+      localaffx.jdField_a_of_type_Float = this.jdField_b_of_type_Float;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localaffx);
       n += 1;
     }
     this.jdField_d_of_type_Float = ((this.jdField_b_of_type_Float * 2.0F + this.jdField_b_of_type_Int) * 2.0F - this.jdField_b_of_type_Float * 2.0F);
@@ -106,14 +106,14 @@ public class MetaballView
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    Object localObject = (afba)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2);
-    afba localafba = (afba)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-    float f4 = a(((afba)localObject).jdField_a_of_type_ArrayOfFloat, localafba.jdField_a_of_type_ArrayOfFloat);
-    float f3 = ((afba)localObject).jdField_a_of_type_Float;
-    float f1 = localafba.jdField_a_of_type_Float;
+    Object localObject = (affx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2);
+    affx localaffx = (affx)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
+    float f4 = a(((affx)localObject).jdField_a_of_type_ArrayOfFloat, localaffx.jdField_a_of_type_ArrayOfFloat);
+    float f3 = ((affx)localObject).jdField_a_of_type_Float;
+    float f1 = localaffx.jdField_a_of_type_Float;
     if (f4 > paramFloat3)
     {
-      paramCanvas.drawCircle(localafba.jdField_a_of_type_ArrayOfFloat[0], localafba.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(localaffx.jdField_a_of_type_ArrayOfFloat[0], localaffx.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
       if ((f3 != 0.0F) && (f1 != 0.0F)) {
         break label147;
       }
@@ -123,7 +123,7 @@ public class MetaballView
     {
       return;
       f1 *= (1.0F + 0.3F * (1.0F - f4 / paramFloat3));
-      paramCanvas.drawCircle(localafba.jdField_a_of_type_ArrayOfFloat[0], localafba.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(localaffx.jdField_a_of_type_ArrayOfFloat[0], localaffx.jdField_a_of_type_ArrayOfFloat[1], f1, this.jdField_a_of_type_AndroidGraphicsPaint);
       break;
     }
     float f2;
@@ -132,7 +132,7 @@ public class MetaballView
     }
     for (paramFloat3 = (float)Math.acos((f1 * f1 + f4 * f4 - f3 * f3) / (2.0F * f1 * f4));; paramFloat3 = 0.0F)
     {
-      float f7 = (float)Math.atan2(localafba.jdField_a_of_type_ArrayOfFloat[1] - localObject.jdField_a_of_type_ArrayOfFloat[1], localafba.jdField_a_of_type_ArrayOfFloat[0] - localObject.jdField_a_of_type_ArrayOfFloat[0]);
+      float f7 = (float)Math.atan2(localaffx.jdField_a_of_type_ArrayOfFloat[1] - localObject.jdField_a_of_type_ArrayOfFloat[1], localaffx.jdField_a_of_type_ArrayOfFloat[0] - localObject.jdField_a_of_type_ArrayOfFloat[0]);
       float f8 = (float)Math.acos((f3 - f1) / f4);
       float f5 = f7 + f2 + (f8 - f2) * paramFloat1;
       f2 = f7 - f2 - (f8 - f2) * paramFloat1;
@@ -150,12 +150,12 @@ public class MetaballView
       float[] arrayOfFloat = this.f;
       f7 = this.jdField_b_of_type_ArrayOfFloat[1];
       arrayOfFloat[1] = (localObject.jdField_a_of_type_ArrayOfFloat[1] + f7);
-      this.g[0] = (this.jdField_c_of_type_ArrayOfFloat[0] + localafba.jdField_a_of_type_ArrayOfFloat[0]);
-      this.g[1] = (this.jdField_c_of_type_ArrayOfFloat[1] + localafba.jdField_a_of_type_ArrayOfFloat[1]);
-      this.h[0] = (this.jdField_d_of_type_ArrayOfFloat[0] + localafba.jdField_a_of_type_ArrayOfFloat[0]);
+      this.g[0] = (this.jdField_c_of_type_ArrayOfFloat[0] + localaffx.jdField_a_of_type_ArrayOfFloat[0]);
+      this.g[1] = (this.jdField_c_of_type_ArrayOfFloat[1] + localaffx.jdField_a_of_type_ArrayOfFloat[1]);
+      this.h[0] = (this.jdField_d_of_type_ArrayOfFloat[0] + localaffx.jdField_a_of_type_ArrayOfFloat[0]);
       localObject = this.h;
       f7 = this.jdField_d_of_type_ArrayOfFloat[1];
-      localObject[1] = (localafba.jdField_a_of_type_ArrayOfFloat[1] + f7);
+      localObject[1] = (localaffx.jdField_a_of_type_ArrayOfFloat[1] + f7);
       this.i[0] = (this.jdField_e_of_type_ArrayOfFloat[0] - this.g[0]);
       this.i[1] = (this.jdField_e_of_type_ArrayOfFloat[1] - this.g[1]);
       paramFloat1 = Math.min(paramFloat1 * paramFloat2, a(this.i) / (f3 + f1)) * Math.min(1.0F, f4 * 2.0F / (f3 + f1));
@@ -186,12 +186,12 @@ public class MetaballView
   
   private void c()
   {
-    this.jdField_a_of_type_Afbb = new afbb(this, null);
-    this.jdField_a_of_type_Afbb.setDuration(1000L);
-    this.jdField_a_of_type_Afbb.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.jdField_a_of_type_Afbb.setRepeatCount(-1);
-    this.jdField_a_of_type_Afbb.setRepeatMode(2);
-    startAnimation(this.jdField_a_of_type_Afbb);
+    this.jdField_a_of_type_Affy = new affy(this, null);
+    this.jdField_a_of_type_Affy.setDuration(1000L);
+    this.jdField_a_of_type_Affy.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.jdField_a_of_type_Affy.setRepeatCount(-1);
+    this.jdField_a_of_type_Affy.setRepeatMode(2);
+    startAnimation(this.jdField_a_of_type_Affy);
   }
   
   protected int a()
@@ -226,9 +226,9 @@ public class MetaballView
   {
     int n = 1;
     super.onDraw(paramCanvas);
-    this.jdField_a_of_type_Afba = ((afba)this.jdField_a_of_type_JavaUtilArrayList.get(0));
-    this.jdField_a_of_type_Afba.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_d_of_type_Float * this.jdField_e_of_type_Float + this.jdField_b_of_type_Float);
-    paramCanvas.drawCircle(this.jdField_a_of_type_Afba.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_Afba.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_Afba.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_Affx = ((affx)this.jdField_a_of_type_JavaUtilArrayList.get(0));
+    this.jdField_a_of_type_Affx.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_d_of_type_Float * this.jdField_e_of_type_Float + this.jdField_b_of_type_Float);
+    paramCanvas.drawCircle(this.jdField_a_of_type_Affx.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_Affx.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_Affx.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
     int i1 = this.jdField_a_of_type_JavaUtilArrayList.size();
     while (n < i1)
     {

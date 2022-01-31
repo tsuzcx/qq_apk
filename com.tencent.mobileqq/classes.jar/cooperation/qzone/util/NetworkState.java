@@ -1,16 +1,19 @@
 package cooperation.qzone.util;
 
-import anar;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import aniq;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.LocalMultiProcConfig;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class NetworkState
 {
@@ -19,7 +22,11 @@ public class NetworkState
   public static final int NET_TYPE_4G = 4;
   public static final int NET_TYPE_UNKNOWN = 0;
   public static final int NET_TYPE_WIFI = 1;
+  public static final String SP_KEY_FLAG_FORCE_WIFI_TO_4G = "key_force_wifi_to_4g";
   private static final String TAG = "NetworkState";
+  public static final int VALUE_FLAG_FORCE_WIFI_TO_4G_DEFAULT = 0;
+  public static final int VALUE_FLAG_FORCE_WIFI_TO_4G_NO = 0;
+  public static final int VALUE_FLAG_FORCE_WIFI_TO_4G_YES = 1;
   private static Map mApnMap = new HashMap();
   private static INetEventHandler netEventHandler;
   private static List observers = new ArrayList();
@@ -27,7 +34,7 @@ public class NetworkState
   
   static
   {
-    netEventHandler = new anar();
+    netEventHandler = new aniq();
     mApnMap.put("unknown", Integer.valueOf(0));
     mApnMap.put("cmnet", Integer.valueOf(1));
     mApnMap.put("cmwap", Integer.valueOf(2));
@@ -64,6 +71,9 @@ public class NetworkState
       return;
     }
   }
+  
+  @Deprecated
+  public static void forceNotifyNetworkChangeForDebugVersion() {}
   
   public static String getAPN()
   {
@@ -115,11 +125,49 @@ public class NetworkState
     }
   }
   
+  public static boolean getConfigIsForceWifiTo4g()
+  {
+    return 1 == LocalMultiProcConfig.getInt4Uin("key_force_wifi_to_4g", 0, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+  }
+  
+  private static boolean getIsMobileForDebugVersion()
+  {
+    boolean bool1 = false;
+    try
+    {
+      if (!isNetSupport()) {
+        return false;
+      }
+      if (!AppNetConnInfo.isWifiConn()) {
+        return true;
+      }
+      boolean bool2 = getConfigIsForceWifiTo4g();
+      if (bool2) {
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      QZLog.e("NetworkState", "getIsMobileForDebugVersion error", localException);
+      bool1 = AppNetConnInfo.isMobileConn();
+    }
+    return bool1;
+  }
+  
   public static boolean getIsUnicomNetWork()
   {
     String str = getAPN();
     if (TextUtils.isEmpty(str)) {}
     while ((!str.equalsIgnoreCase("UNIWAP")) && (!str.equalsIgnoreCase("UNINET")) && (!str.equalsIgnoreCase("3GWAP")) && (!str.equalsIgnoreCase("3GNET")) && (!str.equalsIgnoreCase("WONET"))) {
+      return false;
+    }
+    return true;
+  }
+  
+  private static boolean getIsWifiForDebugVersion()
+  {
+    if (!isNetSupport()) {}
+    while (getIsMobileForDebugVersion()) {
       return false;
     }
     return true;
@@ -153,14 +201,14 @@ public class NetworkState
     {
       str = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getSubscriberId();
       if ((str != null) && (!"".equals(str))) {
-        break label46;
+        break label47;
       }
       providerName = "unknown";
     }
     for (;;)
     {
       return providerName;
-      label46:
+      label47:
       if ((str.startsWith("46000")) || (str.startsWith("46002"))) {
         providerName = "ChinaMobile";
       } else if (str.startsWith("46001")) {

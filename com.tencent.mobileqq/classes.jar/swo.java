@@ -1,18 +1,30 @@
-import android.view.ViewStub;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.main.CommonLoadingView;
+import android.os.AsyncTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class swo
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public swo(Leba paramLeba) {}
+  public swo(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ViewStub localViewStub = (ViewStub)this.a.a(2131364872);
-    ((CommonLoadingView)this.a.a(2131363809)).setVisibility(8);
-    localViewStub.setVisibility(0);
+    this.a.a.execute(new Void[0]);
+    this.a.f = false;
+    if (this.a.d) {
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    while (this.a.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

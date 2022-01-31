@@ -1,16 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.im.oidb.cmd0x978.oidb_cmd0x978.OneFollowOperationResult;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyRequestParams.Request0x68bParams;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
+import java.util.List;
 
 public class lsb
   implements Runnable
 {
-  public lsb(UserOperationModule paramUserOperationModule, UserOperationModule.Ox978RespCallBack paramOx978RespCallBack, String paramString, oidb_cmd0x978.OneFollowOperationResult paramOneFollowOperationResult) {}
+  public lsb(ArticleInfoModule paramArticleInfoModule, ReadInJoyRequestParams.Request0x68bParams paramRequest0x68bParams) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelUserOperationModule$Ox978RespCallBack.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_TencentImOidbCmd0x978Oidb_cmd0x978$OneFollowOperationResult.enum_follow_status.get());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_a_of_type_Int = 5;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_a_of_type_Boolean = true;
+    ToServiceMsg localToServiceMsg = ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams);
+    HashMap localHashMap;
+    if (localToServiceMsg != null)
+    {
+      localToServiceMsg.getAttributes().put("channelID", new Integer(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_b_of_type_Int));
+      localToServiceMsg.getAttributes().put("isSingleHighLight", Boolean.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.g));
+      localToServiceMsg.getAttributes().put("clientSwithes", Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.f));
+      localHashMap = localToServiceMsg.getAttributes();
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_b_of_type_JavaUtilList == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_b_of_type_JavaUtilList.isEmpty())) {
+        break label176;
+      }
+    }
+    label176:
+    for (boolean bool = true;; bool = false)
+    {
+      localHashMap.put("isRedRefreshReq", Boolean.valueOf(bool));
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyRequestParams$Request0x68bParams.jdField_b_of_type_Int == 0) && (ReadInJoyUtils.a())) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(-1L, 1, 0);
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(localToServiceMsg);
+      return;
+    }
   }
 }
 

@@ -222,7 +222,7 @@ public class QQStoryAutoPlayView
           continue;
         }
         bool = true;
-        AssertUtils.a(bool, "storyVideoItem.mSourceType is illegal");
+        AssertUtils.a(bool, "storyVideoItem.mSourceType is illegal debug info=%s", new Object[] { localStoryVideoItem });
         localJSONObject.put("video_origin", localStoryVideoItem.mSourceType);
         str1 = localJSONObject.toString();
       }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import ajig;
+import ajps;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
@@ -101,12 +101,12 @@ public class ReciteDisplayView$MyArticleAdapter
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramView = new ajig(null);
+      paramView = new ajps(null);
       paramView.a = new PinyinTextView(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteDisplayView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
       paramViewGroup = paramView.a;
       paramViewGroup.setTag(paramView);
     }
-    paramView = (ajig)paramViewGroup.getTag();
+    paramView = (ajps)paramViewGroup.getTag();
     ParagraphInfo localParagraphInfo = (ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     paramView.a.setWordInfos(localParagraphInfo);
     return paramViewGroup;
@@ -114,7 +114,7 @@ public class ReciteDisplayView$MyArticleAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.ReciteDisplayView.MyArticleAdapter
  * JD-Core Version:    0.7.0.1
  */

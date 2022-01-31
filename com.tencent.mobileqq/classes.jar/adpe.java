@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.hiboom.HiBoomManager;
-import com.tencent.mobileqq.hiboom.HiBoomPanelView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class adpe
+public final class adpe
   implements Runnable
 {
-  public adpe(HiBoomPanelView paramHiBoomPanelView, HiBoomManager paramHiBoomManager) {}
+  public adpe(int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomManager.a(true);
+    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 0).b(FMToastUtil.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adpe
  * JD-Core Version:    0.7.0.1
  */

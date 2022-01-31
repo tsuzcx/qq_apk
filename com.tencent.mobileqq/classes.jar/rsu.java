@@ -1,13 +1,30 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-class rsu
+public class rsu
   implements Runnable
 {
-  rsu(rst paramrst) {}
+  public rsu(AuthDevRenameActivity paramAuthDevRenameActivity) {}
   
   public void run()
   {
-    this.a.a.j();
+    try
+    {
+      if ((AuthDevRenameActivity.a(this.a) != null) && (AuthDevRenameActivity.a(this.a).isShowing()))
+      {
+        AuthDevRenameActivity.a(this.a).dismiss();
+        AuthDevRenameActivity.a(this.a).cancel();
+      }
+      AuthDevRenameActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

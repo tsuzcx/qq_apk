@@ -21,7 +21,7 @@ public class MsgTabStoryNodeDelegate$DeleteStoryVideoEventReceiver
   
   public void a(@NonNull MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
   {
-    if (!paramDeleteStoryVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+    if (!paramDeleteStoryVideoEvent.errorInfo.isSuccess()) {
       return;
     }
     if (QLog.isDevelopLevel()) {

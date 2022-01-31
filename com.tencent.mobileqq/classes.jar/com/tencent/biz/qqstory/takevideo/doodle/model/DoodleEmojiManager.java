@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Process;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -44,14 +43,14 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import oin;
-import oio;
-import oip;
-import oiq;
-import oir;
-import ois;
-import oit;
-import oiu;
+import onc;
+import ond;
+import one;
+import onf;
+import ong;
+import onh;
+import oni;
+import onj;
 
 @TargetApi(9)
 public class DoodleEmojiManager
@@ -61,7 +60,7 @@ public class DoodleEmojiManager
   public final int a;
   public long a;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private LocationListener jdField_a_of_type_AndroidLocationLocationListener = new oiq(this);
+  private LocationListener jdField_a_of_type_AndroidLocationLocationListener = new onf(this);
   public DoodleEmojiItem a;
   public final Object a;
   public final List a;
@@ -414,7 +413,7 @@ public class DoodleEmojiManager
     do
     {
       return false;
-      paramFile = paramFile.listFiles(new oiu());
+      paramFile = paramFile.listFiles(new onj());
     } while ((paramFile == null) || (paramFile.length <= 0));
     return true;
   }
@@ -454,7 +453,7 @@ public class DoodleEmojiManager
     paramDoodleEmojiManager.a("emoji_pack_config_" + paramString1, paramString2);
   }
   
-  private void f()
+  private void e()
   {
     long l = 0L;
     SLog.b("DoodleEmojiManager", "fireRequestEmojiPackList, cookie = " + this.jdField_b_of_type_JavaLangString);
@@ -470,7 +469,7 @@ public class DoodleEmojiManager
     else
     {
       this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      CmdTaskManger.a().a(new GetEmojiPackInfoListRequest(this.jdField_b_of_type_JavaLangString, 50), new oit(this));
+      CmdTaskManger.a().a(new GetEmojiPackInfoListRequest(this.jdField_b_of_type_JavaLangString, 50), new oni(this));
       return;
     }
     SLog.d("DoodleEmojiManager", "fireRequestEmojiPackList now is already requesting, just waiting is ok, requesting past time = %d", new Object[] { Long.valueOf(l) });
@@ -520,7 +519,7 @@ public class DoodleEmojiManager
     synchronized (this.jdField_b_of_type_JavaLangObject)
     {
       this.jdField_b_of_type_JavaLangString = "";
-      f();
+      e();
       label53:
       ??? = new ArrayList();
       ((List)???).addAll(this.jdField_a_of_type_JavaUtilList);
@@ -535,7 +534,7 @@ public class DoodleEmojiManager
   public void a(int paramInt1, int paramInt2, DoodleEmojiManager.POIPostersRequestCallback paramPOIPostersRequestCallback)
   {
     paramPOIPostersRequestCallback = new WeakReference(paramPOIPostersRequestCallback);
-    CmdTaskManger.a().a(new GetPoiFacesRequest(paramInt1, paramInt2), new ois(this, paramPOIPostersRequestCallback));
+    CmdTaskManger.a().a(new GetPoiFacesRequest(paramInt1, paramInt2), new onh(this, paramPOIPostersRequestCallback));
   }
   
   public void a(Context paramContext)
@@ -547,7 +546,7 @@ public class DoodleEmojiManager
       Object localObject1 = new File(jdField_a_of_type_JavaLangString);
       if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
       {
-        localObject1 = ((File)localObject1).listFiles(new oin(this));
+        localObject1 = ((File)localObject1).listFiles(new onc(this));
         if (localObject1 != null)
         {
           int j = localObject1.length;
@@ -555,7 +554,7 @@ public class DoodleEmojiManager
           if (i < j)
           {
             File localFile = localObject1[i];
-            Object localObject2 = localFile.listFiles(new oio(this));
+            Object localObject2 = localFile.listFiles(new ond(this));
             if ((localObject2 != null) && (localObject2.length > 0))
             {
               localObject2 = a(localFile);
@@ -609,7 +608,7 @@ public class DoodleEmojiManager
       a(localBasicLocation.b, localBasicLocation.jdField_a_of_type_Int, paramPOIPostersRequestCallback);
       return;
     }
-    localLbsManager.a(new oir(this, paramPOIPostersRequestCallback));
+    localLbsManager.a(new ong(this, paramPOIPostersRequestCallback));
     localLbsManager.c();
   }
   
@@ -686,7 +685,7 @@ public class DoodleEmojiManager
           this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
           if ((!paramBoolean2) && (!paramGetEmojiPackInfoListResponse.jdField_a_of_type_Boolean))
           {
-            f();
+            e();
             return;
           }
         }
@@ -759,7 +758,7 @@ public class DoodleEmojiManager
         if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem != null)
         {
           SLog.b("DoodleEmojiManager", "downloader startDownload : " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem);
-          Bosses.get().postJob(new oip(this, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem));
+          Bosses.get().postJob(new one(this, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem));
         }
         return;
       }
@@ -768,39 +767,6 @@ public class DoodleEmojiManager
   }
   
   public void d()
-  {
-    SLog.b("DoodleEmojiManager", "startRequestSpeed.");
-    BaseApplicationImpl localBaseApplicationImpl = QQStoryContext.a().a();
-    LocationManager localLocationManager = (LocationManager)localBaseApplicationImpl.getSystemService("location");
-    List localList = localLocationManager.getAllProviders();
-    if (localList != null) {
-      if (localList.contains("gps"))
-      {
-        if (localBaseApplicationImpl.checkPermission("android.permission.ACCESS_FINE_LOCATION", Process.myPid(), Process.myUid()) != 0) {
-          break label134;
-        }
-        SLog.b("DoodleEmojiManager", "LocationManager use GPS_PROVIDER.");
-        localLocationManager.requestLocationUpdates("gps", 0L, 0.0F, this.jdField_a_of_type_AndroidLocationLocationListener);
-      }
-    }
-    for (;;)
-    {
-      if (localList.contains("network"))
-      {
-        if (localBaseApplicationImpl.checkPermission("android.permission.ACCESS_COARSE_LOCATION", Process.myPid(), Process.myUid()) != 0) {
-          break;
-        }
-        SLog.b("DoodleEmojiManager", "LocationManager use NETWORK_PROVIDER.");
-        localLocationManager.requestLocationUpdates("network", 0L, 0.0F, this.jdField_a_of_type_AndroidLocationLocationListener);
-      }
-      return;
-      label134:
-      SLog.d("DoodleEmojiManager", "GPS_PROVIDER location provider requires ACCESS_FINE_LOCATION permission.");
-    }
-    SLog.d("DoodleEmojiManager", "NETWORK_PROVIDER location provider requires ACCESS_COARSE_LOCATION or ACCESS_FINE_LOCATION permission.");
-  }
-  
-  public void e()
   {
     SLog.b("DoodleEmojiManager", "stopRequestSpeed.");
     ((LocationManager)QQStoryContext.a().a().getSystemService("location")).removeUpdates(this.jdField_a_of_type_AndroidLocationLocationListener);

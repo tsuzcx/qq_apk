@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.arcard;
 
-import aanc;
-import aanh;
-import aani;
-import aanj;
+import aatw;
+import aaub;
+import aauc;
+import aaud;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -125,15 +125,15 @@ public class ARVideoPreviewActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369529));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131369538));
     if (this.jdField_a_of_type_Int == 1) {
       e();
     }
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369530));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369539));
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369524));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369527));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369533));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369536));
     try
     {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
@@ -150,12 +150,12 @@ public class ARVideoPreviewActivity
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this).inflate(2130970202, null));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369526));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this).inflate(2130970217, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369535));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369228));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369532));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369232));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369541));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
@@ -176,11 +176,11 @@ public class ARVideoPreviewActivity
     }
     if (!NetworkUtil.g(getApplicationContext()))
     {
-      QQToast.a(this, 2131437530, 1).a();
+      QQToast.a(this, 2131437550, 1).a();
       return;
     }
     a();
-    ThreadManager.getSubThreadHandler().post(new aanc(this));
+    ThreadManager.getSubThreadHandler().post(new aatw(this));
   }
   
   private void g()
@@ -193,7 +193,7 @@ public class ARVideoPreviewActivity
   
   private void h()
   {
-    DialogUtil.b(this, 233, null, "AR贺卡发送失败，请重新发送", 2131433015, 2131433031, new aanh(this), new aani(this)).show();
+    DialogUtil.b(this, 233, null, "AR贺卡发送失败，请重新发送", 2131433029, 2131433045, new aaub(this), new aauc(this)).show();
   }
   
   protected void a()
@@ -238,7 +238,7 @@ public class ARVideoPreviewActivity
       return;
       this.jdField_a_of_type_JavaLangString = paramString;
     }
-    ThreadManager.getUIHandler().post(new aanj(this));
+    ThreadManager.getUIHandler().post(new aaud(this));
   }
   
   public void b()
@@ -271,7 +271,7 @@ public class ARVideoPreviewActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970201);
+    super.setContentView(2130970216);
     if (isInMultiWindow())
     {
       QQToast.a(this, "该功能无法在分屏模式下使用。", 0).a();
@@ -318,18 +318,18 @@ public class ARVideoPreviewActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369532) {
+    if (paramView.getId() == 2131369541) {
       f();
     }
     do
     {
       return;
-      if (paramView.getId() == 2131369530)
+      if (paramView.getId() == 2131369539)
       {
         f();
         return;
       }
-    } while (paramView.getId() != 2131369526);
+    } while (paramView.getId() != 2131369535);
     finish();
   }
 }

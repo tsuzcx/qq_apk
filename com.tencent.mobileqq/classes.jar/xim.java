@@ -1,55 +1,87 @@
-import android.content.Intent;
+import android.support.v4.view.ViewPager;
+import android.text.Editable;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.mobileqq.redtouch.VipBannerInfo;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import mqq.os.MqqHandler;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbLogic;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbLogic.QwTextAdapter;
 
 public class xim
-  implements View.OnClickListener
+  extends SendHbLogic.QwTextAdapter
 {
-  public xim(BannerManager paramBannerManager, RedTouchManager paramRedTouchManager, VipBannerInfo paramVipBannerInfo, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  public xim(CommonHbFragment paramCommonHbFragment) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager.b("200001");
-    if ((this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.d == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.d)))
+    paramEditable = CommonHbFragment.a(this.a).getText().toString();
+    Object localObject1;
+    Object localObject2;
+    SendHbLogic localSendHbLogic;
+    if ((CommonHbFragment.a(this.a)) && (CommonHbFragment.b(this.a)) && ((CommonHbFragment.a(this.a).getCurrentItem() != 2) || (!TextUtils.isEmpty(paramEditable))) && (((!"1".equals(CommonHbFragment.a(this.a))) && (!"7".equals(CommonHbFragment.a(this.a)))) || (CommonHbFragment.a(this.a).getCurrentItem() != 1) || (!TextUtils.isEmpty(paramEditable))))
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.c;
-      if (paramView == null)
+      if (!CommonHbFragment.a(this.a).isEnabled())
       {
-        paramView = "";
-        switch (this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.jdField_a_of_type_Int)
-        {
+        CommonHbFragment.a(this.a).setEnabled(true);
+        CommonHbFragment.a(this.a).setClickable(true);
+        CommonHbFragment.a(this.a, "hongbao.wrap.enable", "");
+      }
+      paramEditable = new StringBuffer();
+      paramEditable.append(this.a.getString(2131431279));
+      if ("2".equals(CommonHbFragment.b(this.a)))
+      {
+        localObject1 = CommonHbFragment.b(this.a).getText().toString();
+        localObject2 = this.a;
+        localSendHbLogic = this.a.a;
+        CommonHbFragment.a((CommonHbFragment)localObject2, SendHbLogic.a((String)localObject1, "1"));
+        paramEditable.append(CommonHbFragment.d(this.a));
+        paramEditable.append("元");
+        CommonHbFragment.a(this.a).setText(paramEditable.toString());
+        label261:
+        if (!TextUtils.isEmpty(CommonHbFragment.b(this.a).getText().toString())) {
+          break label524;
         }
+        CommonHbFragment.b(this.a).setGravity(19);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.jdField_a_of_type_JavaLangString, 3);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).removeMessages(9);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendEmptyMessage(9);
+      if (CommonHbFragment.c(this.a) != null)
+      {
+        if (!TextUtils.isEmpty(CommonHbFragment.c(this.a).getText().toString())) {
+          break label539;
+        }
+        CommonHbFragment.c(this.a).setGravity(19);
+      }
       return;
-      paramView = paramView.replace(" ", "_");
+      if (CommonHbFragment.c(this.a) == null)
+      {
+        localObject1 = CommonHbFragment.b(this.a).getText().toString();
+        localObject2 = this.a;
+        localSendHbLogic = this.a.a;
+        CommonHbFragment.a((CommonHbFragment)localObject2, SendHbLogic.a((String)localObject1, "1"));
+        break;
+      }
+      localObject1 = this.a;
+      localObject2 = this.a.a;
+      CommonHbFragment.a((CommonHbFragment)localObject1, SendHbLogic.a(CommonHbFragment.c(this.a), "1"));
       break;
-      VipUtils.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeivip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androiddaoqiqian.xufeisvip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeivip%s", new Object[] { paramView }));
-      continue;
-      VipUtils.b(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), 3, String.format("mvip.gongneng.mobileqq.androidyidaoqi.xufeisvip%s", new Object[] { paramView }));
-      continue;
-      paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqRedtouchVipBannerInfo.d);
-      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(paramView);
+      if (CommonHbFragment.a(this.a).isEnabled())
+      {
+        CommonHbFragment.a(this.a).setClickable(false);
+        CommonHbFragment.a(this.a).setEnabled(false);
+        CommonHbFragment.a(this.a, "hongbao.wrap.disable", "");
+      }
+      if ((CommonHbFragment.b(this.a) != null) && (CommonHbFragment.b(this.a).getText() != null)) {
+        CommonHbFragment.a(this.a, CommonHbFragment.b(this.a).getText().toString());
+      }
+      CommonHbFragment.a(this.a).setText(2131431279);
+      break label261;
+      label524:
+      CommonHbFragment.b(this.a).setGravity(21);
     }
+    label539:
+    CommonHbFragment.c(this.a).setGravity(21);
   }
 }
 

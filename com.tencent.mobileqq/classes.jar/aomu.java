@@ -1,17 +1,15 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
 
 public class aomu
   implements ValueAnimator.AnimatorUpdateListener
 {
-  public aomu(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  public aomu(GroundDrawable paramGroundDrawable) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setCenterScaleValue(f);
+    this.a.invalidateSelf();
   }
 }
 

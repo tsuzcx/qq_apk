@@ -1,20 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
 
 public class xfj
-  extends AbsPreDownloadTask
+  implements Runnable
 {
-  public xfj(PreloadComDownloader paramPreloadComDownloader, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, Bundle paramBundle, DownloadListener paramDownloadListener)
-  {
-    super(paramQQAppInterface, paramString1);
-  }
+  public xfj(PasswdRedBagManager paramPasswdRedBagManager) {}
   
-  protected void a()
+  public void run()
   {
-    PreloadComDownloader.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadComDownloader, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener);
+    PasswdRedBagManager.a(this.a).c();
   }
 }
 

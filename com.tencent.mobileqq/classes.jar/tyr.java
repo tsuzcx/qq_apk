@@ -1,16 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class tyr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public tyr(TroopInfoActivity paramTroopInfoActivity) {}
+  public tyr(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.i();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
+    }
+    paramView = (SubAccountManager)this.a.app.getManager(60);
+    if (paramView != null) {}
+    for (int i = paramView.a();; i = 0)
+    {
+      if (i < 2)
+      {
+        paramView = new Intent(this.a, SubLoginActivity.class);
+        paramView.putExtra("fromWhere", this.a.b);
+        this.a.startActivity(paramView);
+        return;
+      }
+      SubAccountControll.a(this.a.app, this.a);
+      return;
+    }
   }
 }
 

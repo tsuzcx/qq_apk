@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.contact.newfriend.PhoneContactAddBuilder;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
 
-class wjs
-  implements Runnable
+public final class wjs
+  implements Parcelable.Creator
 {
-  wjs(wjr paramwjr) {}
-  
-  public void run()
+  public ZhituResponse a(Parcel paramParcel)
   {
-    this.a.a.a.c();
+    return new ZhituResponse(paramParcel);
+  }
+  
+  public ZhituResponse[] a(int paramInt)
+  {
+    return new ZhituResponse[paramInt];
   }
 }
 

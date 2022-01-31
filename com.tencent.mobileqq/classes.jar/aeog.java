@@ -1,46 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Locale;
 
 public class aeog
-  implements HttpWebCgiAsyncTask.Callback
 {
-  public aeog(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public static int a;
+  public float a;
+  public long a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public int d;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
+  public float j;
+  public float k;
+  public float l;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public aeog()
   {
-    if (paramJSONObject != null)
-    {
-      paramInt = paramJSONObject.optInt("retcode", -1);
-      paramBundle = new ArrayList();
-      if (paramInt == 0)
-      {
-        paramJSONObject = paramJSONObject.optJSONObject("data");
-        if (paramJSONObject != null)
-        {
-          paramJSONObject = paramJSONObject.optJSONArray("rpt_board_items");
-          if (paramJSONObject != null)
-          {
-            paramInt = 0;
-            while (paramInt < paramJSONObject.length())
-            {
-              paramBundle.add(paramJSONObject.optJSONObject(paramInt).optString("uint64_uin"));
-              paramInt += 1;
-            }
-          }
-        }
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(this.a.b, "" + this.a.jdField_a_of_type_Long, paramBundle, new aeoh(this));
-    }
+    int m = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = m + 1;
+    this.jdField_b_of_type_Int = m;
+  }
+  
+  public String toString()
+  {
+    return String.format(Locale.getDefault(), "[id:%d, start: %d, x: %f, y: %f, vx: %f, vy: %f, size: %d", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Float.valueOf(this.jdField_a_of_type_Float), Float.valueOf(this.jdField_b_of_type_Float), Float.valueOf(this.c), Float.valueOf(this.jdField_d_of_type_Float), Integer.valueOf(this.jdField_d_of_type_Int) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeog
  * JD-Core Version:    0.7.0.1
  */

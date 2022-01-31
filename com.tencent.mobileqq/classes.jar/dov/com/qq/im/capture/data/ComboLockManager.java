@@ -3,22 +3,22 @@ package dov.com.qq.im.capture.data;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import anlm;
-import anln;
-import anlo;
+import antz;
+import anua;
+import anub;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.IEventReceiver;
+import dov.com.qq.im.capture.CaptureContext;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools.ComboFilterData;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools.DataSet;
 import java.util.ArrayList;
@@ -34,8 +34,8 @@ public class ComboLockManager
 {
   public static final String a;
   int jdField_a_of_type_Int = -1;
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new anlo(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = CaptureContext.a();
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new anub(this);
   ComboLockManager.StoryVideoPublishStatusReceiver jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver;
   public LockedCategory a;
   public QIMFilterCategoryItem a;
@@ -47,13 +47,12 @@ public class ComboLockManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aI + "/tencent/qim/share/";
+    jdField_a_of_type_JavaLangString = AppConstants.aJ + "/tencent/qim/share/";
   }
   
   public ComboLockManager(AppRuntime paramAppRuntime)
   {
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppRuntime);
   }
   
   private void c()
@@ -107,7 +106,6 @@ public class ComboLockManager
       if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_b_of_type_Boolean = false;
-        ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
         if (QLog.isColorLevel()) {
           QLog.i("ComboLockManager", 2, "updateConfigData first card.snedSrory " + this.jdField_a_of_type_Boolean);
         }
@@ -198,7 +196,7 @@ public class ComboLockManager
       {
         if (!localLockedCategory.jdField_b_of_type_Boolean)
         {
-          localLockedCategory.jdField_a_of_type_Boolean = SharedPreUtils.x(BaseApplicationImpl.getApplication(), paramString);
+          localLockedCategory.jdField_a_of_type_Boolean = SharedPreUtils.A(BaseApplicationImpl.getApplication(), paramString);
           localLockedCategory.jdField_b_of_type_Boolean = true;
         }
         bool1 = localLockedCategory.jdField_a_of_type_Boolean;
@@ -243,13 +241,13 @@ public class ComboLockManager
     }
     this.jdField_a_of_type_Boolean = true;
     Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver);
-    Object localObject = (CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver, true);
+    Object localObject = (CardHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(2);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver, true);
     if (this.jdField_a_of_type_DovComQqImCaptureDataLockedCategory != null)
     {
       localObject = BaseApplicationImpl.getContext();
-      anlm localanlm = new anlm(this, (Context)localObject);
-      ThreadManager.getUIHandler().postDelayed(new anln(this, (Context)localObject, localanlm), 1000L);
+      antz localantz = new antz(this, (Context)localObject);
+      ThreadManager.getUIHandler().postDelayed(new anua(this, (Context)localObject, localantz), 1000L);
     }
   }
   

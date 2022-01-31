@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acvb;
-import acvc;
-import acvd;
+import addi;
+import addj;
+import addk;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -28,7 +28,7 @@ import java.util.Set;
 public class FileManagerRSCenter
 {
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acvb(this);
+  private FMObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new addi(this);
   private LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   
   public FileManagerRSCenter(QQAppInterface paramQQAppInterface)
@@ -450,7 +450,7 @@ public class FileManagerRSCenter
     {
       localFileManagerEntity1.nOpType = 8;
       QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v> entity[" + localFileManagerEntity1.nSessionId + "] is video, start init video sdk");
-      FileVideoManager.a(BaseActivity.sTopActivity, new acvd(this, localFileManagerEntity1));
+      FileVideoManager.a(BaseActivity.sTopActivity, new addk(this, localFileManagerEntity1));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
       return;
     }
@@ -837,7 +837,7 @@ public class FileManagerRSCenter
     }
     if ((paramFileManagerEntity.nFileType == 2) && (!paramFileManagerEntity.isZipInnerFile) && (paramFileManagerEntity.cloudType != 2))
     {
-      FileVideoManager.a(BaseActivity.sTopActivity, new acvc(this, paramFileManagerEntity));
+      FileVideoManager.a(BaseActivity.sTopActivity, new addj(this, paramFileManagerEntity));
       return;
     }
     FileManagerRSWorker localFileManagerRSWorker = new FileManagerRSWorker(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity);

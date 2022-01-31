@@ -11,16 +11,18 @@ import android.widget.AbsListView.LayoutParams;
 import android.widget.BaseAdapter;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import jyx;
-import jyy;
-import jyz;
-import jza;
-import jzb;
-import jzc;
+import kbb;
+import kbc;
+import kbd;
+import kbe;
+import kbf;
+import kbg;
+import mqq.os.MqqHandler;
 
 public class QAVPtvTemplateAdapter
   extends BaseAdapter
@@ -33,8 +35,8 @@ public class QAVPtvTemplateAdapter
   private View jdField_a_of_type_AndroidViewView;
   public QAVPtvTemplateAdapter.IEffectCallback a;
   QAVPtvTemplateAdapter.IItemDownloadMgr jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter$IItemDownloadMgr;
-  private QavListItemBase.IClickCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback = new jyz(this);
-  private QavListItemBase.IDownloadCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IDownloadCallback = new jza(this);
+  private QavListItemBase.IClickCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback = new kbd(this);
+  private QavListItemBase.IDownloadCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IDownloadCallback = new kbe(this);
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   public HorizontalListView a;
   public ArrayList a;
@@ -122,7 +124,7 @@ public class QAVPtvTemplateAdapter
     for (;;)
     {
       return;
-      View localView = paramView.findViewById(2131366264);
+      View localView = paramView.findViewById(2131366269);
       if (paramItemInfo == null) {
         paramView.setContentDescription(null);
       }
@@ -168,7 +170,7 @@ public class QAVPtvTemplateAdapter
     this.jdField_a_of_type_Int = a(paramFloat1);
     this.jdField_b_of_type_Int = a(this.jdField_a_of_type_AndroidContentResResources, paramFloat1, paramFloat2);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.addOnLayoutChangeListener(new jyx(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.addOnLayoutChangeListener(new kbb(this));
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     if ((paramArrayList != null) && (!paramArrayList.isEmpty())) {
       this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
@@ -176,7 +178,7 @@ public class QAVPtvTemplateAdapter
     if (AudioHelper.a(0) == 1) {
       QLog.d("QAVPtvTemplateAdapter", 4, String.format("initAdapter, mTemplateList[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
     }
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(new jyy(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(new kbc(this));
   }
   
   public void a(String paramString, int paramInt)
@@ -186,7 +188,7 @@ public class QAVPtvTemplateAdapter
   
   public void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.post(new jzb(this, paramString, paramBoolean));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.post(new kbf(this, paramString, paramBoolean));
   }
   
   public void a(ArrayList paramArrayList)
@@ -398,7 +400,7 @@ public class QAVPtvTemplateAdapter
   
   void c(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.post(new jzc(this, paramString, paramInt));
+    ThreadManager.getUIHandler().post(new kbg(this, paramString, paramInt));
   }
   
   public int getCount()
@@ -506,7 +508,7 @@ public class QAVPtvTemplateAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.QAVPtvTemplateAdapter
  * JD-Core Version:    0.7.0.1
  */

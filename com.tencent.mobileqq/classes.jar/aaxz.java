@@ -1,20 +1,11 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ArkPassiveSearchInfo;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
 
 public class aaxz
-  implements ArkMessageServerLogic.IPassiveSearchIntentByServerHandler
 {
-  public aaxz(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference1, WeakReference paramWeakReference2, RecommendCommonMessage paramRecommendCommonMessage) {}
+  public long a;
+  public long b;
   
-  public void a(String paramString, Object paramObject, ArkMessageServerLogic.ArkPassiveSearchInfo paramArkPassiveSearchInfo)
-  {
-    ArkAppCenter.a().post(new aaya(this, paramArkPassiveSearchInfo));
-  }
+  private aaxz(ArkActionAppMgr paramArkActionAppMgr) {}
 }
 
 

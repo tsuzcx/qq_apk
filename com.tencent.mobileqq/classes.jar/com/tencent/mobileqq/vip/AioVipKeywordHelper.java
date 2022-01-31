@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vip;
 
 import VIP.AIOSendRes;
-import akkw;
+import aksl;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -23,6 +23,7 @@ import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VipLongMsgShareDomainHelper;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
@@ -36,6 +37,7 @@ import java.util.Random;
 import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class AioVipKeywordHelper
@@ -289,7 +291,7 @@ public class AioVipKeywordHelper
       QLog.d("AioVipKeywordHelper", 4, "keyword has been detected, message is ignored.");
       return;
     } while (!a(paramQQAppInterface, paramSessionInfo));
-    ThreadManager.executeOnSubThread(new akkw(this, paramQQAppInterface, paramSessionInfo, paramContext, paramString, paramChatMessage, paramBoolean), true);
+    ThreadManager.executeOnSubThread(new aksl(this, paramQQAppInterface, paramSessionInfo, paramContext, paramString, paramChatMessage, paramBoolean), true);
   }
   
   public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, boolean paramBoolean)
@@ -667,6 +669,10 @@ public class AioVipKeywordHelper
         QLog.d("AioVipKeywordHelper", 2, "ipProductGrayTips: " + ((JSONObject)localObject1).toString());
       }
     }
+    localObject1 = paramAppRuntime.optJSONArray("shareDomainConfig");
+    if (localObject1 != null) {
+      VipLongMsgShareDomainHelper.a().a((JSONArray)localObject1);
+    }
     VasEmojiManager.a(paramAppRuntime.optJSONArray("h5MagicTips"));
   }
   
@@ -758,7 +764,7 @@ public class AioVipKeywordHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vip.AioVipKeywordHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
-public class abgk
-  implements Animation.AnimationListener
+class abgk
+  implements Runnable
 {
-  public abgk(ARGridMapViewDialog paramARGridMapViewDialog) {}
+  abgk(abgj paramabgj) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.setVisibility(8);
-    this.a.dismiss();
+    this.a.a.a.setVisibility(8);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

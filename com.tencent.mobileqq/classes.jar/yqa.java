@@ -1,22 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureSoManager.Callback;
-import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.apollo.utils.ApolloSoLoader;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class yqa
-  implements ReadInJoyCameraCaptureSoManager.Callback
+  implements INetInfoHandler
 {
-  public yqa(CmGameServerQIPCModule paramCmGameServerQIPCModule, int paramInt) {}
+  public void onNetMobile2None() {}
   
-  public void a(int paramInt)
+  public void onNetMobile2Wifi(String paramString)
   {
-    CmGameServerQIPCModule.b = false;
-    if (paramInt == 1)
-    {
-      EIPCResult localEIPCResult = EIPCResult.createResult(0, new Bundle());
-      this.jdField_a_of_type_ComTencentMobileqqApolloProcessCmGameServerQIPCModule.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
-    }
+    ApolloSoLoader.a("onNetMobile2Wifi");
   }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    ApolloSoLoader.a("onNetNone2Wifi");
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

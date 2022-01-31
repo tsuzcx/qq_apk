@@ -1,18 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class odi
-  implements DialogInterface.OnClickListener
+  implements LbsManager.LbsUpdateListener
 {
-  public odi(EditPicQzonePublishActivity paramEditPicQzonePublishActivity) {}
+  public odi(HomeFeedPresenter paramHomeFeedPresenter, LbsManager paramLbsManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, @Nullable BasicLocation paramBasicLocation)
   {
-    paramDialogInterface.dismiss();
-    EditPicQzonePublishActivity.a(this.a, true);
-    EditPicQzonePublishActivity.a(this.a).setSelected(true);
+    SLog.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramBasicLocation });
+    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.b(this);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a.get())
+    {
+      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
+      return;
+    }
+    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).a = paramBasicLocation;
+    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).a(null, 0);
+    ((FeedManager)SuperManager.a(11)).a = paramBasicLocation;
   }
 }
 

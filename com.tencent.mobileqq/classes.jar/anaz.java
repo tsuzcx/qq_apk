@@ -1,13 +1,15 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qzone.TranslucentActivity;
 
 public class anaz
-  implements FileFilter
+  implements DialogInterface.OnDismissListener
 {
-  public boolean accept(File paramFile)
+  public anaz(TranslucentActivity paramTranslucentActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
+    this.a.finish();
   }
 }
 

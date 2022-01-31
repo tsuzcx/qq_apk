@@ -6,8 +6,8 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.SparseArray;
-import antn;
-import anto;
+import aocd;
+import aoce;
 import com.tencent.biz.qqstory.channel.CmdTaskManger;
 import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
 import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
@@ -123,7 +123,7 @@ public class EditVideoFilterNeo
               }
               else
               {
-                localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843478, 2);
+                localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843512, 2);
                 continue;
                 if (!(paramEditSource instanceof EditRecordVideoSource))
                 {
@@ -144,7 +144,7 @@ public class EditVideoFilterNeo
                   }
                   else
                   {
-                    localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843478, 8);
+                    localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843512, 8);
                     continue;
                     localObject = localFilterData;
                     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoFilterPOIFilterData != null)
@@ -202,7 +202,7 @@ public class EditVideoFilterNeo
                         }
                         else
                         {
-                          localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843477, 1);
+                          localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843511, 1);
                           continue;
                           if (!(paramEditSource instanceof EditRecordVideoSource))
                           {
@@ -227,7 +227,7 @@ public class EditVideoFilterNeo
                               }
                               else
                               {
-                                localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843479, 3);
+                                localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843513, 3);
                                 continue;
                                 if (!(paramEditSource instanceof EditRecordVideoSource))
                                 {
@@ -252,7 +252,7 @@ public class EditVideoFilterNeo
                                     }
                                     else
                                     {
-                                      localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843479, 9);
+                                      localObject = new VideoEffectsFilterData(paramString, paramInt2, 2130843513, 9);
                                       continue;
                                       localObject = new TimeFilterData(0, paramString, paramInt2);
                                       continue;
@@ -362,7 +362,7 @@ public class EditVideoFilterNeo
   {
     SLog.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress([lat]%d, [lng]%d)", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
     GetLocationRequest localGetLocationRequest = new GetLocationRequest(1, paramInt2, paramInt1);
-    CmdTaskManger.a().a(localGetLocationRequest, new antn(this));
+    CmdTaskManger.a().a(localGetLocationRequest, new aocd(this));
   }
   
   private boolean b()
@@ -383,7 +383,7 @@ public class EditVideoFilterNeo
     {
       Activity localActivity = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
       if (localActivity != null) {
-        localActivity.runOnUiThread(new anto(this, paramAddressInfo));
+        localActivity.runOnUiThread(new aoce(this, paramAddressInfo));
       }
     }
     else
@@ -447,7 +447,7 @@ public class EditVideoFilterNeo
     super.h();
   }
   
-  public void j()
+  public void i()
   {
     Object localObject1 = ((VideoFilterManager)SuperManager.a(16)).a();
     ArrayList localArrayList = new ArrayList();

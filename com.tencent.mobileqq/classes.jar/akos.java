@@ -1,52 +1,34 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.res.Resources;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vas.ColorRingPlayer;
 
 public class akos
-  implements ActionSheet.OnButtonClickListener
+  implements MediaPlayer.OnCompletionListener
 {
-  public akos(SwiftBrowserLongClickHandler paramSwiftBrowserLongClickHandler) {}
+  public akos(ColorRingPlayer paramColorRingPlayer, AudioManager paramAudioManager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCompletion(MediaPlayer arg1)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_JavaLangObject)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435483);
+      ???.release();
+      this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+      this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
+      this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.c.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130843999));
+      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-    if (paramInt == 0) {
-      if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
-        this.a.jdField_b_of_type_Int = 0;
-      }
-    }
-    for (;;)
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_Akpb)
     {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.jdField_a_of_type_Akpb.jdField_a_of_type_Int = 6;
       return;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      }
-      this.a.b(this.a.jdField_b_of_type_JavaLangString);
-      continue;
-      if (paramInt == 1)
-      {
-        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
-          this.a.jdField_b_of_type_Int = 1;
-        } else {
-          this.a.a(this.a.jdField_b_of_type_JavaLangString);
-        }
-      }
-      else if (paramInt == 2)
-      {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        }
-        this.a.c(this.a.jdField_b_of_type_JavaLangString);
-      }
+      ??? = finally;
+      throw ???;
     }
   }
 }

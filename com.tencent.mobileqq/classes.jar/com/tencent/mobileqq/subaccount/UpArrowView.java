@@ -42,7 +42,7 @@ public class UpArrowView
     this.c = Color.argb(255, 229, 230, 231);
     this.jdField_a_of_type_Int = Color.argb(255, 222, 222, 222);
     setDuplicateParentStateEnabled(true);
-    int i = getResources().getColor(2131494255);
+    int i = getResources().getColor(2131494261);
     if (this.b != i) {
       this.b = i;
     }

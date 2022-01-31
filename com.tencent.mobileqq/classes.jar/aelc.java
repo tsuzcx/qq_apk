@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.musicpendant.MusicPendantManager;
+import com.tencent.mobileqq.lyric.data.Sentence;
+import java.util.Comparator;
 
 public class aelc
-  implements Runnable
+  implements Comparator
 {
-  public aelc(MusicPendantManager paramMusicPendantManager) {}
-  
-  public void run()
+  public int a(Sentence paramSentence1, Sentence paramSentence2)
   {
-    this.a.g();
+    if (paramSentence1.a >= paramSentence2.a) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aelc
  * JD-Core Version:    0.7.0.1
  */

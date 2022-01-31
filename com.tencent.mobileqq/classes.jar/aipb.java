@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.C2CPttUploadProcessor;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
 
 public class aipb
-  extends MessageObserver
+  implements Runnable
 {
-  public aipb(C2CPttUploadProcessor paramC2CPttUploadProcessor) {}
+  public aipb(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void run()
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
+    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a()))
     {
-      this.a.e();
-      return;
+      this.a.a.app.f(false);
+      SubAccountControll.a(this.a.a.app, false);
     }
-    this.a.d();
   }
 }
 

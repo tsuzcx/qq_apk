@@ -71,24 +71,24 @@ import mqq.app.NewIntent;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import wds;
-import wdt;
-import wdu;
-import wdv;
-import wdw;
-import wdx;
-import wdy;
-import wdz;
-import wea;
-import web;
-import wec;
-import wed;
-import wee;
-import wef;
-import wel;
+import wja;
+import wjb;
+import wjc;
+import wjd;
+import wje;
+import wjf;
+import wjg;
+import wjh;
+import wji;
+import wjj;
+import wjk;
+import wjl;
+import wjm;
+import wjn;
+import wjv;
 
 public class ZhituManager
-  implements Handler.Callback, Manager, wel
+  implements Handler.Callback, Manager, wjv
 {
   private static int jdField_a_of_type_Int;
   private static volatile boolean f;
@@ -107,10 +107,10 @@ public class ZhituManager
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private BlockingDeque jdField_a_of_type_JavaUtilConcurrentBlockingDeque = new LinkedBlockingDeque();
   private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private wee jdField_a_of_type_Wee;
+  private wjm jdField_a_of_type_Wjm;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private Handler jdField_b_of_type_AndroidOsHandler = new wdz(this, Looper.getMainLooper());
+  private Handler jdField_b_of_type_AndroidOsHandler = new wjh(this, Looper.getMainLooper());
   private volatile String jdField_b_of_type_JavaLangString = "";
   private List jdField_b_of_type_JavaUtilList = new LinkedList();
   private Map jdField_b_of_type_JavaUtilMap = new HashMap();
@@ -348,7 +348,7 @@ public class ZhituManager
     }
     if (j != 2)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new wea(this, paramMessage, i, localZhituResponse, localZhituImgResponse, j, (String)localObject));
+      this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new wji(this, paramMessage, i, localZhituResponse, localZhituImgResponse, j, (String)localObject));
       return;
     }
     a(paramMessage, i, localZhituImgResponse);
@@ -356,7 +356,7 @@ public class ZhituManager
   
   private void a(MessageQueue paramMessageQueue)
   {
-    paramMessageQueue.addIdleHandler(new wdx(this));
+    paramMessageQueue.addIdleHandler(new wjf(this));
     b(paramMessageQueue);
   }
   
@@ -379,7 +379,7 @@ public class ZhituManager
     paramDrawTextParam = b(localZhituPicData);
     a(paramDrawTextParam, paramAbstractGifImage);
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new web(this, paramDrawTextParam));
+      this.jdField_a_of_type_AndroidOsHandler.post(new wjj(this, paramDrawTextParam));
     }
     g(localZhituPicData);
   }
@@ -413,7 +413,7 @@ public class ZhituManager
       ((Message)localObject).obj = paramString1;
       this.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)localObject);
     } while (paramInt != 0);
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new wec(this, paramZhituResponse, paramString1, i, paramString2));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new wjk(this, paramZhituResponse, paramString1, i, paramString2));
   }
   
   private void a(ZhituResponse paramZhituResponse, String paramString1, AppInterface paramAppInterface, int paramInt, ZhituImgResponse paramZhituImgResponse, String paramString2, Bundle paramBundle)
@@ -456,15 +456,15 @@ public class ZhituManager
         return;
       }
     }
-    if (this.jdField_a_of_type_Wee == null) {
-      this.jdField_a_of_type_Wee = new wee(this.jdField_a_of_type_AndroidOsHandler);
+    if (this.jdField_a_of_type_Wjm == null) {
+      this.jdField_a_of_type_Wjm = new wjm(this.jdField_a_of_type_AndroidOsHandler);
     }
     paramZhituImgResponse = paramZhituImgResponse.url;
     paramAppInterface = paramAppInterface.getNetEngine(0);
     paramString2 = new HttpNetReq();
     paramString2.jdField_a_of_type_Boolean = true;
     paramString2.jdField_e_of_type_Boolean = true;
-    paramString2.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this.jdField_a_of_type_Wee;
+    paramString2.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this.jdField_a_of_type_Wjm;
     paramString2.jdField_a_of_type_Int = 0;
     paramString2.jdField_a_of_type_JavaLangString = paramZhituImgResponse;
     paramString2.c = paramZhituResponse.getAbsolutePath();
@@ -812,7 +812,7 @@ public class ZhituManager
   
   private void b(MessageQueue paramMessageQueue)
   {
-    paramMessageQueue.addIdleHandler(new wdy(this));
+    paramMessageQueue.addIdleHandler(new wjg(this));
   }
   
   private void b(ZhituResponse paramZhituResponse, String paramString1, int paramInt, String paramString2)
@@ -842,7 +842,7 @@ public class ZhituManager
   
   private File c()
   {
-    return new File(AppConstants.aJ + "zhitu", "origin/");
+    return new File(AppConstants.aK + "zhitu", "origin/");
   }
   
   public static void c(boolean paramBoolean)
@@ -860,7 +860,7 @@ public class ZhituManager
   
   private File d()
   {
-    return new File(AppConstants.aJ + "zhitu");
+    return new File(AppConstants.aK + "zhitu");
   }
   
   private void d()
@@ -904,7 +904,7 @@ public class ZhituManager
   
   private File e()
   {
-    return new File(AppConstants.aJ + "zhitu", "sent/");
+    return new File(AppConstants.aK + "zhitu", "sent/");
   }
   
   private void e()
@@ -959,9 +959,9 @@ public class ZhituManager
   
   private void f()
   {
-    this.jdField_c_of_type_Boolean = SharedPreUtils.w(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    this.jdField_b_of_type_Boolean = SharedPreUtils.u(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    this.jdField_b_of_type_Int = SharedPreUtils.aT(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    this.jdField_c_of_type_Boolean = SharedPreUtils.z(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    this.jdField_b_of_type_Boolean = SharedPreUtils.x(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    this.jdField_b_of_type_Int = SharedPreUtils.aS(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
     this.jdField_d_of_type_Boolean = true;
   }
   
@@ -1111,14 +1111,14 @@ public class ZhituManager
       return;
     }
     this.jdField_e_of_type_Boolean = paramBoolean;
-    Object localObject = (LinearLayout)paramViewGroup.findViewById(2131363118);
+    Object localObject = (LinearLayout)paramViewGroup.findViewById(2131363122);
     if (localObject != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, "showZhituEmotionLayout : zhituLayout != null.");
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionHorizonListView = ((DoutuEmotionHorizonListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363119));
+      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionHorizonListView = ((DoutuEmotionHorizonListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363123));
     }
     for (;;)
     {
@@ -1140,11 +1140,11 @@ public class ZhituManager
         QLog.d("ZhituManager", 2, "showZhituEmotionLayout : zhituLayout == null.");
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)View.inflate(paramContext, 2130968673, null));
-      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionHorizonListView = ((DoutuEmotionHorizonListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363119));
-      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionHorizonListView.setOnScrollStateChangedListener(new wed(this));
-      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionHorizonListView.setTouchListener(new wdt(this, paramMqqHandler));
+      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionHorizonListView = ((DoutuEmotionHorizonListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363123));
+      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionHorizonListView.setOnScrollStateChangedListener(new wjl(this));
+      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuEmotionHorizonListView.setTouchListener(new wjb(this, paramMqqHandler));
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131363494);
+      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131363513);
       ((RelativeLayout.LayoutParams)localObject).addRule(11);
       paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
     }
@@ -1190,10 +1190,10 @@ public class ZhituManager
         a(this.jdField_a_of_type_AndroidOsHandler.getLooper().getQueue());
         label109:
         paramEditable = new ThreadPoolParams();
-        paramEditable.jdField_b_of_type_Int = 1;
-        paramEditable.jdField_c_of_type_Int = 1;
-        paramEditable.jdField_a_of_type_Int = 8;
-        paramEditable.jdField_a_of_type_JavaLangString = "ZhituImgGenerateThreadPool";
+        paramEditable.corePoolsize = 1;
+        paramEditable.maxPooolSize = 1;
+        paramEditable.priority = 8;
+        paramEditable.poolThreadName = "ZhituImgGenerateThreadPool";
         this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(paramEditable);
       }
     }
@@ -1201,7 +1201,7 @@ public class ZhituManager
     {
       paramEditable = com.tencent.securitysdk.utils.MD5.a(paramList) + "_" + System.currentTimeMillis();
       a(paramEditable, paramList);
-      paramQQAppInterface = new wdw(this, paramInt, paramQQAppInterface, paramEditable, paramList);
+      paramQQAppInterface = new wje(this, paramInt, paramQQAppInterface, paramEditable, paramList);
       paramQQAppInterface = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramQQAppInterface);
       paramList = this.jdField_a_of_type_AndroidOsHandler;
       if (!paramBoolean) {
@@ -1217,7 +1217,7 @@ public class ZhituManager
       }
       QLog.d("ZhituManager", 2, a(paramEditable, "pending request", ""));
       return;
-      this.jdField_a_of_type_AndroidOsHandler.postAtFrontOfQueue(new wds(this));
+      this.jdField_a_of_type_AndroidOsHandler.postAtFrontOfQueue(new wja(this));
       break label109;
     }
   }
@@ -1233,7 +1233,7 @@ public class ZhituManager
     localZhituRequest.text = paramString2;
     localZhituRequest.styles = 3;
     localZhituRequest.chat = a(paramInt1);
-    localZhituRequest.version = "7.6.3";
+    localZhituRequest.version = "7.6.8";
     if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramQQAppInterface.c()))
     {
       paramString2 = new ZhituReportRequest();
@@ -1380,7 +1380,7 @@ public class ZhituManager
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.jdField_a_of_type_Boolean = true;
     localHttpNetReq.jdField_e_of_type_Boolean = true;
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new wef(this.jdField_a_of_type_AndroidOsHandler);
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new wjn(this.jdField_a_of_type_AndroidOsHandler);
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.jdField_a_of_type_JavaLangString = "http://dl.url.cn/myapp/qq_desk/qqrm/smartgif/lantingyuan.ttf";
     localHttpNetReq.c = localFile.getAbsolutePath();
@@ -1449,7 +1449,7 @@ public class ZhituManager
     d();
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new wdu(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new wjc(this));
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(9, 10000L);
     }
   }
@@ -1548,7 +1548,7 @@ public class ZhituManager
     if ((this.jdField_a_of_type_AndroidOsHandlerThread != null) && (this.jdField_a_of_type_AndroidOsHandler != null))
     {
       d();
-      this.jdField_a_of_type_AndroidOsHandler.post(new wdv(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new wjd(this));
     }
     if ((this.jdField_a_of_type_JavaUtilConcurrentExecutor instanceof ExecutorService)) {
       ((ExecutorService)this.jdField_a_of_type_JavaUtilConcurrentExecutor).shutdown();

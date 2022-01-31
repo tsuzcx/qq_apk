@@ -1,13 +1,15 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import dov.com.qq.im.capture.music.QQMusicPlayerScene;
 
-class anuq
+public class anuq
   implements Runnable
 {
-  anuq(anup paramanup) {}
+  public anuq(QQMusicPlayerScene paramQQMusicPlayerScene, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.a.a.av_();
+    this.jdField_a_of_type_DovComQqImCaptureMusicQQMusicPlayerScene.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_DovComQqImCaptureMusicQQMusicPlayerScene.a(this.b);
   }
 }
 

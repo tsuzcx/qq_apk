@@ -1,17 +1,18 @@
 package dov.com.qq.im.capture.data;
 
+import android.os.Build.VERSION;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anlr;
+import anue;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.QIMManager;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterListDownloader;
 import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
 import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
@@ -19,7 +20,7 @@ import org.json.JSONArray;
 public class QIMFilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new anlr();
+  public static final Parcelable.Creator CREATOR = new anue();
   public int a;
   public String a;
   public ArrayList a;
@@ -70,6 +71,23 @@ public class QIMFilterCategoryItem
       localObject = VideoFilterTools.a().a((String)localObject);
       if ((localObject != null) && (((FilterDesc)localObject).jdField_b_of_type_Int == 9)) {
         return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean b(QIMFilterCategoryItem paramQIMFilterCategoryItem)
+  {
+    if (Build.VERSION.SDK_INT == 18)
+    {
+      paramQIMFilterCategoryItem = paramQIMFilterCategoryItem.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramQIMFilterCategoryItem.hasNext())
+      {
+        Object localObject = (String)paramQIMFilterCategoryItem.next();
+        localObject = VideoFilterTools.a().a((String)localObject);
+        if ((localObject != null) && (((FilterDesc)localObject).jdField_b_of_type_Int == 1011)) {
+          return true;
+        }
       }
     }
     return false;
@@ -139,6 +157,20 @@ public class QIMFilterCategoryItem
   
   public boolean a()
   {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(this.g))
+    {
+      bool1 = bool2;
+      if (this.g.startsWith("qim")) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean b()
+  {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
@@ -157,12 +189,12 @@ public class QIMFilterCategoryItem
     return true;
   }
   
-  public boolean b()
+  public boolean c()
   {
     return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains("EMPTY"));
   }
   
-  public boolean c()
+  public boolean d()
   {
     if (this.jdField_a_of_type_Boolean) {}
     while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)) {
@@ -174,17 +206,26 @@ public class QIMFilterCategoryItem
     }
   }
   
-  public boolean d()
-  {
-    return "2".equals(this.e);
-  }
-  
   public int describeContents()
   {
     return 0;
   }
   
   public boolean e()
+  {
+    return "2".equals(this.e);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == null) {}
+    while (paramObject.hashCode() != hashCode()) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean f()
   {
     if (QLog.isColorLevel()) {
       QLog.d("FilterCategoryItem", 2, "needPredownload");
@@ -197,7 +238,7 @@ public class QIMFilterCategoryItem
       if (localFilterDesc != null)
       {
         String str2 = localFilterDesc.b(CaptureVideoFilterManager.jdField_b_of_type_JavaLangString);
-        if ((!TextUtils.isEmpty(localFilterDesc.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(str2)) && (!new File(str2 + "params.json").exists()))
+        if ((!TextUtils.isEmpty(localFilterDesc.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(str2)) && (VideoFilterListDownloader.a(localFilterDesc)))
         {
           if (QLog.isColorLevel()) {
             QLog.d("FilterCategoryItem", 2, "needPredownload " + str1);
@@ -207,15 +248,6 @@ public class QIMFilterCategoryItem
       }
     }
     return false;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    while (paramObject.hashCode() != hashCode()) {
-      return false;
-    }
-    return true;
   }
   
   public int hashCode()

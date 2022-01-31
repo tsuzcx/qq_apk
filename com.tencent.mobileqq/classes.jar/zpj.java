@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class zpj
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public zpj(VideoBroadcastReceiver paramVideoBroadcastReceiver) {}
+  public zpj(PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    synchronized (PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp))
+    {
+      Iterator localIterator = PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp).iterator();
+      if (localIterator.hasNext()) {
+        ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+      }
+    }
   }
 }
 

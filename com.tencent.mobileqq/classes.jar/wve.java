@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.observer.VipGifObserver;
 
 public class wve
-  implements Runnable
+  extends VipGifObserver
 {
-  public wve(PhoneMatchActivity paramPhoneMatchActivity) {}
+  public wve(MainAssistObserver paramMainAssistObserver) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = this.a.a.c();
-    if ((i == 2) || (i == 3))
-    {
-      this.a.a.h();
-      return;
+    if ((paramInt == 0) && (paramBoolean == true)) {
+      MainAssistObserver.a(this.a);
     }
-    this.a.a.g();
   }
 }
 

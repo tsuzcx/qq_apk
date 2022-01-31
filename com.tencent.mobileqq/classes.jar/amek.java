@@ -1,31 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.qqprotect.qsec.ICloudAVEngine.DetectBundle;
+import com.tencent.qqprotect.qsec.ICloudAVEngine.IAVEngineEventListener;
 
-public class amek
-  implements ValueAnimator.AnimatorUpdateListener
+public final class amek
 {
-  public amek(XPanelContainer paramXPanelContainer, int paramInt) {}
+  public int a;
+  public ICloudAVEngine.DetectBundle a;
+  public ICloudAVEngine.IAVEngineEventListener a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private amek()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "colseAnim resetPosition");
-      }
-      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
-      return;
-    }
-    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "[EntryId:" + this.jdField_a_of_type_Int + ",UseCache:" + this.jdField_a_of_type_Boolean + ",rightnow:" + this.jdField_b_of_type_Boolean + ",Retry:" + this.jdField_b_of_type_Int + ",localKey:" + this.jdField_a_of_type_JavaLangString + ",content:" + this.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.toString() + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     amek
  * JD-Core Version:    0.7.0.1
  */

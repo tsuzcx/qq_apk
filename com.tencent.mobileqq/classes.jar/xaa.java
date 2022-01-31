@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class xaa
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xaa(PasswdRedBagManager paramPasswdRedBagManager, String paramString) {}
+  public xaa(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager).c(this.jdField_a_of_type_JavaLangString, true);
+    this.a.finish();
   }
 }
 

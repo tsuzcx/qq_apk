@@ -1,15 +1,18 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.utils.UncheckedCallable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter.OnHolderItemClickListener;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter.StoryDiscoverViewHolder;
 
 public class oba
-  implements UncheckedCallable
+  implements View.OnClickListener
 {
-  public oba(NewMyStorySegment paramNewMyStorySegment) {}
+  public oba(StoryDiscoverAdapter.StoryDiscoverViewHolder paramStoryDiscoverViewHolder, View paramView) {}
   
-  public GetMyStoryVideoListStep a()
+  public void onClick(View paramView)
   {
-    return new GetMyStoryVideoListStep();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$OnHolderItemClickListener.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewStoryDiscoverAdapter$StoryDiscoverViewHolder.jdField_a_of_type_Int);
+    }
   }
 }
 

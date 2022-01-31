@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeNoImageSocial;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
-public final class lxo
-  implements Parcelable.Creator
+public class lxo
+  implements View.OnClickListener
 {
-  public DislikeInfo a(Parcel paramParcel)
-  {
-    return new DislikeInfo(paramParcel);
-  }
+  public lxo(FeedItemCellTypeNoImageSocial paramFeedItemCellTypeNoImageSocial) {}
   
-  public DislikeInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new DislikeInfo[paramInt];
+    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    if (paramView != null) {
+      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 

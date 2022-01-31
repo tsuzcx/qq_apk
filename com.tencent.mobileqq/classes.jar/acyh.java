@@ -1,30 +1,51 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 import com.tencent.qphone.base.util.QLog;
 
 public class acyh
-  extends acxm
+  extends IClickListener_Ver51
 {
-  public acyh(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  public acyh(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  
+  public void a()
   {
-    super(paramOnlineFileSessionWorker);
+    this.a.a.a().a();
   }
   
-  protected String a()
+  public void b()
   {
-    return "StateSaveToWeiYunByPCWhenPause";
+    this.a.a.a().g();
   }
   
-  protected void a()
+  public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    this.a.a.a().h();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(QfileBaseCloudFileTabView.a, 2, "wy saveto wy?" + FileManagerUtil.a());
     }
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Acxm.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Acxm = new acyg(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+  }
+  
+  public void e()
+  {
+    this.a.a.a().i();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().j();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().E();
   }
 }
 

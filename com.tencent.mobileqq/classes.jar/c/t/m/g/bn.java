@@ -1,27 +1,30 @@
 package c.t.m.g;
 
-final class bn
-  implements Runnable
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONObject;
+
+public final class bn
 {
-  bn(bm parambm, String paramString, byte[] paramArrayOfByte) {}
+  public Map<String, Object> a = new HashMap();
   
-  public final void run()
+  public final byte[] a()
   {
-    String str = this.a;
-    byte[] arrayOfByte2 = this.b;
-    byte[] arrayOfByte1;
-    if (!ch.a(str))
+    JSONObject localJSONObject = new JSONObject();
+    Iterator localIterator = this.a.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      arrayOfByte1 = arrayOfByte2;
-      if (!ch.a(arrayOfByte2)) {}
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      try
+      {
+        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+      }
+      catch (Exception localException) {}
     }
-    else
-    {
-      o.e();
-      str = o.b();
-      arrayOfByte1 = this.c.a.a(str);
-    }
-    bo.c().d().a(str, arrayOfByte1, null);
+    return localJSONObject.toString().getBytes();
   }
 }
 

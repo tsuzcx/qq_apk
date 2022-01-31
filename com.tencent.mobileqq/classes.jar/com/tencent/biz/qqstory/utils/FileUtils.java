@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.io.File;
 import mqq.os.MqqHandler;
-import ooh;
+import osu;
 
 public class FileUtils
 {
@@ -159,7 +159,7 @@ public class FileUtils
     for (boolean bool = ((QQStoryBaseActivity)paramContext).isValidate();; bool = true)
     {
       if (bool) {
-        ThreadManager.getUIHandler().post(new ooh(paramContext));
+        ThreadManager.getUIHandler().post(new osu(paramContext));
       }
       return true;
     }

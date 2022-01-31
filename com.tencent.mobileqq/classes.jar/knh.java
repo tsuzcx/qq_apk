@@ -1,20 +1,35 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.authorize.JsonConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class knh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends Handler
 {
-  public knh(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
-  
-  public void onGlobalLayout()
+  public knh(JsonConfig paramJsonConfig, Looper paramLooper)
   {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int i = this.a.getWindow().getDecorView().getBottom();
-    int j = this.a.getWindow().getDecorView().getTop();
-    LebaSearchPluginManagerActivity.a(this.a, i - j);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
+      }
+      this.a.a.clear();
+    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
+    }
+    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
   }
 }
 

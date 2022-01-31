@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#fff7f7f4" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.proxy.albumcomponent.widget.LoverHeaderCell android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2edf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip">
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee0" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c039d" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.qzone.proxy.albumcomponent.widget.BigPhotoView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ede" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="21.0dip" android:layout_marginBottom="5.0dip" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee0" android:layout_alignParentRight="true" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e83" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e0c" android:padding="8.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="字体" android:layout_weight="1.0" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e84" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e0c" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e85" android:padding="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="炫彩字" android:layout_centerInParent="true" />
+        <ImageView android:layout_gravity="center|right|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e86" android:paddingTop="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0221b5" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a2e85" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a2e85" />
     </RelativeLayout>
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="120.0dip">
-        <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:layout_centerInParent="true" />
-    </RelativeLayout>
+    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e87" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e0c" android:padding="8.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="超大字" android:layout_weight="1.0" />
 </LinearLayout>

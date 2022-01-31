@@ -1,65 +1,31 @@
-import com.tencent.av.gaudio.AVObserver;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-public class shq
-  extends AVObserver
+class shq
+  implements Runnable
 {
-  public shq(Conversation paramConversation) {}
+  shq(shp paramshp, ArrayList paramArrayList) {}
   
-  protected void a(int paramInt, long paramLong)
+  public void run()
   {
-    paramInt = UITools.b(paramInt);
-    this.a.a(8, Long.toString(paramLong), paramInt);
-  }
-  
-  protected void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    paramInt = UITools.b(paramInt);
-    this.a.a(8, Long.toString(paramLong1), paramInt);
-    this.a.b(paramLong1);
-    this.a.a(new shr(this, paramLong1));
-  }
-  
-  protected void a(int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a(8, paramString1, paramInt);
-    this.a.a(new shu(this));
-  }
-  
-  protected void a(String paramString)
-  {
-    super.a(paramString);
-    this.a.a(new shw(this));
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    super.a(paramString1, paramString2);
-    this.a.a(new shv(this));
-  }
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void b(int paramInt, long paramLong)
-  {
-    paramInt = UITools.b(paramInt);
-    this.a.a(8, Long.toString(paramLong), paramInt);
-  }
-  
-  protected void b(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
-      this.a.a(new shs(this, paramLong1));
+    if (this.jdField_a_of_type_Shp.a.e != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_Shp.a.e.iterator();
+      while (localIterator.hasNext())
+      {
+        oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)localIterator.next();
+        if (!this.jdField_a_of_type_JavaUtilArrayList.contains(localmemberlist.uint64_member_uin.get() + "")) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(localmemberlist.uint64_member_uin.get() + "");
+        }
+      }
     }
-  }
-  
-  protected void c(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
-      this.a.a(new sht(this, paramLong1));
-    }
+    ChatSettingForTroop.a(this.jdField_a_of_type_Shp.a, this.jdField_a_of_type_Shp.a.a.troopUin, this.jdField_a_of_type_Shp.a.a.isOwnerOrAdim(), this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Shp.a.a("Grp", "Clk_invite_new", "0");
   }
 }
 

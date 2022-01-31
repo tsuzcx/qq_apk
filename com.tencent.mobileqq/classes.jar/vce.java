@@ -1,18 +1,13 @@
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.PAMultiItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.FileTimDocGrayTipsItemBuilder;
 
 public class vce
   extends AbstractChatItemBuilder.ViewHolder
 {
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public TextView b;
   
-  public vce(PAMultiItemBuilder paramPAMultiItemBuilder) {}
+  public vce(FileTimDocGrayTipsItemBuilder paramFileTimDocGrayTipsItemBuilder) {}
 }
 
 

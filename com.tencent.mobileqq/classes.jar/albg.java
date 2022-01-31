@@ -1,20 +1,27 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BindGroupConfirmActivity;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
 
-class albg
-  implements Runnable
+public final class albg
+  implements AnyScaleTypeImageView.DisplayRuleDef
 {
-  albg(albf paramalbf, Bitmap paramBitmap) {}
-  
-  public void run()
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Albf.a.b.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
+    }
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    float f = Math.max(paramInt1 / i, paramInt2 / j);
+    localMatrix.setScale(f, f);
+    localMatrix.postTranslate((int)(0.0F + 0.5F), (int)(0.0F + 0.5F));
+    return localMatrix;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     albg
  * JD-Core Version:    0.7.0.1
  */

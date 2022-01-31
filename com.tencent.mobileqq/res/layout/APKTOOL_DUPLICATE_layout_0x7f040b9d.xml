@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.selectmember.ContactFriendInnerFrame android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:enabled="false" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33d7" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+    <TextView android:enabled="false" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33d8" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+    <TextView android:enabled="false" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33d9" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="5.0dip" />
+</LinearLayout>

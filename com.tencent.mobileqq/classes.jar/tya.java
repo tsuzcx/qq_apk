@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
 
-class tya
-  implements Runnable
+public class tya
+  implements DialogInterface.OnKeyListener
 {
-  tya(txz paramtxz, ArrayList paramArrayList) {}
+  public tya(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_Txz.a.c) {
-      return;
+    if (paramInt == 4) {
+      this.a.finish();
     }
-    this.jdField_a_of_type_Txz.a.a(8, this.jdField_a_of_type_JavaUtilArrayList, true, 2, true);
+    return false;
   }
 }
 

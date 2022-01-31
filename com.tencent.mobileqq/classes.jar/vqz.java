@@ -1,19 +1,27 @@
-import android.os.Handler;
+import android.os.Handler.Callback;
 import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.widget.ListView;
+import com.tencent.widget.XPanelContainer;
 
 public class vqz
-  extends Handler
+  implements Handler.Callback
 {
-  public vqz(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public vqz(PEPanel paramPEPanel) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean handleMessage(Message paramMessage)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.p.isShown()) {
-      this.a.p.setVisibility(8);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
+    PEPanel.a(this.a).setVisibility(0);
+    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
+    paramMessage.setDuration(200L);
+    PEPanel.a(this.a).startAnimation(paramMessage);
+    return true;
   }
 }
 

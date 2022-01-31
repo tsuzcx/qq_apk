@@ -18,11 +18,11 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
-import rny;
-import rnz;
-import roa;
-import rob;
-import roc;
+import rsq;
+import rsr;
+import rss;
+import rst;
+import rsu;
 
 public class AuthDevRenameActivity
   extends IphoneTitleBarActivity
@@ -37,8 +37,8 @@ public class AuthDevRenameActivity
   public static String g = "target_type_info";
   public static String h = "target_desc";
   public static String i = "index";
-  private Handler jdField_a_of_type_AndroidOsHandler = new roa(this);
-  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new rnz(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new rss(this);
+  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new rsr(this);
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   
@@ -49,21 +49,21 @@ public class AuthDevRenameActivity
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new rob(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new rst(this));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new roc(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new rsu(this));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970317);
+    super.setContentView(2130970332);
     super.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
-    super.setRightButton(2131436612, this);
-    this.leftView.setText(2131433015);
+    super.setRightButton(2131436632, this);
+    this.leftView.setText(2131433029);
     this.leftView.setOnClickListener(this);
     if ((this.centerView != null) && ((this.centerView instanceof TextView))) {
       this.centerView.setVisibility(8);
@@ -77,31 +77,31 @@ public class AuthDevRenameActivity
     }
     for (;;)
     {
-      Object localObject = super.findViewById(2131363380);
+      Object localObject = super.findViewById(2131363399);
       if (localObject != null)
       {
         ((View)localObject).setVisibility(0);
-        TextView localTextView = (TextView)((View)localObject).findViewById(2131363470);
+        TextView localTextView = (TextView)((View)localObject).findViewById(2131363489);
         if (localTextView != null) {
-          localTextView.setText(2131436616);
+          localTextView.setText(2131436636);
         }
-        localObject = (TextView)((View)localObject).findViewById(2131363471);
+        localObject = (TextView)((View)localObject).findViewById(2131363490);
         if ((localObject != null) && (!TextUtils.isEmpty(paramBundle))) {
           ((TextView)localObject).setText(paramBundle);
         }
       }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131370048));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131370057));
         if (!TextUtils.isEmpty(str)) {
           this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(str);
         }
         this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeOptions(6);
         this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnEditorActionListener(this);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeActionLabel(getString(2131433197), 6);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFilters(new InputFilter[] { new rny(this) });
+        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeActionLabel(getString(2131433211), 6);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFilters(new InputFilter[] { new rsq(this) });
         return true;
-        super.setTitle(2131436616);
+        super.setTitle(2131436636);
       }
       paramBundle = null;
       str = null;
@@ -125,13 +125,13 @@ public class AuthDevRenameActivity
           return;
           if (!NetworkUtil.d(this))
           {
-            QQToast.a(this, getString(2131433009), 0).b(getTitleBarHeight());
+            QQToast.a(this, getString(2131433023), 0).b(getTitleBarHeight());
             return;
           }
           paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getEditableText().toString();
           if (TextUtils.isEmpty(paramView))
           {
-            QQToast.a(this, getString(2131436617), 0).b(getTitleBarHeight());
+            QQToast.a(this, getString(2131436637), 0).b(getTitleBarHeight());
             return;
           }
           localObject = super.getIntent();

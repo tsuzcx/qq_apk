@@ -20,7 +20,7 @@ import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.Iterator;
 import java.util.List;
-import mjf;
+import mmw;
 
 public class ReadInJoySearchTipsContainer
   extends ViewGroup
@@ -55,7 +55,7 @@ public class ReadInJoySearchTipsContainer
       return;
     }
     Button localButton = new Button(getContext());
-    localButton.setBackgroundResource(2130845422);
+    localButton.setBackgroundResource(2130845503);
     GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
     if (paramInt2 != 0)
     {
@@ -166,10 +166,10 @@ public class ReadInJoySearchTipsContainer
   
   public void onClick(View paramView)
   {
-    mjf localmjf = new mjf(this, Looper.getMainLooper());
-    Message localMessage = localmjf.obtainMessage();
+    mmw localmmw = new mmw(this, Looper.getMainLooper());
+    Message localMessage = localmmw.obtainMessage();
     localMessage.obj = paramView.getTag();
-    localmjf.sendMessage(localMessage);
+    localmmw.sendMessage(localMessage);
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)

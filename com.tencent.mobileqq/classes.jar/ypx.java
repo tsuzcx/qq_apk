@@ -1,17 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
-import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.mobileqq.apollo.ApolloGameManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
 
 public class ypx
   implements Runnable
 {
-  public ypx(ApolloWebViewFragment paramApolloWebViewFragment, Activity paramActivity) {}
+  public ypx(ApolloGameManager paramApolloGameManager) {}
   
   public void run()
   {
-    if (MyAppApi.d()) {
-      MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity);
+    if (ApolloGameManager.a(this.a) == null) {}
+    while ((ApolloContentUpdateHandler)ApolloGameManager.a(this.a).a(115) == null) {
+      return;
     }
+    ApolloContentUpdateHandler.a(ApolloGameManager.a(this.a), 2);
   }
 }
 

@@ -1,22 +1,33 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 
 public class aitx
-  implements InputFilter
+  implements Runnable
 {
-  public aitx(AbsPublishActivity paramAbsPublishActivity) {}
+  public aitx(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void run()
   {
-    if (paramCharSequence != null)
+    switch (this.a.v)
     {
-      paramCharSequence = paramCharSequence.toString();
-      if (paramCharSequence.contains("\n")) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
+    default: 
+      return;
+    case 0: 
+      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() BUT current status is INIT");
+      return;
+    case 2: 
+      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume HTTP channel");
+      this.a.r();
+      return;
     }
-    return null;
+    if (this.a.b != null)
+    {
+      this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel");
+      this.a.a.getHwEngine().resumeTransactionTask(this.a.b);
+      return;
+    }
+    this.a.d("<BDH_LOG> sendFileNotBlockCallThread() resume BDH channel, but trans == null");
   }
 }
 

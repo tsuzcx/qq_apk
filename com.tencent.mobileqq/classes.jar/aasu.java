@@ -1,25 +1,21 @@
-import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.arcard.ARCardPageProcess;
+import com.tencent.mobileqq.arcard.ARCardPageProcess.Circle;
 
 public class aasu
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aasu(ArkAiScrollBar paramArkAiScrollBar) {}
+  public aasu(ARCardPageProcess paramARCardPageProcess, ARCardPageProcess.Circle paramCircle) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int j = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.getWidth();
-    int i = j;
-    if (j < 0) {
-      i = 0;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(i, 0);
+    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess$Circle.setTranslationX(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aasu
  * JD-Core Version:    0.7.0.1
  */

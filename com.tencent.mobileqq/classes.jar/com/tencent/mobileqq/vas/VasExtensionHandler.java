@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import akih;
+import akpw;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -439,7 +439,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -549,7 +549,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       if (TextUtils.isEmpty(paramString)) {}
@@ -594,7 +594,7 @@ public class VasExtensionHandler
     }
     for (;;)
     {
-      int j;
+      int i;
       try
       {
         if (!paramFromServiceMsg.isSuccess())
@@ -602,21 +602,19 @@ public class VasExtensionHandler
           QLog.e(jdField_a_of_type_JavaLangString, 1, "handlePraiseAuthResponse, isSuccess false, error code=" + paramFromServiceMsg.getResultCode());
           return;
         }
-        paramFromServiceMsg = new praise_sso.TPraiseSsoRsp();
-        paramFromServiceMsg.mergeFrom((byte[])paramObject);
-        j = paramFromServiceMsg.i32_ret.get();
-        int i = 0;
-        paramIntent = "";
-        if (j == 0)
+        paramIntent = new praise_sso.TPraiseSsoRsp();
+        paramIntent.mergeFrom((byte[])paramObject);
+        i = paramIntent.i32_ret.get();
+        paramIntent = (praise_sso.TSsoCmd0x1Rsp)paramIntent.st_cmd0x1_rsp.get();
+        int j = paramIntent.i32_itemId.get();
+        paramIntent = paramIntent.str_url.get();
+        if (i == 0)
         {
-          paramIntent = (praise_sso.TSsoCmd0x1Rsp)paramFromServiceMsg.st_cmd0x1_rsp.get();
-          i = paramIntent.i32_itemId.get();
-          paramIntent = paramIntent.str_url.get();
-          PraiseManager.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, i);
+          PraiseManager.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, j);
           if ((this.jdField_a_of_type_AndroidOsBundle == null) || (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseSetCallback == null)) {
             break;
           }
-          this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseSetCallback.a(j, i, paramIntent, this.jdField_a_of_type_AndroidOsBundle);
+          this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseSetCallback.a(i, j, paramIntent, this.jdField_a_of_type_AndroidOsBundle);
           this.jdField_a_of_type_AndroidOsBundle = null;
           this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseSetCallback = null;
           return;
@@ -627,7 +625,7 @@ public class VasExtensionHandler
         QLog.e(jdField_a_of_type_JavaLangString, 1, "handlePraiseAuthResponse exception", paramIntent);
         return;
       }
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "handlePraiseAuthResponse, ret=" + j);
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "handlePraiseAuthResponse, ret=" + i);
     }
   }
   
@@ -899,7 +897,7 @@ public class VasExtensionHandler
       {
         long l;
         QLog.e(jdField_a_of_type_JavaLangString, 1, "handleQuickUpdate error: ", paramFromServiceMsg);
-        paramFromServiceMsg = new akih();
+        paramFromServiceMsg = new akpw();
         paramFromServiceMsg.b = -1L;
         paramFromServiceMsg.jdField_a_of_type_Long = 0L;
         if (paramIntent.cmd.get() == 1)
@@ -907,7 +905,7 @@ public class VasExtensionHandler
           a(16, false, paramFromServiceMsg);
           return;
           QLog.e(jdField_a_of_type_JavaLangString, 1, "handleQuickUpdate result = " + paramIntent.ret.get() + "msg = " + paramIntent.msg.get());
-          paramFromServiceMsg = new akih();
+          paramFromServiceMsg = new akpw();
           paramFromServiceMsg.b = paramIntent.ret.get();
           paramFromServiceMsg.jdField_a_of_type_Long = l;
           if (paramIntent.cmd.get() == 1)
@@ -968,7 +966,7 @@ public class VasExtensionHandler
     Object localObject = new IndividPub.Platform_Comm_Req();
     ((IndividPub.Platform_Comm_Req)localObject).platForm.set(109L);
     ((IndividPub.Platform_Comm_Req)localObject).osver.set(Build.VERSION.RELEASE);
-    ((IndividPub.Platform_Comm_Req)localObject).mqqver.set("7.6.3.3565");
+    ((IndividPub.Platform_Comm_Req)localObject).mqqver.set("7.6.8.3615");
     localexpTips_Req.comm.set((MessageMicro)localObject);
     localexpTips_Req.cmd.set(1);
     localexpTips_Req.setHasFlag(true);
@@ -1036,7 +1034,7 @@ public class VasExtensionHandler
     praise_sso.TPraiseSsoReq localTPraiseSsoReq = new praise_sso.TPraiseSsoReq();
     localTPraiseSsoReq.i32_cmd.set(1);
     localTPraiseSsoReq.i32_implat.set(109);
-    localTPraiseSsoReq.str_qq_ver.set("7.6.3.3565");
+    localTPraiseSsoReq.str_qq_ver.set("7.6.8.3615");
     localTPraiseSsoReq.st_cmd0x1_req.set((MessageMicro)localObject);
     localObject = new NewIntent(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), VasExtensionServlet.class);
     ((NewIntent)localObject).putExtra("cmd", "Praise.sso");
@@ -1058,7 +1056,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -1095,7 +1093,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -1127,7 +1125,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -1167,7 +1165,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       JSONObject localJSONObject = new JSONObject();
@@ -1217,7 +1215,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -1254,7 +1252,7 @@ public class VasExtensionHandler
       localObject1 = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject1).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject1).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject1).mqqver.set("7.6.3");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject1).mqqver.set("7.6.8");
       localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject1);
       localObject1 = new JSONObject();
@@ -1301,7 +1299,7 @@ public class VasExtensionHandler
     localSetAddonReq.cmd.set(2);
     localSetAddonReq.int_platform.set(2);
     localSetAddonReq.long_addon_id.set(paramLong);
-    localSetAddonReq.str_qq_version.set("7.6.3");
+    localSetAddonReq.str_qq_version.set("7.6.8");
     if (paramInt2 != -1) {
       localSetAddonReq.int_from_type.set(paramInt2);
     }
@@ -1674,7 +1672,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -1738,7 +1736,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       JSONObject localJSONObject = new JSONObject();
@@ -1794,7 +1792,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         JSONObject localJSONObject = new JSONObject();
@@ -1979,7 +1977,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -2018,7 +2016,7 @@ public class VasExtensionHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3.3565");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8.3615");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       if ("apollo_aio_game.report_user_track".equals(paramString1))
@@ -2066,7 +2064,7 @@ public class VasExtensionHandler
       WebSSOAgent.UniSsoServerReqComm localUniSsoServerReqComm = new WebSSOAgent.UniSsoServerReqComm();
       localUniSsoServerReqComm.platform.set(109L);
       localUniSsoServerReqComm.osver.set(Build.VERSION.RELEASE);
-      localUniSsoServerReqComm.mqqver.set("7.6.3.3565");
+      localUniSsoServerReqComm.mqqver.set("7.6.8.3615");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set(localUniSsoServerReqComm);
       localUniSsoServerReq.reqdata.set(paramString2);
@@ -2100,7 +2098,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -2357,7 +2355,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -2548,7 +2546,7 @@ public class VasExtensionHandler
     {
       SCUpdatePB.SCUpdateReq localSCUpdateReq = new SCUpdatePB.SCUpdateReq();
       localSCUpdateReq.comm.plat.set(109);
-      localSCUpdateReq.comm.qver.set(ByteStringMicro.copyFrom("7.6.3.3565".getBytes()));
+      localSCUpdateReq.comm.qver.set(ByteStringMicro.copyFrom("7.6.8.3615".getBytes()));
       localSCUpdateReq.comm.osrelease.set(ByteStringMicro.copyFrom(String.valueOf(Build.VERSION.SDK_INT).getBytes()));
       localSCUpdateReq.comm.network.set(NetworkUtil.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()));
       localSCUpdateReq.comm.setHasFlag(true);
@@ -2670,7 +2668,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -2768,7 +2766,7 @@ public class VasExtensionHandler
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
@@ -3185,7 +3183,7 @@ public class VasExtensionHandler
       QLog.e(jdField_a_of_type_JavaLangString, 1, "showIfHadSpecialCareTip have error type " + i);
       return;
     case 1: 
-      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438641);
+      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438664);
     }
     for (;;)
     {
@@ -3210,15 +3208,15 @@ public class VasExtensionHandler
       ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
       UniteGrayTipUtil.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject1);
       return;
-      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438642);
+      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438665);
       continue;
-      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438643);
+      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438666);
       continue;
-      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438644);
+      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438667);
       continue;
-      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438646);
+      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438669);
       continue;
-      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438645);
+      localObject1 = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438668);
     }
   }
   
@@ -3712,18 +3710,18 @@ public class VasExtensionHandler
       paramIntent = jdField_a_of_type_JavaLangString;
       localObject = new StringBuilder().append("handleGetStrangerVasInfo ").append(paramFromServiceMsg.isSuccess()).append(", ");
       if (paramArrayOfByte == null) {
-        break label1772;
+        break label1740;
       }
     }
-    label1731:
-    label1734:
-    label1741:
-    label1744:
-    label1747:
-    label1750:
-    label1753:
-    label1759:
-    label1772:
+    label1699:
+    label1702:
+    label1709:
+    label1712:
+    label1715:
+    label1718:
+    label1721:
+    label1727:
+    label1740:
     for (int i = paramArrayOfByte.length;; i = -1)
     {
       QLog.d(paramIntent, 2, i);
@@ -3754,28 +3752,28 @@ public class VasExtensionHandler
               String str = String.valueOf(localUdcUinData.uint64_uin.get());
               paramIntent = localFriendsManager.a(str);
               if (paramIntent != null) {
-                break label1750;
+                break label1718;
               }
               paramIntent = new ExtensionInfo();
               paramIntent.uin = str;
               m = 1;
               if (!localUdcUinData.uint32_vas_font_id.has()) {
-                break label1747;
+                break label1715;
               }
               long l = localUdcUinData.uint32_vas_font_id.get();
               if (!str.equals(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-                break label1744;
+                break label1712;
               }
               i = (int)FontManager.a(l);
               if ((FontManager.a(l) == paramIntent.uVipFont) && (FontManager.b(l) == paramIntent.vipFontType)) {
-                break label1741;
+                break label1709;
               }
               paramIntent.uVipFont = FontManager.a(l);
               paramIntent.vipFontType = FontManager.b(l);
               paramIntent.lastUpdateTime = NetConnInfoCenter.getServerTime();
               m = 1;
               if ((!localUdcUinData.uint32_vas_diy_font_timestamp.has()) || (!str.equals(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-                break label1734;
+                break label1702;
               }
               k = localUdcUinData.uint32_vas_diy_font_timestamp.get();
               j = m;
@@ -3846,13 +3844,8 @@ public class VasExtensionHandler
               if (localUdcUinData.uint32_vas_praise_id.has())
               {
                 m = localUdcUinData.uint32_vas_praise_id.get();
-                if ((m > 0) && (String.valueOf(str).equals(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
-                {
+                if ((m > 0) && (String.valueOf(str).equals(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
                   PraiseManager.a(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, m);
-                  PraiseManager localPraiseManager = (PraiseManager)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(208);
-                  if (localPraiseManager != null) {
-                    localPraiseManager.a(m, true, "from_roam");
-                  }
                 }
                 if (QLog.isColorLevel()) {
                   QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetStrangerVasInfo uin= " + str + "praise id = " + m);
@@ -3883,7 +3876,7 @@ public class VasExtensionHandler
                 }
               }
               if (!localUdcUinData.uint32_vas_face_id.has()) {
-                break label1731;
+                break label1699;
               }
               n = paramIntent.faceId;
               paramIntent.faceId = localUdcUinData.uint32_vas_face_id.get();
@@ -3908,19 +3901,19 @@ public class VasExtensionHandler
                     ((SVIPHandler)this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).b(n, false);
                   }
                   if (!QLog.isColorLevel()) {
-                    break label1753;
+                    break label1721;
                   }
                   QLog.d(jdField_a_of_type_JavaLangString, 2, "handleGetStrangerVasInfo, uin=" + str + ", pendant=" + paramIntent.pendantId + ",font=" + paramIntent.uVipFont + ", fontType = " + paramIntent.vipFontType + ", magicFont = " + paramIntent.magicFont + ", colorRing = " + paramIntent.colorRingId + ", pendantDiyId = " + paramIntent.pendantDiyId);
-                  break label1753;
+                  break label1721;
                 }
               }
               if (m == 0) {
-                break label1759;
+                break label1727;
               }
               paramIntent.timestamp = System.currentTimeMillis();
               paramArrayOfByte.add(str);
               ((List)localObject).add(paramIntent);
-              break label1759;
+              break label1727;
             }
             if (QLog.isColorLevel()) {
               QLog.d("VasFont", 2, "0x5eb self has diy timestamp fontid = " + i + " timestamp = " + j);
@@ -4334,7 +4327,7 @@ public class VasExtensionHandler
         a(9, true, paramIntent);
         paramIntent = new HashMap();
         paramIntent.put("APOLLO_POP_TYPE", "toast");
-        paramIntent.put("tips", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438186));
+        paramIntent.put("tips", this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131438206));
         paramFromServiceMsg = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
         if (paramFromServiceMsg == null) {
           break label398;
@@ -4452,7 +4445,7 @@ public class VasExtensionHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasExtensionHandler
  * JD-Core Version:    0.7.0.1
  */

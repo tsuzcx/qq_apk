@@ -1,8 +1,8 @@
 package cooperation.qqfav.widget;
 
-import ampn;
-import ampo;
-import ampp;
+import amwy;
+import amwz;
+import amxa;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -110,7 +110,7 @@ public class LocationDetailActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = super.findViewById(2131365657);
+    paramBundle = super.findViewById(2131365662);
     paramBundle.setFocusable(false);
     paramBundle.setContentDescription(null);
     if (!super.getIntent().getBooleanExtra("forNewFavorite", false))
@@ -119,11 +119,11 @@ public class LocationDetailActivity
       float f1 = super.getResources().getDisplayMetrics().density;
       this.f = new TextView(paramBundle.getContext());
       this.f.setId(2131362134);
-      this.f.setBackgroundResource(2130838585);
+      this.f.setBackgroundResource(2130838591);
       this.f.setMaxLines(3);
       int i = (int)(15.0F * f1);
       this.f.setPadding(i, i, i, i);
-      this.f.setTextColor(super.getResources().getColor(2131494214));
+      this.f.setTextColor(super.getResources().getColor(2131494220));
       this.f.setTextSize(14.0F);
       this.f.setIncludeFontPadding(false);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
@@ -152,22 +152,22 @@ public class LocationDetailActivity
     this.r = localBundle.getString("lat");
     this.s = localBundle.getString("lon");
     this.b = localBundle.getLong("favId");
-    TextView localTextView1 = (TextView)findViewById(2131363245);
-    localTextView1.setText(2131431566);
-    localTextView1.setOnClickListener(new ampn(this));
-    ((TextView)super.findViewById(2131363381)).setText(2131431619);
-    TextView localTextView2 = (TextView)super.findViewById(2131363428);
+    TextView localTextView1 = (TextView)findViewById(2131363262);
+    localTextView1.setText(2131431577);
+    localTextView1.setOnClickListener(new amwy(this));
+    ((TextView)super.findViewById(2131363400)).setText(2131431630);
+    TextView localTextView2 = (TextView)super.findViewById(2131363447);
     if (!localBundle.getBoolean("forNewFavorite", false))
     {
-      ampo localampo = new ampo(this, this, new LocationDetailActivity.LocationActions(this), 33, 7, null);
+      amwz localamwz = new amwz(this, this, new LocationDetailActivity.LocationActions(this), 33, 7, null);
       localTextView1.setText(localBundle.getString("leftViewText"));
       localTextView2.setVisibility(8);
-      this.d = ((ImageView)super.findViewById(2131363474));
+      this.d = ((ImageView)super.findViewById(2131363493));
       this.d.setVisibility(0);
-      this.d.setImageResource(2130839147);
-      this.d.setContentDescription(super.getString(2131433937));
-      this.d.setOnClickListener(localampo);
-      this.a = ((FadeIconImageView)findViewById(2131364029));
+      this.d.setImageResource(2130839162);
+      this.d.setContentDescription(super.getString(2131433953));
+      this.d.setOnClickListener(localamwz);
+      this.a = ((FadeIconImageView)findViewById(2131364054));
       if (!QfavUtil.a()) {
         if (this.a != null)
         {
@@ -184,9 +184,9 @@ public class LocationDetailActivity
       {
         this.a.setVisibility(8);
         continue;
-        localTextView1.setText(2131432414);
-        localTextView2.setText(2131434754);
-        localTextView2.setOnClickListener(new ampp(this));
+        localTextView1.setText(2131432425);
+        localTextView2.setText(2131434770);
+        localTextView2.setOnClickListener(new amxa(this));
       }
     }
   }

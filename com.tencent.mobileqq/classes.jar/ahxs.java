@@ -1,54 +1,29 @@
-import android.content.ContentResolver;
-import com.tencent.common.config.provider.QZConfigProviderUtil;
-import com.tencent.common.config.provider.QZoneConfigProvider;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
+import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
+import com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter;
+import com.tencent.mobileqq.search.presenter.IPresenter;
+import com.tencent.mobileqq.search.view.IView;
+import com.tencent.mobileqq.search.view.SearchResultFromNetView;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.widget.ListView;
 
-public final class ahxs
-  implements Runnable
+public class ahxs
+  extends BaseMvpFaceAdapter
 {
-  public ahxs(QQAppInterface paramQQAppInterface, ArrayList paramArrayList) {}
-  
-  public void run()
+  public ahxs(FunctionSearchFragment paramFunctionSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(9);
-      } while ((localObject == null) || (!(localObject instanceof QZoneManagerImp)));
-      localObject = (QZoneManagerImp)localObject;
-      if (((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList == null) {
-        ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.size() == 0) {
-        QZConfigProviderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList);
-      }
-    } while (QZoneUnreadServletLogic.a(this.jdField_a_of_type_JavaUtilArrayList, ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList));
-    ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.clear();
-    ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    try
-    {
-      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.g, null, null);
-      QZConfigProviderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaUtilArrayList);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("UndealCount.QZoneUnreadServletLogic", 2, "getNavigatorConfigs error:" + localException.getMessage(), localException);
-        }
-      }
-    }
+    super(paramListView, paramFaceDecoder);
+  }
+  
+  protected IPresenter a(int paramInt)
+  {
+    return new ActiveEntitySearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, 268435456);
+  }
+  
+  protected IView a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new SearchResultFromNetView(paramViewGroup, 268435456);
   }
 }
 

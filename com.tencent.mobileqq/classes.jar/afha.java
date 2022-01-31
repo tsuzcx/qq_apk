@@ -1,38 +1,75 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import SummaryCard.TPraiseInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView;
+import com.tencent.mobileqq.profile.like.PraiseConfigHelper;
+import java.util.List;
 
 public class afha
-  implements View.OnLongClickListener
+  extends Handler
 {
-  public afha(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public afha(NearbyCardVoteView paramNearbyCardVoteView) {}
   
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
-    }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new afhn(this.a, paramView), paramView, 0);
-    localObject = NearbyProfileEditPanel.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    NearbyProfileEditPanel.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
+    super.handleMessage(paramMessage);
+    int j;
+    if (paramMessage.what == NearbyCardVoteView.c)
     {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(NearbyProfileEditPanel.a(this.a), i);
-      return true;
+      j = paramMessage.arg1;
+      if (paramMessage.arg2 > 0)
+      {
+        i = 2;
+        this.a.a(j, i);
+      }
     }
-    paramView.setVisibility(4);
-    return true;
+    while (paramMessage.what != NearbyCardVoteView.d) {
+      for (;;)
+      {
+        return;
+        i = 0;
+      }
+    }
+    int m = paramMessage.arg1;
+    int n = paramMessage.arg2;
+    Object localObject = (List)paramMessage.obj;
+    paramMessage = (Message)localObject;
+    if (localObject != null)
+    {
+      paramMessage = (Message)localObject;
+      if (n < ((List)localObject).size()) {
+        paramMessage = ((List)localObject).subList(0, n);
+      }
+    }
+    paramMessage = PraiseConfigHelper.a(paramMessage);
+    int i = 0;
+    int k;
+    if ((i < n) && (i < 20))
+    {
+      if ((paramMessage == null) || (i >= paramMessage.size())) {
+        break label267;
+      }
+      k = (int)((TPraiseInfo)paramMessage.get(i)).uCustomId;
+      j = ((TPraiseInfo)paramMessage.get(i)).iIsPayed;
+    }
+    for (;;)
+    {
+      localObject = this.a.a.obtainMessage(NearbyCardVoteView.c, k, j);
+      this.a.a.sendMessageDelayed((Message)localObject, (i + 2) * 500);
+      i += 1;
+      break;
+      paramMessage = this.a.getContext().getSharedPreferences("nearby_card_reddot_num", 0).edit();
+      paramMessage.putInt("voteNum", m);
+      paramMessage.putInt("increaseNum", n);
+      paramMessage.commit();
+      return;
+      label267:
+      j = 0;
+      k = 0;
+    }
   }
 }
 

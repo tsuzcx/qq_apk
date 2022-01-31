@@ -1,9 +1,12 @@
 package com.tencent.mobileqq.ar;
 
-import aact;
-import aacu;
+import aaji;
+import aajj;
+import aajk;
+import aajl;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload;
 import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
@@ -13,6 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class ArNativeSoManager
 {
@@ -65,7 +69,7 @@ public class ArNativeSoManager
     if (this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload.a(paramDownloadInfo, new aacu(this, paramNativeSoRes));
+    this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload.a(paramDownloadInfo, new aajl(this, paramNativeSoRes));
   }
   
   private void a(String paramString)
@@ -138,70 +142,7 @@ public class ArNativeSoManager
     return bool;
   }
   
-  private boolean b(String paramString1, String paramString2)
-  {
-    if (new File(paramString1).exists())
-    {
-      if (!paramString2.equalsIgnoreCase(PortalUtils.a(paramString1)))
-      {
-        QLog.i("AREngine_ArNativeSoManager", 1, "checkFileValid failed. check md5 failed. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
-        return false;
-      }
-      return true;
-    }
-    QLog.i("AREngine_ArNativeSoManager", 1, "checkFileValid failed. file is not exist. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
-    return false;
-  }
-  
-  /* Error */
-  public int a(String paramString1, String paramString2, String paramString3)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ldc 26
-    //   5: invokevirtual 32	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   8: ifeq +15 -> 23
-    //   11: aload_2
-    //   12: aload_3
-    //   13: invokestatic 157	com/tencent/mobileqq/ar/ArSDK2NativeSoLoader:a	(Ljava/lang/String;Ljava/lang/String;)I
-    //   16: istore 4
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: iload 4
-    //   22: ireturn
-    //   23: aload_1
-    //   24: ldc 44
-    //   26: invokevirtual 32	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   29: ifeq +13 -> 42
-    //   32: aload_2
-    //   33: aload_3
-    //   34: invokestatic 158	com/tencent/mobileqq/ar/ArCloudNativeSoLoader:a	(Ljava/lang/String;Ljava/lang/String;)I
-    //   37: istore 4
-    //   39: goto -21 -> 18
-    //   42: iconst_m1
-    //   43: istore 4
-    //   45: goto -27 -> 18
-    //   48: astore_1
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: aload_1
-    //   52: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	53	0	this	ArNativeSoManager
-    //   0	53	1	paramString1	String
-    //   0	53	2	paramString2	String
-    //   0	53	3	paramString3	String
-    //   16	28	4	i	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	18	48	finally
-    //   23	39	48	finally
-  }
-  
-  public void a(ArrayList paramArrayList, String paramString, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback)
+  private void b(ArrayList paramArrayList, String paramString, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback)
   {
     boolean bool = false;
     QLog.i("AREngine_ArNativeSoManager", 1, "downloadArNativeSo. resName = " + paramString);
@@ -236,7 +177,7 @@ public class ArNativeSoManager
             ((ARPreSoResourceDownload.DownloadInfo)localObject2).d = paramArrayList.jdField_a_of_type_JavaLangString;
             ((ARPreSoResourceDownload.DownloadInfo)localObject2).c = ((String)localObject1);
             ((ARPreSoResourceDownload.DownloadInfo)localObject2).jdField_a_of_type_Boolean = true;
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload.a((ARPreSoResourceDownload.DownloadInfo)localObject2, new aact(this, paramString, paramARResourceDownloadCallback));
+            this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload.a((ARPreSoResourceDownload.DownloadInfo)localObject2, new aajj(this, paramString, paramARResourceDownloadCallback));
           }
         }
       }
@@ -277,7 +218,7 @@ public class ArNativeSoManager
     }
   }
   
-  public void a(ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString)
+  private void b(ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString)
   {
     QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoResIfNeed. resName = " + paramString);
     String str1 = a(paramString);
@@ -334,6 +275,79 @@ public class ArNativeSoManager
     }
   }
   
+  private boolean b(String paramString1, String paramString2)
+  {
+    if (new File(paramString1).exists())
+    {
+      if (!paramString2.equalsIgnoreCase(PortalUtils.a(paramString1)))
+      {
+        QLog.i("AREngine_ArNativeSoManager", 1, "checkFileValid failed. check md5 failed. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
+        return false;
+      }
+      return true;
+    }
+    QLog.i("AREngine_ArNativeSoManager", 1, "checkFileValid failed. file is not exist. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
+    return false;
+  }
+  
+  /* Error */
+  public int a(String paramString1, String paramString2, String paramString3)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ldc 26
+    //   5: invokevirtual 32	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   8: ifeq +15 -> 23
+    //   11: aload_2
+    //   12: aload_3
+    //   13: invokestatic 243	com/tencent/mobileqq/ar/ArSDK2NativeSoLoader:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   16: istore 4
+    //   18: aload_0
+    //   19: monitorexit
+    //   20: iload 4
+    //   22: ireturn
+    //   23: aload_1
+    //   24: ldc 44
+    //   26: invokevirtual 32	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   29: ifeq +13 -> 42
+    //   32: aload_2
+    //   33: aload_3
+    //   34: invokestatic 244	com/tencent/mobileqq/ar/ArCloudNativeSoLoader:a	(Ljava/lang/String;Ljava/lang/String;)I
+    //   37: istore 4
+    //   39: goto -21 -> 18
+    //   42: iconst_m1
+    //   43: istore 4
+    //   45: goto -27 -> 18
+    //   48: astore_1
+    //   49: aload_0
+    //   50: monitorexit
+    //   51: aload_1
+    //   52: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	this	ArNativeSoManager
+    //   0	53	1	paramString1	String
+    //   0	53	2	paramString2	String
+    //   0	53	3	paramString3	String
+    //   16	28	4	i	int
+    // Exception table:
+    //   from	to	target	type
+    //   2	18	48	finally
+    //   23	39	48	finally
+  }
+  
+  public void a(ArrayList paramArrayList, String paramString, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback)
+  {
+    ThreadManager.getSubThreadHandler().post(new aaji(this, paramArrayList, paramString, paramARResourceDownloadCallback));
+  }
+  
+  public void a(ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString)
+  {
+    ThreadManager.getSubThreadHandler().post(new aajk(this, paramArrayList1, paramArrayList2, paramString));
+  }
+  
   public boolean a(ArrayList paramArrayList, String paramString)
   {
     QLog.i("AREngine_ArNativeSoManager", 1, "isArNativeSoDownload. resName = " + paramString);
@@ -345,7 +359,7 @@ public class ArNativeSoManager
       {
         ARCommonConfigInfo.NativeSoRes localNativeSoRes = (ARCommonConfigInfo.NativeSoRes)paramArrayList.get(i);
         if ((!localNativeSoRes.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) || (!localNativeSoRes.b.equalsIgnoreCase(str))) {
-          break label154;
+          break label155;
         }
         paramArrayList = ArNativeSoLoaderBase.a(localNativeSoRes.jdField_a_of_type_JavaLangString, localNativeSoRes.b, localNativeSoRes.d) + File.separator + localNativeSoRes.d + ".zip";
         if (!b(paramArrayList, localNativeSoRes.d)) {
@@ -357,7 +371,7 @@ public class ArNativeSoManager
         return false;
       }
       return a(paramString);
-      label154:
+      label155:
       i += 1;
     }
   }

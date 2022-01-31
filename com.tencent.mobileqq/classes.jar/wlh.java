@@ -1,46 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.HashMap;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.book.BookEditText;
+import com.tencent.mobileqq.text.QQText;
 
 public class wlh
-  implements View.OnClickListener
+  implements InputFilter
 {
-  public wlh(TroopActivity paramTroopActivity) {}
+  public wlh(BookEditText paramBookEditText) {}
   
-  public void onClick(View paramView)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    boolean bool = false;
-    switch (paramView.getId())
-    {
-    default: 
-      this.a.b();
-      return;
-    case 2131363245: 
-    case 2131363994: 
-    case 2131363995: 
-      if (this.a.a != null)
-      {
-        paramView = new Intent();
-        if (!this.a.a.isEmpty()) {
-          bool = true;
-        }
-        paramView.putExtra("isDataChanged", bool);
-        this.a.setResult(-1, paramView);
-      }
-      this.a.onBackPressed();
-      return;
+    this.a.a(paramSpanned.toString());
+    if (this.a.a(paramCharSequence.toString()) == 0) {
+      BookEditText.a(this.a);
     }
-    ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right", 0, 0, "", "", "", "");
-    if (this.a.a())
-    {
-      this.a.b();
-      return;
+    while (!QQText.a(paramCharSequence.toString())) {
+      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
     }
-    ReportController.b(this.a.app, "CliOper", "", "", "Grp", "Clk_grplist_plus", 0, 0, "", "", "", "");
-    this.a.a();
+    return "";
   }
 }
 

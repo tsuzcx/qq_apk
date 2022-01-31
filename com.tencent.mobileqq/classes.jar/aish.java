@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
 
-public class aish
+class aish
   implements Runnable
 {
-  public aish(AbsPreDownloadTask paramAbsPreDownloadTask) {}
+  aish(aisg paramaisg) {}
   
   public void run()
   {
-    this.a.a();
+    ConfigSetting.a(this.a.a);
   }
 }
 

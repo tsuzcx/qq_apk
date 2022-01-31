@@ -1,21 +1,53 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
+import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
 
 public class xrf
-  implements Runnable
+  implements PopupMenuDialog.OnClickActionListener
 {
-  public xrf(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xrf(RecentOptPopBar paramRecentOptPopBar) {}
   
-  public void run()
+  public void a(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    if (!this.a.n)
+    switch (paramMenuItem.a)
     {
-      this.a.a.a(2002, "抱歉，摄像头可能被禁止了", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "[@] ERR_CODE_CAMERA_CREATE  黑名单机型,2秒还没有获取到预览帧,可能没有权限");
-      }
+    default: 
+      return;
+    case 2131438761: 
+      this.a.m();
+      return;
+    case 2131439219: 
+      this.a.n();
+      return;
+    case 2131436251: 
+      this.a.j();
+      return;
+    case 2131436248: 
+      this.a.i();
+      return;
+    case 2131436255: 
+      this.a.o();
+      return;
+    case 2131436252: 
+      this.a.r();
+      return;
+    case 2131436261: 
+      RecentOptPopBar.a(this.a);
+      return;
+    case 2131436256: 
+      this.a.a(8);
+      ReportController.b(this.a.a.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.fukuan.click", 0, 0, "", "", "", "");
+      return;
+    case 2131436246: 
+      this.a.q();
+      return;
+    case 2131438763: 
+      this.a.k();
+      return;
     }
+    this.a.p();
   }
 }
 

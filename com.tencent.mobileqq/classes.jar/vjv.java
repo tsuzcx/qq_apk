@@ -1,31 +1,29 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopFilePicItemBuilder;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder.Holder;
+import com.tencent.mobileqq.activity.aio.item.SignatureView;
 
 public class vjv
-  extends BaseBubbleBuilder.ViewHolder
+  implements View.OnTouchListener
 {
-  public long a;
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public int e;
-  public int f;
+  public vjv(RichStatItemBuilder paramRichStatItemBuilder, RichStatItemBuilder.Holder paramHolder) {}
   
-  public vjv(TroopFilePicItemBuilder paramTroopFilePicItemBuilder)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Boolean = true;
+    if (((SignatureView)paramView).a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+    {
+      switch (paramMotionEvent.getAction())
+      {
+      }
+      for (;;)
+      {
+        return true;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder);
+      }
+    }
+    return false;
   }
 }
 

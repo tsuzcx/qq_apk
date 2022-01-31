@@ -1,13 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
 
-public class aazb
-  implements DialogInterface.OnClickListener
+class aazb
+  implements aazl
 {
-  public aazb(ARMapActivity paramARMapActivity) {}
+  aazb(aayw paramaayw, aazj paramaazj, aazl paramaazl, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString }));
+      ArkAppDataReport.a(this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, 4);
+      this.jdField_a_of_type_Aazl.a(true);
+      return;
+    }
+    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString }));
+    ArkAppDataReport.a(this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, 1);
+    aayw.a(this.jdField_a_of_type_Aayw, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj, new aazc(this));
+  }
 }
 
 

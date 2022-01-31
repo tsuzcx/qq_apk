@@ -1,56 +1,57 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.EcShopFirstRunMsgConfigs;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.dataline.activities.LiteActivity;
+import com.dataline.activities.PrinterActivity;
+import com.dataline.util.PrinterSessionAdapter;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.DataLineObserver;
+import com.tencent.mobileqq.app.PrinterHandler;
 
 public class zqn
-  extends DownloadListener
+  extends DataLineObserver
 {
-  public zqn(EcShopFirstRunMsgConfigs paramEcShopFirstRunMsgConfigs) {}
+  public zqn(PrinterHandler paramPrinterHandler) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  protected void a(Session paramSession)
   {
-    super.onDone(paramDownloadTask);
-    if ((paramDownloadTask.a == 0) && (EcShopFirstRunMsgConfigs.a(this.a).b != null))
+    this.a.a(3, paramSession, 0.0D, false);
+    if (this.a.a != null)
     {
-      str = paramDownloadTask.a().getString("path");
-      if ((EcShopFirstRunMsgConfigs.b(this.a).b != null) && (!TextUtils.isEmpty(str)))
-      {
-        if (!EcShopAssistantManager.e.equals(str)) {
-          break label142;
-        }
-        EcShopFirstRunMsgConfigs.c(this.a).b.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_report_json", paramDownloadTask.i).commit();
-        ((EcshopReportHandler)EcShopFirstRunMsgConfigs.d(this.a).b.a(88)).b();
-        if (QLog.isColorLevel()) {
-          QLog.i("Ecshop", 2, "download report json success.");
-        }
-      }
+      this.a.a.c();
+      this.a.a.notifyDataSetChanged();
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
     }
-    label142:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        String str;
-        do
-        {
-          return;
-        } while (!EcShopAssistantManager.f.equals(str));
-        EcShopFirstRunMsgConfigs.e(this.a).b.getApp().getSharedPreferences("ecshop_sp", 0).edit().putLong("last_modified_behaviors_json", paramDownloadTask.i).commit();
-      } while (!QLog.isColorLevel());
-      QLog.i("Ecshop", 2, "download behaviors json success.");
-      return;
+  }
+  
+  protected void a(Session paramSession, float paramFloat)
+  {
+    this.a.a(1, paramSession, paramFloat, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
     }
-    QLog.i("Ecshop", 2, "download json failed.");
+  }
+  
+  protected void a(Session paramSession, boolean paramBoolean)
+  {
+    this.a.a(2, paramSession, 0.0D, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    this.a.a(paramLong, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(Session paramSession)
+  {
+    this.a.a(0, paramSession, 0.0D, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

@@ -1,40 +1,64 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.location.adapter.SelectableAdapter;
-import com.tencent.mobileqq.nearby.now.widget.CommonViewHolder.ItemClickListener;
+import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicpendant.MusicPendantListener;
+import com.tencent.mobileqq.musicpendant.MusicPendantManager;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
 import java.util.List;
 
 public class aetk
-  implements CommonViewHolder.ItemClickListener
+  implements QQPlayerService.QQPlayerCallback
 {
-  public aetk(SelectableAdapter paramSelectableAdapter, CommonViewHolder.ItemClickListener paramItemClickListener) {}
+  public aetk(MusicPendantManager paramMusicPendantManager) {}
   
-  public void a(int paramInt, View paramView)
+  public String getToken()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_Int == paramInt) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_AndroidViewView);
-    }
-    int i = paramInt;
-    if (paramInt > this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_JavaUtilList.size()) {
-      i = this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_JavaUtilList.size() - 1;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonViewHolder$ItemClickListener.a(i, paramView);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_JavaUtilList.get(i);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSelectableAdapter.a(paramView);
+    return MusicPendantManager.a();
   }
   
-  public void b(int paramInt, View paramView)
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonViewHolder$ItemClickListener.b(paramInt, paramView);
+    try
+    {
+      Iterator localIterator = MusicPendantManager.a().iterator();
+      while (localIterator.hasNext())
+      {
+        MusicPendantListener localMusicPendantListener = (MusicPendantListener)((WeakReference)localIterator.next()).get();
+        if (localMusicPendantListener != null) {
+          localMusicPendantListener.a(paramSongInfo);
+        }
+      }
+      return;
+    }
+    catch (Exception paramSongInfo)
+    {
+      paramSongInfo.printStackTrace();
+    }
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    try
+    {
+      Iterator localIterator = MusicPendantManager.a().iterator();
+      while (localIterator.hasNext())
+      {
+        MusicPendantListener localMusicPendantListener = (MusicPendantListener)((WeakReference)localIterator.next()).get();
+        if (localMusicPendantListener != null) {
+          localMusicPendantListener.a(paramInt);
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetk
  * JD-Core Version:    0.7.0.1
  */

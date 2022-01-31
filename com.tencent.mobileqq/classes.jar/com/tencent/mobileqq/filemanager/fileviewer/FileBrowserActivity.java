@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import adbb;
-import adbc;
-import adbd;
-import adbe;
-import adbf;
+import adji;
+import adjj;
+import adjk;
+import adjl;
+import adjm;
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -62,13 +62,13 @@ public class FileBrowserActivity
   protected int a;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new adbd(this);
+  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new adjk(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   ForwardFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo;
   public FileBrowserManager a;
   private ForwardData jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerForwardData;
-  IFileViewListener jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener = new adbe(this);
+  IFileViewListener jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener = new adjl(this);
   private ShareActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
   boolean jdField_a_of_type_Boolean = false;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -144,7 +144,7 @@ public class FileBrowserActivity
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(null, new adbb(this, getResources().getDisplayMetrics().widthPixels / 6));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(null, new adji(this, getResources().getDisplayMetrics().widthPixels / 6));
     this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(false);
   }
   
@@ -162,13 +162,13 @@ public class FileBrowserActivity
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserManager != null)
     {
       String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserManager.a();
-      this.jdField_a_of_type_AndroidWidgetTextView.post(new adbc(this, str));
+      this.jdField_a_of_type_AndroidWidgetTextView.post(new adjj(this, str));
     }
   }
   
   private void g()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363381));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363400));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 19.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserManager.a());
   }
@@ -182,7 +182,7 @@ public class FileBrowserActivity
       }
       if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
       {
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adbf(this);
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adjm(this);
         IntentFilter localIntentFilter = new IntentFilter();
         localIntentFilter.addAction("com.tencent.qlink.destory.fmactivity");
         this.app.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
@@ -206,7 +206,7 @@ public class FileBrowserActivity
   
   public RelativeLayout a()
   {
-    return (RelativeLayout)findViewById(2131368855);
+    return (RelativeLayout)findViewById(2131368858);
   }
   
   public QQAppInterface a()
@@ -229,7 +229,7 @@ public class FileBrowserActivity
   
   public void a(boolean paramBoolean)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131368859);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131368862);
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -274,7 +274,7 @@ public class FileBrowserActivity
     }
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
-      paramIntent = (RelativeLayout)findViewById(2131365517);
+      paramIntent = (RelativeLayout)findViewById(2131365522);
       paramIntent.setFitsSystemWindows(true);
       paramIntent.setPadding(0, ImmersiveUtils.a(this), 0, 0);
     }
@@ -283,15 +283,15 @@ public class FileBrowserActivity
   
   public void b()
   {
-    ((TextView)findViewById(2131368857)).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363474));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839147);
+    ((TextView)findViewById(2131368860)).setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363493));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839162);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("菜单");
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363262));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363381));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363400));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 19.0F);
   }
   
@@ -434,7 +434,7 @@ public class FileBrowserActivity
         if (paramBundle.getBooleanExtra("key_is_from_lite", false)) {
           this.d = true;
         }
-        setContentViewNoTitle(2130970044);
+        setContentViewNoTitle(2130970055);
         b();
         if (a(paramBundle)) {
           break;
@@ -453,7 +453,7 @@ public class FileBrowserActivity
       c();
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
-        localObject = (RelativeLayout)findViewById(2131365517);
+        localObject = (RelativeLayout)findViewById(2131365522);
         ((RelativeLayout)localObject).setFitsSystemWindows(true);
         ((RelativeLayout)localObject).setPadding(0, ImmersiveUtils.a(this), 0, 0);
       }
@@ -526,7 +526,7 @@ public class FileBrowserActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131363474: 
+    case 2131363493: 
       do
       {
         return;

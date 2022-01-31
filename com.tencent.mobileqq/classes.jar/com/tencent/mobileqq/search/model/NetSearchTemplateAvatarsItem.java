@@ -13,6 +13,7 @@ public class NetSearchTemplateAvatarsItem
 {
   public int a;
   public CharSequence a;
+  public String a;
   public List a;
   
   public NetSearchTemplateAvatarsItem(String paramString, long paramLong, List paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
@@ -26,6 +27,7 @@ public class NetSearchTemplateAvatarsItem
     {
       paramString = new JSONObject(paramString);
       this.jdField_a_of_type_JavaLangCharSequence = SearchUtils.a(paramString.optString("firstLineText"));
+      this.jdField_a_of_type_JavaLangString = paramString.optString("firstLineTextPostfix");
       JSONArray localJSONArray = paramString.optJSONArray("imageList");
       if (localJSONArray != null)
       {

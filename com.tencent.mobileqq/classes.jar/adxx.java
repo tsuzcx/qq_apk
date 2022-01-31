@@ -1,58 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.io.File;
 
-public class adxx
-  implements BusinessObserver
+public final class adxx
+  extends DownloadListener
 {
-  public adxx(UiApiPlugin paramUiApiPlugin) {}
+  public adxx(String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    byte[] arrayOfByte;
-    if (paramBoolean)
+    PayLikeFloatViewBuilder.a(false);
+    if (paramDownloadTask.a == 0)
     {
-      arrayOfByte = paramBundle.getByteArray("data");
-      paramBundle.getString("openId");
-      if (arrayOfByte != null) {
-        paramBundle = new oidb_sso.OIDBSSOPkg();
+      paramDownloadTask = new File(this.a + ".tmp");
+      if (paramDownloadTask.exists()) {
+        paramDownloadTask.renameTo(new File(this.a));
       }
     }
-    try
-    {
-      paramBundle = (oidb_sso.OIDBSSOPkg)paramBundle.mergeFrom((byte[])arrayOfByte);
-      paramInt = paramBundle.uint32_result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "handleOidb0x716_48Rsp, resultCode:" + paramInt);
-      }
-      paramBundle = paramBundle.bytes_bodybuffer.get().toByteArray();
-      if (paramInt == 0)
-      {
-        arrayOfByte = new byte[4];
-        System.arraycopy(paramBundle, 0, arrayOfByte, 0, 4);
-        paramBundle = TroopInfoActivity.a(String.valueOf(ByteBuffer.wrap(arrayOfByte).getInt() + ""), 32);
-        ChatSettingForTroop.a(this.a.a(), paramBundle, -1);
-      }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "pkg.mergeFrom:" + paramBundle.toString());
-    }
+    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adxx
  * JD-Core Version:    0.7.0.1
  */

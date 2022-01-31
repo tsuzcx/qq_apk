@@ -1,30 +1,13 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
 
 public class ugz
   implements Runnable
 {
-  public ugz(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public ugz(TroopMemberListActivity.ListAdapter paramListAdapter) {}
   
   public void run()
   {
-    try
-    {
-      if ((VerifyPhoneNumActivity.a(this.a) != null) && (VerifyPhoneNumActivity.a(this.a).isShowing()))
-      {
-        VerifyPhoneNumActivity.a(this.a).dismiss();
-        VerifyPhoneNumActivity.a(this.a).cancel();
-      }
-      VerifyPhoneNumActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a.notifyDataSetChanged();
   }
 }
 

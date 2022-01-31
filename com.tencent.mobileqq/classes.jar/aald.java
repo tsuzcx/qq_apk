@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.arcard.ARBlessWordFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-public class aald
-  implements DialogInterface.OnClickListener
+public final class aald
+  implements Parcelable.Creator
 {
-  public aald(ARBlessWordFragment paramARBlessWordFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
   {
-    this.a.a();
-    ARBlessWordFragment.a(this.a);
+    return new ARScanStarFaceConfigInfo(paramParcel);
+  }
+  
+  public ARScanStarFaceConfigInfo[] a(int paramInt)
+  {
+    return new ARScanStarFaceConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aald
  * JD-Core Version:    0.7.0.1
  */

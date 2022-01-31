@@ -1,15 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.FileBrowserPresenterBase;
+import com.tencent.mobileqq.filemanager.core.FileUploader;
+import com.tencent.mobileqq.filemanager.core.FileUploader.IFileUploaderSink;
 
 public class adea
-  implements View.OnClickListener
+  implements Runnable
 {
-  public adea(FileBrowserPresenterBase paramFileBrowserPresenterBase) {}
+  public adea(FileUploader paramFileUploader) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.k();
+    if (FileUploader.a(this.a)) {
+      return;
+    }
+    if (FileUploader.a(this.a) != null) {
+      FileUploader.a(this.a).i();
+    }
+    FileUploader.a(this.a, 0L);
+    this.a.a(0L);
   }
 }
 

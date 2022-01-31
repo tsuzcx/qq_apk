@@ -1,20 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import com.tencent.mobileqq.hotpic.PublicAccountGifListener;
+import mqq.os.MqqHandler;
 
 public class llt
-  extends FriendListObserver
+  implements PublicAccountGifListener
 {
-  public llt(KandianMergeManager paramKandianMergeManager) {}
+  public llt(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(HotPicData paramHotPicData)
   {
-    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.a(this.a), paramString)) && (!TextUtils.equals(paramString, AppConstants.as))) {
-      KandianMergeManager.a(this.a).a(1).a(4, true, new Object[] { AppConstants.as });
-    }
+    this.a.a = paramHotPicData;
+    ReadInJoyCommentComponentFragment.a(this.a, null);
+    ThreadManager.getUIHandler().post(new llu(this));
   }
 }
 

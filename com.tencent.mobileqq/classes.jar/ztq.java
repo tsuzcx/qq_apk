@@ -1,15 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Rect;
+import com.tencent.mobileqq.app.ScreenShot;
 
 public class ztq
   implements Runnable
 {
-  public ztq(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, int paramInt) {}
+  public ztq(ScreenShot paramScreenShot, ztr paramztr) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), "Linkstar Push!ChooserAc!! msgType = " + this.jdField_a_of_type_Int, 0).a();
+    if (!this.jdField_a_of_type_Ztr.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Ztr.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
+    }
+    this.jdField_a_of_type_Ztr.invalidate();
   }
 }
 

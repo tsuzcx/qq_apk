@@ -1,28 +1,17 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.ui.WebViewTitlerBar;
 
-class akyq
-  implements WXShareHelper.WXShareListener
+public class akyq
+  implements View.OnClickListener
 {
-  akyq(akyp paramakyp) {}
+  public akyq(WebViewTitlerBar paramWebViewTitlerBar) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(View paramView)
   {
-    if ((WorldCupShareFragment.c(this.a.a.a) == null) || (!WorldCupShareFragment.c(this.a.a.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    QLog.d("WorldCupShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND_CIRCLE onWXShareResp resp.errCode = " + paramBaseResp.errCode);
-    switch (paramBaseResp.errCode)
-    {
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      WorldCupShareFragment.a("0X800931F", 4);
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
     }
   }
 }

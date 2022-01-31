@@ -1,29 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.magicface.drawable.IMessageHandler;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.intervideo.now.NowWebViewPlugin;
 
-public final class aedp
-  extends Handler
+public class aedp
+  implements TroopMemberApiClient.Callback
 {
-  java.lang.ref.WeakReference a;
+  public aedp(NowWebViewPlugin paramNowWebViewPlugin) {}
   
-  public aedp(IMessageHandler paramIMessageHandler)
+  public void a(Bundle paramBundle)
   {
-    super(Looper.getMainLooper());
-    this.a = new mqq.util.WeakReference(paramIMessageHandler);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a == null) {}
-    IMessageHandler localIMessageHandler;
-    do
+    int i = paramBundle.getInt("msg");
+    if (i == 91)
     {
+      NowWebViewPlugin.a(this.a, paramBundle.getInt("state"));
+      NowWebViewPlugin.a(this.a, NowWebViewPlugin.a(this.a), NowWebViewPlugin.b(this.a));
+    }
+    while (i != 92) {
       return;
-      localIMessageHandler = (IMessageHandler)this.a.get();
-    } while (localIMessageHandler == null);
-    localIMessageHandler.a(paramMessage);
+    }
+    i = paramBundle.getInt("errCode");
+    paramBundle = paramBundle.getString("desc");
+    NowWebViewPlugin.a(this.a, i, paramBundle);
   }
 }
 

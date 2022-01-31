@@ -78,11 +78,11 @@ public class PokeAndEmoPanel
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131363032));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131363037));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363031));
-    this.jdField_b_of_type_AndroidViewView = a(2131362479, 2130837686, getContext().getString(2131438139));
-    this.jdField_a_of_type_AndroidViewView = a(2131362480, 2130837687, getContext().getString(2131438137));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363036));
+    this.jdField_b_of_type_AndroidViewView = a(2131362482, 2130837685, getContext().getString(2131438159));
+    this.jdField_a_of_type_AndroidViewView = a(2131362483, 2130837686, getContext().getString(2131438157));
     if (AppSetting.b)
     {
       this.jdField_b_of_type_AndroidViewView.setContentDescription("表情泡泡");
@@ -184,7 +184,7 @@ public class PokeAndEmoPanel
     {
     default: 
       return;
-    case 2131362480: 
+    case 2131362483: 
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.jdField_a_of_type_Int, true);
       paramView.setSelected(true);
       this.jdField_b_of_type_AndroidViewView.setSelected(false);

@@ -14,14 +14,14 @@ public class CampusCircleBaseActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    setContentView(2130970270);
+    setContentView(2130970285);
     switch (getIntent().getIntExtra("tag_busi_id", 0))
     {
     }
     for (paramBundle = null; paramBundle != null; paramBundle = new CampusCircleSelTopicFragment())
     {
       FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
-      localFragmentTransaction.add(2131364417, paramBundle);
+      localFragmentTransaction.add(2131364442, paramBundle);
       localFragmentTransaction.commit();
       return bool;
     }

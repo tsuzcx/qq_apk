@@ -1,52 +1,20 @@
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.Setting;
 
 public final class acdf
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public void run()
+  public Setting a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, start");
-    }
-    String str = EmojiStickerManager.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, rootPath = " + str);
-    }
-    Object localObject = new File(str);
-    if (((File)localObject).exists())
-    {
-      localObject = ((File)localObject).list();
-      if ((localObject == null) || (localObject.length <= 1)) {
-        break label113;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, list.length =  " + localObject.length);
-      }
-    }
-    return;
-    label113:
-    if (QLog.isColorLevel()) {
-      QLog.i("EmojiStickerManager", 2, "extractStickerMaterial, need to extract  ");
-    }
-    localObject = str + "emojiStickerGuideZip_v2" + ".zip";
-    try
-    {
-      FileUtils.a((String)localObject, str, false);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      QLog.e("EmojiStickerManager", 1, "extractStickerMaterial uncompressZip error = " + localIOException);
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("EmojiStickerManager", 1, "extractStickerMaterial uncompressZip error = " + localOutOfMemoryError);
-    }
+    Setting localSetting = new Setting();
+    localSetting.readFromParcel(paramParcel);
+    return localSetting;
+  }
+  
+  public Setting[] a(int paramInt)
+  {
+    return new Setting[paramInt];
   }
 }
 

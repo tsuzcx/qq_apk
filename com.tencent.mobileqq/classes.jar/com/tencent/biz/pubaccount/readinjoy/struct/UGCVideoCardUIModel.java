@@ -1,6 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -12,11 +14,35 @@ import java.util.ArrayList;
 public class UGCVideoCardUIModel
   extends CommonVideoCardUIModel
 {
-  private String a;
+  private String jdField_a_of_type_JavaLangString;
+  private URL jdField_a_of_type_JavaNetURL;
   
   public UGCVideoCardUIModel(BaseArticleInfo paramBaseArticleInfo)
   {
     super(paramBaseArticleInfo);
+  }
+  
+  public URL a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b.size() > 0)) {
+      return ReadInJoyUtils.a(ReadInJoyUtils.a(((SocializeFeedsInfo.UGCVideoInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b.get(0)).d, paramInt1, paramInt2));
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
+  }
+  
+  public URL a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaNetURL == null) {
+      if (!paramBoolean) {
+        break label48;
+      }
+    }
+    label48:
+    for (Pair localPair = ReadInJoyDisplayUtils.d();; localPair = ReadInJoyDisplayUtils.c())
+    {
+      this.jdField_a_of_type_JavaNetURL = a(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue());
+      return this.jdField_a_of_type_JavaNetURL;
+    }
   }
   
   public int getCommentCount()

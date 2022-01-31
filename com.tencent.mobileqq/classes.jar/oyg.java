@@ -1,38 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.biz.troop.file.TroopFileProtocol;
-import com.tencent.biz.widgets.InputDialog;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
-public class oyg
-  implements DialogInterface.OnClickListener
+class oyg
+  implements Runnable
 {
-  public oyg(MoveFileActivity paramMoveFileActivity) {}
+  oyg(oyf paramoyf, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = (InputDialog)paramDialogInterface;
-    this.a.jdField_a_of_type_JavaLangString = paramDialogInterface.getInputValue().trim();
-    if (this.a.jdField_a_of_type_JavaLangString.length() > TroopFileUtils.a)
-    {
-      paramDialogInterface.a(this.a.getString(2131429716), -65536);
-      ReportController.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "over_num", 0, 0, this.a.jdField_a_of_type_Long + "", "", "", "");
-    }
-    do
-    {
+    if (this.jdField_a_of_type_Oyf.a.isFinishing()) {
       return;
-      if (TroopFileUtils.a(this.a.jdField_a_of_type_JavaLangString))
-      {
-        paramDialogInterface.a(this.a.getString(2131429718), -65536);
-        ReportController.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "0", "", "");
-        return;
-      }
-      paramDialogInterface.dismiss();
-    } while (TroopFileUtils.a(this.a.app, this.a, this.a.jdField_a_of_type_Long) == 0);
-    TroopFileProtocol.a(this.a.app, this.a.jdField_a_of_type_Long, "/", this.a.jdField_a_of_type_JavaLangString, MoveFileActivity.a(this.a));
-    this.a.a(2131429709);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    localBundle.putString("forward_filepath", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(localBundle);
+    ForwardBaseOption.a(this.jdField_a_of_type_Oyf.a, localIntent, 21);
   }
 }
 

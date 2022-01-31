@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.sonic;
 
-import akmo;
+import akuf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class SonicPreloadData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new akmo();
+  public static final Parcelable.Creator CREATOR = new akuf();
   public int a;
   public long a;
   public String a;
@@ -65,7 +65,7 @@ public class SonicPreloadData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.SonicPreloadData
  * JD-Core Version:    0.7.0.1
  */

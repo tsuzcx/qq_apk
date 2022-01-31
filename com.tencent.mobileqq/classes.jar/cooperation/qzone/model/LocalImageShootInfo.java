@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amuq;
+import ancb;
 import android.media.ExifInterface;
 import android.media.MediaMetadataRetriever;
 import android.os.Build.VERSION;
@@ -18,7 +18,7 @@ import java.util.Date;
 public class LocalImageShootInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amuq();
+  public static final Parcelable.Creator CREATOR = new ancb();
   public long a;
   public GpsInfo4LocalImage a;
   public String a;

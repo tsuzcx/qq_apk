@@ -1,18 +1,28 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.PackageInstallReceiver;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.CardContainer;
 
 public class aljg
-  implements Runnable
+  extends Handler
 {
-  public aljg(PackageInstallReceiver paramPackageInstallReceiver, String paramString1, String paramString2) {}
-  
-  public void run()
+  public aljg(CardContainer paramCardContainer, Looper paramLooper)
   {
-    LogUtility.c(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonPackageInstallReceiver.jdField_a_of_type_JavaLangString, "ACTION_PACKAGE_REPLACED >> " + this.jdField_a_of_type_JavaLangString);
-    DownloadInfo localDownloadInfo = new DownloadInfo("", this.b);
-    DownloadManager.a().a(13, localDownloadInfo);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.b.setImageDrawable(this.a.a);
+    }
   }
 }
 

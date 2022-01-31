@@ -467,50 +467,62 @@ public class ARScanFragment
   
   public void onPause()
   {
-    QLog.i("AREngine_ARScanFragment", 1, "onPause start.");
-    if ((this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.c()))
+    Object localObject = new StringBuilder().append("onPause start, mAREngine[");
+    if (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      GLSurfaceView localGLSurfaceView = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a();
-      if (localGLSurfaceView != null) {
-        localGLSurfaceView.onPause();
-      }
-      if ((!this.d) && (!this.e))
+      QLog.w("AREngine_ARScanFragment", 1, bool + "], mInOCRRecognize[" + this.d + "], mInSearchQuestion[" + this.e + "]");
+      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.c()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a(true);
-        b(true);
-        c(true);
-        b(true);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a();
+        if (localObject != null) {
+          ((GLSurfaceView)localObject).onPause();
+        }
+        if ((!this.d) && (!this.e))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a(true);
+          b(true);
+          c(true);
+          b(true);
+        }
+        int i = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.b();
+        long l = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.c();
+        ScanEntranceReport.a().a(i, l);
       }
-      int i = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.b();
-      long l = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.c();
-      ScanEntranceReport.a().a(i, l);
+      super.onPause();
+      QLog.i("AREngine_ARScanFragment", 1, "onPause end.");
+      return;
     }
-    super.onPause();
-    QLog.i("AREngine_ARScanFragment", 1, "onPause end.");
   }
   
   public void onResume()
   {
-    QLog.i("AREngine_ARScanFragment", 1, "onResume start.");
-    super.onResume();
-    this.jdField_a_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.c()))
+    Object localObject = new StringBuilder().append("onResume start, mAREngine[");
+    if (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.t();
-      this.jdField_a_of_type_Int = 0;
-      GLSurfaceView localGLSurfaceView = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a();
-      if (localGLSurfaceView != null) {
-        localGLSurfaceView.onResume();
-      }
-      if ((!this.d) && (!this.e))
+      QLog.w("AREngine_ARScanFragment", 1, bool + "], mInOCRRecognize[" + this.d + "], mInSearchQuestion[" + this.e + "]");
+      super.onResume();
+      this.jdField_a_of_type_Boolean = true;
+      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.c()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.e();
-        b(false);
-        c(false);
-        b(false);
+        this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.t();
+        this.jdField_a_of_type_Int = 0;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a();
+        if (localObject != null) {
+          ((GLSurfaceView)localObject).onResume();
+        }
+        if ((!this.d) && (!this.e))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.e();
+          b(false);
+          c(false);
+          b(false);
+        }
       }
+      QLog.i("AREngine_ARScanFragment", 1, "onResume end.");
+      return;
     }
-    QLog.i("AREngine_ARScanFragment", 1, "onResume end.");
   }
   
   public void onStart()

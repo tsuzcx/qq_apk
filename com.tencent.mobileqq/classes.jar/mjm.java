@@ -1,13 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
 
 public class mjm
-  extends ThreadLocal
+  implements Runnable
 {
-  public mjm(ReadInJoyXListView paramReadInJoyXListView) {}
+  public mjm(VideoUIManager paramVideoUIManager) {}
   
-  protected Boolean a()
+  public void run()
   {
-    return Boolean.valueOf(false);
+    if ((VideoUIManager.a(this.a) != null) && (VideoUIManager.a(this.a).a != null)) {
+      PublicAccountReportUtils.a(null, "", "0X8008ACF", "0X8008ACF", 0, 0, "", "", "", VideoReporter.a(VideoUIManager.a(this.a).a.mVideoVid, VideoUIManager.a(this.a).a.innerUniqueID, (int)VideoUIManager.a(this.a).a.mChannelID, null), false);
+    }
   }
 }
 

@@ -1,18 +1,14 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.InputDialog;
+import android.widget.TextView;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
-public class pds
-  implements View.OnClickListener
+class pds
+  implements Runnable
 {
-  public pds(InputDialog paramInputDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  pds(pdr parampdr, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsInputDialog, 0);
-    }
+    this.jdField_a_of_type_Pdr.a.b.setText(this.jdField_a_of_type_Int + "");
   }
 }
 

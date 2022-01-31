@@ -1,59 +1,16 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView.DropdownCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class akvd
-  implements View.OnClickListener
+  extends SosoInterface.OnLocationListener
 {
-  public akvd(NewStyleDropdownView paramNewStyleDropdownView) {}
-  
-  public void onClick(View paramView)
+  public akvd(WebViewFragment paramWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.a.jdField_a_of_type_Akvg.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Akvg.getWindowToken(), 0);
-    Drawable localDrawable;
-    StringBuilder localStringBuilder;
-    if ((this.a.jdField_a_of_type_Akvg.getAdapter() != null) && (this.a.jdField_a_of_type_Akvg.getAdapter().getCount() > 0))
-    {
-      localDrawable = ((ImageView)paramView).getDrawable();
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("arrow clicked, drawable is down=");
-        if (localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
-          break label248;
-        }
-      }
-    }
-    label248:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("NewStyleDropdownView", 2, bool + ", isLastDropDown=" + this.a.jdField_a_of_type_Boolean);
-      if ((localDrawable != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
-        break;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.c(false);
-      }
-      NewStyleDropdownView.a(this.a).postDelayed(new akve(this, paramView), 500L);
-      paramView = paramView.getContext();
-      if ((paramView != null) && ((paramView instanceof LoginActivity))) {
-        ReportController.a(((LoginActivity)paramView).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
-      }
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.c(true);
-    }
-    this.a.jdField_a_of_type_Akvg.dismissDropDown();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
 }
 
 

@@ -1,33 +1,37 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.SwitchFragmentTitleBarUI;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.ui.WebViewTopTabView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.utils.QQLSSensor;
+import com.tencent.mobileqq.utils.QQLSSensor.ProximitySensorChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class aknd
-  implements RadioGroup.OnCheckedChangeListener
+  extends Handler
 {
-  public aknd(SwitchFragmentTitleBarUI paramSwitchFragmentTitleBarUI) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public aknd(QQLSSensor paramQQLSSensor, Looper paramLooper)
   {
-    paramInt = this.a.a(paramRadioGroup);
-    if (((QQBrowserActivity)this.a.a.a).b != paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    synchronized (this.a)
     {
-      paramRadioGroup = QQBrowserActivity.a(paramInt, (QQBrowserActivity)this.a.a.a);
-      ((QQBrowserActivity)this.a.a.a).b = paramInt;
-      if ((paramRadioGroup.a != null) && (paramRadioGroup.a.a != null)) {
-        paramRadioGroup.a.a.setSelectedTab(paramInt);
+      if (QQLSSensor.a(this.a) != null) {
+        QQLSSensor.a(this.a).a(QQLSSensor.a(this.a));
       }
+      while (!QLog.isDevelopLevel())
+      {
+        super.handleMessage(paramMessage);
+        return;
+      }
+      QLog.d("QQLSActivity", 4, "QQLSSensor handler callback=null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aknd
  * JD-Core Version:    0.7.0.1
  */

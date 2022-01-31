@@ -16,9 +16,9 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.LongSparseArray;
 import java.util.HashMap;
 import java.util.Map;
-import kft;
-import kfu;
-import kfv;
+import khz;
+import kia;
+import kib;
 
 public class GVideoGrayConfig
 {
@@ -26,7 +26,7 @@ public class GVideoGrayConfig
   public int a;
   private long jdField_a_of_type_Long;
   private GVideoGrayConfig.GVideoPreDownloadListener jdField_a_of_type_ComTencentAvUtilsGVideoGrayConfig$GVideoPreDownloadListener;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new kft(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new khz(this);
   private LongSparseArray jdField_a_of_type_ComTencentUtilLongSparseArray = new LongSparseArray();
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   
@@ -42,13 +42,13 @@ public class GVideoGrayConfig
   
   public static void a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    DialogUtil.b(paramContext, 230, paramString1, paramString2, 2131429508, 2131429509, new kfu(paramContext), paramOnClickListener).show();
+    DialogUtil.b(paramContext, 230, paramString1, paramString2, 2131429508, 2131429509, new kia(paramContext), paramOnClickListener).show();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, int paramInt)
   {
     String str = paramIntent.getStringExtra("GroupId");
-    a().a(paramQQAppInterface, str, new kfv(paramQQAppInterface, paramContext, paramIntent, str));
+    a().a(paramQQAppInterface, str, new kib(paramQQAppInterface, paramContext, paramIntent, str));
   }
   
   private static void b(Context paramContext)
@@ -122,7 +122,7 @@ public class GVideoGrayConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.GVideoGrayConfig
  * JD-Core Version:    0.7.0.1
  */

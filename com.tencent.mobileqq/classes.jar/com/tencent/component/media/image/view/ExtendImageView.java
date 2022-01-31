@@ -12,17 +12,17 @@ import android.view.View.MeasureSpec;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import com.tencent.component.media.utils.ImageManagerLog;
-import pip;
-import piq;
-import pir;
-import pis;
-import pit;
-import piu;
+import pnh;
+import pni;
+import pnj;
+import pnk;
+import pnl;
+import pnm;
 
 public class ExtendImageView
   extends ImageView
 {
-  private static final ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new pip();
+  private static final ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new pnh();
   private int jdField_a_of_type_Int = 0;
   private ViewForeground jdField_a_of_type_ComTencentComponentMediaImageViewViewForeground = new ViewForeground(this, null);
   private boolean jdField_a_of_type_Boolean = false;
@@ -91,7 +91,7 @@ public class ExtendImageView
       return;
     }
     clearAnimation();
-    paramAnimation.setAnimationListener(new piu(this, paramRunnable));
+    paramAnimation.setAnimationListener(new pnm(this, paramRunnable));
     startAnimation(paramAnimation);
   }
   
@@ -260,7 +260,7 @@ public class ExtendImageView
   public void setImageBitmap(Bitmap paramBitmap, Animation paramAnimation1, Animation paramAnimation2)
   {
     if (paramAnimation2 != null) {
-      a(paramAnimation2, new piq(this, paramBitmap, paramAnimation1));
+      a(paramAnimation2, new pni(this, paramBitmap, paramAnimation1));
     }
     do
     {
@@ -278,7 +278,7 @@ public class ExtendImageView
   public void setImageDrawable(Drawable paramDrawable, Animation paramAnimation1, Animation paramAnimation2)
   {
     if (paramAnimation2 != null) {
-      a(paramAnimation2, new pir(this, paramDrawable, paramAnimation1));
+      a(paramAnimation2, new pnj(this, paramDrawable, paramAnimation1));
     }
     do
     {
@@ -296,7 +296,7 @@ public class ExtendImageView
   public void setImageResource(int paramInt, Animation paramAnimation1, Animation paramAnimation2)
   {
     if (paramAnimation2 != null) {
-      a(paramAnimation2, new pis(this, paramInt, paramAnimation1));
+      a(paramAnimation2, new pnk(this, paramInt, paramAnimation1));
     }
     do
     {
@@ -314,7 +314,7 @@ public class ExtendImageView
   public void setImageURI(Uri paramUri, Animation paramAnimation1, Animation paramAnimation2)
   {
     if (paramAnimation2 != null) {
-      a(paramAnimation2, new pit(this, paramUri, paramAnimation1));
+      a(paramAnimation2, new pnl(this, paramUri, paramAnimation1));
     }
     do
     {

@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
 
-class xiw
+public class xiw
   implements Runnable
 {
-  xiw(xiv paramxiv) {}
+  public xiw(CommonHbFragment paramCommonHbFragment) {}
   
   public void run()
   {
-    BannerManager.a(this.a.a, true);
+    CommonHbFragment.a(this.a, CommonHbFragment.e(this.a));
   }
 }
 

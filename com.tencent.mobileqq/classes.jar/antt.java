@@ -1,22 +1,44 @@
-import android.graphics.Bitmap;
-import dov.com.tencent.biz.qqstory.takevideo.VideoFragmentInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerManager;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class antt
-  extends VideoFragmentInfo
+  implements Runnable
 {
-  public Bitmap a;
-  public Bitmap b;
+  public antt(QIMCaptureBannerManager paramQIMCaptureBannerManager) {}
   
-  public antt(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public void run()
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
-  }
-  
-  public antt(VideoFragmentInfo paramVideoFragmentInfo, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    this(paramVideoFragmentInfo.jdField_c_of_type_Int, paramVideoFragmentInfo.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+    QIMCaptureBannerConfig localQIMCaptureBannerConfig = QIMCaptureBannerConfig.getBannerConfigFromFile(this.a.a(), QIMCaptureBannerManager.jdField_a_of_type_JavaLangString);
+    if ((localQIMCaptureBannerConfig != null) && (localQIMCaptureBannerConfig.mBannerList.size() > 0))
+    {
+      ??? = localQIMCaptureBannerConfig.mBannerList.entrySet().iterator();
+      while (((Iterator)???).hasNext())
+      {
+        QIMCaptureBannerConfig.BannerItem localBannerItem = (QIMCaptureBannerConfig.BannerItem)((Map.Entry)((Iterator)???).next()).getValue();
+        long l = NetConnInfoCenter.getServerTimeMillis();
+        if (localBannerItem.mEndTime < l) {
+          ((Iterator)???).remove();
+        }
+      }
+    }
+    synchronized (QIMCaptureBannerManager.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig = localQIMCaptureBannerConfig;
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMCaptureBannerManager", 2, "initBannerFromCache= " + localQIMCaptureBannerConfig);
+      }
+      this.a.a().notifyObservers(CaptureConfigUpdateObserver.class, 6, true, null);
+      return;
+    }
   }
 }
 

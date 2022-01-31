@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.wealthgod.WealthGodInfo;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.armap.ARMapOpenRedPackDialog;
 
-public final class abja
-  implements Parcelable.Creator
+public class abja
+  implements Runnable
 {
-  public WealthGodInfo a(Parcel paramParcel)
-  {
-    return new WealthGodInfo(paramParcel);
-  }
+  public abja(ARMapOpenRedPackDialog paramARMapOpenRedPackDialog) {}
   
-  public WealthGodInfo[] a(int paramInt)
+  public void run()
   {
-    return new WealthGodInfo[paramInt];
+    ARMapOpenRedPackDialog.a(this.a).setVisibility(0);
+    ARMapOpenRedPackDialog.a(this.a).startAnimation(ARMapOpenRedPackDialog.a(this.a));
   }
 }
 

@@ -1,22 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicListModel;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.view.View.OnLayoutChangeListener;
+import android.view.Window;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
 public class kpp
-  implements View.OnClickListener
+  implements View.OnLayoutChangeListener
 {
-  public kpp(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, kpw paramkpw) {}
+  public kpp(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void onClick(View paramView)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_Kpw.jdField_a_of_type_AndroidWidgetTextView.setText(2131430036);
-    this.jdField_a_of_type_Kpw.b.setVisibility(4);
-    this.jdField_a_of_type_Kpw.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_JavaLangString), ((AccountDetailActivity)this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_AndroidAppActivity).a());
+    paramInt1 = this.a.getWindow().getDecorView().getBottom() - this.a.getWindow().getDecorView().getTop();
+    if (paramInt1 != this.a.b) {
+      LebaSearchPluginManagerActivity.a(this.a, paramInt1);
+    }
   }
 }
 

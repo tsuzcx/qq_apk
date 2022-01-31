@@ -144,7 +144,7 @@ public class SDKReportManager2
   
   private void initHandler()
   {
-    this.mPostHandler = new c(this, f.b(com.tencent.tmassistantbase.util.g.b));
+    this.mPostHandler = new c(this, f.a(com.tencent.tmassistantbase.util.g.a));
     this.mPostHandler.sendEmptyMessage(2);
   }
   
@@ -185,7 +185,7 @@ public class SDKReportManager2
   
   public void onNetworkChanged()
   {
-    f.a(com.tencent.tmassistantbase.util.g.b).post(new d(this));
+    f.a().post(new d(this));
   }
   
   public void onStatReportFinish(int paramInt1, StatReportRequest paramStatReportRequest, StatReportResponse paramStatReportResponse, int paramInt2)
@@ -210,16 +210,16 @@ public class SDKReportManager2
     //   10: new 61	java/lang/StringBuilder
     //   13: dup
     //   14: invokespecial 62	java/lang/StringBuilder:<init>	()V
-    //   17: ldc_w 346
+    //   17: ldc_w 343
     //   20: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: invokestatic 74	com/tencent/tmassistantbase/util/m:e	()Ljava/lang/String;
     //   26: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   32: invokestatic 83	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   35: invokestatic 351	com/tencent/tmdownloader/f:a	()Lcom/tencent/tmdownloader/f;
+    //   35: invokestatic 348	com/tencent/tmdownloader/f:a	()Lcom/tencent/tmdownloader/f;
     //   38: iload_1
     //   39: aload_2
-    //   40: invokevirtual 353	com/tencent/tmdownloader/f:a	(ILjava/lang/String;)V
+    //   40: invokevirtual 350	com/tencent/tmdownloader/f:a	(ILjava/lang/String;)V
     //   43: aload_0
     //   44: monitorexit
     //   45: return
@@ -227,15 +227,15 @@ public class SDKReportManager2
     //   48: new 61	java/lang/StringBuilder
     //   51: dup
     //   52: invokespecial 62	java/lang/StringBuilder:<init>	()V
-    //   55: ldc_w 355
+    //   55: ldc_w 352
     //   58: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: iload_1
     //   62: invokevirtual 200	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   65: ldc_w 357
+    //   65: ldc_w 354
     //   68: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: aload_2
     //   72: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: ldc_w 359
+    //   75: ldc_w 356
     //   78: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   81: invokestatic 74	com/tencent/tmassistantbase/util/m:e	()Ljava/lang/String;
     //   84: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -244,7 +244,7 @@ public class SDKReportManager2
     //   93: iload_1
     //   94: iflt +85 -> 179
     //   97: aload_2
-    //   98: invokestatic 365	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   98: invokestatic 362	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   101: ifne +78 -> 179
     //   104: aload_0
     //   105: getfield 51	com/tencent/tmassistant/st/SDKReportManager2:mPostCache	Ljava/util/Map;
@@ -266,7 +266,7 @@ public class SDKReportManager2
     //   142: iload_1
     //   143: invokestatic 174	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   146: aload_3
-    //   147: invokeinterface 368 3 0
+    //   147: invokeinterface 365 3 0
     //   152: pop
     //   153: aload_3
     //   154: aload_2
@@ -275,15 +275,15 @@ public class SDKReportManager2
     //   159: aload_0
     //   160: getfield 132	com/tencent/tmassistant/st/SDKReportManager2:mPostHandler	Landroid/os/Handler;
     //   163: iconst_1
-    //   164: invokevirtual 371	android/os/Handler:removeMessages	(I)V
+    //   164: invokevirtual 368	android/os/Handler:removeMessages	(I)V
     //   167: aload_0
     //   168: getfield 132	com/tencent/tmassistant/st/SDKReportManager2:mPostHandler	Landroid/os/Handler;
     //   171: iconst_1
-    //   172: ldc2_w 372
+    //   172: ldc2_w 369
     //   175: invokevirtual 215	android/os/Handler:sendEmptyMessageDelayed	(IJ)Z
     //   178: pop
     //   179: ldc 17
-    //   181: ldc_w 375
+    //   181: ldc_w 372
     //   184: invokestatic 83	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   187: goto -144 -> 43
     //   190: astore_2

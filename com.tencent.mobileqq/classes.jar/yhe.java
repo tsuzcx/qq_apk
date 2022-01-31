@@ -1,28 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2.DiscussionListListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.List;
 
 public class yhe
-  implements View.OnClickListener
+  implements Runnable
 {
-  public yhe(DiscussionListAdapter2 paramDiscussionListAdapter2) {}
+  public yhe(SelectMemberActivity paramSelectMemberActivity, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof yhg)) {}
-    do
-    {
-      return;
-      paramView = (yhg)paramView;
-    } while ((paramView.a == null) || (this.a.a == null));
-    this.a.a.a(paramView.a);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app, "dc00899", "Grp_addFrd", "", "frd_select", "multiMode_add", 0, 0, this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a().size()), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yhe
  * JD-Core Version:    0.7.0.1
  */

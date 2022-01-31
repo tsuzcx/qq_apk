@@ -1,26 +1,15 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.WatermarkVideoRunnable;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class vmx
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public vmx(AIOGalleryScene paramAIOGalleryScene) {}
+  public vmx(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 4)
-    {
-      this.a.o = true;
-      AIOGalleryScene.a(this.a).dismiss();
-      if (AIOGalleryScene.a(this.a) != null) {
-        AIOGalleryScene.a(this.a).a();
-      }
-    }
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 

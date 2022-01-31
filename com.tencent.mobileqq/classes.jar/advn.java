@@ -1,64 +1,34 @@
-import android.view.WindowManager.BadTokenException;
-import android.view.accessibility.AccessibilityManager;
-import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeListener;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import java.lang.reflect.Field;
+import android.graphics.Bitmap;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcObserver;
 
-public final class advn
-  implements HookMethodCallback
+public class advn
+  extends NearbyProcObserver
 {
-  public advn(Class paramClass) {}
+  public advn(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  protected void a()
   {
-    if (paramMethodHookParam.throwable == null) {
-      return;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
     }
-    Object localObject;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localObject = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localObject instanceof WindowManager.BadTokenException)) {
-      try
-      {
-        localObject = this.a.getDeclaredField("mAccessibilityInteractionConnectionManager");
-        ((Field)localObject).setAccessible(true);
-        localObject = ((Field)localObject).get(paramMethodHookParam.thisObject);
-        Field localField = this.a.getDeclaredField("mAccessibilityManager");
-        localField.setAccessible(true);
-        ((AccessibilityManager)localField.get(paramMethodHookParam.thisObject)).removeAccessibilityStateChangeListener((AccessibilityManager.AccessibilityStateChangeListener)localObject);
-        return;
-      }
-      catch (NoSuchFieldException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-        localObject = paramMethodHookParam.throwable;
-      }
-      catch (IllegalArgumentException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (IllegalAccessException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (Exception paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (Error paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-      }
+    this.a.l();
+    this.a.m();
+  }
+  
+  protected void a(int paramInt, String paramString) {}
+  
+  protected void a(int paramInt, String paramString, Bitmap paramBitmap)
+  {
+    if ((this.a.d != null) && (this.a.d.equals(paramString)) && (paramBitmap != null) && (this.a.b != null) && (this.a.b.getVisibility() == 0)) {
+      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
     }
   }
   
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
+  protected void b(int paramInt, String paramString) {}
 }
 
 

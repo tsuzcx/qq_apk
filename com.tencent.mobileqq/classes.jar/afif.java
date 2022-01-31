@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
 
-class afif
-  implements DialogInterface.OnClickListener
+public class afif
+  implements Handler.Callback
 {
-  afif(afib paramafib, QQCustomDialog paramQQCustomDialog) {}
+  public afif(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      NearbyProfileDisplayPanel.a(this.a);
+    }
   }
 }
 

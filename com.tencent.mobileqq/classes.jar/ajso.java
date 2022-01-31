@@ -1,16 +1,14 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
-import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter.ViewHolder;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
+import com.tencent.mobileqq.widget.MessageProgressView.AnimRunnableListener;
 
 public class ajso
-  implements Runnable
+  implements MessageProgressView.AnimRunnableListener
 {
-  public ajso(MediaPreviewAdapter paramMediaPreviewAdapter, MediaPreviewAdapter.ViewHolder paramViewHolder) {}
+  public ajso(ImageItem.ImageViewHolder paramImageViewHolder) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter$ViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a);
+    this.a.a();
   }
 }
 

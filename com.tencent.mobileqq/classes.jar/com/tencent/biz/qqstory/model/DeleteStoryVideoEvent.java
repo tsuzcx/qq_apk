@@ -16,7 +16,7 @@ public class DeleteStoryVideoEvent
   
   public DeleteStoryVideoEvent(ErrorMessage paramErrorMessage, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.errorInfo = paramErrorMessage;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Boolean = paramBoolean;
   }

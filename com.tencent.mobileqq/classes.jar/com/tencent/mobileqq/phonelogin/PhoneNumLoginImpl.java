@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.phonelogin;
 
-import agkj;
-import agkk;
+import agox;
+import agoy;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -190,12 +190,12 @@ public class PhoneNumLoginImpl
       return true;
     }
     QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
-    localQQCustomDialog.setTitle(2131434324);
-    localQQCustomDialog.setMessage(2131434325);
-    paramQQAppInterface = new agkj(this, str, paramActivity, paramQQAppInterface);
-    paramActivity = new agkk(this);
-    localQQCustomDialog.setPositiveButton(2131434326, paramQQAppInterface);
-    localQQCustomDialog.setNegativeButton(2131433015, paramActivity);
+    localQQCustomDialog.setTitle(2131434340);
+    localQQCustomDialog.setMessage(2131434341);
+    paramQQAppInterface = new agox(this, str, paramActivity, paramQQAppInterface);
+    paramActivity = new agoy(this);
+    localQQCustomDialog.setPositiveButton(2131434342, paramQQAppInterface);
+    localQQCustomDialog.setNegativeButton(2131433029, paramActivity);
     localQQCustomDialog.show();
     return false;
   }

@@ -1,49 +1,47 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.data.MessageForTroopTopic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
+import com.tencent.mobileqq.troop.data.TroopTopicDetailInfoManager;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ajyn
-  implements DownloadParams.DecodeHandler
+public class ajyn
+  implements Runnable
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public ajyn(TroopTopicMgr paramTroopTopicMgr, MessageRecord paramMessageRecord) {}
+  
+  public void run()
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
+    if (QLog.isColorLevel()) {
+      QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo query db");
     }
-    do
+    TroopTopicDetailInfo localTroopTopicDetailInfo = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, true);
+    if (localTroopTopicDetailInfo != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.b(localTroopTopicDetailInfo);
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForTroopTopic)) {
+        if (((MessageForTroopTopic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).pVersion < localTroopTopicDetailInfo.pVersion)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo fetch network");
+          }
+          TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localTroopTopicDetailInfo);
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
     {
       do
       {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 2);
-    paramDownloadParams = (int[])localObject;
-    float f2 = DeviceInfoUtil.a();
-    float f1 = f2;
-    if (f2 < 0.01F) {
-      f1 = 1.0F;
+        return;
+      } while (localTroopTopicDetailInfo.pVersion == localTroopTopicDetailInfo.mOldVersion);
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo fetch network 2");
+      }
+      TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localTroopTopicDetailInfo);
+      return;
     }
-    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
-    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
-    paramDownloadParams = ImageUtil.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
-    paramBitmap = new Canvas(paramDownloadParams);
-    Object localObject = new Paint();
-    ((Paint)localObject).setAntiAlias(true);
-    ((Paint)localObject).setStyle(Paint.Style.STROKE);
-    ((Paint)localObject).setColor(Color.argb(20, 0, 0, 0));
-    ((Paint)localObject).setStrokeWidth(0.5F);
-    f1 = paramDownloadParams.getWidth() * 0.5F;
-    paramBitmap.drawCircle(f1, f1, f1 - 0.5F, (Paint)localObject);
-    return paramDownloadParams;
+    QLog.e(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo there is no topic info in db.");
   }
 }
 

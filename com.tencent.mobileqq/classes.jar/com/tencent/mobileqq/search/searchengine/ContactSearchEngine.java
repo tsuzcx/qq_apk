@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import ahvc;
-import ahvd;
-import ahve;
-import ahvf;
-import ahvg;
+import ahzs;
+import ahzt;
+import ahzu;
+import ahzv;
+import ahzw;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -69,14 +69,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ContactSearchEngine
   implements ISearchEngine
 {
-  private static final Comparator jdField_a_of_type_JavaUtilComparator = new ahvc();
+  private static final Comparator jdField_a_of_type_JavaUtilComparator = new ahzs();
   public static boolean a;
-  private static final Comparator jdField_b_of_type_JavaUtilComparator = new ahvd();
+  private static final Comparator jdField_b_of_type_JavaUtilComparator = new ahzt();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = -1L;
   public QQAppInterface a;
@@ -84,11 +85,11 @@ public class ContactSearchEngine
   private ISearchListener jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
-  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private List jdField_a_of_type_JavaUtilList;
   private Map jdField_a_of_type_JavaUtilMap;
   private Queue jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
   private Set jdField_a_of_type_JavaUtilSet;
+  private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private ContactSearchEngine.TypedReportInfo[] jdField_a_of_type_ArrayOfComTencentMobileqqSearchSearchengineContactSearchEngine$TypedReportInfo = { new ContactSearchEngine.TypedReportInfo(1, "friend"), new ContactSearchEngine.TypedReportInfo(768, "phone_contact"), new ContactSearchEngine.TypedReportInfo(4, "discussion_member"), new ContactSearchEngine.TypedReportInfo(8, "discussion"), new ContactSearchEngine.TypedReportInfo(16, "troop"), new ContactSearchEngine.TypedReportInfo(32, "recent_user"), new ContactSearchEngine.TypedReportInfo(64, "tool"), new ContactSearchEngine.TypedReportInfo(2048, "circle_buddy"), new ContactSearchEngine.TypedReportInfo(131072, "global_troop_member") };
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -184,7 +185,7 @@ public class ContactSearchEngine
   
   private int a(String paramString)
   {
-    paramString = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
     if (paramString != null) {
       return paramString.intValue();
     }
@@ -197,7 +198,7 @@ public class ContactSearchEngine
     return this.jdField_b_of_type_JavaUtilList;
   }
   
-  private List a(ahvf paramahvf)
+  private List a(ahzv paramahzv)
   {
     int i = 0;
     if (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchSearchengineContactSearchEngine$TypedReportInfo.length)
@@ -233,7 +234,7 @@ public class ContactSearchEngine
         i = 0;
         while (i < localList.size())
         {
-          if (paramahvf.a())
+          if (paramahzv.a())
           {
             if (QLog.isColorLevel()) {
               QLog.d("ContactSearchEngine", 2, "searchContactWithoutTroopMember canceled, keyword = " + str);
@@ -291,12 +292,12 @@ public class ContactSearchEngine
           localObject = null;
           if (localIterator.hasNext())
           {
-            ahvg localahvg = (ahvg)localIterator.next();
-            if ((!paramString.contains(localahvg.jdField_a_of_type_JavaLangString)) || (localahvg.jdField_a_of_type_JavaLangString.length() <= i)) {
+            ahzw localahzw = (ahzw)localIterator.next();
+            if ((!paramString.startsWith(localahzw.jdField_a_of_type_JavaLangString)) || (localahzw.jdField_a_of_type_JavaLangString.length() <= i)) {
               break label252;
             }
-            i = localahvg.jdField_a_of_type_JavaLangString.length();
-            localObject = localahvg;
+            i = localahzw.jdField_a_of_type_JavaLangString.length();
+            localObject = localahzw;
             break label255;
           }
         }
@@ -305,12 +306,12 @@ public class ContactSearchEngine
           localObject = this.jdField_a_of_type_JavaUtilQueue;
           continue;
         }
-        if ((localObject != null) && (((ahvg)localObject).jdField_a_of_type_JavaUtilList != null))
+        if ((localObject != null) && (((ahzw)localObject).jdField_a_of_type_JavaUtilList != null))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("ContactSearchEngine", 2, "getBestCache hit cache, cur keyword = " + paramString + " , cache keyword = " + ((ahvg)localObject).jdField_a_of_type_JavaLangString + " , cache size = " + ((ahvg)localObject).jdField_a_of_type_JavaUtilList.size());
+            QLog.d("ContactSearchEngine", 2, "getBestCache hit cache, cur keyword = " + paramString + " , cache keyword = " + ((ahzw)localObject).jdField_a_of_type_JavaLangString + " , cache size = " + ((ahzw)localObject).jdField_a_of_type_JavaUtilList.size());
           }
-          paramString = ((ahvg)localObject).jdField_a_of_type_JavaUtilList;
+          paramString = ((ahzw)localObject).jdField_a_of_type_JavaUtilList;
           return paramString;
         }
       }
@@ -360,15 +361,15 @@ public class ContactSearchEngine
     }
     for (;;)
     {
-      localQueue.add(new ahvg(this, paramString, paramList));
+      localQueue.add(new ahzw(this, paramString, paramList));
       return;
       label124:
       Iterator localIterator = localQueue.iterator();
       while (localIterator.hasNext())
       {
-        ahvg localahvg = (ahvg)localIterator.next();
-        if (localahvg.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          localQueue.remove(localahvg);
+        ahzw localahzw = (ahzw)localIterator.next();
+        if (localahzw.jdField_a_of_type_JavaUtilList.isEmpty()) {
+          localQueue.remove(localahzw);
         }
       }
       if (localQueue.size() == 2) {
@@ -403,7 +404,7 @@ public class ContactSearchEngine
     return j;
   }
   
-  private List b(ahvf paramahvf)
+  private List b(ahzv paramahzv)
   {
     String str;
     Object localObject1;
@@ -432,9 +433,9 @@ public class ContactSearchEngine
         localObject3 = new ArrayList();
         i = 0;
         if (i >= ((List)localObject1).size()) {
-          break label1412;
+          break label1426;
         }
-        if (paramahvf.a())
+        if (paramahzv.a())
         {
           if (QLog.isColorLevel()) {
             QLog.d("ContactSearchEngine", 2, "searchTroopMember canceled, keyword = " + str);
@@ -449,7 +450,7 @@ public class ContactSearchEngine
         int m = 0;
         ??? = (FTSTroopOperator)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(2);
         localObject4 = ((FTSTroopOperator)???).a(str);
-        if (paramahvf.a())
+        if (paramahzv.a())
         {
           if (QLog.isColorLevel()) {
             QLog.d("ContactSearchEngine", 2, "searchTroopMember canceled, keyword = " + str);
@@ -476,18 +477,18 @@ public class ContactSearchEngine
         {
           i = m;
           if (localObject4 == null) {
-            break label1243;
+            break label1257;
           }
           i = m;
           if (((List)localObject4).size() <= 0) {
-            break label1243;
+            break label1257;
           }
           localObject3 = new ArrayList();
           i = 0;
           if (i >= ((List)localObject4).size()) {
             break label590;
           }
-          if (!paramahvf.a()) {
+          if (!paramahzv.a()) {
             break label504;
           }
           if (QLog.isColorLevel()) {
@@ -517,14 +518,14 @@ public class ContactSearchEngine
         if (((List)localObject3).size() > 0)
         {
           if (((0x20000 & this.jdField_a_of_type_Int) == 0) && ((0x400000 & this.jdField_a_of_type_Int) == 0)) {
-            break label1441;
+            break label1455;
           }
           localObject4 = new ArrayList();
           localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
           i = 0;
           if (i < ((List)localObject3).size())
           {
-            if (paramahvf.a())
+            if (paramahzv.a())
             {
               if (QLog.isColorLevel()) {
                 QLog.d("ContactSearchEngine", 2, "searchTroopMember canceled, keyword = " + str);
@@ -532,7 +533,7 @@ public class ContactSearchEngine
               return null;
             }
             localObject6 = (TroopIndex)((List)localObject3).get(i);
-            if ((localObject5 != null) && (((String)localObject5).equals(((TroopIndex)localObject6).mMemberUin))) {}
+            if (((localObject5 != null) && (((String)localObject5).equals(((TroopIndex)localObject6).mMemberUin))) || ("50000000".equals(((TroopIndex)localObject6).mMemberUin))) {}
             for (;;)
             {
               i += 1;
@@ -548,8 +549,8 @@ public class ContactSearchEngine
         }
       }
     }
-    label1412:
-    label1441:
+    label1426:
+    label1455:
     for (int i = ((List)localObject4).size() + 0;; i = 0)
     {
       if (((0x10000 & this.jdField_a_of_type_Int) != 0) || ((0x200000 & this.jdField_a_of_type_Int) != 0))
@@ -559,7 +560,7 @@ public class ContactSearchEngine
         k = 0;
         if (k < ((List)localObject3).size())
         {
-          if (paramahvf.a())
+          if (paramahzv.a())
           {
             if (QLog.isColorLevel()) {
               QLog.d("ContactSearchEngine", 2, "searchTroopMember canceled, keyword = " + str);
@@ -601,7 +602,7 @@ public class ContactSearchEngine
       {
         for (;;)
         {
-          label1243:
+          label1257:
           l2 = System.currentTimeMillis() - l1 - l2;
           this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchSearchengineContactSearchEngine$TypedReportInfo[n].jdField_b_of_type_Int = i;
           this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchSearchengineContactSearchEngine$TypedReportInfo[n].jdField_a_of_type_Long = l2;
@@ -631,7 +632,7 @@ public class ContactSearchEngine
   
   private List b(SearchRequest paramSearchRequest)
   {
-    Object localObject2 = new ahvf(this, false);
+    Object localObject2 = new ahzv(this, false);
     boolean bool;
     for (;;)
     {
@@ -643,7 +644,7 @@ public class ContactSearchEngine
         {
           bool = paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getBoolean("searchRequestFromHome", false);
           ??? = this.jdField_a_of_type_JavaLangString;
-          if (!((ahvf)localObject2).a()) {
+          if (!((ahzv)localObject2).a()) {
             break;
           }
           if (QLog.isColorLevel()) {
@@ -656,7 +657,7 @@ public class ContactSearchEngine
     }
     long l1 = System.currentTimeMillis();
     Object localObject3 = new ArrayList();
-    Object localObject4 = a((ahvf)localObject2);
+    Object localObject4 = a((ahzv)localObject2);
     this.jdField_c_of_type_Int = 0;
     int i;
     HashSet localHashSet;
@@ -684,7 +685,7 @@ public class ContactSearchEngine
         if (localIterator.hasNext())
         {
           IContactSearchModel localIContactSearchModel = (IContactSearchModel)localIterator.next();
-          if (((ahvf)localObject2).a())
+          if (((ahzv)localObject2).a())
           {
             if (QLog.isColorLevel()) {
               QLog.d("ContactSearchEngine", 2, "searchContact canceled, keyword = " + (String)???);
@@ -714,7 +715,7 @@ public class ContactSearchEngine
     }
     for (;;)
     {
-      if (((ahvf)localObject2).a())
+      if (((ahzv)localObject2).a())
       {
         if (QLog.isColorLevel()) {
           QLog.d("ContactSearchEngine", 2, "searchContact canceled, keyword = " + (String)???);
@@ -727,7 +728,7 @@ public class ContactSearchEngine
         if (i != 0) {
           if (!bool) {}
         }
-        for (paramSearchRequest = b((ahvf)localObject2); ((ahvf)localObject2).a(); paramSearchRequest = null)
+        for (paramSearchRequest = b((ahzv)localObject2); ((ahzv)localObject2).a(); paramSearchRequest = null)
         {
           if (QLog.isColorLevel()) {
             QLog.d("ContactSearchEngine", 2, "searchContact canceled, keyword = " + (String)???);
@@ -742,7 +743,7 @@ public class ContactSearchEngine
           ((List)localObject3).addAll(paramSearchRequest);
         }
         localObject4 = new ArrayList();
-        if (a((List)localObject3, (List)localObject4, (ahvf)localObject2, (String)???)) {
+        if (a((List)localObject3, (List)localObject4, (ahzv)localObject2, (String)???)) {
           return null;
         }
         paramSearchRequest = new ArrayList();
@@ -807,7 +808,7 @@ public class ContactSearchEngine
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (IContactSearchModel)((Iterator)localObject2).next();
-          ((IContactSearchModel)localObject3).jdField_a_of_type_JavaUtilHashMap = ((HashMap)???);
+          ((IContactSearchModel)localObject3).a = ((HashMap)???);
           if ("9970".equals(((IContactSearchModel)localObject3).a())) {
             this.jdField_b_of_type_Boolean = true;
           }
@@ -819,12 +820,12 @@ public class ContactSearchEngine
   
   private List c(SearchRequest paramSearchRequest)
   {
-    ahvf localahvf = new ahvf(this, false);
+    ahzv localahzv = new ahzv(this, false);
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.jdField_c_of_type_JavaUtilList.add(new WeakReference(localahvf));
+      this.jdField_c_of_type_JavaUtilList.add(new WeakReference(localahzv));
       this.jdField_a_of_type_JavaLangString = paramSearchRequest.jdField_a_of_type_JavaLangString;
-      return b(localahvf);
+      return b(localahzv);
     }
   }
   
@@ -838,7 +839,7 @@ public class ContactSearchEngine
       while ((i < j) && (i < 999))
       {
         RecentUser localRecentUser = (RecentUser)localList.get(i);
-        this.jdField_a_of_type_JavaUtilHashMap.put(localRecentUser.uin, Integer.valueOf(999 - i));
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localRecentUser.uin, Integer.valueOf(999 - i));
         i += 1;
       }
     }
@@ -939,7 +940,7 @@ public class ContactSearchEngine
         while (((Iterator)localObject2).hasNext())
         {
           localObject4 = (RecentUser)((Iterator)localObject2).next();
-          if (!TextUtils.isEmpty(((RecentUser)localObject4).uin)) {
+          if ((!TextUtils.isEmpty(((RecentUser)localObject4).uin)) && (!"50000000".equals(((RecentUser)localObject4).uin))) {
             switch (((RecentUser)localObject4).type)
             {
             case 1001: 
@@ -969,7 +970,7 @@ public class ContactSearchEngine
     Object localObject6;
     Object localObject7;
     Object localObject8;
-    label431:
+    label443:
     Friends localFriends;
     if ((paramInt & 0x1) != 0)
     {
@@ -999,15 +1000,15 @@ public class ContactSearchEngine
                   localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
                   i = this.jdField_b_of_type_Int;
                   if (localFriends.gathtertype != 1) {
-                    break label554;
+                    break label566;
                   }
                 }
               }
-              label554:
-              for (localObject1 = BaseApplicationImpl.sApplication.getResources().getString(2131437763);; localObject1 = ((Groups)localObject7).group_name)
+              label566:
+              for (localObject1 = BaseApplicationImpl.sApplication.getResources().getString(2131437783);; localObject1 = ((Groups)localObject7).group_name)
               {
                 ((List)localObject2).add(new ContactSearchModelFriend(localQQAppInterface, i, localFriends, (String)localObject1, a(localFriends.uin)));
-                break label431;
+                break label443;
                 break;
               }
             }
@@ -1204,9 +1205,7 @@ public class ContactSearchEngine
         while (((Iterator)localObject2).hasNext())
         {
           localObject4 = (TroopInfo)((Iterator)localObject2).next();
-          if (!((TroopInfo)localObject4).isQidianPrivateTroop()) {
-            ((List)localObject1).add(new ContactSearchModelTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, (TroopInfo)localObject4, a(((TroopInfo)localObject4).troopuin)));
-          }
+          ((List)localObject1).add(new ContactSearchModelTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, (TroopInfo)localObject4, a(((TroopInfo)localObject4).troopuin)));
         }
       }
       ((List)localObject3).addAll((Collection)localObject1);
@@ -1222,15 +1221,15 @@ public class ContactSearchEngine
       ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, String.valueOf(9973L), 9002, a(String.valueOf(9973L))));
       if ((ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (!ReadInJoyHelper.h()))
       {
-        ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, String.valueOf(AppConstants.as), 7220, a(String.valueOf(AppConstants.as))));
+        ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, String.valueOf(AppConstants.at), 7220, a(String.valueOf(AppConstants.at))));
         ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, String.valueOf(9970L), 7120, a(String.valueOf(9970L))));
-        ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, AppConstants.at, 7230, a(String.valueOf(AppConstants.at))));
+        ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, AppConstants.au, 7230, a(String.valueOf(AppConstants.au))));
         ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, String.valueOf(9980L), 9000, a(String.valueOf(9980L))));
         ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, String.valueOf(9994L), 5000, a(String.valueOf(9994L))));
         ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, String.valueOf(9992L), 7000, a(String.valueOf(9992L))));
         localObject2 = (BlessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(137);
         if ((localObject2 == null) || (!((BlessManager)localObject2).b())) {
-          break label2780;
+          break label2784;
         }
         ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, String.valueOf(9960L), 9003, a(String.valueOf(9960L))));
         if (QLog.isColorLevel()) {
@@ -1242,7 +1241,7 @@ public class ContactSearchEngine
         ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, String.valueOf(AppConstants.C), 4000, a(String.valueOf(AppConstants.C))));
         localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(true);
         if (localObject2 == null) {
-          break label2798;
+          break label2802;
         }
         localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
@@ -1270,14 +1269,14 @@ public class ContactSearchEngine
         if (ReadInJoyHelper.h()) {
           break;
         }
-        ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, AppConstants.ar, 1008, a(String.valueOf(AppConstants.ar))));
+        ((List)localObject1).add(new ContactSearchModelTool(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, AppConstants.as, 1008, a(String.valueOf(AppConstants.as))));
         break;
-        label2780:
+        label2784:
         if (QLog.isColorLevel()) {
           QLog.d("ContactSearchEngine", 2, "Bless model is not added.");
         }
       }
-      label2798:
+      label2802:
       ((List)localObject3).addAll((Collection)localObject1);
     }
     if ((paramInt & 0x1000) != 0)
@@ -1285,13 +1284,13 @@ public class ContactSearchEngine
       localObject2 = new ArrayList();
       localObject1 = a();
       if (localObject1 == null) {
-        break label3535;
+        break label3539;
       }
     }
-    label3078:
-    label3244:
-    label3266:
-    label3535:
+    label3082:
+    label3248:
+    label3270:
+    label3539:
     for (Object localObject1 = (List)((Map)localObject1).get(this.jdField_c_of_type_JavaLangString);; localObject1 = null)
     {
       if (localObject1 != null)
@@ -1322,7 +1321,7 @@ public class ContactSearchEngine
         {
           localObject1 = "";
           if (localObject2 == null) {
-            break label3266;
+            break label3270;
           }
           localObject7 = ((List)localObject2).iterator();
           do
@@ -1333,13 +1332,13 @@ public class ContactSearchEngine
             localObject2 = (TroopMemberInfo)((Iterator)localObject7).next();
           } while ((!Utils.d(((TroopMemberInfo)localObject2).memberuin)) || (((paramInt & 0x2000) != 0) && (((String)localObject5).equals(((TroopMemberInfo)localObject2).memberuin))) || (((0x100000 & paramInt) != 0) && (((String)localObject5).equals(((TroopMemberInfo)localObject2).memberuin))) || (((0x40000 & paramInt) != 0) && (localObject6 != null) && (!((TroopInfo)localObject6).isTroopAdmin(((TroopMemberInfo)localObject2).memberuin)) && (!((TroopInfo)localObject6).isTroopOwner(((TroopMemberInfo)localObject2).memberuin))));
           if ((0x100000 & paramInt) == 0) {
-            break label3244;
+            break label3248;
           }
         }
         for (localObject2 = new TroopBatchAddFrdsSearchModelMember(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, (TroopMemberInfo)localObject2, (String)localObject1);; localObject2 = new ContactSearchModelTroopMember(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Int, (TroopMemberInfo)localObject2))
         {
           ((List)localObject4).add(localObject2);
-          break label3078;
+          break label3082;
           localObject1 = ((TroopInfo)localObject6).troopcode;
           break;
         }
@@ -1463,14 +1462,14 @@ public class ContactSearchEngine
   public void a(SearchRequest paramSearchRequest, ISearchListener paramISearchListener)
   {
     this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = paramISearchListener;
-    ThreadManager.postImmediately(new ahve(this, paramSearchRequest), null, true);
+    ThreadManager.postImmediately(new ahzu(this, paramSearchRequest), null, true);
   }
   
-  public boolean a(List paramList1, List paramList2, ahvf arg3, String paramString)
+  public boolean a(List paramList1, List paramList2, ahzv arg3, String paramString)
   {
-    ahvf localahvf = ???;
+    ahzv localahzv = ???;
     if (??? == null) {
-      localahvf = new ahvf(this, false);
+      localahzv = new ahzv(this, false);
     }
     IContactSearchModel localIContactSearchModel1;
     for (;;)
@@ -1478,7 +1477,7 @@ public class ContactSearchEngine
       IContactSearchModel localIContactSearchModel2;
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        this.jdField_c_of_type_JavaUtilList.add(new WeakReference(localahvf));
+        this.jdField_c_of_type_JavaUtilList.add(new WeakReference(localahzv));
         ??? = new HashMap();
         paramList1 = paramList1.iterator();
         if (!paramList1.hasNext()) {
@@ -1486,7 +1485,7 @@ public class ContactSearchEngine
         }
         localIContactSearchModel1 = (IContactSearchModel)paramList1.next();
         localIContactSearchModel2 = (IContactSearchModel)???.get(localIContactSearchModel1.a());
-        if (localahvf.a())
+        if (localahzv.a())
         {
           if (QLog.isColorLevel()) {
             QLog.d("ContactSearchEngine", 2, "searchContact canceled, keyword = " + paramString);
@@ -1503,7 +1502,7 @@ public class ContactSearchEngine
     while (???.hasNext())
     {
       localIContactSearchModel1 = (IContactSearchModel)???.next();
-      if (localahvf.a())
+      if (localahzv.a())
       {
         if (QLog.isColorLevel()) {
           QLog.d("ContactSearchEngine", 2, "searchContact canceled, keyword = " + paramString);
@@ -1539,10 +1538,10 @@ public class ContactSearchEngine
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
-        ahvf localahvf = (ahvf)localWeakReference.get();
-        if (localahvf != null)
+        ahzv localahzv = (ahzv)localWeakReference.get();
+        if (localahzv != null)
         {
-          localahvf.a(true);
+          localahzv.a(true);
           localArrayList.add(localWeakReference);
         }
       }

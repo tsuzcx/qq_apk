@@ -1,22 +1,22 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.av.widget.shimmer.ShimmerTextView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.GVideoGrayConfig;
 
-public class kia
-  extends AccessibilityDelegateCompat
+public final class kia
+  implements DialogInterface.OnClickListener
 {
-  public kia(ShimmerTextView paramShimmerTextView) {}
+  public kia(Context paramContext) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setVisibleToUser(false);
+    GVideoGrayConfig.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kia
  * JD-Core Version:    0.7.0.1
  */

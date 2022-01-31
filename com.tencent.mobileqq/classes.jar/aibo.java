@@ -1,91 +1,192 @@
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgrAppDownload;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.search.view.SearchVoiceView;
+import com.tencent.mobileqq.search.view.SearchVoiceView.OnStateEndListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-class aibo
-  implements INetEngine.INetEngineListener
+public class aibo
+  implements Handler.Callback
 {
-  aibo(aibn paramaibn, String paramString, DownloadInfo paramDownloadInfo, int paramInt1, int paramInt2) {}
+  public aibo(SearchVoiceView paramSearchVoiceView) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
+    int i = 3;
+    if (paramMessage == null) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
     }
     for (;;)
     {
-      GestureMgrAppDownload.a(i / this.jdField_a_of_type_Aibn.jdField_a_of_type_Int + this.jdField_a_of_type_Aibn.b);
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      return true;
+      SearchVoiceView.a(this.a, 0);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.a(this.a) > 0) {
+        SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
       }
-    }
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
-    if (this.jdField_a_of_type_Aibn.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
-      this.jdField_a_of_type_Aibn.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QavGesture", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.jdField_a_of_type_JavaLangString, Integer.valueOf(paramNetResp.jdField_a_of_type_Int), Integer.valueOf(paramNetResp.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    int i;
-    if (paramNetResp.jdField_a_of_type_Int == 0)
-    {
-      paramNetResp = new File(localHttpNetReq.c);
-      if (paramNetResp.exists())
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.d(this.a) > 0) {
+        SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.c(this.a));
+      }
+      this.a.e -= SearchVoiceView.e(this.a) * 3;
+      if (this.a.e < SearchVoiceView.f(this.a) * 9 / 10) {
+        this.a.e = (SearchVoiceView.f(this.a) * 9 / 10);
+      }
+      this.a.invalidate();
+      SearchVoiceView.a(this.a).removeMessages(0);
+      SearchVoiceView.a(this.a).sendEmptyMessageDelayed(0, 30L);
+      continue;
+      SearchVoiceView.a(this.a, 1);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.a(this.a) > 0) {
+        SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      }
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.d(this.a) > 0) {
+        SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.c(this.a));
+      }
+      if (this.a.e < SearchVoiceView.g(this.a))
       {
-        try
-        {
-          String str = paramNetResp.getParent();
-          FileUtils.a(localHttpNetReq.c, str, false);
-          GestureMgrAppDownload.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.jdField_a_of_type_Int);
-          i = 1;
+        this.a.e += SearchVoiceView.e(this.a);
+        label438:
+        if (this.a.e >= SearchVoiceView.f(this.a) / 10) {
+          break label567;
         }
-        catch (Exception localException)
+        this.a.e = (SearchVoiceView.f(this.a) / 10);
+      }
+      for (;;)
+      {
+        this.a.invalidate();
+        SearchVoiceView.a(this.a).removeMessages(0);
+        SearchVoiceView.a(this.a).removeMessages(1);
+        SearchVoiceView.a(this.a).sendEmptyMessageDelayed(1, 30L);
+        break;
+        if (this.a.e <= SearchVoiceView.g(this.a)) {
+          break label438;
+        }
+        this.a.e -= SearchVoiceView.e(this.a) * 6;
+        break label438;
+        label567:
+        if (this.a.e > SearchVoiceView.f(this.a) * 9 / 10) {
+          this.a.e = (SearchVoiceView.f(this.a) * 9 / 10);
+        }
+      }
+      SearchVoiceView.a(this.a, 2);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.a(this.a) > 0) {
+        SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      }
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) + SearchVoiceView.b(this.a));
+      if (SearchVoiceView.d(this.a) > 0) {
+        SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.c(this.a));
+      }
+      this.a.e += SearchVoiceView.e(this.a) * 4;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("SearchVoiceView", 2, " handle state = " + SearchVoiceView.h(this.a) + " frontOffsetY = " + this.a.e + " height = " + SearchVoiceView.f(this.a));
+      }
+      SearchVoiceView.a(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a) / 5.0F);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.e(this.a));
+      SearchVoiceView.a(this.a, (SearchVoiceView.a(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.b(this.a, (SearchVoiceView.d(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.c(this.a, (SearchVoiceView.f(this.a) + 360.0F) % 360.0F);
+      if (this.a.e >= SearchVoiceView.f(this.a)) {}
+      long l2;
+      long l1;
+      for (;;)
+      {
+        this.a.invalidate();
+        SearchVoiceView.a(this.a).removeMessages(0);
+        SearchVoiceView.a(this.a).removeMessages(1);
+        SearchVoiceView.a(this.a).removeMessages(2);
+        int j = 15;
+        if (SearchVoiceView.a(this.a) != 0L)
         {
-          for (;;)
-          {
-            localException.printStackTrace();
-            i = 0;
+          l2 = SystemClock.uptimeMillis() - SearchVoiceView.a(this.a);
+          l1 = l2;
+          if (l2 > 30L) {
+            l1 = 0L;
           }
-          GestureMgrAppDownload.a(-1);
-          this.jdField_a_of_type_Aibn.jdField_a_of_type_Boolean = false;
-          return;
+          j = (int)l1;
         }
-        paramNetResp.delete();
+        SearchVoiceView.a(this.a, SystemClock.uptimeMillis());
+        SearchVoiceView.a(this.a).sendEmptyMessageDelayed(i, j);
+        break;
+        SearchVoiceView.a(this.a, 0L);
+        i = 2;
       }
-    }
-    for (;;)
-    {
-      if (i != 0)
+      SearchVoiceView.a(this.a, 3);
+      SearchVoiceView.a(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a) / 5.0F);
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.e(this.a));
+      SearchVoiceView.a(this.a, (SearchVoiceView.a(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.b(this.a, (SearchVoiceView.d(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.c(this.a, (SearchVoiceView.f(this.a) + 360.0F) % 360.0F);
+      this.a.invalidate();
+      SearchVoiceView.a(this.a).removeMessages(0);
+      SearchVoiceView.a(this.a).removeMessages(1);
+      SearchVoiceView.a(this.a).removeMessages(2);
+      SearchVoiceView.a(this.a).removeMessages(3);
+      i = 30;
+      if (SearchVoiceView.a(this.a) != 0L)
       {
-        GestureMgrAppDownload.a(100 / this.jdField_a_of_type_Aibn.jdField_a_of_type_Int + this.jdField_a_of_type_Aibn.b);
-        paramNetResp = this.jdField_a_of_type_Aibn;
-        paramNetResp.b += 100 / this.jdField_a_of_type_Aibn.jdField_a_of_type_Int;
-        if (!this.jdField_a_of_type_Aibn.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.b - 1)) {
-          this.jdField_a_of_type_Aibn.jdField_a_of_type_Boolean = false;
+        l2 = SystemClock.uptimeMillis() - SearchVoiceView.a(this.a);
+        l1 = l2;
+        if (l2 > 30L) {
+          l1 = 0L;
         }
-        return;
+        i = (int)l1;
       }
-      i = 0;
+      SearchVoiceView.a(this.a, SystemClock.uptimeMillis());
+      SearchVoiceView.a(this.a).sendEmptyMessageDelayed(3, i);
+      continue;
+      SearchVoiceView.a(this.a, 4);
+      SearchVoiceView.a(this.a, SearchVoiceView.a(this.a) + SearchVoiceView.b(this.a) / 2.0F);
+      SearchVoiceView.d(this.a, SearchVoiceView.g(this.a) - SearchVoiceView.h(this.a) / 2.0F + 2.0F);
+      SearchVoiceView.e(this.a, SearchVoiceView.c(this.a) - SearchVoiceView.i(this.a));
+      SearchVoiceView.b(this.a, SearchVoiceView.a(this.a) - SearchVoiceView.c(this.a));
+      SearchVoiceView.f(this.a, SearchVoiceView.c(this.a) - SearchVoiceView.j(this.a));
+      SearchVoiceView.c(this.a, SearchVoiceView.d(this.a) - SearchVoiceView.e(this.a));
+      SearchVoiceView.a(this.a, (SearchVoiceView.a(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.b(this.a, (SearchVoiceView.d(this.a) + 360.0F) % 360.0F);
+      SearchVoiceView.c(this.a, (SearchVoiceView.f(this.a) + 360.0F) % 360.0F);
+      if (SearchVoiceView.g(this.a) <= 0.0F)
+      {
+        SearchVoiceView.d(this.a, 0.0F);
+        SearchVoiceView.d(this.a, 0);
+      }
+      for (i = 5;; i = 4)
+      {
+        this.a.invalidate();
+        SearchVoiceView.a(this.a).removeMessages(0);
+        SearchVoiceView.a(this.a).removeMessages(1);
+        SearchVoiceView.a(this.a).removeMessages(2);
+        SearchVoiceView.a(this.a).removeMessages(3);
+        SearchVoiceView.a(this.a).removeMessages(4);
+        SearchVoiceView.a(this.a).sendEmptyMessageDelayed(i, 15L);
+        break;
+        SearchVoiceView.d(this.a, (int)(255.0F * (1.0F - SearchVoiceView.g(this.a) / 360.0F)));
+      }
+      SearchVoiceView.a(this.a, 5);
+      this.a.invalidate();
+      SearchVoiceView.a(this.a).removeMessages(0);
+      SearchVoiceView.a(this.a).removeMessages(1);
+      SearchVoiceView.a(this.a).removeMessages(2);
+      SearchVoiceView.a(this.a).removeMessages(3);
+      SearchVoiceView.a(this.a).removeMessages(4);
+      if (SearchVoiceView.a(this.a) != null) {
+        SearchVoiceView.a(this.a).e();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aibo
  * JD-Core Version:    0.7.0.1
  */

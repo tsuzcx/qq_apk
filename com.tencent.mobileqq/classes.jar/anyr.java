@@ -1,50 +1,18 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVoteExport;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.LayerEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.FacePagerAdapter;
 
 public class anyr
-  implements VoteLayer.LayerEventListener
+  implements Runnable
 {
-  public anyr(DoodleLayout paramDoodleLayout) {}
+  public anyr(StaticStickerProviderView paramStaticStickerProviderView, int paramInt, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    SLog.b("DoodleLayout", "deleteVote.");
-    if (DoodleLayout.a(this.a) != null)
-    {
-      EditVoteExport localEditVoteExport = (EditVoteExport)DoodleLayout.a(this.a).a(EditVoteExport.class);
-      if (localEditVoteExport != null) {
-        localEditVoteExport.c();
-      }
+    FaceListPage localFaceListPage = this.jdField_a_of_type_DovComQqImCaptureViewStaticStickerProviderView.a.a(this.jdField_a_of_type_Int);
+    if (localFaceListPage != null) {
+      localFaceListPage.a(this.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public boolean a(VoteLayer.VoteItem paramVoteItem)
-  {
-    boolean bool = false;
-    if (this.a.a != null)
-    {
-      this.a.a.setVisibility(0);
-      if (this.a.a.a.b()) {
-        this.a.a.a.a().j = false;
-      }
-      this.a.a.a.a(paramVoteItem);
-      paramVoteItem.j = true;
-      paramVoteItem = paramVoteItem.a;
-      if (!this.a.a.a()) {
-        bool = true;
-      }
-      paramVoteItem.a(bool);
-      this.a.a.requestLayout();
-      return true;
-    }
-    return false;
   }
 }
 

@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class ufy
-  implements Runnable
+public class ufy
+  implements View.OnClickListener
 {
-  ufy(ufx paramufx) {}
+  public ufy(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.finish();
+    if (this.a.d == 11) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    }
+    this.a.b.cancel();
   }
 }
 

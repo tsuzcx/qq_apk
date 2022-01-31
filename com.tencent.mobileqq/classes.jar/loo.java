@@ -1,13 +1,21 @@
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import cooperation.readinjoy.ReadInJoyHelper;
 
-class loo
-  implements Comparator
+public class loo
+  implements Runnable
 {
-  loo(lom paramlom) {}
+  public loo(KandianMergeManager paramKandianMergeManager) {}
   
-  public int a(Integer paramInteger1, Integer paramInteger2)
+  public void run()
   {
-    return paramInteger1.intValue() - paramInteger2.intValue();
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(KandianMergeManager.a(this.a), 1).edit();
+    localEditor.remove("subscribe_push_msg_time");
+    localEditor.remove("subscribe_push_msg_uin");
+    localEditor.remove("subscribe_push_msg_status");
+    localEditor.remove("subscribe_push_msg_xml");
+    ReadInJoyHelper.a(localEditor, true);
   }
 }
 

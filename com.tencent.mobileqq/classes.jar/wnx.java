@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountSearchActivity;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.ReadInJoySearchHistoryAdapter;
 
 public class wnx
-  implements View.OnClickListener
 {
-  public wnx(PublicAccountFragment paramPublicAccountFragment) {}
+  public int a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
   
-  public void onClick(View paramView)
-  {
-    PublicAccountSearchActivity.a(this.a.a, null);
-  }
+  public wnx(ReadInJoySearchHistoryAdapter paramReadInJoySearchHistoryAdapter) {}
 }
 
 

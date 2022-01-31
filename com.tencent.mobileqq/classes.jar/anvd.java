@@ -1,13 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoShareGroup;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.open.base.ToastUtil;
+import com.tencent.util.WeakReferenceHandler;
+import dov.com.qq.im.capture.music.MusicDownloadListener;
+import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
 
 public class anvd
-  implements View.OnClickListener
+  extends MusicDownloadListener
 {
-  public anvd(EditVideoShareGroup paramEditVideoShareGroup) {}
+  public anvd(BgmRecognitionProviderView paramBgmRecognitionProviderView) {}
   
-  public void onClick(View paramView) {}
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    ToastUtil.a().a("正在下载: " + this.a.a);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if ((paramBoolean) && (this.a.a.a().equals(paramString))) {
+      BgmRecognitionProviderView.a(this.a).sendEmptyMessage(1003);
+    }
+  }
 }
 
 

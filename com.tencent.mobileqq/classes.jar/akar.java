@@ -1,158 +1,91 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.NewReportPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.base.MD5Utils;
-import com.tencent.open.base.http.HttpBaseUtil;
-import com.tencent.open.base.http.HttpBaseUtil.Statistic;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
+import java.net.URL;
 
-public final class akar
-  implements Runnable
+public class akar
+  implements URLDrawableDownListener
 {
-  public akar(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, BaseActivity paramBaseActivity, QQProgressDialog paramQQProgressDialog) {}
+  public akar(TroopAvatarWallGalleryAdapter paramTroopAvatarWallGalleryAdapter, ImageProgressCircle paramImageProgressCircle, URLImageView paramURLImageView) {}
   
-  public void run()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    for (;;)
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
     {
-      Object localObject2;
-      Object localObject4;
-      try
-      {
-        switch (this.jdField_a_of_type_Int)
-        {
-        default: 
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("system=android");
-          localStringBuilder.append("&version=7.6.3");
-          localStringBuilder.append("&uintype=1");
-          localObject3 = new StringBuilder().append("&eviluin=");
-          if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-          {
-            localObject2 = this.b;
-            localStringBuilder.append((String)localObject2);
-            localStringBuilder.append("&appname=KQQ");
-            localStringBuilder.append("&appid=2400002");
-            localStringBuilder.append("&subapp=" + (String)localObject1);
-            localStringBuilder.append("&scene=" + this.jdField_a_of_type_Int);
-            if (TextUtils.isEmpty(this.c)) {
-              continue;
-            }
-            localStringBuilder.append("&buddyflag=" + this.c);
-            if (!TextUtils.isEmpty(this.d)) {
-              localStringBuilder.append("&groupid=" + this.d);
-            }
-            if (!TextUtils.isEmpty(this.e)) {
-              break label1013;
-            }
-            localObject2 = ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.b, this.d, this.jdField_a_of_type_Int);
-            localStringBuilder.append("&srv_para=" + (String)localObject2);
-            localStringBuilder.append("&text_evidence=" + "");
-            localStringBuilder.append("&img_evidence=" + "");
-            localStringBuilder.append("&url_evidence=" + "");
-            localStringBuilder.append("&video_evidence=" + "");
-            localStringBuilder.append("&file_evidence=" + "");
-            localStringBuilder.append("&audio_evidence=" + "");
-            localStringBuilder.append("&user_input_param=" + "REPORT_IP=0&EVIL_IP=0");
-            localObject3 = "abcdabcdabcdabcd";
-            localObject1 = localObject3;
-          }
-          break;
-        }
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
       }
-      catch (Exception localException1)
-      {
-        StringBuilder localStringBuilder;
-        Object localObject3;
-        Object localObject1;
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new akat(this, localException1));
-        return;
-      }
-      try
-      {
-        localObject4 = HttpBaseUtil.a("http://jubao.qq.com/uniform_impeach/impeach_cryptokey", "GET", new Bundle()).jdField_a_of_type_JavaLangString;
-        localObject1 = localObject3;
-        if (QLog.isColorLevel())
-        {
-          localObject1 = localObject3;
-          QLog.d("safetyNewReport", 1, "get cryptograph step1 : get response=" + (String)localObject4);
-        }
-        localObject1 = localObject3;
-        localObject3 = NewReportPlugin.a((String)localObject4);
-        localObject4 = localObject3;
-        localObject1 = localObject3;
-        if (QLog.isColorLevel())
-        {
-          localObject1 = localObject3;
-          QLog.d("safetyNewReport", 1, "get cryptograph step2 : get encryptedKey=" + (String)localObject3);
-          localObject4 = localObject3;
-        }
-      }
-      catch (Exception localException2)
-      {
-        QLog.d("safetyNewReport", 1, "get cryptograph exception" + localException2.getMessage());
-        localObject4 = localException1;
-        continue;
-        str = this.jdField_a_of_type_JavaLangString;
-        continue;
-        localObject2 = new StringBuilder();
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label1123;
-        }
-        for (str = this.b;; str = this.jdField_a_of_type_JavaLangString)
-        {
-          str = str + "_" + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getCurrentAccountUin() + "_" + localException2;
-          break;
-        }
-        str = "";
-      }
-      localObject1 = NewReportPlugin.a("d41d8cd98f00b204e9800998ecf8427e", (String)localObject4);
-      if (QLog.isColorLevel()) {
-        QLog.d("safetyNewReport", 1, "get cryptograph step3 : get decryptedKey=" + (String)localObject1);
-      }
-      localObject1 = "android_7.6.3_" + this.jdField_a_of_type_Int + "_" + (String)localObject1;
-      localObject3 = MD5Utils.d((String)localObject1).toUpperCase();
-      if (QLog.isColorLevel()) {
-        QLog.d("safetyNewReport", 1, "get cryptograph step4 : scretKey=" + (String)localObject3 + ", scretKeyStr=" + (String)localObject1);
-      }
-      if (this.jdField_a_of_type_Int > 3001)
-      {
-        localObject4 = new StringBuilder();
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          localObject1 = this.b;
-          localObject1 = (String)localObject1 + "_" + URLDecoder.decode((String)localObject2, "UTF-8") + "_" + "" + "_" + "" + "_" + "" + "_" + "" + "_" + "" + "_" + "" + "_" + (String)localObject3;
-          localObject2 = MD5.toMD5(((String)localObject1).getBytes("UTF-8"));
-          if (QLog.isColorLevel()) {
-            QLog.d("safetyNewReport", 1, "get cryptograph step5 : get cryptograph=" + (String)localObject2 + ", cryptographStr=" + (String)localObject1);
-          }
-          localStringBuilder.append("&cryptograph=" + (String)localObject2);
-          localObject1 = localStringBuilder.toString();
-          if (QLog.isColorLevel()) {
-            QLog.d("safetyNewReport", 1, "postData=" + (String)localObject1);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new akas(this, (String)localObject1));
-          return;
-          localObject2 = this.jdField_a_of_type_JavaLangString;
-          continue;
-          localStringBuilder.append("&buddyflag=0");
-          continue;
-          label1013:
-          localObject2 = this.e;
-          continue;
-        }
-      }
-      label1123:
-      continue;
-      String str = "c2c_honest_say";
-      continue;
-      str = "nearby_kuoli";
     }
+    ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
+    }
+    if (paramThrowable == null) {}
+    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
+    {
+      ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      return;
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
+    }
+    if (paramInterruptedException == null) {}
+    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
+    {
+      ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
+      return;
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.getVisibility() != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setVisibility(0);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle.setProgress(paramInt / 100);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
+    String str = "";
+    paramView = str;
+    if (paramURLDrawable != null)
+    {
+      paramView = str;
+      if (paramURLDrawable.getURL() != null) {
+        paramView = paramURLDrawable.getURL().toString();
+      }
+    }
+    ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
   }
 }
 

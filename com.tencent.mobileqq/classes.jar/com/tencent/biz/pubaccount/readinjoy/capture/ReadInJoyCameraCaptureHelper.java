@@ -8,7 +8,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import lhn;
+import lkb;
 
 @TargetApi(18)
 public class ReadInJoyCameraCaptureHelper
@@ -193,7 +193,7 @@ public class ReadInJoyCameraCaptureHelper
     while (paramTextView == null) {
       return;
     }
-    paramTextView.post(new lhn(paramTextView, String.format("%02d:%02d", new Object[] { Long.valueOf(paramLong / 1000L / 60L), Long.valueOf(paramLong / 1000L % 60L) })));
+    paramTextView.post(new lkb(paramTextView, String.format("%02d:%02d", new Object[] { Long.valueOf(paramLong / 1000L / 60L), Long.valueOf(paramLong / 1000L % 60L) })));
   }
   
   private static boolean a(AppInterface paramAppInterface)

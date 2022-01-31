@@ -1,25 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkAiAppPanel.ArkInputPanelTabAdapter;
+import com.tencent.mobileqq.ark.ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
 
 public class aayo
-  implements View.OnClickListener
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public aayo(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public aayo(ArkAiAppPanel.ArkInputPanelTabAdapter paramArkInputPanelTabAdapter, ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder paramViewHolder) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    paramView = (ActionSheet)ActionSheetHelper.a(BaseActivity.sTopActivity, null);
-    paramView.a(BaseActivity.sTopActivity.getString(2131438838));
-    paramView.a(2131438840, 3);
-    paramView.c(2131438842);
-    paramView.setOnDismissListener(new aayp(this, paramView));
-    paramView.a(new aayq(this, paramView));
-    if (!paramView.isShowing()) {
-      paramView.show();
+    if (paramBitmap != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel$ArkInputPanelTabAdapter$ViewHolder.a.setImageBitmap(paramBitmap);
     }
   }
 }

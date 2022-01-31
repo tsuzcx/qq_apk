@@ -1,24 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.LoginWelcomeRequest;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
 
 public class zxp
-  implements MediaPlayer.OnErrorListener
+  implements Runnable
 {
-  public zxp(ARMusicController paramARMusicController) {}
+  public zxp(LoginWelcomeRequest paramLoginWelcomeRequest) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
-    }
-    return false;
+    LoginWelcomeManager.a(LoginWelcomeRequest.a(this.a).b).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zxp
  * JD-Core Version:    0.7.0.1
  */

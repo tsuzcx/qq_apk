@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark;
 
-import aarv;
-import aarw;
-import aarx;
-import aary;
+import aayp;
+import aayq;
+import aayr;
+import aays;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -35,8 +35,8 @@ public class ArkAiBubbleView
   protected TextView a;
   public ArkAiInfo a;
   public ArkAiScrollBar a;
-  private ArkAppCenter.OnGetAppIcon jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$OnGetAppIcon = new aarv(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aarw(this);
+  private ArkAppCenter.OnGetAppIcon jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$OnGetAppIcon = new aayp(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aayq(this);
   public List a;
   public boolean a;
   private Runnable b;
@@ -45,10 +45,10 @@ public class ArkAiBubbleView
   
   public ArkAiBubbleView(ArkRecommendController paramArkRecommendController, LinearLayout paramLinearLayout)
   {
-    this.jdField_b_of_type_JavaLangRunnable = new aarx(this);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramArkRecommendController.a().a).inflate(2130968707, paramLinearLayout, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363322));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363323));
+    this.jdField_b_of_type_JavaLangRunnable = new aayr(this);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramArkRecommendController.a().a).inflate(2130968710, paramLinearLayout, false);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363339));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363340));
     this.jdField_a_of_type_AndroidViewView.setTag(this);
   }
   
@@ -63,7 +63,7 @@ public class ArkAiBubbleView
   
   private void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aary(this, paramOnClickListener));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aays(this, paramOnClickListener));
   }
   
   public ArkAiInfo a()
@@ -81,7 +81,7 @@ public class ArkAiBubbleView
     b();
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130838200));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130838205));
       ArkAppCenter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d);
       this.jdField_a_of_type_Boolean = false;
     }
@@ -91,13 +91,13 @@ public class ArkAiBubbleView
   {
     this.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar = paramArkAiScrollBar;
     this.jdField_b_of_type_Boolean = false;
-    Object localObject = FaceDrawable.a((AppInterface)BaseApplicationImpl.sApplication.getRuntime(), AppConstants.au, (byte)3);
+    Object localObject = FaceDrawable.a((AppInterface)BaseApplicationImpl.sApplication.getRuntime(), AppConstants.av, (byte)3);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
     localObject = this.jdField_a_of_type_AndroidWidgetImageView.getResources();
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(AIOUtils.a(200.0F, (Resources)localObject));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((Resources)localObject).getString(2131438831));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(((Resources)localObject).getString(2131438855));
     a(paramOnClickListener);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     paramLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
@@ -161,7 +161,7 @@ public class ArkAiBubbleView
     {
       if ((!paramArkAiInfo.d.equals(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d)) && (this.jdField_a_of_type_Boolean))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localResources.getDrawable(2130838200));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localResources.getDrawable(2130838205));
         ArkAppCenter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d);
         this.jdField_a_of_type_Boolean = false;
       }

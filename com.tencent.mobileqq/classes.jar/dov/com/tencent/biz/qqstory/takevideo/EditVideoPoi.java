@@ -30,12 +30,12 @@ public class EditVideoPoi
     return b();
   }
   
-  public void aB_()
+  public void aC_()
   {
     this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI.a().a(false);
   }
   
-  public void aC_()
+  public void aD_()
   {
     b();
   }
@@ -58,7 +58,7 @@ public class EditVideoPoi
     this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI.e();
   }
   
-  public void ax_()
+  public void az_()
   {
     this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI.a().b();
   }

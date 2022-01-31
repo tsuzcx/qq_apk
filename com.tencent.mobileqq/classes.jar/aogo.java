@@ -1,13 +1,14 @@
-import dov.com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
 
-public class aogo
+class aogo
   implements Runnable
 {
-  public aogo(SaveVideoActivity paramSaveVideoActivity, String paramString) {}
+  aogo(aogn paramaogn) {}
   
   public void run()
   {
-    SaveVideoActivity.a(SaveVideoActivity.a(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaSaveVideoActivity), SaveVideoActivity.a(SaveVideoActivity.b(this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaSaveVideoActivity), this.jdField_a_of_type_JavaLangString));
+    this.a.a.a.a(50);
   }
 }
 

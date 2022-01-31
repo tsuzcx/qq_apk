@@ -1,15 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity;
+import cooperation.qzone.util.QZLog;
 
 public class tst
-  implements CompoundButton.OnCheckedChangeListener
+  extends BroadcastReceiver
 {
-  public tst(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public tst(QzoneTiantaiTranslucentBrowserActivity paramQzoneTiantaiTranslucentBrowserActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SoundAndVibrateActivity.a(this.a, paramBoolean);
+    try
+    {
+      QZLog.i("QzoneTiantaiTranslucentBrowserActivity", "收到广播，视频播放完毕");
+      QzoneTiantaiTranslucentBrowserActivity.a(this.a, true);
+      QzoneTiantaiTranslucentBrowserActivity.a(this.a);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QZLog.e("QzoneTiantaiTranslucentBrowserActivity", "onReceive error", paramContext);
+    }
   }
 }
 

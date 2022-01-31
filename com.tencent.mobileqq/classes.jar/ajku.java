@@ -1,23 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
+import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.TroopEnterEffectData;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajku
-  extends BroadcastReceiver
+class ajku
+  implements Runnable
 {
-  public ajku(AudioItem paramAudioItem) {}
+  ajku(ajkt paramajkt, int paramInt, TroopEnterEffectController.TroopEnterEffectData paramTroopEnterEffectData) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if ("com.tencent.mobileqq.activity.ai.audiopanel.startrecord_action".equals(paramContext)) {
-      this.a.b(AudioItem.a(this.a));
+    QLog.d("TroopEnterEffect.Controller", 2, "download Res isAIO = " + this.jdField_a_of_type_Ajkt.a.a);
+    if (this.jdField_a_of_type_Ajkt.a.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + this.jdField_a_of_type_Int + " showAnimation");
+      }
+      this.jdField_a_of_type_Ajkt.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$TroopEnterEffectData);
     }
-    while (!"com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video".equals(paramContext)) {
-      return;
-    }
-    this.a.b(AudioItem.a(this.a));
   }
 }
 

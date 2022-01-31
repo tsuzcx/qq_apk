@@ -8,7 +8,7 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.Calendar;
-import nzl;
+import oea;
 
 public class GetMyStoryVideoListStep
   implements Step
@@ -66,7 +66,7 @@ public class GetMyStoryVideoListStep
     int k = localCalendar.get(5);
     localReqTodayStoryVidList.date.set(i * 10000 + (j + 1) * 100 + k);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result = new GetMyStoryVideoListStep.Result();
-    CmdTaskManger.a().a(new CommonRequest(str, localReqTodayStoryVidList, null), new nzl(this, localReqTodayStoryVidList, str));
+    CmdTaskManger.a().a(new CommonRequest(str, localReqTodayStoryVidList, null), new oea(this, localReqTodayStoryVidList, str));
   }
 }
 

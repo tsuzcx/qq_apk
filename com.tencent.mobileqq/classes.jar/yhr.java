@@ -1,63 +1,18 @@
-import com.tencent.mobileqq.adapter.MayKnowAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.MayknowRecommendManager;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter;
 
 public class yhr
-  extends FriendListObserver
+  implements Runnable
 {
-  public yhr(MayKnowAdapter paramMayKnowAdapter) {}
+  public yhr(SelectMemberBuddyListAdapter paramSelectMemberBuddyListAdapter) {}
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      this.a.b();
-      MayKnowAdapter.a(this.a, this.a.a.a());
-      this.a.notifyDataSetChanged();
-      if ((MayKnowAdapter.a(this.a) == null) || (MayKnowAdapter.a(this.a).size() == 0)) {
-        MayKnowAdapter.a(this.a).setVisibility(8);
-      }
-    }
-    else
-    {
-      return;
-    }
-    MayKnowAdapter.a(this.a).setVisibility(0);
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.b();
-      MayKnowAdapter.a(this.a, this.a.a.a());
-      this.a.notifyDataSetChanged();
-      if ((MayKnowAdapter.a(this.a) == null) || (MayKnowAdapter.a(this.a).size() == 0)) {
-        MayKnowAdapter.a(this.a).setVisibility(8);
-      }
-    }
-    else
-    {
-      return;
-    }
-    MayKnowAdapter.a(this.a).setVisibility(0);
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MayKnowAdapter", 2, "onStatesChanged ");
-    }
-    MayKnowAdapter.a(this.a, this.a.a.a());
     this.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yhr
  * JD-Core Version:    0.7.0.1
  */

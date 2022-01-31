@@ -1,18 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.ArkTipsManager;
 
 public class xoo
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public xoo(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
+  public xoo(BannerManager paramBannerManager) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
+    if (BannerManager.a(this.a) != null) {}
+    for (paramView = BannerManager.a(this.a).app;; paramView = null)
+    {
+      if (paramView != null) {
+        ArkTipsManager.a().a(BannerManager.a(this.a), paramView);
+      }
+      ArkTipsManager.a().a();
+      return;
+    }
   }
 }
 

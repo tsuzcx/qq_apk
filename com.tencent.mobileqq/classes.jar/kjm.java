@@ -1,26 +1,25 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
+import android.content.DialogInterface.OnShowListener;
+import com.tencent.av.utils.TraeHelper;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class kjm
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnShowListener
 {
-  public kjm(PoiMapActivity paramPoiMapActivity, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
+  public kjm(TraeHelper paramTraeHelper) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    PoiMapActivity.d(this.jdField_a_of_type_ComTencentBizPoiMapActivity).setEnabled(false);
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getHandler().postDelayed(new kjn(this), 150L);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "Trae_DRP 0X8008D1E at: " + System.currentTimeMillis());
+    }
+    ReportController.b(null, "CliOper", "", "", "0X8008D1E", "0X8008D1E", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kjm
  * JD-Core Version:    0.7.0.1
  */

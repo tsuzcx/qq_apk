@@ -1,12 +1,21 @@
-import android.view.View;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.QQStoryNetReqUtils.RequestCallBack;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step.FinishCallBack;
+import java.lang.ref.WeakReference;
 
-class odx
+public final class odx
+  implements Step.FinishCallBack
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public odx(WeakReference paramWeakReference) {}
   
-  odx(odw paramodw) {}
+  public void a(String paramString)
+  {
+    paramString = (QQStoryNetReqUtils.RequestCallBack)this.a.get();
+    if (paramString != null) {
+      paramString.a(Integer.valueOf(((Integer)((StoryConfigManager)SuperManager.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
+    }
+  }
 }
 
 

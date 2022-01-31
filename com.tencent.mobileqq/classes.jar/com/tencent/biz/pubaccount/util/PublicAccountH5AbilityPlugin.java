@@ -91,25 +91,25 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
-import mve;
-import mvf;
-import mvg;
-import mvh;
-import mvi;
-import mvj;
-import mvk;
-import mvl;
-import mvm;
-import mvo;
-import mvp;
-import mvq;
-import mvr;
-import mvt;
-import mvu;
-import mvv;
-import mvw;
-import mvx;
-import mvy;
+import myy;
+import myz;
+import mza;
+import mzb;
+import mzc;
+import mzd;
+import mze;
+import mzf;
+import mzg;
+import mzi;
+import mzj;
+import mzk;
+import mzl;
+import mzn;
+import mzo;
+import mzp;
+import mzq;
+import mzr;
+import mzs;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -204,7 +204,7 @@ public class PublicAccountH5AbilityPlugin
     this.jdField_e_of_type_Int = 1;
     this.jdField_f_of_type_Int = -1;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new mve(this);
+    this.jdField_a_of_type_AndroidOsHandler = new myy(this);
     this.mPluginNameSpace = "publicAccountNew";
   }
   
@@ -436,13 +436,13 @@ public class PublicAccountH5AbilityPlugin
     }
     if (!NetworkUtil.g(this.mRuntime.a()))
     {
-      QRUtils.a(1, 2131437312);
+      QRUtils.a(1, 2131437332);
       return;
     }
     localObject = new QQProgressDialog(this.mRuntime.a());
-    ((QQProgressDialog)localObject).c(2131435483);
+    ((QQProgressDialog)localObject).c(2131435499);
     ((QQProgressDialog)localObject).show();
-    ThreadManager.executeOnSubThread(new mvm(this, paramString, localBundle, (QQProgressDialog)localObject));
+    ThreadManager.executeOnSubThread(new mzg(this, paramString, localBundle, (QQProgressDialog)localObject));
   }
   
   public ArrayList a()
@@ -507,11 +507,11 @@ public class PublicAccountH5AbilityPlugin
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null) {
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidAppActivity, null));
     }
-    Object localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970522, null);
+    Object localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130970535, null);
     this.jdField_a_of_type_ComTencentWidgetActionSheet.a((View)localObject, null);
     TextView localTextView1 = (TextView)((View)localObject).findViewById(2131362087);
-    TextView localTextView2 = (TextView)((View)localObject).findViewById(2131370981);
-    localObject = (TextView)((View)localObject).findViewById(2131370982);
+    TextView localTextView2 = (TextView)((View)localObject).findViewById(2131370977);
+    localObject = (TextView)((View)localObject).findViewById(2131370978);
     if (paramInt1 == 1)
     {
       ((TextView)localObject).setVisibility(8);
@@ -522,9 +522,9 @@ public class PublicAccountH5AbilityPlugin
       if (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
         this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
       }
-      localTextView1.setOnClickListener(new mvf(this, paramString));
-      localTextView2.setOnClickListener(new mvg(this, paramInt3, paramInt2, paramString));
-      ((TextView)localObject).setOnClickListener(new mvh(this));
+      localTextView1.setOnClickListener(new myz(this, paramString));
+      localTextView2.setOnClickListener(new mza(this, paramInt3, paramInt2, paramString));
+      ((TextView)localObject).setOnClickListener(new mzb(this));
       return;
       if (paramInt1 == 2)
       {
@@ -551,7 +551,7 @@ public class PublicAccountH5AbilityPlugin
     {
       Long.parseLong(str1);
       if ((this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient != null) && (!"".equals(paramString1))) {
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(paramString1, paramInt, str1, paramBoolean, new mvk(this, paramBoolean, paramString3, paramString2), new mvl(this));
+        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(paramString1, paramInt, str1, paramBoolean, new mze(this, paramBoolean, paramString3, paramString2), new mzf(this));
       }
       return;
     }
@@ -595,7 +595,7 @@ public class PublicAccountH5AbilityPlugin
             QQToast.a(this.jdField_a_of_type_AndroidAppActivity, "你已离开wifi环境", 0).a();
           }
         }
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramString1, paramInt, (String)localObject1, paramBoolean, new mvi(this, paramString2, paramBoolean), new mvj(this));
+        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramString1, paramInt, (String)localObject1, paramBoolean, new mzc(this, paramString2, paramBoolean), new mzd(this));
       }
       return;
     }
@@ -631,16 +631,16 @@ public class PublicAccountH5AbilityPlugin
         localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          mvy localmvy = (mvy)((Iterator)localObject3).next();
-          if (((String)localObject2).equals(localmvy.jdField_b_of_type_JavaLangString)) {
-            paramBundle.add(localmvy);
+          mzs localmzs = (mzs)((Iterator)localObject3).next();
+          if (((String)localObject2).equals(localmzs.jdField_b_of_type_JavaLangString)) {
+            paramBundle.add(localmzs);
           }
         }
       }
       this.jdField_a_of_type_JavaUtilArrayList.removeAll(paramBundle);
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
       {
-        paramBundle = (mvy)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+        paramBundle = (mzs)this.jdField_a_of_type_JavaUtilArrayList.get(0);
         localObject1 = (String)jdField_b_of_type_JavaUtilHashMap.get(paramBundle.jdField_b_of_type_JavaLangString);
         a(paramBundle.jdField_a_of_type_Int, (String)localObject1, true, paramBundle.jdField_a_of_type_JavaLangString);
       }
@@ -660,7 +660,7 @@ public class PublicAccountH5AbilityPlugin
     NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, PublicAccountServlet.class);
     localNewIntent.putExtra("cmd", "jsapi");
     mobileqq_mp.JSApiWebServerRequest localJSApiWebServerRequest = new mobileqq_mp.JSApiWebServerRequest();
-    localJSApiWebServerRequest.versionInfo.set("7.6.3,3,0");
+    localJSApiWebServerRequest.versionInfo.set("7.6.8,3,0");
     localJSApiWebServerRequest.cmd.set(this.jdField_b_of_type_Int);
     JSONObject localJSONObject = new JSONObject();
     try
@@ -668,7 +668,7 @@ public class PublicAccountH5AbilityPlugin
       localJSONObject.put("puin", this.j);
       localJSONObject.put("mediaid", paramString1);
       localJSApiWebServerRequest.body.set(localJSONObject.toString());
-      localNewIntent.setObserver(new mvv(this, paramString2, paramInt, paramBoolean, paramString1));
+      localNewIntent.setObserver(new mzp(this, paramString2, paramInt, paramBoolean, paramString1));
       localNewIntent.putExtra("data", localJSApiWebServerRequest.toByteArray());
       this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(localNewIntent);
       return;
@@ -687,13 +687,13 @@ public class PublicAccountH5AbilityPlugin
     NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, PublicAccountServlet.class);
     localNewIntent.putExtra("cmd", "jsapi");
     mobileqq_mp.JSApiWebServerRequest localJSApiWebServerRequest = new mobileqq_mp.JSApiWebServerRequest();
-    localJSApiWebServerRequest.versionInfo.set("7.6.3,3,0");
+    localJSApiWebServerRequest.versionInfo.set("7.6.8,3,0");
     localJSApiWebServerRequest.cmd.set(1);
     localJSApiWebServerRequest.body.set(paramString2);
     if (QLog.isColorLevel()) {
       QLog.i("PublicAccountH5AbilityPlugin", 2, "鉴权body为:  " + paramString2);
     }
-    localNewIntent.setObserver(new mvw(this, paramString1));
+    localNewIntent.setObserver(new mzq(this, paramString1));
     localNewIntent.putExtra("data", localJSApiWebServerRequest.toByteArray());
     this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(localNewIntent);
   }
@@ -703,7 +703,7 @@ public class PublicAccountH5AbilityPlugin
     NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, PublicAccountServlet.class);
     localNewIntent.putExtra("cmd", "jsapi");
     mobileqq_mp.JSApiWebServerRequest localJSApiWebServerRequest = new mobileqq_mp.JSApiWebServerRequest();
-    localJSApiWebServerRequest.versionInfo.set("7.6.3,3,0");
+    localJSApiWebServerRequest.versionInfo.set("7.6.8,3,0");
     localJSApiWebServerRequest.cmd.set(this.jdField_a_of_type_Int);
     JSONObject localJSONObject = new JSONObject();
     for (;;)
@@ -724,7 +724,7 @@ public class PublicAccountH5AbilityPlugin
         continue;
       }
       localJSApiWebServerRequest.body.set(localJSONObject.toString());
-      localNewIntent.setObserver(new mvu(this, paramBoolean, paramString2));
+      localNewIntent.setObserver(new mzo(this, paramBoolean, paramString2));
       localNewIntent.putExtra("data", localJSApiWebServerRequest.toByteArray());
       this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(localNewIntent);
       return;
@@ -830,16 +830,16 @@ public class PublicAccountH5AbilityPlugin
       Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        mvx localmvx = (mvx)localIterator.next();
-        if (paramString.equals(localmvx.jdField_b_of_type_JavaLangString)) {
-          localArrayList.add(localmvx);
+        mzr localmzr = (mzr)localIterator.next();
+        if (paramString.equals(localmzr.jdField_b_of_type_JavaLangString)) {
+          localArrayList.add(localmzr);
         }
       }
       this.jdField_b_of_type_JavaUtilArrayList.removeAll(localArrayList);
     }
     if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
     {
-      paramString = (mvx)this.jdField_b_of_type_JavaUtilArrayList.get(0);
+      paramString = (mzr)this.jdField_b_of_type_JavaUtilArrayList.get(0);
       a(paramString.jdField_b_of_type_JavaLangString, paramString.jdField_a_of_type_Int, true, paramString.jdField_a_of_type_JavaLangString);
     }
   }
@@ -1201,14 +1201,14 @@ public class PublicAccountH5AbilityPlugin
           paramString3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
           while (paramString3.hasNext())
           {
-            paramVarArgs = (mvy)paramString3.next();
+            paramVarArgs = (mzs)paramString3.next();
             if ((paramString1 != null) && (paramString1.equals(paramVarArgs.jdField_b_of_type_JavaLangString)))
             {
               QQToast.a(this.jdField_a_of_type_AndroidAppActivity, "任务已经在上传队列", 0).a();
               return true;
             }
           }
-          paramString3 = new mvy();
+          paramString3 = new mzs();
           paramString3.jdField_a_of_type_JavaLangString = paramJsBridgeListener;
           paramString3.jdField_b_of_type_JavaLangString = paramString1;
           paramString3.jdField_a_of_type_Int = i1;
@@ -1247,14 +1247,14 @@ public class PublicAccountH5AbilityPlugin
           paramString2 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
           while (paramString2.hasNext())
           {
-            paramString3 = (mvx)paramString2.next();
+            paramString3 = (mzr)paramString2.next();
             if ((paramString1 != null) && (paramString1.equals(paramString3.jdField_b_of_type_JavaLangString)))
             {
               QQToast.a(this.jdField_a_of_type_AndroidAppActivity, "任务已经在下载队列", 0).a();
               return true;
             }
           }
-          paramString2 = new mvx();
+          paramString2 = new mzr();
           paramString2.jdField_a_of_type_JavaLangString = paramJsBridgeListener;
           paramString2.jdField_b_of_type_JavaLangString = paramString1;
           paramString2.jdField_a_of_type_Int = i1;
@@ -1279,7 +1279,7 @@ public class PublicAccountH5AbilityPlugin
       if ("uploadVoice".endsWith(paramString3))
       {
         if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-          break label8754;
+          break label8928;
         }
         for (;;)
         {
@@ -1357,7 +1357,7 @@ public class PublicAccountH5AbilityPlugin
       if ("downloadVoice".endsWith(paramString3))
       {
         if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-          break label8756;
+          break label8930;
         }
         for (;;)
         {
@@ -1393,7 +1393,7 @@ public class PublicAccountH5AbilityPlugin
       }
       if ("getPicture".endsWith(paramString3)) {
         if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-          break label8765;
+          break label8939;
         }
       }
     }
@@ -1405,10 +1405,10 @@ public class PublicAccountH5AbilityPlugin
         paramJsBridgeListener = paramString2.optString("callback");
         i3 = paramString2.optInt("count");
         if (i3 > 9) {
-          break label8758;
+          break label8932;
         }
         if (i3 >= 1) {
-          break label8751;
+          break label8925;
         }
       }
       catch (JSONException paramJsBridgeListener)
@@ -1418,12 +1418,6 @@ public class PublicAccountH5AbilityPlugin
       }
       paramString1 = paramString2.optJSONArray("sizeType");
       paramString2 = paramString2.optJSONArray("sourceType");
-      label6531:
-      label7564:
-      label8716:
-      label8722:
-      label8728:
-      label8734:
       if ((paramString2 != null) && (paramString2.length() == 1))
       {
         paramString2 = paramString2.optString(0);
@@ -1452,7 +1446,7 @@ public class PublicAccountH5AbilityPlugin
         else
         {
           if (!"album".equalsIgnoreCase(paramString2)) {
-            break label8745;
+            break label8919;
           }
           i1 = 2;
           continue;
@@ -1524,7 +1518,7 @@ public class PublicAccountH5AbilityPlugin
         if ("playVoice".endsWith(paramString3))
         {
           if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-            break label8767;
+            break label8941;
           }
           for (;;)
           {
@@ -1601,7 +1595,7 @@ public class PublicAccountH5AbilityPlugin
         if ("pauseVoice".endsWith(paramString3))
         {
           if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-            break label8769;
+            break label8943;
           }
           try
           {
@@ -1731,18 +1725,16 @@ public class PublicAccountH5AbilityPlugin
           }
           if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
         }
-        label7839:
-        label8740:
         for (;;)
         {
           try
           {
             paramString1 = new JSONObject(paramVarArgs[0]);
             k = paramString1.optString("appId");
-            paramString1.put("appver", "7.6.3");
+            paramString1.put("appver", "7.6.8");
             paramJsBridgeListener = this.mRuntime.a();
             if (paramJsBridgeListener == null) {
-              break label8740;
+              break label8914;
             }
             paramJsBridgeListener = paramJsBridgeListener.getUrl();
             paramString1.put("url", paramJsBridgeListener);
@@ -1819,7 +1811,7 @@ public class PublicAccountH5AbilityPlugin
                     if (paramString2 != null)
                     {
                       bool1 = bool2;
-                      if (new File(AppConstants.cn, paramString2).exists()) {
+                      if (new File(AppConstants.co, paramString2).exists()) {
                         bool1 = true;
                       }
                     }
@@ -1882,11 +1874,11 @@ public class PublicAccountH5AbilityPlugin
               }
               Object localObject3;
               Object localObject1;
+              long l1;
               if ("showMultiBiuEditPage".endsWith(paramString3))
               {
                 if ((paramVarArgs != null) && (paramVarArgs.length > 0))
                 {
-                  long l1;
                   int i5;
                   for (;;)
                   {
@@ -2172,7 +2164,7 @@ public class PublicAccountH5AbilityPlugin
                   label5796:
                   localObject3 = ((JSONObject)localObject3).optJSONObject("ugcInfo");
                   if ((localObject3 == null) || ((i5 != 4) && (i5 != 5) && ((i5 != 1) || ((l4 != 4L) && (l4 != 5L))))) {
-                    break label8734;
+                    break label8908;
                   }
                   ((ArticleInfo)localObject1).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo = new SocializeFeedsInfo.UGCFeedsInfo();
                   i6 = ((JSONObject)localObject3).optInt("ugcType", 0);
@@ -2221,17 +2213,17 @@ public class PublicAccountH5AbilityPlugin
                   ((ArticleInfo)localObject1).mTitle = new String(Base64Util.decode(paramString1, 0));
                   ((ArticleInfo)localObject1).mSummary = "";
                   if ((i6 != 3) && (i6 != 2)) {
-                    break label8794;
+                    break label8968;
                   }
                   ((ArticleInfo)localObject1).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
                   paramString3 = new SocializeFeedsInfo.UGCPicInfo();
                   localObject3 = ((JSONObject)localObject3).optJSONArray("ugcPicInfo");
                   if ((localObject3 == null) || (((JSONArray)localObject3).length() <= 0)) {
-                    break label8788;
+                    break label8962;
                   }
                   paramString3.jdField_c_of_type_JavaLangString = ((JSONArray)localObject3).getJSONObject(0).optString("ugcPicUrl");
                   ((ArticleInfo)localObject1).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.add(paramString3);
-                  break label8788;
+                  break label8962;
                   ((ArticleInfo)localObject1).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_Int = i6;
                   ((ArticleInfo)localObject1).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_JavaLangString = ((ArticleInfo)localObject1).mTitle;
                   label6312:
@@ -2247,7 +2239,7 @@ public class PublicAccountH5AbilityPlugin
                   paramString3.putExtra("arg_type", i1);
                   paramString3.putExtra("result_js_callback", (String)localObject2);
                   if (i3 != 5) {
-                    break label8818;
+                    break label8992;
                   }
                   i1 = 4;
                   paramString3.putExtra("biu_src", i1);
@@ -2257,9 +2249,10 @@ public class PublicAccountH5AbilityPlugin
                   if (i4 == 1)
                   {
                     if ((((ArticleInfo)localObject1).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.jdField_a_of_type_JavaUtilList == null) || (((ArticleInfo)localObject1).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-                      break label8728;
+                      break label8902;
                     }
                     paramJsBridgeListener = paramVarArgs + "//";
+                    label6531:
                     paramJsBridgeListener = "：" + paramJsBridgeListener;
                     ((BrowserAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).a().a().a(this.mRuntime.a().getLongAccountUin(), l1, ((ArticleInfo)localObject1).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo, 0L, paramJsBridgeListener, l3, -1L, i1, paramString2, i5, (ArticleInfo)localObject1);
                     continue;
@@ -2267,18 +2260,18 @@ public class PublicAccountH5AbilityPlugin
                     localObject4 = new SocializeFeedsInfo.UGCVideoInfo();
                     localObject3 = ((JSONObject)localObject3).optJSONObject("ugcVideoInfo");
                     if (localObject3 == null) {
-                      break label8809;
+                      break label8983;
                     }
                     ((SocializeFeedsInfo.UGCVideoInfo)localObject4).jdField_d_of_type_JavaLangString = ((JSONObject)localObject3).optString("ugcVideoCoverUrl");
                     ((SocializeFeedsInfo.UGCVideoInfo)localObject4).a = ((JSONObject)localObject3).optInt("ugcVideoDuration");
                     ((SocializeFeedsInfo.UGCVideoInfo)localObject4).jdField_e_of_type_JavaLangString = paramString3;
                     ((ArticleInfo)localObject1).mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_b_of_type_JavaUtilArrayList.add(localObject4);
-                    break label8809;
+                    break label8983;
                     if (i6 != 1) {
-                      break label8815;
+                      break label8989;
                     }
                     ((ArticleInfo)localObject1).mFirstPagePicUrl = "";
-                    break label8815;
+                    break label8989;
                   }
                   else
                   {
@@ -2351,7 +2344,7 @@ public class PublicAccountH5AbilityPlugin
                 {
                   if (!CaptureUtil.a())
                   {
-                    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, "暂不支持该机型", null, this.jdField_a_of_type_AndroidAppActivity.getString(2131433016), new mvq(this), null).show();
+                    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, "暂不支持该机型", null, this.jdField_a_of_type_AndroidAppActivity.getString(2131433030), new mzk(this), null).show();
                     return false;
                   }
                   label7258:
@@ -2390,11 +2383,11 @@ public class PublicAccountH5AbilityPlugin
                   if (!bool1)
                   {
                     paramString1 = new QQProgressDialog(this.mRuntime.a(), this.mRuntime.a().getResources().getDimensionPixelSize(2131558448));
-                    paramString1.c(2131438905);
-                    paramJsBridgeListener = new mvr(this, paramString1, paramString2, paramJsBridgeListener, i1, i2, (String)localObject3, paramString3, paramVarArgs, (String)localObject1, (String)localObject2);
+                    paramString1.c(2131438929);
+                    paramJsBridgeListener = new mzl(this, paramString1, paramString2, paramJsBridgeListener, i1, i2, (String)localObject3, paramString3, paramVarArgs, (String)localObject1, (String)localObject2);
                     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient.a(paramJsBridgeListener);
                     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient.a("CMD_CAMERA_CAPTURE_SO_DOWNLOAD", null);
-                    paramString1.a(new mvt(this, paramJsBridgeListener));
+                    paramString1.a(new mzn(this, paramJsBridgeListener));
                     paramString1.show();
                     continue;
                     if (!QLog.isColorLevel()) {
@@ -2421,6 +2414,7 @@ public class PublicAccountH5AbilityPlugin
                     paramJsBridgeListener.printStackTrace();
                   }
                   continue;
+                  label7564:
                   e(paramJsBridgeListener);
                 }
                 else if ("updateTopicCardFollowInfo".equals(paramString3))
@@ -2444,16 +2438,18 @@ public class PublicAccountH5AbilityPlugin
                 {
                   if ("showCommentEditor".equals(paramString3))
                   {
+                    label7817:
+                    label7839:
                     try
                     {
                       paramString3 = new JSONObject(paramVarArgs[0]);
                       if (!paramString3.has("enableAnonymous")) {
-                        break label8722;
+                        break label8896;
                       }
                       bool1 = paramString3.optBoolean("enableAnonymous");
                       label7725:
                       if (!paramString3.has("placeholder")) {
-                        break label8716;
+                        break label8890;
                       }
                       paramJsBridgeListener = paramString3.optString("placeholder");
                     }
@@ -2474,7 +2470,7 @@ public class PublicAccountH5AbilityPlugin
                       break label7760;
                     }
                     if (!paramString3.has("defaultTxt")) {
-                      break label8710;
+                      break label8884;
                     }
                     paramString1 = paramString3.optString("defaultTxt");
                     try
@@ -2490,11 +2486,11 @@ public class PublicAccountH5AbilityPlugin
                       }
                     }
                     if (!paramString3.has("maxLength")) {
-                      break label8704;
+                      break label8878;
                     }
                     i1 = paramString3.optInt("maxLength", -1);
                     if (!paramString3.has("commentType")) {
-                      break label8698;
+                      break label8872;
                     }
                     i2 = paramString3.optInt("commentType", 0);
                     i3 = 0;
@@ -2635,34 +2631,61 @@ public class PublicAccountH5AbilityPlugin
                       }
                     }
                   }
+                  else if ("updateAccountCardFollowInfo".equals(paramString3))
+                  {
+                    try
+                    {
+                      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+                      if (QLog.isColorLevel()) {
+                        QLog.d("PublicAccountH5AbilityPlugin", 2, "updateAccountCardFollowInfo jsonObject = " + paramJsBridgeListener);
+                      }
+                      l1 = paramJsBridgeListener.getLong("followUin");
+                      i1 = paramJsBridgeListener.getInt("followInfo");
+                      if (QLog.isColorLevel()) {
+                        QLog.d("PublicAccountH5AbilityPlugin", 2, "topic id = " + l1 + "\t follow info =" + i1);
+                      }
+                      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(l1, i1);
+                    }
+                    catch (JSONException paramJsBridgeListener)
+                    {
+                      if (QLog.isColorLevel()) {
+                        QLog.e("PublicAccountH5AbilityPlugin", 2, "updateAccountCardFollowInfo e = " + paramJsBridgeListener);
+                      }
+                      paramJsBridgeListener.printStackTrace();
+                    }
+                  }
                 }
               }
             }
           }
-          label8698:
+          label8872:
+          label8878:
+          label8884:
+          label8890:
+          label8896:
+          label8902:
+          label8908:
+          label8914:
           paramJsBridgeListener = null;
         }
       }
-      label7817:
-      label8745:
+      label8919:
       i1 = 0;
-      label8704:
-      label8710:
       continue;
-      label8751:
+      label8925:
       continue;
-      label8754:
+      label8928:
       return true;
-      label8756:
+      label8930:
       return true;
-      label8758:
+      label8932:
       i3 = 9;
     }
-    label8765:
+    label8939:
     return true;
-    label8767:
+    label8941:
     return true;
-    label8769:
+    label8943:
     return true;
   }
   
@@ -2680,7 +2703,7 @@ public class PublicAccountH5AbilityPlugin
   
   public void j()
   {
-    Object localObject = AppConstants.aJ + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount() + "/" + "c2bCAM/";
+    Object localObject = AppConstants.aK + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount() + "/" + "c2bCAM/";
     File localFile = new File((String)localObject);
     if ((!localFile.exists()) && (!localFile.mkdirs()))
     {
@@ -2731,8 +2754,8 @@ public class PublicAccountH5AbilityPlugin
         this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624516);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
-        ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399)).setText("正在处理");
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969178);
+        ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363418)).setText("正在处理");
       }
       return;
     }
@@ -2756,7 +2779,7 @@ public class PublicAccountH5AbilityPlugin
     localIntent.putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
     localIntent.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", false);
     localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-    String str = AppConstants.aJ + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin() + "/" + "readinjoy_avatar_upload";
+    String str = AppConstants.aK + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin() + "/" + "readinjoy_avatar_upload";
     localIntent.putExtra("PhotoConst.TARGET_PATH", str + System.currentTimeMillis() + ".jpg");
     localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
     localIntent.putExtra("PhotoConst.CLIP_WIDTH", 640);
@@ -2818,7 +2841,7 @@ public class PublicAccountH5AbilityPlugin
         {
           if (paramIntent.exists())
           {
-            ThreadManager.getFileThreadHandler().post(new mvo(this, (JSONArray)localObject2, (JSONObject)localObject1));
+            ThreadManager.getFileThreadHandler().post(new mzi(this, (JSONArray)localObject2, (JSONObject)localObject1));
             return;
           }
         }
@@ -2871,7 +2894,7 @@ public class PublicAccountH5AbilityPlugin
       if (paramInt == 0) {
         break label1537;
       }
-      ThreadManager.getFileThreadHandler().post(new mvp(this, (ArrayList)localObject1, localJSONArray, (JSONObject)localObject2));
+      ThreadManager.getFileThreadHandler().post(new mzj(this, (ArrayList)localObject1, localJSONArray, (JSONObject)localObject2));
     }
     for (;;)
     {

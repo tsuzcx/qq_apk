@@ -1,22 +1,14 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
-public class suh
-  extends FriendListObserver
+class suh
+  implements BubblePopupWindow.OnDismissListener
 {
-  public suh(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  suh(sug paramsug, View paramView) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a()
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
-    while (this.a.a == null) {
-      return;
-    }
-    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
-    this.a.a.setImageBitmap(paramString);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

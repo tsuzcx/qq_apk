@@ -1,27 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.task.OnAddOrDeleGameListener;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public final class acjy
-  implements View.OnTouchListener
+class acjy
+  implements OnAddOrDeleGameListener
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  acjy(acjx paramacjx) {}
+  
+  public void a(long paramLong, String paramString)
   {
-    switch (paramMotionEvent.getAction())
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
     {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acjy
  * JD-Core Version:    0.7.0.1
  */

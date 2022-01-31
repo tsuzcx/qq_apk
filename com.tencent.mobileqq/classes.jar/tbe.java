@@ -1,28 +1,22 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.widget.QQTabWidget.onTabWidgetTouchMoveListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class tbe
-  implements QQTabWidget.onTabWidgetTouchMoveListener
+  implements View.OnTouchListener
 {
-  public tbe(MainFragment paramMainFragment) {}
+  public tbe(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = GesturePWDUtils.getGesturePWDState(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
-    int j = GesturePWDUtils.getGesturePWDMode(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
-    if ((i == 2) && (j == 20))
+    if (!this.a.a)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("mainactivity", 2, "gesturepwd manual move.");
-      }
-      ((SplashActivity)this.a.getActivity()).startUnlockActivity();
-      this.a.getActivity().overridePendingTransition(2131034134, 2131034131);
+      ReportController.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
+      this.a.a = true;
     }
+    return false;
   }
 }
 

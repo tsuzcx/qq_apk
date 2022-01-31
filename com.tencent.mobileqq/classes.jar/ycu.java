@@ -1,12 +1,31 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager.SubtitleDataManagerListener;
+import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem;
+import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem.FontItem;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract interface ycu
+public class ycu
+  implements Runnable
 {
-  public abstract void a(int paramInt);
+  public ycu(SubtitleDataManager paramSubtitleDataManager, SubtitleItem.FontItem paramFontItem) {}
   
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
-  
-  public abstract void b(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  public void run()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      SubtitleDataManager.SubtitleDataManagerListener localSubtitleDataManagerListener = (SubtitleDataManager.SubtitleDataManagerListener)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager.jdField_a_of_type_JavaLangRefWeakReference.get();
+      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleDataManager.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        SubtitleItem localSubtitleItem = (SubtitleItem)localIterator.next();
+        if ((localSubtitleItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem) && (localSubtitleItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem != null)) {
+          localSubtitleDataManagerListener.a(localSubtitleItem.jdField_a_of_type_Int, 0, localSubtitleItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSubtitleItem$FontItem.f);
+        }
+      }
+    }
+  }
 }
 
 

@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.search.ftsmsg.FTSGroupSearchModelMessage;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.SearchHistory;
+import com.tencent.mobileqq.search.HistorySearchEntryModel;
+import com.tencent.mobileqq.search.IContactSearchable;
+import com.tencent.mobileqq.search.util.SearchUtils;
 import java.util.List;
 
 public class ahvk
-  extends GroupSearchEngine.SearchEngineEntity
+  implements View.OnClickListener
 {
-  public ahvk(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  public ahvk(HistorySearchEntryModel paramHistorySearchEntryModel) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void onClick(View paramView)
   {
-    return new FTSGroupSearchModelMessage(paramList, paramString);
+    long l = ((Long)paramView.getTag(-1)).longValue();
+    int i = HistorySearchEntryModel.a(this.a, this.a.a, l);
+    if (i == -1) {}
+    do
+    {
+      return;
+      paramView = (SearchHistory)((IContactSearchable)this.a.a.get(i)).a();
+    } while (paramView == null);
+    SearchUtils.a("home_page", "del_history", new String[] { "" + i });
+    ThreadManager.postImmediately(new ahvl(this, paramView, l), null, true);
   }
 }
 

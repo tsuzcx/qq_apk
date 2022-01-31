@@ -1,14 +1,22 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
+import android.os.Handler;
+import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
 
-public final class orr
-  extends SparseArray
+public class orr
+  extends MessageObserver
 {
-  public orr(int paramInt)
+  public orr(TroopStoryForwardTask paramTroopStoryForwardTask) {}
+  
+  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
   {
-    super(paramInt);
-    append(0, RotateCircleImageView.BorderStyle.STILL);
-    append(1, RotateCircleImageView.BorderStyle.ROTATE);
+    paramStatictisInfo = this.a.a;
+    if (paramBoolean) {}
+    for (int i = 4;; i = 5)
+    {
+      paramStatictisInfo.sendEmptyMessage(i);
+      return;
+    }
   }
 }
 

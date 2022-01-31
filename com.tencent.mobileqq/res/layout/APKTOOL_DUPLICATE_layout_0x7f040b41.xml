@@ -1,11 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3288" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:paddingRight="15.0dip" android:paddingBottom="19.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3289" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a328a" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a328b" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a328c" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a328d" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a328e" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <com.qzone.module.feedcomponent.ui.FeedFriendBirthdayGiftView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a328f" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</LinearLayout>
+<com.qzone.module.feedcomponent.ui.FeedSpecialCare android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

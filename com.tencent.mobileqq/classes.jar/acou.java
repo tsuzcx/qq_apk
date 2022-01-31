@@ -1,71 +1,52 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.open.business.viareport.OpenSdkStatic;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.RecommendEmotionAdapter;
+import com.tencent.mobileqq.vas.VasApngUtil;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
 
 public class acou
-  implements ActionSheet.OnButtonClickListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public acou(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public acou(RecommendEmotionAdapter paramRecommendEmotionAdapter) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetActionSheet == null) {
+    if ((1003L != paramLong) || (!"emotionRecommendEffect".equals(paramString1))) {
       return;
     }
-    if (paramView != null)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      ((VasQuickUpdateManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(183)).b(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendEmotionAdapter", 2, "emoticon Effect callBacker errorCode:" + paramInt1 + ", httpCode:" + paramInt2 + ", apngSoLoaded:" + VasApngUtil.b.get());
+    }
+    paramString1 = this.a.jdField_a_of_type_JavaLangObject;
+    if (paramInt1 == 0) {}
+    try
     {
-      paramView = this.a.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
-      if (!TextUtils.isEmpty(paramView))
+      if ((this.a.b != null) && (this.a.b.size() > 0))
       {
-        if ((!paramView.equals(this.a.getResources().getString(2131428576))) && (!paramView.equals(this.a.getResources().getString(2131428583)))) {
-          break label270;
+        paramString2 = VasQuickUpdateManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1003L, "emotionRecommendEffect", null, false, null);
+        if ((paramString2 != null) && (VasApngUtil.b.get()))
+        {
+          paramInt1 = 0;
+          while ((paramInt1 < this.a.b.size()) && (paramInt1 < 2))
+          {
+            paramString3 = (acov)this.a.b.get(paramInt1);
+            paramString3.a = paramString2;
+            this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(102, paramString3));
+            paramInt1 += 1;
+          }
+          this.a.b.clear();
         }
-        ReportController.b(null, "dc00898", "", "", "0X8008F87", "0X8008F87", 1, 0, "", "", "", "");
-        if (!UniformDownloadActivity.a(this.a)) {
-          break label241;
-        }
-        if (!ControlPolicyUtil.g()) {
-          break label231;
-        }
-        OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3007", false);
-        paramView = UniformDownloadActivity.a(this.a);
-        UniformDownloadActivity.a(this.a, paramView);
-        paramView = UniformDownloadActivity.a(this.a, paramView);
-        if (QLog.isColorLevel()) {
-          QLog.d(UniformDownloadActivity.jdField_a_of_type_JavaLangString, 2, "tmastUrl=" + paramView);
-        }
-        UniformDownloadActivity.a(this.a, paramView);
-        UniformDownloadActivity.b(this.a);
-        this.a.finish();
-        this.a.overridePendingTransition(0, 0);
       }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      label231:
-      UniformDownloadActivity.c(this.a);
-      continue;
-      label241:
-      UniformDownloadActivity.b(this.a).setVisibility(0);
-      ThreadManager.getSubThreadHandler().post(new acov(this));
-      continue;
-      label270:
-      if ((paramView.equals(this.a.getResources().getString(2131428578))) || (paramView.equals(this.a.getResources().getString(2131428573))) || (paramView.equals(this.a.getResources().getString(2131428572)))) {
-        UniformDownloadActivity.c(this.a);
-      }
     }
+    finally {}
   }
 }
 

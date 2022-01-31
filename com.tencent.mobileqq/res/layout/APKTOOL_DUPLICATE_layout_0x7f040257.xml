@@ -1,13 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="80.0dip">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
-            <TextView android:textSize="13.0dip" android:textColor="#ff333333" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e8a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:includeFontPadding="false" android:layout_centerHorizontal="true" />
-            <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e8b" android:layout_width="255.0dip" android:layout_height="3.0dip" android:layout_marginTop="6.0dip" android:max="100" android:progress="1" android:indeterminate="false" android:progressDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218cf" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0e8a" android:layout_centerHorizontal="true" style="?android:attr/progressBarStyleHorizontal" />
-        </RelativeLayout>
-    </RelativeLayout>
-    <RelativeLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e8c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" />
-    </RelativeLayout>
-</LinearLayout>
+<com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

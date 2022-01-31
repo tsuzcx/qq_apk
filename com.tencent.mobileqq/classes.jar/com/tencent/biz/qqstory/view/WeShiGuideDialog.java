@@ -30,18 +30,18 @@ public class WeShiGuideDialog
   extends Dialog
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  protected int a;
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
+  protected Button a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b = "";
+  protected String a;
+  protected boolean a;
+  private String b;
   private String c = "";
   private String d = "";
-  private String e;
+  private String e = "";
   private String f;
   
   public WeShiGuideDialog(@NonNull Context paramContext)
@@ -70,23 +70,23 @@ public class WeShiGuideDialog
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372172));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363215));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131372170);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372171));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372180));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363219));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131372178);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372179));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setText("下载微视");
     a();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = "https://pub.idqqimg.com/pc/misc/files/20180423/03d546703c3f49a3857c67be2e94f928.png";
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = "https://pub.idqqimg.com/pc/misc/files/20180423/03d546703c3f49a3857c67be2e94f928.png";
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ColorDrawable localColorDrawable = new ColorDrawable(-16777216);
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-    localObject = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
+    localObject = URLDrawable.getDrawable(this.b, (URLDrawable.URLDrawableOptions)localObject);
     ((URLDrawable)localObject).setURLDrawableListener(new WeShiGuideDialog.WeakViewDownloadListener(this.jdField_a_of_type_AndroidWidgetTextView));
     this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
     int i = ((URLDrawable)localObject).getStatus();
@@ -103,21 +103,21 @@ public class WeShiGuideDialog
   public WeShiGuideDialog a(int paramInt, String paramString)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.f = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
     return this;
   }
   
   public WeShiGuideDialog a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
   public WeShiGuideDialog a(String paramString1, String paramString2, String paramString3)
   {
-    this.b = paramString1;
-    this.c = paramString2;
-    this.d = paramString3;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
     return this;
   }
   
@@ -140,7 +140,7 @@ public class WeShiGuideDialog
   
   public WeShiGuideDialog b(String paramString)
   {
-    this.e = paramString;
+    this.f = paramString;
     return this;
   }
   
@@ -150,16 +150,16 @@ public class WeShiGuideDialog
     {
     default: 
       return;
-    case 2131372172: 
+    case 2131372180: 
       a();
-      if (TextUtils.isEmpty(this.e))
+      if (TextUtils.isEmpty(this.f))
       {
         if (this.jdField_a_of_type_Boolean) {
-          WeishiGuideUtils.a(getContext(), this.jdField_a_of_type_Int, this.f);
+          WeishiGuideUtils.a(getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
         }
         for (;;)
         {
-          StoryReportor.a("weishi_share", "cover_clk", 0, 0, new String[] { this.c, this.b, "weishi", this.d });
+          StoryReportor.a("weishi_share", "cover_clk", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
           label108:
           dismiss();
           return;
@@ -169,7 +169,7 @@ public class WeShiGuideDialog
       }
       if (this.jdField_a_of_type_Boolean)
       {
-        VideoFeedsWeiShiUtils.a(getContext(), this.e);
+        VideoFeedsWeiShiUtils.a(getContext(), this.f);
         label155:
         if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
           break label400;
@@ -197,22 +197,22 @@ public class WeShiGuideDialog
           continue;
           PublicAccountReportUtils.a(null, null, "0X80092A9", "0X80092A9", 0, 0, String.valueOf(i), "", "", VideoReporter.a(null, null, "", "", localJSONObject), false);
         }
-        if (!"video_type_videopublic".equals(this.e)) {
+        if (!"video_type_videopublic".equals(this.f)) {
           continue;
         }
         PublicAccountReportUtils.a(null, null, "0X80092A7", "0X80092A7", 0, 0, String.valueOf(i), "", "", VideoReporter.a(null, null, "", "", localJSONObject), false);
         break;
         QQToast.a(getContext(), -1, "正在下载，请稍候。", 0).b(getContext().getResources().getDimensionPixelSize(2131558448));
-        VideoFeedsWeiShiUtils.b(getContext(), this.e);
+        VideoFeedsWeiShiUtils.b(getContext(), this.f);
         break label155;
         paramView = "1";
       }
       break label108;
       dismiss();
-      if (!TextUtils.isEmpty(this.e)) {
+      if (!TextUtils.isEmpty(this.f)) {
         break;
       }
-      StoryReportor.a("weishi_share", "cover_close", 0, 0, new String[] { this.c, this.b, "weishi", this.d });
+      StoryReportor.a("weishi_share", "cover_close", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
       return;
     }
   }
@@ -220,7 +220,7 @@ public class WeShiGuideDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130970905);
+    setContentView(2130970922);
     b();
     setCanceledOnTouchOutside(false);
   }
@@ -228,8 +228,8 @@ public class WeShiGuideDialog
   public void show()
   {
     super.show();
-    if (TextUtils.isEmpty(this.e)) {
-      StoryReportor.a("weishi_share", "cover_exp", 0, 0, new String[] { this.c, this.b, "weishi", this.d });
+    if (TextUtils.isEmpty(this.f)) {
+      StoryReportor.a("weishi_share", "cover_exp", 0, 0, new String[] { this.d, this.c, "weishi", this.e });
     }
   }
 }

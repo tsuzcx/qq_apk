@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.view;
 
-import agrm;
+import agvz;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
@@ -74,7 +74,7 @@ public class ProfileHeaderView$UpdateProfileSetCardTask
             }
             localSharedPreferences.edit().putString(String.valueOf(l2), (String)localObject1).commit();
             localProfileHeaderView.h |= 0x2;
-            localQQAppInterface.runOnUiThread(new agrm(this, localProfileHeaderView));
+            localQQAppInterface.runOnUiThread(new agvz(this, localProfileHeaderView));
             continue;
           }
           l1 = 0L;

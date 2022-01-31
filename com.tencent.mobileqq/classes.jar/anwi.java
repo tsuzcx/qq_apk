@@ -1,16 +1,21 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditMusicExport;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.view.View;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import dov.com.qq.im.capture.text.DynamicTextItem.Pair;
 
 public class anwi
   implements Runnable
 {
-  public anwi(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public anwi(DynamicTextItem paramDynamicTextItem, View paramView) {}
   
   public void run()
   {
-    EditMusicExport localEditMusicExport = (EditMusicExport)this.a.a(EditMusicExport.class);
-    if (localEditMusicExport != null) {
-      localEditMusicExport.as_();
+    DynamicTextItem.Pair localPair = DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
+    if (!((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localPair.b = Boolean.valueOf(bool);
+      this.jdField_a_of_type_AndroidViewView.invalidate();
+      return;
     }
   }
 }

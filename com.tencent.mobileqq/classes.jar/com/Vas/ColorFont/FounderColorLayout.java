@@ -1100,7 +1100,7 @@ public class FounderColorLayout
         this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
       }
       if (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null) {
-        this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.h = false;
+        this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.g = false;
       }
       if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
         this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();

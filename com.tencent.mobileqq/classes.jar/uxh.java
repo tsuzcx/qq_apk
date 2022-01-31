@@ -1,22 +1,8 @@
-import android.graphics.drawable.ColorDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.io.File;
-
-class uxh
-  implements Runnable
+public abstract interface uxh
 {
-  uxh(uxg paramuxg) {}
+  public abstract void a();
   
-  public void run()
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(-16777216);
-    URLDrawable.getDrawable(new File(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath), localURLDrawableOptions);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

@@ -1,10 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import com.tencent.qphone.base.util.QLog;
 
-public final class adhv
-  implements DialogInterface.OnClickListener
+public class adhv
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public adhv(UniformDownloadMgr paramUniformDownloadMgr) {}
+  
+  public void run()
+  {
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onQQProcessExit releaseABSdkClient...");
+    UniformDownloaderAppBabySdk.a().a();
+  }
 }
 
 

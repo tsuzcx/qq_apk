@@ -191,7 +191,7 @@ public class SearchResultEntranceView
             QLog.d("SearchResultEntranceView", 2, "bindVideoListView use new view.");
           }
           SquareImageView localSquareImageView = (SquareImageView)localView.findViewById(2131361846);
-          TextView localTextView = (TextView)localView.findViewById(2131365659);
+          TextView localTextView = (TextView)localView.findViewById(2131365664);
           localSquareImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
           localSquareImageView.setImageScale(1.777778F, DisplayUtil.a(this.jdField_d_of_type_AndroidViewView.getContext(), 5.0F));
           localObject2 = URLDrawable.getDrawable((String)localObject2, null);
@@ -234,7 +234,7 @@ public class SearchResultEntranceView
       Object localObject3;
       if (e() != null)
       {
-        new ForegroundColorSpan(2131494217);
+        new ForegroundColorSpan(2131494223);
         localObject1 = new SpannableStringBuilder("");
         localObject2 = paramSearchResultModelForEntrance.jdField_a_of_type_PbUniteSearchDynamicSearch$SubItem.title.get().iterator();
         while (((Iterator)localObject2).hasNext())
@@ -278,7 +278,7 @@ public class SearchResultEntranceView
             ((TextView)localObject2).setMaxLines(1);
             ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
             ((TextView)localObject2).setTextSize(0, a().getResources().getDimension(2131559424));
-            ((TextView)localObject2).setTextColor(a().getResources().getColor(2131494265));
+            ((TextView)localObject2).setTextColor(a().getResources().getColor(2131494271));
             ((TextView)localObject2).setIncludeFontPadding(false);
             localObject3 = new LinearLayout.LayoutParams(-1, -2);
             if (((LinearLayout)localObject1).getChildCount() > 0) {
@@ -418,37 +418,37 @@ public class SearchResultEntranceView
   protected void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView.findViewById(2131363928);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView.findViewById(2131363953);
     switch (this.jdField_b_of_type_Int)
     {
+    case 2130969376: 
+    case 2130969377: 
     case 2130969378: 
     case 2130969379: 
-    case 2130969380: 
-    case 2130969381: 
-    case 2130969384: 
+    case 2130969382: 
     default: 
       return;
-    case 2130969382: 
-      this.jdField_b_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView.findViewById(2131366351);
-      this.jdField_c_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView.findViewById(2131366334);
+    case 2130969380: 
+      this.jdField_b_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView.findViewById(2131366356);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView.findViewById(2131366339);
       return;
-    case 2130969386: 
-    case 2130969387: 
-      this.jdField_b_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView.findViewById(2131366351);
-      this.jdField_f_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView.findViewById(2131366350);
-      return;
+    case 2130969384: 
     case 2130969385: 
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131366348));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131366349));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_d_of_type_AndroidViewView.findViewById(2131366347));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView.findViewById(2131366356);
+      this.jdField_f_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView.findViewById(2131366355);
       return;
     case 2130969383: 
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131363896));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131363901));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131366353));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131366354));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_d_of_type_AndroidViewView.findViewById(2131366352));
+      return;
+    case 2130969381: 
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131363921));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131363926));
       e().setMaxWidth(a(this.jdField_d_of_type_AndroidViewView.getContext(), new View[] { this.jdField_c_of_type_AndroidWidgetTextView, this.jdField_d_of_type_AndroidWidgetTextView, this.jdField_f_of_type_AndroidWidgetImageView }));
       return;
     }
-    this.e = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131366329));
+    this.e = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131366334));
   }
   
   public void a(SearchResultModelForEntrance paramSearchResultModelForEntrance)

@@ -20,6 +20,8 @@ public abstract interface IRedPacket
   
   public abstract void onActiveAccount();
   
+  public abstract boolean onGetThemeConfig(int paramInt);
+  
   public abstract void onUpdate(int paramInt);
   
   public abstract void registRedPacketSkinListObserver(BusinessObserver paramBusinessObserver);

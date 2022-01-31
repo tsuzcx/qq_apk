@@ -1,32 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
 
-public class uhb
-  implements DialogInterface.OnClickListener
+public final class uhb
+  implements Parcelable.Creator
 {
-  public uhb(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
   {
-    this.a.n();
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.e();
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
-      this.a.f();
-    }
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.a(), paramDialogInterface, "1");
-      return;
-    }
+    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
+  }
+  
+  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
+  {
+    return new TroopMemberListActivity.TroopAdmin[paramInt];
   }
 }
 

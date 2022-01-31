@@ -1,34 +1,72 @@
+import OnlinePushPack.SvcRespPushMsg;
+import android.app.Activity;
 import android.os.Handler;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.biz.game.MSFToWebViewConnector;
+import com.tencent.biz.game.MSFToWebViewConnector.IOnMsgReceiveListener;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.compatible.TempServlet;
+import com.tencent.mobileqq.service.MobileQQService;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class kpc
-  implements Runnable
+  implements MSFToWebViewConnector.IOnMsgReceiveListener
 {
-  public kpc(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public kpc(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void run()
+  public void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "updateUnfollowInfo");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null) {}
-    try
+    if (this.a.jdField_a_of_type_AndroidAppActivity != null)
     {
-      EqqAccountDetailActivity.a(this.a).b(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-      this.a.d(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-      EqqAccountDetailActivity.b(this.a).sendEmptyMessage(2);
-      EqqAccountDetailActivity.b(this.a).a().a(EqqAccountDetailActivity.b(this.a), EqqAccountDetailActivity.c(this.a));
-      EqqAccountDetailActivity.c(this.a).a().a(EqqAccountDetailActivity.c(this.a), 1024);
-      EqqAccountDetailActivity.d(this.a).a().a(EqqAccountDetailActivity.d(this.a), 0);
-      ReportController.b(EqqAccountDetailActivity.e(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.e(this.a), "0X8004E43", "0X8004E43", 0, 0, EqqAccountDetailActivity.f(this.a), "", "", "");
+      AppInterface localAppInterface = this.a.mRuntime.a();
+      if (localAppInterface != null)
+      {
+        ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", localAppInterface.getAccount(), "OnlinePush.RespPush");
+        localToServiceMsg.setNeedCallback(false);
+        UniPacket localUniPacket = new UniPacket(true);
+        localUniPacket.setEncodeName("utf-8");
+        int i = MobileQQService.a;
+        MobileQQService.a = i + 1;
+        localUniPacket.setRequestId(i);
+        localUniPacket.setServantName("OnlinePush");
+        localUniPacket.setFuncName("SvcRespPushMsg");
+        localUniPacket.setRequestId(paramInt);
+        localUniPacket.put("resp", paramSvcRespPushMsg);
+        localToServiceMsg.putWupBuffer(localUniPacket.encode());
+        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), TempServlet.class);
+        paramSvcRespPushMsg.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
+        localAppInterface.startServlet(paramSvcRespPushMsg);
+        if (QLog.isColorLevel()) {
+          QLog.d("SensorApi", 2, "reply push");
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    String str = SensorAPIJavaScript.jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector.a(String.valueOf(paramInt));
+    if (!TextUtils.isEmpty(str))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SensorApi", 2, "send data to appId=" + paramInt);
+      }
+      if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
+        this.a.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new kpd(this, str, paramString));
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    catch (Exception localException) {}
+    QLog.d("SensorApi", 2, "appId=" + paramInt + "'s callback is empty");
   }
 }
 

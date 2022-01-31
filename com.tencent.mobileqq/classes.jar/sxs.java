@@ -1,16 +1,32 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.campuscircle.CampusCircleHelper;
+import com.tencent.mobileqq.data.Card;
 
-class sxs
-  implements Runnable
+public class sxs
+  implements syj
 {
-  sxs(sxq paramsxq) {}
+  public sxs(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    if (Leba.a(this.a.a) != null) {
-      Leba.a(this.a.a).e();
+    switch (paramInt)
+    {
     }
+    String str;
+    do
+    {
+      return;
+      str = FriendProfileMoreInfoActivity.b(this.a).getText().toString();
+    } while ((paramString == null) || (paramString.equals(str)));
+    this.a.k = true;
+    this.a.e(paramString);
+    if (CampusCircleHelper.b(this.a.a.lCampusSchoolID) == 4)
+    {
+      this.a.a("0X80081EA", 0);
+      return;
+    }
+    this.a.a("0X80081EC", 1);
   }
 }
 

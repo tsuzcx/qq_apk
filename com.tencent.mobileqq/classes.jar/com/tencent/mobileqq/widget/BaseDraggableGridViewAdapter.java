@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import aktz;
+import albq;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,12 +47,12 @@ public abstract class BaseDraggableGridViewAdapter
   
   public void c()
   {
-    ((aktz)this.a.a()).notifyDataSetChanged();
+    ((albq)this.a.a()).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.BaseDraggableGridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

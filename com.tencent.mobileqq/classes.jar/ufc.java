@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
-import java.util.Comparator;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class ufc
-  implements Comparator
+  implements View.OnClickListener
 {
-  private ufc(TroopTransferActivity paramTroopTransferActivity) {}
+  public ufc(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public int a(TroopTransferActivity.TroopMemberItem paramTroopMemberItem1, TroopTransferActivity.TroopMemberItem paramTroopMemberItem2)
+  public void onClick(View paramView)
   {
-    return paramTroopMemberItem1.f.compareToIgnoreCase(paramTroopMemberItem2.f);
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "http://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(paramView);
   }
 }
 

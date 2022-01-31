@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
-import qcg;
+import qgy;
 
 @TargetApi(18)
 public class BluetoothLeService
@@ -32,7 +32,7 @@ public class BluetoothLeService
   public static String f;
   public static String g;
   private BluetoothAdapter jdField_a_of_type_AndroidBluetoothBluetoothAdapter;
-  private final BluetoothGattCallback jdField_a_of_type_AndroidBluetoothBluetoothGattCallback = new qcg(this);
+  private final BluetoothGattCallback jdField_a_of_type_AndroidBluetoothBluetoothGattCallback = new qgy(this);
   private BluetoothManager jdField_a_of_type_AndroidBluetoothBluetoothManager;
   BluetoothLeService.LocalBinder jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService$LocalBinder = new BluetoothLeService.LocalBinder(this);
   private List jdField_a_of_type_JavaUtilList = new ArrayList();

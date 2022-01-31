@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import angj;
+import anom;
 import com.tencent.open.wadl.WLog;
 import org.json.JSONObject;
 
 public class WadlParams
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new angj();
+  public static final Parcelable.Creator CREATOR = new anom();
   public int a;
   public long a;
   public String a;

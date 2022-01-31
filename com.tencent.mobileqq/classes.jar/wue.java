@@ -1,26 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-
-public class wue
-  implements Animation.AnimationListener
+public final class wue
 {
-  public wue(CountryActivity paramCountryActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  private static boolean f(int paramInt)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_Wul.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    return paramInt == -3;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  private static boolean g(int paramInt)
+  {
+    return paramInt == -2;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  private static boolean h(int paramInt)
+  {
+    return paramInt == -1;
+  }
+  
+  private static boolean i(int paramInt)
+  {
+    return paramInt < 0;
+  }
+  
+  private static boolean j(int paramInt)
+  {
+    return paramInt == 0;
+  }
 }
 
 

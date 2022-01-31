@@ -16,7 +16,7 @@ import com.tencent.biz.qqstory.takevideo.doodle.layer.model.SelectedItem;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel.OnFaceSelectedListener;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
 import java.io.File;
-import okj;
+import ooy;
 
 public class NormalFaceAdapter
   extends BaseFaceListAdapter
@@ -33,7 +33,7 @@ public class NormalFaceAdapter
       return paramView;
     }
     if (paramView == null) {}
-    for (paramView = new okj(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((NormalFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((NormalFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (okj)paramView)
+    for (paramView = new ooy(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((NormalFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((NormalFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (ooy)paramView)
     {
       paramView.a((NormalFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage, paramInt, getCount());
       return paramView;
@@ -44,7 +44,7 @@ public class NormalFaceAdapter
   {
     int i = 0;
     ImageView localImageView = (ImageView)paramView;
-    int j = ((Integer)localImageView.getTag(2131362359)).intValue();
+    int j = ((Integer)localImageView.getTag(2131362362)).intValue();
     NormalFacePackage localNormalFacePackage = (NormalFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage;
     Object localObject3 = Uri.parse(localNormalFacePackage.a(j));
     Object localObject1 = ((Uri)localObject3).getPath();
@@ -75,12 +75,12 @@ public class NormalFaceAdapter
             float f1 = (i - (k + (i - j) / 2) * 2) / i;
           }
         }
-        localObject3 = (okj)paramView.getParent();
+        localObject3 = (ooy)paramView.getParent();
         j = (int)ViewCompat.b((View)localObject3);
         f2 = ViewCompat.a(paramView);
         f3 = paramView.getWidth() / 2;
         f4 = i;
-        f5 = ((okj)localObject3).getHeight() / 2 + j;
+        f5 = ((ooy)localObject3).getHeight() / 2 + j;
         i = ((Drawable)localObject1).getIntrinsicWidth();
         j = localImageView.getWidth();
         k = localImageView.getPaddingLeft();

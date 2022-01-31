@@ -1,23 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-class mcn
-  extends FriendListObserver
+public class mcn
+  implements AdapterView.OnItemClickListener
 {
-  mcn(mck parammck, QQAppInterface paramQQAppInterface) {}
+  public mcn(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment, boolean paramBoolean) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramBoolean)
+    if (this.jdField_a_of_type_Boolean) {
+      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity(), 2131438938, 0).a();
+    }
+    for (;;)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("VALUE_USER_UIN_TO_GET_NICK_NAME", paramString);
-      localBundle.putString("VALUE_USER_NICK_NAME", ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, true));
-      QIPCServerHelper.getInstance().callClient(VideoFeedsAppInterface.a, "Module_VideoFeedsIPCServer", "CMD_GET_NICK_NAME_BY_UIN", localBundle, null);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity().finish();
+      return;
+      paramView = new Intent();
+      paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
+      if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
+      {
+        paramView.putExtra("SEARCH_TAG_RESULT", (TagInfo)paramAdapterView);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity().setResult(-1, paramView);
+      }
     }
   }
 }

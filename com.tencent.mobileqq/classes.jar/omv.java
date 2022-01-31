@@ -1,23 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
 
 public class omv
-  implements Animation.AnimationListener
+  implements Animator.AnimatorListener
 {
-  public omv(StoryMultiFragmentPart paramStoryMultiFragmentPart) {}
+  public omv(FaceLayer.FaceAndTextItem paramFaceAndTextItem) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (StoryMultiFragmentPart.b(this.a) != null) {
-      StoryMultiFragmentPart.b(this.a).setVisibility(4);
-    }
+    this.a.a = false;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
 }
 
 

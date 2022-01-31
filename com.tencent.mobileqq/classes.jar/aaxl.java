@@ -1,35 +1,31 @@
-import android.os.Handler;
-import android.text.Editable;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class aaxl
   implements Runnable
 {
-  public aaxl(ArkRecommendController paramArkRecommendController) {}
+  public aaxl(ArkAppSchemeCenter.TelSchemeHandler paramTelSchemeHandler, String paramString) {}
   
   public void run()
   {
-    ArkRecommendController.a(this.a, null);
-    Object localObject = ArkRecommendController.a(this.a).a.getEditableText();
-    if ((ArkRecommendController.a(this.a) == null) || (ArkRecommendController.a(this.a).a == null) || (ArkRecommendController.a(this.a).a.getText() == null) || (localObject == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkRecommendController", 2, "mChatPie is null or input ctrl is null");
-      }
-    }
-    String str;
-    do
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, this.jdField_a_of_type_JavaLangString);
+    TextView localTextView = (TextView)localQQCustomDialog.findViewById(2131362781);
+    localTextView.setGravity(17);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    localLayoutParams.gravity = 17;
+    localTextView.setLayoutParams(localLayoutParams);
+    localQQCustomDialog.setPositiveButton(2131435108, new aaxm(this, localQQCustomDialog));
+    localQQCustomDialog.setNegativeButton(2131433029, new aaxn(this, localQQCustomDialog));
+    try
     {
+      localQQCustomDialog.show();
       return;
-      str = ArkRecommendController.a(this.a).a.getText().toString();
-    } while (str.length() > 80);
-    localObject = (AtTroopMemberSpan[])((Editable)localObject).getSpans(0, localObject.toString().length(), AtTroopMemberSpan.class);
-    ArkRecommendController.a(this.a);
-    ArkRecommendLogic.a().post(new aaxm(this, str, (AtTroopMemberSpan[])localObject));
+    }
+    catch (Exception localException) {}
   }
 }
 

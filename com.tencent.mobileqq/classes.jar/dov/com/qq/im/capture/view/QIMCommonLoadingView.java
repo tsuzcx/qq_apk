@@ -13,11 +13,11 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import anpp;
+import anyc;
 
 public class QIMCommonLoadingView
   extends View
-  implements anpp
+  implements anyc
 {
   private static float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;

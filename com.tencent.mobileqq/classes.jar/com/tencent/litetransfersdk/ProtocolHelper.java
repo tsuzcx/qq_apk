@@ -33,11 +33,11 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rdi;
-import rdj;
-import rdk;
-import rdl;
-import rdm;
+import ria;
+import rib;
+import ric;
+import rid;
+import rie;
 import tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyToReq;
 import tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyToRsp;
 import tencent.im.cs.cmd0x346.cmd0x346.ApplyDownloadReq;
@@ -436,7 +436,9 @@ public class ProtocolHelper
     localFTNNotify.uint64_sessionid.set(paramFTNNotify.uint64_sessionid);
     localFTNNotify.str_file_name.set((String)localObject);
     localFTNNotify.str_file_index.set(paramFTNNotify.str_file_index);
-    localFTNNotify.bytes_file_md5.set(ByteStringMicro.copyFrom(paramFTNNotify.bytes_file_md5));
+    if (paramFTNNotify.bytes_file_md5 != null) {
+      localFTNNotify.bytes_file_md5.set(ByteStringMicro.copyFrom(paramFTNNotify.bytes_file_md5));
+    }
     localFTNNotify.uint64_file_len.set(paramFTNNotify.uint64_file_len);
     if (paramFTNNotify.bytes_originfile_md5 != null) {
       localFTNNotify.bytes_originfile_md5.set(ByteStringMicro.copyFrom(paramFTNNotify.bytes_originfile_md5));
@@ -1297,7 +1299,7 @@ public class ProtocolHelper
       FMToastUtil.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131427559));
       return;
     }
-    new Handler(localLooper).post(new rdi(this, paramString));
+    new Handler(localLooper).post(new ria(this, paramString));
   }
   
   public void showFileNotExistDialog(String paramString)
@@ -1308,7 +1310,7 @@ public class ProtocolHelper
       FMToastUtil.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131427516));
       return;
     }
-    new Handler(localLooper).post(new rdk(this, paramString));
+    new Handler(localLooper).post(new ric(this, paramString));
   }
   
   public void showFileTooLargeDialog(String paramString)
@@ -1319,7 +1321,7 @@ public class ProtocolHelper
       FMToastUtil.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131427561));
       return;
     }
-    new Handler(localLooper).post(new rdj(this, paramString));
+    new Handler(localLooper).post(new rib(this, paramString));
   }
   
   public void showNoNetworkDialog()
@@ -1330,7 +1332,7 @@ public class ProtocolHelper
       FMToastUtil.a(2131427563);
       return;
     }
-    new Handler(localLooper).post(new rdm(this));
+    new Handler(localLooper).post(new rie(this));
   }
   
   public void showQQIsOfflineDialog()
@@ -1341,7 +1343,7 @@ public class ProtocolHelper
       FMToastUtil.a(2131427562);
       return;
     }
-    new Handler(localLooper).post(new rdl(this));
+    new Handler(localLooper).post(new rid(this));
   }
 }
 

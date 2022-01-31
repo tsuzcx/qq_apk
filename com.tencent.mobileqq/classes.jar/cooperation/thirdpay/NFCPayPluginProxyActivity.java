@@ -11,8 +11,8 @@ import android.nfc.tech.NfcA;
 import android.nfc.tech.NfcF;
 import android.nfc.tech.NfcV;
 import android.os.Bundle;
-import anes;
-import anet;
+import anmv;
+import anmw;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -35,7 +35,7 @@ public class NFCPayPluginProxyActivity
     this.jdField_a_of_type_AndroidNfcNfcAdapter = NfcAdapter.getDefaultAdapter(this);
     if (this.jdField_a_of_type_AndroidNfcNfcAdapter != null) {
       if (!this.jdField_a_of_type_AndroidNfcNfcAdapter.isEnabled()) {
-        DialogUtil.a(this, 0, "", "请到设置界面打开NFC功能", new anes(this), new anet(this)).show();
+        DialogUtil.a(this, 0, "", "请到设置界面打开NFC功能", new anmv(this), new anmw(this)).show();
       }
     }
     while (!QLog.isColorLevel())
@@ -56,8 +56,8 @@ public class NFCPayPluginProxyActivity
       String str2 = NfcV.class.getName();
       String str3 = NfcF.class.getName();
       String str4 = MifareClassic.class.getName();
-      String[] arrayOfString = { NfcA.class.getName() };
-      this.jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { str1 }, { str2 }, { str3 }, { str4 }, arrayOfString };
+      String str5 = NfcA.class.getName();
+      this.jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { str1 }, { str2 }, { str3 }, { str4 }, { str5 } };
       this.jdField_a_of_type_ArrayOfAndroidContentIntentFilter = new IntentFilter[] { new IntentFilter("android.nfc.action.TECH_DISCOVERED", "*/*") };
       return;
     }

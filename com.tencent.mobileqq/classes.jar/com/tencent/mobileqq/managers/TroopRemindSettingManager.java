@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.managers;
 
-import aefk;
+import aenu;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -56,7 +56,7 @@ public class TroopRemindSettingManager
   
   public void b(String paramString, QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.post(new aefk(this, paramQQAppInterface, paramString), 8, null, false);
+    ThreadManager.post(new aenu(this, paramQQAppInterface, paramString), 8, null, false);
   }
 }
 

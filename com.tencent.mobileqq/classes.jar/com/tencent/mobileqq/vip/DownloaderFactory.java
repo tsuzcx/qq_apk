@@ -67,9 +67,9 @@ public class DownloaderFactory
     //   18: invokevirtual 85	com/tencent/mobileqq/vip/DownloadTask:a	()Lcom/tencent/mobileqq/vip/DownloadListener;
     //   21: ifnonnull +14 -> 35
     //   24: aload_0
-    //   25: new 87	akky
+    //   25: new 87	aksn
     //   28: dup
-    //   29: invokespecial 88	akky:<init>	()V
+    //   29: invokespecial 88	aksn:<init>	()V
     //   32: invokevirtual 91	com/tencent/mobileqq/vip/DownloadTask:a	(Lcom/tencent/mobileqq/vip/DownloadListener;)V
     //   35: aload_1
     //   36: ifnull +26 -> 62
@@ -4794,12 +4794,12 @@ public class DownloaderFactory
     //   74: iconst_0
     //   75: invokespecial 1147	com/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig:<init>	(Z)V
     //   78: astore_2
-    //   79: new 1149	akkz
+    //   79: new 1149	akso
     //   82: dup
     //   83: invokestatic 1154	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   86: invokevirtual 1158	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   89: aload_2
-    //   90: invokespecial 1161	akkz:<init>	(Lmqq/app/AppRuntime;Lcom/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig;)V
+    //   90: invokespecial 1161	akso:<init>	(Lmqq/app/AppRuntime;Lcom/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig;)V
     //   93: astore_2
     //   94: getstatic 41	com/tencent/mobileqq/vip/DownloaderFactory:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   97: iload_1
@@ -4830,12 +4830,12 @@ public class DownloaderFactory
     //   148: iconst_0
     //   149: invokespecial 1147	com/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig:<init>	(Z)V
     //   152: astore_2
-    //   153: new 1149	akkz
+    //   153: new 1149	akso
     //   156: dup
     //   157: invokestatic 1154	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   160: invokevirtual 1158	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   163: aload_2
-    //   164: invokespecial 1161	akkz:<init>	(Lmqq/app/AppRuntime;Lcom/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig;)V
+    //   164: invokespecial 1161	akso:<init>	(Lmqq/app/AppRuntime;Lcom/tencent/mobileqq/vip/DownloaderFactory$DownloadConfig;)V
     //   167: astore_2
     //   168: getstatic 41	com/tencent/mobileqq/vip/DownloaderFactory:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
     //   171: iload_1
@@ -4885,7 +4885,7 @@ public class DownloaderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vip.DownloaderFactory
  * JD-Core Version:    0.7.0.1
  */

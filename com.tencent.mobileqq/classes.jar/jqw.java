@@ -1,34 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.av.ui.CallbackWaitingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenVideoControlUI;
+import com.tencent.av.utils.UITools;
 
-class jqw
-  implements DialogInterface.OnClickListener
+public class jqw
+  implements Runnable
 {
-  jqw(jqv paramjqv) {}
+  public jqw(SmallScreenVideoControlUI paramSmallScreenVideoControlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setPackage(CallbackWaitingActivity.a(this.a.a).getApp().getPackageName());
-    paramDialogInterface.setAction("tencent.av.v2q.CancelCallBack");
-    paramDialogInterface.putExtra("fromPhone", this.a.a.c);
-    paramDialogInterface.putExtra("toPhone", this.a.a.jdField_b_of_type_JavaLangString);
-    paramDialogInterface.putExtra("fromUin", this.a.a.e);
-    paramDialogInterface.putExtra("uinType", this.a.a.jdField_b_of_type_Int);
-    paramDialogInterface.putExtra("toUin", this.a.a.e);
-    paramDialogInterface.putExtra("callBackId", this.a.a.a);
-    CallbackWaitingActivity.a(this.a.a).getApp().sendBroadcast(paramDialogInterface);
-    this.a.a.finish();
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_b_of_type_Boolean))
+    {
+      long l = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+      if ((this.a.jdField_b_of_type_JavaLangString == null) || (l != 0L))
+      {
+        this.a.jdField_b_of_type_JavaLangString = UITools.a(l);
+        if ((this.a.jdField_a_of_type_AndroidWidgetTextView != null) && (!this.a.c))
+        {
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(UITools.a(this.a.jdField_b_of_type_JavaLangString));
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_b_of_type_JavaLangString);
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jqw
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import lhr;
+import lkf;
 
 public class ReadInJoyCameraStatusLayout
   extends LinearLayout
@@ -21,7 +21,7 @@ public class ReadInJoyCameraStatusLayout
   private final int jdField_a_of_type_Int = 80;
   private Context jdField_a_of_type_AndroidContentContext;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private lhr jdField_a_of_type_Lhr;
+  private lkf jdField_a_of_type_Lkf;
   
   public ReadInJoyCameraStatusLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,14 +43,14 @@ public class ReadInJoyCameraStatusLayout
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Lhr != null) {
-      this.jdField_a_of_type_Lhr.a();
+    if (this.jdField_a_of_type_Lkf != null) {
+      this.jdField_a_of_type_Lkf.a();
     }
   }
   
-  public void setOnBottonClickListener(lhr paramlhr)
+  public void setOnBottonClickListener(lkf paramlkf)
   {
-    this.jdField_a_of_type_Lhr = paramlhr;
+    this.jdField_a_of_type_Lkf = paramlkf;
   }
   
   @TargetApi(16)
@@ -66,25 +66,25 @@ public class ReadInJoyCameraStatusLayout
     case 6: 
     case 7: 
     case 9: 
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackground(getResources().getDrawable(2130840717));
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackground(getResources().getDrawable(2130840735));
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER);
       this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.3F);
       return;
     case 1: 
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackground(getResources().getDrawable(2130840718));
-      Drawable localDrawable = getResources().getDrawable(2130840719);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackground(getResources().getDrawable(2130840736));
+      Drawable localDrawable = getResources().getDrawable(2130840737);
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
       this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
       return;
     case 2: 
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackground(getResources().getDrawable(2130840717));
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackground(getResources().getDrawable(2130840735));
       this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
       this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackground(getResources().getDrawable(2130840717));
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackground(getResources().getDrawable(2130840735));
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
     this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);

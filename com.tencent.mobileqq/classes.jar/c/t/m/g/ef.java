@@ -1,70 +1,44 @@
 package c.t.m.g;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import org.json.JSONObject;
+import android.location.Location;
 
-final class ef
-  implements el
+public final class ef
+  extends eh
 {
-  public String a;
-  public String b;
-  public String c;
-  public double d;
-  public double e;
-  public double f;
-  public String g;
-  public String h;
+  public final Location a;
+  public final long b;
+  public final int c;
+  private final long d = 30000L;
+  private final long e = 10000L;
+  private int f;
+  private int g;
   
-  static
+  public ef(Location paramLocation, long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    new Parcelable.Creator() {};
+    this.a = paramLocation;
+    this.b = paramLong;
+    this.f = paramInt1;
+    this.c = paramInt2;
+    this.g = paramInt3;
   }
   
-  public ef() {}
-  
-  public ef(JSONObject paramJSONObject)
+  public ef(ef paramef)
   {
-    this.a = paramJSONObject.optString("name");
-    this.b = paramJSONObject.optString("dtype");
-    this.c = paramJSONObject.optString("addr");
-    this.d = paramJSONObject.optDouble("pointx");
-    this.e = paramJSONObject.optDouble("pointy");
-    this.f = paramJSONObject.optDouble("dist");
-    this.g = paramJSONObject.optString("direction");
-    this.h = paramJSONObject.optString("tag");
-  }
-  
-  public final int describeContents()
-  {
-    return 0;
+    if (paramef.a == null) {}
+    for (Location localLocation = null;; localLocation = new Location(paramef.a))
+    {
+      this.a = localLocation;
+      this.b = paramef.b;
+      this.f = paramef.f;
+      this.c = paramef.c;
+      this.g = paramef.g;
+      return;
+    }
   }
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("AddressData{");
-    localStringBuilder.append("name=").append(this.a).append(",");
-    localStringBuilder.append("dtype=").append(this.b).append(",");
-    localStringBuilder.append("pointx=").append(this.d).append(",");
-    localStringBuilder.append("pointy=").append(this.e).append(",");
-    localStringBuilder.append("dist=").append(this.f).append(",");
-    localStringBuilder.append("direction=").append(this.g).append(",");
-    localStringBuilder.append("tag=").append(this.h).append(",");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
-  }
-  
-  public final void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    paramParcel.writeString(this.a);
-    paramParcel.writeString(this.b);
-    paramParcel.writeString(this.c);
-    paramParcel.writeDouble(this.d);
-    paramParcel.writeDouble(this.e);
-    paramParcel.writeDouble(this.f);
-    paramParcel.writeString(this.g);
-    paramParcel.writeString(this.h);
+    return "TxGpsInfo [location=" + this.a + ", gpsTime=" + this.b + ", visbleSatelliteNum=" + this.f + ", usedSatelliteNum=" + this.c + ", gpsStatus=" + this.g + "]";
   }
 }
 

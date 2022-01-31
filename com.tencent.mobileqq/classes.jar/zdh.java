@@ -1,35 +1,84 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.util.SparseArray;
+import com.tencent.mobileqq.apollo.data.ApolloGameRedDot;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public class zdh
-  implements Animation.AnimationListener
+public final class zdh
+  implements Runnable
 {
-  public zdh(FrameHelperActivity paramFrameHelperActivity, View paramView) {}
+  public zdh(EntityManager paramEntityManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    paramAnimation = new AnimationSet(true);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.3F, 1.2F, 1.3F, 1.2F, 1, 0.5F, 1, 0.5F);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.6F, 0.5F);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.addAnimation(localAlphaAnimation);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    SparseArray localSparseArray;
+    for (;;)
+    {
+      ApolloGameRedDot localApolloGameRedDot;
+      try
+      {
+        if (this.a == null) {
+          break label212;
+        }
+        Object localObject1 = this.a.a(ApolloGameRedDot.class);
+        localSparseArray = new SparseArray();
+        Object localObject2;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder().append("apolloGameReddot getGameReddotMap, redDots.size:");
+          if (localObject1 == null)
+          {
+            i = 0;
+            QLog.d("ApolloGameUtil", 2, i);
+          }
+        }
+        else
+        {
+          if (localObject1 == null) {
+            break;
+          }
+          Iterator localIterator = ((List)localObject1).iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localApolloGameRedDot = (ApolloGameRedDot)localIterator.next();
+          if (localApolloGameRedDot == null) {
+            continue;
+          }
+          if (!localApolloGameRedDot.isTimeValid()) {
+            break label193;
+          }
+          localObject2 = (SparseArray)localSparseArray.get(localApolloGameRedDot.mGameId);
+          localObject1 = localObject2;
+          if (localObject2 == null)
+          {
+            localObject1 = new SparseArray();
+            localSparseArray.put(localApolloGameRedDot.mGameId, localObject1);
+          }
+          ((SparseArray)localObject1).put(localApolloGameRedDot.mDotId, localApolloGameRedDot);
+          continue;
+        }
+        int i = localThrowable.size();
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("ApolloGameUtil", 1, localThrowable, new Object[] { "[loadCache] inner error" });
+        return;
+      }
+      continue;
+      label193:
+      this.a.b(localApolloGameRedDot);
+    }
+    com.tencent.mobileqq.apollo.utils.ApolloGameUtil.a = localSparseArray;
+    return;
+    label212:
+    QLog.e("ApolloGameUtil", 1, "[loadCache] em is null inner");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zdh
  * JD-Core Version:    0.7.0.1
  */

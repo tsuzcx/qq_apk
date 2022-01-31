@@ -1,13 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-
 public class ydu
-  implements DialogInterface.OnClickListener
 {
-  public ydu(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

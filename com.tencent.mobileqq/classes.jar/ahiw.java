@@ -1,42 +1,59 @@
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x984.oidb_0x984.RspBody;
 
 public class ahiw
-  implements Animation.AnimationListener
+  extends ahka
 {
-  public ahiw(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public ahiw(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureFragment", 2, "clearAnimation end!");
-    }
-    if (EffectsCameraCaptureFragment.d(this.a) == null) {
-      return;
-    }
-    this.a.h = true;
-    EffectsCameraCaptureFragment.d(this.a).setText(2131439102);
-    EffectsCameraCaptureFragment.d(this.a).startAnimation(this.a.b);
-    this.a.a.setStartOffset(3000L);
-    this.a.a.setAnimationListener(EffectsCameraCaptureFragment.b(this.a));
-    EffectsCameraCaptureFragment.d(this.a).setAnimation(this.a.a);
-    this.a.a.startNow();
+    super(paramReceiptMessageDetailFragment);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.h = true;
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      QLog.d("ReceiptMessageDetailFragment", 1, "getDiscussionSendReadReportCallback error on code: " + paramInt);
+      return;
+    }
+    try
+    {
+      paramBundle = new oidb_0x984.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (paramBundle.uint32_code.get() == 0) {
+        break label148;
+      }
+      QLog.d("ReceiptMessageDetailFragment", 1, "getDiscussionSendReadReportCallback fail on code: " + paramBundle.uint32_code.get());
+      if (paramBundle.uint32_code.get() == 20)
+      {
+        ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.d("ReceiptMessageDetailFragment", 1, "Report read status fail on invalid data");
+      ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+      return;
+    }
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
+    return;
+    label148:
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "getDiscussionSendReadReportCallback succ");
+    }
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahiw
  * JD-Core Version:    0.7.0.1
  */

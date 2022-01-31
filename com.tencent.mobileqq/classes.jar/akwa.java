@@ -1,26 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class akwa
-  implements View.OnClickListener
+public final class akwa
+  implements ThreadExcutor.IThreadListener
 {
-  public akwa(ProfileCardMoreInfoView paramProfileCardMoreInfoView, Card paramCard) {}
+  long a = 0L;
   
-  public void onClick(View paramView)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    paramView = new Intent();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null) {
-      paramView.putExtra("key_extend_friend_info", new ExtendFriendProfileEditFragment.ExtendFriendInfo(this.jdField_a_of_type_ComTencentMobileqqDataCard));
+    if (QLog.isColorLevel()) {
+      QLog.i("SwiftBrowserCookieMonster", 2, "Web_qqbrowser_pre_get_key, cost=" + (System.currentTimeMillis() - this.a));
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092DB", "0X80092DB", 0, 0, "", "", "", "");
-    PublicFragmentActivity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, ExtendFriendEditFragment.class, 4097);
+    this.a = 0L;
+  }
+  
+  public void onPreRun()
+  {
+    this.a = System.currentTimeMillis();
   }
 }
 

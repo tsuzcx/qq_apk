@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.shortvideo.filter.QQPtvVideoFilter;
-import com.tencent.ttpic.gles.OnSegDataReadyListener;
-import com.tencent.ttpic.gles.SegmentDataPipe;
-
 public class aibl
-  implements OnSegDataReadyListener
 {
-  public aibl(QQPtvVideoFilter paramQQPtvVideoFilter) {}
+  public int a;
+  public CharSequence a;
+  public int b;
   
-  public void onDataReady(SegmentDataPipe paramSegmentDataPipe)
+  public aibl(CharSequence paramCharSequence)
   {
-    QQPtvVideoFilter.a(this.a, paramSegmentDataPipe);
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = -1;
+    this.b = 0;
+  }
+  
+  public aibl(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aibl
  * JD-Core Version:    0.7.0.1
  */

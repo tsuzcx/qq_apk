@@ -43,10 +43,10 @@ public class PlaceholderSegment
     SegmentView localSegmentView = a().a(this.jdField_b_of_type_JavaLangString);
     if ((localSegmentView == null) || (localSegmentView.a() == 0))
     {
-      f_(true);
+      e_(true);
       return;
     }
-    f_(false);
+    e_(false);
   }
   
   public int a()
@@ -56,11 +56,11 @@ public class PlaceholderSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramBaseViewHolder.a(2131369125);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131369124);
+    paramViewGroup = (TextView)paramBaseViewHolder.a(2131369126);
+    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131369125);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      paramViewGroup.setText("还没有好友更新日迹\n拍摄一段小视频，分享眼前的世界");
+      paramViewGroup.setText("还没有好友更新小视频\n拍摄一段视频，分享眼前的世界");
       QQStoryContext.a();
       if (!ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
         break label77;
@@ -79,7 +79,7 @@ public class PlaceholderSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970717, paramViewGroup, false));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970733, paramViewGroup, false));
     return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder;
   }
   
@@ -111,7 +111,7 @@ public class PlaceholderSegment
     do
     {
       return;
-      localImageView = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131369124);
+      localImageView = (ImageView)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewBaseViewHolder.a(2131369125);
     } while (localImageView == null);
     QQStoryContext.a();
     if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))

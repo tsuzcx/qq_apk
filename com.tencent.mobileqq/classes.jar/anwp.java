@@ -1,20 +1,20 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.JourneyTextItem;
 
 public class anwp
-  implements IMediaPlayer.OnPreparedListener
+  implements anwk
 {
-  public anwp(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public anwp(JourneyTextItem paramJourneyTextItem) {}
   
-  public void a_(IMediaPlayer paramIMediaPlayer)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    SLog.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).b();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new anwq(this), 300L);
+    String str = paramString;
+    if (paramInt == 0) {
+      str = TroopFileUtils.b(paramString);
+    }
+    return str;
   }
 }
 

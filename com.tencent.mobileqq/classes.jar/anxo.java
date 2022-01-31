@@ -1,30 +1,41 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import android.os.SystemClock;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.util.WeakReferenceHandler;
+import dov.com.qq.im.capture.music.MusicDownloadListener;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class anxo
-  implements LbsManager.LbsUpdateListener
+  extends MusicDownloadListener
 {
-  public anxo(DoodleEmojiManager paramDoodleEmojiManager) {}
+  public anxo(MusicProviderView paramMusicProviderView) {}
   
-  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    SLog.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramBasicLocation != null) && (this.a.a != null)) {
-      this.a.a(paramBasicLocation.b, paramBasicLocation.a, this.a.a);
-    }
-    for (;;)
+    long l = SystemClock.uptimeMillis();
+    if ((this.a.jdField_a_of_type_Long == 0L) || (l - this.a.jdField_a_of_type_Long > 16L))
     {
-      paramBasicLocation = (LbsManager)SuperManager.a(9);
-      if (paramBasicLocation != null) {
-        paramBasicLocation.b(this);
-      }
-      this.a.a = null;
-      return;
-      SLog.e("DoodleEmojiManager", "onLbsUpdate failed.");
+      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+      this.a.jdField_a_of_type_Long = l;
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a().equals(paramString))) {
+      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
+    }
+    if ((!paramBoolean) && (paramInt == -104)) {
+      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(5);
     }
   }
 }

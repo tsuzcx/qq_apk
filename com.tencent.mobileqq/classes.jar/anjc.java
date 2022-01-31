@@ -1,19 +1,30 @@
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.plugin.QZonePluginMangerHelper;
+import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
+import cooperation.qzone.video.QzoneLiveVideoInterface;
 
-public class anjc
-  implements Runnable
+public final class anjc
+  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
 {
-  public anjc(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  public anjc(String paramString) {}
   
-  public void run()
+  public void a(IQZonePluginManager paramIQZonePluginManager)
   {
-    this.a.a.setVisibility(8);
+    if (paramIQZonePluginManager == null) {
+      QZonePluginMangerHelper.a(QzoneLiveVideoInterface.getContext(), this);
+    }
+    do
+    {
+      return;
+      paramIQZonePluginManager = paramIQZonePluginManager.a(this.a);
+    } while (paramIQZonePluginManager == null);
+    QzoneLiveVideoInterface.access$002(paramIQZonePluginManager.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjc
  * JD-Core Version:    0.7.0.1
  */

@@ -64,8 +64,8 @@ public abstract class Task
       return;
     }
     localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131362363), " and change to: ", this.jdField_a_of_type_JavaLangObject.toString(), " view hash:" + localImageView.hashCode() });
-    localImageView.setTag(2131362363, this.jdField_a_of_type_JavaLangObject.toString());
+    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131362366), " and change to: ", this.jdField_a_of_type_JavaLangObject.toString(), " view hash:" + localImageView.hashCode() });
+    localImageView.setTag(2131362366, this.jdField_a_of_type_JavaLangObject.toString());
   }
   
   public boolean a()

@@ -1,24 +1,50 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.ui.CustomAnimationAdapter;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class ozr
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TVK_SDKMgr.OnLogListener
 {
-  public ozr(CustomAnimationAdapter paramCustomAnimationAdapter, View paramView) {}
+  public ozr(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int d(String paramString1, String paramString2)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    if ((localLayoutParams instanceof LinearLayout.LayoutParams))
-    {
-      ((LinearLayout.LayoutParams)localLayoutParams).topMargin = paramValueAnimator.intValue();
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
     }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
   }
 }
 

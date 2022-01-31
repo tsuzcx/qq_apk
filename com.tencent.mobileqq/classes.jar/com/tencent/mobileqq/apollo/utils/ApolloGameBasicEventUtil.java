@@ -34,6 +34,7 @@ import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -47,10 +48,10 @@ import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yvz;
-import ywa;
-import ywb;
-import ywc;
+import zcs;
+import zct;
+import zcu;
+import zcv;
 
 public class ApolloGameBasicEventUtil
 {
@@ -233,7 +234,7 @@ public class ApolloGameBasicEventUtil
           ApolloDress localApolloDress = localObject[paramInt2];
           i = localApolloDress.b;
           int[] arrayOfInt = localApolloDress.a();
-          if ((ApolloActionHelper.a(paramString1, localApolloDress.a, arrayOfInt, paramQQAppInterface, new ywc(paramNotifyGameDressReady, paramInt1, paramQQAppInterface, paramString2, paramString3, localApolloDress, arrayOfInt))) && (localApolloDress.a != 0))
+          if ((ApolloActionHelper.a(paramString1, localApolloDress.a, arrayOfInt, paramQQAppInterface, new zcv(paramNotifyGameDressReady, paramInt1, paramQQAppInterface, paramString2, paramString3, localApolloDress, arrayOfInt))) && (localApolloDress.a != 0))
           {
             if (QLog.isColorLevel()) {
               QLog.d("ApolloGameBasicEventUtil", 2, "valid role and dress RSC.");
@@ -323,12 +324,12 @@ public class ApolloGameBasicEventUtil
         i = paramString.optInt("gameMode");
         l = paramString.optLong("roomId");
         localGameMsgInfo = new ApolloPanel.GameMsgInfo();
-        localObject = CmGameUtil.a(paramInt);
-        if (localObject != null)
+        localObject1 = CmGameUtil.a(paramInt);
+        if (localObject1 != null)
         {
-          localObject = ((CmGameLauncher)localObject).a();
-          if ((localObject != null) && (((CmGameStartChecker.StartCheckParam)localObject).game != null)) {
-            localGameMsgInfo.jdField_f_of_type_Int = ((CmGameStartChecker.StartCheckParam)localObject).game.actionId;
+          localObject1 = ((CmGameLauncher)localObject1).a();
+          if ((localObject1 != null) && (((CmGameStartChecker.StartCheckParam)localObject1).game != null)) {
+            localGameMsgInfo.jdField_f_of_type_Int = ((CmGameStartChecker.StartCheckParam)localObject1).game.actionId;
           }
         }
         if (localGameMsgInfo.jdField_f_of_type_Int <= 0) {
@@ -339,23 +340,31 @@ public class ApolloGameBasicEventUtil
         localGameMsgInfo.g = i;
         localGameMsgInfo.b = l;
         localGameMsgInfo.h = 4;
-        localObject = paramString.optString("extendInfo");
+        localObject1 = paramString.optString("extendInfo");
         JSONObject localJSONObject = new JSONObject();
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          localJSONObject.put("extendInfo", localObject);
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          localJSONObject.put("extendInfo", localObject1);
         }
-        String str = paramString.optString("summary");
-        if (!TextUtils.isEmpty(str)) {
-          localJSONObject.put("summary", str);
+        Object localObject2 = paramString.optString("summary");
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          localJSONObject.put("summary", localObject2);
         }
-        str = paramString.optString("picUrl");
-        if (!TextUtils.isEmpty(str)) {
-          localJSONObject.put("picUrl", str);
+        localObject2 = paramString.optString("picUrl");
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          localJSONObject.put("picUrl", localObject2);
+        }
+        i = paramString.optInt("activityId");
+        int j = paramString.optInt("reqCode");
+        localObject2 = CmGameUtil.a(paramInt);
+        if (localObject2 != null)
+        {
+          ((CmGameLauncher)localObject2).b = i;
+          ((CmGameLauncher)localObject2).c = j;
         }
         localGameMsgInfo.jdField_f_of_type_JavaLangString = localJSONObject.toString();
         if (localGameMsgInfo.jdField_f_of_type_JavaLangString.length() >= 500)
         {
-          QLog.w("cmgame.sendmsg", 1, "extendInfo is too long, extendInfo:" + (String)localObject);
+          QLog.w("cmgame.sendmsg", 1, "extendInfo is too long, extendInfo:" + (String)localObject1);
           return;
         }
       }
@@ -371,9 +380,9 @@ public class ApolloGameBasicEventUtil
       if (QLog.isColorLevel()) {
         QLog.d("cmgame.sendmsg", 2, new Object[] { "isSelectFriend:", Integer.valueOf(i) });
       }
-      Object localObject = CmGameMainManager.a();
-      if ((localObject != null) && (((CmGameMainManager)localObject).a != null) && (0L != l)) {
-        ((CmGameMainManager)localObject).a.roomId = l;
+      Object localObject1 = CmGameMainManager.a();
+      if ((localObject1 != null) && (((CmGameMainManager)localObject1).a != null) && (0L != l)) {
+        ((CmGameMainManager)localObject1).a.roomId = l;
       }
       if (i == 0)
       {
@@ -421,7 +430,7 @@ public class ApolloGameBasicEventUtil
       }
       for (;;)
       {
-        a(paramLong, paramQQAppInterface, paramString2, "", 1, paramString1, new yvz());
+        a(paramLong, paramQQAppInterface, paramString2, "", 1, paramString1, new zcs());
         return;
         QLog.w("ApolloGameBasicEventUtil", 1, "This branch cann't be reached. If so, something illegal must have been happening.");
         paramString2 = "";
@@ -456,7 +465,7 @@ public class ApolloGameBasicEventUtil
           ApolloDress localApolloDress = localObject[paramInt];
           i = localApolloDress.b;
           int[] arrayOfInt = localApolloDress.a();
-          if ((ApolloActionHelper.a(paramString1, localApolloDress.a, arrayOfInt, paramQQAppInterface, new ywb(paramNotifyDressReady, paramLong, paramQQAppInterface, paramString2, paramString3, localApolloDress, arrayOfInt))) && (localApolloDress.a != 0))
+          if ((ApolloActionHelper.a(paramString1, localApolloDress.a, arrayOfInt, paramQQAppInterface, new zcu(paramNotifyDressReady, paramLong, paramQQAppInterface, paramString2, paramString3, localApolloDress, arrayOfInt))) && (localApolloDress.a != 0))
           {
             if (QLog.isColorLevel()) {
               QLog.d("ApolloGameBasicEventUtil", 2, "valid role and dress RSC.");
@@ -531,95 +540,67 @@ public class ApolloGameBasicEventUtil
   public static void a(Context paramContext, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openWebViewWithoutUrl] context=", paramContext, ", jsonStr=", paramString });
+      QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openFloatTransparentView] context=", paramContext, ", jsonStr=", paramString });
     }
     if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
+    JSONObject localJSONObject1;
+    try
+    {
+      localJSONObject1 = new JSONObject(paramString);
+      paramString = localJSONObject1.getString("url");
+      if (TextUtils.isEmpty(paramString))
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, "[openFloatTransparentView] openUrl null");
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("ApolloGameBasicEventUtil", 1, "[openFloatTransparentView] exception=", paramContext);
+      return;
+    }
+    Object localObject = paramString;
+    if (localJSONObject1.has("param"))
+    {
+      JSONObject localJSONObject2 = localJSONObject1.getJSONObject("param");
+      localObject = paramString;
+      if (localJSONObject2 != null)
+      {
+        localObject = localJSONObject2.keys();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          paramString = com.tencent.util.URLUtil.a(paramString, str, localJSONObject2.getString(str));
+        }
+      }
+    }
     for (;;)
     {
-      Intent localIntent;
-      CmGameLauncher localCmGameLauncher;
-      try
+      int i = localJSONObject1.optInt("closeBtn");
+      int j = localJSONObject1.optInt("fullScreen");
+      paramString = new Intent(paramContext, ApolloFloatActivity.class);
+      paramString.putExtra("extra_key_click_time", System.currentTimeMillis());
+      paramString.putExtra("extra_key_weburl", (String)localObject);
+      if (i == 1)
       {
-        paramString = new JSONObject(paramString);
-        i = paramString.optInt("businessType");
-        localIntent = new Intent(paramContext, ApolloFloatActivity.class);
-        localCmGameLauncher = CmGameUtil.a();
-        if ((localCmGameLauncher == null) || (localCmGameLauncher.a() == null) || (localCmGameLauncher.a().game == null)) {
-          break;
-        }
-        switch (i)
-        {
-        case 1: 
-          QLog.e("ApolloGameBasicEventUtil", 1, new Object[] { "[openWebViewWithoutUrl] not bustype", Integer.valueOf(i) });
-          if ((paramContext instanceof Activity)) {
-            ((Activity)paramContext).startActivityForResult(localIntent, 9999);
-          }
-          j = paramString.optInt("gameOrientation");
-          i = j;
-          if (j == 0) {
-            i = 1;
-          }
-          if (i != 2) {
-            break label599;
-          }
-          ApolloUtil.a(paramContext, 0, 0);
-          return;
+        bool = true;
+        paramString.putExtra("extra_key_close_btn", bool);
+        if (j != 1) {
+          break label273;
         }
       }
-      catch (Throwable paramContext)
+      label273:
+      for (boolean bool = true;; bool = false)
       {
-        QLog.e("ApolloGameBasicEventUtil", 1, paramContext, new Object[] { "[openWebViewWithoutUrl]" });
+        paramString.putExtra("extra_key_fullscreen", bool);
+        paramContext.startActivity(paramString);
         return;
+        bool = false;
+        break;
       }
-      int j = paramString.optInt("gameOrientation");
-      int i = j;
-      if (j == 0) {
-        i = 1;
-      }
-      String str = String.format("https://cmshow.qq.com/apollo/html/game-platform/buy-props.html?_wv=3&adtag=inside_game&gameId=%s&gameOrientation=%s&itemList=%s", new Object[] { Integer.valueOf(localCmGameLauncher.a()), Integer.valueOf(i), URLEncoder.encode(paramString.optString("itemList"), "UTF-8") });
-      localIntent.putExtra("extra_key_weburl", str);
-      localIntent.putExtra("extra_key_transparent", paramString.optInt("transparent"));
-      localIntent.putExtra("extra_key_fullscreen", true);
-      localIntent.putExtra("extra_key_close_btn", true);
-      localIntent.putExtra("extra_key_entratation", i);
-      localIntent.putExtra("extra_key_from", 1);
-      VipUtils.a(null, "cmshow", "Apollo", "open_webpage", 0, 0, new String[] { localCmGameLauncher.a().mGameName });
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openWebViewWithoutUrl] url ", str });
-        continue;
-        str = paramString.optString("url");
-        if ((TextUtils.isEmpty(str)) || (!android.webkit.URLUtil.isNetworkUrl(str)))
-        {
-          QLog.e("ApolloGameBasicEventUtil", 1, "[openWebViewWithoutUrl] ill url " + str);
-          return;
-        }
-        j = paramString.optInt("gameOrientation");
-        i = j;
-        if (j == 0) {
-          i = 1;
-        }
-        localIntent.putExtra("extra_key_weburl", str);
-        localIntent.putExtra("extra_key_weburl", str);
-        localIntent.putExtra("extra_key_transparent", paramString.optInt("transparent"));
-        localIntent.putExtra("extra_key_fullscreen", true);
-        localIntent.putExtra("extra_key_close_btn", false);
-        localIntent.putExtra("extra_key_entratation", i);
-        localIntent.putExtra("extra_key_from", 1);
-        localIntent.addFlags(65536);
-        VipUtils.a(null, "cmshow", "Apollo", "open_webpage", 1, 0, new String[] { localCmGameLauncher.a().mGameName });
-        continue;
-        label599:
-        if (i == 3)
-        {
-          ApolloUtil.a(paramContext, 4, 4);
-          return;
-        }
-        ApolloUtil.a(paramContext, 1, 1);
-        return;
-      }
+      localObject = paramString;
     }
   }
   
@@ -858,7 +839,7 @@ public class ApolloGameBasicEventUtil
         if (!TextUtils.isEmpty(paramString2))
         {
           QLog.i("ApolloGameBasicEventUtil", 1, "pass uin.");
-          a(paramInt, paramQQAppInterface, paramString2, str, 1, paramString1, new ywa(i));
+          a(paramInt, paramQQAppInterface, paramString2, str, 1, paramString1, new zct(i));
           return;
         }
       }
@@ -891,6 +872,115 @@ public class ApolloGameBasicEventUtil
     }
   }
   
+  public static boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openWebViewWithoutUrl] context=", paramContext, ", jsonStr=", paramString, "gameId:", Integer.valueOf(paramInt1), ",taskId:", Integer.valueOf(paramInt2) });
+    }
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
+      return false;
+    }
+    for (;;)
+    {
+      int i;
+      Intent localIntent;
+      CmGameLauncher localCmGameLauncher;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        i = paramString.optInt("businessType");
+        localIntent = new Intent(paramContext, ApolloFloatActivity.class);
+        localCmGameLauncher = CmGameUtil.a();
+        if ((localCmGameLauncher == null) || (localCmGameLauncher.a() == null)) {
+          break label712;
+        }
+        if (localCmGameLauncher.a().game != null) {
+          break label714;
+        }
+      }
+      catch (Throwable paramContext)
+      {
+        QLog.e("ApolloGameBasicEventUtil", 1, paramContext, new Object[] { "[openWebViewWithoutUrl]" });
+        return false;
+      }
+      QLog.e("ApolloGameBasicEventUtil", 1, new Object[] { "[openWebViewWithoutUrl] not bustype", Integer.valueOf(i) });
+      localIntent.putExtra("game_busid", "Android.H5");
+      if ((paramContext instanceof Activity)) {
+        ((Activity)paramContext).startActivityForResult(localIntent, 9999);
+      }
+      paramInt2 = paramString.optInt("gameOrientation");
+      paramInt1 = paramInt2;
+      if (paramInt2 == 0) {
+        paramInt1 = 1;
+      }
+      if (paramInt1 == 2)
+      {
+        ApolloUtil.a(paramContext, 0, 0);
+        break;
+        int j = paramString.optInt("gameOrientation");
+        i = j;
+        if (j == 0) {
+          i = 1;
+        }
+        String str = String.format("https://cmshow.qq.com/apollo/html/game-platform/buy-props.html?_wv=3&adtag=inside_game&gameId=%s&gameOrientation=%s&itemList=%s", new Object[] { Integer.valueOf(localCmGameLauncher.a()), Integer.valueOf(i), URLEncoder.encode(paramString.optString("itemList"), "UTF-8") });
+        localIntent.putExtra("extra_key_weburl", str);
+        localIntent.putExtra("url", str);
+        localIntent.putExtra("extra_key_transparent", paramString.optInt("transparent"));
+        localIntent.putExtra("extra_key_fullscreen", true);
+        localIntent.putExtra("extra_key_close_btn", true);
+        localIntent.putExtra("extra_key_entratation", i);
+        localIntent.putExtra("extra_key_from", 1);
+        localIntent.putExtra("extra_key_gameid", paramInt1);
+        localIntent.putExtra("extra_key_taskid", paramInt2);
+        VipUtils.a(null, "cmshow", "Apollo", "open_webpage", 0, 0, new String[] { localCmGameLauncher.a().mGameName });
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openWebViewWithoutUrl] url ", str });
+          continue;
+          str = paramString.optString("url");
+          if ((TextUtils.isEmpty(str)) || (!android.webkit.URLUtil.isNetworkUrl(str)))
+          {
+            QLog.e("ApolloGameBasicEventUtil", 1, "[openWebViewWithoutUrl] ill url " + str);
+            return false;
+          }
+          j = paramString.optInt("gameOrientation");
+          i = j;
+          if (j == 0) {
+            i = 1;
+          }
+          localIntent.putExtra("url", str);
+          localIntent.putExtra("extra_key_weburl", str);
+          localIntent.putExtra("extra_key_transparent", paramString.optInt("transparent"));
+          localIntent.putExtra("extra_key_fullscreen", true);
+          localIntent.putExtra("extra_key_close_btn", false);
+          localIntent.putExtra("extra_key_entratation", i);
+          localIntent.putExtra("extra_key_from", 1);
+          localIntent.putExtra("extra_key_gameid", paramInt1);
+          localIntent.putExtra("extra_key_taskid", paramInt2);
+          localIntent.addFlags(65536);
+          VipUtils.a(null, "cmshow", "Apollo", "open_webpage", 1, 0, new String[] { localCmGameLauncher.a().mGameName });
+        }
+      }
+      else
+      {
+        if (paramInt1 == 3)
+        {
+          ApolloUtil.a(paramContext, 4, 4);
+          break;
+        }
+        ApolloUtil.a(paramContext, 1, 1);
+        break;
+        label712:
+        return false;
+        label714:
+        switch (i)
+        {
+        }
+      }
+    }
+    return true;
+  }
+  
   public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     return new Cryptor().encrypt(paramArrayOfByte2, paramArrayOfByte1);
@@ -898,20 +988,16 @@ public class ApolloGameBasicEventUtil
   
   public static int b()
   {
-    String str = ((TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone")).getNetworkOperatorName();
-    if (!TextUtils.isEmpty(str))
+    switch (HwNetworkUtil.getCarrierOperatorType(BaseApplicationImpl.getContext()))
     {
-      if (("中国电信".equals(str)) || (str.contains("电信"))) {
-        return 1;
-      }
-      if (("中国联通".equals(str)) || (str.contains("联通"))) {
-        return 2;
-      }
-      if (("中国移动".equals(str)) || (str.contains("移动"))) {
-        return 3;
-      }
+    default: 
+      return 0;
+    case 2: 
+      return 3;
+    case 3: 
+      return 2;
     }
-    return 0;
+    return 1;
   }
   
   private static String b()
@@ -978,68 +1064,47 @@ public class ApolloGameBasicEventUtil
   public static void b(Context paramContext, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openFloatTransparentView] context=", paramContext, ", jsonStr=", paramString });
+      QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openWebView] context=", paramContext, ", jsonStr=", paramString });
     }
     if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    JSONObject localJSONObject1;
+    JSONObject localJSONObject;
     try
     {
-      localJSONObject1 = new JSONObject(paramString);
-      paramString = localJSONObject1.getString("url");
+      localJSONObject = new JSONObject(paramString);
+      paramString = localJSONObject.getString("url");
       if (TextUtils.isEmpty(paramString))
       {
-        QLog.e("ApolloGameBasicEventUtil", 1, "[openFloatTransparentView] openUrl null");
+        QLog.e("ApolloGameBasicEventUtil", 1, "[openWebView] openUrl null");
         return;
       }
     }
     catch (Exception paramContext)
     {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[openFloatTransparentView] exception=", paramContext);
+      QLog.e("ApolloGameBasicEventUtil", 1, "[openWebView] exception=", paramContext);
       return;
     }
-    Object localObject = paramString;
-    if (localJSONObject1.has("param"))
+    String str = paramString;
+    if (localJSONObject.has("param"))
     {
-      JSONObject localJSONObject2 = localJSONObject1.getJSONObject("param");
-      localObject = paramString;
-      if (localJSONObject2 != null)
+      localJSONObject = localJSONObject.getJSONObject("param");
+      str = paramString;
+      if (localJSONObject != null)
       {
-        localObject = localJSONObject2.keys();
-        while (((Iterator)localObject).hasNext())
+        Iterator localIterator = localJSONObject.keys();
+        for (;;)
         {
-          String str = (String)((Iterator)localObject).next();
-          paramString = com.tencent.util.URLUtil.a(paramString, str, localJSONObject2.getString(str));
+          str = paramString;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          str = (String)localIterator.next();
+          paramString = com.tencent.util.URLUtil.a(paramString, str, localJSONObject.getString(str));
         }
       }
     }
-    for (;;)
-    {
-      int i = localJSONObject1.optInt("closeBtn");
-      int j = localJSONObject1.optInt("fullScreen");
-      paramString = new Intent(paramContext, ApolloFloatActivity.class);
-      paramString.putExtra("extra_key_click_time", System.currentTimeMillis());
-      paramString.putExtra("extra_key_weburl", (String)localObject);
-      if (i == 1)
-      {
-        bool = true;
-        paramString.putExtra("extra_key_close_btn", bool);
-        if (j != 1) {
-          break label273;
-        }
-      }
-      label273:
-      for (boolean bool = true;; bool = false)
-      {
-        paramString.putExtra("extra_key_fullscreen", bool);
-        paramContext.startActivity(paramString);
-        return;
-        bool = false;
-        break;
-      }
-      localObject = paramString;
-    }
+    VasWebviewUtil.openQQBrowserActivity(paramContext, str, -1L, new Intent(paramContext, QQBrowserActivity.class), false, -1);
   }
   
   public static void b(QQAppInterface paramQQAppInterface, String paramString)
@@ -1106,52 +1171,6 @@ public class ApolloGameBasicEventUtil
   public static byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     return new Cryptor().decrypt(paramArrayOfByte2, paramArrayOfByte1);
-  }
-  
-  public static void c(Context paramContext, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, new Object[] { "[openWebView] context=", paramContext, ", jsonStr=", paramString });
-    }
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    JSONObject localJSONObject;
-    try
-    {
-      localJSONObject = new JSONObject(paramString);
-      paramString = localJSONObject.getString("url");
-      if (TextUtils.isEmpty(paramString))
-      {
-        QLog.e("ApolloGameBasicEventUtil", 1, "[openWebView] openUrl null");
-        return;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[openWebView] exception=", paramContext);
-      return;
-    }
-    String str = paramString;
-    if (localJSONObject.has("param"))
-    {
-      localJSONObject = localJSONObject.getJSONObject("param");
-      str = paramString;
-      if (localJSONObject != null)
-      {
-        Iterator localIterator = localJSONObject.keys();
-        for (;;)
-        {
-          str = paramString;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          str = (String)localIterator.next();
-          paramString = com.tencent.util.URLUtil.a(paramString, str, localJSONObject.getString(str));
-        }
-      }
-    }
-    VasWebviewUtil.openQQBrowserActivity(paramContext, str, -1L, new Intent(paramContext, QQBrowserActivity.class), false, -1);
   }
   
   public static void c(QQAppInterface paramQQAppInterface, String paramString)

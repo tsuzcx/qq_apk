@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.arcard;
 
-import aalq;
-import aalr;
-import aals;
-import aalt;
+import aask;
+import aasl;
+import aasm;
+import aasn;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -32,8 +32,8 @@ public class ARCardCamereButtonLayout
   private int jdField_a_of_type_Int = AIOUtils.a(45.0F, getResources());
   private long jdField_a_of_type_Long;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aalt(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aals(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new aasn(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aasm(this);
   private View jdField_a_of_type_AndroidViewView;
   private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
   public ImageView a;
@@ -83,13 +83,13 @@ public class ARCardCamereButtonLayout
   
   private void e()
   {
-    LayoutInflater.from(getContext()).inflate(2130970198, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369000);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369521));
+    LayoutInflater.from(getContext()).inflate(2130970213, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369001);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369530));
     this.jdField_a_of_type_AndroidWidgetTextView.setText("按住录制AR祝福");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131369008));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369007));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369522));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131369010));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369009));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369531));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492969), 100, getResources().getColor(2131493307));
@@ -103,8 +103,8 @@ public class ARCardCamereButtonLayout
     VideoAnimation.a(this.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.0F, 0.1F, 1.2F, 400, null);
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 1.1333F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aalq(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aalr(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aask(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aasl(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   

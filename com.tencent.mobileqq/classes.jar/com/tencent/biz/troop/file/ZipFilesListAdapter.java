@@ -16,7 +16,7 @@ import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 import java.util.List;
-import oyo;
+import pdg;
 
 public class ZipFilesListAdapter
   extends BaseAdapter
@@ -64,14 +64,14 @@ public class ZipFilesListAdapter
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970052, null);
+      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970063, null);
       paramView = new ZipFilesListAdapter.FilesViewHolder();
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131368791));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131368792));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131368891));
-      paramView.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131368892);
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramViewGroup.findViewById(2131368794));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131368795));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131368894));
+      paramView.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131368895);
       paramViewGroup.setTag(paramView);
-      paramViewGroup.setOnClickListener(new oyo(this));
+      paramViewGroup.setOnClickListener(new pdg(this));
     }
     paramView = (ZipFilesListAdapter.FilesViewHolder)paramViewGroup.getTag();
     ZipFilePresenter.FileData localFileData = (ZipFilePresenter.FileData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
@@ -79,7 +79,7 @@ public class ZipFilesListAdapter
     {
       paramView.b.setText("文件夹");
       paramView.jdField_a_of_type_AndroidWidgetTextView.setText(FileManagerUtil.d(localFileData.jdField_a_of_type_JavaLangString));
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130841606);
+      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130841633);
       paramView.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
     for (;;)

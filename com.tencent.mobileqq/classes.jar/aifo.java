@@ -1,29 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
 
-public final class aifo
-  implements Runnable
+public class aifo
+  implements Animation.AnimationListener
 {
-  public void run()
+  public aifo(DanceReadyFilter paramDanceReadyFilter) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    long l = localCalendar.getTimeInMillis();
-    BaseApplicationImpl.getApplication().getSharedPreferences("banner_and_splash", 0).edit().putLong("splashshowtime", l).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("SetSplash", 2, "显示了一个非默认闪屏时间是" + localCalendar.toString());
-    }
+    DanceReadyFilter.d(this.a).f_(false);
+    DanceReadyFilter.f(this.a).a(DanceReadyFilter.d(this.a));
+    DanceReadyFilter.f(this.a).f_(true);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aifo
  * JD-Core Version:    0.7.0.1
  */

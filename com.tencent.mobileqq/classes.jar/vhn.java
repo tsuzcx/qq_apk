@@ -1,12 +1,28 @@
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.widget.PopupMenuDialog.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.pic.PicResult;
+import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class vhn
-  implements PopupMenuDialog.OnDismissListener
+  extends UiCallBack.DownAdapter
 {
-  public vhn(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  public vhn(PicItemBuilder paramPicItemBuilder, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void a() {}
+  public void a(int paramInt, PicResult paramPicResult)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
+    }
+  }
 }
 
 

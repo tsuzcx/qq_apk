@@ -1,20 +1,25 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.LikeRankingListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 
 public class tdt
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tdt(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public tdt(LikeRankingListActivity paramLikeRankingListActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a, TroopAssisSettingActivity.class);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
+    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.a.app.getManager(159);
+    RedTouchItem localRedTouchItem1 = localLocalRedTouchManager.a(100601);
+    if (localLocalRedTouchManager.a(localRedTouchItem1, false))
+    {
+      RedTouchItem localRedTouchItem2 = localLocalRedTouchManager.a(100500);
+      if ((localLocalRedTouchManager.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
+        localRedTouchItem2.unReadFlag = false;
+      }
+      localLocalRedTouchManager.a(100601);
+    }
   }
 }
 

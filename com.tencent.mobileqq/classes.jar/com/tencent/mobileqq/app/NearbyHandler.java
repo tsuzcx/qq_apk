@@ -107,7 +107,7 @@ public class NearbyHandler
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("client_ver", "7.6.3");
+      localJSONObject.put("client_ver", "7.6.8");
       localJSONObject.put("from", paramString2);
       if ("1".equals(paramString2))
       {
@@ -158,7 +158,7 @@ public class NearbyHandler
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("7.6.3");
+      paramReqBody.version.set("7.6.8");
       paramReqBody.version_code.set(ApkUtils.a(BaseApplicationImpl.sApplication));
       paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
@@ -705,6 +705,14 @@ public class NearbyHandler
       this.b.add("OidbSvc.0xada_0");
     }
     return !this.b.contains(paramString);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyHandler", 2, "notifyExitNearby");
+    }
+    a(20, true, new Object[0]);
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)

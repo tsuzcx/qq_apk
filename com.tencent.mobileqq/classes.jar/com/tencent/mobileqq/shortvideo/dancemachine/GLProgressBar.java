@@ -161,7 +161,7 @@ public class GLProgressBar
     return bool1;
   }
   
-  protected void am_()
+  protected void ao_()
   {
     this.f = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a();
     k();
@@ -245,10 +245,10 @@ public class GLProgressBar
     this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.e();
   }
   
-  public void h_(boolean paramBoolean)
+  public void f_(boolean paramBoolean)
   {
     this.j = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.h_(this.j);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(this.j);
   }
 }
 

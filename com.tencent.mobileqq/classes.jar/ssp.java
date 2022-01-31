@@ -1,32 +1,21 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class ssp
-  implements IphonePickerView.PickerViewAdapter
+  extends FriendListObserver
 {
-  public ssp(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public ssp(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public int getColumnCount()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    return 1;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {
-      return this.a.getString(2131433941);
+    if (paramBoolean) {
+      ForwardRecentActivity.b(this.a);
     }
-    return this.a.getString(2131433942);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ssp
  * JD-Core Version:    0.7.0.1
  */

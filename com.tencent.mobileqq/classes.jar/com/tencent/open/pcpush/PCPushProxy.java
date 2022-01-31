@@ -1,6 +1,6 @@
 package com.tencent.open.pcpush;
 
-import aljm;
+import alre;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -45,7 +45,7 @@ public class PCPushProxy
   {
     this.jdField_a_of_type_Int = 111;
     DownloadManager.a().a(this);
-    this.jdField_a_of_type_AndroidOsHandler = new aljm(this, ThreadManager.getSubThreadLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new alre(this, ThreadManager.getSubThreadLooper());
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
     jdField_a_of_type_JavaUtilList = new ArrayList(10);
     this.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper = new PCPushDBHelper();
@@ -234,42 +234,6 @@ public class PCPushProxy
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    LogUtility.c("PCPushProxy", "--> onDownloadWait info = " + paramDownloadInfo.toString());
-    paramDownloadInfo = b(paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((PCPushProxy.OnDownloadListener)localIterator.next()).a(3, paramDownloadInfo);
-    }
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    Object localObject;
-    if (paramDownloadInfo != null)
-    {
-      LogUtility.c("PCPushProxy", "--> onDownloadError info = " + paramDownloadInfo.toString() + " errorCode = " + paramInt1 + " errorMsg = " + paramString + " state = " + paramInt2);
-      localObject = b(paramDownloadInfo.jdField_c_of_type_JavaLangString);
-      paramDownloadInfo = (PCPushProxy.PkgEntry)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-      if (paramDownloadInfo == null)
-      {
-        LogUtility.e("PCPushProxy", "onDownloadError error because entry = null, key = " + (String)localObject);
-        return;
-      }
-      paramDownloadInfo.jdField_e_of_type_Int = 105;
-    }
-    for (;;)
-    {
-      localObject = jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((PCPushProxy.OnDownloadListener)((Iterator)localObject).next()).a(paramDownloadInfo, paramInt1, paramString, paramInt2);
-      }
-      break;
-      paramDownloadInfo = null;
-    }
-  }
-  
   public void a(PCPushProxy.OnDownloadListener paramOnDownloadListener)
   {
     LogUtility.c("PCPushProxy", "registerDownloadLitener dataline register listeners");
@@ -301,92 +265,6 @@ public class PCPushProxy
       paramString.putInt(DownloadConstants.j, 3);
       DownloadApi.a(null, paramString, 5, null, 0);
       return;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    LogUtility.c("PCPushProxy", "--> installSucceed packageName = " + paramString2);
-    paramString1 = null;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    if (localIterator.hasNext())
-    {
-      PCPushProxy.PkgEntry localPkgEntry = (PCPushProxy.PkgEntry)localIterator.next();
-      if ((!paramString2.equals(localPkgEntry.jdField_d_of_type_JavaLangString)) || (localPkgEntry.jdField_c_of_type_Int != 0)) {
-        break label136;
-      }
-      localPkgEntry.jdField_c_of_type_Int = 1;
-      paramString1 = localPkgEntry;
-    }
-    label136:
-    for (;;)
-    {
-      break;
-      if (paramString1 == null) {}
-      for (;;)
-      {
-        return;
-        paramString2 = jdField_a_of_type_JavaUtilList.iterator();
-        while (paramString2.hasNext()) {
-          ((PCPushProxy.OnDownloadListener)paramString2.next()).a(6, paramString1.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
-  }
-  
-  public void a(List paramList)
-  {
-    LogUtility.c("PCPushProxy", "--> onDownloadUpdate infos = " + paramList.toString());
-    ArrayList localArrayList = new ArrayList(10);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject = (DownloadInfo)paramList.next();
-      String str = b(((DownloadInfo)localObject).jdField_c_of_type_JavaLangString);
-      PCPushProxy.PkgEntry localPkgEntry = (PCPushProxy.PkgEntry)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-      if (localPkgEntry == null)
-      {
-        LogUtility.e("PCPushProxy", "onDownloadUpdate error because entry = null, key = " + str);
-      }
-      else
-      {
-        int i = localPkgEntry.jdField_e_of_type_Int;
-        switch (((DownloadInfo)localObject).a())
-        {
-        }
-        for (;;)
-        {
-          localPkgEntry.jdField_f_of_type_Int = ((DownloadInfo)localObject).g;
-          if ((i == 101) || (localPkgEntry.jdField_e_of_type_Int != 101)) {
-            break;
-          }
-          localObject = jdField_a_of_type_JavaUtilList.iterator();
-          while (((Iterator)localObject).hasNext()) {
-            ((PCPushProxy.OnDownloadListener)((Iterator)localObject).next()).a(1, str);
-          }
-          localPkgEntry.jdField_e_of_type_Int = 104;
-          continue;
-          localPkgEntry.jdField_e_of_type_Int = 101;
-          continue;
-          if (localPkgEntry.jdField_c_of_type_Int == 1)
-          {
-            localPkgEntry.jdField_e_of_type_Int = 103;
-          }
-          else
-          {
-            localPkgEntry.jdField_e_of_type_Int = 102;
-            continue;
-            localPkgEntry.jdField_e_of_type_Int = 105;
-            continue;
-            localPkgEntry.jdField_e_of_type_Int = 100;
-          }
-        }
-        localArrayList.add(localPkgEntry);
-      }
-    }
-    paramList = jdField_a_of_type_JavaUtilList.iterator();
-    while (paramList.hasNext()) {
-      ((PCPushProxy.OnDownloadListener)paramList.next()).a(localArrayList);
     }
   }
   
@@ -491,25 +369,6 @@ public class PCPushProxy
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(paramInt);
   }
   
-  public void b(DownloadInfo paramDownloadInfo)
-  {
-    LogUtility.c("PCPushProxy", "--> onDownloadPause info = " + paramDownloadInfo.toString());
-    paramDownloadInfo = b(paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    Object localObject = (PCPushProxy.PkgEntry)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramDownloadInfo);
-    if (localObject == null) {
-      LogUtility.e("PCPushProxy", "onDownloadPause error because entry = null, key = " + paramDownloadInfo);
-    }
-    for (;;)
-    {
-      return;
-      ((PCPushProxy.PkgEntry)localObject).jdField_e_of_type_Int = 105;
-      localObject = jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((PCPushProxy.OnDownloadListener)((Iterator)localObject).next()).a(2, paramDownloadInfo);
-      }
-    }
-  }
-  
   public void b(PCPushProxy.OnDownloadListener paramOnDownloadListener)
   {
     if (jdField_a_of_type_JavaUtilList.contains(paramOnDownloadListener)) {
@@ -548,8 +407,6 @@ public class PCPushProxy
     }
   }
   
-  public void b(String paramString1, String paramString2) {}
-  
   public boolean b(String paramString)
   {
     LogUtility.c("PCPushProxy", "--> isInstalled key = " + paramString);
@@ -560,25 +417,6 @@ public class PCPushProxy
       return false;
     }
     return AppUtil.a(localPkgEntry.jdField_d_of_type_JavaLangString);
-  }
-  
-  public void c(DownloadInfo paramDownloadInfo)
-  {
-    LogUtility.c("PCPushProxy", "--> onDownloadFinish info = " + paramDownloadInfo.toString());
-    paramDownloadInfo = b(paramDownloadInfo.jdField_c_of_type_JavaLangString);
-    Object localObject = (PCPushProxy.PkgEntry)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramDownloadInfo);
-    if (localObject == null) {
-      LogUtility.e("PCPushProxy", "onDownloadPause error because entry = null, key = " + paramDownloadInfo);
-    }
-    for (;;)
-    {
-      return;
-      ((PCPushProxy.PkgEntry)localObject).jdField_e_of_type_Int = 102;
-      localObject = jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((PCPushProxy.OnDownloadListener)((Iterator)localObject).next()).a(4, paramDownloadInfo);
-      }
-    }
   }
   
   public void c(String paramString)
@@ -612,9 +450,37 @@ public class PCPushProxy
     }
   }
   
-  public void c(String paramString1, String paramString2) {}
+  public void installSucceed(String paramString1, String paramString2)
+  {
+    LogUtility.c("PCPushProxy", "--> installSucceed packageName = " + paramString2);
+    paramString1 = null;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    if (localIterator.hasNext())
+    {
+      PCPushProxy.PkgEntry localPkgEntry = (PCPushProxy.PkgEntry)localIterator.next();
+      if ((!paramString2.equals(localPkgEntry.jdField_d_of_type_JavaLangString)) || (localPkgEntry.jdField_c_of_type_Int != 0)) {
+        break label136;
+      }
+      localPkgEntry.jdField_c_of_type_Int = 1;
+      paramString1 = localPkgEntry;
+    }
+    label136:
+    for (;;)
+    {
+      break;
+      if (paramString1 == null) {}
+      for (;;)
+      {
+        return;
+        paramString2 = jdField_a_of_type_JavaUtilList.iterator();
+        while (paramString2.hasNext()) {
+          ((PCPushProxy.OnDownloadListener)paramString2.next()).a(6, paramString1.jdField_a_of_type_JavaLangString);
+        }
+      }
+    }
+  }
   
-  public void d(DownloadInfo paramDownloadInfo)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
     LogUtility.c("PCPushProxy", "--> onDownloadCancel info = " + paramDownloadInfo.toString());
     paramDownloadInfo = b(paramDownloadInfo.jdField_c_of_type_JavaLangString);
@@ -623,6 +489,140 @@ public class PCPushProxy
       ((PCPushProxy.OnDownloadListener)localIterator.next()).a(5, paramDownloadInfo);
     }
   }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    Object localObject;
+    if (paramDownloadInfo != null)
+    {
+      LogUtility.c("PCPushProxy", "--> onDownloadError info = " + paramDownloadInfo.toString() + " errorCode = " + paramInt1 + " errorMsg = " + paramString + " state = " + paramInt2);
+      localObject = b(paramDownloadInfo.jdField_c_of_type_JavaLangString);
+      paramDownloadInfo = (PCPushProxy.PkgEntry)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if (paramDownloadInfo == null)
+      {
+        LogUtility.e("PCPushProxy", "onDownloadError error because entry = null, key = " + (String)localObject);
+        return;
+      }
+      paramDownloadInfo.jdField_e_of_type_Int = 105;
+    }
+    for (;;)
+    {
+      localObject = jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PCPushProxy.OnDownloadListener)((Iterator)localObject).next()).a(paramDownloadInfo, paramInt1, paramString, paramInt2);
+      }
+      break;
+      paramDownloadInfo = null;
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    LogUtility.c("PCPushProxy", "--> onDownloadFinish info = " + paramDownloadInfo.toString());
+    paramDownloadInfo = b(paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    Object localObject = (PCPushProxy.PkgEntry)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramDownloadInfo);
+    if (localObject == null) {
+      LogUtility.e("PCPushProxy", "onDownloadPause error because entry = null, key = " + paramDownloadInfo);
+    }
+    for (;;)
+    {
+      return;
+      ((PCPushProxy.PkgEntry)localObject).jdField_e_of_type_Int = 102;
+      localObject = jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PCPushProxy.OnDownloadListener)((Iterator)localObject).next()).a(4, paramDownloadInfo);
+      }
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    LogUtility.c("PCPushProxy", "--> onDownloadPause info = " + paramDownloadInfo.toString());
+    paramDownloadInfo = b(paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    Object localObject = (PCPushProxy.PkgEntry)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramDownloadInfo);
+    if (localObject == null) {
+      LogUtility.e("PCPushProxy", "onDownloadPause error because entry = null, key = " + paramDownloadInfo);
+    }
+    for (;;)
+    {
+      return;
+      ((PCPushProxy.PkgEntry)localObject).jdField_e_of_type_Int = 105;
+      localObject = jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((PCPushProxy.OnDownloadListener)((Iterator)localObject).next()).a(2, paramDownloadInfo);
+      }
+    }
+  }
+  
+  public void onDownloadUpdate(List paramList)
+  {
+    LogUtility.c("PCPushProxy", "--> onDownloadUpdate infos = " + paramList.toString());
+    ArrayList localArrayList = new ArrayList(10);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = (DownloadInfo)paramList.next();
+      String str = b(((DownloadInfo)localObject).jdField_c_of_type_JavaLangString);
+      PCPushProxy.PkgEntry localPkgEntry = (PCPushProxy.PkgEntry)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      if (localPkgEntry == null)
+      {
+        LogUtility.e("PCPushProxy", "onDownloadUpdate error because entry = null, key = " + str);
+      }
+      else
+      {
+        int i = localPkgEntry.jdField_e_of_type_Int;
+        switch (((DownloadInfo)localObject).a())
+        {
+        }
+        for (;;)
+        {
+          localPkgEntry.jdField_f_of_type_Int = ((DownloadInfo)localObject).g;
+          if ((i == 101) || (localPkgEntry.jdField_e_of_type_Int != 101)) {
+            break;
+          }
+          localObject = jdField_a_of_type_JavaUtilList.iterator();
+          while (((Iterator)localObject).hasNext()) {
+            ((PCPushProxy.OnDownloadListener)((Iterator)localObject).next()).a(1, str);
+          }
+          localPkgEntry.jdField_e_of_type_Int = 104;
+          continue;
+          localPkgEntry.jdField_e_of_type_Int = 101;
+          continue;
+          if (localPkgEntry.jdField_c_of_type_Int == 1)
+          {
+            localPkgEntry.jdField_e_of_type_Int = 103;
+          }
+          else
+          {
+            localPkgEntry.jdField_e_of_type_Int = 102;
+            continue;
+            localPkgEntry.jdField_e_of_type_Int = 105;
+            continue;
+            localPkgEntry.jdField_e_of_type_Int = 100;
+          }
+        }
+        localArrayList.add(localPkgEntry);
+      }
+    }
+    paramList = jdField_a_of_type_JavaUtilList.iterator();
+    while (paramList.hasNext()) {
+      ((PCPushProxy.OnDownloadListener)paramList.next()).a(localArrayList);
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    LogUtility.c("PCPushProxy", "--> onDownloadWait info = " + paramDownloadInfo.toString());
+    paramDownloadInfo = b(paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((PCPushProxy.OnDownloadListener)localIterator.next()).a(3, paramDownloadInfo);
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

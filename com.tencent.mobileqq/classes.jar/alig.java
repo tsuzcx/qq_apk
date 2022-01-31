@@ -1,19 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.AuthorityLoginView;
 
 public class alig
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public alig(MyAppApi paramMyAppApi) {}
+  public alig(AuthorityLoginView paramAuthorityLoginView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    LogUtility.c("MyAppApi", "onReceive ---INTENT = " + paramIntent);
-    if ((paramIntent != null) && (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))) {
-      this.a.f();
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof String))) {
+      this.a.b((String)paramView);
     }
   }
 }

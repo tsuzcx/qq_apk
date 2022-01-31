@@ -13,7 +13,7 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import java.net.URL;
 import java.util.Collections;
 import java.util.List;
-import olw;
+import oqi;
 
 public class SlideShowPhotoListManager$SlideShowAdapter
   extends RecyclerView.Adapter
@@ -25,7 +25,7 @@ public class SlideShowPhotoListManager$SlideShowAdapter
   
   public SlideShowPhotoListManager.SlideShowViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = new SlideShowPhotoListManager.SlideShowViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970800, paramViewGroup, false));
+    paramViewGroup = new SlideShowPhotoListManager.SlideShowViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970817, paramViewGroup, false));
     paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(4);
     paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager);
     return paramViewGroup;
@@ -76,7 +76,7 @@ public class SlideShowPhotoListManager$SlideShowAdapter
       paramSlideShowViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setAlpha(1.0F);
       paramSlideShowViewHolder.jdField_a_of_type_AndroidWidgetTextView.setScaleX(0.94F);
       paramSlideShowViewHolder.jdField_a_of_type_AndroidWidgetTextView.setScaleY(0.94F);
-      paramSlideShowViewHolder.jdField_a_of_type_AndroidWidgetTextView.post(new olw(this, paramSlideShowViewHolder));
+      paramSlideShowViewHolder.jdField_a_of_type_AndroidWidgetTextView.post(new oqi(this, paramSlideShowViewHolder));
       return;
     }
     if (paramSlideShowViewHolder.jdField_a_of_type_Boolean)

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acwt;
-import acwu;
-import acwv;
+import adfa;
+import adfb;
+import adfc;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -30,7 +30,7 @@ public class OfflineSendWorker
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new acwv(this);
+  private FileTransferObserver jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferObserver = new adfc(this);
   private FileUploader jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader;
   private final FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
   private File jdField_a_of_type_JavaIoFile;
@@ -88,7 +88,7 @@ public class OfflineSendWorker
     if (QLog.isColorLevel()) {
       QLog.i("OfflineSendWorker<FileAssistant>", 1, "start OfflineFileHitReq:" + MessageCache.a());
     }
-    FileManagerUtil.FileExecutor.a().execute(new acwu(this, paramString, paramLong, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte2, paramArrayOfByte1));
+    FileManagerUtil.FileExecutor.a().execute(new adfb(this, paramString, paramLong, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte2, paramArrayOfByte1));
   }
   
   private void a(String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, long paramLong, FileTransferObserver paramFileTransferObserver, FileManagerEntity paramFileManagerEntity)
@@ -147,13 +147,13 @@ public class OfflineSendWorker
     FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileUpDetail", this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, paramInt, "", 1L, paramLong, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader.a(), paramString2, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileUploader.b(), paramString1, null);
   }
   
-  private void i()
+  private void j()
   {
     c();
     a(null, 0);
   }
   
-  private void j()
+  private void k()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 13, null, 0, null);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, 1002);
@@ -168,7 +168,7 @@ public class OfflineSendWorker
       }
       b(0L, 9005, FileManagerUtil.a());
       a(0L, 9005, FileManagerUtil.a());
-      i();
+      j();
     }
     label468:
     do
@@ -237,7 +237,7 @@ public class OfflineSendWorker
     QLog.e("##########", 2, "发送CS包,请求上传,nSessionID[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "]");
   }
   
-  private void k()
+  private void l()
   {
     QLog.i("OfflineSendWorker<FileAssistant>", 1, "=_= ^> [MiaoChuan] Id[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] is exist, Go [SetFileStatus Step]");
     this.jdField_b_of_type_Boolean = true;
@@ -271,7 +271,7 @@ public class OfflineSendWorker
   
   public void a()
   {
-    k();
+    l();
   }
   
   public void a(long paramLong)
@@ -304,6 +304,8 @@ public class OfflineSendWorker
     }
   }
   
+  public void a(String paramString) {}
+  
   public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2)
   {
     if (this.jdField_b_of_type_Boolean) {
@@ -326,7 +328,7 @@ public class OfflineSendWorker
         return;
       }
       b(paramLong, paramInt, str, paramString2);
-      i();
+      j();
       return;
     }
   }
@@ -432,7 +434,7 @@ public class OfflineSendWorker
   public void g()
   {
     this.jdField_b_of_type_Boolean = false;
-    ThreadManager.post(new Thread(new acwt(this)), 5, null, true);
+    ThreadManager.post(new Thread(new adfa(this)), 5, null, true);
   }
   
   public void h()
@@ -441,11 +443,13 @@ public class OfflineSendWorker
     {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strServerPath = "";
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bombData = null;
-      j();
+      k();
       return;
     }
     QLog.e("OfflineSendWorker<FileAssistant>", 1, "Id[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "]onOutDate, but not use last server path");
   }
+  
+  public void i() {}
 }
 
 

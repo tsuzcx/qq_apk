@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.ark.ArkAiScrollBar;
 
-class aazp
-  implements Runnable
+public class aazp
+  implements View.OnLayoutChangeListener
 {
-  aazp(aazo paramaazo, ItemInfo paramItemInfo) {}
+  public aazp(ArkAiScrollBar paramArkAiScrollBar) {}
   
-  public void run()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    ARMapEngine.removePOITask(this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo.a.a);
+    if (paramInt4 != paramInt8) {
+      this.a.e();
+    }
   }
 }
 

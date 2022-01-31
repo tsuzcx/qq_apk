@@ -1,29 +1,24 @@
-import android.graphics.Bitmap;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-class aekq
+public class aekq
   implements Runnable
 {
-  aekq(aekp paramaekp, int paramInt) {}
+  public aekq(ReportLog paramReportLog, MobileQQ paramMobileQQ) {}
   
   public void run()
   {
-    Object localObject = MusicGeneWebViewPlugin.a(this.jdField_a_of_type_Aekp.jdField_a_of_type_Aeky.c);
-    if (localObject != null)
+    if ((this.jdField_a_of_type_MqqAppMobileQQ instanceof BaseApplicationImpl))
     {
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      if (i * j > 8000)
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject != null) && ((localObject instanceof QQAppInterface)))
       {
-        double d = Math.sqrt(8000.0D / (i * j));
-        Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
-        ((Bitmap)localObject).recycle();
-        localObject = Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Aekp.jdField_a_of_type_Aeko.a), 55);
-        ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-        ((Message)localObject).obj = localBitmap;
-        ((Message)localObject).sendToTarget();
+        localObject = (QQAppInterface)localObject;
+        QLog.d("ReportLog", 1, "uncaughtException QQAppInterface exit.");
+        ((QQAppInterface)localObject).b(false);
       }
     }
   }

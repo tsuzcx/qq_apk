@@ -1,154 +1,164 @@
-import android.graphics.SurfaceTexture;
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.util.Log;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
-import java.util.Arrays;
+import android.graphics.Color;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoFragment;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
-class aoch
+public class aoch
+  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-  private final float[] jdField_a_of_type_ArrayOfFloat = { -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
-  private int jdField_b_of_type_Int = -12345;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
+  private final int jdField_a_of_type_Int = AIOUtils.a(40.0F, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a());
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int = 5;
+  private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
-  private float[] jdField_c_of_type_ArrayOfFloat = new float[16];
-  private int d;
-  private int e;
+  private boolean jdField_c_of_type_Boolean;
+  private int d = -1;
+  private int e = -1;
   private int f;
+  private int g;
+  private int h;
+  private int i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
+  private int n;
   
-  public aoch()
+  public aoch(EditVideoFragment paramEditVideoFragment, int paramInt)
   {
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfFloat).position(0);
-    Matrix.setIdentityM(this.jdField_c_of_type_ArrayOfFloat, 0);
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
   }
   
-  private int a(int paramInt, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = GLES20.glCreateShader(paramInt);
-    a("glCreateShader type=" + paramInt);
-    GLES20.glShaderSource(i, paramString);
-    GLES20.glCompileShader(i);
-    paramString = new int[1];
-    GLES20.glGetShaderiv(i, 35713, paramString, 0);
-    if (paramString[0] == 0)
+    int i1 = (int)paramMotionEvent.getRawX();
+    int i2 = (int)paramMotionEvent.getRawY();
+    switch (paramMotionEvent.getAction())
     {
-      Log.e("STextureRender", "Could not compile shader " + paramInt + ":");
-      Log.e("STextureRender", " " + GLES20.glGetShaderInfoLog(i));
-      GLES20.glDeleteShader(i);
-      return 0;
     }
-    return i;
-  }
-  
-  private int a(String paramString1, String paramString2)
-  {
-    int i = a(35633, paramString1);
-    if (i == 0) {}
-    int j;
     do
     {
-      return 0;
-      j = a(35632, paramString2);
-    } while (j == 0);
-    int k = GLES20.glCreateProgram();
-    if (k == 0) {
-      Log.e("STextureRender", "Could not create program");
-    }
-    GLES20.glAttachShader(k, i);
-    a("glAttachShader");
-    GLES20.glAttachShader(k, j);
-    a("glAttachShader");
-    GLES20.glLinkProgram(k);
-    paramString1 = new int[1];
-    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
-    if (paramString1[0] != 1)
+      do
+      {
+        for (;;)
+        {
+          return true;
+          if ((paramView.getTag() != null) && (((Boolean)paramView.getTag()).booleanValue()))
+          {
+            SLog.b("Q.qqstory.record.EditVideoFragment", "discard event. action down while doing reset animation.");
+            return false;
+          }
+          if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.c > System.currentTimeMillis()) {
+            return false;
+          }
+          this.d = i1;
+          this.e = i2;
+          this.f = paramView.getLeft();
+          this.g = (ScreenUtil.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a()) - paramView.getBottom());
+          this.m = 0;
+          this.n = 0;
+          this.l = paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex());
+          this.jdField_a_of_type_Boolean = false;
+          this.jdField_c_of_type_Boolean = false;
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a(paramView);
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a(this.jdField_c_of_type_Int);
+          continue;
+          int i3 = paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex());
+          if (i3 == this.l) {
+            break;
+          }
+          this.d = i1;
+          this.e = i2;
+          this.m = (paramView.getLeft() - this.f);
+          this.n = (ScreenUtil.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a()) - paramView.getBottom() - this.g);
+          this.l = i3;
+        }
+        this.h = (i1 - this.d);
+        this.i = (this.e - i2);
+      } while ((Math.abs(this.h) <= 5) && (Math.abs(this.i) <= 5));
+      this.jdField_a_of_type_Boolean = true;
+      if (!this.jdField_c_of_type_Boolean)
+      {
+        this.jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.b(paramView);
+      }
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a(this.jdField_c_of_type_Int, false);
+      this.j = (this.f + this.m + this.h);
+      this.k = (this.g + this.n + this.i);
+      if (this.j < 0) {
+        this.j = 0;
+      }
+      if (this.j + paramView.getWidth() > ScreenUtil.jdField_a_of_type_Int) {
+        this.j = (ScreenUtil.jdField_a_of_type_Int - paramView.getWidth());
+      }
+      if (this.k < 0) {
+        this.k = 0;
+      }
+      if (this.k + paramView.getHeight() > ScreenUtil.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a())) {
+        this.k = (ScreenUtil.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a()) - paramView.getHeight());
+      }
+      paramMotionEvent = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+      paramMotionEvent.leftMargin = this.j;
+      paramMotionEvent.bottomMargin = this.k;
+      paramView.setLayoutParams(paramMotionEvent);
+      paramView.invalidate();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView.getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
+      paramView = this.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.left -= this.jdField_a_of_type_Int;
+      paramView = this.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.top -= this.jdField_a_of_type_Int;
+      paramView = this.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.right += this.jdField_a_of_type_Int;
+      paramView = this.jdField_a_of_type_AndroidGraphicsRect;
+      paramView.bottom += this.jdField_a_of_type_Int;
+      if (this.jdField_a_of_type_AndroidGraphicsRect.contains(i1, i2))
+      {
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView.a(1.5F);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView.getDrawable().setColorFilter(Color.parseColor("#F31919"), PorterDuff.Mode.MULTIPLY);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(23);
+        break;
+        if (this.jdField_b_of_type_Boolean)
+        {
+          this.jdField_b_of_type_Boolean = false;
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView.a(1.0F);
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView.getDrawable().clearColorFilter();
+        }
+      }
+    } while (!this.jdField_a_of_type_Boolean);
+    paramView.clearAnimation();
+    if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidGraphicsRect.contains(i1, i2)))
     {
-      Log.e("STextureRender", "Could not link program: ");
-      Log.e("STextureRender", GLES20.glGetProgramInfoLog(k));
-      GLES20.glDeleteProgram(k);
-      return 0;
+      SLog.c("Q.qqstory.record.EditVideoFragment", "remove fragment.");
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView.a(1.0F);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView.getDrawable().clearColorFilter();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a(this.jdField_c_of_type_Int, this.f, this.g);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.b(this.jdField_c_of_type_Int);
     }
-    return k;
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    if (paramInt < 0) {
-      throw new RuntimeException("Unable to locate '" + paramString + "' in program");
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = a("uniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n    gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n");
-    if (this.jdField_a_of_type_Int == 0) {
-      throw new RuntimeException("failed creating program");
-    }
-    this.e = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "aPosition");
-    a(this.e, "aPosition");
-    this.f = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "aTextureCoord");
-    a(this.f, "aTextureCoord");
-    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "uMVPMatrix");
-    a(this.jdField_c_of_type_Int, "uMVPMatrix");
-    this.d = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "uSTMatrix");
-    a(this.d, "uSTMatrix");
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    this.jdField_b_of_type_Int = arrayOfInt[0];
-    GLES20.glBindTexture(36197, this.jdField_b_of_type_Int);
-    a("glBindTexture mTextureID");
-    GLES20.glTexParameterf(36197, 10241, 9728.0F);
-    GLES20.glTexParameterf(36197, 10240, 9729.0F);
-    GLES20.glTexParameteri(36197, 10242, 33071);
-    GLES20.glTexParameteri(36197, 10243, 33071);
-    a("glTexParameter");
-  }
-  
-  public void a(SurfaceTexture paramSurfaceTexture, boolean paramBoolean)
-  {
-    a("onDrawFrame start");
-    Log.e("STextureRender", Arrays.toString(this.jdField_c_of_type_ArrayOfFloat));
-    Log.e("STextureRender", String.valueOf(paramBoolean));
-    GLES20.glClearColor(0.0F, 1.0F, 0.0F, 1.0F);
-    GLES20.glClear(16384);
-    GLES20.glUseProgram(this.jdField_a_of_type_Int);
-    a("glUseProgram");
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(36197, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-    GLES20.glVertexAttribPointer(this.e, 3, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
-    a("glVertexAttribPointer maPosition");
-    GLES20.glEnableVertexAttribArray(this.e);
-    a("glEnableVertexAttribArray maPositionHandle");
-    this.jdField_a_of_type_JavaNioFloatBuffer.position(3);
-    GLES20.glVertexAttribPointer(this.f, 2, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
-    a("glVertexAttribPointer maTextureHandle");
-    GLES20.glEnableVertexAttribArray(this.f);
-    a("glEnableVertexAttribArray maTextureHandle");
-    Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-    GLES20.glUniformMatrix4fv(this.jdField_c_of_type_Int, 1, false, this.jdField_b_of_type_ArrayOfFloat, 0);
-    GLES20.glUniformMatrix4fv(this.d, 1, false, this.jdField_c_of_type_ArrayOfFloat, 0);
-    GLES20.glDrawArrays(5, 0, 4);
-    a("glDrawArrays");
-    GLES20.glBindTexture(36197, 0);
-  }
-  
-  public void a(String paramString)
-  {
-    int i = GLES20.glGetError();
-    if (i != 0)
+    for (;;)
     {
-      Log.e("STextureRender", paramString + ": glError " + i);
-      throw new RuntimeException(paramString + ": glError " + i);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+      break;
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a(paramView, paramView.getLeft(), ScreenUtil.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a()) - paramView.getBottom(), this.f, this.g);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFragment.a(this.jdField_c_of_type_Int, true);
     }
   }
 }

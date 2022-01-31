@@ -1,57 +1,83 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.shortvideo.PendantVersionManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import java.io.File;
 
 public final class aidb
   implements Runnable
 {
-  public aidb(QQAppInterface paramQQAppInterface) {}
-  
   public void run()
   {
-    String str3;
-    try
+    String str1 = PtvFilterSoLoad.a(VideoEnvironment.a());
+    String str2 = PendantVersionManager.a();
+    File[] arrayOfFile = new File(str1).listFiles();
+    int i = PendantVersionManager.a().length;
+    int j;
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
+    int m;
+    if ((arrayOfFile != null) && (arrayOfFile.length > i + 2))
     {
-      if (RedBagVideoManager.jdField_a_of_type_Boolean)
+      j = 2147483647;
+      localObject1 = "unknown";
+      int k = 0;
+      i = 0;
+      if (k < arrayOfFile.length)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : isLoadingRes = true");
+        if (arrayOfFile[k] == null) {}
+        for (;;)
+        {
+          k += 1;
+          break;
+          localObject2 = arrayOfFile[k].getName();
+          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!PendantVersionManager.a((String)localObject2)))
+          {
+            localObject3 = aies.a((String)localObject2);
+            m = ((aiet)localObject3).a();
+            if (m == 0) {
+              break label218;
+            }
+            VideoEnvironment.a("[executeClearHistoryPendantCache] errorCodec=" + m + " filename=" + (String)localObject2, null);
+            localObject2 = new File(str1 + (String)localObject2);
+            if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
+              ((File)localObject2).delete();
+            }
+          }
         }
-        return;
-      }
-      RedBagVideoManager.jdField_a_of_type_Boolean = true;
-      String str1 = SharedPreUtils.o(this.a.getApp(), this.a.getCurrentAccountUin());
-      str3 = SharedPreUtils.p(this.a.getApp(), this.a.getCurrentAccountUin());
-      if ((QLog.isColorLevel()) && (str1 != null) && (str3 != null)) {
-        QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes: md5 = " + str1 + ", url = " + str3);
-      }
-      if ((str1 == null) || (str1.length() == 0) || (str3 == null) || (str3.length() == 0))
-      {
-        RedBagVideoManager.jdField_a_of_type_Boolean = false;
-        return;
+        label218:
+        localObject3 = ((aiet)localObject3).b();
       }
     }
-    finally {}
-    if (!RedBagVideoManager.a(str2, this.a))
-    {
-      String str4 = RedBagVideoManager.jdField_a_of_type_JavaLangString + "VideoRedbagRes_2.0_android.zip";
-      DownloadTask localDownloadTask = new DownloadTask(str3, new File(str4));
-      localDownloadTask.l = true;
-      DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.a.getManager(46)).a(1);
-      if (QLog.isColorLevel()) {
-        QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : [download] startDownload: " + str3 + " path=" + str4);
-      }
-      localDownloaderInterface.a(localDownloadTask, new aidc(this, str3, str4, str2), null);
-    }
+    label418:
     for (;;)
     {
+      try
+      {
+        m = Integer.parseInt((String)localObject3);
+        if (m >= j) {
+          break label418;
+        }
+        j = m;
+        localObject1 = localObject2;
+        i += 1;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        VideoEnvironment.a("[executeClearHistorySOLibFile] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
+      }
+      break;
+      VideoEnvironment.a("[executeClearHistoryPendantCache] deleteName=" + (String)localObject1 + "  validNumPendantCache=" + i + " leastVersion=" + j, null);
+      if (i >= 2)
+      {
+        localObject1 = new File(str1 + (String)localObject1);
+        if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
+        {
+          VideoEnvironment.a("[executeClearHistoryPendantCache] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
+          ((File)localObject1).delete();
+        }
+      }
       return;
-      RedBagVideoManager.jdField_a_of_type_Boolean = false;
     }
   }
 }

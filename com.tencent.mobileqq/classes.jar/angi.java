@@ -1,74 +1,37 @@
-import android.os.IBinder;
-import cooperation.wadl.ipc.IWadlServiceCallBack;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.report.lp.MachineLearingSmartReport;
 
 public class angi
-  implements IWadlServiceCallBack
+  implements ModuleDownloadListener
 {
-  private IBinder a;
+  public angi(MachineLearingSmartReport paramMachineLearingSmartReport, String paramString1, String paramString2, String paramString3) {}
   
-  public angi(IBinder paramIBinder)
+  public void onDownloadCanceled(String paramString)
   {
-    this.a = paramIBinder;
+    if (QLog.isColorLevel()) {
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadCanceled " + paramString);
+    }
   }
   
-  /* Error */
-  public void a(java.lang.String paramString, android.os.Bundle paramBundle)
+  public void onDownloadFailed(String paramString)
   {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_3
-    //   4: aload_3
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_3
-    //   11: aload_1
-    //   12: invokevirtual 32	android/os/Parcel:writeString	(Ljava/lang/String;)V
-    //   15: aload_2
-    //   16: ifnull +33 -> 49
-    //   19: aload_3
-    //   20: iconst_1
-    //   21: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   24: aload_2
-    //   25: aload_3
-    //   26: iconst_0
-    //   27: invokevirtual 42	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
-    //   30: aload_0
-    //   31: getfield 15	angi:a	Landroid/os/IBinder;
-    //   34: iconst_1
-    //   35: aload_3
-    //   36: aconst_null
-    //   37: iconst_1
-    //   38: invokeinterface 48 5 0
-    //   43: pop
-    //   44: aload_3
-    //   45: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   48: return
-    //   49: aload_3
-    //   50: iconst_0
-    //   51: invokevirtual 36	android/os/Parcel:writeInt	(I)V
-    //   54: goto -24 -> 30
-    //   57: astore_1
-    //   58: aload_3
-    //   59: invokevirtual 51	android/os/Parcel:recycle	()V
-    //   62: aload_1
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	64	0	this	angi
-    //   0	64	1	paramString	java.lang.String
-    //   0	64	2	paramBundle	android.os.Bundle
-    //   3	56	3	localParcel	android.os.Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	15	57	finally
-    //   19	30	57	finally
-    //   30	44	57	finally
-    //   49	54	57	finally
+    MachineLearingSmartReport.access$100(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, 10, "Module onDownloadFailed " + paramString);
   }
   
-  public IBinder asBinder()
+  public void onDownloadProgress(String paramString, float paramFloat)
   {
-    return this.a;
+    if (QLog.isColorLevel()) {
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadProgress " + paramString + ",progress=" + Float.toString(paramFloat));
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadSucceed " + paramString);
+    }
+    MachineLearingSmartReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, this.jdField_a_of_type_JavaLangString, this.b, this.c);
   }
 }
 

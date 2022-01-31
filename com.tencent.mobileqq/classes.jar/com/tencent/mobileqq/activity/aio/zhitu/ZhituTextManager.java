@@ -21,8 +21,8 @@ import com.tencent.util.Pair;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import wek;
-import wel;
+import wju;
+import wjv;
 
 public class ZhituTextManager
 {
@@ -45,7 +45,7 @@ public class ZhituTextManager
   
   public static ZhituTextManager a()
   {
-    return wek.a();
+    return wju.a();
   }
   
   @NonNull
@@ -394,7 +394,7 @@ public class ZhituTextManager
   }
   
   @Nullable
-  public String a(@NonNull String paramString1, @NonNull ZhituTextManager.DrawTextParam paramDrawTextParam, @NonNull String paramString2, int paramInt, @NonNull wel paramwel)
+  public String a(@NonNull String paramString1, @NonNull ZhituTextManager.DrawTextParam paramDrawTextParam, @NonNull String paramString2, int paramInt, @NonNull wjv paramwjv)
   {
     if (!this.a)
     {
@@ -402,15 +402,15 @@ public class ZhituTextManager
       return null;
     }
     long l = System.currentTimeMillis();
-    if (paramwel.c() == null)
+    if (paramwjv.c() == null)
     {
       QLog.e("ZhituManager", 1, "create dest dir fail");
       return null;
     }
     Object localObject = new File(paramString1);
-    paramwel = paramwel.a(paramString1);
-    if (paramwel.exists()) {
-      paramwel.delete();
+    paramwjv = paramwjv.a(paramString1);
+    if (paramwjv.exists()) {
+      paramwjv.delete();
     }
     paramString1 = new GifEncoder();
     try
@@ -427,7 +427,7 @@ public class ZhituTextManager
       if ((i < 0) || (k < 1)) {
         return null;
       }
-      paramString1.a(((GifImageWithText)localObject).getWidth(), ((GifImageWithText)localObject).getHeight(), paramwel.getAbsolutePath(), GifEncoder.EncodingType.ENCODING_TYPE_SIMPLE_FAST);
+      paramString1.a(((GifImageWithText)localObject).getWidth(), ((GifImageWithText)localObject).getHeight(), paramwjv.getAbsolutePath(), GifEncoder.EncodingType.ENCODING_TYPE_SIMPLE_FAST);
       paramDrawTextParam = ZhituManager.a(((GifImageWithText)localObject).getWidth(), ((GifImageWithText)localObject).getHeight());
       if (paramDrawTextParam == null) {
         return null;
@@ -452,7 +452,7 @@ public class ZhituTextManager
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, ZhituManager.a(paramString2, "generateZhituGif", paramInt, "take time: " + Long.toString(System.currentTimeMillis() - l)));
       }
-      return paramwel.getAbsolutePath();
+      return paramwjv.getAbsolutePath();
     }
     catch (IOException paramDrawTextParam)
     {

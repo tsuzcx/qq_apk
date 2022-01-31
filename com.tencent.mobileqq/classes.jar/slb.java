@@ -1,18 +1,15 @@
-import android.app.Dialog;
-import android.view.View;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 
 public class slb
-  implements AdapterView.OnItemClickListener
+  implements Runnable
 {
-  public slb(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
+  public slb(Conversation paramConversation) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    ReadInJoyUtils.a(this.a.a.getMeasuredHeight(), this.a.a.getResources());
   }
 }
 

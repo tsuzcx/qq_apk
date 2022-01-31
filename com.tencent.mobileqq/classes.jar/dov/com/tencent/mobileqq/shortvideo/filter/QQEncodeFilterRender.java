@@ -2,7 +2,7 @@ package dov.com.tencent.mobileqq.shortvideo.filter;
 
 import android.annotation.TargetApi;
 import android.os.SystemClock;
-import aopr;
+import aoyd;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
@@ -87,11 +87,11 @@ public class QQEncodeFilterRender
       return;
       label44:
       this.jdField_b_of_type_Boolean = true;
-      aopr localaopr = new aopr(this);
+      aoyd localaoyd = new aoyd(this);
       try
       {
         long l = SystemClock.elapsedRealtimeNanos();
-        boolean bool = this.jdField_a_of_type_DovComTencentMobileqqShortvideoMusicwavesupportMusicSoundFile.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo, localaopr, 0);
+        boolean bool = this.jdField_a_of_type_DovComTencentMobileqqShortvideoMusicwavesupportMusicSoundFile.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo, localaoyd, 0);
         if (QLog.isColorLevel()) {
           QLog.d("QQEncodeFilterRender", 2, "createSoundFile time: " + (SystemClock.elapsedRealtimeNanos() - l) / 1000000L + "ms");
         }
@@ -156,7 +156,7 @@ public class QQEncodeFilterRender
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.o();
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.q();
     this.jdField_a_of_type_DovComTencentMobileqqShortvideoMusicwavesupportMusicSoundFile = null;
   }
   

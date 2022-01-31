@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import akax;
+import akil;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapShader;
@@ -53,11 +53,11 @@ public class PuzzleAvatarUtil
     if (paramConfig == null) {
       paramArrayOfBitmap = Bitmap.Config.RGB_565;
     }
-    Object localObject = new akax[j];
+    Object localObject = new akil[j];
     i = 0;
     while (i < j)
     {
-      localObject[i] = new akax(null);
+      localObject[i] = new akil(null);
       i += 1;
     }
     float f = paramInt / 100.0F;
@@ -223,11 +223,11 @@ public class PuzzleAvatarUtil
     int k = 0;
     RectF localRectF = new RectF();
     Rect localRect = new Rect();
-    akax[] arrayOfakax = new akax[j];
+    akil[] arrayOfakil = new akil[j];
     i = 0;
     while (i < j)
     {
-      arrayOfakax[i] = new akax(null);
+      arrayOfakil[i] = new akil(null);
       i += 1;
     }
     Bitmap localBitmap2 = Bitmap.createBitmap(paramInt, paramInt, Bitmap.Config.ARGB_8888);
@@ -235,10 +235,10 @@ public class PuzzleAvatarUtil
     localCanvas.drawARGB(0, 0, 0, 0);
     if (j == 1)
     {
-      arrayOfakax[0].jdField_a_of_type_Float = 0.0F;
-      arrayOfakax[0].jdField_a_of_type_Int = 0;
-      arrayOfakax[0].b = 0;
-      arrayOfakax[0].jdField_a_of_type_Boolean = true;
+      arrayOfakil[0].jdField_a_of_type_Float = 0.0F;
+      arrayOfakil[0].jdField_a_of_type_Int = 0;
+      arrayOfakil[0].b = 0;
+      arrayOfakil[0].jdField_a_of_type_Boolean = true;
       i = 0;
       label243:
       if ((i >= j) || (j > 6)) {
@@ -246,13 +246,13 @@ public class PuzzleAvatarUtil
       }
       Bitmap localBitmap1 = arrayOfBitmap[i];
       paramArrayOfBitmap = localBitmap1;
-      if (!arrayOfakax[i].jdField_a_of_type_Boolean) {
-        paramArrayOfBitmap = a(localBitmap1, paramBitmap, arrayOfakax[i].jdField_a_of_type_Float, paramFloat);
+      if (!arrayOfakil[i].jdField_a_of_type_Boolean) {
+        paramArrayOfBitmap = a(localBitmap1, paramBitmap, arrayOfakil[i].jdField_a_of_type_Float, paramFloat);
       }
       if (paramArrayOfBitmap == null) {
         break label1231;
       }
-      localRectF.set(arrayOfakax[i].jdField_a_of_type_Int, arrayOfakax[i].b, arrayOfakax[i].jdField_a_of_type_Int + paramInt, arrayOfakax[i].b + paramInt);
+      localRectF.set(arrayOfakil[i].jdField_a_of_type_Int, arrayOfakil[i].b, arrayOfakil[i].jdField_a_of_type_Int + paramInt, arrayOfakil[i].b + paramInt);
       localRect.set(0, 0, paramArrayOfBitmap.getWidth(), paramArrayOfBitmap.getHeight());
       localCanvas.drawBitmap(paramArrayOfBitmap, localRect, localRectF, localPaint);
     }
@@ -263,67 +263,67 @@ public class PuzzleAvatarUtil
       if (j == 2)
       {
         i = (int)(60.0F * f + 0.5F);
-        arrayOfakax[0].jdField_a_of_type_Float = 0.0F;
-        arrayOfakax[0].jdField_a_of_type_Int = 0;
-        arrayOfakax[0].b = 0;
-        arrayOfakax[1].jdField_a_of_type_Float = 0.0F;
-        arrayOfakax[1].jdField_a_of_type_Int = (paramInt - i);
-        arrayOfakax[1].b = (paramInt - i);
-        arrayOfakax[1].jdField_a_of_type_Boolean = true;
+        arrayOfakil[0].jdField_a_of_type_Float = 0.0F;
+        arrayOfakil[0].jdField_a_of_type_Int = 0;
+        arrayOfakil[0].b = 0;
+        arrayOfakil[1].jdField_a_of_type_Float = 0.0F;
+        arrayOfakil[1].jdField_a_of_type_Int = (paramInt - i);
+        arrayOfakil[1].b = (paramInt - i);
+        arrayOfakil[1].jdField_a_of_type_Boolean = true;
         paramInt = i;
         break;
       }
       if (j == 3)
       {
         i = (int)(52.0F * f + 0.5F);
-        arrayOfakax[0].jdField_a_of_type_Float = 75.0F;
-        arrayOfakax[0].jdField_a_of_type_Int = ((paramInt - i) / 2);
-        arrayOfakax[0].b = ((int)(2.0F * f));
-        arrayOfakax[1].jdField_a_of_type_Float = -165.0F;
-        arrayOfakax[1].jdField_a_of_type_Int = (paramInt - i);
-        arrayOfakax[1].b = (paramInt - i - (int)(2.0F * f));
-        arrayOfakax[2].jdField_a_of_type_Float = -45.0F;
-        arrayOfakax[2].jdField_a_of_type_Int = 0;
-        arrayOfakax[2].b = (paramInt - i - (int)(f * 2.0F));
+        arrayOfakil[0].jdField_a_of_type_Float = 75.0F;
+        arrayOfakil[0].jdField_a_of_type_Int = ((paramInt - i) / 2);
+        arrayOfakil[0].b = ((int)(2.0F * f));
+        arrayOfakil[1].jdField_a_of_type_Float = -165.0F;
+        arrayOfakil[1].jdField_a_of_type_Int = (paramInt - i);
+        arrayOfakil[1].b = (paramInt - i - (int)(2.0F * f));
+        arrayOfakil[2].jdField_a_of_type_Float = -45.0F;
+        arrayOfakil[2].jdField_a_of_type_Int = 0;
+        arrayOfakil[2].b = (paramInt - i - (int)(f * 2.0F));
         paramInt = i;
         break;
       }
       if (j == 4)
       {
         i = (int)(52.0F * f + 0.5F);
-        arrayOfakax[0].jdField_a_of_type_Float = 135.0F;
-        arrayOfakax[0].jdField_a_of_type_Int = (paramInt - i);
-        arrayOfakax[0].b = 0;
-        arrayOfakax[1].jdField_a_of_type_Float = -135.0F;
-        arrayOfakax[1].jdField_a_of_type_Int = (paramInt - i);
-        arrayOfakax[1].b = (paramInt - i);
-        arrayOfakax[2].jdField_a_of_type_Float = -45.0F;
-        arrayOfakax[2].jdField_a_of_type_Int = 0;
-        arrayOfakax[2].b = (paramInt - i);
-        arrayOfakax[3].jdField_a_of_type_Float = 45.0F;
-        arrayOfakax[3].jdField_a_of_type_Int = 0;
-        arrayOfakax[3].b = 0;
+        arrayOfakil[0].jdField_a_of_type_Float = 135.0F;
+        arrayOfakil[0].jdField_a_of_type_Int = (paramInt - i);
+        arrayOfakil[0].b = 0;
+        arrayOfakil[1].jdField_a_of_type_Float = -135.0F;
+        arrayOfakil[1].jdField_a_of_type_Int = (paramInt - i);
+        arrayOfakil[1].b = (paramInt - i);
+        arrayOfakil[2].jdField_a_of_type_Float = -45.0F;
+        arrayOfakil[2].jdField_a_of_type_Int = 0;
+        arrayOfakil[2].b = (paramInt - i);
+        arrayOfakil[3].jdField_a_of_type_Float = 45.0F;
+        arrayOfakil[3].jdField_a_of_type_Int = 0;
+        arrayOfakil[3].b = 0;
         paramInt = i;
         break;
       }
       if (j == 5)
       {
         i = (int)(40.0F * f + 0.5F);
-        arrayOfakax[0].jdField_a_of_type_Float = 170.0F;
-        arrayOfakax[0].jdField_a_of_type_Int = (paramInt - i);
-        arrayOfakax[0].b = ((int)(24.0F * f + 0.5F));
-        arrayOfakax[1].jdField_a_of_type_Float = -115.0F;
-        arrayOfakax[1].jdField_a_of_type_Int = (paramInt - i - (int)(12.0F * f + 0.5F));
-        arrayOfakax[1].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-        arrayOfakax[2].jdField_a_of_type_Float = -40.0F;
-        arrayOfakax[2].jdField_a_of_type_Int = ((int)(12.0F * f + 0.5F));
-        arrayOfakax[2].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-        arrayOfakax[3].jdField_a_of_type_Float = 25.0F;
-        arrayOfakax[3].jdField_a_of_type_Int = 0;
-        arrayOfakax[3].b = ((int)(24.0F * f + 0.5F));
-        arrayOfakax[4].jdField_a_of_type_Float = 100.0F;
-        arrayOfakax[4].jdField_a_of_type_Int = ((int)(30.0F * f + 0.5F));
-        arrayOfakax[4].b = ((int)(f * 2.0F + 0.5F));
+        arrayOfakil[0].jdField_a_of_type_Float = 170.0F;
+        arrayOfakil[0].jdField_a_of_type_Int = (paramInt - i);
+        arrayOfakil[0].b = ((int)(24.0F * f + 0.5F));
+        arrayOfakil[1].jdField_a_of_type_Float = -115.0F;
+        arrayOfakil[1].jdField_a_of_type_Int = (paramInt - i - (int)(12.0F * f + 0.5F));
+        arrayOfakil[1].b = (paramInt - i - (int)(2.0F * f + 0.5F));
+        arrayOfakil[2].jdField_a_of_type_Float = -40.0F;
+        arrayOfakil[2].jdField_a_of_type_Int = ((int)(12.0F * f + 0.5F));
+        arrayOfakil[2].b = (paramInt - i - (int)(2.0F * f + 0.5F));
+        arrayOfakil[3].jdField_a_of_type_Float = 25.0F;
+        arrayOfakil[3].jdField_a_of_type_Int = 0;
+        arrayOfakil[3].b = ((int)(24.0F * f + 0.5F));
+        arrayOfakil[4].jdField_a_of_type_Float = 100.0F;
+        arrayOfakil[4].jdField_a_of_type_Int = ((int)(30.0F * f + 0.5F));
+        arrayOfakil[4].b = ((int)(f * 2.0F + 0.5F));
         paramInt = i;
         break;
       }
@@ -331,24 +331,24 @@ public class PuzzleAvatarUtil
       if (j >= 6)
       {
         i = (int)(36.0F * f + 0.5F);
-        arrayOfakax[0].jdField_a_of_type_Float = 135.0F;
-        arrayOfakax[0].b = ((int)(2.0F * f + 0.5F));
-        arrayOfakax[0].jdField_a_of_type_Int = (paramInt - i - (int)(15.0F * f + 0.5F));
-        arrayOfakax[1].jdField_a_of_type_Float = 200.0F;
-        arrayOfakax[1].b = ((int)(32.0F * f + 0.5F));
-        arrayOfakax[1].jdField_a_of_type_Int = (paramInt - i);
-        arrayOfakax[2].jdField_a_of_type_Float = -110.0F;
-        arrayOfakax[2].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-        arrayOfakax[2].jdField_a_of_type_Int = (paramInt - i - (int)(15.0F * f + 0.5F));
-        arrayOfakax[3].jdField_a_of_type_Float = -45.0F;
-        arrayOfakax[3].b = (paramInt - i - (int)(2.0F * f + 0.5F));
-        arrayOfakax[3].jdField_a_of_type_Int = ((int)(15.0F * f + 0.5F));
-        arrayOfakax[4].jdField_a_of_type_Float = 20.0F;
-        arrayOfakax[4].b = ((int)(32.0F * f + 0.5F));
-        arrayOfakax[4].jdField_a_of_type_Int = 0;
-        arrayOfakax[5].jdField_a_of_type_Float = 75.0F;
-        arrayOfakax[5].b = ((int)(2.0F * f + 0.5F));
-        arrayOfakax[5].jdField_a_of_type_Int = ((int)(f * 15.0F + 0.5F));
+        arrayOfakil[0].jdField_a_of_type_Float = 135.0F;
+        arrayOfakil[0].b = ((int)(2.0F * f + 0.5F));
+        arrayOfakil[0].jdField_a_of_type_Int = (paramInt - i - (int)(15.0F * f + 0.5F));
+        arrayOfakil[1].jdField_a_of_type_Float = 200.0F;
+        arrayOfakil[1].b = ((int)(32.0F * f + 0.5F));
+        arrayOfakil[1].jdField_a_of_type_Int = (paramInt - i);
+        arrayOfakil[2].jdField_a_of_type_Float = -110.0F;
+        arrayOfakil[2].b = (paramInt - i - (int)(2.0F * f + 0.5F));
+        arrayOfakil[2].jdField_a_of_type_Int = (paramInt - i - (int)(15.0F * f + 0.5F));
+        arrayOfakil[3].jdField_a_of_type_Float = -45.0F;
+        arrayOfakil[3].b = (paramInt - i - (int)(2.0F * f + 0.5F));
+        arrayOfakil[3].jdField_a_of_type_Int = ((int)(15.0F * f + 0.5F));
+        arrayOfakil[4].jdField_a_of_type_Float = 20.0F;
+        arrayOfakil[4].b = ((int)(32.0F * f + 0.5F));
+        arrayOfakil[4].jdField_a_of_type_Int = 0;
+        arrayOfakil[5].jdField_a_of_type_Float = 75.0F;
+        arrayOfakil[5].b = ((int)(2.0F * f + 0.5F));
+        arrayOfakil[5].jdField_a_of_type_Int = ((int)(f * 15.0F + 0.5F));
       }
       paramInt = i;
       break;
@@ -420,7 +420,7 @@ public class PuzzleAvatarUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.util.PuzzleAvatarUtil
  * JD-Core Version:    0.7.0.1
  */

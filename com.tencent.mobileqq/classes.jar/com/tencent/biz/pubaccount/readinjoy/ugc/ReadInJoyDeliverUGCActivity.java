@@ -59,13 +59,13 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
-import lya;
-import lyb;
-import lyd;
-import lye;
-import lyf;
-import lyg;
-import lyh;
+import mbn;
+import mbo;
+import mbq;
+import mbr;
+import mbs;
+import mbt;
+import mbu;
 import org.json.JSONObject;
 
 public class ReadInJoyDeliverUGCActivity
@@ -73,7 +73,7 @@ public class ReadInJoyDeliverUGCActivity
 {
   public static Drawable a;
   private long jdField_a_of_type_Long;
-  ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lyh(this);
+  ReadInJoyObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new mbu(this);
   private HotPicData jdField_a_of_type_ComTencentMobileqqHotpicHotPicData;
   private CompressInfo jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
   public TransProcessorHandler a;
@@ -112,7 +112,7 @@ public class ReadInJoyDeliverUGCActivity
   {
     this.jdField_k_of_type_Int = 20000;
     this.jdField_l_of_type_Int = 3;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new lyg(this);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new mbt(this);
   }
   
   private int a()
@@ -256,20 +256,20 @@ public class ReadInJoyDeliverUGCActivity
   {
     if (QavCameraUsage.b(BaseApplicationImpl.getContext()))
     {
-      a(1, getString(2131434793));
+      a(1, getString(2131434809));
       return;
     }
     if (!Utils.a())
     {
-      a(1, getString(2131434770));
+      a(1, getString(2131434786));
       return;
     }
     PtvFilterSoLoad.a(this.app, BaseApplicationImpl.getContext());
-    Object localObject = new File(AppConstants.aV);
+    Object localObject = new File(AppConstants.aW);
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
-    localObject = PlusPanelUtils.a(AppConstants.aV);
+    localObject = PlusPanelUtils.a(AppConstants.aW);
     Intent localIntent = new Intent(BaseApplicationImpl.getContext(), NewFlowCameraActivity.class);
     localIntent.putExtra("flow_camera_capture_mode", true);
     localIntent.putExtra("qcamera_photo_filepath", (String)localObject);
@@ -293,7 +293,7 @@ public class ReadInJoyDeliverUGCActivity
     {
       this.jdField_e_of_type_JavaLangString = "";
       this.jdField_a_of_type_ComTencentMobileqqPicCompressInfo = null;
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839725);
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839740);
       this.jdField_c_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER);
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
       this.jdField_l_of_type_Int = 3;
@@ -324,7 +324,7 @@ public class ReadInJoyDeliverUGCActivity
   
   private void o()
   {
-    ThreadManager.executeOnFileThread(new lye(this));
+    ThreadManager.executeOnFileThread(new mbr(this));
   }
   
   protected void a()
@@ -335,7 +335,7 @@ public class ReadInJoyDeliverUGCActivity
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367076));
     this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366977));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366975));
     int m = ReadInJoyHelper.p(this.app);
     if ((!HotPicManager.a(this.app).b()) || (m == 1))
     {
@@ -418,7 +418,7 @@ public class ReadInJoyDeliverUGCActivity
       this.jdField_a_of_type_OrgJsonJSONObject.put("type", m);
       label78:
       this.jdField_e_of_type_Boolean = false;
-      a(2131430107, 2131438884, this.jdField_k_of_type_Int);
+      a(2131430109, 2131438908, this.jdField_k_of_type_Int);
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
       a(this.jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
@@ -511,7 +511,7 @@ public class ReadInJoyDeliverUGCActivity
       localObject = new File(paramString);
       if (((File)localObject).exists())
       {
-        ThreadManager.executeOnSubThread(new lya(this, (File)localObject));
+        ThreadManager.executeOnSubThread(new mbn(this, (File)localObject));
         this.jdField_e_of_type_JavaLangString = paramString;
         localObject = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
@@ -565,13 +565,13 @@ public class ReadInJoyDeliverUGCActivity
     {
       this.jdField_e_of_type_Boolean = true;
       h();
-      a(1, getString(2131438884));
+      a(1, getString(2131438908));
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyDeliverUGCActivity", 2, "startUploadPic empty path!");
       }
       return;
     }
-    ThreadManager.executeOnSubThread(new lyf(this, paramString));
+    ThreadManager.executeOnSubThread(new mbs(this, paramString));
   }
   
   protected void d()
@@ -583,7 +583,7 @@ public class ReadInJoyDeliverUGCActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969597);
+    super.setContentView(2130969593);
     overridePendingTransition(2131034123, 2131034121);
     if (isInMultiWindow())
     {
@@ -591,7 +591,7 @@ public class ReadInJoyDeliverUGCActivity
       finish();
       return true;
     }
-    a(2131438879);
+    a(2131438903);
     a();
     b();
     return true;
@@ -662,11 +662,11 @@ public class ReadInJoyDeliverUGCActivity
     if (this.jdField_b_of_type_ComTencentWidgetActionSheet == null)
     {
       this.jdField_b_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131438881, 5);
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131438882, 5);
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131433015);
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new lyb(this));
-      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new lyd(this));
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131438905, 5);
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(2131438906, 5);
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.c(2131433029);
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new mbo(this));
+      this.jdField_b_of_type_ComTencentWidgetActionSheet.a(new mbq(this));
     }
     if (!this.jdField_b_of_type_ComTencentWidgetActionSheet.isShowing())
     {
@@ -704,7 +704,7 @@ public class ReadInJoyDeliverUGCActivity
     case 2131367076: 
       n();
       return;
-    case 2131366977: 
+    case 2131366975: 
       i();
       return;
     }

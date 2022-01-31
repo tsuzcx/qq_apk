@@ -1,43 +1,44 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.artfilter.FilterTemplate;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.animation.ObjectAnimator;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
+import com.tencent.mobileqq.shortvideo.dancemachine.DisplayUtils;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.DItemInfo;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import mqq.os.MqqHandler;
 
 public class ansi
-  implements EIPCResultCallback
+  implements Runnable
 {
-  public ansi(EditVideoArtFilter paramEditVideoArtFilter, FilterTemplate paramFilterTemplate) {}
+  public ansi(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, RecentDanceConfigMgr.DItemInfo paramDItemInfo) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    if (paramEIPCResult.data == null) {}
-    int j;
-    Object localObject;
-    do
-    {
-      return;
-      int i = paramEIPCResult.data.getInt("param_art_filter_task_id");
-      j = paramEIPCResult.data.getInt("param_art_filter_style_id");
-      localObject = paramEIPCResult.data.getString("param_art_filter_resource_path");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "QIPCResult: resultFilterTaskId:" + i + " currentFilterTaskId:" + this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + " currentStyleId:" + EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter) + " resultFilterStyleId:" + j + " resultFilterOriginImgPath:" + (String)localObject);
-      }
-    } while ((EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter) != j) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.d == null) || (!((String)localObject).equals(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.d)) || (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.jdField_a_of_type_Boolean));
-    if (paramEIPCResult.data.getInt("param_art_filter_task_result") == 0)
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("param_art_filter_output_path");
-      localObject = EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(34);
-      ((Message)localObject).obj = paramEIPCResult;
-      ((Message)localObject).arg1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterFilterTemplate.a;
-      EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage((Message)localObject);
-      return;
+    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b = new ImageView(QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).getContext());
+    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.setImageResource(2130845629);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(12, -1);
+    localLayoutParams.addRule(11, -1);
+    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.setTranslationY(-500.0F);
+    localLayoutParams.rightMargin = DisplayUtils.a(-154.0F);
+    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.setClickable(true);
+    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.setOnTouchListener(new ansj(this));
+    if (QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit) == null) {
+      QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, new ansk(this));
     }
-    paramEIPCResult = EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter).obtainMessage(37);
-    EditVideoArtFilter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter).sendMessage(paramEIPCResult);
+    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a.a(QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit));
+    QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).addView(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b, localLayoutParams);
+    int i = DisplayUtils.a(98.0F);
+    QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, ObjectAnimator.ofFloat(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b, "translationX", new float[] { i, 0.0F }));
+    QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setDuration(300L);
+    QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, ObjectAnimator.ofFloat(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b, "translationX", new float[] { 0.0F, i }));
+    QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setDuration(500L);
+    QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit, true);
+    CaptureReportUtil.j();
+    ThreadManager.getUIHandler().postDelayed(new ansl(this), 2000L);
   }
 }
 

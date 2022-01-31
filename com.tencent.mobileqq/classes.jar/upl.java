@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
 
 public class upl
-  implements Runnable
+  extends QQLruCache
 {
-  public upl(CommonRecordSoundPanel paramCommonRecordSoundPanel, String paramString) {}
-  
-  public void run()
+  public upl(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
   {
-    QQToast.a(CommonRecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel).getApp(), 2131433786, 1).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a.getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.c(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.b();
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, BaseRedPkgElem paramBaseRedPkgElem1, BaseRedPkgElem paramBaseRedPkgElem2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramBaseRedPkgElem1, paramBaseRedPkgElem2);
   }
 }
 

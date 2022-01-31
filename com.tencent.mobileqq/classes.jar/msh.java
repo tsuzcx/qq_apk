@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
 public class msh
   implements Runnable
 {
-  public msh(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public msh(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, int paramInt) {}
   
   public void run()
   {
-    this.a.c();
+    FastWebVideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.smoothScrollBy(this.jdField_a_of_type_Int, 0);
   }
 }
 

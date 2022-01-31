@@ -1,52 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountManager;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.ChatContext;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.MsgProxy;
+import com.tencent.mobileqq.app.message.MsgProxyUtils;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageForStructing;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.message.QQMessageFacade.RefreshMessageContext;
 
 public class vyi
   implements Runnable
 {
-  public vyi(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vyi(FriendChatPie paramFriendChatPie) {}
   
   public void run()
   {
-    if (PublicAccountManager.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) != 0L) {}
-    for (;;)
+    if (!MsgProxyUtils.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))) {}
+    do
     {
       return;
-      Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          Object localObject2 = (ChatMessage)((Iterator)localObject1).next();
-          if (((localObject2 instanceof MessageForStructing)) || ((localObject2 instanceof MessageForPubAccount)))
-          {
-            localObject2 = ((ChatMessage)localObject2).getExtInfoFromExtStr("pa_msgId");
-            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              try
-              {
-                long l = Long.parseLong((String)localObject2);
-                if (l > 0L)
-                {
-                  PublicAccountManager.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, l);
-                  return;
-                }
-              }
-              catch (Exception localException) {}
-            }
-          }
-        }
-      }
-    }
+      FriendChatPie.a(this.a, SystemClock.uptimeMillis());
+      ((ChatContext)FriendChatPie.a(this.a).a).a(FriendChatPie.b(this.a));
+      FriendChatPie.b(this.a).e = false;
+      FriendChatPie.c(this.a).f = true;
+    } while (FriendChatPie.d(this.a).c != 0);
+    QQMessageFacade.RefreshMessageContext localRefreshMessageContext = FriendChatPie.e(this.a);
+    localRefreshMessageContext.c += 1;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 15, FriendChatPie.f(this.a));
   }
 }
 

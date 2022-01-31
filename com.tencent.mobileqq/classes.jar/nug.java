@@ -1,18 +1,21 @@
-import java.util.List;
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import mqq.os.MqqHandler;
 
 public class nug
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  int jdField_a_of_type_Int;
-  List jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public nug(VideoViewTVKImpl paramVideoViewTVKImpl) {}
   
-  public nug(boolean paramBoolean, List paramList, int paramInt1, int paramInt2)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    SLog.d("VideoViewTVKImpl", "mMediaPlayer onInfo, what:%d, meaning:%s, extra:%s", new Object[] { Integer.valueOf(paramInt), (String)VideoViewTVKImpl.a.get(paramInt, "UNKNOWN"), paramObject });
+    ThreadManager.getUIHandler().post(new nuh(this, paramInt, paramObject));
+    return false;
   }
 }
 

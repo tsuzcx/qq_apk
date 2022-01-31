@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:paddingLeft="15.0dip" android:paddingTop="10.0dip" android:paddingBottom="17.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.profile.views.OverScrollListView android:id="@id/common_xlistview" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c7e" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0405fe" />
-    <FrameLayout android:paddingTop="100.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05f1" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040601" />
-    </FrameLayout>
-</FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a4f" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020616" android:scaleType="fitCenter" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c022c" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a064e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="nick_name" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c022d" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c41" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="cover_story" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+        <CheckBox android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c42" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021148" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="21.0dip" android:layout_height="21.0dip" android:layout_marginRight="15.0dip" android:checked="true" android:button="@null" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c43" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+</LinearLayout>

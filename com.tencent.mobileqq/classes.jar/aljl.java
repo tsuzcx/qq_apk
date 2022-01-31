@@ -1,18 +1,29 @@
-import android.os.Bundle;
-import com.tencent.open.model.AccountManage;
-import java.lang.ref.WeakReference;
-import mqq.observer.SSOAccountObserver;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.FriendChooser.GridViewAdapter;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.open.agent.datamodel.FriendDataManager;
+import java.util.ArrayList;
 
 public class aljl
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public aljl(AccountManage paramAccountManage, WeakReference paramWeakReference, String paramString1, String paramString2, int paramInt, Bundle paramBundle) {}
+  public aljl(FriendChooser paramFriendChooser) {}
   
-  public void run()
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    SSOAccountObserver localSSOAccountObserver = (SSOAccountObserver)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localSSOAccountObserver != null) {
-      localSSOAccountObserver.onGetTicketNoPasswd(this.jdField_a_of_type_JavaLangString, this.b.getBytes(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+    paramAdapterView = (Friend)this.a.jdField_a_of_type_ComTencentOpenAgentFriendChooser$GridViewAdapter.getItem(paramInt);
+    if ((paramAdapterView != null) && (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(paramAdapterView.a)))
+    {
+      this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.b(paramAdapterView.a);
+      this.a.b.remove(paramAdapterView);
+      this.a.e();
+      ((OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).g();
+      this.a.b(false);
     }
   }
 }

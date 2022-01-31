@@ -4,13 +4,17 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdSearchDetail;
 import com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdSearchRsp;
 import com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdSkuItem;
+import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.Language;
 import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.OcrItem;
 import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.YoutuOcrDetail;
 import com.tencent.mobileqq.ar.arcloud.pb.YoutuOcr.YoutuOcrRsp;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -137,49 +141,72 @@ public class ARCloudOcrResult
       i = paramYoutuOcrRsp.youtu_ocr_errorcode.get();
       localYoutuOcrResult.jdField_a_of_type_Int = i;
       if (!paramYoutuOcrRsp.youtu_ocr_errormsg.has()) {
-        break label158;
+        break label322;
       }
       localObject = paramYoutuOcrRsp.youtu_ocr_errormsg.get();
       label49:
       localYoutuOcrResult.jdField_a_of_type_JavaLangString = ((String)localObject);
-      if (paramYoutuOcrRsp.youtu_orc_detail.has())
-      {
-        localObject = (YoutuOcr.YoutuOcrDetail)paramYoutuOcrRsp.youtu_orc_detail.get();
-        if (!((YoutuOcr.YoutuOcrDetail)localObject).errorcode.has()) {
-          break label164;
-        }
-        i = ((YoutuOcr.YoutuOcrDetail)localObject).errorcode.get();
-        label93:
-        localYoutuOcrResult.jdField_b_of_type_Int = i;
-        if (!((YoutuOcr.YoutuOcrDetail)localObject).errormsg.has()) {
-          break label169;
-        }
-        paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).errormsg.get();
-        label116:
-        localYoutuOcrResult.jdField_b_of_type_JavaLangString = paramYoutuOcrRsp;
-        if (!((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.has()) {
-          break label175;
-        }
+      if (!paramYoutuOcrRsp.youtu_orc_detail.has()) {
+        break label369;
+      }
+      localObject = (YoutuOcr.YoutuOcrDetail)paramYoutuOcrRsp.youtu_orc_detail.get();
+      if (!((YoutuOcr.YoutuOcrDetail)localObject).errorcode.has()) {
+        break label328;
+      }
+      i = ((YoutuOcr.YoutuOcrDetail)localObject).errorcode.get();
+      label93:
+      localYoutuOcrResult.jdField_b_of_type_Int = i;
+      if (!((YoutuOcr.YoutuOcrDetail)localObject).errormsg.has()) {
+        break label333;
       }
     }
-    label158:
-    label164:
-    label169:
-    label175:
-    for (paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.get();; paramYoutuOcrRsp = null)
+    label322:
+    label328:
+    label333:
+    for (paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).errormsg.get();; paramYoutuOcrRsp = "")
     {
-      if (paramYoutuOcrRsp != null) {
-        localYoutuOcrResult.d = a(paramYoutuOcrRsp);
+      localYoutuOcrResult.jdField_b_of_type_JavaLangString = paramYoutuOcrRsp;
+      if (((YoutuOcr.YoutuOcrDetail)localObject).language.has()) {
+        localYoutuOcrResult.e = ((YoutuOcr.YoutuOcrDetail)localObject).language.get();
       }
-      return localYoutuOcrResult;
+      if (((YoutuOcr.YoutuOcrDetail)localObject).ocr_language_list.has())
+      {
+        localYoutuOcrResult.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        localYoutuOcrResult.jdField_a_of_type_JavaUtilArrayList.addAll(((YoutuOcr.YoutuOcrDetail)localObject).ocr_language_list.get());
+      }
+      if (((YoutuOcr.YoutuOcrDetail)localObject).dst_translate_language_list.has())
+      {
+        localYoutuOcrResult.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+        localYoutuOcrResult.jdField_b_of_type_JavaUtilArrayList.addAll(((YoutuOcr.YoutuOcrDetail)localObject).dst_translate_language_list.get());
+      }
+      if (!((YoutuOcr.YoutuOcrDetail)localObject).language_list.has()) {
+        break label339;
+      }
+      localYoutuOcrResult.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).language_list.get().iterator();
+      while (paramYoutuOcrRsp.hasNext())
+      {
+        YoutuOcr.Language localLanguage = (YoutuOcr.Language)paramYoutuOcrRsp.next();
+        if ((localLanguage.language.has()) && (localLanguage.language_desc.has())) {
+          localYoutuOcrResult.jdField_a_of_type_JavaUtilHashMap.put(localLanguage.language.get(), localLanguage.language_desc.get());
+        }
+      }
       i = 0;
       break;
       localObject = "";
       break label49;
       i = -1;
       break label93;
-      paramYoutuOcrRsp = "";
-      break label116;
+    }
+    label339:
+    if (((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.has()) {}
+    for (paramYoutuOcrRsp = ((YoutuOcr.YoutuOcrDetail)localObject).ocr_item.get();; paramYoutuOcrRsp = null)
+    {
+      if (paramYoutuOcrRsp != null) {
+        localYoutuOcrResult.d = a(paramYoutuOcrRsp);
+      }
+      label369:
+      return localYoutuOcrResult;
     }
   }
   
@@ -204,36 +231,46 @@ public class ARCloudOcrResult
   
   public OcrRecogResult a()
   {
-    String str = null;
+    Object localObject;
     if (((this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult.d))) && (this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult == null)) {
-      return null;
+      localObject = null;
     }
-    OcrRecogResult localOcrRecogResult = new OcrRecogResult();
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult != null) {
-      str = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult.d;
-    }
-    localOcrRecogResult.ocrContent = str;
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult != null)
+    for (;;)
     {
-      localOcrRecogResult.goodsName = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.g;
-      localOcrRecogResult.goodsDetailUrl = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.d;
-      localOcrRecogResult.goodsPicUrl = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.e;
-    }
-    try
-    {
-      localOcrRecogResult.goodsPrice = Float.valueOf(this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.h).floatValue();
-      localOcrRecogResult.moreUrl = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.i;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.ocr", 2, "getUIData " + localOcrRecogResult);
-      }
-      return localOcrRecogResult;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      return localObject;
+      OcrRecogResult localOcrRecogResult = new OcrRecogResult();
+      if (this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult != null)
       {
-        localException.printStackTrace();
-        localOcrRecogResult.goodsPrice = 0.0F;
+        localOcrRecogResult.language = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult.e;
+        localOcrRecogResult.ocrContent = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult.d;
+        localOcrRecogResult.ocr_languages = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult.jdField_a_of_type_JavaUtilArrayList;
+        localOcrRecogResult.dst_translate_languages = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult.jdField_b_of_type_JavaUtilArrayList;
+        localOcrRecogResult.language_descs = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$YoutuOcrResult.jdField_a_of_type_JavaUtilHashMap;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult != null)
+      {
+        localOcrRecogResult.goodsName = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.g;
+        localOcrRecogResult.goodsDetailUrl = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.d;
+        localOcrRecogResult.goodsPicUrl = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.e;
+      }
+      try
+      {
+        localOcrRecogResult.goodsPrice = Float.valueOf(this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.h).floatValue();
+        localOcrRecogResult.moreUrl = this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult$JDSearchResult.i;
+        localObject = localOcrRecogResult;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.ocr", 2, "getUIData " + localOcrRecogResult);
+        return localOcrRecogResult;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+          localOcrRecogResult.goodsPrice = 0.0F;
+        }
       }
     }
   }

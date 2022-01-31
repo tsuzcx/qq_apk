@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.mobileqq.now.enter.widget.HongBao2018ListView;
 
-public class njm
-  implements DialogInterface.OnDismissListener
+class njm
+  implements Runnable
 {
-  public njm(FeedsPlayModeBase paramFeedsPlayModeBase, Boolean[] paramArrayOfBoolean) {}
+  njm(njl paramnjl) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FeedsPlayModeBase", 2, "[az]isResumeVideoPlaySelf === >" + this.jdField_a_of_type_ArrayOfJavaLangBoolean);
-    }
-    if (!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue()) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.s();
+    int i = this.a.a.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.getFirstVisiblePosition();
+    if (i < this.a.a.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.getHeaderViewsCount())
+    {
+      View localView = this.a.a.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.getChildAt(0);
+      if (localView == this.a.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView)
+      {
+        int j = localView.getTop();
+        if ((j < 0) && (j > -localView.getHeight())) {
+          this.a.a.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.setSelection(i + 1);
+        }
+      }
     }
   }
 }

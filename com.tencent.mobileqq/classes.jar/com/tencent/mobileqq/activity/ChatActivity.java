@@ -207,10 +207,10 @@ public class ChatActivity
   public boolean showPreview()
   {
     SetSplash.a(this, null);
-    getWindow().setFeatureInt(7, 2130968865);
+    getWindow().setFeatureInt(7, 2130968869);
     try
     {
-      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131364092).getParent());
+      this.jdField_a_of_type_AndroidViewView = ((View)findViewById(2131364117).getParent());
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return true;
     }

@@ -1,18 +1,21 @@
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class jfn
-  implements Runnable
+public class jfn
+  implements DialogInterface.OnClickListener
 {
-  jfn(jfm paramjfm) {}
+  public jfn(VideoController paramVideoController) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MagicFaceDataEntity.a(this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity, this.a.jdField_a_of_type_JavaLangString);
+    ReportController.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jfn
  * JD-Core Version:    0.7.0.1
  */

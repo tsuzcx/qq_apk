@@ -1,18 +1,26 @@
-import android.os.Process;
-import com.tencent.component.network.utils.thread.PriorityThreadFactory;
+import android.graphics.drawable.Drawable;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.image.ImageTaskTracer;
+import com.tencent.component.media.utils.LruCache;
 
 public class plu
-  extends Thread
+  extends LruCache
 {
-  public plu(PriorityThreadFactory paramPriorityThreadFactory, Runnable paramRunnable, String paramString)
+  public plu(ImageManager paramImageManager, int paramInt)
   {
-    super(paramRunnable, paramString);
+    super(paramInt);
   }
   
-  public void run()
+  protected int a(Integer paramInteger, Drawable paramDrawable)
   {
-    Process.setThreadPriority(PriorityThreadFactory.a(this.a));
-    super.run();
+    return ImageManager.a(paramDrawable);
+  }
+  
+  protected void a(boolean paramBoolean, Integer paramInteger, Drawable paramDrawable1, Drawable paramDrawable2)
+  {
+    if (paramInteger != null) {
+      ImageTaskTracer.addImageLruCacheEvictedRecord(paramInteger.intValue());
+    }
   }
 }
 

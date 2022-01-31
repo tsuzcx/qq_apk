@@ -1,19 +1,22 @@
-import cooperation.comic.utils.QQComicPluginBridge.PluginInstallObserver;
-import cooperation.plugin.IPluginManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.PopupMenuDialog;
 
-public final class amkl
-  implements Runnable
+public class amkl
+  implements View.OnClickListener
 {
-  public amkl(IPluginManager paramIPluginManager, QQComicPluginBridge.PluginInstallObserver paramPluginInstallObserver) {}
+  public amkl(PopupMenuDialog paramPopupMenuDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("comic_plugin.apk", new amkm(this));
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkl
  * JD-Core Version:    0.7.0.1
  */

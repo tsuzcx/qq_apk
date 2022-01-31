@@ -1,32 +1,49 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-public final class ajho
+public class ajho
   implements Runnable
 {
-  public ajho(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  public ajho(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, List paramList) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubmitHomeWorkFragment", 2, "start preload peak process");
-    }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, PeakService.class);
-    if (VideoEnvironment.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      localIntent.putExtra("ServiceAction", 2);
-    }
-    try
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      this.jdField_a_of_type_AndroidAppActivity.startService(localIntent);
+      localObject2 = (MessageRecord)((Iterator)localObject1).next();
+      TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (MessageRecord)localObject2);
+    }
+    localObject1 = null;
+    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+    if (((Iterator)localObject2).hasNext())
+    {
+      Object localObject3 = (MessageRecord)((Iterator)localObject2).next();
+      localObject3 = TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (MessageRecord)localObject3);
+      if (localObject3 == null) {
+        break label133;
+      }
+      if (localObject1 != null) {
+        break label130;
+      }
+      localObject1 = new ArrayList();
+      label97:
+      ((List)localObject1).addAll((Collection)localObject3);
+    }
+    label130:
+    label133:
+    for (;;)
+    {
+      break;
+      if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
+        TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, (List)localObject1);
+      }
       return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("SubmitHomeWorkFragment", 1, "onShow_otherThings startService ", localException);
+      break label97;
     }
   }
 }

@@ -1,15 +1,21 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.JDHongbaoActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.OnGetPhotoWallListener;
+import com.tencent.widget.ListView.OnScrollChangeListener;
 
 public class svl
-  implements Runnable
+  implements ListView.OnScrollChangeListener
 {
-  public svl(JDHongbaoActivity paramJDHongbaoActivity) {}
+  public svl(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    JDHongbaoActivity.a(this.a).setVisibility(0);
-    JDHongbaoActivity.a(this.a).startAnimation(JDHongbaoActivity.a(this.a));
+    if ((paramInt1 + paramInt2 != paramInt3) || (paramInt3 <= 0) || (this.a.c()) || (!NetworkUtil.d(this.a))) {}
+    while ((this.a.a == null) || (!this.a.a.a())) {
+      return;
+    }
+    this.a.a.a();
+    this.a.d(true);
   }
 }
 

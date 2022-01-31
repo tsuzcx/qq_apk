@@ -1,30 +1,45 @@
-import android.content.Context;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.ReportCallback;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.NearbyObserver;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
+import java.util.ArrayList;
+import java.util.List;
 
-class afac
-  implements NearbyMomentProtocol.ReportCallback
+public class afac
+  extends NearbyObserver
 {
-  afac(afab paramafab) {}
+  public afac(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean1, ArrayList paramArrayList, byte[] paramArrayOfByte, int paramInt, long paramLong1, String paramString, boolean paramBoolean2, long paramLong2, long paramLong3)
   {
-    Context localContext = this.a.a;
-    int i;
-    if (paramBoolean)
+    this.a.jdField_b_of_type_Boolean = false;
+    if (paramBoolean2)
     {
-      i = 2;
-      if (!paramBoolean) {
-        break label40;
+      this.a.jdField_b_of_type_Long = paramLong1;
+      this.a.c = paramLong2;
+      this.a.d = paramLong3;
+    }
+    if (paramBoolean1)
+    {
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      paramString = this.a;
+      if (paramInt == 1) {
+        break label146;
       }
     }
-    label40:
-    for (String str = "举报成功";; str = "举报失败")
+    label146:
+    for (boolean bool = true;; bool = false)
     {
-      QQToast.a(localContext, i, str, 0).a();
+      paramString.jdField_a_of_type_Boolean = bool;
+      if (paramBoolean2)
+      {
+        this.a.jdField_a_of_type_Int = 0;
+        this.a.jdField_a_of_type_JavaUtilList.clear();
+      }
+      if (paramArrayList != null) {
+        this.a.jdField_a_of_type_JavaUtilList.addAll(paramArrayList);
+      }
+      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      this.a.runOnUiThread(new afad(this, paramBoolean2, paramBoolean1));
       return;
-      i = 1;
-      break;
     }
   }
 }

@@ -1,9 +1,18 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class ybm
+  implements Runnable
 {
-  public int a;
-  public TextView a;
+  public ybm(RMVideoRecordState paramRMVideoRecordState, RMVideoStateMgr paramRMVideoStateMgr) {}
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.unlockFrameSync();
+    }
+  }
 }
 
 

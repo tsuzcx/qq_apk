@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aipc;
-import aipd;
+import aiuf;
+import aiug;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
@@ -33,18 +33,18 @@ public class DataLineDownloader
     this.a = paramBaseApplicationImpl;
   }
   
-  private Bitmap a(aipc paramaipc)
+  private Bitmap a(aiuf paramaiuf)
   {
     int j = 0;
     Object localObject2;
-    if (paramaipc == null) {
+    if (paramaiuf == null) {
       localObject2 = null;
     }
     for (;;)
     {
       return localObject2;
-      int i = paramaipc.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth;
-      int k = paramaipc.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight;
+      int i = paramaiuf.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth;
+      int k = paramaiuf.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight;
       try
       {
         BitmapFactory.Options localOptions = new BitmapFactory.Options();
@@ -53,10 +53,10 @@ public class DataLineDownloader
         localOptions.inTargetDensity = 160;
         localOptions.inScreenDensity = 160;
         localOptions.inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(paramaipc.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path, localOptions);
+        BitmapFactory.decodeFile(paramaiuf.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path, localOptions);
         localOptions.inJustDecodeBounds = false;
         localOptions.inSampleSize = a(localOptions, i, k);
-        Object localObject1 = FilePicURLDrawlableHelper.a(paramaipc.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path, localOptions);
+        Object localObject1 = FilePicURLDrawlableHelper.a(paramaiuf.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path, localOptions);
         k = AIOUtils.a(135.0F, BaseApplicationImpl.getContext().getResources());
         if (localOptions.outHeight > localOptions.outWidth * 2.0F)
         {
@@ -79,7 +79,7 @@ public class DataLineDownloader
           if (localObject1 == null) {
             break;
           }
-          return new ExifBitmapCreator(paramaipc.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path).a((Bitmap)localObject1);
+          return new ExifBitmapCreator(paramaiuf.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path).a((Bitmap)localObject1);
           if (localOptions.outWidth <= localOptions.outHeight * 2.0F) {
             break label361;
           }
@@ -88,20 +88,20 @@ public class DataLineDownloader
           i = 0;
         }
       }
-      catch (Exception paramaipc)
+      catch (Exception paramaiuf)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("_dataline_file", 2, "make Thumb ", paramaipc);
+          QLog.d("_dataline_file", 2, "make Thumb ", paramaiuf);
         }
         return null;
       }
-      catch (OutOfMemoryError paramaipc)
+      catch (OutOfMemoryError paramaiuf)
       {
         for (;;)
         {
           if (QLog.isColorLevel())
           {
-            QLog.d("_dataline_file", 2, "make Thumb OOM ", paramaipc);
+            QLog.d("_dataline_file", 2, "make Thumb OOM ", paramaiuf);
             continue;
             label361:
             i = 0;
@@ -155,19 +155,19 @@ public class DataLineDownloader
     }
   }
   
-  public aipc a(URL paramURL)
+  public aiuf a(URL paramURL)
   {
     try
     {
-      aipc localaipc = new aipc(this);
+      aiuf localaiuf = new aiuf(this);
       paramURL = paramURL.getFile().split("\\|");
-      localaipc.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
-      localaipc.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path = paramURL[0];
-      localaipc.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth = Integer.parseInt(paramURL[1]);
-      localaipc.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight = Integer.parseInt(paramURL[2]);
-      localaipc.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.modifiedDate = Long.parseLong(paramURL[3]);
-      localaipc.jdField_a_of_type_Boolean = Boolean.parseBoolean(paramURL[4]);
-      return localaipc;
+      localaiuf.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
+      localaiuf.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path = paramURL[0];
+      localaiuf.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth = Integer.parseInt(paramURL[1]);
+      localaiuf.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight = Integer.parseInt(paramURL[2]);
+      localaiuf.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.modifiedDate = Long.parseLong(paramURL[3]);
+      localaiuf.jdField_a_of_type_Boolean = Boolean.parseBoolean(paramURL[4]);
+      return localaiuf;
     }
     catch (Exception paramURL) {}
     return null;
@@ -179,7 +179,7 @@ public class DataLineDownloader
     if (paramOutputStream != null) {
       return new File(paramOutputStream.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path);
     }
-    return new File(AppConstants.aI);
+    return new File(AppConstants.aJ);
   }
   
   public boolean a()
@@ -190,7 +190,7 @@ public class DataLineDownloader
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
     paramFile = AlbumThumbManager.a(BaseApplicationImpl.getContext());
-    paramURLDrawableHandler = new aipd(this);
+    paramURLDrawableHandler = new aiug(this);
     paramFile = paramFile.a(paramDownloadParams.url, paramURLDrawableHandler);
     if (paramFile == null) {
       return null;
@@ -207,7 +207,7 @@ public class DataLineDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.DataLineDownloader
  * JD-Core Version:    0.7.0.1
  */

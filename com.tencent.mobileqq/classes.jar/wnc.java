@@ -1,44 +1,24 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class wnc
-  extends MessageObserver
+  implements DialogInterface.OnClickListener
 {
-  public wnc(DeviceFragment paramDeviceFragment) {}
+  public wnc(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramInt)
     {
-      localDeviceFragment.c = bool;
-      this.a.a.c();
-      this.a.a.notifyDataSetChanged();
+    default: 
+      return;
+    case 1: 
+      ThreadManager.post(new wnd(this), 10, null, true);
       return;
     }
-  }
-  
-  protected void c(int paramInt1, int paramInt2)
-  {
-    if (this.a.a == null) {
-      return;
-    }
-    DeviceFragment localDeviceFragment = this.a;
-    if (paramInt1 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localDeviceFragment.d = bool;
-      this.a.a.d();
-      this.a.a.a(this.a.d, AppConstants.z);
-      this.a.a.notifyDataSetChanged();
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

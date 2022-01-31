@@ -14,9 +14,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import uso;
-import usq;
-import usu;
+import uxo;
+import uxq;
+import uxu;
 
 public class LoadDataJob
   implements Runnable
@@ -28,10 +28,10 @@ public class LoadDataJob
   private int jdField_b_of_type_Int;
   private int c;
   
-  public LoadDataJob(String paramString, int paramInt1, int paramInt2, usq paramusq)
+  public LoadDataJob(String paramString, int paramInt1, int paramInt2, uxq paramuxq)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramusq);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramuxq);
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
   }
@@ -660,16 +660,16 @@ public class LoadDataJob
     //   430: putfield 58	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:c	I
     //   433: aload 6
     //   435: astore 5
-    //   437: new 232	usr
+    //   437: new 232	uxr
     //   440: dup
     //   441: aload_0
     //   442: aload 10
-    //   444: new 234	usp
+    //   444: new 234	uxp
     //   447: dup
     //   448: aload_0
     //   449: aload 11
-    //   451: invokespecial 237	usp:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;Ljava/util/List;)V
-    //   454: invokespecial 240	usr:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;[BLuss;)V
+    //   451: invokespecial 237	uxp:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;Ljava/util/List;)V
+    //   454: invokespecial 240	uxr:<init>	(Lcom/tencent/mobileqq/activity/aio/doodle/LoadDataJob;[BLuxs;)V
     //   457: iconst_5
     //   458: aconst_null
     //   459: iconst_1
@@ -1234,7 +1234,7 @@ public class LoadDataJob
     return localMyParcel;
   }
   
-  public usu a(MyParcelable paramMyParcelable)
+  public uxu a(MyParcelable paramMyParcelable)
   {
     MyParcel localMyParcel = new MyParcel(102400);
     paramMyParcelable.a(localMyParcel, 0);
@@ -1317,7 +1317,7 @@ public class LoadDataJob
     //   137: astore 7
     //   139: aload_0
     //   140: aload_1
-    //   141: invokevirtual 373	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Lcom/tencent/mobileqq/activity/aio/doodle/MyParcelable;)Lusu;
+    //   141: invokevirtual 373	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Lcom/tencent/mobileqq/activity/aio/doodle/MyParcelable;)Luxu;
     //   144: astore_1
     //   145: aload 8
     //   147: astore_3
@@ -1329,7 +1329,7 @@ public class LoadDataJob
     //   158: astore 7
     //   160: aload 5
     //   162: aload_1
-    //   163: getfield 376	usu:jdField_a_of_type_Int	I
+    //   163: getfield 376	uxu:jdField_a_of_type_Int	I
     //   166: invokestatic 379	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgTranslator:a	(I)[B
     //   169: invokevirtual 383	java/io/FileOutputStream:write	([B)V
     //   172: aload 8
@@ -1342,10 +1342,10 @@ public class LoadDataJob
     //   185: astore 7
     //   187: aload 5
     //   189: aload_1
-    //   190: getfield 386	usu:jdField_a_of_type_ArrayOfByte	[B
+    //   190: getfield 386	uxu:jdField_a_of_type_ArrayOfByte	[B
     //   193: iconst_0
     //   194: aload_1
-    //   195: getfield 376	usu:jdField_a_of_type_Int	I
+    //   195: getfield 376	uxu:jdField_a_of_type_Int	I
     //   198: invokevirtual 388	java/io/FileOutputStream:write	([BII)V
     //   201: aload 8
     //   203: ifnull +8 -> 211
@@ -1667,7 +1667,7 @@ public class LoadDataJob
     //   193: aload_1
     //   194: invokeinterface 267 1 0
     //   199: checkcast 290	com/tencent/mobileqq/activity/aio/doodle/PathDrawer
-    //   202: invokevirtual 373	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Lcom/tencent/mobileqq/activity/aio/doodle/MyParcelable;)Lusu;
+    //   202: invokevirtual 373	com/tencent/mobileqq/activity/aio/doodle/LoadDataJob:a	(Lcom/tencent/mobileqq/activity/aio/doodle/MyParcelable;)Luxu;
     //   205: astore 9
     //   207: aload 6
     //   209: astore 5
@@ -1677,7 +1677,7 @@ public class LoadDataJob
     //   217: astore 8
     //   219: aload 4
     //   221: aload 9
-    //   223: getfield 376	usu:jdField_a_of_type_Int	I
+    //   223: getfield 376	uxu:jdField_a_of_type_Int	I
     //   226: invokestatic 379	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgTranslator:a	(I)[B
     //   229: invokevirtual 383	java/io/FileOutputStream:write	([B)V
     //   232: aload 6
@@ -1688,10 +1688,10 @@ public class LoadDataJob
     //   242: astore 8
     //   244: aload 4
     //   246: aload 9
-    //   248: getfield 386	usu:jdField_a_of_type_ArrayOfByte	[B
+    //   248: getfield 386	uxu:jdField_a_of_type_ArrayOfByte	[B
     //   251: iconst_0
     //   252: aload 9
-    //   254: getfield 376	usu:jdField_a_of_type_Int	I
+    //   254: getfield 376	uxu:jdField_a_of_type_Int	I
     //   257: invokevirtual 388	java/io/FileOutputStream:write	([BII)V
     //   260: goto -101 -> 159
     //   263: astore 5
@@ -1904,7 +1904,7 @@ public class LoadDataJob
     //   645	24	6	localObject4	Object
     //   84	572	7	localObject5	Object
     //   1	499	8	localObject6	Object
-    //   7	246	9	localusu	usu
+    //   7	246	9	localuxu	uxu
     //   10	96	10	localObject7	Object
     //   64	531	11	str	String
     //   95	39	12	localFileChannel	java.nio.channels.FileChannel
@@ -1960,9 +1960,9 @@ public class LoadDataJob
       ((File)localObject1).mkdirs();
     }
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (usq localusq = (usq)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localusq = null)
+    for (uxq localuxq = (uxq)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localuxq = null)
     {
-      if (localusq == null) {
+      if (localuxq == null) {
         QLog.d("LoadDataJob", 2, "mListener == null");
       }
       label662:
@@ -1974,10 +1974,10 @@ public class LoadDataJob
           if (QLog.isColorLevel()) {
             QLog.d("LoadDataJob", 2, "file == null");
           }
-          localusq.a(null, 4, null, null, null);
+          localuxq.a(null, 4, null, null, null);
           return;
         }
-        if (!localusq.a(this.jdField_a_of_type_JavaLangString))
+        if (!localuxq.a(this.jdField_a_of_type_JavaLangString))
         {
           if (QLog.isColorLevel()) {
             QLog.d("LoadDataJob", 2, "onCheck  false");
@@ -1987,7 +1987,7 @@ public class LoadDataJob
         {
           Object localObject3 = a(this.jdField_a_of_type_JavaLangString, true);
           Object localObject2 = b(this.jdField_a_of_type_JavaLangString, true);
-          if (localusq.a(this.jdField_a_of_type_JavaLangString))
+          if (localuxq.a(this.jdField_a_of_type_JavaLangString))
           {
             Object localObject4;
             label243:
@@ -1998,7 +1998,7 @@ public class LoadDataJob
                 QLog.d("LoadDataJob", 2, "run  read parcel begin");
               }
               localObject1 = a((String)localObject3);
-              if (!localusq.a(this.jdField_a_of_type_JavaLangString)) {
+              if (!localuxq.a(this.jdField_a_of_type_JavaLangString)) {
                 continue;
               }
               if (localObject1 != null)
@@ -2022,7 +2022,7 @@ public class LoadDataJob
             }
             for (;;)
             {
-              if (!localusq.a(this.jdField_a_of_type_JavaLangString)) {
+              if (!localuxq.a(this.jdField_a_of_type_JavaLangString)) {
                 break label662;
               }
               if ((localObject1 != null) && (localObject2 != null))
@@ -2039,13 +2039,13 @@ public class LoadDataJob
                 localObject2 = DoodleMsgTranslator.a(this.jdField_a_of_type_JavaLangString);
                 if (localObject2 == null)
                 {
-                  localusq.a(this.jdField_a_of_type_JavaLangString, 4, null, null, null);
+                  localuxq.a(this.jdField_a_of_type_JavaLangString, 4, null, null, null);
                   return;
                   localPathDrawer.a(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
                   break label243;
                 }
                 localObject1 = ((DoodleItem)localObject2).a();
-                if (!localusq.a(this.jdField_a_of_type_JavaLangString)) {
+                if (!localuxq.a(this.jdField_a_of_type_JavaLangString)) {
                   break;
                 }
                 if (QLog.isColorLevel()) {
@@ -2053,7 +2053,7 @@ public class LoadDataJob
                 }
                 localObject4 = a(((DoodleItem)localObject2).a(), ((DoodleItem)localObject2).a().a());
                 long l2 = System.currentTimeMillis();
-                if (!localusq.a(this.jdField_a_of_type_JavaLangString)) {
+                if (!localuxq.a(this.jdField_a_of_type_JavaLangString)) {
                   break;
                 }
                 if (QLog.isColorLevel()) {
@@ -2064,7 +2064,7 @@ public class LoadDataJob
                   if (QLog.isColorLevel()) {
                     QLog.d("LoadDataJob", 2, "need cache:");
                   }
-                  ThreadManager.post(new uso(this, (DoodleParam)localObject1, (List)localObject4), 5, null, false);
+                  ThreadManager.post(new uxo(this, (DoodleParam)localObject1, (List)localObject4), 5, null, false);
                 }
                 localObject2 = localObject1;
                 localObject3 = localObject4;
@@ -2075,11 +2075,11 @@ public class LoadDataJob
                   localObject2 = localObject1;
                 }
               }
-              if (!localusq.a(this.jdField_a_of_type_JavaLangString)) {
+              if (!localuxq.a(this.jdField_a_of_type_JavaLangString)) {
                 break;
               }
               localObject1 = a((List)localObject3);
-              localusq.a(this.jdField_a_of_type_JavaLangString, 0, (DoodleParam)localObject2, (List)localObject3, (Map)localObject1);
+              localuxq.a(this.jdField_a_of_type_JavaLangString, 0, (DoodleParam)localObject2, (List)localObject3, (Map)localObject1);
               if (!QLog.isColorLevel()) {
                 break;
               }

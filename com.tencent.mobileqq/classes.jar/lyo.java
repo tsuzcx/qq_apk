@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentComment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class lyo
-  implements Runnable
+public class lyo
+  implements View.OnClickListener
 {
-  lyo(lym paramlym) {}
+  public lyo(ComponentComment paramComponentComment, String paramString, ArticleInfo paramArticleInfo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QLog.d("ReadInJoyDeliverVideoActivity", 2, "initCompositionManager: error, show toast");
-    QQToast.a(this.a.a, 2131438918, 0).a();
+    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment.getContext(), this.jdField_a_of_type_JavaLangString);
+    ReadInJoyFooterPresenter.a(1, ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
   }
 }
 

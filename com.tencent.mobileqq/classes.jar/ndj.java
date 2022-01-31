@@ -1,20 +1,34 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import mqq.os.MqqHandler;
 
 public class ndj
-  implements Runnable
+  extends SimpleJob
 {
-  public ndj(UserManager paramUserManager) {}
+  public ndj(QQStoryObserver paramQQStoryObserver, String paramString, Boolean paramBoolean, boolean paramBoolean1, int paramInt) {}
   
-  public void run()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.a.a = false;
-    if (!UserManager.a(this.a).isEmpty())
+    paramJobContext = (UserManager)SuperManager.a(2);
+    paramVarArgs = paramJobContext.b(this.jdField_a_of_type_JavaLangString);
+    if (paramVarArgs != null) {
+      if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+        break label61;
+      }
+    }
+    label61:
+    for (int i = 1;; i = 0)
     {
-      new GetUserInfoHandler().a(1, UserManager.a(this.a));
-      UserManager.a(this.a, new ArrayList());
+      paramVarArgs.isSubscribe = i;
+      paramJobContext.a(paramVarArgs);
+      ThreadManager.getUIHandler().post(new ndk(this));
+      return null;
     }
   }
 }

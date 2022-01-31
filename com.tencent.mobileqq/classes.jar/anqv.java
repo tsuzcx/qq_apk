@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.poi.PoiInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
-public final class anqv
-  implements Parcelable.Creator
+public class anqv
+  implements DialogInterface.OnClickListener
 {
-  public PoiInfo a(Parcel paramParcel)
-  {
-    return new PoiInfo(paramParcel, null);
-  }
+  public anqv(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
-  public PoiInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new PoiInfo[paramInt];
+    this.a.g(false);
   }
 }
 

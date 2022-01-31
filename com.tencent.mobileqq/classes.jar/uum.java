@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 
 public class uum
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public uum(ArkAppItemBubbleBuilder paramArkAppItemBubbleBuilder) {}
+  public uum(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.a.onClick(CommonRecordSoundPanel.a(this.a));
+  }
 }
 
 

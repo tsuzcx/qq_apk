@@ -1,20 +1,17 @@
-import android.util.LruCache;
-import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
-import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class nrs
-  extends LruCache
+  implements AbsListView.OnScrollListener
 {
-  public nrs(ShareGroupIconManager paramShareGroupIconManager, int paramInt)
-  {
-    super(paramInt);
-  }
+  public nrs(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  protected void a(boolean paramBoolean, String paramString, nrl paramnrl1, nrl paramnrl2)
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.entryRemoved(paramBoolean, paramString, paramnrl1, paramnrl2);
-    IconLog.a("story.icon.ShareGroupIconManager", "entryRemoved key = %s" + paramString);
-    paramnrl1.a();
+    this.a.b = paramInt1;
   }
 }
 

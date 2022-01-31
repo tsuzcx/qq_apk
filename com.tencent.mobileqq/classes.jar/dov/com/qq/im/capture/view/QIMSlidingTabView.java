@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -19,8 +20,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anqa;
-import anqb;
+import anyn;
+import anyo;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
@@ -70,7 +71,7 @@ public class QIMSlidingTabView
     if (paramInt < 0) {
       return -1;
     }
-    paramView.setOnClickListener(new anqa(this, paramInt));
+    paramView.setOnClickListener(new anyn(this, paramInt));
     this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramView);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, paramInt);
     return 0;
@@ -161,7 +162,7 @@ public class QIMSlidingTabView
       this.jdField_a_of_type_Boolean = false;
       localObject = ValueAnimator.ofInt(new int[] { i1, i2 });
       ((ValueAnimator)localObject).setDuration(100L);
-      ((ValueAnimator)localObject).addUpdateListener(new anqb(this));
+      ((ValueAnimator)localObject).addUpdateListener(new anyo(this));
       ((ValueAnimator)localObject).start();
       return;
     }
@@ -189,7 +190,7 @@ public class QIMSlidingTabView
         }
         localObject = (Bundle)localView.getTag();
         if (localObject != null) {
-          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130843579));
+          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130843654));
         }
       }
       label189:
@@ -215,7 +216,7 @@ public class QIMSlidingTabView
           {
             localObject = (Bundle)localView.getTag();
             if (localObject != null) {
-              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130843578));
+              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130843653));
             }
           }
           else if ((localView instanceof RedDotTextView))
@@ -342,6 +343,10 @@ public class QIMSlidingTabView
       localRedDotTextView.setTextSize(0, this.c);
       localRedDotTextView.setPadding(this.e, 0, this.e, 0);
       localRedDotTextView.a(((QIMSlidingTabView.TabIcon)paramArrayList.get(i1)).jdField_a_of_type_Boolean);
+      String str = ((QIMSlidingTabView.TabIcon)paramArrayList.get(i1)).b;
+      if (!TextUtils.isEmpty(str)) {
+        localRedDotTextView.setContentDescription(str);
+      }
       a(i1, localRedDotTextView);
       i1 += 1;
     }

@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.RouterHandler;
+import java.util.HashMap;
 
-public final class ztk
-  implements Comparator
+public class ztk
+  implements Runnable
 {
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public ztk(RouterHandler paramRouterHandler, long paramLong1, long paramLong2, long paramLong3) {}
+  
+  public void run()
   {
-    if (paramMessageRecord1.longMsgIndex > paramMessageRecord2.longMsgIndex) {
-      return 1;
-    }
-    return -1;
+    Session localSession = (Session)this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.e.get(Long.valueOf(this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.a(1, localSession, (float)((float)this.b * 1.0D / (float)this.c), 0);
   }
 }
 

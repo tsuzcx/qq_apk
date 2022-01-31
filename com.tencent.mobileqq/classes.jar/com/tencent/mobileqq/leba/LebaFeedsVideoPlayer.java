@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.leba;
 
-import adza;
+import aehk;
 import android.content.Context;
 import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class LebaFeedsVideoPlayer
   implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnSeekCompleteListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoSizeChangedListener
 {
-  private adza jdField_a_of_type_Adza;
+  private aehk jdField_a_of_type_Aehk;
   private Context jdField_a_of_type_AndroidContentContext;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   private TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
@@ -30,10 +30,10 @@ public class LebaFeedsVideoPlayer
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private boolean jdField_a_of_type_Boolean;
   
-  public LebaFeedsVideoPlayer(Context paramContext, adza paramadza)
+  public LebaFeedsVideoPlayer(Context paramContext, aehk paramaehk)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Adza = paramadza;
+    this.jdField_a_of_type_Aehk = paramaehk;
     e();
   }
   
@@ -118,15 +118,15 @@ public class LebaFeedsVideoPlayer
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
   }
   
-  public void a(adza paramadza)
+  public void a(aehk paramaehk)
   {
-    this.jdField_a_of_type_Adza = paramadza;
+    this.jdField_a_of_type_Aehk = paramaehk;
   }
   
   public void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("LebaFeedsVideoPlayer", 2, "openWithVid " + this.jdField_a_of_type_Adza);
+      QLog.i("LebaFeedsVideoPlayer", 2, "openWithVid " + this.jdField_a_of_type_Aehk);
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 0) {
       QLog.e("LebaFeedsVideoPlayer", 1, "openWithVid state not IDLE");
@@ -207,7 +207,7 @@ public class LebaFeedsVideoPlayer
   public void b(String paramString, long paramLong1, long paramLong2, long paramLong3)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("LebaFeedsVideoPlayer", 2, "openWithUrl " + this.jdField_a_of_type_Adza);
+      QLog.i("LebaFeedsVideoPlayer", 2, "openWithUrl " + this.jdField_a_of_type_Aehk);
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 0) {
       QLog.e("LebaFeedsVideoPlayer", 1, "openWithUrl state not IDLE");
@@ -280,15 +280,15 @@ public class LebaFeedsVideoPlayer
       QLog.i("LebaFeedsVideoPlayer", 2, "onCompletion " + paramTVK_IMediaPlayer);
     }
     a(0);
-    if (this.jdField_a_of_type_Adza != null) {
-      this.jdField_a_of_type_Adza.b(this);
+    if (this.jdField_a_of_type_Aehk != null) {
+      this.jdField_a_of_type_Aehk.b(this);
     }
   }
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_Adza != null) {
-      this.jdField_a_of_type_Adza.a(this, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    if (this.jdField_a_of_type_Aehk != null) {
+      this.jdField_a_of_type_Aehk.a(this, paramInt1, paramInt2, paramInt3, paramString, paramObject);
     }
     return false;
   }
@@ -309,15 +309,15 @@ public class LebaFeedsVideoPlayer
       QLog.i("LebaFeedsVideoPlayer", 2, "onVideoPrepared");
     }
     a(2);
-    if (this.jdField_a_of_type_Adza != null) {
-      this.jdField_a_of_type_Adza.a(this);
+    if (this.jdField_a_of_type_Aehk != null) {
+      this.jdField_a_of_type_Aehk.a(this);
     }
   }
   
   public void onVideoSizeChanged(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Adza != null) {
-      this.jdField_a_of_type_Adza.a(this, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Aehk != null) {
+      this.jdField_a_of_type_Aehk.a(this, paramInt1, paramInt2);
     }
   }
 }

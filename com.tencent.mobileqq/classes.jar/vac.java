@@ -1,16 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 public class vac
-  implements View.OnTouchListener
+  implements ArkAppView.Callback
 {
-  public vac(HeartCombolEffectView paramHeartCombolEffectView) {}
+  public vac(ArkFlashChatItemBubbleBuilder paramArkFlashChatItemBubbleBuilder, MessageForArkFlashChat paramMessageForArkFlashChat) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    return true;
+    ArkDispatchTask.getInstance().post(new vad(this));
   }
 }
 

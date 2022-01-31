@@ -1,61 +1,18 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.av.ui.redbag.RedBagUtil;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class aako
-  extends aakq
+  implements Runnable
 {
-  public String a;
-  HashMap a;
-  String b;
+  public aako(ScanEntranceReport paramScanEntranceReport, int paramInt, long paramLong) {}
   
-  public aako()
+  public void run()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  boolean a(Resources paramResources)
-  {
-    String str1 = this.jdField_a_of_type_JavaLangString + "menuicon_moving/";
-    int i = 0;
-    while (i < 4)
-    {
-      String str2 = "img_" + i + ".png";
-      Bitmap localBitmap = RedBagUtil.a(str1 + "images/" + str2, paramResources.getDisplayMetrics().densityDpi, paramResources.getDisplayMetrics().densityDpi);
-      if (localBitmap == null) {
-        return false;
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(str2, localBitmap);
-      i += 1;
-    }
-    paramResources = new File(str1, "down.json");
-    if (!paramResources.exists())
-    {
-      QLog.i("WorldCupMgr", 1, "ResInfoForDownAni, json文件不存在");
-      return false;
-    }
-    if (!new File(str1, "images").exists())
-    {
-      QLog.i("WorldCupMgr", 1, "ResInfoForDownAni, image不存在");
-      return false;
-    }
-    paramResources = WorldCupMgr.a(paramResources.getAbsolutePath());
-    if (TextUtils.isEmpty(paramResources)) {
-      QLog.i("WorldCupMgr", 1, "ResInfoForDownAni, json读取失败");
-    }
-    this.b = paramResources;
-    return true;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("neon_opened", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_success", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
   }
 }
 

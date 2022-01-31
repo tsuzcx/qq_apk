@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
 
 public class aerh
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aerh(NearbyProcManager paramNearbyProcManager, NearbyProcObserver paramNearbyProcObserver, int paramInt, Object[] paramArrayOfObject) {}
+  public aerh(AIOShareActionSheet paramAIOShareActionSheet) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerh
  * JD-Core Version:    0.7.0.1
  */

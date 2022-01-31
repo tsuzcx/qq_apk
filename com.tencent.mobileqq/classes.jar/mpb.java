@@ -1,23 +1,17 @@
-import android.app.Dialog;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.BubbleAppInPushNotification;
 
 public class mpb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mpb(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  public mpb(BubbleAppInPushNotification paramBubbleAppInPushNotification) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((FastWebVideoFeedsPlayManager.a(this.a) != null) && (FastWebVideoFeedsPlayManager.a(this.a).isShowing()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "showMobileNetHint() mNetworkDialog.isShowing()=true, RETURN");
-      }
-      return;
-    }
-    FastWebVideoFeedsPlayManager.a(this.a, ReadInJoyUtils.a(FastWebVideoFeedsPlayManager.a(this.a), new mpc(this), new mpd(this)));
+    AppInPushNotification.a(1);
+    this.a.a(true, false);
   }
 }
 

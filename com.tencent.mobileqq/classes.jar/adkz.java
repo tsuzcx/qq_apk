@@ -1,39 +1,37 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.EmotionJsonUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.forward.ForwardPluginShareStructMsgOption;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import java.io.File;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnZipEventListener;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class adkz
-  implements Runnable
+  implements FilePreviewActivity.ControlerCallback
 {
-  public adkz(ForwardPluginShareStructMsgOption paramForwardPluginShareStructMsgOption, String paramString) {}
+  public adkz(DefaultFileModel paramDefaultFileModel) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    Object localObject1 = EmoticonUtils.r.replace("[epId]", this.jdField_a_of_type_JavaLangString);
-    boolean bool = FileUtils.a((String)localObject1);
-    Object localObject2 = EmoticonUtils.c.replace("[epId]", this.jdField_a_of_type_JavaLangString);
-    localObject1 = new File((String)localObject1);
-    if (!bool)
+    if (!paramBoolean)
     {
-      localObject2 = new DownloadTask((String)localObject2, (File)localObject1);
-      ((DownloadTask)localObject2).h = true;
-      if (DownloaderFactory.a((DownloadTask)localObject2, this.jdField_a_of_type_ComTencentMobileqqForwardForwardPluginShareStructMsgOption.a) != 0) {
-        return;
+      QLog.e("FileBrowserModelBase", 1, "sending cs to get preview url but failed, retCode[" + paramLong + "], retMeg[" + paramString3 + "]");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.a(paramLong);
       }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.d();
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
+      return;
     }
-    localObject2 = new EmoticonPackage();
-    ((EmoticonPackage)localObject2).epId = this.jdField_a_of_type_JavaLangString;
-    ((EmoticonPackage)localObject2).jobType = 4;
-    localObject1 = FileUtils.a((File)localObject1);
-    ArrayList localArrayList = new ArrayList();
-    EmotionJsonUtils.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPluginShareStructMsgOption.a, (EmoticonPackage)localObject2, EmojiManager.b, (byte[])localObject1, localArrayList);
+    this.a.jdField_a_of_type_JavaLangString = paramString1;
+    this.a.b = paramString2;
+    this.a.c = paramString4;
+    this.a.d = paramString5;
+    this.a.a(this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, FileManagerUtil.c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()), "/", this.a.d, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a(), new adla(this));
   }
 }
 

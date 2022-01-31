@@ -1,31 +1,18 @@
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
 
 public class aaqr
-  implements Runnable
+  implements PopupWindow.OnDismissListener
 {
-  public aaqr(ArkAppSchemeCenter.TelSchemeHandler paramTelSchemeHandler, String paramString) {}
+  public aaqr(SplashPopupWin paramSplashPopupWin, BaseActivity paramBaseActivity, View paramView) {}
   
-  public void run()
+  public void onDismiss()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, this.jdField_a_of_type_JavaLangString);
-    TextView localTextView = (TextView)localQQCustomDialog.findViewById(2131362776);
-    localTextView.setGravity(17);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.gravity = 17;
-    localTextView.setLayoutParams(localLayoutParams);
-    localQQCustomDialog.setPositiveButton(2131435092, new aaqs(this, localQQCustomDialog));
-    localQQCustomDialog.setNegativeButton(2131433015, new aaqt(this, localQQCustomDialog));
-    try
-    {
-      localQQCustomDialog.show();
-      return;
-    }
-    catch (Exception localException) {}
+    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a(8);
+    SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidViewView, false);
+    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.b();
   }
 }
 

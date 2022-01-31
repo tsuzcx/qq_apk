@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 import mqq.os.MqqHandler;
-import uvo;
-import uvp;
-import uvq;
+import vao;
+import vap;
+import vaq;
 
 public class CustomFrameAnimationDrawable
   extends Drawable
@@ -39,7 +39,7 @@ public class CustomFrameAnimationDrawable
   ArrayList jdField_a_of_type_JavaUtilArrayList;
   private Vector jdField_a_of_type_JavaUtilVector;
   MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  public uvp a;
+  public vap a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 160;
   private boolean jdField_b_of_type_Boolean = true;
@@ -48,7 +48,7 @@ public class CustomFrameAnimationDrawable
   
   public CustomFrameAnimationDrawable(Resources paramResources, Bitmap paramBitmap, MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_Uvp = null;
+    this.jdField_a_of_type_Vap = null;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     this.jdField_a_of_type_JavaUtilArrayList = null;
@@ -86,13 +86,13 @@ public class CustomFrameAnimationDrawable
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Boolean = paramBoolean;
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Boolean)) {
-      ThreadManager.postImmediately(new uvo(this), null, true);
+      ThreadManager.postImmediately(new vao(this), null, true);
     }
   }
   
   private CustomFrameAnimationDrawable(CustomFrameAnimationDrawable.FrameAnimationState paramFrameAnimationState, Resources paramResources)
   {
-    this.jdField_a_of_type_Uvp = null;
+    this.jdField_a_of_type_Vap = null;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState = paramFrameAnimationState;
     a(paramResources);
   }
@@ -157,7 +157,7 @@ public class CustomFrameAnimationDrawable
     return localObject1;
   }
   
-  public uvq a(int paramInt)
+  public vaq a(int paramInt)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -174,7 +174,7 @@ public class CustomFrameAnimationDrawable
           {
             localObject1 = localObject2;
             if (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.size()) {
-              localObject1 = (uvq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+              localObject1 = (vaq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
             }
           }
         }
@@ -195,22 +195,22 @@ public class CustomFrameAnimationDrawable
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    uvq localuvq = new uvq();
-    localuvq.jdField_a_of_type_Int = paramInt1;
-    localuvq.jdField_b_of_type_Int = paramInt2;
-    localuvq.jdField_c_of_type_Int = paramInt3;
-    localuvq.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.add(localuvq);
+    vaq localvaq = new vaq();
+    localvaq.jdField_a_of_type_Int = paramInt1;
+    localvaq.jdField_b_of_type_Int = paramInt2;
+    localvaq.jdField_c_of_type_Int = paramInt3;
+    localvaq.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.add(localvaq);
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    uvq localuvq = new uvq();
-    localuvq.jdField_a_of_type_Int = paramInt1;
-    localuvq.jdField_b_of_type_Int = paramInt2;
-    localuvq.jdField_a_of_type_JavaLangString = paramString;
-    localuvq.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.add(localuvq);
+    vaq localvaq = new vaq();
+    localvaq.jdField_a_of_type_Int = paramInt1;
+    localvaq.jdField_b_of_type_Int = paramInt2;
+    localvaq.jdField_a_of_type_JavaLangString = paramString;
+    localvaq.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.add(localvaq);
   }
   
   public void a(Bitmap paramBitmap)
@@ -349,12 +349,12 @@ public class CustomFrameAnimationDrawable
           return;
           if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int >= this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.size())
           {
-            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((uvq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.size() - 1)).jdField_a_of_type_Int);
+            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((vaq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.size() - 1)).jdField_a_of_type_Int);
           }
           else
           {
-            localObject = (uvq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int);
-            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((uvq)localObject).jdField_a_of_type_Int);
+            localObject = (vaq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int);
+            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((vaq)localObject).jdField_a_of_type_Int);
           }
         }
       }
@@ -498,13 +498,13 @@ public class CustomFrameAnimationDrawable
         {
           if (i - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_c_of_type_Int < 2)
           {
-            localObject1 = (uvq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(i);
-            if (this.jdField_a_of_type_Uvp == null)
+            localObject1 = (vaq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(i);
+            if (this.jdField_a_of_type_Vap == null)
             {
-              this.jdField_a_of_type_Uvp = new uvp(this, i, ((uvq)localObject1).jdField_a_of_type_JavaLangString, ((uvq)localObject1).jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_b_of_type_JavaUtilArrayList);
-              this.jdField_a_of_type_Uvp.a(this.jdField_a_of_type_AndroidContentResResources);
+              this.jdField_a_of_type_Vap = new vap(this, i, ((vaq)localObject1).jdField_a_of_type_JavaLangString, ((vaq)localObject1).jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_b_of_type_JavaUtilArrayList);
+              this.jdField_a_of_type_Vap.a(this.jdField_a_of_type_AndroidContentResResources);
               if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
-                this.jdField_a_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_Uvp);
+                this.jdField_a_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_Vap);
               }
               localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState;
               ((CustomFrameAnimationDrawable.FrameAnimationState)localObject1).jdField_c_of_type_Int += 1;
@@ -515,14 +515,14 @@ public class CustomFrameAnimationDrawable
               }
             }
           }
-          localObject1 = (uvq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int);
-          scheduleSelf(this, SystemClock.uptimeMillis() + ((uvq)localObject1).jdField_b_of_type_Int);
+          localObject1 = (vaq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int);
+          scheduleSelf(this, SystemClock.uptimeMillis() + ((vaq)localObject1).jdField_b_of_type_Int);
           if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Boolean))
           {
             localObject2 = HapticManager.a();
             i = this.jdField_a_of_type_Int;
             j = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int;
-            ((HapticManager)localObject2).a(i, ((uvq)localObject1).jdField_b_of_type_Int * j);
+            ((HapticManager)localObject2).a(i, ((vaq)localObject1).jdField_b_of_type_Int * j);
           }
         }
       }
@@ -579,9 +579,9 @@ public class CustomFrameAnimationDrawable
           if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameListener != null) {
             this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameListener.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int);
           }
-          localObject1 = (uvq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int);
+          localObject1 = (vaq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int);
           l = SystemClock.uptimeMillis();
-          scheduleSelf(this, ((uvq)localObject1).jdField_b_of_type_Int + l);
+          scheduleSelf(this, ((vaq)localObject1).jdField_b_of_type_Int + l);
           localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState;
           ((CustomFrameAnimationDrawable.FrameAnimationState)localObject1).jdField_a_of_type_Int += 1;
           return;
@@ -603,9 +603,9 @@ public class CustomFrameAnimationDrawable
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameListener.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int);
     }
-    Object localObject1 = (uvq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int);
+    Object localObject1 = (vaq)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState.jdField_a_of_type_Int);
     long l = SystemClock.uptimeMillis();
-    scheduleSelf(this, ((uvq)localObject1).jdField_b_of_type_Int + l);
+    scheduleSelf(this, ((vaq)localObject1).jdField_b_of_type_Int + l);
     localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$FrameAnimationState;
     ((CustomFrameAnimationDrawable.FrameAnimationState)localObject1).jdField_a_of_type_Int += 1;
   }

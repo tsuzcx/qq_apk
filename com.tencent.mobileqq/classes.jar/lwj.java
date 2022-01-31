@@ -1,25 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.ReportR5Builder;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class lwj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lwj(ComponentLastRead paramComponentLastRead) {}
+  public lwj(ReadInJoyMSFService paramReadInJoyMSFService, ToServiceMsg paramToServiceMsg, WeakReference paramWeakReference) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new ReadInJoyUtils.ReportR5Builder().g().a().d().a(this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel.e()).e().f().c().a();
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, ReadInJoyHelper.a(), "", "", paramView, false);
-    if (this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell$CellListener != null) {
-      this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell$CellListener.a(this.a, null);
-    }
+    int i = ReadInJoyMSFService.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyMSFService);
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttributes().put("seq", Integer.valueOf(i));
+    ReadInJoyMSFService.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyMSFService).put(Integer.valueOf(i), this.jdField_a_of_type_JavaLangRefWeakReference);
   }
 }
 

@@ -1,40 +1,76 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.leba.LebaTopBarAdapter;
-import com.tencent.mobileqq.leba.header.LebaGridUtils;
-import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
-import com.tencent.mobileqq.leba.model.PluginInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.hotpic.HotPicTab;
+import com.tencent.mobileqq.hotpic.HotPicTagInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class adzl
-  implements Runnable
+  extends BaseAdapter
 {
-  public adzl(LebaTopBarAdapter paramLebaTopBarAdapter, LebaGridItemInfo paramLebaGridItemInfo, String paramString, ImageView paramImageView) {}
+  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  public List a;
+  boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public adzl(HotPicTab paramHotPicTab, List paramList, ArrayList paramArrayList, boolean paramBoolean)
   {
-    Object localObject = LebaGridUtils.a(LebaTopBarAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaTopBarAdapter), this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.pkgName, this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resBigUrl);
-    if (((File)localObject).exists())
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramArrayList.clone());
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      localObject = LebaGridUtils.a((File)localObject);
-      if (localObject == null) {
-        break label123;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(LebaTopBarAdapter.a(), 2, "found bitmap from sdcard, info=" + this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resName);
-      }
-      BaseApplicationImpl.sImageHashMap.put(this.jdField_a_of_type_JavaLangString, localObject);
-      ((BaseActivity)LebaTopBarAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaTopBarAdapter)).runOnUiThread(new adzm(this, (Bitmap)localObject));
+      paramViewGroup = new adzn(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab);
+      paramView = LayoutInflater.from(HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab)).inflate(2130968648, null);
+      paramViewGroup.a = ((TextView)paramView.findViewById(2131363015));
+      paramView.setTag(paramViewGroup);
     }
-    label123:
-    while (!QLog.isColorLevel()) {
-      return;
+    for (;;)
+    {
+      String str = ((HotPicTagInfo)getItem(paramInt)).tagName;
+      paramViewGroup = paramViewGroup.a;
+      paramViewGroup.setText(str);
+      paramViewGroup.setTextSize(2, HotPicTab.b());
+      paramViewGroup.setTextColor(HotPicTab.c());
+      paramViewGroup.setPadding(0, 0, 0, 0);
+      paramViewGroup.setFocusable(true);
+      paramViewGroup.setGravity(17);
+      paramView.setLayoutParams(new RelativeLayout.LayoutParams(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue(), -1));
+      paramView.setContentDescription(str);
+      paramView.setFocusable(true);
+      paramView.setOnHoverListener(new adzm(this));
+      if (!HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).contains(Integer.valueOf(paramInt)))
+      {
+        ReportController.b(null, "dc00898", "", "", "0X8008077", "0X8008077", 0, 0, paramInt + "", "", str, "");
+        HotPicTab.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab).add(Integer.valueOf(paramInt));
+      }
+      return paramView;
+      paramViewGroup = (adzn)paramView.getTag();
     }
-    QLog.d(LebaTopBarAdapter.a(), 2, "can't find bitmap form cache & sdcard" + this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resName);
   }
 }
 

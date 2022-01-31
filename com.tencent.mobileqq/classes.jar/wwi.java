@@ -1,141 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.MsgTabUnreadListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public final class wwi
-  implements Parcelable.Creator
+public class wwi
+  implements MsgTabUnreadListener
 {
-  public ImageInfo a(Parcel paramParcel)
+  public wwi(MainAssistObserver paramMainAssistObserver) {}
+  
+  public void a(int paramInt)
   {
-    boolean bool2 = true;
-    ImageInfo localImageInfo = new ImageInfo();
-    if (paramParcel.readInt() == 0)
-    {
-      bool1 = false;
-      localImageInfo.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label412;
-      }
-      bool1 = false;
-      label35:
-      localImageInfo.jdField_b_of_type_Boolean = bool1;
-      localImageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readInt() != 0) {
-        break label417;
-      }
-      bool1 = false;
-      label59:
-      localImageInfo.jdField_c_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label422;
-      }
-      bool1 = false;
-      label74:
-      localImageInfo.jdField_d_of_type_Boolean = bool1;
-      localImageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_a_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 0) {
-        break label427;
-      }
-      bool1 = false;
-      label116:
-      localImageInfo.jdField_e_of_type_Boolean = bool1;
-      localImageInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_b_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_d_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 0) {
-        break label432;
-      }
-      bool1 = false;
-      label176:
-      localImageInfo.jdField_f_of_type_Boolean = bool1;
-      localImageInfo.jdField_a_of_type_Long = paramParcel.readLong();
-      if (paramParcel.readInt() != 0) {
-        break label437;
-      }
-      bool1 = false;
-      label200:
-      localImageInfo.jdField_h_of_type_Boolean = bool1;
-      if (paramParcel.readInt() != 0) {
-        break label442;
-      }
-      bool1 = false;
-      label215:
-      localImageInfo.jdField_i_of_type_Boolean = bool1;
-      localImageInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_b_of_type_Long = paramParcel.readLong();
-      localImageInfo.g = paramParcel.readString();
-      localImageInfo.jdField_c_of_type_Long = paramParcel.readLong();
-      localImageInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_h_of_type_Int = paramParcel.readInt();
-      localImageInfo.jdField_i_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_k_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label447;
-      }
-      bool1 = true;
-      label321:
-      localImageInfo.o = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label452;
-      }
-      bool1 = true;
-      label337:
-      localImageInfo.n = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label457;
-      }
+    if ((this.a.a == null) || (this.a.a.app == null)) {
+      return;
     }
-    label412:
-    label417:
-    label422:
-    label427:
-    label432:
-    label437:
-    label442:
-    label447:
-    label452:
-    label457:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localImageInfo.p = bool1;
-      localImageInfo.jdField_d_of_type_Long = paramParcel.readLong();
-      localImageInfo.j = paramParcel.readString();
-      localImageInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_l_of_type_JavaLangString = paramParcel.readString();
-      localImageInfo.jdField_l_of_type_Int = paramParcel.readInt();
-      return localImageInfo;
-      bool1 = true;
-      break;
-      bool1 = true;
-      break label35;
-      bool1 = true;
-      break label59;
-      bool1 = true;
-      break label74;
-      bool1 = true;
-      break label116;
-      bool1 = true;
-      break label176;
-      bool1 = true;
-      break label200;
-      bool1 = true;
-      break label215;
-      bool1 = false;
-      break label321;
-      bool1 = false;
-      break label337;
+    QQAppInterface localQQAppInterface = this.a.a.app;
+    this.a.a(32, 16, Integer.valueOf(paramInt));
+    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
+    localQQAppInterface.getApp().sendBroadcast(localIntent);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver消息tab, nUnreadCount[%s]", new Object[] { Integer.valueOf(paramInt) }));
     }
+    ReadinjoySPEventReport.a().a(paramInt);
   }
   
-  public ImageInfo[] a(int paramInt)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    return new ImageInfo[paramInt];
+    if (QLog.isDevelopLevel()) {
+      QLog.d("SplashActivity", 4, String.format("onRefresh, needReGetUnread[%s], nUnReadCount[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+    }
+    if ((!paramBoolean) && (paramInt >= 0))
+    {
+      a(paramInt);
+      return;
+    }
+    ThreadManager.executeOnSubThread(new wwj(this));
   }
 }
 

@@ -1,70 +1,112 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.activity.recent.BannerManager.IBannerInteract;
+import com.tencent.mobileqq.activity.recent.BannerManager.MessageToShowBanner;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import mqq.app.AppRuntime;
+import java.lang.ref.WeakReference;
 
 public class xpx
-  implements SeekBar.OnSeekBarChangeListener
+  implements BannerManager.IBannerInteract
 {
-  public xpx(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  private final int jdField_a_of_type_Int;
+  @Nullable
+  private final Bundle jdField_a_of_type_AndroidOsBundle;
+  @Nullable
+  private BannerManager.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner;
+  @NonNull
+  private final String jdField_a_of_type_JavaLangString;
+  @NonNull
+  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  @Nullable
+  private final String b;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public xpx(@NonNull String paramString1, @NonNull QQAppInterface paramQQAppInterface, @Nullable String paramString2, int paramInt, @Nullable Bundle paramBundle)
   {
-    this.a.c = paramInt;
-    if (paramBoolean) {
-      NewFlowCameraActivity.a(this.a, this.a.c, false);
-    }
-    float f = this.a.c / 100.0F;
-    if (f != this.a.jdField_a_of_type_Float)
-    {
-      this.a.jdField_a_of_type_Float = f;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.a(false, this.a.jdField_a_of_type_Float, this.a.c);
-      }
-    }
-    if (paramBoolean) {
-      NewFlowCameraActivity.a(this.a).setContentDescription("调节美颜效果,当前效果" + this.a.c + "%");
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null) {
-      this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1011);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "onEnter: " + this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner + " / " + this.b + " / " + this.jdField_a_of_type_Int + " / " + this.jdField_a_of_type_JavaLangString);
     }
-    if (this.a.e != null) {
-      this.a.e.setVisibility(0);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (this.a.jdField_a_of_type_Float >= 0.0F)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner == null) {}
+    QQAppInterface localQQAppInterface;
+    do
     {
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      localSharedPreferences.edit().putFloat("beauty_radius" + str, this.a.jdField_a_of_type_Float);
-      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, this.a.jdField_a_of_type_Float);
-      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
-      localSharedPreferences.edit().commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + this.a.jdField_a_of_type_Float + " mBeautyProcess=" + paramSeekBar.getProgress());
-      }
-      if (this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler != null)
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    QQBrowserActivity localQQBrowserActivity2 = QQBrowserActivity.class;
+    Object localObject = localQQBrowserActivity2;
+    if (!TextUtils.isEmpty(this.b)) {}
+    try
+    {
+      localObject = Class.forName(this.b);
+      if (BaseActivity.sTopActivity != null)
       {
-        this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1011);
-        this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1011, NewFlowCameraActivity.jdField_a_of_type_Long);
+        localObject = new Intent(localQQAppInterface.getApp(), (Class)localObject);
+        ((Intent)localObject).setFlags(this.jdField_a_of_type_Int);
+        ((Intent)localObject).putExtra("banner_fromBanner", true);
+        ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
+        ((Intent)localObject).putExtra("banner_webview_extra", this.jdField_a_of_type_AndroidOsBundle);
+        BaseActivity.sTopActivity.startActivity((Intent)localObject);
       }
-      if (this.a.e != null) {
-        this.a.e.setVisibility(4);
+      for (;;)
+      {
+        BannerManager.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+        }
       }
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      for (;;)
+      {
+        QQBrowserActivity localQQBrowserActivity1 = localQQBrowserActivity2;
+      }
+    }
+  }
+  
+  public void a(@Nullable BannerManager.MessageToShowBanner paramMessageToShowBanner)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner = paramMessageToShowBanner;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    BannerManager.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager$MessageToShowBanner);
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "banner for " + this.jdField_a_of_type_JavaLangString + " is overrided");
     }
   }
 }

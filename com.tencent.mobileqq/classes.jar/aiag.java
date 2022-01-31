@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment.ShortVideoDownload;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class aiag
-  implements Runnable
+  implements ThreadFactory
 {
-  public aiag(VideoEnvironment.ShortVideoDownload paramShortVideoDownload, boolean paramBoolean) {}
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public void run()
+  public Thread newThread(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload.a(this.jdField_a_of_type_Boolean);
-    }
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiag
  * JD-Core Version:    0.7.0.1
  */

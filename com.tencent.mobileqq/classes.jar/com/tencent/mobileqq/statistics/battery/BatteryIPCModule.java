@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics.battery;
 
-import aigm;
+import ailf;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -38,7 +38,7 @@ public class BatteryIPCModule
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_process_id", BaseApplicationImpl.sProcessId);
-    QIPCClientHelper.getInstance().callServer("BatteryModule", "action_monitor", localBundle, new aigm(this));
+    QIPCClientHelper.getInstance().callServer("BatteryModule", "action_monitor", localBundle, new ailf(this));
   }
   
   public void a(Bundle paramBundle)

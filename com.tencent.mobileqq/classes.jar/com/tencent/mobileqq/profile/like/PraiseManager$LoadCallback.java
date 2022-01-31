@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.profile.like;
 
 import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Array;
 import java.util.List;
@@ -23,29 +24,41 @@ public class PraiseManager$LoadCallback
   {
     for (;;)
     {
+      WeakReference[] arrayOfWeakReference;
       synchronized (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          break label176;
+          break label186;
         }
-        WeakReference[] arrayOfWeakReference = (WeakReference[])Array.newInstance(((WeakReference)this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList.get(0)).getClass(), this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList.size());
+        arrayOfWeakReference = (WeakReference[])Array.newInstance(((WeakReference)this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList.get(0)).getClass(), this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList.size());
         this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList.toArray(arrayOfWeakReference);
-        if (arrayOfWeakReference != null)
-        {
-          int j = arrayOfWeakReference.length;
-          int i = 0;
-          if (i < j)
-          {
-            ??? = arrayOfWeakReference[i];
-            if ((??? != null) && (???.get() != null)) {
-              ((PraiseManager.OnPraiseLoadListener)???.get()).a(this.jdField_a_of_type_Int, (PraiseInfo)this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
-            }
-            i += 1;
-          }
+        if (arrayOfWeakReference == null) {
+          break label185;
         }
       }
+      try
+      {
+        int j = arrayOfWeakReference.length;
+        int i = 0;
+        while (i < j)
+        {
+          ??? = arrayOfWeakReference[i];
+          if ((??? != null) && (???.get() != null)) {
+            ((PraiseManager.OnPraiseLoadListener)???.get()).a(this.jdField_a_of_type_Int, (PraiseInfo)this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
+          }
+          i += 1;
+          continue;
+          localObject1 = finally;
+          throw localObject1;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("PraiseManager", 1, "LoadCallback failed", localException);
+      }
+      label185:
       return;
-      label176:
+      label186:
       Object localObject2 = null;
     }
   }

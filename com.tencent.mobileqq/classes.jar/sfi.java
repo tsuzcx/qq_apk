@@ -1,22 +1,57 @@
-import android.view.animation.ScaleAnimation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
+import com.tencent.mobileqq.app.MessageRoamManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
-public class sfi
-  extends ScaleAnimation
+class sfi
+  extends AsyncTask
 {
-  public sfi(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
+  sfi(sfh paramsfh) {}
+  
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
+    int i;
+    if (paramVarArgs[0].time <= this.a.a.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a())
+    {
+      i = ((QSlowTableManager)this.a.a.app.getManager(200)).a(paramVarArgs[0], true);
+      if (i > 0) {
+        this.a.a.c = true;
+      }
+    }
+    for (;;)
+    {
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        SpriteCommFunc.a(this.a.a.app, "chat_history_c2c_del_all_msg");
+      }
+      return null;
+      if ((i == 0) && (paramVarArgs[0].time == this.a.a.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a()))
+      {
+        this.a.a.app.a().a(paramVarArgs[0], true);
+        continue;
+        this.a.a.app.a().a(paramVarArgs[0], true);
+      }
+    }
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  protected void onPostExecute(Object paramObject)
   {
-    if (paramTransformation == null) {
-      return;
+    super.onPostExecute(paramObject);
+    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
     }
-    super.applyTransformation(paramFloat, paramTransformation);
-    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
+    if ((this.a.a.c) && (this.a.a.b))
+    {
+      this.a.a.b = false;
+      this.a.a.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.d();
+    }
   }
 }
 

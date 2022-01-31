@@ -1,20 +1,35 @@
-import com.tencent.mobileqq.olympic.OlympicManager.ShuayishuaReport;
-import com.tencent.mobileqq.olympic.OlympicServlet;
-import java.util.ArrayList;
+import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.now.enter.ConversationNowController;
 
 public class agee
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public agee(OlympicManager.ShuayishuaReport paramShuayishuaReport, int paramInt, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, ArrayList paramArrayList4) {}
+  public agee(ConversationNowController paramConversationNowController, View paramView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    OlympicServlet.a(OlympicManager.ShuayishuaReport.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager$ShuayishuaReport), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList, this.b, this.c, this.d, null);
+    this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.f();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.f();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.d) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agee
  * JD-Core Version:    0.7.0.1
  */

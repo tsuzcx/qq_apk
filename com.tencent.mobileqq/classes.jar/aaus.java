@@ -1,13 +1,23 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.OrientationCallback;
 
-public class aaus
-  implements Runnable
+class aaus
+  implements ArkAppEventObserverManager.OrientationCallback
 {
-  public aaus(ArkLocalAppMgr paramArkLocalAppMgr) {}
+  aaus(aauq paramaauq, long paramLong) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    this.a.b();
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aauq.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    ArkAppDeviceModule.a(this.jdField_a_of_type_Aauq.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

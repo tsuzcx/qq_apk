@@ -1,86 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.component.network.downloader.strategy.IPConfigStrategy;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import common.config.service.QzoneConfig.QzoneConfigChangeListener;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import cooperation.plugin.IPluginManager;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class amxk
-  extends IPConfigStrategy
-  implements QzoneConfig.QzoneConfigChangeListener
+  extends OnPluginInstallListener.Stub
 {
-  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ReadWriteLock jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock = new ReentrantReadWriteLock();
+  public amxk(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  public amxk()
-  {
-    b();
-    QzoneConfig.getInstance().addListener(this);
-  }
+  public void onInstallBegin(String paramString) {}
   
-  private void a(Map paramMap, String paramString1, String paramString2)
-  {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    String str = paramString1 + "||" + paramString2;
-    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadIPStracyConfig", 2, "addConfigItem, key=" + str + ", content=" + paramString1);
-    }
-    paramMap.put(str, paramString1);
-  }
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
   
-  private void a(Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4)
+  public void onInstallError(String paramString, int paramInt)
   {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
+    String str = String.valueOf(paramInt);
+    paramString = "个性化插件";
+    if (this.a.b == QQIndividualityBridgeActivity.c) {
+      paramString = "斗图";
     }
-    Object localObject = null;
-    paramString4 = QzoneConfig.getInstance().getConfig(paramString1, paramString3, paramString4);
-    paramString3 = paramString1 + "||" + paramString2;
-    paramString2 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    paramString1 = localObject;
-    if (!TextUtils.isEmpty(paramString2))
+    for (;;)
     {
-      paramString1 = localObject;
-      if (!TextUtils.isEmpty(paramString4)) {
-        paramString1 = paramString2.replace("ips", paramString4);
+      IPluginManager.a(str, paramString);
+      int i = NetworkUtil.a(this.a);
+      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
+      this.a.setResult(1001);
+      QQIndividualityBridgeActivity.c(this.a);
+      ReportController.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
+      return;
+      if (this.a.b == QQIndividualityBridgeActivity.d) {
+        paramString = "个签";
+      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
+        paramString = "历史签名";
       }
     }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramMap.put(paramString3, paramString2);
-      return;
-    }
-    paramMap.put(paramString3, paramString1);
   }
   
-  private void b()
+  public void onInstallFinish(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "DownloadDirectIP");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_a");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_a");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_b");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_b");
-    a(this.jdField_a_of_type_JavaUtilMap, "VideoSvrList", "DownloadDirectIPVideo");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "video_masterIplist");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "optimumip_qzvv", "video_host_qzvv", "qzvv.video.qq.com");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "qzpb.qq.com", "video_host_qzpb", "qzpb.qq.com");
-    super.a(this.jdField_a_of_type_JavaUtilMap);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneIPStracyConfig", 2, "QzoneIPStracyConfig receive change");
-    }
-    b();
+    this.a.b();
   }
 }
 

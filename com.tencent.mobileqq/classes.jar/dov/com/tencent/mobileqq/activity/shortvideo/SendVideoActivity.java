@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
-import aoir;
+import aork;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
@@ -83,7 +83,7 @@ public class SendVideoActivity
       }
       else
       {
-        ThreadManager.getSubThreadHandler().post(new aoir(this, null));
+        ThreadManager.getSubThreadHandler().post(new aork(this, null));
         continue;
         paramBundle = getIntent().getStringExtra("uin");
         if (QLog.isColorLevel()) {
@@ -107,9 +107,9 @@ public class SendVideoActivity
         }
         else
         {
-          ThreadManager.getSubThreadHandler().post(new aoir(this, null));
+          ThreadManager.getSubThreadHandler().post(new aork(this, null));
           continue;
-          ThreadManager.getSubThreadHandler().post(new aoir(this, null));
+          ThreadManager.getSubThreadHandler().post(new aork(this, null));
         }
       }
     }

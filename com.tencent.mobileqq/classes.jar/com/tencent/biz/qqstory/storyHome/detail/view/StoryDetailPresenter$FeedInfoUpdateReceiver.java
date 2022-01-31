@@ -20,7 +20,7 @@ public class StoryDetailPresenter$FeedInfoUpdateReceiver
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull FeedInfoChangeEvent paramFeedInfoChangeEvent)
   {
-    if ((paramFeedInfoChangeEvent.jdField_a_of_type_Int == 2) || ((!paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) && (StoryDetailPresenter.a(paramStoryDetailPresenter) == null)))
+    if ((paramFeedInfoChangeEvent.jdField_a_of_type_Int == 2) || (!paramFeedInfoChangeEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) || (StoryDetailPresenter.a(paramStoryDetailPresenter) == null))
     {
       SLog.b(this.TAG, "ignore this feed info change event. %s.", paramFeedInfoChangeEvent.toString());
       return;

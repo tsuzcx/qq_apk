@@ -95,7 +95,7 @@ public abstract class ImageLoader
   {
     InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "attachView:", paramObject, " ----hash:", Integer.valueOf(paramImageView.hashCode()) });
     this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
-    if (paramObject.toString().equals(paramImageView.getTag(2131362363))) {
+    if (paramObject.toString().equals(paramImageView.getTag(2131362366))) {
       InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "target have been set view,so dont need attach view" });
     }
     Object localObject;
@@ -129,20 +129,20 @@ public abstract class ImageLoader
         {
           InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "save to waiting queue:", paramObject });
           paramImageView.setImageDrawable(paramDrawable);
-          InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI def o= ", paramImageView.getTag(2131362363), " and change to: ", paramObject.toString(), " view hash:" + paramImageView.hashCode() });
-          paramImageView.setTag(2131362363, null);
+          InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI def o= ", paramImageView.getTag(2131362366), " and change to: ", paramObject.toString(), " view hash:" + paramImageView.hashCode() });
+          paramImageView.setTag(2131362366, null);
           this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, localObject);
           return;
           InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "cache size=", Integer.valueOf(1024), ",key= ", paramObject });
         }
         paramImageView.setImageDrawable((Drawable)localObject);
-        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI cache o= ", paramImageView.getTag(2131362363), " and change to: ", paramObject.toString(), " view hash:" + paramImageView.hashCode() });
-        paramImageView.setTag(2131362363, paramObject.toString());
+        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI cache o= ", paramImageView.getTag(2131362366), " and change to: ", paramObject.toString(), " view hash:" + paramImageView.hashCode() });
+        paramImageView.setTag(2131362366, paramObject.toString());
         return;
       }
       paramImageView.setImageDrawable(paramDrawable);
-      InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI def 2 o= ", paramImageView.getTag(2131362363), " and change to: ", paramObject.toString(), " view hash:" + paramImageView.hashCode() });
-      paramImageView.setTag(2131362363, null);
+      InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI def 2 o= ", paramImageView.getTag(2131362366), " and change to: ", paramObject.toString(), " view hash:" + paramImageView.hashCode() });
+      paramImageView.setTag(2131362366, null);
       localObject = a(paramImageView, paramObject);
       if (localObject == null)
       {
@@ -273,8 +273,8 @@ public abstract class ImageLoader
         {
           this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a((ImageView)localObject);
           ((ImageView)localObject).setImageDrawable(paramMessage.b);
-          InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", ((ImageView)localObject).getTag(2131362363), " and change to: default", " view hash:" + localObject.hashCode() });
-          ((ImageView)localObject).setTag(2131362363, null);
+          InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", ((ImageView)localObject).getTag(2131362366), " and change to: default", " view hash:" + localObject.hashCode() });
+          ((ImageView)localObject).setTag(2131362366, null);
         }
         paramMessage.c();
         return true;
@@ -291,8 +291,8 @@ public abstract class ImageLoader
           if (localImageView != null)
           {
             localImageView.setImageDrawable((Drawable)((Map.Entry)localObject).getValue());
-            InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131362363), " and change to: wait", " view hash:" + localImageView.hashCode() });
-            localImageView.setTag(2131362363, null);
+            InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131362366), " and change to: wait", " view hash:" + localImageView.hashCode() });
+            localImageView.setTag(2131362366, null);
             paramMessage.remove();
           }
           i -= 1;

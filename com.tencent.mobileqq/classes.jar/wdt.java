@@ -1,27 +1,30 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.doutu.DoutuEmotionHorizonListView.HorizonListViewTouchListener;
-import mqq.os.MqqHandler;
+import android.widget.ImageView;
+import com.tencent.av.ui.AIOTopRightButtonConfig;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopObserver;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 public class wdt
-  implements DoutuEmotionHorizonListView.HorizonListViewTouchListener
+  extends EcShopObserver
 {
-  public wdt(ZhituManager paramZhituManager, MqqHandler paramMqqHandler) {}
+  public wdt(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void a(int paramInt)
+  protected void d(boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if ((paramBoolean) && (PublicAccountChatPie.a(this.a).getVisibility() != 0))
     {
-    }
-    do
-    {
-      do
+      if (AIOTopRightButtonConfig.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
       {
-        return;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(85);
+        PublicAccountChatPie.b(this.a).setVisibility(0);
+        PublicAccountChatPie.c(this.a).setOnClickListener(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130844001, 2130844002);
+      }
+    }
+    else {
       return;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(85, 10000L);
+    }
+    PublicAccountChatPie.d(this.a).setVisibility(8);
   }
 }
 

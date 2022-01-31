@@ -1,25 +1,23 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
-public class agte
-  extends LSRecordAnimations.LSRecordAnimationCallback
+public final class agte
+  implements Parcelable.Creator
 {
-  public agte(LSRecordPanel paramLSRecordPanel) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public PersonalityLabelInfo a(Parcel paramParcel)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS stopRecordingBarAnimation onAnimationEnd");
-    }
-    LSRecordPanel.a(this.a).post(new agtf(this));
+    return new PersonalityLabelInfo(paramParcel);
+  }
+  
+  public PersonalityLabelInfo[] a(int paramInt)
+  {
+    return new PersonalityLabelInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agte
  * JD-Core Version:    0.7.0.1
  */

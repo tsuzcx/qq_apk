@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0086" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="热门推荐" />
-        <TextView android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a272c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="查看更多" android:drawableRight="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021748" android:drawablePadding="3.0dip" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.VideoListLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26e1" android:layout_width="fill_parent" android:layout_height="180.0dip" />
+    <TextView android:textSize="24.0dip" android:textColor="#cbffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0743" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="快速" />
+    <ImageView android:id="@id/image" android:layout_width="144.0dip" android:layout_height="101.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021778" android:scaleType="center" />
+    <TextView android:scrollbarSize="12.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26ea" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
 </LinearLayout>

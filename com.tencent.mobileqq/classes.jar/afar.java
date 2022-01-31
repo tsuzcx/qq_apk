@@ -1,17 +1,18 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter.VideoViewHolder;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
-public class afar
+class afar
   implements View.OnClickListener
 {
-  public afar(PlayOperationViewModel paramPlayOperationViewModel) {}
+  afar(afaq paramafaq) {}
   
   public void onClick(View paramView)
   {
-    this.a.c(paramView);
-    new NowVideoReporter().h("video").i("playpage_like_click").b().a(this.a.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData);
   }
 }
 

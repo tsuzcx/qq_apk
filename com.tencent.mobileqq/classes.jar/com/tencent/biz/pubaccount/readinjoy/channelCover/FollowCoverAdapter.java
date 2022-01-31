@@ -21,7 +21,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.widget.BubbleImageView;
 import java.util.ArrayList;
 import java.util.List;
-import lip;
+import lld;
 
 public class FollowCoverAdapter
   extends BaseAdapter
@@ -83,14 +83,14 @@ public class FollowCoverAdapter
         paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(AIOUtils.a(2.0F, (Resources)localObject1), AIOUtils.a(100.0F, (Resources)localObject1)));
       }
     }
-    lip locallip;
+    lld locallld;
     do
     {
       return paramViewGroup;
       if (paramView != null) {
         break;
       }
-      locallip = new lip(null);
+      locallld = new lld(null);
       paramView = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
       paramView.setLayoutParams(new ViewGroup.LayoutParams(AIOUtils.a(100.0F, (Resources)localObject1), AIOUtils.a(100.0F, (Resources)localObject1)));
       paramViewGroup = new BubbleImageView(this.jdField_a_of_type_AndroidContentContext);
@@ -98,14 +98,14 @@ public class FollowCoverAdapter
       paramViewGroup.setScaleType(ImageView.ScaleType.CENTER_CROP);
       paramViewGroup.setRadius(5.0F);
       paramViewGroup.d(false);
-      locallip.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = paramViewGroup;
+      locallld.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView = paramViewGroup;
       paramView.addView(paramViewGroup);
       paramViewGroup = new BubbleImageView(this.jdField_a_of_type_AndroidContentContext);
       paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
       paramViewGroup.setRadius(5.0F);
       paramViewGroup.d(false);
       paramViewGroup.setBackgroundColor(1711276032);
-      locallip.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView = paramViewGroup;
+      locallld.jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView = paramViewGroup;
       paramView.addView(paramViewGroup);
       paramViewGroup = new TextView(this.jdField_a_of_type_AndroidContentContext);
       localObject2 = new RelativeLayout.LayoutParams(-1, -2);
@@ -116,7 +116,7 @@ public class FollowCoverAdapter
       paramViewGroup.setMaxLines(2);
       paramViewGroup.setEllipsize(TextUtils.TruncateAt.END);
       paramViewGroup.getPaint().setFakeBoldText(true);
-      locallip.jdField_a_of_type_AndroidWidgetTextView = paramViewGroup;
+      locallld.jdField_a_of_type_AndroidWidgetTextView = paramViewGroup;
       paramView.addView(paramViewGroup);
       paramViewGroup = new TextView(this.jdField_a_of_type_AndroidContentContext);
       localObject2 = new RelativeLayout.LayoutParams(-2, -2);
@@ -126,10 +126,10 @@ public class FollowCoverAdapter
       paramViewGroup.setPadding(AIOUtils.a(5.0F, (Resources)localObject1), 0, AIOUtils.a(5.0F, (Resources)localObject1), 0);
       paramViewGroup.setTextColor(-7745469);
       paramViewGroup.setTextSize(11.0F);
-      paramViewGroup.setBackgroundResource(2130840832);
-      locallip.jdField_b_of_type_AndroidWidgetTextView = paramViewGroup;
+      paramViewGroup.setBackgroundResource(2130840850);
+      locallld.jdField_b_of_type_AndroidWidgetTextView = paramViewGroup;
       paramView.addView(paramViewGroup);
-      paramView.setTag(locallip);
+      paramView.setTag(locallld);
       localObject1 = (TopicRecommendFeedsInfo.TopicRecommendInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
       paramViewGroup = paramView;
     } while (localObject1 == null);
@@ -144,7 +144,7 @@ public class FollowCoverAdapter
       if (paramViewGroup.getStatus() == 2) {
         paramViewGroup.restartDownload();
       }
-      locallip.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramViewGroup);
+      locallld.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramViewGroup);
     }
     for (;;)
     {
@@ -155,25 +155,25 @@ public class FollowCoverAdapter
       if (!TextUtils.isEmpty(((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject1).a)) {
         paramViewGroup.append(((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject1).a);
       }
-      locallip.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup.toString());
+      locallld.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup.toString());
       if (((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject1).b > 0) {
         break label642;
       }
-      locallip.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      locallld.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       return paramView;
-      locallip = (lip)paramView.getTag();
+      locallld = (lld)paramView.getTag();
       break;
-      locallip.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramViewGroup);
+      locallld.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable(paramViewGroup);
     }
     label642:
     if (((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject1).b < 1000)
     {
-      locallip.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      locallip.jdField_b_of_type_AndroidWidgetTextView.setText("+" + ((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject1).b);
+      locallld.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      locallld.jdField_b_of_type_AndroidWidgetTextView.setText("+" + ((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject1).b);
       return paramView;
     }
-    locallip.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    locallip.jdField_b_of_type_AndroidWidgetTextView.setText("+999");
+    locallld.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    locallld.jdField_b_of_type_AndroidWidgetTextView.setText("+999");
     return paramView;
   }
   

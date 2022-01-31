@@ -1,51 +1,43 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.ThreadPriorityManager;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import com.tencent.mobileqq.activity.aio.stickerbubble.ManualDecodeGifImage;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationHelper;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
+import com.tencent.qphone.base.util.QLog;
 
 public class wha
-  implements ContactBaseView.IAddContactContext
+  implements Runnable
 {
-  public wha(AddContactsActivity paramAddContactsActivity) {}
+  public wha(StickerBubbleAnimationView paramStickerBubbleAnimationView, BitmapDrawable[] paramArrayOfBitmapDrawable, ManualDecodeGifImage paramManualDecodeGifImage, String paramString, int paramInt) {}
   
-  public Activity a()
+  public void run()
   {
-    return this.a;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public void a()
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
+    int j = 0;
+    int i = 1;
+    if (i < this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.a();
+      Object localObject = StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.a(), 0.7D);
+      BitmapDrawable[] arrayOfBitmapDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
+      if (localObject != null) {}
+      for (localObject = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.getResources(), (Bitmap)localObject);; localObject = null)
+      {
+        arrayOfBitmapDrawable[i] = localObject;
+        QLog.d("StickerBubbleAnimationView", 2, "decode gif: " + i + " / " + this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.c() + " / " + this.jdField_a_of_type_JavaLangString);
+        if (i != this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleManualDecodeGifImage.c())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("StickerBubbleAnimationView", 2, "index is not matched, " + i + " / " + this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable.length + " / " + this.jdField_a_of_type_JavaLangString);
+          }
+          j = 1;
+        }
+        i += 1;
+        break;
+      }
     }
-    AddContactsActivity.a(this.a, 2130838214);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, -(this.a.getTitleBarHeight() + AddContactsActivity.a(this.a).getHeight() + AddContactsActivity.a(this.a).a()));
-    localTranslateAnimation.setDuration(250L);
-    localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new whb(this));
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
-    ThreadPriorityManager.a(true);
-  }
-  
-  public void b()
-  {
-    this.a.findViewById(2131362862).setVisibility(0);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -(this.a.getTitleBarHeight() + AddContactsActivity.a(this.a).getHeight() + AddContactsActivity.a(this.a).a()), 0.0F);
-    localTranslateAnimation.setDuration(250L);
-    localTranslateAnimation.setFillAfter(true);
-    localTranslateAnimation.setAnimationListener(new whc(this));
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localTranslateAnimation);
+    if (j == 0) {
+      StickerBubbleAnimationHelper.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable, this.jdField_a_of_type_Int);
+    }
   }
 }
 

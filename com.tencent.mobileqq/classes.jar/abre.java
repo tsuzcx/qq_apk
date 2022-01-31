@@ -1,43 +1,36 @@
 import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.widget.XListView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.VideoDrawableHandler;
 
 public class abre
-  implements IIconListener
+  implements Runnable
 {
-  public abre(SearchResultActivity paramSearchResultActivity) {}
+  public abre(SelectCoverActivity paramSelectCoverActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    Bitmap localBitmap = VideoDrawableHandler.a(this.a.a);
+    if (this.a.jdField_b_of_type_Boolean) {}
     for (;;)
     {
       return;
-      if (this.a.jdField_a_of_type_Int == 0)
+      if (localBitmap != null) {
+        this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(4, localBitmap).sendToTarget();
+      }
+      while (this.a.d == 1)
       {
-        int i = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof abrg)))
-          {
-            paramBitmap = (abrg)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              SearchResultActivity.a(this.a, paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
-        }
+        SelectCoverActivity.a(this.a);
+        return;
+        this.a.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(6);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abre
  * JD-Core Version:    0.7.0.1
  */

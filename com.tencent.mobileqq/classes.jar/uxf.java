@@ -1,22 +1,14 @@
-import android.graphics.drawable.ColorDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.io.File;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
+import java.lang.ref.WeakReference;
 
-class uxf
-  implements Runnable
+public class uxf
 {
-  uxf(uxe paramuxe) {}
+  public int a;
+  public WeakReference a;
+  public boolean a;
+  public int b;
   
-  public void run()
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(-16777216);
-    URLDrawable.getDrawable(new File(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath), localURLDrawableOptions);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b();
-  }
+  public uxf(DoodleResHelper paramDoodleResHelper) {}
 }
 
 

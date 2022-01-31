@@ -1,22 +1,32 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.VideoLayerUIBase;
+import com.tencent.qphone.base.util.QLog;
 
 public class kel
-  implements MenuItem.OnMenuItemClickListener
+  implements Runnable
 {
-  public kel(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
+  public kel(VideoLayerUIBase paramVideoLayerUIBase) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(32) });
-    return true;
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null) {}
+    try
+    {
+      String str = this.a.jdField_a_of_type_ComTencentAvVideoController.a().c;
+      this.a.jdField_a_of_type_ComTencentAvVideoController.b(str);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "pauseVideo Runnable exception", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kel
  * JD-Core Version:    0.7.0.1
  */

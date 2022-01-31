@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-class zor
-  implements Runnable
+public class zor
+  implements Comparator
 {
-  zor(zoq paramzoq) {}
+  public zor(NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.a.jdField_a_of_type_JavaLangString, this.a.b);
+    if (paramMessageRecord1.time < paramMessageRecord2.time) {
+      return 1;
+    }
+    if (paramMessageRecord1.time > paramMessageRecord2.time) {
+      return -1;
+    }
+    return 0;
   }
 }
 

@@ -1,20 +1,17 @@
-import com.dataline.util.WaitEvent;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagStatus;
+import java.util.ArrayList;
 
-public class zva
+class zva
   implements Runnable
 {
-  public zva(DataLineMsgProxy paramDataLineMsgProxy, Entity paramEntity, ProxyListener paramProxyListener, WaitEvent paramWaitEvent) {}
+  zva(zuz paramzuz, ArrayList paramArrayList) {}
   
   public void run()
   {
-    DataLineMsgRecord localDataLineMsgRecord = ((DataLineMsgRecord)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity).clone();
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(String.valueOf(0), 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.jdField_a_of_type_JavaLangString, localDataLineMsgRecord, 0, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
-    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
+    ((BizTroopHandler)this.jdField_a_of_type_Zuz.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.a(22)).d(new TroopGagMgr.GagStatus(this.jdField_a_of_type_Zuz.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList));
   }
 }
 

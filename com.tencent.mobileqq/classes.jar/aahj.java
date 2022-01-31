@@ -1,13 +1,15 @@
-import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
-import com.tencent.sveffects.Reporter;
-import com.tencent.sveffects.SdkContext;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
+import com.tencent.mobileqq.armap.sensor.SimpleSensorChangeListener;
 
-public final class aahj
-  implements AVGestureWrapper.AVUploadReport
+public class aahj
+  extends SimpleSensorChangeListener
 {
-  public void avGestureUploadReport(String paramString1, String paramString2)
+  public aahj(GreetingCardRender paramGreetingCardRender) {}
+  
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    SdkContext.a().a().a("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
+    GreetingCardRender.a(this.a).a(new aahk(this, paramArrayOfFloat));
   }
 }
 

@@ -1,62 +1,26 @@
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class tud
-  extends SubAccountBindObserver
+  extends Handler
 {
-  public tud(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public tud(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
   
-  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramBoolean) && (paramSubAccountBackProtocData != null) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.length() >= 5))
+    switch (paramMessage.what)
     {
-      paramSubAccountBackProtocData = paramSubAccountBackProtocData.c();
-      if ((paramSubAccountBackProtocData != null) && (!paramSubAccountBackProtocData.contains(this.a.jdField_a_of_type_JavaLangString))) {}
-    }
-    else
-    {
+    default: 
       return;
     }
-    paramSubAccountBackProtocData = (SubAccountControll)this.a.app.getManager(61);
-    SubAccountUgActivity.a(this.a, paramSubAccountBackProtocData, this.a.jdField_a_of_type_JavaLangString);
-  }
-  
-  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() isSucc=" + paramBoolean + " currentActivity subUin=" + this.a.jdField_a_of_type_JavaLangString);
-      if (paramSubAccountBackProtocData != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() mainAccount=" + paramSubAccountBackProtocData.b + " subAccount=" + paramSubAccountBackProtocData.c + " errType=" + paramSubAccountBackProtocData.jdField_a_of_type_Int + " errMsg=" + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
-      }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131434857);
     }
-    if ((paramSubAccountBackProtocData == null) || (this.a.jdField_a_of_type_JavaLangString == null) || ((this.a.jdField_a_of_type_JavaLangString != null) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramSubAccountBackProtocData.c)))) {}
-    do
-    {
-      return;
-      this.a.c();
-      if (this.a.b)
-      {
-        this.a.b = false;
-        if (paramBoolean)
-        {
-          this.a.a();
-          this.a.c(this.a.getString(2131436374));
-          return;
-        }
-        this.a.b(this.a.getString(2131436345));
-        return;
-      }
-    } while (!paramBoolean);
-    paramSubAccountBackProtocData = (SubAccountControll)this.a.app.getManager(61);
-    Pair localPair = paramSubAccountBackProtocData.a(this.a.jdField_a_of_type_JavaLangString, 1);
-    paramSubAccountBackProtocData.a(this.a.app, this.a, localPair, new tue(this, paramSubAccountBackProtocData, localPair));
+    this.a.a(paramMessage, 1);
   }
 }
 

@@ -39,6 +39,8 @@ public class NearbyObserver
   
   protected void a(boolean paramBoolean, byte[] paramArrayOfByte) {}
   
+  public void b() {}
+  
   protected void b(boolean paramBoolean, int paramInt, oidb_0x8dd.RspBody paramRspBody, ToServiceMsg paramToServiceMsg, List paramList) {}
   
   public void b(boolean paramBoolean, NearbyMyTabCard paramNearbyMyTabCard) {}
@@ -47,9 +49,26 @@ public class NearbyObserver
   {
     switch (paramInt)
     {
-    }
-    do
-    {
+    case 2: 
+    case 7: 
+    case 14: 
+    default: 
+    case 15: 
+    case 1: 
+    case 13: 
+    case 12: 
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 11: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
       do
       {
         do
@@ -62,100 +81,105 @@ public class NearbyObserver
               {
                 do
                 {
-                  Object[] arrayOfObject;
                   do
                   {
+                    Object[] arrayOfObject;
                     do
                     {
                       do
                       {
                         do
                         {
-                          return;
-                        } while (paramObject == null);
-                        paramObject = (Object[])paramObject;
-                      } while (paramObject.length != 3);
-                      a((FromServiceMsg)paramObject[0], (ToServiceMsg)paramObject[1], (Object[])paramObject[2]);
+                          do
+                          {
+                            return;
+                          } while (paramObject == null);
+                          paramObject = (Object[])paramObject;
+                        } while (paramObject.length != 3);
+                        a((FromServiceMsg)paramObject[0], (ToServiceMsg)paramObject[1], (Object[])paramObject[2]);
+                        return;
+                      } while (paramObject == null);
+                      arrayOfObject = (Object[])paramObject;
+                    } while (arrayOfObject.length < 4);
+                    int i = ((Integer)arrayOfObject[0]).intValue();
+                    paramObject = null;
+                    if ((arrayOfObject[1] instanceof oidb_0x8dd.RspBody)) {
+                      paramObject = (oidb_0x8dd.RspBody)arrayOfObject[1];
+                    }
+                    ToServiceMsg localToServiceMsg = null;
+                    if ((arrayOfObject[2] instanceof ToServiceMsg)) {
+                      localToServiceMsg = (ToServiceMsg)arrayOfObject[2];
+                    }
+                    List localList = null;
+                    if ((arrayOfObject[3] instanceof List)) {
+                      localList = (List)arrayOfObject[3];
+                    }
+                    if (paramInt == 1)
+                    {
+                      b(paramBoolean, i, paramObject, localToServiceMsg, localList);
                       return;
-                    } while (paramObject == null);
-                    arrayOfObject = (Object[])paramObject;
-                  } while (arrayOfObject.length < 4);
-                  int i = ((Integer)arrayOfObject[0]).intValue();
-                  paramObject = null;
-                  if ((arrayOfObject[1] instanceof oidb_0x8dd.RspBody)) {
-                    paramObject = (oidb_0x8dd.RspBody)arrayOfObject[1];
-                  }
-                  ToServiceMsg localToServiceMsg = null;
-                  if ((arrayOfObject[2] instanceof ToServiceMsg)) {
-                    localToServiceMsg = (ToServiceMsg)arrayOfObject[2];
-                  }
-                  List localList = null;
-                  if ((arrayOfObject[3] instanceof List)) {
-                    localList = (List)arrayOfObject[3];
-                  }
-                  if (paramInt == 1)
-                  {
-                    b(paramBoolean, i, paramObject, localToServiceMsg, localList);
+                    }
+                    a(paramBoolean, i, paramObject, localToServiceMsg, localList);
                     return;
-                  }
-                  a(paramBoolean, i, paramObject, localToServiceMsg, localList);
+                    a();
+                    return;
+                    if ((paramBoolean) && ((paramObject instanceof Object[])))
+                    {
+                      a(paramBoolean, (NearbyMyTabCard)((Object[])(Object[])paramObject)[0]);
+                      return;
+                    }
+                    a(false, null);
+                    return;
+                    paramObject = (Object[])paramObject;
+                    if ((paramBoolean) && (paramObject != null))
+                    {
+                      b(true, (NearbyMyTabCard)paramObject[0]);
+                      return;
+                    }
+                    b(false, null);
+                    return;
+                  } while ((!paramBoolean) || (paramObject == null));
+                  a(true, (byte[])paramObject);
                   return;
-                  a();
-                  return;
-                  if ((paramBoolean) && ((paramObject instanceof Object[])))
+                  if ((paramBoolean == true) && (paramObject != null))
                   {
-                    a(paramBoolean, (NearbyMyTabCard)((Object[])(Object[])paramObject)[0]);
+                    paramObject = (Object[])paramObject;
+                    a(true, new LBSInfo(String.valueOf(paramObject[0]), String.valueOf(paramObject[1]), String.valueOf(paramObject[2]), String.valueOf(paramObject[3]), String.valueOf(paramObject[4]), String.valueOf(paramObject[5]), String.valueOf(paramObject[6]), String.valueOf(paramObject[7]), ((Integer)paramObject[8]).doubleValue(), ((Integer)paramObject[9]).doubleValue(), ((Integer)paramObject[10]).doubleValue(), (String[])paramObject[11]));
                     return;
                   }
                   a(false, null);
                   return;
-                  paramObject = (Object[])paramObject;
-                  if ((paramBoolean) && (paramObject != null))
-                  {
-                    b(true, (NearbyMyTabCard)paramObject[0]);
-                    return;
-                  }
-                  b(false, null);
-                  return;
-                } while ((!paramBoolean) || (paramObject == null));
-                a(true, (byte[])paramObject);
-                return;
-                if ((paramBoolean == true) && (paramObject != null))
-                {
-                  paramObject = (Object[])paramObject;
-                  a(true, new LBSInfo(String.valueOf(paramObject[0]), String.valueOf(paramObject[1]), String.valueOf(paramObject[2]), String.valueOf(paramObject[3]), String.valueOf(paramObject[4]), String.valueOf(paramObject[5]), String.valueOf(paramObject[6]), String.valueOf(paramObject[7]), ((Integer)paramObject[8]).doubleValue(), ((Integer)paramObject[9]).doubleValue(), ((Integer)paramObject[10]).doubleValue(), (String[])paramObject[11]));
-                  return;
-                }
-                a(false, null);
+                } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
+                paramObject = (Object[])paramObject;
+                a(((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), (String)paramObject[7]);
                 return;
               } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
               paramObject = (Object[])paramObject;
-              a(((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), (String)paramObject[7]);
+              a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), (String)paramObject[8]);
+              return;
+              paramObject = (Object[])paramObject;
+              a(paramBoolean, (String)paramObject[0], (List)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
+              return;
+              paramObject = (Object[])paramObject;
+              a(paramBoolean, (ArrayList)paramObject[0], (byte[])paramObject[1], ((Integer)paramObject[2]).intValue(), ((Long)paramObject[3]).longValue(), (String)paramObject[4], ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue(), ((Long)paramObject[7]).longValue());
               return;
             } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
             paramObject = (Object[])paramObject;
-            a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), (String)paramObject[8]);
+            a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), ((Integer)paramObject[8]).intValue(), (String)paramObject[9], (String)paramObject[10], (String)paramObject[11]);
             return;
-            paramObject = (Object[])paramObject;
-            a(paramBoolean, (String)paramObject[0], (List)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
-            return;
-            paramObject = (Object[])paramObject;
-            a(paramBoolean, (ArrayList)paramObject[0], (byte[])paramObject[1], ((Integer)paramObject[2]).intValue(), ((Long)paramObject[3]).longValue(), (String)paramObject[4], ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue(), ((Long)paramObject[7]).longValue());
-            return;
-          } while ((!paramBoolean) || (!(paramObject instanceof Object[])));
+          } while (!(paramObject instanceof Object[]));
           paramObject = (Object[])paramObject;
-          a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), ((Integer)paramObject[8]).intValue(), (String)paramObject[9], (String)paramObject[10], (String)paramObject[11]);
+          a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
           return;
         } while (!(paramObject instanceof Object[]));
         paramObject = (Object[])paramObject;
-        a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
         return;
       } while (!(paramObject instanceof Object[]));
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      a(paramBoolean, (List)((Object[])(Object[])paramObject)[0]);
       return;
-    } while (!(paramObject instanceof Object[]));
-    a(paramBoolean, (List)((Object[])(Object[])paramObject)[0]);
+    }
+    b();
   }
 }
 

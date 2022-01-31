@@ -1,235 +1,28 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import java.io.IOException;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class adwh
-  extends Thread
+  extends SosoInterface.OnLocationListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString = "[]";
-  int jdField_d_of_type_Int;
-  String jdField_d_of_type_JavaLangString;
-  
-  public adwh(MediaApiPlugin paramMediaApiPlugin, String paramString1, boolean paramBoolean, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String[] paramArrayOfString)
+  public adwh(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_d_of_type_JavaLangString = paramString2;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void run()
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    JSONArray localJSONArray = new JSONArray();
-    try
+    if (paramInt != 0)
     {
-      j = this.jdField_a_of_type_ArrayOfJavaLangString.length;
-      i = 0;
+      QQToast.a(this.a.a, 1, "获取地理位置失败。", 1).a();
+      this.a.e();
     }
-    catch (OutOfMemoryError localOutOfMemoryError1)
-    {
-      for (;;)
-      {
-        int j;
-        int i;
-        System.gc();
-        this.jdField_b_of_type_JavaLangString = "3";
-        this.jdField_c_of_type_JavaLangString = "[]";
-        if ((this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a != null) && (this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing())) {
-          this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs4OpenApiIfNeeded(this.jdField_d_of_type_JavaLangString, 0, this.jdField_c_of_type_JavaLangString);
-        return;
-        localOutOfMemoryError1.put(MediaApiPlugin.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
-        i += 1;
-      }
-      if (!isInterrupted()) {
-        break label231;
-      }
-      throw new InterruptedException();
+    if (QLog.isColorLevel()) {
+      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
     }
-    catch (IOException localIOException)
-    {
-      this.jdField_b_of_type_JavaLangString = "2";
-      this.jdField_c_of_type_JavaLangString = "[]";
-      if ((this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing())) {
-        break label207;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label454;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs4OpenApiIfNeeded(this.jdField_d_of_type_JavaLangString, 0, this.jdField_c_of_type_JavaLangString);
-      return;
-      this.jdField_b_of_type_JavaLangString = "0";
-      this.jdField_c_of_type_JavaLangString = localIOException.toString();
-      if ((this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing())) {
-        break label278;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label302;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs4OpenApiIfNeeded(this.jdField_d_of_type_JavaLangString, 0, this.jdField_c_of_type_JavaLangString);
-      return;
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError2)
-      {
-        System.gc();
-        this.jdField_b_of_type_JavaLangString = "3";
-        this.jdField_c_of_type_JavaLangString = "[]";
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-        return;
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError3)
-      {
-        System.gc();
-        this.jdField_b_of_type_JavaLangString = "3";
-        this.jdField_c_of_type_JavaLangString = "[]";
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-        return;
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError4)
-      {
-        System.gc();
-        this.jdField_b_of_type_JavaLangString = "3";
-        this.jdField_c_of_type_JavaLangString = "[]";
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-        return;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      this.jdField_b_of_type_JavaLangString = "2";
-      this.jdField_c_of_type_JavaLangString = "[]";
-      if ((this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing())) {
-        break label576;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label600;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs4OpenApiIfNeeded(this.jdField_d_of_type_JavaLangString, 0, this.jdField_c_of_type_JavaLangString);
-      return;
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError5)
-      {
-        System.gc();
-        this.jdField_b_of_type_JavaLangString = "3";
-        this.jdField_c_of_type_JavaLangString = "[]";
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-        return;
-      }
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.mRuntime.a();
-      if ((localActivity == null) || (localActivity.isFinishing())) {
-        break label711;
-      }
-      this.jdField_b_of_type_JavaLangString = "1";
-      this.jdField_c_of_type_JavaLangString = "[]";
-      if ((this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing())) {
-        break label744;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label768;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs4OpenApiIfNeeded(this.jdField_d_of_type_JavaLangString, 0, this.jdField_c_of_type_JavaLangString);
-      return;
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError6)
-      {
-        System.gc();
-        this.jdField_b_of_type_JavaLangString = "3";
-        this.jdField_c_of_type_JavaLangString = "[]";
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-        return;
-      }
-    }
-    finally
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing())) {
-        break label878;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label903;
-      }
-    }
-    if (i < j) {
-      if (isInterrupted()) {
-        throw new InterruptedException();
-      }
-    }
-    label207:
-    label231:
-    label744:
-    label878:
-    this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs4OpenApiIfNeeded(this.jdField_d_of_type_JavaLangString, 0, this.jdField_c_of_type_JavaLangString);
-    for (;;)
-    {
-      label278:
-      label302:
-      label454:
-      label600:
-      throw localObject;
-      try
-      {
-        label576:
-        label711:
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-      }
-      catch (OutOfMemoryError localOutOfMemoryError7)
-      {
-        label768:
-        label903:
-        System.gc();
-        this.jdField_b_of_type_JavaLangString = "3";
-        this.jdField_c_of_type_JavaLangString = "[]";
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString });
-      }
-    }
+    this.a.a(paramSosoLbsInfo);
   }
 }
 

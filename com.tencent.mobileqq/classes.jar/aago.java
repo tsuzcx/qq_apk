@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
 
 public class aago
   implements Runnable
 {
-  public aago(AREngine paramAREngine) {}
+  public aago(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
   public void run()
   {
-    AREngine.c(this.a);
+    ARWorldCupGlobalSceneRenderable.a(this.a).b();
   }
 }
 

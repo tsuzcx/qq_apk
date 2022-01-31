@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ark;
 
-import aaui;
-import aauj;
-import aaul;
+import abbd;
+import abbe;
+import abbg;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -187,18 +187,18 @@ public class ArkHorizontalListViewAdapter
     Object localObject = paramArkAdapterItemInterface.getArkAppNameAndPath();
     String str = localObject[0];
     localObject = localObject[1];
-    paramArkAdapterItemInterface.clickTail(paramItemViewHolder, this.jdField_a_of_type_AndroidContentContext);
+    paramArkAdapterItemInterface.clickTail(paramItemViewHolder, null, this.jdField_a_of_type_AndroidContentContext);
     if (localObject != null)
     {
-      ArkAppCenter.a((String)localObject, new aaui(this, paramItemViewHolder));
-      ArkAppCenter.a().post(new aauj(this, (String)localObject, paramItemViewHolder));
+      ArkAppCenter.a((String)localObject, new abbd(this, paramItemViewHolder));
+      ArkAppCenter.a().post(new abbe(this, (String)localObject, paramItemViewHolder));
     }
     do
     {
       return;
       paramArkAdapterItemInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
     } while (paramArkAdapterItemInterface == null);
-    ((ArkAppCenter)paramArkAdapterItemInterface.getManager(120)).a().a(str, "0.0.0.1", null, new aaul(this, paramItemViewHolder));
+    ((ArkAppCenter)paramArkAdapterItemInterface.getManager(120)).a().a(str, "0.0.0.1", null, new abbg(this, paramItemViewHolder));
   }
   
   public boolean a(ArkAppContainer paramArkAppContainer)
@@ -283,17 +283,17 @@ public class ArkHorizontalListViewAdapter
       if (paramView == null)
       {
         paramView = new ArkHorizontalListViewAdapter.ItemViewHolder();
-        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968705, paramViewGroup, false);
-        paramView.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((View)localObject).findViewById(2131363310));
-        paramView.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout = ((ArkAppRootLayout)((View)localObject).findViewById(2131363308));
-        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131363311));
-        paramView.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)((View)localObject).findViewById(2131363313));
-        paramView.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)((View)localObject).findViewById(2131363312));
-        paramView.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131363315);
-        paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131363316));
-        paramView.b = ((LinearLayout)((View)localObject).findViewById(2131363317));
-        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131363318));
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363319));
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968708, paramViewGroup, false);
+        paramView.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((View)localObject).findViewById(2131363327));
+        paramView.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppRootLayout = ((ArkAppRootLayout)((View)localObject).findViewById(2131363325));
+        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject).findViewById(2131363328));
+        paramView.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLoadLayout = ((ArkAppLoadLayout)((View)localObject).findViewById(2131363330));
+        paramView.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = ((ArkAppView)((View)localObject).findViewById(2131363329));
+        paramView.jdField_a_of_type_AndroidViewView = ((View)localObject).findViewById(2131363332);
+        paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131363333));
+        paramView.b = ((LinearLayout)((View)localObject).findViewById(2131363334));
+        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131363335));
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131363336));
         ((View)localObject).setTag(paramView);
         paramViewGroup = paramView;
         paramView = (View)localObject;

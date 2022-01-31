@@ -1,18 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
 
 public class aekk
-  extends BroadcastReceiver
+  implements Animator.AnimatorListener
 {
-  public aekk(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  public aekk(LightReplyMenuManager paramLightReplyMenuManager) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramIntent != null) && ("BROAD_CAST_CALL_PAGE_SHARE".equals(paramIntent.getAction()))) {
-      MusicGeneWebViewPlugin.a(this.a);
+    this.a.b = false;
+    this.a.c = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.a.a != null)
+    {
+      this.a.a.setVisibility(8);
+      LightReplyMenuManager.a(this.a, null);
+      this.a.a = null;
+      LightReplyMenuManager.a(this.a, false);
     }
+    this.a.b = false;
+    this.a.c = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.b = true;
   }
 }
 

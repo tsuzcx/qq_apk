@@ -1,16 +1,13 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Condition;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
-import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
 
 public class oau
-  implements LocalVideoPusher.Condition
+  implements DialogInterface.OnDismissListener
 {
-  public oau(LocalVideoPushSegment paramLocalVideoPushSegment) {}
+  public oau(StoryDiscoverActivity paramStoryDiscoverActivity) {}
   
-  public boolean a()
-  {
-    return StoryPublishLauncher.b();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

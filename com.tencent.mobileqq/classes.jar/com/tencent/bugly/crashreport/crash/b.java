@@ -1518,7 +1518,7 @@ public final class b
       String str3 = paramCrashDetailBean.A;
       Locale localLocale = Locale.US;
       localObject.getClass();
-      str1 = String.format(localLocale, "#--------\npackage:%s\nversion:%s\nsdk:%s\nprocess:%s\ndate:%s\ntype:%s\nmessage:%s\nstack:\n%s\neupID:%s\n", new Object[] { str1, str2, "2.7.4", str3, z.a(new Date(paramCrashDetailBean.r)), paramCrashDetailBean.n, paramCrashDetailBean.o, paramCrashDetailBean.q, paramCrashDetailBean.c });
+      str1 = String.format(localLocale, "#--------\npackage:%s\nversion:%s\nsdk:%s\nprocess:%s\ndate:%s\ntype:%s\nmessage:%s\nstack:\n%s\neupID:%s\n", new Object[] { str1, str2, "2.7.8", str3, z.a(new Date(paramCrashDetailBean.r)), paramCrashDetailBean.n, paramCrashDetailBean.o, paramCrashDetailBean.q, paramCrashDetailBean.c });
       paramCrashDetailBean = null;
       if (c.j == null) {
         if (Environment.getExternalStorageState().equals("mounted")) {
@@ -1570,6 +1570,8 @@ public final class b
       localList = b();
     } while ((localList == null) || (localList.size() <= 0));
     localObject1 = new ArrayList();
+    ((List)localObject1).addAll(a(localList));
+    localList.removeAll((Collection)localObject1);
     Object localObject2 = localList.iterator();
     Object localObject3;
     while (((Iterator)localObject2).hasNext())

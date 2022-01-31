@@ -183,10 +183,10 @@ public class ForwardSelectionFriendListAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971487, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971513, paramViewGroup, false);
       paramViewGroup = new ForwardSelectionFriendListAdapter.ViewTag();
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131362719));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363896));
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131362724));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363921));
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
         paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
@@ -235,10 +235,10 @@ public class ForwardSelectionFriendListAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968807, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968811, paramViewGroup, false);
       paramViewGroup = new ForwardSelectionFriendListAdapter.GroupViewTag();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363842));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131363843));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363866));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131363867));
       paramView.setTag(paramViewGroup);
       paramView.setOnClickListener(this);
     }

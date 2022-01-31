@@ -1,19 +1,23 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
 public class kxe
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public kxe(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  public kxe(AdControlView paramAdControlView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((ReadInJoyNativeAdAppVideoView.a(this.a) == 4) || (ReadInJoyNativeAdAppVideoView.a(this.a) == 3))
-    {
-      ReadInJoyNativeAdAppVideoView.a(this.a).setVisibility(8);
-      ReadInJoyNativeAdAppVideoView.a(this.a).setVisibility(8);
-    }
+    super.onAnimationCancel(paramAnimator);
+    this.a.b = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.b = false;
+    this.a.setVisibility(4);
   }
 }
 

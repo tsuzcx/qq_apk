@@ -148,7 +148,7 @@ public class FeedItemCellArk
       if (this.b == null)
       {
         this.b = new View(this.jdField_a_of_type_AndroidContentContext);
-        this.b.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493477));
+        this.b.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493479));
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
         if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mChannelID == 70L)) {
           localLayoutParams.height = AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());

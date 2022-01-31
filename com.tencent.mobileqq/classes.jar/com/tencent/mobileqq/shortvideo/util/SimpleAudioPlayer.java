@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import aiea;
+import aiiu;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
@@ -12,7 +12,7 @@ public class SimpleAudioPlayer
   implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener
 {
   public static int a;
-  private aiea jdField_a_of_type_Aiea;
+  private aiiu jdField_a_of_type_Aiiu;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   private String jdField_a_of_type_JavaLangString;
   private volatile int b = jdField_a_of_type_Int;
@@ -30,7 +30,7 @@ public class SimpleAudioPlayer
       if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying())
       {
         this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-        this.jdField_a_of_type_Aiea = null;
+        this.jdField_a_of_type_Aiiu = null;
       }
       this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
       this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
@@ -68,10 +68,10 @@ public class SimpleAudioPlayer
           this.c = i;
           this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(this);
           this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
-          if (this.jdField_a_of_type_Aiea == null)
+          if (this.jdField_a_of_type_Aiiu == null)
           {
-            this.jdField_a_of_type_Aiea = new aiea(this, null);
-            this.jdField_a_of_type_Aiea.start();
+            this.jdField_a_of_type_Aiiu = new aiiu(this, null);
+            this.jdField_a_of_type_Aiiu.start();
           }
           if (!SdkContext.a().a().a()) {
             break label261;
@@ -101,7 +101,7 @@ public class SimpleAudioPlayer
         if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying())
         {
           this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-          this.jdField_a_of_type_Aiea = null;
+          this.jdField_a_of_type_Aiiu = null;
         }
         this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
         this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
@@ -119,9 +119,65 @@ public class SimpleAudioPlayer
     this.b = paramInt;
   }
   
+  /* Error */
   public boolean a()
   {
-    return (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying());
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_2
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: aload_0
+    //   5: getfield 31	com/tencent/mobileqq/shortvideo/util/SimpleAudioPlayer:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   8: astore_3
+    //   9: aload_3
+    //   10: ifnonnull +9 -> 19
+    //   13: iload_2
+    //   14: istore_1
+    //   15: aload_0
+    //   16: monitorexit
+    //   17: iload_1
+    //   18: ireturn
+    //   19: aload_0
+    //   20: getfield 31	com/tencent/mobileqq/shortvideo/util/SimpleAudioPlayer:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   23: invokevirtual 40	android/media/MediaPlayer:isPlaying	()Z
+    //   26: istore_1
+    //   27: goto -12 -> 15
+    //   30: astore_3
+    //   31: iload_2
+    //   32: istore_1
+    //   33: invokestatic 68	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/sveffects/SdkContext;
+    //   36: invokevirtual 71	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/sveffects/Logger;
+    //   39: invokeinterface 75 1 0
+    //   44: ifeq -29 -> 15
+    //   47: invokestatic 68	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/sveffects/SdkContext;
+    //   50: invokevirtual 71	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/sveffects/Logger;
+    //   53: ldc 77
+    //   55: ldc 138
+    //   57: aload_3
+    //   58: invokeinterface 129 4 0
+    //   63: iload_2
+    //   64: istore_1
+    //   65: goto -50 -> 15
+    //   68: astore_3
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: aload_3
+    //   72: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	73	0	this	SimpleAudioPlayer
+    //   14	51	1	bool1	boolean
+    //   1	63	2	bool2	boolean
+    //   8	2	3	localMediaPlayer	MediaPlayer
+    //   30	28	3	localIllegalStateException	java.lang.IllegalStateException
+    //   68	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   19	27	30	java/lang/IllegalStateException
+    //   4	9	68	finally
+    //   19	27	68	finally
+    //   33	63	68	finally
   }
   
   public boolean a(String paramString)
@@ -147,13 +203,13 @@ public class SimpleAudioPlayer
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_Aiea = null;
+    this.jdField_a_of_type_Aiiu = null;
     a();
   }
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Aiea = null;
+    this.jdField_a_of_type_Aiiu = null;
     a();
     SdkContext.a().a().a("SimpleAudioPlayer", "playSimpleAudio " + this.jdField_a_of_type_JavaLangString + "onError: " + paramInt1 + "," + paramInt2);
     return true;

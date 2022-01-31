@@ -1,19 +1,72 @@
-import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo.RedPntInfoForReport;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class tgf
   implements Runnable
 {
-  public tgf(PortraitImageview paramPortraitImageview, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {}
+  public tgf(MainFragment paramMainFragment) {}
   
   public void run()
   {
-    long l = System.currentTimeMillis();
-    float f1 = Math.min(this.jdField_a_of_type_Float, (float)(l - this.jdField_a_of_type_Long));
-    float f2 = this.b;
-    float f3 = this.c;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a(f2 + f3 * f1, this.d, this.e);
-    if (f1 < this.jdField_a_of_type_Float) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.post(this);
+    for (;;)
+    {
+      try
+      {
+        if ((MainFragment.a(this.a) != null) && (MainFragment.a(this.a).get("看点") != null))
+        {
+          BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)((RedTouch)MainFragment.a(this.a).get("看点")).getTag(2131362416);
+          JSONObject localJSONObject = ReadInJoyUtils.a();
+          if (localRedTypeInfo == null)
+          {
+            i = 1;
+            if (i == 3)
+            {
+              localRedTypeInfo.red_content.get();
+              localJSONObject.put("tab_status", i);
+              localJSONObject.put("kandian_mode_new", VideoReporter.a());
+              if (i == 3) {
+                localJSONObject.put("reddot_num", localRedTypeInfo.red_content.get());
+              }
+              if (ReadInJoyUtils.f != 0) {
+                continue;
+              }
+              i = 0;
+              localJSONObject.put("button_state", i);
+              PublicAccountReportUtils.a(null, "CliOper", "", null, "0X80081C3", "0X80081C3", 0, 1, null, ReadInJoyUtils.a.c, ReadInJoyUtils.a.b, localJSONObject.toString(), false);
+            }
+          }
+          else
+          {
+            if (localRedTypeInfo.red_type.get() != 5) {
+              break label189;
+            }
+            i = 3;
+            continue;
+          }
+          continue;
+          i = 1;
+          continue;
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      label189:
+      int i = 2;
     }
   }
 }

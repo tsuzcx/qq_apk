@@ -1,31 +1,52 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
-import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
+import android.text.TextUtils;
+import android.util.Log;
+import cooperation.weiyun.sdk.download.DownloadJobContext.StatusInfo;
+import cooperation.weiyun.sdk.download.WyDownloader;
+import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
+import cooperation.weiyun.sdk.download.WyDownloader.IDownloadStatusListener;
+import java.io.File;
 
 public class anpy
-  extends CaptureConfigUpdateObserver
+  implements WyDownloader.IDownloadListener
 {
-  public anpy(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView) {}
+  public anpy(WyDownloader paramWyDownloader, WyDownloader.IDownloadStatusListener paramIDownloadStatusListener, int paramInt) {}
   
-  public void d()
+  public void a(String paramString, long paramLong, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onFaceUUpdate!");
-    }
-    this.a.d();
+    DownloadJobContext.StatusInfo localStatusInfo = new DownloadJobContext.StatusInfo();
+    localStatusInfo.c = paramString;
+    localStatusInfo.jdField_a_of_type_Int = 2;
+    localStatusInfo.jdField_b_of_type_Long = (paramFloat);
+    localStatusInfo.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString, this.jdField_a_of_type_Int, localStatusInfo, false);
   }
   
-  public void g()
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onSegmentModeUpdate!");
+    Log.e("WyDownloader", "download finish:" + paramString1 + " successed:" + paramBoolean + "errorCode:" + paramInt);
+    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists())) {}
+    DownloadJobContext.StatusInfo localStatusInfo;
+    for (int i = 1;; i = 0)
+    {
+      localStatusInfo = new DownloadJobContext.StatusInfo();
+      localStatusInfo.jdField_b_of_type_JavaLangString = paramString2;
+      localStatusInfo.c = paramString1;
+      localStatusInfo.jdField_b_of_type_Int = paramInt;
+      localStatusInfo.jdField_a_of_type_JavaLangString = paramString3;
+      if (i == 0) {
+        break;
+      }
+      localStatusInfo.jdField_a_of_type_Int = 4;
+      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString1, this.jdField_a_of_type_Int, localStatusInfo, true);
+      return;
     }
-    this.a.a(false);
+    localStatusInfo.jdField_a_of_type_Int = 5;
+    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString1, this.jdField_a_of_type_Int, localStatusInfo, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpy
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.MD5;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.MobileQQ;
-import zjw;
+import zqt;
 
 public class ProcessExitReceiver
   extends BroadcastReceiver
@@ -84,7 +84,7 @@ public class ProcessExitReceiver
       } while (paramContext == null);
       paramIntent = paramContext.getStringArrayList("procNameList");
     } while ((!a(paramContext.getString("verify"), paramIntent)) || (!a(paramIntent)));
-    ThreadManager.post(new zjw(this), 8, null, true);
+    ThreadManager.post(new zqt(this), 8, null, true);
     return;
     this.a.getApplication().otherProcessExit(true);
   }

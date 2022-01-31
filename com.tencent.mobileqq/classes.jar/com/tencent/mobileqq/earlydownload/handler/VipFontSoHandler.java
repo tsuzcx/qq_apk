@@ -50,7 +50,7 @@ public class VipFontSoHandler
   public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
   {
     Object localObject;
-    if ((!paramBoolean) && (!FontSoLoader.a.get()))
+    if ((!paramBoolean) && (!FontSoLoader.b.get()))
     {
       localObject = ((FriendsManager)this.a.getManager(50)).a(this.a.getAccount());
       if ((localObject == null) || (0L == ((ExtensionInfo)localObject).uVipFont) || (((ExtensionInfo)localObject).vipFontType != 1)) {
@@ -171,7 +171,7 @@ public class VipFontSoHandler
   public boolean f()
   {
     boolean bool = super.f();
-    if ((bool) && (!FontSoLoader.a.get()))
+    if ((bool) && (!FontSoLoader.b.get()))
     {
       ReportController.b(this.a, "CliOper", "", "", "Font_Mall", "0X80072C8", 0, 0, "0", "", "", "");
       if (QLog.isColorLevel()) {

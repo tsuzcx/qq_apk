@@ -1,21 +1,15 @@
-import android.util.LruCache;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
-import friendlist.GetOnlineInfoResp;
+import android.content.DialogInterface;
+import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 
-class orl
-  implements Runnable
+public class orl
+  extends DialogUtil.DialogOnClickAdapter
 {
-  orl(ork paramork, GetOnlineInfoResp paramGetOnlineInfoResp, String paramString) {}
+  public orl(StoryPublishLauncher paramStoryPublishLauncher) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_FriendlistGetOnlineInfoResp.eIconType == 11) {}
-    for (boolean bool = true;; bool = false)
-    {
-      StoryQIMBadgeView.a().put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool));
-      this.jdField_a_of_type_Ork.a.a(bool);
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

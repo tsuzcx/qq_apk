@@ -1,49 +1,36 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraOperator;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.recent.HotChatCenterItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.lang.ref.WeakReference;
 
 public class xpz
-  extends OrientationEventListener
+  implements Runnable
 {
-  public xpz(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public xpz(HotChatCenterItemBuilder paramHotChatCenterItemBuilder, int paramInt) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void run()
   {
-    NewFlowCameraActivity.a(this.a).a(paramInt);
-    if (this.a.j) {}
-    do
+    ??? = ((QQAppInterface)HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get()).getEntityManagerFactory().createEntityManager();
+    HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder, ApolloGameUtil.a((EntityManager)???));
+    if ((HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder) != null) && (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).size() > 0))
     {
-      return;
-      if (paramInt == -1)
+      SparseArray localSparseArray = (SparseArray)HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get(this.jdField_a_of_type_Int);
+      if ((localSparseArray != null) && (localSparseArray.size() > 0))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
+        if ((HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder) != null) && (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder).get() != null)) {
+          ApolloGameUtil.a((EntityManager)???, ApolloUtil.a(localSparseArray));
         }
-        this.a.o = 90;
-        return;
+        synchronized (HotChatCenterItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentHotChatCenterItemBuilder))
+        {
+          localSparseArray.remove(1000);
+          return;
+        }
       }
-      if ((paramInt > 315) || (paramInt < 45))
-      {
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 45) && (paramInt < 135))
-      {
-        this.a.o = 180;
-        return;
-      }
-      if ((paramInt > 135) && (paramInt < 225))
-      {
-        this.a.o = 270;
-        return;
-      }
-    } while ((paramInt <= 225) || (paramInt >= 315));
-    this.a.o = 0;
+    }
   }
 }
 

@@ -1,250 +1,283 @@
 package c.t.m.g;
 
-import android.annotation.SuppressLint;
-import android.telephony.CellIdentityCdma;
-import android.telephony.CellIdentityGsm;
-import android.telephony.CellIdentityLte;
-import android.telephony.CellIdentityWcdma;
-import android.telephony.CellInfo;
-import android.telephony.CellInfoCdma;
-import android.telephony.CellInfoGsm;
-import android.telephony.CellInfoLte;
-import android.telephony.CellInfoWcdma;
-import android.telephony.CellLocation;
-import android.telephony.CellSignalStrengthCdma;
-import android.telephony.CellSignalStrengthGsm;
-import android.telephony.CellSignalStrengthLte;
-import android.telephony.CellSignalStrengthWcdma;
-import android.telephony.NeighboringCellInfo;
-import android.telephony.SignalStrength;
-import android.telephony.TelephonyManager;
-import android.telephony.cdma.CdmaCellLocation;
-import android.telephony.gsm.GsmCellLocation;
-import android.util.Log;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.location.LocationManager;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiManager;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Message;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 
-public final class ea
-  extends ed
+final class ea
+  extends BroadcastReceiver
 {
-  public int a = 0;
-  public int b = 460;
-  public int c = 0;
-  public int d = 0;
-  public int e = 0;
-  public int f = 0;
-  public int g = 2147483647;
-  public int h = 2147483647;
-  private final long i = System.currentTimeMillis();
-  private List<NeighboringCellInfo> j;
+  static Handler e;
+  private static final Comparator<ScanResult> l = new Comparator() {};
+  volatile boolean a;
+  final de b;
+  boolean c;
+  volatile boolean d = false;
+  private final WifiManager f;
+  private long g;
+  private HashSet<String> h;
+  private List<ScanResult> i;
+  private final Runnable j;
+  private final Object k = new Object();
   
-  @SuppressLint({"NewApi"})
-  @Nullable
-  public static ea a(da paramda, CellInfo paramCellInfo)
+  public ea(de paramde)
   {
-    int k = -88;
-    if (paramCellInfo == null) {
-      paramda = null;
-    }
-    ea localea;
-    do
+    this.b = paramde;
+    this.f = paramde.g;
+    this.h = new HashSet();
+    this.j = new Runnable()
     {
-      return paramda;
-      paramda = paramda.c();
-      localea = new ea();
-      int n;
-      int m;
+      public final void run()
+      {
+        ea.a(ea.this);
+        long l = ea.b(ea.this).b.m;
+        ea.a(ea.this, l);
+        ev.a("TxWifiProvider", 6, "Interval:".concat(String.valueOf(l)));
+      }
+    };
+  }
+  
+  private void a(List<ScanResult> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      d();
+    }
+    for (;;)
+    {
+      paramList = new ei(paramList, this.g, this.f.getWifiState());
+      this.b.b(paramList);
+      return;
+      if (ex.a)
+      {
+        ex.a = false;
+        d();
+      }
+    }
+  }
+  
+  private void c()
+  {
+    ev.a("TxWifiProvider", 6, Thread.currentThread().getName());
+    if (this.h == null) {
+      this.h = new HashSet();
+    }
+    ScanResult localScanResult;
+    if (this.h.size() == 0)
+    {
+      localIterator = this.i.iterator();
+      while (localIterator.hasNext())
+      {
+        localScanResult = (ScanResult)localIterator.next();
+        this.h.add(localScanResult.toString());
+      }
+      this.g = System.currentTimeMillis();
+      ev.b("TxWifiProvider", "first receiver");
+      a(this.i);
+      return;
+    }
+    int m = this.h.size();
+    if (m != this.i.size())
+    {
+      this.h.clear();
+      localIterator = this.i.iterator();
+      while (localIterator.hasNext())
+      {
+        localScanResult = (ScanResult)localIterator.next();
+        this.h.add(localScanResult.BSSID + localScanResult.level);
+      }
+      this.g = System.currentTimeMillis();
+      ev.b("TxWifiProvider", "size not same");
+      a(this.i);
+      return;
+    }
+    Iterator localIterator = this.i.iterator();
+    while (localIterator.hasNext())
+    {
+      localScanResult = (ScanResult)localIterator.next();
+      this.h.add(localScanResult.BSSID + localScanResult.level);
+    }
+    if (m != this.h.size())
+    {
+      this.h.clear();
+      localIterator = this.i.iterator();
+      while (localIterator.hasNext())
+      {
+        localScanResult = (ScanResult)localIterator.next();
+        this.h.add(localScanResult.BSSID + localScanResult.level);
+      }
+      this.g = System.currentTimeMillis();
+      ev.b("TxWifiProvider", "size same,but mac is not same");
+      a(this.i);
+      return;
+    }
+    ev.b("TxWifiProvider", "size same,mac and rssi same");
+  }
+  
+  private void d()
+  {
+    m = 1;
+    n = this.f.getWifiState();
+    if (n == 3) {
+      a(0L);
+    }
+    for (;;)
+    {
+      n = m;
       try
       {
-        if ((paramCellInfo instanceof CellInfoCdma))
+        if (Build.VERSION.SDK_INT >= 23)
         {
-          paramCellInfo = (CellInfoCdma)paramCellInfo;
-          CellIdentityCdma localCellIdentityCdma = paramCellInfo.getCellIdentity();
-          localea.a = 2;
-          localea.a(paramda);
-          localea.c = localCellIdentityCdma.getSystemId();
-          localea.d = localCellIdentityCdma.getNetworkId();
-          localea.e = localCellIdentityCdma.getBasestationId();
-          localea.g = localCellIdentityCdma.getLatitude();
-          localea.h = localCellIdentityCdma.getLongitude();
-          n = paramCellInfo.getCellSignalStrength().getDbm();
-          m = k;
-          if (n > -110)
+          n = m;
+          if (!this.b.h.isProviderEnabled("network"))
           {
-            m = k;
-            if (n < -40) {
-              m = n;
+            boolean bool = this.b.h.isProviderEnabled("gps");
+            n = m;
+            if (!bool) {
+              n = 5;
             }
           }
-          localea.f = m;
-          return localea;
         }
       }
-      catch (Throwable paramda)
+      catch (Exception localException)
       {
-        Log.e("TxCellInfo", paramda.toString());
-        return localea;
-      }
-      if ((paramCellInfo instanceof CellInfoGsm))
-      {
-        paramda = (CellInfoGsm)paramCellInfo;
-        localea.a = 1;
-        paramCellInfo = paramda.getCellIdentity();
-        localea.d = paramCellInfo.getLac();
-        localea.e = paramCellInfo.getCid();
-        localea.b = paramCellInfo.getMcc();
-        localea.c = paramCellInfo.getMnc();
-        n = paramda.getCellSignalStrength().getDbm();
-        m = k;
-        if (n > -110)
+        for (;;)
         {
-          m = k;
-          if (n < -40) {
-            m = n;
-          }
+          Message localMessage;
+          n = m;
         }
-        localea.f = m;
-        return localea;
       }
-      if ((paramCellInfo instanceof CellInfoWcdma))
+      localMessage = new Message();
+      localMessage.what = 12999;
+      localMessage.arg1 = 12001;
+      localMessage.arg2 = n;
+      this.b.b(localMessage);
+      return;
+      if (n == 1)
       {
-        paramda = (CellInfoWcdma)paramCellInfo;
-        localea.a = 1;
-        paramCellInfo = paramda.getCellIdentity();
-        localea.d = paramCellInfo.getLac();
-        localea.e = paramCellInfo.getCid();
-        localea.b = paramCellInfo.getMcc();
-        localea.c = paramCellInfo.getMnc();
-        n = paramda.getCellSignalStrength().getDbm();
-        m = k;
-        if (n > -110)
-        {
-          m = k;
-          if (n < -40) {
-            m = n;
-          }
+        m = 0;
+        if (this.i != null) {
+          this.i.clear();
         }
-        localea.f = m;
-        return localea;
+        this.b.b(ei.a);
       }
-      paramda = localea;
-    } while (!(paramCellInfo instanceof CellInfoLte));
-    paramda = (CellInfoLte)paramCellInfo;
-    localea.a = 1;
-    paramCellInfo = paramda.getCellIdentity();
-    localea.d = paramCellInfo.getTac();
-    localea.e = paramCellInfo.getCi();
-    localea.b = paramCellInfo.getMcc();
-    localea.c = paramCellInfo.getMnc();
-    k = paramda.getCellSignalStrength().getDbm();
-    if ((k > -110) && (k < -40)) {}
-    for (;;)
-    {
-      localea.f = k;
-      return localea;
-      k = -88;
-    }
-  }
-  
-  @Nullable
-  public static ea a(da paramda, CellLocation paramCellLocation, SignalStrength paramSignalStrength)
-  {
-    if ((!paramda.f()) || (paramCellLocation == null)) {
-      return null;
-    }
-    TelephonyManager localTelephonyManager = paramda.c();
-    paramda = new ea();
-    try
-    {
-      if (!(paramCellLocation instanceof CdmaCellLocation)) {
-        break label121;
-      }
-      paramCellLocation = (CdmaCellLocation)paramCellLocation;
-      paramda.a = 2;
-      paramda.a(localTelephonyManager);
-      paramda.c = paramCellLocation.getSystemId();
-      paramda.d = paramCellLocation.getNetworkId();
-      paramda.e = paramCellLocation.getBaseStationId();
-      paramda.g = paramCellLocation.getBaseStationLatitude();
-      paramda.h = paramCellLocation.getBaseStationLongitude();
-      if (paramSignalStrength == null)
+      else
       {
-        paramda.f = -1;
-        return paramda;
+        m = -1;
       }
     }
-    catch (Throwable paramCellLocation)
-    {
-      f.a.b("TxCellInfo", paramCellLocation.toString());
-      return paramda;
-    }
-    paramda.f = paramSignalStrength.getCdmaDbm();
-    return paramda;
-    label121:
-    paramCellLocation = (GsmCellLocation)paramCellLocation;
-    paramda.a = 1;
-    paramda.a(localTelephonyManager);
-    paramda.d = paramCellLocation.getLac();
-    paramda.e = paramCellLocation.getCid();
-    if (paramSignalStrength == null)
-    {
-      paramda.f = -1;
-      return paramda;
-    }
-    paramda.f = (paramSignalStrength.getGsmSignalStrength() * 2 - 113);
-    return paramda;
   }
   
-  private void a(TelephonyManager paramTelephonyManager)
+  public final void a()
   {
-    int[] arrayOfInt = new int[2];
-    en.a(paramTelephonyManager, arrayOfInt);
-    if ((arrayOfInt[0] > 0) && (arrayOfInt[1] >= 0))
+    synchronized (this.k)
     {
-      this.b = arrayOfInt[0];
-      this.c = arrayOfInt[1];
-    }
-  }
-  
-  @NonNull
-  public final List<NeighboringCellInfo> a()
-  {
-    try
-    {
-      if (this.j == null) {
-        this.j = Collections.emptyList();
-      }
-      List localList = this.j;
-      return localList;
-    }
-    finally {}
-  }
-  
-  public final void a(@Nullable List<NeighboringCellInfo> paramList)
-  {
-    if (paramList != null) {}
-    for (;;)
-    {
-      try
-      {
-        this.j = Collections.unmodifiableList(paramList);
+      if (!this.a) {
         return;
       }
-      finally {}
-      this.j = Collections.emptyList();
+      this.a = false;
+      e.removeCallbacksAndMessages(null);
+    }
+    try
+    {
+      this.b.a.unregisterReceiver(this);
+      ev.a("TxWifiProvider", 6, "unregisterReceiver success");
+      this.g = 0L;
+      this.h = null;
+      if (this.i != null) {
+        this.i.clear();
+      }
+      if (this.h != null) {
+        this.h.clear();
+      }
+      ev.a("TxWifiProvider", 4, "shutdown: state=[shutdown]");
+      return;
+      localObject2 = finally;
+      throw localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ev.a("TxWifiProvider", 6, "unregisterReceiver failed");
+      }
     }
   }
   
-  public final String b()
+  final void a(long paramLong)
   {
-    return this.b + this.c + this.d + this.e;
+    ev.a("TxWifiProvider", 6, "ScanInterval:".concat(String.valueOf(paramLong)));
+    Handler localHandler = e;
+    Runnable localRunnable = this.j;
+    localHandler.removeCallbacks(localRunnable);
+    localHandler.postDelayed(localRunnable, paramLong);
   }
   
-  public final String toString()
+  final boolean b()
   {
-    return "TxCellInfo [PhoneType=" + this.a + ", MCC=" + this.b + ", MNC=" + this.c + ", LAC=" + this.d + ", CID=" + this.e + ", RSSI=" + this.f + ", LAT=" + this.g + ", LNG=" + this.h + ", mTime=" + this.i + "]";
+    if ((!ex.b(this.b)) || (this.c))
+    {
+      ev.a("TxWifiProvider", 6, "no try scan ,return!!");
+      return false;
+    }
+    return ex.a(this.f);
+  }
+  
+  public final void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent == null) {
+      return;
+    }
+    try
+    {
+      synchronized (this.k)
+      {
+        paramContext = paramIntent.getAction();
+        ev.a("TxWifiProvider", 4, "onReceive ".concat(String.valueOf(paramContext)));
+        if ("android.net.wifi.WIFI_STATE_CHANGED".equals(paramContext)) {
+          d();
+        }
+        if (("android.net.wifi.WIFI_STATE_CHANGED".equals(paramContext)) || ("android.net.wifi.SCAN_RESULTS".equals(paramContext)))
+        {
+          paramContext = ex.b(this.f);
+          if ((paramContext == null) || (paramContext.size() <= 0)) {
+            break label159;
+          }
+          this.i = new ArrayList(paramContext);
+          eb.a(this.i);
+          if ((this.i != null) && (this.i.size() > 0))
+          {
+            Collections.sort(this.i, l);
+            c();
+          }
+        }
+        return;
+      }
+      paramIntent = new StringBuilder("ScanResult list is ");
+    }
+    catch (Exception paramContext)
+    {
+      ev.b("TxWifiProvider", paramContext.toString());
+      return;
+    }
+    label159:
+    if (paramContext == null) {}
+    for (paramContext = "null";; paramContext = "size=0")
+    {
+      ev.a("TxWifiProvider", paramContext);
+      break;
+    }
   }
 }
 

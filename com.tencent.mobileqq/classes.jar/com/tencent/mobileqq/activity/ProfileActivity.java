@@ -25,8 +25,14 @@ public abstract class ProfileActivity
   extends BaseActivity
   implements AppConstants
 {
-  public static final int[][] a = { { 2130846140, 2131493002 }, { 2130846143, 2131493003 }, { 2130846146, 2131493004 } };
+  public static final int[][] a;
   protected boolean p;
+  
+  static
+  {
+    int[] arrayOfInt = { 2130846225, 2131493003 };
+    a = new int[][] { { 2130846222, 2131493002 }, arrayOfInt, { 2130846228, 2131493004 } };
+  }
   
   public static int a(int paramInt)
   {
@@ -103,7 +109,7 @@ public abstract class ProfileActivity
     paramContext = new Intent(paramContext, FriendProfileCardActivity.class);
     if (paramAllInOne != null)
     {
-      if (au.equals(paramAllInOne.g)) {
+      if (av.equals(paramAllInOne.g)) {
         paramContext.putExtra("key_from_ark_babyq", true);
       }
       paramAllInOne = paramAllInOne.jdField_a_of_type_AndroidOsBundle;
@@ -120,11 +126,11 @@ public abstract class ProfileActivity
     if (QavCameraUsage.b(BaseApplicationImpl.getContext())) {
       return null;
     }
-    Object localObject = new File(AppConstants.aJ + "photo/");
+    Object localObject = new File(AppConstants.aK + "photo/");
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
-    localObject = Uri.fromFile(new File(AppConstants.aJ + "photo/" + System.currentTimeMillis() + ".jpg"));
+    localObject = Uri.fromFile(new File(AppConstants.aK + "photo/" + System.currentTimeMillis() + ".jpg"));
     Intent localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
     localIntent.putExtra("output", (Parcelable)localObject);
     localIntent.putExtra("android.intent.extra.videoQuality", 100);

@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amrh;
+import amys;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import android.text.TextUtils;
 public class LbsDataV2$GeoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amrh();
+  public static final Parcelable.Creator CREATOR = new amys();
   public String address;
   public LbsDataV2.GpsInfo gpsInfo;
   public int iDistrictCode;

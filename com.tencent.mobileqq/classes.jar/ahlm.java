@@ -1,15 +1,25 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
 public class ahlm
-  implements Runnable
+  implements PtvTemplateManager.IPtvTemplateDownloadListener
 {
-  public ahlm(CameraCaptureView paramCameraCaptureView) {}
+  public ahlm(PtvTemplateAdapter paramPtvTemplateAdapter) {}
   
-  public void run()
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    this.a.a = new RenderBuffer(this.a.f, this.a.g, 33984);
-    this.a.k = this.a.a.a();
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new ahlo(this, paramPtvTemplateInfo, paramInt));
+    }
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new ahln(this, paramPtvTemplateInfo, paramBoolean));
+    }
   }
 }
 

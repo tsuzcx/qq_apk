@@ -1,59 +1,66 @@
-import android.graphics.drawable.Drawable;
-import android.util.Log;
-import com.tencent.component.media.gif.NewGifDrawable;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.image.drawable.AutoGifDrawable;
-import com.tencent.component.media.image.drawable.AutoGifDrawable.GifDownloadCallBackListener;
-import com.tencent.component.media.utils.ImageManagerLog;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.webview.swift.SwiftWebViewFragmentSupporter;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class phu
-  implements ImageLoader.ImageLoadListener
+  implements WXShareHelper.WXShareListener
 {
-  private phu(AutoGifDrawable paramAutoGifDrawable) {}
+  public phu(Share paramShare, String paramString) {}
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions)
+  public void a(BaseResp paramBaseResp)
   {
-    if (this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener != null) {
-      this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener.onImageCanceled(paramString, paramOptions);
-    }
-  }
-  
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions)
-  {
-    if (this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener != null) {
-      this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener.onImageFailed(paramString, paramOptions);
-    }
-  }
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
-  {
-    if ((paramDrawable != null) && ((paramDrawable instanceof NewGifDrawable))) {}
-    try
+    if ((this.jdField_a_of_type_ComTencentBizWebviewpluginShare.m == null) || (!this.jdField_a_of_type_ComTencentBizWebviewpluginShare.m.equals(paramBaseResp.transaction))) {}
+    int i;
+    String str1;
+    String str2;
+    String str3;
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable = ((NewGifDrawable)paramDrawable);
-      this.a.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setCallback(AutoGifDrawable.a(this.a));
-      if (this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener != null) {
-        this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener.onImageLoaded(paramString, this.a.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable, paramOptions);
-      }
       return;
+      BaseApplicationImpl.getContext();
+      switch (paramBaseResp.errCode)
+      {
+      case -2: 
+      case -1: 
+      default: 
+        QRUtils.a(1, 2131435319);
+        return;
+      }
+      QRUtils.a(2, 2131435318);
+      if ((this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a instanceof SwiftWebViewFragmentSupporter))
+      {
+        paramBaseResp = ((SwiftWebViewFragmentSupporter)this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a).b();
+        if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.e == 1) {}
+        for (i = 1009; paramBaseResp != null; i = 1004)
+        {
+          str1 = paramBaseResp.j;
+          str2 = paramBaseResp.i;
+          str3 = AccountDetailActivity.a(paramBaseResp.g);
+          String str4 = paramBaseResp.k;
+          if ((str4 == null) || ("".equals(str4))) {
+            break label200;
+          }
+          PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, str1, paramBaseResp.g, str3, false);
+          return;
+        }
+      }
     }
-    catch (NullPointerException paramString)
-    {
-      ImageManagerLog.e(AutoGifDrawable.a(), "catch an exception:" + Log.getStackTraceString(paramString));
+    label200:
+    if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.e == 1) {
+      i = 1003;
     }
-  }
-  
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions)
-  {
-    if (this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener != null) {
-      this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener.onImageProgress(paramString, paramFloat, paramOptions);
-    }
+    PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str2, str1, this.jdField_a_of_type_JavaLangString, str3, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     phu
  * JD-Core Version:    0.7.0.1
  */

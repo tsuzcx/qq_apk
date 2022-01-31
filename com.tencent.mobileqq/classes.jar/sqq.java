@@ -1,21 +1,44 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.OnGetPhotoWallListener;
-import com.tencent.widget.ListView.OnScrollChangeListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class sqq
-  implements ListView.OnScrollChangeListener
+  implements View.OnClickListener
 {
-  public sqq(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sqq(EditInfoActivity paramEditInfoActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if ((paramInt1 + paramInt2 != paramInt3) || (paramInt3 <= 0) || (this.a.b()) || (!NetworkUtil.d(this.a))) {}
-    while ((this.a.a == null) || (!this.a.a.a())) {
+    paramView = this.a;
+    if (!this.a.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.a.d();
+      if (this.a.getIntent().getBooleanExtra("key_need_hide_couser_when_emoj", false)) {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837626);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("键盘");
+      if ((!this.a.b) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
+        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      }
       return;
     }
-    this.a.a.a();
-    this.a.d(true);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844609);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("表情");
+    this.a.a();
   }
 }
 

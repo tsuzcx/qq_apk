@@ -1,66 +1,103 @@
-import android.app.Activity;
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.net.Uri;
-import android.provider.MediaStore.Images.Media;
-import android.provider.MediaStore.Video.Media;
-import com.dataline.util.file.MediaStoreUtil;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.transfile.filebrowser.MimeTypesTools;
-import java.io.File;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.UniformDownloader;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public final class adhr
+public class adhr
   implements Runnable
 {
-  public adhr(String paramString, Activity paramActivity, File paramFile) {}
+  public adhr(UniformDownloadMgr paramUniformDownloadMgr) {}
   
   public void run()
   {
-    try
+    ArrayList localArrayList = new ArrayList();
+    Object localObject4;
+    Object localObject5;
+    synchronized (UniformDownloadMgr.a(this.a))
     {
-      String str1 = FileManagerUtil.a(this.jdField_a_of_type_JavaLangString);
-      Uri localUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-      String str2 = MimeTypesTools.a(this.jdField_a_of_type_AndroidAppActivity, str1);
-      int i = MediaStoreUtil.a(this.jdField_a_of_type_JavaLangString);
-      ContentValues localContentValues = new ContentValues(7);
-      localContentValues.put("title", str1);
-      localContentValues.put("_display_name", this.jdField_a_of_type_JavaIoFile.getName());
-      localContentValues.put("date_modified", Long.valueOf(this.jdField_a_of_type_JavaIoFile.lastModified() / 1000L));
-      localContentValues.put("mime_type", str2);
-      localContentValues.put("_data", this.jdField_a_of_type_JavaLangString);
-      localContentValues.put("_size", Long.valueOf(this.jdField_a_of_type_JavaIoFile.length()));
-      int j = FileManagerUtil.a(str1);
-      if (j == 0)
+      if (UniformDownloadMgr.a(this.a).size() > 0)
       {
-        localContentValues.put("datetaken", Long.valueOf(System.currentTimeMillis()));
-        localContentValues.put("orientation", Integer.valueOf(i));
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidAppActivity.getContentResolver().insert(localUri, localContentValues);
-        FMToastUtil.b(2131428219);
-        return;
-        if (j == 2)
+        localObject4 = UniformDownloadMgr.a(this.a).entrySet().iterator();
+        while (((Iterator)localObject4).hasNext())
         {
-          long l = ShortVideoUtils.a(this.jdField_a_of_type_JavaLangString);
-          localContentValues.put("datetaken", Long.valueOf(System.currentTimeMillis()));
-          localContentValues.put("duration", Long.valueOf(l));
-          localUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+          localObject5 = (adic)((Map.Entry)((Iterator)localObject4).next()).getValue();
+          if ((((adic)localObject5).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader != null) && (8 == ((adic)localObject5).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.f()) && (2 == ((adic)localObject5).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.g())) {
+            localArrayList.add(localObject5);
+          }
         }
       }
-      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    ??? = localObject2.iterator();
+    Object localObject3;
+    while (((Iterator)???).hasNext())
     {
-      FMToastUtil.a("手机内存不足，保存本地失败。");
-      return;
+      localObject3 = (adic)((Iterator)???).next();
+      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> resumeRuningGenDownloadOfOldApp, url:[" + ((adic)localObject3).jdField_a_of_type_JavaLangString + "]");
+      ((adic)localObject3).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.a();
     }
-    catch (Exception localException)
+    if (UniformDownloadMgr.a(this.a))
     {
-      FMToastUtil.a(2131428217);
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot. start resume");
+      localObject3 = this.a.a();
+      this.a.d();
+      ??? = new HashMap();
+      if ((localObject3 != null) && (((Map)localObject3).size() > 0))
+      {
+        localObject3 = ((Map)localObject3).entrySet().iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          localObject5 = (Map.Entry)((Iterator)localObject3).next();
+          localObject4 = (String)((Map.Entry)localObject5).getKey();
+          localObject5 = (adid)((Map.Entry)localObject5).getValue();
+          if (localObject5 != null)
+          {
+            if (((adid)localObject5).jdField_a_of_type_Boolean)
+            {
+              ((Map)???).put(localObject4, localObject5);
+            }
+            else
+            {
+              QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[" + (String)localObject4 + "] nId:[" + ((adid)localObject5).jdField_a_of_type_Int + "] - 1");
+              UniformDownloadMgr.a(this.a, (String)localObject4, ((adid)localObject5).jdField_a_of_type_JavaLangString, ((adid)localObject5).jdField_a_of_type_Long, ((adid)localObject5).jdField_a_of_type_AndroidOsBundle, ((adid)localObject5).jdField_a_of_type_Int, true);
+            }
+          }
+          else {
+            QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] resumeRuningDownloadPreMobileQQReboot, value error. url:[" + (String)localObject4 + "] -1");
+          }
+        }
+      }
+      if (((Map)???).size() > 0)
+      {
+        ??? = ((Map)???).entrySet().iterator();
+        while (((Iterator)???).hasNext())
+        {
+          localObject4 = (Map.Entry)((Iterator)???).next();
+          localObject3 = (String)((Map.Entry)localObject4).getKey();
+          localObject4 = (adid)((Map.Entry)localObject4).getValue();
+          if (localObject4 != null)
+          {
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[" + (String)localObject3 + "] nId:[" + ((adid)localObject4).jdField_a_of_type_Int + "] - 2");
+            UniformDownloadMgr.a(this.a, (String)localObject3, ((adid)localObject4).jdField_a_of_type_JavaLangString, ((adid)localObject4).jdField_a_of_type_Long, ((adid)localObject4).jdField_a_of_type_AndroidOsBundle, ((adid)localObject4).jdField_a_of_type_Int, true);
+          }
+          else
+          {
+            QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] resumeRuningDownloadPreMobileQQReboot, value error. url:[" + (String)localObject3 + "] -2");
+          }
+        }
+      }
     }
+    else
+    {
+      QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot. not resume");
+      this.a.d();
+    }
+    UniformDownloadMgr.b(this.a);
   }
 }
 

@@ -1,19 +1,22 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.QQStoryNetReqUtils.RequestCallBack;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step.ErrorCallBack;
-import java.lang.ref.WeakReference;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.detail.model.SpannableStringUtils.ClickNickCallback;
 
 public final class nzj
-  implements Step.ErrorCallBack
+  extends ClickableSpan
 {
-  public nzj(WeakReference paramWeakReference) {}
+  public nzj(SpannableStringUtils.ClickNickCallback paramClickNickCallback, String paramString, int paramInt) {}
   
-  public void a(ErrorMessage paramErrorMessage)
+  public void onClick(View paramView)
   {
-    QQStoryNetReqUtils.RequestCallBack localRequestCallBack = (QQStoryNetReqUtils.RequestCallBack)this.a.get();
-    if (localRequestCallBack != null) {
-      localRequestCallBack.a(paramErrorMessage);
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelSpannableStringUtils$ClickNickCallback.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.getColor());
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

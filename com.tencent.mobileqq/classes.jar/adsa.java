@@ -1,18 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
 
 public class adsa
-  implements DialogInterface.OnClickListener
+  implements ArkAppView.Callback
 {
-  public adsa(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  public adsa(FlashChatPanel paramFlashChatPanel, MessageForArkFlashChat paramMessageForArkFlashChat1, MessageForArkFlashChat paramMessageForArkFlashChat2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
-    PresenceInterfaceImpl.a(this.a);
-    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
+    ArkDispatchTask.getInstance().post(new adsb(this));
   }
 }
 

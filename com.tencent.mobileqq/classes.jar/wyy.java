@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 
 public class wyy
-  implements Runnable
+  extends ContactBindObserver
 {
-  public wyy(SendWebPicActivity paramSendWebPicActivity, String paramString) {}
+  public wyy(BindNumberActivity paramBindNumberActivity) {}
   
-  public void run()
+  protected void b(boolean paramBoolean)
   {
-    SendWebPicActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendWebPicActivity).sendEmptyMessage(1002);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendWebPicActivity.c(this.jdField_a_of_type_JavaLangString);
+    super.b(paramBoolean);
+    if (paramBoolean) {
+      BindNumberActivity.a(this.a).sendEmptyMessage(3);
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindNumberActivity.a(this.a));
+      BindNumberActivity.a(this.a, null);
+      return;
+      this.a.b();
+      this.a.b(2131434471);
+    }
   }
 }
 

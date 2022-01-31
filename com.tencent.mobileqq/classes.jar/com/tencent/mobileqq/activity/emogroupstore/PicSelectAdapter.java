@@ -38,9 +38,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
-import wpk;
-import wpl;
-import wpm;
+import wuv;
+import wuw;
+import wux;
 
 public class PicSelectAdapter
   extends RecyclerView.Adapter
@@ -55,7 +55,7 @@ public class PicSelectAdapter
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private EmoticonGroupStoreFragment jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment;
   private ImgPreviewAdapter jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreImgPreviewAdapter;
-  private PicSelectAdapter.OnImgClickListener jdField_a_of_type_ComTencentMobileqqActivityEmogroupstorePicSelectAdapter$OnImgClickListener = new wpm(this);
+  private PicSelectAdapter.OnImgClickListener jdField_a_of_type_ComTencentMobileqqActivityEmogroupstorePicSelectAdapter$OnImgClickListener = new wux(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private EmoticonFromGroupDBManager jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupDBManager;
   private EmoticonFromGroupManager jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager;
@@ -76,15 +76,15 @@ public class PicSelectAdapter
     this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.getActivity();
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131372355));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372352));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372353));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131372365));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372362));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372363));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager = paramViewPager;
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setPageMargin(2);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreImgPreviewAdapter = new ImgPreviewAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreImgPreviewAdapter);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new wpk(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new wuv(this));
     this.jdField_b_of_type_AndroidWidgetButton = paramButton;
     this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupDBManager = ((EmoticonFromGroupDBManager)paramQQAppInterface.getManager(258));
     this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager = ((VasExtensionManager)paramQQAppInterface.getManager(234)).jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupManager;
@@ -152,9 +152,9 @@ public class PicSelectAdapter
       if (((EmoticonFromGroupEntity)localObject).status == 0) {
         break label186;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.jdField_a_of_type_JavaUtilList.remove(localObject);
+      this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.remove(localObject);
       ((EmoticonFromGroupEntity)localObject).status = -1;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         EmoticonFromGroupEntity localEmoticonFromGroupEntity = (EmoticonFromGroupEntity)((Iterator)localObject).next();
@@ -170,33 +170,33 @@ public class PicSelectAdapter
     }
     notifyDataSetChanged();
     label186:
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.jdField_a_of_type_JavaUtilList.size() > 0)
+    while (this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.size() > 0)
     {
       this.jdField_b_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFFFF"));
-      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841699));
+      this.jdField_b_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841726));
       this.jdField_b_of_type_AndroidWidgetButton.setEnabled(true);
       return;
       label242:
-      paramInt1 = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.jdField_a_of_type_JavaUtilList.size();
+      paramInt1 = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.size();
       if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingEmoticonFromGroupDBManager.jdField_b_of_type_Int <= paramInt1)
       {
         if (300 == FavEmoConstant.jdField_a_of_type_Int)
         {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131434496, 0).b(2131558448);
+          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131434512, 0).b(2131558448);
         }
         else if (144 == FavEmoConstant.jdField_a_of_type_Int)
         {
-          localObject = new wpl(this);
-          localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 0, "温馨提示", this.jdField_a_of_type_AndroidContentContext.getString(2131434497), "取消", "立即开通", (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+          localObject = new wuw(this);
+          localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 0, "温馨提示", this.jdField_a_of_type_AndroidContentContext.getString(2131434513), "取消", "立即开通", (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
           if (localObject != null) {
             ((QQCustomDialog)localObject).show();
           }
         }
       }
-      else if (20 > this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.jdField_a_of_type_JavaUtilList.size())
+      else if (20 > this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.size())
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.jdField_a_of_type_JavaUtilList.add(localObject);
-        ((EmoticonFromGroupEntity)localObject).status = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.jdField_a_of_type_JavaUtilList.size();
+        this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.add(localObject);
+        ((EmoticonFromGroupEntity)localObject).status = this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a.size();
         notifyDataSetChanged();
       }
       else
@@ -205,7 +205,7 @@ public class PicSelectAdapter
       }
     }
     this.jdField_b_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBFBFBF"));
-    this.jdField_b_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841700));
+    this.jdField_b_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841727));
     this.jdField_b_of_type_AndroidWidgetButton.setEnabled(false);
     return;
     label472:
@@ -251,15 +251,15 @@ public class PicSelectAdapter
       {
         this.jdField_a_of_type_AndroidWidgetButton.setText("已添加");
         this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBBBBBB"));
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841700));
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841727));
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       }
       if (!this.e.containsKey(Integer.valueOf(paramInt2))) {
         break label259;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.jdField_a_of_type_AndroidWidgetRelativeLayout != this.jdField_a_of_type_AndroidViewView.getParent())
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.titleRoot != this.jdField_a_of_type_AndroidViewView.getParent())
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.titleRoot.addView(this.jdField_a_of_type_AndroidViewView);
         this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreEmoticonGroupStoreFragment.a(false);
       }
       i = 0;
@@ -281,7 +281,7 @@ public class PicSelectAdapter
       break label135;
       this.jdField_a_of_type_AndroidWidgetButton.setText("添加到表情");
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFFFF"));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841699));
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841726));
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       break;
       label247:
@@ -297,13 +297,13 @@ public class PicSelectAdapter
     {
       this.jdField_a_of_type_AndroidWidgetButton.setText("已添加");
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFBBBBBB"));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841700));
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841727));
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setText("添加到表情");
     this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFFFF"));
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841699));
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841726));
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
   }
   
@@ -436,9 +436,9 @@ public class PicSelectAdapter
     default: 
       return null;
     case 0: 
-      return new PicSelectAdapter.DateItemViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970949, paramViewGroup, false));
+      return new PicSelectAdapter.DateItemViewHolder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970967, paramViewGroup, false));
     case 1: 
-      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970950, paramViewGroup, false);
+      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970968, paramViewGroup, false);
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramViewGroup.getLayoutParams();
       localLayoutParams.height = this.jdField_a_of_type_Int;
       paramViewGroup.setLayoutParams(localLayoutParams);
@@ -446,7 +446,7 @@ public class PicSelectAdapter
       paramViewGroup.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstorePicSelectAdapter$OnImgClickListener);
       return paramViewGroup;
     }
-    return new PicSelectAdapter.HintTxtViewholder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970953, paramViewGroup, false));
+    return new PicSelectAdapter.HintTxtViewholder(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970971, paramViewGroup, false));
   }
 }
 

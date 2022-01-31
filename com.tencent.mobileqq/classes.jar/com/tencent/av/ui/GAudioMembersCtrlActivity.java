@@ -27,13 +27,13 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
-import jui;
-import juj;
-import juk;
-import jul;
-import juq;
-import jur;
-import jus;
+import jwm;
+import jwn;
+import jwo;
+import jwp;
+import jwu;
+import jwv;
+import jww;
 
 public class GAudioMembersCtrlActivity
   extends BaseActivity
@@ -45,7 +45,7 @@ public class GAudioMembersCtrlActivity
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public VideoController a;
-  private GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jul(this);
+  private GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jwp(this);
   public VideoAppInterface a;
   public GAudioMemberListCtrl a;
   private PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
@@ -69,7 +69,7 @@ public class GAudioMembersCtrlActivity
   @TargetApi(14)
   private void d()
   {
-    Object localObject = (RelativeLayout)super.findViewById(2131362840);
+    Object localObject = (RelativeLayout)super.findViewById(2131362845);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       if (Build.VERSION.SDK_INT >= 14) {
@@ -77,19 +77,19 @@ public class GAudioMembersCtrlActivity
       }
       ((RelativeLayout)localObject).setPadding(0, ImmersiveUtils.a(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363381));
-    this.b = ((TextView)super.findViewById(2131363245));
-    this.c = ((TextView)super.findViewById(2131363428));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131365978));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365979));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363400));
+    this.b = ((TextView)super.findViewById(2131363262));
+    this.c = ((TextView)super.findViewById(2131363447));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)super.findViewById(2131365983));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365984));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    localObject = super.getLayoutInflater().inflate(2130969293, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
+    localObject = super.getLayoutInflater().inflate(2130969291, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.addHeaderView((View)localObject);
     this.b.setVisibility(8);
     this.c.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setText("发言管理");
     this.c.setText("关闭");
-    this.c.setOnClickListener(new jui(this));
+    this.c.setOnClickListener(new jwm(this));
   }
   
   private void e()
@@ -99,12 +99,12 @@ public class GAudioMembersCtrlActivity
     }
     b();
     ActionSheet localActionSheet = ActionSheet.c(this);
-    View localView = super.getLayoutInflater().inflate(2130969289, null);
-    TextView localTextView1 = (TextView)localView.findViewById(2131365976);
+    View localView = super.getLayoutInflater().inflate(2130969287, null);
+    TextView localTextView1 = (TextView)localView.findViewById(2131365981);
     localView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     localActionSheet.a(localView);
     localView = super.getLayoutInflater().inflate(2130968600, null);
-    TextView localTextView2 = (TextView)localView.findViewById(2131362811);
+    TextView localTextView2 = (TextView)localView.findViewById(2131362816);
     localView.setId(0);
     localView.setBackgroundDrawable(super.getResources().getDrawable(2130837531));
     if (this.jdField_a_of_type_ComTencentAvVideoController.a().V)
@@ -116,9 +116,9 @@ public class GAudioMembersCtrlActivity
     for (;;)
     {
       localActionSheet.a(localView);
-      localActionSheet.d(super.getResources().getString(2131433699));
-      localView.setOnClickListener(new juj(this, localActionSheet));
-      localActionSheet.setOnDismissListener(new juk(this));
+      localActionSheet.d(super.getResources().getString(2131433713));
+      localView.setOnClickListener(new jwn(this, localActionSheet));
+      localActionSheet.setOnDismissListener(new jwo(this));
       localActionSheet.setCanceledOnTouchOutside(true);
       this.jdField_a_of_type_AndroidAppDialog = localActionSheet;
       try
@@ -196,7 +196,7 @@ public class GAudioMembersCtrlActivity
       }
       return;
     }
-    super.runOnUiThread(new jur(this, paramInt1, paramLong, paramBoolean, paramInt2));
+    super.runOnUiThread(new jwv(this, paramInt1, paramLong, paramBoolean, paramInt2));
   }
   
   public void b()
@@ -229,9 +229,9 @@ public class GAudioMembersCtrlActivity
     if (QLog.isColorLevel()) {
       QLog.i("GAudioMembersCtrlActivity", 2, "GAudioMembersCtrlActivity doOnCreate start");
     }
-    super.setTheme(2131624738);
+    super.setTheme(2131624739);
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969291);
+    super.setContentView(2130969289);
     if (TextUtils.isEmpty(super.getIntent().getStringExtra("discussUin")))
     {
       finish();
@@ -253,7 +253,7 @@ public class GAudioMembersCtrlActivity
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvAppGAudioUIObserver);
     paramBundle = new IntentFilter();
     paramBundle.addAction("tencent.av.v2q.StopVideoChat");
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new jus(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new jww(this);
     super.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
     if (QLog.isColorLevel()) {
       QLog.i("GAudioMembersCtrlActivity", 2, "GAudioMembersCtrlActivity doOnCreate end , cost time : " + (System.currentTimeMillis() - l) + "ms");
@@ -310,7 +310,7 @@ public class GAudioMembersCtrlActivity
     super.doOnResume();
     if (this.jdField_a_of_type_JavaLangRunnable == null)
     {
-      this.jdField_a_of_type_JavaLangRunnable = new juq(this, null);
+      this.jdField_a_of_type_JavaLangRunnable = new jwu(this, null);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
     }
     a();
@@ -324,14 +324,14 @@ public class GAudioMembersCtrlActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365979) {
+    if (paramView.getId() == 2131365984) {
       e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.GAudioMembersCtrlActivity
  * JD-Core Version:    0.7.0.1
  */

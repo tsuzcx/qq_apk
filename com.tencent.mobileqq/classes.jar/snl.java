@@ -1,18 +1,28 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForceLogoutActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class snl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public snl(ForceLogoutActivity paramForceLogoutActivity) {}
+  public snl(Conversation paramConversation, Object paramObject) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+    if ((this.jdField_a_of_type_JavaLangObject instanceof String)) {}
+    for (;;)
+    {
+      try
+      {
+        i = Integer.parseInt((String)this.jdField_a_of_type_JavaLangObject);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "", "", "", "");
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+      int i = 0;
+    }
   }
 }
 

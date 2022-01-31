@@ -5,7 +5,7 @@ import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 import java.util.ArrayList;
-import wlu;
+import wre;
 
 public class TroopView$MyTroopObserver
   extends TroopObserver
@@ -50,11 +50,11 @@ public class TroopView$MyTroopObserver
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.postDelayed(new wlu(this), 1200L);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.postDelayed(new wre(this), 1200L);
       return;
       label79:
       this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-      this.a.b(2131434349);
+      this.a.b(2131434365);
     }
   }
   

@@ -1,49 +1,128 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
-import com.tencent.qphone.base.util.MD5;
-import java.io.File;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import mqq.app.MobileQQ;
 
 public class xal
-  implements Runnable
+  extends BaseAdapter
 {
-  public xal(PreloadImgManager paramPreloadImgManager, Set paramSet, String paramString1, String paramString2, AppInterface paramAppInterface, List paramList, String paramString3, Map paramMap, Bundle paramBundle) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private ArrayList jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.jdField_a_of_type_JavaUtilArrayList;
   
-  public void run()
+  private xal(NewStyleCountryActivity paramNewStyleCountryActivity) {}
+  
+  private int a(xaj paramxaj)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext())
+    if (paramxaj.a) {
+      return 0;
+    }
+    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.equals(""))) {
+      return 0;
+    }
+    String str2 = paramxaj.c;
+    String str3 = paramxaj.b;
+    String str1 = paramxaj.d;
+    paramxaj = str1;
+    if (str1 != null) {
+      paramxaj = str1.toLowerCase();
+    }
+    str1 = ChnToSpell.a(str3, 1);
+    String str4 = ChnToSpell.a(str3, 2);
+    if ((str2.equals(this.jdField_a_of_type_JavaLangString)) || (str3.equals(this.jdField_a_of_type_JavaLangString)) || (str1.equals(this.jdField_a_of_type_JavaLangString)) || (str4.equals(this.jdField_a_of_type_JavaLangString)) || ((paramxaj != null) && (paramxaj.equals(this.jdField_a_of_type_JavaLangString)))) {
+      return 3;
+    }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) == 0) || ((paramxaj != null) && (paramxaj.indexOf(this.jdField_a_of_type_JavaLangString) == 0))) {
+      return 2;
+    }
+    if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str3.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str1.indexOf(this.jdField_a_of_type_JavaLangString) > 0) || (str4.indexOf(this.jdField_a_of_type_JavaLangString) > 0)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public void a(String paramString)
+  {
+    int j = 0;
+    Object localObject = paramString.toLowerCase();
+    paramString = (String)localObject;
+    if (((String)localObject).equals("hk")) {
+      paramString = "xianggang";
+    }
+    localObject = paramString;
+    if (paramString.equals("uk")) {
+      localObject = "united kingdom";
+    }
+    int i;
+    label81:
+    xaj localxaj;
+    int k;
+    if (((String)localObject).startsWith(this.jdField_a_of_type_JavaLangString))
     {
-      String str1 = (String)localIterator.next();
-      if (!TextUtils.isEmpty(str1))
+      paramString = this.jdField_a_of_type_JavaUtilArrayList;
+      this.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localObject = new ArrayList(8);
+      paramString = paramString.iterator();
+      i = 0;
+      if (!paramString.hasNext()) {
+        break label181;
+      }
+      localxaj = (xaj)paramString.next();
+      k = a(localxaj);
+      if (k != 3) {
+        break label141;
+      }
+      ((ArrayList)localObject).add(j, localxaj);
+      j += 1;
+    }
+    for (;;)
+    {
+      break label81;
+      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.jdField_a_of_type_JavaUtilArrayList;
+      break;
+      label141:
+      if (k == 2)
       {
-        String str2 = MD5.toMD5(str1);
-        Object localObject2 = new File(this.jdField_a_of_type_JavaLangString, str2);
-        Object localObject1 = localObject2;
-        if (!((File)localObject2).exists()) {
-          localObject1 = new File(this.b, str2);
-        }
-        if (((File)localObject1).exists())
-        {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager;
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
-          if (PreloadImgManager.a((PreloadImgManager)localObject2, MobileQQ.getContext(), ((File)localObject1).getPath(), str1) != null) {}
-        }
-        else
-        {
-          this.jdField_a_of_type_JavaUtilList.add(str1);
-          localObject1 = new File(this.c, str2);
-          this.jdField_a_of_type_JavaUtilMap.put(str1, localObject1);
-          this.jdField_a_of_type_AndroidOsBundle.putString(str1, ((File)localObject1).getPath());
-        }
+        ((ArrayList)localObject).add(i + j, localxaj);
+        i += 1;
+      }
+      else if (k == 1)
+      {
+        ((ArrayList)localObject).add(localxaj);
       }
     }
+    label181:
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = NewStyleCountryActivity.a(paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.getLayoutInflater(), true);
+      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity);
+    }
+    NewStyleCountryActivity.a(localView, (xaj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    return localView;
   }
 }
 

@@ -1,17 +1,13 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.fragment.AIOEffectsCameraCaptureFragment.MediaCodecEditCallback;
-import com.tencent.mobileqq.richmedia.capture.fragment.QuickShootEffectsCameraCaptureFragment;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
 
 public class ahke
-  extends AIOEffectsCameraCaptureFragment.MediaCodecEditCallback
+  implements Runnable
 {
-  public ahke(QuickShootEffectsCameraCaptureFragment paramQuickShootEffectsCameraCaptureFragment, Activity paramActivity, Intent paramIntent) {}
+  public ahke(RedTouchManager paramRedTouchManager) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    RedTouchManager.a(this.a);
   }
 }
 

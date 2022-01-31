@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.Leba;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
 public class swx
-  implements Runnable
+  implements AdapterView.OnItemLongClickListener
 {
-  public swx(Leba paramLeba) {}
+  public swx(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Leba.b(this.a, true);
+    FriendProfileImageActivity.a(this.a);
+    return true;
   }
 }
 

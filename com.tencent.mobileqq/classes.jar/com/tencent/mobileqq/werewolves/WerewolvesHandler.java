@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.werewolves;
 
 import KQQ.ProfSmpInfoRes;
-import akry;
-import akrz;
-import aksa;
-import aksb;
-import aksc;
-import aksd;
+import akzp;
+import akzq;
+import akzr;
+import akzs;
+import akzt;
+import akzu;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -79,7 +79,7 @@ public class WerewolvesHandler
     this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(100);
     this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$UIHandler = new WerewolvesHandler.UIHandler();
     this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager = null;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aksd(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new akzu(this);
     this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getApp().getSharedPreferences("werewolves_sp", 0).getString("judgeUin", "");
     IntentFilter localIntentFilter = new IntentFilter("tencent.video.v2q.memberSpeaking");
     paramQQAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
@@ -87,7 +87,7 @@ public class WerewolvesHandler
   
   protected ProtoUtils.TroopProtocolObserver a(WerewolvesHandler.Callback paramCallback)
   {
-    return new aksb(this, paramCallback);
+    return new akzs(this, paramCallback);
   }
   
   public WerewolvesPluginManager a(String paramString)
@@ -225,13 +225,13 @@ public class WerewolvesHandler
       QLog.e("WerewolvesHandler", 2, "exitRoom");
     }
     oidb_0x8ed.ReqBody localReqBody = new oidb_0x8ed.ReqBody();
-    akrz localakrz = new akrz(this, paramCallback);
+    akzq localakzq = new akzq(this, paramCallback);
     try
     {
       long l = Long.parseLong(paramHotChatInfo.troopUin);
       localReqBody.uint64_room_id.set(l, true);
       localReqBody.rpt_uint64_uins.add(Long.valueOf(this.b.getLongAccountUin()));
-      ProtoUtils.a(this.b, b(new aksa(this, localakrz, paramHotChatInfo, l, paramInt2, paramInt1, paramCallback)), localReqBody.toByteArray(), "OidbSvc.0x8ed_2", 2285, 2, new Bundle(), 5000L);
+      ProtoUtils.a(this.b, b(new akzr(this, localakzq, paramHotChatInfo, l, paramInt2, paramInt1, paramCallback)), localReqBody.toByteArray(), "OidbSvc.0x8ed_2", 2285, 2, new Bundle(), 5000L);
       return;
     }
     catch (Exception paramHotChatInfo)
@@ -252,7 +252,7 @@ public class WerewolvesHandler
       long l = Long.parseLong(paramHotChatInfo.troopUin);
       localReqBody.uint64_room_id.set(l, true);
       localReqBody.rpt_uint64_uins.add(Long.valueOf(this.b.getLongAccountUin()));
-      ProtoUtils.a(this.b, b(new akry(this, paramCallback, paramHotChatInfo)), localReqBody.toByteArray(), "OidbSvc.0x8ed_2", 2285, 2, new Bundle(), 5000L);
+      ProtoUtils.a(this.b, b(new akzp(this, paramCallback, paramHotChatInfo)), localReqBody.toByteArray(), "OidbSvc.0x8ed_2", 2285, 2, new Bundle(), 5000L);
       GameRoomAVController.a().a(l);
       NearbySPUtil.a(this.b.getCurrentAccountUin(), "game_room_last_time", Long.valueOf(MessageCache.a()));
       try
@@ -447,7 +447,7 @@ public class WerewolvesHandler
   
   protected ProtoUtils.TroopProtocolObserver b(WerewolvesHandler.Callback paramCallback)
   {
-    return new aksc(this, paramCallback);
+    return new akzt(this, paramCallback);
   }
   
   public void b(int paramInt1, int paramInt2, WerewolvesHandler.Callback paramCallback)
@@ -489,7 +489,7 @@ public class WerewolvesHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHandler
  * JD-Core Version:    0.7.0.1
  */

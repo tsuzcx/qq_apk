@@ -32,12 +32,12 @@ public class PublicAccountHotPicPanel
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout = paramPanelIconLinearLayout;
     this.jdField_a_of_type_ComTencentWidgetXPanelContainer = paramXPanelContainer;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362727);
-    this.c = findViewById(2131362992);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362732);
+    this.c = findViewById(2131362997);
     this.b = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968640, null);
     this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131362990));
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131362991));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)findViewById(2131362995));
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab = ((HotPicTab)findViewById(2131362996));
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicTab.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a = 1008;
   }

@@ -266,7 +266,10 @@ public class QLog
       i = j;
       while (i < paramVarArgs.length)
       {
-        localStringBuilder.append(paramVarArgs[i].toString());
+        Object localObject = paramVarArgs[i];
+        if (localObject != null) {
+          localStringBuilder.append(localObject.toString());
+        }
         i += 1;
       }
     }

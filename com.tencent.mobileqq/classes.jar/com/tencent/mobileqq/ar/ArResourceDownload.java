@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import aacv;
+import aajm;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -46,7 +46,7 @@ public class ArResourceDownload
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aacv();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aajm();
   }
   
   public ArResourceDownload(AppInterface paramAppInterface, ArResourceManager paramArResourceManager)

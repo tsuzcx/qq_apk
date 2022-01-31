@@ -1,15 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class afey
-  implements Runnable
+public class afey
+  implements ActionSheet.OnButtonClickListener
 {
-  afey(afex paramafex, Card paramCard) {}
+  public afey(PlayOperationViewModel paramPlayOperationViewModel, String paramString1, String[] paramArrayOfString, String paramString2, Context paramContext, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_Afex.a).setOnClickListener(new afez(this));
+    NearbyMomentProtocol.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewViewmodelPlayOperationViewModel.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString[paramInt], this.b, new afez(this));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

@@ -1,101 +1,119 @@
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Rect;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qidian.controller.QidianHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.ArrayList;
+import mqq.manager.TicketManager;
 
 public class oyl
-  extends BaseAdapter
-  implements AbsListView.OnScrollListener
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public oyl(QRDisplayActivity paramQRDisplayActivity) {}
   
-  private oyl(MoveFileActivity paramMoveFileActivity) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void run()
   {
-    if (paramInt == 0)
+    int i = 0;
+    int k = (int)(20.0F * QRDisplayActivity.a(this.a));
+    int j = this.a.jdField_c_of_type_AndroidViewView.getWidth() - k * 2;
+    k = this.a.jdField_c_of_type_AndroidViewView.getHeight() - k * 2;
+    if ((j >= 540) && (k >= 740))
     {
-      QLog.e("IphoneTitleBarActivity", 4, "onScrollStateChanged=SCROLL_STATE_IDLE");
-      if (this.jdField_a_of_type_Int == this.b - 2)
+      this.a.jdField_d_of_type_Int = 540;
+      this.a.jdField_e_of_type_Int = 740;
+      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+        ThreadManager.post(new oym(this), 8, null, false);
+      }
+      if (this.a.jdField_a_of_type_AndroidOsBundle == null)
       {
-        if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
-          break label44;
-        }
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(true);
+        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("bkgRes", 0);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("nameClr", -16777216);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("tipsClr", -8947849);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("B", -16777216);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("W", 16777215);
+        this.a.jdField_a_of_type_AndroidOsBundle.putParcelable("qrloc", new Rect(45, 76, 495, 526));
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("head", 1);
       }
+      if (this.a.jdField_c_of_type_Int == 5) {
+        break label653;
+      }
+      if (this.a.jdField_a_of_type_ComGoogleZxingCommonBitMatrix == null) {
+        this.a.jdField_a_of_type_ComGoogleZxingCommonBitMatrix = this.a.a(this.a.jdField_c_of_type_JavaLangString, this.a.jdField_c_of_type_Int, -1);
+      }
+      if (this.a.jdField_a_of_type_ComGoogleZxingCommonBitMatrix == null) {
+        break label491;
+      }
+      this.a.f();
     }
-    label44:
-    do
+    for (;;)
     {
+      this.a.jdField_b_of_type_AndroidViewView.post(this.a.jdField_b_of_type_JavaLangRunnable);
       return;
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(false);
-    } while (TroopFileUtils.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a) == 0);
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a();
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
-  }
-  
-  public int getCount()
-  {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = paramView;
-    if (paramView == null)
-    {
-      paramViewGroup = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getLayoutInflater().inflate(2130969894, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity), false);
-      paramView = new oym(null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131368389));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131368388));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131368390));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (oym)paramViewGroup.getTag();
-    TroopFileInfo localTroopFileInfo = (TroopFileInfo)MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
-    if (localTroopFileInfo != null)
-    {
-      if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, paramInt)) {
-        break label162;
+      if (j * 740 < k * 540) {
+        this.a.jdField_d_of_type_Int = j;
       }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopFileInfo.c);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841323);
+      for (this.a.jdField_e_of_type_Int = ((int)(j / 540.0D * 740.0D));; this.a.jdField_e_of_type_Int = k)
+      {
+        localObject1 = this.a.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject1).width = this.a.jdField_d_of_type_Int;
+        ((ViewGroup.LayoutParams)localObject1).height = this.a.jdField_e_of_type_Int;
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        localObject1 = this.a.jdField_d_of_type_AndroidViewView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject1).width = this.a.jdField_d_of_type_Int;
+        ((ViewGroup.LayoutParams)localObject1).height = this.a.jdField_e_of_type_Int;
+        this.a.jdField_d_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        break;
+        this.a.jdField_d_of_type_Int = ((int)(k / 740.0D * 540.0D));
+      }
+      label491:
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QRDisplayActivity", 4, "qrcode url not valid");
+      }
+      Object localObject1 = this.a.getIntent();
+      if (this.a.jdField_c_of_type_Boolean)
+      {
+        localObject1 = ((Intent)localObject1).getStringExtra("groupOwner");
+        ((QidianHandler)this.a.app.a(85)).b(this.a.jdField_c_of_type_JavaLangString, (String)localObject1);
+        return;
+      }
+      Object localObject2 = (TicketManager)this.a.app.getManager(2);
+      String str1 = this.a.app.getAccount();
+      localObject2 = ((TicketManager)localObject2).getSkey(str1);
+      String str2 = ((Intent)localObject1).getStringExtra("uin");
+      i = ((Intent)localObject1).getIntExtra("type", 1);
+      QRUtils.a(this.a.app, this.a, str2, i, str1, (String)localObject2, new oyn(this, str2, i));
+      continue;
+      label653:
+      localObject1 = this.a.getSharedPreferences("qrcode", 0);
+      this.a.jdField_b_of_type_Long = ((SharedPreferences)localObject1).getLong("discussionvalidtime" + this.a.jdField_c_of_type_JavaLangString, 0L);
+      this.a.jdField_d_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("discussion" + this.a.jdField_c_of_type_JavaLangString, null);
+      this.a.jdField_e_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("discussionfullSig" + this.a.jdField_c_of_type_JavaLangString, null);
+      if (this.a.jdField_b_of_type_Long - System.currentTimeMillis() / 1000L > 0L) {
+        i = 1;
+      }
+      this.a.findViewById(2131367566).setOnClickListener(this.a);
+      if ((this.a.jdField_d_of_type_JavaLangString == null) || (this.a.jdField_e_of_type_JavaLangString == null) || (i == 0)) {
+        break label899;
+      }
+      ((TextView)this.a.findViewById(2131367565)).setText(this.a.jdField_d_of_type_JavaLangString);
+      this.a.jdField_a_of_type_ComGoogleZxingCommonBitMatrix = QRUtils.a(this.a.jdField_d_of_type_JavaLangString, -1);
+      this.a.f();
     }
-    while (paramInt == MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity))
-    {
-      paramView.b.setVisibility(0);
-      return paramViewGroup;
-      label162:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText("移出文件夹");
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841325);
+    label899:
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QRDisplayActivity", 4, "qrcode url not valid");
     }
-    paramView.b.setVisibility(4);
-    return paramViewGroup;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(Long.parseLong(this.a.jdField_c_of_type_JavaLangString), true);
   }
 }
 

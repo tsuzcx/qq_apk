@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.nearby;
 
-import aemn;
-import aemo;
-import aemp;
-import aemt;
-import aemu;
-import aemv;
-import aemw;
-import aemx;
+import aeuy;
+import aeuz;
+import aeva;
+import aeve;
+import aevf;
+import aevg;
+import aevh;
+import aevi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -62,7 +62,7 @@ public class NearbyProxy
   int jdField_a_of_type_Int = 0;
   ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener;
   ConditionSearchManager jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aemp(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aeva(this);
   public QQAppInterface a;
   public ShieldListObserver a;
   NearbyConfigUtil jdField_a_of_type_ComTencentMobileqqNearbyNearbyConfigUtil;
@@ -80,7 +80,7 @@ public class NearbyProxy
   public NearbyProxy(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new aemo(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppShieldListObserver = new aeuz(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getUIHandler();
     this.jdField_b_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
@@ -91,7 +91,7 @@ public class NearbyProxy
     if (paramQQAppInterface == null) {
       return;
     }
-    ThreadManager.post(new aemn(paramQQAppInterface), 5, null, false);
+    ThreadManager.post(new aeuy(paramQQAppInterface), 5, null, false);
   }
   
   public static void a(String paramString)
@@ -219,7 +219,7 @@ public class NearbyProxy
       if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(new aemt(this));
+        this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(new aeve(this));
       }
       localObject = this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(i, paramMessage, 200);
       if (localObject == null) {
@@ -292,7 +292,7 @@ public class NearbyProxy
     }
     localObject = str;
     if (TextUtils.isEmpty(str)) {
-      localObject = BaseApplication.getContext().getResources().getString(2131437711);
+      localObject = BaseApplication.getContext().getResources().getString(2131437731);
     }
     return localObject;
   }
@@ -308,7 +308,7 @@ public class NearbyProxy
     {
       localObject = str;
       if (str == null) {
-        localObject = BaseApplication.getContext().getResources().getString(2131437662);
+        localObject = BaseApplication.getContext().getResources().getString(2131437682);
       }
       return ((String)localObject).replace("%", paramString);
       DatingUtil.b("getFirstAIOTips", new Object[] { "datingConfig is null" });
@@ -332,9 +332,9 @@ public class NearbyProxy
       }
       return;
       NearbyProcessMonitor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 3);
-      aemw localaemw = new aemw(this, paramInt);
-      localaemw.a = true;
-      a(localaemw);
+      aevh localaevh = new aevh(this, paramInt);
+      localaevh.a = true;
+      a(localaevh);
     }
   }
   
@@ -356,11 +356,6 @@ public class NearbyProxy
     QLog.d("Q.hotChatDistance", 2, "NearbyProxy.checkIn,  NearbyProc is not running");
   }
   
-  public void a(int paramInt, String paramString)
-  {
-    a(4155, new Object[] { Integer.valueOf(paramInt), paramString });
-  }
-  
   public void a(int paramInt, Object... paramVarArgs)
   {
     int j = 0;
@@ -372,7 +367,7 @@ public class NearbyProxy
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         localObject = (NearbyProxyObserver)this.jdField_a_of_type_JavaUtilList.get(i);
-        this.jdField_a_of_type_MqqOsMqqHandler.post(new aemu(this, (NearbyProxyObserver)localObject, paramInt, paramVarArgs));
+        this.jdField_a_of_type_MqqOsMqqHandler.post(new aevf(this, (NearbyProxyObserver)localObject, paramInt, paramVarArgs));
         i += 1;
       }
       if (paramInt == 4124)
@@ -395,7 +390,7 @@ public class NearbyProxy
       while (i < this.jdField_b_of_type_JavaUtilList.size())
       {
         localObject = (NearbyProxyObserver)this.jdField_b_of_type_JavaUtilList.get(i);
-        this.jdField_b_of_type_MqqOsMqqHandler.post(new aemv(this, (NearbyProxyObserver)localObject, paramInt, paramVarArgs));
+        this.jdField_b_of_type_MqqOsMqqHandler.post(new aevg(this, (NearbyProxyObserver)localObject, paramInt, paramVarArgs));
         i += 1;
       }
       if (paramInt == 4124)
@@ -554,9 +549,9 @@ public class NearbyProxy
         return;
         label97:
         NearbyProcessMonitor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 4);
-        aemx localaemx = new aemx(this, paramAppointmentNotify);
-        localaemx.a = true;
-        a(localaemx);
+        aevi localaevi = new aevi(this, paramAppointmentNotify);
+        localaevi.a = true;
+        a(localaevi);
       }
       break;
     }
@@ -637,8 +632,8 @@ public class NearbyProxy
     //   255: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   258: bipush 70
     //   260: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   263: checkcast 669	com/tencent/mobileqq/dating/DatingProxyManager
-    //   266: invokevirtual 672	com/tencent/mobileqq/dating/DatingProxyManager:a	()Lcom/tencent/mobileqq/dating/StrangerHdHeadUrlFetcher;
+    //   263: checkcast 668	com/tencent/mobileqq/dating/DatingProxyManager
+    //   266: invokevirtual 671	com/tencent/mobileqq/dating/DatingProxyManager:a	()Lcom/tencent/mobileqq/dating/StrangerHdHeadUrlFetcher;
     //   269: aload_3
     //   270: iconst_0
     //   271: aaload
@@ -647,34 +642,34 @@ public class NearbyProxy
     //   276: iconst_1
     //   277: aaload
     //   278: checkcast 421	java/lang/Integer
-    //   281: invokevirtual 655	java/lang/Integer:intValue	()I
+    //   281: invokevirtual 654	java/lang/Integer:intValue	()I
     //   284: aload_3
     //   285: iconst_2
     //   286: aaload
     //   287: checkcast 156	java/lang/Boolean
-    //   290: invokevirtual 675	java/lang/Boolean:booleanValue	()Z
-    //   293: invokevirtual 680	com/tencent/mobileqq/dating/StrangerHdHeadUrlFetcher:a	(Ljava/lang/String;IZ)Ljava/lang/String;
+    //   290: invokevirtual 674	java/lang/Boolean:booleanValue	()Z
+    //   293: invokevirtual 679	com/tencent/mobileqq/dating/StrangerHdHeadUrlFetcher:a	(Ljava/lang/String;IZ)Ljava/lang/String;
     //   296: aastore
     //   297: areturn
     //   298: aload_0
     //   299: iconst_0
     //   300: aload_3
-    //   301: invokevirtual 682	com/tencent/mobileqq/nearby/NearbyProxy:a	(Z[Ljava/lang/Object;)V
+    //   301: invokevirtual 681	com/tencent/mobileqq/nearby/NearbyProxy:a	(Z[Ljava/lang/Object;)V
     //   304: aconst_null
     //   305: areturn
     //   306: aload_0
     //   307: iconst_1
     //   308: aload_3
-    //   309: invokevirtual 682	com/tencent/mobileqq/nearby/NearbyProxy:a	(Z[Ljava/lang/Object;)V
+    //   309: invokevirtual 681	com/tencent/mobileqq/nearby/NearbyProxy:a	(Z[Ljava/lang/Object;)V
     //   312: aconst_null
     //   313: areturn
-    //   314: new 684	aemm
+    //   314: new 683	aeux
     //   317: dup
     //   318: aload_0
-    //   319: invokespecial 685	aemm:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;)V
+    //   319: invokespecial 684	aeux:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;)V
     //   322: aconst_null
     //   323: iconst_1
-    //   324: invokestatic 689	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   324: invokestatic 688	com/tencent/mobileqq/app/ThreadManager:postImmediately	(Ljava/lang/Runnable;Lcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   327: aconst_null
     //   328: areturn
     //   329: aload_3
@@ -687,13 +682,13 @@ public class NearbyProxy
     //   340: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   343: bipush 35
     //   345: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   348: checkcast 691	com/tencent/mobileqq/redtouch/RedTouchManager
+    //   348: checkcast 690	com/tencent/mobileqq/redtouch/RedTouchManager
     //   351: aload_3
     //   352: iconst_0
     //   353: aaload
     //   354: checkcast 400	java/lang/String
-    //   357: invokevirtual 694	com/tencent/mobileqq/redtouch/RedTouchManager:a	(Ljava/lang/String;)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
-    //   360: invokevirtual 697	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:toByteArray	()[B
+    //   357: invokevirtual 693	com/tencent/mobileqq/redtouch/RedTouchManager:a	(Ljava/lang/String;)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
+    //   360: invokevirtual 696	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:toByteArray	()[B
     //   363: aastore
     //   364: areturn
     //   365: aload_3
@@ -706,13 +701,13 @@ public class NearbyProxy
     //   376: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   379: bipush 35
     //   381: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   384: checkcast 691	com/tencent/mobileqq/redtouch/RedTouchManager
+    //   384: checkcast 690	com/tencent/mobileqq/redtouch/RedTouchManager
     //   387: aload_3
     //   388: iconst_0
     //   389: aaload
     //   390: checkcast 421	java/lang/Integer
-    //   393: invokevirtual 655	java/lang/Integer:intValue	()I
-    //   396: invokevirtual 700	com/tencent/mobileqq/redtouch/RedTouchManager:a	(I)Z
+    //   393: invokevirtual 654	java/lang/Integer:intValue	()I
+    //   396: invokevirtual 699	com/tencent/mobileqq/redtouch/RedTouchManager:a	(I)Z
     //   399: invokestatic 160	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   402: aastore
     //   403: areturn
@@ -726,7 +721,7 @@ public class NearbyProxy
     //   416: iconst_5
     //   417: aaload
     //   418: checkcast 156	java/lang/Boolean
-    //   421: invokevirtual 675	java/lang/Boolean:booleanValue	()Z
+    //   421: invokevirtual 674	java/lang/Boolean:booleanValue	()Z
     //   424: istore 4
     //   426: aload_0
     //   427: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -734,12 +729,12 @@ public class NearbyProxy
     //   431: iconst_0
     //   432: aaload
     //   433: checkcast 421	java/lang/Integer
-    //   436: invokevirtual 655	java/lang/Integer:intValue	()I
+    //   436: invokevirtual 654	java/lang/Integer:intValue	()I
     //   439: aload_3
     //   440: iconst_1
     //   441: aaload
     //   442: checkcast 421	java/lang/Integer
-    //   445: invokevirtual 655	java/lang/Integer:intValue	()I
+    //   445: invokevirtual 654	java/lang/Integer:intValue	()I
     //   448: aload_3
     //   449: iconst_2
     //   450: aaload
@@ -752,8 +747,8 @@ public class NearbyProxy
     //   461: iconst_4
     //   462: aaload
     //   463: checkcast 156	java/lang/Boolean
-    //   466: invokevirtual 675	java/lang/Boolean:booleanValue	()Z
-    //   469: invokestatic 705	com/tencent/mobileqq/nearpeople/mytab/NearbyMineHelper:a	(Lcom/tencent/common/app/AppInterface;IILjava/lang/String;Ljava/lang/String;Z)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
+    //   466: invokevirtual 674	java/lang/Boolean:booleanValue	()Z
+    //   469: invokestatic 704	com/tencent/mobileqq/nearpeople/mytab/NearbyMineHelper:a	(Lcom/tencent/common/app/AppInterface;IILjava/lang/String;Ljava/lang/String;Z)Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo;
     //   472: astore_1
     //   473: iload 4
     //   475: ifeq -239 -> 236
@@ -762,7 +757,7 @@ public class NearbyProxy
     //   482: dup
     //   483: iconst_0
     //   484: aload_1
-    //   485: invokevirtual 697	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:toByteArray	()[B
+    //   485: invokevirtual 696	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$AppInfo:toByteArray	()[B
     //   488: aastore
     //   489: areturn
     //   490: aload_3
@@ -779,7 +774,7 @@ public class NearbyProxy
     //   507: aload_0
     //   508: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   511: aload_1
-    //   512: invokestatic 710	com/tencent/mobileqq/activity/recent/RecentUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Z
+    //   512: invokestatic 709	com/tencent/mobileqq/activity/recent/RecentUtil:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Z
     //   515: invokestatic 160	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   518: aastore
     //   519: areturn
@@ -799,19 +794,19 @@ public class NearbyProxy
     //   540: iconst_2
     //   541: aaload
     //   542: checkcast 421	java/lang/Integer
-    //   545: invokevirtual 655	java/lang/Integer:intValue	()I
+    //   545: invokevirtual 654	java/lang/Integer:intValue	()I
     //   548: istore_2
     //   549: aload_3
     //   550: iconst_3
     //   551: aaload
     //   552: checkcast 156	java/lang/Boolean
-    //   555: invokevirtual 675	java/lang/Boolean:booleanValue	()Z
+    //   555: invokevirtual 674	java/lang/Boolean:booleanValue	()Z
     //   558: istore 4
     //   560: aload_3
     //   561: iconst_4
     //   562: aaload
     //   563: checkcast 156	java/lang/Boolean
-    //   566: invokevirtual 675	java/lang/Boolean:booleanValue	()Z
+    //   566: invokevirtual 674	java/lang/Boolean:booleanValue	()Z
     //   569: istore 5
     //   571: aload_0
     //   572: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -820,7 +815,7 @@ public class NearbyProxy
     //   578: iload_2
     //   579: iload 4
     //   581: iload 5
-    //   583: invokestatic 715	com/tencent/mobileqq/app/message/AddMessageHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;IZZ)V
+    //   583: invokestatic 714	com/tencent/mobileqq/app/message/AddMessageHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;IZZ)V
     //   586: aconst_null
     //   587: areturn
     //   588: aload_3
@@ -839,14 +834,14 @@ public class NearbyProxy
     //   608: iconst_2
     //   609: aaload
     //   610: checkcast 421	java/lang/Integer
-    //   613: invokevirtual 655	java/lang/Integer:intValue	()I
+    //   613: invokevirtual 654	java/lang/Integer:intValue	()I
     //   616: istore_2
     //   617: aload_0
     //   618: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   621: aload_1
     //   622: aload 6
     //   624: iload_2
-    //   625: invokestatic 718	com/tencent/mobileqq/app/message/AddMessageHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;I)V
+    //   625: invokestatic 717	com/tencent/mobileqq/app/message/AddMessageHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;I)V
     //   628: aconst_null
     //   629: areturn
     //   630: aload_3
@@ -867,24 +862,24 @@ public class NearbyProxy
     //   653: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   656: aload_0
     //   657: getfield 56	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppMessageObserver	Lcom/tencent/mobileqq/app/MessageObserver;
-    //   660: invokevirtual 722	com/tencent/mobileqq/app/QQAppInterface:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
+    //   660: invokevirtual 721	com/tencent/mobileqq/app/QQAppInterface:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
     //   663: aload_0
     //   664: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   667: iconst_0
-    //   668: invokevirtual 725	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   671: checkcast 727	com/tencent/mobileqq/app/MessageHandler
+    //   668: invokevirtual 724	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   671: checkcast 726	com/tencent/mobileqq/app/MessageHandler
     //   674: aload_3
     //   675: iconst_0
     //   676: aaload
-    //   677: checkcast 521	java/lang/Long
-    //   680: invokevirtual 731	java/lang/Long:longValue	()J
+    //   677: checkcast 520	java/lang/Long
+    //   680: invokevirtual 730	java/lang/Long:longValue	()J
     //   683: aload_3
     //   684: iconst_1
     //   685: aaload
     //   686: checkcast 421	java/lang/Integer
-    //   689: invokevirtual 655	java/lang/Integer:intValue	()I
+    //   689: invokevirtual 654	java/lang/Integer:intValue	()I
     //   692: iconst_1
-    //   693: invokevirtual 734	com/tencent/mobileqq/app/MessageHandler:b	(JII)V
+    //   693: invokevirtual 733	com/tencent/mobileqq/app/MessageHandler:b	(JII)V
     //   696: iconst_1
     //   697: anewarray 4	java/lang/Object
     //   700: dup
@@ -911,18 +906,18 @@ public class NearbyProxy
     //   731: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   734: aload_0
     //   735: getfield 56	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppMessageObserver	Lcom/tencent/mobileqq/app/MessageObserver;
-    //   738: invokevirtual 722	com/tencent/mobileqq/app/QQAppInterface:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
+    //   738: invokevirtual 721	com/tencent/mobileqq/app/QQAppInterface:addObserver	(Lcom/tencent/mobileqq/app/BusinessObserver;)V
     //   741: aload_0
     //   742: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   745: iconst_0
-    //   746: invokevirtual 725	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   749: checkcast 727	com/tencent/mobileqq/app/MessageHandler
+    //   746: invokevirtual 724	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   749: checkcast 726	com/tencent/mobileqq/app/MessageHandler
     //   752: aload_3
     //   753: iconst_0
     //   754: aaload
     //   755: checkcast 400	java/lang/String
     //   758: iconst_1
-    //   759: invokevirtual 736	com/tencent/mobileqq/app/MessageHandler:b	(Ljava/lang/String;I)V
+    //   759: invokevirtual 735	com/tencent/mobileqq/app/MessageHandler:b	(Ljava/lang/String;I)V
     //   762: iconst_1
     //   763: anewarray 4	java/lang/Object
     //   766: dup
@@ -945,12 +940,12 @@ public class NearbyProxy
     //   791: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   794: bipush 15
     //   796: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   799: checkcast 738	com/tencent/mobileqq/managers/ShieldMsgManger
+    //   799: checkcast 737	com/tencent/mobileqq/managers/ShieldMsgManger
     //   802: aload_3
     //   803: iconst_0
     //   804: aaload
     //   805: checkcast 400	java/lang/String
-    //   808: invokevirtual 740	com/tencent/mobileqq/managers/ShieldMsgManger:a	(Ljava/lang/String;)Z
+    //   808: invokevirtual 739	com/tencent/mobileqq/managers/ShieldMsgManger:a	(Ljava/lang/String;)Z
     //   811: invokestatic 160	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   814: aastore
     //   815: areturn
@@ -972,16 +967,16 @@ public class NearbyProxy
     //   840: aload_3
     //   841: iconst_1
     //   842: aaload
-    //   843: checkcast 742	[B
-    //   846: checkcast 742	[B
+    //   843: checkcast 741	[B
+    //   846: checkcast 741	[B
     //   849: astore_1
-    //   850: new 539	tencent/im/oidb/cmd0x686/Oidb_0x686$CharmEvent
+    //   850: new 538	tencent/im/oidb/cmd0x686/Oidb_0x686$CharmEvent
     //   853: dup
-    //   854: invokespecial 743	tencent/im/oidb/cmd0x686/Oidb_0x686$CharmEvent:<init>	()V
+    //   854: invokespecial 742	tencent/im/oidb/cmd0x686/Oidb_0x686$CharmEvent:<init>	()V
     //   857: astore 6
     //   859: aload 6
     //   861: aload_1
-    //   862: invokevirtual 747	tencent/im/oidb/cmd0x686/Oidb_0x686$CharmEvent:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   862: invokevirtual 746	tencent/im/oidb/cmd0x686/Oidb_0x686$CharmEvent:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   865: pop
     //   866: aload_3
     //   867: iconst_2
@@ -990,23 +985,23 @@ public class NearbyProxy
     //   872: aload_3
     //   873: iconst_2
     //   874: aaload
-    //   875: checkcast 742	[B
-    //   878: checkcast 742	[B
+    //   875: checkcast 741	[B
+    //   878: checkcast 741	[B
     //   881: astore_3
-    //   882: new 549	tencent/im/oidb/cmd0x686/Oidb_0x686$NearbyCharmNotify
+    //   882: new 548	tencent/im/oidb/cmd0x686/Oidb_0x686$NearbyCharmNotify
     //   885: dup
-    //   886: invokespecial 748	tencent/im/oidb/cmd0x686/Oidb_0x686$NearbyCharmNotify:<init>	()V
+    //   886: invokespecial 747	tencent/im/oidb/cmd0x686/Oidb_0x686$NearbyCharmNotify:<init>	()V
     //   889: astore_1
     //   890: aload_1
     //   891: aload_3
-    //   892: invokevirtual 749	tencent/im/oidb/cmd0x686/Oidb_0x686$NearbyCharmNotify:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   892: invokevirtual 748	tencent/im/oidb/cmd0x686/Oidb_0x686$NearbyCharmNotify:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   895: pop
     //   896: aload_0
     //   897: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   900: aload 7
     //   902: aload 6
     //   904: aload_1
-    //   905: invokestatic 537	com/tencent/mobileqq/nearby/NearbyCardManager:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ltencent/im/oidb/cmd0x686/Oidb_0x686$CharmEvent;Ltencent/im/oidb/cmd0x686/Oidb_0x686$NearbyCharmNotify;)V
+    //   905: invokestatic 536	com/tencent/mobileqq/nearby/NearbyCardManager:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ltencent/im/oidb/cmd0x686/Oidb_0x686$CharmEvent;Ltencent/im/oidb/cmd0x686/Oidb_0x686$NearbyCharmNotify;)V
     //   908: aconst_null
     //   909: areturn
     //   910: astore_1
@@ -1024,27 +1019,27 @@ public class NearbyProxy
     //   929: aload_3
     //   930: iconst_0
     //   931: aaload
-    //   932: checkcast 742	[B
-    //   935: checkcast 742	[B
+    //   932: checkcast 741	[B
+    //   935: checkcast 741	[B
     //   938: astore_3
-    //   939: new 569	tencent/im/oidb/cmd0x9c7/cmd0x9c7$RspBody
+    //   939: new 568	tencent/im/oidb/cmd0x9c7/cmd0x9c7$RspBody
     //   942: dup
-    //   943: invokespecial 750	tencent/im/oidb/cmd0x9c7/cmd0x9c7$RspBody:<init>	()V
+    //   943: invokespecial 749	tencent/im/oidb/cmd0x9c7/cmd0x9c7$RspBody:<init>	()V
     //   946: astore_1
     //   947: aload_1
     //   948: aload_3
-    //   949: invokevirtual 751	tencent/im/oidb/cmd0x9c7/cmd0x9c7$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   949: invokevirtual 750	tencent/im/oidb/cmd0x9c7/cmd0x9c7$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   952: pop
     //   953: aload_0
     //   954: aload_1
-    //   955: invokevirtual 753	com/tencent/mobileqq/nearby/NearbyProxy:a	(Ltencent/im/oidb/cmd0x9c7/cmd0x9c7$RspBody;)V
+    //   955: invokevirtual 752	com/tencent/mobileqq/nearby/NearbyProxy:a	(Ltencent/im/oidb/cmd0x9c7/cmd0x9c7$RspBody;)V
     //   958: aconst_null
     //   959: areturn
     //   960: astore_3
     //   961: aconst_null
     //   962: astore_1
     //   963: aload_3
-    //   964: invokevirtual 756	java/lang/Exception:printStackTrace	()V
+    //   964: invokevirtual 755	java/lang/Exception:printStackTrace	()V
     //   967: goto -14 -> 953
     //   970: aload_3
     //   971: ifnull -735 -> 236
@@ -1055,19 +1050,19 @@ public class NearbyProxy
     //   980: aload_3
     //   981: iconst_0
     //   982: aaload
-    //   983: instanceof 758
+    //   983: instanceof 757
     //   986: ifeq -750 -> 236
     //   989: aload_3
     //   990: iconst_0
     //   991: aaload
-    //   992: checkcast 758	java/lang/Byte
-    //   995: invokevirtual 762	java/lang/Byte:byteValue	()B
+    //   992: checkcast 757	java/lang/Byte
+    //   995: invokevirtual 761	java/lang/Byte:byteValue	()B
     //   998: ifne +6 -> 1004
     //   1001: iconst_1
     //   1002: istore 4
     //   1004: aload_0
     //   1005: iload 4
-    //   1007: invokevirtual 764	com/tencent/mobileqq/nearby/NearbyProxy:a	(Z)V
+    //   1007: invokevirtual 763	com/tencent/mobileqq/nearby/NearbyProxy:a	(Z)V
     //   1010: aconst_null
     //   1011: areturn
     //   1012: aload_0
@@ -1075,7 +1070,7 @@ public class NearbyProxy
     //   1016: ifnull -780 -> 236
     //   1019: aload_0
     //   1020: getfield 355	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqNearbyNearbyConfigUtil	Lcom/tencent/mobileqq/nearby/NearbyConfigUtil;
-    //   1023: invokevirtual 766	com/tencent/mobileqq/nearby/NearbyConfigUtil:a	()V
+    //   1023: invokevirtual 765	com/tencent/mobileqq/nearby/NearbyConfigUtil:a	()V
     //   1026: aconst_null
     //   1027: areturn
     //   1028: aload_3
@@ -1087,70 +1082,70 @@ public class NearbyProxy
     //   1038: aload_3
     //   1039: iconst_0
     //   1040: aaload
-    //   1041: instanceof 742
+    //   1041: instanceof 741
     //   1044: ifeq -808 -> 236
     //   1047: aload_3
     //   1048: iconst_0
     //   1049: aaload
-    //   1050: checkcast 742	[B
-    //   1053: checkcast 742	[B
+    //   1050: checkcast 741	[B
+    //   1053: checkcast 741	[B
     //   1056: astore_3
     //   1057: aload_3
     //   1058: ifnull -822 -> 236
     //   1061: aload_3
     //   1062: arraylength
     //   1063: ifle -827 -> 236
-    //   1066: new 768	tencent/im/oidb/cmd0x8dd/oidb_0x8dd$SelfInfo
+    //   1066: new 767	tencent/im/oidb/cmd0x8dd/oidb_0x8dd$SelfInfo
     //   1069: dup
-    //   1070: invokespecial 769	tencent/im/oidb/cmd0x8dd/oidb_0x8dd$SelfInfo:<init>	()V
+    //   1070: invokespecial 768	tencent/im/oidb/cmd0x8dd/oidb_0x8dd$SelfInfo:<init>	()V
     //   1073: astore_1
     //   1074: aload_1
     //   1075: aload_3
-    //   1076: invokevirtual 770	tencent/im/oidb/cmd0x8dd/oidb_0x8dd$SelfInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   1076: invokevirtual 769	tencent/im/oidb/cmd0x8dd/oidb_0x8dd$SelfInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   1079: pop
     //   1080: aload_0
     //   1081: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1084: bipush 105
     //   1086: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1089: checkcast 534	com/tencent/mobileqq/nearby/NearbyCardManager
+    //   1089: checkcast 533	com/tencent/mobileqq/nearby/NearbyCardManager
     //   1092: astore_3
     //   1093: aload_3
     //   1094: ifnull -858 -> 236
     //   1097: aload_3
     //   1098: aload_1
-    //   1099: invokevirtual 773	com/tencent/mobileqq/nearby/NearbyCardManager:a	(Ltencent/im/oidb/cmd0x8dd/oidb_0x8dd$SelfInfo;)V
+    //   1099: invokevirtual 772	com/tencent/mobileqq/nearby/NearbyCardManager:a	(Ltencent/im/oidb/cmd0x8dd/oidb_0x8dd$SelfInfo;)V
     //   1102: aconst_null
     //   1103: areturn
     //   1104: astore_1
     //   1105: aload_1
-    //   1106: invokevirtual 756	java/lang/Exception:printStackTrace	()V
+    //   1106: invokevirtual 755	java/lang/Exception:printStackTrace	()V
     //   1109: aconst_null
     //   1110: areturn
     //   1111: aload_0
-    //   1112: getfield 775	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
+    //   1112: getfield 774	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
     //   1115: ifnonnull +19 -> 1134
     //   1118: aload_0
     //   1119: aload_0
     //   1120: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1123: bipush 58
     //   1125: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1128: checkcast 777	com/tencent/mobileqq/app/ConditionSearchManager
-    //   1131: putfield 775	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
+    //   1128: checkcast 776	com/tencent/mobileqq/app/ConditionSearchManager
+    //   1131: putfield 774	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
     //   1134: aload_0
-    //   1135: new 779	aemq
+    //   1135: new 778	aevb
     //   1138: dup
     //   1139: aload_0
-    //   1140: invokespecial 780	aemq:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;)V
-    //   1143: putfield 782	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener	Lcom/tencent/mobileqq/app/ConditionSearchManager$IConfigListener;
+    //   1140: invokespecial 779	aevb:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;)V
+    //   1143: putfield 781	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener	Lcom/tencent/mobileqq/app/ConditionSearchManager$IConfigListener;
     //   1146: aload_0
-    //   1147: getfield 775	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
+    //   1147: getfield 774	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
     //   1150: aload_0
-    //   1151: invokevirtual 785	com/tencent/mobileqq/app/ConditionSearchManager:a	(Ljava/lang/Object;)V
+    //   1151: invokevirtual 784	com/tencent/mobileqq/app/ConditionSearchManager:a	(Ljava/lang/Object;)V
     //   1154: aload_0
-    //   1155: getfield 775	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
+    //   1155: getfield 774	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
     //   1158: aload_0
-    //   1159: getfield 782	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener	Lcom/tencent/mobileqq/app/ConditionSearchManager$IConfigListener;
-    //   1162: invokevirtual 787	com/tencent/mobileqq/app/ConditionSearchManager:c	(Ljava/lang/Object;)V
+    //   1159: getfield 781	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener	Lcom/tencent/mobileqq/app/ConditionSearchManager$IConfigListener;
+    //   1162: invokevirtual 786	com/tencent/mobileqq/app/ConditionSearchManager:c	(Ljava/lang/Object;)V
     //   1165: aconst_null
     //   1166: areturn
     //   1167: aload_3
@@ -1165,44 +1160,44 @@ public class NearbyProxy
     //   1180: checkcast 400	java/lang/String
     //   1183: astore_1
     //   1184: aload_0
-    //   1185: getfield 775	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
+    //   1185: getfield 774	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
     //   1188: ifnull +25 -> 1213
     //   1191: iconst_1
     //   1192: anewarray 4	java/lang/Object
     //   1195: dup
     //   1196: iconst_0
     //   1197: aload_0
-    //   1198: getfield 775	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
+    //   1198: getfield 774	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
     //   1201: aload_1
-    //   1202: ldc_w 789
-    //   1205: invokevirtual 793	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   1208: invokevirtual 796	com/tencent/mobileqq/app/ConditionSearchManager:a	([Ljava/lang/String;)[Ljava/lang/String;
+    //   1202: ldc_w 788
+    //   1205: invokevirtual 792	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   1208: invokevirtual 795	com/tencent/mobileqq/app/ConditionSearchManager:a	([Ljava/lang/String;)[Ljava/lang/String;
     //   1211: aastore
     //   1212: areturn
     //   1213: aload_0
-    //   1214: getfield 775	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
+    //   1214: getfield 774	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
     //   1217: ifnull -981 -> 236
     //   1220: aload_0
-    //   1221: getfield 775	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
+    //   1221: getfield 774	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
     //   1224: aload_0
-    //   1225: invokevirtual 798	com/tencent/mobileqq/app/ConditionSearchManager:b	(Ljava/lang/Object;)V
+    //   1225: invokevirtual 797	com/tencent/mobileqq/app/ConditionSearchManager:b	(Ljava/lang/Object;)V
     //   1228: aload_0
-    //   1229: getfield 782	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener	Lcom/tencent/mobileqq/app/ConditionSearchManager$IConfigListener;
+    //   1229: getfield 781	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener	Lcom/tencent/mobileqq/app/ConditionSearchManager$IConfigListener;
     //   1232: ifnull -996 -> 236
     //   1235: aload_0
-    //   1236: getfield 775	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
+    //   1236: getfield 774	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager	Lcom/tencent/mobileqq/app/ConditionSearchManager;
     //   1239: aload_0
-    //   1240: getfield 782	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener	Lcom/tencent/mobileqq/app/ConditionSearchManager$IConfigListener;
-    //   1243: invokevirtual 800	com/tencent/mobileqq/app/ConditionSearchManager:d	(Ljava/lang/Object;)V
+    //   1240: getfield 781	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener	Lcom/tencent/mobileqq/app/ConditionSearchManager$IConfigListener;
+    //   1243: invokevirtual 799	com/tencent/mobileqq/app/ConditionSearchManager:d	(Ljava/lang/Object;)V
     //   1246: aconst_null
     //   1247: areturn
     //   1248: aload_0
     //   1249: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1252: bipush 105
     //   1254: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1257: checkcast 534	com/tencent/mobileqq/nearby/NearbyCardManager
+    //   1257: checkcast 533	com/tencent/mobileqq/nearby/NearbyCardManager
     //   1260: iconst_1
-    //   1261: putfield 801	com/tencent/mobileqq/nearby/NearbyCardManager:a	Z
+    //   1261: putfield 800	com/tencent/mobileqq/nearby/NearbyCardManager:a	Z
     //   1264: aconst_null
     //   1265: areturn
     //   1266: aload_3
@@ -1215,7 +1210,7 @@ public class NearbyProxy
     //   1278: iconst_0
     //   1279: aaload
     //   1280: checkcast 421	java/lang/Integer
-    //   1283: invokevirtual 655	java/lang/Integer:intValue	()I
+    //   1283: invokevirtual 654	java/lang/Integer:intValue	()I
     //   1286: istore_2
     //   1287: aload_3
     //   1288: iconst_1
@@ -1251,7 +1246,7 @@ public class NearbyProxy
     //   1336: aload 8
     //   1338: aload 9
     //   1340: aload_3
-    //   1341: invokestatic 806	com/tencent/biz/webviewplugin/ReportPlugin:a	(Landroid/content/Context;Lcom/tencent/mobileqq/app/QQAppInterface;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1341: invokestatic 805	com/tencent/biz/webviewplugin/ReportPlugin:a	(Landroid/content/Context;Lcom/tencent/mobileqq/app/QQAppInterface;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   1344: aconst_null
     //   1345: areturn
     //   1346: aload_3
@@ -1264,13 +1259,13 @@ public class NearbyProxy
     //   1357: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1360: sipush 159
     //   1363: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1366: checkcast 808	com/tencent/mobileqq/nearby/redtouch/LocalRedTouchManager
+    //   1366: checkcast 807	com/tencent/mobileqq/nearby/redtouch/LocalRedTouchManager
     //   1369: aload_3
     //   1370: iconst_0
     //   1371: aaload
     //   1372: checkcast 421	java/lang/Integer
-    //   1375: invokevirtual 655	java/lang/Integer:intValue	()I
-    //   1378: invokevirtual 811	com/tencent/mobileqq/nearby/redtouch/LocalRedTouchManager:a	(I)Lcom/tencent/mobileqq/nearby/redtouch/RedTouchItem;
+    //   1375: invokevirtual 654	java/lang/Integer:intValue	()I
+    //   1378: invokevirtual 810	com/tencent/mobileqq/nearby/redtouch/LocalRedTouchManager:a	(I)Lcom/tencent/mobileqq/nearby/redtouch/RedTouchItem;
     //   1381: astore_1
     //   1382: aload_1
     //   1383: ifnull -1147 -> 236
@@ -1279,70 +1274,70 @@ public class NearbyProxy
     //   1391: dup
     //   1392: iconst_0
     //   1393: aload_1
-    //   1394: getfield 816	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:taskId	I
+    //   1394: getfield 815	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:taskId	I
     //   1397: invokestatic 424	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1400: aastore
     //   1401: dup
     //   1402: iconst_1
     //   1403: aload_1
-    //   1404: getfield 819	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:curSeq	J
-    //   1407: invokestatic 524	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1404: getfield 818	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:curSeq	J
+    //   1407: invokestatic 523	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1410: aastore
     //   1411: dup
     //   1412: iconst_2
     //   1413: aload_1
-    //   1414: getfield 822	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:redtouchType	I
+    //   1414: getfield 821	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:redtouchType	I
     //   1417: invokestatic 424	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1420: aastore
     //   1421: dup
     //   1422: iconst_3
     //   1423: aload_1
-    //   1424: getfield 825	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:count	I
+    //   1424: getfield 824	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:count	I
     //   1427: invokestatic 424	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1430: aastore
     //   1431: dup
     //   1432: iconst_4
     //   1433: aload_1
-    //   1434: getfield 828	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:icon	Ljava/lang/String;
+    //   1434: getfield 827	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:icon	Ljava/lang/String;
     //   1437: aastore
     //   1438: dup
     //   1439: iconst_5
     //   1440: aload_1
-    //   1441: getfield 831	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:tips	Ljava/lang/String;
+    //   1441: getfield 830	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:tips	Ljava/lang/String;
     //   1444: aastore
     //   1445: dup
     //   1446: bipush 6
     //   1448: aload_1
-    //   1449: getfield 834	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:receiveTime	J
-    //   1452: invokestatic 524	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1449: getfield 833	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:receiveTime	J
+    //   1452: invokestatic 523	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1455: aastore
     //   1456: dup
     //   1457: bipush 7
     //   1459: aload_1
-    //   1460: getfield 837	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:validTimeRemained	I
+    //   1460: getfield 836	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:validTimeRemained	I
     //   1463: invokestatic 424	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1466: aastore
     //   1467: dup
     //   1468: bipush 8
     //   1470: aload_1
-    //   1471: getfield 840	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:unReadFlag	Z
+    //   1471: getfield 839	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:unReadFlag	Z
     //   1474: invokestatic 160	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   1477: aastore
     //   1478: dup
     //   1479: bipush 9
     //   1481: aload_1
-    //   1482: getfield 843	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:passThroughLevel	I
+    //   1482: getfield 842	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:passThroughLevel	I
     //   1485: invokestatic 424	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1488: aastore
     //   1489: dup
     //   1490: bipush 10
     //   1492: aload_1
-    //   1493: getfield 846	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:configVersion	Ljava/lang/String;
+    //   1493: getfield 845	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:configVersion	Ljava/lang/String;
     //   1496: aastore
     //   1497: dup
     //   1498: bipush 11
     //   1500: aload_1
-    //   1501: getfield 849	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:isClosed	Z
+    //   1501: getfield 848	com/tencent/mobileqq/nearby/redtouch/RedTouchItem:isClosed	Z
     //   1504: invokestatic 160	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   1507: aastore
     //   1508: areturn
@@ -1355,8 +1350,8 @@ public class NearbyProxy
     //   1519: aload_3
     //   1520: iconst_0
     //   1521: aaload
-    //   1522: checkcast 742	[B
-    //   1525: checkcast 742	[B
+    //   1522: checkcast 741	[B
+    //   1525: checkcast 741	[B
     //   1528: astore_1
     //   1529: aload_0
     //   1530: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -1364,12 +1359,12 @@ public class NearbyProxy
     //   1536: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
     //   1539: checkcast 300	com/tencent/mobileqq/avatar/dynamicavatar/DynamicAvatarManager
     //   1542: aload_1
-    //   1543: invokevirtual 852	com/tencent/mobileqq/avatar/dynamicavatar/DynamicAvatarManager:a	([B)V
+    //   1543: invokevirtual 851	com/tencent/mobileqq/avatar/dynamicavatar/DynamicAvatarManager:a	([B)V
     //   1546: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1549: ifeq -1313 -> 236
     //   1552: ldc_w 278
     //   1555: iconst_2
-    //   1556: ldc_w 854
+    //   1556: ldc_w 853
     //   1559: invokestatic 284	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1562: aconst_null
     //   1563: areturn
@@ -1384,21 +1379,21 @@ public class NearbyProxy
     //   1576: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1579: bipush 105
     //   1581: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1584: checkcast 534	com/tencent/mobileqq/nearby/NearbyCardManager
-    //   1587: getfield 857	com/tencent/mobileqq/nearby/NearbyCardManager:d	Ljava/util/concurrent/ConcurrentHashMap;
+    //   1584: checkcast 533	com/tencent/mobileqq/nearby/NearbyCardManager
+    //   1587: getfield 856	com/tencent/mobileqq/nearby/NearbyCardManager:d	Ljava/util/concurrent/ConcurrentHashMap;
     //   1590: aload_1
     //   1591: iconst_1
     //   1592: invokestatic 424	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1595: invokevirtual 863	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   1595: invokevirtual 862	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1598: pop
     //   1599: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1602: ifeq -1366 -> 236
-    //   1605: ldc_w 865
+    //   1605: ldc_w 864
     //   1608: iconst_2
     //   1609: new 102	java/lang/StringBuilder
     //   1612: dup
     //   1613: invokespecial 103	java/lang/StringBuilder:<init>	()V
-    //   1616: ldc_w 867
+    //   1616: ldc_w 866
     //   1619: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1622: aload_1
     //   1623: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1410,18 +1405,18 @@ public class NearbyProxy
     //   1637: ifeq +13 -> 1650
     //   1640: ldc_w 342
     //   1643: iconst_2
-    //   1644: ldc_w 869
+    //   1644: ldc_w 868
     //   1647: invokestatic 460	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1650: new 871	android/os/Handler
+    //   1650: new 870	android/os/Handler
     //   1653: dup
-    //   1654: invokestatic 877	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   1657: invokespecial 880	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   1660: new 882	aemr
+    //   1654: invokestatic 876	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   1657: invokespecial 879	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   1660: new 881	aevc
     //   1663: dup
     //   1664: aload_0
     //   1665: aload_1
-    //   1666: invokespecial 885	aemr:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;Landroid/content/Context;)V
-    //   1669: invokevirtual 886	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   1666: invokespecial 884	aevc:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;Landroid/content/Context;)V
+    //   1669: invokevirtual 885	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   1672: pop
     //   1673: aconst_null
     //   1674: areturn
@@ -1429,18 +1424,18 @@ public class NearbyProxy
     //   1678: ifeq +13 -> 1691
     //   1681: ldc_w 342
     //   1684: iconst_2
-    //   1685: ldc_w 888
+    //   1685: ldc_w 887
     //   1688: invokestatic 460	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1691: new 871	android/os/Handler
+    //   1691: new 870	android/os/Handler
     //   1694: dup
-    //   1695: invokestatic 877	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   1698: invokespecial 880	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   1701: new 890	aems
+    //   1695: invokestatic 876	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   1698: invokespecial 879	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   1701: new 889	aevd
     //   1704: dup
     //   1705: aload_0
     //   1706: aload_1
-    //   1707: invokespecial 891	aems:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;Landroid/content/Context;)V
-    //   1710: invokevirtual 886	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   1707: invokespecial 890	aevd:<init>	(Lcom/tencent/mobileqq/nearby/NearbyProxy;Landroid/content/Context;)V
+    //   1710: invokevirtual 885	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   1713: pop
     //   1714: aconst_null
     //   1715: areturn
@@ -1448,13 +1443,13 @@ public class NearbyProxy
     //   1719: ifeq +13 -> 1732
     //   1722: ldc_w 342
     //   1725: iconst_2
-    //   1726: ldc_w 893
+    //   1726: ldc_w 892
     //   1729: invokestatic 460	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1732: aload_0
     //   1733: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1736: bipush 50
     //   1738: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1741: checkcast 895	com/tencent/mobileqq/app/FriendsManager
+    //   1741: checkcast 894	com/tencent/mobileqq/app/FriendsManager
     //   1744: astore_1
     //   1745: aload_1
     //   1746: ifnonnull +24 -> 1770
@@ -1467,15 +1462,15 @@ public class NearbyProxy
     //   1759: dup
     //   1760: iconst_0
     //   1761: aload_1
-    //   1762: getfield 901	com/tencent/mobileqq/data/Card:shGender	S
-    //   1765: invokestatic 906	java/lang/Short:valueOf	(S)Ljava/lang/Short;
+    //   1762: getfield 900	com/tencent/mobileqq/data/Card:shGender	S
+    //   1765: invokestatic 905	java/lang/Short:valueOf	(S)Ljava/lang/Short;
     //   1768: aastore
     //   1769: areturn
     //   1770: aload_1
     //   1771: aload_0
     //   1772: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1775: invokevirtual 605	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   1778: invokevirtual 909	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
+    //   1775: invokevirtual 604	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1778: invokevirtual 908	com/tencent/mobileqq/app/FriendsManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Card;
     //   1781: astore_1
     //   1782: goto -31 -> 1751
     //   1785: aload_3
@@ -1487,10 +1482,10 @@ public class NearbyProxy
     //   1793: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1796: bipush 69
     //   1798: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1801: checkcast 911	com/tencent/biz/TroopRedpoint/TroopRedTouchManager
+    //   1801: checkcast 910	com/tencent/biz/TroopRedpoint/TroopRedTouchManager
     //   1804: astore_3
     //   1805: aload_1
-    //   1806: invokevirtual 655	java/lang/Integer:intValue	()I
+    //   1806: invokevirtual 654	java/lang/Integer:intValue	()I
     //   1809: tableswitch	default:+55 -> 1864, 1:+81->1890, 2:+89->1898, 3:+121->1930, 4:+105->1914, 5:+129->1938, 6:+73->1882, 7:+97->1906, 8:+113->1922, 9:+152->1961, 10:+160->1969
     //   1865: astore_1
     //   1866: aload_1
@@ -1500,54 +1495,54 @@ public class NearbyProxy
     //   1874: dup
     //   1875: iconst_0
     //   1876: aload_1
-    //   1877: invokevirtual 914	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:toByteArray	()[B
+    //   1877: invokevirtual 913	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:toByteArray	()[B
     //   1880: aastore
     //   1881: areturn
     //   1882: aload_3
-    //   1883: invokevirtual 918	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:g	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
+    //   1883: invokevirtual 917	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:g	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
     //   1886: astore_1
     //   1887: goto -21 -> 1866
     //   1890: aload_3
-    //   1891: invokevirtual 920	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:a	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
+    //   1891: invokevirtual 919	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:a	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
     //   1894: astore_1
     //   1895: goto -29 -> 1866
     //   1898: aload_3
-    //   1899: invokevirtual 922	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:b	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
+    //   1899: invokevirtual 921	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:b	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
     //   1902: astore_1
     //   1903: goto -37 -> 1866
     //   1906: aload_3
-    //   1907: invokevirtual 925	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:h	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
+    //   1907: invokevirtual 924	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:h	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
     //   1910: astore_1
     //   1911: goto -45 -> 1866
     //   1914: aload_3
-    //   1915: invokevirtual 927	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:d	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
+    //   1915: invokevirtual 926	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:d	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
     //   1918: astore_1
     //   1919: goto -53 -> 1866
     //   1922: aload_3
-    //   1923: invokevirtual 929	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:i	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
+    //   1923: invokevirtual 928	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:i	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
     //   1926: astore_1
     //   1927: goto -61 -> 1866
     //   1930: aload_3
-    //   1931: invokevirtual 931	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:c	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
+    //   1931: invokevirtual 930	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:c	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
     //   1934: astore_1
     //   1935: goto -69 -> 1866
     //   1938: aload_3
-    //   1939: invokevirtual 932	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:a	()Z
+    //   1939: invokevirtual 931	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:a	()Z
     //   1942: ifeq +14 -> 1956
-    //   1945: new 913	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo
+    //   1945: new 912	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo
     //   1948: dup
-    //   1949: invokespecial 933	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:<init>	()V
+    //   1949: invokespecial 932	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo:<init>	()V
     //   1952: astore_1
     //   1953: goto -87 -> 1866
     //   1956: aconst_null
     //   1957: astore_1
     //   1958: goto -92 -> 1866
     //   1961: aload_3
-    //   1962: invokevirtual 936	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:j	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
+    //   1962: invokevirtual 935	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:j	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
     //   1965: astore_1
     //   1966: goto -100 -> 1866
     //   1969: aload_3
-    //   1970: invokevirtual 939	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:f	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
+    //   1970: invokevirtual 938	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:f	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$RedTypeInfo;
     //   1973: astore_1
     //   1974: goto -108 -> 1866
     //   1977: aload_3
@@ -1559,10 +1554,10 @@ public class NearbyProxy
     //   1985: getfield 58	com/tencent/mobileqq/nearby/NearbyProxy:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   1988: bipush 69
     //   1990: invokevirtual 298	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1993: checkcast 911	com/tencent/biz/TroopRedpoint/TroopRedTouchManager
+    //   1993: checkcast 910	com/tencent/biz/TroopRedpoint/TroopRedTouchManager
     //   1996: aload_1
-    //   1997: invokevirtual 655	java/lang/Integer:intValue	()I
-    //   2000: invokevirtual 941	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:a	(I)V
+    //   1997: invokevirtual 654	java/lang/Integer:intValue	()I
+    //   2000: invokevirtual 940	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:a	(I)V
     //   2003: aconst_null
     //   2004: areturn
     //   2005: astore_3

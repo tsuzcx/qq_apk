@@ -1,43 +1,39 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.biz.anonymous.QQAnonymousDialog;
+import android.content.SharedPreferences;
+import android.os.SystemClock;
+import com.tencent.biz.AuthorizeConfig;
+import com.tencent.biz.authorize.FlatBuffersConfig;
+import com.tencent.biz.authorize.JsonConfig;
+import com.tencent.biz.flatbuffers.FlatBuffersParser;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class kkv
-  implements Handler.Callback
+  implements Runnable
 {
-  public kkv(QQAnonymousDialog paramQQAnonymousDialog) {}
+  public kkv(AuthorizeConfig paramAuthorizeConfig) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    int i;
-    if (paramMessage.what == 291) {
-      switch (this.a.jdField_a_of_type_Int)
-      {
-      default: 
-        i = 0;
-      }
-    }
-    for (;;)
+    long l = SystemClock.currentThreadTimeMillis();
+    if (l > AuthorizeConfig.jdField_a_of_type_Long + 10000L)
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(i));
-      paramMessage = this.a;
-      paramMessage.jdField_a_of_type_Int += 1;
-      if (this.a.jdField_a_of_type_Int == 4) {
-        this.a.jdField_a_of_type_Int = 0;
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(291, 1000L);
-      return false;
-      i = 2131430458;
-      continue;
-      i = 2131430459;
-      continue;
-      i = 2131430460;
-      continue;
-      i = 2131430461;
+      this.a.jdField_a_of_type_AndroidContentContext.getSharedPreferences("domainCmdRight", 4);
+      AuthorizeConfig.jdField_a_of_type_Long = l;
+    }
+    FlatBuffersParser.b();
+    l = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("lastUpdate", 0L);
+    if (l != AuthorizeConfig.jdField_b_of_type_Long)
+    {
+      AuthorizeConfig.jdField_b_of_type_Long = l;
+      this.a.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.b();
+      this.a.jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig.a();
+      this.a.i = null;
+      this.a.jdField_b_of_type_OrgJsonJSONObject = null;
+      this.a.jdField_c_of_type_OrgJsonJSONObject = null;
+      this.a.jdField_a_of_type_OrgJsonJSONObject = null;
+      this.a.jdField_c_of_type_OrgJsonJSONArray = null;
+      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.a.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     }
   }
 }

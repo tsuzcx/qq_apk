@@ -1,15 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.StoryImageDialog;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import dov.com.qq.im.setting.CaptureEntranceParams;
+import dov.com.tencent.mobileqq.richmedia.capture.util.JumpUtil;
 
-public class oqe
-  implements View.OnClickListener
+class oqe
+  implements Runnable
 {
-  public oqe(StoryImageDialog paramStoryImageDialog) {}
+  oqe(oqc paramoqc, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo, CaptureEntranceParams paramCaptureEntranceParams, Bundle paramBundle) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.dismiss();
+    JumpUtil.a(SlideShowPhotoListManager.a(this.jdField_a_of_type_Oqc.a), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, this.jdField_a_of_type_DovComQqImSettingCaptureEntranceParams, null, 7, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

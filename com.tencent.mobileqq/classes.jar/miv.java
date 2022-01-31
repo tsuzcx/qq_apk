@@ -1,13 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import java.util.Set;
 
-class miv
+public class miv
   implements Runnable
 {
-  miv(miu parammiu) {}
+  private boolean jdField_a_of_type_Boolean;
+  
+  public miv(VideoPreDownloadMgr paramVideoPreDownloadMgr, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
   public void run()
   {
-    ReadInJoyListViewGroup.b(this.a.a);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr) != null) {
+        VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr).add(VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr));
+      }
+      if (VideoPreDownloadMgr.a() != null) {
+        VideoPreDownloadMgr.a().add(VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr));
+      }
+    }
+    VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr, null);
+    VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr);
   }
 }
 

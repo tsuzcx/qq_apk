@@ -1,48 +1,22 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo;
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.OnProviderContainerTriggerLisener;
 
 public class ahob
-  implements HWEncodeListener
+  implements ProviderContainerView.OnProviderContainerTriggerLisener
 {
-  public ahob(MergeEditVideo paramMergeEditVideo, int[] paramArrayOfInt) {}
+  public ahob(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public void a() {}
-  
-  public void a(String arg1)
+  public void a()
   {
-    StoryReportor.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
-    synchronized (MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo))
-    {
-      MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo, true);
-      MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo).notifyAll();
-      return;
-    }
+    this.a.b = true;
+    this.a.l();
   }
   
-  public void a_(int paramInt, Throwable arg2)
+  public void b()
   {
-    String str;
-    if (??? != null) {
-      str = ???.getMessage();
-    }
-    for (;;)
-    {
-      StoryReportor.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
-      SLog.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
-      MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo, paramInt);
-      synchronized (MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo))
-      {
-        MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo, true);
-        MergeEditVideo.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecMergeEditVideo).notifyAll();
-        return;
-        str = "UNKNOWN ERROR";
-      }
-    }
+    this.a.b = false;
+    this.a.m();
   }
-  
-  public void b() {}
 }
 
 

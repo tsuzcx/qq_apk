@@ -1,37 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class spl
-  implements View.OnLongClickListener
+  extends FriendListObserver
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new spn(this);
-  DataTag jdField_a_of_type_ComTencentMobileqqProfileDataTag;
+  public spl(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public spl(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public boolean onLongClick(View paramView)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    if ((paramView == null) || (!(paramView.getTag() instanceof DataTag))) {
-      return false;
-    }
-    Object localObject = (DataTag)paramView.getTag();
-    switch (((DataTag)localObject).a)
+    if (paramBoolean)
     {
+      this.a.b();
+      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
     }
-    for (;;)
-    {
-      return true;
-      paramView.setSelected(true);
-      this.jdField_a_of_type_ComTencentMobileqqProfileDataTag = ((DataTag)localObject);
-      localObject = new QQCustomMenu();
-      ((QQCustomMenu)localObject).a(2131375573, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getString(2131435093), 2130838305);
-      BubbleContextMenu.a(paramView, (QQCustomMenu)localObject, this.jdField_a_of_type_AndroidViewView$OnClickListener, new spm(this, paramView));
+    while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) || (this.a.isFinishing())) {
+      return;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
+      {
+        paramString = ((FriendsManager)this.a.app.getManager(50)).c(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin + "");
+        if (paramString != null) {
+          this.a.d = paramString.name;
+        }
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("DiscussionInfoCardActivity", 2, "onUpdateFriendInfo get owner name failed");
   }
 }
 

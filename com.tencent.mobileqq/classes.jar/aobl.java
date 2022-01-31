@@ -1,14 +1,19 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+
 public class aobl
+  extends AnimatorListenerAdapter
 {
-  public long a;
-  public long b;
-  public long c;
+  public aobl(EditVideoButton paramEditVideoButton) {}
   
-  public aobl(long paramLong1, long paramLong2, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.c = paramInt;
+    EditVideoButton.b(this.a).setVisibility(8);
+    EditVideoButton.c(this.a).setVisibility(8);
+    EditVideoButton.d(this.a).setVisibility(8);
+    EditVideoButton.a(this.a, EditVideoButton.a(this.a));
   }
 }
 

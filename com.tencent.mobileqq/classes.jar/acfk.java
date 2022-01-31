@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonTabAdapter;
-import com.tencent.mobileqq.emoticonview.EmoticonTabAdapter.EmoticonTabItem;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class acfk
+class acfk
   implements Runnable
 {
-  public acfk(EmoticonTabAdapter paramEmoticonTabAdapter, EmoticonTabAdapter.EmoticonTabItem paramEmoticonTabItem) {}
+  acfk(acfj paramacfj, int paramInt) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("EmoticonTabAdapter", 2, "package lossY");
-    }
-    EmoticonManager localEmoticonManager = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonTabAdapter.a.getManager(13);
-    EmoticonPackage localEmoticonPackage = localEmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonTabAdapter$EmoticonTabItem.a);
-    if (localEmoticonPackage != null)
+    if (this.jdField_a_of_type_Int == 0)
     {
-      localEmoticonPackage.status = 0;
-      localEmoticonManager.a(localEmoticonPackage);
+      QQToast.a(this.jdField_a_of_type_Acfj.a, 2, "已取消关注", 1).a();
+      return;
     }
+    QQToast.a(this.jdField_a_of_type_Acfj.a, 1, "取消关注失败", 1).a();
   }
 }
 

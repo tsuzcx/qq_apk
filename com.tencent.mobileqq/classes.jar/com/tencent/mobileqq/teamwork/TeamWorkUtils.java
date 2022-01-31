@@ -14,7 +14,16 @@ import java.net.URL;
 
 public class TeamWorkUtils
 {
-  public static String a = ".doc|.docx|.xls|.xlsx|";
+  public static long a;
+  public static String a;
+  public static String b = "https://docs.qq.com/desktop/m/index.html?_wv=2";
+  public static String c = "https://docs.qq.com/desktop/favicon.ico";
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = ".doc|.docx|.xls|.xlsx|";
+    jdField_a_of_type_Long = 101458937L;
+  }
   
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
@@ -113,7 +122,7 @@ public class TeamWorkUtils
     {
       paramString1 = paramString1.toLowerCase();
       bool1 = bool2;
-      if (a.indexOf(paramString1) >= 0) {
+      if (jdField_a_of_type_JavaLangString.indexOf(paramString1) >= 0) {
         bool1 = true;
       }
     }
@@ -140,7 +149,7 @@ public class TeamWorkUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkUtils
  * JD-Core Version:    0.7.0.1
  */

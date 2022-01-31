@@ -1,20 +1,47 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.ImageViewTouchBase;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class akup
-  implements Runnable
+  implements TouchWebView.OnScrollChangedListener
 {
-  public akup(ImageViewTouchBase paramImageViewTouchBase, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void run()
+  public akup(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    long l = System.currentTimeMillis();
-    float f1 = Math.min(this.jdField_a_of_type_Float, (float)(l - this.jdField_a_of_type_Long));
-    float f2 = this.b;
-    float f3 = this.c;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.zoomTo(f2 + f3 * f1, this.d, this.e);
-    if (f1 < this.jdField_a_of_type_Float) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.mHandler.post(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwiftIphoneTitleBarUI", 2, "-->onScrollChanged:" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "," + paramInt4);
+    }
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+    for (paramInt1 = ImmersiveUtils.a(BaseApplicationImpl.getApplication());; paramInt1 = 0)
+    {
+      paramInt1 = paramInt1 + DisplayUtil.a(BaseApplicationImpl.getApplication(), 50.0F) + 180;
+      if (Math.abs(paramInt2 - this.jdField_a_of_type_Int) > 20) {
+        if (paramInt2 < paramInt1 / 3) {
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.q = true;
+        }
+      }
+      while (paramInt2 >= paramInt1 / 3) {
+        for (;;)
+        {
+          this.jdField_a_of_type_Int = paramInt2;
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.f();
+          return;
+          if (paramInt2 >= paramInt1) {
+            this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.q = false;
+          }
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.q = true;
+      this.jdField_a_of_type_Int = paramInt2;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.f();
+      return;
     }
   }
 }

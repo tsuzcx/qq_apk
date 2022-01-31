@@ -68,13 +68,13 @@ public abstract class FlowActivity
     }
     a(paramBundle);
     setContentView(2130968605);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131362843));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131362848));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       a(this.jdField_a_of_type_AndroidViewViewGroup);
     }
     paramBundle = a();
     if (paramBundle != null) {
-      paramBundle.a((ViewGroup)a(2131362842));
+      paramBundle.a((ViewGroup)a(2131362847));
     }
   }
   

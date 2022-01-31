@@ -1,27 +1,38 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.util.AuthorityUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class alho
   implements Runnable
 {
-  public alho(DownloadManager paramDownloadManager, boolean paramBoolean, String paramString) {}
+  public alho(AuthorityActivity paramAuthorityActivity, String paramString) {}
   
   public void run()
   {
+    Bitmap localBitmap3 = null;
     try
     {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().deleteDownloadTask(this.jdField_a_of_type_JavaLangString);
-        return;
+      Bitmap localBitmap1 = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.getResources(), 2130839147);
+      localBitmap3 = AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity, localBitmap1, 63, 63);
+      if (localBitmap1 != null) {
+        localBitmap1.recycle();
       }
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.runOnUiThread(new alhp(this, localBitmap3));
       return;
     }
-    catch (Exception localException)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "downloadSDKClient>>>", localException);
+      for (;;)
+      {
+        Bitmap localBitmap2 = localBitmap3;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("AuthorityActivity", 2, "initUI decodeResource has OutOfMemoryError!");
+          localBitmap2 = localBitmap3;
+        }
+      }
     }
   }
 }

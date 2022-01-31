@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import aidx;
+import aiir;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class ShortVideoJsApiPlugin
   extends WebViewPlugin
 {
-  public BroadcastReceiver a = new aidx(this);
+  public BroadcastReceiver a = new aiir(this);
   
   public ShortVideoJsApiPlugin()
   {

@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class rqa
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public rqa(BaseChatPie paramBaseChatPie) {}
+  public rqa(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    paramView = new Intent(this.a, FontSettingActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

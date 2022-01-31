@@ -1,25 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import android.app.Dialog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
-class ttv
-  implements DialogInterface.OnClickListener
+public class ttv
+  implements Runnable
 {
-  ttv(ttu paramttu, SubAccountBackProtocData paramSubAccountBackProtocData) {}
+  public ttv(RegisterBaseActivity paramRegisterBaseActivity, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if ((paramInt == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c)))
-    {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_Ttu.a, SubLoginActivity.class);
-      paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c);
-      paramDialogInterface.putExtra("fromWhere", this.jdField_a_of_type_Ttu.a.b);
-      this.jdField_a_of_type_Ttu.a.startActivity(paramDialogInterface);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a = new Dialog(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 2131624516);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.setContentView(2130968595);
+    ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.findViewById(2131362781)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.getString(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity.a.show();
   }
 }
 

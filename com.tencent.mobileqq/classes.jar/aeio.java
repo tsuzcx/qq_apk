@@ -1,16 +1,13 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
 
 public class aeio
-  implements QueryTask.Query
+  implements Runnable
 {
-  public aeio(EmoticonManager paramEmoticonManager) {}
+  public aeio(LebaWithFeeds paramLebaWithFeeds, boolean paramBoolean) {}
   
-  public EmoticonPackage a(Pair paramPair)
+  public void run()
   {
-    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    LebaWithFeeds.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaWithFeeds, this.jdField_a_of_type_Boolean);
   }
 }
 

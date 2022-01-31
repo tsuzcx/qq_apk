@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.app.TroopObserver;
+import mqq.os.MqqHandler;
 
 public class wbh
-  implements HWTroopUtils.OnHomeworkTroopIdentityCheckListener
+  extends TroopObserver
 {
-  public wbh(TroopChatPie paramTroopChatPie) {}
+  public wbh(NearbyChatPie paramNearbyChatPie) {}
   
-  public void a(int paramInt)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (!HWTroopUtils.a(paramInt)) {
-      this.a.bq();
-    }
-    if (this.a.a != null) {
-      this.a.a.c(HWTroopUtils.b(paramInt));
+    paramString = this.a;
+    if ((paramBoolean1) && (paramBoolean2)) {}
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      paramString.U = paramBoolean1;
+      NearbyChatPie.c(this.a).post(new wbi(this));
+      return;
     }
   }
 }

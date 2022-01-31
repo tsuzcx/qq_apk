@@ -1,17 +1,28 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ReadInJoyAccountActiveTips;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class amdm
-  implements View.OnTouchListener
+  implements View.OnFocusChangeListener
 {
-  public amdm(ReadInJoyAccountActiveTips paramReadInJoyAccountActiveTips) {}
+  public amdm(Login paramLogin) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.a.dismiss();
-    return false;
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
+    {
+      if (true == paramBoolean) {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
+      }
+      if (!paramBoolean) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 

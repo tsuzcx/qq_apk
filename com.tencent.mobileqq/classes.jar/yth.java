@@ -1,24 +1,50 @@
-import com.tencent.mobileqq.apollo.store.ApolloGuestsPresenter;
-import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
-import com.tencent.mobileqq.apollo.store.IApolloGuestsView;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.OnApolloViewListener;
+import com.tencent.mobileqq.apollo.task.ApolloActionManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class yth
-  implements ApolloResDownloader.OnApolloDownLoadListener
+  implements Runnable
 {
-  public yth(ApolloGuestsPresenter paramApolloGuestsPresenter) {}
+  private int jdField_a_of_type_Int;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public yth(ApolloTextureView paramApolloTextureView) {}
+  
+  public void a()
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_Int = ApolloTextureView.access$1101(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
+  }
+  
+  public void run()
+  {
+    Object localObject1;
+    if (this.jdField_a_of_type_Int == ApolloTextureView.access$201(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
+      ApolloTextureView.access$302(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, true);
+      ApolloTextureView.access$401(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, 2);
+      localObject1 = ApolloActionManager.a();
+      QLog.d("ApolloLock", 2, "checkForLongPress");
+      localObject1 = ((ApolloActionManager)localObject1).a();
+      ((ReentrantLock)localObject1).lock();
+    }
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mRender != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mRender.getSavaWrapper() != null))
+      {
+        String str = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mRender.getSavaWrapper().a(ApolloTextureView.access$500(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView), ApolloTextureView.access$601(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) - ApolloTextureView.access$701(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) - ApolloTextureView.access$800(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView));
+        if ((ApolloTextureView.access$900(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) >= 0) && (ApolloTextureView.access$1000(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) != null)) {
+          ApolloTextureView.access$1000(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView).onNotifyLongTouch(str);
+        }
+        QLog.d("ApolloTextureView", 2, "surfaceView longclick node = " + str);
       }
-      if (ApolloGuestsPresenter.a(this.a) != null) {
-        ApolloGuestsPresenter.a(this.a).e();
-      }
-      this.a.c();
+      return;
+    }
+    finally
+    {
+      ((ReentrantLock)localObject1).unlock();
     }
   }
 }

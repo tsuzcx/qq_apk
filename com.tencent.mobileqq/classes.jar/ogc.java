@@ -1,25 +1,13 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
 
-public class ogc
-  implements AbsListView.OnScrollListener
+class ogc
+  implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
+  ogc(ogb paramogb) {}
   
-  public ogc(EditVideoPoi paramEditVideoPoi) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void run()
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a.size() - 1)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.e();
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    this.a.a.c(false);
   }
 }
 

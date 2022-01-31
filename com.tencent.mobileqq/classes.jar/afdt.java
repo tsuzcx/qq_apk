@@ -1,13 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnInfoListener;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
 
-public class afdt
-  implements DialogInterface.OnClickListener
+class afdt
+  implements Runnable
 {
-  public afdt(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afdt(afds paramafds, int paramInt, Object paramObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    int i;
+    if (this.jdField_a_of_type_Afds.a.a != null)
+    {
+      i = this.jdField_a_of_type_Int;
+      if (this.jdField_a_of_type_Int != 21) {
+        break label58;
+      }
+      i = 2;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Afds.a.a.a(this.jdField_a_of_type_Afds.a, i, this.jdField_a_of_type_JavaLangObject);
+      return;
+      label58:
+      if (this.jdField_a_of_type_Int == 22) {
+        i = 3;
+      }
+    }
+  }
 }
 
 

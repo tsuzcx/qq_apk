@@ -1,21 +1,28 @@
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.CreateFakeVideoEvent;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.StoryVideoPublishStatusEvent;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.os.FileObserver;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.util.ScreenshotContentObserver;
+import com.tencent.biz.pubaccount.util.ScreenshotContentObserver.Listener;
+import com.tencent.qphone.base.util.QLog;
 
 public class nao
-  implements Runnable
+  extends FileObserver
 {
-  public nao(StoryVideoUploadManager paramStoryVideoUploadManager, StoryVideoTaskInfo paramStoryVideoTaskInfo, StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent) {}
-  
-  public void run()
+  public nao(ScreenshotContentObserver paramScreenshotContentObserver, String paramString1, int paramInt, String paramString2)
   {
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo });
-    Dispatchers.get().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadManager$StoryVideoPublishStatusEvent);
-    Dispatchers.get().dispatch(new StoryVideoUploadManager.CreateFakeVideoEvent());
+    super(paramString1, paramInt);
+  }
+  
+  public void onEvent(int paramInt, String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ScreenshotContentObserver", 2, "onEvent->time:" + System.currentTimeMillis() + ", path:" + paramString);
+    }
+    if ((TextUtils.isEmpty(paramString)) || (paramInt != 256)) {}
+    while ((paramString.equalsIgnoreCase(ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver))) || (paramString.contains("temp")) || (ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver) == null)) {
+      return;
+    }
+    ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver).a(null, this.jdField_a_of_type_JavaLangString + paramString, 1);
+    ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver, paramString);
   }
 }
 

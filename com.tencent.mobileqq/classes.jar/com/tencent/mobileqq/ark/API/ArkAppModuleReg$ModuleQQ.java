@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ark.API;
 
-import aaph;
-import aapi;
-import aapj;
-import aapk;
-import aapl;
-import aapm;
-import aapn;
-import aapo;
-import aapp;
-import aapr;
-import aaps;
-import aapt;
-import aapu;
-import aapv;
-import aaqb;
-import aaqh;
-import aaqi;
+import aawb;
+import aawc;
+import aawd;
+import aawe;
+import aawf;
+import aawg;
+import aawh;
+import aawi;
+import aawj;
+import aawl;
+import aawm;
+import aawn;
+import aawo;
+import aawp;
+import aawv;
+import aaxb;
+import aaxc;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -154,7 +154,7 @@ public class ArkAppModuleReg$ModuleQQ
       paramString.Reset();
       return;
       if (this.jdField_a_of_type_MqqObserverWtloginObserver == null) {
-        this.jdField_a_of_type_MqqObserverWtloginObserver = new aapp(this, paramLong1);
+        this.jdField_a_of_type_MqqObserverWtloginObserver = new aawj(this, paramLong1);
       }
       ((WtloginManager)((QQAppInterface)localObject2).getManager(1)).GetOpenKeyWithoutPasswd(paramString, paramLong2, paramLong3, this.jdField_a_of_type_MqqObserverWtloginObserver);
       return;
@@ -187,7 +187,7 @@ public class ArkAppModuleReg$ModuleQQ
       {
         str2 = ((Card)localObject).strNick;
         if (((Card)localObject).shGender == 0) {
-          str1 = BaseActivity.sTopActivity.getString(2131433941);
+          str1 = BaseActivity.sTopActivity.getString(2131433957);
         }
       }
     }
@@ -221,7 +221,7 @@ public class ArkAppModuleReg$ModuleQQ
         if (((Card)localObject).shGender != 1) {
           break label422;
         }
-        str1 = BaseActivity.sTopActivity.getString(2131433942);
+        str1 = BaseActivity.sTopActivity.getString(2131433958);
         break;
         paramString = (String)localObject;
         if (!QLog.isColorLevel()) {
@@ -373,7 +373,7 @@ public class ArkAppModuleReg$ModuleQQ
         if (!TextUtils.isEmpty(paramString))
         {
           if (paramArrayOfVariantWrapper.length <= 1) {
-            break label5018;
+            break label5020;
           }
           if (!paramArrayOfVariantWrapper[1].IsView()) {
             break label286;
@@ -411,7 +411,7 @@ public class ArkAppModuleReg$ModuleQQ
             }
           }
           if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {
-            break label5015;
+            break label5017;
           }
           for (;;)
           {
@@ -429,7 +429,7 @@ public class ArkAppModuleReg$ModuleQQ
                 {
                   localObject1 = localJSONObject.getString(str);
                   if (TextUtils.isEmpty((CharSequence)localObject1)) {
-                    break label5012;
+                    break label5014;
                   }
                   localObject2 = paramArrayOfVariantWrapper;
                   if (i != 0) {
@@ -437,7 +437,7 @@ public class ArkAppModuleReg$ModuleQQ
                   }
                   paramArrayOfVariantWrapper = (String)localObject2 + str + "=" + (String)localObject1;
                   i = 1;
-                  break label5026;
+                  break label5028;
                 }
                 if (!(localJSONObject.get(str) instanceof Number)) {
                   continue;
@@ -446,7 +446,7 @@ public class ArkAppModuleReg$ModuleQQ
                 continue;
               }
               if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {
-                break label5009;
+                break label5011;
               }
               if (paramString.indexOf("?", 0) != -1) {
                 continue;
@@ -573,7 +573,7 @@ public class ArkAppModuleReg$ModuleQQ
         paramArrayOfVariantWrapper = DeviceInfoUtil.d();
         paramString = paramArrayOfVariantWrapper;
         if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {
-          paramString = "7.6.3";
+          paramString = "7.6.8";
         }
         paramVariantWrapper.SetString(paramString);
         return true;
@@ -591,13 +591,9 @@ public class ArkAppModuleReg$ModuleQQ
         if (i == 1) {
           QLog.i("ArkApp.QQLog", j, "nil");
         }
-      }
-      label1519:
-      do
-      {
         for (;;)
         {
-          return false;
+          return true;
           if (i == 2)
           {
             if (paramString.GetBool()) {}
@@ -623,329 +619,335 @@ public class ArkAppModuleReg$ModuleQQ
             QLog.i("ArkApp.QQLog", j, "Unknown Object");
           }
         }
-        if (paramString.equals("GetNickName"))
+      }
+      if (paramString.equals("GetNickName"))
+      {
+        paramString = null;
+        localObject2 = ArkAppModuleReg.a();
+        if (localObject2 == null) {
+          return false;
+        }
+        if (paramArrayOfVariantWrapper != null)
         {
-          paramString = null;
-          localObject2 = ArkAppModuleReg.a();
-          if (localObject2 == null) {
-            return false;
+          l1 = paramArrayOfVariantWrapper.length;
+          if (l1 != 1L) {
+            break label1545;
           }
-          if (paramArrayOfVariantWrapper != null)
+          paramString = paramArrayOfVariantWrapper[0].GetString();
+        }
+        for (;;)
+        {
+          if (!TextUtils.isEmpty(paramString))
           {
-            l1 = paramArrayOfVariantWrapper.length;
-            if (l1 != 1L) {
-              break label1545;
+            localObject1 = null;
+            if (!TextUtils.isEmpty(ArkAppContainer.jdField_a_of_type_JavaLangString)) {
+              localObject1 = ContactUtils.g((QQAppInterface)localObject2, ArkAppContainer.jdField_a_of_type_JavaLangString, paramString);
             }
-            paramString = paramArrayOfVariantWrapper[0].GetString();
-          }
-          for (;;)
-          {
-            if (!TextUtils.isEmpty(paramString))
+            if (localObject1 != null)
             {
-              localObject1 = null;
-              if (!TextUtils.isEmpty(ArkAppContainer.jdField_a_of_type_JavaLangString)) {
-                localObject1 = ContactUtils.g((QQAppInterface)localObject2, ArkAppContainer.jdField_a_of_type_JavaLangString, paramString);
-              }
-              if (localObject1 != null)
-              {
-                paramArrayOfVariantWrapper = (ark.VariantWrapper[])localObject1;
-                if (!TextUtils.equals((CharSequence)localObject1, paramString)) {
-                  break label5004;
-                }
-              }
-              localObject1 = ContactUtils.q((QQAppInterface)localObject2, paramString);
               paramArrayOfVariantWrapper = (ark.VariantWrapper[])localObject1;
-              if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                break label5004;
-              }
-              paramString = ContactUtils.a((QQAppInterface)localObject2, paramString, 0);
-              paramVariantWrapper.SetString(paramString);
-              if (paramString != null) {
-                Log.d("ark.GetNickName ", paramString);
+              if (!TextUtils.equals((CharSequence)localObject1, paramString)) {
+                break label5006;
               }
             }
-            return true;
-            l1 = 0L;
-            break;
-            if (l1 == 0L) {
-              paramString = ((QQAppInterface)localObject2).getCurrentAccountUin();
+            localObject1 = ContactUtils.q((QQAppInterface)localObject2, paramString);
+            paramArrayOfVariantWrapper = (ark.VariantWrapper[])localObject1;
+            if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+              break label5006;
             }
+            paramString = ContactUtils.a((QQAppInterface)localObject2, paramString, 0);
+            label1519:
+            paramVariantWrapper.SetString(paramString);
+            if (paramString != null) {
+              Log.d("ark.GetNickName ", paramString);
+            }
+          }
+          return true;
+          l1 = 0L;
+          break;
+          label1545:
+          if (l1 == 0L) {
+            paramString = ((QQAppInterface)localObject2).getCurrentAccountUin();
           }
         }
-        if (paramString.equals("GetContainerInfo"))
+      }
+      if (paramString.equals("GetContainerInfo"))
+      {
+        paramArrayOfVariantWrapper = new HashMap();
+        if ((BaseActivity.sTopActivity instanceof FragmentActivity))
         {
-          paramArrayOfVariantWrapper = new HashMap();
-          if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+          paramString = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+          if (paramString != null)
           {
-            paramString = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+            paramString = paramString.a();
             if (paramString != null)
             {
-              paramString = paramString.a();
-              if (paramString != null)
+              localObject1 = paramString.a();
+              if (localObject1 != null)
               {
-                localObject1 = paramString.a();
-                if (localObject1 != null)
+                paramArrayOfVariantWrapper.put("ChatUIN", ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString);
+                paramString = String.format("%d", new Object[] { Integer.valueOf(-1) });
+                switch (((SessionInfo)localObject1).jdField_a_of_type_Int)
                 {
-                  paramArrayOfVariantWrapper.put("ChatUIN", ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString);
-                  paramString = String.format("%d", new Object[] { Integer.valueOf(-1) });
-                  switch (((SessionInfo)localObject1).jdField_a_of_type_Int)
-                  {
-                  }
                 }
               }
             }
           }
-          for (;;)
-          {
-            paramArrayOfVariantWrapper.put("ChatType", paramString);
-            paramVariantWrapper.SetMap(paramArrayOfVariantWrapper);
-            return true;
-            paramString = String.format("%d", new Object[] { Integer.valueOf(1) });
-            continue;
-            paramString = String.format("%d", new Object[] { Integer.valueOf(2) });
-            continue;
-            paramString = String.format("%d", new Object[] { Integer.valueOf(3) });
-            continue;
-            paramString = String.format("%d", new Object[] { Integer.valueOf(4) });
-            continue;
-            paramString = String.format("%d", new Object[] { Integer.valueOf(5) });
-            continue;
-            paramString = String.format("%d", new Object[] { Integer.valueOf(6) });
-          }
         }
-        if (paramString.equals("DataRequest"))
+        for (;;)
         {
-          paramString = ArkAppModuleReg.a();
-          if (paramString == null)
-          {
-            paramVariantWrapper.SetNull();
-            return true;
-          }
-          paramVariantWrapper.CreateObject("DataRequest", new ArkDataRequestObj(paramString));
+          paramArrayOfVariantWrapper.put("ChatType", paramString);
+          paramVariantWrapper.SetMap(paramArrayOfVariantWrapper);
+          return true;
+          paramString = String.format("%d", new Object[] { Integer.valueOf(1) });
+          continue;
+          paramString = String.format("%d", new Object[] { Integer.valueOf(2) });
+          continue;
+          paramString = String.format("%d", new Object[] { Integer.valueOf(3) });
+          continue;
+          paramString = String.format("%d", new Object[] { Integer.valueOf(4) });
+          continue;
+          paramString = String.format("%d", new Object[] { Integer.valueOf(5) });
+          continue;
+          paramString = String.format("%d", new Object[] { Integer.valueOf(6) });
+        }
+      }
+      if (paramString.equals("DataRequest"))
+      {
+        paramString = ArkAppModuleReg.a();
+        if (paramString == null)
+        {
+          paramVariantWrapper.SetNull();
           return true;
         }
-        if (paramString.equals("GetPerformance"))
+        paramVariantWrapper.CreateObject("DataRequest", new ArkDataRequestObj(paramString));
+        return true;
+      }
+      if (paramString.equals("GetPerformance"))
+      {
+        if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1)) {}
+        for (;;)
         {
-          if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1)) {}
-          for (;;)
+          paramVariantWrapper.SetNull();
+          return true;
+          paramString = paramArrayOfVariantWrapper[0].GetString();
+          if (!TextUtils.isEmpty(paramString))
           {
-            paramVariantWrapper.SetNull();
-            return true;
-            paramString = paramArrayOfVariantWrapper[0].GetString();
-            if (!TextUtils.isEmpty(paramString))
+            paramArrayOfVariantWrapper = ArkAioContainerWrapper.a(paramString);
+            if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.arkContainer == null))
             {
-              paramArrayOfVariantWrapper = ArkAioContainerWrapper.a(paramString);
-              if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.arkContainer == null))
-              {
-                ArkAppCenter.b("ArkApp", String.format("QQ.GetPerformance, arkAppMsg is null, viewID=%s", new Object[] { paramString }));
-              }
-              else
-              {
-                paramArrayOfVariantWrapper = paramArrayOfVariantWrapper.arkContainer.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$TimeRecord;
-                if (paramArrayOfVariantWrapper != null) {
-                  break;
-                }
-                ArkAppCenter.b("ArkApp", String.format("QQ.GetPerformance, timeRecord is null, viewID=%s", new Object[] { paramString }));
-              }
+              ArkAppCenter.b("ArkApp", String.format("QQ.GetPerformance, arkAppMsg is null, viewID=%s", new Object[] { paramString }));
             }
-          }
-          paramString = null;
-          for (;;)
-          {
-            try
+            else
             {
-              localObject1 = new JSONObject();
-              localObject2 = new JSONObject();
-              ((JSONObject)localObject1).put("Timing", localObject2);
-              ((JSONObject)localObject2).put("GetApplicationStart", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_Long);
-              ((JSONObject)localObject2).put("GetApplicationEnd", 0.01D + paramArrayOfVariantWrapper.b);
-              ((JSONObject)localObject2).put("FetchApplicationStart", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_Long);
-              ((JSONObject)localObject2).put("FetchApplicationEnd", 0.01D + paramArrayOfVariantWrapper.b);
-              ((JSONObject)localObject2).put("CreateViewStart", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_ComTencentArkArkViewModelBase$TimeRecord.beginOfCreateView);
-              ((JSONObject)localObject2).put("CreateViewEnd", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_ComTencentArkArkViewModelBase$TimeRecord.endOfCreateView);
-              ((JSONObject)localObject2).put("DisplayViewStart", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_ComTencentArkArkViewModelBase$TimeRecord.beginOfDisplyView);
-              ((JSONObject)localObject2).put("DisplayViewEnd", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_ComTencentArkArkViewModelBase$TimeRecord.endOfDisplyView);
-              localObject2 = new JSONObject();
-              ((JSONObject)localObject1).put("Navigation", localObject2);
-              if (!paramArrayOfVariantWrapper.jdField_a_of_type_Boolean) {
-                continue;
-              }
-              i = 1;
-              ((JSONObject)localObject2).put("FetchApplicationFromCache", i);
-              paramArrayOfVariantWrapper = ((JSONObject)localObject1).toString();
-              paramString = paramArrayOfVariantWrapper;
-            }
-            catch (Exception paramArrayOfVariantWrapper)
-            {
-              ArkAppCenter.b("ArkApp", String.format("QQ.GetPerformance, json exception, msg=%s", new Object[] { paramArrayOfVariantWrapper.getMessage() }));
-              continue;
-            }
-            if (TextUtils.isEmpty(paramString)) {
-              break;
-            }
-            paramVariantWrapper.SetTableAsJsonString(paramString);
-            return true;
-            i = 0;
-          }
-        }
-        if (paramString.equals("GetCurrentPosition"))
-        {
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (paramArrayOfVariantWrapper[0] == null) || (!paramArrayOfVariantWrapper[0].IsFunction())) {
-            return false;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("ArkApp", 2, String.format("GetCurrentPosition.app.%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
-          }
-          l1 = a(paramArrayOfVariantWrapper[0].Copy());
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.b(new aaph(this, l1));
-          return true;
-        }
-        if (paramString.equals("WatchPosition"))
-        {
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (paramArrayOfVariantWrapper[0] == null) || (!paramArrayOfVariantWrapper[0].IsFunction())) {
-            return false;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("ArkApp", 2, String.format("WatchPosition.app.%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
-          }
-          l1 = a(paramArrayOfVariantWrapper[0].Copy());
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.a(new aapr(this, l1));
-          return true;
-        }
-        if (paramString.equals("ClearWatch"))
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager == null) {
-            return false;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.b();
-          return true;
-        }
-        if (paramString.equals("GetCurrentAddress"))
-        {
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (paramArrayOfVariantWrapper[0] == null) || (!paramArrayOfVariantWrapper[0].IsFunction())) {
-            return false;
-          }
-          l1 = a(paramArrayOfVariantWrapper[0].Copy());
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.a(new aaps(this, l1));
-          return true;
-        }
-        if (paramString.equals("SendMessage"))
-        {
-          if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsArray())) {
-            return false;
-          }
-          paramVariantWrapper = paramArrayOfVariantWrapper[0].GetTableAsJsonString();
-          do
-          {
-            try
-            {
-              paramString = new JSONObject(paramVariantWrapper);
-              if ((paramArrayOfVariantWrapper.length <= 1) || (paramArrayOfVariantWrapper[1].GetType() != 2)) {
+              paramArrayOfVariantWrapper = paramArrayOfVariantWrapper.arkContainer.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$TimeRecord;
+              if (paramArrayOfVariantWrapper != null) {
                 break;
               }
-              bool = paramArrayOfVariantWrapper[1].GetBool();
-              if (paramString.has("light"))
+              ArkAppCenter.b("ArkApp", String.format("QQ.GetPerformance, timeRecord is null, viewID=%s", new Object[] { paramString }));
+            }
+          }
+        }
+        paramString = null;
+        for (;;)
+        {
+          try
+          {
+            localObject1 = new JSONObject();
+            localObject2 = new JSONObject();
+            ((JSONObject)localObject1).put("Timing", localObject2);
+            ((JSONObject)localObject2).put("GetApplicationStart", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_Long);
+            ((JSONObject)localObject2).put("GetApplicationEnd", 0.01D + paramArrayOfVariantWrapper.b);
+            ((JSONObject)localObject2).put("FetchApplicationStart", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_Long);
+            ((JSONObject)localObject2).put("FetchApplicationEnd", 0.01D + paramArrayOfVariantWrapper.b);
+            ((JSONObject)localObject2).put("CreateViewStart", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_ComTencentArkArkViewModelBase$TimeRecord.beginOfCreateView);
+            ((JSONObject)localObject2).put("CreateViewEnd", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_ComTencentArkArkViewModelBase$TimeRecord.endOfCreateView);
+            ((JSONObject)localObject2).put("DisplayViewStart", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_ComTencentArkArkViewModelBase$TimeRecord.beginOfDisplyView);
+            ((JSONObject)localObject2).put("DisplayViewEnd", 0.01D + paramArrayOfVariantWrapper.jdField_a_of_type_ComTencentArkArkViewModelBase$TimeRecord.endOfDisplyView);
+            localObject2 = new JSONObject();
+            ((JSONObject)localObject1).put("Navigation", localObject2);
+            if (!paramArrayOfVariantWrapper.jdField_a_of_type_Boolean) {
+              continue;
+            }
+            i = 1;
+            ((JSONObject)localObject2).put("FetchApplicationFromCache", i);
+            paramArrayOfVariantWrapper = ((JSONObject)localObject1).toString();
+            paramString = paramArrayOfVariantWrapper;
+          }
+          catch (Exception paramArrayOfVariantWrapper)
+          {
+            ArkAppCenter.b("ArkApp", String.format("QQ.GetPerformance, json exception, msg=%s", new Object[] { paramArrayOfVariantWrapper.getMessage() }));
+            continue;
+          }
+          if (TextUtils.isEmpty(paramString)) {
+            break;
+          }
+          paramVariantWrapper.SetTableAsJsonString(paramString);
+          return true;
+          i = 0;
+        }
+      }
+      if (paramString.equals("GetCurrentPosition"))
+      {
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (paramArrayOfVariantWrapper[0] == null) || (!paramArrayOfVariantWrapper[0].IsFunction())) {
+          return false;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("ArkApp", 2, String.format("GetCurrentPosition.app.%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
+        }
+        l1 = a(paramArrayOfVariantWrapper[0].Copy());
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.b(new aawb(this, l1));
+        return true;
+      }
+      if (paramString.equals("WatchPosition"))
+      {
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (paramArrayOfVariantWrapper[0] == null) || (!paramArrayOfVariantWrapper[0].IsFunction())) {
+          return false;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("ArkApp", 2, String.format("WatchPosition.app.%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
+        }
+        l1 = a(paramArrayOfVariantWrapper[0].Copy());
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.a(new aawl(this, l1));
+        return true;
+      }
+      if (paramString.equals("ClearWatch"))
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager == null) {
+          return false;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.b();
+        return true;
+      }
+      if (paramString.equals("GetCurrentAddress"))
+      {
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (paramArrayOfVariantWrapper[0] == null) || (!paramArrayOfVariantWrapper[0].IsFunction())) {
+          return false;
+        }
+        l1 = a(paramArrayOfVariantWrapper[0].Copy());
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.a(new aawm(this, l1));
+        return true;
+      }
+      if (paramString.equals("SendMessage"))
+      {
+        if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsArray())) {
+          return false;
+        }
+        paramVariantWrapper = paramArrayOfVariantWrapper[0].GetTableAsJsonString();
+        label2702:
+        do
+        {
+          try
+          {
+            paramString = new JSONObject(paramVariantWrapper);
+            if ((paramArrayOfVariantWrapper.length <= 1) || (paramArrayOfVariantWrapper[1].GetType() != 2)) {
+              break;
+            }
+            bool = paramArrayOfVariantWrapper[1].GetBool();
+            if (paramString.has("light"))
+            {
+              localObject1 = new ArkAppMessage();
+              ((ArkAppMessage)localObject1).appMinVersion = "0.0.0.1";
+              paramString = paramString.getJSONObject("light");
+              ((ArkAppMessage)localObject1).appName = paramString.getString("Application");
+              if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appName)) {
+                return false;
+              }
+              ((ArkAppMessage)localObject1).appView = paramString.getString("View");
+              if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appView)) {
+                return false;
+              }
+              paramArrayOfVariantWrapper = ArkAppCenter.a(((ArkAppMessage)localObject1).appName, ((ArkAppMessage)localObject1).appMinVersion);
+              if (paramArrayOfVariantWrapper != null)
               {
-                localObject1 = new ArkAppMessage();
-                ((ArkAppMessage)localObject1).appMinVersion = "0.0.0.1";
-                paramString = paramString.getJSONObject("light");
-                ((ArkAppMessage)localObject1).appName = paramString.getString("Application");
-                if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appName)) {
-                  return false;
-                }
-                ((ArkAppMessage)localObject1).appView = paramString.getString("View");
-                if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appView)) {
-                  return false;
-                }
-                paramArrayOfVariantWrapper = ArkAppCenter.a(((ArkAppMessage)localObject1).appName, ((ArkAppMessage)localObject1).appMinVersion);
-                if (paramArrayOfVariantWrapper != null)
+                ((ArkAppMessage)localObject1).appDesc = ((String)paramArrayOfVariantWrapper.get("desc"));
+                ((ArkAppMessage)localObject1).appMinVersion = ((String)paramArrayOfVariantWrapper.get("version"));
+              }
+              if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appDesc)) {
+                ((ArkAppMessage)localObject1).appDesc = ((ArkAppMessage)localObject1).appName;
+              }
+              ((ArkAppMessage)localObject1).promptText = paramString.optString("Prompt");
+              if (TextUtils.isEmpty(((ArkAppMessage)localObject1).promptText)) {
+                ((ArkAppMessage)localObject1).promptText = String.format("[应用]%s", new Object[] { ((ArkAppMessage)localObject1).appDesc });
+              }
+              ((ArkAppMessage)localObject1).metaList = paramString.getJSONObject("MetaData").toString();
+              paramArrayOfVariantWrapper = paramString.optJSONObject("Config");
+              paramString = paramArrayOfVariantWrapper;
+              if (paramArrayOfVariantWrapper == null) {
+                paramString = new JSONObject();
+              }
+              paramString.put("forward", 1);
+              ((ArkAppMessage)localObject1).config = paramString.toString();
+              if (bool)
+              {
+                if ((BaseActivity.sTopActivity instanceof FragmentActivity))
                 {
-                  ((ArkAppMessage)localObject1).appDesc = ((String)paramArrayOfVariantWrapper.get("desc"));
-                  ((ArkAppMessage)localObject1).appMinVersion = ((String)paramArrayOfVariantWrapper.get("version"));
-                }
-                if (TextUtils.isEmpty(((ArkAppMessage)localObject1).appDesc)) {
-                  ((ArkAppMessage)localObject1).appDesc = ((ArkAppMessage)localObject1).appName;
-                }
-                ((ArkAppMessage)localObject1).promptText = paramString.optString("Prompt");
-                if (TextUtils.isEmpty(((ArkAppMessage)localObject1).promptText)) {
-                  ((ArkAppMessage)localObject1).promptText = String.format("[应用]%s", new Object[] { ((ArkAppMessage)localObject1).appDesc });
-                }
-                ((ArkAppMessage)localObject1).metaList = paramString.getJSONObject("MetaData").toString();
-                paramArrayOfVariantWrapper = paramString.optJSONObject("Config");
-                paramString = paramArrayOfVariantWrapper;
-                if (paramArrayOfVariantWrapper == null) {
-                  paramString = new JSONObject();
-                }
-                paramString.put("forward", 1);
-                ((ArkAppMessage)localObject1).config = paramString.toString();
-                if (bool)
-                {
-                  if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+                  paramString = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+                  if (paramString != null)
                   {
-                    paramString = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+                    paramString = paramString.a();
                     if (paramString != null)
                     {
                       paramString = paramString.a();
                       if (paramString != null)
                       {
-                        paramString = paramString.a();
-                        if (paramString != null)
-                        {
-                          ChatActivityFacade.b(ArkAppModuleReg.a(), paramString, (ArkAppMessage)localObject1);
-                          if (QLog.isColorLevel()) {
-                            QLog.i("ArkApp", 1, "QQ.SendMessage light currentChat success");
-                          }
+                        ChatActivityFacade.b(ArkAppModuleReg.a(), paramString, (ArkAppMessage)localObject1);
+                        if (QLog.isColorLevel()) {
+                          QLog.i("ArkApp", 1, "QQ.SendMessage light currentChat success");
                         }
                       }
                     }
                   }
                 }
-                else {
-                  ArkAppCenter.a().postToMainThread(new aapt(this, (ArkAppMessage)localObject1));
-                }
+              }
+              else {
+                ArkAppCenter.a().postToMainThread(new aawn(this, (ArkAppMessage)localObject1));
               }
             }
-            catch (JSONException paramString)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("ArkApp", 1, "QQ.SendMessage parameter error: " + paramString.getMessage());
-              }
-              if (QLog.isColorLevel()) {
-                QLog.i("ArkApp", 1, String.format("QQ.SendMessage fail, packet:%s", new Object[] { paramVariantWrapper }));
-              }
-              return false;
-            }
-          } while (!paramString.has("text"));
-          paramString = paramString.getString("text");
-          if (bool)
-          {
-            if (!(BaseActivity.sTopActivity instanceof FragmentActivity)) {
-              break label5031;
-            }
-            paramArrayOfVariantWrapper = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-            if (paramArrayOfVariantWrapper == null) {
-              break label5031;
-            }
-            paramArrayOfVariantWrapper = paramArrayOfVariantWrapper.a();
-            if (paramArrayOfVariantWrapper == null) {
-              break label5031;
-            }
-            localObject1 = paramArrayOfVariantWrapper.a();
-            paramArrayOfVariantWrapper = ArkAppModuleReg.a();
-            if ((localObject1 == null) || (paramArrayOfVariantWrapper == null)) {
-              break label5031;
-            }
-            paramString = MessageRecordFactory.a(ArkAppModuleReg.a(), ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString, ((SessionInfo)localObject1).b, ((SessionInfo)localObject1).b, ((SessionInfo)localObject1).jdField_a_of_type_Int, (byte)1, (byte)0, (short)0, paramString);
-            paramArrayOfVariantWrapper.a().a(paramString, null);
-            if (!QLog.isColorLevel()) {
-              break label5031;
-            }
-            QLog.i("ArkApp", 1, "QQ.SendMessage text currentChat success");
-            break label5031;
           }
-          ArkAppCenter.a().postToMainThread(new aapu(this, paramString));
-          break label5031;
+          catch (JSONException paramString)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("ArkApp", 1, "QQ.SendMessage parameter error: " + paramString.getMessage());
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("ArkApp", 1, String.format("QQ.SendMessage fail, packet:%s", new Object[] { paramVariantWrapper }));
+            }
+            return false;
+          }
+        } while (!paramString.has("text"));
+        paramString = paramString.getString("text");
+        if (bool)
+        {
+          if (!(BaseActivity.sTopActivity instanceof FragmentActivity)) {
+            break label5033;
+          }
+          paramArrayOfVariantWrapper = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+          if (paramArrayOfVariantWrapper == null) {
+            break label5033;
+          }
+          paramArrayOfVariantWrapper = paramArrayOfVariantWrapper.a();
+          if (paramArrayOfVariantWrapper == null) {
+            break label5033;
+          }
+          localObject1 = paramArrayOfVariantWrapper.a();
+          paramArrayOfVariantWrapper = ArkAppModuleReg.a();
+          if ((localObject1 == null) || (paramArrayOfVariantWrapper == null)) {
+            break label5033;
+          }
+          paramString = MessageRecordFactory.a(ArkAppModuleReg.a(), ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString, ((SessionInfo)localObject1).b, ((SessionInfo)localObject1).b, ((SessionInfo)localObject1).jdField_a_of_type_Int, (byte)1, (byte)0, (short)0, paramString);
+          paramArrayOfVariantWrapper.a().a(paramString, null);
+          if (!QLog.isColorLevel()) {
+            break label5033;
+          }
+          QLog.i("ArkApp", 1, "QQ.SendMessage text currentChat success");
+          break label5033;
         }
+        ArkAppCenter.a().postToMainThread(new aawo(this, paramString));
+        break label5033;
+      }
+      else
+      {
         if (paramString.equals("Login"))
         {
           if (!ArkAppModuleReg.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, "permission.LOGIN")) {
@@ -981,7 +983,7 @@ public class ArkAppModuleReg$ModuleQQ
           localObject2 = "key_ark_authority_show_dialog" + "_" + paramArrayOfVariantWrapper + "_" + "ark_authority_api_login" + "_" + paramString;
           if (!paramVariantWrapper.getBoolean((String)localObject2, false))
           {
-            ArkAppCenter.a().postToMainThread(new aapv(this, paramArrayOfVariantWrapper, (String)localObject1, l2, paramString, l1));
+            ArkAppCenter.a().postToMainThread(new aawp(this, paramArrayOfVariantWrapper, (String)localObject1, l2, paramString, l1));
             paramVariantWrapper.edit().putBoolean((String)localObject2, true).commit();
             a(paramArrayOfVariantWrapper, paramString);
           }
@@ -1046,7 +1048,7 @@ public class ArkAppModuleReg$ModuleQQ
           localObject1 = "key_ark_authority_show_dialog" + "_" + paramArrayOfVariantWrapper + "_" + "ark_authority_api_user_info" + "_" + paramString;
           if (!paramVariantWrapper.getBoolean((String)localObject1, false))
           {
-            ArkAppCenter.a().postToMainThread(new aaqb(this, paramArrayOfVariantWrapper, (String)localObject2, l1, paramString));
+            ArkAppCenter.a().postToMainThread(new aawv(this, paramArrayOfVariantWrapper, (String)localObject2, l1, paramString));
             paramVariantWrapper.edit().putBoolean((String)localObject1, true).commit();
             a(paramArrayOfVariantWrapper, paramString);
           }
@@ -1071,7 +1073,7 @@ public class ArkAppModuleReg$ModuleQQ
             paramVariantWrapper = paramArrayOfVariantWrapper[2].GetString();
             paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[3].GetTableAsJsonString();
             QLog.d("ArkOpenView", 1, "OpenView holder=" + l1 + ", type=" + paramString + ", view=" + paramVariantWrapper + ", meta=" + paramArrayOfVariantWrapper);
-            ArkAppCenter.a().postToMainThread(new aaqh(this, paramString, paramVariantWrapper, paramArrayOfVariantWrapper, l1));
+            ArkAppCenter.a().postToMainThread(new aaxb(this, paramString, paramVariantWrapper, paramArrayOfVariantWrapper, l1));
           }
           return true;
         }
@@ -1083,7 +1085,7 @@ public class ArkAppModuleReg$ModuleQQ
           if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
-            ArkAppCenter.a().postToMainThread(new aaqi(this, l1));
+            ArkAppCenter.a().postToMainThread(new aaxc(this, l1));
           }
           return true;
         }
@@ -1096,7 +1098,7 @@ public class ArkAppModuleReg$ModuleQQ
           {
             paramString = paramArrayOfVariantWrapper[0].GetString();
             paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1].GetTableAsJsonString();
-            ArkAppCenter.a().postToMainThread(new aapi(this, paramString, paramArrayOfVariantWrapper));
+            ArkAppCenter.a().postToMainThread(new aawc(this, paramString, paramArrayOfVariantWrapper));
           }
           return true;
         }
@@ -1109,7 +1111,7 @@ public class ArkAppModuleReg$ModuleQQ
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
             paramString = paramArrayOfVariantWrapper[1].GetString();
-            ArkAppCenter.a().postToMainThread(new aapj(this, l1, paramString));
+            ArkAppCenter.a().postToMainThread(new aawd(this, l1, paramString));
           }
           return true;
         }
@@ -1121,7 +1123,7 @@ public class ArkAppModuleReg$ModuleQQ
           if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
-            ArkAppCenter.a().postToMainThread(new aapk(this, l1));
+            ArkAppCenter.a().postToMainThread(new aawe(this, l1));
           }
           return true;
         }
@@ -1131,7 +1133,7 @@ public class ArkAppModuleReg$ModuleQQ
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
             paramString = paramArrayOfVariantWrapper[1].GetString();
-            ArkAppCenter.a().postToMainThread(new aapl(this, l1, paramString));
+            ArkAppCenter.a().postToMainThread(new aawf(this, l1, paramString));
           }
           return true;
         }
@@ -1140,7 +1142,7 @@ public class ArkAppModuleReg$ModuleQQ
           if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
-            ArkAppCenter.a().postToMainThread(new aapm(this, l1));
+            ArkAppCenter.a().postToMainThread(new aawg(this, l1));
           }
           return true;
         }
@@ -1149,18 +1151,18 @@ public class ArkAppModuleReg$ModuleQQ
           if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
-            ArkAppCenter.a().postToMainThread(new aapn(this, l1));
+            ArkAppCenter.a().postToMainThread(new aawh(this, l1));
           }
           return true;
         }
-      } while (!paramString.equals("PreviewImage"));
-      label1545:
-      label2702:
-      if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsArray()) && (paramArrayOfVariantWrapper[1].GetType() == 4))
-      {
-        paramString = paramArrayOfVariantWrapper[0].GetTableAsJsonString();
-        localObject2 = new ArrayList();
-        localObject1 = ark.Application.Create(((ArkAppCenter)ArkAppModuleReg.a().getManager(120)).a().a(this.jdField_a_of_type_JavaLangString, null));
+        if (paramString.equals("PreviewImage")) {
+          if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsArray()) && (paramArrayOfVariantWrapper[1].GetType() == 4))
+          {
+            paramString = paramArrayOfVariantWrapper[0].GetTableAsJsonString();
+            localObject2 = new ArrayList();
+            localObject1 = ark.Application.Create(((ArkAppCenter)ArkAppModuleReg.a().getManager(120)).a().a(this.jdField_a_of_type_JavaLangString, null));
+          }
+        }
       }
     }
     for (;;)
@@ -1173,7 +1175,7 @@ public class ArkAppModuleReg$ModuleQQ
         {
           paramVariantWrapper = ((JSONArray)localObject3).optString(i);
           if (TextUtils.isEmpty(paramVariantWrapper)) {
-            break label5033;
+            break label5035;
           }
           paramString = paramVariantWrapper;
           if (!paramVariantWrapper.startsWith("http://"))
@@ -1183,7 +1185,7 @@ public class ArkAppModuleReg$ModuleQQ
             {
               paramString = ((ark.Application)localObject1).GetSystemPathFromLocal(paramVariantWrapper);
               if (TextUtils.isEmpty(paramString)) {
-                break label5033;
+                break label5035;
               }
             }
           }
@@ -1200,29 +1202,30 @@ public class ArkAppModuleReg$ModuleQQ
       }
       ((ark.Application)localObject1).Release();
       i = (int)Math.round(paramArrayOfVariantWrapper[1].GetDouble());
-      ArkAppCenter.a().postToMainThread(new aapo(this, i, (ArrayList)localObject2));
+      ArkAppCenter.a().postToMainThread(new aawi(this, i, (ArrayList)localObject2));
       return true;
+      return false;
       bool = true;
       break label2702;
-      label5004:
+      label5006:
       paramString = paramArrayOfVariantWrapper;
       break label1519;
-      label5009:
+      label5011:
       break label626;
-      label5012:
-      break label5026;
-      label5015:
+      label5014:
+      break label5028;
+      label5017:
       break label626;
-      label5018:
+      label5020:
       l1 = 0L;
       paramArrayOfVariantWrapper = null;
       break;
-      label5026:
+      label5028:
       break label432;
       return true;
-      label5031:
-      return true;
       label5033:
+      return true;
+      label5035:
       i += 1;
     }
   }

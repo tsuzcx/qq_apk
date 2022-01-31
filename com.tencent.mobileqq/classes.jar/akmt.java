@@ -1,43 +1,82 @@
-import android.graphics.Rect;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.SwiftFloatViewUI;
-import mqq.os.MqqHandler;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
 
-public class akmt
-  implements View.OnLayoutChangeListener
+class akmt
+  implements Runnable
 {
-  public akmt(SwiftFloatViewUI paramSwiftFloatViewUI, View paramView) {}
+  akmt(akms paramakms) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidGraphicsRect);
-    paramInt2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidGraphicsRect.left;
-    paramInt4 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidGraphicsRect.top;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_c_of_type_Int != paramInt2) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.d != paramInt4))
+    int j = 0;
+    int k = this.a.a.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout);
+    int m = this.a.a.a(this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    int n = this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    Object localObject1 = this.a.a.getWindow().getAttributes();
+    int i;
+    Object localObject2;
+    if (k - n > 0)
     {
-      ThreadManager.getUIHandler().post(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_c_of_type_Int = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.d = paramInt4;
-    }
-    paramInt1 = paramInt3 - paramInt1;
-    if (paramInt1 != paramInt7 - paramInt5)
-    {
-      paramView = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      if ((paramView.leftMargin > paramInt1 / 2) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView != null) && (8 == this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_c_of_type_AndroidViewView.getVisibility()))
+      i = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.getHeight() / 2;
+      ((WindowManager.LayoutParams)localObject1).y = (-i);
+      this.a.a.getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
+      if ((this.a.a.c) && (this.a.a.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (TextUtils.isEmpty(this.a.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString())))
       {
-        paramView.leftMargin = (paramInt1 - this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getWidth());
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.setLayoutParams(paramView);
+        localObject1 = (LinearLayout)this.a.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131364114);
+        if ((localObject1 != null) && (((LinearLayout)localObject1).getChildCount() > 0))
+        {
+          localObject1 = ((LinearLayout)localObject1).getChildAt(0);
+          localObject2 = (TextView)((View)localObject1).findViewById(2131364115);
+          if (((TextView)localObject2).getText() != null) {
+            this.a.a.a(((TextView)localObject2).getText().toString());
+          }
+          localObject1 = ((View)localObject1).findViewById(2131364116);
+          ((View)localObject1).setVisibility(0);
+          this.a.a.jdField_a_of_type_AndroidViewView = ((View)localObject1);
+          this.a.a.c = false;
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_Int = paramInt1;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = (Context)this.a.a.jdField_a_of_type_JavaLangRefSoftReference.get();
+        if (localObject1 != null) {
+          j = ((Context)localObject1).getResources().getDisplayMetrics().heightPixels;
+        }
+        localObject2 = new StringBuilder(128);
+        if (localObject1 != null) {
+          break label429;
+        }
+        ((StringBuilder)localObject2).append("|context is null");
+      }
+    }
+    for (;;)
+    {
+      ((StringBuilder)localObject2).append("|screenHeight=").append(j).append("|emoSpaceY=").append(k).append("|dialogY=").append(m).append("|dialogHeight=").append(n).append("|moveY=").append(i);
+      QLog.d("QQCustomDialogWtihInputAndChoose.meassure", 2, ((StringBuilder)localObject2).toString());
+      return;
+      i = m + n - k;
+      break;
+      label429:
+      ((StringBuilder)localObject2).append("|context is not null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akmt
  * JD-Core Version:    0.7.0.1
  */

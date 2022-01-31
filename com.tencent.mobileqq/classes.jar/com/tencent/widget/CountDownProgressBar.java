@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amaw;
+import amig;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -20,7 +20,7 @@ public class CountDownProgressBar
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Handler jdField_a_of_type_AndroidOsHandler = new amaw(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new amig(this);
   private CountDownProgressBar.OnCountDownLinstener jdField_a_of_type_ComTencentWidgetCountDownProgressBar$OnCountDownLinstener;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;

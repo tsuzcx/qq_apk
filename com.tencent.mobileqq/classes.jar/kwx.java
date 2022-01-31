@@ -1,29 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleSinglePic;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
-import java.net.URL;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
 
 public class kwx
-  implements PublicAccountImageDownListener
+  implements Runnable
 {
-  public kwx(AdModuleSinglePic paramAdModuleSinglePic, View paramView, ResizeURLImageView paramResizeURLImageView) {}
+  public kwx(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
   
-  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleSinglePic.a = 2;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131366521).setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView.setPublicAccountImageDownListener(null);
-    AdModuleSinglePic.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleSinglePic, null);
-  }
-  
-  public void a(URL paramURL, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdModuleAdModuleSinglePic.a = 3;
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131366521).setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131367249).setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131367249).setOnClickListener(new kwy(this));
+    this.a.a(2);
   }
 }
 

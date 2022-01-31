@@ -1,44 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class mbh
   implements Runnable
 {
-  public mbh(VideoFeedsAdapter paramVideoFeedsAdapter, String paramString) {}
+  public mbh(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    int j = VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).getHeaderViewsCount();
-    int i = VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).getFirstVisiblePosition();
-    if (i <= VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).getLastVisiblePosition())
-    {
-      int k = i - j;
-      VideoInfo localVideoInfo;
-      Object localObject;
-      if ((k >= 0) && (k < VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).size()))
-      {
-        localVideoInfo = (VideoInfo)VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).get(k);
-        if ((localVideoInfo.b) && (this.jdField_a_of_type_JavaLangString.equals(localVideoInfo.j)))
-        {
-          localObject = VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).getChildAt(i - VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).getFirstVisiblePosition()).getTag();
-          if ((localObject instanceof VideoFeedsAdapter.VideoItemHolder)) {
-            break label143;
-          }
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label143:
-        ((VideoFeedsAdapter.VideoItemHolder)localObject).a.setText(localVideoInfo.k);
-      }
-    }
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
+    localEditor.remove("kandian_push_0x210_msg_for_follow_show_in_folder");
+    localEditor.remove("kandian_push_0x210_c5_msg_time");
+    ReadInJoyHelper.a(localEditor, true);
   }
 }
 

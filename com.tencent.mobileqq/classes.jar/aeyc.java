@@ -1,18 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView.OnCloseListener;
+import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
 
 public class aeyc
-  implements View.OnClickListener
 {
-  public aeyc(StuffContainerView paramStuffContainerView) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onClick(View paramView)
+  aeyc(WerewolvesDataManager paramWerewolvesDataManager) {}
+  
+  public boolean equals(Object paramObject)
   {
-    if (this.a.a != null) {
-      this.a.a.a(0);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof aeyc))
+    {
+      paramObject = (aeyc)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
+      {
+        bool1 = bool2;
+        if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
+          bool1 = true;
+        }
+      }
     }
+    return bool1;
   }
 }
 

@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar.ProgressBarListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
+import java.util.Observable;
+import java.util.Observer;
 
-public class aiar
-  implements GLProgressBar.ProgressBarListener
+class aiar
+  implements Observer
 {
-  public aiar(DanceReadyFilter paramDanceReadyFilter) {}
+  aiar(aiaq paramaiaq) {}
   
-  public void a()
+  public void update(Observable paramObservable, Object paramObject)
   {
-    DanceReadyFilter.a(this.a).a(DanceReadyFilter.a(this.a));
-    DanceReadyFilter.a(this.a).h_(false);
-    DanceReadyFilter.b(this.a).h_(false);
-    DanceReadyFilter.c(this.a).h_(false);
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(MessageSearchEngine.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine, this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a, (FullMessageSearchResult)paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aiar
  * JD-Core Version:    0.7.0.1
  */

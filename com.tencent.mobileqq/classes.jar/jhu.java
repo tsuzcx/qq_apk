@@ -1,91 +1,35 @@
-import com.tencent.av.gameplay.QAVGamePlaySoConfigInfo;
-import com.tencent.av.gameplay.QavGPDownloader;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import com.tencent.av.business.manager.pendant.EffectPendantTools;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import java.lang.ref.WeakReference;
 
-class jhu
-  implements INetEngine.INetEngineListener
+public class jhu
+  implements Runnable
 {
-  jhu(jht paramjht, String paramString, QAVGamePlaySoConfigInfo paramQAVGamePlaySoConfigInfo, int paramInt) {}
+  final PendantItem jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
+  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public jhu(MagicFaceDataEntity paramMagicFaceDataEntity, PendantItem paramPendantItem)
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
-    }
-    for (;;)
-    {
-      QavGPDownloader.a(i / this.jdField_a_of_type_Jht.jdField_a_of_type_Int + this.jdField_a_of_type_Jht.b);
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
-    }
+    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = paramPendantItem;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMagicFaceDataEntity);
   }
   
-  public void a(NetResp paramNetResp)
+  public void run()
   {
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
-    if (this.jdField_a_of_type_Jht.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
-      this.jdField_a_of_type_Jht.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QavGPDownloadManager", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.jdField_a_of_type_JavaLangString, Integer.valueOf(paramNetResp.jdField_a_of_type_Int), Integer.valueOf(paramNetResp.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    int i;
-    if (paramNetResp.jdField_a_of_type_Int == 0)
+    MagicFaceDataEntity localMagicFaceDataEntity = (MagicFaceDataEntity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localMagicFaceDataEntity != null)
     {
-      paramNetResp = new File(localHttpNetReq.c);
-      if (paramNetResp.exists())
-      {
-        try
-        {
-          String str = paramNetResp.getParent();
-          FileUtils.a(localHttpNetReq.c, str, false);
-          QLog.d("QavGPDownloadManager", 1, String.format("downloadRes, 下载成功了. path[%s]", new Object[] { str }));
-          QavGPDownloader.a(this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo);
-          i = 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            i = 0;
-          }
-          QavGPDownloader.a(-1);
-          return;
-        }
-        paramNetResp.delete();
+      PendantItem localPendantItem = (PendantItem)localMagicFaceDataEntity.a.a();
+      if ((localPendantItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getName().equals(localPendantItem.getName()))) {
+        localMagicFaceDataEntity.a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem);
       }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        QavGPDownloader.a(100 / this.jdField_a_of_type_Jht.jdField_a_of_type_Int + this.jdField_a_of_type_Jht.b);
-        paramNetResp = this.jdField_a_of_type_Jht;
-        paramNetResp.b += 100 / this.jdField_a_of_type_Jht.jdField_a_of_type_Int;
-        if (!this.jdField_a_of_type_Jht.a(this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo, this.jdField_a_of_type_Int - 1)) {
-          this.jdField_a_of_type_Jht.jdField_a_of_type_Boolean = false;
-        }
-        return;
-      }
-      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jhu
  * JD-Core Version:    0.7.0.1
  */

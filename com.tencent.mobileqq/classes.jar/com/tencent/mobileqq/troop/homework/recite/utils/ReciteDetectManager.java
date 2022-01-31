@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.recite.utils;
 
-import ajjz;
+import ajrl;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -45,7 +45,7 @@ public class ReciteDetectManager
   
   public ReciteDetectManager(ArticleInfo paramArticleInfo, ReciteDetectManager.ReciteDetectListener paramReciteDetectListener, QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new ajjz(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ajrl(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo = paramArticleInfo;
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -497,7 +497,7 @@ public class ReciteDetectManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.utils.ReciteDetectManager
  * JD-Core Version:    0.7.0.1
  */

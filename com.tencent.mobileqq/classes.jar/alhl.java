@@ -1,32 +1,15 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityActivity;
 
 public class alhl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public alhl(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  public alhl(AuthorityActivity paramAuthorityActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c) != null) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_JavaLangString = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c).mSavePath;
-    }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int != 0)
-    {
-      LogUtility.a(DownloadManager.a, "onDownloadError ###重新写码失败..........");
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f = -2;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g = 100;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int, null);
-      return;
-    }
-    LogUtility.a(DownloadManager.a, "onDownloadError ###重新写码成功..........");
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f = 4;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g = 100;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    paramDialogInterface.dismiss();
   }
 }
 

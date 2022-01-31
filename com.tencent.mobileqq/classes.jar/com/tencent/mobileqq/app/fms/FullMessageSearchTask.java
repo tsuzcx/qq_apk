@@ -29,7 +29,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import zrx;
+import zyi;
 
 public class FullMessageSearchTask
 {
@@ -125,7 +125,7 @@ public class FullMessageSearchTask
         localIterator.remove();
       }
     }
-    Collections.sort((List)localObject, new zrx(this));
+    Collections.sort((List)localObject, new zyi(this));
     if (localObject != null) {
       this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
     }

@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
+import com.tencent.mobileqq.app.RedpointHandler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
 public class zsz
   implements Runnable
 {
-  public zsz(ConversationFacade paramConversationFacade) {}
+  public zsz(RedpointHandler paramRedpointHandler, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
   public void run()
   {
-    this.a.b(AppConstants.G, 1001);
-    this.a.b(AppConstants.v, 1009);
-    this.a.b(AppConstants.X, 1010);
-    this.a.b(AppConstants.aE, 1032);
-    ConversationFacade.a(this.a).a().a(8023, true, null);
+    RedpointHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppRedpointHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
   }
 }
 

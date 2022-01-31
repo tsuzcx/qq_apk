@@ -14,8 +14,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import lww;
-import lwx;
+import maj;
+import mak;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
@@ -98,7 +98,7 @@ public class ReadInJoyRefreshManager
       b(paramInt, paramString);
       return;
     }
-    ThreadManager.getUIHandler().post(new lww(this, paramInt, paramString));
+    ThreadManager.getUIHandler().post(new maj(this, paramInt, paramString));
   }
   
   public void a(ReadInJoyRefreshManager.OnRefreshChangedListener paramOnRefreshChangedListener)
@@ -144,7 +144,7 @@ public class ReadInJoyRefreshManager
     localObject = new DownloadTask(paramRefreshData.url, localFile);
     ((DownloadTask)localObject).b = paramInt;
     ((DownloadTask)localObject).d = 60L;
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject, new lwx(this, str, paramRefreshData), localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.a((DownloadTask)localObject, new mak(this, str, paramRefreshData), localBundle);
     return false;
   }
   

@@ -1,24 +1,26 @@
-import com.tencent.biz.qqstory.takevideo.EditGifImage;
-import com.tencent.biz.qqstory.takevideo.EditVideoButton;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.image.URLImageView;
-import cooperation.qzone.widget.FastAnimationDrawable;
+import android.content.res.Resources;
+import com.tencent.biz.qqstory.view.widget.StorySwipeTextViewMenuBuilder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
 
 public class oct
-  implements Runnable
+  extends StorySwipeTextViewMenuBuilder
 {
-  public oct(EditGifImage paramEditGifImage) {}
+  private static final int[] e = { 2131434057 };
+  private static final int[] f = { 2131493370 };
+  private static final int[] g = { 2131370011 };
+  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131559401) };
   
-  public void run()
+  public oct()
   {
-    FastAnimationDrawable localFastAnimationDrawable = this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable;
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.stop();
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable = this.a.b;
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable);
-    this.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.start();
-    this.a.d = false;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a(true, false);
-    this.a.b = localFastAnimationDrawable;
+    super(1, 1, h, -1, g, e, f);
+  }
+  
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  {
+    paramArrayOfSwipRightMenuItem[0].a = 0;
+    paramArrayOfSwipRightMenuItem[0].b = 0;
   }
 }
 

@@ -1,22 +1,24 @@
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.VoiceChangeChooseDialog;
 
 public class keu
-  implements MenuItem.OnMenuItemClickListener
+  implements Animation.AnimationListener
 {
-  public keu(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
+  public keu(VoiceChangeChooseDialog paramVoiceChangeChooseDialog) {}
   
-  public boolean onMenuItemClick(MenuItem paramMenuItem)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.a(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr, 0);
-    return true;
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     keu
  * JD-Core Version:    0.7.0.1
  */

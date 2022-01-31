@@ -1,75 +1,116 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
+@TargetApi(14)
 public class otx
-  implements View.OnTouchListener
 {
-  public otx(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static String a(InputStream paramInputStream)
   {
-    switch (paramView.getId())
+    try
     {
+      paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
+      StringBuilder localStringBuilder = new StringBuilder();
+      for (;;)
+      {
+        String str = paramInputStream.readLine();
+        if (str == null) {
+          break;
+        }
+        localStringBuilder.append(str);
+      }
+      paramInputStream = localStringBuilder.toString();
     }
+    catch (IOException paramInputStream)
+    {
+      SLog.c("Q.qqstory.ffmpeg.FFmpeg", "error converting input stream to string", paramInputStream);
+      return null;
+    }
+    return paramInputStream;
+  }
+  
+  static void a(Process paramProcess)
+  {
+    if (paramProcess != null) {
+      paramProcess.destroy();
+    }
+  }
+  
+  public static void a(otq paramotq)
+  {
+    if ((paramotq != null) && (!paramotq.a()))
+    {
+      if (paramotq.jdField_a_of_type_JavaLangProcess != null)
+      {
+        paramotq.jdField_a_of_type_JavaLangProcess.destroy();
+        paramotq.jdField_a_of_type_JavaLangProcess = null;
+      }
+      if (!paramotq.isCancelled()) {
+        paramotq.cancel(true);
+      }
+      SLog.e("Q.qqstory.ffmpeg.FFmpeg", "kill ffmpeg task", new Object[] { Arrays.toString(paramotq.jdField_a_of_type_ArrayOfJavaLangString) });
+    }
+  }
+  
+  public static boolean a(File paramFile)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramFile == null) || (!paramFile.exists())) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (paramFile.canExecute());
+      bool1 = bool2;
+    } while (paramFile.setExecutable(true));
+    return false;
+  }
+  
+  static boolean a(Process paramProcess)
+  {
+    if (paramProcess == null) {}
     for (;;)
     {
-      return false;
-      if (paramMotionEvent.getAction() == 0)
+      return true;
+      try
       {
-        this.a.b.setImageResource(2130843874);
-      }
-      else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        this.a.b.setImageResource(2130843873);
-      }
-      else if (paramMotionEvent.getAction() == 2)
-      {
-        int i = (int)paramMotionEvent.getRawX();
-        int j = (int)paramMotionEvent.getRawY();
-        if (!QRDisplayActivity.a(paramView, i, j))
+        paramProcess.exitValue();
+        if (QLog.isColorLevel())
         {
-          this.a.b.setImageResource(2130843873);
-          continue;
-          if (paramMotionEvent.getAction() == 0)
-          {
-            this.a.c.setImageResource(2130843876);
-          }
-          else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-          {
-            this.a.c.setImageResource(2130843875);
-          }
-          else if (paramMotionEvent.getAction() == 2)
-          {
-            i = (int)paramMotionEvent.getRawX();
-            j = (int)paramMotionEvent.getRawY();
-            if (!QRDisplayActivity.a(paramView, i, j))
-            {
-              this.a.c.setImageResource(2130843875);
-              continue;
-              if (paramMotionEvent.getAction() == 0)
-              {
-                this.a.d.setImageResource(2130843878);
-              }
-              else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-              {
-                this.a.d.setImageResource(2130843877);
-              }
-              else if (paramMotionEvent.getAction() == 2)
-              {
-                i = (int)paramMotionEvent.getRawX();
-                j = (int)paramMotionEvent.getRawY();
-                if (!QRDisplayActivity.a(paramView, i, j)) {
-                  this.a.d.setImageResource(2130843877);
-                }
-              }
-            }
-          }
+          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "isProcessCompleted: true  in  process.exitValue()");
+          return true;
+        }
+      }
+      catch (IllegalThreadStateException paramProcess)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "IllegalThreadStateException e, ", paramProcess);
         }
       }
     }
+    return false;
+  }
+  
+  public static Object[] a(Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  {
+    int i = paramArrayOfObject1.length;
+    int j = paramArrayOfObject2.length;
+    Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfObject1.getClass().getComponentType(), i + j);
+    System.arraycopy(paramArrayOfObject1, 0, arrayOfObject, 0, i);
+    System.arraycopy(paramArrayOfObject2, 0, arrayOfObject, i, j);
+    return arrayOfObject;
   }
 }
 

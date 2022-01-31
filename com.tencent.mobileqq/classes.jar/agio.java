@@ -1,32 +1,70 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.olympic.OlympicObserver;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import com.tencent.mobileqq.olympic.TorchInfo;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class agio
-  extends Animation
+  extends OlympicObserver
 {
-  float jdField_a_of_type_Float;
-  float b;
+  public agio(OlympicManager paramOlympicManager) {}
   
-  public agio(ScanTorchActivity paramScanTorchActivity) {}
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2)
   {
-    if (paramFloat < 0.382F) {}
-    for (float f = 1.0F + paramFloat / 0.382F * 0.382F;; f = 1.382F - (paramFloat - 0.382F) / 0.618F * 0.382F)
+    if (QLog.isColorLevel())
     {
-      paramTransformation.getMatrix().setScale(f, f, this.jdField_a_of_type_Float / 2.0F, this.b / 2.0F);
-      super.applyTransformation(paramFloat, paramTransformation);
-      return;
+      OlympicManager localOlympicManager = this.a;
+      QLog.i("OlympicManager", 2, "onGetMyTorchInfo.isSuccess=" + paramBoolean + ",errCode=" + paramInt1 + ",errStr=,info=" + paramTorchInfo);
     }
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo)
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Float = paramInt1;
-    this.b = paramInt2;
+    if (QLog.isColorLevel())
+    {
+      OlympicManager localOlympicManager = this.a;
+      QLog.i("OlympicManager", 2, "onCollectTorch.isSuccess=" + paramBoolean + ",errCode=" + paramInt + ",errStr=" + paramString + ",sig=" + paramArrayOfByte + ",info=" + paramTorchInfo);
+    }
+    OlympicManager.a(this.a, false);
+    if (paramBoolean)
+    {
+      OlympicManager.a(this.a, paramArrayOfByte);
+      if (paramInt == 0)
+      {
+        ReportController.b(this.a.a, "CliOper", "", "", "0X80069C8", "0X80069C8", 0, 0, "", "", "", "");
+        this.a.a(1);
+        this.a.a(paramTorchInfo);
+        OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
+        OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+        paramArrayOfByte = Long.valueOf(-1L);
+        paramString = paramArrayOfByte;
+        if (OlympicManager.a(this.a) != null)
+        {
+          paramString = paramArrayOfByte;
+          if (OlympicManager.a(this.a).type == 2) {
+            paramString = Long.valueOf(OlympicManager.a(this.a).uiBegin);
+          }
+        }
+        OlympicManager.a(this.a).obtainMessage(7, paramString).sendToTarget();
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (paramInt == 1)
+    {
+      this.a.a(1);
+      OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
+      OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
+      return;
+    }
+    OlympicManager.b(this.a, false);
+    OlympicManager.b(this.a, null);
+    OlympicManager.a(this.a, 0);
   }
 }
 

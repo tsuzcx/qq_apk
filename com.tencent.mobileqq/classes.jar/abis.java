@@ -1,16 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashEntryView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abis
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public abis(ARMapSplashEntryView paramARMapSplashEntryView) {}
+  public abis(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARMapSplashEntryView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    ARMapSplashEntryView.a(this.a);
+    this.a.startActivity(new Intent("android.settings.LOCATION_SOURCE_SETTINGS"));
   }
 }
 

@@ -1,30 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
 
-public class ahol
-  implements Handler.Callback
+class ahol
+  implements ProviderContainerView.ContainerViewListener
 {
-  public ahol(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  ahol(ahoj paramahoj) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if (!NeoVideoFilterPlayView.a(this.a))
-    {
-      this.a.requestRender();
-      return true;
-    }
-    NeoVideoFilterPlayView.a(this.a).set(true);
-    SLog.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
-    return true;
+    EffectsCameraCaptureFragment.e(this.a.a);
   }
+  
+  public void y_() {}
 }
 
 

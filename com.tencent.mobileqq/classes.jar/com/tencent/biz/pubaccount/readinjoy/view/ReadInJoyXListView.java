@@ -24,7 +24,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.HeaderViewListAdapter;
 import com.tencent.widget.ListView;
-import mjm;
+import mnd;
 
 public class ReadInJoyXListView
   extends ReadInJoyBaseListView
@@ -32,7 +32,7 @@ public class ReadInJoyXListView
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   private ReadInJoyAnimBaseManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager;
-  private ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new mjm(this);
+  private ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new mnd(this);
   protected boolean c;
   private boolean d;
   protected int e;
@@ -111,7 +111,7 @@ public class ReadInJoyXListView
     {
       return;
     }
-    setOverscrollHeader(getResources().getDrawable(2130838590));
+    setOverscrollHeader(getResources().getDrawable(2130838596));
   }
   
   public void a(int paramInt, View paramView, ListView paramListView) {}
@@ -251,36 +251,9 @@ public class ReadInJoyXListView
       return;
     }
     smoothScrollBy(0, 0);
-    View localView;
-    boolean bool;
-    if (this.mFirstPosition == 0)
-    {
-      localView = getChildAt(0);
-      if (localView == null) {
-        bool = false;
-      }
-    }
-    for (;;)
-    {
-      if (bool)
-      {
-        this.jdField_f_of_type_Boolean = true;
-        smoothScrollToPosition(0);
-      }
-      for (;;)
-      {
-        QLog.d("ReadInJoyXListView", 2, "scroll2TopAndRefresh needScroll : " + bool);
-        return;
-        if (localView.getTop() - getPaddingTop() != 0) {
-          break label98;
-        }
-        bool = false;
-        break;
-        f();
-      }
-      label98:
-      bool = true;
-    }
+    setSelection(0);
+    f();
+    QLog.d("ReadInJoyXListView", 2, "scroll2TopAndRefresh needScroll : " + true);
   }
   
   public void f()

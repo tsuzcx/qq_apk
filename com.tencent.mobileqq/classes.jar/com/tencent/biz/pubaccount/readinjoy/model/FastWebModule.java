@@ -35,10 +35,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
-import lra;
-import lrb;
-import lrc;
-import lrd;
+import lue;
+import luf;
+import lug;
+import luh;
 import mqq.os.MqqHandler;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.Client;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ReqArticle;
@@ -103,7 +103,7 @@ public class FastWebModule
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new lrc(this, 2012, 30, 1);
+    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new lug(this, 2012, 30, 1);
   }
   
   private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -136,11 +136,11 @@ public class FastWebModule
     {
       paramFromServiceMsg = (FastWebModule.FastWebContentGetCallback)this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(i));
       if (paramFromServiceMsg != null) {
-        ThreadManager.getUIHandler().post(new lra(this, paramFromServiceMsg, bool1, bool2, paramToServiceMsg));
+        ThreadManager.getUIHandler().post(new lue(this, paramFromServiceMsg, bool1, bool2, paramToServiceMsg));
       }
       QLog.d("Q.readinjoy.fast_web", 2, "ad6 resp  result : " + bool1 + ", seq : " + i + ", useWebView : " + bool2 + ", cost : " + l + ", retCode : " + k + ", native info : " + paramToServiceMsg);
       if (j != 2) {
-        this.c.put(str, new lrd(this, paramToServiceMsg));
+        this.c.put(str, new luh(this, paramToServiceMsg));
       }
       for (;;)
       {
@@ -155,7 +155,7 @@ public class FastWebModule
         return;
         if ((paramToServiceMsg != null) && (this.c.containsKey(str)))
         {
-          paramFromServiceMsg = (lrd)this.c.get(str);
+          paramFromServiceMsg = (luh)this.c.get(str);
           ((FastWebArticleInfo)paramFromServiceMsg.a()).a(paramToServiceMsg.b, paramToServiceMsg.jdField_a_of_type_Long);
           paramFromServiceMsg.a(paramFromServiceMsg.a());
         }
@@ -204,10 +204,10 @@ public class FastWebModule
       Object localObject1;
       try
       {
-        localObject1 = (lrd)this.c.get(paramString2);
+        localObject1 = (luh)this.c.get(paramString2);
         if (localObject1 != null)
         {
-          if (((lrd)localObject1).a()) {
+          if (((luh)localObject1).a()) {
             this.c.remove(paramString2);
           }
         }
@@ -215,7 +215,7 @@ public class FastWebModule
         {
           localObject1 = new oidb_cmd0xad6.ReqBody();
           Object localObject2 = new oidb_cmd0xad6.Client();
-          ((oidb_cmd0xad6.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+          ((oidb_cmd0xad6.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
           ((oidb_cmd0xad6.Client)localObject2).uint32_type.set(1);
           ((oidb_cmd0xad6.ReqBody)localObject1).msg_client.set((MessageMicro)localObject2);
           localObject2 = new oidb_cmd0xad6.ReqArticle();
@@ -250,9 +250,9 @@ public class FastWebModule
           return i;
         }
         if (paramFastWebContentGetCallback != null) {
-          paramFastWebContentGetCallback.a(true, ((lrd)localObject1).a, (FastWebArticleInfo)((lrd)localObject1).a());
+          paramFastWebContentGetCallback.a(true, ((luh)localObject1).a, (FastWebArticleInfo)((luh)localObject1).a());
         }
-        QLog.d("Q.readinjoy.fast_web", 2, "hit cache, rowkey : " + paramString2 + ", url : " + paramString1 + " isUserWeb " + ((lrd)localObject1).a);
+        QLog.d("Q.readinjoy.fast_web", 2, "hit cache, rowkey : " + paramString2 + ", url : " + paramString1 + " isUserWeb " + ((luh)localObject1).a);
         return -1;
         if (paramInt == 3)
         {
@@ -282,7 +282,7 @@ public class FastWebModule
   
   public Parcelable a(String paramString)
   {
-    paramString = (lrd)this.b.get(paramString);
+    paramString = (luh)this.b.get(paramString);
     if ((paramString == null) || (paramString.a())) {
       return null;
     }
@@ -291,7 +291,7 @@ public class FastWebModule
   
   public FastWebArticleInfo a(String paramString)
   {
-    paramString = (lrd)this.c.get(paramString);
+    paramString = (luh)this.c.get(paramString);
     if (paramString != null) {
       return (FastWebArticleInfo)paramString.a();
     }
@@ -319,7 +319,7 @@ public class FastWebModule
   {
     Object localObject1 = new oidb_cmd0xb54.ReqBody();
     Object localObject2 = new oidb_cmd0xb54.Client();
-    ((oidb_cmd0xb54.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    ((oidb_cmd0xb54.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     ((oidb_cmd0xb54.Client)localObject2).uint32_type.set(1);
     ((oidb_cmd0xb54.ReqBody)localObject1).msg_client.set((MessageMicro)localObject2);
     localObject2 = new oidb_cmd0xb54.ReqArticle();
@@ -358,21 +358,21 @@ public class FastWebModule
   
   public void a(String paramString, Parcelable paramParcelable)
   {
-    lrd locallrd = (lrd)this.b.get(paramString);
-    if (locallrd == null)
+    luh localluh = (luh)this.b.get(paramString);
+    if (localluh == null)
     {
-      paramParcelable = new lrd(this, paramParcelable);
+      paramParcelable = new luh(this, paramParcelable);
       this.b.put(paramString, paramParcelable);
       return;
     }
-    locallrd.a(paramParcelable);
+    localluh.a(paramParcelable);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, int paramInt, FastWebModule.FastWebArticleRichReqCallback paramFastWebArticleRichReqCallback)
   {
     oidb_cmd0xad7.ReqBody localReqBody = new oidb_cmd0xad7.ReqBody();
     Object localObject = new oidb_cmd0xad7.Client();
-    ((oidb_cmd0xad7.Client)localObject).bytes_version.set(ByteStringMicro.copyFromUtf8("7.6.3"));
+    ((oidb_cmd0xad7.Client)localObject).bytes_version.set(ByteStringMicro.copyFromUtf8("7.6.8"));
     ((oidb_cmd0xad7.Client)localObject).uint32_type.set(1);
     localReqBody.msg_client.set((MessageMicro)localObject);
     localObject = new oidb_cmd0xad7.ReqArticle();
@@ -419,7 +419,7 @@ public class FastWebModule
     if ((paramList == null) || (paramList.isEmpty())) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new lrb(this, paramList));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new luf(this, paramList));
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -432,7 +432,7 @@ public class FastWebModule
     Object localObject1 = new oidb_cmd0xb54.RspBody();
     int j = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject1);
     paramFromServiceMsg = (FastWebModule.FastWebArticleRichReqCallback)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
-    paramObject = (lrd)this.c.get(localObject2);
+    paramObject = (luh)this.c.get(localObject2);
     if (paramObject == null) {
       return;
     }

@@ -7,50 +7,51 @@ import android.graphics.PointF;
 import com.tencent.mapsdk.raster.model.Tile;
 import com.tencent.mapsdk.raster.model.TileOverlayOptions;
 import com.tencent.mapsdk.raster.model.TileProvider;
-import com.tencent.mapsdk.rastercore.b.c;
-import com.tencent.mapsdk.rastercore.d.e;
-import com.tencent.mapsdk.rastercore.e.a.f;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public final class a
 {
-  private static final Comparator<a> l = new a((byte)0);
+  private static final Comparator<a> m = new a((byte)0);
   private final int a;
   private final int b;
   private final int c;
   private MapTile.MapSource d;
-  private final int e;
-  private final int f;
+  private int e;
+  private int f = 0;
   private TileProvider g;
   private Bitmap h;
   private String i;
-  private volatile boolean j = false;
-  private f k;
+  private boolean j = true;
+  private volatile boolean k = false;
+  private com.tencent.mapsdk.rastercore.e.a.f l;
   
-  public a(TileProvider paramTileProvider, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, MapTile.MapSource paramMapSource, String paramString)
+  public a(TileProvider paramTileProvider, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, MapTile.MapSource paramMapSource)
   {
     this.g = paramTileProvider;
     this.a = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
-    this.e = paramInt4;
-    this.i = paramString;
     this.d = paramMapSource;
-    this.f = paramInt5;
+    this.e = paramInt5;
+    this.f = paramInt4;
   }
   
-  public a(f paramf, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public a(com.tencent.mapsdk.rastercore.e.a.f paramf, int paramInt1, int paramInt2, int paramInt3)
   {
-    this(paramf.f(), paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, MapTile.MapSource.CUSTOMER, paramf.g());
-    this.k = paramf;
-    paramf.h();
+    this.g = paramf.f();
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.l = paramf;
+    this.i = paramf.g();
+    this.j = paramf.h();
   }
   
   public static Comparator<a> k()
   {
-    return l;
+    return m;
   }
   
   public final String a()
@@ -62,13 +63,13 @@ public final class a
   {
     this.h = paramBitmap;
     if (paramBitmap != null) {
-      this.h.setDensity(e.B());
+      this.h.setDensity(com.tencent.mapsdk.rastercore.d.f.s());
     }
   }
   
   public final boolean a(Canvas paramCanvas)
   {
-    if ((this.k != null) && (!this.k.e())) {}
+    if ((this.l != null) && (!this.l.e())) {}
     while ((this.h == null) || (this.h.isRecycled())) {
       return false;
     }
@@ -87,12 +88,42 @@ public final class a
     return false;
   }
   
-  public final boolean a(f paramf)
+  public final boolean a(com.tencent.mapsdk.rastercore.e.a.f paramf)
   {
-    if (this.k == null) {
+    if (this.l == null) {
       return false;
     }
-    return this.k.equals(paramf);
+    return this.l.equals(paramf);
+  }
+  
+  public final byte[] a(boolean paramBoolean, String paramString)
+  {
+    try
+    {
+      if ((this.f != 7) || (this.d != MapTile.MapSource.TENCENT))
+      {
+        Tile localTile = this.g.getTile(this.a, this.b, this.c, this.d, new Object[] { Integer.valueOf(this.e), paramString, Boolean.valueOf(paramBoolean) });
+        paramString = localTile;
+        if (localTile != null) {
+          return localTile.getData();
+        }
+      }
+      else
+      {
+        paramString = this.g.getTile(this.a, this.b, this.c, this.d, new Object[] { Integer.valueOf(this.e), Integer.valueOf(this.f) });
+      }
+      if (paramString != null)
+      {
+        paramString = paramString.getData();
+        return paramString;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      new StringBuilder("get tile raises exception:").append(paramString.getMessage());
+    }
+    return null;
   }
   
   public final int b()
@@ -120,28 +151,14 @@ public final class a
     return this.h;
   }
   
-  public final byte[] g()
+  public final boolean g()
   {
-    try
-    {
-      Object localObject = this.g.getTile(this.a, this.b, this.c, this.d, new Object[] { Integer.valueOf(this.e), Integer.valueOf(this.f) });
-      if (localObject != null)
-      {
-        localObject = ((Tile)localObject).getData();
-        return localObject;
-      }
-      return null;
-    }
-    catch (Exception localException)
-    {
-      new StringBuilder("get tile raises exception:").append(localException.getMessage());
-    }
-    return null;
+    return this.j;
   }
   
   public final void h()
   {
-    this.j = true;
+    this.k = true;
     if ((this.h != null) && (!this.h.isRecycled())) {
       this.h.recycle();
     }
@@ -150,18 +167,28 @@ public final class a
   
   public final boolean i()
   {
-    return this.j;
+    return this.k;
   }
   
   public final float j()
   {
-    if (this.k != null) {
-      return this.k.a();
+    if (this.l != null) {
+      return this.l.a();
     }
     return (1.0F / -1.0F);
   }
   
   public final int l()
+  {
+    return this.e;
+  }
+  
+  public final MapTile.MapSource m()
+  {
+    return this.d;
+  }
+  
+  public final int n()
   {
     return this.f;
   }
@@ -174,6 +201,10 @@ public final class a
     localStringBuilder.append(this.b);
     localStringBuilder.append("_");
     localStringBuilder.append(this.c);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.e);
     localStringBuilder.append("_");
     localStringBuilder.append(this.d);
     localStringBuilder.append("_");

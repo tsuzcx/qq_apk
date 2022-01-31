@@ -1,21 +1,55 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.RejectedExecutionException;
 
 public class aclz
-  extends BroadcastReceiver
+  implements URLDrawable.URLDrawableListener
 {
-  public aclz(FMActivity paramFMActivity) {}
+  public aclz(BigEmotionDownloadedAdapter paramBigEmotionDownloadedAdapter) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+    if ((paramThrowable instanceof RejectedExecutionException)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BigEmotionDownloadedAdapter", 2, "arg0.getConstantState() = " + paramURLDrawable.getConstantState());
+      }
     }
+    label41:
+    int i;
+    do
+    {
+      do
+      {
+        do
+        {
+          break label41;
+          do
+          {
+            return;
+          } while (paramURLDrawable == null);
+          paramThrowable = paramURLDrawable.getFileInLocal();
+          if ((paramThrowable != null) && (paramThrowable.exists())) {
+            paramThrowable.delete();
+          }
+          paramThrowable = paramURLDrawable.getTag();
+        } while (!(paramThrowable instanceof Integer));
+        i = ((Integer)paramThrowable).intValue();
+      } while (i >= 3);
+      i += 1;
+      paramURLDrawable.setTag(Integer.valueOf(i));
+      paramURLDrawable.restartDownload();
+    } while (!QLog.isColorLevel());
+    QLog.i("BigEmotionDownloadedAdapter", 2, "download recomment comic pic , try count = " + i);
   }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

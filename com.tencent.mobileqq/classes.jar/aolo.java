@@ -1,8 +1,25 @@
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
+import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class aolo
+  implements DataProvider.DataUpdateListener
 {
-  private static final CaptureVideoFilterManager a = new CaptureVideoFilterManager(null);
+  public aolo(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  
+  public void a(boolean paramBoolean, AddressDataProvider.AddressInfo paramAddressInfo)
+  {
+    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
+    if ((paramBoolean) && (paramAddressInfo != null))
+    {
+      SLog.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramAddressInfo);
+      this.a.a.post(new aolp(this, paramAddressInfo));
+      return;
+    }
+    SLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
+  }
 }
 
 

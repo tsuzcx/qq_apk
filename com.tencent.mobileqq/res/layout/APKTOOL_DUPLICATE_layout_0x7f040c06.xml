@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0bec" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03a3" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03a7" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03a5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0b6c" style="@style/APKTOOL_DUPLICATE_style_0x7f0e004b"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a34a0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020479" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a34a1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0221f7" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="44.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c010f" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a34a2" android:layout_width="wrap_content" android:layout_height="44.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b29ab" android:singleLine="true" />
+    </LinearLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a34a3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="25.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a7c" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b29a8" />
+</LinearLayout>

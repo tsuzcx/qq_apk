@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.delDownloadFile;
 
-import acql;
+import acys;
 import android.content.Context;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.FMActivity;
@@ -31,7 +31,7 @@ public class QfileLocalFileDelPicTabView
   {
     setEditbarButton(false, false, false, false, true);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this);
-    this.jdField_a_of_type_JavaLangRunnable = new acql(this);
+    this.jdField_a_of_type_JavaLangRunnable = new acys(this);
     ThreadManager.executeOnFileThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }

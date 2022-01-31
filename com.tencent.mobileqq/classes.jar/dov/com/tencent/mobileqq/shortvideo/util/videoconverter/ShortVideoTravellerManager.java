@@ -6,7 +6,7 @@ import mqq.manager.Manager;
 public class ShortVideoTravellerManager
   implements Manager
 {
-  public static final String a = AppConstants.aI + "/tencent/qim/travellervideos/";
+  public static final String a = AppConstants.aJ + "/tencent/qim/travellervideos/";
   
   public void onDestroy() {}
 }

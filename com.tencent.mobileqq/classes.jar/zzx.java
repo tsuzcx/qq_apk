@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.MsgProxyUtils;
 
-public class zzx
+public final class zzx
   implements Runnable
 {
-  public zzx(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public zzx(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.a.e = 0;
-    QLog.i("ARWorldCupGlobalSceneRenderable", 1, "cleanWorldCupSparks. mInsertedSparkTotalCnt = 0, hasDrawedFrame = " + ARWorldCupGlobalSceneRenderable.c(this.a));
-    if ((ARWorldCupGlobalSceneRenderable.a(this.a) != null) && (ARWorldCupGlobalSceneRenderable.c(this.a))) {
-      ARWorldCupGlobalSceneRenderable.a(this.a).native_cleanWorldCupSparks();
-    }
+    MsgProxyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zzx
  * JD-Core Version:    0.7.0.1
  */

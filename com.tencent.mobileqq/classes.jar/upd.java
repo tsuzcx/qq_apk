@@ -1,34 +1,124 @@
-import android.animation.Animator;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.FlyIconAnimListener;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.List;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troop.data.TroopRankConfig;
+import com.tencent.mobileqq.troop.data.TroopRankConfig.TroopRankItem;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils;
 
 public class upd
-  extends FlyIconAnimListener
+  implements TroopManager.ITroopMemberInfoCallBack
 {
-  public upd(GoldMsgNumAnim paramGoldMsgNumAnim, Pair paramPair)
-  {
-    super(paramPair);
-  }
+  public int a;
+  public BaseChatItemLayout a;
+  public TroopInfo a;
+  public boolean a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  private upd(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (this.jdField_a_of_type_ComTencentUtilPair != null)
+    Object localObject1 = (BaseBubbleBuilder.ViewHolder)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getTag();
+    TroopRankConfig.TroopRankItem localTroopRankItem;
+    Object localObject2;
+    int i;
+    int j;
+    label81:
+    boolean bool1;
+    if ((paramTroopMemberInfo != null) && (TextUtils.equals(((BaseBubbleBuilder.ViewHolder)localObject1).a.senderuin, paramTroopMemberInfo.memberuin)))
     {
-      if (this.jdField_a_of_type_ComTencentUtilPair.first != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgNumAnim.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView((View)this.jdField_a_of_type_ComTencentUtilPair.first);
+      localTroopRankItem = null;
+      localObject2 = null;
+      localObject1 = null;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isQidianPrivateTroop())) {
+        break label225;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgNumAnim.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentUtilPair);
+      i = 1;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isHomeworkTroop())) {
+        break label230;
+      }
+      j = 1;
+      if (i == 0) {
+        break label241;
+      }
+      boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isTroopOwner(paramTroopMemberInfo.memberuin);
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator.contains(paramTroopMemberInfo.memberuin))) {
+        break label235;
+      }
+      bool1 = true;
+      label128:
+      localTroopRankItem = TroopRankConfig.a().a(bool2, bool1);
+      if (localTroopRankItem == null) {
+        break label367;
+      }
+      paramTroopMemberInfo = localTroopRankItem.a;
+      i = localTroopRankItem.b;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("GoldMsgNumAnim", 4, "flyIconAnimListener.onAnimationEnd flyIconList size=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgNumAnim.jdField_a_of_type_JavaUtilList.size());
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramTroopMemberInfo))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a, true, paramTroopMemberInfo, false, i, this.jdField_a_of_type_Int);
+        BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder, true);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.c.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.c.setTag(Integer.valueOf(2131361867));
+      }
+      return;
+      label225:
+      i = 0;
+      break;
+      label230:
+      j = 0;
+      break label81;
+      label235:
+      bool1 = false;
+      break label128;
+      label241:
+      if (j != 0)
+      {
+        localObject1 = TroopRankConfig.a().a(paramTroopMemberInfo.level, false, false, false);
+        if ((localObject1 == null) || (!HWTroopUtils.a(paramTroopMemberInfo))) {
+          break label359;
+        }
+        paramTroopMemberInfo = ((TroopRankConfig.TroopRankItem)localObject1).a;
+        i = ((TroopRankConfig.TroopRankItem)localObject1).b;
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Boolean) {
+          i = TroopRankConfig.a().jdField_a_of_type_Int;
+        }
+        break;
+        localObject1 = TroopRankConfig.a().a(paramTroopMemberInfo, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+        if (localObject1 != null)
+        {
+          paramTroopMemberInfo = ((TroopRankConfig.TroopRankItem)localObject1).a;
+          i = ((TroopRankConfig.TroopRankItem)localObject1).b;
+        }
+        for (;;)
+        {
+          if (this.jdField_a_of_type_Boolean)
+          {
+            i = TroopRankConfig.a().jdField_a_of_type_Int;
+            break;
+          }
+          break;
+          i = 0;
+          paramTroopMemberInfo = localObject2;
+        }
+        label359:
+        i = 0;
+        paramTroopMemberInfo = localTroopRankItem;
+      }
+      label367:
+      i = 0;
+      paramTroopMemberInfo = (TroopMemberInfo)localObject1;
     }
-    GoldMsgNumAnim.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgNumAnim);
   }
 }
 

@@ -1,37 +1,39 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
-class acrp
-  implements Runnable
+public class acrp
+  extends RecyclerView.ItemDecoration
 {
-  acrp(acro paramacro) {}
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
   
-  public void run()
+  public acrp(ExtendFriendSquareFragment paramExtendFriendSquareFragment)
   {
-    if (this.a.a.b != null)
+    this.jdField_a_of_type_Int = AIOUtils.a(11.0F, paramExtendFriendSquareFragment.getResources());
+    this.b = AIOUtils.a(11.0F, paramExtendFriendSquareFragment.getResources());
+    this.c = AIOUtils.a(8.0F, paramExtendFriendSquareFragment.getResources());
+    this.d = AIOUtils.a(8.0F, paramExtendFriendSquareFragment.getResources());
+  }
+  
+  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
+  {
+    if (paramInt == paramRecyclerView.getAdapter().getItemCount() - 1)
     {
-      Iterator localIterator = this.a.a.b.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (((List)this.a.a.b.get(str)).size() == 0) {
-          localIterator.remove();
-        }
-      }
+      paramRect.set(this.c, this.jdField_a_of_type_Int, this.d, this.b);
+      return;
     }
-    this.a.a.a.putAll(this.a.a.b);
-    this.a.a.i();
-    this.a.a.setSelect(0);
-    this.a.a.b.clear();
-    this.a.a.a(true);
+    paramRect.set(this.c, this.jdField_a_of_type_Int, this.d, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrp
  * JD-Core Version:    0.7.0.1
  */

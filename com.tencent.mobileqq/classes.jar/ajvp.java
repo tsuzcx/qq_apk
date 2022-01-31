@@ -1,23 +1,49 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.DelayAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Label;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.Options;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
+import com.tencent.mobileqq.troop.utils.TroopAppMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ajvp
   implements Runnable
 {
-  public ajvp(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, String paramString, int paramInt1, int paramInt2) {}
+  public ajvp(TroopAppMgr paramTroopAppMgr, ArrayList paramArrayList, EntityManager paramEntityManager, int paramInt) {}
   
   public void run()
   {
-    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView, new Label(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b));
-    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).a(TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).jdField_a_of_type_Int / 2, TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).b * TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).f / 100);
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView.a(TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView));
-    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).b = 0;
-    DelayAction localDelayAction = new DelayAction(500);
-    localDelayAction.a(new ajvq(this));
-    TroopGiftToAllSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToAllSurfaceView).a(new Action[] { localDelayAction });
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      Object localObject1 = TableBuilder.b(TroopAIOAppInfo.class);
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "before delete type:" + this.jdField_a_of_type_Int, (List)localObject2);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a((String)localObject1, "groupType=?", new String[] { String.valueOf(this.jdField_a_of_type_Int) });
+      if (QLog.isColorLevel())
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "before update after delete type:" + this.jdField_a_of_type_Int, (List)localObject1);
+      }
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (TroopAIOAppInfo)((Iterator)localObject1).next();
+        ((TroopAIOAppInfo)localObject2).setStatus(1000);
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, (Entity)localObject2);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "after update type:" + this.jdField_a_of_type_Int, (List)localObject1);
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
   }
 }
 

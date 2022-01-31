@@ -1,57 +1,39 @@
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.ChatHistoryViewBase;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import NS_MOBILE_AIONewestFeed.NewestFeedInfo;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.MessageHandlerUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class rzz
-  implements TabBarView.OnTabChangeListener
+public final class rzz
+  implements Runnable
 {
-  public rzz(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  public rzz(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, NewestFeedInfo paramNewestFeedInfo, String paramString) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    ChatHistoryViewBase localChatHistoryViewBase = null;
-    switch (paramInt2)
+    if (ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false))
     {
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase != null)
+      ChatActivityFacade.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      MessageRecord localMessageRecord = MessageRecordFactory.a(-2015);
+      long l = MessageCache.a();
+      localMessageRecord.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), String.valueOf(this.jdField_a_of_type_NS_MOBILE_AIONewestFeedNewestFeedInfo.uHostUin), String.valueOf(this.jdField_a_of_type_NS_MOBILE_AIONewestFeedNewestFeedInfo.uHostUin), this.jdField_a_of_type_JavaLangString, l, -2015, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, l);
+      localMessageRecord.isread = true;
+      if (!MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, false))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.c();
-        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.a());
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, localMessageRecord.selfuin);
+        if (QLog.isColorLevel()) {
+          QLog.i("ChatActivityFacade.QZoneFeeds", 2, "addQzoneFeedMessage addMessage,time:" + l);
+        }
+        l = localMessageRecord.time;
+        SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), localMessageRecord.frienduin, l);
       }
-      if (localChatHistoryViewBase == null) {
-        break;
-      }
-      localChatHistoryViewBase.a(ChatHistoryFileActivity.a(this.a));
-      localChatHistoryViewBase.d();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase = localChatHistoryViewBase;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.a = this.a;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.a(), 0, new ViewGroup.LayoutParams(-1, -1));
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label310;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.a();
-      return;
-      localChatHistoryViewBase = ChatHistoryFileActivity.a(this.a, 0);
-      continue;
-      localChatHistoryViewBase = ChatHistoryFileActivity.a(this.a, 1);
-      ReportController.b(this.a.app, "dc00898", "", "", "0X8007126", "0X8007126", 0, 0, "", "", "", "");
-      continue;
-      localChatHistoryViewBase = ChatHistoryFileActivity.a(this.a, 2);
-      ReportController.b(this.a.app, "dc00898", "", "", "0X8007127", "0X8007127", 0, 0, "", "", "", "");
-      continue;
-      localChatHistoryViewBase = ChatHistoryFileActivity.a(this.a, 3);
-      ReportController.b(this.a.app, "dc00898", "", "", "0X8007128", "0X8007128", 0, 0, "", "", "", "");
     }
-    label310:
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryViewBase.b();
   }
 }
 

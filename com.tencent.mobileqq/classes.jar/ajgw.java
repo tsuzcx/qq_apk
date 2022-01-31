@@ -1,23 +1,17 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopSearchResultDialog;
 
 public class ajgw
-  implements Runnable
 {
-  public ajgw(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public String a;
+  TextView b;
   
-  public void run()
-  {
-    EditText localEditText = PublishHomeWorkFragment.a(this.a, PublishHomeWorkFragment.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("PublishHomeWorkFragment", 2, "弹起键盘");
-    }
-    if (localEditText != null) {
-      InputMethodUtil.a(localEditText);
-    }
-  }
+  ajgw(NewTroopSearchResultDialog paramNewTroopSearchResultDialog) {}
 }
 
 

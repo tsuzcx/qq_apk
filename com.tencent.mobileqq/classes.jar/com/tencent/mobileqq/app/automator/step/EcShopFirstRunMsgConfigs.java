@@ -16,7 +16,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
-import zqn;
+import zwy;
 
 public class EcShopFirstRunMsgConfigs
   extends AsyncStep
@@ -27,7 +27,7 @@ public class EcShopFirstRunMsgConfigs
       QLog.d("QQInitHandler", 2, "EcShopFirstRunMsgConfigs start in addEcShopAssistToRUFirstTime...");
     }
     ((EcShopAssistantManager)this.a.b.getManager(87)).c();
-    zqn localzqn = new zqn(this);
+    zwy localzwy = new zwy(this);
     List localList1 = Arrays.asList(new String[] { "http://imgcache.qq.com/zzapp/qqshop/stat/qqshp_client_log_wl_conf.json", "http://imgcache.qq.com/zzapp/qqshop/stat/qqshp_client_log_jd_conf.json" });
     List localList2 = Arrays.asList(new String[] { EcShopAssistantManager.e, EcShopAssistantManager.f });
     List localList3 = Arrays.asList(new String[] { "last_modified_report_json", "last_modified_behaviors_json" });
@@ -62,7 +62,7 @@ public class EcShopFirstRunMsgConfigs
             ((DownloadTask)localObject3).n = false;
             localObject1 = new Bundle();
             ((Bundle)localObject1).putString("path", str);
-            localDownloaderInterface.a((DownloadTask)localObject3, localzqn, (Bundle)localObject1);
+            localDownloaderInterface.a((DownloadTask)localObject3, localzwy, (Bundle)localObject1);
           }
         }
       }

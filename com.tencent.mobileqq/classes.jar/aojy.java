@@ -1,23 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
 
 public class aojy
-  extends BroadcastReceiver
+  extends CaptureConfigUpdateObserver
 {
-  public aojy(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public aojy(EditTextEffectView paramEditTextEffectView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void f()
   {
-    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
-      }
-      this.a.c();
-    }
+    super.f();
+    this.a.a();
   }
 }
 

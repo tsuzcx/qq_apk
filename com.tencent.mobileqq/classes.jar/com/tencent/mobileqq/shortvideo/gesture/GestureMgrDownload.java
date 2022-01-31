@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.gesture;
 
-import aibp;
+import aigj;
 import android.content.IntentFilter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.utils.BusinessCommonConfig;
@@ -57,7 +57,7 @@ public class GestureMgrDownload
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.video.gesturemgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new aibp(this), localIntentFilter) != null;
+    return paramBaseApplicationImpl.registerReceiver(new aigj(this), localIntentFilter) != null;
   }
   
   public boolean b()

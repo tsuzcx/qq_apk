@@ -1,13 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
 class mpw
   implements Runnable
 {
-  mpw(mpv parammpv) {}
+  mpw(mpu parammpu) {}
   
   public void run()
   {
-    FastWebVideoVolumeControl.c(this.a.a, false);
+    this.a.a.finish();
   }
 }
 

@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditDoodleExport;
+import com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
 
-public final class ohs
-  implements Animation.AnimationListener
+public class ohs
+  extends PtvTemplateManager.DoodleInfoLoadObserver
 {
-  public ohs(View paramView) {}
+  public ohs(EditPicActivity paramEditPicActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    this.a.setAnimation(null);
+    SLog.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.a.a.a(EditDoodleExport.class);
+    if (localEditDoodleExport != null) {
+      localEditDoodleExport.b();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

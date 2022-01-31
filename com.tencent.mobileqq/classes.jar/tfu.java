@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class tfu
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  public tfu(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  public tfu(MainFragment paramMainFragment) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.finish();
+    this.a.g();
   }
 }
 

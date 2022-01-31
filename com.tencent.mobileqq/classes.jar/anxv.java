@@ -1,41 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.qq.im.capture.text.EditTextPreView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
 
 public class anxv
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public anxv(EditTextDialog paramEditTextDialog) {}
+  public anxv(MusicProviderView paramMusicProviderView, MusicItemInfo paramMusicItemInfo) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt1 = 49;
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener == null) {}
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem != null) {
-        this.a.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.setText(this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(), paramCharSequence.toString());
-      }
-    } while (paramCharSequence.toString().length() <= 50);
-    if (Character.isHighSurrogate(paramCharSequence.charAt(49))) {}
-    for (;;)
-    {
-      paramCharSequence = paramCharSequence.subSequence(0, paramInt1).toString();
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.length());
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(new anxw(this));
-      return;
-      paramInt1 = 50;
-    }
+    paramDialogInterface.dismiss();
+    MusicProviderView.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.aA_();
+    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
   }
 }
 

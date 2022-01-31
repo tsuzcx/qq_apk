@@ -24,7 +24,7 @@ import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nfn;
+import njx;
 
 public class GetFeedFeatureHandler
   extends BatchNetHandler
@@ -81,7 +81,7 @@ public class GetFeedFeatureHandler
   
   public void a()
   {
-    ThreadManager.post(new nfn(this), 8, null, true);
+    ThreadManager.post(new njx(this), 8, null, true);
   }
   
   public void a(@NonNull NetworkRequest paramNetworkRequest, @Nullable BaseResponse paramBaseResponse, @NonNull ErrorMessage paramErrorMessage)
@@ -90,7 +90,7 @@ public class GetFeedFeatureHandler
     {
       paramNetworkRequest = (GetFeedFeatureResponse)paramBaseResponse;
       paramBaseResponse = new GetFeedFeatureHandler.GetFeedFeatureEvent();
-      paramBaseResponse.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      paramBaseResponse.errorInfo = paramErrorMessage;
       if ((paramErrorMessage.isSuccess()) && (!paramNetworkRequest.jdField_a_of_type_JavaUtilList.isEmpty()))
       {
         if (QLog.isColorLevel()) {

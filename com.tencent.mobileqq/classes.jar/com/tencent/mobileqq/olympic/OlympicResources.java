@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic;
 
-import agef;
+import agir;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
@@ -30,7 +30,7 @@ public class OlympicResources
   implements INetEngine.INetEngineListener
 {
   private static int jdField_a_of_type_Int = 3;
-  static INetEngine.IBreakDownFix jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new agef();
+  static INetEngine.IBreakDownFix jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new agir();
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
   private List jdField_a_of_type_JavaUtilList = new Vector();
@@ -44,7 +44,7 @@ public class OlympicResources
   public static String a()
   {
     if (SystemUtil.a()) {
-      return AppConstants.aJ + "OlympicRes/";
+      return AppConstants.aK + "OlympicRes/";
     }
     return BaseApplicationImpl.getApplication().getFilesDir() + File.separator + "OlympicRes/";
   }

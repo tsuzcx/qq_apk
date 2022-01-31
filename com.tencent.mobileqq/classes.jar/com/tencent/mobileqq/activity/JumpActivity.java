@@ -71,13 +71,13 @@ import mqq.observer.WtloginObserver;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 import org.json.JSONException;
 import org.json.JSONObject;
-import svy;
-import svz;
-import swa;
-import swb;
-import swc;
-import swd;
-import swe;
+import tat;
+import tau;
+import tav;
+import taw;
+import tax;
+import tay;
+import taz;
 
 public class JumpActivity
   extends BaseActivity
@@ -91,7 +91,7 @@ public class JumpActivity
   private Intent jdField_a_of_type_AndroidContentIntent;
   private QQMapActivityProxy jdField_a_of_type_ComTencentMobileqqAppQQMapActivityProxy;
   private String jdField_a_of_type_JavaLangString;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new svy(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new tat(this);
   private Intent jdField_b_of_type_AndroidContentIntent;
   private String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
@@ -134,7 +134,7 @@ public class JumpActivity
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new svz(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new tau(this);
       IntentFilter localIntentFilter = new IntentFilter("ShareToQZoneAndFinishTheLastActivity");
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
@@ -159,7 +159,7 @@ public class JumpActivity
   
   private void a(Intent paramIntent, Bundle paramBundle)
   {
-    new swa(this, paramIntent, paramBundle).run();
+    new tav(this, paramIntent, paramBundle).run();
   }
   
   private void a(Bundle paramBundle)
@@ -437,7 +437,7 @@ public class JumpActivity
   
   private void b(Bundle paramBundle)
   {
-    new swb(this, paramBundle).run();
+    new taw(this, paramBundle).run();
   }
   
   private void b(boolean paramBoolean)
@@ -461,14 +461,14 @@ public class JumpActivity
     {
       int i = a(localBundle);
       if (i == 4) {
-        QfavUtil.a(this, 2131431678, 1);
+        QfavUtil.a(this, 2131431689, 1);
       }
       for (;;)
       {
         finish();
         return;
         if (i != 0) {
-          QfavUtil.a(this, 2131431679, 1);
+          QfavUtil.a(this, 2131431690, 1);
         }
       }
     }
@@ -639,18 +639,6 @@ public class JumpActivity
   
   private void i(Intent paramIntent)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4);
-    if (paramIntent != null)
-    {
-      paramIntent = paramIntent.getStringExtra("nearby_now_publish_success_js_param");
-      if (!TextUtils.isEmpty(paramIntent)) {
-        localSharedPreferences.edit().putString("nearby_now_publish_success_js_param", paramIntent).commit();
-      }
-    }
-  }
-  
-  private void j(Intent paramIntent)
-  {
     boolean bool = paramIntent.getBooleanExtra("IS_LOGIN_SUC_CALL", false);
     if (!this.app.isLogin())
     {
@@ -671,7 +659,7 @@ public class JumpActivity
     finish();
   }
   
-  private static void k(Intent paramIntent)
+  private static void j(Intent paramIntent)
   {
     String str = paramIntent.getAction();
     paramIntent = paramIntent.getDataString();
@@ -685,7 +673,7 @@ public class JumpActivity
     localStatisticCollector.a("", "JA_ARGUMENTS", true, 0L, 0L, localHashMap, "");
   }
   
-  private void l(Intent paramIntent)
+  private void k(Intent paramIntent)
   {
     Object localObject2 = paramIntent.getData();
     Object localObject1;
@@ -1158,15 +1146,15 @@ public class JumpActivity
     {
       super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
       if (paramInt2 != -1) {
-        break label467;
+        break label506;
       }
       switch (paramInt1)
       {
       }
     }
-    label401:
-    label467:
-    do
+    label409:
+    label506:
+    while (paramInt1 == 23)
     {
       do
       {
@@ -1206,11 +1194,11 @@ public class JumpActivity
           a(true, null, false);
           return;
           if ((-1 != paramInt2) || (paramIntent == null)) {
-            break label401;
+            break label409;
           }
           paramIntent = paramIntent.getStringExtra("roomId");
         } while (paramIntent == null);
-        localObject1 = new swc(this);
+        localObject1 = new tax(this);
       } while (!ChatActivityUtils.a(this.app, this, 3000, paramIntent, true, true, (ChatActivityUtils.StartVideoListener)localObject1, null));
       finish();
       return;
@@ -1228,21 +1216,11 @@ public class JumpActivity
       }
       finish();
       return;
-      setResult(paramInt2, paramIntent);
-      i(paramIntent);
-      finish();
+      new Handler().postDelayed(new tay(this), 10L);
       return;
-      if (paramInt1 == 570)
-      {
-        new Handler().postDelayed(new swd(this), 10L);
-        return;
-      }
-      if (paramInt1 == 573)
-      {
-        new Handler().postDelayed(new swe(this, paramIntent), 10L);
-        return;
-      }
-    } while (paramInt1 == 23);
+      new Handler().postDelayed(new taz(this, paramIntent), 10L);
+      return;
+    }
     finish();
   }
   
@@ -1257,7 +1235,7 @@ public class JumpActivity
         QLog.d("JumpAction", 2, "JumpActivity doOnCreate()");
       }
       localObject4 = getIntent();
-      k((Intent)localObject4);
+      j((Intent)localObject4);
       if ((localObject4 != null) && (((Intent)localObject4).getBooleanExtra("jump_cm_game", false)))
       {
         i = ((Intent)localObject4).getIntExtra("jump_cm_game_id", -1);
@@ -1353,7 +1331,7 @@ public class JumpActivity
     }
     if ((localObject4 != null) && (((!TextUtils.isEmpty(((Intent)localObject4).getAction())) && (((Intent)localObject4).getAction().equals("android.intent.action.MAIN")) && (((Intent)localObject4).getBooleanExtra("_is_from_qlink_shortcut", false))) || (((Intent)localObject4).getBooleanExtra("_goto_qlink_when_login_suc_", false))))
     {
-      j((Intent)localObject4);
+      i((Intent)localObject4);
       return false;
     }
     if ((localObject4 != null) && (!TextUtils.isEmpty(((Intent)localObject4).getAction())) && (((Intent)localObject4).getAction().equals("com.tencent.qreader.SHORT_CUT")) && (((Intent)localObject4).getBooleanExtra("is_from_qreader_shortcut", false)))
@@ -1383,7 +1361,7 @@ public class JumpActivity
     }
     if ((localObject4 != null) && (!TextUtils.isEmpty(((Intent)localObject4).getScheme())) && (((Intent)localObject4).getScheme().equals("kandianugc")))
     {
-      l((Intent)localObject4);
+      k((Intent)localObject4);
       finish();
       return false;
     }
@@ -1569,7 +1547,7 @@ public class JumpActivity
           {
             if (!NetworkUtil.d(this))
             {
-              QQToast.a(this, getString(2131433009), 0).b(getTitleBarHeight());
+              QQToast.a(this, getString(2131433023), 0).b(getTitleBarHeight());
               break label2774;
             }
             EquipmentLockImpl.a().a(this.app, this.app.getCurrentAccountUin(), this.jdField_a_of_type_MqqObserverWtloginObserver);
@@ -1630,7 +1608,7 @@ public class JumpActivity
           finish();
         }
       }
-      else if (((JumpAction)localObject3).e())
+      else if (((JumpAction)localObject3).f())
       {
         if (bool) {
           finish();

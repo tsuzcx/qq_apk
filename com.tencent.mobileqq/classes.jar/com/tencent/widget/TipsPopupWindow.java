@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import amdy;
-import amdz;
+import amli;
+import amlj;
 import android.graphics.drawable.Animatable;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -13,7 +13,7 @@ public class TipsPopupWindow
   extends PopupWindow
   implements TipsLinearLayout.TipsLayoutAnimListener
 {
-  private amdz jdField_a_of_type_Amdz;
+  private amlj jdField_a_of_type_Amlj;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TipsLinearLayout jdField_a_of_type_ComTencentWidgetTipsLinearLayout;
@@ -25,7 +25,7 @@ public class TipsPopupWindow
   private void c()
   {
     if (this.c) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Amdz, 1000L);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Amlj, 1000L);
     }
     while ((!this.jdField_a_of_type_Boolean) || (this.d)) {
       return;
@@ -43,7 +43,7 @@ public class TipsPopupWindow
       this.d = false;
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Amdz);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Amlj);
   }
   
   private void e()
@@ -67,7 +67,7 @@ public class TipsPopupWindow
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.post(new amdy(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.post(new amli(this));
   }
   
   public void dismiss()
@@ -75,8 +75,8 @@ public class TipsPopupWindow
     if (QLog.isColorLevel()) {
       QLog.d("TipsPopupWindow", 2, "dismiss");
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Amdz);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Amdz, 300L);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeCallbacks(this.jdField_a_of_type_Amlj);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.postDelayed(this.jdField_a_of_type_Amlj, 300L);
   }
   
   public void showAsDropDown(View paramView)

@@ -1,16 +1,15 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnPreparedListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.playmode.child.TroopStoryForAIOPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 
 public class nqd
-  implements IMediaPlayer.OnPreparedListener
+  implements Runnable
 {
-  public nqd(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnPreparedListener paramOnPreparedListener) {}
+  public nqd(TroopStoryForAIOPlayMode paramTroopStoryForAIOPlayMode) {}
   
-  public void a_(IMediaPlayer paramIMediaPlayer)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnPreparedListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl);
+    this.a.h = false;
+    this.a.a.setCurrentItem(this.a.b, false);
   }
 }
 

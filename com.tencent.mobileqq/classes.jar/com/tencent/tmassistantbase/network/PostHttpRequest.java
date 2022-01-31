@@ -1,5 +1,7 @@
 package com.tencent.tmassistantbase.network;
 
+import com.tencent.tmassistantbase.util.g;
+import com.tencent.tmassistantbase.util.r;
 import org.apache.http.client.methods.HttpPost;
 
 public abstract class PostHttpRequest
@@ -81,18 +83,31 @@ public abstract class PostHttpRequest
   
   protected boolean sendRequest(byte[] paramArrayOfByte)
   {
-    boolean bool = false;
-    if (paramArrayOfByte == null) {}
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramArrayOfByte == null) {
+      bool1 = bool2;
+    }
     for (;;)
     {
-      return bool;
+      return bool1;
+      bool1 = bool2;
       try
       {
         if (this.mHttpPost != null) {
           continue;
         }
-        new Thread(new c(this, paramArrayOfByte)).start();
-        bool = true;
+        paramArrayOfByte = new Thread(new c(this, paramArrayOfByte), g.c.name());
+        try
+        {
+          paramArrayOfByte.start();
+          bool1 = true;
+        }
+        catch (OutOfMemoryError paramArrayOfByte)
+        {
+          r.e("BaseHttpRequest", "<sendRequest>low memory!");
+          bool1 = bool2;
+        }
       }
       finally {}
     }

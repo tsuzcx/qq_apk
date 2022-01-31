@@ -235,33 +235,33 @@ public class EditVideoPermission
     }
   }
   
-  private void j()
+  private void i()
   {
     switch (this.b)
     {
     default: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843627);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843697);
       return;
     case 10004: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843630);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843700);
       return;
     case 10000: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843627);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843697);
       return;
     case 10001: 
-      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843634);
+      this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843704);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843635);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130843705);
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131364443));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131364468));
     this.jdField_a_of_type_Int = a();
     this.b = this.jdField_a_of_type_Int;
-    j();
+    i();
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -289,7 +289,7 @@ public class EditVideoPermission
         this.jdField_a_of_type_JavaUtilArrayList.addAll(paramIntent);
       }
       b(paramInt1);
-      j();
+      i();
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
       return;
     }

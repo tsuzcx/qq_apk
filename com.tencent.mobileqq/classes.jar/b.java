@@ -17,7 +17,7 @@ public class b
       this.a.jdField_a_of_type_Int = 0;
       FounderColorLayout.a(this.a, 0L);
       FounderColorLayout.a(this.a).mShouldDisplayAnimation = false;
-      FounderColorLayout.a(this.a).h = false;
+      FounderColorLayout.a(this.a).g = false;
       FounderColorLayout.a(this.a).invalidate();
     }
     while (i <= this.a.jdField_a_of_type_Int) {

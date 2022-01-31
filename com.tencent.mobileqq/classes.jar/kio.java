@@ -1,45 +1,24 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.SystemClock;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.authorize.FlatBuffersConfig;
-import com.tencent.biz.authorize.JsonConfig;
-import com.tencent.biz.flatbuffers.FlatBuffersParser;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
 public class kio
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public kio(AuthorizeConfig paramAuthorizeConfig) {}
+  public kio(PopupDialog paramPopupDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = SystemClock.currentThreadTimeMillis();
-    if (l > AuthorizeConfig.jdField_a_of_type_Long + 10000L)
-    {
-      this.a.jdField_a_of_type_AndroidContentContext.getSharedPreferences("domainCmdRight", 4);
-      AuthorizeConfig.jdField_a_of_type_Long = l;
+    if (PopupDialog.a.b != null) {
+      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
     }
-    FlatBuffersParser.b();
-    l = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("lastUpdate", 0L);
-    if (l != AuthorizeConfig.jdField_b_of_type_Long)
-    {
-      AuthorizeConfig.jdField_b_of_type_Long = l;
-      this.a.jdField_a_of_type_ComTencentBizAuthorizeJsonConfig.b();
-      this.a.jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig.a();
-      this.a.i = null;
-      this.a.jdField_b_of_type_OrgJsonJSONObject = null;
-      this.a.jdField_c_of_type_OrgJsonJSONObject = null;
-      this.a.jdField_a_of_type_OrgJsonJSONObject = null;
-      this.a.jdField_c_of_type_OrgJsonJSONArray = null;
-      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.a.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kio
  * JD-Core Version:    0.7.0.1
  */

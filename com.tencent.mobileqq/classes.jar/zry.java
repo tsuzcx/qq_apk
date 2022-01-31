@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.app.BizTroopHandler;
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.lbs.LbsInfoMgr;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class zry
   implements Runnable
 {
-  public zry(LbsInfoMgr paramLbsInfoMgr) {}
+  public zry(QQAppInterface paramQQAppInterface, long paramLong, Intent paramIntent) {}
   
   public void run()
   {
-    LbsInfoMgr.a(this.a).addObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver, true);
-    LbsInfoMgr.a(this.a).b();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
     if (QLog.isColorLevel()) {
-      QLog.i("Q.troopMemberDistance.LbsInfoMgr", 2, "reportLbsInfoToServer: timeStamp = " + this.a.jdField_a_of_type_Long + ", cost=" + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+      QLog.i("Q.qqhead.broadcast", 2, "runNext, ThreadManager.excute, cost=" + (l1 - l2));
     }
+    QQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.decrementAndGet();
+    QQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

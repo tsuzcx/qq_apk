@@ -24,8 +24,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
 import mqq.observer.WtloginObserver;
 import mqq.os.MqqHandler;
-import tao;
-import tap;
+import tfg;
+import tfh;
 
 public class LoginPhoneNumActivity2
   extends RegisterBaseActivity
@@ -36,8 +36,8 @@ public class LoginPhoneNumActivity2
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private OpenSDKAppInterface jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new tap(this);
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tao(this);
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new tfh(this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tfg(this);
   
   private String a(String paramString)
   {
@@ -116,7 +116,7 @@ public class LoginPhoneNumActivity2
     this.jdField_a_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString());
     if (this.jdField_a_of_type_JavaLangString == null)
     {
-      a(2131434249, 1);
+      a(2131434265, 1);
       bool = false;
     }
     return bool;
@@ -139,12 +139,12 @@ public class LoginPhoneNumActivity2
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370407));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370416));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    b(getString(2131434317), "+" + this.b);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365431));
+    b(getString(2131434333), "+" + this.b);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365436));
     this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370409));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131370418));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -156,16 +156,16 @@ public class LoginPhoneNumActivity2
       return;
       if (!NetworkUtil.d(BaseApplication.getContext()))
       {
-        a(2131433009, 0);
+        a(2131433023, 0);
         return;
       }
-      a(2131434231);
+      a(2131434247);
       if (QLog.isColorLevel()) {
         QLog.d("LoginPhoneNumActivity", 2, "-->startQueryAccount--CheckSMSVerifyLoginAccount, countryCode = " + this.b + "phoneNum = " + this.jdField_a_of_type_JavaLangString);
       }
     } while (PhoneNumLoginImpl.a().a(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_MqqObserverWtloginObserver) == 0);
     c();
-    a(getString(2131434215), 1);
+    a(getString(2131434231), 1);
   }
   
   public void a()
@@ -189,7 +189,7 @@ public class LoginPhoneNumActivity2
   
   public void b()
   {
-    a(2131434460, 1);
+    a(2131434476, 1);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -241,10 +241,10 @@ public class LoginPhoneNumActivity2
   {
     switch (paramView.getId())
     {
-    case 2131370408: 
+    case 2131370417: 
     default: 
       return;
-    case 2131370407: 
+    case 2131370416: 
       startActivityForResult(new Intent(this, CountryActivity.class), 1);
       return;
     }
@@ -254,8 +254,8 @@ public class LoginPhoneNumActivity2
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130970403));
-    setTitle(2131433207);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)setContentViewB(2130970418));
+    setTitle(2131433221);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("key_req_src", -1);
     if (QLog.isColorLevel()) {
       QLog.d("LoginPhoneNumActivity", 2, "-->onCreate--mReqSrc = " + this.jdField_a_of_type_Int);

@@ -6,12 +6,12 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
-import ocy;
+import ohn;
 
 public class EditLocalPhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new ocy();
+  public static final Parcelable.Creator CREATOR = new ohn();
   public final LocalMediaInfo a;
   public final String a;
   

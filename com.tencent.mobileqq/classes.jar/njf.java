@@ -1,14 +1,17 @@
-import com.tencent.biz.qqstory.playmode.child.CommentPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.observer.GetRedPointExObserver;
 
 public class njf
-  implements Runnable
+  extends GetRedPointExObserver
 {
-  public njf(CommentPlayMode paramCommentPlayMode) {}
+  public njf(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
-  public void run()
+  protected void a(Object paramObject)
   {
-    this.a.a.setCurrentItem(0, false);
+    ThreadManager.post(new njg(this, paramObject), 5, null, true);
+    SLog.b(MsgTabStoryNodeListManager.a(), "freshRedPoint, showStoryNode");
   }
 }
 

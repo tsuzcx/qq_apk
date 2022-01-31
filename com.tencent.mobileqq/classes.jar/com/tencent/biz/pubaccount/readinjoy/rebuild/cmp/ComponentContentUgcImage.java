@@ -82,7 +82,7 @@ public class ComponentContentUgcImage
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969704, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969701, this, true);
   }
   
   public void a()
@@ -97,8 +97,8 @@ public class ComponentContentUgcImage
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367538));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367539));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367545));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367546));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)

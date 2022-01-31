@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a064c" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a200f" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213d2" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="12.0dip" android:textColor="#ffdf0000" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2010" android:visibility="visible" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="120.0dip" android:text="20:00派发红包" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff4" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0406c9" />
+    <com.tencent.mobileqq.widget.PinnedDividerListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff5" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff6" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff4" />
+    <com.tencent.mobileqq.widget.IndexView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e4b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206d7" android:paddingLeft="8.0dip" android:paddingTop="8.0dip" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="65.0dip" android:layout_marginBottom="65.0dip" android:layout_alignParentRight="true" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0daf" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff4">
+        <ImageView android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021342" />
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0027" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03fa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="没有可匹配的通讯录" />
     </LinearLayout>
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2011" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="春节活动入口" />
-</LinearLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff6" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentBottom="true">
+        <View android:layout_gravity="top" android:background="#ffcccccc" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <Button android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="8.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff6" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff4" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ff9" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0400e8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

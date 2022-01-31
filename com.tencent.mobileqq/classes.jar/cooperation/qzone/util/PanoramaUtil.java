@@ -1,9 +1,9 @@
 package cooperation.qzone.util;
 
-import anas;
 import android.graphics.Bitmap.Config;
 import android.os.Build;
 import android.os.Build.VERSION;
+import anir;
 import com.tencent.component.media.image.ImageLoader.Options;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.thread.QzoneBaseThread;
@@ -315,7 +315,7 @@ public class PanoramaUtil
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new anas(this, paramString2, paramString1, paramInt));
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new anir(this, paramString2, paramString1, paramInt));
   }
   
   public boolean a()

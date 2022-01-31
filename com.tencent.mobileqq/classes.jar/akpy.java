@@ -1,32 +1,30 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.vas.VipGrayConfigHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
 
 public class akpy
-  implements Runnable
+  implements URLDrawableDownListener
 {
-  public akpy(SwiftBrowserStatistics paramSwiftBrowserStatistics) {}
+  public akpy(VipGrayConfigHelper paramVipGrayConfigHelper, String paramString, URLImageView paramURLImageView) {}
   
-  public void run()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    Object localObject2 = BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject2 != null)
-    {
-      localObject1 = (TicketManager)((AppRuntime)localObject2).getManager(2);
-      localObject2 = ((AppRuntime)localObject2).getAccount();
-      if (localObject1 == null) {
-        break label50;
-      }
-    }
-    label50:
-    for (Object localObject1 = ((TicketManager)localObject1).getSkey((String)localObject2);; localObject1 = "")
-    {
-      QLog.doReportLogSelf(AppSetting.a, "FeedbackReport", "", (String)localObject2, (String)localObject1);
-      return;
-    }
+    QLog.e("friends_king", 1, "namePlateOfKing drawable fail url = " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
   }
 }
 

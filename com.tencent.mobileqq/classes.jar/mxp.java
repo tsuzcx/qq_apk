@@ -1,17 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
+import java.util.Comparator;
 
 public class mxp
-  implements View.OnClickListener
+  implements Comparator
 {
-  public mxp(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  public mxp(TroopBarAssistantManager paramTroopBarAssistantManager) {}
   
-  public void onClick(View paramView)
+  public int a(TroopBarData paramTroopBarData1, TroopBarData paramTroopBarData2)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, -1);
-    PublicAccountImageCollectionCommentActivity.b(this.a, false);
+    long l1 = Math.max(paramTroopBarData1.mLastMsgTime, paramTroopBarData1.mLastDraftTime);
+    long l2 = Math.max(paramTroopBarData2.mLastMsgTime, paramTroopBarData2.mLastDraftTime);
+    if ((paramTroopBarData2.mIsSticky) && (!paramTroopBarData1.mIsSticky)) {}
+    do
+    {
+      do
+      {
+        return 1;
+        if ((!paramTroopBarData2.mIsSticky) && (paramTroopBarData1.mIsSticky)) {
+          return -1;
+        }
+        if ((!paramTroopBarData2.mIsSticky) || (!paramTroopBarData1.mIsSticky)) {
+          break;
+        }
+      } while (paramTroopBarData2.mLastStickyTime > paramTroopBarData1.mLastStickyTime);
+      if (paramTroopBarData2.mLastStickyTime == paramTroopBarData1.mLastStickyTime) {
+        return 0;
+      }
+      return -1;
+    } while (l1 < l2);
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

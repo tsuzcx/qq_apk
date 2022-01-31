@@ -198,11 +198,11 @@ public class EditVideoSpeedFilter
     do
     {
       return;
-      this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364414));
+      this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364439));
     } while (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer != null);
     ViewParent localViewParent = this.jdField_a_of_type_AndroidViewViewStub.getParent();
     if ((localViewParent != null) && ((localViewParent instanceof ViewGroup))) {}
-    for (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)this.jdField_a_of_type_AndroidViewViewStub.inflate());; this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)a(2131362513)))
+    for (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)this.jdField_a_of_type_AndroidViewViewStub.inflate());; this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer = ((PickerContainer)a(2131362517)))
     {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer.a(this);
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerContainer.a(2, false);
@@ -265,10 +265,14 @@ public class EditVideoSpeedFilter
   public void c(int paramInt, String paramString)
   {
     SLog.b("Q.qqstory.publish.editEditVideoSpeedFilter", "onPickSpeed:" + paramInt + "  " + paramString + " moving:" + this.jdField_b_of_type_Boolean);
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.jdField_b_of_type_Boolean) {}
+    do
+    {
       return;
-    }
-    e(c(paramInt), paramString);
+      e(c(paramInt), paramString);
+      paramString = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(EditProviderExport.class);
+    } while (!(paramString instanceof EditProviderExport));
+    ((EditProviderExport)paramString).c();
   }
   
   public void d(int paramInt, String paramString)
@@ -289,7 +293,7 @@ public class EditVideoSpeedFilter
     }
   }
   
-  public void j()
+  public void i()
   {
     SLog.a("Q.qqstory.publish.editEditVideoSpeedFilter", "updateFilterMode : %s", this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a);
     ArrayList localArrayList = new ArrayList();

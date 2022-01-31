@@ -17,6 +17,9 @@ public class FastAnimationDrawable$LoopReadWriteRunnable
     while (this.a.isRunning())
     {
       FastAnimationDrawable.a(this.a).set(FastAnimationDrawable.a(this.a).incrementAndGet() % FastAnimationDrawable.a(this.a).size());
+      if (QLog.isColorLevel()) {
+        QLog.d("FastAnimationDrawable", 2, "LoopReadWriteRunnable index:" + FastAnimationDrawable.a(this.a).get());
+      }
       if ((this.a.a != null) && (this.a.a.get(Integer.valueOf(FastAnimationDrawable.a(this.a).get())) != null))
       {
         FastAnimationDrawable.a(this.a, (BitmapDrawable)this.a.a.get(Integer.valueOf(FastAnimationDrawable.a(this.a).get())));

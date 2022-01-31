@@ -1,32 +1,7 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.dingdong.DingdongPluginRemoteCmdHandler;
-
-public class amkx
-  extends RemoteCommand
-{
-  public amkx(DingdongPluginRemoteCmdHandler paramDingdongPluginRemoteCmdHandler, String paramString)
-  {
-    super(paramString);
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    if ((paramBundle.getBoolean("_async_call_", true)) && (Thread.currentThread() != Looper.getMainLooper().getThread()))
-    {
-      new Handler(Looper.getMainLooper()).post(new amky(this, paramBundle, paramOnInvokeFinishLinstener));
-      paramBundle.putInt("_result_code_", 0);
-      return paramBundle;
-    }
-    return this.a.a(paramBundle, paramOnInvokeFinishLinstener);
-  }
-}
+public class amkx {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amkx
  * JD-Core Version:    0.7.0.1
  */

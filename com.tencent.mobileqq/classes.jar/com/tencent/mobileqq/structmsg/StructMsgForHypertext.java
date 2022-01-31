@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg;
 
-import aiid;
-import aiie;
+import aimy;
+import aimz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -51,9 +51,9 @@ public class StructMsgForHypertext
   public int mHypertextContentLayout = 0;
   public String mSourceIcon;
   public String mSourceName;
-  protected View.OnClickListener mSourceOnClickListener = new aiie(this);
+  protected View.OnClickListener mSourceOnClickListener = new aimz(this);
   public String mSourceUrl;
-  private URLDrawableDownListener.Adapter mUrlAdapter = new aiid(this);
+  private URLDrawableDownListener.Adapter mUrlAdapter = new aimy(this);
   
   StructMsgForHypertext() {}
   
@@ -198,7 +198,7 @@ public class StructMsgForHypertext
       paramView.setTextColor(-1);
       paramView.setTextSize(2, 12.0F);
       paramView.setPadding(AIOUtils.a(5.0F, localResources), 0, AIOUtils.a(5.0F, localResources), 0);
-      paramView.setBackgroundResource(2130840645);
+      paramView.setBackgroundResource(2130840660);
     }
     TextView localTextView;
     for (;;)
@@ -228,7 +228,7 @@ public class StructMsgForHypertext
       if ((!TextUtils.isEmpty(this.mSourceIcon)) && (i != 0))
       {
         str = this.mSourceIcon;
-        localObject = localResources.getDrawable(2130846094);
+        localObject = localResources.getDrawable(2130846176);
         ((Drawable)localObject).setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));
         localColorDrawable = new ColorDrawable(15790320);
         localColorDrawable.setBounds(0, 0, AIOUtils.a(12.0F, localResources), AIOUtils.a(12.0F, localResources));

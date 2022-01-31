@@ -1,15 +1,20 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeCommonPgcVideoSocial;
 
 public class lwz
-  extends CommonSkinRes
+  implements View.OnTouchListener
 {
-  public lwz(ReadInJoySkinManager paramReadInJoySkinManager) {}
+  public lwz(FeedItemCellTypeCommonPgcVideoSocial paramFeedItemCellTypeCommonPgcVideoSocial, LinearLayout paramLinearLayout) {}
   
-  public Drawable a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return a("readinjoy_diandian_icon_foreground");
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 

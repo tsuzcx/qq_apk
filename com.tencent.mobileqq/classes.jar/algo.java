@@ -1,59 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public final class algo
-  implements Parcelable.Creator
+  implements DialogInterface.OnClickListener
 {
-  public DownloadInfo a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.e = paramParcel.readString();
-    localDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
-    localDownloadInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.h = paramParcel.readString();
-    localDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localDownloadInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localDownloadInfo.jdField_g_of_type_Int = paramParcel.readInt();
-    localDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localDownloadInfo.jdField_c_of_type_Boolean = bool1;
-      localDownloadInfo.l = paramParcel.readString();
-      localDownloadInfo.j = paramParcel.readInt();
-      localDownloadInfo.jdField_k_of_type_Int = paramParcel.readInt();
-      localDownloadInfo.m = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label221;
-      }
-    }
-    label221:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localDownloadInfo.jdField_d_of_type_Boolean = bool1;
-      localDownloadInfo.n = paramParcel.readString();
-      localDownloadInfo.jdField_d_of_type_Long = paramParcel.readLong();
-      return localDownloadInfo;
-      bool1 = false;
-      break;
-    }
-  }
+  public algo(String paramString1, int paramInt1, int paramInt2, QQMessageFacade paramQQMessageFacade, String paramString2, int paramInt3, long paramLong) {}
   
-  public DownloadInfo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new DownloadInfo[paramInt];
+    ReportController.b(null, "P_CliOper", "Safe_SensMsg", this.jdField_a_of_type_JavaLangString, "Alert_Dialog", "Other", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "", "", "");
+    ThreadManager.executeOnSubThread(new algp(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     algo
  * JD-Core Version:    0.7.0.1
  */

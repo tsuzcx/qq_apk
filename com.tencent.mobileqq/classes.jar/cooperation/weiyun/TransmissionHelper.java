@@ -3,12 +3,12 @@ package cooperation.weiyun;
 import android.app.Application;
 import android.os.Build;
 import android.text.TextUtils;
-import angx;
-import angy;
-import anha;
-import anhb;
-import anhc;
-import anhd;
+import anpa;
+import anpb;
+import anpd;
+import anpe;
+import anpf;
+import anpg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.transfile.RichMediaUtil;
@@ -64,7 +64,7 @@ public final class TransmissionHelper
   
   public static void a(int paramInt)
   {
-    new Thread(new anhc(paramInt)).start();
+    new Thread(new anpf(paramInt)).start();
   }
   
   public static void a(Application paramApplication, boolean paramBoolean)
@@ -77,14 +77,14 @@ public final class TransmissionHelper
     if (paramBoolean) {}
     for (String str = "weiyun_";; str = "qq_")
     {
-      localWeiyunTransmissionGlobal.initTransmission(localAppInfo, paramApplication, new anhd(str), WyLog.a());
+      localWeiyunTransmissionGlobal.initTransmission(localAppInfo, paramApplication, new anpg(str), WyLog.a());
       WeiyunTransmissionGlobal.getInstance().getUploadManager().setSpareUploader(new WyUploadJob());
       WeiyunTransmissionStatus.getInstance().setTranOnlyWifi(0, true, BaseApplicationImpl.getApplication().getRuntime().getAccount());
       WeiyunTransmissionStatus.getInstance().setLoginStatus(0, BaseApplicationImpl.getApplication().getRuntime().getAccount());
-      AppNetConnInfo.registerNetChangeReceiver(null, new angx());
-      WyDownloader.a().a(new angy(), paramApplication);
-      WyDownloader.a().a(new anha());
-      WeiyunTransmissionGlobal.getInstance().getUploadManager().addGlobalObserver(new anhb());
+      AppNetConnInfo.registerNetChangeReceiver(null, new anpa());
+      WyDownloader.a().a(new anpb(), paramApplication);
+      WyDownloader.a().a(new anpd());
+      WeiyunTransmissionGlobal.getInstance().getUploadManager().addGlobalObserver(new anpe());
       jdField_a_of_type_Boolean = true;
       return;
     }

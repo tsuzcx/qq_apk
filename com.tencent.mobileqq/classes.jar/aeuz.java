@@ -1,30 +1,32 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
+import com.tencent.mobileqq.app.ShieldListObserver;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aeuz
-  implements View.OnClickListener
+  extends ShieldListObserver
 {
-  public aeuz(SmallVideoSendFragment paramSmallVideoSendFragment) {}
+  public aeuz(NearbyProxy paramNearbyProxy) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, List paramList, int paramInt)
   {
-    paramView = SmallVideoSendFragment.b(this.a);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("preLoadParams", paramView);
-    localBundle.putString("isLocal", "1");
-    localBundle.putBoolean("scroll_to_comment", false);
-    localBundle.putString("play_mode", String.valueOf(2));
-    localBundle.putBoolean("is_multi_progress_bar", false);
-    if (SmallVideoSendFragment.a(this.a).h == 1) {}
-    for (paramView = "4";; paramView = "2")
+    if (paramInt == 1)
     {
-      localBundle.putString("feed_type", paramView);
-      SmallVideoFragment.a(this.a.getActivity(), localBundle);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyProxy", 2, "onAddShieldList from nearby");
+      }
+      NearbyProxy.a(this.a, 4113, new Object[] { Boolean.valueOf(paramBoolean), paramList });
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List paramList, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyProxy", 2, "onDeleteShieldList from nearby");
+      }
+      NearbyProxy.a(this.a, 4114, new Object[] { Boolean.valueOf(paramBoolean), paramList });
     }
   }
 }

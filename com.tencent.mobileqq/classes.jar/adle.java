@@ -1,33 +1,16 @@
-import android.app.Activity;
-import com.tencent.biz.widgets.ShareResultDialog.IShareResultCallback;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class adle
-  implements ShareResultDialog.IShareResultCallback
+  implements View.OnClickListener
 {
-  public adle(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public adle(DefaultFileModel paramDefaultFileModel) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (ForwardRecentActivity.class.isInstance(this.a.a)) {
-      if (!this.a.a.isFinishing())
-      {
-        if (!paramBoolean) {
-          break label75;
-        }
-        this.a.a(0, "", "");
-      }
-    }
-    for (;;)
-    {
-      if (this.a.i) {
-        ForwardSdkBaseOption.a(this.a.a, true, "shareToQQ", this.a.b);
-      }
-      return;
-      label75:
-      this.a.a(-1, "未知错误!", "未知错误!");
-    }
+    FileManagerUtil.b(this.a.a, this.a.b());
   }
 }
 

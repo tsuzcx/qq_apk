@@ -1,59 +1,39 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.RemoteException;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.IQQPlayerService.Stub;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerHandler;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aekt
-  implements ServiceConnection
+  extends TroopObserver
 {
-  public aekt(MusicPlayerActivity paramMusicPlayerActivity) {}
+  public aekt(LoginWelcomeManager paramLoginWelcomeManager) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
   {
-    MusicPlayerActivity.a(this.a, IQQPlayerService.Stub.a(paramIBinder));
-    try
+    if (paramBoolean)
     {
-      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
-      paramComponentName = MusicPlayerActivity.a(this.a).a();
-      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
-      if (paramComponentName != null)
-      {
-        String str = MusicPlayerActivity.a(this.a, paramComponentName);
-        if (MusicPlayerActivity.b().containsKey(str)) {
-          MusicPlayerActivity.a(this.a, (aekz)MusicPlayerActivity.b().get(str), paramIBinder);
-        }
-        for (;;)
-        {
-          int i = MusicPlayerActivity.a(this.a).a();
-          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
-          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.b, paramComponentName.g, paramComponentName.f, String.valueOf(paramComponentName.a), paramComponentName.c, MusicPlayerActivity.a(this.a).c());
-          return;
-          MusicPlayerActivity.a(this.a, paramComponentName.b, paramComponentName.g, paramComponentName.d, paramIBinder, false, false);
-        }
+      paramString = LoginWelcomeManager.a(this.a).getBundle("request");
+      paramString.putString("uin", String.valueOf(paramLong));
+      paramString.putShort("option", paramTroopInfo.cGroupOption);
+      paramString.putString("name", paramTroopInfo.troopname);
+      if ((paramTroopInfo.cGroupOption != 4) && (paramTroopInfo.cGroupOption != 5)) {
+        break label114;
       }
-      return;
+      paramString.putString("answer", paramTroopInfo.joinTroopAnswer);
+      paramString.putString("question", paramTroopInfo.joinTroopQuestion);
     }
-    catch (Exception paramComponentName) {}
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    paramComponentName = MusicPlayerActivity.a(this.a);
-    if (paramComponentName != null) {}
-    try
+    for (;;)
     {
-      paramComponentName.b(MusicPlayerActivity.a(this.a));
+      this.a.b();
+      LoginWelcomeManager.a(this.a).removeObserver(this);
       return;
+      label114:
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginWelcomeManager", 2, "onOIDB0X88D_1_Ret err");
+      }
     }
-    catch (RemoteException paramComponentName) {}
   }
 }
 

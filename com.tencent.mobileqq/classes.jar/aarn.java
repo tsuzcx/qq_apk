@@ -1,14 +1,18 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.mobileqq.ark.ArkAiAppCenter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 
-public class aarn
-  implements Runnable
+public final class aarn
+  implements Parcelable.Creator
 {
-  public aarn(ArkAiAppCenter paramArkAiAppCenter, String[] paramArrayOfString) {}
-  
-  public void run()
+  public ArDefaultSetting a(Parcel paramParcel)
   {
-    ark.Application.SetUrlCheckingList(this.jdField_a_of_type_ArrayOfJavaLangString, 1);
+    return new ArDefaultSetting(paramParcel);
+  }
+  
+  public ArDefaultSetting[] a(int paramInt)
+  {
+    return new ArDefaultSetting[paramInt];
   }
 }
 

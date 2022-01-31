@@ -1,41 +1,20 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.freshnews.QQInputView;
-import com.tencent.mobileqq.freshnews.QQInputView.IQQInputCallback;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
 
 public class adoj
-  implements Runnable
+  implements CUKingCardHelper.CUKingDialogListener
 {
-  public adoj(QQInputView paramQQInputView) {}
+  public adoj(FileModel paramFileModel, FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
   
-  public void run()
+  public void callback(int paramInt)
   {
-    String str1 = null;
-    String str2;
-    if (QQInputView.a(this.a) != null)
+    if ((paramInt == 1) || (paramInt == 2))
     {
-      str2 = QQInputView.a(this.a).a();
-      str1 = QQInputView.a(this.a).b();
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str2))
-      {
-        QQInputView.a(this.a).setText(str2);
-        QQInputView.a(this.a).setSelection(str2.length());
-        QQInputView.a(this.a).setEnabled(true);
-        QQInputView.a(this.a).setSelected(true);
-      }
-      while (TextUtils.isEmpty(str1)) {
-        return;
-      }
-      QQInputView.a(this.a).setHint(str1);
-      QQInputView.a(this.a).setEnabled(false);
-      QQInputView.a(this.a).setSelected(false);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.a();
       return;
-      str2 = null;
     }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.b();
   }
 }
 

@@ -1,17 +1,14 @@
-import com.tencent.ark.ArkDebugger;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class vqq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   vqq(vqp paramvqp) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.f());
-    QQToast.a(this.a.a.a.a.a, "已经开启监听，可以连接调试...", 0).a();
+    paramDialogInterface.dismiss();
   }
 }
 

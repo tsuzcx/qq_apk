@@ -1,36 +1,15 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class zjm
-  extends zeq
+  implements Runnable
 {
-  protected void a()
-  {
-    super.a();
-    if (this.d >= zeo.a().a / 12000L)
-    {
-      CoreService.stopTempService();
-      this.a.c();
-      this.d = 0L;
-    }
-  }
+  public zjm(DataLineHandler paramDataLineHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
-  protected void a(String paramString)
+  public void run()
   {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.mobileqq".equals(paramString)) {}
-    for (int i = 2;; i = 3)
-    {
-      localGuardManager.a(i, paramString);
-      return;
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    this.a.b();
-    CoreService.startTempService();
+    this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
   }
 }
 

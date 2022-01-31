@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.util.List;
 import mqq.os.MqqHandler;
-import yox;
+import yvd;
 
 public class BarrageView
   extends View
@@ -71,7 +71,7 @@ public class BarrageView
     if ((paramList == null) || (paramList.isEmpty())) {
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new yox(paramList, this));
+    ThreadManager.getSubThreadHandler().post(new yvd(paramList, this));
   }
   
   public void a(boolean paramBoolean)

@@ -1,37 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.open.base.MD5Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
-public class yui
-  extends DownloadListener
+class yui
+  implements Runnable
 {
-  public yui(ApolloCardWindow paramApolloCardWindow) {}
+  yui(yuh paramyuh) {}
   
-  public void onDoneFile(DownloadTask paramDownloadTask)
+  public void run()
   {
-    if (paramDownloadTask == null) {
-      return;
-    }
-    try
+    if (HotChatCenterFragment.a(this.a.a) != null)
     {
-      ??? = paramDownloadTask.a().getString("path");
-      String str = paramDownloadTask.a().getString("url");
-      paramDownloadTask = this.a.a((String)???);
-      str = MD5Utils.d(str);
-      synchronized (ApolloCardWindow.a)
-      {
-        ApolloCardWindow.a.put(str, paramDownloadTask);
-        return;
-      }
-      return;
-    }
-    catch (Exception paramDownloadTask)
-    {
-      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", paramDownloadTask);
+      HotChatCenterFragment.a(this.a.a).a(4);
+      HotChatCenterFragment.a(this.a.a).a(HotChatCenterFragment.a(this.a.a));
+      HotChatCenterFragment.a(this.a.a).notifyDataSetChanged();
+      this.a.a.a();
     }
   }
 }

@@ -1,61 +1,35 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedTouchUI;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.ui.QQComicTabBarView;
-import cooperation.comic.ui.QQComicTabBarView.ViewHolder;
-import cooperation.comic.utils.SimpleBiMap;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.ExpandableListView.OnGroupClickListener;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView.ExpandableListAdapter;
 
-class amki
-  implements Runnable
+public class amki
+  implements View.OnTouchListener
 {
-  amki(amkh paramamkh, ArrayList paramArrayList, boolean paramBoolean, Map paramMap) {}
+  public amki(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewTabBarView", 2, "start show red touch");
-    }
-    int i = this.jdField_a_of_type_Amkh.a.a();
-    if ((i >= 0) && (i < QQComicTabBarView.a(this.jdField_a_of_type_Amkh.a)))
+    if (paramMotionEvent.getAction() == 1)
     {
-      localObject = QQComicTabBarView.a(this.jdField_a_of_type_Amkh.a, i).getTag(-3);
-      if (!(localObject instanceof QQComicTabBarView.ViewHolder)) {}
-    }
-    for (Object localObject = ((QQComicTabBarView.ViewHolder)localObject).a;; localObject = null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
       {
-        String str = (String)localIterator.next();
-        if (this.jdField_a_of_type_Boolean) {}
-        for (RedTouchUI localRedTouchUI = (RedTouchUI)this.jdField_a_of_type_Amkh.a.a.get(str);; localRedTouchUI = (RedTouchUI)this.jdField_a_of_type_Amkh.a.a.get(this.jdField_a_of_type_Amkh.a.b.a(str)))
-        {
-          if ((localRedTouchUI == null) || (localRedTouchUI.equals(localObject))) {
-            break label208;
-          }
-          this.jdField_a_of_type_Amkh.a.a(localRedTouchUI, (RedAppInfo)this.jdField_a_of_type_JavaUtilMap.get(str), false);
-          break;
-        }
-        label208:
-        if (QLog.isColorLevel()) {
-          QLog.d("WebViewTabBarView", 2, "cannot find red touch on path: " + str);
+        int i = ExpandableListView.c(l);
+        if ((this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener == null) || (!this.a.jdField_a_of_type_ComTencentWidgetExpandableListView$OnGroupClickListener.a(this.a, paramView, i, this.a.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$ExpandableListAdapter.getGroupId(i)))) {
+          this.a.b(i);
         }
       }
-      this.jdField_a_of_type_Amkh.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("WebViewTabBarView", 2, "end show red touch");
-      }
-      return;
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amki
  * JD-Core Version:    0.7.0.1
  */

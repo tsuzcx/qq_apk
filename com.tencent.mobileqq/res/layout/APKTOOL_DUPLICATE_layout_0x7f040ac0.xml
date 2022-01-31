@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<com.tencent.mobileqq.qzoneplayer.video.TipFloatContainer android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <SurfaceView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a30a8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+    <TextView android:textSize="14.0sp" android:textColor="#ccffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3037" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:text="3秒后播放下一视频" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</com.tencent.mobileqq.qzoneplayer.video.TipFloatContainer>

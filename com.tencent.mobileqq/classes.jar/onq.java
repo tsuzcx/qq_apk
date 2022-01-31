@@ -1,21 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-class onq
+public class onq
   implements View.OnClickListener
 {
-  onq(onp paramonp, TroopStoryItemInfo paramTroopStoryItemInfo) {}
+  public onq(EditTextDialog paramEditTextDialog) {}
   
   public void onClick(View paramView)
   {
-    paramView = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
-    if (paramView != null) {
-      ((StoryVideoUploadManager)SuperManager.a().b(3)).a(paramView);
+    this.a.dismiss();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 4);
     }
+    VideoEditReport.a("0X80076C6");
+    VideoEditReport.b("0X80075DA");
   }
 }
 

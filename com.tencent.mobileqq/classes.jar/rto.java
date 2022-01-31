@@ -1,4 +1,6 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class rto
   implements Runnable
@@ -7,7 +9,10 @@ public class rto
   
   public void run()
   {
-    this.a.aV();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie", 2, "checkAllSourceDowned showPokePanel");
+    }
+    PokePanel.a(this.a.a);
   }
 }
 

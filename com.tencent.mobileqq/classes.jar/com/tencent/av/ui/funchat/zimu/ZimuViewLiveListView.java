@@ -36,7 +36,7 @@ public class ZimuViewLiveListView
     if (bool)
     {
       localObject = (View)getParent();
-      EditText localEditText = (EditText)((View)localObject).findViewById(2131365947);
+      EditText localEditText = (EditText)((View)localObject).findViewById(2131365952);
       if (!((ZimuViewLive)((View)localObject).getParent()).a()) {
         break label71;
       }
@@ -61,7 +61,7 @@ public class ZimuViewLiveListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuViewLiveListView
  * JD-Core Version:    0.7.0.1
  */

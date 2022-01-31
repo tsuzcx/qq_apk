@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamwork;
 
-import aime;
-import aimf;
+import aiqz;
+import aira;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,7 +32,7 @@ public class TeamWorkConvertUtils
     {
       return null;
       paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean = true;
-      if (paramString2.equals(paramContext.getString(2131439137))) {}
+      if (paramString2.equals(paramContext.getString(2131439164))) {}
       for (paramTeamWorkFileImportInfo.jdField_c_of_type_Boolean = true;; paramTeamWorkFileImportInfo.jdField_c_of_type_Boolean = false)
       {
         localTeamWorkFileImportHandler.a(paramTeamWorkFileImportInfo, paramBoolean);
@@ -80,7 +80,7 @@ public class TeamWorkConvertUtils
     for (;;)
     {
       return;
-      String str = String.format(paramContext.getString(2131439141), new Object[] { paramString2 });
+      String str = String.format(paramContext.getString(2131439168), new Object[] { paramString2 });
       Object localObject = paramQQAppInterface.getApp().getSharedPreferences("tim_convert_teamwork_pre_" + paramQQAppInterface.c(), 0);
       int k = ((SharedPreferences)localObject).getInt("tim_convert_teamwork_tim_open_file_entry", -1);
       int m = ((SharedPreferences)localObject).getInt("tim_convert_teamwork_tim_version", -1);
@@ -88,7 +88,7 @@ public class TeamWorkConvertUtils
       int i;
       if (!PackageUtil.b(paramQQAppInterface.getApp(), "com.tencent.tim", "775E696D09856872FDD8AB4F3F06B1E0"))
       {
-        paramString2 = String.format(paramContext.getString(2131439141), new Object[] { paramString2 });
+        paramString2 = String.format(paramContext.getString(2131439168), new Object[] { paramString2 });
         if (QLog.isColorLevel()) {
           QLog.d(paramString1, 2, "jumpTimLogin tim not install ");
         }
@@ -126,7 +126,7 @@ public class TeamWorkConvertUtils
             int n = Integer.parseInt(((String)localObject).replace(".", ""));
             if (n == 0)
             {
-              paramString2 = String.format(paramContext.getString(2131439141), new Object[] { paramString2 });
+              paramString2 = String.format(paramContext.getString(2131439168), new Object[] { paramString2 });
               i = 0;
               break;
             }
@@ -135,7 +135,7 @@ public class TeamWorkConvertUtils
             if (n >= m) {
               break;
             }
-            paramString2 = paramContext.getString(2131439133);
+            paramString2 = paramContext.getString(2131439160);
             i = 0;
           }
           catch (Exception paramString2)
@@ -152,8 +152,8 @@ public class TeamWorkConvertUtils
       label420:
       paramTeamWorkFileImportInfo = DialogUtil.a(paramContext, 0);
       paramTeamWorkFileImportInfo.setMessage(paramString2);
-      paramTeamWorkFileImportInfo.setPositiveButton(paramContext.getString(2131434609), new aime(paramQQAppInterface, paramContext, paramString1));
-      paramTeamWorkFileImportInfo.setNegativeButton(paramContext.getString(2131435886), new aimf(paramTeamWorkFileImportInfo));
+      paramTeamWorkFileImportInfo.setPositiveButton(paramContext.getString(2131434625), new aiqz(paramQQAppInterface, paramContext, paramString1));
+      paramTeamWorkFileImportInfo.setNegativeButton(paramContext.getString(2131435902), new aira(paramTeamWorkFileImportInfo));
       try
       {
         if (!paramTeamWorkFileImportInfo.isShowing())
@@ -216,7 +216,7 @@ public class TeamWorkConvertUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkConvertUtils
  * JD-Core Version:    0.7.0.1
  */

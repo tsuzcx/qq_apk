@@ -72,14 +72,14 @@ import java.util.List;
 import mqq.app.AccountNotMatchException;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import voh;
-import voi;
-import voj;
-import vok;
-import vol;
-import vom;
-import von;
-import voo;
+import vtj;
+import vtk;
+import vtl;
+import vtm;
+import vtn;
+import vto;
+import vtp;
+import vtq;
 
 public class AIOImageProviderService
   extends IAIOImageProvider.Stub
@@ -788,7 +788,7 @@ public class AIOImageProviderService
       default: 
         return;
       case 0: 
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new voo(this));
+        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new vtq(this));
         return;
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack == null);
@@ -816,7 +816,7 @@ public class AIOImageProviderService
       ??? = (AIORichMediaData[])localObject2.toArray(new AIORichMediaData[localObject2.size()]);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack.a((AIORichMediaData[])???, -1);
       return;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new voo(this));
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new vtq(this));
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService$AIOImageProviderListener == null) {
         break;
@@ -829,7 +829,7 @@ public class AIOImageProviderService
           return;
         }
       }
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new voo(this));
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new vtq(this));
       return;
       label340:
       paramInt += 1;
@@ -838,12 +838,12 @@ public class AIOImageProviderService
   
   public void a(long paramLong)
   {
-    ThreadManager.getFileThreadHandler().post(new von(this, paramLong));
+    ThreadManager.getFileThreadHandler().post(new vtp(this, paramLong));
   }
   
   public void a(long paramLong, int paramInt)
   {
-    ThreadManager.getFileThreadHandler().post(new vom(this, paramLong, paramInt));
+    ThreadManager.getFileThreadHandler().post(new vto(this, paramLong, paramInt));
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2)
@@ -871,7 +871,7 @@ public class AIOImageProviderService
         Looper localLooper = Looper.getMainLooper();
         if (Thread.currentThread() != localLooper.getThread())
         {
-          new Handler(localLooper).post(new voh(this, (MessageForFile)localObject, paramLong, paramInt1, paramInt2));
+          new Handler(localLooper).post(new vtj(this, (MessageForFile)localObject, paramLong, paramInt1, paramInt2));
           return;
         }
         a((MessageForFile)localObject, paramLong, paramInt1, paramInt2);
@@ -1021,7 +1021,7 @@ public class AIOImageProviderService
     }
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new voi(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new vtk(this);
       paramQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
     }
   }
@@ -1103,7 +1103,7 @@ public class AIOImageProviderService
       {
         localPicReq.a(paramMessageForPic, paramMessageForPic.getPicDownloadInfo());
         String str = AbsDownloader.d(URLDrawableHelper.a(paramMessageForPic, i, null).toString().toString());
-        localPicReq.a(new voj(this, paramLong, paramInt1, paramInt2, paramMessageForPic.size, str));
+        localPicReq.a(new vtl(this, paramLong, paramInt1, paramInt2, paramMessageForPic.size, str));
         PicBusiManager.a(localPicReq, (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString));
         return;
       }
@@ -1135,7 +1135,7 @@ public class AIOImageProviderService
       for (;;)
       {
         localShortVideoReq.a(localShortVideoDownloadInfo);
-        localShortVideoReq.a(new vol(this, paramLong, paramInt1, paramInt2));
+        localShortVideoReq.a(new vtn(this, paramLong, paramInt1, paramInt2));
         ShortVideoBusiManager.a(localShortVideoReq, (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString));
         return;
         localShortVideoDownloadInfo.h = ShortVideoUtils.a(paramMessageForShortVideo, "mp4");
@@ -1190,7 +1190,7 @@ public class AIOImageProviderService
         } while (TextUtils.isEmpty(paramMessageForTroopFile));
         paramMessageForTroopFile = TroopFileTransferManager.a(localQQAppInterface2, Long.valueOf(paramMessageForTroopFile).longValue());
       } while (localTroopFileStatusInfo.jdField_b_of_type_Int != 8);
-      paramMessageForTroopFile.f(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+      paramMessageForTroopFile.d(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
       paramMessageForTroopFile.a(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
     }
   }
@@ -1256,13 +1256,13 @@ public class AIOImageProviderService
     }
     for (;;)
     {
-      localObject1.addObserver(new vok(this, str, paramLong, paramInt1, paramInt2, paramMessageForTroopFile, localObject1));
+      localObject1.addObserver(new vtm(this, str, paramLong, paramInt1, paramInt2, paramMessageForTroopFile, localObject1));
       return;
       label224:
       if ((localTroopFileStatusInfo.jdField_b_of_type_Int == 7) || ((localTroopFileStatusInfo.jdField_b_of_type_Int == 11) && (!FileUtils.a(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString)))) {
         ((TroopFileTransferManager)localObject2).a(localTroopFileStatusInfo.jdField_e_of_type_JavaLangString, localTroopFileStatusInfo.g, localTroopFileStatusInfo.jdField_b_of_type_Long, localTroopFileStatusInfo.jdField_e_of_type_Int);
       } else {
-        ((TroopFileTransferManager)localObject2).e(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
+        ((TroopFileTransferManager)localObject2).c(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID);
       }
     }
   }

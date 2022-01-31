@@ -1,25 +1,32 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.VideoControlUI;
+import android.content.IntentFilter;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class kam
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public kam(VideoControlUI paramVideoControlUI) {}
+  public kam(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (this.a.a != null) {
-      return this.a.a.onTouchEvent(paramMotionEvent);
+    try
+    {
+      this.a.a = new kay(this.a);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.a.registerReceiver(this.a.a, localIntentFilter);
+      return;
     }
-    return false;
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("PSTNC2CActivity", 2, "Exception", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kam
  * JD-Core Version:    0.7.0.1
  */

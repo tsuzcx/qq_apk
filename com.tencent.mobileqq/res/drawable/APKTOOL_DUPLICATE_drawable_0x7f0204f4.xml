@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02213c" android:left="60.0dip" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022146" android:bottom="-1.0dip" />
 </layer-list>

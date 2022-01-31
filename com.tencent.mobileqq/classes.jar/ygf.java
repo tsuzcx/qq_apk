@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class ygf
-  implements Animation.AnimationListener
+class ygf
+  implements DialogInterface.OnClickListener
 {
-  public ygf(SpecailCareListActivity paramSpecailCareListActivity) {}
+  ygf(yge paramyge) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(8);
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.a.jdField_a_of_type_AndroidContentContext, 2, 12);
+    ReportController.b(this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80063F9", "0X80063F9", 1, 0, "", "", "", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

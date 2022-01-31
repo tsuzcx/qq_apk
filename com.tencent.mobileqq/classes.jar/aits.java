@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.highway.netprobe.WeakNetCallback;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-class aits
-  implements Runnable
+public final class aits
+  implements WeakNetCallback
 {
-  aits(aitq paramaitq) {}
+  private StatisticCollector a = StatisticCollector.a(BaseApplication.getContext());
   
-  public void run()
+  public void onResultOverflow(HashMap paramHashMap)
   {
-    this.a.a.g();
+    this.a.a(QQUtils.a(), "actWeaknetProbe", true, 0L, paramHashMap.size(), paramHashMap, "");
   }
 }
 

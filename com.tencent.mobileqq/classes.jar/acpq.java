@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.extendfriend.ExtendFriendResourceDownloader;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-class acpq
-  implements Runnable
+public class acpq
+  implements INetEngine.INetEngineListener
 {
-  acpq(acpp paramacpp) {}
+  public acpq(ExtendFriendResourceDownloader paramExtendFriendResourceDownloader) {}
   
-  public void run()
-  {
-    this.a.a.d();
-  }
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  
+  public void a(NetResp paramNetResp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpq
  * JD-Core Version:    0.7.0.1
  */

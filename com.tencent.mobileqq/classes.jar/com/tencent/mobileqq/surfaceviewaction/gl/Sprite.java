@@ -11,6 +11,7 @@ import java.nio.ShortBuffer;
 public class Sprite
   extends Node
 {
+  protected Point a;
   protected Texture a;
   protected FloatBuffer a;
   protected ShortBuffer a;
@@ -26,6 +27,7 @@ public class Sprite
     this.jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 3, 4, 5 };
     this.jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
     this.jdField_b_of_type_ArrayOfFloat = new float[16];
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlPoint = new Point(0.0F, 0.0F);
     f();
   }
   
@@ -35,6 +37,7 @@ public class Sprite
     this.jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 3, 4, 5 };
     this.jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
     this.jdField_b_of_type_ArrayOfFloat = new float[16];
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlPoint = new Point(0.0F, 0.0F);
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = paramSpriteGLView;
     f();
   }
@@ -45,6 +48,7 @@ public class Sprite
     this.jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 3, 4, 5 };
     this.jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
     this.jdField_b_of_type_ArrayOfFloat = new float[16];
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlPoint = new Point(0.0F, 0.0F);
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = paramSpriteGLView;
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlTexture = new Texture(paramSpriteGLView, paramBitmap);
     g();
@@ -112,21 +116,19 @@ public class Sprite
     GLES20.glVertexAttribPointer(paramInt4, 2, 5126, false, 0, this.jdField_b_of_type_JavaNioFloatBuffer);
     Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
     Matrix.translateM(this.jdField_b_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, -1.0E-004F);
-    Object localObject = a();
+    a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlPoint);
     float f2 = paramInt1 / paramInt2;
     float f3 = paramInt1 / this.jdField_a_of_type_Float / (this.e * a());
-    float f4 = (2.0F * ((Point)localObject).jdField_a_of_type_Float * a() - paramInt1) / paramInt2;
-    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b)) {
-      f1 = -paramInt2;
-    }
-    for (float f1 = (((Point)localObject).jdField_b_of_type_Float * 2.0F * a() + f1) / paramInt2;; f1 = (paramInt2 - ((Point)localObject).jdField_b_of_type_Float * 2.0F * a()) / paramInt2)
+    float f4 = (2.0F * this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlPoint.jdField_a_of_type_Float * a() - paramInt1) / paramInt2;
+    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView != null) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b)) {}
+    for (float f1 = (-paramInt2 + 2.0F * this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlPoint.jdField_b_of_type_Float * a()) / paramInt2;; f1 = (paramInt2 - 2.0F * this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlPoint.jdField_b_of_type_Float * a()) / paramInt2)
     {
       Matrix.translateM(this.jdField_b_of_type_ArrayOfFloat, 0, f4, f1, 0.0F);
       Matrix.rotateM(this.jdField_b_of_type_ArrayOfFloat, 0, -this.f, 0.0F, 0.0F, 1.0F);
       Matrix.scaleM(this.jdField_b_of_type_ArrayOfFloat, 0, f2 / f3, f2 / f3 * (this.jdField_b_of_type_Float / this.jdField_a_of_type_Float), 1.0F);
-      localObject = new float[16];
-      Matrix.multiplyMM((float[])localObject, 0, paramArrayOfFloat, 0, this.jdField_b_of_type_ArrayOfFloat, 0);
-      GLES20.glUniformMatrix4fv(paramInt5, 1, false, (float[])localObject, 0);
+      float[] arrayOfFloat = new float[16];
+      Matrix.multiplyMM(arrayOfFloat, 0, paramArrayOfFloat, 0, this.jdField_b_of_type_ArrayOfFloat, 0);
+      GLES20.glUniformMatrix4fv(paramInt5, 1, false, arrayOfFloat, 0);
       GLES20.glUniform1i(paramInt6, 0);
       GLES20.glUniform1f(paramInt7, this.jdField_b_of_type_Int * e_() / 255.0F / 255.0F);
       GLES20.glDrawElements(4, this.jdField_a_of_type_ArrayOfShort.length, 5123, this.jdField_a_of_type_JavaNioShortBuffer);

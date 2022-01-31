@@ -1,33 +1,26 @@
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.utils.DBUtils;
+import mqq.os.MqqHandler;
 
-public class ugl
-  extends WebChromeClient
+class ugl
+  implements Runnable
 {
-  private ugl(UpgradeDetailActivity paramUpgradeDetailActivity) {}
+  ugl(ugj paramugj, String paramString) {}
   
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  public void run()
   {
-    super.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
-    paramGeolocationPermissionsCallback.invoke(paramString, true, false);
-  }
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onProgressChanged: " + paramInt + "%");
+    Object localObject = (FriendsManager)this.jdField_a_of_type_Ugj.a.app.getManager(50);
+    TroopMemberInfo localTroopMemberInfo = DBUtils.a().a(this.jdField_a_of_type_Ugj.a.app, this.jdField_a_of_type_Ugj.a.b, this.jdField_a_of_type_JavaLangString);
+    if ((localTroopMemberInfo != null) && (localObject != null))
+    {
+      localObject = this.jdField_a_of_type_Ugj.a.a(localTroopMemberInfo, (FriendsManager)localObject);
+      ThreadManager.getUIHandler().post(new ugm(this, (TroopMemberListActivity.ATroopMember)localObject));
     }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onReceivedTitle:" + paramString);
-    }
-    this.a.setTitle(paramString);
   }
 }
 

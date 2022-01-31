@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.comic.utils.QQComicPluginBridge.PluginInstallObserver;
+import cooperation.plugin.IPluginManager;
 
-public class amrx
+public final class amrx
   implements Runnable
 {
-  public amrx(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2, PluginBaseInfo paramPluginBaseInfo) {}
+  public amrx(IPluginManager paramIPluginManager, QQComicPluginBridge.PluginInstallObserver paramPluginInstallObserver) {}
   
   public void run()
   {
-    try
-    {
-      if (this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.a != null) {
-        this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.a.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.mID, null, this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoDownLoadActivtyV2.c);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QZoneLiveVideoDownLoadActivtyV2", 1, localException, new Object[0]);
-    }
+    this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("comic_plugin.apk", new amry(this));
   }
 }
 

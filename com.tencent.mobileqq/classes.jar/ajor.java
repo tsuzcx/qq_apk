@@ -1,51 +1,27 @@
-import com.tencent.mobileqq.app.AppConstants;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.InputMethodUtil;
+import org.json.JSONException;
 
-public final class ajor
-  implements Runnable
+public class ajor
+  implements View.OnClickListener
 {
-  public void run()
+  public ajor(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  
+  public void onClick(View paramView)
   {
-    File[] arrayOfFile;
-    do
+    InputMethodUtil.b(paramView);
+    try
     {
-      try
-      {
-        Thread.sleep(3000L);
-        File localFile = new File(AppConstants.ba);
-        if (!localFile.isDirectory()) {
-          return;
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-        return;
-      }
-      arrayOfFile = localInterruptedException.listFiles(new ajos(this));
-    } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
-    Object localObject = new ArrayList(arrayOfFile.length);
-    int j = arrayOfFile.length;
-    int i = 0;
-    while (i < j)
-    {
-      ((List)localObject).add(Long.valueOf(arrayOfFile[i].lastModified()));
-      i += 1;
+      PublishHomeWorkFragment.c(this.a);
+      return;
     }
-    Collections.sort((List)localObject);
-    long l = ((Long)((List)localObject).get(((List)localObject).size() - 100)).longValue();
-    j = arrayOfFile.length;
-    i = 0;
-    while (i < j)
+    catch (JSONException paramView)
     {
-      localObject = arrayOfFile[i];
-      if (((File)localObject).lastModified() < l) {
-        ((File)localObject).deleteOnExit();
-      }
-      i += 1;
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", paramView);
     }
   }
 }

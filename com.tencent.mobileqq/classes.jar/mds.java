@@ -1,14 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
 
-class mds
-  implements Runnable
+public class mds
+  implements DialogInterface.OnDismissListener
 {
-  mds(mdr parammdr) {}
+  public mds(TopicShareHelper paramTopicShareHelper) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    VideoFeedsPlayActivity.a(this.a.a).d();
+    if (TopicShareHelper.a(this.a) != null) {
+      TopicShareHelper.a(this.a).a(TopicShareHelper.a(this.a), TopicShareHelper.b(this.a), false, false);
+    }
+    TopicShareHelper.a(this.a, true);
+    TopicShareHelper.b(this.a, false);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aiiq;
+import ainl;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -31,9 +31,9 @@ public class StructMsgItemLayout11
   {
     Object localObject4 = paramContext.getResources();
     float f;
-    if ((paramView != null) && ((paramView instanceof RelativeLayout)) && ((paramView.getTag() instanceof aiiq)))
+    if ((paramView != null) && ((paramView instanceof RelativeLayout)) && ((paramView.getTag() instanceof ainl)))
     {
-      localObject1 = (aiiq)paramView.getTag();
+      localObject1 = (ainl)paramView.getTag();
       localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -50,17 +50,17 @@ public class StructMsgItemLayout11
           }
           for (;;)
           {
-            ((StructMsgItemTitle)localObject3).a(paramContext, ((aiiq)localObject1).b, paramBundle);
+            ((StructMsgItemTitle)localObject3).a(paramContext, ((ainl)localObject1).b, paramBundle);
             break;
             ((StructMsgItemTitle)localObject3).c(String.valueOf(36));
           }
         }
         if ("pavideo".equals(localObject4)) {
-          ((AbsStructMsgElement)localObject3).a(paramContext, ((aiiq)localObject1).a, paramBundle);
+          ((AbsStructMsgElement)localObject3).a(paramContext, ((ainl)localObject1).a, paramBundle);
         }
       }
-      if ((localObject1 != null) && (((aiiq)localObject1).b != null)) {
-        ((TextView)((aiiq)localObject1).b).setMaxLines(2);
+      if ((localObject1 != null) && (((ainl)localObject1).b != null)) {
+        ((TextView)((ainl)localObject1).b).setMaxLines(2);
       }
       return paramView;
     }
@@ -69,7 +69,7 @@ public class StructMsgItemLayout11
     ((RelativeLayout)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-1, i));
     int j = AIOUtils.a(15.0F, (Resources)localObject4);
     ((RelativeLayout)localObject2).setPadding(j, j, j, j);
-    Object localObject3 = new aiiq();
+    Object localObject3 = new ainl();
     Object localObject1 = null;
     paramView = null;
     Object localObject5 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
@@ -109,7 +109,7 @@ public class StructMsgItemLayout11
         }
         paramBundle = new View(paramContext);
         i = (int)(i * 0.32D);
-        paramBundle.setBackgroundResource(2130839749);
+        paramBundle.setBackgroundResource(2130839764);
         localObject5 = new RelativeLayout.LayoutParams(-1, i);
         ((RelativeLayout.LayoutParams)localObject5).addRule(12, -1);
         ((RelativeLayout)localObject2).addView(paramBundle, (ViewGroup.LayoutParams)localObject5);
@@ -125,17 +125,17 @@ public class StructMsgItemLayout11
         paramBundle = new RelativeLayout.LayoutParams(AIOUtils.a(52.5F, (Resources)localObject4), AIOUtils.a(52.5F, (Resources)localObject4));
         paramBundle.addRule(15, -1);
         paramContext = new ImageView(paramContext);
-        paramContext.setImageResource(2130839718);
+        paramContext.setImageResource(2130839733);
         paramContext.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         paramBundle.addRule(14, -1);
         ((RelativeLayout)localObject2).addView(paramContext, paramBundle);
         if (paramView != null) {
-          ((aiiq)localObject3).a = paramView;
+          ((ainl)localObject3).a = paramView;
         }
         if (localObject1 != null)
         {
-          ((aiiq)localObject3).b = ((View)localObject1);
-          ((TextView)((aiiq)localObject3).b).setMaxLines(1);
+          ((ainl)localObject3).b = ((View)localObject1);
+          ((TextView)((ainl)localObject3).b).setMaxLines(1);
         }
         ((RelativeLayout)localObject2).setTag(localObject3);
         return localObject2;

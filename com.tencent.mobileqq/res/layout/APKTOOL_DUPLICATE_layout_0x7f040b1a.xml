@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qzone.module.feedcomponent.ui.canvasui.CanvasFeedContentView android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a302a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a302c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d8d" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a302d" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a302c">
+        <com.qzone.widget.AvatarImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31f3" android:layout_width="37.0dip" android:layout_height="37.0dip" />
+    </LinearLayout>
+    <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a302e" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a302d" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a302d" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a302e">
+        <TextView android:textSize="12.0sp" android:textColor="#80ffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a302f" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3030" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d9b" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <Button android:textSize="14.0sp" android:textColor="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e19" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c22" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e18" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="13.0dip" android:text="关注" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a3030" android:layout_centerVertical="true" />
+</RelativeLayout>

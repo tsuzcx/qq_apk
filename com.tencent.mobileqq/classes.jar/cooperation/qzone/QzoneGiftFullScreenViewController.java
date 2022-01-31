@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
-import amsp;
-import amsq;
-import amsr;
+import anaa;
+import anab;
+import anac;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Handler;
@@ -145,15 +145,15 @@ public class QzoneGiftFullScreenViewController
       }
     }
     label126:
-    for (View localView = View.inflate(BaseApplicationImpl.getContext(), 2130970959, null);; localView = View.inflate(BaseApplicationImpl.getContext(), 2130970961, null))
+    for (View localView = View.inflate(BaseApplicationImpl.getContext(), 2130970977, null);; localView = View.inflate(BaseApplicationImpl.getContext(), 2130970979, null))
     {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.getContext(), 2130970963, null);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372365);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView = ((IMagicFaceView)localView.findViewById(2131366128));
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131366127));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366129));
+      this.jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.getContext(), 2130970981, null);
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372375);
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView = ((IMagicFaceView)localView.findViewById(2131366133));
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView = ((MagicfaceContainerView)localView.findViewById(2131366132));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366134));
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372367));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372377));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       return;
     }
@@ -182,7 +182,7 @@ public class QzoneGiftFullScreenViewController
       if (this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a())
       {
         QzoneGiftFullScreenActionManager localQzoneGiftFullScreenActionManager = this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager;
-        localQzoneGiftFullScreenActionManager.a(new amsp(this, localQzoneGiftFullScreenActionManager));
+        localQzoneGiftFullScreenActionManager.a(new anaa(this, localQzoneGiftFullScreenActionManager));
         return;
       }
       this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a();
@@ -254,7 +254,7 @@ public class QzoneGiftFullScreenViewController
         this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setClickable(false);
         this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setFocusable(false);
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new amsq(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new anab(this));
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(8);
       ((View)this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewIMagicFaceView).setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView.setVisibility(0);
@@ -268,7 +268,7 @@ public class QzoneGiftFullScreenViewController
       localObject2 = new MagicfacePlayManager();
       ((MagicfacePlayManager)localObject2).a((MagicfaceDecoder.MagicfaceRenderListener)localObject1);
       this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a((MagicfacePlayManager)localObject2);
-      this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a(new amsr(this, l, paramGiftFullScreenPlayListener));
+      this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a(new anac(this, l, paramGiftFullScreenPlayListener));
       this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a(paramString1, paramString2);
     }
     catch (SecurityException paramString1)

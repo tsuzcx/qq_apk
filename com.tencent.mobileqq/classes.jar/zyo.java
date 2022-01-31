@@ -1,23 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
+import com.tencent.mobileqq.app.message.BaseMessageManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import java.util.Map;
 
-public class zyo
+class zyo
   implements Runnable
 {
-  public zyo(ARVideoRecordViewProxy paramARVideoRecordViewProxy) {}
+  zyo(zyn paramzyn) {}
   
   public void run()
   {
-    if (ARVideoRecordViewProxy.b(this.a) != null)
-    {
-      ARVideoRecordViewProxy.b(this.a).setVisibility(0);
-      ARVideoRecordViewProxy.a(this.a);
+    if (this.a.a.a.b.containsKey(this.a.b)) {
+      this.a.a.a.b.remove(this.a.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zyo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,23 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetFileInfoCallBack;
+import com.tencent.mobileqq.statistics.StatisticAssist;
+import mqq.app.MobileQQ;
 
-public final class adhx
-  extends ClickableSpan
+public class adhx
+  implements UniformDownloadUtil.GetFileInfoCallBack
 {
-  public adhx(FileManagerUtil.TipsClickedInterface paramTipsClickedInterface) {}
+  public adhx(UniformDownloadMgr paramUniformDownloadMgr) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, long paramLong)
   {
-    if (this.a != null) {
-      this.a.a(paramView);
+    if (UniformDownloadUtil.a(paramString))
+    {
+      StatisticAssist.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
+      return;
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
-    paramTextPaint.setUnderlineText(false);
+    StatisticAssist.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
   }
 }
 

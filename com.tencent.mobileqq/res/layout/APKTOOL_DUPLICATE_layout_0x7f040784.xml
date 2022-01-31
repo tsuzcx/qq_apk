@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/skin_group_list_sub_entry" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03d6" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03d6"
+<FrameLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="30.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0585" android:layout_gravity="center_vertical" android:id="@id/title" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b176d" />
-</LinearLayout>
+    <com.tencent.widget.SingleLineTextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2357" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginLeft="10.0dip" />
+    <ImageView android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2358" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</FrameLayout>

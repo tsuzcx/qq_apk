@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:background="@android:color/white" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="18.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a30f4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.5dip" android:layout_marginTop="12.5dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="14.5dip" android:layout_marginTop="12.5dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a30f4" android:layout_alignParentLeft="true" />
-</RelativeLayout>
+    <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a30b0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

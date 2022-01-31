@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
 
-public class obq
-  implements View.OnClickListener
+class obq
+  implements Runnable
 {
-  public obq(GuideInfoDialog paramGuideInfoDialog) {}
+  obq(obp paramobp, MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.dismiss();
+    ((UserManager)SuperManager.a(2)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a);
   }
 }
 

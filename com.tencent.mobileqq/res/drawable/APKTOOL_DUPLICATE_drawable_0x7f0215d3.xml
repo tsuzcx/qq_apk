@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0215d5" />
-    <item android:state_pressed="false" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0215d4" />
-</selector>
+    <corners android:topLeftRadius="0.0dip" android:topRightRadius="0.0dip" android:bottomLeftRadius="10.0dip" android:bottomRightRadius="0.0dip" />
+    <gradient android:startColor="#00ffffff" android:endColor="#00ffffff" android:angle="270.0" />
+</shape>

@@ -1,38 +1,47 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.photo.AIOGallerySceneWithBusiness;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.QQComicStep;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgFactory;
+import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import cooperation.comic.VipComicReportUtils;
+import java.util.Iterator;
+import java.util.List;
 
 public class zxr
-  implements MediaPlayer.OnPreparedListener
+  extends MessageObserver
 {
-  public zxr(ARMusicController paramARMusicController) {}
+  public zxr(QQComicStep paramQQComicStep) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void a(List paramList)
   {
-    try
+    if (paramList == null) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + ARMusicController.b(this.a));
-      }
-      this.a.a.seekTo(0);
-      ARMusicController.b(this.a, true);
-      if (ARMusicController.b(this.a))
-      {
-        this.a.a.start();
-        ARMusicController.c(this.a, false);
-      }
       return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      paramMediaPlayer.printStackTrace();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = StructMsgFactory.a(((MessageRecord)paramList.next()).msgData);
+        if ((localObject instanceof StructMsgForImageShare))
+        {
+          localObject = (StructMsgForImageShare)localObject;
+          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
+          {
+            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
+            if (arrayOfString.length >= 8) {
+              VipComicReportUtils.a(QQComicStep.a(this.a).a, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], AIOGallerySceneWithBusiness.a(((StructMsgForImageShare)localObject).mMsgActionData) });
+            }
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zxr
  * JD-Core Version:    0.7.0.1
  */

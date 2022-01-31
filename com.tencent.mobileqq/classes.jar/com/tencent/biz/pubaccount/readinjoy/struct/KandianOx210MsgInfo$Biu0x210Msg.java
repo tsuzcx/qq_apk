@@ -5,8 +5,8 @@ import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import cooperation.readinjoy.ReadInJoyHelper;
-import lxx;
-import lxy;
+import mbk;
+import mbl;
 
 public class KandianOx210MsgInfo$Biu0x210Msg
 {
@@ -37,7 +37,7 @@ public class KandianOx210MsgInfo$Biu0x210Msg
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.post(new lxx(this, paramQQAppInterface), 8, null, false);
+    ThreadManager.post(new mbk(this, paramQQAppInterface), 8, null, false);
   }
   
   public boolean a()
@@ -50,7 +50,7 @@ public class KandianOx210MsgInfo$Biu0x210Msg
     this.jdField_a_of_type_Long = -1L;
     this.b = -1L;
     this.jdField_a_of_type_Int = -1;
-    ThreadManager.post(new lxy(this, paramQQAppInterface), 8, null, false);
+    ThreadManager.post(new mbl(this, paramQQAppInterface), 8, null, false);
   }
 }
 

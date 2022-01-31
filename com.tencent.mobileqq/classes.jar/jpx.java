@@ -1,19 +1,18 @@
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.ControlUIObserver;
+import com.tencent.av.smallscreen.BaseSmallScreenService;
 
 public class jpx
   implements Runnable
 {
-  public jpx(AVActivity paramAVActivity) {}
+  public jpx(BaseSmallScreenService paramBaseSmallScreenService) {}
   
   public void run()
   {
-    this.a.a.a("self", String.valueOf(1));
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpx
  * JD-Core Version:    0.7.0.1
  */

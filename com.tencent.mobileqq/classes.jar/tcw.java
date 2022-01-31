@@ -1,36 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 
-public class tcw
-  implements DialogInterface.OnClickListener
+class tcw
+  implements Runnable
 {
-  public tcw(NotificationActivity paramNotificationActivity, CheckBox paramCheckBox, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
+  tcw(tcv paramtcv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      if (this.jdField_a_of_type_Boolean != bool) {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
-      }
-      MemoryManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app);
-      return;
+    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.a.getManager(12);
+    if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
+      localWebProcessManager.a(202, new tcx(this));
     }
-    catch (Exception paramDialogInterface) {}finally
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+    this.a.a.n();
+    this.a.a.a(1);
+    if (NearbyUtils.b()) {
+      NearbyUtils.a("Q.lebatab.", new Object[] { "preload nearby process/tool process" });
     }
+    NearbyProcessMonitor.a(this.a.a.a.getAccount(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tcw
  * JD-Core Version:    0.7.0.1
  */

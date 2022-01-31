@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.Doraemon.APICallback;
 
-class rkd
+public final class rkd
   implements Runnable
 {
-  rkd(rkb paramrkb) {}
+  public rkd(APICallback paramAPICallback, int paramInt) {}
   
   public void run()
   {
-    this.a.a.d();
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback.a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rkd
  * JD-Core Version:    0.7.0.1
  */

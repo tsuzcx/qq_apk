@@ -1,56 +1,42 @@
-import android.graphics.RectF;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoy;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.DancePosture;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.Posture;
+import android.os.Bundle;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
 import java.util.ArrayList;
+import java.util.List;
 
 public class aial
-  implements Animation.AnimationListener
+  extends GroupSearchEngine.SearchEngineEntity
 {
-  public aial(GLLittleBoyManager paramGLLittleBoyManager) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public aial(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
   {
-    int i = 0;
-    for (;;)
-    {
-      if (i < GLLittleBoyManager.a(this.a).size())
-      {
-        GLLittleBoy localGLLittleBoy = (GLLittleBoy)GLLittleBoyManager.a(this.a).get(i);
-        if (localGLLittleBoy.a() == paramAnimation)
-        {
-          localGLLittleBoy.a(ResourceManager.a().a(localGLLittleBoy.a().a).b, true, true);
-          paramAnimation = localGLLittleBoy.c();
-          if (GLLittleBoyManager.a(this.a) == 0.0F) {
-            GLLittleBoyManager.a(this.a, paramAnimation.width() / 2.2F);
-          }
-          float f1 = paramAnimation.centerX();
-          float f2 = paramAnimation.centerY();
-          GLLittleBoyManager.a(this.a).set(f1 - GLLittleBoyManager.a(this.a), f2 - GLLittleBoyManager.a(this.a), f1 + GLLittleBoyManager.a(this.a), f2 + GLLittleBoyManager.a(this.a));
-          localGLLittleBoy.c(GLLittleBoyManager.a(this.a));
-          localGLLittleBoy.e();
-          localGLLittleBoy.a(this.a.b());
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
+    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public ISearchResultGroupModel a(List paramList, String paramString)
+  {
+    return null;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public List a(SearchRequest paramSearchRequest)
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = -1;
+    paramSearchRequest.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", 16);
+    paramSearchRequest.a.putInt("SEARCH_REQUEST_EXTRA_PAGE", 0);
+    ArrayList localArrayList = new ArrayList();
+    paramSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.a(paramSearchRequest);
+    if (paramSearchRequest != null) {
+      localArrayList.addAll(paramSearchRequest);
+    }
+    return localArrayList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aial
  * JD-Core Version:    0.7.0.1
  */

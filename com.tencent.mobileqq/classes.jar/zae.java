@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class zae
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public zae(BaseActivity paramBaseActivity) {}
+  public zae(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.runnableRemoveNotification != null)
-    {
-      this.a.runnableRemoveNotification = null;
-      this.a.app.i();
-    }
+    ThreadManager.getUIHandler().postDelayed(new zaf(this), 200L);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zae
  * JD-Core Version:    0.7.0.1
  */

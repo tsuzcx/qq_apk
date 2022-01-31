@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.business.sougou;
 
-import abmm;
-import abmn;
+import abtn;
+import abto;
 import android.os.Looper;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -188,7 +188,7 @@ public class WordMatchManager$HotWordMatcher
       localObject6[i] = ((Integer)((Iterator)localObject7).next()).intValue();
       i += 1;
     }
-    ThreadManager.executeOnSubThread(new abmn(this, arrayOfByte4, j, (int[])localObject6, arrayOfByte3, arrayOfByte2, arrayOfByte1, localObject5));
+    ThreadManager.executeOnSubThread(new abto(this, arrayOfByte4, j, (int[])localObject6, arrayOfByte3, arrayOfByte2, arrayOfByte1, localObject5));
     return paramMatchTask.jdField_a_of_type_Int;
   }
   
@@ -213,7 +213,7 @@ public class WordMatchManager$HotWordMatcher
     if (this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abmm(this, paramArrayOfHotWordItem));
+    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new abtn(this, paramArrayOfHotWordItem));
   }
 }
 

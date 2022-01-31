@@ -17,8 +17,8 @@ import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nxi;
-import nxj;
+import obx;
+import oby;
 
 public class ProfileFeedPresenter
   extends HomeFeedPresenter
@@ -55,7 +55,7 @@ public class ProfileFeedPresenter
     SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "request year node list. single refresh : %s.", Boolean.valueOf(paramBoolean));
     GetProfileYearNodeListRequest localGetProfileYearNodeListRequest = new GetProfileYearNodeListRequest();
     localGetProfileYearNodeListRequest.jdField_a_of_type_JavaLangString = QQStoryContext.a().b();
-    CmdTaskManger.a().a(localGetProfileYearNodeListRequest, new nxi(this, paramBoolean));
+    CmdTaskManger.a().a(localGetProfileYearNodeListRequest, new obx(this, paramBoolean));
   }
   
   private void e()
@@ -64,9 +64,9 @@ public class ProfileFeedPresenter
     if (!this.jdField_b_of_type_JavaUtilList.isEmpty()) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.errorInfo.isFail()) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.errorInfo.isFail()))
     {
-      SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "check result and result is failed. mFeedDataRsp is failed = %s, mYearNodeRsp is failed = %s.", new Object[] { Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()), Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) });
+      SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "check result and result is failed. mFeedDataRsp is failed = %s, mYearNodeRsp is failed = %s.", new Object[] { Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.errorInfo.isFail()), Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$GetYearNodeListEvent.errorInfo.isFail()) });
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter$FeedPresenterListener.a(false);
       return;
     }
@@ -93,7 +93,7 @@ public class ProfileFeedPresenter
     for (boolean bool = true;; bool = false)
     {
       SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "on feed item back. need check result %s.", Boolean.valueOf(bool));
-      ThreadManager.getUIHandler().post(new nxj(this, paramHomeFeedData));
+      ThreadManager.getUIHandler().post(new oby(this, paramHomeFeedData));
       return;
     }
   }

@@ -1,15 +1,22 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.nearby.picbrowser.GalleryItemVideo;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
+import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
+import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import com.tencent.qphone.base.util.QLog;
 
 public class afbl
-  implements Runnable
+  extends ProtoUtils.TroopGiftProtocolObserver
 {
-  public afbl(GalleryItemVideo paramGalleryItemVideo, URLImageView paramURLImageView, Drawable paramDrawable) {}
+  public afbl(NowShortVideoProtoManager paramNowShortVideoProtoManager, String paramString, NowShortVideoProtoManager.Callback paramCallback) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (paramInt != 0) {
+      QLog.i("getMediaDetailInfo", 1, "getMediaDetailInfo错误   errorCode=   " + paramInt + ",data=" + paramArrayOfByte + ",mQueryString=" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 

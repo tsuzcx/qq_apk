@@ -1,31 +1,19 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.text.TextPaint;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
+import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
 
 public class ajsf
-  extends TextView
+  implements VoicePlayer.VoicePlayerListener
 {
-  public ajsf(FollowImageTextView paramFollowImageTextView, Context paramContext)
+  public ajsf(AudioItem paramAudioItem) {}
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    super(paramContext);
+    this.a.b(AudioItem.a(this.a));
   }
   
-  protected void onDraw(Canvas paramCanvas)
-  {
-    if (FollowImageTextView.a(this.a))
-    {
-      super.onDraw(paramCanvas);
-      return;
-    }
-    Object localObject = getPaint();
-    ((TextPaint)localObject).setColor(getCurrentTextColor());
-    ((TextPaint)localObject).drawableState = getDrawableState();
-    localObject = FollowImageTextView.a(this.a);
-    ((ajsh)localObject).a(FollowImageTextView.a(this.a) - 1);
-    ((ajsh)localObject).a(paramCanvas);
-  }
+  public void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 

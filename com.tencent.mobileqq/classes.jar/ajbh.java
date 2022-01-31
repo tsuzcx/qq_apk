@@ -1,8 +1,15 @@
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.ViewTag;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class ajbh
-  extends ContactListAdapter.ViewTag
-{}
+  implements Runnable
+{
+  public ajbh(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  
+  public void run()
+  {
+    this.a.l = false;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

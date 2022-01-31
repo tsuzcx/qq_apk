@@ -1,36 +1,27 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-class sox
-  implements Runnable
+public class sox
+  implements WXShareHelper.WXShareListener
 {
-  sox(sov paramsov, String paramString1, String paramString2) {}
+  public sox(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.FrdProfileCard", 2, "onUpdateAddFriend, uin: " + this.jdField_a_of_type_JavaLangString + ", mobileNum = " + this.b);
-    }
-    Object localObject1 = (FriendsManager)this.jdField_a_of_type_Sov.a.app.getManager(50);
-    if (localObject1 == null) {}
-    for (localObject1 = null;; localObject1 = ((FriendsManager)localObject1).a(this.jdField_a_of_type_Sov.a.a.a.jdField_a_of_type_JavaLangString))
-    {
-      Message localMessage = Message.obtain();
-      localMessage.what = 3;
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = this.jdField_a_of_type_JavaLangString;
-      }
-      localMessage.obj = localObject2;
-      this.jdField_a_of_type_Sov.a.b.sendMessage(localMessage);
+    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
       return;
     }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435319);
+      return;
+    }
+    QRUtils.a(2, 2131435318);
   }
 }
 

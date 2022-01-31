@@ -1,15 +1,30 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.AbsCleanStep;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.AbsCleanStep.CleanContext;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.CacheCleaner;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.CapacityCleanStep;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.MyVideoCleanStep;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.TimeCleanStep;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.UploadTmpVideoCleanStep;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.FileUtils;
 
 public class ned
-  extends GetRedPointExObserver
+  implements Runnable
 {
-  public ned(MsgTabNodeListLoader paramMsgTabNodeListLoader) {}
+  public ned(CacheCleaner paramCacheCleaner) {}
   
-  protected void a(Object paramObject)
+  public void run()
   {
-    ThreadManager.post(new nee(this), 5, null, true);
+    SLog.d("Q.qqstory.cleaner:CacheCleaner", "start clean cache");
+    Object localObject = new TimeCleanStep(CacheCleaner.a);
+    CapacityCleanStep localCapacityCleanStep = new CapacityCleanStep(CacheCleaner.b);
+    MyVideoCleanStep localMyVideoCleanStep = new MyVideoCleanStep(CacheCleaner.c);
+    UploadTmpVideoCleanStep localUploadTmpVideoCleanStep = new UploadTmpVideoCleanStep(CacheCleaner.d);
+    localCapacityCleanStep.a(localMyVideoCleanStep).a(localUploadTmpVideoCleanStep).a((AbsCleanStep)localObject);
+    localObject = new AbsCleanStep.CleanContext();
+    ((AbsCleanStep.CleanContext)localObject).jdField_a_of_type_Boolean = FileUtils.a();
+    ((AbsCleanStep.CleanContext)localObject).jdField_a_of_type_Long = System.currentTimeMillis();
+    localCapacityCleanStep.a((AbsCleanStep.CleanContext)localObject);
   }
 }
 

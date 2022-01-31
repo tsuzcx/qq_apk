@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
 
 public class lsu
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public lsu(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
+  public lsu(ArticleInfoModule paramArticleInfoModule, int paramInt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public void run()
+  {
+    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_Int);
+    ReadInJoyLogicEngineEventDispatcher.a().b();
+  }
 }
 
 

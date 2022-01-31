@@ -157,7 +157,7 @@ public class QRNumberCircleProgressBar
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130843847);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130843913);
       return;
     }
     catch (Exception localException) {}catch (OutOfMemoryError localOutOfMemoryError) {}

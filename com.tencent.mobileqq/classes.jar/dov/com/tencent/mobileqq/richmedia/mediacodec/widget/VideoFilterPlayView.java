@@ -8,11 +8,15 @@ import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
-import aony;
-import aonz;
+import aowo;
+import aowp;
+import aowq;
+import aowr;
 import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
 import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.shortvideo.util.TrackerSoLoader;
+import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QQFilterRenderManagerHolder;
@@ -96,7 +100,7 @@ public class VideoFilterPlayView
     super.a();
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.o();
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.q();
       this.jdField_a_of_type_Boolean = true;
     }
   }
@@ -143,6 +147,7 @@ public class VideoFilterPlayView
     if (QLog.isColorLevel()) {
       QLog.e("VideoFilterPlayView", 2, "initTrackAlg x = " + paramFloat1 + ", y = " + paramFloat2 + ", width = " + paramFloat3 + ", height = " + paramFloat4 + ", rotation =" + paramInt);
     }
+    TrackerSoLoader.a(getContext());
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecTrackerBaseStickerTracker.a(paramInt);
     this.jdField_c_of_type_Boolean = true;
   }
@@ -165,6 +170,9 @@ public class VideoFilterPlayView
   public void a(long paramLong1, long paramLong2)
   {
     super.a(paramLong1, paramLong2);
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a(paramLong1, paramLong2);
+    }
   }
   
   public void a(RenderBuffer paramRenderBuffer, int paramInt1, int paramInt2)
@@ -173,18 +181,17 @@ public class VideoFilterPlayView
     if (paramRenderBuffer != null) {
       i = paramRenderBuffer.a();
     }
-    if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_JavaNioByteBuffer == null)) {
+    if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_JavaNioByteBuffer == null))
+    {
       if (QLog.isColorLevel()) {
         QLog.e("VideoFilterPlayView", 2, "readTextureToBuffer trackData is null ");
       }
-    }
-    do
-    {
       return;
-      this.jdField_a_of_type_JavaNioByteBuffer.rewind();
-      if (i == 0) {
-        break;
-      }
+    }
+    this.jdField_a_of_type_JavaNioByteBuffer.rewind();
+    if (i != 0) {}
+    for (;;)
+    {
       try
       {
         paramRenderBuffer = new int[1];
@@ -195,16 +202,20 @@ public class VideoFilterPlayView
         GLES20.glBindFramebuffer(36160, 0);
         GLES20.glDeleteFramebuffers(1, paramRenderBuffer, 0);
         paramRenderBuffer[0] = 0;
+        this.jdField_c_of_type_Boolean = false;
         return;
       }
       catch (Exception paramRenderBuffer)
       {
         this.jdField_a_of_type_JavaNioByteBuffer.clear();
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("VideoFilterPlayView", 2, "readTextureToBuffer error " + paramRenderBuffer.toString());
-    return;
-    GLES20.glReadPixels(0, 0, paramInt1, paramInt2, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("VideoFilterPlayView", 2, "readTextureToBuffer error " + paramRenderBuffer.toString());
+      return;
+      GLES20.glReadPixels(0, 0, paramInt1, paramInt2, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+    }
   }
   
   protected void a(@NonNull Runnable paramRunnable)
@@ -247,7 +258,7 @@ public class VideoFilterPlayView
         paramArrayOfFloat1.b();
         this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.a(i, null, null);
         i = paramArrayOfFloat1.a();
-        this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.f();
+        this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.g();
         if (!this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.b()) {
           break label315;
         }
@@ -303,7 +314,7 @@ public class VideoFilterPlayView
   {
     if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.o();
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.q();
       this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager = null;
     }
     if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecTrackerBaseStickerTracker != null) {
@@ -323,7 +334,7 @@ public class VideoFilterPlayView
     if (this.jdField_a_of_type_JavaNioByteBuffer == null) {}
     try
     {
-      this.jdField_a_of_type_ArrayOfByte = new byte[paramInt1 * paramInt2 * 4];
+      this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_c_of_type_Int * this.d * 4];
       this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.wrap(this.jdField_a_of_type_ArrayOfByte);
       if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager != null)
       {
@@ -362,7 +373,7 @@ public class VideoFilterPlayView
     if (this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.a();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter.b();
     }
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup = new GpuImagePartsFilterGroup();
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup.a();
@@ -406,15 +417,26 @@ public class VideoFilterPlayView
     if (this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter == null)
     {
       this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = FilterFactory.a(106);
-      a(new aony(this));
+      a(new aowo(this));
     }
     ((GPUImagePixelationFilter)this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter).a(paramBitmap);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;
   }
   
+  public void setSpeedType(int paramInt)
+  {
+    super.setSpeedType(paramInt);
+    a(new aowq(this, paramInt));
+  }
+  
   public void setTrackerCallback(VideoFilterPlayView.TrackerCallback paramTrackerCallback)
   {
     this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetVideoFilterPlayView$TrackerCallback = paramTrackerCallback;
+  }
+  
+  public void setTransferData(TransferData paramTransferData)
+  {
+    a(new aowr(this, paramTransferData));
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
@@ -434,7 +456,7 @@ public class VideoFilterPlayView
     if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecTrackerBaseStickerTracker != null) {
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecTrackerBaseStickerTracker.c();
     }
-    super.queueEvent(new aonz(this));
+    super.queueEvent(new aowp(this));
   }
 }
 

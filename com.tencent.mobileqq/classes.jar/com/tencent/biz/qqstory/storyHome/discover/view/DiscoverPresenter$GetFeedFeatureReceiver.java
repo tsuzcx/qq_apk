@@ -18,9 +18,9 @@ public final class DiscoverPresenter$GetFeedFeatureReceiver
   
   public void a(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull GetFeedFeatureHandler.GetFeedFeatureEvent paramGetFeedFeatureEvent)
   {
-    if ((paramGetFeedFeatureEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetFeedFeatureEvent.jdField_a_of_type_JavaUtilList != null))
+    if ((paramGetFeedFeatureEvent.errorInfo.isSuccess()) && (paramGetFeedFeatureEvent.a != null))
     {
-      paramGetFeedFeatureEvent = paramGetFeedFeatureEvent.jdField_a_of_type_JavaUtilList.iterator();
+      paramGetFeedFeatureEvent = paramGetFeedFeatureEvent.a.iterator();
       while (paramGetFeedFeatureEvent.hasNext())
       {
         FeedFeatureItem localFeedFeatureItem = (FeedFeatureItem)paramGetFeedFeatureEvent.next();

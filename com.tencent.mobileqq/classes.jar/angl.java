@@ -1,24 +1,13 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-import com.tencent.open.wadl.WLog;
-import cooperation.wadl.ipc.IWadlService;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import cooperation.qzone.report.lp.MachinelearningReport;
 
 public class angl
-  implements IBinder.DeathRecipient
+  implements Runnable
 {
-  public angl(WadlProxyServiceManager paramWadlProxyServiceManager) {}
+  public angl(MachinelearningReport paramMachinelearningReport) {}
   
-  public void binderDied()
+  public void run()
   {
-    WLog.b("WadlProxyServiceManager", "wadl download process is died!");
-    WadlProxyServiceManager.a(this.a).asBinder().unlinkToDeath(WadlProxyServiceManager.a(this.a), 0);
-    WadlProxyServiceManager.a(this.a, null);
-    if (WadlProxyServiceManager.a(this.a))
-    {
-      WLog.b("WadlProxyServiceManager", "download process died restart service");
-      this.a.b();
-    }
+    MachinelearningReport.access$200(this.a);
   }
 }
 

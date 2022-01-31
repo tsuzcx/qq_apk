@@ -83,7 +83,7 @@ public class EditVideoAt
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364411));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364436));
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());
     }

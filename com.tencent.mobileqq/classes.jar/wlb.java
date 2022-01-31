@@ -1,39 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.TroopMemberCard;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class wlb
-  implements Runnable
+public final class wlb
+  implements DialogInterface.OnClickListener
 {
-  wlb(wla paramwla, String paramString, Card paramCard) {}
+  public wlb(boolean paramBoolean, Context paramContext) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Wla.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Wla.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Wla.b.setText("我的群标签");
+    if (this.jdField_a_of_type_Boolean) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
     }
-    do
-    {
-      TroopMemberCard localTroopMemberCard;
-      do
-      {
-        return;
-        this.jdField_a_of_type_Wla.b.setText("他的群标签");
-        if (this.jdField_a_of_type_Wla.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.b == null) {
-          break;
-        }
-        localTroopMemberCard = this.jdField_a_of_type_Wla.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_Wla.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.b, this.jdField_a_of_type_Wla.jdField_a_of_type_ComTencentMobileqqActivityContactTroopShowExternalTroopListActivity.jdField_a_of_type_JavaLangString);
-      } while (localTroopMemberCard == null);
-      if (localTroopMemberCard.sex == 1) {
-        this.jdField_a_of_type_Wla.b.setText("她的群标签");
-      }
-      this.jdField_a_of_type_Wla.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopMemberCard.nick);
-      return;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqDataCard.shGender != 1));
-    this.jdField_a_of_type_Wla.b.setText("她的群标签");
   }
 }
 

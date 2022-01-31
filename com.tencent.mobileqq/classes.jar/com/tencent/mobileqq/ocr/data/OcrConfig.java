@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.data;
 
-import agct;
+import aghd;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -17,7 +17,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class OcrConfig
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agct();
+  public static final Parcelable.Creator CREATOR = new aghd();
   public static final String TAG = "OcrConfig";
   public int aioOcrOpen;
   public String aioText;

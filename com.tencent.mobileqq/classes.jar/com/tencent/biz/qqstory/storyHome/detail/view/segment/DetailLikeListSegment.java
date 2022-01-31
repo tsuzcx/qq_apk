@@ -50,7 +50,7 @@ public class DetailLikeListSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramBaseViewHolder.a(2131371704);
+    paramViewGroup = (TextView)paramBaseViewHolder.a(2131371702);
     SpannableStringBuilder localSpannableStringBuilder = SpannableStringUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback);
     if (localSpannableStringBuilder.length() == 0)
     {
@@ -72,7 +72,7 @@ public class DetailLikeListSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970706, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970722, paramViewGroup, false));
   }
   
   public String a()

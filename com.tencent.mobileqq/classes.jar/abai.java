@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import java.util.ArrayList;
 
 public class abai
-  implements Runnable
+  extends abad
 {
-  public abai(ARMapActivity paramARMapActivity, long paramLong1, long paramLong2) {}
+  public boolean a;
+  public long b;
+  public long c;
+  public final ArrayList c = new ArrayList();
+  public String d;
+  public final ArrayList d = new ArrayList();
+  public String e;
   
-  public void run()
+  private abai()
   {
-    ARMapEngine.updateSinglePOITaskStatus(this.jdField_a_of_type_Long, this.b, 1);
+    super(null);
   }
 }
 

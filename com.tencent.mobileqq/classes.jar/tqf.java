@@ -1,31 +1,65 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import MQQ.PrivExtV2Rsp;
+import MQQ.VipUserInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VipInfoHandler;
+import com.tencent.mobileqq.app.VipInfoObserver;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class tqf
-  implements Runnable
+  extends VipInfoObserver
 {
-  public tqf(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
+  public tqf(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    try
+    if ((paramBoolean) && (paramInt >= 0) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
     {
-      if ((RegisterQQNumberActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        RegisterQQNumberActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        RegisterQQNumberActivity.a(this.a).c(2131435070);
+      Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      if (localObject != null) {
+        ((SharedPreferences)localObject).edit().putInt("key_selfvip_growthvalue", paramInt).commit();
       }
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (!RegisterQQNumberActivity.a(this.a).isShowing())) {
-        RegisterQQNumberActivity.a(this.a).show();
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoObserver");
       }
-      return;
+      this.a.b((String)localObject);
     }
-    catch (Throwable localThrowable)
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if ((paramInt == VipInfoHandler.a) && (paramBoolean))
     {
-      for (;;)
+      paramObject = ((PrivExtV2Rsp)paramObject).vipInfo;
+      if (paramObject != null)
       {
-        localThrowable.printStackTrace();
+        paramObject = paramObject.sUri;
+        if (paramObject != null)
+        {
+          QQSettingMe.b(this.a, paramObject);
+          if (QLog.isColorLevel()) {
+            QLog.d("QQSettingRedesign", 2, "vip url = " + paramObject);
+          }
+          paramObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4).edit().putString("VIPCenter_url_key", paramObject);
+          if (Build.VERSION.SDK_INT >= 9) {
+            break label145;
+          }
+          paramObject.commit();
+        }
       }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new tqg(this));
+      return;
+      label145:
+      paramObject.apply();
     }
   }
 }

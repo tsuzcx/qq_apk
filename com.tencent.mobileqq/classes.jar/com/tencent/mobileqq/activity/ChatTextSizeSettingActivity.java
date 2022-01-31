@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import java.util.ArrayList;
-import sfg;
+import sjy;
 
 public class ChatTextSizeSettingActivity
   extends IphoneTitleBarActivity
 {
   public int a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new sfg(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new sjy(this);
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
@@ -50,7 +50,7 @@ public class ChatTextSizeSettingActivity
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localObject = (ImageView)((ViewGroup)this.jdField_a_of_type_JavaUtilArrayList.get(i)).findViewById(2131363738);
+      localObject = (ImageView)((ViewGroup)this.jdField_a_of_type_JavaUtilArrayList.get(i)).findViewById(2131363762);
       if (i == paramInt) {
         ((ImageView)localObject).setVisibility(0);
       }
@@ -69,12 +69,12 @@ public class ChatTextSizeSettingActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130968777);
-    setTitle(getString(2131433595));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363735));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363739));
-    this.c = ((ViewGroup)findViewById(2131363740));
-    this.d = ((ViewGroup)findViewById(2131363741));
+    super.setContentView(2130968781);
+    setTitle(getString(2131433609));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363759));
+    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363763));
+    this.c = ((ViewGroup)findViewById(2131363764));
+    this.d = ((ViewGroup)findViewById(2131363765));
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidViewViewGroup);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_AndroidViewViewGroup);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.c);

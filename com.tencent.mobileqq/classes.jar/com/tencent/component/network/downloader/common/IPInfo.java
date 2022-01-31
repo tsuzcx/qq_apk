@@ -3,12 +3,12 @@ package com.tencent.component.network.downloader.common;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import pjn;
+import pof;
 
 public class IPInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pjn();
+  public static final Parcelable.Creator CREATOR = new pof();
   public int a;
   public String a;
   

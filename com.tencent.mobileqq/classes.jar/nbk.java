@@ -1,37 +1,15 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.BaseResponse;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.channel.NetworkRequest.IProtocolListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
 public class nbk
-  implements NetworkRequest.IProtocolListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  protected final long a;
-  public CmdTaskManger.CommandCallback a;
-  public NetworkRequest a;
+  public nbk(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public nbk(NetworkRequest paramNetworkRequest)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest = paramNetworkRequest;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  private void b(int paramInt, String paramString, BaseResponse paramBaseResponse)
-  {
-    CmdTaskManger.CommandCallback localCommandCallback = this.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$CommandCallback;
-    if (localCommandCallback != null)
-    {
-      localCommandCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest, paramBaseResponse, new ErrorMessage(paramInt, paramString));
-      return;
-    }
-    SLog.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
-  }
-  
-  public void a(int paramInt, String paramString, BaseResponse paramBaseResponse)
-  {
-    b(paramInt, paramString, paramBaseResponse);
+    PublicAccountImageCollectionCommentActivity.b(this.a, paramBoolean);
   }
 }
 

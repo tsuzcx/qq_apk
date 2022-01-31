@@ -1,31 +1,34 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTopicViewGroup;
-import java.util.List;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class mbq
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public mbq(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public mbq(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    VideoInfo localVideoInfo = (VideoInfo)VideoFeedsAdapter.a(this.a).get(0);
-    if (VideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
+    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
+      return;
+    }
+    ReadInJoyDeliverUGCActivity.a(this.a, true);
+    ReadInJoyDeliverUGCActivity.b(this.a, ReadInJoyDeliverUGCActivity.b(this.a));
+    switch (paramInt)
     {
-      Object localObject = VideoFeedsAdapter.a(this.a).getChildAt(VideoFeedsAdapter.a(this.a).getHeaderViewsCount());
-      if ((localObject != null) && ((((View)localObject).getTag() instanceof VideoFeedsAdapter.VideoItemHolder)))
-      {
-        localObject = (VideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
-        if ((((VideoFeedsAdapter.VideoItemHolder)localObject).a != null) && (localVideoInfo.a != null))
-        {
-          ((VideoFeedsAdapter.VideoItemHolder)localObject).a.setVisibility(0);
-          ((VideoFeedsAdapter.VideoItemHolder)localObject).a.setArticleInfo(VideoFeedsAdapter.a(this.a), this.a, localVideoInfo, VideoFeedsAdapter.c(this.a));
-        }
-      }
+    }
+    for (;;)
+    {
+      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
+      return;
+      ReadInJoyDeliverUGCActivity.a(this.a);
+      PublicAccountReportUtils.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", ReadInJoyUtils.e(), false);
+      continue;
+      ReadInJoyDeliverUGCActivity.b(this.a);
+      PublicAccountReportUtils.a(null, "", "0X800823A", "0X800823A", 0, 0, "", "", "", ReadInJoyUtils.e(), false);
     }
   }
 }

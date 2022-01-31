@@ -1,46 +1,29 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.ChatPieApolloViewController;
-import com.tencent.mobileqq.apollo.script.SpriteActionScript;
-import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.Window;
+import com.tencent.mobileqq.apollo.game.ApolloGameView;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class yzp
   implements Runnable
 {
-  public yzp(ChatApolloViewListener paramChatApolloViewListener, boolean paramBoolean, Object paramObject) {}
+  public yzp(ApolloGameActivity paramApolloGameActivity) {}
   
   public void run()
   {
-    try
+    if (ApolloGameActivity.a(this.a) != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewChatApolloViewListener.a == null) {
-        return;
-      }
-      Object localObject2 = (BaseChatPie)this.jdField_a_of_type_ComTencentMobileqqApolloViewChatApolloViewListener.a.get();
-      if ((localObject2 != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqApolloChatPieApolloViewController.a()) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangObject != null))
-      {
-        Object localObject1 = (ArrayList)this.jdField_a_of_type_JavaLangObject;
-        if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
-        {
-          localObject2 = SpriteUtil.a(((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          if (localObject2 != null)
-          {
-            localObject1 = ((ArrayList)localObject1).iterator();
-            while (((Iterator)localObject1).hasNext()) {
-              ((SpriteActionScript)localObject2).a((String)((Iterator)localObject1).next(), true);
-            }
-          }
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ChatApolloViewListener", 1, localThrowable, new Object[0]);
+      ApolloGameActivity.a(this.a).a = true;
+      ApolloGameActivity.a(this.a).a(this.a.getWindow().getDecorView());
+      this.a.getWindow().addFlags(2048);
+      this.a.getWindow().clearFlags(1024);
+      this.a.getWindow().clearFlags(67108864);
+      this.a.getWindow().clearFlags(134217728);
+      this.a.getWindow().setFlags(256, 65536);
+      this.a.getWindow().clearFlags(256);
+      this.a.getWindow().clearFlags(512);
+      this.a.getWindow().addFlags(256);
+      this.a.findViewById(2131362833).setVisibility(8);
+      this.a.getWindow().getDecorView().setSystemUiVisibility(0);
     }
   }
 }

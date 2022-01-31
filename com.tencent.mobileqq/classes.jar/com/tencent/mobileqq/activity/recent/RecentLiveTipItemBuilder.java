@@ -41,6 +41,11 @@ public class RecentLiveTipItemBuilder
   private int b;
   private int c;
   
+  public int a()
+  {
+    return 2;
+  }
+  
   public View a(int paramInt, Object paramObject, RecentFaceDecoder paramRecentFaceDecoder, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, DragFrameLayout.OnDragModeChangedListener paramOnDragModeChangedListener)
   {
     paramOnDragModeChangedListener = null;
@@ -55,15 +60,15 @@ public class RecentLiveTipItemBuilder
     if (paramViewGroup == null)
     {
       paramViewGroup = new RecentLiveTipItemBuilder.RecentLiveTipItemHolder();
-      paramView = a(paramContext, 2130971490, paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131363207));
+      paramView = a(paramContext, 2130971516, paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362724));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131363211));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(16908308));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131374905));
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131374906));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131363201));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131374963));
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131374964));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131363205));
       paramViewGroup.d = ((TextView)paramView.findViewById(16908309));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363202);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363206);
       paramView.setTag(paramViewGroup);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
         paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a());
@@ -241,14 +246,14 @@ public class RecentLiveTipItemBuilder
           {
             if ((paramRecentBaseData instanceof RecentTroopAssistantItem)) {}
             paramDrawable.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, paramView);
-            j = 2130846056;
+            j = 2130846138;
             m = i;
             i = 3;
             k = 99;
           }
           else
           {
-            j = 2130846055;
+            j = 2130846137;
             paramDrawable.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
             m = i;
             i = 3;

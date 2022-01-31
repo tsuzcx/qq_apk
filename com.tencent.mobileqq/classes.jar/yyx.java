@@ -1,31 +1,51 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloPanelManager;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloInfo;
+import com.tencent.mobileqq.apollo.script.SpriteContext;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
 import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class yyx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public yyx(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, Bundle paramBundle) {}
+  public yyx(SpriteUIHandler paramSpriteUIHandler, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new ApolloInfo();
-    paramView.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
-    paramView.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("pkgId");
-    if (ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel) != null) {
-      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, paramView);
+    try
+    {
+      if (SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a() == null) {
+        return;
+      }
+      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().a().findViewById(2131362845);
+      if (1 == this.jdField_a_of_type_Int)
+      {
+        if (localXPanelContainer.a() != 21) {
+          return;
+        }
+        SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().ai();
+        return;
+      }
     }
-    ApolloPanel.c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
+    catch (Exception localException)
+    {
+      QLog.e("cmshow_scripted_SpriteUIHandler", 1, localException, new Object[0]);
+      return;
+    }
+    if (2 == this.jdField_a_of_type_Int)
+    {
+      BaseChatPie localBaseChatPie = SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a();
+      if (localBaseChatPie != null)
+      {
+        ApolloPanel localApolloPanel = localBaseChatPie.a;
+        if ((localApolloPanel != null) && (localApolloPanel.a() == 7))
+        {
+          localBaseChatPie.o(0);
+          return;
+        }
+      }
+      localException.a(21);
     }
   }
 }

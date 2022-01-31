@@ -42,53 +42,6 @@ public class FDStatsTree$TreeNode
     this.jdField_a_of_type_JavaUtilList.add(paramTreeNode);
   }
   
-  public boolean a(String paramString, List paramList)
-  {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
-        break label75;
-      }
-      if (this.b <= 1) {
-        break label73;
-      }
-      paramList.add(new FDStatsTree.ResultObj(paramString, this.b));
-    }
-    label156:
-    label157:
-    for (;;)
-    {
-      return true;
-      paramString = paramString + this.jdField_a_of_type_Char;
-      break;
-      label73:
-      return false;
-      label75:
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      int i = 0;
-      if (localIterator.hasNext())
-      {
-        if (!((TreeNode)localIterator.next()).a(paramString, paramList)) {
-          break label156;
-        }
-        i = 1;
-      }
-      for (;;)
-      {
-        break;
-        if (i != 0) {
-          break label157;
-        }
-        if (this.b > 1)
-        {
-          paramList.add(new FDStatsTree.ResultObj(paramString, this.b));
-          return true;
-        }
-        return false;
-      }
-    }
-  }
-  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();

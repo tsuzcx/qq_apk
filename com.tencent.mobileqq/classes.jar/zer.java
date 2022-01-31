@@ -1,86 +1,55 @@
-import com.tencent.mobileqq.app.HotChatCenterManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatItemData;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloInfo;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
+import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class zer
   implements Runnable
 {
-  public zer(HotChatCenterManager paramHotChatCenterManager, HotChatItemData paramHotChatItemData) {}
+  private int jdField_a_of_type_Int;
+  
+  public zer(ApolloLinearLayout paramApolloLinearLayout) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = ApolloLinearLayout.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout);
+  }
   
   public void run()
   {
-    Object localObject3 = null;
-    EntityManager localEntityManager2 = null;
-    localEntityManager1 = localEntityManager2;
-    localObject1 = localObject3;
-    for (;;)
+    ViewParent localViewParent = ApolloLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout);
+    ApolloLinearLayout.ViewHolder localViewHolder;
+    if ((localViewParent != null) && (this.jdField_a_of_type_Int == ApolloLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout)) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_AndroidViewView != null))
     {
-      try
-      {
-        localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppHotChatCenterManager.a();
-        if (localQQAppInterface != null) {
-          continue;
-        }
-        if (0 != 0) {
-          throw new NullPointerException();
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QQAppInterface localQQAppInterface;
-        localObject1 = localEntityManager1;
-        QLog.e("HotChatCenterManager", 1, localThrowable, new Object[0]);
-        if (localEntityManager1 == null) {
-          continue;
-        }
-        localEntityManager1.a();
-        return;
-      }
-      finally
-      {
-        if (localObject1 == null) {
-          continue;
-        }
-        ((EntityManager)localObject1).a();
-      }
-      return;
-      localEntityManager1 = localEntityManager2;
-      localObject1 = localObject3;
-      localEntityManager2 = localQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localEntityManager1 = localEntityManager2;
-      localObject1 = localEntityManager2;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData.getStatus() == 1000)
-      {
-        localEntityManager1 = localEntityManager2;
-        localObject1 = localEntityManager2;
-        localEntityManager2.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData);
-        localEntityManager1 = localEntityManager2;
-        localObject1 = localEntityManager2;
-        if (QLog.isColorLevel())
-        {
-          localEntityManager1 = localEntityManager2;
-          localObject1 = localEntityManager2;
-          QLog.d("HotChatCenterManager", 2, new Object[] { "[persist],code:", this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData.mHotChatCode });
-        }
-        if (localEntityManager2 != null) {
-          localEntityManager2.a();
-        }
-      }
-      else
-      {
-        localEntityManager1 = localEntityManager2;
-        localObject1 = localEntityManager2;
-        localEntityManager2.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData);
+      localViewHolder = (ApolloLinearLayout.ViewHolder)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_AndroidViewView.getTag();
+      if ((localViewHolder != null) && (localViewHolder.a != null) && (localViewHolder.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData != null) && (localViewHolder.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.status == 1)) {
+        break label86;
       }
     }
+    label86:
+    do
+    {
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.b = true;
+        localViewParent.requestDisallowInterceptTouchEvent(true);
+        ApolloLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout, 2);
+      } while ((localViewHolder.a == null) || (localViewHolder.a.b == 1) || (localViewHolder.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData == null));
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_AndroidViewView, localViewHolder.a);
+    } while ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
+    VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "long_press_icon", this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { "" + localViewHolder.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId, "" + localViewHolder.a.jdField_a_of_type_Int, "", String.valueOf(System.currentTimeMillis() / 1000L) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zer
  * JD-Core Version:    0.7.0.1
  */

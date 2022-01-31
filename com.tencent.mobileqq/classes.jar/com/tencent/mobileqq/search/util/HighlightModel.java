@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.search.util;
 
-import ahwr;
+import aibh;
 import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class HighlightModel
@@ -24,7 +23,7 @@ public class HighlightModel
     if ((paramString != null) && (!((List)localObject).contains(paramString))) {
       ((List)localObject).add(paramString);
     }
-    Collections.sort((List)localObject, new ahwr(this));
+    Collections.sort((List)localObject, new aibh(this));
     this.jdField_a_of_type_JavaUtilList = ((List)localObject);
   }
   
@@ -129,25 +128,6 @@ public class HighlightModel
       localObject1 = paramCharSequence;
       paramCharSequence = (CharSequence)localObject2;
     }
-  }
-  
-  public String a(CharSequence paramCharSequence)
-  {
-    if (TextUtils.isEmpty(paramCharSequence)) {
-      return null;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      int j = a(paramCharSequence.toString(), str, i);
-      i = j;
-      if (j != -1) {
-        return str;
-      }
-    }
-    return null;
   }
 }
 

@@ -1,19 +1,28 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.io.File;
+import android.view.View;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class aoou
-  implements Runnable
+public class aoou
+  implements ActionSheet.OnButtonClickListener
 {
-  public aoou(String paramString1, String paramString2) {}
+  public aoou(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    FileUtils.a(QIMPtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "save Config to file finish.");
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
+    if (this.a.a.b.get() == 4) {
+      this.a.a(false);
+    }
+    this.a.a.a("FlowCameraActivity");
+    this.a.b();
+    FlowCameraMqqAction.b("", "0X800656F", "0");
   }
 }
 

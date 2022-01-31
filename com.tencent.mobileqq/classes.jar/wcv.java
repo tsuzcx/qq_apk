@@ -1,14 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.tips.GamePartyTipsBar;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class wcv
-  implements Runnable
+  implements CustomMenuBar.OnMenuItemClickListener
 {
-  public wcv(GamePartyTipsBar paramGamePartyTipsBar, String paramString) {}
+  public wcv(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    GamePartyTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar).setText(this.jdField_a_of_type_JavaLangString);
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(paramString, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), paramInt1, PublicAccountChatPie.a(this.a), PublicAccountChatPie.b(this.a), paramInt2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

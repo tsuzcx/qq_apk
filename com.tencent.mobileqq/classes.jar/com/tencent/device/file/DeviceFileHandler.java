@@ -44,13 +44,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import pxr;
+import qcj;
 
 public class DeviceFileHandler
   extends RouterHandler
   implements INetEngine.INetEngineListener
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new pxr(this, Looper.getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new qcj(this, Looper.getMainLooper());
   private DeviceFileHandler.DeviceNotifyReceiver jdField_a_of_type_ComTencentDeviceFileDeviceFileHandler$DeviceNotifyReceiver;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   protected HashMap a;
@@ -266,7 +266,7 @@ public class DeviceFileHandler
       {
         l = this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.generateSessionID(0);
         paramString2 = MD5Utils.d(paramString1) + paramString1.substring(paramString1.lastIndexOf("."));
-        paramString2 = AppConstants.aJ + "smartdevice/" + paramString2;
+        paramString2 = AppConstants.aK + "smartdevice/" + paramString2;
         if (FileUtils.b(paramString2))
         {
           paramQQAppInterface = new Message();

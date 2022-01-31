@@ -1,15 +1,32 @@
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginInstaller;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.SignatureObserver;
+import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
 
 public class amxq
-  implements amxu
+  extends SignatureObserver
 {
-  public amxq(QZonePluginInstaller paramQZonePluginInstaller) {}
+  public amxq(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
   
-  public boolean a(PluginRecord paramPluginRecord, File paramFile)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    return QZonePluginInstaller.a(this.a, paramPluginRecord);
+    if (paramBoolean)
+    {
+      paramObject = (Bundle)paramObject;
+      paramObject.putInt("which_method", 0);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
+    }
+  }
+  
+  protected void c(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      paramObject = (Bundle)paramObject;
+      paramObject.putInt("which_method", 1);
+      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
+    }
   }
 }
 

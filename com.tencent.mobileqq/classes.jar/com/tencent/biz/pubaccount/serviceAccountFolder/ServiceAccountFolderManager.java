@@ -50,14 +50,14 @@ import java.util.List;
 import java.util.Set;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import mrw;
-import mrx;
-import mry;
-import mrz;
-import msa;
-import msb;
-import msc;
-import msd;
+import mvq;
+import mvr;
+import mvs;
+import mvt;
+import mvu;
+import mvv;
+import mvw;
+import mvx;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -68,7 +68,7 @@ public class ServiceAccountFolderManager
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private ServiceAccountFolderManager.FeedComparator jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager$FeedComparator = new ServiceAccountFolderManager.FeedComparator(this);
-  private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new mrw(this);
+  private final MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new mvq(this);
   private CharSequence jdField_a_of_type_JavaLangCharSequence = "";
   private final Object jdField_a_of_type_JavaLangObject = new Object();
   private String jdField_a_of_type_JavaLangString;
@@ -92,7 +92,7 @@ public class ServiceAccountFolderManager
   
   public static int a()
   {
-    return 2130839205;
+    return 2130839224;
   }
   
   private static int a(QQAppInterface paramQQAppInterface, String paramString)
@@ -351,7 +351,7 @@ public class ServiceAccountFolderManager
   public static String a(QQAppInterface paramQQAppInterface)
   {
     if (TextUtils.isEmpty(PublicAccountConfigUtil.f)) {
-      return paramQQAppInterface.getApplication().getString(2131438457);
+      return paramQQAppInterface.getApplication().getString(2131438477);
     }
     return PublicAccountConfigUtil.f;
   }
@@ -377,7 +377,7 @@ public class ServiceAccountFolderManager
       {
         localObject2 = ((MessageRecord)localObject2).getExtInfoFromExtStr("public_account_msg_extra_info_type");
         if ("1".equals(localObject2)) {
-          paramQQAppInterface = paramQQAppInterface.getApplication().getString(2131438459);
+          paramQQAppInterface = paramQQAppInterface.getApplication().getString(2131438479);
         }
       }
     }
@@ -391,7 +391,7 @@ public class ServiceAccountFolderManager
       return paramQQAppInterface;
       if ("2".equals(localObject2))
       {
-        paramQQAppInterface = paramQQAppInterface.getApplication().getString(2131438460);
+        paramQQAppInterface = paramQQAppInterface.getApplication().getString(2131438480);
       }
       else
       {
@@ -814,7 +814,7 @@ public class ServiceAccountFolderManager
   public void a(QQAppInterface paramQQAppInterface, long paramLong)
   {
     this.d = paramLong;
-    ThreadManager.executeOnFileThread(new msa(this, paramQQAppInterface));
+    ThreadManager.executeOnFileThread(new mvu(this, paramQQAppInterface));
   }
   
   public void a(QQAppInterface paramQQAppInterface, ServiceAccountFolderFeed paramServiceAccountFolderFeed, boolean paramBoolean)
@@ -899,7 +899,7 @@ public class ServiceAccountFolderManager
         QLog.d("ServiceAccountFolderManager", 2, "addMessageToServiceAccountFolder->go to update feed");
       }
       if (Looper.myLooper() == Looper.getMainLooper()) {
-        ThreadManager.executeOnSubThread(new mry(this, paramQQAppInterface, paramObject));
+        ThreadManager.executeOnSubThread(new mvs(this, paramQQAppInterface, paramObject));
       }
       while (!paramObject.isSendFromLocal())
       {
@@ -914,7 +914,7 @@ public class ServiceAccountFolderManager
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      ThreadManager.executeOnSubThread(new msd(this, paramQQAppInterface, paramString));
+      ThreadManager.executeOnSubThread(new mvx(this, paramQQAppInterface, paramString));
       return;
     }
     ServiceAccountFolderFeed localServiceAccountFolderFeed;
@@ -942,7 +942,7 @@ public class ServiceAccountFolderManager
             localServiceAccountFolderFeed.jdField_c_of_type_JavaLangString = localPublicAccountInfo.name;
             localServiceAccountFolderFeed.jdField_b_of_type_Boolean = localPublicAccountInfo.isVisible();
             if (localPublicAccountInfo.certifiedGrade > 0L) {
-              localServiceAccountFolderFeed.jdField_c_of_type_Int = 2130839751;
+              localServiceAccountFolderFeed.jdField_c_of_type_Int = 2130839766;
             }
           }
           else
@@ -1050,7 +1050,7 @@ public class ServiceAccountFolderManager
       localServiceAccountFolderFeed.jdField_b_of_type_Boolean = bool;
       if (((AccountDetail)localObject2).certifiedGrade > 0)
       {
-        localServiceAccountFolderFeed.jdField_c_of_type_Int = 2130839751;
+        localServiceAccountFolderFeed.jdField_c_of_type_Int = 2130839766;
         break;
       }
       localServiceAccountFolderFeed.jdField_c_of_type_Int = 0;
@@ -1192,7 +1192,7 @@ public class ServiceAccountFolderManager
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      ThreadManager.executeOnSubThread(new mrx(this, paramQQAppInterface));
+      ThreadManager.executeOnSubThread(new mvr(this, paramQQAppInterface));
       if (QLog.isColorLevel()) {
         QLog.d("ServiceAccountFolderManager", 2, "refreshAndUpdate->cuin:" + this.jdField_a_of_type_JavaLangString + ", throw to sub thread!");
       }
@@ -1209,7 +1209,7 @@ public class ServiceAccountFolderManager
   {
     this.jdField_c_of_type_Long = paramLong;
     this.d = paramLong;
-    ThreadManager.executeOnFileThread(new msb(this, paramQQAppInterface));
+    ThreadManager.executeOnFileThread(new mvv(this, paramQQAppInterface));
   }
   
   public void b(QQAppInterface paramQQAppInterface, ServiceAccountFolderFeed paramServiceAccountFolderFeed, boolean paramBoolean)
@@ -1257,7 +1257,7 @@ public class ServiceAccountFolderManager
     if (QLog.isColorLevel()) {
       QLog.d("ServiceAccountFolderManager", 2, "deleteServiceAccountFolder->time:" + l);
     }
-    ThreadManager.executeOnSubThread(new mrz(this, paramQQAppInterface, l));
+    ThreadManager.executeOnSubThread(new mvt(this, paramQQAppInterface, l));
   }
   
   public void e(QQAppInterface paramQQAppInterface)
@@ -1302,7 +1302,7 @@ public class ServiceAccountFolderManager
   
   public void g(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.executeOnFileThread(new msc(this, paramQQAppInterface));
+    ThreadManager.executeOnFileThread(new mvw(this, paramQQAppInterface));
   }
   
   public void h(QQAppInterface paramQQAppInterface)
@@ -1478,7 +1478,7 @@ public class ServiceAccountFolderManager
   public void i(QQAppInterface paramQQAppInterface)
   {
     RecentUserProxy localRecentUserProxy = paramQQAppInterface.a().a();
-    RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.at, 7230);
+    RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.au, 7230);
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
@@ -1496,7 +1496,7 @@ public class ServiceAccountFolderManager
       if (localRecentUser == null)
       {
         localRecentUser = new RecentUser();
-        localRecentUser.uin = AppConstants.at;
+        localRecentUser.uin = AppConstants.au;
         localRecentUser.type = 7230;
         localRecentUser.displayName = a(paramQQAppInterface);
         ??? = localRecentUser;

@@ -1,30 +1,20 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbyEntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.Constants.LogoutReason;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
 
 public class aelm
-  implements Runnable
+  extends Handler
 {
-  public aelm(NearbyAppInterface paramNearbyAppInterface) {}
-  
-  public void run()
+  public aelm(LyricViewInternal paramLyricViewInternal, Looper paramLooper)
   {
-    if (!this.a.a.verifyAuthentication())
-    {
-      QLog.e("NearbyAppInterface", 1, "verify fail!");
-      if (this.a.isLogin()) {
-        this.a.logout(true);
-      }
-      Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
-      localIntent.putExtra("title", "登录失败");
-      localIntent.putExtra("msg", "登录失败");
-      localIntent.putExtra("reason", Constants.LogoutReason.kicked);
-      localIntent.addFlags(268435456);
-      BaseApplicationImpl.sApplication.startActivity(localIntent);
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.requestLayout();
+    this.a.invalidate();
   }
 }
 

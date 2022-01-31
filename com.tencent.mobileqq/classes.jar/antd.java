@@ -1,17 +1,13 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
-import java.util.Collections;
+import dov.com.qq.im.capture.QIMCaptureController;
 
 public class antd
   implements Runnable
 {
-  public antd(EditVideoDoodle paramEditVideoDoodle) {}
+  public antd(QIMCaptureController paramQIMCaptureController) {}
   
   public void run()
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback.a(1, Collections.EMPTY_LIST);
-    }
+    QIMCaptureController.a(this.a, true);
   }
 }
 

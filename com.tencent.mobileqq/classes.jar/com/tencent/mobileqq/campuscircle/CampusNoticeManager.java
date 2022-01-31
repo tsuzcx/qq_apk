@@ -64,8 +64,8 @@ public class CampusNoticeManager
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = 1030;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = AppConstants.aB;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = AppConstants.aB;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = AppConstants.aC;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = AppConstants.aC;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = localRecentItemNoticeData.a;
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = localRecentItemNoticeData.c;
     }
@@ -250,7 +250,7 @@ public class CampusNoticeManager
     //   335: aload 4
     //   337: aload_0
     //   338: getfield 26	com/tencent/mobileqq/campuscircle/CampusNoticeManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   341: getstatic 66	com/tencent/mobileqq/app/AppConstants:aB	Ljava/lang/String;
+    //   341: getstatic 66	com/tencent/mobileqq/app/AppConstants:aC	Ljava/lang/String;
     //   344: sipush 1030
     //   347: iconst_0
     //   348: invokevirtual 238	com/tencent/mobileqq/managers/QQLSRecentManager:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;IZ)V
@@ -372,7 +372,7 @@ public class CampusNoticeManager
           if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData == null)
           {
             paramMQQCampusNotify = new RecentUser();
-            paramMQQCampusNotify.uin = AppConstants.aB;
+            paramMQQCampusNotify.uin = AppConstants.aC;
             paramMQQCampusNotify.msgType = 1030;
             paramMQQCampusNotify.type = 1030;
             this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemNoticeData = new RecentItemNoticeData(paramMQQCampusNotify);

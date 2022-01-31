@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class scs
-  implements Runnable
+public final class scs
+  implements CUKingCardHelper.CUKingDialogListener
 {
-  public scs(ChatSettingForTroop paramChatSettingForTroop) {}
+  public scs(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public void run()
+  public void callback(int paramInt)
   {
-    if (this.a.isFinishing()) {
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.onClick(null, 0);
       return;
     }
-    this.a.g();
+    this.b.onClick(null, 0);
   }
 }
 

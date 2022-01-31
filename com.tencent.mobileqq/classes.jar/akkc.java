@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.vashealth.SSOHttpUtils;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 
-class akkc
+public class akkc
   implements Runnable
 {
-  akkc(akkb paramakkb, int paramInt, String paramString) {}
+  public akkc(JumpAction paramJumpAction) {}
   
   public void run()
   {
-    SSOHttpUtils.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    if (JumpAction.a(this.a) == null) {}
+    String str;
+    do
+    {
+      return;
+      str = JumpAction.a(this.a).getCurrentAccountUin();
+    } while (TextUtils.isEmpty(str));
+    WebProcessManager.a(str, System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akkc
  * JD-Core Version:    0.7.0.1
  */

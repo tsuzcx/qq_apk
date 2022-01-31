@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
-public class aafy
+class aafy
   implements Runnable
 {
-  public aafy(AREngine paramAREngine) {}
+  aafy(aafw paramaafw) {}
   
   public void run()
   {
-    QLog.i("AREngine_AREngine", 1, "processCloudSceneRecogResult. download resource timeout.");
-    AREngine.a(this.a).a();
-    this.a.d(false, null);
+    ARWorldCupGameLogicManager.a().h();
   }
 }
 

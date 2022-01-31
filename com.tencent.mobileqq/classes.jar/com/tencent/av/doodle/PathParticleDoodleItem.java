@@ -16,7 +16,7 @@ public class PathParticleDoodleItem
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect.a(BaseApplicationImpl.getApplication(), 2131230734, paramInt);
+    this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect.a(BaseApplicationImpl.getApplication(), 2131230735, paramInt);
     this.jdField_a_of_type_ComTencentAvDoodlePathParticleEffect.a(this.jdField_a_of_type_AndroidGraphicsPathMeasure);
   }
   
@@ -40,7 +40,7 @@ public class PathParticleDoodleItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.doodle.PathParticleDoodleItem
  * JD-Core Version:    0.7.0.1
  */

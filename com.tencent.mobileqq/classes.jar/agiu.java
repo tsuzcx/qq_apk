@@ -1,23 +1,18 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
 
-public class agiu
-  extends BitmapDrawable
+public final class agiu
+  implements Parcelable.Creator
 {
-  public agiu(ScanTorchActivity paramScanTorchActivity, Resources paramResources, Bitmap paramBitmap1, float paramFloat, Bitmap paramBitmap2)
+  public ShuayishuaConfig a(Parcel paramParcel)
   {
-    super(paramResources, paramBitmap1);
+    return new ShuayishuaConfig(paramParcel);
   }
   
-  public void draw(Canvas paramCanvas)
+  public ShuayishuaConfig[] a(int paramInt)
   {
-    paramCanvas.save();
-    paramCanvas.rotate(this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
-    super.draw(paramCanvas);
-    paramCanvas.restore();
+    return new ShuayishuaConfig[paramInt];
   }
 }
 

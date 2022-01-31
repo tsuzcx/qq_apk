@@ -1,18 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper.MediaPlayListenerAdapter;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.util.Properties;
 
 public class mim
-  extends FriendListObserver
+  implements Runnable
 {
-  public mim(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public mim(VideoPlayerWrapper paramVideoPlayerWrapper, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void run()
   {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
+    Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getStreamDumpInfo();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      QLog.d("ReadInJoyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.k();
+      localObject = ReadInJoyUtils.a((String)localObject);
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a = Long.valueOf(((Properties)localObject).getProperty("VideoBitRate")).longValue();
+        if (VideoPlayerWrapper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper) != null) {
+          VideoPlayerWrapper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a);
+        }
+      }
     }
   }
 }

@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.activity.aio.PokePanelAdapter;
 
 class urs
   implements Runnable
 {
-  urs(urr paramurr) {}
+  urs(urq paramurq, String paramString1, String paramString2, boolean paramBoolean) {}
   
   public void run()
   {
-    this.a.a.d();
+    PokePanel.a(this.jdField_a_of_type_Urq.a).a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.b).intValue(), false, this.jdField_a_of_type_Boolean);
   }
 }
 

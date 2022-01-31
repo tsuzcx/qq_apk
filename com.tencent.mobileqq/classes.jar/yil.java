@@ -1,22 +1,61 @@
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.Comparator;
 
-class yil
-  implements Runnable
+public class yil
+  implements Comparator
 {
-  yil(yik paramyik) {}
+  private yil(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
   
-  public void run()
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("SystemMsgListAdapter", 4, "onGetCampusInfo notify refresh list");
+    int k = 0;
+    int j = 0;
+    int i;
+    if (this.a.f == TroopAddFrdsInnerFrame.e)
+    {
+      i = paramTroopMemberInfo1.addState - paramTroopMemberInfo2.addState;
+      if (i == 0) {
+        if (paramTroopMemberInfo1.commonFrdCnt == -2147483648)
+        {
+          i = 0;
+          if (paramTroopMemberInfo2.commonFrdCnt != -2147483648) {
+            break label68;
+          }
+          label53:
+          i = j - i;
+        }
+      }
     }
-    this.a.a.notifyDataSetChanged();
+    label68:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return i;
+            i = paramTroopMemberInfo1.commonFrdCnt;
+            break;
+            j = paramTroopMemberInfo2.commonFrdCnt;
+            break label53;
+            return i;
+            i = k;
+          } while (this.a.f != TroopAddFrdsInnerFrame.d);
+          i = k;
+        } while (paramTroopMemberInfo1 == null);
+        i = k;
+      } while (paramTroopMemberInfo1.displayedNamePinyinFirst == null);
+      i = k;
+    } while (paramTroopMemberInfo2 == null);
+    return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yil
  * JD-Core Version:    0.7.0.1
  */

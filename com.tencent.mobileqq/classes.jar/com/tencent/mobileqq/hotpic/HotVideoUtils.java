@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adrn;
+import adzw;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -50,7 +50,7 @@ public class HotVideoUtils
   
   private static String a()
   {
-    String str = AppConstants.aJ + "HotPicVideo" + File.separator;
+    String str = AppConstants.aK + "HotPicVideo" + File.separator;
     File localFile = new File(str);
     if (!localFile.exists())
     {
@@ -92,7 +92,7 @@ public class HotVideoUtils
     if (arrayOfFile != null)
     {
       paramFile = Arrays.asList(arrayOfFile);
-      Collections.sort(paramFile, new adrn(null));
+      Collections.sort(paramFile, new adzw(null));
     }
     return paramFile;
   }

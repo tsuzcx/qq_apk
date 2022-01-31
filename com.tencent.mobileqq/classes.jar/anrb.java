@@ -1,37 +1,19 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.FastAnimationDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.EditGifImage;
-import dov.com.tencent.biz.qqstory.takevideo.EditGifSpeedControl;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.data.CaptureComboManager;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.paster.PasterDataManager;
+import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
 
-public class anrb
-  implements SeekBar.OnSeekBarChangeListener
+public final class anrb
+  implements Runnable
 {
-  public anrb(EditGifSpeedControl paramEditGifSpeedControl) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
-      if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a != null) {
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a.a(NativeGifImage.QZONE_DELAY);
-      }
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.e = NativeGifImage.QZONE_DELAY;
-      this.a.d = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
-      }
-    }
+    ((QIMMusicConfigManager)QIMManager.a().c(2)).c();
+    ((PasterDataManager)QIMManager.a().c(4)).c();
+    ((QIMPtvTemplateManager)QIMManager.a().c(3)).e();
+    ((CaptureComboManager)QIMManager.a().c(5)).e();
   }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 

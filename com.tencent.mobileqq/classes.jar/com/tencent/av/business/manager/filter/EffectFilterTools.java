@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Iterator;
 import java.util.List;
-import jfl;
+import jho;
 
 public class EffectFilterTools
   extends EffectConfigBase
@@ -225,7 +225,7 @@ public class EffectFilterTools
             if (!((File)localObject).exists())
             {
               localObject = new HttpNetReq();
-              ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jfl(this);
+              ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jho(this);
               ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = localFilterItem.getIconurl();
               ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
               ((HttpNetReq)localObject).c = str;
@@ -315,7 +315,7 @@ public class EffectFilterTools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.business.manager.filter.EffectFilterTools
  * JD-Core Version:    0.7.0.1
  */

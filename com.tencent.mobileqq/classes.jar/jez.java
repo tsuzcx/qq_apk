@@ -1,28 +1,23 @@
-import android.os.Build;
+import android.graphics.Bitmap;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.av.utils.QAVNotification;
 
 public class jez
   implements Runnable
 {
-  public jez(VideoAppInterface paramVideoAppInterface) {}
+  public jez(VideoController paramVideoController, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    long l1 = System.currentTimeMillis();
-    if (!Build.MANUFACTURER.toLowerCase().equals("xiaomi")) {
-      ImmersiveUtils.d = false;
-    }
-    boolean bool = ImmersiveUtils.a();
-    long l2 = System.currentTimeMillis();
-    VideoAppInterface.a(this.a, null);
-    QLog.w(VideoAppInterface.c(), 1, "supportStatusBarDarkMode, support[" + bool + "], start[" + l1 + "], cost[" + (l2 - l1) + "]");
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentAvVideoController.a.a(3000, this.jdField_a_of_type_JavaLangString, null, true, true);
+    String str = this.jdField_a_of_type_ComTencentAvVideoController.a.getDisplayName(1004, this.b, this.jdField_a_of_type_JavaLangString);
+    QAVNotification.a(this.jdField_a_of_type_ComTencentAvVideoController.a).a(this.c, str, localBitmap, this.jdField_a_of_type_JavaLangString, 57, 3000, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jez
  * JD-Core Version:    0.7.0.1
  */

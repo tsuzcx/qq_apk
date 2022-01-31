@@ -1,26 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.tips.ArkTipsBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.ArkTipsManager;
 
 public class whu
-  extends Handler
+  implements View.OnClickListener
 {
-  public whu(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public whu(ArkTipsBar paramArkTipsBar) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (List)paramMessage.obj;
-      this.a.a(paramMessage, true);
-      return;
+      paramView = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (paramView != null)
+      {
+        paramView = paramView.a();
+        if (paramView != null) {
+          paramView.a(ArkTipsBar.a(this.a));
+        }
+      }
+      ArkTipsManager.a().a();
     }
-    paramMessage = (List)paramMessage.obj;
-    this.a.a(paramMessage, false);
   }
 }
 

@@ -1,15 +1,30 @@
 import com.qq.im.poi.LbsPackPoiListActivity;
-import com.qq.im.poi.LbsPackPoiListAdapter.onClickListener;
-import com.qq.im.poi.PoiInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class anq
-  implements LbsPackPoiListAdapter.onClickListener
+class anq
+  implements Runnable
 {
-  public anq(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
+  anq(anp paramanp) {}
   
-  public void a(PoiInfo paramPoiInfo)
+  public void run()
   {
-    LbsPackPoiListActivity.a(this.a, paramPoiInfo);
+    PullRefreshHeader localPullRefreshHeader;
+    if (this.a.a.jdField_a_of_type_Boolean)
+    {
+      LbsPackPoiListActivity.a(this.a.a, 800L);
+      localPullRefreshHeader = this.a.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
+      if (!NetworkUtil.d(BaseApplication.getContext())) {
+        break label54;
+      }
+    }
+    label54:
+    for (int i = 0;; i = 2)
+    {
+      localPullRefreshHeader.a(i);
+      return;
+    }
   }
 }
 

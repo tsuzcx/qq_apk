@@ -1,20 +1,15 @@
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
 
-public class nmc
+class nmc
   implements Runnable
 {
-  public nmc(VidListPlayMode paramVidListPlayMode, boolean paramBoolean) {}
+  nmc(nmb paramnmb) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.e = false;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.g();
-      return;
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.a(this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.a.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.b, false);
   }
 }
 

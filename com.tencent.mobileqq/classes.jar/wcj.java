@@ -1,25 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.PublicAccountManager.refuseAcceptDone;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.AddMessageHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class wcj
-  implements Runnable
+  implements PublicAccountManager.refuseAcceptDone
 {
-  wcj(wci paramwci, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, StateListDrawable paramStateListDrawable) {}
+  wcj(wch paramwch) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Wci.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (this.jdField_a_of_type_Wci.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
-    {
-      this.jdField_a_of_type_Wci.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundDrawable(this.b);
-      this.jdField_a_of_type_Wci.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTextColor(-16777216);
-    }
-    this.jdField_a_of_type_Wci.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setBackgroundDrawable(this.c);
-    this.jdField_a_of_type_Wci.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
+    this.a.a.al = false;
+    this.a.a.bm();
+    this.a.a.aY();
+    AddMessageHelper.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131427345), this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false, true);
   }
 }
 

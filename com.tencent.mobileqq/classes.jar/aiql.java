@@ -1,38 +1,26 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.OldHttpEngine;
-import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
-import com.tencent.mobileqq.transfile.RichMediaUtil;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
 import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-public class aiql
-  extends TimerTask
+class aiql
+  implements Runnable
 {
-  public aiql(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner, HttpNetReq paramHttpNetReq) {}
+  aiql(aiqk paramaiqk) {}
   
   public void run()
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    try
     {
-      int i;
-      if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null))
-      {
-        i = this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.g;
-        if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.a != 1) {
-          break label71;
-        }
+      if (this.a.a.a != null) {
+        this.a.a.a.start();
       }
-      for (;;)
-      {
-        RichMediaUtil.a(i, bool, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.f, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.e, "scheduleRetry", "mIsCancelled is true 2");
-        return;
-        label71:
-        bool = false;
-      }
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.c(this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("VideoSprite", 2, "onCompletion: " + QLog.getStackTraceString(localException));
+    }
   }
 }
 

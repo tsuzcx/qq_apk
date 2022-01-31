@@ -1,53 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class kaa
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public kaa(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  public kaa(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationCancel");
+      QLog.d(this.a.a, 2, "RemoveTipsRunnale Run");
     }
-    this.a.b(3, false);
-    QavVideoRecordUICtrl.b(this.a).requestLayout();
-    QavVideoRecordUICtrl.b(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationEnd");
-    }
-    this.a.c(3);
-    QavVideoRecordUICtrl.b(this.a).requestLayout();
-    QavVideoRecordUICtrl.b(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationStart");
-    }
-    QavVideoRecordUICtrl.a(this.a).setVisibility(0);
-    QavVideoRecordUICtrl.a(this.a).setAlpha(0.0F);
-    QavVideoRecordUICtrl.b(this.a).setVisibility(0);
-    QavVideoRecordUICtrl.b(this.a).setAlpha(0.0F);
-    QavVideoRecordUICtrl.e(this.a).height = -2;
-    QavVideoRecordUICtrl.e(this.a).width = -2;
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kaa
  * JD-Core Version:    0.7.0.1
  */

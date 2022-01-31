@@ -1,43 +1,35 @@
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.huanjiplugin.HuanjiPluginStartListener;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-public class pbj
-  implements PopupMenuDialog.OnClickActionListener
+class pbj
+  implements HuanjiPluginStartListener
 {
-  public pbj(HotchatPlugin paramHotchatPlugin, String paramString) {}
+  pbj(paz parampaz, Bundle paramBundle, int paramInt) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    JSONObject localJSONObject = new JSONObject();
-    switch (paramMenuItem.a)
+    this.jdField_a_of_type_AndroidOsBundle.putInt("state", paramInt2);
+    this.jdField_a_of_type_AndroidOsBundle.putInt("percentage", paramInt3);
+    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", 0L);
+    if ((paramInt2 == 6) && (this.jdField_a_of_type_Int == 2)) {
+      this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
+    }
+    for (;;)
     {
-    default: 
+      this.jdField_a_of_type_Paz.a.a(80, this.jdField_a_of_type_AndroidOsBundle);
       return;
-    case 0: 
-      try
-      {
-        localJSONObject.put("index", 0);
-        this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramMenuItem)
-      {
-        paramMenuItem.printStackTrace();
-        return;
+      if ((paramInt2 == 4) && (this.jdField_a_of_type_Int == 1)) {
+        this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
       }
     }
-    try
-    {
-      localJSONObject.put("index", 1);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception paramMenuItem)
-    {
-      paramMenuItem.printStackTrace();
-    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", paramInt);
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
+    this.jdField_a_of_type_Paz.a.a(80, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

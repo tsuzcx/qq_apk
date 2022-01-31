@@ -1,40 +1,13 @@
-import android.support.annotation.NonNull;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.troop.homework.arithmetic.stream.SendArithHomeResultSegment.RspInfo;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
 
 public class ajge
-  extends SimpleObserver
+  implements Runnable
 {
-  public ajge(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  public ajge(ContactListAdapter paramContactListAdapter) {}
   
-  public void a(SendArithHomeResultSegment.RspInfo paramRspInfo)
+  public void run()
   {
-    super.onNext(paramRspInfo);
-    SLog.d("QQ.Troop.homework.CheckArithHWResultFragment", "requestSendHomeworkResult completed");
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    AssertUtils.a(paramRspInfo.a);
-    AssertUtils.a(paramRspInfo.b);
-    CheckArithHWResultFragment.a(this.a, paramRspInfo.a, paramRspInfo.b);
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.e("QQ.Troop.homework.CheckArithHWResultFragment", "send homework error:" + paramError);
-    QQToast.a(this.a.getActivity(), 1, "上传作业失败", 0).a();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    CheckArithHWResultFragment.a(this.a, null, null);
+    this.a.notifyDataSetChanged();
   }
 }
 

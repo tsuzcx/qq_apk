@@ -1,16 +1,64 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardListActivity;
+import com.tencent.mobileqq.businessCard.views.BusinessCardView;
+import com.tencent.mobileqq.widget.IndexView;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class abuq
-  implements View.OnClickListener
+  extends Handler
 {
-  public abuq(MessageForNewGrayTips paramMessageForNewGrayTips, GrayTipsSpan paramGrayTipsSpan) {}
+  public abuq(BusinessCardListActivity paramBusinessCardListActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNewGrayTips.click(paramView, this.jdField_a_of_type_ComTencentMobileqqDataGrayTipsSpan.url);
+    ??? = (Object[])paramMessage.obj;
+    HashMap localHashMap;
+    Long localLong;
+    boolean bool2;
+    if ((??? != null) && (???.length == 4))
+    {
+      paramMessage = (ArrayList)???[0];
+      localHashMap = (HashMap)???[1];
+      localLong = (Long)???[2];
+      bool2 = ((Boolean)???[3]).booleanValue();
+    }
+    label200:
+    label213:
+    for (;;)
+    {
+      boolean bool1;
+      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+      {
+        this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramMessage);
+        this.a.jdField_a_of_type_JavaUtilHashMap = localHashMap;
+        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardView.invalidate();
+        if (localLong.longValue() == 0L)
+        {
+          bool1 = true;
+          break label200;
+          this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardView.a(bool1);
+          if ((this.a.jdField_a_of_type_Int == 1) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() != 0))
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
+            return;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(8);
+        }
+      }
+      for (;;)
+      {
+        if (!bool2) {
+          break label213;
+        }
+        bool1 = true;
+        break;
+        return;
+        bool1 = false;
+      }
+    }
   }
 }
 

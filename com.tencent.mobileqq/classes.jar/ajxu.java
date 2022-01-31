@@ -1,20 +1,34 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class ajxu
   implements Runnable
 {
-  public ajxu(SnapshotService paramSnapshotService, Bitmap paramBitmap, ajxy paramajxy, ajya paramajya) {}
+  public ajxu(TroopRobotManager paramTroopRobotManager) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(SnapshotService.a(), 2, "ScreenShot Finish Callback");
+    oidb_0x496.Robot localRobot = new oidb_0x496.Robot();
+    byte[] arrayOfByte = this.a.a();
+    if (arrayOfByte != null) {}
+    try
+    {
+      localRobot.mergeFrom(arrayOfByte);
+      this.a.a(localRobot);
+      TroopRobotManager.a(this.a);
+      return;
     }
-    SnapshotService.a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Ajxy, this.jdField_a_of_type_Ajya);
-    this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService.a.post(new ajxv(this));
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, "file data error");
+        }
+      }
+    }
   }
 }
 

@@ -23,28 +23,6 @@ public class CommentsUtil
     return j;
   }
   
-  public static int a(String paramString)
-  {
-    int j = 0;
-    if (paramString == null) {
-      return 0;
-    }
-    int i = 0;
-    if (j < paramString.length())
-    {
-      if (a(paramString.charAt(j))) {
-        i += 2;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        i += 1;
-      }
-    }
-    return i;
-  }
-  
   public static CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
     int m = paramCharSequence.length();
@@ -90,26 +68,6 @@ public class CommentsUtil
       return paramLong / 60L / 60L / 1000L + "小时前";
     }
     return paramLong / 24L / 60L / 60L / 1000L + "天前";
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      localStringBuilder.append(String.format("%02x", new Object[] { Integer.valueOf(paramArrayOfByte[i] & 0xFF) }));
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static boolean a(char paramChar)
-  {
-    return (paramChar >= 'ÿ') || (paramChar < 0);
   }
   
   public static String b(long paramLong)

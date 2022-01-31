@@ -1,33 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.ContentRecommendModel;
-import com.tencent.mobileqq.search.ContentRecommendModel.ContentRecommendListAdapter;
-import com.tencent.mobileqq.search.model.ContentRecommendDataModel.ContentRecommendItem;
-import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView.EffectListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahqr
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ahqr(ContentRecommendModel.ContentRecommendListAdapter paramContentRecommendListAdapter, ahqs paramahqs) {}
+  public ahqr(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Ahqs.a.h))
-    {
-      SearchUtils.a("home_page", "clk_rec_content", new String[] { this.jdField_a_of_type_Ahqs.a.a, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel$ContentRecommendListAdapter.a.jdField_a_of_type_Int) });
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel$ContentRecommendListAdapter.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_Ahqs.a.h);
-      this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel$ContentRecommendListAdapter.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    EffectsCameraCaptureView.a(this.a, CaptureUtil.b());
+    if (EffectsCameraCaptureView.a(this.a) != null) {
+      EffectsCameraCaptureView.a(this.a).d_(EffectsCameraCaptureView.a(this.a));
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("EffectsCameraCaptureView", 2, "onFirstFrameShownInternal soLoaded=" + EffectsCameraCaptureView.a(this.a));
+    }
+    this.a.t();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahqr
  * JD-Core Version:    0.7.0.1
  */

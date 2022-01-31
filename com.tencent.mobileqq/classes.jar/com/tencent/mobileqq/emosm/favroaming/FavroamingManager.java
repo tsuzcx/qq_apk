@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import abzt;
-import abzu;
-import abzv;
-import abzw;
-import abzx;
-import abzz;
-import acab;
+import acht;
+import achu;
+import achv;
+import achw;
+import achx;
+import achz;
+import acib;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
@@ -57,12 +57,12 @@ public class FavroamingManager
   private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private static int jdField_b_of_type_Int;
   private static AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private FavEmoRoamingObserver jdField_a_of_type_ComTencentMobileqqAppFavEmoRoamingObserver = new abzx(this);
+  private FavEmoRoamingObserver jdField_a_of_type_ComTencentMobileqqAppFavEmoRoamingObserver = new achx(this);
   public QQAppInterface a;
   public EmoticonPackageDownloadListener a;
-  private EmotionJsonDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmotionJsonDownloadListener = new abzw(this);
+  private EmotionJsonDownloadListener jdField_a_of_type_ComTencentMobileqqEmoticonEmotionJsonDownloadListener = new achw(this);
   public TransFileController a;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new abzz(this, ThreadManager.getSubThreadLooper());
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new achz(this, ThreadManager.getSubThreadLooper());
   String jdField_a_of_type_JavaLangString;
   public Map a;
   public CopyOnWriteArrayList a;
@@ -74,7 +74,7 @@ public class FavroamingManager
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new abzv(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonEmoticonPackageDownloadListener = new achv(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
     this.jdField_a_of_type_ComTencentMobileqqTransfileTransFileController = paramQQAppInterface.a();
@@ -347,7 +347,7 @@ public class FavroamingManager
       localFavEmoRoamingHandler = (FavEmoRoamingHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(72);
     } while (localFavEmoRoamingHandler == null);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFavEmoRoamingObserver);
-    ThreadManager.post(new abzt(this, localFavEmoRoamingHandler), 5, null, true);
+    ThreadManager.post(new acht(this, localFavEmoRoamingHandler), 5, null, true);
   }
   
   public void b(CustomEmotionData paramCustomEmotionData, UpCallBack paramUpCallBack)
@@ -388,6 +388,11 @@ public class FavroamingManager
     if (QLog.isColorLevel()) {
       QLog.d("FavroamingManager", 2, "uploadMarkFace favEmoticon.epid=" + paramCustomEmotionData.emoPath + " and eid=" + paramCustomEmotionData.eId);
     }
+    if (!paramCustomEmotionData.checkMarketFace("uploadMarkFace"))
+    {
+      QLog.e("FavroamingManager", 1, "uploadMarkFace: marketFace is invalid");
+      return;
+    }
     cmd0x388.ExtensionExpRoamTryUp localExtensionExpRoamTryUp = new cmd0x388.ExtensionExpRoamTryUp();
     cmd0x388.ExpRoamPicInfo localExpRoamPicInfo = new cmd0x388.ExpRoamPicInfo();
     localExpRoamPicInfo.bytes_pic_id.set(ByteStringMicro.copyFrom(paramCustomEmotionData.eId.getBytes()));
@@ -400,7 +405,7 @@ public class FavroamingManager
     paramTransferRequest.jdField_a_of_type_Long = paramCustomEmotionData.getId();
     paramCustomEmotionData = EmojiManager.a(paramCustomEmotionData.emoPath, paramCustomEmotionData.eId, false);
     paramTransferRequest.i = paramCustomEmotionData[1];
-    ThreadManager.post(new acab(this, paramCustomEmotionData, paramTransferRequest), 5, null, true);
+    ThreadManager.post(new acib(this, paramCustomEmotionData, paramTransferRequest), 5, null, true);
   }
   
   public void b(SyncListener paramSyncListener)
@@ -544,7 +549,7 @@ public class FavroamingManager
       if (QLog.isColorLevel()) {
         QLog.i("FavroamingManager", 2, "now sync start download noMarkFace! " + TextUtils.join(",", (Iterable)localObject2));
       }
-      new Handler(Looper.getMainLooper()).post(new abzu(this));
+      new Handler(Looper.getMainLooper()).post(new achu(this));
       b((List)localObject3);
       return;
     }

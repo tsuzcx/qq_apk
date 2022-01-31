@@ -1,51 +1,64 @@
+import android.app.Activity;
+import android.media.AudioManager;
+import android.os.Handler;
 import android.view.View;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.MineFragment;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
 public class adnh
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  public adnh(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public adnh(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    switch (paramView.getId())
     {
     }
-    for (;;)
+    int i;
+    int j;
+    do
     {
-      if (this.a.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      do
+      {
+        return;
+        this.a.jdField_a_of_type_AndroidAppActivity.finish();
+        this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2131034423);
+        return;
+      } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
+      if (VideoFilePresenter.a(this.a))
+      {
+        VideoFilePresenter.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        FileManagerReporter.a("0X8004BE5");
+        this.a.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(VideoFilePresenter.a(this.a));
+        VideoFilePresenter.a(this.a);
       }
-      this.a.o();
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.d(VideoFilePresenter.a(this.a));
+        return;
+        VideoFilePresenter.b(this.a);
+      }
+      VideoFilePresenter.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.e(true);
       return;
-      NearbyHybridFragment.a(this.a);
-      continue;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a() == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b();
-      }
-      if ((NetworkUtil.d(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
-      {
-        MineFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
-      }
-      else
-      {
-        QQToast.a(BaseApplication.getContext(), 1, this.a.getString(2131433213), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
-      }
-    }
+      this.a.jdField_a_of_type_AndroidAppActivity.finish();
+      this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2131034423);
+      return;
+      i = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.i();
+      j = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.h();
+    } while ((i != 6) || (j != 1) || (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a() == null));
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adnh
  * JD-Core Version:    0.7.0.1
  */

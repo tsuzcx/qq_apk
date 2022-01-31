@@ -1,12 +1,13 @@
-import com.tencent.mobileqq.lyric.util.Singleton;
-import cooperation.qzone.QZoneStartupMonitor;
+import cooperation.dingdong.DingdongPluginBridgeActivity;
 
-public final class amse
-  extends Singleton
+public class amse
+  implements Runnable
 {
-  protected QZoneStartupMonitor a(Void paramVoid)
+  public amse(DingdongPluginBridgeActivity paramDingdongPluginBridgeActivity) {}
+  
+  public void run()
   {
-    return new QZoneStartupMonitor(null);
+    this.a.a();
   }
 }
 

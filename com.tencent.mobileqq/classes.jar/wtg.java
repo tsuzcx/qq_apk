@@ -1,15 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class wtg
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public wtg(BindNumberActivity paramBindNumberActivity) {}
+  public wtg(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.doOnBackPressed();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.i();
+    }
   }
 }
 

@@ -1,53 +1,43 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView.OnPagerChangedListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class ktk
-  implements VerticalPagerView.OnPagerChangedListener
+  extends FriendListObserver
 {
-  public ktk(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public ktk(AccountDetailGroupListContainer paramAccountDetailGroupListContainer) {}
   
-  public void a(VerticalPagerView paramVerticalPagerView, View paramView, int paramInt)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    paramVerticalPagerView = this.a;
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
+    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {}
+    label134:
+    for (;;)
     {
-      PublicAccountAdvertisementActivity.c(paramVerticalPagerView, bool);
-      if (!PublicAccountAdvertisementActivity.c(this.a)) {
-        break;
-      }
-      PublicAccountAdvertisementActivity.a(this.a).b(true);
-      PublicAccountAdvertisementActivity.a(this.a).onResume();
-      PublicAccountAdvertisementActivity.e(this.a);
-      PublicAccountAdvertisementActivity.a(this.a, System.currentTimeMillis());
-      if (PublicAccountAdvertisementActivity.a(this.a) > PublicAccountAdvertisementActivity.b(this.a)) {
-        PublicAccountAdvertisementActivity.b(this.a, PublicAccountAdvertisementActivity.c(this.a) + (PublicAccountAdvertisementActivity.a(this.a) - PublicAccountAdvertisementActivity.b(this.a)));
-      }
-      paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.a(this.a);
-      paramVerticalPagerView.setMode(1);
-      PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
-      PublicAccountAdvertisementActivity.a(this.a).a(false);
       return;
+      int j = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildCount();
+      int i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          break label134;
+        }
+        View localView = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+        if (((localView.getTag() instanceof String)) && ((localView instanceof ImageView)) && (((String)localView.getTag()).equals(paramString)))
+        {
+          ((ImageView)localView).setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString));
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onUpdateTroopHead:" + paramString);
+          return;
+        }
+        i += 1;
+      }
     }
-    PublicAccountAdvertisementActivity.c(this.a);
-    PublicAccountAdvertisementActivity.a(this.a).b(false);
-    PublicAccountAdvertisementActivity.a(this.a).onPause();
-    PublicAccountAdvertisementActivity.a(this.a).b();
-    paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
-    PublicAccountAdvertisementActivity.a(this.a);
-    paramVerticalPagerView.setMode(2);
-    PublicAccountAdvertisementActivity.a(this.a).setVisibility(0);
-    PublicAccountAdvertisementActivity.c(this.a, System.currentTimeMillis());
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    PublicAccountAdvertisementActivity.b(this.a, paramBoolean);
   }
 }
 

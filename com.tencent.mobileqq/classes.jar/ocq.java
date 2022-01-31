@@ -1,31 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class ocq
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public ocq(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
+  public ocq(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if (paramInt == 84) {
-      return true;
-    }
-    if (paramInt == 4)
-    {
-      this.a.b();
-      this.a.e();
-      paramDialogInterface = this.a.a;
-      paramKeyEvent = this.a.a;
-      paramDialogInterface.setResult(0);
-      this.a.a.finish();
-      DanceMachineUploadVideoFragment.a(this.a, false);
-      return true;
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
+    StoryReportor.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
   }
 }
 

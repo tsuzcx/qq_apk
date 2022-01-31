@@ -1,15 +1,15 @@
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
+import java.util.List;
 
 public class lqs
-  implements Runnable
+  extends ReadInJoyObserver
 {
-  public lqs(ChannelInfoModule paramChannelInfoModule, boolean paramBoolean, int paramInt, SparseArray paramSparseArray) {}
+  public lqs(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement) {}
   
-  public void run()
+  public void a(List paramList)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidUtilSparseArray);
+    this.a.a(paramList);
   }
 }
 

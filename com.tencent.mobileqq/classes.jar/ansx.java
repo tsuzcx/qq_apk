@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
 
 public class ansx
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public ansx(EditVideoDoodle paramEditVideoDoodle) {}
+  public ansx(QIMCaptureController paramQIMCaptureController) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QQToast.a(this.a.a(), "表情个数已达上限", 0).a();
+    return QIMCaptureController.a(this.a).a(paramMotionEvent);
   }
 }
 

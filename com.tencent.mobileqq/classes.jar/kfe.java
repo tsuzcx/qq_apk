@@ -1,43 +1,38 @@
-import com.tencent.av.business.handler.AVC2CDataHandler;
-import com.tencent.av.business.handler.AVC2CDataHandler.C2CDataHandler;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.SubHandleBase;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import java.lang.ref.WeakReference;
 
 public class kfe
-  extends SubHandleBase
+  extends Handler
 {
-  public int a;
-  public AVC2CDataHandler.C2CDataHandler a;
-  public boolean a;
-  public boolean b;
+  WeakReference a;
   
-  public kfe(AVRedBagMgr paramAVRedBagMgr)
+  public kfe(EffectFilterTextPager paramEffectFilterTextPager)
   {
-    super(paramAVRedBagMgr);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler = new kff(this);
-    paramAVRedBagMgr = AVC2CDataHandler.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    if (paramAVRedBagMgr != null)
-    {
-      paramAVRedBagMgr.a(11, this.jdField_a_of_type_ComTencentAvBusinessHandlerAVC2CDataHandler$C2CDataHandler);
-      return;
-    }
-    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
+    this.a = new WeakReference(paramEffectFilterTextPager);
   }
   
-  public void a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.i, 1, "resetData[" + paramString + "]");
+    EffectFilterTextPager localEffectFilterTextPager = (EffectFilterTextPager)this.a.get();
+    if (localEffectFilterTextPager == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      localEffectFilterTextPager.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kfe
  * JD-Core Version:    0.7.0.1
  */

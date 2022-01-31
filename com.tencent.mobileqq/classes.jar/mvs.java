@@ -1,18 +1,15 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class mvs
-  implements DialogInterface.OnClickListener
+public class mvs
+  implements Runnable
 {
-  mvs(mvr parammvr) {}
+  public mvs(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    FontSettingManager.a();
-    this.a.a.a.finish();
+    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin);
   }
 }
 

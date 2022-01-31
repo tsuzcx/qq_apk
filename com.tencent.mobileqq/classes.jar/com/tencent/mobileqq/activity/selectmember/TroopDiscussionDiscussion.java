@@ -21,8 +21,8 @@ public class TroopDiscussionDiscussion
   
   public void a(Bundle paramBundle)
   {
-    a(2130971570);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131366744));
+    a(2130971596);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131366742));
     this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131492924);
     this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2 = new DiscussionListAdapter2(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity, this, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     this.jdField_a_of_type_ComTencentMobileqqAdapterDiscussionListAdapter2.a(true);

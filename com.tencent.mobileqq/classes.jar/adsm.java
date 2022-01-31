@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnNetVideoInfoListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class adsm
-  implements TVK_IMediaPlayer.OnNetVideoInfoListener
+  implements Runnable
 {
-  public adsm(VideoBaseItem paramVideoBaseItem) {}
+  public adsm(ForwardBaseOption paramForwardBaseOption, Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
   
-  public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBaseItem", 2, "[MediaPlayer] onNetVideoInfo what=" + paramTVK_NetVideoInfo.getErrInfo() + ",extra=" + paramTVK_NetVideoInfo.getState() + ",mCacheProgress=");
+    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a.isShowing())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b);
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.o();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsm
  * JD-Core Version:    0.7.0.1
  */

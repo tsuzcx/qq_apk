@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.filemanager.core.FileUploader;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
 
 public class acvs
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public acvs(FileUploader paramFileUploader) {}
+  public acvs(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    FileUploader.a(this.a, 0L);
-    this.a.a(0L);
+    this.a.a.a(null);
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 

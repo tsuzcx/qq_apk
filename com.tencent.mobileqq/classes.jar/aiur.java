@@ -1,21 +1,110 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Bundle;
+import com.tencent.biz.webviewplugin.Share;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.transfile.TransferRequest.AppInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.observer.BusinessObserver;
 
-public class aiur
-  implements DialogInterface.OnClickListener
+class aiur
+  implements BusinessObserver
 {
-  public aiur(QLifeCommentActivity paramQLifeCommentActivity, QQCustomDialog paramQQCustomDialog) {}
+  aiur(aiuq paramaiuq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|isSuccess=" + paramBoolean + ",time=" + (System.currentTimeMillis() - ForwardSdkShareProcessor.b(this.a.b)));
     }
-    QLifeCommentActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity);
-    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "qlife_comment", "cancel", 0, 0, "", "", "", this.jdField_a_of_type_ComTencentMobileqqTroopActivityQLifeCommentActivity.A);
+    i = -1;
+    paramInt = i;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        paramInt = i;
+        GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse;
+        if (paramBundle != null)
+        {
+          localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+          localGetAppinfoResponse.mergeFrom(paramBundle);
+          paramInt = localGetAppinfoResponse.ret.get();
+        }
+        paramInt = i;
+      }
+      catch (Exception paramBundle)
+      {
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|ret=" + paramInt);
+          }
+          if (paramInt == 0)
+          {
+            ForwardSdkShareProcessor.a(this.a.b).d = Share.a(localGetAppinfoResponse.iconsURL, 16);
+            ForwardSdkShareProcessor.a(this.a.b).e = Share.a(localGetAppinfoResponse.iconsURL, 100);
+            if (localGetAppinfoResponse.androidInfo != null)
+            {
+              paramBundle = localGetAppinfoResponse.androidInfo;
+              if (paramBundle.packName.has()) {
+                ForwardSdkShareProcessor.a(this.a.b).jdField_a_of_type_JavaLangString = paramBundle.packName.get();
+              }
+              if (paramBundle.messagetail.has()) {
+                ForwardSdkShareProcessor.a(this.a.b).b = paramBundle.messagetail.get();
+              }
+              if ((paramBundle.sourceUrl.has()) && (ForwardSdkShareProcessor.a(this.a.b) != Long.parseLong("1103584836"))) {
+                ForwardSdkShareProcessor.a(this.a.b).c = paramBundle.sourceUrl.get();
+              }
+            }
+            ForwardSdkShareProcessor.a(this.a.b).jdField_a_of_type_Int = 1;
+            paramBundle = this.a.b.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.c, this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int, this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long);
+            if ((paramBundle != null) && ((paramBundle instanceof MessageForStructing)) && ((((MessageForStructing)paramBundle).structingMsg instanceof AbsShareMsg)))
+            {
+              paramBundle = (AbsShareMsg)((MessageForStructing)paramBundle).structingMsg;
+              paramBundle.mSource_A_ActionData = ForwardSdkShareProcessor.a(this.a.b).jdField_a_of_type_JavaLangString;
+              paramBundle.mSourceName = ForwardSdkShareProcessor.a(this.a.b).b;
+              paramBundle.mSourceIcon = ForwardSdkShareProcessor.a(this.a.b).d;
+              paramBundle.mSourceUrl = ForwardSdkShareProcessor.a(this.a.b).c;
+              paramBundle.shareData.appInfoStatus = 1;
+              this.a.b.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.c, this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int, this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long, paramBundle.getBytes());
+              this.a.b.d(1002);
+            }
+          }
+          if ((ForwardSdkShareProcessor.a(this.a.b).jdField_a_of_type_Int == 1) || (aiuq.a(this.a) >= 2) || (paramInt == 110507) || (paramInt == 110401)) {
+            break;
+          }
+          aiuq.b(this.a);
+          this.a.d();
+          return;
+        }
+        catch (Exception paramBundle)
+        {
+          for (;;)
+          {
+            i = paramInt;
+          }
+        }
+        paramBundle = paramBundle;
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.e("Q.share.ForwardSdkShareProcessor", 2, paramBundle, new Object[0]);
+        paramInt = i;
+      }
+    }
+    aiuq.a(this.a).set(true);
+    this.a.b();
   }
 }
 

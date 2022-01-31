@@ -1,22 +1,26 @@
-import android.os.Handler;
-import com.qq.im.poi.LbsPackObserver;
-import com.tencent.mobileqq.activity.richmedia.LBSDetetor;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class xpo
-  extends LbsPackObserver
+  implements View.OnClickListener
 {
-  private xpo(LBSDetetor paramLBSDetetor) {}
+  public xpo(BannerManager paramBannerManager, String paramString) {}
   
-  public void onGetLBSTemplateIds(int paramInt, boolean paramBoolean, ArrayList paramArrayList)
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
+      QLog.d("Q.recent.banner", 2, "click move to url:" + this.jdField_a_of_type_JavaLangString);
     }
-    if ((LBSDetetor.a(this.a) != null) && (LBSDetetor.a(this.a).hasMessages(paramInt))) {
-      LBSDetetor.a(this.a, paramBoolean, paramArrayList, paramInt);
-    }
+    paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), QQBrowserDelegationActivity.class);
+    paramView.putExtra("injectrecommend", true);
+    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
+    ReportController.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).app, "CliOper", "", "", "0X8004029", "0X8004029", 0, 0, "", "", "", "");
   }
 }
 

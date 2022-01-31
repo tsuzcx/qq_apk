@@ -1,19 +1,25 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.BubbleAppInPushNotification;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoStatusListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
 public class mlh
-  implements View.OnClickListener
+  implements VideoPlayManager.VideoStatusListener
 {
-  public mlh(BubbleAppInPushNotification paramBubbleAppInPushNotification) {}
+  public mlh(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
   
-  public void onClick(View paramView)
+  public void a(VideoPlayManager.VideoPlayParam paramVideoPlayParam)
   {
-    AppInPushNotification.a(8);
-    this.a.a.postDelayed(new mli(this), 200L);
-    this.a.a(true, false);
+    this.a.a(paramVideoPlayParam);
+    if (paramVideoPlayParam != null)
+    {
+      paramVideoPlayParam = paramVideoPlayParam.a;
+      if ((paramVideoPlayParam != null) && (paramVideoPlayParam.mChannelID == 56L) && (AdvertisementInfo.isAdvertisementInfo(paramVideoPlayParam))) {
+        NativeAdUtils.a(null, this.a.a, NativeAdUtils.f, NativeAdUtils.l, (AdvertisementInfo)paramVideoPlayParam, null, 0L, NativeAdUtils.a(ReadInJoyBaseAdapter.h, paramVideoPlayParam.mVideoDuration, ReadInJoyBaseAdapter.i, 1, ReadInJoyBaseAdapter.f, ReadInJoyBaseAdapter.g, paramVideoPlayParam.mVideoDuration, NativeAdUtils.t));
+      }
+    }
   }
 }
 

@@ -1,78 +1,162 @@
 package c.t.m.g;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Handler;
+import android.location.Location;
+import java.util.LinkedList;
 
 public final class dq
-  extends BroadcastReceiver
 {
-  private final da a;
-  private boolean b;
+  private static dq a = new dq();
+  private int b = a.a;
+  private LinkedList<ef> c = new LinkedList();
   
-  public dq(da paramda)
+  public static dq a()
   {
-    this.a = paramda;
+    return a;
   }
   
-  public final void a()
+  public final int a(ef paramef)
   {
-    if (!this.b) {
-      return;
-    }
-    this.b = false;
-    try
+    if (paramef != null)
     {
-      this.a.a.unregisterReceiver(this);
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public final void a(Handler paramHandler)
-  {
-    if (this.b) {
-      return;
-    }
-    this.b = true;
-    try
-    {
-      IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-      this.a.a.registerReceiver(this, localIntentFilter, null, paramHandler);
-      return;
-    }
-    catch (Exception paramHandler)
-    {
-      f.a.a("TxNetworkStateMonitor", "listenNetworkState: failed", paramHandler);
-    }
-  }
-  
-  public final void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    try
-    {
-      if (paramIntent.getBooleanExtra("noConnectivity", false))
+      try
       {
-        this.a.b(Integer.valueOf(-1));
-        return;
+        while (this.c.size() > 9) {
+          this.c.remove(0);
+        }
+        if (this.c.size() <= 0) {
+          break label136;
+        }
+      }
+      finally {}
+      for (;;)
+      {
+        localef = (ef)this.c.getFirst();
+        long l1 = paramef.b;
+        long l2 = localef.b;
+        double d = ev.a(localef.a.getLatitude(), localef.a.getLongitude(), paramef.a.getLatitude(), paramef.a.getLongitude());
+        if ((l1 - l2 <= 180000L) || (d <= 500.0D)) {
+          break;
+        }
+        this.c.remove(0);
+      }
+      label136:
+      ef localef = new ef(paramef);
+      this.c.add(localef);
+      paramef.a.getSpeed();
+    }
+    int i = this.c.size();
+    return i;
+  }
+  
+  public final long b()
+  {
+    for (;;)
+    {
+      double d1;
+      long l;
+      double d2;
+      try
+      {
+        int j;
+        int i;
+        ef localef2;
+        if (this.c.size() < 2)
+        {
+          d1 = 0.0D;
+          if (this.c.size() < 2) {
+            continue;
+          }
+          j = this.c.size();
+          l = 0L;
+          d2 = 0.0D;
+          i = 1;
+          if (i < j)
+          {
+            localef1 = (ef)this.c.get(i);
+            localef2 = (ef)this.c.get(i - 1);
+            double d3 = ev.a(localef2.a.getLatitude(), localef2.a.getLongitude(), localef1.a.getLatitude(), localef1.a.getLongitude());
+            l = localef1.b - localef2.b + l;
+            d2 += d3;
+            i += 1;
+            continue;
+          }
+        }
+        else
+        {
+          i = this.c.size() - 1;
+          localef1 = (ef)this.c.get(i);
+          localef2 = (ef)this.c.get(i - 1);
+          if (localef1.b == localef2.b) {
+            break label515;
+          }
+          l = localef1.b - localef2.b;
+          d1 = ev.a(localef2.a.getLatitude(), localef2.a.getLongitude(), localef1.a.getLatitude(), localef1.a.getLongitude()) / l * 1000.0D;
+          continue;
+        }
+        if (l > 0L)
+        {
+          d2 = 1000.0D * (d2 / l);
+          if ((dt.b() != null) && (this.c.size() > 0)) {
+            dt.b().a(2, d2, d1, ((ef)this.c.getLast()).b);
+          }
+          if (this.c.size() < 2)
+          {
+            l = 0L;
+            i = this.c.size();
+            if (i >= 2) {
+              continue;
+            }
+            this.b = a.a;
+            i = this.b;
+            j = a.c;
+            if (i != j) {
+              break label507;
+            }
+            l = 90000L;
+            return l;
+          }
+        }
+        else
+        {
+          d2 = 0.0D;
+          continue;
+        }
+        ef localef1 = (ef)this.c.getFirst();
+        l = ((ef)this.c.getLast()).b - localef1.b;
+        continue;
+        if ((i > 6) && (d1 < 3.0D) && (d2 < 6.0D))
+        {
+          this.b = a.c;
+          continue;
+        }
+        if (l <= 60000L) {
+          break label497;
+        }
+      }
+      finally {}
+      if ((d1 < 3.0D) && (d2 < 3.0D))
+      {
+        this.b = a.c;
+      }
+      else
+      {
+        label497:
+        this.b = a.b;
+        continue;
+        label507:
+        l = 30000L;
+        continue;
+        label515:
+        l = 500L;
       }
     }
-    catch (Exception paramContext)
-    {
-      f.a.a("TxNetworkStateMonitor", "listenNetworkState: Exception", paramContext);
-      return;
-    }
-    if (f.a.e(paramContext))
-    {
-      this.a.b(Integer.valueOf(1));
-      return;
-    }
-    this.a.b(Integer.valueOf(0));
+  }
+  
+  static enum a
+  {
+    public static final int a = 1;
+    public static final int b = 2;
+    public static final int c = 3;
   }
 }
 

@@ -1,47 +1,17 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import java.util.Calendar;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.OnLoadListener;
 
 public class afgl
-  implements IphonePickerView.PickerViewAdapter
+  implements Runnable
 {
-  public afgl(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public afgl(PicBrowserGalleryAdapter paramPicBrowserGalleryAdapter, int paramInt1, int paramInt2) {}
   
-  public int getColumnCount()
+  public void run()
   {
-    return 3;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
+    PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter, this.jdField_a_of_type_Int, this.b);
+    if (PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter) != null) {
+      PicBrowserGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserGalleryAdapter).a(this.jdField_a_of_type_Int, this.b);
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + "年";
-    case 1: 
-      return paramInt2 + 1 + "月";
-    }
-    return paramInt2 + 1 + "日";
   }
 }
 

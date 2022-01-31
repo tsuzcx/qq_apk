@@ -1,16 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.RiskInfoItem;
 
-public class tvo
-  implements Runnable
+public final class tvo
+  implements Parcelable.Creator
 {
-  public tvo(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
-  
-  public void run()
+  public RiskInfoItem a(Parcel paramParcel)
   {
-    this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    return new RiskInfoItem(paramParcel, null);
+  }
+  
+  public RiskInfoItem[] a(int paramInt)
+  {
+    return new RiskInfoItem[paramInt];
   }
 }
 

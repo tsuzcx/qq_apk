@@ -12,13 +12,13 @@ public abstract interface CameraCaptureView$CaptureListener
   
   public abstract void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult);
   
+  public abstract void a(boolean paramBoolean);
+  
   public abstract void a(boolean paramBoolean, String paramString);
   
-  public abstract void aj_();
+  public abstract void al_();
   
-  public abstract void g();
-  
-  public abstract void g_(boolean paramBoolean);
+  public abstract void f();
 }
 
 

@@ -1,44 +1,24 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.util.BinderWarpper;
-import dov.com.tencent.mobileqq.richmedia.ICallBack;
-import dov.com.tencent.mobileqq.richmedia.LOG;
-import dov.com.tencent.mobileqq.richmedia.RichmediaClient;
+import android.view.KeyEvent;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import dov.com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
 
 public class aoku
-  implements ServiceConnection
+  implements TextView.OnEditorActionListener
 {
-  public aoku(RichmediaClient paramRichmediaClient) {}
+  public aoku(QQStoryAddVideoLabelViewPart paramQQStoryAddVideoLabelViewPart) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    LOG.a("PTV.RichmediaClient", "onServiceConnected");
-    this.a.b = new Messenger(paramIBinder);
-    paramComponentName = Message.obtain(null, 1);
-    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
-    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_DovComTencentMobileqqRichmediaICallBack.asBinder());
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
-    paramComponentName.setData(localBundle);
-    try
+    if (paramInt == 6)
     {
-      this.a.b.send(paramComponentName);
-      return;
+      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
+      if (paramTextView != null) {
+        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
+      }
     }
-    catch (RemoteException paramComponentName)
-    {
-      LOG.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.b = null;
+    return false;
   }
 }
 

@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
 
-class adej
-  implements Runnable
+public class adej
+  implements DialogInterface.OnClickListener
 {
-  adej(adei paramadei) {}
+  public adej(FileVideoManager paramFileVideoManager, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.b(MusicFilePresenter.a(this.a.a))))
-    {
-      int i = this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService.a();
-      this.a.a.b(i);
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer.b(i);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback.a();
   }
 }
 

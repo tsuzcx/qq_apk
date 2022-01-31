@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.provider.Settings.System;
@@ -36,12 +37,13 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-import khe;
-import khf;
-import khg;
-import khh;
-import khj;
-import khl;
+import kjk;
+import kjl;
+import kjm;
+import kjn;
+import kjo;
+import kjq;
+import kjs;
 import mqq.util.WeakReference;
 
 public class TraeHelper
@@ -54,10 +56,12 @@ public class TraeHelper
   public Drawable a;
   public MediaPlayer.OnCompletionListener a;
   public VideoController a;
+  private SessionInfo jdField_a_of_type_ComTencentAvAppSessionInfo;
   public TraeAudioSession a;
+  Runnable jdField_a_of_type_JavaLangRunnable = new kjn(this);
   public String a;
-  private khj jdField_a_of_type_Khj;
-  khl jdField_a_of_type_Khl = null;
+  private kjq jdField_a_of_type_Kjq;
+  kjs jdField_a_of_type_Kjs = null;
   WeakReference jdField_a_of_type_MqqUtilWeakReference;
   boolean jdField_a_of_type_Boolean = false;
   public int b;
@@ -97,7 +101,7 @@ public class TraeHelper
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramContext);
     this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
     a(paramButton);
-    this.jdField_a_of_type_Khl = new khl(this);
+    this.jdField_a_of_type_Kjs = new kjs(this);
     c();
     a(this.jdField_a_of_type_ComTencentAvVideoController.a());
   }
@@ -219,10 +223,10 @@ public class TraeHelper
         {
           return bool2;
           SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramVideoAppInterface.getApp());
-          bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131433534), true);
+          bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131433548), true);
           String str = paramVideoAppInterface.getCurrentAccountUin();
           if (str != null) {
-            bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131433534) + str, true);
+            bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131433548) + str, true);
           }
           bool2 = bool1;
         } while (AudioUtil.a() == 0);
@@ -263,7 +267,7 @@ public class TraeHelper
                 String str = paramVideoAppInterface.getCurrentAccountUin();
                 bool1 = bool2;
                 if (str != null) {
-                  bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131433532) + str, true);
+                  bool1 = localSharedPreferences.getBoolean(paramVideoAppInterface.getApp().getString(2131433546) + str, true);
                 }
               }
               bool2 = bool1;
@@ -317,7 +321,7 @@ public class TraeHelper
       {
         Context localContext = localButton.getContext();
         if (localContext != null) {
-          ThreadManager.postImmediately(new khh(this, localContext, localButton), null, false);
+          ThreadManager.postImmediately(new kjo(this, localContext, localButton), null, false);
         }
       }
     }
@@ -329,7 +333,7 @@ public class TraeHelper
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "connectHighestPriorityDevice");
     }
     if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession == null) {
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession = new TraeAudioSession((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Khl);
+      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession = new TraeAudioSession((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Kjs);
     }
     return this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.d();
   }
@@ -341,12 +345,13 @@ public class TraeHelper
   
   public int a(String paramString1, String paramString2)
   {
+    QLog.d("tagckb", 1, "TraeHelper startService-----");
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "startService ： " + paramString1 + ",connectDeviceNameWhenServiceOn : " + paramString2);
     }
     this.jdField_c_of_type_JavaLangString = paramString2;
     if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession == null) {
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession = new TraeAudioSession((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Khl);
+      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession = new TraeAudioSession((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Kjs);
     }
     int i;
     if (this.jdField_d_of_type_Boolean) {
@@ -382,23 +387,23 @@ public class TraeHelper
     if (paramButton != null)
     {
       paramButton = paramButton.getResources();
-      Drawable localDrawable1 = paramButton.getDrawable(2130840135);
-      Drawable localDrawable2 = paramButton.getDrawable(2130840134);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TintStateDrawable.a(paramButton, 2130840135, 2131494059);
+      Drawable localDrawable1 = paramButton.getDrawable(2130840150);
+      Drawable localDrawable2 = paramButton.getDrawable(2130840149);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TintStateDrawable.a(paramButton, 2130840150, 2131494065);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, localDrawable1.getIntrinsicWidth(), localDrawable1.getIntrinsicHeight());
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = TintStateDrawable.a(paramButton, 2130840134, 2131494059);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = TintStateDrawable.a(paramButton, 2130840149, 2131494065);
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, localDrawable2.getIntrinsicWidth(), localDrawable2.getIntrinsicHeight());
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = TintStateDrawable.a(paramButton, 2130840135, 2131494067);
+      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = TintStateDrawable.a(paramButton, 2130840150, 2131494073);
       this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, localDrawable1.getIntrinsicWidth(), localDrawable1.getIntrinsicHeight());
-      this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = TintStateDrawable.a(paramButton, 2130840134, 2131494067);
+      this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = TintStateDrawable.a(paramButton, 2130840149, 2131494073);
       this.jdField_d_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, localDrawable2.getIntrinsicWidth(), localDrawable2.getIntrinsicHeight());
-      this.e = TintStateDrawable.a(paramButton, 2130840330, 2131494067);
+      this.e = TintStateDrawable.a(paramButton, 2130840345, 2131494073);
       this.e.setBounds(0, 0, localDrawable2.getIntrinsicWidth(), localDrawable2.getIntrinsicHeight());
-      this.f = TintStateDrawable.a(paramButton, 2130840337, 2131494067);
+      this.f = TintStateDrawable.a(paramButton, 2130840352, 2131494073);
       this.f.setBounds(0, 0, localDrawable2.getIntrinsicWidth(), localDrawable2.getIntrinsicHeight());
-      this.g = TintStateDrawable.a(paramButton, 2130840332, 2131494067);
+      this.g = TintStateDrawable.a(paramButton, 2130840347, 2131494073);
       this.g.setBounds(0, 0, localDrawable2.getIntrinsicWidth(), localDrawable2.getIntrinsicHeight());
-      this.h = TintStateDrawable.a(paramButton, 2130840335, 2131494067);
+      this.h = TintStateDrawable.a(paramButton, 2130840350, 2131494073);
       this.h.setBounds(0, 0, localDrawable2.getIntrinsicWidth(), localDrawable2.getIntrinsicHeight());
     }
   }
@@ -415,32 +420,9 @@ public class TraeHelper
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "switchButton_handFree isSpeakerOn = " + paramSessionInfo.N);
     }
-    Button localButton;
-    if (this.jdField_b_of_type_MqqUtilWeakReference != null)
-    {
-      localButton = (Button)this.jdField_b_of_type_MqqUtilWeakReference.get();
-      if (localButton != null)
-      {
-        localButton.setClickable(true);
-        if ((!this.jdField_b_of_type_Boolean) || (!c())) {
-          break label137;
-        }
-        localButton.setSelected(true);
-        UITools.a(localButton, localButton.getResources().getString(2131428887));
-      }
-    }
-    this.jdField_a_of_type_ComTencentAvVideoController.a().N = paramSessionInfo.N;
-    f();
-    return;
-    label137:
-    localButton.setSelected(paramSessionInfo.N);
-    Resources localResources = localButton.getResources();
-    if (paramSessionInfo.N) {}
-    for (int i = 2131428885;; i = 2131428886)
-    {
-      UITools.a(localButton, localResources.getString(i));
-      break;
-    }
+    this.jdField_a_of_type_ComTencentAvAppSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_ComTencentAvVideoController.a().a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_ComTencentAvVideoController.a().a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
   }
   
   public void a(TipsManager paramTipsManager)
@@ -664,13 +646,14 @@ public class TraeHelper
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "connectDevice: " + paramString);
     }
     if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession == null) {
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession = new TraeAudioSession((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Khl);
+      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession = new TraeAudioSession((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Kjs);
     }
     return this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.a(paramString);
   }
   
   public void b()
   {
+    QLog.d("tagckb", 1, "TraeHelper stopSerivce-----");
     if (!this.jdField_d_of_type_Boolean) {
       return;
     }
@@ -678,7 +661,7 @@ public class TraeHelper
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, "stopSerivce");
     }
     if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession == null) {
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession = new TraeAudioSession((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Khl);
+      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession = new TraeAudioSession((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Kjs);
     }
     this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.a();
     this.jdField_d_of_type_Boolean = false;
@@ -837,7 +820,7 @@ public class TraeHelper
     }
     if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null))
     {
-      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession = new TraeAudioSession((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Khl);
+      this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession = new TraeAudioSession((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Kjs);
       if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvVideoController.a().o)) {
         break label158;
       }
@@ -919,25 +902,25 @@ public class TraeHelper
         ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(localContext, null);
         localActionSheet.a("你可以选择以下音频设备");
         ListView localListView = new ListView(localContext);
-        if (this.jdField_a_of_type_Khj == null) {
-          this.jdField_a_of_type_Khj = new khj(localContext, (TraeHelper.SoundOutputRes)localObject2);
+        if (this.jdField_a_of_type_Kjq == null) {
+          this.jdField_a_of_type_Kjq = new kjq(localContext, (TraeHelper.SoundOutputRes)localObject2);
         }
         for (;;)
         {
-          localListView.setAdapter(this.jdField_a_of_type_Khj);
+          localListView.setAdapter(this.jdField_a_of_type_Kjq);
           localListView.setDivider(new ColorDrawable(Color.parseColor("#e5e3e4")));
           localListView.setDividerHeight(1);
           if (this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession != null) {
             this.jdField_a_of_type_ComTencentSharpJniTraeAudioSession.e();
           }
-          localListView.setOnItemClickListener(new khe(this, (Button)localObject1, localActionSheet));
+          localListView.setOnItemClickListener(new kjk(this, (Button)localObject1, localActionSheet));
           localActionSheet.a(localListView);
-          localActionSheet.c(2131433015);
-          localActionSheet.a(new khf(this));
-          localActionSheet.setOnShowListener(new khg(this));
+          localActionSheet.c(2131433029);
+          localActionSheet.a(new kjl(this));
+          localActionSheet.setOnShowListener(new kjm(this));
           localActionSheet.show();
           return;
-          this.jdField_a_of_type_Khj.a(localContext, (TraeHelper.SoundOutputRes)localObject2);
+          this.jdField_a_of_type_Kjq.a(localContext, (TraeHelper.SoundOutputRes)localObject2);
         }
         if ((this.jdField_a_of_type_ComTencentAvVideoController.a().N) && (localObject2 != null))
         {
@@ -1022,7 +1005,7 @@ public class TraeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.utils.TraeHelper
  * JD-Core Version:    0.7.0.1
  */

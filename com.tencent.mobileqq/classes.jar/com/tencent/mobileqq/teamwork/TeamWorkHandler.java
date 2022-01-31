@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamwork;
 
-import aimn;
-import aimo;
+import airi;
+import airj;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseIntArray;
@@ -52,7 +52,7 @@ public class TeamWorkHandler
     TicketManager localTicketManager = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
     if (localTicketManager != null)
     {
-      paramReSendCmd = localTicketManager.GetSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 16L, new aimo(this, localTicketManager, paramReSendCmd));
+      paramReSendCmd = localTicketManager.GetSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 16L, new airj(this, localTicketManager, paramReSendCmd));
       if ((paramReSendCmd != null) && (paramReSendCmd._sig != null))
       {
         paramReSendCmd = new String(paramReSendCmd._sig);
@@ -74,8 +74,8 @@ public class TeamWorkHandler
     if (localObject != null)
     {
       String str = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      aimn localaimn = new aimn(this, (TicketManager)localObject, paramReSendCmd);
-      localObject = ((TicketManager)localObject).GetPskey(str, 16L, new String[] { "docs.qq.com" }, localaimn);
+      airi localairi = new airi(this, (TicketManager)localObject, paramReSendCmd);
+      localObject = ((TicketManager)localObject).GetPskey(str, 16L, new String[] { "docs.qq.com" }, localairi);
       if ((localObject != null) && (((Ticket)localObject)._pskey_map != null) && (((Ticket)localObject)._pskey_map.get("docs.qq.com") != null))
       {
         QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey with promise success! isImediately Resend: " + paramBoolean);
@@ -252,6 +252,120 @@ public class TeamWorkHandler
     return TeamWorkObserver.class;
   }
   
+  /* Error */
+  public org.json.JSONObject a()
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_1
+    //   2: aload_0
+    //   3: getfield 111	com/tencent/mobileqq/teamwork/TeamWorkHandler:jdField_b_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   6: invokevirtual 112	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   9: ldc_w 320
+    //   12: ldc 117
+    //   14: invokestatic 325	com/tencent/mobileqq/teamwork/TeamWorkHttpUtils:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   17: astore_3
+    //   18: aload_3
+    //   19: ifnull +148 -> 167
+    //   22: new 327	org/json/JSONObject
+    //   25: dup
+    //   26: aload_3
+    //   27: invokespecial 330	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   30: astore_2
+    //   31: aload_2
+    //   32: astore_1
+    //   33: aload_2
+    //   34: ldc_w 332
+    //   37: iconst_m1
+    //   38: invokevirtual 336	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   41: ifeq +48 -> 89
+    //   44: aload_2
+    //   45: ldc_w 332
+    //   48: iconst_m1
+    //   49: invokevirtual 339	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   52: pop
+    //   53: aload_2
+    //   54: astore_1
+    //   55: invokestatic 221	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   58: ifeq +31 -> 89
+    //   61: ldc 92
+    //   63: iconst_2
+    //   64: new 133	java/lang/StringBuilder
+    //   67: dup
+    //   68: invokespecial 134	java/lang/StringBuilder:<init>	()V
+    //   71: ldc_w 341
+    //   74: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: aload_3
+    //   78: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   84: invokestatic 107	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   87: aload_2
+    //   88: astore_1
+    //   89: aload_1
+    //   90: astore_2
+    //   91: aload_1
+    //   92: ifnonnull +20 -> 112
+    //   95: new 327	org/json/JSONObject
+    //   98: dup
+    //   99: invokespecial 342	org/json/JSONObject:<init>	()V
+    //   102: astore_2
+    //   103: aload_2
+    //   104: ldc_w 332
+    //   107: iconst_m1
+    //   108: invokevirtual 339	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   111: pop
+    //   112: invokestatic 221	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   115: ifeq +13 -> 128
+    //   118: ldc 92
+    //   120: iconst_2
+    //   121: aload_2
+    //   122: invokevirtual 343	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   125: invokestatic 345	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   128: aload_2
+    //   129: areturn
+    //   130: astore_2
+    //   131: invokestatic 221	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   134: ifeq +14 -> 148
+    //   137: ldc 92
+    //   139: iconst_2
+    //   140: aload_2
+    //   141: iconst_0
+    //   142: anewarray 232	java/lang/Object
+    //   145: invokestatic 348	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   148: goto -59 -> 89
+    //   151: astore_1
+    //   152: aload_1
+    //   153: invokevirtual 351	org/json/JSONException:printStackTrace	()V
+    //   156: goto -44 -> 112
+    //   159: astore_3
+    //   160: aload_2
+    //   161: astore_1
+    //   162: aload_3
+    //   163: astore_2
+    //   164: goto -33 -> 131
+    //   167: aconst_null
+    //   168: astore_1
+    //   169: goto -80 -> 89
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	172	0	this	TeamWorkHandler
+    //   1	91	1	localObject1	Object
+    //   151	2	1	localJSONException1	org.json.JSONException
+    //   161	8	1	localObject2	Object
+    //   30	99	2	localObject3	Object
+    //   130	31	2	localJSONException2	org.json.JSONException
+    //   163	1	2	localJSONException3	org.json.JSONException
+    //   17	61	3	str	String
+    //   159	4	3	localJSONException4	org.json.JSONException
+    // Exception table:
+    //   from	to	target	type
+    //   2	18	130	org/json/JSONException
+    //   22	31	130	org/json/JSONException
+    //   103	112	151	org/json/JSONException
+    //   33	53	159	org/json/JSONException
+    //   55	87	159	org/json/JSONException
+  }
+  
   public void a(int paramInt, String paramString)
   {
     if (!NetworkUtil.d(BaseApplicationImpl.getContext())) {
@@ -326,7 +440,7 @@ public class TeamWorkHandler
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     boolean bool = paramFromServiceMsg.isSuccess();
-    int i = ((Integer)paramToServiceMsg.getAttribute(jdField_a_of_type_JavaLangString)).intValue();
+    int j = ((Integer)paramToServiceMsg.getAttribute(jdField_a_of_type_JavaLangString)).intValue();
     if (QLog.isColorLevel()) {
       QLog.i("TeamWorkHandler", 2, " handleGetPadRightsInfo ,resultCode: " + paramFromServiceMsg.getResultCode());
     }
@@ -340,18 +454,18 @@ public class TeamWorkHandler
       if (!bool) {
         QLog.i("TeamWorkHandler", 1, " handleGetPadRightsInfo faied code: " + paramFromServiceMsg.getResultCode());
       }
-      a(5, bool, new Object[] { paramToServiceMsg, Integer.valueOf(i) });
+      a(5, bool, new Object[] { paramToServiceMsg, Integer.valueOf(j) });
       return;
       localGetPadRightInfoRspBody = new TimDocSSOMsg.GetPadRightInfoRspBody();
       try
       {
         localGetPadRightInfoRspBody.mergeFrom((byte[])paramObject);
-        int j = localGetPadRightInfoRspBody.uint32_retcode.get();
-        if (j == 0) {
+        i = localGetPadRightInfoRspBody.uint32_retcode.get();
+        if (i == 0) {
           break label272;
         }
-        QLog.e("TeamWorkHandler", 1, "error handleGetPadRightsInfo url : " + "" + ",retCode: " + j);
-        if ((j == 200011) && (a((ReSendCmd)paramToServiceMsg.extraData.getParcelable("key_resend_cmd")))) {
+        QLog.e("TeamWorkHandler", 1, "error handleGetPadRightsInfo url : " + "" + ",retCode: " + i);
+        if ((i == 200011) && (a((ReSendCmd)paramToServiceMsg.extraData.getParcelable("key_resend_cmd")))) {
           break label120;
         }
         paramToServiceMsg = "";
@@ -372,7 +486,7 @@ public class TeamWorkHandler
       QLog.e("TeamWorkHandler", 1, "error handleGetPadRightsInfo url : " + paramToServiceMsg + ",has not padrights filed ");
       bool = false;
     }
-    i = localGetPadRightInfoRspBody.uint32_pad_right.get();
+    int i = localGetPadRightInfoRspBody.uint32_pad_right.get();
     paramFromServiceMsg = localGetPadRightInfoRspBody.rpt_msg_uin_right_info.get();
     if (0 == 0)
     {
@@ -391,7 +505,7 @@ public class TeamWorkHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkHandler
  * JD-Core Version:    0.7.0.1
  */

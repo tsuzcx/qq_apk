@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import com.tencent.mobileqq.app.CardHandler;
 
 public class tii
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public tii(QQBrowserActivity paramQQBrowserActivity) {}
+  public tii(NotifyPCActiveActivity paramNotifyPCActiveActivity, CardHandler paramCardHandler) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    InnerDns.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b(true);
+    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity.finish();
   }
 }
 

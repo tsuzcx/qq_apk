@@ -17,7 +17,7 @@ public class HomeFeedData
     super(paramErrorMessage);
   }
   
-  public String b()
+  public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = this.b.iterator();

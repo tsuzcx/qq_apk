@@ -15,6 +15,7 @@ import com.tencent.biz.qqstory.msgTabNode.util.MsgTabStoryUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,21 +24,21 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicBoolean;
-import neq;
-import ner;
-import nes;
+import nin;
+import nio;
+import nip;
 
 public class MsgTabStoryVideoPreloader
 {
   protected int a;
   public IVideoPreloader a;
-  private MsgTabStoryVideoPreloader.OnPreloaderListener jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader$OnPreloaderListener;
-  private MsgTabVideoPreloaderDataProvider.DataProviderListener jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener = new ner(this);
+  private MsgTabVideoPreloaderDataProvider.DataProviderListener jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener = new nio(this);
   protected MsgTabVideoPreloaderDataProvider a;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   protected final Queue a;
   protected final Set a;
   protected AtomicBoolean a;
-  protected nes a;
+  protected nip a;
   protected boolean a;
   protected final Set b = new CopyOnWriteArraySet();
   
@@ -137,8 +138,12 @@ public class MsgTabStoryVideoPreloader
       if (QLog.isColorLevel()) {
         QLog.i("MsgTabStoryVideoPreloader", 2, "添加一波要预加载的节点队列=" + paramQueue.size() + "\n" + paramQueue);
       }
-      if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader$OnPreloaderListener != null)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader$OnPreloaderListener.a();
+      if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true))
+      {
+        ??? = a();
+        if (??? != null) {
+          ((MsgTabStoryVideoPreloader.OnPreloaderListener)???).a();
+        }
       }
       if (QLog.isColorLevel()) {
         QLog.i("MsgTabStoryVideoPreloader", 2, "预加载正式开始");
@@ -196,10 +201,10 @@ public class MsgTabStoryVideoPreloader
   {
     try
     {
-      if (this.jdField_a_of_type_Nes == null)
+      if (this.jdField_a_of_type_Nip == null)
       {
-        this.jdField_a_of_type_Nes = new nes(this);
-        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(this.jdField_a_of_type_Nes);
+        this.jdField_a_of_type_Nip = new nip(this);
+        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(this.jdField_a_of_type_Nip);
       }
       PreloadDownloaderManager localPreloadDownloaderManager = (PreloadDownloaderManager)SuperManager.a(6);
       if (!localPreloadDownloaderManager.a()) {
@@ -208,6 +213,14 @@ public class MsgTabStoryVideoPreloader
       return;
     }
     finally {}
+  }
+  
+  public MsgTabStoryVideoPreloader.OnPreloaderListener a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      return (MsgTabStoryVideoPreloader.OnPreloaderListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    }
+    return null;
   }
   
   /* Error */
@@ -219,16 +232,16 @@ public class MsgTabStoryVideoPreloader
     //   2: aload_0
     //   3: getfield 44	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   6: iconst_0
-    //   7: invokevirtual 274	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   7: invokevirtual 282	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   10: aload_0
     //   11: aconst_null
-    //   12: putfield 260	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_Nes	Lnes;
+    //   12: putfield 261	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_Nip	Lnip;
     //   15: aload_0
     //   16: getfield 25	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader	Lcom/tencent/biz/qqstory/base/preload/IVideoPreloader;
     //   19: ifnull +12 -> 31
     //   22: aload_0
     //   23: getfield 25	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader	Lcom/tencent/biz/qqstory/base/preload/IVideoPreloader;
-    //   26: invokeinterface 275 1 0
+    //   26: invokeinterface 283 1 0
     //   31: aload_0
     //   32: getfield 35	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
     //   35: astore_1
@@ -236,13 +249,13 @@ public class MsgTabStoryVideoPreloader
     //   37: monitorenter
     //   38: aload_0
     //   39: getfield 37	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:b	Ljava/util/Set;
-    //   42: invokeinterface 278 1 0
+    //   42: invokeinterface 286 1 0
     //   47: aload_0
     //   48: getfield 35	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   51: invokeinterface 279 1 0
+    //   51: invokeinterface 287 1 0
     //   56: aload_0
     //   57: getfield 30	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
-    //   60: invokeinterface 278 1 0
+    //   60: invokeinterface 286 1 0
     //   65: aload_1
     //   66: monitorexit
     //   67: aload_0
@@ -282,12 +295,12 @@ public class MsgTabStoryVideoPreloader
       QLog.i("MsgTabStoryVideoPreloader", 2, "启动消息TAB节点预加载器");
     }
     paramContext = new ArrayList(paramList);
-    Bosses.get().postJob(new neq(this, paramContext));
+    Bosses.get().postJob(new nin(this, paramContext));
   }
   
   public void a(MsgTabStoryVideoPreloader.OnPreloaderListener paramOnPreloaderListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader$OnPreloaderListener = paramOnPreloaderListener;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnPreloaderListener);
   }
   
   /* Error */
@@ -303,8 +316,8 @@ public class MsgTabStoryVideoPreloader
     //   12: pop
     //   13: aload_0
     //   14: getfield 44	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   17: invokevirtual 307	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   20: ifeq +84 -> 104
+    //   17: invokevirtual 317	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   20: ifeq +83 -> 103
     //   23: aload_0
     //   24: getfield 35	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
     //   27: astore_1
@@ -312,65 +325,68 @@ public class MsgTabStoryVideoPreloader
     //   29: monitorenter
     //   30: aload_0
     //   31: getfield 35	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   34: invokeinterface 308 1 0
-    //   39: ifeq +68 -> 107
+    //   34: invokeinterface 318 1 0
+    //   39: ifeq +67 -> 106
     //   42: aload_0
     //   43: getfield 37	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:b	Ljava/util/Set;
-    //   46: invokeinterface 309 1 0
-    //   51: ifeq +56 -> 107
+    //   46: invokeinterface 319 1 0
+    //   51: ifeq +55 -> 106
     //   54: invokestatic 103	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   57: ifeq +12 -> 69
     //   60: ldc 114
     //   62: iconst_2
-    //   63: ldc_w 311
+    //   63: ldc_w 321
     //   66: invokestatic 125	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   69: aload_0
     //   70: getfield 44	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   73: iconst_0
-    //   74: invokevirtual 274	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   74: invokevirtual 282	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   77: aload_0
     //   78: getfield 30	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
-    //   81: invokeinterface 278 1 0
+    //   81: invokeinterface 286 1 0
     //   86: aload_0
-    //   87: getfield 232	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader$OnPreloaderListener	Lcom/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader$OnPreloaderListener;
-    //   90: ifnull +12 -> 102
-    //   93: aload_0
-    //   94: getfield 232	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader$OnPreloaderListener	Lcom/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader$OnPreloaderListener;
-    //   97: invokeinterface 313 1 0
-    //   102: aload_1
-    //   103: monitorexit
-    //   104: aload_0
-    //   105: monitorexit
-    //   106: return
-    //   107: iload_2
-    //   108: ifeq -6 -> 102
-    //   111: aload_0
-    //   112: invokevirtual 314	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:b	()V
-    //   115: goto -13 -> 102
-    //   118: astore_3
-    //   119: aload_1
-    //   120: monitorexit
-    //   121: aload_3
-    //   122: athrow
-    //   123: astore_1
-    //   124: aload_0
-    //   125: monitorexit
-    //   126: aload_1
-    //   127: athrow
+    //   87: invokevirtual 233	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:a	()Lcom/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader$OnPreloaderListener;
+    //   90: astore_3
+    //   91: aload_3
+    //   92: ifnull +9 -> 101
+    //   95: aload_3
+    //   96: invokeinterface 323 1 0
+    //   101: aload_1
+    //   102: monitorexit
+    //   103: aload_0
+    //   104: monitorexit
+    //   105: return
+    //   106: iload_2
+    //   107: ifeq -6 -> 101
+    //   110: aload_0
+    //   111: invokevirtual 324	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:b	()V
+    //   114: goto -13 -> 101
+    //   117: astore_3
+    //   118: aload_1
+    //   119: monitorexit
+    //   120: aload_3
+    //   121: athrow
+    //   122: astore_1
+    //   123: aload_0
+    //   124: monitorexit
+    //   125: aload_1
+    //   126: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	128	0	this	MsgTabStoryVideoPreloader
-    //   0	128	2	paramBoolean	boolean
-    //   118	4	3	localObject	Object
+    //   0	127	0	this	MsgTabStoryVideoPreloader
+    //   0	127	2	paramBoolean	boolean
+    //   90	6	3	localOnPreloaderListener	MsgTabStoryVideoPreloader.OnPreloaderListener
+    //   117	4	3	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   30	69	118	finally
-    //   69	102	118	finally
-    //   102	104	118	finally
-    //   111	115	118	finally
-    //   119	121	118	finally
-    //   2	30	123	finally
-    //   121	123	123	finally
+    //   30	69	117	finally
+    //   69	91	117	finally
+    //   95	101	117	finally
+    //   101	103	117	finally
+    //   110	114	117	finally
+    //   118	120	117	finally
+    //   2	30	122	finally
+    //   120	122	122	finally
   }
   
   /* Error */
@@ -381,7 +397,7 @@ public class MsgTabStoryVideoPreloader
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 30	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
-    //   6: invokeinterface 315 1 0
+    //   6: invokeinterface 325 1 0
     //   11: istore_1
     //   12: aload_0
     //   13: getfield 85	com/tencent/biz/qqstory/msgTabNode/network/MsgTabStoryVideoPreloader:jdField_a_of_type_Int	I

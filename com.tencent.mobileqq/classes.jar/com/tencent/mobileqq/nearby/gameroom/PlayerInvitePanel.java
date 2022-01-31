@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import aepi;
-import aepj;
+import aext;
+import aexu;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.util.AttributeSet;
@@ -17,7 +17,7 @@ public class PlayerInvitePanel
   extends AdapterView
 {
   private int jdField_a_of_type_Int = 5;
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new aepj(this);
+  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new aexu(this);
   private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
   private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
   private List jdField_a_of_type_JavaUtilList = new LinkedList();
@@ -48,7 +48,7 @@ public class PlayerInvitePanel
     while (i < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount())
     {
       View localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, a(), this);
-      localView.setOnClickListener(new aepi(this, i));
+      localView.setOnClickListener(new aext(this, i));
       addViewInLayout(localView, i, new ViewGroup.LayoutParams(-2, -2));
       i += 1;
     }

@@ -1,10 +1,23 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
 
 public class afjo
+  implements Handler.Callback
 {
-  public TextView a;
-  public URLImageView a;
+  public afjo(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      NearbyProfileDisplayTribePanel.a(this.a);
+    }
+  }
 }
 
 

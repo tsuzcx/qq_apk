@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import aksl;
-import aksm;
+import alac;
+import alad;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -22,7 +22,7 @@ public class ADView
   extends LinearLayout
 {
   protected float a;
-  private aksm jdField_a_of_type_Aksm = new aksm(this);
+  private alad jdField_a_of_type_Alad = new alad(this);
   public WorkSpaceView a;
   private boolean jdField_a_of_type_Boolean;
   protected LinearLayout b;
@@ -36,7 +36,7 @@ public class ADView
   public ADView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_f_of_type_Int = 2130837546;
+    this.jdField_f_of_type_Int = 2130837545;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_f_of_type_Boolean = true;
     a(paramContext);
@@ -45,7 +45,7 @@ public class ADView
   public ADView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_f_of_type_Int = 2130837546;
+    this.jdField_f_of_type_Int = 2130837545;
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_f_of_type_Boolean = true;
     a(paramContext);
@@ -122,7 +122,7 @@ public class ADView
       localObject = new LinearLayout(getContext());
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = new WorkSpaceView(getContext());
       setCircle(this.jdField_f_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new aksl(this, (LinearLayout)localObject));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new alac(this, (LinearLayout)localObject));
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setId(100000);
@@ -156,7 +156,7 @@ public class ADView
     localLayoutParams.addRule(14, 100000);
     localLayoutParams.setMargins(0, 0, 0, (int)(6.0F * this.jdField_a_of_type_Float));
     paramLinearLayout.setGravity(16);
-    paramLinearLayout.setBackgroundResource(2130839286);
+    paramLinearLayout.setBackgroundResource(2130839305);
     paramLinearLayout.setPadding((int)(4.0F * this.jdField_a_of_type_Float), 0, (int)(2.0F * this.jdField_a_of_type_Float), 0);
     paramLinearLayout.setLayoutParams(localLayoutParams);
   }
@@ -218,7 +218,7 @@ public class ADView
   
   public void i()
   {
-    this.jdField_a_of_type_Aksm.removeMessages(0);
+    this.jdField_a_of_type_Alad.removeMessages(0);
     try
     {
       PushBanner localPushBanner = (PushBanner)this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.a()).getTag();
@@ -233,12 +233,12 @@ public class ADView
         int j = 5000;
       }
     }
-    this.jdField_a_of_type_Aksm.sendEmptyMessageDelayed(0, j);
+    this.jdField_a_of_type_Alad.sendEmptyMessageDelayed(0, j);
   }
   
   public void j()
   {
-    this.jdField_a_of_type_Aksm.sendEmptyMessage(1);
+    this.jdField_a_of_type_Alad.sendEmptyMessage(1);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -277,7 +277,7 @@ public class ADView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ADView
  * JD-Core Version:    0.7.0.1
  */

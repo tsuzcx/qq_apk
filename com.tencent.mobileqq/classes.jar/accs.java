@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.data.MessageForInteractAndFollow;
+import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
 
-class accs
+public class accs
   implements Runnable
 {
-  accs(accr paramaccr, acct paramacct) {}
+  public accs(MsgBoxInterFollowManager paramMsgBoxInterFollowManager, MessageForInteractAndFollow paramMessageForInteractAndFollow) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Accr.a.e(this.jdField_a_of_type_Acct.a);
+    MsgBoxInterFollowManager.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMsgBoxInterFollowManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForInteractAndFollow);
   }
 }
 

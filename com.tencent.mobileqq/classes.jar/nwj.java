@@ -1,20 +1,17 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
 public class nwj
-  extends SimpleJob
+  implements nwf
 {
-  public nwj(StoryDiscoverActivity paramStoryDiscoverActivity) {}
+  public nwj(ShareGroupIconManager paramShareGroupIconManager, List paramList, String paramString) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  @NonNull
+  public Stream a(nwb paramnwb)
   {
-    SLog.d("Q.qqstory.discover.StoryDiscoverActivity", "doOnActivityResult : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(StoryVideoUploadManager.a()) });
-    return null;
+    return ShareGroupIconManager.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
   }
 }
 

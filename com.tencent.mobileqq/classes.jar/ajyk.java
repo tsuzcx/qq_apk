@@ -1,35 +1,76 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class ajyk
-  implements DownloadParams.DecodeHandler
+public class ajyk
+  extends DownloadListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public ajyk(TroopTopicMgr paramTroopTopicMgr, int paramInt) {}
+  
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
-    }
-    if (paramBitmap == null) {
-      return null;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
+    if (paramDownloadTask.jdField_a_of_type_Int == 0)
     {
-      paramDownloadParams = (int[])paramDownloadParams;
-      float f2 = DeviceInfoUtil.a();
-      float f1 = f2;
-      if (f2 < 0.01F) {
-        f1 = 1.0F;
+      Object localObject = paramDownloadTask.a().getString("filePath");
+      try
+      {
+        paramDownloadTask = new File((String)localObject);
+        String str = FileUtils.b(paramDownloadTask);
+        if (QLog.isColorLevel()) {
+          QLog.d(".troop.troop_topic.TroopTopicMgr", 2, "onDone() content =  " + str + ", filePath = " + (String)localObject);
+        }
+        boolean bool = TextUtils.isEmpty(str);
+        if (bool) {
+          return;
+        }
+        try
+        {
+          localObject = new JSONObject(str);
+          ((JSONObject)localObject).put("version", this.jdField_a_of_type_Int);
+          TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).getApp().getSharedPreferences(TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).getCurrentAccountUin() + "_TroopTopic", 0).edit().putString("ShareCommentWhiteList", ((JSONObject)localObject).toString()).commit();
+          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.b(((JSONObject)localObject).toString());
+          paramDownloadTask.deleteOnExit();
+          return;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(".troop.troop_topic.TroopTopicMgr", 2, "handleSaveWhiteList exception: " + localJSONException.getMessage());
+            }
+          }
+        }
+        QLog.d(".troop.troop_topic.TroopTopicMgr", 2, QLog.getStackTraceString(paramDownloadTask));
       }
-      paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
-      paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
-      return ImageUtil.c(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+      catch (IOException paramDownloadTask)
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+      }
     }
-    return ImageUtil.c(paramBitmap, 50, 50);
+    else if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.troop_topic.TroopTopicMgr", 2, "errorCode = " + paramDownloadTask.jdField_a_of_type_Int);
+    }
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    return super.onStart(paramDownloadTask);
   }
 }
 

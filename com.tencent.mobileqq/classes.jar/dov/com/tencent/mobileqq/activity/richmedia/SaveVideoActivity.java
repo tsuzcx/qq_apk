@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
-import aogo;
-import aogp;
+import aopg;
+import aoph;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.database.QQStoryEntityManagerFactory;
 import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
@@ -25,7 +25,7 @@ public class SaveVideoActivity
 {
   private static FFmpeg jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg;
   private static boolean b;
-  private aogp jdField_a_of_type_Aogp;
+  private aoph jdField_a_of_type_Aoph;
   private boolean d;
   
   public static Intent a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -80,8 +80,8 @@ public class SaveVideoActivity
   
   protected void onCreate(Bundle paramBundle)
   {
-    this.U = false;
-    this.V = false;
+    this.W = false;
+    this.X = false;
     super.onCreate(paramBundle);
     paramBundle = getIntent();
     if (paramBundle == null)
@@ -91,14 +91,14 @@ public class SaveVideoActivity
     }
     com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.z = paramBundle.getIntExtra("sv_total_frame_count", 0);
     com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.y = paramBundle.getIntExtra("sv_total_record_time", 0);
-    this.jdField_a_of_type_Aogp = new aogp(this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    aogp.a(this.jdField_a_of_type_Aogp, paramBundle.getStringExtra("mc_video.mp4"));
-    aogp.b(this.jdField_a_of_type_Aogp, paramBundle.getStringExtra("mc_audio.mp4"));
-    aogp.c(this.jdField_a_of_type_Aogp, paramBundle.getStringExtra("all_i_mc_video.mp4"));
-    aogp.a(this.jdField_a_of_type_Aogp, paramBundle.getBooleanExtra("mediacodec_encode_enable", false));
-    aogp.b(this.jdField_a_of_type_Aogp, paramBundle.getBooleanExtra("video_edit_flag", false));
-    aogp.a(this.jdField_a_of_type_Aogp, paramBundle.getIntExtra("save_video_businessid", -1));
-    Utils.executeAsyncTaskOnSerialExcuter(this.jdField_a_of_type_Aogp, new Void[] { (Void)null });
+    this.jdField_a_of_type_Aoph = new aoph(this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    aoph.a(this.jdField_a_of_type_Aoph, paramBundle.getStringExtra("mc_video.mp4"));
+    aoph.b(this.jdField_a_of_type_Aoph, paramBundle.getStringExtra("mc_audio.mp4"));
+    aoph.c(this.jdField_a_of_type_Aoph, paramBundle.getStringExtra("all_i_mc_video.mp4"));
+    aoph.a(this.jdField_a_of_type_Aoph, paramBundle.getBooleanExtra("mediacodec_encode_enable", false));
+    aoph.b(this.jdField_a_of_type_Aoph, paramBundle.getBooleanExtra("video_edit_flag", false));
+    aoph.a(this.jdField_a_of_type_Aoph, paramBundle.getIntExtra("save_video_businessid", -1));
+    Utils.executeAsyncTaskOnSerialExcuter(this.jdField_a_of_type_Aoph, new Void[] { (Void)null });
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -106,15 +106,15 @@ public class SaveVideoActivity
     if (paramInt == 4)
     {
       this.d = true;
-      if ((this.jdField_a_of_type_Aogp != null) && (!isFinishing()))
+      if ((this.jdField_a_of_type_Aoph != null) && (!isFinishing()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("SaveVideoActivity", 2, "cancel save video");
         }
-        aogp.a(this.jdField_a_of_type_Aogp).set(true);
+        aoph.a(this.jdField_a_of_type_Aoph).set(true);
         setResult(0, getIntent());
         if (getIntent() != null) {
-          ThreadManager.postImmediately(new aogo(this, getIntent().getStringExtra("fakeId")), null, true);
+          ThreadManager.postImmediately(new aopg(this, getIntent().getStringExtra("fakeId")), null, true);
         }
       }
     }

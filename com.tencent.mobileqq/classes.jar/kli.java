@@ -1,32 +1,34 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.offline.util.ILog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public final class kli
-  implements Runnable
+public class kli
+  implements AbsListView.OnScrollListener
 {
-  public kli(int paramInt, String paramString, AppRuntime paramAppRuntime, HashMap paramHashMap, AsyncBack paramAsyncBack, boolean paramBoolean) {}
+  public kli(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (HtmlOffline.a.a()) {
-      HtmlOffline.a.a("HtmlCheckUpdate", 2, "start checkUpThread. delay:" + this.jdField_a_of_type_Int + ", businessId:" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Int > 0) {}
-    try
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1))
     {
-      Thread.sleep(this.jdField_a_of_type_Int * 1000);
-      label75:
-      HtmlOffline.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack, true, true, this.jdField_a_of_type_Boolean);
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label75;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "onScrollStateChanged");
+      }
+      if ((!this.a.f) && (this.a.d))
+      {
+        this.a.f = true;
+        paramAbsListView = this.a;
+        paramAbsListView.n += 1;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PoiMapActivity", 4, "onScrollStateChanged mSearchPage:" + this.a.n);
+        }
+        this.a.a(this.a.h, this.a.i, this.a.c, "", this.a.n, 20);
+      }
     }
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

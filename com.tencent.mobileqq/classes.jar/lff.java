@@ -1,13 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class lff
-  implements View.OnClickListener
+class lff
+  implements Runnable
 {
-  public lff(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  lff(lfe paramlfe) {}
   
-  public void onClick(View paramView) {}
+  public void run()
+  {
+    KandianMergeManager localKandianMergeManager = (KandianMergeManager)this.a.a.app.getManager(161);
+    if (localKandianMergeManager != null) {
+      localKandianMergeManager.h();
+    }
+  }
 }
 
 

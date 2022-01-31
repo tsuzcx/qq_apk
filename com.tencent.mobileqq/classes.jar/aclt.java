@@ -1,56 +1,70 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter;
+import com.tencent.mobileqq.emoticonview.EmoticonRecDressup;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aclt
   implements View.OnClickListener
 {
-  public aclt(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  public aclt(BigEmotionDownloadedAdapter paramBigEmotionDownloadedAdapter, EmoticonRecDressup paramEmoticonRecDressup) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.f())
+    paramView = new Intent();
+    label80:
+    String str1;
+    label106:
+    int i;
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Boolean)
     {
-      FMDataCache.b();
-      this.a.e(false);
-      if (this.a.c())
-      {
-        this.a.setResult(5);
-        this.a.finish();
-        return;
+      paramView.putExtra("emoji_to_dressup", true);
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, paramView, false);
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+        break label243;
       }
-      this.a.rightViewText.setVisibility(0);
-      this.a.rightViewText.setText(2131428089);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(8);
-      this.a.setTitle(this.a.b);
-      this.a.b();
-      this.a.a();
-      if (this.a.jdField_a_of_type_Int == 1) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramView = "";
+      String str2 = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
+      if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Boolean) {
+        break label257;
       }
-      this.a.b(false);
+      str1 = "1";
+      VasWebviewUtil.reportCommercialDrainage(paramView, "ep_mall", "0X8007192", null, 1, 0, 0, null, str2, str1);
+      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) <= 0) {
+        break label264;
+      }
+      i = 3;
+    }
+    for (;;)
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, i + "", "");
       return;
-    }
-    if (BaseFileAssistantActivity.a(this.a) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("BaseFileAssistantActivity<FileAssistant>", 2, "onRightEditClick");
+      if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramView.putExtra("emoji_is_original", bool);
+        paramView.putExtra("emoji_author_id", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonRecDressup.jdField_a_of_type_Int);
+        break;
       }
-      BaseFileAssistantActivity.a(this.a).g();
+      label243:
+      paramView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      break label80;
+      label257:
+      str1 = "2";
+      break label106;
+      label264:
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewBigEmotionDownloadedAdapter.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.subType == 4) {
+        i = 4;
+      } else {
+        i = 1;
+      }
     }
-    FMDataCache.b();
-    this.a.e(true);
-    this.a.rightViewText.setVisibility(0);
-    this.a.rightViewText.setText(2131428127);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(0);
-    this.a.b();
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.b(true);
   }
 }
 

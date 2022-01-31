@@ -1,85 +1,81 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUOESMovieFilter;
-import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodePlayer;
-import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
-import com.tencent.mobileqq.shortvideo.filter.QQMovieFilter;
-import com.tencent.mobileqq.shortvideo.util.FileUtil;
-import com.tencent.mobileqq.shortvideo.util.VideoUtil;
-import com.tencent.sveffects.SLog;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.search.model.ContactSearchModelGlobalTroop;
+import com.tencent.mobileqq.search.model.ContactSearchModelGlobalTroopMember;
+import com.tencent.mobileqq.search.model.IContactSearchModel;
+import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aibj
-  extends Handler
+public final class aibj
+  implements Runnable
 {
-  public aibj(QQMovieFilter paramQQMovieFilter, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aibj(View paramView, IContactSearchModel paramIContactSearchModel) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    SLog.c("QQMovieFilter", "handle movie filter msg, what = " + paramMessage.what);
-    switch (paramMessage.what)
+    int j = -1;
+    HashMap localHashMap = new HashMap();
+    Object localObject = (Integer)this.jdField_a_of_type_AndroidViewView.getTag(2131362080);
+    int i;
+    if (localObject != null)
     {
+      i = ((Integer)localObject).intValue();
+      localHashMap.put("itemLinePosition", String.valueOf(i + 1));
+      localHashMap.put("matchDegree", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.b()));
+      localHashMap.put("className", this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.getClass().getSimpleName());
+      localHashMap.put("keyword", this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.b());
+      if (this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_JavaUtilHashMap != null) {
+        localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_JavaUtilHashMap);
+      }
+      if (!(this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel instanceof ContactSearchModelGlobalTroopMember)) {
+        break label339;
+      }
+      localObject = ((ContactSearchModelGlobalTroopMember)this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel).a;
     }
-    do
+    for (;;)
     {
-      do
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
       {
-        do
+        int k = this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject);
+        localHashMap.put("troopMask", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject)));
+        TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+        i = j;
+        if (localTroopManager != null)
         {
-          do
-          {
-            return;
-            if ((QQMovieFilter.a(this.a) != null) && (QQMovieFilter.a(this.a).a() == 1))
-            {
-              SLog.c("QQMovieFilter", "DecodePlayer is preparing");
-              return;
-            }
-            Object localObject = (Object[])paramMessage.obj;
-            QQMovieFilter.a(this.a, (String)localObject[0]);
-            paramMessage = (String)localObject[1];
-            boolean bool = ((Boolean)localObject[2]).booleanValue();
-            QQMovieFilter.a(this.a, ((Float)localObject[3]).floatValue());
-            QQMovieFilter.b(this.a, ((Float)localObject[4]).floatValue());
-            localObject = (HWDecodeListener)localObject[5];
-            if (QQMovieFilter.a(this.a) == null) {
-              QQMovieFilter.a(this.a, new DecodePlayer());
-            }
-            if (QQMovieFilter.a(this.a) != null) {
-              QQMovieFilter.a(this.a).a();
-            }
-            if (!FileUtil.b(QQMovieFilter.a(this.a))) {
-              break;
-            }
-            QQMovieFilter.a(this.a).a(QQMovieFilter.a(this.a), paramMessage);
-            QQMovieFilter.a(this.a).a(bool);
-            QQMovieFilter.a(this.a).a((HWDecodeListener)localObject);
-            QQMovieFilter.a(this.a, new aibk(this.a));
-            QQMovieFilter.a(this.a).a(QQMovieFilter.a(this.a), QQMovieFilter.a(this.a));
-            QQMovieFilter.a(this.a, null);
-            QQMovieFilter.a(this.a).a(0);
-          } while (QQMovieFilter.a(this.a) == null);
-          QQMovieFilter.a(this.a).a(VideoUtil.a(QQMovieFilter.a(this.a)), QQMovieFilter.a(this.a), QQMovieFilter.b(this.a));
-          return;
-          QQMovieFilter.a(this.a);
-          QQMovieFilter.a(this.a).a("", "");
-          return;
-        } while (QQMovieFilter.a(this.a) == null);
-        QQMovieFilter.a(this.a).c();
-        return;
-        QQMovieFilter.a(this.a);
-      } while (QQMovieFilter.a(this.a) == null);
-      QQMovieFilter.a(this.a).a("", "");
+          localObject = localTroopManager.b((String)localObject);
+          i = j;
+          if (localObject != null) {
+            i = ((TroopInfo)localObject).wMemberNum;
+          }
+        }
+        localHashMap.put("troopMask", String.valueOf(k));
+        localHashMap.put("troopMemberNum", String.valueOf(i));
+        if (QLog.isColorLevel()) {
+          QLog.d("searchUtils", 2, "Report troop member click, troopMask:" + k + " troopMemberNum:" + i);
+        }
+      }
+      StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "ContactSearchMatchDegree", true, 0L, 0L, SearchUtils.a(localHashMap), "", false);
       return;
-    } while (QQMovieFilter.a(this.a) == null);
-    QQMovieFilter.a(this.a).b();
+      i = -1;
+      break;
+      label339:
+      if ((this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel instanceof ContactSearchModelGlobalTroop)) {
+        localObject = ((ContactSearchModelGlobalTroop)this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel).a;
+      } else {
+        localObject = "";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aibj
  * JD-Core Version:    0.7.0.1
  */

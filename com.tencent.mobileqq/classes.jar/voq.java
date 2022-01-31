@@ -1,15 +1,28 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import cooperation.troop.TroopFileProxyActivity;
 
 public class voq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public voq(AIOPhotoListAdapter paramAIOPhotoListAdapter, AIOShortVideoData paramAIOShortVideoData) {}
+  public voq(TroopFileItemBuilder paramTroopFileItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.f, 0);
+    ChatMessage localChatMessage = AIOUtils.a(paramView);
+    paramView = (Activity)paramView.getContext();
+    Intent localIntent = new Intent();
+    if (localIntent == null) {
+      return;
+    }
+    localIntent.putExtra(TroopFileProxyActivity.a, localChatMessage.frienduin);
+    TroopFileProxyActivity.a(paramView, localIntent, this.a.a.getCurrentAccountUin());
   }
 }
 

@@ -1,27 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
 
-public class ohr
-  implements Animator.AnimatorListener
+public final class ohr
+  implements Parcelable.Creator
 {
-  public ohr(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public EditLocalVideoSource a(Parcel paramParcel)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2131034167);
+    return new EditLocalVideoSource(paramParcel);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public EditLocalVideoSource[] a(int paramInt)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 2131034167);
+    return new EditLocalVideoSource[paramInt];
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

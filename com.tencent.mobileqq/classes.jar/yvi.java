@@ -1,19 +1,14 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class yvi
-  extends AVAudioCtrl.EnableSpeakerCompleteCallback
+public final class yvi
+  implements Runnable
 {
-  public yvi(AVEngineWalper paramAVEngineWalper) {}
+  public yvi(int paramInt) {}
   
-  protected void onComplete(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.b(paramBoolean, paramInt);
-    }
+    QQToast.a(BaseApplicationImpl.getApplication(), "角色: " + this.a + " 装扮不足7件", 1).a();
   }
 }
 

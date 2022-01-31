@@ -1,28 +1,46 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
+import com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import java.util.HashMap;
+import java.util.List;
 
 public class ymw
-  implements Runnable
+  implements QvipSpecialSoundManager.CallBack
 {
-  public ymw(ApolloTextureView paramApolloTextureView) {}
+  public ymw(VipSpecialSoundWebViewPlugin paramVipSpecialSoundWebViewPlugin, String paramString) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    ApolloRender localApolloRender = this.a.getRender();
-    if ((localApolloRender != null) && (localApolloRender.getSavaWrapper() != null))
+    if (paramBoolean) {}
+    try
     {
-      double d = 0.0D;
-      if (localApolloRender.mIsFrameMode) {
-        d = localApolloRender.mDuration;
-      }
-      localApolloRender.getSavaWrapper().a(d);
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      return;
     }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+    VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ymw
  * JD-Core Version:    0.7.0.1
  */

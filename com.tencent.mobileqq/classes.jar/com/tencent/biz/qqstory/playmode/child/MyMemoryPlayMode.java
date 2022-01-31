@@ -31,8 +31,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import njy;
-import njz;
+import noi;
+import noj;
 
 public class MyMemoryPlayMode
   extends NewFriendsPlayMode
@@ -43,7 +43,7 @@ public class MyMemoryPlayMode
   protected MultiGroupVideoDataProvider a;
   protected HashSet a;
   public ConcurrentHashMap b;
-  public int l;
+  public int k;
   
   public MyMemoryPlayMode(int paramInt, StoryVideoPlayer paramStoryVideoPlayer, VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, Bundle paramBundle)
   {
@@ -57,25 +57,25 @@ public class MyMemoryPlayMode
   
   public int a()
   {
-    if (this.l == 7) {
+    if (this.k == 7) {
       return 47;
     }
-    if (this.l == 6) {
+    if (this.k == 6) {
       return 46;
     }
-    if (this.l == 4) {
+    if (this.k == 4) {
       return 48;
     }
-    if (this.l == 5) {
+    if (this.k == 5) {
       return 51;
     }
-    if (this.l == 2) {
+    if (this.k == 2) {
       return 52;
     }
-    if (this.l == 8) {
+    if (this.k == 8) {
       return 53;
     }
-    if (this.l == 1) {
+    if (this.k == 1) {
       return 27;
     }
     return 65;
@@ -133,7 +133,7 @@ public class MyMemoryPlayMode
     ArrayList localArrayList1 = paramBundle.getStringArrayList("extra_collection_key_list");
     int i = paramBundle.getInt("extra_collection_key_index", 0);
     ArrayList localArrayList2 = paramBundle.getStringArrayList("extra_feedid_list");
-    this.l = paramBundle.getInt("extra_memory_from", 1);
+    this.k = paramBundle.getInt("extra_memory_from", 1);
     boolean bool = paramBundle.getBoolean("extra_memory_key_list_is_end", true);
     this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMultiGroupVideoDataProvider = new MemoryVideoDataProvider(this.jdField_b_of_type_JavaLangString, localArrayList1, localArrayList2, i, this.jdField_b_of_type_Int, bool);
     this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMultiGroupVideoDataProvider.a(this);
@@ -175,7 +175,7 @@ public class MyMemoryPlayMode
           this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_b_of_type_Int = 880001;
           this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
           this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
-          this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new njy(this));
+          this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new noi(this));
           return;
         }
         if (QLog.isColorLevel()) {
@@ -228,7 +228,7 @@ public class MyMemoryPlayMode
       this.e = true;
       i = this.jdField_b_of_type_Int;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-      this.jdField_a_of_type_AndroidOsHandler.post(new njz(this, i));
+      this.jdField_a_of_type_AndroidOsHandler.post(new noj(this, i));
       if (this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.isEmpty()) {
         break;
       }
@@ -292,7 +292,7 @@ public class MyMemoryPlayMode
     if (b(paramVideoViewHolder.jdField_c_of_type_Int))
     {
       paramStoryVideoItem = paramVideoViewHolder.b;
-      if (PlayModeUtils.a(this.k)) {
+      if (PlayModeUtils.a(this.l)) {
         i = 0;
       }
       paramStoryVideoItem.setVisibility(i);
@@ -312,24 +312,27 @@ public class MyMemoryPlayMode
       i = this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(paramString1);
     } while (i < 0);
     if (i == this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size()) {}
+    int m;
     for (int i = 1;; i = 0)
     {
       paramString1 = (MyMemoryPlayMode.VideoIndexInfo)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-      int k = this.jdField_b_of_type_Int - paramString1.jdField_b_of_type_Int;
-      if (k < 0) {
+      m = this.jdField_b_of_type_Int - paramString1.jdField_b_of_type_Int;
+      if (m >= 0) {
         break;
       }
-      int m = Math.min(paramString1.jdField_a_of_type_Int + k - 1, this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size());
-      int j = 0;
-      while (k < m)
-      {
-        paramString1 = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.get(k);
-        paramString1 = (MyMemoryPlayMode.VideoIndexInfo)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1.mVid);
-        paramString1.jdField_b_of_type_Int = j;
-        paramString1.jdField_a_of_type_Int -= 1;
-        k += 1;
-        j += 1;
-      }
+      this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
+      return;
+    }
+    int n = Math.min(paramString1.jdField_a_of_type_Int + m - 1, this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size());
+    int j = 0;
+    while (m < n)
+    {
+      paramString1 = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.get(m);
+      paramString1 = (MyMemoryPlayMode.VideoIndexInfo)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1.mVid);
+      paramString1.jdField_b_of_type_Int = j;
+      paramString1.jdField_a_of_type_Int -= 1;
+      m += 1;
+      j += 1;
     }
     this.e = true;
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();

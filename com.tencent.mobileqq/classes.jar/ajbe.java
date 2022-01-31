@@ -1,9 +1,13 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class ajbe
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public TextView a;
+  public ajbe(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

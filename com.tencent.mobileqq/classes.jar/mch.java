@@ -1,24 +1,20 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoDeliverController;
+import mqq.os.MqqHandler;
 
-public final class mch
-  implements Animation.AnimationListener
+public class mch
+  implements View.OnClickListener
 {
-  public mch(View paramView) {}
+  public mch(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
-    {
-      this.a.clearAnimation();
-      this.a.setVisibility(8);
-    }
+    ReadInJoyDeliverVideoActivity.a(this.a).sendEmptyMessage(103);
+    ReadInJoyDeliverVideoActivity.e(this.a);
+    ReadInJoyDeliverVideoActivity.a(this.a).b();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

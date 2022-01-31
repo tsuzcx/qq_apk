@@ -1,26 +1,31 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.OnProviderContainerTriggerLisener;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class ahjk
-  implements ProviderContainerView.OnProviderContainerTriggerLisener
+  implements ViewPager.OnPageChangeListener
 {
-  public ahjk(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public ahjk(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  public void a()
-  {
-    this.a.b = true;
-    this.a.l();
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void b()
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    this.a.b = false;
-    this.a.m();
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
+    if (paramInt == 0)
+    {
+      ReceiptMessageReadMemberListContainerFragment.a(this.a).a(false);
+      return;
+    }
+    ReceiptMessageReadMemberListContainerFragment.a(this.a).a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjk
  * JD-Core Version:    0.7.0.1
  */

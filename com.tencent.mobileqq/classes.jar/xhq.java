@@ -1,22 +1,32 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools.TextUrlClickListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import cooperation.qwallet.plugin.QWalletHelper;
+import org.json.JSONObject;
 
-public final class xhq
-  extends ClickableSpan
+public class xhq
+  implements Runnable
 {
-  public xhq(QWalletTools.TextUrlClickListener paramTextUrlClickListener, String paramString) {}
+  public xhq(TransactionActivity paramTransactionActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletUtilsQWalletTools$TextUrlClickListener.a(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
+    try
+    {
+      JSONObject localJSONObject = QWalletHelper.loadUnifiedConfig(TransactionActivity.a(this.a));
+      if (localJSONObject != null)
+      {
+        localJSONObject = localJSONObject.optJSONObject("qpayment");
+        if (localJSONObject != null)
+        {
+          TransactionActivity.a(this.a, localJSONObject.optInt("large_transfer_remind_fee"));
+          TransactionActivity.a(this.a, localJSONObject.optString("large_transfer_remind_msg"));
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

@@ -1,25 +1,46 @@
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopEntranceBar;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.AudioUploadTask;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import java.io.File;
 
 public class ajdt
-  implements Runnable
+  extends Handler
 {
-  public ajdt(TroopEntranceBar paramTroopEntranceBar) {}
+  public ajdt(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    String str1 = "";
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    switch (paramMessage.what)
     {
-      String str2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      AccountDetail localAccountDetail = PublicAccountUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2);
-      if (localAccountDetail != null) {
-        str1 = localAccountDetail.uin;
+    default: 
+      return;
+    case 3: 
+      TroopBarReplyActivity.a(this.a, false);
+      return;
+    }
+    paramMessage = paramMessage.obj.toString();
+    File localFile = new File(paramMessage);
+    if (localFile.exists()) {}
+    for (long l = localFile.length();; l = 0L)
+    {
+      TroopBarReplyActivity.a(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
+      TroopBarReplyActivity.a(this.a, new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l));
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = TroopBarReplyActivity.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask = new TroopBarPublishUtils.AudioUploadTask(this.a, this.a.jdField_a_of_type_AndroidOsHandler, "https://upload.buluo.qq.com/cgi-bin/bar/upload/meida", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
+      ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask, 5, null, true);
+      this.a.a(2, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
+      TroopBarReplyActivity.a(this.a, 0);
+      if (!this.a.k) {
+        break;
       }
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "interest_data", "exp_tribechat_aio", 0, 0, str2, str1, "", "");
+      TroopBarUtils.a(this.a.m, this.a.n, "sure_record", this.a.o, "", "", "");
+      return;
     }
   }
 }

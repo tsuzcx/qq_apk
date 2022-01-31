@@ -1,84 +1,166 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthConvertor;
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import dov.com.qq.im.capture.data.IFaceSelectedListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.DynamicFaceLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.LayerParams;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.model.SelectedItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InformationFaceConstant;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.LocationFacePackage.Item;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.InfoStickerDrawable;
+import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
-public final class aoid
-  implements ExtendEditText.LengthConvertor
+public class aoid
+  implements IFaceSelectedListener
 {
-  private boolean a(char paramChar)
+  private aoid(DoodleLayout paramDoodleLayout) {}
+  
+  public void a()
   {
-    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
-    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS);
+    this.a.a().c();
+    this.a.a().c();
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
   }
   
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void a(SelectedItem paramSelectedItem, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper)
   {
-    int i;
-    if (paramInt1 <= paramInt2)
-    {
-      i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label75;
-      }
-    }
-    int j;
+    SLog.b("DoodleLayout", "onNormalFaceSelected, item : %s , x : %s , y : %s , scale : %s path: %s", new Object[] { paramSelectedItem, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3), paramString });
+    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d == 0) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c == 0)) || (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d > this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c)) {}
     for (;;)
     {
-      j = 0;
-      paramInt1 = i;
-      while ((paramInt1 < paramInt2) && (paramInt1 < paramCharSequence.length()))
-      {
-        int k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
-        }
-        paramInt1 += 1;
-        j = k;
+      FaceLayer.LayerParams localLayerParams = new FaceLayer.LayerParams(paramFloat1, paramFloat2, paramFloat3, 0.0F, 0.0F, 0.0F, paramSelectedItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), paramSelectedItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+      if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 3)) {
+        LpReportInfo_pf00064.report(615, 6);
       }
-      i = paramInt2;
-      break;
-      label75:
-      paramInt2 = paramInt1;
+      FaceLayer localFaceLayer = this.a.a();
+      Object localObject = localFaceLayer;
+      if (paramSelectedItem.jdField_a_of_type_Int == 1) {
+        if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null)
+        {
+          localObject = localFaceLayer;
+          if (!this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b()) {}
+        }
+        else
+        {
+          localObject = this.a.a();
+        }
+      }
+      if (((FaceLayer)localObject).a(paramSelectedItem.jdField_a_of_type_JavaLangString, paramSelectedItem.b, paramSelectedItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable, localLayerParams, paramString, false, paramSelectedItem.jdField_a_of_type_Int, this.a.d(), paramSegmentKeeper))
+      {
+        DoodleLayout.a(this.a, (FaceLayer)localObject);
+        DoodleLayout.a("clk_oneface");
+        VideoEditReport.a("0X80076CA");
+        VideoEditReport.b("0X80075DF");
+      }
+      return;
+      paramFloat2 = ScreenUtil.b / 2;
     }
-    return j + (paramInt2 - i);
   }
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void a(InfomationFacePackage.Item paramItem, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    int m = 0;
-    int i;
-    if (paramInt1 <= paramInt2)
-    {
-      i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        break label83;
-      }
-      label16:
-      paramInt1 = i;
+    if (paramItem == null) {
+      SLog.e("DoodleLayout", "the item is null.");
     }
-    int k;
-    for (int j = 0;; j = k)
+    label133:
+    label267:
+    label444:
+    label450:
+    label454:
+    for (;;)
     {
-      k = m;
-      if (paramInt1 < paramCharSequence.length())
+      return;
+      SLog.a("DoodleLayout", "onInformationFaceSelected, pictureUrl: %s , x : %s , y : %s , scale : %f", paramItem.jdField_a_of_type_JavaLangString, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3));
+      this.a.a();
+      SLog.b("DoodleLayout", "addLocationFaceItem:" + paramItem.toString());
+      InfoStickerDrawable localInfoStickerDrawable = InformationFaceConstant.a(paramItem, this.a.getContext(), -1L);
+      Object localObject1;
+      if ((this.a.getContext() instanceof EditPicActivity))
       {
-        k = j;
-        if (a(paramCharSequence.charAt(paramInt1))) {
-          k = j + 1;
+        if (localInfoStickerDrawable == null) {
+          break label450;
         }
-        if (paramInt1 + k >= paramInt2) {
-          k = paramInt1 - i;
-        }
+        localObject1 = new BitmapDrawable(this.a.getContext().getResources(), localInfoStickerDrawable.a());
+        paramItem.c = 0;
       }
-      else
+      for (;;)
       {
-        return k;
-        i = paramInt2;
-        break;
-        label83:
-        paramInt2 = paramInt1;
-        break label16;
+        if (localObject1 == null) {
+          break label454;
+        }
+        ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+        if (QLog.isColorLevel()) {
+          QLog.d("DoodleLayout", 2, "[" + ((Drawable)localObject1).getIntrinsicWidth() + "," + ((Drawable)localObject1).getIntrinsicHeight() + "]");
+        }
+        FaceLayer.LayerParams localLayerParams;
+        Object localObject2;
+        int i;
+        if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d == 0) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c == 0)) || (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d > this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c))
+        {
+          localLayerParams = new FaceLayer.LayerParams(paramFloat1, paramFloat2, paramFloat3, 0.0F, 0.0F, 0.0F, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+          localObject2 = this.a.a();
+          if ((paramItem.c != 3) || ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (!this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b()))) {
+            break label444;
+          }
+          i = 3;
+          localObject2 = this.a.a();
+        }
+        for (;;)
+        {
+          boolean bool = ((FaceLayer)localObject2).a(paramItem.h, paramItem.jdField_a_of_type_JavaLangString, (Drawable)localObject1, localLayerParams, "", paramItem.jdField_a_of_type_Boolean, paramItem.g, i, localInfoStickerDrawable.c(), 0, this.a.d());
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("DoodleLayout", 2, "add Face result" + bool);
+          return;
+          paramItem.c = 3;
+          localObject1 = localInfoStickerDrawable;
+          break label133;
+          paramFloat2 = ScreenUtil.b / 2;
+          break label267;
+          i = 0;
+        }
+        localObject1 = null;
       }
-      paramInt1 += 1;
     }
+  }
+  
+  public void a(LocationFacePackage.Item paramItem, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    SLog.a("DoodleLayout", "onLocationFaceSelected, pictureUrl: %s , x : %s , y : %s , scale : %f", paramItem.d, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3));
+    this.a.a(paramItem, paramFloat1, paramFloat2, paramFloat3);
+    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 3)) {
+      LpReportInfo_pf00064.report(615, 6);
+    }
+    VideoEditReport.b("0X80075E3");
+  }
+  
+  public void a(LocationFacePackage.Item paramItem, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper)
+  {
+    SLog.b("DoodleLayout", "onComboLocationFaceSelected, pictureUrl:" + paramItem.d);
+    this.a.a(paramItem, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper);
+    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 3)) {
+      LpReportInfo_pf00064.report(615, 6);
+    }
+    VideoEditReport.b("0X80075E3");
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.a.a().a(paramString1, paramString2);
+    this.a.a().a(paramString1, paramString2);
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
   }
 }
 

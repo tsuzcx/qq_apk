@@ -1,16 +1,33 @@
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.widget.GridView;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import java.lang.ref.WeakReference;
 
-public class ajrv
+class ajrv
   implements Runnable
 {
-  public ajrv(AvatarWallAdapter paramAvatarWallAdapter, int paramInt, ViewGroup.LayoutParams paramLayoutParams) {}
+  ajrv(ajrt paramajrt, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.setNumColumns(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajrt.a).e = this.jdField_a_of_type_Int;
+    Object localObject = (XMediaEditor)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajrt.a).get();
+    if (localObject != null)
+    {
+      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajrt.a).c);
+      if ((localObject instanceof ImageItem.ImageViewHolder))
+      {
+        localObject = (ImageItem.ImageViewHolder)localObject;
+        if (ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajrt.a).d.equals(((ImageItem.ImageViewHolder)localObject).a.getTag()))
+        {
+          ((ImageItem.ImageViewHolder)localObject).a.setVisibility(0);
+          ((ImageItem.ImageViewHolder)localObject).a.setDrawStatus(1);
+          ((ImageItem.ImageViewHolder)localObject).a.setAnimProgress(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajrt.a).e, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Ajrt.a).d);
+        }
+      }
+    }
   }
 }
 

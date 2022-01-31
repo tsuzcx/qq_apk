@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app;
 
 public abstract interface NewFriendManager$INewFriendListener
 {
-  public abstract void Q_();
+  public abstract void R_();
   
   public abstract void a(int paramInt);
   

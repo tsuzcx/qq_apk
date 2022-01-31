@@ -1,27 +1,28 @@
-import android.os.Bundle;
-import com.tencent.gdtad.net.GdtAdObserver;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.util.JSONUtils;
-import org.json.JSONObject;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class acav
-  extends GdtAdObserver
+  implements Runnable
 {
-  public acav(MessengerService paramMessengerService) {}
+  public acav(ContactSyncManager paramContactSyncManager) {}
   
-  public void a(Object paramObject)
+  public void run()
   {
-    if (this.a.a != null)
+    try
     {
-      this.a.a.putString("data", JSONUtils.a(paramObject).toString());
-      this.a.a(this.a.a);
-      this.a.a = null;
+      this.a.a();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ContactSync.Manager", 2, "onQQContactRefreshed | syncAllContacts exception", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acav
  * JD-Core Version:    0.7.0.1
  */

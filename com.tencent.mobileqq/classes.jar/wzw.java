@@ -1,23 +1,46 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-
 public class wzw
-  implements Runnable
 {
-  public wzw(PasswdRedBagManager paramPasswdRedBagManager) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
+  public wzw(String paramString)
   {
-    Iterator localIterator = PasswdRedBagManager.a(this.a).a().entrySet().iterator();
-    while (localIterator.hasNext())
+    String[] arrayOfString = paramString.split(" ");
+    if (arrayOfString.length == 1)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      this.a.c.put(localEntry.getKey(), localEntry.getValue());
+      this.jdField_a_of_type_JavaLangString = arrayOfString[0];
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
+    if (arrayOfString.length == 4)
+    {
+      this.b = arrayOfString[0];
+      this.c = arrayOfString[1];
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = arrayOfString[3];
+      return;
+    }
+    if (arrayOfString.length > 4)
+    {
+      int j = arrayOfString.length;
+      paramString = "";
+      int i = 0;
+      while (i < j - 4)
+      {
+        paramString = paramString + arrayOfString[i] + " ";
+        i += 1;
+      }
+      this.d = paramString;
+      this.b = arrayOfString[(j - 4)];
+      this.c = arrayOfString[(j - 3)];
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = arrayOfString[(j - 1)];
+      return;
+    }
+    throw new RuntimeException("format error!");
   }
 }
 

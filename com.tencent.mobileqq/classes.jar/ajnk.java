@@ -1,15 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
 
-public class ajnk
-  implements FrameSprite.OnFrameEndListener
+public final class ajnk
+  implements Parcelable.Creator
 {
-  public ajnk(AIOAnimationControlManager paramAIOAnimationControlManager, boolean paramBoolean) {}
-  
-  public void a()
+  public HWGuideItem a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a.post(new ajnl(this));
+    return new HWGuideItem(paramParcel);
+  }
+  
+  public HWGuideItem[] a(int paramInt)
+  {
+    return new HWGuideItem[paramInt];
   }
 }
 

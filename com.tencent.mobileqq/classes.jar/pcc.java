@@ -1,16 +1,26 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.webviewplugin.OfflineWebResManager;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class pcc
-  implements Runnable
+class pcc
+  extends ExecuteBinResponseCallback
 {
-  public pcc(OfflineWebResManager paramOfflineWebResManager, SharedPreferences paramSharedPreferences) {}
+  pcc(pbw parampbw, pcg parampcg) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflineWebResManager.b();
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("Last_Check_Cache", System.currentTimeMillis()).commit();
+    if (QLog.isColorLevel())
+    {
+      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
+      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Pbw.a.a));
+    }
+    this.jdField_a_of_type_Pbw.a.a = System.currentTimeMillis();
+  }
+  
+  public void b(String paramString)
+  {
+    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
+    this.jdField_a_of_type_Pcg.b(paramString);
   }
 }
 

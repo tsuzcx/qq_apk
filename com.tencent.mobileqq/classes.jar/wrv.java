@@ -1,39 +1,54 @@
-import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.activity.messagesearch.MessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.widget.XListView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contacts.adapter.HeadCardAdapter;
+import com.tencent.mobileqq.activity.contacts.adapter.HeadCardAdapter.HeadAdapterCallback;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import java.util.List;
 
 public class wrv
-  implements AdapterView.OnItemLongClickListener
+  implements IIconListener
 {
-  public wrv(MessageSearchDialog paramMessageSearchDialog) {}
+  public wrv(HeadCardAdapter paramHeadCardAdapter) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onLongClick, position = " + paramInt);
-    }
-    paramAdapterView = this.a.jdField_a_of_type_ComTencentWidgetXListView.getAdapter();
-    if (paramAdapterView == this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter)
+    if ((paramInt2 == 200) && (paramBitmap != null))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem = ((MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageResultAdapter.getItem(paramInt));
-      paramView.setSelected(true);
-      paramAdapterView = new QQCustomMenu();
-      paramAdapterView.a(2131375573, "复制", 2130838305);
-      paramAdapterView.a(2131363517, this.a.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
-      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, paramAdapterView, MessageSearchDialog.a(this.a), new wrw(this, paramView));
+      List localList = HeadCardAdapter.a(this.a).a();
+      paramInt2 = 0;
+      if (paramInt2 < localList.size())
+      {
+        Object localObject2 = (View)localList.get(paramInt2);
+        if (localObject2 == null) {}
+        label167:
+        for (;;)
+        {
+          paramInt2 += 1;
+          break;
+          if ((((View)localObject2).getTag() instanceof wrw)) {}
+          for (Object localObject1 = (wrw)((View)localObject2).getTag();; localObject1 = null)
+          {
+            if ((localObject1 == null) || (!(((wrw)localObject1).a instanceof MayKnowRecommend))) {
+              break label167;
+            }
+            localObject1 = (MayKnowRecommend)((wrw)localObject1).a;
+            RichStatus localRichStatus = ((MayKnowRecommend)localObject1).getRichStatus();
+            if ((localRichStatus == null) || (localRichStatus.actId != paramInt1)) {
+              break;
+            }
+            localObject2 = (TextView)((View)localObject2).findViewById(2131363876);
+            if (localObject2 == null) {
+              break;
+            }
+            HeadCardAdapter.a(this.a, (MayKnowRecommend)localObject1, (TextView)localObject2, paramBitmap);
+            break;
+          }
+        }
+      }
     }
-    while (paramAdapterView != this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {
-      return true;
-    }
-    return true;
   }
 }
 

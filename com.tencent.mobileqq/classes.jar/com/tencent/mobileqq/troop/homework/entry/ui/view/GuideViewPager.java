@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.homework.entry.ui.view;
 
-import ajia;
-import ajic;
+import ajpm;
+import ajpo;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -49,7 +49,7 @@ public class GuideViewPager
   
   public static void setBitmapByPath(ImageView paramImageView, String paramString)
   {
-    ThreadManager.post(new ajia(paramString, paramImageView), 8, null, true);
+    ThreadManager.post(new ajpm(paramString, paramImageView), 8, null, true);
   }
   
   public int a()
@@ -60,11 +60,11 @@ public class GuideViewPager
   public View a(int paramInt)
   {
     HomeworkConfig.HomeWorkGuideInfo.PageInfo localPageInfo = (HomeworkConfig.HomeWorkGuideInfo.PageInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2130970650, null);
-    Object localObject = (ImageView)localRelativeLayout.findViewById(2131371559);
-    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131371560);
-    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131371561);
-    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131371562);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2130970663, null);
+    Object localObject = (ImageView)localRelativeLayout.findViewById(2131371557);
+    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131371558);
+    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131371559);
+    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131371560);
     if (localPageInfo.jdField_a_of_type_Boolean) {
       if (!TextUtils.isEmpty(localPageInfo.jdField_a_of_type_JavaLangString))
       {
@@ -107,12 +107,12 @@ public class GuideViewPager
     {
       return;
     } while (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager$OnGuideBtnClickListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager$OnGuideBtnClickListener.b();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager$OnGuideBtnClickListener.a();
   }
   
   public void onPlayOnce()
   {
-    ThreadManager.getUIHandler().post(new ajic(this));
+    ThreadManager.getUIHandler().post(new ajpo(this));
   }
   
   public void setOnActionBtnClickListener(ComplexGuidViewPager.OnGuideBtnClickListener paramOnGuideBtnClickListener)
@@ -122,7 +122,7 @@ public class GuideViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.view.GuideViewPager
  * JD-Core Version:    0.7.0.1
  */

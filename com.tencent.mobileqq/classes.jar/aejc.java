@@ -1,19 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import cooperation.weiyun.WeiyunAIOUtils;
+import com.tencent.mobileqq.leba.QZoneEntryController;
+import com.tencent.qphone.base.util.QLog;
 
 public class aejc
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aejc(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public aejc(QZoneEntryController paramQZoneEntryController) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (WeiyunAIOUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, AIOShareActionSheet.a(this.a), AIOShareActionSheet.a(this.a).a(), this.a.jdField_a_of_type_MqqOsMqqHandler)) {
-      AIOShareActionSheet.a(this.a).a(false, null, false);
+    if (QZoneEntryController.a(this.a))
+    {
+      QZoneEntryController.a(this.a, 1);
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneEntryController", 2, "显示被动");
+      }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (!QZoneEntryController.b(this.a)) {
+            break;
+          }
+          QZoneEntryController.a(this.a, 2);
+        } while (!QLog.isColorLevel());
+        QLog.i("UndealCount.QZoneEntryController", 2, "显示主动");
+        return;
+        if (!QZoneEntryController.c(this.a)) {
+          break;
+        }
+        QZoneEntryController.a(this.a, 3);
+      } while (!QLog.isColorLevel());
+      QLog.i("UndealCount.QZoneEntryController", 2, "显示访客");
+      return;
+      if (!QZoneEntryController.d(this.a)) {
+        break;
+      }
+      QZoneEntryController.a(this.a, 4);
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneEntryController", 2, "显示运营内容");
+    return;
+    QZoneEntryController.a(this.a, 0);
+    if (QLog.isColorLevel()) {
+      QLog.i("UndealCount.QZoneEntryController", 2, "显示默认布局");
+    }
+    QZoneEntryController.b(this.a);
   }
 }
 

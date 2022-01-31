@@ -1,15 +1,45 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity.ListItem;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.Friends;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class ukf
-  implements Runnable
+public class ukf
+  extends CardObserver
 {
-  ukf(uke paramuke, String paramString) {}
+  public ukf(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Uke.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setTag(2131361863, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Uke.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnLongClickListener(this.jdField_a_of_type_Uke.jdField_a_of_type_AndroidViewView$OnLongClickListener);
+    if (!paramBoolean) {
+      return;
+    }
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
+      {
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        UncommonlyUsedContactsActivity.ListItem localListItem;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localListItem = (UncommonlyUsedContactsActivity.ListItem)localIterator.next();
+        } while ((localListItem.a == null) || (!(localListItem.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localListItem.a).uin)));
+      }
+      for (int i = 1; i != 0; i = 0)
+      {
+        UncommonlyUsedContactsActivity.a(this.a);
+        this.a.jdField_a_of_type_Ukj.notifyDataSetChanged();
+        return;
+      }
+      break;
+    }
   }
 }
 

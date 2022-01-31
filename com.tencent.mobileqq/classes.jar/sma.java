@@ -1,20 +1,15 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
 class sma
   implements Runnable
 {
-  sma(sly paramsly, TroopMemberCard paramTroopMemberCard) {}
+  sma(slw paramslw) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard != null)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("nick", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.card);
-      this.jdField_a_of_type_Sly.a.setResult(-1, localIntent);
-      EditInfoActivity.e(this.jdField_a_of_type_Sly.a);
+    if (this.a.a.a.b == 5) {
+      this.a.a.a.b();
     }
   }
 }

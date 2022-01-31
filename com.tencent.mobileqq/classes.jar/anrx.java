@@ -1,29 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.music.QimMusicPlayer;
-import dov.com.qq.im.capture.view.MusicProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anrx
-  implements View.OnClickListener
+  implements Runnable
 {
-  public anrx(EditRecognitionPart paramEditRecognitionPart) {}
+  public anrx(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditRecognitionPart", 2, "mRecognitionBubble onClick: invoked. ");
-    }
-    paramView = ((QimMusicPlayer)QIMManager.a().c(8)).b();
-    if ((MusicProviderView.a) && (paramView != null) && (paramView.a != EditRecognitionPart.a(this.a).a) && (paramView.d == 5))
-    {
-      this.a.c();
-      return;
-    }
-    EditRecognitionPart.a(this.a);
+    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(8);
+    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(false);
+    QIMEffectCameraCaptureUnit.a(this.a, 0);
+    QIMEffectCameraCaptureUnit.a(this.a, QIMEffectCameraCaptureUnit.a(this.a));
+    QIMEffectCameraCaptureUnit.f(this.a).setVisibility(0);
+    this.a.a.postDelayed(QIMEffectCameraCaptureUnit.a(this.a), 500L);
   }
 }
 

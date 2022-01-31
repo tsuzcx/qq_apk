@@ -1,19 +1,35 @@
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.biz.addContactTroopView.AddContactTroopHandler;
+import com.tencent.biz.addContactTroopView.AddContactTroopHandler.IGetPopClassAndSearchCB;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
 public class kmo
-  implements TroopMemberApiClient.Callback
+  extends SosoInterface.OnLocationListener
 {
-  public kmo(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
-  
-  public void a(Bundle paramBundle)
+  public kmo(AddContactTroopHandler paramAddContactTroopHandler, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, AddContactTroopHandler.IGetPopClassAndSearchCB paramIGetPopClassAndSearchCB1, AddContactTroopHandler.IGetPopClassAndSearchCB paramIGetPopClassAndSearchCB2)
   {
-    if (paramBundle != null)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0) {}
+    try
     {
-      paramBundle = paramBundle.getString("music");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+      paramSosoLbsInfo = AddContactTroopHandler.a(this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler, paramSosoLbsInfo);
+      AddContactTroopHandler.a(this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler, paramSosoLbsInfo, this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB);
+      AddContactTroopHandler.b(this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler, paramSosoLbsInfo, this.b);
+      return;
     }
+    catch (Exception paramSosoLbsInfo)
+    {
+      paramSosoLbsInfo.printStackTrace();
+      this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB.b();
+      this.b.b();
+    }
+    this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB.b();
+    this.b.b();
+    return;
   }
 }
 

@@ -1,38 +1,23 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.common.galleryactivity.AnimationUtils;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.app.HotChatObserver;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class afhi
-  implements ActionSheet.OnButtonClickListener
+public class afhi
+  extends HotChatObserver
 {
-  afhi(afhh paramafhh, View paramView, PicInfo paramPicInfo, ActionSheet paramActionSheet) {}
+  public afhi(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    int i = paramInt;
-    if (this.jdField_a_of_type_Afhh.jdField_a_of_type_Int == 0) {
-      i = paramInt + 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "onDismissHotChat.isSuccess=" + paramBoolean + ",groupcode=" + paramString1 + ",result=" + paramInt + ",strError=" + paramString2);
     }
-    switch (i)
+    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.a(this.a) != null) && (NearbyPeopleProfileActivity.a(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.a(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.a(this.a) != null))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      return;
-      this.jdField_a_of_type_Afhh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Afhh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView, 0);
-      NearbyProfileEditPanel.a(this.jdField_a_of_type_Afhh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel);
-      continue;
-      paramView = AnimationUtils.a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Afhh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(this.jdField_a_of_type_Afhh.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Afhh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_JavaUtilArrayList);
-      continue;
-      NearbyProfileEditPanel.a(this.jdField_a_of_type_Afhh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel, this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo, this.jdField_a_of_type_AndroidViewView);
+      NearbyPeopleProfileActivity.a(this.a).strHotChatInfo = "";
+      NearbyPeopleProfileActivity.a(this.a).hotInfo = null;
     }
   }
 }

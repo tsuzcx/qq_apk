@@ -224,7 +224,7 @@ public class ApolloBubbleLogic
             {
               localApolloGameManager.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAioBubblePush.a((QQAppInterface)localObject3, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int);
               if (localApolloManager != null) {
-                localApolloManager.f = true;
+                localApolloManager.n = true;
               }
               VipUtils.a(null, "cmshow", "Apollo", "peoplebubble", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int), 0, new String[] { String.valueOf(1) });
             }

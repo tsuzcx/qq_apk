@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.transfile.RichMediaStrategy.OldEngineDPCProfile;
+import android.opengl.GLES20;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
 
 public class aiqr
-  implements DeviceProfileManager.DPCObserver
+  implements Runnable
 {
-  public aiqr(RichMediaStrategy.OldEngineDPCProfile paramOldEngineDPCProfile) {}
+  public aiqr(VideoSprite paramVideoSprite) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name());
-      this.a.a(str);
-    }
+    GLES20.glDeleteTextures(this.a.a.length, this.a.a, 0);
+    GLES20.glFlush();
   }
 }
 

@@ -1,24 +1,42 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
+import com.tencent.biz.troop.VideoCombineHelper.Task;
+import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class pbo
-  implements IphonePickerView.PickerViewAdapter
+class pbo
+  extends VideoCombineHelper.TaskListener
 {
-  public pbo(NewerGuidePlugin paramNewerGuidePlugin, String[] paramArrayOfString) {}
-  
-  public int getColumnCount()
+  pbo(pbn parampbn)
   {
-    return 1;
+    super(parampbn.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper);
   }
   
-  public int getRowCount(int paramInt)
+  public void a(VideoCombineHelper.Task paramTask)
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    if ((paramTask instanceof pce)) {
+      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "download failed! msg = " + paramTask.d);
+    }
+    do
+    {
+      return;
+      if ((paramTask instanceof pbw))
+      {
+        this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "combine failed! msg = " + paramTask.d);
+        return;
+      }
+    } while (!(paramTask instanceof pch));
+    this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "sending failed! msg = " + paramTask.d);
   }
   
-  public String getText(int paramInt1, int paramInt2)
+  public void b(VideoCombineHelper.Task paramTask)
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
+    if ((paramTask instanceof pch))
+    {
+      paramTask = paramTask.a();
+      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(paramTask.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+    }
   }
 }
 

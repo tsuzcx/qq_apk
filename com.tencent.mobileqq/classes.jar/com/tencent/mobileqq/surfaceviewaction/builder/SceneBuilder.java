@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.surfaceviewaction.builder;
 
-import aiky;
-import aila;
-import ailb;
+import aipt;
+import aipv;
+import aipw;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -80,7 +80,7 @@ public class SceneBuilder
           ((Action)localObject1).e = 0;
         }
         if ((paramJSONObject.optBoolean("autoClose", false)) && (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null)) {
-          ((Action)localObject1).a(new ailb(this));
+          ((Action)localObject1).a(new aipw(this));
         }
       }
       return localObject1;
@@ -200,135 +200,149 @@ public class SceneBuilder
   private Node a(SpriteGLView paramSpriteGLView, JSONObject paramJSONObject, Layer paramLayer)
   {
     Object localObject1 = null;
-    Object localObject2 = paramJSONObject.optString("type");
-    label40:
-    Object localObject3;
-    Object localObject5;
-    if ("layer".equals(localObject2))
+    Object localObject3 = paramJSONObject.optString("type");
+    if ("layer".equals(localObject3))
     {
       localObject1 = new Layer(paramSpriteGLView);
-      if (localObject1 == null)
-      {
-        localObject2 = null;
-        return localObject2;
+      if (localObject1 != null) {
+        break label504;
       }
+      localObject3 = null;
     }
-    else if ("image".equals(localObject2))
+    label93:
+    Object localObject2;
+    label302:
+    label347:
+    label504:
+    do
     {
-      localObject1 = null;
-      localObject3 = paramJSONObject.optString("path");
-      localObject5 = paramJSONObject.optString("event");
-      if (TextUtils.isEmpty((CharSequence)localObject5))
+      return localObject3;
+      Object localObject6;
+      if ("image".equals(localObject3))
       {
-        localObject2 = new Sprite(paramSpriteGLView);
-        label93:
-        if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle != null) {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle.a((Sprite)localObject2, this.jdField_a_of_type_JavaLangString, (String)localObject3);
+        localObject1 = null;
+        Object localObject4 = paramJSONObject.optString("path");
+        localObject6 = paramJSONObject.optString("event");
+        if (TextUtils.isEmpty((CharSequence)localObject6))
+        {
+          localObject3 = new Sprite(paramSpriteGLView);
+          if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle != null) {
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$IImageBitmapHandle.a((Sprite)localObject3, this.jdField_a_of_type_JavaLangString, (String)localObject4);
+          }
+          if (localObject1 != null) {
+            break label302;
+          }
         }
-        if (localObject1 != null) {
-          break label294;
+        for (;;)
+        {
+          for (;;)
+          {
+            try
+            {
+              localObject4 = ImageUtil.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject4, null);
+              localObject1 = localObject3;
+              if (localObject4 == null) {
+                break;
+              }
+              localObject1 = paramJSONObject.optJSONObject("size");
+              if (localObject1 == null) {
+                break label347;
+              }
+              i = ((JSONObject)localObject1).optInt("width");
+              j = ((JSONObject)localObject1).optInt("height");
+            }
+            catch (OutOfMemoryError localOutOfMemoryError2)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError2));
+              }
+            }
+            try
+            {
+              localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject4, i, j, true);
+              ((Sprite)localObject3).a(paramSpriteGLView, (Bitmap)localObject1);
+              localObject1 = localObject3;
+            }
+            catch (OutOfMemoryError localOutOfMemoryError1)
+            {
+              if (!QLog.isColorLevel()) {
+                break label347;
+              }
+              QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError1));
+            }
+          }
+          localObject3 = new ImageButton(paramSpriteGLView, true);
+          ((ImageButton)localObject3).a(new aipv(this, paramLayer, (String)localObject6));
+          break label93;
+          localObject5 = localObject1;
+          continue;
+          localObject2 = localObject5;
         }
       }
-    }
-    for (;;)
-    {
-      try
+      if ("video".equals(localObject3))
       {
-        localObject3 = ImageUtil.a(this.jdField_a_of_type_JavaLangString + "/" + (String)localObject3, null);
-        localObject1 = localObject2;
-        if (localObject3 == null) {
-          break;
-        }
-        localObject1 = paramJSONObject.optJSONObject("size");
-        if (localObject1 == null) {
-          break label795;
-        }
-        localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject3, ((JSONObject)localObject1).optInt("width"), ((JSONObject)localObject1).optInt("height"), true);
-        ((Sprite)localObject2).a(paramSpriteGLView, (Bitmap)localObject1);
-        localObject1 = localObject2;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        if (!QLog.isColorLevel()) {
-          break label294;
-        }
-        QLog.e("SceneBuilder", 2, "buildNode" + QLog.getStackTraceString(localOutOfMemoryError));
-      }
-      localObject2 = new ImageButton(paramSpriteGLView, true);
-      ((ImageButton)localObject2).a(new aila(this, paramLayer, (String)localObject5));
-      break label93;
-      label294:
-      Object localObject4 = localObject1;
-      continue;
-      if ("video".equals(localObject2))
-      {
-        localObject1 = new VideoSprite(paramSpriteGLView, paramSpriteGLView.getContext(), true);
-        ((VideoSprite)localObject1).b(this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path"));
+        localObject2 = new VideoSprite(paramSpriteGLView, paramSpriteGLView.getContext(), true);
+        ((VideoSprite)localObject2).b(this.jdField_a_of_type_JavaLangString + "/" + paramJSONObject.optString("path"));
         if (paramJSONObject.optBoolean("isKey", false)) {
-          paramSpriteGLView.setVideoTimeGetter((VideoSprite)localObject1);
+          paramSpriteGLView.setVideoTimeGetter((VideoSprite)localObject2);
         }
         if (paramJSONObject.optBoolean("autoClose", false)) {
-          ((VideoSprite)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener);
+          ((VideoSprite)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener);
         }
-        ((VideoSprite)localObject1).a(paramJSONObject.optBoolean("isLooping", false));
+        ((VideoSprite)localObject2).a(paramJSONObject.optBoolean("isLooping", false));
         break;
       }
-      if (!"label".equals(localObject2)) {
+      if (!"label".equals(localObject3)) {
         break;
       }
-      localObject1 = a(paramSpriteGLView, paramJSONObject);
+      localObject2 = a(paramSpriteGLView, paramJSONObject);
       break;
-      ((Node)localObject1).jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-      ((Node)localObject1).c = ((float)paramJSONObject.optDouble("x", 0.0D));
-      ((Node)localObject1).d = ((float)paramJSONObject.optDouble("y", 0.0D));
-      ((Node)localObject1).b = ((int)(paramJSONObject.optDouble("alpha", 1.0D) * 255.0D));
-      ((Node)localObject1).e *= (float)paramJSONObject.optDouble("scale", 1.0D);
-      ((Node)localObject1).f = ((float)paramJSONObject.optDouble("rotate", 0.0D));
-      localObject2 = paramJSONObject.optJSONArray("actions");
-      if (localObject2 != null) {
-        ((Node)localObject1).a(a((JSONArray)localObject2));
+      ((Node)localObject2).jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+      ((Node)localObject2).c = ((float)paramJSONObject.optDouble("x", 0.0D));
+      ((Node)localObject2).d = ((float)paramJSONObject.optDouble("y", 0.0D));
+      ((Node)localObject2).b = ((int)(paramJSONObject.optDouble("alpha", 1.0D) * 255.0D));
+      ((Node)localObject2).e *= (float)paramJSONObject.optDouble("scale", 1.0D);
+      ((Node)localObject2).f = ((float)paramJSONObject.optDouble("rotate", 0.0D));
+      localObject3 = paramJSONObject.optJSONArray("actions");
+      if (localObject3 != null) {
+        ((Node)localObject2).a(a((JSONArray)localObject3));
       }
-      localObject4 = paramJSONObject.optJSONObject("frames");
-      if (localObject4 != null)
+      localObject5 = paramJSONObject.optJSONObject("frames");
+      if (localObject5 != null)
       {
-        localObject2 = new Frame();
-        ((Frame)localObject2).jdField_a_of_type_Int = ((JSONObject)localObject4).optInt("fps");
-        localObject4 = ((JSONObject)localObject4).optJSONArray("datas");
-        j = ((JSONArray)localObject4).length();
-        ((Frame)localObject2).jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlFrame$FrameData = new Frame.FrameData[j];
+        localObject3 = new Frame();
+        ((Frame)localObject3).jdField_a_of_type_Int = ((JSONObject)localObject5).optInt("fps");
+        localObject5 = ((JSONObject)localObject5).optJSONArray("datas");
+        j = ((JSONArray)localObject5).length();
+        ((Frame)localObject3).jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlFrame$FrameData = new Frame.FrameData[j];
         i = 0;
         while (i < j)
         {
-          ((Frame)localObject2).jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlFrame$FrameData[i] = new Frame.FrameData();
-          localObject5 = ((JSONArray)localObject4).optJSONObject(i);
-          localObject2.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlFrame$FrameData[i].jdField_a_of_type_Float = ((JSONObject)localObject5).optInt("x");
-          localObject2.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlFrame$FrameData[i].b = ((JSONObject)localObject5).optInt("y");
+          ((Frame)localObject3).jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlFrame$FrameData[i] = new Frame.FrameData();
+          localObject6 = ((JSONArray)localObject5).optJSONObject(i);
+          localObject3.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlFrame$FrameData[i].jdField_a_of_type_Float = ((JSONObject)localObject6).optInt("x");
+          localObject3.jdField_a_of_type_ArrayOfComTencentMobileqqSurfaceviewactionGlFrame$FrameData[i].b = ((JSONObject)localObject6).optInt("y");
           i += 1;
         }
-        ((Node)localObject1).jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrame = ((Frame)localObject2);
+        ((Node)localObject2).jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrame = ((Frame)localObject3);
       }
-      localObject2 = localObject1;
-      if (!(localObject1 instanceof Layer)) {
-        break label40;
+      localObject3 = localObject2;
+    } while (!(localObject2 instanceof Layer));
+    Object localObject5 = (Layer)localObject2;
+    paramJSONObject = paramJSONObject.optJSONArray("children");
+    int j = paramJSONObject.length();
+    int i = 0;
+    for (;;)
+    {
+      localObject3 = localObject2;
+      if (i >= j) {
+        break;
       }
-      localObject4 = (Layer)localObject1;
-      paramJSONObject = paramJSONObject.optJSONArray("children");
-      int j = paramJSONObject.length();
-      int i = 0;
-      for (;;)
-      {
-        localObject2 = localObject1;
-        if (i >= j) {
-          break;
-        }
-        localObject2 = a(paramSpriteGLView, paramJSONObject.getJSONObject(i), paramLayer);
-        if (localObject2 != null) {
-          ((Layer)localObject4).a((Node)localObject2);
-        }
-        i += 1;
+      localObject3 = a(paramSpriteGLView, paramJSONObject.getJSONObject(i), paramLayer);
+      if (localObject3 != null) {
+        ((Layer)localObject5).a((Node)localObject3);
       }
-      label795:
-      localObject1 = localObject4;
+      i += 1;
     }
   }
   
@@ -709,7 +723,7 @@ public class SceneBuilder
   
   public void a(SpriteGLView paramSpriteGLView, SceneBuilder.OnBuiltListener paramOnBuiltListener)
   {
-    ThreadManager.post(new aiky(this, paramSpriteGLView, paramOnBuiltListener), 8, null, true);
+    ThreadManager.post(new aipt(this, paramSpriteGLView, paramOnBuiltListener), 8, null, true);
   }
 }
 

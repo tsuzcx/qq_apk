@@ -1,40 +1,31 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicSoundFile;
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicWaveformManager;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
+import dov.com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
 
-public class aoqe
+class aoqe
   implements Runnable
 {
-  public aoqe(MusicWaveformManager paramMusicWaveformManager) {}
+  aoqe(aopy paramaopy) {}
   
   public void run()
   {
-    try
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
+    boolean bool1 = localSharedPreferences.getBoolean("sv_has_reported_front_camera_compatibility", false);
+    boolean bool2 = localSharedPreferences.getBoolean("sv_has_reported_back_camera_compatibility", false);
+    CameraControl localCameraControl = CameraControl.a();
+    if ((!bool1) && (FlowCameraConstant.a == 1))
     {
-      long l = SystemClock.elapsedRealtimeNanos();
-      boolean bool = MusicWaveformManager.a(this.a).a(MusicWaveformManager.a(this.a), MusicWaveformManager.a(this.a), MusicWaveformManager.a(this.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicWaveformManager", 2, "createSoundFile time: " + (SystemClock.elapsedRealtimeNanos() - l) / 1000000L + "ms");
-      }
-      if (!bool)
-      {
-        MusicWaveformManager.a(this.a, false);
-        if (QLog.isColorLevel()) {
-          QLog.e("MusicWaveformManager", 2, "create musicSoundFile fail");
-        }
-      }
+      NewFlowCameraReporter.a(localCameraControl.a(), "front");
+      localSharedPreferences.edit().putBoolean("sv_has_reported_front_camera_compatibility", true).commit();
+    }
+    while ((bool2) || (FlowCameraConstant.a != 2)) {
       return;
     }
-    catch (Exception localException)
-    {
-      do
-      {
-        MusicWaveformManager.a(this.a, false);
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("MusicWaveformManager", 2, localException.toString());
-    }
+    NewFlowCameraReporter.a(localCameraControl.a(), "back");
+    localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
   }
 }
 

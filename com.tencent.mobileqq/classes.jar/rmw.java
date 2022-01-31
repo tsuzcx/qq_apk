@@ -1,15 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class rmw
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public rmw(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public rmw(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.onBackEvent();
+    if (AddFriendLogicActivity.d(this.a) == 1)
+    {
+      this.a.finish();
+      return;
+    }
+    AddFriendLogicActivity.a(this.a);
   }
 }
 

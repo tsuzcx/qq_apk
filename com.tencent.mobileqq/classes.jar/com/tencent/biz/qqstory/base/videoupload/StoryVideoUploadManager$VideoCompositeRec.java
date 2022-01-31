@@ -6,7 +6,7 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import com.tribe.async.dispatch.QQUIEventReceiver;
-import nas;
+import nen;
 
 public class StoryVideoUploadManager$VideoCompositeRec
   extends QQUIEventReceiver
@@ -18,10 +18,10 @@ public class StoryVideoUploadManager$VideoCompositeRec
   
   public void a(@NonNull StoryVideoUploadManager paramStoryVideoUploadManager, @NonNull VideoCompositeManager.CompositeVideoEvent paramCompositeVideoEvent)
   {
-    if (paramCompositeVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if (paramCompositeVideoEvent.errorInfo.isSuccess())
     {
-      SLog.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramCompositeVideoEvent.jdField_a_of_type_JavaLangString, paramCompositeVideoEvent.b);
-      Bosses.get().postLightWeightJob(new nas(this, paramStoryVideoUploadManager, paramCompositeVideoEvent), 0);
+      SLog.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramCompositeVideoEvent.a, paramCompositeVideoEvent.b);
+      Bosses.get().postLightWeightJob(new nen(this, paramStoryVideoUploadManager, paramCompositeVideoEvent), 0);
     }
   }
   

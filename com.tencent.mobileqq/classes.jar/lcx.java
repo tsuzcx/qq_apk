@@ -1,15 +1,53 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 import java.util.List;
 
 public class lcx
   extends ReadInJoyObserver
 {
-  public lcx(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
+  public lcx(KanDianViewController paramKanDianViewController) {}
   
-  public void a(List paramList)
+  public void a(int paramInt, List paramList)
   {
-    this.a.a(paramList);
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).a(paramInt, paramList);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
+  {
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void ab_()
+  {
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).k();
+    }
+  }
+  
+  public void b(int paramInt, List paramList)
+  {
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
+  {
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List paramList)
+  {
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).b(paramInt, paramList);
+    }
   }
 }
 

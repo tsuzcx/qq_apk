@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia;
 
-import ahgq;
-import ahgr;
-import ahgt;
+import ahlh;
+import ahli;
+import ahlk;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -125,7 +125,7 @@ public class VideoSendTaskManager
   
   private void a(HashMap paramHashMap)
   {
-    ThreadManager.post(new ahgq(this, paramHashMap), 5, null, true);
+    ThreadManager.post(new ahlh(this, paramHashMap), 5, null, true);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -143,7 +143,7 @@ public class VideoSendTaskManager
   public void a(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle)
   {
     TransFileController localTransFileController = paramQQAppInterface.a();
-    TransferRequest localTransferRequest = a(new ahgr(this, paramQQAppInterface, paramString));
+    TransferRequest localTransferRequest = a(new ahli(this, paramQQAppInterface, paramString));
     paramQQAppInterface = a(paramQQAppInterface, paramBundle);
     paramQQAppInterface.uniseq = Long.parseLong(paramString);
     localTransferRequest.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramQQAppInterface;
@@ -297,7 +297,7 @@ public class VideoSendTaskManager
       if (ShortVideoUploadProcessor.class.isInstance(paramQQAppInterface)) {
         ((ShortVideoUploadProcessor)paramQQAppInterface).a(str1, ((MessageForShortVideo)localObject).videoFileTime);
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new ahgt(this, paramString));
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new ahlk(this, paramString));
       return;
     }
     finally {}

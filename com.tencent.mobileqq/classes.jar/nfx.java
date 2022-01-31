@@ -1,41 +1,38 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.newshare.StoryShare;
-import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
-import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
-import com.tencent.biz.qqstory.newshare.model.ShareData;
-import com.tencent.biz.qqstory.newshare.ui.ShareUI;
-import com.tencent.biz.qqstory.newshare.util.StoryBasicShareUtils;
+import com.tencent.biz.qqstory.comment.FeedLikeLego;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.model.LikeManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class nfx
-  implements OnPrepareShareListener
+  implements Runnable
 {
-  public nfx(StoryShare paramStoryShare) {}
+  public nfx(FeedLikeLego paramFeedLikeLego, UserManager paramUserManager, String paramString, LikeEntry paramLikeEntry) {}
   
-  public void a(ShareData paramShareData)
+  public void run()
   {
-    StoryShare.a(this.a).c();
-    Activity localActivity = StoryShare.a(this.a).a();
-    if (localActivity == null)
+    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
+    LikeEntry localLikeEntry;
+    if (localQQUserUIItem != null)
     {
-      c(paramShareData);
+      localLikeEntry = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry;
+      if (!localQQUserUIItem.isVip) {
+        break label104;
+      }
+    }
+    label104:
+    for (long l = 2L;; l = 0L)
+    {
+      localLikeEntry.role = l;
+      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
+      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryModelLikeManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
+      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      ThreadManager.getUIHandler().post(new nfy(this));
       return;
-    }
-    StoryBasicShareUtils.a(localActivity, paramShareData, StoryShare.a(this.a));
-  }
-  
-  public void b(ShareData paramShareData)
-  {
-    StoryShare.a(this.a).c();
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).c(paramShareData.a);
-    }
-  }
-  
-  public void c(ShareData paramShareData)
-  {
-    StoryShare.a(this.a).c();
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d(paramShareData.a);
     }
   }
 }

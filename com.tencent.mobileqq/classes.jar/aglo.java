@@ -1,33 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.ReportInfo;
+import com.tencent.mobileqq.ar.ScanEntranceDPC;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public final class aglo
-  implements Parcelable.Creator
+public class aglo
+  implements Runnable
 {
-  public ReportInfo a(Parcel paramParcel)
-  {
-    ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localReportInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localReportInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localReportInfo.f = paramParcel.readInt();
-    localReportInfo.d = paramParcel.readInt();
-    localReportInfo.e = paramParcel.readInt();
-    localReportInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localReportInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localReportInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    return localReportInfo;
-  }
+  public aglo(ScanTorchActivity paramScanTorchActivity, int paramInt) {}
   
-  public ReportInfo[] a(int paramInt)
+  public void run()
   {
-    return new ReportInfo[paramInt];
+    if (!ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity)) {
+      if (this.jdField_a_of_type_Int > ScanEntranceDPC.a().c) {
+        break label54;
+      }
+    }
+    label54:
+    for (boolean bool = true;; bool = false)
+    {
+      if (ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) != bool)
+      {
+        ScanTorchActivity.o(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, bool);
+        ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, false);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglo
  * JD-Core Version:    0.7.0.1
  */

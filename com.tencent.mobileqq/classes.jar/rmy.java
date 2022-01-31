@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class rmy
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public rmy(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public rmy(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = (View)paramView.getParent();
-    if ((paramView == null) || (paramView.getTag() == null)) {}
-    do
-    {
-      return;
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8007146", "0X8007146", 0, 0, "", "", "", "");
-    } while (!(paramView.getTag() instanceof SubAccountInfo));
-    this.a.a((SubAccountInfo)paramView.getTag());
+    this.a.finish();
   }
 }
 

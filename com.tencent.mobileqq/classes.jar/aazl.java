@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.statistics.ReportController;
-
-class aazl
-  implements Runnable
+abstract interface aazl
 {
-  aazl(aazj paramaazj) {}
-  
-  public void run()
-  {
-    ReportController.b(null, "dc01440", "", "", "0X800784A", "0X800784A", 0, 0, "", "", "", "");
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

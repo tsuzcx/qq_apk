@@ -1,84 +1,50 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import dov.com.tencent.mobileqq.shortvideo.PendantVersionManager;
-import java.io.File;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
-public final class aoog
-  implements Runnable
+public class aoog
+  implements View.OnTouchListener
 {
-  public void run()
+  public aoog(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str1 = PtvFilterSoLoad.a(VideoEnvironment.a());
-    String str2 = PendantVersionManager.a();
-    File[] arrayOfFile = new File(str1).listFiles();
-    int i = PendantVersionManager.a().length;
-    int j;
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    int m;
-    if ((arrayOfFile != null) && (arrayOfFile.length > i + 2))
-    {
-      j = 2147483647;
-      localObject1 = "unknown";
-      int k = 0;
-      i = 0;
-      if (k < arrayOfFile.length)
-      {
-        if (arrayOfFile[k] == null) {}
-        for (;;)
-        {
-          k += 1;
-          break;
-          localObject2 = arrayOfFile[k].getName();
-          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!PendantVersionManager.a((String)localObject2)))
-          {
-            localObject3 = aopo.a((String)localObject2);
-            m = ((aopp)localObject3).a();
-            if (m == 0) {
-              break label218;
-            }
-            VideoEnvironment.a("[executeClearHistoryPendantCache] errorCodec=" + m + " filename=" + (String)localObject2, null);
-            localObject2 = new File(str1 + (String)localObject2);
-            if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
-              ((File)localObject2).delete();
-            }
-          }
-        }
-        label218:
-        localObject3 = ((aopp)localObject3).a();
-      }
+    if (!this.a.m) {}
+    while (((!this.a.g) && (!this.a.d)) || (paramView.getId() != 2131369009)) {
+      return false;
     }
-    label418:
-    for (;;)
+    switch (paramMotionEvent.getAction())
     {
-      try
-      {
-        m = Integer.parseInt((String)localObject3);
-        if (m >= j) {
-          break label418;
-        }
-        j = m;
-        localObject1 = localObject2;
-        i += 1;
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      if (QLog.isColorLevel()) {
+        QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
       }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        VideoEnvironment.a("[executeClearHistorySOLibFile] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
+      if (!this.a.b.isLongClickable()) {
+        this.a.a.d();
       }
-      break;
-      VideoEnvironment.a("[executeClearHistoryPendantCache] deleteName=" + (String)localObject1 + "  validNumPendantCache=" + i + " leastVersion=" + j, null);
-      if (i >= 2)
-      {
-        localObject1 = new File(str1 + (String)localObject1);
-        if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
-        {
-          VideoEnvironment.a("[executeClearHistoryPendantCache] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
-          ((File)localObject1).delete();
-        }
-      }
-      return;
+      this.a.b.setText(null);
+      return false;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent);
+    }
+    if (this.a.a != null) {
+      this.a.a.c();
+    }
+    if (this.a.b != null) {
+      this.a.b.setText(2131438182);
+    }
+    FlowCameraActivity2.a(this.a, SystemClock.uptimeMillis());
+    FlowCameraActivity2.a(this.a);
+    return false;
   }
 }
 

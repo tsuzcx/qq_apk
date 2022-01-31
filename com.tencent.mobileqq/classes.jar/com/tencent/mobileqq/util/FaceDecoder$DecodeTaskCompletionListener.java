@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.util;
 
-import ajzp;
+import akhd;
 
 public abstract interface FaceDecoder$DecodeTaskCompletionListener
-  extends ajzp
+  extends akhd
 {}
 
 

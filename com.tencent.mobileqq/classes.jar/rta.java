@@ -1,46 +1,32 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.QQOperateTips;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.data.AppShareID;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class rta
-  extends ConfigObserver
+  implements Runnable
 {
-  public rta(BaseChatPie paramBaseChatPie) {}
+  public rta(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  protected void a(String paramString, int paramInt, ArrayList paramArrayList)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
-    }
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != paramInt)) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
-      }
-    }
-    do
+    try
     {
-      do
+      if ((AuthDevVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
       {
-        return;
-        if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
+        AuthDevVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
+        AuthDevVerifyCodeActivity.a(this.a).c(2131435086);
+        AuthDevVerifyCodeActivity.a(this.a).c(true);
+      }
+      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (!AuthDevVerifyCodeActivity.a(this.a).isShowing())) {
+        AuthDevVerifyCodeActivity.a(this.a).show();
+      }
       return;
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips.a(paramArrayList);
-  }
-  
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
-  {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
 }

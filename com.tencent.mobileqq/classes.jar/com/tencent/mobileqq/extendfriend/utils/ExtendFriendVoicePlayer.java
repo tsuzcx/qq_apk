@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.utils;
 
-import acjw;
-import acjx;
+import acsd;
+import acse;
 import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.os.Handler;
@@ -17,7 +17,7 @@ import java.io.File;
 
 public class ExtendFriendVoicePlayer
 {
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new acjw(this);
+  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new acsd(this);
   private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private ExtendFriendVoicePlayer.ExtendFriendVoicePlayerListener jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendVoicePlayer$ExtendFriendVoicePlayerListener;
@@ -56,7 +56,7 @@ public class ExtendFriendVoicePlayer
   public void a(String paramString)
   {
     if (!a(paramString)) {
-      ThreadManager.executeOnFileThread(new acjx(this, paramString));
+      ThreadManager.executeOnFileThread(new acse(this, paramString));
     }
   }
   

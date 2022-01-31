@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.qphone.base.util.QLog;
 
-class yit
+public class yit
   implements Runnable
 {
-  yit(yis paramyis, String paramString) {}
+  public yit(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
   public void run()
   {
-    TroopListAdapter2.a(this.jdField_a_of_type_Yis.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2, this.jdField_a_of_type_Yis.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$TroopListItem, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Yis.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListInnerFrame", 2, "read troop members from database before updating data from server");
+    }
+    TroopMemberListInnerFrame.a(this.a, this.a.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yit
  * JD-Core Version:    0.7.0.1
  */

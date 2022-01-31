@@ -1,28 +1,51 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.Pic_list;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Hashtable;
 
 public class lhk
-  implements ActionSheet.OnButtonClickListener
+  extends Handler
 {
-  public lhk(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public lhk(ReadInJoyUploadAvatarActivity paramReadInJoyUploadAvatarActivity, Looper paramLooper, String paramString)
   {
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    Intent localIntent = new Intent();
+    Bundle localBundle = new Bundle();
+    switch (paramMessage.what)
     {
+    default: 
+      localBundle.putString("msg", "上传失败");
+      localBundle.putInt("retCode", 3);
+      localIntent.putExtra("Bundle", localBundle);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyUploadAvatarActivity.setResult(-1, localIntent);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyUploadAvatarActivity.finish();
       return;
-      PublicAccountReportUtils.a(null, "", "0X80081D2", "0X80081D2", 0, 0, "", "", "", VideoReporter.a(ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity)), false);
-      ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity, 8);
-      ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity);
-      ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity);
+      paramMessage = (TroopBarPublishActivity.Pic_list)TroopBarUtils.a.get(this.jdField_a_of_type_JavaLangString);
+      if (paramMessage != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(ReadInJoyUploadAvatarActivity.jdField_a_of_type_JavaLangString, 2, "pic=" + paramMessage.url);
+        }
+        localBundle.putString("url", paramMessage.url);
+      }
+      localBundle.putInt("retCode", 0);
+      localBundle.putString("msg", "上传成功");
+      localIntent.putExtra("Bundle", localBundle);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyUploadAvatarActivity.setResult(-1, localIntent);
     }
   }
 }

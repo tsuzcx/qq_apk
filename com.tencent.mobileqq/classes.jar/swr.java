@@ -1,41 +1,29 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.activity.FriendProfileImageModel;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheetHelper;
 
 public class swr
   implements View.OnClickListener
 {
-  public swr(Leba paramLeba) {}
+  public swr(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
   public void onClick(View paramView)
   {
-    try
+    if (paramView.getId() == 2131362745)
     {
-      int i = ((Integer)paramView.getTag(-1)).intValue();
-      if (i > -1)
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a();
+      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
       {
-        LebaViewItem localLebaViewItem = (LebaViewItem)this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.getItem(i);
-        if ((localLebaViewItem != null) && (localLebaViewItem.a != null) && (localLebaViewItem.a.uiResId == 3050L)) {
-          StoryReportor.a("dynamic", "clk_story", 0, ((TroopRedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).c(), new String[0]);
-        }
+        ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.a, null);
+        localActionSheet.a(2131435901, 3);
+        localActionSheet.c(2131433029);
+        localActionSheet.a(new sws(this, paramView, localActionSheet));
+        localActionSheet.show();
       }
     }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        QLog.w("Q.lebatab.leba", 2, "" + localNullPointerException);
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener.a(this.a.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView, paramView, ((Integer)paramView.getTag(-1)).intValue(), 0L);
   }
 }
 

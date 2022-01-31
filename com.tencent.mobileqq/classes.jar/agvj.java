@@ -1,34 +1,33 @@
-import android.database.Cursor;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.qcall.QCallProxy;
-import com.tencent.mobileqq.utils.SecurityUtile;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
+import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
 
 public class agvj
   implements Runnable
 {
-  public agvj(QCallProxy paramQCallProxy, String paramString) {}
+  public agvj(PhotoViewForShopping paramPhotoViewForShopping, ProfileCardInfo paramProfileCardInfo) {}
   
   public void run()
   {
-    Cursor localCursor = QCallProxy.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy, this.jdField_a_of_type_JavaLangString);
-    if (localCursor != null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null))
     {
-      int i = localCursor.getColumnIndex("name");
-      while (localCursor.moveToNext())
+      ProfileShoppingPhotoInfo localProfileShoppingPhotoInfo = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+      if ((localProfileShoppingPhotoInfo != null) && (PhotoViewForShopping.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping) != null))
       {
-        String str = SecurityUtile.a(localCursor.getString(i));
-        int j = QCallProxy.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy, str);
-        if (j != -1) {
-          QCallProxy.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy).a(this.jdField_a_of_type_JavaLangString, j, str, null, null, 2, null);
-        }
+        Message localMessage = Message.obtain();
+        localMessage.what = 200;
+        localMessage.obj = localProfileShoppingPhotoInfo;
+        PhotoViewForShopping.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping).sendMessage(localMessage);
       }
-      localCursor.close();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agvj
  * JD-Core Version:    0.7.0.1
  */

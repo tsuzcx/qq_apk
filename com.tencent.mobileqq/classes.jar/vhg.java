@@ -1,27 +1,18 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView.BezierEvaluator;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.PAMultiItemBuilder;
 
 public class vhg
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public float a;
-  public int a;
-  public ValueAnimator a;
-  public SixCombolEffectView.BezierEvaluator a;
-  public boolean a;
-  public float b;
+  public long a;
+  public String a;
   public int b;
-  public ValueAnimator b;
-  public boolean b;
+  public String b;
   public int c;
-  public ValueAnimator c;
+  public String c;
   public int d;
-  public ValueAnimator d;
-  public int e;
-  public int f;
-  public int g;
   
-  public vhg(SixCombolEffectView paramSixCombolEffectView) {}
+  public vhg(PAMultiItemBuilder paramPAMultiItemBuilder) {}
 }
 
 

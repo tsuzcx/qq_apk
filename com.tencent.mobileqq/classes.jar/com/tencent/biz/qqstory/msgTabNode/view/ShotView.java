@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+@Deprecated
 public class ShotView
   extends LinearLayout
 {
@@ -18,9 +19,9 @@ public class ShotView
   public ShotView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(2130970783, this);
-    ((TextView)findViewById(2131363378)).setText("拍摄");
-    ((ImageView)findViewById(2131371907)).setImageResource(2130843573);
+    LayoutInflater.from(paramContext).inflate(2130970800, this);
+    ((TextView)findViewById(2131363397)).setText("拍摄");
+    ((ImageView)findViewById(2131371915)).setImageResource(2130843609);
   }
 }
 

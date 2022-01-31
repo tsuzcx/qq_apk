@@ -1,23 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.AuthorityLoginView;
+import android.os.Handler;
+import com.tencent.mobileqq.widget.CircleProgressView;
 
 public class alao
-  implements View.OnClickListener
+  implements Runnable
 {
-  public alao(AuthorityLoginView paramAuthorityLoginView) {}
+  private alao(CircleProgressView paramCircleProgressView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof String))) {
-      this.a.b((String)paramView);
+    if (CircleProgressView.a(this.a)) {
+      CircleProgressView.a(this.a, CircleProgressView.a(this.a) + CircleProgressView.b(this.a));
+    }
+    for (;;)
+    {
+      CircleProgressView.a(this.a, CircleProgressView.a(this.a) % 360);
+      CircleProgressView.a(this.a).postDelayed(this, 16L);
+      this.a.invalidate();
+      return;
+      CircleProgressView.a(this.a, CircleProgressView.a(this.a) + 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alao
  * JD-Core Version:    0.7.0.1
  */

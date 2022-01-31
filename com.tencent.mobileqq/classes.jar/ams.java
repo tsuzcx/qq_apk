@@ -1,14 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.qq.im.poi.LbsPackListActivity;
-import com.tencent.widget.HorizontalListView.OnScrollLinstener;
 
 public class ams
-  implements HorizontalListView.OnScrollLinstener
+  implements View.OnClickListener
 {
   public ams(LbsPackListActivity paramLbsPackListActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a();
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2131034143);
   }
 }
 

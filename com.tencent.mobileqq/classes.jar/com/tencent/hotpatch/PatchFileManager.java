@@ -1,8 +1,7 @@
 package com.tencent.hotpatch;
 
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.hotpatch.config.BasePatchConfig;
-import com.tencent.hotpatch.config.DexPatchConfigArtAfterN;
+import com.tencent.hotpatch.config.PatchConfig;
 import com.tencent.hotpatch.config.PatchConfigManager;
 import com.tencent.hotpatch.utils.PatchCommonUtil;
 import com.tencent.hotpatch.utils.PatchReporter;
@@ -16,9 +15,9 @@ public class PatchFileManager
 {
   private static void a()
   {
-    BasePatchConfig localBasePatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "Native");
-    if (localBasePatchConfig != null) {
-      UpdateManager.a(localBasePatchConfig.a());
+    PatchConfig localPatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "Native");
+    if (localPatchConfig != null) {
+      UpdateManager.a(localPatchConfig.e());
     }
   }
   
@@ -28,17 +27,17 @@ public class PatchFileManager
     a();
   }
   
-  public static boolean a(DexPatchConfigArtAfterN paramDexPatchConfigArtAfterN)
+  public static boolean a(PatchConfig paramPatchConfig)
   {
     int j = 701;
-    String str1 = "androidN7z_" + paramDexPatchConfigArtAfterN.c;
-    Object localObject = PatchCommonUtil.a("dex", str1);
-    String str2 = PatchCommonUtil.a("dex", "");
+    String str1 = paramPatchConfig.c();
+    Object localObject = PatchCommonUtil.a(str1);
+    String str2 = PatchCommonUtil.a("");
     try
     {
       i = LzmaUtils.a(BaseApplicationImpl.sApplication, (String)localObject, str2);
       if (i != 0) {
-        break label160;
+        break label136;
       }
       i = 700;
     }
@@ -46,7 +45,7 @@ public class PatchFileManager
     {
       for (;;)
       {
-        label160:
+        label136:
         int i = 702;
         QLog.d("PatchLogTag", 1, "PatchFileManager un7zNPatchFile throwable=" + localThrowable);
         continue;
@@ -64,8 +63,8 @@ public class PatchFileManager
     }
     if (700 == i)
     {
-      localObject = new File(PatchCommonUtil.a("dex", paramDexPatchConfigArtAfterN.c));
-      if ((((File)localObject).exists()) && (((File)localObject).length() == paramDexPatchConfigArtAfterN.b)) {
+      localObject = new File(PatchCommonUtil.a(paramPatchConfig.b()));
+      if ((((File)localObject).exists()) && (((File)localObject).length() == paramPatchConfig.b())) {
         i = 700;
       }
     }
@@ -85,14 +84,16 @@ public class PatchFileManager
   private static void b(QQAppInterface paramQQAppInterface)
   {
     int j = 1;
-    BasePatchConfig localBasePatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "dex");
+    PatchConfig localPatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "dex");
+    String str;
     File localFile;
     int i;
-    if ((localBasePatchConfig != null) && (localBasePatchConfig.a(BaseApplicationImpl.sApplication, false)))
+    if ((localPatchConfig != null) && (localPatchConfig.a(BaseApplicationImpl.sApplication, false)))
     {
-      localFile = new File(PatchCommonUtil.a("dex", localBasePatchConfig.c));
-      if ((localFile.exists()) && (localFile.length() == localBasePatchConfig.b)) {
-        break label105;
+      str = localPatchConfig.b();
+      localFile = new File(PatchCommonUtil.a(str));
+      if ((localFile.exists()) && (localFile.length() == localPatchConfig.b())) {
+        break label107;
       }
       i = j;
       if (localFile.exists())
@@ -104,11 +105,11 @@ public class PatchFileManager
     for (;;)
     {
       if (i != 0) {
-        ((PatchDownloadManager)paramQQAppInterface.getManager(119)).a(0, "dex", localBasePatchConfig);
+        ((PatchDownloadManager)paramQQAppInterface.getManager(119)).a(0, "dex", localPatchConfig);
       }
       return;
-      label105:
-      if (!PatchChecker.a("dex", localBasePatchConfig.c))
+      label107:
+      if (!PatchChecker.a("dex", str))
       {
         localFile.delete();
         i = j;

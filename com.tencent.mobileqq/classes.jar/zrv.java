@@ -1,28 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BadgeUtils;
 
 public class zrv
-  extends TroopObserver
+  implements Runnable
 {
-  private zrv(UpdateTroop paramUpdateTroop) {}
+  public zrv(QQAppInterface paramQQAppInterface) {}
   
-  protected void a(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
-    }
-    if (!paramBoolean)
+    if ((!this.a.isLogin()) || (this.a.l)) {}
+    for (int i = 0;; i = this.a.f())
     {
-      this.a.a(6);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQAppInterface", 2, String.format("unread: %d islogin: %s isReleased: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.a.isLogin()), Boolean.valueOf(this.a.l) }));
+      }
+      BadgeUtils.a(QQAppInterface.l(this.a), i);
       return;
     }
-    UpdateTroop.a(this.a).a.edit().putBoolean("isTrooplistok", true).commit();
-    UpdateTroop.b(this.a).a(3, true, Integer.valueOf(2));
-    this.a.a(7);
   }
 }
 

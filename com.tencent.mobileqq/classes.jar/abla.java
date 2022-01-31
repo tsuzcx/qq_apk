@@ -1,27 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Pair;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
+import com.tencent.mobileqq.armap.ItemInfo;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 
-public class abla
-  extends Handler
+class abla
+  implements Runnable
 {
-  public abla(BubbleInterActiveAnim paramBubbleInterActiveAnim, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  abla(abky paramabky, ItemInfo paramItemInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = (Pair)paramMessage.obj;
-    this.a.b(((Long)paramMessage.first).longValue(), ((Long)paramMessage.second).longValue());
+    ShopScanActivity.a(this.jdField_a_of_type_Abky.a, this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo);
   }
 }
 

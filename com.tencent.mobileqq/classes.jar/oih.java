@@ -1,17 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
 
-public class oih
-  implements ValueAnimator.AnimatorUpdateListener
+public final class oih
+  implements Parcelable.Creator
 {
-  public oih(FaceLayer.FaceItem paramFaceItem) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public EditTakeGifSource a(Parcel paramParcel)
   {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.g();
+    return new EditTakeGifSource(paramParcel);
+  }
+  
+  public EditTakeGifSource[] a(int paramInt)
+  {
+    return new EditTakeGifSource[paramInt];
   }
 }
 

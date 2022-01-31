@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import aici;
+import aihc;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.mobileqq.shortvideo.common.Observable;
@@ -25,7 +25,7 @@ public class CameraProxy$CameraPreviewObservable
     if (this.a == null) {
       return;
     }
-    this.a.post(new aici(this, paramInt, paramVarArgs));
+    this.a.post(new aihc(this, paramInt, paramVarArgs));
   }
 }
 

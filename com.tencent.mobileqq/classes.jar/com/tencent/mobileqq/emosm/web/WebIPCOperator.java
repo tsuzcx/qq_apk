@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emosm.web;
 
-import accn;
-import acco;
-import accp;
-import accq;
-import accr;
-import acct;
+import acko;
+import ackp;
+import ackq;
+import ackr;
+import acks;
+import acku;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -22,7 +22,7 @@ public class WebIPCOperator
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private Client jdField_a_of_type_ComTencentMobileqqEmosmClient = new Client();
-  private EmojiIPCAlarmer.TimeoutObserver jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer$TimeoutObserver = new accr(this);
+  private EmojiIPCAlarmer.TimeoutObserver jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer$TimeoutObserver = new acks(this);
   EmojiIPCAlarmer jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer = null;
   private Vector jdField_a_of_type_JavaUtilVector = new Vector();
   private CopyOnWriteArrayList jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
@@ -85,38 +85,38 @@ public class WebIPCOperator
     }
   }
   
-  public acct a(int paramInt)
+  public acku a(int paramInt)
   {
     synchronized (this.jdField_a_of_type_JavaUtilVector)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
       while (localIterator.hasNext())
       {
-        acct localacct = (acct)localIterator.next();
-        if (localacct.jdField_a_of_type_Int == paramInt)
+        acku localacku = (acku)localIterator.next();
+        if (localacku.jdField_a_of_type_Int == paramInt)
         {
           if (QLog.isColorLevel()) {
             QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "remove req queue seq:" + paramInt);
           }
-          this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a(localacct.jdField_a_of_type_JavaLangRunnable);
-          this.jdField_a_of_type_JavaUtilVector.remove(localacct);
+          this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer.a(localacku.jdField_a_of_type_JavaLangRunnable);
+          this.jdField_a_of_type_JavaUtilVector.remove(localacku);
           if (QLog.isColorLevel()) {
             QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "after remove req queue size:" + this.jdField_a_of_type_JavaUtilVector.size());
           }
-          return localacct;
+          return localacku;
         }
       }
       return null;
     }
   }
   
-  public acct a(Bundle paramBundle)
+  public acku a(Bundle paramBundle)
   {
     synchronized (this.jdField_a_of_type_JavaUtilVector)
     {
       int i = this.jdField_a_of_type_Int;
       this.jdField_a_of_type_Int = (i + 1);
-      paramBundle = new acct(i, paramBundle);
+      paramBundle = new acku(i, paramBundle);
       e();
       if (QLog.isColorLevel()) {
         QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "add to req queue seq: " + paramBundle.jdField_a_of_type_Int);
@@ -148,7 +148,7 @@ public class WebIPCOperator
       {
         return;
         localObject = a(paramBundle);
-      } while ((localObject == null) || ((this.jdField_a_of_type_ComTencentMobileqqEmosmClient != null) && (this.jdField_a_of_type_ComTencentMobileqqEmosmClient.onReqToServer(((acct)localObject).jdField_a_of_type_AndroidOsBundle))));
+      } while ((localObject == null) || ((this.jdField_a_of_type_ComTencentMobileqqEmosmClient != null) && (this.jdField_a_of_type_ComTencentMobileqqEmosmClient.onReqToServer(((acku)localObject).jdField_a_of_type_AndroidOsBundle))));
       paramBundle = a(paramBundle.getInt("seq"));
       if (QLog.isColorLevel()) {
         QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "sendServiceIpcReq unbind fail seq:" + this.jdField_a_of_type_Int);
@@ -157,7 +157,7 @@ public class WebIPCOperator
     Object localObject = new Bundle();
     a((Bundle)localObject, 1002);
     paramBundle.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-    a(new accn(this, paramBundle));
+    a(new acko(this, paramBundle));
   }
   
   public void a(Bundle paramBundle, int paramInt)
@@ -210,7 +210,7 @@ public class WebIPCOperator
       Bundle localBundle = new Bundle();
       a(localBundle, 1002);
       paramBundle.putBundle("response", localBundle);
-      a(new acco(this, paramBundle));
+      a(new ackp(this, paramBundle));
     }
   }
   
@@ -241,7 +241,7 @@ public class WebIPCOperator
         break label74;
       }
       a(paramBundle, 1000);
-      a(new accp(this, paramBundle));
+      a(new ackq(this, paramBundle));
     }
     label74:
     do
@@ -250,7 +250,7 @@ public class WebIPCOperator
       localObject = paramBundle.getString("cmd");
     } while ((localObject == null) || ((!((String)localObject).equals("startDownloadEmoji")) && (!((String)localObject).equals("startDownloadTheme")) && (!((String)localObject).equals("stopdownload")) && (!((String)localObject).equals("openEquipmentLock")) && (!((String)localObject).equals("card_setSummaryCard")) && (!((String)localObject).equals("card_getVipInfo")) && (!((String)localObject).equals("closeWeb")) && (!((String)localObject).equals("setMobileResult")) && (!((String)localObject).equals("setWaitingResponse")) && (!((String)localObject).equals("openEmojiMall")) && (!((String)localObject).equals("openProfileCard")) && (!((String)localObject).equals("close_version")) && (!((String)localObject).equals("openEmojiDetail")) && (!((String)localObject).equals("openFontSetting")) && (!((String)localObject).equals("startDownloadColorRing")) && (!((String)localObject).equals("stopDownloadColorRing")) && (!((String)localObject).equals("funcall_download")) && (!((String)localObject).equals("funcall_set")) && (!((String)localObject).equals("getA2")) && (!((String)localObject).equals("openDevLock")) && (!((String)localObject).equals("queryDevLockStatus")) && (!((String)localObject).equals("ipc_funnypic_add")) && (!((String)localObject).equals("ipc_funnypic_add")) && (!((String)localObject).equals("ipc_video_isinstalled")) && (!((String)localObject).equals("ipc_video_install_plugin")) && (!((String)localObject).equals("gamecenter_delaydownload")) && (!((String)localObject).equals("ipc_apollo_changerole")) && (!((String)localObject).equals("ipc_apollo_preview")) && (!((String)localObject).equals("ipc_apollo_check_avatar_res")) && (!((String)localObject).equals("ipc_apollo_preview_audio_action")) && (!((String)localObject).equals("ipc_apollo_preview_action")) && (!((String)localObject).equals("IPC_APOLLO_DOWNLOAD_GAME")) && (!((String)localObject).equals("ipc_apollo_downloadImageOnFrame")) && (!((String)localObject).equals("emojiStickerRecall")) && (!((String)localObject).equals("ipc_cmd_get_team_work_url")) && (!((String)localObject).equals("emojiStickerRecall")) && (!((String)localObject).equals("ipc_cmd_apollo_exec_script"))));
     a(paramBundle, 1000);
-    a(new accq(this, paramBundle));
+    a(new ackr(this, paramBundle));
   }
   
   public void d(Bundle paramBundle)

@@ -1,11 +1,11 @@
 package cooperation.qzone.share;
 
-import amyx;
 import android.content.Context;
 import android.text.Editable;
 import android.text.Editable.Factory;
 import android.text.TextUtils;
 import android.widget.EditText;
+import angm;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
 import com.tencent.mobileqq.text.QQTextBuilder;
@@ -98,7 +98,7 @@ public class InputViewPanelControl
   {
     try
     {
-      paramContext = new SystemEmoticonPanel(paramContext, new amyx(paramEditText));
+      paramContext = new SystemEmoticonPanel(paramContext, new angm(paramEditText));
       return paramContext;
     }
     catch (Throwable paramContext)

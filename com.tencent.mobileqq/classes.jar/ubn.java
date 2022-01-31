@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.MessageObserver;
 
-class ubn
-  implements Runnable
+public class ubn
+  extends MessageObserver
 {
-  ubn(ubm paramubm, boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2) {}
+  public ubn(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    TroopMemberListActivity.a(this.jdField_a_of_type_Ubm.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "", "");
+    this.a.c();
+  }
+  
+  protected void b()
+  {
+    this.a.c();
   }
 }
 

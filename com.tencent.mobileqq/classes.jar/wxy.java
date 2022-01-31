@@ -1,20 +1,14 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
-public class wxy
-  extends QZoneObserver
+class wxy
+  implements Runnable
 {
-  protected void b(boolean paramBoolean, Bundle paramBundle)
+  wxy(wxx paramwxx) {}
+  
+  public void run()
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof get_albumlist_num_rsp))) {
-      PhotoListActivity.f = ((get_albumlist_num_rsp)paramBundle).album_num;
-    }
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(PhotoListActivity.a());
+    AvatarPendantActivity.a(this.a.a, this.a.a.a.a);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas;
 
-import akii;
-import akij;
+import akpx;
+import akpy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.drawable.ColorDrawable;
@@ -30,7 +30,7 @@ import org.json.JSONObject;
 public class VipGrayConfigHelper
 {
   private static VipGrayConfigHelper jdField_a_of_type_ComTencentMobileqqVasVipGrayConfigHelper;
-  private static final Runnable jdField_a_of_type_JavaLangRunnable = new akii();
+  private static final Runnable jdField_a_of_type_JavaLangRunnable = new akpx();
   private static final List jdField_a_of_type_JavaUtilList;
   private static final Map jdField_a_of_type_JavaUtilMap;
   private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
@@ -305,7 +305,7 @@ public class VipGrayConfigHelper
       localURLDrawable.restartDownload();
     }
     paramURLImageView.setBackgroundDrawable(localURLDrawable);
-    paramURLImageView.setURLDrawableDownListener(new akij(this, paramString, paramURLImageView));
+    paramURLImageView.setURLDrawableDownListener(new akpy(this, paramString, paramURLImageView));
   }
   
   public void a(VipGrayConfigHelper.VipGrayConfigListener paramVipGrayConfigListener)
@@ -400,7 +400,7 @@ public class VipGrayConfigHelper
         break label434;
       }
       str = paramJSONObject.getString("minVersion");
-      if ((TextUtils.isEmpty(str)) || (IndividuationConfigInfo.a(str, "7.6.3.3565"))) {
+      if ((TextUtils.isEmpty(str)) || (IndividuationConfigInfo.a(str, "7.6.8.3615"))) {
         break label434;
       }
       i = 0;
@@ -437,7 +437,7 @@ public class VipGrayConfigHelper
         if (!TextUtils.isEmpty(str))
         {
           j = i;
-          if (!IndividuationConfigInfo.a("7.6.3.3565", str)) {
+          if (!IndividuationConfigInfo.a("7.6.8.3615", str)) {
             j = 0;
           }
         }
@@ -516,7 +516,7 @@ public class VipGrayConfigHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VipGrayConfigHelper
  * JD-Core Version:    0.7.0.1
  */

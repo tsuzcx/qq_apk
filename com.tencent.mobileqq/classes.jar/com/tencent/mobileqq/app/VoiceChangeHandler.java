@@ -42,7 +42,7 @@ public class VoiceChangeHandler
     VipVoiceChange.voiceChangeReq localvoiceChangeReq = new VipVoiceChange.voiceChangeReq();
     localvoiceChangeReq.int32_platform.set(109);
     localvoiceChangeReq.int32_sub_cmd.set(1);
-    localvoiceChangeReq.str_qq_version.set("7.6.3");
+    localvoiceChangeReq.str_qq_version.set("7.6.8");
     VipVoiceChange.subCmd0x1ReqAuth localsubCmd0x1ReqAuth = new VipVoiceChange.subCmd0x1ReqAuth();
     localsubCmd0x1ReqAuth.int32_item_id.set(paramInt2);
     localvoiceChangeReq.msg_subcmd0x1_req_auth.set(localsubCmd0x1ReqAuth);

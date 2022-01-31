@@ -19,6 +19,7 @@ public class ImageLoader$Options
   public int arg1;
   public int arg2;
   public boolean disableHitRateReport = false;
+  @Public
   public String errCode;
   public ImageProcessor extraProcessor;
   public String fileRootPath = null;

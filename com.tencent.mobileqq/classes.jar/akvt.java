@@ -1,34 +1,60 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.report.lp.LpReportManager;
-import cooperation.qzone.util.QZLog;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.common.util.Util;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
 public class akvt
   implements Runnable
 {
-  public akvt(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
+  public akvt(SwiftBrowserCookieMonster paramSwiftBrowserCookieMonster, AppRuntime paramAppRuntime, Intent paramIntent) {}
   
   public void run()
   {
-    try
+    if (this.jdField_a_of_type_MqqAppAppRuntime == null)
     {
-      if (!TextUtils.isEmpty(this.a.a.a.a))
+      ??? = BaseApplicationImpl.getApplication().getRuntime();
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.b.get() == 2)
       {
-        Object localObject = this.a.a.a.a;
-        if (this.a.a.a.a.startsWith("+")) {
-          localObject = this.a.a.a.a.substring(1);
+        if (??? != null)
+        {
+          long l = System.currentTimeMillis();
+          BrowserAppInterface.a(((AppRuntime)???).getAccount());
+          if (QLog.isColorLevel()) {
+            QLog.i("SwiftBrowserCookieMonster", 2, "SwiftBrowserCookieMonster: removeLastUinCookies,cost=" + (System.currentTimeMillis() - l));
+          }
         }
-        localObject = new LpReportInfo_pf00064(699, 2, Long.valueOf((String)localObject).longValue());
-        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.c();
+        if (QLog.isColorLevel()) {
+          QLog.i("SwiftBrowserCookieMonster", 2, "start set all cookies " + Util.b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.l, new String[0]));
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.a(this.jdField_a_of_type_AndroidContentIntent, (AppRuntime)???), true);
+        if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.b.compareAndSet(2, 3)) {}
       }
-      return;
     }
-    catch (Exception localException)
+    for (;;)
     {
-      QZLog.e("QzoneReport", "makeOrRefreshQZone", localException);
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.b)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.b.notifyAll();
+        if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.a > 0L)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.g();
+          QLog.e("SwiftBrowserCookieMonster", 1, "set cookie error :" + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.a);
+          Util.b("Web_qqbrowser_check_and_set_cookies");
+          new Handler(Looper.getMainLooper()).post(new akvu(this));
+          return;
+          ??? = this.jdField_a_of_type_MqqAppAppRuntime;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("SwiftBrowserCookieMonster", 2, "set cookie success: now start post handle callback");
+      }
     }
   }
 }

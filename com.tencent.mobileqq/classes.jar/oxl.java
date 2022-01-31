@@ -1,20 +1,34 @@
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
+import com.tencent.biz.qrcode.util.QRCard;
+import java.util.HashMap;
 
-class oxl
-  extends oxo
+public class oxl
+  implements View.OnClickListener
 {
-  oxl(oxe paramoxe, VideoCombineHelper.Callback paramCallback, String paramString)
-  {
-    super(paramoxe.a);
-  }
+  public oxl(QRCardActivity paramQRCardActivity) {}
   
-  public void b(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof Integer)) {
+      if (((Integer)localObject).intValue() != 0) {
+        break label101;
+      }
     }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
+    label101:
+    for (String str = (String)((TextView)paramView.findViewById(2131363062)).getText();; str = null)
+    {
+      if (((Integer)localObject).intValue() == 1)
+      {
+        this.a.a((String)this.a.a.d.get(this.a.h));
+        return;
+      }
+      QRCardActivity.a(this.a, paramView.getContext(), ((Integer)localObject).intValue(), null, str);
+      return;
+    }
   }
 }
 

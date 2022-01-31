@@ -1,32 +1,16 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult;
-import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult.ARCircleResult;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameTouchView;
 
-public class aagb
+class aagb
   implements Runnable
 {
-  public aagb(AREngine paramAREngine) {}
+  aagb(aafz paramaafz, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2))
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.a != 0) {
-        break label64;
-      }
-      if (AREngine.a(this.a) != null) {
-        AREngine.b(this.a, 3);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Long = 0L;
-      return;
-      label64:
-      if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.c == 0) {
-        AREngine.g(this.a);
-      }
-    }
+    ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_Aafz.a).setIsShowExtend(this.jdField_a_of_type_Boolean);
+    ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_Aafz.a).setClickable(true);
+    ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_Aafz.a).setVisibility(0);
   }
 }
 

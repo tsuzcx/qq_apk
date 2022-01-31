@@ -1,17 +1,21 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.DoodleOpListener;
+import android.os.Handler;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-public class anzd
-  implements DoodleOpController.DoodleOpListener
+class anzd
+  implements VideoCompositeHelper.VideoCompositeCallBack
 {
-  public anzd(DoodleLayout paramDoodleLayout) {}
+  anzd(anzc paramanzc) {}
   
-  public void a()
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (this.a.a != null) {
-      this.a.a.n();
+    this.a.a.b();
+    if (paramInt == 0)
+    {
+      this.a.a.a.sendEmptyMessage(3);
+      return;
     }
+    this.a.a.a.sendEmptyMessage(5);
   }
 }
 

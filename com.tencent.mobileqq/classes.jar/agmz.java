@@ -1,19 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.portal.ShareHelper;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-class agmz
+public class agmz
   implements Runnable
 {
-  agmz(agmy paramagmy, Bitmap paramBitmap) {}
+  public agmz(ScanTorchActivity paramScanTorchActivity) {}
   
   public void run()
   {
-    ShareHelper.a(this.jdField_a_of_type_Agmy.jdField_a_of_type_ComTencentMobileqqPortalShareHelper, this.jdField_a_of_type_Agmy.jdField_a_of_type_Int, this.jdField_a_of_type_Agmy.b, this.jdField_a_of_type_Agmy.c, this.jdField_a_of_type_Agmy.d, this.jdField_a_of_type_Agmy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    ScanTorchActivity.z(this.a);
+    ScanTorchActivity.c(this.a, true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmz
  * JD-Core Version:    0.7.0.1
  */

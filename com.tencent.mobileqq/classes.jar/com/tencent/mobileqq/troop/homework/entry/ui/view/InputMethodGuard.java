@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.entry.ui.view;
 
-import ajie;
+import ajpq;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -27,7 +27,7 @@ public class InputMethodGuard
   public InputMethodGuard(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    getViewTreeObserver().addOnGlobalLayoutListener(new ajie(this, null));
+    getViewTreeObserver().addOnGlobalLayoutListener(new ajpq(this, null));
   }
   
   public boolean a()
@@ -42,7 +42,7 @@ public class InputMethodGuard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard
  * JD-Core Version:    0.7.0.1
  */

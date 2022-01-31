@@ -45,7 +45,7 @@ public class MultiPstnCallbackFinishDialogActivity
       QLog.d(jdField_a_of_type_JavaLangString, 2, "onCreate");
     }
     super.setTheme(2131624599);
-    super.setContentView(2130969294);
+    super.setContentView(2130969292);
     super.onCreate(paramBundle);
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "onCreate");
@@ -70,7 +70,7 @@ public class MultiPstnCallbackFinishDialogActivity
       return;
     }
     int i = (int)(UITools.a(super.getApplicationContext()) * 0.75F);
-    paramBundle = (RelativeLayout)super.findViewById(2131365980);
+    paramBundle = (RelativeLayout)super.findViewById(2131365985);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramBundle.getLayoutParams();
     localLayoutParams.width = i;
     paramBundle.setLayoutParams(localLayoutParams);
@@ -112,7 +112,7 @@ public class MultiPstnCallbackFinishDialogActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.av.ui.MultiPstnCallbackFinishDialogActivity
  * JD-Core Version:    0.7.0.1
  */

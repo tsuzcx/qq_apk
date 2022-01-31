@@ -1,23 +1,15 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
+import java.util.TimerTask;
 
 public class mjr
-  implements Animator.AnimatorListener
+  extends TimerTask
 {
-  public mjr(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  public mjr(VideoVolumeControl paramVideoVolumeControl) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
+    VideoVolumeControl.a(this.a, true);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

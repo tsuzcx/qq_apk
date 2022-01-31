@@ -1,21 +1,33 @@
-import com.tencent.mobileqq.app.PhoneUnityBannerData;
-import com.tencent.mobileqq.app.PhoneUnityManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class zjk
-  implements Runnable
+  implements INetInfoHandler
 {
-  public zjk(PhoneUnityManager paramPhoneUnityManager) {}
+  public zjk(DataLineHandler paramDataLineHandler) {}
   
-  public void run()
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MobileUnityManager", 4, "load phone local data");
-    }
-    PhoneUnityBannerData localPhoneUnityBannerData = this.a.a();
-    ((SecSvcHandler)this.a.a.a(34)).a(9, true, localPhoneUnityBannerData);
+    this.a.c();
+  }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.c();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.d();
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.d();
   }
 }
 

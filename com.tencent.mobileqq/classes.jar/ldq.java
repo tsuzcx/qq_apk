@@ -1,16 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.qphone.base.util.QLog;
 
 public class ldq
-  implements Runnable
+  implements TroopMemberApiClient.Callback
 {
-  public ldq(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public ldq(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    ReadInJoyGlobalReporter.a().a(this.a.app, NetConnInfoCenter.getServerTimeMillis(), ReadInJoyUtils.e(), ReadInJoyUtils.d);
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
+      }
+      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
+        this.a.jdField_a_of_type_JavaLangString = null;
+      }
+      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
+    }
   }
 }
 

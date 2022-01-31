@@ -23,7 +23,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.net.MalformedURLException;
 import java.net.URL;
-import kzp;
+import lby;
 
 public class PubAccountTipsManager
   implements View.OnClickListener
@@ -54,14 +54,14 @@ public class PubAccountTipsManager
     {
       this.jdField_a_of_type_AndroidViewView = new TextView(this.jdField_a_of_type_AndroidContentContext);
       ((TextView)this.jdField_a_of_type_AndroidViewView).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492969));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130843947);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844013);
       ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(16);
       this.jdField_a_of_type_AndroidViewView.setTag(jdField_a_of_type_JavaLangString);
       ((TextView)this.jdField_a_of_type_AndroidViewView).setTextSize(this.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131689475));
     }
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
-    localLayoutParams.addRule(3, 2131363508);
+    localLayoutParams.addRule(3, 2131363527);
     localLayoutParams.addRule(11);
     localLayoutParams.rightMargin = DisplayUtil.b(this.jdField_a_of_type_AndroidContentContext, 20.0F);
     ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString);
@@ -109,7 +109,7 @@ public class PubAccountTipsManager
       Object localObject1 = null;
       try
       {
-        localObject2 = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131363492);
+        localObject2 = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131363511);
         localObject1 = localObject2;
       }
       catch (Exception localException)
@@ -127,7 +127,7 @@ public class PubAccountTipsManager
       localObject2 = new RelativeLayout.LayoutParams(i, i);
       ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
       ((RelativeLayout.LayoutParams)localObject2).rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131363508);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131363527);
       ((RelativeLayout.LayoutParams)localObject2).addRule(11);
       this.b.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     }
@@ -147,7 +147,7 @@ public class PubAccountTipsManager
         paramString1.restartDownload();
         this.b.setVisibility(8);
       }
-      ((URLImageView)this.b).setURLDrawableDownListener(new kzp(this));
+      ((URLImageView)this.b).setURLDrawableDownListener(new lby(this));
     }
     catch (MalformedURLException paramString1)
     {

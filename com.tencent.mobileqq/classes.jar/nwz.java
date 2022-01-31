@@ -1,16 +1,23 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader;
+import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader.CacheContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class nwz
-  implements Runnable
+  extends SimpleJob
 {
-  public nwz(MemoriesProfilePresenter.GetYearNodeListReceiver paramGetYearNodeListReceiver, MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
+  public nwz(ShareGroupDateListPageLoader paramShareGroupDateListPageLoader) {}
   
-  public void run()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    ((UserManager)SuperManager.a(2)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a);
+    if (this.a.a == null) {
+      this.a.a = new ShareGroupDateListPageLoader.CacheContext(this.a, this.a.c);
+    }
+    this.a.d = "";
+    ShareGroupDateListPageLoader.a(this.a);
+    return null;
   }
 }
 

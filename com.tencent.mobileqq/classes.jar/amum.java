@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.DiscoverTab;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QQProxyForQlink;
 
-public final class amum
-  implements Parcelable.Creator
+public class amum
+  implements Runnable
 {
-  public DiscoverTab a(Parcel paramParcel)
-  {
-    return new DiscoverTab(paramParcel);
-  }
+  public amum(QQProxyForQlink paramQQProxyForQlink) {}
   
-  public DiscoverTab[] a(int paramInt)
+  public void run()
   {
-    return new DiscoverTab[paramInt];
+    QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ UI_LOG:QQProxyForQlink. onAppInit....");
+    QQProxyForQlink.a(this.a);
+    QQProxyForQlink.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amum
  * JD-Core Version:    0.7.0.1
  */

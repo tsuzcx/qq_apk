@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.OnCleanAnimationListener;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr;
 
 public class ajmu
-  implements TroopGiftAnimationController.OnCleanAnimationListener
+  implements Runnable
 {
-  public ajmu(AIOAnimationControlManager paramAIOAnimationControlManager) {}
+  public ajmu(TroopFileUploadMgr paramTroopFileUploadMgr) {}
   
-  public void a()
+  public void run()
   {
-    this.a.e();
+    this.a.a(2, null);
   }
 }
 

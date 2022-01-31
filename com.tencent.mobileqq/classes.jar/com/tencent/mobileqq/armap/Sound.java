@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import abeq;
-import aber;
+import ablq;
+import ablr;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.media.SoundPool;
@@ -39,11 +39,11 @@ public class Sound
       Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
-        aber localaber = (aber)((Map.Entry)localIterator.next()).getValue();
-        if ((localaber != null) && (localaber.c()))
+        ablr localablr = (ablr)((Map.Entry)localIterator.next()).getValue();
+        if ((localablr != null) && (localablr.c()))
         {
-          this.jdField_a_of_type_AndroidMediaSoundPool.pause(localaber.a);
-          localaber.c = 2;
+          this.jdField_a_of_type_AndroidMediaSoundPool.pause(localablr.a);
+          localablr.c = 2;
         }
       }
       return;
@@ -68,11 +68,11 @@ public class Sound
       Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
-        aber localaber = (aber)((Map.Entry)localIterator.next()).getValue();
-        if ((localaber != null) && (localaber.d()))
+        ablr localablr = (ablr)((Map.Entry)localIterator.next()).getValue();
+        if ((localablr != null) && (localablr.d()))
         {
-          this.jdField_a_of_type_AndroidMediaSoundPool.resume(localaber.a);
-          localaber.c = 3;
+          this.jdField_a_of_type_AndroidMediaSoundPool.resume(localablr.a);
+          localablr.c = 3;
         }
       }
       return;
@@ -91,7 +91,7 @@ public class Sound
     if (!TextUtils.isEmpty(paramString))
     {
       int i = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString, 1);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, new aber(this, i, 1));
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, new ablr(this, i, 1));
     }
   }
   
@@ -134,7 +134,7 @@ public class Sound
         break;
       }
       d();
-      paramString = (aber)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      paramString = (ablr)this.jdField_a_of_type_JavaUtilMap.get(paramString);
     } while (paramString == null);
     if (QLog.isColorLevel()) {
       QLog.d("Sound", 2, "playSound contains resPath, state: " + paramString.c);
@@ -159,7 +159,7 @@ public class Sound
       QLog.d("Sound", 2, "playSound not contains resPath, load");
     }
     int i = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString, 1);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, new aber(this, i, 3));
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, new ablr(this, i, 3));
   }
   
   public void b()
@@ -173,11 +173,11 @@ public class Sound
       Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
-        aber localaber = (aber)((Map.Entry)localIterator.next()).getValue();
-        if ((localaber != null) && (localaber.c()))
+        ablr localablr = (ablr)((Map.Entry)localIterator.next()).getValue();
+        if ((localablr != null) && (localablr.c()))
         {
-          this.jdField_a_of_type_AndroidMediaSoundPool.pause(localaber.a);
-          localaber.c = 4;
+          this.jdField_a_of_type_AndroidMediaSoundPool.pause(localablr.a);
+          localablr.c = 4;
         }
       }
       return;
@@ -193,7 +193,7 @@ public class Sound
   
   public void c()
   {
-    ThreadManager.post(new abeq(this), 8, null, true);
+    ThreadManager.post(new ablq(this), 8, null, true);
   }
   
   public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
@@ -209,18 +209,18 @@ public class Sound
         {
           if (localIterator.hasNext())
           {
-            localaber = (aber)((Map.Entry)localIterator.next()).getValue();
-            if ((localaber != null) && (localaber.b == paramInt1))
+            localablr = (ablr)((Map.Entry)localIterator.next()).getValue();
+            if ((localablr != null) && (localablr.b == paramInt1))
             {
-              if (localaber.a())
+              if (localablr.a())
               {
-                localaber.c = 2;
+                localablr.c = 2;
                 return;
               }
-              if (localaber.c()) {
+              if (localablr.c()) {
                 if (!this.jdField_a_of_type_Boolean)
                 {
-                  localaber.a = paramSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F);
+                  localablr.a = paramSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F);
                   return;
                 }
               }
@@ -230,13 +230,13 @@ public class Sound
       }
       catch (Exception paramSoundPool)
       {
-        aber localaber;
+        ablr localablr;
         paramSoundPool.printStackTrace();
         if (QLog.isColorLevel())
         {
           QLog.e("Sound", 2, "onLoadComplete exception", paramSoundPool);
           return;
-          localaber.c = 4;
+          localablr.c = 4;
         }
       }
     }

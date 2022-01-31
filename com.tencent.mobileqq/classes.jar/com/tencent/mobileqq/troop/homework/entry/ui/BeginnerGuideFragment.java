@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import ajgk;
+import ajnw;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +32,7 @@ public class BeginnerGuideFragment
   implements ComplexGuidViewPager.OnGuideBtnClickListener
 {
   private int jdField_a_of_type_Int;
-  private ajgk jdField_a_of_type_Ajgk;
+  private ajnw jdField_a_of_type_Ajnw;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private View jdField_a_of_type_AndroidViewView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -54,16 +54,69 @@ public class BeginnerGuideFragment
   
   private void a(String paramString, int paramInt)
   {
-    d();
+    c();
     if (QLog.isColorLevel()) {
       QLog.d("BeginnerGuideFragment", 2, "onBeginnerGuidePrepared, " + paramString + ", " + paramInt);
     }
-    e();
+    d();
+  }
+  
+  private boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment prepareBeginnerGuideForSubmit");
+    }
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= 0)) {
+      switch (this.jdField_a_of_type_Int)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        str2 = "";
+        str1 = "";
+        i = -1000;
+        if ((i < 0) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str1))) {
+          b(-1000);
+        }
+        break;
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        String str2;
+        String str1;
+        int i;
+        for (;;)
+        {
+          return false;
+          str2 = "https://sqimg.qq.com/qq_product_operations/qq_troop_homework/beginner_guide_src/submit_arithmetic.zip";
+          str1 = "986db0ad9ec2954f958193a7c819463f";
+          i = this.jdField_a_of_type_Int;
+          continue;
+          str2 = "https://sqimg.qq.com/qq_product_operations/qq_troop_homework/beginner_guide_src/submit_recite.zip";
+          str1 = "df711d27a3d4a9de6cce3e1eb2254878";
+          i = this.jdField_a_of_type_Int;
+        }
+        try
+        {
+          String str3 = new File(new URL(str2).getFile()).getName();
+          new BeginnerGuideDownloadManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1).a(this.jdField_a_of_type_Ajnw, i, false);
+          return true;
+        }
+        catch (Exception localException) {}
+      } while (!QLog.isColorLevel());
+      QLog.d("BeginnerGuideFragment", 2, "download manager init error ", localException);
+      return false;
+    }
+    QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment prepareBeginnerGuideForSubmit failed");
+    return false;
   }
   
   private void b(int paramInt)
   {
-    d();
+    c();
     if (QLog.isColorLevel()) {
       QLog.d("BeginnerGuideFragment", 2, new Object[] { "onBeginnerGuidePreparedFailed (" + paramInt + ") ", Log.getStackTraceString(new RuntimeException("trace")) });
     }
@@ -82,7 +135,7 @@ public class BeginnerGuideFragment
     paramActivity.overridePendingTransition(2131034380, 2131034131);
   }
   
-  private void e()
+  private void d()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager == null) {
       return;
@@ -128,57 +181,12 @@ public class BeginnerGuideFragment
     }
   }
   
-  private boolean e()
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment prepareBeginnerGuideForSubmit");
+      QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment onActionBtnClicked");
     }
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= 0)) {
-      switch (this.jdField_a_of_type_Int)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        str2 = "";
-        str1 = "";
-        i = -1000;
-        if ((i < 0) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str1))) {
-          b(-1000);
-        }
-        break;
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        String str2;
-        String str1;
-        int i;
-        for (;;)
-        {
-          return false;
-          str2 = "https://sqimg.qq.com/qq_product_operations/qq_troop_homework/beginner_guide_src/submit_arithmetic.zip";
-          str1 = "986db0ad9ec2954f958193a7c819463f";
-          i = this.jdField_a_of_type_Int;
-          continue;
-          str2 = "https://sqimg.qq.com/qq_product_operations/qq_troop_homework/beginner_guide_src/submit_recite.zip";
-          str1 = "df711d27a3d4a9de6cce3e1eb2254878";
-          i = this.jdField_a_of_type_Int;
-        }
-        try
-        {
-          String str3 = new File(new URL(str2).getFile()).getName();
-          new BeginnerGuideDownloadManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, str1).a(this.jdField_a_of_type_Ajgk, i, false);
-          return true;
-        }
-        catch (Exception localException) {}
-      } while (!QLog.isColorLevel());
-      QLog.d("BeginnerGuideFragment", 2, "download manager init error ", localException);
-      return false;
-    }
-    QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment prepareBeginnerGuideForSubmit failed");
-    return false;
+    getActivity().doOnBackPressed();
   }
   
   protected void a(int paramInt)
@@ -208,38 +216,15 @@ public class BeginnerGuideFragment
     }
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment onActionBtnClicked");
-    }
-    getActivity().doOnBackPressed();
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public void c()
   {
     if (QLog.isColorLevel()) {
       QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment onSkitBtnClicked");
     }
-    b();
+    a();
   }
   
-  public boolean c()
-  {
-    return false;
-  }
-  
-  protected void d()
+  protected void c()
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
     try
@@ -258,6 +243,21 @@ public class BeginnerGuideFragment
     }
   }
   
+  public boolean isWrapContent()
+  {
+    return false;
+  }
+  
+  public boolean needImmersive()
+  {
+    return false;
+  }
+  
+  public boolean needStatusTrans()
+  {
+    return false;
+  }
+  
   public void onActivityCreated(Bundle paramBundle)
   {
     getActivity().getWindow().addFlags(67108864);
@@ -270,7 +270,7 @@ public class BeginnerGuideFragment
       QLog.d("BeginnerGuideFragment", 2, "BeginnerGuideFragment create view");
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_a_of_type_Ajgk = new ajgk(this, Looper.myLooper());
+    this.jdField_a_of_type_Ajnw = new ajnw(this, Looper.myLooper());
     this.jdField_a_of_type_AndroidOsBundle = getArguments();
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
@@ -282,16 +282,16 @@ public class BeginnerGuideFragment
     }
     for (;;)
     {
-      boolean bool = e();
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969900, paramViewGroup, false);
+      boolean bool = a();
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969911, paramViewGroup, false);
       if (this.jdField_a_of_type_AndroidViewView == null) {
         getActivity().finish();
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager = ((ComplexGuidViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131368405));
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager = ((ComplexGuidViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131368407));
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager.setOnActionBtnClickListener(this);
-      e();
+      d();
       if (bool) {
-        a(2131430663);
+        a(2131430666);
       }
       return this.jdField_a_of_type_AndroidViewView;
       label177:
@@ -305,20 +305,20 @@ public class BeginnerGuideFragment
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Ajgk != null) {
-      this.jdField_a_of_type_Ajgk.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_Ajnw != null) {
+      this.jdField_a_of_type_Ajnw.removeCallbacksAndMessages(null);
     }
   }
   
-  public void u_()
+  public void onFinish()
   {
-    super.u_();
+    super.onFinish();
     getActivity().overridePendingTransition(2131034131, 2131034382);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment
  * JD-Core Version:    0.7.0.1
  */

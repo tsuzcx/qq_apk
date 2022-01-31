@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.utils;
 
-import akge;
-import akgf;
-import akgg;
+import aknr;
+import akns;
+import aknt;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,7 @@ import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.webview.swift.SwiftWebViewFragmentSupporter;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import mqq.os.MqqHandler;
 
 public class ShareMsgHelper
   implements AppConstants
@@ -50,12 +51,12 @@ public class ShareMsgHelper
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, AbsStructMsg paramAbsStructMsg, BusinessObserver paramBusinessObserver)
   {
-    ThreadManager.post(new akge(paramQQAppInterface, paramString, paramInt, paramAbsStructMsg, paramBusinessObserver), 8, null, false);
+    ThreadManager.post(new aknr(paramQQAppInterface, paramString, paramInt, paramAbsStructMsg, paramBusinessObserver), 8, null, false);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, AbsStructMsg paramAbsStructMsg, BusinessObserver paramBusinessObserver)
   {
-    ThreadManager.post(new akgf(paramQQAppInterface, paramString1, paramString2, paramInt, paramAbsStructMsg, paramBusinessObserver), 8, null, false);
+    ThreadManager.getSubThreadHandler().post(new akns(paramQQAppInterface, paramString1, paramString2, paramInt, paramAbsStructMsg, paramBusinessObserver));
   }
   
   public static boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, Intent paramIntent, int paramInt3)
@@ -283,7 +284,7 @@ public class ShareMsgHelper
         {
           paramAbsStructMsg.mMsgServiceID = 1;
           paramString1 = MessageRecordFactory.a(paramQQAppInterface, paramBusinessObserver, paramString1, paramBusinessObserver, paramInt, l, paramAbsStructMsg);
-          paramQQAppInterface.a().a(paramString1, new akgg());
+          paramQQAppInterface.a().a(paramString1, new aknt());
           return;
         }
         paramQQAppInterface.a().a(paramString2, null);

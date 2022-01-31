@@ -1,37 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.ApolloManager.CheckApolloInfoResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class tkr
-  extends Handler
+  implements ActionSheet.OnButtonClickListener
 {
-  public tkr(QQSettingMe paramQQSettingMe, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public tkr(PhoneUnityChangeActivity paramPhoneUnityChangeActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.a, 230, "解除手机号码绑定", "解除绑定，将降低QQ的安全性，并将无法发QQ消息给手机通讯录联系人（服务器存储的通讯录数据也将被删除）、无法在QQ查看手机话费。注:解绑不影响密码保护功能。", "解绑", "取消", new tks(this), new tkt(this));
     }
-    do
-    {
-      return;
-      this.a.n();
-      return;
-      QQSettingMe.a(this.a);
-      return;
-      if (QQSettingMe.a(this.a))
-      {
-        QLog.i("QQSettingRedesign", 1, "MSG_CODE_REFRESH_APOLLO on DrawerClosed!");
-        return;
-      }
-    } while (!(paramMessage.obj instanceof ApolloManager.CheckApolloInfoResult));
-    QQSettingMe.a(this.a, (ApolloManager.CheckApolloInfoResult)paramMessage.obj);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!this.a.isFinishing())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    }
   }
 }
 

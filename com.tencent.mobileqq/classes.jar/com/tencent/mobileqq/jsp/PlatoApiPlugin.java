@@ -36,13 +36,16 @@ public class PlatoApiPlugin
         localIntent = new Intent();
         localIntent.putExtra("bid", str1);
         localIntent.putExtra("backupUrl", (String)localObject);
-        localObject = localJSONObject.keys();
-        while ((localObject != null) && (((Iterator)localObject).hasNext()))
+        if ((localJSONObject != null) && (localJSONObject.keys() != null))
         {
-          String str2 = (String)((Iterator)localObject).next();
-          localIntent.putExtra(str2, localJSONObject.getString(str2));
-          continue;
-          return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+          localObject = localJSONObject.keys();
+          while (((Iterator)localObject).hasNext())
+          {
+            String str2 = (String)((Iterator)localObject).next();
+            localIntent.putExtra(str2, localJSONObject.getString(str2));
+            continue;
+            return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+          }
         }
       }
       catch (JSONException localJSONException)
@@ -54,7 +57,7 @@ public class PlatoApiPlugin
     }
     for (;;)
     {
-      PlatoAppManager.a(this.mRuntime.a(), localJSONException, localIntent);
+      PlatoAppManager.loadAppAcrossProcess(this.mRuntime.a(), localJSONException, localIntent);
     }
   }
   

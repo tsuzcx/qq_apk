@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import anea;
+import anma;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.webviewplugin.WebSoPlugin;
 import com.tencent.mobileqq.webview.WebViewDirector;
@@ -83,7 +83,7 @@ public class WebviewWrapper
     this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewBaseBuilder = new QzoneWebViewBaseBuilder(this.jdField_a_of_type_AndroidContentContext, paramActivity, paramIntent, QzoneWebViewPluginManager.a().a(), true);
     this.jdField_a_of_type_ComTencentBizUiTouchWebView.setVisibility(4);
     this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewBaseBuilder.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewBaseBuilder.a(new anea(this, paramIWebviewListener));
+    this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewBaseBuilder.a(new anma(this, paramIWebviewListener));
     new WebViewDirector(this.jdField_a_of_type_CooperationQzoneWebviewwrapperQzoneWebViewBaseBuilder).a(null, QzoneWebViewPluginManager.a().a(), null);
   }
   

@@ -1,4 +1,4 @@
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ar.config.MainDownAni;
 
 class aapy
   implements Runnable
@@ -7,7 +7,7 @@ class aapy
   
   public void run()
   {
-    ArkAppModuleReg.ModuleQQ.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, this.a.a.jdField_a_of_type_Long, this.a.a.c, 16L, this.a.a.b, 2);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.c(this.a.a.jdField_a_of_type_Aapz);
   }
 }
 

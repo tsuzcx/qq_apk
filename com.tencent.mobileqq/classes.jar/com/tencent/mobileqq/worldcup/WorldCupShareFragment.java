@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.worldcup;
 
-import akyc;
-import akye;
-import akyg;
-import akyh;
-import akyi;
-import akyj;
-import akyk;
-import akyl;
-import akyo;
-import akyr;
-import akyt;
-import akyu;
+import alfu;
+import alfw;
+import alfy;
+import alfz;
+import alga;
+import algb;
+import algc;
+import algd;
+import algg;
+import algj;
+import algl;
+import algm;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,7 +22,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.PorterDuff.Mode;
@@ -156,15 +155,15 @@ public class WorldCupShareFragment
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new akyu(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new algm(this);
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
   private StateListDrawable jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private WorldCupMgr.DownloadListener jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr$DownloadListener = new akyg(this);
-  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new akyc(this);
-  private NonMainAppHeadLoader.FaceObserver jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader$FaceObserver = new akyi(this);
+  private WorldCupMgr.DownloadListener jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr$DownloadListener = new alfy(this);
+  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new alfu(this);
+  private NonMainAppHeadLoader.FaceObserver jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader$FaceObserver = new alga(this);
   private NonMainAppHeadLoader jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader;
   private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
   private ShareActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder;
@@ -209,12 +208,12 @@ public class WorldCupShareFragment
   public WorldCupShareFragment()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable = new akyh(this);
+    this.jdField_a_of_type_JavaLangRunnable = new alfz(this);
   }
   
   private int a(int paramInt)
   {
-    return 2130971729;
+    return 2130971760;
   }
   
   private int a(String paramString)
@@ -233,13 +232,13 @@ public class WorldCupShareFragment
   
   private Bitmap a(View paramView)
   {
-    Object localObject = (RelativeLayout)paramView.findViewById(2131375471);
+    Object localObject = (RelativeLayout)paramView.findViewById(2131375535);
     int m = ((RelativeLayout)localObject).getWidth();
     int n = ((RelativeLayout)localObject).getHeight();
     Bitmap localBitmap = Bitmap.createBitmap(750, 1387, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     WorldCupShareInfo localWorldCupShareInfo = WorldCup.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a();
-    localCanvas.drawColor(Color.parseColor(((WorldCupShareInfo.ColorScheme)((WorldCupShareInfo.Template)localWorldCupShareInfo.share.get(this.jdField_a_of_type_Int)).color_scheme.get(this.jdField_d_of_type_Int)).news_paper_background_color));
+    localCanvas.drawColor(WorldCupShareInfo.parseColor(((WorldCupShareInfo.ColorScheme)((WorldCupShareInfo.Template)localWorldCupShareInfo.share.get(this.jdField_a_of_type_Int)).color_scheme.get(this.jdField_d_of_type_Int)).news_paper_background_color));
     String str = b();
     localCanvas.drawBitmap(WorldCupShareInfo.getResBitmap(str + localWorldCupShareInfo.share_br_icon), 340.0F, 1093.0F, null);
     ((RelativeLayout)localObject).layout(0, 0, m, n);
@@ -256,11 +255,13 @@ public class WorldCupShareFragment
     localCanvas.restore();
     ConfessShareHelper.a(this.jdField_e_of_type_JavaLangString, localCanvas, new Rect(25, 1230, 125, 1330));
     localObject = new Paint();
-    ((Paint)localObject).setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+    if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
+      ((Paint)localObject).setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+    }
     ((Paint)localObject).setColor(-1);
     ((Paint)localObject).setTextSize(13.0F);
     ((Paint)localObject).setTextAlign(Paint.Align.CENTER);
-    localCanvas.drawText(getString(2131439381), 75.0F, 1350.0F, (Paint)localObject);
+    localCanvas.drawText(getString(2131439420), 75.0F, 1350.0F, (Paint)localObject);
     ((Paint)localObject).setTextSize(28.0F);
     ((Paint)localObject).setTextAlign(Paint.Align.LEFT);
     paramView = localWorldCupShareInfo.AIOQRCodeMainTitle;
@@ -289,7 +290,7 @@ public class WorldCupShareFragment
     localAlphaAnimation.setStartOffset(1000L);
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new akyt(this));
+    localAnimationSet.setAnimationListener(new algl(this));
     return localAnimationSet;
   }
   
@@ -302,13 +303,13 @@ public class WorldCupShareFragment
     }
     TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
     IVideoViewBase localIVideoViewBase = localTVK_IProxyFactory.createVideoView_Scroll(localFragmentActivity);
-    ((View)localIVideoViewBase).setId(2131362669);
+    ((View)localIVideoViewBase).setId(2131362674);
     localIVideoViewBase.setXYaxis(2);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(paramInt1 * 496 / paramInt2, paramInt1 * 780 / paramInt2);
     localLayoutParams.leftMargin = (paramInt1 * 40 / paramInt2);
     localLayoutParams.topMargin = (paramInt1 * 168 / paramInt2);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131375471);
-    paramView = (ImageView)paramView.findViewById(2131375472);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131375535);
+    paramView = (ImageView)paramView.findViewById(2131375536);
     paramInt1 = -1;
     if (paramView != null) {
       paramInt1 = localRelativeLayout.indexOfChild(paramView);
@@ -367,15 +368,18 @@ public class WorldCupShareFragment
     localIntent.putExtra("videoPath", paramString2);
     localIntent.addFlags(603979776);
     PublicFragmentActivity.Launcher.a(paramContext, localIntent, PublicFragmentActivityForTool.class, WorldCupShareFragment.class);
+    if ((paramContext instanceof Activity)) {
+      ((Activity)paramContext).overridePendingTransition(0, 0);
+    }
   }
   
   private void a(View paramView)
   {
-    TextView localTextView1 = (TextView)paramView.findViewById(2131375488);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131375494);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131375498);
-    TextView localTextView4 = (TextView)paramView.findViewById(2131375500);
-    paramView = (TextView)paramView.findViewById(2131375490);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131375552);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131375558);
+    TextView localTextView3 = (TextView)paramView.findViewById(2131375562);
+    TextView localTextView4 = (TextView)paramView.findViewById(2131375564);
+    paramView = (TextView)paramView.findViewById(2131375554);
     localTextView1.setText(this.jdField_c_of_type_JavaLangString);
     localTextView2.setText(this.jdField_c_of_type_JavaLangString);
     localTextView3.setText(this.jdField_c_of_type_JavaLangString);
@@ -402,22 +406,22 @@ public class WorldCupShareFragment
       this.jdField_a_of_type_Int = MathUtils.a(paramWorldCupShareInfo.share.size() - 1);
       WorldCupShareInfo.Template localTemplate = (WorldCupShareInfo.Template)paramWorldCupShareInfo.share.get(this.jdField_a_of_type_Int);
       String str = b();
-      Object localObject2 = (TextView)paramView.findViewById(2131375477);
-      Object localObject1 = (TextView)paramView.findViewById(2131375478);
-      TextView localTextView4 = (TextView)paramView.findViewById(2131375479);
-      TextView localTextView1 = (TextView)paramView.findViewById(2131375484);
-      TextView localTextView2 = (TextView)paramView.findViewById(2131375485);
-      TextView localTextView3 = (TextView)paramView.findViewById(2131375487);
+      Object localObject1 = (TextView)paramView.findViewById(2131375541);
+      TextView localTextView1 = (TextView)paramView.findViewById(2131375542);
+      TextView localTextView2 = (TextView)paramView.findViewById(2131375543);
+      TextView localTextView3 = (TextView)paramView.findViewById(2131375548);
+      TextView localTextView4 = (TextView)paramView.findViewById(2131375549);
+      TextView localTextView5 = (TextView)paramView.findViewById(2131375551);
       int m;
       if (localTemplate.matches.size() > 0)
       {
         this.jdField_c_of_type_Long = System.currentTimeMillis();
         this.jdField_b_of_type_Int = 0;
-        Object localObject3;
+        Object localObject2;
         if (this.jdField_b_of_type_Int < localTemplate.matches.size())
         {
-          localObject3 = paramWorldCupShareInfo.getDate(((WorldCupShareInfo.Match)localTemplate.matches.get(this.jdField_b_of_type_Int)).begin_time);
-          if ((localObject3 == null) || (this.jdField_c_of_type_Long - ((Date)localObject3).getTime() <= 0L)) {}
+          localObject2 = paramWorldCupShareInfo.getDate(((WorldCupShareInfo.Match)localTemplate.matches.get(this.jdField_b_of_type_Int)).begin_time);
+          if ((localObject2 == null) || (this.jdField_c_of_type_Long - ((Date)localObject2).getTime() <= 0L)) {}
         }
         else
         {
@@ -425,77 +429,77 @@ public class WorldCupShareFragment
             this.jdField_b_of_type_Int = (localTemplate.matches.size() - 1);
           }
           paramWorldCupShareInfo = (WorldCupShareInfo.Match)localTemplate.matches.get(this.jdField_b_of_type_Int);
-          localObject3 = WorldCupShareInfo.getResBitmap(str + localTemplate.template_id + File.separator + paramWorldCupShareInfo.title);
-          paramView.findViewById(2131375475).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject3));
-          localObject3 = new Date(this.jdField_c_of_type_Long);
-          if (localObject3 != null) {}
-          switch (((Date)localObject3).getMonth())
+          localObject2 = WorldCupShareInfo.getResBitmap(str + localTemplate.template_id + File.separator + paramWorldCupShareInfo.title);
+          paramView.findViewById(2131375539).setBackgroundDrawable(new BitmapDrawable((Bitmap)localObject2));
+          localObject2 = new Date(this.jdField_c_of_type_Long);
+          if (localObject2 != null) {}
+          switch (((Date)localObject2).getMonth())
           {
           default: 
-            m = 2131439366;
+            m = 2131439405;
             label396:
-            ((TextView)localObject2).setText(m);
-            ((TextView)localObject1).setText(String.valueOf(((Date)localObject3).getDate()));
-            m = 2131434643;
-            switch (((Date)localObject3).getDay())
+            ((TextView)localObject1).setText(m);
+            localTextView1.setText(String.valueOf(((Date)localObject2).getDate()));
+            m = 2131434659;
+            switch (((Date)localObject2).getDay())
             {
             default: 
               label468:
-              localTextView4.setText(m);
+              localTextView2.setText(m);
               if (paramWorldCupShareInfo.main_title.size() > 0)
               {
                 this.jdField_f_of_type_Int = MathUtils.a(paramWorldCupShareInfo.main_title.size() - 1);
-                localObject2 = (WorldCupShareInfo.MainTitle)paramWorldCupShareInfo.main_title.get(this.jdField_f_of_type_Int);
-                localObject3 = (LinearLayout.LayoutParams)localTextView1.getLayoutParams();
-                ((LinearLayout.LayoutParams)localObject3).height = (this.jdField_j_of_type_Int * 520 / (((WorldCupShareInfo.MainTitle)localObject2).item1.length() * this.jdField_k_of_type_Int));
-                ((LinearLayout.LayoutParams)localObject3).topMargin = (this.jdField_j_of_type_Int * 5 / this.jdField_k_of_type_Int);
-                ((LinearLayout.LayoutParams)localObject3).bottomMargin = (this.jdField_j_of_type_Int * -5 / this.jdField_k_of_type_Int);
-                localTextView1.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-                localObject3 = (LinearLayout.LayoutParams)localTextView2.getLayoutParams();
-                ((LinearLayout.LayoutParams)localObject3).height = (this.jdField_j_of_type_Int * 520 / (((WorldCupShareInfo.MainTitle)localObject2).item2.length() * this.jdField_k_of_type_Int));
-                localTextView2.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-                localTextView1.setText(((WorldCupShareInfo.MainTitle)localObject2).item1);
-                localTextView2.setText(((WorldCupShareInfo.MainTitle)localObject2).item2);
-                label657:
+                localObject1 = (WorldCupShareInfo.MainTitle)paramWorldCupShareInfo.main_title.get(this.jdField_f_of_type_Int);
+                localObject2 = (LinearLayout.LayoutParams)localTextView3.getLayoutParams();
+                ((LinearLayout.LayoutParams)localObject2).height = (this.jdField_j_of_type_Int * 1040 / (a(((WorldCupShareInfo.MainTitle)localObject1).item1) * this.jdField_k_of_type_Int));
+                ((LinearLayout.LayoutParams)localObject2).topMargin = (this.jdField_j_of_type_Int * 5 / this.jdField_k_of_type_Int);
+                ((LinearLayout.LayoutParams)localObject2).bottomMargin = (this.jdField_j_of_type_Int * -5 / this.jdField_k_of_type_Int);
+                localTextView3.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                localObject2 = (LinearLayout.LayoutParams)localTextView4.getLayoutParams();
+                ((LinearLayout.LayoutParams)localObject2).height = (this.jdField_j_of_type_Int * 1040 / (a(((WorldCupShareInfo.MainTitle)localObject1).item2) * this.jdField_k_of_type_Int));
+                localTextView4.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                localTextView3.setText(((WorldCupShareInfo.MainTitle)localObject1).item1);
+                localTextView4.setText(((WorldCupShareInfo.MainTitle)localObject1).item2);
+                label659:
                 this.jdField_g_of_type_Int = MathUtils.a(paramWorldCupShareInfo.social_title.size() - 1);
-                localTextView3.setText((String)paramWorldCupShareInfo.social_title.get(this.jdField_g_of_type_Int));
+                localTextView5.setText((String)paramWorldCupShareInfo.social_title.get(this.jdField_g_of_type_Int));
                 if (paramWorldCupShareInfo.pk_title.size() <= 0) {
-                  break label1357;
+                  break label1359;
                 }
                 this.jdField_c_of_type_Int = MathUtils.a(paramWorldCupShareInfo.pk_title.size() - 1);
-                localObject2 = (WorldCupShareInfo.PkTitle)paramWorldCupShareInfo.pk_title.get(this.jdField_c_of_type_Int);
-                ((TextView)paramView.findViewById(2131375489)).setText(((WorldCupShareInfo.PkTitle)localObject2).main_title.replace("selfnick", "").replace("peernick", ""));
-                ((TextView)paramView.findViewById(2131375491)).setText(((WorldCupShareInfo.PkTitle)localObject2).reporter);
-                ((TextView)paramView.findViewById(2131375492)).setText(((WorldCupShareInfo.PkTitle)localObject2).sub_title);
-                label806:
+                localObject1 = (WorldCupShareInfo.PkTitle)paramWorldCupShareInfo.pk_title.get(this.jdField_c_of_type_Int);
+                ((TextView)paramView.findViewById(2131375553)).setText(((WorldCupShareInfo.PkTitle)localObject1).main_title.replace("selfnick", "").replace("peernick", ""));
+                ((TextView)paramView.findViewById(2131375555)).setText(((WorldCupShareInfo.PkTitle)localObject1).reporter);
+                ((TextView)paramView.findViewById(2131375556)).setText(((WorldCupShareInfo.PkTitle)localObject1).sub_title);
+                label808:
                 if (paramWorldCupShareInfo.clothes_text.size() <= 0) {
-                  break label1370;
+                  break label1372;
                 }
                 this.jdField_i_of_type_Int = MathUtils.a(paramWorldCupShareInfo.clothes_text.size() - 1);
-                localObject2 = (WorldCupShareInfo.ClothesText)paramWorldCupShareInfo.clothes_text.get(this.jdField_i_of_type_Int);
-                ((TextView)paramView.findViewById(2131375495)).setText(((WorldCupShareInfo.ClothesText)localObject2).title);
-                ((TextView)paramView.findViewById(2131375496)).setText(((WorldCupShareInfo.ClothesText)localObject2).reporter);
-                label884:
+                localObject1 = (WorldCupShareInfo.ClothesText)paramWorldCupShareInfo.clothes_text.get(this.jdField_i_of_type_Int);
+                ((TextView)paramView.findViewById(2131375559)).setText(((WorldCupShareInfo.ClothesText)localObject1).title);
+                ((TextView)paramView.findViewById(2131375560)).setText(((WorldCupShareInfo.ClothesText)localObject1).reporter);
+                label886:
                 if (paramWorldCupShareInfo.main_text.size() <= 0) {
-                  break label1383;
+                  break label1385;
                 }
                 this.jdField_h_of_type_Int = MathUtils.a(paramWorldCupShareInfo.main_text.size() - 1);
                 paramWorldCupShareInfo = (WorldCupShareInfo.MainText)paramWorldCupShareInfo.main_text.get(this.jdField_h_of_type_Int);
-                localObject2 = (TextView)paramView.findViewById(2131375501);
-                localObject3 = (TextView)paramView.findViewById(2131375502);
-                TextView localTextView5 = (TextView)paramView.findViewById(2131375503);
-                TextView localTextView6 = (TextView)paramView.findViewById(2131375504);
-                ((TextView)localObject2).setText(paramWorldCupShareInfo.title);
-                ((TextView)localObject3).setText(paramWorldCupShareInfo.reporter);
-                localTextView5.setText(paramWorldCupShareInfo.firstline);
-                localTextView6.setText(paramWorldCupShareInfo.text);
-                label1009:
+                localObject1 = (TextView)paramView.findViewById(2131375565);
+                localObject2 = (TextView)paramView.findViewById(2131375566);
+                TextView localTextView6 = (TextView)paramView.findViewById(2131375567);
+                TextView localTextView7 = (TextView)paramView.findViewById(2131375568);
+                ((TextView)localObject1).setText(paramWorldCupShareInfo.title);
+                ((TextView)localObject2).setText(paramWorldCupShareInfo.reporter);
+                localTextView6.setText(paramWorldCupShareInfo.firstline);
+                localTextView7.setText(paramWorldCupShareInfo.text);
+                label1011:
                 if (localTemplate.clothes_number.size() <= 0) {
-                  break label1409;
+                  break label1411;
                 }
                 this.jdField_e_of_type_Int = MathUtils.a(localTemplate.clothes_number.size() - 1);
                 paramWorldCupShareInfo = WorldCupShareInfo.getResBitmap(str + localTemplate.template_id + File.separator + (String)localTemplate.clothes_number.get(this.jdField_e_of_type_Int));
-                paramView.findViewById(2131375497).setBackgroundDrawable(new BitmapDrawable(paramWorldCupShareInfo));
+                paramView.findViewById(2131375561).setBackgroundDrawable(new BitmapDrawable(paramWorldCupShareInfo));
               }
               break;
             }
@@ -503,104 +507,102 @@ public class WorldCupShareFragment
           }
         }
       }
-      label1357:
+      label1359:
       for (;;)
       {
-        label1106:
+        label1108:
         if (localTemplate.color_scheme.size() > 0)
         {
           this.jdField_d_of_type_Int = MathUtils.a(localTemplate.color_scheme.size() - 1);
           paramWorldCupShareInfo = (WorldCupShareInfo.ColorScheme)localTemplate.color_scheme.get(this.jdField_d_of_type_Int);
           int n = paramWorldCupShareInfo.title_background_color.size();
-          localObject2 = new int[n];
+          localObject1 = new int[n];
           m = 0;
           for (;;)
           {
             if (m < n)
             {
-              localObject2[m] = Color.parseColor((String)paramWorldCupShareInfo.title_background_color.get(m));
+              localObject1[m] = WorldCupShareInfo.parseColor((String)paramWorldCupShareInfo.title_background_color.get(m));
               m += 1;
               continue;
               this.jdField_b_of_type_Int += 1;
               break;
-              m = 2131439360;
+              m = 2131439399;
               break label396;
-              m = 2131439361;
+              m = 2131439400;
               break label396;
-              m = 2131439362;
+              m = 2131439401;
               break label396;
-              m = 2131439363;
+              m = 2131439402;
               break label396;
-              m = 2131439364;
+              m = 2131439403;
               break label396;
-              m = 2131439365;
+              m = 2131439404;
               break label396;
-              m = 2131439366;
+              m = 2131439405;
               break label396;
-              m = 2131439367;
+              m = 2131439406;
               break label396;
-              m = 2131439368;
+              m = 2131439407;
               break label396;
-              m = 2131439369;
+              m = 2131439408;
               break label396;
-              m = 2131439370;
+              m = 2131439409;
               break label396;
-              m = 2131439371;
+              m = 2131439410;
               break label396;
-              m = 2131434649;
+              m = 2131434665;
               break label468;
-              m = 2131434643;
+              m = 2131434659;
               break label468;
-              m = 2131434644;
+              m = 2131434660;
               break label468;
-              m = 2131434645;
+              m = 2131434661;
               break label468;
-              m = 2131434646;
+              m = 2131434662;
               break label468;
-              m = 2131434647;
+              m = 2131434663;
               break label468;
-              m = 2131434648;
+              m = 2131434664;
               break label468;
               QLog.e("WorldCupShareFragment", 1, "WL_DEBUG initNewspaper main_title.size() == 0");
-              break label657;
+              break label659;
               QLog.e("WorldCupShareFragment", 1, "WL_DEBUG initNewspaper pk_title.size() == 0");
-              break label806;
-              label1370:
+              break label808;
+              label1372:
               QLog.e("WorldCupShareFragment", 1, "WL_DEBUG initNewspaper clothes_text.size() == 0");
-              break label884;
-              label1383:
+              break label886;
+              label1385:
               QLog.e("WorldCupShareFragment", 1, "WL_DEBUG initNewspaper main_text.size() == 0");
-              break label1009;
+              break label1011;
               QLog.e("WorldCupShareFragment", 1, "WL_DEBUG initNewspaper match.size() == 0");
-              break label1009;
+              break label1011;
               QLog.e("WorldCupShareFragment", 1, "WL_DEBUG initNewspaper clothes_number.size() == 0");
-              break label1106;
+              break label1108;
             }
           }
-          localObject2 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, (int[])localObject2);
-          paramView.findViewById(2131375473).setBackground((Drawable)localObject2);
-          localObject2 = new BitmapDrawable(WorldCupShareInfo.getResBitmap(str + localTemplate.template_id + File.separator + localTemplate.date));
-          m = Color.parseColor(paramWorldCupShareInfo.date_color);
-          ((BitmapDrawable)localObject2).setColorFilter(m, PorterDuff.Mode.SRC_ATOP);
-          paramView.findViewById(2131375476).setBackgroundDrawable((Drawable)localObject2);
-          ((TextView)localObject1).setTextColor(m);
-          localTextView4.setTextColor(m);
-          localObject1 = (WorldCupShareImageView)paramView.findViewById(2131375482);
-          m = Color.parseColor(paramWorldCupShareInfo.matches_title_color);
-          ((WorldCupShareImageView)localObject1).setColor(m);
-          ((TextView)paramView.findViewById(2131375483)).setTextColor(new ColorStateList(new int[][] { { 16842919 }, new int[0] }, new int[] { 0x80FFFFFF & m, m }));
+          localObject1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, (int[])localObject1);
+          paramView.findViewById(2131375537).setBackground((Drawable)localObject1);
+          localObject1 = new BitmapDrawable(WorldCupShareInfo.getResBitmap(str + localTemplate.template_id + File.separator + localTemplate.date));
+          m = WorldCupShareInfo.parseColor(paramWorldCupShareInfo.date_color);
+          ((BitmapDrawable)localObject1).setColorFilter(m, PorterDuff.Mode.SRC_ATOP);
+          paramView.findViewById(2131375540).setBackgroundDrawable((Drawable)localObject1);
           localTextView1.setTextColor(m);
           localTextView2.setTextColor(m);
-          localTextView3.setBackgroundColor(Color.parseColor(paramWorldCupShareInfo.social_title_background_color));
+          m = WorldCupShareInfo.parseColor(paramWorldCupShareInfo.matches_title_color);
+          ((TextView)paramView.findViewById(2131375547)).setTextColor(new ColorStateList(new int[][] { { 16842919 }, new int[0] }, new int[] { -2130706433, -1 }));
+          localTextView3.setTextColor(m);
+          localTextView4.setTextColor(m);
+          localTextView5.setBackgroundColor(WorldCupShareInfo.parseColor(paramWorldCupShareInfo.social_title_background_color));
         }
       }
       for (;;)
       {
-        label1409:
+        label1411:
         paramWorldCupShareInfo = WorldCupShareInfo.getResBitmap(str + localTemplate.template_id + File.separator + localTemplate.news_paper_title_list);
-        paramView.findViewById(2131375474).setBackgroundDrawable(new BitmapDrawable(paramWorldCupShareInfo));
+        paramView.findViewById(2131375538).setBackgroundDrawable(new BitmapDrawable(paramWorldCupShareInfo));
         paramWorldCupShareInfo = WorldCupShareInfo.getResBitmap(str + localTemplate.template_id + File.separator + localTemplate.column_image);
-        paramView.findViewById(2131375499).setBackgroundDrawable(new BitmapDrawable(paramWorldCupShareInfo));
+        paramView.findViewById(2131375563).setBackgroundDrawable(new BitmapDrawable(paramWorldCupShareInfo));
         return;
         QLog.e("WorldCupShareFragment", 1, "WL_DEBUG initNewspaper color_scheme.size() == 0");
       }
@@ -685,7 +687,7 @@ public class WorldCupShareFragment
     }
     try
     {
-      LottieComposition.Factory.fromInputStream(getActivity(), new FileInputStream(str), new akye(this, paramString, paramView));
+      LottieComposition.Factory.fromInputStream(getActivity(), new FileInputStream(str), new alfw(this, paramString, paramView));
       return;
     }
     catch (Exception paramString)
@@ -698,12 +700,12 @@ public class WorldCupShareFragment
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
     FragmentActivity localFragmentActivity = getActivity();
-    FrameLayout localFrameLayout = (FrameLayout)localFragmentActivity.findViewById(2131375512);
-    EditText localEditText = (EditText)localFragmentActivity.findViewById(2131375513);
+    FrameLayout localFrameLayout = (FrameLayout)localFragmentActivity.findViewById(2131375576);
+    EditText localEditText = (EditText)localFragmentActivity.findViewById(2131375577);
     localFrameLayout.setVisibility(0);
     if (this.jdField_b_of_type_Boolean)
     {
-      m = 2131439372;
+      m = 2131439411;
       localEditText.setHint(m);
       ((InputMethodManager)localFragmentActivity.getSystemService("input_method")).toggleSoftInput(2, 0);
       localEditText.requestFocus();
@@ -716,7 +718,7 @@ public class WorldCupShareFragment
     {
       a("0X8009318", m);
       return;
-      m = 2131439373;
+      m = 2131439412;
       break;
     }
   }
@@ -764,7 +766,7 @@ public class WorldCupShareFragment
         return false;
       }
       finally {}
-      QQToast.a(BaseApplication.getContext(), 1, 2131435624, 0).a();
+      QQToast.a(BaseApplication.getContext(), 1, 2131435640, 0).a();
       return false;
       byte[] arrayOfByte1 = a(paramString);
       if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0))
@@ -788,22 +790,22 @@ public class WorldCupShareFragment
     //   4: astore 6
     //   6: iconst_0
     //   7: istore 5
-    //   9: new 943	java/io/FileInputStream
+    //   9: new 944	java/io/FileInputStream
     //   12: dup
     //   13: aload_1
-    //   14: invokespecial 944	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 945	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   17: astore_1
-    //   18: new 1070	java/io/FileOutputStream
+    //   18: new 1069	java/io/FileOutputStream
     //   21: dup
     //   22: aload_2
-    //   23: invokespecial 1071	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   23: invokespecial 1070	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   26: astore_2
     //   27: sipush 1024
     //   30: newarray byte
     //   32: astore 6
     //   34: aload_1
     //   35: aload 6
-    //   37: invokevirtual 1077	java/io/InputStream:read	([B)I
+    //   37: invokevirtual 1076	java/io/InputStream:read	([B)I
     //   40: istore_3
     //   41: iload_3
     //   42: ifle +68 -> 110
@@ -811,30 +813,30 @@ public class WorldCupShareFragment
     //   46: aload 6
     //   48: iconst_0
     //   49: iload_3
-    //   50: invokevirtual 1083	java/io/OutputStream:write	([BII)V
+    //   50: invokevirtual 1082	java/io/OutputStream:write	([BII)V
     //   53: goto -19 -> 34
     //   56: astore 7
     //   58: aload_1
     //   59: astore 6
     //   61: aload 7
     //   63: astore_1
-    //   64: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   64: invokestatic 512	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   67: ifeq +14 -> 81
-    //   70: ldc_w 385
+    //   70: ldc_w 383
     //   73: iconst_2
     //   74: aload_1
-    //   75: invokevirtual 958	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   78: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   75: invokevirtual 959	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   78: invokestatic 390	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   81: aload 6
     //   83: ifnull +8 -> 91
     //   86: aload 6
-    //   88: invokevirtual 1086	java/io/InputStream:close	()V
+    //   88: invokevirtual 1085	java/io/InputStream:close	()V
     //   91: iload 5
     //   93: istore 4
     //   95: aload_2
     //   96: ifnull +11 -> 107
     //   99: aload_2
-    //   100: invokevirtual 1087	java/io/OutputStream:close	()V
+    //   100: invokevirtual 1086	java/io/OutputStream:close	()V
     //   103: iload 5
     //   105: istore 4
     //   107: iload 4
@@ -844,55 +846,55 @@ public class WorldCupShareFragment
     //   113: aload_1
     //   114: ifnull +7 -> 121
     //   117: aload_1
-    //   118: invokevirtual 1086	java/io/InputStream:close	()V
+    //   118: invokevirtual 1085	java/io/InputStream:close	()V
     //   121: iload 5
     //   123: istore 4
     //   125: aload_2
     //   126: ifnull -19 -> 107
     //   129: aload_2
-    //   130: invokevirtual 1087	java/io/OutputStream:close	()V
+    //   130: invokevirtual 1086	java/io/OutputStream:close	()V
     //   133: iconst_1
     //   134: ireturn
     //   135: astore_1
     //   136: iload 5
     //   138: istore 4
-    //   140: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   140: invokestatic 512	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   143: ifeq -36 -> 107
-    //   146: ldc_w 385
+    //   146: ldc_w 383
     //   149: iconst_2
     //   150: aload_1
-    //   151: invokevirtual 1088	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   154: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   151: invokevirtual 1087	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   154: invokestatic 390	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   157: iconst_1
     //   158: ireturn
     //   159: astore_1
-    //   160: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   160: invokestatic 512	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   163: ifeq -42 -> 121
-    //   166: ldc_w 385
+    //   166: ldc_w 383
     //   169: iconst_2
     //   170: aload_1
-    //   171: invokevirtual 1088	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   174: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   171: invokevirtual 1087	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   174: invokestatic 390	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   177: goto -56 -> 121
     //   180: astore_1
-    //   181: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   181: invokestatic 512	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   184: ifeq -93 -> 91
-    //   187: ldc_w 385
+    //   187: ldc_w 383
     //   190: iconst_2
     //   191: aload_1
-    //   192: invokevirtual 1088	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   195: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   192: invokevirtual 1087	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   195: invokestatic 390	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   198: goto -107 -> 91
     //   201: astore_1
     //   202: iload 5
     //   204: istore 4
-    //   206: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   206: invokestatic 512	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   209: ifeq -102 -> 107
-    //   212: ldc_w 385
+    //   212: ldc_w 383
     //   215: iconst_2
     //   216: aload_1
-    //   217: invokevirtual 1088	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   220: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   217: invokevirtual 1087	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   220: invokestatic 390	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   223: iconst_0
     //   224: ireturn
     //   225: astore_1
@@ -903,30 +905,30 @@ public class WorldCupShareFragment
     //   232: aload 6
     //   234: ifnull +8 -> 242
     //   237: aload 6
-    //   239: invokevirtual 1086	java/io/InputStream:close	()V
+    //   239: invokevirtual 1085	java/io/InputStream:close	()V
     //   242: aload_2
     //   243: ifnull +7 -> 250
     //   246: aload_2
-    //   247: invokevirtual 1087	java/io/OutputStream:close	()V
+    //   247: invokevirtual 1086	java/io/OutputStream:close	()V
     //   250: aload_1
     //   251: athrow
     //   252: astore 6
-    //   254: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   254: invokestatic 512	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   257: ifeq -15 -> 242
-    //   260: ldc_w 385
+    //   260: ldc_w 383
     //   263: iconst_2
     //   264: aload 6
-    //   266: invokevirtual 1088	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   269: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   266: invokevirtual 1087	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   269: invokestatic 390	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   272: goto -30 -> 242
     //   275: astore_2
-    //   276: invokestatic 514	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   276: invokestatic 512	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   279: ifeq -29 -> 250
-    //   282: ldc_w 385
+    //   282: ldc_w 383
     //   285: iconst_2
     //   286: aload_2
-    //   287: invokevirtual 1088	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   290: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   287: invokevirtual 1087	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   290: invokestatic 390	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   293: goto -43 -> 250
     //   296: astore 7
     //   298: aconst_null
@@ -1001,22 +1003,22 @@ public class WorldCupShareFragment
     //   1: astore 6
     //   3: aconst_null
     //   4: astore 5
-    //   6: new 624	java/io/File
+    //   6: new 627	java/io/File
     //   9: dup
     //   10: aload_1
-    //   11: invokespecial 920	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 921	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: astore 7
-    //   16: new 943	java/io/FileInputStream
+    //   16: new 944	java/io/FileInputStream
     //   19: dup
     //   20: aload 7
-    //   22: invokespecial 1093	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   22: invokespecial 1092	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   25: astore 4
     //   27: aload 4
     //   29: astore_3
     //   30: aload 4
     //   32: aload 7
-    //   34: invokevirtual 1010	java/io/File:length	()J
-    //   37: invokestatic 1099	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   34: invokevirtual 1009	java/io/File:length	()J
+    //   37: invokestatic 1098	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
     //   40: astore 7
     //   42: aload 7
     //   44: astore_1
@@ -1025,7 +1027,7 @@ public class WorldCupShareFragment
     //   47: aload 4
     //   49: ifnull +10 -> 59
     //   52: aload 4
-    //   54: invokevirtual 1100	java/io/FileInputStream:close	()V
+    //   54: invokevirtual 1099	java/io/FileInputStream:close	()V
     //   57: aload_1
     //   58: astore_3
     //   59: aload_3
@@ -1033,15 +1035,15 @@ public class WorldCupShareFragment
     //   61: astore_3
     //   62: aload 4
     //   64: astore_3
-    //   65: new 624	java/io/File
+    //   65: new 627	java/io/File
     //   68: dup
     //   69: aload_1
-    //   70: invokespecial 920	java/io/File:<init>	(Ljava/lang/String;)V
+    //   70: invokespecial 921	java/io/File:<init>	(Ljava/lang/String;)V
     //   73: astore 7
     //   75: aload 4
     //   77: astore_3
     //   78: aload 7
-    //   80: invokevirtual 923	java/io/File:exists	()Z
+    //   80: invokevirtual 924	java/io/File:exists	()Z
     //   83: istore_2
     //   84: aload 5
     //   86: astore_1
@@ -1050,22 +1052,22 @@ public class WorldCupShareFragment
     //   91: aload 4
     //   93: astore_3
     //   94: aload 7
-    //   96: invokestatic 1105	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
+    //   96: invokestatic 1104	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
     //   99: astore_1
     //   100: aload_1
     //   101: ifnull +14 -> 115
     //   104: aload 4
     //   106: astore_3
     //   107: aload_1
-    //   108: invokestatic 1108	com/tencent/mobileqq/utils/HexUtil:a	(Ljava/lang/String;)[B
+    //   108: invokestatic 1107	com/tencent/mobileqq/utils/HexUtil:a	(Ljava/lang/String;)[B
     //   111: astore_1
     //   112: goto -67 -> 45
-    //   115: ldc_w 412
+    //   115: ldc_w 410
     //   118: astore_1
     //   119: goto -15 -> 104
     //   122: astore_3
     //   123: aload_3
-    //   124: invokevirtual 1109	java/io/IOException:printStackTrace	()V
+    //   124: invokevirtual 1108	java/io/IOException:printStackTrace	()V
     //   127: aload_1
     //   128: areturn
     //   129: astore 5
@@ -1074,18 +1076,18 @@ public class WorldCupShareFragment
     //   133: aload_1
     //   134: astore_3
     //   135: aload 5
-    //   137: invokevirtual 1110	java/lang/Exception:printStackTrace	()V
+    //   137: invokevirtual 1109	java/lang/Exception:printStackTrace	()V
     //   140: aload 6
     //   142: astore_3
     //   143: aload_1
     //   144: ifnull -85 -> 59
     //   147: aload_1
-    //   148: invokevirtual 1100	java/io/FileInputStream:close	()V
+    //   148: invokevirtual 1099	java/io/FileInputStream:close	()V
     //   151: aconst_null
     //   152: areturn
     //   153: astore_1
     //   154: aload_1
-    //   155: invokevirtual 1109	java/io/IOException:printStackTrace	()V
+    //   155: invokevirtual 1108	java/io/IOException:printStackTrace	()V
     //   158: aconst_null
     //   159: areturn
     //   160: astore_1
@@ -1094,12 +1096,12 @@ public class WorldCupShareFragment
     //   163: aload_3
     //   164: ifnull +7 -> 171
     //   167: aload_3
-    //   168: invokevirtual 1100	java/io/FileInputStream:close	()V
+    //   168: invokevirtual 1099	java/io/FileInputStream:close	()V
     //   171: aload_1
     //   172: athrow
     //   173: astore_3
     //   174: aload_3
-    //   175: invokevirtual 1109	java/io/IOException:printStackTrace	()V
+    //   175: invokevirtual 1108	java/io/IOException:printStackTrace	()V
     //   178: goto -7 -> 171
     //   181: astore_1
     //   182: goto -19 -> 163
@@ -1172,9 +1174,9 @@ public class WorldCupShareFragment
   
   private void b(View paramView)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131375471);
-    Object localObject = paramView.findViewById(2131375470);
-    paramView = (LinearLayout)paramView.findViewById(2131375508);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131375535);
+    Object localObject = paramView.findViewById(2131375534);
+    paramView = (LinearLayout)paramView.findViewById(2131375572);
     localRelativeLayout.setVisibility(0);
     paramView.setVisibility(0);
     ((View)localObject).startAnimation(a());
@@ -1223,6 +1225,11 @@ public class WorldCupShareFragment
     {
       paramString.printStackTrace();
     }
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    b(paramBoolean, null);
   }
   
   private void b(boolean paramBoolean, View paramView)
@@ -1287,6 +1294,48 @@ public class WorldCupShareFragment
     return localWorldCupConfigInfo.a(0) + "share" + File.separator;
   }
   
+  private void c()
+  {
+    View localView = getView();
+    String str = ((EditText)localView.findViewById(2131375577)).getText().toString();
+    if (a(str) > 10)
+    {
+      QQToast.a(getActivity(), 2131439398, 1).a();
+      a("0X8009319", 1);
+      return;
+    }
+    if (str.length() <= 0)
+    {
+      QQToast.a(getActivity(), 2131439416, 1).a();
+      a("0X8009319", 4);
+      return;
+    }
+    if ((str != null) && (str.length() > 0))
+    {
+      if (!this.jdField_b_of_type_Boolean) {
+        break label169;
+      }
+      this.jdField_c_of_type_JavaLangString = str;
+      ((TextView)localView.findViewById(2131375547)).setText(this.jdField_c_of_type_JavaLangString);
+    }
+    for (;;)
+    {
+      a(localView);
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      {
+        if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
+          this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        }
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      }
+      this.jdField_e_of_type_JavaLangString = null;
+      e();
+      return;
+      label169:
+      this.jdField_d_of_type_JavaLangString = str;
+    }
+  }
+  
   private void c(View paramView)
   {
     QLog.d("WorldCupShareFragment", 1, "WL_DEBUG playVideo");
@@ -1309,58 +1358,22 @@ public class WorldCupShareFragment
     }
   }
   
-  private void c(boolean paramBoolean)
-  {
-    b(paramBoolean, null);
-  }
-  
   private void d()
   {
-    View localView = getView();
-    String str = ((EditText)localView.findViewById(2131375513)).getText().toString();
-    if (a(str) > 10)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
     {
-      QQToast.a(getActivity(), 2131439359, 1).a();
-      a("0X8009319", 1);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(getActivity());
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(a());
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this);
     }
-    if (str.length() <= 0)
-    {
-      QQToast.a(getActivity(), 2131439377, 1).a();
-      a("0X8009319", 4);
-      return;
-    }
-    if ((str != null) && (str.length() > 0))
-    {
-      if (!this.jdField_b_of_type_Boolean) {
-        break label169;
-      }
-      this.jdField_c_of_type_JavaLangString = str;
-      ((TextView)localView.findViewById(2131375483)).setText(this.jdField_c_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      a(localView);
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-      {
-        if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
-          this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-        }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-      }
-      this.jdField_e_of_type_JavaLangString = null;
-      f();
-      return;
-      label169:
-      this.jdField_d_of_type_JavaLangString = str;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a();
   }
   
   private void d(View paramView)
   {
     if (paramView != null)
     {
-      paramView = (ImageView)paramView.findViewById(2131375472);
+      paramView = (ImageView)paramView.findViewById(2131375536);
       if ((!this.jdField_d_of_type_Boolean) && (!this.jdField_f_of_type_Boolean)) {
         break label37;
       }
@@ -1375,7 +1388,7 @@ public class WorldCupShareFragment
   
   private void d(View paramView, boolean paramBoolean)
   {
-    View localView = paramView.findViewById(2131375480);
+    View localView = paramView.findViewById(2131375544);
     if (paramBoolean) {}
     for (paramView = this.jdField_b_of_type_AndroidGraphicsDrawableStateListDrawable;; paramView = this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable)
     {
@@ -1386,21 +1399,20 @@ public class WorldCupShareFragment
   
   private void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(getActivity());
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(a());
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a();
+    FragmentActivity localFragmentActivity = getActivity();
+    FrameLayout localFrameLayout = (FrameLayout)localFragmentActivity.findViewById(2131375576);
+    EditText localEditText = (EditText)localFragmentActivity.findViewById(2131375577);
+    localEditText.setText(null);
+    localFrameLayout.setVisibility(8);
+    ((InputMethodManager)localFragmentActivity.getSystemService("input_method")).hideSoftInputFromWindow(localEditText.getWindowToken(), 0);
   }
   
   private void e(View paramView)
   {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131375482);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131375483);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131375484);
-    paramView = (TextView)paramView.findViewById(2131375485);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131375546);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131375547);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131375548);
+    paramView = (TextView)paramView.findViewById(2131375549);
     if ((this.jdField_e_of_type_Boolean) || (this.jdField_f_of_type_Boolean)) {}
     for (int m = 0;; m = 8)
     {
@@ -1414,31 +1426,10 @@ public class WorldCupShareFragment
   
   private void f()
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    FrameLayout localFrameLayout = (FrameLayout)localFragmentActivity.findViewById(2131375512);
-    EditText localEditText = (EditText)localFragmentActivity.findViewById(2131375513);
-    localEditText.setText(null);
-    localFrameLayout.setVisibility(8);
-    ((InputMethodManager)localFragmentActivity.getSystemService("input_method")).hideSoftInputFromWindow(localEditText.getWindowToken(), 0);
-  }
-  
-  private void f(View paramView)
-  {
-    paramView = paramView.findViewById(2131375480);
-    if ((this.jdField_d_of_type_Boolean) || (this.jdField_f_of_type_Boolean)) {}
-    for (int m = 8;; m = 0)
-    {
-      paramView.setVisibility(m);
-      return;
-    }
-  }
-  
-  private void g()
-  {
     if (QLog.isColorLevel()) {
       QLog.d("WorldCupShareFragment", 2, "showWaitingDialog");
     }
-    ARCardLoadingProgressView localARCardLoadingProgressView = (ARCardLoadingProgressView)getView().findViewById(2131375511);
+    ARCardLoadingProgressView localARCardLoadingProgressView = (ARCardLoadingProgressView)getView().findViewById(2131375575);
     if ((getActivity() == null) || (getActivity().isFinishing()) || (localARCardLoadingProgressView.getVisibility() == 0))
     {
       if (QLog.isColorLevel()) {
@@ -1450,9 +1441,32 @@ public class WorldCupShareFragment
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 60000L);
   }
   
+  private void f(View paramView)
+  {
+    paramView = paramView.findViewById(2131375544);
+    if ((this.jdField_d_of_type_Boolean) || (this.jdField_f_of_type_Boolean)) {}
+    for (int m = 8;; m = 0)
+    {
+      paramView.setVisibility(m);
+      return;
+    }
+  }
+  
+  private void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WorldCupShareFragment", 2, "dismissWaittingDialog");
+    }
+    ARCardLoadingProgressView localARCardLoadingProgressView = (ARCardLoadingProgressView)getView().findViewById(2131375575);
+    if ((getActivity() != null) && (localARCardLoadingProgressView.getVisibility() == 0) && (!getActivity().isFinishing())) {
+      localARCardLoadingProgressView.setVisibility(8);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+  }
+  
   private void g(View paramView)
   {
-    paramView = paramView.findViewById(2131375509);
+    paramView = paramView.findViewById(2131375573);
     if (!this.jdField_d_of_type_Boolean) {}
     for (boolean bool = true;; bool = false)
     {
@@ -1462,81 +1476,6 @@ public class WorldCupShareFragment
   }
   
   private void h()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WorldCupShareFragment", 2, "dismissWaittingDialog");
-    }
-    ARCardLoadingProgressView localARCardLoadingProgressView = (ARCardLoadingProgressView)getView().findViewById(2131375511);
-    if ((getActivity() != null) && (localARCardLoadingProgressView.getVisibility() == 0) && (!getActivity().isFinishing())) {
-      localARCardLoadingProgressView.setVisibility(8);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-  }
-  
-  private void h(View paramView)
-  {
-    Resources localResources = getResources();
-    WorldCupShareInfo localWorldCupShareInfo = WorldCup.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a();
-    String str = b();
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131375471);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131375472);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131375477);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131375478);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131375479);
-    TextView localTextView4 = (TextView)paramView.findViewById(2131375483);
-    TextView localTextView5 = (TextView)paramView.findViewById(2131375484);
-    TextView localTextView6 = (TextView)paramView.findViewById(2131375485);
-    TextView localTextView7 = (TextView)paramView.findViewById(2131375487);
-    TextView localTextView8 = (TextView)paramView.findViewById(2131375488);
-    TextView localTextView9 = (TextView)paramView.findViewById(2131375489);
-    TextView localTextView10 = (TextView)paramView.findViewById(2131375490);
-    TextView localTextView11 = (TextView)paramView.findViewById(2131375491);
-    TextView localTextView12 = (TextView)paramView.findViewById(2131375492);
-    TextView localTextView13 = (TextView)paramView.findViewById(2131375494);
-    TextView localTextView14 = (TextView)paramView.findViewById(2131375495);
-    TextView localTextView15 = (TextView)paramView.findViewById(2131375496);
-    TextView localTextView16 = (TextView)paramView.findViewById(2131375498);
-    TextView localTextView17 = (TextView)paramView.findViewById(2131375500);
-    TextView localTextView18 = (TextView)paramView.findViewById(2131375501);
-    TextView localTextView19 = (TextView)paramView.findViewById(2131375502);
-    TextView localTextView20 = (TextView)paramView.findViewById(2131375503);
-    TextView localTextView21 = (TextView)paramView.findViewById(2131375504);
-    View localView1 = paramView.findViewById(2131375505);
-    View localView2 = paramView.findViewById(2131375506);
-    View localView3 = paramView.findViewById(2131375507);
-    this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(str + localWorldCupShareInfo.font_name);
-    localTextView1.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView2.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView3.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView4.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView5.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView6.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView7.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView8.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView9.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView10.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView11.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView12.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView13.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView14.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView15.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView16.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView18.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView19.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView20.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView21.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localTextView17.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    localRelativeLayout.setBackgroundDrawable(new BitmapDrawable(localResources, WorldCupShareInfo.getResBitmap(str + localWorldCupShareInfo.background)));
-    localImageView.setImageDrawable(new BitmapDrawable(localResources, WorldCupShareInfo.getResBitmap(this.jdField_a_of_type_JavaLangString)));
-    localView1.setBackgroundDrawable(new BitmapDrawable(localResources, WorldCupShareInfo.getResBitmap(str + localWorldCupShareInfo.banner1)));
-    localView2.setBackgroundDrawable(new BitmapDrawable(localResources, WorldCupShareInfo.getResBitmap(str + localWorldCupShareInfo.banner2)));
-    localView3.setBackgroundDrawable(new BitmapDrawable(localResources, WorldCupShareInfo.getResBitmap(str + localWorldCupShareInfo.banner3)));
-    a(paramView, localWorldCupShareInfo);
-    a(localWorldCupShareInfo);
-    d(paramView, false);
-  }
-  
-  private void i()
   {
     ArMapHandler localArMapHandler = (ArMapHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(2);
     Object localObject1 = new JSONObject();
@@ -1644,17 +1583,102 @@ public class WorldCupShareFragment
       localJSONObject2.put("matches_title_color", ((WorldCupShareInfo.ColorScheme)localObject2).matches_title_color);
       localJSONObject1.put("color_scheme", localJSONObject2);
       localJSONObject1.put("banner3", localJSONException.banner3);
-      localJSONObject1.put("create_time", String.valueOf(this.jdField_c_of_type_Long));
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
-      {
-        localObject2 = this.jdField_a_of_type_JavaLangString.split("/");
-        if ((localObject2 != null) && (localObject2.length > 0)) {
-          localJSONObject1.put("video_cover", localObject2[(localObject2.length - 1)]);
-        }
-      }
       ((JSONObject)localObject1).put("share", localJSONObject1);
       ((JSONObject)localObject1).put("background", localJSONException.background);
+      ((JSONObject)localObject1).put("create_time", String.valueOf(this.jdField_c_of_type_Long / 1000L));
+      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
+      {
+        String[] arrayOfString = this.jdField_a_of_type_JavaLangString.split("/");
+        if ((arrayOfString != null) && (arrayOfString.length > 0)) {
+          ((JSONObject)localObject1).put("video_cover", arrayOfString[(arrayOfString.length - 1)]);
+        }
+      }
     }
+  }
+  
+  private void h(View paramView)
+  {
+    Resources localResources = getResources();
+    WorldCupShareInfo localWorldCupShareInfo = WorldCup.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a();
+    String str = b();
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131375535);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131375536);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131375541);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131375542);
+    TextView localTextView3 = (TextView)paramView.findViewById(2131375543);
+    TextView localTextView4 = (TextView)paramView.findViewById(2131375547);
+    TextView localTextView5 = (TextView)paramView.findViewById(2131375548);
+    TextView localTextView6 = (TextView)paramView.findViewById(2131375549);
+    TextView localTextView7 = (TextView)paramView.findViewById(2131375551);
+    TextView localTextView8 = (TextView)paramView.findViewById(2131375552);
+    TextView localTextView9 = (TextView)paramView.findViewById(2131375553);
+    TextView localTextView10 = (TextView)paramView.findViewById(2131375554);
+    TextView localTextView11 = (TextView)paramView.findViewById(2131375555);
+    TextView localTextView12 = (TextView)paramView.findViewById(2131375556);
+    TextView localTextView13 = (TextView)paramView.findViewById(2131375558);
+    TextView localTextView14 = (TextView)paramView.findViewById(2131375559);
+    TextView localTextView15 = (TextView)paramView.findViewById(2131375560);
+    TextView localTextView16 = (TextView)paramView.findViewById(2131375562);
+    TextView localTextView17 = (TextView)paramView.findViewById(2131375564);
+    TextView localTextView18 = (TextView)paramView.findViewById(2131375565);
+    TextView localTextView19 = (TextView)paramView.findViewById(2131375566);
+    TextView localTextView20 = (TextView)paramView.findViewById(2131375567);
+    TextView localTextView21 = (TextView)paramView.findViewById(2131375568);
+    View localView1 = paramView.findViewById(2131375569);
+    View localView2 = paramView.findViewById(2131375570);
+    View localView3 = paramView.findViewById(2131375571);
+    try
+    {
+      this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(str + localWorldCupShareInfo.font_name);
+      if (this.jdField_a_of_type_AndroidGraphicsTypeface != null)
+      {
+        localTextView1.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView2.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView3.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView4.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView5.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView6.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView7.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView8.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView9.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView10.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView11.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView12.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView13.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView14.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView15.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView16.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView18.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView19.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView20.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView21.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+        localTextView17.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+      }
+      localRelativeLayout.setBackgroundDrawable(new BitmapDrawable(localResources, WorldCupShareInfo.getResBitmap(str + localWorldCupShareInfo.background)));
+      localImageView.setImageDrawable(new BitmapDrawable(localResources, WorldCupShareInfo.getResBitmap(this.jdField_a_of_type_JavaLangString)));
+      localView1.setBackgroundDrawable(new BitmapDrawable(localResources, WorldCupShareInfo.getResBitmap(str + localWorldCupShareInfo.banner1)));
+      localView2.setBackgroundDrawable(new BitmapDrawable(localResources, WorldCupShareInfo.getResBitmap(str + localWorldCupShareInfo.banner2)));
+      localView3.setBackgroundDrawable(new BitmapDrawable(localResources, WorldCupShareInfo.getResBitmap(str + localWorldCupShareInfo.banner3)));
+      a(paramView, localWorldCupShareInfo);
+      a(localWorldCupShareInfo);
+      d(paramView, false);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidGraphicsTypeface = null;
+        QLog.e("WorldCupShareFragment", 1, "WL_DEBUG initRes e = " + localException);
+      }
+    }
+  }
+  
+  private void i()
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.ar.worldcup.finishScanTorch");
+    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
   }
   
   private void i(View paramView)
@@ -1664,27 +1688,27 @@ public class WorldCupShareFragment
     }
   }
   
-  private void j()
+  void a()
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.ar.worldcup.finishScanTorch");
-    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+    if (!new File(this.jdField_b_of_type_JavaLangString).exists())
+    {
+      QQToast.a(BaseApplication.getContext(), 1, 2131435640, 0).a();
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    ThreadManager.postImmediately(new algj(this), null, true);
   }
   
   protected void a(long paramLong)
   {
-    ((ARCardLoadingProgressView)getView().findViewById(2131375511)).setTotalProgress((int)(100L * paramLong / this.jdField_d_of_type_Long));
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    super.a(paramActivity);
-    paramActivity.getWindow().setSoftInputMode(18);
+    ((ARCardLoadingProgressView)getView().findViewById(2131375575)).setTotalProgress((int)(100L * paramLong / this.jdField_d_of_type_Long));
   }
   
   public boolean a()
   {
-    return true;
+    boolean bool = WorldCup.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(2);
+    QLog.i("WorldCupShareFragment", 2, "WL_DEBUG isResReady = " + bool);
+    return bool;
   }
   
   protected List[] a()
@@ -1692,28 +1716,28 @@ public class WorldCupShareFragment
     ArrayList localArrayList = new ArrayList();
     FragmentActivity localFragmentActivity = getActivity();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = localFragmentActivity.getString(2131430108);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = localFragmentActivity.getString(2131430110);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838341;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.jdField_c_of_type_Int = 2;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = localFragmentActivity.getString(2131430114);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838337;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = localFragmentActivity.getString(2131430116);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838342;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.jdField_c_of_type_Int = 3;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = localFragmentActivity.getString(2131430126);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838340;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = localFragmentActivity.getString(2131430128);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838345;
     localActionSheetItem.jdField_c_of_type_Int = 9;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = localFragmentActivity.getString(2131430127);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838334;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = localFragmentActivity.getString(2131430129);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838339;
     localActionSheetItem.jdField_c_of_type_Int = 10;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
@@ -1722,25 +1746,7 @@ public class WorldCupShareFragment
   
   public void afterTextChanged(Editable paramEditable) {}
   
-  void b()
-  {
-    if (!new File(this.jdField_b_of_type_JavaLangString).exists())
-    {
-      QQToast.a(BaseApplication.getContext(), 1, 2131435624, 0).a();
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    ThreadManager.postImmediately(new akyr(this), null, true);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void c()
+  public void b()
   {
     QLog.i("WorldCupShareFragment", 2, "WL_DEBUG downloadRes begin");
     WorldCup.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 2);
@@ -1748,32 +1754,7 @@ public class WorldCupShareFragment
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
   }
   
-  public boolean d()
-  {
-    if (((FrameLayout)getActivity().findViewById(2131375512)).getVisibility() == 0) {
-      f();
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = bool1;
-      if (!bool1)
-      {
-        BaseApplication localBaseApplication = BaseApplication.getContext();
-        Intent localIntent = new Intent(localBaseApplication, SplashActivity.class);
-        localIntent.setFlags(268468224);
-        localBaseApplication.startActivity(localIntent);
-        bool2 = true;
-      }
-      return bool2;
-    }
-  }
-  
-  public boolean e()
-  {
-    boolean bool = WorldCup.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(2);
-    QLog.i("WorldCupShareFragment", 2, "WL_DEBUG isResReady = " + bool);
-    return bool;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
   public boolean handleMessage(Message paramMessage)
   {
@@ -1799,18 +1780,34 @@ public class WorldCupShareFragment
           a(localView, bool);
           return false;
         }
-      } while ((localView == null) || (((ARCardLoadingProgressView)localView.findViewById(2131375511)).getVisibility() != 0));
-      h();
-      QQToast.a(BaseApplication.getContext(), 1, 2131439375, 0).a();
+      } while ((localView == null) || (((ARCardLoadingProgressView)localView.findViewById(2131375575)).getVisibility() != 0));
+      g();
+      QQToast.a(BaseApplication.getContext(), 1, 2131439414, 0).a();
       return false;
     }
     this.jdField_b_of_type_JavaLangString = VideoProcessor.a(0);
     if (FileUtil.a(this.jdField_b_of_type_JavaLangString)) {
       this.jdField_c_of_type_Boolean = true;
     }
-    j();
+    i();
     b(true, localView);
     return false;
+  }
+  
+  public void initWindowStyleAndAnimation(Activity paramActivity)
+  {
+    super.initWindowStyleAndAnimation(paramActivity);
+    paramActivity.getWindow().setSoftInputMode(18);
+  }
+  
+  public boolean needImmersive()
+  {
+    return false;
+  }
+  
+  public boolean needStatusTrans()
+  {
+    return true;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -1821,11 +1818,11 @@ public class WorldCupShareFragment
     default: 
       return;
     case 21: 
-      QRUtils.a(2, 2131435089);
+      QRUtils.a(2, 2131435105);
       a("0X800931F", 1);
       return;
     }
-    QRUtils.a(2, 2131435089);
+    QRUtils.a(2, 2131435105);
     a("0X800931F", 2);
   }
   
@@ -1837,6 +1834,26 @@ public class WorldCupShareFragment
     }
   }
   
+  public boolean onBackEvent()
+  {
+    if (((FrameLayout)getActivity().findViewById(2131375576)).getVisibility() == 0) {
+      e();
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      boolean bool2 = bool1;
+      if (!bool1)
+      {
+        BaseApplication localBaseApplication = BaseApplication.getContext();
+        Intent localIntent = new Intent(localBaseApplication, SplashActivity.class);
+        localIntent.setFlags(268468224);
+        localBaseApplication.startActivity(localIntent);
+        bool2 = true;
+      }
+      return bool2;
+    }
+  }
+  
   public void onClick(View paramView)
   {
     boolean bool2 = true;
@@ -1845,17 +1862,17 @@ public class WorldCupShareFragment
     View localView = getView();
     switch (paramView.getId())
     {
-    case 2131375512: 
-    case 2131375513: 
+    case 2131375576: 
+    case 2131375577: 
     default: 
-    case 2131363245: 
-    case 2131375480: 
-    case 2131375483: 
-    case 2131375488: 
-    case 2131375494: 
-    case 2131375498: 
-    case 2131375500: 
-    case 2131375509: 
+    case 2131363262: 
+    case 2131375544: 
+    case 2131375547: 
+    case 2131375552: 
+    case 2131375558: 
+    case 2131375562: 
+    case 2131375564: 
+    case 2131375573: 
       do
       {
         return;
@@ -1874,21 +1891,21 @@ public class WorldCupShareFragment
         return;
       } while (!this.jdField_a_of_type_Boolean);
       if (!b(this.jdField_g_of_type_JavaLangString)) {
-        b();
+        a();
       }
       for (;;)
       {
         a("0X800931B");
         return;
-        QQToast.a(BaseApplicationImpl.getContext(), 2, getString(2131439376), 1).b(getActivity().getTitleBarHeight());
+        QQToast.a(BaseApplicationImpl.getContext(), 2, getString(2131439415), 1).a();
       }
-    case 2131375510: 
+    case 2131375574: 
       if (NetworkUtil.e(localFragmentActivity)) {
         if ((this.jdField_f_of_type_JavaLangString == null) && (this.jdField_c_of_type_Boolean))
         {
-          g();
+          f();
           if (!a(this.jdField_b_of_type_JavaLangString)) {
-            h();
+            g();
           }
         }
       }
@@ -1898,28 +1915,28 @@ public class WorldCupShareFragment
         return;
         if (this.jdField_e_of_type_JavaLangString == null)
         {
-          g();
-          i();
+          f();
+          h();
         }
         else
         {
-          e();
+          d();
           continue;
-          QQToast.a(BaseApplication.getContext(), 1, 2131439375, 0).a();
+          QQToast.a(BaseApplication.getContext(), 1, 2131439414, 0).a();
         }
       }
-    case 2131362669: 
+    case 2131362674: 
       if (!this.jdField_e_of_type_Boolean) {}
       for (bool1 = bool2;; bool1 = false)
       {
         b(localView, bool1);
         return;
       }
-    case 2131371712: 
-      f();
+    case 2131371710: 
+      e();
       return;
-    case 2131371713: 
-      d();
+    case 2131371711: 
+      c();
       return;
     }
     a(false);
@@ -1946,7 +1963,7 @@ public class WorldCupShareFragment
     }
     this.jdField_a_of_type_JavaLangString = ARWorldCupRecordController.jdField_a_of_type_JavaLangString;
     this.jdField_b_of_type_JavaLangString = ARWorldCupRecordController.jdField_b_of_type_JavaLangString;
-    c(ARWorldCupRecordController.jdField_a_of_type_Boolean);
+    b(ARWorldCupRecordController.jdField_a_of_type_Boolean);
     QLog.d("WorldCupShareFragment", 1, "WL_DEBUG mCoverPath = " + this.jdField_a_of_type_JavaLangString + ", mVideoPath = " + this.jdField_b_of_type_JavaLangString + ", mIsMergeFinish = " + this.jdField_g_of_type_Boolean);
     paramBundle = new IntentFilter();
     paramBundle.addAction("tencent.ar.worldcup.record");
@@ -1981,7 +1998,7 @@ public class WorldCupShareFragment
           this.jdField_a_of_type_JavaLangString = paramBundle.getString("coverPath");
         }
         if (!this.jdField_g_of_type_Boolean) {
-          c(paramBundle.getBoolean("isMergeFinish"));
+          b(paramBundle.getBoolean("isMergeFinish"));
         }
       }
       localObject1 = getActivity();
@@ -1994,54 +2011,55 @@ public class WorldCupShareFragment
       Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader.a((String)localObject1, true);
       localObject1 = paramLayoutInflater.inflate(a(0), paramViewGroup, false);
       a((String)localObject2, (View)localObject1);
-      RelativeLayout localRelativeLayout = (RelativeLayout)((View)localObject1).findViewById(2131375471);
-      ImageView localImageView1 = (ImageView)((View)localObject1).findViewById(2131375472);
-      View localView1 = ((View)localObject1).findViewById(2131375473);
-      View localView2 = ((View)localObject1).findViewById(2131375474);
-      View localView3 = ((View)localObject1).findViewById(2131375475);
-      View localView4 = ((View)localObject1).findViewById(2131375476);
-      TextView localTextView18 = (TextView)((View)localObject1).findViewById(2131375477);
-      TextView localTextView19 = (TextView)((View)localObject1).findViewById(2131375478);
-      TextView localTextView20 = (TextView)((View)localObject1).findViewById(2131375479);
-      paramLayoutInflater = ((View)localObject1).findViewById(2131375480);
-      LinearLayout localLinearLayout1 = (LinearLayout)((View)localObject1).findViewById(2131375481);
-      ImageView localImageView2 = (ImageView)((View)localObject1).findViewById(2131375482);
-      TextView localTextView21 = (TextView)((View)localObject1).findViewById(2131375483);
-      LinearLayout localLinearLayout2 = (LinearLayout)((View)localObject1).findViewById(2131375486);
-      Object localObject5 = (TextView)((View)localObject1).findViewById(2131375487);
-      Object localObject3 = (TextView)((View)localObject1).findViewById(2131375488);
-      TextView localTextView11 = (TextView)((View)localObject1).findViewById(2131375489);
-      TextView localTextView12 = (TextView)((View)localObject1).findViewById(2131375490);
-      TextView localTextView13 = (TextView)((View)localObject1).findViewById(2131375491);
-      TextView localTextView14 = (TextView)((View)localObject1).findViewById(2131375492);
-      LinearLayout localLinearLayout3 = (LinearLayout)((View)localObject1).findViewById(2131375493);
-      TextView localTextView15 = (TextView)((View)localObject1).findViewById(2131375494);
-      TextView localTextView16 = (TextView)((View)localObject1).findViewById(2131375495);
-      TextView localTextView17 = (TextView)((View)localObject1).findViewById(2131375496);
-      View localView5 = ((View)localObject1).findViewById(2131375497);
-      TextView localTextView5 = (TextView)((View)localObject1).findViewById(2131375498);
-      View localView6 = ((View)localObject1).findViewById(2131375499);
-      TextView localTextView6 = (TextView)((View)localObject1).findViewById(2131375500);
-      TextView localTextView7 = (TextView)((View)localObject1).findViewById(2131375501);
-      TextView localTextView8 = (TextView)((View)localObject1).findViewById(2131375502);
-      TextView localTextView9 = (TextView)((View)localObject1).findViewById(2131375503);
-      TextView localTextView10 = (TextView)((View)localObject1).findViewById(2131375504);
-      View localView7 = ((View)localObject1).findViewById(2131375505);
-      View localView8 = ((View)localObject1).findViewById(2131375506);
-      View localView9 = ((View)localObject1).findViewById(2131375507);
-      ImageView localImageView3 = (ImageView)((View)localObject1).findViewById(2131375470);
-      paramViewGroup = (TextView)((View)localObject1).findViewById(2131363245);
-      TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131375509);
-      TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131375510);
-      ARCardLoadingProgressView localARCardLoadingProgressView = (ARCardLoadingProgressView)((View)localObject1).findViewById(2131375511);
-      FrameLayout localFrameLayout = (FrameLayout)((View)localObject1).findViewById(2131375512);
-      EditText localEditText = (EditText)((View)localObject1).findViewById(2131375513);
-      TextView localTextView3 = (TextView)((View)localObject1).findViewById(2131371712);
-      TextView localTextView4 = (TextView)((View)localObject1).findViewById(2131371713);
+      RelativeLayout localRelativeLayout = (RelativeLayout)((View)localObject1).findViewById(2131375535);
+      ImageView localImageView1 = (ImageView)((View)localObject1).findViewById(2131375536);
+      View localView1 = ((View)localObject1).findViewById(2131375537);
+      View localView2 = ((View)localObject1).findViewById(2131375538);
+      View localView3 = ((View)localObject1).findViewById(2131375539);
+      View localView4 = ((View)localObject1).findViewById(2131375540);
+      TextView localTextView19 = (TextView)((View)localObject1).findViewById(2131375541);
+      TextView localTextView20 = (TextView)((View)localObject1).findViewById(2131375542);
+      TextView localTextView21 = (TextView)((View)localObject1).findViewById(2131375543);
+      paramLayoutInflater = ((View)localObject1).findViewById(2131375544);
+      LinearLayout localLinearLayout1 = (LinearLayout)((View)localObject1).findViewById(2131375545);
+      ImageView localImageView2 = (ImageView)((View)localObject1).findViewById(2131375546);
+      TextView localTextView22 = (TextView)((View)localObject1).findViewById(2131375547);
+      LinearLayout localLinearLayout2 = (LinearLayout)((View)localObject1).findViewById(2131375550);
+      Object localObject5 = (TextView)((View)localObject1).findViewById(2131375551);
+      Object localObject3 = (TextView)((View)localObject1).findViewById(2131375552);
+      TextView localTextView12 = (TextView)((View)localObject1).findViewById(2131375553);
+      TextView localTextView13 = (TextView)((View)localObject1).findViewById(2131375554);
+      TextView localTextView14 = (TextView)((View)localObject1).findViewById(2131375555);
+      TextView localTextView15 = (TextView)((View)localObject1).findViewById(2131375556);
+      LinearLayout localLinearLayout3 = (LinearLayout)((View)localObject1).findViewById(2131375557);
+      TextView localTextView16 = (TextView)((View)localObject1).findViewById(2131375558);
+      TextView localTextView17 = (TextView)((View)localObject1).findViewById(2131375559);
+      TextView localTextView18 = (TextView)((View)localObject1).findViewById(2131375560);
+      View localView5 = ((View)localObject1).findViewById(2131375561);
+      TextView localTextView6 = (TextView)((View)localObject1).findViewById(2131375562);
+      View localView6 = ((View)localObject1).findViewById(2131375563);
+      TextView localTextView7 = (TextView)((View)localObject1).findViewById(2131375564);
+      TextView localTextView8 = (TextView)((View)localObject1).findViewById(2131375565);
+      TextView localTextView9 = (TextView)((View)localObject1).findViewById(2131375566);
+      TextView localTextView10 = (TextView)((View)localObject1).findViewById(2131375567);
+      TextView localTextView11 = (TextView)((View)localObject1).findViewById(2131375568);
+      View localView7 = ((View)localObject1).findViewById(2131375569);
+      View localView8 = ((View)localObject1).findViewById(2131375570);
+      View localView9 = ((View)localObject1).findViewById(2131375571);
+      ImageView localImageView3 = (ImageView)((View)localObject1).findViewById(2131375534);
+      paramViewGroup = (TextView)((View)localObject1).findViewById(2131363262);
+      TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131375573);
+      TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131375574);
+      ARCardLoadingProgressView localARCardLoadingProgressView = (ARCardLoadingProgressView)((View)localObject1).findViewById(2131375575);
+      FrameLayout localFrameLayout = (FrameLayout)((View)localObject1).findViewById(2131375576);
+      EditText localEditText = (EditText)((View)localObject1).findViewById(2131375577);
+      TextView localTextView3 = (TextView)((View)localObject1).findViewById(2131371710);
+      TextView localTextView4 = (TextView)((View)localObject1).findViewById(2131371711);
+      TextView localTextView5 = (TextView)((View)localObject1).findViewById(2131363489);
       localLayoutParams = (RelativeLayout.LayoutParams)localRelativeLayout.getLayoutParams();
       m -= AIOUtils.a(128.0F, paramBundle);
       if (localLayoutParams.height * n <= localLayoutParams.width * m) {
-        break label1957;
+        break label1985;
       }
       int i1 = localLayoutParams.height;
       n = m;
@@ -2054,25 +2072,25 @@ public class WorldCupShareFragment
       a(localView2, n, m);
       a(localView3, n, m);
       a(localView4, n, m);
-      a(localTextView18, n, m);
       a(localTextView19, n, m);
       a(localTextView20, n, m);
+      a(localTextView21, n, m);
       a(paramLayoutInflater, n, m);
       b(localLinearLayout1, n, m);
       b(localImageView2, n, m);
-      a(localTextView21, n, m);
+      a(localTextView22, n, m);
       a(localLinearLayout2, n, m);
-      a(localTextView13, n, m);
       a(localTextView14, n, m);
+      a(localTextView15, n, m);
       a(localLinearLayout3, n, m);
-      a(localTextView5, n, m);
-      a(localTextView7, n, m);
+      a(localTextView6, n, m);
       a(localTextView8, n, m);
       a(localTextView9, n, m);
       a(localTextView10, n, m);
+      a(localTextView11, n, m);
       a(localView5, n, m);
       a(localView6, n, m);
-      a(localTextView6, n, m);
+      a(localTextView7, n, m);
       a(localView7, n, m);
       a(localView8, n, m);
       a(localImageView3, n, m);
@@ -2089,26 +2107,26 @@ public class WorldCupShareFragment
       if (bool1)
       {
         this.jdField_c_of_type_Boolean = true;
-        j();
+        i();
       }
       QLog.d("WorldCupShareFragment", 1, "WL_DEBUG onCreateView mIsRecordSuccess = " + this.jdField_c_of_type_Boolean);
       a((View)localObject1, n, m);
-      localTextView18.setTextSize(0, n * 12 / m);
-      localTextView19.setTextSize(0, n * 34 / m);
-      localTextView20.setTextSize(0, n * 12 / m);
+      localTextView19.setTextSize(0, n * 12 / m);
+      localTextView20.setTextSize(0, n * 34 / m);
+      localTextView21.setTextSize(0, n * 12 / m);
       localImageView2.setImageDrawable(new BitmapDrawable(paramBundle, (Bitmap)localObject4));
       i1 = n * 4 / m + 11;
       localImageView2.setPadding(i1, i1, i1, i1);
-      localTextView21.setOnClickListener(this);
-      localTextView21.setTextSize(0, n * 74 / m);
-      localTextView21.setSpannableFactory(QQText.a);
-      localTextView21.setText(this.jdField_c_of_type_JavaLangString);
+      localTextView22.setOnClickListener(this);
+      localTextView22.setTextSize(0, n * 74 / m);
+      localTextView22.setSpannableFactory(QQText.a);
+      localTextView22.setText(this.jdField_c_of_type_JavaLangString);
       ((TextView)localObject5).setTextSize(0, n * 34 / m);
       localObject4 = (LinearLayout.LayoutParams)((TextView)localObject5).getLayoutParams();
       ((LinearLayout.LayoutParams)localObject4).height = (((LinearLayout.LayoutParams)localObject4).height * n / m);
       ((LinearLayout.LayoutParams)localObject4).bottomMargin = (((LinearLayout.LayoutParams)localObject4).bottomMargin * n / m);
       ((TextView)localObject5).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-      ((TextView)localObject5).setPadding(0, n * 2 / m, 0, 0);
+      ((TextView)localObject5).setPadding(0, n * 0 / m, 0, 0);
       localObject5 = new int[2][];
       localObject5[0] = { 16842919 };
       localObject5[1] = new int[0];
@@ -2117,40 +2135,40 @@ public class WorldCupShareFragment
       ((TextView)localObject3).setTextSize(0, n * 30 / m);
       ((TextView)localObject3).setOnClickListener(this);
       ((TextView)localObject3).setTextColor((ColorStateList)localObject4);
-      localTextView11.setSpannableFactory(QQText.a);
-      localTextView11.setTextSize(0, n * 30 / m);
       localTextView12.setSpannableFactory(QQText.a);
       localTextView12.setTextSize(0, n * 30 / m);
-      localTextView12.setOnClickListener(this);
-      localTextView12.setTextColor((ColorStateList)localObject4);
+      localTextView13.setSpannableFactory(QQText.a);
+      localTextView13.setTextSize(0, n * 30 / m);
+      localTextView13.setOnClickListener(this);
+      localTextView13.setTextColor((ColorStateList)localObject4);
       a((View)localObject1);
-      localTextView13.setTextSize(0, n * 13 / m);
       localTextView14.setTextSize(0, n * 13 / m);
-      localTextView15.setSpannableFactory(QQText.a);
-      localTextView15.setTextSize(0, n * 30 / m);
-      localTextView15.setOnClickListener(this);
-      localTextView15.setTextColor((ColorStateList)localObject4);
+      localTextView15.setTextSize(0, n * 13 / m);
+      localTextView16.setSpannableFactory(QQText.a);
       localTextView16.setTextSize(0, n * 30 / m);
-      localTextView17.setTextSize(0, n * 13 / m);
+      localTextView16.setOnClickListener(this);
+      localTextView16.setTextColor((ColorStateList)localObject4);
+      localTextView17.setTextSize(0, n * 30 / m);
+      localTextView18.setTextSize(0, n * 13 / m);
       localObject3 = new ColorStateList((int[][])localObject5, new int[] { -2130706433, -1 });
-      localTextView5.setSpannableFactory(QQText.a);
-      localTextView5.setTextSize(0, n * 16 / m);
-      localTextView5.setOnClickListener(this);
-      localTextView5.setTextColor((ColorStateList)localObject3);
-      localTextView7.setTextSize(0, n * 30 / m);
-      localTextView8.setTextSize(0, n * 13 / m);
+      localTextView6.setSpannableFactory(QQText.a);
+      localTextView6.setTextSize(0, n * 16 / m);
+      localTextView6.setOnClickListener(this);
+      localTextView6.setTextColor((ColorStateList)localObject3);
+      localTextView8.setTextSize(0, n * 30 / m);
       localTextView9.setTextSize(0, n * 13 / m);
       localTextView10.setTextSize(0, n * 13 / m);
-      localTextView6.setSpannableFactory(QQText.a);
-      localTextView6.setTextSize(0, n * 30 / m);
-      localTextView6.setOnClickListener(this);
-      localTextView6.setTextColor((ColorStateList)localObject4);
+      localTextView11.setTextSize(0, n * 13 / m);
+      localTextView7.setSpannableFactory(QQText.a);
+      localTextView7.setTextSize(0, n * 30 / m);
+      localTextView7.setOnClickListener(this);
+      localTextView7.setTextColor((ColorStateList)localObject4);
       localObject2 = WorldCupShareInfo.getResBitmap((String)localObject2 + "default_background.png");
       if (localObject2 == null) {
-        break label1967;
+        break label1995;
       }
       ((View)localObject1).setBackgroundDrawable(new BitmapDrawable(paramBundle, (Bitmap)localObject2));
-      label1812:
+      label1825:
       paramViewGroup.setOnClickListener(this);
       paramLayoutInflater.setOnClickListener(this);
       d((View)localObject1, false);
@@ -2166,8 +2184,9 @@ public class WorldCupShareFragment
       localEditText.addTextChangedListener(this);
       localTextView3.setOnClickListener(this);
       localTextView4.setOnClickListener(this);
-      if (!e()) {
-        break label1978;
+      localTextView5.setText(WorldCup.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).jdField_a_of_type_JavaLangString);
+      if (!a()) {
+        break label2006;
       }
       a(true, (View)localObject1);
     }
@@ -2177,14 +2196,14 @@ public class WorldCupShareFragment
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 40000L);
       }
       return localObject1;
-      label1957:
+      label1985:
       m = localLayoutParams.width;
       break;
-      label1967:
+      label1995:
       ((View)localObject1).setBackgroundColor(-16777216);
-      break label1812;
-      label1978:
-      c();
+      break label1825;
+      label2006:
+      b();
     }
   }
   
@@ -2210,7 +2229,7 @@ public class WorldCupShareFragment
     HashMap localHashMap;
     if ((FileUtil.a(this.jdField_b_of_type_JavaLangString)) && (!this.jdField_b_of_type_JavaLangString.contains("game")))
     {
-      ThreadManager.postImmediately(new akyj(this), null, false);
+      ThreadManager.postImmediately(new algb(this), null, false);
       if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
       {
         this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
@@ -2252,8 +2271,8 @@ public class WorldCupShareFragment
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramTextView.getId() == 2131375513) && (paramInt == 6)) {
-      d();
+    if ((paramTextView.getId() == 2131375577) && (paramInt == 6)) {
+      c();
     }
     return true;
   }
@@ -2268,7 +2287,7 @@ public class WorldCupShareFragment
   {
     QLog.i("WorldCupShareFragment", 1, "WL_DEBUG onFailed arg0 = " + paramInt);
     if (getActivity() != null) {
-      getActivity().runOnUiThread(new akyk(this));
+      getActivity().runOnUiThread(new algc(this));
     }
   }
   
@@ -2311,7 +2330,7 @@ public class WorldCupShareFragment
       paramAdapterView.putString("new_share_service_id", "83");
       paramAdapterView.putString("openerProc", MobileQQ.getMobileQQ().getProcessName());
       paramAdapterView.putBoolean("k_back", true);
-      paramAdapterView.putString("brief_key", getString(2131430117, new Object[] { localObject }));
+      paramAdapterView.putString("brief_key", getString(2131430119, new Object[] { localObject }));
       paramView = StructMsgFactory.a(paramAdapterView);
       paramView.mMsgServiceID = 83;
       paramAdapterView.putByteArray("stuctmsg_bytes", paramView.getBytes());
@@ -2329,20 +2348,20 @@ public class WorldCupShareFragment
       {
         this.jdField_h_of_type_Boolean = true;
         paramAdapterView = a();
-        paramView = paramView.getString(2131439358);
+        paramView = paramView.getString(2131439397);
         localObject = QZoneHelper.UserInfo.a();
         if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
         {
           ((QZoneHelper.UserInfo)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
           ((QZoneHelper.UserInfo)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getDisplayName(0, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), null);
         }
-        QZoneHelper.a(getActivity(), (QZoneHelper.UserInfo)localObject, paramAdapterView, BaseApplication.getContext().getString(2131429969), paramView, 1);
+        QZoneHelper.a(getActivity(), (QZoneHelper.UserInfo)localObject, paramAdapterView, BaseApplication.getContext().getString(2131429970), paramView, 1);
       }
       a("0X800931E", 2);
       return;
     case 9: 
       if (!WXShareHelper.a().a()) {
-        QQToast.a(paramView, 2131435319, 1).a();
+        QQToast.a(paramView, 2131435335, 1).a();
       }
       for (;;)
       {
@@ -2350,17 +2369,17 @@ public class WorldCupShareFragment
           this.jdField_a_of_type_AndroidGraphicsBitmap = a(getView());
         }
         if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-          ThreadManager.postImmediately(new akyl(this), null, true);
+          ThreadManager.postImmediately(new algd(this), null, true);
         }
         a("0X800931E", 3);
         return;
         if (!WXShareHelper.a().b()) {
-          QQToast.a(paramView, 2131435320, 1).a();
+          QQToast.a(paramView, 2131435336, 1).a();
         }
       }
     }
     if (!WXShareHelper.a().a()) {
-      QQToast.a(paramView, 2131435319, 1).a();
+      QQToast.a(paramView, 2131435335, 1).a();
     }
     for (;;)
     {
@@ -2368,12 +2387,12 @@ public class WorldCupShareFragment
         this.jdField_a_of_type_AndroidGraphicsBitmap = a(getView());
       }
       if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-        ThreadManager.postImmediately(new akyo(this), null, true);
+        ThreadManager.postImmediately(new algg(this), null, true);
       }
       a("0X800931E", 4);
       return;
       if (!WXShareHelper.a().b()) {
-        QQToast.a(paramView, 2131435320, 1).a();
+        QQToast.a(paramView, 2131435336, 1).a();
       }
     }
   }
@@ -2430,7 +2449,7 @@ public class WorldCupShareFragment
       paramArrayOfByte = (Bdh_extinfo.CommFileExtRsp)paramHashMap.mergeFrom(paramArrayOfByte);
       this.jdField_f_of_type_JavaLangString = paramArrayOfByte.bytes_download_url.get().toStringUtf8();
       QLog.i("WorldCupShareFragment", 1, "WL_DEBUG onSuccess url = " + this.jdField_f_of_type_JavaLangString);
-      i();
+      h();
       return;
     }
     catch (Exception paramArrayOfByte) {}
@@ -2459,11 +2478,8 @@ public class WorldCupShareFragment
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (a(paramCharSequence.toString()) > 0)
-    {
-      paramCharSequence = (TextView)getView().findViewById(2131371713);
-      paramCharSequence.setTextColor(Color.parseColor("#12b7f5"));
-      paramCharSequence.setEnabled(true);
+    if (a(paramCharSequence.toString()) > 0) {
+      ((TextView)getView().findViewById(2131371711)).setEnabled(true);
     }
   }
   
@@ -2487,7 +2503,7 @@ public class WorldCupShareFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.worldcup.WorldCupShareFragment
  * JD-Core Version:    0.7.0.1
  */

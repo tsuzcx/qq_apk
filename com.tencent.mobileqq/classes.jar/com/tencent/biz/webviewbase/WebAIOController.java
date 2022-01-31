@@ -3,17 +3,17 @@ package com.tencent.biz.webviewbase;
 import android.content.BroadcastReceiver;
 import android.widget.ImageView;
 import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import pax;
-import pay;
+import pfp;
+import pfq;
 
 public class WebAIOController
 {
   public static volatile boolean b;
   public static volatile boolean c;
-  int jdField_a_of_type_Int = 2130846383;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new pax(this);
+  int jdField_a_of_type_Int = 2130846465;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new pfp(this);
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  Client.onRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new pay(this);
+  Client.onRemoteRespObserver jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new pfq(this);
   String jdField_a_of_type_JavaLangString = "";
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = -1;

@@ -1,49 +1,27 @@
-import com.dataline.util.file.FileUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.jsp.QQComicJsPlugin;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
-
 public class amjx
-  implements Runnable
 {
-  public amjx(QQComicJsPlugin paramQQComicJsPlugin) {}
+  private int a;
+  private int b;
   
-  public void run()
+  public int a()
   {
-    Object localObject = QQComicJsPlugin.a();
-    if (localObject != null)
-    {
-      long l1 = System.currentTimeMillis();
-      FileUtil.a(new File((String)localObject));
-      long l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicJsPlugin", 2, "clean cache cost " + (l2 - l1) + " ms");
-      }
-    }
-    QQComicJsPlugin.a().set(false);
-    localObject = new JSONObject();
-    try
-    {
-      ((JSONObject)localObject).put("result", 0);
-      ((JSONObject)localObject).put("message", "ok");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("size", this.a.a());
-      ((JSONObject)localObject).put("data", localJSONObject);
-      label137:
-      this.a.callJs(QQComicJsPlugin.b(), new String[] { ((JSONObject)localObject).toString() });
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label137;
-    }
+    return this.a;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjx
  * JD-Core Version:    0.7.0.1
  */

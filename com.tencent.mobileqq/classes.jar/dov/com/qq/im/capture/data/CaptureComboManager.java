@@ -9,15 +9,17 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import anli;
-import anlj;
-import anlk;
+import antv;
+import antw;
+import antx;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -75,7 +77,7 @@ public class CaptureComboManager
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new anlj(this));
+    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new antw(this));
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_c_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
@@ -89,8 +91,19 @@ public class CaptureComboManager
     }
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_MqqAppAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new anli(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new antv(this));
     this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager = new ComboLockManager(this.jdField_a_of_type_MqqAppAppRuntime);
+  }
+  
+  public static void c()
+  {
+    QIMManager.a(3);
+    QIMManager.a(4);
+    QIMManager.a(5);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      PtvFilterSoLoad.a((QQAppInterface)localAppRuntime, BaseApplicationImpl.getContext());
+    }
   }
   
   public CaptureComboFilter a(FilterDesc paramFilterDesc)
@@ -122,7 +135,7 @@ public class CaptureComboManager
     float f1;
     float f2;
     float f3;
-    label368:
+    label370:
     Object localObject3;
     if (localObject2 == null)
     {
@@ -151,7 +164,7 @@ public class CaptureComboManager
         for (;;)
         {
           if (i >= j) {
-            break label368;
+            break label370;
           }
           localObject4 = paramQIMFilterCategoryItem.jdField_a_of_type_OrgJsonJSONArray.optJSONObject(i);
           if (localObject4 != null) {}
@@ -189,7 +202,7 @@ public class CaptureComboManager
         {
           localObject4 = paramQIMFilterCategoryItem.jdField_b_of_type_OrgJsonJSONArray.optJSONObject(i);
           if (localObject4 == null) {
-            break label994;
+            break label998;
           }
           try
           {
@@ -212,19 +225,19 @@ public class CaptureComboManager
       {
         j = paramQIMFilterCategoryItem.c.length();
         i = 0;
-        label528:
+        label530:
         if (i < j)
         {
           localObject4 = paramQIMFilterCategoryItem.c.optJSONObject(i);
           if (localObject4 == null) {
-            break label1003;
+            break label1007;
           }
           try
           {
             String str2 = ((JSONObject)localObject4).optString("tagId");
             localObject4 = ((JSONObject)localObject4).optString("itemId");
             if (StringUtil.a(str2)) {
-              break label1003;
+              break label1007;
             }
             localObject5 = CaptureComboPasterFactory.b((String)localObject4);
             if (localObject5 != null) {
@@ -246,7 +259,7 @@ public class CaptureComboManager
         }
         int k = paramQIMFilterCategoryItem.d.length();
         i = 0;
-        label728:
+        label730:
         if (i < k)
         {
           localObject3 = paramQIMFilterCategoryItem.d.optJSONObject(i);
@@ -268,10 +281,10 @@ public class CaptureComboManager
           {
             String str3 = ((JSONArray)localObject6).getString(j);
             if (TextUtils.isEmpty(str3)) {
-              break label1012;
+              break label1016;
             }
             ((List)localObject5).add(str3);
-            break label1012;
+            break label1016;
           }
           f1 = Float.valueOf(((JSONObject)localObject3).optString("position_x")).floatValue();
           f2 = Float.valueOf(((JSONObject)localObject3).optString("position_y")).floatValue();
@@ -295,17 +308,17 @@ public class CaptureComboManager
         continue;
       }
       i += 1;
-      break label728;
+      break label730;
       this.jdField_a_of_type_JavaUtilHashMap.put(paramQIMFilterCategoryItem.jdField_a_of_type_JavaLangString, localObject1);
       ((ComboSet)localObject1).jdField_a_of_type_JavaLangObject = paramQIMFilterCategoryItem;
       return localObject1;
-      label994:
+      label998:
       i += 1;
       break;
-      label1003:
+      label1007:
       i += 1;
-      break label528;
-      label1012:
+      break label530;
+      label1016:
       j += 1;
     }
   }
@@ -449,7 +462,7 @@ public class CaptureComboManager
   
   public QIMFilterCategoryItem a(Activity paramActivity, int paramInt)
   {
-    Object localObject = (ComboProviderView)paramActivity.findViewById(2131362417);
+    Object localObject = (ComboProviderView)paramActivity.findViewById(2131362420);
     if (localObject != null)
     {
       ((ComboProviderView)localObject).g();
@@ -461,15 +474,15 @@ public class CaptureComboManager
         ((DoodleLayout)localObject).a().a();
       }
     }
-    localObject = (StaticStickerProviderView)paramActivity.findViewById(2131362419);
+    localObject = (StaticStickerProviderView)paramActivity.findViewById(2131362422);
     if (localObject != null) {
       ((StaticStickerProviderView)localObject).g();
     }
-    localObject = (QIMFilterProviderView)paramActivity.findViewById(2131362418);
+    localObject = (QIMFilterProviderView)paramActivity.findViewById(2131362421);
     if (localObject != null) {
       ((QIMFilterProviderView)localObject).g();
     }
-    paramActivity = (MusicProviderView)paramActivity.findViewById(2131362420);
+    paramActivity = (MusicProviderView)paramActivity.findViewById(2131362423);
     if (paramActivity != null) {
       paramActivity.g();
     }
@@ -566,7 +579,7 @@ public class CaptureComboManager
   
   public void a()
   {
-    ThreadManager.post(new anlk(this), 8, null, true);
+    ThreadManager.post(new antx(this), 8, null, true);
   }
   
   public void a(int paramInt)
@@ -580,7 +593,7 @@ public class CaptureComboManager
     if (QLog.isColorLevel()) {
       QLog.i("CaptureComboManager", 2, "first random");
     }
-    d();
+    e();
   }
   
   public void a(int paramInt, Activity paramActivity)
@@ -681,7 +694,7 @@ public class CaptureComboManager
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("pre_capture_combo_select", 0);
     String str = "";
-    if ((paramQIMFilterCategoryItem.c()) || (paramQIMFilterCategoryItem.b())) {
+    if ((paramQIMFilterCategoryItem.d()) || (paramQIMFilterCategoryItem.c())) {
       str = paramQIMFilterCategoryItem.jdField_a_of_type_JavaLangString;
     }
     paramQIMFilterCategoryItem = str;
@@ -1052,7 +1065,7 @@ public class CaptureComboManager
     }
   }
   
-  public void c()
+  public void d()
   {
     if (this.jdField_a_of_type_Boolean) {
       return;
@@ -1061,7 +1074,7 @@ public class CaptureComboManager
     VideoFilterTools.a().a(BaseApplicationImpl.getContext(), null);
   }
   
-  public void d()
+  public void e()
   {
     VideoFilterTools.ComboFilterData localComboFilterData = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$ComboFilterData;
     if (QLog.isColorLevel()) {
@@ -1069,12 +1082,12 @@ public class CaptureComboManager
     }
     if (localComboFilterData != null)
     {
-      localComboFilterData.b();
+      localComboFilterData.a();
       a(localComboFilterData);
     }
   }
   
-  public void e()
+  public void f()
   {
     VideoFilterTools.ComboFilterData localComboFilterData = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$ComboFilterData;
     if (QLog.isColorLevel()) {
@@ -1085,7 +1098,7 @@ public class CaptureComboManager
     }
   }
   
-  public void f()
+  public void g()
   {
     a().notifyObservers(CaptureComboObeserver.class, 971, true, null);
   }

@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anrr
-  implements ProgressPieDrawable.OnProgressListener
+  implements Animation.AnimationListener
 {
-  public anrr(EditPicSave paramEditPicSave) {}
+  public anrr(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    if (QIMEffectCameraCaptureUnit.e(this.a) != null)
+    {
+      QIMEffectCameraCaptureUnit.e(this.a).clearAnimation();
+      QIMEffectCameraCaptureUnit.e(this.a).setVisibility(8);
     }
   }
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,21 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
 
 public class maq
-  implements DialogInterface.OnShowListener
+  implements Runnable
 {
-  public maq(VideoFeedsAdapter paramVideoFeedsAdapter, ActionSheet paramActionSheet) {}
+  public maq(ReadInJoySkinManager paramReadInJoySkinManager, int paramInt, String paramString) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mShareActionSheet onShow()");
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.getWindow().clearFlags(8);
+    ReadInJoySkinManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoySkinManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

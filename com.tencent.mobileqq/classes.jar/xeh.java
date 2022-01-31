@@ -1,18 +1,49 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.annotation.TargetApi;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class xeh
-  implements DialogInterface.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public xeh(GoldMsgAioState paramGoldMsgAioState, Context paramContext) {}
+  public xeh(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @TargetApi(11)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    GoldMsgAioState.a(((QQCustomDialog)paramDialogInterface).getWindow(), this.jdField_a_of_type_AndroidContentContext, null);
-    paramDialogInterface.dismiss();
+    if (this.a.b)
+    {
+      this.a.h();
+      return;
+    }
+    paramAdapterView = (String)paramAdapterView.getItemAtPosition(paramInt);
+    if (PhotoPreviewActivity.a(this.a, paramAdapterView) == 1)
+    {
+      this.a.p = paramAdapterView;
+      switch (this.a.b())
+      {
+      default: 
+        return;
+      case 0: 
+        this.a.a(0);
+        return;
+      case 1: 
+        this.a.l();
+        return;
+      case 2: 
+        this.a.k();
+        return;
+      }
+      this.a.a(0);
+      return;
+    }
+    if (this.a.e)
+    {
+      this.a.c();
+      return;
+    }
+    this.a.d();
   }
 }
 

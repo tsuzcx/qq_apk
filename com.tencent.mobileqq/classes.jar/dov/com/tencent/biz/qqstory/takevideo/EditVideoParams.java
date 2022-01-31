@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anug;
+import aocw;
 
 public class EditVideoParams
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anug();
+  public static final Parcelable.Creator CREATOR = new aocw();
   public int a;
   public final Bundle a;
   public EditVideoParams.EditSource a;

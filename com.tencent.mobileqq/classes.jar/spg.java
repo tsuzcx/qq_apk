@@ -1,38 +1,44 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.statistics.ReportTask;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class spg
-  extends BroadcastReceiver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public spg(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public spg(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a.equals(this.a.app.getCurrentAccountUin())) && (this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null))
+    if (AppSetting.b)
     {
-      if ((paramIntent == null) || (!paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label"))) {
-        break label107;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "receive broadcast modify pl info");
-      }
-      paramContext = paramIntent.getBundleExtra("key_bundle_data");
-      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged"))) {
-        this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(16, 0, 0).sendToTarget();
+      paramCompoundButton = this.a.getString(2131435404);
+      DiscussionInfoCardActivity.b(this.a).setContentDescription(paramCompoundButton);
+    }
+    boolean bool = DiscussionInfoCardActivity.a(this.a).a(this.a.a);
+    paramCompoundButton = DiscussionInfoCardActivity.a(this.a);
+    Object localObject = this.a.a;
+    if (!bool)
+    {
+      paramBoolean = true;
+      paramCompoundButton.a((DiscussionInfo)localObject, paramBoolean);
+      localObject = new ReportTask(this.a.app).a("dc00899").b("Grp_Dis_set").c("Dis_info");
+      if (!bool) {
+        break label128;
       }
     }
-    return;
-    label107:
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
+    label128:
+    for (paramCompoundButton = "Clk_unstick";; paramCompoundButton = "Clk_stick")
+    {
+      ((ReportTask)localObject).d(paramCompoundButton).a();
+      return;
+      paramBoolean = false;
+      break;
+    }
   }
 }
 

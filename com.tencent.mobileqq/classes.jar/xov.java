@@ -1,18 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.comic.VipComicJumpActivity;
+import cooperation.comic.VipComicReportUtils;
+import org.json.JSONObject;
 
 public class xov
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public xov(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
+  public xov(BannerManager paramBannerManager, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
+    paramView = new JSONObject();
+    try
+    {
+      paramView.put("from", "20");
+      label17:
+      Intent localIntent = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager), VipComicJumpActivity.class);
+      localIntent.putExtra("options", paramView.toString());
+      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(localIntent);
+      VipComicReportUtils.a(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getAppInterface(), "100007", "2", "40040", this.jdField_a_of_type_JavaLangString, new String[0]);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label17;
+    }
   }
 }
 

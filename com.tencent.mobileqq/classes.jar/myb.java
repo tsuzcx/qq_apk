@@ -1,25 +1,33 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class myb
-  implements Runnable
+  implements WXShareHelper.WXShareListener
 {
-  public myb(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public myb(GalleryShareHelper paramGalleryShareHelper, String paramString) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    if (TextUtils.isEmpty(this.a.a)) {}
-    PublicAccountDataManager localPublicAccountDataManager;
-    do
-    {
+    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
       return;
-      localPublicAccountDataManager = (PublicAccountDataManager)this.a.app.getManager(55);
-    } while (localPublicAccountDataManager == null);
-    PublicAccountImageCollectionMainActivity.c(this.a, localPublicAccountDataManager.a(Long.valueOf(this.a.a)));
-    PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new myc(this), 0L);
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435319);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      QRUtils.a(2, 2131435318);
+    }
   }
 }
 

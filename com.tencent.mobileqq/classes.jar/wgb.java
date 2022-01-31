@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.biz.anonymous.QQAnonymousDialog;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class wgb
   implements Runnable
 {
-  public wgb(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
+  public wgb(TroopChatPie paramTroopChatPie) {}
   
   public void run()
   {
-    List localList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, 1, 9223372036854775807L, 20);
-    if (localList != null) {
-      ThreadManager.getUIHandler().post(new wgc(this, localList));
+    if (this.a.a != null) {
+      this.a.a.dismiss();
     }
   }
 }

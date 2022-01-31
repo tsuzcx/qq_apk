@@ -1,11 +1,11 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ShakeItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.HiBoomItemBuilder;
 
 public class vfk
   implements DialogInterface.OnClickListener
 {
-  public vfk(ShakeItemBuilder paramShakeItemBuilder) {}
+  public vfk(HiBoomItemBuilder paramHiBoomItemBuilder) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }

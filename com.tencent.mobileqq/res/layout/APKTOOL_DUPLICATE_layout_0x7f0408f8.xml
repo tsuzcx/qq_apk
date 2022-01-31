@@ -1,54 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#ffffffff" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f24" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021836" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="14.0sp" android:textColor="#ff339966" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="拍摄场景视频" />
-                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="开始拍摄" android:onClick="onClickTakePic" />
-                    <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2838" android:background="#fff2f2f2" android:paddingLeft="4.0dip" android:layout_width="0.0dip" android:layout_height="40.0dip" android:layout_margin="5.0dip" android:hint="给场景起个名字" android:layout_weight="1.0" />
-                    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2839" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="保存场景" android:onClick="onClickSaveScene" />
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021836" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
-                <TextView android:textSize="14.0sp" android:textColor="#ff339966" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选择场景的视频进行压缩" />
-                <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a283a" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-                    <Button android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a283b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:text="删除场景" android:onClick="onClickDeleteSence" />
-                </FrameLayout>
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021836" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
-                <TextView android:textSize="14.0sp" android:textColor="#ff339966" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="设置压缩参数" />
-                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <TextView android:paddingLeft="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="参数范围" />
-                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip">
-                        <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a283c" android:background="#fff2f2f2" android:paddingLeft="4.0dip" android:layout_width="100.0dip" android:layout_height="fill_parent" android:layout_margin="5.0dip" />
-                        <TextView android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="from:" />
-                        <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a283d" android:background="#fff2f2f2" android:paddingLeft="4.0dip" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:inputType="number" />
-                        <TextView android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="to:" />
-                        <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a283e" android:background="#fff2f2f2" android:paddingLeft="4.0dip" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:inputType="number" />
-                    </LinearLayout>
-                    <TextView android:paddingLeft="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="参数枚举" />
-                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip">
-                        <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a283f" android:background="#fff2f2f2" android:paddingLeft="4.0dip" android:layout_width="100.0dip" android:layout_height="fill_parent" android:layout_margin="5.0dip" />
-                        <TextView android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="枚举(,分隔):" />
-                        <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2840" android:background="#fff2f2f2" android:paddingLeft="4.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_margin="5.0dip" android:layout_weight="1.0" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021836" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
-                <TextView android:textSize="14.0sp" android:textColor="#ff339966" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="开始压缩" />
-                <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2841" android:background="#fff2f2f2" android:paddingLeft="4.0dip" android:layout_width="0.0dip" android:layout_height="40.0dip" android:layout_margin="5.0dip" android:hint="压缩文件夹名" android:singleLine="true" android:layout_weight="1.0" />
-                    <Button android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03a9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c3" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="开始循环压缩" android:onClick="onClickStartCompress" />
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <Button android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03a9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c3" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:minWidth="50.0dip" android:text="up" android:onClick="onClickTestUp" />
-                <Button android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03a9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c3" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:minWidth="50.0dip" android:text="init" android:onClick="onClickTestInit" />
-                <Button android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03a9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c3" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:minWidth="50.0dip" android:text="down" android:onClick="onClickTestDown" />
-            </LinearLayout>
-        </LinearLayout>
-    </com.tencent.mobileqq.widget.BounceScrollView>
+<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2818" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021823" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2819" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021825" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02173e" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a281a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021828" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a281b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02182a" />
 </LinearLayout>

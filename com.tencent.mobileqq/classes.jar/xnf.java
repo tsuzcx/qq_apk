@@ -1,30 +1,53 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class xnf
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public xnf(EditLocalVideoActivity paramEditLocalVideoActivity, ActionSheet paramActionSheet) {}
+  public xnf(VACDReportMgr paramVACDReportMgr, byte[] paramArrayOfByte) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    synchronized ()
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.a("608", "4", "2", true);
-      EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, 0);
-      EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, 0);
-      EditLocalVideoActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity));
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).postDelayed(new xng(this), 300L);
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, false);
-      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, false);
+      try
+      {
+        while ((VACDReportMgr.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).isEmpty()) && (VACDReportMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).isEmpty())) {
+          VACDReportMgr.a().wait();
+        }
+        try
+        {
+          synchronized (this.jdField_a_of_type_ArrayOfByte)
+          {
+            this.jdField_a_of_type_ArrayOfByte.wait(2000L);
+          }
+          do
+          {
+            synchronized (VACDReportMgr.a())
+            {
+              VACDReportMgr.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr, 2);
+              if (VACDReportMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr))
+              {
+                VACDReportMgr.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).post(this);
+                return;
+                localObject1 = finally;
+                throw localObject1;
+                localObject2 = finally;
+                throw localObject2;
+              }
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("VACDReport", 2, "WriteDBThread exit.");
+          return;
+        }
+        catch (Exception localException2)
+        {
+          break label61;
+        }
+      }
+      catch (Exception localException1) {}
     }
   }
 }

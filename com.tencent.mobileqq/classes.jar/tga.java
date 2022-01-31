@@ -1,21 +1,58 @@
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
+import java.util.HashMap;
 
-class tga
-  extends ContactBindObserver
+public class tga
+  implements Runnable
 {
-  tga(tfz paramtfz) {}
+  public tga(MainFragment paramMainFragment) {}
   
-  protected void b(boolean paramBoolean)
+  public void run()
   {
-    super.b(paramBoolean);
-    PhoneUnityChangeActivity.a(this.a.a.a);
-    this.a.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
+    if (this.a.getActivity() == null) {
+      return;
+    }
+    MainFragment.a(this.a, PreferenceManager.getDefaultSharedPreferences(MainFragment.a(this.a).getApp()));
+    if (MainFragment.a(this.a).getBoolean("theme_voice_setting_" + MainFragment.a(this.a).getCurrentAccountUin(), true))
     {
-      this.a.a.a.setResult(4001);
-      this.a.a.a.finish();
+      Object localObject = ThemeUtil.getUserCurrentThemeId(MainFragment.a(this.a));
+      localObject = ThemeUtil.getThemeInfo(this.a.getActivity(), (String)localObject);
+      if ((localObject == null) || (!((ThemeUtil.ThemeInfo)localObject).status.equals("5")) || (!((ThemeUtil.ThemeInfo)localObject).isVoiceTheme)) {}
+    }
+    for (boolean bool = false;; bool = true)
+    {
+      if (MainFragment.a(this.a) != null)
+      {
+        if (MainFragment.a(this.a).get("消息") != null) {
+          ((View)MainFragment.a(this.a).get("消息")).setSoundEffectsEnabled(bool);
+        }
+        if (MainFragment.a(this.a).get("联系人") != null) {
+          ((View)MainFragment.a(this.a).get("联系人")).setSoundEffectsEnabled(bool);
+        }
+        if (MainFragment.a(this.a).get("动态") != null) {
+          ((View)MainFragment.a(this.a).get("动态")).setSoundEffectsEnabled(bool);
+        }
+        if (MainFragment.a(this.a).get("电话") != null) {
+          ((View)MainFragment.a(this.a).get("电话")).setSoundEffectsEnabled(bool);
+        }
+        if (MainFragment.a(this.a).get("NOW") != null) {
+          ((View)MainFragment.a(this.a).get("NOW")).setSoundEffectsEnabled(bool);
+        }
+        if (MainFragment.a(this.a).get("看点") != null) {
+          ((View)MainFragment.a(this.a).get("看点")).setSoundEffectsEnabled(bool);
+        }
+      }
+      if (MultiMsgManager.a().a()) {
+        break;
+      }
+      MultiMsgManager.a().a(MainFragment.a(this.a));
+      return;
     }
   }
 }

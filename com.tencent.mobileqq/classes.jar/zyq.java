@@ -1,21 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
+import com.tencent.mobileqq.app.message.BaseMessageManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.mixedmsg.MixedMsgManager;
 
 public class zyq
   implements Runnable
 {
-  public zyq(ARVideoRecordViewProxy paramARVideoRecordViewProxy, int paramInt1, int paramInt2) {}
+  public zyq(BaseMessageManager paramBaseMessageManager, MixedMsgManager paramMixedMsgManager, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setText(ARRecordUtils.a(this.jdField_a_of_type_Int / 1000));
-    ARVideoRecordViewProxy.b(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setText(ARRecordUtils.b(this.b));
+    this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zyq
  * JD-Core Version:    0.7.0.1
  */

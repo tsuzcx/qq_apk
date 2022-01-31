@@ -1,14 +1,19 @@
-import cooperation.qzone.webviewplugin.QzoneWidgetAIJsPlugin;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class ando
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ando(QzoneWidgetAIJsPlugin paramQzoneWidgetAIJsPlugin, JSONObject paramJSONObject) {}
+  public ando(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QzoneWidgetAIJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneWidgetAIJsPlugin, this.jdField_a_of_type_OrgJsonJSONObject);
+    this.a.resumePlay();
+    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
+    paramDialogInterface.dismiss();
+    QzoneWebMusicJsPlugin.access$902(this.a, false);
   }
 }
 

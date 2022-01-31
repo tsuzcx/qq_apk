@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.utils;
 
-import akei;
-import akej;
-import akek;
-import akel;
+import aklw;
+import aklx;
+import akly;
+import aklz;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
@@ -18,7 +18,7 @@ public class QQCustomDialogThreeBtns
 {
   public DialogInterface.OnClickListener a;
   public LayoutInflater a;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new akei(this);
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new aklw(this);
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   ListView jdField_a_of_type_ComTencentWidgetListView;
@@ -84,7 +84,7 @@ public class QQCustomDialogThreeBtns
     }
     this.c.setText(paramString);
     this.c.setVisibility(0);
-    this.c.setOnClickListener(new akej(this, paramOnClickListener));
+    this.c.setOnClickListener(new aklx(this, paramOnClickListener));
     a();
     return this;
   }
@@ -110,7 +110,7 @@ public class QQCustomDialogThreeBtns
     }
     this.e.setText(paramString);
     this.e.setVisibility(0);
-    this.e.setOnClickListener(new akek(this, paramOnClickListener));
+    this.e.setOnClickListener(new akly(this, paramOnClickListener));
     a();
     return this;
   }
@@ -124,7 +124,7 @@ public class QQCustomDialogThreeBtns
     }
     this.d.setText(paramString);
     this.d.setVisibility(0);
-    this.d.setOnClickListener(new akel(this, paramOnClickListener));
+    this.d.setOnClickListener(new aklz(this, paramOnClickListener));
     a();
     return this;
   }
@@ -142,17 +142,17 @@ public class QQCustomDialogThreeBtns
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364034));
-    this.b = ((TextView)findViewById(2131362776));
-    this.f = ((TextView)findViewById(2131364048));
-    this.c = ((TextView)findViewById(2131364037));
-    this.e = ((TextView)findViewById(2131364068));
-    this.d = ((TextView)findViewById(2131364038));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364059));
+    this.b = ((TextView)findViewById(2131362781));
+    this.f = ((TextView)findViewById(2131364073));
+    this.c = ((TextView)findViewById(2131364062));
+    this.e = ((TextView)findViewById(2131364093));
+    this.d = ((TextView)findViewById(2131364063));
     this.c.setVisibility(8);
     this.e.setVisibility(8);
     this.d.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363794));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131364045));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363818));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131364070));
   }
   
   public void setTitle(int paramInt)

@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-public final class ajdg
-  implements Parcelable.Creator
+public class ajdg
+  extends ClickableSpan
 {
-  public TroopBarPOI a(Parcel paramParcel)
+  public ajdg(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  
+  public void onClick(View paramView)
   {
-    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+    if (this.a.a != null)
+    {
+      if (!this.a.a.a()) {
+        break label42;
+      }
+      this.a.a.b();
+    }
+    for (;;)
+    {
+      this.a.e(true);
+      return;
+      label42:
+      this.a.a.a();
+      ReportController.b(null, "dc00899", "Grp_tribe", "", "pub_page", "clk_prefixchoose", 0, 0, this.a.r, "", "", "");
+    }
   }
   
-  public TroopBarPOI[] a(int paramInt)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return null;
+    paramTextPaint.setColor(-16777216);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

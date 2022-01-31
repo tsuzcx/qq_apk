@@ -1,25 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.litetransfersdk.ProtocolHelper;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class rie
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public rie(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public rie(ProtocolHelper paramProtocolHelper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (AddFriendLogicActivity.d(this.a) == 1)
-    {
-      this.a.finish();
-      return;
-    }
-    AddFriendLogicActivity.a(this.a);
+    FMToastUtil.a(2131427563);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rie
  * JD-Core Version:    0.7.0.1
  */

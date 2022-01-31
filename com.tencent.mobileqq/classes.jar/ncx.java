@@ -1,18 +1,29 @@
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import java.util.Iterator;
+import java.util.List;
 
 public class ncx
   implements Runnable
 {
-  public ncx(StoryManager paramStoryManager, String paramString) {}
+  public ncx(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager) {}
   
   public void run()
   {
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString);
-    if (localStoryVideoItem != null)
+    ??? = PublicAccountImageCollectionPreloadManager.a(this.a).iterator();
+    while (((Iterator)???).hasNext())
     {
-      localStoryVideoItem.mHadRead = 1;
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString, localStoryVideoItem);
+      String str = (String)((Iterator)???).next();
+      PublicAccountImageCollectionPreloadManager.a(this.a, str);
+    }
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      PublicAccountImageCollectionPreloadManager.a(this.a).clear();
+      if (PublicAccountImageCollectionPreloadManager.b(this.a).size() > 0)
+      {
+        PublicAccountImageCollectionPreloadManager.a(this.a);
+        return;
+      }
+      this.a.jdField_a_of_type_Boolean = false;
     }
   }
 }

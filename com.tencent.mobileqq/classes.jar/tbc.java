@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class tbc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tbc(MainFragment paramMainFragment) {}
+  public tbc(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.g();
+    QQToast.a(this.a, this.a.getResources().getString(2131437778), 0).b(this.a.getTitleBarHeight());
   }
 }
 

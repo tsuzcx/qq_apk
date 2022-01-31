@@ -1,31 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiPictureUrl;
 
-public class ancp
-  implements Runnable
+public final class ancp
+  implements Parcelable.Creator
 {
-  public ancp(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin, List paramList, String[] paramArrayOfString) {}
-  
-  public void run()
+  public WeishiPictureUrl a(Parcel paramParcel)
   {
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      if (this.jdField_a_of_type_JavaUtilList.get(i) == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (!QzoneDynamicAlbumPlugin.a(BaseApplicationImpl.getContext(), (String)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_ArrayOfJavaLangString[i], QzoneDynamicAlbumPlugin.b()[0], QzoneDynamicAlbumPlugin.b()[1])) {
-          QLog.i("QZLog", 2, "DynamicQzoneDynamicAlbumPlugin compress failed! ");
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QZLog", 2, "DynamicQzoneDynamicAlbumPlugin compress all done  ");
-    }
+    return new WeishiPictureUrl(paramParcel);
+  }
+  
+  public WeishiPictureUrl[] a(int paramInt)
+  {
+    return new WeishiPictureUrl[paramInt];
   }
 }
 

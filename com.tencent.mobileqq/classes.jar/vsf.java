@@ -1,53 +1,56 @@
-import com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack.Stub;
-import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.os.MessageQueue.IdleHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.utils.MsgUtils;
+import java.util.Locale;
 
 public class vsf
-  extends ICompressionCallBack.Stub
+  implements MessageQueue.IdleHandler
 {
-  final String jdField_a_of_type_JavaLangString = DeviceMsgChatPie.class.getSimpleName();
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public vsf(AIOGalleryScene paramAIOGalleryScene) {}
   
-  public vsf(DeviceMsgChatPie paramDeviceMsgChatPie)
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDeviceMsgChatPie);
-  }
-  
-  public void a(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void b(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void c(CompressInfo paramCompressInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
-    }
-    DeviceMsgChatPie localDeviceMsgChatPie = (DeviceMsgChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localDeviceMsgChatPie == null)
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a();
+    if ((localObject != null) && (AIOImageData.class.isInstance(((AIORichMediaInfo)localObject).a)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
+      AIOImageData localAIOImageData = (AIOImageData)((AIORichMediaInfo)localObject).a;
+      if ((localAIOImageData != null) && (localAIOImageData.a(4)) && (localAIOImageData.a(4) == null)) {
+        this.a.c(true);
       }
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
+    if ((localObject != null) && (AIOFilePicData.class.isInstance(((AIORichMediaInfo)localObject).a)))
+    {
+      localObject = (AIOFilePicData)((AIORichMediaInfo)localObject).a;
+      if ((localObject != null) && (((AIOFilePicData)localObject).a(20)) && (((AIOFilePicData)localObject).a(20) == null))
+      {
+        if ((!((AIOFilePicData)localObject).d) || (!MsgUtils.a(((AIOFilePicData)localObject).b))) {
+          break label204;
+        }
+        this.a.c(true);
+        this.a.a(false);
+        this.a.jdField_a_of_type_Vss = null;
+      }
     }
-    localDeviceMsgChatPie.e(paramCompressInfo.e);
-    DeviceMsgChatPie.a(localDeviceMsgChatPie).a();
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, AIOGalleryScene.c(this.a).getString(2131436130), new Object[] { FileUtil.a(((AIOFilePicData)localObject).a) }));
+      }
+      return false;
+      label204:
+      if (((AIOFilePicData)localObject).e) {
+        this.a.c(false);
+      } else {
+        this.a.c(true);
+      }
+    }
   }
 }
 

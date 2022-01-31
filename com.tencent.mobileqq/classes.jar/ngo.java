@@ -1,23 +1,14 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareCopyLinkData;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.model.DiscoverManager;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
 
 public class ngo
-  extends EncryptUrlJob
+  implements Runnable
 {
-  public ngo(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareCopyLinkData paramShareCopyLinkData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public ngo(DiscoverManager paramDiscoverManager, CardItem paramCardItem) {}
   
-  public boolean b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)a("EncryptUrlJob_encryptedUrl"));
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a);
-    a("ShortenUrlJob_shortenedUrls", localHashMap);
-    return true;
+    DiscoverManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelDiscoverManager, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem);
   }
 }
 

@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0021" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0021" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="12.0sp" android:textColor="#ff777777" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b19" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="22.0dip" android:maxLines="2" />
-    </LinearLayout>
-    <com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b80" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0021" android:layout_width="fill_parent" android:layout_height="130.0dip" />
-</LinearLayout>
+<com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b6d" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:cacheColorHint="@null" android:divider="@null"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

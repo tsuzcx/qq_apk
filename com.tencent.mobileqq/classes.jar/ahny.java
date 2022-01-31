@@ -1,19 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.dc.DataCollector;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
 public class ahny
-  extends Handler
+  implements View.OnClickListener
 {
-  public ahny(DataCollector paramDataCollector, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ahny(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    this.a.a(paramMessage);
+    this.a.e();
   }
 }
 

@@ -1,30 +1,28 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
 public class adsj
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements DialogInterface.OnClickListener
 {
-  public adsj(VideoBaseItem paramVideoBaseItem) {}
+  public adsj(ForwardBaseOption paramForwardBaseOption) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    VideoBaseItem.a(this.a, true);
-    if (this.a.c == 3) {}
-    do
+    switch (paramInt)
     {
+    default: 
       return;
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      this.a.c = 2;
-    } while (VideoBaseItem.a(this.a) == null);
-    VideoBaseItem.a(this.a).j();
+    case -2: 
+      this.a.k();
+      return;
+    }
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
-import android.view.animation.Interpolator;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
 
 public class mdu
-  implements Interpolator
+  implements Runnable
 {
-  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
-  }
+  public mdu(TopicShareHelper paramTopicShareHelper, String paramString) {}
   
-  public float getInterpolation(float paramFloat)
+  public void run()
   {
-    return a(paramFloat, 0.0F, 1.0F, 1.0F);
+    PublicAccountReportUtils.a(null, "", "0X80088B4", "0X80088B4", 0, 0, "", this.jdField_a_of_type_JavaLangString, "", VideoReporter.a(TopicShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoTopicShareHelper).mChannelID, null), false);
   }
 }
 

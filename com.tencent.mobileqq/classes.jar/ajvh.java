@@ -1,15 +1,41 @@
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import java.lang.ref.WeakReference;
 
-class ajvh
-  implements Runnable
+public class ajvh
+  extends AsyncTask
 {
-  ajvh(ajvg paramajvg, Bitmap paramBitmap) {}
+  private WeakReference a;
   
-  public void run()
+  public ajvh(RollangleImageView paramRollangleImageView)
   {
-    ((TroopGiftToPersonalSurfaceView)this.jdField_a_of_type_Ajvg.a.a.a).setReceiveHeadBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.a = new WeakReference(paramRollangleImageView);
+  }
+  
+  protected Bitmap a(Boolean... paramVarArgs)
+  {
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null) {
+      return RollangleImageView.a(localRollangleImageView, paramVarArgs[0].booleanValue());
+    }
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null)
+    {
+      if (paramBitmap != null) {
+        localRollangleImageView.setImageBitmap(paramBitmap);
+      }
+    }
+    else {
+      return;
+    }
+    localRollangleImageView.setImageResource(FileManagerUtil.b(localRollangleImageView.a));
   }
 }
 

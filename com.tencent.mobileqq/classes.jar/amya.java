@@ -1,32 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.QZonePluginManager;
+import cooperation.qqpim.QQPimDefineList;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack;
+import cooperation.qqpim.QQPimTipsInfo;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class amya
-  extends Handler
+  implements EIPCResultCallback
 {
-  amya(amxz paramamxz, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  amya(amxz paramamxz) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "handleMessage, retryInstallNum=" + amxz.a());
+      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.a).hashCode());
     }
-    if (paramMessage.what == 1) {}
-    try
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
     {
-      paramMessage = (String)paramMessage.obj;
-      amxz.a(this.a).a(paramMessage, this.a, 2);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      QLog.e("QZonePluginPreInstaller", 1, paramMessage, new Object[0]);
+      paramEIPCResult = paramEIPCResult.data.getParcelable(QQPimDefineList.n);
+      if (paramEIPCResult != null)
+      {
+        paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
+        this.a.a.a = paramEIPCResult;
+        QQPimGetTipsInfoIPC.a(this.a.a).a(paramEIPCResult);
+      }
     }
   }
 }

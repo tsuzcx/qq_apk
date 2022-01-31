@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
 
-public final class aaku
-  implements Parcelable.Creator
+public class aaku
+  implements Runnable
 {
-  public ArFeatureInfo a(Parcel paramParcel)
-  {
-    return new ArFeatureInfo(paramParcel);
-  }
+  public aaku(ScanningSurfaceView paramScanningSurfaceView) {}
   
-  public ArFeatureInfo[] a(int paramInt)
+  public void run()
   {
-    return new ArFeatureInfo[paramInt];
+    while (ScanningSurfaceView.a(this.a))
+    {
+      long l = System.currentTimeMillis();
+      ScanningSurfaceView.a(this.a);
+      try
+      {
+        Thread.sleep(Math.max(0L, ScanningSurfaceView.a(this.a) - (System.currentTimeMillis() - l)));
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+      }
+    }
+    if (ScanningSurfaceView.b(this.a)) {
+      ScanningSurfaceView.a(this.a);
+    }
   }
 }
 

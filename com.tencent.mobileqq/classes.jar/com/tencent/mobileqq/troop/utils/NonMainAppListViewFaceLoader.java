@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajnr;
-import ajns;
+import ajvd;
+import ajve;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -54,8 +54,8 @@ public class NonMainAppListViewFaceLoader
     this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(60);
     this.jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(120);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ajnr(this);
-    this.jdField_a_of_type_AndroidOsHandler = new ajns(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ajvd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ajve(this, Looper.getMainLooper());
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
@@ -243,7 +243,7 @@ public class NonMainAppListViewFaceLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.NonMainAppListViewFaceLoader
  * JD-Core Version:    0.7.0.1
  */

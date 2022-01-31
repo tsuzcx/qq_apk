@@ -29,14 +29,14 @@ public class NearbyProfilePicBrowserGalleryScene
   
   protected RelativeLayout a()
   {
-    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130969130, null);
+    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130969128, null);
   }
   
   public void b(ViewGroup paramViewGroup)
   {
     super.b(paramViewGroup);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365304));
-    this.b = ((TextView)paramViewGroup.findViewById(2131365305));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365309));
+    this.b = ((TextView)paramViewGroup.findViewById(2131365310));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.b.setOnClickListener(this);
   }
@@ -82,10 +82,10 @@ public class NearbyProfilePicBrowserGalleryScene
     {
     default: 
       return;
-    case 2131365304: 
+    case 2131365309: 
       this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserModel.b();
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131437419), 0).a();
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131437439), 0).a();
       return;
     }
     int i = this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserModel.b();

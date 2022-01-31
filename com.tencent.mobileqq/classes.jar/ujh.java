@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ujh
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ujh(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
+  public ujh(TroopTransferActivity paramTroopTransferActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

@@ -1,9 +1,5 @@
 package com.tencent.plato;
 
-import aljx;
-import aljy;
-import aljz;
-import alka;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,35 +27,113 @@ import mqq.app.AppRuntime;
 
 public class PlatoAppManager
 {
-  public static int a;
-  private static String a;
-  public static HashMap a;
-  public static AtomicBoolean a;
-  public static boolean a;
-  public static int b;
-  public static HashMap b;
+  public static final String BID_QUN_APP_SETTING = "3124";
+  public static final String BID_V8_SO = "3152";
+  public static final int JS_STATUS_NEED_UPDATE = 1;
+  public static final int JS_STATUS_NO_UPDATE = 0;
+  public static final int JS_STATUS_UN_KNOW = -1;
+  public static final int LOAD_MODE_NEXT = 1;
+  public static final int LOAD_MODE_TIMEOUT = 2;
+  public static final int LOAD_MODE_WAIT = 0;
+  public static final String PARAM_ACROSS_PROCESSES = "singledog";
+  public static final String PARAM_LOADMODE = "loadmode";
+  public static final String REPORT_TYPE = "plato_v1";
+  public static final String SO_PLATO_LAYOUT_NAME = "libplato-layout.so";
+  public static final String SO_PLATO_NATIVE_NAME = "libplatonative.so";
+  public static final String SO_V8_NAME = "libv8rt.so";
+  private static String TAG = "PlatoManager";
+  public static final String V8_NATIVE_BIN_NAME = "natives_blob.bin";
+  public static final String V8_SNAPSHOT_BIN_NAME = "snapshot_blob.bin";
+  public static int jsLoad_status;
+  public static HashMap mAppModule;
+  public static boolean mIsInit;
+  public static int mLoadMode = 1;
+  public static HashMap mRunningAppModule;
+  public static AtomicBoolean sV8LibLoaded = new AtomicBoolean(false);
   
   static
   {
-    jdField_a_of_type_JavaLangString = "PlatoManager";
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_Int = -1;
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_Int = 1;
+    jsLoad_status = -1;
+    mAppModule = new HashMap();
+    mRunningAppModule = new HashMap();
   }
   
-  public static String a(Context paramContext, String paramString)
+  private static void _copySoAndInit(Context paramContext, AppRuntime paramAppRuntime)
   {
-    return paramContext.getFilesDir().getAbsolutePath() + File.separator + paramString;
+    FileUtils.c(getAbsFilePath("3152", "libv8rt.so"), getSoPath(paramContext, "libv8rt.so"));
+    FileUtils.c(getAbsFilePath("3152", "libplato-layout.so"), getSoPath(paramContext, "libplato-layout.so"));
+    FileUtils.c(getAbsFilePath("3152", "libplatonative.so"), getSoPath(paramContext, "libplatonative.so"));
+    FileUtils.c(getAbsFilePath("3152", "natives_blob.bin"), getSoPath(paramContext, "natives_blob.bin"));
+    FileUtils.c(getAbsFilePath("3152", "snapshot_blob.bin"), getSoPath(paramContext, "snapshot_blob.bin"));
+    init(paramContext, paramAppRuntime);
+    paramContext = PlatoLoadEvent.createSoLoadEvent(0);
+    Dispatchers.get().dispatch(paramContext);
   }
   
-  public static String a(String paramString1, String paramString2)
+  public static void apiInit(AppRuntime paramAppRuntime)
+  {
+    ModuleManager.Arr.addModules(Arrays.asList(new IExportedModule[] { new NavigationModule(paramAppRuntime), new NetworkingModule() }));
+  }
+  
+  public static String getAbsFilePath(String paramString1, String paramString2)
   {
     return OfflineEnvHelper.a(paramString1) + paramString1 + File.separator + paramString2;
   }
   
-  public static void a(Activity paramActivity, String paramString, Intent paramIntent)
+  public static PlatoAppJson getAppModule(String paramString)
+  {
+    if (mAppModule != null) {
+      return (PlatoAppJson)mAppModule.get(paramString);
+    }
+    return null;
+  }
+  
+  public static PlatoAppFragment getRunningAppModule(String paramString)
+  {
+    if (mRunningAppModule != null) {
+      return (PlatoAppFragment)mRunningAppModule.get(paramString);
+    }
+    return null;
+  }
+  
+  public static String getSoPath(Context paramContext, String paramString)
+  {
+    return paramContext.getFilesDir().getAbsolutePath() + File.separator + paramString;
+  }
+  
+  public static void init(Context paramContext, AppRuntime paramAppRuntime)
+  {
+    long l = System.currentTimeMillis();
+    if (loadV8So(paramContext))
+    {
+      Ev.init(paramContext, new PlatoAppManager.1());
+      PlatoSDKManager.init(paramContext);
+      apiInit(paramAppRuntime);
+      DeviceInfo.init();
+      mIsInit = true;
+      TroopTechReportUtils.a("plato_v1", "sdk_init", String.valueOf(System.currentTimeMillis() - l), "", "", "");
+      return;
+    }
+    preInitV8So(paramContext, paramAppRuntime);
+  }
+  
+  public static void loadApp(Activity paramActivity, AppRuntime paramAppRuntime, String paramString, Intent paramIntent)
+  {
+    if (!mIsInit) {
+      init(paramActivity.getApplicationContext(), paramAppRuntime);
+    }
+    Intent localIntent = new Intent();
+    if (paramIntent != null) {
+      localIntent.putExtras(paramIntent.getExtras());
+    }
+    localIntent.putExtra("bid", paramString);
+    localIntent.putExtra("loadmode", mLoadMode);
+    PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, PlatoAppFragment.class);
+    loadPlatoAppByBid(paramAppRuntime, paramString);
+    jsLoad_status = -1;
+  }
+  
+  public static void loadAppAcrossProcess(Activity paramActivity, String paramString, Intent paramIntent)
   {
     Intent localIntent = new Intent();
     if (paramIntent != null) {
@@ -68,53 +142,35 @@ public class PlatoAppManager
     localIntent.putExtra("bid", paramString);
     localIntent.putExtra("singledog", true);
     PublicFragmentActivity.Launcher.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, PlatoAppFragment.class);
-    jdField_a_of_type_Int = -1;
+    jsLoad_status = -1;
   }
   
-  public static void a(Context paramContext, AppRuntime paramAppRuntime)
+  public static boolean loadBunderJSByBid(String paramString)
   {
-    long l = System.currentTimeMillis();
-    if (a(paramContext))
+    if ((HtmlOffline.c(paramString)) && (HtmlOffline.a(paramString, "http://bundler.js")))
     {
-      Ev.init(paramContext, new aljx());
-      PlatoSDKManager.init(paramContext);
-      a(paramAppRuntime);
-      DeviceInfo.init();
-      jdField_a_of_type_Boolean = true;
-      TroopTechReportUtils.a("plato_v1", "sdk_init", String.valueOf(System.currentTimeMillis() - l), "", "", "");
-      return;
+      String str = getAbsFilePath(paramString, "bundler.js");
+      if (FileUtils.e(str))
+      {
+        ThreadManager.post(new PlatoAppManager.4(paramString, str), 8, null, true);
+        return true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(TAG, 2, "success : path" + str);
+      }
     }
-    b(paramContext, paramAppRuntime);
+    return false;
   }
   
-  public static void a(String paramString, PlatoAppFragment paramPlatoAppFragment)
-  {
-    if (jdField_b_of_type_JavaUtilHashMap != null) {
-      jdField_b_of_type_JavaUtilHashMap.put(paramString, paramPlatoAppFragment);
-    }
-  }
-  
-  public static void a(String paramString, PlatoAppJson paramPlatoAppJson)
-  {
-    if (jdField_a_of_type_JavaUtilHashMap != null) {
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, paramPlatoAppJson);
-    }
-  }
-  
-  public static void a(AppRuntime paramAppRuntime)
-  {
-    ModuleManager.Arr.addModules(Arrays.asList(new IExportedModule[] { new NavigationModule(paramAppRuntime), new NetworkingModule() }));
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString)
+  public static void loadPlatoAppByBid(AppRuntime paramAppRuntime, String paramString)
   {
     boolean bool2;
-    if (jdField_b_of_type_Int == 1)
+    if (mLoadMode == 1)
     {
-      bool2 = a(paramString);
+      bool2 = loadBunderJSByBid(paramString);
       bool1 = bool2;
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "LOAD_MODE_NEXT reuslt: " + bool2);
+        QLog.d(TAG, 2, "LOAD_MODE_NEXT reuslt: " + bool2);
       }
     }
     for (boolean bool1 = bool2;; bool1 = false)
@@ -123,65 +179,50 @@ public class PlatoAppManager
       if (!bool1) {}
       for (bool1 = true;; bool1 = false)
       {
-        HtmlOffline.a(paramString, paramAppRuntime, new aljz(bool1, paramString, l), true, 0, true);
+        HtmlOffline.a(paramString, paramAppRuntime, new PlatoAppManager.3(bool1, paramString, l), true, 0, true);
         return;
       }
     }
   }
   
-  public static boolean a(Context paramContext)
+  public static boolean loadV8So(Context paramContext)
   {
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (!sV8LibLoaded.get())
     {
-      String str1 = a(paramContext, "libv8rt.so");
-      String str2 = a(paramContext, "libplatonative.so");
-      paramContext = a(paramContext, "libplato-layout.so");
+      String str1 = getSoPath(paramContext, "libv8rt.so");
+      String str2 = getSoPath(paramContext, "libplatonative.so");
+      paramContext = getSoPath(paramContext, "libplato-layout.so");
       if ((FileUtils.e(str1)) && (FileUtils.e(str2)) && (FileUtils.e(paramContext)))
       {
         System.load(str1);
         System.load(str2);
         System.load(paramContext);
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        sV8LibLoaded.set(true);
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "System.load file =" + str1);
+          QLog.d(TAG, 2, "System.load file =" + str1);
         }
       }
     }
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return sV8LibLoaded.get();
   }
   
-  public static boolean a(String paramString)
+  public static void preInitV8So(Context paramContext, AppRuntime paramAppRuntime)
   {
-    if ((HtmlOffline.c(paramString)) && (HtmlOffline.a(paramString, "http://bundler.js")))
-    {
-      String str = a(paramString, "bundler.js");
-      if (FileUtils.e(str))
-      {
-        ThreadManager.post(new alka(paramString, str), 8, null, true);
-        return true;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "success : path" + str);
-      }
+    HtmlOffline.a("3152", paramAppRuntime, new PlatoAppManager.2(paramContext, paramAppRuntime, System.currentTimeMillis(), new long[1]), true, 0, true);
+  }
+  
+  public static void setAppModule(String paramString, PlatoAppJson paramPlatoAppJson)
+  {
+    if (mAppModule != null) {
+      mAppModule.put(paramString, paramPlatoAppJson);
     }
-    return false;
   }
   
-  public static void b(Context paramContext, AppRuntime paramAppRuntime)
+  public static void setRunningAppModule(String paramString, PlatoAppFragment paramPlatoAppFragment)
   {
-    HtmlOffline.a("3152", paramAppRuntime, new aljy(paramContext, paramAppRuntime, System.currentTimeMillis(), new long[1]), true, 0, true);
-  }
-  
-  private static void d(Context paramContext, AppRuntime paramAppRuntime)
-  {
-    FileUtils.c(a("3152", "libv8rt.so"), a(paramContext, "libv8rt.so"));
-    FileUtils.c(a("3152", "libplato-layout.so"), a(paramContext, "libplato-layout.so"));
-    FileUtils.c(a("3152", "libplatonative.so"), a(paramContext, "libplatonative.so"));
-    FileUtils.c(a("3152", "natives_blob.bin"), a(paramContext, "natives_blob.bin"));
-    FileUtils.c(a("3152", "snapshot_blob.bin"), a(paramContext, "snapshot_blob.bin"));
-    a(paramContext, paramAppRuntime);
-    paramContext = PlatoLoadEvent.a(0);
-    Dispatchers.get().dispatch(paramContext);
+    if (mRunningAppModule != null) {
+      mRunningAppModule.put(paramString, paramPlatoAppFragment);
+    }
   }
 }
 

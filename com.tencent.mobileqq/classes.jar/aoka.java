@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextEffectView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel;
 
 public class aoka
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aoka(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public aoka(EditTextPanel paramEditTextPanel, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel.a.smoothScrollToPosition(this.jdField_a_of_type_Int);
   }
 }
 

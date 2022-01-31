@@ -1,39 +1,40 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.binhai.BinHaiHandler;
+import com.tencent.mobileqq.binhai.BinHaiMsgDialog;
+import com.tencent.mobileqq.binhai.BinHaiMsgDialog.Listener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agmh
-  implements Animator.AnimatorListener
+  implements BinHaiMsgDialog.Listener
 {
-  public agmh(FormalView paramFormalView) {}
+  public agmh(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(BinHaiMsgDialog paramBinHaiMsgDialog)
   {
-    this.a.f();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.f();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    FormalView.a(this.a).setVisibility(0);
-    if (this.a.a == 1)
+    paramBinHaiMsgDialog.dismiss();
+    if (paramBinHaiMsgDialog.jdField_a_of_type_Boolean)
     {
-      FormalView.b(this.a).setVisibility(0);
+      this.a.finish();
       return;
     }
-    FormalView.b(this.a).setVisibility(8);
+    ScanTorchActivity.a(this.a, true, 0);
+    ((BinHaiHandler)this.a.b.getBusinessHandler(3)).b(ScanTorchActivity.c(this.a), paramBinHaiMsgDialog.jdField_a_of_type_Int);
+  }
+  
+  public void b(BinHaiMsgDialog paramBinHaiMsgDialog)
+  {
+    paramBinHaiMsgDialog.dismiss();
+    this.a.finish();
+  }
+  
+  public void c(BinHaiMsgDialog paramBinHaiMsgDialog)
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agmh
  * JD-Core Version:    0.7.0.1
  */

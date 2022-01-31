@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.armap.wealthgod;
 
-import abiq;
-import abir;
-import abis;
-import abit;
+import abpr;
+import abps;
+import abpt;
+import abpu;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -37,16 +37,16 @@ public class ARMapSplashEntryView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2130970235, this, true);
+    LayoutInflater.from(paramContext).inflate(2130970250, this, true);
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369768));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369769));
-    this.c = ((ImageView)findViewById(2131369770));
-    this.d = ((ImageView)findViewById(2131369771));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369778));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369779));
+    this.c = ((ImageView)findViewById(2131369780));
+    this.d = ((ImageView)findViewById(2131369781));
     Drawable localDrawable = SplashBitmapUtils.a(this.jdField_a_of_type_AndroidContentContext, "KEY_SPLASH_ENTRY_CLOUD");
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localDrawable);
     this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(localDrawable);
@@ -107,8 +107,8 @@ public class ARMapSplashEntryView
       this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(1000L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new abiq(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new abir(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new abpr(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new abps(this));
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
@@ -122,8 +122,8 @@ public class ARMapSplashEntryView
       this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(1000L);
       this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new abis(this));
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new abit(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new abpt(this));
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new abpu(this));
     }
     this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
     this.jdField_b_of_type_AndroidAnimationValueAnimator.start();

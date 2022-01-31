@@ -8,6 +8,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
 import com.tencent.component.network.module.base.Config;
+import com.tencent.component.network.module.base.QDLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -84,9 +85,17 @@ public class NetworkManager
       return;
     }
     mContext = paramContext;
-    sNetworkChangeReceiver = new NetworkManager.NetworkChangeReceiver(paramContext);
-    IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-    paramContext.registerReceiver(sNetworkChangeReceiver, localIntentFilter);
+    try
+    {
+      sNetworkChangeReceiver = new NetworkManager.NetworkChangeReceiver(paramContext);
+      IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
+      paramContext.registerReceiver(sNetworkChangeReceiver, localIntentFilter);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QDLog.d("NetworkManager", "downloader register NetworkChangeReceiver failed!", paramContext);
+    }
   }
   
   public static boolean isMobile()

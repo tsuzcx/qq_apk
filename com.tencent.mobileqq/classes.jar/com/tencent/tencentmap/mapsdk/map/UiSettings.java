@@ -35,7 +35,7 @@ public final class UiSettings
     return this.uiSettingsDelegate$41cd271b.k();
   }
   
-  protected final boolean isScaleControlsEnabled()
+  public final boolean isScaleControlsEnabled()
   {
     return this.uiSettingsDelegate$41cd271b.g();
   }
@@ -63,6 +63,20 @@ public final class UiSettings
   public final void setLogoPosition(int paramInt)
   {
     this.uiSettingsDelegate$41cd271b.b(paramInt);
+  }
+  
+  public final void setLogoPosition(int paramInt, int[] paramArrayOfInt)
+  {
+    if (this.uiSettingsDelegate$41cd271b != null) {
+      this.uiSettingsDelegate$41cd271b.a(paramInt, paramArrayOfInt);
+    }
+  }
+  
+  public final void setLogoScale(float paramFloat)
+  {
+    if (this.uiSettingsDelegate$41cd271b != null) {
+      this.uiSettingsDelegate$41cd271b.a(paramFloat);
+    }
   }
   
   public final void setScaleControlsEnabled(boolean paramBoolean)

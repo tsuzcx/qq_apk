@@ -1,50 +1,42 @@
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.VideoCallBack;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.net.Uri;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Hashtable;
 
 public class akkk
-  extends Handler
+  extends FriendListObserver
 {
-  public akkk(VideoCallBack paramVideoCallBack, QQProgressDialog paramQQProgressDialog, String paramString, Activity paramActivity) {}
+  private final JumpAction b;
   
-  public void handleMessage(Message paramMessage)
+  public akkk(JumpAction paramJumpAction1, JumpAction paramJumpAction2)
   {
-    switch (paramMessage.what)
-    {
-    }
-    int i;
+    this.b = paramJumpAction2;
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if ((!paramBoolean) || (JumpAction.a(this.a) == null) || (!JumpAction.a(this.a).containsKey(paramString))) {}
     do
     {
       return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      JumpAction.a(this.a).remove(paramString);
+      if (JumpAction.a(this.a).size() == 0) {
+        JumpAction.a(this.a).removeObserver(JumpAction.a(this.a));
       }
-      i = paramMessage.arg1;
-      if (i != 0) {
-        break;
-      }
-      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("video_dir", paramMessage);
-      localIntent.putExtra("thumb_dir", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      Object localObject = Uri.parse(JumpAction.a(this.a) + "&uin=" + paramString);
+      localObject = new Intent(this.b.h, (Uri)localObject);
+      this.a.a.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
     } while (!QLog.isColorLevel());
-    QLog.i("VideoCallBack", 2, "encode success: " + paramMessage);
-    return;
-    this.jdField_a_of_type_AndroidAppActivity.setResult(2);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    QLog.e("VideoCallBack", 1, "error! ret = " + i);
+    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + this.b.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akkk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
 public class vyw
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  public vyw(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vyw(GameRoomChatPie paramGameRoomChatPie, boolean paramBoolean) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.A();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.V = true;
+    GameRoomChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie, this.jdField_a_of_type_Boolean);
   }
 }
 

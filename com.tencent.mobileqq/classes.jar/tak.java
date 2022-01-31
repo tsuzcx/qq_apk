@@ -1,23 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
 
 public class tak
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public tak(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public tak(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 2014: 
-      this.a.finish();
-      return;
-    }
-    this.a.finish();
+    this.a.a();
   }
 }
 

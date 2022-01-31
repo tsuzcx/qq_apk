@@ -1,13 +1,40 @@
-import com.tencent.mobileqq.webviewplugin.SocialWeeklyWebViewPlugin;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-public class akrp
-  implements Runnable
+public final class akrp
+  extends SosoInterface.OnLocationListener
 {
-  public akrp(SocialWeeklyWebViewPlugin paramSocialWeeklyWebViewPlugin, String paramString) {}
-  
-  public void run()
+  public akrp(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, boolean paramBoolean3, boolean paramBoolean4, String paramString, SharedPreferences paramSharedPreferences, long paramLong2)
   {
-    SocialWeeklyWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqWebviewpluginSocialWeeklyWebViewPlugin, SocialWeeklyWebViewPlugin.b(this.jdField_a_of_type_ComTencentMobileqqWebviewpluginSocialWeeklyWebViewPlugin, this.jdField_a_of_type_JavaLangString));
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong1, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
+    {
+      d1 = paramSosoLbsInfo.a.a;
+      d2 = paramSosoLbsInfo.a.b;
+      paramSosoLbsInfo = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      paramSosoLbsInfo.putFloat("search_lbs_logitude", (float)d2);
+      paramSosoLbsInfo.putFloat("search_lbs_latitude", (float)d1);
+      paramSosoLbsInfo.putLong("search_lbs_timestamp", this.jdField_a_of_type_Long);
+      paramSosoLbsInfo.commit();
+      if (QLog.isColorLevel()) {
+        QLog.i("SSOHttpUtils", 2, "Soso location info lat: " + d1 + ",lon:" + d2);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      double d1;
+      double d2;
+      return;
+    }
+    QLog.i("SSOHttpUtils", 2, "Soso location failed error = " + paramInt);
   }
 }
 

@@ -1,15 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public class xya
-  implements ValueAnimator.AnimatorUpdateListener
+class xya
+  implements Runnable
 {
-  public xya(RotationSeekBar paramRotationSeekBar) {}
+  xya(xxz paramxxz) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    RotationSeekBar.b(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e(this.a.jdField_a_of_type_Int);
   }
 }
 

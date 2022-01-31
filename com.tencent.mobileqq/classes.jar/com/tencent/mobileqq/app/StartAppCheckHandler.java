@@ -35,12 +35,12 @@ import java.util.List;
 import java.util.Queue;
 import mqq.app.MobileQQ;
 import mqq.observer.BusinessObserver;
-import znc;
-import znd;
-import zne;
-import znf;
-import zng;
-import znh;
+import zty;
+import ztz;
+import zua;
+import zub;
+import zuc;
+import zud;
 
 public class StartAppCheckHandler
   extends BusinessHandler
@@ -48,15 +48,15 @@ public class StartAppCheckHandler
 {
   final int jdField_a_of_type_Int = 1;
   public Activity a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new znc(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new zty(this, Looper.getMainLooper());
   public BrowserAppInterface a;
   public Runnable a;
   public Queue a;
-  public znf a;
-  public znh a;
+  public zub a;
+  public zud a;
   public boolean a;
   final int jdField_b_of_type_Int = 2;
-  private Handler jdField_b_of_type_AndroidOsHandler = new znd(this, Looper.getMainLooper());
+  private Handler jdField_b_of_type_AndroidOsHandler = new ztz(this, Looper.getMainLooper());
   public AppInterface b;
   final int c = 3;
   
@@ -68,7 +68,7 @@ public class StartAppCheckHandler
     this.jdField_b_of_type_ComTencentCommonAppAppInterface = null;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_a_of_type_JavaLangRunnable = new zne(this);
+    this.jdField_a_of_type_JavaLangRunnable = new zua(this);
     this.jdField_b_of_type_ComTencentCommonAppAppInterface = paramQQAppInterface;
   }
   
@@ -144,30 +144,30 @@ public class StartAppCheckHandler
       return;
       paramArrayOfByte = ((signature.SignatureResult)localObject2).str_packname.get();
       long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Znf.jdField_b_of_type_Long = Long.valueOf(l).longValue();
+      this.jdField_a_of_type_Zub.jdField_b_of_type_Long = Long.valueOf(l).longValue();
       if (((signature.SignatureResult)localObject2).u32_timeout.has()) {
-        this.jdField_a_of_type_Znf.jdField_a_of_type_Long = ((signature.SignatureResult)localObject2).u32_timeout.get();
+        this.jdField_a_of_type_Zub.jdField_a_of_type_Long = ((signature.SignatureResult)localObject2).u32_timeout.get();
       }
       if (((signature.SignatureResult)localObject2).u32_check_result.has()) {
-        this.jdField_a_of_type_Znf.jdField_a_of_type_Int = ((signature.SignatureResult)localObject2).u32_check_result.get();
+        this.jdField_a_of_type_Zub.jdField_a_of_type_Int = ((signature.SignatureResult)localObject2).u32_check_result.get();
       }
       if (((signature.SignatureResult)localObject2).str_title.has()) {
-        this.jdField_a_of_type_Znf.jdField_c_of_type_JavaLangString = ((signature.SignatureResult)localObject2).str_title.get();
+        this.jdField_a_of_type_Zub.jdField_c_of_type_JavaLangString = ((signature.SignatureResult)localObject2).str_title.get();
       }
       if (((signature.SignatureResult)localObject2).str_content.has()) {
-        this.jdField_a_of_type_Znf.d = ((signature.SignatureResult)localObject2).str_content.get();
+        this.jdField_a_of_type_Zub.d = ((signature.SignatureResult)localObject2).str_content.get();
       }
       if (((signature.SignatureResult)localObject2).str_left_button.has()) {
-        this.jdField_a_of_type_Znf.e = ((signature.SignatureResult)localObject2).str_left_button.get();
+        this.jdField_a_of_type_Zub.e = ((signature.SignatureResult)localObject2).str_left_button.get();
       }
       if (((signature.SignatureResult)localObject2).str_right_button.has()) {
-        this.jdField_a_of_type_Znf.f = ((signature.SignatureResult)localObject2).str_right_button.get();
+        this.jdField_a_of_type_Zub.f = ((signature.SignatureResult)localObject2).str_right_button.get();
       }
       if (((signature.SignatureResult)localObject2).str_url.has()) {
-        this.jdField_a_of_type_Znf.g = ((signature.SignatureResult)localObject2).str_url.get();
+        this.jdField_a_of_type_Zub.g = ((signature.SignatureResult)localObject2).str_url.get();
       }
-      this.jdField_a_of_type_Znf.b();
-      this.jdField_a_of_type_Znf = null;
+      this.jdField_a_of_type_Zub.b();
+      this.jdField_a_of_type_Zub = null;
       localObject1 = new LinkedList();
       switch (((signature.SignatureResult)localObject2).u32_check_result.get())
       {
@@ -178,7 +178,7 @@ public class StartAppCheckHandler
       paramArrayOfByte = ((List)localObject1).iterator();
       while (paramArrayOfByte.hasNext())
       {
-        localObject1 = (zng)paramArrayOfByte.next();
+        localObject1 = (zuc)paramArrayOfByte.next();
         this.jdField_a_of_type_JavaUtilQueue.remove(localObject1);
       }
       break;
@@ -186,8 +186,8 @@ public class StartAppCheckHandler
       Object localObject4;
       while (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (zng)((Iterator)localObject2).next();
-        if (((zng)localObject3).jdField_a_of_type_JavaLangString.equals(paramArrayOfByte))
+        localObject3 = (zuc)((Iterator)localObject2).next();
+        if (((zuc)localObject3).jdField_a_of_type_JavaLangString.equals(paramArrayOfByte))
         {
           ((List)localObject1).add(localObject3);
           localObject4 = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(2, localObject3);
@@ -199,8 +199,8 @@ public class StartAppCheckHandler
       Object localObject3 = this.jdField_a_of_type_JavaUtilQueue.iterator();
       while (((Iterator)localObject3).hasNext())
       {
-        localObject4 = (zng)((Iterator)localObject3).next();
-        if (((zng)localObject4).jdField_a_of_type_JavaLangString.equals(paramArrayOfByte))
+        localObject4 = (zuc)((Iterator)localObject3).next();
+        if (((zuc)localObject4).jdField_a_of_type_JavaLangString.equals(paramArrayOfByte))
         {
           ((List)localObject1).add(localObject4);
           this.jdField_b_of_type_AndroidOsHandler.removeMessages(2, localObject4);
@@ -268,19 +268,19 @@ public class StartAppCheckHandler
       paramContext.startActivity(paramIntent);
       return;
     }
-    this.jdField_a_of_type_Znh = new znh(this, paramString);
-    this.jdField_a_of_type_Znf = new znf(this, paramString);
+    this.jdField_a_of_type_Zud = new zud(this, paramString);
+    this.jdField_a_of_type_Zub = new zub(this, paramString);
     long l;
-    if (Long.valueOf(System.currentTimeMillis()).longValue() < this.jdField_a_of_type_Znf.jdField_b_of_type_Long + 86400000L)
+    if (Long.valueOf(System.currentTimeMillis()).longValue() < this.jdField_a_of_type_Zub.jdField_b_of_type_Long + 86400000L)
     {
-      PackageInfo localPackageInfo = a(this.jdField_b_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_Znh.jdField_a_of_type_JavaLangString);
+      PackageInfo localPackageInfo = a(this.jdField_b_of_type_ComTencentCommonAppAppInterface.getApplication(), this.jdField_a_of_type_Zud.jdField_a_of_type_JavaLangString);
       if (localPackageInfo != null)
       {
         String str = SecUtil.getSignatureHash(localPackageInfo.signatures[0].toByteArray());
         l = new File(localPackageInfo.applicationInfo.sourceDir).lastModified();
-        if ((this.jdField_a_of_type_Znf.jdField_c_of_type_Long == l) && (this.jdField_a_of_type_Znf.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str)))
+        if ((this.jdField_a_of_type_Zub.jdField_c_of_type_Long == l) && (this.jdField_a_of_type_Zub.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str)))
         {
-          if (this.jdField_a_of_type_Znf.jdField_a_of_type_Int != 2)
+          if (this.jdField_a_of_type_Zub.jdField_a_of_type_Int != 2)
           {
             paramContext.startActivity(paramIntent);
             return;
@@ -288,17 +288,17 @@ public class StartAppCheckHandler
           paramString = new Intent(this.jdField_b_of_type_ComTencentCommonAppAppInterface.getApplication(), NotificationActivity.class);
           paramString.putExtra("type", 9);
           paramContext = new Bundle();
-          paramContext.putString("dlg_title", this.jdField_a_of_type_Znf.jdField_c_of_type_JavaLangString);
-          paramContext.putString("dlg_content", this.jdField_a_of_type_Znf.d);
-          paramContext.putString("dlg_lbutton", this.jdField_a_of_type_Znf.e);
-          paramContext.putString("dlg_rbutton", this.jdField_a_of_type_Znf.f);
-          paramContext.putString("dlg_url", this.jdField_a_of_type_Znf.g);
+          paramContext.putString("dlg_title", this.jdField_a_of_type_Zub.jdField_c_of_type_JavaLangString);
+          paramContext.putString("dlg_content", this.jdField_a_of_type_Zub.d);
+          paramContext.putString("dlg_lbutton", this.jdField_a_of_type_Zub.e);
+          paramContext.putString("dlg_rbutton", this.jdField_a_of_type_Zub.f);
+          paramContext.putString("dlg_url", this.jdField_a_of_type_Zub.g);
           paramString.putExtras(paramContext);
           paramString.setFlags(872415232);
           this.jdField_b_of_type_ComTencentCommonAppAppInterface.getApplication().startActivity(paramString);
           try
           {
-            ReportController.b(null, "P_CliOper", "Safe_StartAppCheck", this.jdField_b_of_type_ComTencentCommonAppAppInterface.getAccount(), "startAppByCheckValid", this.jdField_a_of_type_Znf.jdField_b_of_type_JavaLangString, 0, 0, "", "", "", "");
+            ReportController.b(null, "P_CliOper", "Safe_StartAppCheck", this.jdField_b_of_type_ComTencentCommonAppAppInterface.getAccount(), "startAppByCheckValid", this.jdField_a_of_type_Zub.jdField_b_of_type_JavaLangString, 0, 0, "", "", "", "");
             return;
           }
           catch (Exception paramString)
@@ -313,20 +313,20 @@ public class StartAppCheckHandler
     {
       try
       {
-        this.jdField_a_of_type_Znh.jdField_a_of_type_Long = Long.valueOf(this.jdField_b_of_type_ComTencentCommonAppAppInterface.getAccount()).longValue();
-        this.jdField_a_of_type_Znh.jdField_a_of_type_Int = 1;
-        this.jdField_a_of_type_Znh.jdField_a_of_type_JavaLangString = paramString;
-        paramString = new zng(this, paramString, paramContext, paramIntent);
+        this.jdField_a_of_type_Zud.jdField_a_of_type_Long = Long.valueOf(this.jdField_b_of_type_ComTencentCommonAppAppInterface.getAccount()).longValue();
+        this.jdField_a_of_type_Zud.jdField_a_of_type_Int = 1;
+        this.jdField_a_of_type_Zud.jdField_a_of_type_JavaLangString = paramString;
+        paramString = new zuc(this, paramString, paramContext, paramIntent);
         this.jdField_a_of_type_JavaUtilQueue.offer(paramString);
         paramContext = new Message();
         paramContext.what = 2;
         paramContext.obj = paramString;
         this.jdField_b_of_type_AndroidOsHandler.sendMessage(paramContext);
         paramString = this.jdField_a_of_type_AndroidOsHandler;
-        if (this.jdField_a_of_type_Znf.jdField_a_of_type_Long <= 0L) {
+        if (this.jdField_a_of_type_Zub.jdField_a_of_type_Long <= 0L) {
           break label581;
         }
-        l = this.jdField_a_of_type_Znf.jdField_a_of_type_Long;
+        l = this.jdField_a_of_type_Zub.jdField_a_of_type_Long;
         paramString.sendEmptyMessageDelayed(3, l);
         this.jdField_a_of_type_Boolean = true;
         return;

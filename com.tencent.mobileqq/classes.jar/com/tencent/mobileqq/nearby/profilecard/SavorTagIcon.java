@@ -194,7 +194,7 @@ public class SavorTagIcon
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilList = new ArrayList(2);
     this.b = getResources().getDimensionPixelSize(2131559112);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970487, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970499, null));
     FrameLayout.LayoutParams localLayoutParams = a();
     localLayoutParams.width = -1;
     localLayoutParams.height = -2;
@@ -224,7 +224,7 @@ public class SavorTagIcon
     if (i < j) {
       while (i < j)
       {
-        localObject1 = LayoutInflater.from(getContext()).inflate(2130970483, null);
+        localObject1 = LayoutInflater.from(getContext()).inflate(2130970495, null);
         localObject2 = a();
         ((ViewGroup.MarginLayoutParams)localObject2).width = -2;
         ((ViewGroup.MarginLayoutParams)localObject2).height = -2;
@@ -284,7 +284,7 @@ public class SavorTagIcon
           {
             GradientDrawable localGradientDrawable;
             j = Color.parseColor(((InterestTagInfo)localObject2).tagTextColor);
-            TextView localTextView = (TextView)((View)localObject1).findViewById(2131365251);
+            TextView localTextView = (TextView)((View)localObject1).findViewById(2131365278);
             if (localTextView != null)
             {
               localTextView.setText(str);
@@ -346,7 +346,7 @@ public class SavorTagIcon
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838484, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838490, 0);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import aiiy;
-import aiiz;
+import aint;
+import ainu;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -36,7 +36,7 @@ import com.tencent.qphone.base.util.QLog;
 public class StructMsgItemLayout15
   extends AbsStructMsgItem
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aiiz(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ainu(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   private RelativeLayout a(Context paramContext)
@@ -62,7 +62,7 @@ public class StructMsgItemLayout15
     ((Button)localObject2).setBackgroundDrawable(null);
     localRelativeLayout.addView((View)localObject2);
     localObject3 = new ProgressBar(paramContext);
-    ((ProgressBar)localObject3).setIndeterminateDrawable(paramContext.getResources().getDrawable(2130838596));
+    ((ProgressBar)localObject3).setIndeterminateDrawable(paramContext.getResources().getDrawable(2130838602));
     int i = AIOUtils.a(16.0F, paramContext.getResources());
     Object localObject4 = new RelativeLayout.LayoutParams(i, i);
     ((RelativeLayout.LayoutParams)localObject4).addRule(1, 2131362165);
@@ -90,7 +90,7 @@ public class StructMsgItemLayout15
     ((RelativeLayout.LayoutParams)localObject6).addRule(15, -1);
     ((ImageView)localObject5).setPadding(AIOUtils.a(15.0F, (Resources)localObject1), AIOUtils.a(15.0F, (Resources)localObject1), 0, AIOUtils.a(15.0F, (Resources)localObject1));
     ((ImageView)localObject5).setLayoutParams((ViewGroup.LayoutParams)localObject6);
-    ((ImageView)localObject5).setImageResource(2130841487);
+    ((ImageView)localObject5).setImageResource(2130841514);
     ((ImageView)localObject5).setId(2131362171);
     localRelativeLayout.addView((View)localObject5);
     localObject6 = new ImageView(paramContext);
@@ -98,7 +98,7 @@ public class StructMsgItemLayout15
     localLayoutParams.addRule(0, 2131362171);
     localLayoutParams.addRule(15, -1);
     ((ImageView)localObject6).setLayoutParams(localLayoutParams);
-    ((ImageView)localObject6).setBackgroundResource(2130841488);
+    ((ImageView)localObject6).setBackgroundResource(2130841515);
     ((ImageView)localObject6).setId(2131362169);
     localRelativeLayout.addView((View)localObject6);
     localObject6 = new Button(paramContext);
@@ -119,7 +119,7 @@ public class StructMsgItemLayout15
     localLayoutParams.addRule(15, -1);
     paramContext.setPadding(0, AIOUtils.a(15.0F, (Resources)localObject1), 0, AIOUtils.a(15.0F, (Resources)localObject1));
     paramContext.setLayoutParams(localLayoutParams);
-    paramContext.setImageResource(2130841489);
+    paramContext.setImageResource(2130841516);
     paramContext.setId(2131362168);
     localRelativeLayout.addView(paramContext);
     ((Button)localObject2).setTag(2131362172, Integer.valueOf(1));
@@ -176,7 +176,7 @@ public class StructMsgItemLayout15
     paramContext = ((FragmentActivity)paramContext).getChatFragment().a();
     paramContext.a.setStackFromBottomWithoutRequestLayoutIfNecessary(false);
     paramContext.b(131076);
-    paramContext.a.postDelayed(new aiiy(this, paramContext), 100L);
+    paramContext.a.postDelayed(new aint(this, paramContext), 100L);
   }
   
   protected int b()
@@ -236,7 +236,7 @@ public class StructMsgItemLayout15
             if (!localMessageForTroopTopic.isLike) {
               break label549;
             }
-            paramBundle.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841490);
+            paramBundle.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841517);
           }
         }
       }
@@ -270,10 +270,10 @@ public class StructMsgItemLayout15
       paramBundle.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       if (localMessageForTroopTopic.isExpand)
       {
-        paramBundle.jdField_a_of_type_AndroidWidgetButton.setText(2131430737);
+        paramBundle.jdField_a_of_type_AndroidWidgetButton.setText(2131430740);
         break label193;
       }
-      paramBundle.jdField_a_of_type_AndroidWidgetButton.setText(2131430736);
+      paramBundle.jdField_a_of_type_AndroidWidgetButton.setText(2131430739);
       break label193;
       label482:
       paramBundle.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
@@ -285,7 +285,7 @@ public class StructMsgItemLayout15
       paramView = localMessageForTroopTopic.commentNum + "";
       break label255;
       label549:
-      paramBundle.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841489);
+      paramBundle.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841516);
     }
   }
   

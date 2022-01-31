@@ -1,24 +1,110 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.graphics.RectF;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerFore;
+import java.lang.ref.WeakReference;
 
 public class aomm
-  implements Animation.AnimationListener
+  implements Animator.AnimatorListener
 {
-  public aomm(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager, View paramView, int paramInt) {}
+  public aomm(GroundDrawable paramGroundDrawable) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.jdField_a_of_type_Int == CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager)) {
-      CaptureVideoFilterViewPager.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, false);
+    if (GroundDrawable.b(this.a))
+    {
+      GroundDrawable.a(this.a, false);
+      GroundDrawable.g(this.a, GroundDrawable.e(this.a));
+      if (GroundDrawable.e(this.a) != 1) {
+        break label53;
+      }
+      this.a.a(2);
+    }
+    label53:
+    do
+    {
+      return;
+      if (GroundDrawable.e(this.a) == 3)
+      {
+        this.a.a(0);
+        return;
+      }
+    } while (GroundDrawable.e(this.a) != 4);
+    if ((GroundDrawable.a(this.a)) && (GroundDrawable.a(this.a) != null))
+    {
+      paramAnimator = (aomv)GroundDrawable.a(this.a).get();
+      if (paramAnimator != null)
+      {
+        RectF localRectF = GroundDrawable.a(this.a).a(GroundDrawable.f(this.a));
+        if (localRectF == null) {
+          break label183;
+        }
+        paramAnimator.a(GroundDrawable.e(this.a), GroundDrawable.f(this.a), localRectF);
+      }
+    }
+    for (;;)
+    {
+      GroundDrawable.b(this.a, false);
+      this.a.a(0);
+      return;
+      label183:
+      QLog.d("GroundDrawable", 2, "onGroundMarkSelected error 2 !! rc is null:" + GroundDrawable.f(this.a));
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.a.isRunning())
+    {
+      GroundDrawable.a(this.a, false);
+      GroundDrawable.f(this.a, GroundDrawable.e(this.a));
+      if (GroundDrawable.e(this.a) != 1) {
+        break label53;
+      }
+      this.a.a(2);
+    }
+    label53:
+    do
+    {
+      return;
+      if (GroundDrawable.e(this.a) == 3)
+      {
+        this.a.a(0);
+        return;
+      }
+    } while (GroundDrawable.e(this.a) != 4);
+    if ((GroundDrawable.a(this.a)) && (GroundDrawable.a(this.a) != null))
+    {
+      paramAnimator = (aomv)GroundDrawable.a(this.a).get();
+      if (paramAnimator != null)
+      {
+        RectF localRectF = GroundDrawable.a(this.a).a(GroundDrawable.f(this.a));
+        if (localRectF == null) {
+          break label183;
+        }
+        paramAnimator.a(GroundDrawable.e(this.a), GroundDrawable.f(this.a), localRectF);
+      }
+    }
+    for (;;)
+    {
+      GroundDrawable.b(this.a, false);
+      this.a.a(0);
+      return;
+      label183:
+      QLog.d("GroundDrawable", 2, "onGroundMarkSelected error!! rc is null:" + GroundDrawable.f(this.a));
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.a.isRunning()) {
+      GroundDrawable.e(this.a, GroundDrawable.e(this.a));
+    }
+  }
 }
 
 

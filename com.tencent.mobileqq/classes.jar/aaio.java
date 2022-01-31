@@ -1,68 +1,170 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ar.arengine.ARResourceDownload;
-import com.tencent.mobileqq.ar.arengine.ARResourceDownload.ARResourceDownloadCallback;
-import com.tencent.mobileqq.ar.arengine.ARResourceDownload.DownloadInfo;
-import com.tencent.mobileqq.portal.PortalUtils;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigUtils;
+import com.tencent.mobileqq.ar.IArConfigListener;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.mobileqq.ar.aidl.IArRemoteCallback;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
 
 public class aaio
-  implements INetEngine.INetEngineListener
+  implements IArConfigListener
 {
-  public aaio(ARResourceDownload paramARResourceDownload, ARResourceDownload.DownloadInfo paramDownloadInfo, ARResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback) {}
+  public aaio(ArConfigService paramArConfigService) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARResourceDownload", 2, "onUpdateProgeress. url = " + ((HttpNetReq)paramNetReq).jdField_a_of_type_JavaLangString + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
+    if (ArConfigService.a(this.a) != null) {}
+    try
+    {
+      int j = ArConfigService.a(this.a).beginBroadcast();
+      int i = 0;
+      while (i < j)
+      {
+        ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramInt);
+        i += 1;
+      }
+      ArConfigService.a(this.a).finishBroadcast();
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$ARResourceDownloadCallback.a(paramLong1, paramLong2);
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        localRemoteException.printStackTrace();
+      }
+    }
+    ArConfigUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, paramInt);
   }
   
-  public void a(NetResp paramNetResp)
+  public void a(long paramLong1, long paramLong2)
   {
-    if (paramNetResp.jdField_a_of_type_Int == 3)
+    if (ArConfigService.a(this.a) != null) {}
+    try
     {
-      QLog.i("AREngine_ARResourceDownload", 1, "Download init. url = " + ((HttpNetReq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq).jdField_a_of_type_JavaLangString);
+      int j = ArConfigService.a(this.a).beginBroadcast();
+      int i = 0;
+      while (i < j)
+      {
+        ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramLong1, paramLong2);
+        i += 1;
+      }
+      ArConfigService.a(this.a).finishBroadcast();
       return;
     }
-    synchronized (ARResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload))
+    catch (RemoteException localRemoteException)
     {
-      int i;
-      if (ARResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload) != null)
+      localRemoteException.printStackTrace();
+    }
+  }
+  
+  public void a(ARCommonConfigInfo paramARCommonConfigInfo)
+  {
+    if (ArConfigService.a(this.a) != null) {}
+    try
+    {
+      int j = ArConfigService.a(this.a).beginBroadcast();
+      int i = 0;
+      while (i < j)
       {
-        i = 0;
-        if (i < ARResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload).size())
+        ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(null, null, paramARCommonConfigInfo);
+        i += 1;
+      }
+      ArConfigService.a(this.a).finishBroadcast();
+      return;
+    }
+    catch (RemoteException paramARCommonConfigInfo)
+    {
+      paramARCommonConfigInfo.printStackTrace();
+    }
+  }
+  
+  public void a(ArConfigInfo paramArConfigInfo)
+  {
+    if (ArConfigService.a(this.a) != null) {}
+    try
+    {
+      int j = ArConfigService.a(this.a).beginBroadcast();
+      int i = 0;
+      while (i < j)
+      {
+        ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramArConfigInfo, null, null);
+        i += 1;
+      }
+      ArConfigService.a(this.a).finishBroadcast();
+      return;
+    }
+    catch (RemoteException paramArConfigInfo)
+    {
+      paramArConfigInfo.printStackTrace();
+    }
+  }
+  
+  public void a(ArEffectConfig paramArEffectConfig)
+  {
+    if (ArConfigService.a(this.a) != null) {}
+    try
+    {
+      int j = ArConfigService.a(this.a).beginBroadcast();
+      int i = 0;
+      while (i < j)
+      {
+        ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a(null, paramArEffectConfig, null);
+        i += 1;
+      }
+      ArConfigService.a(this.a).finishBroadcast();
+      return;
+    }
+    catch (RemoteException paramArEffectConfig)
+    {
+      paramArEffectConfig.printStackTrace();
+    }
+  }
+  
+  public void b()
+  {
+    if (ArConfigService.a(this.a) != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess before sync");
+      }
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess  sync start");
+        }
+        int j = ArConfigService.a(this.a).beginBroadcast();
+        int i = 0;
+        for (;;)
         {
-          if (!((ARResourceDownload.DownloadInfo)ARResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo.jdField_a_of_type_JavaLangString)) {
-            break label268;
+          if (i < j) {
+            try
+            {
+              ((IArRemoteCallback)ArConfigService.a(this.a).getBroadcastItem(i)).a();
+              i += 1;
+            }
+            catch (RemoteException localRemoteException)
+            {
+              for (;;)
+              {
+                localRemoteException.printStackTrace();
+              }
+            }
           }
-          ARResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload).remove(i);
         }
       }
-      if (paramNetResp.jdField_a_of_type_Int == 0)
-      {
-        ??? = new File(((HttpNetReq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq).c);
-        String str = PortalUtils.a(((File)???).getAbsolutePath());
-        if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo.b))) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo.jdField_a_of_type_Int != 1))
-        {
-          QLog.i("AREngine_ARResourceDownload", 1, "Download end. MD5 check error. url = " + ((HttpNetReq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq).jdField_a_of_type_JavaLangString + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$ARResourceDownloadCallback.a(false, this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo);
-          return;
-          label268:
-          i += 1;
-        }
+      ArConfigService.a(this.a).finishBroadcast();
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess  sync end");
       }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$ARResourceDownloadCallback.a(bool, this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceDownload$DownloadInfo);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess after sync");
+      }
+      ArConfigUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, 0);
     }
   }
 }

@@ -1,32 +1,25 @@
-import com.tencent.biz.JoinGroupHandler;
-import com.tencent.biz.JoinGroupHandler.IJoinGroupCB;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class kiv
-  extends TroopObserver
+public final class kiv
+  implements Runnable
 {
-  public kiv(JoinGroupHandler paramJoinGroupHandler) {}
+  public kiv(String paramString1, String paramString2, String paramString3) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  public void run()
   {
-    if (paramLong != this.a.jdField_a_of_type_Long) {
-      return;
-    }
-    this.a.jdField_a_of_type_Long = 0L;
-    JoinGroupHandler.a(this.a);
-    if (paramBoolean)
+    FileUtils.a(this.a + File.separator, this.b, this.c);
+    if (QLog.isColorLevel())
     {
-      JoinGroupHandler.a(this.a, paramTroopInfo);
-      return;
+      QLog.i("ScoreManager", 2, "save Config to path :" + this.a);
+      QLog.i("ScoreManager", 2, "save Config to finish :" + this.c);
     }
-    JoinGroupHandler.a(this.a, 2131434464, 1);
-    this.a.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kiv
  * JD-Core Version:    0.7.0.1
  */

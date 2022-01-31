@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.unifiedebug;
 
-import ajyb;
-import ajyc;
-import ajyd;
-import ajye;
-import ajyf;
-import ajyg;
-import ajyh;
+import akfp;
+import akfq;
+import akfr;
+import akfs;
+import akft;
+import akfu;
+import akfv;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
@@ -92,7 +92,7 @@ public class UnifiedDebugManager
     localEditor.putBoolean("need_set_proxy", true);
     localEditor.commit();
     a(paramApplication);
-    ThreadManager.getFileThreadHandler().postDelayed(new ajyg(paramApplication), 2000L);
+    ThreadManager.getFileThreadHandler().postDelayed(new akfu(paramApplication), 2000L);
     if (QLog.isColorLevel())
     {
       QLog.d("UnifiedDebugManager", 2, "unset x5 proxy");
@@ -171,7 +171,7 @@ public class UnifiedDebugManager
     UnifiedDebugManager.TerminalInfo localTerminalInfo = new UnifiedDebugManager.TerminalInfo(this);
     localTerminalInfo.jdField_a_of_type_JavaLangString = (DeviceInfoUtil.i() + " " + DeviceInfoUtil.e());
     localTerminalInfo.jdField_b_of_type_JavaLangString = Build.VERSION.RELEASE;
-    localTerminalInfo.c = "7.6.3.3565";
+    localTerminalInfo.c = "7.6.8.3615";
     DeviceInfoUtil.NetInfo localNetInfo = DeviceInfoUtil.a(paramContext);
     localTerminalInfo.d = localNetInfo.jdField_a_of_type_JavaLangString;
     localTerminalInfo.e = localNetInfo.c;
@@ -657,7 +657,7 @@ public class UnifiedDebugManager
     paramContext = new File(a(paramContext));
     if ((paramContext.exists()) && (paramContext.isDirectory()))
     {
-      paramString = paramContext.list(new ajyd(this, paramString));
+      paramString = paramContext.list(new akfr(this, paramString));
       ArrayList localArrayList = new ArrayList();
       JSONObject localJSONObject1 = new JSONObject();
       localJSONObject1.put("host", localObject1);
@@ -775,7 +775,7 @@ public class UnifiedDebugManager
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        localObject2 = ((File)localObject1).list(new ajyb(this, c((String)paramList.next()).substring(0, 16)));
+        localObject2 = ((File)localObject1).list(new akfp(this, c((String)paramList.next()).substring(0, 16)));
         if (localObject2 != null)
         {
           int j = localObject2.length;
@@ -1371,7 +1371,7 @@ public class UnifiedDebugManager
       }
       while (!QLog.isColorLevel())
       {
-        this.jdField_a_of_type_JavaUtilQueue.offer(new ajyh(this, paramString1, paramInt, paramLong1, paramLong2, paramString2));
+        this.jdField_a_of_type_JavaUtilQueue.offer(new akfv(this, paramString1, paramInt, paramLong1, paramLong2, paramString2));
         return;
       }
       QLog.d("UnifiedDebugManager", 2, "start debug(only enqueue one cmd): seq=" + paramLong2);
@@ -1432,7 +1432,7 @@ public class UnifiedDebugManager
       if (!paramList.hasNext()) {
         break label216;
       }
-      localObject1 = paramContext.listFiles(new ajyc(this, c((String)paramList.next()).substring(0, 16)));
+      localObject1 = paramContext.listFiles(new akfq(this, c((String)paramList.next()).substring(0, 16)));
       if (localObject1 == null) {
         break;
       }
@@ -1467,15 +1467,15 @@ public class UnifiedDebugManager
   {
     synchronized (this.jdField_a_of_type_JavaUtilQueue)
     {
-      ajyh localajyh = (ajyh)this.jdField_a_of_type_JavaUtilQueue.poll();
-      if ((localajyh != null) && (localajyh.jdField_b_of_type_Long == paramLong))
+      akfv localakfv = (akfv)this.jdField_a_of_type_JavaUtilQueue.poll();
+      if ((localakfv != null) && (localakfv.jdField_b_of_type_Long == paramLong))
       {
-        localajyh = (ajyh)this.jdField_a_of_type_JavaUtilQueue.peek();
-        if (localajyh != null)
+        localakfv = (akfv)this.jdField_a_of_type_JavaUtilQueue.peek();
+        if (localakfv != null)
         {
-          b(paramContext, localajyh.jdField_a_of_type_JavaLangString, localajyh.jdField_a_of_type_Int, localajyh.jdField_a_of_type_Long, localajyh.jdField_b_of_type_Long, localajyh.jdField_b_of_type_JavaLangString);
+          b(paramContext, localakfv.jdField_a_of_type_JavaLangString, localakfv.jdField_a_of_type_Int, localakfv.jdField_a_of_type_Long, localakfv.jdField_b_of_type_Long, localakfv.jdField_b_of_type_JavaLangString);
           if (QLog.isColorLevel()) {
-            QLog.d("UnifiedDebugManager", 2, "finish once webview debug, start new debug(dequeue one cmd): seq=" + localajyh.jdField_b_of_type_Long);
+            QLog.d("UnifiedDebugManager", 2, "finish once webview debug, start new debug(dequeue one cmd): seq=" + localakfv.jdField_b_of_type_Long);
           }
         }
         while (!QLog.isColorLevel()) {
@@ -1551,7 +1551,7 @@ public class UnifiedDebugManager
     localIntent.putExtra("maxSnapshotCount", paramInt);
     localIntent.putExtra("callback", this.jdField_a_of_type_AndroidOsResultReceiver);
     paramContext.startActivity(localIntent);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ajyf(this, paramLong2, paramContext, paramString1, paramInt, paramLong1, paramString2), 120000L + paramLong1);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akft(this, paramLong2, paramContext, paramString1, paramInt, paramLong1, paramString2), 120000L + paramLong1);
   }
   
   public void b(Context paramContext, String paramString, List paramList)
@@ -1563,7 +1563,7 @@ public class UnifiedDebugManager
     paramContext = new File(a(paramContext));
     if ((paramContext.exists()) && (paramContext.isDirectory()))
     {
-      paramString = paramContext.list(new ajye(this, paramString));
+      paramString = paramContext.list(new akfs(this, paramString));
       if ((paramString != null) && (paramString.length > 0))
       {
         int j = paramString.length;
@@ -1632,7 +1632,7 @@ public class UnifiedDebugManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedDebugManager
  * JD-Core Version:    0.7.0.1
  */

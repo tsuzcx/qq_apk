@@ -90,16 +90,16 @@ public abstract class AbsStructMsgItem
     default: 
       return;
     case 0: 
-      paramView.setBackgroundResource(2130837918);
-      return;
-    case 1: 
-      paramView.setBackgroundResource(2130837919);
-      return;
-    case 2: 
       paramView.setBackgroundResource(2130837917);
       return;
+    case 1: 
+      paramView.setBackgroundResource(2130837918);
+      return;
+    case 2: 
+      paramView.setBackgroundResource(2130837916);
+      return;
     }
-    paramView.setBackgroundResource(2130837916);
+    paramView.setBackgroundResource(2130837915);
   }
   
   public void a(AbsShareMsg paramAbsShareMsg)
@@ -689,13 +689,13 @@ public abstract class AbsStructMsgItem
     do
     {
       return;
-      paramView.setBackgroundResource(2130837918);
-      break;
-      paramView.setBackgroundResource(2130837919);
-      break;
       paramView.setBackgroundResource(2130837917);
       break;
+      paramView.setBackgroundResource(2130837918);
+      break;
       paramView.setBackgroundResource(2130837916);
+      break;
+      paramView.setBackgroundResource(2130837915);
       break;
       paramView = paramView.findViewById(2131362097);
     } while ((paramView == null) || (!(paramView instanceof PAHighLightImageView)));
@@ -731,13 +731,13 @@ public abstract class AbsStructMsgItem
       paramView.setLayoutParams(localLayoutParams);
       paramView.setPadding(i, j, k, m);
       return;
-      paramView.setBackgroundResource(2130837926);
-      continue;
-      paramView.setBackgroundResource(2130837929);
-      continue;
       paramView.setBackgroundResource(2130837925);
       continue;
       paramView.setBackgroundResource(2130837928);
+      continue;
+      paramView.setBackgroundResource(2130837924);
+      continue;
+      paramView.setBackgroundResource(2130837927);
     }
   }
   
@@ -767,19 +767,19 @@ public abstract class AbsStructMsgItem
         return;
         if (!TextUtils.isEmpty(this.b))
         {
+          this.jdField_g_of_type_Int = 2130837919;
+          break;
+        }
+        this.jdField_g_of_type_Int = 2130837929;
+        break;
+        if (!TextUtils.isEmpty(this.b))
+        {
           this.jdField_g_of_type_Int = 2130837920;
           break;
         }
         this.jdField_g_of_type_Int = 2130837930;
         break;
-        if (!TextUtils.isEmpty(this.b))
-        {
-          this.jdField_g_of_type_Int = 2130837921;
-          break;
-        }
-        this.jdField_g_of_type_Int = 2130837931;
-        break;
-        paramView.setBackgroundResource(2130837919);
+        paramView.setBackgroundResource(2130837918);
         return;
       } while ((!a()) || (this.jdField_f_of_type_Int == 0));
       int i = AIOUtils.a(4.0F, paramView.getResources());

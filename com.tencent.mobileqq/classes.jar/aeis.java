@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.leba.LebaTitleBar;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
 
 public class aeis
   implements Runnable
 {
-  public aeis(EmoticonManager paramEmoticonManager, Emoticon paramEmoticon) {}
+  public aeis(LebaWithFeeds paramLebaWithFeeds) {}
   
   public void run()
   {
-    EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-    if (!EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon)) {
-      QLog.e("EmoticonManager", 1, "saveEmoticon fail epId = " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId + ", eId = " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+    if (LebaWithFeeds.a(this.a) != null) {
+      LebaWithFeeds.a(this.a).b();
     }
   }
 }

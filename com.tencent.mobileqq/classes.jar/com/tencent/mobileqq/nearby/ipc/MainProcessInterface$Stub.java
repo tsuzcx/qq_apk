@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.ipc;
 
-import aerg;
+import aezr;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -26,7 +26,7 @@ public abstract class MainProcessInterface$Stub
     if ((localIInterface != null) && ((localIInterface instanceof MainProcessInterface))) {
       return (MainProcessInterface)localIInterface;
     }
-    return new aerg(paramIBinder);
+    return new aezr(paramIBinder);
   }
   
   public IBinder asBinder()

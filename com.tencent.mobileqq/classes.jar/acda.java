@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.QQPhotoInfo;
 
-public class acda
-  implements Runnable
+public final class acda
+  implements Parcelable.Creator
 {
-  public acda(EmojiManager paramEmojiManager, EmoticonPackage paramEmoticonPackage, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
-  
-  public void run()
+  public QQPhotoInfo a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.jobType != 2) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.c, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Int);
-    }
+    return new QQPhotoInfo(paramParcel, null);
+  }
+  
+  public QQPhotoInfo[] a(int paramInt)
+  {
+    return new QQPhotoInfo[paramInt];
   }
 }
 

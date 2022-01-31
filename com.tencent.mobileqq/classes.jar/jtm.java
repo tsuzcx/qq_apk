@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.EffectSettingBtn;
-import com.tencent.av.utils.UITools;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
 
-public class jtm
-  implements View.OnClickListener
+class jtm
+  implements DialogInterface.OnClickListener
 {
-  public jtm(EffectSettingBtn paramEffectSettingBtn) {}
+  jtm(jti paramjti) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a().a().ax = true;
-    UITools.a(this.a.a);
-    EffectSettingBtn.c(this.a);
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jtm
  * JD-Core Version:    0.7.0.1
  */

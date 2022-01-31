@@ -1,27 +1,60 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.tribe.view.TEditText;
+import com.tencent.mobileqq.tribe.view.TEditText.OnSelectionChangedListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-class ajcj
-  extends TroopAioKeywordTipManager.Callback
+public class ajcj
+  implements TEditText.OnSelectionChangedListener
 {
-  ajcj(ajcg paramajcg) {}
+  public ajcj(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (!this.a.a.a) {}
-    do
+    int k = 1;
+    if (this.a.b.getText().length() <= 0) {}
+    for (;;)
     {
       return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
+      if (paramInt1 < 0)
+      {
+        if (paramInt2 > this.a.H.length() + 1) {}
+        for (;;)
+        {
+          this.a.b.setSelection(paramInt2);
+          return;
+          paramInt2 = this.a.H.length() + 1;
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopAioKeywordTipBar", 2, "mCheckKeywordRunnable, messageRecord == null || keywordTipInfo == null");
-    return;
-    TroopAioKeywordTipBar.a(this.a.a, paramMessageRecord, paramTroopAioKeywordTipInfo);
+      if (paramInt2 < 0)
+      {
+        if (paramInt1 > this.a.H.length() + 1) {}
+        for (;;)
+        {
+          this.a.b.setSelection(paramInt1);
+          return;
+          paramInt1 = this.a.H.length() + 1;
+        }
+      }
+      if (!TextUtils.isEmpty(this.a.H))
+      {
+        int i = 0;
+        int j = paramInt1;
+        if (paramInt1 < this.a.H.length() + 1)
+        {
+          j = this.a.H.length() + 1;
+          i = 1;
+        }
+        if (paramInt2 < this.a.H.length() + 1) {
+          paramInt2 = this.a.H.length() + 1;
+        }
+        for (paramInt1 = k; paramInt1 != 0; paramInt1 = i)
+        {
+          this.a.b.setSelection(j, paramInt2);
+          return;
+        }
+      }
+    }
   }
 }
 

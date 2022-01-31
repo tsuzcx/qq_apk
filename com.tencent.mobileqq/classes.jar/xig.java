@@ -1,32 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.CmGameClientQIPCModule;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
-import com.tencent.mobileqq.data.ApolloGameData;
-import mqq.os.MqqHandler;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbItemClickListener;
 
 class xig
-  implements DialogInterface.OnClickListener
+  extends TroopUnAccalimedRedPacketList.HbItemClickListener
 {
   xig(xif paramxif) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface = CmGameMainManager.a();
-    if (paramDialogInterface != null) {
-      CmGameClientQIPCModule.a(paramDialogInterface.a.game.gameId);
-    }
-    paramDialogInterface = CmGameUtil.a();
-    if (paramDialogInterface != null)
-    {
-      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
-      }
+    if ((paramInt == 1) && (TroopUnAccalimedRedPacketList.a() != null)) {
+      TroopUnAccalimedRedPacketList.a().dismiss();
     }
   }
 }

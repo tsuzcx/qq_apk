@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
+import com.tencent.mobileqq.music.SongInfo;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aaxj
+class aaxj
   implements Runnable
 {
-  public aaxj(ArkRecommendController paramArkRecommendController, RecommendCommonMessage paramRecommendCommonMessage) {}
+  aaxj(aaxh paramaaxh, SongInfo paramSongInfo) {}
   
   public void run()
   {
-    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) == null) {
-      return;
+    Iterator localIterator = ArkAppMusicModule.a.iterator();
+    while (localIterator.hasNext())
+    {
+      ArkAppMusicModule localArkAppMusicModule = (ArkAppMusicModule)((WeakReference)localIterator.next()).get();
+      if (localArkAppMusicModule != null) {
+        localArkAppMusicModule.a(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
+      }
     }
-    ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController);
   }
 }
 

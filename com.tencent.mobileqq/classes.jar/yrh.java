@@ -1,18 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.apollo.ApolloRender;
 
 public final class yrh
-  implements EIPCResultCallback
+  implements Runnable
 {
-  public yrh(long paramLong) {}
+  public yrh(ApolloRender paramApolloRender) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    CmGameUtil.a().callbackFromRequest(this.a, 0, "cs.on_get_open_key.local", paramEIPCResult);
+    if (this.a.mShowEditWindow)
+    {
+      this.a.mEditWindow.dismiss();
+      this.a.mShowEditWindow = false;
+      ApolloRender.sIsKeyBoardDissmiss = true;
+    }
   }
 }
 

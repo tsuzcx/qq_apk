@@ -1,48 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_write.AddFeedRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.component.network.utils.NetworkUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aewp
-  implements CsTask.Callback
+  implements View.OnClickListener
 {
-  public aewp(VideoFeedsUploader paramVideoFeedsUploader) {}
+  public aewp(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    paramBundle = new ilive_feeds_write.AddFeedRsp();
-    try
+    if (!NetworkUtils.isNetworkAvailable(this.a))
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (paramBundle.ret.get() != 0)
-      {
-        VideoFeedsUploader.a(this.a).a = paramBundle.ret.get();
-        VideoFeedsUploader.a(this.a).i = new String(paramBundle.err_msg.get().toByteArray());
-        VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
-        return;
-      }
-      VideoFeedsUploader.a(this.a).a = 0;
-      VideoFeedsUploader.a(this.a).d = new String(paramBundle.feed_id.get().toByteArray());
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoFeedsUploader", 2, "feedId=" + VideoFeedsUploader.a(this.a).d);
-      }
-      VideoFeedsUploader.d(this.a);
-      VideoFeedsUploader.a(this.a, 100, 0);
-      VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
+      QQToast.a(this.a, 1, 2131434827, 1).a();
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      VideoFeedsUploader.a(this.a).a = -1005;
-      VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
-      paramArrayOfByte.printStackTrace();
-    }
+    this.a.d();
+    this.a.a("invite_page", "clk_exit");
   }
 }
 

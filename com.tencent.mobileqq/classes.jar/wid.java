@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.tips.GamePartyTipsBar;
 
 public class wid
   implements Runnable
 {
-  public wid(ClassificationSearchFragment paramClassificationSearchFragment, SearchResult paramSearchResult) {}
+  public wid(GamePartyTipsBar paramGamePartyTipsBar, String paramString) {}
   
   public void run()
   {
-    ClassificationSearchFragment localClassificationSearchFragment;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult != null)
-    {
-      localClassificationSearchFragment = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult.a) {
-        break label30;
-      }
-    }
-    label30:
-    for (int i = 1;; i = 0)
-    {
-      ClassificationSearchFragment.a(localClassificationSearchFragment, i);
-      return;
-    }
+    GamePartyTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar).setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,27 +1,21 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
 
-public final class ntn
-  implements URLDrawable.URLDrawableListener
+public class ntn
+  implements Animation.AnimationListener
 {
-  public ntn(ImageView paramImageView, Drawable paramDrawable) {}
+  public ntn(ExploreAnimalView paramExploreAnimalView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "iconDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
-    }
+    this.a.a.startAnimation(this.a.b);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

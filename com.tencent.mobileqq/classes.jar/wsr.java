@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDisAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.DiscussionFragment;
 
-class wsr
+public class wsr
   implements Runnable
 {
-  wsr(wsq paramwsq) {}
+  public wsr(DiscussionFragment paramDiscussionFragment) {}
   
   public void run()
   {
-    this.a.a.c();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

@@ -1,25 +1,50 @@
-import com.tencent.av.config.ConfigPBProtocol.ConfigSysInfoNew;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import java.lang.ref.WeakReference;
 
 public class jhh
+  extends Handler
 {
-  public byte a;
-  public byte b = 0;
-  public byte c = 1;
-  public byte d = 1;
-  public byte e = 1;
-  public byte f = 0;
-  public byte g = 0;
-  public byte h = 0;
-  public byte i = 0;
+  WeakReference a;
   
-  public jhh(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew)
+  public jhh(EffectConfigBase paramEffectConfigBase)
   {
-    this.jdField_a_of_type_Byte = 1;
+    this.a = new WeakReference(paramEffectConfigBase);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    EffectConfigBase localEffectConfigBase;
+    if (this.a.get() != null) {
+      localEffectConfigBase = (EffectConfigBase)this.a.get();
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      localEffectConfigBase.a(paramMessage);
+      return;
+    case 0: 
+      EffectConfigBase.a(localEffectConfigBase, (EffectConfigBase.ItemBase)paramMessage.obj);
+      return;
+    case 1: 
+      EffectConfigBase.ItemBase localItemBase = (EffectConfigBase.ItemBase)paramMessage.obj;
+      if (paramMessage.arg1 == 1) {}
+      for (;;)
+      {
+        EffectConfigBase.a(localEffectConfigBase, localItemBase, bool);
+        return;
+        bool = false;
+      }
+    }
+    EffectConfigBase.a(localEffectConfigBase, (EffectConfigBase.ItemBase)paramMessage.obj, paramMessage.arg1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jhh
  * JD-Core Version:    0.7.0.1
  */

@@ -34,7 +34,7 @@ public class FTSEntitySearchUtils
   
   public static String a(Context paramContext, int paramInt)
   {
-    return paramContext.getString(2131438147);
+    return paramContext.getString(2131438167);
   }
   
   public static String a(Context paramContext, int paramInt1, String paramString, int paramInt2)
@@ -43,7 +43,7 @@ public class FTSEntitySearchUtils
     if (paramString.length() > 13) {
       str = paramString.substring(0, 10) + "…";
     }
-    return paramContext.getString(2131438146, new Object[] { Integer.valueOf(paramInt1), str });
+    return paramContext.getString(2131438166, new Object[] { Integer.valueOf(paramInt1), str });
   }
   
   public static String b(Context paramContext, int paramInt)

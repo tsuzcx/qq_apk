@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.NativeApngDecoder;
-import com.tencent.mobileqq.earlydownload.handler.ApngHandler;
 import com.tencent.mobileqq.richmedia.capture.data.GifDecoder;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -39,7 +38,7 @@ public class ApngDecodeWrapper
       do
       {
         return;
-        if ((ApngHandler.b.get()) || (VasApngUtil.a(BaseApplicationImpl.sApplication.getRuntime()))) {
+        if ((VasApngUtil.b.get()) || (VasApngUtil.a(BaseApplicationImpl.sApplication.getRuntime()))) {
           break;
         }
       } while (!QLog.isColorLevel());

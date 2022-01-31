@@ -29,6 +29,7 @@ import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
 import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
 import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
@@ -36,6 +37,7 @@ import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.FeedsInfoUser;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.Conversation;
@@ -97,21 +99,21 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
-import mvz;
-import mwa;
-import mwb;
-import mwc;
-import mwd;
-import mwe;
-import mwf;
-import mwh;
-import mwi;
-import mwj;
-import mwk;
-import mwl;
-import mwp;
-import mwr;
-import mws;
+import mzt;
+import mzu;
+import mzv;
+import mzw;
+import mzx;
+import mzy;
+import mzz;
+import nab;
+import nac;
+import nad;
+import nae;
+import naf;
+import naj;
+import nal;
+import nam;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import org.json.JSONException;
@@ -262,7 +264,7 @@ public class PublicAccountUtil
   
   public static String a()
   {
-    return "7.6.3,3,3565";
+    return "7.6.8,3,3615";
   }
   
   public static String a(BaseArticleInfo paramBaseArticleInfo)
@@ -399,7 +401,7 @@ public class PublicAccountUtil
         if (localSkinData != null)
         {
           paramString = HtmlOffline.a(paramString, "_kdSkinID=" + localSkinData.id);
-          if (SharedPreUtils.v(BaseApplicationImpl.getApplication(), str)) {
+          if (SharedPreUtils.y(BaseApplicationImpl.getApplication(), str)) {
             localObject1 = HtmlOffline.a(paramString, "_kdSkinVoice=1");
           }
         }
@@ -477,10 +479,10 @@ public class PublicAccountUtil
     //   105: invokevirtual 344	mqq/app/NewIntent:putExtra	(Ljava/lang/String;[B)Landroid/content/Intent;
     //   108: pop
     //   109: aload_1
-    //   110: new 346	mwn
+    //   110: new 346	nah
     //   113: dup
     //   114: aload_0
-    //   115: invokespecial 349	mwn:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   115: invokespecial 349	nah:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   118: invokevirtual 353	mqq/app/NewIntent:setObserver	(Lmqq/observer/BusinessObserver;)V
     //   121: aload_0
     //   122: aload_1
@@ -557,7 +559,7 @@ public class PublicAccountUtil
       } while (localUri == null);
       str = localUri.getHost();
     } while ((TextUtils.isEmpty(str)) || ((!"article.mp.qq.com".equalsIgnoreCase(str)) && (!"post.mp.qq.com".equalsIgnoreCase(str))));
-    ThreadManager.post(new mwc(localUri, paramInt2, paramInt1, paramString), 5, null, false);
+    ThreadManager.post(new mzw(localUri, paramInt2, paramInt1, paramString), 5, null, false);
   }
   
   public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
@@ -579,7 +581,7 @@ public class PublicAccountUtil
           if ((TextUtils.isEmpty(str)) || ((!"article.mp.qq.com".equalsIgnoreCase(str)) && (!"post.mp.qq.com".equalsIgnoreCase(str)))) {
             continue;
           }
-          ThreadManager.post(new mwd(paramString2, i, paramString3, paramString4, paramInt, paramString1), 5, null, false);
+          ThreadManager.post(new mzx(paramString2, i, paramString3, paramString4, paramInt, paramString1), 5, null, false);
           return;
         }
       }
@@ -597,7 +599,7 @@ public class PublicAccountUtil
   
   public static void a(int paramInt, String paramString, List paramList)
   {
-    ThreadManager.executeOnSubThread(new mwh(paramList, paramInt, paramString));
+    ThreadManager.executeOnSubThread(new nab(paramList, paramInt, paramString));
   }
   
   public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, ProfileParams paramProfileParams)
@@ -620,7 +622,7 @@ public class PublicAccountUtil
         b(paramActivity, paramQQAppInterface, paramProfileParams);
         return;
       }
-      localObject = new mwp(paramActivity, paramQQAppInterface, paramProfileParams);
+      localObject = new naj(paramActivity, paramQQAppInterface, paramProfileParams);
       localObject = QZoneShareManager.a(paramQQAppInterface, paramProfileParams.a(), (BusinessObserver)localObject);
       if (localObject != null)
       {
@@ -822,7 +824,7 @@ public class PublicAccountUtil
         localFollowRequest.uin.set((int)Long.parseLong(paramString));
         localFollowRequest.type.set(paramInt);
         localFollowRequest.ext.set("0");
-        localNewIntent.setObserver(new mwk(paramPublicAccountObserver, paramString, paramContext, paramAppInterface));
+        localNewIntent.setObserver(new nae(paramPublicAccountObserver, paramString, paramContext, paramAppInterface));
         localNewIntent.putExtra("data", localFollowRequest.toByteArray());
         paramAppInterface.startServlet(localNewIntent);
         if (!(paramAppInterface instanceof QQAppInterface)) {
@@ -866,7 +868,7 @@ public class PublicAccountUtil
       try
       {
         localFollowRequest.uin.set((int)Long.parseLong(paramString));
-        localNewIntent.setObserver(new mwi(paramPublicAccountObserver, paramString, paramBoolean, paramContext, paramAppInterface, paramInt));
+        localNewIntent.setObserver(new nac(paramPublicAccountObserver, paramString, paramBoolean, paramContext, paramAppInterface, paramInt));
         localNewIntent.putExtra("data", localFollowRequest.toByteArray());
         paramAppInterface.startServlet(localNewIntent);
         return;
@@ -899,13 +901,13 @@ public class PublicAccountUtil
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt, long paramLong, boolean paramBoolean)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
-    localActionSheet.a(paramContext.getResources().getString(2131430175));
-    localActionSheet.a(2131434041, 3);
+    localActionSheet.a(paramContext.getResources().getString(2131430178));
+    localActionSheet.a(2131434057, 3);
     if (paramString.equals("2010741172")) {
-      localActionSheet.b(2131430044);
+      localActionSheet.b(2131430046);
     }
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new mvz(paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean, paramContext, localActionSheet));
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new mzt(paramQQAppInterface, paramString, paramInt, paramLong, paramBoolean, paramContext, localActionSheet));
     localActionSheet.show();
   }
   
@@ -945,7 +947,7 @@ public class PublicAccountUtil
           if (localObject1 != null) {
             break label222;
           }
-          paramContext = new mwj(paramPublicAccountObserver, paramString, paramBoolean, paramContext, localObject1, paramQQAppInterface);
+          paramContext = new nad(paramPublicAccountObserver, paramString, paramBoolean, paramContext, localObject1, paramQQAppInterface);
           localNewIntent.putExtra("data", ((mobileqq_mp.UnFollowRequest)localObject3).toByteArray());
           localNewIntent.setObserver(paramContext);
           paramQQAppInterface.startServlet(localNewIntent);
@@ -1080,7 +1082,7 @@ public class PublicAccountUtil
       return;
       localObject = paramQQAppInterface.a();
     } while (localObject == null);
-    ThreadManager.post(new mwe((QQMessageFacade)localObject, paramString3, paramString1, paramString2, paramQQAppInterface), 10, null, false);
+    ThreadManager.post(new mzy((QQMessageFacade)localObject, paramString3, paramString1, paramString2, paramQQAppInterface), 10, null, false);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
@@ -1111,7 +1113,7 @@ public class PublicAccountUtil
             ??? = paramQQAppInterface.a().a();
             if (??? != null)
             {
-              localObject2 = ((RecentUserProxy)???).b(AppConstants.aq, 1008);
+              localObject2 = ((RecentUserProxy)???).b(AppConstants.ar, 1008);
               if (localObject2 != null)
               {
                 ((RecentUserProxy)???).b((RecentUser)localObject2);
@@ -1124,7 +1126,7 @@ public class PublicAccountUtil
             ??? = (PublicAccountDataManager)paramQQAppInterface.getManager(55);
             if (??? != null)
             {
-              ((PublicAccountDataManager)???).c(AppConstants.aq);
+              ((PublicAccountDataManager)???).c(AppConstants.ar);
               paramQQAppInterface = paramQQAppInterface.getHandler(PublicAccountFragment.class);
               if (paramQQAppInterface != null) {
                 paramQQAppInterface.sendEmptyMessage(0);
@@ -1230,7 +1232,7 @@ public class PublicAccountUtil
       } while (localUri == null);
       str = localUri.getHost();
     } while ((TextUtils.isEmpty(str)) || ((!"article.mp.qq.com".equalsIgnoreCase(str)) && (!"post.mp.qq.com".equalsIgnoreCase(str))));
-    ThreadManager.post(new mwb(localUri, paramString), 5, null, false);
+    ThreadManager.post(new mzv(localUri, paramString), 5, null, false);
   }
   
   public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
@@ -1358,7 +1360,7 @@ public class PublicAccountUtil
       return false;
       paramString1 = Uri.parse(paramString1);
     } while ((paramString1 == null) || (TextUtils.isEmpty(paramString1.getHost())) || ((!"article.mp.qq.com".equalsIgnoreCase(paramString1.getHost())) && (!"post.mp.qq.com".equalsIgnoreCase(paramString1.getHost()))));
-    ThreadManager.post(new mwa(paramString1, paramInt, paramString2), 5, null, false);
+    ThreadManager.post(new mzu(paramString1, paramInt, paramString2), 5, null, false);
     return true;
   }
   
@@ -1385,8 +1387,8 @@ public class PublicAccountUtil
     localMessageForStructing.structingMsg = StructMsgFactory.a();
     localMessageForStructing.structingMsg.mMsgServiceID = 500;
     localMessageForStructing.selfuin = paramQQAppInterface.c();
-    localMessageForStructing.frienduin = AppConstants.ar;
-    localMessageForStructing.senderuin = AppConstants.ar;
+    localMessageForStructing.frienduin = AppConstants.as;
+    localMessageForStructing.senderuin = AppConstants.as;
     localMessageForStructing.istroop = 1008;
     localMessageForStructing.issend = 1;
     localMessageForStructing.isread = true;
@@ -1518,13 +1520,14 @@ public class PublicAccountUtil
       }
       return String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long);
     }
-    if (paramBaseArticleInfo.isSocialFeed())
+    if (ReadInJoyBaseAdapter.c((ArticleInfo)paramBaseArticleInfo))
     {
       paramQQAppInterface = ReadInJoyUserInfoModule.a(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long, null);
-      if (paramQQAppInterface != null) {
-        return paramQQAppInterface.nick;
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (paramQQAppInterface != null) {}
+      for (paramQQAppInterface = paramQQAppInterface.nick;; paramQQAppInterface = String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long)) {
+        return paramQQAppInterface + " Biu了";
       }
-      return String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long);
     }
     return paramBaseArticleInfo.mSubscribeName;
   }
@@ -1567,7 +1570,7 @@ public class PublicAccountUtil
     NewIntent localNewIntent = new NewIntent(paramContext, PublicAccountServlet.class);
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.3,3,3565");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.8,3,3615");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     localGetPublicAccountDetailInfoRequest.version.set(1);
     try
@@ -1575,7 +1578,7 @@ public class PublicAccountUtil
       localGetPublicAccountDetailInfoRequest.uin.set((int)Long.parseLong(paramString));
       label90:
       localNewIntent.putExtra("data", localGetPublicAccountDetailInfoRequest.toByteArray());
-      localNewIntent.setObserver(new mwl(paramContext, paramAppInterface, paramInt, paramString));
+      localNewIntent.setObserver(new naf(paramContext, paramAppInterface, paramInt, paramString));
       paramAppInterface.startServlet(localNewIntent);
       if (QLog.isColorLevel()) {
         QLog.d("PublicAccountUtil", 2, "sendDetailInfoRequest exit");
@@ -1655,7 +1658,7 @@ public class PublicAccountUtil
             if (i != 0) {
               break;
             }
-            QQToast.a(paramContext.getApplicationContext(), paramContext.getResources().getString(2131430045), 0).a();
+            QQToast.a(paramContext.getApplicationContext(), paramContext.getResources().getString(2131430047), 0).a();
             return;
             i += 1;
             break label37;
@@ -1673,7 +1676,7 @@ public class PublicAccountUtil
     if (QLog.isColorLevel()) {
       QLog.i("PublicAccountUtil", 2, "doVideoPlayRealtimeReport aid=" + paramString1 + ", vid=" + paramString2 + ", rtype=" + paramInt1 + ", rcode=" + paramInt2);
     }
-    ThreadManager.post(new mwf(paramString2, paramString1, paramInt1, paramInt2), 5, null, true);
+    ThreadManager.post(new mzz(paramString2, paramString1, paramInt1, paramInt2), 5, null, true);
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface)
@@ -1720,13 +1723,13 @@ public class PublicAccountUtil
       jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    paramQQAppInterface = new mwr(paramActivity, paramProfileParams, paramQQAppInterface);
-    paramProfileParams = new mws(paramActivity, paramProfileParams);
+    paramQQAppInterface = new nal(paramActivity, paramProfileParams, paramQQAppInterface);
+    paramProfileParams = new nam(paramActivity, paramProfileParams);
     jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230);
-    jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131430025);
-    jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131430159);
-    jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131433015, paramQQAppInterface);
-    jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131430027, paramQQAppInterface);
+    jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131430027);
+    jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131430162);
+    jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131433029, paramQQAppInterface);
+    jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131430029, paramQQAppInterface);
     jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(paramProfileParams);
     if ((paramActivity != null) && (!paramActivity.isFinishing())) {}
     try

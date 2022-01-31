@@ -1,13 +1,15 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class zjx
-  implements FileFilter
+  implements Runnable
 {
-  public boolean accept(File paramFile)
+  public zjx(DiscussionHandler paramDiscussionHandler, String paramString) {}
+  
+  public void run()
   {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
+    QQToast.a(BaseApplicationImpl.getApplication().getApplicationContext(), 1, this.jdField_a_of_type_JavaLangString, 0).a();
   }
 }
 

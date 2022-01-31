@@ -1,29 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
 
 public class rom
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public rom(AutoRemarkActivity paramAutoRemarkActivity) {}
+  public rom(AddRequestActivity paramAddRequestActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    }
-    do
-    {
-      return false;
-      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    } while (!paramView.isActive());
-    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    return false;
+    Card localCard = ((FriendsManager)this.a.app.getManager(50)).a(this.a.a);
+    this.a.runOnUiThread(new ron(this, localCard));
   }
 }
 

@@ -43,24 +43,24 @@ public class GetStoryPlayerTagInfoHandler
   {
     SLog.b("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond");
     GetStoryPlayerTagInfoHandler.GetStoryPlayerTagInfoEvent localGetStoryPlayerTagInfoEvent = new GetStoryPlayerTagInfoHandler.GetStoryPlayerTagInfoEvent();
-    localGetStoryPlayerTagInfoEvent.jdField_a_of_type_JavaUtilList = new ArrayList(paramGetStoryPlayerTagInfoRequest.jdField_a_of_type_JavaUtilList);
-    localGetStoryPlayerTagInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    localGetStoryPlayerTagInfoEvent.a = new ArrayList(paramGetStoryPlayerTagInfoRequest.a);
+    localGetStoryPlayerTagInfoEvent.errorInfo = paramErrorMessage;
     if ((paramErrorMessage.isFail()) || (paramGetStoryPlayerTagInfoResponse == null))
     {
       SLog.c("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond: get story player tag info failed, error:%s", paramErrorMessage);
       Dispatchers.get().dispatch(localGetStoryPlayerTagInfoEvent);
       return;
     }
-    SLog.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond, response list:%s", paramGetStoryPlayerTagInfoResponse.jdField_a_of_type_JavaUtilList);
+    SLog.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond, response list:%s", paramGetStoryPlayerTagInfoResponse.a);
     paramErrorMessage = (StoryManager)SuperManager.a(5);
-    paramGetStoryPlayerTagInfoRequest = paramGetStoryPlayerTagInfoRequest.jdField_a_of_type_JavaUtilList.iterator();
+    paramGetStoryPlayerTagInfoRequest = paramGetStoryPlayerTagInfoRequest.a.iterator();
     while (paramGetStoryPlayerTagInfoRequest.hasNext())
     {
       Object localObject = (String)paramGetStoryPlayerTagInfoRequest.next();
       StoryVideoItem localStoryVideoItem = paramErrorMessage.a((String)localObject);
       if (localStoryVideoItem != null)
       {
-        localObject = a((String)localObject, paramGetStoryPlayerTagInfoResponse.jdField_a_of_type_JavaUtilList);
+        localObject = a((String)localObject, paramGetStoryPlayerTagInfoResponse.a);
         if (localObject != null) {}
         for (localStoryVideoItem.mTagInfoBase = ((GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)localObject).jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase;; localStoryVideoItem.mTagInfoBase = null)
         {
@@ -69,8 +69,8 @@ public class GetStoryPlayerTagInfoHandler
         }
       }
     }
-    SLog.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond: tagVidList:%s", paramGetStoryPlayerTagInfoResponse.jdField_a_of_type_JavaUtilList);
-    localGetStoryPlayerTagInfoEvent.b = new ArrayList(paramGetStoryPlayerTagInfoResponse.jdField_a_of_type_JavaUtilList);
+    SLog.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "onCmdRespond: tagVidList:%s", paramGetStoryPlayerTagInfoResponse.a);
+    localGetStoryPlayerTagInfoEvent.b = new ArrayList(paramGetStoryPlayerTagInfoResponse.a);
     Dispatchers.get().dispatch(localGetStoryPlayerTagInfoEvent);
   }
   

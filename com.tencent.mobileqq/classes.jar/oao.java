@@ -1,28 +1,28 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.DiscoverManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.network.request.CommonRequest;
+import com.tencent.biz.qqstory.network.response.CommonResponse;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class oao
-  extends SimpleJob
+  implements CmdTaskManger.CommandCallback
 {
-  public oao(FeedSegment paramFeedSegment, List paramList) {}
+  public oao(DiscoverPresenter paramDiscoverPresenter) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull CommonRequest paramCommonRequest, @Nullable CommonResponse paramCommonResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    TVKPreloader.a();
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.toArray();
-    int j = paramJobContext.length;
-    int i = 0;
-    while (i < j)
+    if ((paramErrorMessage.isFail()) || (paramCommonResponse == null))
     {
-      TVKPreloader.a(paramJobContext[i].toString());
-      i += 1;
+      SLog.e("Q.qqstory.discover.DiscoverPresenter", "StorySvc.get_hot_topic_info request fail! %s", new Object[] { paramErrorMessage.toString() });
+      return;
     }
-    return null;
+    ((DiscoverManager)SuperManager.a(22)).a(DiscoverPresenter.a(this.a), paramCommonResponse.a);
+    DiscoverPresenter.a(this.a, paramCommonResponse.a);
   }
 }
 

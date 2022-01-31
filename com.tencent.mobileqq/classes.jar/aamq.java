@@ -1,71 +1,55 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import android.graphics.PointF;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecog;
+import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult;
+import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult.ARCircleResult;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class aamq
   implements Runnable
 {
-  public aamq(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public aamq(AREngine paramAREngine) {}
   
   public void run()
   {
-    try
+    int i = 0;
+    if (i < 2)
     {
-      LayoutInflater.from(ARGreetingCardListManager.a(this.a)).inflate(2130968698, ARGreetingCardListManager.a(this.a));
-      ARGreetingCardListManager.a(this.a).setOnTouchListener(new aamr(this));
-      ViewParent localViewParent = ARGreetingCardListManager.a(this.a).getParent();
-      if ((localViewParent instanceof ViewGroup))
-      {
-        ARGreetingCardListManager.a(this.a, (ViewGroup)((ViewGroup)localViewParent).findViewById(2131362594));
-        if (ARGreetingCardListManager.b(this.a) != null) {
-          ARGreetingCardListManager.b(this.a).setVisibility(4);
-        }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g <= this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.e - 1) {
+        break label75;
       }
-      ARGreetingCardListManager.a(this.a, (ImageView)ARGreetingCardListManager.a(this.a).findViewById(2131363261));
-      ARGreetingCardListManager.a(this.a, (TextView)ARGreetingCardListManager.a(this.a).findViewById(2131363262));
-      ARGreetingCardListManager.b(this.a, (TextView)ARGreetingCardListManager.a(this.a).findViewById(2131363263));
-      ARGreetingCardListManager.a(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363264));
-      ARGreetingCardListManager.a(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.a(this.a).setOnTouchListener(ARGreetingCardListManager.a(this.a));
-      ARGreetingCardListManager.c(this.a, (TextView)ARGreetingCardListManager.a(this.a).findViewById(2131363265));
-      ARGreetingCardListManager.a(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.a(this.a).setOnTouchListener(ARGreetingCardListManager.a(this.a));
-      ARGreetingCardListManager.a(this.a, (ARCardPageProcess)ARGreetingCardListManager.a(this.a).findViewById(2131363267));
-      ARGreetingCardListManager.a(this.a).a(ARGreetingCardListManager.a(this.a), 0);
-      ARGreetingCardListManager.b(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363268));
-      ARGreetingCardListManager.b(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.c(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363270));
-      ARGreetingCardListManager.c(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.d(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363269));
-      ARGreetingCardListManager.d(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.a(this.a, ARGreetingCardListManager.a(this.a).findViewById(2131363266));
-      ARGreetingCardListManager.a(this.a).setOnClickListener(this.a);
-      ARGreetingCardListManager.a(this.a).setOnTouchListener(ARGreetingCardListManager.a(this.a));
-      ARGreetingCardListManager.a(this.a).setVisibility(4);
-      ARGreetingCardListManager.c(this.a);
-      ARGreetingCardListManager.d(this.a);
-      ARGreetingCardListManager.a(this.a).setVisibility(4);
-      ARGreetingCardListManager.b(this.a).setVisibility(8);
-      ARGreetingCardListManager.c(this.a).setVisibility(8);
-      ARGreetingCardListManager.d(this.a).setVisibility(8);
+      this.a.c = true;
+    }
+    label75:
+    while (this.a.c == true)
+    {
+      if (!this.a.c) {
+        AREngine.a(this.a.jdField_a_of_type_JavaLangRunnable, this.a.b);
+      }
       return;
     }
-    catch (Exception localException)
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.b[this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g];
+    localObject = ARLocalGestureCircleRecog.a(AREngine.f(this.a), AREngine.g(this.a), AREngine.h(this.a), AREngine.i(this.a), (PointF)localObject);
+    int j = (int)((PointF)localObject).x;
+    int k = (int)((PointF)localObject).y;
+    int m = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.a[this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g];
+    localObject = ARWorldCupGameLogicManager.a();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      QLog.d("ARGreetingCardListManager", 1, "initCardListUI fail.", localException);
+      ((ARWorldCupGameLogicManager)localObject).a(new int[] { j }, new int[] { k }, new int[] { m }, bool);
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a;
+      ((ARLocalGestureCircleRecogResult.ARCircleResult)localObject).g += 1;
+      QLog.i("AREngine_AREngine", 1, "DrawCircle. mDrawCirclePuase = " + this.a.c + ", genIdx = " + this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g);
+      i += 1;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aamq
  * JD-Core Version:    0.7.0.1
  */

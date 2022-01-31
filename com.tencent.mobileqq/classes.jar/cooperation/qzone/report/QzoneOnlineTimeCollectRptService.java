@@ -1,10 +1,10 @@
 package cooperation.qzone.report;
 
 import NS_MOBILE_FEEDS.mobile_online_report_item;
-import amyo;
-import amyp;
-import amyq;
 import android.text.TextUtils;
+import angb;
+import angc;
+import angd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ public class QzoneOnlineTimeCollectRptService
   int jdField_a_of_type_Int = 0;
   public long a;
   private mobile_online_report_item jdField_a_of_type_NS_MOBILE_FEEDSMobile_online_report_item;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new amyq(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new angd(this);
   private String jdField_a_of_type_JavaLangString = "QZonlinetime";
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean;
@@ -187,7 +187,7 @@ public class QzoneOnlineTimeCollectRptService
   
   public void a()
   {
-    ThreadManager.getSubThreadHandler().post(new amyp(this));
+    ThreadManager.getSubThreadHandler().post(new angc(this));
   }
   
   public void a(int paramInt)
@@ -277,7 +277,7 @@ public class QzoneOnlineTimeCollectRptService
   public void b(int paramInt)
   {
     a(paramInt);
-    ThreadManager.getSubThreadHandler().post(new amyo(this));
+    ThreadManager.getSubThreadHandler().post(new angb(this));
   }
   
   public void c()

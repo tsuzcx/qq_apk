@@ -1,12 +1,15 @@
-import com.tencent.weiyun.utils.Singleton;
-import cooperation.weiyun.channel.WySender;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.share.WXShareFromQZHelper;
 
-public final class anho
-  extends Singleton
+public class anho
+  implements Runnable
 {
-  protected WySender a(Void paramVoid)
+  public anho(WXShareFromQZHelper paramWXShareFromQZHelper) {}
+  
+  public void run()
   {
-    return new WySender(null);
+    QQToast.a(BaseApplication.getContext(), 2131432740, 0).a();
   }
 }
 

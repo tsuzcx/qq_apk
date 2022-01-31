@@ -1,20 +1,17 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.TouchableSpan;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-class smb
-  extends EditInfoActivity.TouchableSpan
+public class smb
+  implements Runnable
 {
-  smb(sly paramsly, int paramInt1, int paramInt2, String paramString)
-  {
-    super(paramsly.a, paramInt1, paramInt2);
-  }
+  public smb(Conversation paramConversation, ApolloSurfaceView paramApolloSurfaceView, int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_Sly.a.a != null) {
-      this.jdField_a_of_type_Sly.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender() != null) {
+      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
     }
   }
 }

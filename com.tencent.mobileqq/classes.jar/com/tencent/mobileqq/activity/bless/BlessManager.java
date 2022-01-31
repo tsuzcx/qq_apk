@@ -52,9 +52,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import wey;
-import wez;
-import wfa;
+import wki;
+import wkj;
+import wkk;
 
 public class BlessManager
   implements Manager
@@ -88,7 +88,7 @@ public class BlessManager
   public BlessManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = AppConstants.aJ + jdField_a_of_type_JavaLangString;
+    paramQQAppInterface = AppConstants.aK + jdField_a_of_type_JavaLangString;
     this.jdField_b_of_type_JavaLangString = paramQQAppInterface;
     BlessPtvModule.path = paramQQAppInterface;
     this.jdField_c_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + File.separator + "history" + File.separator + "ptvHistory");
@@ -293,9 +293,9 @@ public class BlessManager
   
   private void a(RecentUserProxy paramRecentUserProxy)
   {
-    RecentUser localRecentUser = paramRecentUserProxy.a(AppConstants.am, 9003);
+    RecentUser localRecentUser = paramRecentUserProxy.a(AppConstants.an, 9003);
     long l = NetConnInfoCenter.getServerTime();
-    localRecentUser.uin = AppConstants.am;
+    localRecentUser.uin = AppConstants.an;
     localRecentUser.type = 9003;
     if (localRecentUser.lastmsgtime < l) {
       localRecentUser.lastmsgtime = l;
@@ -342,7 +342,7 @@ public class BlessManager
       QLog.d("BlessManager", 2, "startDownload: " + paramString1 + " path=" + paramString2);
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, localDownloadTask);
-    localDownloaderInterface.a(localDownloadTask, new wey(this, paramString2, paramString1), null);
+    localDownloaderInterface.a(localDownloadTask, new wki(this, paramString2, paramString1), null);
   }
   
   private void a(ArrayList paramArrayList)
@@ -506,7 +506,7 @@ public class BlessManager
   {
     boolean bool = true;
     RecentUserProxy localRecentUserProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-    RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.am, 9003);
+    RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.an, 9003);
     int i;
     label78:
     Object localObject;
@@ -759,7 +759,7 @@ public class BlessManager
   private void j()
   {
     if ((VersionUtils.d()) && (!this.jdField_a_of_type_Boolean)) {
-      ThreadManager.post(new wez(this), 5, null, false);
+      ThreadManager.post(new wkj(this), 5, null, false);
     }
   }
   
@@ -791,7 +791,7 @@ public class BlessManager
   
   public Drawable a()
   {
-    Object localObject2 = BaseApplication.getContext().getResources().getDrawable(2130838246);
+    Object localObject2 = BaseApplication.getContext().getResources().getDrawable(2130838251);
     Object localObject1 = localObject2;
     URLDrawable.URLDrawableOptions localURLDrawableOptions;
     int i;
@@ -1099,7 +1099,7 @@ public class BlessManager
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b(AppConstants.am, 9003) != null;
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b(AppConstants.an, 9003) != null;
   }
   
   public boolean a(String paramString)
@@ -1425,7 +1425,7 @@ public class BlessManager
     if (!c())
     {
       RecentUserProxy localRecentUserProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-      RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.am, 9003);
+      RecentUser localRecentUser = localRecentUserProxy.b(AppConstants.an, 9003);
       if (localRecentUser != null) {
         a(localRecentUserProxy, localRecentUser);
       }
@@ -1474,7 +1474,7 @@ public class BlessManager
   
   public void f()
   {
-    ThreadManager.post(new wfa(this), 5, null, true);
+    ThreadManager.post(new wkk(this), 5, null, true);
   }
   
   public boolean f()

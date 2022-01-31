@@ -1,24 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.TextView;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.funchat.record.QavRecordButtonView;
 
 public class jrl
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public jrl(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  public jrl(AVActivity paramAVActivity, SessionInfo paramSessionInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.a.app, this.a, 2, 12);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 5, 0, "", "", "", "");
+    if ((this.jdField_a_of_type_ComTencentAvUiAVActivity.a == null) || (this.jdField_a_of_type_ComTencentAvUiAVActivity.e) || (this.jdField_a_of_type_ComTencentAvUiAVActivity.c == null)) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.a.getVisibility() != 0)
+    {
+      this.jdField_a_of_type_ComTencentAvUiAVActivity.c.clearAnimation();
+      this.jdField_a_of_type_ComTencentAvUiAVActivity.c.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvAppSessionInfo.aD = true;
+    if (this.jdField_a_of_type_ComTencentAvAppSessionInfo.U == 0)
+    {
+      this.jdField_a_of_type_ComTencentAvAppSessionInfo.V = Math.max(1, this.jdField_a_of_type_ComTencentAvAppSessionInfo.V + 1);
+      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(this.jdField_a_of_type_ComTencentAvAppSessionInfo.V);
+    }
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(600, -40);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jrl
  * JD-Core Version:    0.7.0.1
  */

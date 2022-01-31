@@ -1,10 +1,5 @@
 package cooperation.qzone.share;
 
-import amzw;
-import amzx;
-import amzy;
-import amzz;
-import anaa;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -15,6 +10,11 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Matrix;
 import android.net.Uri;
+import anhl;
+import anhm;
+import anhn;
+import anho;
+import anhp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
@@ -57,7 +57,7 @@ public class WXShareFromQZHelper
   static
   {
     jdField_a_of_type_JavaLangString = WXShareFromQZHelper.class.getSimpleName();
-    b = AppConstants.aJ + "photo/";
+    b = AppConstants.aK + "photo/";
   }
   
   private WXShareFromQZHelper()
@@ -83,7 +83,7 @@ public class WXShareFromQZHelper
     if (paramActivity != null)
     {
       Intent localIntent = new Intent(BaseApplication.getContext(), QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", QzoneConfig.getInstance().getConfig("H5Url", "WeiXinDownload", "http://a.myapp.com/h/?g_f=990542#id=appdetail&appid=48157&icfa=13145982048157020000"));
+      localIntent.putExtra("url", QzoneConfig.getInstance().getConfig("H5Url", "WeiXinDownload", "http://app.qq.com/#id=detail&appid=100733732"));
       localIntent.putExtra("fromQZone", true);
       localIntent.addFlags(268435456);
       paramActivity.startActivity(localIntent);
@@ -147,7 +147,7 @@ public class WXShareFromQZHelper
     ((SendMessageToWX.Req)localObject).message = paramString;
     ((SendMessageToWX.Req)localObject).scene = paramInt;
     if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq((BaseReq)localObject)) {
-      ThreadManager.getUIHandler().post(new amzy(this));
+      ThreadManager.getUIHandler().post(new anhn(this));
     }
   }
   
@@ -162,7 +162,7 @@ public class WXShareFromQZHelper
     paramString1.message = paramString3;
     paramString1.scene = paramInt;
     if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramString1)) {
-      ThreadManager.getUIHandler().post(new amzw(this));
+      ThreadManager.getUIHandler().post(new anhl(this));
     }
   }
   
@@ -203,7 +203,7 @@ public class WXShareFromQZHelper
       catch (Throwable paramString1)
       {
         QZLog.e(jdField_a_of_type_JavaLangString, "excetion:" + paramString1.getMessage());
-        ThreadManager.getUIHandler().post(new amzz(this));
+        ThreadManager.getUIHandler().post(new anho(this));
       }
     }
     for (;;)
@@ -215,7 +215,7 @@ public class WXShareFromQZHelper
       if (!bool)
       {
         QZLog.e(jdField_a_of_type_JavaLangString, "wxshare failed ,ret:" + bool);
-        ThreadManager.getUIHandler().post(new anaa(this));
+        ThreadManager.getUIHandler().post(new anhp(this));
       }
       return;
       paramString1.recycle();
@@ -243,7 +243,7 @@ public class WXShareFromQZHelper
     paramArrayOfByte.message = paramString;
     paramArrayOfByte.scene = paramInt;
     if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramArrayOfByte)) {
-      ThreadManager.getUIHandler().post(new amzx(this));
+      ThreadManager.getUIHandler().post(new anhm(this));
     }
   }
   
@@ -266,6 +266,16 @@ public class WXShareFromQZHelper
   public boolean b()
   {
     return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppSupportAPI();
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 620756993;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 553779201;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)

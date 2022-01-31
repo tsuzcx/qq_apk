@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForTroopGift;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.DownloadGftData;
+import com.tencent.qphone.base.util.QLog;
 
 class vpl
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  vpl(vpj paramvpj) {}
+  vpl(vpk paramvpk, AIOAnimationControlManager.DownloadGftData paramDownloadGftData) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(this.a.a.a, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "0", "", "", "");
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager$DownloadGftData.a)
+    {
+      this.jdField_a_of_type_Vpk.a.isLoading = false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ChatItemBuilder", 2, "GONE uniseq = " + this.jdField_a_of_type_Vpk.a.uniseq);
+      }
+      ((AIOAnimationControlManager)vpk.a(this.jdField_a_of_type_Vpk).getManager(222)).b(this.jdField_a_of_type_Vpk);
+      this.jdField_a_of_type_Vpk.c.setVisibility(8);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatItemBuilder", 2, "VISIBLE uniseq = " + this.jdField_a_of_type_Vpk.a.uniseq);
+    }
+    this.jdField_a_of_type_Vpk.a.isLoading = true;
+    this.jdField_a_of_type_Vpk.c.setVisibility(0);
   }
 }
 

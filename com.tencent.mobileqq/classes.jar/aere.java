@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.mobileqq.model.QueryTask;
 
-public final class aere
-  implements Parcelable.Creator
+class aere
+  implements Runnable
 {
-  public BasicTypeDataParcel a(Parcel paramParcel)
-  {
-    return new BasicTypeDataParcel(paramParcel);
-  }
+  aere(aerd paramaerd, Object paramObject) {}
   
-  public BasicTypeDataParcel[] a(int paramInt)
+  public void run()
   {
-    return new BasicTypeDataParcel[paramInt];
+    this.jdField_a_of_type_Aerd.a.a.a(this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aere
  * JD-Core Version:    0.7.0.1
  */

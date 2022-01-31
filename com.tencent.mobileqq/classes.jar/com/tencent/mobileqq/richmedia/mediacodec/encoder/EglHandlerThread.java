@@ -49,7 +49,7 @@ public class EglHandlerThread
     return this.jdField_a_of_type_Boolean;
   }
   
-  protected void onLooperPrepared()
+  public void onLooperPrepared()
   {
     super.onLooperPrepared();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(getLooper());

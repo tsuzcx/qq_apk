@@ -1,6 +1,6 @@
 package cooperation.dingdong;
 
-import amkt;
+import amsf;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -195,7 +195,7 @@ public class DingdongPluginHelper
   
   public static void a(int paramInt, Intent paramIntent)
   {
-    new amkt(paramIntent, paramInt).execute(new Void[] { null, null, null });
+    new amsf(paramIntent, paramInt).execute(new Void[] { null, null, null });
   }
   
   public static void a(int paramInt, String paramString)

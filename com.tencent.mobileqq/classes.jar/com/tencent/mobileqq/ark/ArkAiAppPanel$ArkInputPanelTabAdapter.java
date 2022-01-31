@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import aaru;
+import aayo;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
@@ -57,7 +57,7 @@ public class ArkAiAppPanel$ArkInputPanelTabAdapter
     {
       paramViewGroup = new ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder(this);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842249);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842284);
       paramView = new ViewGroup.LayoutParams(AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -1);
       paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
@@ -71,7 +71,7 @@ public class ArkAiAppPanel$ArkInputPanelTabAdapter
     {
       ArkAiInfo localArkAiInfo = a(paramInt);
       if ((localArkAiInfo != null) && (!TextUtils.isEmpty(localArkAiInfo.d))) {
-        ArkAppCenter.a(localArkAiInfo.d, new aaru(this, paramViewGroup));
+        ArkAppCenter.a(localArkAiInfo.d, new aayo(this, paramViewGroup));
       }
       return paramView;
       paramViewGroup = (ArkAiAppPanel.ArkInputPanelTabAdapter.ViewHolder)paramView.getTag();

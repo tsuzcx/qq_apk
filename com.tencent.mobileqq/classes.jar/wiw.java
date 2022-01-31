@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.utils.GVideoUpdateUtil.OnGVideoUpdateListener;
+import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
 
 public class wiw
-  extends FriendListObserver
+  implements GVideoUpdateUtil.OnGVideoUpdateListener
 {
-  public wiw(SearchBaseFragment paramSearchBaseFragment) {}
+  public wiw(VideoStatusTipsBar paramVideoStatusTipsBar, Intent paramIntent) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void a(Context paramContext, String paramString)
   {
-    if ((paramBoolean) && (paramObject != null) && (SearchBaseFragment.a(this.a) != null) && (SearchBaseFragment.a(this.a).uin.get() == ((Long)paramObject).longValue())) {
-      SearchBaseFragment.a(this.a).relation.set(SearchBaseFragment.a(this.a).relation.get() & 0x10);
-    }
+    paramContext.startActivity(this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 

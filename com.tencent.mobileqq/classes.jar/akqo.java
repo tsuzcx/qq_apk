@@ -1,43 +1,38 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper;
-import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper.IdleTask;
-import java.util.ArrayList;
+import android.media.MediaMetadataRetriever;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import java.io.File;
+import org.json.JSONObject;
 
 public class akqo
-  implements MessageQueue.IdleHandler
+  implements Runnable
 {
-  public akqo(SwiftBrowserIdleTaskHelper paramSwiftBrowserIdleTaskHelper) {}
+  public akqo(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString1, String paramString2) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    Object localObject;
-    int i;
-    if (!SwiftBrowserIdleTaskHelper.a().isEmpty())
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      localObject = (SwiftBrowserIdleTaskHelper.IdleTask)SwiftBrowserIdleTaskHelper.a().remove(0);
-      i = ((SwiftBrowserIdleTaskHelper.IdleTask)localObject).a();
-      if (2 == i) {
-        SwiftBrowserIdleTaskHelper.a().add(localObject);
+      Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      String str = ((JSONObject)localObject).getString("video_dir");
+      localObject = ((JSONObject)localObject).optString("thumb_dir");
+      File localFile = new File(str);
+      if ((localFile.exists()) && (localFile.isFile())) {
+        localJSONObject.put("videoSize", localFile.length() / 1024L);
       }
-    }
-    else
-    {
-      label38:
-      localObject = this.a;
-      if (SwiftBrowserIdleTaskHelper.a().isEmpty()) {
-        break label75;
+      localJSONObject.put("thumbData", localObject);
+      localJSONObject.put("videoID", str);
+      if (Build.VERSION.SDK_INT >= 10)
+      {
+        localObject = new MediaMetadataRetriever();
+        ((MediaMetadataRetriever)localObject).setDataSource(str);
+        localJSONObject.put("videoDuration", String.valueOf(Long.parseLong(((MediaMetadataRetriever)localObject).extractMetadata(9)) / 1000L));
       }
+      HealthBusinessPlugin.b(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin, this.b, new String[] { localJSONObject.toString() });
+      return;
     }
-    label75:
-    for (boolean bool = true;; bool = false)
-    {
-      ((SwiftBrowserIdleTaskHelper)localObject).a = bool;
-      return this.a.a;
-      if (1 != i) {
-        break;
-      }
-      break label38;
-    }
+    catch (Exception localException) {}
   }
 }
 

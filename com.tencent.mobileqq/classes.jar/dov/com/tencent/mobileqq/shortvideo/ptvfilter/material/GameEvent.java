@@ -1,17 +1,17 @@
 package dov.com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
 import android.graphics.PointF;
-import aoqg;
+import aoys;
 
 public class GameEvent
 {
   public final int a;
   private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  private aoqg jdField_a_of_type_Aoqg = new aoqg(this, null);
+  private aoys jdField_a_of_type_Aoys = new aoys(this, null);
   private GameEvent.GestureEventListener jdField_a_of_type_DovComTencentMobileqqShortvideoPtvfilterMaterialGameEvent$GestureEventListener;
   public final int b;
   private PointF jdField_b_of_type_AndroidGraphicsPointF = new PointF();
-  private aoqg jdField_b_of_type_Aoqg = new aoqg(this, null);
+  private aoys jdField_b_of_type_Aoys = new aoys(this, null);
   public final int c;
   private PointF c;
   public final int d;

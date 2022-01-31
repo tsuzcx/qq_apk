@@ -1,14 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
 
-public final class akah
+public class akah
   implements Runnable
 {
-  public akah(NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle) {}
+  public akah(PublishItemContainer paramPublishItemContainer) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, null, null, false, false, false);
+    this.a.fullScroll(66);
   }
 }
 

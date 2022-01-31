@@ -1,39 +1,29 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.LineLayer;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class uxj
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public uxj(FileVideoItemBuilder paramFileVideoItemBuilder, MessageForFile paramMessageForFile, ActionSheet paramActionSheet) {}
+  public final String a;
   
-  public void OnClick(View paramView, int paramInt)
+  public uxj(LineLayer paramLineLayer)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L) != -1) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b.post(new uxk(this));
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaLangString = (AppConstants.bN + "temp" + File.separator);
+  }
+  
+  public void run()
+  {
+    try
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      FileUtils.a(this.jdField_a_of_type_JavaLangString, true);
       return;
-      paramView = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
-      if (paramView.status == 16)
-      {
-        FMToastUtil.a(2131428188);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status = 1002;
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    }
+    catch (Exception localException)
+    {
+      QLog.d("ClearTempFileJobdownloading", 2, "makedir execption: " + localException);
     }
   }
 }

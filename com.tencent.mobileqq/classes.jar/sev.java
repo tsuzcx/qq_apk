@@ -1,31 +1,28 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import java.util.Iterator;
+import java.util.List;
 
 public class sev
-  implements Runnable
+  implements FMDialogUtil.FMDialogInterface
 {
-  public sev(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sev(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, FileManagerEngine paramFileManagerEngine) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.a != null) {
-      if (!this.a.a.isShowing()) {
-        this.a.a.show();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.b(localFileManagerEntity);
       }
     }
-    do
-    {
-      return;
-      this.a.a = DialogUtil.a(this.a, 230);
-      this.a.a.setMessage(this.a.getActivity().getResources().getString(2131433685));
-      sew localsew = new sew(this);
-      this.a.a.setPositiveButton(2131432417, localsew);
-    } while (this.a.a.isShowing());
-    this.a.a.show();
   }
+  
+  public void b() {}
 }
 
 

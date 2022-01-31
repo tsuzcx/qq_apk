@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 
 public class adix
-  implements FMDialogUtil.FMDialogInterface
 {
-  public adix(QfileEditBottomBar paramQfileEditBottomBar) {}
+  public long a;
+  public String a;
+  public long b;
   
-  public void a()
-  {
-    QfileEditBottomBar.a(this.a);
-  }
-  
-  public void b() {}
+  public adix(FileManagerProxy paramFileManagerProxy) {}
 }
 
 

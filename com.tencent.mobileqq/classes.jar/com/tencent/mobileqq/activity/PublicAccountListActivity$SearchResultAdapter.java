@@ -12,8 +12,8 @@ import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.List;
-import thx;
-import thz;
+import tmr;
+import tmt;
 
 public class PublicAccountListActivity$SearchResultAdapter
   extends FacePreloadBaseAdapter
@@ -51,27 +51,27 @@ public class PublicAccountListActivity$SearchResultAdapter
   {
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969224, paramViewGroup, false);
-      paramViewGroup = new thz();
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131362719));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362754));
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969222, paramViewGroup, false);
+      paramViewGroup = new tmt();
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131362724));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362759));
       paramView.setTag(paramViewGroup);
       Object localObject = getItem(paramInt);
       if (localObject != null)
       {
-        localObject = (thx)localObject;
+        localObject = (tmr)localObject;
         if (localObject != null)
         {
-          paramViewGroup.jdField_a_of_type_JavaLangString = ((thx)localObject).a.getUin();
-          paramViewGroup.jdField_a_of_type_Thx = ((thx)localObject);
+          paramViewGroup.jdField_a_of_type_JavaLangString = ((tmr)localObject).a.getUin();
+          paramViewGroup.jdField_a_of_type_Tmr = ((tmr)localObject);
           paramViewGroup.c.setImageBitmap(super.a(paramViewGroup.jdField_a_of_type_JavaLangString, 1, (byte)0));
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((thx)localObject).a.name);
-          if (((thx)localObject).a.certifiedGrade <= 0L) {
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((tmr)localObject).a.name);
+          if (((tmr)localObject).a.certifiedGrade <= 0L) {
             break label243;
           }
           if (this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getResources().getDrawable(2130839751);
+            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getResources().getDrawable(2130839766);
             this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
           }
           paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
@@ -84,7 +84,7 @@ public class PublicAccountListActivity$SearchResultAdapter
         paramView.setContentDescription(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
       return paramView;
-      paramViewGroup = (thz)paramView.getTag();
+      paramViewGroup = (tmt)paramView.getTag();
       break;
       label243:
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);

@@ -1,20 +1,21 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.forward.ForwardMarketFaceOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class adkw
-  implements Runnable
+class adkw
+  implements FMDialogUtil.FMDialogInterface
 {
-  public adkw(ForwardMarketFaceOption paramForwardMarketFaceOption, QQCustomDialog paramQQCustomDialog, URLDrawable paramURLDrawable) {}
+  adkw(adkv paramadkv) {}
   
-  public void run()
+  public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPreviewImage(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new adkx(this));
+    DatalineFileModel.a(this.a.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
     }
   }
+  
+  public void b() {}
 }
 
 

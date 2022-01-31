@@ -1,10 +1,19 @@
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.activity.emogroupstore.FilterAdapter;
+import java.util.List;
 
 public class wuj
+  implements Runnable
 {
-  public TextView a;
-  public wui a;
-  public TextView b;
+  public wuj(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  
+  public void run()
+  {
+    EmoticonGroupStoreFragment.a(this.a).a(EmoticonGroupStoreFragment.a(this.a));
+    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+    EmoticonGroupStoreFragment.b(this.a).setText("筛选（共" + EmoticonGroupStoreFragment.c(this.a).size() + "个表情）");
+  }
 }
 
 

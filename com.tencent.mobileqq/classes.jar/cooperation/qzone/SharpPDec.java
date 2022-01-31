@@ -57,38 +57,51 @@ public class SharpPDec
   
   private static void a()
   {
-    Object localObject = BaseApplicationImpl.getContext();
-    File localFile = new File(UpdateAvSo.a() + "/lib" + jdField_a_of_type_JavaLangString + ".so");
-    if (localFile.exists())
+    Object localObject2 = BaseApplicationImpl.getContext();
+    Object localObject1 = new File(UpdateAvSo.a() + "/lib" + jdField_a_of_type_JavaLangString + ".so");
+    if (((File)localObject1).exists())
     {
-      localFile.delete();
+      ((File)localObject1).delete();
       QLog.d("SharpPDec", 4, "sharpP--delete the corrupted so.");
     }
-    localObject = ProcessUtils.a((Context)localObject);
-    boolean bool = ProcessUtils.g((String)localObject);
-    QLog.d("SharpPDec", 4, "sharpP--" + (String)localObject + ",isQQ:" + bool);
+    localObject1 = "";
+    try
+    {
+      localObject2 = ProcessUtils.a((Context)localObject2);
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        boolean bool;
+        QLog.w("SharpPDec", 1, "restoreSo --getCurProcessName failed,catch an exception:", localException);
+      }
+      label191:
+      QLog.e("SharpPDec", 4, "sharpP--reDownload so：earlyHandler is null,reDownload failed.");
+      label199:
+      QLog.e("SharpPDec", 4, "sharpP--reDownload so：maybe earlyMgr is null,reDownload failed.");
+    }
+    bool = ProcessUtils.g((String)localObject1);
+    QLog.d("SharpPDec", 4, "sharpP--" + (String)localObject1 + ",isQQ:" + bool);
     if (bool)
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject != null) && ((localObject instanceof QQAppInterface)))
+      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject1 != null) && ((localObject1 instanceof QQAppInterface)))
       {
-        localObject = (EarlyDownloadManager)((QQAppInterface)localObject).getManager(76);
-        if (localObject == null) {
-          break label181;
+        localObject1 = (EarlyDownloadManager)((QQAppInterface)localObject1).getManager(76);
+        if (localObject1 == null) {
+          break label199;
         }
-        localObject = ((EarlyDownloadManager)localObject).a(QavSoDownloadHandler.e());
-        if (localObject == null) {
-          break label173;
+        localObject1 = ((EarlyDownloadManager)localObject1).a(QavSoDownloadHandler.e());
+        if (localObject1 == null) {
+          break label191;
         }
-        ((EarlyHandler)localObject).a(false);
+        ((EarlyHandler)localObject1).a(false);
         QLog.d("SharpPDec", 4, "sharpP--reDownload so");
       }
     }
     return;
-    label173:
-    QLog.e("SharpPDec", 4, "sharpP--reDownload so：earlyHandler is null,reDownload failed.");
-    label181:
-    QLog.e("SharpPDec", 4, "sharpP--reDownload so：maybe earlyMgr is null,reDownload failed.");
   }
   
   private static boolean a()
@@ -204,8 +217,8 @@ public class SharpPDec
     //   3: getstatic 13	cooperation/qzone/SharpPDec:jdField_a_of_type_Int	I
     //   6: bipush 12
     //   8: if_icmpge +18 -> 26
-    //   11: invokestatic 278	java/lang/System:currentTimeMillis	()J
-    //   14: getstatic 280	cooperation/qzone/SharpPDec:jdField_a_of_type_Long	J
+    //   11: invokestatic 282	java/lang/System:currentTimeMillis	()J
+    //   14: getstatic 284	cooperation/qzone/SharpPDec:jdField_a_of_type_Long	J
     //   17: lsub
     //   18: getstatic 19	cooperation/qzone/SharpPDec:b	I
     //   21: i2l
@@ -220,48 +233,48 @@ public class SharpPDec
     //   35: iconst_0
     //   36: putstatic 13	cooperation/qzone/SharpPDec:jdField_a_of_type_Int	I
     //   39: aload_0
-    //   40: invokestatic 282	cooperation/qzone/SharpPDec:a	(Landroid/content/Context;)Z
+    //   40: invokestatic 286	cooperation/qzone/SharpPDec:a	(Landroid/content/Context;)Z
     //   43: ifne +68 -> 111
-    //   46: invokestatic 278	java/lang/System:currentTimeMillis	()J
-    //   49: putstatic 280	cooperation/qzone/SharpPDec:jdField_a_of_type_Long	J
+    //   46: invokestatic 282	java/lang/System:currentTimeMillis	()J
+    //   49: putstatic 284	cooperation/qzone/SharpPDec:jdField_a_of_type_Long	J
     //   52: getstatic 19	cooperation/qzone/SharpPDec:b	I
     //   55: iconst_m1
     //   56: if_icmpne +48 -> 104
     //   59: invokestatic 56	common/config/service/QzoneConfig:getInstance	()Lcommon/config/service/QzoneConfig;
     //   62: ldc 58
-    //   64: ldc_w 284
+    //   64: ldc_w 288
     //   67: sipush 3000
     //   70: invokevirtual 64	common/config/service/QzoneConfig:getConfig	(Ljava/lang/String;Ljava/lang/String;I)I
     //   73: putstatic 19	cooperation/qzone/SharpPDec:b	I
     //   76: ldc 37
     //   78: iconst_1
-    //   79: new 78	java/lang/StringBuilder
+    //   79: new 80	java/lang/StringBuilder
     //   82: dup
-    //   83: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   86: ldc_w 286
-    //   89: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   86: ldc_w 290
+    //   89: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   92: getstatic 19	cooperation/qzone/SharpPDec:b	I
-    //   95: invokevirtual 289	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   98: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: invokevirtual 293	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   98: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   101: invokestatic 45	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   104: getstatic 13	cooperation/qzone/SharpPDec:jdField_a_of_type_Int	I
     //   107: istore_1
     //   108: goto -78 -> 30
     //   111: new 2	cooperation/qzone/SharpPDec
     //   114: dup
-    //   115: invokespecial 290	cooperation/qzone/SharpPDec:<init>	()V
-    //   118: invokespecial 292	cooperation/qzone/SharpPDec:GetVersion	()I
+    //   115: invokespecial 294	cooperation/qzone/SharpPDec:<init>	()V
+    //   118: invokespecial 296	cooperation/qzone/SharpPDec:GetVersion	()I
     //   121: putstatic 13	cooperation/qzone/SharpPDec:jdField_a_of_type_Int	I
     //   124: ldc 37
     //   126: iconst_1
-    //   127: new 78	java/lang/StringBuilder
+    //   127: new 80	java/lang/StringBuilder
     //   130: dup
-    //   131: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   134: ldc_w 294
-    //   137: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   134: ldc_w 298
+    //   137: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   140: getstatic 13	cooperation/qzone/SharpPDec:jdField_a_of_type_Int	I
-    //   143: invokevirtual 289	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   146: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   143: invokevirtual 293	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   146: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   149: invokestatic 45	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   152: getstatic 13	cooperation/qzone/SharpPDec:jdField_a_of_type_Int	I
     //   155: istore_1
@@ -272,7 +285,7 @@ public class SharpPDec
     //   163: aload_0
     //   164: iconst_0
     //   165: anewarray 4	java/lang/Object
-    //   168: invokestatic 297	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   168: invokestatic 301	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   171: goto -19 -> 152
     //   174: astore_0
     //   175: ldc 2

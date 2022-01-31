@@ -66,7 +66,7 @@ public class QIMWebEffectCameraCaptureUnit
   public View a()
   {
     View localView = super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363993));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364018));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     return localView;
   }
@@ -74,7 +74,7 @@ public class QIMWebEffectCameraCaptureUnit
   protected CameraCaptureView.CaptureParam a()
   {
     CameraCaptureView.CaptureParam localCaptureParam = super.a();
-    localCaptureParam.c(this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a().getIntent().getIntExtra("cameraDirection", 2));
+    localCaptureParam.g(this.jdField_a_of_type_DovComQqImSettingIQIMCameraContainer.a().getIntent().getIntExtra("cameraDirection", 2));
     return localCaptureParam;
   }
   
@@ -245,16 +245,16 @@ public class QIMWebEffectCameraCaptureUnit
   protected void e()
   {
     super.e();
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.jdField_c_of_type_Boolean) {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     this.jdField_e_of_type_AndroidWidgetButton.setVisibility(8);
     this.jdField_d_of_type_AndroidWidgetButton.setVisibility(8);
   }
   
-  protected void f()
+  protected void g()
   {
-    super.f();
+    super.g();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_e_of_type_AndroidWidgetButton.setVisibility(8);
     this.jdField_d_of_type_AndroidWidgetButton.setVisibility(8);

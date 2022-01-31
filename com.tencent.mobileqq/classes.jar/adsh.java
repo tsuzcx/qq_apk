@@ -1,5 +1,9 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class adsh
   implements Runnable
@@ -8,15 +12,14 @@ class adsh
   
   public void run()
   {
-    this.a.a.c = 4;
-    if (VideoBaseItem.a(this.a.a) != null) {
-      VideoBaseItem.a(this.a.a).d(VideoBaseItem.a(this.a.a));
+    if (NetworkUtil.a(BaseApplication.getContext()) != 0) {
+      QQToast.a(this.a.a.a.getApp(), 2, 2131435105, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsh
  * JD-Core Version:    0.7.0.1
  */

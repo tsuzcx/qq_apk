@@ -1,25 +1,18 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
 
-public class ozn
-  implements AsyncBack
+public final class ozn
+  implements Parcelable.Creator
 {
-  public ozn(PluginJumpManager paramPluginJumpManager) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public ScannerParams a(Parcel paramParcel)
   {
-    if (paramInt == 0) {
-      HtmlOffline.a("urlplugin.cfg", this.a.mContext, "1007", new ozo(this));
-    }
-    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
-      return;
-    }
-    this.a.loadConfigFromFile();
+    return new ScannerParams(paramParcel);
+  }
+  
+  public ScannerParams[] a(int paramInt)
+  {
+    return new ScannerParams[paramInt];
   }
 }
 

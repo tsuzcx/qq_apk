@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_gravity="center_horizontal" android:focusableInTouchMode="true" android:layout_width="251.0dip" android:layout_height="124.5dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200dd" android:padding="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07b7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08ce" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08ce">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0085" android:layout_width="65.0dip" android:layout_height="65.0dip" android:layout_marginRight="7.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ac2" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1673" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a053a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d8f" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0762" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="7.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2b43" android:maxLines="4" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a053a" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0085" android:layout_centerVertical="true" android:lineSpacingMultiplier="1.0" />
-    </RelativeLayout>
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="128.5dip" android:layout_height="124.5dip">
+            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a076b" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1681" />
+            <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a076c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021eb9" />
+        </FrameLayout>
+        <FrameLayout android:layout_width="122.5dip" android:layout_height="124.5dip">
+            <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a076d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1681" />
+            <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a076e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021eb9" />
+        </FrameLayout>
+    </LinearLayout>
+    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200df" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a076f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="7.5dip" android:text="+4" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -14,7 +14,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.util.LruCache;
-import aneb;
+import anmb;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.gifCoderWnsConfig;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class FastAnimationDrawable
       this.jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
     }
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_AndroidUtilLruCache = new aneb(this, paramArrayList.size());
+    this.jdField_a_of_type_AndroidUtilLruCache = new anmb(this, paramArrayList.size());
   }
   
   private static int a(Bitmap.Config paramConfig)
@@ -532,8 +533,10 @@ public class FastAnimationDrawable
   
   private void b()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("FastAnimationDrawable", 2, "reset");
+    }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
     this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = null;
     this.jdField_b_of_type_AndroidGraphicsDrawableBitmapDrawable = null;
   }
@@ -594,8 +597,11 @@ public class FastAnimationDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableBitmapDrawable;
-    this.jdField_b_of_type_AndroidGraphicsDrawableBitmapDrawable = null;
+    if (this.jdField_b_of_type_AndroidGraphicsDrawableBitmapDrawable != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableBitmapDrawable;
+      this.jdField_b_of_type_AndroidGraphicsDrawableBitmapDrawable = null;
+    }
     if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null)
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable.setBounds(getBounds());
@@ -620,13 +626,20 @@ public class FastAnimationDrawable
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    if (paramBoolean1)
-    {
-      start();
-      if (paramBoolean2) {
+    if (QLog.isColorLevel()) {
+      QLog.d("FastAnimationDrawable", 2, "setVisible changed:" + bool + " visible:" + paramBoolean1 + " restart:" + paramBoolean2);
+    }
+    if (paramBoolean1) {
+      if (bool)
+      {
+        start();
+        if (!paramBoolean2) {
+          break label81;
+        }
         b();
       }
     }
+    label81:
     while (!bool)
     {
       return bool;
@@ -641,6 +654,9 @@ public class FastAnimationDrawable
   {
     if (!this.jdField_a_of_type_Boolean)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("FastAnimationDrawable", 2, "start");
+      }
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new FastAnimationDrawable.LoopReadWriteRunnable(this));
     }

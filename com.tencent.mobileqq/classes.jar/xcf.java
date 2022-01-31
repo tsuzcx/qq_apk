@@ -1,22 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.MediaScanner;
+import com.tencent.mobileqq.activity.photo.PeakService;
+import com.tencent.qphone.base.util.QLog;
 
 public class xcf
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xcf(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public xcf(PeakService paramPeakService) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    QWalletTools.a(TroopUnAccalimedRedPacketList.a(), TroopUnAccalimedRedPacketList.a().getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
-    if (TroopUnAccalimedRedPacketList.a() != null) {
-      TroopUnAccalimedRedPacketList.a().dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("PeakService", 2, "peak service start MediaScanner.doScan()");
     }
+    MediaScanner.a(BaseApplicationImpl.getContext()).a();
   }
 }
 

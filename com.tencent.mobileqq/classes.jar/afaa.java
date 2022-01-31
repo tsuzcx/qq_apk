@@ -1,14 +1,36 @@
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.StrangerInfo;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class afaa
-  implements ActionSheet.OnDismissListener
+  implements Runnable
 {
-  public afaa(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public afaa(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
   
-  public void onDismiss()
+  public void run()
   {
-    this.a.b = false;
+    if ((this.a.isFinishing()) || (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin()))) {
+      return;
+    }
+    Object localObject = (ArrayList)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getEntityManagerFactory().createEntityManager().a(StrangerInfo.class);
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      this.a.jdField_a_of_type_JavaUtilList.clear();
+      this.a.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject);
+    }
+    localObject = NearbySPUtil.a("nearby_visitor_file", this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getAccount(), 0);
+    this.a.b = ((SharedPreferences)localObject).getLong("sp_nearby_total_visitor", 0L);
+    this.a.c = ((SharedPreferences)localObject).getLong("sp_nearby_new_visitor", 0L);
+    this.a.d = ((SharedPreferences)localObject).getLong("sp_nearby_his_visitor", 0L);
+    this.a.runOnUiThread(new afab(this));
   }
 }
 

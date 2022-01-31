@@ -1,36 +1,26 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class nxl
-  extends QQUIEventReceiver
+  implements DialogInterface.OnClickListener
 {
-  public nxl(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter)
-  {
-    super(paramQQStoryMemoriesPresenter);
-  }
+  public nxl(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void a(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramQQStoryMemoriesPresenter.jdField_a_of_type_JavaLangString)))
+    switch (paramInt)
     {
-      SLog.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramUpdateUserInfoEvent);
-      paramQQStoryMemoriesPresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).d();
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).b();
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).c();
+    case 0: 
+    default: 
+      return;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("extra_checked_vidset", this.a.a);
+    this.a.getActivity().setResult(-1, paramDialogInterface);
+    this.a.getActivity().finish();
   }
 }
 

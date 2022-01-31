@@ -1,30 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
 
 public class ljw
-  implements ArticleCommentModule.FetchCommentObserver
+  implements DialogInterface.OnClickListener
 {
-  public ljw(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter) {}
+  public ljw(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void a(ArticleInfo paramArticleInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentListView", 2, "second comment bottom refresh success");
-    }
-    ReadInJoySecondCommentListAdapter.a(this.a).a(true);
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentListView", 2, "second comment bottom refresh failed,err code =" + paramInt + " errMsg =" + paramString);
-    }
-    ReadInJoySecondCommentListAdapter.a(this.a).a();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

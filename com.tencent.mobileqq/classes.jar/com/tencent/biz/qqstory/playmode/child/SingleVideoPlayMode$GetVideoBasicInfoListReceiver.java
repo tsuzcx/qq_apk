@@ -25,11 +25,11 @@ public class SingleVideoPlayMode$GetVideoBasicInfoListReceiver
   
   public void a(@NonNull SingleVideoPlayMode paramSingleVideoPlayMode, @NonNull VidToBasicInfoHandler.GetVideoBasicInfoListEvent paramGetVideoBasicInfoListEvent)
   {
-    if ((paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null) || (paramSingleVideoPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList == null) || (paramSingleVideoPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+    if ((paramGetVideoBasicInfoListEvent.errorInfo.isFail()) || (paramGetVideoBasicInfoListEvent.a == null) || (paramSingleVideoPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList == null) || (paramSingleVideoPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
       return;
     }
     Activity localActivity = paramSingleVideoPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a;
-    paramGetVideoBasicInfoListEvent = paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList.iterator();
+    paramGetVideoBasicInfoListEvent = paramGetVideoBasicInfoListEvent.a.iterator();
     label181:
     while (paramGetVideoBasicInfoListEvent.hasNext())
     {

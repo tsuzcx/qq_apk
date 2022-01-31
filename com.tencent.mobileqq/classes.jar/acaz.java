@@ -1,68 +1,23 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.vipav.VipFunCallObserver;
-import com.tencent.mobileqq.vipav.VipSetFunCallHandler;
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class acaz
-  extends VipFunCallObserver
+  implements AccountManagerCallback
 {
-  public acaz(MessengerService paramMessengerService) {}
+  public acaz(ContactSyncManager paramContactSyncManager) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void run(AccountManagerFuture paramAccountManagerFuture)
   {
-    for (;;)
-    {
-      try
-      {
-        paramObject = (Bundle)paramObject;
-        if (paramObject == null)
-        {
-          QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver.onUpdate dataBundle=null");
-          return;
-        }
-        int i = paramObject.getInt("result", -1);
-        if (!QLog.isColorLevel()) {
-          break label206;
-        }
-        QLog.d("Q.emoji.web.MessengerService", 2, "fcObserver.onUpdate ret=" + i + ", type=" + paramInt + ", isSuccess=" + paramBoolean);
-      }
-      catch (Exception paramObject)
-      {
-        QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Err:" + paramObject.getMessage());
-        return;
-      }
-      QLog.e("Q.emoji.web.MessengerService", 1, "fcObserver onUpdate Error type=" + paramInt);
-      paramObject = (QQAppInterface)MessengerService.a(this.a);
-      if (paramObject != null)
-      {
-        Object localObject = (VipSetFunCallHandler)paramObject.a(46);
-        paramObject.removeObserver(this);
-        return;
-        if (this.a.a != null)
-        {
-          localObject = Message.obtain(null, 5);
-          ((Message)localObject).setData(paramObject);
-          this.a.a.send((Message)localObject);
-        }
-      }
-      else
-      {
-        return;
-        label206:
-        switch (paramInt)
-        {
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acaz
  * JD-Core Version:    0.7.0.1
  */

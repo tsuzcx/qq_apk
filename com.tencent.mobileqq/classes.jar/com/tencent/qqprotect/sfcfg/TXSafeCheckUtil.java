@@ -10,21 +10,21 @@ public class TXSafeCheckUtil
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 8
+    //   1: astore 5
     //   3: aconst_null
-    //   4: astore 5
+    //   4: astore 9
     //   6: aconst_null
-    //   7: astore 9
+    //   7: astore 8
     //   9: aconst_null
     //   10: astore 7
     //   12: aconst_null
-    //   13: astore 13
+    //   13: astore 11
     //   15: aconst_null
-    //   16: astore 10
+    //   16: astore 13
     //   18: aconst_null
-    //   19: astore 11
+    //   19: astore 12
     //   21: aconst_null
-    //   22: astore 12
+    //   22: astore 10
     //   24: iconst_0
     //   25: istore_3
     //   26: new 19	java/util/jar/JarFile
@@ -32,16 +32,16 @@ public class TXSafeCheckUtil
     //   30: aload_0
     //   31: invokespecial 22	java/util/jar/JarFile:<init>	(Ljava/lang/String;)V
     //   34: astore 6
-    //   36: aload 12
-    //   38: astore 8
-    //   40: aload 13
+    //   36: aload 10
+    //   38: astore 7
+    //   40: aload 11
     //   42: astore_0
     //   43: aload 6
     //   45: astore 5
-    //   47: aload 10
-    //   49: astore 9
-    //   51: aload 11
-    //   53: astore 7
+    //   47: aload 13
+    //   49: astore 8
+    //   51: aload 12
+    //   53: astore 9
     //   55: aload 6
     //   57: aload_1
     //   58: invokevirtual 26	java/util/jar/JarFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
@@ -66,56 +66,56 @@ public class TXSafeCheckUtil
     //   96: istore_3
     //   97: iload_3
     //   98: ireturn
-    //   99: aload 12
-    //   101: astore 8
-    //   103: aload 13
+    //   99: aload 10
+    //   101: astore 7
+    //   103: aload 11
     //   105: astore_0
     //   106: aload 6
     //   108: astore 5
-    //   110: aload 10
-    //   112: astore 9
-    //   114: aload 11
-    //   116: astore 7
+    //   110: aload 13
+    //   112: astore 8
+    //   114: aload 12
+    //   116: astore 9
     //   118: aload 6
     //   120: aload_1
     //   121: invokevirtual 36	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   124: astore_1
     //   125: aload_1
-    //   126: astore 8
+    //   126: astore 7
     //   128: aload_1
     //   129: astore_0
     //   130: aload 6
     //   132: astore 5
     //   134: aload_1
-    //   135: astore 9
+    //   135: astore 8
     //   137: aload_1
-    //   138: astore 7
+    //   138: astore 9
     //   140: ldc 38
     //   142: invokestatic 44	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   145: astore 11
     //   147: aload_1
-    //   148: astore 8
+    //   148: astore 7
     //   150: aload_1
     //   151: astore_0
     //   152: aload 6
     //   154: astore 5
     //   156: aload_1
-    //   157: astore 9
+    //   157: astore 8
     //   159: aload_1
-    //   160: astore 7
+    //   160: astore 9
     //   162: sipush 8192
     //   165: newarray byte
     //   167: astore 10
     //   169: aload_1
-    //   170: astore 8
+    //   170: astore 7
     //   172: aload_1
     //   173: astore_0
     //   174: aload 6
     //   176: astore 5
     //   178: aload_1
-    //   179: astore 9
+    //   179: astore 8
     //   181: aload_1
-    //   182: astore 7
+    //   182: astore 9
     //   184: aload_1
     //   185: aload 10
     //   187: invokevirtual 50	java/io/InputStream:read	([B)I
@@ -124,15 +124,15 @@ public class TXSafeCheckUtil
     //   194: iconst_m1
     //   195: if_icmpeq +70 -> 265
     //   198: aload_1
-    //   199: astore 8
+    //   199: astore 7
     //   201: aload_1
     //   202: astore_0
     //   203: aload 6
     //   205: astore 5
     //   207: aload_1
-    //   208: astore 9
+    //   208: astore 8
     //   210: aload_1
-    //   211: astore 7
+    //   211: astore 9
     //   213: aload 11
     //   215: aload 10
     //   217: iconst_0
@@ -140,7 +140,7 @@ public class TXSafeCheckUtil
     //   220: invokevirtual 54	java/security/MessageDigest:update	([BII)V
     //   223: goto -54 -> 169
     //   226: astore_1
-    //   227: aload 8
+    //   227: aload 7
     //   229: astore_0
     //   230: aload 6
     //   232: astore 5
@@ -148,9 +148,9 @@ public class TXSafeCheckUtil
     //   235: invokevirtual 57	java/io/IOException:printStackTrace	()V
     //   238: iconst_3
     //   239: istore_3
-    //   240: aload 8
+    //   240: aload 7
     //   242: ifnull +8 -> 250
-    //   245: aload 8
+    //   245: aload 7
     //   247: invokevirtual 58	java/io/InputStream:close	()V
     //   250: aload 6
     //   252: ifnull -155 -> 97
@@ -162,28 +162,28 @@ public class TXSafeCheckUtil
     //   263: iconst_3
     //   264: ireturn
     //   265: aload_1
-    //   266: astore 8
+    //   266: astore 7
     //   268: aload_1
     //   269: astore_0
     //   270: aload 6
     //   272: astore 5
     //   274: aload_1
-    //   275: astore 9
+    //   275: astore 8
     //   277: aload_1
-    //   278: astore 7
+    //   278: astore 9
     //   280: aload 11
     //   282: invokevirtual 62	java/security/MessageDigest:digest	()[B
     //   285: astore 10
     //   287: aload_1
-    //   288: astore 8
+    //   288: astore 7
     //   290: aload_1
     //   291: astore_0
     //   292: aload 6
     //   294: astore 5
     //   296: aload_1
-    //   297: astore 9
+    //   297: astore 8
     //   299: aload_1
-    //   300: astore 7
+    //   300: astore 9
     //   302: aload 10
     //   304: iconst_0
     //   305: aload_2
@@ -207,111 +207,111 @@ public class TXSafeCheckUtil
     //   336: astore_1
     //   337: aconst_null
     //   338: astore 6
-    //   340: aload 5
-    //   342: astore 7
-    //   344: aload 7
-    //   346: astore_0
-    //   347: aload 6
-    //   349: astore 5
-    //   351: aload_1
-    //   352: invokevirtual 69	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   355: sipush 144
-    //   358: istore_3
-    //   359: aload 7
-    //   361: ifnull +8 -> 369
-    //   364: aload 7
-    //   366: invokevirtual 58	java/io/InputStream:close	()V
-    //   369: aload 6
-    //   371: ifnull -274 -> 97
-    //   374: aload 6
-    //   376: invokevirtual 32	java/util/jar/JarFile:close	()V
-    //   379: sipush 144
-    //   382: ireturn
-    //   383: astore_0
-    //   384: sipush 144
-    //   387: ireturn
-    //   388: astore_1
-    //   389: aconst_null
-    //   390: astore 6
-    //   392: aload 9
-    //   394: astore_0
-    //   395: aload 6
-    //   397: astore 5
-    //   399: aload_1
-    //   400: invokevirtual 70	java/security/NoSuchAlgorithmException:printStackTrace	()V
-    //   403: sipush 139
-    //   406: istore_3
-    //   407: aload 9
-    //   409: ifnull +8 -> 417
-    //   412: aload 9
-    //   414: invokevirtual 58	java/io/InputStream:close	()V
-    //   417: aload 6
-    //   419: ifnull -322 -> 97
-    //   422: aload 6
-    //   424: invokevirtual 32	java/util/jar/JarFile:close	()V
-    //   427: sipush 139
-    //   430: ireturn
-    //   431: astore_0
-    //   432: sipush 139
-    //   435: ireturn
-    //   436: astore_1
-    //   437: aconst_null
-    //   438: astore 5
-    //   440: aload 7
-    //   442: astore_0
+    //   340: aload 9
+    //   342: astore_0
+    //   343: aload 6
+    //   345: astore 5
+    //   347: aload_1
+    //   348: invokevirtual 69	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   351: sipush 144
+    //   354: istore_3
+    //   355: aload 9
+    //   357: ifnull +8 -> 365
+    //   360: aload 9
+    //   362: invokevirtual 58	java/io/InputStream:close	()V
+    //   365: aload 6
+    //   367: ifnull -270 -> 97
+    //   370: aload 6
+    //   372: invokevirtual 32	java/util/jar/JarFile:close	()V
+    //   375: sipush 144
+    //   378: ireturn
+    //   379: astore_0
+    //   380: sipush 144
+    //   383: ireturn
+    //   384: astore_1
+    //   385: aconst_null
+    //   386: astore 6
+    //   388: aload 8
+    //   390: astore_0
+    //   391: aload 6
+    //   393: astore 5
+    //   395: aload_1
+    //   396: invokevirtual 70	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   399: sipush 139
+    //   402: istore_3
+    //   403: aload 8
+    //   405: ifnull +8 -> 413
+    //   408: aload 8
+    //   410: invokevirtual 58	java/io/InputStream:close	()V
+    //   413: aload 6
+    //   415: ifnull -318 -> 97
+    //   418: aload 6
+    //   420: invokevirtual 32	java/util/jar/JarFile:close	()V
+    //   423: sipush 139
+    //   426: ireturn
+    //   427: astore_0
+    //   428: sipush 139
+    //   431: ireturn
+    //   432: astore_1
+    //   433: aconst_null
+    //   434: astore 5
+    //   436: aload 7
+    //   438: astore_0
+    //   439: aload_0
+    //   440: ifnull +7 -> 447
     //   443: aload_0
-    //   444: ifnull +7 -> 451
-    //   447: aload_0
-    //   448: invokevirtual 58	java/io/InputStream:close	()V
-    //   451: aload 5
-    //   453: ifnull +8 -> 461
-    //   456: aload 5
-    //   458: invokevirtual 32	java/util/jar/JarFile:close	()V
-    //   461: aload_1
-    //   462: athrow
+    //   444: invokevirtual 58	java/io/InputStream:close	()V
+    //   447: aload 5
+    //   449: ifnull +8 -> 457
+    //   452: aload 5
+    //   454: invokevirtual 32	java/util/jar/JarFile:close	()V
+    //   457: aload_1
+    //   458: athrow
+    //   459: astore_0
+    //   460: goto -379 -> 81
     //   463: astore_0
-    //   464: goto -383 -> 81
-    //   467: astore_0
-    //   468: iconst_2
-    //   469: ireturn
+    //   464: iconst_2
+    //   465: ireturn
+    //   466: astore_0
+    //   467: goto -146 -> 321
     //   470: astore_0
-    //   471: goto -150 -> 321
+    //   471: goto -221 -> 250
     //   474: astore_0
-    //   475: goto -225 -> 250
+    //   475: goto -110 -> 365
     //   478: astore_0
-    //   479: goto -110 -> 369
+    //   479: goto -66 -> 413
     //   482: astore_0
-    //   483: goto -66 -> 417
+    //   483: goto -36 -> 447
     //   486: astore_0
-    //   487: goto -36 -> 451
-    //   490: astore_0
-    //   491: goto -30 -> 461
+    //   487: goto -30 -> 457
+    //   490: astore_1
+    //   491: goto -52 -> 439
     //   494: astore_1
-    //   495: goto -52 -> 443
+    //   495: goto -107 -> 388
     //   498: astore_1
-    //   499: goto -107 -> 392
+    //   499: goto -159 -> 340
     //   502: astore_1
-    //   503: goto -159 -> 344
-    //   506: astore_1
-    //   507: aconst_null
-    //   508: astore 6
+    //   503: aconst_null
+    //   504: astore 6
+    //   506: aload 5
+    //   508: astore 7
     //   510: goto -283 -> 227
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	513	0	paramString1	String
     //   0	513	1	paramString2	String
     //   0	513	2	paramArrayOfByte	byte[]
-    //   25	382	3	i	int
+    //   25	378	3	i	int
     //   67	152	4	j	int
-    //   4	453	5	localObject1	Object
-    //   34	475	6	localJarFile	java.util.jar.JarFile
-    //   10	431	7	localObject2	Object
-    //   1	288	8	localObject3	Object
-    //   7	406	9	localObject4	Object
-    //   16	292	10	arrayOfByte	byte[]
-    //   19	262	11	localMessageDigest	java.security.MessageDigest
-    //   22	78	12	localObject5	Object
-    //   13	91	13	localObject6	Object
+    //   1	506	5	localObject1	Object
+    //   34	471	6	localJarFile	java.util.jar.JarFile
+    //   10	499	7	localObject2	Object
+    //   7	402	8	localObject3	Object
+    //   4	357	9	localObject4	Object
+    //   22	286	10	arrayOfByte	byte[]
+    //   13	268	11	localMessageDigest	java.security.MessageDigest
+    //   19	96	12	localObject5	Object
+    //   16	95	13	localObject6	Object
     // Exception table:
     //   from	to	target	type
     //   55	62	226	java/io/IOException
@@ -325,46 +325,46 @@ public class TXSafeCheckUtil
     //   255	260	262	java/io/IOException
     //   326	331	333	java/io/IOException
     //   26	36	336	java/lang/OutOfMemoryError
-    //   374	379	383	java/io/IOException
-    //   26	36	388	java/security/NoSuchAlgorithmException
-    //   422	427	431	java/io/IOException
-    //   26	36	436	finally
-    //   73	81	463	java/io/IOException
-    //   89	94	467	java/io/IOException
-    //   317	321	470	java/io/IOException
-    //   245	250	474	java/io/IOException
-    //   364	369	478	java/io/IOException
-    //   412	417	482	java/io/IOException
-    //   447	451	486	java/io/IOException
-    //   456	461	490	java/io/IOException
-    //   55	62	494	finally
-    //   118	125	494	finally
-    //   140	147	494	finally
-    //   162	169	494	finally
-    //   184	192	494	finally
-    //   213	223	494	finally
-    //   234	238	494	finally
-    //   280	287	494	finally
-    //   302	313	494	finally
-    //   351	355	494	finally
-    //   399	403	494	finally
-    //   55	62	498	java/security/NoSuchAlgorithmException
-    //   118	125	498	java/security/NoSuchAlgorithmException
-    //   140	147	498	java/security/NoSuchAlgorithmException
-    //   162	169	498	java/security/NoSuchAlgorithmException
-    //   184	192	498	java/security/NoSuchAlgorithmException
-    //   213	223	498	java/security/NoSuchAlgorithmException
-    //   280	287	498	java/security/NoSuchAlgorithmException
-    //   302	313	498	java/security/NoSuchAlgorithmException
-    //   55	62	502	java/lang/OutOfMemoryError
-    //   118	125	502	java/lang/OutOfMemoryError
-    //   140	147	502	java/lang/OutOfMemoryError
-    //   162	169	502	java/lang/OutOfMemoryError
-    //   184	192	502	java/lang/OutOfMemoryError
-    //   213	223	502	java/lang/OutOfMemoryError
-    //   280	287	502	java/lang/OutOfMemoryError
-    //   302	313	502	java/lang/OutOfMemoryError
-    //   26	36	506	java/io/IOException
+    //   370	375	379	java/io/IOException
+    //   26	36	384	java/security/NoSuchAlgorithmException
+    //   418	423	427	java/io/IOException
+    //   26	36	432	finally
+    //   73	81	459	java/io/IOException
+    //   89	94	463	java/io/IOException
+    //   317	321	466	java/io/IOException
+    //   245	250	470	java/io/IOException
+    //   360	365	474	java/io/IOException
+    //   408	413	478	java/io/IOException
+    //   443	447	482	java/io/IOException
+    //   452	457	486	java/io/IOException
+    //   55	62	490	finally
+    //   118	125	490	finally
+    //   140	147	490	finally
+    //   162	169	490	finally
+    //   184	192	490	finally
+    //   213	223	490	finally
+    //   234	238	490	finally
+    //   280	287	490	finally
+    //   302	313	490	finally
+    //   347	351	490	finally
+    //   395	399	490	finally
+    //   55	62	494	java/security/NoSuchAlgorithmException
+    //   118	125	494	java/security/NoSuchAlgorithmException
+    //   140	147	494	java/security/NoSuchAlgorithmException
+    //   162	169	494	java/security/NoSuchAlgorithmException
+    //   184	192	494	java/security/NoSuchAlgorithmException
+    //   213	223	494	java/security/NoSuchAlgorithmException
+    //   280	287	494	java/security/NoSuchAlgorithmException
+    //   302	313	494	java/security/NoSuchAlgorithmException
+    //   55	62	498	java/lang/OutOfMemoryError
+    //   118	125	498	java/lang/OutOfMemoryError
+    //   140	147	498	java/lang/OutOfMemoryError
+    //   162	169	498	java/lang/OutOfMemoryError
+    //   184	192	498	java/lang/OutOfMemoryError
+    //   213	223	498	java/lang/OutOfMemoryError
+    //   280	287	498	java/lang/OutOfMemoryError
+    //   302	313	498	java/lang/OutOfMemoryError
+    //   26	36	502	java/io/IOException
   }
   
   public static int a(Map paramMap, String paramString1, String paramString2)

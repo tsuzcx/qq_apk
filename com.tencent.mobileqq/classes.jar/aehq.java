@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.model.ChatBackgroundManager.BgThemeColorExtractListener;
-import java.util.Vector;
+import com.tencent.mobileqq.leba.LebaGridManager;
+import com.tencent.mobileqq.leba.model.PluginInfo;
+import java.util.Comparator;
 
-class aehq
-  implements Runnable
+public class aehq
+  implements Comparator
 {
-  aehq(aehp paramaehp, boolean paramBoolean, Vector paramVector) {}
+  public aehq(LebaGridManager paramLebaGridManager) {}
   
-  public void run()
+  public int a(PluginInfo paramPluginInfo1, PluginInfo paramPluginInfo2)
   {
-    aehp.a(this.jdField_a_of_type_Aehp).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilVector);
+    if (paramPluginInfo1.type < paramPluginInfo2.type) {}
+    do
+    {
+      return 1;
+      if (paramPluginInfo1.type > paramPluginInfo2.type) {
+        return -1;
+      }
+    } while (paramPluginInfo1.weight < paramPluginInfo2.weight);
+    if (paramPluginInfo1.weight > paramPluginInfo2.weight) {
+      return -1;
+    }
+    return 0;
   }
 }
 

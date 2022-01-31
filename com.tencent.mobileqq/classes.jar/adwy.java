@@ -1,34 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.jsp.TroopApiPlugin;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.gameparty.GamePartyManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class adwy
-  implements TroopMemberApiClient.Callback
+  implements Runnable
 {
-  public adwy(TroopApiPlugin paramTroopApiPlugin) {}
+  public adwy(GamePartyManager paramGamePartyManager, String paramString) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    int i = paramBundle.getInt("state", 0);
-    int j = paramBundle.getInt("percentage", 0);
-    long l = paramBundle.getLong("errCode", 0L);
     try
     {
-      paramBundle = new JSONObject();
-      paramBundle.put("state", i);
-      paramBundle.put("percentage", j);
-      paramBundle.put("errCode", l);
-      this.a.callJs(this.a.e, new String[] { paramBundle.toString() });
+      ark.arkNotify("com.tencent.qqopen.teamup", "update_team_info", this.jdField_a_of_type_JavaLangString, "json");
       return;
     }
-    catch (Exception paramBundle)
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("TroopApiPlugin", 2, "huanjiDownload exp", paramBundle);
-      }
-      this.a.callJs(this.a.e, new String[] { "{\"errCode\":-10,\"message\":\"request fail\"}" });
+      while (!QLog.isColorLevel()) {}
+      QLog.d("GamePartyManager", 2, "arkNotify failed, .so not loaded");
     }
   }
 }

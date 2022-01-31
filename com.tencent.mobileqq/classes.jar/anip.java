@@ -1,22 +1,35 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.concurrent.CountDownLatch;
 
-public class anip
-  extends AnimatorListenerAdapter
+public final class anip
+  implements Downloader.DownloadListener
 {
-  public anip(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  public anip(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDownloadCanceled(String paramString)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.f();
-    this.a.e();
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anip
  * JD-Core Version:    0.7.0.1
  */

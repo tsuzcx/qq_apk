@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
+import java.util.TimerTask;
 
-class ycy
-  implements Runnable
+public class ycy
+  extends TimerTask
 {
-  ycy(ycw paramycw) {}
+  public ycy(SubtitleLayout paramSubtitleLayout) {}
   
   public void run()
   {
-    this.a.a.setResult(0);
-    this.a.a.finish();
+    synchronized (this.a)
+    {
+      if (SubtitleLayout.a(this.a) == -1L)
+      {
+        SubtitleLayout.c(this.a);
+        return;
+      }
+      this.a.postInvalidate();
+      return;
+    }
   }
 }
 

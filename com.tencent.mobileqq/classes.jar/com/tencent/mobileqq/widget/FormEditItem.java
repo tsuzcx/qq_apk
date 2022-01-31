@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akuh;
+import alby;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -26,7 +26,7 @@ public class FormEditItem
 {
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new akuh(this);
+  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new alby(this);
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
@@ -128,7 +128,7 @@ public class FormEditItem
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
       this.jdField_a_of_type_AndroidWidgetTextView.setId(2131362054);
       m = getContext().getResources().getDimensionPixelSize(2131559307);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494214));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131494220));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, m);
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
       setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.e, this.f);
@@ -398,7 +398,7 @@ public class FormEditItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormEditItem
  * JD-Core Version:    0.7.0.1
  */

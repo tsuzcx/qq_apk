@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.view;
 
-import agsh;
+import agwu;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -59,6 +59,7 @@ public class ShimmerLinearLayout
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
       this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
     }
+    QLog.i("ShimmerLinearLayout", 1, "getShimmerAnimation recreate = " + paramBoolean);
     int j = getWidth();
     int m = getHeight();
     int k;
@@ -77,7 +78,7 @@ public class ShimmerLinearLayout
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.c + this.jdField_b_of_type_Int);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new agsh(this, i, j, k, m));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new agwu(this, i, j, k, m));
       return this.jdField_a_of_type_AndroidAnimationValueAnimator;
       i = -this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
       m = 0;

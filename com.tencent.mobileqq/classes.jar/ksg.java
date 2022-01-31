@@ -1,15 +1,17 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.util.Pair;
+import java.net.URL;
 
 public class ksg
-  implements Runnable
 {
-  public ksg(AccountDetailActivity paramAccountDetailActivity, int paramInt) {}
+  public Pair a;
+  public URL a;
   
-  public void run()
+  public static ksg a(URL paramURL, Pair paramPair)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.c > 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.c(this.jdField_a_of_type_Int);
-    }
+    ksg localksg = new ksg();
+    localksg.jdField_a_of_type_JavaNetURL = paramURL;
+    localksg.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localksg;
   }
 }
 

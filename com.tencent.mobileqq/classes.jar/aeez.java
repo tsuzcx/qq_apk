@@ -1,36 +1,74 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DraftTextInfo;
-import com.tencent.mobileqq.managers.DraftTextManager;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.troop.TroopMemberApiClient;
+import com.tencent.mobileqq.jsp.QQApiPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import java.util.Map;
 
 public class aeez
   implements Runnable
 {
-  public aeez(DraftTextManager paramDraftTextManager, DraftTextInfo paramDraftTextInfo, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public aeez(QQApiPlugin paramQQApiPlugin, String paramString1, String paramString2, int paramInt, Map paramMap, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
   public void run()
   {
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqDataDraftTextInfo;
-    Object localObject1 = localObject3;
-    if (localObject3 == null) {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    }
-    localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    try
-    {
-      ((EntityManager)localObject3).b((Entity)localObject1);
+    int j = 0;
+    int i = 0;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a();
+    if ((localObject == null) || (((Activity)localObject).isFinishing())) {
       return;
     }
-    catch (Exception localException)
+    if (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
+      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.a((Activity)localObject);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
     {
-      localException.printStackTrace();
+      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new aefa(this);
+      WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+    }
+    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener == null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener = new aefb(this);
+      WxShareHelperFromReadInjoy.a().a(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c = String.valueOf(System.currentTimeMillis());
+    localObject = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
+    if ("audio".equals(this.c))
+    {
+      localWXShareHelper = WXShareHelper.a();
+      str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
+      str2 = this.d;
+      str3 = this.e;
+      str4 = this.b;
+      if ("2".equals(this.jdField_a_of_type_JavaLangString)) {}
+      for (;;)
+      {
+        localWXShareHelper.a(str1, str2, (Bitmap)localObject, str3, str4, i, this.f);
+        return;
+        i = 1;
+      }
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.d(new aefc(this, (Bitmap)localObject));
       return;
     }
-    finally
+    WXShareHelper localWXShareHelper = WXShareHelper.a();
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
+    String str2 = this.d;
+    String str3 = this.e;
+    String str4 = this.b;
+    if ("2".equals(this.jdField_a_of_type_JavaLangString)) {}
+    for (i = j;; i = 1)
     {
-      ((EntityManager)localObject3).a();
+      localWXShareHelper.b(str1, str2, (Bitmap)localObject, str3, str4, i);
+      return;
     }
   }
 }

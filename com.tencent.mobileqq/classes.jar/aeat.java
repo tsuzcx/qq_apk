@@ -1,21 +1,16 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.leba.QZoneEntryController;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
 
 public class aeat
-  implements ViewSwitcher.ViewFactory
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
-  public aeat(QZoneEntryController paramQZoneEntryController) {}
+  public aeat(VideoBaseItem paramVideoBaseItem) {}
   
-  public View makeView()
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    ImageView localImageView = new ImageView(this.a.a);
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    this.a.a.start();
+    this.a.c = 2;
   }
 }
 

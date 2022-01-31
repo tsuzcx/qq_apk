@@ -40,7 +40,7 @@ public class RecentItemEcShopAssitant
     if (this.jdField_c_of_type_Int > 0)
     {
       this.jdField_d_of_type_JavaLangCharSequence = "[新消息]";
-      this.e = paramContext.getResources().getColor(2131494288);
+      this.e = paramContext.getResources().getColor(2131494294);
       return;
     }
     this.jdField_d_of_type_JavaLangCharSequence = "";
@@ -53,7 +53,7 @@ public class RecentItemEcShopAssitant
     }
     super.a(paramQQAppInterface, paramContext);
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131437935);
+      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131437955);
     }
     if (!TextUtils.isEmpty(EcShopAssistantManager.jdField_c_of_type_JavaLangString)) {
       this.jdField_b_of_type_JavaLangString = EcShopAssistantManager.jdField_c_of_type_JavaLangString;
@@ -119,7 +119,7 @@ public class RecentItemEcShopAssitant
       ((MsgSummary)localObject3).jdField_c_of_type_JavaLangCharSequence = null;
       ((MsgSummary)localObject3).jdField_a_of_type_JavaLangCharSequence = null;
       label438:
-      this.e = paramContext.getResources().getColor(2131494288);
+      this.e = paramContext.getResources().getColor(2131494294);
       if (!((SharedPreferences)localObject1).contains("PUSH_TYPE_COLOR")) {}
     }
     for (;;)
@@ -193,7 +193,7 @@ public class RecentItemEcShopAssitant
             if (!TextUtils.isEmpty(((MsgSummary)localObject3).jdField_c_of_type_JavaLangCharSequence)) {
               break label438;
             }
-            ((MsgSummary)localObject3).b = paramContext.getString(2131437936);
+            ((MsgSummary)localObject3).b = paramContext.getString(2131437956);
             ((MsgSummary)localObject3).jdField_a_of_type_JavaLangCharSequence = null;
           }
         }
@@ -201,7 +201,7 @@ public class RecentItemEcShopAssitant
       catch (Exception localException)
       {
         QLog.e("RecentItemEcShopAssitant", 1, "parse color exception.");
-        this.e = paramContext.getResources().getColor(2131494288);
+        this.e = paramContext.getResources().getColor(2131494294);
         continue;
         if (QLog.isColorLevel()) {
           QLog.i("EcShopAssistantActivity", 2, "reddot out of date!");

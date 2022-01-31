@@ -1,25 +1,39 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.open.agent.AuthorityLoginView;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class alaq
-  implements Runnable
+  implements TextWatcher
 {
-  public alaq(AuthorityLoginView paramAuthorityLoginView, String paramString, ImageView paramImageView) {}
+  public alaq(ClearableEditText paramClearableEditText) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    Bitmap localBitmap = AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView).a(this.jdField_a_of_type_JavaLangString, (int)(58.0F * this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.a), true);
-    if (AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView) != null) {
-      ((BaseActivity)AuthorityLoginView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView)).runOnUiThread(new alar(this, localBitmap));
+    paramCharSequence = this.a.getText().toString();
+    if (this.a.isFocused())
+    {
+      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
+        this.a.setClearButtonVisible(false);
+      }
     }
+    else {
+      return;
+    }
+    if ((ClearableEditText.a(this.a)) || (ClearableEditText.b(this.a)))
+    {
+      this.a.setClearButtonVisible(true);
+      return;
+    }
+    this.a.setClearButtonVisible(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alaq
  * JD-Core Version:    0.7.0.1
  */

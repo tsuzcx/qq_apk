@@ -67,17 +67,17 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import nki;
-import nkk;
-import nkm;
-import nko;
-import nkp;
-import nkq;
-import nkr;
-import nks;
-import nku;
-import nkv;
-import nky;
+import nos;
+import nou;
+import now;
+import noy;
+import noz;
+import npa;
+import npb;
+import npc;
+import npe;
+import npf;
+import npi;
 
 public class NewFriendsPlayMode
   extends FeedsPlayModeBase
@@ -94,7 +94,7 @@ public class NewFriendsPlayMode
   public BatchGetVideoInfoHandler a;
   public VideoListPageLoader a;
   protected QQUIEventReceiver a;
-  protected nky a;
+  protected npi a;
   protected ArrayList d = new ArrayList();
   protected String i = "NewFriendsPlayMode" + System.currentTimeMillis();
   protected String j;
@@ -108,16 +108,16 @@ public class NewFriendsPlayMode
   public NewFriendsPlayMode(int paramInt, StoryVideoPlayer paramStoryVideoPlayer, VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, Bundle paramBundle)
   {
     super(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
-    this.jdField_a_of_type_Nky = new nky(this);
+    this.jdField_a_of_type_Npi = new npi(this);
     this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode$DownloadStatusUpdateReceiver = new NewFriendsPlayMode.DownloadStatusUpdateReceiver(this);
     this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode$GenShareThumbReceiver = new NewFriendsPlayMode.GenShareThumbReceiver(this);
     this.jdField_a_of_type_ComTribeAsyncDispatchQQUIEventReceiver = new FeedsPlayModeBase.TroopNickNameUpdateEventReceiver(this);
     this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode$StoryVideoTagUpdateReceiver = new NewFriendsPlayMode.StoryVideoTagUpdateReceiver(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback = new nkm(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nkk(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback = new now(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nou(this);
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibilityDelay(0, 400L, "NewFriendsPlayMode create");
     b(0);
-    a(this.i, this.jdField_a_of_type_Nky);
+    a(this.i, this.jdField_a_of_type_Npi);
     a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode$GenShareThumbReceiver);
     a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode$DownloadStatusUpdateReceiver);
     a(this.jdField_a_of_type_ComTribeAsyncDispatchQQUIEventReceiver);
@@ -246,7 +246,7 @@ public class NewFriendsPlayMode
         default: 
           super.a(paramView);
           return;
-        case 2131371695: 
+        case 2131371693: 
           if (localQQUserUIItem != null)
           {
             this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.a(1, localQQUserUIItem.uid, 0, 1);
@@ -286,7 +286,7 @@ public class NewFriendsPlayMode
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_Int = 1;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_b_of_type_Int = paramVideoInfoListEvent.jdField_c_of_type_Int;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nkp(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new noz(this));
     }
     do
     {
@@ -307,8 +307,8 @@ public class NewFriendsPlayMode
           this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoProgressControler.a(this.d.size());
         }
       }
-      this.jdField_k_of_type_Boolean = paramVideoInfoListEvent.jdField_b_of_type_Boolean;
-      this.l = paramVideoInfoListEvent.jdField_a_of_type_Boolean;
+      this.k = paramVideoInfoListEvent.jdField_b_of_type_Boolean;
+      this.jdField_l_of_type_Boolean = paramVideoInfoListEvent.jdField_a_of_type_Boolean;
       switch (paramVideoInfoListEvent.jdField_a_of_type_Int)
       {
       }
@@ -330,13 +330,13 @@ public class NewFriendsPlayMode
           }
         }
         this.jdField_b_of_type_Int = paramVideoInfoListEvent.jdField_b_of_type_Int;
-        if (!this.l)
+        if (!this.jdField_l_of_type_Boolean)
         {
           this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.add(PlayModeUtils.a("first"));
           this.jdField_b_of_type_Int += 1;
         }
         this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject1);
-        if (!this.jdField_k_of_type_Boolean)
+        if (!this.k)
         {
           this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.add(PlayModeUtils.a("last"));
           continue;
@@ -344,7 +344,7 @@ public class NewFriendsPlayMode
           if (PlayModeUtils.b((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.get(0)))
           {
             this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.addAll(1, (Collection)localObject1);
-            if (this.l)
+            if (this.jdField_l_of_type_Boolean)
             {
               this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.remove(0);
               if (this.jdField_b_of_type_Int > 0) {
@@ -364,7 +364,7 @@ public class NewFriendsPlayMode
               if (PlayModeUtils.b((StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.get(i1 - 1)))
               {
                 this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.size() - 1, (Collection)localObject1);
-                if (this.jdField_k_of_type_Boolean) {
+                if (this.k) {
                   this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.size() - 1);
                 }
               }
@@ -386,9 +386,9 @@ public class NewFriendsPlayMode
     StoryReportor.b("play_video", "play_done", 0, 0, new String[] { "1", String.valueOf(111) });
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_b_of_type_Int = paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode;
+    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_b_of_type_Int = paramGetVideoListEvent.errorInfo.errorCode;
     this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nko(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new noy(this));
   }
   
   public void a(VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, StoryVideoItem paramStoryVideoItem)
@@ -396,7 +396,7 @@ public class NewFriendsPlayMode
     if (!PlayModeUtils.b(paramStoryVideoItem))
     {
       Object localObject = paramVideoViewHolder.jdField_b_of_type_AndroidWidgetLinearLayout;
-      if (PlayModeUtils.a(this.jdField_k_of_type_Int)) {}
+      if (PlayModeUtils.a(this.jdField_l_of_type_Int)) {}
       for (int i1 = 0;; i1 = 8)
       {
         ((LinearLayout)localObject).setVisibility(i1);
@@ -421,7 +421,7 @@ public class NewFriendsPlayMode
         if (!TextUtils.isEmpty(str)) {
           break label195;
         }
-        ThreadManager.post(new nki(this, paramVideoViewHolder, paramStoryVideoItem), 8, null, true);
+        ThreadManager.post(new nos(this, paramVideoViewHolder, paramStoryVideoItem), 8, null, true);
         return;
       }
       localObject = null;
@@ -450,7 +450,7 @@ public class NewFriendsPlayMode
       if (paramStoryVideoItem.mStoryType != 2) {
         break label194;
       }
-      paramActionSheet.b(2131434558);
+      paramActionSheet.b(2131434574);
       if (!bool) {
         break label179;
       }
@@ -481,36 +481,36 @@ public class NewFriendsPlayMode
     for (int i1 = i2;; i1 = 0)
     {
       if ((bool) || (i1 != 0)) {
-        paramActionSheet.b(2131434739);
+        paramActionSheet.b(2131434755);
       }
       return;
       i1 = 0;
       break;
-      paramActionSheet.b(2131435116);
+      paramActionSheet.b(2131435132);
       break label63;
     }
     label194:
     if ((paramStoryVideoItem.isUploadFail()) || (paramStoryVideoItem.isUploading()))
     {
-      paramActionSheet.b(2131434739);
+      paramActionSheet.b(2131434755);
       return;
     }
     if (bool)
     {
-      paramActionSheet.b(2131434737);
-      paramActionSheet.b(2131434558);
-      paramActionSheet.b(2131434739);
+      paramActionSheet.b(2131434753);
+      paramActionSheet.b(2131434574);
+      paramActionSheet.b(2131434755);
       return;
     }
     if (i1 != 0)
     {
-      paramActionSheet.b(2131434736);
-      paramActionSheet.b(2131434558);
-      paramActionSheet.b(2131435116);
+      paramActionSheet.b(2131434752);
+      paramActionSheet.b(2131434574);
+      paramActionSheet.b(2131435132);
       return;
     }
-    paramActionSheet.b(2131434737);
-    paramActionSheet.b(2131435116);
+    paramActionSheet.b(2131434753);
+    paramActionSheet.b(2131435132);
   }
   
   protected void a(List paramList)
@@ -541,7 +541,7 @@ public class NewFriendsPlayMode
       bool1 = true;
       bool2 = PlayModeUtils.a(paramStoryVideoItem);
       localVideoListFeedItem = a(this.jdField_b_of_type_Int);
-      if (!paramString.equals(paramView.getString(2131434558))) {
+      if (!paramString.equals(paramView.getString(2131434574))) {
         break label128;
       }
       if (!SendVideoToFriendHelper.a().a()) {
@@ -550,13 +550,13 @@ public class NewFriendsPlayMode
       QQToast.a(a(), 0, "请稍候，你有视频正在发送中", 0).a();
     }
     label105:
-    label235:
+    label239:
     int i1;
     label128:
-    label275:
-    label321:
-    label329:
-    label458:
+    label279:
+    label325:
+    label333:
+    label462:
     do
     {
       for (;;)
@@ -564,10 +564,10 @@ public class NewFriendsPlayMode
         return false;
         bool1 = false;
         break;
-        ThreadManager.post(new nkq(this, paramStoryVideoItem, paramStoryVideoItem, localVideoListFeedItem, bool2), 5, null, false);
+        ThreadManager.post(new npa(this, paramStoryVideoItem, paramStoryVideoItem, localVideoListFeedItem, bool2), 5, null, false);
         continue;
-        if (!paramString.equals(paramView.getString(2131434736))) {
-          break label235;
+        if (!paramString.equals(paramView.getString(2131434752))) {
+          break label239;
         }
         if (SendVideoToFriendHelper.a().a())
         {
@@ -581,32 +581,32 @@ public class NewFriendsPlayMode
         else
         {
           c(1);
-          a("");
+          a("", true, 300L);
           SendVideoToFriendHelper.a().a(paramStoryVideoItem, String.valueOf(hashCode()));
         }
       }
-      if (paramString.equals(paramView.getString(2131434737)))
+      if (paramString.equals(paramView.getString(2131434753)))
       {
         if (localVideoListFeedItem == null)
         {
           paramView = null;
           if (!paramStoryVideoItem.isMine()) {
-            break label425;
+            break label429;
           }
-          if (this.jdField_k_of_type_Int != 12) {
-            break label419;
+          if (this.jdField_l_of_type_Int != 12) {
+            break label423;
           }
           bool2 = true;
-          a().a(2131433100).a(new MyContentStoryShareMode(paramStoryVideoItem, bool2, paramView)).a(new nkr(this, this, bool2, localVideoListFeedItem, paramView, paramStoryVideoItem)).a();
+          a().a(2131433114).a(new MyContentStoryShareMode(paramStoryVideoItem, bool2, paramView)).a(new npb(this, this, bool2, localVideoListFeedItem, paramView, paramStoryVideoItem)).a();
           if (!bool1) {
-            break label452;
+            break label456;
           }
           i1 = 1;
           StoryReportor.a("play_video", "more_share", i1, 0, new String[0]);
           i1 = a();
           paramString = PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.jdField_b_of_type_Int);
           if (localVideoListFeedItem != null) {
-            break label458;
+            break label462;
           }
         }
         for (paramView = "";; paramView = localVideoListFeedItem.feedId)
@@ -616,33 +616,33 @@ public class NewFriendsPlayMode
           paramView = localVideoListFeedItem.feedId;
           break;
           bool2 = false;
-          break label275;
-          StoryDepends.InviteCode.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.getContext(), new nks(this, bool1, paramStoryVideoItem, paramView, localVideoListFeedItem));
-          break label321;
+          break label279;
+          StoryDepends.InviteCode.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.getContext(), new npc(this, bool1, paramStoryVideoItem, paramView, localVideoListFeedItem));
+          break label325;
           i1 = 2;
-          break label329;
+          break label333;
         }
       }
-      if (paramString.equals(paramView.getString(2131435116)))
+      if (paramString.equals(paramView.getString(2131435132)))
       {
         if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver == null)
         {
           this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver = new FeedsPlayModeBase.ReportVideoReceiver(this);
           a("", this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase$ReportVideoReceiver);
         }
-        PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_AndroidAppActivity, paramStoryVideoItem, new nku(this));
+        PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_AndroidAppActivity, paramStoryVideoItem, new npe(this));
         if (bool1)
         {
           i1 = 1;
           if (localQQUserUIItem != null) {
-            break label644;
+            break label648;
           }
           paramView = "4";
           StoryReportor.a("play_video", "more_report", i1, 0, new String[] { "", paramView });
           i1 = a();
           paramString = PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.jdField_b_of_type_Int);
           if (localVideoListFeedItem != null) {
-            break label656;
+            break label660;
           }
         }
         for (paramView = "";; paramView = localVideoListFeedItem.feedId)
@@ -652,35 +652,35 @@ public class NewFriendsPlayMode
           i1 = 2;
           break;
           paramView = String.valueOf(StoryReportor.a(localQQUserUIItem));
-          break label547;
+          break label551;
         }
       }
-    } while (!paramView.getString(2131434739).equals(paramString));
-    label419:
-    label425:
-    label452:
+    } while (!paramView.getString(2131434755).equals(paramString));
+    label423:
+    label429:
+    label456:
     StoryReportor.a("play_video", "clk_delete", 0, 0, new String[] { "", "", "", paramStoryVideoItem.mVid });
-    label547:
+    label551:
     if ((paramStoryVideoItem.isUploadFail()) || (paramStoryVideoItem.isUploading()))
     {
       StoryVideoUploadManager.a(paramStoryVideoItem.mVid);
       g();
-      label744:
+      label748:
       i1 = a();
       paramString = PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter, this.jdField_b_of_type_Int);
       if (localVideoListFeedItem != null) {
-        break label818;
+        break label822;
       }
     }
-    label644:
-    label656:
-    label818:
+    label648:
+    label660:
+    label822:
     for (paramView = "";; paramView = localVideoListFeedItem.feedId)
     {
       StoryReportor.a("story_grp", "clk_one", i1, 0, new String[] { "8", paramString, "", paramView });
       break;
       c(paramStoryVideoItem);
-      break label744;
+      break label748;
     }
   }
   
@@ -707,7 +707,7 @@ public class NewFriendsPlayMode
       }
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_Int = 2;
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setTipsText(StoryApi.a(2131432097));
+      this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setTipsText(StoryApi.a(2131432108));
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
       this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
       return;
@@ -724,8 +724,8 @@ public class NewFriendsPlayMode
   void c(StoryVideoItem paramStoryVideoItem)
   {
     c(1);
-    paramStoryVideoItem = new nkv(this, paramStoryVideoItem);
-    paramStoryVideoItem = DialogUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.getContext(), 230, 2130968851, "确认删除该视频？", null, "取消", "删除", paramStoryVideoItem, paramStoryVideoItem);
+    paramStoryVideoItem = new npf(this, paramStoryVideoItem);
+    paramStoryVideoItem = DialogUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.getContext(), 230, 2130968855, "确认删除该视频？", null, "取消", "删除", paramStoryVideoItem, paramStoryVideoItem);
     paramStoryVideoItem.setCancelable(false);
     paramStoryVideoItem.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     paramStoryVideoItem.show();

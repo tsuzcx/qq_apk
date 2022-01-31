@@ -1,24 +1,38 @@
-import android.os.Handler;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anke
-  implements Runnable
+  implements MediaPlayer.OnCompletionListener
 {
-  private anke(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anke(QzoneAudioRecordPlugin paramQzoneAudioRecordPlugin) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    QIMEffectCameraCaptureUnit.b(this.a);
-    if (QIMEffectCameraCaptureUnit.a(this.a) >= 3) {
-      QIMEffectCameraCaptureUnit.a(this.a, 0);
+    QzoneAudioRecordPlugin.a(this.a, null);
+    paramMediaPlayer = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("stopped", 1);
+      localJSONObject.put("errorcode", 0);
+      localJSONObject.put("audioClientKey", QzoneAudioRecordPlugin.a(this.a));
+      this.a.a.dispatchJsEvent("QzoneJSBridgeQzoneAudioPlugin_PlayState", localJSONObject, paramMediaPlayer);
+      return;
     }
-    QIMEffectCameraCaptureUnit.a(this.a, QIMEffectCameraCaptureUnit.a(this.a));
-    this.a.a.postDelayed(QIMEffectCameraCaptureUnit.a(this.a), 500L);
+    catch (JSONException paramMediaPlayer)
+    {
+      QLog.w("QzoneVoiceRecordPlugin", 1, "args is null or empty");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anke
  * JD-Core Version:    0.7.0.1
  */

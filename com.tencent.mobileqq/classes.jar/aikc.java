@@ -1,24 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
 
 public class aikc
-  extends Handler
 {
-  private WeakReference a;
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public aikc(StructMsgItemVideo paramStructMsgItemVideo)
-  {
-    this.a = new WeakReference(paramStructMsgItemVideo);
-  }
+  private aikc(MigrateSubscribeDB paramMigrateSubscribeDB) {}
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    if ((StructMsgItemVideo)this.a.get() != null) {
-      ((AnyScaleTypeImageView)paramMessage.obj).setImageResource(2130842744);
-    }
+    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
   }
 }
 

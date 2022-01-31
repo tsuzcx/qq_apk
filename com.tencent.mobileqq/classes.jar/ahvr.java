@@ -1,34 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mobileqq.search.HotWordSearchEntryModel;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.util.UiThreadUtil;
 
-public final class ahvr
-  extends ThreadPoolExecutor
+public class ahvr
+  implements Runnable
 {
-  public ahvr(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
-  {
-    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
-  }
+  public ahvr(HotWordSearchEntryModel paramHotWordSearchEntryModel, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  public void run()
   {
-    if ((paramRunnable instanceof FutureTask)) {}
-    try
-    {
-      ((FutureTask)paramRunnable).get();
-      return;
-    }
-    catch (ExecutionException paramRunnable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
-      return;
-    }
-    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
+    UiThreadUtil.a(new ahvs(this));
   }
 }
 

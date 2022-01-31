@@ -31,7 +31,7 @@ public class QIMShortVideoEntryDialog
   public QIMShortVideoEntryDialog(@NonNull Context paramContext)
   {
     super(paramContext, 2131624514);
-    paramContext = getLayoutInflater().inflate(2130971575, null);
+    paramContext = getLayoutInflater().inflate(2130971601, null);
     paramContext.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     super.setContentView(paramContext);
   }
@@ -41,19 +41,19 @@ public class QIMShortVideoEntryDialog
     if (!StringUtil.a(this.jdField_a_of_type_JavaLangString))
     {
       localObject = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString);
-      CornerImageView localCornerImageView = (CornerImageView)findViewById(2131375091);
+      CornerImageView localCornerImageView = (CornerImageView)findViewById(2131375143);
       float f = (int)getContext().getResources().getDimension(2131559448);
       localCornerImageView.setRadius(new float[] { f, f, f, f, 0.0F, 0.0F, 0.0F, 0.0F });
       localCornerImageView.setImageDrawable((Drawable)localObject);
     }
     if (!StringUtil.a(this.b)) {
-      ((TextView)findViewById(2131375092)).setText(this.b);
+      ((TextView)findViewById(2131375144)).setText(this.b);
     }
     int i;
     if (!StringUtil.a(this.c))
     {
-      ((TextView)findViewById(2131375094)).setText(this.c);
-      localObject = (RelativeLayout)findViewById(2131375093);
+      ((TextView)findViewById(2131375146)).setText(this.c);
+      localObject = (RelativeLayout)findViewById(2131375145);
       ((RelativeLayout)localObject).setOnClickListener(this);
       if (!StringUtil.a(this.d)) {
         i = Color.parseColor("#57d4d9");
@@ -70,7 +70,7 @@ public class QIMShortVideoEntryDialog
       break label190;
     }
     ((GradientDrawable)((RelativeLayout)localObject).getBackground()).setColor(i);
-    Object localObject = (ImageView)findViewById(2131363978);
+    Object localObject = (ImageView)findViewById(2131364003);
     if (localObject != null) {
       ((ImageView)localObject).setOnClickListener(this);
     }
@@ -95,12 +95,12 @@ public class QIMShortVideoEntryDialog
     do
     {
       return;
-      if (paramView.getId() == 2131375093)
+      if (paramView.getId() == 2131375145)
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQIMShortVideoEntryDialog$IAdvertiseJumpDialogCallBack.a();
         return;
       }
-    } while (paramView.getId() != 2131363978);
+    } while (paramView.getId() != 2131364003);
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaQIMShortVideoEntryDialog$IAdvertiseJumpDialogCallBack.b();
   }
 }

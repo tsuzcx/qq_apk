@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acgt;
+import acow;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -12,9 +12,8 @@ import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
-import com.tencent.mobileqq.earlydownload.handler.ApngHandler;
 import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.mobileqq.vas.VasReportUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -46,8 +45,8 @@ public class SmallEmoticonInfo
     try
     {
       paramString = BaseApplication.getContext().getResources();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130837572);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130841350);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130837571);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130841377);
       return;
     }
     catch (Exception paramString)
@@ -105,7 +104,7 @@ public class SmallEmoticonInfo
     {
       int i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
       int j = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
-      ((EmoticonManager)paramQQAppInterface.getManager(13)).a(String.valueOf(j), new acgt(this, j, i, paramEditText, paramQQAppInterface));
+      ((EmoticonManager)paramQQAppInterface.getManager(13)).a(String.valueOf(j), new acow(this, j, i, paramEditText, paramQQAppInterface));
       return;
     }
     catch (NumberFormatException paramQQAppInterface)
@@ -129,7 +128,7 @@ public class SmallEmoticonInfo
         paramContext = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         paramContext = BaseApplicationImpl.getApplication().waitAppRuntime(null);
         if (!(paramContext instanceof QQAppInterface)) {
-          break label359;
+          break label337;
         }
         paramContext = (QQAppInterface)paramContext;
         Drawable localDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
@@ -139,7 +138,7 @@ public class SmallEmoticonInfo
         localURLDrawableOptions.mPlayGifImage = true;
         if (this.jdField_a_of_type_Boolean)
         {
-          if (!ApngHandler.b.get()) {
+          if (!VasApngUtil.b.get()) {
             break label294;
           }
           if (QLog.isColorLevel()) {
@@ -173,24 +172,21 @@ public class SmallEmoticonInfo
       QLog.d(this.c, 2, "getDrawable ,", localMalformedURLException);
       return null;
       label294:
-      if (!ApngHandler.c())
+      if (!VasApngUtil.b())
       {
         if (paramContext != null)
         {
           if (QLog.isColorLevel()) {
             QLog.d(this.c, 2, "getBigDrawable: restartDownload so");
           }
-          paramContext = (ApngHandler)((EarlyDownloadManager)paramContext.getManager(76)).a("qq.android.native.apng_v700");
-          if (paramContext != null) {
-            paramContext.a(true);
-          }
+          VasApngUtil.a(paramContext, "SmallEmoticonInfo");
         }
       }
       else
       {
-        ApngHandler.d_();
+        VasApngUtil.a();
         continue;
-        label359:
+        label337:
         paramContext = null;
       }
     }

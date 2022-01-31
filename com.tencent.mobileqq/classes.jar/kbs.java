@@ -1,43 +1,98 @@
-import android.content.Intent;
-import com.tencent.av.ui.QavPanel.SlideAcceptListener;
-import com.tencent.av.ui.VideoInviteLock;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavPanelSoundWaveView;
+import com.tencent.av.ui.QavPanelWave;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.BaseActivity;
 
 public class kbs
-  implements QavPanel.SlideAcceptListener
+  implements Runnable
 {
-  public kbs(VideoInviteLock paramVideoInviteLock) {}
+  public kbs(QavPanelSoundWaveView paramQavPanelSoundWaveView) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
+    if (this.a.getVisibility() != 0)
     {
-      if (this.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
-        ReportController.b(null, "CliOper", "", "", "0X80051FE", "0X80051FE", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
+      return;
+    }
+    Object localObject;
+    float f;
+    int j;
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      localObject = this.a;
+      ((QavPanelSoundWaveView)localObject).c += -this.a.jdField_a_of_type_Float * 0.00048F;
+      localObject = this.a.getContext();
+      if (!(localObject instanceof BaseActivity)) {
+        break label330;
+      }
+      localObject = ((BaseActivity)localObject).getAppRuntime();
+      if (!(localObject instanceof VideoAppInterface)) {
+        break label330;
+      }
+      localObject = ((VideoAppInterface)localObject).a();
+      f = ((VideoController)localObject).i() * 0.05F;
+      if ((((VideoController)localObject).a().d != 3) && (!((VideoController)localObject).a().f())) {
+        break label325;
+      }
+      j = 1;
+    }
+    for (;;)
+    {
+      if ((j != 0) && (!this.a.jdField_a_of_type_Boolean))
+      {
+        this.a.c = 0.0F;
+        f = 0.0F;
       }
       for (;;)
       {
-        this.a.d = true;
-        VideoInviteLock.a(this.a);
-        return;
-        if (this.a.b) {
-          ReportController.b(null, "CliOper", "", "", "0X8004201", "0X8004201", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
-        } else {
-          ReportController.b(null, "CliOper", "", "", "0X8004205", "0X8004205", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
+        localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+        int i = 1;
+        label190:
+        if (((Iterator)localObject).hasNext())
+        {
+          QavPanelWave localQavPanelWave = (QavPanelWave)((Iterator)localObject).next();
+          localQavPanelWave.a(this.a.c, f);
+          if (i == 0) {
+            break label319;
+          }
+          if (Float.compare(localQavPanelWave.d, 0.0F) == 0) {
+            i = 1;
+          }
+        }
+        label319:
+        for (;;)
+        {
+          break label190;
+          localObject = this.a;
+          ((QavPanelSoundWaveView)localObject).c += -this.a.jdField_a_of_type_Float * 0.00067F;
+          break;
+          i = 0;
+          continue;
+          if ((j == 0) || (i == 0)) {
+            this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 66L);
+          }
+          this.a.invalidate();
+          return;
         }
       }
+      label325:
+      j = 0;
+      continue;
+      label330:
+      j = 0;
+      f = 1.0F;
     }
-    if (this.a.b)
-    {
-      ReportController.b(null, "CliOper", "", "", "0X800439E", "0X800439E", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
-      return;
-    }
-    ReportController.b(null, "CliOper", "", "", "0X80043FD", "0X80043FD", 0, 0, Integer.toString(this.a.c), Integer.toString(this.a.h), Integer.toString(this.a.i), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kbs
  * JD-Core Version:    0.7.0.1
  */

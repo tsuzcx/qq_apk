@@ -1,23 +1,13 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class oka
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public oka(DoodleTextureView paramDoodleTextureView) {}
+  public oka(EditVideoPartManager paramEditVideoPartManager) {}
   
-  public void run()
-  {
-    PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
-    if (localPersonalityOperator != null)
-    {
-      localPersonalityOperator.a();
-      localPersonalityOperator.a(this.a.jdField_a_of_type_Int, this.a.b);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.h();
-      this.a.a();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

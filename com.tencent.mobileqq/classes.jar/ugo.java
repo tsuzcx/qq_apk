@@ -1,48 +1,73 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.observer.ServerNotifyObserver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-public class ugo
-  extends ServerNotifyObserver
+class ugo
+  implements Runnable
 {
-  public ugo(VerifyCodeActivity paramVerifyCodeActivity) {}
+  ugo(ugj paramugj, List paramList) {}
   
-  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
+  public void run()
   {
-    this.a.b = false;
-    if (this.a.jdField_a_of_type_Boolean)
+    Object localObject1 = (TroopManager)this.jdField_a_of_type_Ugj.a.app.getManager(51);
+    TroopInfo localTroopInfo = ((TroopManager)localObject1).a(this.jdField_a_of_type_Ugj.a.b);
+    if (localTroopInfo == null) {}
+    label68:
+    label124:
+    do
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131433065), 0).a();
-    }
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
-      VerifyCodeActivity.a(this.a, true);
-    }
-    if (paramArrayOfByte != null)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(BitmapManager.a(paramArrayOfByte, 0, paramArrayOfByte.length));
-      this.a.a(false);
-      return;
-    }
-    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131433066), 1).show();
-  }
-  
-  public void onVerifyClose()
-  {
-    this.a.finish();
+      do
+      {
+        return;
+      } while (StringUtil.a(localTroopInfo.troopowneruin));
+      localTroopInfo.Administrator = "";
+      int i;
+      int j;
+      Object localObject2;
+      if (this.jdField_a_of_type_JavaUtilList == null)
+      {
+        i = 0;
+        j = 0;
+        if (j >= i) {
+          break label204;
+        }
+        localObject2 = (oidb_0x899.memberlist)this.jdField_a_of_type_JavaUtilList.get(j);
+        if ((localObject2 != null) && (((oidb_0x899.memberlist)localObject2).uint64_member_uin.has())) {
+          break label124;
+        }
+      }
+      for (;;)
+      {
+        j += 1;
+        break label68;
+        i = this.jdField_a_of_type_JavaUtilList.size();
+        break;
+        localObject2 = String.valueOf(((oidb_0x899.memberlist)localObject2).uint64_member_uin.get());
+        if ((localObject2 != null) && (!"".equals(((String)localObject2).trim())) && (!localTroopInfo.troopowneruin.equals(((String)localObject2).trim()))) {
+          localTroopInfo.Administrator = (localTroopInfo.Administrator + (String)localObject2 + "|");
+        }
+      }
+      ((TroopManager)localObject1).b(localTroopInfo);
+      localObject1 = this.jdField_a_of_type_Ugj.a.a.obtainMessage();
+      ((Message)localObject1).what = 11;
+      ((Message)localObject1).obj = localTroopInfo;
+      this.jdField_a_of_type_Ugj.a.a.sendMessage((Message)localObject1);
+    } while (!QLog.isColorLevel());
+    label204:
+    QLog.i("TroopMemberListActivityget_troop_member", 2, localTroopInfo.Administrator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ugo
  * JD-Core Version:    0.7.0.1
  */

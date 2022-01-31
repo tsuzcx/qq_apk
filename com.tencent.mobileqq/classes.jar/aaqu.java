@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppInfo.Context;
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public class aaqu
-  implements Comparator
+public final class aaqu
+  implements View.OnTouchListener
 {
-  public aaqu(ArkActionAppMgr paramArkActionAppMgr) {}
+  public aaqu(ImageView paramImageView) {}
   
-  public int a(ArkAppInfo.Context paramContext1, ArkAppInfo.Context paramContext2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramContext1.a.compareTo(paramContext2.a);
-    if (i != 0) {
-      return i;
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.setAlpha(1.0F);
     }
-    return paramContext1.b.compareTo(paramContext2.b);
+    for (;;)
+    {
+      return false;
+      if (paramMotionEvent.getAction() == 0) {
+        this.a.setAlpha(0.5F);
+      }
+    }
   }
 }
 

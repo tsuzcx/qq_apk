@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import mnl;
+import mrd;
 
 public class WebFastTextViewCreator
   implements ItemCreator
@@ -16,7 +16,7 @@ public class WebFastTextViewCreator
   
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new mnl(LayoutInflater.from(paramContext).inflate(2130969617, null), paramBaseData);
+    return new mrd(LayoutInflater.from(paramContext).inflate(2130969613, null), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

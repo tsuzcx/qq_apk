@@ -32,11 +32,6 @@ public class ApngHandler
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public ApngHandler(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.native.apng_v700", paramQQAppInterface);
-  }
-  
   private static boolean a(String paramString1, String paramString2)
   {
     boolean bool2 = false;
@@ -147,90 +142,90 @@ public class ApngHandler
     //   2: ldc 2
     //   4: monitorenter
     //   5: getstatic 22	com/tencent/mobileqq/earlydownload/handler/ApngHandler:b	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   8: invokevirtual 132	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   8: invokevirtual 126	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   11: ifeq +26 -> 37
     //   14: iload_1
     //   15: istore_0
-    //   16: invokestatic 74	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   16: invokestatic 68	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   19: ifeq +13 -> 32
-    //   22: ldc 76
+    //   22: ldc 70
     //   24: iconst_2
-    //   25: ldc 147
-    //   27: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   25: ldc 141
+    //   27: invokestatic 77	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   30: iload_1
     //   31: istore_0
     //   32: ldc 2
     //   34: monitorexit
     //   35: iload_0
     //   36: ireturn
-    //   37: invokestatic 41	com/etrump/mixlayout/FontSoLoader:a	()Ljava/lang/String;
+    //   37: invokestatic 35	com/etrump/mixlayout/FontSoLoader:a	()Ljava/lang/String;
     //   40: astore_2
     //   41: aload_2
-    //   42: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   42: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   45: ifne +136 -> 181
-    //   48: new 54	java/lang/StringBuilder
+    //   48: new 48	java/lang/StringBuilder
     //   51: dup
-    //   52: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   52: invokespecial 50	java/lang/StringBuilder:<init>	()V
     //   55: aload_2
-    //   56: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: ldc 62
-    //   61: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   59: ldc 56
+    //   61: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   67: astore_2
-    //   68: invokestatic 149	com/tencent/mobileqq/earlydownload/handler/ApngHandler:c	()Z
+    //   68: invokestatic 143	com/tencent/mobileqq/earlydownload/handler/ApngHandler:c	()Z
     //   71: istore_0
     //   72: iload_0
     //   73: ifeq +108 -> 181
     //   76: aload_2
-    //   77: invokestatic 154	java/lang/System:load	(Ljava/lang/String;)V
+    //   77: invokestatic 148	java/lang/System:load	(Ljava/lang/String;)V
     //   80: getstatic 22	com/tencent/mobileqq/earlydownload/handler/ApngHandler:b	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   83: iconst_1
-    //   84: invokevirtual 157	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   87: ldc 76
+    //   84: invokevirtual 151	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   87: ldc 70
     //   89: iconst_1
-    //   90: ldc 159
-    //   92: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   90: ldc 153
+    //   92: invokestatic 77	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   95: iload_1
     //   96: istore_0
     //   97: goto -65 -> 32
     //   100: astore_3
-    //   101: ldc 76
+    //   101: ldc 70
     //   103: iconst_1
-    //   104: ldc 161
+    //   104: ldc 155
     //   106: aload_3
-    //   107: invokestatic 96	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   110: new 98	java/io/File
+    //   107: invokestatic 90	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   110: new 92	java/io/File
     //   113: dup
     //   114: aload_2
-    //   115: invokespecial 137	java/io/File:<init>	(Ljava/lang/String;)V
-    //   118: invokevirtual 107	java/io/File:delete	()Z
+    //   115: invokespecial 131	java/io/File:<init>	(Ljava/lang/String;)V
+    //   118: invokevirtual 101	java/io/File:delete	()Z
     //   121: pop
     //   122: getstatic 24	com/tencent/mobileqq/earlydownload/handler/ApngHandler:c	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   125: iconst_0
-    //   126: invokevirtual 157	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   129: invokestatic 113	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   132: ldc 115
+    //   126: invokevirtual 151	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   129: invokestatic 107	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   132: ldc 109
     //   134: iconst_0
-    //   135: invokevirtual 119	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   138: invokeinterface 165 1 0
-    //   143: ldc 121
+    //   135: invokevirtual 113	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   138: invokeinterface 159 1 0
+    //   143: ldc 115
     //   145: iconst_0
-    //   146: invokeinterface 171 3 0
-    //   151: invokeinterface 174 1 0
+    //   146: invokeinterface 165 3 0
+    //   151: invokeinterface 168 1 0
     //   156: pop
     //   157: aconst_null
-    //   158: ldc 176
-    //   160: ldc 178
-    //   162: ldc 178
-    //   164: ldc 180
-    //   166: ldc 182
+    //   158: ldc 170
+    //   160: ldc 172
+    //   162: ldc 172
+    //   164: ldc 174
+    //   166: ldc 176
     //   168: iconst_0
     //   169: iconst_0
-    //   170: ldc 184
-    //   172: ldc 178
-    //   174: ldc 178
-    //   176: ldc 178
-    //   178: invokestatic 189	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   170: ldc 178
+    //   172: ldc 172
+    //   174: ldc 172
+    //   176: ldc 172
+    //   178: invokestatic 183	com/tencent/mobileqq/statistics/ReportController:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   181: iconst_0
     //   182: istore_0
     //   183: goto -151 -> 32

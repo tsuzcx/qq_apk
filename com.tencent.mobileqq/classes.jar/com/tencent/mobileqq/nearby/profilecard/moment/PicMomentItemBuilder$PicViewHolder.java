@@ -7,7 +7,7 @@ public class PicMomentItemBuilder$PicViewHolder
   extends BaseMomentItemBuilder.MomentViewHolder
 {
   public ImageView f;
-  public TextView j;
+  public TextView i;
   
   public PicMomentItemBuilder$PicViewHolder(PicMomentItemBuilder paramPicMomentItemBuilder)
   {

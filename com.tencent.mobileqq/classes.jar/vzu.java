@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
+import com.tencent.qphone.base.util.QLog;
 
-class vzu
-  implements HWTroopUtils.OnHomeworkTroopIdentityCheckListener
+public class vzu
+  extends TroopObserver
 {
-  vzu(vzs paramvzs) {}
+  public vzu(HotChatPie paramHotChatPie) {}
   
-  public void a(int paramInt)
+  protected void c(boolean paramBoolean, String paramString)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.c(HWTroopUtils.b(paramInt));
+    if ((this.a.s != 2) && (paramBoolean) && (this.a.b != null) && (this.a.a != null) && (this.a.a.troopUin.equals(paramString)) && (this.a.a.hasPostRedPoint())) {
+      this.a.b.a(true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
     }
   }
 }

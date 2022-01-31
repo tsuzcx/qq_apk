@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.OnCleanAnimationListener;
 
-class ajug
-  implements View.OnClickListener
+public class ajug
+  implements TroopGiftAnimationController.OnCleanAnimationListener
 {
-  ajug(ajuf paramajuf, TroopMoreDetailView paramTroopMoreDetailView) {}
+  public ajug(AIOAnimationControlManager paramAIOAnimationControlManager) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.c();
+    this.a.e();
   }
 }
 

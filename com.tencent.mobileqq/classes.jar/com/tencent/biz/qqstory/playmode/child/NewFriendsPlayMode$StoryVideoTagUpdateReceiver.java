@@ -27,9 +27,9 @@ public class NewFriendsPlayMode$StoryVideoTagUpdateReceiver
   public void a(@NonNull NewFriendsPlayMode paramNewFriendsPlayMode, @NonNull GetStoryPlayerTagInfoHandler.GetStoryPlayerTagInfoEvent paramGetStoryPlayerTagInfoEvent)
   {
     SLog.b(this.TAG, "StoryVideoTagUpdateReceiver onEvent.");
-    List localList1 = paramGetStoryPlayerTagInfoEvent.jdField_a_of_type_JavaUtilList;
+    List localList1 = paramGetStoryPlayerTagInfoEvent.a;
     List localList2 = paramGetStoryPlayerTagInfoEvent.b;
-    if ((paramGetStoryPlayerTagInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (localList2 == null)) {
+    if ((paramGetStoryPlayerTagInfoEvent.errorInfo.isFail()) || (localList2 == null)) {
       SLog.e(this.TAG, "StoryVideoTagUpdateReceiver onEvent: failed.");
     }
     int i;

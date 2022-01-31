@@ -1,30 +1,78 @@
-import com.tencent.mobileqq.nearby.now.model.LocalMediaInfo;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
-import com.tencent.mobileqq.nearby.now.send.uploader.ImageUploader.OnResultListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class aevo
-  implements ImageUploader.OnResultListener
+class aevo
+  implements BusinessObserver
 {
-  public aevo(ImageFeedsUploader paramImageFeedsUploader) {}
+  aevo(aevn paramaevn) {}
   
-  public void a(int paramInt, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.i("ImageFeedsUploader", 1, String.format("upload pic image: result=%d, url=%s", new Object[] { Integer.valueOf(paramInt), paramString }));
-    ImageFeedsUploader.a(this.a).a = paramInt;
-    ImageFeedsUploader.a(this.a).d = paramInt;
-    ImageFeedsUploader.a(this.a).e = paramString;
-    if (paramInt == 0)
-    {
-      ((LocalMediaInfo)ImageFeedsUploader.a(this.a).photoInfo.get(0)).d = paramString;
-      ((LocalMediaInfo)ImageFeedsUploader.a(this.a).photoInfo.get(0)).a = true;
-      ImageFeedsUploader.a(this.a).b = 2;
-      this.a.a(ImageFeedsUploader.a(this.a), 3, null);
-      return;
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+          localWebSsoResponseBody.mergeFrom(paramBundle);
+          paramInt = localWebSsoResponseBody.ret.get();
+          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
+          if (paramInt != 0)
+          {
+            paramBundle = paramBundle.optString("msg");
+            if (!TextUtils.isEmpty(paramBundle)) {
+              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + ", errMsg:" + paramBundle);
+            }
+          }
+          else
+          {
+            paramBundle = paramBundle.optString("signature");
+            if (QLog.isColorLevel()) {
+              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + "signature:" + paramBundle);
+            }
+            try
+            {
+              if (TextUtils.isEmpty(paramBundle)) {
+                return;
+              }
+              if (this.a.jdField_a_of_type_Int != 0) {
+                break label283;
+              }
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().h(this.a.jdField_a_of_type_JavaLangString, Base64Util.decode(paramBundle, 0));
+              return;
+            }
+            catch (Exception paramBundle)
+            {
+              if (!QLog.isColorLevel()) {
+                return;
+              }
+            }
+            QLog.e("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception:" + paramBundle.toString());
+            return;
+          }
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception" + paramBundle.toString());
+          return;
+          label283:
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().i(this.a.jdField_a_of_type_JavaLangString, Base64Util.decode(paramBundle, 0));
+        }
+      }
     }
-    ImageFeedsUploader.a(this.a, ImageFeedsUploader.a(this.a));
   }
 }
 

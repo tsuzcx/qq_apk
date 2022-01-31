@@ -18,7 +18,7 @@ import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.FixSizeImageView;
-import lvw;
+import lzj;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.SubscribeInfo;
@@ -133,14 +133,14 @@ public class ComponentHeaderSubscribe
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969595, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969591, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131366860));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366865));
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131366859));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366864));
     this.jdField_a_of_type_AndroidViewView = findViewById(2131367056);
   }
   
@@ -186,7 +186,7 @@ public class ComponentHeaderSubscribe
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setOnClickListener(new lvw(this));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setOnClickListener(new lzj(this));
       return;
       label52:
       this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageBitmap(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a(l));

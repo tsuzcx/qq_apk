@@ -1,14 +1,20 @@
-import android.widget.ImageView;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.JourneyTextItem;
 
-class anwq
-  implements Runnable
+public class anwq
+  implements anwk
 {
-  anwq(anwp paramanwp) {}
+  public anwq(JourneyTextItem paramJourneyTextItem) {}
   
-  public void run()
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    LocalVideoSelectActivity.a(this.a.a).setVisibility(8);
+    String str = paramString;
+    if (paramInt == 0) {
+      str = TroopFileUtils.b(paramString);
+    }
+    return str;
   }
 }
 

@@ -1,46 +1,49 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.AboutConfig;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.os.Bundle;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class absl
-  implements Runnable
+  extends DownloadListener
 {
-  public absl(AboutConfig paramAboutConfig, boolean paramBoolean) {}
-  
-  public void run()
+  public absl(BubbleManager paramBubbleManager, String paramString1, String paramString2)
   {
-    int i = 0;
-    ??? = AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig).getEntityManagerFactory().createEntityManager();
-    List localList = ResourcePluginInfo.getAll((EntityManager)???, 32, false);
-    ((EntityManager)???).a();
-    int j;
-    if (localList != null)
-    {
-      j = localList.size();
-      i = j;
-      if (j <= 0) {}
+    super(paramString1, paramString2);
+  }
+  
+  public void onCancel(DownloadTask paramDownloadTask)
+  {
+    String str = paramDownloadTask.a().getString("name");
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onCancel pkgName = " + str);
     }
-    synchronized (AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig))
-    {
-      AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig);
-      AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig, localList);
-      this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig.b();
-      i = j;
-      if (QLog.isColorLevel()) {
-        QLog.d("AboutConfig", 2, "Load about config from DB = " + AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig) + ",asynchronous=" + this.jdField_a_of_type_Boolean + ",size=" + i);
-      }
-      AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig, true);
-      return;
+    this.a.a("Bubble_download_cancel", paramDownloadTask.b(), str, 0L);
+  }
+  
+  public void onDone(DownloadTask paramDownloadTask)
+  {
+    long l = paramDownloadTask.h - paramDownloadTask.g;
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onDone downloadTime = " + l);
     }
+    this.a.a("Bubble_download_succ", paramDownloadTask.b(), "pkgName", l);
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    String str = paramDownloadTask.a().getString("name");
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onStart pkgName = " + str);
+    }
+    this.a.a("Bubble_download", paramDownloadTask.b(), str, 0L);
+    super.onStart(paramDownloadTask);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     absl
  * JD-Core Version:    0.7.0.1
  */

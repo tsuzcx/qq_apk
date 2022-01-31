@@ -1,27 +1,12 @@
-import com.tencent.open.business.base.OpenConfig;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
 public class alfp
-  implements Runnable
 {
-  public alfp(OpenConfig paramOpenConfig) {}
-  
-  public void run()
-  {
-    String str = this.a.a("com.tencent.open.config.json");
-    try
-    {
-      this.a.a = new JSONObject(str);
-      OpenConfig.a(this.a, true);
-      return;
-    }
-    catch (JSONException localJSONException) {}
-  }
+  private static final ARWorldCupGameLogicManager a = new ARWorldCupGameLogicManager(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alfp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,12 @@
-import com.tencent.mobileqq.ar.FaceUIController;
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-
-class aaei
-  implements ARTipsManager.BaikeClickListener
+public class aaei
 {
-  aaei(aaeh paramaaeh) {}
+  public int a;
+  public long a;
   
-  public void a()
+  public aaei(long paramLong, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onContentClick subFaceData.wikiurl = " + this.a.b.c);
-    }
-    ScanningSurfaceView.b(this.a.a, this.a.b.c);
-    ReportController.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onFeedbackClick subFaceData.wikiurl = " + this.a.b.c);
-    }
-    this.a.a.a.a();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

@@ -1,61 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.PublishManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentUtils;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.PicMomentFeedInfo;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.PublishableMomentInfo;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.ShortVideoMomentFeedInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
 
 public class aflm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aflm(NearbyMomentManager paramNearbyMomentManager, NearbyMomentManager.GetLocalUnPiblishListCallback paramGetLocalUnPiblishListCallback) {}
+  public aflm(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = PublishManager.a();
-    ArrayList localArrayList = new ArrayList();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1)
     {
-      Iterator localIterator = ((List)localObject).iterator();
-      if (localIterator.hasNext())
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null)
       {
-        PublishVideoEntry localPublishVideoEntry = (PublishVideoEntry)localIterator.next();
-        if (localPublishVideoEntry.isPicture) {}
-        for (localObject = new PicMomentFeedInfo();; localObject = new ShortVideoMomentFeedInfo())
-        {
-          ((PublishableMomentInfo)localObject).c = localPublishVideoEntry.fakeVid;
-          ((PublishableMomentInfo)localObject).d = NearbyMomentManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager).getCurrentAccountUin();
-          ((PublishableMomentInfo)localObject).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = localPublishVideoEntry;
-          ((PublishableMomentInfo)localObject).jdField_a_of_type_Long = (localPublishVideoEntry.createTime / 1000L);
-          ((PublishableMomentInfo)localObject).e = NearbyMomentUtils.a(localPublishVideoEntry.createTime);
-          ((PublishableMomentInfo)localObject).i = localPublishVideoEntry.getStringExtra("mask", "");
-          StringBuilder localStringBuilder = new StringBuilder();
-          if (!TextUtils.isEmpty(localPublishVideoEntry.getStringExtra("select_city", ""))) {
-            localStringBuilder.append(localPublishVideoEntry.getStringExtra("select_city", ""));
-          }
-          if (!TextUtils.isEmpty(localPublishVideoEntry.getStringExtra("select_name", "")))
-          {
-            if (localStringBuilder.length() > 0) {
-              localStringBuilder.append(" · ");
-            }
-            localStringBuilder.append(localPublishVideoEntry.getStringExtra("select_name", ""));
-          }
-          ((PublishableMomentInfo)localObject).f = localStringBuilder.toString();
-          localArrayList.add(0, localObject);
-          break;
-        }
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131437744);
+        return;
       }
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
+      return;
     }
-    ThreadManager.getUIHandler().post(new afln(this, localArrayList));
+    this.a.b();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131437744);
+      return;
+    }
+    if (this.a.a())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131437745);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
   }
 }
 

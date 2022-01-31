@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import angi;
+import anol;
 
 public abstract class IWadlServiceCallBack$Stub
   extends Binder
@@ -26,7 +26,7 @@ public abstract class IWadlServiceCallBack$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IWadlServiceCallBack))) {
       return (IWadlServiceCallBack)localIInterface;
     }
-    return new angi(paramIBinder);
+    return new anol(paramIBinder);
   }
   
   public IBinder asBinder()

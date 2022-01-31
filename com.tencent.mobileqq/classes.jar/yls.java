@@ -1,31 +1,57 @@
-import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
-import com.tencent.mobileqq.apollo.utils.ApolloHttpUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class yls
-  implements Runnable
+public class yls
 {
-  public yls(String paramString1, String paramString2, String[] paramArrayOfString, ApolloHttpCallBack paramApolloHttpCallBack, boolean paramBoolean, String paramString3, String paramString4, String paramString5) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public void run()
+  public static yls a(JSONObject paramJSONObject)
   {
-    String str = this.jdField_a_of_type_JavaLangString.toUpperCase();
-    if (str.equals("GET")) {
-      ApolloHttpUtil.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
+    if (paramJSONObject == null) {
+      return new yls();
     }
-    while (!str.equals("POST")) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
+    yls localyls = new yls();
+    try
     {
-      ApolloHttpUtil.a(this.b, this.c, this.d, this.e, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
-      return;
+      localyls.jdField_a_of_type_Int = paramJSONObject.getInt("id");
+      localyls.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
+      localyls.jdField_b_of_type_Int = paramJSONObject.getInt("type");
+      localyls.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
+      localyls.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
+      localyls.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
+      localyls.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
+      localyls.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
+      localyls.g = paramJSONObject.getString("classifyName");
+      localyls.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
+      localyls.f = String.valueOf(paramJSONObject.getInt("vip_type"));
+      localyls.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
+      localyls.h = paramJSONObject.getString("trialstartday");
+      localyls.i = paramJSONObject.getString("trialendday");
+      return localyls;
     }
-    ApolloHttpUtil.a(this.b, this.c, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return localyls;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yls
  * JD-Core Version:    0.7.0.1
  */

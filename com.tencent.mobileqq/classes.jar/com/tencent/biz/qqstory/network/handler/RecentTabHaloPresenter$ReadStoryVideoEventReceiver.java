@@ -13,8 +13,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nfs;
-import nft;
+import nkc;
+import nkd;
 
 public final class RecentTabHaloPresenter$ReadStoryVideoEventReceiver
   extends QQUIEventReceiver
@@ -58,7 +58,7 @@ public final class RecentTabHaloPresenter$ReadStoryVideoEventReceiver
       {
         ((StoryHaloManager)localObject).c(localMsgTabNodeInfo);
         ((StoryHaloManager)localObject).b(localMsgTabNodeInfo);
-        paramRecentTabHaloPresenter = new nft(this, paramRecentTabHaloPresenter);
+        paramRecentTabHaloPresenter = new nkd(this, paramRecentTabHaloPresenter);
         ThreadManager.getUIHandler().post(paramRecentTabHaloPresenter);
         return;
       }
@@ -68,7 +68,7 @@ public final class RecentTabHaloPresenter$ReadStoryVideoEventReceiver
   
   public void a(@NonNull RecentTabHaloPresenter paramRecentTabHaloPresenter, @NonNull ReadStoryVideoEvent paramReadStoryVideoEvent)
   {
-    ThreadManager.post(new nfs(this, paramRecentTabHaloPresenter, paramReadStoryVideoEvent), 8, null, true);
+    ThreadManager.post(new nkc(this, paramRecentTabHaloPresenter, paramReadStoryVideoEvent), 8, null, true);
   }
   
   public Class acceptEventClass()

@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkHorizontalListView;
+import com.tencent.mobileqq.ark.ArkHorizontalListView.RefreshUiCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class abbc
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public abbc(ARMapActivity paramARMapActivity) {}
+  public abbc(ArkHorizontalListView paramArkHorizontalListView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (ARMapActivity.i(this.a)) {
-      this.a.finish();
+    if ((ArkHorizontalListView.a(this.a) != null) && (ArkHorizontalListView.a(this.a).get() != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkHorizontalListView", 2, "checkScrollToChild updateHeadBorder");
+      }
+      ((ArkHorizontalListView.RefreshUiCallback)ArkHorizontalListView.a(this.a).get()).a(this.a);
     }
-    ARMapActivity.a(this.a, null);
   }
 }
 

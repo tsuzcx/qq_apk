@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import addm;
-import addo;
-import addq;
-import addr;
-import adds;
-import addt;
-import addu;
-import addv;
-import addw;
-import addy;
+import adlt;
+import adlv;
+import adlx;
+import adly;
+import adlz;
+import adma;
+import admb;
+import admc;
+import admd;
+import admf;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import com.tencent.biz.troop.file.TroopFileProtocol;
@@ -71,7 +71,7 @@ public class TroopFileModel
   
   private void a(TroopFileStatusInfo paramTroopFileStatusInfo)
   {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new addv(this, paramTroopFileStatusInfo));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new admc(this, paramTroopFileStatusInfo));
   }
   
   public int a()
@@ -114,20 +114,20 @@ public class TroopFileModel
   public IDownloadController a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController = new addu(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController = new admb(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController;
   }
   
   public IThumbController a()
   {
-    return new addr(this);
+    return new adly(this);
   }
   
   public IUploadController a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController = new addt(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController = new adma(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIUploadController;
   }
@@ -143,16 +143,16 @@ public class TroopFileModel
         return null;
       }
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(HorizontalListViewAdapter.a(2130841599, "存到微云", FileOperaterUtils.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, localFileManagerEntity)));
-      localArrayList.add(HorizontalListViewAdapter.a(2130841595, "发给好友", FileOperaterUtils.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, localFileManagerEntity)));
+      localArrayList.add(HorizontalListViewAdapter.a(2130841626, "存到微云", FileOperaterUtils.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, localFileManagerEntity)));
+      localArrayList.add(HorizontalListViewAdapter.a(2130841622, "发给好友", FileOperaterUtils.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, localFileManagerEntity)));
       if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("tim_convert_teamwork_pre_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 4).getBoolean("tim_convert_teamwork_show_file_viewer_menu", false)) && (TeamWorkUtils.a(localFileManagerEntity.strFilePath, localFileManagerEntity.fileName)))
       {
-        HorizontalListViewAdapter.MenuData localMenuData = HorizontalListViewAdapter.a(2130837536, "在线编辑", FileOperaterUtils.a(localFileManagerEntity, this.jdField_a_of_type_AndroidAppActivity));
+        HorizontalListViewAdapter.MenuData localMenuData = HorizontalListViewAdapter.a(2130837535, "在线编辑", FileOperaterUtils.a(localFileManagerEntity, this.jdField_a_of_type_AndroidAppActivity));
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009062", "0X8009062", 0, 0, "", "", "", "");
         localArrayList.add(localMenuData);
       }
       if (FileManagerUtil.c(localFileManagerEntity)) {
-        localArrayList.add(HorizontalListViewAdapter.a(2130841573, "收藏", FileOperaterUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, localFileManagerEntity)));
+        localArrayList.add(HorizontalListViewAdapter.a(2130841600, "收藏", FileOperaterUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser, localFileManagerEntity)));
       }
       return localArrayList;
     }
@@ -215,9 +215,9 @@ public class TroopFileModel
   public void a(FileBrowserModelBase.OnPreviewVideoOnlineListener paramOnPreviewVideoOnlineListener)
   {
     if (this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqDownloadFileObserver == null) {
-      this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqDownloadFileObserver = new addy(this, paramOnPreviewVideoOnlineListener);
+      this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqDownloadFileObserver = new admf(this, paramOnPreviewVideoOnlineListener);
     }
-    ThreadManager.post(new addo(this, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a(), paramOnPreviewVideoOnlineListener), 8, null, true);
+    ThreadManager.post(new adlv(this, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a(), paramOnPreviewVideoOnlineListener), 8, null, true);
   }
   
   public boolean a(FileBrowserModelBase.OnPreviewVideoOnlineListener paramOnPreviewVideoOnlineListener)
@@ -236,13 +236,13 @@ public class TroopFileModel
       if (localTroopInfo.mTroopFileVideoIsWhite != 0)
       {
         if (paramOnPreviewVideoOnlineListener != null) {
-          paramOnPreviewVideoOnlineListener.ac_();
+          paramOnPreviewVideoOnlineListener.ae_();
         }
         ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_troopfile_video_cloudPlay", "online_play_show", 0, 0, "0", "", "", "");
         return true;
       }
       if (paramOnPreviewVideoOnlineListener != null) {
-        paramOnPreviewVideoOnlineListener.ad_();
+        paramOnPreviewVideoOnlineListener.af_();
       }
       if (TbsVideo.canUseYunbo(BaseApplicationImpl.getContext())) {}
       for (paramOnPreviewVideoOnlineListener = "0";; paramOnPreviewVideoOnlineListener = "-1")
@@ -251,7 +251,7 @@ public class TroopFileModel
         break;
       }
     }
-    TroopFileVideoOnlinePlayManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, new addw(this, paramOnPreviewVideoOnlineListener, localTroopInfo, localTroopManager));
+    TroopFileVideoOnlinePlayManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, new admd(this, paramOnPreviewVideoOnlineListener, localTroopInfo, localTroopManager));
     return true;
   }
   
@@ -295,7 +295,7 @@ public class TroopFileModel
       do
       {
         return;
-        this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new adds(this);
+        this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new adlz(this);
         if (QLog.isDevelopLevel()) {
           QLog.i("fobserver<FileAssistant>", 1, "add troopObserver");
         }
@@ -339,8 +339,8 @@ public class TroopFileModel
   
   public void f()
   {
-    TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().strTroopFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().busId, new addm(this));
-    TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().busId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().strTroopFilePath, new addq(this));
+    TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().strTroopFilePath, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().busId, new adlt(this));
+    TroopFileProtocol.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().busId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().strTroopFilePath, new adlx(this));
   }
   
   public int h()

@@ -1,24 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
-class agha
-  implements Runnable
+public class agha
+  implements OcrControl.OcrCallback
 {
-  agha(aggv paramaggv) {}
+  public agha(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a())
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.b();
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    }
+    this.a.runOnUiThread(new aghb(this, paramString, paramInt, paramOcrRecogResult, paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agha
  * JD-Core Version:    0.7.0.1
  */

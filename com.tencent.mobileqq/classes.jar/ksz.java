@@ -1,22 +1,29 @@
-import android.os.AsyncTask;
-import com.tencent.biz.pubaccount.AccountDetailActivity.FriendAvatarWeakReference;
-import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.handler.AccountDetailBaseItemClickHandler;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailCustomModuleBaseWrapper;
+import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ksz
-  extends AsyncTask
+  implements View.OnClickListener
 {
-  public ksz(AccountDetailActivity.FriendAvatarWeakReference paramFriendAvatarWeakReference, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo) {}
+  public ksz(AccountDetailCustomModuleBaseWrapper paramAccountDetailCustomModuleBaseWrapper) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$FriendAvatarWeakReference.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$FriendAvatarWeakReference.a.a(-1);
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof PaConfigAttr.PaConfigInfo)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "click!");
+      }
+      paramView = (PaConfigAttr.PaConfigInfo)paramView;
+      if (this.a.a != null) {
+        this.a.a.a(paramView);
+      }
+      this.a.a(paramView);
+    }
   }
 }
 

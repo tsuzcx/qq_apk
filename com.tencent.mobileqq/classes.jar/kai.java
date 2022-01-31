@@ -1,30 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.VideoController.GAudioFriends;
 
-public class kai
-  implements Animation.AnimationListener
+class kai
+  implements Runnable
 {
-  public kai(VideoControlUI paramVideoControlUI) {}
+  kai(kah paramkah) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.clearAnimation();
-    this.a.c.clearAnimation();
-    this.a.b.clearAnimation();
-    this.a.e.clearAnimation();
-    this.a.l(true);
+    if ((this.a.jdField_a_of_type_Kaj.jdField_a_of_type_Long == this.a.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_Long) && (this.a.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
+      this.a.jdField_a_of_type_Kag.a(this.a.jdField_a_of_type_ComTencentAvVideoController$GAudioFriends, this.a.jdField_a_of_type_Kaj);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kai
  * JD-Core Version:    0.7.0.1
  */

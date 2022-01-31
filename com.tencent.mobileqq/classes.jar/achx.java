@@ -1,30 +1,35 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
+import com.tencent.mobileqq.app.FavEmoRoamingObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import java.util.List;
 
 public class achx
-  implements View.OnTouchListener
+  extends FavEmoRoamingObserver
 {
-  public achx(ExtendFriendFragment paramExtendFriendFragment) {}
+  public achx(FavroamingManager paramFavroamingManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(List paramList)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (this.a.a == null) {
+      return;
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    this.a.a.removeObserver(FavroamingManager.a(this.a));
+    ThreadManager.post(new achy(this, paramList), 5, null, true);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.a.a == null) {}
+    while (!paramBoolean) {
+      return;
     }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     achx
  * JD-Core Version:    0.7.0.1
  */

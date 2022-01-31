@@ -7,16 +7,28 @@ import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
 
 public class PatchConfigServlet
 {
+  private static int a = 3600;
+  
+  public static void a(int paramInt)
+  {
+    if ((paramInt >= 0) && (a != paramInt)) {
+      a = paramInt;
+    }
+  }
+  
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
   {
     if ("doOnReconnect".equals(paramString2))
     {
-      long l1 = PatchSharedPreUtil.a(BaseApplicationImpl.sApplication);
-      long l2 = System.currentTimeMillis();
-      if (Math.abs(l2 - l1) > 21600000L)
+      if (a > 0)
       {
-        ConfigServlet.a(paramQQAppInterface, paramString1, paramInt, paramString2);
-        PatchSharedPreUtil.a(BaseApplicationImpl.sApplication, l2);
+        long l1 = PatchSharedPreUtil.a(BaseApplicationImpl.sApplication);
+        long l2 = System.currentTimeMillis();
+        if (Math.abs(l2 - l1) > a * 1000L)
+        {
+          ConfigServlet.a(paramQQAppInterface, paramString1, paramInt, paramString2);
+          PatchSharedPreUtil.a(BaseApplicationImpl.sApplication, l2);
+        }
       }
       return;
     }

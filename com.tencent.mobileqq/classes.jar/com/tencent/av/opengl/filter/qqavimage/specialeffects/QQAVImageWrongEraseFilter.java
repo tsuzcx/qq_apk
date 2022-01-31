@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilter;
 import com.tencent.sveffects.SdkContext;
 import java.util.Random;
-import jjw;
+import jlz;
 
 public class QQAVImageWrongEraseFilter
   extends QQAVImageFilter
@@ -181,7 +181,7 @@ public class QQAVImageWrongEraseFilter
   
   protected void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat)
   {
-    runOnDraw(new jjw(this, paramInt1, paramInt2, paramArrayOfFloat));
+    runOnDraw(new jlz(this, paramInt1, paramInt2, paramArrayOfFloat));
   }
   
   public void onDraw2(int paramInt1, int paramInt2)

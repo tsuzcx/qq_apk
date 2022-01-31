@@ -29,7 +29,7 @@ public class PasswdRedBagDBManager
     //   0: new 38	java/util/HashMap
     //   3: dup
     //   4: invokespecial 39	java/util/HashMap:<init>	()V
-    //   7: astore 8
+    //   7: astore 7
     //   9: aload_0
     //   10: aload_0
     //   11: getfield 28	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagDBHelper	Lcom/tencent/mobileqq/activity/qwallet/PasswdRedBagDBHelper;
@@ -64,7 +64,7 @@ public class PasswdRedBagDBManager
     //   55: invokevirtual 63	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   58: astore 6
     //   60: aload 6
-    //   62: ifnull +240 -> 302
+    //   62: ifnull +239 -> 301
     //   65: aload 6
     //   67: astore 5
     //   69: aload 6
@@ -93,16 +93,16 @@ public class PasswdRedBagDBManager
     //   124: astore 5
     //   126: aload 6
     //   128: invokeinterface 73 1 0
-    //   133: ifeq +169 -> 302
+    //   133: ifeq +168 -> 301
     //   136: aload 6
     //   138: astore 5
     //   140: new 75	java/lang/StringBuilder
     //   143: dup
     //   144: invokespecial 76	java/lang/StringBuilder:<init>	()V
-    //   147: astore 7
+    //   147: astore 8
     //   149: aload 6
     //   151: astore 5
-    //   153: aload 7
+    //   153: aload 8
     //   155: aload 6
     //   157: iload_3
     //   158: invokeinterface 80 2 0
@@ -110,13 +110,13 @@ public class PasswdRedBagDBManager
     //   166: pop
     //   167: aload 6
     //   169: astore 5
-    //   171: aload 7
+    //   171: aload 8
     //   173: ldc 86
     //   175: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   178: pop
     //   179: aload 6
     //   181: astore 5
-    //   183: aload 7
+    //   183: aload 8
     //   185: aload 6
     //   187: iload_2
     //   188: invokeinterface 80 2 0
@@ -124,13 +124,13 @@ public class PasswdRedBagDBManager
     //   196: pop
     //   197: aload 6
     //   199: astore 5
-    //   201: aload 7
+    //   201: aload 8
     //   203: ldc 86
     //   205: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   208: pop
     //   209: aload 6
     //   211: astore 5
-    //   213: aload 7
+    //   213: aload 8
     //   215: aload 6
     //   217: iload_1
     //   218: invokeinterface 80 2 0
@@ -138,8 +138,8 @@ public class PasswdRedBagDBManager
     //   226: pop
     //   227: aload 6
     //   229: astore 5
-    //   231: aload 8
-    //   233: aload 7
+    //   231: aload 7
+    //   233: aload 8
     //   235: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   238: aload 6
     //   240: iload 4
@@ -161,90 +161,94 @@ public class PasswdRedBagDBManager
     //   278: aload 6
     //   280: astore 5
     //   282: aload 7
-    //   284: invokevirtual 110	java/lang/Exception:printStackTrace	()V
+    //   284: invokevirtual 110	java/lang/Throwable:printStackTrace	()V
     //   287: aload 6
-    //   289: ifnull +10 -> 299
+    //   289: ifnull +60 -> 349
     //   292: aload 6
     //   294: invokeinterface 113 1 0
-    //   299: aload 8
-    //   301: areturn
-    //   302: aload 6
-    //   304: ifnull -5 -> 299
-    //   307: aload 6
-    //   309: invokeinterface 113 1 0
-    //   314: aload 8
-    //   316: areturn
-    //   317: astore 6
-    //   319: aconst_null
-    //   320: astore 5
-    //   322: aload 5
-    //   324: ifnull +10 -> 334
-    //   327: aload 5
-    //   329: invokeinterface 113 1 0
-    //   334: aload 6
-    //   336: athrow
-    //   337: astore 6
-    //   339: goto -17 -> 322
-    //   342: astore 7
-    //   344: aconst_null
-    //   345: astore 6
-    //   347: goto -91 -> 256
+    //   299: aconst_null
+    //   300: areturn
+    //   301: aload 6
+    //   303: ifnull +48 -> 351
+    //   306: aload 6
+    //   308: invokeinterface 113 1 0
+    //   313: aload 7
+    //   315: areturn
+    //   316: astore 6
+    //   318: aconst_null
+    //   319: astore 5
+    //   321: aload 5
+    //   323: ifnull +10 -> 333
+    //   326: aload 5
+    //   328: invokeinterface 113 1 0
+    //   333: aload 6
+    //   335: athrow
+    //   336: astore 6
+    //   338: goto -17 -> 321
+    //   341: astore 7
+    //   343: aconst_null
+    //   344: astore 6
+    //   346: goto -90 -> 256
+    //   349: aconst_null
+    //   350: areturn
+    //   351: aload 7
+    //   353: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	350	0	this	PasswdRedBagDBManager
+    //   0	354	0	this	PasswdRedBagDBManager
     //   78	140	1	i	int
     //   92	96	2	j	int
     //   106	52	3	k	int
     //   120	121	4	m	int
-    //   67	261	5	localCursor1	android.database.Cursor
-    //   58	250	6	localCursor2	android.database.Cursor
-    //   317	18	6	localObject1	Object
-    //   337	1	6	localObject2	Object
-    //   345	1	6	localObject3	Object
-    //   147	87	7	localStringBuilder	java.lang.StringBuilder
-    //   254	29	7	localException1	Exception
-    //   342	1	7	localException2	Exception
-    //   7	308	8	localHashMap	java.util.HashMap
+    //   67	260	5	localCursor1	android.database.Cursor
+    //   58	249	6	localCursor2	android.database.Cursor
+    //   316	18	6	localObject1	Object
+    //   336	1	6	localObject2	Object
+    //   344	1	6	localObject3	Object
+    //   7	225	7	localHashMap	java.util.HashMap
+    //   254	60	7	localThrowable1	java.lang.Throwable
+    //   341	11	7	localThrowable2	java.lang.Throwable
+    //   147	87	8	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   69	79	254	java/lang/Exception
-    //   83	93	254	java/lang/Exception
-    //   97	107	254	java/lang/Exception
-    //   111	122	254	java/lang/Exception
-    //   126	136	254	java/lang/Exception
-    //   140	149	254	java/lang/Exception
-    //   153	167	254	java/lang/Exception
-    //   171	179	254	java/lang/Exception
-    //   183	197	254	java/lang/Exception
-    //   201	209	254	java/lang/Exception
-    //   213	227	254	java/lang/Exception
-    //   231	251	254	java/lang/Exception
-    //   9	60	317	finally
-    //   69	79	337	finally
-    //   83	93	337	finally
-    //   97	107	337	finally
-    //   111	122	337	finally
-    //   126	136	337	finally
-    //   140	149	337	finally
-    //   153	167	337	finally
-    //   171	179	337	finally
-    //   183	197	337	finally
-    //   201	209	337	finally
-    //   213	227	337	finally
-    //   231	251	337	finally
-    //   260	266	337	finally
-    //   270	278	337	finally
-    //   282	287	337	finally
-    //   9	60	342	java/lang/Exception
+    //   69	79	254	java/lang/Throwable
+    //   83	93	254	java/lang/Throwable
+    //   97	107	254	java/lang/Throwable
+    //   111	122	254	java/lang/Throwable
+    //   126	136	254	java/lang/Throwable
+    //   140	149	254	java/lang/Throwable
+    //   153	167	254	java/lang/Throwable
+    //   171	179	254	java/lang/Throwable
+    //   183	197	254	java/lang/Throwable
+    //   201	209	254	java/lang/Throwable
+    //   213	227	254	java/lang/Throwable
+    //   231	251	254	java/lang/Throwable
+    //   9	60	316	finally
+    //   69	79	336	finally
+    //   83	93	336	finally
+    //   97	107	336	finally
+    //   111	122	336	finally
+    //   126	136	336	finally
+    //   140	149	336	finally
+    //   153	167	336	finally
+    //   171	179	336	finally
+    //   183	197	336	finally
+    //   201	209	336	finally
+    //   213	227	336	finally
+    //   231	251	336	finally
+    //   260	266	336	finally
+    //   270	278	336	finally
+    //   282	287	336	finally
+    //   9	60	341	java/lang/Throwable
   }
   
   /* Error */
   public java.util.List a()
   {
     // Byte code:
-    //   0: new 116	java/util/ArrayList
+    //   0: new 118	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 117	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 119	java/util/ArrayList:<init>	()V
     //   7: astore 14
     //   9: aload_0
     //   10: aload_0
@@ -253,7 +257,7 @@ public class PasswdRedBagDBManager
     //   17: putfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
     //   20: aload_0
     //   21: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   24: ldc 119
+    //   24: ldc 121
     //   26: bipush 9
     //   28: anewarray 49	java/lang/String
     //   31: dup
@@ -262,41 +266,41 @@ public class PasswdRedBagDBManager
     //   35: aastore
     //   36: dup
     //   37: iconst_1
-    //   38: ldc 121
+    //   38: ldc 123
     //   40: aastore
     //   41: dup
     //   42: iconst_2
-    //   43: ldc 123
+    //   43: ldc 125
     //   45: aastore
     //   46: dup
     //   47: iconst_3
-    //   48: ldc 125
+    //   48: ldc 127
     //   50: aastore
     //   51: dup
     //   52: iconst_4
-    //   53: ldc 127
+    //   53: ldc 129
     //   55: aastore
     //   56: dup
     //   57: iconst_5
-    //   58: ldc 129
+    //   58: ldc 131
     //   60: aastore
     //   61: dup
     //   62: bipush 6
-    //   64: ldc 131
+    //   64: ldc 133
     //   66: aastore
     //   67: dup
     //   68: bipush 7
-    //   70: ldc 133
+    //   70: ldc 135
     //   72: aastore
     //   73: dup
     //   74: bipush 8
-    //   76: ldc 135
+    //   76: ldc 137
     //   78: aastore
     //   79: aconst_null
     //   80: aconst_null
     //   81: aconst_null
     //   82: aconst_null
-    //   83: ldc 137
+    //   83: ldc 139
     //   85: invokevirtual 63	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   88: astore 12
     //   90: aload 12
@@ -310,49 +314,49 @@ public class PasswdRedBagDBManager
     //   109: aload 12
     //   111: astore 11
     //   113: aload 12
-    //   115: ldc 121
+    //   115: ldc 123
     //   117: invokeinterface 69 2 0
     //   122: istore_2
     //   123: aload 12
     //   125: astore 11
     //   127: aload 12
-    //   129: ldc 123
+    //   129: ldc 125
     //   131: invokeinterface 69 2 0
     //   136: istore_3
     //   137: aload 12
     //   139: astore 11
     //   141: aload 12
-    //   143: ldc 125
+    //   143: ldc 127
     //   145: invokeinterface 69 2 0
     //   150: istore 4
     //   152: aload 12
     //   154: astore 11
     //   156: aload 12
-    //   158: ldc 127
+    //   158: ldc 129
     //   160: invokeinterface 69 2 0
     //   165: istore 5
     //   167: aload 12
     //   169: astore 11
     //   171: aload 12
-    //   173: ldc 129
+    //   173: ldc 131
     //   175: invokeinterface 69 2 0
     //   180: istore 6
     //   182: aload 12
     //   184: astore 11
     //   186: aload 12
-    //   188: ldc 131
+    //   188: ldc 133
     //   190: invokeinterface 69 2 0
     //   195: istore 7
     //   197: aload 12
     //   199: astore 11
     //   201: aload 12
-    //   203: ldc 133
+    //   203: ldc 135
     //   205: invokeinterface 69 2 0
     //   210: istore 8
     //   212: aload 12
     //   214: astore 11
     //   216: aload 12
-    //   218: ldc 135
+    //   218: ldc 137
     //   220: invokeinterface 69 2 0
     //   225: istore 9
     //   227: aload 12
@@ -362,15 +366,15 @@ public class PasswdRedBagDBManager
     //   238: ifeq +297 -> 535
     //   241: aload 12
     //   243: astore 11
-    //   245: new 139	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo
+    //   245: new 141	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo
     //   248: dup
-    //   249: invokespecial 140	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:<init>	()V
+    //   249: invokespecial 142	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:<init>	()V
     //   252: astore 13
     //   254: aload 12
     //   256: astore 11
     //   258: aload 12
     //   260: iload 7
-    //   262: invokeinterface 144 2 0
+    //   262: invokeinterface 146 2 0
     //   267: iconst_1
     //   268: if_icmpne +249 -> 517
     //   271: iconst_1
@@ -379,12 +383,12 @@ public class PasswdRedBagDBManager
     //   276: astore 11
     //   278: aload 13
     //   280: iload 10
-    //   282: putfield 148	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_b_of_type_Boolean	Z
+    //   282: putfield 150	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_b_of_type_Boolean	Z
     //   285: aload 12
     //   287: astore 11
     //   289: aload 12
     //   291: iload 6
-    //   293: invokeinterface 144 2 0
+    //   293: invokeinterface 146 2 0
     //   298: iconst_1
     //   299: if_icmpne +224 -> 523
     //   302: iconst_1
@@ -393,47 +397,47 @@ public class PasswdRedBagDBManager
     //   307: astore 11
     //   309: aload 13
     //   311: iload 10
-    //   313: putfield 150	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_a_of_type_Boolean	Z
+    //   313: putfield 152	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_a_of_type_Boolean	Z
     //   316: aload 12
     //   318: astore 11
     //   320: aload 13
     //   322: aload 12
     //   324: iload 5
     //   326: invokeinterface 80 2 0
-    //   331: putfield 152	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:d	Ljava/lang/String;
+    //   331: putfield 154	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:d	Ljava/lang/String;
     //   334: aload 12
     //   336: astore 11
     //   338: aload 13
     //   340: aload 12
     //   342: iload_1
     //   343: invokeinterface 80 2 0
-    //   348: putfield 153	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   348: putfield 155	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   351: aload 12
     //   353: astore 11
     //   355: aload 13
     //   357: aload 12
     //   359: iload_2
     //   360: invokeinterface 80 2 0
-    //   365: putfield 155	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   365: putfield 157	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   368: aload 12
     //   370: astore 11
     //   372: aload 13
     //   374: aload 12
     //   376: iload_3
     //   377: invokeinterface 80 2 0
-    //   382: putfield 158	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   382: putfield 160	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   385: aload 12
     //   387: astore 11
     //   389: aload 13
     //   391: aload 12
     //   393: iload 4
-    //   395: invokeinterface 162 2 0
-    //   400: putfield 165	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_a_of_type_Long	J
+    //   395: invokeinterface 164 2 0
+    //   400: putfield 167	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_a_of_type_Long	J
     //   403: aload 12
     //   405: astore 11
     //   407: aload 12
     //   409: iload 8
-    //   411: invokeinterface 144 2 0
+    //   411: invokeinterface 146 2 0
     //   416: iconst_1
     //   417: if_icmpne +112 -> 529
     //   420: iconst_1
@@ -442,19 +446,19 @@ public class PasswdRedBagDBManager
     //   425: astore 11
     //   427: aload 13
     //   429: iload 10
-    //   431: putfield 167	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_c_of_type_Boolean	Z
+    //   431: putfield 169	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_c_of_type_Boolean	Z
     //   434: aload 12
     //   436: astore 11
     //   438: aload 13
     //   440: aload 12
     //   442: iload 9
-    //   444: invokeinterface 144 2 0
-    //   449: putfield 170	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_a_of_type_Int	I
+    //   444: invokeinterface 146 2 0
+    //   449: putfield 172	com/tencent/mobileqq/activity/qwallet/PasswdRedBagInfo:jdField_a_of_type_Int	I
     //   452: aload 12
     //   454: astore 11
     //   456: aload 14
     //   458: aload 13
-    //   460: invokeinterface 176 2 0
+    //   460: invokeinterface 178 2 0
     //   465: pop
     //   466: goto -239 -> 227
     //   469: astore 13
@@ -466,12 +470,12 @@ public class PasswdRedBagDBManager
     //   483: astore 11
     //   485: ldc 101
     //   487: iconst_2
-    //   488: ldc 178
+    //   488: ldc 180
     //   490: invokestatic 107	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   493: aload 12
     //   495: astore 11
     //   497: aload 13
-    //   499: invokevirtual 110	java/lang/Exception:printStackTrace	()V
+    //   499: invokevirtual 181	java/lang/Exception:printStackTrace	()V
     //   502: aload 12
     //   504: ifnull +10 -> 514
     //   507: aload 12
@@ -593,9 +597,9 @@ public class PasswdRedBagDBManager
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
-    //   3: new 116	java/util/ArrayList
+    //   3: new 118	java/util/ArrayList
     //   6: dup
-    //   7: invokespecial 117	java/util/ArrayList:<init>	()V
+    //   7: invokespecial 119	java/util/ArrayList:<init>	()V
     //   10: astore 7
     //   12: aload_0
     //   13: aload_0
@@ -609,13 +613,13 @@ public class PasswdRedBagDBManager
     //   32: dup
     //   33: invokespecial 76	java/lang/StringBuilder:<init>	()V
     //   36: iload_1
-    //   37: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   40: ldc 184
+    //   37: invokevirtual 185	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   40: ldc 187
     //   42: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   48: astore 6
     //   50: aload 4
-    //   52: ldc 186
+    //   52: ldc 189
     //   54: iconst_2
     //   55: anewarray 49	java/lang/String
     //   58: dup
@@ -624,9 +628,9 @@ public class PasswdRedBagDBManager
     //   62: aastore
     //   63: dup
     //   64: iconst_1
-    //   65: ldc 188
+    //   65: ldc 191
     //   67: aastore
-    //   68: ldc 190
+    //   68: ldc 193
     //   70: iconst_1
     //   71: anewarray 49	java/lang/String
     //   74: dup
@@ -651,7 +655,7 @@ public class PasswdRedBagDBManager
     //   110: aload 5
     //   112: astore 4
     //   114: aload 5
-    //   116: ldc 188
+    //   116: ldc 191
     //   118: invokeinterface 69 2 0
     //   123: istore_3
     //   124: aload 5
@@ -661,34 +665,34 @@ public class PasswdRedBagDBManager
     //   135: ifeq +125 -> 260
     //   138: aload 5
     //   140: astore 4
-    //   142: new 192	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo
+    //   142: new 195	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo
     //   145: dup
-    //   146: invokespecial 193	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:<init>	()V
+    //   146: invokespecial 196	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:<init>	()V
     //   149: astore 6
     //   151: aload 5
     //   153: astore 4
     //   155: aload 6
     //   157: iload_1
-    //   158: putfield 194	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:jdField_a_of_type_Int	I
+    //   158: putfield 197	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:jdField_a_of_type_Int	I
     //   161: aload 5
     //   163: astore 4
     //   165: aload 6
     //   167: aload 5
     //   169: iload_2
-    //   170: invokeinterface 162 2 0
-    //   175: putfield 195	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:jdField_a_of_type_Long	J
+    //   170: invokeinterface 164 2 0
+    //   175: putfield 198	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:jdField_a_of_type_Long	J
     //   178: aload 5
     //   180: astore 4
     //   182: aload 6
     //   184: aload 5
     //   186: iload_3
-    //   187: invokeinterface 162 2 0
-    //   192: putfield 197	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:b	J
+    //   187: invokeinterface 164 2 0
+    //   192: putfield 200	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:b	J
     //   195: aload 5
     //   197: astore 4
     //   199: aload 7
     //   201: aload 6
-    //   203: invokeinterface 176 2 0
+    //   203: invokeinterface 178 2 0
     //   208: pop
     //   209: goto -85 -> 124
     //   212: astore 6
@@ -700,12 +704,12 @@ public class PasswdRedBagDBManager
     //   226: astore 4
     //   228: ldc 101
     //   230: iconst_2
-    //   231: ldc 199
+    //   231: ldc 202
     //   233: invokestatic 107	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   236: aload 5
     //   238: astore 4
     //   240: aload 6
-    //   242: invokevirtual 110	java/lang/Exception:printStackTrace	()V
+    //   242: invokevirtual 181	java/lang/Exception:printStackTrace	()V
     //   245: aload 5
     //   247: ifnull +10 -> 257
     //   250: aload 5
@@ -893,86 +897,86 @@ public class PasswdRedBagDBManager
     //   10: putfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
     //   13: aload_0
     //   14: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   17: invokevirtual 246	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
-    //   20: new 203	android/content/ContentValues
+    //   17: invokevirtual 249	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   20: new 206	android/content/ContentValues
     //   23: dup
-    //   24: invokespecial 204	android/content/ContentValues:<init>	()V
+    //   24: invokespecial 207	android/content/ContentValues:<init>	()V
     //   27: astore_3
     //   28: aload_1
-    //   29: invokeinterface 250 1 0
+    //   29: invokeinterface 253 1 0
     //   34: astore_1
     //   35: aload_1
-    //   36: invokeinterface 255 1 0
+    //   36: invokeinterface 258 1 0
     //   41: ifeq +109 -> 150
     //   44: aload_1
-    //   45: invokeinterface 259 1 0
-    //   50: checkcast 192	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo
+    //   45: invokeinterface 262 1 0
+    //   50: checkcast 195	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo
     //   53: astore 4
     //   55: aload_3
-    //   56: invokevirtual 262	android/content/ContentValues:clear	()V
+    //   56: invokevirtual 265	android/content/ContentValues:clear	()V
     //   59: aload_3
     //   60: ldc 53
     //   62: aload 4
-    //   64: getfield 195	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:jdField_a_of_type_Long	J
-    //   67: invokestatic 213	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   70: invokevirtual 216	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   64: getfield 198	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:jdField_a_of_type_Long	J
+    //   67: invokestatic 216	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   70: invokevirtual 219	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   73: aload_3
     //   74: ldc 55
     //   76: aload 4
-    //   78: getfield 194	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:jdField_a_of_type_Int	I
-    //   81: invokestatic 221	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   84: invokevirtual 224	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   78: getfield 197	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:jdField_a_of_type_Int	I
+    //   81: invokestatic 224	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   84: invokevirtual 227	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
     //   87: aload_3
-    //   88: ldc 188
+    //   88: ldc 191
     //   90: aload 4
-    //   92: getfield 197	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:b	J
-    //   95: invokestatic 213	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   98: invokevirtual 216	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   92: getfield 200	com/tencent/mobileqq/activity/qwallet/PasswdRedBagUpdateInfo:b	J
+    //   95: invokestatic 216	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   98: invokevirtual 219	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
     //   101: aload_0
     //   102: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   105: ldc 186
+    //   105: ldc 189
     //   107: aconst_null
     //   108: aload_3
-    //   109: invokevirtual 228	android/database/sqlite/SQLiteDatabase:replace	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   109: invokevirtual 231	android/database/sqlite/SQLiteDatabase:replace	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
     //   112: pop2
     //   113: goto -78 -> 35
     //   116: astore_1
     //   117: aload_1
-    //   118: invokevirtual 110	java/lang/Exception:printStackTrace	()V
+    //   118: invokevirtual 181	java/lang/Exception:printStackTrace	()V
     //   121: aload_0
     //   122: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
     //   125: ifnull +22 -> 147
     //   128: aload_0
     //   129: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   132: invokevirtual 265	android/database/sqlite/SQLiteDatabase:inTransaction	()Z
+    //   132: invokevirtual 268	android/database/sqlite/SQLiteDatabase:inTransaction	()Z
     //   135: istore_2
     //   136: iload_2
     //   137: ifeq +10 -> 147
     //   140: aload_0
     //   141: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   144: invokevirtual 268	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   144: invokevirtual 271	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   147: aload_0
     //   148: monitorexit
     //   149: return
     //   150: aload_0
     //   151: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   154: invokevirtual 271	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   154: invokevirtual 274	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
     //   157: aload_0
     //   158: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
     //   161: ifnull -14 -> 147
     //   164: aload_0
     //   165: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   168: invokevirtual 265	android/database/sqlite/SQLiteDatabase:inTransaction	()Z
+    //   168: invokevirtual 268	android/database/sqlite/SQLiteDatabase:inTransaction	()Z
     //   171: istore_2
     //   172: iload_2
     //   173: ifeq -26 -> 147
     //   176: aload_0
     //   177: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   180: invokevirtual 268	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   180: invokevirtual 271	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   183: goto -36 -> 147
     //   186: astore_1
     //   187: aload_1
-    //   188: invokevirtual 110	java/lang/Exception:printStackTrace	()V
+    //   188: invokevirtual 181	java/lang/Exception:printStackTrace	()V
     //   191: goto -44 -> 147
     //   194: astore_1
     //   195: aload_0
@@ -981,7 +985,7 @@ public class PasswdRedBagDBManager
     //   198: athrow
     //   199: astore_1
     //   200: aload_1
-    //   201: invokevirtual 110	java/lang/Exception:printStackTrace	()V
+    //   201: invokevirtual 181	java/lang/Exception:printStackTrace	()V
     //   204: goto -57 -> 147
     //   207: astore_1
     //   208: aload_0
@@ -989,18 +993,18 @@ public class PasswdRedBagDBManager
     //   212: ifnull +22 -> 234
     //   215: aload_0
     //   216: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   219: invokevirtual 265	android/database/sqlite/SQLiteDatabase:inTransaction	()Z
+    //   219: invokevirtual 268	android/database/sqlite/SQLiteDatabase:inTransaction	()Z
     //   222: istore_2
     //   223: iload_2
     //   224: ifeq +10 -> 234
     //   227: aload_0
     //   228: getfield 45	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidDatabaseSqliteSQLiteDatabase	Landroid/database/sqlite/SQLiteDatabase;
-    //   231: invokevirtual 268	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   231: invokevirtual 271	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   234: aload_1
     //   235: athrow
     //   236: astore_3
     //   237: aload_3
-    //   238: invokevirtual 110	java/lang/Exception:printStackTrace	()V
+    //   238: invokevirtual 181	java/lang/Exception:printStackTrace	()V
     //   241: goto -7 -> 234
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1088,32 +1092,32 @@ public class PasswdRedBagDBManager
     //   4: astore 21
     //   6: aload_0
     //   7: getfield 29	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   10: ldc_w 296
-    //   13: invokevirtual 302	android/content/Context:getDatabasePath	(Ljava/lang/String;)Ljava/io/File;
+    //   10: ldc_w 299
+    //   13: invokevirtual 305	android/content/Context:getDatabasePath	(Ljava/lang/String;)Ljava/io/File;
     //   16: astore 22
     //   18: aload 22
-    //   20: invokevirtual 307	java/io/File:exists	()Z
-    //   23: istore 14
-    //   25: iload 14
+    //   20: invokevirtual 310	java/io/File:exists	()Z
+    //   23: istore 18
+    //   25: iload 18
     //   27: ifne +28 -> 55
     //   30: iconst_0
     //   31: ifeq +11 -> 42
-    //   34: new 309	java/lang/NullPointerException
+    //   34: new 312	java/lang/NullPointerException
     //   37: dup
-    //   38: invokespecial 310	java/lang/NullPointerException:<init>	()V
+    //   38: invokespecial 313	java/lang/NullPointerException:<init>	()V
     //   41: athrow
     //   42: iconst_0
     //   43: ifeq +11 -> 54
-    //   46: new 309	java/lang/NullPointerException
+    //   46: new 312	java/lang/NullPointerException
     //   49: dup
-    //   50: invokespecial 310	java/lang/NullPointerException:<init>	()V
+    //   50: invokespecial 313	java/lang/NullPointerException:<init>	()V
     //   53: athrow
     //   54: return
     //   55: aload 22
-    //   57: invokevirtual 313	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   57: invokevirtual 316	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   60: aconst_null
     //   61: iconst_0
-    //   62: invokestatic 317	android/database/sqlite/SQLiteDatabase:openDatabase	(Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)Landroid/database/sqlite/SQLiteDatabase;
+    //   62: invokestatic 320	android/database/sqlite/SQLiteDatabase:openDatabase	(Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)Landroid/database/sqlite/SQLiteDatabase;
     //   65: astore 22
     //   67: aload 22
     //   69: astore 20
@@ -1121,17 +1125,17 @@ public class PasswdRedBagDBManager
     //   73: ifnonnull +26 -> 99
     //   76: iconst_0
     //   77: ifeq +11 -> 88
-    //   80: new 309	java/lang/NullPointerException
+    //   80: new 312	java/lang/NullPointerException
     //   83: dup
-    //   84: invokespecial 310	java/lang/NullPointerException:<init>	()V
+    //   84: invokespecial 313	java/lang/NullPointerException:<init>	()V
     //   87: athrow
     //   88: aload 20
     //   90: ifnull -36 -> 54
     //   93: aload 20
-    //   95: invokevirtual 200	android/database/sqlite/SQLiteDatabase:close	()V
+    //   95: invokevirtual 203	android/database/sqlite/SQLiteDatabase:close	()V
     //   98: return
     //   99: aload 20
-    //   101: ldc_w 319
+    //   101: ldc_w 322
     //   104: iconst_1
     //   105: anewarray 49	java/lang/String
     //   108: dup
@@ -1139,124 +1143,124 @@ public class PasswdRedBagDBManager
     //   110: aload_0
     //   111: getfield 30	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   114: aastore
-    //   115: invokevirtual 323	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   115: invokevirtual 326	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   118: astore 22
     //   120: aload 22
     //   122: ifnull +365 -> 487
     //   125: aload 22
     //   127: ldc 51
     //   129: invokeinterface 69 2 0
-    //   134: istore 13
+    //   134: istore 8
     //   136: aload 22
-    //   138: ldc 121
+    //   138: ldc 123
     //   140: invokeinterface 69 2 0
-    //   145: istore 11
+    //   145: istore 12
     //   147: aload 22
-    //   149: ldc 123
+    //   149: ldc 125
     //   151: invokeinterface 69 2 0
-    //   156: istore_1
+    //   156: istore_3
     //   157: aload 22
-    //   159: ldc 125
+    //   159: ldc 127
     //   161: invokeinterface 69 2 0
-    //   166: istore 5
+    //   166: istore 9
     //   168: aload 22
-    //   170: ldc 127
+    //   170: ldc 129
     //   172: invokeinterface 69 2 0
-    //   177: istore 12
+    //   177: istore 6
     //   179: aload 22
     //   181: ldc 57
     //   183: invokeinterface 69 2 0
-    //   188: istore 10
+    //   188: istore 4
     //   190: aload 22
     //   192: ldc 53
     //   194: invokeinterface 69 2 0
-    //   199: istore_2
-    //   200: aload 22
-    //   202: ldc 55
-    //   204: invokeinterface 69 2 0
-    //   209: istore 7
+    //   199: istore 11
+    //   201: aload 22
+    //   203: ldc 55
+    //   205: invokeinterface 69 2 0
+    //   210: istore_1
     //   211: aload 22
-    //   213: ldc 129
+    //   213: ldc 131
     //   215: invokeinterface 69 2 0
-    //   220: istore 8
+    //   220: istore 7
     //   222: aload 22
-    //   224: ldc 131
+    //   224: ldc 133
     //   226: invokeinterface 69 2 0
-    //   231: istore 4
+    //   231: istore 10
     //   233: aload 22
-    //   235: ldc 135
+    //   235: ldc 137
     //   237: invokeinterface 69 2 0
-    //   242: istore_3
+    //   242: istore_2
     //   243: aload 22
     //   245: invokeinterface 73 1 0
     //   250: ifeq +237 -> 487
     //   253: aload_0
     //   254: getfield 32	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager	Lcom/tencent/mobileqq/activity/qwallet/PasswdRedBagManager;
-    //   257: astore 23
+    //   257: astore 21
     //   259: aload 22
-    //   261: iload 13
+    //   261: iload 8
     //   263: invokeinterface 80 2 0
-    //   268: astore 26
+    //   268: astore 25
     //   270: aload 22
-    //   272: iload 11
+    //   272: iload 12
     //   274: invokeinterface 80 2 0
-    //   279: astore 25
+    //   279: astore 23
     //   281: aload 22
-    //   283: iload 12
+    //   283: iload 6
     //   285: invokeinterface 80 2 0
-    //   290: astore 24
+    //   290: astore 26
     //   292: aload 22
-    //   294: iload_1
-    //   295: invokeinterface 162 2 0
-    //   300: lstore 18
+    //   294: iload_3
+    //   295: invokeinterface 164 2 0
+    //   300: lstore 16
     //   302: aload 22
-    //   304: iload 5
-    //   306: invokeinterface 162 2 0
-    //   311: lstore 16
+    //   304: iload 9
+    //   306: invokeinterface 164 2 0
+    //   311: lstore 14
     //   313: aload 22
-    //   315: iload 7
-    //   317: invokeinterface 144 2 0
-    //   322: istore 9
-    //   324: aload 22
-    //   326: iload_2
-    //   327: invokeinterface 144 2 0
-    //   332: istore 6
+    //   315: iload_1
+    //   316: invokeinterface 146 2 0
+    //   321: istore 5
+    //   323: aload 22
+    //   325: iload 11
+    //   327: invokeinterface 146 2 0
+    //   332: istore 13
     //   334: aload 22
-    //   336: iload 10
+    //   336: iload 4
     //   338: invokeinterface 80 2 0
-    //   343: astore 21
+    //   343: astore 24
     //   345: aload 22
-    //   347: iload 8
-    //   349: invokeinterface 144 2 0
+    //   347: iload 7
+    //   349: invokeinterface 146 2 0
     //   354: iconst_1
     //   355: if_icmpne +120 -> 475
     //   358: iconst_1
-    //   359: istore 14
+    //   359: istore 18
     //   361: aload 22
-    //   363: iload 4
-    //   365: invokeinterface 144 2 0
+    //   363: iload 10
+    //   365: invokeinterface 146 2 0
     //   370: iconst_1
     //   371: if_icmpne +110 -> 481
     //   374: iconst_1
-    //   375: istore 15
-    //   377: aload 23
-    //   379: aload 26
-    //   381: aload 25
-    //   383: aload 24
-    //   385: lload 18
-    //   387: invokestatic 286	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   390: lload 16
-    //   392: iload 9
-    //   394: invokestatic 325	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   397: iload 6
-    //   399: invokestatic 325	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   402: aload 21
-    //   404: iload 14
-    //   406: iload 15
+    //   375: istore 19
+    //   377: aload 21
+    //   379: aload 25
+    //   381: aload 23
+    //   383: aload 26
+    //   385: lload 16
+    //   387: invokestatic 289	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   390: lload 14
+    //   392: iload 5
+    //   394: invokestatic 328	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   397: iload 13
+    //   399: invokestatic 328	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   402: aload 24
+    //   404: iload 18
+    //   406: iload 19
     //   408: aload 22
-    //   410: iload_3
-    //   411: invokeinterface 144 2 0
-    //   416: invokevirtual 328	com/tencent/mobileqq/activity/qwallet/PasswdRedBagManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZI)V
+    //   410: iload_2
+    //   411: invokeinterface 146 2 0
+    //   416: invokevirtual 331	com/tencent/mobileqq/activity/qwallet/PasswdRedBagManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZI)V
     //   419: goto -176 -> 243
     //   422: astore 23
     //   424: aload 22
@@ -1267,10 +1271,10 @@ public class PasswdRedBagDBManager
     //   435: ifeq +12 -> 447
     //   438: ldc 101
     //   440: iconst_2
-    //   441: ldc_w 330
+    //   441: ldc_w 333
     //   444: invokestatic 107	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   447: aload 22
-    //   449: invokevirtual 110	java/lang/Exception:printStackTrace	()V
+    //   449: invokevirtual 181	java/lang/Exception:printStackTrace	()V
     //   452: aload 21
     //   454: ifnull +10 -> 464
     //   457: aload 21
@@ -1278,13 +1282,13 @@ public class PasswdRedBagDBManager
     //   464: aload 20
     //   466: ifnull -412 -> 54
     //   469: aload 20
-    //   471: invokevirtual 200	android/database/sqlite/SQLiteDatabase:close	()V
+    //   471: invokevirtual 203	android/database/sqlite/SQLiteDatabase:close	()V
     //   474: return
     //   475: iconst_0
-    //   476: istore 14
+    //   476: istore 18
     //   478: goto -117 -> 361
     //   481: iconst_0
-    //   482: istore 15
+    //   482: istore 19
     //   484: goto -107 -> 377
     //   487: aload 22
     //   489: ifnull +10 -> 499
@@ -1293,7 +1297,7 @@ public class PasswdRedBagDBManager
     //   499: aload 20
     //   501: ifnull -447 -> 54
     //   504: aload 20
-    //   506: invokevirtual 200	android/database/sqlite/SQLiteDatabase:close	()V
+    //   506: invokevirtual 203	android/database/sqlite/SQLiteDatabase:close	()V
     //   509: return
     //   510: astore 21
     //   512: aconst_null
@@ -1307,7 +1311,7 @@ public class PasswdRedBagDBManager
     //   530: aload 20
     //   532: ifnull +8 -> 540
     //   535: aload 20
-    //   537: invokevirtual 200	android/database/sqlite/SQLiteDatabase:close	()V
+    //   537: invokevirtual 203	android/database/sqlite/SQLiteDatabase:close	()V
     //   540: aload 21
     //   542: athrow
     //   543: astore 21
@@ -1329,23 +1333,23 @@ public class PasswdRedBagDBManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	579	0	this	PasswdRedBagDBManager
-    //   156	139	1	i	int
-    //   199	128	2	j	int
-    //   242	169	3	k	int
-    //   231	133	4	m	int
-    //   166	139	5	n	int
-    //   332	66	6	i1	int
-    //   209	107	7	i2	int
-    //   220	128	8	i3	int
-    //   322	71	9	i4	int
-    //   188	149	10	i5	int
-    //   145	128	11	i6	int
-    //   177	107	12	i7	int
-    //   134	128	13	i8	int
-    //   23	454	14	bool1	boolean
-    //   375	108	15	bool2	boolean
-    //   311	80	16	l1	long
-    //   300	86	18	l2	long
+    //   210	106	1	i	int
+    //   242	169	2	j	int
+    //   156	139	3	k	int
+    //   188	149	4	m	int
+    //   321	72	5	n	int
+    //   177	107	6	i1	int
+    //   220	128	7	i2	int
+    //   134	128	8	i3	int
+    //   166	139	9	i4	int
+    //   231	133	10	i5	int
+    //   199	127	11	i6	int
+    //   145	128	12	i7	int
+    //   332	66	13	i8	int
+    //   311	80	14	l1	long
+    //   300	86	16	l2	long
+    //   23	454	18	bool1	boolean
+    //   375	108	19	bool2	boolean
     //   1	535	20	localObject1	Object
     //   4	454	21	localObject2	Object
     //   510	31	21	localObject3	Object
@@ -1355,12 +1359,12 @@ public class PasswdRedBagDBManager
     //   16	545	22	localObject7	Object
     //   569	1	22	localException1	Exception
     //   574	1	22	localException2	Exception
-    //   257	121	23	localPasswdRedBagManager	PasswdRedBagManager
+    //   279	103	23	str1	String
     //   422	7	23	localException3	Exception
     //   556	7	23	localObject8	Object
-    //   290	94	24	str1	String
-    //   279	103	25	str2	String
-    //   268	112	26	str3	String
+    //   343	60	24	str2	String
+    //   268	112	25	str3	String
+    //   290	94	26	str4	String
     // Exception table:
     //   from	to	target	type
     //   125	243	422	java/lang/Exception

@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.nearby.now.send.capturepart.QQNowVideoFlowCallback;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.adapter.AvatarPendantAdapter;
+import java.util.List;
 
-class wxn
-  implements MediaScanner.OnMediaInfoScannerListener
+public class wxn
+  implements Runnable
 {
-  wxn(wxk paramwxk, int paramInt) {}
+  public wxn(AvatarPendantActivity paramAvatarPendantActivity, List paramList) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void run()
   {
-    this.jdField_a_of_type_Wxk.a.d();
-    if (QQNowVideoFlowCallback.a(this.jdField_a_of_type_Wxk.a, paramLocalMediaInfo)) {
-      this.jdField_a_of_type_Wxk.a.a(paramLocalMediaInfo, this.jdField_a_of_type_Int);
+    if ((this.jdField_a_of_type_JavaUtilList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.b();
     }
   }
 }

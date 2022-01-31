@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.redtouch;
 
-import ahfk;
+import ahkb;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.NumRedMsgHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -51,7 +51,7 @@ public class NumRedMsgManager
   
   private void a(long[] paramArrayOfLong, NumRedGetMsgCallback paramNumRedGetMsgCallback, String paramString, boolean paramBoolean)
   {
-    ThreadManager.post(new ahfk(this, paramArrayOfLong, paramNumRedGetMsgCallback, paramBoolean, paramString), 5, null, false);
+    ThreadManager.post(new ahkb(this, paramArrayOfLong, paramNumRedGetMsgCallback, paramBoolean, paramString), 5, null, false);
   }
   
   private boolean a()

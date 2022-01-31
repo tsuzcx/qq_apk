@@ -1,16 +1,13 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 
 public class uuo
   implements Runnable
 {
-  public uuo(ArkAppItemBubbleBuilder.Holder paramHolder1, String paramString, ArkAppItemBubbleBuilder.Holder paramHolder2) {}
+  public uuo(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
   public void run()
   {
-    String str = ArkAppCenter.b(this.jdField_a_of_type_JavaLangString);
-    ArkAppCenter.a().postToMainThread(new uup(this, str));
+    this.a.c();
   }
 }
 

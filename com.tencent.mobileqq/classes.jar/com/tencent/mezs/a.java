@@ -21,7 +21,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
-import rdn;
+import rif;
 
 public class a
   implements MQPSigCheckService.ISigCheckResultListener
@@ -317,7 +317,7 @@ public class a
     this.b = true;
     this.c = paramBoolean;
     if (this.c) {
-      new rdn(this).start();
+      new rif(this).start();
     }
     for (;;)
     {

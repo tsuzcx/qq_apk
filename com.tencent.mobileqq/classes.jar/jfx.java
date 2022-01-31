@@ -1,61 +1,28 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.MagicPlayListener;
-import com.tencent.av.business.manager.magicface.MagicfacePlayer;
-import com.tencent.mobileqq.magicface.service.SoundPoolUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.SessionInfo.Anychat_Info;
+import com.tencent.av.app.VideoAppInterface;
 
-public class jfx
-  implements MagicfaceBaseDecoder.MagicPlayListener
+class jfx
+  implements DialogInterface.OnClickListener
 {
-  public jfx(MagicfacePlayer paramMagicfacePlayer) {}
+  jfx(jfw paramjfw) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AVLog.c("AVMagicfacePlayer", "play video begin." + paramString);
-    if (this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener != null) {
-      this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener.a(paramString);
+    if (this.a.a.a().c == null) {
+      this.a.a.a().c = this.a.a.a().a.c;
     }
-  }
-  
-  public void a(String arg1, int paramInt)
-  {
-    AVLog.c("AVMagicfacePlayer", "play video end." + ??? + "|" + paramInt);
-    if (this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener != null) {
-      this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener.a(???, paramInt);
-    }
-    if (MagicfacePlayer.a(this.a) != null)
-    {
-      MagicfacePlayer.a(this.a).a();
-      MagicfacePlayer.a(this.a, null);
-    }
-    synchronized (this.a)
-    {
-      if ((this.a.jdField_b_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData != null)) {
-        this.a.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData, this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicfaceRenderListener, this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener);
-      }
-      return;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    AVLog.c("AVMagicfacePlayer", "play audio end.");
-    this.a.a(this.a.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void b(String paramString, boolean paramBoolean)
-  {
-    AVLog.c("AVMagicfacePlayer", "play audio begin.");
-    if (paramBoolean)
-    {
-      this.a.a(this.a.jdField_a_of_type_JavaLangString, 100);
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_JavaLangString, 1);
+    this.a.a.a("AnyChatReqTimeoutRunnable", 2131230741, 1, this.a.a.b);
+    this.a.a.a().a("AnyChatReqTimeoutRunnable", 6);
+    this.a.a.a.a(new Object[] { Integer.valueOf(14), Integer.valueOf(9), this.a.a.a().c });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jfx
  * JD-Core Version:    0.7.0.1
  */

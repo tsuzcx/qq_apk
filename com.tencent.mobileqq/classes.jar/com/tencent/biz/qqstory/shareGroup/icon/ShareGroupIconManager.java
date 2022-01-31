@@ -22,10 +22,10 @@ import com.tribe.async.reactive.UIThreadOffFunction;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
-import nrl;
-import nrs;
-import nrt;
-import nru;
+import nwb;
+import nwi;
+import nwj;
+import nwk;
 import org.json.JSONArray;
 
 public class ShareGroupIconManager
@@ -33,7 +33,7 @@ public class ShareGroupIconManager
 {
   private int jdField_a_of_type_Int = Math.min(UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 50.0F), 200);
   private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-  private final LruCache jdField_a_of_type_AndroidUtilLruCache = new nrs(this, 40);
+  private final LruCache jdField_a_of_type_AndroidUtilLruCache = new nwi(this, 40);
   private UrlBitmapDownloader jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlBitmapDownloader = new ShareGroupIconManager.UrlBitmapDownloaderImp();
   private AtomicReference jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference();
   private AtomicReference b = new AtomicReference();
@@ -97,17 +97,17 @@ public class ShareGroupIconManager
       return a();
     }
     String str = a(localList);
-    nrl localnrl = (nrl)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
-    paramList = localnrl;
-    if (localnrl == null) {}
+    nwb localnwb = (nwb)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
+    paramList = localnwb;
+    if (localnwb == null) {}
     synchronized (this.jdField_a_of_type_AndroidUtilLruCache)
     {
-      localnrl = (nrl)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
-      paramList = localnrl;
-      if (localnrl == null)
+      localnwb = (nwb)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
+      paramList = localnwb;
+      if (localnwb == null)
       {
-        paramList = new nrl(str, this.jdField_a_of_type_AndroidContentContext, a());
-        paramList.a(new nru(this, localList, String.valueOf(System.identityHashCode(paramList)) + "." + paramString));
+        paramList = new nwb(str, this.jdField_a_of_type_AndroidContentContext, a());
+        paramList.a(new nwk(this, localList, String.valueOf(System.identityHashCode(paramList)) + "." + paramString));
         this.jdField_a_of_type_AndroidUtilLruCache.put(str, paramList);
         IconLog.c("story.icon.ShareGroupIconManager", "create share group state for uid list, state=%s, uid=%s", Integer.valueOf(System.identityHashCode(paramList)), new JSONArray(localList));
       }
@@ -125,7 +125,7 @@ public class ShareGroupIconManager
       return new RestrictedBitmap(a());
     }
     paramList = a(paramList);
-    paramList = (nrl)this.jdField_a_of_type_AndroidUtilLruCache.get(paramList);
+    paramList = (nwb)this.jdField_a_of_type_AndroidUtilLruCache.get(paramList);
     if (paramList != null)
     {
       paramList = paramList.a();
@@ -171,17 +171,17 @@ public class ShareGroupIconManager
       return;
     }
     String str = a(a(paramList));
-    nrl localnrl = (nrl)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
-    paramList = localnrl;
-    if (localnrl == null) {}
+    nwb localnwb = (nwb)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
+    paramList = localnwb;
+    if (localnwb == null) {}
     synchronized (this.jdField_a_of_type_AndroidUtilLruCache)
     {
-      localnrl = (nrl)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
-      paramList = localnrl;
-      if (localnrl == null)
+      localnwb = (nwb)this.jdField_a_of_type_AndroidUtilLruCache.get(str);
+      paramList = localnwb;
+      if (localnwb == null)
       {
-        paramList = new nrl(str, this.jdField_a_of_type_AndroidContentContext, a());
-        paramList.a(new nrt(this, localList, String.valueOf(System.identityHashCode(paramList))));
+        paramList = new nwb(str, this.jdField_a_of_type_AndroidContentContext, a());
+        paramList.a(new nwj(this, localList, String.valueOf(System.identityHashCode(paramList))));
         this.jdField_a_of_type_AndroidUtilLruCache.put(str, paramList);
         IconLog.c("story.icon.ShareGroupIconManager", "create share group state for uin list for callback, state=%s, uin=%s", Integer.valueOf(System.identityHashCode(paramList)), new JSONArray(localList));
       }

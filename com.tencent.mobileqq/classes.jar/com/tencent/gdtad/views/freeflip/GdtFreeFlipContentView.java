@@ -3,11 +3,11 @@ package com.tencent.gdtad.views.freeflip;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.image.URLImageView;
-import qmr;
+import qri;
 
 abstract class GdtFreeFlipContentView
   extends URLImageView
-  implements qmr
+  implements qri
 {
   private boolean a;
   

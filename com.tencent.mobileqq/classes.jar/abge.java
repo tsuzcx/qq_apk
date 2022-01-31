@@ -1,25 +1,15 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.ArMapObserver;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog.POIExtarData;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.config.POIModelConfig;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-public class abge
-  extends ArMapObserver
+class abge
+  implements Runnable
 {
-  public abge(ARGridMapViewDialog paramARGridMapViewDialog) {}
+  abge(abgd paramabgd, long paramLong, POIModelConfig paramPOIModelConfig) {}
   
-  public void onQueryPOI(boolean paramBoolean, POIInfo paramPOIInfo, List paramList, int paramInt1, int paramInt2, long paramLong)
+  public void run()
   {
-    if ((this.a.a instanceof ARGridMapViewDialog.POIExtarData))
-    {
-      ARGridMapViewDialog.POIExtarData localPOIExtarData = (ARGridMapViewDialog.POIExtarData)this.a.a;
-      if (paramLong == localPOIExtarData.a) {
-        ThreadManager.getUIHandler().post(new abgf(this, paramBoolean, paramPOIInfo, paramList, localPOIExtarData, paramInt1, paramInt2));
-      }
-    }
+    this.jdField_a_of_type_Abgd.a.a.loadPoiModel(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqArmapConfigPOIModelConfig);
   }
 }
 

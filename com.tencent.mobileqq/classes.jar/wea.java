@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-public class wea
+class wea
   implements Runnable
 {
-  public wea(ZhituManager paramZhituManager, String paramString1, int paramInt1, ZhituResponse paramZhituResponse, ZhituImgResponse paramZhituImgResponse, int paramInt2, String paramString2) {}
+  wea(wdz paramwdz) {}
   
   public void run()
   {
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituImgResponse, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+    this.a.a.z(0);
   }
 }
 

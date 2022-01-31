@@ -1,60 +1,38 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.os.Build.VERSION;
-import android.widget.MediaController;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class npb
-  implements IMediaPlayer.OnPreparedListener
+  extends OnPlayModeShareListener
 {
-  public npb(TextureVideoView paramTextureVideoView) {}
-  
-  @TargetApi(15)
-  public void a_(IMediaPlayer paramIMediaPlayer)
+  public npb(NewFriendsPlayMode paramNewFriendsPlayMode, VideoPlayModeBase paramVideoPlayModeBase, boolean paramBoolean, VideoListFeedItem paramVideoListFeedItem, String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    this.a.jdField_a_of_type_Int = 2;
-    TextureVideoView localTextureVideoView1 = this.a;
-    TextureVideoView localTextureVideoView2 = this.a;
-    this.a.jdField_d_of_type_Boolean = true;
-    localTextureVideoView2.c = true;
-    localTextureVideoView1.jdField_b_of_type_Boolean = true;
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener.a_(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer);
-    }
-    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.setEnabled(true);
-    }
-    this.a.jdField_d_of_type_Int = paramIMediaPlayer.c();
-    this.a.e = paramIMediaPlayer.d();
-    int i = this.a.g;
-    if (i != 0) {
-      this.a.seekTo(i);
-    }
-    if ((this.a.jdField_d_of_type_Int != 0) && (this.a.e != 0))
+    super(paramVideoPlayModeBase);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (Build.VERSION.SDK_INT >= 15) {
-        this.a.getSurfaceTexture().setDefaultBufferSize(this.a.jdField_d_of_type_Int, this.a.e);
-      }
-      if (this.a.jdField_b_of_type_Int == 3)
-      {
-        this.a.start();
-        if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
-          this.a.jdField_a_of_type_AndroidWidgetMediaController.show();
-        }
-      }
-    }
-    while (this.a.jdField_b_of_type_Int != 3)
-    {
-      do
-      {
-        return;
-      } while ((this.a.isPlaying()) || ((i == 0) && (this.a.getCurrentPosition() <= 0)) || (this.a.jdField_a_of_type_AndroidWidgetMediaController == null));
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.show(0);
+      StoryReportor.a("host_share", "suc_share", 3, paramInt, new String[] { String.valueOf(StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
       return;
     }
-    this.a.start();
+    StoryReportor.a("host_share", "suc_share", 1, paramInt, new String[] { String.valueOf(StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      StoryReportor.a("host_share", "share_chanel", 3, paramInt, new String[] { String.valueOf(StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
+    }
+    StoryReportor.a("host_share", "share_chanel", 1, paramInt, new String[] { String.valueOf(StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 

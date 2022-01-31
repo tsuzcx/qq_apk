@@ -1,58 +1,25 @@
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 
 public class abqp
-  extends LBSObserver
+  implements Runnable
 {
-  public abqp(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public abqp(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity, int paramInt) {}
   
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public void run()
   {
-    Object localObject = null;
-    if (paramBoolean) {
-      localObject = paramLBSInfo.a();
-    }
-    if (localObject != null)
-    {
-      paramLBSInfo = (LBSInfo)localObject;
-      if (localObject.length == 4) {}
-    }
-    else
-    {
-      paramLBSInfo = new String[4];
-      paramLBSInfo[0] = "-1";
-      paramLBSInfo[1] = "-1";
-      paramLBSInfo[2] = "-1";
-      paramLBSInfo[3] = "-1";
-    }
-    if (!"-1".equals(paramLBSInfo[0]))
-    {
-      paramLBSInfo[3] = "0";
-      this.a.a.a(paramLBSInfo);
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        localObject = this.a.a.b(paramLBSInfo);
-        this.a.a.a(0, (String)localObject);
-        this.a.a.b(paramLBSInfo);
-        this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(this.a.a.c((String)localObject));
-      }
-      ConditionSearchFriendActivity.a(this.a, 1);
-      ConditionSearchFriendActivity.a(this.a);
-      this.a.c = true;
-      this.a.d = false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", mIsFirstReqLocation : " + this.a.jdField_b_of_type_Boolean + ", locationCodes[0] : " + paramLBSInfo[0]);
-    }
+    int i = this.jdField_a_of_type_Int / 1000;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i);
+    localStringBuilder.append("\"");
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarRecordActivity.jdField_a_of_type_AndroidWidgetTextView.setText(localStringBuilder);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarRecordActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(this.jdField_a_of_type_Int / 80);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abqp
  * JD-Core Version:    0.7.0.1
  */

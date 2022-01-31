@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.widget.DropdownView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.webview.sonic.SonicPreloadData;
 
-public class akuf
-  implements Runnable
+public final class akuf
+  implements Parcelable.Creator
 {
-  public akuf(DropdownView paramDropdownView) {}
-  
-  public void run()
+  public SonicPreloadData a(Parcel paramParcel)
   {
-    this.a.a = false;
+    return new SonicPreloadData(paramParcel);
+  }
+  
+  public SonicPreloadData[] a(int paramInt)
+  {
+    return new SonicPreloadData[paramInt];
   }
 }
 

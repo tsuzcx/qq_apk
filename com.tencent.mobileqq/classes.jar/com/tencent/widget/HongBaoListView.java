@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import ambx;
+import amjh;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -56,7 +56,7 @@ public class HongBaoListView
     this.jdField_a_of_type_ArrayOfBoolean = new boolean[10];
     this.jdField_a_of_type_ArrayOfFloat = new float[10];
     this.jdField_c_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new ambx(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new amjh(this));
   }
   
   public HongBaoListView(Context paramContext, AttributeSet paramAttributeSet)
@@ -66,7 +66,7 @@ public class HongBaoListView
     this.jdField_a_of_type_ArrayOfBoolean = new boolean[10];
     this.jdField_a_of_type_ArrayOfFloat = new float[10];
     this.jdField_c_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new ambx(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new amjh(this));
   }
   
   public int a()
@@ -151,24 +151,24 @@ public class HongBaoListView
     return super.isOverscrollHeadVisiable();
   }
   
-  public void k()
+  public void j()
   {
     super.setOverScrollListener(this.jdField_b_of_type_ComTencentWidgetOverScrollViewListener);
-    l();
+    k();
     setComboListener(null);
     super.setOverscrollHeader(this.jdField_d_of_type_AndroidGraphicsDrawableDrawable);
     super.setOverScrollHeader(this.jdField_b_of_type_AndroidViewView);
     super.setContentBackground(this.jdField_c_of_type_AndroidGraphicsDrawableDrawable);
     setOverscrollHeaderShadowEnable(true);
     this.g = false;
-    r();
-    o();
+    q();
+    n();
     this.mForHongBao = false;
     this.h = false;
     this.i = false;
   }
   
-  public void l()
+  public void k()
   {
     if (this.g == true)
     {
@@ -183,12 +183,12 @@ public class HongBaoListView
     OverScroller.jdField_b_of_type_Int = 400;
   }
   
-  public void m()
+  public void l()
   {
     if (this.g) {
       return;
     }
-    n();
+    m();
     this.g = true;
     super.setOverScrollListener(null);
     super.setOverscrollHeader(null);
@@ -199,7 +199,7 @@ public class HongBaoListView
     this.i = true;
   }
   
-  void n()
+  void m()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder != null) {
       return;
@@ -208,7 +208,7 @@ public class HongBaoListView
     this.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a(true, this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
   
-  public void o()
+  public void n()
   {
     if (this.h) {
       return;
@@ -216,6 +216,14 @@ public class HongBaoListView
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
     setIsShowingPreguide(false);
+  }
+  
+  public void o()
+  {
+    p();
+    this.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a(false, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.d();
+    invalidate();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -247,7 +255,7 @@ public class HongBaoListView
         return true;
       }
       this.j = false;
-      o();
+      n();
     }
   }
   
@@ -389,21 +397,13 @@ public class HongBaoListView
   
   public void p()
   {
-    q();
-    this.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a(false, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.d();
-    invalidate();
-  }
-  
-  public void q()
-  {
     this.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.c();
     if (this.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a != null) {
       this.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a.c();
     }
   }
   
-  public void r()
+  public void q()
   {
     if (!this.k) {
       return;
@@ -411,16 +411,16 @@ public class HongBaoListView
     if (QLog.isColorLevel()) {
       QLog.d("PortalManager", 2, "hideHongBao ," + this.k);
     }
-    q();
+    p();
     this.k = false;
   }
   
-  public void s()
+  public void r()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PortalManager", 2, "showHongBao ," + this.k);
     }
-    q();
+    p();
     this.k = true;
     this.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.j = 255;
   }
@@ -448,7 +448,7 @@ public class HongBaoListView
   public void setIsShowingPreguide(boolean paramBoolean)
   {
     this.m = paramBoolean;
-    l();
+    k();
   }
   
   public void setLogo(Bitmap paramBitmap, boolean paramBoolean)
@@ -506,7 +506,7 @@ public class HongBaoListView
   {
     if (paramBoolean)
     {
-      this.mOverScrollHeaderShadow = getResources().getDrawable(2130839293);
+      this.mOverScrollHeaderShadow = getResources().getDrawable(2130839312);
       return;
     }
     this.mOverScrollHeaderShadow = null;

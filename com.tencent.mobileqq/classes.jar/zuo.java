@@ -1,32 +1,18 @@
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordHelper;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.AioKeyword;
 
 public class zuo
-  implements Comparator
+  implements Runnable
 {
-  private zuo(MsgLruCache paramMsgLruCache) {}
+  public zuo(TroopHandler paramTroopHandler, oidb_0x496.AioKeyword paramAioKeyword) {}
   
-  public int a(String paramString1, String paramString2)
+  public void run()
   {
-    paramString1 = this.a.getOriginal(paramString1);
-    paramString2 = this.a.getOriginal(paramString2);
-    if ((paramString1 == null) || (paramString1.isEmpty())) {
-      return 1;
-    }
-    if ((paramString2 == null) || (paramString2.isEmpty())) {
-      return -1;
-    }
-    long l1 = ((MessageRecord)paramString1.get(paramString1.size() - 1)).time;
-    long l2 = ((MessageRecord)paramString2.get(paramString2.size() - 1)).time;
-    if (l1 > l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    ((TroopAioKeywordTipManager)this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b.getManager(224)).a(TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword), TroopAioKeywordHelper.b(this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword));
+    TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b, this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword);
   }
 }
 

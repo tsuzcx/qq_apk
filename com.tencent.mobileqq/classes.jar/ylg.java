@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.ttpic.util.youtu.VideoFaceDetector;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.video.IMediaPlayer.OnPlayStateListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ylg
-  implements Runnable
+public class ylg
+  implements IMediaPlayer.OnPlayStateListener
 {
-  public ylg(ApolloRender paramApolloRender, byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
+  public ylg(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mDetector.doFaceDetect(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b);
+    if (paramInt == 1)
+    {
+      this.a.a.setVisibility(8);
+      this.a.b.setImageResource(2130843369);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
+      }
+      return;
+      this.a.b.setImageResource(2130843368);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ylg
  * JD-Core Version:    0.7.0.1
  */

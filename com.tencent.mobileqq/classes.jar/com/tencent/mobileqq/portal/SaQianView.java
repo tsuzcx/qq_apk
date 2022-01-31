@@ -24,7 +24,7 @@ public class SaQianView
   public View a;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = { 2130842625, 2130842626, 2130842627, 2130842628, 2130842629 };
+  private int[] jdField_a_of_type_ArrayOfInt = { 2130842660, 2130842661, 2130842662, 2130842663, 2130842664 };
   private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[5];
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;

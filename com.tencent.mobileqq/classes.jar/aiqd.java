@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import android.content.Context;
+import com.tencent.mobileqq.surfaceviewaction.gl.RobotSpriteVideoView;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
 
 public class aiqd
-  implements ITransCallbackForReport
+  extends VideoSprite
 {
-  public aiqd(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public aiqd(RobotSpriteVideoView paramRobotSpriteVideoView, SpriteGLView paramSpriteGLView, Context paramContext, boolean paramBoolean)
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    super(paramSpriteGLView, paramContext, paramBoolean);
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    if (this.a.a == 0) {
+      this.a.a = paramInt2;
+    }
+    super.a(paramInt1, this.a.a);
   }
 }
 

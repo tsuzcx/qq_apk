@@ -1,16 +1,27 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.os.Build.VERSION;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnVideoSizeChangedListener;
 
 public class ntp
-  implements Runnable
+  implements IMediaPlayer.OnVideoSizeChangedListener
 {
-  public ntp(QQStoryMainController paramQQStoryMainController) {}
+  public ntp(TextureVideoView paramTextureVideoView) {}
   
-  public void run()
+  @TargetApi(15)
+  public void a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    ((QQStoryHandler)QQStoryContext.a().a(98)).a(2001, true, null);
+    this.a.d = paramIMediaPlayer.c();
+    this.a.e = paramIMediaPlayer.d();
+    if ((this.a.d != 0) && (this.a.e != 0))
+    {
+      if (Build.VERSION.SDK_INT >= 15) {
+        this.a.getSurfaceTexture().setDefaultBufferSize(this.a.d, this.a.e);
+      }
+      this.a.requestLayout();
+    }
   }
 }
 

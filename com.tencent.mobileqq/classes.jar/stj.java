@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 
-public class stj
-  implements DialogInterface.OnClickListener
+class stj
+  implements Runnable
 {
-  public stj(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  stj(sti paramsti) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    FriendProfileMoreInfoActivity.a(this.a, true);
-    this.a.a("0X80081E6", 2);
+    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) {
+      this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.g(this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+    }
+    this.a.a.a.a(2131435803, 1);
   }
 }
 

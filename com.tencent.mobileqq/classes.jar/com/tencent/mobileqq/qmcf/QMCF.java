@@ -20,13 +20,11 @@ public class QMCF
   
   public native int snpeAvaliableType();
   
-  public native void snpePoseInit(int paramInt1, int paramInt2, String paramString1, String paramString2);
+  public native String snpePoseInit(int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3, int paramInt4);
   
-  public native void snpePoseInitEnc(int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean);
+  public native String snpePoseProcess(int paramInt1, int paramInt2);
   
-  public native float[] snpePoseKeyPoints();
-  
-  public native void snpePoseProcess(int paramInt1, int paramInt2, int paramInt3);
+  public native void snpeSkeletonPose(float[] paramArrayOfFloat);
 }
 
 

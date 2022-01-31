@@ -1,20 +1,33 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.armap.ipc.ArMapIPC;
+import com.tencent.mobileqq.armap.ipc.IPCConstants;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
+import eipc.EIPCResult;
 
 public class abmv
-  implements View.OnClickListener
+  implements EIPCOnGetConnectionListener
 {
-  public abmv(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abmv(ArMapIPC paramArMapIPC) {}
   
-  public void onClick(View paramView)
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
+    paramEIPCConnection = paramEIPCConnection.procName;
+    this.a.a = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("ArMapIPC", 2, "onConnectBind " + paramEIPCConnection);
     }
+    this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    paramEIPCConnection = paramEIPCConnection.procName;
+    this.a.a = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("ArMapIPC", 2, "onConnectUnbind " + paramEIPCConnection);
+    }
+    this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
   }
 }
 

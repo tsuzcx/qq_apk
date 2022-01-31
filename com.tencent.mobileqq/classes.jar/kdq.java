@@ -1,99 +1,116 @@
 import android.os.Handler;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
+import com.tencent.av.VideoController.GAudioFriends;
+import com.tencent.av.app.GAudioUIObserver;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.app.VideoObserver;
-import com.tencent.av.ui.redbag.AVRedBag;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.RedBagReport;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
+import com.tencent.av.ui.VideoInviteFloatBar;
+import com.tencent.av.ui.VideoInviteFloatBarUICtr;
+import com.tencent.av.utils.TraeHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class kdq
-  extends VideoObserver
+  extends GAudioUIObserver
 {
-  public kdq(AVRedBag paramAVRedBag) {}
+  public kdq(VideoInviteFloatBarUICtr paramVideoInviteFloatBarUICtr) {}
   
-  protected void c()
+  protected void a()
   {
-    int i = this.a.a.a().a().d;
-    if ((i == 2) || (i == 1))
-    {
-      RedBagReport.a(this.a.a.a().c());
-      RedBagReport.g();
-      e(3);
-      return;
+    super.a();
+    this.a.c();
+  }
+  
+  protected void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "onCreateRoomSuc-->GroupID=" + paramLong);
     }
-    RedBagReport.a(0L);
-  }
-  
-  protected void c(String paramString, boolean paramBoolean)
-  {
-    paramString = this.a.a();
-    if (paramString == null) {}
-    do
-    {
-      int i;
-      do
-      {
-        return;
-        i = this.a.a.a().a().d;
-      } while ((i != 2) && (i != 1));
-      if (paramBoolean)
-      {
-        if (paramString.a != null) {
-          paramString.a.a("onPeerSwitchTerminal");
-        }
-        paramString.b("onPeerSwitchTerminal");
-        return;
-      }
-      paramString.a("onPeerSwitchTerminal");
-    } while (paramString.a == null);
-    paramString.a(paramString.a.b);
-  }
-  
-  protected void d()
-  {
-    AVRedBagMgr localAVRedBagMgr = this.a.a();
-    if (localAVRedBagMgr != null) {
-      localAVRedBagMgr.b("onPauseVideo");
+    this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.an = true;
+    if (this.a.jdField_b_of_type_Int == 1) {
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramLong);
     }
   }
   
-  protected void e()
+  protected void a(long paramLong, int paramInt)
   {
-    AVRedBagMgr localAVRedBagMgr = this.a.a();
-    if (localAVRedBagMgr != null) {
-      localAVRedBagMgr.b("onResumeVideo");
+    super.c(paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "onDestroyInviteUI-->reason=" + paramInt);
+    }
+    if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
+      this.a.a();
     }
   }
   
-  void e(int paramInt)
+  protected void a(long paramLong, String paramString)
   {
-    if (paramInt <= 0) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseGroupVideoInviteMsgBoxByInviteId-->groupId=" + paramLong);
     }
-    AVRedBagMgr localAVRedBagMgr = this.a.a();
-    if (localAVRedBagMgr != null)
-    {
-      localAVRedBagMgr.a("onConnected:" + paramInt);
-      if (localAVRedBagMgr.a != null) {
-        localAVRedBagMgr.a(localAVRedBagMgr.a.b);
+    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
+      this.a.a();
+    }
+  }
+  
+  protected void a(long paramLong, ArrayList paramArrayList, int paramInt1, int paramInt2)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      if (String.valueOf(((VideoController.GAudioFriends)paramArrayList.next()).jdField_a_of_type_Long).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount())) {
+        this.a.a();
       }
     }
-    this.a.a.a().postDelayed(new kdr(this, paramInt), 1100L);
   }
   
-  protected void e(String paramString, boolean paramBoolean)
+  protected void b(long paramLong)
   {
-    paramString = this.a.a();
-    if (paramString != null) {
-      paramString.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "onEnterRoomSuc-->GroupID=" + paramLong);
     }
-    RedBagReport.h();
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new kdr(this, paramLong), 500L);
+    this.a.jdField_a_of_type_ComTencentAvVideoController.g();
+    SmallScreenActivityPlugin.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(false);
+    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
+      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c();
+    }
+    TraeHelper.a().a(this.a.f);
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 1000L);
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr.troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
+    }
+    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
+      this.a.a();
+    }
+  }
+  
+  protected void g(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseAllGroupVideoInviteMsgBox-->notifyByGroupId=" + paramLong);
+    }
+    if (this.a.jdField_a_of_type_Long != paramLong) {}
+    this.a.a();
+  }
+  
+  protected void h(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoInviteFloatBarUICtr", 2, "notifyCloseGroupVideoInviteMsgBox-->groupId=" + paramLong);
+    }
+    if (this.a.jdField_a_of_type_Long == paramLong) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kdq
  * JD-Core Version:    0.7.0.1
  */

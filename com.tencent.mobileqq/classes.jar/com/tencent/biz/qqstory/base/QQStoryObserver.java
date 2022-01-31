@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import java.util.List;
-import mzo;
+import ndj;
 
 public class QQStoryObserver
   implements BusinessObserver
@@ -217,7 +217,7 @@ public class QQStoryObserver
                   localObject1 = (Boolean)localObject1[2];
                   if (paramBoolean)
                   {
-                    Bosses.get().postJob(new mzo(this, paramObject, (Boolean)localObject1, paramBoolean, paramInt));
+                    Bosses.get().postJob(new ndj(this, paramObject, (Boolean)localObject1, paramBoolean, paramInt));
                     return;
                   }
                   a(paramBoolean, false, paramInt, paramObject);

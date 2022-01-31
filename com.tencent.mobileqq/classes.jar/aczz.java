@@ -1,35 +1,29 @@
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.SucDownloadInfo;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadPkgInstallReceiver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 
-public class aczz
+class aczz
   implements Runnable
 {
-  public aczz(UniformDownloadPkgInstallReceiver paramUniformDownloadPkgInstallReceiver, String paramString1, String paramString2) {}
+  aczz(aczy paramaczy, HashMap paramHashMap) {}
   
   public void run()
   {
-    if (("android.intent.action.PACKAGE_ADDED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || ("android.intent.action.PACKAGE_REPLACED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)))
+    this.jdField_a_of_type_Aczy.a.a.clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      Object localObject = UniformDownloadMgr.a().a(this.b, true);
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          UniformDownloadMgr.SucDownloadInfo localSucDownloadInfo = (UniformDownloadMgr.SucDownloadInfo)((Iterator)localObject).next();
-          if (localSucDownloadInfo != null)
-          {
-            QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] send cancel notification.pkgName:" + this.b + " notificationId:" + localSucDownloadInfo.a);
-            UniformDownloadNfn.a().c(localSucDownloadInfo.a, null);
-          }
-        }
+      String str = (String)localIterator.next();
+      List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+      if (localList.size() != 0) {
+        this.jdField_a_of_type_Aczy.a.a.put(str, localList);
       }
     }
+    this.jdField_a_of_type_Aczy.a.i();
+    this.jdField_a_of_type_Aczy.a.setSelect(0);
   }
 }
 

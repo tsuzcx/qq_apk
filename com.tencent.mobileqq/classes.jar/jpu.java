@@ -1,19 +1,23 @@
-import com.tencent.av.ui.AVActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo.Medal;
 
-class jpu
-  implements Runnable
+public final class jpu
+  implements Parcelable.Creator
 {
-  jpu(jps paramjps) {}
-  
-  public void run()
+  public RecvGVideoLevelInfo.Medal a(Parcel paramParcel)
   {
-    this.a.a.b(false);
-    this.a.a.d(false);
+    return new RecvGVideoLevelInfo.Medal(paramParcel);
+  }
+  
+  public RecvGVideoLevelInfo.Medal[] a(int paramInt)
+  {
+    return new RecvGVideoLevelInfo.Medal[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jpu
  * JD-Core Version:    0.7.0.1
  */

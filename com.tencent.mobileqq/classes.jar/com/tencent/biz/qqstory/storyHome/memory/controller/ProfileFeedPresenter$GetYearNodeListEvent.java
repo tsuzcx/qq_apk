@@ -12,7 +12,7 @@ public class ProfileFeedPresenter$GetYearNodeListEvent
   
   public ProfileFeedPresenter$GetYearNodeListEvent(ProfileFeedPresenter paramProfileFeedPresenter, ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.errorInfo = paramErrorMessage;
   }
 }
 

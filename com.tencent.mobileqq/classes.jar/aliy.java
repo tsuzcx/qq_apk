@@ -1,21 +1,15 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.downloadnew.MyAppDialog;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.open.agent.BindGroupConfirmActivity;
 
-public class aliy
-  implements View.OnClickListener
+class aliy
+  implements Runnable
 {
-  public aliy(MyAppDialog paramMyAppDialog, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  aliy(alix paramalix, Bitmap paramBitmap) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog, this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
-    }
+    this.jdField_a_of_type_Alix.a.b.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

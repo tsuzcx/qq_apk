@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import akus;
-import akut;
+import alcj;
+import alck;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.res.Resources;
@@ -52,7 +52,7 @@ public class LeftPopupMenuDialog
   
   private int a()
   {
-    Object localObject1 = (LinearLayout)getContentView().findViewById(2131363057);
+    Object localObject1 = (LinearLayout)getContentView().findViewById(2131363062);
     int m = ((LinearLayout)localObject1).getChildCount();
     int j = PopupMenuDialog.a(this.jdField_a_of_type_AndroidAppActivity, 2131558951);
     int i = 0;
@@ -94,7 +94,7 @@ public class LeftPopupMenuDialog
     if ((paramIItemAdapter == null) || (paramList == null) || (paramActivity == null)) {
       throw new IllegalArgumentException("parameter itemAdapter can not be null.");
     }
-    BounceScrollView localBounceScrollView = (BounceScrollView)LayoutInflater.from(paramActivity).inflate(2130971609, null);
+    BounceScrollView localBounceScrollView = (BounceScrollView)LayoutInflater.from(paramActivity).inflate(2130971635, null);
     localBounceScrollView.setVerticalScrollBarEnabled(false);
     localBounceScrollView.mScrollFlag = 1;
     paramActivity = new LeftPopupMenuDialog(paramActivity, localBounceScrollView, paramIItemAdapter, -2, -2, true);
@@ -177,12 +177,12 @@ public class LeftPopupMenuDialog
         this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidAppActivity);
         this.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131492885));
         this.jdField_a_of_type_AndroidViewView.setContentDescription("返回");
-        this.jdField_a_of_type_AndroidViewView.setOnClickListener(new akus(this));
+        this.jdField_a_of_type_AndroidViewView.setOnClickListener(new alcj(this));
       }
       if ((!AppSetting.b) || (Build.VERSION.SDK_INT < 14)) {
         break;
       }
-      getContentView().setAccessibilityDelegate(new akut(this));
+      getContentView().setAccessibilityDelegate(new alck(this));
       return;
     }
   }
@@ -199,7 +199,7 @@ public class LeftPopupMenuDialog
     if (QLog.isColorLevel()) {
       QLog.d("LeftPopupMenuDialog", 2, "updateItemViews()");
     }
-    LinearLayout localLinearLayout = (LinearLayout)getContentView().findViewById(2131363057);
+    LinearLayout localLinearLayout = (LinearLayout)getContentView().findViewById(2131363062);
     if ((this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog$IItemAdapter == null) || (localLinearLayout == null)) {}
     do
     {
@@ -368,7 +368,7 @@ public class LeftPopupMenuDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.LeftPopupMenuDialog
  * JD-Core Version:    0.7.0.1
  */

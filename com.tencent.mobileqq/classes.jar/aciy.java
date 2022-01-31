@@ -1,26 +1,44 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class aciy
-  extends RecyclerView.AdapterDataObserver
+  extends TeamWorkFileImportObserver
 {
-  public aciy(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public aciy(MessengerService paramMessengerService) {}
   
-  public void onChanged()
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    if (ExtendFriendSquareFragment.a(this.a).a() == 0)
+    if (this.a.a != null)
     {
-      ExtendFriendSquareFragment.a(this.a).removeItemDecoration(ExtendFriendSquareFragment.a(this.a));
-      return;
+      paramTeamWorkFileImportInfo = new Bundle();
+      paramTeamWorkFileImportInfo.putString("url", null);
+      this.a.a.putBundle("response", paramTeamWorkFileImportInfo);
+      this.a.a(this.a.a);
+      this.a.a = null;
     }
-    ExtendFriendSquareFragment.a(this.a).removeItemDecoration(ExtendFriendSquareFragment.a(this.a));
-    ExtendFriendSquareFragment.a(this.a).addItemDecoration(ExtendFriendSquareFragment.a(this.a));
+  }
+  
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onFileImportSuccess");
+    }
+    if (this.a.a != null)
+    {
+      paramTeamWorkFileImportInfo = new Bundle();
+      paramTeamWorkFileImportInfo.putString("url", paramString);
+      this.a.a.putBundle("response", paramTeamWorkFileImportInfo);
+      this.a.a(this.a.a);
+      this.a.a = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aciy
  * JD-Core Version:    0.7.0.1
  */

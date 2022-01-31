@@ -1,31 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
 
-class uxu
-  implements Animation.AnimationListener
+public class uxu
 {
-  uxu(uxt paramuxt) {}
+  public int a;
+  public byte[] a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public uxu(MyParcel paramMyParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationEnd " + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationRepeat " + paramAnimation);
-    }
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GivingHeart", 2, "onAnimationStart " + paramAnimation);
-    }
+    this.jdField_a_of_type_Int = 0;
   }
 }
 

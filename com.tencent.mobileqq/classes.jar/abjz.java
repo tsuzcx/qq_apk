@@ -1,47 +1,76 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class abjz
-  implements Runnable
+  extends Handler
 {
-  public abjz(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity, RMVideoStateMgr paramRMVideoStateMgr) {}
-  
-  public void run()
+  public abjz(NonMainAppHeadLoader paramNonMainAppHeadLoader, Looper paramLooper)
   {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1001) {}
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("DynamicAvatarRecordActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
-      }
-      RecordManager.a().a().recordSubmit();
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
+      paramMessage = (ArrayList)paramMessage.obj;
+      if ((paramMessage != null) && (paramMessage.size() > 0))
       {
-        localUnsatisfiedLinkError.printStackTrace();
-        synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+        paramMessage = paramMessage.iterator();
+        while (paramMessage.hasNext())
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
+          String str1 = (String)paramMessage.next();
+          String str2 = (String)this.a.b.get(str1);
+          Bitmap localBitmap = BitmapFactory.decodeFile(str2);
+          if (localBitmap != null)
+          {
+            localBitmap = this.a.a(localBitmap);
+            if (localBitmap != null)
+            {
+              Message localMessage = Message.obtain();
+              Bundle localBundle = new Bundle();
+              localBundle.putParcelable("bmp", localBitmap);
+              localBundle.putString("uin", str1);
+              localBundle.putString("path", str2);
+              localMessage.obj = localBundle;
+              localMessage.what = 1002;
+              this.a.a.sendMessage(localMessage);
+              if (QLog.isColorLevel()) {
+                QLog.d("NonMainAppHeadLoader", 2, "decodeFile, uin:" + str1);
+              }
+            }
           }
-          QLog.d("DynamicAvatarRecordActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
         }
       }
+      return;
+    }
+    catch (OutOfMemoryError paramMessage)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("NonMainAppHeadLoader", 2, "decodeFile, OutOfMemoryError");
+      }
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("NonMainAppHeadLoader", 2, "decodeFile, exception:" + paramMessage.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abjz
  * JD-Core Version:    0.7.0.1
  */

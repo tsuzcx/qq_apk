@@ -1,39 +1,83 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.PubAccountMailJsPlugin;
+import com.tencent.biz.qqstory.utils.FileUtils;
+import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
+import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
-public class pcf
-  implements DialogInterface.OnClickListener
+class pcf
+  extends DownloadListener
 {
-  public pcf(PubAccountMailJsPlugin paramPubAccountMailJsPlugin) {}
+  pcf(pce parampce, VideoCombineHelper.CombineParams paramCombineParams, ArrayList paramArrayList, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    if (!TextUtils.isEmpty(this.a.a))
+    if (paramDownloadTask.a == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Contact menu dialog click phone = %s, which = %d", new Object[] { this.a.a, Integer.valueOf(paramInt) }));
-      }
-      switch (paramInt)
-      {
-      default: 
-        if (QLog.isColorLevel()) {
-          QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow contact button %d", new Object[] { Integer.valueOf(paramInt) }));
+      paramDownloadTask = this.jdField_a_of_type_Pce.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (paramDownloadTask.hasNext()) {
+        if (!((File)paramDownloadTask.next()).exists())
+        {
+          this.jdField_a_of_type_Pce.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Pce);
+          return;
         }
-        break;
+      }
+      try
+      {
+        paramDownloadTask = this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b.iterator();
+        int i = 1;
+        while (paramDownloadTask.hasNext())
+        {
+          String str = (String)paramDownloadTask.next();
+          File localFile = new File(this.jdField_a_of_type_Pce.a() + File.separator + "v_" + i + ".mp4");
+          this.jdField_a_of_type_JavaUtilArrayList.add(localFile.getAbsolutePath());
+          if (localFile.exists())
+          {
+            i += 1;
+          }
+          else
+          {
+            if (!localFile.exists()) {
+              localFile.createNewFile();
+            }
+            FileUtils.a(new File(str), localFile);
+            i += 1;
+          }
+        }
+        this.jdField_a_of_type_Pce.b();
+      }
+      catch (IOException paramDownloadTask)
+      {
+        QLog.e(".troop.VideoCombineHelper", 1, paramDownloadTask, new Object[0]);
+        this.jdField_a_of_type_Pce.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Pce);
+        this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b = this.jdField_a_of_type_JavaUtilArrayList;
+        this.jdField_a_of_type_Pce.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_Pce);
+        this.jdField_a_of_type_Pce.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task = new pbw(this.jdField_a_of_type_Pce.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, this.jdField_a_of_type_Pce.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener, this.jdField_a_of_type_Pce.c, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.b, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.d, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.c);
+        if (!VideoEnvironment.e((AppInterface)BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("modular_web"))) {}
+      }
+      for (;;)
+      {
+        QLog.d(".troop.trace_video_combine", 2, "downLoadTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+        return;
+        if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.a) {
+          this.jdField_a_of_type_Pce.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_Pce.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
+        } else {
+          this.jdField_a_of_type_Pce.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Pce.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Task);
+        }
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      PubAccountMailJsPlugin.e(this.a);
-      return;
-      PubAccountMailJsPlugin.f(this.a);
-      return;
-    }
-    QLog.d("PubAccountMailJsPlugin", 2, "phone is empty");
+    this.jdField_a_of_type_Pce.d = ("donwload failed!code = " + paramDownloadTask.a + "errmsg = " + paramDownloadTask.b);
+    this.jdField_a_of_type_Pce.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Pce);
   }
 }
 

@@ -1,28 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
+import com.tencent.mobileqq.apollo.view.ApolloGameHotChatController;
+import com.tencent.mobileqq.app.HotChatHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class zea
-  implements Parcelable.Creator
+public class zea
+  implements Runnable
 {
-  public FriendListHandler.QQHeadDetails a(Parcel paramParcel)
-  {
-    FriendListHandler.QQHeadDetails localQQHeadDetails = new FriendListHandler.QQHeadDetails(null);
-    localQQHeadDetails.jdField_a_of_type_Int = paramParcel.readInt();
-    localQQHeadDetails.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQQHeadDetails.jdField_a_of_type_Long = paramParcel.readLong();
-    localQQHeadDetails.jdField_a_of_type_Byte = paramParcel.readByte();
-    return localQQHeadDetails;
-  }
+  public zea(ApolloGameHotChatController paramApolloGameHotChatController, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
-  public FriendListHandler.QQHeadDetails[] a(int paramInt)
+  public void run()
   {
-    return new FriendListHandler.QQHeadDetails[paramInt];
+    ((HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zea
  * JD-Core Version:    0.7.0.1
  */

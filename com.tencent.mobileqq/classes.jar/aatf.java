@@ -1,39 +1,58 @@
-import com.tencent.mobileqq.ark.ArkAppCGI;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.arcard.ARCardShareHelper;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class aatf
-  implements aath
+class aatf
+  implements Runnable
 {
-  public aatf(ArkAppCGI paramArkAppCGI) {}
+  aatf(aate paramaate, boolean paramBoolean, String paramString) {}
   
-  public void a(aati paramaati, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void run()
   {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    if ((!paramBoolean) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("getPredownloadAppList: fail, url=%s", new Object[] { paramaati.jdField_a_of_type_JavaLangString }));
+    if (this.jdField_a_of_type_Aate.jdField_a_of_type_Aasz.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      return;
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      QRUtils.a(1, 2131433149);
+      return;
+    }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      QRUtils.a(1, 2131430006);
+      return;
+    }
+    Bitmap localBitmap = ARCardShareHelper.a(this.jdField_a_of_type_Aate.jdField_a_of_type_Aasz.a);
+    if (this.jdField_a_of_type_Aate.jdField_a_of_type_Int == 9)
+    {
+      if (this.jdField_a_of_type_Aate.jdField_a_of_type_Aasz.a.jdField_a_of_type_Boolean) {
+        ReportController.b(null, "dc00898", "", "", "0X8008F1B", "0X8008F1B", 2, 0, "", "", "", "");
+      }
+      for (;;)
+      {
+        WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, localBitmap, 0);
+        return;
+        ReportController.b(null, "dc00898", "", "", "0X8008F27", "0X8008F27", 2, 0, "", "", "", "");
+      }
+    }
+    if (this.jdField_a_of_type_Aate.jdField_a_of_type_Aasz.a.jdField_a_of_type_Boolean) {
+      ReportController.b(null, "dc00898", "", "", "0X8008F1B", "0X8008F1B", 4, 0, "", "", "", "");
     }
     for (;;)
     {
-      int i = 0;
-      while (i < paramaati.b.size())
-      {
-        paramArrayOfByte = paramaati.jdField_a_of_type_JavaUtilArrayList.get(i);
-        ArkAppCGI.ArkAppCGICallback localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramaati.b.get(i);
-        if (localArkAppCGICallback != null) {
-          localArkAppCGICallback.a(paramBoolean, localArrayList1, localArrayList2, paramArrayOfByte);
-        }
-        i += 1;
-      }
-      ArkAppCGI.a(this.a, paramArrayOfByte, localArrayList1, localArrayList2);
+      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, localBitmap, 1);
+      return;
+      ReportController.b(null, "dc00898", "", "", "0X8008F27", "0X8008F27", 4, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aatf
  * JD-Core Version:    0.7.0.1
  */

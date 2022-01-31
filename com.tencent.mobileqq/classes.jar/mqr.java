@@ -1,25 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
-import com.tencent.image.URLDrawableHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import mqq.os.MqqHandler;
 
 public class mqr
-  implements URLDrawableHandler
+  implements Runnable
 {
-  public mqr(RunningJob paramRunningJob) {}
+  private int jdField_a_of_type_Int;
+  private AbsListView jdField_a_of_type_ComTencentWidgetAbsListView;
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public mqr(ItemShowDispatcher paramItemShowDispatcher, AbsListView paramAbsListView, int paramInt)
   {
-    return false;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView = paramAbsListView;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
+  public void run()
+  {
+    QLog.d(ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher), 2, "  1秒到了 ");
+    ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher, this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
+    if (ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher)) {
+      ThreadManager.getUIHandler().postDelayed(this, 1000L);
+    }
+  }
 }
 
 

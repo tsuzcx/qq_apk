@@ -1,67 +1,97 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SubAccountBindHandler;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SubAccountObserver;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.OutputStream;
+import java.util.HashMap;
 
 public class znj
-  extends SubAccountObserver
 {
-  public znj(SubAccountBindHandler paramSubAccountBindHandler, SubAccountBackProtocData paramSubAccountBackProtocData, SubAccountManager paramSubAccountManager, boolean paramBoolean) {}
+  public int a;
+  public long a;
+  private String a;
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public long d;
+  public long e;
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public void a()
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if ((paramString3 == null) || (paramString2 == null) || (paramString1 == null))
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.d = 0L;
+    this.e = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
     {
-      if (QLog.isColorLevel())
+      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).getString(this.jdField_a_of_type_JavaLangString, null);
+      if ((paramString == null) || (paramString.length() == 0))
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack key is null or ? happen 0 ? =>");
-        if (paramString3 != null) {
-          break label107;
-        }
-        bool1 = true;
-        paramString3 = localStringBuilder.append(bool1);
-        if (paramString2 != null) {
-          break label113;
-        }
-      }
-      label107:
-      label113:
-      for (bool1 = true;; bool1 = false)
-      {
-        paramString2 = paramString3.append(bool1);
-        bool1 = bool2;
-        if (paramString1 == null) {
-          bool1 = true;
-        }
-        QLog.e("SUB_ACCOUNT", 2, bool1);
-        this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.a(2, true, this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData);
+        a();
         return;
-        bool1 = false;
-        break;
       }
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b != null) && (paramString2.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c)) && (paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b.getAccount())))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountManager.a(paramString2, paramString3, this.jdField_a_of_type_Boolean);
-      SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b, (byte)1, paramString2);
-      this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.b = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.a(2, true, this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData);
+      paramString = new DataInputStream(new ByteArrayInputStream(Base64Util.decode(paramString, 0)));
+      this.jdField_a_of_type_Int = paramString.readInt();
+      this.jdField_a_of_type_Long = paramString.readLong();
+      this.jdField_b_of_type_Long = paramString.readLong();
+      this.jdField_c_of_type_Long = paramString.readLong();
+      this.d = paramString.readLong();
+      this.e = paramString.readLong();
+      this.jdField_b_of_type_Int = paramString.readInt();
+      this.jdField_c_of_type_Int = paramString.readInt();
       return;
     }
-    if (QLog.isColorLevel())
+    catch (Exception paramString)
     {
-      paramString3 = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack error happen 1 ? =>app:");
-      if (this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b == null) {
-        bool1 = true;
-      }
-      QLog.d("SUB_ACCOUNT", 2, bool1 + " subUin:" + paramString2.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c) + " mainAccount:" + paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b.getAccount()));
+      paramString = new HashMap(3);
+      paramString.put("type", "wrong-value");
+      paramString.put("file", "MemoryManagerMemoryStat");
+      paramString.put("key", "MemoryInfomation");
+      StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "evSpError", true, 0L, 0L, paramString, null);
+      a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.a(2, true, this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData);
+  }
+  
+  public void b()
+  {
+    try
+    {
+      Object localObject = new ByteArrayOutputStream();
+      DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
+      localDataOutputStream.writeInt(this.jdField_a_of_type_Int);
+      localDataOutputStream.writeLong(this.jdField_a_of_type_Long);
+      localDataOutputStream.writeLong(this.jdField_b_of_type_Long);
+      localDataOutputStream.writeLong(this.jdField_c_of_type_Long);
+      localDataOutputStream.writeLong(this.d);
+      localDataOutputStream.writeLong(this.e);
+      localDataOutputStream.writeInt(this.jdField_b_of_type_Int);
+      localDataOutputStream.writeInt(this.jdField_c_of_type_Int);
+      localDataOutputStream.flush();
+      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
+      BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0).edit().putString(this.jdField_a_of_type_JavaLangString, Base64Util.encodeToString((byte[])localObject, 0)).commit();
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.Memory.MemoryManager", 2, "StatMemory.save exception", localException);
+    }
   }
 }
 

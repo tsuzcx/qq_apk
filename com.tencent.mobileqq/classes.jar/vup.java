@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class vup
-  implements Runnable
+class vup
+  implements DialogInterface.OnClickListener
 {
-  public vup(HotChatPie paramHotChatPie) {}
+  vup(vun paramvun) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((HotChatHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ReportController.b(this.a.a.a, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "0", "", "", "");
   }
 }
 

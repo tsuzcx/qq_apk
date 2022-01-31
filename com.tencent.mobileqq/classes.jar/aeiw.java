@@ -1,18 +1,52 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter;
+import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
+import com.tencent.mobileqq.leba.model.PluginInfo;
+import com.tencent.mobileqq.leba.view.LebaTopBarView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public class aeiw
-  implements WXShareHelper.WXShareListener
+class aeiw
+  implements Runnable
 {
-  public aeiw(AIOShareActionSheet paramAIOShareActionSheet) {}
+  aeiw(aeiv paramaeiv, List paramList) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    QLog.d("AIOShareActionSheet", 1, "WXShareResult trans:" + paramBaseResp.transaction + " ,errCode:" + paramBaseResp.errCode + " ,errStr:" + paramBaseResp.errStr);
-    WXShareHelper.a().b(this);
+    if (this.jdField_a_of_type_Aeiv.a.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_Aeiv.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    int i = this.jdField_a_of_type_Aeiv.a.jdField_a_of_type_JavaUtilList.size();
+    Iterator localIterator1 = this.jdField_a_of_type_Aeiv.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator1.hasNext())
+    {
+      LebaGridItemInfo localLebaGridItemInfo1 = (LebaGridItemInfo)localIterator1.next();
+      if ((localLebaGridItemInfo1 != null) && (localLebaGridItemInfo1.jdField_a_of_type_JavaLangString != null) && (localLebaGridItemInfo1.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo != null))
+      {
+        Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (localIterator2.hasNext())
+        {
+          LebaGridItemInfo localLebaGridItemInfo2 = (LebaGridItemInfo)localIterator2.next();
+          if ((localLebaGridItemInfo2 != null) && (localLebaGridItemInfo2.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo != null) && (localLebaGridItemInfo2.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.pkgName.equals(localLebaGridItemInfo1.jdField_a_of_type_ComTencentMobileqqLebaModelPluginInfo.pkgName))) {
+            localLebaGridItemInfo2.jdField_a_of_type_JavaLangString = localLebaGridItemInfo1.jdField_a_of_type_JavaLangString;
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_Aeiv.a.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Aeiv.a.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_Aeiv.a.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridMenuAdapter != null) {
+      this.jdField_a_of_type_Aeiv.a.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridMenuAdapter.a();
+    }
+    LebaWithFeeds.a(this.jdField_a_of_type_Aeiv.a).a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Aeiv.a.p();
+    if ((this.jdField_a_of_type_Aeiv.a.jdField_a_of_type_JavaUtilList.size() > 0) && (i == 0)) {
+      LebaWithFeeds.a(this.jdField_a_of_type_Aeiv.a, 0);
+    }
+    this.jdField_a_of_type_Aeiv.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1134007, 100L);
+    this.jdField_a_of_type_Aeiv.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1134006, 200L);
   }
 }
 

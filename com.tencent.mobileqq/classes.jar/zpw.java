@@ -1,18 +1,21 @@
-import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.automator.step.AfterSyncMsg;
-import java.util.concurrent.atomic.AtomicBoolean;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class zpw
   implements Runnable
 {
-  public zpw(AfterSyncMsg paramAfterSyncMsg) {}
+  public zpw(PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    if (!BmqqSegmentUtil.a.get()) {
-      BmqqSegmentUtil.a(BaseApplicationImpl.getContext());
+    RespondQueryQQBindingStat localRespondQueryQQBindingStat = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
+    if ((localRespondQueryQQBindingStat != null) && (TextUtils.isEmpty(localRespondQueryQQBindingStat.mobileNo)) && (localRespondQueryQQBindingStat.noBindUploadContacts == true))
+    {
+      PhoneContactManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, this.jdField_a_of_type_Boolean);
+      return;
     }
+    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

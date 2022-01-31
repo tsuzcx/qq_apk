@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.app.utils;
 
+import aado;
 import android.util.Log;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
@@ -16,9 +18,8 @@ public class PokeBigResHandler$NetEngine
   public void a(NetResp paramNetResp)
   {
     if (paramNetResp.jdField_a_of_type_Int == 0) {
-      PokeBigResHandler.a = PokeBigResHandler.b(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
+      ThreadManagerV2.excute(new aado(this, paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c), 64, null, true);
     }
-    PokeBigResHandler.a(false);
   }
 }
 

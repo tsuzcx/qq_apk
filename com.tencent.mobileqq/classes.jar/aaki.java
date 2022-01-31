@@ -1,101 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.mobileqq.ar.config.WorldCupReport;
-import com.tencent.mobileqq.armap.ResDownloadManager.IResDownloadListener;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ScanEntranceReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aaki
-  implements ResDownloadManager.IResDownloadListener
+  implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  final long jdField_a_of_type_Long = AudioHelper.a();
-  long jdField_b_of_type_Long = System.currentTimeMillis();
+  public aaki(ScanEntranceReport paramScanEntranceReport, long paramLong1, int paramInt, String paramString, long paramLong2) {}
   
-  public aaki(WorldCupMgr paramWorldCupMgr, QQAppInterface paramQQAppInterface, int paramInt) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void run()
   {
-    boolean bool2 = false;
-    if ((paramInt == 100) || (paramInt == 0) || (Math.abs(paramInt - this.jdField_a_of_type_Int) >= 10)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      long l = System.currentTimeMillis();
-      if (l - this.jdField_b_of_type_Long >= 1000L) {
-        bool2 = true;
-      }
-      if ((QLog.isDevelopLevel()) && ((bool2) || (bool1))) {
-        QLog.w("WorldCupMgr", 1, "onDownloadUpdate, md5[" + paramString2 + "], index[" + this.jdField_b_of_type_Int + "], curPercent[" + paramInt + "], lastPercent[" + this.jdField_a_of_type_Int + "], needNotify[" + bool1 + "], needNotify2[" + bool2 + "]");
-      }
-      if (bool1) {
-        this.jdField_a_of_type_Int = paramInt;
-      }
-      if (bool2) {
-        this.jdField_b_of_type_Long = l;
-      }
-      if ((bool1) || (bool2)) {
-        this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b(this.jdField_b_of_type_Int, paramInt);
-      }
-      return;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramObject instanceof aake))
-    {
-      paramString1 = (aake)paramObject;
-      paramString1.jdField_c_of_type_Long = System.currentTimeMillis();
-      paramString1.jdField_c_of_type_Boolean = false;
-      QLog.w("WorldCupMgr", 1, "onDownloadFinish, md5[" + paramString2 + "], errCode[" + paramInt + "], path[" + paramString3 + "], zipItem[" + paramString1 + "], request[" + paramString1.jdField_a_of_type_Long + "], Begin[" + paramString1.jdField_b_of_type_Long + "], End[" + paramString1.jdField_c_of_type_Long + "], 调度耗时[" + (paramString1.jdField_b_of_type_Long - paramString1.jdField_a_of_type_Long) + "], 下载耗时[" + (paramString1.jdField_c_of_type_Long - paramString1.jdField_b_of_type_Long) + "], fromPreCover[" + paramString1.jdField_c_of_type_Int + "], seq[" + this.jdField_a_of_type_Long + "], Uin[" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "]");
-      if (paramString1.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener == this) {
-        paramString1.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener = null;
-      }
-      if (paramInt != 0) {
-        break label340;
-      }
-      WorldCupConfigInfo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString1.jdField_a_of_type_Int, paramString1.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b(paramString1.jdField_a_of_type_Int, 100);
-      int i = paramString1.jdField_a_of_type_Int;
-      if (paramInt != 0) {
-        break label328;
-      }
-      bool1 = true;
-      if (paramString1.jdField_c_of_type_Int != 1) {
-        break label334;
-      }
-      label265:
-      WorldCupReport.a(i, bool1, bool2, paramString1.jdField_b_of_type_Boolean, paramString1.jdField_c_of_type_Long - paramString1.jdField_b_of_type_Long);
-      paramString1.jdField_c_of_type_Int = -1;
-    }
-    for (;;)
-    {
-      if ((paramString1.jdField_a_of_type_Boolean) || (paramString1.jdField_b_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1.jdField_b_of_type_Boolean, paramString1.jdField_a_of_type_Int + 1);
-      }
-      return;
-      label328:
-      bool1 = false;
-      break;
-      label334:
-      bool2 = false;
-      break label265;
-      label340:
-      if (paramInt == 100) {
-        this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b(paramString1.jdField_a_of_type_Int, 100);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr.b(paramString1.jdField_a_of_type_Int, -1);
-      }
-    }
-  }
-  
-  protected void finalize()
-  {
-    super.finalize();
-    QLog.w("WorldCupMgr", 1, "ZipItem.finalize, index[" + this.jdField_b_of_type_Int + "], seq[" + this.jdField_a_of_type_Long + "]");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("last_total_time", String.valueOf(this.jdField_a_of_type_Long));
+    localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("session_ids", this.jdField_a_of_type_JavaLangString);
+    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_first_ocr_tips", true, this.b, 0L, localHashMap, "");
   }
 }
 

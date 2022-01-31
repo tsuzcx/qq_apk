@@ -32,10 +32,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
-import piv;
-import piw;
-import pix;
-import piy;
+import pnn;
+import pno;
+import pnp;
+import pnq;
 
 public class NewAnimationDrawable
   extends Drawable
@@ -51,7 +51,7 @@ public class NewAnimationDrawable
   private BitmapReference jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
   private ImageLoader.Options jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options;
   private LruCache jdField_a_of_type_ComTencentComponentMediaUtilsLruCache;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new pix(this, null);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new pnp(this, null);
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private volatile boolean jdField_a_of_type_Boolean;
   private byte[] jdField_a_of_type_ArrayOfByte = new byte[16384];
@@ -73,14 +73,14 @@ public class NewAnimationDrawable
   public NewAnimationDrawable(ImageLoader.Options paramOptions)
   {
     this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options = ImageLoader.Options.copy(paramOptions);
-    this.jdField_a_of_type_AndroidOsHandler = new piv(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new pnn(this, Looper.getMainLooper());
     setReqWidth(this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipWidth);
     setReqHeight(this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipHeight);
     setDelayTime(this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.photoDelayTimeInMs);
     setFrameCounts(this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.photoList.size());
     this.g = getByteCount();
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.addAndGet(-this.g);
-    this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new piw(this, getByteCount());
+    this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new pno(this, getByteCount());
   }
   
   private static int a(Bitmap.Config paramConfig)
@@ -218,10 +218,10 @@ public class NewAnimationDrawable
       Object localObject = (WeakReference)this.jdField_b_of_type_JavaUtilMap.get(str);
       if (localObject != null)
       {
-        localObject = (piy)((WeakReference)localObject).get();
-        if ((localObject != null) && (((piy)localObject).jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.getBitmap().getGenerationId() == ((piy)localObject).jdField_a_of_type_Int))
+        localObject = (pnq)((WeakReference)localObject).get();
+        if ((localObject != null) && (((pnq)localObject).jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.getBitmap().getGenerationId() == ((pnq)localObject).jdField_a_of_type_Int))
         {
-          this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.put(str, ((piy)localObject).jdField_a_of_type_ComTencentComponentMediaImageBitmapReference);
+          this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.put(str, ((pnq)localObject).jdField_a_of_type_ComTencentComponentMediaImageBitmapReference);
           ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "get one from weakRef" });
         }
       }

@@ -1,7 +1,7 @@
 package com.tencent.open.wadl;
 
-import aljq;
-import aljr;
+import alri;
+import alrj;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -42,7 +42,7 @@ public class WadlJsBridgeCall
   public static void a(String paramString)
   {
     jdField_a_of_type_JavaUtilMap.put(paramString, new Boolean(true));
-    jdField_a_of_type_AndroidOsHandler.postDelayed(new aljq(paramString), 2000L);
+    jdField_a_of_type_AndroidOsHandler.postDelayed(new alri(paramString), 2000L);
   }
   
   private void a(List paramList)
@@ -177,11 +177,12 @@ public class WadlJsBridgeCall
         GetGameCheckCode.GetGameCheckCodeReqBody localGetGameCheckCodeReqBody = new GetGameCheckCode.GetGameCheckCodeReqBody();
         localGetGameCheckCodeReqBody.appid.set((String)localObject);
         localGetGameCheckCodeReqBody.version.set(str);
+        localGetGameCheckCodeReqBody.apk_url.set(paramWadlParams.jdField_b_of_type_JavaLangString);
         localObject = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), WebSSOAgentServlet.class);
         ((NewIntent)localObject).putExtra("extra_cmd", "GameCenterProtoSvr.GetGameCheckCode");
         ((NewIntent)localObject).putExtra("extra_data", localGetGameCheckCodeReqBody.toByteArray());
         ((NewIntent)localObject).putExtra("extra_timeout", 5000L);
-        ((NewIntent)localObject).setObserver(new aljr(this, paramWadlParams));
+        ((NewIntent)localObject).setObserver(new alrj(this, paramWadlParams));
         this.jdField_a_of_type_MqqAppAppRuntime.startServlet((NewIntent)localObject);
         return;
       }

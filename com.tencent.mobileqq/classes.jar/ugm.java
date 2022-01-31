@@ -1,60 +1,21 @@
-import android.graphics.Bitmap;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.jsbridge.JsBridge;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
+import java.util.List;
 
-public class ugm
-  extends WebViewClient
+class ugm
+  implements Runnable
 {
-  private ugm(UpgradeDetailActivity paramUpgradeDetailActivity) {}
+  ugm(ugl paramugl, TroopMemberListActivity.ATroopMember paramATroopMember) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageFinished: " + paramString);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageStarted: " + paramString);
-    }
-    if (this.a.a(paramString)) {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    }
-    try
+    this.jdField_a_of_type_Ugl.jdField_a_of_type_Ugj.a.a(this.jdField_a_of_type_Ugl.jdField_a_of_type_JavaLangString);
+    synchronized (this.jdField_a_of_type_Ugl.jdField_a_of_type_Ugj.a)
     {
-      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
+      this.jdField_a_of_type_Ugl.jdField_a_of_type_Ugj.a.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ATroopMember);
+      this.jdField_a_of_type_Ugl.jdField_a_of_type_Ugj.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
       return;
-    }
-    catch (Exception paramWebView) {}
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    return;
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a(true);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "shouldOverrideUrlLoading: " + paramString);
-    }
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
-    for (;;)
-    {
-      return true;
-      if ((!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
-        this.a.a(paramString);
-      }
     }
   }
 }

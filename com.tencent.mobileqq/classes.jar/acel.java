@@ -1,49 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.mobileqq.emosm.favroaming.SyncListener;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
 
 public class acel
-  extends SyncListener
+  implements Runnable
 {
-  public acel(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public acel(BaseMsgBoxActivity paramBaseMsgBoxActivity, boolean paramBoolean) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "upload_finish");
+    if ((this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity.a.a() == -1) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity.a();
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "download_finish");
-    }
-    ThreadManager.getUIHandler().post(new acem(this));
-    this.a.i();
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
-  }
-  
-  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
-  {
-    this.a.i();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "roaming_finish");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      ((FavroamingManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(102)).b(this.a.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingSyncListener);
-    }
-    this.a.i();
   }
 }
 

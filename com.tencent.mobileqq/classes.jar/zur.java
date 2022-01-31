@@ -1,37 +1,45 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.trooponline.data.TroopOnlineMemberManager;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xa2a.oidb_0xa2a.ReqBody;
 
 public class zur
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public zur(MsgNotifyPushDialog paramMsgNotifyPushDialog, ImageView paramImageView) {}
+  public zur(TroopHandler paramTroopHandler, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    Object localObject = (TroopOnlineMemberManager)this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b.getManager(233);
+    if (NetConnInfoCenter.getServerTime() < ((TroopOnlineMemberManager)localObject).c(this.jdField_a_of_type_JavaLangString))
     {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopHandler", 2, "getAllOnlineMemberList, too frequency");
       }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+      localObject = ((TroopOnlineMemberManager)localObject).b(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(98, true, new Object[] { this.jdField_a_of_type_JavaLangString, localObject });
+      return;
     }
-    for (;;)
+    try
     {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+      localObject = new oidb_0xa2a.ReqBody();
+      ((oidb_0xa2a.ReqBody)localObject).group_id.set(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
+      ((oidb_0xa2a.ReqBody)localObject).is_private.set(TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b, this.jdField_a_of_type_JavaLangString));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a("OidbSvc.0xa2a_1", 2602, 1, ((oidb_0xa2a.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).extraData.putString("troopUin", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b((ToServiceMsg)localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.i("TroopHandler", 1, "getAllOnlineMemberList, e=" + localException.toString());
     }
   }
 }

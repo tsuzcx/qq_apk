@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
 import mqq.os.MqqHandler;
 
 public class tgz
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public tgz(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public tgz(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    List localList = ProfileLabelEditorActivity.a(this.a, this.a.app.getCurrentAccountUin());
-    ThreadManager.getUIHandler().post(new tha(this, localList));
+    ThreadManager.getSubThreadHandler().postDelayed(new tha(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tgz
  * JD-Core Version:    0.7.0.1
  */

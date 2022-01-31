@@ -1,52 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-public class uhk
-  implements DialogInterface.OnClickListener
+class uhk
+  implements Runnable
 {
-  public uhk(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  uhk(uhj paramuhj, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.l();
-    if (VipUtils.a(this.a.app))
+    if (this.jdField_a_of_type_Uhj.a.app != null)
     {
-      if (this.a.jdField_a_of_type_Long != 0L) {
-        break label144;
-      }
-      paramDialogInterface = (String)this.a.jdField_a_of_type_JavaUtilHashMap.get(this.a.c);
-      if (!TextUtils.isEmpty(paramDialogInterface)) {
-        this.a.a(this.a.c, paramDialogInterface, false);
-      }
-    }
-    else
-    {
-      if ((this.a.jdField_a_of_type_Long != 0L) && (this.a.jdField_a_of_type_Long != 160L)) {
-        break label219;
+      localObject = (FriendsManager)this.jdField_a_of_type_Uhj.a.app.getManager(50);
+      if (localObject != null)
+      {
+        localObject = ((FriendsManager)localObject).a(this.jdField_a_of_type_JavaLangString);
+        if (localObject != null) {
+          this.jdField_a_of_type_Uhj.a.runOnUiThread(new uhl(this, (Card)localObject));
+        }
       }
     }
-    label144:
-    label219:
-    for (paramDialogInterface = "3";; paramDialogInterface = "4")
+    while (!QLog.isColorLevel())
     {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.a(), paramDialogInterface, "0");
+      Object localObject;
       return;
-      this.a.a(this.a.c, false);
-      break;
-      if (((this.a.jdField_a_of_type_Long != 160L) && (this.a.jdField_a_of_type_Long != 1600L)) || (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-        break;
-      }
-      paramDialogInterface = ProfileCardUtil.a(this.a, this.a.jdField_a_of_type_JavaLangString);
-      this.a.a(paramDialogInterface, this.a.jdField_a_of_type_JavaLangString, false);
-      break;
     }
+    QLog.d("Q.systemmsg.TroopRequestActivity", 2, "onUpdateFriendInfo app is null");
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.trooponline;
 
-import ajwt;
+import akeg;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,12 +67,12 @@ public class TroopOnlineMemberListAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969944, paramViewGroup, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969955, paramViewGroup, false);
       paramViewGroup = new TroopOnlineMemberListAdapter.ViewHolder(this);
       paramViewGroup.jdField_a_of_type_AndroidViewView = paramView;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368524));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368527));
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView = ((RoundTextView)paramView.findViewById(2131361928));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363549));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363568));
       paramView.setTag(paramViewGroup);
       localView = paramView;
       if (AppSetting.b)
@@ -89,11 +89,11 @@ public class TroopOnlineMemberListAdapter
     paramViewGroup.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setText(localTroopOnlineMemberItem.b);
     paramViewGroup.jdField_a_of_type_ComTencentMobileqqTrooponlineWidgetRoundTextView.setRoundBgColor(localTroopOnlineMemberItem.jdField_a_of_type_Int);
     paramViewGroup.jdField_a_of_type_JavaLangString = localTroopOnlineMemberItem.jdField_a_of_type_JavaLangString;
-    paramView = (ajwt)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.getTag();
+    paramView = (akeg)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.getTag();
     paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopOnlineMemberItem.c);
     if (paramView == null)
     {
-      paramView = new ajwt(this, null);
+      paramView = new akeg(this, null);
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTag(paramView);
     }
     for (;;)
@@ -114,7 +114,7 @@ public class TroopOnlineMemberListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.TroopOnlineMemberListAdapter
  * JD-Core Version:    0.7.0.1
  */

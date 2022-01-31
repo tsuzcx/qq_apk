@@ -1,21 +1,17 @@
-import android.widget.ImageButton;
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
 public class aefu
-  implements PopupWindow.OnDismissListener
+  implements Runnable
 {
-  public aefu(MedalGuideView paramMedalGuideView) {}
+  public aefu(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
-  public void onDismiss()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
-    }
-    this.a.d = true;
-    this.a.a.performClick();
+    boolean bool = UiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, UiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, null, this.jdField_a_of_type_JavaLangString, "qqbrowser_float_shortcut"), this.b, this.c);
+    ThreadManagerV2.getUIHandlerV2().post(new aefv(this, bool));
   }
 }
 

@@ -1,20 +1,13 @@
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.EditMusicExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+import dov.com.qq.im.capture.poi.FacePoiUI;
 
-public class anwa
+class anwa
   implements Runnable
 {
-  public anwa(HWEditImportVideoPlayer paramHWEditImportVideoPlayer) {}
+  anwa(anvy paramanvy) {}
   
   public void run()
   {
-    EditMusicExport localEditMusicExport = (EditMusicExport)this.a.a(EditMusicExport.class);
-    if (localEditMusicExport != null) {
-      localEditMusicExport.as_();
-    }
-    this.a.a.a(Message.obtain(null, 14));
+    FacePoiUI.a(this.a.a, 1);
   }
 }
 

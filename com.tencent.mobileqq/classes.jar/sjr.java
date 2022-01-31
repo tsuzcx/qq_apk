@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView.OnTextLineChangeListener;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class sjr
-  implements DialogInterface.OnCancelListener
+  implements FollowImageTextView.OnTextLineChangeListener
 {
-  public sjr(DialogActivity paramDialogActivity) {}
+  public sjr(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(int paramInt)
   {
-    this.a.finish();
+    if (this.a.f) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramInt <= 0) || (ChatSettingForTroop.b(this.a) == paramInt));
+      ChatSettingForTroop.a(this.a, paramInt);
+    } while (this.a.a.hasSetNewTroopHead);
+    ChatSettingForTroop.b(this.a);
   }
 }
 

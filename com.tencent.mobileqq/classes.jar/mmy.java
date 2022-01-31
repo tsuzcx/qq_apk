@@ -1,15 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
-public class mmy
-  implements Runnable
+class mmy
+  implements SceneBuilder.OnBuiltListener
 {
-  public mmy(ItemShowDispatcher paramItemShowDispatcher) {}
+  mmy(mmx parammmx) {}
   
-  public void run()
+  public void a(Layer paramLayer)
   {
-    QLog.d(ItemShowDispatcher.a(this.a), 2, "  1秒到了 ");
-    ItemShowDispatcher.a(this.a, ItemShowDispatcher.a(this.a));
+    this.a.a.a.post(new mmz(this, paramLayer));
   }
 }
 

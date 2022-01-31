@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.pic.PicBusiManager;
+import com.tencent.mobileqq.pic.PicPreDownloader;
+import com.tencent.mobileqq.pic.PicReq;
 
 public class agpu
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public agpu(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public agpu(PicPreDownloader paramPicPreDownloader, PicReq paramPicReq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.f();
+    PicBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq, this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a);
   }
 }
 

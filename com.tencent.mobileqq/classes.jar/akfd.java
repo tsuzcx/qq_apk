@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
-import com.tencent.util.InputMethodUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class akfd
-  implements Runnable
+  implements akfg
 {
-  public akfd(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
+  public akfd(TroopShareUtility paramTroopShareUtility) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    InputMethodUtil.a(this.a.a);
+    if (paramBoolean)
+    {
+      this.a.d = paramString;
+      TroopShareUtility.e(this.a);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "分享群聊失败!", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.vas.VasManager.CompleteListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public class akia
-  extends WeakReference
-  implements VasManager.CompleteListener
+class akia
+  implements Runnable
 {
-  public akia(VasManager.CompleteListener paramCompleteListener)
-  {
-    super(paramCompleteListener);
-  }
+  akia(akhy paramakhy, Exception paramException) {}
   
-  public void a(Object paramObject1, Object paramObject2)
+  public void run()
   {
-    VasManager.CompleteListener localCompleteListener = (VasManager.CompleteListener)get();
-    if (localCompleteListener != null) {
-      localCompleteListener.a(paramObject1, paramObject2);
+    this.jdField_a_of_type_Akhy.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception1" + this.jdField_a_of_type_JavaLangException.getMessage());
     }
   }
 }

@@ -10,7 +10,7 @@ public abstract interface NowHongbaoPushManager$Callback
   
   public abstract void b();
   
-  public abstract boolean b(String paramString);
+  public abstract boolean b(String paramString1, String paramString2);
   
   public abstract void c();
 }

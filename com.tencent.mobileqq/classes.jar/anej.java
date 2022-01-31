@@ -1,25 +1,19 @@
-import android.content.SharedPreferences;
-import cooperation.readinjoy.ReadInJoyHelper;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
+import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
 
 public final class anej
-  implements Runnable
+  implements IQZonePluginManager.OnPluginReadyListener
 {
-  public anej(AppRuntime paramAppRuntime) {}
-  
-  public void run()
+  public void a(boolean paramBoolean, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
   {
-    int i = 1;
-    SharedPreferences localSharedPreferences = ReadInJoyHelper.a(this.a, true, true);
-    if (localSharedPreferences == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
     }
-    if (localSharedPreferences.getBoolean("free_time_refresh_push", true)) {}
-    for (;;)
-    {
-      ReadInJoyHelper.a(i);
-      return;
-      i = 0;
+    if (paramBoolean) {
+      IQZonePluginManager.d(paramContext, paramPluginParams);
     }
   }
 }

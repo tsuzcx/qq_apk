@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import aill;
+import aiqg;
 import android.content.Context;
 import android.util.AttributeSet;
 
@@ -41,7 +41,7 @@ public class SpriteVideoView
   
   protected void a(boolean paramBoolean)
   {
-    this.a = new aill(this, this, getContext(), paramBoolean);
+    this.a = new aiqg(this, this, getContext(), paramBoolean);
     this.a.a = true;
     this.a.c = true;
     a(this.a);

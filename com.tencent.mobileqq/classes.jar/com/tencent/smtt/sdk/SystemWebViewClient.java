@@ -10,7 +10,6 @@ import android.net.http.SslCertificate;
 import android.os.Build.VERSION;
 import android.os.Message;
 import android.view.KeyEvent;
-import com.tencent.smtt.utils.QBApkProcesser;
 import com.tencent.smtt.utils.ReflectionUtils;
 import com.tencent.smtt.utils.TbsConfigFile;
 import com.tencent.smtt.utils.TbsLog;
@@ -267,12 +266,10 @@ class SystemWebViewClient
         localObject1 = paramWebResourceRequest.getUrl().toString();
       }
     }
-    if ((localObject1 == null) || (this.mWebView.showDebugView((String)localObject1))) {}
-    do
-    {
+    if ((localObject1 == null) || (this.mWebView.showDebugView((String)localObject1))) {
       return true;
-      this.mWebView.setSysWebView(paramWebView);
-    } while (QBApkProcesser.getInstance().hiJackUrl(this.mWebView.getContext().getApplicationContext(), (String)localObject1));
+    }
+    this.mWebView.setSysWebView(paramWebView);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (Build.VERSION.SDK_INT >= 24)
@@ -289,12 +286,10 @@ class SystemWebViewClient
   
   public boolean shouldOverrideUrlLoading(android.webkit.WebView paramWebView, String paramString)
   {
-    if ((paramString == null) || (this.mWebView.showDebugView(paramString))) {}
-    do
-    {
+    if ((paramString == null) || (this.mWebView.showDebugView(paramString))) {
       return true;
-      this.mWebView.setSysWebView(paramWebView);
-    } while (QBApkProcesser.getInstance().hiJackUrl(this.mWebView.getContext().getApplicationContext(), paramString));
+    }
+    this.mWebView.setSysWebView(paramWebView);
     return this.mClient.shouldOverrideUrlLoading(this.mWebView, paramString);
   }
   

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import aiao;
+import aifg;
 import android.os.Environment;
 import android.text.TextUtils;
 import com.tencent.mobileqq.qmcf.QmcfManager;
@@ -23,9 +23,9 @@ public class ResourceManager
   private static volatile ResourceManager jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager;
   public static String a;
   public static String b;
-  public static String c = Environment.getExternalStorageDirectory() + "/tencent/mobileqq/capture_ptv_template/ptv_template_usable/video_niania_iOS/";
-  public static String d = Environment.getExternalStorageDirectory() + "/video_niania_iOS/";
-  public static String e = Environment.getExternalStorageDirectory() + "/face_dance/";
+  public static String c = Environment.getExternalStorageDirectory() + "/" + "tencent/mobileqq/capture_ptv_template/ptv_template_usable/video_niania_iOS/";
+  public static String d = Environment.getExternalStorageDirectory() + "/" + "video_niania_iOS/";
+  public static String e = Environment.getExternalStorageDirectory() + "/" + "face_dance/";
   public static String f = "/sdcard/725_so/";
   public static String g = null;
   public float a;
@@ -38,7 +38,7 @@ public class ResourceManager
   public ResourceManager.ScanResource a;
   public ResourceManager.ShareResource a;
   public ResourceManager.StartResource a;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new aiao(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new aifg(this);
   public List a;
   private Map jdField_a_of_type_JavaUtilMap;
   public boolean a;
@@ -49,8 +49,8 @@ public class ResourceManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory() + "/tencent/mobileqq/capture_ptv_template/ptv_template_usable/postureRecognizeStage/";
-    jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory() + "/postureRecognizeStage/";
+    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory() + "/" + "tencent/mobileqq/capture_ptv_template/ptv_template_usable/postureRecognizeStage/";
+    jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory() + "/" + "postureRecognizeStage/";
   }
   
   private ResourceManager()
@@ -78,32 +78,32 @@ public class ResourceManager
   public static String a(String paramString)
   {
     // Byte code:
-    //   0: new 108	java/io/File
+    //   0: new 110	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 111	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 113	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_0
     //   9: new 33	java/lang/StringBuilder
     //   12: dup
     //   13: invokespecial 36	java/lang/StringBuilder:<init>	()V
     //   16: astore_2
     //   17: aload_0
-    //   18: invokevirtual 115	java/io/File:exists	()Z
+    //   18: invokevirtual 117	java/io/File:exists	()Z
     //   21: ifne +5 -> 26
     //   24: aconst_null
     //   25: areturn
-    //   26: new 117	java/io/BufferedReader
+    //   26: new 119	java/io/BufferedReader
     //   29: dup
-    //   30: new 119	java/io/FileReader
+    //   30: new 121	java/io/FileReader
     //   33: dup
     //   34: aload_0
-    //   35: invokespecial 122	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   38: invokespecial 125	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   35: invokespecial 124	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   38: invokespecial 127	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   41: astore_1
     //   42: aload_1
     //   43: astore_0
     //   44: aload_1
-    //   45: invokevirtual 128	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   45: invokevirtual 130	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   48: astore_3
     //   49: aload_3
     //   50: ifnull +34 -> 84
@@ -118,11 +118,11 @@ public class ResourceManager
     //   65: aload_1
     //   66: astore_0
     //   67: aload_2
-    //   68: invokevirtual 131	java/lang/Exception:printStackTrace	()V
+    //   68: invokevirtual 133	java/lang/Exception:printStackTrace	()V
     //   71: aload_1
     //   72: ifnull -48 -> 24
     //   75: aload_1
-    //   76: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   76: invokevirtual 136	java/io/BufferedReader:close	()V
     //   79: aconst_null
     //   80: areturn
     //   81: astore_0
@@ -131,9 +131,9 @@ public class ResourceManager
     //   84: aload_1
     //   85: ifnull +7 -> 92
     //   88: aload_1
-    //   89: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   89: invokevirtual 136	java/io/BufferedReader:close	()V
     //   92: aload_2
-    //   93: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   96: areturn
     //   97: astore_1
     //   98: aconst_null
@@ -141,7 +141,7 @@ public class ResourceManager
     //   100: aload_0
     //   101: ifnull +7 -> 108
     //   104: aload_0
-    //   105: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   105: invokevirtual 136	java/io/BufferedReader:close	()V
     //   108: aload_1
     //   109: athrow
     //   110: astore_0

@@ -1,50 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.RemoteArConfigManager;
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class abed
-  implements TVK_SDKMgr.InstallListener
+  implements Runnable
 {
-  public abed(ShopScanActivity paramShopScanActivity) {}
+  public abed(ArkRecommendController paramArkRecommendController, ArrayList paramArrayList) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 1, "video sdk, onInstallProgress, v=" + paramFloat + ", mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
-    }
-    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new abeh(this, paramFloat));
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 1, "video sdk, onInstalledFailed, i=" + paramInt + ", mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
-    }
-    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new abeg(this));
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 2, "video sdk, onInstalledSuccessed, mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
-    }
-    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
-      return;
-    }
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.a())
+    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) == null) {}
+    for (;;)
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new abee(this));
       return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        RecommendCommonMessage localRecommendCommonMessage = (RecommendCommonMessage)localIterator.next();
+        ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(localRecommendCommonMessage, this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController);
+      }
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new abef(this));
   }
 }
 

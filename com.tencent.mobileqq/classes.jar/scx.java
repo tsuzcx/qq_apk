@@ -1,44 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.Utils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class scx
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public scx(ChatSettingForTroop paramChatSettingForTroop) {}
+  public scx(ChatFragment paramChatFragment) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject1 = null;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {}
-    do
-    {
-      return;
-      localObject2 = this.a.app.getEntityManagerFactory().createEntityManager();
-      if (localObject2 != null)
-      {
-        localObject1 = ((EntityManager)localObject2).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin }, null, null, null, null);
-        ((EntityManager)localObject2).a();
-      }
-    } while (localObject1 == null);
-    Object localObject2 = new ArrayList(((List)localObject1).size());
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject1).next();
-      if (Utils.d(localTroopMemberInfo.memberuin)) {
-        ((ArrayList)localObject2).add(localTroopMemberInfo.memberuin);
-      }
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new scy(this, (ArrayList)localObject2));
+    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationEnd");
+    this.a.b(1);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationRepeat");
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationStart");
   }
 }
 

@@ -1,21 +1,25 @@
-import com.tencent.av.core.IVideoEventListener;
-import com.tencent.av.core.VcControllerImpl;
+import com.tencent.av.business.manager.EffectOperateManager;
+import java.lang.ref.WeakReference;
 
 public class jhl
-  implements Runnable
+  extends jhn
 {
-  public jhl(VcControllerImpl paramVcControllerImpl) {}
+  public jhl(EffectOperateManager paramEffectOperateManager)
+  {
+    super(paramEffectOperateManager);
+  }
   
   public void run()
   {
-    if (this.a.mEventListener != null) {
-      this.a.mEventListener.b(this.a.mPreviewW, this.a.mPreviewH);
+    EffectOperateManager localEffectOperateManager = (EffectOperateManager)this.a.get();
+    if (localEffectOperateManager != null) {
+      localEffectOperateManager.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jhl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
 
 public class agve
-  extends DiscussionObserver
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public agve(QCallFacade paramQCallFacade) {}
+  public agve(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  protected void b(boolean paramBoolean, String paramString)
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Rect paramRect, Transformation paramTransformation)
   {
-    this.a.b(paramString, 3000);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agve
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,21 @@
-import java.util.ArrayList;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class ajxy
+  implements TroopRobotManager.Callback
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList a;
-  public int b;
+  public ajxy(TroopRobotManager paramTroopRobotManager, String paramString) {}
+  
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  {
+    if (paramInt == 0) {
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopRobotManager.a.getApp(), 1, "操作失败" + "", 0).a();
+  }
 }
 
 

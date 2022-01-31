@@ -1,23 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class wuo
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public wuo(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
+  public wuo(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean)
+    if (!EmoticonGroupStoreFragment.c(this.a).isEmpty())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarActivity", 2, "new user guild confirm unbind");
+      ArrayList localArrayList = new ArrayList(EmoticonGroupStoreFragment.c(this.a));
+      Map localMap = EmoticonGroupStoreFragment.a(this.a).a(localArrayList);
+      if (localMap != null) {
+        EmoticonGroupStoreFragment.a(this.a).a(localMap, localArrayList);
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA5", "0X8006AA5", 0, 0, "", "", "", "");
     }
   }
 }

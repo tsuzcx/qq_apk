@@ -23,8 +23,8 @@ import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptur
 import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
 import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
 import com.tencent.mobileqq.widget.QQToast;
-import lib;
-import lic;
+import lkp;
+import lkq;
 
 public class ReadInJoyEffectsCameraCaptureFragment
   extends EffectsCameraCaptureFragment
@@ -60,7 +60,7 @@ public class ReadInJoyEffectsCameraCaptureFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370116));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131370125));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
@@ -89,7 +89,7 @@ public class ReadInJoyEffectsCameraCaptureFragment
   public void a(int paramInt)
   {
     super.a(paramInt);
-    this.jdField_a_of_type_AndroidOsHandler.post(new lib(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lkp(this));
   }
   
   public void a(View paramView, int paramInt)
@@ -115,15 +115,15 @@ public class ReadInJoyEffectsCameraCaptureFragment
     JumpUtil.a(this, paramVideoCaptureResult, paramLocalMediaInfo, a(true), 12, a(), 0, null, null, null);
   }
   
-  public void aj_()
+  public void al_()
   {
-    super.aj_();
-    this.jdField_a_of_type_AndroidOsHandler.post(new lic(this));
+    super.al_();
+    this.jdField_a_of_type_AndroidOsHandler.post(new lkq(this));
   }
   
   protected int b()
   {
-    return 2130971170;
+    return 2130971193;
   }
   
   protected void c()

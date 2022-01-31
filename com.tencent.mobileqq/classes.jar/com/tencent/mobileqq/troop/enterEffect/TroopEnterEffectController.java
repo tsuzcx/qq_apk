@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import ajff;
-import ajfg;
-import ajfh;
-import ajfr;
+import ajkh;
+import ajki;
+import ajkj;
+import ajkt;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
@@ -49,14 +49,14 @@ public class TroopEnterEffectController
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + ".troop/enter_effects/";
+    jdField_a_of_type_JavaLangString = AppConstants.aK + ".troop/enter_effects/";
   }
   
   public TroopEnterEffectController(QQAppInterface paramQQAppInterface, RelativeLayout paramRelativeLayout)
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new ajfr(this);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new ajkt(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
     this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface = ((DownloaderFactory)paramQQAppInterface.getManager(46)).a(1);
@@ -166,9 +166,9 @@ public class TroopEnterEffectController
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = new SpriteGLView(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), 1);
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b = true;
       localLayoutParams = new RelativeLayout.LayoutParams(-1, 0);
-      View localView1 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368277);
-      localView2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362422);
-      localView3 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363508);
+      View localView1 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368279);
+      localView2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131362425);
+      localView3 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363527);
       if ((localView1 == null) || (localView1.getVisibility() != 0)) {
         break label493;
       }
@@ -181,18 +181,18 @@ public class TroopEnterEffectController
       }
       if (this.jdField_a_of_type_AndroidWidgetScrollView == null)
       {
-        this.jdField_a_of_type_AndroidWidgetScrollView = new ajff(this, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
+        this.jdField_a_of_type_AndroidWidgetScrollView = new ajkh(this, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
         this.jdField_a_of_type_AndroidWidgetScrollView.setClickable(false);
         this.jdField_a_of_type_AndroidWidgetScrollView.setEnabled(false);
         this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, -1, DisplayUtil.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight()));
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetScrollView, localLayoutParams);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, -1, 0);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.bringChildToFront(this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363494));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.bringChildToFront(this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363500));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.bringChildToFront(this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363493));
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.setOnTouchListener(new ajfg(this, (String)localObject, paramTroopEnterEffectData));
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.post(new ajfh(this, paramTroopEnterEffectData));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.bringChildToFront(this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363513));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.bringChildToFront(this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363519));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.bringChildToFront(this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363512));
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.setOnTouchListener(new ajki(this, (String)localObject, paramTroopEnterEffectData));
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.post(new ajkj(this, paramTroopEnterEffectData));
       paramTroopEnterEffectData = (TroopEnterEffectManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(230);
       localObject = a();
       if (localObject != null) {
@@ -273,7 +273,7 @@ public class TroopEnterEffectController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController
  * JD-Core Version:    0.7.0.1
  */

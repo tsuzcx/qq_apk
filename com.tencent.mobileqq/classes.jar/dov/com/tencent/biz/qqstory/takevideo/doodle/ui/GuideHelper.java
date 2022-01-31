@@ -13,9 +13,9 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anyg;
-import anyh;
-import anyi;
+import aogy;
+import aogz;
+import aoha;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ public class GuideHelper
     if (QLog.isColorLevel()) {
       QLog.d("GuideHelper", 2, "showPasterTrackerGuideThird left =" + paramInt1 + ", top=" + paramInt2);
     }
-    if ((paramViewGroup == null) || (paramViewGroup.findViewById(2131362514) != null)) {}
+    if ((paramViewGroup == null) || (paramViewGroup.findViewById(2131362518) != null)) {}
     int j;
     RelativeLayout.LayoutParams localLayoutParams;
     int k;
@@ -42,8 +42,8 @@ public class GuideHelper
         i = ((DisplayMetrics)localObject1).widthPixels;
         j = ((DisplayMetrics)localObject1).heightPixels;
         localObject1 = new RelativeLayout(paramContext);
-        ((RelativeLayout)localObject1).setId(2131362514);
-        ((RelativeLayout)localObject1).setOnClickListener(new anyg(this, paramViewGroup));
+        ((RelativeLayout)localObject1).setId(2131362518);
+        ((RelativeLayout)localObject1).setOnClickListener(new aogy(this, paramViewGroup));
         localObject2 = new TextView(paramContext);
         ((TextView)localObject2).setText("拖动贴纸，并把贴纸盖在跟随目标上。");
         ((TextView)localObject2).setTextColor(-1);
@@ -92,7 +92,7 @@ public class GuideHelper
     if (QLog.isColorLevel()) {
       QLog.d("GuideHelper", 2, "showPasterTrackerGuideFirst left =" + paramInt1 + ", top=" + paramInt2);
     }
-    if ((paramViewGroup == null) || (paramViewGroup.findViewById(2131362514) != null)) {}
+    if ((paramViewGroup == null) || (paramViewGroup.findViewById(2131362518) != null)) {}
     int j;
     RelativeLayout.LayoutParams localLayoutParams;
     int k;
@@ -106,8 +106,8 @@ public class GuideHelper
         i = ((DisplayMetrics)localObject1).widthPixels;
         j = ((DisplayMetrics)localObject1).heightPixels;
         localObject1 = new RelativeLayout(paramContext);
-        ((RelativeLayout)localObject1).setId(2131362514);
-        ((RelativeLayout)localObject1).setOnClickListener(new anyh(this, paramViewGroup));
+        ((RelativeLayout)localObject1).setId(2131362518);
+        ((RelativeLayout)localObject1).setOnClickListener(new aogz(this, paramViewGroup));
         localObject2 = new TextView(paramContext);
         ((TextView)localObject2).setText("选中贴纸，体验贴纸跟随玩法。");
         ((TextView)localObject2).setTextColor(-1);
@@ -156,7 +156,7 @@ public class GuideHelper
     if (QLog.isColorLevel()) {
       QLog.d("GuideHelper", 2, "showPasterTrackerGuide");
     }
-    if ((paramViewGroup == null) || (paramViewGroup.findViewById(2131362514) != null)) {
+    if ((paramViewGroup == null) || (paramViewGroup.findViewById(2131362518) != null)) {
       return false;
     }
     paramInt2 = AIOUtils.a(10.0F, paramContext.getResources()) + paramInt2;
@@ -168,11 +168,11 @@ public class GuideHelper
       QLog.d("GuideHelper", 2, "showPasterGuide :left = " + paramInt1 + ", defaultBottom = " + i);
     }
     Object localObject2 = new RelativeLayout(paramContext);
-    ((RelativeLayout)localObject2).setId(2131362514);
-    ((RelativeLayout)localObject2).setOnClickListener(new anyi(this, paramViewGroup));
+    ((RelativeLayout)localObject2).setId(2131362518);
+    ((RelativeLayout)localObject2).setOnClickListener(new aoha(this, paramViewGroup));
     localObject1 = new View(paramContext);
-    ((View)localObject1).setBackgroundResource(2130841901);
-    ((View)localObject1).setId(2131362501);
+    ((View)localObject1).setBackgroundResource(2130841932);
+    ((View)localObject1).setId(2131362505);
     int n = AIOUtils.a(13.0F, paramContext.getResources());
     int m = AIOUtils.a(7.0F, paramContext.getResources());
     Object localObject3 = new RelativeLayout.LayoutParams(n, m);
@@ -183,7 +183,7 @@ public class GuideHelper
     paramViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject3);
     localObject3 = new TextView(paramContext);
     ((TextView)localObject3).setText("点这里，选择贴纸要跟随的目标。");
-    ((TextView)localObject3).setBackgroundResource(2130841902);
+    ((TextView)localObject3).setBackgroundResource(2130841933);
     ((TextView)localObject3).setTextColor(-1);
     ((TextView)localObject3).setTextSize(1, 16.0F);
     ((TextView)localObject3).setGravity(17);
@@ -247,8 +247,8 @@ public class GuideHelper
   {
     if (paramViewGroup != null)
     {
-      View localView1 = paramViewGroup.findViewById(2131362514);
-      View localView2 = paramViewGroup.findViewById(2131362501);
+      View localView1 = paramViewGroup.findViewById(2131362518);
+      View localView2 = paramViewGroup.findViewById(2131362505);
       if (localView1 != null) {
         paramViewGroup.removeView(localView1);
       }
@@ -261,29 +261,29 @@ public class GuideHelper
   public void a(ViewGroup paramViewGroup, Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
     if (paramViewGroup == null) {}
-    while ((paramViewGroup.findViewById(2131362514) != null) || (SharedPreUtils.z(paramContext, paramString)) || (!c(paramViewGroup, paramContext, paramInt1, paramInt2))) {
+    while ((paramViewGroup.findViewById(2131362518) != null) || (SharedPreUtils.C(paramContext, paramString)) || (!c(paramViewGroup, paramContext, paramInt1, paramInt2))) {
       return;
     }
-    SharedPreUtils.I(paramContext, paramString);
+    SharedPreUtils.G(paramContext, paramString);
   }
   
   public boolean a(ViewGroup paramViewGroup, Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
     if (paramViewGroup == null) {}
-    while ((paramViewGroup.findViewById(2131362514) != null) || (SharedPreUtils.A(paramContext, paramString)) || (!b(paramViewGroup, paramContext, paramInt1, paramInt2))) {
+    while ((paramViewGroup.findViewById(2131362518) != null) || (SharedPreUtils.D(paramContext, paramString)) || (!b(paramViewGroup, paramContext, paramInt1, paramInt2))) {
       return false;
     }
-    SharedPreUtils.J(paramContext, paramString);
+    SharedPreUtils.H(paramContext, paramString);
     return true;
   }
   
   public boolean b(ViewGroup paramViewGroup, Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
     if (paramViewGroup == null) {}
-    while ((paramViewGroup.findViewById(2131362514) != null) || (SharedPreUtils.y(paramContext, paramString)) || (!a(paramViewGroup, paramContext, paramInt1, paramInt2))) {
+    while ((paramViewGroup.findViewById(2131362518) != null) || (SharedPreUtils.B(paramContext, paramString)) || (!a(paramViewGroup, paramContext, paramInt1, paramInt2))) {
       return false;
     }
-    SharedPreUtils.H(paramContext, paramString);
+    SharedPreUtils.F(paramContext, paramString);
     return true;
   }
 }

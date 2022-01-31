@@ -4,12 +4,12 @@ import android.os.Message;
 import android.os.Messenger;
 import java.util.LinkedList;
 import java.util.Queue;
-import olm;
+import oqb;
 
 public class RMWServiceProxy
 {
   private int jdField_a_of_type_Int = 0;
-  private final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new olm(this));
+  private final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new oqb(this));
   private SimpleObservable jdField_a_of_type_ComTencentBizQqstoryTakevideoRmwSimpleObservable = new SimpleObservable();
   private Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
   private int b = 5;

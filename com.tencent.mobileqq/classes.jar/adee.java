@@ -1,32 +1,13 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
 
-public class adee
-  implements SeekBar.OnSeekBarChangeListener
+public final class adee
+  implements Runnable
 {
-  public adee(MusicFilePresenter paramMusicFilePresenter) {}
+  public adee(int paramInt) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      this.a.a.a(paramInt);
-      this.a.b(paramInt);
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((this.a.a != null) && (!this.a.a.b(MusicFilePresenter.a(this.a)))) {
-      this.a.a.d();
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.a.a.e();
+    FileVideoManager.b(this.a);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics.cpu;
 
-import aihb;
+import ailu;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
@@ -54,7 +54,7 @@ public class CPUReport
   {
     try
     {
-      int m = new File("/sys/devices/system/cpu/").listFiles(new aihb()).length;
+      int m = new File("/sys/devices/system/cpu/").listFiles(new ailu()).length;
       return m;
     }
     catch (Exception localException) {}

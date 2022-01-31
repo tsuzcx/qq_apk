@@ -1,32 +1,21 @@
-import com.tencent.component.media.image.ImageDefaultConfig;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
 
 public class pgy
-  implements PoolParams
+  implements View.OnClickListener
 {
-  public pgy(ImageManager paramImageManager, boolean paramBoolean) {}
+  public pgy(PubAccountUIPlugin paramPubAccountUIPlugin) {}
   
-  public PoolParams.BucketParams getBucketParams(int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return new PoolParams.BucketParams(ImageDefaultConfig.BYTE_ARRAY_LOCAL[paramInt][1], ImageDefaultConfig.BYTE_ARRAY_LOCAL[paramInt][0]);
-    }
-    return new PoolParams.BucketParams(ImageDefaultConfig.BYTE_ARRAY[paramInt][1], ImageDefaultConfig.BYTE_ARRAY[paramInt][0]);
-  }
-  
-  public int getBucketPoolSize()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return ImageDefaultConfig.BYTE_ARRAY_LOCAL.length;
-    }
-    return ImageDefaultConfig.BYTE_ARRAY.length;
+    this.a.b.setClickable(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pgy
  * JD-Core Version:    0.7.0.1
  */

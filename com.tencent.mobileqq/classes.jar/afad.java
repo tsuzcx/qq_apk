@@ -1,23 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.PinnedHeaderExpandableListView;
 
-public class afad
-  implements View.OnTouchListener
+class afad
+  implements Runnable
 {
-  public afad(PlayOperationViewModel paramPlayOperationViewModel) {}
+  afad(afac paramafac, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370581).setAlpha(0.5F);
-    }
-    for (;;)
+    this.jdField_a_of_type_Afac.a.a(this.jdField_a_of_type_Boolean, this.b);
+    this.jdField_a_of_type_Afac.a.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.springBackOverScrollHeaderView();
+    if (this.b)
     {
-      return false;
-      this.a.a.findViewById(2131370581).setAlpha(1.0F);
+      this.jdField_a_of_type_Afac.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Afac.a.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setSelection(0);
+      }
+      return;
     }
+    QQToast.a(this.jdField_a_of_type_Afac.a, 1, this.jdField_a_of_type_Afac.a.getString(2131434365), 0).b(this.jdField_a_of_type_Afac.a.getTitleBarHeight());
   }
 }
 

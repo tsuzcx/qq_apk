@@ -1,95 +1,50 @@
-import com.tencent.mobileqq.utils.RandomAccessFileManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.unifiedebug.UnifiedDebugReporter;
+import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogRsp;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import mqq.observer.BusinessObserver;
 
 public class akfw
-  implements Runnable
+  implements BusinessObserver
 {
-  public akfw(RandomAccessFileManager paramRandomAccessFileManager) {}
+  public akfw(UnifiedDebugReporter paramUnifiedDebugReporter) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    try
+    if (paramBoolean)
     {
-      for (;;)
+      paramBundle = paramBundle.getByteArray("extra_data");
+      if (paramBundle == null) {}
+    }
+    while (!QLog.isColorLevel()) {
+      try
       {
-        Thread.sleep(1000L);
-        synchronized (RandomAccessFileManager.a(this.a))
+        RemoteDebugReportMsg.RemoteLogRsp localRemoteLogRsp = new RemoteDebugReportMsg.RemoteLogRsp();
+        localRemoteLogRsp.mergeFrom(paramBundle);
+        if (localRemoteLogRsp.i32_ret.has())
         {
-          if (!RandomAccessFileManager.a(this.a).isEmpty()) {}
-        }
-        Object localObject3;
-        synchronized (RandomAccessFileManager.b(this.a))
-        {
-          RandomAccessFileManager.a(this.a, null);
-          return;
-          String[] arrayOfString = new String[RandomAccessFileManager.a(this.a).size()];
-          ??? = RandomAccessFileManager.a(this.a).keySet().iterator();
-          int i = 0;
-          while (((Iterator)???).hasNext())
-          {
-            arrayOfString[i] = ((String)((Iterator)???).next());
-            i += 1;
-          }
-          if (j < i)
-          {
-            localakfx2 = (akfx)RandomAccessFileManager.a(this.a).get(arrayOfString[j]);
-            akfx localakfx1;
-            for (??? = localakfx2.jdField_b_of_type_Akfx;; localObject3 = localakfx1)
-            {
-              localakfx1 = ((akfx)???).jdField_b_of_type_Akfx;
-              if (((akfx)???).jdField_a_of_type_Int != 0) {
-                break;
-              }
-              long l1 = System.currentTimeMillis();
-              long l2 = ((akfx)???).jdField_b_of_type_Long;
-              if (l1 - l2 <= 1000L) {
-                break;
-              }
-              try
-              {
-                ((akfx)???).jdField_a_of_type_JavaIoRandomAccessFile.close();
-                if (QLog.isColorLevel()) {
-                  QLog.d("AppleMojiHandler", 2, "file " + arrayOfString[j] + "[" + ((akfx)???).jdField_a_of_type_Long + "]" + " close by Thread:" + Thread.currentThread().getId());
-                }
-                RandomAccessFileManager.a(this.a, localakfx2, (akfx)???, arrayOfString[j], RandomAccessFileManager.a(this.a));
-              }
-              catch (IOException localIOException)
-              {
-                for (;;)
-                {
-                  localIOException.printStackTrace();
-                }
-              }
-              localObject2 = finally;
-              throw localObject2;
-            }
+          paramInt = localRemoteLogRsp.i32_ret.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("UnifiedDebugReporter", 2, "onReceive: retCode=" + paramInt);
           }
         }
+        return;
       }
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        akfx localakfx2;
-        continue;
-        int j = 0;
-        continue;
-        if (localakfx2 == localInterruptedException) {
-          j += 1;
-        }
+        while (!QLog.isColorLevel()) {}
+        QLog.e("UnifiedDebugReporter", 2, "onReceive: exception=" + paramBundle.getMessage());
+        return;
       }
     }
+    QLog.e("UnifiedDebugReporter", 2, "onReceive: isSuccess=" + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfw
  * JD-Core Version:    0.7.0.1
  */

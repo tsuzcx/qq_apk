@@ -1,18 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
 
-public final class akbt
-  implements MediaPlayer.OnCompletionListener
+class akbt
+  implements View.OnClickListener
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  akbt(akbs paramakbs, TroopMoreDetailView paramTroopMoreDetailView) {}
+  
+  public void onClick(View paramView)
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbt
  * JD-Core Version:    0.7.0.1
  */

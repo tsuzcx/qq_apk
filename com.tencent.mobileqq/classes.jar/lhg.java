@@ -1,16 +1,21 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 
-class lhg
-  implements Runnable
+public class lhg
+  implements View.OnClickListener
 {
-  lhg(lhe paramlhe, int paramInt) {}
+  public lhg(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setProgress(this.jdField_a_of_type_Int);
-    ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Lhe.a).setText(this.jdField_a_of_type_Int + "%");
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80078A6", "0X80078A6", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
+    paramView = new Intent(this.a, ReadinjoyMsgManagerActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

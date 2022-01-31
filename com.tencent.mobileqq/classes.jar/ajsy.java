@@ -1,16 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
 
 public class ajsy
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public ajsy(RedDotAnimateView paramRedDotAnimateView) {}
+  public ajsy(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.c = ((int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F));
-    this.a.invalidate();
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.a.a();
   }
 }
 

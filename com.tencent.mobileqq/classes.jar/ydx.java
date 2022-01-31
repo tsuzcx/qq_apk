@@ -1,13 +1,24 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthConvertor;
 
-public class ydx
-  implements Runnable
+public final class ydx
+  implements ExtendEditText.LengthConvertor
 {
-  public ydx(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void run()
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    this.a.p();
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
+  }
+  
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
   }
 }
 

@@ -29,7 +29,7 @@ public class NewDividerSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2130970708, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2130970724, paramViewGroup, false));
   }
   
   public String a()

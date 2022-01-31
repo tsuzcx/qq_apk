@@ -47,7 +47,7 @@ public class AppleEmojiHandler
       }
       return;
     }
-    PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putString("apple_emoji_file", AppConstants.aJ + "early/" + localFile.getName()).commit();
+    PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putString("apple_emoji_file", AppConstants.aK + "early/" + localFile.getName()).commit();
     AppleEmojiManager.a(localFile);
     super.a(paramString);
   }

@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
 
-public class ybi
+class ybi
   implements Runnable
 {
-  public ybi(SelectMemberBuddyListAdapter paramSelectMemberBuddyListAdapter) {}
+  ybi(ybf paramybf) {}
   
   public void run()
   {
-    this.a.notifyDataSetChanged();
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr.a != null) {
+      localRMVideoStateMgr.a.r();
+    }
   }
 }
 

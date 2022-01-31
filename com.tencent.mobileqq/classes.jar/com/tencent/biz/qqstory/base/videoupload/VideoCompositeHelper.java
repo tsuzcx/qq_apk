@@ -58,9 +58,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
-import nat;
-import nau;
-import nav;
+import neo;
+import nep;
+import neq;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -283,7 +283,7 @@ public class VideoCompositeHelper
     {
       try
       {
-        FFmpegUtils.a(paramString, str, paramInt, new nau(localObject1, localAtomicInteger, 1));
+        FFmpegUtils.a(paramString, str, paramInt, new nep(localObject1, localAtomicInteger, 1));
       }
       catch (IOException localIOException)
       {
@@ -373,7 +373,7 @@ public class VideoCompositeHelper
     SLog.d(a, "Set time stamp to video. ");
     try
     {
-      FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramString2, new nau(localObject, localAtomicInteger, 3));
+      FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramString2, new nep(localObject, localAtomicInteger, 3));
       try
       {
         localObject.wait(180000L);
@@ -633,7 +633,7 @@ public class VideoCompositeHelper
     paramString2 = new AtomicInteger(-1);
     try
     {
-      FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramInt1, paramInt2 - paramInt1, paramInt3, paramBoolean, paramString3, new nau(paramPublishVideoEntry, paramString2, 1));
+      FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramInt1, paramInt2 - paramInt1, paramInt3, paramBoolean, paramString3, new nep(paramPublishVideoEntry, paramString2, 1));
       try
       {
         paramPublishVideoEntry.wait(180000L);
@@ -815,12 +815,12 @@ public class VideoCompositeHelper
     //   54: iload_3
     //   55: invokestatic 350	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   58: aload_2
-    //   59: new 301	nau
+    //   59: new 301	nep
     //   62: dup
     //   63: aload 6
     //   65: aload 7
     //   67: iconst_4
-    //   68: invokespecial 304	nau:<init>	(Ljava/lang/Object;Ljava/util/concurrent/atomic/AtomicInteger;I)V
+    //   68: invokespecial 304	nep:<init>	(Ljava/lang/Object;Ljava/util/concurrent/atomic/AtomicInteger;I)V
     //   71: invokestatic 966	com/tencent/biz/qqstory/utils/ffmpeg/FFmpegUtils:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/biz/qqstory/utils/ffmpeg/FFmpegExecuteResponseCallback;)V
     //   74: aload 6
     //   76: monitorenter
@@ -919,17 +919,17 @@ public class VideoCompositeHelper
       i = ((Integer)((StoryConfigManager)localObject).b("int_story_debug_bitrate", Integer.valueOf(2000))).intValue();
       int j = ((Integer)((StoryConfigManager)localObject).b("int_story_debug_bitrate_mode", Integer.valueOf(-1))).intValue();
       paramBoolean = ((Boolean)((StoryConfigManager)localObject).b("boolean_story_debug_use_high_profile", Boolean.valueOf(false))).booleanValue();
-      paramPublishVideoEntry = new dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo.EditParam(i * 1000, paramPublishVideoEntry);
-      paramPublishVideoEntry.a();
-      paramPublishVideoEntry.b(j);
-      localObject = paramPublishVideoEntry;
+      dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo.EditParam localEditParam = new dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo.EditParam(i * 1000, paramPublishVideoEntry);
+      localEditParam.a();
+      localEditParam.b(j);
+      localObject = localEditParam;
       if (paramBoolean)
       {
-        paramPublishVideoEntry.c(8);
-        localObject = paramPublishVideoEntry;
+        localEditParam.c(8);
+        localObject = localEditParam;
       }
     }
-    int i = new dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo().a(paramString1, paramString2, (dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo.EditParam)localObject);
+    int i = new dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo().a(paramString1, paramString2, (dov.com.tencent.mobileqq.richmedia.mediacodec.MergeEditVideo.EditParam)localObject, paramPublishVideoEntry);
     SLog.d(a, "[videoSynthesis]generate files|first step cost:" + (SystemClock.elapsedRealtime() - l) / 1000.0D);
     return i;
   }
@@ -980,7 +980,7 @@ public class VideoCompositeHelper
       localAtomicInteger = new AtomicInteger(942010);
       try
       {
-        FFmpegUtils.b(BaseApplicationImpl.getApplication(), paramString1, paramString2, new nau(localObject, localAtomicInteger, 2));
+        FFmpegUtils.b(BaseApplicationImpl.getApplication(), paramString1, paramString2, new nep(localObject, localAtomicInteger, 2));
         try
         {
           localObject.wait(300000L);
@@ -1018,7 +1018,7 @@ public class VideoCompositeHelper
     }
     try
     {
-      FFmpegUtils.b(BaseApplicationImpl.getApplication(), str, paramString2, new nau(localObject, localAtomicInteger, 2));
+      FFmpegUtils.b(BaseApplicationImpl.getApplication(), str, paramString2, new nep(localObject, localAtomicInteger, 2));
       try
       {
         localObject.wait(300000L);
@@ -1098,10 +1098,10 @@ public class VideoCompositeHelper
   {
     if (paramPublishVideoEntry.businessId == 1)
     {
-      a(paramPublishVideoEntry, paramString, false, false, paramVideoCompositeCallBack);
+      a(paramPublishVideoEntry, paramString, false, true, paramVideoCompositeCallBack);
       return;
     }
-    a(paramPublishVideoEntry, paramString, true, false, paramVideoCompositeCallBack);
+    a(paramPublishVideoEntry, paramString, true, true, paramVideoCompositeCallBack);
   }
   
   public void a(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, boolean paramBoolean, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
@@ -1122,7 +1122,7 @@ public class VideoCompositeHelper
     {
       if ((paramPublishVideoEntry.isLocalPublish) && (paramPublishVideoEntry.isPicture))
       {
-        FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, new nav(paramString1, paramString2, paramVideoCompositeCallBack));
+        FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, new neq(paramString1, paramString2, paramVideoCompositeCallBack));
         return;
       }
     }
@@ -1133,7 +1133,7 @@ public class VideoCompositeHelper
       paramVideoCompositeCallBack.a(941000, "combine audio exception", "");
       return;
     }
-    FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, paramBoolean, new nav(paramString1, paramString2, paramVideoCompositeCallBack));
+    FFmpegUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramPublishVideoEntry.backgroundMusicPath, paramPublishVideoEntry.backgroundMusicOffset, paramPublishVideoEntry.backgroundMusicDuration, paramString2, paramBoolean, new neq(paramString1, paramString2, paramVideoCompositeCallBack));
   }
   
   public void a(@NonNull PublishVideoEntry paramPublishVideoEntry, @NonNull String paramString, boolean paramBoolean1, boolean paramBoolean2, @NonNull VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
@@ -1142,7 +1142,7 @@ public class VideoCompositeHelper
     AssertUtils.a(paramString);
     AssertUtils.a(paramVideoCompositeCallBack);
     SLog.d(a, "composite create thread");
-    ThreadManager.newFreeThread(new nat(this, paramPublishVideoEntry, paramString, paramBoolean1, paramBoolean2, paramVideoCompositeCallBack), "StoryVideoComposite", 5).start();
+    ThreadManager.newFreeThread(new neo(this, paramPublishVideoEntry, paramString, paramBoolean1, paramBoolean2, paramVideoCompositeCallBack), "StoryVideoComposite", 5).start();
   }
   
   public void b(PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)

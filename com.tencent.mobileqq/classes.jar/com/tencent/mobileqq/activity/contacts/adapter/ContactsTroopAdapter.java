@@ -66,15 +66,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import wma;
-import wmb;
-import wmc;
-import wmd;
-import wmf;
-import wmg;
-import wmi;
-import wmj;
-import wmk;
+import wrk;
+import wrl;
+import wrm;
+import wrn;
+import wrp;
+import wrq;
+import wrs;
+import wrt;
+import wru;
 
 public class ContactsTroopAdapter
   extends SwipFacePreloadExpandableAdapter
@@ -84,7 +84,7 @@ public class ContactsTroopAdapter
   public Context a;
   protected DiscussionManager a;
   public QQAppInterface a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new wmk(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new wru(this);
   protected SwipTextViewMenuBuilder a;
   public HashSet a;
   public List a;
@@ -116,7 +116,7 @@ public class ContactsTroopAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_b_of_type_Int = ((int)(paramContext.getResources().getDisplayMetrics().density * 56.0F));
     this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131559316);
-    this.jdField_a_of_type_ComTencentWidgetSwipTextViewMenuBuilder = new wma(this, 1, 1, new int[] { paramContext.getResources().getDimensionPixelSize(2131558645) }, -1, new int[] { 2131370009, 2131370009 }, new int[] { 2131435388, 2131435389 }, new int[] { 2130838683, 2130838683 });
+    this.jdField_a_of_type_ComTencentWidgetSwipTextViewMenuBuilder = new wrk(this, 1, 1, new int[] { paramContext.getResources().getDimensionPixelSize(2131558645) }, -1, new int[] { 2131370018, 2131370018 }, new int[] { 2131435404, 2131435405 }, new int[] { 2130838691, 2130838691 });
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppDiscussionManager = ((DiscussionManager)paramQQAppInterface.getManager(52));
   }
@@ -578,12 +578,12 @@ public class ContactsTroopAdapter
   
   private void i()
   {
-    ThreadManager.post(new wmg(this, (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a()), 8, null, true);
+    ThreadManager.post(new wrq(this, (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a()), 8, null, true);
   }
   
   public int a()
   {
-    return 2130968808;
+    return 2130968812;
   }
   
   public void a()
@@ -652,13 +652,13 @@ public class ContactsTroopAdapter
     if (!(paramView.getTag() instanceof BuddyListAdapter.GroupTag))
     {
       localGroupTag = new BuddyListAdapter.GroupTag();
-      localGroupTag.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363840));
-      localGroupTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131363842));
+      localGroupTag.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363864));
+      localGroupTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131363866));
       localGroupTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setDefaultTextColor(-8355712);
-      localGroupTag.b = ((SingleLineTextView)paramView.findViewById(2131363844));
-      localGroupTag.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = ((SimpleTextView)paramView.findViewById(2131363843));
+      localGroupTag.b = ((SingleLineTextView)paramView.findViewById(2131363868));
+      localGroupTag.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = ((SimpleTextView)paramView.findViewById(2131363867));
       localGroupTag.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setDefaultTextColor(1711276032);
-      localGroupTag.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131363841));
+      localGroupTag.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131363865));
       paramView.setTag(localGroupTag);
     }
     for (;;)
@@ -668,12 +668,12 @@ public class ContactsTroopAdapter
         break;
       }
       paramView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493366));
-      localGroupTag.jdField_a_of_type_AndroidWidgetCheckBox.setBackgroundResource(2130838659);
+      localGroupTag.jdField_a_of_type_AndroidWidgetCheckBox.setBackgroundResource(2130838665);
       return;
       localGroupTag = (BuddyListAdapter.GroupTag)paramView.getTag();
     }
-    paramView.setBackgroundResource(2130845865);
-    localGroupTag.jdField_a_of_type_AndroidWidgetCheckBox.setBackgroundResource(2130838658);
+    paramView.setBackgroundResource(2130845945);
+    localGroupTag.jdField_a_of_type_AndroidWidgetCheckBox.setBackgroundResource(2130838664);
   }
   
   public void a(View paramView, int paramInt, BuddyListItem.ViewTag paramViewTag, View.OnClickListener paramOnClickListener, Object paramObject)
@@ -731,7 +731,7 @@ public class ContactsTroopAdapter
   
   public void b()
   {
-    ThreadManager.getUIHandler().post(new wmf(this));
+    ThreadManager.getUIHandler().post(new wrp(this));
   }
   
   public void c() {}
@@ -778,12 +778,12 @@ public class ContactsTroopAdapter
   {
     if ((paramInt2 == getChildrenCount(paramInt1) - 1) && (this.jdField_a_of_type_ArrayOfInt[paramInt1] == 1))
     {
-      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971669, null);
-      paramView = (TextView)((View)localObject1).findViewById(2131375306);
+      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971698, null);
+      paramView = (TextView)((View)localObject1).findViewById(2131375366);
       paramViewGroup = "展示最近不活跃的群(" + this.jdField_c_of_type_ArrayOfInt[paramInt1] + ")";
       paramView.setText(paramViewGroup);
-      ((View)localObject1).setOnClickListener(new wmb(this, paramInt1));
-      ((View)localObject1).setOnTouchListener(new wmc(this, paramView));
+      ((View)localObject1).setOnClickListener(new wrl(this, paramInt1));
+      ((View)localObject1).setOnTouchListener(new wrm(this, paramView));
       ((View)localObject1).setContentDescription(paramViewGroup + "按钮");
       if (ThemeUtil.isNowThemeIsDefaultCache(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false)) {
         ((View)localObject1).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493366));
@@ -800,24 +800,24 @@ public class ContactsTroopAdapter
       do
       {
         return localObject1;
-        ((View)localObject1).setBackgroundResource(2130838587);
+        ((View)localObject1).setBackgroundResource(2130838593);
         return localObject1;
         if ((paramView == null) || (!(paramView.getTag() instanceof BuddyListTroop.TroopDisChildTag)))
         {
-          localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971670, null);
-          ((View)localObject1).setBackgroundResource(2130838587);
+          localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971699, null);
+          ((View)localObject1).setBackgroundResource(2130838593);
           ((View)localObject1).setMinimumHeight(this.jdField_b_of_type_Int);
           paramViewGroup = new BuddyListTroop.TroopDisChildTag();
           paramView = this.jdField_a_of_type_ComTencentWidgetSwipTextViewMenuBuilder.a(this.jdField_a_of_type_AndroidContentContext, (View)localObject1, paramViewGroup, -1);
           paramViewGroup.f = ((View)localObject1);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363896));
-          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363901));
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362719));
-          paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365597));
-          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375307));
-          paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375309));
-          paramViewGroup.d = ((ImageView)paramView.findViewById(2131366587));
-          localObject1 = paramView.getResources().getColorStateList(2131494219);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363921));
+          paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363926));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362724));
+          paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365602));
+          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375367));
+          paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375369));
+          paramViewGroup.d = ((ImageView)paramView.findViewById(2131366585));
+          localObject1 = paramView.getResources().getColorStateList(2131494225);
           paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject1);
           paramView.setTag(paramViewGroup);
           paramViewGroup.jdField_b_of_type_Int = paramInt1;
@@ -835,7 +835,7 @@ public class ContactsTroopAdapter
             break label839;
           }
           paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846076);
+          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846158);
           TextView localTextView = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
           if (TextUtils.isEmpty(((TroopInfo)localObject2).getTroopName())) {
             break label880;
@@ -861,13 +861,13 @@ public class ContactsTroopAdapter
             break label958;
           }
           paramViewGroup.d.setVisibility(0);
-          paramViewGroup.d.setBackgroundResource(2130841430);
+          paramViewGroup.d.setBackgroundResource(2130841457);
           if (((TroopInfo)localObject2).troopCreditLevel != 2L) {
             break label1017;
           }
           paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
           paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846081);
+          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846163);
         }
         for (;;)
         {
@@ -887,7 +887,7 @@ public class ContactsTroopAdapter
             break label521;
           }
           paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838661);
+          paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838667);
           break label521;
           localObject1 = ((TroopInfo)localObject2).troopuin;
           break label546;
@@ -899,7 +899,7 @@ public class ContactsTroopAdapter
           if (((TroopInfo)localObject2).dwAuthGroupType == 1L)
           {
             paramViewGroup.d.setVisibility(0);
-            paramViewGroup.d.setBackgroundResource(2130841430);
+            paramViewGroup.d.setBackgroundResource(2130841457);
             break label724;
           }
           paramViewGroup.d.setVisibility(8);
@@ -910,7 +910,7 @@ public class ContactsTroopAdapter
           {
             paramViewGroup.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
             paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846079);
+            paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846161);
           }
           else
           {
@@ -1032,15 +1032,15 @@ public class ContactsTroopAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968808, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968812, paramViewGroup, false);
       paramViewGroup = new BuddyListAdapter.GroupTag();
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131363842));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131363866));
       paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setDefaultTextColor(-8355712);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363840));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = ((SimpleTextView)paramView.findViewById(2131363843));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131363864));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = ((SimpleTextView)paramView.findViewById(2131363867));
       paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setDefaultTextColor(1711276032);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131363841));
-      paramViewGroup.b = ((SingleLineTextView)paramView.findViewById(2131363844));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131363865));
+      paramViewGroup.b = ((SingleLineTextView)paramView.findViewById(2131363868));
       paramView.setTag(paramViewGroup);
     }
     while (this.jdField_a_of_type_JavaUtilList.size() == 1)
@@ -1053,9 +1053,9 @@ public class ContactsTroopAdapter
     ColorStateList localColorStateList;
     if (ThemeUtil.isNowThemeIsDefaultCache(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false))
     {
-      localColorStateList = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494268);
-      paramView.setBackgroundResource(2130838669);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setBackgroundResource(2130838659);
+      localColorStateList = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494274);
+      paramView.setBackgroundResource(2130838675);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setBackgroundResource(2130838665);
     }
     for (;;)
     {
@@ -1063,9 +1063,9 @@ public class ContactsTroopAdapter
       a(paramViewGroup, paramInt, paramBoolean);
       paramView.setOnClickListener(this);
       return paramView;
-      localColorStateList = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494267);
-      paramView.setBackgroundResource(2130838583);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setBackgroundResource(2130838658);
+      localColorStateList = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494273);
+      paramView.setBackgroundResource(2130838589);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setBackgroundResource(2130838664);
     }
   }
   
@@ -1083,7 +1083,7 @@ public class ContactsTroopAdapter
   {
     if (((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b == null)
     {
-      ThreadManager.postImmediately(new wmd(this), null, false);
+      ThreadManager.postImmediately(new wrn(this), null, false);
       return;
     }
     i();
@@ -1236,7 +1236,7 @@ public class ContactsTroopAdapter
   
   public boolean onLongClick(View paramView)
   {
-    int i = 2131435389;
+    int i = 2131435405;
     paramView = paramView.getTag();
     if ((paramView != null) && ((paramView instanceof BuddyListItem.ViewTag)))
     {
@@ -1253,14 +1253,14 @@ public class ContactsTroopAdapter
           paramView = (TroopInfo)paramView;
           bool = ((TroopManager)localObject).b(paramView.troopuin);
           if (bool) {
-            i = 2131435389;
+            i = 2131435405;
           }
         }
         for (;;)
         {
           localActionSheet.b(i);
-          localActionSheet.c(2131433015);
-          localActionSheet.a(new wmi(this, bool, paramView, localActionSheet));
+          localActionSheet.c(2131433029);
+          localActionSheet.a(new wrs(this, bool, paramView, localActionSheet));
           try
           {
             localActionSheet.show();
@@ -1268,7 +1268,7 @@ public class ContactsTroopAdapter
             do
             {
               return true;
-              i = 2131435388;
+              i = 2131435404;
               break;
             } while (!(paramView instanceof DiscussionInfo));
             localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
@@ -1281,8 +1281,8 @@ public class ContactsTroopAdapter
               for (;;)
               {
                 localActionSheet.b(i);
-                localActionSheet.c(2131433015);
-                localActionSheet.a(new wmj(this, (DiscussionHandler)localObject, paramView, bool, localActionSheet));
+                localActionSheet.c(2131433029);
+                localActionSheet.a(new wrt(this, (DiscussionHandler)localObject, paramView, bool, localActionSheet));
                 try
                 {
                   localActionSheet.show();
@@ -1290,7 +1290,7 @@ public class ContactsTroopAdapter
                 catch (Exception paramView) {}
               }
               break;
-              i = 2131435388;
+              i = 2131435404;
             }
           }
           catch (Exception paramView)

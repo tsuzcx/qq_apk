@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.leba;
 
-import adzh;
-import adzi;
-import adzk;
+import aehr;
+import aehs;
+import aehu;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -54,7 +54,7 @@ public class LebaTitleBar
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  UniteSearchObserver jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new adzk(this);
+  UniteSearchObserver jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new aehu(this);
   protected LebaFPSXListView.Listener a;
   private ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
   protected List a;
@@ -90,14 +90,14 @@ public class LebaTitleBar
   
   private void a(Context paramContext)
   {
-    inflate(paramContext, 2130970392, this);
+    inflate(paramContext, 2130970407, this);
     setFocusable(true);
     setFocusableInTouchMode(true);
   }
   
   private void f()
   {
-    ThreadManager.post(new adzi(this, new HotWordSearchEntryDataModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 4)), 5, null, true);
+    ThreadManager.post(new aehs(this, new HotWordSearchEntryDataModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 4)), 5, null, true);
   }
   
   public void a()
@@ -137,6 +137,7 @@ public class LebaTitleBar
   
   public void a(QQAppInterface paramQQAppInterface)
   {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
@@ -145,21 +146,21 @@ public class LebaTitleBar
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131363379));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131364870);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363428));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131363398));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131364897);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363447));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370343);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131368322));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370352);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131368324));
     this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368735));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368738));
     this.jdField_b_of_type_Boolean = BaseApplicationImpl.sApplication.getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("has_search_bar", false);
     paramBaseActivity = this.jdField_a_of_type_AndroidViewView;
     if (this.jdField_b_of_type_Boolean) {}
     for (int i = 0;; i = 8)
     {
       paramBaseActivity.setVisibility(i);
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new adzh(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new aehr(this));
       paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver);
       d();
       return;
@@ -222,7 +223,7 @@ public class LebaTitleBar
       if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
         break label99;
       }
-      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundResource(2130845872);
+      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundResource(2130845952);
     }
     for (;;)
     {
@@ -230,16 +231,16 @@ public class LebaTitleBar
       if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
         break;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494255));
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130842673), null, null, null);
-      this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundDrawable(getResources().getDrawable(2130842678));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494261));
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130842708), null, null, null);
+      this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundDrawable(getResources().getDrawable(2130842713));
       return;
       label99:
-      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(getResources().getColor(2131494254));
+      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(getResources().getColor(2131494260));
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494280));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130845993), null, null, null);
-    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundDrawable(getResources().getDrawable(2130845995));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494286));
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130846075), null, null, null);
+    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundDrawable(getResources().getDrawable(2130846077));
   }
   
   public void e()

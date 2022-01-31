@@ -1,27 +1,18 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class mxo
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public mxo(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  public mxo(SubscriptRecommendController paramSubscriptRecommendController) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    int i = PublicAccountImageCollectionCommentActivity.a(this.a).getRootView().getHeight() - PublicAccountImageCollectionCommentActivity.a(this.a).getHeight();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ImageCollectionCommentActivity", 2, "heightDiff:" + i);
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      this.a.a(str);
     }
-    if (i > 150) {
-      PublicAccountImageCollectionCommentActivity.a(this.a, true);
-    }
-    while (!PublicAccountImageCollectionCommentActivity.a(this.a)) {
-      return;
-    }
-    PublicAccountImageCollectionCommentActivity.a(this.a, false);
-    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
   }
 }
 

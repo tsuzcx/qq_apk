@@ -1,25 +1,29 @@
-import android.os.Handler;
-import com.tencent.mobileqq.hotpic.CircleProgressView;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import java.util.ArrayList;
 
-public class adrt
-  implements Runnable
+class adrt
+  implements FMDialogUtil.FMDialogInterface
 {
-  public adrt(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  adrt(adrr paramadrr) {}
   
-  public void run()
+  public void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.a.setProgress(this.a.jdField_a_of_type_ComTencentMobileqqHotpicVideoBaseItem.b());
-    if (this.a.jdField_b_of_type_Boolean) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 100L);
-    }
+    ArrayList localArrayList = FMDataCache.b();
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+    SendBottomBar.a(this.a.a).setResult(-1, localIntent);
+    SendBottomBar.a(this.a.a).finish();
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adrt
  * JD-Core Version:    0.7.0.1
  */

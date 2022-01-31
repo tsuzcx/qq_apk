@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import java.util.Comparator;
 
-public class ajiu
-  implements DialogInterface.OnClickListener
+public final class ajiu
+  implements Comparator
 {
-  public ajiu(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(String paramString1, String paramString2)
   {
-    paramDialogInterface.dismiss();
+    try
+    {
+      int i = paramString1.getBytes("utf-8").length;
+      int j = paramString2.getBytes("utf-8").length;
+      return i - j;
+    }
+    catch (Exception localException) {}
+    return paramString1.getBytes().length - paramString2.getBytes().length;
   }
 }
 

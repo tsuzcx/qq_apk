@@ -447,56 +447,45 @@ public class NativeCrashHandler
     }
     int i6 = localObject1.length;
     int i1 = 0;
-    int i2 = 0;
-    Object localObject2;
-    String str;
-    int i4;
-    int i5;
-    for (int i3 = 0;; i3 = i5)
+    int i3 = 0;
+    int i2;
+    for (int i4 = 0; i1 < i6; i4 = i2)
     {
-      if (i1 >= i6) {
-        break label253;
-      }
-      localObject2 = localObject1[i1];
-      str = localObject2.getName();
-      int i7 = str.lastIndexOf("_");
-      i4 = i2;
-      i5 = i3;
-      if (i7 > 0) {}
-      try
+      Object localObject2 = localObject1[i1];
+      String str = localObject2.getName();
+      int i5 = i3;
+      i2 = i4;
+      if (str.contains("_"))
       {
-        i4 = str.indexOf(".txt");
-        if (i4 <= 0) {
-          break;
-        }
-        long l4 = Long.parseLong(str.substring(i7 + 1, i4));
-        if ((l4 < l1 - l2) || (l4 >= 86400000L + l3)) {
-          break;
-        }
         i5 = i3;
-        i4 = i2;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
+        i2 = i4;
+        if (str.endsWith(".txt"))
         {
-          x.e("[Native] Name of record file is invalid: %s", new Object[] { str });
-          x.a("[Native] Delete record file: %s", new Object[] { localObject2.getAbsolutePath() });
-          i3 += 1;
-          i4 = i2;
-          i5 = i3;
-          if (localObject2.delete())
+          long l4 = localObject2.lastModified();
+          if (l4 >= l1 - l2)
           {
-            i4 = i2 + 1;
             i5 = i3;
+            i2 = i4;
+            if (l4 < 86400000L + l3) {}
+          }
+          else
+          {
+            x.a("[Native] Delete record file: %s", new Object[] { localObject2.getAbsolutePath() });
+            i4 += 1;
+            i5 = i3;
+            i2 = i4;
+            if (localObject2.delete())
+            {
+              i5 = i3 + 1;
+              i2 = i4;
+            }
           }
         }
       }
       i1 += 1;
-      i2 = i4;
+      i3 = i5;
     }
-    label253:
-    x.c("[Native] Number of record files overdue: %d, has deleted: %d", new Object[] { Integer.valueOf(i3), Integer.valueOf(i2) });
+    x.c("[Native] Number of record files overdue: %d, has deleted: %d", new Object[] { Integer.valueOf(i4), Integer.valueOf(i3) });
   }
   
   public boolean appendLogToNative(String paramString1, String paramString2, String paramString3)
@@ -653,24 +642,24 @@ public class NativeCrashHandler
     //   4: aload_1
     //   5: ifnull +35 -> 40
     //   8: aload_1
-    //   9: getfield 396	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
+    //   9: getfield 384	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
     //   12: aload_0
     //   13: getfield 55	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
     //   16: if_icmpeq +24 -> 40
-    //   19: ldc_w 398
+    //   19: ldc_w 386
     //   22: iconst_1
     //   23: anewarray 4	java/lang/Object
     //   26: dup
     //   27: iconst_0
     //   28: aload_1
-    //   29: getfield 396	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
+    //   29: getfield 384	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
     //   32: invokestatic 238	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   35: aastore
     //   36: invokestatic 136	com/tencent/bugly/proguard/x:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   39: pop
     //   40: invokestatic 84	com/tencent/bugly/crashreport/common/strategy/a:a	()Lcom/tencent/bugly/crashreport/common/strategy/a;
-    //   43: invokevirtual 401	com/tencent/bugly/crashreport/common/strategy/a:c	()Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
-    //   46: getfield 396	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
+    //   43: invokevirtual 389	com/tencent/bugly/crashreport/common/strategy/a:c	()Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
+    //   46: getfield 384	com/tencent/bugly/crashreport/common/strategy/StrategyBean:g	Z
     //   49: ifeq +44 -> 93
     //   52: aload_0
     //   53: getfield 57	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:k	Z
@@ -679,7 +668,7 @@ public class NativeCrashHandler
     //   60: aload_0
     //   61: getfield 55	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:j	Z
     //   64: if_icmpeq +26 -> 90
-    //   67: ldc_w 403
+    //   67: ldc_w 391
     //   70: iconst_1
     //   71: anewarray 4	java/lang/Object
     //   74: dup
@@ -691,7 +680,7 @@ public class NativeCrashHandler
     //   84: pop
     //   85: aload_0
     //   86: iload_2
-    //   87: invokespecial 405	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:b	(Z)V
+    //   87: invokespecial 393	com/tencent/bugly/crashreport/crash/jni/NativeCrashHandler:b	(Z)V
     //   90: aload_0
     //   91: monitorexit
     //   92: return

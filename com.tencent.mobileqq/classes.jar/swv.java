@@ -1,19 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class swv
   implements AdapterView.OnItemClickListener
 {
-  public swv(Leba paramLeba) {}
+  public swv(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
   public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.c()) {
-      ThreadManager.post(new sww(this, paramView, paramInt), 8, null, true);
-    }
+    this.a.b();
   }
 }
 

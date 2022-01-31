@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
-import com.tencent.mobileqq.app.fms.SearchListener;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class zrw
-  implements SearchListener
+  implements Runnable
 {
-  public zrw(FullMessageSearchManager paramFullMessageSearchManager) {}
+  public zrw(QQAppInterface paramQQAppInterface) {}
   
-  public void a(FullMessageSearchResult paramFullMessageSearchResult)
+  public void run()
   {
-    FullMessageSearchManager.a(this.a);
-    this.a.notifyObservers(paramFullMessageSearchResult);
+    AdvertisementVideoPreloadManager localAdvertisementVideoPreloadManager = (AdvertisementVideoPreloadManager)this.a.getManager(237);
+    if (localAdvertisementVideoPreloadManager != null) {
+      localAdvertisementVideoPreloadManager.a(1);
+    }
+    this.a.D();
   }
 }
 

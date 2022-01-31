@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abuk;
+import accd;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ public class MessageForGrayTips
   {
     if ((paramHightlightItem.icon.startsWith("http://")) || (paramHightlightItem.icon.startsWith("https://")))
     {
-      paramSpannableStringBuilder.setSpan(new abuk(paramContext, 0, paramHightlightItem.icon), paramHightlightItem.start, paramHightlightItem.end, 33);
+      paramSpannableStringBuilder.setSpan(new accd(paramContext, 0, paramHightlightItem.icon), paramHightlightItem.start, paramHightlightItem.end, 33);
       if (QLog.isColorLevel()) {
         QLog.i("MessageForGrayTips", 2, "MessageForGrayTips.getHightlightMsgText Url Image=" + paramHightlightItem.icon);
       }

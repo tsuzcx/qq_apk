@@ -34,18 +34,28 @@ public class TroopFileError$TroopFileErrorObserver
   {
     if ((paramObject == null) || (!(paramObject instanceof TroopFileError.SimpleErrorInfo))) {}
     Context localContext;
+    long l1;
     do
     {
       return;
       paramObject = (TroopFileError.SimpleErrorInfo)paramObject;
       localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      long l2 = this.jdField_a_of_type_Long;
+      l1 = l2;
+      if (l2 == 0L)
+      {
+        l1 = l2;
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileError$TroopFileErrorFilter != null) {
+          l1 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileError$TroopFileErrorFilter.a();
+        }
+      }
     } while (localContext == null);
-    TroopFileError.a(paramObject, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localContext);
+    TroopFileError.a(paramObject, l1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorObserver
  * JD-Core Version:    0.7.0.1
  */

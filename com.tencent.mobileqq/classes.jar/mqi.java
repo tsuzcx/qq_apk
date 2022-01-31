@@ -1,39 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.GifStateListener;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.util.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-public class mqi
-  implements GifDrawable.OnGIFPlayOnceListener
+class mqi
+  implements Runnable
 {
-  AbstractGifImage a;
+  mqi(mqh parammqh, boolean paramBoolean, FastWebArticleInfo paramFastWebArticleInfo) {}
   
-  public mqi(AbstractGifImage paramAbstractGifImage)
+  public void run()
   {
-    this.a = paramAbstractGifImage;
-  }
-  
-  public void onPlayOnce()
-  {
-    Object localObject = (List)ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.a().get(this.a);
-    if (localObject != null)
+    try
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      if (this.jdField_a_of_type_Boolean)
       {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if (localWeakReference.get() != null) {
-          ((ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.GifStateListener)localWeakReference.get()).a();
-        }
+        FastWebActivity.a(this.jdField_a_of_type_Mqh.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+        FastWebActivity.a(this.jdField_a_of_type_Mqh.a);
+        return;
       }
+      FastWebActivity.b(this.jdField_a_of_type_Mqh.a);
+      return;
     }
-    this.a.setGIFPlayOnceListener(null);
-    ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.b().remove(this.a);
-    ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.a().remove(this.a);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

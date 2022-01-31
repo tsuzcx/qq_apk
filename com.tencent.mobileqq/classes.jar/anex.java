@@ -1,22 +1,133 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.PluginInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import cooperation.thirdpay.ThirdPayGate;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.provider.ExtraConfig;
+import com.tencent.component.network.module.base.inter.IDownloadConfig;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QUA;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class anex
-  implements DialogInterface.OnClickListener
+  implements IDownloadConfig
 {
-  public anex(ThirdPayGate paramThirdPayGate, String paramString, PluginInterface paramPluginInterface, Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private boolean b()
   {
-    ReportController.a(null, "P_CliOper", "cardpay", "", "installPlugin", "download-again", 0, 0, this.jdField_a_of_type_JavaLangString, "by download", "", "");
-    paramDialogInterface.dismiss();
-    ThirdPayGate.access$100(this.jdField_a_of_type_CooperationThirdpayThirdPayGate, this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterface, this.jdField_a_of_type_JavaLangString);
-    ThirdPayGate.access$200(this.jdField_a_of_type_CooperationThirdpayThirdPayGate, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterface, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString);
+    return QzoneConfig.getInstance().getConfig("PhotoDownload", "EnableColor", -1) == 1;
+  }
+  
+  public int a()
+  {
+    int i = ExtraConfig.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginDownloadConfig", 2, "QzoneDownloadConfig ():WiFiCrarryType=" + i);
+    }
+    return i;
+  }
+  
+  public long a()
+  {
+    try
+    {
+      long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+      return l;
+    }
+    catch (Exception localException)
+    {
+      QLog.w("QzonePluginDownloadConfig", 1, "", localException);
+    }
+    return 0L;
+  }
+  
+  public long a(String paramString1, String paramString2, long paramLong)
+  {
+    return QzoneConfig.getInstance().getConfig(paramString1, paramString2, paramLong);
+  }
+  
+  public String a()
+  {
+    return QUA.a();
+  }
+  
+  public void a(int paramInt1, boolean paramBoolean, String paramString1, int paramInt2, String paramString2) {}
+  
+  public void a(String paramString, boolean paramBoolean, HashMap paramHashMap, long paramLong) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return QzoneConfig.getInstance().getConfig("PhotoDownload", "KeepAlive", 0);
+  }
+  
+  public long b()
+  {
+    return 0L;
+  }
+  
+  public String b()
+  {
+    return "mqq";
+  }
+  
+  public boolean b(String paramString)
+  {
+    return false;
+  }
+  
+  public int c()
+  {
+    return QzoneConfig.getInstance().getConfig("PhotoDownload", "KeepAliveProxy", 1);
+  }
+  
+  public long c()
+  {
+    return 0L;
+  }
+  
+  public String c()
+  {
+    return "Android-QZoneInQQ";
+  }
+  
+  public int d()
+  {
+    if (b()) {
+      return 100;
+    }
+    return 5;
+  }
+  
+  public String d()
+  {
+    return "qzone";
+  }
+  
+  public int e()
+  {
+    return 0;
+  }
+  
+  public String e()
+  {
+    return QUA.b();
+  }
+  
+  public int f()
+  {
+    return 0;
   }
 }
 

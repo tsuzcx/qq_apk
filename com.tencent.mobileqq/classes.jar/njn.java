@@ -1,24 +1,26 @@
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.now.enter.widget.HongBao2018ListView;
 
 public class njn
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnLayoutChangeListener
 {
-  public njn(FeedsPlayModeBase paramFeedsPlayModeBase, Boolean[] paramArrayOfBoolean, StoryVideoItem paramStoryVideoItem) {}
+  public njn(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager, StoryConfigManager paramStoryConfigManager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a.dismiss();
-    if (paramView != null)
+    SLog.b(MsgTabStoryNodeListManager.a(), "onLayoutChange");
+    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.d) && (!this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.mForStory))
     {
-      String str = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a.a(paramInt);
-      if (!TextUtils.isEmpty(str)) {
-        this.jdField_a_of_type_ArrayOfJavaLangBoolean[0] = Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a(paramView, str, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem));
-      }
+      SLog.b(MsgTabStoryNodeListManager.a(), "first show node, showStoryNode");
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.d = false;
+      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("first_show_node", Boolean.valueOf(false));
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.i();
+      StoryReportor.a("msg_tab", "exp_new", 0, 0, new String[0]);
     }
   }
 }

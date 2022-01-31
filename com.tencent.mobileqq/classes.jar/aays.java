@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.widget.ActionSheet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ark.ArkAiBubbleView;
+import com.tencent.qphone.base.util.QLog;
 
-class aays
-  implements DialogInterface.OnDismissListener
+public class aays
+  implements View.OnClickListener
 {
-  aays(aayr paramaayr, ActionSheet paramActionSheet) {}
+  public aays(ArkAiBubbleView paramArkAiBubbleView, View.OnClickListener paramOnClickListener) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    ArkAppCenter.b("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView.a.removeCallbacks(ArkAiBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView));
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView.a.clearAnimation();
+    ArkAiBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView).run();
+    if (QLog.isColorLevel()) {
+      QLog.i("ark.ai", 2, String.format("ArkRecommendLogic.activate: %h", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView }));
+    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
   }
 }
 

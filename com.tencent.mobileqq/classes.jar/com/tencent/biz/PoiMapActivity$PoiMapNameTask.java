@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.tencent.mapsdk.raster.model.GeoPoint;
 import com.tencent.mobileqq.utils.ReverseGeocode;
 import com.tencent.qphone.base.util.QLog;
-import kjs;
+import klz;
 import org.apache.http.client.HttpClient;
 
 public class PoiMapActivity$PoiMapNameTask
@@ -71,7 +71,7 @@ public class PoiMapActivity$PoiMapNameTask
     for (String str = "Unknown Address";; str = paramString)
     {
       this.jdField_a_of_type_ComTencentBizPoiMapActivity.m = paramString;
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.runOnUiThread(new kjs(this, str));
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.runOnUiThread(new klz(this, str));
       if (this.jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint == null) {
         break;
       }

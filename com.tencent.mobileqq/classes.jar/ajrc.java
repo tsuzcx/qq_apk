@@ -1,12 +1,21 @@
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.WriteCommentCallback;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter.OnItemClickListener;
+import com.tencent.mobileqq.util.TroopReportor;
 
-public final class ajrc
-  implements TroopTopicMgr.WriteCommentCallback
+public class ajrc
+  implements SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter.OnItemClickListener
 {
-  public void a(int paramInt, JSONObject paramJSONObject)
+  public ajrc(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  
+  public void a(View paramView, int paramInt)
   {
-    if (paramInt == 0) {}
+    paramView = SearchReciteArticleFragment.a(this.a).a(paramInt);
+    SearchReciteArticleFragment.a(this.a).setText(paramView);
+    SearchReciteArticleFragment.a(this.a).setSelection(paramView.length());
+    TroopReportor.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { SearchReciteArticleFragment.a(this.a), paramView });
   }
 }
 

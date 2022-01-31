@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
 
 public class aguj
-  implements ActionSheet.OnDismissListener
+  implements Runnable
 {
-  public aguj(QCallDetailActivity paramQCallDetailActivity) {}
+  public aguj(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
   
-  public void onDismiss()
+  public void run()
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004E70", "0X8004E70", 0, 0, "", "", "", "");
+    this.a.l();
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aguj
  * JD-Core Version:    0.7.0.1
  */

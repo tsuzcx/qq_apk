@@ -31,8 +31,6 @@ import com.tencent.biz.qqstory.takevideo2.StoryPublishParams;
 import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.shortvideo.common.GloableValue;
 import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
@@ -338,7 +336,7 @@ public class EditVideoActivity
     }
     int i = getIntent().getIntExtra("uintype", -1);
     EditVideoParams localEditVideoParams = (EditVideoParams)getIntent().getParcelableExtra(EditVideoParams.class.getName());
-    if ((getIntent().getBooleanExtra("extra_has_antishake", false)) && ((localEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource)))
+    if ((getIntent().getBooleanExtra("extra_has_antishake", false)) && (localEditVideoParams != null) && ((localEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource)))
     {
       localObject = (EditLocalGifSource)localEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
       ((EditLocalGifSource)localObject).b = getIntent().getStringArrayListExtra("extra_antishake_gif_path_list");
@@ -346,7 +344,7 @@ public class EditVideoActivity
         ((EditLocalGifSource)localObject).jdField_a_of_type_Boolean = true;
       }
     }
-    if ((localEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource)) {
+    if ((localEditVideoParams != null) && ((localEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource))) {
       ((EditLocalGifSource)localEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_a_of_type_Int = getIntent().getIntExtra("extra_checked_similarity_ok_to_antishake", 0);
     }
     SLog.d("Q.qqstory.publish.edit.EditVideoActivity", "doOnCreate instance=%d, video params=%s", new Object[] { Integer.valueOf(System.identityHashCode(this)), localEditVideoParams });
@@ -377,7 +375,7 @@ public class EditVideoActivity
       VideoSourceHelper.nativeSetPlayStepFrameCount(1);
       VideoSourceHelper.nativeSetPlayGapFrameCount(1);
       getWindow().addFlags(1024);
-      setContentViewC(2130970869);
+      setContentViewC(2130970886);
       a(paramBundle);
       if (localEditVideoParams.jdField_a_of_type_AndroidOsBundle != null)
       {
@@ -410,21 +408,16 @@ public class EditVideoActivity
           }
           LpReportInfo_pf00064.allReport(628, 1);
           SLog.b("Q.qqstory.publish.edit.EditVideoActivity", "EditVideoActivity doOnCreate end");
-          if (localEditVideoParams.jdField_a_of_type_Int != 9) {
-            break label820;
+          if (localEditVideoParams.jdField_a_of_type_Int == 10) {
+            ReportController.b(null, "dc00899", "Grp_tribe", "", "video_edit", "exp_edit", 0, 0, "", "", "", "");
           }
-          if (!localEditVideoParams.b()) {
-            break label815;
-          }
-          i = 1;
-          new NowVideoReporter().h("video_edit").i("exp_edit").d(SmallVideoCameraCaptureFragment.jdField_a_of_type_JavaLangString).a(i).b(this.app);
           paramBundle = (AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1);
           if (paramBundle.a() == null) {
             paramBundle.b();
           }
           c();
           if ((localEditVideoParams.jdField_a_of_type_Int == 10) || (localEditVideoParams.jdField_a_of_type_Int == 12)) {
-            ((RelativeLayout)findViewById(2131364405)).setBackgroundColor(-16777216);
+            ((RelativeLayout)findViewById(2131364430)).setBackgroundColor(-16777216);
           }
           return true;
           localThrowable = localThrowable;
@@ -440,21 +433,10 @@ public class EditVideoActivity
           {
             QLog.d("Q.qqstory.publish.edit.EditVideoActivity", 2, "nativeSetMaxPhotoFrameCount:exp=", paramBundle);
             continue;
-            if (i == 3000)
-            {
+            if (i == 3000) {
               paramBundle = "2";
-            }
-            else
-            {
+            } else {
               paramBundle = "1";
-              continue;
-              label815:
-              i = 2;
-              continue;
-              label820:
-              if (localEditVideoParams.jdField_a_of_type_Int == 10) {
-                ReportController.b(null, "dc00899", "Grp_tribe", "", "video_edit", "exp_edit", 0, 0, "", "", "", "");
-              }
             }
           }
         }

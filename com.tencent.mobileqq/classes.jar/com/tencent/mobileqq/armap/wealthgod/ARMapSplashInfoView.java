@@ -28,14 +28,14 @@ public class ARMapSplashInfoView
   public ARMapSplashInfoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2130970236, this, true);
+    LayoutInflater.from(paramContext).inflate(2130970251, this, true);
     a();
   }
   
   private void a()
   {
-    this.a = ((TextView)findViewById(2131369772));
-    this.b = ((TextView)findViewById(2131369773));
+    this.a = ((TextView)findViewById(2131369782));
+    this.b = ((TextView)findViewById(2131369783));
     this.a.setTextColor(-1);
     TextPaint localTextPaint = this.a.getPaint();
     localTextPaint.setStrokeWidth(AIOUtils.a(2.0F, getResources()));

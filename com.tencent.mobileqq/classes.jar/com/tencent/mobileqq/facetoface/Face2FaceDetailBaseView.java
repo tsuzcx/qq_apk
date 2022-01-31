@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.facetoface;
 
-import acll;
-import aclm;
+import acts;
+import actt;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -79,7 +79,7 @@ public abstract class Face2FaceDetailBaseView
   private void d()
   {
     this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-    this.jdField_a_of_type_Int = 2130839052;
+    this.jdField_a_of_type_Int = 2130839067;
   }
   
   public View a()
@@ -158,8 +158,8 @@ public abstract class Face2FaceDetailBaseView
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidViewView.clearAnimation();
     setVisibility(0);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131364606);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131364604);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131364630);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131364628);
     int i = this.jdField_a_of_type_AndroidViewView.getLeft();
     int j = ((View)localObject1).getLeft();
     int k = ((View)localObject2).getLeft();
@@ -173,7 +173,7 @@ public abstract class Face2FaceDetailBaseView
     localObject2 = new AlphaAnimation(0.0F, 1.0F);
     ((AlphaAnimation)localObject2).setDuration(200L);
     ((AlphaAnimation)localObject2).setStartOffset(150L);
-    ((AlphaAnimation)localObject2).setAnimationListener(new acll(this));
+    ((AlphaAnimation)localObject2).setAnimationListener(new acts(this));
     AlphaAnimation localAlphaAnimation1 = new AlphaAnimation(0.0F, 1.0F);
     localAlphaAnimation1.setDuration(150L);
     localAlphaAnimation1.setStartOffset(350L);
@@ -207,8 +207,8 @@ public abstract class Face2FaceDetailBaseView
     }
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_Boolean = false;
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131364606);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131364604);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131364630);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131364628);
     int i = this.jdField_a_of_type_AndroidViewView.getLeft();
     int j = ((View)localObject1).getLeft();
     int k = ((View)localObject2).getLeft();
@@ -220,7 +220,7 @@ public abstract class Face2FaceDetailBaseView
     float f = ((View)localObject1).getWidth() * 1.0F / this.jdField_a_of_type_AndroidViewView.getWidth();
     localObject1 = b(i - (j + k + m), n - (i2 + i1 + i3), f, f);
     this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceDetailBaseView$IFace2faceContext.c();
-    ((AnimationSet)localObject1).setAnimationListener(new aclm(this));
+    ((AnimationSet)localObject1).setAnimationListener(new actt(this));
     localObject2 = new AlphaAnimation(1.0F, 0.0F);
     ((AlphaAnimation)localObject2).setDuration(200L);
     ((AlphaAnimation)localObject2).setFillAfter(true);

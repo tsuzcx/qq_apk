@@ -1,81 +1,84 @@
 package com.tencent.mapsdk.rastercore.b;
 
+import com.tencent.mapsdk.rastercore.d.e;
+
 public final class a
 {
-  public static int a = 5;
-  private static double b = Math.log(2.0D);
-  private int c;
-  private double d;
-  private double e;
+  private int a = 0;
+  private int b = 0;
+  private String c = "default";
+  private String d = "";
+  private String e = "";
   
-  public a(double paramDouble)
+  public a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    this.e = paramDouble;
-    f();
-  }
-  
-  public a(int paramInt, double paramDouble)
-  {
-    this.c = paramInt;
-    this.d = paramDouble;
-    e();
-  }
-  
-  public static double c(double paramDouble)
-  {
-    return 156543.03390000001D / Math.pow(2.0D, paramDouble);
-  }
-  
-  private void e()
-  {
-    this.e = (Math.log(this.d) / b + this.c);
-    new StringBuilder("refreshZoom--zoom=").append(this.e).append(";level=").append(this.c).append(";scale=").append(this.d);
-  }
-  
-  private void f()
-  {
-    this.c = ((int)this.e);
-    this.d = Math.pow(2.0D, this.e - this.c);
-    new StringBuilder("refreshLevel--zoom=").append(this.e).append(";level=").append(this.c).append(";scale=").append(this.d);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.d = paramString1;
+    this.e = paramString2;
+    this.c = paramString3;
   }
   
   public final int a()
   {
-    return this.c;
+    return this.a * 10 + this.b;
   }
   
-  public final void a(double paramDouble)
+  public final boolean a(c paramc)
   {
-    this.d = paramDouble;
-    e();
-    f();
+    boolean bool2 = true;
+    boolean bool1;
+    switch (this.a)
+    {
+    default: 
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while ("default".equals(this.c));
+      if (paramc == null) {
+        return false;
+      }
+      paramc = paramc.a();
+      e.a();
+      return e.a(paramc, e.c(this.c));
+      bool1 = bool2;
+    } while ("default".equals(this.c));
+    if (paramc != null)
+    {
+      e.a();
+      f[] arrayOff = e.c(this.c);
+      paramc = paramc.b();
+      int j = paramc.length;
+      int i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          break label147;
+        }
+        bool1 = bool2;
+        if (e.a(paramc[i], arrayOff)) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    label147:
+    return false;
   }
   
-  public final void a(int paramInt)
-  {
-    this.c = 19;
-    e();
-  }
-  
-  public final double b()
+  public final String b()
   {
     return this.d;
   }
   
-  public final void b(double paramDouble)
-  {
-    this.e = paramDouble;
-    f();
-  }
-  
-  public final double c()
+  public final String c()
   {
     return this.e;
-  }
-  
-  public final double d()
-  {
-    return c(this.e);
   }
 }
 

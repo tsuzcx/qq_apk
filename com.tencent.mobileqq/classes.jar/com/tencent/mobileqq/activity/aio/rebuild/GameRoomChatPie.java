@@ -69,28 +69,28 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
-import vto;
-import vtp;
-import vtq;
-import vtr;
-import vts;
-import vtt;
-import vtu;
-import vtv;
-import vtx;
-import vty;
-import vtz;
-import vua;
-import vub;
-import vuc;
-import vue;
-import vuf;
-import vug;
-import vuh;
-import vui;
-import vuj;
-import vuk;
-import vul;
+import vyu;
+import vyv;
+import vyw;
+import vyx;
+import vyy;
+import vyz;
+import vza;
+import vzb;
+import vzd;
+import vze;
+import vzf;
+import vzg;
+import vzh;
+import vzi;
+import vzk;
+import vzl;
+import vzm;
+import vzn;
+import vzo;
+import vzp;
+import vzq;
+import vzr;
 
 public class GameRoomChatPie
   extends HotChatPie
@@ -101,12 +101,12 @@ public class GameRoomChatPie
   public boolean X = true;
   boolean Y = false;
   boolean Z = true;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new vue(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new vzk(this);
   public GameQuickWordsPanel a;
   public GameRoomAVController a;
   public WereWolvesLoadingView a;
   WerewolvesHandler jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler;
-  WerewolvesObserver jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver = new vtx(this);
+  WerewolvesObserver jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver = new vzd(this);
   public WerewolvesPluginManager a;
   private View.OnClickListener b;
   protected LinearLayout d;
@@ -126,7 +126,7 @@ public class GameRoomChatPie
   {
     super(paramQQAppInterface, paramViewGroup, paramFragmentActivity, paramContext);
     this.jdField_o_of_type_Int = Color.parseColor("#00000000");
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new vuh(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new vzn(this);
   }
   
   protected void E()
@@ -356,12 +356,12 @@ public class GameRoomChatPie
       bf();
       return;
     }
-    ThreadManager.post(new vtu(this), 8, null, true);
+    ThreadManager.post(new vza(this), 8, null, true);
   }
   
   public void bf()
   {
-    ThreadManager.post(new vtv(this), 8, null, true);
+    ThreadManager.post(new vzb(this), 8, null, true);
   }
   
   public void bg()
@@ -378,8 +378,8 @@ public class GameRoomChatPie
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(a(), null);
     localActionSheet.a("退出后将不能重新进入该游戏房间");
     localActionSheet.a("退出游戏", 3);
-    localActionSheet.c(2131433015);
-    localActionSheet.a(new vuc(this, localActionSheet));
+    localActionSheet.c(2131433029);
+    localActionSheet.a(new vzi(this, localActionSheet));
     localActionSheet.show();
   }
   
@@ -401,7 +401,7 @@ public class GameRoomChatPie
     }
     int i = localWerewolvesPluginInterface.b();
     int i1 = localWerewolvesPluginInterface.a();
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a(localHotChatInfo, i, i1, new vuf(this));
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a(localHotChatInfo, i, i1, new vzl(this));
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "grp_lbs", "", "wolf", "die_newgame", 0, 0, "" + i, "" + i1, "", "");
   }
   
@@ -435,7 +435,7 @@ public class GameRoomChatPie
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setGravity(16);
       this.jdField_d_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_d_of_type_AndroidWidgetLinearLayout.setId(2131367842);
+      this.jdField_d_of_type_AndroidWidgetLinearLayout.setId(2131367857);
       this.jdField_d_of_type_AndroidWidgetLinearLayout.setOrientation(0);
       this.jdField_d_of_type_AndroidWidgetLinearLayout.setGravity(16);
       new RelativeLayout.LayoutParams(-1, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 50.0F)).addRule(12);
@@ -445,7 +445,7 @@ public class GameRoomChatPie
       if (i != 0)
       {
         this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundColor(-1);
-        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130837622);
+        this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130837621);
       }
       this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(4);
       localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams();
@@ -470,7 +470,7 @@ public class GameRoomChatPie
       this.jdField_n_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       this.jdField_d_of_type_AndroidWidgetLinearLayout.addView(this.jdField_n_of_type_AndroidWidgetImageView, new ViewGroup.LayoutParams(-2, -2));
       this.jdField_o_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_o_of_type_AndroidWidgetImageView.setImageResource(2130837645);
+      this.jdField_o_of_type_AndroidWidgetImageView.setImageResource(2130837644);
       this.jdField_o_of_type_AndroidWidgetImageView.setPadding(0, i2, 0, i2);
       this.jdField_o_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
       this.jdField_d_of_type_AndroidWidgetLinearLayout.addView(this.jdField_o_of_type_AndroidWidgetImageView, new ViewGroup.LayoutParams(-2, -2));
@@ -481,7 +481,7 @@ public class GameRoomChatPie
       }
       this.j.setTextColor(Color.parseColor("#a1a2a3"));
       label588:
-      this.j.setBackgroundResource(2130845636);
+      this.j.setBackgroundResource(2130845717);
       this.j.setTextSize(16.0F);
       this.j.setText("按住发言");
       this.j.setMinHeight(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 35.0F));
@@ -492,9 +492,9 @@ public class GameRoomChatPie
       ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
       ((RelativeLayout.LayoutParams)localObject).bottomMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 7.0F);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.j, (ViewGroup.LayoutParams)localObject);
-      this.j.setOnTouchListener(new vto(this));
+      this.j.setOnTouchListener(new vyu(this));
       this.jdField_e_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_e_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new vtz(this));
+      this.jdField_e_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new vzf(this));
       localObject = new RelativeLayout.LayoutParams(-1, -1);
       ((RelativeLayout.LayoutParams)localObject).topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 295.0F);
       this.jdField_e_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(this.jdField_o_of_type_Int);
@@ -508,7 +508,7 @@ public class GameRoomChatPie
       this.k.setVisibility(0);
       localObject = new RelativeLayout.LayoutParams(-1, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 50.0F));
       ((RelativeLayout.LayoutParams)localObject).addRule(12);
-      this.k.setOnTouchListener(new vug(this));
+      this.k.setOnTouchListener(new vzm(this));
       this.jdField_e_of_type_AndroidWidgetRelativeLayout.addView(this.k, (ViewGroup.LayoutParams)localObject);
       localObject = new RelativeLayout.LayoutParams(-1, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 245.0F));
       ((RelativeLayout.LayoutParams)localObject).topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
@@ -534,7 +534,7 @@ public class GameRoomChatPie
         i = 0;
         break;
         label1039:
-        this.j.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494282));
+        this.j.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494288));
         break label588;
         label1062:
         i += 1;
@@ -587,7 +587,7 @@ public class GameRoomChatPie
           }
           this.jdField_n_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localHashMap1.get("textIcon"));
           label316:
-          this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130838878);
+          this.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130838899);
           if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel != null) {
             this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.a();
           }
@@ -642,7 +642,7 @@ public class GameRoomChatPie
   
   protected void e(Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131432414);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131432425);
     this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("返回");
     this.c = false;
   }
@@ -653,8 +653,8 @@ public class GameRoomChatPie
     this.X = false;
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230);
     localQQCustomDialog.setMessage(paramString);
-    localQQCustomDialog.setPositiveButton(2131433016, new vty(this));
-    localQQCustomDialog.setOnDismissListener(new vua(this));
+    localQQCustomDialog.setPositiveButton(2131433030, new vze(this));
+    localQQCustomDialog.setOnDismissListener(new vzg(this));
     if (QLog.isColorLevel()) {
       QLog.d("Q.werewolf.GameRoomChatPie", 2, "onKickOut! isStopped = " + this.ae);
     }
@@ -690,10 +690,10 @@ public class GameRoomChatPie
     }
     if ((localWerewolvesPluginInterface.b()) && (!localWerewolvesPluginInterface.c()))
     {
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, null, "你的发言和分析对于队友非常重要，请不要轻易离开房间", "留在房间", "暂时离开", new vtq(this, paramBoolean), new vtr(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, null, "你的发言和分析对于队友非常重要，请不要轻易离开房间", "留在房间", "暂时离开", new vyw(this, paramBoolean), new vyx(this)).show();
       return;
     }
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, null, "你已经进入游戏，是否确定退出？", "否", "是", new vts(this, paramBoolean, localWerewolvesPluginInterface), new vtt(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, null, "你已经进入游戏，是否确定退出？", "否", "是", new vyy(this, paramBoolean, localWerewolvesPluginInterface), new vyz(this)).show();
   }
   
   protected boolean e()
@@ -723,10 +723,10 @@ public class GameRoomChatPie
     }
     if ((localWerewolvesPluginInterface.b()) && (!localWerewolvesPluginInterface.c()))
     {
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, null, "你的发言和分析对于队友非常重要，请不要轻易离开房间", "留在房间", "暂时离开", new vuj(this), new vuk(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, null, "你的发言和分析对于队友非常重要，请不要轻易离开房间", "留在房间", "暂时离开", new vzp(this), new vzq(this)).show();
       return true;
     }
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, null, "你已经进入游戏，是否确定退出？", "否", "是", new vul(this, localWerewolvesPluginInterface), new vtp(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, null, "你已经进入游戏，是否确定退出？", "否", "是", new vzr(this, localWerewolvesPluginInterface), new vyv(this)).show();
     return true;
   }
   
@@ -821,13 +821,13 @@ public class GameRoomChatPie
   public void onNetMobile2None()
   {
     super.onNetMobile2None();
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131434843, 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131434859, 0).a();
   }
   
   public void onNetWifi2None()
   {
     super.onNetWifi2None();
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131434843, 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131434859, 0).a();
   }
   
   public void s()
@@ -850,7 +850,7 @@ public class GameRoomChatPie
     {
       localActionSheet.c("查看游戏规则");
       localActionSheet.d("取消");
-      localActionSheet.a(new vub(this, bool, localActionSheet));
+      localActionSheet.a(new vzh(this, bool, localActionSheet));
       localActionSheet.show();
       return;
       bool = false;
@@ -880,14 +880,14 @@ public class GameRoomChatPie
     super.z();
     this.Y = false;
     if (this.W) {
-      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, new vui(this));
+      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, new vzo(this));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager != null) {
       this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesObserver);
     ((View)this.jdField_d_of_type_AndroidViewViewGroup.getParent()).setBackgroundColor(0);
-    a(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494254), true);
+    a(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494260), true);
     try
     {
       if ((this.jdField_d_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_d_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))

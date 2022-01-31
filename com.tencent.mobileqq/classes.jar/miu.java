@@ -1,47 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XListView.DrawFinishedListener;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.qphone.base.util.QLog;
 
-public class miu
-  implements XListView.DrawFinishedListener
+class miu
+  implements Runnable
 {
-  public miu(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  miu(mit parammit, String paramString1, String paramString2, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.b))
+    if (this.jdField_a_of_type_JavaLangString.equals(VideoPreDownloadMgr.a(this.jdField_a_of_type_Mit.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr)))
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.b = false;
-      switch (this.a.jdField_a_of_type_Int)
+      if (this.jdField_a_of_type_Mit.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(this.b, this.jdField_a_of_type_JavaLangString))
       {
+        if (QLog.isColorLevel()) {
+          QLog.i(VideoPreDownloadMgr.a(), 2, "innerDoPreDownload() 缓冲已存在，跳过, vid=" + this.jdField_a_of_type_JavaLangString);
+        }
+        VideoPreDownloadMgr.a(this.jdField_a_of_type_Mit.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr, null);
+        VideoPreDownloadMgr.a(this.jdField_a_of_type_Mit.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr);
       }
     }
-    for (;;)
-    {
-      PublicTracker.a("KANDIAN_NEW_FEEDS_LIST_VIEW_GROUP_MEASURE_LAYOUT_DRAW", null);
-      PublicTracker.a("KANDIAN_FEEDS_STAGE_2_COST", null);
-      PublicTracker.a("KANDIAN_FEEDS_COST", null);
-      if (this.a.jdField_a_of_type_Int == 56) {
-        PublicTracker.a("video_tab_cost", null);
-      }
-      if (ReadInJoyListViewGroup.b(this.a))
-      {
-        ReadInJoyListViewGroup.a(this.a);
-        ThreadManager.getUIHandler().postDelayed(new miv(this), 100L);
-      }
-      if (ReadInJoyListViewGroup.c(this.a)) {
-        ReadInJoyListViewGroup.c(this.a);
-      }
+    else {
       return;
-      PublicTracker.jdField_a_of_type_Int = 1;
-      continue;
-      PublicTracker.jdField_a_of_type_Int = 2;
-      continue;
-      PublicTracker.jdField_a_of_type_Int = 3;
     }
+    VideoPreDownloadMgr.a(this.jdField_a_of_type_Mit.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Mit.jdField_a_of_type_Int);
   }
 }
 

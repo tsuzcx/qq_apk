@@ -13,9 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import aocz;
-import aoda;
-import aodd;
+import aolu;
+import aolv;
+import aoly;
 import com.tencent.mobileqq.activity.Contacts.OverScrollViewTag;
 import com.tencent.mobileqq.troop.data.TroopBarPOI;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
@@ -61,7 +61,7 @@ public class PoiListLayout
       if (localOverScrollViewTag != null)
       {
         localOverScrollViewTag.a = false;
-        new Handler(Looper.getMainLooper()).postDelayed(new aodd(this), 800L);
+        new Handler(Looper.getMainLooper()).postDelayed(new aoly(this), 800L);
         if (paramInt == 0) {
           this.jdField_a_of_type_Long = System.currentTimeMillis();
         }
@@ -72,17 +72,17 @@ public class PoiListLayout
   
   public void a()
   {
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371944);
-    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131371945);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371947));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371948));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371952);
+    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131371953);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371955));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371956));
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371946));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371954));
     b();
     c();
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new aocz(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new aolu(this));
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListAdapter = new PoiListAdapter(this.jdField_a_of_type_AndroidViewView.getContext());
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListAdapter.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager.a(), this.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager.a());
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListAdapter);
@@ -100,14 +100,14 @@ public class PoiListLayout
       do
       {
         return;
-        this.jdField_a_of_type_AndroidViewView.getContext().getString(2131432508);
+        this.jdField_a_of_type_AndroidViewView.getContext().getString(2131432519);
         return;
-        this.jdField_a_of_type_AndroidViewView.getContext().getString(2131432507);
+        this.jdField_a_of_type_AndroidViewView.getContext().getString(2131432518);
       } while ((paramVarArgs == null) || (paramVarArgs.length <= 0));
       QQToast.a(this.jdField_a_of_type_AndroidViewView.getContext(), paramVarArgs[0], 1).a();
       return;
     case 2: 
-      this.jdField_a_of_type_AndroidViewView.getContext().getString(2131432506);
+      this.jdField_a_of_type_AndroidViewView.getContext().getString(2131432517);
       return;
     }
     if ((paramVarArgs != null) && (paramVarArgs.length > 0) && (!TextUtils.isEmpty(paramVarArgs[0])))
@@ -158,13 +158,13 @@ public class PoiListLayout
     if (this.d == null) {
       return;
     }
-    TextView localTextView = (TextView)this.d.findViewById(2131363944);
+    TextView localTextView = (TextView)this.d.findViewById(2131363969);
     if (paramBoolean)
     {
-      localTextView.setText(2131434350);
+      localTextView.setText(2131434366);
       return;
     }
-    localTextView.setText(2131434346);
+    localTextView.setText(2131434362);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -230,31 +230,31 @@ public class PoiListLayout
   protected void b()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidViewView.getContext()).inflate(2130969239, null, false));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidViewView.getContext()).inflate(2130969237, null, false));
     }
     Contacts.OverScrollViewTag localOverScrollViewTag = new Contacts.OverScrollViewTag();
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTag(localOverScrollViewTag);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTextColor(-16777216, -16777216, -16777216, -16777216, -16777216);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setHeaderBgDrawable(this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(2130838214));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setHeaderBgDrawable(this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(2130838219));
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
     if (QLog.isColorLevel()) {
       QLog.d("zivonchen", 2, "setOverScrollHeader----------------------");
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new aoda(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new aolv(this));
   }
   
   protected void c()
   {
     if (this.d == null)
     {
-      this.d = LayoutInflater.from(this.jdField_a_of_type_AndroidViewView.getContext()).inflate(2130969239, null);
-      ImageView localImageView = (ImageView)this.d.findViewById(2131363301);
-      TextView localTextView1 = (TextView)this.d.findViewById(2131363944);
-      TextView localTextView2 = (TextView)this.d.findViewById(2131363945);
-      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131363049);
+      this.d = LayoutInflater.from(this.jdField_a_of_type_AndroidViewView.getContext()).inflate(2130969237, null);
+      ImageView localImageView = (ImageView)this.d.findViewById(2131363318);
+      TextView localTextView1 = (TextView)this.d.findViewById(2131363969);
+      TextView localTextView2 = (TextView)this.d.findViewById(2131363970);
+      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131363054);
       localTextView1.setTextColor(-8355712);
-      localTextView1.setText(2131434346);
+      localTextView1.setText(2131434362);
       localTextView2.setVisibility(8);
       localImageView.setVisibility(8);
       localProgressBar.setVisibility(8);
@@ -288,12 +288,12 @@ public class PoiListLayout
   {
     switch (paramView.getId())
     {
-    case 2131371946: 
-    case 2131371947: 
+    case 2131371954: 
+    case 2131371955: 
     default: 
       return;
-    case 2131371944: 
-    case 2131371945: 
+    case 2131371952: 
+    case 2131371953: 
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistPoiListLayout$PoiListEventListener.a();
       return;
     }

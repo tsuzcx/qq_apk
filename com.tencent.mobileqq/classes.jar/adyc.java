@@ -1,16 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.util.ScreenShotUtil.ScreenshotCallback;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
 
-class adyc
-  implements ScreenShotUtil.ScreenshotCallback
+public class adyc
+  implements Animator.AnimatorListener
 {
-  adyc(adyb paramadyb) {}
+  public adyc(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ThreadManager.post(new adyd(this, paramBitmap), 8, null, true);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+    this.a.b.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

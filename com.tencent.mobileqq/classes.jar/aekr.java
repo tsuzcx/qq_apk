@@ -1,77 +1,86 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import com.tencent.mobileqq.log.VipWebViewReportLog;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.io.File;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class aekr
-  implements ActionSheet.OnButtonClickListener
+public class aekr
+  implements Runnable
 {
-  aekr(aeko paramaeko, View paramView, ActionSheet paramActionSheet) {}
-  
-  private void a()
+  public void run()
   {
-    ReportController.b(this.jdField_a_of_type_Aeko.a.app, "CliOper", "", "", "0X800682D", "0X800682D", 0, 0, "", "", "", "");
-    long l = 0L;
+    long l = System.currentTimeMillis();
+    QLog.d("WebCoreDump", 1, "-->start load config at " + l);
+    Object localObject1;
+    if (VipWebViewReportLog.a() == null)
+    {
+      localObject1 = "";
+      localObject1 = new File(VipWebViewReportLog.jdField_b_of_type_JavaLangString + (String)localObject1 + "config.json");
+      if (!((File)localObject1).exists()) {
+        break label391;
+      }
+      QLog.d("WebCoreDump", 1, "-->config file exist");
+      VipWebViewReportLog.jdField_a_of_type_Int = 0;
+      VipWebViewReportLog.a(VipWebViewReportLog.a());
+    }
     for (;;)
     {
       try
       {
-        localObject = new URL("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435");
+        localObject1 = FileUtils.a((File)localObject1);
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localObject1 = new JSONObject((String)localObject1);
+          VipWebViewReportLog.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("js_report", true);
+          VipWebViewReportLog.jdField_b_of_type_Boolean = ((JSONObject)localObject1).optBoolean("url_check", true);
+          if (!((JSONObject)localObject1).has("url_list")) {
+            continue;
+          }
+          JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("url_list");
+          int j = localJSONArray.length();
+          int i = 0;
+          if (i < j)
+          {
+            VipWebViewReportLog.jdField_a_of_type_JavaUtilSet.add(localJSONArray.getString(i));
+            i += 1;
+            continue;
+            localObject1 = VipWebViewReportLog.a().getAccount();
+            break;
+          }
+          QLog.d("WebCoreDump", 1, "-->url white list:" + VipWebViewReportLog.jdField_a_of_type_JavaUtilSet);
+          if ((VipWebViewReportLog.jdField_b_of_type_Boolean) && (!((JSONObject)localObject1).has("url_list"))) {
+            continue;
+          }
+          VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+        }
       }
-      catch (MalformedURLException localMalformedURLException)
+      catch (Exception localException)
       {
-        Object localObject;
-        QLog.e("MusicPlayerActivity", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
+        VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+        QLog.d("WebCoreDump", 1, "-->read config file err:" + localException.toString());
+        VipWebViewReportLog.b();
         continue;
-        int i = -1;
+        VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
         continue;
       }
-      try
+      finally
       {
-        i = ((URL)localObject).openConnection().getContentLength();
-        l = i;
+        VipWebViewReportLog.b();
       }
-      catch (IOException localIOException)
-      {
-        QLog.e("MusicPlayerActivity", 1, "music player activity url IOException ", localIOException);
-      }
-    }
-    localObject = new Bundle();
-    ((Bundle)localObject).putLong("_filesize_from_dlg", l);
-    ((Bundle)localObject).putString("_filename_from_dlg", this.jdField_a_of_type_Aeko.a.getResources().getString(2131435107));
-    UniformDownloadMgr.a().b("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435", (Bundle)localObject);
-    localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof Integer))
-    {
-      i = ((Integer)localObject).intValue();
-      Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Aeko.a), 54, 2131438480, i, this.jdField_a_of_type_AndroidViewView).sendToTarget();
+      QLog.d("WebCoreDump", 1, "parse config cost=" + (System.currentTimeMillis() - l));
       return;
-    }
-  }
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (!UniformDownloadMgr.a().a("http://misc.wcd.qq.com/app?packageName=com.tencent.qqmusic&channelId=10000435")) {
-        ThreadManager.post(new aeks(this), 5, null, true);
-      }
+      QLog.d("WebCoreDump", 1, "-->No url white list in config!" + ((JSONObject)localObject1).toString());
+      continue;
+      label391:
+      VipWebViewReportLog.a(VipWebViewReportLog.a());
+      VipWebViewReportLog.b();
+      QLog.d("WebCoreDump", 1, "-->config file not exist: " + localObject2.getPath());
+      VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
     }
   }
 }

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.shortvideo.redbag;
 
-import aidm;
+import aiig;
 import com.tencent.mobileqq.qipc.QIPCModule;
 
 public class VideoPlayIPCServer
 {
   private static volatile VideoPlayIPCServer jdField_a_of_type_ComTencentMobileqqShortvideoRedbagVideoPlayIPCServer;
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new aidm(this, "Module_VideoPlayIPCServer");
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new aiig(this, "Module_VideoPlayIPCServer");
   
   public static VideoPlayIPCServer a()
   {

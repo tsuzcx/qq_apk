@@ -1,28 +1,38 @@
-import android.os.Bundle;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.mobileqq.filemanager.app.UniformDownload;
+import android.text.TextUtils;
+import com.tencent.biz.troop.TroopMemberApiPlugin;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.DownloadListener;
+import org.json.JSONObject;
 
 public class pao
-  implements DownloadListener
+  implements VideoCombineHelper.Callback
 {
-  public pao(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView) {}
+  public pao(TroopMemberApiPlugin paramTroopMemberApiPlugin, String paramString) {}
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "start UniformDownloadActivity");
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        localJSONObject.put("retCode", 0);
+        if (!TextUtils.isEmpty(paramString2)) {
+          localJSONObject.put("errMsg", paramString2);
+        }
+        if (!TextUtils.isEmpty(paramString1)) {
+          localJSONObject.put("file", paramString1);
+        }
+        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        QLog.e(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.TAG, 1, paramString2, paramString1);
+      }
+      localJSONObject.put("retCode", 1);
     }
-    String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    UniformDownload.a(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity, paramString1, localBundle);
   }
 }
 

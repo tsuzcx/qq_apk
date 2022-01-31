@@ -1,20 +1,35 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.startup.step.ProcessInfoUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class aikg
+public final class aikg
   implements Runnable
 {
-  public aikg(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  public aikg(String paramString) {}
   
   public void run()
   {
-    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a()))
+    SharedPreferences localSharedPreferences = ProcessInfoUtil.a();
+    int i;
+    if (localSharedPreferences != null)
     {
-      this.a.a.app.f(false);
-      SubAccountControll.a(this.a.a.app, false);
+      i = ProcessInfoUtil.a(BaseApplicationImpl.getContext(), this.a);
+      if (i != -1) {
+        break label27;
+      }
     }
+    label27:
+    long l;
+    do
+    {
+      return;
+      l = System.currentTimeMillis();
+      localSharedPreferences.edit().putInt("pid" + this.a, i);
+      localSharedPreferences.edit().putLong("start_time" + this.a, l).apply();
+    } while (!QLog.isColorLevel());
+    QLog.d("ProcessUtils", 2, "recordProcessStart - " + this.a + ":" + i + "|" + l);
   }
 }
 

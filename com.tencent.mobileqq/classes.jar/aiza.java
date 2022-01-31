@@ -1,16 +1,22 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class aiza
-  implements Runnable
+  implements InputFilter
 {
-  public aiza(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public aiza(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void run()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    TroopBarReplyActivity.a(this.a, 2);
-    this.a.a.setSelected(true);
-    this.a.c.setSelected(false);
+    if (paramCharSequence != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if (paramCharSequence.contains("\n")) {
+        return paramCharSequence.replaceAll("\n", "");
+      }
+    }
+    return null;
   }
 }
 

@@ -1,17 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
 
 public class xyr
-  extends Handler
+  implements View.OnClickListener
 {
-  public xyr(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  public xyr(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if (!NewFlowEditVideoActivity.c(this.a))
     {
+      NewFlowEditVideoActivity.b(this.a);
+      return;
     }
+    NewFlowEditVideoActivity.b(this.a, false);
+    NewFlowEditVideoActivity.b(this.a).setSelected(false);
   }
 }
 

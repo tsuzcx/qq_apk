@@ -1,47 +1,79 @@
-import com.tencent.mobileqq.data.EmoticonTab;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.Iterator;
-import java.util.List;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.image.ApngImage;
+import com.tencent.mobileqq.leba.LebaTitleBar;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.leba.view.LebaTopBarView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class aeia
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public aeia(EmoticonManager paramEmoticonManager) {}
+  private int jdField_a_of_type_Int;
+  private SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(0);
+  private boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public aeia(LebaWithFeeds paramLebaWithFeeds) {}
+  
+  private int a()
   {
-    String str;
-    synchronized (this.a)
+    int i = 0;
+    int k;
+    for (int j = 0; i < this.jdField_a_of_type_Int; j = k)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(EmoticonTab.class.getSimpleName());
-      EntityTransaction localEntityTransaction = this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
-      try
-      {
-        localEntityTransaction.a();
-        Iterator localIterator1 = this.a.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator1.hasNext())
-        {
-          str = (String)localIterator1.next();
-          EmoticonManager.a(this.a, str, true, false);
-          continue;
-          localObject1 = finally;
-        }
+      localObject = (aeib)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      k = j;
+      if (localObject != null) {
+        k = j + ((aeib)localObject).jdField_a_of_type_Int;
       }
-      finally
-      {
-        localEntityTransaction.b();
+      i += 1;
+    }
+    aeib localaeib = (aeib)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
+    Object localObject = localaeib;
+    if (localaeib == null) {
+      localObject = new aeib(this);
+    }
+    return j - ((aeib)localObject).b;
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    LebaWithFeeds.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaWithFeeds).a(paramInt);
+    if (ThemeUtil.isNowThemeIsAnimate())
+    {
+      if (paramInt != 0) {
+        ApngImage.pauseByTag(4);
+      }
+      if (paramInt == 0) {
+        ApngImage.playByTag(4);
       }
     }
-    Iterator localIterator2 = this.a.b.iterator();
-    while (localIterator2.hasNext())
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    View localView;
+    do
     {
-      str = (String)localIterator2.next();
-      EmoticonManager.a(this.a, str, false, true);
+      return;
+      this.jdField_a_of_type_Int = paramInt1;
+      localView = paramAbsListView.getChildAt(0);
+    } while (localView == null);
+    aeib localaeib = (aeib)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+    paramAbsListView = localaeib;
+    if (localaeib == null) {
+      paramAbsListView = new aeib(this);
     }
-    localObject1.c();
-    localObject1.b();
+    paramAbsListView.jdField_a_of_type_Int = localView.getHeight();
+    paramAbsListView.b = localView.getTop();
+    this.jdField_a_of_type_AndroidUtilSparseArray.append(paramInt1, paramAbsListView);
+    paramInt1 = a();
+    LebaWithFeeds.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaWithFeeds).a(paramInt1);
+    LebaWithFeeds.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaWithFeeds).a(LebaWithFeeds.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaWithFeeds), paramInt1, LebaWithFeeds.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaWithFeeds));
   }
 }
 

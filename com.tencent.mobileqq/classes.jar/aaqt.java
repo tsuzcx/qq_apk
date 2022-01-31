@@ -1,21 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class aaqt
-  implements DialogInterface.OnClickListener
+public class aaqt
+  implements aarg
 {
-  aaqt(aaqr paramaaqr, QQCustomDialog paramQQCustomDialog) {}
+  public aaqt(SplashPopupWin paramSplashPopupWin, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, ArrayList paramArrayList)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    QLog.w("WorldCupMgr", 1, "SplashPopupWin, 异步加载图片[" + paramBoolean + "]");
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidViewView);
       return;
     }
-    catch (Exception paramDialogInterface) {}
+    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.b();
   }
 }
 

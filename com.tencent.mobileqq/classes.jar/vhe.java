@@ -1,20 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.MyEnterTroopChatItemBuilder;
 
 public class vhe
-  extends AnimatorListenerAdapter
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public vhe(SixCombolEffectView paramSixCombolEffectView) {}
+  public TextView b;
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    if (!SixCombolEffectView.a) {
-      return;
-    }
-    this.a.b();
-  }
+  public vhe(MyEnterTroopChatItemBuilder paramMyEnterTroopChatItemBuilder) {}
 }
 
 

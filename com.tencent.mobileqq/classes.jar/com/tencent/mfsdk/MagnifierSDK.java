@@ -10,7 +10,7 @@ import com.tencent.mfsdk.persist.DBHandler;
 import com.tencent.mfsdk.reporter.DFObserver;
 import com.tencent.mfsdk.reporter.StackObserver;
 import mqq.os.MqqHandler;
-import rdq;
+import rii;
 
 public class MagnifierSDK
 {
@@ -28,6 +28,7 @@ public class MagnifierSDK
   
   static
   {
+    jdField_a_of_type_Int = 1;
     jdField_a_of_type_JavaLangString = "";
     jdField_a_of_type_ComTencentMfsdkReporterStackObserver = new StackObserver();
   }
@@ -91,7 +92,7 @@ public class MagnifierSDK
     while (jdField_a_of_type_MqqOsMqqHandler == null) {
       return false;
     }
-    paramApplication = new rdq(this, paramApplication, paramInt);
+    paramApplication = new rii(this, paramApplication, paramInt);
     jdField_a_of_type_MqqOsMqqHandler.post(paramApplication);
     return true;
   }

@@ -9,7 +9,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import aofe;
+import aonw;
 import dov.com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
 
 public class FrameAdapter
@@ -44,7 +44,7 @@ public class FrameAdapter
       paramViewGroup = new ViewGroup.LayoutParams(this.b, i);
       paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       paramView.setLayoutParams(paramViewGroup);
-      paramViewGroup = new aofe();
+      paramViewGroup = new aonw();
       paramViewGroup.a = paramView;
       paramViewGroup.a.setImageDrawable(new ColorDrawable(-12303292));
       paramView.setTag(paramViewGroup);
@@ -53,7 +53,7 @@ public class FrameAdapter
     {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader.a(paramViewGroup.a, Integer.valueOf(paramInt));
       return paramView;
-      paramViewGroup = (aofe)paramView.getTag();
+      paramViewGroup = (aonw)paramView.getTag();
     }
   }
 }

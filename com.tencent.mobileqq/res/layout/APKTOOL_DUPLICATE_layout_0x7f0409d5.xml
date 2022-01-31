@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c38" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="15.0dip"
+<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.commoncode.module.videorecommend.widget.VideoYYTagView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c39" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.qzone.commoncode.module.videorecommend.widget.VideoYYTagView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c3a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
-    <com.qzone.commoncode.module.videorecommend.widget.VideoYYTagView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c3b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
+    <com.tencent.widget.ListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021de7" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2bb6" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:scrollingCache="true" android:cacheColorHint="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:divider="@null" />
 </LinearLayout>

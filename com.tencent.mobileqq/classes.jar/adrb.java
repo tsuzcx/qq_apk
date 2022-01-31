@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.hotpic.HotPicTab;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import mqq.os.MqqHandler;
 
-public class adrb
+class adrb
   implements Runnable
 {
-  public adrb(HotPicTab paramHotPicTab) {}
+  adrb(adra paramadra) {}
   
   public void run()
   {
-    this.a.requestLayout();
+    QfileEditBottomBar.a(this.a.a).a().a(false);
+    ThreadManager.getUIHandler().post(new adrc(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adrb
  * JD-Core Version:    0.7.0.1
  */

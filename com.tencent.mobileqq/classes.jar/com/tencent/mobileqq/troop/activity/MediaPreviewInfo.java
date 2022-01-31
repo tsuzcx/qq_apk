@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aiun;
+import aizq;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public class MediaPreviewInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aiun();
+  public static final Parcelable.Creator CREATOR = new aizq();
   public int a;
   public String a;
   public String b;
@@ -53,7 +53,7 @@ public class MediaPreviewInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewInfo
  * JD-Core Version:    0.7.0.1
  */

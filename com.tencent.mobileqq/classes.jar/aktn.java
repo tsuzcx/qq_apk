@@ -1,37 +1,81 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vas.ClubContentJsonTask;
+import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.InetAddress;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
-public class aktn
+public final class aktn
   implements Runnable
 {
-  public aktn(CustomHorizontalScrollView paramCustomHorizontalScrollView) {}
+  public aktn(List paramList) {}
   
   public void run()
   {
-    int i = this.a.getScrollX();
-    if (i == this.a.jdField_a_of_type_Int)
+    try
     {
-      int j = i % (this.a.b + this.a.c);
-      if (this.a.e + i >= this.a.d) {
-        return;
-      }
-      if (j < this.a.b / 2) {
-        this.a.smoothScrollBy(-j, 0);
-      }
-      for (;;)
+      if (WebProcessManager.a() == -1)
       {
-        this.a.jdField_a_of_type_Int = i;
-        return;
-        if (j >= this.a.b / 2)
+        Object localObject = new File(BaseApplicationImpl.getContext().getFilesDir(), ClubContentJsonTask.e.a);
+        if ((localObject == null) || (!((File)localObject).exists()))
         {
-          int k = this.a.b;
-          int m = this.a.c;
-          this.a.smoothScrollBy(k + m - j, 0);
+          WebProcessManager.a(-1);
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.i("WebProcessManager", 2, "null == file || !file.exists() = true,return!");
+          return;
+        }
+        localObject = FileUtils.a((File)localObject);
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          WebProcessManager.a(-1);
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.i("WebProcessManager", 2, "TextUtils.isEmpty(JsonStr) = true,return!");
+          return;
         }
       }
     }
-    this.a.jdField_a_of_type_Int = i;
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 5L);
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.e("WebProcessManager", 2, "UnKnownHost Exception!", localException);
+        return;
+        if (new JSONObject(localException).getBoolean("use_dns")) {}
+        for (int i = 1;; i = 0)
+        {
+          WebProcessManager.a(i);
+          if (QLog.isColorLevel()) {
+            QLog.i("WebProcessManager", 2, "isNeedPreparseDns :" + WebProcessManager.a());
+          }
+          if (WebProcessManager.a() != 1) {
+            break;
+          }
+          Iterator localIterator = this.a.iterator();
+          while (localIterator.hasNext())
+          {
+            String str = (String)localIterator.next();
+            long l = System.currentTimeMillis();
+            InetAddress.getByName(str);
+            l = System.currentTimeMillis() - l;
+            if (QLog.isColorLevel()) {
+              QLog.i("WebStatusReport", 2, "time used:" + l);
+            }
+            WebProcessManager.d(str, l);
+          }
+        }
+      }
+    }
   }
 }
 

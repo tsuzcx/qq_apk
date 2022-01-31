@@ -1,18 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.activity.aio.AIOTipsController;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import java.util.List;
 
 public class wiq
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wiq(SearchBaseActivity paramSearchBaseActivity) {}
+  public wiq(TipsManager paramTipsManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    if (TipsManager.a(this.a) != null) {
+      TipsManager.a(this.a).a();
+    }
+    TipsManager.a(this.a, null);
+    if (this.a.a != null) {
+      this.a.a.clear();
+    }
   }
 }
 

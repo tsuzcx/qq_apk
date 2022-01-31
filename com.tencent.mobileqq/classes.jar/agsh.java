@@ -1,19 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.profile.view.ShimmerLinearLayout;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.XListView;
 
 public class agsh
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public agsh(ShimmerLinearLayout paramShimmerLinearLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public agsh(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f1 = Math.max(0.0F, Math.min(1.0F, ((Float)paramValueAnimator.getAnimatedValue()).floatValue()));
-    paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout;
-    int i = (int)(this.jdField_a_of_type_Int * (1.0F - f1) + this.b * f1);
-    float f2 = this.c;
-    paramValueAnimator.a(i, (int)(f1 * this.d + f2 * (1.0F - f1)));
+    paramView = new Intent(this.a, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://ti.qq.com/cgi-node/specialtag/zanlist?_wv=1027&asyncMode=3");
+    this.a.startActivity(paramView);
+    paramView = PersonalityLabelGalleryActivity.a(this.a);
+    paramView.praiseCount += PersonalityLabelGalleryActivity.a(this.a).unreadCount;
+    PersonalityLabelGalleryActivity.a(this.a).unreadCount = 0;
+    PersonalityLabelGalleryActivity.a(this.a).postDelayed(new agsi(this), 500L);
+    ReportController.b(this.a.app, "dc00898", "", "", "0X8007FCF", "0X8007FCF", 0, 0, "", "", "", "");
   }
 }
 

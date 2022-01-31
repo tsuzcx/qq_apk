@@ -1,21 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnUndoViewClickListener;
 
-public final class aont
-  implements Callbacks.Callback
+public class aont
+  implements View.OnClickListener
 {
-  public aont(Object paramObject) {}
+  public aont(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public Void a(Boolean arg1, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult)
+  public void onClick(View paramView)
   {
-    QLog.e(MediaUtil.a(), 2, "MediaCodecThumbnailGenerator finished().");
-    synchronized (this.a)
-    {
-      this.a.notifyAll();
-      return null;
+    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
+    while (this.a.a == null) {
+      return;
     }
+    this.a.a.a();
   }
 }
 

@@ -1,15 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.RedPackRainCloudView;
 
-public class abgq
-  implements View.OnClickListener
+class abgq
+  implements Runnable
 {
-  public abgq(ARGridMapViewDialog paramARGridMapViewDialog) {}
+  abgq(abgo paramabgo) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.c();
+    if ((!this.a.a.isFinishing()) && (this.a.a.a.getVisibility() == 0))
+    {
+      this.a.a.a.setVisibility(8);
+      ARMapActivity.d(this.a.a, false);
+      ARMapActivity.c(this.a.a);
+    }
   }
 }
 

@@ -1,11 +1,17 @@
-class vgr
-  implements Runnable
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
+import com.tencent.mobileqq.app.ThreadManager;
+
+public class vgr
+  implements View.OnClickListener
 {
-  vgr(vgq paramvgq) {}
+  public vgr(MarketFaceItemBuilder paramMarketFaceItemBuilder, MarketFaceItemBuilder.Holder paramHolder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.d = false;
+    ThreadManager.post(new vgs(this), 5, null, true);
   }
 }
 

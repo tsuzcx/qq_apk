@@ -1,49 +1,43 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rkm
-  extends FriendListObserver
+  extends ClickableSpan
 {
-  public rkm(AddRequestActivity paramAddRequestActivity) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  public rkm(AboutActivity paramAboutActivity, String paramString, int paramInt)
   {
-    if (AddRequestActivity.a(this.a))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (this.jdField_a_of_type_Int)
     {
-      if (!paramBoolean) {
-        this.a.a(2130838739, this.a.getString(2131434464));
-      }
     }
-    else {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("base_uin", paramString);
-    String str = this.a.b;
-    if (TextUtils.isEmpty(this.a.b)) {
-      str = this.a.a;
-    }
-    localBundle.putString("base_nick", str);
-    localBundle.putInt("verfy_type", AddRequestActivity.b(this.a));
-    localBundle.putString("verfy_msg", AddRequestActivity.a(this.a));
-    if (AddRequestActivity.a(this.a) != null) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    for (;;)
     {
-      localBundle.putBoolean("isFromWzry", paramBoolean);
-      AutoRemarkActivity.a(this.a, 0, paramString, 0L, localBundle);
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, QQBrowserActivity.class);
+      paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getCurrentAccountUin());
+      this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
       return;
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005746", "0X8005746", 0, 0, "", "", "", "");
     }
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if ((paramBoolean) && (this.a.a != null) && (this.a.a.equals(paramString))) {
-      ThreadManager.post(new rkn(this), 5, null, true);
-    }
+    paramTextPaint.setColor(-16754769);
+    paramTextPaint.setUnderlineText(true);
   }
 }
 

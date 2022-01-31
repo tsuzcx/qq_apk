@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3601" android:title="取消订阅" />
-    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3602" android:title="屏蔽" />
-    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3603" android:title="发消息" />
-    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3604" android:title="删除" />
-    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3605" android:title="标记已读" />
+    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3643" android:title="取消订阅" />
+    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3644" android:title="屏蔽" />
+    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3645" android:title="发消息" />
+    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3646" android:title="删除" />
+    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3647" android:title="标记已读" />
 </menu>

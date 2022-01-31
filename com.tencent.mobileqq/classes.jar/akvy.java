@@ -1,34 +1,30 @@
-import android.os.Looper;
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
-import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import com.tencent.biz.AuthorizeConfig;
+import com.tencent.mobileqq.webview.swift.component.SwiftPreloadCookieManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class akvy
+public final class akvy
   implements Runnable
 {
-  public akvy(ProfileCardMoreInfoView paramProfileCardMoreInfoView, Card paramCard) {}
+  public akvy(List paramList, SwiftPreloadCookieManager paramSwiftPreloadCookieManager) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a == null)) {}
-    Object localObject;
-    do
+    Set localSet = AuthorizeConfig.a().a("pskey");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      return;
-      localObject = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-    } while (localObject == null);
-    if ((!ProfileActivity.AllInOne.f(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a)) || (this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId == ProfileCardTemplate.h) || ("0".equals(((ProfileShoppingPhotoInfo)localObject).bindShoppingNo)))
-    {
-      localObject = (View)this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_JavaUtilHashMap.remove("map_key_shopping_photo");
-      return;
+      String str = (String)localIterator.next();
+      if (!localSet.contains(str))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("SwiftBrowserCookieMonster", 2, str + " doesn't need pskey any more,so delete! ");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftPreloadCookieManager.b(str, "p_skey");
+      }
     }
-    new MqqHandler(Looper.getMainLooper()).post(new akvz(this, (ProfileShoppingPhotoInfo)localObject));
   }
 }
 

@@ -59,7 +59,7 @@ public class RecentEfficientItemBuilder
     } while (!localStoryHaloManager.a(paramRecentBaseData));
     paramRecentBaseData = (RecentItemChatMsgData)paramRecentBaseData;
     localStoryHaloManager.a(paramRecentBaseData);
-    switch (paramRecentBaseData.o)
+    switch (paramRecentBaseData.q)
     {
     default: 
       return;
@@ -67,10 +67,10 @@ public class RecentEfficientItemBuilder
       a(paramRecentEfficientItemBuilderHolder, paramContext);
       return;
     case -1: 
-      a(paramRecentEfficientItemBuilderHolder, paramContext, paramRecentBaseData, 2130843494);
+      a(paramRecentEfficientItemBuilderHolder, paramContext, paramRecentBaseData, 2130843528);
       return;
     }
-    a(paramRecentEfficientItemBuilderHolder, paramContext, paramRecentBaseData, 2130843493);
+    a(paramRecentEfficientItemBuilderHolder, paramContext, paramRecentBaseData, 2130843527);
   }
   
   private void a(RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder paramRecentEfficientItemBuilderHolder, Context paramContext)
@@ -112,7 +112,7 @@ public class RecentEfficientItemBuilder
     }
     StoryReportor.a("msg_tab", "circle_exp", 0, 0, new String[] { paramRecentItemChatMsgData.a() });
     if (QLog.isColorLevel()) {
-      QLog.i("RecentEfficientItemBuilder", 2, "decorateHaloResource: invoked. Message:  msgItem.haloState : " + paramRecentItemChatMsgData.o + " msgItem.getRecentUserUin() : " + paramRecentItemChatMsgData.a());
+      QLog.i("RecentEfficientItemBuilder", 2, "decorateHaloResource: invoked. Message:  msgItem.haloState : " + paramRecentItemChatMsgData.q + " msgItem.getRecentUserUin() : " + paramRecentItemChatMsgData.a());
     }
     paramRecentEfficientItemBuilderHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     paramRecentEfficientItemBuilderHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(paramInt);
@@ -141,8 +141,8 @@ public class RecentEfficientItemBuilder
       paramViewGroup = paramView;
       paramView = paramOnDragModeChangedListener;
       localObject1 = paramContext.getResources();
-      paramOnDragModeChangedListener = ((Resources)localObject1).getColorStateList(2131494267);
-      localObject1 = ((Resources)localObject1).getColorStateList(2131494268);
+      paramOnDragModeChangedListener = ((Resources)localObject1).getColorStateList(2131494273);
+      localObject1 = ((Resources)localObject1).getColorStateList(2131494274);
       if (!ThemeUtil.isNowThemeIsDefault(null, false, null)) {
         break label716;
       }
@@ -189,19 +189,19 @@ public class RecentEfficientItemBuilder
       }
       return paramViewGroup;
       paramOnDragModeChangedListener = new RecentEfficientItemBuilder.RecentEfficientItemBuilderHolder();
-      localObject1 = a(paramContext, 2130971486, paramOnDragModeChangedListener);
-      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)((View)localObject1).findViewById(2131362719));
-      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject1).findViewById(2131363207));
-      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)((View)localObject1).findViewById(2131363378));
-      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131374901));
-      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131374900));
-      paramOnDragModeChangedListener.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)((View)localObject1).findViewById(2131365659));
+      localObject1 = a(paramContext, 2130971512, paramOnDragModeChangedListener);
+      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentWidgetRecentDynamicAvatarView = ((RecentDynamicAvatarView)((View)localObject1).findViewById(2131362724));
+      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)((View)localObject1).findViewById(2131363211));
+      paramOnDragModeChangedListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)((View)localObject1).findViewById(2131363397));
+      paramOnDragModeChangedListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131374959));
+      paramOnDragModeChangedListener.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131374958));
+      paramOnDragModeChangedListener.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)((View)localObject1).findViewById(2131365664));
       paramOnDragModeChangedListener.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setGravity(16);
       localObject2 = paramContext.getResources();
       float f = DeviceInfoUtil.a();
-      paramView = ((Resources)localObject2).getColorStateList(2131494267);
-      paramViewGroup = ((Resources)localObject2).getColorStateList(2131494219);
-      localObject2 = ((Resources)localObject2).getColorStateList(2131494268);
+      paramView = ((Resources)localObject2).getColorStateList(2131494273);
+      paramViewGroup = ((Resources)localObject2).getColorStateList(2131494225);
+      localObject2 = ((Resources)localObject2).getColorStateList(2131494274);
       paramOnDragModeChangedListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(paramViewGroup);
       if (ThemeUtil.isNowThemeIsDefault(null, false, null)) {
         paramOnDragModeChangedListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor((ColorStateList)localObject2, 0);
@@ -345,14 +345,13 @@ public class RecentEfficientItemBuilder
         boolean bool2;
         boolean bool3;
         boolean bool4;
-        label512:
-        int m;
-        label516:
-        label541:
-        label566:
+        label533:
+        int n;
+        label553:
+        label578:
         int k;
-        label647:
-        label684:
+        label603:
+        int m;
         if (paramDrawable != null)
         {
           paramDrawable = paramDrawable.toString();
@@ -363,61 +362,68 @@ public class RecentEfficientItemBuilder
             localRecentEfficientItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.jdField_a_of_type_JavaLangCharSequence);
           }
           if ((paramRecentBaseData.a() != 0) || (!(paramRecentBaseData instanceof RecentItemChatMsgData))) {
-            break label1119;
+            break label1175;
           }
           long l1 = ((RecentItemChatMsgData)paramRecentBaseData).b;
           long l2 = ((RecentItemChatMsgData)paramRecentBaseData).jdField_c_of_type_Long;
           long l3 = ((RecentItemChatMsgData)paramRecentBaseData).d;
+          long l4 = ((RecentItemChatMsgData)paramRecentBaseData).e;
           bool1 = HotReactiveHelper.a(HotReactiveHelper.b(), 1000L * l2);
-          bool2 = HotReactiveHelper.a(HotReactiveHelper.b(), 1000L * l1);
-          bool3 = HotReactiveHelper.a(HotReactiveHelper.b(), l3 * 1000L);
-          i = ((RecentItemChatMsgData)paramRecentBaseData).m;
-          bool4 = ((RecentItemChatMsgData)paramRecentBaseData).jdField_c_of_type_Boolean;
-          if (i != 1) {
-            break label959;
-          }
-          if (!bool4) {
-            break label951;
-          }
-          i = 2130845922;
-          m = i;
+          bool2 = HotReactiveHelper.a(HotReactiveHelper.b(), 1000L * l3, ((RecentItemChatMsgData)paramRecentBaseData).jdField_c_of_type_Boolean);
+          bool3 = HotReactiveHelper.a(HotReactiveHelper.b(), 1000L * l1);
+          bool4 = HotReactiveHelper.a(HotReactiveHelper.b(), 1000L * l4);
           i = ((RecentItemChatMsgData)paramRecentBaseData).l;
           if (i != 1) {
-            break label1004;
+            break label999;
           }
           if (!bool2) {
-            break label996;
+            break label991;
           }
-          i = 2130845931;
-          j = ((RecentItemChatMsgData)paramRecentBaseData).k;
+          i = 2130846004;
+          j = ((RecentItemChatMsgData)paramRecentBaseData).n;
           if (j != 1) {
-            break label1045;
+            break label1032;
           }
-          if (!bool1) {
-            break label1037;
-          }
-          j = 2130845928;
-          k = ((RecentItemChatMsgData)paramRecentBaseData).n;
-          if (k != 1) {
-            break label1086;
+          n = 2130846011;
+          j = ((RecentItemChatMsgData)paramRecentBaseData).m;
+          if (j != 1) {
+            break label1060;
           }
           if (!bool3) {
-            break label1078;
+            break label1052;
           }
-          k = 2130845924;
-          label591:
-          localRecentEfficientItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablesWithIntrinsicBounds(m, i, j, k);
-          label607:
+          j = 2130846013;
+          k = ((RecentItemChatMsgData)paramRecentBaseData).k;
+          if (k != 1) {
+            break label1101;
+          }
+          if (!bool1) {
+            break label1093;
+          }
+          k = 2130846010;
+          m = ((RecentItemChatMsgData)paramRecentBaseData).p;
+          if (m != 1) {
+            break label1142;
+          }
+          if (!bool4) {
+            break label1134;
+          }
+          m = 2130846006;
+          label628:
+          localRecentEfficientItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablesWithIntrinsicBounds(i, n, j, k, m);
+          label646:
           switch (paramRecentBaseData.jdField_a_of_type_Int)
           {
           default: 
             i = 0;
+            label687:
             localRecentEfficientItemBuilderHolder.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(i, 0);
             i = paramRecentBaseData.e;
             paramDrawable = paramRecentBaseData.jdField_d_of_type_JavaLangCharSequence;
             if (paramDrawable != null)
             {
               paramDrawable = paramDrawable.toString();
+              label724:
               localObject = paramDrawable;
               if (paramDrawable != null)
               {
@@ -454,7 +460,7 @@ public class RecentEfficientItemBuilder
               k = 99;
               CustomWidgetUtil.a(localRecentEfficientItemBuilderHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, m, j, k, null);
               if ((paramRecentBaseData.f & 0xF0) != 32) {
-                break label1348;
+                break label1405;
               }
             }
           }
@@ -465,7 +471,7 @@ public class RecentEfficientItemBuilder
           {
             try
             {
-              localRecentEfficientItemBuilderHolder.f.setBackgroundResource(2130838588);
+              localRecentEfficientItemBuilderHolder.f.setBackgroundResource(2130838594);
               if (AppSetting.b) {
                 paramView.setContentDescription(paramRecentBaseData.jdField_d_of_type_JavaLangString);
               }
@@ -479,96 +485,103 @@ public class RecentEfficientItemBuilder
               break label223;
               paramDrawable = "";
               break label337;
-              label951:
-              i = 2130845929;
-              break label512;
-              label959:
-              if (i == 2)
-              {
-                if (bool4)
-                {
-                  i = 2130845921;
-                  m = i;
-                  break label516;
-                }
-                i = 2130845915;
-                continue;
-              }
-              m = 0;
-              break label516;
-              label996:
-              i = 2130845930;
-              break label541;
-              label1004:
+              label991:
+              i = 2130846003;
+              break label533;
+              label999:
               if (i == 2)
               {
                 if (bool2)
                 {
-                  i = 2130845917;
-                  break label541;
+                  i = 2130846002;
+                  break label533;
                 }
-                i = 2130845916;
-                break label541;
+                i = 2130846001;
+                break label533;
               }
               i = 0;
-              break label541;
-              label1037:
-              j = 2130845927;
-              break label566;
-              label1045:
+              break label533;
+              label1032:
               if (j == 2)
               {
-                if (bool1)
-                {
-                  j = 2130845914;
-                  break label566;
-                }
-                j = 2130845913;
-                break label566;
+                n = 2130845995;
+                break label553;
               }
-              j = 0;
-              break label566;
-              label1078:
-              k = 2130845923;
-              break label591;
-              label1086:
-              if (k == 2)
+              n = 0;
+              break label553;
+              label1052:
+              j = 2130846012;
+              break label578;
+              label1060:
+              if (j == 2)
               {
                 if (bool3)
                 {
-                  k = 2130845926;
-                  break label591;
+                  j = 2130845997;
+                  break label578;
                 }
-                k = 2130845925;
-                break label591;
+                j = 2130845996;
+                break label578;
+              }
+              j = 0;
+              break label578;
+              label1093:
+              k = 2130846009;
+              break label603;
+              label1101:
+              if (k == 2)
+              {
+                if (bool1)
+                {
+                  k = 2130845994;
+                  break label603;
+                }
+                k = 2130845993;
+                break label603;
               }
               k = 0;
-              break label591;
-              label1119:
-              localRecentEfficientItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-              break label607;
-              i = 2130840213;
-              break label647;
+              break label603;
+              label1134:
+              m = 2130846005;
+              break label628;
+              label1142:
+              if (m == 2)
+              {
+                if (bool4)
+                {
+                  m = 2130846008;
+                  break label628;
+                }
+                m = 2130846007;
+                break label628;
+              }
+              m = 0;
+              break label628;
+              label1175:
+              localRecentEfficientItemBuilderHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setIconDrawablesWithIntrinsicBounds(0, 0, 0, 0, 0);
+              break label646;
+              i = 2130840228;
+              break label687;
               if (paramRecentBaseData.jdField_a_of_type_Boolean)
               {
-                i = 2130840220;
-                break label647;
+                i = 2130840235;
+                break label687;
               }
-              i = 2130840213;
-              break label647;
+              i = 2130840228;
+              break label687;
               if (paramRecentBaseData.jdField_a_of_type_Boolean)
               {
-                i = 2130840220;
-                break label647;
+                i = 2130840235;
+                break label687;
               }
-              i = 2130840221;
-              break label647;
-              i = 2130840221;
-              break label647;
-              i = 2130838701;
-              break label647;
+              i = 2130840236;
+              break label687;
+              i = 2130840236;
+              break label687;
+              i = 2130838710;
+              break label687;
               paramDrawable = "";
-              break label684;
+              break label724;
               paramDrawable = paramDrawable;
               paramDrawable.printStackTrace();
               localRecentEfficientItemBuilderHolder.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentBaseData.jdField_c_of_type_JavaLangCharSequence + " ");
@@ -585,19 +598,19 @@ public class RecentEfficientItemBuilder
               if (i == 3)
               {
                 i = 3;
-                j = 2130846056;
+                j = 2130846138;
                 if ((paramRecentBaseData instanceof RecentTroopAssistantItem)) {}
                 localRecentEfficientItemBuilderHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1, paramView);
                 k = 99;
                 continue;
               }
               i = 3;
-              j = 2130846055;
+              j = 2130846137;
               localRecentEfficientItemBuilderHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, paramView);
               k = 99;
               continue;
-              label1348:
-              localRecentEfficientItemBuilderHolder.f.setBackgroundResource(2130838587);
+              label1405:
+              localRecentEfficientItemBuilderHolder.f.setBackgroundResource(2130838593);
               continue;
             }
             catch (Throwable paramDrawable)

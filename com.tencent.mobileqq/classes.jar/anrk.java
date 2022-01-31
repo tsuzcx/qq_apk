@@ -1,34 +1,35 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.utils.FileUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.io.File;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.RelativeLayout;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerManager;
 
-public final class anrk
-  extends MqqHandler
+public class anrk
+  implements Runnable
 {
-  final String a;
-  final String b;
+  public anrk(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public anrk(String paramString1, String paramString2)
+  public void run()
   {
-    super(ThreadManager.getSubThreadLooper());
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController.c();
+    if (this.a.k) {}
+    QIMCaptureBannerManager localQIMCaptureBannerManager;
+    View localView;
+    do
     {
-    default: 
-      return;
-    case 1001: 
-      FileUtils.a(QQStoryContext.a().a(), this.a, this.b);
-      return;
-    }
-    FileUtils.b(QQStoryContext.a().a(), new File(this.b));
+      do
+      {
+        do
+        {
+          return;
+        } while (this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController == null);
+        localQIMCaptureBannerManager = (QIMCaptureBannerManager)QIMManager.a(9);
+      } while ((!localQIMCaptureBannerManager.a()) || (localQIMCaptureBannerManager.b()));
+      localView = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369016);
+    } while ((localView == null) || (localView.getVisibility() != 0));
+    localQIMCaptureBannerManager.b(true);
+    this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController.a((RelativeLayout)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131365916), this.a.jdField_a_of_type_AndroidViewView.getContext());
   }
 }
 

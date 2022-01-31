@@ -1,33 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.AnimatorListener;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import dov.com.qq.im.capture.util.QIMProviderViewBuilder;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
-public final class anyk
-  implements Animator.AnimatorListener
+class anyk
+  implements Runnable
 {
-  public anyk(AnimatorFactory.AnimatorListener paramAnimatorListener, ValueAnimator paramValueAnimator) {}
+  anyk(anyj paramanyj, int paramInt, Drawable[] paramArrayOfDrawable) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationAnimatorFactory$AnimatorListener != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationAnimatorFactory$AnimatorListener.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationAnimatorFactory$AnimatorListener != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationAnimatorFactory$AnimatorListener.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationAnimatorFactory$AnimatorListener != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiAnimationAnimatorFactory$AnimatorListener.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    int i = 0;
+    while (i < this.jdField_a_of_type_Int)
+    {
+      if (QIMProviderContainerView.a(this.jdField_a_of_type_Anyj.a).a(i))
+      {
+        Object localObject = (ImageView)this.jdField_a_of_type_Anyj.a.a.getChildAt(i);
+        ((Integer)((ImageView)localObject).getTag()).intValue();
+        if (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i] != null)
+        {
+          ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[i]);
+          if ((((ImageView)localObject).getDrawable() instanceof AnimationDrawable))
+          {
+            localObject = (AnimationDrawable)((ImageView)localObject).getDrawable();
+            ((AnimationDrawable)localObject).stop();
+            ((AnimationDrawable)localObject).setOneShot(true);
+            ((AnimationDrawable)localObject).start();
+          }
+        }
+      }
+      i += 1;
     }
   }
 }

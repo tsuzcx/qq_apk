@@ -9,14 +9,14 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import sua;
-import sub;
+import syv;
+import syw;
 
 public class GesturePWDSettingActivity
   extends IphoneTitleBarActivity
 {
   private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new sub(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new syw(this);
   private View jdField_a_of_type_AndroidViewView;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private boolean jdField_a_of_type_Boolean;
@@ -29,20 +29,20 @@ public class GesturePWDSettingActivity
   
   private void b()
   {
-    setTitle(2131436034);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131364712);
-    this.c = findViewById(2131364716);
-    this.d = findViewById(2131364719);
-    this.e = findViewById(2131364713);
-    this.f = findViewById(2131364717);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364715);
+    setTitle(2131436052);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131364736);
+    this.c = findViewById(2131364740);
+    this.d = findViewById(2131364743);
+    this.e = findViewById(2131364737);
+    this.f = findViewById(2131364741);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364739);
     this.jdField_a_of_type_AndroidViewView.setContentDescription("说明");
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.c.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.d.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131364711));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new sua(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131364735));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new syv(this));
   }
   
   private void c()
@@ -57,7 +57,7 @@ public class GesturePWDSettingActivity
       if (this.jdField_a_of_type_Boolean)
       {
         if ((this.leftView != null) && ((this.leftView instanceof TextView))) {
-          this.leftView.setText(2131435232);
+          this.leftView.setText(2131435248);
         }
         startActivityForResult(new Intent(this, GesturePWDCreateActivity.class), 10);
         overridePendingTransition(2131034134, 2131034131);
@@ -140,7 +140,7 @@ public class GesturePWDSettingActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969012);
+    super.setContentView(2130969014);
     b();
     c();
     return true;
@@ -162,9 +162,9 @@ public class GesturePWDSettingActivity
   protected String setLastActivityName()
   {
     if (this.jdField_a_of_type_Int == 0) {
-      return getString(2131436799);
+      return getString(2131436819);
     }
-    return getString(2131436034);
+    return getString(2131436052);
   }
 }
 

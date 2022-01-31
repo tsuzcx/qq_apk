@@ -1,27 +1,31 @@
-import com.tencent.av.utils.GVideoGrayConfig;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoPreDownloadListener;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 
-public class adts
-  implements GVideoGrayConfig.GVideoPreDownloadListener
+class adts
+  implements DialogInterface.OnClickListener
 {
-  public adts(GroupVideoManager paramGroupVideoManager) {}
+  adts(adtq paramadtq) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoManager", 2, "start slientDownloadPlugin onResult:" + paramInt);
-    }
-    GVideoGrayConfig.a().a();
-    if (paramInt == 1) {
-      GroupVideoManager.a("group_video", new adtt(this));
-    }
+    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
+    paramDialogInterface = new Intent(this.a.a.a, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.a);
+    paramDialogInterface.putExtra("fragment_id", 1);
+    paramDialogInterface.setFlags(67108864);
+    paramDialogInterface.setFlags(268435456);
+    this.a.a.a.startActivity(paramDialogInterface);
+    this.a.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adts
  * JD-Core Version:    0.7.0.1
  */

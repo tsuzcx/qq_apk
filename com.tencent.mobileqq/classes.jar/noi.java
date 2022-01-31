@@ -1,16 +1,20 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playmode.child.MyMemoryPlayMode;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
 public class noi
-  implements AudioManager.OnAudioFocusChangeListener
+  implements View.OnClickListener
 {
-  public noi(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
+  public noi(MyMemoryPlayMode paramMyMemoryPlayMode) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void onClick(View paramView)
   {
-    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (this.a.isResume())) {
-      this.a.e();
-    }
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
   }
 }
 

@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import yrb;
-import yrc;
+import yxk;
+import yxl;
 
 public class CmGameCmdChannel
 {
@@ -118,7 +118,7 @@ public class CmGameCmdChannel
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
         this.jdField_a_of_type_JavaUtilList.add(new GeneralMsgHandler());
-        Collections.sort(this.jdField_a_of_type_JavaUtilList, new yrb(this));
+        Collections.sort(this.jdField_a_of_type_JavaUtilList, new yxk(this));
         return;
         if (!QLog.isColorLevel()) {
           continue;
@@ -137,7 +137,7 @@ public class CmGameCmdChannel
       QLog.d("apollochannel_ApolloDataChannel", 2, "[requestData], ,cmd:" + paramString1 + ",reqData:" + paramString2 + ",async:" + paramBoolean);
     }
     ??? = paramString1.trim();
-    Object localObject2 = new yrc(this, (String)???, paramString2, paramInt1, paramInt2);
+    Object localObject2 = new yxl(this, (String)???, paramString2, paramInt1, paramInt2);
     if (("cs.close_room.local".equals(???)) || ("cs.make_room_min.local".equals(???)) || ("cs.share_game_result.local".equals(???)) || ("cs.invite_friends.local".equals(paramString1)) || ("cs.first_frame_drawn.local".equals(paramString1)) || ("cs.share_pic.local".equals(paramString1))) {
       ThreadManager.post((Runnable)localObject2, 5, null, true);
     }

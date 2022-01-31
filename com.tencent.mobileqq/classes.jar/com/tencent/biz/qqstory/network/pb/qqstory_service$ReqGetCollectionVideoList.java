@@ -21,13 +21,14 @@ public final class qqstory_service$ReqGetCollectionVideoList
   public final PBUInt64Field target_uid = PBField.initUInt64(0L);
   public final PBInt32Field time_zone = PBField.initInt32(0);
   public final PBBytesField union_id = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBUInt32Field video_dir = PBField.initUInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58, 64 }, new String[] { "target_uid", "start_cookie", "count", "collection_id", "time_zone", "union_id", "feed_id", "identify" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0) }, ReqGetCollectionVideoList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58, 64, 72 }, new String[] { "target_uid", "start_cookie", "count", "collection_id", "time_zone", "union_id", "feed_id", "identify", "video_dir" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0) }, ReqGetCollectionVideoList.class);
   }
 }
 

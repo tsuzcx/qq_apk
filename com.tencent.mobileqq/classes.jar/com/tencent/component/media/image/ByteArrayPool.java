@@ -1,7 +1,7 @@
 package com.tencent.component.media.image;
 
 import java.util.LinkedList;
-import pge;
+import pkw;
 
 public class ByteArrayPool
   extends BucketPool
@@ -16,14 +16,14 @@ public class ByteArrayPool
     return new byte[paramInt];
   }
   
-  protected pge getBuck(PoolParams.BucketParams paramBucketParams)
+  protected pkw getBuck(PoolParams.BucketParams paramBucketParams)
   {
-    pge localpge = new pge(this);
-    localpge.jdField_a_of_type_Int = paramBucketParams.arraysSize;
-    localpge.b = paramBucketParams.bucketMinSize;
-    localpge.c = localpge.jdField_a_of_type_Int;
-    localpge.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-    return localpge;
+    pkw localpkw = new pkw(this);
+    localpkw.jdField_a_of_type_Int = paramBucketParams.arraysSize;
+    localpkw.b = paramBucketParams.bucketMinSize;
+    localpkw.c = localpkw.jdField_a_of_type_Int;
+    localpkw.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+    return localpkw;
   }
   
   protected int getSizeForData(byte[] paramArrayOfByte)
@@ -34,16 +34,16 @@ public class ByteArrayPool
     return 0;
   }
   
-  protected int handleBucketListEmpty(pge parampge)
+  protected int handleBucketListEmpty(pkw parampkw)
   {
-    return parampge.b;
+    return parampkw.b;
   }
   
-  protected boolean handleRecyleData(pge parampge, byte[] paramArrayOfByte)
+  protected boolean handleRecyleData(pkw parampkw, byte[] paramArrayOfByte)
   {
-    if (parampge.jdField_a_of_type_JavaUtilLinkedList.size() < parampge.jdField_a_of_type_Int)
+    if (parampkw.jdField_a_of_type_JavaUtilLinkedList.size() < parampkw.jdField_a_of_type_Int)
     {
-      parampge.jdField_a_of_type_JavaUtilLinkedList.add(paramArrayOfByte);
+      parampkw.jdField_a_of_type_JavaUtilLinkedList.add(paramArrayOfByte);
       return false;
     }
     return true;

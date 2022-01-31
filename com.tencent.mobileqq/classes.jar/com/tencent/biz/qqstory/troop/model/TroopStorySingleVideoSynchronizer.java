@@ -27,8 +27,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.os.MqqHandler;
-import onz;
-import ooa;
+import osl;
+import osm;
 
 public class TroopStorySingleVideoSynchronizer
   extends DefaultPlayerVideoListSynchronizer
@@ -106,7 +106,7 @@ public class TroopStorySingleVideoSynchronizer
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.troopstory.singleSync", 2, "url exist");
       }
-      ThreadManager.getUIHandler().post(new onz(this, paramStoryVideoItem));
+      ThreadManager.getUIHandler().post(new osl(this, paramStoryVideoItem));
       return;
     }
     if ((paramStoryVideoItem != null) && (!TextUtils.isEmpty(paramStoryVideoItem.mLocalVideoPath)) && (new File(paramStoryVideoItem.mLocalVideoPath).exists()) && (!TextUtils.isEmpty(paramStoryVideoItem.mVideoLocalThumbnailPath)) && (new File(paramStoryVideoItem.mVideoLocalThumbnailPath).exists()))
@@ -114,7 +114,7 @@ public class TroopStorySingleVideoSynchronizer
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.troopstory.singleSync", 2, "localPath exist");
       }
-      ThreadManager.getUIHandler().post(new ooa(this, paramStoryVideoItem));
+      ThreadManager.getUIHandler().post(new osm(this, paramStoryVideoItem));
       return;
     }
     if (QLog.isColorLevel()) {

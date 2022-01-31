@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.qqstory.widget.IgnoreParentRelativeLayout android:orientation="vertical" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021175" android:layout_width="238.0dip" android:layout_height="84.0dip">
-        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="#ff212226" android:textColorHint="#ffbbbbbb" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cc3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginTop="23.0dip" android:hint="让好友评分..." android:singleLine="true" />
-        <dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cc4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" app:starImageWidth="37.0dip" app:starImageHeight="37.0dip" app:starImagePadding="0.0dip" app:starImageMarginRight="4.0dip" app:starNum="5" app:rating="0" app:starEmptyDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021174" app:starFillDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021173" app:enableRate="true" />
-    </LinearLayout>
-</com.tencent.biz.qqstory.widget.IgnoreParentRelativeLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <dov.com.qq.im.profile.views.OverScrollListView android:id="@id/common_xlistview" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c7f" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040614" />
+    <FrameLayout android:paddingTop="100.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0602" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04060d" />
+    </FrameLayout>
+</FrameLayout>

@@ -1,37 +1,24 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.manager.TicketManager;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-public final class akol
-  implements Runnable
+public class akol
+  implements HostnameVerifier
 {
-  public void run()
+  public akol(HttpCommunicator paramHttpCommunicator, String paramString, HttpMsg paramHttpMsg) {}
+  
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    if (SwiftBrowserCookieMonster.a == null) {
-      synchronized (SwiftBrowserCookieMonster.a())
-      {
-        if (SwiftBrowserCookieMonster.a == null)
-        {
-          Object localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-          if (localObject1 != null)
-          {
-            localObject1 = (TicketManager)((AppRuntime)localObject1).getManager(2);
-            if (localObject1 != null)
-            {
-              SwiftBrowserCookieMonster.a = new akom();
-              ((TicketManager)localObject1).registTicketManagerListener(SwiftBrowserCookieMonster.a);
-            }
-          }
-        }
-        return;
-      }
-    }
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaLangString, paramSSLSession);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, "httpsSSLProcess,HostnameVerifier", "reqhost = " + this.jdField_a_of_type_JavaLangString + ",address = " + paramSSLSession.getPeerHost() + "result:isverify = " + bool);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akol
  * JD-Core Version:    0.7.0.1
  */

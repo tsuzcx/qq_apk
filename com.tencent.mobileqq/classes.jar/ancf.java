@@ -1,27 +1,26 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin.SimpleAACRecorder;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PictureUrl;
 
-public class ancf
-  implements MediaRecorder.OnInfoListener
+public final class ancf
+  implements Parcelable.Creator
 {
-  public ancf(QzoneAudioRecordPlugin.SimpleAACRecorder paramSimpleAACRecorder) {}
-  
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public PictureUrl a(Parcel paramParcel)
   {
-    switch (paramInt1)
-    {
-    default: 
-      QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|what=" + paramInt1 + ",extra=" + paramInt2);
-      return;
-    case 801: 
-      QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|max file size reached.extra=" + paramInt2);
-      this.a.a();
-      return;
-    }
-    QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|max duration reached.extra=" + paramInt2);
-    this.a.a();
+    PictureUrl localPictureUrl = new PictureUrl();
+    localPictureUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localPictureUrl.jdField_a_of_type_Int = paramParcel.readInt();
+    localPictureUrl.jdField_b_of_type_Int = paramParcel.readInt();
+    localPictureUrl.c = paramParcel.readInt();
+    localPictureUrl.jdField_a_of_type_Float = paramParcel.readFloat();
+    localPictureUrl.jdField_b_of_type_Float = paramParcel.readFloat();
+    localPictureUrl.d = paramParcel.readInt();
+    return localPictureUrl;
+  }
+  
+  public PictureUrl[] a(int paramInt)
+  {
+    return new PictureUrl[paramInt];
   }
 }
 

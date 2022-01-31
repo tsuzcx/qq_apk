@@ -1,13 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoMultiSegment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.data.LockedCategory;
 
-public class anud
-  implements Runnable
+public final class anud
+  implements Parcelable.Creator
 {
-  public anud(EditVideoMultiSegment paramEditVideoMultiSegment) {}
-  
-  public void run()
+  public LockedCategory a(Parcel paramParcel)
   {
-    EditVideoMultiSegment.a(this.a, false);
+    return new LockedCategory(paramParcel);
+  }
+  
+  public LockedCategory[] a(int paramInt)
+  {
+    return new LockedCategory[paramInt];
   }
 }
 

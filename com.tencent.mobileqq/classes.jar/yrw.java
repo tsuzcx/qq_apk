@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.apollo.script.SpriteAioScript;
-import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil.NotifyDressReady;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
+import com.tencent.mobileqq.apollo.utils.ApolloHttpUtil;
 
-public class yrw
-  implements ApolloGameBasicEventUtil.NotifyDressReady
+public final class yrw
+  implements Runnable
 {
-  public yrw(SpriteAioScript paramSpriteAioScript, boolean paramBoolean) {}
+  public yrw(String paramString1, String paramString2, String[] paramArrayOfString, ApolloHttpCallBack paramApolloHttpCallBack, boolean paramBoolean, String paramString3, String paramString4, String paramString5) {}
   
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteAioScript.a(paramQQAppInterface, paramString1, paramInt1, paramArrayOfInt, paramInt2);
+    String str = this.jdField_a_of_type_JavaLangString.toUpperCase();
+    if (str.equals("GET")) {
+      ApolloHttpUtil.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
     }
+    while (!str.equals("POST")) {
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      ApolloHttpUtil.a(this.b, this.c, this.d, this.e, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
+      return;
+    }
+    ApolloHttpUtil.a(this.b, this.c, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
   }
 }
 

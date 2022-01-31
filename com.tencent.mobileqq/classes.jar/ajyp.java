@@ -1,49 +1,12 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr.WriteCommentCallback;
+import org.json.JSONObject;
 
 public final class ajyp
-  implements DownloadParams.DecodeHandler
+  implements TroopTopicMgr.WriteCommentCallback
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void a(int paramInt, JSONObject paramJSONObject)
   {
-    Object localObject;
-    if (paramBitmap == null)
-    {
-      localObject = null;
-      return localObject;
-    }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length > 0)) {}
-    for (int i = ((int[])(int[])paramDownloadParams)[0];; i = 0)
-    {
-      int j;
-      int k;
-      boolean bool;
-      if (i != 0)
-      {
-        paramDownloadParams = new Matrix();
-        paramDownloadParams.postRotate(i);
-        j = paramBitmap.getWidth();
-        k = paramBitmap.getHeight();
-        if (i % 90 != 0) {
-          bool = true;
-        }
-      }
-      label84:
-      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, k, paramDownloadParams, bool);; paramDownloadParams = paramBitmap)
-      {
-        localObject = paramDownloadParams;
-        if (paramDownloadParams == paramBitmap) {
-          break;
-        }
-        paramBitmap.recycle();
-        return paramDownloadParams;
-        bool = false;
-        break label84;
-      }
-    }
+    if (paramInt == 0) {}
   }
 }
 

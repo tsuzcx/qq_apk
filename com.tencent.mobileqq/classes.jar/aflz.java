@@ -1,43 +1,38 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
 
-class aflz
-  implements Runnable
+public class aflz
+  implements View.OnLongClickListener
 {
-  aflz(afly paramafly, PicFeedUploadInfo paramPicFeedUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult) {}
+  public aflz(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
   
-  public void run()
+  @TargetApi(11)
+  public boolean onLongClick(View paramView)
   {
-    int i;
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a != 0))
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, "发表失败，请重试", 1).a();
-      QLog.i("PicMomentItemBuilder", 1, "upload failed, errMsg=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.i + "code=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadResult.a);
-      i = 0;
-      localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label170;
-      }
+    if (this.a.a.getChildCount() <= 1) {
+      return true;
     }
-    label170:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    Object localObject = new ClipData.Item("");
+    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new afmm(this.a, paramView), paramView, 0);
+    localObject = NearbyProfileEditPanel.a(this.a, (PicInfo)paramView.getTag(), null);
+    ((RelativeLayout)localObject).setVisibility(4);
+    NearbyProfileEditPanel.a(this.a, (RelativeLayout)localObject);
+    int i = this.a.a.indexOfChild(paramView);
+    if (i != -1)
     {
-      NowVideoReporter localNowVideoReporter = new NowVideoReporter().h("video_public").i("re_republic").d("2").c("2");
-      if (i != 0) {}
-      for (String str = "1";; str = "2")
-      {
-        localNowVideoReporter.e(str).b((QQAppInterface)localObject);
-        return;
-        QQToast.a(BaseApplicationImpl.getContext(), 2, "发表成功", 1).a();
-        i = 1;
-        break;
-      }
+      this.a.a.removeView(paramView);
+      this.a.a.addView(NearbyProfileEditPanel.a(this.a), i);
+      return true;
     }
+    paramView.setVisibility(4);
+    return true;
   }
 }
 

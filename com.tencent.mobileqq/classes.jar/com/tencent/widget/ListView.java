@@ -1,10 +1,10 @@
 package com.tencent.widget;
 
-import alzq;
-import amaa;
-import amcn;
-import amco;
-import amcp;
+import amha;
+import amhk;
+import amjx;
+import amjy;
+import amjz;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -71,13 +71,13 @@ public class ListView
   private int[] mAddingRows;
   private boolean mAnimation = true;
   private boolean mAreAllItemsSelectable = true;
-  private final amcn mArrowScrollFocusResult = new amcn(null);
+  private final amjx mArrowScrollFocusResult = new amjx(null);
   private Drawable mContentBackgroundDrawable;
   Drawable mDivider;
   public int mDividerHeight;
   private boolean mDividerIsOpaque;
   private Paint mDividerPaint;
-  private amco mFocusSelector;
+  private amjy mFocusSelector;
   private boolean mFooterDividersEnabled;
   private ArrayList mFooterViewInfos = new ArrayList();
   private boolean mHeaderDividersEnabled;
@@ -288,7 +288,7 @@ public class ListView
     return i + getArrowScrollPreviewLength();
   }
   
-  private amcn arrowScrollFocused(int paramInt)
+  private amjx arrowScrollFocused(int paramInt)
   {
     int j = 1;
     int i = 1;
@@ -404,8 +404,8 @@ public class ListView
       localObject = arrowScrollFocused(paramInt);
       if (localObject != null)
       {
-        i = ((amcn)localObject).a();
-        j = ((amcn)localObject).b();
+        i = ((amjx)localObject).a();
+        j = ((amjx)localObject).b();
       }
       if (localObject == null) {
         break label311;
@@ -1671,7 +1671,7 @@ public class ListView
     offsetChildrenTopAndBottom(paramInt);
     int i = getHeight() - this.mListPadding.bottom;
     int j = this.mListPadding.top;
-    amaa localamaa = this.mRecycler;
+    amhk localamhk = this.mRecycler;
     View localView;
     if (paramInt < 0)
     {
@@ -1692,10 +1692,10 @@ public class ListView
       localView = getChildAt(0);
       if (localView.getBottom() < j)
       {
-        if (localamaa.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
+        if (localamhk.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
         {
           detachViewFromParent(localView);
-          localamaa.a(localView, this.mFirstPosition);
+          localamhk.a(localView, this.mFirstPosition);
         }
         for (;;)
         {
@@ -1721,10 +1721,10 @@ public class ListView
       localView = getChildAt(paramInt);
       if (localView.getTop() > i)
       {
-        if (localamaa.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
+        if (localamhk.a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))
         {
           detachViewFromParent(localView);
-          localamaa.a(localView, this.mFirstPosition + paramInt);
+          localamhk.a(localView, this.mFirstPosition + paramInt);
         }
         for (;;)
         {
@@ -2949,18 +2949,18 @@ public class ListView
     }
     setSelectedPositionInt(this.mNextSelectedPosition);
     int i2 = this.mFirstPosition;
-    amaa localamaa = this.mRecycler;
+    amhk localamhk = this.mRecycler;
     Object localObject4 = null;
     if (bool2)
     {
       k = 0;
       while (k < i1)
       {
-        localamaa.a(getChildAt(k), i2 + k);
+        localamhk.a(getChildAt(k), i2 + k);
         k += 1;
       }
     }
-    localamaa.a(i1, i2);
+    localamhk.a(i1, i2);
     Object localObject6 = getFocusedChild();
     label579:
     label596:
@@ -2992,7 +2992,7 @@ public class ListView
             localObject3 = fillFromTop(j);
             label701:
             stayOnTheTop();
-            localamaa.c();
+            localamhk.c();
             if (localObject3 == null) {
               break label1396;
             }
@@ -3287,8 +3287,8 @@ public class ListView
     label267:
     for (;;)
     {
-      if ((bool) && (((amaa)localObject).a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))) {
-        ((amaa)localObject).a(localView, -1);
+      if ((bool) && (((amhk)localObject).a(((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_a_of_type_Int))) {
+        ((amhk)localObject).a(localView, -1);
       }
       paramInt2 = localView.getMeasuredHeight() + paramInt2;
       if (paramInt2 >= paramInt4)
@@ -3328,9 +3328,9 @@ public class ListView
     }
   }
   
-  protected alzq newObserver()
+  protected amha newObserver()
   {
-    return new amcp(this);
+    return new amjz(this);
   }
   
   public void onFinishInflate()
@@ -3575,7 +3575,7 @@ public class ListView
         int k = Math.max(0, localView.getBottom() - (paramInt2 - this.mPaddingTop));
         int m = localView.getTop();
         if (this.mFocusSelector == null) {
-          this.mFocusSelector = new amco(this, null);
+          this.mFocusSelector = new amjy(this, null);
         }
         post(this.mFocusSelector.a(i + j, m - k));
       }
@@ -3831,7 +3831,7 @@ public class ListView
       this.mOldItemCount = this.mItemCount;
       this.mItemCount = this.mAdapter.getCount();
       checkFocus();
-      this.mDataSetObserver = new amcp(this);
+      this.mDataSetObserver = new amjz(this);
       this.mAdapter.registerDataSetObserver(this.mDataSetObserver);
       this.mRecycler.a(this.mAdapter.getViewTypeCount());
       if (!this.mStackFromBottom) {
@@ -3907,7 +3907,7 @@ public class ListView
       return;
       this.mContentBackgroundDrawable = paramDrawable;
       if (paramBoolean1) {
-        this.mOverScrollHeaderShadow = getResources().getDrawable(2130839293);
+        this.mOverScrollHeaderShadow = getResources().getDrawable(2130839312);
       }
     }
   }

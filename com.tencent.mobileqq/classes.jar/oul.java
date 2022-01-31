@@ -1,15 +1,44 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRLoginActivity;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import java.util.Iterator;
+import java.util.List;
 
-class oul
-  implements Runnable
+public class oul
+  implements ViewPager.OnPageChangeListener
 {
-  oul(ouk paramouk, Drawable paramDrawable) {}
+  public oul(EmptySupportViewPager paramEmptySupportViewPager) {}
   
-  public void run()
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_Ouk.a.a.b.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
   }
 }
 

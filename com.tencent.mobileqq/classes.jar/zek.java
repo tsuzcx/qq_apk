@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.app.GroupIconHelper;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.ApolloGameManager;
+import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class zek
-  implements Runnable
+  implements View.OnClickListener
 {
-  public zek(GroupIconHelper paramGroupIconHelper) {}
+  public zek(ApolloGameViewBinder paramApolloGameViewBinder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l = DeviceInfoUtil.a();
-    int i = DeviceInfoUtil.b();
-    if ((l != 0L) && (l < 1024L) && (i <= 1)) {
-      GroupIconHelper.a(true);
+    if (ApolloGameViewBinder.a(this.a) != null)
+    {
+      paramView = (ApolloGameManager)ApolloGameViewBinder.a(this.a).getManager(210);
+      if (paramView != null) {
+        paramView.e();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zek
  * JD-Core Version:    0.7.0.1
  */

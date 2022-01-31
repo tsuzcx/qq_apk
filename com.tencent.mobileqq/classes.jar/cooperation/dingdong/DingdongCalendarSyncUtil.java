@@ -1,7 +1,7 @@
 package cooperation.dingdong;
 
-import amkp;
-import amkq;
+import amsb;
+import amsc;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -126,7 +126,7 @@ public class DingdongCalendarSyncUtil
   
   public static void a(int paramInt, DingdongPluginBizObserver.ScheduleMoreSummaryData paramScheduleMoreSummaryData)
   {
-    new amkq(paramInt).execute(new DingdongPluginBizObserver.ScheduleMoreSummaryData[] { paramScheduleMoreSummaryData });
+    new amsc(paramInt).execute(new DingdongPluginBizObserver.ScheduleMoreSummaryData[] { paramScheduleMoreSummaryData });
   }
   
   private static void a(DingdongPluginBizObserver.ScheduleMoreSummaryData paramScheduleMoreSummaryData)
@@ -165,7 +165,7 @@ public class DingdongCalendarSyncUtil
     if (paramScheduleSummaryData == null) {
       return;
     }
-    ThreadManager.post(new amkp(paramScheduleSummaryData), 5, null, false);
+    ThreadManager.post(new amsb(paramScheduleSummaryData), 5, null, false);
   }
   
   private static void a(String paramString, DingdongPluginBizObserver.ScheduleMoreSummaryData paramScheduleMoreSummaryData)

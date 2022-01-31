@@ -1,19 +1,21 @@
-import android.widget.TextView;
-import com.tencent.open.applist.QZoneAppListActivity;
+import android.graphics.Xfermode;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.widget.DrawableContainer.ContainerState;
+import com.tencent.mobileqq.widget.XfermodeDrawable;
 
-class alfe
-  implements Runnable
+public class alfe
+  extends DrawableContainer.ContainerState
 {
-  alfe(alfd paramalfd) {}
+  public Xfermode a;
   
-  public void run()
+  public Drawable newDrawable()
   {
-    QZoneAppListActivity.a(this.a.a).setText("安装失败");
+    return new XfermodeDrawable(this, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alfe
  * JD-Core Version:    0.7.0.1
  */

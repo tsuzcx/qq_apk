@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
 public class skc
-  extends CardObserver
+  extends FlingGestureHandler
 {
-  public skc(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject)
+  public skc(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
-        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-      }
-      return;
+    super(paramActivity);
+  }
+  
+  public void flingLToR()
+  {
+    if (!this.a.a) {
+      super.flingLToR();
     }
   }
 }

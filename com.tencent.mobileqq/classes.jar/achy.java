@@ -1,29 +1,24 @@
-import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class achy
-  extends ExtendFriendObserver
+class achy
+  implements Runnable
 {
-  public achy(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  achy(achx paramachx, List paramList) {}
   
-  protected void a(boolean paramBoolean1, List paramList, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
+  public void run()
   {
-    try
-    {
-      ExtendFriendGroupFragment.a(this.a, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramList);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("FavEmoRoamingObserver", 2, "start upload and download fav");
     }
-    catch (Exception paramList)
-    {
-      QLog.e("ExtendFriendGroupFragment", 1, "mExtendFriendObserver exception", paramList);
-    }
+    this.jdField_a_of_type_Achx.a.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Achx.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     achy
  * JD-Core Version:    0.7.0.1
  */

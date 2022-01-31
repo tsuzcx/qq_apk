@@ -1,23 +1,15 @@
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.OvershootInterpolator;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class xbc
   implements Runnable
 {
-  public xbc(RedPacketRecordFragment paramRedPacketRecordFragment) {}
+  public xbc(SettingActivity2 paramSettingActivity2) {}
   
   public void run()
   {
-    this.a.a.setAlpha(0.3F);
-    this.a.a.animate().alpha(1.0F).setDuration(200L);
-    this.a.b.setAlpha(0.3F);
-    this.a.b.setPivotX(this.a.b.getWidth() / 2);
-    this.a.b.setPivotY(this.a.b.getHeight() / 2);
-    this.a.b.setScaleX(0.5F);
-    this.a.b.setScaleY(0.5F);
-    this.a.b.animate().alpha(1.0F).scaleX(1.0F).scaleY(1.0F).setDuration(300L).setInterpolator(new OvershootInterpolator(1.6F));
+    this.a.a.f = true;
+    this.a.a.g();
   }
 }
 

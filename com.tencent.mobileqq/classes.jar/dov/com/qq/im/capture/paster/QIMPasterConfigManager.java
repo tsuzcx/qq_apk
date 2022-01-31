@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.paster;
 
 import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.IQIMManager;
 import dov.com.qq.im.capture.QIMManager;
@@ -72,116 +72,120 @@ public class QIMPasterConfigManager
     //   1: istore_2
     //   2: aload_0
     //   3: getfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   6: ifnonnull +166 -> 172
+    //   6: ifnonnull +173 -> 179
     //   9: aload_0
     //   10: monitorenter
     //   11: aload_0
     //   12: getfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   15: ifnonnull +155 -> 170
+    //   15: ifnonnull +162 -> 177
     //   18: getstatic 24	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaIoFile	Ljava/io/File;
     //   21: ldc 101
     //   23: invokestatic 123	dov/com/qq/im/capture/util/QIMFileUtils:a	(Ljava/io/File;Ljava/lang/String;)Ljava/lang/String;
     //   26: astore_3
-    //   27: aload_0
-    //   28: aload_0
-    //   29: aload_3
-    //   30: invokespecial 125	dov/com/qq/im/capture/paster/QIMPasterConfigManager:a	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   33: putfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   36: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   39: ifeq +48 -> 87
-    //   42: new 87	java/lang/StringBuilder
-    //   45: dup
-    //   46: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   49: ldc 127
-    //   51: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: aload_3
-    //   55: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: ldc 129
-    //   60: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: astore_3
-    //   64: aload_0
-    //   65: getfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   68: ifnull +109 -> 177
-    //   71: iconst_1
-    //   72: istore_1
-    //   73: ldc 77
-    //   75: iconst_2
-    //   76: aload_3
-    //   77: iload_1
-    //   78: invokevirtual 114	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   81: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   84: invokestatic 117	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   87: aload_0
-    //   88: getfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   91: ifnull +13 -> 104
+    //   27: aload_3
+    //   28: invokestatic 129	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   31: ifne +12 -> 43
+    //   34: aload_0
+    //   35: aload_0
+    //   36: aload_3
+    //   37: invokespecial 131	dov/com/qq/im/capture/paster/QIMPasterConfigManager:a	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   40: putfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   43: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   46: ifeq +48 -> 94
+    //   49: new 87	java/lang/StringBuilder
+    //   52: dup
+    //   53: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   56: ldc 133
+    //   58: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: aload_3
+    //   62: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: ldc 135
+    //   67: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: astore_3
+    //   71: aload_0
+    //   72: getfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   75: ifnull +109 -> 184
+    //   78: iconst_1
+    //   79: istore_1
+    //   80: ldc 77
+    //   82: iconst_2
+    //   83: aload_3
+    //   84: iload_1
+    //   85: invokevirtual 114	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   88: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   91: invokestatic 117	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   94: aload_0
     //   95: getfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   98: invokevirtual 132	java/util/ArrayList:size	()I
-    //   101: ifne +69 -> 170
-    //   104: ldc 134
-    //   106: invokestatic 137	dov/com/qq/im/capture/util/QIMFileUtils:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   109: astore_3
-    //   110: aload_0
-    //   111: aload_0
-    //   112: aload_3
-    //   113: invokespecial 125	dov/com/qq/im/capture/paster/QIMPasterConfigManager:a	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   116: putfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   119: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   122: ifeq +48 -> 170
-    //   125: new 87	java/lang/StringBuilder
-    //   128: dup
-    //   129: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   132: ldc 139
-    //   134: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: aload_3
-    //   138: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   141: ldc 129
-    //   143: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: astore_3
-    //   147: aload_0
-    //   148: getfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   151: ifnull +31 -> 182
-    //   154: iload_2
-    //   155: istore_1
-    //   156: ldc 77
-    //   158: iconst_2
-    //   159: aload_3
-    //   160: iload_1
-    //   161: invokevirtual 114	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   164: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   167: invokestatic 117	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   170: aload_0
-    //   171: monitorexit
-    //   172: aload_0
-    //   173: getfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   176: areturn
-    //   177: iconst_0
-    //   178: istore_1
-    //   179: goto -106 -> 73
-    //   182: iconst_0
-    //   183: istore_1
-    //   184: goto -28 -> 156
-    //   187: astore_3
-    //   188: aload_0
-    //   189: monitorexit
-    //   190: aload_3
-    //   191: athrow
+    //   98: ifnull +13 -> 111
+    //   101: aload_0
+    //   102: getfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   105: invokevirtual 138	java/util/ArrayList:size	()I
+    //   108: ifne +69 -> 177
+    //   111: ldc 140
+    //   113: invokestatic 143	dov/com/qq/im/capture/util/QIMFileUtils:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   116: astore_3
+    //   117: aload_0
+    //   118: aload_0
+    //   119: aload_3
+    //   120: invokespecial 131	dov/com/qq/im/capture/paster/QIMPasterConfigManager:a	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   123: putfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   126: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   129: ifeq +48 -> 177
+    //   132: new 87	java/lang/StringBuilder
+    //   135: dup
+    //   136: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   139: ldc 145
+    //   141: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: aload_3
+    //   145: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: ldc 135
+    //   150: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: astore_3
+    //   154: aload_0
+    //   155: getfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   158: ifnull +31 -> 189
+    //   161: iload_2
+    //   162: istore_1
+    //   163: ldc 77
+    //   165: iconst_2
+    //   166: aload_3
+    //   167: iload_1
+    //   168: invokevirtual 114	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   171: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   174: invokestatic 117	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   177: aload_0
+    //   178: monitorexit
+    //   179: aload_0
+    //   180: getfield 120	dov/com/qq/im/capture/paster/QIMPasterConfigManager:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   183: areturn
+    //   184: iconst_0
+    //   185: istore_1
+    //   186: goto -106 -> 80
+    //   189: iconst_0
+    //   190: istore_1
+    //   191: goto -28 -> 163
+    //   194: astore_3
+    //   195: aload_0
+    //   196: monitorexit
+    //   197: aload_3
+    //   198: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	192	0	this	QIMPasterConfigManager
-    //   72	112	1	bool1	boolean
-    //   1	154	2	bool2	boolean
-    //   26	134	3	localObject1	Object
-    //   187	4	3	localObject2	Object
+    //   0	199	0	this	QIMPasterConfigManager
+    //   79	112	1	bool1	boolean
+    //   1	161	2	bool2	boolean
+    //   26	141	3	localObject1	Object
+    //   194	4	3	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   11	71	187	finally
-    //   73	87	187	finally
-    //   87	104	187	finally
-    //   104	154	187	finally
-    //   156	170	187	finally
-    //   170	172	187	finally
-    //   188	190	187	finally
+    //   11	43	194	finally
+    //   43	78	194	finally
+    //   80	94	194	finally
+    //   94	111	194	finally
+    //   111	161	194	finally
+    //   163	177	194	finally
+    //   177	179	194	finally
+    //   195	197	194	finally
   }
   
   public void a()

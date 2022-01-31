@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.gameplay.ARNativeBridge;
+import com.tencent.av.ui.GamePlayView;
 
 public class jxa
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public jxa(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public jxa(GamePlayView paramGamePlayView, float paramFloat1, float paramFloat2, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    GamePlayView.a(this.jdField_a_of_type_ComTencentAvUiGamePlayView).native_updateEmitterLocation(this.jdField_a_of_type_Float, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jxa
  * JD-Core Version:    0.7.0.1
  */

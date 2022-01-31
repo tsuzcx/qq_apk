@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.javahook;
 
-import advt;
-import advu;
+import aeed;
+import aeee;
 import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DetectContactDelete
 {
-  static HookMethodCallback jdField_a_of_type_ComTencentMobileqqJavahooksdkHookMethodCallback = new advt();
+  static HookMethodCallback jdField_a_of_type_ComTencentMobileqqJavahooksdkHookMethodCallback = new aeed();
   private static ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  static HookMethodCallback b = new advu();
+  static HookMethodCallback b = new aeee();
   
   public static void a()
   {

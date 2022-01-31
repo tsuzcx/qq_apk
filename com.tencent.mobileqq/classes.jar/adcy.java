@@ -1,38 +1,20 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnVideoDataEventListener;
+import com.tencent.mobileqq.filemanager.core.DiscPicThumbDownloader;
+import com.tencent.mobileqq.filemanager.core.DiscPicThumbDownloader.PicSession;
+import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
 
 public class adcy
-  implements FileVideoManager.FileVideoManagerCallback
+  implements Runnable
 {
-  public adcy(DefaultFileModel paramDefaultFileModel, FileBrowserModelBase.OnVideoDataEventListener paramOnVideoDataEventListener) {}
+  public adcy(DiscPicThumbDownloader paramDiscPicThumbDownloader, DiscPicThumbDownloader.PicSession paramPicSession) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a(paramInt, paramString);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a(paramString1, paramString2);
-    }
-  }
-  
-  public void ae_() {}
-  
-  public void af_()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a();
-    }
+    FilePicURLDrawlableHelper.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreDiscPicThumbDownloader$PicSession.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adcy
  * JD-Core Version:    0.7.0.1
  */

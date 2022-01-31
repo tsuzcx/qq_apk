@@ -1,35 +1,50 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.AVLog;
-import com.tencent.av.ui.funchat.zimu.ZimuItemViewFilm;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.VideoInviteActivity;
 
 public class kdk
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  WeakReference a;
+  int jdField_a_of_type_Int;
   
-  public kdk(ZimuItemViewFilm paramZimuItemViewFilm)
+  public kdk(VideoInviteActivity paramVideoInviteActivity, int paramInt)
   {
-    this.a = new WeakReference(paramZimuItemViewFilm);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ZimuItemViewFilm localZimuItemViewFilm = (ZimuItemViewFilm)this.a.get();
-    if (localZimuItemViewFilm != null) {}
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a == null) {
+      return;
+    }
+    switch (this.jdField_a_of_type_Int)
     {
     default: 
       return;
+    case 0: 
+      paramDialogInterface.dismiss();
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.r();
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.l()) {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.h(false);
+      }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = true;
+      paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a;
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.b) {}
+      paramDialogInterface.b(1, false, true);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.f();
+      return;
     }
-    ZimuItemViewFilm.a(localZimuItemViewFilm);
-    AVLog.c("ZimuItemViewFilm", "ITEM_DISPEAR");
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(true);
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     kdk
  * JD-Core Version:    0.7.0.1
  */

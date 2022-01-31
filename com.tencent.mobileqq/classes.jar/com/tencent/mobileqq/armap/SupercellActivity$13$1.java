@@ -23,7 +23,7 @@ class SupercellActivity$13$1
         QLog.i("SupercellActivity", 2, "onStartPreview cameraStateOpen:" + SupercellActivity.access$2500(this.this$1.this$0));
       }
       if (SupercellActivity.access$2600(this.this$1.this$0) == null) {
-        SupercellActivity.access$2602(this.this$1.this$0, DialogUtil.a(this.this$1.this$0, 230, this.this$1.this$0.getResources().getString(2131438753), this.this$1.this$0.getResources().getString(2131438754), this.this$1.this$0.getResources().getString(2131438750), "", null, new SupercellActivity.13.1.2(this)));
+        SupercellActivity.access$2602(this.this$1.this$0, DialogUtil.a(this.this$1.this$0, 230, this.this$1.this$0.getResources().getString(2131438776), this.this$1.this$0.getResources().getString(2131438777), this.this$1.this$0.getResources().getString(2131438773), "", null, new SupercellActivity.13.1.2(this)));
       }
       SupercellActivity.access$2600(this.this$1.this$0).show();
     }

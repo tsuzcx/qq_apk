@@ -1,55 +1,20 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.activity.aio.stickerbubble.ManualDecodeGifImage;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.nearpeople.NearbyRecommender.NearbyRecommenderUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wbt
   implements Runnable
 {
-  public wbt(StickerBubbleAnimationView paramStickerBubbleAnimationView, String paramString) {}
+  public wbt(NearbyChatPie paramNearbyChatPie) {}
   
   public void run()
   {
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString);
-    if (((File)localObject).exists()) {
-      try
-      {
-        ManualDecodeGifImage localManualDecodeGifImage = new ManualDecodeGifImage((File)localObject, false);
-        StickerBubbleAnimationView.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).put(this.jdField_a_of_type_JavaLangString, Integer.valueOf(localManualDecodeGifImage.a()));
-        BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[localManualDecodeGifImage.b()];
-        localObject = StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView, localManualDecodeGifImage.a(), 0.7D);
-        Resources localResources = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.getResources();
-        if (localObject != null) {}
-        for (;;)
-        {
-          arrayOfBitmapDrawable[0] = new BitmapDrawable(localResources, (Bitmap)localObject);
-          StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView, localManualDecodeGifImage, arrayOfBitmapDrawable, this.jdField_a_of_type_JavaLangString, localManualDecodeGifImage.a());
-          StickerBubbleAnimationView.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).put(this.jdField_a_of_type_JavaLangString, arrayOfBitmapDrawable);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("StickerBubbleAnimationView", 2, "decoded first frame of gif: " + this.jdField_a_of_type_JavaLangString);
-          return;
-          localObject = localManualDecodeGifImage.a();
-        }
-        QLog.e("StickerBubbleAnimationView", 1, "gifFile " + this.jdField_a_of_type_JavaLangString + " is not exist");
-      }
-      catch (IOException localIOException)
-      {
-        QLog.e("StickerBubbleAnimationView", 1, "decode gif fail: " + localIOException);
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        QLog.e("StickerBubbleAnimationView", 1, "oom when decode gif or scale first frame, " + localOutOfMemoryError);
-        return;
-      }
-    }
+    String[] arrayOfString = NearbyRecommenderUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80055FE", "0X80055FE", 0, 0, arrayOfString[0], str, "", "");
+    this.a.O = false;
   }
 }
 

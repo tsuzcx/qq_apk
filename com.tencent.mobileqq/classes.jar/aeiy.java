@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 public class aeiy
-  implements DialogInterface.OnClickListener
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public aeiy(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public aeiy(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.a.e();
-    AIOShareActionSheet.a(this.a).a(false, null, false);
+    if (paramInt == 4097) {
+      LebaWithFeeds.a(this.a, 0);
+    }
   }
 }
 

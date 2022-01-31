@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import amaq;
+import amia;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
@@ -21,12 +21,12 @@ public class AutoVerticalScrollTextView
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 1000L;
-  private amaq jdField_a_of_type_Amaq;
+  private amia jdField_a_of_type_Amia;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 800L;
-  private amaq jdField_b_of_type_Amaq;
+  private amia jdField_b_of_type_Amia;
   
   public AutoVerticalScrollTextView(Context paramContext)
   {
@@ -40,32 +40,32 @@ public class AutoVerticalScrollTextView
     c();
   }
   
-  private amaq a(boolean paramBoolean1, boolean paramBoolean2)
+  private amia a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    amaq localamaq = new amaq(this, paramBoolean1, paramBoolean2);
-    localamaq.setDuration(this.jdField_b_of_type_Long);
-    localamaq.setFillAfter(false);
-    localamaq.setInterpolator(new AccelerateInterpolator());
-    return localamaq;
+    amia localamia = new amia(this, paramBoolean1, paramBoolean2);
+    localamia.setDuration(this.jdField_b_of_type_Long);
+    localamia.setFillAfter(false);
+    localamia.setInterpolator(new AccelerateInterpolator());
+    return localamia;
   }
   
   private void c()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     setFactory(this);
-    this.jdField_a_of_type_Amaq = a(true, true);
-    this.jdField_b_of_type_Amaq = a(false, true);
-    setInAnimation(this.jdField_a_of_type_Amaq);
-    setOutAnimation(this.jdField_b_of_type_Amaq);
+    this.jdField_a_of_type_Amia = a(true, true);
+    this.jdField_b_of_type_Amia = a(false, true);
+    setInAnimation(this.jdField_a_of_type_Amia);
+    setOutAnimation(this.jdField_b_of_type_Amia);
   }
   
   public void a()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Amaq) {
-      setInAnimation(this.jdField_a_of_type_Amaq);
+    if (getInAnimation() != this.jdField_a_of_type_Amia) {
+      setInAnimation(this.jdField_a_of_type_Amia);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Amaq) {
-      setOutAnimation(this.jdField_b_of_type_Amaq);
+    if (getOutAnimation() != this.jdField_b_of_type_Amia) {
+      setOutAnimation(this.jdField_b_of_type_Amia);
     }
   }
   

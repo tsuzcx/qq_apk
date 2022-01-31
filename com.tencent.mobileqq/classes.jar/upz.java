@@ -1,105 +1,39 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.AnimatorSet.Builder;
-import android.animation.ObjectAnimator;
-import android.annotation.TargetApi;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.ptt.preop.PttPreSendManager;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
+import com.tencent.mobileqq.activity.aio.qwallet.elem.ThemeRedPkgElem;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class upz
-  extends Handler
+  implements CustomizeStrategyFactory.HBCustomizeStrategy
 {
-  public upz(PressToChangeVoicePanel paramPressToChangeVoicePanel, Looper paramLooper)
+  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public upz(QQAppInterface paramQQAppInterface)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
+    }
   }
   
-  @TargetApi(11)
-  public void handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    try
-    {
-      switch (paramMessage.what)
-      {
-      case 1001: 
-        this.a.b();
-        return;
-      }
-    }
-    catch (Exception paramMessage)
-    {
-      QLog.e("PressToChangeVoicePanel", 1, "uiHandler Error:" + paramMessage.getMessage());
+    if (paramRedPacketInfo == null) {
       return;
     }
-    this.a.c();
-    return;
-    Object localObject1 = (HashMap)paramMessage.obj;
-    paramMessage = (String)((HashMap)localObject1).get(Integer.valueOf(0));
-    localObject1 = (QQRecorder.RecorderParam)((HashMap)localObject1).get(Integer.valueOf(1));
-    this.a.g();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(paramMessage, (QQRecorder.RecorderParam)localObject1);
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b((String)paramMessage.obj, null);
-    this.a.g();
-    return;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("changevoice", 2, "recored end callback , pie is null !!");
-      }
-    }
-    else
-    {
-      localObject1 = (HashMap)paramMessage.obj;
-      paramMessage = (String)((HashMap)localObject1).get(Integer.valueOf(0));
-      localObject1 = (QQRecorder.RecorderParam)((HashMap)localObject1).get(Integer.valueOf(1));
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(paramMessage, (QQRecorder.RecorderParam)localObject1);
-      PttPreSendManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, (QQRecorder.RecorderParam)localObject1);
-      Object localObject2 = (ListenChangeVoicePanel)this.a.f.findViewById(2131366435);
-      ((ListenChangeVoicePanel)localObject2).g();
-      ((ListenChangeVoicePanel)localObject2).setVisibility(0);
-      ((ListenChangeVoicePanel)localObject2).setAudioPath(paramMessage, this.a.jdField_a_of_type_Double, (QQRecorder.RecorderParam)localObject1);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel.setStatus(4);
-      this.a.setVisibility(8);
-      this.a.setClickable(true);
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof PublicAccountChatPie)) {
-        PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005850", "0X8005850", 0, 0, "", "", Double.toString(this.a.jdField_a_of_type_Double), "", false);
-      }
-      paramMessage = (ViewGroup)((ListenChangeVoicePanel)localObject2).findViewById(2131369451);
-      if (VersionUtils.e())
-      {
-        localObject1 = ObjectAnimator.ofFloat(paramMessage, "scaleX", new float[] { 0.4F, 1.0F });
-        localObject2 = ObjectAnimator.ofFloat(paramMessage, "scaleY", new float[] { 0.4F, 1.0F });
-        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramMessage, "alpha", new float[] { 0.4F, 1.0F });
-        AnimatorSet localAnimatorSet = new AnimatorSet();
-        localAnimatorSet.play((Animator)localObject1).with((Animator)localObject2).with(localObjectAnimator);
-        localAnimatorSet.setDuration(300L);
-        localAnimatorSet.addListener(new uqa(this, paramMessage));
-        localAnimatorSet.start();
-        return;
-      }
-      paramMessage.setVisibility(0);
-      return;
-      int i = AudioPanel.a(paramMessage.arg1);
-      this.a.b(i);
-      PressToChangeVoicePanel.a(this.a).setText(AudioPanel.a(((Double)paramMessage.obj).doubleValue()));
-      return;
-      this.a.g();
-      return;
+    ThreadManager.post(new uqa(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
+  {
+    if ((paramRedPacketInfo != null) && ((paramBaseRedPkgElem instanceof ThemeRedPkgElem))) {
+      paramRedPacketInfo.background = ((ThemeRedPkgElem)paramBaseRedPkgElem).a;
     }
   }
 }

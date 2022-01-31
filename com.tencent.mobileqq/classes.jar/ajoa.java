@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public class ajoa
-  extends ThreadLocal
+class ajoa
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ajoa(TroopAppMgr paramTroopAppMgr) {}
+  ajoa(ajnz paramajnz, ajod paramajod) {}
   
-  protected SimpleDateFormat a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    if ((paramCompoundButton.isEnabled()) && (!((TroopInfo)this.jdField_a_of_type_Ajod.a).troopuin.equals(ajnz.a(this.jdField_a_of_type_Ajnz)))) {
+      this.jdField_a_of_type_Ajod.b = Boolean.valueOf(paramBoolean);
+    }
   }
 }
 

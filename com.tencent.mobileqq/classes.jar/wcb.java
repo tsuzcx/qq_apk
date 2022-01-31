@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.stickerbubble.PEItemData;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class wcb
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public wcb(StickerBubbleListView paramStickerBubbleListView, PEItemData paramPEItemData, int paramInt) {}
+  public wcb(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ChatActivityFacade.a(StickerBubbleListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleListView).a(), StickerBubbleListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleListView).a(), StickerBubbleListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleListView).a, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePEItemData.jdField_a_of_type_Int, this.jdField_a_of_type_Int, "test");
+    this.a.p = 5;
+    PublicAccountChatPie.c(this.a).post(new wcc(this));
+    this.a.a.sendEmptyMessage(1);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

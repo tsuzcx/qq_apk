@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
+import com.tencent.mobileqq.search.util.HighlightModel;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.search.view.NetSearchTemplateHorizontalBaseView;
 import com.tencent.mobileqq.search.view.NetSearchTemplateHorizontalOneView;
@@ -42,19 +43,19 @@ public class NetSearchTemplateHorizontalOneItem
       return;
     }
     int i = paramNetSearchTemplateHorizontalBaseView.a().getLayoutParams().width - DisplayUtil.a(paramNetSearchTemplateHorizontalBaseView.a().getContext(), 7.0F);
-    if (this.a != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem$ImageInfo != null) {
       SearchTemplatePresenter.a(this, paramNetSearchTemplateHorizontalBaseView, true, i);
     }
     if (TextUtils.isEmpty(this.l))
     {
       paramNetSearchTemplateHorizontalBaseView.e().setVisibility(8);
       if (!TextUtils.isEmpty(this.m)) {
-        break label190;
+        break label189;
       }
       paramNetSearchTemplateHorizontalBaseView.g().setVisibility(8);
       label85:
       if (!this.jdField_b_of_type_Boolean) {
-        break label212;
+        break label211;
       }
       paramNetSearchTemplateHorizontalBaseView.e().setGravity(1);
       paramNetSearchTemplateHorizontalBaseView.g().setGravity(1);
@@ -62,27 +63,27 @@ public class NetSearchTemplateHorizontalOneItem
     for (;;)
     {
       if (!TextUtils.isEmpty(this.n)) {
-        break label231;
+        break label230;
       }
       paramNetSearchTemplateHorizontalBaseView.a().setOnClickListener(null);
       return;
       paramNetSearchTemplateHorizontalBaseView.e().setVisibility(0);
       if (this.c)
       {
-        paramNetSearchTemplateHorizontalBaseView.e().setText(SearchUtils.a(paramNetSearchTemplateHorizontalBaseView.e(), i * 2, this.l, a(this.l), false));
+        paramNetSearchTemplateHorizontalBaseView.e().setText(SearchUtils.a(paramNetSearchTemplateHorizontalBaseView.e(), i, 2, this.l, this.jdField_a_of_type_ComTencentMobileqqSearchUtilHighlightModel.a, false, false));
         break;
       }
       paramNetSearchTemplateHorizontalBaseView.e().setText(this.l);
       break;
-      label190:
+      label189:
       paramNetSearchTemplateHorizontalBaseView.g().setVisibility(0);
       paramNetSearchTemplateHorizontalBaseView.g().setText(this.m);
       break label85;
-      label212:
+      label211:
       paramNetSearchTemplateHorizontalBaseView.e().setGravity(3);
       paramNetSearchTemplateHorizontalBaseView.g().setGravity(3);
     }
-    label231:
+    label230:
     paramNetSearchTemplateHorizontalBaseView.a().setOnClickListener(this);
   }
   
@@ -116,7 +117,7 @@ public class NetSearchTemplateHorizontalOneItem
       break;
     }
     label114:
-    this.a = null;
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem$ImageInfo = null;
   }
 }
 

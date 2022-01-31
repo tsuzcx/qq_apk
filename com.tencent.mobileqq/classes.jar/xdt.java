@@ -1,22 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import android.view.SurfaceView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class xdt
-  implements PreloadImgManager.OnSingleDownloadCallback
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public xdt(QzoneHbFragment paramQzoneHbFragment) {}
+  public xdt(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void a() {}
-  
-  public void a(Object paramObject)
+  public void onGlobalLayout()
   {
-    if ((paramObject instanceof Bitmap))
-    {
-      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
-      paramObject.what = 102;
-      QzoneHbFragment.a(this.a).sendMessage(paramObject);
+    this.a.n = this.a.a.getWidth();
+    this.a.o = this.a.a.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.n + ",mSurfaceViewHeight:" + this.a.o);
     }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.setVisibility(8);
   }
 }
 

@@ -1,12 +1,12 @@
 package cooperation.qzone;
 
-import amte;
-import amtf;
-import amtg;
-import amth;
-import amti;
-import amtj;
-import amtk;
+import anap;
+import anaq;
+import anar;
+import anas;
+import anat;
+import anau;
+import anav;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -22,7 +22,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.av.camera.QavCameraUsage;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -42,6 +41,7 @@ import cooperation.qzone.plugin.QZonePluginManager;
 import cooperation.qzone.plugin.QZonePluginMangerHelper;
 import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
 import cooperation.qzone.plugin.QZonePluginUtils;
+import cooperation.qzone.plugin.QZoneRemotePluginHandler;
 import cooperation.qzone.report.lp.LpReportInfo_dc01500;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
@@ -49,6 +49,7 @@ import cooperation.qzone.util.NetworkState;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity;
 import cooperation.qzone.video.QzoneVideoBeaconReport;
+import cooperation.qzone.video.QzoneWeishiFeedsPluginProxyActivity;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 
@@ -59,8 +60,8 @@ public class QzoneVerticalVideoDownloadActivity
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private Handler jdField_a_of_type_AndroidOsHandler = new amte(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new amtg(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new anap(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new anar(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -72,7 +73,7 @@ public class QzoneVerticalVideoDownloadActivity
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new amth(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new anas(this);
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString;
@@ -80,6 +81,7 @@ public class QzoneVerticalVideoDownloadActivity
   private int jdField_c_of_type_Int;
   private String jdField_c_of_type_JavaLangString;
   private boolean jdField_c_of_type_Boolean;
+  private String d;
   
   private PluginBaseInfo a(PluginRecord paramPluginRecord)
   {
@@ -94,16 +96,37 @@ public class QzoneVerticalVideoDownloadActivity
     return localPluginBaseInfo;
   }
   
+  private String a()
+  {
+    if ("qzone_weishi_feeds_plugin.apk".equals(this.d)) {
+      return "QZoneWeishiFeedsVideo";
+    }
+    return "QZoneVerticalVideo";
+  }
+  
   private void a()
   {
-    Intent localIntent = getIntent();
-    if (localIntent == null) {
-      return;
+    try
+    {
+      Intent localIntent = getIntent();
+      if (localIntent == null) {
+        return;
+      }
+      this.jdField_a_of_type_Int = localIntent.getIntExtra("key_mode", 1);
+      this.jdField_a_of_type_Long = localIntent.getLongExtra("key_launch_time", System.currentTimeMillis());
+      this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("key_backup_url");
+      this.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("key_current_feeduin");
+      this.d = localIntent.getStringExtra("key_plugin_id");
+      if (TextUtils.isEmpty(this.d))
+      {
+        this.d = "qzone_vertical_video_plugin.apk";
+        return;
+      }
     }
-    this.jdField_a_of_type_Int = localIntent.getIntExtra("key_mode", 1);
-    this.jdField_a_of_type_Long = localIntent.getLongExtra("key_launch_time", System.currentTimeMillis());
-    this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("key_backup_url");
-    this.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("current_uin");
+    catch (Exception localException)
+    {
+      QZLog.e("QzoneVerticalVideoDownloadActivity", "parseIntent error", localException);
+    }
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -137,7 +160,15 @@ public class QzoneVerticalVideoDownloadActivity
     }
   }
   
-  public static boolean a()
+  private boolean a()
+  {
+    if (getAppRuntime() != null) {
+      this.jdField_b_of_type_JavaLangString = getAppRuntime().getAccount();
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString)
   {
     return false;
   }
@@ -146,7 +177,7 @@ public class QzoneVerticalVideoDownloadActivity
   {
     this.jdField_a_of_type_Boolean = false;
     if (QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "PluginDownloadCanceledOnCloseBtn", 0) == 1) {
-      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.b("qzone_vertical_video_plugin.apk");
+      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.b(this.d);
     }
     QzoneVideoBeaconReport.a(this.jdField_b_of_type_JavaLangString, "vertical_video_entry", "9", null);
   }
@@ -200,15 +231,7 @@ public class QzoneVerticalVideoDownloadActivity
   
   private static void b(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amtj(paramString2, paramString3, paramString1, paramInt));
-  }
-  
-  private boolean b()
-  {
-    if (getAppRuntime() != null) {
-      this.jdField_b_of_type_JavaLangString = getAppRuntime().getAccount();
-    }
-    return true;
+    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new anau(paramString2, paramString3, paramString1, paramInt));
   }
   
   private void c()
@@ -240,7 +263,7 @@ public class QzoneVerticalVideoDownloadActivity
         break;
       }
       QQToast.a(this, "获取帐号信息失败，请稍候再试", 0).a();
-      LpReportInfo_dc01500.reportLaunch("qzone_vertical_video_plugin.apk", "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 6, this.jdField_a_of_type_Int + "");
+      LpReportInfo_dc01500.reportLaunch(this.d, "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 6, this.jdField_a_of_type_Int + "");
       finish();
       return;
       if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
@@ -253,8 +276,15 @@ public class QzoneVerticalVideoDownloadActivity
     localIntent.putExtra("mode", this.jdField_a_of_type_Int);
     localIntent.putExtras(getIntent());
     localIntent.putExtra("launch_time", System.currentTimeMillis());
-    QzoneVerticalVideoPluginProxyActivity.a(this, str, localIntent, -1);
-    finish();
+    if ("qzone_weishi_feeds_plugin.apk".equals(this.d)) {
+      QzoneWeishiFeedsPluginProxyActivity.a(this, str, localIntent, -1);
+    }
+    for (;;)
+    {
+      finish();
+      return;
+      QzoneVerticalVideoPluginProxyActivity.a(this, str, localIntent, -1);
+    }
   }
   
   private void d()
@@ -272,7 +302,7 @@ public class QzoneVerticalVideoDownloadActivity
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1006, i);
     try
     {
-      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a("qzone_vertical_video_plugin.apk", new amtk(this), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a(this.d, new anav(this), this.jdField_a_of_type_Int);
       return;
     }
     catch (RemoteException localRemoteException)
@@ -286,7 +316,7 @@ public class QzoneVerticalVideoDownloadActivity
     QLog.d("QzoneVerticalVideoDownloadActivity", 1, "installPluginSilence");
     try
     {
-      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a("qzone_vertical_video_plugin.apk", null, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a(this.d, null, this.jdField_a_of_type_Int);
       return;
     }
     catch (RemoteException localRemoteException)
@@ -299,21 +329,21 @@ public class QzoneVerticalVideoDownloadActivity
   {
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373831));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373858));
     String str = QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalVideoPluginSizeText", "插件约1M");
     this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-    ((TextView)findViewById(2131373830)).setText(QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalVideoPluginUpdateTips", "升级插件，体验精彩小视频"));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373832));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363981));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362839));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373829));
+    ((TextView)findViewById(2131373857)).setText(QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalVideoPluginUpdateTips", "升级插件，体验精彩小视频"));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373859));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364006));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362844));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373856));
     try
     {
       this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalDownloadProgressBackgroundUrl", "https://qzonestyle.gtimg.cn/aoi/sola/20180412205352_WOHxRvJEI2.png"), null);
       if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
         this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
       }
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new amtf(this));
+      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new anaq(this));
     }
     catch (Exception localException)
     {
@@ -355,7 +385,7 @@ public class QzoneVerticalVideoDownloadActivity
           QLog.d("QzoneVerticalVideoDownloadActivity", 4, "MSG_QUERY_PLUGIN_STATE");
         }
       } while (isFinishing());
-      b(a(this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a("qzone_vertical_video_plugin.apk")));
+      b(a(this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a(this.d)));
       return;
       b(paramMessage.arg1);
       return;
@@ -402,10 +432,10 @@ public class QzoneVerticalVideoDownloadActivity
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1005, 500L);
       if (paramPluginBaseInfo.mState == 2)
       {
-        if (!QZonePluginUtils.a("com.tencent.mobileqq:qzonelive")) {
+        if (!QZonePluginUtils.a("com.tencent.mobileqq:qzone")) {
           break;
         }
-        new Handler().postDelayed(new amti(this, paramPluginBaseInfo), 500L);
+        new Handler().postDelayed(new anat(this, paramPluginBaseInfo), 500L);
       }
       return;
       label142:
@@ -433,8 +463,18 @@ public class QzoneVerticalVideoDownloadActivity
       QZonePluginMangerHelper.a(this, this);
       return;
     }
+    QQAppInterface localQQAppInterface2 = (QQAppInterface)getAppRuntime();
+    QQAppInterface localQQAppInterface1 = localQQAppInterface2;
+    if (localQQAppInterface2 == null)
+    {
+      QLog.i("QzoneVerticalVideoDownloadActivity", 1, "onQzonePluginClientReady: getAppRuntime return null.");
+      localQQAppInterface1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (localQQAppInterface1 != null) {
+      QZoneRemotePluginHandler.a().a(localQQAppInterface1);
+    }
     this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager = paramIQZonePluginManager;
-    paramIQZonePluginManager = this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a("qzone_vertical_video_plugin.apk");
+    paramIQZonePluginManager = this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a(this.d);
     if (paramIQZonePluginManager != null)
     {
       if (paramIQZonePluginManager.jdField_a_of_type_Int == 4)
@@ -445,7 +485,7 @@ public class QzoneVerticalVideoDownloadActivity
       if (paramIQZonePluginManager.jdField_a_of_type_Int == 2) {
         try
         {
-          this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a("qzone_vertical_video_plugin.apk", null, this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager.a(this.d, null, this.jdField_a_of_type_Int);
           return;
         }
         catch (RemoteException paramIQZonePluginManager)
@@ -455,7 +495,7 @@ public class QzoneVerticalVideoDownloadActivity
         }
       }
       QLog.d("QzoneVerticalVideoDownloadActivity", 1, "QZoneVerticalVideo has not installed");
-      LpReportInfo_dc01500.reportLaunch("qzone_vertical_video_plugin.apk", "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 7, this.jdField_a_of_type_Int + "");
+      LpReportInfo_dc01500.reportLaunch(this.d, "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 7, this.jdField_a_of_type_Int + "");
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (HttpUtil.a(this.jdField_a_of_type_JavaLangString)))
       {
         paramIQZonePluginManager = this.jdField_a_of_type_JavaLangString + "&stayin=1";
@@ -481,6 +521,7 @@ public class QzoneVerticalVideoDownloadActivity
       return;
     }
     d();
+    QZLog.e("QzoneVerticalVideoDownloadActivity", 1, new Object[] { "正在查询插件信息，请稍后重试" });
     ToastUtil.a().a("正在查询插件信息，请稍后重试");
     finish();
   }
@@ -488,17 +529,10 @@ public class QzoneVerticalVideoDownloadActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = getAppRuntime();
-    if ((paramBundle != null) && ((paramBundle instanceof QQAppInterface)) && ((((QQAppInterface)paramBundle).c()) || (QavCameraUsage.b(BaseApplicationImpl.getContext()))))
-    {
-      ToastUtil.a().a("正在通话中，请结束通话后再试", 1);
-      finish();
-      return;
-    }
-    setContentView(2130971242);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((FrameLayout)findViewById(2131373828));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131373827);
-    if (!b())
+    setContentView(2130971265);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((FrameLayout)findViewById(2131373855));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131373854);
+    if (!a())
     {
       finish();
       return;
@@ -508,9 +542,9 @@ public class QzoneVerticalVideoDownloadActivity
     {
       paramBundle = new IntentFilter();
       paramBundle.addAction("action_launch_completed");
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QzoneVerticalVideoDownloadActivity.LaunchCompletedObserver(this, "QZoneVerticalVideo", "qzone_vertical_video_plugin.apk");
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QzoneVerticalVideoDownloadActivity.LaunchCompletedObserver(this, a(), this.d);
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-      if (a())
+      if (a(this.d))
       {
         PluginManagerHelper.getPluginInterface(this, this);
         return;

@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem.FakeVideoUIItem;
 import com.tencent.biz.qqstory.widget.StoryCoverView;
-import ntb;
+import nxr;
 
 public class StoryPickerHorizontalListAdapter$ItemHolder
 {
@@ -17,15 +17,15 @@ public class StoryPickerHorizontalListAdapter$ItemHolder
   
   public StoryPickerHorizontalListAdapter$ItemHolder(StoryPickerHorizontalListAdapter paramStoryPickerHorizontalListAdapter, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372000));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131371878));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372008));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131371877));
   }
   
   void a(VideoCollectionItem.FakeVideoUIItem paramFakeVideoUIItem, int paramInt)
   {
     if (paramFakeVideoUIItem.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setImageDrawable(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter.a.getResources().getDrawable(2130843554));
+      this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setImageDrawable(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter.a.getResources().getDrawable(2130843587));
       this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setPollLayout(null, -1, null);
       this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setRateLayout(null, -1, -1L, -1);
       this.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(paramInt));
@@ -33,7 +33,7 @@ public class StoryPickerHorizontalListAdapter$ItemHolder
       if (!paramFakeVideoUIItem.jdField_a_of_type_Boolean) {
         break label186;
       }
-      paramInt = 2130839274;
+      paramInt = 2130839293;
       label78:
       localImageView.setImageResource(paramInt);
       if (!paramFakeVideoUIItem.b) {
@@ -43,7 +43,7 @@ public class StoryPickerHorizontalListAdapter$ItemHolder
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ntb(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new nxr(this));
       return;
       if (TextUtils.isEmpty(paramFakeVideoUIItem.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl)) {
         break;
@@ -53,7 +53,7 @@ public class StoryPickerHorizontalListAdapter$ItemHolder
       this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setRateLayout(paramFakeVideoUIItem.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), -1, -1L, -1);
       break;
       label186:
-      paramInt = 2130839272;
+      paramInt = 2130839291;
       break label78;
       label192:
       this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView.setAlpha(0.6F);

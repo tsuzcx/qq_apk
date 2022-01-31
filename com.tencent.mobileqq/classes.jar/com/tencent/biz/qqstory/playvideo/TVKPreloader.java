@@ -34,13 +34,13 @@ import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.CopyOnWriteArraySet;
 import javax.annotation.concurrent.GuardedBy;
-import noj;
-import nol;
-import noo;
-import nop;
-import noq;
-import nor;
-import nos;
+import nsx;
+import nsz;
+import ntc;
+import nte;
+import ntf;
+import ntg;
+import nth;
 
 public class TVKPreloader
 {
@@ -50,7 +50,7 @@ public class TVKPreloader
   private static Handler jdField_a_of_type_AndroidOsHandler;
   @GuardedBy("sPendingPreloadQueue")
   private static TVKPreloader.PreloadItem jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem;
-  private static TVK_ICacheMgr.IPreloadCallback jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback = new nol();
+  private static TVK_ICacheMgr.IPreloadCallback jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback = new nsz();
   private static TVK_ICacheMgr.IPreloadCompleteCallback jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback;
   @GuardedBy("sPendingPreloadQueue")
   private static final Queue jdField_a_of_type_JavaUtilQueue = new LinkedList();
@@ -61,7 +61,7 @@ public class TVKPreloader
     jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
     jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-    jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback = new noj();
+    jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback = new nsx();
   }
   
   public static int a(TVKPreloader.PreloadItem paramPreloadItem)
@@ -138,7 +138,7 @@ public class TVKPreloader
       if (((Iterator)localObject1).hasNext())
       {
         TVKPreloader.PreloadItem localPreloadItem = (TVKPreloader.PreloadItem)((Iterator)localObject1).next();
-        jdField_a_of_type_AndroidOsHandler.post(new noo(localPreloadItem));
+        jdField_a_of_type_AndroidOsHandler.post(new ntc(localPreloadItem));
       }
     }
   }
@@ -161,7 +161,68 @@ public class TVKPreloader
     }
   }
   
-  private static void b(@NonNull TVKPreloader.PreloadItem paramPreloadItem)
+  private static void b(TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo, String paramString, TVKPreloader.PreloadItem paramPreloadItem)
+  {
+    paramString = paramString.replace("https://", "http://");
+    paramTVK_ICacheMgr.setOnPreLoadCompleteCallback(jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback);
+    paramTVK_ICacheMgr.setPreloadCallback(jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback);
+    jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    paramTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, paramTVK_PlayerVideoInfo);
+    jdField_a_of_type_AndroidOsHandler.post(new nth(paramPreloadItem));
+  }
+  
+  /* Error */
+  private static void b(boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: getstatic 25	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
+    //   3: astore_1
+    //   4: aload_1
+    //   5: monitorenter
+    //   6: iload_0
+    //   7: ifne +9 -> 16
+    //   10: getstatic 101	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
+    //   13: ifnonnull +42 -> 55
+    //   16: getstatic 25	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
+    //   19: invokeinterface 307 1 0
+    //   24: checkcast 75	com/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem
+    //   27: putstatic 101	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
+    //   30: getstatic 101	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
+    //   33: ifnull +19 -> 52
+    //   36: invokestatic 313	com/tribe/async/async/Bosses:get	()Lcom/tribe/async/async/Boss;
+    //   39: new 315	ntd
+    //   42: dup
+    //   43: invokespecial 316	ntd:<init>	()V
+    //   46: invokeinterface 322 2 0
+    //   51: pop
+    //   52: aload_1
+    //   53: monitorexit
+    //   54: return
+    //   55: ldc 142
+    //   57: ldc_w 324
+    //   60: getstatic 101	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
+    //   63: invokestatic 262	com/tencent/biz/qqstory/support/logging/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   66: goto -14 -> 52
+    //   69: astore_2
+    //   70: aload_1
+    //   71: monitorexit
+    //   72: aload_2
+    //   73: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	74	0	paramBoolean	boolean
+    //   3	68	1	localQueue	Queue
+    //   69	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   10	16	69	finally
+    //   16	52	69	finally
+    //   52	54	69	finally
+    //   55	66	69	finally
+    //   70	72	69	finally
+  }
+  
+  private static void c(@NonNull TVKPreloader.PreloadItem paramPreloadItem)
   {
     int i = a(paramPreloadItem);
     TVK_ICacheMgr localTVK_ICacheMgr;
@@ -172,7 +233,7 @@ public class TVKPreloader
       if (localTVK_ICacheMgr == null)
       {
         SLog.e("Q.qqstory.player.TVKPreloader", "preloadVideo failed, cacheMgr is null, %s", new Object[] { paramPreloadItem });
-        jdField_a_of_type_AndroidOsHandler.post(new noq(paramPreloadItem));
+        jdField_a_of_type_AndroidOsHandler.post(new ntf(paramPreloadItem));
         b(true);
         return;
       }
@@ -180,7 +241,7 @@ public class TVKPreloader
     case 1: 
     case 2: 
       SLog.b("Q.qqstory.player.TVKPreloader", "preloadVideo success, has already been cached/downloaded, state=%d, item=%s", Integer.valueOf(i), paramPreloadItem);
-      jdField_a_of_type_AndroidOsHandler.post(new nop(paramPreloadItem));
+      jdField_a_of_type_AndroidOsHandler.post(new nte(paramPreloadItem));
       b(true);
       return;
     }
@@ -200,68 +261,11 @@ public class TVKPreloader
         b(localTVK_ICacheMgr, localTVK_PlayerVideoInfo, arrayOfString[0], paramPreloadItem);
         return;
       }
-      Bosses.get().postJob(new nor(localVideoServerInfoManager, arrayOfString, i, paramPreloadItem, localTVK_ICacheMgr, localTVK_PlayerVideoInfo));
+      Bosses.get().postJob(new ntg(localVideoServerInfoManager, arrayOfString, i, paramPreloadItem, localTVK_ICacheMgr, localTVK_PlayerVideoInfo));
       return;
     }
     SLog.d("Q.qqstory.player.TVKPreloader", "preloadVideo 2 TVK start pre-load video, preload duration : %d, item : %s", new Object[] { Integer.valueOf(i), paramPreloadItem });
     b(localTVK_ICacheMgr, localTVK_PlayerVideoInfo, arrayOfString[0], paramPreloadItem);
-  }
-  
-  private static void b(TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo, String paramString, TVKPreloader.PreloadItem paramPreloadItem)
-  {
-    paramString = paramString.replace("https://", "http://");
-    paramTVK_ICacheMgr.setOnPreLoadCompleteCallback(jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback);
-    paramTVK_ICacheMgr.setPreloadCallback(jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback);
-    jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    paramTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, paramTVK_PlayerVideoInfo);
-    jdField_a_of_type_AndroidOsHandler.post(new nos(paramPreloadItem));
-  }
-  
-  /* Error */
-  private static void b(boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: getstatic 25	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   3: astore_1
-    //   4: aload_1
-    //   5: monitorenter
-    //   6: iload_0
-    //   7: ifne +9 -> 16
-    //   10: getstatic 101	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
-    //   13: ifnonnull +32 -> 45
-    //   16: getstatic 25	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
-    //   19: invokeinterface 398 1 0
-    //   24: checkcast 75	com/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem
-    //   27: putstatic 101	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
-    //   30: getstatic 101	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
-    //   33: ifnull +9 -> 42
-    //   36: getstatic 101	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
-    //   39: invokestatic 400	com/tencent/biz/qqstory/playvideo/TVKPreloader:b	(Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;)V
-    //   42: aload_1
-    //   43: monitorexit
-    //   44: return
-    //   45: ldc 142
-    //   47: ldc_w 402
-    //   50: getstatic 101	com/tencent/biz/qqstory/playvideo/TVKPreloader:jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem	Lcom/tencent/biz/qqstory/playvideo/TVKPreloader$PreloadItem;
-    //   53: invokestatic 262	com/tencent/biz/qqstory/support/logging/SLog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
-    //   56: goto -14 -> 42
-    //   59: astore_2
-    //   60: aload_1
-    //   61: monitorexit
-    //   62: aload_2
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	64	0	paramBoolean	boolean
-    //   3	58	1	localQueue	Queue
-    //   59	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   10	16	59	finally
-    //   16	42	59	finally
-    //   42	44	59	finally
-    //   45	56	59	finally
-    //   60	62	59	finally
   }
 }
 

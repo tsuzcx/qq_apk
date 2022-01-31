@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agoo;
+import agtd;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Bundle;
@@ -57,7 +57,7 @@ public class PersonalityLabelHandler
   public static void a(Activity paramActivity, String paramString, QQAppInterface paramQQAppInterface, PersonalityLabel paramPersonalityLabel, ProfileCardInfo paramProfileCardInfo)
   {
     byte[] arrayOfByte = PersonalityLabel.convertToBytes(paramPersonalityLabel);
-    paramActivity.runOnUiThread(new agoo(paramString, paramQQAppInterface, paramProfileCardInfo, arrayOfByte));
+    paramActivity.runOnUiThread(new agtd(paramString, paramQQAppInterface, paramProfileCardInfo, arrayOfByte));
     paramActivity = (FriendsManager)paramQQAppInterface.getManager(50);
     paramString = paramActivity.a(paramString);
     if (paramString != null)

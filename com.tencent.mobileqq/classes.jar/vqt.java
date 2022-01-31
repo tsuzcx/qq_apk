@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.VideoItemBuilder;
 
-class vqt
-  implements Runnable
+public class vqt
+  extends BaseBubbleBuilder.ViewHolder
 {
-  vqt(vqm paramvqm) {}
+  public TextView a;
   
-  public void run()
-  {
-    QQToast.a(this.a.a.a, "已经开启监听，可以连接调试...", 0).a();
-  }
+  public vqt(VideoItemBuilder paramVideoItemBuilder) {}
 }
 
 

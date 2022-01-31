@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.widget.Gallery.OnScollListener;
 
 public class xef
-  implements DialogInterface.OnClickListener
+  implements Gallery.OnScollListener
 {
-  public xef(GoldMsgAioState paramGoldMsgAioState) {}
+  public xef(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.l();
   }
+  
+  public void b(int paramInt) {}
 }
 
 

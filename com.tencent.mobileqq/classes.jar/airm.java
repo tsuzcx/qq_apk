@@ -1,14 +1,41 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import android.text.TextPaint;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder;
 
 public class airm
-  implements ITransCallbackForReport
+  implements Runnable
 {
-  public airm(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
+  public airm(TeamWorkShareActionSheetBuilder paramTeamWorkShareActionSheetBuilder, String paramString1, String paramString2) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void run()
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    Object localObject = (RelativeLayout.LayoutParams)TeamWorkShareActionSheetBuilder.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).getLayoutParams();
+    int j = TeamWorkShareActionSheetBuilder.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).getWidth() - ((RelativeLayout.LayoutParams)localObject).leftMargin - 80 - TeamWorkShareActionSheetBuilder.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).getWidth() - TeamWorkShareActionSheetBuilder.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).getWidth();
+    if (TeamWorkShareActionSheetBuilder.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).getPaint().measureText(this.jdField_a_of_type_JavaLangString + this.b) > j)
+    {
+      int i = 0;
+      for (;;)
+      {
+        if ((i >= this.jdField_a_of_type_JavaLangString.length()) || (TeamWorkShareActionSheetBuilder.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).getPaint().measureText(this.jdField_a_of_type_JavaLangString.substring(0, i) + TeamWorkShareActionSheetBuilder.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).getString(2131439378) + this.b) > j))
+        {
+          if (i == 0) {
+            break;
+          }
+          localObject = this.jdField_a_of_type_JavaLangString.substring(0, i - 1);
+          TeamWorkShareActionSheetBuilder.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).setText(this.b + (String)localObject + TeamWorkShareActionSheetBuilder.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).getString(2131439378));
+          return;
+        }
+        i += 1;
+      }
+      TeamWorkShareActionSheetBuilder.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).setText(this.b + this.jdField_a_of_type_JavaLangString.substring(0) + TeamWorkShareActionSheetBuilder.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).getString(2131439378));
+      return;
+    }
+    localObject = this.b + this.jdField_a_of_type_JavaLangString;
+    TeamWorkShareActionSheetBuilder.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkShareActionSheetBuilder).setText((CharSequence)localObject);
   }
 }
 

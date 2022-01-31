@@ -33,12 +33,12 @@ public class CommonSkinRes
   
   public static String a()
   {
-    return AppConstants.aJ + ".readInjoy/skin_res/";
+    return AppConstants.aK + ".readInjoy/skin_res/";
   }
   
   public static String a(String paramString)
   {
-    return AppConstants.aJ + ".readInjoy/skin_res/" + paramString;
+    return AppConstants.aK + ".readInjoy/skin_res/" + paramString;
   }
   
   public static List a()
@@ -180,7 +180,7 @@ public class CommonSkinRes
   
   public static String b()
   {
-    return AppConstants.aJ + ".readInjoy/skin_res/" + jdField_a_of_type_JavaLangString;
+    return AppConstants.aK + ".readInjoy/skin_res/" + jdField_a_of_type_JavaLangString;
   }
   
   private static void b()

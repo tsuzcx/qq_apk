@@ -1,29 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient.Observer;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Iterator;
+import android.widget.ArrayAdapter;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 
 public class mcj
-  extends QIPCModule
+  extends ReadInJoyObserver
 {
-  public mcj(VideoFeedsIPCClient paramVideoFeedsIPCClient, String paramString)
-  {
-    super(paramString);
-  }
+  public mcj(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void c(List paramList)
   {
-    synchronized (VideoFeedsIPCClient.a(this.a))
-    {
-      Iterator localIterator = VideoFeedsIPCClient.a(this.a).iterator();
-      if (localIterator.hasNext()) {
-        ((VideoFeedsIPCClient.Observer)localIterator.next()).a(paramString, paramBundle);
-      }
+    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(false);
+    ReadInJoyVideoSearchTagFragment.a(this.a).clear();
+    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(true);
+    ReadInJoyVideoSearchTagFragment.a(this.a).addAll(paramList);
+    if (paramList.isEmpty()) {
+      QQToast.a(this.a.getActivity(), 2131438940, 0).a();
     }
-    return null;
   }
 }
 

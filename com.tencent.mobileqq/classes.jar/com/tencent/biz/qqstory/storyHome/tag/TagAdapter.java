@@ -16,10 +16,10 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import java.util.ArrayList;
 import java.util.List;
-import occ;
-import ocd;
-import oce;
-import ocf;
+import ogr;
+import ogs;
+import ogt;
+import ogu;
 
 public class TagAdapter
   extends BaseAdapter
@@ -169,15 +169,15 @@ public class TagAdapter
     String str = ThemeUtil.getCurrentThemeId();
     if ("2040".equals(str))
     {
-      paramTextView.setBackgroundResource(2130843752);
+      paramTextView.setBackgroundResource(2130843823);
       return;
     }
     if ("1103".equals(str))
     {
-      paramTextView.setBackgroundResource(2130843753);
+      paramTextView.setBackgroundResource(2130843824);
       return;
     }
-    paramTextView.setBackgroundResource(2130843754);
+    paramTextView.setBackgroundResource(2130843825);
   }
   
   public void a(TagAdapter.OnItemClickListener paramOnItemClickListener)
@@ -292,45 +292,45 @@ public class TagAdapter
     int i = getItemViewType(paramInt);
     if (i == 1)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970853, null);
-      ((ImageView)paramView.findViewById(2131364808)).setOnClickListener(new occ(this));
-      paramView.setTag(2131362459, Integer.valueOf(i));
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970870, null);
+      ((ImageView)paramView.findViewById(2131364835)).setOnClickListener(new ogr(this));
+      paramView.setTag(2131362462, Integer.valueOf(i));
       return paramView;
     }
     if (i == 2)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970851, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970868, null);
       paramViewGroup = (TextView)paramView.findViewById(2131371639);
       paramInt = this.jdField_a_of_type_JavaUtilList.size();
       int j = this.jdField_b_of_type_JavaUtilList.size();
       paramViewGroup.setText("等" + (paramInt - j) + "个标签");
-      paramView.setTag(2131362459, Integer.valueOf(i));
+      paramView.setTag(2131362462, Integer.valueOf(i));
       return paramView;
     }
     if (i == 3)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970849, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970866, null);
       paramViewGroup = (TextView)paramView.findViewById(2131367250);
       paramViewGroup.setText(this.jdField_a_of_type_JavaLangString);
-      paramViewGroup.setOnClickListener(new ocd(this));
+      paramViewGroup.setOnClickListener(new ogs(this));
       b(paramViewGroup);
-      paramView.setTag(2131362459, Integer.valueOf(i));
+      paramView.setTag(2131362462, Integer.valueOf(i));
       return paramView;
     }
     if (i == 4)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970849, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970866, null);
       paramViewGroup = (TextView)paramView.findViewById(2131367250);
       paramViewGroup.setText(this.jdField_b_of_type_JavaLangString);
-      paramViewGroup.setOnClickListener(new oce(this));
+      paramViewGroup.setOnClickListener(new ogt(this));
       b(paramViewGroup);
-      paramView.setTag(2131362459, Integer.valueOf(i));
+      paramView.setTag(2131362462, Integer.valueOf(i));
       return paramView;
     }
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970849, null);
-      paramViewGroup = new ocf(paramView);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970866, null);
+      paramViewGroup = new ogu(paramView);
       paramView.setTag(paramViewGroup);
       if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
         break label386;
@@ -340,9 +340,9 @@ public class TagAdapter
     for (TagItem.TagInfoBase localTagInfoBase = (TagItem.TagInfoBase)this.jdField_b_of_type_JavaUtilList.get(paramInt - 1);; localTagInfoBase = (TagItem.TagInfoBase)this.jdField_b_of_type_JavaUtilList.get(paramInt))
     {
       paramViewGroup.a(localTagInfoBase, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener);
-      paramView.setTag(2131362459, Integer.valueOf(i));
+      paramView.setTag(2131362462, Integer.valueOf(i));
       return paramView;
-      paramViewGroup = (ocf)paramView.getTag();
+      paramViewGroup = (ogu)paramView.getTag();
       break;
     }
   }

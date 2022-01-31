@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import adek;
-import adel;
+import admr;
+import adms;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -25,8 +25,8 @@ public class PictureFilePresenter
 {
   private int jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c();
   public PictureFileViewer a;
-  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new adek(this);
-  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new adel(this);
+  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new admr(this);
+  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new adms(this);
   private List jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a();
   public boolean b = false;
   private boolean c;

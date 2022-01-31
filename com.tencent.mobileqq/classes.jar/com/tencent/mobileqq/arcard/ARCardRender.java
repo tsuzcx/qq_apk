@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.arcard;
 
-import aamc;
-import aamd;
-import aame;
+import aasw;
+import aasx;
+import aasy;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
+import android.opengl.EGL14;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.SystemClock;
@@ -31,6 +32,7 @@ import com.tencent.mobileqq.ar.ReportUtil;
 import com.tencent.mobileqq.ar.ScanEntranceReport;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglCore;
 import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
 import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
@@ -59,10 +61,10 @@ public class ARCardRender
   public ARRenerArumentManager a;
   private CameraRendererable jdField_a_of_type_ComTencentMobileqqArARRenderModelCameraRendererable = new CameraRendererable(this);
   FramePerformanceMonitor jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor = new FramePerformanceMonitor();
+  private EglCore jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore;
   private RenderBuffer jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
   private TextureRender jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender;
   public Map a;
-  private EGLConfig jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig;
   private boolean jdField_a_of_type_Boolean;
   float[] jdField_a_of_type_ArrayOfFloat;
   private long jdField_b_of_type_Long;
@@ -185,6 +187,19 @@ public class ARCardRender
     this.jdField_a_of_type_ComTencentMobileqqArARRenderModelCameraRendererable.g();
     this.jdField_b_of_type_JavaUtilMap.clear();
     this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a();
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore.a();
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore = null;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("AREngine_ARRenderManagerImpl", 1, "stop, mEGLCore release: " + localException.getMessage());
+    }
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -306,10 +321,10 @@ public class ARCardRender
       }
       paramARRenderResourceInfo = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
       this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = null;
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aamc(this, paramARRenderResourceInfo));
+      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aasw(this, paramARRenderResourceInfo));
       return false;
     }
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aamd(this, localARBaseRender1, paramARRenderResourceInfo));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aasx(this, localARBaseRender1, paramARRenderResourceInfo));
     return true;
   }
   
@@ -355,7 +370,7 @@ public class ARCardRender
   public void d()
   {
     QLog.i("AREngine_ARRenderManagerImpl", 1, "stopModelRender.");
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aame(this));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.queueEvent(new aasy(this));
   }
   
   public void e()
@@ -381,7 +396,7 @@ public class ARCardRender
       }
       if (!this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, jdField_a_of_type_Int, jdField_b_of_type_Int);
+        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore, jdField_a_of_type_Int, jdField_b_of_type_Int);
         this.jdField_a_of_type_Boolean = true;
       }
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
@@ -477,7 +492,7 @@ public class ARCardRender
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = paramEGLConfig;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore = new EglCore(EGL14.eglGetCurrentContext(), 1);
     ARDeviceController.a().a(paramGL10.glGetString(7937));
     this.jdField_a_of_type_ComTencentMobileqqArARRenderModelCameraRendererable.onSurfaceCreated(paramGL10, paramEGLConfig);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender = new TextureRender();

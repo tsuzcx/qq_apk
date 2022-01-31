@@ -49,21 +49,6 @@ public class MsgTabStoryNodeAdapter
     paramBaseViewHolder.a();
   }
   
-  public boolean a()
-  {
-    int j = getItemCount();
-    int i = 0;
-    while (i < j)
-    {
-      MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)a(i);
-      if ((localMsgTabNodeInfo != null) && (localMsgTabNodeInfo.jdField_a_of_type_Int != 1) && (localMsgTabNodeInfo.jdField_a_of_type_Int != 4)) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
   public BaseViewHolder b(ViewGroup paramViewGroup, int paramInt)
   {
     return ViewHolderFactory.a(paramViewGroup, paramInt);

@@ -38,7 +38,7 @@ import com.tencent.ttpic.VideoModule;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import odd;
+import ohs;
 
 public class EditPicActivity
   extends QQStoryBaseActivity
@@ -50,7 +50,7 @@ public class EditPicActivity
   public EditPicActivity()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager = new EditPicPartManager();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfoLoadObserver = new odd(this);
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$DoodleInfoLoadObserver = new ohs(this);
   }
   
   public static Intent a(Activity paramActivity, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt)
@@ -387,7 +387,7 @@ public class EditPicActivity
             SLog.e("EditPicActivity", "load AVCodec so failed");
           }
           getWindow().addFlags(1024);
-          setContentViewC(2130969185);
+          setContentViewC(2130969183);
           a(paramBundle);
           if (localEditVideoParams.jdField_a_of_type_AndroidOsBundle == null) {
             break label666;

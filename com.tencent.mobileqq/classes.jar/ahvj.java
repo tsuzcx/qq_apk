@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelMultiChat;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.HistorySearchEntryModel;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class ahvj
-  extends GroupSearchEngine.SearchEngineEntity
+  implements View.OnClickListener
 {
-  public ahvj(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  public ahvj(HistorySearchEntryModel paramHistorySearchEntryModel) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void onClick(View paramView)
   {
-    return new GroupSearchModelMultiChat(paramList, paramString, GroupSearchEngine.a(this.a));
+    int i = ((Integer)paramView.getTag(-1)).intValue();
+    HistorySearchEntryModel.a(this.a).a(this.a.a, paramView, i, 0L);
   }
 }
 

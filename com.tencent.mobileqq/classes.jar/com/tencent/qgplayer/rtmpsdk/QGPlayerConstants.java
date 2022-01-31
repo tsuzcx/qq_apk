@@ -32,6 +32,7 @@ public abstract interface QGPlayerConstants
   public static final int PLAYER_STATUS_STARTED = 2;
   public static final int PLAYER_STATUS_STOPPED = 4;
   public static final int PLAYER_STATUS_URL_ERROR = 2;
+  public static final int PLAYER_VALUE_TYPE_ENCRYPT_KEY = 1;
   public static final int PLAY_ERROR_HW_ACCELERATION_FAIL_AUDIO_AAC = 2303;
   public static final int PLAY_ERROR_HW_ACCELERATION_FAIL_VIDEO_H264 = 2301;
   public static final int PLAY_ERROR_HW_ACCELERATION_FAIL_VIDEO_H265 = 2302;
@@ -50,6 +51,7 @@ public abstract interface QGPlayerConstants
   public static final int PLAY_EVT_JITTER_BUFFER_RCV_IFRAME = 5002;
   public static final int PLAY_EVT_PLAYER_SEEKED = 6001;
   public static final int PLAY_EVT_PLAYER_STREAMS_INFO = 6007;
+  public static final int PLAY_EVT_PLAYER_UPDATE_BUFFERED_TIME = 6008;
   public static final int PLAY_EVT_PLAYER_UPDATE_TIME = 6003;
   public static final int PLAY_EVT_RENDER_QUEUE_EMPTY = 4001;
   public static final int PLAY_EVT_RENDER_VIDEO_RESOLUTION_CHANGED = 4003;

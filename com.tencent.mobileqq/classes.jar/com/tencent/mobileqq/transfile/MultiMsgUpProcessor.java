@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aiqi;
-import aiqj;
+import aivl;
+import aivm;
 import android.os.SystemClock;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
@@ -149,11 +149,11 @@ public class MultiMsgUpProcessor
     ((im_msg_head.LoginSig)localObject3).bytes_sig.set(ByteStringMicro.copyFrom(this.g));
     localObject1 = new String();
     int i = 0;
-    while (i < "7.6.3".length())
+    while (i < "7.6.8".length())
     {
       localObject2 = localObject1;
-      if ("7.6.3".charAt(i) != '.') {
-        localObject2 = ((String)localObject1).concat(Character.toString("7.6.3".charAt(i)));
+      if ("7.6.8".charAt(i) != '.') {
+        localObject2 = ((String)localObject1).concat(Character.toString("7.6.8".charAt(i)));
       }
       i += 1;
       localObject1 = localObject2;
@@ -422,7 +422,7 @@ public class MultiMsgUpProcessor
         {
           this.jdField_b_of_type_JavaLangString = new String(this.jdField_d_of_type_ArrayOfByte, "utf-8");
           if (g()) {
-            an_();
+            ap_();
           }
         }
         catch (UnsupportedEncodingException paramRichProtoResp)
@@ -507,7 +507,7 @@ public class MultiMsgUpProcessor
     return this.jdField_c_of_type_ArrayOfByte;
   }
   
-  public void an_()
+  public void ap_()
   {
     if (this.jdField_b_of_type_Long == -1L) {
       this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
@@ -538,7 +538,7 @@ public class MultiMsgUpProcessor
         this.jdField_a_of_type_JavaLangString = ((String)localObject);
         this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.i = this.jdField_a_of_type_JavaLangString;
         super.e();
-        localObject = new aiqi(this);
+        localObject = new aivl(this);
         this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 27, this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, (ITransactionCallback)localObject, null, false);
         i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction);
         if (QLog.isColorLevel()) {
@@ -558,9 +558,9 @@ public class MultiMsgUpProcessor
     this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.a((NetReq)localObject);
   }
   
-  public void ap_()
+  public void ar_()
   {
-    super.ap_();
+    super.ar_();
     d(1000);
     if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte.length == 0))
     {
@@ -591,7 +591,7 @@ public class MultiMsgUpProcessor
       this.jdField_j_of_type_Int = 0;
       this.jdField_j_of_type_JavaLangString = "";
       this.jdField_b_of_type_ComTencentWsttSSCMSSCM.a();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransFileController.a.post(new aiqj(this));
+      this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransFileController.a.post(new aivm(this));
     }
     return 0;
   }
@@ -690,7 +690,7 @@ public class MultiMsgUpProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.MultiMsgUpProcessor
  * JD-Core Version:    0.7.0.1
  */

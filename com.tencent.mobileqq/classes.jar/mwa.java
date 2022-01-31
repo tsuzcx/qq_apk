@@ -1,19 +1,14 @@
-import android.net.Uri;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.app.MessageObserver;
 
-public final class mwa
-  implements Runnable
+public class mwa
+  extends MessageObserver
 {
-  public mwa(Uri paramUri, int paramInt, String paramString) {}
+  public mwa(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    try
-    {
-      PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006510", "0X8006510", 0, 0, this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id"), this.jdField_a_of_type_Int + "", this.jdField_a_of_type_JavaLangString, "", false);
-      return;
-    }
-    catch (Exception localException) {}
+    this.a.b();
   }
 }
 

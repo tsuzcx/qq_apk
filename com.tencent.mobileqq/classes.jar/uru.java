@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker.ColorPickerData;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker.ColorSelectListener;
-import com.tencent.mobileqq.util.SharePreferenceUtils;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class uru
-  implements ColorPicker.ColorSelectListener
+public final class uru
+  implements Parcelable.Creator
 {
-  public uru(DoodlePanel paramDoodlePanel) {}
-  
-  public void a(ColorPicker.ColorPickerData paramColorPickerData)
+  public SessionInfo a(Parcel paramParcel)
   {
-    this.a.a(paramColorPickerData);
-    paramColorPickerData = "" + paramColorPickerData.a + ";" + paramColorPickerData.b + ";" + paramColorPickerData.c;
-    SharePreferenceUtils.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramColorPickerData);
+    return new SessionInfo(paramParcel);
+  }
+  
+  public SessionInfo[] a(int paramInt)
+  {
+    return new SessionInfo[paramInt];
   }
 }
 

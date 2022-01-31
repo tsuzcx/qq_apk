@@ -1,30 +1,16 @@
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.SearchPoiListLayout;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class aode
-  implements AbsListView.OnScrollListener
+  implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
+  public aode(EditVideoPartManager paramEditVideoPartManager) {}
   
-  public aode(SearchPoiListLayout paramSearchPoiListLayout) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void run()
   {
-    if (paramInt == 1) {
-      InputMethodUtil.b(SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout));
-    }
-    while ((paramInt != 0) || (SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout) == null) || (this.jdField_a_of_type_Int < SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout).size())) {
-      return;
-    }
-    SearchPoiListLayout.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistSearchPoiListLayout);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    Bitmap localBitmap = this.a.a();
+    this.a.a.a(localBitmap);
   }
 }
 

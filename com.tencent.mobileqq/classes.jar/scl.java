@@ -1,98 +1,70 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.ui.AVLoadingDialogActivity;
+import com.tencent.av.utils.GVideoUpdateUtil.OnGVideoUpdateListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.groupvideo.GroupVideoHelper;
+import mqq.os.MqqHandler;
 
-public class scl
-  implements AbsListView.OnScrollListener
+public final class scl
+  implements GVideoUpdateUtil.OnGVideoUpdateListener
 {
-  protected int a;
+  public scl(int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, QCallFacade paramQCallFacade, long paramLong1, Intent paramIntent, long paramLong2, String paramString) {}
   
-  public scl(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  private int a(AbsListView paramAbsListView)
+  public void a(Context paramContext, String paramString)
   {
-    int i = 0;
-    View localView = paramAbsListView.getChildAt(0);
-    if (localView == null) {
-      return 0;
+    paramString = null;
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 3000)) {
+      ThreadManager.post(new scm(this), 5, null, true);
     }
-    int j = paramAbsListView.getFirstVisiblePosition();
-    int k = localView.getTop();
-    if (j >= 1) {
-      i = paramAbsListView.getHeight();
-    }
-    k = -k;
-    return i + (localView.getHeight() * j + k);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramInt1 = a(paramAbsListView);
-    Object localObject = null;
-    if ((paramInt1 > this.jdField_a_of_type_Int) && (paramInt1 >= this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.n) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0))
+    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("MultiAVType", 0);
+    String str;
+    if (i != 2)
     {
-      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-      if ((paramAbsListView != null) && (paramAbsListView != this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidWidgetRelativeLayout.getAnimation()))
-      {
-        paramAbsListView.reset();
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(paramAbsListView);
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.startAnimation(paramAbsListView);
-        if (paramAbsListView != this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidViewAnimationAlphaAnimation) {
-          break label186;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839147);
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130846264);
-      }
+      str = this.jdField_a_of_type_AndroidContentIntent.getComponent().getClassName();
+      paramString = paramContext.getClass().getName();
+      QLog.w("ChatActivityUtils", 1, "createOrEnterGroupAudio, className[" + str + "], contextName[" + paramString + "]");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = paramInt1;
-      return;
-      paramAbsListView = localObject;
-      if (paramInt1 >= this.jdField_a_of_type_Int) {
-        break;
-      }
-      paramAbsListView = localObject;
-      if (paramInt1 > this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.n) {
-        break;
-      }
-      paramAbsListView = localObject;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
-        break;
-      }
-      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_b_of_type_AndroidViewAnimationAlphaAnimation;
-      break;
-      label186:
-      if (paramAbsListView == this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_b_of_type_AndroidViewAnimationAlphaAnimation) {
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead))
+      if (i == 2) {
+        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(1, this.jdField_b_of_type_Long))
         {
-          if ("1103".equals(ThemeUtil.getCurrentThemeId()))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130841301);
-            this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841302);
-          }
-          else
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130841454);
-            this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841439);
-          }
+          paramContext = new Intent("tencent.video.q2v.back2VideoRoom");
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramContext);
+        }
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Int == 0) {
+          ThreadManager.getFileThreadHandler().post(new sco(this));
+        }
+        return;
+        GroupVideoHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, this.jdField_a_of_type_AndroidContentIntent, 1);
+        continue;
+        if ((!TextUtils.isEmpty(str)) && (str.equals("com.tencent.av.ui.AVActivity")) && (((!TextUtils.isEmpty(paramString)) && (paramString.equals("com.tencent.mobileqq.qcall.QCallDetailActivity"))) || (paramString.equals("com.tencent.mobileqq.activity.selectmember.SelectMemberActivity")) || (paramString.equals("com.tencent.mobileqq.activity.SplashActivity")) || (paramString.equals("com.tencent.mobileqq.activity.recent.RecentT9SearchActivity"))))
+        {
+          paramString = new Intent(paramContext, AVLoadingDialogActivity.class);
+          paramString.putExtra("avactivity_intent", this.jdField_a_of_type_AndroidContentIntent);
+          paramString.addFlags(268435456);
+          AudioHelper.b("发起音视频_start_AVLoadingDialogActivity");
+          paramContext.startActivity(paramString);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130841301);
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841302);
+          AudioHelper.b("发起音视频_start_AVActivity");
+          paramContext.startActivity(this.jdField_a_of_type_AndroidContentIntent);
         }
       }
+      str = null;
     }
   }
 }

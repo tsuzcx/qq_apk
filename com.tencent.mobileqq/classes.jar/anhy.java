@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.DownloadJobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.HashMap;
+import cooperation.qzone.statistic.access.concept.Deliverer;
 
-public class anhy
-  implements ThreadPool.Job
+public final class anhy
+  extends Deliverer
 {
-  public anhy(WyDownloader paramWyDownloader, Long paramLong, NetReq paramNetReq) {}
-  
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public int a(String paramString, int paramInt)
   {
-    paramJobContext = (DownloadJobContext)WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).get(this.jdField_a_of_type_JavaLangLong);
-    if ((paramJobContext == null) || (paramJobContext.d())) {
-      WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader, this.jdField_a_of_type_JavaLangLong.longValue());
+    if ((paramString == null) || (paramString.length() == 0) || (paramInt < 1)) {
+      return -1;
     }
-    for (;;)
-    {
-      return null;
-      WyDownloader.b(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).a(this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq);
-    }
+    return 0;
   }
 }
 

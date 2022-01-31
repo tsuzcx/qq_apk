@@ -1,62 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.authorize.FlatBuffersConfig;
+import java.io.File;
+import java.nio.ByteBuffer;
 
 public class kng
-  implements BusinessObserver
+  implements Runnable
 {
-  public kng(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
+  public kng(FlatBuffersConfig paramFlatBuffersConfig, ByteBuffer paramByteBuffer, File paramFile, boolean paramBoolean) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    if (paramObject == null) {
-      return;
-    }
-    paramObject = (Bundle)paramObject;
-    switch (paramInt)
+    int i = 0;
+    for (;;)
     {
-    default: 
-      return;
-    case 17: 
-      paramBoolean = paramObject.getBoolean("result");
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (paramBoolean)
+      if ((i >= 3) || (this.jdField_a_of_type_ComTencentBizAuthorizeFlatBuffersConfig.a(this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean))) {
+        return;
+      }
+      try
       {
-        paramObject = this.a.getString(2131430536);
-        localStringBuilder.append(paramObject);
-        localStringBuilder.append(this.a.getString(2131430533));
-        localStringBuilder.append(this.a.c);
-        if (!paramBoolean) {
-          break label233;
-        }
-        paramInt = 2;
-        label104:
-        QQToast.a(this.a, paramInt, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
-        paramObject = this.a;
-        if (!paramBoolean) {
-          break label238;
-        }
+        Thread.sleep(100L);
+        label36:
+        i += 1;
       }
-      break;
-    }
-    label233:
-    label238:
-    for (paramInt = -1;; paramInt = 0)
-    {
-      paramObject.setResult(paramInt);
-      return;
-      this.a.a = paramObject.getBoolean("isOpen");
-      this.a.c = paramObject.getString("name");
-      if (this.a.c != null) {
-        this.a.b = this.a.getString(2131430530, new Object[] { this.a.c });
+      catch (InterruptedException localInterruptedException)
+      {
+        break label36;
       }
-      LebaSearchMoreInfoActivity.a(this.a);
-      return;
-      paramObject = this.a.getString(2131430537);
-      break;
-      paramInt = 1;
-      break label104;
     }
   }
 }

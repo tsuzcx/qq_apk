@@ -1,10 +1,20 @@
-import com.tencent.image.URLImageView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajtg
+  extends BroadcastReceiver
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public ajtg(TroopNoticeJsHandler paramTroopNoticeJsHandler) {}
   
-  ajtg(ajtf paramajtf) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = paramIntent.getStringExtra("callback");
+    QLog.d("TroopReceiver", 4, paramContext);
+    this.a.e(paramContext);
+  }
 }
 
 

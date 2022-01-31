@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.open.business.base.OpenConfig;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class alnh
+public class alnh
   implements Runnable
 {
-  alnh(alng paramalng, QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
+  public alnh(OpenConfig paramOpenConfig) {}
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getTitleBarHeight());
+    String str = this.a.a("com.tencent.open.config.json");
+    try
+    {
+      this.a.a = new JSONObject(str);
+      OpenConfig.a(this.a, true);
+      return;
+    }
+    catch (JSONException localJSONException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alnh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,18 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import android.view.Window;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class uup
+public class uup
   implements Runnable
 {
-  uup(uuo paramuuo, String paramString) {}
+  public uup(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      this.jdField_a_of_type_Uuo.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_Uuo.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_Uuo.a.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.setRequestedOrientation4Recording(true);
+    this.a.a.getWindow().clearFlags(128);
+    QQToast.a(this.a.a, 2131433801, 1).b(this.a.a.getTitleBarHeight());
   }
 }
 

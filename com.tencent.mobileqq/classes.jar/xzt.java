@@ -1,42 +1,32 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
 
-public class xzt
-  extends ContactBindObserver
+class xzt
+  extends ExecuteBinResponseCallback
 {
-  public xzt(PhoneContactTabView paramPhoneContactTabView) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  xzt(xzs paramxzs, String paramString)
   {
-    this.a.a.unRegistObserver(this);
-    switch (PhoneContactTabView.a(this.a).c())
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      PhoneContactTabView.b(this.a);
-      return;
-    case 9: 
-      this.a.d();
-      return;
-    case 0: 
-    case 1: 
-    case 5: 
-    case 7: 
-      PhoneContactTabView.a(this.a);
-      return;
-    }
-    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
-    {
-      this.a.d();
-      return;
-    }
-    PhoneContactTabView.a(this.a);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString)
+  {
+    paramString = new Message();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("keySucceedGeneratePath", this.jdField_a_of_type_JavaLangString);
+    paramString.setData(localBundle);
+    paramString.what = 30;
+    this.jdField_a_of_type_Xzs.a.a.sendMessage(paramString);
+  }
+  
+  public void b(String paramString)
+  {
+    xzs.a(this.jdField_a_of_type_Xzs, "mix failed, error ret = " + paramString);
   }
 }
 

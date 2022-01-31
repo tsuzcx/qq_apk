@@ -1,41 +1,41 @@
-import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.ar.config.MainDownAni;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aapv
-  implements Runnable
+  implements OnCompositionLoadedListener
 {
-  public aapv(ArkAppModuleReg.ModuleQQ paramModuleQQ, String paramString1, String paramString2, long paramLong1, String paramString3, long paramLong2) {}
+  public aapv(MainDownAni paramMainDownAni, aapz paramaapz, aaqg paramaaqg, String paramString) {}
   
-  public void run()
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(BaseActivity.sTopActivity, 2131624516);
-    localQQCustomDialog.setContentView(2130968843);
-    localQQCustomDialog.setTitle(BaseActivity.sTopActivity.getString(2131438244, new Object[] { this.jdField_a_of_type_JavaLangString }));
-    ((ImageView)localQQCustomDialog.findViewById(2131364041)).setImageDrawable(BaseActivity.sTopActivity.getResources().getDrawable(2130838200));
-    ((TextView)localQQCustomDialog.findViewById(2131364042)).setText(this.jdField_a_of_type_JavaLangString);
-    ((TextView)localQQCustomDialog.findViewById(2131362776)).setText(BaseActivity.sTopActivity.getString(2131438828));
-    localQQCustomDialog.setCanceledOnTouchOutside(false);
-    ArkAppCenter.a(this.jdField_b_of_type_JavaLangString, new aapw(this, localQQCustomDialog));
-    localQQCustomDialog.setNegativeButton(2131434674, new aapx(this, localQQCustomDialog));
-    localQQCustomDialog.setPositiveButton(2131434672, new aapz(this, localQQCustomDialog));
-    try
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_Aapz.e.get();
+    Object localObject = MainDownAni.a(this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni);
+    StringBuilder localStringBuilder = new StringBuilder().append("onCompositionLoaded, downAniView[");
+    if (localImageView != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      localQQCustomDialog.show();
-      label159:
-      if (ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_login", this.c) == 0) {
-        ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_login", this.c, 2);
+      QLog.w((String)localObject, 1, bool + "]");
+      if (localImageView != null) {
+        break;
       }
+      this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a();
       return;
     }
-    catch (Exception localException)
-    {
-      break label159;
-    }
+    localObject = new LottieDrawable();
+    ((LottieDrawable)localObject).setImageAssetDelegate(new aapw(this));
+    ((LottieDrawable)localObject).addAnimatorListener(new aapx(this));
+    ((LottieDrawable)localObject).setImagesAssetsFolder(this.jdField_a_of_type_JavaLangString);
+    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+    ((LottieDrawable)localObject).loop(false);
+    ((LottieDrawable)localObject).playAnimation();
+    localImageView.setImageDrawable((Drawable)localObject);
   }
 }
 

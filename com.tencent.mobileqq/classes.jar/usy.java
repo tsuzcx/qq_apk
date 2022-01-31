@@ -1,15 +1,35 @@
-import com.tencent.mobileqq.activity.aio.doodle.PlayLastLogic;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class usy
-  implements Runnable
+  extends AsyncTask
 {
-  public usy(PlayLastLogic paramPlayLastLogic) {}
+  public usy(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
   
-  public void run()
+  protected Bitmap a(String... paramVarArgs)
   {
-    if (this.a.a == 0) {
-      PlayLastLogic.a(this.a, true);
+    paramVarArgs = paramVarArgs[0];
+    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
+    {
+      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
+      }
+      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
     }
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    VoicePrintUtils.VoicePrintView.a(this.a);
+    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
+    this.a.invalidate();
   }
 }
 

@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
+import com.tencent.mobileqq.activity.contacts.base.ContactsViewController;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader.OnRefreshHeaderUpdateListener;
 
 public class wsh
-  implements DialogInterface.OnClickListener
+  implements ContactRefreshHeader.OnRefreshHeaderUpdateListener
 {
-  public wsh(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
+  public wsh(ContactsViewController paramContactsViewController) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public long a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
+    return ContactsViewController.a(this.a);
   }
 }
 

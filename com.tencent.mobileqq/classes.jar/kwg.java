@@ -1,24 +1,46 @@
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
-import java.net.URL;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class kwg
-  implements PublicAccountImageDownListener
+  extends URLDrawableDownListener.Adapter
 {
-  public kwg(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public kwg(VideoCoverFragment paramVideoCoverFragment) {}
   
-  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    ReadInJoyNativeAdFragment.b(this.a, 2);
-    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
-    ReadInJoyNativeAdFragment.a(this.a, null);
+    super.onLoadCancelled(paramView, paramURLDrawable);
   }
   
-  public void a(URL paramURL, Throwable paramThrowable)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ReadInJoyNativeAdFragment.b(this.a, 3);
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    while (!(paramView instanceof ImageView)) {
+      return;
+    }
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    int i = paramURLDrawable.getIntrinsicWidth();
+    int j = paramURLDrawable.getIntrinsicHeight();
+    localLayoutParams.width = (i * AIOUtils.a(23.0F, VideoCoverFragment.a(this.a).getResources()) / j);
+    paramView.setLayoutParams(localLayoutParams);
+    ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
+    paramView.requestLayout();
   }
 }
 

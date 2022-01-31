@@ -1,6 +1,6 @@
 package com.tencent.qqprotect.qsec;
 
-import alxe;
+import amen;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -103,7 +103,7 @@ public class FilterManager
       }
       localObject = a((String)localObject);
       if (localObject != null) {
-        ThreadManager.post(new alxe(this, (IScanner)localObject), 5, null, true);
+        ThreadManager.post(new amen(this, (IScanner)localObject), 5, null, true);
       }
     }
   }

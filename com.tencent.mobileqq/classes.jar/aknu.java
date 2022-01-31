@@ -1,35 +1,47 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.filemanager.app.UniformDownload;
-import com.tencent.mobileqq.webview.swift.WebViewWrapper;
+import android.content.Context;
+import android.content.Intent;
+import android.content.Intent.ShortcutIconResource;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ShortcutUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.DownloadListener;
+import mqq.os.MqqHandler;
 
-public class aknu
-  implements DownloadListener
+public final class aknu
+  implements Runnable
 {
-  public aknu(WebViewWrapper paramWebViewWrapper, TouchWebView paramTouchWebView, boolean paramBoolean, Activity paramActivity) {}
+  public aknu(Context paramContext, String paramString) {}
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void run()
   {
+    boolean bool = ShortcutUtils.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_AndroidContentContext.getString(2131433018) });
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, "start UniformDownloadActivity");
+      QLog.d(ShortcutUtils.a(), 2, "createShortcut " + bool + ", " + ShortcutUtils.a());
     }
-    String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    localBundle.putBoolean("fromArkAppDownload", this.jdField_a_of_type_Boolean);
-    UniformDownload.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, localBundle);
+    if (bool)
+    {
+      if (ShortcutUtils.b() < 3) {
+        ThreadManager.getSubThreadHandler().postDelayed(this, 1000L);
+      }
+      return;
+    }
+    Intent localIntent1 = new Intent("android.intent.action.MAIN");
+    localIntent1.setClassName(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    localIntent1.addCategory("android.intent.category.LAUNCHER");
+    localIntent1.addFlags(268435456);
+    localIntent1.addFlags(2097152);
+    Intent localIntent2 = new Intent();
+    localIntent2.putExtra("android.intent.extra.shortcut.INTENT", localIntent1);
+    localIntent2.putExtra("android.intent.extra.shortcut.NAME", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433018));
+    localIntent2.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2130839210));
+    localIntent2.putExtra("duplicate", false);
+    localIntent2.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+    this.jdField_a_of_type_AndroidContentContext.sendOrderedBroadcast(localIntent2, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aknu
  * JD-Core Version:    0.7.0.1
  */

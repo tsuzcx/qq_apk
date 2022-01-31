@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import mqm;
+import mue;
 
 public class BytePool
 {
@@ -14,7 +14,7 @@ public class BytePool
   
   static
   {
-    jdField_a_of_type_JavaUtilComparator = new mqm();
+    jdField_a_of_type_JavaUtilComparator = new mue();
   }
   
   public BytePool(int paramInt)

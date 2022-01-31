@@ -69,12 +69,12 @@ public class VoteViewV2
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970575, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371215));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131371216));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371217));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371214));
-    Drawable localDrawable = getResources().getDrawable(2130843129);
+    this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970588, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371213));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131371214));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371215));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371212));
+    Drawable localDrawable = getResources().getDrawable(2130843161);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
     if (localDrawable != null)
     {
@@ -118,7 +118,7 @@ public class VoteViewV2
     if (this.jdField_a_of_type_AndroidViewViewGroup.getVisibility() == 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130846052);
+    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(2130846134);
     ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
@@ -136,7 +136,7 @@ public class VoteViewV2
     if ((this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Int > 0)) {
       if (paramBoolean)
       {
-        j = 2130846052;
+        j = 2130846134;
         i = this.jdField_a_of_type_Int;
         this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundResource(j);
         this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(paramInt);
@@ -160,7 +160,7 @@ public class VoteViewV2
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(i));
       return;
-      j = 2130846059;
+      j = 2130846141;
       i = this.jdField_a_of_type_Int - this.jdField_b_of_type_Int;
       break;
       label112:
@@ -200,7 +200,7 @@ public class VoteViewV2
       if ((this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {
         break label399;
       }
-      localObject = getResources().getDrawable(2130843129);
+      localObject = getResources().getDrawable(2130843161);
       localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(View.PRESSED_ENABLED_STATE_SET, new ColorDrawable(-3382488));
       localStateListDrawable.addState(View.EMPTY_STATE_SET, new ColorDrawable(-33744));
@@ -235,7 +235,7 @@ public class VoteViewV2
         paramNewVoteAnimHelper = new int[2];
         this.jdField_a_of_type_AndroidWidgetTextView.getLocationInWindow(paramNewVoteAnimHelper);
         if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder == null) {
-          this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder = new FloatViewBuilder(getContext(), 2130843134);
+          this.jdField_a_of_type_ComTencentMobileqqHotchatUiFloatViewBuilder = new FloatViewBuilder(getContext(), 2130843166);
         }
         f1 = (float)(paramNewVoteAnimHelper[0] + this.jdField_a_of_type_AndroidWidgetTextView.getCompoundPaddingLeft() * 0.5D);
         f2 = paramNewVoteAnimHelper[1];
@@ -257,7 +257,7 @@ public class VoteViewV2
       this.jdField_b_of_type_Int = paramInt2;
       break label39;
       label399:
-      localObject = getResources().getDrawable(2130843128);
+      localObject = getResources().getDrawable(2130843160);
       localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(View.PRESSED_ENABLED_STATE_SET, new ColorDrawable(-1728053248));
       localStateListDrawable.addState(View.EMPTY_STATE_SET, new ColorDrawable(1711276032));
@@ -303,7 +303,7 @@ public class VoteViewV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.widget.VoteViewV2
  * JD-Core Version:    0.7.0.1
  */

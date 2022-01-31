@@ -1,58 +1,47 @@
-import android.os.Handler;
-import com.tencent.av.business.manager.report.VideoNodeManager;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
-import com.tencent.av.smallscreen.SmallScreenUtils;
-import com.tencent.common.app.AppInterface;
+import android.graphics.Typeface;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.portal.StrokeTextView;
 
 public class jnv
-  implements Runnable
+  implements ViewSwitcher.ViewFactory
 {
-  public jnv(BaseSmallScreenService paramBaseSmallScreenService) {}
+  public jnv(RedPacketRollTextView paramRedPacketRollTextView, boolean paramBoolean) {}
   
-  public void run()
+  public View makeView()
   {
-    if (!this.a.d)
+    localStrokeTextView = new StrokeTextView(RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
+    try
     {
-      boolean bool = SmallScreenUtils.c(((AppInterface)BaseSmallScreenService.a(this.a)).getApp());
-      if (bool != this.a.e)
+      localStrokeTextView.setLayoutParams(new FrameLayout.LayoutParams(AIOUtils.a(42.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()), -1));
+      localStrokeTextView.setTextSize(0, RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
+      localStrokeTextView.setIncludeFontPadding(false);
+      if (this.jdField_a_of_type_Boolean) {}
+      for (String str = "0";; str = "")
       {
-        this.a.e = bool;
-        this.a.e();
+        localStrokeTextView.setText(str);
+        localStrokeTextView.setStrokeEnable(true);
+        localStrokeTextView.setStrokeColor(-1);
+        localStrokeTextView.setStrokeSize(AIOUtils.a(6.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()));
+        localStrokeTextView.setInnerTextColor(-2094274);
+        localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
+        localStrokeTextView.setGravity(17);
+        return localStrokeTextView;
       }
-      bool = SmallScreenUtils.e();
-      if (bool != this.a.b)
-      {
-        this.a.b = bool;
-        this.a.d();
-      }
-      bool = SmallScreenUtils.b(((AppInterface)BaseSmallScreenService.b(this.a)).getApp());
-      if (bool != this.a.c)
-      {
-        this.a.c = bool;
-        this.a.c();
-      }
-      bool = this.a.a();
-      if (bool != this.a.f)
-      {
-        this.a.f = bool;
-        this.a.f();
-        if (!bool) {
-          break label188;
-        }
-      }
+      return localStrokeTextView;
     }
-    label188:
-    for (long l = 1L;; l = 2L)
+    catch (Exception localException)
     {
-      VideoNodeManager.a(20, l);
-      this.a.a().postDelayed(this, 1000L);
-      return;
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     jnv
  * JD-Core Version:    0.7.0.1
  */

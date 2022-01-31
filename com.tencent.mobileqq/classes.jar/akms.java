@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.webview.swift.SwiftFloatViewUI;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.view.WindowManager;
+import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
 
 public class akms
   implements Runnable
 {
-  public akms(SwiftFloatViewUI paramSwiftFloatViewUI) {}
+  public akms(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
   
   public void run()
   {
-    if ((this.a.a != null) && (this.a.a.a != null)) {
-      this.a.a.a.y();
+    if (this.a.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
+      return;
     }
+    this.a.jdField_a_of_type_AndroidViewWindowManager.addView(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout, this.a.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    this.a.b = true;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.post(new akmt(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akms
  * JD-Core Version:    0.7.0.1
  */

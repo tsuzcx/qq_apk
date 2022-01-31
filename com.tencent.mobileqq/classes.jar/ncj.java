@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import java.util.ArrayList;
 
-public final class ncj
-  implements View.OnClickListener
+class ncj
+  implements Runnable
 {
-  public ncj(EditText paramEditText) {}
+  ncj(nby paramnby, ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.append("@");
+    if (PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Nby.a) != null) {
+      PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Nby.a).a(this.jdField_a_of_type_JavaUtilArrayList);
+    }
   }
 }
 

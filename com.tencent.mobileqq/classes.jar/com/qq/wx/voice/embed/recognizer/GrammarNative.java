@@ -4,6 +4,8 @@ public class GrammarNative
 {
   public static native int begin();
   
+  public static native int destroy();
+  
   public static native int end();
   
   public static native float getResultCfd();

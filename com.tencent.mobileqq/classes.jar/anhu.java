@@ -1,39 +1,22 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import cooperation.weiyun.sdk.download.WyDownloader;
+import cooperation.qzone.statistic.access.HttpDeliverer;
+import cooperation.qzone.statistic.access.HttpMultiServer;
 
 public class anhu
-  implements INetInfoHandler
+  extends HttpMultiServer
 {
-  public anhu(WyDownloader paramWyDownloader) {}
-  
-  public void onNetMobile2None()
+  public anhu(HttpDeliverer paramHttpDeliverer, String paramString, boolean paramBoolean)
   {
-    this.a.a(false, false);
+    super(paramString, paramBoolean);
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public String a()
   {
-    this.a.a(true, true);
+    return null;
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public String b()
   {
-    this.a.a(false, true);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    this.a.a(true, true);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    this.a.a(false, true);
-  }
-  
-  public void onNetWifi2None()
-  {
-    this.a.a(false, false);
+    return "wspeed.qq.com";
   }
 }
 

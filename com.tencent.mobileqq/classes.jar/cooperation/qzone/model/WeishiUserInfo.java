@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amvd;
+import ancr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class WeishiUserInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amvd();
+  public static final Parcelable.Creator CREATOR = new ancr();
   public String nickName;
   public long uin;
   

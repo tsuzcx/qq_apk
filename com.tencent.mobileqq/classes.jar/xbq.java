@@ -1,22 +1,21 @@
-import Wallet.PfaFriendRsp;
-import com.tencent.mobileqq.activity.qwallet.TopayManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.AlbumUtil;
 
-class xbq
-  implements Runnable
+public class xbq
+  implements View.OnClickListener
 {
-  xbq(xbp paramxbp, PfaFriendRsp paramPfaFriendRsp) {}
+  public xbq(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_WalletPfaFriendRsp != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      TopayManager.a(bool, this.jdField_a_of_type_WalletPfaFriendRsp, true);
-      if (this.jdField_a_of_type_Xbp.jdField_a_of_type_Boolean) {
-        TopayManager.a(this.jdField_a_of_type_Xbp.jdField_a_of_type_Int, this.jdField_a_of_type_Xbp.b);
-      }
-      return;
+    if (this.a.b) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
     }
+    this.a.finish();
+    AlbumUtil.a(this.a, true, false);
   }
 }
 

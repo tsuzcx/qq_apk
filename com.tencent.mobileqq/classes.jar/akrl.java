@@ -1,20 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import java.util.List;
 
 public class akrl
-  implements WebSoService.CallBack
+  implements Runnable
 {
-  public akrl(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState) {}
+  public akrl(PathTraceManager paramPathTraceManager, List paramList) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.a = 10004;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
+    this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.ar.ScanningData;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
 
-public final class aakv
-  implements Parcelable.Creator
+public class aakv
+  implements Runnable
 {
-  public ArLBSActivity a(Parcel paramParcel)
-  {
-    return new ArLBSActivity(paramParcel);
-  }
+  public aakv(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData1, ScanningData paramScanningData2) {}
   
-  public ArLBSActivity[] a(int paramInt)
+  public void run()
   {
-    return new ArLBSActivity[paramInt];
+    ScanningData localScanningData = this.jdField_a_of_type_ComTencentMobileqqArScanningData;
+    if ((this.b != null) && (this.b.a) && (this.b.f) && (!this.b.e)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localScanningData.a(bool);
+      return;
+    }
   }
 }
 

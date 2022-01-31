@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
+import dov.com.qq.im.capture.paster.PasterDataManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
+import java.util.Collections;
 
 public class anvi
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public anvi(EditVideoTag paramEditVideoTag) {}
+  public anvi(PasterDataManager paramPasterDataManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    EditVideoTag.a(this.a);
-    paramDialogInterface.dismiss();
+    if (!this.a.jdField_a_of_type_Boolean) {
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback.a(1, Collections.EMPTY_LIST);
+    }
   }
 }
 

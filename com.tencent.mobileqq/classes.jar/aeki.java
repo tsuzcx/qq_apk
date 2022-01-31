@@ -1,61 +1,66 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.music.IQQPlayerService;
-import com.tencent.mobileqq.music.IQQPlayerService.Stub;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.LinearLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.AppRuntime;
 
-public class aeki
-  implements ServiceConnection
+class aeki
+  implements Runnable
 {
-  public aeki(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  aeki(aekh paramaekh, int paramInt) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void run()
   {
-    MusicGeneWebViewPlugin.a(this.a, IQQPlayerService.Stub.a(paramIBinder));
-    try
+    QQAppInterface localQQAppInterface = null;
+    if (((this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.jdField_a_of_type_JavaUtilList.size() == 0)) || ((this.jdField_a_of_type_Int <= 0) && (this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.b.size() == 0)))
     {
-      MusicGeneWebViewPlugin.a(this.a).a(MusicGeneWebViewPlugin.a(this.a));
-      if (MusicGeneWebViewPlugin.a(this.a) != null)
-      {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "0");
-        MusicGeneWebViewPlugin.a(this.a).a(paramComponentName);
-        MusicGeneWebViewPlugin.a(this.a, null);
-      }
+      QQToast.a(this.jdField_a_of_type_Aekh.jdField_a_of_type_AndroidContentContext, -1, "出错了，请稍后重试！", 0).b(this.jdField_a_of_type_Aekh.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+      this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.e();
       return;
     }
-    catch (Exception paramComponentName)
+    Object localObject;
+    boolean bool;
+    if (this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
-      paramComponentName.printStackTrace();
+      localObject = this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager;
+      if (this.jdField_a_of_type_Int <= 0) {
+        break label293;
+      }
+      bool = true;
+      label126:
+      LightReplyMenuManager.a((LightReplyMenuManager)localObject, bool);
+      this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      LightReplyMenuManager.a(this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager, true);
+      localObject = this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.a(this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.c);
+      if (!this.jdField_a_of_type_Aekh.jdField_a_of_type_Boolean) {
+        break label298;
+      }
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        localQQAppInterface = (QQAppInterface)localAppRuntime;
+      }
+      ReportController.b(localQQAppInterface, "dc00899", "Grp_replyPic", "", "Emoji_box", "exp", 0, 0, this.jdField_a_of_type_Aekh.jdField_a_of_type_JavaLangString, (String)localObject, "0", "");
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    try
+    for (;;)
     {
-      if (MusicGeneWebViewPlugin.a(this.a) != null) {
-        MusicGeneWebViewPlugin.a(this.a).b(MusicGeneWebViewPlugin.a(this.a));
+      LightReplyMenuManager.a(this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager, this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.jdField_a_of_type_AndroidWidgetLinearLayout);
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      if (MusicGeneWebViewPlugin.a(this.a) != null)
-      {
-        paramComponentName = new JSONObject();
-        paramComponentName.put("code", "1");
-        MusicGeneWebViewPlugin.a(this.a).a(paramComponentName);
-        MusicGeneWebViewPlugin.a(this.a, null);
-      }
+      QLog.d("LightReplyMenuManager", 2, "faceDetector finished and count is" + this.jdField_a_of_type_Int);
+      return;
+      label293:
+      bool = false;
+      break label126;
+      label298:
+      ReportController.b(null, "dc00899", "Grp_replyPic", "", "Emoji_box", "exp", 0, 0, this.jdField_a_of_type_Aekh.jdField_a_of_type_JavaLangString, (String)localObject, "1", "");
     }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
-    }
-    MusicGeneWebViewPlugin.a(this.a, null);
   }
 }
 

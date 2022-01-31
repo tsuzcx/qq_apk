@@ -1,16 +1,46 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.util.PAReportInfo;
+import com.tencent.biz.pubaccount.util.PAReportManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class myj
+public class myj
   implements Runnable
 {
-  myj(mye parammye) {}
+  public myj(PAReportManager paramPAReportManager, PAReportInfo paramPAReportInfo) {}
   
   public void run()
   {
-    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null))
+    if (this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportInfo == null) {}
+    SQLiteDatabase localSQLiteDatabase;
+    do
     {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).a(true);
-      PublicAccountImageCollectionMainActivity.a(this.a.a).notifyDataSetChanged();
+      return;
+      if (PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager) == -1) {
+        PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager, PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager).b().a(PAReportInfo.class.getSimpleName()));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PAReport", 2, "before insert into db mCount = " + PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager));
+      }
+      if (PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager) < 80) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PAReport", 2, "databases message records is out of 80 delete the first _id ");
+      }
+      ??? = String.format("delete from %s where _id = (select min(_id) from %s)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportInfo.getTableName(), this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportInfo.getTableName() });
+      localSQLiteDatabase = PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager).a();
+    } while (localSQLiteDatabase == null);
+    if (localSQLiteDatabase.a((String)???)) {}
+    synchronized (PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager))
+    {
+      PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager).clear();
+      PAReportManager.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager);
+      PAReportManager.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager);
+      PAReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportManager).a(this.jdField_a_of_type_ComTencentBizPubaccountUtilPAReportInfo);
+      return;
     }
   }
 }

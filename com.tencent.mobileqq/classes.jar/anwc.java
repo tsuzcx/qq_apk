@@ -1,13 +1,16 @@
-import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import dov.com.qq.im.capture.text.ApathyTextItem;
 
-class anwc
-  implements Runnable
+public class anwc
+  implements anwk
 {
-  anwc(anwb paramanwb) {}
+  public anwc(ApathyTextItem paramApathyTextItem) {}
   
-  public void run()
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    HWEditImportVideoPlayer.a(this.a.a, HWEditImportVideoPlayer.a(this.a.a) + "_split.m4a");
+    return TroopFileUtils.b(paramString);
   }
 }
 

@@ -1,21 +1,29 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.util.VersionUtils;
+import com.tencent.widget.PatchedButton;
 
-public final class rxb
-  implements DialogInterface.OnClickListener
+public class rxb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public rxb(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, String paramString, int paramInt3) {}
+  public rxb(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGlobalLayout()
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
-    ReportController.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.c + "", "0", "");
-    paramDialogInterface.dismiss();
+    int i = ((View)this.a.a.getParent()).getHeight() - this.a.a.getBottom();
+    this.a.e.setPadding(0, 0, 0, i);
+    if (i > 0)
+    {
+      if (VersionUtils.g()) {
+        this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

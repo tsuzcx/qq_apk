@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.apollo.view.ApolloGameHotChatController;
 
 public class zee
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public zee(FriendsManager paramFriendsManager) {}
+  public zee(ApolloGameHotChatController paramApolloGameHotChatController) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FriendsManager.a(this.a);
-    ((FriendListHandler)FriendsManager.a(this.a).a(1)).a(103, true, null);
+    if (ApolloGameHotChatController.a(this.a) != null) {
+      ApolloGameHotChatController.a(this.a).a(true);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     zee
  * JD-Core Version:    0.7.0.1
  */

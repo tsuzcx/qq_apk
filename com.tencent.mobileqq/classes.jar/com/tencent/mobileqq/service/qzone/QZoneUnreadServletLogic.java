@@ -13,7 +13,7 @@ import NS_UNDEAL_COUNT.mobile_count_rsp_new;
 import NS_UNDEAL_COUNT.operat_data;
 import NS_UNDEAL_COUNT.single_count;
 import NS_UNDEAL_COUNT.yellow_info;
-import ahxs;
+import aicj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -950,7 +950,7 @@ public class QZoneUnreadServletLogic
     if (QLog.isDevelopLevel()) {
       QLog.d("UndealCount.QZoneUnreadServletLogic", 4, "handleNavigatorBarInfo rsp entracesize is:" + parammobile_count_rsp_new.size());
     }
-    ThreadManager.post(new ahxs(paramQQAppInterface, parammobile_count_rsp_new), 8, null, false);
+    ThreadManager.post(new aicj(paramQQAppInterface, parammobile_count_rsp_new), 8, null, false);
   }
 }
 

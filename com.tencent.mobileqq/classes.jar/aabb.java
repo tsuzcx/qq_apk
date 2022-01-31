@@ -1,37 +1,30 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardResourceInfo;
-import com.tencent.mobileqq.arcard.ARcardSound;
-import com.tencent.mobileqq.armap.sensor.ARSensorManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class aabb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aabb(GreetingCardRender paramGreetingCardRender) {}
+  public aabb(MsgNotifyPushDialog paramMsgNotifyPushDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (GreetingCardRender.d(this.a) == 6)
-    {
-      if (GreetingCardRender.a(this.a) != null) {
-        GreetingCardRender.a(this.a).a(0, 1);
-      }
-      if (GreetingCardRender.a(this.a) == null) {
-        GreetingCardRender.a(this.a, new ARcardSound());
-      }
-      if (GreetingCardRender.a(this.a) != null) {
-        GreetingCardRender.a(this.a).a(GreetingCardRender.a(this.a).c + "bgmusic.mp3");
-      }
-      if ((GreetingCardRender.a(this.a) != null) && (GreetingCardRender.a(this.a).b == 1)) {
-        QLog.d("GreetingCardRender", 2, String.format("setNativeState start sensor result=%s", new Object[] { Boolean.valueOf(GreetingCardRender.a(this.a).a(GreetingCardRender.a(this.a))) }));
-      }
-    }
+    ReportController.b(null, "CliOper", "", "", "0X8006B16", "0X8006B16", 0, 0, "", "", "", "");
+    paramView = PreferenceManager.getDefaultSharedPreferences(MsgNotifyPushDialog.a(this.a));
+    int i = paramView.getInt("push_msg_notify_cancle", 0);
+    paramView = paramView.edit();
+    paramView.putInt("push_msg_notify_cancle", i + 1);
+    paramView.commit();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aabb
  * JD-Core Version:    0.7.0.1
  */

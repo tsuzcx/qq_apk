@@ -1,35 +1,47 @@
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.managers.DraftTextManager;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.vas.SignatureTemplateConfig.SignatureTemplateType;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MsgAutoMonitorUtil;
-import com.tencent.widget.TraceUtils;
+import mqq.os.MqqHandler;
 
 public class ztu
-  implements Runnable
+  implements Handler.Callback
 {
-  public ztu(QQMessageFacade paramQQMessageFacade) {}
+  public ztu(SignatureManager paramSignatureManager) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    TraceUtils.a("initMsgCache");
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.QQMessageFacade", 2, "before refreshCache");
-    }
-    QQMessageFacade.a(this.a, DraftTextManager.a(QQMessageFacade.a(this.a)));
-    this.a.a().a();
-    this.a.d();
-    QQMessageFacade.a(this.a);
-    this.a.notifyObservers(new RecentUser());
-    if (QLog.isColorLevel())
+    if (2 == paramMessage.what)
     {
-      QLog.d("Q.msg.QQMessageFacade", 2, "after refreshCache");
-      long l2 = System.currentTimeMillis();
-      MsgAutoMonitorUtil.a().a("MSG_InitCostTime", l2 - l1 + "");
+      SignatureManager.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateConfig$SignatureTemplateType = (SignatureTemplateConfig.SignatureTemplateType[])paramMessage.obj;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+        if (paramMessage != null) {
+          paramMessage.sendEmptyMessageDelayed(2, 50L);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SignatureManager", 2, "update sign tpl info...");
+        }
+      }
     }
-    TraceUtils.a();
+    for (;;)
+    {
+      return true;
+      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+      {
+        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
+        if (paramMessage != null) {
+          paramMessage.sendEmptyMessageDelayed(7, 50L);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SignatureManager", 2, "update sign tpl animation ...");
+        }
+      }
+    }
   }
 }
 

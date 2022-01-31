@@ -1,42 +1,17 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.HWDecodeListener;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.VideoFlowDecodeWrapper;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
 public class ahop
-  implements HWDecodeListener
+  implements Runnable
 {
-  public ahop(VideoFlowDecodeWrapper paramVideoFlowDecodeWrapper) {}
+  public ahop(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4) {}
   
-  public void a(int paramInt, Throwable paramThrowable)
+  public void run()
   {
-    SLog.d("FlowEdit_VideoFlowDecodeWrapper", paramThrowable, "onDecodeError: %d", new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void b(long paramLong)
-  {
-    SLog.a("FlowEdit_VideoFlowDecodeWrapper", "onDecodeSeekTo: %d", Long.valueOf(paramLong));
-  }
-  
-  public void e()
-  {
-    SLog.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeStart: ");
-  }
-  
-  public void h()
-  {
-    SLog.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeFinish: ");
-  }
-  
-  public void k()
-  {
-    SLog.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeCancel: ");
-  }
-  
-  public void l()
-  {
-    SLog.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeRepeat: ");
+    EffectsCameraCaptureFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, this.jdField_a_of_type_Boolean);
+    EffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, this.b);
+    EffectsCameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, this.c);
+    EffectsCameraCaptureFragment.d(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, this.d);
+    EffectsCameraCaptureFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, this.jdField_a_of_type_Boolean, this.b, this.c, this.d);
   }
 }
 

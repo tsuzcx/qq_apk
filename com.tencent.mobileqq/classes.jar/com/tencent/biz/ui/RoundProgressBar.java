@@ -9,7 +9,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.mobileqq.app.ThreadManager;
-import pac;
+import peu;
 
 public class RoundProgressBar
   extends View
@@ -43,7 +43,7 @@ public class RoundProgressBar
   
   private void a(int paramInt)
   {
-    ThreadManager.post(new pac(this, paramInt), 8, null, true);
+    ThreadManager.post(new peu(this, paramInt), 8, null, true);
   }
   
   protected void onDraw(Canvas paramCanvas)

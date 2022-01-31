@@ -1,19 +1,13 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.widget.SwipListView.SwipListListener;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
 
-public class oqk
-  implements SwipListView.SwipListListener
+class oqk
+  implements Runnable
 {
-  public oqk(SegmentList paramSegmentList) {}
+  oqk(oqj paramoqj) {}
   
-  public void a(View paramView) {}
-  
-  public void d() {}
-  
-  public void e(boolean paramBoolean)
+  public void run()
   {
-    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
+    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
   }
 }
 

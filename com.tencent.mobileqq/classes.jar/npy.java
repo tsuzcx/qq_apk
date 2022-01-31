@@ -1,16 +1,21 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playmode.child.TagStoryVidListPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import java.util.ArrayList;
 
 class npy
   implements Runnable
 {
-  npy(npx paramnpx) {}
+  npy(npx paramnpx, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a, 102, 201, 0, "", null);
-    }
+    this.jdField_a_of_type_Npx.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.setVisibility(8);
+    this.jdField_a_of_type_Npx.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Npx.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
+    this.jdField_a_of_type_Npx.a.jdField_a_of_type_AndroidOsHandler.post(new npz(this));
   }
 }
 

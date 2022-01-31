@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class xwj
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public xwj(SubtitleDataManager paramSubtitleDataManager, String paramString) {}
+  public xwj(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
+    NewFlowCameraActivity.a(this.a, paramBoolean);
   }
 }
 

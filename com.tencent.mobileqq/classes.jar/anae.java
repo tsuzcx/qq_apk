@@ -1,32 +1,27 @@
-import android.os.Looper;
-import android.util.Printer;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.BaseHandler;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import cooperation.qzone.QzoneGiftFullScreenViewController;
+import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
+import cooperation.qzone.QzoneGiftFullScreenViewController.MagicData;
+import java.util.List;
 
-public class anae
-  implements Printer
+class anae
+  implements Runnable
 {
-  public anae(BaseHandler paramBaseHandler) {}
+  anae(anac paramanac) {}
   
-  public void println(String paramString)
+  public void run()
   {
-    if ((!BaseHandler.isBusy) && (!((Boolean)BaseHandler.isRegulated.get()).booleanValue())) {}
-    do
+    URLDrawable.resume();
+    ((View)this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.a).setBackgroundColor(0);
+    QzoneGiftFullScreenViewController.a(this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController);
+    this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController$GiftFullScreenPlayListener.a();
+    if (QzoneGiftFullScreenViewController.a(this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController).size() > 0)
     {
-      return;
-      if (!BaseHandler.access$000())
-      {
-        Looper.myLooper().setMessageLogging(null);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseHandler", 2, paramString);
-      }
-      if ((paramString != null) && (paramString.contains(">>>>> Dispatching to"))) {
-        BaseHandler.access$100(this.a);
-      }
-    } while ((paramString == null) || (!paramString.contains("<<<<< Finished to")));
-    BaseHandler.access$200(this.a);
+      QzoneGiftFullScreenViewController.MagicData localMagicData = (QzoneGiftFullScreenViewController.MagicData)QzoneGiftFullScreenViewController.a(this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController).get(0);
+      this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.a(localMagicData.jdField_a_of_type_JavaLangString, localMagicData.b, localMagicData.jdField_a_of_type_Boolean, localMagicData.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController$GiftFullScreenPlayListener);
+      QzoneGiftFullScreenViewController.a(this.a.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController).remove(localMagicData);
+    }
   }
 }
 

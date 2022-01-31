@@ -1,14 +1,6 @@
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.KeyboardAndEmojiManager;
-
-public class nvc
-  implements Runnable
+public abstract interface nvc
 {
-  public nvc(KeyboardAndEmojiManager paramKeyboardAndEmojiManager) {}
-  
-  public void run()
-  {
-    KeyboardAndEmojiManager.c(this.a);
-  }
+  public abstract void a(nva paramnva);
 }
 
 

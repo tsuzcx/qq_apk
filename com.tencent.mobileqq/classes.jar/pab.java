@@ -1,47 +1,48 @@
-import android.view.View;
-import com.tencent.biz.ui.IPullRefreshHeader;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.TimerTask;
 
 public class pab
-  implements OverScrollViewListener
+  extends TimerTask
 {
-  public pab(RefreshView paramRefreshView) {}
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public pab(TribeVideoPlugin paramTribeVideoPlugin, String paramString)
   {
-    if (this.a.jdField_a_of_type_Int == 2)
-    {
-      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.Y_();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.c(0L);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTribeVideoPlugin);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_Int != 2)
-    {
-      RefreshView.a(this.a, false);
-      this.a.b(RefreshView.a(this.a));
-      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a(0L);
-      this.a.jdField_a_of_type_Int = 2;
-      RefreshView.a(this.a);
+    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localTribeVideoPlugin == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("plugin == null ");
+        if (localTribeVideoPlugin != null) {
+          break label77;
+        }
+        bool = true;
+        QLog.d("TribeVideoPlugin", 2, bool + " playerID = " + this.jdField_a_of_type_JavaLangString);
+      }
     }
-    return false;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Int != 2) {
-      this.a.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.b(0L);
+    label77:
+    while (TribeVideoPlugin.a(localTribeVideoPlugin) == null) {
+      for (;;)
+      {
+        return;
+        boolean bool = false;
+      }
     }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.b();
+    Object localObject = TribeVideoPlugin.a(localTribeVideoPlugin).obtainMessage();
+    ((Message)localObject).obj = this.jdField_a_of_type_JavaLangString;
+    ((Message)localObject).what = 8;
+    TribeVideoPlugin.a(localTribeVideoPlugin).sendMessage((Message)localObject);
   }
 }
 

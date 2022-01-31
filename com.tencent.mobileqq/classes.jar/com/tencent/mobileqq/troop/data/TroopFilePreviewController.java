@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import ajev;
+import ajjx;
 import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.core.FilePreViewControllerBase;
@@ -24,7 +24,7 @@ public class TroopFilePreviewController
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new ajev(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver = new ajjx(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
   }
   
@@ -40,7 +40,7 @@ public class TroopFilePreviewController
       return false;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a != null) {
-      localTroopFileTransferManager.d(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a);
+      localTroopFileTransferManager.e(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a);
     }
     for (;;)
     {
@@ -58,7 +58,7 @@ public class TroopFilePreviewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFilePreviewController
  * JD-Core Version:    0.7.0.1
  */

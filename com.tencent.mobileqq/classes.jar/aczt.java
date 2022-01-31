@@ -1,29 +1,23 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.FileInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public class aczt
+class aczt
   implements Runnable
 {
-  public aczt(UniformDownloadMgr paramUniformDownloadMgr, Bundle paramBundle, String paramString) {}
+  aczt(aczr paramaczr, long paramLong, boolean paramBoolean, int paramInt, String paramString) {}
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsBundle.getString("_filename_from_dlg");
-    long l = this.jdField_a_of_type_AndroidOsBundle.getLong("_filesize_from_dlg");
-    if ((TextUtils.isEmpty((CharSequence)localObject)) || (0L == l) || (-1L == l))
+    this.jdField_a_of_type_Aczr.a.d();
+    QfileBaseLocalFileTabView.b(this.jdField_a_of_type_Aczr.a).a().a(this.jdField_a_of_type_Long);
+    if (!this.jdField_a_of_type_Boolean)
     {
-      localObject = UniformDownloadUtil.a(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", ((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_Long);
-      if (TextUtils.isEmpty(((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_JavaLangString)) {
-        ((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_JavaLangString = "nofilename.x";
-      }
-      this.jdField_a_of_type_AndroidOsBundle.putString("_filename_from_dlg", ((UniformDownloadUtil.FileInfo)localObject).jdField_a_of_type_JavaLangString);
+      FileManagerUtil.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
+    FileManagerUtil.a(this.jdField_a_of_type_Long);
   }
 }
 

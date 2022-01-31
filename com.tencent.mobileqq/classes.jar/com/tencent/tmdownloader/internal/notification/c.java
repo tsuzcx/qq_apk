@@ -48,7 +48,7 @@ public class c
     }
     catch (Exception paramContext)
     {
-      r.c(a.a, "" + paramContext.getMessage(), paramContext);
+      r.c("SDK_NotificationManager", "" + paramContext.getMessage(), paramContext);
     }
   }
   

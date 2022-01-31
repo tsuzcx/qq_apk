@@ -1,26 +1,17 @@
-import com.tencent.mobileqq.ar.ObjectBaseData;
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aadi
-  implements Runnable
+public final class aadi
+  implements DialogInterface.OnClickListener
 {
-  public aadi(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView).size() > 0)
-    {
-      ObjectSurfaceView.a(this.jdField_a_of_type_ComTencentMobileqqArObjectSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData.c);
-      return;
-    }
-    QLog.d("ObjectSurfaceView", 1, "the dataList is null, cancel the jump action.");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aadi
  * JD-Core Version:    0.7.0.1
  */

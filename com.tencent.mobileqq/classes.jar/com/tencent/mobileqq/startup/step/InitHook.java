@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import aieq;
+import aijk;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -222,7 +222,7 @@ public class InitHook
     {
       b();
       return true;
-      DeviceProfileManager.a(new aieq(null));
+      DeviceProfileManager.a(new aijk(null));
       continue;
       c();
     }

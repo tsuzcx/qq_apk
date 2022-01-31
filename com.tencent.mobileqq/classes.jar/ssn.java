@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
-class ssn
-  implements Runnable
+public class ssn
+  implements View.OnClickListener
 {
-  ssn(ssm paramssm) {}
+  public ssn(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a(2131437525, 1);
+    this.a.a(ForwardRecentActivity.a(this.a), paramView, paramView.getId());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ssn
  * JD-Core Version:    0.7.0.1
  */

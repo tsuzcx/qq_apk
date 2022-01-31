@@ -1,37 +1,28 @@
-import com.tencent.biz.qqstory.base.preload.cachecleaner.MyVideoCleanStep;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.io.File;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.data.OpenID;
 
-public class nak
-  implements Comparable
+class nak
+  implements Runnable
 {
-  public long a;
-  public final File a;
+  nak(naj paramnaj, Object paramObject) {}
   
-  public nak(MyVideoCleanStep paramMyVideoCleanStep, File paramFile)
+  public void run()
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    paramMyVideoCleanStep = paramFile.getName();
-    try
+    if ((this.jdField_a_of_type_JavaLangObject instanceof OpenID))
     {
-      this.jdField_a_of_type_Long = Long.parseLong(paramMyVideoCleanStep);
+      OpenID localOpenID = (OpenID)this.jdField_a_of_type_JavaLangObject;
+      if (PublicAccountUtil.a(this.jdField_a_of_type_Naj.jdField_a_of_type_AndroidAppActivity, localOpenID, this.jdField_a_of_type_Naj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Naj.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams)) {
+        break label77;
+      }
+    }
+    label77:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        PublicAccountUtil.b(this.jdField_a_of_type_Naj.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Naj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Naj.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
+      }
       return;
     }
-    catch (Exception paramFile)
-    {
-      SLog.d("Q.qqstory.cleaner:MyVideoCleanStep", "Parse %s error , %s", new Object[] { paramMyVideoCleanStep, paramFile.getMessage() });
-    }
-  }
-  
-  public int a(nak paramnak)
-  {
-    if (this.jdField_a_of_type_Long < paramnak.jdField_a_of_type_Long) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Long == paramnak.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
   }
 }
 

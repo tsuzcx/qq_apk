@@ -1,15 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.List;
 
-public class wlm
-  implements View.OnClickListener
+class wlm
+  implements Runnable
 {
-  public wlm(TroopActivity paramTroopActivity) {}
+  wlm(wll paramwll, List paramList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    TroopActivity.a(this.a);
+    ChatHistoryBubbleListAdapter localChatHistoryBubbleListAdapter = this.jdField_a_of_type_Wll.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (this.jdField_a_of_type_JavaUtilList.size() < 20) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localChatHistoryBubbleListAdapter.a(localList, bool);
+      if (this.jdField_a_of_type_Wll.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() > 0)
+      {
+        this.jdField_a_of_type_Wll.a.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_Wll.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(0)).shmsgseq;
+        this.jdField_a_of_type_Wll.a.b = ((MessageRecord)this.jdField_a_of_type_Wll.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(this.jdField_a_of_type_Wll.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1)).shmsgseq;
+      }
+      this.jdField_a_of_type_Wll.a.a(this.jdField_a_of_type_Wll.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a, this.jdField_a_of_type_Wll.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.b);
+      this.jdField_a_of_type_Wll.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.notifyDataSetChanged();
+      this.jdField_a_of_type_Wll.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setSelection(this.jdField_a_of_type_Wll.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1);
+      return;
+    }
   }
 }
 

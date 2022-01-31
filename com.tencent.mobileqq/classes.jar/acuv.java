@@ -1,33 +1,23 @@
-import android.content.IntentFilter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
 public class acuv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acuv(FileManagerDataCenter paramFileManagerDataCenter) {}
+  public acuv(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.getApp() != null))
-    {
-      if (FileManagerDataCenter.a(this.a) != null) {
-        this.a.a.getApp().unregisterReceiver(FileManagerDataCenter.a(this.a));
-      }
-      if (FileManagerDataCenter.a(this.a) == null) {
-        FileManagerDataCenter.a(this.a, new acuw(this));
-      }
-      IntentFilter localIntentFilter = new IntentFilter("com.opensdk.downloadmanager.renameFilename");
-      this.a.a.getApp().registerReceiver(FileManagerDataCenter.a(this.a), localIntentFilter);
-      FMSettings.a();
-    }
+    this.a.setResult(0, new Intent());
+    this.a.finish();
+    this.a.overridePendingTransition(2131034121, 2131034122);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acuv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
 
-class lss
+public class lss
   implements Runnable
 {
-  lss(lsr paramlsr) {}
+  public lss(ArticleInfoModule paramArticleInfoModule, int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localArrayList.add(((IReadInJoyModel)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
-      i += 1;
-    }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("headerUninterestConfirm,");
-      if (this.a.b != null) {
-        break label139;
-      }
-    }
-    label139:
-    for (String str = "null";; str = this.a.b.toString())
-    {
-      QLog.d("ReadInJoyHeaderPresenter", 2, str);
-      ReadInJoyHeaderPresenter.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter).a(this.a.jdField_a_of_type_Int, localArrayList, this.a.b, this.a.jdField_a_of_type_JavaLangObject);
-      return;
-    }
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
   }
 }
 

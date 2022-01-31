@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.leba;
 
-import aeaq;
-import aear;
-import aeas;
-import aeat;
-import aeau;
-import aeaw;
+import aeja;
+import aejb;
+import aejc;
+import aejd;
+import aeje;
+import aejg;
 import android.content.Context;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
@@ -52,7 +52,7 @@ public class QZoneEntryController
   LebaQZoneFacePlayHelper jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper;
   public QQAppInterface a;
   LebaTopEntryView jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView;
-  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new aeaq(this);
+  private QZoneObserver jdField_a_of_type_ComTencentMobileqqObserverQZoneObserver = new aeja(this);
   private boolean jdField_a_of_type_Boolean;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   private boolean jdField_b_of_type_Boolean;
@@ -369,7 +369,7 @@ public class QZoneEntryController
   
   private void o()
   {
-    a(new aeas(this));
+    a(new aejc(this));
   }
   
   private void p()
@@ -468,7 +468,7 @@ public class QZoneEntryController
   
   public void a()
   {
-    a(new aear(this));
+    a(new aejb(this));
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -515,20 +515,20 @@ public class QZoneEntryController
     this.jdField_a_of_type_Int = 0;
     k();
     this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView = new LebaTopEntryView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.a().setImageResource(2130844836);
+    this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.a().setImageResource(2130844911);
     this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.a().setText("好友动态");
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970391, this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.a());
-    this.jdField_a_of_type_AndroidWidgetImageSwitcher = ((ImageSwitcher)this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.findViewById(2131370341));
-    this.jdField_a_of_type_AndroidWidgetImageSwitcher.setFactory(new aeat(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.findViewById(2131370318));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970406, this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.a());
+    this.jdField_a_of_type_AndroidWidgetImageSwitcher = ((ImageSwitcher)this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.findViewById(2131370350));
+    this.jdField_a_of_type_AndroidWidgetImageSwitcher.setFactory(new aejd(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.findViewById(2131370327));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetTextView = this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.b();
     this.jdField_b_of_type_AndroidWidgetTextView.setMaxWidth(ViewUtils.b(140.0F));
     this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
     this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
     this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper = new LebaQZoneFacePlayHelper(this.jdField_a_of_type_AndroidWidgetImageSwitcher, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.findViewById(2131370342));
-    this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.setOnClickListener(new aeau(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.findViewById(2131370351));
+    this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaTopEntryView.setOnClickListener(new aeje(this));
   }
   
   public void c()
@@ -547,7 +547,7 @@ public class QZoneEntryController
     {
       o();
       e();
-      a(new aeaw(this));
+      a(new aejg(this));
       if (QLog.isColorLevel()) {
         QLog.i("UndealCount.QZoneEntryController", 2, "onResume qzone入口在屏幕上显示");
       }

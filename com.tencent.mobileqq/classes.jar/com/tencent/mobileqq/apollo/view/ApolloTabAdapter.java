@@ -34,7 +34,7 @@ public class ApolloTabAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131494035);
+    this.jdField_a_of_type_Int = paramContext.getResources().getColor(2131494041);
   }
   
   public Drawable a(ApolloActionPackage paramApolloActionPackage)
@@ -114,15 +114,15 @@ public class ApolloTabAdapter
     Object localObject;
     if (paramView == null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968696, paramViewGroup, false);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968699, paramViewGroup, false);
       paramViewGroup = new ApolloTabAdapter.ViewHolder(this);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363253));
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363270));
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setActivated(true);
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setFocusable(true);
       paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setEnabled(true);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362952);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362957);
       paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundColor(this.jdField_a_of_type_Int);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363254));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363271));
       paramView.setTag(paramViewGroup);
       float f2 = getCount();
       if (f2 > 0.0F)

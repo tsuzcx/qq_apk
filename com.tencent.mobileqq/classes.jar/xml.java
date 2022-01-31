@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-class xml
-  implements DialogInterface.OnClickListener
+public final class xml
+  implements Parcelable.Creator
 {
-  xml(xmi paramxmi) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public RedPacketInfoBase a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    return new RedPacketInfoBase(paramParcel);
+  }
+  
+  public RedPacketInfoBase[] a(int paramInt)
+  {
+    return new RedPacketInfoBase[paramInt];
   }
 }
 

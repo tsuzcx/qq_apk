@@ -1,36 +1,36 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
-import cooperation.qzone.LbsDataV2;
-import cooperation.qzone.util.QZLog;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
+import com.tencent.mobileqq.search.adapter.BaseMvpMessageAdapter;
+import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
+import com.tencent.mobileqq.search.presenter.IPresenter;
+import com.tencent.mobileqq.search.presenter.SearchResultPresenter;
+import com.tencent.mobileqq.search.view.IView;
+import com.tencent.mobileqq.search.view.SearchResultView;
+import com.tencent.mobileqq.util.FaceDecoder;
+import com.tencent.widget.ListView;
 
-public final class ahyb
-  extends SosoInterface.OnLocationListener
+public class ahyb
+  extends BaseMvpMessageAdapter
 {
-  public ahyb(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public ahyb(MessageSearchDetailFragment paramMessageSearchDetailFragment, ListView paramListView, FaceDecoder paramFaceDecoder, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    super(paramListView, paramFaceDecoder, paramSearchResultItem, paramString, paramQQAppInterface);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  protected IPresenter a(int paramInt)
   {
-    QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "onConsecutiveFailure failCode:" + paramInt1 + ",failCount:" + paramInt2);
+    return new SearchResultPresenter(MessageSearchDetailFragment.a(this.a));
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  protected IView a(int paramInt, ViewGroup paramViewGroup)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
-    {
-      QZoneNotifyServlet.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.a));
-      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "onLocationFinish succeed! gps=" + QZoneNotifyServlet.b());
-      return;
-    }
-    QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "onLocationFinish failed: error in force gps info update..");
+    return new SearchResultView(paramViewGroup, 2130971568);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahyb
  * JD-Core Version:    0.7.0.1
  */

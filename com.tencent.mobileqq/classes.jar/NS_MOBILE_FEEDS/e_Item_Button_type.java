@@ -7,6 +7,7 @@ public final class e_Item_Button_type
 {
   public static final int _enum_Func_AddFollow = 1;
   public static final int _enum_Func_AddFriend = 0;
+  public static final int _enum_Func_click_AddSpecialFollow = 13;
   public static final int _enum_Func_click_avatar = 8;
   public static final int _enum_Func_click_commentnum = 6;
   public static final int _enum_Func_click_forwardnum = 7;

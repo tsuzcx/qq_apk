@@ -1,21 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.widget.BounceScrollView.DrawFinishedListener;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager;
+import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
 public class lnp
-  implements BounceScrollView.DrawFinishedListener
+  implements BusinessObserver
 {
-  public lnp(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public lnp(ThirdVideoManager paramThirdVideoManager, NewIntent paramNewIntent, long paramLong, ThirdVideoManager.UUIDToUrlCallback paramUUIDToUrlCallback, String paramString1, String paramString2, AppRuntime paramAppRuntime) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (ReadInJoySelfFragment.a(this.a))
-    {
-      ReadInJoySelfFragment.a(this.a, false);
-      PublicTracker.a("self_tab_cost", null);
-      PublicTracker.a = 4;
-      PublicTracker.a("KANDIAN_FEEDS_COST", null);
-    }
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    ThreadManager.post(new lnq(this, paramBoolean, paramBundle), 8, null, false);
   }
 }
 

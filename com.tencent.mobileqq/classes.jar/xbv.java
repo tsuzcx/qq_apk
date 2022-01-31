@@ -1,20 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLImageView;
 
-class xbv
-  implements DialogInterface.OnClickListener
+public class xbv
 {
-  xbv(xbu paramxbu) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    paramDialogInterface.dismiss();
-  }
+  URLImageView a;
 }
 
 

@@ -1,34 +1,36 @@
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Condition;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.model.item.HotTopicInfoItem;
+import com.tencent.biz.qqstory.storyHome.discover.view.QQStoryDiscoverFragment;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class oav
-  implements LocalVideoPusher.Condition
+  implements View.OnClickListener
 {
-  public oav(LocalVideoPushSegment paramLocalVideoPushSegment) {}
+  public oav(StoryDiscoverActivity paramStoryDiscoverActivity) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    long l = ((Long)this.a.a.b("last_cancel_time", Long.valueOf(0L))).longValue();
-    try
+    if (StoryDiscoverActivity.a(this.a) > 0L)
     {
-      String str = (String)this.a.a.b("localVideoScanInterval", "1440");
-      SLog.a("Q.qqstory.home.LocalVideoPushSegment", "localVideoScanInterval config=%s", str);
-      i = Integer.valueOf(str).intValue();
-      if (NetConnInfoCenter.getServerTimeMillis() - l < i * 60 * 1000) {
-        return false;
+      if (StoryDiscoverActivity.a(this.a).a() == null) {
+        break label96;
+      }
+      paramView = String.valueOf(StoryDiscoverActivity.a(this.a).a().mTopicId);
+      if (StoryDiscoverActivity.a(this.a).a() == null) {
+        break label102;
       }
     }
-    catch (Exception localException)
+    label96:
+    label102:
+    for (String str = StoryDiscoverActivity.a(this.a).a().mSubjectName;; str = "")
     {
-      for (;;)
-      {
-        int i = 1440;
-      }
+      StoryReportor.a("content_flow", "clk_share", 0, 0, new String[] { paramView, "", str });
+      return;
+      paramView = "";
+      break;
     }
-    return true;
   }
 }
 

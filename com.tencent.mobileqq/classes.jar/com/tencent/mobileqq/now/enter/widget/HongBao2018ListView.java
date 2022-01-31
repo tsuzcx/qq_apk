@@ -10,7 +10,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -28,6 +27,7 @@ import java.util.Iterator;
 public class HongBao2018ListView
   extends ARMapHongBaoListView
 {
+  private float jdField_a_of_type_Float;
   protected int a;
   private long jdField_a_of_type_Long;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
@@ -36,9 +36,11 @@ public class HongBao2018ListView
   public View a;
   protected NowPendantHolder a;
   HongBao2018ListView.NowFloatViewCallBack jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView$NowFloatViewCallBack;
+  private HongBao2018ListView.NowPendantClickListener jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView$NowPendantClickListener;
   private HongbaoListViewEventCallback jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback;
   public OverScrollViewListener a;
   public boolean a;
+  private float jdField_b_of_type_Float;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private Rect jdField_b_of_type_AndroidGraphicsRect;
   Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
@@ -60,14 +62,14 @@ public class HongBao2018ListView
   {
     super(paramContext);
     this.jdField_a_of_type_Int = 0;
-    t();
+    s();
   }
   
   public HongBao2018ListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 0;
-    t();
+    s();
   }
   
   private void a(Canvas paramCanvas)
@@ -77,7 +79,7 @@ public class HongBao2018ListView
     try
     {
       this.o = true;
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(super.getResources(), 2130839539);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(super.getResources(), 2130839554);
       this.g = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
       this.h = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
@@ -127,7 +129,7 @@ public class HongBao2018ListView
     }
   }
   
-  private void t() {}
+  private void s() {}
   
   public int a()
   {
@@ -165,36 +167,35 @@ public class HongBao2018ListView
     if (QLog.isColorLevel()) {
       QLog.d("now_enter.pendant", 2, "showNowPendant, isShow:" + paramBoolean1 + " isDynamic:" + paramBoolean2);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder = new NowPendantHolder(this);
+      this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.a();
+    }
+    if ((!this.jdField_c_of_type_Boolean) && (paramBoolean1)) {}
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      long l = ((NowHongbaoPushManager)localQQAppInterface.getManager(265)).a(3);
+      ReportController.b(localQQAppInterface, "dc00899", "Grp_AIO", "", "year_icon", "upicon_view", 0, 0, l + "", "", "", "");
       if (QLog.isColorLevel()) {
-        QLog.d("now_enter.pendant", 2, "showNowPendant, mNowPendantHolder == null");
+        QLog.i("now_enter.pendant", 2, "report Pendant show, pushId=" + l);
+      }
+      if (paramBoolean1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.f();
+        this.jdField_c_of_type_Boolean = true;
+        if ((paramBoolean2) && (!this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.jdField_b_of_type_Boolean))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.b();
+          invalidate();
+          return;
+        }
       }
     }
-    do
+    catch (Exception localException)
     {
-      return;
-      if ((!this.jdField_c_of_type_Boolean) && (paramBoolean1)) {}
-      try
-      {
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        long l = ((NowHongbaoPushManager)localQQAppInterface.getManager(265)).a(3);
-        ReportController.b(localQQAppInterface, "dc00899", "Grp_AIO", "", "year_icon", "upicon_view", 0, 0, l + "", "", "", "");
-        if (QLog.isColorLevel()) {
-          QLog.i("now_enter.pendant", 2, "report Pendant show, pushId=" + l);
-        }
-        if (paramBoolean1)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.f();
-          this.jdField_c_of_type_Boolean = true;
-          if ((paramBoolean2) && (!this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.jdField_b_of_type_Boolean))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.b();
-            invalidate();
-            return;
-          }
-        }
-      }
-      catch (Exception localException)
+      do
       {
         for (;;)
         {
@@ -207,13 +208,13 @@ public class HongBao2018ListView
             }
           }
         }
+      } while (!this.jdField_c_of_type_Boolean);
+      this.jdField_c_of_type_Boolean = false;
+      if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.c();
       }
-    } while (!this.jdField_c_of_type_Boolean);
-    this.jdField_c_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.c();
+      invalidate();
     }
-    invalidate();
   }
   
   public boolean a()
@@ -246,29 +247,6 @@ public class HongBao2018ListView
     }
   }
   
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HongBao2018ListView", 2, "[enableNowEntranceMode] mNowEntranceEnabled=" + this.jdField_b_of_type_Boolean);
-    }
-    if (this.jdField_b_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_b_of_type_Boolean = true;
-      super.setOverScrollListener(null);
-      super.setOverscrollHeader(null);
-      super.setOverScrollHeader(null);
-      setOverscrollHeaderShadowEnable(false);
-      Resources localResources = super.getResources();
-      this.i = ((int)localResources.getDimension(2131559473));
-      this.k = localResources.getDisplayMetrics().widthPixels;
-    } while (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder != null);
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder = new NowPendantHolder(this);
-    this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.a();
-  }
-  
   public void draw(Canvas paramCanvas)
   {
     int m = 1;
@@ -278,7 +256,7 @@ public class HongBao2018ListView
     try
     {
       super.draw(paramCanvas);
-      if ((this.jdField_c_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+      if (this.jdField_c_of_type_Boolean)
       {
         this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.c = 0;
         if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.a(paramCanvas))
@@ -303,22 +281,6 @@ public class HongBao2018ListView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool;
-    if (!this.jdField_b_of_type_Boolean) {
-      try
-      {
-        bool = super.onInterceptTouchEvent(paramMotionEvent);
-        return bool;
-      }
-      catch (Throwable paramMotionEvent)
-      {
-        QLog.e("HongBao2018ListView", 1, "[onInterceptTouchEvent] exception1=", paramMotionEvent);
-        return false;
-      }
-    }
-    if (!this.q) {
-      return true;
-    }
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     }
@@ -326,7 +288,7 @@ public class HongBao2018ListView
     {
       try
       {
-        bool = super.onInterceptTouchEvent(paramMotionEvent);
+        boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
         return bool;
       }
       catch (Exception paramMotionEvent)
@@ -341,9 +303,9 @@ public class HongBao2018ListView
       if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null) {
         this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.a(this);
       }
-      if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder != null) && (getScrollY() == 0))
+      if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder != null))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.a(0).contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
+        if (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.a(getScrollY()).contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
         {
           this.r = true;
           super.onInterceptTouchEvent(paramMotionEvent);
@@ -381,143 +343,148 @@ public class HongBao2018ListView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool3 = true;
     boolean bool4 = true;
-    boolean bool2 = true;
-    boolean bool1 = false;
-    if (!this.jdField_b_of_type_Boolean) {}
-    do
-    {
-      try
-      {
-        bool2 = super.onTouchEvent(paramMotionEvent);
-        bool1 = bool2;
-      }
-      catch (Exception paramMotionEvent)
-      {
-        for (;;)
-        {
-          QLog.e("HongBao2018ListView", 1, "onTouchEvent exception1=", paramMotionEvent);
-        }
-      }
-      return bool1;
-      bool1 = bool2;
-    } while (!this.q);
+    boolean bool3 = true;
     int i1 = paramMotionEvent.getAction() & 0xFF;
     if (i1 == 1)
     {
-      if (!this.n) {
-        break label191;
-      }
-      if (!a()) {
-        break label538;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.d(false);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.h();
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView$NowFloatViewCallBack != null) {
-        this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView$NowFloatViewCallBack.a();
-      }
-    }
-    label271:
-    label538:
-    for (int m = 1;; m = 0)
-    {
-      this.n = false;
-      this.jdField_a_of_type_Long = 0L;
-      bool1 = bool2;
-      if (m != 0) {
-        break;
-      }
-      try
+      if ((this.jdField_a_of_type_Float > 0.0F) || (this.jdField_b_of_type_Float > 0.0F))
       {
-        label191:
-        do
-        {
-          bool1 = super.onTouchEvent(paramMotionEvent);
-          switch (i1)
-          {
-          default: 
-            return bool1;
-          }
-        } while (!this.p);
-        if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.e();
+        this.jdField_a_of_type_Float = 0.0F;
+        this.jdField_b_of_type_Float = 0.0F;
+        if ((this.r) && (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView$NowPendantClickListener != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView$NowPendantClickListener.m();
         }
-        this.p = false;
+        this.r = false;
         return true;
       }
-      catch (Exception localException)
+      if (this.n)
       {
-        for (;;)
+        if (!a()) {
+          break label620;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null) {
+          this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.c(false);
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null) {
+          this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.g();
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView$NowFloatViewCallBack != null) {
+          this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView$NowFloatViewCallBack.a();
+        }
+      }
+    }
+    label414:
+    label620:
+    for (int m = 1;; m = 0) {
+      for (;;)
+      {
+        this.n = false;
+        this.jdField_a_of_type_Long = 0L;
+        if (m != 0) {
+          break;
+        }
+        try
         {
-          QLog.e("HongBao2018ListView", 1, "onTouchEvent exception2=", localException);
-          bool1 = false;
-          continue;
-          if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null)
+          do
           {
-            paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback;
-            if ((this.mTouchMode == 3) || (this.mTouchMode == 5))
+            do
             {
-              bool2 = true;
-              paramMotionEvent.a(this, bool2);
-            }
-          }
-          else
-          {
-            m = -getScrollY();
-            if (!this.jdField_a_of_type_Boolean) {
-              break label387;
-            }
-          }
-          switch (this.jdField_a_of_type_Int)
-          {
-          default: 
-            break;
-          case 1: 
-          case 2: 
-            if (m >= this.i) {}
-            for (bool2 = bool3;; bool2 = false)
-            {
-              this.n = bool2;
-              if (!this.n) {
-                break label379;
+              do
+              {
+                bool1 = super.onTouchEvent(paramMotionEvent);
+                switch (i1)
+                {
+                default: 
+                  return bool1;
+                }
+              } while (!this.p);
+              if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null) {
+                this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.e();
               }
-              if (this.jdField_a_of_type_Long != 0L) {
+              this.p = false;
+              return true;
+              if (i1 != 2) {
                 break;
               }
-              this.jdField_a_of_type_Long = System.currentTimeMillis();
+            } while ((this.jdField_a_of_type_Float <= 0.0F) && (this.jdField_b_of_type_Float <= 0.0F));
+            float f1 = paramMotionEvent.getX();
+            float f2 = paramMotionEvent.getY();
+            if (Math.pow(f1 - this.jdField_a_of_type_Float, 2.0D) * Math.pow(f2 - this.jdField_b_of_type_Float, 2.0D) <= 256.0D) {
               break;
-              bool2 = false;
-              break label271;
-            }
-            label379:
-            this.jdField_a_of_type_Long = 0L;
-            break;
-          }
-          if (this.jdField_a_of_type_Int == 3)
-          {
-            if (m >= this.j) {}
-            for (bool2 = bool4;; bool2 = false)
-            {
-              this.p = bool2;
-              break;
-            }
-            if ((this.r) && (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder != null) && (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null) && (getScrollY() == 0) && (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.a(0).contains(paramMotionEvent.getX(), paramMotionEvent.getY()))) {
-              this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.f();
             }
             this.r = false;
-            if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null) {
-              this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.b(this);
-            }
-            if ((!this.n) && (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null))
+            return true;
+          } while ((i1 != 0) || (!this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder == null) || (!this.jdField_a_of_type_ComTencentMobileqqNowEnterNowPendantHolder.a(getScrollY()).contains(paramMotionEvent.getX(), paramMotionEvent.getY())));
+          this.jdField_a_of_type_Float = paramMotionEvent.getX();
+          this.jdField_b_of_type_Float = paramMotionEvent.getY();
+          return true;
+        }
+        catch (Exception paramMotionEvent)
+        {
+          for (;;)
+          {
+            QLog.e("HongBao2018ListView", 1, "onTouchEvent exception2=", paramMotionEvent);
+            boolean bool1 = false;
+            continue;
+            boolean bool2;
+            if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null)
             {
-              this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.c(false);
-              continue;
-              this.r = false;
+              paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback;
+              if ((this.mTouchMode == 3) || (this.mTouchMode == 5))
+              {
+                bool2 = true;
+                paramMotionEvent.a(this, bool2);
+              }
+            }
+            else
+            {
+              m = -getScrollY();
+              if (!this.jdField_a_of_type_Boolean) {
+                break label532;
+              }
+            }
+            switch (this.jdField_a_of_type_Int)
+            {
+            default: 
+              break;
+            case 1: 
+            case 2: 
+              if (m >= this.i) {}
+              for (bool2 = bool3;; bool2 = false)
+              {
+                this.n = bool2;
+                if (!this.n) {
+                  break label524;
+                }
+                if (this.jdField_a_of_type_Long != 0L) {
+                  break;
+                }
+                this.jdField_a_of_type_Long = System.currentTimeMillis();
+                break;
+                bool2 = false;
+                break label414;
+              }
+              this.jdField_a_of_type_Long = 0L;
+              break;
+            }
+            if (this.jdField_a_of_type_Int == 3)
+            {
+              if (m >= this.j) {}
+              for (bool2 = bool4;; bool2 = false)
+              {
+                this.p = bool2;
+                break;
+              }
+              if (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null) {
+                this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.b(this);
+              }
+              if ((!this.n) && (this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback != null))
+              {
+                this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongbaoListViewEventCallback.b(false);
+                continue;
+                this.r = false;
+              }
             }
           }
         }
@@ -583,6 +550,11 @@ public class HongBao2018ListView
     this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView$NowFloatViewCallBack = paramNowFloatViewCallBack;
   }
   
+  public void setNowPendantClickListener(HongBao2018ListView.NowPendantClickListener paramNowPendantClickListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView$NowPendantClickListener = paramNowPendantClickListener;
+  }
+  
   public void setOverScrollHeader(View paramView)
   {
     if (QLog.isColorLevel()) {
@@ -639,7 +611,7 @@ public class HongBao2018ListView
   {
     if (paramBoolean)
     {
-      this.mOverScrollHeaderShadow = getResources().getDrawable(2130839293);
+      this.mOverScrollHeaderShadow = getResources().getDrawable(2130839312);
       return;
     }
     this.mOverScrollHeaderShadow = null;

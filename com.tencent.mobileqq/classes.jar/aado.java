@@ -1,48 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.ar.RemoteArConfigManager;
-import com.tencent.mobileqq.ar.aidl.IArSoCallback.Stub;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.utils.PokeBigResHandler;
+import com.tencent.mobileqq.app.utils.PokeBigResHandler.NetEngine;
 
 public class aado
-  extends IArSoCallback.Stub
+  implements Runnable
 {
-  public aado(RemoteArConfigManager paramRemoteArConfigManager) {}
+  public aado(PokeBigResHandler.NetEngine paramNetEngine, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
-    }
-    Message localMessage = RemoteArConfigManager.a(this.a).obtainMessage();
-    localMessage.what = 100;
-    localMessage.sendToTarget();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
-    }
-    Message localMessage = RemoteArConfigManager.a(this.a).obtainMessage();
-    localMessage.what = 102;
-    localMessage.arg1 = paramInt;
-    localMessage.sendToTarget();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
-    }
-    Message localMessage = RemoteArConfigManager.a(this.a).obtainMessage();
-    localMessage.what = 101;
-    localMessage.sendToTarget();
+    PokeBigResHandler.a = PokeBigResHandler.b(this.jdField_a_of_type_JavaLangString);
+    PokeBigResHandler.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aado
  * JD-Core Version:    0.7.0.1
  */

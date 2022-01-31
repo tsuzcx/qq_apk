@@ -10,13 +10,13 @@ public class MyOneDayPlayMode
   extends CommentPlayMode
 {
   protected String h;
-  protected int l;
+  protected int m;
   
   public MyOneDayPlayMode(int paramInt, StoryVideoPlayer paramStoryVideoPlayer, VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter, Bundle paramBundle)
   {
     super(paramInt, paramStoryVideoPlayer, paramVideoPlayerPagerAdapter, paramBundle);
     this.h = paramBundle.getString("extra_share_time");
-    this.l = paramBundle.getInt("extra_share_time_zone");
+    this.m = paramBundle.getInt("extra_share_time_zone");
     b(2);
   }
   
@@ -30,7 +30,7 @@ public class MyOneDayPlayMode
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer = new MyVideoSharePlayingListSync(this.jdField_a_of_type_JavaLangString, this.b, this.h, this.l);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer = new MyVideoSharePlayingListSync(this.jdField_a_of_type_JavaLangString, this.b, this.h, this.m);
     this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer.a();
   }
 }

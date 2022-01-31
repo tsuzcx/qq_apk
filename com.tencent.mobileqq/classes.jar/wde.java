@@ -1,97 +1,58 @@
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.QQOperateTips;
-import com.tencent.mobileqq.config.operation.QQOperateManager;
-import com.tencent.mobileqq.config.operation.QQOperationRequestInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.EqqDetailDataManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qidian.QidianManager;
+import java.util.Iterator;
 import java.util.List;
 
-public class wde
+class wde
   implements Runnable
 {
-  public wde(QQOperateTips paramQQOperateTips) {}
+  wde(wdd paramwdd) {}
   
   public void run()
   {
-    Object localObject2 = QQOperateTips.a(this.a).a();
-    Object localObject1;
-    if ((localObject2 != null) && (((List)localObject2).size() > 0))
-    {
-      int j = ((List)localObject2).size();
-      localObject1 = new ArrayList();
-      int i;
-      ChatMessage localChatMessage;
-      if (QQOperateTips.a(this.a).jdField_a_of_type_Int == 0)
-      {
-        i = j - 1;
-        if (i >= 0)
-        {
-          localChatMessage = (ChatMessage)((List)localObject2).get(i);
-          if ((localChatMessage != null) && (localChatMessage.time > QQOperateTips.a(this.a)))
-          {
-            if (localChatMessage.uniseq != QQOperateTips.b(this.a)) {
-              ((ArrayList)localObject1).add(localChatMessage);
-            }
-            for (;;)
-            {
-              i -= 1;
-              break;
-              QQOperateTips.a(this.a, localChatMessage.time);
-            }
-          }
-        }
-      }
-      else if (QQOperateTips.a(this.a).jdField_a_of_type_Int == 3000)
-      {
-        i = j - 1;
-        if (i >= 0)
-        {
-          localChatMessage = (ChatMessage)((List)localObject2).get(i);
-          if ((localChatMessage != null) && (localChatMessage.shmsgseq > QQOperateTips.a(this.a)))
-          {
-            if (localChatMessage.uniseq != QQOperateTips.b(this.a)) {
-              ((ArrayList)localObject1).add(localChatMessage);
-            }
-            for (;;)
-            {
-              i -= 1;
-              break;
-              QQOperateTips.a(this.a, localChatMessage.shmsgseq);
-            }
-          }
-        }
-      }
-      if (((ArrayList)localObject1).size() > 0)
-      {
-        localObject2 = (ChatMessage)((List)localObject2).get(j - 1);
-        if (localObject2 != null)
-        {
-          if (QQOperateTips.a(this.a).jdField_a_of_type_Int != 0) {
-            break label408;
-          }
-          QQOperateTips.a(this.a, ((ChatMessage)localObject2).time);
-          QQOperateTips.b(this.a, ((ChatMessage)localObject2).uniseq);
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject2 = QQOperateManager.a(QQOperateTips.a(this.a));
-      localObject1 = ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, QQOperateTips.a(this.a), (List)localObject1, false, -1);
-      if (((QQOperationRequestInfo)localObject1).jdField_a_of_type_Boolean)
-      {
-        localObject1 = ((QQOperationRequestInfo)localObject1).jdField_a_of_type_JavaUtilArrayList;
-        ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, (ArrayList)localObject1, QQOperateTips.a(this.a));
-      }
+    Object localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    EqqDetail localEqqDetail = (EqqDetail)((EntityManager)localObject).a(EqqDetail.class, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((EntityManager)localObject).a();
+    if (localEqqDetail == null) {
       return;
-      label408:
-      if (QQOperateTips.a(this.a).jdField_a_of_type_Int == 3000)
-      {
-        QQOperateTips.a(this.a, ((ChatMessage)localObject2).shmsgseq);
-        QQOperateTips.b(this.a, ((ChatMessage)localObject2).uniseq);
-      }
     }
+    try
+    {
+      localObject = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+      ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).mergeFrom(localEqqDetail.accountData);
+      localEqqDetail.groupInfoList = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).config_group_info.get();
+      localEqqDetail.mIsAgreeSyncLbs = true;
+      localEqqDetail.mIsSyncLbsSelected = true;
+      Iterator localIterator1 = localEqqDetail.groupInfoList.iterator();
+      while (localIterator1.hasNext())
+      {
+        Iterator localIterator2 = ((mobileqq_mp.ConfigGroupInfo)localIterator1.next()).config_info.get().iterator();
+        while (localIterator2.hasNext())
+        {
+          mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)localIterator2.next();
+          if (localConfigInfo.title.get().equals("提供地理位置")) {
+            localConfigInfo.state.set(1);
+          }
+        }
+      }
+      localEqqDetail.accountData = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).toByteArray();
+      ((EqqDetailDataManager)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(68)).a(localEqqDetail);
+      this.a.a.jdField_a_of_type_ComTencentQidianQidianManager.a(true);
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

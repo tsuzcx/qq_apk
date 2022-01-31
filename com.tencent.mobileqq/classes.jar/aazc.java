@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.NetChangedListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
 
-public class aazc
-  implements NetChangedListener
+class aazc
+  implements aazl
 {
-  public aazc(ARMapActivity paramARMapActivity) {}
+  aazc(aazb paramaazb) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARMapActivity", 2, "onMessageConnect");
+    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Aazj.a }));
+    if (paramBoolean) {
+      ArkAppDataReport.a(this.a.jdField_a_of_type_Aazj.a, 2);
     }
-    if (!this.a.a) {
-      ARMapActivity.d(this.a);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARMapActivity", 2, "onConnClose");
-    }
+    this.a.jdField_a_of_type_Aazl.a(paramBoolean);
   }
 }
 

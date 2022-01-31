@@ -1,5 +1,7 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.activity.aio.PokePanelAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class urp
   implements Runnable
@@ -8,12 +10,13 @@ class urp
   
   public void run()
   {
-    if (DoodleMsgView.a(this.a.a) != null)
-    {
-      urt localurt = (urt)DoodleMsgView.a(this.a.a).get();
-      if (localurt != null) {
-        localurt.g();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.PokePanel", 2, "[pokepanel]update UI start");
+    }
+    ArrayList localArrayList = this.a.jdField_a_of_type_JavaUtilArrayList;
+    PokePanel.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel).a(localArrayList);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.PokePanel", 2, "[pokepanel]update UI end");
     }
   }
 }

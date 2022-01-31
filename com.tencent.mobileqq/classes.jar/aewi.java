@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView.LoadingCallback;
 
-public class aewi
-  implements CsTask.OnCsError
+class aewi
+  implements WereWolvesLoadingView.LoadingCallback
 {
-  public aewi(VideoFeedsUploader paramVideoFeedsUploader, int paramInt) {}
+  aewi(aewh paramaewh) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void a()
   {
-    VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader).jdField_a_of_type_Int = -1004;
-    VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader).c = paramInt;
-    if (this.jdField_a_of_type_Int < 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoFeedsUploader", 2, "step1_uploadPreparing, retry send " + this.jdField_a_of_type_Int);
-      }
-      VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader, this.jdField_a_of_type_Int + 1);
-      return;
-    }
-    VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader, VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader));
+    this.a.a.a.setVisibility(8);
+    this.a.a.a(true);
   }
 }
 

@@ -1,40 +1,37 @@
-import Wallet.GetGroupRedPackListRsp;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.text.TextUtils;
-import com.qq.taf.jce.JceOutputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class xhb
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public xhb(RedPacketManager paramRedPacketManager, GetGroupRedPackListRsp paramGetGroupRedPackListRsp, String paramString1, String paramString2, int paramInt) {}
+  public xhb(SendHbActivity paramSendHbActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_WalletGetGroupRedPackListRsp == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    try
+    if (paramIntent.getAction().equals("com.qwallet.report"))
     {
-      String str = BaseApplicationImpl.getContext().getApplicationContext().getFilesDir() + "/QWallet/.tmp/group_available_list_" + this.jdField_a_of_type_JavaLangString + this.b + "_" + this.jdField_a_of_type_Int;
-      Object localObject = new File(str);
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
+      int i = paramIntent.getIntExtra("type", 0);
+      QLog.i("SendHbActivity", 2, "onReceive type = " + i);
+      if (999 == i) {
+        break label53;
       }
-      localObject = new JceOutputStream();
-      ((JceOutputStream)localObject).setServerEncoding("utf-8");
-      this.jdField_a_of_type_WalletGetGroupRedPackListRsp.writeTo((JceOutputStream)localObject);
-      FileUtils.a(((JceOutputStream)localObject).toByteArray(), str);
-      return;
     }
-    catch (Throwable localThrowable)
+    label53:
+    do
     {
-      localThrowable.printStackTrace();
-    }
+      do
+      {
+        return;
+        paramContext = paramIntent.getBundleExtra("params");
+      } while (paramContext == null);
+      QLog.i("SendHbActivity", 2, "onReceive bundle = " + paramContext.toString());
+      paramContext = paramContext.getString("from");
+    } while ((this.a.isFinishing()) || (!"video".equals(paramContext)));
+    this.a.finish();
   }
 }
 

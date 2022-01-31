@@ -1,15 +1,18 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.WeishiFeedCommInfo;
 
-public class ancm
-  implements Runnable
+public final class ancm
+  implements Parcelable.Creator
 {
-  public ancm(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
-  
-  public void run()
+  public WeishiFeedCommInfo a(Parcel paramParcel)
   {
-    RemoteHandleManager.a().a().k();
+    return new WeishiFeedCommInfo(paramParcel);
+  }
+  
+  public WeishiFeedCommInfo[] a(int paramInt)
+  {
+    return new WeishiFeedCommInfo[paramInt];
   }
 }
 

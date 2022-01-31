@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituTextManager;
 
-class wju
-  implements Runnable
+public class wju
 {
-  wju(wjt paramwjt) {}
-  
-  public void run()
-  {
-    this.a.a.a.c();
-  }
+  private static ZhituTextManager a = new ZhituTextManager(null);
 }
 
 

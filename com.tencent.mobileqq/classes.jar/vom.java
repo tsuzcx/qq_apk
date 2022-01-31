@@ -1,40 +1,48 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.TroopFeeMsgItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AccountNotMatchException;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class vom
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vom(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt) {}
+  public vom(TroopFeeMsgItemBuilder paramTroopFeeMsgItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilList;
-    if ((localObject == null) || (((List)localObject).size() == 0)) {}
-    do
+    von localvon = (von)AIOUtils.a(paramView);
+    MessageForTroopFee localMessageForTroopFee = (MessageForTroopFee)localvon.a;
+    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", localMessageForTroopFee.actionUrl);
+    paramView.getContext().startActivity(localIntent);
+    paramView = ((TroopManager)this.a.a.getManager(51)).a(localvon.b);
+    int i;
+    if (paramView != null)
     {
-      do
-      {
-        return;
-        localObject = AIOImageProviderService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
-      } while ((localObject == null) || (!MessageForPic.class.isInstance(localObject)));
-      localObject = (MessageForPic)localObject;
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOImageProviderService", 2, "payFlow,id:" + this.jdField_a_of_type_Long + ",subId:" + this.jdField_a_of_type_Int);
-        }
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localQQAppInterface, (MessageForPic)localObject);
-        return;
+      if (!paramView.isTroopOwner(this.a.a.getCurrentAccountUin())) {
+        break label150;
       }
-      catch (AccountNotMatchException localAccountNotMatchException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("AIOImageProviderService", 2, "no appRuntime");
+      i = 0;
+    }
+    for (;;)
+    {
+      ReportController.b(this.a.a, "P_CliOper", "Grp_pay", "", "grp_aio", "Clk_payobj", 0, 0, localvon.b, i + "", "", "");
+      return;
+      label150:
+      if (paramView.isAdmin()) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+    }
   }
 }
 

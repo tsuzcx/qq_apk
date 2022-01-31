@@ -1,16 +1,13 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
 
-public final class vbc
-  implements Runnable
+public class vbc
+  implements DialogInterface.OnClickListener
 {
-  public vbc(Context paramContext, String paramString) {}
+  public vbc(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
   
-  public void run()
-  {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

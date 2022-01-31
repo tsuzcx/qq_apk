@@ -1,50 +1,17 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.portal.ConversationHongBao;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class aglu
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  public aglu(ConversationHongBao paramConversationHongBao, View paramView1, View paramView2) {}
+  public aglu(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao));
-    this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-ConversationHongBao.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao));
-    this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.f) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aglu
  * JD-Core Version:    0.7.0.1
  */

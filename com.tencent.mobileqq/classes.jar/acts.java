@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView.IFace2faceContext;
 
 public class acts
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public acts(FMObserver paramFMObserver, Object paramObject) {}
+  public acts(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FMObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver, this.jdField_a_of_type_JavaLangObject);
+    this.a.a.b();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     acts
  * JD-Core Version:    0.7.0.1
  */

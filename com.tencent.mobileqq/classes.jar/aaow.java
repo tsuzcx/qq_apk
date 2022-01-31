@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
+import java.io.File;
+import java.io.FileFilter;
 
-class aaow
-  implements Runnable
+public final class aaow
+  implements FileFilter
 {
-  aaow(aaou paramaaou) {}
-  
-  public void run()
+  public boolean accept(File paramFile)
   {
-    if (ArkAppEventObserverManager.a(this.a.a) != null) {
-      ArkAppEventObserverManager.a(this.a.a).a(false, 0.0D, 0.0D);
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
+    {
+      int i = 3;
+      while (i < paramFile.length())
+      {
+        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
     }
-    SosoInterface.b(ArkAppEventObserverManager.a(this.a.a));
-    ArkAppEventObserverManager.a(this.a.a, null);
+    return false;
   }
 }
 

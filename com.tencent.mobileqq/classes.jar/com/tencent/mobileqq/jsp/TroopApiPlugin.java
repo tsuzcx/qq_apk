@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.jsp;
 
-import adww;
-import adwx;
-import adwy;
-import adwz;
+import aefg;
+import aefh;
+import aefi;
+import aefj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -45,7 +45,7 @@ public class TroopApiPlugin
   public int a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new adwz(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new aefj(this);
   VideoUploadTask jdField_a_of_type_ComTencentMobileqqTroopDataVideoUploadTask;
   public String a;
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
@@ -144,7 +144,7 @@ public class TroopApiPlugin
       return;
     }
     this.jdField_a_of_type_Int = -1;
-    a(2131434431);
+    a(2131434447);
   }
   
   void a()
@@ -179,7 +179,7 @@ public class TroopApiPlugin
             long l1 = paramString2.optLong("videoSize");
             long l2 = paramString2.optLong("videoDuration");
             paramString2 = paramString2.optString("callback");
-            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(paramJsBridgeListener, paramString1, new adww(this, l1, l2, paramString2));
+            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b(paramJsBridgeListener, paramString1, new aefg(this, l1, l2, paramString2));
           }
           catch (Exception paramJsBridgeListener) {}
           if (QLog.isColorLevel()) {
@@ -207,16 +207,16 @@ public class TroopApiPlugin
             paramJsBridgeListener = (AbsBaseWebViewActivity)paramString1;
             paramJsBridgeListener.rightViewImg.setVisibility(0);
             this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramJsBridgeListener);
-            paramString1 = (RelativeLayout)paramJsBridgeListener.findViewById(2131362695);
+            paramString1 = (RelativeLayout)paramJsBridgeListener.findViewById(2131362700);
             if (paramString1 == null) {
               continue;
             }
             paramString2 = new RelativeLayout.LayoutParams(-2, -2);
-            paramString2.addRule(7, 2131363428);
+            paramString2.addRule(7, 2131363447);
             paramString2.setMargins(0, AIOUtils.a(5.0F, paramJsBridgeListener.getResources()), AIOUtils.a(5.0F, paramJsBridgeListener.getResources()), 0);
             this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramString2);
             this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846052);
+            this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846134);
             paramString1.addView(this.jdField_a_of_type_AndroidWidgetImageView);
           }
           catch (Exception paramJsBridgeListener) {}
@@ -229,15 +229,15 @@ public class TroopApiPlugin
             {
               paramJsBridgeListener.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
               this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramJsBridgeListener.getActivity());
-              paramString1 = (RelativeLayout)paramJsBridgeListener.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.findViewById(2131362695);
+              paramString1 = (RelativeLayout)paramJsBridgeListener.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.findViewById(2131362700);
               if (paramString1 != null)
               {
                 paramString2 = new RelativeLayout.LayoutParams(-2, -2);
-                paramString2.addRule(7, 2131363428);
+                paramString2.addRule(7, 2131363447);
                 paramString2.setMargins(0, AIOUtils.a(5.0F, paramJsBridgeListener.getResources()), AIOUtils.a(5.0F, paramJsBridgeListener.getResources()), 0);
                 this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramString2);
                 this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-                this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846052);
+                this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846134);
                 paramString1.addView(this.jdField_a_of_type_AndroidWidgetImageView);
               }
             }
@@ -323,7 +323,7 @@ public class TroopApiPlugin
               paramString2 = (TroopInfo)paramString1.a(TroopInfo.class, paramJsBridgeListener);
               paramString1.a();
               if (paramString2 != null) {
-                a(2131434430);
+                a(2131434446);
               }
             }
             catch (JSONException paramJsBridgeListener)
@@ -352,7 +352,7 @@ public class TroopApiPlugin
               paramString2 = paramJsBridgeListener.optString("pluginID");
               paramString3 = paramJsBridgeListener.optString("versionCode");
               this.d = paramJsBridgeListener.optString("callback");
-              this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramString1, paramString2, paramString3, new adwx(this));
+              this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramString1, paramString2, paramString3, new aefh(this));
             }
             catch (JSONException paramJsBridgeListener) {}
             if (QLog.isColorLevel()) {
@@ -369,7 +369,7 @@ public class TroopApiPlugin
               paramString3 = paramJsBridgeListener.optString("pluginId");
               i = paramJsBridgeListener.optInt("action");
               this.e = paramJsBridgeListener.optString("callback");
-              this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(i, paramString1, paramString3, paramString2, new adwy(this));
+              this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(i, paramString1, paramString3, paramString2, new aefi(this));
             }
             catch (JSONException paramJsBridgeListener) {}
             if (QLog.isColorLevel()) {

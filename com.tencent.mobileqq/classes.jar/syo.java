@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
 
-class syo
-  implements Runnable
+public class syo
+  implements View.OnClickListener
 {
-  syo(syn paramsyn, List paramList) {}
+  public syo(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (LebaListMgrActivity.a(this.jdField_a_of_type_Syn.a) != null) {
-      LebaListMgrActivity.a(this.jdField_a_of_type_Syn.a).a(this.jdField_a_of_type_JavaUtilList);
-    }
+    this.a.finish();
   }
 }
 

@@ -1,26 +1,65 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class mpu
-  extends PhoneStateListener
+  extends ReadInJoyObserver
 {
-  public mpu(FastWebVideoVolumeControl paramFastWebVideoVolumeControl) {}
+  public mpu(FastWebActivity paramFastWebActivity) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.FastWebVideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
+    int j = 0;
+    QLog.d("Q.readinjoy.fast_web", 2, " onWebCallback : " + paramString);
+    if (!FastWebActivity.e(this.a)) {
+      return;
     }
-    switch (paramInt)
+    int i;
+    if ("onPageStarted".equals(paramString)) {
+      i = 300;
+    }
+    for (;;)
     {
-    default: 
+      ThreadManager.getUIHandler().postDelayed(new mpw(this), i);
       return;
-    case 1: 
-      this.a.b(true);
+      i = j;
+      if ("onConversationJumpRestoreStack".equals(paramString)) {
+        i = j;
+      }
+    }
+  }
+  
+  public void ab_()
+  {
+    super.ab_();
+    if ((FastWebActivity.c(this.a)) || (FastWebActivity.a(this.a) == null)) {
       return;
     }
-    this.a.b(true);
+    this.a.runOnUiThread(new mpv(this));
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (FastWebActivity.d(this.a)) {
+      return;
+    }
+    TextView localTextView = (TextView)this.a.findViewById(2131366883);
+    if (FastWebActivity.a(this.a).b > 0L) {
+      localTextView.setText(FastWebActivity.a(this.a).b + "");
+    }
+    for (;;)
+    {
+      FastWebActivity.a(this.a).a = FastWebActivity.a(this.a).a;
+      FastWebActivity.a(this.a).notifyDataSetChanged();
+      return;
+      localTextView.setText("");
+    }
   }
 }
 

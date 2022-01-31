@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import akqn;
+import akye;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -345,7 +345,7 @@ public class SwiftBrowserUIStyleHandler
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a() != null)
     {
       WebView localWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
-      localWebView.setId(2131362573);
+      localWebView.setId(2131362578);
       if (this.jdField_b_of_type_Int != -1) {
         localWebView.setBackgroundColor(this.jdField_b_of_type_Int);
       }
@@ -441,7 +441,7 @@ public class SwiftBrowserUIStyleHandler
         if ((paramBundle == null) || (!this.jdField_b_of_type_Boolean)) {
           break;
         }
-        ((TouchWebView)localObject1).setOnOverScrollHandler(new akqn(this, (TouchWebView)localObject1, paramBundle));
+        ((TouchWebView)localObject1).setOnOverScrollHandler(new akye(this, (TouchWebView)localObject1, paramBundle));
         return;
         label517:
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -642,7 +642,7 @@ public class SwiftBrowserUIStyleHandler
   public void a(WebBrowserViewContainer paramWebBrowserViewContainer, Intent paramIntent, TouchWebView paramTouchWebView)
   {
     long l2 = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramWebBrowserViewContainer.findViewById(2131363456));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramWebBrowserViewContainer.findViewById(2131363475));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
     if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Long != 0L))
     {
@@ -652,7 +652,7 @@ public class SwiftBrowserUIStyleHandler
     }
     long l1 = System.currentTimeMillis();
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.p = (l1 - l2);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366770));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366768));
     this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController = new WebViewProgressBarController();
     this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController);
     paramIntent = this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController;
@@ -664,15 +664,15 @@ public class SwiftBrowserUIStyleHandler
         this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a((byte)0);
       }
       Util.a("Web_qqbrowser_initView_WebViewWrapper");
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366769));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366767));
       Util.b("Web_qqbrowser_initView_WebViewWrapper");
       l2 = System.currentTimeMillis();
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.j = (l2 - l1);
       if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.y)
       {
-        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366766);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366767));
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366768));
+        this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366764);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366765));
+        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131366766));
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
         if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_b_of_type_Boolean) && ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))) {
@@ -680,12 +680,12 @@ public class SwiftBrowserUIStyleHandler
         }
       }
       if (!this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131363049));
+        this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131363054));
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.x) && (this.jdField_b_of_type_AndroidViewView != null)) {
         this.jdField_b_of_type_AndroidViewView.setPadding(0, (int)DisplayUtils.a(BaseApplicationImpl.getContext(), 30.0F), 0, 0);
       }
-      f();
+      g();
       this.jdField_a_of_type_AndroidAppActivity.getWindow().setBackgroundDrawable(null);
       if (this.jdField_b_of_type_AndroidViewViewGroup != null) {
         this.jdField_b_of_type_AndroidViewViewGroup.setBackgroundDrawable(null);
@@ -828,7 +828,7 @@ public class SwiftBrowserUIStyleHandler
       }
       while (localObject != null)
       {
-        ((View)localObject).setBackgroundColor(BaseApplicationImpl.getContext().getResources().getColor(2131494254));
+        ((View)localObject).setBackgroundColor(BaseApplicationImpl.getContext().getResources().getColor(2131494260));
         if (!paramBoolean) {
           break label98;
         }
@@ -965,6 +965,12 @@ public class SwiftBrowserUIStyleHandler
   
   public void f()
   {
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.f = true;
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(4);
+  }
+  
+  public void g()
+  {
     int i;
     boolean bool;
     if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_JavaLangBoolean.booleanValue()))
@@ -1011,7 +1017,7 @@ public class SwiftBrowserUIStyleHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler
  * JD-Core Version:    0.7.0.1
  */

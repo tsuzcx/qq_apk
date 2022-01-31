@@ -1,34 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.Doraemon.AppInfo;
+import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAPIManager;
+import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.OnGetAppInfo;
 
 public class riw
-  implements View.OnTouchListener
+  implements DefaultDoraemonAppInfoHelper.OnGetAppInfo
 {
-  public riw(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public riw(DefaultDoraemonAPIManager paramDefaultDoraemonAPIManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(AppInfo paramAppInfo)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
+    if (paramAppInfo != null)
     {
+      DefaultDoraemonAPIManager.a(this.a, paramAppInfo);
+      DefaultDoraemonAPIManager.a(this.a, true);
+      return;
     }
-    do
-    {
-      return false;
-      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    } while (!paramView.isActive());
-    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    return false;
+    DefaultDoraemonAPIManager.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     riw
  * JD-Core Version:    0.7.0.1
  */

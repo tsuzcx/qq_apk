@@ -1,22 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
 
-public class anzu
-  implements Runnable
+public final class anzu
+  implements Parcelable.Creator
 {
-  public anzu(DoodleTextureView paramDoodleTextureView) {}
-  
-  public void run()
+  public EditLocalVideoSource a(Parcel paramParcel)
   {
-    PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
-    if (localPersonalityOperator != null)
-    {
-      localPersonalityOperator.a();
-      localPersonalityOperator.a(this.a.jdField_a_of_type_Int, this.a.b);
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.h();
-      this.a.a();
-    }
+    return new EditLocalVideoSource(paramParcel);
+  }
+  
+  public EditLocalVideoSource[] a(int paramInt)
+  {
+    return new EditLocalVideoSource[paramInt];
   }
 }
 

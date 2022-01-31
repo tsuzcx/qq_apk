@@ -1,24 +1,27 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import common.config.service.QzoneConfig;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.widget.DynamicGridView;
 
 public class amil
-  extends ContentObserver
+  extends AnimatorListenerAdapter
 {
-  public amil(QzoneConfig paramQzoneConfig, Handler paramHandler)
+  public amil(DynamicGridView paramDynamicGridView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramHandler);
+    DynamicGridView.b(this.a, false);
+    DynamicGridView.a(this.a);
   }
   
-  public void onChange(boolean paramBoolean)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    ThreadManager.post(new amim(this, paramBoolean), 5, null, false);
+    DynamicGridView.b(this.a, true);
+    DynamicGridView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amil
  * JD-Core Version:    0.7.0.1
  */

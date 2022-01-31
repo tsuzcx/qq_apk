@@ -62,7 +62,7 @@ public class GenerateLocalVideoSegment
         if (paramGenerateContext != null) {
           paramBitmap = paramGenerateContext;
         }
-        ((GPUImagePixelationFilter)localObject).c();
+        ((GPUImagePixelationFilter)localObject).d();
         localObject = paramBitmap;
       }
       localGPUBitmapImageRender.a();

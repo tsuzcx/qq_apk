@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import com.tencent.mobileqq.app.BizTroopHandler;
 
-public class vop
+class vop
   implements Runnable
 {
-  public vop(AIOPhotoListAdapter paramAIOPhotoListAdapter, AIOImageData paramAIOImageData) {}
+  vop(voo paramvoo, BizTroopHandler paramBizTroopHandler) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.g, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.f, 1);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.a(this.jdField_a_of_type_Voo.a);
   }
 }
 

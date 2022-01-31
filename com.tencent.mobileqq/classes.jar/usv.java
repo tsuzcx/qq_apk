@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
-import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
-import com.tencent.mobileqq.activity.aio.doodle.PathData.PointData;
+import com.tencent.mobileqq.activity.aio.anim.SigTlpAnimation;
 
-public final class usv
-  implements MyParcelable.Creator
+class usv
+  implements Runnable
 {
-  public PathData.PointData a(MyParcel paramMyParcel)
+  usv(usu paramusu) {}
+  
+  public void run()
   {
-    return new PathData.PointData(paramMyParcel);
+    this.a.a.a(true);
   }
 }
 

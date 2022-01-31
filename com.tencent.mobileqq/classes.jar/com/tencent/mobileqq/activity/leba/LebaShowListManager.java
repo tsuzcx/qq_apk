@@ -5,10 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.MQLruCache;
 import com.tencent.biz.now.NowLiveManager;
 import com.tencent.biz.qqstory.base.QQStoryManager;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -33,8 +29,6 @@ import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
-import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -42,10 +36,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
-import wpr;
+import wvc;
 
 public class LebaShowListManager
 {
@@ -61,37 +53,6 @@ public class LebaShowListManager
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     jdField_a_of_type_Int = 0;
-  }
-  
-  public static Bitmap a(File paramFile)
-  {
-    Bitmap localBitmap = null;
-    Object localObject = localBitmap;
-    if (paramFile != null)
-    {
-      localObject = localBitmap;
-      if (BaseApplicationImpl.sImageCache != null)
-      {
-        String str = "LebaIcon://" + paramFile.getAbsolutePath();
-        localBitmap = (Bitmap)BaseApplicationImpl.sImageCache.get(str);
-        localObject = localBitmap;
-        if (localBitmap == null)
-        {
-          localObject = localBitmap;
-          if (paramFile.exists())
-          {
-            paramFile = LebaUtil.a(paramFile);
-            localObject = paramFile;
-            if (paramFile != null)
-            {
-              BaseApplicationImpl.sImageCache.put(str, paramFile);
-              localObject = paramFile;
-            }
-          }
-        }
-      }
-    }
-    return localObject;
   }
   
   public static LebaShowListManager a()
@@ -136,7 +97,7 @@ public class LebaShowListManager
         if ((localLebaViewItem == null) || (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo == null) || (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId == 905L)) {
           continue;
         }
-        if (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId == 3050L)
+        if (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId == 6005L)
         {
           AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
           if (!(localAppRuntime instanceof QQAppInterface)) {
@@ -172,31 +133,25 @@ public class LebaShowListManager
     if (QLog.isDevelopLevel()) {
       QLog.i("Q.lebatab.mgr", 4, String.format(Locale.getDefault(), "reloadLebaItems [%s, %s, %s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), paramContext, paramQQAppInterface }));
     }
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     Object localObject1 = paramQQAppInterface.a();
-    WholePeopleLebaEntryChecker localWholePeopleLebaEntryChecker;
-    boolean bool;
-    Object localObject3;
-    label302:
-    LebaViewItem localLebaViewItem;
     if (localObject1 != null)
     {
       CampusLebaEntryChecker localCampusLebaEntryChecker = paramQQAppInterface.a().jdField_a_of_type_ComTencentMobileqqCampuscircleCampusLebaEntryChecker;
       if ((localCampusLebaEntryChecker == null) && (QLog.isDevelopLevel())) {
         QLog.i("Q.lebatab.mgr", 4, "reloadLebaItems campusLebaEntryChecker is null");
       }
-      localWholePeopleLebaEntryChecker = paramQQAppInterface.a().jdField_a_of_type_ComTencentMobileqqWholepeopleWholePeopleLebaEntryChecker;
+      WholePeopleLebaEntryChecker localWholePeopleLebaEntryChecker = paramQQAppInterface.a().jdField_a_of_type_ComTencentMobileqqWholepeopleWholePeopleLebaEntryChecker;
       if ((localWholePeopleLebaEntryChecker == null) && (QLog.isDevelopLevel())) {
         QLog.i("Q.lebatab.mgr", 4, "reloadLebaItems wholePeopleChecker is null");
       }
       Object localObject2 = new ArrayList((Collection)localObject1);
       localObject1 = new ArrayList();
       localObject2 = ((List)localObject2).iterator();
-      bool = false;
+      boolean bool1 = false;
       while (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (ResourcePluginInfo)((Iterator)localObject2).next();
+        Object localObject3 = (ResourcePluginInfo)((Iterator)localObject2).next();
         if ((localObject3 != null) && (((ResourcePluginInfo)localObject3).cLocalState != 0)) {
           if ((((ResourcePluginInfo)localObject3).uiResId == 4086L) && (localCampusLebaEntryChecker != null) && (!localCampusLebaEntryChecker.jdField_a_of_type_Boolean))
           {
@@ -212,132 +167,96 @@ public class LebaShowListManager
           }
           else
           {
-            if (((ResourcePluginInfo)localObject3).uiResId != 770L) {
-              break label1027;
+            boolean bool2 = bool1;
+            if (((ResourcePluginInfo)localObject3).uiResId == 770L) {
+              bool2 = true;
             }
-            bool = true;
-            localLebaViewItem = new LebaViewItem();
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      Object localObject4;
-      Object localObject5;
-      try
-      {
-        if (((ResourcePluginInfo)localObject3).cDataType != 1)
-        {
-          localObject4 = LebaUtil.a(paramContext, ((ResourcePluginInfo)localObject3).strPkgName, ((ResourcePluginInfo)localObject3).strResURL);
-          if (localObject4 != null) {
-            localLebaViewItem.b = ("LebaIcon://" + ((File)localObject4).getAbsolutePath());
-          }
-          localObject5 = a((File)localObject4);
-          if ((localObject5 == null) && (QLog.isColorLevel())) {
-            QLog.d("Q.lebatab.", 2, "can't find bitmap from local, info=" + ((ResourcePluginInfo)localObject3).strResName);
-          }
-          if ((localObject4 == null) || (((File)localObject4).exists())) {
-            break label1030;
-          }
-          if ((localObject4 != null) && (((File)localObject4).exists()) && (localObject5 == null))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.lebatab.", 2, "handleLocalList.delete file.");
+            LebaViewItem localLebaViewItem = new LebaViewItem();
+            try
+            {
+              localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo = ((ResourcePluginInfo)localObject3);
+              if (((ResourcePluginInfo)localObject3).cDataType != 1)
+              {
+                localObject4 = JumpParser.a(paramQQAppInterface, paramContext, ((ResourcePluginInfo)localObject3).strGotoUrl);
+                if ((localObject4 != null) && ("app".equals(((JumpAction)localObject4).a())))
+                {
+                  localObject3 = ((JumpAction)localObject4).a("cmp");
+                  String str = ((JumpAction)localObject4).a("pkg");
+                  if ((localObject3 != null) && (((String)localObject3).compareTo("cooperation.readinjoy.ReadInJoyProxyActivity") == 0))
+                  {
+                    bool1 = bool2;
+                    if (!ReadInJoyHelper.a()) {
+                      continue;
+                    }
+                  }
+                  if ((localObject3 != null) && (str != null))
+                  {
+                    localObject4 = paramContext.getPackageManager();
+                    localObject3 = new ComponentName(str, (String)localObject3);
+                  }
+                }
+              }
             }
-            ((File)localObject4).delete();
-          }
-          localObject5 = new HashMap();
-          ((Map)localObject5).put("KEY", ((ResourcePluginInfo)localObject3).strPkgName);
-          ((Map)localObject5).put("URL", new URL(((ResourcePluginInfo)localObject3).strResURL));
-          ((Map)localObject5).put("FILE", localObject4);
-          localArrayList2.add(localObject5);
-          localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo = ((ResourcePluginInfo)localObject3);
-          if (((ResourcePluginInfo)localObject3).cDataType == 1) {
-            break label858;
-          }
-          localObject4 = JumpParser.a(paramQQAppInterface, paramContext, ((ResourcePluginInfo)localObject3).strGotoUrl);
-          if ((localObject4 == null) || (!"app".equals(((JumpAction)localObject4).a()))) {
-            break label858;
-          }
-          localObject3 = ((JumpAction)localObject4).a("cmp");
-          localObject5 = ((JumpAction)localObject4).a("pkg");
-          if ((localObject3 == null) || (((String)localObject3).compareTo("cooperation.readinjoy.ReadInJoyProxyActivity") != 0) || (ReadInJoyHelper.a())) {
-            break label819;
-          }
-          break;
-        }
-        int i = paramContext.getResources().getIdentifier(((ResourcePluginInfo)localObject3).strResURL, "drawable", paramContext.getPackageName());
-        if (i == 0) {
-          continue;
-        }
-        localObject4 = paramContext.getResources().getDrawable(i);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.lebatab.", 2, "local plugin, icon resid=" + i + ", info=" + localObject3);
-        }
-        localLebaViewItem.b = ("LebaIcon://" + i);
-        if ((localObject4 == null) || (BaseApplicationImpl.sImageHashMap == null) || (BaseApplicationImpl.sImageHashMap.get(localLebaViewItem.b) != null) || (!(localObject4 instanceof BitmapDrawable))) {
-          continue;
-        }
-        BaseApplicationImpl.sImageHashMap.put(localLebaViewItem.b, ((BitmapDrawable)localObject4).getBitmap());
-        continue;
-      }
-      catch (Exception localException)
-      {
-        if ((QLog.isColorLevel()) && (localException != null)) {
-          QLog.d("Q.lebatab.mgr", 2, localException.toString());
-        }
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          label819:
-          if ((localObject3 != null) && (localObject5 != null))
-          {
-            localObject4 = paramContext.getPackageManager();
-            localObject3 = new ComponentName((String)localObject5, (String)localObject3);
-          }
-          try
-          {
-            ((PackageManager)localObject4).getActivityInfo((ComponentName)localObject3, 32);
-            label858:
-            if (!LebaUtil.a(localException)) {
-              break label897;
+            catch (Exception localException)
+            {
+              try
+              {
+                Object localObject4;
+                ((PackageManager)localObject4).getActivityInfo((ComponentName)localObject3, 32);
+                if (!LebaUtil.a(localLebaViewItem)) {
+                  break label512;
+                }
+                this.jdField_a_of_type_JavaUtilHashMap.put(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName, localLebaViewItem);
+                bool1 = bool2;
+              }
+              catch (PackageManager.NameNotFoundException localNameNotFoundException)
+              {
+                localNameNotFoundException.printStackTrace();
+                bool1 = bool2;
+              }
+              localException = localException;
+              bool1 = bool2;
             }
-            this.jdField_a_of_type_JavaUtilHashMap.put(localException.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName, localException);
-          }
-          catch (PackageManager.NameNotFoundException localNameNotFoundException)
-          {
-            localNameNotFoundException.printStackTrace();
+            if (QLog.isColorLevel())
+            {
+              bool1 = bool2;
+              if (localException != null)
+              {
+                QLog.d("Q.lebatab.mgr", 2, localException.toString());
+                bool1 = bool2;
+                continue;
+                continue;
+                label512:
+                if (localNameNotFoundException.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.cDataType == 0)
+                {
+                  bool1 = bool2;
+                  if (localNameNotFoundException.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId == 826L) {}
+                }
+                else
+                {
+                  ((List)localObject1).add(localNameNotFoundException);
+                  bool1 = bool2;
+                }
+              }
+            }
           }
         }
-        break;
-        label897:
-        if ((localNameNotFoundException.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.cDataType == 0) && (localNameNotFoundException.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId == 826L)) {
-          break;
-        }
-        ((List)localObject1).add(localNameNotFoundException);
       }
       if (localWholePeopleLebaEntryChecker != null) {
-        localWholePeopleLebaEntryChecker.a(bool);
+        localWholePeopleLebaEntryChecker.a(bool1);
       }
       Collections.sort((List)localObject1, new LebaUtil.LebaItemComparator());
       paramContext = (RedTouchManager)paramQQAppInterface.getManager(35);
-      if (paramContext == null) {}
-      for (paramContext = null;; paramContext = paramContext.b())
-      {
-        a(paramQQAppInterface, (List)localObject1, paramContext);
-        LebaUtil.a(localArrayList1, a(paramQQAppInterface));
-        if (localArrayList2.size() > 0) {
-          paramQQAppInterface.a.a(localArrayList2);
-        }
-        return localArrayList1;
+      if (paramContext != null) {
+        break label617;
       }
-      label1027:
-      break label302;
-      label1030:
-      if (localObject5 != null) {}
+    }
+    label617:
+    for (paramContext = null;; paramContext = paramContext.b())
+    {
+      a(paramQQAppInterface, (List)localObject1, paramContext);
+      LebaUtil.a(localArrayList, a(paramQQAppInterface));
+      return localArrayList;
     }
   }
   
@@ -366,7 +285,7 @@ public class LebaShowListManager
           QLog.d("Q.lebatab.mgr", 2, "hide leba kandian");
         }
       }
-      if (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId == 3050L)
+      if (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId == 6005L)
       {
         if (QLog.isColorLevel())
         {
@@ -442,7 +361,7 @@ public class LebaShowListManager
               localLebaViewItem.jdField_a_of_type_Long = paramLong2;
               i = 1;
               if ((paramQQAppInterface != null) && (i == 1)) {
-                ThreadManager.post(new wpr(this, (RedTouchManager)paramQQAppInterface.getManager(35), paramLong1, paramBoolean, paramLong3, paramLong2), 5, null, true);
+                ThreadManager.post(new wvc(this, (RedTouchManager)paramQQAppInterface.getManager(35), paramLong1, paramBoolean, paramLong3, paramLong2), 5, null, true);
               }
               if (QLog.isDevelopLevel()) {
                 QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, ret = " + i);

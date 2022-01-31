@@ -1,43 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.hotpic.HotPicTab;
+import android.view.View;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class adra
-  extends Handler
+  implements ActionSheet.OnButtonClickListener
 {
-  public adra(HotPicTab paramHotPicTab) {}
+  public adra(QfileEditBottomBar paramQfileEditBottomBar, ActionSheet paramActionSheet) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      HotPicTab.a(this.a, 0.0F);
-      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
-      if (HotPicTab.a(this.a) < 1.0F)
-      {
-        this.a.invalidate();
-        sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(2), 10L);
-      return;
+    ThreadManager.executeOnFileThread(new adrb(this));
+    if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
-    HotPicTab.a(this.a, 1.0F);
-    HotPicTab.a(this.a, HotPicTab.a(this.a));
-    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adra
  * JD-Core Version:    0.7.0.1
  */

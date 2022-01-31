@@ -1,35 +1,27 @@
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.Container;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.arengine.ARWorldCupBaseResDownload;
+import com.tencent.mobileqq.ar.arengine.ARWorldCupBaseResDownload.DownloadListener;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class aapl
   implements Runnable
 {
-  public aapl(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong, String paramString) {}
+  public aapl(ARWorldCupBaseResDownload paramARWorldCupBaseResDownload) {}
   
   public void run()
   {
-    Object localObject = ark.arkGetContainer(this.jdField_a_of_type_Long);
-    if (localObject == null) {}
-    ArkFullScreenAppActivity localArkFullScreenAppActivity;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
-        localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
-        localObject = ArkAppContainer.a((ark.Container)localObject);
-      } while (localObject == null);
-      localObject = (ArkAppContainer)((WeakReference)localObject).get();
-    } while (localObject == null);
-    localArkFullScreenAppActivity.a((ArkAppContainer)localObject, this.jdField_a_of_type_JavaLangString);
+    QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes. download timeout.");
+    if ((ARWorldCupBaseResDownload.a(this.a)[0] >= 0) && (ARWorldCupBaseResDownload.a(this.a)[0] <= 99)) {
+      WorldCupMgr.a(ARWorldCupBaseResDownload.a(this.a)).b(this.a.jdField_a_of_type_ComTencentMobileqqArConfigWorldCupMgr$DownloadListener);
+    }
+    if ((ARWorldCupBaseResDownload.a(this.a)[1] >= 0) && (ARWorldCupBaseResDownload.a(this.a)[1] <= 99)) {
+      GestureMgr.a().a(false, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgr$GestureStatusListener);
+    }
+    ARWorldCupBaseResDownload.a(this.a, false);
+    if (ARWorldCupBaseResDownload.a(this.a) != null) {
+      ARWorldCupBaseResDownload.a(this.a).a(1, -1);
+    }
   }
 }
 

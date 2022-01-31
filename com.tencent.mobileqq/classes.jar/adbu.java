@@ -1,25 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager;
-import com.tencent.smtt.sdk.TbsReaderView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
 
-class adbu
-  implements DialogInterface.OnClickListener
+public class adbu
+  extends FMObserver
 {
-  adbu(adbs paramadbs, String paramString1, String paramString2) {}
+  public adbu(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(ThumbnailInfo paramThumbnailInfo)
   {
-    LocalTbsViewManager.a(this.jdField_a_of_type_Adbs.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager).userStatistics(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putString("_filename_from_dlg", this.jdField_a_of_type_Adbs.jdField_a_of_type_AndroidAppActivity.getString(2131435108));
-    Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
-    localIntent.putExtra("param", paramDialogInterface);
-    localIntent.putExtra("url", this.b);
-    this.jdField_a_of_type_Adbs.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
+    super.a(paramThumbnailInfo);
+    if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0)) {
+      this.a.i();
+    }
   }
 }
 

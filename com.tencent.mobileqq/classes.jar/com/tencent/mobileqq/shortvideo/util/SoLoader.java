@@ -40,8 +40,8 @@ public class SoLoader
   static
   {
     jdField_a_of_type_Int = -4;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libgnustl_shared.so", "libSNPE.so", "libQMCF_snpe.so" };
-    jdField_a_of_type_ArrayOfInt = new int[] { -4, -4, -4 };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "libgnustl_shared.so", "libsymphonypower.so", "libsymphony-cpu.so", "libSNPE.so", "libQMCF_snpe.so" };
+    jdField_a_of_type_ArrayOfInt = new int[] { -4, -4, -4, -4, -4 };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "ccnf_patches_1_my36n.txt", "pdm_82_aligned_my36n.txt", "ufdmtcc.bin", "ufat.bin", "pdm.txt", "pdm_82.txt", "meshBasis.bin", "rotBasis.bin" };
     jdField_c_of_type_Boolean = false;
     jdField_d_of_type_Boolean = false;
@@ -107,19 +107,7 @@ public class SoLoader
   
   public static boolean a()
   {
-    if (jdField_c_of_type_Boolean) {
-      return true;
-    }
-    String str = SdkContext.a().a().a().b();
-    if (str == null) {
-      return false;
-    }
-    jdField_c_of_type_Boolean = FileUtils.a(str + "libQMCF.so");
-    boolean bool = FileUtils.a(str + jdField_a_of_type_ArrayOfJavaLangString[2]);
-    if (SLog.a()) {
-      SLog.c("SoLoader", String.format("isQmcfSoExist, qmcf[%s], snpe[%s]", new Object[] { Boolean.valueOf(jdField_c_of_type_Boolean), Boolean.valueOf(bool) }));
-    }
-    return jdField_c_of_type_Boolean;
+    return jdField_a_of_type_Int == -4;
   }
   
   public static boolean a(Context paramContext)
@@ -345,7 +333,7 @@ public class SoLoader
   public static boolean f()
   {
     if (SLog.a()) {
-      SLog.c("SoLoader", "isPortraitSoLoadSuccess, POR_SO_segment[" + jdField_d_of_type_Int + "], filterLoadSuccess:" + d());
+      SLog.c("SoLoader", "isPortraitSoLoadSuccess, POR_SO_segment[" + jdField_d_of_type_Int + "]" + ", filterLoadSuccess:" + d());
     }
     if (jdField_d_of_type_Int == 0) {
       return d();
@@ -411,9 +399,9 @@ public class SoLoader
     //   1: istore_0
     //   2: ldc 2
     //   4: monitorenter
-    //   5: invokestatic 186	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/sveffects/SdkContext;
-    //   8: invokevirtual 355	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/sveffects/DpcSwitcher;
-    //   11: invokeinterface 358 1 0
+    //   5: invokestatic 199	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/sveffects/SdkContext;
+    //   8: invokevirtual 351	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/sveffects/DpcSwitcher;
+    //   11: invokeinterface 354 1 0
     //   16: istore_1
     //   17: iload_1
     //   18: ifne +8 -> 26
@@ -421,76 +409,76 @@ public class SoLoader
     //   23: monitorexit
     //   24: iload_0
     //   25: ireturn
-    //   26: invokestatic 360	com/tencent/mobileqq/shortvideo/util/SoLoader:f	()Z
+    //   26: invokestatic 356	com/tencent/mobileqq/shortvideo/util/SoLoader:f	()Z
     //   29: ifeq +8 -> 37
     //   32: iconst_1
     //   33: istore_0
     //   34: goto -13 -> 21
-    //   37: invokestatic 362	com/tencent/mobileqq/shortvideo/util/SoLoader:g	()Z
+    //   37: invokestatic 358	com/tencent/mobileqq/shortvideo/util/SoLoader:g	()Z
     //   40: ifeq +112 -> 152
-    //   43: invokestatic 186	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/sveffects/SdkContext;
-    //   46: invokevirtual 189	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/mobileqq/shortvideo/resource/Resources;
-    //   49: invokeinterface 253 1 0
-    //   54: invokeinterface 338 1 0
+    //   43: invokestatic 199	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/sveffects/SdkContext;
+    //   46: invokevirtual 226	com/tencent/sveffects/SdkContext:a	()Lcom/tencent/mobileqq/shortvideo/resource/Resources;
+    //   49: invokeinterface 231 1 0
+    //   54: invokeinterface 334 1 0
     //   59: astore_2
-    //   60: new 129	java/lang/StringBuilder
+    //   60: new 133	java/lang/StringBuilder
     //   63: dup
-    //   64: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   64: invokespecial 134	java/lang/StringBuilder:<init>	()V
     //   67: aload_2
-    //   68: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: getstatic 105	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   68: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: getstatic 109	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   74: iconst_0
     //   75: aaload
-    //   76: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 279	java/lang/System:load	(Ljava/lang/String;)V
-    //   85: new 129	java/lang/StringBuilder
+    //   76: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   82: invokestatic 262	java/lang/System:load	(Ljava/lang/String;)V
+    //   85: new 133	java/lang/StringBuilder
     //   88: dup
-    //   89: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   89: invokespecial 134	java/lang/StringBuilder:<init>	()V
     //   92: aload_2
-    //   93: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   96: getstatic 105	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   93: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: getstatic 109	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   99: iconst_2
     //   100: aaload
-    //   101: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 279	java/lang/System:load	(Ljava/lang/String;)V
+    //   101: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: invokestatic 262	java/lang/System:load	(Ljava/lang/String;)V
     //   110: iconst_1
-    //   111: putstatic 111	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_b_of_type_Boolean	Z
+    //   111: putstatic 115	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_b_of_type_Boolean	Z
     //   114: iconst_0
-    //   115: putstatic 109	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_Int	I
-    //   118: getstatic 111	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_b_of_type_Boolean	Z
+    //   115: putstatic 113	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_Int	I
+    //   118: getstatic 115	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_b_of_type_Boolean	Z
     //   121: ifne +31 -> 152
-    //   124: new 129	java/lang/StringBuilder
+    //   124: new 133	java/lang/StringBuilder
     //   127: dup
-    //   128: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   128: invokespecial 134	java/lang/StringBuilder:<init>	()V
     //   131: aload_2
-    //   132: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   135: getstatic 105	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   132: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: getstatic 109	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   138: iconst_1
     //   139: aaload
-    //   140: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   146: invokestatic 294	com/tencent/mobileqq/shortvideo/util/SoLoader:b	(Ljava/lang/String;)I
-    //   149: putstatic 109	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_Int	I
-    //   152: invokestatic 360	com/tencent/mobileqq/shortvideo/util/SoLoader:f	()Z
+    //   140: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   146: invokestatic 282	com/tencent/mobileqq/shortvideo/util/SoLoader:b	(Ljava/lang/String;)I
+    //   149: putstatic 113	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_Int	I
+    //   152: invokestatic 356	com/tencent/mobileqq/shortvideo/util/SoLoader:f	()Z
     //   155: istore_0
     //   156: goto -135 -> 21
     //   159: astore_3
-    //   160: getstatic 111	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_b_of_type_Boolean	Z
+    //   160: getstatic 115	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_b_of_type_Boolean	Z
     //   163: ifne -11 -> 152
-    //   166: new 129	java/lang/StringBuilder
+    //   166: new 133	java/lang/StringBuilder
     //   169: dup
-    //   170: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   170: invokespecial 134	java/lang/StringBuilder:<init>	()V
     //   173: aload_2
-    //   174: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   177: getstatic 105	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   174: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: getstatic 109	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   180: iconst_1
     //   181: aaload
-    //   182: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   185: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   188: invokestatic 294	com/tencent/mobileqq/shortvideo/util/SoLoader:b	(Ljava/lang/String;)I
-    //   191: putstatic 109	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_Int	I
+    //   182: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   188: invokestatic 282	com/tencent/mobileqq/shortvideo/util/SoLoader:b	(Ljava/lang/String;)I
+    //   191: putstatic 113	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_Int	I
     //   194: goto -42 -> 152
     //   197: astore_2
     //   198: ldc 2
@@ -498,36 +486,36 @@ public class SoLoader
     //   201: aload_2
     //   202: athrow
     //   203: astore_3
-    //   204: getstatic 111	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_b_of_type_Boolean	Z
+    //   204: getstatic 115	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_b_of_type_Boolean	Z
     //   207: ifne -55 -> 152
-    //   210: new 129	java/lang/StringBuilder
+    //   210: new 133	java/lang/StringBuilder
     //   213: dup
-    //   214: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   214: invokespecial 134	java/lang/StringBuilder:<init>	()V
     //   217: aload_2
-    //   218: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: getstatic 105	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   218: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: getstatic 109	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   224: iconst_1
     //   225: aaload
-    //   226: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   229: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   232: invokestatic 294	com/tencent/mobileqq/shortvideo/util/SoLoader:b	(Ljava/lang/String;)I
-    //   235: putstatic 109	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_Int	I
+    //   226: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   232: invokestatic 282	com/tencent/mobileqq/shortvideo/util/SoLoader:b	(Ljava/lang/String;)I
+    //   235: putstatic 113	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_Int	I
     //   238: goto -86 -> 152
     //   241: astore_3
-    //   242: getstatic 111	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_b_of_type_Boolean	Z
+    //   242: getstatic 115	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_b_of_type_Boolean	Z
     //   245: ifne +31 -> 276
-    //   248: new 129	java/lang/StringBuilder
+    //   248: new 133	java/lang/StringBuilder
     //   251: dup
-    //   252: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   252: invokespecial 134	java/lang/StringBuilder:<init>	()V
     //   255: aload_2
-    //   256: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   259: getstatic 105	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   256: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: getstatic 109	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
     //   262: iconst_1
     //   263: aaload
-    //   264: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   270: invokestatic 294	com/tencent/mobileqq/shortvideo/util/SoLoader:b	(Ljava/lang/String;)I
-    //   273: putstatic 109	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_Int	I
+    //   264: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   270: invokestatic 282	com/tencent/mobileqq/shortvideo/util/SoLoader:b	(Ljava/lang/String;)I
+    //   273: putstatic 113	com/tencent/mobileqq/shortvideo/util/SoLoader:jdField_d_of_type_Int	I
     //   276: aload_3
     //   277: athrow
     // Local variable table:
@@ -568,7 +556,7 @@ public class SoLoader
     if (jdField_a_of_type_Int != 0)
     {
       jdField_a_of_type_Int = b(str + "libQMCF.so");
-      if (FileUtils.a(str + jdField_a_of_type_ArrayOfJavaLangString[2]))
+      if (FileUtils.a(str + jdField_a_of_type_ArrayOfJavaLangString[4]))
       {
         int i = 0;
         while (i < jdField_a_of_type_ArrayOfJavaLangString.length)

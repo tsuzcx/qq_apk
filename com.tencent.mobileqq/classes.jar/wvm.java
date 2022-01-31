@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.qcall.QCallFacade;
 
-class wvm
-  extends ContactBindObserver
+public class wvm
+  implements Runnable
 {
-  wvm(wvl paramwvl) {}
+  public wvm(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
   
-  protected void c(boolean paramBoolean)
+  public void run()
   {
-    this.a.a.a.b();
-    this.a.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.a.a.a.a.a(true, true);
-      this.a.a.a.setResult(4002);
-      this.a.a.a.finish();
+      QCallFacade localQCallFacade = (QCallFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
+      if (localQCallFacade != null)
+      {
+        int i = localQCallFacade.a();
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wvn(this, i));
+      }
     }
   }
 }

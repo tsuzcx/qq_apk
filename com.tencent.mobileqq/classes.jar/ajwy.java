@@ -1,33 +1,36 @@
-import android.app.Dialog;
-import android.content.res.Resources;
-import android.util.SparseArray;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager.ShowPicPrice;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import java.util.List;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool;
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ajwy
-  extends TroopGiftCallback
+  implements Runnable
 {
-  public ajwy(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
+  public ajwy(TroopFileTransferManager.TaskPool paramTaskPool) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, List paramList)
+  public void run()
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    paramString = (TroopGiftManager.ShowPicPrice)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
-    if ((paramString == null) || (paramString.jdField_a_of_type_Int == 0)) {}
-    for (paramInt2 = 30; paramInt1 >= paramInt2; paramInt2 = paramString.jdField_a_of_type_Int)
+    synchronized (this.a)
     {
-      this.a.a(this.a.jdField_a_of_type_JavaLangString);
-      return;
+      for (;;)
+      {
+        if (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+          return;
+        }
+        TroopFileTransferManager.Task localTask = (TroopFileTransferManager.Task)this.a.jdField_a_of_type_JavaUtilLinkedList.remove(0);
+        localTask.run();
+        if (localTask.a != 0) {
+          continue;
+        }
+        try
+        {
+          Thread.sleep(200L);
+        }
+        catch (InterruptedException localInterruptedException) {}
+      }
     }
-    this.a.c();
-    DialogUtil.a(this.a, 230, this.a.getResources().getString(2131430755), this.a.getResources().getString(2131430756), this.a.getResources().getString(2131433015), this.a.getResources().getString(2131430757), new ajwz(this), new ajxa(this)).show();
-    TroopPicEffectsController.a("gold_bean", "gap");
   }
 }
 

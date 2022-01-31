@@ -5,13 +5,13 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.JSONUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class PtvTemplateManager$PtvTemplateInfo
 {
@@ -22,6 +22,7 @@ public class PtvTemplateManager$PtvTemplateInfo
   public static final int D3D_TK = 1;
   public static final int DG_FILTER = 5;
   public static final int DOODLE = 1;
+  public static final int DOV_FILTER = 13;
   public static final int FDG_FILTER = 6;
   public static final int FILTER = 0;
   public static final int FOOLS_DAY = 10;
@@ -43,7 +44,6 @@ public class PtvTemplateManager$PtvTemplateInfo
   public String buttonbgcolor;
   public int category = 0;
   public int categoryId;
-  public int color;
   public String dgModelName;
   public String dgModelResmd5;
   public String dgModelResurl;
@@ -54,14 +54,11 @@ public class PtvTemplateManager$PtvTemplateInfo
   public boolean dgStageUsable;
   public ArrayList doodleInfos;
   public boolean downloading;
-  public String filtername;
   public String gestureType = "";
   public String gestureWording = "";
   public String iconurl;
   public String id;
-  public boolean isSelected;
-  public boolean isshow = true;
-  public String jump_ws;
+  public String jump_app;
   public int kind = 0;
   public String md5;
   public boolean multivideosupport = true;
@@ -76,13 +73,12 @@ public class PtvTemplateManager$PtvTemplateInfo
   public String popupcontent2;
   public String popupimgurl;
   public boolean predownload;
-  public boolean renderfirst = true;
   public String resurl;
+  public double sizeFree;
   long startDownloadTime;
   public String storeurl;
   public int templateStyle;
   public long totalLen;
-  public int type;
   public boolean usable;
   
   public static List convertFrom(String paramString)
@@ -115,16 +111,16 @@ public class PtvTemplateManager$PtvTemplateInfo
       {
         int j = paramJSONArray.length();
         if (j <= 0) {
-          return null;
+          break;
         }
         localArrayList = new ArrayList(j);
         i = 0;
         if (i >= j) {
-          break label196;
+          break label192;
         }
-        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)JSONUtils.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
+        PtvTemplateInfo localPtvTemplateInfo = parseContent(paramJSONArray.getJSONObject(i));
         if (localPtvTemplateInfo == null) {
-          break label201;
+          break label197;
         }
         try
         {
@@ -139,34 +135,32 @@ public class PtvTemplateManager$PtvTemplateInfo
         catch (Exception localException)
         {
           if (!QLog.isColorLevel()) {
-            break label201;
+            break label197;
           }
         }
         localArrayList.add(localPtvTemplateInfo);
       }
-      catch (JSONException paramJSONArray)
-      {
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        paramJSONArray.printStackTrace();
-        return null;
-      }
+      catch (JSONException paramJSONArray) {}
       QLog.e("PtvTemplateManager", 1, "templateId must be a numeric string!");
-      break label201;
+      break label197;
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      paramJSONArray.printStackTrace();
+      return null;
       if (!PtvTemplateManager.b())
       {
         localArrayList.add(localException);
-        break label201;
+        break label197;
         localArrayList.add(localException);
-        break label201;
+        break label197;
         localArrayList.add(localException);
-        break label201;
-        label196:
+        break label197;
+        label192:
         return localArrayList;
         continue;
       }
-      label201:
+      label197:
       i += 1;
     }
   }
@@ -179,6 +173,114 @@ public class PtvTemplateManager$PtvTemplateInfo
   public static boolean isGesture(int paramInt)
   {
     return (paramInt == 2) || (paramInt == 1);
+  }
+  
+  private static PtvTemplateInfo parseContent(JSONObject paramJSONObject)
+  {
+    PtvTemplateInfo localPtvTemplateInfo = new PtvTemplateInfo();
+    try
+    {
+      if (paramJSONObject.has("id")) {
+        localPtvTemplateInfo.id = paramJSONObject.getString("id");
+      }
+      if (paramJSONObject.has("iconurl")) {
+        localPtvTemplateInfo.iconurl = paramJSONObject.getString("iconurl");
+      }
+      if (paramJSONObject.has("resurl")) {
+        localPtvTemplateInfo.resurl = paramJSONObject.getString("resurl");
+      }
+      if (paramJSONObject.has("md5")) {
+        localPtvTemplateInfo.md5 = paramJSONObject.getString("md5");
+      }
+      if (paramJSONObject.has("name")) {
+        localPtvTemplateInfo.name = paramJSONObject.getString("name");
+      }
+      if (paramJSONObject.has("predownload")) {
+        localPtvTemplateInfo.predownload = paramJSONObject.getBoolean("predownload");
+      }
+      if (paramJSONObject.has("platform")) {
+        localPtvTemplateInfo.platform = paramJSONObject.getInt("platform");
+      }
+      if (paramJSONObject.has("businessID")) {
+        localPtvTemplateInfo.businessID = paramJSONObject.getInt("businessID");
+      }
+      if (paramJSONObject.has("categoryId")) {
+        localPtvTemplateInfo.categoryId = paramJSONObject.getInt("categoryId");
+      }
+      if (paramJSONObject.has("templateStyle")) {
+        localPtvTemplateInfo.templateStyle = paramJSONObject.getInt("templateStyle");
+      }
+      if (paramJSONObject.has("needRedDot")) {
+        localPtvTemplateInfo.needRedDot = paramJSONObject.getBoolean("needRedDot");
+      }
+      if (paramJSONObject.has("kind")) {
+        localPtvTemplateInfo.kind = paramJSONObject.getInt("kind");
+      }
+      if (paramJSONObject.has("activityType")) {
+        localPtvTemplateInfo.activityType = paramJSONObject.getInt("activityType");
+      }
+      if (paramJSONObject.has("category")) {
+        localPtvTemplateInfo.category = paramJSONObject.getInt("category");
+      }
+      if (paramJSONObject.has("gestureType")) {
+        localPtvTemplateInfo.gestureType = paramJSONObject.getString("gestureType");
+      }
+      if (paramJSONObject.has("gestureWording")) {
+        localPtvTemplateInfo.gestureWording = paramJSONObject.getString("gestureWording");
+      }
+      if (paramJSONObject.has("advertisement")) {
+        localPtvTemplateInfo.advertisement = paramJSONObject.getBoolean("advertisement");
+      }
+      if (paramJSONObject.has("androidopenurlheader")) {
+        localPtvTemplateInfo.androidopenurlheader = paramJSONObject.getString("androidopenurlheader");
+      }
+      if (paramJSONObject.has("openurl")) {
+        localPtvTemplateInfo.openurl = paramJSONObject.getString("openurl");
+      }
+      if (paramJSONObject.has("storeurl")) {
+        localPtvTemplateInfo.storeurl = paramJSONObject.getString("storeurl");
+      }
+      if (paramJSONObject.has("popup")) {
+        localPtvTemplateInfo.popup = paramJSONObject.getBoolean("popup");
+      }
+      if (paramJSONObject.has("badgeurl")) {
+        localPtvTemplateInfo.badgeurl = paramJSONObject.getString("badgeurl");
+      }
+      if (paramJSONObject.has("popupimgurl")) {
+        localPtvTemplateInfo.popupimgurl = paramJSONObject.getString("popupimgurl");
+      }
+      if (paramJSONObject.has("popupcontent")) {
+        localPtvTemplateInfo.popupcontent = paramJSONObject.getString("popupcontent");
+      }
+      if (paramJSONObject.has("popupbtn")) {
+        localPtvTemplateInfo.popupbtn = paramJSONObject.getString("popupbtn");
+      }
+      if (paramJSONObject.has("popupcontent2")) {
+        localPtvTemplateInfo.popupcontent2 = paramJSONObject.getString("popupcontent2");
+      }
+      if (paramJSONObject.has("popupbtn2")) {
+        localPtvTemplateInfo.popupbtn2 = paramJSONObject.getString("popupbtn2");
+      }
+      if (paramJSONObject.has("buttonbgcolor")) {
+        localPtvTemplateInfo.buttonbgcolor = paramJSONObject.getString("buttonbgcolor");
+      }
+      if (paramJSONObject.has("multivideosupport")) {
+        localPtvTemplateInfo.multivideosupport = paramJSONObject.getBoolean("multivideosupport");
+      }
+      if (paramJSONObject.has("sizeFree")) {
+        localPtvTemplateInfo.sizeFree = paramJSONObject.getDouble("sizeFree");
+      }
+      if (paramJSONObject.has("jump_app")) {
+        localPtvTemplateInfo.jump_app = paramJSONObject.getString("jump_app");
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PtvTemplateManager", 1, "parseContent error=" + paramJSONObject.getMessage());
+    }
+    return localPtvTemplateInfo;
+    return localPtvTemplateInfo;
   }
   
   public void doDownloadDataReport()
@@ -213,6 +315,20 @@ public class PtvTemplateManager$PtvTemplateInfo
   public boolean hasGesture()
   {
     return isGesture(this.category);
+  }
+  
+  public boolean isDovItem()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(this.jump_app))
+    {
+      bool1 = bool2;
+      if (this.jump_app.startsWith("qim")) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public boolean isWsBanner()

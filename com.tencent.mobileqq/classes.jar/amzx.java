@@ -1,15 +1,14 @@
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.WXShareFromQZHelper;
+import cooperation.qzone.QZoneVideoDownloadActivity;
 
 public class amzx
   implements Runnable
 {
-  public amzx(WXShareFromQZHelper paramWXShareFromQZHelper) {}
+  public amzx(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
   
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), 2131432726, 0).a();
+    QQToast.a(this.a.getApplicationContext(), "网络已断,请连接网络后继续下载", 1).a();
   }
 }
 

@@ -12,27 +12,27 @@ public class PlatoAppFragment$PlatoLoadReceiver
     super(paramPlatoAppFragment);
   }
   
-  public void a(@NonNull PlatoAppFragment paramPlatoAppFragment, @NonNull PlatoLoadEvent paramPlatoLoadEvent)
+  public Class acceptEventClass()
+  {
+    return PlatoLoadEvent.class;
+  }
+  
+  public void onEvent(@NonNull PlatoAppFragment paramPlatoAppFragment, @NonNull PlatoLoadEvent paramPlatoLoadEvent)
   {
     if (QLog.isColorLevel()) {
       QLog.d("PlatoAppActivity", 2, "receive event:" + paramPlatoLoadEvent.toString());
     }
-    if (paramPlatoLoadEvent.jdField_b_of_type_Int == 0)
+    if (paramPlatoLoadEvent.type == 0)
     {
-      paramPlatoAppFragment.jdField_a_of_type_Int = paramPlatoLoadEvent.jdField_a_of_type_Int;
-      paramPlatoAppFragment.b();
+      paramPlatoAppFragment.mSoLoadResult = paramPlatoLoadEvent.code;
+      paramPlatoAppFragment.preload();
     }
-    if ((paramPlatoLoadEvent.jdField_b_of_type_Int == 1) && (paramPlatoAppFragment.jdField_a_of_type_JavaLangString.equals(paramPlatoLoadEvent.jdField_a_of_type_JavaLangString)))
+    if ((paramPlatoLoadEvent.type == 1) && (paramPlatoAppFragment.mBid.equals(paramPlatoLoadEvent.bid)))
     {
-      paramPlatoAppFragment.jdField_b_of_type_Int = paramPlatoLoadEvent.jdField_a_of_type_Int;
-      paramPlatoAppFragment.jdField_b_of_type_JavaLangString = paramPlatoLoadEvent.jdField_b_of_type_JavaLangString;
-      paramPlatoAppFragment.b();
+      paramPlatoAppFragment.mJsLoadResult = paramPlatoLoadEvent.code;
+      paramPlatoAppFragment.mBundlerPath = paramPlatoLoadEvent.path;
+      paramPlatoAppFragment.preload();
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return PlatoLoadEvent.class;
   }
 }
 

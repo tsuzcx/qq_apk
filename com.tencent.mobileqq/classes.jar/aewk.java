@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class aewk
-  implements Runnable
+public class aewk
+  implements DialogInterface.OnClickListener
 {
-  aewk(aewj paramaewj, List paramList, byte[] paramArrayOfByte, String paramString) {}
+  public aewk(GameRoomInviteActivity paramGameRoomInviteActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoFeedsUploader.a(this.jdField_a_of_type_Aewj.a, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

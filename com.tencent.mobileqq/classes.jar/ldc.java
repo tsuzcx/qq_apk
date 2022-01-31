@@ -1,16 +1,37 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class ldc
   implements Runnable
 {
-  public ldc(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public ldc(ReadInJoyNaviController paramReadInJoyNaviController) {}
   
   public void run()
   {
-    HtmlOffline.b("2378", this.a.app, true, new ldd(this));
-    HtmlOffline.b("2464", this.a.app, true, new lde(this));
-    HtmlOffline.b("2463", this.a.app, true, new ldf(this));
+    Object localObject = ReadInJoyNaviController.a(this.a).a();
+    ReadInJoyNaviController.a(this.a, 1000L);
+    if ((localObject != null) && (ReadInJoyNaviController.a(this.a)))
+    {
+      ReadInJoyNaviController.a(this.a, false);
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -((View)localObject).getHeight(), this.a.e);
+      localTranslateAnimation.setDuration(300L);
+      localTranslateAnimation.setAnimationListener(new ldd(this, (View)localObject));
+      ((View)localObject).startAnimation(localTranslateAnimation);
+      if (ReadInJoyNaviController.a(this.a) != null)
+      {
+        localObject = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
+        ((Animation)localObject).setDuration(200L);
+        ((Animation)localObject).setFillEnabled(true);
+        ((Animation)localObject).setFillAfter(true);
+        ReadInJoyNaviController.a(this.a).startAnimation((Animation)localObject);
+      }
+      ReadInJoyNaviController.a(0, ReadInJoyNaviController.a(0, null));
+    }
   }
 }
 

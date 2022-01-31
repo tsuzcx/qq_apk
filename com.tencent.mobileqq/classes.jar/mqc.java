@@ -1,17 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.util.UiThreadUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.RecommendAndAdCallback;
+import java.util.List;
 
 public class mqc
-  implements Runnable
+  implements FastWebRequestUtil.RecommendAndAdCallback
 {
-  public mqc(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController, QQAppInterface paramQQAppInterface) {}
+  public mqc(FastWebActivity paramFastWebActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString, List paramList1, List paramList2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.a.a();
-    UiThreadUtil.a(new mqd(this));
+    this.a.runOnUiThread(new mqd(this, paramBoolean, paramString, paramList1, paramList2));
   }
 }
 

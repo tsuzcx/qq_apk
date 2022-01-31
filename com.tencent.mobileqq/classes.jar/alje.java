@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.common.NoticeParam;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class alje
-  implements Parcelable.Creator
+class alje
+  implements DialogInterface.OnClickListener
 {
-  public NoticeParam a(Parcel paramParcel)
-  {
-    return new NoticeParam(paramParcel);
-  }
+  alje(aljd paramaljd) {}
   
-  public NoticeParam[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new NoticeParam[paramInt];
+    if (paramInt == 1)
+    {
+      this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.cancel();
+      this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.finish();
+      return;
+    }
+    try
+    {
+      ForwardSdkShareOption.a(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity, true, "action_game_bind_group", Long.valueOf(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.c).longValue(), -1, this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.cancel();
+      BindGroupConfirmActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity, -1);
+      BindGroupConfirmActivity.a(this.a.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("BindGroupConfirmActivity", 1, "showAlertDlg error = " + paramDialogInterface);
+      }
+    }
   }
 }
 

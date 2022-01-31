@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troop.utils.VideoAnimationUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.Set;
 
-public final class ajri
-  extends DownloadListener
+public class ajri
+  implements AdapterView.OnItemClickListener
 {
-  public ajri(WeakReference paramWeakReference, File paramFile, FrameSprite.OnFrameEndListener paramOnFrameEndListener) {}
+  public ajri(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoAnimationUtils", 2, "onDone:" + paramDownloadTask.a);
+    if (SelectReciteParagraphFragment.a(this.a).contains(Integer.valueOf(paramInt))) {
+      SelectReciteParagraphFragment.a(this.a).remove(Integer.valueOf(paramInt));
     }
-    VideoAnimationUtils.a(this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener);
+    for (;;)
+    {
+      SelectReciteParagraphFragment.a(this.a).notifyDataSetChanged();
+      SelectReciteParagraphFragment.a(this.a);
+      return;
+      SelectReciteParagraphFragment.a(this.a).add(Integer.valueOf(paramInt));
+    }
   }
 }
 

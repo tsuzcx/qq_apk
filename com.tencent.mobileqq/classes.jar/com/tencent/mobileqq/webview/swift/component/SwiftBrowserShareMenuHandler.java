@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import akpw;
-import akpx;
+import akxn;
+import akxo;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -43,6 +43,7 @@ import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
@@ -115,6 +116,7 @@ public class SwiftBrowserShareMenuHandler
   private boolean g;
   private boolean h;
   private boolean i;
+  private boolean j;
   
   static
   {
@@ -150,12 +152,12 @@ public class SwiftBrowserShareMenuHandler
         QLog.d("SwiftBrowserShareMenuHandler", 2, "loadShareJs");
       }
       a(System.currentTimeMillis());
-      int k = com.tencent.mobileqq.webprocess.WebAccelerateHelper.getInstance().getWebViewFeatureParams()[2].intValue();
-      int j = k;
-      if (k < 0) {
-        j = 190;
+      int m = com.tencent.mobileqq.webprocess.WebAccelerateHelper.getInstance().getWebViewFeatureParams()[2].intValue();
+      int k = m;
+      if (m < 0) {
+        k = 190;
       }
-      str = String.format("function callShare(){\"loading\"==document.readyState?window.addEventListener(\"load\",sharePageInfo(),!1):sharePageInfo()}var readStyleProp=function(a,b){var c,d;return b?(b=b.toLowerCase(),a.style&&a.style[b]?c=a.style[b]:a.currentStyle?(b=b.replace(/\\-([a-z])([a-z]?)/gi,function(a,b,c){return b.toUpperCase()+c.toLowerCase()}),c=a.currentStyle[b]):document.defaultView&&document.defaultView.getComputedStyle&&(d=document.defaultView.getComputedStyle(a,null),c=d.getPropertyValue(b)),-1!=c.indexOf(\"px\")&&(c=c.replace(/(px)/i,\"\")),c):void 0},parsePageInfo=function(){var b,c,d,e,f,g,h,i,j,k,l,a={};for(a[\"shareURL\"]=document.documentURI,b=\"\",c=\"\",d=document.getElementsByTagName(\"meta\"),f=0;f<d.length;f++)e=d[f],!a.title&&e.getAttribute(\"itemprop\")&&\"name\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(a[\"title\"]=e.content),a.summary||\"description\"!=e.name||void 0!=e.content&&\"\"!=e.content&&(b=e.content),!a.summary&&e.getAttribute(\"itemprop\")&&\"description\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(c=e.content),!a.image&&e.getAttribute(\"itemprop\")&&\"image\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(a[\"image\"]=e.content);if(\"\"!=c?a[\"summary\"]=c:\"\"!=b&&(a[\"summary\"]=b),!a.image)for(g=document.getElementsByTagName(\"img\"),h=%d,i=%d,f=0;f<g.length&&30>f;f++)if(j=g[f],(j.src.startsWith(\"//\")||j.src.startsWith(\"http://\")||j.src.startsWith(\"https://\"))&&(k=j.width,l=j.height,void 0!=j.naturalWidth&&void 0!=j.naturalHeight&&(k=j.naturalWidth,l=j.naturalHeight),k>=h&&10*h>k&&l>=i&&10*i>l&&\"none\"!=readStyleProp(j,\"display\")&&\"hidden\"!=readStyleProp(j,\"visibility\"))){a[\"image\"]=j.src,a.image.startsWith(\"//\")&&(a.image=(document.documentURI.startsWith(\"http:\")?\"http:\":\"https:\")+a.image);break}return a},sharePageInfo=function(){var a,c,d,e;try{a=parsePageInfo()}catch(b){}a||(a=new object),a[\"type\"]=\"share\",a[\"callback\"]=1,c=JSON.stringify(a),d=\"jsbridge://share/setShare?p=\"+encodeURIComponent(c),e=document.createElement(\"iframe\"),e.style.cssText=\"display:none;width:0px;height:0px;\",(document.documentElement||document.body).appendChild(e),e.src=d};callShare();", new Object[] { Integer.valueOf(j), Integer.valueOf(j) });
+      str = String.format("function callShare(){\"loading\"==document.readyState?window.addEventListener(\"load\",sharePageInfo(),!1):sharePageInfo()}var readStyleProp=function(a,b){var c,d;return b?(b=b.toLowerCase(),a.style&&a.style[b]?c=a.style[b]:a.currentStyle?(b=b.replace(/\\-([a-z])([a-z]?)/gi,function(a,b,c){return b.toUpperCase()+c.toLowerCase()}),c=a.currentStyle[b]):document.defaultView&&document.defaultView.getComputedStyle&&(d=document.defaultView.getComputedStyle(a,null),c=d.getPropertyValue(b)),-1!=c.indexOf(\"px\")&&(c=c.replace(/(px)/i,\"\")),c):void 0},parsePageInfo=function(){var b,c,d,e,f,g,h,i,j,k,l,a={};for(a[\"shareURL\"]=document.documentURI,b=\"\",c=\"\",d=document.getElementsByTagName(\"meta\"),f=0;f<d.length;f++)e=d[f],!a.title&&e.getAttribute(\"itemprop\")&&\"name\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(a[\"title\"]=e.content),a.summary||\"description\"!=e.name||void 0!=e.content&&\"\"!=e.content&&(b=e.content),!a.summary&&e.getAttribute(\"itemprop\")&&\"description\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(c=e.content),!a.image&&e.getAttribute(\"itemprop\")&&\"image\"==e.getAttribute(\"itemprop\").toLowerCase()&&void 0!=e.content&&\"\"!=e.content&&(a[\"image\"]=e.content);if(\"\"!=c?a[\"summary\"]=c:\"\"!=b&&(a[\"summary\"]=b),!a.image)for(g=document.getElementsByTagName(\"img\"),h=%d,i=%d,f=0;f<g.length&&30>f;f++)if(j=g[f],(j.src.startsWith(\"//\")||j.src.startsWith(\"http://\")||j.src.startsWith(\"https://\"))&&(k=j.width,l=j.height,void 0!=j.naturalWidth&&void 0!=j.naturalHeight&&(k=j.naturalWidth,l=j.naturalHeight),k>=h&&10*h>k&&l>=i&&10*i>l&&\"none\"!=readStyleProp(j,\"display\")&&\"hidden\"!=readStyleProp(j,\"visibility\"))){a[\"image\"]=j.src,a.image.startsWith(\"//\")&&(a.image=(document.documentURI.startsWith(\"http:\")?\"http:\":\"https:\")+a.image);break}return a},sharePageInfo=function(){var a,c,d,e;try{a=parsePageInfo()}catch(b){}a||(a=new object),a[\"type\"]=\"share\",a[\"callback\"]=1,c=JSON.stringify(a),d=\"jsbridge://share/setShare?p=\"+encodeURIComponent(c),e=document.createElement(\"iframe\"),e.style.cssText=\"display:none;width:0px;height:0px;\",(document.documentElement||document.body).appendChild(e),e.src=d};callShare();", new Object[] { Integer.valueOf(k), Integer.valueOf(k) });
     } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a() == null);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().loadUrl("javascript:" + str + ";");
   }
@@ -332,7 +334,7 @@ public class SwiftBrowserShareMenuHandler
       d();
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.e();
+        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.f();
       }
     } while ((this.jdField_a_of_type_AndroidWidgetPopupWindow == null) || (!this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()));
     this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
@@ -348,8 +350,8 @@ public class SwiftBrowserShareMenuHandler
     String str3;
     String str2;
     String str1;
+    int m;
     int k;
-    int j;
     if (paramBundle != null)
     {
       str5 = paramBundle.getString("qq", "");
@@ -357,8 +359,8 @@ public class SwiftBrowserShareMenuHandler
       str3 = paramBundle.getString("source_public_uin", "");
       str2 = paramBundle.getString("default_url", "");
       str1 = paramBundle.getString("msg_id", "");
-      k = paramBundle.getInt("troop_app_id", 0);
-      j = paramBundle.getInt("troop_id", 0);
+      m = paramBundle.getInt("troop_app_id", 0);
+      k = paramBundle.getInt("troop_id", 0);
       str6 = paramBundle.getString("troop_app_info_url", "");
       paramBundle.getInt("uin_type", 0);
     }
@@ -404,9 +406,9 @@ public class SwiftBrowserShareMenuHandler
           }
           else
           {
-            int m = Integer.parseInt(str8);
+            int n = Integer.parseInt(str8);
             localObject4 = paramString;
-            if ((m >> 3 & 0x1) == 1) {
+            if ((n >> 3 & 0x1) == 1) {
               localObject4 = localObject1;
             }
           }
@@ -426,23 +428,27 @@ public class SwiftBrowserShareMenuHandler
           label2697:
           long l1 = 0L;
           continue;
+          label3756:
           l1 = 0L;
           continue;
+          label3762:
           l1 = 0L;
           continue;
+          label3768:
           Object localObject2 = localObject3;
           continue;
+          label3775:
           localObject2 = localObject3;
           continue;
-          label3766:
-          j = 0;
+          label3782:
+          k = 0;
         }
       }
       if (paramInt == 1)
       {
         ((ClipboardManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("clipboard")).setText((CharSequence)localObject4);
-        QRUtils.a(2, 2131430005);
-        if ((this.i) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l))) {
+        QRUtils.a(2, 2131430007);
+        if ((this.i) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.n))) {
           this.jdField_a_of_type_ComTencentBizWebviewpluginShare.e();
         }
       }
@@ -453,15 +459,15 @@ public class SwiftBrowserShareMenuHandler
         if (paramInt == 11)
         {
           paramString = Pattern.compile("(http|https)://.*.mp.qq.com.*").matcher((CharSequence)localObject4);
-          j = 0;
+          k = 0;
           if (paramString.matches()) {
-            j = 1;
+            k = 1;
           }
           paramBundle = null;
           try
           {
             paramString = URLEncoder.encode((String)localObject4, "UTF-8");
-            if (j != 0)
+            if (k != 0)
             {
               localObject3 = String.valueOf(NetConnInfoCenter.getServerTime());
               localObject1 = MD5Utils.b(paramString + 200 + (String)localObject3 + "jubao@article@123");
@@ -506,279 +512,270 @@ public class SwiftBrowserShareMenuHandler
             throw new InvalidParameterException("ACTION_REFRESH_FREIEND_VIEW should be handled by QQBrowserActivity!");
           }
           paramString = (SwiftBrowserStatistics)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(-2);
-          if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl())) && (paramString != null) && (!TextUtils.isEmpty(paramString.jdField_b_of_type_JavaLangString))) {
-            if (TextUtils.isEmpty((CharSequence)localObject3))
-            {
-              if (!((String)localObject4).equals(paramString.jdField_b_of_type_JavaLangString)) {}
+          if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl())) || (paramString == null) || (TextUtils.isEmpty(paramString.jdField_b_of_type_JavaLangString))) {
+            break label3782;
+          }
+          if (TextUtils.isEmpty((CharSequence)localObject3)) {
+            if (!((String)localObject4).equals(paramString.jdField_b_of_type_JavaLangString)) {
+              break label3782;
             }
-            else
+          }
+          for (k = 1;; k = 1)
+          {
+            if (k == 0) {
+              break label853;
+            }
+            b((String)localObject4, (String)localObject3, (String)localObject1);
+            break;
+            if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals(paramString.jdField_b_of_type_JavaLangString))) {
+              break label3782;
+            }
+          }
+          a((String)localObject4, (String)localObject3, (String)localObject1);
+        }
+        else if (paramInt == 4)
+        {
+          paramString = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject4));
+          paramString.putExtra("normal", true);
+          try
+          {
+            this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
+            ReportController.b(null, "P_CliOper", "VIPCOMIC", "", "0X800619F", "0X800619F", 1000, 0, Util.b(str2, new String[0]), null, null, null);
+            ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_48", "browser_share", 0, 1, 0, "", "", "", "");
+            if ((str3 == null) || ("".equals(str3))) {
+              continue;
+            }
+            PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", 1006, 0, str3, str1, str2, AccountDetailActivity.a(str2), false);
+          }
+          catch (ActivityNotFoundException paramString)
+          {
+            for (;;)
             {
-              for (j = 1;; j = 1)
-              {
-                if (j == 0) {
-                  break label853;
-                }
-                b((String)localObject4, (String)localObject3, (String)localObject1);
-                break;
-                if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals(paramString.jdField_b_of_type_JavaLangString))) {
-                  break label3766;
-                }
-              }
-              a((String)localObject4, (String)localObject3, (String)localObject1);
+              QRUtils.a(1, 2131430030);
             }
           }
         }
-        else
+        else if (paramInt == 5)
         {
-          if (paramInt == 4)
+          if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null)
           {
-            paramString = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject4));
-            paramString.putExtra("normal", true);
-            try
+            if (!TextUtils.isEmpty((CharSequence)localObject4))
             {
-              this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
-              ReportController.b(null, "P_CliOper", "VIPCOMIC", "", "0X800619F", "0X800619F", 1000, 0, Util.b(str2, new String[0]), null, null, null);
-              ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_48", "browser_share", 0, 1, 0, "", "", "", "");
-              if ((str3 == null) || ("".equals(str3))) {
-                continue;
-              }
-              PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", 1006, 0, str3, str1, str2, AccountDetailActivity.a(str2), false);
-            }
-            catch (ActivityNotFoundException paramString)
-            {
-              for (;;)
+              paramString = new HashMap();
+              paramString.put("KEY_PID", String.valueOf(50079));
+              paramString.put("KEY_EUSESTAT", String.valueOf(5));
+              paramString.put("ChannelID", BaseApplicationImpl.getContext().getApplicationInfo().processName);
+              paramString.put("PosID", Integer.toString(0));
+              paramBundle = MttLoader.getValidQBUrl(BaseApplicationImpl.getContext(), (String)localObject4);
+              k = MttLoader.loadUrl(BaseApplicationImpl.getContext(), paramBundle, paramString, null);
+              if ((4 == k) || (5 == k) || (k != 0))
               {
-                QRUtils.a(1, 2131430028);
-              }
-            }
-          }
-          if (paramInt == 5)
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null)
-            {
-              if (!TextUtils.isEmpty((CharSequence)localObject4))
-              {
-                paramString = new HashMap();
-                paramString.put("KEY_PID", String.valueOf(50079));
-                paramString.put("KEY_EUSESTAT", String.valueOf(5));
-                paramString.put("ChannelID", BaseApplicationImpl.getContext().getApplicationInfo().processName);
-                paramString.put("PosID", Integer.toString(0));
-                paramBundle = MttLoader.getValidQBUrl(BaseApplicationImpl.getContext(), (String)localObject4);
-                j = MttLoader.loadUrl(BaseApplicationImpl.getContext(), paramBundle, paramString, null);
-                if ((4 == j) || (5 == j) || (j != 0))
-                {
-                  paramString = (SwiftBrowserTBSHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(16);
-                  if (paramString != null) {
-                    paramString.a("http://mdc.html5.qq.com/d/directdown.jsp?channel_id=10367", true);
-                  }
+                paramString = (SwiftBrowserTBSHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(16);
+                if (paramString != null) {
+                  paramString.a("http://mdc.html5.qq.com/d/directdown.jsp?channel_id=10367", true);
                 }
               }
-              ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_46", "qqbrowser_share", 0, 1, 0, "", "", "", "");
-              ReportController.b(null, "P_CliOper", "VIPCOMIC", "", "0X80061A0", "0X80061A0", 1000, 0, Util.b(str2, new String[0]), null, null, null);
-              if ((str3 == null) || ("".equals(str3))) {
-                continue;
-              }
+            }
+            ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_46", "qqbrowser_share", 0, 1, 0, "", "", "", "");
+            ReportController.b(null, "P_CliOper", "VIPCOMIC", "", "0X80061A0", "0X80061A0", 1000, 0, Util.b(str2, new String[0]), null, null, null);
+            if ((str3 != null) && (!"".equals(str3))) {
               PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", 1005, 0, str3, str1, str2, AccountDetailActivity.a(str2), false);
-              continue;
-            }
-            throw new InvalidParameterException("ACTION_OPEN_IN_QQ_BROWSER should be handled by QQBrowserActivity!");
-          }
-          if (paramInt == 3)
-          {
-            jdField_b_of_type_Long = System.currentTimeMillis();
-            if (TextUtils.isEmpty((CharSequence)localObject3))
-            {
-              PublicAccountUtil.a(1002, (String)localObject1, this.jdField_e_of_type_Int);
-              if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)) {
-                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 2, false);
-              }
-              for (;;)
-              {
-                ReportCenter.a().a("", "", "", "1000", "102", "0", false);
-                ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_44", "qzone_share", 0, 1, 0, "", "", "", "");
-                break;
-                if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.n)) {
-                  this.jdField_a_of_type_ComTencentBizWebviewpluginShare.g();
-                } else {
-                  this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a();
-                }
-              }
             }
           }
           else
           {
-            if (paramInt == 6)
+            throw new InvalidParameterException("ACTION_OPEN_IN_QQ_BROWSER should be handled by QQBrowserActivity!");
+          }
+        }
+        else
+        {
+          if (paramInt == 3)
+          {
+            jdField_b_of_type_Long = System.currentTimeMillis();
+            if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+              break label3775;
+            }
+            PublicAccountUtil.a(1002, (String)localObject1, this.jdField_e_of_type_Int);
+            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.n)) {
+              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 2, false);
+            }
+            for (;;)
             {
-              if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4)) {
-                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 9, false);
+              ReportCenter.a().a("", "", "", "1000", "102", "0", false);
+              ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_44", "qzone_share", 0, 1, 0, "", "", "", "");
+              break;
+              if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p)) {
+                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.h();
+              } else {
+                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a();
               }
-              if ((str3 == null) || ("".equals(str3))) {
-                continue;
-              }
+            }
+          }
+          if (paramInt == 6)
+          {
+            if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4)) {
+              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 9, false);
+            }
+            if ((str3 != null) && (!"".equals(str3))) {
               PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", 1007, 0, str3, str1, str2, AccountDetailActivity.a(str2), false);
-              continue;
             }
-            if ((paramInt == 9) || (paramInt == 10))
+          }
+          else if ((paramInt == 9) || (paramInt == 10))
+          {
+            k = -1;
+            if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+              break label3768;
+            }
+            if (paramInt == 9)
             {
-              j = -1;
-              if (TextUtils.isEmpty((CharSequence)localObject3))
-              {
-                if (paramInt == 9)
-                {
-                  PublicAccountUtil.a(1003, (String)localObject1, this.jdField_e_of_type_Int);
-                  if (WXShareHelper.a().a()) {
-                    break label1645;
-                  }
-                  j = 2131435319;
-                }
-                for (;;)
-                {
-                  if (j == -1) {
-                    break label1662;
-                  }
-                  QRUtils.a(0, j);
-                  if (paramInt != 9) {
-                    break label1905;
-                  }
-                  ReportCenter.a().a("", "", "", "1000", "103", "0", false);
-                  break;
-                  PublicAccountUtil.a(1004, (String)localObject1, this.jdField_e_of_type_Int);
-                  break label1573;
-                  if (!WXShareHelper.a().b()) {
-                    j = 2131435320;
-                  }
-                }
-                if (paramInt == 9)
-                {
-                  if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)) {
-                    this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 3, true);
-                  }
-                  for (;;)
-                  {
-                    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_40", "weixin_share", 0, 1, 0, "", "", "", "");
-                    if ((str3 == null) || ("".equals(str3))) {
-                      break;
-                    }
-                    PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", 1003, 0, str3, str1, str2, AccountDetailActivity.a(str2), false);
-                    break;
-                    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.o)) {
-                      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.h();
-                    } else {
-                      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 3, true);
-                    }
-                  }
-                }
-                if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)) {
-                  this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 4, true);
-                }
-                for (;;)
-                {
-                  ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_42", "pengyouquan_share", 0, 1, 0, "", "", "", "");
-                  break;
-                  if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p)) {
-                    this.jdField_a_of_type_ComTencentBizWebviewpluginShare.i();
-                  } else {
-                    this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 4, true);
-                  }
-                }
-                if (paramInt != 10) {
-                  continue;
-                }
-                ReportCenter.a().a("", "", "", "1000", "104", "0", false);
+              PublicAccountUtil.a(1003, (String)localObject1, this.jdField_e_of_type_Int);
+              if (WXShareHelper.a().a()) {
+                break label1645;
+              }
+              k = 2131435335;
+            }
+            for (;;)
+            {
+              if (k == -1) {
+                break label1662;
+              }
+              QRUtils.a(0, k);
+              if (paramInt != 9) {
+                break label1905;
+              }
+              ReportCenter.a().a("", "", "", "1000", "103", "0", false);
+              break;
+              PublicAccountUtil.a(1004, (String)localObject1, this.jdField_e_of_type_Int);
+              break label1573;
+              if (!WXShareHelper.a().b()) {
+                k = 2131435336;
               }
             }
-            else
+            if (paramInt == 9)
             {
-              if (paramInt == 13)
-              {
-                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 5, true);
-                continue;
+              if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.n)) {
+                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 3, true);
               }
-              if (paramInt == 15)
+              for (;;)
               {
-                if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment == null) {
-                  throw new InvalidParameterException("ACTION_ADD_TROOP_APP should be handled by QQBrowserActivity!");
+                ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_40", "weixin_share", 0, 1, 0, "", "", "", "");
+                if ((str3 == null) || ("".equals(str3))) {
+                  break;
                 }
-                if (!NetworkUtil.d(BaseApplicationImpl.getContext()))
-                {
-                  QQToast.a(BaseApplicationImpl.getContext(), 2, 2131433192, 0).b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
-                  return;
+                PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", 1003, 0, str3, str1, str2, AccountDetailActivity.a(str2), false);
+                break;
+                if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.q)) {
+                  this.jdField_a_of_type_ComTencentBizWebviewpluginShare.i();
+                } else {
+                  this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 3, true);
                 }
-                a().a(k, new akpw(this));
-                ReportController.b(null, "P_CliOper", "Grp_open", "", "third_app", "add_menu", 0, 1, 0, "" + j, "" + k, "", "");
-                continue;
               }
-              if (paramInt == 16)
-              {
-                paramString = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-                paramString.putExtra("url", str6);
-                paramString.putExtra("hide_operation_bar", true);
-                paramString.putExtra("hide_more_button", true);
-                this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
-                ReportController.b(null, "P_CliOper", "Grp_open", "", "third_app", "detail_menu", 0, 1, 0, "" + j, "" + k, "", "");
-                continue;
+            }
+            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.n)) {
+              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 4, true);
+            }
+            for (;;)
+            {
+              ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_42", "pengyouquan_share", 0, 1, 0, "", "", "", "");
+              break;
+              if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.r)) {
+                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.j();
+              } else {
+                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 4, true);
               }
-              if (paramInt == 17)
-              {
-                paramString = "";
-                if (paramBundle != null) {
-                  paramString = paramBundle.getString("troop_app_share_url", "");
-                }
-                paramBundle = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-                paramBundle.putExtra("url", paramString);
-                paramBundle.putExtra("hide_operation_bar", true);
-                paramBundle.putExtra("hide_more_button", true);
-                this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
-                ReportController.b(null, "P_CliOper", "Grp_open", "", "third_app", "share_menu", 0, 1, 0, "" + j, "" + k, "", "");
-                continue;
+            }
+            if (paramInt == 10) {
+              ReportCenter.a().a("", "", "", "1000", "104", "0", false);
+            }
+          }
+          else if (paramInt == 13)
+          {
+            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 5, true);
+          }
+          else if (paramInt == 15)
+          {
+            if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment == null) {
+              throw new InvalidParameterException("ACTION_ADD_TROOP_APP should be handled by QQBrowserActivity!");
+            }
+            if (!NetworkUtil.d(BaseApplicationImpl.getContext()))
+            {
+              QQToast.a(BaseApplicationImpl.getContext(), 2, 2131433206, 0).b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+              return;
+            }
+            a().a(m, new akxn(this));
+            ReportController.b(null, "P_CliOper", "Grp_open", "", "third_app", "add_menu", 0, 1, 0, "" + k, "" + m, "", "");
+          }
+          else if (paramInt == 16)
+          {
+            paramString = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+            paramString.putExtra("url", str6);
+            paramString.putExtra("hide_operation_bar", true);
+            paramString.putExtra("hide_more_button", true);
+            this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
+            ReportController.b(null, "P_CliOper", "Grp_open", "", "third_app", "detail_menu", 0, 1, 0, "" + k, "" + m, "", "");
+          }
+          else if (paramInt == 17)
+          {
+            paramString = "";
+            if (paramBundle != null) {
+              paramString = paramBundle.getString("troop_app_share_url", "");
+            }
+            paramBundle = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+            paramBundle.putExtra("url", paramString);
+            paramBundle.putExtra("hide_operation_bar", true);
+            paramBundle.putExtra("hide_more_button", true);
+            this.jdField_a_of_type_AndroidAppActivity.startActivity(paramBundle);
+            ReportController.b(null, "P_CliOper", "Grp_open", "", "third_app", "share_menu", 0, 1, 0, "" + k, "" + m, "", "");
+          }
+          else
+          {
+            if (paramInt == 18)
+            {
+              if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment == null) {
+                throw new InvalidParameterException("ACTION_REFRESH_TROOP_APP_VIEW should be handled by QQBrowserActivity!");
               }
-              if (paramInt == 18)
+              paramString = (SwiftBrowserStatistics)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(-2);
+              if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl())) && (paramString != null))
               {
-                if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment == null) {
-                  throw new InvalidParameterException("ACTION_REFRESH_TROOP_APP_VIEW should be handled by QQBrowserActivity!");
-                }
-                paramString = (SwiftBrowserStatistics)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(-2);
-                if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl())) && (paramString != null))
+                this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.jdField_d_of_type_Boolean = false;
+                paramString.n = System.currentTimeMillis();
+                this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.reload();
+                this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnCustomScrollChangeListener(null);
+                paramString.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 1, 0, 0, 0, 0, null);
+              }
+              for (;;)
+              {
+                ReportController.b(null, "P_CliOper", "Grp_open", "", "third_app", "refresh_menu", 0, 1, 0, "" + k, "" + m, "", "");
+                break;
+                paramBundle = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b();
+                if ((!TextUtils.isEmpty(paramBundle)) && (paramString != null))
                 {
                   this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.jdField_d_of_type_Boolean = false;
                   paramString.n = System.currentTimeMillis();
-                  this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.reload();
-                  this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnCustomScrollChangeListener(null);
-                  paramString.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl(), 1, 0, 0, 0, 0, null);
-                }
-                for (;;)
-                {
-                  ReportController.b(null, "P_CliOper", "Grp_open", "", "third_app", "refresh_menu", 0, 1, 0, "" + j, "" + k, "", "");
-                  break;
-                  paramBundle = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b();
-                  if ((!TextUtils.isEmpty(paramBundle)) && (paramString != null))
-                  {
-                    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics.jdField_d_of_type_Boolean = false;
-                    paramString.n = System.currentTimeMillis();
-                    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(paramBundle);
-                    paramString.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView, paramBundle, 1, 0, 0, 0, 0, null);
-                  }
+                  this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(paramBundle);
+                  paramString.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentBizUiTouchWebView, paramBundle, 1, 0, 0, 0, 0, null);
                 }
               }
-              if (paramInt == 7)
+            }
+            if (paramInt == 7)
+            {
+              c();
+            }
+            else if ((paramInt == 19) || (paramInt == 20))
+            {
+              if (paramInt == 19) {}
+              for (k = 6;; k = 7)
               {
-                c();
-                continue;
-              }
-              if ((paramInt == 19) || (paramInt == 20))
-              {
-                if (paramInt == 19) {}
-                for (j = 6;; j = 7)
-                {
-                  if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)) {
-                    break label2697;
-                  }
-                  this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, j, false);
-                  break;
+                if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.n)) {
+                  break label2697;
                 }
-                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, j, true);
-                continue;
+                this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, k, false);
+                break;
               }
+              this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, k, true);
+            }
+            else
+            {
               if (paramInt == 21)
               {
                 paramString = (SwiftBrowserScreenShotHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a().a(64);
@@ -809,7 +806,7 @@ public class SwiftBrowserShareMenuHandler
               }
               if (paramInt == 12)
               {
-                if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)) {
+                if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.n)) {
                   this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a((String)localObject4, 8, false);
                 }
                 for (;;)
@@ -844,18 +841,13 @@ public class SwiftBrowserShareMenuHandler
               }
               if (paramInt == 34)
               {
-                if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l))
-                {
+                if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.n)) {
                   this.jdField_a_of_type_ComTencentBizWebviewpluginShare.d();
-                  continue;
+                } else if (QLog.isColorLevel()) {
+                  QLog.d("diandian", 2, "dian dian is here");
                 }
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                QLog.d("diandian", 2, "dian dian is here");
-                continue;
               }
-              if (paramInt == 35)
+              else if (paramInt == 35)
               {
                 long l2 = 0L;
                 paramBundle = null;
@@ -889,10 +881,46 @@ public class SwiftBrowserShareMenuHandler
                   return;
                 }
               }
-              if (paramInt == 30)
+              else if (paramInt == 30)
               {
-                if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_e_of_type_Boolean))
+                if ((this.jdField_b_of_type_JavaUtilArrayList == null) || (!this.jdField_e_of_type_Boolean)) {
+                  break label3762;
+                }
+                paramString = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+                do
                 {
+                  if (!paramString.hasNext()) {
+                    break;
+                  }
+                  paramBundle = (PublicAccountJavascriptInterface.ActionItem)paramString.next();
+                } while (paramBundle.jdField_a_of_type_Int != 1);
+                try
+                {
+                  l1 = new JSONObject(paramBundle.jdField_b_of_type_JavaLangString).getLong("uin");
+                  paramString = new Intent();
+                  paramBundle = new Bundle();
+                  paramString.setComponent(new ComponentName(this.jdField_a_of_type_AndroidAppActivity, ChatActivity.class));
+                  paramBundle.putString("uin", String.valueOf(l1));
+                  paramBundle.putInt("uintype", 1008);
+                  paramString.putExtras(paramBundle);
+                  paramString.putExtra("is_come_from_readinjoy", true);
+                  paramString.setFlags(67108864);
+                  this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
+                  PublicAccountReportUtils.a(null, "", "0X8008C3B", "0X8008C3B", 0, 0, "", "", "", "", false);
+                }
+                catch (JSONException paramString)
+                {
+                  paramString.printStackTrace();
+                  return;
+                }
+              }
+              else
+              {
+                if ((paramInt == 37) && (this.f))
+                {
+                  if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+                    break label3756;
+                  }
                   paramString = this.jdField_b_of_type_JavaUtilArrayList.iterator();
                   do
                   {
@@ -904,16 +932,12 @@ public class SwiftBrowserShareMenuHandler
                   try
                   {
                     l1 = new JSONObject(paramBundle.jdField_b_of_type_JavaLangString).getLong("uin");
-                    paramString = new Intent();
-                    paramBundle = new Bundle();
-                    paramString.setComponent(new ComponentName(this.jdField_a_of_type_AndroidAppActivity, ChatActivity.class));
-                    paramBundle.putString("uin", String.valueOf(l1));
-                    paramBundle.putInt("uintype", 1008);
-                    paramString.putExtras(paramBundle);
-                    paramString.putExtra("is_come_from_readinjoy", true);
-                    paramString.setFlags(67108864);
+                    paramString = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+                    paramString.putExtra("uin", l1 + "");
+                    paramString.putExtra("uintype", 0);
                     this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
-                    PublicAccountReportUtils.a(null, "", "0X8008C3B", "0X8008C3B", 0, 0, "", "", "", "", false);
+                    PublicAccountReportUtils.a(null, "", "0X8008C11", "0X8008C11", 0, 0, "", "", "", "", false);
+                    return;
                   }
                   catch (JSONException paramString)
                   {
@@ -921,76 +945,45 @@ public class SwiftBrowserShareMenuHandler
                     return;
                   }
                 }
-              }
-              else if ((paramInt == 37) && (this.f))
-              {
-                if (this.jdField_b_of_type_JavaUtilArrayList != null) {
-                  paramString = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-                }
-              }
-              else {
-                for (;;)
+                if (paramInt == 31)
                 {
-                  if (paramString.hasNext())
-                  {
-                    paramBundle = (PublicAccountJavascriptInterface.ActionItem)paramString.next();
-                    if (paramBundle.jdField_a_of_type_Int == 1)
-                    {
-                      try
-                      {
-                        l1 = new JSONObject(paramBundle.jdField_b_of_type_JavaLangString).getLong("uin");
-                        paramString = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-                        paramString.putExtra("uin", l1 + "");
-                        paramString.putExtra("uintype", 0);
-                        this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
-                        PublicAccountReportUtils.a(null, "", "0X8008C11", "0X8008C11", 0, 0, "", "", "", "", false);
-                        return;
-                      }
-                      catch (JSONException paramString)
-                      {
-                        paramString.printStackTrace();
-                        return;
-                      }
-                      if (paramInt != 31) {
-                        break;
-                      }
-                      if (this.jdField_b_of_type_JavaUtilArrayList != null)
-                      {
-                        paramString = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-                        for (;;)
-                        {
-                          if (paramString.hasNext())
-                          {
-                            paramBundle = (PublicAccountJavascriptInterface.ActionItem)paramString.next();
-                            if (paramBundle.jdField_a_of_type_Int == 2) {
-                              try
-                              {
-                                l1 = new JSONObject(paramBundle.jdField_b_of_type_JavaLangString).getLong("puin");
-                                paramString = new Intent(this.jdField_a_of_type_AndroidAppActivity, AccountDetailActivity.class);
-                                paramString.putExtra("uin", l1 + "");
-                                paramString.putExtra("from_js", true);
-                                this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
-                                PublicAccountReportUtils.a(null, "", "0X8008C47", "0X8008C47", 0, 0, "", "", "", "", false);
-                              }
-                              catch (JSONException paramString)
-                              {
-                                paramString.printStackTrace();
-                                return;
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
+                  if (this.jdField_b_of_type_JavaUtilArrayList == null) {
+                    break;
                   }
+                  paramString = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+                  do
+                  {
+                    if (!paramString.hasNext()) {
+                      break;
+                    }
+                    paramBundle = (PublicAccountJavascriptInterface.ActionItem)paramString.next();
+                  } while (paramBundle.jdField_a_of_type_Int != 2);
+                  try
+                  {
+                    l1 = new JSONObject(paramBundle.jdField_b_of_type_JavaLangString).getLong("puin");
+                    paramString = new Intent(this.jdField_a_of_type_AndroidAppActivity, AccountDetailActivity.class);
+                    paramString.putExtra("uin", l1 + "");
+                    paramString.putExtra("from_js", true);
+                    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
+                    PublicAccountReportUtils.a(null, "", "0X8008C47", "0X8008C47", 0, 0, "", "", "", "", false);
+                  }
+                  catch (JSONException paramString)
+                  {
+                    paramString.printStackTrace();
+                    return;
+                  }
+                }
+                else if (paramInt == 38)
+                {
+                  this.jdField_a_of_type_ComTencentBizWebviewpluginShare.f();
                 }
               }
             }
           }
         }
       }
-      j = 0;
       k = 0;
+      m = 0;
       str1 = "";
       str2 = "";
       str3 = "";
@@ -1094,7 +1087,7 @@ public class SwiftBrowserShareMenuHandler
                   this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(paramShare);
                   break label284;
                 }
-                this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(BaseApplicationImpl.getApplication().getString(2131433100));
+                this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(BaseApplicationImpl.getApplication().getString(2131433114));
               }
             }
           }
@@ -1124,7 +1117,7 @@ public class SwiftBrowserShareMenuHandler
     for (;;)
     {
       PublicAccountUtil.a(1001, paramString3, this.jdField_e_of_type_Int);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)) {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.n)) {
         this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramString1, 1, false);
       }
       for (;;)
@@ -1132,8 +1125,8 @@ public class SwiftBrowserShareMenuHandler
         ReportCenter.a().a("", "", "", "1000", "101", "0", false);
         ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_webview_38", "qq_share", 0, 1, 0, "", "", "", "");
         return;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.m)) {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginShare.f();
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.o)) {
+          this.jdField_a_of_type_ComTencentBizWebviewpluginShare.g();
         } else {
           this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramString1, 1, false);
         }
@@ -1156,8 +1149,8 @@ public class SwiftBrowserShareMenuHandler
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a() != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
-      int j = WebView.getTbsCoreVersion(BaseApplicationImpl.getContext());
-      if ((j > 0) && (j < 36201))
+      int k = WebView.getTbsCoreVersion(BaseApplicationImpl.getContext());
+      if ((k > 0) && (k < 36201))
       {
         this.jdField_a_of_type_Boolean = false;
         return this.jdField_a_of_type_Boolean;
@@ -1201,26 +1194,26 @@ public class SwiftBrowserShareMenuHandler
     if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (localObject1 != null) && (((SwiftBrowserStatistics)localObject1).i))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430784);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841265;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430787);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841291;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 15;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
       localArrayList.add(localObject1);
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430785);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841267;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430788);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841293;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 16;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
       localArrayList.add(localObject1);
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430786);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841270;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430789);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841296;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 17;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
       localArrayList.add(localObject1);
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430787);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841269;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430790);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841295;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 18;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
       localArrayList.add(localObject1);
@@ -1229,11 +1222,11 @@ public class SwiftBrowserShareMenuHandler
     if (BaseApplicationImpl.getApplication().getRuntime() != null) {}
     for (localObject1 = BaseApplicationImpl.getApplication().getRuntime();; localObject1 = null)
     {
-      if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (this.h) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:diandian")) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)))
+      if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (this.h) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:diandian")) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.n)))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430138);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840673;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430140);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840688;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 34;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
@@ -1242,8 +1235,8 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qq")) && ((this.jdField_a_of_type_Long & 0x8) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430108);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838336;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430110);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838341;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 2;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
@@ -1252,8 +1245,8 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:QZone")) && ((this.jdField_a_of_type_Long & 0x10) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430114);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838337;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430116);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838342;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 3;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
@@ -1266,8 +1259,8 @@ public class SwiftBrowserShareMenuHandler
         if ((localObject2 != null) && (((SharedPreferences)localObject2).getBoolean("share_to_news", false)))
         {
           localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430128);
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838335;
+          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430130);
+          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838340;
           ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
           ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 13;
           ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
@@ -1277,8 +1270,8 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:appMessage")) && ((this.jdField_a_of_type_Long & 0x4000) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430126);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838340;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430128);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838345;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 9;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1286,8 +1279,8 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:timeline")) && ((this.jdField_a_of_type_Long & 0x8000) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430127);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838334;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430129);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838339;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 10;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1295,9 +1288,9 @@ public class SwiftBrowserShareMenuHandler
       if ((this.g) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:sinaWeibo")))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430132);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430134);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838339;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838344;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 12;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1305,8 +1298,8 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithQQBrowser")) && ((this.jdField_a_of_type_Long & 0x200) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430113);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840675;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430115);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840691;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 5;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1314,9 +1307,9 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithSafari")) && ((this.jdField_a_of_type_Long & 0x100) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430112);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430114);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840672;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840687;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 4;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1328,9 +1321,9 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qiYeQQ")) && ((this.jdField_a_of_type_Long & 0x20) == 0L) && (new Intent().setPackage("com.tencent.eim").setData(Uri.parse("eimapi://")).resolveActivity((PackageManager)localObject2) != null))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430131);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430133);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130841716;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130841743;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 20;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1351,9 +1344,9 @@ public class SwiftBrowserShareMenuHandler
             break;
           case 1: 
             if (TextUtils.isEmpty(((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)) {}
-            for (localActionSheetItem.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430016);; localActionSheetItem.jdField_a_of_type_JavaLangString = ((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)
+            for (localActionSheetItem.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430018);; localActionSheetItem.jdField_a_of_type_JavaLangString = ((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)
             {
-              localActionSheetItem.jdField_b_of_type_Int = 2130840677;
+              localActionSheetItem.jdField_b_of_type_Int = 2130840693;
               localActionSheetItem.jdField_a_of_type_Boolean = true;
               localActionSheetItem.jdField_c_of_type_Int = 30;
               localActionSheetItem.jdField_b_of_type_JavaLangString = "";
@@ -1362,8 +1355,8 @@ public class SwiftBrowserShareMenuHandler
             }
           case 2: 
             localObject4 = new ShareActionSheetBuilder.ActionSheetItem();
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430053);
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_Int = 2130840671;
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430055);
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_Int = 2130840686;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_Boolean = true;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_c_of_type_Int = 31;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_JavaLangString = "";
@@ -1385,9 +1378,9 @@ public class SwiftBrowserShareMenuHandler
             break;
           case 1: 
             if (TextUtils.isEmpty(((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)) {}
-            for (localActionSheetItem.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430016);; localActionSheetItem.jdField_a_of_type_JavaLangString = ((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)
+            for (localActionSheetItem.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430018);; localActionSheetItem.jdField_a_of_type_JavaLangString = ((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)
             {
-              localActionSheetItem.jdField_b_of_type_Int = 2130840677;
+              localActionSheetItem.jdField_b_of_type_Int = 2130840693;
               localActionSheetItem.jdField_a_of_type_Boolean = true;
               localActionSheetItem.jdField_c_of_type_Int = 37;
               localActionSheetItem.jdField_b_of_type_JavaLangString = "";
@@ -1396,8 +1389,8 @@ public class SwiftBrowserShareMenuHandler
             }
           case 3: 
             localObject4 = new ShareActionSheetBuilder.ActionSheetItem();
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430139);
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_Int = 2130840678;
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430141);
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_Int = 2130840694;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_Boolean = true;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_c_of_type_Int = 35;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_JavaLangString = "";
@@ -1409,9 +1402,9 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject3 != null) && (((SwiftBrowserScreenShotHandler)localObject3).a()) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:screenShotShare")))
       {
         localObject3 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430133);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430135);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_Boolean = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_Int = 2130840676;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_Int = 2130840692;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_c_of_type_Int = 21;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_JavaLangString = "";
         ((ArrayList)localObject2).add(localObject3);
@@ -1419,9 +1412,9 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:favorite")) && ((this.jdField_a_of_type_Long & 0x2000) == 0L))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430124);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430126);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841573;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841600;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 6;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
         ((ArrayList)localObject2).add(localObject1);
@@ -1429,8 +1422,8 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:setFont")) && (!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430109);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130840674;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430111);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130840689;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 7;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
@@ -1439,8 +1432,8 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:copyUrl")) && ((this.jdField_a_of_type_Long & 0x20) == 0L))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430110);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130838332;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430112);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130838337;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 1;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
@@ -1449,8 +1442,8 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:exposeArticle")) && (this.jdField_b_of_type_Boolean))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430111);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130840663;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430113);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130840678;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 11;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
@@ -1535,11 +1528,11 @@ public class SwiftBrowserShareMenuHandler
   
   public void c()
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2130968985, null);
+    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2130968987, null);
     this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow((View)localObject, -1, -2);
     this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
     this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-    localObject = (RangeButtonView)((View)localObject).findViewById(2131364584);
+    localObject = (RangeButtonView)((View)localObject).findViewById(2131364608);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new RangeButtonView.Title("小", TypedValue.applyDimension(1, 15.0F, FontSettingManager.a)));
     localArrayList.add(new RangeButtonView.Title("标准", TypedValue.applyDimension(1, 16.0F, FontSettingManager.a)));
@@ -1573,16 +1566,29 @@ public class SwiftBrowserShareMenuHandler
   {
     if (a())
     {
-      a().e(new akpx(this));
+      a().e(new akxo(this));
       return;
     }
     b(1);
   }
   
+  public void d(boolean paramBoolean)
+  {
+    this.j = paramBoolean;
+  }
+  
+  public boolean d()
+  {
+    return this.j;
+  }
+  
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     if (((this.jdField_a_of_type_Long & 0x20000) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.y();
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.x();
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler != null) && ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a() instanceof TeamWorkDocEditBrowserActivity))) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.f();
     }
   }
   
@@ -1627,7 +1633,7 @@ public class SwiftBrowserShareMenuHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler
  * JD-Core Version:    0.7.0.1
  */

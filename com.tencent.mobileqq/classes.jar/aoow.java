@@ -1,44 +1,49 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.io.File;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
 public class aoow
-  implements Runnable
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aoow(QIMPtvTemplateManager paramQIMPtvTemplateManager, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  float jdField_a_of_type_Float;
   
-  public void run()
+  public aoow(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo)) {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = true;
+    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return super.onDown(paramMotionEvent);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    do
+    if ((this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.i) || (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.j)) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    float f = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    if (Math.abs(f) > this.jdField_a_of_type_Float)
     {
-      HttpNetReq localHttpNetReq;
-      AppRuntime localAppRuntime;
-      do
-      {
-        return;
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = false;
-        localHttpNetReq = new HttpNetReq();
-        localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aoox(this);
-        localHttpNetReq.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl;
-        localHttpNetReq.jdField_a_of_type_Int = 0;
-        localHttpNetReq.jdField_c_of_type_JavaLangString = new File(QIMPtvTemplateManager.a, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name).getPath();
-        localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
-        localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      } while (!QQAppInterface.class.isInstance(localAppRuntime));
-      ((QQAppInterface)localAppRuntime).getNetEngine(0).a(localHttpNetReq);
-    } while (!QLog.isColorLevel());
-    QLog.i("QIMPtvTemplateManager", 2, "startDownloadTemplate, url: " + this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl);
+      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(f);
+      return true;
+    }
+    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

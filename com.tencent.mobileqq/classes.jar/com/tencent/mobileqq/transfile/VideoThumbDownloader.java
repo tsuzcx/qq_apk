@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aisc;
+import aixf;
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -91,7 +91,7 @@ public class VideoThumbDownloader
   
   public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return new File(AppConstants.aI);
+    return new File(AppConstants.aJ);
   }
   
   public boolean a()
@@ -101,12 +101,12 @@ public class VideoThumbDownloader
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return AlbumThumbManager.a(BaseApplicationImpl.getContext()).a(paramDownloadParams.url, new aisc(this));
+    return AlbumThumbManager.a(BaseApplicationImpl.getContext()).a(paramDownloadParams.url, new aixf(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VideoThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

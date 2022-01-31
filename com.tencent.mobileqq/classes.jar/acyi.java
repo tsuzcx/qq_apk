@@ -1,30 +1,32 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.IWeiYunImageEvent;
 
 public class acyi
-  extends acxm
+  implements QfileCloudFileTabView.IWeiYunImageEvent
 {
-  public acyi(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  public acyi(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  
+  public View.OnClickListener a(TextView paramTextView)
   {
-    super(paramOnlineFileSessionWorker);
+    this.a.a = paramTextView;
+    return new acyj(this);
   }
   
-  protected String a()
+  public boolean a()
   {
-    return "StateSaveToWeiYunByPCWhenToOffFailed";
+    return this.a.c;
   }
   
-  protected void a()
+  public boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
-    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Acxm.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Acxm = new acyg(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
+    return this.a.b;
+  }
+  
+  public boolean c()
+  {
+    return QfileCloudFileTabView.a(this.a);
   }
 }
 
